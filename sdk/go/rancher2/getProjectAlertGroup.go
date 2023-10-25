@@ -13,33 +13,6 @@ import (
 )
 
 // Use this data source to retrieve information about a Rancher v2 project alert group.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rancher2.LookupProjectAlertGroup(ctx, &rancher2.LookupProjectAlertGroupArgs{
-//				Name:      "<project_alert_group_name>",
-//				ProjectId: "<project_id>",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupProjectAlertGroup(ctx *pulumi.Context, args *LookupProjectAlertGroupArgs, opts ...pulumi.InvokeOption) (*LookupProjectAlertGroupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupProjectAlertGroupResult

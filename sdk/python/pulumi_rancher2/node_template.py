@@ -135,53 +135,53 @@ class NodeTemplateArgs:
              outscale_config: Optional[pulumi.Input['NodeTemplateOutscaleConfigArgs']] = None,
              use_internal_ip_address: Optional[pulumi.Input[bool]] = None,
              vsphere_config: Optional[pulumi.Input['NodeTemplateVsphereConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'amazonec2Config' in kwargs:
+        if amazonec2_config is None and 'amazonec2Config' in kwargs:
             amazonec2_config = kwargs['amazonec2Config']
-        if 'authCertificateAuthority' in kwargs:
+        if auth_certificate_authority is None and 'authCertificateAuthority' in kwargs:
             auth_certificate_authority = kwargs['authCertificateAuthority']
-        if 'authKey' in kwargs:
+        if auth_key is None and 'authKey' in kwargs:
             auth_key = kwargs['authKey']
-        if 'azureConfig' in kwargs:
+        if azure_config is None and 'azureConfig' in kwargs:
             azure_config = kwargs['azureConfig']
-        if 'cloudCredentialId' in kwargs:
+        if cloud_credential_id is None and 'cloudCredentialId' in kwargs:
             cloud_credential_id = kwargs['cloudCredentialId']
-        if 'digitaloceanConfig' in kwargs:
+        if digitalocean_config is None and 'digitaloceanConfig' in kwargs:
             digitalocean_config = kwargs['digitaloceanConfig']
-        if 'driverId' in kwargs:
+        if driver_id is None and 'driverId' in kwargs:
             driver_id = kwargs['driverId']
-        if 'engineEnv' in kwargs:
+        if engine_env is None and 'engineEnv' in kwargs:
             engine_env = kwargs['engineEnv']
-        if 'engineInsecureRegistries' in kwargs:
+        if engine_insecure_registries is None and 'engineInsecureRegistries' in kwargs:
             engine_insecure_registries = kwargs['engineInsecureRegistries']
-        if 'engineInstallUrl' in kwargs:
+        if engine_install_url is None and 'engineInstallUrl' in kwargs:
             engine_install_url = kwargs['engineInstallUrl']
-        if 'engineLabel' in kwargs:
+        if engine_label is None and 'engineLabel' in kwargs:
             engine_label = kwargs['engineLabel']
-        if 'engineOpt' in kwargs:
+        if engine_opt is None and 'engineOpt' in kwargs:
             engine_opt = kwargs['engineOpt']
-        if 'engineRegistryMirrors' in kwargs:
+        if engine_registry_mirrors is None and 'engineRegistryMirrors' in kwargs:
             engine_registry_mirrors = kwargs['engineRegistryMirrors']
-        if 'engineStorageDriver' in kwargs:
+        if engine_storage_driver is None and 'engineStorageDriver' in kwargs:
             engine_storage_driver = kwargs['engineStorageDriver']
-        if 'harvesterConfig' in kwargs:
+        if harvester_config is None and 'harvesterConfig' in kwargs:
             harvester_config = kwargs['harvesterConfig']
-        if 'hetznerConfig' in kwargs:
+        if hetzner_config is None and 'hetznerConfig' in kwargs:
             hetzner_config = kwargs['hetznerConfig']
-        if 'linodeConfig' in kwargs:
+        if linode_config is None and 'linodeConfig' in kwargs:
             linode_config = kwargs['linodeConfig']
-        if 'nodeTaints' in kwargs:
+        if node_taints is None and 'nodeTaints' in kwargs:
             node_taints = kwargs['nodeTaints']
-        if 'opennebulaConfig' in kwargs:
+        if opennebula_config is None and 'opennebulaConfig' in kwargs:
             opennebula_config = kwargs['opennebulaConfig']
-        if 'openstackConfig' in kwargs:
+        if openstack_config is None and 'openstackConfig' in kwargs:
             openstack_config = kwargs['openstackConfig']
-        if 'outscaleConfig' in kwargs:
+        if outscale_config is None and 'outscaleConfig' in kwargs:
             outscale_config = kwargs['outscaleConfig']
-        if 'useInternalIpAddress' in kwargs:
+        if use_internal_ip_address is None and 'useInternalIpAddress' in kwargs:
             use_internal_ip_address = kwargs['useInternalIpAddress']
-        if 'vsphereConfig' in kwargs:
+        if vsphere_config is None and 'vsphereConfig' in kwargs:
             vsphere_config = kwargs['vsphereConfig']
 
         if amazonec2_config is not None:
@@ -692,53 +692,53 @@ class _NodeTemplateState:
              outscale_config: Optional[pulumi.Input['NodeTemplateOutscaleConfigArgs']] = None,
              use_internal_ip_address: Optional[pulumi.Input[bool]] = None,
              vsphere_config: Optional[pulumi.Input['NodeTemplateVsphereConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'amazonec2Config' in kwargs:
+        if amazonec2_config is None and 'amazonec2Config' in kwargs:
             amazonec2_config = kwargs['amazonec2Config']
-        if 'authCertificateAuthority' in kwargs:
+        if auth_certificate_authority is None and 'authCertificateAuthority' in kwargs:
             auth_certificate_authority = kwargs['authCertificateAuthority']
-        if 'authKey' in kwargs:
+        if auth_key is None and 'authKey' in kwargs:
             auth_key = kwargs['authKey']
-        if 'azureConfig' in kwargs:
+        if azure_config is None and 'azureConfig' in kwargs:
             azure_config = kwargs['azureConfig']
-        if 'cloudCredentialId' in kwargs:
+        if cloud_credential_id is None and 'cloudCredentialId' in kwargs:
             cloud_credential_id = kwargs['cloudCredentialId']
-        if 'digitaloceanConfig' in kwargs:
+        if digitalocean_config is None and 'digitaloceanConfig' in kwargs:
             digitalocean_config = kwargs['digitaloceanConfig']
-        if 'driverId' in kwargs:
+        if driver_id is None and 'driverId' in kwargs:
             driver_id = kwargs['driverId']
-        if 'engineEnv' in kwargs:
+        if engine_env is None and 'engineEnv' in kwargs:
             engine_env = kwargs['engineEnv']
-        if 'engineInsecureRegistries' in kwargs:
+        if engine_insecure_registries is None and 'engineInsecureRegistries' in kwargs:
             engine_insecure_registries = kwargs['engineInsecureRegistries']
-        if 'engineInstallUrl' in kwargs:
+        if engine_install_url is None and 'engineInstallUrl' in kwargs:
             engine_install_url = kwargs['engineInstallUrl']
-        if 'engineLabel' in kwargs:
+        if engine_label is None and 'engineLabel' in kwargs:
             engine_label = kwargs['engineLabel']
-        if 'engineOpt' in kwargs:
+        if engine_opt is None and 'engineOpt' in kwargs:
             engine_opt = kwargs['engineOpt']
-        if 'engineRegistryMirrors' in kwargs:
+        if engine_registry_mirrors is None and 'engineRegistryMirrors' in kwargs:
             engine_registry_mirrors = kwargs['engineRegistryMirrors']
-        if 'engineStorageDriver' in kwargs:
+        if engine_storage_driver is None and 'engineStorageDriver' in kwargs:
             engine_storage_driver = kwargs['engineStorageDriver']
-        if 'harvesterConfig' in kwargs:
+        if harvester_config is None and 'harvesterConfig' in kwargs:
             harvester_config = kwargs['harvesterConfig']
-        if 'hetznerConfig' in kwargs:
+        if hetzner_config is None and 'hetznerConfig' in kwargs:
             hetzner_config = kwargs['hetznerConfig']
-        if 'linodeConfig' in kwargs:
+        if linode_config is None and 'linodeConfig' in kwargs:
             linode_config = kwargs['linodeConfig']
-        if 'nodeTaints' in kwargs:
+        if node_taints is None and 'nodeTaints' in kwargs:
             node_taints = kwargs['nodeTaints']
-        if 'opennebulaConfig' in kwargs:
+        if opennebula_config is None and 'opennebulaConfig' in kwargs:
             opennebula_config = kwargs['opennebulaConfig']
-        if 'openstackConfig' in kwargs:
+        if openstack_config is None and 'openstackConfig' in kwargs:
             openstack_config = kwargs['openstackConfig']
-        if 'outscaleConfig' in kwargs:
+        if outscale_config is None and 'outscaleConfig' in kwargs:
             outscale_config = kwargs['outscaleConfig']
-        if 'useInternalIpAddress' in kwargs:
+        if use_internal_ip_address is None and 'useInternalIpAddress' in kwargs:
             use_internal_ip_address = kwargs['useInternalIpAddress']
-        if 'vsphereConfig' in kwargs:
+        if vsphere_config is None and 'vsphereConfig' in kwargs:
             vsphere_config = kwargs['vsphereConfig']
 
         if amazonec2_config is not None:
@@ -1177,123 +1177,6 @@ class NodeTemplate(pulumi.CustomResource):
 
         **Note:** If you are upgrading to Rancher v2.3.3, please take a look to final section
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Node Template up to Rancher 2.1.x
-        foo = rancher2.NodeTemplate("foo",
-            amazonec2_config=rancher2.NodeTemplateAmazonec2ConfigArgs(
-                access_key="AWS_ACCESS_KEY",
-                ami="<AMI_ID>",
-                region="<REGION>",
-                secret_key="<AWS_SECRET_KEY>",
-                security_groups=["<AWS_SECURITY_GROUP>"],
-                subnet_id="<SUBNET_ID>",
-                vpc_id="<VPC_ID>",
-                zone="<ZONE>",
-            ),
-            description="foo test")
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Node Template from Rancher 2.2.x
-        foo_cloud_credential = rancher2.CloudCredential("fooCloudCredential",
-            description="foo test",
-            amazonec2_credential_config=rancher2.CloudCredentialAmazonec2CredentialConfigArgs(
-                access_key="<AWS_ACCESS_KEY>",
-                secret_key="<AWS_SECRET_KEY>",
-            ))
-        foo_node_template = rancher2.NodeTemplate("fooNodeTemplate",
-            description="foo test",
-            cloud_credential_id=foo_cloud_credential.id,
-            amazonec2_config=rancher2.NodeTemplateAmazonec2ConfigArgs(
-                ami="<AMI_ID>",
-                region="<REGION>",
-                security_groups=["<AWS_SECURITY_GROUP>"],
-                subnet_id="<SUBNET_ID>",
-                vpc_id="<VPC_ID>",
-                zone="<ZONE>",
-            ))
-        ```
-        ### Using the Harvester Node Driver
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        foo_harvester_cluster_v2 = rancher2.get_cluster_v2(name="foo-harvester")
-        # Create a new Cloud Credential for an imported Harvester cluster
-        foo_harvester_cloud_credential = rancher2.CloudCredential("foo-harvesterCloudCredential", harvester_credential_config=rancher2.CloudCredentialHarvesterCredentialConfigArgs(
-            cluster_id=foo_harvester_cluster_v2.cluster_v1_id,
-            cluster_type="imported",
-            kubeconfig_content=foo_harvester_cluster_v2.kube_config,
-        ))
-        # Create a new rancher2 Node Template using harvester node_driver
-        foo_harvester_node_template = rancher2.NodeTemplate("foo-harvesterNodeTemplate",
-            cloud_credential_id=foo_harvester_cloud_credential.id,
-            engine_install_url="https://releases.rancher.com/install-docker/20.10.sh",
-            harvester_config=rancher2.NodeTemplateHarvesterConfigArgs(
-                vm_namespace="default",
-                cpu_count="2",
-                memory_size="4",
-                disk_info=\"\"\"    {
-                "disks": [{
-                    "imageName": "harvester-public/image-57hzg",
-                    "size": 40,
-                    "bootOrder": 1
-                }]
-            }
-            EOF,
-            networkInfo = <<EOF
-            {
-                "interfaces": [{
-                    "networkName": "harvester-public/vlan1"
-                }]
-            }
-            EOF,
-            sshUser = "ubuntu",
-            userData = <<EOF
-            package_update: true
-            packages:
-              - qemu-guest-agent
-              - iptables
-            runcmd:
-              - - systemctl
-                - enable
-                - '--now'
-                - qemu-guest-agent.service
-        \"\"\",
-            ))
-        ```
-        ### Using the Hetzner Node Driver
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Node Template using hetzner node_driver
-        hetzner_node_driver = rancher2.NodeDriver("hetznerNodeDriver",
-            active=True,
-            builtin=False,
-            ui_url="https://storage.googleapis.com/hcloud-rancher-v2-ui-driver/component.js",
-            url="https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/download/3.6.0/docker-machine-driver-hetzner_3.6.0_linux_amd64.tar.gz",
-            whitelist_domains=["storage.googleapis.com"])
-        my_hetzner_node_template = rancher2.NodeTemplate("myHetznerNodeTemplate",
-            driver_id=hetzner_node_driver.id,
-            hetzner_config=rancher2.NodeTemplateHetznerConfigArgs(
-                api_token="XXXXXXXXXX",
-                image="ubuntu-18.04",
-                server_location="nbg1",
-                server_type="cx11",
-            ))
-        ```
-
         ## Import
 
         Node Template can be imported using the Rancher Node Template ID
@@ -1346,123 +1229,6 @@ class NodeTemplate(pulumi.CustomResource):
         amazonec2, azure, digitalocean, harvester, linode, opennebula, openstack, outscale, hetzner and vsphere drivers are supported for node templates.
 
         **Note:** If you are upgrading to Rancher v2.3.3, please take a look to final section
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Node Template up to Rancher 2.1.x
-        foo = rancher2.NodeTemplate("foo",
-            amazonec2_config=rancher2.NodeTemplateAmazonec2ConfigArgs(
-                access_key="AWS_ACCESS_KEY",
-                ami="<AMI_ID>",
-                region="<REGION>",
-                secret_key="<AWS_SECRET_KEY>",
-                security_groups=["<AWS_SECURITY_GROUP>"],
-                subnet_id="<SUBNET_ID>",
-                vpc_id="<VPC_ID>",
-                zone="<ZONE>",
-            ),
-            description="foo test")
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Node Template from Rancher 2.2.x
-        foo_cloud_credential = rancher2.CloudCredential("fooCloudCredential",
-            description="foo test",
-            amazonec2_credential_config=rancher2.CloudCredentialAmazonec2CredentialConfigArgs(
-                access_key="<AWS_ACCESS_KEY>",
-                secret_key="<AWS_SECRET_KEY>",
-            ))
-        foo_node_template = rancher2.NodeTemplate("fooNodeTemplate",
-            description="foo test",
-            cloud_credential_id=foo_cloud_credential.id,
-            amazonec2_config=rancher2.NodeTemplateAmazonec2ConfigArgs(
-                ami="<AMI_ID>",
-                region="<REGION>",
-                security_groups=["<AWS_SECURITY_GROUP>"],
-                subnet_id="<SUBNET_ID>",
-                vpc_id="<VPC_ID>",
-                zone="<ZONE>",
-            ))
-        ```
-        ### Using the Harvester Node Driver
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        foo_harvester_cluster_v2 = rancher2.get_cluster_v2(name="foo-harvester")
-        # Create a new Cloud Credential for an imported Harvester cluster
-        foo_harvester_cloud_credential = rancher2.CloudCredential("foo-harvesterCloudCredential", harvester_credential_config=rancher2.CloudCredentialHarvesterCredentialConfigArgs(
-            cluster_id=foo_harvester_cluster_v2.cluster_v1_id,
-            cluster_type="imported",
-            kubeconfig_content=foo_harvester_cluster_v2.kube_config,
-        ))
-        # Create a new rancher2 Node Template using harvester node_driver
-        foo_harvester_node_template = rancher2.NodeTemplate("foo-harvesterNodeTemplate",
-            cloud_credential_id=foo_harvester_cloud_credential.id,
-            engine_install_url="https://releases.rancher.com/install-docker/20.10.sh",
-            harvester_config=rancher2.NodeTemplateHarvesterConfigArgs(
-                vm_namespace="default",
-                cpu_count="2",
-                memory_size="4",
-                disk_info=\"\"\"    {
-                "disks": [{
-                    "imageName": "harvester-public/image-57hzg",
-                    "size": 40,
-                    "bootOrder": 1
-                }]
-            }
-            EOF,
-            networkInfo = <<EOF
-            {
-                "interfaces": [{
-                    "networkName": "harvester-public/vlan1"
-                }]
-            }
-            EOF,
-            sshUser = "ubuntu",
-            userData = <<EOF
-            package_update: true
-            packages:
-              - qemu-guest-agent
-              - iptables
-            runcmd:
-              - - systemctl
-                - enable
-                - '--now'
-                - qemu-guest-agent.service
-        \"\"\",
-            ))
-        ```
-        ### Using the Hetzner Node Driver
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Node Template using hetzner node_driver
-        hetzner_node_driver = rancher2.NodeDriver("hetznerNodeDriver",
-            active=True,
-            builtin=False,
-            ui_url="https://storage.googleapis.com/hcloud-rancher-v2-ui-driver/component.js",
-            url="https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/download/3.6.0/docker-machine-driver-hetzner_3.6.0_linux_amd64.tar.gz",
-            whitelist_domains=["storage.googleapis.com"])
-        my_hetzner_node_template = rancher2.NodeTemplate("myHetznerNodeTemplate",
-            driver_id=hetzner_node_driver.id,
-            hetzner_config=rancher2.NodeTemplateHetznerConfigArgs(
-                api_token="XXXXXXXXXX",
-                image="ubuntu-18.04",
-                server_location="nbg1",
-                server_type="cx11",
-            ))
-        ```
 
         ## Import
 
@@ -1527,28 +1293,16 @@ class NodeTemplate(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = NodeTemplateArgs.__new__(NodeTemplateArgs)
 
-            if amazonec2_config is not None and not isinstance(amazonec2_config, NodeTemplateAmazonec2ConfigArgs):
-                amazonec2_config = amazonec2_config or {}
-                def _setter(key, value):
-                    amazonec2_config[key] = value
-                NodeTemplateAmazonec2ConfigArgs._configure(_setter, **amazonec2_config)
+            amazonec2_config = _utilities.configure(amazonec2_config, NodeTemplateAmazonec2ConfigArgs, True)
             __props__.__dict__["amazonec2_config"] = amazonec2_config
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["auth_certificate_authority"] = None if auth_certificate_authority is None else pulumi.Output.secret(auth_certificate_authority)
             __props__.__dict__["auth_key"] = None if auth_key is None else pulumi.Output.secret(auth_key)
-            if azure_config is not None and not isinstance(azure_config, NodeTemplateAzureConfigArgs):
-                azure_config = azure_config or {}
-                def _setter(key, value):
-                    azure_config[key] = value
-                NodeTemplateAzureConfigArgs._configure(_setter, **azure_config)
+            azure_config = _utilities.configure(azure_config, NodeTemplateAzureConfigArgs, True)
             __props__.__dict__["azure_config"] = azure_config
             __props__.__dict__["cloud_credential_id"] = cloud_credential_id
             __props__.__dict__["description"] = description
-            if digitalocean_config is not None and not isinstance(digitalocean_config, NodeTemplateDigitaloceanConfigArgs):
-                digitalocean_config = digitalocean_config or {}
-                def _setter(key, value):
-                    digitalocean_config[key] = value
-                NodeTemplateDigitaloceanConfigArgs._configure(_setter, **digitalocean_config)
+            digitalocean_config = _utilities.configure(digitalocean_config, NodeTemplateDigitaloceanConfigArgs, True)
             __props__.__dict__["digitalocean_config"] = digitalocean_config
             __props__.__dict__["driver_id"] = driver_id
             __props__.__dict__["engine_env"] = engine_env
@@ -1558,51 +1312,23 @@ class NodeTemplate(pulumi.CustomResource):
             __props__.__dict__["engine_opt"] = engine_opt
             __props__.__dict__["engine_registry_mirrors"] = engine_registry_mirrors
             __props__.__dict__["engine_storage_driver"] = engine_storage_driver
-            if harvester_config is not None and not isinstance(harvester_config, NodeTemplateHarvesterConfigArgs):
-                harvester_config = harvester_config or {}
-                def _setter(key, value):
-                    harvester_config[key] = value
-                NodeTemplateHarvesterConfigArgs._configure(_setter, **harvester_config)
+            harvester_config = _utilities.configure(harvester_config, NodeTemplateHarvesterConfigArgs, True)
             __props__.__dict__["harvester_config"] = harvester_config
-            if hetzner_config is not None and not isinstance(hetzner_config, NodeTemplateHetznerConfigArgs):
-                hetzner_config = hetzner_config or {}
-                def _setter(key, value):
-                    hetzner_config[key] = value
-                NodeTemplateHetznerConfigArgs._configure(_setter, **hetzner_config)
+            hetzner_config = _utilities.configure(hetzner_config, NodeTemplateHetznerConfigArgs, True)
             __props__.__dict__["hetzner_config"] = hetzner_config
             __props__.__dict__["labels"] = labels
-            if linode_config is not None and not isinstance(linode_config, NodeTemplateLinodeConfigArgs):
-                linode_config = linode_config or {}
-                def _setter(key, value):
-                    linode_config[key] = value
-                NodeTemplateLinodeConfigArgs._configure(_setter, **linode_config)
+            linode_config = _utilities.configure(linode_config, NodeTemplateLinodeConfigArgs, True)
             __props__.__dict__["linode_config"] = linode_config
             __props__.__dict__["name"] = name
             __props__.__dict__["node_taints"] = node_taints
-            if opennebula_config is not None and not isinstance(opennebula_config, NodeTemplateOpennebulaConfigArgs):
-                opennebula_config = opennebula_config or {}
-                def _setter(key, value):
-                    opennebula_config[key] = value
-                NodeTemplateOpennebulaConfigArgs._configure(_setter, **opennebula_config)
+            opennebula_config = _utilities.configure(opennebula_config, NodeTemplateOpennebulaConfigArgs, True)
             __props__.__dict__["opennebula_config"] = opennebula_config
-            if openstack_config is not None and not isinstance(openstack_config, NodeTemplateOpenstackConfigArgs):
-                openstack_config = openstack_config or {}
-                def _setter(key, value):
-                    openstack_config[key] = value
-                NodeTemplateOpenstackConfigArgs._configure(_setter, **openstack_config)
+            openstack_config = _utilities.configure(openstack_config, NodeTemplateOpenstackConfigArgs, True)
             __props__.__dict__["openstack_config"] = openstack_config
-            if outscale_config is not None and not isinstance(outscale_config, NodeTemplateOutscaleConfigArgs):
-                outscale_config = outscale_config or {}
-                def _setter(key, value):
-                    outscale_config[key] = value
-                NodeTemplateOutscaleConfigArgs._configure(_setter, **outscale_config)
+            outscale_config = _utilities.configure(outscale_config, NodeTemplateOutscaleConfigArgs, True)
             __props__.__dict__["outscale_config"] = outscale_config
             __props__.__dict__["use_internal_ip_address"] = use_internal_ip_address
-            if vsphere_config is not None and not isinstance(vsphere_config, NodeTemplateVsphereConfigArgs):
-                vsphere_config = vsphere_config or {}
-                def _setter(key, value):
-                    vsphere_config[key] = value
-                NodeTemplateVsphereConfigArgs._configure(_setter, **vsphere_config)
+            vsphere_config = _utilities.configure(vsphere_config, NodeTemplateVsphereConfigArgs, True)
             __props__.__dict__["vsphere_config"] = vsphere_config
             __props__.__dict__["driver"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["authCertificateAuthority", "authKey"])

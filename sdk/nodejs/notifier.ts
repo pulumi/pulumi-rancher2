@@ -9,24 +9,6 @@ import * as utilities from "./utilities";
 /**
  * Provides a Rancher v2 Notifier resource. This can be used to create notifiers for Rancher v2 environments and retrieve their information.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * // Create a new rancher2 Notifier
- * const foo = new rancher2.Notifier("foo", {
- *     clusterId: "<cluster_id>",
- *     description: "Terraform notifier acceptance test",
- *     pagerdutyConfig: {
- *         proxyUrl: "http://proxy.test.io",
- *         serviceKey: "XXXXXXXX",
- *     },
- *     sendResolved: true,
- * });
- * ```
- *
  * ## Import
  *
  * Notifiers can be imported using the Rancher nNtifier ID

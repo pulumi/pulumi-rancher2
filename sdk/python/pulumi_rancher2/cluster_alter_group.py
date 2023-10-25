@@ -52,7 +52,7 @@ class ClusterAlterGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: pulumi.Input[str],
+             cluster_id: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              description: Optional[pulumi.Input[str]] = None,
              group_interval_seconds: Optional[pulumi.Input[int]] = None,
@@ -61,15 +61,17 @@ class ClusterAlterGroupArgs:
              name: Optional[pulumi.Input[str]] = None,
              recipients: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAlterGroupRecipientArgs']]]] = None,
              repeat_interval_seconds: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'groupIntervalSeconds' in kwargs:
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if group_interval_seconds is None and 'groupIntervalSeconds' in kwargs:
             group_interval_seconds = kwargs['groupIntervalSeconds']
-        if 'groupWaitSeconds' in kwargs:
+        if group_wait_seconds is None and 'groupWaitSeconds' in kwargs:
             group_wait_seconds = kwargs['groupWaitSeconds']
-        if 'repeatIntervalSeconds' in kwargs:
+        if repeat_interval_seconds is None and 'repeatIntervalSeconds' in kwargs:
             repeat_interval_seconds = kwargs['repeatIntervalSeconds']
 
         _setter("cluster_id", cluster_id)
@@ -247,15 +249,15 @@ class _ClusterAlterGroupState:
              name: Optional[pulumi.Input[str]] = None,
              recipients: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAlterGroupRecipientArgs']]]] = None,
              repeat_interval_seconds: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'groupIntervalSeconds' in kwargs:
+        if group_interval_seconds is None and 'groupIntervalSeconds' in kwargs:
             group_interval_seconds = kwargs['groupIntervalSeconds']
-        if 'groupWaitSeconds' in kwargs:
+        if group_wait_seconds is None and 'groupWaitSeconds' in kwargs:
             group_wait_seconds = kwargs['groupWaitSeconds']
-        if 'repeatIntervalSeconds' in kwargs:
+        if repeat_interval_seconds is None and 'repeatIntervalSeconds' in kwargs:
             repeat_interval_seconds = kwargs['repeatIntervalSeconds']
 
         if annotations is not None:
@@ -409,20 +411,6 @@ class ClusterAlterGroup(pulumi.CustomResource):
         """
         Provides a Rancher v2 Cluster Alert Group resource. This can be used to create Cluster Alert Group for Rancher v2 environments and retrieve their information.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new Rancher2 Cluster Alert Group
-        foo = rancher2.ClusterAlertGroup("foo",
-            cluster_id="<cluster_id>",
-            description="Terraform cluster alert group",
-            group_interval_seconds=300,
-            repeat_interval_seconds=3600)
-        ```
-
         ## Import
 
         Cluster Alert Group can be imported using the Rancher cluster alert group ID
@@ -451,20 +439,6 @@ class ClusterAlterGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Rancher v2 Cluster Alert Group resource. This can be used to create Cluster Alert Group for Rancher v2 environments and retrieve their information.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new Rancher2 Cluster Alert Group
-        foo = rancher2.ClusterAlertGroup("foo",
-            cluster_id="<cluster_id>",
-            description="Terraform cluster alert group",
-            group_interval_seconds=300,
-            repeat_interval_seconds=3600)
-        ```
 
         ## Import
 

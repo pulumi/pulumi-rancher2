@@ -15,41 +15,6 @@ import (
 
 // Provides a Rancher v2 Node Driver resource. This can be used to create Node Driver for Rancher v2 RKE clusters and retrieve their information.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rancher2.NewNodeDriver(ctx, "foo", &rancher2.NodeDriverArgs{
-//				Active:      pulumi.Bool(true),
-//				Builtin:     pulumi.Bool(false),
-//				Checksum:    pulumi.String("0x0"),
-//				Description: pulumi.String("Foo description"),
-//				ExternalId:  pulumi.String("foo_external"),
-//				UiUrl:       pulumi.String("local://ui"),
-//				Url:         pulumi.String("local://"),
-//				WhitelistDomains: pulumi.StringArray{
-//					pulumi.String("*.foo.com"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // # Node Driver can be imported using the Rancher Node Driver ID

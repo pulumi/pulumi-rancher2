@@ -52,7 +52,7 @@ class ProjectAlertGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project_id: pulumi.Input[str],
+             project_id: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              description: Optional[pulumi.Input[str]] = None,
              group_interval_seconds: Optional[pulumi.Input[int]] = None,
@@ -61,15 +61,17 @@ class ProjectAlertGroupArgs:
              name: Optional[pulumi.Input[str]] = None,
              recipients: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectAlertGroupRecipientArgs']]]] = None,
              repeat_interval_seconds: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'projectId' in kwargs:
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
-        if 'groupIntervalSeconds' in kwargs:
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if group_interval_seconds is None and 'groupIntervalSeconds' in kwargs:
             group_interval_seconds = kwargs['groupIntervalSeconds']
-        if 'groupWaitSeconds' in kwargs:
+        if group_wait_seconds is None and 'groupWaitSeconds' in kwargs:
             group_wait_seconds = kwargs['groupWaitSeconds']
-        if 'repeatIntervalSeconds' in kwargs:
+        if repeat_interval_seconds is None and 'repeatIntervalSeconds' in kwargs:
             repeat_interval_seconds = kwargs['repeatIntervalSeconds']
 
         _setter("project_id", project_id)
@@ -247,15 +249,15 @@ class _ProjectAlertGroupState:
              project_id: Optional[pulumi.Input[str]] = None,
              recipients: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectAlertGroupRecipientArgs']]]] = None,
              repeat_interval_seconds: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'groupIntervalSeconds' in kwargs:
+        if group_interval_seconds is None and 'groupIntervalSeconds' in kwargs:
             group_interval_seconds = kwargs['groupIntervalSeconds']
-        if 'groupWaitSeconds' in kwargs:
+        if group_wait_seconds is None and 'groupWaitSeconds' in kwargs:
             group_wait_seconds = kwargs['groupWaitSeconds']
-        if 'projectId' in kwargs:
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
-        if 'repeatIntervalSeconds' in kwargs:
+        if repeat_interval_seconds is None and 'repeatIntervalSeconds' in kwargs:
             repeat_interval_seconds = kwargs['repeatIntervalSeconds']
 
         if annotations is not None:
@@ -404,20 +406,6 @@ class ProjectAlertGroup(pulumi.CustomResource):
         """
         Provides a Rancher v2 Project Alert Group resource. This can be used to create Project Alert Group for Rancher v2 environments and retrieve their information.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new Rancher2 Project Alert Group
-        foo = rancher2.ProjectAlertGroup("foo",
-            description="Terraform project alert group",
-            group_interval_seconds=300,
-            project_id="<project_id>",
-            repeat_interval_seconds=3600)
-        ```
-
         ## Import
 
         Project Alert Group can be imported using the Rancher project alert group ID
@@ -446,20 +434,6 @@ class ProjectAlertGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Rancher v2 Project Alert Group resource. This can be used to create Project Alert Group for Rancher v2 environments and retrieve their information.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new Rancher2 Project Alert Group
-        foo = rancher2.ProjectAlertGroup("foo",
-            description="Terraform project alert group",
-            group_interval_seconds=300,
-            project_id="<project_id>",
-            repeat_interval_seconds=3600)
-        ```
 
         ## Import
 

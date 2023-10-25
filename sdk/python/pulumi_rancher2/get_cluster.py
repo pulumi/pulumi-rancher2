@@ -438,15 +438,6 @@ def get_cluster(default_pod_security_admission_configuration_template_name: Opti
     """
     Use this data source to retrieve information about a Rancher v2 cluster.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_rancher2 as rancher2
-
-    foo_custom = rancher2.get_cluster(name="foo-custom")
-    ```
-
 
     :param str name: The name of the Cluster (string)
     """
@@ -499,15 +490,6 @@ def get_cluster_output(default_pod_security_admission_configuration_template_nam
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterResult]:
     """
     Use this data source to retrieve information about a Rancher v2 cluster.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_rancher2 as rancher2
-
-    foo_custom = rancher2.get_cluster(name="foo-custom")
-    ```
 
 
     :param str name: The name of the Cluster (string)

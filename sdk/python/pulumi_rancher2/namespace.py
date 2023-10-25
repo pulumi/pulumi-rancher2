@@ -49,7 +49,7 @@ class NamespaceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project_id: pulumi.Input[str],
+             project_id: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              container_resource_limit: Optional[pulumi.Input['NamespaceContainerResourceLimitArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -57,15 +57,17 @@ class NamespaceArgs:
              name: Optional[pulumi.Input[str]] = None,
              resource_quota: Optional[pulumi.Input['NamespaceResourceQuotaArgs']] = None,
              wait_for_cluster: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'projectId' in kwargs:
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
-        if 'containerResourceLimit' in kwargs:
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if container_resource_limit is None and 'containerResourceLimit' in kwargs:
             container_resource_limit = kwargs['containerResourceLimit']
-        if 'resourceQuota' in kwargs:
+        if resource_quota is None and 'resourceQuota' in kwargs:
             resource_quota = kwargs['resourceQuota']
-        if 'waitForCluster' in kwargs:
+        if wait_for_cluster is None and 'waitForCluster' in kwargs:
             wait_for_cluster = kwargs['waitForCluster']
 
         _setter("project_id", project_id)
@@ -225,15 +227,15 @@ class _NamespaceState:
              project_id: Optional[pulumi.Input[str]] = None,
              resource_quota: Optional[pulumi.Input['NamespaceResourceQuotaArgs']] = None,
              wait_for_cluster: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'containerResourceLimit' in kwargs:
+        if container_resource_limit is None and 'containerResourceLimit' in kwargs:
             container_resource_limit = kwargs['containerResourceLimit']
-        if 'projectId' in kwargs:
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
-        if 'resourceQuota' in kwargs:
+        if resource_quota is None and 'resourceQuota' in kwargs:
             resource_quota = kwargs['resourceQuota']
-        if 'waitForCluster' in kwargs:
+        if wait_for_cluster is None and 'waitForCluster' in kwargs:
             wait_for_cluster = kwargs['waitForCluster']
 
         if annotations is not None:
@@ -367,62 +369,6 @@ class Namespace(pulumi.CustomResource):
         """
         Provides a Rancher v2 Namespace resource. This can be used to create namespaces for Rancher v2 environments and retrieve their information.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Namespace
-        foo = rancher2.Namespace("foo",
-            container_resource_limit=rancher2.NamespaceContainerResourceLimitArgs(
-                limits_cpu="20m",
-                limits_memory="20Mi",
-                requests_cpu="1m",
-                requests_memory="1Mi",
-            ),
-            description="foo namespace",
-            project_id="<PROJECT_ID>",
-            resource_quota=rancher2.NamespaceResourceQuotaArgs(
-                limit=rancher2.NamespaceResourceQuotaLimitArgs(
-                    limits_cpu="100m",
-                    limits_memory="100Mi",
-                    requests_storage="1Gi",
-                ),
-            ))
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Cluster 
-        foo_custom = rancher2.Cluster("foo-custom",
-            description="Foo rancher2 custom cluster",
-            rke_config=rancher2.ClusterRkeConfigArgs(
-                network=rancher2.ClusterRkeConfigNetworkArgs(
-                    plugin="canal",
-                ),
-            ))
-        # Create a new rancher2 Namespace assigned to default cluster project
-        foo = rancher2.Namespace("foo",
-            project_id=foo_custom.default_project_id,
-            description="foo namespace",
-            resource_quota=rancher2.NamespaceResourceQuotaArgs(
-                limit=rancher2.NamespaceResourceQuotaLimitArgs(
-                    limits_cpu="100m",
-                    limits_memory="100Mi",
-                    requests_storage="1Gi",
-                ),
-            ),
-            container_resource_limit=rancher2.NamespaceContainerResourceLimitArgs(
-                limits_cpu="20m",
-                limits_memory="20Mi",
-                requests_cpu="1m",
-                requests_memory="1Mi",
-            ))
-        ```
-
         ## Import
 
         Namespaces can be imported using the namespace ID in the format `<project_id>.<namespace_id>`
@@ -456,62 +402,6 @@ class Namespace(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Rancher v2 Namespace resource. This can be used to create namespaces for Rancher v2 environments and retrieve their information.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Namespace
-        foo = rancher2.Namespace("foo",
-            container_resource_limit=rancher2.NamespaceContainerResourceLimitArgs(
-                limits_cpu="20m",
-                limits_memory="20Mi",
-                requests_cpu="1m",
-                requests_memory="1Mi",
-            ),
-            description="foo namespace",
-            project_id="<PROJECT_ID>",
-            resource_quota=rancher2.NamespaceResourceQuotaArgs(
-                limit=rancher2.NamespaceResourceQuotaLimitArgs(
-                    limits_cpu="100m",
-                    limits_memory="100Mi",
-                    requests_storage="1Gi",
-                ),
-            ))
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Cluster 
-        foo_custom = rancher2.Cluster("foo-custom",
-            description="Foo rancher2 custom cluster",
-            rke_config=rancher2.ClusterRkeConfigArgs(
-                network=rancher2.ClusterRkeConfigNetworkArgs(
-                    plugin="canal",
-                ),
-            ))
-        # Create a new rancher2 Namespace assigned to default cluster project
-        foo = rancher2.Namespace("foo",
-            project_id=foo_custom.default_project_id,
-            description="foo namespace",
-            resource_quota=rancher2.NamespaceResourceQuotaArgs(
-                limit=rancher2.NamespaceResourceQuotaLimitArgs(
-                    limits_cpu="100m",
-                    limits_memory="100Mi",
-                    requests_storage="1Gi",
-                ),
-            ),
-            container_resource_limit=rancher2.NamespaceContainerResourceLimitArgs(
-                limits_cpu="20m",
-                limits_memory="20Mi",
-                requests_cpu="1m",
-                requests_memory="1Mi",
-            ))
-        ```
 
         ## Import
 
@@ -564,11 +454,7 @@ class Namespace(pulumi.CustomResource):
             __props__ = NamespaceArgs.__new__(NamespaceArgs)
 
             __props__.__dict__["annotations"] = annotations
-            if container_resource_limit is not None and not isinstance(container_resource_limit, NamespaceContainerResourceLimitArgs):
-                container_resource_limit = container_resource_limit or {}
-                def _setter(key, value):
-                    container_resource_limit[key] = value
-                NamespaceContainerResourceLimitArgs._configure(_setter, **container_resource_limit)
+            container_resource_limit = _utilities.configure(container_resource_limit, NamespaceContainerResourceLimitArgs, True)
             __props__.__dict__["container_resource_limit"] = container_resource_limit
             __props__.__dict__["description"] = description
             __props__.__dict__["labels"] = labels
@@ -576,11 +462,7 @@ class Namespace(pulumi.CustomResource):
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
-            if resource_quota is not None and not isinstance(resource_quota, NamespaceResourceQuotaArgs):
-                resource_quota = resource_quota or {}
-                def _setter(key, value):
-                    resource_quota[key] = value
-                NamespaceResourceQuotaArgs._configure(_setter, **resource_quota)
+            resource_quota = _utilities.configure(resource_quota, NamespaceResourceQuotaArgs, True)
             __props__.__dict__["resource_quota"] = resource_quota
             __props__.__dict__["wait_for_cluster"] = wait_for_cluster
         super(Namespace, __self__).__init__(

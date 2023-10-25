@@ -12,27 +12,6 @@ namespace Pulumi.Rancher2
     /// <summary>
     /// Provides a Rancher v2 Project Role Template Binding resource. This can be used to create Project Role Template Bindings for Rancher v2 environments and retrieve their information.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Rancher2 = Pulumi.Rancher2;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Create a new rancher2 Project Role Template Binding
-    ///     var foo = new Rancher2.ProjectRoleTemplateBinding("foo", new()
-    ///     {
-    ///         ProjectId = "&lt;project_id&gt;",
-    ///         RoleTemplateId = "&lt;role_template_id&gt;",
-    ///         UserId = "&lt;user_id&gt;",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Project Role Template Bindings can be imported using the Rancher Project Role Template Binding ID

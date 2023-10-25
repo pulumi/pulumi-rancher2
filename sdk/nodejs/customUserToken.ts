@@ -14,32 +14,6 @@ import * as utilities from "./utilities";
  * Tokens can only be created for a Rancher User with at least the `user-base` global role binding in order to enable user login.
  *
  * Tokens can't be updated once created. Any diff in token data will recreate the token. If any token expire, Rancher2 provider will generate a diff to regenerate it.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * // Create a rancher2 Token
- * const fooUser = new rancher2.User("fooUser", {
- *     username: "foo",
- *     password: "changeme",
- *     enabled: true,
- * });
- * const foo_login = new rancher2.GlobalRoleBinding("foo-login", {
- *     globalRoleId: "user-base",
- *     userId: fooUser.id,
- * });
- * const fooCustomUserToken = new rancher2.CustomUserToken("fooCustomUserToken", {
- *     username: fooUser.username,
- *     password: fooUser.password,
- *     description: "foo token",
- *     ttl: 0,
- * }, {
- *     dependsOn: [foo_login],
- * });
- * ```
  */
 export class CustomUserToken extends pulumi.CustomResource {
     /**

@@ -58,7 +58,7 @@ class ProjectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: pulumi.Input[str],
+             cluster_id: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              container_resource_limit: Optional[pulumi.Input['ProjectContainerResourceLimitArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -69,21 +69,23 @@ class ProjectArgs:
              project_monitoring_input: Optional[pulumi.Input['ProjectProjectMonitoringInputArgs']] = None,
              resource_quota: Optional[pulumi.Input['ProjectResourceQuotaArgs']] = None,
              wait_for_cluster: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'containerResourceLimit' in kwargs:
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if container_resource_limit is None and 'containerResourceLimit' in kwargs:
             container_resource_limit = kwargs['containerResourceLimit']
-        if 'enableProjectMonitoring' in kwargs:
+        if enable_project_monitoring is None and 'enableProjectMonitoring' in kwargs:
             enable_project_monitoring = kwargs['enableProjectMonitoring']
-        if 'podSecurityPolicyTemplateId' in kwargs:
+        if pod_security_policy_template_id is None and 'podSecurityPolicyTemplateId' in kwargs:
             pod_security_policy_template_id = kwargs['podSecurityPolicyTemplateId']
-        if 'projectMonitoringInput' in kwargs:
+        if project_monitoring_input is None and 'projectMonitoringInput' in kwargs:
             project_monitoring_input = kwargs['projectMonitoringInput']
-        if 'resourceQuota' in kwargs:
+        if resource_quota is None and 'resourceQuota' in kwargs:
             resource_quota = kwargs['resourceQuota']
-        if 'waitForCluster' in kwargs:
+        if wait_for_cluster is None and 'waitForCluster' in kwargs:
             wait_for_cluster = kwargs['waitForCluster']
 
         _setter("cluster_id", cluster_id)
@@ -297,21 +299,21 @@ class _ProjectState:
              project_monitoring_input: Optional[pulumi.Input['ProjectProjectMonitoringInputArgs']] = None,
              resource_quota: Optional[pulumi.Input['ProjectResourceQuotaArgs']] = None,
              wait_for_cluster: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'containerResourceLimit' in kwargs:
+        if container_resource_limit is None and 'containerResourceLimit' in kwargs:
             container_resource_limit = kwargs['containerResourceLimit']
-        if 'enableProjectMonitoring' in kwargs:
+        if enable_project_monitoring is None and 'enableProjectMonitoring' in kwargs:
             enable_project_monitoring = kwargs['enableProjectMonitoring']
-        if 'podSecurityPolicyTemplateId' in kwargs:
+        if pod_security_policy_template_id is None and 'podSecurityPolicyTemplateId' in kwargs:
             pod_security_policy_template_id = kwargs['podSecurityPolicyTemplateId']
-        if 'projectMonitoringInput' in kwargs:
+        if project_monitoring_input is None and 'projectMonitoringInput' in kwargs:
             project_monitoring_input = kwargs['projectMonitoringInput']
-        if 'resourceQuota' in kwargs:
+        if resource_quota is None and 'resourceQuota' in kwargs:
             resource_quota = kwargs['resourceQuota']
-        if 'waitForCluster' in kwargs:
+        if wait_for_cluster is None and 'waitForCluster' in kwargs:
             wait_for_cluster = kwargs['waitForCluster']
 
         if annotations is not None:
@@ -490,85 +492,6 @@ class Project(pulumi.CustomResource):
         """
         Provides a Rancher v2 Project resource. This can be used to create projects for Rancher v2 environments and retrieve their information.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Project
-        foo = rancher2.Project("foo",
-            cluster_id="<CLUSTER_ID>",
-            container_resource_limit=rancher2.ProjectContainerResourceLimitArgs(
-                limits_cpu="20m",
-                limits_memory="20Mi",
-                requests_cpu="1m",
-                requests_memory="1Mi",
-            ),
-            resource_quota=rancher2.ProjectResourceQuotaArgs(
-                namespace_default_limit=rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs(
-                    limits_cpu="2000m",
-                    limits_memory="500Mi",
-                    requests_storage="1Gi",
-                ),
-                project_limit=rancher2.ProjectResourceQuotaProjectLimitArgs(
-                    limits_cpu="2000m",
-                    limits_memory="2000Mi",
-                    requests_storage="2Gi",
-                ),
-            ))
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Project enabling and customizing monitoring
-        foo = rancher2.Project("foo",
-            cluster_id="<CLUSTER_ID>",
-            container_resource_limit=rancher2.ProjectContainerResourceLimitArgs(
-                limits_cpu="20m",
-                limits_memory="20Mi",
-                requests_cpu="1m",
-                requests_memory="1Mi",
-            ),
-            enable_project_monitoring=True,
-            project_monitoring_input=rancher2.ProjectProjectMonitoringInputArgs(
-                answers={
-                    "exporter-kubelets.https": True,
-                    "exporter-node.enabled": True,
-                    "exporter-node.ports.metrics.port": 9796,
-                    "exporter-node.resources.limits.cpu": "200m",
-                    "exporter-node.resources.limits.memory": "200Mi",
-                    "grafana.persistence.enabled": False,
-                    "grafana.persistence.size": "10Gi",
-                    "grafana.persistence.storageClass": "default",
-                    "operator.resources.limits.memory": "500Mi",
-                    "prometheus.persistence.enabled": "false",
-                    "prometheus.persistence.size": "50Gi",
-                    "prometheus.persistence.storageClass": "default",
-                    "prometheus.persistent.useReleaseName": "true",
-                    "prometheus.resources.core.limits.cpu": "1000m",
-                    "prometheus.resources.core.limits.memory": "1500Mi",
-                    "prometheus.resources.core.requests.cpu": "750m",
-                    "prometheus.resources.core.requests.memory": "750Mi",
-                    "prometheus.retention": "12h",
-                },
-            ),
-            resource_quota=rancher2.ProjectResourceQuotaArgs(
-                namespace_default_limit=rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs(
-                    limits_cpu="2000m",
-                    limits_memory="500Mi",
-                    requests_storage="1Gi",
-                ),
-                project_limit=rancher2.ProjectResourceQuotaProjectLimitArgs(
-                    limits_cpu="2000m",
-                    limits_memory="2000Mi",
-                    requests_storage="2Gi",
-                ),
-            ))
-        ```
-
         ## Import
 
         Projects can be imported using the Rancher Project ID
@@ -599,85 +522,6 @@ class Project(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Rancher v2 Project resource. This can be used to create projects for Rancher v2 environments and retrieve their information.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Project
-        foo = rancher2.Project("foo",
-            cluster_id="<CLUSTER_ID>",
-            container_resource_limit=rancher2.ProjectContainerResourceLimitArgs(
-                limits_cpu="20m",
-                limits_memory="20Mi",
-                requests_cpu="1m",
-                requests_memory="1Mi",
-            ),
-            resource_quota=rancher2.ProjectResourceQuotaArgs(
-                namespace_default_limit=rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs(
-                    limits_cpu="2000m",
-                    limits_memory="500Mi",
-                    requests_storage="1Gi",
-                ),
-                project_limit=rancher2.ProjectResourceQuotaProjectLimitArgs(
-                    limits_cpu="2000m",
-                    limits_memory="2000Mi",
-                    requests_storage="2Gi",
-                ),
-            ))
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Project enabling and customizing monitoring
-        foo = rancher2.Project("foo",
-            cluster_id="<CLUSTER_ID>",
-            container_resource_limit=rancher2.ProjectContainerResourceLimitArgs(
-                limits_cpu="20m",
-                limits_memory="20Mi",
-                requests_cpu="1m",
-                requests_memory="1Mi",
-            ),
-            enable_project_monitoring=True,
-            project_monitoring_input=rancher2.ProjectProjectMonitoringInputArgs(
-                answers={
-                    "exporter-kubelets.https": True,
-                    "exporter-node.enabled": True,
-                    "exporter-node.ports.metrics.port": 9796,
-                    "exporter-node.resources.limits.cpu": "200m",
-                    "exporter-node.resources.limits.memory": "200Mi",
-                    "grafana.persistence.enabled": False,
-                    "grafana.persistence.size": "10Gi",
-                    "grafana.persistence.storageClass": "default",
-                    "operator.resources.limits.memory": "500Mi",
-                    "prometheus.persistence.enabled": "false",
-                    "prometheus.persistence.size": "50Gi",
-                    "prometheus.persistence.storageClass": "default",
-                    "prometheus.persistent.useReleaseName": "true",
-                    "prometheus.resources.core.limits.cpu": "1000m",
-                    "prometheus.resources.core.limits.memory": "1500Mi",
-                    "prometheus.resources.core.requests.cpu": "750m",
-                    "prometheus.resources.core.requests.memory": "750Mi",
-                    "prometheus.retention": "12h",
-                },
-            ),
-            resource_quota=rancher2.ProjectResourceQuotaArgs(
-                namespace_default_limit=rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs(
-                    limits_cpu="2000m",
-                    limits_memory="500Mi",
-                    requests_storage="1Gi",
-                ),
-                project_limit=rancher2.ProjectResourceQuotaProjectLimitArgs(
-                    limits_cpu="2000m",
-                    limits_memory="2000Mi",
-                    requests_storage="2Gi",
-                ),
-            ))
-        ```
 
         ## Import
 
@@ -730,28 +574,16 @@ class Project(pulumi.CustomResource):
             if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
             __props__.__dict__["cluster_id"] = cluster_id
-            if container_resource_limit is not None and not isinstance(container_resource_limit, ProjectContainerResourceLimitArgs):
-                container_resource_limit = container_resource_limit or {}
-                def _setter(key, value):
-                    container_resource_limit[key] = value
-                ProjectContainerResourceLimitArgs._configure(_setter, **container_resource_limit)
+            container_resource_limit = _utilities.configure(container_resource_limit, ProjectContainerResourceLimitArgs, True)
             __props__.__dict__["container_resource_limit"] = container_resource_limit
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_project_monitoring"] = enable_project_monitoring
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["pod_security_policy_template_id"] = pod_security_policy_template_id
-            if project_monitoring_input is not None and not isinstance(project_monitoring_input, ProjectProjectMonitoringInputArgs):
-                project_monitoring_input = project_monitoring_input or {}
-                def _setter(key, value):
-                    project_monitoring_input[key] = value
-                ProjectProjectMonitoringInputArgs._configure(_setter, **project_monitoring_input)
+            project_monitoring_input = _utilities.configure(project_monitoring_input, ProjectProjectMonitoringInputArgs, True)
             __props__.__dict__["project_monitoring_input"] = project_monitoring_input
-            if resource_quota is not None and not isinstance(resource_quota, ProjectResourceQuotaArgs):
-                resource_quota = resource_quota or {}
-                def _setter(key, value):
-                    resource_quota[key] = value
-                ProjectResourceQuotaArgs._configure(_setter, **resource_quota)
+            resource_quota = _utilities.configure(resource_quota, ProjectResourceQuotaArgs, True)
             __props__.__dict__["resource_quota"] = resource_quota
             __props__.__dict__["wait_for_cluster"] = wait_for_cluster
         super(Project, __self__).__init__(

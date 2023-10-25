@@ -13,26 +13,6 @@ namespace Pulumi.Rancher2
     /// Provides a Rancher v2 Auth Config Github resource. This can be used to configure and enable Auth Config Github for Rancher v2 RKE clusters and retrieve their information.
     /// 
     /// In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Rancher2 = Pulumi.Rancher2;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Create a new rancher2 Auth Config Github
-    ///     var github = new Rancher2.AuthConfigGithub("github", new()
-    ///     {
-    ///         ClientId = "&lt;GITHUB_CLIENT_ID&gt;",
-    ///         ClientSecret = "&lt;GITHUB_CLIENT_SECRET&gt;",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/authConfigGithub:AuthConfigGithub")]
     public partial class AuthConfigGithub : global::Pulumi.CustomResource

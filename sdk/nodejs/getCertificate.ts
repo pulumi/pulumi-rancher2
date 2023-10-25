@@ -10,29 +10,6 @@ import * as utilities from "./utilities";
  * Depending of the availability, there are 2 types of Rancher v2 certificates:
  * - Project certificate: Available to all namespaces in the `projectId`
  * - Namespaced certificate: Available to just `namespaceId` in the `projectId`
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * const foo = rancher2.getCertificate({
- *     name: "<name>",
- *     projectId: "<project_id>",
- * });
- * ```
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * const foo = rancher2.getCertificate({
- *     name: "<name>",
- *     namespaceId: "<namespace_id>",
- *     projectId: "<project_id>",
- * });
- * ```
  */
 export function getCertificate(args: GetCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificateResult> {
 
@@ -96,29 +73,6 @@ export interface GetCertificateResult {
  * Depending of the availability, there are 2 types of Rancher v2 certificates:
  * - Project certificate: Available to all namespaces in the `projectId`
  * - Namespaced certificate: Available to just `namespaceId` in the `projectId`
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * const foo = rancher2.getCertificate({
- *     name: "<name>",
- *     projectId: "<project_id>",
- * });
- * ```
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * const foo = rancher2.getCertificate({
- *     name: "<name>",
- *     namespaceId: "<namespace_id>",
- *     projectId: "<project_id>",
- * });
- * ```
  */
 export function getCertificateOutput(args: GetCertificateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificateResult> {
     return pulumi.output(args).apply((a: any) => getCertificate(a, opts))

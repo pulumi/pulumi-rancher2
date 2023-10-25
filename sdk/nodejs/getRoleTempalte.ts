@@ -8,17 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve information about a Rancher v2 role template resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * const foo = rancher2.getRoleTemplate({
- *     name: "foo",
- * });
- * ```
  */
 /** @deprecated rancher2.getRoleTempalte has been deprecated in favor of rancher2.getRoleTemplate */
 export function getRoleTempalte(args: GetRoleTempalteArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleTempalteResult> {
@@ -102,17 +91,6 @@ export interface GetRoleTempalteResult {
 }
 /**
  * Use this data source to retrieve information about a Rancher v2 role template resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * const foo = rancher2.getRoleTemplate({
- *     name: "foo",
- * });
- * ```
  */
 /** @deprecated rancher2.getRoleTempalte has been deprecated in favor of rancher2.getRoleTemplate */
 export function getRoleTempalteOutput(args: GetRoleTempalteOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoleTempalteResult> {

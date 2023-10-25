@@ -571,16 +571,20 @@ class CloudCredentialAmazonec2CredentialConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_key: str,
-             secret_key: str,
+             access_key: Optional[str] = None,
+             secret_key: Optional[str] = None,
              default_region: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessKey' in kwargs:
+        if access_key is None and 'accessKey' in kwargs:
             access_key = kwargs['accessKey']
-        if 'secretKey' in kwargs:
+        if access_key is None:
+            raise TypeError("Missing 'access_key' argument")
+        if secret_key is None and 'secretKey' in kwargs:
             secret_key = kwargs['secretKey']
-        if 'defaultRegion' in kwargs:
+        if secret_key is None:
+            raise TypeError("Missing 'secret_key' argument")
+        if default_region is None and 'defaultRegion' in kwargs:
             default_region = kwargs['defaultRegion']
 
         _setter("access_key", access_key)
@@ -662,20 +666,26 @@ class CloudCredentialAzureCredentialConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             client_id: str,
-             client_secret: str,
-             subscription_id: str,
+             client_id: Optional[str] = None,
+             client_secret: Optional[str] = None,
+             subscription_id: Optional[str] = None,
              environment: Optional[str] = None,
              tenant_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clientId' in kwargs:
+        if client_id is None and 'clientId' in kwargs:
             client_id = kwargs['clientId']
-        if 'clientSecret' in kwargs:
+        if client_id is None:
+            raise TypeError("Missing 'client_id' argument")
+        if client_secret is None and 'clientSecret' in kwargs:
             client_secret = kwargs['clientSecret']
-        if 'subscriptionId' in kwargs:
+        if client_secret is None:
+            raise TypeError("Missing 'client_secret' argument")
+        if subscription_id is None and 'subscriptionId' in kwargs:
             subscription_id = kwargs['subscriptionId']
-        if 'tenantId' in kwargs:
+        if subscription_id is None:
+            raise TypeError("Missing 'subscription_id' argument")
+        if tenant_id is None and 'tenantId' in kwargs:
             tenant_id = kwargs['tenantId']
 
         _setter("client_id", client_id)
@@ -758,11 +768,13 @@ class CloudCredentialDigitaloceanCredentialConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_token: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             access_token: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessToken' in kwargs:
+        if access_token is None and 'accessToken' in kwargs:
             access_token = kwargs['accessToken']
+        if access_token is None:
+            raise TypeError("Missing 'access_token' argument")
 
         _setter("access_token", access_token)
 
@@ -806,11 +818,13 @@ class CloudCredentialGoogleCredentialConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             auth_encoded_json: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             auth_encoded_json: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'authEncodedJson' in kwargs:
+        if auth_encoded_json is None and 'authEncodedJson' in kwargs:
             auth_encoded_json = kwargs['authEncodedJson']
+        if auth_encoded_json is None:
+            raise TypeError("Missing 'auth_encoded_json' argument")
 
         _setter("auth_encoded_json", auth_encoded_json)
 
@@ -864,16 +878,20 @@ class CloudCredentialHarvesterCredentialConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_type: str,
-             kubeconfig_content: str,
+             cluster_type: Optional[str] = None,
+             kubeconfig_content: Optional[str] = None,
              cluster_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterType' in kwargs:
+        if cluster_type is None and 'clusterType' in kwargs:
             cluster_type = kwargs['clusterType']
-        if 'kubeconfigContent' in kwargs:
+        if cluster_type is None:
+            raise TypeError("Missing 'cluster_type' argument")
+        if kubeconfig_content is None and 'kubeconfigContent' in kwargs:
             kubeconfig_content = kwargs['kubeconfigContent']
-        if 'clusterId' in kwargs:
+        if kubeconfig_content is None:
+            raise TypeError("Missing 'kubeconfig_content' argument")
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
 
         _setter("cluster_type", cluster_type)
@@ -920,9 +938,11 @@ class CloudCredentialLinodeCredentialConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             token: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             token: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if token is None:
+            raise TypeError("Missing 'token' argument")
 
         _setter("token", token)
 
@@ -949,9 +969,11 @@ class CloudCredentialOpenstackCredentialConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             password: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             password: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if password is None:
+            raise TypeError("Missing 'password' argument")
 
         _setter("password", password)
 
@@ -1030,31 +1052,35 @@ class CloudCredentialS3CredentialConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_key: str,
-             secret_key: str,
+             access_key: Optional[str] = None,
+             secret_key: Optional[str] = None,
              default_bucket: Optional[str] = None,
              default_endpoint: Optional[str] = None,
              default_endpoint_ca: Optional[str] = None,
              default_folder: Optional[str] = None,
              default_region: Optional[str] = None,
              default_skip_ssl_verify: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessKey' in kwargs:
+        if access_key is None and 'accessKey' in kwargs:
             access_key = kwargs['accessKey']
-        if 'secretKey' in kwargs:
+        if access_key is None:
+            raise TypeError("Missing 'access_key' argument")
+        if secret_key is None and 'secretKey' in kwargs:
             secret_key = kwargs['secretKey']
-        if 'defaultBucket' in kwargs:
+        if secret_key is None:
+            raise TypeError("Missing 'secret_key' argument")
+        if default_bucket is None and 'defaultBucket' in kwargs:
             default_bucket = kwargs['defaultBucket']
-        if 'defaultEndpoint' in kwargs:
+        if default_endpoint is None and 'defaultEndpoint' in kwargs:
             default_endpoint = kwargs['defaultEndpoint']
-        if 'defaultEndpointCa' in kwargs:
+        if default_endpoint_ca is None and 'defaultEndpointCa' in kwargs:
             default_endpoint_ca = kwargs['defaultEndpointCa']
-        if 'defaultFolder' in kwargs:
+        if default_folder is None and 'defaultFolder' in kwargs:
             default_folder = kwargs['defaultFolder']
-        if 'defaultRegion' in kwargs:
+        if default_region is None and 'defaultRegion' in kwargs:
             default_region = kwargs['defaultRegion']
-        if 'defaultSkipSslVerify' in kwargs:
+        if default_skip_ssl_verify is None and 'defaultSkipSslVerify' in kwargs:
             default_skip_ssl_verify = kwargs['defaultSkipSslVerify']
 
         _setter("access_key", access_key)
@@ -1177,13 +1203,19 @@ class CloudCredentialVsphereCredentialConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             password: str,
-             username: str,
-             vcenter: str,
+             password: Optional[str] = None,
+             username: Optional[str] = None,
+             vcenter: Optional[str] = None,
              vcenter_port: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'vcenterPort' in kwargs:
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+        if vcenter is None:
+            raise TypeError("Missing 'vcenter' argument")
+        if vcenter_port is None and 'vcenterPort' in kwargs:
             vcenter_port = kwargs['vcenterPort']
 
         _setter("password", password)
@@ -1242,10 +1274,14 @@ class ClusterAgentEnvVar(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             name: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("name", name)
         _setter("value", value)
@@ -1478,18 +1514,18 @@ class ClusterAksConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             agent_dns_prefix: str,
-             client_id: str,
-             client_secret: str,
-             kubernetes_version: str,
-             master_dns_prefix: str,
-             resource_group: str,
-             ssh_public_key_contents: str,
-             subnet: str,
-             subscription_id: str,
-             tenant_id: str,
-             virtual_network: str,
-             virtual_network_resource_group: str,
+             agent_dns_prefix: Optional[str] = None,
+             client_id: Optional[str] = None,
+             client_secret: Optional[str] = None,
+             kubernetes_version: Optional[str] = None,
+             master_dns_prefix: Optional[str] = None,
+             resource_group: Optional[str] = None,
+             ssh_public_key_contents: Optional[str] = None,
+             subnet: Optional[str] = None,
+             subscription_id: Optional[str] = None,
+             tenant_id: Optional[str] = None,
+             virtual_network: Optional[str] = None,
+             virtual_network_resource_group: Optional[str] = None,
              aad_server_app_secret: Optional[str] = None,
              aad_tenant_id: Optional[str] = None,
              add_client_app_id: Optional[str] = None,
@@ -1517,75 +1553,99 @@ class ClusterAksConfig(dict):
              service_cidr: Optional[str] = None,
              tag: Optional[Mapping[str, Any]] = None,
              tags: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'agentDnsPrefix' in kwargs:
+        if agent_dns_prefix is None and 'agentDnsPrefix' in kwargs:
             agent_dns_prefix = kwargs['agentDnsPrefix']
-        if 'clientId' in kwargs:
+        if agent_dns_prefix is None:
+            raise TypeError("Missing 'agent_dns_prefix' argument")
+        if client_id is None and 'clientId' in kwargs:
             client_id = kwargs['clientId']
-        if 'clientSecret' in kwargs:
+        if client_id is None:
+            raise TypeError("Missing 'client_id' argument")
+        if client_secret is None and 'clientSecret' in kwargs:
             client_secret = kwargs['clientSecret']
-        if 'kubernetesVersion' in kwargs:
+        if client_secret is None:
+            raise TypeError("Missing 'client_secret' argument")
+        if kubernetes_version is None and 'kubernetesVersion' in kwargs:
             kubernetes_version = kwargs['kubernetesVersion']
-        if 'masterDnsPrefix' in kwargs:
+        if kubernetes_version is None:
+            raise TypeError("Missing 'kubernetes_version' argument")
+        if master_dns_prefix is None and 'masterDnsPrefix' in kwargs:
             master_dns_prefix = kwargs['masterDnsPrefix']
-        if 'resourceGroup' in kwargs:
+        if master_dns_prefix is None:
+            raise TypeError("Missing 'master_dns_prefix' argument")
+        if resource_group is None and 'resourceGroup' in kwargs:
             resource_group = kwargs['resourceGroup']
-        if 'sshPublicKeyContents' in kwargs:
+        if resource_group is None:
+            raise TypeError("Missing 'resource_group' argument")
+        if ssh_public_key_contents is None and 'sshPublicKeyContents' in kwargs:
             ssh_public_key_contents = kwargs['sshPublicKeyContents']
-        if 'subscriptionId' in kwargs:
+        if ssh_public_key_contents is None:
+            raise TypeError("Missing 'ssh_public_key_contents' argument")
+        if subnet is None:
+            raise TypeError("Missing 'subnet' argument")
+        if subscription_id is None and 'subscriptionId' in kwargs:
             subscription_id = kwargs['subscriptionId']
-        if 'tenantId' in kwargs:
+        if subscription_id is None:
+            raise TypeError("Missing 'subscription_id' argument")
+        if tenant_id is None and 'tenantId' in kwargs:
             tenant_id = kwargs['tenantId']
-        if 'virtualNetwork' in kwargs:
+        if tenant_id is None:
+            raise TypeError("Missing 'tenant_id' argument")
+        if virtual_network is None and 'virtualNetwork' in kwargs:
             virtual_network = kwargs['virtualNetwork']
-        if 'virtualNetworkResourceGroup' in kwargs:
+        if virtual_network is None:
+            raise TypeError("Missing 'virtual_network' argument")
+        if virtual_network_resource_group is None and 'virtualNetworkResourceGroup' in kwargs:
             virtual_network_resource_group = kwargs['virtualNetworkResourceGroup']
-        if 'aadServerAppSecret' in kwargs:
+        if virtual_network_resource_group is None:
+            raise TypeError("Missing 'virtual_network_resource_group' argument")
+        if aad_server_app_secret is None and 'aadServerAppSecret' in kwargs:
             aad_server_app_secret = kwargs['aadServerAppSecret']
-        if 'aadTenantId' in kwargs:
+        if aad_tenant_id is None and 'aadTenantId' in kwargs:
             aad_tenant_id = kwargs['aadTenantId']
-        if 'addClientAppId' in kwargs:
+        if add_client_app_id is None and 'addClientAppId' in kwargs:
             add_client_app_id = kwargs['addClientAppId']
-        if 'addServerAppId' in kwargs:
+        if add_server_app_id is None and 'addServerAppId' in kwargs:
             add_server_app_id = kwargs['addServerAppId']
-        if 'adminUsername' in kwargs:
+        if admin_username is None and 'adminUsername' in kwargs:
             admin_username = kwargs['adminUsername']
-        if 'agentOsDiskSize' in kwargs:
+        if agent_os_disk_size is None and 'agentOsDiskSize' in kwargs:
             agent_os_disk_size = kwargs['agentOsDiskSize']
-        if 'agentPoolName' in kwargs:
+        if agent_pool_name is None and 'agentPoolName' in kwargs:
             agent_pool_name = kwargs['agentPoolName']
-        if 'agentStorageProfile' in kwargs:
+        if agent_storage_profile is None and 'agentStorageProfile' in kwargs:
             agent_storage_profile = kwargs['agentStorageProfile']
-        if 'agentVmSize' in kwargs:
+        if agent_vm_size is None and 'agentVmSize' in kwargs:
             agent_vm_size = kwargs['agentVmSize']
-        if 'authBaseUrl' in kwargs:
+        if auth_base_url is None and 'authBaseUrl' in kwargs:
             auth_base_url = kwargs['authBaseUrl']
-        if 'baseUrl' in kwargs:
+        if base_url is None and 'baseUrl' in kwargs:
             base_url = kwargs['baseUrl']
-        if 'dnsServiceIp' in kwargs:
+        if dns_service_ip is None and 'dnsServiceIp' in kwargs:
             dns_service_ip = kwargs['dnsServiceIp']
-        if 'dockerBridgeCidr' in kwargs:
+        if docker_bridge_cidr is None and 'dockerBridgeCidr' in kwargs:
             docker_bridge_cidr = kwargs['dockerBridgeCidr']
-        if 'enableHttpApplicationRouting' in kwargs:
+        if enable_http_application_routing is None and 'enableHttpApplicationRouting' in kwargs:
             enable_http_application_routing = kwargs['enableHttpApplicationRouting']
-        if 'enableMonitoring' in kwargs:
+        if enable_monitoring is None and 'enableMonitoring' in kwargs:
             enable_monitoring = kwargs['enableMonitoring']
-        if 'loadBalancerSku' in kwargs:
+        if load_balancer_sku is None and 'loadBalancerSku' in kwargs:
             load_balancer_sku = kwargs['loadBalancerSku']
-        if 'logAnalyticsWorkspace' in kwargs:
+        if log_analytics_workspace is None and 'logAnalyticsWorkspace' in kwargs:
             log_analytics_workspace = kwargs['logAnalyticsWorkspace']
-        if 'logAnalyticsWorkspaceResourceGroup' in kwargs:
+        if log_analytics_workspace_resource_group is None and 'logAnalyticsWorkspaceResourceGroup' in kwargs:
             log_analytics_workspace_resource_group = kwargs['logAnalyticsWorkspaceResourceGroup']
-        if 'maxPods' in kwargs:
+        if max_pods is None and 'maxPods' in kwargs:
             max_pods = kwargs['maxPods']
-        if 'networkPlugin' in kwargs:
+        if network_plugin is None and 'networkPlugin' in kwargs:
             network_plugin = kwargs['networkPlugin']
-        if 'networkPolicy' in kwargs:
+        if network_policy is None and 'networkPolicy' in kwargs:
             network_policy = kwargs['networkPolicy']
-        if 'podCidr' in kwargs:
+        if pod_cidr is None and 'podCidr' in kwargs:
             pod_cidr = kwargs['podCidr']
-        if 'serviceCidr' in kwargs:
+        if service_cidr is None and 'serviceCidr' in kwargs:
             service_cidr = kwargs['serviceCidr']
 
         _setter("agent_dns_prefix", agent_dns_prefix)
@@ -2132,9 +2192,9 @@ class ClusterAksConfigV2(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cloud_credential_id: str,
-             resource_group: str,
-             resource_location: str,
+             cloud_credential_id: Optional[str] = None,
+             resource_group: Optional[str] = None,
+             resource_location: Optional[str] = None,
              auth_base_url: Optional[str] = None,
              authorized_ip_ranges: Optional[Sequence[str]] = None,
              base_url: Optional[str] = None,
@@ -2161,55 +2221,61 @@ class ClusterAksConfigV2(dict):
              tags: Optional[Mapping[str, Any]] = None,
              virtual_network: Optional[str] = None,
              virtual_network_resource_group: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cloudCredentialId' in kwargs:
+        if cloud_credential_id is None and 'cloudCredentialId' in kwargs:
             cloud_credential_id = kwargs['cloudCredentialId']
-        if 'resourceGroup' in kwargs:
+        if cloud_credential_id is None:
+            raise TypeError("Missing 'cloud_credential_id' argument")
+        if resource_group is None and 'resourceGroup' in kwargs:
             resource_group = kwargs['resourceGroup']
-        if 'resourceLocation' in kwargs:
+        if resource_group is None:
+            raise TypeError("Missing 'resource_group' argument")
+        if resource_location is None and 'resourceLocation' in kwargs:
             resource_location = kwargs['resourceLocation']
-        if 'authBaseUrl' in kwargs:
+        if resource_location is None:
+            raise TypeError("Missing 'resource_location' argument")
+        if auth_base_url is None and 'authBaseUrl' in kwargs:
             auth_base_url = kwargs['authBaseUrl']
-        if 'authorizedIpRanges' in kwargs:
+        if authorized_ip_ranges is None and 'authorizedIpRanges' in kwargs:
             authorized_ip_ranges = kwargs['authorizedIpRanges']
-        if 'baseUrl' in kwargs:
+        if base_url is None and 'baseUrl' in kwargs:
             base_url = kwargs['baseUrl']
-        if 'dnsPrefix' in kwargs:
+        if dns_prefix is None and 'dnsPrefix' in kwargs:
             dns_prefix = kwargs['dnsPrefix']
-        if 'httpApplicationRouting' in kwargs:
+        if http_application_routing is None and 'httpApplicationRouting' in kwargs:
             http_application_routing = kwargs['httpApplicationRouting']
-        if 'kubernetesVersion' in kwargs:
+        if kubernetes_version is None and 'kubernetesVersion' in kwargs:
             kubernetes_version = kwargs['kubernetesVersion']
-        if 'linuxAdminUsername' in kwargs:
+        if linux_admin_username is None and 'linuxAdminUsername' in kwargs:
             linux_admin_username = kwargs['linuxAdminUsername']
-        if 'linuxSshPublicKey' in kwargs:
+        if linux_ssh_public_key is None and 'linuxSshPublicKey' in kwargs:
             linux_ssh_public_key = kwargs['linuxSshPublicKey']
-        if 'loadBalancerSku' in kwargs:
+        if load_balancer_sku is None and 'loadBalancerSku' in kwargs:
             load_balancer_sku = kwargs['loadBalancerSku']
-        if 'logAnalyticsWorkspaceGroup' in kwargs:
+        if log_analytics_workspace_group is None and 'logAnalyticsWorkspaceGroup' in kwargs:
             log_analytics_workspace_group = kwargs['logAnalyticsWorkspaceGroup']
-        if 'logAnalyticsWorkspaceName' in kwargs:
+        if log_analytics_workspace_name is None and 'logAnalyticsWorkspaceName' in kwargs:
             log_analytics_workspace_name = kwargs['logAnalyticsWorkspaceName']
-        if 'networkDnsServiceIp' in kwargs:
+        if network_dns_service_ip is None and 'networkDnsServiceIp' in kwargs:
             network_dns_service_ip = kwargs['networkDnsServiceIp']
-        if 'networkDockerBridgeCidr' in kwargs:
+        if network_docker_bridge_cidr is None and 'networkDockerBridgeCidr' in kwargs:
             network_docker_bridge_cidr = kwargs['networkDockerBridgeCidr']
-        if 'networkPlugin' in kwargs:
+        if network_plugin is None and 'networkPlugin' in kwargs:
             network_plugin = kwargs['networkPlugin']
-        if 'networkPodCidr' in kwargs:
+        if network_pod_cidr is None and 'networkPodCidr' in kwargs:
             network_pod_cidr = kwargs['networkPodCidr']
-        if 'networkPolicy' in kwargs:
+        if network_policy is None and 'networkPolicy' in kwargs:
             network_policy = kwargs['networkPolicy']
-        if 'networkServiceCidr' in kwargs:
+        if network_service_cidr is None and 'networkServiceCidr' in kwargs:
             network_service_cidr = kwargs['networkServiceCidr']
-        if 'nodePools' in kwargs:
+        if node_pools is None and 'nodePools' in kwargs:
             node_pools = kwargs['nodePools']
-        if 'privateCluster' in kwargs:
+        if private_cluster is None and 'privateCluster' in kwargs:
             private_cluster = kwargs['privateCluster']
-        if 'virtualNetwork' in kwargs:
+        if virtual_network is None and 'virtualNetwork' in kwargs:
             virtual_network = kwargs['virtualNetwork']
-        if 'virtualNetworkResourceGroup' in kwargs:
+        if virtual_network_resource_group is None and 'virtualNetworkResourceGroup' in kwargs:
             virtual_network_resource_group = kwargs['virtualNetworkResourceGroup']
 
         _setter("cloud_credential_id", cloud_credential_id)
@@ -2597,7 +2663,7 @@ class ClusterAksConfigV2NodePool(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              availability_zones: Optional[Sequence[str]] = None,
              count: Optional[int] = None,
              enable_auto_scaling: Optional[bool] = None,
@@ -2613,29 +2679,31 @@ class ClusterAksConfigV2NodePool(dict):
              os_type: Optional[str] = None,
              taints: Optional[Sequence[str]] = None,
              vm_size: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'availabilityZones' in kwargs:
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if availability_zones is None and 'availabilityZones' in kwargs:
             availability_zones = kwargs['availabilityZones']
-        if 'enableAutoScaling' in kwargs:
+        if enable_auto_scaling is None and 'enableAutoScaling' in kwargs:
             enable_auto_scaling = kwargs['enableAutoScaling']
-        if 'maxCount' in kwargs:
+        if max_count is None and 'maxCount' in kwargs:
             max_count = kwargs['maxCount']
-        if 'maxPods' in kwargs:
+        if max_pods is None and 'maxPods' in kwargs:
             max_pods = kwargs['maxPods']
-        if 'maxSurge' in kwargs:
+        if max_surge is None and 'maxSurge' in kwargs:
             max_surge = kwargs['maxSurge']
-        if 'minCount' in kwargs:
+        if min_count is None and 'minCount' in kwargs:
             min_count = kwargs['minCount']
-        if 'orchestratorVersion' in kwargs:
+        if orchestrator_version is None and 'orchestratorVersion' in kwargs:
             orchestrator_version = kwargs['orchestratorVersion']
-        if 'osDiskSizeGb' in kwargs:
+        if os_disk_size_gb is None and 'osDiskSizeGb' in kwargs:
             os_disk_size_gb = kwargs['osDiskSizeGb']
-        if 'osDiskType' in kwargs:
+        if os_disk_type is None and 'osDiskType' in kwargs:
             os_disk_type = kwargs['osDiskType']
-        if 'osType' in kwargs:
+        if os_type is None and 'osType' in kwargs:
             os_type = kwargs['osType']
-        if 'vmSize' in kwargs:
+        if vm_size is None and 'vmSize' in kwargs:
             vm_size = kwargs['vmSize']
 
         _setter("name", name)
@@ -2843,17 +2911,19 @@ class ClusterAlertGroupRecipient(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             notifier_id: str,
+             notifier_id: Optional[str] = None,
              default_recipient: Optional[bool] = None,
              notifier_type: Optional[str] = None,
              recipient: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'notifierId' in kwargs:
+        if notifier_id is None and 'notifierId' in kwargs:
             notifier_id = kwargs['notifierId']
-        if 'defaultRecipient' in kwargs:
+        if notifier_id is None:
+            raise TypeError("Missing 'notifier_id' argument")
+        if default_recipient is None and 'defaultRecipient' in kwargs:
             default_recipient = kwargs['defaultRecipient']
-        if 'notifierType' in kwargs:
+        if notifier_type is None and 'notifierType' in kwargs:
             notifier_type = kwargs['notifierType']
 
         _setter("notifier_id", notifier_id)
@@ -2933,13 +3003,15 @@ class ClusterAlertRuleEventRule(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             resource_kind: str,
+             resource_kind: Optional[str] = None,
              event_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'resourceKind' in kwargs:
+        if resource_kind is None and 'resourceKind' in kwargs:
             resource_kind = kwargs['resourceKind']
-        if 'eventType' in kwargs:
+        if resource_kind is None:
+            raise TypeError("Missing 'resource_kind' argument")
+        if event_type is None and 'eventType' in kwargs:
             event_type = kwargs['eventType']
 
         _setter("resource_kind", resource_kind)
@@ -3006,15 +3078,21 @@ class ClusterAlertRuleMetricRule(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             duration: str,
-             expression: str,
-             threshold_value: float,
+             duration: Optional[str] = None,
+             expression: Optional[str] = None,
+             threshold_value: Optional[float] = None,
              comparison: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'thresholdValue' in kwargs:
+        if duration is None:
+            raise TypeError("Missing 'duration' argument")
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if threshold_value is None and 'thresholdValue' in kwargs:
             threshold_value = kwargs['thresholdValue']
+        if threshold_value is None:
+            raise TypeError("Missing 'threshold_value' argument")
 
         _setter("duration", duration)
         _setter("expression", expression)
@@ -3117,13 +3195,13 @@ class ClusterAlertRuleNodeRule(dict):
              mem_threshold: Optional[int] = None,
              node_id: Optional[str] = None,
              selector: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cpuThreshold' in kwargs:
+        if cpu_threshold is None and 'cpuThreshold' in kwargs:
             cpu_threshold = kwargs['cpuThreshold']
-        if 'memThreshold' in kwargs:
+        if mem_threshold is None and 'memThreshold' in kwargs:
             mem_threshold = kwargs['memThreshold']
-        if 'nodeId' in kwargs:
+        if node_id is None and 'nodeId' in kwargs:
             node_id = kwargs['nodeId']
 
         if condition is not None:
@@ -3193,7 +3271,7 @@ class ClusterAlertRuleSystemServiceRule(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              condition: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if condition is not None:
@@ -3252,17 +3330,19 @@ class ClusterAlterGroupRecipient(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             notifier_id: str,
+             notifier_id: Optional[str] = None,
              default_recipient: Optional[bool] = None,
              notifier_type: Optional[str] = None,
              recipient: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'notifierId' in kwargs:
+        if notifier_id is None and 'notifierId' in kwargs:
             notifier_id = kwargs['notifierId']
-        if 'defaultRecipient' in kwargs:
+        if notifier_id is None:
+            raise TypeError("Missing 'notifier_id' argument")
+        if default_recipient is None and 'defaultRecipient' in kwargs:
             default_recipient = kwargs['defaultRecipient']
-        if 'notifierType' in kwargs:
+        if notifier_type is None and 'notifierType' in kwargs:
             notifier_type = kwargs['notifierType']
 
         _setter("notifier_id", notifier_id)
@@ -3338,13 +3418,15 @@ class ClusterAlterRuleEventRule(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             resource_kind: str,
+             resource_kind: Optional[str] = None,
              event_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'resourceKind' in kwargs:
+        if resource_kind is None and 'resourceKind' in kwargs:
             resource_kind = kwargs['resourceKind']
-        if 'eventType' in kwargs:
+        if resource_kind is None:
+            raise TypeError("Missing 'resource_kind' argument")
+        if event_type is None and 'eventType' in kwargs:
             event_type = kwargs['eventType']
 
         _setter("resource_kind", resource_kind)
@@ -3401,15 +3483,21 @@ class ClusterAlterRuleMetricRule(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             duration: str,
-             expression: str,
-             threshold_value: float,
+             duration: Optional[str] = None,
+             expression: Optional[str] = None,
+             threshold_value: Optional[float] = None,
              comparison: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'thresholdValue' in kwargs:
+        if duration is None:
+            raise TypeError("Missing 'duration' argument")
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if threshold_value is None and 'thresholdValue' in kwargs:
             threshold_value = kwargs['thresholdValue']
+        if threshold_value is None:
+            raise TypeError("Missing 'threshold_value' argument")
 
         _setter("duration", duration)
         _setter("expression", expression)
@@ -3493,13 +3581,13 @@ class ClusterAlterRuleNodeRule(dict):
              mem_threshold: Optional[int] = None,
              node_id: Optional[str] = None,
              selector: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cpuThreshold' in kwargs:
+        if cpu_threshold is None and 'cpuThreshold' in kwargs:
             cpu_threshold = kwargs['cpuThreshold']
-        if 'memThreshold' in kwargs:
+        if mem_threshold is None and 'memThreshold' in kwargs:
             mem_threshold = kwargs['memThreshold']
-        if 'nodeId' in kwargs:
+        if node_id is None and 'nodeId' in kwargs:
             node_id = kwargs['nodeId']
 
         if condition is not None:
@@ -3551,7 +3639,7 @@ class ClusterAlterRuleSystemServiceRule(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              condition: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if condition is not None:
@@ -3607,13 +3695,13 @@ class ClusterClusterAgentDeploymentCustomization(dict):
              append_tolerations: Optional[Sequence['outputs.ClusterClusterAgentDeploymentCustomizationAppendToleration']] = None,
              override_affinity: Optional[str] = None,
              override_resource_requirements: Optional[Sequence['outputs.ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirement']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'appendTolerations' in kwargs:
+        if append_tolerations is None and 'appendTolerations' in kwargs:
             append_tolerations = kwargs['appendTolerations']
-        if 'overrideAffinity' in kwargs:
+        if override_affinity is None and 'overrideAffinity' in kwargs:
             override_affinity = kwargs['overrideAffinity']
-        if 'overrideResourceRequirements' in kwargs:
+        if override_resource_requirements is None and 'overrideResourceRequirements' in kwargs:
             override_resource_requirements = kwargs['overrideResourceRequirements']
 
         if append_tolerations is not None:
@@ -3674,13 +3762,15 @@ class ClusterClusterAgentDeploymentCustomizationAppendToleration(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
+             key: Optional[str] = None,
              effect: Optional[str] = None,
              operator: Optional[str] = None,
              seconds: Optional[int] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
 
         _setter("key", key)
         if effect is not None:
@@ -3783,15 +3873,15 @@ class ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirement(dict
              cpu_request: Optional[str] = None,
              memory_limit: Optional[str] = None,
              memory_request: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cpuLimit' in kwargs:
+        if cpu_limit is None and 'cpuLimit' in kwargs:
             cpu_limit = kwargs['cpuLimit']
-        if 'cpuRequest' in kwargs:
+        if cpu_request is None and 'cpuRequest' in kwargs:
             cpu_request = kwargs['cpuRequest']
-        if 'memoryLimit' in kwargs:
+        if memory_limit is None and 'memoryLimit' in kwargs:
             memory_limit = kwargs['memoryLimit']
-        if 'memoryRequest' in kwargs:
+        if memory_request is None and 'memoryRequest' in kwargs:
             memory_request = kwargs['memoryRequest']
 
         if cpu_limit is not None:
@@ -3876,9 +3966,9 @@ class ClusterClusterAuthEndpoint(dict):
              ca_certs: Optional[str] = None,
              enabled: Optional[bool] = None,
              fqdn: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'caCerts' in kwargs:
+        if ca_certs is None and 'caCerts' in kwargs:
             ca_certs = kwargs['caCerts']
 
         if ca_certs is not None:
@@ -3932,7 +4022,7 @@ class ClusterClusterMonitoringInput(dict):
              _setter: Callable[[Any, Any], None],
              answers: Optional[Mapping[str, Any]] = None,
              version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if answers is not None:
@@ -4049,21 +4139,21 @@ class ClusterClusterRegistrationToken(dict):
              node_command: Optional[str] = None,
              token: Optional[str] = None,
              windows_node_command: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'insecureCommand' in kwargs:
+        if insecure_command is None and 'insecureCommand' in kwargs:
             insecure_command = kwargs['insecureCommand']
-        if 'insecureNodeCommand' in kwargs:
+        if insecure_node_command is None and 'insecureNodeCommand' in kwargs:
             insecure_node_command = kwargs['insecureNodeCommand']
-        if 'insecureWindowsNodeCommand' in kwargs:
+        if insecure_windows_node_command is None and 'insecureWindowsNodeCommand' in kwargs:
             insecure_windows_node_command = kwargs['insecureWindowsNodeCommand']
-        if 'manifestUrl' in kwargs:
+        if manifest_url is None and 'manifestUrl' in kwargs:
             manifest_url = kwargs['manifestUrl']
-        if 'nodeCommand' in kwargs:
+        if node_command is None and 'nodeCommand' in kwargs:
             node_command = kwargs['nodeCommand']
-        if 'windowsNodeCommand' in kwargs:
+        if windows_node_command is None and 'windowsNodeCommand' in kwargs:
             windows_node_command = kwargs['windowsNodeCommand']
 
         if annotations is not None:
@@ -4240,11 +4330,11 @@ class ClusterClusterTemplateAnswers(dict):
              cluster_id: Optional[str] = None,
              project_id: Optional[str] = None,
              values: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'projectId' in kwargs:
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
 
         if cluster_id is not None:
@@ -4302,12 +4392,16 @@ class ClusterClusterTemplateQuestion(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             default: str,
-             variable: str,
+             default: Optional[str] = None,
+             variable: Optional[str] = None,
              required: Optional[bool] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if default is None:
+            raise TypeError("Missing 'default' argument")
+        if variable is None:
+            raise TypeError("Missing 'variable' argument")
 
         _setter("default", default)
         _setter("variable", variable)
@@ -4463,9 +4557,9 @@ class ClusterEksConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_key: str,
-             kubernetes_version: str,
-             secret_key: str,
+             access_key: Optional[str] = None,
+             kubernetes_version: Optional[str] = None,
+             secret_key: Optional[str] = None,
              ami: Optional[str] = None,
              associate_worker_node_public_ip: Optional[bool] = None,
              desired_nodes: Optional[int] = None,
@@ -4482,39 +4576,45 @@ class ClusterEksConfig(dict):
              subnets: Optional[Sequence[str]] = None,
              user_data: Optional[str] = None,
              virtual_network: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessKey' in kwargs:
+        if access_key is None and 'accessKey' in kwargs:
             access_key = kwargs['accessKey']
-        if 'kubernetesVersion' in kwargs:
+        if access_key is None:
+            raise TypeError("Missing 'access_key' argument")
+        if kubernetes_version is None and 'kubernetesVersion' in kwargs:
             kubernetes_version = kwargs['kubernetesVersion']
-        if 'secretKey' in kwargs:
+        if kubernetes_version is None:
+            raise TypeError("Missing 'kubernetes_version' argument")
+        if secret_key is None and 'secretKey' in kwargs:
             secret_key = kwargs['secretKey']
-        if 'associateWorkerNodePublicIp' in kwargs:
+        if secret_key is None:
+            raise TypeError("Missing 'secret_key' argument")
+        if associate_worker_node_public_ip is None and 'associateWorkerNodePublicIp' in kwargs:
             associate_worker_node_public_ip = kwargs['associateWorkerNodePublicIp']
-        if 'desiredNodes' in kwargs:
+        if desired_nodes is None and 'desiredNodes' in kwargs:
             desired_nodes = kwargs['desiredNodes']
-        if 'ebsEncryption' in kwargs:
+        if ebs_encryption is None and 'ebsEncryption' in kwargs:
             ebs_encryption = kwargs['ebsEncryption']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'keyPairName' in kwargs:
+        if key_pair_name is None and 'keyPairName' in kwargs:
             key_pair_name = kwargs['keyPairName']
-        if 'maximumNodes' in kwargs:
+        if maximum_nodes is None and 'maximumNodes' in kwargs:
             maximum_nodes = kwargs['maximumNodes']
-        if 'minimumNodes' in kwargs:
+        if minimum_nodes is None and 'minimumNodes' in kwargs:
             minimum_nodes = kwargs['minimumNodes']
-        if 'nodeVolumeSize' in kwargs:
+        if node_volume_size is None and 'nodeVolumeSize' in kwargs:
             node_volume_size = kwargs['nodeVolumeSize']
-        if 'securityGroups' in kwargs:
+        if security_groups is None and 'securityGroups' in kwargs:
             security_groups = kwargs['securityGroups']
-        if 'serviceRole' in kwargs:
+        if service_role is None and 'serviceRole' in kwargs:
             service_role = kwargs['serviceRole']
-        if 'sessionToken' in kwargs:
+        if session_token is None and 'sessionToken' in kwargs:
             session_token = kwargs['sessionToken']
-        if 'userData' in kwargs:
+        if user_data is None and 'userData' in kwargs:
             user_data = kwargs['userData']
-        if 'virtualNetwork' in kwargs:
+        if virtual_network is None and 'virtualNetwork' in kwargs:
             virtual_network = kwargs['virtualNetwork']
 
         _setter("access_key", access_key)
@@ -4799,7 +4899,7 @@ class ClusterEksConfigV2(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cloud_credential_id: str,
+             cloud_credential_id: Optional[str] = None,
              imported: Optional[bool] = None,
              kms_key: Optional[str] = None,
              kubernetes_version: Optional[str] = None,
@@ -4815,29 +4915,31 @@ class ClusterEksConfigV2(dict):
              service_role: Optional[str] = None,
              subnets: Optional[Sequence[str]] = None,
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cloudCredentialId' in kwargs:
+        if cloud_credential_id is None and 'cloudCredentialId' in kwargs:
             cloud_credential_id = kwargs['cloudCredentialId']
-        if 'kmsKey' in kwargs:
+        if cloud_credential_id is None:
+            raise TypeError("Missing 'cloud_credential_id' argument")
+        if kms_key is None and 'kmsKey' in kwargs:
             kms_key = kwargs['kmsKey']
-        if 'kubernetesVersion' in kwargs:
+        if kubernetes_version is None and 'kubernetesVersion' in kwargs:
             kubernetes_version = kwargs['kubernetesVersion']
-        if 'loggingTypes' in kwargs:
+        if logging_types is None and 'loggingTypes' in kwargs:
             logging_types = kwargs['loggingTypes']
-        if 'nodeGroups' in kwargs:
+        if node_groups is None and 'nodeGroups' in kwargs:
             node_groups = kwargs['nodeGroups']
-        if 'privateAccess' in kwargs:
+        if private_access is None and 'privateAccess' in kwargs:
             private_access = kwargs['privateAccess']
-        if 'publicAccess' in kwargs:
+        if public_access is None and 'publicAccess' in kwargs:
             public_access = kwargs['publicAccess']
-        if 'publicAccessSources' in kwargs:
+        if public_access_sources is None and 'publicAccessSources' in kwargs:
             public_access_sources = kwargs['publicAccessSources']
-        if 'secretsEncryption' in kwargs:
+        if secrets_encryption is None and 'secretsEncryption' in kwargs:
             secrets_encryption = kwargs['secretsEncryption']
-        if 'securityGroups' in kwargs:
+        if security_groups is None and 'securityGroups' in kwargs:
             security_groups = kwargs['securityGroups']
-        if 'serviceRole' in kwargs:
+        if service_role is None and 'serviceRole' in kwargs:
             service_role = kwargs['serviceRole']
 
         _setter("cloud_credential_id", cloud_credential_id)
@@ -5110,7 +5212,7 @@ class ClusterEksConfigV2NodeGroup(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              desired_size: Optional[int] = None,
              disk_size: Optional[int] = None,
              ec2_ssh_key: Optional[str] = None,
@@ -5129,33 +5231,35 @@ class ClusterEksConfigV2NodeGroup(dict):
              tags: Optional[Mapping[str, Any]] = None,
              user_data: Optional[str] = None,
              version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'desiredSize' in kwargs:
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if desired_size is None and 'desiredSize' in kwargs:
             desired_size = kwargs['desiredSize']
-        if 'diskSize' in kwargs:
+        if disk_size is None and 'diskSize' in kwargs:
             disk_size = kwargs['diskSize']
-        if 'ec2SshKey' in kwargs:
+        if ec2_ssh_key is None and 'ec2SshKey' in kwargs:
             ec2_ssh_key = kwargs['ec2SshKey']
-        if 'imageId' in kwargs:
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'launchTemplates' in kwargs:
+        if launch_templates is None and 'launchTemplates' in kwargs:
             launch_templates = kwargs['launchTemplates']
-        if 'maxSize' in kwargs:
+        if max_size is None and 'maxSize' in kwargs:
             max_size = kwargs['maxSize']
-        if 'minSize' in kwargs:
+        if min_size is None and 'minSize' in kwargs:
             min_size = kwargs['minSize']
-        if 'nodeRole' in kwargs:
+        if node_role is None and 'nodeRole' in kwargs:
             node_role = kwargs['nodeRole']
-        if 'requestSpotInstances' in kwargs:
+        if request_spot_instances is None and 'requestSpotInstances' in kwargs:
             request_spot_instances = kwargs['requestSpotInstances']
-        if 'resourceTags' in kwargs:
+        if resource_tags is None and 'resourceTags' in kwargs:
             resource_tags = kwargs['resourceTags']
-        if 'spotInstanceTypes' in kwargs:
+        if spot_instance_types is None and 'spotInstanceTypes' in kwargs:
             spot_instance_types = kwargs['spotInstanceTypes']
-        if 'userData' in kwargs:
+        if user_data is None and 'userData' in kwargs:
             user_data = kwargs['userData']
 
         _setter("name", name)
@@ -5369,11 +5473,13 @@ class ClusterEksConfigV2NodeGroupLaunchTemplate(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
+             id: Optional[str] = None,
              name: Optional[str] = None,
              version: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
 
         _setter("id", id)
         if name is not None:
@@ -5450,13 +5556,13 @@ class ClusterFleetAgentDeploymentCustomization(dict):
              append_tolerations: Optional[Sequence['outputs.ClusterFleetAgentDeploymentCustomizationAppendToleration']] = None,
              override_affinity: Optional[str] = None,
              override_resource_requirements: Optional[Sequence['outputs.ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'appendTolerations' in kwargs:
+        if append_tolerations is None and 'appendTolerations' in kwargs:
             append_tolerations = kwargs['appendTolerations']
-        if 'overrideAffinity' in kwargs:
+        if override_affinity is None and 'overrideAffinity' in kwargs:
             override_affinity = kwargs['overrideAffinity']
-        if 'overrideResourceRequirements' in kwargs:
+        if override_resource_requirements is None and 'overrideResourceRequirements' in kwargs:
             override_resource_requirements = kwargs['overrideResourceRequirements']
 
         if append_tolerations is not None:
@@ -5517,13 +5623,15 @@ class ClusterFleetAgentDeploymentCustomizationAppendToleration(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
+             key: Optional[str] = None,
              effect: Optional[str] = None,
              operator: Optional[str] = None,
              seconds: Optional[int] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
 
         _setter("key", key)
         if effect is not None:
@@ -5626,15 +5734,15 @@ class ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement(dict):
              cpu_request: Optional[str] = None,
              memory_limit: Optional[str] = None,
              memory_request: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cpuLimit' in kwargs:
+        if cpu_limit is None and 'cpuLimit' in kwargs:
             cpu_limit = kwargs['cpuLimit']
-        if 'cpuRequest' in kwargs:
+        if cpu_request is None and 'cpuRequest' in kwargs:
             cpu_request = kwargs['cpuRequest']
-        if 'memoryLimit' in kwargs:
+        if memory_limit is None and 'memoryLimit' in kwargs:
             memory_limit = kwargs['memoryLimit']
-        if 'memoryRequest' in kwargs:
+        if memory_request is None and 'memoryRequest' in kwargs:
             memory_request = kwargs['memoryRequest']
 
         if cpu_limit is not None:
@@ -5952,28 +6060,28 @@ class ClusterGkeConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_ipv4_cidr: str,
-             credential: str,
-             disk_type: str,
-             image_type: str,
-             ip_policy_cluster_ipv4_cidr_block: str,
-             ip_policy_cluster_secondary_range_name: str,
-             ip_policy_node_ipv4_cidr_block: str,
-             ip_policy_services_ipv4_cidr_block: str,
-             ip_policy_services_secondary_range_name: str,
-             ip_policy_subnetwork_name: str,
-             locations: Sequence[str],
-             machine_type: str,
-             maintenance_window: str,
-             master_ipv4_cidr_block: str,
-             master_version: str,
-             network: str,
-             node_pool: str,
-             node_version: str,
-             oauth_scopes: Sequence[str],
-             project_id: str,
-             service_account: str,
-             sub_network: str,
+             cluster_ipv4_cidr: Optional[str] = None,
+             credential: Optional[str] = None,
+             disk_type: Optional[str] = None,
+             image_type: Optional[str] = None,
+             ip_policy_cluster_ipv4_cidr_block: Optional[str] = None,
+             ip_policy_cluster_secondary_range_name: Optional[str] = None,
+             ip_policy_node_ipv4_cidr_block: Optional[str] = None,
+             ip_policy_services_ipv4_cidr_block: Optional[str] = None,
+             ip_policy_services_secondary_range_name: Optional[str] = None,
+             ip_policy_subnetwork_name: Optional[str] = None,
+             locations: Optional[Sequence[str]] = None,
+             machine_type: Optional[str] = None,
+             maintenance_window: Optional[str] = None,
+             master_ipv4_cidr_block: Optional[str] = None,
+             master_version: Optional[str] = None,
+             network: Optional[str] = None,
+             node_pool: Optional[str] = None,
+             node_version: Optional[str] = None,
+             oauth_scopes: Optional[Sequence[str]] = None,
+             project_id: Optional[str] = None,
+             service_account: Optional[str] = None,
+             sub_network: Optional[str] = None,
              description: Optional[str] = None,
              disk_size_gb: Optional[int] = None,
              enable_alpha_feature: Optional[bool] = None,
@@ -6005,95 +6113,139 @@ class ClusterGkeConfig(dict):
              taints: Optional[Sequence[str]] = None,
              use_ip_aliases: Optional[bool] = None,
              zone: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterIpv4Cidr' in kwargs:
+        if cluster_ipv4_cidr is None and 'clusterIpv4Cidr' in kwargs:
             cluster_ipv4_cidr = kwargs['clusterIpv4Cidr']
-        if 'diskType' in kwargs:
+        if cluster_ipv4_cidr is None:
+            raise TypeError("Missing 'cluster_ipv4_cidr' argument")
+        if credential is None:
+            raise TypeError("Missing 'credential' argument")
+        if disk_type is None and 'diskType' in kwargs:
             disk_type = kwargs['diskType']
-        if 'imageType' in kwargs:
+        if disk_type is None:
+            raise TypeError("Missing 'disk_type' argument")
+        if image_type is None and 'imageType' in kwargs:
             image_type = kwargs['imageType']
-        if 'ipPolicyClusterIpv4CidrBlock' in kwargs:
+        if image_type is None:
+            raise TypeError("Missing 'image_type' argument")
+        if ip_policy_cluster_ipv4_cidr_block is None and 'ipPolicyClusterIpv4CidrBlock' in kwargs:
             ip_policy_cluster_ipv4_cidr_block = kwargs['ipPolicyClusterIpv4CidrBlock']
-        if 'ipPolicyClusterSecondaryRangeName' in kwargs:
+        if ip_policy_cluster_ipv4_cidr_block is None:
+            raise TypeError("Missing 'ip_policy_cluster_ipv4_cidr_block' argument")
+        if ip_policy_cluster_secondary_range_name is None and 'ipPolicyClusterSecondaryRangeName' in kwargs:
             ip_policy_cluster_secondary_range_name = kwargs['ipPolicyClusterSecondaryRangeName']
-        if 'ipPolicyNodeIpv4CidrBlock' in kwargs:
+        if ip_policy_cluster_secondary_range_name is None:
+            raise TypeError("Missing 'ip_policy_cluster_secondary_range_name' argument")
+        if ip_policy_node_ipv4_cidr_block is None and 'ipPolicyNodeIpv4CidrBlock' in kwargs:
             ip_policy_node_ipv4_cidr_block = kwargs['ipPolicyNodeIpv4CidrBlock']
-        if 'ipPolicyServicesIpv4CidrBlock' in kwargs:
+        if ip_policy_node_ipv4_cidr_block is None:
+            raise TypeError("Missing 'ip_policy_node_ipv4_cidr_block' argument")
+        if ip_policy_services_ipv4_cidr_block is None and 'ipPolicyServicesIpv4CidrBlock' in kwargs:
             ip_policy_services_ipv4_cidr_block = kwargs['ipPolicyServicesIpv4CidrBlock']
-        if 'ipPolicyServicesSecondaryRangeName' in kwargs:
+        if ip_policy_services_ipv4_cidr_block is None:
+            raise TypeError("Missing 'ip_policy_services_ipv4_cidr_block' argument")
+        if ip_policy_services_secondary_range_name is None and 'ipPolicyServicesSecondaryRangeName' in kwargs:
             ip_policy_services_secondary_range_name = kwargs['ipPolicyServicesSecondaryRangeName']
-        if 'ipPolicySubnetworkName' in kwargs:
+        if ip_policy_services_secondary_range_name is None:
+            raise TypeError("Missing 'ip_policy_services_secondary_range_name' argument")
+        if ip_policy_subnetwork_name is None and 'ipPolicySubnetworkName' in kwargs:
             ip_policy_subnetwork_name = kwargs['ipPolicySubnetworkName']
-        if 'machineType' in kwargs:
+        if ip_policy_subnetwork_name is None:
+            raise TypeError("Missing 'ip_policy_subnetwork_name' argument")
+        if locations is None:
+            raise TypeError("Missing 'locations' argument")
+        if machine_type is None and 'machineType' in kwargs:
             machine_type = kwargs['machineType']
-        if 'maintenanceWindow' in kwargs:
+        if machine_type is None:
+            raise TypeError("Missing 'machine_type' argument")
+        if maintenance_window is None and 'maintenanceWindow' in kwargs:
             maintenance_window = kwargs['maintenanceWindow']
-        if 'masterIpv4CidrBlock' in kwargs:
+        if maintenance_window is None:
+            raise TypeError("Missing 'maintenance_window' argument")
+        if master_ipv4_cidr_block is None and 'masterIpv4CidrBlock' in kwargs:
             master_ipv4_cidr_block = kwargs['masterIpv4CidrBlock']
-        if 'masterVersion' in kwargs:
+        if master_ipv4_cidr_block is None:
+            raise TypeError("Missing 'master_ipv4_cidr_block' argument")
+        if master_version is None and 'masterVersion' in kwargs:
             master_version = kwargs['masterVersion']
-        if 'nodePool' in kwargs:
+        if master_version is None:
+            raise TypeError("Missing 'master_version' argument")
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+        if node_pool is None and 'nodePool' in kwargs:
             node_pool = kwargs['nodePool']
-        if 'nodeVersion' in kwargs:
+        if node_pool is None:
+            raise TypeError("Missing 'node_pool' argument")
+        if node_version is None and 'nodeVersion' in kwargs:
             node_version = kwargs['nodeVersion']
-        if 'oauthScopes' in kwargs:
+        if node_version is None:
+            raise TypeError("Missing 'node_version' argument")
+        if oauth_scopes is None and 'oauthScopes' in kwargs:
             oauth_scopes = kwargs['oauthScopes']
-        if 'projectId' in kwargs:
+        if oauth_scopes is None:
+            raise TypeError("Missing 'oauth_scopes' argument")
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
-        if 'serviceAccount' in kwargs:
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if service_account is None and 'serviceAccount' in kwargs:
             service_account = kwargs['serviceAccount']
-        if 'subNetwork' in kwargs:
+        if service_account is None:
+            raise TypeError("Missing 'service_account' argument")
+        if sub_network is None and 'subNetwork' in kwargs:
             sub_network = kwargs['subNetwork']
-        if 'diskSizeGb' in kwargs:
+        if sub_network is None:
+            raise TypeError("Missing 'sub_network' argument")
+        if disk_size_gb is None and 'diskSizeGb' in kwargs:
             disk_size_gb = kwargs['diskSizeGb']
-        if 'enableAlphaFeature' in kwargs:
+        if enable_alpha_feature is None and 'enableAlphaFeature' in kwargs:
             enable_alpha_feature = kwargs['enableAlphaFeature']
-        if 'enableAutoRepair' in kwargs:
+        if enable_auto_repair is None and 'enableAutoRepair' in kwargs:
             enable_auto_repair = kwargs['enableAutoRepair']
-        if 'enableAutoUpgrade' in kwargs:
+        if enable_auto_upgrade is None and 'enableAutoUpgrade' in kwargs:
             enable_auto_upgrade = kwargs['enableAutoUpgrade']
-        if 'enableHorizontalPodAutoscaling' in kwargs:
+        if enable_horizontal_pod_autoscaling is None and 'enableHorizontalPodAutoscaling' in kwargs:
             enable_horizontal_pod_autoscaling = kwargs['enableHorizontalPodAutoscaling']
-        if 'enableHttpLoadBalancing' in kwargs:
+        if enable_http_load_balancing is None and 'enableHttpLoadBalancing' in kwargs:
             enable_http_load_balancing = kwargs['enableHttpLoadBalancing']
-        if 'enableKubernetesDashboard' in kwargs:
+        if enable_kubernetes_dashboard is None and 'enableKubernetesDashboard' in kwargs:
             enable_kubernetes_dashboard = kwargs['enableKubernetesDashboard']
-        if 'enableLegacyAbac' in kwargs:
+        if enable_legacy_abac is None and 'enableLegacyAbac' in kwargs:
             enable_legacy_abac = kwargs['enableLegacyAbac']
-        if 'enableMasterAuthorizedNetwork' in kwargs:
+        if enable_master_authorized_network is None and 'enableMasterAuthorizedNetwork' in kwargs:
             enable_master_authorized_network = kwargs['enableMasterAuthorizedNetwork']
-        if 'enableNetworkPolicyConfig' in kwargs:
+        if enable_network_policy_config is None and 'enableNetworkPolicyConfig' in kwargs:
             enable_network_policy_config = kwargs['enableNetworkPolicyConfig']
-        if 'enableNodepoolAutoscaling' in kwargs:
+        if enable_nodepool_autoscaling is None and 'enableNodepoolAutoscaling' in kwargs:
             enable_nodepool_autoscaling = kwargs['enableNodepoolAutoscaling']
-        if 'enablePrivateEndpoint' in kwargs:
+        if enable_private_endpoint is None and 'enablePrivateEndpoint' in kwargs:
             enable_private_endpoint = kwargs['enablePrivateEndpoint']
-        if 'enablePrivateNodes' in kwargs:
+        if enable_private_nodes is None and 'enablePrivateNodes' in kwargs:
             enable_private_nodes = kwargs['enablePrivateNodes']
-        if 'enableStackdriverLogging' in kwargs:
+        if enable_stackdriver_logging is None and 'enableStackdriverLogging' in kwargs:
             enable_stackdriver_logging = kwargs['enableStackdriverLogging']
-        if 'enableStackdriverMonitoring' in kwargs:
+        if enable_stackdriver_monitoring is None and 'enableStackdriverMonitoring' in kwargs:
             enable_stackdriver_monitoring = kwargs['enableStackdriverMonitoring']
-        if 'ipPolicyCreateSubnetwork' in kwargs:
+        if ip_policy_create_subnetwork is None and 'ipPolicyCreateSubnetwork' in kwargs:
             ip_policy_create_subnetwork = kwargs['ipPolicyCreateSubnetwork']
-        if 'issueClientCertificate' in kwargs:
+        if issue_client_certificate is None and 'issueClientCertificate' in kwargs:
             issue_client_certificate = kwargs['issueClientCertificate']
-        if 'kubernetesDashboard' in kwargs:
+        if kubernetes_dashboard is None and 'kubernetesDashboard' in kwargs:
             kubernetes_dashboard = kwargs['kubernetesDashboard']
-        if 'localSsdCount' in kwargs:
+        if local_ssd_count is None and 'localSsdCount' in kwargs:
             local_ssd_count = kwargs['localSsdCount']
-        if 'masterAuthorizedNetworkCidrBlocks' in kwargs:
+        if master_authorized_network_cidr_blocks is None and 'masterAuthorizedNetworkCidrBlocks' in kwargs:
             master_authorized_network_cidr_blocks = kwargs['masterAuthorizedNetworkCidrBlocks']
-        if 'maxNodeCount' in kwargs:
+        if max_node_count is None and 'maxNodeCount' in kwargs:
             max_node_count = kwargs['maxNodeCount']
-        if 'minNodeCount' in kwargs:
+        if min_node_count is None and 'minNodeCount' in kwargs:
             min_node_count = kwargs['minNodeCount']
-        if 'nodeCount' in kwargs:
+        if node_count is None and 'nodeCount' in kwargs:
             node_count = kwargs['nodeCount']
-        if 'resourceLabels' in kwargs:
+        if resource_labels is None and 'resourceLabels' in kwargs:
             resource_labels = kwargs['resourceLabels']
-        if 'useIpAliases' in kwargs:
+        if use_ip_aliases is None and 'useIpAliases' in kwargs:
             use_ip_aliases = kwargs['useIpAliases']
 
         _setter("cluster_ipv4_cidr", cluster_ipv4_cidr)
@@ -6729,9 +6881,9 @@ class ClusterGkeConfigV2(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             google_credential_secret: str,
-             name: str,
-             project_id: str,
+             google_credential_secret: Optional[str] = None,
+             name: Optional[str] = None,
+             project_id: Optional[str] = None,
              cluster_addons: Optional['outputs.ClusterGkeConfigV2ClusterAddons'] = None,
              cluster_ipv4_cidr_block: Optional[str] = None,
              description: Optional[str] = None,
@@ -6752,35 +6904,41 @@ class ClusterGkeConfigV2(dict):
              region: Optional[str] = None,
              subnetwork: Optional[str] = None,
              zone: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'googleCredentialSecret' in kwargs:
+        if google_credential_secret is None and 'googleCredentialSecret' in kwargs:
             google_credential_secret = kwargs['googleCredentialSecret']
-        if 'projectId' in kwargs:
+        if google_credential_secret is None:
+            raise TypeError("Missing 'google_credential_secret' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
-        if 'clusterAddons' in kwargs:
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if cluster_addons is None and 'clusterAddons' in kwargs:
             cluster_addons = kwargs['clusterAddons']
-        if 'clusterIpv4CidrBlock' in kwargs:
+        if cluster_ipv4_cidr_block is None and 'clusterIpv4CidrBlock' in kwargs:
             cluster_ipv4_cidr_block = kwargs['clusterIpv4CidrBlock']
-        if 'enableKubernetesAlpha' in kwargs:
+        if enable_kubernetes_alpha is None and 'enableKubernetesAlpha' in kwargs:
             enable_kubernetes_alpha = kwargs['enableKubernetesAlpha']
-        if 'ipAllocationPolicy' in kwargs:
+        if ip_allocation_policy is None and 'ipAllocationPolicy' in kwargs:
             ip_allocation_policy = kwargs['ipAllocationPolicy']
-        if 'kubernetesVersion' in kwargs:
+        if kubernetes_version is None and 'kubernetesVersion' in kwargs:
             kubernetes_version = kwargs['kubernetesVersion']
-        if 'loggingService' in kwargs:
+        if logging_service is None and 'loggingService' in kwargs:
             logging_service = kwargs['loggingService']
-        if 'maintenanceWindow' in kwargs:
+        if maintenance_window is None and 'maintenanceWindow' in kwargs:
             maintenance_window = kwargs['maintenanceWindow']
-        if 'masterAuthorizedNetworksConfig' in kwargs:
+        if master_authorized_networks_config is None and 'masterAuthorizedNetworksConfig' in kwargs:
             master_authorized_networks_config = kwargs['masterAuthorizedNetworksConfig']
-        if 'monitoringService' in kwargs:
+        if monitoring_service is None and 'monitoringService' in kwargs:
             monitoring_service = kwargs['monitoringService']
-        if 'networkPolicyEnabled' in kwargs:
+        if network_policy_enabled is None and 'networkPolicyEnabled' in kwargs:
             network_policy_enabled = kwargs['networkPolicyEnabled']
-        if 'nodePools' in kwargs:
+        if node_pools is None and 'nodePools' in kwargs:
             node_pools = kwargs['nodePools']
-        if 'privateClusterConfig' in kwargs:
+        if private_cluster_config is None and 'privateClusterConfig' in kwargs:
             private_cluster_config = kwargs['privateClusterConfig']
 
         _setter("google_credential_secret", google_credential_secret)
@@ -7056,13 +7214,13 @@ class ClusterGkeConfigV2ClusterAddons(dict):
              horizontal_pod_autoscaling: Optional[bool] = None,
              http_load_balancing: Optional[bool] = None,
              network_policy_config: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'horizontalPodAutoscaling' in kwargs:
+        if horizontal_pod_autoscaling is None and 'horizontalPodAutoscaling' in kwargs:
             horizontal_pod_autoscaling = kwargs['horizontalPodAutoscaling']
-        if 'httpLoadBalancing' in kwargs:
+        if http_load_balancing is None and 'httpLoadBalancing' in kwargs:
             http_load_balancing = kwargs['httpLoadBalancing']
-        if 'networkPolicyConfig' in kwargs:
+        if network_policy_config is None and 'networkPolicyConfig' in kwargs:
             network_policy_config = kwargs['networkPolicyConfig']
 
         if horizontal_pod_autoscaling is not None:
@@ -7171,23 +7329,23 @@ class ClusterGkeConfigV2IpAllocationPolicy(dict):
              services_secondary_range_name: Optional[str] = None,
              subnetwork_name: Optional[str] = None,
              use_ip_aliases: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterIpv4CidrBlock' in kwargs:
+        if cluster_ipv4_cidr_block is None and 'clusterIpv4CidrBlock' in kwargs:
             cluster_ipv4_cidr_block = kwargs['clusterIpv4CidrBlock']
-        if 'clusterSecondaryRangeName' in kwargs:
+        if cluster_secondary_range_name is None and 'clusterSecondaryRangeName' in kwargs:
             cluster_secondary_range_name = kwargs['clusterSecondaryRangeName']
-        if 'createSubnetwork' in kwargs:
+        if create_subnetwork is None and 'createSubnetwork' in kwargs:
             create_subnetwork = kwargs['createSubnetwork']
-        if 'nodeIpv4CidrBlock' in kwargs:
+        if node_ipv4_cidr_block is None and 'nodeIpv4CidrBlock' in kwargs:
             node_ipv4_cidr_block = kwargs['nodeIpv4CidrBlock']
-        if 'servicesIpv4CidrBlock' in kwargs:
+        if services_ipv4_cidr_block is None and 'servicesIpv4CidrBlock' in kwargs:
             services_ipv4_cidr_block = kwargs['servicesIpv4CidrBlock']
-        if 'servicesSecondaryRangeName' in kwargs:
+        if services_secondary_range_name is None and 'servicesSecondaryRangeName' in kwargs:
             services_secondary_range_name = kwargs['servicesSecondaryRangeName']
-        if 'subnetworkName' in kwargs:
+        if subnetwork_name is None and 'subnetworkName' in kwargs:
             subnetwork_name = kwargs['subnetworkName']
-        if 'useIpAliases' in kwargs:
+        if use_ip_aliases is None and 'useIpAliases' in kwargs:
             use_ip_aliases = kwargs['useIpAliases']
 
         if cluster_ipv4_cidr_block is not None:
@@ -7306,12 +7464,14 @@ class ClusterGkeConfigV2MasterAuthorizedNetworksConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cidr_blocks: Sequence['outputs.ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock'],
+             cidr_blocks: Optional[Sequence['outputs.ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock']] = None,
              enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cidrBlocks' in kwargs:
+        if cidr_blocks is None and 'cidrBlocks' in kwargs:
             cidr_blocks = kwargs['cidrBlocks']
+        if cidr_blocks is None:
+            raise TypeError("Missing 'cidr_blocks' argument")
 
         _setter("cidr_blocks", cidr_blocks)
         if enabled is not None:
@@ -7370,13 +7530,15 @@ class ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cidr_block: str,
+             cidr_block: Optional[str] = None,
              display_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cidrBlock' in kwargs:
+        if cidr_block is None and 'cidrBlock' in kwargs:
             cidr_block = kwargs['cidrBlock']
-        if 'displayName' in kwargs:
+        if cidr_block is None:
+            raise TypeError("Missing 'cidr_block' argument")
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
 
         _setter("cidr_block", cidr_block)
@@ -7451,18 +7613,24 @@ class ClusterGkeConfigV2NodePool(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             initial_node_count: int,
-             name: str,
-             version: str,
+             initial_node_count: Optional[int] = None,
+             name: Optional[str] = None,
+             version: Optional[str] = None,
              autoscaling: Optional['outputs.ClusterGkeConfigV2NodePoolAutoscaling'] = None,
              config: Optional['outputs.ClusterGkeConfigV2NodePoolConfig'] = None,
              management: Optional['outputs.ClusterGkeConfigV2NodePoolManagement'] = None,
              max_pods_constraint: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'initialNodeCount' in kwargs:
+        if initial_node_count is None and 'initialNodeCount' in kwargs:
             initial_node_count = kwargs['initialNodeCount']
-        if 'maxPodsConstraint' in kwargs:
+        if initial_node_count is None:
+            raise TypeError("Missing 'initial_node_count' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+        if max_pods_constraint is None and 'maxPodsConstraint' in kwargs:
             max_pods_constraint = kwargs['maxPodsConstraint']
 
         _setter("initial_node_count", initial_node_count)
@@ -7576,11 +7744,11 @@ class ClusterGkeConfigV2NodePoolAutoscaling(dict):
              enabled: Optional[bool] = None,
              max_node_count: Optional[int] = None,
              min_node_count: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'maxNodeCount' in kwargs:
+        if max_node_count is None and 'maxNodeCount' in kwargs:
             max_node_count = kwargs['maxNodeCount']
-        if 'minNodeCount' in kwargs:
+        if min_node_count is None and 'minNodeCount' in kwargs:
             min_node_count = kwargs['minNodeCount']
 
         if enabled is not None:
@@ -7693,19 +7861,19 @@ class ClusterGkeConfigV2NodePoolConfig(dict):
              preemptible: Optional[bool] = None,
              tags: Optional[Sequence[str]] = None,
              taints: Optional[Sequence['outputs.ClusterGkeConfigV2NodePoolConfigTaint']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'diskSizeGb' in kwargs:
+        if disk_size_gb is None and 'diskSizeGb' in kwargs:
             disk_size_gb = kwargs['diskSizeGb']
-        if 'diskType' in kwargs:
+        if disk_type is None and 'diskType' in kwargs:
             disk_type = kwargs['diskType']
-        if 'imageType' in kwargs:
+        if image_type is None and 'imageType' in kwargs:
             image_type = kwargs['imageType']
-        if 'localSsdCount' in kwargs:
+        if local_ssd_count is None and 'localSsdCount' in kwargs:
             local_ssd_count = kwargs['localSsdCount']
-        if 'machineType' in kwargs:
+        if machine_type is None and 'machineType' in kwargs:
             machine_type = kwargs['machineType']
-        if 'oauthScopes' in kwargs:
+        if oauth_scopes is None and 'oauthScopes' in kwargs:
             oauth_scopes = kwargs['oauthScopes']
 
         if disk_size_gb is not None:
@@ -7830,11 +7998,17 @@ class ClusterGkeConfigV2NodePoolConfigTaint(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             effect: str,
-             key: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             effect: Optional[str] = None,
+             key: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if effect is None:
+            raise TypeError("Missing 'effect' argument")
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("effect", effect)
         _setter("key", key)
@@ -7903,11 +8077,11 @@ class ClusterGkeConfigV2NodePoolManagement(dict):
              _setter: Callable[[Any, Any], None],
              auto_repair: Optional[bool] = None,
              auto_upgrade: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoRepair' in kwargs:
+        if auto_repair is None and 'autoRepair' in kwargs:
             auto_repair = kwargs['autoRepair']
-        if 'autoUpgrade' in kwargs:
+        if auto_upgrade is None and 'autoUpgrade' in kwargs:
             auto_upgrade = kwargs['autoUpgrade']
 
         if auto_repair is not None:
@@ -7973,16 +8147,18 @@ class ClusterGkeConfigV2PrivateClusterConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             master_ipv4_cidr_block: str,
+             master_ipv4_cidr_block: Optional[str] = None,
              enable_private_endpoint: Optional[bool] = None,
              enable_private_nodes: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'masterIpv4CidrBlock' in kwargs:
+        if master_ipv4_cidr_block is None and 'masterIpv4CidrBlock' in kwargs:
             master_ipv4_cidr_block = kwargs['masterIpv4CidrBlock']
-        if 'enablePrivateEndpoint' in kwargs:
+        if master_ipv4_cidr_block is None:
+            raise TypeError("Missing 'master_ipv4_cidr_block' argument")
+        if enable_private_endpoint is None and 'enablePrivateEndpoint' in kwargs:
             enable_private_endpoint = kwargs['enablePrivateEndpoint']
-        if 'enablePrivateNodes' in kwargs:
+        if enable_private_nodes is None and 'enablePrivateNodes' in kwargs:
             enable_private_nodes = kwargs['enablePrivateNodes']
 
         _setter("master_ipv4_cidr_block", master_ipv4_cidr_block)
@@ -8052,9 +8228,9 @@ class ClusterK3sConfig(dict):
              _setter: Callable[[Any, Any], None],
              upgrade_strategy: Optional['outputs.ClusterK3sConfigUpgradeStrategy'] = None,
              version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'upgradeStrategy' in kwargs:
+        if upgrade_strategy is None and 'upgradeStrategy' in kwargs:
             upgrade_strategy = kwargs['upgradeStrategy']
 
         if upgrade_strategy is not None:
@@ -8129,15 +8305,15 @@ class ClusterK3sConfigUpgradeStrategy(dict):
              drain_worker_nodes: Optional[bool] = None,
              server_concurrency: Optional[int] = None,
              worker_concurrency: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'drainServerNodes' in kwargs:
+        if drain_server_nodes is None and 'drainServerNodes' in kwargs:
             drain_server_nodes = kwargs['drainServerNodes']
-        if 'drainWorkerNodes' in kwargs:
+        if drain_worker_nodes is None and 'drainWorkerNodes' in kwargs:
             drain_worker_nodes = kwargs['drainWorkerNodes']
-        if 'serverConcurrency' in kwargs:
+        if server_concurrency is None and 'serverConcurrency' in kwargs:
             server_concurrency = kwargs['serverConcurrency']
-        if 'workerConcurrency' in kwargs:
+        if worker_concurrency is None and 'workerConcurrency' in kwargs:
             worker_concurrency = kwargs['workerConcurrency']
 
         if drain_server_nodes is not None:
@@ -8362,15 +8538,15 @@ class ClusterOkeConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             compartment_id: str,
-             fingerprint: str,
-             kubernetes_version: str,
-             node_image: str,
-             node_shape: str,
-             private_key_contents: str,
-             region: str,
-             tenancy_id: str,
-             user_ocid: str,
+             compartment_id: Optional[str] = None,
+             fingerprint: Optional[str] = None,
+             kubernetes_version: Optional[str] = None,
+             node_image: Optional[str] = None,
+             node_shape: Optional[str] = None,
+             private_key_contents: Optional[str] = None,
+             region: Optional[str] = None,
+             tenancy_id: Optional[str] = None,
+             user_ocid: Optional[str] = None,
              custom_boot_volume_size: Optional[int] = None,
              description: Optional[str] = None,
              enable_kubernetes_dashboard: Optional[bool] = None,
@@ -8394,65 +8570,83 @@ class ClusterOkeConfig(dict):
              vcn_compartment_id: Optional[str] = None,
              vcn_name: Optional[str] = None,
              worker_node_ingress_cidr: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'compartmentId' in kwargs:
+        if compartment_id is None and 'compartmentId' in kwargs:
             compartment_id = kwargs['compartmentId']
-        if 'kubernetesVersion' in kwargs:
+        if compartment_id is None:
+            raise TypeError("Missing 'compartment_id' argument")
+        if fingerprint is None:
+            raise TypeError("Missing 'fingerprint' argument")
+        if kubernetes_version is None and 'kubernetesVersion' in kwargs:
             kubernetes_version = kwargs['kubernetesVersion']
-        if 'nodeImage' in kwargs:
+        if kubernetes_version is None:
+            raise TypeError("Missing 'kubernetes_version' argument")
+        if node_image is None and 'nodeImage' in kwargs:
             node_image = kwargs['nodeImage']
-        if 'nodeShape' in kwargs:
+        if node_image is None:
+            raise TypeError("Missing 'node_image' argument")
+        if node_shape is None and 'nodeShape' in kwargs:
             node_shape = kwargs['nodeShape']
-        if 'privateKeyContents' in kwargs:
+        if node_shape is None:
+            raise TypeError("Missing 'node_shape' argument")
+        if private_key_contents is None and 'privateKeyContents' in kwargs:
             private_key_contents = kwargs['privateKeyContents']
-        if 'tenancyId' in kwargs:
+        if private_key_contents is None:
+            raise TypeError("Missing 'private_key_contents' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if tenancy_id is None and 'tenancyId' in kwargs:
             tenancy_id = kwargs['tenancyId']
-        if 'userOcid' in kwargs:
+        if tenancy_id is None:
+            raise TypeError("Missing 'tenancy_id' argument")
+        if user_ocid is None and 'userOcid' in kwargs:
             user_ocid = kwargs['userOcid']
-        if 'customBootVolumeSize' in kwargs:
+        if user_ocid is None:
+            raise TypeError("Missing 'user_ocid' argument")
+        if custom_boot_volume_size is None and 'customBootVolumeSize' in kwargs:
             custom_boot_volume_size = kwargs['customBootVolumeSize']
-        if 'enableKubernetesDashboard' in kwargs:
+        if enable_kubernetes_dashboard is None and 'enableKubernetesDashboard' in kwargs:
             enable_kubernetes_dashboard = kwargs['enableKubernetesDashboard']
-        if 'enablePrivateControlPlane' in kwargs:
+        if enable_private_control_plane is None and 'enablePrivateControlPlane' in kwargs:
             enable_private_control_plane = kwargs['enablePrivateControlPlane']
-        if 'enablePrivateNodes' in kwargs:
+        if enable_private_nodes is None and 'enablePrivateNodes' in kwargs:
             enable_private_nodes = kwargs['enablePrivateNodes']
-        if 'flexOcpus' in kwargs:
+        if flex_ocpus is None and 'flexOcpus' in kwargs:
             flex_ocpus = kwargs['flexOcpus']
-        if 'kmsKeyId' in kwargs:
+        if kms_key_id is None and 'kmsKeyId' in kwargs:
             kms_key_id = kwargs['kmsKeyId']
-        if 'limitNodeCount' in kwargs:
+        if limit_node_count is None and 'limitNodeCount' in kwargs:
             limit_node_count = kwargs['limitNodeCount']
-        if 'loadBalancerSubnetName1' in kwargs:
+        if load_balancer_subnet_name1 is None and 'loadBalancerSubnetName1' in kwargs:
             load_balancer_subnet_name1 = kwargs['loadBalancerSubnetName1']
-        if 'loadBalancerSubnetName2' in kwargs:
+        if load_balancer_subnet_name2 is None and 'loadBalancerSubnetName2' in kwargs:
             load_balancer_subnet_name2 = kwargs['loadBalancerSubnetName2']
-        if 'nodePoolDnsDomainName' in kwargs:
+        if node_pool_dns_domain_name is None and 'nodePoolDnsDomainName' in kwargs:
             node_pool_dns_domain_name = kwargs['nodePoolDnsDomainName']
-        if 'nodePoolSubnetName' in kwargs:
+        if node_pool_subnet_name is None and 'nodePoolSubnetName' in kwargs:
             node_pool_subnet_name = kwargs['nodePoolSubnetName']
-        if 'nodePublicKeyContents' in kwargs:
+        if node_public_key_contents is None and 'nodePublicKeyContents' in kwargs:
             node_public_key_contents = kwargs['nodePublicKeyContents']
-        if 'podCidr' in kwargs:
+        if pod_cidr is None and 'podCidr' in kwargs:
             pod_cidr = kwargs['podCidr']
-        if 'privateKeyPassphrase' in kwargs:
+        if private_key_passphrase is None and 'privateKeyPassphrase' in kwargs:
             private_key_passphrase = kwargs['privateKeyPassphrase']
-        if 'quantityOfNodeSubnets' in kwargs:
+        if quantity_of_node_subnets is None and 'quantityOfNodeSubnets' in kwargs:
             quantity_of_node_subnets = kwargs['quantityOfNodeSubnets']
-        if 'quantityPerSubnet' in kwargs:
+        if quantity_per_subnet is None and 'quantityPerSubnet' in kwargs:
             quantity_per_subnet = kwargs['quantityPerSubnet']
-        if 'serviceCidr' in kwargs:
+        if service_cidr is None and 'serviceCidr' in kwargs:
             service_cidr = kwargs['serviceCidr']
-        if 'serviceDnsDomainName' in kwargs:
+        if service_dns_domain_name is None and 'serviceDnsDomainName' in kwargs:
             service_dns_domain_name = kwargs['serviceDnsDomainName']
-        if 'skipVcnDelete' in kwargs:
+        if skip_vcn_delete is None and 'skipVcnDelete' in kwargs:
             skip_vcn_delete = kwargs['skipVcnDelete']
-        if 'vcnCompartmentId' in kwargs:
+        if vcn_compartment_id is None and 'vcnCompartmentId' in kwargs:
             vcn_compartment_id = kwargs['vcnCompartmentId']
-        if 'vcnName' in kwargs:
+        if vcn_name is None and 'vcnName' in kwargs:
             vcn_name = kwargs['vcnName']
-        if 'workerNodeIngressCidr' in kwargs:
+        if worker_node_ingress_cidr is None and 'workerNodeIngressCidr' in kwargs:
             worker_node_ingress_cidr = kwargs['workerNodeIngressCidr']
 
         _setter("compartment_id", compartment_id)
@@ -8804,9 +8998,9 @@ class ClusterRke2Config(dict):
              _setter: Callable[[Any, Any], None],
              upgrade_strategy: Optional['outputs.ClusterRke2ConfigUpgradeStrategy'] = None,
              version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'upgradeStrategy' in kwargs:
+        if upgrade_strategy is None and 'upgradeStrategy' in kwargs:
             upgrade_strategy = kwargs['upgradeStrategy']
 
         if upgrade_strategy is not None:
@@ -8881,15 +9075,15 @@ class ClusterRke2ConfigUpgradeStrategy(dict):
              drain_worker_nodes: Optional[bool] = None,
              server_concurrency: Optional[int] = None,
              worker_concurrency: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'drainServerNodes' in kwargs:
+        if drain_server_nodes is None and 'drainServerNodes' in kwargs:
             drain_server_nodes = kwargs['drainServerNodes']
-        if 'drainWorkerNodes' in kwargs:
+        if drain_worker_nodes is None and 'drainWorkerNodes' in kwargs:
             drain_worker_nodes = kwargs['drainWorkerNodes']
-        if 'serverConcurrency' in kwargs:
+        if server_concurrency is None and 'serverConcurrency' in kwargs:
             server_concurrency = kwargs['serverConcurrency']
-        if 'workerConcurrency' in kwargs:
+        if worker_concurrency is None and 'workerConcurrency' in kwargs:
             worker_concurrency = kwargs['workerConcurrency']
 
         if drain_server_nodes is not None:
@@ -9080,35 +9274,35 @@ class ClusterRkeConfig(dict):
              ssh_key_path: Optional[str] = None,
              upgrade_strategy: Optional['outputs.ClusterRkeConfigUpgradeStrategy'] = None,
              win_prefix_path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'addonJobTimeout' in kwargs:
+        if addon_job_timeout is None and 'addonJobTimeout' in kwargs:
             addon_job_timeout = kwargs['addonJobTimeout']
-        if 'addonsIncludes' in kwargs:
+        if addons_includes is None and 'addonsIncludes' in kwargs:
             addons_includes = kwargs['addonsIncludes']
-        if 'bastionHost' in kwargs:
+        if bastion_host is None and 'bastionHost' in kwargs:
             bastion_host = kwargs['bastionHost']
-        if 'cloudProvider' in kwargs:
+        if cloud_provider is None and 'cloudProvider' in kwargs:
             cloud_provider = kwargs['cloudProvider']
-        if 'enableCriDockerd' in kwargs:
+        if enable_cri_dockerd is None and 'enableCriDockerd' in kwargs:
             enable_cri_dockerd = kwargs['enableCriDockerd']
-        if 'ignoreDockerVersion' in kwargs:
+        if ignore_docker_version is None and 'ignoreDockerVersion' in kwargs:
             ignore_docker_version = kwargs['ignoreDockerVersion']
-        if 'kubernetesVersion' in kwargs:
+        if kubernetes_version is None and 'kubernetesVersion' in kwargs:
             kubernetes_version = kwargs['kubernetesVersion']
-        if 'prefixPath' in kwargs:
+        if prefix_path is None and 'prefixPath' in kwargs:
             prefix_path = kwargs['prefixPath']
-        if 'privateRegistries' in kwargs:
+        if private_registries is None and 'privateRegistries' in kwargs:
             private_registries = kwargs['privateRegistries']
-        if 'sshAgentAuth' in kwargs:
+        if ssh_agent_auth is None and 'sshAgentAuth' in kwargs:
             ssh_agent_auth = kwargs['sshAgentAuth']
-        if 'sshCertPath' in kwargs:
+        if ssh_cert_path is None and 'sshCertPath' in kwargs:
             ssh_cert_path = kwargs['sshCertPath']
-        if 'sshKeyPath' in kwargs:
+        if ssh_key_path is None and 'sshKeyPath' in kwargs:
             ssh_key_path = kwargs['sshKeyPath']
-        if 'upgradeStrategy' in kwargs:
+        if upgrade_strategy is None and 'upgradeStrategy' in kwargs:
             upgrade_strategy = kwargs['upgradeStrategy']
-        if 'winPrefixPath' in kwargs:
+        if win_prefix_path is None and 'winPrefixPath' in kwargs:
             win_prefix_path = kwargs['winPrefixPath']
 
         if addon_job_timeout is not None:
@@ -9362,7 +9556,7 @@ class ClusterRkeConfigAuthentication(dict):
              _setter: Callable[[Any, Any], None],
              sans: Optional[Sequence[str]] = None,
              strategy: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if sans is not None:
@@ -9406,7 +9600,7 @@ class ClusterRkeConfigAuthorization(dict):
              _setter: Callable[[Any, Any], None],
              mode: Optional[str] = None,
              options: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if mode is not None:
@@ -9481,19 +9675,23 @@ class ClusterRkeConfigBastionHost(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address: str,
-             user: str,
+             address: Optional[str] = None,
+             user: Optional[str] = None,
              port: Optional[str] = None,
              ssh_agent_auth: Optional[bool] = None,
              ssh_key: Optional[str] = None,
              ssh_key_path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'sshAgentAuth' in kwargs:
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if user is None:
+            raise TypeError("Missing 'user' argument")
+        if ssh_agent_auth is None and 'sshAgentAuth' in kwargs:
             ssh_agent_auth = kwargs['sshAgentAuth']
-        if 'sshKey' in kwargs:
+        if ssh_key is None and 'sshKey' in kwargs:
             ssh_key = kwargs['sshKey']
-        if 'sshKeyPath' in kwargs:
+        if ssh_key_path is None and 'sshKeyPath' in kwargs:
             ssh_key_path = kwargs['sshKeyPath']
 
         _setter("address", address)
@@ -9616,17 +9814,17 @@ class ClusterRkeConfigCloudProvider(dict):
              name: Optional[str] = None,
              openstack_cloud_provider: Optional['outputs.ClusterRkeConfigCloudProviderOpenstackCloudProvider'] = None,
              vsphere_cloud_provider: Optional['outputs.ClusterRkeConfigCloudProviderVsphereCloudProvider'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'awsCloudProvider' in kwargs:
+        if aws_cloud_provider is None and 'awsCloudProvider' in kwargs:
             aws_cloud_provider = kwargs['awsCloudProvider']
-        if 'azureCloudProvider' in kwargs:
+        if azure_cloud_provider is None and 'azureCloudProvider' in kwargs:
             azure_cloud_provider = kwargs['azureCloudProvider']
-        if 'customCloudProvider' in kwargs:
+        if custom_cloud_provider is None and 'customCloudProvider' in kwargs:
             custom_cloud_provider = kwargs['customCloudProvider']
-        if 'openstackCloudProvider' in kwargs:
+        if openstack_cloud_provider is None and 'openstackCloudProvider' in kwargs:
             openstack_cloud_provider = kwargs['openstackCloudProvider']
-        if 'vsphereCloudProvider' in kwargs:
+        if vsphere_cloud_provider is None and 'vsphereCloudProvider' in kwargs:
             vsphere_cloud_provider = kwargs['vsphereCloudProvider']
 
         if aws_cloud_provider is not None:
@@ -9729,11 +9927,11 @@ class ClusterRkeConfigCloudProviderAwsCloudProvider(dict):
              _setter: Callable[[Any, Any], None],
              global_: Optional['outputs.ClusterRkeConfigCloudProviderAwsCloudProviderGlobal'] = None,
              service_overrides: Optional[Sequence['outputs.ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'global' in kwargs:
+        if global_ is None and 'global' in kwargs:
             global_ = kwargs['global']
-        if 'serviceOverrides' in kwargs:
+        if service_overrides is None and 'serviceOverrides' in kwargs:
             service_overrides = kwargs['serviceOverrides']
 
         if global_ is not None:
@@ -9840,23 +10038,23 @@ class ClusterRkeConfigCloudProviderAwsCloudProviderGlobal(dict):
              subnet_id: Optional[str] = None,
              vpc: Optional[str] = None,
              zone: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'disableSecurityGroupIngress' in kwargs:
+        if disable_security_group_ingress is None and 'disableSecurityGroupIngress' in kwargs:
             disable_security_group_ingress = kwargs['disableSecurityGroupIngress']
-        if 'disableStrictZoneCheck' in kwargs:
+        if disable_strict_zone_check is None and 'disableStrictZoneCheck' in kwargs:
             disable_strict_zone_check = kwargs['disableStrictZoneCheck']
-        if 'elbSecurityGroup' in kwargs:
+        if elb_security_group is None and 'elbSecurityGroup' in kwargs:
             elb_security_group = kwargs['elbSecurityGroup']
-        if 'kubernetesClusterId' in kwargs:
+        if kubernetes_cluster_id is None and 'kubernetesClusterId' in kwargs:
             kubernetes_cluster_id = kwargs['kubernetesClusterId']
-        if 'kubernetesClusterTag' in kwargs:
+        if kubernetes_cluster_tag is None and 'kubernetesClusterTag' in kwargs:
             kubernetes_cluster_tag = kwargs['kubernetesClusterTag']
-        if 'roleArn' in kwargs:
+        if role_arn is None and 'roleArn' in kwargs:
             role_arn = kwargs['roleArn']
-        if 'routeTableId' in kwargs:
+        if route_table_id is None and 'routeTableId' in kwargs:
             route_table_id = kwargs['routeTableId']
-        if 'subnetId' in kwargs:
+        if subnet_id is None and 'subnetId' in kwargs:
             subnet_id = kwargs['subnetId']
 
         if disable_security_group_ingress is not None:
@@ -10011,19 +10209,21 @@ class ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service: str,
+             service: Optional[str] = None,
              region: Optional[str] = None,
              signing_method: Optional[str] = None,
              signing_name: Optional[str] = None,
              signing_region: Optional[str] = None,
              url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'signingMethod' in kwargs:
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+        if signing_method is None and 'signingMethod' in kwargs:
             signing_method = kwargs['signingMethod']
-        if 'signingName' in kwargs:
+        if signing_name is None and 'signingName' in kwargs:
             signing_name = kwargs['signingName']
-        if 'signingRegion' in kwargs:
+        if signing_region is None and 'signingRegion' in kwargs:
             signing_region = kwargs['signingRegion']
 
         _setter("service", service)
@@ -10254,10 +10454,10 @@ class ClusterRkeConfigCloudProviderAzureCloudProvider(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             aad_client_id: str,
-             aad_client_secret: str,
-             subscription_id: str,
-             tenant_id: str,
+             aad_client_id: Optional[str] = None,
+             aad_client_secret: Optional[str] = None,
+             subscription_id: Optional[str] = None,
+             tenant_id: Optional[str] = None,
              aad_client_cert_password: Optional[str] = None,
              aad_client_cert_path: Optional[str] = None,
              cloud: Optional[str] = None,
@@ -10283,61 +10483,69 @@ class ClusterRkeConfigCloudProviderAzureCloudProvider(dict):
              vm_type: Optional[str] = None,
              vnet_name: Optional[str] = None,
              vnet_resource_group: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aadClientId' in kwargs:
+        if aad_client_id is None and 'aadClientId' in kwargs:
             aad_client_id = kwargs['aadClientId']
-        if 'aadClientSecret' in kwargs:
+        if aad_client_id is None:
+            raise TypeError("Missing 'aad_client_id' argument")
+        if aad_client_secret is None and 'aadClientSecret' in kwargs:
             aad_client_secret = kwargs['aadClientSecret']
-        if 'subscriptionId' in kwargs:
+        if aad_client_secret is None:
+            raise TypeError("Missing 'aad_client_secret' argument")
+        if subscription_id is None and 'subscriptionId' in kwargs:
             subscription_id = kwargs['subscriptionId']
-        if 'tenantId' in kwargs:
+        if subscription_id is None:
+            raise TypeError("Missing 'subscription_id' argument")
+        if tenant_id is None and 'tenantId' in kwargs:
             tenant_id = kwargs['tenantId']
-        if 'aadClientCertPassword' in kwargs:
+        if tenant_id is None:
+            raise TypeError("Missing 'tenant_id' argument")
+        if aad_client_cert_password is None and 'aadClientCertPassword' in kwargs:
             aad_client_cert_password = kwargs['aadClientCertPassword']
-        if 'aadClientCertPath' in kwargs:
+        if aad_client_cert_path is None and 'aadClientCertPath' in kwargs:
             aad_client_cert_path = kwargs['aadClientCertPath']
-        if 'cloudProviderBackoff' in kwargs:
+        if cloud_provider_backoff is None and 'cloudProviderBackoff' in kwargs:
             cloud_provider_backoff = kwargs['cloudProviderBackoff']
-        if 'cloudProviderBackoffDuration' in kwargs:
+        if cloud_provider_backoff_duration is None and 'cloudProviderBackoffDuration' in kwargs:
             cloud_provider_backoff_duration = kwargs['cloudProviderBackoffDuration']
-        if 'cloudProviderBackoffExponent' in kwargs:
+        if cloud_provider_backoff_exponent is None and 'cloudProviderBackoffExponent' in kwargs:
             cloud_provider_backoff_exponent = kwargs['cloudProviderBackoffExponent']
-        if 'cloudProviderBackoffJitter' in kwargs:
+        if cloud_provider_backoff_jitter is None and 'cloudProviderBackoffJitter' in kwargs:
             cloud_provider_backoff_jitter = kwargs['cloudProviderBackoffJitter']
-        if 'cloudProviderBackoffRetries' in kwargs:
+        if cloud_provider_backoff_retries is None and 'cloudProviderBackoffRetries' in kwargs:
             cloud_provider_backoff_retries = kwargs['cloudProviderBackoffRetries']
-        if 'cloudProviderRateLimit' in kwargs:
+        if cloud_provider_rate_limit is None and 'cloudProviderRateLimit' in kwargs:
             cloud_provider_rate_limit = kwargs['cloudProviderRateLimit']
-        if 'cloudProviderRateLimitBucket' in kwargs:
+        if cloud_provider_rate_limit_bucket is None and 'cloudProviderRateLimitBucket' in kwargs:
             cloud_provider_rate_limit_bucket = kwargs['cloudProviderRateLimitBucket']
-        if 'cloudProviderRateLimitQps' in kwargs:
+        if cloud_provider_rate_limit_qps is None and 'cloudProviderRateLimitQps' in kwargs:
             cloud_provider_rate_limit_qps = kwargs['cloudProviderRateLimitQps']
-        if 'loadBalancerSku' in kwargs:
+        if load_balancer_sku is None and 'loadBalancerSku' in kwargs:
             load_balancer_sku = kwargs['loadBalancerSku']
-        if 'maximumLoadBalancerRuleCount' in kwargs:
+        if maximum_load_balancer_rule_count is None and 'maximumLoadBalancerRuleCount' in kwargs:
             maximum_load_balancer_rule_count = kwargs['maximumLoadBalancerRuleCount']
-        if 'primaryAvailabilitySetName' in kwargs:
+        if primary_availability_set_name is None and 'primaryAvailabilitySetName' in kwargs:
             primary_availability_set_name = kwargs['primaryAvailabilitySetName']
-        if 'primaryScaleSetName' in kwargs:
+        if primary_scale_set_name is None and 'primaryScaleSetName' in kwargs:
             primary_scale_set_name = kwargs['primaryScaleSetName']
-        if 'resourceGroup' in kwargs:
+        if resource_group is None and 'resourceGroup' in kwargs:
             resource_group = kwargs['resourceGroup']
-        if 'routeTableName' in kwargs:
+        if route_table_name is None and 'routeTableName' in kwargs:
             route_table_name = kwargs['routeTableName']
-        if 'securityGroupName' in kwargs:
+        if security_group_name is None and 'securityGroupName' in kwargs:
             security_group_name = kwargs['securityGroupName']
-        if 'subnetName' in kwargs:
+        if subnet_name is None and 'subnetName' in kwargs:
             subnet_name = kwargs['subnetName']
-        if 'useInstanceMetadata' in kwargs:
+        if use_instance_metadata is None and 'useInstanceMetadata' in kwargs:
             use_instance_metadata = kwargs['useInstanceMetadata']
-        if 'useManagedIdentityExtension' in kwargs:
+        if use_managed_identity_extension is None and 'useManagedIdentityExtension' in kwargs:
             use_managed_identity_extension = kwargs['useManagedIdentityExtension']
-        if 'vmType' in kwargs:
+        if vm_type is None and 'vmType' in kwargs:
             vm_type = kwargs['vmType']
-        if 'vnetName' in kwargs:
+        if vnet_name is None and 'vnetName' in kwargs:
             vnet_name = kwargs['vnetName']
-        if 'vnetResourceGroup' in kwargs:
+        if vnet_resource_group is None and 'vnetResourceGroup' in kwargs:
             vnet_resource_group = kwargs['vnetResourceGroup']
 
         _setter("aad_client_id", aad_client_id)
@@ -10675,18 +10883,20 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProvider(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             global_: 'outputs.ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal',
+             global_: Optional['outputs.ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal'] = None,
              block_storage: Optional['outputs.ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage'] = None,
              load_balancer: Optional['outputs.ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer'] = None,
              metadata: Optional['outputs.ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata'] = None,
              route: Optional['outputs.ClusterRkeConfigCloudProviderOpenstackCloudProviderRoute'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'global' in kwargs:
+        if global_ is None and 'global' in kwargs:
             global_ = kwargs['global']
-        if 'blockStorage' in kwargs:
+        if global_ is None:
+            raise TypeError("Missing 'global_' argument")
+        if block_storage is None and 'blockStorage' in kwargs:
             block_storage = kwargs['blockStorage']
-        if 'loadBalancer' in kwargs:
+        if load_balancer is None and 'loadBalancer' in kwargs:
             load_balancer = kwargs['loadBalancer']
 
         _setter("global_", global_)
@@ -10784,13 +10994,13 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage(dict):
              bs_version: Optional[str] = None,
              ignore_volume_az: Optional[bool] = None,
              trust_device_path: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bsVersion' in kwargs:
+        if bs_version is None and 'bsVersion' in kwargs:
             bs_version = kwargs['bsVersion']
-        if 'ignoreVolumeAz' in kwargs:
+        if ignore_volume_az is None and 'ignoreVolumeAz' in kwargs:
             ignore_volume_az = kwargs['ignoreVolumeAz']
-        if 'trustDevicePath' in kwargs:
+        if trust_device_path is None and 'trustDevicePath' in kwargs:
             trust_device_path = kwargs['trustDevicePath']
 
         if bs_version is not None:
@@ -10895,9 +11105,9 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             auth_url: str,
-             password: str,
-             username: str,
+             auth_url: Optional[str] = None,
+             password: Optional[str] = None,
+             username: Optional[str] = None,
              ca_file: Optional[str] = None,
              domain_id: Optional[str] = None,
              domain_name: Optional[str] = None,
@@ -10905,21 +11115,27 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal(dict):
              tenant_id: Optional[str] = None,
              tenant_name: Optional[str] = None,
              trust_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'authUrl' in kwargs:
+        if auth_url is None and 'authUrl' in kwargs:
             auth_url = kwargs['authUrl']
-        if 'caFile' in kwargs:
+        if auth_url is None:
+            raise TypeError("Missing 'auth_url' argument")
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+        if ca_file is None and 'caFile' in kwargs:
             ca_file = kwargs['caFile']
-        if 'domainId' in kwargs:
+        if domain_id is None and 'domainId' in kwargs:
             domain_id = kwargs['domainId']
-        if 'domainName' in kwargs:
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'tenantId' in kwargs:
+        if tenant_id is None and 'tenantId' in kwargs:
             tenant_id = kwargs['tenantId']
-        if 'tenantName' in kwargs:
+        if tenant_name is None and 'tenantName' in kwargs:
             tenant_name = kwargs['tenantName']
-        if 'trustId' in kwargs:
+        if trust_id is None and 'trustId' in kwargs:
             trust_id = kwargs['trustId']
 
         _setter("auth_url", auth_url)
@@ -11113,29 +11329,29 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer(dict):
              monitor_timeout: Optional[str] = None,
              subnet_id: Optional[str] = None,
              use_octavia: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createMonitor' in kwargs:
+        if create_monitor is None and 'createMonitor' in kwargs:
             create_monitor = kwargs['createMonitor']
-        if 'floatingNetworkId' in kwargs:
+        if floating_network_id is None and 'floatingNetworkId' in kwargs:
             floating_network_id = kwargs['floatingNetworkId']
-        if 'lbMethod' in kwargs:
+        if lb_method is None and 'lbMethod' in kwargs:
             lb_method = kwargs['lbMethod']
-        if 'lbProvider' in kwargs:
+        if lb_provider is None and 'lbProvider' in kwargs:
             lb_provider = kwargs['lbProvider']
-        if 'lbVersion' in kwargs:
+        if lb_version is None and 'lbVersion' in kwargs:
             lb_version = kwargs['lbVersion']
-        if 'manageSecurityGroups' in kwargs:
+        if manage_security_groups is None and 'manageSecurityGroups' in kwargs:
             manage_security_groups = kwargs['manageSecurityGroups']
-        if 'monitorDelay' in kwargs:
+        if monitor_delay is None and 'monitorDelay' in kwargs:
             monitor_delay = kwargs['monitorDelay']
-        if 'monitorMaxRetries' in kwargs:
+        if monitor_max_retries is None and 'monitorMaxRetries' in kwargs:
             monitor_max_retries = kwargs['monitorMaxRetries']
-        if 'monitorTimeout' in kwargs:
+        if monitor_timeout is None and 'monitorTimeout' in kwargs:
             monitor_timeout = kwargs['monitorTimeout']
-        if 'subnetId' in kwargs:
+        if subnet_id is None and 'subnetId' in kwargs:
             subnet_id = kwargs['subnetId']
-        if 'useOctavia' in kwargs:
+        if use_octavia is None and 'useOctavia' in kwargs:
             use_octavia = kwargs['useOctavia']
 
         if create_monitor is not None:
@@ -11288,11 +11504,11 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata(dict):
              _setter: Callable[[Any, Any], None],
              request_timeout: Optional[int] = None,
              search_order: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'requestTimeout' in kwargs:
+        if request_timeout is None and 'requestTimeout' in kwargs:
             request_timeout = kwargs['requestTimeout']
-        if 'searchOrder' in kwargs:
+        if search_order is None and 'searchOrder' in kwargs:
             search_order = kwargs['searchOrder']
 
         if request_timeout is not None:
@@ -11349,9 +11565,9 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderRoute(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              router_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'routerId' in kwargs:
+        if router_id is None and 'routerId' in kwargs:
             router_id = kwargs['routerId']
 
         if router_id is not None:
@@ -11411,16 +11627,20 @@ class ClusterRkeConfigCloudProviderVsphereCloudProvider(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             virtual_centers: Sequence['outputs.ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter'],
-             workspace: 'outputs.ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace',
+             virtual_centers: Optional[Sequence['outputs.ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter']] = None,
+             workspace: Optional['outputs.ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace'] = None,
              disk: Optional['outputs.ClusterRkeConfigCloudProviderVsphereCloudProviderDisk'] = None,
              global_: Optional['outputs.ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal'] = None,
              network: Optional['outputs.ClusterRkeConfigCloudProviderVsphereCloudProviderNetwork'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'virtualCenters' in kwargs:
+        if virtual_centers is None and 'virtualCenters' in kwargs:
             virtual_centers = kwargs['virtualCenters']
-        if 'global' in kwargs:
+        if virtual_centers is None:
+            raise TypeError("Missing 'virtual_centers' argument")
+        if workspace is None:
+            raise TypeError("Missing 'workspace' argument")
+        if global_ is None and 'global' in kwargs:
             global_ = kwargs['global']
 
         _setter("virtual_centers", virtual_centers)
@@ -11505,9 +11725,9 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderDisk(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              scsi_controller_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'scsiControllerType' in kwargs:
+        if scsi_controller_type is None and 'scsiControllerType' in kwargs:
             scsi_controller_type = kwargs['scsiControllerType']
 
         if scsi_controller_type is not None:
@@ -11576,11 +11796,11 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal(dict):
              port: Optional[str] = None,
              soap_roundtrip_count: Optional[int] = None,
              user: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'insecureFlag' in kwargs:
+        if insecure_flag is None and 'insecureFlag' in kwargs:
             insecure_flag = kwargs['insecureFlag']
-        if 'soapRoundtripCount' in kwargs:
+        if soap_roundtrip_count is None and 'soapRoundtripCount' in kwargs:
             soap_roundtrip_count = kwargs['soapRoundtripCount']
 
         if datacenters is not None:
@@ -11677,9 +11897,9 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderNetwork(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              public_network: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'publicNetwork' in kwargs:
+        if public_network is None and 'publicNetwork' in kwargs:
             public_network = kwargs['publicNetwork']
 
         if public_network is not None:
@@ -11740,15 +11960,23 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             datacenters: str,
-             name: str,
-             password: str,
-             user: str,
+             datacenters: Optional[str] = None,
+             name: Optional[str] = None,
+             password: Optional[str] = None,
+             user: Optional[str] = None,
              port: Optional[str] = None,
              soap_roundtrip_count: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'soapRoundtripCount' in kwargs:
+        if datacenters is None:
+            raise TypeError("Missing 'datacenters' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+        if user is None:
+            raise TypeError("Missing 'user' argument")
+        if soap_roundtrip_count is None and 'soapRoundtripCount' in kwargs:
             soap_roundtrip_count = kwargs['soapRoundtripCount']
 
         _setter("datacenters", datacenters)
@@ -11854,16 +12082,22 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             datacenter: str,
-             folder: str,
-             server: str,
+             datacenter: Optional[str] = None,
+             folder: Optional[str] = None,
+             server: Optional[str] = None,
              default_datastore: Optional[str] = None,
              resourcepool_path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'defaultDatastore' in kwargs:
+        if datacenter is None:
+            raise TypeError("Missing 'datacenter' argument")
+        if folder is None:
+            raise TypeError("Missing 'folder' argument")
+        if server is None:
+            raise TypeError("Missing 'server' argument")
+        if default_datastore is None and 'defaultDatastore' in kwargs:
             default_datastore = kwargs['defaultDatastore']
-        if 'resourcepoolPath' in kwargs:
+        if resourcepool_path is None and 'resourcepoolPath' in kwargs:
             resourcepool_path = kwargs['resourcepoolPath']
 
         _setter("datacenter", datacenter)
@@ -11987,17 +12221,17 @@ class ClusterRkeConfigDns(dict):
              tolerations: Optional[Sequence['outputs.ClusterRkeConfigDnsToleration']] = None,
              update_strategy: Optional['outputs.ClusterRkeConfigDnsUpdateStrategy'] = None,
              upstream_nameservers: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'linearAutoscalerParams' in kwargs:
+        if linear_autoscaler_params is None and 'linearAutoscalerParams' in kwargs:
             linear_autoscaler_params = kwargs['linearAutoscalerParams']
-        if 'nodeSelector' in kwargs:
+        if node_selector is None and 'nodeSelector' in kwargs:
             node_selector = kwargs['nodeSelector']
-        if 'reverseCidrs' in kwargs:
+        if reverse_cidrs is None and 'reverseCidrs' in kwargs:
             reverse_cidrs = kwargs['reverseCidrs']
-        if 'updateStrategy' in kwargs:
+        if update_strategy is None and 'updateStrategy' in kwargs:
             update_strategy = kwargs['updateStrategy']
-        if 'upstreamNameservers' in kwargs:
+        if upstream_nameservers is None and 'upstreamNameservers' in kwargs:
             upstream_nameservers = kwargs['upstreamNameservers']
 
         if linear_autoscaler_params is not None:
@@ -12144,13 +12378,13 @@ class ClusterRkeConfigDnsLinearAutoscalerParams(dict):
              min: Optional[int] = None,
              nodes_per_replica: Optional[float] = None,
              prevent_single_point_failure: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'coresPerReplica' in kwargs:
+        if cores_per_replica is None and 'coresPerReplica' in kwargs:
             cores_per_replica = kwargs['coresPerReplica']
-        if 'nodesPerReplica' in kwargs:
+        if nodes_per_replica is None and 'nodesPerReplica' in kwargs:
             nodes_per_replica = kwargs['nodesPerReplica']
-        if 'preventSinglePointFailure' in kwargs:
+        if prevent_single_point_failure is None and 'preventSinglePointFailure' in kwargs:
             prevent_single_point_failure = kwargs['preventSinglePointFailure']
 
         if cores_per_replica is not None:
@@ -12243,11 +12477,11 @@ class ClusterRkeConfigDnsNodelocal(dict):
              _setter: Callable[[Any, Any], None],
              ip_address: Optional[str] = None,
              node_selector: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ipAddress' in kwargs:
+        if ip_address is None and 'ipAddress' in kwargs:
             ip_address = kwargs['ipAddress']
-        if 'nodeSelector' in kwargs:
+        if node_selector is None and 'nodeSelector' in kwargs:
             node_selector = kwargs['nodeSelector']
 
         if ip_address is not None:
@@ -12298,13 +12532,15 @@ class ClusterRkeConfigDnsToleration(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
+             key: Optional[str] = None,
              effect: Optional[str] = None,
              operator: Optional[str] = None,
              seconds: Optional[int] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
 
         _setter("key", key)
         if effect is not None:
@@ -12393,9 +12629,9 @@ class ClusterRkeConfigDnsUpdateStrategy(dict):
              _setter: Callable[[Any, Any], None],
              rolling_update: Optional['outputs.ClusterRkeConfigDnsUpdateStrategyRollingUpdate'] = None,
              strategy: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'rollingUpdate' in kwargs:
+        if rolling_update is None and 'rollingUpdate' in kwargs:
             rolling_update = kwargs['rollingUpdate']
 
         if rolling_update is not None:
@@ -12458,11 +12694,11 @@ class ClusterRkeConfigDnsUpdateStrategyRollingUpdate(dict):
              _setter: Callable[[Any, Any], None],
              max_surge: Optional[int] = None,
              max_unavailable: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'maxSurge' in kwargs:
+        if max_surge is None and 'maxSurge' in kwargs:
             max_surge = kwargs['maxSurge']
-        if 'maxUnavailable' in kwargs:
+        if max_unavailable is None and 'maxUnavailable' in kwargs:
             max_unavailable = kwargs['maxUnavailable']
 
         if max_surge is not None:
@@ -12573,23 +12809,23 @@ class ClusterRkeConfigIngress(dict):
              provider: Optional[str] = None,
              tolerations: Optional[Sequence['outputs.ClusterRkeConfigIngressToleration']] = None,
              update_strategy: Optional['outputs.ClusterRkeConfigIngressUpdateStrategy'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'defaultBackend' in kwargs:
+        if default_backend is None and 'defaultBackend' in kwargs:
             default_backend = kwargs['defaultBackend']
-        if 'dnsPolicy' in kwargs:
+        if dns_policy is None and 'dnsPolicy' in kwargs:
             dns_policy = kwargs['dnsPolicy']
-        if 'extraArgs' in kwargs:
+        if extra_args is None and 'extraArgs' in kwargs:
             extra_args = kwargs['extraArgs']
-        if 'httpPort' in kwargs:
+        if http_port is None and 'httpPort' in kwargs:
             http_port = kwargs['httpPort']
-        if 'httpsPort' in kwargs:
+        if https_port is None and 'httpsPort' in kwargs:
             https_port = kwargs['httpsPort']
-        if 'networkMode' in kwargs:
+        if network_mode is None and 'networkMode' in kwargs:
             network_mode = kwargs['networkMode']
-        if 'nodeSelector' in kwargs:
+        if node_selector is None and 'nodeSelector' in kwargs:
             node_selector = kwargs['nodeSelector']
-        if 'updateStrategy' in kwargs:
+        if update_strategy is None and 'updateStrategy' in kwargs:
             update_strategy = kwargs['updateStrategy']
 
         if default_backend is not None:
@@ -12730,13 +12966,15 @@ class ClusterRkeConfigIngressToleration(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
+             key: Optional[str] = None,
              effect: Optional[str] = None,
              operator: Optional[str] = None,
              seconds: Optional[int] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
 
         _setter("key", key)
         if effect is not None:
@@ -12825,9 +13063,9 @@ class ClusterRkeConfigIngressUpdateStrategy(dict):
              _setter: Callable[[Any, Any], None],
              rolling_update: Optional['outputs.ClusterRkeConfigIngressUpdateStrategyRollingUpdate'] = None,
              strategy: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'rollingUpdate' in kwargs:
+        if rolling_update is None and 'rollingUpdate' in kwargs:
             rolling_update = kwargs['rollingUpdate']
 
         if rolling_update is not None:
@@ -12884,9 +13122,9 @@ class ClusterRkeConfigIngressUpdateStrategyRollingUpdate(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              max_unavailable: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'maxUnavailable' in kwargs:
+        if max_unavailable is None and 'maxUnavailable' in kwargs:
             max_unavailable = kwargs['maxUnavailable']
 
         if max_unavailable is not None:
@@ -12955,11 +13193,11 @@ class ClusterRkeConfigMonitoring(dict):
              replicas: Optional[int] = None,
              tolerations: Optional[Sequence['outputs.ClusterRkeConfigMonitoringToleration']] = None,
              update_strategy: Optional['outputs.ClusterRkeConfigMonitoringUpdateStrategy'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'nodeSelector' in kwargs:
+        if node_selector is None and 'nodeSelector' in kwargs:
             node_selector = kwargs['nodeSelector']
-        if 'updateStrategy' in kwargs:
+        if update_strategy is None and 'updateStrategy' in kwargs:
             update_strategy = kwargs['updateStrategy']
 
         if node_selector is not None:
@@ -13050,13 +13288,15 @@ class ClusterRkeConfigMonitoringToleration(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
+             key: Optional[str] = None,
              effect: Optional[str] = None,
              operator: Optional[str] = None,
              seconds: Optional[int] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
 
         _setter("key", key)
         if effect is not None:
@@ -13145,9 +13385,9 @@ class ClusterRkeConfigMonitoringUpdateStrategy(dict):
              _setter: Callable[[Any, Any], None],
              rolling_update: Optional['outputs.ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate'] = None,
              strategy: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'rollingUpdate' in kwargs:
+        if rolling_update is None and 'rollingUpdate' in kwargs:
             rolling_update = kwargs['rollingUpdate']
 
         if rolling_update is not None:
@@ -13210,11 +13450,11 @@ class ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate(dict):
              _setter: Callable[[Any, Any], None],
              max_surge: Optional[int] = None,
              max_unavailable: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'maxSurge' in kwargs:
+        if max_surge is None and 'maxSurge' in kwargs:
             max_surge = kwargs['maxSurge']
-        if 'maxUnavailable' in kwargs:
+        if max_unavailable is None and 'maxUnavailable' in kwargs:
             max_unavailable = kwargs['maxUnavailable']
 
         if max_surge is not None:
@@ -13311,17 +13551,17 @@ class ClusterRkeConfigNetwork(dict):
              plugin: Optional[str] = None,
              tolerations: Optional[Sequence['outputs.ClusterRkeConfigNetworkToleration']] = None,
              weave_network_provider: Optional['outputs.ClusterRkeConfigNetworkWeaveNetworkProvider'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aciNetworkProvider' in kwargs:
+        if aci_network_provider is None and 'aciNetworkProvider' in kwargs:
             aci_network_provider = kwargs['aciNetworkProvider']
-        if 'calicoNetworkProvider' in kwargs:
+        if calico_network_provider is None and 'calicoNetworkProvider' in kwargs:
             calico_network_provider = kwargs['calicoNetworkProvider']
-        if 'canalNetworkProvider' in kwargs:
+        if canal_network_provider is None and 'canalNetworkProvider' in kwargs:
             canal_network_provider = kwargs['canalNetworkProvider']
-        if 'flannelNetworkProvider' in kwargs:
+        if flannel_network_provider is None and 'flannelNetworkProvider' in kwargs:
             flannel_network_provider = kwargs['flannelNetworkProvider']
-        if 'weaveNetworkProvider' in kwargs:
+        if weave_network_provider is None and 'weaveNetworkProvider' in kwargs:
             weave_network_provider = kwargs['weaveNetworkProvider']
 
         if aci_network_provider is not None:
@@ -13802,26 +14042,26 @@ class ClusterRkeConfigNetworkAciNetworkProvider(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             aep: str,
-             apic_hosts: Sequence[str],
-             apic_user_crt: str,
-             apic_user_key: str,
-             apic_user_name: str,
-             encap_type: str,
-             extern_dynamic: str,
-             extern_static: str,
-             kube_api_vlan: str,
-             l3out: str,
-             l3out_external_networks: Sequence[str],
-             mcast_range_end: str,
-             mcast_range_start: str,
-             node_subnet: str,
-             node_svc_subnet: str,
-             service_vlan: str,
-             system_id: str,
-             token: str,
-             vrf_name: str,
-             vrf_tenant: str,
+             aep: Optional[str] = None,
+             apic_hosts: Optional[Sequence[str]] = None,
+             apic_user_crt: Optional[str] = None,
+             apic_user_key: Optional[str] = None,
+             apic_user_name: Optional[str] = None,
+             encap_type: Optional[str] = None,
+             extern_dynamic: Optional[str] = None,
+             extern_static: Optional[str] = None,
+             kube_api_vlan: Optional[str] = None,
+             l3out: Optional[str] = None,
+             l3out_external_networks: Optional[Sequence[str]] = None,
+             mcast_range_end: Optional[str] = None,
+             mcast_range_start: Optional[str] = None,
+             node_subnet: Optional[str] = None,
+             node_svc_subnet: Optional[str] = None,
+             service_vlan: Optional[str] = None,
+             system_id: Optional[str] = None,
+             token: Optional[str] = None,
+             vrf_name: Optional[str] = None,
+             vrf_tenant: Optional[str] = None,
              apic_refresh_ticker_adjust: Optional[str] = None,
              apic_refresh_time: Optional[str] = None,
              apic_subscription_delay: Optional[str] = None,
@@ -13876,145 +14116,185 @@ class ClusterRkeConfigNetworkAciNetworkProvider(dict):
              use_privileged_container: Optional[str] = None,
              vmm_controller: Optional[str] = None,
              vmm_domain: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'apicHosts' in kwargs:
+        if aep is None:
+            raise TypeError("Missing 'aep' argument")
+        if apic_hosts is None and 'apicHosts' in kwargs:
             apic_hosts = kwargs['apicHosts']
-        if 'apicUserCrt' in kwargs:
+        if apic_hosts is None:
+            raise TypeError("Missing 'apic_hosts' argument")
+        if apic_user_crt is None and 'apicUserCrt' in kwargs:
             apic_user_crt = kwargs['apicUserCrt']
-        if 'apicUserKey' in kwargs:
+        if apic_user_crt is None:
+            raise TypeError("Missing 'apic_user_crt' argument")
+        if apic_user_key is None and 'apicUserKey' in kwargs:
             apic_user_key = kwargs['apicUserKey']
-        if 'apicUserName' in kwargs:
+        if apic_user_key is None:
+            raise TypeError("Missing 'apic_user_key' argument")
+        if apic_user_name is None and 'apicUserName' in kwargs:
             apic_user_name = kwargs['apicUserName']
-        if 'encapType' in kwargs:
+        if apic_user_name is None:
+            raise TypeError("Missing 'apic_user_name' argument")
+        if encap_type is None and 'encapType' in kwargs:
             encap_type = kwargs['encapType']
-        if 'externDynamic' in kwargs:
+        if encap_type is None:
+            raise TypeError("Missing 'encap_type' argument")
+        if extern_dynamic is None and 'externDynamic' in kwargs:
             extern_dynamic = kwargs['externDynamic']
-        if 'externStatic' in kwargs:
+        if extern_dynamic is None:
+            raise TypeError("Missing 'extern_dynamic' argument")
+        if extern_static is None and 'externStatic' in kwargs:
             extern_static = kwargs['externStatic']
-        if 'kubeApiVlan' in kwargs:
+        if extern_static is None:
+            raise TypeError("Missing 'extern_static' argument")
+        if kube_api_vlan is None and 'kubeApiVlan' in kwargs:
             kube_api_vlan = kwargs['kubeApiVlan']
-        if 'l3outExternalNetworks' in kwargs:
+        if kube_api_vlan is None:
+            raise TypeError("Missing 'kube_api_vlan' argument")
+        if l3out is None:
+            raise TypeError("Missing 'l3out' argument")
+        if l3out_external_networks is None and 'l3outExternalNetworks' in kwargs:
             l3out_external_networks = kwargs['l3outExternalNetworks']
-        if 'mcastRangeEnd' in kwargs:
+        if l3out_external_networks is None:
+            raise TypeError("Missing 'l3out_external_networks' argument")
+        if mcast_range_end is None and 'mcastRangeEnd' in kwargs:
             mcast_range_end = kwargs['mcastRangeEnd']
-        if 'mcastRangeStart' in kwargs:
+        if mcast_range_end is None:
+            raise TypeError("Missing 'mcast_range_end' argument")
+        if mcast_range_start is None and 'mcastRangeStart' in kwargs:
             mcast_range_start = kwargs['mcastRangeStart']
-        if 'nodeSubnet' in kwargs:
+        if mcast_range_start is None:
+            raise TypeError("Missing 'mcast_range_start' argument")
+        if node_subnet is None and 'nodeSubnet' in kwargs:
             node_subnet = kwargs['nodeSubnet']
-        if 'nodeSvcSubnet' in kwargs:
+        if node_subnet is None:
+            raise TypeError("Missing 'node_subnet' argument")
+        if node_svc_subnet is None and 'nodeSvcSubnet' in kwargs:
             node_svc_subnet = kwargs['nodeSvcSubnet']
-        if 'serviceVlan' in kwargs:
+        if node_svc_subnet is None:
+            raise TypeError("Missing 'node_svc_subnet' argument")
+        if service_vlan is None and 'serviceVlan' in kwargs:
             service_vlan = kwargs['serviceVlan']
-        if 'systemId' in kwargs:
+        if service_vlan is None:
+            raise TypeError("Missing 'service_vlan' argument")
+        if system_id is None and 'systemId' in kwargs:
             system_id = kwargs['systemId']
-        if 'vrfName' in kwargs:
+        if system_id is None:
+            raise TypeError("Missing 'system_id' argument")
+        if token is None:
+            raise TypeError("Missing 'token' argument")
+        if vrf_name is None and 'vrfName' in kwargs:
             vrf_name = kwargs['vrfName']
-        if 'vrfTenant' in kwargs:
+        if vrf_name is None:
+            raise TypeError("Missing 'vrf_name' argument")
+        if vrf_tenant is None and 'vrfTenant' in kwargs:
             vrf_tenant = kwargs['vrfTenant']
-        if 'apicRefreshTickerAdjust' in kwargs:
+        if vrf_tenant is None:
+            raise TypeError("Missing 'vrf_tenant' argument")
+        if apic_refresh_ticker_adjust is None and 'apicRefreshTickerAdjust' in kwargs:
             apic_refresh_ticker_adjust = kwargs['apicRefreshTickerAdjust']
-        if 'apicRefreshTime' in kwargs:
+        if apic_refresh_time is None and 'apicRefreshTime' in kwargs:
             apic_refresh_time = kwargs['apicRefreshTime']
-        if 'apicSubscriptionDelay' in kwargs:
+        if apic_subscription_delay is None and 'apicSubscriptionDelay' in kwargs:
             apic_subscription_delay = kwargs['apicSubscriptionDelay']
-        if 'controllerLogLevel' in kwargs:
+        if controller_log_level is None and 'controllerLogLevel' in kwargs:
             controller_log_level = kwargs['controllerLogLevel']
-        if 'disablePeriodicSnatGlobalInfoSync' in kwargs:
+        if disable_periodic_snat_global_info_sync is None and 'disablePeriodicSnatGlobalInfoSync' in kwargs:
             disable_periodic_snat_global_info_sync = kwargs['disablePeriodicSnatGlobalInfoSync']
-        if 'disableWaitForNetwork' in kwargs:
+        if disable_wait_for_network is None and 'disableWaitForNetwork' in kwargs:
             disable_wait_for_network = kwargs['disableWaitForNetwork']
-        if 'dropLogEnable' in kwargs:
+        if drop_log_enable is None and 'dropLogEnable' in kwargs:
             drop_log_enable = kwargs['dropLogEnable']
-        if 'durationWaitForNetwork' in kwargs:
+        if duration_wait_for_network is None and 'durationWaitForNetwork' in kwargs:
             duration_wait_for_network = kwargs['durationWaitForNetwork']
-        if 'enableEndpointSlice' in kwargs:
+        if enable_endpoint_slice is None and 'enableEndpointSlice' in kwargs:
             enable_endpoint_slice = kwargs['enableEndpointSlice']
-        if 'epRegistry' in kwargs:
+        if ep_registry is None and 'epRegistry' in kwargs:
             ep_registry = kwargs['epRegistry']
-        if 'gbpPodSubnet' in kwargs:
+        if gbp_pod_subnet is None and 'gbpPodSubnet' in kwargs:
             gbp_pod_subnet = kwargs['gbpPodSubnet']
-        if 'hostAgentLogLevel' in kwargs:
+        if host_agent_log_level is None and 'hostAgentLogLevel' in kwargs:
             host_agent_log_level = kwargs['hostAgentLogLevel']
-        if 'imagePullPolicy' in kwargs:
+        if image_pull_policy is None and 'imagePullPolicy' in kwargs:
             image_pull_policy = kwargs['imagePullPolicy']
-        if 'imagePullSecret' in kwargs:
+        if image_pull_secret is None and 'imagePullSecret' in kwargs:
             image_pull_secret = kwargs['imagePullSecret']
-        if 'infraVlan' in kwargs:
+        if infra_vlan is None and 'infraVlan' in kwargs:
             infra_vlan = kwargs['infraVlan']
-        if 'installIstio' in kwargs:
+        if install_istio is None and 'installIstio' in kwargs:
             install_istio = kwargs['installIstio']
-        if 'istioProfile' in kwargs:
+        if istio_profile is None and 'istioProfile' in kwargs:
             istio_profile = kwargs['istioProfile']
-        if 'kafkaBrokers' in kwargs:
+        if kafka_brokers is None and 'kafkaBrokers' in kwargs:
             kafka_brokers = kwargs['kafkaBrokers']
-        if 'kafkaClientCrt' in kwargs:
+        if kafka_client_crt is None and 'kafkaClientCrt' in kwargs:
             kafka_client_crt = kwargs['kafkaClientCrt']
-        if 'kafkaClientKey' in kwargs:
+        if kafka_client_key is None and 'kafkaClientKey' in kwargs:
             kafka_client_key = kwargs['kafkaClientKey']
-        if 'maxNodesSvcGraph' in kwargs:
+        if max_nodes_svc_graph is None and 'maxNodesSvcGraph' in kwargs:
             max_nodes_svc_graph = kwargs['maxNodesSvcGraph']
-        if 'mtuHeadRoom' in kwargs:
+        if mtu_head_room is None and 'mtuHeadRoom' in kwargs:
             mtu_head_room = kwargs['mtuHeadRoom']
-        if 'multusDisable' in kwargs:
+        if multus_disable is None and 'multusDisable' in kwargs:
             multus_disable = kwargs['multusDisable']
-        if 'noPriorityClass' in kwargs:
+        if no_priority_class is None and 'noPriorityClass' in kwargs:
             no_priority_class = kwargs['noPriorityClass']
-        if 'nodePodIfEnable' in kwargs:
+        if node_pod_if_enable is None and 'nodePodIfEnable' in kwargs:
             node_pod_if_enable = kwargs['nodePodIfEnable']
-        if 'opflexClientSsl' in kwargs:
+        if opflex_client_ssl is None and 'opflexClientSsl' in kwargs:
             opflex_client_ssl = kwargs['opflexClientSsl']
-        if 'opflexDeviceDeleteTimeout' in kwargs:
+        if opflex_device_delete_timeout is None and 'opflexDeviceDeleteTimeout' in kwargs:
             opflex_device_delete_timeout = kwargs['opflexDeviceDeleteTimeout']
-        if 'opflexLogLevel' in kwargs:
+        if opflex_log_level is None and 'opflexLogLevel' in kwargs:
             opflex_log_level = kwargs['opflexLogLevel']
-        if 'opflexMode' in kwargs:
+        if opflex_mode is None and 'opflexMode' in kwargs:
             opflex_mode = kwargs['opflexMode']
-        if 'opflexServerPort' in kwargs:
+        if opflex_server_port is None and 'opflexServerPort' in kwargs:
             opflex_server_port = kwargs['opflexServerPort']
-        if 'overlayVrfName' in kwargs:
+        if overlay_vrf_name is None and 'overlayVrfName' in kwargs:
             overlay_vrf_name = kwargs['overlayVrfName']
-        if 'ovsMemoryLimit' in kwargs:
+        if ovs_memory_limit is None and 'ovsMemoryLimit' in kwargs:
             ovs_memory_limit = kwargs['ovsMemoryLimit']
-        if 'pbrTrackingNonSnat' in kwargs:
+        if pbr_tracking_non_snat is None and 'pbrTrackingNonSnat' in kwargs:
             pbr_tracking_non_snat = kwargs['pbrTrackingNonSnat']
-        if 'podSubnetChunkSize' in kwargs:
+        if pod_subnet_chunk_size is None and 'podSubnetChunkSize' in kwargs:
             pod_subnet_chunk_size = kwargs['podSubnetChunkSize']
-        if 'runGbpContainer' in kwargs:
+        if run_gbp_container is None and 'runGbpContainer' in kwargs:
             run_gbp_container = kwargs['runGbpContainer']
-        if 'runOpflexServerContainer' in kwargs:
+        if run_opflex_server_container is None and 'runOpflexServerContainer' in kwargs:
             run_opflex_server_container = kwargs['runOpflexServerContainer']
-        if 'serviceMonitorInterval' in kwargs:
+        if service_monitor_interval is None and 'serviceMonitorInterval' in kwargs:
             service_monitor_interval = kwargs['serviceMonitorInterval']
-        if 'snatContractScope' in kwargs:
+        if snat_contract_scope is None and 'snatContractScope' in kwargs:
             snat_contract_scope = kwargs['snatContractScope']
-        if 'snatNamespace' in kwargs:
+        if snat_namespace is None and 'snatNamespace' in kwargs:
             snat_namespace = kwargs['snatNamespace']
-        if 'snatPortRangeEnd' in kwargs:
+        if snat_port_range_end is None and 'snatPortRangeEnd' in kwargs:
             snat_port_range_end = kwargs['snatPortRangeEnd']
-        if 'snatPortRangeStart' in kwargs:
+        if snat_port_range_start is None and 'snatPortRangeStart' in kwargs:
             snat_port_range_start = kwargs['snatPortRangeStart']
-        if 'snatPortsPerNode' in kwargs:
+        if snat_ports_per_node is None and 'snatPortsPerNode' in kwargs:
             snat_ports_per_node = kwargs['snatPortsPerNode']
-        if 'sriovEnable' in kwargs:
+        if sriov_enable is None and 'sriovEnable' in kwargs:
             sriov_enable = kwargs['sriovEnable']
-        if 'subnetDomainName' in kwargs:
+        if subnet_domain_name is None and 'subnetDomainName' in kwargs:
             subnet_domain_name = kwargs['subnetDomainName']
-        if 'useAciAnywhereCrd' in kwargs:
+        if use_aci_anywhere_crd is None and 'useAciAnywhereCrd' in kwargs:
             use_aci_anywhere_crd = kwargs['useAciAnywhereCrd']
-        if 'useAciCniPriorityClass' in kwargs:
+        if use_aci_cni_priority_class is None and 'useAciCniPriorityClass' in kwargs:
             use_aci_cni_priority_class = kwargs['useAciCniPriorityClass']
-        if 'useClusterRole' in kwargs:
+        if use_cluster_role is None and 'useClusterRole' in kwargs:
             use_cluster_role = kwargs['useClusterRole']
-        if 'useHostNetnsVolume' in kwargs:
+        if use_host_netns_volume is None and 'useHostNetnsVolume' in kwargs:
             use_host_netns_volume = kwargs['useHostNetnsVolume']
-        if 'useOpflexServerVolume' in kwargs:
+        if use_opflex_server_volume is None and 'useOpflexServerVolume' in kwargs:
             use_opflex_server_volume = kwargs['useOpflexServerVolume']
-        if 'usePrivilegedContainer' in kwargs:
+        if use_privileged_container is None and 'usePrivilegedContainer' in kwargs:
             use_privileged_container = kwargs['usePrivilegedContainer']
-        if 'vmmController' in kwargs:
+        if vmm_controller is None and 'vmmController' in kwargs:
             vmm_controller = kwargs['vmmController']
-        if 'vmmDomain' in kwargs:
+        if vmm_domain is None and 'vmmDomain' in kwargs:
             vmm_domain = kwargs['vmmDomain']
 
         _setter("aep", aep)
@@ -14771,9 +15051,9 @@ class ClusterRkeConfigNetworkCalicoNetworkProvider(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              cloud_provider: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cloudProvider' in kwargs:
+        if cloud_provider is None and 'cloudProvider' in kwargs:
             cloud_provider = kwargs['cloudProvider']
 
         if cloud_provider is not None:
@@ -14803,7 +15083,7 @@ class ClusterRkeConfigNetworkCanalNetworkProvider(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              iface: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if iface is not None:
@@ -14833,7 +15113,7 @@ class ClusterRkeConfigNetworkFlannelNetworkProvider(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              iface: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if iface is not None:
@@ -14874,13 +15154,15 @@ class ClusterRkeConfigNetworkToleration(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
+             key: Optional[str] = None,
              effect: Optional[str] = None,
              operator: Optional[str] = None,
              seconds: Optional[int] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
 
         _setter("key", key)
         if effect is not None:
@@ -14947,9 +15229,11 @@ class ClusterRkeConfigNetworkWeaveNetworkProvider(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             password: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             password: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if password is None:
+            raise TypeError("Missing 'password' argument")
 
         _setter("password", password)
 
@@ -15038,9 +15322,9 @@ class ClusterRkeConfigNode(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address: str,
-             roles: Sequence[str],
-             user: str,
+             address: Optional[str] = None,
+             roles: Optional[Sequence[str]] = None,
+             user: Optional[str] = None,
              docker_socket: Optional[str] = None,
              hostname_override: Optional[str] = None,
              internal_address: Optional[str] = None,
@@ -15050,21 +15334,27 @@ class ClusterRkeConfigNode(dict):
              ssh_agent_auth: Optional[bool] = None,
              ssh_key: Optional[str] = None,
              ssh_key_path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dockerSocket' in kwargs:
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if roles is None:
+            raise TypeError("Missing 'roles' argument")
+        if user is None:
+            raise TypeError("Missing 'user' argument")
+        if docker_socket is None and 'dockerSocket' in kwargs:
             docker_socket = kwargs['dockerSocket']
-        if 'hostnameOverride' in kwargs:
+        if hostname_override is None and 'hostnameOverride' in kwargs:
             hostname_override = kwargs['hostnameOverride']
-        if 'internalAddress' in kwargs:
+        if internal_address is None and 'internalAddress' in kwargs:
             internal_address = kwargs['internalAddress']
-        if 'nodeId' in kwargs:
+        if node_id is None and 'nodeId' in kwargs:
             node_id = kwargs['nodeId']
-        if 'sshAgentAuth' in kwargs:
+        if ssh_agent_auth is None and 'sshAgentAuth' in kwargs:
             ssh_agent_auth = kwargs['sshAgentAuth']
-        if 'sshKey' in kwargs:
+        if ssh_key is None and 'sshKey' in kwargs:
             ssh_key = kwargs['sshKey']
-        if 'sshKeyPath' in kwargs:
+        if ssh_key_path is None and 'sshKeyPath' in kwargs:
             ssh_key_path = kwargs['sshKeyPath']
 
         _setter("address", address)
@@ -15231,16 +15521,18 @@ class ClusterRkeConfigPrivateRegistry(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             url: str,
+             url: Optional[str] = None,
              ecr_credential_plugin: Optional['outputs.ClusterRkeConfigPrivateRegistryEcrCredentialPlugin'] = None,
              is_default: Optional[bool] = None,
              password: Optional[str] = None,
              user: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ecrCredentialPlugin' in kwargs:
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+        if ecr_credential_plugin is None and 'ecrCredentialPlugin' in kwargs:
             ecr_credential_plugin = kwargs['ecrCredentialPlugin']
-        if 'isDefault' in kwargs:
+        if is_default is None and 'isDefault' in kwargs:
             is_default = kwargs['isDefault']
 
         _setter("url", url)
@@ -15338,13 +15630,13 @@ class ClusterRkeConfigPrivateRegistryEcrCredentialPlugin(dict):
              aws_access_key_id: Optional[str] = None,
              aws_secret_access_key: Optional[str] = None,
              aws_session_token: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'awsAccessKeyId' in kwargs:
+        if aws_access_key_id is None and 'awsAccessKeyId' in kwargs:
             aws_access_key_id = kwargs['awsAccessKeyId']
-        if 'awsSecretAccessKey' in kwargs:
+        if aws_secret_access_key is None and 'awsSecretAccessKey' in kwargs:
             aws_secret_access_key = kwargs['awsSecretAccessKey']
-        if 'awsSessionToken' in kwargs:
+        if aws_session_token is None and 'awsSessionToken' in kwargs:
             aws_session_token = kwargs['awsSessionToken']
 
         if aws_access_key_id is not None:
@@ -15433,11 +15725,11 @@ class ClusterRkeConfigServices(dict):
              kubelet: Optional['outputs.ClusterRkeConfigServicesKubelet'] = None,
              kubeproxy: Optional['outputs.ClusterRkeConfigServicesKubeproxy'] = None,
              scheduler: Optional['outputs.ClusterRkeConfigServicesScheduler'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'kubeApi' in kwargs:
+        if kube_api is None and 'kubeApi' in kwargs:
             kube_api = kwargs['kubeApi']
-        if 'kubeController' in kwargs:
+        if kube_controller is None and 'kubeController' in kwargs:
             kube_controller = kwargs['kubeController']
 
         if etcd is not None:
@@ -15600,19 +15892,19 @@ class ClusterRkeConfigServicesEtcd(dict):
              retention: Optional[str] = None,
              snapshot: Optional[bool] = None,
              uid: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backupConfig' in kwargs:
+        if backup_config is None and 'backupConfig' in kwargs:
             backup_config = kwargs['backupConfig']
-        if 'caCert' in kwargs:
+        if ca_cert is None and 'caCert' in kwargs:
             ca_cert = kwargs['caCert']
-        if 'externalUrls' in kwargs:
+        if external_urls is None and 'externalUrls' in kwargs:
             external_urls = kwargs['externalUrls']
-        if 'extraArgs' in kwargs:
+        if extra_args is None and 'extraArgs' in kwargs:
             extra_args = kwargs['extraArgs']
-        if 'extraBinds' in kwargs:
+        if extra_binds is None and 'extraBinds' in kwargs:
             extra_binds = kwargs['extraBinds']
-        if 'extraEnvs' in kwargs:
+        if extra_envs is None and 'extraEnvs' in kwargs:
             extra_envs = kwargs['extraEnvs']
 
         if backup_config is not None:
@@ -15823,13 +16115,13 @@ class ClusterRkeConfigServicesEtcdBackupConfig(dict):
              s3_backup_config: Optional['outputs.ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig'] = None,
              safe_timestamp: Optional[bool] = None,
              timeout: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'intervalHours' in kwargs:
+        if interval_hours is None and 'intervalHours' in kwargs:
             interval_hours = kwargs['intervalHours']
-        if 's3BackupConfig' in kwargs:
+        if s3_backup_config is None and 's3BackupConfig' in kwargs:
             s3_backup_config = kwargs['s3BackupConfig']
-        if 'safeTimestamp' in kwargs:
+        if safe_timestamp is None and 'safeTimestamp' in kwargs:
             safe_timestamp = kwargs['safeTimestamp']
 
         if enabled is not None:
@@ -15949,22 +16241,26 @@ class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket_name: str,
-             endpoint: str,
+             bucket_name: Optional[str] = None,
+             endpoint: Optional[str] = None,
              access_key: Optional[str] = None,
              custom_ca: Optional[str] = None,
              folder: Optional[str] = None,
              region: Optional[str] = None,
              secret_key: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bucketName' in kwargs:
+        if bucket_name is None and 'bucketName' in kwargs:
             bucket_name = kwargs['bucketName']
-        if 'accessKey' in kwargs:
+        if bucket_name is None:
+            raise TypeError("Missing 'bucket_name' argument")
+        if endpoint is None:
+            raise TypeError("Missing 'endpoint' argument")
+        if access_key is None and 'accessKey' in kwargs:
             access_key = kwargs['accessKey']
-        if 'customCa' in kwargs:
+        if custom_ca is None and 'customCa' in kwargs:
             custom_ca = kwargs['customCa']
-        if 'secretKey' in kwargs:
+        if secret_key is None and 'secretKey' in kwargs:
             secret_key = kwargs['secretKey']
 
         _setter("bucket_name", bucket_name)
@@ -16133,29 +16429,29 @@ class ClusterRkeConfigServicesKubeApi(dict):
              secrets_encryption_config: Optional['outputs.ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig'] = None,
              service_cluster_ip_range: Optional[str] = None,
              service_node_port_range: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'admissionConfiguration' in kwargs:
+        if admission_configuration is None and 'admissionConfiguration' in kwargs:
             admission_configuration = kwargs['admissionConfiguration']
-        if 'alwaysPullImages' in kwargs:
+        if always_pull_images is None and 'alwaysPullImages' in kwargs:
             always_pull_images = kwargs['alwaysPullImages']
-        if 'auditLog' in kwargs:
+        if audit_log is None and 'auditLog' in kwargs:
             audit_log = kwargs['auditLog']
-        if 'eventRateLimit' in kwargs:
+        if event_rate_limit is None and 'eventRateLimit' in kwargs:
             event_rate_limit = kwargs['eventRateLimit']
-        if 'extraArgs' in kwargs:
+        if extra_args is None and 'extraArgs' in kwargs:
             extra_args = kwargs['extraArgs']
-        if 'extraBinds' in kwargs:
+        if extra_binds is None and 'extraBinds' in kwargs:
             extra_binds = kwargs['extraBinds']
-        if 'extraEnvs' in kwargs:
+        if extra_envs is None and 'extraEnvs' in kwargs:
             extra_envs = kwargs['extraEnvs']
-        if 'podSecurityPolicy' in kwargs:
+        if pod_security_policy is None and 'podSecurityPolicy' in kwargs:
             pod_security_policy = kwargs['podSecurityPolicy']
-        if 'secretsEncryptionConfig' in kwargs:
+        if secrets_encryption_config is None and 'secretsEncryptionConfig' in kwargs:
             secrets_encryption_config = kwargs['secretsEncryptionConfig']
-        if 'serviceClusterIpRange' in kwargs:
+        if service_cluster_ip_range is None and 'serviceClusterIpRange' in kwargs:
             service_cluster_ip_range = kwargs['serviceClusterIpRange']
-        if 'serviceNodePortRange' in kwargs:
+        if service_node_port_range is None and 'serviceNodePortRange' in kwargs:
             service_node_port_range = kwargs['serviceNodePortRange']
 
         if admission_configuration is not None:
@@ -16320,9 +16616,9 @@ class ClusterRkeConfigServicesKubeApiAdmissionConfiguration(dict):
              api_version: Optional[str] = None,
              kind: Optional[str] = None,
              plugins: Optional[Sequence['outputs.ClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'apiVersion' in kwargs:
+        if api_version is None and 'apiVersion' in kwargs:
             api_version = kwargs['apiVersion']
 
         if api_version is not None:
@@ -16380,7 +16676,7 @@ class ClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin(dict):
              configuration: Optional[str] = None,
              name: Optional[str] = None,
              path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if configuration is not None:
@@ -16434,7 +16730,7 @@ class ClusterRkeConfigServicesKubeApiAuditLog(dict):
              _setter: Callable[[Any, Any], None],
              configuration: Optional['outputs.ClusterRkeConfigServicesKubeApiAuditLogConfiguration'] = None,
              enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if configuration is not None:
@@ -16515,13 +16811,13 @@ class ClusterRkeConfigServicesKubeApiAuditLogConfiguration(dict):
              max_size: Optional[int] = None,
              path: Optional[str] = None,
              policy: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'maxAge' in kwargs:
+        if max_age is None and 'maxAge' in kwargs:
             max_age = kwargs['maxAge']
-        if 'maxBackup' in kwargs:
+        if max_backup is None and 'maxBackup' in kwargs:
             max_backup = kwargs['maxBackup']
-        if 'maxSize' in kwargs:
+        if max_size is None and 'maxSize' in kwargs:
             max_size = kwargs['maxSize']
 
         if format is not None:
@@ -16605,7 +16901,7 @@ class ClusterRkeConfigServicesKubeApiEventRateLimit(dict):
              _setter: Callable[[Any, Any], None],
              configuration: Optional[str] = None,
              enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if configuration is not None:
@@ -16654,10 +16950,6 @@ class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig(dict):
                  enabled: Optional[bool] = None):
         """
         :param str custom_config: Secrets encryption yaml encoded custom configuration. `"apiVersion"` and `"kind":"EncryptionConfiguration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/) (string) Ex:
-               
-               ```python
-               import pulumi
-               ```
         :param bool enabled: Enable the authorized cluster endpoint. Default `true` (bool)
         """
         ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig._configure(
@@ -16670,9 +16962,9 @@ class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig(dict):
              _setter: Callable[[Any, Any], None],
              custom_config: Optional[str] = None,
              enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'customConfig' in kwargs:
+        if custom_config is None and 'customConfig' in kwargs:
             custom_config = kwargs['customConfig']
 
         if custom_config is not None:
@@ -16685,10 +16977,6 @@ class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig(dict):
     def custom_config(self) -> Optional[str]:
         """
         Secrets encryption yaml encoded custom configuration. `"apiVersion"` and `"kind":"EncryptionConfiguration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/) (string) Ex:
-
-        ```python
-        import pulumi
-        ```
         """
         return pulumi.get(self, "custom_config")
 
@@ -16761,17 +17049,17 @@ class ClusterRkeConfigServicesKubeController(dict):
              extra_envs: Optional[Sequence[str]] = None,
              image: Optional[str] = None,
              service_cluster_ip_range: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterCidr' in kwargs:
+        if cluster_cidr is None and 'clusterCidr' in kwargs:
             cluster_cidr = kwargs['clusterCidr']
-        if 'extraArgs' in kwargs:
+        if extra_args is None and 'extraArgs' in kwargs:
             extra_args = kwargs['extraArgs']
-        if 'extraBinds' in kwargs:
+        if extra_binds is None and 'extraBinds' in kwargs:
             extra_binds = kwargs['extraBinds']
-        if 'extraEnvs' in kwargs:
+        if extra_envs is None and 'extraEnvs' in kwargs:
             extra_envs = kwargs['extraEnvs']
-        if 'serviceClusterIpRange' in kwargs:
+        if service_cluster_ip_range is None and 'serviceClusterIpRange' in kwargs:
             service_cluster_ip_range = kwargs['serviceClusterIpRange']
 
         if cluster_cidr is not None:
@@ -16914,23 +17202,23 @@ class ClusterRkeConfigServicesKubelet(dict):
              generate_serving_certificate: Optional[bool] = None,
              image: Optional[str] = None,
              infra_container_image: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterDnsServer' in kwargs:
+        if cluster_dns_server is None and 'clusterDnsServer' in kwargs:
             cluster_dns_server = kwargs['clusterDnsServer']
-        if 'clusterDomain' in kwargs:
+        if cluster_domain is None and 'clusterDomain' in kwargs:
             cluster_domain = kwargs['clusterDomain']
-        if 'extraArgs' in kwargs:
+        if extra_args is None and 'extraArgs' in kwargs:
             extra_args = kwargs['extraArgs']
-        if 'extraBinds' in kwargs:
+        if extra_binds is None and 'extraBinds' in kwargs:
             extra_binds = kwargs['extraBinds']
-        if 'extraEnvs' in kwargs:
+        if extra_envs is None and 'extraEnvs' in kwargs:
             extra_envs = kwargs['extraEnvs']
-        if 'failSwapOn' in kwargs:
+        if fail_swap_on is None and 'failSwapOn' in kwargs:
             fail_swap_on = kwargs['failSwapOn']
-        if 'generateServingCertificate' in kwargs:
+        if generate_serving_certificate is None and 'generateServingCertificate' in kwargs:
             generate_serving_certificate = kwargs['generateServingCertificate']
-        if 'infraContainerImage' in kwargs:
+        if infra_container_image is None and 'infraContainerImage' in kwargs:
             infra_container_image = kwargs['infraContainerImage']
 
         if cluster_dns_server is not None:
@@ -17073,13 +17361,13 @@ class ClusterRkeConfigServicesKubeproxy(dict):
              extra_binds: Optional[Sequence[str]] = None,
              extra_envs: Optional[Sequence[str]] = None,
              image: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'extraArgs' in kwargs:
+        if extra_args is None and 'extraArgs' in kwargs:
             extra_args = kwargs['extraArgs']
-        if 'extraBinds' in kwargs:
+        if extra_binds is None and 'extraBinds' in kwargs:
             extra_binds = kwargs['extraBinds']
-        if 'extraEnvs' in kwargs:
+        if extra_envs is None and 'extraEnvs' in kwargs:
             extra_envs = kwargs['extraEnvs']
 
         if extra_args is not None:
@@ -17172,13 +17460,13 @@ class ClusterRkeConfigServicesScheduler(dict):
              extra_binds: Optional[Sequence[str]] = None,
              extra_envs: Optional[Sequence[str]] = None,
              image: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'extraArgs' in kwargs:
+        if extra_args is None and 'extraArgs' in kwargs:
             extra_args = kwargs['extraArgs']
-        if 'extraBinds' in kwargs:
+        if extra_binds is None and 'extraBinds' in kwargs:
             extra_binds = kwargs['extraBinds']
-        if 'extraEnvs' in kwargs:
+        if extra_envs is None and 'extraEnvs' in kwargs:
             extra_envs = kwargs['extraEnvs']
 
         if extra_args is not None:
@@ -17271,13 +17559,13 @@ class ClusterRkeConfigUpgradeStrategy(dict):
              drain_input: Optional['outputs.ClusterRkeConfigUpgradeStrategyDrainInput'] = None,
              max_unavailable_controlplane: Optional[str] = None,
              max_unavailable_worker: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'drainInput' in kwargs:
+        if drain_input is None and 'drainInput' in kwargs:
             drain_input = kwargs['drainInput']
-        if 'maxUnavailableControlplane' in kwargs:
+        if max_unavailable_controlplane is None and 'maxUnavailableControlplane' in kwargs:
             max_unavailable_controlplane = kwargs['maxUnavailableControlplane']
-        if 'maxUnavailableWorker' in kwargs:
+        if max_unavailable_worker is None and 'maxUnavailableWorker' in kwargs:
             max_unavailable_worker = kwargs['maxUnavailableWorker']
 
         if drain is not None:
@@ -17374,13 +17662,13 @@ class ClusterRkeConfigUpgradeStrategyDrainInput(dict):
              grace_period: Optional[int] = None,
              ignore_daemon_sets: Optional[bool] = None,
              timeout: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'deleteLocalData' in kwargs:
+        if delete_local_data is None and 'deleteLocalData' in kwargs:
             delete_local_data = kwargs['deleteLocalData']
-        if 'gracePeriod' in kwargs:
+        if grace_period is None and 'gracePeriod' in kwargs:
             grace_period = kwargs['gracePeriod']
-        if 'ignoreDaemonSets' in kwargs:
+        if ignore_daemon_sets is None and 'ignoreDaemonSets' in kwargs:
             ignore_daemon_sets = kwargs['ignoreDaemonSets']
 
         if delete_local_data is not None:
@@ -17543,25 +17831,25 @@ class ClusterSyncNode(dict):
              roles: Optional[Sequence[str]] = None,
              ssh_user: Optional[str] = None,
              system_info: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'externalIpAddress' in kwargs:
+        if external_ip_address is None and 'externalIpAddress' in kwargs:
             external_ip_address = kwargs['externalIpAddress']
-        if 'ipAddress' in kwargs:
+        if ip_address is None and 'ipAddress' in kwargs:
             ip_address = kwargs['ipAddress']
-        if 'nodePoolId' in kwargs:
+        if node_pool_id is None and 'nodePoolId' in kwargs:
             node_pool_id = kwargs['nodePoolId']
-        if 'nodeTemplateId' in kwargs:
+        if node_template_id is None and 'nodeTemplateId' in kwargs:
             node_template_id = kwargs['nodeTemplateId']
-        if 'providerId' in kwargs:
+        if provider_id is None and 'providerId' in kwargs:
             provider_id = kwargs['providerId']
-        if 'requestedHostname' in kwargs:
+        if requested_hostname is None and 'requestedHostname' in kwargs:
             requested_hostname = kwargs['requestedHostname']
-        if 'sshUser' in kwargs:
+        if ssh_user is None and 'sshUser' in kwargs:
             ssh_user = kwargs['sshUser']
-        if 'systemInfo' in kwargs:
+        if system_info is None and 'systemInfo' in kwargs:
             system_info = kwargs['systemInfo']
 
         if annotations is not None:
@@ -17770,13 +18058,13 @@ class ClusterTemplateMember(dict):
              access_type: Optional[str] = None,
              group_principal_id: Optional[str] = None,
              user_principal_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessType' in kwargs:
+        if access_type is None and 'accessType' in kwargs:
             access_type = kwargs['accessType']
-        if 'groupPrincipalId' in kwargs:
+        if group_principal_id is None and 'groupPrincipalId' in kwargs:
             group_principal_id = kwargs['groupPrincipalId']
-        if 'userPrincipalId' in kwargs:
+        if user_principal_id is None and 'userPrincipalId' in kwargs:
             user_principal_id = kwargs['userPrincipalId']
 
         if access_type is not None:
@@ -17868,8 +18156,8 @@ class ClusterTemplateTemplateRevision(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_config: 'outputs.ClusterTemplateTemplateRevisionClusterConfig',
-             name: str,
+             cluster_config: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfig'] = None,
+             name: Optional[str] = None,
              annotations: Optional[Mapping[str, Any]] = None,
              cluster_template_id: Optional[str] = None,
              default: Optional[bool] = None,
@@ -17877,11 +18165,15 @@ class ClusterTemplateTemplateRevision(dict):
              id: Optional[str] = None,
              labels: Optional[Mapping[str, Any]] = None,
              questions: Optional[Sequence['outputs.ClusterTemplateTemplateRevisionQuestion']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterConfig' in kwargs:
+        if cluster_config is None and 'clusterConfig' in kwargs:
             cluster_config = kwargs['clusterConfig']
-        if 'clusterTemplateId' in kwargs:
+        if cluster_config is None:
+            raise TypeError("Missing 'cluster_config' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if cluster_template_id is None and 'clusterTemplateId' in kwargs:
             cluster_template_id = kwargs['clusterTemplateId']
 
         _setter("cluster_config", cluster_config)
@@ -18059,7 +18351,7 @@ class ClusterTemplateTemplateRevisionClusterConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             rke_config: 'outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfig',
+             rke_config: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfig'] = None,
              cluster_auth_endpoint: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint'] = None,
              default_cluster_role_for_project_members: Optional[str] = None,
              default_pod_security_admission_configuration_template_name: Optional[str] = None,
@@ -18071,31 +18363,33 @@ class ClusterTemplateTemplateRevisionClusterConfig(dict):
              enable_cluster_monitoring: Optional[bool] = None,
              enable_network_policy: Optional[bool] = None,
              windows_prefered_cluster: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'rkeConfig' in kwargs:
+        if rke_config is None and 'rkeConfig' in kwargs:
             rke_config = kwargs['rkeConfig']
-        if 'clusterAuthEndpoint' in kwargs:
+        if rke_config is None:
+            raise TypeError("Missing 'rke_config' argument")
+        if cluster_auth_endpoint is None and 'clusterAuthEndpoint' in kwargs:
             cluster_auth_endpoint = kwargs['clusterAuthEndpoint']
-        if 'defaultClusterRoleForProjectMembers' in kwargs:
+        if default_cluster_role_for_project_members is None and 'defaultClusterRoleForProjectMembers' in kwargs:
             default_cluster_role_for_project_members = kwargs['defaultClusterRoleForProjectMembers']
-        if 'defaultPodSecurityAdmissionConfigurationTemplateName' in kwargs:
+        if default_pod_security_admission_configuration_template_name is None and 'defaultPodSecurityAdmissionConfigurationTemplateName' in kwargs:
             default_pod_security_admission_configuration_template_name = kwargs['defaultPodSecurityAdmissionConfigurationTemplateName']
-        if 'defaultPodSecurityPolicyTemplateId' in kwargs:
+        if default_pod_security_policy_template_id is None and 'defaultPodSecurityPolicyTemplateId' in kwargs:
             default_pod_security_policy_template_id = kwargs['defaultPodSecurityPolicyTemplateId']
-        if 'desiredAgentImage' in kwargs:
+        if desired_agent_image is None and 'desiredAgentImage' in kwargs:
             desired_agent_image = kwargs['desiredAgentImage']
-        if 'desiredAuthImage' in kwargs:
+        if desired_auth_image is None and 'desiredAuthImage' in kwargs:
             desired_auth_image = kwargs['desiredAuthImage']
-        if 'dockerRootDir' in kwargs:
+        if docker_root_dir is None and 'dockerRootDir' in kwargs:
             docker_root_dir = kwargs['dockerRootDir']
-        if 'enableClusterAlerting' in kwargs:
+        if enable_cluster_alerting is None and 'enableClusterAlerting' in kwargs:
             enable_cluster_alerting = kwargs['enableClusterAlerting']
-        if 'enableClusterMonitoring' in kwargs:
+        if enable_cluster_monitoring is None and 'enableClusterMonitoring' in kwargs:
             enable_cluster_monitoring = kwargs['enableClusterMonitoring']
-        if 'enableNetworkPolicy' in kwargs:
+        if enable_network_policy is None and 'enableNetworkPolicy' in kwargs:
             enable_network_policy = kwargs['enableNetworkPolicy']
-        if 'windowsPreferedCluster' in kwargs:
+        if windows_prefered_cluster is None and 'windowsPreferedCluster' in kwargs:
             windows_prefered_cluster = kwargs['windowsPreferedCluster']
 
         _setter("rke_config", rke_config)
@@ -18254,9 +18548,9 @@ class ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint(dict):
              ca_certs: Optional[str] = None,
              enabled: Optional[bool] = None,
              fqdn: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'caCerts' in kwargs:
+        if ca_certs is None and 'caCerts' in kwargs:
             ca_certs = kwargs['caCerts']
 
         if ca_certs is not None:
@@ -18406,35 +18700,35 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfig(dict):
              ssh_key_path: Optional[str] = None,
              upgrade_strategy: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy'] = None,
              win_prefix_path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'addonJobTimeout' in kwargs:
+        if addon_job_timeout is None and 'addonJobTimeout' in kwargs:
             addon_job_timeout = kwargs['addonJobTimeout']
-        if 'addonsIncludes' in kwargs:
+        if addons_includes is None and 'addonsIncludes' in kwargs:
             addons_includes = kwargs['addonsIncludes']
-        if 'bastionHost' in kwargs:
+        if bastion_host is None and 'bastionHost' in kwargs:
             bastion_host = kwargs['bastionHost']
-        if 'cloudProvider' in kwargs:
+        if cloud_provider is None and 'cloudProvider' in kwargs:
             cloud_provider = kwargs['cloudProvider']
-        if 'enableCriDockerd' in kwargs:
+        if enable_cri_dockerd is None and 'enableCriDockerd' in kwargs:
             enable_cri_dockerd = kwargs['enableCriDockerd']
-        if 'ignoreDockerVersion' in kwargs:
+        if ignore_docker_version is None and 'ignoreDockerVersion' in kwargs:
             ignore_docker_version = kwargs['ignoreDockerVersion']
-        if 'kubernetesVersion' in kwargs:
+        if kubernetes_version is None and 'kubernetesVersion' in kwargs:
             kubernetes_version = kwargs['kubernetesVersion']
-        if 'prefixPath' in kwargs:
+        if prefix_path is None and 'prefixPath' in kwargs:
             prefix_path = kwargs['prefixPath']
-        if 'privateRegistries' in kwargs:
+        if private_registries is None and 'privateRegistries' in kwargs:
             private_registries = kwargs['privateRegistries']
-        if 'sshAgentAuth' in kwargs:
+        if ssh_agent_auth is None and 'sshAgentAuth' in kwargs:
             ssh_agent_auth = kwargs['sshAgentAuth']
-        if 'sshCertPath' in kwargs:
+        if ssh_cert_path is None and 'sshCertPath' in kwargs:
             ssh_cert_path = kwargs['sshCertPath']
-        if 'sshKeyPath' in kwargs:
+        if ssh_key_path is None and 'sshKeyPath' in kwargs:
             ssh_key_path = kwargs['sshKeyPath']
-        if 'upgradeStrategy' in kwargs:
+        if upgrade_strategy is None and 'upgradeStrategy' in kwargs:
             upgrade_strategy = kwargs['upgradeStrategy']
-        if 'winPrefixPath' in kwargs:
+        if win_prefix_path is None and 'winPrefixPath' in kwargs:
             win_prefix_path = kwargs['winPrefixPath']
 
         if addon_job_timeout is not None:
@@ -18615,7 +18909,7 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication(dict):
              _setter: Callable[[Any, Any], None],
              sans: Optional[Sequence[str]] = None,
              strategy: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if sans is not None:
@@ -18649,7 +18943,7 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorization(dict):
              _setter: Callable[[Any, Any], None],
              mode: Optional[str] = None,
              options: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if mode is not None:
@@ -18710,19 +19004,23 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHost(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address: str,
-             user: str,
+             address: Optional[str] = None,
+             user: Optional[str] = None,
              port: Optional[str] = None,
              ssh_agent_auth: Optional[bool] = None,
              ssh_key: Optional[str] = None,
              ssh_key_path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'sshAgentAuth' in kwargs:
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if user is None:
+            raise TypeError("Missing 'user' argument")
+        if ssh_agent_auth is None and 'sshAgentAuth' in kwargs:
             ssh_agent_auth = kwargs['sshAgentAuth']
-        if 'sshKey' in kwargs:
+        if ssh_key is None and 'sshKey' in kwargs:
             ssh_key = kwargs['sshKey']
-        if 'sshKeyPath' in kwargs:
+        if ssh_key_path is None and 'sshKeyPath' in kwargs:
             ssh_key_path = kwargs['sshKeyPath']
 
         _setter("address", address)
@@ -18822,17 +19120,17 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvider(dict):
              name: Optional[str] = None,
              openstack_cloud_provider: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProvider'] = None,
              vsphere_cloud_provider: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProvider'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'awsCloudProvider' in kwargs:
+        if aws_cloud_provider is None and 'awsCloudProvider' in kwargs:
             aws_cloud_provider = kwargs['awsCloudProvider']
-        if 'azureCloudProvider' in kwargs:
+        if azure_cloud_provider is None and 'azureCloudProvider' in kwargs:
             azure_cloud_provider = kwargs['azureCloudProvider']
-        if 'customCloudProvider' in kwargs:
+        if custom_cloud_provider is None and 'customCloudProvider' in kwargs:
             custom_cloud_provider = kwargs['customCloudProvider']
-        if 'openstackCloudProvider' in kwargs:
+        if openstack_cloud_provider is None and 'openstackCloudProvider' in kwargs:
             openstack_cloud_provider = kwargs['openstackCloudProvider']
-        if 'vsphereCloudProvider' in kwargs:
+        if vsphere_cloud_provider is None and 'vsphereCloudProvider' in kwargs:
             vsphere_cloud_provider = kwargs['vsphereCloudProvider']
 
         if aws_cloud_provider is not None:
@@ -18916,11 +19214,11 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloud
              _setter: Callable[[Any, Any], None],
              global_: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal'] = None,
              service_overrides: Optional[Sequence['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverride']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'global' in kwargs:
+        if global_ is None and 'global' in kwargs:
             global_ = kwargs['global']
-        if 'serviceOverrides' in kwargs:
+        if service_overrides is None and 'serviceOverrides' in kwargs:
             service_overrides = kwargs['serviceOverrides']
 
         if global_ is not None:
@@ -19009,23 +19307,23 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloud
              subnet_id: Optional[str] = None,
              vpc: Optional[str] = None,
              zone: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'disableSecurityGroupIngress' in kwargs:
+        if disable_security_group_ingress is None and 'disableSecurityGroupIngress' in kwargs:
             disable_security_group_ingress = kwargs['disableSecurityGroupIngress']
-        if 'disableStrictZoneCheck' in kwargs:
+        if disable_strict_zone_check is None and 'disableStrictZoneCheck' in kwargs:
             disable_strict_zone_check = kwargs['disableStrictZoneCheck']
-        if 'elbSecurityGroup' in kwargs:
+        if elb_security_group is None and 'elbSecurityGroup' in kwargs:
             elb_security_group = kwargs['elbSecurityGroup']
-        if 'kubernetesClusterId' in kwargs:
+        if kubernetes_cluster_id is None and 'kubernetesClusterId' in kwargs:
             kubernetes_cluster_id = kwargs['kubernetesClusterId']
-        if 'kubernetesClusterTag' in kwargs:
+        if kubernetes_cluster_tag is None and 'kubernetesClusterTag' in kwargs:
             kubernetes_cluster_tag = kwargs['kubernetesClusterTag']
-        if 'roleArn' in kwargs:
+        if role_arn is None and 'roleArn' in kwargs:
             role_arn = kwargs['roleArn']
-        if 'routeTableId' in kwargs:
+        if route_table_id is None and 'routeTableId' in kwargs:
             route_table_id = kwargs['routeTableId']
-        if 'subnetId' in kwargs:
+        if subnet_id is None and 'subnetId' in kwargs:
             subnet_id = kwargs['subnetId']
 
         if disable_security_group_ingress is not None:
@@ -19142,19 +19440,21 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloud
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service: str,
+             service: Optional[str] = None,
              region: Optional[str] = None,
              signing_method: Optional[str] = None,
              signing_name: Optional[str] = None,
              signing_region: Optional[str] = None,
              url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'signingMethod' in kwargs:
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+        if signing_method is None and 'signingMethod' in kwargs:
             signing_method = kwargs['signingMethod']
-        if 'signingName' in kwargs:
+        if signing_name is None and 'signingName' in kwargs:
             signing_name = kwargs['signingName']
-        if 'signingRegion' in kwargs:
+        if signing_region is None and 'signingRegion' in kwargs:
             signing_region = kwargs['signingRegion']
 
         _setter("service", service)
@@ -19336,10 +19636,10 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureClo
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             aad_client_id: str,
-             aad_client_secret: str,
-             subscription_id: str,
-             tenant_id: str,
+             aad_client_id: Optional[str] = None,
+             aad_client_secret: Optional[str] = None,
+             subscription_id: Optional[str] = None,
+             tenant_id: Optional[str] = None,
              aad_client_cert_password: Optional[str] = None,
              aad_client_cert_path: Optional[str] = None,
              cloud: Optional[str] = None,
@@ -19365,61 +19665,69 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureClo
              vm_type: Optional[str] = None,
              vnet_name: Optional[str] = None,
              vnet_resource_group: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aadClientId' in kwargs:
+        if aad_client_id is None and 'aadClientId' in kwargs:
             aad_client_id = kwargs['aadClientId']
-        if 'aadClientSecret' in kwargs:
+        if aad_client_id is None:
+            raise TypeError("Missing 'aad_client_id' argument")
+        if aad_client_secret is None and 'aadClientSecret' in kwargs:
             aad_client_secret = kwargs['aadClientSecret']
-        if 'subscriptionId' in kwargs:
+        if aad_client_secret is None:
+            raise TypeError("Missing 'aad_client_secret' argument")
+        if subscription_id is None and 'subscriptionId' in kwargs:
             subscription_id = kwargs['subscriptionId']
-        if 'tenantId' in kwargs:
+        if subscription_id is None:
+            raise TypeError("Missing 'subscription_id' argument")
+        if tenant_id is None and 'tenantId' in kwargs:
             tenant_id = kwargs['tenantId']
-        if 'aadClientCertPassword' in kwargs:
+        if tenant_id is None:
+            raise TypeError("Missing 'tenant_id' argument")
+        if aad_client_cert_password is None and 'aadClientCertPassword' in kwargs:
             aad_client_cert_password = kwargs['aadClientCertPassword']
-        if 'aadClientCertPath' in kwargs:
+        if aad_client_cert_path is None and 'aadClientCertPath' in kwargs:
             aad_client_cert_path = kwargs['aadClientCertPath']
-        if 'cloudProviderBackoff' in kwargs:
+        if cloud_provider_backoff is None and 'cloudProviderBackoff' in kwargs:
             cloud_provider_backoff = kwargs['cloudProviderBackoff']
-        if 'cloudProviderBackoffDuration' in kwargs:
+        if cloud_provider_backoff_duration is None and 'cloudProviderBackoffDuration' in kwargs:
             cloud_provider_backoff_duration = kwargs['cloudProviderBackoffDuration']
-        if 'cloudProviderBackoffExponent' in kwargs:
+        if cloud_provider_backoff_exponent is None and 'cloudProviderBackoffExponent' in kwargs:
             cloud_provider_backoff_exponent = kwargs['cloudProviderBackoffExponent']
-        if 'cloudProviderBackoffJitter' in kwargs:
+        if cloud_provider_backoff_jitter is None and 'cloudProviderBackoffJitter' in kwargs:
             cloud_provider_backoff_jitter = kwargs['cloudProviderBackoffJitter']
-        if 'cloudProviderBackoffRetries' in kwargs:
+        if cloud_provider_backoff_retries is None and 'cloudProviderBackoffRetries' in kwargs:
             cloud_provider_backoff_retries = kwargs['cloudProviderBackoffRetries']
-        if 'cloudProviderRateLimit' in kwargs:
+        if cloud_provider_rate_limit is None and 'cloudProviderRateLimit' in kwargs:
             cloud_provider_rate_limit = kwargs['cloudProviderRateLimit']
-        if 'cloudProviderRateLimitBucket' in kwargs:
+        if cloud_provider_rate_limit_bucket is None and 'cloudProviderRateLimitBucket' in kwargs:
             cloud_provider_rate_limit_bucket = kwargs['cloudProviderRateLimitBucket']
-        if 'cloudProviderRateLimitQps' in kwargs:
+        if cloud_provider_rate_limit_qps is None and 'cloudProviderRateLimitQps' in kwargs:
             cloud_provider_rate_limit_qps = kwargs['cloudProviderRateLimitQps']
-        if 'loadBalancerSku' in kwargs:
+        if load_balancer_sku is None and 'loadBalancerSku' in kwargs:
             load_balancer_sku = kwargs['loadBalancerSku']
-        if 'maximumLoadBalancerRuleCount' in kwargs:
+        if maximum_load_balancer_rule_count is None and 'maximumLoadBalancerRuleCount' in kwargs:
             maximum_load_balancer_rule_count = kwargs['maximumLoadBalancerRuleCount']
-        if 'primaryAvailabilitySetName' in kwargs:
+        if primary_availability_set_name is None and 'primaryAvailabilitySetName' in kwargs:
             primary_availability_set_name = kwargs['primaryAvailabilitySetName']
-        if 'primaryScaleSetName' in kwargs:
+        if primary_scale_set_name is None and 'primaryScaleSetName' in kwargs:
             primary_scale_set_name = kwargs['primaryScaleSetName']
-        if 'resourceGroup' in kwargs:
+        if resource_group is None and 'resourceGroup' in kwargs:
             resource_group = kwargs['resourceGroup']
-        if 'routeTableName' in kwargs:
+        if route_table_name is None and 'routeTableName' in kwargs:
             route_table_name = kwargs['routeTableName']
-        if 'securityGroupName' in kwargs:
+        if security_group_name is None and 'securityGroupName' in kwargs:
             security_group_name = kwargs['securityGroupName']
-        if 'subnetName' in kwargs:
+        if subnet_name is None and 'subnetName' in kwargs:
             subnet_name = kwargs['subnetName']
-        if 'useInstanceMetadata' in kwargs:
+        if use_instance_metadata is None and 'useInstanceMetadata' in kwargs:
             use_instance_metadata = kwargs['useInstanceMetadata']
-        if 'useManagedIdentityExtension' in kwargs:
+        if use_managed_identity_extension is None and 'useManagedIdentityExtension' in kwargs:
             use_managed_identity_extension = kwargs['useManagedIdentityExtension']
-        if 'vmType' in kwargs:
+        if vm_type is None and 'vmType' in kwargs:
             vm_type = kwargs['vmType']
-        if 'vnetName' in kwargs:
+        if vnet_name is None and 'vnetName' in kwargs:
             vnet_name = kwargs['vnetName']
-        if 'vnetResourceGroup' in kwargs:
+        if vnet_resource_group is None and 'vnetResourceGroup' in kwargs:
             vnet_resource_group = kwargs['vnetResourceGroup']
 
         _setter("aad_client_id", aad_client_id)
@@ -19663,18 +19971,20 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstac
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             global_: 'outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobal',
+             global_: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobal'] = None,
              block_storage: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorage'] = None,
              load_balancer: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer'] = None,
              metadata: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadata'] = None,
              route: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRoute'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'global' in kwargs:
+        if global_ is None and 'global' in kwargs:
             global_ = kwargs['global']
-        if 'blockStorage' in kwargs:
+        if global_ is None:
+            raise TypeError("Missing 'global_' argument")
+        if block_storage is None and 'blockStorage' in kwargs:
             block_storage = kwargs['blockStorage']
-        if 'loadBalancer' in kwargs:
+        if load_balancer is None and 'loadBalancer' in kwargs:
             load_balancer = kwargs['loadBalancer']
 
         _setter("global_", global_)
@@ -19752,13 +20062,13 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstac
              bs_version: Optional[str] = None,
              ignore_volume_az: Optional[bool] = None,
              trust_device_path: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bsVersion' in kwargs:
+        if bs_version is None and 'bsVersion' in kwargs:
             bs_version = kwargs['bsVersion']
-        if 'ignoreVolumeAz' in kwargs:
+        if ignore_volume_az is None and 'ignoreVolumeAz' in kwargs:
             ignore_volume_az = kwargs['ignoreVolumeAz']
-        if 'trustDevicePath' in kwargs:
+        if trust_device_path is None and 'trustDevicePath' in kwargs:
             trust_device_path = kwargs['trustDevicePath']
 
         if bs_version is not None:
@@ -19842,9 +20152,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstac
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             auth_url: str,
-             password: str,
-             username: str,
+             auth_url: Optional[str] = None,
+             password: Optional[str] = None,
+             username: Optional[str] = None,
              ca_file: Optional[str] = None,
              domain_id: Optional[str] = None,
              domain_name: Optional[str] = None,
@@ -19852,21 +20162,27 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstac
              tenant_id: Optional[str] = None,
              tenant_name: Optional[str] = None,
              trust_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'authUrl' in kwargs:
+        if auth_url is None and 'authUrl' in kwargs:
             auth_url = kwargs['authUrl']
-        if 'caFile' in kwargs:
+        if auth_url is None:
+            raise TypeError("Missing 'auth_url' argument")
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+        if ca_file is None and 'caFile' in kwargs:
             ca_file = kwargs['caFile']
-        if 'domainId' in kwargs:
+        if domain_id is None and 'domainId' in kwargs:
             domain_id = kwargs['domainId']
-        if 'domainName' in kwargs:
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'tenantId' in kwargs:
+        if tenant_id is None and 'tenantId' in kwargs:
             tenant_id = kwargs['tenantId']
-        if 'tenantName' in kwargs:
+        if tenant_name is None and 'tenantName' in kwargs:
             tenant_name = kwargs['tenantName']
-        if 'trustId' in kwargs:
+        if trust_id is None and 'trustId' in kwargs:
             trust_id = kwargs['trustId']
 
         _setter("auth_url", auth_url)
@@ -20017,29 +20333,29 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstac
              monitor_timeout: Optional[str] = None,
              subnet_id: Optional[str] = None,
              use_octavia: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createMonitor' in kwargs:
+        if create_monitor is None and 'createMonitor' in kwargs:
             create_monitor = kwargs['createMonitor']
-        if 'floatingNetworkId' in kwargs:
+        if floating_network_id is None and 'floatingNetworkId' in kwargs:
             floating_network_id = kwargs['floatingNetworkId']
-        if 'lbMethod' in kwargs:
+        if lb_method is None and 'lbMethod' in kwargs:
             lb_method = kwargs['lbMethod']
-        if 'lbProvider' in kwargs:
+        if lb_provider is None and 'lbProvider' in kwargs:
             lb_provider = kwargs['lbProvider']
-        if 'lbVersion' in kwargs:
+        if lb_version is None and 'lbVersion' in kwargs:
             lb_version = kwargs['lbVersion']
-        if 'manageSecurityGroups' in kwargs:
+        if manage_security_groups is None and 'manageSecurityGroups' in kwargs:
             manage_security_groups = kwargs['manageSecurityGroups']
-        if 'monitorDelay' in kwargs:
+        if monitor_delay is None and 'monitorDelay' in kwargs:
             monitor_delay = kwargs['monitorDelay']
-        if 'monitorMaxRetries' in kwargs:
+        if monitor_max_retries is None and 'monitorMaxRetries' in kwargs:
             monitor_max_retries = kwargs['monitorMaxRetries']
-        if 'monitorTimeout' in kwargs:
+        if monitor_timeout is None and 'monitorTimeout' in kwargs:
             monitor_timeout = kwargs['monitorTimeout']
-        if 'subnetId' in kwargs:
+        if subnet_id is None and 'subnetId' in kwargs:
             subnet_id = kwargs['subnetId']
-        if 'useOctavia' in kwargs:
+        if use_octavia is None and 'useOctavia' in kwargs:
             use_octavia = kwargs['useOctavia']
 
         if create_monitor is not None:
@@ -20155,11 +20471,11 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstac
              _setter: Callable[[Any, Any], None],
              request_timeout: Optional[int] = None,
              search_order: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'requestTimeout' in kwargs:
+        if request_timeout is None and 'requestTimeout' in kwargs:
             request_timeout = kwargs['requestTimeout']
-        if 'searchOrder' in kwargs:
+        if search_order is None and 'searchOrder' in kwargs:
             search_order = kwargs['searchOrder']
 
         if request_timeout is not None:
@@ -20207,9 +20523,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstac
     def _configure(
              _setter: Callable[[Any, Any], None],
              router_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'routerId' in kwargs:
+        if router_id is None and 'routerId' in kwargs:
             router_id = kwargs['routerId']
 
         if router_id is not None:
@@ -20259,16 +20575,20 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereC
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             virtual_centers: Sequence['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenter'],
-             workspace: 'outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspace',
+             virtual_centers: Optional[Sequence['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenter']] = None,
+             workspace: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspace'] = None,
              disk: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDisk'] = None,
              global_: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobal'] = None,
              network: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetwork'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'virtualCenters' in kwargs:
+        if virtual_centers is None and 'virtualCenters' in kwargs:
             virtual_centers = kwargs['virtualCenters']
-        if 'global' in kwargs:
+        if virtual_centers is None:
+            raise TypeError("Missing 'virtual_centers' argument")
+        if workspace is None:
+            raise TypeError("Missing 'workspace' argument")
+        if global_ is None and 'global' in kwargs:
             global_ = kwargs['global']
 
         _setter("virtual_centers", virtual_centers)
@@ -20335,9 +20655,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereC
     def _configure(
              _setter: Callable[[Any, Any], None],
              scsi_controller_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'scsiControllerType' in kwargs:
+        if scsi_controller_type is None and 'scsiControllerType' in kwargs:
             scsi_controller_type = kwargs['scsiControllerType']
 
         if scsi_controller_type is not None:
@@ -20395,11 +20715,11 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereC
              port: Optional[str] = None,
              soap_roundtrip_count: Optional[int] = None,
              user: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'insecureFlag' in kwargs:
+        if insecure_flag is None and 'insecureFlag' in kwargs:
             insecure_flag = kwargs['insecureFlag']
-        if 'soapRoundtripCount' in kwargs:
+        if soap_roundtrip_count is None and 'soapRoundtripCount' in kwargs:
             soap_roundtrip_count = kwargs['soapRoundtripCount']
 
         if datacenters is not None:
@@ -20475,9 +20795,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereC
     def _configure(
              _setter: Callable[[Any, Any], None],
              public_network: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'publicNetwork' in kwargs:
+        if public_network is None and 'publicNetwork' in kwargs:
             public_network = kwargs['publicNetwork']
 
         if public_network is not None:
@@ -20530,15 +20850,23 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereC
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             datacenters: str,
-             name: str,
-             password: str,
-             user: str,
+             datacenters: Optional[str] = None,
+             name: Optional[str] = None,
+             password: Optional[str] = None,
+             user: Optional[str] = None,
              port: Optional[str] = None,
              soap_roundtrip_count: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'soapRoundtripCount' in kwargs:
+        if datacenters is None:
+            raise TypeError("Missing 'datacenters' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+        if user is None:
+            raise TypeError("Missing 'user' argument")
+        if soap_roundtrip_count is None and 'soapRoundtripCount' in kwargs:
             soap_roundtrip_count = kwargs['soapRoundtripCount']
 
         _setter("datacenters", datacenters)
@@ -20622,16 +20950,22 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereC
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             datacenter: str,
-             folder: str,
-             server: str,
+             datacenter: Optional[str] = None,
+             folder: Optional[str] = None,
+             server: Optional[str] = None,
              default_datastore: Optional[str] = None,
              resourcepool_path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'defaultDatastore' in kwargs:
+        if datacenter is None:
+            raise TypeError("Missing 'datacenter' argument")
+        if folder is None:
+            raise TypeError("Missing 'folder' argument")
+        if server is None:
+            raise TypeError("Missing 'server' argument")
+        if default_datastore is None and 'defaultDatastore' in kwargs:
             default_datastore = kwargs['defaultDatastore']
-        if 'resourcepoolPath' in kwargs:
+        if resourcepool_path is None and 'resourcepoolPath' in kwargs:
             resourcepool_path = kwargs['resourcepoolPath']
 
         _setter("datacenter", datacenter)
@@ -20729,17 +21063,17 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns(dict):
              tolerations: Optional[Sequence['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsToleration']] = None,
              update_strategy: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy'] = None,
              upstream_nameservers: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'linearAutoscalerParams' in kwargs:
+        if linear_autoscaler_params is None and 'linearAutoscalerParams' in kwargs:
             linear_autoscaler_params = kwargs['linearAutoscalerParams']
-        if 'nodeSelector' in kwargs:
+        if node_selector is None and 'nodeSelector' in kwargs:
             node_selector = kwargs['nodeSelector']
-        if 'reverseCidrs' in kwargs:
+        if reverse_cidrs is None and 'reverseCidrs' in kwargs:
             reverse_cidrs = kwargs['reverseCidrs']
-        if 'updateStrategy' in kwargs:
+        if update_strategy is None and 'updateStrategy' in kwargs:
             update_strategy = kwargs['updateStrategy']
-        if 'upstreamNameservers' in kwargs:
+        if upstream_nameservers is None and 'upstreamNameservers' in kwargs:
             upstream_nameservers = kwargs['upstreamNameservers']
 
         if linear_autoscaler_params is not None:
@@ -20852,13 +21186,13 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerPa
              min: Optional[int] = None,
              nodes_per_replica: Optional[float] = None,
              prevent_single_point_failure: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'coresPerReplica' in kwargs:
+        if cores_per_replica is None and 'coresPerReplica' in kwargs:
             cores_per_replica = kwargs['coresPerReplica']
-        if 'nodesPerReplica' in kwargs:
+        if nodes_per_replica is None and 'nodesPerReplica' in kwargs:
             nodes_per_replica = kwargs['nodesPerReplica']
-        if 'preventSinglePointFailure' in kwargs:
+        if prevent_single_point_failure is None and 'preventSinglePointFailure' in kwargs:
             prevent_single_point_failure = kwargs['preventSinglePointFailure']
 
         if cores_per_replica is not None:
@@ -20932,11 +21266,11 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal(dict):
              _setter: Callable[[Any, Any], None],
              ip_address: Optional[str] = None,
              node_selector: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ipAddress' in kwargs:
+        if ip_address is None and 'ipAddress' in kwargs:
             ip_address = kwargs['ipAddress']
-        if 'nodeSelector' in kwargs:
+        if node_selector is None and 'nodeSelector' in kwargs:
             node_selector = kwargs['nodeSelector']
 
         if ip_address is not None:
@@ -20974,13 +21308,15 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsToleration(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
+             key: Optional[str] = None,
              effect: Optional[str] = None,
              operator: Optional[str] = None,
              seconds: Optional[int] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
 
         _setter("key", key)
         if effect is not None:
@@ -21050,9 +21386,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy(dic
              _setter: Callable[[Any, Any], None],
              rolling_update: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate'] = None,
              strategy: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'rollingUpdate' in kwargs:
+        if rolling_update is None and 'rollingUpdate' in kwargs:
             rolling_update = kwargs['rollingUpdate']
 
         if rolling_update is not None:
@@ -21105,11 +21441,11 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRoll
              _setter: Callable[[Any, Any], None],
              max_surge: Optional[int] = None,
              max_unavailable: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'maxSurge' in kwargs:
+        if max_surge is None and 'maxSurge' in kwargs:
             max_surge = kwargs['maxSurge']
-        if 'maxUnavailable' in kwargs:
+        if max_unavailable is None and 'maxUnavailable' in kwargs:
             max_unavailable = kwargs['maxUnavailable']
 
         if max_surge is not None:
@@ -21201,23 +21537,23 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress(dict):
              provider: Optional[str] = None,
              tolerations: Optional[Sequence['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressToleration']] = None,
              update_strategy: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'defaultBackend' in kwargs:
+        if default_backend is None and 'defaultBackend' in kwargs:
             default_backend = kwargs['defaultBackend']
-        if 'dnsPolicy' in kwargs:
+        if dns_policy is None and 'dnsPolicy' in kwargs:
             dns_policy = kwargs['dnsPolicy']
-        if 'extraArgs' in kwargs:
+        if extra_args is None and 'extraArgs' in kwargs:
             extra_args = kwargs['extraArgs']
-        if 'httpPort' in kwargs:
+        if http_port is None and 'httpPort' in kwargs:
             http_port = kwargs['httpPort']
-        if 'httpsPort' in kwargs:
+        if https_port is None and 'httpsPort' in kwargs:
             https_port = kwargs['httpsPort']
-        if 'networkMode' in kwargs:
+        if network_mode is None and 'networkMode' in kwargs:
             network_mode = kwargs['networkMode']
-        if 'nodeSelector' in kwargs:
+        if node_selector is None and 'nodeSelector' in kwargs:
             node_selector = kwargs['nodeSelector']
-        if 'updateStrategy' in kwargs:
+        if update_strategy is None and 'updateStrategy' in kwargs:
             update_strategy = kwargs['updateStrategy']
 
         if default_backend is not None:
@@ -21318,13 +21654,15 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressToleration(dic
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
+             key: Optional[str] = None,
              effect: Optional[str] = None,
              operator: Optional[str] = None,
              seconds: Optional[int] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
 
         _setter("key", key)
         if effect is not None:
@@ -21394,9 +21732,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy
              _setter: Callable[[Any, Any], None],
              rolling_update: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate'] = None,
              strategy: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'rollingUpdate' in kwargs:
+        if rolling_update is None and 'rollingUpdate' in kwargs:
             rolling_update = kwargs['rollingUpdate']
 
         if rolling_update is not None:
@@ -21444,9 +21782,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy
     def _configure(
              _setter: Callable[[Any, Any], None],
              max_unavailable: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'maxUnavailable' in kwargs:
+        if max_unavailable is None and 'maxUnavailable' in kwargs:
             max_unavailable = kwargs['maxUnavailable']
 
         if max_unavailable is not None:
@@ -21504,11 +21842,11 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring(dict):
              replicas: Optional[int] = None,
              tolerations: Optional[Sequence['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringToleration']] = None,
              update_strategy: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'nodeSelector' in kwargs:
+        if node_selector is None and 'nodeSelector' in kwargs:
             node_selector = kwargs['nodeSelector']
-        if 'updateStrategy' in kwargs:
+        if update_strategy is None and 'updateStrategy' in kwargs:
             update_strategy = kwargs['updateStrategy']
 
         if node_selector is not None:
@@ -21574,13 +21912,15 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringToleration(
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
+             key: Optional[str] = None,
              effect: Optional[str] = None,
              operator: Optional[str] = None,
              seconds: Optional[int] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
 
         _setter("key", key)
         if effect is not None:
@@ -21650,9 +21990,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrat
              _setter: Callable[[Any, Any], None],
              rolling_update: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate'] = None,
              strategy: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'rollingUpdate' in kwargs:
+        if rolling_update is None and 'rollingUpdate' in kwargs:
             rolling_update = kwargs['rollingUpdate']
 
         if rolling_update is not None:
@@ -21705,11 +22045,11 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrat
              _setter: Callable[[Any, Any], None],
              max_surge: Optional[int] = None,
              max_unavailable: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'maxSurge' in kwargs:
+        if max_surge is None and 'maxSurge' in kwargs:
             max_surge = kwargs['maxSurge']
-        if 'maxUnavailable' in kwargs:
+        if max_unavailable is None and 'maxUnavailable' in kwargs:
             max_unavailable = kwargs['maxUnavailable']
 
         if max_surge is not None:
@@ -21789,17 +22129,17 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork(dict):
              plugin: Optional[str] = None,
              tolerations: Optional[Sequence['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkToleration']] = None,
              weave_network_provider: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aciNetworkProvider' in kwargs:
+        if aci_network_provider is None and 'aciNetworkProvider' in kwargs:
             aci_network_provider = kwargs['aciNetworkProvider']
-        if 'calicoNetworkProvider' in kwargs:
+        if calico_network_provider is None and 'calicoNetworkProvider' in kwargs:
             calico_network_provider = kwargs['calicoNetworkProvider']
-        if 'canalNetworkProvider' in kwargs:
+        if canal_network_provider is None and 'canalNetworkProvider' in kwargs:
             canal_network_provider = kwargs['canalNetworkProvider']
-        if 'flannelNetworkProvider' in kwargs:
+        if flannel_network_provider is None and 'flannelNetworkProvider' in kwargs:
             flannel_network_provider = kwargs['flannelNetworkProvider']
-        if 'weaveNetworkProvider' in kwargs:
+        if weave_network_provider is None and 'weaveNetworkProvider' in kwargs:
             weave_network_provider = kwargs['weaveNetworkProvider']
 
         if aci_network_provider is not None:
@@ -22177,26 +22517,26 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProv
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             aep: str,
-             apic_hosts: Sequence[str],
-             apic_user_crt: str,
-             apic_user_key: str,
-             apic_user_name: str,
-             encap_type: str,
-             extern_dynamic: str,
-             extern_static: str,
-             kube_api_vlan: str,
-             l3out: str,
-             l3out_external_networks: Sequence[str],
-             mcast_range_end: str,
-             mcast_range_start: str,
-             node_subnet: str,
-             node_svc_subnet: str,
-             service_vlan: str,
-             system_id: str,
-             token: str,
-             vrf_name: str,
-             vrf_tenant: str,
+             aep: Optional[str] = None,
+             apic_hosts: Optional[Sequence[str]] = None,
+             apic_user_crt: Optional[str] = None,
+             apic_user_key: Optional[str] = None,
+             apic_user_name: Optional[str] = None,
+             encap_type: Optional[str] = None,
+             extern_dynamic: Optional[str] = None,
+             extern_static: Optional[str] = None,
+             kube_api_vlan: Optional[str] = None,
+             l3out: Optional[str] = None,
+             l3out_external_networks: Optional[Sequence[str]] = None,
+             mcast_range_end: Optional[str] = None,
+             mcast_range_start: Optional[str] = None,
+             node_subnet: Optional[str] = None,
+             node_svc_subnet: Optional[str] = None,
+             service_vlan: Optional[str] = None,
+             system_id: Optional[str] = None,
+             token: Optional[str] = None,
+             vrf_name: Optional[str] = None,
+             vrf_tenant: Optional[str] = None,
              apic_refresh_ticker_adjust: Optional[str] = None,
              apic_refresh_time: Optional[str] = None,
              apic_subscription_delay: Optional[str] = None,
@@ -22251,145 +22591,185 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProv
              use_privileged_container: Optional[str] = None,
              vmm_controller: Optional[str] = None,
              vmm_domain: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'apicHosts' in kwargs:
+        if aep is None:
+            raise TypeError("Missing 'aep' argument")
+        if apic_hosts is None and 'apicHosts' in kwargs:
             apic_hosts = kwargs['apicHosts']
-        if 'apicUserCrt' in kwargs:
+        if apic_hosts is None:
+            raise TypeError("Missing 'apic_hosts' argument")
+        if apic_user_crt is None and 'apicUserCrt' in kwargs:
             apic_user_crt = kwargs['apicUserCrt']
-        if 'apicUserKey' in kwargs:
+        if apic_user_crt is None:
+            raise TypeError("Missing 'apic_user_crt' argument")
+        if apic_user_key is None and 'apicUserKey' in kwargs:
             apic_user_key = kwargs['apicUserKey']
-        if 'apicUserName' in kwargs:
+        if apic_user_key is None:
+            raise TypeError("Missing 'apic_user_key' argument")
+        if apic_user_name is None and 'apicUserName' in kwargs:
             apic_user_name = kwargs['apicUserName']
-        if 'encapType' in kwargs:
+        if apic_user_name is None:
+            raise TypeError("Missing 'apic_user_name' argument")
+        if encap_type is None and 'encapType' in kwargs:
             encap_type = kwargs['encapType']
-        if 'externDynamic' in kwargs:
+        if encap_type is None:
+            raise TypeError("Missing 'encap_type' argument")
+        if extern_dynamic is None and 'externDynamic' in kwargs:
             extern_dynamic = kwargs['externDynamic']
-        if 'externStatic' in kwargs:
+        if extern_dynamic is None:
+            raise TypeError("Missing 'extern_dynamic' argument")
+        if extern_static is None and 'externStatic' in kwargs:
             extern_static = kwargs['externStatic']
-        if 'kubeApiVlan' in kwargs:
+        if extern_static is None:
+            raise TypeError("Missing 'extern_static' argument")
+        if kube_api_vlan is None and 'kubeApiVlan' in kwargs:
             kube_api_vlan = kwargs['kubeApiVlan']
-        if 'l3outExternalNetworks' in kwargs:
+        if kube_api_vlan is None:
+            raise TypeError("Missing 'kube_api_vlan' argument")
+        if l3out is None:
+            raise TypeError("Missing 'l3out' argument")
+        if l3out_external_networks is None and 'l3outExternalNetworks' in kwargs:
             l3out_external_networks = kwargs['l3outExternalNetworks']
-        if 'mcastRangeEnd' in kwargs:
+        if l3out_external_networks is None:
+            raise TypeError("Missing 'l3out_external_networks' argument")
+        if mcast_range_end is None and 'mcastRangeEnd' in kwargs:
             mcast_range_end = kwargs['mcastRangeEnd']
-        if 'mcastRangeStart' in kwargs:
+        if mcast_range_end is None:
+            raise TypeError("Missing 'mcast_range_end' argument")
+        if mcast_range_start is None and 'mcastRangeStart' in kwargs:
             mcast_range_start = kwargs['mcastRangeStart']
-        if 'nodeSubnet' in kwargs:
+        if mcast_range_start is None:
+            raise TypeError("Missing 'mcast_range_start' argument")
+        if node_subnet is None and 'nodeSubnet' in kwargs:
             node_subnet = kwargs['nodeSubnet']
-        if 'nodeSvcSubnet' in kwargs:
+        if node_subnet is None:
+            raise TypeError("Missing 'node_subnet' argument")
+        if node_svc_subnet is None and 'nodeSvcSubnet' in kwargs:
             node_svc_subnet = kwargs['nodeSvcSubnet']
-        if 'serviceVlan' in kwargs:
+        if node_svc_subnet is None:
+            raise TypeError("Missing 'node_svc_subnet' argument")
+        if service_vlan is None and 'serviceVlan' in kwargs:
             service_vlan = kwargs['serviceVlan']
-        if 'systemId' in kwargs:
+        if service_vlan is None:
+            raise TypeError("Missing 'service_vlan' argument")
+        if system_id is None and 'systemId' in kwargs:
             system_id = kwargs['systemId']
-        if 'vrfName' in kwargs:
+        if system_id is None:
+            raise TypeError("Missing 'system_id' argument")
+        if token is None:
+            raise TypeError("Missing 'token' argument")
+        if vrf_name is None and 'vrfName' in kwargs:
             vrf_name = kwargs['vrfName']
-        if 'vrfTenant' in kwargs:
+        if vrf_name is None:
+            raise TypeError("Missing 'vrf_name' argument")
+        if vrf_tenant is None and 'vrfTenant' in kwargs:
             vrf_tenant = kwargs['vrfTenant']
-        if 'apicRefreshTickerAdjust' in kwargs:
+        if vrf_tenant is None:
+            raise TypeError("Missing 'vrf_tenant' argument")
+        if apic_refresh_ticker_adjust is None and 'apicRefreshTickerAdjust' in kwargs:
             apic_refresh_ticker_adjust = kwargs['apicRefreshTickerAdjust']
-        if 'apicRefreshTime' in kwargs:
+        if apic_refresh_time is None and 'apicRefreshTime' in kwargs:
             apic_refresh_time = kwargs['apicRefreshTime']
-        if 'apicSubscriptionDelay' in kwargs:
+        if apic_subscription_delay is None and 'apicSubscriptionDelay' in kwargs:
             apic_subscription_delay = kwargs['apicSubscriptionDelay']
-        if 'controllerLogLevel' in kwargs:
+        if controller_log_level is None and 'controllerLogLevel' in kwargs:
             controller_log_level = kwargs['controllerLogLevel']
-        if 'disablePeriodicSnatGlobalInfoSync' in kwargs:
+        if disable_periodic_snat_global_info_sync is None and 'disablePeriodicSnatGlobalInfoSync' in kwargs:
             disable_periodic_snat_global_info_sync = kwargs['disablePeriodicSnatGlobalInfoSync']
-        if 'disableWaitForNetwork' in kwargs:
+        if disable_wait_for_network is None and 'disableWaitForNetwork' in kwargs:
             disable_wait_for_network = kwargs['disableWaitForNetwork']
-        if 'dropLogEnable' in kwargs:
+        if drop_log_enable is None and 'dropLogEnable' in kwargs:
             drop_log_enable = kwargs['dropLogEnable']
-        if 'durationWaitForNetwork' in kwargs:
+        if duration_wait_for_network is None and 'durationWaitForNetwork' in kwargs:
             duration_wait_for_network = kwargs['durationWaitForNetwork']
-        if 'enableEndpointSlice' in kwargs:
+        if enable_endpoint_slice is None and 'enableEndpointSlice' in kwargs:
             enable_endpoint_slice = kwargs['enableEndpointSlice']
-        if 'epRegistry' in kwargs:
+        if ep_registry is None and 'epRegistry' in kwargs:
             ep_registry = kwargs['epRegistry']
-        if 'gbpPodSubnet' in kwargs:
+        if gbp_pod_subnet is None and 'gbpPodSubnet' in kwargs:
             gbp_pod_subnet = kwargs['gbpPodSubnet']
-        if 'hostAgentLogLevel' in kwargs:
+        if host_agent_log_level is None and 'hostAgentLogLevel' in kwargs:
             host_agent_log_level = kwargs['hostAgentLogLevel']
-        if 'imagePullPolicy' in kwargs:
+        if image_pull_policy is None and 'imagePullPolicy' in kwargs:
             image_pull_policy = kwargs['imagePullPolicy']
-        if 'imagePullSecret' in kwargs:
+        if image_pull_secret is None and 'imagePullSecret' in kwargs:
             image_pull_secret = kwargs['imagePullSecret']
-        if 'infraVlan' in kwargs:
+        if infra_vlan is None and 'infraVlan' in kwargs:
             infra_vlan = kwargs['infraVlan']
-        if 'installIstio' in kwargs:
+        if install_istio is None and 'installIstio' in kwargs:
             install_istio = kwargs['installIstio']
-        if 'istioProfile' in kwargs:
+        if istio_profile is None and 'istioProfile' in kwargs:
             istio_profile = kwargs['istioProfile']
-        if 'kafkaBrokers' in kwargs:
+        if kafka_brokers is None and 'kafkaBrokers' in kwargs:
             kafka_brokers = kwargs['kafkaBrokers']
-        if 'kafkaClientCrt' in kwargs:
+        if kafka_client_crt is None and 'kafkaClientCrt' in kwargs:
             kafka_client_crt = kwargs['kafkaClientCrt']
-        if 'kafkaClientKey' in kwargs:
+        if kafka_client_key is None and 'kafkaClientKey' in kwargs:
             kafka_client_key = kwargs['kafkaClientKey']
-        if 'maxNodesSvcGraph' in kwargs:
+        if max_nodes_svc_graph is None and 'maxNodesSvcGraph' in kwargs:
             max_nodes_svc_graph = kwargs['maxNodesSvcGraph']
-        if 'mtuHeadRoom' in kwargs:
+        if mtu_head_room is None and 'mtuHeadRoom' in kwargs:
             mtu_head_room = kwargs['mtuHeadRoom']
-        if 'multusDisable' in kwargs:
+        if multus_disable is None and 'multusDisable' in kwargs:
             multus_disable = kwargs['multusDisable']
-        if 'noPriorityClass' in kwargs:
+        if no_priority_class is None and 'noPriorityClass' in kwargs:
             no_priority_class = kwargs['noPriorityClass']
-        if 'nodePodIfEnable' in kwargs:
+        if node_pod_if_enable is None and 'nodePodIfEnable' in kwargs:
             node_pod_if_enable = kwargs['nodePodIfEnable']
-        if 'opflexClientSsl' in kwargs:
+        if opflex_client_ssl is None and 'opflexClientSsl' in kwargs:
             opflex_client_ssl = kwargs['opflexClientSsl']
-        if 'opflexDeviceDeleteTimeout' in kwargs:
+        if opflex_device_delete_timeout is None and 'opflexDeviceDeleteTimeout' in kwargs:
             opflex_device_delete_timeout = kwargs['opflexDeviceDeleteTimeout']
-        if 'opflexLogLevel' in kwargs:
+        if opflex_log_level is None and 'opflexLogLevel' in kwargs:
             opflex_log_level = kwargs['opflexLogLevel']
-        if 'opflexMode' in kwargs:
+        if opflex_mode is None and 'opflexMode' in kwargs:
             opflex_mode = kwargs['opflexMode']
-        if 'opflexServerPort' in kwargs:
+        if opflex_server_port is None and 'opflexServerPort' in kwargs:
             opflex_server_port = kwargs['opflexServerPort']
-        if 'overlayVrfName' in kwargs:
+        if overlay_vrf_name is None and 'overlayVrfName' in kwargs:
             overlay_vrf_name = kwargs['overlayVrfName']
-        if 'ovsMemoryLimit' in kwargs:
+        if ovs_memory_limit is None and 'ovsMemoryLimit' in kwargs:
             ovs_memory_limit = kwargs['ovsMemoryLimit']
-        if 'pbrTrackingNonSnat' in kwargs:
+        if pbr_tracking_non_snat is None and 'pbrTrackingNonSnat' in kwargs:
             pbr_tracking_non_snat = kwargs['pbrTrackingNonSnat']
-        if 'podSubnetChunkSize' in kwargs:
+        if pod_subnet_chunk_size is None and 'podSubnetChunkSize' in kwargs:
             pod_subnet_chunk_size = kwargs['podSubnetChunkSize']
-        if 'runGbpContainer' in kwargs:
+        if run_gbp_container is None and 'runGbpContainer' in kwargs:
             run_gbp_container = kwargs['runGbpContainer']
-        if 'runOpflexServerContainer' in kwargs:
+        if run_opflex_server_container is None and 'runOpflexServerContainer' in kwargs:
             run_opflex_server_container = kwargs['runOpflexServerContainer']
-        if 'serviceMonitorInterval' in kwargs:
+        if service_monitor_interval is None and 'serviceMonitorInterval' in kwargs:
             service_monitor_interval = kwargs['serviceMonitorInterval']
-        if 'snatContractScope' in kwargs:
+        if snat_contract_scope is None and 'snatContractScope' in kwargs:
             snat_contract_scope = kwargs['snatContractScope']
-        if 'snatNamespace' in kwargs:
+        if snat_namespace is None and 'snatNamespace' in kwargs:
             snat_namespace = kwargs['snatNamespace']
-        if 'snatPortRangeEnd' in kwargs:
+        if snat_port_range_end is None and 'snatPortRangeEnd' in kwargs:
             snat_port_range_end = kwargs['snatPortRangeEnd']
-        if 'snatPortRangeStart' in kwargs:
+        if snat_port_range_start is None and 'snatPortRangeStart' in kwargs:
             snat_port_range_start = kwargs['snatPortRangeStart']
-        if 'snatPortsPerNode' in kwargs:
+        if snat_ports_per_node is None and 'snatPortsPerNode' in kwargs:
             snat_ports_per_node = kwargs['snatPortsPerNode']
-        if 'sriovEnable' in kwargs:
+        if sriov_enable is None and 'sriovEnable' in kwargs:
             sriov_enable = kwargs['sriovEnable']
-        if 'subnetDomainName' in kwargs:
+        if subnet_domain_name is None and 'subnetDomainName' in kwargs:
             subnet_domain_name = kwargs['subnetDomainName']
-        if 'useAciAnywhereCrd' in kwargs:
+        if use_aci_anywhere_crd is None and 'useAciAnywhereCrd' in kwargs:
             use_aci_anywhere_crd = kwargs['useAciAnywhereCrd']
-        if 'useAciCniPriorityClass' in kwargs:
+        if use_aci_cni_priority_class is None and 'useAciCniPriorityClass' in kwargs:
             use_aci_cni_priority_class = kwargs['useAciCniPriorityClass']
-        if 'useClusterRole' in kwargs:
+        if use_cluster_role is None and 'useClusterRole' in kwargs:
             use_cluster_role = kwargs['useClusterRole']
-        if 'useHostNetnsVolume' in kwargs:
+        if use_host_netns_volume is None and 'useHostNetnsVolume' in kwargs:
             use_host_netns_volume = kwargs['useHostNetnsVolume']
-        if 'useOpflexServerVolume' in kwargs:
+        if use_opflex_server_volume is None and 'useOpflexServerVolume' in kwargs:
             use_opflex_server_volume = kwargs['useOpflexServerVolume']
-        if 'usePrivilegedContainer' in kwargs:
+        if use_privileged_container is None and 'usePrivilegedContainer' in kwargs:
             use_privileged_container = kwargs['usePrivilegedContainer']
-        if 'vmmController' in kwargs:
+        if vmm_controller is None and 'vmmController' in kwargs:
             vmm_controller = kwargs['vmmController']
-        if 'vmmDomain' in kwargs:
+        if vmm_domain is None and 'vmmDomain' in kwargs:
             vmm_domain = kwargs['vmmDomain']
 
         _setter("aep", aep)
@@ -22921,9 +23301,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkP
     def _configure(
              _setter: Callable[[Any, Any], None],
              cloud_provider: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cloudProvider' in kwargs:
+        if cloud_provider is None and 'cloudProvider' in kwargs:
             cloud_provider = kwargs['cloudProvider']
 
         if cloud_provider is not None:
@@ -22947,7 +23327,7 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkPr
     def _configure(
              _setter: Callable[[Any, Any], None],
              iface: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if iface is not None:
@@ -22971,7 +23351,7 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetwork
     def _configure(
              _setter: Callable[[Any, Any], None],
              iface: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if iface is not None:
@@ -23002,13 +23382,15 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkToleration(dic
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
+             key: Optional[str] = None,
              effect: Optional[str] = None,
              operator: Optional[str] = None,
              seconds: Optional[int] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
 
         _setter("key", key)
         if effect is not None:
@@ -23057,9 +23439,11 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkPr
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             password: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             password: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if password is None:
+            raise TypeError("Missing 'password' argument")
 
         _setter("password", password)
 
@@ -23134,9 +23518,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNode(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address: str,
-             roles: Sequence[str],
-             user: str,
+             address: Optional[str] = None,
+             roles: Optional[Sequence[str]] = None,
+             user: Optional[str] = None,
              docker_socket: Optional[str] = None,
              hostname_override: Optional[str] = None,
              internal_address: Optional[str] = None,
@@ -23146,21 +23530,27 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNode(dict):
              ssh_agent_auth: Optional[bool] = None,
              ssh_key: Optional[str] = None,
              ssh_key_path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dockerSocket' in kwargs:
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if roles is None:
+            raise TypeError("Missing 'roles' argument")
+        if user is None:
+            raise TypeError("Missing 'user' argument")
+        if docker_socket is None and 'dockerSocket' in kwargs:
             docker_socket = kwargs['dockerSocket']
-        if 'hostnameOverride' in kwargs:
+        if hostname_override is None and 'hostnameOverride' in kwargs:
             hostname_override = kwargs['hostnameOverride']
-        if 'internalAddress' in kwargs:
+        if internal_address is None and 'internalAddress' in kwargs:
             internal_address = kwargs['internalAddress']
-        if 'nodeId' in kwargs:
+        if node_id is None and 'nodeId' in kwargs:
             node_id = kwargs['nodeId']
-        if 'sshAgentAuth' in kwargs:
+        if ssh_agent_auth is None and 'sshAgentAuth' in kwargs:
             ssh_agent_auth = kwargs['sshAgentAuth']
-        if 'sshKey' in kwargs:
+        if ssh_key is None and 'sshKey' in kwargs:
             ssh_key = kwargs['sshKey']
-        if 'sshKeyPath' in kwargs:
+        if ssh_key_path is None and 'sshKeyPath' in kwargs:
             ssh_key_path = kwargs['sshKeyPath']
 
         _setter("address", address)
@@ -23287,16 +23677,18 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry(dict)
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             url: str,
+             url: Optional[str] = None,
              ecr_credential_plugin: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPlugin'] = None,
              is_default: Optional[bool] = None,
              password: Optional[str] = None,
              user: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ecrCredentialPlugin' in kwargs:
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+        if ecr_credential_plugin is None and 'ecrCredentialPlugin' in kwargs:
             ecr_credential_plugin = kwargs['ecrCredentialPlugin']
-        if 'isDefault' in kwargs:
+        if is_default is None and 'isDefault' in kwargs:
             is_default = kwargs['isDefault']
 
         _setter("url", url)
@@ -23374,13 +23766,13 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCre
              aws_access_key_id: Optional[str] = None,
              aws_secret_access_key: Optional[str] = None,
              aws_session_token: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'awsAccessKeyId' in kwargs:
+        if aws_access_key_id is None and 'awsAccessKeyId' in kwargs:
             aws_access_key_id = kwargs['awsAccessKeyId']
-        if 'awsSecretAccessKey' in kwargs:
+        if aws_secret_access_key is None and 'awsSecretAccessKey' in kwargs:
             aws_secret_access_key = kwargs['awsSecretAccessKey']
-        if 'awsSessionToken' in kwargs:
+        if aws_session_token is None and 'awsSessionToken' in kwargs:
             aws_session_token = kwargs['awsSessionToken']
 
         if aws_access_key_id is not None:
@@ -23452,11 +23844,11 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices(dict):
              kubelet: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet'] = None,
              kubeproxy: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxy'] = None,
              scheduler: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesScheduler'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'kubeApi' in kwargs:
+        if kube_api is None and 'kubeApi' in kwargs:
             kube_api = kwargs['kubeApi']
-        if 'kubeController' in kwargs:
+        if kube_controller is None and 'kubeController' in kwargs:
             kube_controller = kwargs['kubeController']
 
         if etcd is not None:
@@ -23584,19 +23976,19 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcd(dict):
              retention: Optional[str] = None,
              snapshot: Optional[bool] = None,
              uid: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backupConfig' in kwargs:
+        if backup_config is None and 'backupConfig' in kwargs:
             backup_config = kwargs['backupConfig']
-        if 'caCert' in kwargs:
+        if ca_cert is None and 'caCert' in kwargs:
             ca_cert = kwargs['caCert']
-        if 'externalUrls' in kwargs:
+        if external_urls is None and 'externalUrls' in kwargs:
             external_urls = kwargs['externalUrls']
-        if 'extraArgs' in kwargs:
+        if extra_args is None and 'extraArgs' in kwargs:
             extra_args = kwargs['extraArgs']
-        if 'extraBinds' in kwargs:
+        if extra_binds is None and 'extraBinds' in kwargs:
             extra_binds = kwargs['extraBinds']
-        if 'extraEnvs' in kwargs:
+        if extra_envs is None and 'extraEnvs' in kwargs:
             extra_envs = kwargs['extraEnvs']
 
         if backup_config is not None:
@@ -23757,13 +24149,13 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupCon
              s3_backup_config: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfig'] = None,
              safe_timestamp: Optional[bool] = None,
              timeout: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'intervalHours' in kwargs:
+        if interval_hours is None and 'intervalHours' in kwargs:
             interval_hours = kwargs['intervalHours']
-        if 's3BackupConfig' in kwargs:
+        if s3_backup_config is None and 's3BackupConfig' in kwargs:
             s3_backup_config = kwargs['s3BackupConfig']
-        if 'safeTimestamp' in kwargs:
+        if safe_timestamp is None and 'safeTimestamp' in kwargs:
             safe_timestamp = kwargs['safeTimestamp']
 
         if enabled is not None:
@@ -23859,22 +24251,26 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupCon
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket_name: str,
-             endpoint: str,
+             bucket_name: Optional[str] = None,
+             endpoint: Optional[str] = None,
              access_key: Optional[str] = None,
              custom_ca: Optional[str] = None,
              folder: Optional[str] = None,
              region: Optional[str] = None,
              secret_key: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bucketName' in kwargs:
+        if bucket_name is None and 'bucketName' in kwargs:
             bucket_name = kwargs['bucketName']
-        if 'accessKey' in kwargs:
+        if bucket_name is None:
+            raise TypeError("Missing 'bucket_name' argument")
+        if endpoint is None:
+            raise TypeError("Missing 'endpoint' argument")
+        if access_key is None and 'accessKey' in kwargs:
             access_key = kwargs['accessKey']
-        if 'customCa' in kwargs:
+        if custom_ca is None and 'customCa' in kwargs:
             custom_ca = kwargs['customCa']
-        if 'secretKey' in kwargs:
+        if secret_key is None and 'secretKey' in kwargs:
             secret_key = kwargs['secretKey']
 
         _setter("bucket_name", bucket_name)
@@ -24008,29 +24404,29 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi(dict)
              secrets_encryption_config: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig'] = None,
              service_cluster_ip_range: Optional[str] = None,
              service_node_port_range: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'admissionConfiguration' in kwargs:
+        if admission_configuration is None and 'admissionConfiguration' in kwargs:
             admission_configuration = kwargs['admissionConfiguration']
-        if 'alwaysPullImages' in kwargs:
+        if always_pull_images is None and 'alwaysPullImages' in kwargs:
             always_pull_images = kwargs['alwaysPullImages']
-        if 'auditLog' in kwargs:
+        if audit_log is None and 'auditLog' in kwargs:
             audit_log = kwargs['auditLog']
-        if 'eventRateLimit' in kwargs:
+        if event_rate_limit is None and 'eventRateLimit' in kwargs:
             event_rate_limit = kwargs['eventRateLimit']
-        if 'extraArgs' in kwargs:
+        if extra_args is None and 'extraArgs' in kwargs:
             extra_args = kwargs['extraArgs']
-        if 'extraBinds' in kwargs:
+        if extra_binds is None and 'extraBinds' in kwargs:
             extra_binds = kwargs['extraBinds']
-        if 'extraEnvs' in kwargs:
+        if extra_envs is None and 'extraEnvs' in kwargs:
             extra_envs = kwargs['extraEnvs']
-        if 'podSecurityPolicy' in kwargs:
+        if pod_security_policy is None and 'podSecurityPolicy' in kwargs:
             pod_security_policy = kwargs['podSecurityPolicy']
-        if 'secretsEncryptionConfig' in kwargs:
+        if secrets_encryption_config is None and 'secretsEncryptionConfig' in kwargs:
             secrets_encryption_config = kwargs['secretsEncryptionConfig']
-        if 'serviceClusterIpRange' in kwargs:
+        if service_cluster_ip_range is None and 'serviceClusterIpRange' in kwargs:
             service_cluster_ip_range = kwargs['serviceClusterIpRange']
-        if 'serviceNodePortRange' in kwargs:
+        if service_node_port_range is None and 'serviceNodePortRange' in kwargs:
             service_node_port_range = kwargs['serviceNodePortRange']
 
         if admission_configuration is not None:
@@ -24154,9 +24550,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmiss
              api_version: Optional[str] = None,
              kind: Optional[str] = None,
              plugins: Optional[Sequence['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPlugin']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'apiVersion' in kwargs:
+        if api_version is None and 'apiVersion' in kwargs:
             api_version = kwargs['apiVersion']
 
         if api_version is not None:
@@ -24203,7 +24599,7 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmiss
              configuration: Optional[str] = None,
              name: Optional[str] = None,
              path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if configuration is not None:
@@ -24250,7 +24646,7 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditL
              _setter: Callable[[Any, Any], None],
              configuration: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration'] = None,
              enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if configuration is not None:
@@ -24320,13 +24716,13 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditL
              max_size: Optional[int] = None,
              path: Optional[str] = None,
              policy: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'maxAge' in kwargs:
+        if max_age is None and 'maxAge' in kwargs:
             max_age = kwargs['maxAge']
-        if 'maxBackup' in kwargs:
+        if max_backup is None and 'maxBackup' in kwargs:
             max_backup = kwargs['maxBackup']
-        if 'maxSize' in kwargs:
+        if max_size is None and 'maxSize' in kwargs:
             max_size = kwargs['maxSize']
 
         if format is not None:
@@ -24391,7 +24787,7 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventR
              _setter: Callable[[Any, Any], None],
              configuration: Optional[str] = None,
              enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if configuration is not None:
@@ -24448,9 +24844,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecret
              _setter: Callable[[Any, Any], None],
              custom_config: Optional[str] = None,
              enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'customConfig' in kwargs:
+        if custom_config is None and 'customConfig' in kwargs:
             custom_config = kwargs['customConfig']
 
         if custom_config is not None:
@@ -24524,17 +24920,17 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControlle
              extra_envs: Optional[Sequence[str]] = None,
              image: Optional[str] = None,
              service_cluster_ip_range: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterCidr' in kwargs:
+        if cluster_cidr is None and 'clusterCidr' in kwargs:
             cluster_cidr = kwargs['clusterCidr']
-        if 'extraArgs' in kwargs:
+        if extra_args is None and 'extraArgs' in kwargs:
             extra_args = kwargs['extraArgs']
-        if 'extraBinds' in kwargs:
+        if extra_binds is None and 'extraBinds' in kwargs:
             extra_binds = kwargs['extraBinds']
-        if 'extraEnvs' in kwargs:
+        if extra_envs is None and 'extraEnvs' in kwargs:
             extra_envs = kwargs['extraEnvs']
-        if 'serviceClusterIpRange' in kwargs:
+        if service_cluster_ip_range is None and 'serviceClusterIpRange' in kwargs:
             service_cluster_ip_range = kwargs['serviceClusterIpRange']
 
         if cluster_cidr is not None:
@@ -24648,23 +25044,23 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet(dict)
              generate_serving_certificate: Optional[bool] = None,
              image: Optional[str] = None,
              infra_container_image: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterDnsServer' in kwargs:
+        if cluster_dns_server is None and 'clusterDnsServer' in kwargs:
             cluster_dns_server = kwargs['clusterDnsServer']
-        if 'clusterDomain' in kwargs:
+        if cluster_domain is None and 'clusterDomain' in kwargs:
             cluster_domain = kwargs['clusterDomain']
-        if 'extraArgs' in kwargs:
+        if extra_args is None and 'extraArgs' in kwargs:
             extra_args = kwargs['extraArgs']
-        if 'extraBinds' in kwargs:
+        if extra_binds is None and 'extraBinds' in kwargs:
             extra_binds = kwargs['extraBinds']
-        if 'extraEnvs' in kwargs:
+        if extra_envs is None and 'extraEnvs' in kwargs:
             extra_envs = kwargs['extraEnvs']
-        if 'failSwapOn' in kwargs:
+        if fail_swap_on is None and 'failSwapOn' in kwargs:
             fail_swap_on = kwargs['failSwapOn']
-        if 'generateServingCertificate' in kwargs:
+        if generate_serving_certificate is None and 'generateServingCertificate' in kwargs:
             generate_serving_certificate = kwargs['generateServingCertificate']
-        if 'infraContainerImage' in kwargs:
+        if infra_container_image is None and 'infraContainerImage' in kwargs:
             infra_container_image = kwargs['infraContainerImage']
 
         if cluster_dns_server is not None:
@@ -24774,13 +25170,13 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxy(dic
              extra_binds: Optional[Sequence[str]] = None,
              extra_envs: Optional[Sequence[str]] = None,
              image: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'extraArgs' in kwargs:
+        if extra_args is None and 'extraArgs' in kwargs:
             extra_args = kwargs['extraArgs']
-        if 'extraBinds' in kwargs:
+        if extra_binds is None and 'extraBinds' in kwargs:
             extra_binds = kwargs['extraBinds']
-        if 'extraEnvs' in kwargs:
+        if extra_envs is None and 'extraEnvs' in kwargs:
             extra_envs = kwargs['extraEnvs']
 
         if extra_args is not None:
@@ -24855,13 +25251,13 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesScheduler(dic
              extra_binds: Optional[Sequence[str]] = None,
              extra_envs: Optional[Sequence[str]] = None,
              image: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'extraArgs' in kwargs:
+        if extra_args is None and 'extraArgs' in kwargs:
             extra_args = kwargs['extraArgs']
-        if 'extraBinds' in kwargs:
+        if extra_binds is None and 'extraBinds' in kwargs:
             extra_binds = kwargs['extraBinds']
-        if 'extraEnvs' in kwargs:
+        if extra_envs is None and 'extraEnvs' in kwargs:
             extra_envs = kwargs['extraEnvs']
 
         if extra_args is not None:
@@ -24936,13 +25332,13 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy(dict)
              drain_input: Optional['outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput'] = None,
              max_unavailable_controlplane: Optional[str] = None,
              max_unavailable_worker: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'drainInput' in kwargs:
+        if drain_input is None and 'drainInput' in kwargs:
             drain_input = kwargs['drainInput']
-        if 'maxUnavailableControlplane' in kwargs:
+        if max_unavailable_controlplane is None and 'maxUnavailableControlplane' in kwargs:
             max_unavailable_controlplane = kwargs['maxUnavailableControlplane']
-        if 'maxUnavailableWorker' in kwargs:
+        if max_unavailable_worker is None and 'maxUnavailableWorker' in kwargs:
             max_unavailable_worker = kwargs['maxUnavailableWorker']
 
         if drain is not None:
@@ -25020,13 +25416,13 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainI
              grace_period: Optional[int] = None,
              ignore_daemon_sets: Optional[bool] = None,
              timeout: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'deleteLocalData' in kwargs:
+        if delete_local_data is None and 'deleteLocalData' in kwargs:
             delete_local_data = kwargs['deleteLocalData']
-        if 'gracePeriod' in kwargs:
+        if grace_period is None and 'gracePeriod' in kwargs:
             grace_period = kwargs['gracePeriod']
-        if 'ignoreDaemonSets' in kwargs:
+        if ignore_daemon_sets is None and 'ignoreDaemonSets' in kwargs:
             ignore_daemon_sets = kwargs['ignoreDaemonSets']
 
         if delete_local_data is not None:
@@ -25089,12 +25485,16 @@ class ClusterTemplateTemplateRevisionQuestion(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             default: str,
-             variable: str,
+             default: Optional[str] = None,
+             variable: Optional[str] = None,
              required: Optional[bool] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if default is None:
+            raise TypeError("Missing 'default' argument")
+        if variable is None:
+            raise TypeError("Missing 'variable' argument")
 
         _setter("default", default)
         _setter("variable", variable)
@@ -25153,10 +25553,14 @@ class ClusterV2AgentEnvVar(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             name: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("name", name)
         _setter("value", value)
@@ -25222,13 +25626,13 @@ class ClusterV2ClusterAgentDeploymentCustomization(dict):
              append_tolerations: Optional[Sequence['outputs.ClusterV2ClusterAgentDeploymentCustomizationAppendToleration']] = None,
              override_affinity: Optional[str] = None,
              override_resource_requirements: Optional[Sequence['outputs.ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'appendTolerations' in kwargs:
+        if append_tolerations is None and 'appendTolerations' in kwargs:
             append_tolerations = kwargs['appendTolerations']
-        if 'overrideAffinity' in kwargs:
+        if override_affinity is None and 'overrideAffinity' in kwargs:
             override_affinity = kwargs['overrideAffinity']
-        if 'overrideResourceRequirements' in kwargs:
+        if override_resource_requirements is None and 'overrideResourceRequirements' in kwargs:
             override_resource_requirements = kwargs['overrideResourceRequirements']
 
         if append_tolerations is not None:
@@ -25289,13 +25693,15 @@ class ClusterV2ClusterAgentDeploymentCustomizationAppendToleration(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
+             key: Optional[str] = None,
              effect: Optional[str] = None,
              operator: Optional[str] = None,
              seconds: Optional[int] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
 
         _setter("key", key)
         if effect is not None:
@@ -25398,15 +25804,15 @@ class ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement(di
              cpu_request: Optional[str] = None,
              memory_limit: Optional[str] = None,
              memory_request: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cpuLimit' in kwargs:
+        if cpu_limit is None and 'cpuLimit' in kwargs:
             cpu_limit = kwargs['cpuLimit']
-        if 'cpuRequest' in kwargs:
+        if cpu_request is None and 'cpuRequest' in kwargs:
             cpu_request = kwargs['cpuRequest']
-        if 'memoryLimit' in kwargs:
+        if memory_limit is None and 'memoryLimit' in kwargs:
             memory_limit = kwargs['memoryLimit']
-        if 'memoryRequest' in kwargs:
+        if memory_request is None and 'memoryRequest' in kwargs:
             memory_request = kwargs['memoryRequest']
 
         if cpu_limit is not None:
@@ -25543,21 +25949,21 @@ class ClusterV2ClusterRegistrationToken(dict):
              node_command: Optional[str] = None,
              token: Optional[str] = None,
              windows_node_command: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'insecureCommand' in kwargs:
+        if insecure_command is None and 'insecureCommand' in kwargs:
             insecure_command = kwargs['insecureCommand']
-        if 'insecureNodeCommand' in kwargs:
+        if insecure_node_command is None and 'insecureNodeCommand' in kwargs:
             insecure_node_command = kwargs['insecureNodeCommand']
-        if 'insecureWindowsNodeCommand' in kwargs:
+        if insecure_windows_node_command is None and 'insecureWindowsNodeCommand' in kwargs:
             insecure_windows_node_command = kwargs['insecureWindowsNodeCommand']
-        if 'manifestUrl' in kwargs:
+        if manifest_url is None and 'manifestUrl' in kwargs:
             manifest_url = kwargs['manifestUrl']
-        if 'nodeCommand' in kwargs:
+        if node_command is None and 'nodeCommand' in kwargs:
             node_command = kwargs['nodeCommand']
-        if 'windowsNodeCommand' in kwargs:
+        if windows_node_command is None and 'windowsNodeCommand' in kwargs:
             windows_node_command = kwargs['windowsNodeCommand']
 
         if annotations is not None:
@@ -25736,13 +26142,13 @@ class ClusterV2FleetAgentDeploymentCustomization(dict):
              append_tolerations: Optional[Sequence['outputs.ClusterV2FleetAgentDeploymentCustomizationAppendToleration']] = None,
              override_affinity: Optional[str] = None,
              override_resource_requirements: Optional[Sequence['outputs.ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'appendTolerations' in kwargs:
+        if append_tolerations is None and 'appendTolerations' in kwargs:
             append_tolerations = kwargs['appendTolerations']
-        if 'overrideAffinity' in kwargs:
+        if override_affinity is None and 'overrideAffinity' in kwargs:
             override_affinity = kwargs['overrideAffinity']
-        if 'overrideResourceRequirements' in kwargs:
+        if override_resource_requirements is None and 'overrideResourceRequirements' in kwargs:
             override_resource_requirements = kwargs['overrideResourceRequirements']
 
         if append_tolerations is not None:
@@ -25803,13 +26209,15 @@ class ClusterV2FleetAgentDeploymentCustomizationAppendToleration(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
+             key: Optional[str] = None,
              effect: Optional[str] = None,
              operator: Optional[str] = None,
              seconds: Optional[int] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
 
         _setter("key", key)
         if effect is not None:
@@ -25912,15 +26320,15 @@ class ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement(dict
              cpu_request: Optional[str] = None,
              memory_limit: Optional[str] = None,
              memory_request: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cpuLimit' in kwargs:
+        if cpu_limit is None and 'cpuLimit' in kwargs:
             cpu_limit = kwargs['cpuLimit']
-        if 'cpuRequest' in kwargs:
+        if cpu_request is None and 'cpuRequest' in kwargs:
             cpu_request = kwargs['cpuRequest']
-        if 'memoryLimit' in kwargs:
+        if memory_limit is None and 'memoryLimit' in kwargs:
             memory_limit = kwargs['memoryLimit']
-        if 'memoryRequest' in kwargs:
+        if memory_request is None and 'memoryRequest' in kwargs:
             memory_request = kwargs['memoryRequest']
 
         if cpu_limit is not None:
@@ -26005,9 +26413,9 @@ class ClusterV2LocalAuthEndpoint(dict):
              ca_certs: Optional[str] = None,
              enabled: Optional[bool] = None,
              fqdn: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'caCerts' in kwargs:
+        if ca_certs is None and 'caCerts' in kwargs:
             ca_certs = kwargs['caCerts']
 
         if ca_certs is not None:
@@ -26141,29 +26549,29 @@ class ClusterV2RkeConfig(dict):
              registries: Optional['outputs.ClusterV2RkeConfigRegistries'] = None,
              rotate_certificates: Optional['outputs.ClusterV2RkeConfigRotateCertificates'] = None,
              upgrade_strategy: Optional['outputs.ClusterV2RkeConfigUpgradeStrategy'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'additionalManifest' in kwargs:
+        if additional_manifest is None and 'additionalManifest' in kwargs:
             additional_manifest = kwargs['additionalManifest']
-        if 'chartValues' in kwargs:
+        if chart_values is None and 'chartValues' in kwargs:
             chart_values = kwargs['chartValues']
-        if 'etcdSnapshotCreate' in kwargs:
+        if etcd_snapshot_create is None and 'etcdSnapshotCreate' in kwargs:
             etcd_snapshot_create = kwargs['etcdSnapshotCreate']
-        if 'etcdSnapshotRestore' in kwargs:
+        if etcd_snapshot_restore is None and 'etcdSnapshotRestore' in kwargs:
             etcd_snapshot_restore = kwargs['etcdSnapshotRestore']
-        if 'localAuthEndpoint' in kwargs:
+        if local_auth_endpoint is None and 'localAuthEndpoint' in kwargs:
             local_auth_endpoint = kwargs['localAuthEndpoint']
-        if 'machineGlobalConfig' in kwargs:
+        if machine_global_config is None and 'machineGlobalConfig' in kwargs:
             machine_global_config = kwargs['machineGlobalConfig']
-        if 'machinePoolDefaults' in kwargs:
+        if machine_pool_defaults is None and 'machinePoolDefaults' in kwargs:
             machine_pool_defaults = kwargs['machinePoolDefaults']
-        if 'machinePools' in kwargs:
+        if machine_pools is None and 'machinePools' in kwargs:
             machine_pools = kwargs['machinePools']
-        if 'machineSelectorConfigs' in kwargs:
+        if machine_selector_configs is None and 'machineSelectorConfigs' in kwargs:
             machine_selector_configs = kwargs['machineSelectorConfigs']
-        if 'rotateCertificates' in kwargs:
+        if rotate_certificates is None and 'rotateCertificates' in kwargs:
             rotate_certificates = kwargs['rotateCertificates']
-        if 'upgradeStrategy' in kwargs:
+        if upgrade_strategy is None and 'upgradeStrategy' in kwargs:
             upgrade_strategy = kwargs['upgradeStrategy']
 
         if additional_manifest is not None:
@@ -26348,15 +26756,15 @@ class ClusterV2RkeConfigEtcd(dict):
              s3_config: Optional['outputs.ClusterV2RkeConfigEtcdS3Config'] = None,
              snapshot_retention: Optional[int] = None,
              snapshot_schedule_cron: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'disableSnapshots' in kwargs:
+        if disable_snapshots is None and 'disableSnapshots' in kwargs:
             disable_snapshots = kwargs['disableSnapshots']
-        if 's3Config' in kwargs:
+        if s3_config is None and 's3Config' in kwargs:
             s3_config = kwargs['s3Config']
-        if 'snapshotRetention' in kwargs:
+        if snapshot_retention is None and 'snapshotRetention' in kwargs:
             snapshot_retention = kwargs['snapshotRetention']
-        if 'snapshotScheduleCron' in kwargs:
+        if snapshot_schedule_cron is None and 'snapshotScheduleCron' in kwargs:
             snapshot_schedule_cron = kwargs['snapshotScheduleCron']
 
         if disable_snapshots is not None:
@@ -26454,20 +26862,24 @@ class ClusterV2RkeConfigEtcdS3Config(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: str,
-             endpoint: str,
+             bucket: Optional[str] = None,
+             endpoint: Optional[str] = None,
              cloud_credential_name: Optional[str] = None,
              endpoint_ca: Optional[str] = None,
              folder: Optional[str] = None,
              region: Optional[str] = None,
              skip_ssl_verify: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cloudCredentialName' in kwargs:
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if endpoint is None:
+            raise TypeError("Missing 'endpoint' argument")
+        if cloud_credential_name is None and 'cloudCredentialName' in kwargs:
             cloud_credential_name = kwargs['cloudCredentialName']
-        if 'endpointCa' in kwargs:
+        if endpoint_ca is None and 'endpointCa' in kwargs:
             endpoint_ca = kwargs['endpointCa']
-        if 'skipSslVerify' in kwargs:
+        if skip_ssl_verify is None and 'skipSslVerify' in kwargs:
             skip_ssl_verify = kwargs['skipSslVerify']
 
         _setter("bucket", bucket)
@@ -26554,9 +26966,11 @@ class ClusterV2RkeConfigEtcdSnapshotCreate(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             generation: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             generation: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if generation is None:
+            raise TypeError("Missing 'generation' argument")
 
         _setter("generation", generation)
 
@@ -26606,12 +27020,16 @@ class ClusterV2RkeConfigEtcdSnapshotRestore(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             generation: int,
-             name: str,
+             generation: Optional[int] = None,
+             name: Optional[str] = None,
              restore_rke_config: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'restoreRkeConfig' in kwargs:
+        if generation is None:
+            raise TypeError("Missing 'generation' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if restore_rke_config is None and 'restoreRkeConfig' in kwargs:
             restore_rke_config = kwargs['restoreRkeConfig']
 
         _setter("generation", generation)
@@ -26684,9 +27102,9 @@ class ClusterV2RkeConfigLocalAuthEndpoint(dict):
              ca_certs: Optional[str] = None,
              enabled: Optional[bool] = None,
              fqdn: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'caCerts' in kwargs:
+        if ca_certs is None and 'caCerts' in kwargs:
             ca_certs = kwargs['caCerts']
 
         if ca_certs is not None:
@@ -26834,8 +27252,8 @@ class ClusterV2RkeConfigMachinePool(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             machine_config: 'outputs.ClusterV2RkeConfigMachinePoolMachineConfig',
-             name: str,
+             machine_config: Optional['outputs.ClusterV2RkeConfigMachinePoolMachineConfig'] = None,
+             name: Optional[str] = None,
              annotations: Optional[Mapping[str, Any]] = None,
              cloud_credential_secret_name: Optional[str] = None,
              control_plane_role: Optional[bool] = None,
@@ -26854,35 +27272,39 @@ class ClusterV2RkeConfigMachinePool(dict):
              unhealthy_node_timeout_seconds: Optional[int] = None,
              unhealthy_range: Optional[str] = None,
              worker_role: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'machineConfig' in kwargs:
+        if machine_config is None and 'machineConfig' in kwargs:
             machine_config = kwargs['machineConfig']
-        if 'cloudCredentialSecretName' in kwargs:
+        if machine_config is None:
+            raise TypeError("Missing 'machine_config' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if cloud_credential_secret_name is None and 'cloudCredentialSecretName' in kwargs:
             cloud_credential_secret_name = kwargs['cloudCredentialSecretName']
-        if 'controlPlaneRole' in kwargs:
+        if control_plane_role is None and 'controlPlaneRole' in kwargs:
             control_plane_role = kwargs['controlPlaneRole']
-        if 'drainBeforeDelete' in kwargs:
+        if drain_before_delete is None and 'drainBeforeDelete' in kwargs:
             drain_before_delete = kwargs['drainBeforeDelete']
-        if 'etcdRole' in kwargs:
+        if etcd_role is None and 'etcdRole' in kwargs:
             etcd_role = kwargs['etcdRole']
-        if 'hostnameLengthLimit' in kwargs:
+        if hostname_length_limit is None and 'hostnameLengthLimit' in kwargs:
             hostname_length_limit = kwargs['hostnameLengthLimit']
-        if 'machineLabels' in kwargs:
+        if machine_labels is None and 'machineLabels' in kwargs:
             machine_labels = kwargs['machineLabels']
-        if 'maxUnhealthy' in kwargs:
+        if max_unhealthy is None and 'maxUnhealthy' in kwargs:
             max_unhealthy = kwargs['maxUnhealthy']
-        if 'nodeDrainTimeout' in kwargs:
+        if node_drain_timeout is None and 'nodeDrainTimeout' in kwargs:
             node_drain_timeout = kwargs['nodeDrainTimeout']
-        if 'nodeStartupTimeoutSeconds' in kwargs:
+        if node_startup_timeout_seconds is None and 'nodeStartupTimeoutSeconds' in kwargs:
             node_startup_timeout_seconds = kwargs['nodeStartupTimeoutSeconds']
-        if 'rollingUpdate' in kwargs:
+        if rolling_update is None and 'rollingUpdate' in kwargs:
             rolling_update = kwargs['rollingUpdate']
-        if 'unhealthyNodeTimeoutSeconds' in kwargs:
+        if unhealthy_node_timeout_seconds is None and 'unhealthyNodeTimeoutSeconds' in kwargs:
             unhealthy_node_timeout_seconds = kwargs['unhealthyNodeTimeoutSeconds']
-        if 'unhealthyRange' in kwargs:
+        if unhealthy_range is None and 'unhealthyRange' in kwargs:
             unhealthy_range = kwargs['unhealthyRange']
-        if 'workerRole' in kwargs:
+        if worker_role is None and 'workerRole' in kwargs:
             worker_role = kwargs['workerRole']
 
         _setter("machine_config", machine_config)
@@ -27111,9 +27533,9 @@ class ClusterV2RkeConfigMachinePoolDefault(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              hostname_length_limit: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'hostnameLengthLimit' in kwargs:
+        if hostname_length_limit is None and 'hostnameLengthLimit' in kwargs:
             hostname_length_limit = kwargs['hostnameLengthLimit']
 
         if hostname_length_limit is not None:
@@ -27142,10 +27564,14 @@ class ClusterV2RkeConfigMachinePoolMachineConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             kind: str,
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             kind: Optional[str] = None,
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if kind is None:
+            raise TypeError("Missing 'kind' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
 
         _setter("kind", kind)
         _setter("name", name)
@@ -27205,11 +27631,11 @@ class ClusterV2RkeConfigMachinePoolRollingUpdate(dict):
              _setter: Callable[[Any, Any], None],
              max_surge: Optional[str] = None,
              max_unavailable: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'maxSurge' in kwargs:
+        if max_surge is None and 'maxSurge' in kwargs:
             max_surge = kwargs['maxSurge']
-        if 'maxUnavailable' in kwargs:
+        if max_unavailable is None and 'maxUnavailable' in kwargs:
             max_unavailable = kwargs['maxUnavailable']
 
         if max_surge is not None:
@@ -27254,11 +27680,15 @@ class ClusterV2RkeConfigMachinePoolTaint(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             value: str,
+             key: Optional[str] = None,
+             value: Optional[str] = None,
              effect: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("key", key)
         _setter("value", value)
@@ -27326,9 +27756,9 @@ class ClusterV2RkeConfigMachineSelectorConfig(dict):
              _setter: Callable[[Any, Any], None],
              config: Optional[str] = None,
              machine_label_selector: Optional['outputs.ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'machineLabelSelector' in kwargs:
+        if machine_label_selector is None and 'machineLabelSelector' in kwargs:
             machine_label_selector = kwargs['machineLabelSelector']
 
         if config is not None:
@@ -27391,11 +27821,11 @@ class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector(dict):
              _setter: Callable[[Any, Any], None],
              match_expressions: Optional[Sequence['outputs.ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression']] = None,
              match_labels: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'matchExpressions' in kwargs:
+        if match_expressions is None and 'matchExpressions' in kwargs:
             match_expressions = kwargs['matchExpressions']
-        if 'matchLabels' in kwargs:
+        if match_labels is None and 'matchLabels' in kwargs:
             match_labels = kwargs['matchLabels']
 
         if match_expressions is not None:
@@ -27443,7 +27873,7 @@ class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression
              key: Optional[str] = None,
              operator: Optional[str] = None,
              values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if key is not None:
@@ -27497,7 +27927,7 @@ class ClusterV2RkeConfigRegistries(dict):
              _setter: Callable[[Any, Any], None],
              configs: Optional[Sequence['outputs.ClusterV2RkeConfigRegistriesConfig']] = None,
              mirrors: Optional[Sequence['outputs.ClusterV2RkeConfigRegistriesMirror']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if configs is not None:
@@ -27569,18 +27999,20 @@ class ClusterV2RkeConfigRegistriesConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             hostname: str,
+             hostname: Optional[str] = None,
              auth_config_secret_name: Optional[str] = None,
              ca_bundle: Optional[str] = None,
              insecure: Optional[bool] = None,
              tls_secret_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'authConfigSecretName' in kwargs:
+        if hostname is None:
+            raise TypeError("Missing 'hostname' argument")
+        if auth_config_secret_name is None and 'authConfigSecretName' in kwargs:
             auth_config_secret_name = kwargs['authConfigSecretName']
-        if 'caBundle' in kwargs:
+        if ca_bundle is None and 'caBundle' in kwargs:
             ca_bundle = kwargs['caBundle']
-        if 'tlsSecretName' in kwargs:
+        if tls_secret_name is None and 'tlsSecretName' in kwargs:
             tls_secret_name = kwargs['tlsSecretName']
 
         _setter("hostname", hostname)
@@ -27654,11 +28086,13 @@ class ClusterV2RkeConfigRegistriesMirror(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             hostname: str,
+             hostname: Optional[str] = None,
              endpoints: Optional[Sequence[str]] = None,
              rewrites: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if hostname is None:
+            raise TypeError("Missing 'hostname' argument")
 
         _setter("hostname", hostname)
         if endpoints is not None:
@@ -27708,10 +28142,12 @@ class ClusterV2RkeConfigRotateCertificates(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             generation: int,
+             generation: Optional[int] = None,
              services: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if generation is None:
+            raise TypeError("Missing 'generation' argument")
 
         _setter("generation", generation)
         if services is not None:
@@ -27784,15 +28220,15 @@ class ClusterV2RkeConfigUpgradeStrategy(dict):
              control_plane_drain_options: Optional['outputs.ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions'] = None,
              worker_concurrency: Optional[str] = None,
              worker_drain_options: Optional['outputs.ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'controlPlaneConcurrency' in kwargs:
+        if control_plane_concurrency is None and 'controlPlaneConcurrency' in kwargs:
             control_plane_concurrency = kwargs['controlPlaneConcurrency']
-        if 'controlPlaneDrainOptions' in kwargs:
+        if control_plane_drain_options is None and 'controlPlaneDrainOptions' in kwargs:
             control_plane_drain_options = kwargs['controlPlaneDrainOptions']
-        if 'workerConcurrency' in kwargs:
+        if worker_concurrency is None and 'workerConcurrency' in kwargs:
             worker_concurrency = kwargs['workerConcurrency']
-        if 'workerDrainOptions' in kwargs:
+        if worker_drain_options is None and 'workerDrainOptions' in kwargs:
             worker_drain_options = kwargs['workerDrainOptions']
 
         if control_plane_concurrency is not None:
@@ -27911,19 +28347,19 @@ class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions(dict):
              ignore_errors: Optional[bool] = None,
              skip_wait_for_delete_timeout_seconds: Optional[int] = None,
              timeout: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'deleteEmptyDirData' in kwargs:
+        if delete_empty_dir_data is None and 'deleteEmptyDirData' in kwargs:
             delete_empty_dir_data = kwargs['deleteEmptyDirData']
-        if 'disableEviction' in kwargs:
+        if disable_eviction is None and 'disableEviction' in kwargs:
             disable_eviction = kwargs['disableEviction']
-        if 'gracePeriod' in kwargs:
+        if grace_period is None and 'gracePeriod' in kwargs:
             grace_period = kwargs['gracePeriod']
-        if 'ignoreDaemonSets' in kwargs:
+        if ignore_daemon_sets is None and 'ignoreDaemonSets' in kwargs:
             ignore_daemon_sets = kwargs['ignoreDaemonSets']
-        if 'ignoreErrors' in kwargs:
+        if ignore_errors is None and 'ignoreErrors' in kwargs:
             ignore_errors = kwargs['ignoreErrors']
-        if 'skipWaitForDeleteTimeoutSeconds' in kwargs:
+        if skip_wait_for_delete_timeout_seconds is None and 'skipWaitForDeleteTimeoutSeconds' in kwargs:
             skip_wait_for_delete_timeout_seconds = kwargs['skipWaitForDeleteTimeoutSeconds']
 
         if delete_empty_dir_data is not None:
@@ -28092,19 +28528,19 @@ class ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions(dict):
              ignore_errors: Optional[bool] = None,
              skip_wait_for_delete_timeout_seconds: Optional[int] = None,
              timeout: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'deleteEmptyDirData' in kwargs:
+        if delete_empty_dir_data is None and 'deleteEmptyDirData' in kwargs:
             delete_empty_dir_data = kwargs['deleteEmptyDirData']
-        if 'disableEviction' in kwargs:
+        if disable_eviction is None and 'disableEviction' in kwargs:
             disable_eviction = kwargs['disableEviction']
-        if 'gracePeriod' in kwargs:
+        if grace_period is None and 'gracePeriod' in kwargs:
             grace_period = kwargs['gracePeriod']
-        if 'ignoreDaemonSets' in kwargs:
+        if ignore_daemon_sets is None and 'ignoreDaemonSets' in kwargs:
             ignore_daemon_sets = kwargs['ignoreDaemonSets']
-        if 'ignoreErrors' in kwargs:
+        if ignore_errors is None and 'ignoreErrors' in kwargs:
             ignore_errors = kwargs['ignoreErrors']
-        if 'skipWaitForDeleteTimeoutSeconds' in kwargs:
+        if skip_wait_for_delete_timeout_seconds is None and 'skipWaitForDeleteTimeoutSeconds' in kwargs:
             skip_wait_for_delete_timeout_seconds = kwargs['skipWaitForDeleteTimeoutSeconds']
 
         if delete_empty_dir_data is not None:
@@ -28253,13 +28689,13 @@ class EtcdBackupBackupConfig(dict):
              s3_backup_config: Optional['outputs.EtcdBackupBackupConfigS3BackupConfig'] = None,
              safe_timestamp: Optional[bool] = None,
              timeout: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'intervalHours' in kwargs:
+        if interval_hours is None and 'intervalHours' in kwargs:
             interval_hours = kwargs['intervalHours']
-        if 's3BackupConfig' in kwargs:
+        if s3_backup_config is None and 's3BackupConfig' in kwargs:
             s3_backup_config = kwargs['s3BackupConfig']
-        if 'safeTimestamp' in kwargs:
+        if safe_timestamp is None and 'safeTimestamp' in kwargs:
             safe_timestamp = kwargs['safeTimestamp']
 
         if enabled is not None:
@@ -28373,22 +28809,26 @@ class EtcdBackupBackupConfigS3BackupConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket_name: str,
-             endpoint: str,
+             bucket_name: Optional[str] = None,
+             endpoint: Optional[str] = None,
              access_key: Optional[str] = None,
              custom_ca: Optional[str] = None,
              folder: Optional[str] = None,
              region: Optional[str] = None,
              secret_key: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bucketName' in kwargs:
+        if bucket_name is None and 'bucketName' in kwargs:
             bucket_name = kwargs['bucketName']
-        if 'accessKey' in kwargs:
+        if bucket_name is None:
+            raise TypeError("Missing 'bucket_name' argument")
+        if endpoint is None:
+            raise TypeError("Missing 'endpoint' argument")
+        if access_key is None and 'accessKey' in kwargs:
             access_key = kwargs['accessKey']
-        if 'customCa' in kwargs:
+        if custom_ca is None and 'customCa' in kwargs:
             custom_ca = kwargs['customCa']
-        if 'secretKey' in kwargs:
+        if secret_key is None and 'secretKey' in kwargs:
             secret_key = kwargs['secretKey']
 
         _setter("bucket_name", bucket_name)
@@ -28497,14 +28937,18 @@ class GlobalDnsProviderAlidnsConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_key: str,
-             secret_key: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             access_key: Optional[str] = None,
+             secret_key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessKey' in kwargs:
+        if access_key is None and 'accessKey' in kwargs:
             access_key = kwargs['accessKey']
-        if 'secretKey' in kwargs:
+        if access_key is None:
+            raise TypeError("Missing 'access_key' argument")
+        if secret_key is None and 'secretKey' in kwargs:
             secret_key = kwargs['secretKey']
+        if secret_key is None:
+            raise TypeError("Missing 'secret_key' argument")
 
         _setter("access_key", access_key)
         _setter("secret_key", secret_key)
@@ -28567,16 +29011,20 @@ class GlobalDnsProviderCloudflareConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             api_email: str,
-             api_key: str,
+             api_email: Optional[str] = None,
+             api_key: Optional[str] = None,
              proxy_setting: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'apiEmail' in kwargs:
+        if api_email is None and 'apiEmail' in kwargs:
             api_email = kwargs['apiEmail']
-        if 'apiKey' in kwargs:
+        if api_email is None:
+            raise TypeError("Missing 'api_email' argument")
+        if api_key is None and 'apiKey' in kwargs:
             api_key = kwargs['apiKey']
-        if 'proxySetting' in kwargs:
+        if api_key is None:
+            raise TypeError("Missing 'api_key' argument")
+        if proxy_setting is None and 'proxySetting' in kwargs:
             proxy_setting = kwargs['proxySetting']
 
         _setter("api_email", api_email)
@@ -28663,23 +29111,27 @@ class GlobalDnsProviderRoute53Config(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_key: str,
-             secret_key: str,
+             access_key: Optional[str] = None,
+             secret_key: Optional[str] = None,
              credentials_path: Optional[str] = None,
              region: Optional[str] = None,
              role_arn: Optional[str] = None,
              zone_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessKey' in kwargs:
+        if access_key is None and 'accessKey' in kwargs:
             access_key = kwargs['accessKey']
-        if 'secretKey' in kwargs:
+        if access_key is None:
+            raise TypeError("Missing 'access_key' argument")
+        if secret_key is None and 'secretKey' in kwargs:
             secret_key = kwargs['secretKey']
-        if 'credentialsPath' in kwargs:
+        if secret_key is None:
+            raise TypeError("Missing 'secret_key' argument")
+        if credentials_path is None and 'credentialsPath' in kwargs:
             credentials_path = kwargs['credentialsPath']
-        if 'roleArn' in kwargs:
+        if role_arn is None and 'roleArn' in kwargs:
             role_arn = kwargs['roleArn']
-        if 'zoneType' in kwargs:
+        if zone_type is None and 'zoneType' in kwargs:
             zone_type = kwargs['zoneType']
 
         _setter("access_key", access_key)
@@ -28794,13 +29246,13 @@ class GlobalRoleRule(dict):
              resource_names: Optional[Sequence[str]] = None,
              resources: Optional[Sequence[str]] = None,
              verbs: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'apiGroups' in kwargs:
+        if api_groups is None and 'apiGroups' in kwargs:
             api_groups = kwargs['apiGroups']
-        if 'nonResourceUrls' in kwargs:
+        if non_resource_urls is None and 'nonResourceUrls' in kwargs:
             non_resource_urls = kwargs['nonResourceUrls']
-        if 'resourceNames' in kwargs:
+        if resource_names is None and 'resourceNames' in kwargs:
             resource_names = kwargs['resourceNames']
 
         if api_groups is not None:
@@ -29033,12 +29485,12 @@ class MachineConfigV2Amazonec2Config(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ami: str,
-             region: str,
-             security_groups: Sequence[str],
-             subnet_id: str,
-             vpc_id: str,
-             zone: str,
+             ami: Optional[str] = None,
+             region: Optional[str] = None,
+             security_groups: Optional[Sequence[str]] = None,
+             subnet_id: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             zone: Optional[str] = None,
              access_key: Optional[str] = None,
              block_duration_minutes: Optional[str] = None,
              device_name: Optional[str] = None,
@@ -29067,59 +29519,71 @@ class MachineConfigV2Amazonec2Config(dict):
              use_private_address: Optional[bool] = None,
              userdata: Optional[str] = None,
              volume_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'securityGroups' in kwargs:
+        if ami is None:
+            raise TypeError("Missing 'ami' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if security_groups is None and 'securityGroups' in kwargs:
             security_groups = kwargs['securityGroups']
-        if 'subnetId' in kwargs:
+        if security_groups is None:
+            raise TypeError("Missing 'security_groups' argument")
+        if subnet_id is None and 'subnetId' in kwargs:
             subnet_id = kwargs['subnetId']
-        if 'vpcId' in kwargs:
+        if subnet_id is None:
+            raise TypeError("Missing 'subnet_id' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'accessKey' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if zone is None:
+            raise TypeError("Missing 'zone' argument")
+        if access_key is None and 'accessKey' in kwargs:
             access_key = kwargs['accessKey']
-        if 'blockDurationMinutes' in kwargs:
+        if block_duration_minutes is None and 'blockDurationMinutes' in kwargs:
             block_duration_minutes = kwargs['blockDurationMinutes']
-        if 'deviceName' in kwargs:
+        if device_name is None and 'deviceName' in kwargs:
             device_name = kwargs['deviceName']
-        if 'encryptEbsVolume' in kwargs:
+        if encrypt_ebs_volume is None and 'encryptEbsVolume' in kwargs:
             encrypt_ebs_volume = kwargs['encryptEbsVolume']
-        if 'httpEndpoint' in kwargs:
+        if http_endpoint is None and 'httpEndpoint' in kwargs:
             http_endpoint = kwargs['httpEndpoint']
-        if 'httpTokens' in kwargs:
+        if http_tokens is None and 'httpTokens' in kwargs:
             http_tokens = kwargs['httpTokens']
-        if 'iamInstanceProfile' in kwargs:
+        if iam_instance_profile is None and 'iamInstanceProfile' in kwargs:
             iam_instance_profile = kwargs['iamInstanceProfile']
-        if 'insecureTransport' in kwargs:
+        if insecure_transport is None and 'insecureTransport' in kwargs:
             insecure_transport = kwargs['insecureTransport']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'kmsKey' in kwargs:
+        if kms_key is None and 'kmsKey' in kwargs:
             kms_key = kwargs['kmsKey']
-        if 'openPorts' in kwargs:
+        if open_ports is None and 'openPorts' in kwargs:
             open_ports = kwargs['openPorts']
-        if 'privateAddressOnly' in kwargs:
+        if private_address_only is None and 'privateAddressOnly' in kwargs:
             private_address_only = kwargs['privateAddressOnly']
-        if 'requestSpotInstance' in kwargs:
+        if request_spot_instance is None and 'requestSpotInstance' in kwargs:
             request_spot_instance = kwargs['requestSpotInstance']
-        if 'rootSize' in kwargs:
+        if root_size is None and 'rootSize' in kwargs:
             root_size = kwargs['rootSize']
-        if 'secretKey' in kwargs:
+        if secret_key is None and 'secretKey' in kwargs:
             secret_key = kwargs['secretKey']
-        if 'securityGroupReadonly' in kwargs:
+        if security_group_readonly is None and 'securityGroupReadonly' in kwargs:
             security_group_readonly = kwargs['securityGroupReadonly']
-        if 'sessionToken' in kwargs:
+        if session_token is None and 'sessionToken' in kwargs:
             session_token = kwargs['sessionToken']
-        if 'spotPrice' in kwargs:
+        if spot_price is None and 'spotPrice' in kwargs:
             spot_price = kwargs['spotPrice']
-        if 'sshKeyContents' in kwargs:
+        if ssh_key_contents is None and 'sshKeyContents' in kwargs:
             ssh_key_contents = kwargs['sshKeyContents']
-        if 'sshUser' in kwargs:
+        if ssh_user is None and 'sshUser' in kwargs:
             ssh_user = kwargs['sshUser']
-        if 'useEbsOptimizedInstance' in kwargs:
+        if use_ebs_optimized_instance is None and 'useEbsOptimizedInstance' in kwargs:
             use_ebs_optimized_instance = kwargs['useEbsOptimizedInstance']
-        if 'usePrivateAddress' in kwargs:
+        if use_private_address is None and 'usePrivateAddress' in kwargs:
             use_private_address = kwargs['usePrivateAddress']
-        if 'volumeType' in kwargs:
+        if volume_type is None and 'volumeType' in kwargs:
             volume_type = kwargs['volumeType']
 
         _setter("ami", ami)
@@ -29656,55 +30120,55 @@ class MachineConfigV2AzureConfig(dict):
              use_private_ip: Optional[bool] = None,
              use_public_ip_standard_sku: Optional[bool] = None,
              vnet: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acceleratedNetworking' in kwargs:
+        if accelerated_networking is None and 'acceleratedNetworking' in kwargs:
             accelerated_networking = kwargs['acceleratedNetworking']
-        if 'availabilitySet' in kwargs:
+        if availability_set is None and 'availabilitySet' in kwargs:
             availability_set = kwargs['availabilitySet']
-        if 'availabilityZone' in kwargs:
+        if availability_zone is None and 'availabilityZone' in kwargs:
             availability_zone = kwargs['availabilityZone']
-        if 'clientId' in kwargs:
+        if client_id is None and 'clientId' in kwargs:
             client_id = kwargs['clientId']
-        if 'clientSecret' in kwargs:
+        if client_secret is None and 'clientSecret' in kwargs:
             client_secret = kwargs['clientSecret']
-        if 'customData' in kwargs:
+        if custom_data is None and 'customData' in kwargs:
             custom_data = kwargs['customData']
-        if 'diskSize' in kwargs:
+        if disk_size is None and 'diskSize' in kwargs:
             disk_size = kwargs['diskSize']
-        if 'dockerPort' in kwargs:
+        if docker_port is None and 'dockerPort' in kwargs:
             docker_port = kwargs['dockerPort']
-        if 'faultDomainCount' in kwargs:
+        if fault_domain_count is None and 'faultDomainCount' in kwargs:
             fault_domain_count = kwargs['faultDomainCount']
-        if 'managedDisks' in kwargs:
+        if managed_disks is None and 'managedDisks' in kwargs:
             managed_disks = kwargs['managedDisks']
-        if 'noPublicIp' in kwargs:
+        if no_public_ip is None and 'noPublicIp' in kwargs:
             no_public_ip = kwargs['noPublicIp']
-        if 'openPorts' in kwargs:
+        if open_ports is None and 'openPorts' in kwargs:
             open_ports = kwargs['openPorts']
-        if 'privateAddressOnly' in kwargs:
+        if private_address_only is None and 'privateAddressOnly' in kwargs:
             private_address_only = kwargs['privateAddressOnly']
-        if 'privateIpAddress' in kwargs:
+        if private_ip_address is None and 'privateIpAddress' in kwargs:
             private_ip_address = kwargs['privateIpAddress']
-        if 'resourceGroup' in kwargs:
+        if resource_group is None and 'resourceGroup' in kwargs:
             resource_group = kwargs['resourceGroup']
-        if 'sshUser' in kwargs:
+        if ssh_user is None and 'sshUser' in kwargs:
             ssh_user = kwargs['sshUser']
-        if 'staticPublicIp' in kwargs:
+        if static_public_ip is None and 'staticPublicIp' in kwargs:
             static_public_ip = kwargs['staticPublicIp']
-        if 'storageType' in kwargs:
+        if storage_type is None and 'storageType' in kwargs:
             storage_type = kwargs['storageType']
-        if 'subnetPrefix' in kwargs:
+        if subnet_prefix is None and 'subnetPrefix' in kwargs:
             subnet_prefix = kwargs['subnetPrefix']
-        if 'subscriptionId' in kwargs:
+        if subscription_id is None and 'subscriptionId' in kwargs:
             subscription_id = kwargs['subscriptionId']
-        if 'tenantId' in kwargs:
+        if tenant_id is None and 'tenantId' in kwargs:
             tenant_id = kwargs['tenantId']
-        if 'updateDomainCount' in kwargs:
+        if update_domain_count is None and 'updateDomainCount' in kwargs:
             update_domain_count = kwargs['updateDomainCount']
-        if 'usePrivateIp' in kwargs:
+        if use_private_ip is None and 'usePrivateIp' in kwargs:
             use_private_ip = kwargs['usePrivateIp']
-        if 'usePublicIpStandardSku' in kwargs:
+        if use_public_ip_standard_sku is None and 'usePublicIpStandardSku' in kwargs:
             use_public_ip_standard_sku = kwargs['usePublicIpStandardSku']
 
         if accelerated_networking is not None:
@@ -30127,19 +30591,19 @@ class MachineConfigV2DigitaloceanConfig(dict):
              ssh_user: Optional[str] = None,
              tags: Optional[str] = None,
              userdata: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessToken' in kwargs:
+        if access_token is None and 'accessToken' in kwargs:
             access_token = kwargs['accessToken']
-        if 'privateNetworking' in kwargs:
+        if private_networking is None and 'privateNetworking' in kwargs:
             private_networking = kwargs['privateNetworking']
-        if 'sshKeyContents' in kwargs:
+        if ssh_key_contents is None and 'sshKeyContents' in kwargs:
             ssh_key_contents = kwargs['sshKeyContents']
-        if 'sshKeyFingerprint' in kwargs:
+        if ssh_key_fingerprint is None and 'sshKeyFingerprint' in kwargs:
             ssh_key_fingerprint = kwargs['sshKeyFingerprint']
-        if 'sshPort' in kwargs:
+        if ssh_port is None and 'sshPort' in kwargs:
             ssh_port = kwargs['sshPort']
-        if 'sshUser' in kwargs:
+        if ssh_user is None and 'sshUser' in kwargs:
             ssh_user = kwargs['sshUser']
 
         if access_token is not None:
@@ -30385,8 +30849,8 @@ class MachineConfigV2HarvesterConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ssh_user: str,
-             vm_namespace: str,
+             ssh_user: Optional[str] = None,
+             vm_namespace: Optional[str] = None,
              cpu_count: Optional[str] = None,
              disk_bus: Optional[str] = None,
              disk_info: Optional[str] = None,
@@ -30400,37 +30864,41 @@ class MachineConfigV2HarvesterConfig(dict):
              ssh_password: Optional[str] = None,
              user_data: Optional[str] = None,
              vm_affinity: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'sshUser' in kwargs:
+        if ssh_user is None and 'sshUser' in kwargs:
             ssh_user = kwargs['sshUser']
-        if 'vmNamespace' in kwargs:
+        if ssh_user is None:
+            raise TypeError("Missing 'ssh_user' argument")
+        if vm_namespace is None and 'vmNamespace' in kwargs:
             vm_namespace = kwargs['vmNamespace']
-        if 'cpuCount' in kwargs:
+        if vm_namespace is None:
+            raise TypeError("Missing 'vm_namespace' argument")
+        if cpu_count is None and 'cpuCount' in kwargs:
             cpu_count = kwargs['cpuCount']
-        if 'diskBus' in kwargs:
+        if disk_bus is None and 'diskBus' in kwargs:
             disk_bus = kwargs['diskBus']
-        if 'diskInfo' in kwargs:
+        if disk_info is None and 'diskInfo' in kwargs:
             disk_info = kwargs['diskInfo']
-        if 'diskSize' in kwargs:
+        if disk_size is None and 'diskSize' in kwargs:
             disk_size = kwargs['diskSize']
-        if 'imageName' in kwargs:
+        if image_name is None and 'imageName' in kwargs:
             image_name = kwargs['imageName']
-        if 'memorySize' in kwargs:
+        if memory_size is None and 'memorySize' in kwargs:
             memory_size = kwargs['memorySize']
-        if 'networkData' in kwargs:
+        if network_data is None and 'networkData' in kwargs:
             network_data = kwargs['networkData']
-        if 'networkInfo' in kwargs:
+        if network_info is None and 'networkInfo' in kwargs:
             network_info = kwargs['networkInfo']
-        if 'networkModel' in kwargs:
+        if network_model is None and 'networkModel' in kwargs:
             network_model = kwargs['networkModel']
-        if 'networkName' in kwargs:
+        if network_name is None and 'networkName' in kwargs:
             network_name = kwargs['networkName']
-        if 'sshPassword' in kwargs:
+        if ssh_password is None and 'sshPassword' in kwargs:
             ssh_password = kwargs['sshPassword']
-        if 'userData' in kwargs:
+        if user_data is None and 'userData' in kwargs:
             user_data = kwargs['userData']
-        if 'vmAffinity' in kwargs:
+        if vm_affinity is None and 'vmAffinity' in kwargs:
             vm_affinity = kwargs['vmAffinity']
 
         _setter("ssh_user", ssh_user)
@@ -30708,27 +31176,27 @@ class MachineConfigV2LinodeConfig(dict):
              tags: Optional[str] = None,
              token: Optional[str] = None,
              ua_prefix: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'authorizedUsers' in kwargs:
+        if authorized_users is None and 'authorizedUsers' in kwargs:
             authorized_users = kwargs['authorizedUsers']
-        if 'createPrivateIp' in kwargs:
+        if create_private_ip is None and 'createPrivateIp' in kwargs:
             create_private_ip = kwargs['createPrivateIp']
-        if 'dockerPort' in kwargs:
+        if docker_port is None and 'dockerPort' in kwargs:
             docker_port = kwargs['dockerPort']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'rootPass' in kwargs:
+        if root_pass is None and 'rootPass' in kwargs:
             root_pass = kwargs['rootPass']
-        if 'sshPort' in kwargs:
+        if ssh_port is None and 'sshPort' in kwargs:
             ssh_port = kwargs['sshPort']
-        if 'sshUser' in kwargs:
+        if ssh_user is None and 'sshUser' in kwargs:
             ssh_user = kwargs['sshUser']
-        if 'stackscriptData' in kwargs:
+        if stackscript_data is None and 'stackscriptData' in kwargs:
             stackscript_data = kwargs['stackscriptData']
-        if 'swapSize' in kwargs:
+        if swap_size is None and 'swapSize' in kwargs:
             swap_size = kwargs['swapSize']
-        if 'uaPrefix' in kwargs:
+        if ua_prefix is None and 'uaPrefix' in kwargs:
             ua_prefix = kwargs['uaPrefix']
 
         if authorized_users is not None:
@@ -31122,9 +31590,9 @@ class MachineConfigV2OpenstackConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             auth_url: str,
-             availability_zone: str,
-             region: str,
+             auth_url: Optional[str] = None,
+             availability_zone: Optional[str] = None,
+             region: Optional[str] = None,
              active_timeout: Optional[str] = None,
              application_credential_id: Optional[str] = None,
              application_credential_name: Optional[str] = None,
@@ -31164,81 +31632,87 @@ class MachineConfigV2OpenstackConfig(dict):
              volume_name: Optional[str] = None,
              volume_size: Optional[str] = None,
              volume_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'authUrl' in kwargs:
+        if auth_url is None and 'authUrl' in kwargs:
             auth_url = kwargs['authUrl']
-        if 'availabilityZone' in kwargs:
+        if auth_url is None:
+            raise TypeError("Missing 'auth_url' argument")
+        if availability_zone is None and 'availabilityZone' in kwargs:
             availability_zone = kwargs['availabilityZone']
-        if 'activeTimeout' in kwargs:
+        if availability_zone is None:
+            raise TypeError("Missing 'availability_zone' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if active_timeout is None and 'activeTimeout' in kwargs:
             active_timeout = kwargs['activeTimeout']
-        if 'applicationCredentialId' in kwargs:
+        if application_credential_id is None and 'applicationCredentialId' in kwargs:
             application_credential_id = kwargs['applicationCredentialId']
-        if 'applicationCredentialName' in kwargs:
+        if application_credential_name is None and 'applicationCredentialName' in kwargs:
             application_credential_name = kwargs['applicationCredentialName']
-        if 'applicationCredentialSecret' in kwargs:
+        if application_credential_secret is None and 'applicationCredentialSecret' in kwargs:
             application_credential_secret = kwargs['applicationCredentialSecret']
-        if 'bootFromVolume' in kwargs:
+        if boot_from_volume is None and 'bootFromVolume' in kwargs:
             boot_from_volume = kwargs['bootFromVolume']
-        if 'configDrive' in kwargs:
+        if config_drive is None and 'configDrive' in kwargs:
             config_drive = kwargs['configDrive']
-        if 'domainId' in kwargs:
+        if domain_id is None and 'domainId' in kwargs:
             domain_id = kwargs['domainId']
-        if 'domainName' in kwargs:
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'endpointType' in kwargs:
+        if endpoint_type is None and 'endpointType' in kwargs:
             endpoint_type = kwargs['endpointType']
-        if 'flavorId' in kwargs:
+        if flavor_id is None and 'flavorId' in kwargs:
             flavor_id = kwargs['flavorId']
-        if 'flavorName' in kwargs:
+        if flavor_name is None and 'flavorName' in kwargs:
             flavor_name = kwargs['flavorName']
-        if 'floatingIpPool' in kwargs:
+        if floating_ip_pool is None and 'floatingIpPool' in kwargs:
             floating_ip_pool = kwargs['floatingIpPool']
-        if 'imageId' in kwargs:
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'imageName' in kwargs:
+        if image_name is None and 'imageName' in kwargs:
             image_name = kwargs['imageName']
-        if 'ipVersion' in kwargs:
+        if ip_version is None and 'ipVersion' in kwargs:
             ip_version = kwargs['ipVersion']
-        if 'keypairName' in kwargs:
+        if keypair_name is None and 'keypairName' in kwargs:
             keypair_name = kwargs['keypairName']
-        if 'netId' in kwargs:
+        if net_id is None and 'netId' in kwargs:
             net_id = kwargs['netId']
-        if 'netName' in kwargs:
+        if net_name is None and 'netName' in kwargs:
             net_name = kwargs['netName']
-        if 'novaNetwork' in kwargs:
+        if nova_network is None and 'novaNetwork' in kwargs:
             nova_network = kwargs['novaNetwork']
-        if 'privateKeyFile' in kwargs:
+        if private_key_file is None and 'privateKeyFile' in kwargs:
             private_key_file = kwargs['privateKeyFile']
-        if 'secGroups' in kwargs:
+        if sec_groups is None and 'secGroups' in kwargs:
             sec_groups = kwargs['secGroups']
-        if 'sshPort' in kwargs:
+        if ssh_port is None and 'sshPort' in kwargs:
             ssh_port = kwargs['sshPort']
-        if 'sshUser' in kwargs:
+        if ssh_user is None and 'sshUser' in kwargs:
             ssh_user = kwargs['sshUser']
-        if 'tenantDomainId' in kwargs:
+        if tenant_domain_id is None and 'tenantDomainId' in kwargs:
             tenant_domain_id = kwargs['tenantDomainId']
-        if 'tenantDomainName' in kwargs:
+        if tenant_domain_name is None and 'tenantDomainName' in kwargs:
             tenant_domain_name = kwargs['tenantDomainName']
-        if 'tenantId' in kwargs:
+        if tenant_id is None and 'tenantId' in kwargs:
             tenant_id = kwargs['tenantId']
-        if 'tenantName' in kwargs:
+        if tenant_name is None and 'tenantName' in kwargs:
             tenant_name = kwargs['tenantName']
-        if 'userDataFile' in kwargs:
+        if user_data_file is None and 'userDataFile' in kwargs:
             user_data_file = kwargs['userDataFile']
-        if 'userDomainId' in kwargs:
+        if user_domain_id is None and 'userDomainId' in kwargs:
             user_domain_id = kwargs['userDomainId']
-        if 'userDomainName' in kwargs:
+        if user_domain_name is None and 'userDomainName' in kwargs:
             user_domain_name = kwargs['userDomainName']
-        if 'volumeDevicePath' in kwargs:
+        if volume_device_path is None and 'volumeDevicePath' in kwargs:
             volume_device_path = kwargs['volumeDevicePath']
-        if 'volumeId' in kwargs:
+        if volume_id is None and 'volumeId' in kwargs:
             volume_id = kwargs['volumeId']
-        if 'volumeName' in kwargs:
+        if volume_name is None and 'volumeName' in kwargs:
             volume_name = kwargs['volumeName']
-        if 'volumeSize' in kwargs:
+        if volume_size is None and 'volumeSize' in kwargs:
             volume_size = kwargs['volumeSize']
-        if 'volumeType' in kwargs:
+        if volume_type is None and 'volumeType' in kwargs:
             volume_type = kwargs['volumeType']
 
         _setter("auth_url", auth_url)
@@ -31851,45 +32325,45 @@ class MachineConfigV2VsphereConfig(dict):
              vapp_transport: Optional[str] = None,
              vcenter: Optional[str] = None,
              vcenter_port: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'boot2dockerUrl' in kwargs:
+        if boot2docker_url is None and 'boot2dockerUrl' in kwargs:
             boot2docker_url = kwargs['boot2dockerUrl']
-        if 'cloneFrom' in kwargs:
+        if clone_from is None and 'cloneFrom' in kwargs:
             clone_from = kwargs['cloneFrom']
-        if 'cloudConfig' in kwargs:
+        if cloud_config is None and 'cloudConfig' in kwargs:
             cloud_config = kwargs['cloudConfig']
-        if 'contentLibrary' in kwargs:
+        if content_library is None and 'contentLibrary' in kwargs:
             content_library = kwargs['contentLibrary']
-        if 'cpuCount' in kwargs:
+        if cpu_count is None and 'cpuCount' in kwargs:
             cpu_count = kwargs['cpuCount']
-        if 'creationType' in kwargs:
+        if creation_type is None and 'creationType' in kwargs:
             creation_type = kwargs['creationType']
-        if 'customAttributes' in kwargs:
+        if custom_attributes is None and 'customAttributes' in kwargs:
             custom_attributes = kwargs['customAttributes']
-        if 'datastoreCluster' in kwargs:
+        if datastore_cluster is None and 'datastoreCluster' in kwargs:
             datastore_cluster = kwargs['datastoreCluster']
-        if 'diskSize' in kwargs:
+        if disk_size is None and 'diskSize' in kwargs:
             disk_size = kwargs['diskSize']
-        if 'memorySize' in kwargs:
+        if memory_size is None and 'memorySize' in kwargs:
             memory_size = kwargs['memorySize']
-        if 'sshPassword' in kwargs:
+        if ssh_password is None and 'sshPassword' in kwargs:
             ssh_password = kwargs['sshPassword']
-        if 'sshPort' in kwargs:
+        if ssh_port is None and 'sshPort' in kwargs:
             ssh_port = kwargs['sshPort']
-        if 'sshUser' in kwargs:
+        if ssh_user is None and 'sshUser' in kwargs:
             ssh_user = kwargs['sshUser']
-        if 'sshUserGroup' in kwargs:
+        if ssh_user_group is None and 'sshUserGroup' in kwargs:
             ssh_user_group = kwargs['sshUserGroup']
-        if 'vappIpAllocationPolicy' in kwargs:
+        if vapp_ip_allocation_policy is None and 'vappIpAllocationPolicy' in kwargs:
             vapp_ip_allocation_policy = kwargs['vappIpAllocationPolicy']
-        if 'vappIpProtocol' in kwargs:
+        if vapp_ip_protocol is None and 'vappIpProtocol' in kwargs:
             vapp_ip_protocol = kwargs['vappIpProtocol']
-        if 'vappProperties' in kwargs:
+        if vapp_properties is None and 'vappProperties' in kwargs:
             vapp_properties = kwargs['vappProperties']
-        if 'vappTransport' in kwargs:
+        if vapp_transport is None and 'vappTransport' in kwargs:
             vapp_transport = kwargs['vappTransport']
-        if 'vcenterPort' in kwargs:
+        if vcenter_port is None and 'vcenterPort' in kwargs:
             vcenter_port = kwargs['vcenterPort']
 
         if boot2docker_url is not None:
@@ -32246,11 +32720,11 @@ class MultiClusterAppAnswer(dict):
              cluster_id: Optional[str] = None,
              project_id: Optional[str] = None,
              values: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'projectId' in kwargs:
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
 
         if cluster_id is not None:
@@ -32329,13 +32803,13 @@ class MultiClusterAppMember(dict):
              access_type: Optional[str] = None,
              group_principal_id: Optional[str] = None,
              user_principal_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessType' in kwargs:
+        if access_type is None and 'accessType' in kwargs:
             access_type = kwargs['accessType']
-        if 'groupPrincipalId' in kwargs:
+        if group_principal_id is None and 'groupPrincipalId' in kwargs:
             group_principal_id = kwargs['groupPrincipalId']
-        if 'userPrincipalId' in kwargs:
+        if user_principal_id is None and 'userPrincipalId' in kwargs:
             user_principal_id = kwargs['userPrincipalId']
 
         if access_type is not None:
@@ -32414,17 +32888,19 @@ class MultiClusterAppTarget(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project_id: str,
+             project_id: Optional[str] = None,
              app_id: Optional[str] = None,
              health_state: Optional[str] = None,
              state: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'projectId' in kwargs:
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
-        if 'appId' in kwargs:
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if app_id is None and 'appId' in kwargs:
             app_id = kwargs['appId']
-        if 'healthState' in kwargs:
+        if health_state is None and 'healthState' in kwargs:
             health_state = kwargs['healthState']
 
         _setter("project_id", project_id)
@@ -32500,9 +32976,9 @@ class MultiClusterAppUpgradeStrategy(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              rolling_update: Optional['outputs.MultiClusterAppUpgradeStrategyRollingUpdate'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'rollingUpdate' in kwargs:
+        if rolling_update is None and 'rollingUpdate' in kwargs:
             rolling_update = kwargs['rollingUpdate']
 
         if rolling_update is not None:
@@ -32553,9 +33029,9 @@ class MultiClusterAppUpgradeStrategyRollingUpdate(dict):
              _setter: Callable[[Any, Any], None],
              batch_size: Optional[int] = None,
              interval: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'batchSize' in kwargs:
+        if batch_size is None and 'batchSize' in kwargs:
             batch_size = kwargs['batchSize']
 
         if batch_size is not None:
@@ -32630,15 +33106,15 @@ class NamespaceContainerResourceLimit(dict):
              limits_memory: Optional[str] = None,
              requests_cpu: Optional[str] = None,
              requests_memory: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'limitsCpu' in kwargs:
+        if limits_cpu is None and 'limitsCpu' in kwargs:
             limits_cpu = kwargs['limitsCpu']
-        if 'limitsMemory' in kwargs:
+        if limits_memory is None and 'limitsMemory' in kwargs:
             limits_memory = kwargs['limitsMemory']
-        if 'requestsCpu' in kwargs:
+        if requests_cpu is None and 'requestsCpu' in kwargs:
             requests_cpu = kwargs['requestsCpu']
-        if 'requestsMemory' in kwargs:
+        if requests_memory is None and 'requestsMemory' in kwargs:
             requests_memory = kwargs['requestsMemory']
 
         if limits_cpu is not None:
@@ -32697,9 +33173,11 @@ class NamespaceResourceQuota(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             limit: 'outputs.NamespaceResourceQuotaLimit',
-             opts: Optional[pulumi.ResourceOptions]=None,
+             limit: Optional['outputs.NamespaceResourceQuotaLimit'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if limit is None:
+            raise TypeError("Missing 'limit' argument")
 
         _setter("limit", limit)
 
@@ -32811,27 +33289,27 @@ class NamespaceResourceQuotaLimit(dict):
              services: Optional[str] = None,
              services_load_balancers: Optional[str] = None,
              services_node_ports: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'configMaps' in kwargs:
+        if config_maps is None and 'configMaps' in kwargs:
             config_maps = kwargs['configMaps']
-        if 'limitsCpu' in kwargs:
+        if limits_cpu is None and 'limitsCpu' in kwargs:
             limits_cpu = kwargs['limitsCpu']
-        if 'limitsMemory' in kwargs:
+        if limits_memory is None and 'limitsMemory' in kwargs:
             limits_memory = kwargs['limitsMemory']
-        if 'persistentVolumeClaims' in kwargs:
+        if persistent_volume_claims is None and 'persistentVolumeClaims' in kwargs:
             persistent_volume_claims = kwargs['persistentVolumeClaims']
-        if 'replicationControllers' in kwargs:
+        if replication_controllers is None and 'replicationControllers' in kwargs:
             replication_controllers = kwargs['replicationControllers']
-        if 'requestsCpu' in kwargs:
+        if requests_cpu is None and 'requestsCpu' in kwargs:
             requests_cpu = kwargs['requestsCpu']
-        if 'requestsMemory' in kwargs:
+        if requests_memory is None and 'requestsMemory' in kwargs:
             requests_memory = kwargs['requestsMemory']
-        if 'requestsStorage' in kwargs:
+        if requests_storage is None and 'requestsStorage' in kwargs:
             requests_storage = kwargs['requestsStorage']
-        if 'servicesLoadBalancers' in kwargs:
+        if services_load_balancers is None and 'servicesLoadBalancers' in kwargs:
             services_load_balancers = kwargs['servicesLoadBalancers']
-        if 'servicesNodePorts' in kwargs:
+        if services_node_ports is None and 'servicesNodePorts' in kwargs:
             services_node_ports = kwargs['servicesNodePorts']
 
         if config_maps is not None:
@@ -33005,13 +33483,17 @@ class NodePoolNodeTaint(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             value: str,
+             key: Optional[str] = None,
+             value: Optional[str] = None,
              effect: Optional[str] = None,
              time_added: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'timeAdded' in kwargs:
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+        if time_added is None and 'timeAdded' in kwargs:
             time_added = kwargs['timeAdded']
 
         _setter("key", key)
@@ -33235,12 +33717,12 @@ class NodeTemplateAmazonec2Config(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ami: str,
-             region: str,
-             security_groups: Sequence[str],
-             subnet_id: str,
-             vpc_id: str,
-             zone: str,
+             ami: Optional[str] = None,
+             region: Optional[str] = None,
+             security_groups: Optional[Sequence[str]] = None,
+             subnet_id: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             zone: Optional[str] = None,
              access_key: Optional[str] = None,
              block_duration_minutes: Optional[str] = None,
              device_name: Optional[str] = None,
@@ -33269,59 +33751,71 @@ class NodeTemplateAmazonec2Config(dict):
              use_private_address: Optional[bool] = None,
              userdata: Optional[str] = None,
              volume_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'securityGroups' in kwargs:
+        if ami is None:
+            raise TypeError("Missing 'ami' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if security_groups is None and 'securityGroups' in kwargs:
             security_groups = kwargs['securityGroups']
-        if 'subnetId' in kwargs:
+        if security_groups is None:
+            raise TypeError("Missing 'security_groups' argument")
+        if subnet_id is None and 'subnetId' in kwargs:
             subnet_id = kwargs['subnetId']
-        if 'vpcId' in kwargs:
+        if subnet_id is None:
+            raise TypeError("Missing 'subnet_id' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'accessKey' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if zone is None:
+            raise TypeError("Missing 'zone' argument")
+        if access_key is None and 'accessKey' in kwargs:
             access_key = kwargs['accessKey']
-        if 'blockDurationMinutes' in kwargs:
+        if block_duration_minutes is None and 'blockDurationMinutes' in kwargs:
             block_duration_minutes = kwargs['blockDurationMinutes']
-        if 'deviceName' in kwargs:
+        if device_name is None and 'deviceName' in kwargs:
             device_name = kwargs['deviceName']
-        if 'encryptEbsVolume' in kwargs:
+        if encrypt_ebs_volume is None and 'encryptEbsVolume' in kwargs:
             encrypt_ebs_volume = kwargs['encryptEbsVolume']
-        if 'httpEndpoint' in kwargs:
+        if http_endpoint is None and 'httpEndpoint' in kwargs:
             http_endpoint = kwargs['httpEndpoint']
-        if 'httpTokens' in kwargs:
+        if http_tokens is None and 'httpTokens' in kwargs:
             http_tokens = kwargs['httpTokens']
-        if 'iamInstanceProfile' in kwargs:
+        if iam_instance_profile is None and 'iamInstanceProfile' in kwargs:
             iam_instance_profile = kwargs['iamInstanceProfile']
-        if 'insecureTransport' in kwargs:
+        if insecure_transport is None and 'insecureTransport' in kwargs:
             insecure_transport = kwargs['insecureTransport']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'kmsKey' in kwargs:
+        if kms_key is None and 'kmsKey' in kwargs:
             kms_key = kwargs['kmsKey']
-        if 'openPorts' in kwargs:
+        if open_ports is None and 'openPorts' in kwargs:
             open_ports = kwargs['openPorts']
-        if 'privateAddressOnly' in kwargs:
+        if private_address_only is None and 'privateAddressOnly' in kwargs:
             private_address_only = kwargs['privateAddressOnly']
-        if 'requestSpotInstance' in kwargs:
+        if request_spot_instance is None and 'requestSpotInstance' in kwargs:
             request_spot_instance = kwargs['requestSpotInstance']
-        if 'rootSize' in kwargs:
+        if root_size is None and 'rootSize' in kwargs:
             root_size = kwargs['rootSize']
-        if 'secretKey' in kwargs:
+        if secret_key is None and 'secretKey' in kwargs:
             secret_key = kwargs['secretKey']
-        if 'securityGroupReadonly' in kwargs:
+        if security_group_readonly is None and 'securityGroupReadonly' in kwargs:
             security_group_readonly = kwargs['securityGroupReadonly']
-        if 'sessionToken' in kwargs:
+        if session_token is None and 'sessionToken' in kwargs:
             session_token = kwargs['sessionToken']
-        if 'spotPrice' in kwargs:
+        if spot_price is None and 'spotPrice' in kwargs:
             spot_price = kwargs['spotPrice']
-        if 'sshKeypath' in kwargs:
+        if ssh_keypath is None and 'sshKeypath' in kwargs:
             ssh_keypath = kwargs['sshKeypath']
-        if 'sshUser' in kwargs:
+        if ssh_user is None and 'sshUser' in kwargs:
             ssh_user = kwargs['sshUser']
-        if 'useEbsOptimizedInstance' in kwargs:
+        if use_ebs_optimized_instance is None and 'useEbsOptimizedInstance' in kwargs:
             use_ebs_optimized_instance = kwargs['useEbsOptimizedInstance']
-        if 'usePrivateAddress' in kwargs:
+        if use_private_address is None and 'usePrivateAddress' in kwargs:
             use_private_address = kwargs['usePrivateAddress']
-        if 'volumeType' in kwargs:
+        if volume_type is None and 'volumeType' in kwargs:
             volume_type = kwargs['volumeType']
 
         _setter("ami", ami)
@@ -33855,51 +34349,51 @@ class NodeTemplateAzureConfig(dict):
              use_private_ip: Optional[bool] = None,
              use_public_ip_standard_sku: Optional[bool] = None,
              vnet: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acceleratedNetworking' in kwargs:
+        if accelerated_networking is None and 'acceleratedNetworking' in kwargs:
             accelerated_networking = kwargs['acceleratedNetworking']
-        if 'availabilitySet' in kwargs:
+        if availability_set is None and 'availabilitySet' in kwargs:
             availability_set = kwargs['availabilitySet']
-        if 'availabilityZone' in kwargs:
+        if availability_zone is None and 'availabilityZone' in kwargs:
             availability_zone = kwargs['availabilityZone']
-        if 'clientId' in kwargs:
+        if client_id is None and 'clientId' in kwargs:
             client_id = kwargs['clientId']
-        if 'clientSecret' in kwargs:
+        if client_secret is None and 'clientSecret' in kwargs:
             client_secret = kwargs['clientSecret']
-        if 'customData' in kwargs:
+        if custom_data is None and 'customData' in kwargs:
             custom_data = kwargs['customData']
-        if 'diskSize' in kwargs:
+        if disk_size is None and 'diskSize' in kwargs:
             disk_size = kwargs['diskSize']
-        if 'dockerPort' in kwargs:
+        if docker_port is None and 'dockerPort' in kwargs:
             docker_port = kwargs['dockerPort']
-        if 'faultDomainCount' in kwargs:
+        if fault_domain_count is None and 'faultDomainCount' in kwargs:
             fault_domain_count = kwargs['faultDomainCount']
-        if 'managedDisks' in kwargs:
+        if managed_disks is None and 'managedDisks' in kwargs:
             managed_disks = kwargs['managedDisks']
-        if 'noPublicIp' in kwargs:
+        if no_public_ip is None and 'noPublicIp' in kwargs:
             no_public_ip = kwargs['noPublicIp']
-        if 'openPorts' in kwargs:
+        if open_ports is None and 'openPorts' in kwargs:
             open_ports = kwargs['openPorts']
-        if 'privateIpAddress' in kwargs:
+        if private_ip_address is None and 'privateIpAddress' in kwargs:
             private_ip_address = kwargs['privateIpAddress']
-        if 'resourceGroup' in kwargs:
+        if resource_group is None and 'resourceGroup' in kwargs:
             resource_group = kwargs['resourceGroup']
-        if 'sshUser' in kwargs:
+        if ssh_user is None and 'sshUser' in kwargs:
             ssh_user = kwargs['sshUser']
-        if 'staticPublicIp' in kwargs:
+        if static_public_ip is None and 'staticPublicIp' in kwargs:
             static_public_ip = kwargs['staticPublicIp']
-        if 'storageType' in kwargs:
+        if storage_type is None and 'storageType' in kwargs:
             storage_type = kwargs['storageType']
-        if 'subnetPrefix' in kwargs:
+        if subnet_prefix is None and 'subnetPrefix' in kwargs:
             subnet_prefix = kwargs['subnetPrefix']
-        if 'subscriptionId' in kwargs:
+        if subscription_id is None and 'subscriptionId' in kwargs:
             subscription_id = kwargs['subscriptionId']
-        if 'updateDomainCount' in kwargs:
+        if update_domain_count is None and 'updateDomainCount' in kwargs:
             update_domain_count = kwargs['updateDomainCount']
-        if 'usePrivateIp' in kwargs:
+        if use_private_ip is None and 'usePrivateIp' in kwargs:
             use_private_ip = kwargs['usePrivateIp']
-        if 'usePublicIpStandardSku' in kwargs:
+        if use_public_ip_standard_sku is None and 'usePublicIpStandardSku' in kwargs:
             use_public_ip_standard_sku = kwargs['usePublicIpStandardSku']
 
         if accelerated_networking is not None:
@@ -34314,19 +34808,19 @@ class NodeTemplateDigitaloceanConfig(dict):
              ssh_user: Optional[str] = None,
              tags: Optional[str] = None,
              userdata: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessToken' in kwargs:
+        if access_token is None and 'accessToken' in kwargs:
             access_token = kwargs['accessToken']
-        if 'privateNetworking' in kwargs:
+        if private_networking is None and 'privateNetworking' in kwargs:
             private_networking = kwargs['privateNetworking']
-        if 'sshKeyFingerprint' in kwargs:
+        if ssh_key_fingerprint is None and 'sshKeyFingerprint' in kwargs:
             ssh_key_fingerprint = kwargs['sshKeyFingerprint']
-        if 'sshKeyPath' in kwargs:
+        if ssh_key_path is None and 'sshKeyPath' in kwargs:
             ssh_key_path = kwargs['sshKeyPath']
-        if 'sshPort' in kwargs:
+        if ssh_port is None and 'sshPort' in kwargs:
             ssh_port = kwargs['sshPort']
-        if 'sshUser' in kwargs:
+        if ssh_user is None and 'sshUser' in kwargs:
             ssh_user = kwargs['sshUser']
 
         if access_token is not None:
@@ -34574,8 +35068,8 @@ class NodeTemplateHarvesterConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ssh_user: str,
-             vm_namespace: str,
+             ssh_user: Optional[str] = None,
+             vm_namespace: Optional[str] = None,
              cpu_count: Optional[str] = None,
              disk_bus: Optional[str] = None,
              disk_info: Optional[str] = None,
@@ -34589,37 +35083,41 @@ class NodeTemplateHarvesterConfig(dict):
              ssh_password: Optional[str] = None,
              user_data: Optional[str] = None,
              vm_affinity: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'sshUser' in kwargs:
+        if ssh_user is None and 'sshUser' in kwargs:
             ssh_user = kwargs['sshUser']
-        if 'vmNamespace' in kwargs:
+        if ssh_user is None:
+            raise TypeError("Missing 'ssh_user' argument")
+        if vm_namespace is None and 'vmNamespace' in kwargs:
             vm_namespace = kwargs['vmNamespace']
-        if 'cpuCount' in kwargs:
+        if vm_namespace is None:
+            raise TypeError("Missing 'vm_namespace' argument")
+        if cpu_count is None and 'cpuCount' in kwargs:
             cpu_count = kwargs['cpuCount']
-        if 'diskBus' in kwargs:
+        if disk_bus is None and 'diskBus' in kwargs:
             disk_bus = kwargs['diskBus']
-        if 'diskInfo' in kwargs:
+        if disk_info is None and 'diskInfo' in kwargs:
             disk_info = kwargs['diskInfo']
-        if 'diskSize' in kwargs:
+        if disk_size is None and 'diskSize' in kwargs:
             disk_size = kwargs['diskSize']
-        if 'imageName' in kwargs:
+        if image_name is None and 'imageName' in kwargs:
             image_name = kwargs['imageName']
-        if 'memorySize' in kwargs:
+        if memory_size is None and 'memorySize' in kwargs:
             memory_size = kwargs['memorySize']
-        if 'networkData' in kwargs:
+        if network_data is None and 'networkData' in kwargs:
             network_data = kwargs['networkData']
-        if 'networkInfo' in kwargs:
+        if network_info is None and 'networkInfo' in kwargs:
             network_info = kwargs['networkInfo']
-        if 'networkModel' in kwargs:
+        if network_model is None and 'networkModel' in kwargs:
             network_model = kwargs['networkModel']
-        if 'networkName' in kwargs:
+        if network_name is None and 'networkName' in kwargs:
             network_name = kwargs['networkName']
-        if 'sshPassword' in kwargs:
+        if ssh_password is None and 'sshPassword' in kwargs:
             ssh_password = kwargs['sshPassword']
-        if 'userData' in kwargs:
+        if user_data is None and 'userData' in kwargs:
             user_data = kwargs['userData']
-        if 'vmAffinity' in kwargs:
+        if vm_affinity is None and 'vmAffinity' in kwargs:
             vm_affinity = kwargs['vmAffinity']
 
         _setter("ssh_user", ssh_user)
@@ -34852,7 +35350,7 @@ class NodeTemplateHetznerConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             api_token: str,
+             api_token: Optional[str] = None,
              image: Optional[str] = None,
              networks: Optional[str] = None,
              server_labels: Optional[Mapping[str, Any]] = None,
@@ -34861,17 +35359,19 @@ class NodeTemplateHetznerConfig(dict):
              use_private_network: Optional[bool] = None,
              userdata: Optional[str] = None,
              volumes: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'apiToken' in kwargs:
+        if api_token is None and 'apiToken' in kwargs:
             api_token = kwargs['apiToken']
-        if 'serverLabels' in kwargs:
+        if api_token is None:
+            raise TypeError("Missing 'api_token' argument")
+        if server_labels is None and 'serverLabels' in kwargs:
             server_labels = kwargs['serverLabels']
-        if 'serverLocation' in kwargs:
+        if server_location is None and 'serverLocation' in kwargs:
             server_location = kwargs['serverLocation']
-        if 'serverType' in kwargs:
+        if server_type is None and 'serverType' in kwargs:
             server_type = kwargs['serverType']
-        if 'usePrivateNetwork' in kwargs:
+        if use_private_network is None and 'usePrivateNetwork' in kwargs:
             use_private_network = kwargs['usePrivateNetwork']
 
         _setter("api_token", api_token)
@@ -35077,27 +35577,27 @@ class NodeTemplateLinodeConfig(dict):
              tags: Optional[str] = None,
              token: Optional[str] = None,
              ua_prefix: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'authorizedUsers' in kwargs:
+        if authorized_users is None and 'authorizedUsers' in kwargs:
             authorized_users = kwargs['authorizedUsers']
-        if 'createPrivateIp' in kwargs:
+        if create_private_ip is None and 'createPrivateIp' in kwargs:
             create_private_ip = kwargs['createPrivateIp']
-        if 'dockerPort' in kwargs:
+        if docker_port is None and 'dockerPort' in kwargs:
             docker_port = kwargs['dockerPort']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'rootPass' in kwargs:
+        if root_pass is None and 'rootPass' in kwargs:
             root_pass = kwargs['rootPass']
-        if 'sshPort' in kwargs:
+        if ssh_port is None and 'sshPort' in kwargs:
             ssh_port = kwargs['sshPort']
-        if 'sshUser' in kwargs:
+        if ssh_user is None and 'sshUser' in kwargs:
             ssh_user = kwargs['sshUser']
-        if 'stackscriptData' in kwargs:
+        if stackscript_data is None and 'stackscriptData' in kwargs:
             stackscript_data = kwargs['stackscriptData']
-        if 'swapSize' in kwargs:
+        if swap_size is None and 'swapSize' in kwargs:
             swap_size = kwargs['swapSize']
-        if 'uaPrefix' in kwargs:
+        if ua_prefix is None and 'uaPrefix' in kwargs:
             ua_prefix = kwargs['uaPrefix']
 
         if authorized_users is not None:
@@ -35302,13 +35802,17 @@ class NodeTemplateNodeTaint(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             value: str,
+             key: Optional[str] = None,
+             value: Optional[str] = None,
              effect: Optional[str] = None,
              time_added: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'timeAdded' in kwargs:
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+        if time_added is None and 'timeAdded' in kwargs:
             time_added = kwargs['timeAdded']
 
         _setter("key", key)
@@ -35464,9 +35968,9 @@ class NodeTemplateOpennebulaConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             password: str,
-             user: str,
-             xml_rpc_url: str,
+             password: Optional[str] = None,
+             user: Optional[str] = None,
+             xml_rpc_url: Optional[str] = None,
              b2d_size: Optional[str] = None,
              cpu: Optional[str] = None,
              dev_prefix: Optional[str] = None,
@@ -35483,35 +35987,41 @@ class NodeTemplateOpennebulaConfig(dict):
              template_id: Optional[str] = None,
              template_name: Optional[str] = None,
              vcpu: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'xmlRpcUrl' in kwargs:
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+        if user is None:
+            raise TypeError("Missing 'user' argument")
+        if xml_rpc_url is None and 'xmlRpcUrl' in kwargs:
             xml_rpc_url = kwargs['xmlRpcUrl']
-        if 'b2dSize' in kwargs:
+        if xml_rpc_url is None:
+            raise TypeError("Missing 'xml_rpc_url' argument")
+        if b2d_size is None and 'b2dSize' in kwargs:
             b2d_size = kwargs['b2dSize']
-        if 'devPrefix' in kwargs:
+        if dev_prefix is None and 'devPrefix' in kwargs:
             dev_prefix = kwargs['devPrefix']
-        if 'disableVnc' in kwargs:
+        if disable_vnc is None and 'disableVnc' in kwargs:
             disable_vnc = kwargs['disableVnc']
-        if 'diskResize' in kwargs:
+        if disk_resize is None and 'diskResize' in kwargs:
             disk_resize = kwargs['diskResize']
-        if 'imageId' in kwargs:
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'imageName' in kwargs:
+        if image_name is None and 'imageName' in kwargs:
             image_name = kwargs['imageName']
-        if 'imageOwner' in kwargs:
+        if image_owner is None and 'imageOwner' in kwargs:
             image_owner = kwargs['imageOwner']
-        if 'networkId' in kwargs:
+        if network_id is None and 'networkId' in kwargs:
             network_id = kwargs['networkId']
-        if 'networkName' in kwargs:
+        if network_name is None and 'networkName' in kwargs:
             network_name = kwargs['networkName']
-        if 'networkOwner' in kwargs:
+        if network_owner is None and 'networkOwner' in kwargs:
             network_owner = kwargs['networkOwner']
-        if 'sshUser' in kwargs:
+        if ssh_user is None and 'sshUser' in kwargs:
             ssh_user = kwargs['sshUser']
-        if 'templateId' in kwargs:
+        if template_id is None and 'templateId' in kwargs:
             template_id = kwargs['templateId']
-        if 'templateName' in kwargs:
+        if template_name is None and 'templateName' in kwargs:
             template_name = kwargs['templateName']
 
         _setter("password", password)
@@ -35917,9 +36427,9 @@ class NodeTemplateOpenstackConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             auth_url: str,
-             availability_zone: str,
-             region: str,
+             auth_url: Optional[str] = None,
+             availability_zone: Optional[str] = None,
+             region: Optional[str] = None,
              active_timeout: Optional[str] = None,
              application_credential_id: Optional[str] = None,
              application_credential_name: Optional[str] = None,
@@ -35955,73 +36465,79 @@ class NodeTemplateOpenstackConfig(dict):
              volume_name: Optional[str] = None,
              volume_size: Optional[str] = None,
              volume_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'authUrl' in kwargs:
+        if auth_url is None and 'authUrl' in kwargs:
             auth_url = kwargs['authUrl']
-        if 'availabilityZone' in kwargs:
+        if auth_url is None:
+            raise TypeError("Missing 'auth_url' argument")
+        if availability_zone is None and 'availabilityZone' in kwargs:
             availability_zone = kwargs['availabilityZone']
-        if 'activeTimeout' in kwargs:
+        if availability_zone is None:
+            raise TypeError("Missing 'availability_zone' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if active_timeout is None and 'activeTimeout' in kwargs:
             active_timeout = kwargs['activeTimeout']
-        if 'applicationCredentialId' in kwargs:
+        if application_credential_id is None and 'applicationCredentialId' in kwargs:
             application_credential_id = kwargs['applicationCredentialId']
-        if 'applicationCredentialName' in kwargs:
+        if application_credential_name is None and 'applicationCredentialName' in kwargs:
             application_credential_name = kwargs['applicationCredentialName']
-        if 'applicationCredentialSecret' in kwargs:
+        if application_credential_secret is None and 'applicationCredentialSecret' in kwargs:
             application_credential_secret = kwargs['applicationCredentialSecret']
-        if 'bootFromVolume' in kwargs:
+        if boot_from_volume is None and 'bootFromVolume' in kwargs:
             boot_from_volume = kwargs['bootFromVolume']
-        if 'configDrive' in kwargs:
+        if config_drive is None and 'configDrive' in kwargs:
             config_drive = kwargs['configDrive']
-        if 'domainId' in kwargs:
+        if domain_id is None and 'domainId' in kwargs:
             domain_id = kwargs['domainId']
-        if 'domainName' in kwargs:
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'endpointType' in kwargs:
+        if endpoint_type is None and 'endpointType' in kwargs:
             endpoint_type = kwargs['endpointType']
-        if 'flavorId' in kwargs:
+        if flavor_id is None and 'flavorId' in kwargs:
             flavor_id = kwargs['flavorId']
-        if 'flavorName' in kwargs:
+        if flavor_name is None and 'flavorName' in kwargs:
             flavor_name = kwargs['flavorName']
-        if 'floatingIpPool' in kwargs:
+        if floating_ip_pool is None and 'floatingIpPool' in kwargs:
             floating_ip_pool = kwargs['floatingIpPool']
-        if 'imageId' in kwargs:
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'imageName' in kwargs:
+        if image_name is None and 'imageName' in kwargs:
             image_name = kwargs['imageName']
-        if 'ipVersion' in kwargs:
+        if ip_version is None and 'ipVersion' in kwargs:
             ip_version = kwargs['ipVersion']
-        if 'keypairName' in kwargs:
+        if keypair_name is None and 'keypairName' in kwargs:
             keypair_name = kwargs['keypairName']
-        if 'netId' in kwargs:
+        if net_id is None and 'netId' in kwargs:
             net_id = kwargs['netId']
-        if 'netName' in kwargs:
+        if net_name is None and 'netName' in kwargs:
             net_name = kwargs['netName']
-        if 'novaNetwork' in kwargs:
+        if nova_network is None and 'novaNetwork' in kwargs:
             nova_network = kwargs['novaNetwork']
-        if 'privateKeyFile' in kwargs:
+        if private_key_file is None and 'privateKeyFile' in kwargs:
             private_key_file = kwargs['privateKeyFile']
-        if 'secGroups' in kwargs:
+        if sec_groups is None and 'secGroups' in kwargs:
             sec_groups = kwargs['secGroups']
-        if 'sshPort' in kwargs:
+        if ssh_port is None and 'sshPort' in kwargs:
             ssh_port = kwargs['sshPort']
-        if 'sshUser' in kwargs:
+        if ssh_user is None and 'sshUser' in kwargs:
             ssh_user = kwargs['sshUser']
-        if 'tenantId' in kwargs:
+        if tenant_id is None and 'tenantId' in kwargs:
             tenant_id = kwargs['tenantId']
-        if 'tenantName' in kwargs:
+        if tenant_name is None and 'tenantName' in kwargs:
             tenant_name = kwargs['tenantName']
-        if 'userDataFile' in kwargs:
+        if user_data_file is None and 'userDataFile' in kwargs:
             user_data_file = kwargs['userDataFile']
-        if 'volumeDevicePath' in kwargs:
+        if volume_device_path is None and 'volumeDevicePath' in kwargs:
             volume_device_path = kwargs['volumeDevicePath']
-        if 'volumeId' in kwargs:
+        if volume_id is None and 'volumeId' in kwargs:
             volume_id = kwargs['volumeId']
-        if 'volumeName' in kwargs:
+        if volume_name is None and 'volumeName' in kwargs:
             volume_name = kwargs['volumeName']
-        if 'volumeSize' in kwargs:
+        if volume_size is None and 'volumeSize' in kwargs:
             volume_size = kwargs['volumeSize']
-        if 'volumeType' in kwargs:
+        if volume_type is None and 'volumeType' in kwargs:
             volume_type = kwargs['volumeType']
 
         _setter("auth_url", auth_url)
@@ -36488,8 +37004,8 @@ class NodeTemplateOutscaleConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_key: str,
-             secret_key: str,
+             access_key: Optional[str] = None,
+             secret_key: Optional[str] = None,
              extra_tags_alls: Optional[Sequence[str]] = None,
              extra_tags_instances: Optional[Sequence[str]] = None,
              instance_type: Optional[str] = None,
@@ -36499,27 +37015,31 @@ class NodeTemplateOutscaleConfig(dict):
              root_disk_type: Optional[str] = None,
              security_group_ids: Optional[Sequence[str]] = None,
              source_omi: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessKey' in kwargs:
+        if access_key is None and 'accessKey' in kwargs:
             access_key = kwargs['accessKey']
-        if 'secretKey' in kwargs:
+        if access_key is None:
+            raise TypeError("Missing 'access_key' argument")
+        if secret_key is None and 'secretKey' in kwargs:
             secret_key = kwargs['secretKey']
-        if 'extraTagsAlls' in kwargs:
+        if secret_key is None:
+            raise TypeError("Missing 'secret_key' argument")
+        if extra_tags_alls is None and 'extraTagsAlls' in kwargs:
             extra_tags_alls = kwargs['extraTagsAlls']
-        if 'extraTagsInstances' in kwargs:
+        if extra_tags_instances is None and 'extraTagsInstances' in kwargs:
             extra_tags_instances = kwargs['extraTagsInstances']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'rootDiskIops' in kwargs:
+        if root_disk_iops is None and 'rootDiskIops' in kwargs:
             root_disk_iops = kwargs['rootDiskIops']
-        if 'rootDiskSize' in kwargs:
+        if root_disk_size is None and 'rootDiskSize' in kwargs:
             root_disk_size = kwargs['rootDiskSize']
-        if 'rootDiskType' in kwargs:
+        if root_disk_type is None and 'rootDiskType' in kwargs:
             root_disk_type = kwargs['rootDiskType']
-        if 'securityGroupIds' in kwargs:
+        if security_group_ids is None and 'securityGroupIds' in kwargs:
             security_group_ids = kwargs['securityGroupIds']
-        if 'sourceOmi' in kwargs:
+        if source_omi is None and 'sourceOmi' in kwargs:
             source_omi = kwargs['sourceOmi']
 
         _setter("access_key", access_key)
@@ -36820,45 +37340,45 @@ class NodeTemplateVsphereConfig(dict):
              vapp_transport: Optional[str] = None,
              vcenter: Optional[str] = None,
              vcenter_port: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'boot2dockerUrl' in kwargs:
+        if boot2docker_url is None and 'boot2dockerUrl' in kwargs:
             boot2docker_url = kwargs['boot2dockerUrl']
-        if 'cloneFrom' in kwargs:
+        if clone_from is None and 'cloneFrom' in kwargs:
             clone_from = kwargs['cloneFrom']
-        if 'cloudConfig' in kwargs:
+        if cloud_config is None and 'cloudConfig' in kwargs:
             cloud_config = kwargs['cloudConfig']
-        if 'contentLibrary' in kwargs:
+        if content_library is None and 'contentLibrary' in kwargs:
             content_library = kwargs['contentLibrary']
-        if 'cpuCount' in kwargs:
+        if cpu_count is None and 'cpuCount' in kwargs:
             cpu_count = kwargs['cpuCount']
-        if 'creationType' in kwargs:
+        if creation_type is None and 'creationType' in kwargs:
             creation_type = kwargs['creationType']
-        if 'customAttributes' in kwargs:
+        if custom_attributes is None and 'customAttributes' in kwargs:
             custom_attributes = kwargs['customAttributes']
-        if 'datastoreCluster' in kwargs:
+        if datastore_cluster is None and 'datastoreCluster' in kwargs:
             datastore_cluster = kwargs['datastoreCluster']
-        if 'diskSize' in kwargs:
+        if disk_size is None and 'diskSize' in kwargs:
             disk_size = kwargs['diskSize']
-        if 'memorySize' in kwargs:
+        if memory_size is None and 'memorySize' in kwargs:
             memory_size = kwargs['memorySize']
-        if 'sshPassword' in kwargs:
+        if ssh_password is None and 'sshPassword' in kwargs:
             ssh_password = kwargs['sshPassword']
-        if 'sshPort' in kwargs:
+        if ssh_port is None and 'sshPort' in kwargs:
             ssh_port = kwargs['sshPort']
-        if 'sshUser' in kwargs:
+        if ssh_user is None and 'sshUser' in kwargs:
             ssh_user = kwargs['sshUser']
-        if 'sshUserGroup' in kwargs:
+        if ssh_user_group is None and 'sshUserGroup' in kwargs:
             ssh_user_group = kwargs['sshUserGroup']
-        if 'vappIpAllocationPolicy' in kwargs:
+        if vapp_ip_allocation_policy is None and 'vappIpAllocationPolicy' in kwargs:
             vapp_ip_allocation_policy = kwargs['vappIpAllocationPolicy']
-        if 'vappIpProtocol' in kwargs:
+        if vapp_ip_protocol is None and 'vappIpProtocol' in kwargs:
             vapp_ip_protocol = kwargs['vappIpProtocol']
-        if 'vappProperties' in kwargs:
+        if vapp_properties is None and 'vappProperties' in kwargs:
             vapp_properties = kwargs['vappProperties']
-        if 'vappTransport' in kwargs:
+        if vapp_transport is None and 'vappTransport' in kwargs:
             vapp_transport = kwargs['vappTransport']
-        if 'vcenterPort' in kwargs:
+        if vcenter_port is None and 'vcenterPort' in kwargs:
             vcenter_port = kwargs['vcenterPort']
 
         if boot2docker_url is not None:
@@ -37210,12 +37730,14 @@ class NotifierDingtalkConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             url: str,
+             url: Optional[str] = None,
              proxy_url: Optional[str] = None,
              secret: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'proxyUrl' in kwargs:
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+        if proxy_url is None and 'proxyUrl' in kwargs:
             proxy_url = kwargs['proxyUrl']
 
         _setter("url", url)
@@ -37283,11 +37805,13 @@ class NotifierMsteamsConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             url: str,
+             url: Optional[str] = None,
              proxy_url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'proxyUrl' in kwargs:
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+        if proxy_url is None and 'proxyUrl' in kwargs:
             proxy_url = kwargs['proxyUrl']
 
         _setter("url", url)
@@ -37347,13 +37871,15 @@ class NotifierPagerdutyConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service_key: str,
+             service_key: Optional[str] = None,
              proxy_url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serviceKey' in kwargs:
+        if service_key is None and 'serviceKey' in kwargs:
             service_key = kwargs['serviceKey']
-        if 'proxyUrl' in kwargs:
+        if service_key is None:
+            raise TypeError("Missing 'service_key' argument")
+        if proxy_url is None and 'proxyUrl' in kwargs:
             proxy_url = kwargs['proxyUrl']
 
         _setter("service_key", service_key)
@@ -37416,14 +37942,18 @@ class NotifierSlackConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             default_recipient: str,
-             url: str,
+             default_recipient: Optional[str] = None,
+             url: Optional[str] = None,
              proxy_url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'defaultRecipient' in kwargs:
+        if default_recipient is None and 'defaultRecipient' in kwargs:
             default_recipient = kwargs['defaultRecipient']
-        if 'proxyUrl' in kwargs:
+        if default_recipient is None:
+            raise TypeError("Missing 'default_recipient' argument")
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+        if proxy_url is None and 'proxyUrl' in kwargs:
             proxy_url = kwargs['proxyUrl']
 
         _setter("default_recipient", default_recipient)
@@ -37505,17 +38035,25 @@ class NotifierSmtpConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             default_recipient: str,
-             host: str,
-             port: int,
-             sender: str,
+             default_recipient: Optional[str] = None,
+             host: Optional[str] = None,
+             port: Optional[int] = None,
+             sender: Optional[str] = None,
              password: Optional[str] = None,
              tls: Optional[bool] = None,
              username: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'defaultRecipient' in kwargs:
+        if default_recipient is None and 'defaultRecipient' in kwargs:
             default_recipient = kwargs['defaultRecipient']
+        if default_recipient is None:
+            raise TypeError("Missing 'default_recipient' argument")
+        if host is None:
+            raise TypeError("Missing 'host' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if sender is None:
+            raise TypeError("Missing 'sender' argument")
 
         _setter("default_recipient", default_recipient)
         _setter("host", host)
@@ -37619,11 +38157,13 @@ class NotifierWebhookConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             url: str,
+             url: Optional[str] = None,
              proxy_url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'proxyUrl' in kwargs:
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+        if proxy_url is None and 'proxyUrl' in kwargs:
             proxy_url = kwargs['proxyUrl']
 
         _setter("url", url)
@@ -37697,19 +38237,27 @@ class NotifierWechatConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             agent: str,
-             corp: str,
-             default_recipient: str,
-             secret: str,
+             agent: Optional[str] = None,
+             corp: Optional[str] = None,
+             default_recipient: Optional[str] = None,
+             secret: Optional[str] = None,
              proxy_url: Optional[str] = None,
              recipient_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'defaultRecipient' in kwargs:
+        if agent is None:
+            raise TypeError("Missing 'agent' argument")
+        if corp is None:
+            raise TypeError("Missing 'corp' argument")
+        if default_recipient is None and 'defaultRecipient' in kwargs:
             default_recipient = kwargs['defaultRecipient']
-        if 'proxyUrl' in kwargs:
+        if default_recipient is None:
+            raise TypeError("Missing 'default_recipient' argument")
+        if secret is None:
+            raise TypeError("Missing 'secret' argument")
+        if proxy_url is None and 'proxyUrl' in kwargs:
             proxy_url = kwargs['proxyUrl']
-        if 'recipientType' in kwargs:
+        if recipient_type is None and 'recipientType' in kwargs:
             recipient_type = kwargs['recipientType']
 
         _setter("agent", agent)
@@ -37784,9 +38332,11 @@ class PodSecurityPolicyTemplateAllowedCsiDriver(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
 
         _setter("name", name)
 
@@ -37810,9 +38360,11 @@ class PodSecurityPolicyTemplateAllowedFlexVolume(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             driver: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             driver: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if driver is None:
+            raise TypeError("Missing 'driver' argument")
 
         _setter("driver", driver)
 
@@ -37858,13 +38410,15 @@ class PodSecurityPolicyTemplateAllowedHostPath(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             path_prefix: str,
+             path_prefix: Optional[str] = None,
              read_only: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'pathPrefix' in kwargs:
+        if path_prefix is None and 'pathPrefix' in kwargs:
             path_prefix = kwargs['pathPrefix']
-        if 'readOnly' in kwargs:
+        if path_prefix is None:
+            raise TypeError("Missing 'path_prefix' argument")
+        if read_only is None and 'readOnly' in kwargs:
             read_only = kwargs['readOnly']
 
         _setter("path_prefix", path_prefix)
@@ -37907,7 +38461,7 @@ class PodSecurityPolicyTemplateFsGroup(dict):
              _setter: Callable[[Any, Any], None],
              ranges: Optional[Sequence['outputs.PodSecurityPolicyTemplateFsGroupRange']] = None,
              rule: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if ranges is not None:
@@ -37949,10 +38503,14 @@ class PodSecurityPolicyTemplateFsGroupRange(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             max: int,
-             min: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             max: Optional[int] = None,
+             min: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if max is None:
+            raise TypeError("Missing 'max' argument")
+        if min is None:
+            raise TypeError("Missing 'min' argument")
 
         _setter("max", max)
         _setter("min", min)
@@ -37991,10 +38549,14 @@ class PodSecurityPolicyTemplateHostPort(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             max: int,
-             min: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             max: Optional[int] = None,
+             min: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if max is None:
+            raise TypeError("Missing 'max' argument")
+        if min is None:
+            raise TypeError("Missing 'min' argument")
 
         _setter("max", max)
         _setter("min", min)
@@ -38033,10 +38595,12 @@ class PodSecurityPolicyTemplateRunAsGroup(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             rule: str,
+             rule: Optional[str] = None,
              ranges: Optional[Sequence['outputs.PodSecurityPolicyTemplateRunAsGroupRange']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if rule is None:
+            raise TypeError("Missing 'rule' argument")
 
         _setter("rule", rule)
         if ranges is not None:
@@ -38076,10 +38640,14 @@ class PodSecurityPolicyTemplateRunAsGroupRange(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             max: int,
-             min: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             max: Optional[int] = None,
+             min: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if max is None:
+            raise TypeError("Missing 'max' argument")
+        if min is None:
+            raise TypeError("Missing 'min' argument")
 
         _setter("max", max)
         _setter("min", min)
@@ -38118,10 +38686,12 @@ class PodSecurityPolicyTemplateRunAsUser(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             rule: str,
+             rule: Optional[str] = None,
              ranges: Optional[Sequence['outputs.PodSecurityPolicyTemplateRunAsUserRange']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if rule is None:
+            raise TypeError("Missing 'rule' argument")
 
         _setter("rule", rule)
         if ranges is not None:
@@ -38161,10 +38731,14 @@ class PodSecurityPolicyTemplateRunAsUserRange(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             max: int,
-             min: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             max: Optional[int] = None,
+             min: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if max is None:
+            raise TypeError("Missing 'max' argument")
+        if min is None:
+            raise TypeError("Missing 'min' argument")
 
         _setter("max", max)
         _setter("min", min)
@@ -38222,13 +38796,15 @@ class PodSecurityPolicyTemplateRuntimeClass(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allowed_runtime_class_names: Sequence[str],
+             allowed_runtime_class_names: Optional[Sequence[str]] = None,
              default_runtime_class_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedRuntimeClassNames' in kwargs:
+        if allowed_runtime_class_names is None and 'allowedRuntimeClassNames' in kwargs:
             allowed_runtime_class_names = kwargs['allowedRuntimeClassNames']
-        if 'defaultRuntimeClassName' in kwargs:
+        if allowed_runtime_class_names is None:
+            raise TypeError("Missing 'allowed_runtime_class_names' argument")
+        if default_runtime_class_name is None and 'defaultRuntimeClassName' in kwargs:
             default_runtime_class_name = kwargs['defaultRuntimeClassName']
 
         _setter("allowed_runtime_class_names", allowed_runtime_class_names)
@@ -38286,11 +38862,13 @@ class PodSecurityPolicyTemplateSeLinux(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             rule: str,
+             rule: Optional[str] = None,
              se_linux_option: Optional['outputs.PodSecurityPolicyTemplateSeLinuxSeLinuxOption'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'seLinuxOption' in kwargs:
+        if rule is None:
+            raise TypeError("Missing 'rule' argument")
+        if se_linux_option is None and 'seLinuxOption' in kwargs:
             se_linux_option = kwargs['seLinuxOption']
 
         _setter("rule", rule)
@@ -38341,7 +38919,7 @@ class PodSecurityPolicyTemplateSeLinuxSeLinuxOption(dict):
              role: Optional[str] = None,
              type: Optional[str] = None,
              user: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if level is not None:
@@ -38405,7 +38983,7 @@ class PodSecurityPolicyTemplateSupplementalGroup(dict):
              _setter: Callable[[Any, Any], None],
              ranges: Optional[Sequence['outputs.PodSecurityPolicyTemplateSupplementalGroupRange']] = None,
              rule: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if ranges is not None:
@@ -38447,10 +39025,14 @@ class PodSecurityPolicyTemplateSupplementalGroupRange(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             max: int,
-             min: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             max: Optional[int] = None,
+             min: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if max is None:
+            raise TypeError("Missing 'max' argument")
+        if min is None:
+            raise TypeError("Missing 'min' argument")
 
         _setter("max", max)
         _setter("min", min)
@@ -38515,17 +39097,19 @@ class ProjectAlertGroupRecipient(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             notifier_id: str,
+             notifier_id: Optional[str] = None,
              default_recipient: Optional[bool] = None,
              notifier_type: Optional[str] = None,
              recipient: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'notifierId' in kwargs:
+        if notifier_id is None and 'notifierId' in kwargs:
             notifier_id = kwargs['notifierId']
-        if 'defaultRecipient' in kwargs:
+        if notifier_id is None:
+            raise TypeError("Missing 'notifier_id' argument")
+        if default_recipient is None and 'defaultRecipient' in kwargs:
             default_recipient = kwargs['defaultRecipient']
-        if 'notifierType' in kwargs:
+        if notifier_type is None and 'notifierType' in kwargs:
             notifier_type = kwargs['notifierType']
 
         _setter("notifier_id", notifier_id)
@@ -38609,15 +39193,21 @@ class ProjectAlertRuleMetricRule(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             duration: str,
-             expression: str,
-             threshold_value: float,
+             duration: Optional[str] = None,
+             expression: Optional[str] = None,
+             threshold_value: Optional[float] = None,
              comparison: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'thresholdValue' in kwargs:
+        if duration is None:
+            raise TypeError("Missing 'duration' argument")
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if threshold_value is None and 'thresholdValue' in kwargs:
             threshold_value = kwargs['thresholdValue']
+        if threshold_value is None:
+            raise TypeError("Missing 'threshold_value' argument")
 
         _setter("duration", duration)
         _setter("expression", expression)
@@ -38712,17 +39302,19 @@ class ProjectAlertRulePodRule(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pod_id: str,
+             pod_id: Optional[str] = None,
              condition: Optional[str] = None,
              restart_interval_seconds: Optional[int] = None,
              restart_times: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'podId' in kwargs:
+        if pod_id is None and 'podId' in kwargs:
             pod_id = kwargs['podId']
-        if 'restartIntervalSeconds' in kwargs:
+        if pod_id is None:
+            raise TypeError("Missing 'pod_id' argument")
+        if restart_interval_seconds is None and 'restartIntervalSeconds' in kwargs:
             restart_interval_seconds = kwargs['restartIntervalSeconds']
-        if 'restartTimes' in kwargs:
+        if restart_times is None and 'restartTimes' in kwargs:
             restart_times = kwargs['restartTimes']
 
         _setter("pod_id", pod_id)
@@ -38808,11 +39400,11 @@ class ProjectAlertRuleWorkloadRule(dict):
              available_percentage: Optional[int] = None,
              selector: Optional[Mapping[str, Any]] = None,
              workload_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'availablePercentage' in kwargs:
+        if available_percentage is None and 'availablePercentage' in kwargs:
             available_percentage = kwargs['availablePercentage']
-        if 'workloadId' in kwargs:
+        if workload_id is None and 'workloadId' in kwargs:
             workload_id = kwargs['workloadId']
 
         if available_percentage is not None:
@@ -38897,15 +39489,15 @@ class ProjectContainerResourceLimit(dict):
              limits_memory: Optional[str] = None,
              requests_cpu: Optional[str] = None,
              requests_memory: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'limitsCpu' in kwargs:
+        if limits_cpu is None and 'limitsCpu' in kwargs:
             limits_cpu = kwargs['limitsCpu']
-        if 'limitsMemory' in kwargs:
+        if limits_memory is None and 'limitsMemory' in kwargs:
             limits_memory = kwargs['limitsMemory']
-        if 'requestsCpu' in kwargs:
+        if requests_cpu is None and 'requestsCpu' in kwargs:
             requests_cpu = kwargs['requestsCpu']
-        if 'requestsMemory' in kwargs:
+        if requests_memory is None and 'requestsMemory' in kwargs:
             requests_memory = kwargs['requestsMemory']
 
         if limits_cpu is not None:
@@ -38969,7 +39561,7 @@ class ProjectProjectMonitoringInput(dict):
              _setter: Callable[[Any, Any], None],
              answers: Optional[Mapping[str, Any]] = None,
              version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if answers is not None:
@@ -39030,14 +39622,18 @@ class ProjectResourceQuota(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             namespace_default_limit: 'outputs.ProjectResourceQuotaNamespaceDefaultLimit',
-             project_limit: 'outputs.ProjectResourceQuotaProjectLimit',
-             opts: Optional[pulumi.ResourceOptions]=None,
+             namespace_default_limit: Optional['outputs.ProjectResourceQuotaNamespaceDefaultLimit'] = None,
+             project_limit: Optional['outputs.ProjectResourceQuotaProjectLimit'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'namespaceDefaultLimit' in kwargs:
+        if namespace_default_limit is None and 'namespaceDefaultLimit' in kwargs:
             namespace_default_limit = kwargs['namespaceDefaultLimit']
-        if 'projectLimit' in kwargs:
+        if namespace_default_limit is None:
+            raise TypeError("Missing 'namespace_default_limit' argument")
+        if project_limit is None and 'projectLimit' in kwargs:
             project_limit = kwargs['projectLimit']
+        if project_limit is None:
+            raise TypeError("Missing 'project_limit' argument")
 
         _setter("namespace_default_limit", namespace_default_limit)
         _setter("project_limit", project_limit)
@@ -39158,27 +39754,27 @@ class ProjectResourceQuotaNamespaceDefaultLimit(dict):
              services: Optional[str] = None,
              services_load_balancers: Optional[str] = None,
              services_node_ports: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'configMaps' in kwargs:
+        if config_maps is None and 'configMaps' in kwargs:
             config_maps = kwargs['configMaps']
-        if 'limitsCpu' in kwargs:
+        if limits_cpu is None and 'limitsCpu' in kwargs:
             limits_cpu = kwargs['limitsCpu']
-        if 'limitsMemory' in kwargs:
+        if limits_memory is None and 'limitsMemory' in kwargs:
             limits_memory = kwargs['limitsMemory']
-        if 'persistentVolumeClaims' in kwargs:
+        if persistent_volume_claims is None and 'persistentVolumeClaims' in kwargs:
             persistent_volume_claims = kwargs['persistentVolumeClaims']
-        if 'replicationControllers' in kwargs:
+        if replication_controllers is None and 'replicationControllers' in kwargs:
             replication_controllers = kwargs['replicationControllers']
-        if 'requestsCpu' in kwargs:
+        if requests_cpu is None and 'requestsCpu' in kwargs:
             requests_cpu = kwargs['requestsCpu']
-        if 'requestsMemory' in kwargs:
+        if requests_memory is None and 'requestsMemory' in kwargs:
             requests_memory = kwargs['requestsMemory']
-        if 'requestsStorage' in kwargs:
+        if requests_storage is None and 'requestsStorage' in kwargs:
             requests_storage = kwargs['requestsStorage']
-        if 'servicesLoadBalancers' in kwargs:
+        if services_load_balancers is None and 'servicesLoadBalancers' in kwargs:
             services_load_balancers = kwargs['servicesLoadBalancers']
-        if 'servicesNodePorts' in kwargs:
+        if services_node_ports is None and 'servicesNodePorts' in kwargs:
             services_node_ports = kwargs['servicesNodePorts']
 
         if config_maps is not None:
@@ -39411,27 +40007,27 @@ class ProjectResourceQuotaProjectLimit(dict):
              services: Optional[str] = None,
              services_load_balancers: Optional[str] = None,
              services_node_ports: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'configMaps' in kwargs:
+        if config_maps is None and 'configMaps' in kwargs:
             config_maps = kwargs['configMaps']
-        if 'limitsCpu' in kwargs:
+        if limits_cpu is None and 'limitsCpu' in kwargs:
             limits_cpu = kwargs['limitsCpu']
-        if 'limitsMemory' in kwargs:
+        if limits_memory is None and 'limitsMemory' in kwargs:
             limits_memory = kwargs['limitsMemory']
-        if 'persistentVolumeClaims' in kwargs:
+        if persistent_volume_claims is None and 'persistentVolumeClaims' in kwargs:
             persistent_volume_claims = kwargs['persistentVolumeClaims']
-        if 'replicationControllers' in kwargs:
+        if replication_controllers is None and 'replicationControllers' in kwargs:
             replication_controllers = kwargs['replicationControllers']
-        if 'requestsCpu' in kwargs:
+        if requests_cpu is None and 'requestsCpu' in kwargs:
             requests_cpu = kwargs['requestsCpu']
-        if 'requestsMemory' in kwargs:
+        if requests_memory is None and 'requestsMemory' in kwargs:
             requests_memory = kwargs['requestsMemory']
-        if 'requestsStorage' in kwargs:
+        if requests_storage is None and 'requestsStorage' in kwargs:
             requests_storage = kwargs['requestsStorage']
-        if 'servicesLoadBalancers' in kwargs:
+        if services_load_balancers is None and 'servicesLoadBalancers' in kwargs:
             services_load_balancers = kwargs['servicesLoadBalancers']
-        if 'servicesNodePorts' in kwargs:
+        if services_node_ports is None and 'servicesNodePorts' in kwargs:
             services_node_ports = kwargs['servicesNodePorts']
 
         if config_maps is not None:
@@ -39585,11 +40181,13 @@ class RegistryRegistry(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address: str,
+             address: Optional[str] = None,
              password: Optional[str] = None,
              username: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if address is None:
+            raise TypeError("Missing 'address' argument")
 
         _setter("address", address)
         if password is not None:
@@ -39674,13 +40272,13 @@ class RoleTempalteRule(dict):
              resource_names: Optional[Sequence[str]] = None,
              resources: Optional[Sequence[str]] = None,
              verbs: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'apiGroups' in kwargs:
+        if api_groups is None and 'apiGroups' in kwargs:
             api_groups = kwargs['apiGroups']
-        if 'nonResourceUrls' in kwargs:
+        if non_resource_urls is None and 'nonResourceUrls' in kwargs:
             non_resource_urls = kwargs['nonResourceUrls']
-        if 'resourceNames' in kwargs:
+        if resource_names is None and 'resourceNames' in kwargs:
             resource_names = kwargs['resourceNames']
 
         if api_groups is not None:
@@ -39787,13 +40385,13 @@ class RoleTemplateRule(dict):
              resource_names: Optional[Sequence[str]] = None,
              resources: Optional[Sequence[str]] = None,
              verbs: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'apiGroups' in kwargs:
+        if api_groups is None and 'apiGroups' in kwargs:
             api_groups = kwargs['apiGroups']
-        if 'nonResourceUrls' in kwargs:
+        if non_resource_urls is None and 'nonResourceUrls' in kwargs:
             non_resource_urls = kwargs['nonResourceUrls']
-        if 'resourceNames' in kwargs:
+        if resource_names is None and 'resourceNames' in kwargs:
             resource_names = kwargs['resourceNames']
 
         if api_groups is not None:
@@ -39935,21 +40533,21 @@ class GetClusterAksConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             agent_dns_prefix: str,
-             client_id: str,
-             client_secret: str,
-             kubernetes_version: str,
-             load_balancer_sku: str,
-             master_dns_prefix: str,
-             resource_group: str,
-             ssh_public_key_contents: str,
-             subnet: str,
-             subscription_id: str,
-             tag: Mapping[str, Any],
-             tags: Sequence[str],
-             tenant_id: str,
-             virtual_network: str,
-             virtual_network_resource_group: str,
+             agent_dns_prefix: Optional[str] = None,
+             client_id: Optional[str] = None,
+             client_secret: Optional[str] = None,
+             kubernetes_version: Optional[str] = None,
+             load_balancer_sku: Optional[str] = None,
+             master_dns_prefix: Optional[str] = None,
+             resource_group: Optional[str] = None,
+             ssh_public_key_contents: Optional[str] = None,
+             subnet: Optional[str] = None,
+             subscription_id: Optional[str] = None,
+             tag: Optional[Mapping[str, Any]] = None,
+             tags: Optional[Sequence[str]] = None,
+             tenant_id: Optional[str] = None,
+             virtual_network: Optional[str] = None,
+             virtual_network_resource_group: Optional[str] = None,
              aad_server_app_secret: Optional[str] = None,
              aad_tenant_id: Optional[str] = None,
              add_client_app_id: Optional[str] = None,
@@ -39974,75 +40572,105 @@ class GetClusterAksConfigResult(dict):
              network_policy: Optional[str] = None,
              pod_cidr: Optional[str] = None,
              service_cidr: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'agentDnsPrefix' in kwargs:
+        if agent_dns_prefix is None and 'agentDnsPrefix' in kwargs:
             agent_dns_prefix = kwargs['agentDnsPrefix']
-        if 'clientId' in kwargs:
+        if agent_dns_prefix is None:
+            raise TypeError("Missing 'agent_dns_prefix' argument")
+        if client_id is None and 'clientId' in kwargs:
             client_id = kwargs['clientId']
-        if 'clientSecret' in kwargs:
+        if client_id is None:
+            raise TypeError("Missing 'client_id' argument")
+        if client_secret is None and 'clientSecret' in kwargs:
             client_secret = kwargs['clientSecret']
-        if 'kubernetesVersion' in kwargs:
+        if client_secret is None:
+            raise TypeError("Missing 'client_secret' argument")
+        if kubernetes_version is None and 'kubernetesVersion' in kwargs:
             kubernetes_version = kwargs['kubernetesVersion']
-        if 'loadBalancerSku' in kwargs:
+        if kubernetes_version is None:
+            raise TypeError("Missing 'kubernetes_version' argument")
+        if load_balancer_sku is None and 'loadBalancerSku' in kwargs:
             load_balancer_sku = kwargs['loadBalancerSku']
-        if 'masterDnsPrefix' in kwargs:
+        if load_balancer_sku is None:
+            raise TypeError("Missing 'load_balancer_sku' argument")
+        if master_dns_prefix is None and 'masterDnsPrefix' in kwargs:
             master_dns_prefix = kwargs['masterDnsPrefix']
-        if 'resourceGroup' in kwargs:
+        if master_dns_prefix is None:
+            raise TypeError("Missing 'master_dns_prefix' argument")
+        if resource_group is None and 'resourceGroup' in kwargs:
             resource_group = kwargs['resourceGroup']
-        if 'sshPublicKeyContents' in kwargs:
+        if resource_group is None:
+            raise TypeError("Missing 'resource_group' argument")
+        if ssh_public_key_contents is None and 'sshPublicKeyContents' in kwargs:
             ssh_public_key_contents = kwargs['sshPublicKeyContents']
-        if 'subscriptionId' in kwargs:
+        if ssh_public_key_contents is None:
+            raise TypeError("Missing 'ssh_public_key_contents' argument")
+        if subnet is None:
+            raise TypeError("Missing 'subnet' argument")
+        if subscription_id is None and 'subscriptionId' in kwargs:
             subscription_id = kwargs['subscriptionId']
-        if 'tenantId' in kwargs:
+        if subscription_id is None:
+            raise TypeError("Missing 'subscription_id' argument")
+        if tag is None:
+            raise TypeError("Missing 'tag' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if tenant_id is None and 'tenantId' in kwargs:
             tenant_id = kwargs['tenantId']
-        if 'virtualNetwork' in kwargs:
+        if tenant_id is None:
+            raise TypeError("Missing 'tenant_id' argument")
+        if virtual_network is None and 'virtualNetwork' in kwargs:
             virtual_network = kwargs['virtualNetwork']
-        if 'virtualNetworkResourceGroup' in kwargs:
+        if virtual_network is None:
+            raise TypeError("Missing 'virtual_network' argument")
+        if virtual_network_resource_group is None and 'virtualNetworkResourceGroup' in kwargs:
             virtual_network_resource_group = kwargs['virtualNetworkResourceGroup']
-        if 'aadServerAppSecret' in kwargs:
+        if virtual_network_resource_group is None:
+            raise TypeError("Missing 'virtual_network_resource_group' argument")
+        if aad_server_app_secret is None and 'aadServerAppSecret' in kwargs:
             aad_server_app_secret = kwargs['aadServerAppSecret']
-        if 'aadTenantId' in kwargs:
+        if aad_tenant_id is None and 'aadTenantId' in kwargs:
             aad_tenant_id = kwargs['aadTenantId']
-        if 'addClientAppId' in kwargs:
+        if add_client_app_id is None and 'addClientAppId' in kwargs:
             add_client_app_id = kwargs['addClientAppId']
-        if 'addServerAppId' in kwargs:
+        if add_server_app_id is None and 'addServerAppId' in kwargs:
             add_server_app_id = kwargs['addServerAppId']
-        if 'adminUsername' in kwargs:
+        if admin_username is None and 'adminUsername' in kwargs:
             admin_username = kwargs['adminUsername']
-        if 'agentOsDiskSize' in kwargs:
+        if agent_os_disk_size is None and 'agentOsDiskSize' in kwargs:
             agent_os_disk_size = kwargs['agentOsDiskSize']
-        if 'agentPoolName' in kwargs:
+        if agent_pool_name is None and 'agentPoolName' in kwargs:
             agent_pool_name = kwargs['agentPoolName']
-        if 'agentStorageProfile' in kwargs:
+        if agent_storage_profile is None and 'agentStorageProfile' in kwargs:
             agent_storage_profile = kwargs['agentStorageProfile']
-        if 'agentVmSize' in kwargs:
+        if agent_vm_size is None and 'agentVmSize' in kwargs:
             agent_vm_size = kwargs['agentVmSize']
-        if 'authBaseUrl' in kwargs:
+        if auth_base_url is None and 'authBaseUrl' in kwargs:
             auth_base_url = kwargs['authBaseUrl']
-        if 'baseUrl' in kwargs:
+        if base_url is None and 'baseUrl' in kwargs:
             base_url = kwargs['baseUrl']
-        if 'dnsServiceIp' in kwargs:
+        if dns_service_ip is None and 'dnsServiceIp' in kwargs:
             dns_service_ip = kwargs['dnsServiceIp']
-        if 'dockerBridgeCidr' in kwargs:
+        if docker_bridge_cidr is None and 'dockerBridgeCidr' in kwargs:
             docker_bridge_cidr = kwargs['dockerBridgeCidr']
-        if 'enableHttpApplicationRouting' in kwargs:
+        if enable_http_application_routing is None and 'enableHttpApplicationRouting' in kwargs:
             enable_http_application_routing = kwargs['enableHttpApplicationRouting']
-        if 'enableMonitoring' in kwargs:
+        if enable_monitoring is None and 'enableMonitoring' in kwargs:
             enable_monitoring = kwargs['enableMonitoring']
-        if 'logAnalyticsWorkspace' in kwargs:
+        if log_analytics_workspace is None and 'logAnalyticsWorkspace' in kwargs:
             log_analytics_workspace = kwargs['logAnalyticsWorkspace']
-        if 'logAnalyticsWorkspaceResourceGroup' in kwargs:
+        if log_analytics_workspace_resource_group is None and 'logAnalyticsWorkspaceResourceGroup' in kwargs:
             log_analytics_workspace_resource_group = kwargs['logAnalyticsWorkspaceResourceGroup']
-        if 'maxPods' in kwargs:
+        if max_pods is None and 'maxPods' in kwargs:
             max_pods = kwargs['maxPods']
-        if 'networkPlugin' in kwargs:
+        if network_plugin is None and 'networkPlugin' in kwargs:
             network_plugin = kwargs['networkPlugin']
-        if 'networkPolicy' in kwargs:
+        if network_policy is None and 'networkPolicy' in kwargs:
             network_policy = kwargs['networkPolicy']
-        if 'podCidr' in kwargs:
+        if pod_cidr is None and 'podCidr' in kwargs:
             pod_cidr = kwargs['podCidr']
-        if 'serviceCidr' in kwargs:
+        if service_cidr is None and 'serviceCidr' in kwargs:
             service_cidr = kwargs['serviceCidr']
 
         _setter("agent_dns_prefix", agent_dns_prefix)
@@ -40378,27 +41006,27 @@ class GetClusterAksConfigV2Result(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cloud_credential_id: str,
-             http_application_routing: bool,
-             linux_admin_username: str,
-             linux_ssh_public_key: str,
-             load_balancer_sku: str,
-             log_analytics_workspace_group: str,
-             log_analytics_workspace_name: str,
-             monitoring: bool,
-             name: str,
-             network_dns_service_ip: str,
-             network_docker_bridge_cidr: str,
-             network_pod_cidr: str,
-             network_policy: str,
-             network_service_cidr: str,
-             private_cluster: bool,
-             resource_group: str,
-             resource_location: str,
-             subnet: str,
-             tags: Mapping[str, Any],
-             virtual_network: str,
-             virtual_network_resource_group: str,
+             cloud_credential_id: Optional[str] = None,
+             http_application_routing: Optional[bool] = None,
+             linux_admin_username: Optional[str] = None,
+             linux_ssh_public_key: Optional[str] = None,
+             load_balancer_sku: Optional[str] = None,
+             log_analytics_workspace_group: Optional[str] = None,
+             log_analytics_workspace_name: Optional[str] = None,
+             monitoring: Optional[bool] = None,
+             name: Optional[str] = None,
+             network_dns_service_ip: Optional[str] = None,
+             network_docker_bridge_cidr: Optional[str] = None,
+             network_pod_cidr: Optional[str] = None,
+             network_policy: Optional[str] = None,
+             network_service_cidr: Optional[str] = None,
+             private_cluster: Optional[bool] = None,
+             resource_group: Optional[str] = None,
+             resource_location: Optional[str] = None,
+             subnet: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             virtual_network: Optional[str] = None,
+             virtual_network_resource_group: Optional[str] = None,
              auth_base_url: Optional[str] = None,
              authorized_ip_ranges: Optional[Sequence[str]] = None,
              base_url: Optional[str] = None,
@@ -40407,55 +41035,97 @@ class GetClusterAksConfigV2Result(dict):
              kubernetes_version: Optional[str] = None,
              network_plugin: Optional[str] = None,
              node_pools: Optional[Sequence['outputs.GetClusterAksConfigV2NodePoolResult']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cloudCredentialId' in kwargs:
+        if cloud_credential_id is None and 'cloudCredentialId' in kwargs:
             cloud_credential_id = kwargs['cloudCredentialId']
-        if 'httpApplicationRouting' in kwargs:
+        if cloud_credential_id is None:
+            raise TypeError("Missing 'cloud_credential_id' argument")
+        if http_application_routing is None and 'httpApplicationRouting' in kwargs:
             http_application_routing = kwargs['httpApplicationRouting']
-        if 'linuxAdminUsername' in kwargs:
+        if http_application_routing is None:
+            raise TypeError("Missing 'http_application_routing' argument")
+        if linux_admin_username is None and 'linuxAdminUsername' in kwargs:
             linux_admin_username = kwargs['linuxAdminUsername']
-        if 'linuxSshPublicKey' in kwargs:
+        if linux_admin_username is None:
+            raise TypeError("Missing 'linux_admin_username' argument")
+        if linux_ssh_public_key is None and 'linuxSshPublicKey' in kwargs:
             linux_ssh_public_key = kwargs['linuxSshPublicKey']
-        if 'loadBalancerSku' in kwargs:
+        if linux_ssh_public_key is None:
+            raise TypeError("Missing 'linux_ssh_public_key' argument")
+        if load_balancer_sku is None and 'loadBalancerSku' in kwargs:
             load_balancer_sku = kwargs['loadBalancerSku']
-        if 'logAnalyticsWorkspaceGroup' in kwargs:
+        if load_balancer_sku is None:
+            raise TypeError("Missing 'load_balancer_sku' argument")
+        if log_analytics_workspace_group is None and 'logAnalyticsWorkspaceGroup' in kwargs:
             log_analytics_workspace_group = kwargs['logAnalyticsWorkspaceGroup']
-        if 'logAnalyticsWorkspaceName' in kwargs:
+        if log_analytics_workspace_group is None:
+            raise TypeError("Missing 'log_analytics_workspace_group' argument")
+        if log_analytics_workspace_name is None and 'logAnalyticsWorkspaceName' in kwargs:
             log_analytics_workspace_name = kwargs['logAnalyticsWorkspaceName']
-        if 'networkDnsServiceIp' in kwargs:
+        if log_analytics_workspace_name is None:
+            raise TypeError("Missing 'log_analytics_workspace_name' argument")
+        if monitoring is None:
+            raise TypeError("Missing 'monitoring' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if network_dns_service_ip is None and 'networkDnsServiceIp' in kwargs:
             network_dns_service_ip = kwargs['networkDnsServiceIp']
-        if 'networkDockerBridgeCidr' in kwargs:
+        if network_dns_service_ip is None:
+            raise TypeError("Missing 'network_dns_service_ip' argument")
+        if network_docker_bridge_cidr is None and 'networkDockerBridgeCidr' in kwargs:
             network_docker_bridge_cidr = kwargs['networkDockerBridgeCidr']
-        if 'networkPodCidr' in kwargs:
+        if network_docker_bridge_cidr is None:
+            raise TypeError("Missing 'network_docker_bridge_cidr' argument")
+        if network_pod_cidr is None and 'networkPodCidr' in kwargs:
             network_pod_cidr = kwargs['networkPodCidr']
-        if 'networkPolicy' in kwargs:
+        if network_pod_cidr is None:
+            raise TypeError("Missing 'network_pod_cidr' argument")
+        if network_policy is None and 'networkPolicy' in kwargs:
             network_policy = kwargs['networkPolicy']
-        if 'networkServiceCidr' in kwargs:
+        if network_policy is None:
+            raise TypeError("Missing 'network_policy' argument")
+        if network_service_cidr is None and 'networkServiceCidr' in kwargs:
             network_service_cidr = kwargs['networkServiceCidr']
-        if 'privateCluster' in kwargs:
+        if network_service_cidr is None:
+            raise TypeError("Missing 'network_service_cidr' argument")
+        if private_cluster is None and 'privateCluster' in kwargs:
             private_cluster = kwargs['privateCluster']
-        if 'resourceGroup' in kwargs:
+        if private_cluster is None:
+            raise TypeError("Missing 'private_cluster' argument")
+        if resource_group is None and 'resourceGroup' in kwargs:
             resource_group = kwargs['resourceGroup']
-        if 'resourceLocation' in kwargs:
+        if resource_group is None:
+            raise TypeError("Missing 'resource_group' argument")
+        if resource_location is None and 'resourceLocation' in kwargs:
             resource_location = kwargs['resourceLocation']
-        if 'virtualNetwork' in kwargs:
+        if resource_location is None:
+            raise TypeError("Missing 'resource_location' argument")
+        if subnet is None:
+            raise TypeError("Missing 'subnet' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if virtual_network is None and 'virtualNetwork' in kwargs:
             virtual_network = kwargs['virtualNetwork']
-        if 'virtualNetworkResourceGroup' in kwargs:
+        if virtual_network is None:
+            raise TypeError("Missing 'virtual_network' argument")
+        if virtual_network_resource_group is None and 'virtualNetworkResourceGroup' in kwargs:
             virtual_network_resource_group = kwargs['virtualNetworkResourceGroup']
-        if 'authBaseUrl' in kwargs:
+        if virtual_network_resource_group is None:
+            raise TypeError("Missing 'virtual_network_resource_group' argument")
+        if auth_base_url is None and 'authBaseUrl' in kwargs:
             auth_base_url = kwargs['authBaseUrl']
-        if 'authorizedIpRanges' in kwargs:
+        if authorized_ip_ranges is None and 'authorizedIpRanges' in kwargs:
             authorized_ip_ranges = kwargs['authorizedIpRanges']
-        if 'baseUrl' in kwargs:
+        if base_url is None and 'baseUrl' in kwargs:
             base_url = kwargs['baseUrl']
-        if 'dnsPrefix' in kwargs:
+        if dns_prefix is None and 'dnsPrefix' in kwargs:
             dns_prefix = kwargs['dnsPrefix']
-        if 'kubernetesVersion' in kwargs:
+        if kubernetes_version is None and 'kubernetesVersion' in kwargs:
             kubernetes_version = kwargs['kubernetesVersion']
-        if 'networkPlugin' in kwargs:
+        if network_plugin is None and 'networkPlugin' in kwargs:
             network_plugin = kwargs['networkPlugin']
-        if 'nodePools' in kwargs:
+        if node_pools is None and 'nodePools' in kwargs:
             node_pools = kwargs['nodePools']
 
         _setter("cloud_credential_id", cloud_credential_id)
@@ -40690,10 +41360,10 @@ class GetClusterAksConfigV2NodePoolResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             labels: Mapping[str, Any],
-             name: str,
-             taints: Sequence[str],
-             vm_size: str,
+             labels: Optional[Mapping[str, Any]] = None,
+             name: Optional[str] = None,
+             taints: Optional[Sequence[str]] = None,
+             vm_size: Optional[str] = None,
              availability_zones: Optional[Sequence[str]] = None,
              count: Optional[int] = None,
              enable_auto_scaling: Optional[bool] = None,
@@ -40706,29 +41376,37 @@ class GetClusterAksConfigV2NodePoolResult(dict):
              os_disk_size_gb: Optional[int] = None,
              os_disk_type: Optional[str] = None,
              os_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'vmSize' in kwargs:
+        if labels is None:
+            raise TypeError("Missing 'labels' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if taints is None:
+            raise TypeError("Missing 'taints' argument")
+        if vm_size is None and 'vmSize' in kwargs:
             vm_size = kwargs['vmSize']
-        if 'availabilityZones' in kwargs:
+        if vm_size is None:
+            raise TypeError("Missing 'vm_size' argument")
+        if availability_zones is None and 'availabilityZones' in kwargs:
             availability_zones = kwargs['availabilityZones']
-        if 'enableAutoScaling' in kwargs:
+        if enable_auto_scaling is None and 'enableAutoScaling' in kwargs:
             enable_auto_scaling = kwargs['enableAutoScaling']
-        if 'maxCount' in kwargs:
+        if max_count is None and 'maxCount' in kwargs:
             max_count = kwargs['maxCount']
-        if 'maxPods' in kwargs:
+        if max_pods is None and 'maxPods' in kwargs:
             max_pods = kwargs['maxPods']
-        if 'maxSurge' in kwargs:
+        if max_surge is None and 'maxSurge' in kwargs:
             max_surge = kwargs['maxSurge']
-        if 'minCount' in kwargs:
+        if min_count is None and 'minCount' in kwargs:
             min_count = kwargs['minCount']
-        if 'orchestratorVersion' in kwargs:
+        if orchestrator_version is None and 'orchestratorVersion' in kwargs:
             orchestrator_version = kwargs['orchestratorVersion']
-        if 'osDiskSizeGb' in kwargs:
+        if os_disk_size_gb is None and 'osDiskSizeGb' in kwargs:
             os_disk_size_gb = kwargs['osDiskSizeGb']
-        if 'osDiskType' in kwargs:
+        if os_disk_type is None and 'osDiskType' in kwargs:
             os_disk_type = kwargs['osDiskType']
-        if 'osType' in kwargs:
+        if os_type is None and 'osType' in kwargs:
             os_type = kwargs['osType']
 
         _setter("labels", labels)
@@ -40864,17 +41542,23 @@ class GetClusterAlertGroupRecipientResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             notifier_id: str,
-             notifier_type: str,
-             recipient: str,
+             notifier_id: Optional[str] = None,
+             notifier_type: Optional[str] = None,
+             recipient: Optional[str] = None,
              default_recipient: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'notifierId' in kwargs:
+        if notifier_id is None and 'notifierId' in kwargs:
             notifier_id = kwargs['notifierId']
-        if 'notifierType' in kwargs:
+        if notifier_id is None:
+            raise TypeError("Missing 'notifier_id' argument")
+        if notifier_type is None and 'notifierType' in kwargs:
             notifier_type = kwargs['notifierType']
-        if 'defaultRecipient' in kwargs:
+        if notifier_type is None:
+            raise TypeError("Missing 'notifier_type' argument")
+        if recipient is None:
+            raise TypeError("Missing 'recipient' argument")
+        if default_recipient is None and 'defaultRecipient' in kwargs:
             default_recipient = kwargs['defaultRecipient']
 
         _setter("notifier_id", notifier_id)
@@ -40917,13 +41601,15 @@ class GetClusterAlterRuleEventRuleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             resource_kind: str,
+             resource_kind: Optional[str] = None,
              event_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'resourceKind' in kwargs:
+        if resource_kind is None and 'resourceKind' in kwargs:
             resource_kind = kwargs['resourceKind']
-        if 'eventType' in kwargs:
+        if resource_kind is None:
+            raise TypeError("Missing 'resource_kind' argument")
+        if event_type is None and 'eventType' in kwargs:
             event_type = kwargs['eventType']
 
         _setter("resource_kind", resource_kind)
@@ -40960,15 +41646,21 @@ class GetClusterAlterRuleMetricRuleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             duration: str,
-             expression: str,
-             threshold_value: float,
+             duration: Optional[str] = None,
+             expression: Optional[str] = None,
+             threshold_value: Optional[float] = None,
              comparison: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'thresholdValue' in kwargs:
+        if duration is None:
+            raise TypeError("Missing 'duration' argument")
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if threshold_value is None and 'thresholdValue' in kwargs:
             threshold_value = kwargs['thresholdValue']
+        if threshold_value is None:
+            raise TypeError("Missing 'threshold_value' argument")
 
         _setter("duration", duration)
         _setter("expression", expression)
@@ -41028,13 +41720,13 @@ class GetClusterAlterRuleNodeRuleResult(dict):
              mem_threshold: Optional[int] = None,
              node_id: Optional[str] = None,
              selector: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cpuThreshold' in kwargs:
+        if cpu_threshold is None and 'cpuThreshold' in kwargs:
             cpu_threshold = kwargs['cpuThreshold']
-        if 'memThreshold' in kwargs:
+        if mem_threshold is None and 'memThreshold' in kwargs:
             mem_threshold = kwargs['memThreshold']
-        if 'nodeId' in kwargs:
+        if node_id is None and 'nodeId' in kwargs:
             node_id = kwargs['nodeId']
 
         if condition is not None:
@@ -41086,7 +41778,7 @@ class GetClusterAlterRuleSystemServiceRuleResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              condition: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if condition is not None:
@@ -41116,9 +41808,9 @@ class GetClusterClusterAuthEndpointResult(dict):
              ca_certs: Optional[str] = None,
              enabled: Optional[bool] = None,
              fqdn: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'caCerts' in kwargs:
+        if ca_certs is None and 'caCerts' in kwargs:
             ca_certs = kwargs['caCerts']
 
         if ca_certs is not None:
@@ -41159,7 +41851,7 @@ class GetClusterClusterMonitoringInputResult(dict):
              _setter: Callable[[Any, Any], None],
              answers: Optional[Mapping[str, Any]] = None,
              version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if answers is not None:
@@ -41219,35 +41911,61 @@ class GetClusterClusterRegistrationTokenResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             annotations: Mapping[str, Any],
-             cluster_id: str,
-             command: str,
-             id: str,
-             insecure_command: str,
-             insecure_node_command: str,
-             insecure_windows_node_command: str,
-             labels: Mapping[str, Any],
-             manifest_url: str,
-             name: str,
-             node_command: str,
-             token: str,
-             windows_node_command: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             annotations: Optional[Mapping[str, Any]] = None,
+             cluster_id: Optional[str] = None,
+             command: Optional[str] = None,
+             id: Optional[str] = None,
+             insecure_command: Optional[str] = None,
+             insecure_node_command: Optional[str] = None,
+             insecure_windows_node_command: Optional[str] = None,
+             labels: Optional[Mapping[str, Any]] = None,
+             manifest_url: Optional[str] = None,
+             name: Optional[str] = None,
+             node_command: Optional[str] = None,
+             token: Optional[str] = None,
+             windows_node_command: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if annotations is None:
+            raise TypeError("Missing 'annotations' argument")
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'insecureCommand' in kwargs:
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if command is None:
+            raise TypeError("Missing 'command' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if insecure_command is None and 'insecureCommand' in kwargs:
             insecure_command = kwargs['insecureCommand']
-        if 'insecureNodeCommand' in kwargs:
+        if insecure_command is None:
+            raise TypeError("Missing 'insecure_command' argument")
+        if insecure_node_command is None and 'insecureNodeCommand' in kwargs:
             insecure_node_command = kwargs['insecureNodeCommand']
-        if 'insecureWindowsNodeCommand' in kwargs:
+        if insecure_node_command is None:
+            raise TypeError("Missing 'insecure_node_command' argument")
+        if insecure_windows_node_command is None and 'insecureWindowsNodeCommand' in kwargs:
             insecure_windows_node_command = kwargs['insecureWindowsNodeCommand']
-        if 'manifestUrl' in kwargs:
+        if insecure_windows_node_command is None:
+            raise TypeError("Missing 'insecure_windows_node_command' argument")
+        if labels is None:
+            raise TypeError("Missing 'labels' argument")
+        if manifest_url is None and 'manifestUrl' in kwargs:
             manifest_url = kwargs['manifestUrl']
-        if 'nodeCommand' in kwargs:
+        if manifest_url is None:
+            raise TypeError("Missing 'manifest_url' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if node_command is None and 'nodeCommand' in kwargs:
             node_command = kwargs['nodeCommand']
-        if 'windowsNodeCommand' in kwargs:
+        if node_command is None:
+            raise TypeError("Missing 'node_command' argument")
+        if token is None:
+            raise TypeError("Missing 'token' argument")
+        if windows_node_command is None and 'windowsNodeCommand' in kwargs:
             windows_node_command = kwargs['windowsNodeCommand']
+        if windows_node_command is None:
+            raise TypeError("Missing 'windows_node_command' argument")
 
         _setter("annotations", annotations)
         _setter("cluster_id", cluster_id)
@@ -41356,15 +42074,21 @@ class GetClusterClusterTemplateAnswersResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: str,
-             project_id: str,
-             values: Mapping[str, Any],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cluster_id: Optional[str] = None,
+             project_id: Optional[str] = None,
+             values: Optional[Mapping[str, Any]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'projectId' in kwargs:
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
 
         _setter("cluster_id", cluster_id)
         _setter("project_id", project_id)
@@ -41403,12 +42127,16 @@ class GetClusterClusterTemplateQuestionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             default: str,
-             variable: str,
+             default: Optional[str] = None,
+             variable: Optional[str] = None,
              required: Optional[bool] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if default is None:
+            raise TypeError("Missing 'default' argument")
+        if variable is None:
+            raise TypeError("Missing 'variable' argument")
 
         _setter("default", default)
         _setter("variable", variable)
@@ -41485,10 +42213,10 @@ class GetClusterEksConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_key: str,
-             kubernetes_version: str,
-             secret_key: str,
-             user_data: str,
+             access_key: Optional[str] = None,
+             kubernetes_version: Optional[str] = None,
+             secret_key: Optional[str] = None,
+             user_data: Optional[str] = None,
              ami: Optional[str] = None,
              associate_worker_node_public_ip: Optional[bool] = None,
              desired_nodes: Optional[int] = None,
@@ -41504,39 +42232,47 @@ class GetClusterEksConfigResult(dict):
              session_token: Optional[str] = None,
              subnets: Optional[Sequence[str]] = None,
              virtual_network: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessKey' in kwargs:
+        if access_key is None and 'accessKey' in kwargs:
             access_key = kwargs['accessKey']
-        if 'kubernetesVersion' in kwargs:
+        if access_key is None:
+            raise TypeError("Missing 'access_key' argument")
+        if kubernetes_version is None and 'kubernetesVersion' in kwargs:
             kubernetes_version = kwargs['kubernetesVersion']
-        if 'secretKey' in kwargs:
+        if kubernetes_version is None:
+            raise TypeError("Missing 'kubernetes_version' argument")
+        if secret_key is None and 'secretKey' in kwargs:
             secret_key = kwargs['secretKey']
-        if 'userData' in kwargs:
+        if secret_key is None:
+            raise TypeError("Missing 'secret_key' argument")
+        if user_data is None and 'userData' in kwargs:
             user_data = kwargs['userData']
-        if 'associateWorkerNodePublicIp' in kwargs:
+        if user_data is None:
+            raise TypeError("Missing 'user_data' argument")
+        if associate_worker_node_public_ip is None and 'associateWorkerNodePublicIp' in kwargs:
             associate_worker_node_public_ip = kwargs['associateWorkerNodePublicIp']
-        if 'desiredNodes' in kwargs:
+        if desired_nodes is None and 'desiredNodes' in kwargs:
             desired_nodes = kwargs['desiredNodes']
-        if 'ebsEncryption' in kwargs:
+        if ebs_encryption is None and 'ebsEncryption' in kwargs:
             ebs_encryption = kwargs['ebsEncryption']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'keyPairName' in kwargs:
+        if key_pair_name is None and 'keyPairName' in kwargs:
             key_pair_name = kwargs['keyPairName']
-        if 'maximumNodes' in kwargs:
+        if maximum_nodes is None and 'maximumNodes' in kwargs:
             maximum_nodes = kwargs['maximumNodes']
-        if 'minimumNodes' in kwargs:
+        if minimum_nodes is None and 'minimumNodes' in kwargs:
             minimum_nodes = kwargs['minimumNodes']
-        if 'nodeVolumeSize' in kwargs:
+        if node_volume_size is None and 'nodeVolumeSize' in kwargs:
             node_volume_size = kwargs['nodeVolumeSize']
-        if 'securityGroups' in kwargs:
+        if security_groups is None and 'securityGroups' in kwargs:
             security_groups = kwargs['securityGroups']
-        if 'serviceRole' in kwargs:
+        if service_role is None and 'serviceRole' in kwargs:
             service_role = kwargs['serviceRole']
-        if 'sessionToken' in kwargs:
+        if session_token is None and 'sessionToken' in kwargs:
             session_token = kwargs['sessionToken']
-        if 'virtualNetwork' in kwargs:
+        if virtual_network is None and 'virtualNetwork' in kwargs:
             virtual_network = kwargs['virtualNetwork']
 
         _setter("access_key", access_key)
@@ -41714,14 +42450,14 @@ class GetClusterEksConfigV2Result(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cloud_credential_id: str,
-             kubernetes_version: str,
-             name: str,
-             node_groups: Sequence['outputs.GetClusterEksConfigV2NodeGroupResult'],
-             private_access: bool,
-             public_access: bool,
-             public_access_sources: Sequence[str],
-             secrets_encryption: bool,
+             cloud_credential_id: Optional[str] = None,
+             kubernetes_version: Optional[str] = None,
+             name: Optional[str] = None,
+             node_groups: Optional[Sequence['outputs.GetClusterEksConfigV2NodeGroupResult']] = None,
+             private_access: Optional[bool] = None,
+             public_access: Optional[bool] = None,
+             public_access_sources: Optional[Sequence[str]] = None,
+             secrets_encryption: Optional[bool] = None,
              imported: Optional[bool] = None,
              kms_key: Optional[str] = None,
              logging_types: Optional[Sequence[str]] = None,
@@ -41730,29 +42466,45 @@ class GetClusterEksConfigV2Result(dict):
              service_role: Optional[str] = None,
              subnets: Optional[Sequence[str]] = None,
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cloudCredentialId' in kwargs:
+        if cloud_credential_id is None and 'cloudCredentialId' in kwargs:
             cloud_credential_id = kwargs['cloudCredentialId']
-        if 'kubernetesVersion' in kwargs:
+        if cloud_credential_id is None:
+            raise TypeError("Missing 'cloud_credential_id' argument")
+        if kubernetes_version is None and 'kubernetesVersion' in kwargs:
             kubernetes_version = kwargs['kubernetesVersion']
-        if 'nodeGroups' in kwargs:
+        if kubernetes_version is None:
+            raise TypeError("Missing 'kubernetes_version' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if node_groups is None and 'nodeGroups' in kwargs:
             node_groups = kwargs['nodeGroups']
-        if 'privateAccess' in kwargs:
+        if node_groups is None:
+            raise TypeError("Missing 'node_groups' argument")
+        if private_access is None and 'privateAccess' in kwargs:
             private_access = kwargs['privateAccess']
-        if 'publicAccess' in kwargs:
+        if private_access is None:
+            raise TypeError("Missing 'private_access' argument")
+        if public_access is None and 'publicAccess' in kwargs:
             public_access = kwargs['publicAccess']
-        if 'publicAccessSources' in kwargs:
+        if public_access is None:
+            raise TypeError("Missing 'public_access' argument")
+        if public_access_sources is None and 'publicAccessSources' in kwargs:
             public_access_sources = kwargs['publicAccessSources']
-        if 'secretsEncryption' in kwargs:
+        if public_access_sources is None:
+            raise TypeError("Missing 'public_access_sources' argument")
+        if secrets_encryption is None and 'secretsEncryption' in kwargs:
             secrets_encryption = kwargs['secretsEncryption']
-        if 'kmsKey' in kwargs:
+        if secrets_encryption is None:
+            raise TypeError("Missing 'secrets_encryption' argument")
+        if kms_key is None and 'kmsKey' in kwargs:
             kms_key = kwargs['kmsKey']
-        if 'loggingTypes' in kwargs:
+        if logging_types is None and 'loggingTypes' in kwargs:
             logging_types = kwargs['loggingTypes']
-        if 'securityGroups' in kwargs:
+        if security_groups is None and 'securityGroups' in kwargs:
             security_groups = kwargs['securityGroups']
-        if 'serviceRole' in kwargs:
+        if service_role is None and 'serviceRole' in kwargs:
             service_role = kwargs['serviceRole']
 
         _setter("cloud_credential_id", cloud_credential_id)
@@ -41915,10 +42667,10 @@ class GetClusterEksConfigV2NodeGroupResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             subnets: Sequence[str],
-             user_data: str,
-             version: str,
+             name: Optional[str] = None,
+             subnets: Optional[Sequence[str]] = None,
+             user_data: Optional[str] = None,
+             version: Optional[str] = None,
              desired_size: Optional[int] = None,
              disk_size: Optional[int] = None,
              ec2_ssh_key: Optional[str] = None,
@@ -41934,33 +42686,41 @@ class GetClusterEksConfigV2NodeGroupResult(dict):
              resource_tags: Optional[Mapping[str, Any]] = None,
              spot_instance_types: Optional[Sequence[str]] = None,
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'userData' in kwargs:
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if subnets is None:
+            raise TypeError("Missing 'subnets' argument")
+        if user_data is None and 'userData' in kwargs:
             user_data = kwargs['userData']
-        if 'desiredSize' in kwargs:
+        if user_data is None:
+            raise TypeError("Missing 'user_data' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+        if desired_size is None and 'desiredSize' in kwargs:
             desired_size = kwargs['desiredSize']
-        if 'diskSize' in kwargs:
+        if disk_size is None and 'diskSize' in kwargs:
             disk_size = kwargs['diskSize']
-        if 'ec2SshKey' in kwargs:
+        if ec2_ssh_key is None and 'ec2SshKey' in kwargs:
             ec2_ssh_key = kwargs['ec2SshKey']
-        if 'imageId' in kwargs:
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'launchTemplates' in kwargs:
+        if launch_templates is None and 'launchTemplates' in kwargs:
             launch_templates = kwargs['launchTemplates']
-        if 'maxSize' in kwargs:
+        if max_size is None and 'maxSize' in kwargs:
             max_size = kwargs['maxSize']
-        if 'minSize' in kwargs:
+        if min_size is None and 'minSize' in kwargs:
             min_size = kwargs['minSize']
-        if 'nodeRole' in kwargs:
+        if node_role is None and 'nodeRole' in kwargs:
             node_role = kwargs['nodeRole']
-        if 'requestSpotInstances' in kwargs:
+        if request_spot_instances is None and 'requestSpotInstances' in kwargs:
             request_spot_instances = kwargs['requestSpotInstances']
-        if 'resourceTags' in kwargs:
+        if resource_tags is None and 'resourceTags' in kwargs:
             resource_tags = kwargs['resourceTags']
-        if 'spotInstanceTypes' in kwargs:
+        if spot_instance_types is None and 'spotInstanceTypes' in kwargs:
             spot_instance_types = kwargs['spotInstanceTypes']
 
         _setter("name", name)
@@ -42119,11 +42879,15 @@ class GetClusterEksConfigV2NodeGroupLaunchTemplateResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             name: str,
+             id: Optional[str] = None,
+             name: Optional[str] = None,
              version: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
 
         _setter("id", id)
         _setter("name", name)
@@ -42271,30 +43035,30 @@ class GetClusterGkeConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_ipv4_cidr: str,
-             credential: str,
-             disk_type: str,
-             image_type: str,
-             ip_policy_cluster_ipv4_cidr_block: str,
-             ip_policy_cluster_secondary_range_name: str,
-             ip_policy_node_ipv4_cidr_block: str,
-             ip_policy_services_ipv4_cidr_block: str,
-             ip_policy_services_secondary_range_name: str,
-             ip_policy_subnetwork_name: str,
-             labels: Mapping[str, Any],
-             locations: Sequence[str],
-             machine_type: str,
-             maintenance_window: str,
-             master_ipv4_cidr_block: str,
-             master_version: str,
-             network: str,
-             node_pool: str,
-             node_version: str,
-             oauth_scopes: Sequence[str],
-             project_id: str,
-             resource_labels: Mapping[str, Any],
-             service_account: str,
-             sub_network: str,
+             cluster_ipv4_cidr: Optional[str] = None,
+             credential: Optional[str] = None,
+             disk_type: Optional[str] = None,
+             image_type: Optional[str] = None,
+             ip_policy_cluster_ipv4_cidr_block: Optional[str] = None,
+             ip_policy_cluster_secondary_range_name: Optional[str] = None,
+             ip_policy_node_ipv4_cidr_block: Optional[str] = None,
+             ip_policy_services_ipv4_cidr_block: Optional[str] = None,
+             ip_policy_services_secondary_range_name: Optional[str] = None,
+             ip_policy_subnetwork_name: Optional[str] = None,
+             labels: Optional[Mapping[str, Any]] = None,
+             locations: Optional[Sequence[str]] = None,
+             machine_type: Optional[str] = None,
+             maintenance_window: Optional[str] = None,
+             master_ipv4_cidr_block: Optional[str] = None,
+             master_version: Optional[str] = None,
+             network: Optional[str] = None,
+             node_pool: Optional[str] = None,
+             node_version: Optional[str] = None,
+             oauth_scopes: Optional[Sequence[str]] = None,
+             project_id: Optional[str] = None,
+             resource_labels: Optional[Mapping[str, Any]] = None,
+             service_account: Optional[str] = None,
+             sub_network: Optional[str] = None,
              description: Optional[str] = None,
              disk_size_gb: Optional[int] = None,
              enable_alpha_feature: Optional[bool] = None,
@@ -42324,95 +43088,143 @@ class GetClusterGkeConfigResult(dict):
              taints: Optional[Sequence[str]] = None,
              use_ip_aliases: Optional[bool] = None,
              zone: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterIpv4Cidr' in kwargs:
+        if cluster_ipv4_cidr is None and 'clusterIpv4Cidr' in kwargs:
             cluster_ipv4_cidr = kwargs['clusterIpv4Cidr']
-        if 'diskType' in kwargs:
+        if cluster_ipv4_cidr is None:
+            raise TypeError("Missing 'cluster_ipv4_cidr' argument")
+        if credential is None:
+            raise TypeError("Missing 'credential' argument")
+        if disk_type is None and 'diskType' in kwargs:
             disk_type = kwargs['diskType']
-        if 'imageType' in kwargs:
+        if disk_type is None:
+            raise TypeError("Missing 'disk_type' argument")
+        if image_type is None and 'imageType' in kwargs:
             image_type = kwargs['imageType']
-        if 'ipPolicyClusterIpv4CidrBlock' in kwargs:
+        if image_type is None:
+            raise TypeError("Missing 'image_type' argument")
+        if ip_policy_cluster_ipv4_cidr_block is None and 'ipPolicyClusterIpv4CidrBlock' in kwargs:
             ip_policy_cluster_ipv4_cidr_block = kwargs['ipPolicyClusterIpv4CidrBlock']
-        if 'ipPolicyClusterSecondaryRangeName' in kwargs:
+        if ip_policy_cluster_ipv4_cidr_block is None:
+            raise TypeError("Missing 'ip_policy_cluster_ipv4_cidr_block' argument")
+        if ip_policy_cluster_secondary_range_name is None and 'ipPolicyClusterSecondaryRangeName' in kwargs:
             ip_policy_cluster_secondary_range_name = kwargs['ipPolicyClusterSecondaryRangeName']
-        if 'ipPolicyNodeIpv4CidrBlock' in kwargs:
+        if ip_policy_cluster_secondary_range_name is None:
+            raise TypeError("Missing 'ip_policy_cluster_secondary_range_name' argument")
+        if ip_policy_node_ipv4_cidr_block is None and 'ipPolicyNodeIpv4CidrBlock' in kwargs:
             ip_policy_node_ipv4_cidr_block = kwargs['ipPolicyNodeIpv4CidrBlock']
-        if 'ipPolicyServicesIpv4CidrBlock' in kwargs:
+        if ip_policy_node_ipv4_cidr_block is None:
+            raise TypeError("Missing 'ip_policy_node_ipv4_cidr_block' argument")
+        if ip_policy_services_ipv4_cidr_block is None and 'ipPolicyServicesIpv4CidrBlock' in kwargs:
             ip_policy_services_ipv4_cidr_block = kwargs['ipPolicyServicesIpv4CidrBlock']
-        if 'ipPolicyServicesSecondaryRangeName' in kwargs:
+        if ip_policy_services_ipv4_cidr_block is None:
+            raise TypeError("Missing 'ip_policy_services_ipv4_cidr_block' argument")
+        if ip_policy_services_secondary_range_name is None and 'ipPolicyServicesSecondaryRangeName' in kwargs:
             ip_policy_services_secondary_range_name = kwargs['ipPolicyServicesSecondaryRangeName']
-        if 'ipPolicySubnetworkName' in kwargs:
+        if ip_policy_services_secondary_range_name is None:
+            raise TypeError("Missing 'ip_policy_services_secondary_range_name' argument")
+        if ip_policy_subnetwork_name is None and 'ipPolicySubnetworkName' in kwargs:
             ip_policy_subnetwork_name = kwargs['ipPolicySubnetworkName']
-        if 'machineType' in kwargs:
+        if ip_policy_subnetwork_name is None:
+            raise TypeError("Missing 'ip_policy_subnetwork_name' argument")
+        if labels is None:
+            raise TypeError("Missing 'labels' argument")
+        if locations is None:
+            raise TypeError("Missing 'locations' argument")
+        if machine_type is None and 'machineType' in kwargs:
             machine_type = kwargs['machineType']
-        if 'maintenanceWindow' in kwargs:
+        if machine_type is None:
+            raise TypeError("Missing 'machine_type' argument")
+        if maintenance_window is None and 'maintenanceWindow' in kwargs:
             maintenance_window = kwargs['maintenanceWindow']
-        if 'masterIpv4CidrBlock' in kwargs:
+        if maintenance_window is None:
+            raise TypeError("Missing 'maintenance_window' argument")
+        if master_ipv4_cidr_block is None and 'masterIpv4CidrBlock' in kwargs:
             master_ipv4_cidr_block = kwargs['masterIpv4CidrBlock']
-        if 'masterVersion' in kwargs:
+        if master_ipv4_cidr_block is None:
+            raise TypeError("Missing 'master_ipv4_cidr_block' argument")
+        if master_version is None and 'masterVersion' in kwargs:
             master_version = kwargs['masterVersion']
-        if 'nodePool' in kwargs:
+        if master_version is None:
+            raise TypeError("Missing 'master_version' argument")
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+        if node_pool is None and 'nodePool' in kwargs:
             node_pool = kwargs['nodePool']
-        if 'nodeVersion' in kwargs:
+        if node_pool is None:
+            raise TypeError("Missing 'node_pool' argument")
+        if node_version is None and 'nodeVersion' in kwargs:
             node_version = kwargs['nodeVersion']
-        if 'oauthScopes' in kwargs:
+        if node_version is None:
+            raise TypeError("Missing 'node_version' argument")
+        if oauth_scopes is None and 'oauthScopes' in kwargs:
             oauth_scopes = kwargs['oauthScopes']
-        if 'projectId' in kwargs:
+        if oauth_scopes is None:
+            raise TypeError("Missing 'oauth_scopes' argument")
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
-        if 'resourceLabels' in kwargs:
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if resource_labels is None and 'resourceLabels' in kwargs:
             resource_labels = kwargs['resourceLabels']
-        if 'serviceAccount' in kwargs:
+        if resource_labels is None:
+            raise TypeError("Missing 'resource_labels' argument")
+        if service_account is None and 'serviceAccount' in kwargs:
             service_account = kwargs['serviceAccount']
-        if 'subNetwork' in kwargs:
+        if service_account is None:
+            raise TypeError("Missing 'service_account' argument")
+        if sub_network is None and 'subNetwork' in kwargs:
             sub_network = kwargs['subNetwork']
-        if 'diskSizeGb' in kwargs:
+        if sub_network is None:
+            raise TypeError("Missing 'sub_network' argument")
+        if disk_size_gb is None and 'diskSizeGb' in kwargs:
             disk_size_gb = kwargs['diskSizeGb']
-        if 'enableAlphaFeature' in kwargs:
+        if enable_alpha_feature is None and 'enableAlphaFeature' in kwargs:
             enable_alpha_feature = kwargs['enableAlphaFeature']
-        if 'enableAutoRepair' in kwargs:
+        if enable_auto_repair is None and 'enableAutoRepair' in kwargs:
             enable_auto_repair = kwargs['enableAutoRepair']
-        if 'enableAutoUpgrade' in kwargs:
+        if enable_auto_upgrade is None and 'enableAutoUpgrade' in kwargs:
             enable_auto_upgrade = kwargs['enableAutoUpgrade']
-        if 'enableHorizontalPodAutoscaling' in kwargs:
+        if enable_horizontal_pod_autoscaling is None and 'enableHorizontalPodAutoscaling' in kwargs:
             enable_horizontal_pod_autoscaling = kwargs['enableHorizontalPodAutoscaling']
-        if 'enableHttpLoadBalancing' in kwargs:
+        if enable_http_load_balancing is None and 'enableHttpLoadBalancing' in kwargs:
             enable_http_load_balancing = kwargs['enableHttpLoadBalancing']
-        if 'enableKubernetesDashboard' in kwargs:
+        if enable_kubernetes_dashboard is None and 'enableKubernetesDashboard' in kwargs:
             enable_kubernetes_dashboard = kwargs['enableKubernetesDashboard']
-        if 'enableLegacyAbac' in kwargs:
+        if enable_legacy_abac is None and 'enableLegacyAbac' in kwargs:
             enable_legacy_abac = kwargs['enableLegacyAbac']
-        if 'enableMasterAuthorizedNetwork' in kwargs:
+        if enable_master_authorized_network is None and 'enableMasterAuthorizedNetwork' in kwargs:
             enable_master_authorized_network = kwargs['enableMasterAuthorizedNetwork']
-        if 'enableNetworkPolicyConfig' in kwargs:
+        if enable_network_policy_config is None and 'enableNetworkPolicyConfig' in kwargs:
             enable_network_policy_config = kwargs['enableNetworkPolicyConfig']
-        if 'enableNodepoolAutoscaling' in kwargs:
+        if enable_nodepool_autoscaling is None and 'enableNodepoolAutoscaling' in kwargs:
             enable_nodepool_autoscaling = kwargs['enableNodepoolAutoscaling']
-        if 'enablePrivateEndpoint' in kwargs:
+        if enable_private_endpoint is None and 'enablePrivateEndpoint' in kwargs:
             enable_private_endpoint = kwargs['enablePrivateEndpoint']
-        if 'enablePrivateNodes' in kwargs:
+        if enable_private_nodes is None and 'enablePrivateNodes' in kwargs:
             enable_private_nodes = kwargs['enablePrivateNodes']
-        if 'enableStackdriverLogging' in kwargs:
+        if enable_stackdriver_logging is None and 'enableStackdriverLogging' in kwargs:
             enable_stackdriver_logging = kwargs['enableStackdriverLogging']
-        if 'enableStackdriverMonitoring' in kwargs:
+        if enable_stackdriver_monitoring is None and 'enableStackdriverMonitoring' in kwargs:
             enable_stackdriver_monitoring = kwargs['enableStackdriverMonitoring']
-        if 'ipPolicyCreateSubnetwork' in kwargs:
+        if ip_policy_create_subnetwork is None and 'ipPolicyCreateSubnetwork' in kwargs:
             ip_policy_create_subnetwork = kwargs['ipPolicyCreateSubnetwork']
-        if 'issueClientCertificate' in kwargs:
+        if issue_client_certificate is None and 'issueClientCertificate' in kwargs:
             issue_client_certificate = kwargs['issueClientCertificate']
-        if 'kubernetesDashboard' in kwargs:
+        if kubernetes_dashboard is None and 'kubernetesDashboard' in kwargs:
             kubernetes_dashboard = kwargs['kubernetesDashboard']
-        if 'localSsdCount' in kwargs:
+        if local_ssd_count is None and 'localSsdCount' in kwargs:
             local_ssd_count = kwargs['localSsdCount']
-        if 'masterAuthorizedNetworkCidrBlocks' in kwargs:
+        if master_authorized_network_cidr_blocks is None and 'masterAuthorizedNetworkCidrBlocks' in kwargs:
             master_authorized_network_cidr_blocks = kwargs['masterAuthorizedNetworkCidrBlocks']
-        if 'maxNodeCount' in kwargs:
+        if max_node_count is None and 'maxNodeCount' in kwargs:
             max_node_count = kwargs['maxNodeCount']
-        if 'minNodeCount' in kwargs:
+        if min_node_count is None and 'minNodeCount' in kwargs:
             min_node_count = kwargs['minNodeCount']
-        if 'nodeCount' in kwargs:
+        if node_count is None and 'nodeCount' in kwargs:
             node_count = kwargs['nodeCount']
-        if 'useIpAliases' in kwargs:
+        if use_ip_aliases is None and 'useIpAliases' in kwargs:
             use_ip_aliases = kwargs['useIpAliases']
 
         _setter("cluster_ipv4_cidr", cluster_ipv4_cidr)
@@ -42830,59 +43642,103 @@ class GetClusterGkeConfigV2Result(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_addons: 'outputs.GetClusterGkeConfigV2ClusterAddonsResult',
-             cluster_ipv4_cidr_block: str,
-             description: str,
-             enable_kubernetes_alpha: bool,
-             google_credential_secret: str,
-             ip_allocation_policy: 'outputs.GetClusterGkeConfigV2IpAllocationPolicyResult',
-             kubernetes_version: str,
-             labels: Mapping[str, Any],
-             locations: Sequence[str],
-             logging_service: str,
-             maintenance_window: str,
-             master_authorized_networks_config: 'outputs.GetClusterGkeConfigV2MasterAuthorizedNetworksConfigResult',
-             monitoring_service: str,
-             name: str,
-             network: str,
-             network_policy_enabled: bool,
-             node_pools: Sequence['outputs.GetClusterGkeConfigV2NodePoolResult'],
-             private_cluster_config: 'outputs.GetClusterGkeConfigV2PrivateClusterConfigResult',
-             project_id: str,
-             region: str,
-             subnetwork: str,
-             zone: str,
+             cluster_addons: Optional['outputs.GetClusterGkeConfigV2ClusterAddonsResult'] = None,
+             cluster_ipv4_cidr_block: Optional[str] = None,
+             description: Optional[str] = None,
+             enable_kubernetes_alpha: Optional[bool] = None,
+             google_credential_secret: Optional[str] = None,
+             ip_allocation_policy: Optional['outputs.GetClusterGkeConfigV2IpAllocationPolicyResult'] = None,
+             kubernetes_version: Optional[str] = None,
+             labels: Optional[Mapping[str, Any]] = None,
+             locations: Optional[Sequence[str]] = None,
+             logging_service: Optional[str] = None,
+             maintenance_window: Optional[str] = None,
+             master_authorized_networks_config: Optional['outputs.GetClusterGkeConfigV2MasterAuthorizedNetworksConfigResult'] = None,
+             monitoring_service: Optional[str] = None,
+             name: Optional[str] = None,
+             network: Optional[str] = None,
+             network_policy_enabled: Optional[bool] = None,
+             node_pools: Optional[Sequence['outputs.GetClusterGkeConfigV2NodePoolResult']] = None,
+             private_cluster_config: Optional['outputs.GetClusterGkeConfigV2PrivateClusterConfigResult'] = None,
+             project_id: Optional[str] = None,
+             region: Optional[str] = None,
+             subnetwork: Optional[str] = None,
+             zone: Optional[str] = None,
              imported: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterAddons' in kwargs:
+        if cluster_addons is None and 'clusterAddons' in kwargs:
             cluster_addons = kwargs['clusterAddons']
-        if 'clusterIpv4CidrBlock' in kwargs:
+        if cluster_addons is None:
+            raise TypeError("Missing 'cluster_addons' argument")
+        if cluster_ipv4_cidr_block is None and 'clusterIpv4CidrBlock' in kwargs:
             cluster_ipv4_cidr_block = kwargs['clusterIpv4CidrBlock']
-        if 'enableKubernetesAlpha' in kwargs:
+        if cluster_ipv4_cidr_block is None:
+            raise TypeError("Missing 'cluster_ipv4_cidr_block' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if enable_kubernetes_alpha is None and 'enableKubernetesAlpha' in kwargs:
             enable_kubernetes_alpha = kwargs['enableKubernetesAlpha']
-        if 'googleCredentialSecret' in kwargs:
+        if enable_kubernetes_alpha is None:
+            raise TypeError("Missing 'enable_kubernetes_alpha' argument")
+        if google_credential_secret is None and 'googleCredentialSecret' in kwargs:
             google_credential_secret = kwargs['googleCredentialSecret']
-        if 'ipAllocationPolicy' in kwargs:
+        if google_credential_secret is None:
+            raise TypeError("Missing 'google_credential_secret' argument")
+        if ip_allocation_policy is None and 'ipAllocationPolicy' in kwargs:
             ip_allocation_policy = kwargs['ipAllocationPolicy']
-        if 'kubernetesVersion' in kwargs:
+        if ip_allocation_policy is None:
+            raise TypeError("Missing 'ip_allocation_policy' argument")
+        if kubernetes_version is None and 'kubernetesVersion' in kwargs:
             kubernetes_version = kwargs['kubernetesVersion']
-        if 'loggingService' in kwargs:
+        if kubernetes_version is None:
+            raise TypeError("Missing 'kubernetes_version' argument")
+        if labels is None:
+            raise TypeError("Missing 'labels' argument")
+        if locations is None:
+            raise TypeError("Missing 'locations' argument")
+        if logging_service is None and 'loggingService' in kwargs:
             logging_service = kwargs['loggingService']
-        if 'maintenanceWindow' in kwargs:
+        if logging_service is None:
+            raise TypeError("Missing 'logging_service' argument")
+        if maintenance_window is None and 'maintenanceWindow' in kwargs:
             maintenance_window = kwargs['maintenanceWindow']
-        if 'masterAuthorizedNetworksConfig' in kwargs:
+        if maintenance_window is None:
+            raise TypeError("Missing 'maintenance_window' argument")
+        if master_authorized_networks_config is None and 'masterAuthorizedNetworksConfig' in kwargs:
             master_authorized_networks_config = kwargs['masterAuthorizedNetworksConfig']
-        if 'monitoringService' in kwargs:
+        if master_authorized_networks_config is None:
+            raise TypeError("Missing 'master_authorized_networks_config' argument")
+        if monitoring_service is None and 'monitoringService' in kwargs:
             monitoring_service = kwargs['monitoringService']
-        if 'networkPolicyEnabled' in kwargs:
+        if monitoring_service is None:
+            raise TypeError("Missing 'monitoring_service' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+        if network_policy_enabled is None and 'networkPolicyEnabled' in kwargs:
             network_policy_enabled = kwargs['networkPolicyEnabled']
-        if 'nodePools' in kwargs:
+        if network_policy_enabled is None:
+            raise TypeError("Missing 'network_policy_enabled' argument")
+        if node_pools is None and 'nodePools' in kwargs:
             node_pools = kwargs['nodePools']
-        if 'privateClusterConfig' in kwargs:
+        if node_pools is None:
+            raise TypeError("Missing 'node_pools' argument")
+        if private_cluster_config is None and 'privateClusterConfig' in kwargs:
             private_cluster_config = kwargs['privateClusterConfig']
-        if 'projectId' in kwargs:
+        if private_cluster_config is None:
+            raise TypeError("Missing 'private_cluster_config' argument")
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if subnetwork is None:
+            raise TypeError("Missing 'subnetwork' argument")
+        if zone is None:
+            raise TypeError("Missing 'zone' argument")
 
         _setter("cluster_addons", cluster_addons)
         _setter("cluster_ipv4_cidr_block", cluster_ipv4_cidr_block)
@@ -43049,17 +43905,23 @@ class GetClusterGkeConfigV2ClusterAddonsResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             horizontal_pod_autoscaling: bool,
-             http_load_balancing: bool,
-             network_policy_config: bool,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             horizontal_pod_autoscaling: Optional[bool] = None,
+             http_load_balancing: Optional[bool] = None,
+             network_policy_config: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'horizontalPodAutoscaling' in kwargs:
+        if horizontal_pod_autoscaling is None and 'horizontalPodAutoscaling' in kwargs:
             horizontal_pod_autoscaling = kwargs['horizontalPodAutoscaling']
-        if 'httpLoadBalancing' in kwargs:
+        if horizontal_pod_autoscaling is None:
+            raise TypeError("Missing 'horizontal_pod_autoscaling' argument")
+        if http_load_balancing is None and 'httpLoadBalancing' in kwargs:
             http_load_balancing = kwargs['httpLoadBalancing']
-        if 'networkPolicyConfig' in kwargs:
+        if http_load_balancing is None:
+            raise TypeError("Missing 'http_load_balancing' argument")
+        if network_policy_config is None and 'networkPolicyConfig' in kwargs:
             network_policy_config = kwargs['networkPolicyConfig']
+        if network_policy_config is None:
+            raise TypeError("Missing 'network_policy_config' argument")
 
         _setter("horizontal_pod_autoscaling", horizontal_pod_autoscaling)
         _setter("http_load_balancing", http_load_balancing)
@@ -43106,32 +43968,48 @@ class GetClusterGkeConfigV2IpAllocationPolicyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_ipv4_cidr_block: str,
-             cluster_secondary_range_name: str,
-             create_subnetwork: bool,
-             node_ipv4_cidr_block: str,
-             services_ipv4_cidr_block: str,
-             services_secondary_range_name: str,
-             subnetwork_name: str,
-             use_ip_aliases: bool,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cluster_ipv4_cidr_block: Optional[str] = None,
+             cluster_secondary_range_name: Optional[str] = None,
+             create_subnetwork: Optional[bool] = None,
+             node_ipv4_cidr_block: Optional[str] = None,
+             services_ipv4_cidr_block: Optional[str] = None,
+             services_secondary_range_name: Optional[str] = None,
+             subnetwork_name: Optional[str] = None,
+             use_ip_aliases: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterIpv4CidrBlock' in kwargs:
+        if cluster_ipv4_cidr_block is None and 'clusterIpv4CidrBlock' in kwargs:
             cluster_ipv4_cidr_block = kwargs['clusterIpv4CidrBlock']
-        if 'clusterSecondaryRangeName' in kwargs:
+        if cluster_ipv4_cidr_block is None:
+            raise TypeError("Missing 'cluster_ipv4_cidr_block' argument")
+        if cluster_secondary_range_name is None and 'clusterSecondaryRangeName' in kwargs:
             cluster_secondary_range_name = kwargs['clusterSecondaryRangeName']
-        if 'createSubnetwork' in kwargs:
+        if cluster_secondary_range_name is None:
+            raise TypeError("Missing 'cluster_secondary_range_name' argument")
+        if create_subnetwork is None and 'createSubnetwork' in kwargs:
             create_subnetwork = kwargs['createSubnetwork']
-        if 'nodeIpv4CidrBlock' in kwargs:
+        if create_subnetwork is None:
+            raise TypeError("Missing 'create_subnetwork' argument")
+        if node_ipv4_cidr_block is None and 'nodeIpv4CidrBlock' in kwargs:
             node_ipv4_cidr_block = kwargs['nodeIpv4CidrBlock']
-        if 'servicesIpv4CidrBlock' in kwargs:
+        if node_ipv4_cidr_block is None:
+            raise TypeError("Missing 'node_ipv4_cidr_block' argument")
+        if services_ipv4_cidr_block is None and 'servicesIpv4CidrBlock' in kwargs:
             services_ipv4_cidr_block = kwargs['servicesIpv4CidrBlock']
-        if 'servicesSecondaryRangeName' in kwargs:
+        if services_ipv4_cidr_block is None:
+            raise TypeError("Missing 'services_ipv4_cidr_block' argument")
+        if services_secondary_range_name is None and 'servicesSecondaryRangeName' in kwargs:
             services_secondary_range_name = kwargs['servicesSecondaryRangeName']
-        if 'subnetworkName' in kwargs:
+        if services_secondary_range_name is None:
+            raise TypeError("Missing 'services_secondary_range_name' argument")
+        if subnetwork_name is None and 'subnetworkName' in kwargs:
             subnetwork_name = kwargs['subnetworkName']
-        if 'useIpAliases' in kwargs:
+        if subnetwork_name is None:
+            raise TypeError("Missing 'subnetwork_name' argument")
+        if use_ip_aliases is None and 'useIpAliases' in kwargs:
             use_ip_aliases = kwargs['useIpAliases']
+        if use_ip_aliases is None:
+            raise TypeError("Missing 'use_ip_aliases' argument")
 
         _setter("cluster_ipv4_cidr_block", cluster_ipv4_cidr_block)
         _setter("cluster_secondary_range_name", cluster_secondary_range_name)
@@ -43196,12 +44074,14 @@ class GetClusterGkeConfigV2MasterAuthorizedNetworksConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cidr_blocks: Sequence['outputs.GetClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlockResult'],
+             cidr_blocks: Optional[Sequence['outputs.GetClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlockResult']] = None,
              enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cidrBlocks' in kwargs:
+        if cidr_blocks is None and 'cidrBlocks' in kwargs:
             cidr_blocks = kwargs['cidrBlocks']
+        if cidr_blocks is None:
+            raise TypeError("Missing 'cidr_blocks' argument")
 
         _setter("cidr_blocks", cidr_blocks)
         if enabled is not None:
@@ -43231,13 +44111,15 @@ class GetClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlockResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cidr_block: str,
+             cidr_block: Optional[str] = None,
              display_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cidrBlock' in kwargs:
+        if cidr_block is None and 'cidrBlock' in kwargs:
             cidr_block = kwargs['cidrBlock']
-        if 'displayName' in kwargs:
+        if cidr_block is None:
+            raise TypeError("Missing 'cidr_block' argument")
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
 
         _setter("cidr_block", cidr_block)
@@ -43281,19 +44163,33 @@ class GetClusterGkeConfigV2NodePoolResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             autoscaling: 'outputs.GetClusterGkeConfigV2NodePoolAutoscalingResult',
-             config: 'outputs.GetClusterGkeConfigV2NodePoolConfigResult',
-             initial_node_count: int,
-             management: 'outputs.GetClusterGkeConfigV2NodePoolManagementResult',
-             max_pods_constraint: int,
-             name: str,
-             version: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             autoscaling: Optional['outputs.GetClusterGkeConfigV2NodePoolAutoscalingResult'] = None,
+             config: Optional['outputs.GetClusterGkeConfigV2NodePoolConfigResult'] = None,
+             initial_node_count: Optional[int] = None,
+             management: Optional['outputs.GetClusterGkeConfigV2NodePoolManagementResult'] = None,
+             max_pods_constraint: Optional[int] = None,
+             name: Optional[str] = None,
+             version: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'initialNodeCount' in kwargs:
+        if autoscaling is None:
+            raise TypeError("Missing 'autoscaling' argument")
+        if config is None:
+            raise TypeError("Missing 'config' argument")
+        if initial_node_count is None and 'initialNodeCount' in kwargs:
             initial_node_count = kwargs['initialNodeCount']
-        if 'maxPodsConstraint' in kwargs:
+        if initial_node_count is None:
+            raise TypeError("Missing 'initial_node_count' argument")
+        if management is None:
+            raise TypeError("Missing 'management' argument")
+        if max_pods_constraint is None and 'maxPodsConstraint' in kwargs:
             max_pods_constraint = kwargs['maxPodsConstraint']
+        if max_pods_constraint is None:
+            raise TypeError("Missing 'max_pods_constraint' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
 
         _setter("autoscaling", autoscaling)
         _setter("config", config)
@@ -43357,15 +44253,19 @@ class GetClusterGkeConfigV2NodePoolAutoscalingResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             max_node_count: int,
-             min_node_count: int,
+             max_node_count: Optional[int] = None,
+             min_node_count: Optional[int] = None,
              enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'maxNodeCount' in kwargs:
+        if max_node_count is None and 'maxNodeCount' in kwargs:
             max_node_count = kwargs['maxNodeCount']
-        if 'minNodeCount' in kwargs:
+        if max_node_count is None:
+            raise TypeError("Missing 'max_node_count' argument")
+        if min_node_count is None and 'minNodeCount' in kwargs:
             min_node_count = kwargs['minNodeCount']
+        if min_node_count is None:
+            raise TypeError("Missing 'min_node_count' argument")
 
         _setter("max_node_count", max_node_count)
         _setter("min_node_count", min_node_count)
@@ -43420,9 +44320,9 @@ class GetClusterGkeConfigV2NodePoolConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             labels: Mapping[str, Any],
-             oauth_scopes: Sequence[str],
-             tags: Sequence[str],
+             labels: Optional[Mapping[str, Any]] = None,
+             oauth_scopes: Optional[Sequence[str]] = None,
+             tags: Optional[Sequence[str]] = None,
              disk_size_gb: Optional[int] = None,
              disk_type: Optional[str] = None,
              image_type: Optional[str] = None,
@@ -43430,19 +44330,25 @@ class GetClusterGkeConfigV2NodePoolConfigResult(dict):
              machine_type: Optional[str] = None,
              preemptible: Optional[bool] = None,
              taints: Optional[Sequence['outputs.GetClusterGkeConfigV2NodePoolConfigTaintResult']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'oauthScopes' in kwargs:
+        if labels is None:
+            raise TypeError("Missing 'labels' argument")
+        if oauth_scopes is None and 'oauthScopes' in kwargs:
             oauth_scopes = kwargs['oauthScopes']
-        if 'diskSizeGb' in kwargs:
+        if oauth_scopes is None:
+            raise TypeError("Missing 'oauth_scopes' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if disk_size_gb is None and 'diskSizeGb' in kwargs:
             disk_size_gb = kwargs['diskSizeGb']
-        if 'diskType' in kwargs:
+        if disk_type is None and 'diskType' in kwargs:
             disk_type = kwargs['diskType']
-        if 'imageType' in kwargs:
+        if image_type is None and 'imageType' in kwargs:
             image_type = kwargs['imageType']
-        if 'localSsdCount' in kwargs:
+        if local_ssd_count is None and 'localSsdCount' in kwargs:
             local_ssd_count = kwargs['localSsdCount']
-        if 'machineType' in kwargs:
+        if machine_type is None and 'machineType' in kwargs:
             machine_type = kwargs['machineType']
 
         _setter("labels", labels)
@@ -43532,11 +44438,17 @@ class GetClusterGkeConfigV2NodePoolConfigTaintResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             effect: str,
-             key: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             effect: Optional[str] = None,
+             key: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if effect is None:
+            raise TypeError("Missing 'effect' argument")
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("effect", effect)
         _setter("key", key)
@@ -43571,14 +44483,18 @@ class GetClusterGkeConfigV2NodePoolManagementResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             auto_repair: bool,
-             auto_upgrade: bool,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             auto_repair: Optional[bool] = None,
+             auto_upgrade: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoRepair' in kwargs:
+        if auto_repair is None and 'autoRepair' in kwargs:
             auto_repair = kwargs['autoRepair']
-        if 'autoUpgrade' in kwargs:
+        if auto_repair is None:
+            raise TypeError("Missing 'auto_repair' argument")
+        if auto_upgrade is None and 'autoUpgrade' in kwargs:
             auto_upgrade = kwargs['autoUpgrade']
+        if auto_upgrade is None:
+            raise TypeError("Missing 'auto_upgrade' argument")
 
         _setter("auto_repair", auto_repair)
         _setter("auto_upgrade", auto_upgrade)
@@ -43609,16 +44525,18 @@ class GetClusterGkeConfigV2PrivateClusterConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             master_ipv4_cidr_block: str,
+             master_ipv4_cidr_block: Optional[str] = None,
              enable_private_endpoint: Optional[bool] = None,
              enable_private_nodes: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'masterIpv4CidrBlock' in kwargs:
+        if master_ipv4_cidr_block is None and 'masterIpv4CidrBlock' in kwargs:
             master_ipv4_cidr_block = kwargs['masterIpv4CidrBlock']
-        if 'enablePrivateEndpoint' in kwargs:
+        if master_ipv4_cidr_block is None:
+            raise TypeError("Missing 'master_ipv4_cidr_block' argument")
+        if enable_private_endpoint is None and 'enablePrivateEndpoint' in kwargs:
             enable_private_endpoint = kwargs['enablePrivateEndpoint']
-        if 'enablePrivateNodes' in kwargs:
+        if enable_private_nodes is None and 'enablePrivateNodes' in kwargs:
             enable_private_nodes = kwargs['enablePrivateNodes']
 
         _setter("master_ipv4_cidr_block", master_ipv4_cidr_block)
@@ -43656,12 +44574,16 @@ class GetClusterK3sConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             upgrade_strategy: 'outputs.GetClusterK3sConfigUpgradeStrategyResult',
-             version: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             upgrade_strategy: Optional['outputs.GetClusterK3sConfigUpgradeStrategyResult'] = None,
+             version: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'upgradeStrategy' in kwargs:
+        if upgrade_strategy is None and 'upgradeStrategy' in kwargs:
             upgrade_strategy = kwargs['upgradeStrategy']
+        if upgrade_strategy is None:
+            raise TypeError("Missing 'upgrade_strategy' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
 
         _setter("upgrade_strategy", upgrade_strategy)
         _setter("version", version)
@@ -43698,15 +44620,15 @@ class GetClusterK3sConfigUpgradeStrategyResult(dict):
              drain_worker_nodes: Optional[bool] = None,
              server_concurrency: Optional[int] = None,
              worker_concurrency: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'drainServerNodes' in kwargs:
+        if drain_server_nodes is None and 'drainServerNodes' in kwargs:
             drain_server_nodes = kwargs['drainServerNodes']
-        if 'drainWorkerNodes' in kwargs:
+        if drain_worker_nodes is None and 'drainWorkerNodes' in kwargs:
             drain_worker_nodes = kwargs['drainWorkerNodes']
-        if 'serverConcurrency' in kwargs:
+        if server_concurrency is None and 'serverConcurrency' in kwargs:
             server_concurrency = kwargs['serverConcurrency']
-        if 'workerConcurrency' in kwargs:
+        if worker_concurrency is None and 'workerConcurrency' in kwargs:
             worker_concurrency = kwargs['workerConcurrency']
 
         if drain_server_nodes is not None:
@@ -43815,15 +44737,15 @@ class GetClusterOkeConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             compartment_id: str,
-             fingerprint: str,
-             kubernetes_version: str,
-             node_image: str,
-             node_shape: str,
-             private_key_contents: str,
-             region: str,
-             tenancy_id: str,
-             user_ocid: str,
+             compartment_id: Optional[str] = None,
+             fingerprint: Optional[str] = None,
+             kubernetes_version: Optional[str] = None,
+             node_image: Optional[str] = None,
+             node_shape: Optional[str] = None,
+             private_key_contents: Optional[str] = None,
+             region: Optional[str] = None,
+             tenancy_id: Optional[str] = None,
+             user_ocid: Optional[str] = None,
              custom_boot_volume_size: Optional[int] = None,
              description: Optional[str] = None,
              enable_kubernetes_dashboard: Optional[bool] = None,
@@ -43847,65 +44769,83 @@ class GetClusterOkeConfigResult(dict):
              vcn_compartment_id: Optional[str] = None,
              vcn_name: Optional[str] = None,
              worker_node_ingress_cidr: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'compartmentId' in kwargs:
+        if compartment_id is None and 'compartmentId' in kwargs:
             compartment_id = kwargs['compartmentId']
-        if 'kubernetesVersion' in kwargs:
+        if compartment_id is None:
+            raise TypeError("Missing 'compartment_id' argument")
+        if fingerprint is None:
+            raise TypeError("Missing 'fingerprint' argument")
+        if kubernetes_version is None and 'kubernetesVersion' in kwargs:
             kubernetes_version = kwargs['kubernetesVersion']
-        if 'nodeImage' in kwargs:
+        if kubernetes_version is None:
+            raise TypeError("Missing 'kubernetes_version' argument")
+        if node_image is None and 'nodeImage' in kwargs:
             node_image = kwargs['nodeImage']
-        if 'nodeShape' in kwargs:
+        if node_image is None:
+            raise TypeError("Missing 'node_image' argument")
+        if node_shape is None and 'nodeShape' in kwargs:
             node_shape = kwargs['nodeShape']
-        if 'privateKeyContents' in kwargs:
+        if node_shape is None:
+            raise TypeError("Missing 'node_shape' argument")
+        if private_key_contents is None and 'privateKeyContents' in kwargs:
             private_key_contents = kwargs['privateKeyContents']
-        if 'tenancyId' in kwargs:
+        if private_key_contents is None:
+            raise TypeError("Missing 'private_key_contents' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if tenancy_id is None and 'tenancyId' in kwargs:
             tenancy_id = kwargs['tenancyId']
-        if 'userOcid' in kwargs:
+        if tenancy_id is None:
+            raise TypeError("Missing 'tenancy_id' argument")
+        if user_ocid is None and 'userOcid' in kwargs:
             user_ocid = kwargs['userOcid']
-        if 'customBootVolumeSize' in kwargs:
+        if user_ocid is None:
+            raise TypeError("Missing 'user_ocid' argument")
+        if custom_boot_volume_size is None and 'customBootVolumeSize' in kwargs:
             custom_boot_volume_size = kwargs['customBootVolumeSize']
-        if 'enableKubernetesDashboard' in kwargs:
+        if enable_kubernetes_dashboard is None and 'enableKubernetesDashboard' in kwargs:
             enable_kubernetes_dashboard = kwargs['enableKubernetesDashboard']
-        if 'enablePrivateControlPlane' in kwargs:
+        if enable_private_control_plane is None and 'enablePrivateControlPlane' in kwargs:
             enable_private_control_plane = kwargs['enablePrivateControlPlane']
-        if 'enablePrivateNodes' in kwargs:
+        if enable_private_nodes is None and 'enablePrivateNodes' in kwargs:
             enable_private_nodes = kwargs['enablePrivateNodes']
-        if 'flexOcpus' in kwargs:
+        if flex_ocpus is None and 'flexOcpus' in kwargs:
             flex_ocpus = kwargs['flexOcpus']
-        if 'kmsKeyId' in kwargs:
+        if kms_key_id is None and 'kmsKeyId' in kwargs:
             kms_key_id = kwargs['kmsKeyId']
-        if 'limitNodeCount' in kwargs:
+        if limit_node_count is None and 'limitNodeCount' in kwargs:
             limit_node_count = kwargs['limitNodeCount']
-        if 'loadBalancerSubnetName1' in kwargs:
+        if load_balancer_subnet_name1 is None and 'loadBalancerSubnetName1' in kwargs:
             load_balancer_subnet_name1 = kwargs['loadBalancerSubnetName1']
-        if 'loadBalancerSubnetName2' in kwargs:
+        if load_balancer_subnet_name2 is None and 'loadBalancerSubnetName2' in kwargs:
             load_balancer_subnet_name2 = kwargs['loadBalancerSubnetName2']
-        if 'nodePoolDnsDomainName' in kwargs:
+        if node_pool_dns_domain_name is None and 'nodePoolDnsDomainName' in kwargs:
             node_pool_dns_domain_name = kwargs['nodePoolDnsDomainName']
-        if 'nodePoolSubnetName' in kwargs:
+        if node_pool_subnet_name is None and 'nodePoolSubnetName' in kwargs:
             node_pool_subnet_name = kwargs['nodePoolSubnetName']
-        if 'nodePublicKeyContents' in kwargs:
+        if node_public_key_contents is None and 'nodePublicKeyContents' in kwargs:
             node_public_key_contents = kwargs['nodePublicKeyContents']
-        if 'podCidr' in kwargs:
+        if pod_cidr is None and 'podCidr' in kwargs:
             pod_cidr = kwargs['podCidr']
-        if 'privateKeyPassphrase' in kwargs:
+        if private_key_passphrase is None and 'privateKeyPassphrase' in kwargs:
             private_key_passphrase = kwargs['privateKeyPassphrase']
-        if 'quantityOfNodeSubnets' in kwargs:
+        if quantity_of_node_subnets is None and 'quantityOfNodeSubnets' in kwargs:
             quantity_of_node_subnets = kwargs['quantityOfNodeSubnets']
-        if 'quantityPerSubnet' in kwargs:
+        if quantity_per_subnet is None and 'quantityPerSubnet' in kwargs:
             quantity_per_subnet = kwargs['quantityPerSubnet']
-        if 'serviceCidr' in kwargs:
+        if service_cidr is None and 'serviceCidr' in kwargs:
             service_cidr = kwargs['serviceCidr']
-        if 'serviceDnsDomainName' in kwargs:
+        if service_dns_domain_name is None and 'serviceDnsDomainName' in kwargs:
             service_dns_domain_name = kwargs['serviceDnsDomainName']
-        if 'skipVcnDelete' in kwargs:
+        if skip_vcn_delete is None and 'skipVcnDelete' in kwargs:
             skip_vcn_delete = kwargs['skipVcnDelete']
-        if 'vcnCompartmentId' in kwargs:
+        if vcn_compartment_id is None and 'vcnCompartmentId' in kwargs:
             vcn_compartment_id = kwargs['vcnCompartmentId']
-        if 'vcnName' in kwargs:
+        if vcn_name is None and 'vcnName' in kwargs:
             vcn_name = kwargs['vcnName']
-        if 'workerNodeIngressCidr' in kwargs:
+        if worker_node_ingress_cidr is None and 'workerNodeIngressCidr' in kwargs:
             worker_node_ingress_cidr = kwargs['workerNodeIngressCidr']
 
         _setter("compartment_id", compartment_id)
@@ -44141,12 +45081,16 @@ class GetClusterRke2ConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             upgrade_strategy: 'outputs.GetClusterRke2ConfigUpgradeStrategyResult',
-             version: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             upgrade_strategy: Optional['outputs.GetClusterRke2ConfigUpgradeStrategyResult'] = None,
+             version: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'upgradeStrategy' in kwargs:
+        if upgrade_strategy is None and 'upgradeStrategy' in kwargs:
             upgrade_strategy = kwargs['upgradeStrategy']
+        if upgrade_strategy is None:
+            raise TypeError("Missing 'upgrade_strategy' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
 
         _setter("upgrade_strategy", upgrade_strategy)
         _setter("version", version)
@@ -44183,15 +45127,15 @@ class GetClusterRke2ConfigUpgradeStrategyResult(dict):
              drain_worker_nodes: Optional[bool] = None,
              server_concurrency: Optional[int] = None,
              worker_concurrency: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'drainServerNodes' in kwargs:
+        if drain_server_nodes is None and 'drainServerNodes' in kwargs:
             drain_server_nodes = kwargs['drainServerNodes']
-        if 'drainWorkerNodes' in kwargs:
+        if drain_worker_nodes is None and 'drainWorkerNodes' in kwargs:
             drain_worker_nodes = kwargs['drainWorkerNodes']
-        if 'serverConcurrency' in kwargs:
+        if server_concurrency is None and 'serverConcurrency' in kwargs:
             server_concurrency = kwargs['serverConcurrency']
-        if 'workerConcurrency' in kwargs:
+        if worker_concurrency is None and 'workerConcurrency' in kwargs:
             worker_concurrency = kwargs['workerConcurrency']
 
         if drain_server_nodes is not None:
@@ -44279,22 +45223,22 @@ class GetClusterRkeConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             addon_job_timeout: int,
-             authentication: 'outputs.GetClusterRkeConfigAuthenticationResult',
-             authorization: 'outputs.GetClusterRkeConfigAuthorizationResult',
-             bastion_host: 'outputs.GetClusterRkeConfigBastionHostResult',
-             cloud_provider: 'outputs.GetClusterRkeConfigCloudProviderResult',
-             dns: 'outputs.GetClusterRkeConfigDnsResult',
-             ingress: 'outputs.GetClusterRkeConfigIngressResult',
-             kubernetes_version: str,
-             monitoring: 'outputs.GetClusterRkeConfigMonitoringResult',
-             network: 'outputs.GetClusterRkeConfigNetworkResult',
-             prefix_path: str,
-             services: 'outputs.GetClusterRkeConfigServicesResult',
-             ssh_cert_path: str,
-             ssh_key_path: str,
-             upgrade_strategy: 'outputs.GetClusterRkeConfigUpgradeStrategyResult',
-             win_prefix_path: str,
+             addon_job_timeout: Optional[int] = None,
+             authentication: Optional['outputs.GetClusterRkeConfigAuthenticationResult'] = None,
+             authorization: Optional['outputs.GetClusterRkeConfigAuthorizationResult'] = None,
+             bastion_host: Optional['outputs.GetClusterRkeConfigBastionHostResult'] = None,
+             cloud_provider: Optional['outputs.GetClusterRkeConfigCloudProviderResult'] = None,
+             dns: Optional['outputs.GetClusterRkeConfigDnsResult'] = None,
+             ingress: Optional['outputs.GetClusterRkeConfigIngressResult'] = None,
+             kubernetes_version: Optional[str] = None,
+             monitoring: Optional['outputs.GetClusterRkeConfigMonitoringResult'] = None,
+             network: Optional['outputs.GetClusterRkeConfigNetworkResult'] = None,
+             prefix_path: Optional[str] = None,
+             services: Optional['outputs.GetClusterRkeConfigServicesResult'] = None,
+             ssh_cert_path: Optional[str] = None,
+             ssh_key_path: Optional[str] = None,
+             upgrade_strategy: Optional['outputs.GetClusterRkeConfigUpgradeStrategyResult'] = None,
+             win_prefix_path: Optional[str] = None,
              addons: Optional[str] = None,
              addons_includes: Optional[Sequence[str]] = None,
              enable_cri_dockerd: Optional[bool] = None,
@@ -44302,35 +45246,67 @@ class GetClusterRkeConfigResult(dict):
              nodes: Optional[Sequence['outputs.GetClusterRkeConfigNodeResult']] = None,
              private_registries: Optional[Sequence['outputs.GetClusterRkeConfigPrivateRegistryResult']] = None,
              ssh_agent_auth: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'addonJobTimeout' in kwargs:
+        if addon_job_timeout is None and 'addonJobTimeout' in kwargs:
             addon_job_timeout = kwargs['addonJobTimeout']
-        if 'bastionHost' in kwargs:
+        if addon_job_timeout is None:
+            raise TypeError("Missing 'addon_job_timeout' argument")
+        if authentication is None:
+            raise TypeError("Missing 'authentication' argument")
+        if authorization is None:
+            raise TypeError("Missing 'authorization' argument")
+        if bastion_host is None and 'bastionHost' in kwargs:
             bastion_host = kwargs['bastionHost']
-        if 'cloudProvider' in kwargs:
+        if bastion_host is None:
+            raise TypeError("Missing 'bastion_host' argument")
+        if cloud_provider is None and 'cloudProvider' in kwargs:
             cloud_provider = kwargs['cloudProvider']
-        if 'kubernetesVersion' in kwargs:
+        if cloud_provider is None:
+            raise TypeError("Missing 'cloud_provider' argument")
+        if dns is None:
+            raise TypeError("Missing 'dns' argument")
+        if ingress is None:
+            raise TypeError("Missing 'ingress' argument")
+        if kubernetes_version is None and 'kubernetesVersion' in kwargs:
             kubernetes_version = kwargs['kubernetesVersion']
-        if 'prefixPath' in kwargs:
+        if kubernetes_version is None:
+            raise TypeError("Missing 'kubernetes_version' argument")
+        if monitoring is None:
+            raise TypeError("Missing 'monitoring' argument")
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+        if prefix_path is None and 'prefixPath' in kwargs:
             prefix_path = kwargs['prefixPath']
-        if 'sshCertPath' in kwargs:
+        if prefix_path is None:
+            raise TypeError("Missing 'prefix_path' argument")
+        if services is None:
+            raise TypeError("Missing 'services' argument")
+        if ssh_cert_path is None and 'sshCertPath' in kwargs:
             ssh_cert_path = kwargs['sshCertPath']
-        if 'sshKeyPath' in kwargs:
+        if ssh_cert_path is None:
+            raise TypeError("Missing 'ssh_cert_path' argument")
+        if ssh_key_path is None and 'sshKeyPath' in kwargs:
             ssh_key_path = kwargs['sshKeyPath']
-        if 'upgradeStrategy' in kwargs:
+        if ssh_key_path is None:
+            raise TypeError("Missing 'ssh_key_path' argument")
+        if upgrade_strategy is None and 'upgradeStrategy' in kwargs:
             upgrade_strategy = kwargs['upgradeStrategy']
-        if 'winPrefixPath' in kwargs:
+        if upgrade_strategy is None:
+            raise TypeError("Missing 'upgrade_strategy' argument")
+        if win_prefix_path is None and 'winPrefixPath' in kwargs:
             win_prefix_path = kwargs['winPrefixPath']
-        if 'addonsIncludes' in kwargs:
+        if win_prefix_path is None:
+            raise TypeError("Missing 'win_prefix_path' argument")
+        if addons_includes is None and 'addonsIncludes' in kwargs:
             addons_includes = kwargs['addonsIncludes']
-        if 'enableCriDockerd' in kwargs:
+        if enable_cri_dockerd is None and 'enableCriDockerd' in kwargs:
             enable_cri_dockerd = kwargs['enableCriDockerd']
-        if 'ignoreDockerVersion' in kwargs:
+        if ignore_docker_version is None and 'ignoreDockerVersion' in kwargs:
             ignore_docker_version = kwargs['ignoreDockerVersion']
-        if 'privateRegistries' in kwargs:
+        if private_registries is None and 'privateRegistries' in kwargs:
             private_registries = kwargs['privateRegistries']
-        if 'sshAgentAuth' in kwargs:
+        if ssh_agent_auth is None and 'sshAgentAuth' in kwargs:
             ssh_agent_auth = kwargs['sshAgentAuth']
 
         _setter("addon_job_timeout", addon_job_timeout)
@@ -44493,10 +45469,14 @@ class GetClusterRkeConfigAuthenticationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             sans: Sequence[str],
-             strategy: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             sans: Optional[Sequence[str]] = None,
+             strategy: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if sans is None:
+            raise TypeError("Missing 'sans' argument")
+        if strategy is None:
+            raise TypeError("Missing 'strategy' argument")
 
         _setter("sans", sans)
         _setter("strategy", strategy)
@@ -44525,10 +45505,12 @@ class GetClusterRkeConfigAuthorizationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             options: Mapping[str, Any],
+             options: Optional[Mapping[str, Any]] = None,
              mode: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if options is None:
+            raise TypeError("Missing 'options' argument")
 
         _setter("options", options)
         if mode is not None:
@@ -44566,19 +45548,27 @@ class GetClusterRkeConfigBastionHostResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address: str,
-             ssh_key: str,
-             ssh_key_path: str,
-             user: str,
+             address: Optional[str] = None,
+             ssh_key: Optional[str] = None,
+             ssh_key_path: Optional[str] = None,
+             user: Optional[str] = None,
              port: Optional[str] = None,
              ssh_agent_auth: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'sshKey' in kwargs:
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if ssh_key is None and 'sshKey' in kwargs:
             ssh_key = kwargs['sshKey']
-        if 'sshKeyPath' in kwargs:
+        if ssh_key is None:
+            raise TypeError("Missing 'ssh_key' argument")
+        if ssh_key_path is None and 'sshKeyPath' in kwargs:
             ssh_key_path = kwargs['sshKeyPath']
-        if 'sshAgentAuth' in kwargs:
+        if ssh_key_path is None:
+            raise TypeError("Missing 'ssh_key_path' argument")
+        if user is None:
+            raise TypeError("Missing 'user' argument")
+        if ssh_agent_auth is None and 'sshAgentAuth' in kwargs:
             ssh_agent_auth = kwargs['sshAgentAuth']
 
         _setter("address", address)
@@ -44645,23 +45635,25 @@ class GetClusterRkeConfigCloudProviderResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             custom_cloud_provider: str,
+             custom_cloud_provider: Optional[str] = None,
              aws_cloud_provider: Optional['outputs.GetClusterRkeConfigCloudProviderAwsCloudProviderResult'] = None,
              azure_cloud_provider: Optional['outputs.GetClusterRkeConfigCloudProviderAzureCloudProviderResult'] = None,
              name: Optional[str] = None,
              openstack_cloud_provider: Optional['outputs.GetClusterRkeConfigCloudProviderOpenstackCloudProviderResult'] = None,
              vsphere_cloud_provider: Optional['outputs.GetClusterRkeConfigCloudProviderVsphereCloudProviderResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'customCloudProvider' in kwargs:
+        if custom_cloud_provider is None and 'customCloudProvider' in kwargs:
             custom_cloud_provider = kwargs['customCloudProvider']
-        if 'awsCloudProvider' in kwargs:
+        if custom_cloud_provider is None:
+            raise TypeError("Missing 'custom_cloud_provider' argument")
+        if aws_cloud_provider is None and 'awsCloudProvider' in kwargs:
             aws_cloud_provider = kwargs['awsCloudProvider']
-        if 'azureCloudProvider' in kwargs:
+        if azure_cloud_provider is None and 'azureCloudProvider' in kwargs:
             azure_cloud_provider = kwargs['azureCloudProvider']
-        if 'openstackCloudProvider' in kwargs:
+        if openstack_cloud_provider is None and 'openstackCloudProvider' in kwargs:
             openstack_cloud_provider = kwargs['openstackCloudProvider']
-        if 'vsphereCloudProvider' in kwargs:
+        if vsphere_cloud_provider is None and 'vsphereCloudProvider' in kwargs:
             vsphere_cloud_provider = kwargs['vsphereCloudProvider']
 
         _setter("custom_cloud_provider", custom_cloud_provider)
@@ -44723,13 +45715,15 @@ class GetClusterRkeConfigCloudProviderAwsCloudProviderResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             global_: 'outputs.GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalResult',
+             global_: Optional['outputs.GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalResult'] = None,
              service_overrides: Optional[Sequence['outputs.GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideResult']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'global' in kwargs:
+        if global_ is None and 'global' in kwargs:
             global_ = kwargs['global']
-        if 'serviceOverrides' in kwargs:
+        if global_ is None:
+            raise TypeError("Missing 'global_' argument")
+        if service_overrides is None and 'serviceOverrides' in kwargs:
             service_overrides = kwargs['serviceOverrides']
 
         _setter("global_", global_)
@@ -44776,33 +45770,49 @@ class GetClusterRkeConfigCloudProviderAwsCloudProviderGlobalResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             elb_security_group: str,
-             kubernetes_cluster_id: str,
-             kubernetes_cluster_tag: str,
-             role_arn: str,
-             route_table_id: str,
-             subnet_id: str,
-             vpc: str,
-             zone: str,
+             elb_security_group: Optional[str] = None,
+             kubernetes_cluster_id: Optional[str] = None,
+             kubernetes_cluster_tag: Optional[str] = None,
+             role_arn: Optional[str] = None,
+             route_table_id: Optional[str] = None,
+             subnet_id: Optional[str] = None,
+             vpc: Optional[str] = None,
+             zone: Optional[str] = None,
              disable_security_group_ingress: Optional[bool] = None,
              disable_strict_zone_check: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'elbSecurityGroup' in kwargs:
+        if elb_security_group is None and 'elbSecurityGroup' in kwargs:
             elb_security_group = kwargs['elbSecurityGroup']
-        if 'kubernetesClusterId' in kwargs:
+        if elb_security_group is None:
+            raise TypeError("Missing 'elb_security_group' argument")
+        if kubernetes_cluster_id is None and 'kubernetesClusterId' in kwargs:
             kubernetes_cluster_id = kwargs['kubernetesClusterId']
-        if 'kubernetesClusterTag' in kwargs:
+        if kubernetes_cluster_id is None:
+            raise TypeError("Missing 'kubernetes_cluster_id' argument")
+        if kubernetes_cluster_tag is None and 'kubernetesClusterTag' in kwargs:
             kubernetes_cluster_tag = kwargs['kubernetesClusterTag']
-        if 'roleArn' in kwargs:
+        if kubernetes_cluster_tag is None:
+            raise TypeError("Missing 'kubernetes_cluster_tag' argument")
+        if role_arn is None and 'roleArn' in kwargs:
             role_arn = kwargs['roleArn']
-        if 'routeTableId' in kwargs:
+        if role_arn is None:
+            raise TypeError("Missing 'role_arn' argument")
+        if route_table_id is None and 'routeTableId' in kwargs:
             route_table_id = kwargs['routeTableId']
-        if 'subnetId' in kwargs:
+        if route_table_id is None:
+            raise TypeError("Missing 'route_table_id' argument")
+        if subnet_id is None and 'subnetId' in kwargs:
             subnet_id = kwargs['subnetId']
-        if 'disableSecurityGroupIngress' in kwargs:
+        if subnet_id is None:
+            raise TypeError("Missing 'subnet_id' argument")
+        if vpc is None:
+            raise TypeError("Missing 'vpc' argument")
+        if zone is None:
+            raise TypeError("Missing 'zone' argument")
+        if disable_security_group_ingress is None and 'disableSecurityGroupIngress' in kwargs:
             disable_security_group_ingress = kwargs['disableSecurityGroupIngress']
-        if 'disableStrictZoneCheck' in kwargs:
+        if disable_strict_zone_check is None and 'disableStrictZoneCheck' in kwargs:
             disable_strict_zone_check = kwargs['disableStrictZoneCheck']
 
         _setter("elb_security_group", elb_security_group)
@@ -44890,20 +45900,32 @@ class GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideResult(dict
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             region: str,
-             service: str,
-             signing_method: str,
-             signing_name: str,
-             signing_region: str,
-             url: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             region: Optional[str] = None,
+             service: Optional[str] = None,
+             signing_method: Optional[str] = None,
+             signing_name: Optional[str] = None,
+             signing_region: Optional[str] = None,
+             url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'signingMethod' in kwargs:
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+        if signing_method is None and 'signingMethod' in kwargs:
             signing_method = kwargs['signingMethod']
-        if 'signingName' in kwargs:
+        if signing_method is None:
+            raise TypeError("Missing 'signing_method' argument")
+        if signing_name is None and 'signingName' in kwargs:
             signing_name = kwargs['signingName']
-        if 'signingRegion' in kwargs:
+        if signing_name is None:
+            raise TypeError("Missing 'signing_name' argument")
+        if signing_region is None and 'signingRegion' in kwargs:
             signing_region = kwargs['signingRegion']
+        if signing_region is None:
+            raise TypeError("Missing 'signing_region' argument")
+        if url is None:
+            raise TypeError("Missing 'url' argument")
 
         _setter("region", region)
         _setter("service", service)
@@ -45010,90 +46032,146 @@ class GetClusterRkeConfigCloudProviderAzureCloudProviderResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             aad_client_cert_password: str,
-             aad_client_cert_path: str,
-             aad_client_id: str,
-             aad_client_secret: str,
-             cloud: str,
-             cloud_provider_backoff: bool,
-             cloud_provider_backoff_duration: int,
-             cloud_provider_backoff_exponent: int,
-             cloud_provider_backoff_jitter: int,
-             cloud_provider_backoff_retries: int,
-             cloud_provider_rate_limit: bool,
-             cloud_provider_rate_limit_bucket: int,
-             cloud_provider_rate_limit_qps: int,
-             location: str,
-             maximum_load_balancer_rule_count: int,
-             primary_availability_set_name: str,
-             primary_scale_set_name: str,
-             resource_group: str,
-             route_table_name: str,
-             security_group_name: str,
-             subnet_name: str,
-             subscription_id: str,
-             tenant_id: str,
-             use_instance_metadata: bool,
-             use_managed_identity_extension: bool,
-             vm_type: str,
-             vnet_name: str,
-             vnet_resource_group: str,
+             aad_client_cert_password: Optional[str] = None,
+             aad_client_cert_path: Optional[str] = None,
+             aad_client_id: Optional[str] = None,
+             aad_client_secret: Optional[str] = None,
+             cloud: Optional[str] = None,
+             cloud_provider_backoff: Optional[bool] = None,
+             cloud_provider_backoff_duration: Optional[int] = None,
+             cloud_provider_backoff_exponent: Optional[int] = None,
+             cloud_provider_backoff_jitter: Optional[int] = None,
+             cloud_provider_backoff_retries: Optional[int] = None,
+             cloud_provider_rate_limit: Optional[bool] = None,
+             cloud_provider_rate_limit_bucket: Optional[int] = None,
+             cloud_provider_rate_limit_qps: Optional[int] = None,
+             location: Optional[str] = None,
+             maximum_load_balancer_rule_count: Optional[int] = None,
+             primary_availability_set_name: Optional[str] = None,
+             primary_scale_set_name: Optional[str] = None,
+             resource_group: Optional[str] = None,
+             route_table_name: Optional[str] = None,
+             security_group_name: Optional[str] = None,
+             subnet_name: Optional[str] = None,
+             subscription_id: Optional[str] = None,
+             tenant_id: Optional[str] = None,
+             use_instance_metadata: Optional[bool] = None,
+             use_managed_identity_extension: Optional[bool] = None,
+             vm_type: Optional[str] = None,
+             vnet_name: Optional[str] = None,
+             vnet_resource_group: Optional[str] = None,
              load_balancer_sku: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aadClientCertPassword' in kwargs:
+        if aad_client_cert_password is None and 'aadClientCertPassword' in kwargs:
             aad_client_cert_password = kwargs['aadClientCertPassword']
-        if 'aadClientCertPath' in kwargs:
+        if aad_client_cert_password is None:
+            raise TypeError("Missing 'aad_client_cert_password' argument")
+        if aad_client_cert_path is None and 'aadClientCertPath' in kwargs:
             aad_client_cert_path = kwargs['aadClientCertPath']
-        if 'aadClientId' in kwargs:
+        if aad_client_cert_path is None:
+            raise TypeError("Missing 'aad_client_cert_path' argument")
+        if aad_client_id is None and 'aadClientId' in kwargs:
             aad_client_id = kwargs['aadClientId']
-        if 'aadClientSecret' in kwargs:
+        if aad_client_id is None:
+            raise TypeError("Missing 'aad_client_id' argument")
+        if aad_client_secret is None and 'aadClientSecret' in kwargs:
             aad_client_secret = kwargs['aadClientSecret']
-        if 'cloudProviderBackoff' in kwargs:
+        if aad_client_secret is None:
+            raise TypeError("Missing 'aad_client_secret' argument")
+        if cloud is None:
+            raise TypeError("Missing 'cloud' argument")
+        if cloud_provider_backoff is None and 'cloudProviderBackoff' in kwargs:
             cloud_provider_backoff = kwargs['cloudProviderBackoff']
-        if 'cloudProviderBackoffDuration' in kwargs:
+        if cloud_provider_backoff is None:
+            raise TypeError("Missing 'cloud_provider_backoff' argument")
+        if cloud_provider_backoff_duration is None and 'cloudProviderBackoffDuration' in kwargs:
             cloud_provider_backoff_duration = kwargs['cloudProviderBackoffDuration']
-        if 'cloudProviderBackoffExponent' in kwargs:
+        if cloud_provider_backoff_duration is None:
+            raise TypeError("Missing 'cloud_provider_backoff_duration' argument")
+        if cloud_provider_backoff_exponent is None and 'cloudProviderBackoffExponent' in kwargs:
             cloud_provider_backoff_exponent = kwargs['cloudProviderBackoffExponent']
-        if 'cloudProviderBackoffJitter' in kwargs:
+        if cloud_provider_backoff_exponent is None:
+            raise TypeError("Missing 'cloud_provider_backoff_exponent' argument")
+        if cloud_provider_backoff_jitter is None and 'cloudProviderBackoffJitter' in kwargs:
             cloud_provider_backoff_jitter = kwargs['cloudProviderBackoffJitter']
-        if 'cloudProviderBackoffRetries' in kwargs:
+        if cloud_provider_backoff_jitter is None:
+            raise TypeError("Missing 'cloud_provider_backoff_jitter' argument")
+        if cloud_provider_backoff_retries is None and 'cloudProviderBackoffRetries' in kwargs:
             cloud_provider_backoff_retries = kwargs['cloudProviderBackoffRetries']
-        if 'cloudProviderRateLimit' in kwargs:
+        if cloud_provider_backoff_retries is None:
+            raise TypeError("Missing 'cloud_provider_backoff_retries' argument")
+        if cloud_provider_rate_limit is None and 'cloudProviderRateLimit' in kwargs:
             cloud_provider_rate_limit = kwargs['cloudProviderRateLimit']
-        if 'cloudProviderRateLimitBucket' in kwargs:
+        if cloud_provider_rate_limit is None:
+            raise TypeError("Missing 'cloud_provider_rate_limit' argument")
+        if cloud_provider_rate_limit_bucket is None and 'cloudProviderRateLimitBucket' in kwargs:
             cloud_provider_rate_limit_bucket = kwargs['cloudProviderRateLimitBucket']
-        if 'cloudProviderRateLimitQps' in kwargs:
+        if cloud_provider_rate_limit_bucket is None:
+            raise TypeError("Missing 'cloud_provider_rate_limit_bucket' argument")
+        if cloud_provider_rate_limit_qps is None and 'cloudProviderRateLimitQps' in kwargs:
             cloud_provider_rate_limit_qps = kwargs['cloudProviderRateLimitQps']
-        if 'maximumLoadBalancerRuleCount' in kwargs:
+        if cloud_provider_rate_limit_qps is None:
+            raise TypeError("Missing 'cloud_provider_rate_limit_qps' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if maximum_load_balancer_rule_count is None and 'maximumLoadBalancerRuleCount' in kwargs:
             maximum_load_balancer_rule_count = kwargs['maximumLoadBalancerRuleCount']
-        if 'primaryAvailabilitySetName' in kwargs:
+        if maximum_load_balancer_rule_count is None:
+            raise TypeError("Missing 'maximum_load_balancer_rule_count' argument")
+        if primary_availability_set_name is None and 'primaryAvailabilitySetName' in kwargs:
             primary_availability_set_name = kwargs['primaryAvailabilitySetName']
-        if 'primaryScaleSetName' in kwargs:
+        if primary_availability_set_name is None:
+            raise TypeError("Missing 'primary_availability_set_name' argument")
+        if primary_scale_set_name is None and 'primaryScaleSetName' in kwargs:
             primary_scale_set_name = kwargs['primaryScaleSetName']
-        if 'resourceGroup' in kwargs:
+        if primary_scale_set_name is None:
+            raise TypeError("Missing 'primary_scale_set_name' argument")
+        if resource_group is None and 'resourceGroup' in kwargs:
             resource_group = kwargs['resourceGroup']
-        if 'routeTableName' in kwargs:
+        if resource_group is None:
+            raise TypeError("Missing 'resource_group' argument")
+        if route_table_name is None and 'routeTableName' in kwargs:
             route_table_name = kwargs['routeTableName']
-        if 'securityGroupName' in kwargs:
+        if route_table_name is None:
+            raise TypeError("Missing 'route_table_name' argument")
+        if security_group_name is None and 'securityGroupName' in kwargs:
             security_group_name = kwargs['securityGroupName']
-        if 'subnetName' in kwargs:
+        if security_group_name is None:
+            raise TypeError("Missing 'security_group_name' argument")
+        if subnet_name is None and 'subnetName' in kwargs:
             subnet_name = kwargs['subnetName']
-        if 'subscriptionId' in kwargs:
+        if subnet_name is None:
+            raise TypeError("Missing 'subnet_name' argument")
+        if subscription_id is None and 'subscriptionId' in kwargs:
             subscription_id = kwargs['subscriptionId']
-        if 'tenantId' in kwargs:
+        if subscription_id is None:
+            raise TypeError("Missing 'subscription_id' argument")
+        if tenant_id is None and 'tenantId' in kwargs:
             tenant_id = kwargs['tenantId']
-        if 'useInstanceMetadata' in kwargs:
+        if tenant_id is None:
+            raise TypeError("Missing 'tenant_id' argument")
+        if use_instance_metadata is None and 'useInstanceMetadata' in kwargs:
             use_instance_metadata = kwargs['useInstanceMetadata']
-        if 'useManagedIdentityExtension' in kwargs:
+        if use_instance_metadata is None:
+            raise TypeError("Missing 'use_instance_metadata' argument")
+        if use_managed_identity_extension is None and 'useManagedIdentityExtension' in kwargs:
             use_managed_identity_extension = kwargs['useManagedIdentityExtension']
-        if 'vmType' in kwargs:
+        if use_managed_identity_extension is None:
+            raise TypeError("Missing 'use_managed_identity_extension' argument")
+        if vm_type is None and 'vmType' in kwargs:
             vm_type = kwargs['vmType']
-        if 'vnetName' in kwargs:
+        if vm_type is None:
+            raise TypeError("Missing 'vm_type' argument")
+        if vnet_name is None and 'vnetName' in kwargs:
             vnet_name = kwargs['vnetName']
-        if 'vnetResourceGroup' in kwargs:
+        if vnet_name is None:
+            raise TypeError("Missing 'vnet_name' argument")
+        if vnet_resource_group is None and 'vnetResourceGroup' in kwargs:
             vnet_resource_group = kwargs['vnetResourceGroup']
-        if 'loadBalancerSku' in kwargs:
+        if vnet_resource_group is None:
+            raise TypeError("Missing 'vnet_resource_group' argument")
+        if load_balancer_sku is None and 'loadBalancerSku' in kwargs:
             load_balancer_sku = kwargs['loadBalancerSku']
 
         _setter("aad_client_cert_password", aad_client_cert_password)
@@ -45292,19 +46370,29 @@ class GetClusterRkeConfigCloudProviderOpenstackCloudProviderResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             block_storage: 'outputs.GetClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageResult',
-             global_: 'outputs.GetClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalResult',
-             load_balancer: 'outputs.GetClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerResult',
-             metadata: 'outputs.GetClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataResult',
-             route: 'outputs.GetClusterRkeConfigCloudProviderOpenstackCloudProviderRouteResult',
-             opts: Optional[pulumi.ResourceOptions]=None,
+             block_storage: Optional['outputs.GetClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageResult'] = None,
+             global_: Optional['outputs.GetClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalResult'] = None,
+             load_balancer: Optional['outputs.GetClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerResult'] = None,
+             metadata: Optional['outputs.GetClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataResult'] = None,
+             route: Optional['outputs.GetClusterRkeConfigCloudProviderOpenstackCloudProviderRouteResult'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'blockStorage' in kwargs:
+        if block_storage is None and 'blockStorage' in kwargs:
             block_storage = kwargs['blockStorage']
-        if 'global' in kwargs:
+        if block_storage is None:
+            raise TypeError("Missing 'block_storage' argument")
+        if global_ is None and 'global' in kwargs:
             global_ = kwargs['global']
-        if 'loadBalancer' in kwargs:
+        if global_ is None:
+            raise TypeError("Missing 'global_' argument")
+        if load_balancer is None and 'loadBalancer' in kwargs:
             load_balancer = kwargs['loadBalancer']
+        if load_balancer is None:
+            raise TypeError("Missing 'load_balancer' argument")
+        if metadata is None:
+            raise TypeError("Missing 'metadata' argument")
+        if route is None:
+            raise TypeError("Missing 'route' argument")
 
         _setter("block_storage", block_storage)
         _setter("global_", global_)
@@ -45353,17 +46441,23 @@ class GetClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageResult(d
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bs_version: str,
-             ignore_volume_az: bool,
-             trust_device_path: bool,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             bs_version: Optional[str] = None,
+             ignore_volume_az: Optional[bool] = None,
+             trust_device_path: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bsVersion' in kwargs:
+        if bs_version is None and 'bsVersion' in kwargs:
             bs_version = kwargs['bsVersion']
-        if 'ignoreVolumeAz' in kwargs:
+        if bs_version is None:
+            raise TypeError("Missing 'bs_version' argument")
+        if ignore_volume_az is None and 'ignoreVolumeAz' in kwargs:
             ignore_volume_az = kwargs['ignoreVolumeAz']
-        if 'trustDevicePath' in kwargs:
+        if ignore_volume_az is None:
+            raise TypeError("Missing 'ignore_volume_az' argument")
+        if trust_device_path is None and 'trustDevicePath' in kwargs:
             trust_device_path = kwargs['trustDevicePath']
+        if trust_device_path is None:
+            raise TypeError("Missing 'trust_device_path' argument")
 
         _setter("bs_version", bs_version)
         _setter("ignore_volume_az", ignore_volume_az)
@@ -45414,32 +46508,52 @@ class GetClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             auth_url: str,
-             ca_file: str,
-             domain_id: str,
-             domain_name: str,
-             password: str,
-             region: str,
-             tenant_id: str,
-             tenant_name: str,
-             trust_id: str,
-             username: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             auth_url: Optional[str] = None,
+             ca_file: Optional[str] = None,
+             domain_id: Optional[str] = None,
+             domain_name: Optional[str] = None,
+             password: Optional[str] = None,
+             region: Optional[str] = None,
+             tenant_id: Optional[str] = None,
+             tenant_name: Optional[str] = None,
+             trust_id: Optional[str] = None,
+             username: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'authUrl' in kwargs:
+        if auth_url is None and 'authUrl' in kwargs:
             auth_url = kwargs['authUrl']
-        if 'caFile' in kwargs:
+        if auth_url is None:
+            raise TypeError("Missing 'auth_url' argument")
+        if ca_file is None and 'caFile' in kwargs:
             ca_file = kwargs['caFile']
-        if 'domainId' in kwargs:
+        if ca_file is None:
+            raise TypeError("Missing 'ca_file' argument")
+        if domain_id is None and 'domainId' in kwargs:
             domain_id = kwargs['domainId']
-        if 'domainName' in kwargs:
+        if domain_id is None:
+            raise TypeError("Missing 'domain_id' argument")
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'tenantId' in kwargs:
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if tenant_id is None and 'tenantId' in kwargs:
             tenant_id = kwargs['tenantId']
-        if 'tenantName' in kwargs:
+        if tenant_id is None:
+            raise TypeError("Missing 'tenant_id' argument")
+        if tenant_name is None and 'tenantName' in kwargs:
             tenant_name = kwargs['tenantName']
-        if 'trustId' in kwargs:
+        if tenant_name is None:
+            raise TypeError("Missing 'tenant_name' argument")
+        if trust_id is None and 'trustId' in kwargs:
             trust_id = kwargs['trustId']
+        if trust_id is None:
+            raise TypeError("Missing 'trust_id' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
 
         _setter("auth_url", auth_url)
         _setter("ca_file", ca_file)
@@ -45534,40 +46648,56 @@ class GetClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerResult(d
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_monitor: bool,
-             floating_network_id: str,
-             lb_method: str,
-             lb_provider: str,
-             lb_version: str,
-             manage_security_groups: bool,
-             subnet_id: str,
-             use_octavia: bool,
+             create_monitor: Optional[bool] = None,
+             floating_network_id: Optional[str] = None,
+             lb_method: Optional[str] = None,
+             lb_provider: Optional[str] = None,
+             lb_version: Optional[str] = None,
+             manage_security_groups: Optional[bool] = None,
+             subnet_id: Optional[str] = None,
+             use_octavia: Optional[bool] = None,
              monitor_delay: Optional[str] = None,
              monitor_max_retries: Optional[int] = None,
              monitor_timeout: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createMonitor' in kwargs:
+        if create_monitor is None and 'createMonitor' in kwargs:
             create_monitor = kwargs['createMonitor']
-        if 'floatingNetworkId' in kwargs:
+        if create_monitor is None:
+            raise TypeError("Missing 'create_monitor' argument")
+        if floating_network_id is None and 'floatingNetworkId' in kwargs:
             floating_network_id = kwargs['floatingNetworkId']
-        if 'lbMethod' in kwargs:
+        if floating_network_id is None:
+            raise TypeError("Missing 'floating_network_id' argument")
+        if lb_method is None and 'lbMethod' in kwargs:
             lb_method = kwargs['lbMethod']
-        if 'lbProvider' in kwargs:
+        if lb_method is None:
+            raise TypeError("Missing 'lb_method' argument")
+        if lb_provider is None and 'lbProvider' in kwargs:
             lb_provider = kwargs['lbProvider']
-        if 'lbVersion' in kwargs:
+        if lb_provider is None:
+            raise TypeError("Missing 'lb_provider' argument")
+        if lb_version is None and 'lbVersion' in kwargs:
             lb_version = kwargs['lbVersion']
-        if 'manageSecurityGroups' in kwargs:
+        if lb_version is None:
+            raise TypeError("Missing 'lb_version' argument")
+        if manage_security_groups is None and 'manageSecurityGroups' in kwargs:
             manage_security_groups = kwargs['manageSecurityGroups']
-        if 'subnetId' in kwargs:
+        if manage_security_groups is None:
+            raise TypeError("Missing 'manage_security_groups' argument")
+        if subnet_id is None and 'subnetId' in kwargs:
             subnet_id = kwargs['subnetId']
-        if 'useOctavia' in kwargs:
+        if subnet_id is None:
+            raise TypeError("Missing 'subnet_id' argument")
+        if use_octavia is None and 'useOctavia' in kwargs:
             use_octavia = kwargs['useOctavia']
-        if 'monitorDelay' in kwargs:
+        if use_octavia is None:
+            raise TypeError("Missing 'use_octavia' argument")
+        if monitor_delay is None and 'monitorDelay' in kwargs:
             monitor_delay = kwargs['monitorDelay']
-        if 'monitorMaxRetries' in kwargs:
+        if monitor_max_retries is None and 'monitorMaxRetries' in kwargs:
             monitor_max_retries = kwargs['monitorMaxRetries']
-        if 'monitorTimeout' in kwargs:
+        if monitor_timeout is None and 'monitorTimeout' in kwargs:
             monitor_timeout = kwargs['monitorTimeout']
 
         _setter("create_monitor", create_monitor)
@@ -45654,14 +46784,18 @@ class GetClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataResult(dict)
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             request_timeout: int,
-             search_order: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             request_timeout: Optional[int] = None,
+             search_order: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'requestTimeout' in kwargs:
+        if request_timeout is None and 'requestTimeout' in kwargs:
             request_timeout = kwargs['requestTimeout']
-        if 'searchOrder' in kwargs:
+        if request_timeout is None:
+            raise TypeError("Missing 'request_timeout' argument")
+        if search_order is None and 'searchOrder' in kwargs:
             search_order = kwargs['searchOrder']
+        if search_order is None:
+            raise TypeError("Missing 'search_order' argument")
 
         _setter("request_timeout", request_timeout)
         _setter("search_order", search_order)
@@ -45688,11 +46822,13 @@ class GetClusterRkeConfigCloudProviderOpenstackCloudProviderRouteResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             router_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             router_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'routerId' in kwargs:
+        if router_id is None and 'routerId' in kwargs:
             router_id = kwargs['routerId']
+        if router_id is None:
+            raise TypeError("Missing 'router_id' argument")
 
         _setter("router_id", router_id)
 
@@ -45721,17 +46857,27 @@ class GetClusterRkeConfigCloudProviderVsphereCloudProviderResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             disk: 'outputs.GetClusterRkeConfigCloudProviderVsphereCloudProviderDiskResult',
-             global_: 'outputs.GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobalResult',
-             network: 'outputs.GetClusterRkeConfigCloudProviderVsphereCloudProviderNetworkResult',
-             virtual_centers: Sequence['outputs.GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterResult'],
-             workspace: 'outputs.GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceResult',
-             opts: Optional[pulumi.ResourceOptions]=None,
+             disk: Optional['outputs.GetClusterRkeConfigCloudProviderVsphereCloudProviderDiskResult'] = None,
+             global_: Optional['outputs.GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobalResult'] = None,
+             network: Optional['outputs.GetClusterRkeConfigCloudProviderVsphereCloudProviderNetworkResult'] = None,
+             virtual_centers: Optional[Sequence['outputs.GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterResult']] = None,
+             workspace: Optional['outputs.GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceResult'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'global' in kwargs:
+        if disk is None:
+            raise TypeError("Missing 'disk' argument")
+        if global_ is None and 'global' in kwargs:
             global_ = kwargs['global']
-        if 'virtualCenters' in kwargs:
+        if global_ is None:
+            raise TypeError("Missing 'global_' argument")
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+        if virtual_centers is None and 'virtualCenters' in kwargs:
             virtual_centers = kwargs['virtualCenters']
+        if virtual_centers is None:
+            raise TypeError("Missing 'virtual_centers' argument")
+        if workspace is None:
+            raise TypeError("Missing 'workspace' argument")
 
         _setter("disk", disk)
         _setter("global_", global_)
@@ -45776,11 +46922,13 @@ class GetClusterRkeConfigCloudProviderVsphereCloudProviderDiskResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             scsi_controller_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             scsi_controller_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'scsiControllerType' in kwargs:
+        if scsi_controller_type is None and 'scsiControllerType' in kwargs:
             scsi_controller_type = kwargs['scsiControllerType']
+        if scsi_controller_type is None:
+            raise TypeError("Missing 'scsi_controller_type' argument")
 
         _setter("scsi_controller_type", scsi_controller_type)
 
@@ -45811,18 +46959,30 @@ class GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobalResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             datacenters: str,
-             insecure_flag: bool,
-             password: str,
-             port: str,
-             soap_roundtrip_count: int,
-             user: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             datacenters: Optional[str] = None,
+             insecure_flag: Optional[bool] = None,
+             password: Optional[str] = None,
+             port: Optional[str] = None,
+             soap_roundtrip_count: Optional[int] = None,
+             user: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'insecureFlag' in kwargs:
+        if datacenters is None:
+            raise TypeError("Missing 'datacenters' argument")
+        if insecure_flag is None and 'insecureFlag' in kwargs:
             insecure_flag = kwargs['insecureFlag']
-        if 'soapRoundtripCount' in kwargs:
+        if insecure_flag is None:
+            raise TypeError("Missing 'insecure_flag' argument")
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if soap_roundtrip_count is None and 'soapRoundtripCount' in kwargs:
             soap_roundtrip_count = kwargs['soapRoundtripCount']
+        if soap_roundtrip_count is None:
+            raise TypeError("Missing 'soap_roundtrip_count' argument")
+        if user is None:
+            raise TypeError("Missing 'user' argument")
 
         _setter("datacenters", datacenters)
         _setter("insecure_flag", insecure_flag)
@@ -45873,11 +47033,13 @@ class GetClusterRkeConfigCloudProviderVsphereCloudProviderNetworkResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             public_network: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             public_network: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'publicNetwork' in kwargs:
+        if public_network is None and 'publicNetwork' in kwargs:
             public_network = kwargs['publicNetwork']
+        if public_network is None:
+            raise TypeError("Missing 'public_network' argument")
 
         _setter("public_network", public_network)
 
@@ -45911,16 +47073,28 @@ class GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterResult(di
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             datacenters: str,
-             name: str,
-             password: str,
-             port: str,
-             soap_roundtrip_count: int,
-             user: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             datacenters: Optional[str] = None,
+             name: Optional[str] = None,
+             password: Optional[str] = None,
+             port: Optional[str] = None,
+             soap_roundtrip_count: Optional[int] = None,
+             user: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'soapRoundtripCount' in kwargs:
+        if datacenters is None:
+            raise TypeError("Missing 'datacenters' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if soap_roundtrip_count is None and 'soapRoundtripCount' in kwargs:
             soap_roundtrip_count = kwargs['soapRoundtripCount']
+        if soap_roundtrip_count is None:
+            raise TypeError("Missing 'soap_roundtrip_count' argument")
+        if user is None:
+            raise TypeError("Missing 'user' argument")
 
         _setter("datacenters", datacenters)
         _setter("name", name)
@@ -45982,17 +47156,27 @@ class GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             datacenter: str,
-             default_datastore: str,
-             folder: str,
-             resourcepool_path: str,
-             server: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             datacenter: Optional[str] = None,
+             default_datastore: Optional[str] = None,
+             folder: Optional[str] = None,
+             resourcepool_path: Optional[str] = None,
+             server: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'defaultDatastore' in kwargs:
+        if datacenter is None:
+            raise TypeError("Missing 'datacenter' argument")
+        if default_datastore is None and 'defaultDatastore' in kwargs:
             default_datastore = kwargs['defaultDatastore']
-        if 'resourcepoolPath' in kwargs:
+        if default_datastore is None:
+            raise TypeError("Missing 'default_datastore' argument")
+        if folder is None:
+            raise TypeError("Missing 'folder' argument")
+        if resourcepool_path is None and 'resourcepoolPath' in kwargs:
             resourcepool_path = kwargs['resourcepoolPath']
+        if resourcepool_path is None:
+            raise TypeError("Missing 'resourcepool_path' argument")
+        if server is None:
+            raise TypeError("Missing 'server' argument")
 
         _setter("datacenter", datacenter)
         _setter("default_datastore", default_datastore)
@@ -46053,26 +47237,34 @@ class GetClusterRkeConfigDnsResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             node_selector: Mapping[str, Any],
-             options: Mapping[str, Any],
-             reverse_cidrs: Sequence[str],
-             upstream_nameservers: Sequence[str],
+             node_selector: Optional[Mapping[str, Any]] = None,
+             options: Optional[Mapping[str, Any]] = None,
+             reverse_cidrs: Optional[Sequence[str]] = None,
+             upstream_nameservers: Optional[Sequence[str]] = None,
              linear_autoscaler_params: Optional['outputs.GetClusterRkeConfigDnsLinearAutoscalerParamsResult'] = None,
              nodelocal: Optional['outputs.GetClusterRkeConfigDnsNodelocalResult'] = None,
              provider: Optional[str] = None,
              tolerations: Optional[Sequence['outputs.GetClusterRkeConfigDnsTolerationResult']] = None,
              update_strategy: Optional['outputs.GetClusterRkeConfigDnsUpdateStrategyResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'nodeSelector' in kwargs:
+        if node_selector is None and 'nodeSelector' in kwargs:
             node_selector = kwargs['nodeSelector']
-        if 'reverseCidrs' in kwargs:
+        if node_selector is None:
+            raise TypeError("Missing 'node_selector' argument")
+        if options is None:
+            raise TypeError("Missing 'options' argument")
+        if reverse_cidrs is None and 'reverseCidrs' in kwargs:
             reverse_cidrs = kwargs['reverseCidrs']
-        if 'upstreamNameservers' in kwargs:
+        if reverse_cidrs is None:
+            raise TypeError("Missing 'reverse_cidrs' argument")
+        if upstream_nameservers is None and 'upstreamNameservers' in kwargs:
             upstream_nameservers = kwargs['upstreamNameservers']
-        if 'linearAutoscalerParams' in kwargs:
+        if upstream_nameservers is None:
+            raise TypeError("Missing 'upstream_nameservers' argument")
+        if linear_autoscaler_params is None and 'linearAutoscalerParams' in kwargs:
             linear_autoscaler_params = kwargs['linearAutoscalerParams']
-        if 'updateStrategy' in kwargs:
+        if update_strategy is None and 'updateStrategy' in kwargs:
             update_strategy = kwargs['updateStrategy']
 
         _setter("node_selector", node_selector)
@@ -46160,13 +47352,13 @@ class GetClusterRkeConfigDnsLinearAutoscalerParamsResult(dict):
              min: Optional[int] = None,
              nodes_per_replica: Optional[float] = None,
              prevent_single_point_failure: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'coresPerReplica' in kwargs:
+        if cores_per_replica is None and 'coresPerReplica' in kwargs:
             cores_per_replica = kwargs['coresPerReplica']
-        if 'nodesPerReplica' in kwargs:
+        if nodes_per_replica is None and 'nodesPerReplica' in kwargs:
             nodes_per_replica = kwargs['nodesPerReplica']
-        if 'preventSinglePointFailure' in kwargs:
+        if prevent_single_point_failure is None and 'preventSinglePointFailure' in kwargs:
             prevent_single_point_failure = kwargs['preventSinglePointFailure']
 
         if cores_per_replica is not None:
@@ -46221,11 +47413,11 @@ class GetClusterRkeConfigDnsNodelocalResult(dict):
              _setter: Callable[[Any, Any], None],
              ip_address: Optional[str] = None,
              node_selector: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ipAddress' in kwargs:
+        if ip_address is None and 'ipAddress' in kwargs:
             ip_address = kwargs['ipAddress']
-        if 'nodeSelector' in kwargs:
+        if node_selector is None and 'nodeSelector' in kwargs:
             node_selector = kwargs['nodeSelector']
 
         if ip_address is not None:
@@ -46263,13 +47455,17 @@ class GetClusterRkeConfigDnsTolerationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             seconds: int,
+             key: Optional[str] = None,
+             seconds: Optional[int] = None,
              effect: Optional[str] = None,
              operator: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if seconds is None:
+            raise TypeError("Missing 'seconds' argument")
 
         _setter("key", key)
         _setter("seconds", seconds)
@@ -46321,9 +47517,9 @@ class GetClusterRkeConfigDnsUpdateStrategyResult(dict):
              _setter: Callable[[Any, Any], None],
              rolling_update: Optional['outputs.GetClusterRkeConfigDnsUpdateStrategyRollingUpdateResult'] = None,
              strategy: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'rollingUpdate' in kwargs:
+        if rolling_update is None and 'rollingUpdate' in kwargs:
             rolling_update = kwargs['rollingUpdate']
 
         if rolling_update is not None:
@@ -46357,11 +47553,11 @@ class GetClusterRkeConfigDnsUpdateStrategyRollingUpdateResult(dict):
              _setter: Callable[[Any, Any], None],
              max_surge: Optional[int] = None,
              max_unavailable: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'maxSurge' in kwargs:
+        if max_surge is None and 'maxSurge' in kwargs:
             max_surge = kwargs['maxSurge']
-        if 'maxUnavailable' in kwargs:
+        if max_unavailable is None and 'maxUnavailable' in kwargs:
             max_unavailable = kwargs['maxUnavailable']
 
         if max_surge is not None:
@@ -46411,34 +47607,50 @@ class GetClusterRkeConfigIngressResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dns_policy: str,
-             extra_args: Mapping[str, Any],
-             http_port: int,
-             https_port: int,
-             network_mode: str,
-             node_selector: Mapping[str, Any],
-             options: Mapping[str, Any],
-             provider: str,
+             dns_policy: Optional[str] = None,
+             extra_args: Optional[Mapping[str, Any]] = None,
+             http_port: Optional[int] = None,
+             https_port: Optional[int] = None,
+             network_mode: Optional[str] = None,
+             node_selector: Optional[Mapping[str, Any]] = None,
+             options: Optional[Mapping[str, Any]] = None,
+             provider: Optional[str] = None,
              default_backend: Optional[bool] = None,
              tolerations: Optional[Sequence['outputs.GetClusterRkeConfigIngressTolerationResult']] = None,
              update_strategy: Optional['outputs.GetClusterRkeConfigIngressUpdateStrategyResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dnsPolicy' in kwargs:
+        if dns_policy is None and 'dnsPolicy' in kwargs:
             dns_policy = kwargs['dnsPolicy']
-        if 'extraArgs' in kwargs:
+        if dns_policy is None:
+            raise TypeError("Missing 'dns_policy' argument")
+        if extra_args is None and 'extraArgs' in kwargs:
             extra_args = kwargs['extraArgs']
-        if 'httpPort' in kwargs:
+        if extra_args is None:
+            raise TypeError("Missing 'extra_args' argument")
+        if http_port is None and 'httpPort' in kwargs:
             http_port = kwargs['httpPort']
-        if 'httpsPort' in kwargs:
+        if http_port is None:
+            raise TypeError("Missing 'http_port' argument")
+        if https_port is None and 'httpsPort' in kwargs:
             https_port = kwargs['httpsPort']
-        if 'networkMode' in kwargs:
+        if https_port is None:
+            raise TypeError("Missing 'https_port' argument")
+        if network_mode is None and 'networkMode' in kwargs:
             network_mode = kwargs['networkMode']
-        if 'nodeSelector' in kwargs:
+        if network_mode is None:
+            raise TypeError("Missing 'network_mode' argument")
+        if node_selector is None and 'nodeSelector' in kwargs:
             node_selector = kwargs['nodeSelector']
-        if 'defaultBackend' in kwargs:
+        if node_selector is None:
+            raise TypeError("Missing 'node_selector' argument")
+        if options is None:
+            raise TypeError("Missing 'options' argument")
+        if provider is None:
+            raise TypeError("Missing 'provider' argument")
+        if default_backend is None and 'defaultBackend' in kwargs:
             default_backend = kwargs['defaultBackend']
-        if 'updateStrategy' in kwargs:
+        if update_strategy is None and 'updateStrategy' in kwargs:
             update_strategy = kwargs['updateStrategy']
 
         _setter("dns_policy", dns_policy)
@@ -46531,13 +47743,17 @@ class GetClusterRkeConfigIngressTolerationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             seconds: int,
+             key: Optional[str] = None,
+             seconds: Optional[int] = None,
              effect: Optional[str] = None,
              operator: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if seconds is None:
+            raise TypeError("Missing 'seconds' argument")
 
         _setter("key", key)
         _setter("seconds", seconds)
@@ -46589,9 +47805,9 @@ class GetClusterRkeConfigIngressUpdateStrategyResult(dict):
              _setter: Callable[[Any, Any], None],
              rolling_update: Optional['outputs.GetClusterRkeConfigIngressUpdateStrategyRollingUpdateResult'] = None,
              strategy: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'rollingUpdate' in kwargs:
+        if rolling_update is None and 'rollingUpdate' in kwargs:
             rolling_update = kwargs['rollingUpdate']
 
         if rolling_update is not None:
@@ -46622,9 +47838,9 @@ class GetClusterRkeConfigIngressUpdateStrategyRollingUpdateResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              max_unavailable: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'maxUnavailable' in kwargs:
+        if max_unavailable is None and 'maxUnavailable' in kwargs:
             max_unavailable = kwargs['maxUnavailable']
 
         if max_unavailable is not None:
@@ -46657,17 +47873,23 @@ class GetClusterRkeConfigMonitoringResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             options: Mapping[str, Any],
-             provider: str,
-             replicas: int,
+             options: Optional[Mapping[str, Any]] = None,
+             provider: Optional[str] = None,
+             replicas: Optional[int] = None,
              node_selector: Optional[Mapping[str, Any]] = None,
              tolerations: Optional[Sequence['outputs.GetClusterRkeConfigMonitoringTolerationResult']] = None,
              update_strategy: Optional['outputs.GetClusterRkeConfigMonitoringUpdateStrategyResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'nodeSelector' in kwargs:
+        if options is None:
+            raise TypeError("Missing 'options' argument")
+        if provider is None:
+            raise TypeError("Missing 'provider' argument")
+        if replicas is None:
+            raise TypeError("Missing 'replicas' argument")
+        if node_selector is None and 'nodeSelector' in kwargs:
             node_selector = kwargs['nodeSelector']
-        if 'updateStrategy' in kwargs:
+        if update_strategy is None and 'updateStrategy' in kwargs:
             update_strategy = kwargs['updateStrategy']
 
         _setter("options", options)
@@ -46730,13 +47952,17 @@ class GetClusterRkeConfigMonitoringTolerationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             seconds: int,
+             key: Optional[str] = None,
+             seconds: Optional[int] = None,
              effect: Optional[str] = None,
              operator: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if seconds is None:
+            raise TypeError("Missing 'seconds' argument")
 
         _setter("key", key)
         _setter("seconds", seconds)
@@ -46788,9 +48014,9 @@ class GetClusterRkeConfigMonitoringUpdateStrategyResult(dict):
              _setter: Callable[[Any, Any], None],
              rolling_update: Optional['outputs.GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateResult'] = None,
              strategy: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'rollingUpdate' in kwargs:
+        if rolling_update is None and 'rollingUpdate' in kwargs:
             rolling_update = kwargs['rollingUpdate']
 
         if rolling_update is not None:
@@ -46824,11 +48050,11 @@ class GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdateResult(dict):
              _setter: Callable[[Any, Any], None],
              max_surge: Optional[int] = None,
              max_unavailable: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'maxSurge' in kwargs:
+        if max_surge is None and 'maxSurge' in kwargs:
             max_surge = kwargs['maxSurge']
-        if 'maxUnavailable' in kwargs:
+        if max_unavailable is None and 'maxUnavailable' in kwargs:
             max_unavailable = kwargs['maxUnavailable']
 
         if max_surge is not None:
@@ -46874,8 +48100,8 @@ class GetClusterRkeConfigNetworkResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             options: Mapping[str, Any],
-             plugin: str,
+             options: Optional[Mapping[str, Any]] = None,
+             plugin: Optional[str] = None,
              aci_network_provider: Optional['outputs.GetClusterRkeConfigNetworkAciNetworkProviderResult'] = None,
              calico_network_provider: Optional['outputs.GetClusterRkeConfigNetworkCalicoNetworkProviderResult'] = None,
              canal_network_provider: Optional['outputs.GetClusterRkeConfigNetworkCanalNetworkProviderResult'] = None,
@@ -46883,17 +48109,21 @@ class GetClusterRkeConfigNetworkResult(dict):
              mtu: Optional[int] = None,
              tolerations: Optional[Sequence['outputs.GetClusterRkeConfigNetworkTolerationResult']] = None,
              weave_network_provider: Optional['outputs.GetClusterRkeConfigNetworkWeaveNetworkProviderResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aciNetworkProvider' in kwargs:
+        if options is None:
+            raise TypeError("Missing 'options' argument")
+        if plugin is None:
+            raise TypeError("Missing 'plugin' argument")
+        if aci_network_provider is None and 'aciNetworkProvider' in kwargs:
             aci_network_provider = kwargs['aciNetworkProvider']
-        if 'calicoNetworkProvider' in kwargs:
+        if calico_network_provider is None and 'calicoNetworkProvider' in kwargs:
             calico_network_provider = kwargs['calicoNetworkProvider']
-        if 'canalNetworkProvider' in kwargs:
+        if canal_network_provider is None and 'canalNetworkProvider' in kwargs:
             canal_network_provider = kwargs['canalNetworkProvider']
-        if 'flannelNetworkProvider' in kwargs:
+        if flannel_network_provider is None and 'flannelNetworkProvider' in kwargs:
             flannel_network_provider = kwargs['flannelNetworkProvider']
-        if 'weaveNetworkProvider' in kwargs:
+        if weave_network_provider is None and 'weaveNetworkProvider' in kwargs:
             weave_network_provider = kwargs['weaveNetworkProvider']
 
         _setter("options", options)
@@ -47116,26 +48346,26 @@ class GetClusterRkeConfigNetworkAciNetworkProviderResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             aep: str,
-             apic_hosts: Sequence[str],
-             apic_user_crt: str,
-             apic_user_key: str,
-             apic_user_name: str,
-             encap_type: str,
-             extern_dynamic: str,
-             extern_static: str,
-             kube_api_vlan: str,
-             l3out: str,
-             l3out_external_networks: Sequence[str],
-             mcast_range_end: str,
-             mcast_range_start: str,
-             node_subnet: str,
-             node_svc_subnet: str,
-             service_vlan: str,
-             system_id: str,
-             token: str,
-             vrf_name: str,
-             vrf_tenant: str,
+             aep: Optional[str] = None,
+             apic_hosts: Optional[Sequence[str]] = None,
+             apic_user_crt: Optional[str] = None,
+             apic_user_key: Optional[str] = None,
+             apic_user_name: Optional[str] = None,
+             encap_type: Optional[str] = None,
+             extern_dynamic: Optional[str] = None,
+             extern_static: Optional[str] = None,
+             kube_api_vlan: Optional[str] = None,
+             l3out: Optional[str] = None,
+             l3out_external_networks: Optional[Sequence[str]] = None,
+             mcast_range_end: Optional[str] = None,
+             mcast_range_start: Optional[str] = None,
+             node_subnet: Optional[str] = None,
+             node_svc_subnet: Optional[str] = None,
+             service_vlan: Optional[str] = None,
+             system_id: Optional[str] = None,
+             token: Optional[str] = None,
+             vrf_name: Optional[str] = None,
+             vrf_tenant: Optional[str] = None,
              apic_refresh_ticker_adjust: Optional[str] = None,
              apic_refresh_time: Optional[str] = None,
              apic_subscription_delay: Optional[str] = None,
@@ -47190,145 +48420,185 @@ class GetClusterRkeConfigNetworkAciNetworkProviderResult(dict):
              use_privileged_container: Optional[str] = None,
              vmm_controller: Optional[str] = None,
              vmm_domain: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'apicHosts' in kwargs:
+        if aep is None:
+            raise TypeError("Missing 'aep' argument")
+        if apic_hosts is None and 'apicHosts' in kwargs:
             apic_hosts = kwargs['apicHosts']
-        if 'apicUserCrt' in kwargs:
+        if apic_hosts is None:
+            raise TypeError("Missing 'apic_hosts' argument")
+        if apic_user_crt is None and 'apicUserCrt' in kwargs:
             apic_user_crt = kwargs['apicUserCrt']
-        if 'apicUserKey' in kwargs:
+        if apic_user_crt is None:
+            raise TypeError("Missing 'apic_user_crt' argument")
+        if apic_user_key is None and 'apicUserKey' in kwargs:
             apic_user_key = kwargs['apicUserKey']
-        if 'apicUserName' in kwargs:
+        if apic_user_key is None:
+            raise TypeError("Missing 'apic_user_key' argument")
+        if apic_user_name is None and 'apicUserName' in kwargs:
             apic_user_name = kwargs['apicUserName']
-        if 'encapType' in kwargs:
+        if apic_user_name is None:
+            raise TypeError("Missing 'apic_user_name' argument")
+        if encap_type is None and 'encapType' in kwargs:
             encap_type = kwargs['encapType']
-        if 'externDynamic' in kwargs:
+        if encap_type is None:
+            raise TypeError("Missing 'encap_type' argument")
+        if extern_dynamic is None and 'externDynamic' in kwargs:
             extern_dynamic = kwargs['externDynamic']
-        if 'externStatic' in kwargs:
+        if extern_dynamic is None:
+            raise TypeError("Missing 'extern_dynamic' argument")
+        if extern_static is None and 'externStatic' in kwargs:
             extern_static = kwargs['externStatic']
-        if 'kubeApiVlan' in kwargs:
+        if extern_static is None:
+            raise TypeError("Missing 'extern_static' argument")
+        if kube_api_vlan is None and 'kubeApiVlan' in kwargs:
             kube_api_vlan = kwargs['kubeApiVlan']
-        if 'l3outExternalNetworks' in kwargs:
+        if kube_api_vlan is None:
+            raise TypeError("Missing 'kube_api_vlan' argument")
+        if l3out is None:
+            raise TypeError("Missing 'l3out' argument")
+        if l3out_external_networks is None and 'l3outExternalNetworks' in kwargs:
             l3out_external_networks = kwargs['l3outExternalNetworks']
-        if 'mcastRangeEnd' in kwargs:
+        if l3out_external_networks is None:
+            raise TypeError("Missing 'l3out_external_networks' argument")
+        if mcast_range_end is None and 'mcastRangeEnd' in kwargs:
             mcast_range_end = kwargs['mcastRangeEnd']
-        if 'mcastRangeStart' in kwargs:
+        if mcast_range_end is None:
+            raise TypeError("Missing 'mcast_range_end' argument")
+        if mcast_range_start is None and 'mcastRangeStart' in kwargs:
             mcast_range_start = kwargs['mcastRangeStart']
-        if 'nodeSubnet' in kwargs:
+        if mcast_range_start is None:
+            raise TypeError("Missing 'mcast_range_start' argument")
+        if node_subnet is None and 'nodeSubnet' in kwargs:
             node_subnet = kwargs['nodeSubnet']
-        if 'nodeSvcSubnet' in kwargs:
+        if node_subnet is None:
+            raise TypeError("Missing 'node_subnet' argument")
+        if node_svc_subnet is None and 'nodeSvcSubnet' in kwargs:
             node_svc_subnet = kwargs['nodeSvcSubnet']
-        if 'serviceVlan' in kwargs:
+        if node_svc_subnet is None:
+            raise TypeError("Missing 'node_svc_subnet' argument")
+        if service_vlan is None and 'serviceVlan' in kwargs:
             service_vlan = kwargs['serviceVlan']
-        if 'systemId' in kwargs:
+        if service_vlan is None:
+            raise TypeError("Missing 'service_vlan' argument")
+        if system_id is None and 'systemId' in kwargs:
             system_id = kwargs['systemId']
-        if 'vrfName' in kwargs:
+        if system_id is None:
+            raise TypeError("Missing 'system_id' argument")
+        if token is None:
+            raise TypeError("Missing 'token' argument")
+        if vrf_name is None and 'vrfName' in kwargs:
             vrf_name = kwargs['vrfName']
-        if 'vrfTenant' in kwargs:
+        if vrf_name is None:
+            raise TypeError("Missing 'vrf_name' argument")
+        if vrf_tenant is None and 'vrfTenant' in kwargs:
             vrf_tenant = kwargs['vrfTenant']
-        if 'apicRefreshTickerAdjust' in kwargs:
+        if vrf_tenant is None:
+            raise TypeError("Missing 'vrf_tenant' argument")
+        if apic_refresh_ticker_adjust is None and 'apicRefreshTickerAdjust' in kwargs:
             apic_refresh_ticker_adjust = kwargs['apicRefreshTickerAdjust']
-        if 'apicRefreshTime' in kwargs:
+        if apic_refresh_time is None and 'apicRefreshTime' in kwargs:
             apic_refresh_time = kwargs['apicRefreshTime']
-        if 'apicSubscriptionDelay' in kwargs:
+        if apic_subscription_delay is None and 'apicSubscriptionDelay' in kwargs:
             apic_subscription_delay = kwargs['apicSubscriptionDelay']
-        if 'controllerLogLevel' in kwargs:
+        if controller_log_level is None and 'controllerLogLevel' in kwargs:
             controller_log_level = kwargs['controllerLogLevel']
-        if 'disablePeriodicSnatGlobalInfoSync' in kwargs:
+        if disable_periodic_snat_global_info_sync is None and 'disablePeriodicSnatGlobalInfoSync' in kwargs:
             disable_periodic_snat_global_info_sync = kwargs['disablePeriodicSnatGlobalInfoSync']
-        if 'disableWaitForNetwork' in kwargs:
+        if disable_wait_for_network is None and 'disableWaitForNetwork' in kwargs:
             disable_wait_for_network = kwargs['disableWaitForNetwork']
-        if 'dropLogEnable' in kwargs:
+        if drop_log_enable is None and 'dropLogEnable' in kwargs:
             drop_log_enable = kwargs['dropLogEnable']
-        if 'durationWaitForNetwork' in kwargs:
+        if duration_wait_for_network is None and 'durationWaitForNetwork' in kwargs:
             duration_wait_for_network = kwargs['durationWaitForNetwork']
-        if 'enableEndpointSlice' in kwargs:
+        if enable_endpoint_slice is None and 'enableEndpointSlice' in kwargs:
             enable_endpoint_slice = kwargs['enableEndpointSlice']
-        if 'epRegistry' in kwargs:
+        if ep_registry is None and 'epRegistry' in kwargs:
             ep_registry = kwargs['epRegistry']
-        if 'gbpPodSubnet' in kwargs:
+        if gbp_pod_subnet is None and 'gbpPodSubnet' in kwargs:
             gbp_pod_subnet = kwargs['gbpPodSubnet']
-        if 'hostAgentLogLevel' in kwargs:
+        if host_agent_log_level is None and 'hostAgentLogLevel' in kwargs:
             host_agent_log_level = kwargs['hostAgentLogLevel']
-        if 'imagePullPolicy' in kwargs:
+        if image_pull_policy is None and 'imagePullPolicy' in kwargs:
             image_pull_policy = kwargs['imagePullPolicy']
-        if 'imagePullSecret' in kwargs:
+        if image_pull_secret is None and 'imagePullSecret' in kwargs:
             image_pull_secret = kwargs['imagePullSecret']
-        if 'infraVlan' in kwargs:
+        if infra_vlan is None and 'infraVlan' in kwargs:
             infra_vlan = kwargs['infraVlan']
-        if 'installIstio' in kwargs:
+        if install_istio is None and 'installIstio' in kwargs:
             install_istio = kwargs['installIstio']
-        if 'istioProfile' in kwargs:
+        if istio_profile is None and 'istioProfile' in kwargs:
             istio_profile = kwargs['istioProfile']
-        if 'kafkaBrokers' in kwargs:
+        if kafka_brokers is None and 'kafkaBrokers' in kwargs:
             kafka_brokers = kwargs['kafkaBrokers']
-        if 'kafkaClientCrt' in kwargs:
+        if kafka_client_crt is None and 'kafkaClientCrt' in kwargs:
             kafka_client_crt = kwargs['kafkaClientCrt']
-        if 'kafkaClientKey' in kwargs:
+        if kafka_client_key is None and 'kafkaClientKey' in kwargs:
             kafka_client_key = kwargs['kafkaClientKey']
-        if 'maxNodesSvcGraph' in kwargs:
+        if max_nodes_svc_graph is None and 'maxNodesSvcGraph' in kwargs:
             max_nodes_svc_graph = kwargs['maxNodesSvcGraph']
-        if 'mtuHeadRoom' in kwargs:
+        if mtu_head_room is None and 'mtuHeadRoom' in kwargs:
             mtu_head_room = kwargs['mtuHeadRoom']
-        if 'multusDisable' in kwargs:
+        if multus_disable is None and 'multusDisable' in kwargs:
             multus_disable = kwargs['multusDisable']
-        if 'noPriorityClass' in kwargs:
+        if no_priority_class is None and 'noPriorityClass' in kwargs:
             no_priority_class = kwargs['noPriorityClass']
-        if 'nodePodIfEnable' in kwargs:
+        if node_pod_if_enable is None and 'nodePodIfEnable' in kwargs:
             node_pod_if_enable = kwargs['nodePodIfEnable']
-        if 'opflexClientSsl' in kwargs:
+        if opflex_client_ssl is None and 'opflexClientSsl' in kwargs:
             opflex_client_ssl = kwargs['opflexClientSsl']
-        if 'opflexDeviceDeleteTimeout' in kwargs:
+        if opflex_device_delete_timeout is None and 'opflexDeviceDeleteTimeout' in kwargs:
             opflex_device_delete_timeout = kwargs['opflexDeviceDeleteTimeout']
-        if 'opflexLogLevel' in kwargs:
+        if opflex_log_level is None and 'opflexLogLevel' in kwargs:
             opflex_log_level = kwargs['opflexLogLevel']
-        if 'opflexMode' in kwargs:
+        if opflex_mode is None and 'opflexMode' in kwargs:
             opflex_mode = kwargs['opflexMode']
-        if 'opflexServerPort' in kwargs:
+        if opflex_server_port is None and 'opflexServerPort' in kwargs:
             opflex_server_port = kwargs['opflexServerPort']
-        if 'overlayVrfName' in kwargs:
+        if overlay_vrf_name is None and 'overlayVrfName' in kwargs:
             overlay_vrf_name = kwargs['overlayVrfName']
-        if 'ovsMemoryLimit' in kwargs:
+        if ovs_memory_limit is None and 'ovsMemoryLimit' in kwargs:
             ovs_memory_limit = kwargs['ovsMemoryLimit']
-        if 'pbrTrackingNonSnat' in kwargs:
+        if pbr_tracking_non_snat is None and 'pbrTrackingNonSnat' in kwargs:
             pbr_tracking_non_snat = kwargs['pbrTrackingNonSnat']
-        if 'podSubnetChunkSize' in kwargs:
+        if pod_subnet_chunk_size is None and 'podSubnetChunkSize' in kwargs:
             pod_subnet_chunk_size = kwargs['podSubnetChunkSize']
-        if 'runGbpContainer' in kwargs:
+        if run_gbp_container is None and 'runGbpContainer' in kwargs:
             run_gbp_container = kwargs['runGbpContainer']
-        if 'runOpflexServerContainer' in kwargs:
+        if run_opflex_server_container is None and 'runOpflexServerContainer' in kwargs:
             run_opflex_server_container = kwargs['runOpflexServerContainer']
-        if 'serviceMonitorInterval' in kwargs:
+        if service_monitor_interval is None and 'serviceMonitorInterval' in kwargs:
             service_monitor_interval = kwargs['serviceMonitorInterval']
-        if 'snatContractScope' in kwargs:
+        if snat_contract_scope is None and 'snatContractScope' in kwargs:
             snat_contract_scope = kwargs['snatContractScope']
-        if 'snatNamespace' in kwargs:
+        if snat_namespace is None and 'snatNamespace' in kwargs:
             snat_namespace = kwargs['snatNamespace']
-        if 'snatPortRangeEnd' in kwargs:
+        if snat_port_range_end is None and 'snatPortRangeEnd' in kwargs:
             snat_port_range_end = kwargs['snatPortRangeEnd']
-        if 'snatPortRangeStart' in kwargs:
+        if snat_port_range_start is None and 'snatPortRangeStart' in kwargs:
             snat_port_range_start = kwargs['snatPortRangeStart']
-        if 'snatPortsPerNode' in kwargs:
+        if snat_ports_per_node is None and 'snatPortsPerNode' in kwargs:
             snat_ports_per_node = kwargs['snatPortsPerNode']
-        if 'sriovEnable' in kwargs:
+        if sriov_enable is None and 'sriovEnable' in kwargs:
             sriov_enable = kwargs['sriovEnable']
-        if 'subnetDomainName' in kwargs:
+        if subnet_domain_name is None and 'subnetDomainName' in kwargs:
             subnet_domain_name = kwargs['subnetDomainName']
-        if 'useAciAnywhereCrd' in kwargs:
+        if use_aci_anywhere_crd is None and 'useAciAnywhereCrd' in kwargs:
             use_aci_anywhere_crd = kwargs['useAciAnywhereCrd']
-        if 'useAciCniPriorityClass' in kwargs:
+        if use_aci_cni_priority_class is None and 'useAciCniPriorityClass' in kwargs:
             use_aci_cni_priority_class = kwargs['useAciCniPriorityClass']
-        if 'useClusterRole' in kwargs:
+        if use_cluster_role is None and 'useClusterRole' in kwargs:
             use_cluster_role = kwargs['useClusterRole']
-        if 'useHostNetnsVolume' in kwargs:
+        if use_host_netns_volume is None and 'useHostNetnsVolume' in kwargs:
             use_host_netns_volume = kwargs['useHostNetnsVolume']
-        if 'useOpflexServerVolume' in kwargs:
+        if use_opflex_server_volume is None and 'useOpflexServerVolume' in kwargs:
             use_opflex_server_volume = kwargs['useOpflexServerVolume']
-        if 'usePrivilegedContainer' in kwargs:
+        if use_privileged_container is None and 'usePrivilegedContainer' in kwargs:
             use_privileged_container = kwargs['usePrivilegedContainer']
-        if 'vmmController' in kwargs:
+        if vmm_controller is None and 'vmmController' in kwargs:
             vmm_controller = kwargs['vmmController']
-        if 'vmmDomain' in kwargs:
+        if vmm_domain is None and 'vmmDomain' in kwargs:
             vmm_domain = kwargs['vmmDomain']
 
         _setter("aep", aep)
@@ -47842,11 +49112,13 @@ class GetClusterRkeConfigNetworkCalicoNetworkProviderResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cloud_provider: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cloud_provider: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cloudProvider' in kwargs:
+        if cloud_provider is None and 'cloudProvider' in kwargs:
             cloud_provider = kwargs['cloudProvider']
+        if cloud_provider is None:
+            raise TypeError("Missing 'cloud_provider' argument")
 
         _setter("cloud_provider", cloud_provider)
 
@@ -47867,9 +49139,11 @@ class GetClusterRkeConfigNetworkCanalNetworkProviderResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             iface: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             iface: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if iface is None:
+            raise TypeError("Missing 'iface' argument")
 
         _setter("iface", iface)
 
@@ -47890,9 +49164,11 @@ class GetClusterRkeConfigNetworkFlannelNetworkProviderResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             iface: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             iface: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if iface is None:
+            raise TypeError("Missing 'iface' argument")
 
         _setter("iface", iface)
 
@@ -47921,13 +49197,17 @@ class GetClusterRkeConfigNetworkTolerationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             seconds: int,
+             key: Optional[str] = None,
+             seconds: Optional[int] = None,
              effect: Optional[str] = None,
              operator: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if seconds is None:
+            raise TypeError("Missing 'seconds' argument")
 
         _setter("key", key)
         _setter("seconds", seconds)
@@ -47975,9 +49255,11 @@ class GetClusterRkeConfigNetworkWeaveNetworkProviderResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             password: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             password: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if password is None:
+            raise TypeError("Missing 'password' argument")
 
         _setter("password", password)
 
@@ -48023,33 +49305,45 @@ class GetClusterRkeConfigNodeResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address: str,
-             docker_socket: str,
-             roles: Sequence[str],
-             ssh_key: str,
-             ssh_key_path: str,
-             user: str,
+             address: Optional[str] = None,
+             docker_socket: Optional[str] = None,
+             roles: Optional[Sequence[str]] = None,
+             ssh_key: Optional[str] = None,
+             ssh_key_path: Optional[str] = None,
+             user: Optional[str] = None,
              hostname_override: Optional[str] = None,
              internal_address: Optional[str] = None,
              labels: Optional[Mapping[str, Any]] = None,
              node_id: Optional[str] = None,
              port: Optional[str] = None,
              ssh_agent_auth: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dockerSocket' in kwargs:
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if docker_socket is None and 'dockerSocket' in kwargs:
             docker_socket = kwargs['dockerSocket']
-        if 'sshKey' in kwargs:
+        if docker_socket is None:
+            raise TypeError("Missing 'docker_socket' argument")
+        if roles is None:
+            raise TypeError("Missing 'roles' argument")
+        if ssh_key is None and 'sshKey' in kwargs:
             ssh_key = kwargs['sshKey']
-        if 'sshKeyPath' in kwargs:
+        if ssh_key is None:
+            raise TypeError("Missing 'ssh_key' argument")
+        if ssh_key_path is None and 'sshKeyPath' in kwargs:
             ssh_key_path = kwargs['sshKeyPath']
-        if 'hostnameOverride' in kwargs:
+        if ssh_key_path is None:
+            raise TypeError("Missing 'ssh_key_path' argument")
+        if user is None:
+            raise TypeError("Missing 'user' argument")
+        if hostname_override is None and 'hostnameOverride' in kwargs:
             hostname_override = kwargs['hostnameOverride']
-        if 'internalAddress' in kwargs:
+        if internal_address is None and 'internalAddress' in kwargs:
             internal_address = kwargs['internalAddress']
-        if 'nodeId' in kwargs:
+        if node_id is None and 'nodeId' in kwargs:
             node_id = kwargs['nodeId']
-        if 'sshAgentAuth' in kwargs:
+        if ssh_agent_auth is None and 'sshAgentAuth' in kwargs:
             ssh_agent_auth = kwargs['sshAgentAuth']
 
         _setter("address", address)
@@ -48154,16 +49448,18 @@ class GetClusterRkeConfigPrivateRegistryResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             url: str,
+             url: Optional[str] = None,
              ecr_credential_plugin: Optional['outputs.GetClusterRkeConfigPrivateRegistryEcrCredentialPluginResult'] = None,
              is_default: Optional[bool] = None,
              password: Optional[str] = None,
              user: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ecrCredentialPlugin' in kwargs:
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+        if ecr_credential_plugin is None and 'ecrCredentialPlugin' in kwargs:
             ecr_credential_plugin = kwargs['ecrCredentialPlugin']
-        if 'isDefault' in kwargs:
+        if is_default is None and 'isDefault' in kwargs:
             is_default = kwargs['isDefault']
 
         _setter("url", url)
@@ -48220,13 +49516,13 @@ class GetClusterRkeConfigPrivateRegistryEcrCredentialPluginResult(dict):
              aws_access_key_id: Optional[str] = None,
              aws_secret_access_key: Optional[str] = None,
              aws_session_token: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'awsAccessKeyId' in kwargs:
+        if aws_access_key_id is None and 'awsAccessKeyId' in kwargs:
             aws_access_key_id = kwargs['awsAccessKeyId']
-        if 'awsSecretAccessKey' in kwargs:
+        if aws_secret_access_key is None and 'awsSecretAccessKey' in kwargs:
             aws_secret_access_key = kwargs['awsSecretAccessKey']
-        if 'awsSessionToken' in kwargs:
+        if aws_session_token is None and 'awsSessionToken' in kwargs:
             aws_session_token = kwargs['awsSessionToken']
 
         if aws_access_key_id is not None:
@@ -48273,18 +49569,30 @@ class GetClusterRkeConfigServicesResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             etcd: 'outputs.GetClusterRkeConfigServicesEtcdResult',
-             kube_api: 'outputs.GetClusterRkeConfigServicesKubeApiResult',
-             kube_controller: 'outputs.GetClusterRkeConfigServicesKubeControllerResult',
-             kubelet: 'outputs.GetClusterRkeConfigServicesKubeletResult',
-             kubeproxy: 'outputs.GetClusterRkeConfigServicesKubeproxyResult',
-             scheduler: 'outputs.GetClusterRkeConfigServicesSchedulerResult',
-             opts: Optional[pulumi.ResourceOptions]=None,
+             etcd: Optional['outputs.GetClusterRkeConfigServicesEtcdResult'] = None,
+             kube_api: Optional['outputs.GetClusterRkeConfigServicesKubeApiResult'] = None,
+             kube_controller: Optional['outputs.GetClusterRkeConfigServicesKubeControllerResult'] = None,
+             kubelet: Optional['outputs.GetClusterRkeConfigServicesKubeletResult'] = None,
+             kubeproxy: Optional['outputs.GetClusterRkeConfigServicesKubeproxyResult'] = None,
+             scheduler: Optional['outputs.GetClusterRkeConfigServicesSchedulerResult'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'kubeApi' in kwargs:
+        if etcd is None:
+            raise TypeError("Missing 'etcd' argument")
+        if kube_api is None and 'kubeApi' in kwargs:
             kube_api = kwargs['kubeApi']
-        if 'kubeController' in kwargs:
+        if kube_api is None:
+            raise TypeError("Missing 'kube_api' argument")
+        if kube_controller is None and 'kubeController' in kwargs:
             kube_controller = kwargs['kubeController']
+        if kube_controller is None:
+            raise TypeError("Missing 'kube_controller' argument")
+        if kubelet is None:
+            raise TypeError("Missing 'kubelet' argument")
+        if kubeproxy is None:
+            raise TypeError("Missing 'kubeproxy' argument")
+        if scheduler is None:
+            raise TypeError("Missing 'scheduler' argument")
 
         _setter("etcd", etcd)
         _setter("kube_api", kube_api)
@@ -48366,34 +49674,54 @@ class GetClusterRkeConfigServicesEtcdResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backup_config: 'outputs.GetClusterRkeConfigServicesEtcdBackupConfigResult',
-             ca_cert: str,
-             cert: str,
-             creation: str,
-             extra_args: Mapping[str, Any],
-             image: str,
-             key: str,
-             path: str,
-             retention: str,
-             snapshot: bool,
+             backup_config: Optional['outputs.GetClusterRkeConfigServicesEtcdBackupConfigResult'] = None,
+             ca_cert: Optional[str] = None,
+             cert: Optional[str] = None,
+             creation: Optional[str] = None,
+             extra_args: Optional[Mapping[str, Any]] = None,
+             image: Optional[str] = None,
+             key: Optional[str] = None,
+             path: Optional[str] = None,
+             retention: Optional[str] = None,
+             snapshot: Optional[bool] = None,
              external_urls: Optional[Sequence[str]] = None,
              extra_binds: Optional[Sequence[str]] = None,
              extra_envs: Optional[Sequence[str]] = None,
              gid: Optional[int] = None,
              uid: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backupConfig' in kwargs:
+        if backup_config is None and 'backupConfig' in kwargs:
             backup_config = kwargs['backupConfig']
-        if 'caCert' in kwargs:
+        if backup_config is None:
+            raise TypeError("Missing 'backup_config' argument")
+        if ca_cert is None and 'caCert' in kwargs:
             ca_cert = kwargs['caCert']
-        if 'extraArgs' in kwargs:
+        if ca_cert is None:
+            raise TypeError("Missing 'ca_cert' argument")
+        if cert is None:
+            raise TypeError("Missing 'cert' argument")
+        if creation is None:
+            raise TypeError("Missing 'creation' argument")
+        if extra_args is None and 'extraArgs' in kwargs:
             extra_args = kwargs['extraArgs']
-        if 'externalUrls' in kwargs:
+        if extra_args is None:
+            raise TypeError("Missing 'extra_args' argument")
+        if image is None:
+            raise TypeError("Missing 'image' argument")
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if retention is None:
+            raise TypeError("Missing 'retention' argument")
+        if snapshot is None:
+            raise TypeError("Missing 'snapshot' argument")
+        if external_urls is None and 'externalUrls' in kwargs:
             external_urls = kwargs['externalUrls']
-        if 'extraBinds' in kwargs:
+        if extra_binds is None and 'extraBinds' in kwargs:
             extra_binds = kwargs['extraBinds']
-        if 'extraEnvs' in kwargs:
+        if extra_envs is None and 'extraEnvs' in kwargs:
             extra_envs = kwargs['extraEnvs']
 
         _setter("backup_config", backup_config)
@@ -48517,19 +49845,21 @@ class GetClusterRkeConfigServicesEtcdBackupConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             timeout: int,
+             timeout: Optional[int] = None,
              enabled: Optional[bool] = None,
              interval_hours: Optional[int] = None,
              retention: Optional[int] = None,
              s3_backup_config: Optional['outputs.GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigResult'] = None,
              safe_timestamp: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'intervalHours' in kwargs:
+        if timeout is None:
+            raise TypeError("Missing 'timeout' argument")
+        if interval_hours is None and 'intervalHours' in kwargs:
             interval_hours = kwargs['intervalHours']
-        if 's3BackupConfig' in kwargs:
+        if s3_backup_config is None and 's3BackupConfig' in kwargs:
             s3_backup_config = kwargs['s3BackupConfig']
-        if 'safeTimestamp' in kwargs:
+        if safe_timestamp is None and 'safeTimestamp' in kwargs:
             safe_timestamp = kwargs['safeTimestamp']
 
         _setter("timeout", timeout)
@@ -48598,22 +49928,26 @@ class GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket_name: str,
-             endpoint: str,
+             bucket_name: Optional[str] = None,
+             endpoint: Optional[str] = None,
              access_key: Optional[str] = None,
              custom_ca: Optional[str] = None,
              folder: Optional[str] = None,
              region: Optional[str] = None,
              secret_key: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bucketName' in kwargs:
+        if bucket_name is None and 'bucketName' in kwargs:
             bucket_name = kwargs['bucketName']
-        if 'accessKey' in kwargs:
+        if bucket_name is None:
+            raise TypeError("Missing 'bucket_name' argument")
+        if endpoint is None:
+            raise TypeError("Missing 'endpoint' argument")
+        if access_key is None and 'accessKey' in kwargs:
             access_key = kwargs['accessKey']
-        if 'customCa' in kwargs:
+        if custom_ca is None and 'customCa' in kwargs:
             custom_ca = kwargs['customCa']
-        if 'secretKey' in kwargs:
+        if secret_key is None and 'secretKey' in kwargs:
             secret_key = kwargs['secretKey']
 
         _setter("bucket_name", bucket_name)
@@ -48698,10 +50032,10 @@ class GetClusterRkeConfigServicesKubeApiResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             extra_args: Mapping[str, Any],
-             image: str,
-             service_cluster_ip_range: str,
-             service_node_port_range: str,
+             extra_args: Optional[Mapping[str, Any]] = None,
+             image: Optional[str] = None,
+             service_cluster_ip_range: Optional[str] = None,
+             service_node_port_range: Optional[str] = None,
              admission_configuration: Optional['outputs.GetClusterRkeConfigServicesKubeApiAdmissionConfigurationResult'] = None,
              always_pull_images: Optional[bool] = None,
              audit_log: Optional['outputs.GetClusterRkeConfigServicesKubeApiAuditLogResult'] = None,
@@ -48710,29 +50044,37 @@ class GetClusterRkeConfigServicesKubeApiResult(dict):
              extra_envs: Optional[Sequence[str]] = None,
              pod_security_policy: Optional[bool] = None,
              secrets_encryption_config: Optional['outputs.GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'extraArgs' in kwargs:
+        if extra_args is None and 'extraArgs' in kwargs:
             extra_args = kwargs['extraArgs']
-        if 'serviceClusterIpRange' in kwargs:
+        if extra_args is None:
+            raise TypeError("Missing 'extra_args' argument")
+        if image is None:
+            raise TypeError("Missing 'image' argument")
+        if service_cluster_ip_range is None and 'serviceClusterIpRange' in kwargs:
             service_cluster_ip_range = kwargs['serviceClusterIpRange']
-        if 'serviceNodePortRange' in kwargs:
+        if service_cluster_ip_range is None:
+            raise TypeError("Missing 'service_cluster_ip_range' argument")
+        if service_node_port_range is None and 'serviceNodePortRange' in kwargs:
             service_node_port_range = kwargs['serviceNodePortRange']
-        if 'admissionConfiguration' in kwargs:
+        if service_node_port_range is None:
+            raise TypeError("Missing 'service_node_port_range' argument")
+        if admission_configuration is None and 'admissionConfiguration' in kwargs:
             admission_configuration = kwargs['admissionConfiguration']
-        if 'alwaysPullImages' in kwargs:
+        if always_pull_images is None and 'alwaysPullImages' in kwargs:
             always_pull_images = kwargs['alwaysPullImages']
-        if 'auditLog' in kwargs:
+        if audit_log is None and 'auditLog' in kwargs:
             audit_log = kwargs['auditLog']
-        if 'eventRateLimit' in kwargs:
+        if event_rate_limit is None and 'eventRateLimit' in kwargs:
             event_rate_limit = kwargs['eventRateLimit']
-        if 'extraBinds' in kwargs:
+        if extra_binds is None and 'extraBinds' in kwargs:
             extra_binds = kwargs['extraBinds']
-        if 'extraEnvs' in kwargs:
+        if extra_envs is None and 'extraEnvs' in kwargs:
             extra_envs = kwargs['extraEnvs']
-        if 'podSecurityPolicy' in kwargs:
+        if pod_security_policy is None and 'podSecurityPolicy' in kwargs:
             pod_security_policy = kwargs['podSecurityPolicy']
-        if 'secretsEncryptionConfig' in kwargs:
+        if secrets_encryption_config is None and 'secretsEncryptionConfig' in kwargs:
             secrets_encryption_config = kwargs['secretsEncryptionConfig']
 
         _setter("extra_args", extra_args)
@@ -48832,12 +50174,14 @@ class GetClusterRkeConfigServicesKubeApiAdmissionConfigurationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             plugins: Sequence['outputs.GetClusterRkeConfigServicesKubeApiAdmissionConfigurationPluginResult'],
+             plugins: Optional[Sequence['outputs.GetClusterRkeConfigServicesKubeApiAdmissionConfigurationPluginResult']] = None,
              api_version: Optional[str] = None,
              kind: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'apiVersion' in kwargs:
+        if plugins is None:
+            raise TypeError("Missing 'plugins' argument")
+        if api_version is None and 'apiVersion' in kwargs:
             api_version = kwargs['apiVersion']
 
         _setter("plugins", plugins)
@@ -48880,11 +50224,15 @@ class GetClusterRkeConfigServicesKubeApiAdmissionConfigurationPluginResult(dict)
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             configuration: str,
-             name: str,
+             configuration: Optional[str] = None,
+             name: Optional[str] = None,
              path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if configuration is None:
+            raise TypeError("Missing 'configuration' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
 
         _setter("configuration", configuration)
         _setter("name", name)
@@ -48923,10 +50271,12 @@ class GetClusterRkeConfigServicesKubeApiAuditLogResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             configuration: 'outputs.GetClusterRkeConfigServicesKubeApiAuditLogConfigurationResult',
+             configuration: Optional['outputs.GetClusterRkeConfigServicesKubeApiAuditLogConfigurationResult'] = None,
              enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if configuration is None:
+            raise TypeError("Missing 'configuration' argument")
 
         _setter("configuration", configuration)
         if enabled is not None:
@@ -48964,19 +50314,21 @@ class GetClusterRkeConfigServicesKubeApiAuditLogConfigurationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             policy: str,
+             policy: Optional[str] = None,
              format: Optional[str] = None,
              max_age: Optional[int] = None,
              max_backup: Optional[int] = None,
              max_size: Optional[int] = None,
              path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'maxAge' in kwargs:
+        if policy is None:
+            raise TypeError("Missing 'policy' argument")
+        if max_age is None and 'maxAge' in kwargs:
             max_age = kwargs['maxAge']
-        if 'maxBackup' in kwargs:
+        if max_backup is None and 'maxBackup' in kwargs:
             max_backup = kwargs['maxBackup']
-        if 'maxSize' in kwargs:
+        if max_size is None and 'maxSize' in kwargs:
             max_size = kwargs['maxSize']
 
         _setter("policy", policy)
@@ -49035,10 +50387,12 @@ class GetClusterRkeConfigServicesKubeApiEventRateLimitResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             configuration: str,
+             configuration: Optional[str] = None,
              enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if configuration is None:
+            raise TypeError("Missing 'configuration' argument")
 
         _setter("configuration", configuration)
         if enabled is not None:
@@ -49068,12 +50422,14 @@ class GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             custom_config: str,
+             custom_config: Optional[str] = None,
              enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'customConfig' in kwargs:
+        if custom_config is None and 'customConfig' in kwargs:
             custom_config = kwargs['customConfig']
+        if custom_config is None:
+            raise TypeError("Missing 'custom_config' argument")
 
         _setter("custom_config", custom_config)
         if enabled is not None:
@@ -49111,23 +50467,31 @@ class GetClusterRkeConfigServicesKubeControllerResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_cidr: str,
-             extra_args: Mapping[str, Any],
-             image: str,
-             service_cluster_ip_range: str,
+             cluster_cidr: Optional[str] = None,
+             extra_args: Optional[Mapping[str, Any]] = None,
+             image: Optional[str] = None,
+             service_cluster_ip_range: Optional[str] = None,
              extra_binds: Optional[Sequence[str]] = None,
              extra_envs: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterCidr' in kwargs:
+        if cluster_cidr is None and 'clusterCidr' in kwargs:
             cluster_cidr = kwargs['clusterCidr']
-        if 'extraArgs' in kwargs:
+        if cluster_cidr is None:
+            raise TypeError("Missing 'cluster_cidr' argument")
+        if extra_args is None and 'extraArgs' in kwargs:
             extra_args = kwargs['extraArgs']
-        if 'serviceClusterIpRange' in kwargs:
+        if extra_args is None:
+            raise TypeError("Missing 'extra_args' argument")
+        if image is None:
+            raise TypeError("Missing 'image' argument")
+        if service_cluster_ip_range is None and 'serviceClusterIpRange' in kwargs:
             service_cluster_ip_range = kwargs['serviceClusterIpRange']
-        if 'extraBinds' in kwargs:
+        if service_cluster_ip_range is None:
+            raise TypeError("Missing 'service_cluster_ip_range' argument")
+        if extra_binds is None and 'extraBinds' in kwargs:
             extra_binds = kwargs['extraBinds']
-        if 'extraEnvs' in kwargs:
+        if extra_envs is None and 'extraEnvs' in kwargs:
             extra_envs = kwargs['extraEnvs']
 
         _setter("cluster_cidr", cluster_cidr)
@@ -49197,32 +50561,44 @@ class GetClusterRkeConfigServicesKubeletResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_dns_server: str,
-             cluster_domain: str,
-             extra_args: Mapping[str, Any],
-             fail_swap_on: bool,
-             image: str,
-             infra_container_image: str,
+             cluster_dns_server: Optional[str] = None,
+             cluster_domain: Optional[str] = None,
+             extra_args: Optional[Mapping[str, Any]] = None,
+             fail_swap_on: Optional[bool] = None,
+             image: Optional[str] = None,
+             infra_container_image: Optional[str] = None,
              extra_binds: Optional[Sequence[str]] = None,
              extra_envs: Optional[Sequence[str]] = None,
              generate_serving_certificate: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterDnsServer' in kwargs:
+        if cluster_dns_server is None and 'clusterDnsServer' in kwargs:
             cluster_dns_server = kwargs['clusterDnsServer']
-        if 'clusterDomain' in kwargs:
+        if cluster_dns_server is None:
+            raise TypeError("Missing 'cluster_dns_server' argument")
+        if cluster_domain is None and 'clusterDomain' in kwargs:
             cluster_domain = kwargs['clusterDomain']
-        if 'extraArgs' in kwargs:
+        if cluster_domain is None:
+            raise TypeError("Missing 'cluster_domain' argument")
+        if extra_args is None and 'extraArgs' in kwargs:
             extra_args = kwargs['extraArgs']
-        if 'failSwapOn' in kwargs:
+        if extra_args is None:
+            raise TypeError("Missing 'extra_args' argument")
+        if fail_swap_on is None and 'failSwapOn' in kwargs:
             fail_swap_on = kwargs['failSwapOn']
-        if 'infraContainerImage' in kwargs:
+        if fail_swap_on is None:
+            raise TypeError("Missing 'fail_swap_on' argument")
+        if image is None:
+            raise TypeError("Missing 'image' argument")
+        if infra_container_image is None and 'infraContainerImage' in kwargs:
             infra_container_image = kwargs['infraContainerImage']
-        if 'extraBinds' in kwargs:
+        if infra_container_image is None:
+            raise TypeError("Missing 'infra_container_image' argument")
+        if extra_binds is None and 'extraBinds' in kwargs:
             extra_binds = kwargs['extraBinds']
-        if 'extraEnvs' in kwargs:
+        if extra_envs is None and 'extraEnvs' in kwargs:
             extra_envs = kwargs['extraEnvs']
-        if 'generateServingCertificate' in kwargs:
+        if generate_serving_certificate is None and 'generateServingCertificate' in kwargs:
             generate_serving_certificate = kwargs['generateServingCertificate']
 
         _setter("cluster_dns_server", cluster_dns_server)
@@ -49301,17 +50677,21 @@ class GetClusterRkeConfigServicesKubeproxyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             extra_args: Mapping[str, Any],
-             image: str,
+             extra_args: Optional[Mapping[str, Any]] = None,
+             image: Optional[str] = None,
              extra_binds: Optional[Sequence[str]] = None,
              extra_envs: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'extraArgs' in kwargs:
+        if extra_args is None and 'extraArgs' in kwargs:
             extra_args = kwargs['extraArgs']
-        if 'extraBinds' in kwargs:
+        if extra_args is None:
+            raise TypeError("Missing 'extra_args' argument")
+        if image is None:
+            raise TypeError("Missing 'image' argument")
+        if extra_binds is None and 'extraBinds' in kwargs:
             extra_binds = kwargs['extraBinds']
-        if 'extraEnvs' in kwargs:
+        if extra_envs is None and 'extraEnvs' in kwargs:
             extra_envs = kwargs['extraEnvs']
 
         _setter("extra_args", extra_args)
@@ -49359,17 +50739,21 @@ class GetClusterRkeConfigServicesSchedulerResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             extra_args: Mapping[str, Any],
-             image: str,
+             extra_args: Optional[Mapping[str, Any]] = None,
+             image: Optional[str] = None,
              extra_binds: Optional[Sequence[str]] = None,
              extra_envs: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'extraArgs' in kwargs:
+        if extra_args is None and 'extraArgs' in kwargs:
             extra_args = kwargs['extraArgs']
-        if 'extraBinds' in kwargs:
+        if extra_args is None:
+            raise TypeError("Missing 'extra_args' argument")
+        if image is None:
+            raise TypeError("Missing 'image' argument")
+        if extra_binds is None and 'extraBinds' in kwargs:
             extra_binds = kwargs['extraBinds']
-        if 'extraEnvs' in kwargs:
+        if extra_envs is None and 'extraEnvs' in kwargs:
             extra_envs = kwargs['extraEnvs']
 
         _setter("extra_args", extra_args)
@@ -49417,17 +50801,19 @@ class GetClusterRkeConfigUpgradeStrategyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             drain_input: 'outputs.GetClusterRkeConfigUpgradeStrategyDrainInputResult',
+             drain_input: Optional['outputs.GetClusterRkeConfigUpgradeStrategyDrainInputResult'] = None,
              drain: Optional[bool] = None,
              max_unavailable_controlplane: Optional[str] = None,
              max_unavailable_worker: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'drainInput' in kwargs:
+        if drain_input is None and 'drainInput' in kwargs:
             drain_input = kwargs['drainInput']
-        if 'maxUnavailableControlplane' in kwargs:
+        if drain_input is None:
+            raise TypeError("Missing 'drain_input' argument")
+        if max_unavailable_controlplane is None and 'maxUnavailableControlplane' in kwargs:
             max_unavailable_controlplane = kwargs['maxUnavailableControlplane']
-        if 'maxUnavailableWorker' in kwargs:
+        if max_unavailable_worker is None and 'maxUnavailableWorker' in kwargs:
             max_unavailable_worker = kwargs['maxUnavailableWorker']
 
         _setter("drain_input", drain_input)
@@ -49483,13 +50869,13 @@ class GetClusterRkeConfigUpgradeStrategyDrainInputResult(dict):
              grace_period: Optional[int] = None,
              ignore_daemon_sets: Optional[bool] = None,
              timeout: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'deleteLocalData' in kwargs:
+        if delete_local_data is None and 'deleteLocalData' in kwargs:
             delete_local_data = kwargs['deleteLocalData']
-        if 'gracePeriod' in kwargs:
+        if grace_period is None and 'gracePeriod' in kwargs:
             grace_period = kwargs['gracePeriod']
-        if 'ignoreDaemonSets' in kwargs:
+        if ignore_daemon_sets is None and 'ignoreDaemonSets' in kwargs:
             ignore_daemon_sets = kwargs['ignoreDaemonSets']
 
         if delete_local_data is not None:
@@ -49547,13 +50933,13 @@ class GetClusterTemplateMemberResult(dict):
              access_type: Optional[str] = None,
              group_principal_id: Optional[str] = None,
              user_principal_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessType' in kwargs:
+        if access_type is None and 'accessType' in kwargs:
             access_type = kwargs['accessType']
-        if 'groupPrincipalId' in kwargs:
+        if group_principal_id is None and 'groupPrincipalId' in kwargs:
             group_principal_id = kwargs['groupPrincipalId']
-        if 'userPrincipalId' in kwargs:
+        if user_principal_id is None and 'userPrincipalId' in kwargs:
             user_principal_id = kwargs['userPrincipalId']
 
         if access_type is not None:
@@ -49612,21 +50998,33 @@ class GetClusterTemplateTemplateRevisionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             annotations: Mapping[str, Any],
-             cluster_config: 'outputs.GetClusterTemplateTemplateRevisionClusterConfigResult',
-             cluster_template_id: str,
-             id: str,
-             labels: Mapping[str, Any],
-             name: str,
+             annotations: Optional[Mapping[str, Any]] = None,
+             cluster_config: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigResult'] = None,
+             cluster_template_id: Optional[str] = None,
+             id: Optional[str] = None,
+             labels: Optional[Mapping[str, Any]] = None,
+             name: Optional[str] = None,
              default: Optional[bool] = None,
              enabled: Optional[bool] = None,
              questions: Optional[Sequence['outputs.GetClusterTemplateTemplateRevisionQuestionResult']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterConfig' in kwargs:
+        if annotations is None:
+            raise TypeError("Missing 'annotations' argument")
+        if cluster_config is None and 'clusterConfig' in kwargs:
             cluster_config = kwargs['clusterConfig']
-        if 'clusterTemplateId' in kwargs:
+        if cluster_config is None:
+            raise TypeError("Missing 'cluster_config' argument")
+        if cluster_template_id is None and 'clusterTemplateId' in kwargs:
             cluster_template_id = kwargs['clusterTemplateId']
+        if cluster_template_id is None:
+            raise TypeError("Missing 'cluster_template_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if labels is None:
+            raise TypeError("Missing 'labels' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
 
         _setter("annotations", annotations)
         _setter("cluster_config", cluster_config)
@@ -49732,43 +51130,59 @@ class GetClusterTemplateTemplateRevisionClusterConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_auth_endpoint: 'outputs.GetClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointResult',
-             default_cluster_role_for_project_members: str,
-             default_pod_security_admission_configuration_template_name: str,
-             default_pod_security_policy_template_id: str,
-             desired_agent_image: str,
-             desired_auth_image: str,
-             docker_root_dir: str,
-             rke_config: 'outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigResult',
+             cluster_auth_endpoint: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointResult'] = None,
+             default_cluster_role_for_project_members: Optional[str] = None,
+             default_pod_security_admission_configuration_template_name: Optional[str] = None,
+             default_pod_security_policy_template_id: Optional[str] = None,
+             desired_agent_image: Optional[str] = None,
+             desired_auth_image: Optional[str] = None,
+             docker_root_dir: Optional[str] = None,
+             rke_config: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigResult'] = None,
              enable_cluster_alerting: Optional[bool] = None,
              enable_cluster_monitoring: Optional[bool] = None,
              enable_network_policy: Optional[bool] = None,
              windows_prefered_cluster: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterAuthEndpoint' in kwargs:
+        if cluster_auth_endpoint is None and 'clusterAuthEndpoint' in kwargs:
             cluster_auth_endpoint = kwargs['clusterAuthEndpoint']
-        if 'defaultClusterRoleForProjectMembers' in kwargs:
+        if cluster_auth_endpoint is None:
+            raise TypeError("Missing 'cluster_auth_endpoint' argument")
+        if default_cluster_role_for_project_members is None and 'defaultClusterRoleForProjectMembers' in kwargs:
             default_cluster_role_for_project_members = kwargs['defaultClusterRoleForProjectMembers']
-        if 'defaultPodSecurityAdmissionConfigurationTemplateName' in kwargs:
+        if default_cluster_role_for_project_members is None:
+            raise TypeError("Missing 'default_cluster_role_for_project_members' argument")
+        if default_pod_security_admission_configuration_template_name is None and 'defaultPodSecurityAdmissionConfigurationTemplateName' in kwargs:
             default_pod_security_admission_configuration_template_name = kwargs['defaultPodSecurityAdmissionConfigurationTemplateName']
-        if 'defaultPodSecurityPolicyTemplateId' in kwargs:
+        if default_pod_security_admission_configuration_template_name is None:
+            raise TypeError("Missing 'default_pod_security_admission_configuration_template_name' argument")
+        if default_pod_security_policy_template_id is None and 'defaultPodSecurityPolicyTemplateId' in kwargs:
             default_pod_security_policy_template_id = kwargs['defaultPodSecurityPolicyTemplateId']
-        if 'desiredAgentImage' in kwargs:
+        if default_pod_security_policy_template_id is None:
+            raise TypeError("Missing 'default_pod_security_policy_template_id' argument")
+        if desired_agent_image is None and 'desiredAgentImage' in kwargs:
             desired_agent_image = kwargs['desiredAgentImage']
-        if 'desiredAuthImage' in kwargs:
+        if desired_agent_image is None:
+            raise TypeError("Missing 'desired_agent_image' argument")
+        if desired_auth_image is None and 'desiredAuthImage' in kwargs:
             desired_auth_image = kwargs['desiredAuthImage']
-        if 'dockerRootDir' in kwargs:
+        if desired_auth_image is None:
+            raise TypeError("Missing 'desired_auth_image' argument")
+        if docker_root_dir is None and 'dockerRootDir' in kwargs:
             docker_root_dir = kwargs['dockerRootDir']
-        if 'rkeConfig' in kwargs:
+        if docker_root_dir is None:
+            raise TypeError("Missing 'docker_root_dir' argument")
+        if rke_config is None and 'rkeConfig' in kwargs:
             rke_config = kwargs['rkeConfig']
-        if 'enableClusterAlerting' in kwargs:
+        if rke_config is None:
+            raise TypeError("Missing 'rke_config' argument")
+        if enable_cluster_alerting is None and 'enableClusterAlerting' in kwargs:
             enable_cluster_alerting = kwargs['enableClusterAlerting']
-        if 'enableClusterMonitoring' in kwargs:
+        if enable_cluster_monitoring is None and 'enableClusterMonitoring' in kwargs:
             enable_cluster_monitoring = kwargs['enableClusterMonitoring']
-        if 'enableNetworkPolicy' in kwargs:
+        if enable_network_policy is None and 'enableNetworkPolicy' in kwargs:
             enable_network_policy = kwargs['enableNetworkPolicy']
-        if 'windowsPreferedCluster' in kwargs:
+        if windows_prefered_cluster is None and 'windowsPreferedCluster' in kwargs:
             windows_prefered_cluster = kwargs['windowsPreferedCluster']
 
         _setter("cluster_auth_endpoint", cluster_auth_endpoint)
@@ -49867,9 +51281,9 @@ class GetClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointResult(d
              ca_certs: Optional[str] = None,
              enabled: Optional[bool] = None,
              fqdn: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'caCerts' in kwargs:
+        if ca_certs is None and 'caCerts' in kwargs:
             ca_certs = kwargs['caCerts']
 
         if ca_certs is not None:
@@ -49950,22 +51364,22 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             addon_job_timeout: int,
-             authentication: 'outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationResult',
-             authorization: 'outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationResult',
-             bastion_host: 'outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHostResult',
-             cloud_provider: 'outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderResult',
-             dns: 'outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsResult',
-             ingress: 'outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressResult',
-             kubernetes_version: str,
-             monitoring: 'outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringResult',
-             network: 'outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkResult',
-             prefix_path: str,
-             services: 'outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesResult',
-             ssh_cert_path: str,
-             ssh_key_path: str,
-             upgrade_strategy: 'outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyResult',
-             win_prefix_path: str,
+             addon_job_timeout: Optional[int] = None,
+             authentication: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationResult'] = None,
+             authorization: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationResult'] = None,
+             bastion_host: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHostResult'] = None,
+             cloud_provider: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderResult'] = None,
+             dns: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsResult'] = None,
+             ingress: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressResult'] = None,
+             kubernetes_version: Optional[str] = None,
+             monitoring: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringResult'] = None,
+             network: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkResult'] = None,
+             prefix_path: Optional[str] = None,
+             services: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesResult'] = None,
+             ssh_cert_path: Optional[str] = None,
+             ssh_key_path: Optional[str] = None,
+             upgrade_strategy: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyResult'] = None,
+             win_prefix_path: Optional[str] = None,
              addons: Optional[str] = None,
              addons_includes: Optional[Sequence[str]] = None,
              enable_cri_dockerd: Optional[bool] = None,
@@ -49973,35 +51387,67 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigResult(dict):
              nodes: Optional[Sequence['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeResult']] = None,
              private_registries: Optional[Sequence['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryResult']] = None,
              ssh_agent_auth: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'addonJobTimeout' in kwargs:
+        if addon_job_timeout is None and 'addonJobTimeout' in kwargs:
             addon_job_timeout = kwargs['addonJobTimeout']
-        if 'bastionHost' in kwargs:
+        if addon_job_timeout is None:
+            raise TypeError("Missing 'addon_job_timeout' argument")
+        if authentication is None:
+            raise TypeError("Missing 'authentication' argument")
+        if authorization is None:
+            raise TypeError("Missing 'authorization' argument")
+        if bastion_host is None and 'bastionHost' in kwargs:
             bastion_host = kwargs['bastionHost']
-        if 'cloudProvider' in kwargs:
+        if bastion_host is None:
+            raise TypeError("Missing 'bastion_host' argument")
+        if cloud_provider is None and 'cloudProvider' in kwargs:
             cloud_provider = kwargs['cloudProvider']
-        if 'kubernetesVersion' in kwargs:
+        if cloud_provider is None:
+            raise TypeError("Missing 'cloud_provider' argument")
+        if dns is None:
+            raise TypeError("Missing 'dns' argument")
+        if ingress is None:
+            raise TypeError("Missing 'ingress' argument")
+        if kubernetes_version is None and 'kubernetesVersion' in kwargs:
             kubernetes_version = kwargs['kubernetesVersion']
-        if 'prefixPath' in kwargs:
+        if kubernetes_version is None:
+            raise TypeError("Missing 'kubernetes_version' argument")
+        if monitoring is None:
+            raise TypeError("Missing 'monitoring' argument")
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+        if prefix_path is None and 'prefixPath' in kwargs:
             prefix_path = kwargs['prefixPath']
-        if 'sshCertPath' in kwargs:
+        if prefix_path is None:
+            raise TypeError("Missing 'prefix_path' argument")
+        if services is None:
+            raise TypeError("Missing 'services' argument")
+        if ssh_cert_path is None and 'sshCertPath' in kwargs:
             ssh_cert_path = kwargs['sshCertPath']
-        if 'sshKeyPath' in kwargs:
+        if ssh_cert_path is None:
+            raise TypeError("Missing 'ssh_cert_path' argument")
+        if ssh_key_path is None and 'sshKeyPath' in kwargs:
             ssh_key_path = kwargs['sshKeyPath']
-        if 'upgradeStrategy' in kwargs:
+        if ssh_key_path is None:
+            raise TypeError("Missing 'ssh_key_path' argument")
+        if upgrade_strategy is None and 'upgradeStrategy' in kwargs:
             upgrade_strategy = kwargs['upgradeStrategy']
-        if 'winPrefixPath' in kwargs:
+        if upgrade_strategy is None:
+            raise TypeError("Missing 'upgrade_strategy' argument")
+        if win_prefix_path is None and 'winPrefixPath' in kwargs:
             win_prefix_path = kwargs['winPrefixPath']
-        if 'addonsIncludes' in kwargs:
+        if win_prefix_path is None:
+            raise TypeError("Missing 'win_prefix_path' argument")
+        if addons_includes is None and 'addonsIncludes' in kwargs:
             addons_includes = kwargs['addonsIncludes']
-        if 'enableCriDockerd' in kwargs:
+        if enable_cri_dockerd is None and 'enableCriDockerd' in kwargs:
             enable_cri_dockerd = kwargs['enableCriDockerd']
-        if 'ignoreDockerVersion' in kwargs:
+        if ignore_docker_version is None and 'ignoreDockerVersion' in kwargs:
             ignore_docker_version = kwargs['ignoreDockerVersion']
-        if 'privateRegistries' in kwargs:
+        if private_registries is None and 'privateRegistries' in kwargs:
             private_registries = kwargs['privateRegistries']
-        if 'sshAgentAuth' in kwargs:
+        if ssh_agent_auth is None and 'sshAgentAuth' in kwargs:
             ssh_agent_auth = kwargs['sshAgentAuth']
 
         _setter("addon_job_timeout", addon_job_timeout)
@@ -50164,10 +51610,14 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationResu
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             sans: Sequence[str],
-             strategy: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             sans: Optional[Sequence[str]] = None,
+             strategy: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if sans is None:
+            raise TypeError("Missing 'sans' argument")
+        if strategy is None:
+            raise TypeError("Missing 'strategy' argument")
 
         _setter("sans", sans)
         _setter("strategy", strategy)
@@ -50196,10 +51646,12 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationResul
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             options: Mapping[str, Any],
+             options: Optional[Mapping[str, Any]] = None,
              mode: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if options is None:
+            raise TypeError("Missing 'options' argument")
 
         _setter("options", options)
         if mode is not None:
@@ -50237,19 +51689,27 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHostResult(
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address: str,
-             ssh_key: str,
-             ssh_key_path: str,
-             user: str,
+             address: Optional[str] = None,
+             ssh_key: Optional[str] = None,
+             ssh_key_path: Optional[str] = None,
+             user: Optional[str] = None,
              port: Optional[str] = None,
              ssh_agent_auth: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'sshKey' in kwargs:
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if ssh_key is None and 'sshKey' in kwargs:
             ssh_key = kwargs['sshKey']
-        if 'sshKeyPath' in kwargs:
+        if ssh_key is None:
+            raise TypeError("Missing 'ssh_key' argument")
+        if ssh_key_path is None and 'sshKeyPath' in kwargs:
             ssh_key_path = kwargs['sshKeyPath']
-        if 'sshAgentAuth' in kwargs:
+        if ssh_key_path is None:
+            raise TypeError("Missing 'ssh_key_path' argument")
+        if user is None:
+            raise TypeError("Missing 'user' argument")
+        if ssh_agent_auth is None and 'sshAgentAuth' in kwargs:
             ssh_agent_auth = kwargs['sshAgentAuth']
 
         _setter("address", address)
@@ -50316,23 +51776,25 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderResul
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             custom_cloud_provider: str,
+             custom_cloud_provider: Optional[str] = None,
              aws_cloud_provider: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderResult'] = None,
              azure_cloud_provider: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderResult'] = None,
              name: Optional[str] = None,
              openstack_cloud_provider: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderResult'] = None,
              vsphere_cloud_provider: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'customCloudProvider' in kwargs:
+        if custom_cloud_provider is None and 'customCloudProvider' in kwargs:
             custom_cloud_provider = kwargs['customCloudProvider']
-        if 'awsCloudProvider' in kwargs:
+        if custom_cloud_provider is None:
+            raise TypeError("Missing 'custom_cloud_provider' argument")
+        if aws_cloud_provider is None and 'awsCloudProvider' in kwargs:
             aws_cloud_provider = kwargs['awsCloudProvider']
-        if 'azureCloudProvider' in kwargs:
+        if azure_cloud_provider is None and 'azureCloudProvider' in kwargs:
             azure_cloud_provider = kwargs['azureCloudProvider']
-        if 'openstackCloudProvider' in kwargs:
+        if openstack_cloud_provider is None and 'openstackCloudProvider' in kwargs:
             openstack_cloud_provider = kwargs['openstackCloudProvider']
-        if 'vsphereCloudProvider' in kwargs:
+        if vsphere_cloud_provider is None and 'vsphereCloudProvider' in kwargs:
             vsphere_cloud_provider = kwargs['vsphereCloudProvider']
 
         _setter("custom_cloud_provider", custom_cloud_provider)
@@ -50394,13 +51856,15 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCl
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             global_: 'outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalResult',
+             global_: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalResult'] = None,
              service_overrides: Optional[Sequence['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideResult']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'global' in kwargs:
+        if global_ is None and 'global' in kwargs:
             global_ = kwargs['global']
-        if 'serviceOverrides' in kwargs:
+        if global_ is None:
+            raise TypeError("Missing 'global_' argument")
+        if service_overrides is None and 'serviceOverrides' in kwargs:
             service_overrides = kwargs['serviceOverrides']
 
         _setter("global_", global_)
@@ -50447,33 +51911,49 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCl
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             elb_security_group: str,
-             kubernetes_cluster_id: str,
-             kubernetes_cluster_tag: str,
-             role_arn: str,
-             route_table_id: str,
-             subnet_id: str,
-             vpc: str,
-             zone: str,
+             elb_security_group: Optional[str] = None,
+             kubernetes_cluster_id: Optional[str] = None,
+             kubernetes_cluster_tag: Optional[str] = None,
+             role_arn: Optional[str] = None,
+             route_table_id: Optional[str] = None,
+             subnet_id: Optional[str] = None,
+             vpc: Optional[str] = None,
+             zone: Optional[str] = None,
              disable_security_group_ingress: Optional[bool] = None,
              disable_strict_zone_check: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'elbSecurityGroup' in kwargs:
+        if elb_security_group is None and 'elbSecurityGroup' in kwargs:
             elb_security_group = kwargs['elbSecurityGroup']
-        if 'kubernetesClusterId' in kwargs:
+        if elb_security_group is None:
+            raise TypeError("Missing 'elb_security_group' argument")
+        if kubernetes_cluster_id is None and 'kubernetesClusterId' in kwargs:
             kubernetes_cluster_id = kwargs['kubernetesClusterId']
-        if 'kubernetesClusterTag' in kwargs:
+        if kubernetes_cluster_id is None:
+            raise TypeError("Missing 'kubernetes_cluster_id' argument")
+        if kubernetes_cluster_tag is None and 'kubernetesClusterTag' in kwargs:
             kubernetes_cluster_tag = kwargs['kubernetesClusterTag']
-        if 'roleArn' in kwargs:
+        if kubernetes_cluster_tag is None:
+            raise TypeError("Missing 'kubernetes_cluster_tag' argument")
+        if role_arn is None and 'roleArn' in kwargs:
             role_arn = kwargs['roleArn']
-        if 'routeTableId' in kwargs:
+        if role_arn is None:
+            raise TypeError("Missing 'role_arn' argument")
+        if route_table_id is None and 'routeTableId' in kwargs:
             route_table_id = kwargs['routeTableId']
-        if 'subnetId' in kwargs:
+        if route_table_id is None:
+            raise TypeError("Missing 'route_table_id' argument")
+        if subnet_id is None and 'subnetId' in kwargs:
             subnet_id = kwargs['subnetId']
-        if 'disableSecurityGroupIngress' in kwargs:
+        if subnet_id is None:
+            raise TypeError("Missing 'subnet_id' argument")
+        if vpc is None:
+            raise TypeError("Missing 'vpc' argument")
+        if zone is None:
+            raise TypeError("Missing 'zone' argument")
+        if disable_security_group_ingress is None and 'disableSecurityGroupIngress' in kwargs:
             disable_security_group_ingress = kwargs['disableSecurityGroupIngress']
-        if 'disableStrictZoneCheck' in kwargs:
+        if disable_strict_zone_check is None and 'disableStrictZoneCheck' in kwargs:
             disable_strict_zone_check = kwargs['disableStrictZoneCheck']
 
         _setter("elb_security_group", elb_security_group)
@@ -50561,20 +52041,32 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCl
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             region: str,
-             service: str,
-             signing_method: str,
-             signing_name: str,
-             signing_region: str,
-             url: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             region: Optional[str] = None,
+             service: Optional[str] = None,
+             signing_method: Optional[str] = None,
+             signing_name: Optional[str] = None,
+             signing_region: Optional[str] = None,
+             url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'signingMethod' in kwargs:
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+        if signing_method is None and 'signingMethod' in kwargs:
             signing_method = kwargs['signingMethod']
-        if 'signingName' in kwargs:
+        if signing_method is None:
+            raise TypeError("Missing 'signing_method' argument")
+        if signing_name is None and 'signingName' in kwargs:
             signing_name = kwargs['signingName']
-        if 'signingRegion' in kwargs:
+        if signing_name is None:
+            raise TypeError("Missing 'signing_name' argument")
+        if signing_region is None and 'signingRegion' in kwargs:
             signing_region = kwargs['signingRegion']
+        if signing_region is None:
+            raise TypeError("Missing 'signing_region' argument")
+        if url is None:
+            raise TypeError("Missing 'url' argument")
 
         _setter("region", region)
         _setter("service", service)
@@ -50681,90 +52173,146 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzure
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             aad_client_cert_password: str,
-             aad_client_cert_path: str,
-             aad_client_id: str,
-             aad_client_secret: str,
-             cloud: str,
-             cloud_provider_backoff: bool,
-             cloud_provider_backoff_duration: int,
-             cloud_provider_backoff_exponent: int,
-             cloud_provider_backoff_jitter: int,
-             cloud_provider_backoff_retries: int,
-             cloud_provider_rate_limit: bool,
-             cloud_provider_rate_limit_bucket: int,
-             cloud_provider_rate_limit_qps: int,
-             location: str,
-             maximum_load_balancer_rule_count: int,
-             primary_availability_set_name: str,
-             primary_scale_set_name: str,
-             resource_group: str,
-             route_table_name: str,
-             security_group_name: str,
-             subnet_name: str,
-             subscription_id: str,
-             tenant_id: str,
-             use_instance_metadata: bool,
-             use_managed_identity_extension: bool,
-             vm_type: str,
-             vnet_name: str,
-             vnet_resource_group: str,
+             aad_client_cert_password: Optional[str] = None,
+             aad_client_cert_path: Optional[str] = None,
+             aad_client_id: Optional[str] = None,
+             aad_client_secret: Optional[str] = None,
+             cloud: Optional[str] = None,
+             cloud_provider_backoff: Optional[bool] = None,
+             cloud_provider_backoff_duration: Optional[int] = None,
+             cloud_provider_backoff_exponent: Optional[int] = None,
+             cloud_provider_backoff_jitter: Optional[int] = None,
+             cloud_provider_backoff_retries: Optional[int] = None,
+             cloud_provider_rate_limit: Optional[bool] = None,
+             cloud_provider_rate_limit_bucket: Optional[int] = None,
+             cloud_provider_rate_limit_qps: Optional[int] = None,
+             location: Optional[str] = None,
+             maximum_load_balancer_rule_count: Optional[int] = None,
+             primary_availability_set_name: Optional[str] = None,
+             primary_scale_set_name: Optional[str] = None,
+             resource_group: Optional[str] = None,
+             route_table_name: Optional[str] = None,
+             security_group_name: Optional[str] = None,
+             subnet_name: Optional[str] = None,
+             subscription_id: Optional[str] = None,
+             tenant_id: Optional[str] = None,
+             use_instance_metadata: Optional[bool] = None,
+             use_managed_identity_extension: Optional[bool] = None,
+             vm_type: Optional[str] = None,
+             vnet_name: Optional[str] = None,
+             vnet_resource_group: Optional[str] = None,
              load_balancer_sku: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aadClientCertPassword' in kwargs:
+        if aad_client_cert_password is None and 'aadClientCertPassword' in kwargs:
             aad_client_cert_password = kwargs['aadClientCertPassword']
-        if 'aadClientCertPath' in kwargs:
+        if aad_client_cert_password is None:
+            raise TypeError("Missing 'aad_client_cert_password' argument")
+        if aad_client_cert_path is None and 'aadClientCertPath' in kwargs:
             aad_client_cert_path = kwargs['aadClientCertPath']
-        if 'aadClientId' in kwargs:
+        if aad_client_cert_path is None:
+            raise TypeError("Missing 'aad_client_cert_path' argument")
+        if aad_client_id is None and 'aadClientId' in kwargs:
             aad_client_id = kwargs['aadClientId']
-        if 'aadClientSecret' in kwargs:
+        if aad_client_id is None:
+            raise TypeError("Missing 'aad_client_id' argument")
+        if aad_client_secret is None and 'aadClientSecret' in kwargs:
             aad_client_secret = kwargs['aadClientSecret']
-        if 'cloudProviderBackoff' in kwargs:
+        if aad_client_secret is None:
+            raise TypeError("Missing 'aad_client_secret' argument")
+        if cloud is None:
+            raise TypeError("Missing 'cloud' argument")
+        if cloud_provider_backoff is None and 'cloudProviderBackoff' in kwargs:
             cloud_provider_backoff = kwargs['cloudProviderBackoff']
-        if 'cloudProviderBackoffDuration' in kwargs:
+        if cloud_provider_backoff is None:
+            raise TypeError("Missing 'cloud_provider_backoff' argument")
+        if cloud_provider_backoff_duration is None and 'cloudProviderBackoffDuration' in kwargs:
             cloud_provider_backoff_duration = kwargs['cloudProviderBackoffDuration']
-        if 'cloudProviderBackoffExponent' in kwargs:
+        if cloud_provider_backoff_duration is None:
+            raise TypeError("Missing 'cloud_provider_backoff_duration' argument")
+        if cloud_provider_backoff_exponent is None and 'cloudProviderBackoffExponent' in kwargs:
             cloud_provider_backoff_exponent = kwargs['cloudProviderBackoffExponent']
-        if 'cloudProviderBackoffJitter' in kwargs:
+        if cloud_provider_backoff_exponent is None:
+            raise TypeError("Missing 'cloud_provider_backoff_exponent' argument")
+        if cloud_provider_backoff_jitter is None and 'cloudProviderBackoffJitter' in kwargs:
             cloud_provider_backoff_jitter = kwargs['cloudProviderBackoffJitter']
-        if 'cloudProviderBackoffRetries' in kwargs:
+        if cloud_provider_backoff_jitter is None:
+            raise TypeError("Missing 'cloud_provider_backoff_jitter' argument")
+        if cloud_provider_backoff_retries is None and 'cloudProviderBackoffRetries' in kwargs:
             cloud_provider_backoff_retries = kwargs['cloudProviderBackoffRetries']
-        if 'cloudProviderRateLimit' in kwargs:
+        if cloud_provider_backoff_retries is None:
+            raise TypeError("Missing 'cloud_provider_backoff_retries' argument")
+        if cloud_provider_rate_limit is None and 'cloudProviderRateLimit' in kwargs:
             cloud_provider_rate_limit = kwargs['cloudProviderRateLimit']
-        if 'cloudProviderRateLimitBucket' in kwargs:
+        if cloud_provider_rate_limit is None:
+            raise TypeError("Missing 'cloud_provider_rate_limit' argument")
+        if cloud_provider_rate_limit_bucket is None and 'cloudProviderRateLimitBucket' in kwargs:
             cloud_provider_rate_limit_bucket = kwargs['cloudProviderRateLimitBucket']
-        if 'cloudProviderRateLimitQps' in kwargs:
+        if cloud_provider_rate_limit_bucket is None:
+            raise TypeError("Missing 'cloud_provider_rate_limit_bucket' argument")
+        if cloud_provider_rate_limit_qps is None and 'cloudProviderRateLimitQps' in kwargs:
             cloud_provider_rate_limit_qps = kwargs['cloudProviderRateLimitQps']
-        if 'maximumLoadBalancerRuleCount' in kwargs:
+        if cloud_provider_rate_limit_qps is None:
+            raise TypeError("Missing 'cloud_provider_rate_limit_qps' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if maximum_load_balancer_rule_count is None and 'maximumLoadBalancerRuleCount' in kwargs:
             maximum_load_balancer_rule_count = kwargs['maximumLoadBalancerRuleCount']
-        if 'primaryAvailabilitySetName' in kwargs:
+        if maximum_load_balancer_rule_count is None:
+            raise TypeError("Missing 'maximum_load_balancer_rule_count' argument")
+        if primary_availability_set_name is None and 'primaryAvailabilitySetName' in kwargs:
             primary_availability_set_name = kwargs['primaryAvailabilitySetName']
-        if 'primaryScaleSetName' in kwargs:
+        if primary_availability_set_name is None:
+            raise TypeError("Missing 'primary_availability_set_name' argument")
+        if primary_scale_set_name is None and 'primaryScaleSetName' in kwargs:
             primary_scale_set_name = kwargs['primaryScaleSetName']
-        if 'resourceGroup' in kwargs:
+        if primary_scale_set_name is None:
+            raise TypeError("Missing 'primary_scale_set_name' argument")
+        if resource_group is None and 'resourceGroup' in kwargs:
             resource_group = kwargs['resourceGroup']
-        if 'routeTableName' in kwargs:
+        if resource_group is None:
+            raise TypeError("Missing 'resource_group' argument")
+        if route_table_name is None and 'routeTableName' in kwargs:
             route_table_name = kwargs['routeTableName']
-        if 'securityGroupName' in kwargs:
+        if route_table_name is None:
+            raise TypeError("Missing 'route_table_name' argument")
+        if security_group_name is None and 'securityGroupName' in kwargs:
             security_group_name = kwargs['securityGroupName']
-        if 'subnetName' in kwargs:
+        if security_group_name is None:
+            raise TypeError("Missing 'security_group_name' argument")
+        if subnet_name is None and 'subnetName' in kwargs:
             subnet_name = kwargs['subnetName']
-        if 'subscriptionId' in kwargs:
+        if subnet_name is None:
+            raise TypeError("Missing 'subnet_name' argument")
+        if subscription_id is None and 'subscriptionId' in kwargs:
             subscription_id = kwargs['subscriptionId']
-        if 'tenantId' in kwargs:
+        if subscription_id is None:
+            raise TypeError("Missing 'subscription_id' argument")
+        if tenant_id is None and 'tenantId' in kwargs:
             tenant_id = kwargs['tenantId']
-        if 'useInstanceMetadata' in kwargs:
+        if tenant_id is None:
+            raise TypeError("Missing 'tenant_id' argument")
+        if use_instance_metadata is None and 'useInstanceMetadata' in kwargs:
             use_instance_metadata = kwargs['useInstanceMetadata']
-        if 'useManagedIdentityExtension' in kwargs:
+        if use_instance_metadata is None:
+            raise TypeError("Missing 'use_instance_metadata' argument")
+        if use_managed_identity_extension is None and 'useManagedIdentityExtension' in kwargs:
             use_managed_identity_extension = kwargs['useManagedIdentityExtension']
-        if 'vmType' in kwargs:
+        if use_managed_identity_extension is None:
+            raise TypeError("Missing 'use_managed_identity_extension' argument")
+        if vm_type is None and 'vmType' in kwargs:
             vm_type = kwargs['vmType']
-        if 'vnetName' in kwargs:
+        if vm_type is None:
+            raise TypeError("Missing 'vm_type' argument")
+        if vnet_name is None and 'vnetName' in kwargs:
             vnet_name = kwargs['vnetName']
-        if 'vnetResourceGroup' in kwargs:
+        if vnet_name is None:
+            raise TypeError("Missing 'vnet_name' argument")
+        if vnet_resource_group is None and 'vnetResourceGroup' in kwargs:
             vnet_resource_group = kwargs['vnetResourceGroup']
-        if 'loadBalancerSku' in kwargs:
+        if vnet_resource_group is None:
+            raise TypeError("Missing 'vnet_resource_group' argument")
+        if load_balancer_sku is None and 'loadBalancerSku' in kwargs:
             load_balancer_sku = kwargs['loadBalancerSku']
 
         _setter("aad_client_cert_password", aad_client_cert_password)
@@ -50963,19 +52511,29 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpens
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             block_storage: 'outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorageResult',
-             global_: 'outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalResult',
-             load_balancer: 'outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerResult',
-             metadata: 'outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadataResult',
-             route: 'outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRouteResult',
-             opts: Optional[pulumi.ResourceOptions]=None,
+             block_storage: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorageResult'] = None,
+             global_: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalResult'] = None,
+             load_balancer: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerResult'] = None,
+             metadata: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadataResult'] = None,
+             route: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRouteResult'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'blockStorage' in kwargs:
+        if block_storage is None and 'blockStorage' in kwargs:
             block_storage = kwargs['blockStorage']
-        if 'global' in kwargs:
+        if block_storage is None:
+            raise TypeError("Missing 'block_storage' argument")
+        if global_ is None and 'global' in kwargs:
             global_ = kwargs['global']
-        if 'loadBalancer' in kwargs:
+        if global_ is None:
+            raise TypeError("Missing 'global_' argument")
+        if load_balancer is None and 'loadBalancer' in kwargs:
             load_balancer = kwargs['loadBalancer']
+        if load_balancer is None:
+            raise TypeError("Missing 'load_balancer' argument")
+        if metadata is None:
+            raise TypeError("Missing 'metadata' argument")
+        if route is None:
+            raise TypeError("Missing 'route' argument")
 
         _setter("block_storage", block_storage)
         _setter("global_", global_)
@@ -51024,17 +52582,23 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpens
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bs_version: str,
-             ignore_volume_az: bool,
-             trust_device_path: bool,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             bs_version: Optional[str] = None,
+             ignore_volume_az: Optional[bool] = None,
+             trust_device_path: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bsVersion' in kwargs:
+        if bs_version is None and 'bsVersion' in kwargs:
             bs_version = kwargs['bsVersion']
-        if 'ignoreVolumeAz' in kwargs:
+        if bs_version is None:
+            raise TypeError("Missing 'bs_version' argument")
+        if ignore_volume_az is None and 'ignoreVolumeAz' in kwargs:
             ignore_volume_az = kwargs['ignoreVolumeAz']
-        if 'trustDevicePath' in kwargs:
+        if ignore_volume_az is None:
+            raise TypeError("Missing 'ignore_volume_az' argument")
+        if trust_device_path is None and 'trustDevicePath' in kwargs:
             trust_device_path = kwargs['trustDevicePath']
+        if trust_device_path is None:
+            raise TypeError("Missing 'trust_device_path' argument")
 
         _setter("bs_version", bs_version)
         _setter("ignore_volume_az", ignore_volume_az)
@@ -51085,32 +52649,52 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpens
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             auth_url: str,
-             ca_file: str,
-             domain_id: str,
-             domain_name: str,
-             password: str,
-             region: str,
-             tenant_id: str,
-             tenant_name: str,
-             trust_id: str,
-             username: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             auth_url: Optional[str] = None,
+             ca_file: Optional[str] = None,
+             domain_id: Optional[str] = None,
+             domain_name: Optional[str] = None,
+             password: Optional[str] = None,
+             region: Optional[str] = None,
+             tenant_id: Optional[str] = None,
+             tenant_name: Optional[str] = None,
+             trust_id: Optional[str] = None,
+             username: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'authUrl' in kwargs:
+        if auth_url is None and 'authUrl' in kwargs:
             auth_url = kwargs['authUrl']
-        if 'caFile' in kwargs:
+        if auth_url is None:
+            raise TypeError("Missing 'auth_url' argument")
+        if ca_file is None and 'caFile' in kwargs:
             ca_file = kwargs['caFile']
-        if 'domainId' in kwargs:
+        if ca_file is None:
+            raise TypeError("Missing 'ca_file' argument")
+        if domain_id is None and 'domainId' in kwargs:
             domain_id = kwargs['domainId']
-        if 'domainName' in kwargs:
+        if domain_id is None:
+            raise TypeError("Missing 'domain_id' argument")
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'tenantId' in kwargs:
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if tenant_id is None and 'tenantId' in kwargs:
             tenant_id = kwargs['tenantId']
-        if 'tenantName' in kwargs:
+        if tenant_id is None:
+            raise TypeError("Missing 'tenant_id' argument")
+        if tenant_name is None and 'tenantName' in kwargs:
             tenant_name = kwargs['tenantName']
-        if 'trustId' in kwargs:
+        if tenant_name is None:
+            raise TypeError("Missing 'tenant_name' argument")
+        if trust_id is None and 'trustId' in kwargs:
             trust_id = kwargs['trustId']
+        if trust_id is None:
+            raise TypeError("Missing 'trust_id' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
 
         _setter("auth_url", auth_url)
         _setter("ca_file", ca_file)
@@ -51205,40 +52789,56 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpens
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_monitor: bool,
-             floating_network_id: str,
-             lb_method: str,
-             lb_provider: str,
-             lb_version: str,
-             manage_security_groups: bool,
-             subnet_id: str,
-             use_octavia: bool,
+             create_monitor: Optional[bool] = None,
+             floating_network_id: Optional[str] = None,
+             lb_method: Optional[str] = None,
+             lb_provider: Optional[str] = None,
+             lb_version: Optional[str] = None,
+             manage_security_groups: Optional[bool] = None,
+             subnet_id: Optional[str] = None,
+             use_octavia: Optional[bool] = None,
              monitor_delay: Optional[str] = None,
              monitor_max_retries: Optional[int] = None,
              monitor_timeout: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createMonitor' in kwargs:
+        if create_monitor is None and 'createMonitor' in kwargs:
             create_monitor = kwargs['createMonitor']
-        if 'floatingNetworkId' in kwargs:
+        if create_monitor is None:
+            raise TypeError("Missing 'create_monitor' argument")
+        if floating_network_id is None and 'floatingNetworkId' in kwargs:
             floating_network_id = kwargs['floatingNetworkId']
-        if 'lbMethod' in kwargs:
+        if floating_network_id is None:
+            raise TypeError("Missing 'floating_network_id' argument")
+        if lb_method is None and 'lbMethod' in kwargs:
             lb_method = kwargs['lbMethod']
-        if 'lbProvider' in kwargs:
+        if lb_method is None:
+            raise TypeError("Missing 'lb_method' argument")
+        if lb_provider is None and 'lbProvider' in kwargs:
             lb_provider = kwargs['lbProvider']
-        if 'lbVersion' in kwargs:
+        if lb_provider is None:
+            raise TypeError("Missing 'lb_provider' argument")
+        if lb_version is None and 'lbVersion' in kwargs:
             lb_version = kwargs['lbVersion']
-        if 'manageSecurityGroups' in kwargs:
+        if lb_version is None:
+            raise TypeError("Missing 'lb_version' argument")
+        if manage_security_groups is None and 'manageSecurityGroups' in kwargs:
             manage_security_groups = kwargs['manageSecurityGroups']
-        if 'subnetId' in kwargs:
+        if manage_security_groups is None:
+            raise TypeError("Missing 'manage_security_groups' argument")
+        if subnet_id is None and 'subnetId' in kwargs:
             subnet_id = kwargs['subnetId']
-        if 'useOctavia' in kwargs:
+        if subnet_id is None:
+            raise TypeError("Missing 'subnet_id' argument")
+        if use_octavia is None and 'useOctavia' in kwargs:
             use_octavia = kwargs['useOctavia']
-        if 'monitorDelay' in kwargs:
+        if use_octavia is None:
+            raise TypeError("Missing 'use_octavia' argument")
+        if monitor_delay is None and 'monitorDelay' in kwargs:
             monitor_delay = kwargs['monitorDelay']
-        if 'monitorMaxRetries' in kwargs:
+        if monitor_max_retries is None and 'monitorMaxRetries' in kwargs:
             monitor_max_retries = kwargs['monitorMaxRetries']
-        if 'monitorTimeout' in kwargs:
+        if monitor_timeout is None and 'monitorTimeout' in kwargs:
             monitor_timeout = kwargs['monitorTimeout']
 
         _setter("create_monitor", create_monitor)
@@ -51325,14 +52925,18 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpens
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             request_timeout: int,
-             search_order: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             request_timeout: Optional[int] = None,
+             search_order: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'requestTimeout' in kwargs:
+        if request_timeout is None and 'requestTimeout' in kwargs:
             request_timeout = kwargs['requestTimeout']
-        if 'searchOrder' in kwargs:
+        if request_timeout is None:
+            raise TypeError("Missing 'request_timeout' argument")
+        if search_order is None and 'searchOrder' in kwargs:
             search_order = kwargs['searchOrder']
+        if search_order is None:
+            raise TypeError("Missing 'search_order' argument")
 
         _setter("request_timeout", request_timeout)
         _setter("search_order", search_order)
@@ -51359,11 +52963,13 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpens
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             router_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             router_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'routerId' in kwargs:
+        if router_id is None and 'routerId' in kwargs:
             router_id = kwargs['routerId']
+        if router_id is None:
+            raise TypeError("Missing 'router_id' argument")
 
         _setter("router_id", router_id)
 
@@ -51392,17 +52998,27 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphe
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             disk: 'outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDiskResult',
-             global_: 'outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobalResult',
-             network: 'outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetworkResult',
-             virtual_centers: Sequence['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterResult'],
-             workspace: 'outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspaceResult',
-             opts: Optional[pulumi.ResourceOptions]=None,
+             disk: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDiskResult'] = None,
+             global_: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobalResult'] = None,
+             network: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetworkResult'] = None,
+             virtual_centers: Optional[Sequence['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterResult']] = None,
+             workspace: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspaceResult'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'global' in kwargs:
+        if disk is None:
+            raise TypeError("Missing 'disk' argument")
+        if global_ is None and 'global' in kwargs:
             global_ = kwargs['global']
-        if 'virtualCenters' in kwargs:
+        if global_ is None:
+            raise TypeError("Missing 'global_' argument")
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+        if virtual_centers is None and 'virtualCenters' in kwargs:
             virtual_centers = kwargs['virtualCenters']
+        if virtual_centers is None:
+            raise TypeError("Missing 'virtual_centers' argument")
+        if workspace is None:
+            raise TypeError("Missing 'workspace' argument")
 
         _setter("disk", disk)
         _setter("global_", global_)
@@ -51447,11 +53063,13 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphe
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             scsi_controller_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             scsi_controller_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'scsiControllerType' in kwargs:
+        if scsi_controller_type is None and 'scsiControllerType' in kwargs:
             scsi_controller_type = kwargs['scsiControllerType']
+        if scsi_controller_type is None:
+            raise TypeError("Missing 'scsi_controller_type' argument")
 
         _setter("scsi_controller_type", scsi_controller_type)
 
@@ -51482,18 +53100,30 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphe
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             datacenters: str,
-             insecure_flag: bool,
-             password: str,
-             port: str,
-             soap_roundtrip_count: int,
-             user: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             datacenters: Optional[str] = None,
+             insecure_flag: Optional[bool] = None,
+             password: Optional[str] = None,
+             port: Optional[str] = None,
+             soap_roundtrip_count: Optional[int] = None,
+             user: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'insecureFlag' in kwargs:
+        if datacenters is None:
+            raise TypeError("Missing 'datacenters' argument")
+        if insecure_flag is None and 'insecureFlag' in kwargs:
             insecure_flag = kwargs['insecureFlag']
-        if 'soapRoundtripCount' in kwargs:
+        if insecure_flag is None:
+            raise TypeError("Missing 'insecure_flag' argument")
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if soap_roundtrip_count is None and 'soapRoundtripCount' in kwargs:
             soap_roundtrip_count = kwargs['soapRoundtripCount']
+        if soap_roundtrip_count is None:
+            raise TypeError("Missing 'soap_roundtrip_count' argument")
+        if user is None:
+            raise TypeError("Missing 'user' argument")
 
         _setter("datacenters", datacenters)
         _setter("insecure_flag", insecure_flag)
@@ -51544,11 +53174,13 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphe
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             public_network: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             public_network: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'publicNetwork' in kwargs:
+        if public_network is None and 'publicNetwork' in kwargs:
             public_network = kwargs['publicNetwork']
+        if public_network is None:
+            raise TypeError("Missing 'public_network' argument")
 
         _setter("public_network", public_network)
 
@@ -51582,16 +53214,28 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphe
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             datacenters: str,
-             name: str,
-             password: str,
-             port: str,
-             soap_roundtrip_count: int,
-             user: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             datacenters: Optional[str] = None,
+             name: Optional[str] = None,
+             password: Optional[str] = None,
+             port: Optional[str] = None,
+             soap_roundtrip_count: Optional[int] = None,
+             user: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'soapRoundtripCount' in kwargs:
+        if datacenters is None:
+            raise TypeError("Missing 'datacenters' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if soap_roundtrip_count is None and 'soapRoundtripCount' in kwargs:
             soap_roundtrip_count = kwargs['soapRoundtripCount']
+        if soap_roundtrip_count is None:
+            raise TypeError("Missing 'soap_roundtrip_count' argument")
+        if user is None:
+            raise TypeError("Missing 'user' argument")
 
         _setter("datacenters", datacenters)
         _setter("name", name)
@@ -51653,17 +53297,27 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphe
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             datacenter: str,
-             default_datastore: str,
-             folder: str,
-             resourcepool_path: str,
-             server: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             datacenter: Optional[str] = None,
+             default_datastore: Optional[str] = None,
+             folder: Optional[str] = None,
+             resourcepool_path: Optional[str] = None,
+             server: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'defaultDatastore' in kwargs:
+        if datacenter is None:
+            raise TypeError("Missing 'datacenter' argument")
+        if default_datastore is None and 'defaultDatastore' in kwargs:
             default_datastore = kwargs['defaultDatastore']
-        if 'resourcepoolPath' in kwargs:
+        if default_datastore is None:
+            raise TypeError("Missing 'default_datastore' argument")
+        if folder is None:
+            raise TypeError("Missing 'folder' argument")
+        if resourcepool_path is None and 'resourcepoolPath' in kwargs:
             resourcepool_path = kwargs['resourcepoolPath']
+        if resourcepool_path is None:
+            raise TypeError("Missing 'resourcepool_path' argument")
+        if server is None:
+            raise TypeError("Missing 'server' argument")
 
         _setter("datacenter", datacenter)
         _setter("default_datastore", default_datastore)
@@ -51724,26 +53378,34 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             node_selector: Mapping[str, Any],
-             options: Mapping[str, Any],
-             reverse_cidrs: Sequence[str],
-             upstream_nameservers: Sequence[str],
+             node_selector: Optional[Mapping[str, Any]] = None,
+             options: Optional[Mapping[str, Any]] = None,
+             reverse_cidrs: Optional[Sequence[str]] = None,
+             upstream_nameservers: Optional[Sequence[str]] = None,
              linear_autoscaler_params: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsResult'] = None,
              nodelocal: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalResult'] = None,
              provider: Optional[str] = None,
              tolerations: Optional[Sequence['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsTolerationResult']] = None,
              update_strategy: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'nodeSelector' in kwargs:
+        if node_selector is None and 'nodeSelector' in kwargs:
             node_selector = kwargs['nodeSelector']
-        if 'reverseCidrs' in kwargs:
+        if node_selector is None:
+            raise TypeError("Missing 'node_selector' argument")
+        if options is None:
+            raise TypeError("Missing 'options' argument")
+        if reverse_cidrs is None and 'reverseCidrs' in kwargs:
             reverse_cidrs = kwargs['reverseCidrs']
-        if 'upstreamNameservers' in kwargs:
+        if reverse_cidrs is None:
+            raise TypeError("Missing 'reverse_cidrs' argument")
+        if upstream_nameservers is None and 'upstreamNameservers' in kwargs:
             upstream_nameservers = kwargs['upstreamNameservers']
-        if 'linearAutoscalerParams' in kwargs:
+        if upstream_nameservers is None:
+            raise TypeError("Missing 'upstream_nameservers' argument")
+        if linear_autoscaler_params is None and 'linearAutoscalerParams' in kwargs:
             linear_autoscaler_params = kwargs['linearAutoscalerParams']
-        if 'updateStrategy' in kwargs:
+        if update_strategy is None and 'updateStrategy' in kwargs:
             update_strategy = kwargs['updateStrategy']
 
         _setter("node_selector", node_selector)
@@ -51831,13 +53493,13 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscale
              min: Optional[int] = None,
              nodes_per_replica: Optional[float] = None,
              prevent_single_point_failure: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'coresPerReplica' in kwargs:
+        if cores_per_replica is None and 'coresPerReplica' in kwargs:
             cores_per_replica = kwargs['coresPerReplica']
-        if 'nodesPerReplica' in kwargs:
+        if nodes_per_replica is None and 'nodesPerReplica' in kwargs:
             nodes_per_replica = kwargs['nodesPerReplica']
-        if 'preventSinglePointFailure' in kwargs:
+        if prevent_single_point_failure is None and 'preventSinglePointFailure' in kwargs:
             prevent_single_point_failure = kwargs['preventSinglePointFailure']
 
         if cores_per_replica is not None:
@@ -51892,11 +53554,11 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalResult
              _setter: Callable[[Any, Any], None],
              ip_address: Optional[str] = None,
              node_selector: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ipAddress' in kwargs:
+        if ip_address is None and 'ipAddress' in kwargs:
             ip_address = kwargs['ipAddress']
-        if 'nodeSelector' in kwargs:
+        if node_selector is None and 'nodeSelector' in kwargs:
             node_selector = kwargs['nodeSelector']
 
         if ip_address is not None:
@@ -51934,13 +53596,17 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsTolerationResul
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             seconds: int,
+             key: Optional[str] = None,
+             seconds: Optional[int] = None,
              effect: Optional[str] = None,
              operator: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if seconds is None:
+            raise TypeError("Missing 'seconds' argument")
 
         _setter("key", key)
         _setter("seconds", seconds)
@@ -51992,9 +53658,9 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyR
              _setter: Callable[[Any, Any], None],
              rolling_update: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateResult'] = None,
              strategy: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'rollingUpdate' in kwargs:
+        if rolling_update is None and 'rollingUpdate' in kwargs:
             rolling_update = kwargs['rollingUpdate']
 
         if rolling_update is not None:
@@ -52028,11 +53694,11 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyR
              _setter: Callable[[Any, Any], None],
              max_surge: Optional[int] = None,
              max_unavailable: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'maxSurge' in kwargs:
+        if max_surge is None and 'maxSurge' in kwargs:
             max_surge = kwargs['maxSurge']
-        if 'maxUnavailable' in kwargs:
+        if max_unavailable is None and 'maxUnavailable' in kwargs:
             max_unavailable = kwargs['maxUnavailable']
 
         if max_surge is not None:
@@ -52082,34 +53748,50 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressResult(dict
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dns_policy: str,
-             extra_args: Mapping[str, Any],
-             http_port: int,
-             https_port: int,
-             network_mode: str,
-             node_selector: Mapping[str, Any],
-             options: Mapping[str, Any],
-             provider: str,
+             dns_policy: Optional[str] = None,
+             extra_args: Optional[Mapping[str, Any]] = None,
+             http_port: Optional[int] = None,
+             https_port: Optional[int] = None,
+             network_mode: Optional[str] = None,
+             node_selector: Optional[Mapping[str, Any]] = None,
+             options: Optional[Mapping[str, Any]] = None,
+             provider: Optional[str] = None,
              default_backend: Optional[bool] = None,
              tolerations: Optional[Sequence['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressTolerationResult']] = None,
              update_strategy: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dnsPolicy' in kwargs:
+        if dns_policy is None and 'dnsPolicy' in kwargs:
             dns_policy = kwargs['dnsPolicy']
-        if 'extraArgs' in kwargs:
+        if dns_policy is None:
+            raise TypeError("Missing 'dns_policy' argument")
+        if extra_args is None and 'extraArgs' in kwargs:
             extra_args = kwargs['extraArgs']
-        if 'httpPort' in kwargs:
+        if extra_args is None:
+            raise TypeError("Missing 'extra_args' argument")
+        if http_port is None and 'httpPort' in kwargs:
             http_port = kwargs['httpPort']
-        if 'httpsPort' in kwargs:
+        if http_port is None:
+            raise TypeError("Missing 'http_port' argument")
+        if https_port is None and 'httpsPort' in kwargs:
             https_port = kwargs['httpsPort']
-        if 'networkMode' in kwargs:
+        if https_port is None:
+            raise TypeError("Missing 'https_port' argument")
+        if network_mode is None and 'networkMode' in kwargs:
             network_mode = kwargs['networkMode']
-        if 'nodeSelector' in kwargs:
+        if network_mode is None:
+            raise TypeError("Missing 'network_mode' argument")
+        if node_selector is None and 'nodeSelector' in kwargs:
             node_selector = kwargs['nodeSelector']
-        if 'defaultBackend' in kwargs:
+        if node_selector is None:
+            raise TypeError("Missing 'node_selector' argument")
+        if options is None:
+            raise TypeError("Missing 'options' argument")
+        if provider is None:
+            raise TypeError("Missing 'provider' argument")
+        if default_backend is None and 'defaultBackend' in kwargs:
             default_backend = kwargs['defaultBackend']
-        if 'updateStrategy' in kwargs:
+        if update_strategy is None and 'updateStrategy' in kwargs:
             update_strategy = kwargs['updateStrategy']
 
         _setter("dns_policy", dns_policy)
@@ -52202,13 +53884,17 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressTolerationR
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             seconds: int,
+             key: Optional[str] = None,
+             seconds: Optional[int] = None,
              effect: Optional[str] = None,
              operator: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if seconds is None:
+            raise TypeError("Missing 'seconds' argument")
 
         _setter("key", key)
         _setter("seconds", seconds)
@@ -52260,9 +53946,9 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrat
              _setter: Callable[[Any, Any], None],
              rolling_update: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdateResult'] = None,
              strategy: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'rollingUpdate' in kwargs:
+        if rolling_update is None and 'rollingUpdate' in kwargs:
             rolling_update = kwargs['rollingUpdate']
 
         if rolling_update is not None:
@@ -52293,9 +53979,9 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrat
     def _configure(
              _setter: Callable[[Any, Any], None],
              max_unavailable: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'maxUnavailable' in kwargs:
+        if max_unavailable is None and 'maxUnavailable' in kwargs:
             max_unavailable = kwargs['maxUnavailable']
 
         if max_unavailable is not None:
@@ -52328,17 +54014,23 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringResult(d
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             options: Mapping[str, Any],
-             provider: str,
-             replicas: int,
+             options: Optional[Mapping[str, Any]] = None,
+             provider: Optional[str] = None,
+             replicas: Optional[int] = None,
              node_selector: Optional[Mapping[str, Any]] = None,
              tolerations: Optional[Sequence['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringTolerationResult']] = None,
              update_strategy: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'nodeSelector' in kwargs:
+        if options is None:
+            raise TypeError("Missing 'options' argument")
+        if provider is None:
+            raise TypeError("Missing 'provider' argument")
+        if replicas is None:
+            raise TypeError("Missing 'replicas' argument")
+        if node_selector is None and 'nodeSelector' in kwargs:
             node_selector = kwargs['nodeSelector']
-        if 'updateStrategy' in kwargs:
+        if update_strategy is None and 'updateStrategy' in kwargs:
             update_strategy = kwargs['updateStrategy']
 
         _setter("options", options)
@@ -52401,13 +54093,17 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringTolerati
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             seconds: int,
+             key: Optional[str] = None,
+             seconds: Optional[int] = None,
              effect: Optional[str] = None,
              operator: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if seconds is None:
+            raise TypeError("Missing 'seconds' argument")
 
         _setter("key", key)
         _setter("seconds", seconds)
@@ -52459,9 +54155,9 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateSt
              _setter: Callable[[Any, Any], None],
              rolling_update: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateResult'] = None,
              strategy: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'rollingUpdate' in kwargs:
+        if rolling_update is None and 'rollingUpdate' in kwargs:
             rolling_update = kwargs['rollingUpdate']
 
         if rolling_update is not None:
@@ -52495,11 +54191,11 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateSt
              _setter: Callable[[Any, Any], None],
              max_surge: Optional[int] = None,
              max_unavailable: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'maxSurge' in kwargs:
+        if max_surge is None and 'maxSurge' in kwargs:
             max_surge = kwargs['maxSurge']
-        if 'maxUnavailable' in kwargs:
+        if max_unavailable is None and 'maxUnavailable' in kwargs:
             max_unavailable = kwargs['maxUnavailable']
 
         if max_surge is not None:
@@ -52545,8 +54241,8 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkResult(dict
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             options: Mapping[str, Any],
-             plugin: str,
+             options: Optional[Mapping[str, Any]] = None,
+             plugin: Optional[str] = None,
              aci_network_provider: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProviderResult'] = None,
              calico_network_provider: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderResult'] = None,
              canal_network_provider: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderResult'] = None,
@@ -52554,17 +54250,21 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkResult(dict
              mtu: Optional[int] = None,
              tolerations: Optional[Sequence['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkTolerationResult']] = None,
              weave_network_provider: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aciNetworkProvider' in kwargs:
+        if options is None:
+            raise TypeError("Missing 'options' argument")
+        if plugin is None:
+            raise TypeError("Missing 'plugin' argument")
+        if aci_network_provider is None and 'aciNetworkProvider' in kwargs:
             aci_network_provider = kwargs['aciNetworkProvider']
-        if 'calicoNetworkProvider' in kwargs:
+        if calico_network_provider is None and 'calicoNetworkProvider' in kwargs:
             calico_network_provider = kwargs['calicoNetworkProvider']
-        if 'canalNetworkProvider' in kwargs:
+        if canal_network_provider is None and 'canalNetworkProvider' in kwargs:
             canal_network_provider = kwargs['canalNetworkProvider']
-        if 'flannelNetworkProvider' in kwargs:
+        if flannel_network_provider is None and 'flannelNetworkProvider' in kwargs:
             flannel_network_provider = kwargs['flannelNetworkProvider']
-        if 'weaveNetworkProvider' in kwargs:
+        if weave_network_provider is None and 'weaveNetworkProvider' in kwargs:
             weave_network_provider = kwargs['weaveNetworkProvider']
 
         _setter("options", options)
@@ -52787,26 +54487,26 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkP
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             aep: str,
-             apic_hosts: Sequence[str],
-             apic_user_crt: str,
-             apic_user_key: str,
-             apic_user_name: str,
-             encap_type: str,
-             extern_dynamic: str,
-             extern_static: str,
-             kube_api_vlan: str,
-             l3out: str,
-             l3out_external_networks: Sequence[str],
-             mcast_range_end: str,
-             mcast_range_start: str,
-             node_subnet: str,
-             node_svc_subnet: str,
-             service_vlan: str,
-             system_id: str,
-             token: str,
-             vrf_name: str,
-             vrf_tenant: str,
+             aep: Optional[str] = None,
+             apic_hosts: Optional[Sequence[str]] = None,
+             apic_user_crt: Optional[str] = None,
+             apic_user_key: Optional[str] = None,
+             apic_user_name: Optional[str] = None,
+             encap_type: Optional[str] = None,
+             extern_dynamic: Optional[str] = None,
+             extern_static: Optional[str] = None,
+             kube_api_vlan: Optional[str] = None,
+             l3out: Optional[str] = None,
+             l3out_external_networks: Optional[Sequence[str]] = None,
+             mcast_range_end: Optional[str] = None,
+             mcast_range_start: Optional[str] = None,
+             node_subnet: Optional[str] = None,
+             node_svc_subnet: Optional[str] = None,
+             service_vlan: Optional[str] = None,
+             system_id: Optional[str] = None,
+             token: Optional[str] = None,
+             vrf_name: Optional[str] = None,
+             vrf_tenant: Optional[str] = None,
              apic_refresh_ticker_adjust: Optional[str] = None,
              apic_refresh_time: Optional[str] = None,
              apic_subscription_delay: Optional[str] = None,
@@ -52861,145 +54561,185 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkP
              use_privileged_container: Optional[str] = None,
              vmm_controller: Optional[str] = None,
              vmm_domain: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'apicHosts' in kwargs:
+        if aep is None:
+            raise TypeError("Missing 'aep' argument")
+        if apic_hosts is None and 'apicHosts' in kwargs:
             apic_hosts = kwargs['apicHosts']
-        if 'apicUserCrt' in kwargs:
+        if apic_hosts is None:
+            raise TypeError("Missing 'apic_hosts' argument")
+        if apic_user_crt is None and 'apicUserCrt' in kwargs:
             apic_user_crt = kwargs['apicUserCrt']
-        if 'apicUserKey' in kwargs:
+        if apic_user_crt is None:
+            raise TypeError("Missing 'apic_user_crt' argument")
+        if apic_user_key is None and 'apicUserKey' in kwargs:
             apic_user_key = kwargs['apicUserKey']
-        if 'apicUserName' in kwargs:
+        if apic_user_key is None:
+            raise TypeError("Missing 'apic_user_key' argument")
+        if apic_user_name is None and 'apicUserName' in kwargs:
             apic_user_name = kwargs['apicUserName']
-        if 'encapType' in kwargs:
+        if apic_user_name is None:
+            raise TypeError("Missing 'apic_user_name' argument")
+        if encap_type is None and 'encapType' in kwargs:
             encap_type = kwargs['encapType']
-        if 'externDynamic' in kwargs:
+        if encap_type is None:
+            raise TypeError("Missing 'encap_type' argument")
+        if extern_dynamic is None and 'externDynamic' in kwargs:
             extern_dynamic = kwargs['externDynamic']
-        if 'externStatic' in kwargs:
+        if extern_dynamic is None:
+            raise TypeError("Missing 'extern_dynamic' argument")
+        if extern_static is None and 'externStatic' in kwargs:
             extern_static = kwargs['externStatic']
-        if 'kubeApiVlan' in kwargs:
+        if extern_static is None:
+            raise TypeError("Missing 'extern_static' argument")
+        if kube_api_vlan is None and 'kubeApiVlan' in kwargs:
             kube_api_vlan = kwargs['kubeApiVlan']
-        if 'l3outExternalNetworks' in kwargs:
+        if kube_api_vlan is None:
+            raise TypeError("Missing 'kube_api_vlan' argument")
+        if l3out is None:
+            raise TypeError("Missing 'l3out' argument")
+        if l3out_external_networks is None and 'l3outExternalNetworks' in kwargs:
             l3out_external_networks = kwargs['l3outExternalNetworks']
-        if 'mcastRangeEnd' in kwargs:
+        if l3out_external_networks is None:
+            raise TypeError("Missing 'l3out_external_networks' argument")
+        if mcast_range_end is None and 'mcastRangeEnd' in kwargs:
             mcast_range_end = kwargs['mcastRangeEnd']
-        if 'mcastRangeStart' in kwargs:
+        if mcast_range_end is None:
+            raise TypeError("Missing 'mcast_range_end' argument")
+        if mcast_range_start is None and 'mcastRangeStart' in kwargs:
             mcast_range_start = kwargs['mcastRangeStart']
-        if 'nodeSubnet' in kwargs:
+        if mcast_range_start is None:
+            raise TypeError("Missing 'mcast_range_start' argument")
+        if node_subnet is None and 'nodeSubnet' in kwargs:
             node_subnet = kwargs['nodeSubnet']
-        if 'nodeSvcSubnet' in kwargs:
+        if node_subnet is None:
+            raise TypeError("Missing 'node_subnet' argument")
+        if node_svc_subnet is None and 'nodeSvcSubnet' in kwargs:
             node_svc_subnet = kwargs['nodeSvcSubnet']
-        if 'serviceVlan' in kwargs:
+        if node_svc_subnet is None:
+            raise TypeError("Missing 'node_svc_subnet' argument")
+        if service_vlan is None and 'serviceVlan' in kwargs:
             service_vlan = kwargs['serviceVlan']
-        if 'systemId' in kwargs:
+        if service_vlan is None:
+            raise TypeError("Missing 'service_vlan' argument")
+        if system_id is None and 'systemId' in kwargs:
             system_id = kwargs['systemId']
-        if 'vrfName' in kwargs:
+        if system_id is None:
+            raise TypeError("Missing 'system_id' argument")
+        if token is None:
+            raise TypeError("Missing 'token' argument")
+        if vrf_name is None and 'vrfName' in kwargs:
             vrf_name = kwargs['vrfName']
-        if 'vrfTenant' in kwargs:
+        if vrf_name is None:
+            raise TypeError("Missing 'vrf_name' argument")
+        if vrf_tenant is None and 'vrfTenant' in kwargs:
             vrf_tenant = kwargs['vrfTenant']
-        if 'apicRefreshTickerAdjust' in kwargs:
+        if vrf_tenant is None:
+            raise TypeError("Missing 'vrf_tenant' argument")
+        if apic_refresh_ticker_adjust is None and 'apicRefreshTickerAdjust' in kwargs:
             apic_refresh_ticker_adjust = kwargs['apicRefreshTickerAdjust']
-        if 'apicRefreshTime' in kwargs:
+        if apic_refresh_time is None and 'apicRefreshTime' in kwargs:
             apic_refresh_time = kwargs['apicRefreshTime']
-        if 'apicSubscriptionDelay' in kwargs:
+        if apic_subscription_delay is None and 'apicSubscriptionDelay' in kwargs:
             apic_subscription_delay = kwargs['apicSubscriptionDelay']
-        if 'controllerLogLevel' in kwargs:
+        if controller_log_level is None and 'controllerLogLevel' in kwargs:
             controller_log_level = kwargs['controllerLogLevel']
-        if 'disablePeriodicSnatGlobalInfoSync' in kwargs:
+        if disable_periodic_snat_global_info_sync is None and 'disablePeriodicSnatGlobalInfoSync' in kwargs:
             disable_periodic_snat_global_info_sync = kwargs['disablePeriodicSnatGlobalInfoSync']
-        if 'disableWaitForNetwork' in kwargs:
+        if disable_wait_for_network is None and 'disableWaitForNetwork' in kwargs:
             disable_wait_for_network = kwargs['disableWaitForNetwork']
-        if 'dropLogEnable' in kwargs:
+        if drop_log_enable is None and 'dropLogEnable' in kwargs:
             drop_log_enable = kwargs['dropLogEnable']
-        if 'durationWaitForNetwork' in kwargs:
+        if duration_wait_for_network is None and 'durationWaitForNetwork' in kwargs:
             duration_wait_for_network = kwargs['durationWaitForNetwork']
-        if 'enableEndpointSlice' in kwargs:
+        if enable_endpoint_slice is None and 'enableEndpointSlice' in kwargs:
             enable_endpoint_slice = kwargs['enableEndpointSlice']
-        if 'epRegistry' in kwargs:
+        if ep_registry is None and 'epRegistry' in kwargs:
             ep_registry = kwargs['epRegistry']
-        if 'gbpPodSubnet' in kwargs:
+        if gbp_pod_subnet is None and 'gbpPodSubnet' in kwargs:
             gbp_pod_subnet = kwargs['gbpPodSubnet']
-        if 'hostAgentLogLevel' in kwargs:
+        if host_agent_log_level is None and 'hostAgentLogLevel' in kwargs:
             host_agent_log_level = kwargs['hostAgentLogLevel']
-        if 'imagePullPolicy' in kwargs:
+        if image_pull_policy is None and 'imagePullPolicy' in kwargs:
             image_pull_policy = kwargs['imagePullPolicy']
-        if 'imagePullSecret' in kwargs:
+        if image_pull_secret is None and 'imagePullSecret' in kwargs:
             image_pull_secret = kwargs['imagePullSecret']
-        if 'infraVlan' in kwargs:
+        if infra_vlan is None and 'infraVlan' in kwargs:
             infra_vlan = kwargs['infraVlan']
-        if 'installIstio' in kwargs:
+        if install_istio is None and 'installIstio' in kwargs:
             install_istio = kwargs['installIstio']
-        if 'istioProfile' in kwargs:
+        if istio_profile is None and 'istioProfile' in kwargs:
             istio_profile = kwargs['istioProfile']
-        if 'kafkaBrokers' in kwargs:
+        if kafka_brokers is None and 'kafkaBrokers' in kwargs:
             kafka_brokers = kwargs['kafkaBrokers']
-        if 'kafkaClientCrt' in kwargs:
+        if kafka_client_crt is None and 'kafkaClientCrt' in kwargs:
             kafka_client_crt = kwargs['kafkaClientCrt']
-        if 'kafkaClientKey' in kwargs:
+        if kafka_client_key is None and 'kafkaClientKey' in kwargs:
             kafka_client_key = kwargs['kafkaClientKey']
-        if 'maxNodesSvcGraph' in kwargs:
+        if max_nodes_svc_graph is None and 'maxNodesSvcGraph' in kwargs:
             max_nodes_svc_graph = kwargs['maxNodesSvcGraph']
-        if 'mtuHeadRoom' in kwargs:
+        if mtu_head_room is None and 'mtuHeadRoom' in kwargs:
             mtu_head_room = kwargs['mtuHeadRoom']
-        if 'multusDisable' in kwargs:
+        if multus_disable is None and 'multusDisable' in kwargs:
             multus_disable = kwargs['multusDisable']
-        if 'noPriorityClass' in kwargs:
+        if no_priority_class is None and 'noPriorityClass' in kwargs:
             no_priority_class = kwargs['noPriorityClass']
-        if 'nodePodIfEnable' in kwargs:
+        if node_pod_if_enable is None and 'nodePodIfEnable' in kwargs:
             node_pod_if_enable = kwargs['nodePodIfEnable']
-        if 'opflexClientSsl' in kwargs:
+        if opflex_client_ssl is None and 'opflexClientSsl' in kwargs:
             opflex_client_ssl = kwargs['opflexClientSsl']
-        if 'opflexDeviceDeleteTimeout' in kwargs:
+        if opflex_device_delete_timeout is None and 'opflexDeviceDeleteTimeout' in kwargs:
             opflex_device_delete_timeout = kwargs['opflexDeviceDeleteTimeout']
-        if 'opflexLogLevel' in kwargs:
+        if opflex_log_level is None and 'opflexLogLevel' in kwargs:
             opflex_log_level = kwargs['opflexLogLevel']
-        if 'opflexMode' in kwargs:
+        if opflex_mode is None and 'opflexMode' in kwargs:
             opflex_mode = kwargs['opflexMode']
-        if 'opflexServerPort' in kwargs:
+        if opflex_server_port is None and 'opflexServerPort' in kwargs:
             opflex_server_port = kwargs['opflexServerPort']
-        if 'overlayVrfName' in kwargs:
+        if overlay_vrf_name is None and 'overlayVrfName' in kwargs:
             overlay_vrf_name = kwargs['overlayVrfName']
-        if 'ovsMemoryLimit' in kwargs:
+        if ovs_memory_limit is None and 'ovsMemoryLimit' in kwargs:
             ovs_memory_limit = kwargs['ovsMemoryLimit']
-        if 'pbrTrackingNonSnat' in kwargs:
+        if pbr_tracking_non_snat is None and 'pbrTrackingNonSnat' in kwargs:
             pbr_tracking_non_snat = kwargs['pbrTrackingNonSnat']
-        if 'podSubnetChunkSize' in kwargs:
+        if pod_subnet_chunk_size is None and 'podSubnetChunkSize' in kwargs:
             pod_subnet_chunk_size = kwargs['podSubnetChunkSize']
-        if 'runGbpContainer' in kwargs:
+        if run_gbp_container is None and 'runGbpContainer' in kwargs:
             run_gbp_container = kwargs['runGbpContainer']
-        if 'runOpflexServerContainer' in kwargs:
+        if run_opflex_server_container is None and 'runOpflexServerContainer' in kwargs:
             run_opflex_server_container = kwargs['runOpflexServerContainer']
-        if 'serviceMonitorInterval' in kwargs:
+        if service_monitor_interval is None and 'serviceMonitorInterval' in kwargs:
             service_monitor_interval = kwargs['serviceMonitorInterval']
-        if 'snatContractScope' in kwargs:
+        if snat_contract_scope is None and 'snatContractScope' in kwargs:
             snat_contract_scope = kwargs['snatContractScope']
-        if 'snatNamespace' in kwargs:
+        if snat_namespace is None and 'snatNamespace' in kwargs:
             snat_namespace = kwargs['snatNamespace']
-        if 'snatPortRangeEnd' in kwargs:
+        if snat_port_range_end is None and 'snatPortRangeEnd' in kwargs:
             snat_port_range_end = kwargs['snatPortRangeEnd']
-        if 'snatPortRangeStart' in kwargs:
+        if snat_port_range_start is None and 'snatPortRangeStart' in kwargs:
             snat_port_range_start = kwargs['snatPortRangeStart']
-        if 'snatPortsPerNode' in kwargs:
+        if snat_ports_per_node is None and 'snatPortsPerNode' in kwargs:
             snat_ports_per_node = kwargs['snatPortsPerNode']
-        if 'sriovEnable' in kwargs:
+        if sriov_enable is None and 'sriovEnable' in kwargs:
             sriov_enable = kwargs['sriovEnable']
-        if 'subnetDomainName' in kwargs:
+        if subnet_domain_name is None and 'subnetDomainName' in kwargs:
             subnet_domain_name = kwargs['subnetDomainName']
-        if 'useAciAnywhereCrd' in kwargs:
+        if use_aci_anywhere_crd is None and 'useAciAnywhereCrd' in kwargs:
             use_aci_anywhere_crd = kwargs['useAciAnywhereCrd']
-        if 'useAciCniPriorityClass' in kwargs:
+        if use_aci_cni_priority_class is None and 'useAciCniPriorityClass' in kwargs:
             use_aci_cni_priority_class = kwargs['useAciCniPriorityClass']
-        if 'useClusterRole' in kwargs:
+        if use_cluster_role is None and 'useClusterRole' in kwargs:
             use_cluster_role = kwargs['useClusterRole']
-        if 'useHostNetnsVolume' in kwargs:
+        if use_host_netns_volume is None and 'useHostNetnsVolume' in kwargs:
             use_host_netns_volume = kwargs['useHostNetnsVolume']
-        if 'useOpflexServerVolume' in kwargs:
+        if use_opflex_server_volume is None and 'useOpflexServerVolume' in kwargs:
             use_opflex_server_volume = kwargs['useOpflexServerVolume']
-        if 'usePrivilegedContainer' in kwargs:
+        if use_privileged_container is None and 'usePrivilegedContainer' in kwargs:
             use_privileged_container = kwargs['usePrivilegedContainer']
-        if 'vmmController' in kwargs:
+        if vmm_controller is None and 'vmmController' in kwargs:
             vmm_controller = kwargs['vmmController']
-        if 'vmmDomain' in kwargs:
+        if vmm_domain is None and 'vmmDomain' in kwargs:
             vmm_domain = kwargs['vmmDomain']
 
         _setter("aep", aep)
@@ -53513,11 +55253,13 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetwo
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cloud_provider: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cloud_provider: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cloudProvider' in kwargs:
+        if cloud_provider is None and 'cloudProvider' in kwargs:
             cloud_provider = kwargs['cloudProvider']
+        if cloud_provider is None:
+            raise TypeError("Missing 'cloud_provider' argument")
 
         _setter("cloud_provider", cloud_provider)
 
@@ -53538,9 +55280,11 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetwor
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             iface: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             iface: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if iface is None:
+            raise TypeError("Missing 'iface' argument")
 
         _setter("iface", iface)
 
@@ -53561,9 +55305,11 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetw
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             iface: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             iface: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if iface is None:
+            raise TypeError("Missing 'iface' argument")
 
         _setter("iface", iface)
 
@@ -53592,13 +55338,17 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkTolerationR
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             seconds: int,
+             key: Optional[str] = None,
+             seconds: Optional[int] = None,
              effect: Optional[str] = None,
              operator: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if seconds is None:
+            raise TypeError("Missing 'seconds' argument")
 
         _setter("key", key)
         _setter("seconds", seconds)
@@ -53646,9 +55396,11 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetwor
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             password: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             password: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if password is None:
+            raise TypeError("Missing 'password' argument")
 
         _setter("password", password)
 
@@ -53694,33 +55446,45 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address: str,
-             docker_socket: str,
-             roles: Sequence[str],
-             ssh_key: str,
-             ssh_key_path: str,
-             user: str,
+             address: Optional[str] = None,
+             docker_socket: Optional[str] = None,
+             roles: Optional[Sequence[str]] = None,
+             ssh_key: Optional[str] = None,
+             ssh_key_path: Optional[str] = None,
+             user: Optional[str] = None,
              hostname_override: Optional[str] = None,
              internal_address: Optional[str] = None,
              labels: Optional[Mapping[str, Any]] = None,
              node_id: Optional[str] = None,
              port: Optional[str] = None,
              ssh_agent_auth: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dockerSocket' in kwargs:
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if docker_socket is None and 'dockerSocket' in kwargs:
             docker_socket = kwargs['dockerSocket']
-        if 'sshKey' in kwargs:
+        if docker_socket is None:
+            raise TypeError("Missing 'docker_socket' argument")
+        if roles is None:
+            raise TypeError("Missing 'roles' argument")
+        if ssh_key is None and 'sshKey' in kwargs:
             ssh_key = kwargs['sshKey']
-        if 'sshKeyPath' in kwargs:
+        if ssh_key is None:
+            raise TypeError("Missing 'ssh_key' argument")
+        if ssh_key_path is None and 'sshKeyPath' in kwargs:
             ssh_key_path = kwargs['sshKeyPath']
-        if 'hostnameOverride' in kwargs:
+        if ssh_key_path is None:
+            raise TypeError("Missing 'ssh_key_path' argument")
+        if user is None:
+            raise TypeError("Missing 'user' argument")
+        if hostname_override is None and 'hostnameOverride' in kwargs:
             hostname_override = kwargs['hostnameOverride']
-        if 'internalAddress' in kwargs:
+        if internal_address is None and 'internalAddress' in kwargs:
             internal_address = kwargs['internalAddress']
-        if 'nodeId' in kwargs:
+        if node_id is None and 'nodeId' in kwargs:
             node_id = kwargs['nodeId']
-        if 'sshAgentAuth' in kwargs:
+        if ssh_agent_auth is None and 'sshAgentAuth' in kwargs:
             ssh_agent_auth = kwargs['sshAgentAuth']
 
         _setter("address", address)
@@ -53825,16 +55589,18 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryRes
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             url: str,
+             url: Optional[str] = None,
              ecr_credential_plugin: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPluginResult'] = None,
              is_default: Optional[bool] = None,
              password: Optional[str] = None,
              user: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ecrCredentialPlugin' in kwargs:
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+        if ecr_credential_plugin is None and 'ecrCredentialPlugin' in kwargs:
             ecr_credential_plugin = kwargs['ecrCredentialPlugin']
-        if 'isDefault' in kwargs:
+        if is_default is None and 'isDefault' in kwargs:
             is_default = kwargs['isDefault']
 
         _setter("url", url)
@@ -53891,13 +55657,13 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcr
              aws_access_key_id: Optional[str] = None,
              aws_secret_access_key: Optional[str] = None,
              aws_session_token: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'awsAccessKeyId' in kwargs:
+        if aws_access_key_id is None and 'awsAccessKeyId' in kwargs:
             aws_access_key_id = kwargs['awsAccessKeyId']
-        if 'awsSecretAccessKey' in kwargs:
+        if aws_secret_access_key is None and 'awsSecretAccessKey' in kwargs:
             aws_secret_access_key = kwargs['awsSecretAccessKey']
-        if 'awsSessionToken' in kwargs:
+        if aws_session_token is None and 'awsSessionToken' in kwargs:
             aws_session_token = kwargs['awsSessionToken']
 
         if aws_access_key_id is not None:
@@ -53944,18 +55710,30 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesResult(dic
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             etcd: 'outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdResult',
-             kube_api: 'outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiResult',
-             kube_controller: 'outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControllerResult',
-             kubelet: 'outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletResult',
-             kubeproxy: 'outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyResult',
-             scheduler: 'outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerResult',
-             opts: Optional[pulumi.ResourceOptions]=None,
+             etcd: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdResult'] = None,
+             kube_api: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiResult'] = None,
+             kube_controller: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControllerResult'] = None,
+             kubelet: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletResult'] = None,
+             kubeproxy: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyResult'] = None,
+             scheduler: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerResult'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'kubeApi' in kwargs:
+        if etcd is None:
+            raise TypeError("Missing 'etcd' argument")
+        if kube_api is None and 'kubeApi' in kwargs:
             kube_api = kwargs['kubeApi']
-        if 'kubeController' in kwargs:
+        if kube_api is None:
+            raise TypeError("Missing 'kube_api' argument")
+        if kube_controller is None and 'kubeController' in kwargs:
             kube_controller = kwargs['kubeController']
+        if kube_controller is None:
+            raise TypeError("Missing 'kube_controller' argument")
+        if kubelet is None:
+            raise TypeError("Missing 'kubelet' argument")
+        if kubeproxy is None:
+            raise TypeError("Missing 'kubeproxy' argument")
+        if scheduler is None:
+            raise TypeError("Missing 'scheduler' argument")
 
         _setter("etcd", etcd)
         _setter("kube_api", kube_api)
@@ -54034,34 +55812,54 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdResult
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backup_config: 'outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigResult',
-             ca_cert: str,
-             cert: str,
-             creation: str,
-             extra_args: Mapping[str, Any],
-             image: str,
-             key: str,
-             path: str,
-             retention: str,
-             snapshot: bool,
+             backup_config: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigResult'] = None,
+             ca_cert: Optional[str] = None,
+             cert: Optional[str] = None,
+             creation: Optional[str] = None,
+             extra_args: Optional[Mapping[str, Any]] = None,
+             image: Optional[str] = None,
+             key: Optional[str] = None,
+             path: Optional[str] = None,
+             retention: Optional[str] = None,
+             snapshot: Optional[bool] = None,
              external_urls: Optional[Sequence[str]] = None,
              extra_binds: Optional[Sequence[str]] = None,
              extra_envs: Optional[Sequence[str]] = None,
              gid: Optional[int] = None,
              uid: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backupConfig' in kwargs:
+        if backup_config is None and 'backupConfig' in kwargs:
             backup_config = kwargs['backupConfig']
-        if 'caCert' in kwargs:
+        if backup_config is None:
+            raise TypeError("Missing 'backup_config' argument")
+        if ca_cert is None and 'caCert' in kwargs:
             ca_cert = kwargs['caCert']
-        if 'extraArgs' in kwargs:
+        if ca_cert is None:
+            raise TypeError("Missing 'ca_cert' argument")
+        if cert is None:
+            raise TypeError("Missing 'cert' argument")
+        if creation is None:
+            raise TypeError("Missing 'creation' argument")
+        if extra_args is None and 'extraArgs' in kwargs:
             extra_args = kwargs['extraArgs']
-        if 'externalUrls' in kwargs:
+        if extra_args is None:
+            raise TypeError("Missing 'extra_args' argument")
+        if image is None:
+            raise TypeError("Missing 'image' argument")
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if retention is None:
+            raise TypeError("Missing 'retention' argument")
+        if snapshot is None:
+            raise TypeError("Missing 'snapshot' argument")
+        if external_urls is None and 'externalUrls' in kwargs:
             external_urls = kwargs['externalUrls']
-        if 'extraBinds' in kwargs:
+        if extra_binds is None and 'extraBinds' in kwargs:
             extra_binds = kwargs['extraBinds']
-        if 'extraEnvs' in kwargs:
+        if extra_envs is None and 'extraEnvs' in kwargs:
             extra_envs = kwargs['extraEnvs']
 
         _setter("backup_config", backup_config)
@@ -54182,19 +55980,21 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackup
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             timeout: int,
+             timeout: Optional[int] = None,
              enabled: Optional[bool] = None,
              interval_hours: Optional[int] = None,
              retention: Optional[int] = None,
              s3_backup_config: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigResult'] = None,
              safe_timestamp: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'intervalHours' in kwargs:
+        if timeout is None:
+            raise TypeError("Missing 'timeout' argument")
+        if interval_hours is None and 'intervalHours' in kwargs:
             interval_hours = kwargs['intervalHours']
-        if 's3BackupConfig' in kwargs:
+        if s3_backup_config is None and 's3BackupConfig' in kwargs:
             s3_backup_config = kwargs['s3BackupConfig']
-        if 'safeTimestamp' in kwargs:
+        if safe_timestamp is None and 'safeTimestamp' in kwargs:
             safe_timestamp = kwargs['safeTimestamp']
 
         _setter("timeout", timeout)
@@ -54263,22 +56063,26 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackup
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket_name: str,
-             endpoint: str,
+             bucket_name: Optional[str] = None,
+             endpoint: Optional[str] = None,
              access_key: Optional[str] = None,
              custom_ca: Optional[str] = None,
              folder: Optional[str] = None,
              region: Optional[str] = None,
              secret_key: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bucketName' in kwargs:
+        if bucket_name is None and 'bucketName' in kwargs:
             bucket_name = kwargs['bucketName']
-        if 'accessKey' in kwargs:
+        if bucket_name is None:
+            raise TypeError("Missing 'bucket_name' argument")
+        if endpoint is None:
+            raise TypeError("Missing 'endpoint' argument")
+        if access_key is None and 'accessKey' in kwargs:
             access_key = kwargs['accessKey']
-        if 'customCa' in kwargs:
+        if custom_ca is None and 'customCa' in kwargs:
             custom_ca = kwargs['customCa']
-        if 'secretKey' in kwargs:
+        if secret_key is None and 'secretKey' in kwargs:
             secret_key = kwargs['secretKey']
 
         _setter("bucket_name", bucket_name)
@@ -54363,10 +56167,10 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiRes
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             extra_args: Mapping[str, Any],
-             image: str,
-             service_cluster_ip_range: str,
-             service_node_port_range: str,
+             extra_args: Optional[Mapping[str, Any]] = None,
+             image: Optional[str] = None,
+             service_cluster_ip_range: Optional[str] = None,
+             service_node_port_range: Optional[str] = None,
              admission_configuration: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationResult'] = None,
              always_pull_images: Optional[bool] = None,
              audit_log: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogResult'] = None,
@@ -54375,29 +56179,37 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiRes
              extra_envs: Optional[Sequence[str]] = None,
              pod_security_policy: Optional[bool] = None,
              secrets_encryption_config: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'extraArgs' in kwargs:
+        if extra_args is None and 'extraArgs' in kwargs:
             extra_args = kwargs['extraArgs']
-        if 'serviceClusterIpRange' in kwargs:
+        if extra_args is None:
+            raise TypeError("Missing 'extra_args' argument")
+        if image is None:
+            raise TypeError("Missing 'image' argument")
+        if service_cluster_ip_range is None and 'serviceClusterIpRange' in kwargs:
             service_cluster_ip_range = kwargs['serviceClusterIpRange']
-        if 'serviceNodePortRange' in kwargs:
+        if service_cluster_ip_range is None:
+            raise TypeError("Missing 'service_cluster_ip_range' argument")
+        if service_node_port_range is None and 'serviceNodePortRange' in kwargs:
             service_node_port_range = kwargs['serviceNodePortRange']
-        if 'admissionConfiguration' in kwargs:
+        if service_node_port_range is None:
+            raise TypeError("Missing 'service_node_port_range' argument")
+        if admission_configuration is None and 'admissionConfiguration' in kwargs:
             admission_configuration = kwargs['admissionConfiguration']
-        if 'alwaysPullImages' in kwargs:
+        if always_pull_images is None and 'alwaysPullImages' in kwargs:
             always_pull_images = kwargs['alwaysPullImages']
-        if 'auditLog' in kwargs:
+        if audit_log is None and 'auditLog' in kwargs:
             audit_log = kwargs['auditLog']
-        if 'eventRateLimit' in kwargs:
+        if event_rate_limit is None and 'eventRateLimit' in kwargs:
             event_rate_limit = kwargs['eventRateLimit']
-        if 'extraBinds' in kwargs:
+        if extra_binds is None and 'extraBinds' in kwargs:
             extra_binds = kwargs['extraBinds']
-        if 'extraEnvs' in kwargs:
+        if extra_envs is None and 'extraEnvs' in kwargs:
             extra_envs = kwargs['extraEnvs']
-        if 'podSecurityPolicy' in kwargs:
+        if pod_security_policy is None and 'podSecurityPolicy' in kwargs:
             pod_security_policy = kwargs['podSecurityPolicy']
-        if 'secretsEncryptionConfig' in kwargs:
+        if secrets_encryption_config is None and 'secretsEncryptionConfig' in kwargs:
             secrets_encryption_config = kwargs['secretsEncryptionConfig']
 
         _setter("extra_args", extra_args)
@@ -54497,12 +56309,14 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdm
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             plugins: Sequence['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPluginResult'],
+             plugins: Optional[Sequence['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPluginResult']] = None,
              api_version: Optional[str] = None,
              kind: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'apiVersion' in kwargs:
+        if plugins is None:
+            raise TypeError("Missing 'plugins' argument")
+        if api_version is None and 'apiVersion' in kwargs:
             api_version = kwargs['apiVersion']
 
         _setter("plugins", plugins)
@@ -54545,11 +56359,15 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdm
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             configuration: str,
-             name: str,
+             configuration: Optional[str] = None,
+             name: Optional[str] = None,
              path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if configuration is None:
+            raise TypeError("Missing 'configuration' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
 
         _setter("configuration", configuration)
         _setter("name", name)
@@ -54588,10 +56406,12 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAud
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             configuration: 'outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationResult',
+             configuration: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationResult'] = None,
              enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if configuration is None:
+            raise TypeError("Missing 'configuration' argument")
 
         _setter("configuration", configuration)
         if enabled is not None:
@@ -54629,19 +56449,21 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAud
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             policy: str,
+             policy: Optional[str] = None,
              format: Optional[str] = None,
              max_age: Optional[int] = None,
              max_backup: Optional[int] = None,
              max_size: Optional[int] = None,
              path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'maxAge' in kwargs:
+        if policy is None:
+            raise TypeError("Missing 'policy' argument")
+        if max_age is None and 'maxAge' in kwargs:
             max_age = kwargs['maxAge']
-        if 'maxBackup' in kwargs:
+        if max_backup is None and 'maxBackup' in kwargs:
             max_backup = kwargs['maxBackup']
-        if 'maxSize' in kwargs:
+        if max_size is None and 'maxSize' in kwargs:
             max_size = kwargs['maxSize']
 
         _setter("policy", policy)
@@ -54700,10 +56522,12 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEve
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             configuration: str,
+             configuration: Optional[str] = None,
              enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if configuration is None:
+            raise TypeError("Missing 'configuration' argument")
 
         _setter("configuration", configuration)
         if enabled is not None:
@@ -54733,12 +56557,14 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSec
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             custom_config: str,
+             custom_config: Optional[str] = None,
              enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'customConfig' in kwargs:
+        if custom_config is None and 'customConfig' in kwargs:
             custom_config = kwargs['customConfig']
+        if custom_config is None:
+            raise TypeError("Missing 'custom_config' argument")
 
         _setter("custom_config", custom_config)
         if enabled is not None:
@@ -54776,23 +56602,31 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeContro
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_cidr: str,
-             extra_args: Mapping[str, Any],
-             image: str,
-             service_cluster_ip_range: str,
+             cluster_cidr: Optional[str] = None,
+             extra_args: Optional[Mapping[str, Any]] = None,
+             image: Optional[str] = None,
+             service_cluster_ip_range: Optional[str] = None,
              extra_binds: Optional[Sequence[str]] = None,
              extra_envs: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterCidr' in kwargs:
+        if cluster_cidr is None and 'clusterCidr' in kwargs:
             cluster_cidr = kwargs['clusterCidr']
-        if 'extraArgs' in kwargs:
+        if cluster_cidr is None:
+            raise TypeError("Missing 'cluster_cidr' argument")
+        if extra_args is None and 'extraArgs' in kwargs:
             extra_args = kwargs['extraArgs']
-        if 'serviceClusterIpRange' in kwargs:
+        if extra_args is None:
+            raise TypeError("Missing 'extra_args' argument")
+        if image is None:
+            raise TypeError("Missing 'image' argument")
+        if service_cluster_ip_range is None and 'serviceClusterIpRange' in kwargs:
             service_cluster_ip_range = kwargs['serviceClusterIpRange']
-        if 'extraBinds' in kwargs:
+        if service_cluster_ip_range is None:
+            raise TypeError("Missing 'service_cluster_ip_range' argument")
+        if extra_binds is None and 'extraBinds' in kwargs:
             extra_binds = kwargs['extraBinds']
-        if 'extraEnvs' in kwargs:
+        if extra_envs is None and 'extraEnvs' in kwargs:
             extra_envs = kwargs['extraEnvs']
 
         _setter("cluster_cidr", cluster_cidr)
@@ -54862,32 +56696,44 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletRes
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_dns_server: str,
-             cluster_domain: str,
-             extra_args: Mapping[str, Any],
-             fail_swap_on: bool,
-             image: str,
-             infra_container_image: str,
+             cluster_dns_server: Optional[str] = None,
+             cluster_domain: Optional[str] = None,
+             extra_args: Optional[Mapping[str, Any]] = None,
+             fail_swap_on: Optional[bool] = None,
+             image: Optional[str] = None,
+             infra_container_image: Optional[str] = None,
              extra_binds: Optional[Sequence[str]] = None,
              extra_envs: Optional[Sequence[str]] = None,
              generate_serving_certificate: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterDnsServer' in kwargs:
+        if cluster_dns_server is None and 'clusterDnsServer' in kwargs:
             cluster_dns_server = kwargs['clusterDnsServer']
-        if 'clusterDomain' in kwargs:
+        if cluster_dns_server is None:
+            raise TypeError("Missing 'cluster_dns_server' argument")
+        if cluster_domain is None and 'clusterDomain' in kwargs:
             cluster_domain = kwargs['clusterDomain']
-        if 'extraArgs' in kwargs:
+        if cluster_domain is None:
+            raise TypeError("Missing 'cluster_domain' argument")
+        if extra_args is None and 'extraArgs' in kwargs:
             extra_args = kwargs['extraArgs']
-        if 'failSwapOn' in kwargs:
+        if extra_args is None:
+            raise TypeError("Missing 'extra_args' argument")
+        if fail_swap_on is None and 'failSwapOn' in kwargs:
             fail_swap_on = kwargs['failSwapOn']
-        if 'infraContainerImage' in kwargs:
+        if fail_swap_on is None:
+            raise TypeError("Missing 'fail_swap_on' argument")
+        if image is None:
+            raise TypeError("Missing 'image' argument")
+        if infra_container_image is None and 'infraContainerImage' in kwargs:
             infra_container_image = kwargs['infraContainerImage']
-        if 'extraBinds' in kwargs:
+        if infra_container_image is None:
+            raise TypeError("Missing 'infra_container_image' argument")
+        if extra_binds is None and 'extraBinds' in kwargs:
             extra_binds = kwargs['extraBinds']
-        if 'extraEnvs' in kwargs:
+        if extra_envs is None and 'extraEnvs' in kwargs:
             extra_envs = kwargs['extraEnvs']
-        if 'generateServingCertificate' in kwargs:
+        if generate_serving_certificate is None and 'generateServingCertificate' in kwargs:
             generate_serving_certificate = kwargs['generateServingCertificate']
 
         _setter("cluster_dns_server", cluster_dns_server)
@@ -54966,17 +56812,21 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyR
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             extra_args: Mapping[str, Any],
-             image: str,
+             extra_args: Optional[Mapping[str, Any]] = None,
+             image: Optional[str] = None,
              extra_binds: Optional[Sequence[str]] = None,
              extra_envs: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'extraArgs' in kwargs:
+        if extra_args is None and 'extraArgs' in kwargs:
             extra_args = kwargs['extraArgs']
-        if 'extraBinds' in kwargs:
+        if extra_args is None:
+            raise TypeError("Missing 'extra_args' argument")
+        if image is None:
+            raise TypeError("Missing 'image' argument")
+        if extra_binds is None and 'extraBinds' in kwargs:
             extra_binds = kwargs['extraBinds']
-        if 'extraEnvs' in kwargs:
+        if extra_envs is None and 'extraEnvs' in kwargs:
             extra_envs = kwargs['extraEnvs']
 
         _setter("extra_args", extra_args)
@@ -55024,17 +56874,21 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerR
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             extra_args: Mapping[str, Any],
-             image: str,
+             extra_args: Optional[Mapping[str, Any]] = None,
+             image: Optional[str] = None,
              extra_binds: Optional[Sequence[str]] = None,
              extra_envs: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'extraArgs' in kwargs:
+        if extra_args is None and 'extraArgs' in kwargs:
             extra_args = kwargs['extraArgs']
-        if 'extraBinds' in kwargs:
+        if extra_args is None:
+            raise TypeError("Missing 'extra_args' argument")
+        if image is None:
+            raise TypeError("Missing 'image' argument")
+        if extra_binds is None and 'extraBinds' in kwargs:
             extra_binds = kwargs['extraBinds']
-        if 'extraEnvs' in kwargs:
+        if extra_envs is None and 'extraEnvs' in kwargs:
             extra_envs = kwargs['extraEnvs']
 
         _setter("extra_args", extra_args)
@@ -55082,17 +56936,19 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyRes
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             drain_input: 'outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputResult',
+             drain_input: Optional['outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputResult'] = None,
              drain: Optional[bool] = None,
              max_unavailable_controlplane: Optional[str] = None,
              max_unavailable_worker: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'drainInput' in kwargs:
+        if drain_input is None and 'drainInput' in kwargs:
             drain_input = kwargs['drainInput']
-        if 'maxUnavailableControlplane' in kwargs:
+        if drain_input is None:
+            raise TypeError("Missing 'drain_input' argument")
+        if max_unavailable_controlplane is None and 'maxUnavailableControlplane' in kwargs:
             max_unavailable_controlplane = kwargs['maxUnavailableControlplane']
-        if 'maxUnavailableWorker' in kwargs:
+        if max_unavailable_worker is None and 'maxUnavailableWorker' in kwargs:
             max_unavailable_worker = kwargs['maxUnavailableWorker']
 
         _setter("drain_input", drain_input)
@@ -55148,13 +57004,13 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDra
              grace_period: Optional[int] = None,
              ignore_daemon_sets: Optional[bool] = None,
              timeout: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'deleteLocalData' in kwargs:
+        if delete_local_data is None and 'deleteLocalData' in kwargs:
             delete_local_data = kwargs['deleteLocalData']
-        if 'gracePeriod' in kwargs:
+        if grace_period is None and 'gracePeriod' in kwargs:
             grace_period = kwargs['gracePeriod']
-        if 'ignoreDaemonSets' in kwargs:
+        if ignore_daemon_sets is None and 'ignoreDaemonSets' in kwargs:
             ignore_daemon_sets = kwargs['ignoreDaemonSets']
 
         if delete_local_data is not None:
@@ -55211,12 +57067,16 @@ class GetClusterTemplateTemplateRevisionQuestionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             default: str,
-             variable: str,
+             default: Optional[str] = None,
+             variable: Optional[str] = None,
              required: Optional[bool] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if default is None:
+            raise TypeError("Missing 'default' argument")
+        if variable is None:
+            raise TypeError("Missing 'variable' argument")
 
         _setter("default", default)
         _setter("variable", variable)
@@ -55262,10 +57122,14 @@ class GetClusterV2AgentEnvVarResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             name: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("name", name)
         _setter("value", value)
@@ -55323,35 +57187,61 @@ class GetClusterV2ClusterRegistrationTokenResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             annotations: Mapping[str, Any],
-             cluster_id: str,
-             command: str,
-             id: str,
-             insecure_command: str,
-             insecure_node_command: str,
-             insecure_windows_node_command: str,
-             labels: Mapping[str, Any],
-             manifest_url: str,
-             name: str,
-             node_command: str,
-             token: str,
-             windows_node_command: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             annotations: Optional[Mapping[str, Any]] = None,
+             cluster_id: Optional[str] = None,
+             command: Optional[str] = None,
+             id: Optional[str] = None,
+             insecure_command: Optional[str] = None,
+             insecure_node_command: Optional[str] = None,
+             insecure_windows_node_command: Optional[str] = None,
+             labels: Optional[Mapping[str, Any]] = None,
+             manifest_url: Optional[str] = None,
+             name: Optional[str] = None,
+             node_command: Optional[str] = None,
+             token: Optional[str] = None,
+             windows_node_command: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if annotations is None:
+            raise TypeError("Missing 'annotations' argument")
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'insecureCommand' in kwargs:
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if command is None:
+            raise TypeError("Missing 'command' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if insecure_command is None and 'insecureCommand' in kwargs:
             insecure_command = kwargs['insecureCommand']
-        if 'insecureNodeCommand' in kwargs:
+        if insecure_command is None:
+            raise TypeError("Missing 'insecure_command' argument")
+        if insecure_node_command is None and 'insecureNodeCommand' in kwargs:
             insecure_node_command = kwargs['insecureNodeCommand']
-        if 'insecureWindowsNodeCommand' in kwargs:
+        if insecure_node_command is None:
+            raise TypeError("Missing 'insecure_node_command' argument")
+        if insecure_windows_node_command is None and 'insecureWindowsNodeCommand' in kwargs:
             insecure_windows_node_command = kwargs['insecureWindowsNodeCommand']
-        if 'manifestUrl' in kwargs:
+        if insecure_windows_node_command is None:
+            raise TypeError("Missing 'insecure_windows_node_command' argument")
+        if labels is None:
+            raise TypeError("Missing 'labels' argument")
+        if manifest_url is None and 'manifestUrl' in kwargs:
             manifest_url = kwargs['manifestUrl']
-        if 'nodeCommand' in kwargs:
+        if manifest_url is None:
+            raise TypeError("Missing 'manifest_url' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if node_command is None and 'nodeCommand' in kwargs:
             node_command = kwargs['nodeCommand']
-        if 'windowsNodeCommand' in kwargs:
+        if node_command is None:
+            raise TypeError("Missing 'node_command' argument")
+        if token is None:
+            raise TypeError("Missing 'token' argument")
+        if windows_node_command is None and 'windowsNodeCommand' in kwargs:
             windows_node_command = kwargs['windowsNodeCommand']
+        if windows_node_command is None:
+            raise TypeError("Missing 'windows_node_command' argument")
 
         _setter("annotations", annotations)
         _setter("cluster_id", cluster_id)
@@ -55474,10 +57364,10 @@ class GetClusterV2RkeConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             etcd: 'outputs.GetClusterV2RkeConfigEtcdResult',
-             machine_pool_defaults: Sequence['outputs.GetClusterV2RkeConfigMachinePoolDefaultResult'],
-             machine_pools: Sequence['outputs.GetClusterV2RkeConfigMachinePoolResult'],
-             machine_selector_configs: Sequence['outputs.GetClusterV2RkeConfigMachineSelectorConfigResult'],
+             etcd: Optional['outputs.GetClusterV2RkeConfigEtcdResult'] = None,
+             machine_pool_defaults: Optional[Sequence['outputs.GetClusterV2RkeConfigMachinePoolDefaultResult']] = None,
+             machine_pools: Optional[Sequence['outputs.GetClusterV2RkeConfigMachinePoolResult']] = None,
+             machine_selector_configs: Optional[Sequence['outputs.GetClusterV2RkeConfigMachineSelectorConfigResult']] = None,
              additional_manifest: Optional[str] = None,
              chart_values: Optional[str] = None,
              etcd_snapshot_create: Optional['outputs.GetClusterV2RkeConfigEtcdSnapshotCreateResult'] = None,
@@ -55487,29 +57377,37 @@ class GetClusterV2RkeConfigResult(dict):
              registries: Optional['outputs.GetClusterV2RkeConfigRegistriesResult'] = None,
              rotate_certificates: Optional['outputs.GetClusterV2RkeConfigRotateCertificatesResult'] = None,
              upgrade_strategy: Optional['outputs.GetClusterV2RkeConfigUpgradeStrategyResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'machinePoolDefaults' in kwargs:
+        if etcd is None:
+            raise TypeError("Missing 'etcd' argument")
+        if machine_pool_defaults is None and 'machinePoolDefaults' in kwargs:
             machine_pool_defaults = kwargs['machinePoolDefaults']
-        if 'machinePools' in kwargs:
+        if machine_pool_defaults is None:
+            raise TypeError("Missing 'machine_pool_defaults' argument")
+        if machine_pools is None and 'machinePools' in kwargs:
             machine_pools = kwargs['machinePools']
-        if 'machineSelectorConfigs' in kwargs:
+        if machine_pools is None:
+            raise TypeError("Missing 'machine_pools' argument")
+        if machine_selector_configs is None and 'machineSelectorConfigs' in kwargs:
             machine_selector_configs = kwargs['machineSelectorConfigs']
-        if 'additionalManifest' in kwargs:
+        if machine_selector_configs is None:
+            raise TypeError("Missing 'machine_selector_configs' argument")
+        if additional_manifest is None and 'additionalManifest' in kwargs:
             additional_manifest = kwargs['additionalManifest']
-        if 'chartValues' in kwargs:
+        if chart_values is None and 'chartValues' in kwargs:
             chart_values = kwargs['chartValues']
-        if 'etcdSnapshotCreate' in kwargs:
+        if etcd_snapshot_create is None and 'etcdSnapshotCreate' in kwargs:
             etcd_snapshot_create = kwargs['etcdSnapshotCreate']
-        if 'etcdSnapshotRestore' in kwargs:
+        if etcd_snapshot_restore is None and 'etcdSnapshotRestore' in kwargs:
             etcd_snapshot_restore = kwargs['etcdSnapshotRestore']
-        if 'localAuthEndpoint' in kwargs:
+        if local_auth_endpoint is None and 'localAuthEndpoint' in kwargs:
             local_auth_endpoint = kwargs['localAuthEndpoint']
-        if 'machineGlobalConfig' in kwargs:
+        if machine_global_config is None and 'machineGlobalConfig' in kwargs:
             machine_global_config = kwargs['machineGlobalConfig']
-        if 'rotateCertificates' in kwargs:
+        if rotate_certificates is None and 'rotateCertificates' in kwargs:
             rotate_certificates = kwargs['rotateCertificates']
-        if 'upgradeStrategy' in kwargs:
+        if upgrade_strategy is None and 'upgradeStrategy' in kwargs:
             upgrade_strategy = kwargs['upgradeStrategy']
 
         _setter("etcd", etcd)
@@ -55625,15 +57523,15 @@ class GetClusterV2RkeConfigEtcdResult(dict):
              s3_config: Optional['outputs.GetClusterV2RkeConfigEtcdS3ConfigResult'] = None,
              snapshot_retention: Optional[int] = None,
              snapshot_schedule_cron: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'disableSnapshots' in kwargs:
+        if disable_snapshots is None and 'disableSnapshots' in kwargs:
             disable_snapshots = kwargs['disableSnapshots']
-        if 's3Config' in kwargs:
+        if s3_config is None and 's3Config' in kwargs:
             s3_config = kwargs['s3Config']
-        if 'snapshotRetention' in kwargs:
+        if snapshot_retention is None and 'snapshotRetention' in kwargs:
             snapshot_retention = kwargs['snapshotRetention']
-        if 'snapshotScheduleCron' in kwargs:
+        if snapshot_schedule_cron is None and 'snapshotScheduleCron' in kwargs:
             snapshot_schedule_cron = kwargs['snapshotScheduleCron']
 
         if disable_snapshots is not None:
@@ -55689,20 +57587,24 @@ class GetClusterV2RkeConfigEtcdS3ConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: str,
-             endpoint: str,
+             bucket: Optional[str] = None,
+             endpoint: Optional[str] = None,
              cloud_credential_name: Optional[str] = None,
              endpoint_ca: Optional[str] = None,
              folder: Optional[str] = None,
              region: Optional[str] = None,
              skip_ssl_verify: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cloudCredentialName' in kwargs:
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if endpoint is None:
+            raise TypeError("Missing 'endpoint' argument")
+        if cloud_credential_name is None and 'cloudCredentialName' in kwargs:
             cloud_credential_name = kwargs['cloudCredentialName']
-        if 'endpointCa' in kwargs:
+        if endpoint_ca is None and 'endpointCa' in kwargs:
             endpoint_ca = kwargs['endpointCa']
-        if 'skipSslVerify' in kwargs:
+        if skip_ssl_verify is None and 'skipSslVerify' in kwargs:
             skip_ssl_verify = kwargs['skipSslVerify']
 
         _setter("bucket", bucket)
@@ -55765,9 +57667,11 @@ class GetClusterV2RkeConfigEtcdSnapshotCreateResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             generation: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             generation: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if generation is None:
+            raise TypeError("Missing 'generation' argument")
 
         _setter("generation", generation)
 
@@ -55795,12 +57699,16 @@ class GetClusterV2RkeConfigEtcdSnapshotRestoreResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             generation: int,
-             name: str,
+             generation: Optional[int] = None,
+             name: Optional[str] = None,
              restore_rke_config: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'restoreRkeConfig' in kwargs:
+        if generation is None:
+            raise TypeError("Missing 'generation' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if restore_rke_config is None and 'restoreRkeConfig' in kwargs:
             restore_rke_config = kwargs['restoreRkeConfig']
 
         _setter("generation", generation)
@@ -55845,9 +57753,9 @@ class GetClusterV2RkeConfigLocalAuthEndpointResult(dict):
              ca_certs: Optional[str] = None,
              enabled: Optional[bool] = None,
              fqdn: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'caCerts' in kwargs:
+        if ca_certs is None and 'caCerts' in kwargs:
             ca_certs = kwargs['caCerts']
 
         if ca_certs is not None:
@@ -55926,11 +57834,11 @@ class GetClusterV2RkeConfigMachinePoolResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             annotations: Mapping[str, Any],
-             labels: Mapping[str, Any],
-             machine_config: 'outputs.GetClusterV2RkeConfigMachinePoolMachineConfigResult',
-             machine_labels: Mapping[str, Any],
-             name: str,
+             annotations: Optional[Mapping[str, Any]] = None,
+             labels: Optional[Mapping[str, Any]] = None,
+             machine_config: Optional['outputs.GetClusterV2RkeConfigMachinePoolMachineConfigResult'] = None,
+             machine_labels: Optional[Mapping[str, Any]] = None,
+             name: Optional[str] = None,
              cloud_credential_secret_name: Optional[str] = None,
              control_plane_role: Optional[bool] = None,
              drain_before_delete: Optional[bool] = None,
@@ -55946,35 +57854,45 @@ class GetClusterV2RkeConfigMachinePoolResult(dict):
              unhealthy_node_timeout_seconds: Optional[int] = None,
              unhealthy_range: Optional[str] = None,
              worker_role: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'machineConfig' in kwargs:
+        if annotations is None:
+            raise TypeError("Missing 'annotations' argument")
+        if labels is None:
+            raise TypeError("Missing 'labels' argument")
+        if machine_config is None and 'machineConfig' in kwargs:
             machine_config = kwargs['machineConfig']
-        if 'machineLabels' in kwargs:
+        if machine_config is None:
+            raise TypeError("Missing 'machine_config' argument")
+        if machine_labels is None and 'machineLabels' in kwargs:
             machine_labels = kwargs['machineLabels']
-        if 'cloudCredentialSecretName' in kwargs:
+        if machine_labels is None:
+            raise TypeError("Missing 'machine_labels' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if cloud_credential_secret_name is None and 'cloudCredentialSecretName' in kwargs:
             cloud_credential_secret_name = kwargs['cloudCredentialSecretName']
-        if 'controlPlaneRole' in kwargs:
+        if control_plane_role is None and 'controlPlaneRole' in kwargs:
             control_plane_role = kwargs['controlPlaneRole']
-        if 'drainBeforeDelete' in kwargs:
+        if drain_before_delete is None and 'drainBeforeDelete' in kwargs:
             drain_before_delete = kwargs['drainBeforeDelete']
-        if 'etcdRole' in kwargs:
+        if etcd_role is None and 'etcdRole' in kwargs:
             etcd_role = kwargs['etcdRole']
-        if 'hostnameLengthLimit' in kwargs:
+        if hostname_length_limit is None and 'hostnameLengthLimit' in kwargs:
             hostname_length_limit = kwargs['hostnameLengthLimit']
-        if 'maxUnhealthy' in kwargs:
+        if max_unhealthy is None and 'maxUnhealthy' in kwargs:
             max_unhealthy = kwargs['maxUnhealthy']
-        if 'nodeDrainTimeout' in kwargs:
+        if node_drain_timeout is None and 'nodeDrainTimeout' in kwargs:
             node_drain_timeout = kwargs['nodeDrainTimeout']
-        if 'nodeStartupTimeoutSeconds' in kwargs:
+        if node_startup_timeout_seconds is None and 'nodeStartupTimeoutSeconds' in kwargs:
             node_startup_timeout_seconds = kwargs['nodeStartupTimeoutSeconds']
-        if 'rollingUpdate' in kwargs:
+        if rolling_update is None and 'rollingUpdate' in kwargs:
             rolling_update = kwargs['rollingUpdate']
-        if 'unhealthyNodeTimeoutSeconds' in kwargs:
+        if unhealthy_node_timeout_seconds is None and 'unhealthyNodeTimeoutSeconds' in kwargs:
             unhealthy_node_timeout_seconds = kwargs['unhealthyNodeTimeoutSeconds']
-        if 'unhealthyRange' in kwargs:
+        if unhealthy_range is None and 'unhealthyRange' in kwargs:
             unhealthy_range = kwargs['unhealthyRange']
-        if 'workerRole' in kwargs:
+        if worker_role is None and 'workerRole' in kwargs:
             worker_role = kwargs['workerRole']
 
         _setter("annotations", annotations)
@@ -56132,9 +58050,9 @@ class GetClusterV2RkeConfigMachinePoolDefaultResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              hostname_length_limit: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'hostnameLengthLimit' in kwargs:
+        if hostname_length_limit is None and 'hostnameLengthLimit' in kwargs:
             hostname_length_limit = kwargs['hostnameLengthLimit']
 
         if hostname_length_limit is not None:
@@ -56162,10 +58080,14 @@ class GetClusterV2RkeConfigMachinePoolMachineConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             kind: str,
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             kind: Optional[str] = None,
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if kind is None:
+            raise TypeError("Missing 'kind' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
 
         _setter("kind", kind)
         _setter("name", name)
@@ -56199,11 +58121,11 @@ class GetClusterV2RkeConfigMachinePoolRollingUpdateResult(dict):
              _setter: Callable[[Any, Any], None],
              max_surge: Optional[str] = None,
              max_unavailable: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'maxSurge' in kwargs:
+        if max_surge is None and 'maxSurge' in kwargs:
             max_surge = kwargs['maxSurge']
-        if 'maxUnavailable' in kwargs:
+        if max_unavailable is None and 'maxUnavailable' in kwargs:
             max_unavailable = kwargs['maxUnavailable']
 
         if max_surge is not None:
@@ -56237,11 +58159,15 @@ class GetClusterV2RkeConfigMachinePoolTaintResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             value: str,
+             key: Optional[str] = None,
+             value: Optional[str] = None,
              effect: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("key", key)
         _setter("value", value)
@@ -56279,9 +58205,9 @@ class GetClusterV2RkeConfigMachineSelectorConfigResult(dict):
              _setter: Callable[[Any, Any], None],
              config: Optional[str] = None,
              machine_label_selector: Optional['outputs.GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'machineLabelSelector' in kwargs:
+        if machine_label_selector is None and 'machineLabelSelector' in kwargs:
             machine_label_selector = kwargs['machineLabelSelector']
 
         if config is not None:
@@ -56315,11 +58241,11 @@ class GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorResult(dict)
              _setter: Callable[[Any, Any], None],
              match_expressions: Optional[Sequence['outputs.GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionResult']] = None,
              match_labels: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'matchExpressions' in kwargs:
+        if match_expressions is None and 'matchExpressions' in kwargs:
             match_expressions = kwargs['matchExpressions']
-        if 'matchLabels' in kwargs:
+        if match_labels is None and 'matchLabels' in kwargs:
             match_labels = kwargs['matchLabels']
 
         if match_expressions is not None:
@@ -56356,7 +58282,7 @@ class GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpress
              key: Optional[str] = None,
              operator: Optional[str] = None,
              values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if key is not None:
@@ -56397,7 +58323,7 @@ class GetClusterV2RkeConfigRegistriesResult(dict):
              _setter: Callable[[Any, Any], None],
              configs: Optional[Sequence['outputs.GetClusterV2RkeConfigRegistriesConfigResult']] = None,
              mirrors: Optional[Sequence['outputs.GetClusterV2RkeConfigRegistriesMirrorResult']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if configs is not None:
@@ -56435,18 +58361,20 @@ class GetClusterV2RkeConfigRegistriesConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             hostname: str,
+             hostname: Optional[str] = None,
              auth_config_secret_name: Optional[str] = None,
              ca_bundle: Optional[str] = None,
              insecure: Optional[bool] = None,
              tls_secret_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'authConfigSecretName' in kwargs:
+        if hostname is None:
+            raise TypeError("Missing 'hostname' argument")
+        if auth_config_secret_name is None and 'authConfigSecretName' in kwargs:
             auth_config_secret_name = kwargs['authConfigSecretName']
-        if 'caBundle' in kwargs:
+        if ca_bundle is None and 'caBundle' in kwargs:
             ca_bundle = kwargs['caBundle']
-        if 'tlsSecretName' in kwargs:
+        if tls_secret_name is None and 'tlsSecretName' in kwargs:
             tls_secret_name = kwargs['tlsSecretName']
 
         _setter("hostname", hostname)
@@ -56500,11 +58428,13 @@ class GetClusterV2RkeConfigRegistriesMirrorResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             hostname: str,
+             hostname: Optional[str] = None,
              endpoints: Optional[Sequence[str]] = None,
              rewrites: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if hostname is None:
+            raise TypeError("Missing 'hostname' argument")
 
         _setter("hostname", hostname)
         if endpoints is not None:
@@ -56541,10 +58471,12 @@ class GetClusterV2RkeConfigRotateCertificatesResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             generation: int,
+             generation: Optional[int] = None,
              services: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if generation is None:
+            raise TypeError("Missing 'generation' argument")
 
         _setter("generation", generation)
         if services is not None:
@@ -56582,15 +58514,15 @@ class GetClusterV2RkeConfigUpgradeStrategyResult(dict):
              control_plane_drain_options: Optional['outputs.GetClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsResult'] = None,
              worker_concurrency: Optional[str] = None,
              worker_drain_options: Optional['outputs.GetClusterV2RkeConfigUpgradeStrategyWorkerDrainOptionsResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'controlPlaneConcurrency' in kwargs:
+        if control_plane_concurrency is None and 'controlPlaneConcurrency' in kwargs:
             control_plane_concurrency = kwargs['controlPlaneConcurrency']
-        if 'controlPlaneDrainOptions' in kwargs:
+        if control_plane_drain_options is None and 'controlPlaneDrainOptions' in kwargs:
             control_plane_drain_options = kwargs['controlPlaneDrainOptions']
-        if 'workerConcurrency' in kwargs:
+        if worker_concurrency is None and 'workerConcurrency' in kwargs:
             worker_concurrency = kwargs['workerConcurrency']
-        if 'workerDrainOptions' in kwargs:
+        if worker_drain_options is None and 'workerDrainOptions' in kwargs:
             worker_drain_options = kwargs['workerDrainOptions']
 
         if control_plane_concurrency is not None:
@@ -56650,28 +58582,34 @@ class GetClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             grace_period: int,
-             skip_wait_for_delete_timeout_seconds: int,
-             timeout: int,
+             grace_period: Optional[int] = None,
+             skip_wait_for_delete_timeout_seconds: Optional[int] = None,
+             timeout: Optional[int] = None,
              delete_empty_dir_data: Optional[bool] = None,
              disable_eviction: Optional[bool] = None,
              enabled: Optional[bool] = None,
              force: Optional[bool] = None,
              ignore_daemon_sets: Optional[bool] = None,
              ignore_errors: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'gracePeriod' in kwargs:
+        if grace_period is None and 'gracePeriod' in kwargs:
             grace_period = kwargs['gracePeriod']
-        if 'skipWaitForDeleteTimeoutSeconds' in kwargs:
+        if grace_period is None:
+            raise TypeError("Missing 'grace_period' argument")
+        if skip_wait_for_delete_timeout_seconds is None and 'skipWaitForDeleteTimeoutSeconds' in kwargs:
             skip_wait_for_delete_timeout_seconds = kwargs['skipWaitForDeleteTimeoutSeconds']
-        if 'deleteEmptyDirData' in kwargs:
+        if skip_wait_for_delete_timeout_seconds is None:
+            raise TypeError("Missing 'skip_wait_for_delete_timeout_seconds' argument")
+        if timeout is None:
+            raise TypeError("Missing 'timeout' argument")
+        if delete_empty_dir_data is None and 'deleteEmptyDirData' in kwargs:
             delete_empty_dir_data = kwargs['deleteEmptyDirData']
-        if 'disableEviction' in kwargs:
+        if disable_eviction is None and 'disableEviction' in kwargs:
             disable_eviction = kwargs['disableEviction']
-        if 'ignoreDaemonSets' in kwargs:
+        if ignore_daemon_sets is None and 'ignoreDaemonSets' in kwargs:
             ignore_daemon_sets = kwargs['ignoreDaemonSets']
-        if 'ignoreErrors' in kwargs:
+        if ignore_errors is None and 'ignoreErrors' in kwargs:
             ignore_errors = kwargs['ignoreErrors']
 
         _setter("grace_period", grace_period)
@@ -56763,28 +58701,34 @@ class GetClusterV2RkeConfigUpgradeStrategyWorkerDrainOptionsResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             grace_period: int,
-             skip_wait_for_delete_timeout_seconds: int,
-             timeout: int,
+             grace_period: Optional[int] = None,
+             skip_wait_for_delete_timeout_seconds: Optional[int] = None,
+             timeout: Optional[int] = None,
              delete_empty_dir_data: Optional[bool] = None,
              disable_eviction: Optional[bool] = None,
              enabled: Optional[bool] = None,
              force: Optional[bool] = None,
              ignore_daemon_sets: Optional[bool] = None,
              ignore_errors: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'gracePeriod' in kwargs:
+        if grace_period is None and 'gracePeriod' in kwargs:
             grace_period = kwargs['gracePeriod']
-        if 'skipWaitForDeleteTimeoutSeconds' in kwargs:
+        if grace_period is None:
+            raise TypeError("Missing 'grace_period' argument")
+        if skip_wait_for_delete_timeout_seconds is None and 'skipWaitForDeleteTimeoutSeconds' in kwargs:
             skip_wait_for_delete_timeout_seconds = kwargs['skipWaitForDeleteTimeoutSeconds']
-        if 'deleteEmptyDirData' in kwargs:
+        if skip_wait_for_delete_timeout_seconds is None:
+            raise TypeError("Missing 'skip_wait_for_delete_timeout_seconds' argument")
+        if timeout is None:
+            raise TypeError("Missing 'timeout' argument")
+        if delete_empty_dir_data is None and 'deleteEmptyDirData' in kwargs:
             delete_empty_dir_data = kwargs['deleteEmptyDirData']
-        if 'disableEviction' in kwargs:
+        if disable_eviction is None and 'disableEviction' in kwargs:
             disable_eviction = kwargs['disableEviction']
-        if 'ignoreDaemonSets' in kwargs:
+        if ignore_daemon_sets is None and 'ignoreDaemonSets' in kwargs:
             ignore_daemon_sets = kwargs['ignoreDaemonSets']
-        if 'ignoreErrors' in kwargs:
+        if ignore_errors is None and 'ignoreErrors' in kwargs:
             ignore_errors = kwargs['ignoreErrors']
 
         _setter("grace_period", grace_period)
@@ -56870,19 +58814,21 @@ class GetEtcdBackupBackupConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             timeout: int,
+             timeout: Optional[int] = None,
              enabled: Optional[bool] = None,
              interval_hours: Optional[int] = None,
              retention: Optional[int] = None,
              s3_backup_config: Optional['outputs.GetEtcdBackupBackupConfigS3BackupConfigResult'] = None,
              safe_timestamp: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'intervalHours' in kwargs:
+        if timeout is None:
+            raise TypeError("Missing 'timeout' argument")
+        if interval_hours is None and 'intervalHours' in kwargs:
             interval_hours = kwargs['intervalHours']
-        if 's3BackupConfig' in kwargs:
+        if s3_backup_config is None and 's3BackupConfig' in kwargs:
             s3_backup_config = kwargs['s3BackupConfig']
-        if 'safeTimestamp' in kwargs:
+        if safe_timestamp is None and 'safeTimestamp' in kwargs:
             safe_timestamp = kwargs['safeTimestamp']
 
         _setter("timeout", timeout)
@@ -56951,22 +58897,26 @@ class GetEtcdBackupBackupConfigS3BackupConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket_name: str,
-             endpoint: str,
+             bucket_name: Optional[str] = None,
+             endpoint: Optional[str] = None,
              access_key: Optional[str] = None,
              custom_ca: Optional[str] = None,
              folder: Optional[str] = None,
              region: Optional[str] = None,
              secret_key: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bucketName' in kwargs:
+        if bucket_name is None and 'bucketName' in kwargs:
             bucket_name = kwargs['bucketName']
-        if 'accessKey' in kwargs:
+        if bucket_name is None:
+            raise TypeError("Missing 'bucket_name' argument")
+        if endpoint is None:
+            raise TypeError("Missing 'endpoint' argument")
+        if access_key is None and 'accessKey' in kwargs:
             access_key = kwargs['accessKey']
-        if 'customCa' in kwargs:
+        if custom_ca is None and 'customCa' in kwargs:
             custom_ca = kwargs['customCa']
-        if 'secretKey' in kwargs:
+        if secret_key is None and 'secretKey' in kwargs:
             secret_key = kwargs['secretKey']
 
         _setter("bucket_name", bucket_name)
@@ -57031,14 +58981,18 @@ class GetGlobalDnsProviderAlidnsConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_key: str,
-             secret_key: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             access_key: Optional[str] = None,
+             secret_key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessKey' in kwargs:
+        if access_key is None and 'accessKey' in kwargs:
             access_key = kwargs['accessKey']
-        if 'secretKey' in kwargs:
+        if access_key is None:
+            raise TypeError("Missing 'access_key' argument")
+        if secret_key is None and 'secretKey' in kwargs:
             secret_key = kwargs['secretKey']
+        if secret_key is None:
+            raise TypeError("Missing 'secret_key' argument")
 
         _setter("access_key", access_key)
         _setter("secret_key", secret_key)
@@ -57069,16 +59023,20 @@ class GetGlobalDnsProviderCloudflareConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             api_email: str,
-             api_key: str,
+             api_email: Optional[str] = None,
+             api_key: Optional[str] = None,
              proxy_setting: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'apiEmail' in kwargs:
+        if api_email is None and 'apiEmail' in kwargs:
             api_email = kwargs['apiEmail']
-        if 'apiKey' in kwargs:
+        if api_email is None:
+            raise TypeError("Missing 'api_email' argument")
+        if api_key is None and 'apiKey' in kwargs:
             api_key = kwargs['apiKey']
-        if 'proxySetting' in kwargs:
+        if api_key is None:
+            raise TypeError("Missing 'api_key' argument")
+        if proxy_setting is None and 'proxySetting' in kwargs:
             proxy_setting = kwargs['proxySetting']
 
         _setter("api_email", api_email)
@@ -57123,23 +59081,27 @@ class GetGlobalDnsProviderRoute53ConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_key: str,
-             secret_key: str,
+             access_key: Optional[str] = None,
+             secret_key: Optional[str] = None,
              credentials_path: Optional[str] = None,
              region: Optional[str] = None,
              role_arn: Optional[str] = None,
              zone_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessKey' in kwargs:
+        if access_key is None and 'accessKey' in kwargs:
             access_key = kwargs['accessKey']
-        if 'secretKey' in kwargs:
+        if access_key is None:
+            raise TypeError("Missing 'access_key' argument")
+        if secret_key is None and 'secretKey' in kwargs:
             secret_key = kwargs['secretKey']
-        if 'credentialsPath' in kwargs:
+        if secret_key is None:
+            raise TypeError("Missing 'secret_key' argument")
+        if credentials_path is None and 'credentialsPath' in kwargs:
             credentials_path = kwargs['credentialsPath']
-        if 'roleArn' in kwargs:
+        if role_arn is None and 'roleArn' in kwargs:
             role_arn = kwargs['roleArn']
-        if 'zoneType' in kwargs:
+        if zone_type is None and 'zoneType' in kwargs:
             zone_type = kwargs['zoneType']
 
         _setter("access_key", access_key)
@@ -57208,13 +59170,13 @@ class GetGlobalRoleRuleResult(dict):
              resource_names: Optional[Sequence[str]] = None,
              resources: Optional[Sequence[str]] = None,
              verbs: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'apiGroups' in kwargs:
+        if api_groups is None and 'apiGroups' in kwargs:
             api_groups = kwargs['apiGroups']
-        if 'nonResourceUrls' in kwargs:
+        if non_resource_urls is None and 'nonResourceUrls' in kwargs:
             non_resource_urls = kwargs['nonResourceUrls']
-        if 'resourceNames' in kwargs:
+        if resource_names is None and 'resourceNames' in kwargs:
             resource_names = kwargs['resourceNames']
 
         if api_groups is not None:
@@ -57269,15 +59231,21 @@ class GetMultiClusterAppAnswerResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: str,
-             project_id: str,
-             values: Mapping[str, Any],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cluster_id: Optional[str] = None,
+             project_id: Optional[str] = None,
+             values: Optional[Mapping[str, Any]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'projectId' in kwargs:
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
 
         _setter("cluster_id", cluster_id)
         _setter("project_id", project_id)
@@ -57317,13 +59285,13 @@ class GetMultiClusterAppMemberResult(dict):
              access_type: Optional[str] = None,
              group_principal_id: Optional[str] = None,
              user_principal_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessType' in kwargs:
+        if access_type is None and 'accessType' in kwargs:
             access_type = kwargs['accessType']
-        if 'groupPrincipalId' in kwargs:
+        if group_principal_id is None and 'groupPrincipalId' in kwargs:
             group_principal_id = kwargs['groupPrincipalId']
-        if 'userPrincipalId' in kwargs:
+        if user_principal_id is None and 'userPrincipalId' in kwargs:
             user_principal_id = kwargs['userPrincipalId']
 
         if access_type is not None:
@@ -57366,18 +59334,26 @@ class GetMultiClusterAppTargetResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             app_id: str,
-             health_state: str,
-             project_id: str,
-             state: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             app_id: Optional[str] = None,
+             health_state: Optional[str] = None,
+             project_id: Optional[str] = None,
+             state: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'appId' in kwargs:
+        if app_id is None and 'appId' in kwargs:
             app_id = kwargs['appId']
-        if 'healthState' in kwargs:
+        if app_id is None:
+            raise TypeError("Missing 'app_id' argument")
+        if health_state is None and 'healthState' in kwargs:
             health_state = kwargs['healthState']
-        if 'projectId' in kwargs:
+        if health_state is None:
+            raise TypeError("Missing 'health_state' argument")
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if state is None:
+            raise TypeError("Missing 'state' argument")
 
         _setter("app_id", app_id)
         _setter("health_state", health_state)
@@ -57417,9 +59393,9 @@ class GetMultiClusterAppUpgradeStrategyResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              rolling_update: Optional['outputs.GetMultiClusterAppUpgradeStrategyRollingUpdateResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'rollingUpdate' in kwargs:
+        if rolling_update is None and 'rollingUpdate' in kwargs:
             rolling_update = kwargs['rollingUpdate']
 
         if rolling_update is not None:
@@ -57446,9 +59422,9 @@ class GetMultiClusterAppUpgradeStrategyRollingUpdateResult(dict):
              _setter: Callable[[Any, Any], None],
              batch_size: Optional[int] = None,
              interval: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'batchSize' in kwargs:
+        if batch_size is None and 'batchSize' in kwargs:
             batch_size = kwargs['batchSize']
 
         if batch_size is not None:
@@ -57488,15 +59464,15 @@ class GetNamespaceContainerResourceLimitResult(dict):
              limits_memory: Optional[str] = None,
              requests_cpu: Optional[str] = None,
              requests_memory: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'limitsCpu' in kwargs:
+        if limits_cpu is None and 'limitsCpu' in kwargs:
             limits_cpu = kwargs['limitsCpu']
-        if 'limitsMemory' in kwargs:
+        if limits_memory is None and 'limitsMemory' in kwargs:
             limits_memory = kwargs['limitsMemory']
-        if 'requestsCpu' in kwargs:
+        if requests_cpu is None and 'requestsCpu' in kwargs:
             requests_cpu = kwargs['requestsCpu']
-        if 'requestsMemory' in kwargs:
+        if requests_memory is None and 'requestsMemory' in kwargs:
             requests_memory = kwargs['requestsMemory']
 
         if limits_cpu is not None:
@@ -57540,9 +59516,11 @@ class GetNamespaceResourceQuotaResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             limit: 'outputs.GetNamespaceResourceQuotaLimitResult',
-             opts: Optional[pulumi.ResourceOptions]=None,
+             limit: Optional['outputs.GetNamespaceResourceQuotaLimitResult'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if limit is None:
+            raise TypeError("Missing 'limit' argument")
 
         _setter("limit", limit)
 
@@ -57600,27 +59578,27 @@ class GetNamespaceResourceQuotaLimitResult(dict):
              services: Optional[str] = None,
              services_load_balancers: Optional[str] = None,
              services_node_ports: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'configMaps' in kwargs:
+        if config_maps is None and 'configMaps' in kwargs:
             config_maps = kwargs['configMaps']
-        if 'limitsCpu' in kwargs:
+        if limits_cpu is None and 'limitsCpu' in kwargs:
             limits_cpu = kwargs['limitsCpu']
-        if 'limitsMemory' in kwargs:
+        if limits_memory is None and 'limitsMemory' in kwargs:
             limits_memory = kwargs['limitsMemory']
-        if 'persistentVolumeClaims' in kwargs:
+        if persistent_volume_claims is None and 'persistentVolumeClaims' in kwargs:
             persistent_volume_claims = kwargs['persistentVolumeClaims']
-        if 'replicationControllers' in kwargs:
+        if replication_controllers is None and 'replicationControllers' in kwargs:
             replication_controllers = kwargs['replicationControllers']
-        if 'requestsCpu' in kwargs:
+        if requests_cpu is None and 'requestsCpu' in kwargs:
             requests_cpu = kwargs['requestsCpu']
-        if 'requestsMemory' in kwargs:
+        if requests_memory is None and 'requestsMemory' in kwargs:
             requests_memory = kwargs['requestsMemory']
-        if 'requestsStorage' in kwargs:
+        if requests_storage is None and 'requestsStorage' in kwargs:
             requests_storage = kwargs['requestsStorage']
-        if 'servicesLoadBalancers' in kwargs:
+        if services_load_balancers is None and 'servicesLoadBalancers' in kwargs:
             services_load_balancers = kwargs['servicesLoadBalancers']
-        if 'servicesNodePorts' in kwargs:
+        if services_node_ports is None and 'servicesNodePorts' in kwargs:
             services_node_ports = kwargs['servicesNodePorts']
 
         if config_maps is not None:
@@ -57733,14 +59711,20 @@ class GetNodePoolNodeTaintResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             time_added: str,
-             value: str,
+             key: Optional[str] = None,
+             time_added: Optional[str] = None,
+             value: Optional[str] = None,
              effect: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'timeAdded' in kwargs:
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if time_added is None and 'timeAdded' in kwargs:
             time_added = kwargs['timeAdded']
+        if time_added is None:
+            raise TypeError("Missing 'time_added' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("key", key)
         _setter("time_added", time_added)
@@ -57786,14 +59770,20 @@ class GetNodeTemplateNodeTaintResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             time_added: str,
-             value: str,
+             key: Optional[str] = None,
+             time_added: Optional[str] = None,
+             value: Optional[str] = None,
              effect: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'timeAdded' in kwargs:
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if time_added is None and 'timeAdded' in kwargs:
             time_added = kwargs['timeAdded']
+        if time_added is None:
+            raise TypeError("Missing 'time_added' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("key", key)
         _setter("time_added", time_added)
@@ -57837,12 +59827,14 @@ class GetNotifierDingtalkConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             url: str,
+             url: Optional[str] = None,
              proxy_url: Optional[str] = None,
              secret: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'proxyUrl' in kwargs:
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+        if proxy_url is None and 'proxyUrl' in kwargs:
             proxy_url = kwargs['proxyUrl']
 
         _setter("url", url)
@@ -57880,11 +59872,13 @@ class GetNotifierMsteamsConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             url: str,
+             url: Optional[str] = None,
              proxy_url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'proxyUrl' in kwargs:
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+        if proxy_url is None and 'proxyUrl' in kwargs:
             proxy_url = kwargs['proxyUrl']
 
         _setter("url", url)
@@ -57915,13 +59909,15 @@ class GetNotifierPagerdutyConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service_key: str,
+             service_key: Optional[str] = None,
              proxy_url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serviceKey' in kwargs:
+        if service_key is None and 'serviceKey' in kwargs:
             service_key = kwargs['serviceKey']
-        if 'proxyUrl' in kwargs:
+        if service_key is None:
+            raise TypeError("Missing 'service_key' argument")
+        if proxy_url is None and 'proxyUrl' in kwargs:
             proxy_url = kwargs['proxyUrl']
 
         _setter("service_key", service_key)
@@ -57954,14 +59950,18 @@ class GetNotifierSlackConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             default_recipient: str,
-             url: str,
+             default_recipient: Optional[str] = None,
+             url: Optional[str] = None,
              proxy_url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'defaultRecipient' in kwargs:
+        if default_recipient is None and 'defaultRecipient' in kwargs:
             default_recipient = kwargs['defaultRecipient']
-        if 'proxyUrl' in kwargs:
+        if default_recipient is None:
+            raise TypeError("Missing 'default_recipient' argument")
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+        if proxy_url is None and 'proxyUrl' in kwargs:
             proxy_url = kwargs['proxyUrl']
 
         _setter("default_recipient", default_recipient)
@@ -58008,17 +60008,25 @@ class GetNotifierSmtpConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             default_recipient: str,
-             host: str,
-             port: int,
-             sender: str,
+             default_recipient: Optional[str] = None,
+             host: Optional[str] = None,
+             port: Optional[int] = None,
+             sender: Optional[str] = None,
              password: Optional[str] = None,
              tls: Optional[bool] = None,
              username: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'defaultRecipient' in kwargs:
+        if default_recipient is None and 'defaultRecipient' in kwargs:
             default_recipient = kwargs['defaultRecipient']
+        if default_recipient is None:
+            raise TypeError("Missing 'default_recipient' argument")
+        if host is None:
+            raise TypeError("Missing 'host' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if sender is None:
+            raise TypeError("Missing 'sender' argument")
 
         _setter("default_recipient", default_recipient)
         _setter("host", host)
@@ -58080,11 +60088,13 @@ class GetNotifierWebhookConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             url: str,
+             url: Optional[str] = None,
              proxy_url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'proxyUrl' in kwargs:
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+        if proxy_url is None and 'proxyUrl' in kwargs:
             proxy_url = kwargs['proxyUrl']
 
         _setter("url", url)
@@ -58123,19 +60133,27 @@ class GetNotifierWechatConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             agent: str,
-             corp: str,
-             default_recipient: str,
-             secret: str,
+             agent: Optional[str] = None,
+             corp: Optional[str] = None,
+             default_recipient: Optional[str] = None,
+             secret: Optional[str] = None,
              proxy_url: Optional[str] = None,
              recipient_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'defaultRecipient' in kwargs:
+        if agent is None:
+            raise TypeError("Missing 'agent' argument")
+        if corp is None:
+            raise TypeError("Missing 'corp' argument")
+        if default_recipient is None and 'defaultRecipient' in kwargs:
             default_recipient = kwargs['defaultRecipient']
-        if 'proxyUrl' in kwargs:
+        if default_recipient is None:
+            raise TypeError("Missing 'default_recipient' argument")
+        if secret is None:
+            raise TypeError("Missing 'secret' argument")
+        if proxy_url is None and 'proxyUrl' in kwargs:
             proxy_url = kwargs['proxyUrl']
-        if 'recipientType' in kwargs:
+        if recipient_type is None and 'recipientType' in kwargs:
             recipient_type = kwargs['recipientType']
 
         _setter("agent", agent)
@@ -58192,9 +60210,11 @@ class GetPodSecurityPolicyTemplateAllowedCsiDriverResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
 
         _setter("name", name)
 
@@ -58218,9 +60238,11 @@ class GetPodSecurityPolicyTemplateAllowedFlexVolumeResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             driver: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             driver: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if driver is None:
+            raise TypeError("Missing 'driver' argument")
 
         _setter("driver", driver)
 
@@ -58243,13 +60265,15 @@ class GetPodSecurityPolicyTemplateAllowedHostPathResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             path_prefix: str,
+             path_prefix: Optional[str] = None,
              read_only: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'pathPrefix' in kwargs:
+        if path_prefix is None and 'pathPrefix' in kwargs:
             path_prefix = kwargs['pathPrefix']
-        if 'readOnly' in kwargs:
+        if path_prefix is None:
+            raise TypeError("Missing 'path_prefix' argument")
+        if read_only is None and 'readOnly' in kwargs:
             read_only = kwargs['readOnly']
 
         _setter("path_prefix", path_prefix)
@@ -58280,10 +60304,12 @@ class GetPodSecurityPolicyTemplateFsGroupResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ranges: Sequence['outputs.GetPodSecurityPolicyTemplateFsGroupRangeResult'],
+             ranges: Optional[Sequence['outputs.GetPodSecurityPolicyTemplateFsGroupRangeResult']] = None,
              rule: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if ranges is None:
+            raise TypeError("Missing 'ranges' argument")
 
         _setter("ranges", ranges)
         if rule is not None:
@@ -58313,10 +60339,14 @@ class GetPodSecurityPolicyTemplateFsGroupRangeResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             max: int,
-             min: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             max: Optional[int] = None,
+             min: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if max is None:
+            raise TypeError("Missing 'max' argument")
+        if min is None:
+            raise TypeError("Missing 'min' argument")
 
         _setter("max", max)
         _setter("min", min)
@@ -58345,10 +60375,14 @@ class GetPodSecurityPolicyTemplateHostPortResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             max: int,
-             min: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             max: Optional[int] = None,
+             min: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if max is None:
+            raise TypeError("Missing 'max' argument")
+        if min is None:
+            raise TypeError("Missing 'min' argument")
 
         _setter("max", max)
         _setter("min", min)
@@ -58377,10 +60411,12 @@ class GetPodSecurityPolicyTemplateRunAsGroupResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             rule: str,
+             rule: Optional[str] = None,
              ranges: Optional[Sequence['outputs.GetPodSecurityPolicyTemplateRunAsGroupRangeResult']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if rule is None:
+            raise TypeError("Missing 'rule' argument")
 
         _setter("rule", rule)
         if ranges is not None:
@@ -58410,10 +60446,14 @@ class GetPodSecurityPolicyTemplateRunAsGroupRangeResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             max: int,
-             min: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             max: Optional[int] = None,
+             min: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if max is None:
+            raise TypeError("Missing 'max' argument")
+        if min is None:
+            raise TypeError("Missing 'min' argument")
 
         _setter("max", max)
         _setter("min", min)
@@ -58442,10 +60482,12 @@ class GetPodSecurityPolicyTemplateRunAsUserResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             rule: str,
+             rule: Optional[str] = None,
              ranges: Optional[Sequence['outputs.GetPodSecurityPolicyTemplateRunAsUserRangeResult']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if rule is None:
+            raise TypeError("Missing 'rule' argument")
 
         _setter("rule", rule)
         if ranges is not None:
@@ -58475,10 +60517,14 @@ class GetPodSecurityPolicyTemplateRunAsUserRangeResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             max: int,
-             min: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             max: Optional[int] = None,
+             min: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if max is None:
+            raise TypeError("Missing 'max' argument")
+        if min is None:
+            raise TypeError("Missing 'min' argument")
 
         _setter("max", max)
         _setter("min", min)
@@ -58507,13 +60553,15 @@ class GetPodSecurityPolicyTemplateRuntimeClassResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allowed_runtime_class_names: Sequence[str],
+             allowed_runtime_class_names: Optional[Sequence[str]] = None,
              default_runtime_class_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedRuntimeClassNames' in kwargs:
+        if allowed_runtime_class_names is None and 'allowedRuntimeClassNames' in kwargs:
             allowed_runtime_class_names = kwargs['allowedRuntimeClassNames']
-        if 'defaultRuntimeClassName' in kwargs:
+        if allowed_runtime_class_names is None:
+            raise TypeError("Missing 'allowed_runtime_class_names' argument")
+        if default_runtime_class_name is None and 'defaultRuntimeClassName' in kwargs:
             default_runtime_class_name = kwargs['defaultRuntimeClassName']
 
         _setter("allowed_runtime_class_names", allowed_runtime_class_names)
@@ -58544,11 +60592,13 @@ class GetPodSecurityPolicyTemplateSeLinuxResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             rule: str,
+             rule: Optional[str] = None,
              se_linux_option: Optional['outputs.GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'seLinuxOption' in kwargs:
+        if rule is None:
+            raise TypeError("Missing 'rule' argument")
+        if se_linux_option is None and 'seLinuxOption' in kwargs:
             se_linux_option = kwargs['seLinuxOption']
 
         _setter("rule", rule)
@@ -58587,7 +60637,7 @@ class GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionResult(dict):
              role: Optional[str] = None,
              type: Optional[str] = None,
              user: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if level is not None:
@@ -58633,10 +60683,12 @@ class GetPodSecurityPolicyTemplateSupplementalGroupResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ranges: Sequence['outputs.GetPodSecurityPolicyTemplateSupplementalGroupRangeResult'],
+             ranges: Optional[Sequence['outputs.GetPodSecurityPolicyTemplateSupplementalGroupRangeResult']] = None,
              rule: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if ranges is None:
+            raise TypeError("Missing 'ranges' argument")
 
         _setter("ranges", ranges)
         if rule is not None:
@@ -58666,10 +60718,14 @@ class GetPodSecurityPolicyTemplateSupplementalGroupRangeResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             max: int,
-             min: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             max: Optional[int] = None,
+             min: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if max is None:
+            raise TypeError("Missing 'max' argument")
+        if min is None:
+            raise TypeError("Missing 'min' argument")
 
         _setter("max", max)
         _setter("min", min)
@@ -58702,17 +60758,23 @@ class GetProjectAlertGroupRecipientResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             notifier_id: str,
-             notifier_type: str,
-             recipient: str,
+             notifier_id: Optional[str] = None,
+             notifier_type: Optional[str] = None,
+             recipient: Optional[str] = None,
              default_recipient: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'notifierId' in kwargs:
+        if notifier_id is None and 'notifierId' in kwargs:
             notifier_id = kwargs['notifierId']
-        if 'notifierType' in kwargs:
+        if notifier_id is None:
+            raise TypeError("Missing 'notifier_id' argument")
+        if notifier_type is None and 'notifierType' in kwargs:
             notifier_type = kwargs['notifierType']
-        if 'defaultRecipient' in kwargs:
+        if notifier_type is None:
+            raise TypeError("Missing 'notifier_type' argument")
+        if recipient is None:
+            raise TypeError("Missing 'recipient' argument")
+        if default_recipient is None and 'defaultRecipient' in kwargs:
             default_recipient = kwargs['defaultRecipient']
 
         _setter("notifier_id", notifier_id)
@@ -58761,15 +60823,21 @@ class GetProjectAlertRuleMetricRuleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             duration: str,
-             expression: str,
-             threshold_value: float,
+             duration: Optional[str] = None,
+             expression: Optional[str] = None,
+             threshold_value: Optional[float] = None,
              comparison: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'thresholdValue' in kwargs:
+        if duration is None:
+            raise TypeError("Missing 'duration' argument")
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if threshold_value is None and 'thresholdValue' in kwargs:
             threshold_value = kwargs['thresholdValue']
+        if threshold_value is None:
+            raise TypeError("Missing 'threshold_value' argument")
 
         _setter("duration", duration)
         _setter("expression", expression)
@@ -58822,17 +60890,19 @@ class GetProjectAlertRulePodRuleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pod_id: str,
+             pod_id: Optional[str] = None,
              condition: Optional[str] = None,
              restart_interval_seconds: Optional[int] = None,
              restart_times: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'podId' in kwargs:
+        if pod_id is None and 'podId' in kwargs:
             pod_id = kwargs['podId']
-        if 'restartIntervalSeconds' in kwargs:
+        if pod_id is None:
+            raise TypeError("Missing 'pod_id' argument")
+        if restart_interval_seconds is None and 'restartIntervalSeconds' in kwargs:
             restart_interval_seconds = kwargs['restartIntervalSeconds']
-        if 'restartTimes' in kwargs:
+        if restart_times is None and 'restartTimes' in kwargs:
             restart_times = kwargs['restartTimes']
 
         _setter("pod_id", pod_id)
@@ -58882,11 +60952,11 @@ class GetProjectAlertRuleWorkloadRuleResult(dict):
              available_percentage: Optional[int] = None,
              selector: Optional[Mapping[str, Any]] = None,
              workload_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'availablePercentage' in kwargs:
+        if available_percentage is None and 'availablePercentage' in kwargs:
             available_percentage = kwargs['availablePercentage']
-        if 'workloadId' in kwargs:
+        if workload_id is None and 'workloadId' in kwargs:
             workload_id = kwargs['workloadId']
 
         if available_percentage is not None:
@@ -58933,15 +61003,15 @@ class GetProjectContainerResourceLimitResult(dict):
              limits_memory: Optional[str] = None,
              requests_cpu: Optional[str] = None,
              requests_memory: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'limitsCpu' in kwargs:
+        if limits_cpu is None and 'limitsCpu' in kwargs:
             limits_cpu = kwargs['limitsCpu']
-        if 'limitsMemory' in kwargs:
+        if limits_memory is None and 'limitsMemory' in kwargs:
             limits_memory = kwargs['limitsMemory']
-        if 'requestsCpu' in kwargs:
+        if requests_cpu is None and 'requestsCpu' in kwargs:
             requests_cpu = kwargs['requestsCpu']
-        if 'requestsMemory' in kwargs:
+        if requests_memory is None and 'requestsMemory' in kwargs:
             requests_memory = kwargs['requestsMemory']
 
         if limits_cpu is not None:
@@ -58987,14 +61057,18 @@ class GetProjectResourceQuotaResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             namespace_default_limit: 'outputs.GetProjectResourceQuotaNamespaceDefaultLimitResult',
-             project_limit: 'outputs.GetProjectResourceQuotaProjectLimitResult',
-             opts: Optional[pulumi.ResourceOptions]=None,
+             namespace_default_limit: Optional['outputs.GetProjectResourceQuotaNamespaceDefaultLimitResult'] = None,
+             project_limit: Optional['outputs.GetProjectResourceQuotaProjectLimitResult'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'namespaceDefaultLimit' in kwargs:
+        if namespace_default_limit is None and 'namespaceDefaultLimit' in kwargs:
             namespace_default_limit = kwargs['namespaceDefaultLimit']
-        if 'projectLimit' in kwargs:
+        if namespace_default_limit is None:
+            raise TypeError("Missing 'namespace_default_limit' argument")
+        if project_limit is None and 'projectLimit' in kwargs:
             project_limit = kwargs['projectLimit']
+        if project_limit is None:
+            raise TypeError("Missing 'project_limit' argument")
 
         _setter("namespace_default_limit", namespace_default_limit)
         _setter("project_limit", project_limit)
@@ -59058,27 +61132,27 @@ class GetProjectResourceQuotaNamespaceDefaultLimitResult(dict):
              services: Optional[str] = None,
              services_load_balancers: Optional[str] = None,
              services_node_ports: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'configMaps' in kwargs:
+        if config_maps is None and 'configMaps' in kwargs:
             config_maps = kwargs['configMaps']
-        if 'limitsCpu' in kwargs:
+        if limits_cpu is None and 'limitsCpu' in kwargs:
             limits_cpu = kwargs['limitsCpu']
-        if 'limitsMemory' in kwargs:
+        if limits_memory is None and 'limitsMemory' in kwargs:
             limits_memory = kwargs['limitsMemory']
-        if 'persistentVolumeClaims' in kwargs:
+        if persistent_volume_claims is None and 'persistentVolumeClaims' in kwargs:
             persistent_volume_claims = kwargs['persistentVolumeClaims']
-        if 'replicationControllers' in kwargs:
+        if replication_controllers is None and 'replicationControllers' in kwargs:
             replication_controllers = kwargs['replicationControllers']
-        if 'requestsCpu' in kwargs:
+        if requests_cpu is None and 'requestsCpu' in kwargs:
             requests_cpu = kwargs['requestsCpu']
-        if 'requestsMemory' in kwargs:
+        if requests_memory is None and 'requestsMemory' in kwargs:
             requests_memory = kwargs['requestsMemory']
-        if 'requestsStorage' in kwargs:
+        if requests_storage is None and 'requestsStorage' in kwargs:
             requests_storage = kwargs['requestsStorage']
-        if 'servicesLoadBalancers' in kwargs:
+        if services_load_balancers is None and 'servicesLoadBalancers' in kwargs:
             services_load_balancers = kwargs['servicesLoadBalancers']
-        if 'servicesNodePorts' in kwargs:
+        if services_node_ports is None and 'servicesNodePorts' in kwargs:
             services_node_ports = kwargs['servicesNodePorts']
 
         if config_maps is not None:
@@ -59222,27 +61296,27 @@ class GetProjectResourceQuotaProjectLimitResult(dict):
              services: Optional[str] = None,
              services_load_balancers: Optional[str] = None,
              services_node_ports: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'configMaps' in kwargs:
+        if config_maps is None and 'configMaps' in kwargs:
             config_maps = kwargs['configMaps']
-        if 'limitsCpu' in kwargs:
+        if limits_cpu is None and 'limitsCpu' in kwargs:
             limits_cpu = kwargs['limitsCpu']
-        if 'limitsMemory' in kwargs:
+        if limits_memory is None and 'limitsMemory' in kwargs:
             limits_memory = kwargs['limitsMemory']
-        if 'persistentVolumeClaims' in kwargs:
+        if persistent_volume_claims is None and 'persistentVolumeClaims' in kwargs:
             persistent_volume_claims = kwargs['persistentVolumeClaims']
-        if 'replicationControllers' in kwargs:
+        if replication_controllers is None and 'replicationControllers' in kwargs:
             replication_controllers = kwargs['replicationControllers']
-        if 'requestsCpu' in kwargs:
+        if requests_cpu is None and 'requestsCpu' in kwargs:
             requests_cpu = kwargs['requestsCpu']
-        if 'requestsMemory' in kwargs:
+        if requests_memory is None and 'requestsMemory' in kwargs:
             requests_memory = kwargs['requestsMemory']
-        if 'requestsStorage' in kwargs:
+        if requests_storage is None and 'requestsStorage' in kwargs:
             requests_storage = kwargs['requestsStorage']
-        if 'servicesLoadBalancers' in kwargs:
+        if services_load_balancers is None and 'servicesLoadBalancers' in kwargs:
             services_load_balancers = kwargs['servicesLoadBalancers']
-        if 'servicesNodePorts' in kwargs:
+        if services_node_ports is None and 'servicesNodePorts' in kwargs:
             services_node_ports = kwargs['servicesNodePorts']
 
         if config_maps is not None:
@@ -59353,11 +61427,13 @@ class GetRegistryRegistryResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address: str,
+             address: Optional[str] = None,
              password: Optional[str] = None,
              username: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if address is None:
+            raise TypeError("Missing 'address' argument")
 
         _setter("address", address)
         if password is not None:
@@ -59405,13 +61481,13 @@ class GetRoleTempalteRuleResult(dict):
              resource_names: Optional[Sequence[str]] = None,
              resources: Optional[Sequence[str]] = None,
              verbs: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'apiGroups' in kwargs:
+        if api_groups is None and 'apiGroups' in kwargs:
             api_groups = kwargs['apiGroups']
-        if 'nonResourceUrls' in kwargs:
+        if non_resource_urls is None and 'nonResourceUrls' in kwargs:
             non_resource_urls = kwargs['nonResourceUrls']
-        if 'resourceNames' in kwargs:
+        if resource_names is None and 'resourceNames' in kwargs:
             resource_names = kwargs['resourceNames']
 
         if api_groups is not None:
@@ -59475,13 +61551,13 @@ class GetRoleTemplateRuleResult(dict):
              resource_names: Optional[Sequence[str]] = None,
              resources: Optional[Sequence[str]] = None,
              verbs: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'apiGroups' in kwargs:
+        if api_groups is None and 'apiGroups' in kwargs:
             api_groups = kwargs['apiGroups']
-        if 'nonResourceUrls' in kwargs:
+        if non_resource_urls is None and 'nonResourceUrls' in kwargs:
             non_resource_urls = kwargs['nonResourceUrls']
-        if 'resourceNames' in kwargs:
+        if resource_names is None and 'resourceNames' in kwargs:
             resource_names = kwargs['resourceNames']
 
         if api_groups is not None:

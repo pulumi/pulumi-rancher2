@@ -70,15 +70,6 @@ def get_setting(name: Optional[str] = None,
     """
     Use this data source to retrieve information about a Rancher v2 setting.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_rancher2 as rancher2
-
-    server_image = rancher2.get_setting(name="server-image")
-    ```
-
 
     :param str name: The setting name.
     """
@@ -98,15 +89,6 @@ def get_setting_output(name: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSettingResult]:
     """
     Use this data source to retrieve information about a Rancher v2 setting.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_rancher2 as rancher2
-
-    server_image = rancher2.get_setting(name="server-image")
-    ```
 
 
     :param str name: The setting name.

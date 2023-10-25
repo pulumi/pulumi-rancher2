@@ -9,28 +9,6 @@ import * as utilities from "./utilities";
 /**
  * Provides a Rancher v2 Cluster Alert Rule resource. This can be used to create Cluster Alert Rule for Rancher v2 environments and retrieve their information.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * // Create a new Rancher2 Cluster Alert Group
- * const fooClusterAlertGroup = new rancher2.ClusterAlertGroup("fooClusterAlertGroup", {
- *     clusterId: "<cluster_id>",
- *     description: "Terraform cluster alert group",
- *     groupIntervalSeconds: 300,
- *     repeatIntervalSeconds: 3600,
- * });
- * // Create a new Rancher2 Cluster Alert Rule
- * const fooClusterAlertRule = new rancher2.ClusterAlertRule("fooClusterAlertRule", {
- *     clusterId: fooClusterAlertGroup.clusterId,
- *     groupId: fooClusterAlertGroup.id,
- *     groupIntervalSeconds: 600,
- *     repeatIntervalSeconds: 6000,
- * });
- * ```
- *
  * ## Import
  *
  * Cluster Alert Rule can be imported using the Rancher cluster alert rule ID

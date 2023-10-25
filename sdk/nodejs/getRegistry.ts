@@ -12,29 +12,6 @@ import * as utilities from "./utilities";
  * Depending of the availability, there are 2 types of Rancher v2 docker registries:
  * - Project registry: Available to all namespaces in the `projectId`
  * - Namespaced registry: Available to just `namespaceId` in the `projectId`
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * const foo = rancher2.getRegistry({
- *     name: "<name>",
- *     projectId: "<project_id>",
- * });
- * ```
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * const foo = rancher2.getRegistry({
- *     name: "<name>",
- *     namespaceId: "<namespace_id>",
- *     projectId: "<project_id>",
- * });
- * ```
  */
 export function getRegistry(args: GetRegistryArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryResult> {
 
@@ -98,29 +75,6 @@ export interface GetRegistryResult {
  * Depending of the availability, there are 2 types of Rancher v2 docker registries:
  * - Project registry: Available to all namespaces in the `projectId`
  * - Namespaced registry: Available to just `namespaceId` in the `projectId`
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * const foo = rancher2.getRegistry({
- *     name: "<name>",
- *     projectId: "<project_id>",
- * });
- * ```
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * const foo = rancher2.getRegistry({
- *     name: "<name>",
- *     namespaceId: "<namespace_id>",
- *     projectId: "<project_id>",
- * });
- * ```
  */
 export function getRegistryOutput(args: GetRegistryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryResult> {
     return pulumi.output(args).apply((a: any) => getRegistry(a, opts))

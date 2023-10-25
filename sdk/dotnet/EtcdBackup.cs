@@ -14,41 +14,6 @@ namespace Pulumi.Rancher2
     /// 
     /// The `rancher2.EtcdBackup` resource is used to define extra etcd backups for a `rancher2.Cluster`, which will be created as a local or S3 backup in accordance with the etcd backup config for the cluster. The main etcd backup config for the cluster should be set on the cluster config
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Rancher2 = Pulumi.Rancher2;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Create a new rancher2 Etcd Backup
-    ///     var foo = new Rancher2.EtcdBackup("foo", new()
-    ///     {
-    ///         BackupConfig = new Rancher2.Inputs.EtcdBackupBackupConfigArgs
-    ///         {
-    ///             Enabled = true,
-    ///             IntervalHours = 20,
-    ///             Retention = 10,
-    ///             S3BackupConfig = new Rancher2.Inputs.EtcdBackupBackupConfigS3BackupConfigArgs
-    ///             {
-    ///                 AccessKey = "access_key",
-    ///                 BucketName = "bucket_name",
-    ///                 Endpoint = "endpoint",
-    ///                 Folder = "/folder",
-    ///                 Region = "region",
-    ///                 SecretKey = "secret_key",
-    ///             },
-    ///         },
-    ///         ClusterId = "&lt;CLUSTER_ID&gt;",
-    ///         Filename = "&lt;FILENAME&gt;",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Etcd Backup can be imported using the Rancher etcd backup ID

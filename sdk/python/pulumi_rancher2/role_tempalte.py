@@ -73,11 +73,11 @@ class RoleTempalteArgs:
              name: Optional[pulumi.Input[str]] = None,
              role_template_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              rules: Optional[pulumi.Input[Sequence[pulumi.Input['RoleTempalteRuleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'defaultRole' in kwargs:
+        if default_role is None and 'defaultRole' in kwargs:
             default_role = kwargs['defaultRole']
-        if 'roleTemplateIds' in kwargs:
+        if role_template_ids is None and 'roleTemplateIds' in kwargs:
             role_template_ids = kwargs['roleTemplateIds']
 
         if administrative is not None:
@@ -314,11 +314,11 @@ class _RoleTempalteState:
              name: Optional[pulumi.Input[str]] = None,
              role_template_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              rules: Optional[pulumi.Input[Sequence[pulumi.Input['RoleTempalteRuleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'defaultRole' in kwargs:
+        if default_role is None and 'defaultRole' in kwargs:
             default_role = kwargs['defaultRole']
-        if 'roleTemplateIds' in kwargs:
+        if role_template_ids is None and 'roleTemplateIds' in kwargs:
             role_template_ids = kwargs['roleTemplateIds']
 
         if administrative is not None:
@@ -533,40 +533,6 @@ class RoleTempalte(pulumi.CustomResource):
 
         `cluster` and `project` scopes are supported for role templates.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 cluster Role Template
-        foo = rancher2.RoleTemplate("foo",
-            context="cluster",
-            default_role=True,
-            description="Terraform role template acceptance test",
-            rules=[rancher2.RoleTemplateRuleArgs(
-                api_groups=["*"],
-                resources=["secrets"],
-                verbs=["create"],
-            )])
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 project Role Template
-        foo = rancher2.RoleTemplate("foo",
-            context="project",
-            default_role=True,
-            description="Terraform role template acceptance test",
-            rules=[rancher2.RoleTemplateRuleArgs(
-                api_groups=["*"],
-                resources=["secrets"],
-                verbs=["create"],
-            )])
-        ```
-
         ## Import
 
         Role Template can be imported using the Rancher Role Template ID
@@ -600,40 +566,6 @@ class RoleTempalte(pulumi.CustomResource):
         Provides a Rancher v2 Role Template resource. This can be used to create Role Template for Rancher v2 and retrieve their information.
 
         `cluster` and `project` scopes are supported for role templates.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 cluster Role Template
-        foo = rancher2.RoleTemplate("foo",
-            context="cluster",
-            default_role=True,
-            description="Terraform role template acceptance test",
-            rules=[rancher2.RoleTemplateRuleArgs(
-                api_groups=["*"],
-                resources=["secrets"],
-                verbs=["create"],
-            )])
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 project Role Template
-        foo = rancher2.RoleTemplate("foo",
-            context="project",
-            default_role=True,
-            description="Terraform role template acceptance test",
-            rules=[rancher2.RoleTemplateRuleArgs(
-                api_groups=["*"],
-                resources=["secrets"],
-                verbs=["create"],
-            )])
-        ```
 
         ## Import
 

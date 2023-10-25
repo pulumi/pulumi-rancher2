@@ -49,7 +49,7 @@ class EtcdBackupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: pulumi.Input[str],
+             cluster_id: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              backup_config: Optional[pulumi.Input['EtcdBackupBackupConfigArgs']] = None,
              filename: Optional[pulumi.Input[str]] = None,
@@ -57,13 +57,15 @@ class EtcdBackupArgs:
              manual: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              namespace_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'backupConfig' in kwargs:
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if backup_config is None and 'backupConfig' in kwargs:
             backup_config = kwargs['backupConfig']
-        if 'namespaceId' in kwargs:
+        if namespace_id is None and 'namespaceId' in kwargs:
             namespace_id = kwargs['namespaceId']
 
         _setter("cluster_id", cluster_id)
@@ -223,13 +225,13 @@ class _EtcdBackupState:
              manual: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              namespace_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backupConfig' in kwargs:
+        if backup_config is None and 'backupConfig' in kwargs:
             backup_config = kwargs['backupConfig']
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'namespaceId' in kwargs:
+        if namespace_id is None and 'namespaceId' in kwargs:
             namespace_id = kwargs['namespaceId']
 
         if annotations is not None:
@@ -365,31 +367,6 @@ class EtcdBackup(pulumi.CustomResource):
 
         The `EtcdBackup` resource is used to define extra etcd backups for a `Cluster`, which will be created as a local or S3 backup in accordance with the etcd backup config for the cluster. The main etcd backup config for the cluster should be set on the cluster config
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Etcd Backup
-        foo = rancher2.EtcdBackup("foo",
-            backup_config=rancher2.EtcdBackupBackupConfigArgs(
-                enabled=True,
-                interval_hours=20,
-                retention=10,
-                s3_backup_config=rancher2.EtcdBackupBackupConfigS3BackupConfigArgs(
-                    access_key="access_key",
-                    bucket_name="bucket_name",
-                    endpoint="endpoint",
-                    folder="/folder",
-                    region="region",
-                    secret_key="secret_key",
-                ),
-            ),
-            cluster_id="<CLUSTER_ID>",
-            filename="<FILENAME>")
-        ```
-
         ## Import
 
         Etcd Backup can be imported using the Rancher etcd backup ID
@@ -419,31 +396,6 @@ class EtcdBackup(pulumi.CustomResource):
         Provides a Rancher v2 Etcd Backup resource. This can be used to create an Etcd Backup for Rancher v2.2.x and above, and to retrieve their information.
 
         The `EtcdBackup` resource is used to define extra etcd backups for a `Cluster`, which will be created as a local or S3 backup in accordance with the etcd backup config for the cluster. The main etcd backup config for the cluster should be set on the cluster config
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Etcd Backup
-        foo = rancher2.EtcdBackup("foo",
-            backup_config=rancher2.EtcdBackupBackupConfigArgs(
-                enabled=True,
-                interval_hours=20,
-                retention=10,
-                s3_backup_config=rancher2.EtcdBackupBackupConfigS3BackupConfigArgs(
-                    access_key="access_key",
-                    bucket_name="bucket_name",
-                    endpoint="endpoint",
-                    folder="/folder",
-                    region="region",
-                    secret_key="secret_key",
-                ),
-            ),
-            cluster_id="<CLUSTER_ID>",
-            filename="<FILENAME>")
-        ```
 
         ## Import
 
@@ -490,11 +442,7 @@ class EtcdBackup(pulumi.CustomResource):
             __props__ = EtcdBackupArgs.__new__(EtcdBackupArgs)
 
             __props__.__dict__["annotations"] = annotations
-            if backup_config is not None and not isinstance(backup_config, EtcdBackupBackupConfigArgs):
-                backup_config = backup_config or {}
-                def _setter(key, value):
-                    backup_config[key] = value
-                EtcdBackupBackupConfigArgs._configure(_setter, **backup_config)
+            backup_config = _utilities.configure(backup_config, EtcdBackupBackupConfigArgs, True)
             __props__.__dict__["backup_config"] = backup_config
             if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")

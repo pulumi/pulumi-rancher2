@@ -8,18 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve information about a Rancher v2 project alert group.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * const foo = rancher2.getProjectAlertGroup({
- *     name: "<project_alert_group_name>",
- *     projectId: "<project_id>",
- * });
- * ```
  */
 export function getProjectAlertGroup(args: GetProjectAlertGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectAlertGroupResult> {
 
@@ -85,18 +73,6 @@ export interface GetProjectAlertGroupResult {
 }
 /**
  * Use this data source to retrieve information about a Rancher v2 project alert group.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * const foo = rancher2.getProjectAlertGroup({
- *     name: "<project_alert_group_name>",
- *     projectId: "<project_id>",
- * });
- * ```
  */
 export function getProjectAlertGroupOutput(args: GetProjectAlertGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectAlertGroupResult> {
     return pulumi.output(args).apply((a: any) => getProjectAlertGroup(a, opts))

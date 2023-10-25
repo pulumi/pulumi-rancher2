@@ -19,47 +19,6 @@ namespace Pulumi.Rancher2
     /// Tokens can only be created for a Rancher User with at least the `user-base` global role binding in order to enable user login.
     /// 
     /// Tokens can't be updated once created. Any diff in token data will recreate the token. If any token expire, Rancher2 provider will generate a diff to regenerate it.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Rancher2 = Pulumi.Rancher2;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Create a rancher2 Token
-    ///     var fooUser = new Rancher2.User("fooUser", new()
-    ///     {
-    ///         Username = "foo",
-    ///         Password = "changeme",
-    ///         Enabled = true,
-    ///     });
-    /// 
-    ///     var foo_login = new Rancher2.GlobalRoleBinding("foo-login", new()
-    ///     {
-    ///         GlobalRoleId = "user-base",
-    ///         UserId = fooUser.Id,
-    ///     });
-    /// 
-    ///     var fooCustomUserToken = new Rancher2.CustomUserToken("fooCustomUserToken", new()
-    ///     {
-    ///         Username = fooUser.Username,
-    ///         Password = fooUser.Password,
-    ///         Description = "foo token",
-    ///         Ttl = 0,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             foo_login,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/customUserToken:CustomUserToken")]
     public partial class CustomUserToken : global::Pulumi.CustomResource

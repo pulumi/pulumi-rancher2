@@ -8,18 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve information about a Rancher v2 cluster.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * const foo = rancher2.getClusterV2({
- *     fleetNamespace: "fleet-ns",
- *     name: "foo",
- * });
- * ```
  */
 export function getClusterV2(args: GetClusterV2Args, opts?: pulumi.InvokeOptions): Promise<GetClusterV2Result> {
 
@@ -107,18 +95,6 @@ export interface GetClusterV2Result {
 }
 /**
  * Use this data source to retrieve information about a Rancher v2 cluster.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * const foo = rancher2.getClusterV2({
- *     fleetNamespace: "fleet-ns",
- *     name: "foo",
- * });
- * ```
  */
 export function getClusterV2Output(args: GetClusterV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterV2Result> {
     return pulumi.output(args).apply((a: any) => getClusterV2(a, opts))

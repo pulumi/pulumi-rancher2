@@ -13,33 +13,6 @@ import (
 )
 
 // Use this data source to retrieve information about a Rancher v2 project role template binding.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rancher2.LookupProjectRoleTemplateBinding(ctx, &rancher2.LookupProjectRoleTemplateBindingArgs{
-//				Name:      "foo",
-//				ProjectId: "foo_id",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupProjectRoleTemplateBinding(ctx *pulumi.Context, args *LookupProjectRoleTemplateBindingArgs, opts ...pulumi.InvokeOption) (*LookupProjectRoleTemplateBindingResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupProjectRoleTemplateBindingResult

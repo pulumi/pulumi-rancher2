@@ -65,7 +65,7 @@ class CatalogV2Args:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: pulumi.Input[str],
+             cluster_id: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              ca_bundle: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
@@ -79,23 +79,25 @@ class CatalogV2Args:
              service_account: Optional[pulumi.Input[str]] = None,
              service_account_namespace: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'caBundle' in kwargs:
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if ca_bundle is None and 'caBundle' in kwargs:
             ca_bundle = kwargs['caBundle']
-        if 'gitBranch' in kwargs:
+        if git_branch is None and 'gitBranch' in kwargs:
             git_branch = kwargs['gitBranch']
-        if 'gitRepo' in kwargs:
+        if git_repo is None and 'gitRepo' in kwargs:
             git_repo = kwargs['gitRepo']
-        if 'secretName' in kwargs:
+        if secret_name is None and 'secretName' in kwargs:
             secret_name = kwargs['secretName']
-        if 'secretNamespace' in kwargs:
+        if secret_namespace is None and 'secretNamespace' in kwargs:
             secret_namespace = kwargs['secretNamespace']
-        if 'serviceAccount' in kwargs:
+        if service_account is None and 'serviceAccount' in kwargs:
             service_account = kwargs['serviceAccount']
-        if 'serviceAccountNamespace' in kwargs:
+        if service_account_namespace is None and 'serviceAccountNamespace' in kwargs:
             service_account_namespace = kwargs['serviceAccountNamespace']
 
         _setter("cluster_id", cluster_id)
@@ -367,25 +369,25 @@ class _CatalogV2State:
              service_account: Optional[pulumi.Input[str]] = None,
              service_account_namespace: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'caBundle' in kwargs:
+        if ca_bundle is None and 'caBundle' in kwargs:
             ca_bundle = kwargs['caBundle']
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'gitBranch' in kwargs:
+        if git_branch is None and 'gitBranch' in kwargs:
             git_branch = kwargs['gitBranch']
-        if 'gitRepo' in kwargs:
+        if git_repo is None and 'gitRepo' in kwargs:
             git_repo = kwargs['gitRepo']
-        if 'resourceVersion' in kwargs:
+        if resource_version is None and 'resourceVersion' in kwargs:
             resource_version = kwargs['resourceVersion']
-        if 'secretName' in kwargs:
+        if secret_name is None and 'secretName' in kwargs:
             secret_name = kwargs['secretName']
-        if 'secretNamespace' in kwargs:
+        if secret_namespace is None and 'secretNamespace' in kwargs:
             secret_namespace = kwargs['secretNamespace']
-        if 'serviceAccount' in kwargs:
+        if service_account is None and 'serviceAccount' in kwargs:
             service_account = kwargs['serviceAccount']
-        if 'serviceAccountNamespace' in kwargs:
+        if service_account_namespace is None and 'serviceAccountNamespace' in kwargs:
             service_account_namespace = kwargs['serviceAccountNamespace']
 
         if annotations is not None:

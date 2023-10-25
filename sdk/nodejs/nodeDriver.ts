@@ -7,25 +7,6 @@ import * as utilities from "./utilities";
 /**
  * Provides a Rancher v2 Node Driver resource. This can be used to create Node Driver for Rancher v2 RKE clusters and retrieve their information.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * // Create a new rancher2 Node Driver
- * const foo = new rancher2.NodeDriver("foo", {
- *     active: true,
- *     builtin: false,
- *     checksum: "0x0",
- *     description: "Foo description",
- *     externalId: "foo_external",
- *     uiUrl: "local://ui",
- *     url: "local://",
- *     whitelistDomains: ["*.foo.com"],
- * });
- * ```
- *
  * ## Import
  *
  * Node Driver can be imported using the Rancher Node Driver ID

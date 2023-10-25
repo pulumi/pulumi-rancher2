@@ -9,21 +9,6 @@ import * as utilities from "./utilities";
 /**
  * Provides a Rancher v2 Project Alert Group resource. This can be used to create Project Alert Group for Rancher v2 environments and retrieve their information.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * // Create a new Rancher2 Project Alert Group
- * const foo = new rancher2.ProjectAlertGroup("foo", {
- *     description: "Terraform project alert group",
- *     groupIntervalSeconds: 300,
- *     projectId: "<project_id>",
- *     repeatIntervalSeconds: 3600,
- * });
- * ```
- *
  * ## Import
  *
  * Project Alert Group can be imported using the Rancher project alert group ID

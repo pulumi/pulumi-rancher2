@@ -141,16 +141,6 @@ def get_etcd_backup(cluster_id: Optional[str] = None,
     """
     Use this data source to retrieve information about a Rancher v2 etcd backup.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_rancher2 as rancher2
-
-    foo = rancher2.get_etcd_backup(cluster_id="<CLUSTER_ID>",
-        name="foo")
-    ```
-
 
     :param str cluster_id: Cluster ID to config Etcd Backup (string)
     :param str name: The name of the Etcd Backup (string)
@@ -179,16 +169,6 @@ def get_etcd_backup_output(cluster_id: Optional[pulumi.Input[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEtcdBackupResult]:
     """
     Use this data source to retrieve information about a Rancher v2 etcd backup.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_rancher2 as rancher2
-
-    foo = rancher2.get_etcd_backup(cluster_id="<CLUSTER_ID>",
-        name="foo")
-    ```
 
 
     :param str cluster_id: Cluster ID to config Etcd Backup (string)

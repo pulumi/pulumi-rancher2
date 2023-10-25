@@ -65,43 +65,59 @@ class AuthConfigKeycloakArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name_field: pulumi.Input[str],
-             groups_field: pulumi.Input[str],
-             idp_metadata_content: pulumi.Input[str],
-             rancher_api_host: pulumi.Input[str],
-             sp_cert: pulumi.Input[str],
-             sp_key: pulumi.Input[str],
-             uid_field: pulumi.Input[str],
-             user_name_field: pulumi.Input[str],
+             display_name_field: Optional[pulumi.Input[str]] = None,
+             groups_field: Optional[pulumi.Input[str]] = None,
+             idp_metadata_content: Optional[pulumi.Input[str]] = None,
+             rancher_api_host: Optional[pulumi.Input[str]] = None,
+             sp_cert: Optional[pulumi.Input[str]] = None,
+             sp_key: Optional[pulumi.Input[str]] = None,
+             uid_field: Optional[pulumi.Input[str]] = None,
+             user_name_field: Optional[pulumi.Input[str]] = None,
              access_mode: Optional[pulumi.Input[str]] = None,
              allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              entity_id: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'displayNameField' in kwargs:
+        if display_name_field is None and 'displayNameField' in kwargs:
             display_name_field = kwargs['displayNameField']
-        if 'groupsField' in kwargs:
+        if display_name_field is None:
+            raise TypeError("Missing 'display_name_field' argument")
+        if groups_field is None and 'groupsField' in kwargs:
             groups_field = kwargs['groupsField']
-        if 'idpMetadataContent' in kwargs:
+        if groups_field is None:
+            raise TypeError("Missing 'groups_field' argument")
+        if idp_metadata_content is None and 'idpMetadataContent' in kwargs:
             idp_metadata_content = kwargs['idpMetadataContent']
-        if 'rancherApiHost' in kwargs:
+        if idp_metadata_content is None:
+            raise TypeError("Missing 'idp_metadata_content' argument")
+        if rancher_api_host is None and 'rancherApiHost' in kwargs:
             rancher_api_host = kwargs['rancherApiHost']
-        if 'spCert' in kwargs:
+        if rancher_api_host is None:
+            raise TypeError("Missing 'rancher_api_host' argument")
+        if sp_cert is None and 'spCert' in kwargs:
             sp_cert = kwargs['spCert']
-        if 'spKey' in kwargs:
+        if sp_cert is None:
+            raise TypeError("Missing 'sp_cert' argument")
+        if sp_key is None and 'spKey' in kwargs:
             sp_key = kwargs['spKey']
-        if 'uidField' in kwargs:
+        if sp_key is None:
+            raise TypeError("Missing 'sp_key' argument")
+        if uid_field is None and 'uidField' in kwargs:
             uid_field = kwargs['uidField']
-        if 'userNameField' in kwargs:
+        if uid_field is None:
+            raise TypeError("Missing 'uid_field' argument")
+        if user_name_field is None and 'userNameField' in kwargs:
             user_name_field = kwargs['userNameField']
-        if 'accessMode' in kwargs:
+        if user_name_field is None:
+            raise TypeError("Missing 'user_name_field' argument")
+        if access_mode is None and 'accessMode' in kwargs:
             access_mode = kwargs['accessMode']
-        if 'allowedPrincipalIds' in kwargs:
+        if allowed_principal_ids is None and 'allowedPrincipalIds' in kwargs:
             allowed_principal_ids = kwargs['allowedPrincipalIds']
-        if 'entityId' in kwargs:
+        if entity_id is None and 'entityId' in kwargs:
             entity_id = kwargs['entityId']
 
         _setter("display_name_field", display_name_field)
@@ -370,29 +386,29 @@ class _AuthConfigKeycloakState:
              type: Optional[pulumi.Input[str]] = None,
              uid_field: Optional[pulumi.Input[str]] = None,
              user_name_field: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessMode' in kwargs:
+        if access_mode is None and 'accessMode' in kwargs:
             access_mode = kwargs['accessMode']
-        if 'allowedPrincipalIds' in kwargs:
+        if allowed_principal_ids is None and 'allowedPrincipalIds' in kwargs:
             allowed_principal_ids = kwargs['allowedPrincipalIds']
-        if 'displayNameField' in kwargs:
+        if display_name_field is None and 'displayNameField' in kwargs:
             display_name_field = kwargs['displayNameField']
-        if 'entityId' in kwargs:
+        if entity_id is None and 'entityId' in kwargs:
             entity_id = kwargs['entityId']
-        if 'groupsField' in kwargs:
+        if groups_field is None and 'groupsField' in kwargs:
             groups_field = kwargs['groupsField']
-        if 'idpMetadataContent' in kwargs:
+        if idp_metadata_content is None and 'idpMetadataContent' in kwargs:
             idp_metadata_content = kwargs['idpMetadataContent']
-        if 'rancherApiHost' in kwargs:
+        if rancher_api_host is None and 'rancherApiHost' in kwargs:
             rancher_api_host = kwargs['rancherApiHost']
-        if 'spCert' in kwargs:
+        if sp_cert is None and 'spCert' in kwargs:
             sp_cert = kwargs['spCert']
-        if 'spKey' in kwargs:
+        if sp_key is None and 'spKey' in kwargs:
             sp_key = kwargs['spKey']
-        if 'uidField' in kwargs:
+        if uid_field is None and 'uidField' in kwargs:
             uid_field = kwargs['uidField']
-        if 'userNameField' in kwargs:
+        if user_name_field is None and 'userNameField' in kwargs:
             user_name_field = kwargs['userNameField']
 
         if access_mode is not None:
@@ -646,24 +662,6 @@ class AuthConfigKeycloak(pulumi.CustomResource):
 
         In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Auth Config KeyCloak
-        keycloak = rancher2.AuthConfigKeycloak("keycloak",
-            display_name_field="<DISPLAY_NAME_FIELD>",
-            groups_field="<GROUPS_FIELD>",
-            idp_metadata_content="<IDP_METADATA_CONTENT>",
-            rancher_api_host="https://<RANCHER_API_HOST>",
-            sp_cert="<SP_CERT>",
-            sp_key="<SP_KEY>",
-            uid_field="<UID_FIELD>",
-            user_name_field="<USER_NAME_FIELD>")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -691,24 +689,6 @@ class AuthConfigKeycloak(pulumi.CustomResource):
         Provides a Rancher v2 Auth Config KeyCloak resource. This can be used to configure and enable Auth Config KeyCloak for Rancher v2 RKE clusters and retrieve their information.
 
         In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Auth Config KeyCloak
-        keycloak = rancher2.AuthConfigKeycloak("keycloak",
-            display_name_field="<DISPLAY_NAME_FIELD>",
-            groups_field="<GROUPS_FIELD>",
-            idp_metadata_content="<IDP_METADATA_CONTENT>",
-            rancher_api_host="https://<RANCHER_API_HOST>",
-            sp_cert="<SP_CERT>",
-            sp_key="<SP_KEY>",
-            uid_field="<UID_FIELD>",
-            user_name_field="<USER_NAME_FIELD>")
-        ```
 
         :param str resource_name: The name of the resource.
         :param AuthConfigKeycloakArgs args: The arguments to use to populate this resource's properties.

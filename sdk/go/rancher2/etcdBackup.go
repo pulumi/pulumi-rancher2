@@ -17,46 +17,6 @@ import (
 //
 // The `EtcdBackup` resource is used to define extra etcd backups for a `Cluster`, which will be created as a local or S3 backup in accordance with the etcd backup config for the cluster. The main etcd backup config for the cluster should be set on the cluster config
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rancher2.NewEtcdBackup(ctx, "foo", &rancher2.EtcdBackupArgs{
-//				BackupConfig: &rancher2.EtcdBackupBackupConfigArgs{
-//					Enabled:       pulumi.Bool(true),
-//					IntervalHours: pulumi.Int(20),
-//					Retention:     pulumi.Int(10),
-//					S3BackupConfig: &rancher2.EtcdBackupBackupConfigS3BackupConfigArgs{
-//						AccessKey:  pulumi.String("access_key"),
-//						BucketName: pulumi.String("bucket_name"),
-//						Endpoint:   pulumi.String("endpoint"),
-//						Folder:     pulumi.String("/folder"),
-//						Region:     pulumi.String("region"),
-//						SecretKey:  pulumi.String("secret_key"),
-//					},
-//				},
-//				ClusterId: pulumi.String("<CLUSTER_ID>"),
-//				Filename:  pulumi.String("<FILENAME>"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // # Etcd Backup can be imported using the Rancher etcd backup ID

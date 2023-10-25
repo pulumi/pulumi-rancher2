@@ -47,18 +47,22 @@ class SecretV2Args:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: pulumi.Input[str],
-             data: pulumi.Input[Mapping[str, Any]],
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              immutable: Optional[pulumi.Input[bool]] = None,
              labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              namespace: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if data is None:
+            raise TypeError("Missing 'data' argument")
 
         _setter("cluster_id", cluster_id)
         _setter("data", data)
@@ -220,11 +224,11 @@ class _SecretV2State:
              namespace: Optional[pulumi.Input[str]] = None,
              resource_version: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'resourceVersion' in kwargs:
+        if resource_version is None and 'resourceVersion' in kwargs:
             resource_version = kwargs['resourceVersion']
 
         if annotations is not None:

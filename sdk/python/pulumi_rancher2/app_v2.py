@@ -68,10 +68,10 @@ class AppV2Args:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             chart_name: pulumi.Input[str],
-             cluster_id: pulumi.Input[str],
-             namespace: pulumi.Input[str],
-             repo_name: pulumi.Input[str],
+             chart_name: Optional[pulumi.Input[str]] = None,
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             repo_name: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              chart_version: Optional[pulumi.Input[str]] = None,
              cleanup_on_fail: Optional[pulumi.Input[bool]] = None,
@@ -83,25 +83,33 @@ class AppV2Args:
              project_id: Optional[pulumi.Input[str]] = None,
              values: Optional[pulumi.Input[str]] = None,
              wait: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'chartName' in kwargs:
+        if chart_name is None and 'chartName' in kwargs:
             chart_name = kwargs['chartName']
-        if 'clusterId' in kwargs:
+        if chart_name is None:
+            raise TypeError("Missing 'chart_name' argument")
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'repoName' in kwargs:
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if namespace is None:
+            raise TypeError("Missing 'namespace' argument")
+        if repo_name is None and 'repoName' in kwargs:
             repo_name = kwargs['repoName']
-        if 'chartVersion' in kwargs:
+        if repo_name is None:
+            raise TypeError("Missing 'repo_name' argument")
+        if chart_version is None and 'chartVersion' in kwargs:
             chart_version = kwargs['chartVersion']
-        if 'cleanupOnFail' in kwargs:
+        if cleanup_on_fail is None and 'cleanupOnFail' in kwargs:
             cleanup_on_fail = kwargs['cleanupOnFail']
-        if 'disableHooks' in kwargs:
+        if disable_hooks is None and 'disableHooks' in kwargs:
             disable_hooks = kwargs['disableHooks']
-        if 'disableOpenApiValidation' in kwargs:
+        if disable_open_api_validation is None and 'disableOpenApiValidation' in kwargs:
             disable_open_api_validation = kwargs['disableOpenApiValidation']
-        if 'forceUpgrade' in kwargs:
+        if force_upgrade is None and 'forceUpgrade' in kwargs:
             force_upgrade = kwargs['forceUpgrade']
-        if 'projectId' in kwargs:
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
 
         _setter("chart_name", chart_name)
@@ -398,31 +406,31 @@ class _AppV2State:
              system_default_registry: Optional[pulumi.Input[str]] = None,
              values: Optional[pulumi.Input[str]] = None,
              wait: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'chartName' in kwargs:
+        if chart_name is None and 'chartName' in kwargs:
             chart_name = kwargs['chartName']
-        if 'chartVersion' in kwargs:
+        if chart_version is None and 'chartVersion' in kwargs:
             chart_version = kwargs['chartVersion']
-        if 'cleanupOnFail' in kwargs:
+        if cleanup_on_fail is None and 'cleanupOnFail' in kwargs:
             cleanup_on_fail = kwargs['cleanupOnFail']
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'clusterName' in kwargs:
+        if cluster_name is None and 'clusterName' in kwargs:
             cluster_name = kwargs['clusterName']
-        if 'deploymentValues' in kwargs:
+        if deployment_values is None and 'deploymentValues' in kwargs:
             deployment_values = kwargs['deploymentValues']
-        if 'disableHooks' in kwargs:
+        if disable_hooks is None and 'disableHooks' in kwargs:
             disable_hooks = kwargs['disableHooks']
-        if 'disableOpenApiValidation' in kwargs:
+        if disable_open_api_validation is None and 'disableOpenApiValidation' in kwargs:
             disable_open_api_validation = kwargs['disableOpenApiValidation']
-        if 'forceUpgrade' in kwargs:
+        if force_upgrade is None and 'forceUpgrade' in kwargs:
             force_upgrade = kwargs['forceUpgrade']
-        if 'projectId' in kwargs:
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
-        if 'repoName' in kwargs:
+        if repo_name is None and 'repoName' in kwargs:
             repo_name = kwargs['repoName']
-        if 'systemDefaultRegistry' in kwargs:
+        if system_default_registry is None and 'systemDefaultRegistry' in kwargs:
             system_default_registry = kwargs['systemDefaultRegistry']
 
         if annotations is not None:
@@ -705,22 +713,6 @@ class AppV2(pulumi.CustomResource):
         """
         Provides a Rancher App v2 resource. This can be used to manage helm charts for Rancher v2 environments and retrieve their information. App v2 resource is available at Rancher v2.5.x and above.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new Rancher2 App V2 using
-        foo = rancher2.AppV2("foo",
-            cluster_id="<CLUSTER_ID>",
-            namespace="cattle-monitoring-system",
-            repo_name="rancher-charts",
-            chart_name="rancher-monitoring",
-            chart_version="9.4.200",
-            values=(lambda path: open(path).read())("values.yaml"))
-        ```
-
         ## Import
 
         V2 apps can be imported using the Rancher cluster ID and App V2 name, which is composed of `<namespace>/<application_name>`.
@@ -755,22 +747,6 @@ class AppV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Rancher App v2 resource. This can be used to manage helm charts for Rancher v2 environments and retrieve their information. App v2 resource is available at Rancher v2.5.x and above.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new Rancher2 App V2 using
-        foo = rancher2.AppV2("foo",
-            cluster_id="<CLUSTER_ID>",
-            namespace="cattle-monitoring-system",
-            repo_name="rancher-charts",
-            chart_name="rancher-monitoring",
-            chart_version="9.4.200",
-            values=(lambda path: open(path).read())("values.yaml"))
-        ```
 
         ## Import
 

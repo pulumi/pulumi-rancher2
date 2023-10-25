@@ -53,8 +53,8 @@ class StorageClassV2Args:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: pulumi.Input[str],
-             k8s_provisioner: pulumi.Input[str],
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             k8s_provisioner: Optional[pulumi.Input[str]] = None,
              allow_volume_expansion: Optional[pulumi.Input[bool]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -63,19 +63,23 @@ class StorageClassV2Args:
              parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              reclaim_policy: Optional[pulumi.Input[str]] = None,
              volume_binding_mode: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'k8sProvisioner' in kwargs:
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if k8s_provisioner is None and 'k8sProvisioner' in kwargs:
             k8s_provisioner = kwargs['k8sProvisioner']
-        if 'allowVolumeExpansion' in kwargs:
+        if k8s_provisioner is None:
+            raise TypeError("Missing 'k8s_provisioner' argument")
+        if allow_volume_expansion is None and 'allowVolumeExpansion' in kwargs:
             allow_volume_expansion = kwargs['allowVolumeExpansion']
-        if 'mountOptions' in kwargs:
+        if mount_options is None and 'mountOptions' in kwargs:
             mount_options = kwargs['mountOptions']
-        if 'reclaimPolicy' in kwargs:
+        if reclaim_policy is None and 'reclaimPolicy' in kwargs:
             reclaim_policy = kwargs['reclaimPolicy']
-        if 'volumeBindingMode' in kwargs:
+        if volume_binding_mode is None and 'volumeBindingMode' in kwargs:
             volume_binding_mode = kwargs['volumeBindingMode']
 
         _setter("cluster_id", cluster_id)
@@ -274,21 +278,21 @@ class _StorageClassV2State:
              reclaim_policy: Optional[pulumi.Input[str]] = None,
              resource_version: Optional[pulumi.Input[str]] = None,
              volume_binding_mode: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowVolumeExpansion' in kwargs:
+        if allow_volume_expansion is None and 'allowVolumeExpansion' in kwargs:
             allow_volume_expansion = kwargs['allowVolumeExpansion']
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'k8sProvisioner' in kwargs:
+        if k8s_provisioner is None and 'k8sProvisioner' in kwargs:
             k8s_provisioner = kwargs['k8sProvisioner']
-        if 'mountOptions' in kwargs:
+        if mount_options is None and 'mountOptions' in kwargs:
             mount_options = kwargs['mountOptions']
-        if 'reclaimPolicy' in kwargs:
+        if reclaim_policy is None and 'reclaimPolicy' in kwargs:
             reclaim_policy = kwargs['reclaimPolicy']
-        if 'resourceVersion' in kwargs:
+        if resource_version is None and 'resourceVersion' in kwargs:
             resource_version = kwargs['resourceVersion']
-        if 'volumeBindingMode' in kwargs:
+        if volume_binding_mode is None and 'volumeBindingMode' in kwargs:
             volume_binding_mode = kwargs['volumeBindingMode']
 
         if allow_volume_expansion is not None:

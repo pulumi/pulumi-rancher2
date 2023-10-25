@@ -50,8 +50,8 @@ class AuthConfigGithubArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             client_id: pulumi.Input[str],
-             client_secret: pulumi.Input[str],
+             client_id: Optional[pulumi.Input[str]] = None,
+             client_secret: Optional[pulumi.Input[str]] = None,
              access_mode: Optional[pulumi.Input[str]] = None,
              allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -59,15 +59,19 @@ class AuthConfigGithubArgs:
              hostname: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              tls: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clientId' in kwargs:
+        if client_id is None and 'clientId' in kwargs:
             client_id = kwargs['clientId']
-        if 'clientSecret' in kwargs:
+        if client_id is None:
+            raise TypeError("Missing 'client_id' argument")
+        if client_secret is None and 'clientSecret' in kwargs:
             client_secret = kwargs['clientSecret']
-        if 'accessMode' in kwargs:
+        if client_secret is None:
+            raise TypeError("Missing 'client_secret' argument")
+        if access_mode is None and 'accessMode' in kwargs:
             access_mode = kwargs['accessMode']
-        if 'allowedPrincipalIds' in kwargs:
+        if allowed_principal_ids is None and 'allowedPrincipalIds' in kwargs:
             allowed_principal_ids = kwargs['allowedPrincipalIds']
 
         _setter("client_id", client_id)
@@ -252,15 +256,15 @@ class _AuthConfigGithubState:
              name: Optional[pulumi.Input[str]] = None,
              tls: Optional[pulumi.Input[bool]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessMode' in kwargs:
+        if access_mode is None and 'accessMode' in kwargs:
             access_mode = kwargs['accessMode']
-        if 'allowedPrincipalIds' in kwargs:
+        if allowed_principal_ids is None and 'allowedPrincipalIds' in kwargs:
             allowed_principal_ids = kwargs['allowedPrincipalIds']
-        if 'clientId' in kwargs:
+        if client_id is None and 'clientId' in kwargs:
             client_id = kwargs['clientId']
-        if 'clientSecret' in kwargs:
+        if client_secret is None and 'clientSecret' in kwargs:
             client_secret = kwargs['clientSecret']
 
         if access_mode is not None:
@@ -439,18 +443,6 @@ class AuthConfigGithub(pulumi.CustomResource):
 
         In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Auth Config Github
-        github = rancher2.AuthConfigGithub("github",
-            client_id="<GITHUB_CLIENT_ID>",
-            client_secret="<GITHUB_CLIENT_SECRET>")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -473,18 +465,6 @@ class AuthConfigGithub(pulumi.CustomResource):
         Provides a Rancher v2 Auth Config Github resource. This can be used to configure and enable Auth Config Github for Rancher v2 RKE clusters and retrieve their information.
 
         In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Auth Config Github
-        github = rancher2.AuthConfigGithub("github",
-            client_id="<GITHUB_CLIENT_ID>",
-            client_secret="<GITHUB_CLIENT_SECRET>")
-        ```
 
         :param str resource_name: The name of the resource.
         :param AuthConfigGithubArgs args: The arguments to use to populate this resource's properties.

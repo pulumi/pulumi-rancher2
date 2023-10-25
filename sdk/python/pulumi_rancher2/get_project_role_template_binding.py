@@ -150,16 +150,6 @@ def get_project_role_template_binding(name: Optional[str] = None,
     """
     Use this data source to retrieve information about a Rancher v2 project role template binding.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_rancher2 as rancher2
-
-    foo = rancher2.get_project_role_template_binding(name="foo",
-        project_id="foo_id")
-    ```
-
 
     :param str name: The name of the project role template binding (string)
     :param str project_id: The project id where bind project role template (string)
@@ -192,16 +182,6 @@ def get_project_role_template_binding_output(name: Optional[pulumi.Input[str]] =
                                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectRoleTemplateBindingResult]:
     """
     Use this data source to retrieve information about a Rancher v2 project role template binding.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_rancher2 as rancher2
-
-    foo = rancher2.get_project_role_template_binding(name="foo",
-        project_id="foo_id")
-    ```
 
 
     :param str name: The name of the project role template binding (string)

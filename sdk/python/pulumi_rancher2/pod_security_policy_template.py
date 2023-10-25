@@ -137,51 +137,51 @@ class PodSecurityPolicyTemplateArgs:
              se_linux: Optional[pulumi.Input['PodSecurityPolicyTemplateSeLinuxArgs']] = None,
              supplemental_group: Optional[pulumi.Input['PodSecurityPolicyTemplateSupplementalGroupArgs']] = None,
              volumes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowPrivilegeEscalation' in kwargs:
+        if allow_privilege_escalation is None and 'allowPrivilegeEscalation' in kwargs:
             allow_privilege_escalation = kwargs['allowPrivilegeEscalation']
-        if 'allowedCapabilities' in kwargs:
+        if allowed_capabilities is None and 'allowedCapabilities' in kwargs:
             allowed_capabilities = kwargs['allowedCapabilities']
-        if 'allowedCsiDrivers' in kwargs:
+        if allowed_csi_drivers is None and 'allowedCsiDrivers' in kwargs:
             allowed_csi_drivers = kwargs['allowedCsiDrivers']
-        if 'allowedFlexVolumes' in kwargs:
+        if allowed_flex_volumes is None and 'allowedFlexVolumes' in kwargs:
             allowed_flex_volumes = kwargs['allowedFlexVolumes']
-        if 'allowedHostPaths' in kwargs:
+        if allowed_host_paths is None and 'allowedHostPaths' in kwargs:
             allowed_host_paths = kwargs['allowedHostPaths']
-        if 'allowedProcMountTypes' in kwargs:
+        if allowed_proc_mount_types is None and 'allowedProcMountTypes' in kwargs:
             allowed_proc_mount_types = kwargs['allowedProcMountTypes']
-        if 'allowedUnsafeSysctls' in kwargs:
+        if allowed_unsafe_sysctls is None and 'allowedUnsafeSysctls' in kwargs:
             allowed_unsafe_sysctls = kwargs['allowedUnsafeSysctls']
-        if 'defaultAddCapabilities' in kwargs:
+        if default_add_capabilities is None and 'defaultAddCapabilities' in kwargs:
             default_add_capabilities = kwargs['defaultAddCapabilities']
-        if 'defaultAllowPrivilegeEscalation' in kwargs:
+        if default_allow_privilege_escalation is None and 'defaultAllowPrivilegeEscalation' in kwargs:
             default_allow_privilege_escalation = kwargs['defaultAllowPrivilegeEscalation']
-        if 'forbiddenSysctls' in kwargs:
+        if forbidden_sysctls is None and 'forbiddenSysctls' in kwargs:
             forbidden_sysctls = kwargs['forbiddenSysctls']
-        if 'fsGroup' in kwargs:
+        if fs_group is None and 'fsGroup' in kwargs:
             fs_group = kwargs['fsGroup']
-        if 'hostIpc' in kwargs:
+        if host_ipc is None and 'hostIpc' in kwargs:
             host_ipc = kwargs['hostIpc']
-        if 'hostNetwork' in kwargs:
+        if host_network is None and 'hostNetwork' in kwargs:
             host_network = kwargs['hostNetwork']
-        if 'hostPid' in kwargs:
+        if host_pid is None and 'hostPid' in kwargs:
             host_pid = kwargs['hostPid']
-        if 'hostPorts' in kwargs:
+        if host_ports is None and 'hostPorts' in kwargs:
             host_ports = kwargs['hostPorts']
-        if 'readOnlyRootFilesystem' in kwargs:
+        if read_only_root_filesystem is None and 'readOnlyRootFilesystem' in kwargs:
             read_only_root_filesystem = kwargs['readOnlyRootFilesystem']
-        if 'requiredDropCapabilities' in kwargs:
+        if required_drop_capabilities is None and 'requiredDropCapabilities' in kwargs:
             required_drop_capabilities = kwargs['requiredDropCapabilities']
-        if 'runAsGroup' in kwargs:
+        if run_as_group is None and 'runAsGroup' in kwargs:
             run_as_group = kwargs['runAsGroup']
-        if 'runAsUser' in kwargs:
+        if run_as_user is None and 'runAsUser' in kwargs:
             run_as_user = kwargs['runAsUser']
-        if 'runtimeClass' in kwargs:
+        if runtime_class is None and 'runtimeClass' in kwargs:
             runtime_class = kwargs['runtimeClass']
-        if 'seLinux' in kwargs:
+        if se_linux is None and 'seLinux' in kwargs:
             se_linux = kwargs['seLinux']
-        if 'supplementalGroup' in kwargs:
+        if supplemental_group is None and 'supplementalGroup' in kwargs:
             supplemental_group = kwargs['supplementalGroup']
 
         if allow_privilege_escalation is not None:
@@ -702,51 +702,51 @@ class _PodSecurityPolicyTemplateState:
              se_linux: Optional[pulumi.Input['PodSecurityPolicyTemplateSeLinuxArgs']] = None,
              supplemental_group: Optional[pulumi.Input['PodSecurityPolicyTemplateSupplementalGroupArgs']] = None,
              volumes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowPrivilegeEscalation' in kwargs:
+        if allow_privilege_escalation is None and 'allowPrivilegeEscalation' in kwargs:
             allow_privilege_escalation = kwargs['allowPrivilegeEscalation']
-        if 'allowedCapabilities' in kwargs:
+        if allowed_capabilities is None and 'allowedCapabilities' in kwargs:
             allowed_capabilities = kwargs['allowedCapabilities']
-        if 'allowedCsiDrivers' in kwargs:
+        if allowed_csi_drivers is None and 'allowedCsiDrivers' in kwargs:
             allowed_csi_drivers = kwargs['allowedCsiDrivers']
-        if 'allowedFlexVolumes' in kwargs:
+        if allowed_flex_volumes is None and 'allowedFlexVolumes' in kwargs:
             allowed_flex_volumes = kwargs['allowedFlexVolumes']
-        if 'allowedHostPaths' in kwargs:
+        if allowed_host_paths is None and 'allowedHostPaths' in kwargs:
             allowed_host_paths = kwargs['allowedHostPaths']
-        if 'allowedProcMountTypes' in kwargs:
+        if allowed_proc_mount_types is None and 'allowedProcMountTypes' in kwargs:
             allowed_proc_mount_types = kwargs['allowedProcMountTypes']
-        if 'allowedUnsafeSysctls' in kwargs:
+        if allowed_unsafe_sysctls is None and 'allowedUnsafeSysctls' in kwargs:
             allowed_unsafe_sysctls = kwargs['allowedUnsafeSysctls']
-        if 'defaultAddCapabilities' in kwargs:
+        if default_add_capabilities is None and 'defaultAddCapabilities' in kwargs:
             default_add_capabilities = kwargs['defaultAddCapabilities']
-        if 'defaultAllowPrivilegeEscalation' in kwargs:
+        if default_allow_privilege_escalation is None and 'defaultAllowPrivilegeEscalation' in kwargs:
             default_allow_privilege_escalation = kwargs['defaultAllowPrivilegeEscalation']
-        if 'forbiddenSysctls' in kwargs:
+        if forbidden_sysctls is None and 'forbiddenSysctls' in kwargs:
             forbidden_sysctls = kwargs['forbiddenSysctls']
-        if 'fsGroup' in kwargs:
+        if fs_group is None and 'fsGroup' in kwargs:
             fs_group = kwargs['fsGroup']
-        if 'hostIpc' in kwargs:
+        if host_ipc is None and 'hostIpc' in kwargs:
             host_ipc = kwargs['hostIpc']
-        if 'hostNetwork' in kwargs:
+        if host_network is None and 'hostNetwork' in kwargs:
             host_network = kwargs['hostNetwork']
-        if 'hostPid' in kwargs:
+        if host_pid is None and 'hostPid' in kwargs:
             host_pid = kwargs['hostPid']
-        if 'hostPorts' in kwargs:
+        if host_ports is None and 'hostPorts' in kwargs:
             host_ports = kwargs['hostPorts']
-        if 'readOnlyRootFilesystem' in kwargs:
+        if read_only_root_filesystem is None and 'readOnlyRootFilesystem' in kwargs:
             read_only_root_filesystem = kwargs['readOnlyRootFilesystem']
-        if 'requiredDropCapabilities' in kwargs:
+        if required_drop_capabilities is None and 'requiredDropCapabilities' in kwargs:
             required_drop_capabilities = kwargs['requiredDropCapabilities']
-        if 'runAsGroup' in kwargs:
+        if run_as_group is None and 'runAsGroup' in kwargs:
             run_as_group = kwargs['runAsGroup']
-        if 'runAsUser' in kwargs:
+        if run_as_user is None and 'runAsUser' in kwargs:
             run_as_user = kwargs['runAsUser']
-        if 'runtimeClass' in kwargs:
+        if runtime_class is None and 'runtimeClass' in kwargs:
             runtime_class = kwargs['runtimeClass']
-        if 'seLinux' in kwargs:
+        if se_linux is None and 'seLinux' in kwargs:
             se_linux = kwargs['seLinux']
-        if 'supplementalGroup' in kwargs:
+        if supplemental_group is None and 'supplementalGroup' in kwargs:
             supplemental_group = kwargs['supplementalGroup']
 
         if allow_privilege_escalation is not None:
@@ -1180,112 +1180,6 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
         """
         Provides a Rancher v2 PodSecurityPolicyTemplate resource. This can be used to create PodSecurityPolicyTemplates for Rancher v2 environments and retrieve their information.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 PodSecurityPolicyTemplate
-        foo = rancher2.PodSecurityPolicyTemplate("foo",
-            allow_privilege_escalation=False,
-            allowed_csi_drivers=[
-                rancher2.PodSecurityPolicyTemplateAllowedCsiDriverArgs(
-                    name="something",
-                ),
-                rancher2.PodSecurityPolicyTemplateAllowedCsiDriverArgs(
-                    name="something-else",
-                ),
-            ],
-            allowed_flex_volumes=[
-                rancher2.PodSecurityPolicyTemplateAllowedFlexVolumeArgs(
-                    driver="something",
-                ),
-                rancher2.PodSecurityPolicyTemplateAllowedFlexVolumeArgs(
-                    driver="something-else",
-                ),
-            ],
-            allowed_host_paths=[
-                rancher2.PodSecurityPolicyTemplateAllowedHostPathArgs(
-                    path_prefix="/",
-                    read_only=True,
-                ),
-                rancher2.PodSecurityPolicyTemplateAllowedHostPathArgs(
-                    path_prefix="//",
-                    read_only=False,
-                ),
-            ],
-            allowed_proc_mount_types=["Default"],
-            default_allow_privilege_escalation=False,
-            description="Terraform PodSecurityPolicyTemplate acceptance test - update",
-            fs_group=rancher2.PodSecurityPolicyTemplateFsGroupArgs(
-                ranges=[
-                    rancher2.PodSecurityPolicyTemplateFsGroupRangeArgs(
-                        max=100,
-                        min=0,
-                    ),
-                    rancher2.PodSecurityPolicyTemplateFsGroupRangeArgs(
-                        max=100,
-                        min=0,
-                    ),
-                ],
-                rule="MustRunAs",
-            ),
-            host_ipc=False,
-            host_network=False,
-            host_pid=False,
-            host_ports=[
-                rancher2.PodSecurityPolicyTemplateHostPortArgs(
-                    max=65535,
-                    min=0,
-                ),
-                rancher2.PodSecurityPolicyTemplateHostPortArgs(
-                    max=8080,
-                    min=1024,
-                ),
-            ],
-            privileged=False,
-            read_only_root_filesystem=False,
-            required_drop_capabilities=["something"],
-            run_as_group=rancher2.PodSecurityPolicyTemplateRunAsGroupArgs(
-                ranges=[
-                    rancher2.PodSecurityPolicyTemplateRunAsGroupRangeArgs(
-                        max=100,
-                        min=1,
-                    ),
-                    rancher2.PodSecurityPolicyTemplateRunAsGroupRangeArgs(
-                        max=1024,
-                        min=2,
-                    ),
-                ],
-                rule="MustRunAs",
-            ),
-            run_as_user=rancher2.PodSecurityPolicyTemplateRunAsUserArgs(
-                ranges=[
-                    rancher2.PodSecurityPolicyTemplateRunAsUserRangeArgs(
-                        max=100,
-                        min=1,
-                    ),
-                    rancher2.PodSecurityPolicyTemplateRunAsUserRangeArgs(
-                        max=1024,
-                        min=2,
-                    ),
-                ],
-                rule="MustRunAs",
-            ),
-            runtime_class=rancher2.PodSecurityPolicyTemplateRuntimeClassArgs(
-                allowed_runtime_class_names=["something"],
-                default_runtime_class_name="something",
-            ),
-            se_linux=rancher2.PodSecurityPolicyTemplateSeLinuxArgs(
-                rule="RunAsAny",
-            ),
-            supplemental_group=rancher2.PodSecurityPolicyTemplateSupplementalGroupArgs(
-                rule="RunAsAny",
-            ),
-            volumes=["azureFile"])
-        ```
-
         ## Import
 
         PodSecurityPolicyTemplate can be imported using the Rancher PodSecurityPolicyTemplate Name
@@ -1333,112 +1227,6 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Rancher v2 PodSecurityPolicyTemplate resource. This can be used to create PodSecurityPolicyTemplates for Rancher v2 environments and retrieve their information.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 PodSecurityPolicyTemplate
-        foo = rancher2.PodSecurityPolicyTemplate("foo",
-            allow_privilege_escalation=False,
-            allowed_csi_drivers=[
-                rancher2.PodSecurityPolicyTemplateAllowedCsiDriverArgs(
-                    name="something",
-                ),
-                rancher2.PodSecurityPolicyTemplateAllowedCsiDriverArgs(
-                    name="something-else",
-                ),
-            ],
-            allowed_flex_volumes=[
-                rancher2.PodSecurityPolicyTemplateAllowedFlexVolumeArgs(
-                    driver="something",
-                ),
-                rancher2.PodSecurityPolicyTemplateAllowedFlexVolumeArgs(
-                    driver="something-else",
-                ),
-            ],
-            allowed_host_paths=[
-                rancher2.PodSecurityPolicyTemplateAllowedHostPathArgs(
-                    path_prefix="/",
-                    read_only=True,
-                ),
-                rancher2.PodSecurityPolicyTemplateAllowedHostPathArgs(
-                    path_prefix="//",
-                    read_only=False,
-                ),
-            ],
-            allowed_proc_mount_types=["Default"],
-            default_allow_privilege_escalation=False,
-            description="Terraform PodSecurityPolicyTemplate acceptance test - update",
-            fs_group=rancher2.PodSecurityPolicyTemplateFsGroupArgs(
-                ranges=[
-                    rancher2.PodSecurityPolicyTemplateFsGroupRangeArgs(
-                        max=100,
-                        min=0,
-                    ),
-                    rancher2.PodSecurityPolicyTemplateFsGroupRangeArgs(
-                        max=100,
-                        min=0,
-                    ),
-                ],
-                rule="MustRunAs",
-            ),
-            host_ipc=False,
-            host_network=False,
-            host_pid=False,
-            host_ports=[
-                rancher2.PodSecurityPolicyTemplateHostPortArgs(
-                    max=65535,
-                    min=0,
-                ),
-                rancher2.PodSecurityPolicyTemplateHostPortArgs(
-                    max=8080,
-                    min=1024,
-                ),
-            ],
-            privileged=False,
-            read_only_root_filesystem=False,
-            required_drop_capabilities=["something"],
-            run_as_group=rancher2.PodSecurityPolicyTemplateRunAsGroupArgs(
-                ranges=[
-                    rancher2.PodSecurityPolicyTemplateRunAsGroupRangeArgs(
-                        max=100,
-                        min=1,
-                    ),
-                    rancher2.PodSecurityPolicyTemplateRunAsGroupRangeArgs(
-                        max=1024,
-                        min=2,
-                    ),
-                ],
-                rule="MustRunAs",
-            ),
-            run_as_user=rancher2.PodSecurityPolicyTemplateRunAsUserArgs(
-                ranges=[
-                    rancher2.PodSecurityPolicyTemplateRunAsUserRangeArgs(
-                        max=100,
-                        min=1,
-                    ),
-                    rancher2.PodSecurityPolicyTemplateRunAsUserRangeArgs(
-                        max=1024,
-                        min=2,
-                    ),
-                ],
-                rule="MustRunAs",
-            ),
-            runtime_class=rancher2.PodSecurityPolicyTemplateRuntimeClassArgs(
-                allowed_runtime_class_names=["something"],
-                default_runtime_class_name="something",
-            ),
-            se_linux=rancher2.PodSecurityPolicyTemplateSeLinuxArgs(
-                rule="RunAsAny",
-            ),
-            supplemental_group=rancher2.PodSecurityPolicyTemplateSupplementalGroupArgs(
-                rule="RunAsAny",
-            ),
-            volumes=["azureFile"])
-        ```
 
         ## Import
 
@@ -1516,11 +1304,7 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
             __props__.__dict__["default_allow_privilege_escalation"] = default_allow_privilege_escalation
             __props__.__dict__["description"] = description
             __props__.__dict__["forbidden_sysctls"] = forbidden_sysctls
-            if fs_group is not None and not isinstance(fs_group, PodSecurityPolicyTemplateFsGroupArgs):
-                fs_group = fs_group or {}
-                def _setter(key, value):
-                    fs_group[key] = value
-                PodSecurityPolicyTemplateFsGroupArgs._configure(_setter, **fs_group)
+            fs_group = _utilities.configure(fs_group, PodSecurityPolicyTemplateFsGroupArgs, True)
             __props__.__dict__["fs_group"] = fs_group
             __props__.__dict__["host_ipc"] = host_ipc
             __props__.__dict__["host_network"] = host_network
@@ -1531,35 +1315,15 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
             __props__.__dict__["privileged"] = privileged
             __props__.__dict__["read_only_root_filesystem"] = read_only_root_filesystem
             __props__.__dict__["required_drop_capabilities"] = required_drop_capabilities
-            if run_as_group is not None and not isinstance(run_as_group, PodSecurityPolicyTemplateRunAsGroupArgs):
-                run_as_group = run_as_group or {}
-                def _setter(key, value):
-                    run_as_group[key] = value
-                PodSecurityPolicyTemplateRunAsGroupArgs._configure(_setter, **run_as_group)
+            run_as_group = _utilities.configure(run_as_group, PodSecurityPolicyTemplateRunAsGroupArgs, True)
             __props__.__dict__["run_as_group"] = run_as_group
-            if run_as_user is not None and not isinstance(run_as_user, PodSecurityPolicyTemplateRunAsUserArgs):
-                run_as_user = run_as_user or {}
-                def _setter(key, value):
-                    run_as_user[key] = value
-                PodSecurityPolicyTemplateRunAsUserArgs._configure(_setter, **run_as_user)
+            run_as_user = _utilities.configure(run_as_user, PodSecurityPolicyTemplateRunAsUserArgs, True)
             __props__.__dict__["run_as_user"] = run_as_user
-            if runtime_class is not None and not isinstance(runtime_class, PodSecurityPolicyTemplateRuntimeClassArgs):
-                runtime_class = runtime_class or {}
-                def _setter(key, value):
-                    runtime_class[key] = value
-                PodSecurityPolicyTemplateRuntimeClassArgs._configure(_setter, **runtime_class)
+            runtime_class = _utilities.configure(runtime_class, PodSecurityPolicyTemplateRuntimeClassArgs, True)
             __props__.__dict__["runtime_class"] = runtime_class
-            if se_linux is not None and not isinstance(se_linux, PodSecurityPolicyTemplateSeLinuxArgs):
-                se_linux = se_linux or {}
-                def _setter(key, value):
-                    se_linux[key] = value
-                PodSecurityPolicyTemplateSeLinuxArgs._configure(_setter, **se_linux)
+            se_linux = _utilities.configure(se_linux, PodSecurityPolicyTemplateSeLinuxArgs, True)
             __props__.__dict__["se_linux"] = se_linux
-            if supplemental_group is not None and not isinstance(supplemental_group, PodSecurityPolicyTemplateSupplementalGroupArgs):
-                supplemental_group = supplemental_group or {}
-                def _setter(key, value):
-                    supplemental_group[key] = value
-                PodSecurityPolicyTemplateSupplementalGroupArgs._configure(_setter, **supplemental_group)
+            supplemental_group = _utilities.configure(supplemental_group, PodSecurityPolicyTemplateSupplementalGroupArgs, True)
             __props__.__dict__["supplemental_group"] = supplemental_group
             __props__.__dict__["volumes"] = volumes
         super(PodSecurityPolicyTemplate, __self__).__init__(

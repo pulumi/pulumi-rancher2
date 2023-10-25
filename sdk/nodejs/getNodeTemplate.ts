@@ -8,17 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve information about a Rancher v2 Node Template resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * const foo = rancher2.getNodeTemplate({
- *     name: "foo",
- * });
- * ```
  */
 export function getNodeTemplate(args: GetNodeTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeTemplateResult> {
 
@@ -111,17 +100,6 @@ export interface GetNodeTemplateResult {
 }
 /**
  * Use this data source to retrieve information about a Rancher v2 Node Template resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * const foo = rancher2.getNodeTemplate({
- *     name: "foo",
- * });
- * ```
  */
 export function getNodeTemplateOutput(args: GetNodeTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeTemplateResult> {
     return pulumi.output(args).apply((a: any) => getNodeTemplate(a, opts))

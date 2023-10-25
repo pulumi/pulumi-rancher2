@@ -53,9 +53,9 @@ class ClusterDriverArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             active: pulumi.Input[bool],
-             builtin: pulumi.Input[bool],
-             url: pulumi.Input[str],
+             active: Optional[pulumi.Input[bool]] = None,
+             builtin: Optional[pulumi.Input[bool]] = None,
+             url: Optional[pulumi.Input[str]] = None,
              actual_url: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              checksum: Optional[pulumi.Input[str]] = None,
@@ -63,13 +63,19 @@ class ClusterDriverArgs:
              name: Optional[pulumi.Input[str]] = None,
              ui_url: Optional[pulumi.Input[str]] = None,
              whitelist_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'actualUrl' in kwargs:
+        if active is None:
+            raise TypeError("Missing 'active' argument")
+        if builtin is None:
+            raise TypeError("Missing 'builtin' argument")
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+        if actual_url is None and 'actualUrl' in kwargs:
             actual_url = kwargs['actualUrl']
-        if 'uiUrl' in kwargs:
+        if ui_url is None and 'uiUrl' in kwargs:
             ui_url = kwargs['uiUrl']
-        if 'whitelistDomains' in kwargs:
+        if whitelist_domains is None and 'whitelistDomains' in kwargs:
             whitelist_domains = kwargs['whitelistDomains']
 
         _setter("active", active)
@@ -263,13 +269,13 @@ class _ClusterDriverState:
              ui_url: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
              whitelist_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'actualUrl' in kwargs:
+        if actual_url is None and 'actualUrl' in kwargs:
             actual_url = kwargs['actualUrl']
-        if 'uiUrl' in kwargs:
+        if ui_url is None and 'uiUrl' in kwargs:
             ui_url = kwargs['uiUrl']
-        if 'whitelistDomains' in kwargs:
+        if whitelist_domains is None and 'whitelistDomains' in kwargs:
             whitelist_domains = kwargs['whitelistDomains']
 
         if active is not None:

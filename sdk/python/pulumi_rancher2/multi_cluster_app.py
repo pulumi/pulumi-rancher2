@@ -67,10 +67,10 @@ class MultiClusterAppArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             catalog_name: pulumi.Input[str],
-             roles: pulumi.Input[Sequence[pulumi.Input[str]]],
-             targets: pulumi.Input[Sequence[pulumi.Input['MultiClusterAppTargetArgs']]],
-             template_name: pulumi.Input[str],
+             catalog_name: Optional[pulumi.Input[str]] = None,
+             roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             targets: Optional[pulumi.Input[Sequence[pulumi.Input['MultiClusterAppTargetArgs']]]] = None,
+             template_name: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              answers: Optional[pulumi.Input[Sequence[pulumi.Input['MultiClusterAppAnswerArgs']]]] = None,
              labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -81,19 +81,27 @@ class MultiClusterAppArgs:
              template_version: Optional[pulumi.Input[str]] = None,
              upgrade_strategy: Optional[pulumi.Input['MultiClusterAppUpgradeStrategyArgs']] = None,
              wait: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'catalogName' in kwargs:
+        if catalog_name is None and 'catalogName' in kwargs:
             catalog_name = kwargs['catalogName']
-        if 'templateName' in kwargs:
+        if catalog_name is None:
+            raise TypeError("Missing 'catalog_name' argument")
+        if roles is None:
+            raise TypeError("Missing 'roles' argument")
+        if targets is None:
+            raise TypeError("Missing 'targets' argument")
+        if template_name is None and 'templateName' in kwargs:
             template_name = kwargs['templateName']
-        if 'revisionHistoryLimit' in kwargs:
+        if template_name is None:
+            raise TypeError("Missing 'template_name' argument")
+        if revision_history_limit is None and 'revisionHistoryLimit' in kwargs:
             revision_history_limit = kwargs['revisionHistoryLimit']
-        if 'revisionId' in kwargs:
+        if revision_id is None and 'revisionId' in kwargs:
             revision_id = kwargs['revisionId']
-        if 'templateVersion' in kwargs:
+        if template_version is None and 'templateVersion' in kwargs:
             template_version = kwargs['templateVersion']
-        if 'upgradeStrategy' in kwargs:
+        if upgrade_strategy is None and 'upgradeStrategy' in kwargs:
             upgrade_strategy = kwargs['upgradeStrategy']
 
         _setter("catalog_name", catalog_name)
@@ -362,21 +370,21 @@ class _MultiClusterAppState:
              template_version_id: Optional[pulumi.Input[str]] = None,
              upgrade_strategy: Optional[pulumi.Input['MultiClusterAppUpgradeStrategyArgs']] = None,
              wait: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'catalogName' in kwargs:
+        if catalog_name is None and 'catalogName' in kwargs:
             catalog_name = kwargs['catalogName']
-        if 'revisionHistoryLimit' in kwargs:
+        if revision_history_limit is None and 'revisionHistoryLimit' in kwargs:
             revision_history_limit = kwargs['revisionHistoryLimit']
-        if 'revisionId' in kwargs:
+        if revision_id is None and 'revisionId' in kwargs:
             revision_id = kwargs['revisionId']
-        if 'templateName' in kwargs:
+        if template_name is None and 'templateName' in kwargs:
             template_name = kwargs['templateName']
-        if 'templateVersion' in kwargs:
+        if template_version is None and 'templateVersion' in kwargs:
             template_version = kwargs['templateVersion']
-        if 'templateVersionId' in kwargs:
+        if template_version_id is None and 'templateVersionId' in kwargs:
             template_version_id = kwargs['templateVersionId']
-        if 'upgradeStrategy' in kwargs:
+        if upgrade_strategy is None and 'upgradeStrategy' in kwargs:
             upgrade_strategy = kwargs['upgradeStrategy']
 
         if annotations is not None:
@@ -621,61 +629,6 @@ class MultiClusterApp(pulumi.CustomResource):
 
         Note: In case of multiple resource modification in a row, `rollback` has preference.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Multi Cluster App
-        foo = rancher2.MultiClusterApp("foo",
-            answers=[rancher2.MultiClusterAppAnswerArgs(
-                values={
-                    "ingressHost": "test.xip.io",
-                },
-            )],
-            catalog_name="<catalog_name>",
-            roles=["project-member"],
-            targets=[rancher2.MultiClusterAppTargetArgs(
-                project_id="<project_id>",
-            )],
-            template_name="<template_name>",
-            template_version="<template_version>")
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Multi Cluster App overriding answers
-        foo = rancher2.MultiClusterApp("foo",
-            answers=[
-                rancher2.MultiClusterAppAnswerArgs(
-                    values={
-                        "ingressHost": "test.xip.io",
-                    },
-                ),
-                rancher2.MultiClusterAppAnswerArgs(
-                    project_id="<project_id2>",
-                    values={
-                        "ingressHost": "test2.xip.io",
-                    },
-                ),
-            ],
-            catalog_name="<catalog_name>",
-            roles=["project-member"],
-            targets=[
-                rancher2.MultiClusterAppTargetArgs(
-                    project_id="<project_id1>",
-                ),
-                rancher2.MultiClusterAppTargetArgs(
-                    project_id="<project_id2>",
-                ),
-            ],
-            template_name="<template_name>",
-            template_version="<template_version>")
-        ```
-
         ## Import
 
         Multi cluster app can be imported using the multi cluster app ID in the format `<multi_cluster_app_name>`
@@ -716,61 +669,6 @@ class MultiClusterApp(pulumi.CustomResource):
         - `Update`: If any other argument is modified the app will be upgraded.
 
         Note: In case of multiple resource modification in a row, `rollback` has preference.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Multi Cluster App
-        foo = rancher2.MultiClusterApp("foo",
-            answers=[rancher2.MultiClusterAppAnswerArgs(
-                values={
-                    "ingressHost": "test.xip.io",
-                },
-            )],
-            catalog_name="<catalog_name>",
-            roles=["project-member"],
-            targets=[rancher2.MultiClusterAppTargetArgs(
-                project_id="<project_id>",
-            )],
-            template_name="<template_name>",
-            template_version="<template_version>")
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 Multi Cluster App overriding answers
-        foo = rancher2.MultiClusterApp("foo",
-            answers=[
-                rancher2.MultiClusterAppAnswerArgs(
-                    values={
-                        "ingressHost": "test.xip.io",
-                    },
-                ),
-                rancher2.MultiClusterAppAnswerArgs(
-                    project_id="<project_id2>",
-                    values={
-                        "ingressHost": "test2.xip.io",
-                    },
-                ),
-            ],
-            catalog_name="<catalog_name>",
-            roles=["project-member"],
-            targets=[
-                rancher2.MultiClusterAppTargetArgs(
-                    project_id="<project_id1>",
-                ),
-                rancher2.MultiClusterAppTargetArgs(
-                    project_id="<project_id2>",
-                ),
-            ],
-            template_name="<template_name>",
-            template_version="<template_version>")
-        ```
 
         ## Import
 
@@ -842,11 +740,7 @@ class MultiClusterApp(pulumi.CustomResource):
                 raise TypeError("Missing required property 'template_name'")
             __props__.__dict__["template_name"] = template_name
             __props__.__dict__["template_version"] = template_version
-            if upgrade_strategy is not None and not isinstance(upgrade_strategy, MultiClusterAppUpgradeStrategyArgs):
-                upgrade_strategy = upgrade_strategy or {}
-                def _setter(key, value):
-                    upgrade_strategy[key] = value
-                MultiClusterAppUpgradeStrategyArgs._configure(_setter, **upgrade_strategy)
+            upgrade_strategy = _utilities.configure(upgrade_strategy, MultiClusterAppUpgradeStrategyArgs, True)
             __props__.__dict__["upgrade_strategy"] = upgrade_strategy
             __props__.__dict__["wait"] = wait
             __props__.__dict__["template_version_id"] = None

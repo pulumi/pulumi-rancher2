@@ -203,15 +203,6 @@ def get_role_tempalte(context: Optional[str] = None,
     """
     Use this data source to retrieve information about a Rancher v2 role template resource.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_rancher2 as rancher2
-
-    foo = rancher2.get_role_template(name="foo")
-    ```
-
 
     :param str context: Role template context. `cluster` and `project` values are supported (string)
     :param str name: The name of the Role Template (string)
@@ -246,15 +237,6 @@ def get_role_tempalte_output(context: Optional[pulumi.Input[Optional[str]]] = No
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRoleTempalteResult]:
     """
     Use this data source to retrieve information about a Rancher v2 role template resource.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_rancher2 as rancher2
-
-    foo = rancher2.get_role_template(name="foo")
-    ```
 
 
     :param str context: Role template context. `cluster` and `project` values are supported (string)
