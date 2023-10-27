@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -30,52 +30,19 @@ class GlobalDnsProviderArgs:
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for Global DNS Provider (map)
         :param pulumi.Input[str] name: The name of the Global DNS Provider (string)
         """
-        GlobalDnsProviderArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            root_domain=root_domain,
-            alidns_config=alidns_config,
-            annotations=annotations,
-            cloudflare_config=cloudflare_config,
-            labels=labels,
-            name=name,
-            route53_config=route53_config,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             root_domain: Optional[pulumi.Input[str]] = None,
-             alidns_config: Optional[pulumi.Input['GlobalDnsProviderAlidnsConfigArgs']] = None,
-             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             cloudflare_config: Optional[pulumi.Input['GlobalDnsProviderCloudflareConfigArgs']] = None,
-             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             route53_config: Optional[pulumi.Input['GlobalDnsProviderRoute53ConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if root_domain is None and 'rootDomain' in kwargs:
-            root_domain = kwargs['rootDomain']
-        if root_domain is None:
-            raise TypeError("Missing 'root_domain' argument")
-        if alidns_config is None and 'alidnsConfig' in kwargs:
-            alidns_config = kwargs['alidnsConfig']
-        if cloudflare_config is None and 'cloudflareConfig' in kwargs:
-            cloudflare_config = kwargs['cloudflareConfig']
-        if route53_config is None and 'route53Config' in kwargs:
-            route53_config = kwargs['route53Config']
-
-        _setter("root_domain", root_domain)
+        pulumi.set(__self__, "root_domain", root_domain)
         if alidns_config is not None:
-            _setter("alidns_config", alidns_config)
+            pulumi.set(__self__, "alidns_config", alidns_config)
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if cloudflare_config is not None:
-            _setter("cloudflare_config", cloudflare_config)
+            pulumi.set(__self__, "cloudflare_config", cloudflare_config)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if route53_config is not None:
-            _setter("route53_config", route53_config)
+            pulumi.set(__self__, "route53_config", route53_config)
 
     @property
     @pulumi.getter(name="rootDomain")
@@ -172,57 +139,22 @@ class _GlobalDnsProviderState:
         :param pulumi.Input[str] name: The name of the Global DNS Provider (string)
         :param pulumi.Input[str] root_domain: The user ID to assign Global DNS Provider (string)
         """
-        _GlobalDnsProviderState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            alidns_config=alidns_config,
-            annotations=annotations,
-            cloudflare_config=cloudflare_config,
-            dns_provider=dns_provider,
-            labels=labels,
-            name=name,
-            root_domain=root_domain,
-            route53_config=route53_config,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             alidns_config: Optional[pulumi.Input['GlobalDnsProviderAlidnsConfigArgs']] = None,
-             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             cloudflare_config: Optional[pulumi.Input['GlobalDnsProviderCloudflareConfigArgs']] = None,
-             dns_provider: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             root_domain: Optional[pulumi.Input[str]] = None,
-             route53_config: Optional[pulumi.Input['GlobalDnsProviderRoute53ConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if alidns_config is None and 'alidnsConfig' in kwargs:
-            alidns_config = kwargs['alidnsConfig']
-        if cloudflare_config is None and 'cloudflareConfig' in kwargs:
-            cloudflare_config = kwargs['cloudflareConfig']
-        if dns_provider is None and 'dnsProvider' in kwargs:
-            dns_provider = kwargs['dnsProvider']
-        if root_domain is None and 'rootDomain' in kwargs:
-            root_domain = kwargs['rootDomain']
-        if route53_config is None and 'route53Config' in kwargs:
-            route53_config = kwargs['route53Config']
-
         if alidns_config is not None:
-            _setter("alidns_config", alidns_config)
+            pulumi.set(__self__, "alidns_config", alidns_config)
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if cloudflare_config is not None:
-            _setter("cloudflare_config", cloudflare_config)
+            pulumi.set(__self__, "cloudflare_config", cloudflare_config)
         if dns_provider is not None:
-            _setter("dns_provider", dns_provider)
+            pulumi.set(__self__, "dns_provider", dns_provider)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if root_domain is not None:
-            _setter("root_domain", root_domain)
+            pulumi.set(__self__, "root_domain", root_domain)
         if route53_config is not None:
-            _setter("route53_config", route53_config)
+            pulumi.set(__self__, "route53_config", route53_config)
 
     @property
     @pulumi.getter(name="alidnsConfig")
@@ -458,10 +390,6 @@ class GlobalDnsProvider(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            GlobalDnsProviderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -483,17 +411,14 @@ class GlobalDnsProvider(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GlobalDnsProviderArgs.__new__(GlobalDnsProviderArgs)
 
-            alidns_config = _utilities.configure(alidns_config, GlobalDnsProviderAlidnsConfigArgs, True)
             __props__.__dict__["alidns_config"] = alidns_config
             __props__.__dict__["annotations"] = annotations
-            cloudflare_config = _utilities.configure(cloudflare_config, GlobalDnsProviderCloudflareConfigArgs, True)
             __props__.__dict__["cloudflare_config"] = cloudflare_config
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             if root_domain is None and not opts.urn:
                 raise TypeError("Missing required property 'root_domain'")
             __props__.__dict__["root_domain"] = root_domain
-            route53_config = _utilities.configure(route53_config, GlobalDnsProviderRoute53ConfigArgs, True)
             __props__.__dict__["route53_config"] = route53_config
             __props__.__dict__["dns_provider"] = None
         super(GlobalDnsProvider, __self__).__init__(

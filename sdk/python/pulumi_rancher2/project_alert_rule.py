@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -45,85 +45,30 @@ class ProjectAlertRuleArgs:
         :param pulumi.Input[str] severity: The project alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
         :param pulumi.Input['ProjectAlertRuleWorkloadRuleArgs'] workload_rule: The project alert rule workload rule. ConflictsWith: `"metric_rule", "pod_rule"`` (list Maxitems:1)
         """
-        ProjectAlertRuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            group_id=group_id,
-            project_id=project_id,
-            annotations=annotations,
-            group_interval_seconds=group_interval_seconds,
-            group_wait_seconds=group_wait_seconds,
-            inherited=inherited,
-            labels=labels,
-            metric_rule=metric_rule,
-            name=name,
-            pod_rule=pod_rule,
-            repeat_interval_seconds=repeat_interval_seconds,
-            severity=severity,
-            workload_rule=workload_rule,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             group_id: Optional[pulumi.Input[str]] = None,
-             project_id: Optional[pulumi.Input[str]] = None,
-             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             group_interval_seconds: Optional[pulumi.Input[int]] = None,
-             group_wait_seconds: Optional[pulumi.Input[int]] = None,
-             inherited: Optional[pulumi.Input[bool]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             metric_rule: Optional[pulumi.Input['ProjectAlertRuleMetricRuleArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             pod_rule: Optional[pulumi.Input['ProjectAlertRulePodRuleArgs']] = None,
-             repeat_interval_seconds: Optional[pulumi.Input[int]] = None,
-             severity: Optional[pulumi.Input[str]] = None,
-             workload_rule: Optional[pulumi.Input['ProjectAlertRuleWorkloadRuleArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if group_id is None and 'groupId' in kwargs:
-            group_id = kwargs['groupId']
-        if group_id is None:
-            raise TypeError("Missing 'group_id' argument")
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if project_id is None:
-            raise TypeError("Missing 'project_id' argument")
-        if group_interval_seconds is None and 'groupIntervalSeconds' in kwargs:
-            group_interval_seconds = kwargs['groupIntervalSeconds']
-        if group_wait_seconds is None and 'groupWaitSeconds' in kwargs:
-            group_wait_seconds = kwargs['groupWaitSeconds']
-        if metric_rule is None and 'metricRule' in kwargs:
-            metric_rule = kwargs['metricRule']
-        if pod_rule is None and 'podRule' in kwargs:
-            pod_rule = kwargs['podRule']
-        if repeat_interval_seconds is None and 'repeatIntervalSeconds' in kwargs:
-            repeat_interval_seconds = kwargs['repeatIntervalSeconds']
-        if workload_rule is None and 'workloadRule' in kwargs:
-            workload_rule = kwargs['workloadRule']
-
-        _setter("group_id", group_id)
-        _setter("project_id", project_id)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "project_id", project_id)
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if group_interval_seconds is not None:
-            _setter("group_interval_seconds", group_interval_seconds)
+            pulumi.set(__self__, "group_interval_seconds", group_interval_seconds)
         if group_wait_seconds is not None:
-            _setter("group_wait_seconds", group_wait_seconds)
+            pulumi.set(__self__, "group_wait_seconds", group_wait_seconds)
         if inherited is not None:
-            _setter("inherited", inherited)
+            pulumi.set(__self__, "inherited", inherited)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if metric_rule is not None:
-            _setter("metric_rule", metric_rule)
+            pulumi.set(__self__, "metric_rule", metric_rule)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if pod_rule is not None:
-            _setter("pod_rule", pod_rule)
+            pulumi.set(__self__, "pod_rule", pod_rule)
         if repeat_interval_seconds is not None:
-            _setter("repeat_interval_seconds", repeat_interval_seconds)
+            pulumi.set(__self__, "repeat_interval_seconds", repeat_interval_seconds)
         if severity is not None:
-            _setter("severity", severity)
+            pulumi.set(__self__, "severity", severity)
         if workload_rule is not None:
-            _setter("workload_rule", workload_rule)
+            pulumi.set(__self__, "workload_rule", workload_rule)
 
     @property
     @pulumi.getter(name="groupId")
@@ -314,83 +259,32 @@ class _ProjectAlertRuleState:
         :param pulumi.Input[str] severity: The project alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
         :param pulumi.Input['ProjectAlertRuleWorkloadRuleArgs'] workload_rule: The project alert rule workload rule. ConflictsWith: `"metric_rule", "pod_rule"`` (list Maxitems:1)
         """
-        _ProjectAlertRuleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            annotations=annotations,
-            group_id=group_id,
-            group_interval_seconds=group_interval_seconds,
-            group_wait_seconds=group_wait_seconds,
-            inherited=inherited,
-            labels=labels,
-            metric_rule=metric_rule,
-            name=name,
-            pod_rule=pod_rule,
-            project_id=project_id,
-            repeat_interval_seconds=repeat_interval_seconds,
-            severity=severity,
-            workload_rule=workload_rule,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             group_id: Optional[pulumi.Input[str]] = None,
-             group_interval_seconds: Optional[pulumi.Input[int]] = None,
-             group_wait_seconds: Optional[pulumi.Input[int]] = None,
-             inherited: Optional[pulumi.Input[bool]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             metric_rule: Optional[pulumi.Input['ProjectAlertRuleMetricRuleArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             pod_rule: Optional[pulumi.Input['ProjectAlertRulePodRuleArgs']] = None,
-             project_id: Optional[pulumi.Input[str]] = None,
-             repeat_interval_seconds: Optional[pulumi.Input[int]] = None,
-             severity: Optional[pulumi.Input[str]] = None,
-             workload_rule: Optional[pulumi.Input['ProjectAlertRuleWorkloadRuleArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if group_id is None and 'groupId' in kwargs:
-            group_id = kwargs['groupId']
-        if group_interval_seconds is None and 'groupIntervalSeconds' in kwargs:
-            group_interval_seconds = kwargs['groupIntervalSeconds']
-        if group_wait_seconds is None and 'groupWaitSeconds' in kwargs:
-            group_wait_seconds = kwargs['groupWaitSeconds']
-        if metric_rule is None and 'metricRule' in kwargs:
-            metric_rule = kwargs['metricRule']
-        if pod_rule is None and 'podRule' in kwargs:
-            pod_rule = kwargs['podRule']
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if repeat_interval_seconds is None and 'repeatIntervalSeconds' in kwargs:
-            repeat_interval_seconds = kwargs['repeatIntervalSeconds']
-        if workload_rule is None and 'workloadRule' in kwargs:
-            workload_rule = kwargs['workloadRule']
-
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if group_id is not None:
-            _setter("group_id", group_id)
+            pulumi.set(__self__, "group_id", group_id)
         if group_interval_seconds is not None:
-            _setter("group_interval_seconds", group_interval_seconds)
+            pulumi.set(__self__, "group_interval_seconds", group_interval_seconds)
         if group_wait_seconds is not None:
-            _setter("group_wait_seconds", group_wait_seconds)
+            pulumi.set(__self__, "group_wait_seconds", group_wait_seconds)
         if inherited is not None:
-            _setter("inherited", inherited)
+            pulumi.set(__self__, "inherited", inherited)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if metric_rule is not None:
-            _setter("metric_rule", metric_rule)
+            pulumi.set(__self__, "metric_rule", metric_rule)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if pod_rule is not None:
-            _setter("pod_rule", pod_rule)
+            pulumi.set(__self__, "pod_rule", pod_rule)
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
         if repeat_interval_seconds is not None:
-            _setter("repeat_interval_seconds", repeat_interval_seconds)
+            pulumi.set(__self__, "repeat_interval_seconds", repeat_interval_seconds)
         if severity is not None:
-            _setter("severity", severity)
+            pulumi.set(__self__, "severity", severity)
         if workload_rule is not None:
-            _setter("workload_rule", workload_rule)
+            pulumi.set(__self__, "workload_rule", workload_rule)
 
     @property
     @pulumi.getter
@@ -706,10 +600,6 @@ class ProjectAlertRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ProjectAlertRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -745,17 +635,14 @@ class ProjectAlertRule(pulumi.CustomResource):
             __props__.__dict__["group_wait_seconds"] = group_wait_seconds
             __props__.__dict__["inherited"] = inherited
             __props__.__dict__["labels"] = labels
-            metric_rule = _utilities.configure(metric_rule, ProjectAlertRuleMetricRuleArgs, True)
             __props__.__dict__["metric_rule"] = metric_rule
             __props__.__dict__["name"] = name
-            pod_rule = _utilities.configure(pod_rule, ProjectAlertRulePodRuleArgs, True)
             __props__.__dict__["pod_rule"] = pod_rule
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["repeat_interval_seconds"] = repeat_interval_seconds
             __props__.__dict__["severity"] = severity
-            workload_rule = _utilities.configure(workload_rule, ProjectAlertRuleWorkloadRuleArgs, True)
             __props__.__dict__["workload_rule"] = workload_rule
         super(ProjectAlertRule, __self__).__init__(
             'rancher2:index/projectAlertRule:ProjectAlertRule',

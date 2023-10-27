@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['AppArgs', 'App']
@@ -47,91 +47,30 @@ class AppArgs:
         :param pulumi.Input[str] values_yaml: values.yaml base64 encoded file content for the app template. If modified, app will be upgraded (string)
         :param pulumi.Input[bool] wait: Wait until app is deployed and active. Default: `true` (bool)
         """
-        AppArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            catalog_name=catalog_name,
-            project_id=project_id,
-            target_namespace=target_namespace,
-            template_name=template_name,
-            annotations=annotations,
-            answers=answers,
-            description=description,
-            force_upgrade=force_upgrade,
-            labels=labels,
-            name=name,
-            revision_id=revision_id,
-            template_version=template_version,
-            values_yaml=values_yaml,
-            wait=wait,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             catalog_name: Optional[pulumi.Input[str]] = None,
-             project_id: Optional[pulumi.Input[str]] = None,
-             target_namespace: Optional[pulumi.Input[str]] = None,
-             template_name: Optional[pulumi.Input[str]] = None,
-             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             answers: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             force_upgrade: Optional[pulumi.Input[bool]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             revision_id: Optional[pulumi.Input[str]] = None,
-             template_version: Optional[pulumi.Input[str]] = None,
-             values_yaml: Optional[pulumi.Input[str]] = None,
-             wait: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if catalog_name is None and 'catalogName' in kwargs:
-            catalog_name = kwargs['catalogName']
-        if catalog_name is None:
-            raise TypeError("Missing 'catalog_name' argument")
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if project_id is None:
-            raise TypeError("Missing 'project_id' argument")
-        if target_namespace is None and 'targetNamespace' in kwargs:
-            target_namespace = kwargs['targetNamespace']
-        if target_namespace is None:
-            raise TypeError("Missing 'target_namespace' argument")
-        if template_name is None and 'templateName' in kwargs:
-            template_name = kwargs['templateName']
-        if template_name is None:
-            raise TypeError("Missing 'template_name' argument")
-        if force_upgrade is None and 'forceUpgrade' in kwargs:
-            force_upgrade = kwargs['forceUpgrade']
-        if revision_id is None and 'revisionId' in kwargs:
-            revision_id = kwargs['revisionId']
-        if template_version is None and 'templateVersion' in kwargs:
-            template_version = kwargs['templateVersion']
-        if values_yaml is None and 'valuesYaml' in kwargs:
-            values_yaml = kwargs['valuesYaml']
-
-        _setter("catalog_name", catalog_name)
-        _setter("project_id", project_id)
-        _setter("target_namespace", target_namespace)
-        _setter("template_name", template_name)
+        pulumi.set(__self__, "catalog_name", catalog_name)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "target_namespace", target_namespace)
+        pulumi.set(__self__, "template_name", template_name)
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if answers is not None:
-            _setter("answers", answers)
+            pulumi.set(__self__, "answers", answers)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if force_upgrade is not None:
-            _setter("force_upgrade", force_upgrade)
+            pulumi.set(__self__, "force_upgrade", force_upgrade)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if revision_id is not None:
-            _setter("revision_id", revision_id)
+            pulumi.set(__self__, "revision_id", revision_id)
         if template_version is not None:
-            _setter("template_version", template_version)
+            pulumi.set(__self__, "template_version", template_version)
         if values_yaml is not None:
-            _setter("values_yaml", values_yaml)
+            pulumi.set(__self__, "values_yaml", values_yaml)
         if wait is not None:
-            _setter("wait", wait)
+            pulumi.set(__self__, "wait", wait)
 
     @property
     @pulumi.getter(name="catalogName")
@@ -342,93 +281,36 @@ class _AppState:
         :param pulumi.Input[str] values_yaml: values.yaml base64 encoded file content for the app template. If modified, app will be upgraded (string)
         :param pulumi.Input[bool] wait: Wait until app is deployed and active. Default: `true` (bool)
         """
-        _AppState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            annotations=annotations,
-            answers=answers,
-            catalog_name=catalog_name,
-            description=description,
-            external_id=external_id,
-            force_upgrade=force_upgrade,
-            labels=labels,
-            name=name,
-            project_id=project_id,
-            revision_id=revision_id,
-            target_namespace=target_namespace,
-            template_name=template_name,
-            template_version=template_version,
-            values_yaml=values_yaml,
-            wait=wait,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             answers: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             catalog_name: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             external_id: Optional[pulumi.Input[str]] = None,
-             force_upgrade: Optional[pulumi.Input[bool]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project_id: Optional[pulumi.Input[str]] = None,
-             revision_id: Optional[pulumi.Input[str]] = None,
-             target_namespace: Optional[pulumi.Input[str]] = None,
-             template_name: Optional[pulumi.Input[str]] = None,
-             template_version: Optional[pulumi.Input[str]] = None,
-             values_yaml: Optional[pulumi.Input[str]] = None,
-             wait: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if catalog_name is None and 'catalogName' in kwargs:
-            catalog_name = kwargs['catalogName']
-        if external_id is None and 'externalId' in kwargs:
-            external_id = kwargs['externalId']
-        if force_upgrade is None and 'forceUpgrade' in kwargs:
-            force_upgrade = kwargs['forceUpgrade']
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if revision_id is None and 'revisionId' in kwargs:
-            revision_id = kwargs['revisionId']
-        if target_namespace is None and 'targetNamespace' in kwargs:
-            target_namespace = kwargs['targetNamespace']
-        if template_name is None and 'templateName' in kwargs:
-            template_name = kwargs['templateName']
-        if template_version is None and 'templateVersion' in kwargs:
-            template_version = kwargs['templateVersion']
-        if values_yaml is None and 'valuesYaml' in kwargs:
-            values_yaml = kwargs['valuesYaml']
-
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if answers is not None:
-            _setter("answers", answers)
+            pulumi.set(__self__, "answers", answers)
         if catalog_name is not None:
-            _setter("catalog_name", catalog_name)
+            pulumi.set(__self__, "catalog_name", catalog_name)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if external_id is not None:
-            _setter("external_id", external_id)
+            pulumi.set(__self__, "external_id", external_id)
         if force_upgrade is not None:
-            _setter("force_upgrade", force_upgrade)
+            pulumi.set(__self__, "force_upgrade", force_upgrade)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
         if revision_id is not None:
-            _setter("revision_id", revision_id)
+            pulumi.set(__self__, "revision_id", revision_id)
         if target_namespace is not None:
-            _setter("target_namespace", target_namespace)
+            pulumi.set(__self__, "target_namespace", target_namespace)
         if template_name is not None:
-            _setter("template_name", template_name)
+            pulumi.set(__self__, "template_name", template_name)
         if template_version is not None:
-            _setter("template_version", template_version)
+            pulumi.set(__self__, "template_version", template_version)
         if values_yaml is not None:
-            _setter("values_yaml", values_yaml)
+            pulumi.set(__self__, "values_yaml", values_yaml)
         if wait is not None:
-            _setter("wait", wait)
+            pulumi.set(__self__, "wait", wait)
 
     @property
     @pulumi.getter
@@ -804,10 +686,6 @@ class App(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AppArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

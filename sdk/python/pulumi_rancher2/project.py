@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -41,74 +41,27 @@ class ProjectArgs:
         :param pulumi.Input['ProjectResourceQuotaArgs'] resource_quota: Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
         :param pulumi.Input[bool] wait_for_cluster: Wait for cluster becomes active. Default `false` (bool)
         """
-        ProjectArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster_id=cluster_id,
-            annotations=annotations,
-            container_resource_limit=container_resource_limit,
-            description=description,
-            enable_project_monitoring=enable_project_monitoring,
-            labels=labels,
-            name=name,
-            pod_security_policy_template_id=pod_security_policy_template_id,
-            project_monitoring_input=project_monitoring_input,
-            resource_quota=resource_quota,
-            wait_for_cluster=wait_for_cluster,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster_id: Optional[pulumi.Input[str]] = None,
-             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             container_resource_limit: Optional[pulumi.Input['ProjectContainerResourceLimitArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             enable_project_monitoring: Optional[pulumi.Input[bool]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             pod_security_policy_template_id: Optional[pulumi.Input[str]] = None,
-             project_monitoring_input: Optional[pulumi.Input['ProjectProjectMonitoringInputArgs']] = None,
-             resource_quota: Optional[pulumi.Input['ProjectResourceQuotaArgs']] = None,
-             wait_for_cluster: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if cluster_id is None:
-            raise TypeError("Missing 'cluster_id' argument")
-        if container_resource_limit is None and 'containerResourceLimit' in kwargs:
-            container_resource_limit = kwargs['containerResourceLimit']
-        if enable_project_monitoring is None and 'enableProjectMonitoring' in kwargs:
-            enable_project_monitoring = kwargs['enableProjectMonitoring']
-        if pod_security_policy_template_id is None and 'podSecurityPolicyTemplateId' in kwargs:
-            pod_security_policy_template_id = kwargs['podSecurityPolicyTemplateId']
-        if project_monitoring_input is None and 'projectMonitoringInput' in kwargs:
-            project_monitoring_input = kwargs['projectMonitoringInput']
-        if resource_quota is None and 'resourceQuota' in kwargs:
-            resource_quota = kwargs['resourceQuota']
-        if wait_for_cluster is None and 'waitForCluster' in kwargs:
-            wait_for_cluster = kwargs['waitForCluster']
-
-        _setter("cluster_id", cluster_id)
+        pulumi.set(__self__, "cluster_id", cluster_id)
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if container_resource_limit is not None:
-            _setter("container_resource_limit", container_resource_limit)
+            pulumi.set(__self__, "container_resource_limit", container_resource_limit)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if enable_project_monitoring is not None:
-            _setter("enable_project_monitoring", enable_project_monitoring)
+            pulumi.set(__self__, "enable_project_monitoring", enable_project_monitoring)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if pod_security_policy_template_id is not None:
-            _setter("pod_security_policy_template_id", pod_security_policy_template_id)
+            pulumi.set(__self__, "pod_security_policy_template_id", pod_security_policy_template_id)
         if project_monitoring_input is not None:
-            _setter("project_monitoring_input", project_monitoring_input)
+            pulumi.set(__self__, "project_monitoring_input", project_monitoring_input)
         if resource_quota is not None:
-            _setter("resource_quota", resource_quota)
+            pulumi.set(__self__, "resource_quota", resource_quota)
         if wait_for_cluster is not None:
-            _setter("wait_for_cluster", wait_for_cluster)
+            pulumi.set(__self__, "wait_for_cluster", wait_for_cluster)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -271,73 +224,28 @@ class _ProjectState:
         :param pulumi.Input['ProjectResourceQuotaArgs'] resource_quota: Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
         :param pulumi.Input[bool] wait_for_cluster: Wait for cluster becomes active. Default `false` (bool)
         """
-        _ProjectState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            annotations=annotations,
-            cluster_id=cluster_id,
-            container_resource_limit=container_resource_limit,
-            description=description,
-            enable_project_monitoring=enable_project_monitoring,
-            labels=labels,
-            name=name,
-            pod_security_policy_template_id=pod_security_policy_template_id,
-            project_monitoring_input=project_monitoring_input,
-            resource_quota=resource_quota,
-            wait_for_cluster=wait_for_cluster,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             cluster_id: Optional[pulumi.Input[str]] = None,
-             container_resource_limit: Optional[pulumi.Input['ProjectContainerResourceLimitArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             enable_project_monitoring: Optional[pulumi.Input[bool]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             pod_security_policy_template_id: Optional[pulumi.Input[str]] = None,
-             project_monitoring_input: Optional[pulumi.Input['ProjectProjectMonitoringInputArgs']] = None,
-             resource_quota: Optional[pulumi.Input['ProjectResourceQuotaArgs']] = None,
-             wait_for_cluster: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if container_resource_limit is None and 'containerResourceLimit' in kwargs:
-            container_resource_limit = kwargs['containerResourceLimit']
-        if enable_project_monitoring is None and 'enableProjectMonitoring' in kwargs:
-            enable_project_monitoring = kwargs['enableProjectMonitoring']
-        if pod_security_policy_template_id is None and 'podSecurityPolicyTemplateId' in kwargs:
-            pod_security_policy_template_id = kwargs['podSecurityPolicyTemplateId']
-        if project_monitoring_input is None and 'projectMonitoringInput' in kwargs:
-            project_monitoring_input = kwargs['projectMonitoringInput']
-        if resource_quota is None and 'resourceQuota' in kwargs:
-            resource_quota = kwargs['resourceQuota']
-        if wait_for_cluster is None and 'waitForCluster' in kwargs:
-            wait_for_cluster = kwargs['waitForCluster']
-
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if cluster_id is not None:
-            _setter("cluster_id", cluster_id)
+            pulumi.set(__self__, "cluster_id", cluster_id)
         if container_resource_limit is not None:
-            _setter("container_resource_limit", container_resource_limit)
+            pulumi.set(__self__, "container_resource_limit", container_resource_limit)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if enable_project_monitoring is not None:
-            _setter("enable_project_monitoring", enable_project_monitoring)
+            pulumi.set(__self__, "enable_project_monitoring", enable_project_monitoring)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if pod_security_policy_template_id is not None:
-            _setter("pod_security_policy_template_id", pod_security_policy_template_id)
+            pulumi.set(__self__, "pod_security_policy_template_id", pod_security_policy_template_id)
         if project_monitoring_input is not None:
-            _setter("project_monitoring_input", project_monitoring_input)
+            pulumi.set(__self__, "project_monitoring_input", project_monitoring_input)
         if resource_quota is not None:
-            _setter("resource_quota", resource_quota)
+            pulumi.set(__self__, "resource_quota", resource_quota)
         if wait_for_cluster is not None:
-            _setter("wait_for_cluster", wait_for_cluster)
+            pulumi.set(__self__, "wait_for_cluster", wait_for_cluster)
 
     @property
     @pulumi.getter
@@ -699,10 +607,6 @@ class Project(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ProjectArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -732,16 +636,13 @@ class Project(pulumi.CustomResource):
             if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
             __props__.__dict__["cluster_id"] = cluster_id
-            container_resource_limit = _utilities.configure(container_resource_limit, ProjectContainerResourceLimitArgs, True)
             __props__.__dict__["container_resource_limit"] = container_resource_limit
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_project_monitoring"] = enable_project_monitoring
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["pod_security_policy_template_id"] = pod_security_policy_template_id
-            project_monitoring_input = _utilities.configure(project_monitoring_input, ProjectProjectMonitoringInputArgs, True)
             __props__.__dict__["project_monitoring_input"] = project_monitoring_input
-            resource_quota = _utilities.configure(resource_quota, ProjectResourceQuotaArgs, True)
             __props__.__dict__["resource_quota"] = resource_quota
             __props__.__dict__["wait_for_cluster"] = wait_for_cluster
         super(Project, __self__).__init__(

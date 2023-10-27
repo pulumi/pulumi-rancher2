@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProviderArgs', 'Provider']
@@ -35,69 +35,30 @@ class ProviderArgs:
         :param pulumi.Input[str] timeout: Rancher connection timeout (retry every 5s). Golang duration format, ex: "60s"
         :param pulumi.Input[str] token_key: API token used to authenticate with the rancher server
         """
-        ProviderArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            api_url=api_url,
-            access_key=access_key,
-            bootstrap=bootstrap,
-            ca_certs=ca_certs,
-            insecure=insecure,
-            retries=retries,
-            secret_key=secret_key,
-            timeout=timeout,
-            token_key=token_key,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             api_url: Optional[pulumi.Input[str]] = None,
-             access_key: Optional[pulumi.Input[str]] = None,
-             bootstrap: Optional[pulumi.Input[bool]] = None,
-             ca_certs: Optional[pulumi.Input[str]] = None,
-             insecure: Optional[pulumi.Input[bool]] = None,
-             retries: Optional[pulumi.Input[int]] = None,
-             secret_key: Optional[pulumi.Input[str]] = None,
-             timeout: Optional[pulumi.Input[str]] = None,
-             token_key: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if api_url is None and 'apiUrl' in kwargs:
-            api_url = kwargs['apiUrl']
-        if api_url is None:
-            raise TypeError("Missing 'api_url' argument")
-        if access_key is None and 'accessKey' in kwargs:
-            access_key = kwargs['accessKey']
-        if ca_certs is None and 'caCerts' in kwargs:
-            ca_certs = kwargs['caCerts']
-        if secret_key is None and 'secretKey' in kwargs:
-            secret_key = kwargs['secretKey']
-        if token_key is None and 'tokenKey' in kwargs:
-            token_key = kwargs['tokenKey']
-
-        _setter("api_url", api_url)
+        pulumi.set(__self__, "api_url", api_url)
         if access_key is not None:
-            _setter("access_key", access_key)
+            pulumi.set(__self__, "access_key", access_key)
         if bootstrap is None:
             bootstrap = (_utilities.get_env_bool('RANCHER_BOOTSTRAP') or False)
         if bootstrap is not None:
-            _setter("bootstrap", bootstrap)
+            pulumi.set(__self__, "bootstrap", bootstrap)
         if ca_certs is not None:
-            _setter("ca_certs", ca_certs)
+            pulumi.set(__self__, "ca_certs", ca_certs)
         if insecure is None:
             insecure = (_utilities.get_env_bool('RANCHER_INSECURE') or False)
         if insecure is not None:
-            _setter("insecure", insecure)
+            pulumi.set(__self__, "insecure", insecure)
         if retries is not None:
             warnings.warn("""Use timeout instead""", DeprecationWarning)
             pulumi.log.warn("""retries is deprecated: Use timeout instead""")
         if retries is not None:
-            _setter("retries", retries)
+            pulumi.set(__self__, "retries", retries)
         if secret_key is not None:
-            _setter("secret_key", secret_key)
+            pulumi.set(__self__, "secret_key", secret_key)
         if timeout is not None:
-            _setter("timeout", timeout)
+            pulumi.set(__self__, "timeout", timeout)
         if token_key is not None:
-            _setter("token_key", token_key)
+            pulumi.set(__self__, "token_key", token_key)
 
     @property
     @pulumi.getter(name="apiUrl")
@@ -266,10 +227,6 @@ class Provider(pulumi.ProviderResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ProviderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
