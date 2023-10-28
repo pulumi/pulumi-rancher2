@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -45,84 +45,29 @@ class NodePoolArgs:
         :param pulumi.Input[int] quantity: The number of nodes to create on Node Pool. Default `1`. Only values >= 1 allowed (int)
         :param pulumi.Input[bool] worker: RKE role role for created nodes (bool)
         """
-        NodePoolArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster_id=cluster_id,
-            hostname_prefix=hostname_prefix,
-            node_template_id=node_template_id,
-            annotations=annotations,
-            control_plane=control_plane,
-            delete_not_ready_after_secs=delete_not_ready_after_secs,
-            drain_before_delete=drain_before_delete,
-            etcd=etcd,
-            labels=labels,
-            name=name,
-            node_taints=node_taints,
-            quantity=quantity,
-            worker=worker,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster_id: Optional[pulumi.Input[str]] = None,
-             hostname_prefix: Optional[pulumi.Input[str]] = None,
-             node_template_id: Optional[pulumi.Input[str]] = None,
-             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             control_plane: Optional[pulumi.Input[bool]] = None,
-             delete_not_ready_after_secs: Optional[pulumi.Input[int]] = None,
-             drain_before_delete: Optional[pulumi.Input[bool]] = None,
-             etcd: Optional[pulumi.Input[bool]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             node_taints: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeTaintArgs']]]] = None,
-             quantity: Optional[pulumi.Input[int]] = None,
-             worker: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if cluster_id is None:
-            raise TypeError("Missing 'cluster_id' argument")
-        if hostname_prefix is None and 'hostnamePrefix' in kwargs:
-            hostname_prefix = kwargs['hostnamePrefix']
-        if hostname_prefix is None:
-            raise TypeError("Missing 'hostname_prefix' argument")
-        if node_template_id is None and 'nodeTemplateId' in kwargs:
-            node_template_id = kwargs['nodeTemplateId']
-        if node_template_id is None:
-            raise TypeError("Missing 'node_template_id' argument")
-        if control_plane is None and 'controlPlane' in kwargs:
-            control_plane = kwargs['controlPlane']
-        if delete_not_ready_after_secs is None and 'deleteNotReadyAfterSecs' in kwargs:
-            delete_not_ready_after_secs = kwargs['deleteNotReadyAfterSecs']
-        if drain_before_delete is None and 'drainBeforeDelete' in kwargs:
-            drain_before_delete = kwargs['drainBeforeDelete']
-        if node_taints is None and 'nodeTaints' in kwargs:
-            node_taints = kwargs['nodeTaints']
-
-        _setter("cluster_id", cluster_id)
-        _setter("hostname_prefix", hostname_prefix)
-        _setter("node_template_id", node_template_id)
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "hostname_prefix", hostname_prefix)
+        pulumi.set(__self__, "node_template_id", node_template_id)
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if control_plane is not None:
-            _setter("control_plane", control_plane)
+            pulumi.set(__self__, "control_plane", control_plane)
         if delete_not_ready_after_secs is not None:
-            _setter("delete_not_ready_after_secs", delete_not_ready_after_secs)
+            pulumi.set(__self__, "delete_not_ready_after_secs", delete_not_ready_after_secs)
         if drain_before_delete is not None:
-            _setter("drain_before_delete", drain_before_delete)
+            pulumi.set(__self__, "drain_before_delete", drain_before_delete)
         if etcd is not None:
-            _setter("etcd", etcd)
+            pulumi.set(__self__, "etcd", etcd)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if node_taints is not None:
-            _setter("node_taints", node_taints)
+            pulumi.set(__self__, "node_taints", node_taints)
         if quantity is not None:
-            _setter("quantity", quantity)
+            pulumi.set(__self__, "quantity", quantity)
         if worker is not None:
-            _setter("worker", worker)
+            pulumi.set(__self__, "worker", worker)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -313,81 +258,32 @@ class _NodePoolState:
         :param pulumi.Input[int] quantity: The number of nodes to create on Node Pool. Default `1`. Only values >= 1 allowed (int)
         :param pulumi.Input[bool] worker: RKE role role for created nodes (bool)
         """
-        _NodePoolState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            annotations=annotations,
-            cluster_id=cluster_id,
-            control_plane=control_plane,
-            delete_not_ready_after_secs=delete_not_ready_after_secs,
-            drain_before_delete=drain_before_delete,
-            etcd=etcd,
-            hostname_prefix=hostname_prefix,
-            labels=labels,
-            name=name,
-            node_taints=node_taints,
-            node_template_id=node_template_id,
-            quantity=quantity,
-            worker=worker,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             cluster_id: Optional[pulumi.Input[str]] = None,
-             control_plane: Optional[pulumi.Input[bool]] = None,
-             delete_not_ready_after_secs: Optional[pulumi.Input[int]] = None,
-             drain_before_delete: Optional[pulumi.Input[bool]] = None,
-             etcd: Optional[pulumi.Input[bool]] = None,
-             hostname_prefix: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             node_taints: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeTaintArgs']]]] = None,
-             node_template_id: Optional[pulumi.Input[str]] = None,
-             quantity: Optional[pulumi.Input[int]] = None,
-             worker: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if control_plane is None and 'controlPlane' in kwargs:
-            control_plane = kwargs['controlPlane']
-        if delete_not_ready_after_secs is None and 'deleteNotReadyAfterSecs' in kwargs:
-            delete_not_ready_after_secs = kwargs['deleteNotReadyAfterSecs']
-        if drain_before_delete is None and 'drainBeforeDelete' in kwargs:
-            drain_before_delete = kwargs['drainBeforeDelete']
-        if hostname_prefix is None and 'hostnamePrefix' in kwargs:
-            hostname_prefix = kwargs['hostnamePrefix']
-        if node_taints is None and 'nodeTaints' in kwargs:
-            node_taints = kwargs['nodeTaints']
-        if node_template_id is None and 'nodeTemplateId' in kwargs:
-            node_template_id = kwargs['nodeTemplateId']
-
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if cluster_id is not None:
-            _setter("cluster_id", cluster_id)
+            pulumi.set(__self__, "cluster_id", cluster_id)
         if control_plane is not None:
-            _setter("control_plane", control_plane)
+            pulumi.set(__self__, "control_plane", control_plane)
         if delete_not_ready_after_secs is not None:
-            _setter("delete_not_ready_after_secs", delete_not_ready_after_secs)
+            pulumi.set(__self__, "delete_not_ready_after_secs", delete_not_ready_after_secs)
         if drain_before_delete is not None:
-            _setter("drain_before_delete", drain_before_delete)
+            pulumi.set(__self__, "drain_before_delete", drain_before_delete)
         if etcd is not None:
-            _setter("etcd", etcd)
+            pulumi.set(__self__, "etcd", etcd)
         if hostname_prefix is not None:
-            _setter("hostname_prefix", hostname_prefix)
+            pulumi.set(__self__, "hostname_prefix", hostname_prefix)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if node_taints is not None:
-            _setter("node_taints", node_taints)
+            pulumi.set(__self__, "node_taints", node_taints)
         if node_template_id is not None:
-            _setter("node_template_id", node_template_id)
+            pulumi.set(__self__, "node_template_id", node_template_id)
         if quantity is not None:
-            _setter("quantity", quantity)
+            pulumi.set(__self__, "quantity", quantity)
         if worker is not None:
-            _setter("worker", worker)
+            pulumi.set(__self__, "worker", worker)
 
     @property
     @pulumi.getter
@@ -619,10 +515,6 @@ class NodePool(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            NodePoolArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

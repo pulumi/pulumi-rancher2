@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -34,56 +34,19 @@ class ClusterSyncArgs:
         :param pulumi.Input[bool] wait_catalogs: Wait until all catalogs are downloaded and active. Default: `false` (bool)
         :param pulumi.Input[bool] wait_monitoring: Wait until monitoring is up and running. Default: `false` (bool)
         """
-        ClusterSyncArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster_id=cluster_id,
-            node_pool_ids=node_pool_ids,
-            state_confirm=state_confirm,
-            synced=synced,
-            wait_alerting=wait_alerting,
-            wait_catalogs=wait_catalogs,
-            wait_monitoring=wait_monitoring,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster_id: Optional[pulumi.Input[str]] = None,
-             node_pool_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             state_confirm: Optional[pulumi.Input[int]] = None,
-             synced: Optional[pulumi.Input[bool]] = None,
-             wait_alerting: Optional[pulumi.Input[bool]] = None,
-             wait_catalogs: Optional[pulumi.Input[bool]] = None,
-             wait_monitoring: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if cluster_id is None:
-            raise TypeError("Missing 'cluster_id' argument")
-        if node_pool_ids is None and 'nodePoolIds' in kwargs:
-            node_pool_ids = kwargs['nodePoolIds']
-        if state_confirm is None and 'stateConfirm' in kwargs:
-            state_confirm = kwargs['stateConfirm']
-        if wait_alerting is None and 'waitAlerting' in kwargs:
-            wait_alerting = kwargs['waitAlerting']
-        if wait_catalogs is None and 'waitCatalogs' in kwargs:
-            wait_catalogs = kwargs['waitCatalogs']
-        if wait_monitoring is None and 'waitMonitoring' in kwargs:
-            wait_monitoring = kwargs['waitMonitoring']
-
-        _setter("cluster_id", cluster_id)
+        pulumi.set(__self__, "cluster_id", cluster_id)
         if node_pool_ids is not None:
-            _setter("node_pool_ids", node_pool_ids)
+            pulumi.set(__self__, "node_pool_ids", node_pool_ids)
         if state_confirm is not None:
-            _setter("state_confirm", state_confirm)
+            pulumi.set(__self__, "state_confirm", state_confirm)
         if synced is not None:
-            _setter("synced", synced)
+            pulumi.set(__self__, "synced", synced)
         if wait_alerting is not None:
-            _setter("wait_alerting", wait_alerting)
+            pulumi.set(__self__, "wait_alerting", wait_alerting)
         if wait_catalogs is not None:
-            _setter("wait_catalogs", wait_catalogs)
+            pulumi.set(__self__, "wait_catalogs", wait_catalogs)
         if wait_monitoring is not None:
-            _setter("wait_monitoring", wait_monitoring)
+            pulumi.set(__self__, "wait_monitoring", wait_monitoring)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -198,77 +161,28 @@ class _ClusterSyncState:
         :param pulumi.Input[bool] wait_catalogs: Wait until all catalogs are downloaded and active. Default: `false` (bool)
         :param pulumi.Input[bool] wait_monitoring: Wait until monitoring is up and running. Default: `false` (bool)
         """
-        _ClusterSyncState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster_id=cluster_id,
-            default_project_id=default_project_id,
-            kube_config=kube_config,
-            node_pool_ids=node_pool_ids,
-            nodes=nodes,
-            state_confirm=state_confirm,
-            synced=synced,
-            system_project_id=system_project_id,
-            wait_alerting=wait_alerting,
-            wait_catalogs=wait_catalogs,
-            wait_monitoring=wait_monitoring,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster_id: Optional[pulumi.Input[str]] = None,
-             default_project_id: Optional[pulumi.Input[str]] = None,
-             kube_config: Optional[pulumi.Input[str]] = None,
-             node_pool_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             nodes: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterSyncNodeArgs']]]] = None,
-             state_confirm: Optional[pulumi.Input[int]] = None,
-             synced: Optional[pulumi.Input[bool]] = None,
-             system_project_id: Optional[pulumi.Input[str]] = None,
-             wait_alerting: Optional[pulumi.Input[bool]] = None,
-             wait_catalogs: Optional[pulumi.Input[bool]] = None,
-             wait_monitoring: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if default_project_id is None and 'defaultProjectId' in kwargs:
-            default_project_id = kwargs['defaultProjectId']
-        if kube_config is None and 'kubeConfig' in kwargs:
-            kube_config = kwargs['kubeConfig']
-        if node_pool_ids is None and 'nodePoolIds' in kwargs:
-            node_pool_ids = kwargs['nodePoolIds']
-        if state_confirm is None and 'stateConfirm' in kwargs:
-            state_confirm = kwargs['stateConfirm']
-        if system_project_id is None and 'systemProjectId' in kwargs:
-            system_project_id = kwargs['systemProjectId']
-        if wait_alerting is None and 'waitAlerting' in kwargs:
-            wait_alerting = kwargs['waitAlerting']
-        if wait_catalogs is None and 'waitCatalogs' in kwargs:
-            wait_catalogs = kwargs['waitCatalogs']
-        if wait_monitoring is None and 'waitMonitoring' in kwargs:
-            wait_monitoring = kwargs['waitMonitoring']
-
         if cluster_id is not None:
-            _setter("cluster_id", cluster_id)
+            pulumi.set(__self__, "cluster_id", cluster_id)
         if default_project_id is not None:
-            _setter("default_project_id", default_project_id)
+            pulumi.set(__self__, "default_project_id", default_project_id)
         if kube_config is not None:
-            _setter("kube_config", kube_config)
+            pulumi.set(__self__, "kube_config", kube_config)
         if node_pool_ids is not None:
-            _setter("node_pool_ids", node_pool_ids)
+            pulumi.set(__self__, "node_pool_ids", node_pool_ids)
         if nodes is not None:
-            _setter("nodes", nodes)
+            pulumi.set(__self__, "nodes", nodes)
         if state_confirm is not None:
-            _setter("state_confirm", state_confirm)
+            pulumi.set(__self__, "state_confirm", state_confirm)
         if synced is not None:
-            _setter("synced", synced)
+            pulumi.set(__self__, "synced", synced)
         if system_project_id is not None:
-            _setter("system_project_id", system_project_id)
+            pulumi.set(__self__, "system_project_id", system_project_id)
         if wait_alerting is not None:
-            _setter("wait_alerting", wait_alerting)
+            pulumi.set(__self__, "wait_alerting", wait_alerting)
         if wait_catalogs is not None:
-            _setter("wait_catalogs", wait_catalogs)
+            pulumi.set(__self__, "wait_catalogs", wait_catalogs)
         if wait_monitoring is not None:
-            _setter("wait_monitoring", wait_monitoring)
+            pulumi.set(__self__, "wait_monitoring", wait_monitoring)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -572,10 +486,6 @@ class ClusterSync(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ClusterSyncArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

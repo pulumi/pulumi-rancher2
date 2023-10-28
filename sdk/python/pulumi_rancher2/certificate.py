@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['CertificateArgs', 'Certificate']
@@ -33,54 +33,19 @@ class CertificateArgs:
         :param pulumi.Input[str] name: The name of the certificate (string)
         :param pulumi.Input[str] namespace_id: The namespace id where the namespaced certificate should be created (string)
         """
-        CertificateArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            certs=certs,
-            key=key,
-            project_id=project_id,
-            annotations=annotations,
-            description=description,
-            labels=labels,
-            name=name,
-            namespace_id=namespace_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             certs: Optional[pulumi.Input[str]] = None,
-             key: Optional[pulumi.Input[str]] = None,
-             project_id: Optional[pulumi.Input[str]] = None,
-             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             namespace_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if certs is None:
-            raise TypeError("Missing 'certs' argument")
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if project_id is None:
-            raise TypeError("Missing 'project_id' argument")
-        if namespace_id is None and 'namespaceId' in kwargs:
-            namespace_id = kwargs['namespaceId']
-
-        _setter("certs", certs)
-        _setter("key", key)
-        _setter("project_id", project_id)
+        pulumi.set(__self__, "certs", certs)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "project_id", project_id)
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if namespace_id is not None:
-            _setter("namespace_id", namespace_id)
+            pulumi.set(__self__, "namespace_id", namespace_id)
 
     @property
     @pulumi.getter
@@ -201,51 +166,22 @@ class _CertificateState:
         :param pulumi.Input[str] namespace_id: The namespace id where the namespaced certificate should be created (string)
         :param pulumi.Input[str] project_id: The project id where the certificate should be created  (string)
         """
-        _CertificateState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            annotations=annotations,
-            certs=certs,
-            description=description,
-            key=key,
-            labels=labels,
-            name=name,
-            namespace_id=namespace_id,
-            project_id=project_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             certs: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             key: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             namespace_id: Optional[pulumi.Input[str]] = None,
-             project_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if namespace_id is None and 'namespaceId' in kwargs:
-            namespace_id = kwargs['namespaceId']
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if certs is not None:
-            _setter("certs", certs)
+            pulumi.set(__self__, "certs", certs)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if namespace_id is not None:
-            _setter("namespace_id", namespace_id)
+            pulumi.set(__self__, "namespace_id", namespace_id)
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
 
     @property
     @pulumi.getter
@@ -399,10 +335,6 @@ class Certificate(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            CertificateArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

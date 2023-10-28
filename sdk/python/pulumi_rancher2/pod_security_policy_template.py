@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -75,171 +75,62 @@ class PodSecurityPolicyTemplateArgs:
         :param pulumi.Input['PodSecurityPolicyTemplateSupplementalGroupArgs'] supplemental_group: (list maxitems:1)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] volumes: (list)
         """
-        PodSecurityPolicyTemplateArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allow_privilege_escalation=allow_privilege_escalation,
-            allowed_capabilities=allowed_capabilities,
-            allowed_csi_drivers=allowed_csi_drivers,
-            allowed_flex_volumes=allowed_flex_volumes,
-            allowed_host_paths=allowed_host_paths,
-            allowed_proc_mount_types=allowed_proc_mount_types,
-            allowed_unsafe_sysctls=allowed_unsafe_sysctls,
-            annotations=annotations,
-            default_add_capabilities=default_add_capabilities,
-            default_allow_privilege_escalation=default_allow_privilege_escalation,
-            description=description,
-            forbidden_sysctls=forbidden_sysctls,
-            fs_group=fs_group,
-            host_ipc=host_ipc,
-            host_network=host_network,
-            host_pid=host_pid,
-            host_ports=host_ports,
-            labels=labels,
-            name=name,
-            privileged=privileged,
-            read_only_root_filesystem=read_only_root_filesystem,
-            required_drop_capabilities=required_drop_capabilities,
-            run_as_group=run_as_group,
-            run_as_user=run_as_user,
-            runtime_class=runtime_class,
-            se_linux=se_linux,
-            supplemental_group=supplemental_group,
-            volumes=volumes,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allow_privilege_escalation: Optional[pulumi.Input[bool]] = None,
-             allowed_capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             allowed_csi_drivers: Optional[pulumi.Input[Sequence[pulumi.Input['PodSecurityPolicyTemplateAllowedCsiDriverArgs']]]] = None,
-             allowed_flex_volumes: Optional[pulumi.Input[Sequence[pulumi.Input['PodSecurityPolicyTemplateAllowedFlexVolumeArgs']]]] = None,
-             allowed_host_paths: Optional[pulumi.Input[Sequence[pulumi.Input['PodSecurityPolicyTemplateAllowedHostPathArgs']]]] = None,
-             allowed_proc_mount_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             allowed_unsafe_sysctls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             default_add_capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             default_allow_privilege_escalation: Optional[pulumi.Input[bool]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             forbidden_sysctls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             fs_group: Optional[pulumi.Input['PodSecurityPolicyTemplateFsGroupArgs']] = None,
-             host_ipc: Optional[pulumi.Input[bool]] = None,
-             host_network: Optional[pulumi.Input[bool]] = None,
-             host_pid: Optional[pulumi.Input[bool]] = None,
-             host_ports: Optional[pulumi.Input[Sequence[pulumi.Input['PodSecurityPolicyTemplateHostPortArgs']]]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             privileged: Optional[pulumi.Input[bool]] = None,
-             read_only_root_filesystem: Optional[pulumi.Input[bool]] = None,
-             required_drop_capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             run_as_group: Optional[pulumi.Input['PodSecurityPolicyTemplateRunAsGroupArgs']] = None,
-             run_as_user: Optional[pulumi.Input['PodSecurityPolicyTemplateRunAsUserArgs']] = None,
-             runtime_class: Optional[pulumi.Input['PodSecurityPolicyTemplateRuntimeClassArgs']] = None,
-             se_linux: Optional[pulumi.Input['PodSecurityPolicyTemplateSeLinuxArgs']] = None,
-             supplemental_group: Optional[pulumi.Input['PodSecurityPolicyTemplateSupplementalGroupArgs']] = None,
-             volumes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allow_privilege_escalation is None and 'allowPrivilegeEscalation' in kwargs:
-            allow_privilege_escalation = kwargs['allowPrivilegeEscalation']
-        if allowed_capabilities is None and 'allowedCapabilities' in kwargs:
-            allowed_capabilities = kwargs['allowedCapabilities']
-        if allowed_csi_drivers is None and 'allowedCsiDrivers' in kwargs:
-            allowed_csi_drivers = kwargs['allowedCsiDrivers']
-        if allowed_flex_volumes is None and 'allowedFlexVolumes' in kwargs:
-            allowed_flex_volumes = kwargs['allowedFlexVolumes']
-        if allowed_host_paths is None and 'allowedHostPaths' in kwargs:
-            allowed_host_paths = kwargs['allowedHostPaths']
-        if allowed_proc_mount_types is None and 'allowedProcMountTypes' in kwargs:
-            allowed_proc_mount_types = kwargs['allowedProcMountTypes']
-        if allowed_unsafe_sysctls is None and 'allowedUnsafeSysctls' in kwargs:
-            allowed_unsafe_sysctls = kwargs['allowedUnsafeSysctls']
-        if default_add_capabilities is None and 'defaultAddCapabilities' in kwargs:
-            default_add_capabilities = kwargs['defaultAddCapabilities']
-        if default_allow_privilege_escalation is None and 'defaultAllowPrivilegeEscalation' in kwargs:
-            default_allow_privilege_escalation = kwargs['defaultAllowPrivilegeEscalation']
-        if forbidden_sysctls is None and 'forbiddenSysctls' in kwargs:
-            forbidden_sysctls = kwargs['forbiddenSysctls']
-        if fs_group is None and 'fsGroup' in kwargs:
-            fs_group = kwargs['fsGroup']
-        if host_ipc is None and 'hostIpc' in kwargs:
-            host_ipc = kwargs['hostIpc']
-        if host_network is None and 'hostNetwork' in kwargs:
-            host_network = kwargs['hostNetwork']
-        if host_pid is None and 'hostPid' in kwargs:
-            host_pid = kwargs['hostPid']
-        if host_ports is None and 'hostPorts' in kwargs:
-            host_ports = kwargs['hostPorts']
-        if read_only_root_filesystem is None and 'readOnlyRootFilesystem' in kwargs:
-            read_only_root_filesystem = kwargs['readOnlyRootFilesystem']
-        if required_drop_capabilities is None and 'requiredDropCapabilities' in kwargs:
-            required_drop_capabilities = kwargs['requiredDropCapabilities']
-        if run_as_group is None and 'runAsGroup' in kwargs:
-            run_as_group = kwargs['runAsGroup']
-        if run_as_user is None and 'runAsUser' in kwargs:
-            run_as_user = kwargs['runAsUser']
-        if runtime_class is None and 'runtimeClass' in kwargs:
-            runtime_class = kwargs['runtimeClass']
-        if se_linux is None and 'seLinux' in kwargs:
-            se_linux = kwargs['seLinux']
-        if supplemental_group is None and 'supplementalGroup' in kwargs:
-            supplemental_group = kwargs['supplementalGroup']
-
         if allow_privilege_escalation is not None:
-            _setter("allow_privilege_escalation", allow_privilege_escalation)
+            pulumi.set(__self__, "allow_privilege_escalation", allow_privilege_escalation)
         if allowed_capabilities is not None:
-            _setter("allowed_capabilities", allowed_capabilities)
+            pulumi.set(__self__, "allowed_capabilities", allowed_capabilities)
         if allowed_csi_drivers is not None:
-            _setter("allowed_csi_drivers", allowed_csi_drivers)
+            pulumi.set(__self__, "allowed_csi_drivers", allowed_csi_drivers)
         if allowed_flex_volumes is not None:
-            _setter("allowed_flex_volumes", allowed_flex_volumes)
+            pulumi.set(__self__, "allowed_flex_volumes", allowed_flex_volumes)
         if allowed_host_paths is not None:
-            _setter("allowed_host_paths", allowed_host_paths)
+            pulumi.set(__self__, "allowed_host_paths", allowed_host_paths)
         if allowed_proc_mount_types is not None:
-            _setter("allowed_proc_mount_types", allowed_proc_mount_types)
+            pulumi.set(__self__, "allowed_proc_mount_types", allowed_proc_mount_types)
         if allowed_unsafe_sysctls is not None:
-            _setter("allowed_unsafe_sysctls", allowed_unsafe_sysctls)
+            pulumi.set(__self__, "allowed_unsafe_sysctls", allowed_unsafe_sysctls)
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if default_add_capabilities is not None:
-            _setter("default_add_capabilities", default_add_capabilities)
+            pulumi.set(__self__, "default_add_capabilities", default_add_capabilities)
         if default_allow_privilege_escalation is not None:
-            _setter("default_allow_privilege_escalation", default_allow_privilege_escalation)
+            pulumi.set(__self__, "default_allow_privilege_escalation", default_allow_privilege_escalation)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if forbidden_sysctls is not None:
-            _setter("forbidden_sysctls", forbidden_sysctls)
+            pulumi.set(__self__, "forbidden_sysctls", forbidden_sysctls)
         if fs_group is not None:
-            _setter("fs_group", fs_group)
+            pulumi.set(__self__, "fs_group", fs_group)
         if host_ipc is not None:
-            _setter("host_ipc", host_ipc)
+            pulumi.set(__self__, "host_ipc", host_ipc)
         if host_network is not None:
-            _setter("host_network", host_network)
+            pulumi.set(__self__, "host_network", host_network)
         if host_pid is not None:
-            _setter("host_pid", host_pid)
+            pulumi.set(__self__, "host_pid", host_pid)
         if host_ports is not None:
-            _setter("host_ports", host_ports)
+            pulumi.set(__self__, "host_ports", host_ports)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if privileged is not None:
-            _setter("privileged", privileged)
+            pulumi.set(__self__, "privileged", privileged)
         if read_only_root_filesystem is not None:
-            _setter("read_only_root_filesystem", read_only_root_filesystem)
+            pulumi.set(__self__, "read_only_root_filesystem", read_only_root_filesystem)
         if required_drop_capabilities is not None:
-            _setter("required_drop_capabilities", required_drop_capabilities)
+            pulumi.set(__self__, "required_drop_capabilities", required_drop_capabilities)
         if run_as_group is not None:
-            _setter("run_as_group", run_as_group)
+            pulumi.set(__self__, "run_as_group", run_as_group)
         if run_as_user is not None:
-            _setter("run_as_user", run_as_user)
+            pulumi.set(__self__, "run_as_user", run_as_user)
         if runtime_class is not None:
-            _setter("runtime_class", runtime_class)
+            pulumi.set(__self__, "runtime_class", runtime_class)
         if se_linux is not None:
-            _setter("se_linux", se_linux)
+            pulumi.set(__self__, "se_linux", se_linux)
         if supplemental_group is not None:
-            _setter("supplemental_group", supplemental_group)
+            pulumi.set(__self__, "supplemental_group", supplemental_group)
         if volumes is not None:
-            _setter("volumes", volumes)
+            pulumi.set(__self__, "volumes", volumes)
 
     @property
     @pulumi.getter(name="allowPrivilegeEscalation")
@@ -640,171 +531,62 @@ class _PodSecurityPolicyTemplateState:
         :param pulumi.Input['PodSecurityPolicyTemplateSupplementalGroupArgs'] supplemental_group: (list maxitems:1)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] volumes: (list)
         """
-        _PodSecurityPolicyTemplateState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allow_privilege_escalation=allow_privilege_escalation,
-            allowed_capabilities=allowed_capabilities,
-            allowed_csi_drivers=allowed_csi_drivers,
-            allowed_flex_volumes=allowed_flex_volumes,
-            allowed_host_paths=allowed_host_paths,
-            allowed_proc_mount_types=allowed_proc_mount_types,
-            allowed_unsafe_sysctls=allowed_unsafe_sysctls,
-            annotations=annotations,
-            default_add_capabilities=default_add_capabilities,
-            default_allow_privilege_escalation=default_allow_privilege_escalation,
-            description=description,
-            forbidden_sysctls=forbidden_sysctls,
-            fs_group=fs_group,
-            host_ipc=host_ipc,
-            host_network=host_network,
-            host_pid=host_pid,
-            host_ports=host_ports,
-            labels=labels,
-            name=name,
-            privileged=privileged,
-            read_only_root_filesystem=read_only_root_filesystem,
-            required_drop_capabilities=required_drop_capabilities,
-            run_as_group=run_as_group,
-            run_as_user=run_as_user,
-            runtime_class=runtime_class,
-            se_linux=se_linux,
-            supplemental_group=supplemental_group,
-            volumes=volumes,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allow_privilege_escalation: Optional[pulumi.Input[bool]] = None,
-             allowed_capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             allowed_csi_drivers: Optional[pulumi.Input[Sequence[pulumi.Input['PodSecurityPolicyTemplateAllowedCsiDriverArgs']]]] = None,
-             allowed_flex_volumes: Optional[pulumi.Input[Sequence[pulumi.Input['PodSecurityPolicyTemplateAllowedFlexVolumeArgs']]]] = None,
-             allowed_host_paths: Optional[pulumi.Input[Sequence[pulumi.Input['PodSecurityPolicyTemplateAllowedHostPathArgs']]]] = None,
-             allowed_proc_mount_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             allowed_unsafe_sysctls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             default_add_capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             default_allow_privilege_escalation: Optional[pulumi.Input[bool]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             forbidden_sysctls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             fs_group: Optional[pulumi.Input['PodSecurityPolicyTemplateFsGroupArgs']] = None,
-             host_ipc: Optional[pulumi.Input[bool]] = None,
-             host_network: Optional[pulumi.Input[bool]] = None,
-             host_pid: Optional[pulumi.Input[bool]] = None,
-             host_ports: Optional[pulumi.Input[Sequence[pulumi.Input['PodSecurityPolicyTemplateHostPortArgs']]]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             privileged: Optional[pulumi.Input[bool]] = None,
-             read_only_root_filesystem: Optional[pulumi.Input[bool]] = None,
-             required_drop_capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             run_as_group: Optional[pulumi.Input['PodSecurityPolicyTemplateRunAsGroupArgs']] = None,
-             run_as_user: Optional[pulumi.Input['PodSecurityPolicyTemplateRunAsUserArgs']] = None,
-             runtime_class: Optional[pulumi.Input['PodSecurityPolicyTemplateRuntimeClassArgs']] = None,
-             se_linux: Optional[pulumi.Input['PodSecurityPolicyTemplateSeLinuxArgs']] = None,
-             supplemental_group: Optional[pulumi.Input['PodSecurityPolicyTemplateSupplementalGroupArgs']] = None,
-             volumes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allow_privilege_escalation is None and 'allowPrivilegeEscalation' in kwargs:
-            allow_privilege_escalation = kwargs['allowPrivilegeEscalation']
-        if allowed_capabilities is None and 'allowedCapabilities' in kwargs:
-            allowed_capabilities = kwargs['allowedCapabilities']
-        if allowed_csi_drivers is None and 'allowedCsiDrivers' in kwargs:
-            allowed_csi_drivers = kwargs['allowedCsiDrivers']
-        if allowed_flex_volumes is None and 'allowedFlexVolumes' in kwargs:
-            allowed_flex_volumes = kwargs['allowedFlexVolumes']
-        if allowed_host_paths is None and 'allowedHostPaths' in kwargs:
-            allowed_host_paths = kwargs['allowedHostPaths']
-        if allowed_proc_mount_types is None and 'allowedProcMountTypes' in kwargs:
-            allowed_proc_mount_types = kwargs['allowedProcMountTypes']
-        if allowed_unsafe_sysctls is None and 'allowedUnsafeSysctls' in kwargs:
-            allowed_unsafe_sysctls = kwargs['allowedUnsafeSysctls']
-        if default_add_capabilities is None and 'defaultAddCapabilities' in kwargs:
-            default_add_capabilities = kwargs['defaultAddCapabilities']
-        if default_allow_privilege_escalation is None and 'defaultAllowPrivilegeEscalation' in kwargs:
-            default_allow_privilege_escalation = kwargs['defaultAllowPrivilegeEscalation']
-        if forbidden_sysctls is None and 'forbiddenSysctls' in kwargs:
-            forbidden_sysctls = kwargs['forbiddenSysctls']
-        if fs_group is None and 'fsGroup' in kwargs:
-            fs_group = kwargs['fsGroup']
-        if host_ipc is None and 'hostIpc' in kwargs:
-            host_ipc = kwargs['hostIpc']
-        if host_network is None and 'hostNetwork' in kwargs:
-            host_network = kwargs['hostNetwork']
-        if host_pid is None and 'hostPid' in kwargs:
-            host_pid = kwargs['hostPid']
-        if host_ports is None and 'hostPorts' in kwargs:
-            host_ports = kwargs['hostPorts']
-        if read_only_root_filesystem is None and 'readOnlyRootFilesystem' in kwargs:
-            read_only_root_filesystem = kwargs['readOnlyRootFilesystem']
-        if required_drop_capabilities is None and 'requiredDropCapabilities' in kwargs:
-            required_drop_capabilities = kwargs['requiredDropCapabilities']
-        if run_as_group is None and 'runAsGroup' in kwargs:
-            run_as_group = kwargs['runAsGroup']
-        if run_as_user is None and 'runAsUser' in kwargs:
-            run_as_user = kwargs['runAsUser']
-        if runtime_class is None and 'runtimeClass' in kwargs:
-            runtime_class = kwargs['runtimeClass']
-        if se_linux is None and 'seLinux' in kwargs:
-            se_linux = kwargs['seLinux']
-        if supplemental_group is None and 'supplementalGroup' in kwargs:
-            supplemental_group = kwargs['supplementalGroup']
-
         if allow_privilege_escalation is not None:
-            _setter("allow_privilege_escalation", allow_privilege_escalation)
+            pulumi.set(__self__, "allow_privilege_escalation", allow_privilege_escalation)
         if allowed_capabilities is not None:
-            _setter("allowed_capabilities", allowed_capabilities)
+            pulumi.set(__self__, "allowed_capabilities", allowed_capabilities)
         if allowed_csi_drivers is not None:
-            _setter("allowed_csi_drivers", allowed_csi_drivers)
+            pulumi.set(__self__, "allowed_csi_drivers", allowed_csi_drivers)
         if allowed_flex_volumes is not None:
-            _setter("allowed_flex_volumes", allowed_flex_volumes)
+            pulumi.set(__self__, "allowed_flex_volumes", allowed_flex_volumes)
         if allowed_host_paths is not None:
-            _setter("allowed_host_paths", allowed_host_paths)
+            pulumi.set(__self__, "allowed_host_paths", allowed_host_paths)
         if allowed_proc_mount_types is not None:
-            _setter("allowed_proc_mount_types", allowed_proc_mount_types)
+            pulumi.set(__self__, "allowed_proc_mount_types", allowed_proc_mount_types)
         if allowed_unsafe_sysctls is not None:
-            _setter("allowed_unsafe_sysctls", allowed_unsafe_sysctls)
+            pulumi.set(__self__, "allowed_unsafe_sysctls", allowed_unsafe_sysctls)
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if default_add_capabilities is not None:
-            _setter("default_add_capabilities", default_add_capabilities)
+            pulumi.set(__self__, "default_add_capabilities", default_add_capabilities)
         if default_allow_privilege_escalation is not None:
-            _setter("default_allow_privilege_escalation", default_allow_privilege_escalation)
+            pulumi.set(__self__, "default_allow_privilege_escalation", default_allow_privilege_escalation)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if forbidden_sysctls is not None:
-            _setter("forbidden_sysctls", forbidden_sysctls)
+            pulumi.set(__self__, "forbidden_sysctls", forbidden_sysctls)
         if fs_group is not None:
-            _setter("fs_group", fs_group)
+            pulumi.set(__self__, "fs_group", fs_group)
         if host_ipc is not None:
-            _setter("host_ipc", host_ipc)
+            pulumi.set(__self__, "host_ipc", host_ipc)
         if host_network is not None:
-            _setter("host_network", host_network)
+            pulumi.set(__self__, "host_network", host_network)
         if host_pid is not None:
-            _setter("host_pid", host_pid)
+            pulumi.set(__self__, "host_pid", host_pid)
         if host_ports is not None:
-            _setter("host_ports", host_ports)
+            pulumi.set(__self__, "host_ports", host_ports)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if privileged is not None:
-            _setter("privileged", privileged)
+            pulumi.set(__self__, "privileged", privileged)
         if read_only_root_filesystem is not None:
-            _setter("read_only_root_filesystem", read_only_root_filesystem)
+            pulumi.set(__self__, "read_only_root_filesystem", read_only_root_filesystem)
         if required_drop_capabilities is not None:
-            _setter("required_drop_capabilities", required_drop_capabilities)
+            pulumi.set(__self__, "required_drop_capabilities", required_drop_capabilities)
         if run_as_group is not None:
-            _setter("run_as_group", run_as_group)
+            pulumi.set(__self__, "run_as_group", run_as_group)
         if run_as_user is not None:
-            _setter("run_as_user", run_as_user)
+            pulumi.set(__self__, "run_as_user", run_as_user)
         if runtime_class is not None:
-            _setter("runtime_class", runtime_class)
+            pulumi.set(__self__, "runtime_class", runtime_class)
         if se_linux is not None:
-            _setter("se_linux", se_linux)
+            pulumi.set(__self__, "se_linux", se_linux)
         if supplemental_group is not None:
-            _setter("supplemental_group", supplemental_group)
+            pulumi.set(__self__, "supplemental_group", supplemental_group)
         if volumes is not None:
-            _setter("volumes", volumes)
+            pulumi.set(__self__, "volumes", volumes)
 
     @property
     @pulumi.getter(name="allowPrivilegeEscalation")
@@ -1458,10 +1240,6 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            PodSecurityPolicyTemplateArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1516,7 +1294,6 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
             __props__.__dict__["default_allow_privilege_escalation"] = default_allow_privilege_escalation
             __props__.__dict__["description"] = description
             __props__.__dict__["forbidden_sysctls"] = forbidden_sysctls
-            fs_group = _utilities.configure(fs_group, PodSecurityPolicyTemplateFsGroupArgs, True)
             __props__.__dict__["fs_group"] = fs_group
             __props__.__dict__["host_ipc"] = host_ipc
             __props__.__dict__["host_network"] = host_network
@@ -1527,15 +1304,10 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
             __props__.__dict__["privileged"] = privileged
             __props__.__dict__["read_only_root_filesystem"] = read_only_root_filesystem
             __props__.__dict__["required_drop_capabilities"] = required_drop_capabilities
-            run_as_group = _utilities.configure(run_as_group, PodSecurityPolicyTemplateRunAsGroupArgs, True)
             __props__.__dict__["run_as_group"] = run_as_group
-            run_as_user = _utilities.configure(run_as_user, PodSecurityPolicyTemplateRunAsUserArgs, True)
             __props__.__dict__["run_as_user"] = run_as_user
-            runtime_class = _utilities.configure(runtime_class, PodSecurityPolicyTemplateRuntimeClassArgs, True)
             __props__.__dict__["runtime_class"] = runtime_class
-            se_linux = _utilities.configure(se_linux, PodSecurityPolicyTemplateSeLinuxArgs, True)
             __props__.__dict__["se_linux"] = se_linux
-            supplemental_group = _utilities.configure(supplemental_group, PodSecurityPolicyTemplateSupplementalGroupArgs, True)
             __props__.__dict__["supplemental_group"] = supplemental_group
             __props__.__dict__["volumes"] = volumes
         super(PodSecurityPolicyTemplate, __self__).__init__(

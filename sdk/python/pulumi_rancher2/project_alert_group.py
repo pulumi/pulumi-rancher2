@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -37,60 +37,23 @@ class ProjectAlertGroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ProjectAlertGroupRecipientArgs']]] recipients: The project alert group recipients (list)
         :param pulumi.Input[int] repeat_interval_seconds: The project alert group wait seconds. Default: `3600` (int)
         """
-        ProjectAlertGroupArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            project_id=project_id,
-            annotations=annotations,
-            description=description,
-            group_interval_seconds=group_interval_seconds,
-            group_wait_seconds=group_wait_seconds,
-            labels=labels,
-            name=name,
-            recipients=recipients,
-            repeat_interval_seconds=repeat_interval_seconds,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             project_id: Optional[pulumi.Input[str]] = None,
-             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             group_interval_seconds: Optional[pulumi.Input[int]] = None,
-             group_wait_seconds: Optional[pulumi.Input[int]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             recipients: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectAlertGroupRecipientArgs']]]] = None,
-             repeat_interval_seconds: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if project_id is None:
-            raise TypeError("Missing 'project_id' argument")
-        if group_interval_seconds is None and 'groupIntervalSeconds' in kwargs:
-            group_interval_seconds = kwargs['groupIntervalSeconds']
-        if group_wait_seconds is None and 'groupWaitSeconds' in kwargs:
-            group_wait_seconds = kwargs['groupWaitSeconds']
-        if repeat_interval_seconds is None and 'repeatIntervalSeconds' in kwargs:
-            repeat_interval_seconds = kwargs['repeatIntervalSeconds']
-
-        _setter("project_id", project_id)
+        pulumi.set(__self__, "project_id", project_id)
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if group_interval_seconds is not None:
-            _setter("group_interval_seconds", group_interval_seconds)
+            pulumi.set(__self__, "group_interval_seconds", group_interval_seconds)
         if group_wait_seconds is not None:
-            _setter("group_wait_seconds", group_wait_seconds)
+            pulumi.set(__self__, "group_wait_seconds", group_wait_seconds)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if recipients is not None:
-            _setter("recipients", recipients)
+            pulumi.set(__self__, "recipients", recipients)
         if repeat_interval_seconds is not None:
-            _setter("repeat_interval_seconds", repeat_interval_seconds)
+            pulumi.set(__self__, "repeat_interval_seconds", repeat_interval_seconds)
 
     @property
     @pulumi.getter(name="projectId")
@@ -225,59 +188,24 @@ class _ProjectAlertGroupState:
         :param pulumi.Input[Sequence[pulumi.Input['ProjectAlertGroupRecipientArgs']]] recipients: The project alert group recipients (list)
         :param pulumi.Input[int] repeat_interval_seconds: The project alert group wait seconds. Default: `3600` (int)
         """
-        _ProjectAlertGroupState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            annotations=annotations,
-            description=description,
-            group_interval_seconds=group_interval_seconds,
-            group_wait_seconds=group_wait_seconds,
-            labels=labels,
-            name=name,
-            project_id=project_id,
-            recipients=recipients,
-            repeat_interval_seconds=repeat_interval_seconds,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             group_interval_seconds: Optional[pulumi.Input[int]] = None,
-             group_wait_seconds: Optional[pulumi.Input[int]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project_id: Optional[pulumi.Input[str]] = None,
-             recipients: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectAlertGroupRecipientArgs']]]] = None,
-             repeat_interval_seconds: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if group_interval_seconds is None and 'groupIntervalSeconds' in kwargs:
-            group_interval_seconds = kwargs['groupIntervalSeconds']
-        if group_wait_seconds is None and 'groupWaitSeconds' in kwargs:
-            group_wait_seconds = kwargs['groupWaitSeconds']
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if repeat_interval_seconds is None and 'repeatIntervalSeconds' in kwargs:
-            repeat_interval_seconds = kwargs['repeatIntervalSeconds']
-
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if group_interval_seconds is not None:
-            _setter("group_interval_seconds", group_interval_seconds)
+            pulumi.set(__self__, "group_interval_seconds", group_interval_seconds)
         if group_wait_seconds is not None:
-            _setter("group_wait_seconds", group_wait_seconds)
+            pulumi.set(__self__, "group_wait_seconds", group_wait_seconds)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
         if recipients is not None:
-            _setter("recipients", recipients)
+            pulumi.set(__self__, "recipients", recipients)
         if repeat_interval_seconds is not None:
-            _setter("repeat_interval_seconds", repeat_interval_seconds)
+            pulumi.set(__self__, "repeat_interval_seconds", repeat_interval_seconds)
 
     @property
     @pulumi.getter
@@ -481,10 +409,6 @@ class ProjectAlertGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ProjectAlertGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -33,49 +33,18 @@ class RegistryArgs:
         :param pulumi.Input[str] name: The name of the registry (string)
         :param pulumi.Input[str] namespace_id: The namespace id where to assign the namespaced registry (string)
         """
-        RegistryArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            project_id=project_id,
-            registries=registries,
-            annotations=annotations,
-            description=description,
-            labels=labels,
-            name=name,
-            namespace_id=namespace_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             project_id: Optional[pulumi.Input[str]] = None,
-             registries: Optional[pulumi.Input[Sequence[pulumi.Input['RegistryRegistryArgs']]]] = None,
-             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             namespace_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if project_id is None:
-            raise TypeError("Missing 'project_id' argument")
-        if registries is None:
-            raise TypeError("Missing 'registries' argument")
-        if namespace_id is None and 'namespaceId' in kwargs:
-            namespace_id = kwargs['namespaceId']
-
-        _setter("project_id", project_id)
-        _setter("registries", registries)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "registries", registries)
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if namespace_id is not None:
-            _setter("namespace_id", namespace_id)
+            pulumi.set(__self__, "namespace_id", namespace_id)
 
     @property
     @pulumi.getter(name="projectId")
@@ -182,47 +151,20 @@ class _RegistryState:
         :param pulumi.Input[str] project_id: The project id where to assign the registry (string)
         :param pulumi.Input[Sequence[pulumi.Input['RegistryRegistryArgs']]] registries: Registries data for registry (list)
         """
-        _RegistryState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            annotations=annotations,
-            description=description,
-            labels=labels,
-            name=name,
-            namespace_id=namespace_id,
-            project_id=project_id,
-            registries=registries,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             namespace_id: Optional[pulumi.Input[str]] = None,
-             project_id: Optional[pulumi.Input[str]] = None,
-             registries: Optional[pulumi.Input[Sequence[pulumi.Input['RegistryRegistryArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if namespace_id is None and 'namespaceId' in kwargs:
-            namespace_id = kwargs['namespaceId']
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if namespace_id is not None:
-            _setter("namespace_id", namespace_id)
+            pulumi.set(__self__, "namespace_id", namespace_id)
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
         if registries is not None:
-            _setter("registries", registries)
+            pulumi.set(__self__, "registries", registries)
 
     @property
     @pulumi.getter
@@ -446,10 +388,6 @@ class Registry(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            RegistryArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
