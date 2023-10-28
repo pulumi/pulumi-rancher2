@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['AuthConfigOktaArgs', 'AuthConfigOkta']
@@ -43,95 +43,24 @@ class AuthConfigOktaArgs:
         :param pulumi.Input[bool] enabled: Enable auth config provider. Default `true` (bool)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
         """
-        AuthConfigOktaArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            display_name_field=display_name_field,
-            groups_field=groups_field,
-            idp_metadata_content=idp_metadata_content,
-            rancher_api_host=rancher_api_host,
-            sp_cert=sp_cert,
-            sp_key=sp_key,
-            uid_field=uid_field,
-            user_name_field=user_name_field,
-            access_mode=access_mode,
-            allowed_principal_ids=allowed_principal_ids,
-            annotations=annotations,
-            enabled=enabled,
-            labels=labels,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             display_name_field: Optional[pulumi.Input[str]] = None,
-             groups_field: Optional[pulumi.Input[str]] = None,
-             idp_metadata_content: Optional[pulumi.Input[str]] = None,
-             rancher_api_host: Optional[pulumi.Input[str]] = None,
-             sp_cert: Optional[pulumi.Input[str]] = None,
-             sp_key: Optional[pulumi.Input[str]] = None,
-             uid_field: Optional[pulumi.Input[str]] = None,
-             user_name_field: Optional[pulumi.Input[str]] = None,
-             access_mode: Optional[pulumi.Input[str]] = None,
-             allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if display_name_field is None and 'displayNameField' in kwargs:
-            display_name_field = kwargs['displayNameField']
-        if display_name_field is None:
-            raise TypeError("Missing 'display_name_field' argument")
-        if groups_field is None and 'groupsField' in kwargs:
-            groups_field = kwargs['groupsField']
-        if groups_field is None:
-            raise TypeError("Missing 'groups_field' argument")
-        if idp_metadata_content is None and 'idpMetadataContent' in kwargs:
-            idp_metadata_content = kwargs['idpMetadataContent']
-        if idp_metadata_content is None:
-            raise TypeError("Missing 'idp_metadata_content' argument")
-        if rancher_api_host is None and 'rancherApiHost' in kwargs:
-            rancher_api_host = kwargs['rancherApiHost']
-        if rancher_api_host is None:
-            raise TypeError("Missing 'rancher_api_host' argument")
-        if sp_cert is None and 'spCert' in kwargs:
-            sp_cert = kwargs['spCert']
-        if sp_cert is None:
-            raise TypeError("Missing 'sp_cert' argument")
-        if sp_key is None and 'spKey' in kwargs:
-            sp_key = kwargs['spKey']
-        if sp_key is None:
-            raise TypeError("Missing 'sp_key' argument")
-        if uid_field is None and 'uidField' in kwargs:
-            uid_field = kwargs['uidField']
-        if uid_field is None:
-            raise TypeError("Missing 'uid_field' argument")
-        if user_name_field is None and 'userNameField' in kwargs:
-            user_name_field = kwargs['userNameField']
-        if user_name_field is None:
-            raise TypeError("Missing 'user_name_field' argument")
-        if access_mode is None and 'accessMode' in kwargs:
-            access_mode = kwargs['accessMode']
-        if allowed_principal_ids is None and 'allowedPrincipalIds' in kwargs:
-            allowed_principal_ids = kwargs['allowedPrincipalIds']
-
-        _setter("display_name_field", display_name_field)
-        _setter("groups_field", groups_field)
-        _setter("idp_metadata_content", idp_metadata_content)
-        _setter("rancher_api_host", rancher_api_host)
-        _setter("sp_cert", sp_cert)
-        _setter("sp_key", sp_key)
-        _setter("uid_field", uid_field)
-        _setter("user_name_field", user_name_field)
+        pulumi.set(__self__, "display_name_field", display_name_field)
+        pulumi.set(__self__, "groups_field", groups_field)
+        pulumi.set(__self__, "idp_metadata_content", idp_metadata_content)
+        pulumi.set(__self__, "rancher_api_host", rancher_api_host)
+        pulumi.set(__self__, "sp_cert", sp_cert)
+        pulumi.set(__self__, "sp_key", sp_key)
+        pulumi.set(__self__, "uid_field", uid_field)
+        pulumi.set(__self__, "user_name_field", user_name_field)
         if access_mode is not None:
-            _setter("access_mode", access_mode)
+            pulumi.set(__self__, "access_mode", access_mode)
         if allowed_principal_ids is not None:
-            _setter("allowed_principal_ids", allowed_principal_ids)
+            pulumi.set(__self__, "allowed_principal_ids", allowed_principal_ids)
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
 
     @property
     @pulumi.getter(name="displayNameField")
@@ -326,95 +255,36 @@ class _AuthConfigOktaState:
         :param pulumi.Input[str] uid_field: OKTA UID field (string)
         :param pulumi.Input[str] user_name_field: OKTA user name field (string)
         """
-        _AuthConfigOktaState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_mode=access_mode,
-            allowed_principal_ids=allowed_principal_ids,
-            annotations=annotations,
-            display_name_field=display_name_field,
-            enabled=enabled,
-            groups_field=groups_field,
-            idp_metadata_content=idp_metadata_content,
-            labels=labels,
-            name=name,
-            rancher_api_host=rancher_api_host,
-            sp_cert=sp_cert,
-            sp_key=sp_key,
-            type=type,
-            uid_field=uid_field,
-            user_name_field=user_name_field,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_mode: Optional[pulumi.Input[str]] = None,
-             allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             display_name_field: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             groups_field: Optional[pulumi.Input[str]] = None,
-             idp_metadata_content: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             rancher_api_host: Optional[pulumi.Input[str]] = None,
-             sp_cert: Optional[pulumi.Input[str]] = None,
-             sp_key: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             uid_field: Optional[pulumi.Input[str]] = None,
-             user_name_field: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_mode is None and 'accessMode' in kwargs:
-            access_mode = kwargs['accessMode']
-        if allowed_principal_ids is None and 'allowedPrincipalIds' in kwargs:
-            allowed_principal_ids = kwargs['allowedPrincipalIds']
-        if display_name_field is None and 'displayNameField' in kwargs:
-            display_name_field = kwargs['displayNameField']
-        if groups_field is None and 'groupsField' in kwargs:
-            groups_field = kwargs['groupsField']
-        if idp_metadata_content is None and 'idpMetadataContent' in kwargs:
-            idp_metadata_content = kwargs['idpMetadataContent']
-        if rancher_api_host is None and 'rancherApiHost' in kwargs:
-            rancher_api_host = kwargs['rancherApiHost']
-        if sp_cert is None and 'spCert' in kwargs:
-            sp_cert = kwargs['spCert']
-        if sp_key is None and 'spKey' in kwargs:
-            sp_key = kwargs['spKey']
-        if uid_field is None and 'uidField' in kwargs:
-            uid_field = kwargs['uidField']
-        if user_name_field is None and 'userNameField' in kwargs:
-            user_name_field = kwargs['userNameField']
-
         if access_mode is not None:
-            _setter("access_mode", access_mode)
+            pulumi.set(__self__, "access_mode", access_mode)
         if allowed_principal_ids is not None:
-            _setter("allowed_principal_ids", allowed_principal_ids)
+            pulumi.set(__self__, "allowed_principal_ids", allowed_principal_ids)
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if display_name_field is not None:
-            _setter("display_name_field", display_name_field)
+            pulumi.set(__self__, "display_name_field", display_name_field)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if groups_field is not None:
-            _setter("groups_field", groups_field)
+            pulumi.set(__self__, "groups_field", groups_field)
         if idp_metadata_content is not None:
-            _setter("idp_metadata_content", idp_metadata_content)
+            pulumi.set(__self__, "idp_metadata_content", idp_metadata_content)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if rancher_api_host is not None:
-            _setter("rancher_api_host", rancher_api_host)
+            pulumi.set(__self__, "rancher_api_host", rancher_api_host)
         if sp_cert is not None:
-            _setter("sp_cert", sp_cert)
+            pulumi.set(__self__, "sp_cert", sp_cert)
         if sp_key is not None:
-            _setter("sp_key", sp_key)
+            pulumi.set(__self__, "sp_key", sp_key)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if uid_field is not None:
-            _setter("uid_field", uid_field)
+            pulumi.set(__self__, "uid_field", uid_field)
         if user_name_field is not None:
-            _setter("user_name_field", user_name_field)
+            pulumi.set(__self__, "user_name_field", user_name_field)
 
     @property
     @pulumi.getter(name="accessMode")
@@ -694,10 +564,6 @@ class AuthConfigOkta(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AuthConfigOktaArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

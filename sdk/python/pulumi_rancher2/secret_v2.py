@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['SecretV2Args', 'SecretV2']
@@ -33,51 +33,20 @@ class SecretV2Args:
         :param pulumi.Input[str] namespace: The namespaces of the secret v2. Default: `default` (string)
         :param pulumi.Input[str] type: The type of the k8s secret, used to facilitate programmatic handling of secret data, [More info](https://github.com/kubernetes/api/blob/release-1.20/core/v1/types.go#L5772) about k8s secret types and expected format.  Default: `Opaque` (string)
         """
-        SecretV2Args._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster_id=cluster_id,
-            data=data,
-            annotations=annotations,
-            immutable=immutable,
-            labels=labels,
-            name=name,
-            namespace=namespace,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster_id: Optional[pulumi.Input[str]] = None,
-             data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             immutable: Optional[pulumi.Input[bool]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             namespace: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if cluster_id is None:
-            raise TypeError("Missing 'cluster_id' argument")
-        if data is None:
-            raise TypeError("Missing 'data' argument")
-
-        _setter("cluster_id", cluster_id)
-        _setter("data", data)
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "data", data)
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if immutable is not None:
-            _setter("immutable", immutable)
+            pulumi.set(__self__, "immutable", immutable)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if namespace is not None:
-            _setter("namespace", namespace)
+            pulumi.set(__self__, "namespace", namespace)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -200,55 +169,24 @@ class _SecretV2State:
         :param pulumi.Input[str] resource_version: (Computed) The k8s resource version (string)
         :param pulumi.Input[str] type: The type of the k8s secret, used to facilitate programmatic handling of secret data, [More info](https://github.com/kubernetes/api/blob/release-1.20/core/v1/types.go#L5772) about k8s secret types and expected format.  Default: `Opaque` (string)
         """
-        _SecretV2State._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            annotations=annotations,
-            cluster_id=cluster_id,
-            data=data,
-            immutable=immutable,
-            labels=labels,
-            name=name,
-            namespace=namespace,
-            resource_version=resource_version,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             cluster_id: Optional[pulumi.Input[str]] = None,
-             data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             immutable: Optional[pulumi.Input[bool]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             namespace: Optional[pulumi.Input[str]] = None,
-             resource_version: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if resource_version is None and 'resourceVersion' in kwargs:
-            resource_version = kwargs['resourceVersion']
-
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if cluster_id is not None:
-            _setter("cluster_id", cluster_id)
+            pulumi.set(__self__, "cluster_id", cluster_id)
         if data is not None:
-            _setter("data", data)
+            pulumi.set(__self__, "data", data)
         if immutable is not None:
-            _setter("immutable", immutable)
+            pulumi.set(__self__, "immutable", immutable)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if namespace is not None:
-            _setter("namespace", namespace)
+            pulumi.set(__self__, "namespace", namespace)
         if resource_version is not None:
-            _setter("resource_version", resource_version)
+            pulumi.set(__self__, "resource_version", resource_version)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -422,10 +360,6 @@ class SecretV2(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SecretV2Args._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

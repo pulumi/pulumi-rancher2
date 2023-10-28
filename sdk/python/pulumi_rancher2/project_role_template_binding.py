@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProjectRoleTemplateBindingArgs', 'ProjectRoleTemplateBinding']
@@ -37,65 +37,22 @@ class ProjectRoleTemplateBindingArgs:
         :param pulumi.Input[str] user_id: The user ID to assign project role template binding (string)
         :param pulumi.Input[str] user_principal_id: The user_principal ID to assign project role template binding (string)
         """
-        ProjectRoleTemplateBindingArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            project_id=project_id,
-            role_template_id=role_template_id,
-            annotations=annotations,
-            group_id=group_id,
-            group_principal_id=group_principal_id,
-            labels=labels,
-            name=name,
-            user_id=user_id,
-            user_principal_id=user_principal_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             project_id: Optional[pulumi.Input[str]] = None,
-             role_template_id: Optional[pulumi.Input[str]] = None,
-             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             group_id: Optional[pulumi.Input[str]] = None,
-             group_principal_id: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             user_id: Optional[pulumi.Input[str]] = None,
-             user_principal_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if project_id is None:
-            raise TypeError("Missing 'project_id' argument")
-        if role_template_id is None and 'roleTemplateId' in kwargs:
-            role_template_id = kwargs['roleTemplateId']
-        if role_template_id is None:
-            raise TypeError("Missing 'role_template_id' argument")
-        if group_id is None and 'groupId' in kwargs:
-            group_id = kwargs['groupId']
-        if group_principal_id is None and 'groupPrincipalId' in kwargs:
-            group_principal_id = kwargs['groupPrincipalId']
-        if user_id is None and 'userId' in kwargs:
-            user_id = kwargs['userId']
-        if user_principal_id is None and 'userPrincipalId' in kwargs:
-            user_principal_id = kwargs['userPrincipalId']
-
-        _setter("project_id", project_id)
-        _setter("role_template_id", role_template_id)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "role_template_id", role_template_id)
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if group_id is not None:
-            _setter("group_id", group_id)
+            pulumi.set(__self__, "group_id", group_id)
         if group_principal_id is not None:
-            _setter("group_principal_id", group_principal_id)
+            pulumi.set(__self__, "group_principal_id", group_principal_id)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if user_id is not None:
-            _setter("user_id", user_id)
+            pulumi.set(__self__, "user_id", user_id)
         if user_principal_id is not None:
-            _setter("user_principal_id", user_principal_id)
+            pulumi.set(__self__, "user_principal_id", user_principal_id)
 
     @property
     @pulumi.getter(name="projectId")
@@ -234,63 +191,24 @@ class _ProjectRoleTemplateBindingState:
         :param pulumi.Input[str] user_id: The user ID to assign project role template binding (string)
         :param pulumi.Input[str] user_principal_id: The user_principal ID to assign project role template binding (string)
         """
-        _ProjectRoleTemplateBindingState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            annotations=annotations,
-            group_id=group_id,
-            group_principal_id=group_principal_id,
-            labels=labels,
-            name=name,
-            project_id=project_id,
-            role_template_id=role_template_id,
-            user_id=user_id,
-            user_principal_id=user_principal_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             group_id: Optional[pulumi.Input[str]] = None,
-             group_principal_id: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project_id: Optional[pulumi.Input[str]] = None,
-             role_template_id: Optional[pulumi.Input[str]] = None,
-             user_id: Optional[pulumi.Input[str]] = None,
-             user_principal_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if group_id is None and 'groupId' in kwargs:
-            group_id = kwargs['groupId']
-        if group_principal_id is None and 'groupPrincipalId' in kwargs:
-            group_principal_id = kwargs['groupPrincipalId']
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if role_template_id is None and 'roleTemplateId' in kwargs:
-            role_template_id = kwargs['roleTemplateId']
-        if user_id is None and 'userId' in kwargs:
-            user_id = kwargs['userId']
-        if user_principal_id is None and 'userPrincipalId' in kwargs:
-            user_principal_id = kwargs['userPrincipalId']
-
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if group_id is not None:
-            _setter("group_id", group_id)
+            pulumi.set(__self__, "group_id", group_id)
         if group_principal_id is not None:
-            _setter("group_principal_id", group_principal_id)
+            pulumi.set(__self__, "group_principal_id", group_principal_id)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
         if role_template_id is not None:
-            _setter("role_template_id", role_template_id)
+            pulumi.set(__self__, "role_template_id", role_template_id)
         if user_id is not None:
-            _setter("user_id", user_id)
+            pulumi.set(__self__, "user_id", user_id)
         if user_principal_id is not None:
-            _setter("user_principal_id", user_principal_id)
+            pulumi.set(__self__, "user_principal_id", user_principal_id)
 
     @property
     @pulumi.getter
@@ -496,10 +414,6 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ProjectRoleTemplateBindingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

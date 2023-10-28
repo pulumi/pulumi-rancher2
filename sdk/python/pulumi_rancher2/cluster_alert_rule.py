@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -47,91 +47,32 @@ class ClusterAlertRuleArgs:
         :param pulumi.Input[str] severity: The cluster alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
         :param pulumi.Input['ClusterAlertRuleSystemServiceRuleArgs'] system_service_rule: The cluster alert rule system service rule. ConflictsWith: `"event_rule", "metric_rule", "node_rule"` (list Maxitems:1)
         """
-        ClusterAlertRuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster_id=cluster_id,
-            group_id=group_id,
-            annotations=annotations,
-            event_rule=event_rule,
-            group_interval_seconds=group_interval_seconds,
-            group_wait_seconds=group_wait_seconds,
-            inherited=inherited,
-            labels=labels,
-            metric_rule=metric_rule,
-            name=name,
-            node_rule=node_rule,
-            repeat_interval_seconds=repeat_interval_seconds,
-            severity=severity,
-            system_service_rule=system_service_rule,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster_id: Optional[pulumi.Input[str]] = None,
-             group_id: Optional[pulumi.Input[str]] = None,
-             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             event_rule: Optional[pulumi.Input['ClusterAlertRuleEventRuleArgs']] = None,
-             group_interval_seconds: Optional[pulumi.Input[int]] = None,
-             group_wait_seconds: Optional[pulumi.Input[int]] = None,
-             inherited: Optional[pulumi.Input[bool]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             metric_rule: Optional[pulumi.Input['ClusterAlertRuleMetricRuleArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             node_rule: Optional[pulumi.Input['ClusterAlertRuleNodeRuleArgs']] = None,
-             repeat_interval_seconds: Optional[pulumi.Input[int]] = None,
-             severity: Optional[pulumi.Input[str]] = None,
-             system_service_rule: Optional[pulumi.Input['ClusterAlertRuleSystemServiceRuleArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if cluster_id is None:
-            raise TypeError("Missing 'cluster_id' argument")
-        if group_id is None and 'groupId' in kwargs:
-            group_id = kwargs['groupId']
-        if group_id is None:
-            raise TypeError("Missing 'group_id' argument")
-        if event_rule is None and 'eventRule' in kwargs:
-            event_rule = kwargs['eventRule']
-        if group_interval_seconds is None and 'groupIntervalSeconds' in kwargs:
-            group_interval_seconds = kwargs['groupIntervalSeconds']
-        if group_wait_seconds is None and 'groupWaitSeconds' in kwargs:
-            group_wait_seconds = kwargs['groupWaitSeconds']
-        if metric_rule is None and 'metricRule' in kwargs:
-            metric_rule = kwargs['metricRule']
-        if node_rule is None and 'nodeRule' in kwargs:
-            node_rule = kwargs['nodeRule']
-        if repeat_interval_seconds is None and 'repeatIntervalSeconds' in kwargs:
-            repeat_interval_seconds = kwargs['repeatIntervalSeconds']
-        if system_service_rule is None and 'systemServiceRule' in kwargs:
-            system_service_rule = kwargs['systemServiceRule']
-
-        _setter("cluster_id", cluster_id)
-        _setter("group_id", group_id)
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "group_id", group_id)
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if event_rule is not None:
-            _setter("event_rule", event_rule)
+            pulumi.set(__self__, "event_rule", event_rule)
         if group_interval_seconds is not None:
-            _setter("group_interval_seconds", group_interval_seconds)
+            pulumi.set(__self__, "group_interval_seconds", group_interval_seconds)
         if group_wait_seconds is not None:
-            _setter("group_wait_seconds", group_wait_seconds)
+            pulumi.set(__self__, "group_wait_seconds", group_wait_seconds)
         if inherited is not None:
-            _setter("inherited", inherited)
+            pulumi.set(__self__, "inherited", inherited)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if metric_rule is not None:
-            _setter("metric_rule", metric_rule)
+            pulumi.set(__self__, "metric_rule", metric_rule)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if node_rule is not None:
-            _setter("node_rule", node_rule)
+            pulumi.set(__self__, "node_rule", node_rule)
         if repeat_interval_seconds is not None:
-            _setter("repeat_interval_seconds", repeat_interval_seconds)
+            pulumi.set(__self__, "repeat_interval_seconds", repeat_interval_seconds)
         if severity is not None:
-            _setter("severity", severity)
+            pulumi.set(__self__, "severity", severity)
         if system_service_rule is not None:
-            _setter("system_service_rule", system_service_rule)
+            pulumi.set(__self__, "system_service_rule", system_service_rule)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -336,89 +277,34 @@ class _ClusterAlertRuleState:
         :param pulumi.Input[str] severity: The cluster alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
         :param pulumi.Input['ClusterAlertRuleSystemServiceRuleArgs'] system_service_rule: The cluster alert rule system service rule. ConflictsWith: `"event_rule", "metric_rule", "node_rule"` (list Maxitems:1)
         """
-        _ClusterAlertRuleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            annotations=annotations,
-            cluster_id=cluster_id,
-            event_rule=event_rule,
-            group_id=group_id,
-            group_interval_seconds=group_interval_seconds,
-            group_wait_seconds=group_wait_seconds,
-            inherited=inherited,
-            labels=labels,
-            metric_rule=metric_rule,
-            name=name,
-            node_rule=node_rule,
-            repeat_interval_seconds=repeat_interval_seconds,
-            severity=severity,
-            system_service_rule=system_service_rule,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             cluster_id: Optional[pulumi.Input[str]] = None,
-             event_rule: Optional[pulumi.Input['ClusterAlertRuleEventRuleArgs']] = None,
-             group_id: Optional[pulumi.Input[str]] = None,
-             group_interval_seconds: Optional[pulumi.Input[int]] = None,
-             group_wait_seconds: Optional[pulumi.Input[int]] = None,
-             inherited: Optional[pulumi.Input[bool]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             metric_rule: Optional[pulumi.Input['ClusterAlertRuleMetricRuleArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             node_rule: Optional[pulumi.Input['ClusterAlertRuleNodeRuleArgs']] = None,
-             repeat_interval_seconds: Optional[pulumi.Input[int]] = None,
-             severity: Optional[pulumi.Input[str]] = None,
-             system_service_rule: Optional[pulumi.Input['ClusterAlertRuleSystemServiceRuleArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if event_rule is None and 'eventRule' in kwargs:
-            event_rule = kwargs['eventRule']
-        if group_id is None and 'groupId' in kwargs:
-            group_id = kwargs['groupId']
-        if group_interval_seconds is None and 'groupIntervalSeconds' in kwargs:
-            group_interval_seconds = kwargs['groupIntervalSeconds']
-        if group_wait_seconds is None and 'groupWaitSeconds' in kwargs:
-            group_wait_seconds = kwargs['groupWaitSeconds']
-        if metric_rule is None and 'metricRule' in kwargs:
-            metric_rule = kwargs['metricRule']
-        if node_rule is None and 'nodeRule' in kwargs:
-            node_rule = kwargs['nodeRule']
-        if repeat_interval_seconds is None and 'repeatIntervalSeconds' in kwargs:
-            repeat_interval_seconds = kwargs['repeatIntervalSeconds']
-        if system_service_rule is None and 'systemServiceRule' in kwargs:
-            system_service_rule = kwargs['systemServiceRule']
-
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if cluster_id is not None:
-            _setter("cluster_id", cluster_id)
+            pulumi.set(__self__, "cluster_id", cluster_id)
         if event_rule is not None:
-            _setter("event_rule", event_rule)
+            pulumi.set(__self__, "event_rule", event_rule)
         if group_id is not None:
-            _setter("group_id", group_id)
+            pulumi.set(__self__, "group_id", group_id)
         if group_interval_seconds is not None:
-            _setter("group_interval_seconds", group_interval_seconds)
+            pulumi.set(__self__, "group_interval_seconds", group_interval_seconds)
         if group_wait_seconds is not None:
-            _setter("group_wait_seconds", group_wait_seconds)
+            pulumi.set(__self__, "group_wait_seconds", group_wait_seconds)
         if inherited is not None:
-            _setter("inherited", inherited)
+            pulumi.set(__self__, "inherited", inherited)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if metric_rule is not None:
-            _setter("metric_rule", metric_rule)
+            pulumi.set(__self__, "metric_rule", metric_rule)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if node_rule is not None:
-            _setter("node_rule", node_rule)
+            pulumi.set(__self__, "node_rule", node_rule)
         if repeat_interval_seconds is not None:
-            _setter("repeat_interval_seconds", repeat_interval_seconds)
+            pulumi.set(__self__, "repeat_interval_seconds", repeat_interval_seconds)
         if severity is not None:
-            _setter("severity", severity)
+            pulumi.set(__self__, "severity", severity)
         if system_service_rule is not None:
-            _setter("system_service_rule", system_service_rule)
+            pulumi.set(__self__, "system_service_rule", system_service_rule)
 
     @property
     @pulumi.getter
@@ -704,10 +590,6 @@ class ClusterAlertRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ClusterAlertRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -740,7 +622,6 @@ class ClusterAlertRule(pulumi.CustomResource):
             if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
             __props__.__dict__["cluster_id"] = cluster_id
-            event_rule = _utilities.configure(event_rule, ClusterAlertRuleEventRuleArgs, True)
             __props__.__dict__["event_rule"] = event_rule
             if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
@@ -749,14 +630,11 @@ class ClusterAlertRule(pulumi.CustomResource):
             __props__.__dict__["group_wait_seconds"] = group_wait_seconds
             __props__.__dict__["inherited"] = inherited
             __props__.__dict__["labels"] = labels
-            metric_rule = _utilities.configure(metric_rule, ClusterAlertRuleMetricRuleArgs, True)
             __props__.__dict__["metric_rule"] = metric_rule
             __props__.__dict__["name"] = name
-            node_rule = _utilities.configure(node_rule, ClusterAlertRuleNodeRuleArgs, True)
             __props__.__dict__["node_rule"] = node_rule
             __props__.__dict__["repeat_interval_seconds"] = repeat_interval_seconds
             __props__.__dict__["severity"] = severity
-            system_service_rule = _utilities.configure(system_service_rule, ClusterAlertRuleSystemServiceRuleArgs, True)
             __props__.__dict__["system_service_rule"] = system_service_rule
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="rancher2:index/clusterAlterRule:ClusterAlterRule")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)

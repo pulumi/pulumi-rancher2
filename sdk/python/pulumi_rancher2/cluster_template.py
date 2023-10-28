@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -31,41 +31,18 @@ class ClusterTemplateArgs:
         :param pulumi.Input[str] name: The cluster template name (string)
         :param pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionArgs']]] template_revisions: Cluster template revisions (list)
         """
-        ClusterTemplateArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            annotations=annotations,
-            description=description,
-            labels=labels,
-            members=members,
-            name=name,
-            template_revisions=template_revisions,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             members: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateMemberArgs']]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             template_revisions: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if template_revisions is None and 'templateRevisions' in kwargs:
-            template_revisions = kwargs['templateRevisions']
-
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if members is not None:
-            _setter("members", members)
+            pulumi.set(__self__, "members", members)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if template_revisions is not None:
-            _setter("template_revisions", template_revisions)
+            pulumi.set(__self__, "template_revisions", template_revisions)
 
     @property
     @pulumi.getter
@@ -160,47 +137,20 @@ class _ClusterTemplateState:
         :param pulumi.Input[str] name: The cluster template name (string)
         :param pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionArgs']]] template_revisions: Cluster template revisions (list)
         """
-        _ClusterTemplateState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            annotations=annotations,
-            default_revision_id=default_revision_id,
-            description=description,
-            labels=labels,
-            members=members,
-            name=name,
-            template_revisions=template_revisions,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             default_revision_id: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             members: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateMemberArgs']]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             template_revisions: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if default_revision_id is None and 'defaultRevisionId' in kwargs:
-            default_revision_id = kwargs['defaultRevisionId']
-        if template_revisions is None and 'templateRevisions' in kwargs:
-            template_revisions = kwargs['templateRevisions']
-
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if default_revision_id is not None:
-            _setter("default_revision_id", default_revision_id)
+            pulumi.set(__self__, "default_revision_id", default_revision_id)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if members is not None:
-            _setter("members", members)
+            pulumi.set(__self__, "members", members)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if template_revisions is not None:
-            _setter("template_revisions", template_revisions)
+            pulumi.set(__self__, "template_revisions", template_revisions)
 
     @property
     @pulumi.getter
@@ -486,10 +436,6 @@ class ClusterTemplate(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ClusterTemplateArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
