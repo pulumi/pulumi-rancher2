@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -43,30 +43,67 @@ class RoleTemplateArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] role_template_ids: Inherit role template IDs (list)
         :param pulumi.Input[Sequence[pulumi.Input['RoleTemplateRuleArgs']]] rules: Role template policy rules (list)
         """
+        RoleTemplateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            administrative=administrative,
+            annotations=annotations,
+            context=context,
+            default_role=default_role,
+            description=description,
+            external=external,
+            hidden=hidden,
+            labels=labels,
+            locked=locked,
+            name=name,
+            role_template_ids=role_template_ids,
+            rules=rules,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             administrative: Optional[pulumi.Input[bool]] = None,
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             context: Optional[pulumi.Input[str]] = None,
+             default_role: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             external: Optional[pulumi.Input[bool]] = None,
+             hidden: Optional[pulumi.Input[bool]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             locked: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             role_template_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             rules: Optional[pulumi.Input[Sequence[pulumi.Input['RoleTemplateRuleArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if default_role is None and 'defaultRole' in kwargs:
+            default_role = kwargs['defaultRole']
+        if role_template_ids is None and 'roleTemplateIds' in kwargs:
+            role_template_ids = kwargs['roleTemplateIds']
+
         if administrative is not None:
-            pulumi.set(__self__, "administrative", administrative)
+            _setter("administrative", administrative)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if context is not None:
-            pulumi.set(__self__, "context", context)
+            _setter("context", context)
         if default_role is not None:
-            pulumi.set(__self__, "default_role", default_role)
+            _setter("default_role", default_role)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if external is not None:
-            pulumi.set(__self__, "external", external)
+            _setter("external", external)
         if hidden is not None:
-            pulumi.set(__self__, "hidden", hidden)
+            _setter("hidden", hidden)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if locked is not None:
-            pulumi.set(__self__, "locked", locked)
+            _setter("locked", locked)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if role_template_ids is not None:
-            pulumi.set(__self__, "role_template_ids", role_template_ids)
+            _setter("role_template_ids", role_template_ids)
         if rules is not None:
-            pulumi.set(__self__, "rules", rules)
+            _setter("rules", rules)
 
     @property
     @pulumi.getter
@@ -245,32 +282,71 @@ class _RoleTemplateState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] role_template_ids: Inherit role template IDs (list)
         :param pulumi.Input[Sequence[pulumi.Input['RoleTemplateRuleArgs']]] rules: Role template policy rules (list)
         """
+        _RoleTemplateState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            administrative=administrative,
+            annotations=annotations,
+            builtin=builtin,
+            context=context,
+            default_role=default_role,
+            description=description,
+            external=external,
+            hidden=hidden,
+            labels=labels,
+            locked=locked,
+            name=name,
+            role_template_ids=role_template_ids,
+            rules=rules,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             administrative: Optional[pulumi.Input[bool]] = None,
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             builtin: Optional[pulumi.Input[bool]] = None,
+             context: Optional[pulumi.Input[str]] = None,
+             default_role: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             external: Optional[pulumi.Input[bool]] = None,
+             hidden: Optional[pulumi.Input[bool]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             locked: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             role_template_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             rules: Optional[pulumi.Input[Sequence[pulumi.Input['RoleTemplateRuleArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if default_role is None and 'defaultRole' in kwargs:
+            default_role = kwargs['defaultRole']
+        if role_template_ids is None and 'roleTemplateIds' in kwargs:
+            role_template_ids = kwargs['roleTemplateIds']
+
         if administrative is not None:
-            pulumi.set(__self__, "administrative", administrative)
+            _setter("administrative", administrative)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if builtin is not None:
-            pulumi.set(__self__, "builtin", builtin)
+            _setter("builtin", builtin)
         if context is not None:
-            pulumi.set(__self__, "context", context)
+            _setter("context", context)
         if default_role is not None:
-            pulumi.set(__self__, "default_role", default_role)
+            _setter("default_role", default_role)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if external is not None:
-            pulumi.set(__self__, "external", external)
+            _setter("external", external)
         if hidden is not None:
-            pulumi.set(__self__, "hidden", hidden)
+            _setter("hidden", hidden)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if locked is not None:
-            pulumi.set(__self__, "locked", locked)
+            _setter("locked", locked)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if role_template_ids is not None:
-            pulumi.set(__self__, "role_template_ids", role_template_ids)
+            _setter("role_template_ids", role_template_ids)
         if rules is not None:
-            pulumi.set(__self__, "rules", rules)
+            _setter("rules", rules)
 
     @property
     @pulumi.getter
@@ -572,6 +648,10 @@ class RoleTemplate(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RoleTemplateArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

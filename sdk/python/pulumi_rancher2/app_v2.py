@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['AppV2Args', 'AppV2']
@@ -47,32 +47,97 @@ class AppV2Args:
         :param pulumi.Input[str] values: The app v2 values yaml. Yaml format is required (string)
         :param pulumi.Input[bool] wait: Wait until app is deployed. Default: `true` (bool)
         """
-        pulumi.set(__self__, "chart_name", chart_name)
-        pulumi.set(__self__, "cluster_id", cluster_id)
-        pulumi.set(__self__, "namespace", namespace)
-        pulumi.set(__self__, "repo_name", repo_name)
+        AppV2Args._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            chart_name=chart_name,
+            cluster_id=cluster_id,
+            namespace=namespace,
+            repo_name=repo_name,
+            annotations=annotations,
+            chart_version=chart_version,
+            cleanup_on_fail=cleanup_on_fail,
+            disable_hooks=disable_hooks,
+            disable_open_api_validation=disable_open_api_validation,
+            force_upgrade=force_upgrade,
+            labels=labels,
+            name=name,
+            project_id=project_id,
+            values=values,
+            wait=wait,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             chart_name: Optional[pulumi.Input[str]] = None,
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             repo_name: Optional[pulumi.Input[str]] = None,
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             chart_version: Optional[pulumi.Input[str]] = None,
+             cleanup_on_fail: Optional[pulumi.Input[bool]] = None,
+             disable_hooks: Optional[pulumi.Input[bool]] = None,
+             disable_open_api_validation: Optional[pulumi.Input[bool]] = None,
+             force_upgrade: Optional[pulumi.Input[bool]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             values: Optional[pulumi.Input[str]] = None,
+             wait: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if chart_name is None and 'chartName' in kwargs:
+            chart_name = kwargs['chartName']
+        if chart_name is None:
+            raise TypeError("Missing 'chart_name' argument")
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if namespace is None:
+            raise TypeError("Missing 'namespace' argument")
+        if repo_name is None and 'repoName' in kwargs:
+            repo_name = kwargs['repoName']
+        if repo_name is None:
+            raise TypeError("Missing 'repo_name' argument")
+        if chart_version is None and 'chartVersion' in kwargs:
+            chart_version = kwargs['chartVersion']
+        if cleanup_on_fail is None and 'cleanupOnFail' in kwargs:
+            cleanup_on_fail = kwargs['cleanupOnFail']
+        if disable_hooks is None and 'disableHooks' in kwargs:
+            disable_hooks = kwargs['disableHooks']
+        if disable_open_api_validation is None and 'disableOpenApiValidation' in kwargs:
+            disable_open_api_validation = kwargs['disableOpenApiValidation']
+        if force_upgrade is None and 'forceUpgrade' in kwargs:
+            force_upgrade = kwargs['forceUpgrade']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+
+        _setter("chart_name", chart_name)
+        _setter("cluster_id", cluster_id)
+        _setter("namespace", namespace)
+        _setter("repo_name", repo_name)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if chart_version is not None:
-            pulumi.set(__self__, "chart_version", chart_version)
+            _setter("chart_version", chart_version)
         if cleanup_on_fail is not None:
-            pulumi.set(__self__, "cleanup_on_fail", cleanup_on_fail)
+            _setter("cleanup_on_fail", cleanup_on_fail)
         if disable_hooks is not None:
-            pulumi.set(__self__, "disable_hooks", disable_hooks)
+            _setter("disable_hooks", disable_hooks)
         if disable_open_api_validation is not None:
-            pulumi.set(__self__, "disable_open_api_validation", disable_open_api_validation)
+            _setter("disable_open_api_validation", disable_open_api_validation)
         if force_upgrade is not None:
-            pulumi.set(__self__, "force_upgrade", force_upgrade)
+            _setter("force_upgrade", force_upgrade)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if values is not None:
-            pulumi.set(__self__, "values", values)
+            _setter("values", values)
         if wait is not None:
-            pulumi.set(__self__, "wait", wait)
+            _setter("wait", wait)
 
     @property
     @pulumi.getter(name="chartName")
@@ -299,42 +364,111 @@ class _AppV2State:
         :param pulumi.Input[str] values: The app v2 values yaml. Yaml format is required (string)
         :param pulumi.Input[bool] wait: Wait until app is deployed. Default: `true` (bool)
         """
+        _AppV2State._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            annotations=annotations,
+            chart_name=chart_name,
+            chart_version=chart_version,
+            cleanup_on_fail=cleanup_on_fail,
+            cluster_id=cluster_id,
+            cluster_name=cluster_name,
+            deployment_values=deployment_values,
+            disable_hooks=disable_hooks,
+            disable_open_api_validation=disable_open_api_validation,
+            force_upgrade=force_upgrade,
+            labels=labels,
+            name=name,
+            namespace=namespace,
+            project_id=project_id,
+            repo_name=repo_name,
+            system_default_registry=system_default_registry,
+            values=values,
+            wait=wait,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             chart_name: Optional[pulumi.Input[str]] = None,
+             chart_version: Optional[pulumi.Input[str]] = None,
+             cleanup_on_fail: Optional[pulumi.Input[bool]] = None,
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             cluster_name: Optional[pulumi.Input[str]] = None,
+             deployment_values: Optional[pulumi.Input[str]] = None,
+             disable_hooks: Optional[pulumi.Input[bool]] = None,
+             disable_open_api_validation: Optional[pulumi.Input[bool]] = None,
+             force_upgrade: Optional[pulumi.Input[bool]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             repo_name: Optional[pulumi.Input[str]] = None,
+             system_default_registry: Optional[pulumi.Input[str]] = None,
+             values: Optional[pulumi.Input[str]] = None,
+             wait: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if chart_name is None and 'chartName' in kwargs:
+            chart_name = kwargs['chartName']
+        if chart_version is None and 'chartVersion' in kwargs:
+            chart_version = kwargs['chartVersion']
+        if cleanup_on_fail is None and 'cleanupOnFail' in kwargs:
+            cleanup_on_fail = kwargs['cleanupOnFail']
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if cluster_name is None and 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if deployment_values is None and 'deploymentValues' in kwargs:
+            deployment_values = kwargs['deploymentValues']
+        if disable_hooks is None and 'disableHooks' in kwargs:
+            disable_hooks = kwargs['disableHooks']
+        if disable_open_api_validation is None and 'disableOpenApiValidation' in kwargs:
+            disable_open_api_validation = kwargs['disableOpenApiValidation']
+        if force_upgrade is None and 'forceUpgrade' in kwargs:
+            force_upgrade = kwargs['forceUpgrade']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if repo_name is None and 'repoName' in kwargs:
+            repo_name = kwargs['repoName']
+        if system_default_registry is None and 'systemDefaultRegistry' in kwargs:
+            system_default_registry = kwargs['systemDefaultRegistry']
+
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if chart_name is not None:
-            pulumi.set(__self__, "chart_name", chart_name)
+            _setter("chart_name", chart_name)
         if chart_version is not None:
-            pulumi.set(__self__, "chart_version", chart_version)
+            _setter("chart_version", chart_version)
         if cleanup_on_fail is not None:
-            pulumi.set(__self__, "cleanup_on_fail", cleanup_on_fail)
+            _setter("cleanup_on_fail", cleanup_on_fail)
         if cluster_id is not None:
-            pulumi.set(__self__, "cluster_id", cluster_id)
+            _setter("cluster_id", cluster_id)
         if cluster_name is not None:
-            pulumi.set(__self__, "cluster_name", cluster_name)
+            _setter("cluster_name", cluster_name)
         if deployment_values is not None:
-            pulumi.set(__self__, "deployment_values", deployment_values)
+            _setter("deployment_values", deployment_values)
         if disable_hooks is not None:
-            pulumi.set(__self__, "disable_hooks", disable_hooks)
+            _setter("disable_hooks", disable_hooks)
         if disable_open_api_validation is not None:
-            pulumi.set(__self__, "disable_open_api_validation", disable_open_api_validation)
+            _setter("disable_open_api_validation", disable_open_api_validation)
         if force_upgrade is not None:
-            pulumi.set(__self__, "force_upgrade", force_upgrade)
+            _setter("force_upgrade", force_upgrade)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if repo_name is not None:
-            pulumi.set(__self__, "repo_name", repo_name)
+            _setter("repo_name", repo_name)
         if system_default_registry is not None:
-            pulumi.set(__self__, "system_default_registry", system_default_registry)
+            _setter("system_default_registry", system_default_registry)
         if values is not None:
-            pulumi.set(__self__, "values", values)
+            _setter("values", values)
         if wait is not None:
-            pulumi.set(__self__, "wait", wait)
+            _setter("wait", wait)
 
     @property
     @pulumi.getter
@@ -664,6 +798,10 @@ class AppV2(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AppV2Args._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

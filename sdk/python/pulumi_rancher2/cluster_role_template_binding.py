@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ClusterRoleTemplateBindingArgs', 'ClusterRoleTemplateBinding']
@@ -37,22 +37,65 @@ class ClusterRoleTemplateBindingArgs:
         :param pulumi.Input[str] user_id: The user ID to assign cluster role template binding (string)
         :param pulumi.Input[str] user_principal_id: The user_principal ID to assign cluster role template binding (string)
         """
-        pulumi.set(__self__, "cluster_id", cluster_id)
-        pulumi.set(__self__, "role_template_id", role_template_id)
+        ClusterRoleTemplateBindingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_id=cluster_id,
+            role_template_id=role_template_id,
+            annotations=annotations,
+            group_id=group_id,
+            group_principal_id=group_principal_id,
+            labels=labels,
+            name=name,
+            user_id=user_id,
+            user_principal_id=user_principal_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             role_template_id: Optional[pulumi.Input[str]] = None,
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             group_id: Optional[pulumi.Input[str]] = None,
+             group_principal_id: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             user_id: Optional[pulumi.Input[str]] = None,
+             user_principal_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if role_template_id is None and 'roleTemplateId' in kwargs:
+            role_template_id = kwargs['roleTemplateId']
+        if role_template_id is None:
+            raise TypeError("Missing 'role_template_id' argument")
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if group_principal_id is None and 'groupPrincipalId' in kwargs:
+            group_principal_id = kwargs['groupPrincipalId']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if user_principal_id is None and 'userPrincipalId' in kwargs:
+            user_principal_id = kwargs['userPrincipalId']
+
+        _setter("cluster_id", cluster_id)
+        _setter("role_template_id", role_template_id)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if group_principal_id is not None:
-            pulumi.set(__self__, "group_principal_id", group_principal_id)
+            _setter("group_principal_id", group_principal_id)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
         if user_principal_id is not None:
-            pulumi.set(__self__, "user_principal_id", user_principal_id)
+            _setter("user_principal_id", user_principal_id)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -191,24 +234,63 @@ class _ClusterRoleTemplateBindingState:
         :param pulumi.Input[str] user_id: The user ID to assign cluster role template binding (string)
         :param pulumi.Input[str] user_principal_id: The user_principal ID to assign cluster role template binding (string)
         """
+        _ClusterRoleTemplateBindingState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            annotations=annotations,
+            cluster_id=cluster_id,
+            group_id=group_id,
+            group_principal_id=group_principal_id,
+            labels=labels,
+            name=name,
+            role_template_id=role_template_id,
+            user_id=user_id,
+            user_principal_id=user_principal_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             group_id: Optional[pulumi.Input[str]] = None,
+             group_principal_id: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             role_template_id: Optional[pulumi.Input[str]] = None,
+             user_id: Optional[pulumi.Input[str]] = None,
+             user_principal_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if group_principal_id is None and 'groupPrincipalId' in kwargs:
+            group_principal_id = kwargs['groupPrincipalId']
+        if role_template_id is None and 'roleTemplateId' in kwargs:
+            role_template_id = kwargs['roleTemplateId']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if user_principal_id is None and 'userPrincipalId' in kwargs:
+            user_principal_id = kwargs['userPrincipalId']
+
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if cluster_id is not None:
-            pulumi.set(__self__, "cluster_id", cluster_id)
+            _setter("cluster_id", cluster_id)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if group_principal_id is not None:
-            pulumi.set(__self__, "group_principal_id", group_principal_id)
+            _setter("group_principal_id", group_principal_id)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if role_template_id is not None:
-            pulumi.set(__self__, "role_template_id", role_template_id)
+            _setter("role_template_id", role_template_id)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
         if user_principal_id is not None:
-            pulumi.set(__self__, "user_principal_id", user_principal_id)
+            _setter("user_principal_id", user_principal_id)
 
     @property
     @pulumi.getter
@@ -414,6 +496,10 @@ class ClusterRoleTemplateBinding(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ClusterRoleTemplateBindingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

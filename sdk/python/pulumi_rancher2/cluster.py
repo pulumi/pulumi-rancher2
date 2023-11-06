@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -87,74 +87,209 @@ class ClusterArgs:
         :param pulumi.Input['ClusterRkeConfigArgs'] rke_config: The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
         :param pulumi.Input[bool] windows_prefered_cluster: Windows preferred cluster. Default: `false` (bool)
         """
+        ClusterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            agent_env_vars=agent_env_vars,
+            aks_config=aks_config,
+            aks_config_v2=aks_config_v2,
+            annotations=annotations,
+            cluster_agent_deployment_customizations=cluster_agent_deployment_customizations,
+            cluster_auth_endpoint=cluster_auth_endpoint,
+            cluster_monitoring_input=cluster_monitoring_input,
+            cluster_template_answers=cluster_template_answers,
+            cluster_template_id=cluster_template_id,
+            cluster_template_questions=cluster_template_questions,
+            cluster_template_revision_id=cluster_template_revision_id,
+            default_pod_security_admission_configuration_template_name=default_pod_security_admission_configuration_template_name,
+            default_pod_security_policy_template_id=default_pod_security_policy_template_id,
+            description=description,
+            desired_agent_image=desired_agent_image,
+            desired_auth_image=desired_auth_image,
+            docker_root_dir=docker_root_dir,
+            driver=driver,
+            eks_config=eks_config,
+            eks_config_v2=eks_config_v2,
+            enable_cluster_alerting=enable_cluster_alerting,
+            enable_cluster_monitoring=enable_cluster_monitoring,
+            enable_network_policy=enable_network_policy,
+            fleet_agent_deployment_customizations=fleet_agent_deployment_customizations,
+            fleet_workspace_name=fleet_workspace_name,
+            gke_config=gke_config,
+            gke_config_v2=gke_config_v2,
+            k3s_config=k3s_config,
+            labels=labels,
+            name=name,
+            oke_config=oke_config,
+            rke2_config=rke2_config,
+            rke_config=rke_config,
+            windows_prefered_cluster=windows_prefered_cluster,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             agent_env_vars: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAgentEnvVarArgs']]]] = None,
+             aks_config: Optional[pulumi.Input['ClusterAksConfigArgs']] = None,
+             aks_config_v2: Optional[pulumi.Input['ClusterAksConfigV2Args']] = None,
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             cluster_agent_deployment_customizations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationArgs']]]] = None,
+             cluster_auth_endpoint: Optional[pulumi.Input['ClusterClusterAuthEndpointArgs']] = None,
+             cluster_monitoring_input: Optional[pulumi.Input['ClusterClusterMonitoringInputArgs']] = None,
+             cluster_template_answers: Optional[pulumi.Input['ClusterClusterTemplateAnswersArgs']] = None,
+             cluster_template_id: Optional[pulumi.Input[str]] = None,
+             cluster_template_questions: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterTemplateQuestionArgs']]]] = None,
+             cluster_template_revision_id: Optional[pulumi.Input[str]] = None,
+             default_pod_security_admission_configuration_template_name: Optional[pulumi.Input[str]] = None,
+             default_pod_security_policy_template_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             desired_agent_image: Optional[pulumi.Input[str]] = None,
+             desired_auth_image: Optional[pulumi.Input[str]] = None,
+             docker_root_dir: Optional[pulumi.Input[str]] = None,
+             driver: Optional[pulumi.Input[str]] = None,
+             eks_config: Optional[pulumi.Input['ClusterEksConfigArgs']] = None,
+             eks_config_v2: Optional[pulumi.Input['ClusterEksConfigV2Args']] = None,
+             enable_cluster_alerting: Optional[pulumi.Input[bool]] = None,
+             enable_cluster_monitoring: Optional[pulumi.Input[bool]] = None,
+             enable_network_policy: Optional[pulumi.Input[bool]] = None,
+             fleet_agent_deployment_customizations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterFleetAgentDeploymentCustomizationArgs']]]] = None,
+             fleet_workspace_name: Optional[pulumi.Input[str]] = None,
+             gke_config: Optional[pulumi.Input['ClusterGkeConfigArgs']] = None,
+             gke_config_v2: Optional[pulumi.Input['ClusterGkeConfigV2Args']] = None,
+             k3s_config: Optional[pulumi.Input['ClusterK3sConfigArgs']] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             oke_config: Optional[pulumi.Input['ClusterOkeConfigArgs']] = None,
+             rke2_config: Optional[pulumi.Input['ClusterRke2ConfigArgs']] = None,
+             rke_config: Optional[pulumi.Input['ClusterRkeConfigArgs']] = None,
+             windows_prefered_cluster: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if agent_env_vars is None and 'agentEnvVars' in kwargs:
+            agent_env_vars = kwargs['agentEnvVars']
+        if aks_config is None and 'aksConfig' in kwargs:
+            aks_config = kwargs['aksConfig']
+        if aks_config_v2 is None and 'aksConfigV2' in kwargs:
+            aks_config_v2 = kwargs['aksConfigV2']
+        if cluster_agent_deployment_customizations is None and 'clusterAgentDeploymentCustomizations' in kwargs:
+            cluster_agent_deployment_customizations = kwargs['clusterAgentDeploymentCustomizations']
+        if cluster_auth_endpoint is None and 'clusterAuthEndpoint' in kwargs:
+            cluster_auth_endpoint = kwargs['clusterAuthEndpoint']
+        if cluster_monitoring_input is None and 'clusterMonitoringInput' in kwargs:
+            cluster_monitoring_input = kwargs['clusterMonitoringInput']
+        if cluster_template_answers is None and 'clusterTemplateAnswers' in kwargs:
+            cluster_template_answers = kwargs['clusterTemplateAnswers']
+        if cluster_template_id is None and 'clusterTemplateId' in kwargs:
+            cluster_template_id = kwargs['clusterTemplateId']
+        if cluster_template_questions is None and 'clusterTemplateQuestions' in kwargs:
+            cluster_template_questions = kwargs['clusterTemplateQuestions']
+        if cluster_template_revision_id is None and 'clusterTemplateRevisionId' in kwargs:
+            cluster_template_revision_id = kwargs['clusterTemplateRevisionId']
+        if default_pod_security_admission_configuration_template_name is None and 'defaultPodSecurityAdmissionConfigurationTemplateName' in kwargs:
+            default_pod_security_admission_configuration_template_name = kwargs['defaultPodSecurityAdmissionConfigurationTemplateName']
+        if default_pod_security_policy_template_id is None and 'defaultPodSecurityPolicyTemplateId' in kwargs:
+            default_pod_security_policy_template_id = kwargs['defaultPodSecurityPolicyTemplateId']
+        if desired_agent_image is None and 'desiredAgentImage' in kwargs:
+            desired_agent_image = kwargs['desiredAgentImage']
+        if desired_auth_image is None and 'desiredAuthImage' in kwargs:
+            desired_auth_image = kwargs['desiredAuthImage']
+        if docker_root_dir is None and 'dockerRootDir' in kwargs:
+            docker_root_dir = kwargs['dockerRootDir']
+        if eks_config is None and 'eksConfig' in kwargs:
+            eks_config = kwargs['eksConfig']
+        if eks_config_v2 is None and 'eksConfigV2' in kwargs:
+            eks_config_v2 = kwargs['eksConfigV2']
+        if enable_cluster_alerting is None and 'enableClusterAlerting' in kwargs:
+            enable_cluster_alerting = kwargs['enableClusterAlerting']
+        if enable_cluster_monitoring is None and 'enableClusterMonitoring' in kwargs:
+            enable_cluster_monitoring = kwargs['enableClusterMonitoring']
+        if enable_network_policy is None and 'enableNetworkPolicy' in kwargs:
+            enable_network_policy = kwargs['enableNetworkPolicy']
+        if fleet_agent_deployment_customizations is None and 'fleetAgentDeploymentCustomizations' in kwargs:
+            fleet_agent_deployment_customizations = kwargs['fleetAgentDeploymentCustomizations']
+        if fleet_workspace_name is None and 'fleetWorkspaceName' in kwargs:
+            fleet_workspace_name = kwargs['fleetWorkspaceName']
+        if gke_config is None and 'gkeConfig' in kwargs:
+            gke_config = kwargs['gkeConfig']
+        if gke_config_v2 is None and 'gkeConfigV2' in kwargs:
+            gke_config_v2 = kwargs['gkeConfigV2']
+        if k3s_config is None and 'k3sConfig' in kwargs:
+            k3s_config = kwargs['k3sConfig']
+        if oke_config is None and 'okeConfig' in kwargs:
+            oke_config = kwargs['okeConfig']
+        if rke2_config is None and 'rke2Config' in kwargs:
+            rke2_config = kwargs['rke2Config']
+        if rke_config is None and 'rkeConfig' in kwargs:
+            rke_config = kwargs['rkeConfig']
+        if windows_prefered_cluster is None and 'windowsPreferedCluster' in kwargs:
+            windows_prefered_cluster = kwargs['windowsPreferedCluster']
+
         if agent_env_vars is not None:
-            pulumi.set(__self__, "agent_env_vars", agent_env_vars)
+            _setter("agent_env_vars", agent_env_vars)
         if aks_config is not None:
-            pulumi.set(__self__, "aks_config", aks_config)
+            _setter("aks_config", aks_config)
         if aks_config_v2 is not None:
-            pulumi.set(__self__, "aks_config_v2", aks_config_v2)
+            _setter("aks_config_v2", aks_config_v2)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if cluster_agent_deployment_customizations is not None:
-            pulumi.set(__self__, "cluster_agent_deployment_customizations", cluster_agent_deployment_customizations)
+            _setter("cluster_agent_deployment_customizations", cluster_agent_deployment_customizations)
         if cluster_auth_endpoint is not None:
-            pulumi.set(__self__, "cluster_auth_endpoint", cluster_auth_endpoint)
+            _setter("cluster_auth_endpoint", cluster_auth_endpoint)
         if cluster_monitoring_input is not None:
-            pulumi.set(__self__, "cluster_monitoring_input", cluster_monitoring_input)
+            _setter("cluster_monitoring_input", cluster_monitoring_input)
         if cluster_template_answers is not None:
-            pulumi.set(__self__, "cluster_template_answers", cluster_template_answers)
+            _setter("cluster_template_answers", cluster_template_answers)
         if cluster_template_id is not None:
-            pulumi.set(__self__, "cluster_template_id", cluster_template_id)
+            _setter("cluster_template_id", cluster_template_id)
         if cluster_template_questions is not None:
-            pulumi.set(__self__, "cluster_template_questions", cluster_template_questions)
+            _setter("cluster_template_questions", cluster_template_questions)
         if cluster_template_revision_id is not None:
-            pulumi.set(__self__, "cluster_template_revision_id", cluster_template_revision_id)
+            _setter("cluster_template_revision_id", cluster_template_revision_id)
         if default_pod_security_admission_configuration_template_name is not None:
-            pulumi.set(__self__, "default_pod_security_admission_configuration_template_name", default_pod_security_admission_configuration_template_name)
+            _setter("default_pod_security_admission_configuration_template_name", default_pod_security_admission_configuration_template_name)
         if default_pod_security_policy_template_id is not None:
-            pulumi.set(__self__, "default_pod_security_policy_template_id", default_pod_security_policy_template_id)
+            _setter("default_pod_security_policy_template_id", default_pod_security_policy_template_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if desired_agent_image is not None:
-            pulumi.set(__self__, "desired_agent_image", desired_agent_image)
+            _setter("desired_agent_image", desired_agent_image)
         if desired_auth_image is not None:
-            pulumi.set(__self__, "desired_auth_image", desired_auth_image)
+            _setter("desired_auth_image", desired_auth_image)
         if docker_root_dir is not None:
-            pulumi.set(__self__, "docker_root_dir", docker_root_dir)
+            _setter("docker_root_dir", docker_root_dir)
         if driver is not None:
-            pulumi.set(__self__, "driver", driver)
+            _setter("driver", driver)
         if eks_config is not None:
-            pulumi.set(__self__, "eks_config", eks_config)
+            _setter("eks_config", eks_config)
         if eks_config_v2 is not None:
-            pulumi.set(__self__, "eks_config_v2", eks_config_v2)
+            _setter("eks_config_v2", eks_config_v2)
         if enable_cluster_alerting is not None:
-            pulumi.set(__self__, "enable_cluster_alerting", enable_cluster_alerting)
+            _setter("enable_cluster_alerting", enable_cluster_alerting)
         if enable_cluster_monitoring is not None:
-            pulumi.set(__self__, "enable_cluster_monitoring", enable_cluster_monitoring)
+            _setter("enable_cluster_monitoring", enable_cluster_monitoring)
         if enable_network_policy is not None:
-            pulumi.set(__self__, "enable_network_policy", enable_network_policy)
+            _setter("enable_network_policy", enable_network_policy)
         if fleet_agent_deployment_customizations is not None:
-            pulumi.set(__self__, "fleet_agent_deployment_customizations", fleet_agent_deployment_customizations)
+            _setter("fleet_agent_deployment_customizations", fleet_agent_deployment_customizations)
         if fleet_workspace_name is not None:
-            pulumi.set(__self__, "fleet_workspace_name", fleet_workspace_name)
+            _setter("fleet_workspace_name", fleet_workspace_name)
         if gke_config is not None:
-            pulumi.set(__self__, "gke_config", gke_config)
+            _setter("gke_config", gke_config)
         if gke_config_v2 is not None:
-            pulumi.set(__self__, "gke_config_v2", gke_config_v2)
+            _setter("gke_config_v2", gke_config_v2)
         if k3s_config is not None:
-            pulumi.set(__self__, "k3s_config", k3s_config)
+            _setter("k3s_config", k3s_config)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if oke_config is not None:
-            pulumi.set(__self__, "oke_config", oke_config)
+            _setter("oke_config", oke_config)
         if rke2_config is not None:
-            pulumi.set(__self__, "rke2_config", rke2_config)
+            _setter("rke2_config", rke2_config)
         if rke_config is not None:
-            pulumi.set(__self__, "rke_config", rke_config)
+            _setter("rke_config", rke_config)
         if windows_prefered_cluster is not None:
-            pulumi.set(__self__, "windows_prefered_cluster", windows_prefered_cluster)
+            _setter("windows_prefered_cluster", windows_prefered_cluster)
 
     @property
     @pulumi.getter(name="agentEnvVars")
@@ -653,91 +788,254 @@ class _ClusterState:
         :param pulumi.Input[str] system_project_id: (Computed) System project ID for the cluster (string)
         :param pulumi.Input[bool] windows_prefered_cluster: Windows preferred cluster. Default: `false` (bool)
         """
+        _ClusterState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            agent_env_vars=agent_env_vars,
+            aks_config=aks_config,
+            aks_config_v2=aks_config_v2,
+            annotations=annotations,
+            ca_cert=ca_cert,
+            cluster_agent_deployment_customizations=cluster_agent_deployment_customizations,
+            cluster_auth_endpoint=cluster_auth_endpoint,
+            cluster_monitoring_input=cluster_monitoring_input,
+            cluster_registration_token=cluster_registration_token,
+            cluster_template_answers=cluster_template_answers,
+            cluster_template_id=cluster_template_id,
+            cluster_template_questions=cluster_template_questions,
+            cluster_template_revision_id=cluster_template_revision_id,
+            default_pod_security_admission_configuration_template_name=default_pod_security_admission_configuration_template_name,
+            default_pod_security_policy_template_id=default_pod_security_policy_template_id,
+            default_project_id=default_project_id,
+            description=description,
+            desired_agent_image=desired_agent_image,
+            desired_auth_image=desired_auth_image,
+            docker_root_dir=docker_root_dir,
+            driver=driver,
+            eks_config=eks_config,
+            eks_config_v2=eks_config_v2,
+            enable_cluster_alerting=enable_cluster_alerting,
+            enable_cluster_istio=enable_cluster_istio,
+            enable_cluster_monitoring=enable_cluster_monitoring,
+            enable_network_policy=enable_network_policy,
+            fleet_agent_deployment_customizations=fleet_agent_deployment_customizations,
+            fleet_workspace_name=fleet_workspace_name,
+            gke_config=gke_config,
+            gke_config_v2=gke_config_v2,
+            istio_enabled=istio_enabled,
+            k3s_config=k3s_config,
+            kube_config=kube_config,
+            labels=labels,
+            name=name,
+            oke_config=oke_config,
+            rke2_config=rke2_config,
+            rke_config=rke_config,
+            system_project_id=system_project_id,
+            windows_prefered_cluster=windows_prefered_cluster,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             agent_env_vars: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAgentEnvVarArgs']]]] = None,
+             aks_config: Optional[pulumi.Input['ClusterAksConfigArgs']] = None,
+             aks_config_v2: Optional[pulumi.Input['ClusterAksConfigV2Args']] = None,
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             ca_cert: Optional[pulumi.Input[str]] = None,
+             cluster_agent_deployment_customizations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationArgs']]]] = None,
+             cluster_auth_endpoint: Optional[pulumi.Input['ClusterClusterAuthEndpointArgs']] = None,
+             cluster_monitoring_input: Optional[pulumi.Input['ClusterClusterMonitoringInputArgs']] = None,
+             cluster_registration_token: Optional[pulumi.Input['ClusterClusterRegistrationTokenArgs']] = None,
+             cluster_template_answers: Optional[pulumi.Input['ClusterClusterTemplateAnswersArgs']] = None,
+             cluster_template_id: Optional[pulumi.Input[str]] = None,
+             cluster_template_questions: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterTemplateQuestionArgs']]]] = None,
+             cluster_template_revision_id: Optional[pulumi.Input[str]] = None,
+             default_pod_security_admission_configuration_template_name: Optional[pulumi.Input[str]] = None,
+             default_pod_security_policy_template_id: Optional[pulumi.Input[str]] = None,
+             default_project_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             desired_agent_image: Optional[pulumi.Input[str]] = None,
+             desired_auth_image: Optional[pulumi.Input[str]] = None,
+             docker_root_dir: Optional[pulumi.Input[str]] = None,
+             driver: Optional[pulumi.Input[str]] = None,
+             eks_config: Optional[pulumi.Input['ClusterEksConfigArgs']] = None,
+             eks_config_v2: Optional[pulumi.Input['ClusterEksConfigV2Args']] = None,
+             enable_cluster_alerting: Optional[pulumi.Input[bool]] = None,
+             enable_cluster_istio: Optional[pulumi.Input[bool]] = None,
+             enable_cluster_monitoring: Optional[pulumi.Input[bool]] = None,
+             enable_network_policy: Optional[pulumi.Input[bool]] = None,
+             fleet_agent_deployment_customizations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterFleetAgentDeploymentCustomizationArgs']]]] = None,
+             fleet_workspace_name: Optional[pulumi.Input[str]] = None,
+             gke_config: Optional[pulumi.Input['ClusterGkeConfigArgs']] = None,
+             gke_config_v2: Optional[pulumi.Input['ClusterGkeConfigV2Args']] = None,
+             istio_enabled: Optional[pulumi.Input[bool]] = None,
+             k3s_config: Optional[pulumi.Input['ClusterK3sConfigArgs']] = None,
+             kube_config: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             oke_config: Optional[pulumi.Input['ClusterOkeConfigArgs']] = None,
+             rke2_config: Optional[pulumi.Input['ClusterRke2ConfigArgs']] = None,
+             rke_config: Optional[pulumi.Input['ClusterRkeConfigArgs']] = None,
+             system_project_id: Optional[pulumi.Input[str]] = None,
+             windows_prefered_cluster: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if agent_env_vars is None and 'agentEnvVars' in kwargs:
+            agent_env_vars = kwargs['agentEnvVars']
+        if aks_config is None and 'aksConfig' in kwargs:
+            aks_config = kwargs['aksConfig']
+        if aks_config_v2 is None and 'aksConfigV2' in kwargs:
+            aks_config_v2 = kwargs['aksConfigV2']
+        if ca_cert is None and 'caCert' in kwargs:
+            ca_cert = kwargs['caCert']
+        if cluster_agent_deployment_customizations is None and 'clusterAgentDeploymentCustomizations' in kwargs:
+            cluster_agent_deployment_customizations = kwargs['clusterAgentDeploymentCustomizations']
+        if cluster_auth_endpoint is None and 'clusterAuthEndpoint' in kwargs:
+            cluster_auth_endpoint = kwargs['clusterAuthEndpoint']
+        if cluster_monitoring_input is None and 'clusterMonitoringInput' in kwargs:
+            cluster_monitoring_input = kwargs['clusterMonitoringInput']
+        if cluster_registration_token is None and 'clusterRegistrationToken' in kwargs:
+            cluster_registration_token = kwargs['clusterRegistrationToken']
+        if cluster_template_answers is None and 'clusterTemplateAnswers' in kwargs:
+            cluster_template_answers = kwargs['clusterTemplateAnswers']
+        if cluster_template_id is None and 'clusterTemplateId' in kwargs:
+            cluster_template_id = kwargs['clusterTemplateId']
+        if cluster_template_questions is None and 'clusterTemplateQuestions' in kwargs:
+            cluster_template_questions = kwargs['clusterTemplateQuestions']
+        if cluster_template_revision_id is None and 'clusterTemplateRevisionId' in kwargs:
+            cluster_template_revision_id = kwargs['clusterTemplateRevisionId']
+        if default_pod_security_admission_configuration_template_name is None and 'defaultPodSecurityAdmissionConfigurationTemplateName' in kwargs:
+            default_pod_security_admission_configuration_template_name = kwargs['defaultPodSecurityAdmissionConfigurationTemplateName']
+        if default_pod_security_policy_template_id is None and 'defaultPodSecurityPolicyTemplateId' in kwargs:
+            default_pod_security_policy_template_id = kwargs['defaultPodSecurityPolicyTemplateId']
+        if default_project_id is None and 'defaultProjectId' in kwargs:
+            default_project_id = kwargs['defaultProjectId']
+        if desired_agent_image is None and 'desiredAgentImage' in kwargs:
+            desired_agent_image = kwargs['desiredAgentImage']
+        if desired_auth_image is None and 'desiredAuthImage' in kwargs:
+            desired_auth_image = kwargs['desiredAuthImage']
+        if docker_root_dir is None and 'dockerRootDir' in kwargs:
+            docker_root_dir = kwargs['dockerRootDir']
+        if eks_config is None and 'eksConfig' in kwargs:
+            eks_config = kwargs['eksConfig']
+        if eks_config_v2 is None and 'eksConfigV2' in kwargs:
+            eks_config_v2 = kwargs['eksConfigV2']
+        if enable_cluster_alerting is None and 'enableClusterAlerting' in kwargs:
+            enable_cluster_alerting = kwargs['enableClusterAlerting']
+        if enable_cluster_istio is None and 'enableClusterIstio' in kwargs:
+            enable_cluster_istio = kwargs['enableClusterIstio']
+        if enable_cluster_monitoring is None and 'enableClusterMonitoring' in kwargs:
+            enable_cluster_monitoring = kwargs['enableClusterMonitoring']
+        if enable_network_policy is None and 'enableNetworkPolicy' in kwargs:
+            enable_network_policy = kwargs['enableNetworkPolicy']
+        if fleet_agent_deployment_customizations is None and 'fleetAgentDeploymentCustomizations' in kwargs:
+            fleet_agent_deployment_customizations = kwargs['fleetAgentDeploymentCustomizations']
+        if fleet_workspace_name is None and 'fleetWorkspaceName' in kwargs:
+            fleet_workspace_name = kwargs['fleetWorkspaceName']
+        if gke_config is None and 'gkeConfig' in kwargs:
+            gke_config = kwargs['gkeConfig']
+        if gke_config_v2 is None and 'gkeConfigV2' in kwargs:
+            gke_config_v2 = kwargs['gkeConfigV2']
+        if istio_enabled is None and 'istioEnabled' in kwargs:
+            istio_enabled = kwargs['istioEnabled']
+        if k3s_config is None and 'k3sConfig' in kwargs:
+            k3s_config = kwargs['k3sConfig']
+        if kube_config is None and 'kubeConfig' in kwargs:
+            kube_config = kwargs['kubeConfig']
+        if oke_config is None and 'okeConfig' in kwargs:
+            oke_config = kwargs['okeConfig']
+        if rke2_config is None and 'rke2Config' in kwargs:
+            rke2_config = kwargs['rke2Config']
+        if rke_config is None and 'rkeConfig' in kwargs:
+            rke_config = kwargs['rkeConfig']
+        if system_project_id is None and 'systemProjectId' in kwargs:
+            system_project_id = kwargs['systemProjectId']
+        if windows_prefered_cluster is None and 'windowsPreferedCluster' in kwargs:
+            windows_prefered_cluster = kwargs['windowsPreferedCluster']
+
         if agent_env_vars is not None:
-            pulumi.set(__self__, "agent_env_vars", agent_env_vars)
+            _setter("agent_env_vars", agent_env_vars)
         if aks_config is not None:
-            pulumi.set(__self__, "aks_config", aks_config)
+            _setter("aks_config", aks_config)
         if aks_config_v2 is not None:
-            pulumi.set(__self__, "aks_config_v2", aks_config_v2)
+            _setter("aks_config_v2", aks_config_v2)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if ca_cert is not None:
-            pulumi.set(__self__, "ca_cert", ca_cert)
+            _setter("ca_cert", ca_cert)
         if cluster_agent_deployment_customizations is not None:
-            pulumi.set(__self__, "cluster_agent_deployment_customizations", cluster_agent_deployment_customizations)
+            _setter("cluster_agent_deployment_customizations", cluster_agent_deployment_customizations)
         if cluster_auth_endpoint is not None:
-            pulumi.set(__self__, "cluster_auth_endpoint", cluster_auth_endpoint)
+            _setter("cluster_auth_endpoint", cluster_auth_endpoint)
         if cluster_monitoring_input is not None:
-            pulumi.set(__self__, "cluster_monitoring_input", cluster_monitoring_input)
+            _setter("cluster_monitoring_input", cluster_monitoring_input)
         if cluster_registration_token is not None:
-            pulumi.set(__self__, "cluster_registration_token", cluster_registration_token)
+            _setter("cluster_registration_token", cluster_registration_token)
         if cluster_template_answers is not None:
-            pulumi.set(__self__, "cluster_template_answers", cluster_template_answers)
+            _setter("cluster_template_answers", cluster_template_answers)
         if cluster_template_id is not None:
-            pulumi.set(__self__, "cluster_template_id", cluster_template_id)
+            _setter("cluster_template_id", cluster_template_id)
         if cluster_template_questions is not None:
-            pulumi.set(__self__, "cluster_template_questions", cluster_template_questions)
+            _setter("cluster_template_questions", cluster_template_questions)
         if cluster_template_revision_id is not None:
-            pulumi.set(__self__, "cluster_template_revision_id", cluster_template_revision_id)
+            _setter("cluster_template_revision_id", cluster_template_revision_id)
         if default_pod_security_admission_configuration_template_name is not None:
-            pulumi.set(__self__, "default_pod_security_admission_configuration_template_name", default_pod_security_admission_configuration_template_name)
+            _setter("default_pod_security_admission_configuration_template_name", default_pod_security_admission_configuration_template_name)
         if default_pod_security_policy_template_id is not None:
-            pulumi.set(__self__, "default_pod_security_policy_template_id", default_pod_security_policy_template_id)
+            _setter("default_pod_security_policy_template_id", default_pod_security_policy_template_id)
         if default_project_id is not None:
-            pulumi.set(__self__, "default_project_id", default_project_id)
+            _setter("default_project_id", default_project_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if desired_agent_image is not None:
-            pulumi.set(__self__, "desired_agent_image", desired_agent_image)
+            _setter("desired_agent_image", desired_agent_image)
         if desired_auth_image is not None:
-            pulumi.set(__self__, "desired_auth_image", desired_auth_image)
+            _setter("desired_auth_image", desired_auth_image)
         if docker_root_dir is not None:
-            pulumi.set(__self__, "docker_root_dir", docker_root_dir)
+            _setter("docker_root_dir", docker_root_dir)
         if driver is not None:
-            pulumi.set(__self__, "driver", driver)
+            _setter("driver", driver)
         if eks_config is not None:
-            pulumi.set(__self__, "eks_config", eks_config)
+            _setter("eks_config", eks_config)
         if eks_config_v2 is not None:
-            pulumi.set(__self__, "eks_config_v2", eks_config_v2)
+            _setter("eks_config_v2", eks_config_v2)
         if enable_cluster_alerting is not None:
-            pulumi.set(__self__, "enable_cluster_alerting", enable_cluster_alerting)
+            _setter("enable_cluster_alerting", enable_cluster_alerting)
         if enable_cluster_istio is not None:
             warnings.warn("""Deploy istio using rancher2_app resource instead""", DeprecationWarning)
             pulumi.log.warn("""enable_cluster_istio is deprecated: Deploy istio using rancher2_app resource instead""")
         if enable_cluster_istio is not None:
-            pulumi.set(__self__, "enable_cluster_istio", enable_cluster_istio)
+            _setter("enable_cluster_istio", enable_cluster_istio)
         if enable_cluster_monitoring is not None:
-            pulumi.set(__self__, "enable_cluster_monitoring", enable_cluster_monitoring)
+            _setter("enable_cluster_monitoring", enable_cluster_monitoring)
         if enable_network_policy is not None:
-            pulumi.set(__self__, "enable_network_policy", enable_network_policy)
+            _setter("enable_network_policy", enable_network_policy)
         if fleet_agent_deployment_customizations is not None:
-            pulumi.set(__self__, "fleet_agent_deployment_customizations", fleet_agent_deployment_customizations)
+            _setter("fleet_agent_deployment_customizations", fleet_agent_deployment_customizations)
         if fleet_workspace_name is not None:
-            pulumi.set(__self__, "fleet_workspace_name", fleet_workspace_name)
+            _setter("fleet_workspace_name", fleet_workspace_name)
         if gke_config is not None:
-            pulumi.set(__self__, "gke_config", gke_config)
+            _setter("gke_config", gke_config)
         if gke_config_v2 is not None:
-            pulumi.set(__self__, "gke_config_v2", gke_config_v2)
+            _setter("gke_config_v2", gke_config_v2)
         if istio_enabled is not None:
-            pulumi.set(__self__, "istio_enabled", istio_enabled)
+            _setter("istio_enabled", istio_enabled)
         if k3s_config is not None:
-            pulumi.set(__self__, "k3s_config", k3s_config)
+            _setter("k3s_config", k3s_config)
         if kube_config is not None:
-            pulumi.set(__self__, "kube_config", kube_config)
+            _setter("kube_config", kube_config)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if oke_config is not None:
-            pulumi.set(__self__, "oke_config", oke_config)
+            _setter("oke_config", oke_config)
         if rke2_config is not None:
-            pulumi.set(__self__, "rke2_config", rke2_config)
+            _setter("rke2_config", rke2_config)
         if rke_config is not None:
-            pulumi.set(__self__, "rke_config", rke_config)
+            _setter("rke_config", rke_config)
         if system_project_id is not None:
-            pulumi.set(__self__, "system_project_id", system_project_id)
+            _setter("system_project_id", system_project_id)
         if windows_prefered_cluster is not None:
-            pulumi.set(__self__, "windows_prefered_cluster", windows_prefered_cluster)
+            _setter("windows_prefered_cluster", windows_prefered_cluster)
 
     @property
     @pulumi.getter(name="agentEnvVars")
@@ -2268,6 +2566,10 @@ class Cluster(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ClusterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -2317,12 +2619,37 @@ class Cluster(pulumi.CustomResource):
             __props__ = ClusterArgs.__new__(ClusterArgs)
 
             __props__.__dict__["agent_env_vars"] = agent_env_vars
+            if aks_config is not None and not isinstance(aks_config, ClusterAksConfigArgs):
+                aks_config = aks_config or {}
+                def _setter(key, value):
+                    aks_config[key] = value
+                ClusterAksConfigArgs._configure(_setter, **aks_config)
             __props__.__dict__["aks_config"] = aks_config
+            if aks_config_v2 is not None and not isinstance(aks_config_v2, ClusterAksConfigV2Args):
+                aks_config_v2 = aks_config_v2 or {}
+                def _setter(key, value):
+                    aks_config_v2[key] = value
+                ClusterAksConfigV2Args._configure(_setter, **aks_config_v2)
             __props__.__dict__["aks_config_v2"] = aks_config_v2
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["cluster_agent_deployment_customizations"] = cluster_agent_deployment_customizations
+            if cluster_auth_endpoint is not None and not isinstance(cluster_auth_endpoint, ClusterClusterAuthEndpointArgs):
+                cluster_auth_endpoint = cluster_auth_endpoint or {}
+                def _setter(key, value):
+                    cluster_auth_endpoint[key] = value
+                ClusterClusterAuthEndpointArgs._configure(_setter, **cluster_auth_endpoint)
             __props__.__dict__["cluster_auth_endpoint"] = cluster_auth_endpoint
+            if cluster_monitoring_input is not None and not isinstance(cluster_monitoring_input, ClusterClusterMonitoringInputArgs):
+                cluster_monitoring_input = cluster_monitoring_input or {}
+                def _setter(key, value):
+                    cluster_monitoring_input[key] = value
+                ClusterClusterMonitoringInputArgs._configure(_setter, **cluster_monitoring_input)
             __props__.__dict__["cluster_monitoring_input"] = cluster_monitoring_input
+            if cluster_template_answers is not None and not isinstance(cluster_template_answers, ClusterClusterTemplateAnswersArgs):
+                cluster_template_answers = cluster_template_answers or {}
+                def _setter(key, value):
+                    cluster_template_answers[key] = value
+                ClusterClusterTemplateAnswersArgs._configure(_setter, **cluster_template_answers)
             __props__.__dict__["cluster_template_answers"] = cluster_template_answers
             __props__.__dict__["cluster_template_id"] = cluster_template_id
             __props__.__dict__["cluster_template_questions"] = cluster_template_questions
@@ -2334,20 +2661,60 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["desired_auth_image"] = desired_auth_image
             __props__.__dict__["docker_root_dir"] = docker_root_dir
             __props__.__dict__["driver"] = driver
+            if eks_config is not None and not isinstance(eks_config, ClusterEksConfigArgs):
+                eks_config = eks_config or {}
+                def _setter(key, value):
+                    eks_config[key] = value
+                ClusterEksConfigArgs._configure(_setter, **eks_config)
             __props__.__dict__["eks_config"] = eks_config
+            if eks_config_v2 is not None and not isinstance(eks_config_v2, ClusterEksConfigV2Args):
+                eks_config_v2 = eks_config_v2 or {}
+                def _setter(key, value):
+                    eks_config_v2[key] = value
+                ClusterEksConfigV2Args._configure(_setter, **eks_config_v2)
             __props__.__dict__["eks_config_v2"] = eks_config_v2
             __props__.__dict__["enable_cluster_alerting"] = enable_cluster_alerting
             __props__.__dict__["enable_cluster_monitoring"] = enable_cluster_monitoring
             __props__.__dict__["enable_network_policy"] = enable_network_policy
             __props__.__dict__["fleet_agent_deployment_customizations"] = fleet_agent_deployment_customizations
             __props__.__dict__["fleet_workspace_name"] = fleet_workspace_name
+            if gke_config is not None and not isinstance(gke_config, ClusterGkeConfigArgs):
+                gke_config = gke_config or {}
+                def _setter(key, value):
+                    gke_config[key] = value
+                ClusterGkeConfigArgs._configure(_setter, **gke_config)
             __props__.__dict__["gke_config"] = gke_config
+            if gke_config_v2 is not None and not isinstance(gke_config_v2, ClusterGkeConfigV2Args):
+                gke_config_v2 = gke_config_v2 or {}
+                def _setter(key, value):
+                    gke_config_v2[key] = value
+                ClusterGkeConfigV2Args._configure(_setter, **gke_config_v2)
             __props__.__dict__["gke_config_v2"] = gke_config_v2
+            if k3s_config is not None and not isinstance(k3s_config, ClusterK3sConfigArgs):
+                k3s_config = k3s_config or {}
+                def _setter(key, value):
+                    k3s_config[key] = value
+                ClusterK3sConfigArgs._configure(_setter, **k3s_config)
             __props__.__dict__["k3s_config"] = k3s_config
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
+            if oke_config is not None and not isinstance(oke_config, ClusterOkeConfigArgs):
+                oke_config = oke_config or {}
+                def _setter(key, value):
+                    oke_config[key] = value
+                ClusterOkeConfigArgs._configure(_setter, **oke_config)
             __props__.__dict__["oke_config"] = oke_config
+            if rke2_config is not None and not isinstance(rke2_config, ClusterRke2ConfigArgs):
+                rke2_config = rke2_config or {}
+                def _setter(key, value):
+                    rke2_config[key] = value
+                ClusterRke2ConfigArgs._configure(_setter, **rke2_config)
             __props__.__dict__["rke2_config"] = rke2_config
+            if rke_config is not None and not isinstance(rke_config, ClusterRkeConfigArgs):
+                rke_config = rke_config or {}
+                def _setter(key, value):
+                    rke_config[key] = value
+                ClusterRkeConfigArgs._configure(_setter, **rke_config)
             __props__.__dict__["rke_config"] = rke_config
             __props__.__dict__["windows_prefered_cluster"] = windows_prefered_cluster
             __props__.__dict__["ca_cert"] = None

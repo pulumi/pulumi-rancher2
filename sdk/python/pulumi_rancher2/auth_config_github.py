@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['AuthConfigGithubArgs', 'AuthConfigGithub']
@@ -35,22 +35,61 @@ class AuthConfigGithubArgs:
         :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
         :param pulumi.Input[bool] tls: Enable TLS connection. Default `true` (bool)
         """
-        pulumi.set(__self__, "client_id", client_id)
-        pulumi.set(__self__, "client_secret", client_secret)
+        AuthConfigGithubArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            client_id=client_id,
+            client_secret=client_secret,
+            access_mode=access_mode,
+            allowed_principal_ids=allowed_principal_ids,
+            annotations=annotations,
+            enabled=enabled,
+            hostname=hostname,
+            labels=labels,
+            tls=tls,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             client_id: Optional[pulumi.Input[str]] = None,
+             client_secret: Optional[pulumi.Input[str]] = None,
+             access_mode: Optional[pulumi.Input[str]] = None,
+             allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             hostname: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             tls: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_id is None:
+            raise TypeError("Missing 'client_id' argument")
+        if client_secret is None and 'clientSecret' in kwargs:
+            client_secret = kwargs['clientSecret']
+        if client_secret is None:
+            raise TypeError("Missing 'client_secret' argument")
+        if access_mode is None and 'accessMode' in kwargs:
+            access_mode = kwargs['accessMode']
+        if allowed_principal_ids is None and 'allowedPrincipalIds' in kwargs:
+            allowed_principal_ids = kwargs['allowedPrincipalIds']
+
+        _setter("client_id", client_id)
+        _setter("client_secret", client_secret)
         if access_mode is not None:
-            pulumi.set(__self__, "access_mode", access_mode)
+            _setter("access_mode", access_mode)
         if allowed_principal_ids is not None:
-            pulumi.set(__self__, "allowed_principal_ids", allowed_principal_ids)
+            _setter("allowed_principal_ids", allowed_principal_ids)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if hostname is not None:
-            pulumi.set(__self__, "hostname", hostname)
+            _setter("hostname", hostname)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if tls is not None:
-            pulumi.set(__self__, "tls", tls)
+            _setter("tls", tls)
 
     @property
     @pulumi.getter(name="clientId")
@@ -189,28 +228,67 @@ class _AuthConfigGithubState:
         :param pulumi.Input[bool] tls: Enable TLS connection. Default `true` (bool)
         :param pulumi.Input[str] type: (Computed) The type of the resource (string)
         """
+        _AuthConfigGithubState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_mode=access_mode,
+            allowed_principal_ids=allowed_principal_ids,
+            annotations=annotations,
+            client_id=client_id,
+            client_secret=client_secret,
+            enabled=enabled,
+            hostname=hostname,
+            labels=labels,
+            name=name,
+            tls=tls,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_mode: Optional[pulumi.Input[str]] = None,
+             allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             client_id: Optional[pulumi.Input[str]] = None,
+             client_secret: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             hostname: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             tls: Optional[pulumi.Input[bool]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_mode is None and 'accessMode' in kwargs:
+            access_mode = kwargs['accessMode']
+        if allowed_principal_ids is None and 'allowedPrincipalIds' in kwargs:
+            allowed_principal_ids = kwargs['allowedPrincipalIds']
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_secret is None and 'clientSecret' in kwargs:
+            client_secret = kwargs['clientSecret']
+
         if access_mode is not None:
-            pulumi.set(__self__, "access_mode", access_mode)
+            _setter("access_mode", access_mode)
         if allowed_principal_ids is not None:
-            pulumi.set(__self__, "allowed_principal_ids", allowed_principal_ids)
+            _setter("allowed_principal_ids", allowed_principal_ids)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if client_id is not None:
-            pulumi.set(__self__, "client_id", client_id)
+            _setter("client_id", client_id)
         if client_secret is not None:
-            pulumi.set(__self__, "client_secret", client_secret)
+            _setter("client_secret", client_secret)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if hostname is not None:
-            pulumi.set(__self__, "hostname", hostname)
+            _setter("hostname", hostname)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if tls is not None:
-            pulumi.set(__self__, "tls", tls)
+            _setter("tls", tls)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="accessMode")
@@ -422,6 +500,10 @@ class AuthConfigGithub(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AuthConfigGithubArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

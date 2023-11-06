@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['GlobalRoleBindingArgs', 'GlobalRoleBinding']
@@ -31,17 +31,46 @@ class GlobalRoleBindingArgs:
         :param pulumi.Input[str] name: The name of the global role binding (string)
         :param pulumi.Input[str] user_id: The user ID to assign global role binding (string)
         """
-        pulumi.set(__self__, "global_role_id", global_role_id)
+        GlobalRoleBindingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            global_role_id=global_role_id,
+            annotations=annotations,
+            group_principal_id=group_principal_id,
+            labels=labels,
+            name=name,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             global_role_id: Optional[pulumi.Input[str]] = None,
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             group_principal_id: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             user_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if global_role_id is None and 'globalRoleId' in kwargs:
+            global_role_id = kwargs['globalRoleId']
+        if global_role_id is None:
+            raise TypeError("Missing 'global_role_id' argument")
+        if group_principal_id is None and 'groupPrincipalId' in kwargs:
+            group_principal_id = kwargs['groupPrincipalId']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+
+        _setter("global_role_id", global_role_id)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if group_principal_id is not None:
-            pulumi.set(__self__, "group_principal_id", group_principal_id)
+            _setter("group_principal_id", group_principal_id)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
 
     @property
     @pulumi.getter(name="globalRoleId")
@@ -138,18 +167,45 @@ class _GlobalRoleBindingState:
         :param pulumi.Input[str] name: The name of the global role binding (string)
         :param pulumi.Input[str] user_id: The user ID to assign global role binding (string)
         """
+        _GlobalRoleBindingState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            annotations=annotations,
+            global_role_id=global_role_id,
+            group_principal_id=group_principal_id,
+            labels=labels,
+            name=name,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             global_role_id: Optional[pulumi.Input[str]] = None,
+             group_principal_id: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             user_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if global_role_id is None and 'globalRoleId' in kwargs:
+            global_role_id = kwargs['globalRoleId']
+        if group_principal_id is None and 'groupPrincipalId' in kwargs:
+            group_principal_id = kwargs['groupPrincipalId']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if global_role_id is not None:
-            pulumi.set(__self__, "global_role_id", global_role_id)
+            _setter("global_role_id", global_role_id)
         if group_principal_id is not None:
-            pulumi.set(__self__, "group_principal_id", group_principal_id)
+            _setter("group_principal_id", group_principal_id)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
 
     @property
     @pulumi.getter
@@ -319,6 +375,10 @@ class GlobalRoleBinding(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GlobalRoleBindingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ConfigMapV2Args', 'ConfigMapV2']
@@ -31,18 +31,47 @@ class ConfigMapV2Args:
         :param pulumi.Input[str] name: The name of the configMap v2 (string)
         :param pulumi.Input[str] namespace: The namespaces of the configMap v2. Default: `default` (string)
         """
-        pulumi.set(__self__, "cluster_id", cluster_id)
-        pulumi.set(__self__, "data", data)
+        ConfigMapV2Args._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_id=cluster_id,
+            data=data,
+            annotations=annotations,
+            immutable=immutable,
+            labels=labels,
+            name=name,
+            namespace=namespace,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             immutable: Optional[pulumi.Input[bool]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if data is None:
+            raise TypeError("Missing 'data' argument")
+
+        _setter("cluster_id", cluster_id)
+        _setter("data", data)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if immutable is not None:
-            pulumi.set(__self__, "immutable", immutable)
+            _setter("immutable", immutable)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -151,22 +180,51 @@ class _ConfigMapV2State:
         :param pulumi.Input[str] namespace: The namespaces of the configMap v2. Default: `default` (string)
         :param pulumi.Input[str] resource_version: (Computed) The k8s resource version (string)
         """
+        _ConfigMapV2State._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            annotations=annotations,
+            cluster_id=cluster_id,
+            data=data,
+            immutable=immutable,
+            labels=labels,
+            name=name,
+            namespace=namespace,
+            resource_version=resource_version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             immutable: Optional[pulumi.Input[bool]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             resource_version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if resource_version is None and 'resourceVersion' in kwargs:
+            resource_version = kwargs['resourceVersion']
+
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if cluster_id is not None:
-            pulumi.set(__self__, "cluster_id", cluster_id)
+            _setter("cluster_id", cluster_id)
         if data is not None:
-            pulumi.set(__self__, "data", data)
+            _setter("data", data)
         if immutable is not None:
-            pulumi.set(__self__, "immutable", immutable)
+            _setter("immutable", immutable)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if resource_version is not None:
-            pulumi.set(__self__, "resource_version", resource_version)
+            _setter("resource_version", resource_version)
 
     @property
     @pulumi.getter
@@ -326,6 +384,10 @@ class ConfigMapV2(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ConfigMapV2Args._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

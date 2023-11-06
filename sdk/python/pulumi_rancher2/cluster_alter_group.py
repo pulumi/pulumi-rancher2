@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -37,23 +37,60 @@ class ClusterAlterGroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ClusterAlterGroupRecipientArgs']]] recipients: The cluster alert group recipients (list)
         :param pulumi.Input[int] repeat_interval_seconds: The cluster alert group wait seconds. Default: `3600` (int)
         """
-        pulumi.set(__self__, "cluster_id", cluster_id)
+        ClusterAlterGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_id=cluster_id,
+            annotations=annotations,
+            description=description,
+            group_interval_seconds=group_interval_seconds,
+            group_wait_seconds=group_wait_seconds,
+            labels=labels,
+            name=name,
+            recipients=recipients,
+            repeat_interval_seconds=repeat_interval_seconds,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             group_interval_seconds: Optional[pulumi.Input[int]] = None,
+             group_wait_seconds: Optional[pulumi.Input[int]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             recipients: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAlterGroupRecipientArgs']]]] = None,
+             repeat_interval_seconds: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if group_interval_seconds is None and 'groupIntervalSeconds' in kwargs:
+            group_interval_seconds = kwargs['groupIntervalSeconds']
+        if group_wait_seconds is None and 'groupWaitSeconds' in kwargs:
+            group_wait_seconds = kwargs['groupWaitSeconds']
+        if repeat_interval_seconds is None and 'repeatIntervalSeconds' in kwargs:
+            repeat_interval_seconds = kwargs['repeatIntervalSeconds']
+
+        _setter("cluster_id", cluster_id)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if group_interval_seconds is not None:
-            pulumi.set(__self__, "group_interval_seconds", group_interval_seconds)
+            _setter("group_interval_seconds", group_interval_seconds)
         if group_wait_seconds is not None:
-            pulumi.set(__self__, "group_wait_seconds", group_wait_seconds)
+            _setter("group_wait_seconds", group_wait_seconds)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if recipients is not None:
-            pulumi.set(__self__, "recipients", recipients)
+            _setter("recipients", recipients)
         if repeat_interval_seconds is not None:
-            pulumi.set(__self__, "repeat_interval_seconds", repeat_interval_seconds)
+            _setter("repeat_interval_seconds", repeat_interval_seconds)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -188,24 +225,59 @@ class _ClusterAlterGroupState:
         :param pulumi.Input[Sequence[pulumi.Input['ClusterAlterGroupRecipientArgs']]] recipients: The cluster alert group recipients (list)
         :param pulumi.Input[int] repeat_interval_seconds: The cluster alert group wait seconds. Default: `3600` (int)
         """
+        _ClusterAlterGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            annotations=annotations,
+            cluster_id=cluster_id,
+            description=description,
+            group_interval_seconds=group_interval_seconds,
+            group_wait_seconds=group_wait_seconds,
+            labels=labels,
+            name=name,
+            recipients=recipients,
+            repeat_interval_seconds=repeat_interval_seconds,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             group_interval_seconds: Optional[pulumi.Input[int]] = None,
+             group_wait_seconds: Optional[pulumi.Input[int]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             recipients: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAlterGroupRecipientArgs']]]] = None,
+             repeat_interval_seconds: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if group_interval_seconds is None and 'groupIntervalSeconds' in kwargs:
+            group_interval_seconds = kwargs['groupIntervalSeconds']
+        if group_wait_seconds is None and 'groupWaitSeconds' in kwargs:
+            group_wait_seconds = kwargs['groupWaitSeconds']
+        if repeat_interval_seconds is None and 'repeatIntervalSeconds' in kwargs:
+            repeat_interval_seconds = kwargs['repeatIntervalSeconds']
+
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if cluster_id is not None:
-            pulumi.set(__self__, "cluster_id", cluster_id)
+            _setter("cluster_id", cluster_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if group_interval_seconds is not None:
-            pulumi.set(__self__, "group_interval_seconds", group_interval_seconds)
+            _setter("group_interval_seconds", group_interval_seconds)
         if group_wait_seconds is not None:
-            pulumi.set(__self__, "group_wait_seconds", group_wait_seconds)
+            _setter("group_wait_seconds", group_wait_seconds)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if recipients is not None:
-            pulumi.set(__self__, "recipients", recipients)
+            _setter("recipients", recipients)
         if repeat_interval_seconds is not None:
-            pulumi.set(__self__, "repeat_interval_seconds", repeat_interval_seconds)
+            _setter("repeat_interval_seconds", repeat_interval_seconds)
 
     @property
     @pulumi.getter
@@ -414,6 +486,10 @@ class ClusterAlterGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ClusterAlterGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

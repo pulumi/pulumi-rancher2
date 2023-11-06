@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -31,18 +31,41 @@ class GlobalRoleArgs:
         :param pulumi.Input[bool] new_user_default: Whether or not this role should be added to new users. Default `false` (bool)
         :param pulumi.Input[Sequence[pulumi.Input['GlobalRoleRuleArgs']]] rules: Global role policy rules (list)
         """
+        GlobalRoleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            annotations=annotations,
+            description=description,
+            labels=labels,
+            name=name,
+            new_user_default=new_user_default,
+            rules=rules,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             new_user_default: Optional[pulumi.Input[bool]] = None,
+             rules: Optional[pulumi.Input[Sequence[pulumi.Input['GlobalRoleRuleArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if new_user_default is None and 'newUserDefault' in kwargs:
+            new_user_default = kwargs['newUserDefault']
+
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if new_user_default is not None:
-            pulumi.set(__self__, "new_user_default", new_user_default)
+            _setter("new_user_default", new_user_default)
         if rules is not None:
-            pulumi.set(__self__, "rules", rules)
+            _setter("rules", rules)
 
     @property
     @pulumi.getter
@@ -137,20 +160,45 @@ class _GlobalRoleState:
         :param pulumi.Input[bool] new_user_default: Whether or not this role should be added to new users. Default `false` (bool)
         :param pulumi.Input[Sequence[pulumi.Input['GlobalRoleRuleArgs']]] rules: Global role policy rules (list)
         """
+        _GlobalRoleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            annotations=annotations,
+            builtin=builtin,
+            description=description,
+            labels=labels,
+            name=name,
+            new_user_default=new_user_default,
+            rules=rules,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             builtin: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             new_user_default: Optional[pulumi.Input[bool]] = None,
+             rules: Optional[pulumi.Input[Sequence[pulumi.Input['GlobalRoleRuleArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if new_user_default is None and 'newUserDefault' in kwargs:
+            new_user_default = kwargs['newUserDefault']
+
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if builtin is not None:
-            pulumi.set(__self__, "builtin", builtin)
+            _setter("builtin", builtin)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if new_user_default is not None:
-            pulumi.set(__self__, "new_user_default", new_user_default)
+            _setter("new_user_default", new_user_default)
         if rules is not None:
-            pulumi.set(__self__, "rules", rules)
+            _setter("rules", rules)
 
     @property
     @pulumi.getter
@@ -330,6 +378,10 @@ class GlobalRole(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GlobalRoleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

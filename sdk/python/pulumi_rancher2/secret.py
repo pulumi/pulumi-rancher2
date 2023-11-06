@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['SecretArgs', 'Secret']
@@ -31,18 +31,49 @@ class SecretArgs:
         :param pulumi.Input[str] name: The name of the secret (string)
         :param pulumi.Input[str] namespace_id: The namespace id where to assign the namespaced secret (string)
         """
-        pulumi.set(__self__, "data", data)
-        pulumi.set(__self__, "project_id", project_id)
+        SecretArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            data=data,
+            project_id=project_id,
+            annotations=annotations,
+            description=description,
+            labels=labels,
+            name=name,
+            namespace_id=namespace_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             namespace_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if data is None:
+            raise TypeError("Missing 'data' argument")
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if namespace_id is None and 'namespaceId' in kwargs:
+            namespace_id = kwargs['namespaceId']
+
+        _setter("data", data)
+        _setter("project_id", project_id)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if namespace_id is not None:
-            pulumi.set(__self__, "namespace_id", namespace_id)
+            _setter("namespace_id", namespace_id)
 
     @property
     @pulumi.getter
@@ -149,20 +180,47 @@ class _SecretState:
         :param pulumi.Input[str] namespace_id: The namespace id where to assign the namespaced secret (string)
         :param pulumi.Input[str] project_id: The project id where to assign the secret (string)
         """
+        _SecretState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            annotations=annotations,
+            data=data,
+            description=description,
+            labels=labels,
+            name=name,
+            namespace_id=namespace_id,
+            project_id=project_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             namespace_id: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if namespace_id is None and 'namespaceId' in kwargs:
+            namespace_id = kwargs['namespaceId']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if data is not None:
-            pulumi.set(__self__, "data", data)
+            _setter("data", data)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if namespace_id is not None:
-            pulumi.set(__self__, "namespace_id", namespace_id)
+            _setter("namespace_id", namespace_id)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
 
     @property
     @pulumi.getter
@@ -320,6 +378,10 @@ class Secret(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SecretArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

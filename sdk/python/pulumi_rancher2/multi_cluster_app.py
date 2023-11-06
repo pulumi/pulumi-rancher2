@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -47,30 +47,87 @@ class MultiClusterAppArgs:
         :param pulumi.Input['MultiClusterAppUpgradeStrategyArgs'] upgrade_strategy: The multi cluster app upgrade strategy (list MaxItems:1)
         :param pulumi.Input[bool] wait: Wait until the multi cluster app is active. Default `true` (bool)
         """
-        pulumi.set(__self__, "catalog_name", catalog_name)
-        pulumi.set(__self__, "roles", roles)
-        pulumi.set(__self__, "targets", targets)
-        pulumi.set(__self__, "template_name", template_name)
+        MultiClusterAppArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            catalog_name=catalog_name,
+            roles=roles,
+            targets=targets,
+            template_name=template_name,
+            annotations=annotations,
+            answers=answers,
+            labels=labels,
+            members=members,
+            name=name,
+            revision_history_limit=revision_history_limit,
+            revision_id=revision_id,
+            template_version=template_version,
+            upgrade_strategy=upgrade_strategy,
+            wait=wait,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             catalog_name: Optional[pulumi.Input[str]] = None,
+             roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             targets: Optional[pulumi.Input[Sequence[pulumi.Input['MultiClusterAppTargetArgs']]]] = None,
+             template_name: Optional[pulumi.Input[str]] = None,
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             answers: Optional[pulumi.Input[Sequence[pulumi.Input['MultiClusterAppAnswerArgs']]]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input['MultiClusterAppMemberArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             revision_history_limit: Optional[pulumi.Input[int]] = None,
+             revision_id: Optional[pulumi.Input[str]] = None,
+             template_version: Optional[pulumi.Input[str]] = None,
+             upgrade_strategy: Optional[pulumi.Input['MultiClusterAppUpgradeStrategyArgs']] = None,
+             wait: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if catalog_name is None and 'catalogName' in kwargs:
+            catalog_name = kwargs['catalogName']
+        if catalog_name is None:
+            raise TypeError("Missing 'catalog_name' argument")
+        if roles is None:
+            raise TypeError("Missing 'roles' argument")
+        if targets is None:
+            raise TypeError("Missing 'targets' argument")
+        if template_name is None and 'templateName' in kwargs:
+            template_name = kwargs['templateName']
+        if template_name is None:
+            raise TypeError("Missing 'template_name' argument")
+        if revision_history_limit is None and 'revisionHistoryLimit' in kwargs:
+            revision_history_limit = kwargs['revisionHistoryLimit']
+        if revision_id is None and 'revisionId' in kwargs:
+            revision_id = kwargs['revisionId']
+        if template_version is None and 'templateVersion' in kwargs:
+            template_version = kwargs['templateVersion']
+        if upgrade_strategy is None and 'upgradeStrategy' in kwargs:
+            upgrade_strategy = kwargs['upgradeStrategy']
+
+        _setter("catalog_name", catalog_name)
+        _setter("roles", roles)
+        _setter("targets", targets)
+        _setter("template_name", template_name)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if answers is not None:
-            pulumi.set(__self__, "answers", answers)
+            _setter("answers", answers)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if members is not None:
-            pulumi.set(__self__, "members", members)
+            _setter("members", members)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if revision_history_limit is not None:
-            pulumi.set(__self__, "revision_history_limit", revision_history_limit)
+            _setter("revision_history_limit", revision_history_limit)
         if revision_id is not None:
-            pulumi.set(__self__, "revision_id", revision_id)
+            _setter("revision_id", revision_id)
         if template_version is not None:
-            pulumi.set(__self__, "template_version", template_version)
+            _setter("template_version", template_version)
         if upgrade_strategy is not None:
-            pulumi.set(__self__, "upgrade_strategy", upgrade_strategy)
+            _setter("upgrade_strategy", upgrade_strategy)
         if wait is not None:
-            pulumi.set(__self__, "wait", wait)
+            _setter("wait", wait)
 
     @property
     @pulumi.getter(name="catalogName")
@@ -277,36 +334,89 @@ class _MultiClusterAppState:
         :param pulumi.Input['MultiClusterAppUpgradeStrategyArgs'] upgrade_strategy: The multi cluster app upgrade strategy (list MaxItems:1)
         :param pulumi.Input[bool] wait: Wait until the multi cluster app is active. Default `true` (bool)
         """
+        _MultiClusterAppState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            annotations=annotations,
+            answers=answers,
+            catalog_name=catalog_name,
+            labels=labels,
+            members=members,
+            name=name,
+            revision_history_limit=revision_history_limit,
+            revision_id=revision_id,
+            roles=roles,
+            targets=targets,
+            template_name=template_name,
+            template_version=template_version,
+            template_version_id=template_version_id,
+            upgrade_strategy=upgrade_strategy,
+            wait=wait,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             answers: Optional[pulumi.Input[Sequence[pulumi.Input['MultiClusterAppAnswerArgs']]]] = None,
+             catalog_name: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input['MultiClusterAppMemberArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             revision_history_limit: Optional[pulumi.Input[int]] = None,
+             revision_id: Optional[pulumi.Input[str]] = None,
+             roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             targets: Optional[pulumi.Input[Sequence[pulumi.Input['MultiClusterAppTargetArgs']]]] = None,
+             template_name: Optional[pulumi.Input[str]] = None,
+             template_version: Optional[pulumi.Input[str]] = None,
+             template_version_id: Optional[pulumi.Input[str]] = None,
+             upgrade_strategy: Optional[pulumi.Input['MultiClusterAppUpgradeStrategyArgs']] = None,
+             wait: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if catalog_name is None and 'catalogName' in kwargs:
+            catalog_name = kwargs['catalogName']
+        if revision_history_limit is None and 'revisionHistoryLimit' in kwargs:
+            revision_history_limit = kwargs['revisionHistoryLimit']
+        if revision_id is None and 'revisionId' in kwargs:
+            revision_id = kwargs['revisionId']
+        if template_name is None and 'templateName' in kwargs:
+            template_name = kwargs['templateName']
+        if template_version is None and 'templateVersion' in kwargs:
+            template_version = kwargs['templateVersion']
+        if template_version_id is None and 'templateVersionId' in kwargs:
+            template_version_id = kwargs['templateVersionId']
+        if upgrade_strategy is None and 'upgradeStrategy' in kwargs:
+            upgrade_strategy = kwargs['upgradeStrategy']
+
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if answers is not None:
-            pulumi.set(__self__, "answers", answers)
+            _setter("answers", answers)
         if catalog_name is not None:
-            pulumi.set(__self__, "catalog_name", catalog_name)
+            _setter("catalog_name", catalog_name)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if members is not None:
-            pulumi.set(__self__, "members", members)
+            _setter("members", members)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if revision_history_limit is not None:
-            pulumi.set(__self__, "revision_history_limit", revision_history_limit)
+            _setter("revision_history_limit", revision_history_limit)
         if revision_id is not None:
-            pulumi.set(__self__, "revision_id", revision_id)
+            _setter("revision_id", revision_id)
         if roles is not None:
-            pulumi.set(__self__, "roles", roles)
+            _setter("roles", roles)
         if targets is not None:
-            pulumi.set(__self__, "targets", targets)
+            _setter("targets", targets)
         if template_name is not None:
-            pulumi.set(__self__, "template_name", template_name)
+            _setter("template_name", template_name)
         if template_version is not None:
-            pulumi.set(__self__, "template_version", template_version)
+            _setter("template_version", template_version)
         if template_version_id is not None:
-            pulumi.set(__self__, "template_version_id", template_version_id)
+            _setter("template_version_id", template_version_id)
         if upgrade_strategy is not None:
-            pulumi.set(__self__, "upgrade_strategy", upgrade_strategy)
+            _setter("upgrade_strategy", upgrade_strategy)
         if wait is not None:
-            pulumi.set(__self__, "wait", wait)
+            _setter("wait", wait)
 
     @property
     @pulumi.getter
@@ -688,6 +798,10 @@ class MultiClusterApp(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            MultiClusterAppArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -736,6 +850,11 @@ class MultiClusterApp(pulumi.CustomResource):
                 raise TypeError("Missing required property 'template_name'")
             __props__.__dict__["template_name"] = template_name
             __props__.__dict__["template_version"] = template_version
+            if upgrade_strategy is not None and not isinstance(upgrade_strategy, MultiClusterAppUpgradeStrategyArgs):
+                upgrade_strategy = upgrade_strategy or {}
+                def _setter(key, value):
+                    upgrade_strategy[key] = value
+                MultiClusterAppUpgradeStrategyArgs._configure(_setter, **upgrade_strategy)
             __props__.__dict__["upgrade_strategy"] = upgrade_strategy
             __props__.__dict__["wait"] = wait
             __props__.__dict__["template_version_id"] = None

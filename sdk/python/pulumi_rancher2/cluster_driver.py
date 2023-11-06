@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ClusterDriverArgs', 'ClusterDriver']
@@ -37,23 +37,64 @@ class ClusterDriverArgs:
         :param pulumi.Input[str] ui_url: The URL to load for customized Add Clusters screen for this driver (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelist_domains: Domains to whitelist for the ui (list)
         """
-        pulumi.set(__self__, "active", active)
-        pulumi.set(__self__, "builtin", builtin)
-        pulumi.set(__self__, "url", url)
+        ClusterDriverArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            active=active,
+            builtin=builtin,
+            url=url,
+            actual_url=actual_url,
+            annotations=annotations,
+            checksum=checksum,
+            labels=labels,
+            name=name,
+            ui_url=ui_url,
+            whitelist_domains=whitelist_domains,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             active: Optional[pulumi.Input[bool]] = None,
+             builtin: Optional[pulumi.Input[bool]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             actual_url: Optional[pulumi.Input[str]] = None,
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             checksum: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             ui_url: Optional[pulumi.Input[str]] = None,
+             whitelist_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if active is None:
+            raise TypeError("Missing 'active' argument")
+        if builtin is None:
+            raise TypeError("Missing 'builtin' argument")
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+        if actual_url is None and 'actualUrl' in kwargs:
+            actual_url = kwargs['actualUrl']
+        if ui_url is None and 'uiUrl' in kwargs:
+            ui_url = kwargs['uiUrl']
+        if whitelist_domains is None and 'whitelistDomains' in kwargs:
+            whitelist_domains = kwargs['whitelistDomains']
+
+        _setter("active", active)
+        _setter("builtin", builtin)
+        _setter("url", url)
         if actual_url is not None:
-            pulumi.set(__self__, "actual_url", actual_url)
+            _setter("actual_url", actual_url)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if checksum is not None:
-            pulumi.set(__self__, "checksum", checksum)
+            _setter("checksum", checksum)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if ui_url is not None:
-            pulumi.set(__self__, "ui_url", ui_url)
+            _setter("ui_url", ui_url)
         if whitelist_domains is not None:
-            pulumi.set(__self__, "whitelist_domains", whitelist_domains)
+            _setter("whitelist_domains", whitelist_domains)
 
     @property
     @pulumi.getter
@@ -202,26 +243,61 @@ class _ClusterDriverState:
         :param pulumi.Input[str] url: The URL to download the machine driver binary for 64-bit Linux (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelist_domains: Domains to whitelist for the ui (list)
         """
+        _ClusterDriverState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            active=active,
+            actual_url=actual_url,
+            annotations=annotations,
+            builtin=builtin,
+            checksum=checksum,
+            labels=labels,
+            name=name,
+            ui_url=ui_url,
+            url=url,
+            whitelist_domains=whitelist_domains,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             active: Optional[pulumi.Input[bool]] = None,
+             actual_url: Optional[pulumi.Input[str]] = None,
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             builtin: Optional[pulumi.Input[bool]] = None,
+             checksum: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             ui_url: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             whitelist_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if actual_url is None and 'actualUrl' in kwargs:
+            actual_url = kwargs['actualUrl']
+        if ui_url is None and 'uiUrl' in kwargs:
+            ui_url = kwargs['uiUrl']
+        if whitelist_domains is None and 'whitelistDomains' in kwargs:
+            whitelist_domains = kwargs['whitelistDomains']
+
         if active is not None:
-            pulumi.set(__self__, "active", active)
+            _setter("active", active)
         if actual_url is not None:
-            pulumi.set(__self__, "actual_url", actual_url)
+            _setter("actual_url", actual_url)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if builtin is not None:
-            pulumi.set(__self__, "builtin", builtin)
+            _setter("builtin", builtin)
         if checksum is not None:
-            pulumi.set(__self__, "checksum", checksum)
+            _setter("checksum", checksum)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if ui_url is not None:
-            pulumi.set(__self__, "ui_url", ui_url)
+            _setter("ui_url", ui_url)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
         if whitelist_domains is not None:
-            pulumi.set(__self__, "whitelist_domains", whitelist_domains)
+            _setter("whitelist_domains", whitelist_domains)
 
     @property
     @pulumi.getter
@@ -411,6 +487,10 @@ class ClusterDriver(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ClusterDriverArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

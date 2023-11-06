@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['GlobalDnsArgs', 'GlobalDns']
@@ -33,20 +33,55 @@ class GlobalDnsArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] project_ids: A list of project_ids to assign to the Global DNS. Conflicts with `multi_cluster_app_id` (list(string))
         :param pulumi.Input[int] ttl: TTL in seconds for DNS record. Default: `300` (int)
         """
-        pulumi.set(__self__, "fqdn", fqdn)
-        pulumi.set(__self__, "provider_id", provider_id)
+        GlobalDnsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            fqdn=fqdn,
+            provider_id=provider_id,
+            annotations=annotations,
+            labels=labels,
+            multi_cluster_app_id=multi_cluster_app_id,
+            name=name,
+            project_ids=project_ids,
+            ttl=ttl,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             fqdn: Optional[pulumi.Input[str]] = None,
+             provider_id: Optional[pulumi.Input[str]] = None,
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             multi_cluster_app_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             ttl: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if fqdn is None:
+            raise TypeError("Missing 'fqdn' argument")
+        if provider_id is None and 'providerId' in kwargs:
+            provider_id = kwargs['providerId']
+        if provider_id is None:
+            raise TypeError("Missing 'provider_id' argument")
+        if multi_cluster_app_id is None and 'multiClusterAppId' in kwargs:
+            multi_cluster_app_id = kwargs['multiClusterAppId']
+        if project_ids is None and 'projectIds' in kwargs:
+            project_ids = kwargs['projectIds']
+
+        _setter("fqdn", fqdn)
+        _setter("provider_id", provider_id)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if multi_cluster_app_id is not None:
-            pulumi.set(__self__, "multi_cluster_app_id", multi_cluster_app_id)
+            _setter("multi_cluster_app_id", multi_cluster_app_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project_ids is not None:
-            pulumi.set(__self__, "project_ids", project_ids)
+            _setter("project_ids", project_ids)
         if ttl is not None:
-            pulumi.set(__self__, "ttl", ttl)
+            _setter("ttl", ttl)
 
     @property
     @pulumi.getter
@@ -167,22 +202,53 @@ class _GlobalDnsState:
         :param pulumi.Input[str] provider_id: The Global DNS provider ID to use (string)
         :param pulumi.Input[int] ttl: TTL in seconds for DNS record. Default: `300` (int)
         """
+        _GlobalDnsState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            annotations=annotations,
+            fqdn=fqdn,
+            labels=labels,
+            multi_cluster_app_id=multi_cluster_app_id,
+            name=name,
+            project_ids=project_ids,
+            provider_id=provider_id,
+            ttl=ttl,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             fqdn: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             multi_cluster_app_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             provider_id: Optional[pulumi.Input[str]] = None,
+             ttl: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if multi_cluster_app_id is None and 'multiClusterAppId' in kwargs:
+            multi_cluster_app_id = kwargs['multiClusterAppId']
+        if project_ids is None and 'projectIds' in kwargs:
+            project_ids = kwargs['projectIds']
+        if provider_id is None and 'providerId' in kwargs:
+            provider_id = kwargs['providerId']
+
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if fqdn is not None:
-            pulumi.set(__self__, "fqdn", fqdn)
+            _setter("fqdn", fqdn)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if multi_cluster_app_id is not None:
-            pulumi.set(__self__, "multi_cluster_app_id", multi_cluster_app_id)
+            _setter("multi_cluster_app_id", multi_cluster_app_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project_ids is not None:
-            pulumi.set(__self__, "project_ids", project_ids)
+            _setter("project_ids", project_ids)
         if provider_id is not None:
-            pulumi.set(__self__, "provider_id", provider_id)
+            _setter("provider_id", provider_id)
         if ttl is not None:
-            pulumi.set(__self__, "ttl", ttl)
+            _setter("ttl", ttl)
 
     @property
     @pulumi.getter
@@ -434,6 +500,10 @@ class GlobalDns(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GlobalDnsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
