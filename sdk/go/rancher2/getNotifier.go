@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about a Rancher v2 notifier.
@@ -132,12 +131,6 @@ func (o LookupNotifierResultOutput) ToLookupNotifierResultOutput() LookupNotifie
 
 func (o LookupNotifierResultOutput) ToLookupNotifierResultOutputWithContext(ctx context.Context) LookupNotifierResultOutput {
 	return o
-}
-
-func (o LookupNotifierResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNotifierResult] {
-	return pulumix.Output[LookupNotifierResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) Annotations for notifier object (map)

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Rancher v2 Cluster Alert Group resource. This can be used to create Cluster Alert Group for Rancher v2 environments and retrieve their information.
@@ -226,12 +225,6 @@ func (i *ClusterAlertGroup) ToClusterAlertGroupOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlertGroupOutput)
 }
 
-func (i *ClusterAlertGroup) ToOutput(ctx context.Context) pulumix.Output[*ClusterAlertGroup] {
-	return pulumix.Output[*ClusterAlertGroup]{
-		OutputState: i.ToClusterAlertGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ClusterAlertGroupArrayInput is an input type that accepts ClusterAlertGroupArray and ClusterAlertGroupArrayOutput values.
 // You can construct a concrete instance of `ClusterAlertGroupArrayInput` via:
 //
@@ -255,12 +248,6 @@ func (i ClusterAlertGroupArray) ToClusterAlertGroupArrayOutput() ClusterAlertGro
 
 func (i ClusterAlertGroupArray) ToClusterAlertGroupArrayOutputWithContext(ctx context.Context) ClusterAlertGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlertGroupArrayOutput)
-}
-
-func (i ClusterAlertGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*ClusterAlertGroup] {
-	return pulumix.Output[[]*ClusterAlertGroup]{
-		OutputState: i.ToClusterAlertGroupArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ClusterAlertGroupMapInput is an input type that accepts ClusterAlertGroupMap and ClusterAlertGroupMapOutput values.
@@ -288,12 +275,6 @@ func (i ClusterAlertGroupMap) ToClusterAlertGroupMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterAlertGroupMapOutput)
 }
 
-func (i ClusterAlertGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClusterAlertGroup] {
-	return pulumix.Output[map[string]*ClusterAlertGroup]{
-		OutputState: i.ToClusterAlertGroupMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterAlertGroupOutput struct{ *pulumi.OutputState }
 
 func (ClusterAlertGroupOutput) ElementType() reflect.Type {
@@ -306,12 +287,6 @@ func (o ClusterAlertGroupOutput) ToClusterAlertGroupOutput() ClusterAlertGroupOu
 
 func (o ClusterAlertGroupOutput) ToClusterAlertGroupOutputWithContext(ctx context.Context) ClusterAlertGroupOutput {
 	return o
-}
-
-func (o ClusterAlertGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterAlertGroup] {
-	return pulumix.Output[*ClusterAlertGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The cluster alert group annotations (map)
@@ -373,12 +348,6 @@ func (o ClusterAlertGroupArrayOutput) ToClusterAlertGroupArrayOutputWithContext(
 	return o
 }
 
-func (o ClusterAlertGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ClusterAlertGroup] {
-	return pulumix.Output[[]*ClusterAlertGroup]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ClusterAlertGroupArrayOutput) Index(i pulumi.IntInput) ClusterAlertGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ClusterAlertGroup {
 		return vs[0].([]*ClusterAlertGroup)[vs[1].(int)]
@@ -397,12 +366,6 @@ func (o ClusterAlertGroupMapOutput) ToClusterAlertGroupMapOutput() ClusterAlertG
 
 func (o ClusterAlertGroupMapOutput) ToClusterAlertGroupMapOutputWithContext(ctx context.Context) ClusterAlertGroupMapOutput {
 	return o
-}
-
-func (o ClusterAlertGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClusterAlertGroup] {
-	return pulumix.Output[map[string]*ClusterAlertGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterAlertGroupMapOutput) MapIndex(k pulumi.StringInput) ClusterAlertGroupOutput {

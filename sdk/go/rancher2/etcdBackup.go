@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Rancher v2 Etcd Backup resource. This can be used to create an Etcd Backup for Rancher v2.2.x and above, and to retrieve their information.
@@ -223,12 +222,6 @@ func (i *EtcdBackup) ToEtcdBackupOutputWithContext(ctx context.Context) EtcdBack
 	return pulumi.ToOutputWithContext(ctx, i).(EtcdBackupOutput)
 }
 
-func (i *EtcdBackup) ToOutput(ctx context.Context) pulumix.Output[*EtcdBackup] {
-	return pulumix.Output[*EtcdBackup]{
-		OutputState: i.ToEtcdBackupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EtcdBackupArrayInput is an input type that accepts EtcdBackupArray and EtcdBackupArrayOutput values.
 // You can construct a concrete instance of `EtcdBackupArrayInput` via:
 //
@@ -252,12 +245,6 @@ func (i EtcdBackupArray) ToEtcdBackupArrayOutput() EtcdBackupArrayOutput {
 
 func (i EtcdBackupArray) ToEtcdBackupArrayOutputWithContext(ctx context.Context) EtcdBackupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EtcdBackupArrayOutput)
-}
-
-func (i EtcdBackupArray) ToOutput(ctx context.Context) pulumix.Output[[]*EtcdBackup] {
-	return pulumix.Output[[]*EtcdBackup]{
-		OutputState: i.ToEtcdBackupArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EtcdBackupMapInput is an input type that accepts EtcdBackupMap and EtcdBackupMapOutput values.
@@ -285,12 +272,6 @@ func (i EtcdBackupMap) ToEtcdBackupMapOutputWithContext(ctx context.Context) Etc
 	return pulumi.ToOutputWithContext(ctx, i).(EtcdBackupMapOutput)
 }
 
-func (i EtcdBackupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EtcdBackup] {
-	return pulumix.Output[map[string]*EtcdBackup]{
-		OutputState: i.ToEtcdBackupMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EtcdBackupOutput struct{ *pulumi.OutputState }
 
 func (EtcdBackupOutput) ElementType() reflect.Type {
@@ -303,12 +284,6 @@ func (o EtcdBackupOutput) ToEtcdBackupOutput() EtcdBackupOutput {
 
 func (o EtcdBackupOutput) ToEtcdBackupOutputWithContext(ctx context.Context) EtcdBackupOutput {
 	return o
-}
-
-func (o EtcdBackupOutput) ToOutput(ctx context.Context) pulumix.Output[*EtcdBackup] {
-	return pulumix.Output[*EtcdBackup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Annotations for Etcd Backup object (map)
@@ -365,12 +340,6 @@ func (o EtcdBackupArrayOutput) ToEtcdBackupArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o EtcdBackupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EtcdBackup] {
-	return pulumix.Output[[]*EtcdBackup]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EtcdBackupArrayOutput) Index(i pulumi.IntInput) EtcdBackupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EtcdBackup {
 		return vs[0].([]*EtcdBackup)[vs[1].(int)]
@@ -389,12 +358,6 @@ func (o EtcdBackupMapOutput) ToEtcdBackupMapOutput() EtcdBackupMapOutput {
 
 func (o EtcdBackupMapOutput) ToEtcdBackupMapOutputWithContext(ctx context.Context) EtcdBackupMapOutput {
 	return o
-}
-
-func (o EtcdBackupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EtcdBackup] {
-	return pulumix.Output[map[string]*EtcdBackup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EtcdBackupMapOutput) MapIndex(k pulumi.StringInput) EtcdBackupOutput {

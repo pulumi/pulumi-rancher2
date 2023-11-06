@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i GetPodSecurityPolicyTemplateRunAsUserRangeArgs) ToGetPodSecurityPolicyTe
 	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateRunAsUserRangeOutput)
 }
 
-func (i GetPodSecurityPolicyTemplateRunAsUserRangeArgs) ToOutput(ctx context.Context) pulumix.Output[GetPodSecurityPolicyTemplateRunAsUserRange] {
-	return pulumix.Output[GetPodSecurityPolicyTemplateRunAsUserRange]{
-		OutputState: i.ToGetPodSecurityPolicyTemplateRunAsUserRangeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetPodSecurityPolicyTemplateRunAsUserRangeArrayInput is an input type that accepts GetPodSecurityPolicyTemplateRunAsUserRangeArray and GetPodSecurityPolicyTemplateRunAsUserRangeArrayOutput values.
 // You can construct a concrete instance of `GetPodSecurityPolicyTemplateRunAsUserRangeArrayInput` via:
 //
@@ -78,12 +71,6 @@ func (i GetPodSecurityPolicyTemplateRunAsUserRangeArray) ToGetPodSecurityPolicyT
 	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateRunAsUserRangeArrayOutput)
 }
 
-func (i GetPodSecurityPolicyTemplateRunAsUserRangeArray) ToOutput(ctx context.Context) pulumix.Output[[]GetPodSecurityPolicyTemplateRunAsUserRange] {
-	return pulumix.Output[[]GetPodSecurityPolicyTemplateRunAsUserRange]{
-		OutputState: i.ToGetPodSecurityPolicyTemplateRunAsUserRangeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetPodSecurityPolicyTemplateRunAsUserRangeOutput struct{ *pulumi.OutputState }
 
 func (GetPodSecurityPolicyTemplateRunAsUserRangeOutput) ElementType() reflect.Type {
@@ -96,12 +83,6 @@ func (o GetPodSecurityPolicyTemplateRunAsUserRangeOutput) ToGetPodSecurityPolicy
 
 func (o GetPodSecurityPolicyTemplateRunAsUserRangeOutput) ToGetPodSecurityPolicyTemplateRunAsUserRangeOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateRunAsUserRangeOutput {
 	return o
-}
-
-func (o GetPodSecurityPolicyTemplateRunAsUserRangeOutput) ToOutput(ctx context.Context) pulumix.Output[GetPodSecurityPolicyTemplateRunAsUserRange] {
-	return pulumix.Output[GetPodSecurityPolicyTemplateRunAsUserRange]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetPodSecurityPolicyTemplateRunAsUserRangeOutput) Max() pulumi.IntOutput {
@@ -124,12 +105,6 @@ func (o GetPodSecurityPolicyTemplateRunAsUserRangeArrayOutput) ToGetPodSecurityP
 
 func (o GetPodSecurityPolicyTemplateRunAsUserRangeArrayOutput) ToGetPodSecurityPolicyTemplateRunAsUserRangeArrayOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateRunAsUserRangeArrayOutput {
 	return o
-}
-
-func (o GetPodSecurityPolicyTemplateRunAsUserRangeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetPodSecurityPolicyTemplateRunAsUserRange] {
-	return pulumix.Output[[]GetPodSecurityPolicyTemplateRunAsUserRange]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetPodSecurityPolicyTemplateRunAsUserRangeArrayOutput) Index(i pulumi.IntInput) GetPodSecurityPolicyTemplateRunAsUserRangeOutput {
@@ -169,12 +144,6 @@ func (i GetPodSecurityPolicyTemplateRuntimeClassArgs) ToGetPodSecurityPolicyTemp
 
 func (i GetPodSecurityPolicyTemplateRuntimeClassArgs) ToGetPodSecurityPolicyTemplateRuntimeClassOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateRuntimeClassOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateRuntimeClassOutput)
-}
-
-func (i GetPodSecurityPolicyTemplateRuntimeClassArgs) ToOutput(ctx context.Context) pulumix.Output[GetPodSecurityPolicyTemplateRuntimeClass] {
-	return pulumix.Output[GetPodSecurityPolicyTemplateRuntimeClass]{
-		OutputState: i.ToGetPodSecurityPolicyTemplateRuntimeClassOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GetPodSecurityPolicyTemplateRuntimeClassArgs) ToGetPodSecurityPolicyTemplateRuntimeClassPtrOutput() GetPodSecurityPolicyTemplateRuntimeClassPtrOutput {
@@ -218,12 +187,6 @@ func (i *getPodSecurityPolicyTemplateRuntimeClassPtrType) ToGetPodSecurityPolicy
 	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateRuntimeClassPtrOutput)
 }
 
-func (i *getPodSecurityPolicyTemplateRuntimeClassPtrType) ToOutput(ctx context.Context) pulumix.Output[*GetPodSecurityPolicyTemplateRuntimeClass] {
-	return pulumix.Output[*GetPodSecurityPolicyTemplateRuntimeClass]{
-		OutputState: i.ToGetPodSecurityPolicyTemplateRuntimeClassPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetPodSecurityPolicyTemplateRuntimeClassOutput struct{ *pulumi.OutputState }
 
 func (GetPodSecurityPolicyTemplateRuntimeClassOutput) ElementType() reflect.Type {
@@ -248,12 +211,6 @@ func (o GetPodSecurityPolicyTemplateRuntimeClassOutput) ToGetPodSecurityPolicyTe
 	}).(GetPodSecurityPolicyTemplateRuntimeClassPtrOutput)
 }
 
-func (o GetPodSecurityPolicyTemplateRuntimeClassOutput) ToOutput(ctx context.Context) pulumix.Output[GetPodSecurityPolicyTemplateRuntimeClass] {
-	return pulumix.Output[GetPodSecurityPolicyTemplateRuntimeClass]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetPodSecurityPolicyTemplateRuntimeClassOutput) AllowedRuntimeClassNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPodSecurityPolicyTemplateRuntimeClass) []string { return v.AllowedRuntimeClassNames }).(pulumi.StringArrayOutput)
 }
@@ -274,12 +231,6 @@ func (o GetPodSecurityPolicyTemplateRuntimeClassPtrOutput) ToGetPodSecurityPolic
 
 func (o GetPodSecurityPolicyTemplateRuntimeClassPtrOutput) ToGetPodSecurityPolicyTemplateRuntimeClassPtrOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateRuntimeClassPtrOutput {
 	return o
-}
-
-func (o GetPodSecurityPolicyTemplateRuntimeClassPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GetPodSecurityPolicyTemplateRuntimeClass] {
-	return pulumix.Output[*GetPodSecurityPolicyTemplateRuntimeClass]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetPodSecurityPolicyTemplateRuntimeClassPtrOutput) Elem() GetPodSecurityPolicyTemplateRuntimeClassOutput {
@@ -343,12 +294,6 @@ func (i GetPodSecurityPolicyTemplateSeLinuxArgs) ToGetPodSecurityPolicyTemplateS
 	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateSeLinuxOutput)
 }
 
-func (i GetPodSecurityPolicyTemplateSeLinuxArgs) ToOutput(ctx context.Context) pulumix.Output[GetPodSecurityPolicyTemplateSeLinux] {
-	return pulumix.Output[GetPodSecurityPolicyTemplateSeLinux]{
-		OutputState: i.ToGetPodSecurityPolicyTemplateSeLinuxOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GetPodSecurityPolicyTemplateSeLinuxArgs) ToGetPodSecurityPolicyTemplateSeLinuxPtrOutput() GetPodSecurityPolicyTemplateSeLinuxPtrOutput {
 	return i.ToGetPodSecurityPolicyTemplateSeLinuxPtrOutputWithContext(context.Background())
 }
@@ -390,12 +335,6 @@ func (i *getPodSecurityPolicyTemplateSeLinuxPtrType) ToGetPodSecurityPolicyTempl
 	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateSeLinuxPtrOutput)
 }
 
-func (i *getPodSecurityPolicyTemplateSeLinuxPtrType) ToOutput(ctx context.Context) pulumix.Output[*GetPodSecurityPolicyTemplateSeLinux] {
-	return pulumix.Output[*GetPodSecurityPolicyTemplateSeLinux]{
-		OutputState: i.ToGetPodSecurityPolicyTemplateSeLinuxPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetPodSecurityPolicyTemplateSeLinuxOutput struct{ *pulumi.OutputState }
 
 func (GetPodSecurityPolicyTemplateSeLinuxOutput) ElementType() reflect.Type {
@@ -420,12 +359,6 @@ func (o GetPodSecurityPolicyTemplateSeLinuxOutput) ToGetPodSecurityPolicyTemplat
 	}).(GetPodSecurityPolicyTemplateSeLinuxPtrOutput)
 }
 
-func (o GetPodSecurityPolicyTemplateSeLinuxOutput) ToOutput(ctx context.Context) pulumix.Output[GetPodSecurityPolicyTemplateSeLinux] {
-	return pulumix.Output[GetPodSecurityPolicyTemplateSeLinux]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetPodSecurityPolicyTemplateSeLinuxOutput) Rule() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPodSecurityPolicyTemplateSeLinux) string { return v.Rule }).(pulumi.StringOutput)
 }
@@ -448,12 +381,6 @@ func (o GetPodSecurityPolicyTemplateSeLinuxPtrOutput) ToGetPodSecurityPolicyTemp
 
 func (o GetPodSecurityPolicyTemplateSeLinuxPtrOutput) ToGetPodSecurityPolicyTemplateSeLinuxPtrOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateSeLinuxPtrOutput {
 	return o
-}
-
-func (o GetPodSecurityPolicyTemplateSeLinuxPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GetPodSecurityPolicyTemplateSeLinux] {
-	return pulumix.Output[*GetPodSecurityPolicyTemplateSeLinux]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetPodSecurityPolicyTemplateSeLinuxPtrOutput) Elem() GetPodSecurityPolicyTemplateSeLinuxOutput {
@@ -521,12 +448,6 @@ func (i GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs) ToGetPodSecurityPo
 	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput)
 }
 
-func (i GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs) ToOutput(ctx context.Context) pulumix.Output[GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption] {
-	return pulumix.Output[GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption]{
-		OutputState: i.ToGetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs) ToGetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput() GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput {
 	return i.ToGetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutputWithContext(context.Background())
 }
@@ -568,12 +489,6 @@ func (i *getPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrType) ToGetPodSecuri
 	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput)
 }
 
-func (i *getPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption] {
-	return pulumix.Output[*GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption]{
-		OutputState: i.ToGetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput struct{ *pulumi.OutputState }
 
 func (GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput) ElementType() reflect.Type {
@@ -596,12 +511,6 @@ func (o GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput) ToGetPodSecurity
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption) *GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption {
 		return &v
 	}).(GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput)
-}
-
-func (o GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput) ToOutput(ctx context.Context) pulumix.Output[GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption] {
-	return pulumix.Output[GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput) Level() pulumi.StringPtrOutput {
@@ -632,12 +541,6 @@ func (o GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput) ToGetPodSecur
 
 func (o GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput) ToGetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput {
 	return o
-}
-
-func (o GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption] {
-	return pulumix.Output[*GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput) Elem() GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput {
@@ -719,12 +622,6 @@ func (i GetPodSecurityPolicyTemplateSupplementalGroupArgs) ToGetPodSecurityPolic
 	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateSupplementalGroupOutput)
 }
 
-func (i GetPodSecurityPolicyTemplateSupplementalGroupArgs) ToOutput(ctx context.Context) pulumix.Output[GetPodSecurityPolicyTemplateSupplementalGroup] {
-	return pulumix.Output[GetPodSecurityPolicyTemplateSupplementalGroup]{
-		OutputState: i.ToGetPodSecurityPolicyTemplateSupplementalGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GetPodSecurityPolicyTemplateSupplementalGroupArgs) ToGetPodSecurityPolicyTemplateSupplementalGroupPtrOutput() GetPodSecurityPolicyTemplateSupplementalGroupPtrOutput {
 	return i.ToGetPodSecurityPolicyTemplateSupplementalGroupPtrOutputWithContext(context.Background())
 }
@@ -766,12 +663,6 @@ func (i *getPodSecurityPolicyTemplateSupplementalGroupPtrType) ToGetPodSecurityP
 	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateSupplementalGroupPtrOutput)
 }
 
-func (i *getPodSecurityPolicyTemplateSupplementalGroupPtrType) ToOutput(ctx context.Context) pulumix.Output[*GetPodSecurityPolicyTemplateSupplementalGroup] {
-	return pulumix.Output[*GetPodSecurityPolicyTemplateSupplementalGroup]{
-		OutputState: i.ToGetPodSecurityPolicyTemplateSupplementalGroupPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetPodSecurityPolicyTemplateSupplementalGroupOutput struct{ *pulumi.OutputState }
 
 func (GetPodSecurityPolicyTemplateSupplementalGroupOutput) ElementType() reflect.Type {
@@ -796,12 +687,6 @@ func (o GetPodSecurityPolicyTemplateSupplementalGroupOutput) ToGetPodSecurityPol
 	}).(GetPodSecurityPolicyTemplateSupplementalGroupPtrOutput)
 }
 
-func (o GetPodSecurityPolicyTemplateSupplementalGroupOutput) ToOutput(ctx context.Context) pulumix.Output[GetPodSecurityPolicyTemplateSupplementalGroup] {
-	return pulumix.Output[GetPodSecurityPolicyTemplateSupplementalGroup]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetPodSecurityPolicyTemplateSupplementalGroupOutput) Ranges() GetPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput {
 	return o.ApplyT(func(v GetPodSecurityPolicyTemplateSupplementalGroup) []GetPodSecurityPolicyTemplateSupplementalGroupRange {
 		return v.Ranges
@@ -824,12 +709,6 @@ func (o GetPodSecurityPolicyTemplateSupplementalGroupPtrOutput) ToGetPodSecurity
 
 func (o GetPodSecurityPolicyTemplateSupplementalGroupPtrOutput) ToGetPodSecurityPolicyTemplateSupplementalGroupPtrOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateSupplementalGroupPtrOutput {
 	return o
-}
-
-func (o GetPodSecurityPolicyTemplateSupplementalGroupPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GetPodSecurityPolicyTemplateSupplementalGroup] {
-	return pulumix.Output[*GetPodSecurityPolicyTemplateSupplementalGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetPodSecurityPolicyTemplateSupplementalGroupPtrOutput) Elem() GetPodSecurityPolicyTemplateSupplementalGroupOutput {
@@ -893,12 +772,6 @@ func (i GetPodSecurityPolicyTemplateSupplementalGroupRangeArgs) ToGetPodSecurity
 	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateSupplementalGroupRangeOutput)
 }
 
-func (i GetPodSecurityPolicyTemplateSupplementalGroupRangeArgs) ToOutput(ctx context.Context) pulumix.Output[GetPodSecurityPolicyTemplateSupplementalGroupRange] {
-	return pulumix.Output[GetPodSecurityPolicyTemplateSupplementalGroupRange]{
-		OutputState: i.ToGetPodSecurityPolicyTemplateSupplementalGroupRangeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetPodSecurityPolicyTemplateSupplementalGroupRangeArrayInput is an input type that accepts GetPodSecurityPolicyTemplateSupplementalGroupRangeArray and GetPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput values.
 // You can construct a concrete instance of `GetPodSecurityPolicyTemplateSupplementalGroupRangeArrayInput` via:
 //
@@ -924,12 +797,6 @@ func (i GetPodSecurityPolicyTemplateSupplementalGroupRangeArray) ToGetPodSecurit
 	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput)
 }
 
-func (i GetPodSecurityPolicyTemplateSupplementalGroupRangeArray) ToOutput(ctx context.Context) pulumix.Output[[]GetPodSecurityPolicyTemplateSupplementalGroupRange] {
-	return pulumix.Output[[]GetPodSecurityPolicyTemplateSupplementalGroupRange]{
-		OutputState: i.ToGetPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetPodSecurityPolicyTemplateSupplementalGroupRangeOutput struct{ *pulumi.OutputState }
 
 func (GetPodSecurityPolicyTemplateSupplementalGroupRangeOutput) ElementType() reflect.Type {
@@ -942,12 +809,6 @@ func (o GetPodSecurityPolicyTemplateSupplementalGroupRangeOutput) ToGetPodSecuri
 
 func (o GetPodSecurityPolicyTemplateSupplementalGroupRangeOutput) ToGetPodSecurityPolicyTemplateSupplementalGroupRangeOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateSupplementalGroupRangeOutput {
 	return o
-}
-
-func (o GetPodSecurityPolicyTemplateSupplementalGroupRangeOutput) ToOutput(ctx context.Context) pulumix.Output[GetPodSecurityPolicyTemplateSupplementalGroupRange] {
-	return pulumix.Output[GetPodSecurityPolicyTemplateSupplementalGroupRange]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetPodSecurityPolicyTemplateSupplementalGroupRangeOutput) Max() pulumi.IntOutput {
@@ -970,12 +831,6 @@ func (o GetPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput) ToGetPodS
 
 func (o GetPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput) ToGetPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput {
 	return o
-}
-
-func (o GetPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetPodSecurityPolicyTemplateSupplementalGroupRange] {
-	return pulumix.Output[[]GetPodSecurityPolicyTemplateSupplementalGroupRange]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput) Index(i pulumi.IntInput) GetPodSecurityPolicyTemplateSupplementalGroupRangeOutput {
@@ -1021,12 +876,6 @@ func (i GetProjectAlertGroupRecipientArgs) ToGetProjectAlertGroupRecipientOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetProjectAlertGroupRecipientOutput)
 }
 
-func (i GetProjectAlertGroupRecipientArgs) ToOutput(ctx context.Context) pulumix.Output[GetProjectAlertGroupRecipient] {
-	return pulumix.Output[GetProjectAlertGroupRecipient]{
-		OutputState: i.ToGetProjectAlertGroupRecipientOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetProjectAlertGroupRecipientArrayInput is an input type that accepts GetProjectAlertGroupRecipientArray and GetProjectAlertGroupRecipientArrayOutput values.
 // You can construct a concrete instance of `GetProjectAlertGroupRecipientArrayInput` via:
 //
@@ -1052,12 +901,6 @@ func (i GetProjectAlertGroupRecipientArray) ToGetProjectAlertGroupRecipientArray
 	return pulumi.ToOutputWithContext(ctx, i).(GetProjectAlertGroupRecipientArrayOutput)
 }
 
-func (i GetProjectAlertGroupRecipientArray) ToOutput(ctx context.Context) pulumix.Output[[]GetProjectAlertGroupRecipient] {
-	return pulumix.Output[[]GetProjectAlertGroupRecipient]{
-		OutputState: i.ToGetProjectAlertGroupRecipientArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetProjectAlertGroupRecipientOutput struct{ *pulumi.OutputState }
 
 func (GetProjectAlertGroupRecipientOutput) ElementType() reflect.Type {
@@ -1070,12 +913,6 @@ func (o GetProjectAlertGroupRecipientOutput) ToGetProjectAlertGroupRecipientOutp
 
 func (o GetProjectAlertGroupRecipientOutput) ToGetProjectAlertGroupRecipientOutputWithContext(ctx context.Context) GetProjectAlertGroupRecipientOutput {
 	return o
-}
-
-func (o GetProjectAlertGroupRecipientOutput) ToOutput(ctx context.Context) pulumix.Output[GetProjectAlertGroupRecipient] {
-	return pulumix.Output[GetProjectAlertGroupRecipient]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetProjectAlertGroupRecipientOutput) DefaultRecipient() pulumi.BoolPtrOutput {
@@ -1106,12 +943,6 @@ func (o GetProjectAlertGroupRecipientArrayOutput) ToGetProjectAlertGroupRecipien
 
 func (o GetProjectAlertGroupRecipientArrayOutput) ToGetProjectAlertGroupRecipientArrayOutputWithContext(ctx context.Context) GetProjectAlertGroupRecipientArrayOutput {
 	return o
-}
-
-func (o GetProjectAlertGroupRecipientArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetProjectAlertGroupRecipient] {
-	return pulumix.Output[[]GetProjectAlertGroupRecipient]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetProjectAlertGroupRecipientArrayOutput) Index(i pulumi.IntInput) GetProjectAlertGroupRecipientOutput {
@@ -1159,12 +990,6 @@ func (i GetProjectAlertRuleMetricRuleArgs) ToGetProjectAlertRuleMetricRuleOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetProjectAlertRuleMetricRuleOutput)
 }
 
-func (i GetProjectAlertRuleMetricRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GetProjectAlertRuleMetricRule] {
-	return pulumix.Output[GetProjectAlertRuleMetricRule]{
-		OutputState: i.ToGetProjectAlertRuleMetricRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetProjectAlertRuleMetricRuleOutput struct{ *pulumi.OutputState }
 
 func (GetProjectAlertRuleMetricRuleOutput) ElementType() reflect.Type {
@@ -1177,12 +1002,6 @@ func (o GetProjectAlertRuleMetricRuleOutput) ToGetProjectAlertRuleMetricRuleOutp
 
 func (o GetProjectAlertRuleMetricRuleOutput) ToGetProjectAlertRuleMetricRuleOutputWithContext(ctx context.Context) GetProjectAlertRuleMetricRuleOutput {
 	return o
-}
-
-func (o GetProjectAlertRuleMetricRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GetProjectAlertRuleMetricRule] {
-	return pulumix.Output[GetProjectAlertRuleMetricRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetProjectAlertRuleMetricRuleOutput) Comparison() pulumi.StringPtrOutput {
@@ -1242,12 +1061,6 @@ func (i GetProjectAlertRulePodRuleArgs) ToGetProjectAlertRulePodRuleOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetProjectAlertRulePodRuleOutput)
 }
 
-func (i GetProjectAlertRulePodRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GetProjectAlertRulePodRule] {
-	return pulumix.Output[GetProjectAlertRulePodRule]{
-		OutputState: i.ToGetProjectAlertRulePodRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetProjectAlertRulePodRuleOutput struct{ *pulumi.OutputState }
 
 func (GetProjectAlertRulePodRuleOutput) ElementType() reflect.Type {
@@ -1260,12 +1073,6 @@ func (o GetProjectAlertRulePodRuleOutput) ToGetProjectAlertRulePodRuleOutput() G
 
 func (o GetProjectAlertRulePodRuleOutput) ToGetProjectAlertRulePodRuleOutputWithContext(ctx context.Context) GetProjectAlertRulePodRuleOutput {
 	return o
-}
-
-func (o GetProjectAlertRulePodRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GetProjectAlertRulePodRule] {
-	return pulumix.Output[GetProjectAlertRulePodRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetProjectAlertRulePodRuleOutput) Condition() pulumi.StringPtrOutput {
@@ -1319,12 +1126,6 @@ func (i GetProjectAlertRuleWorkloadRuleArgs) ToGetProjectAlertRuleWorkloadRuleOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetProjectAlertRuleWorkloadRuleOutput)
 }
 
-func (i GetProjectAlertRuleWorkloadRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GetProjectAlertRuleWorkloadRule] {
-	return pulumix.Output[GetProjectAlertRuleWorkloadRule]{
-		OutputState: i.ToGetProjectAlertRuleWorkloadRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetProjectAlertRuleWorkloadRuleOutput struct{ *pulumi.OutputState }
 
 func (GetProjectAlertRuleWorkloadRuleOutput) ElementType() reflect.Type {
@@ -1337,12 +1138,6 @@ func (o GetProjectAlertRuleWorkloadRuleOutput) ToGetProjectAlertRuleWorkloadRule
 
 func (o GetProjectAlertRuleWorkloadRuleOutput) ToGetProjectAlertRuleWorkloadRuleOutputWithContext(ctx context.Context) GetProjectAlertRuleWorkloadRuleOutput {
 	return o
-}
-
-func (o GetProjectAlertRuleWorkloadRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GetProjectAlertRuleWorkloadRule] {
-	return pulumix.Output[GetProjectAlertRuleWorkloadRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetProjectAlertRuleWorkloadRuleOutput) AvailablePercentage() pulumi.IntPtrOutput {
@@ -1394,12 +1189,6 @@ func (i GetProjectContainerResourceLimitArgs) ToGetProjectContainerResourceLimit
 	return pulumi.ToOutputWithContext(ctx, i).(GetProjectContainerResourceLimitOutput)
 }
 
-func (i GetProjectContainerResourceLimitArgs) ToOutput(ctx context.Context) pulumix.Output[GetProjectContainerResourceLimit] {
-	return pulumix.Output[GetProjectContainerResourceLimit]{
-		OutputState: i.ToGetProjectContainerResourceLimitOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetProjectContainerResourceLimitOutput struct{ *pulumi.OutputState }
 
 func (GetProjectContainerResourceLimitOutput) ElementType() reflect.Type {
@@ -1412,12 +1201,6 @@ func (o GetProjectContainerResourceLimitOutput) ToGetProjectContainerResourceLim
 
 func (o GetProjectContainerResourceLimitOutput) ToGetProjectContainerResourceLimitOutputWithContext(ctx context.Context) GetProjectContainerResourceLimitOutput {
 	return o
-}
-
-func (o GetProjectContainerResourceLimitOutput) ToOutput(ctx context.Context) pulumix.Output[GetProjectContainerResourceLimit] {
-	return pulumix.Output[GetProjectContainerResourceLimit]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetProjectContainerResourceLimitOutput) LimitsCpu() pulumi.StringPtrOutput {
@@ -1469,12 +1252,6 @@ func (i GetProjectResourceQuotaArgs) ToGetProjectResourceQuotaOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetProjectResourceQuotaOutput)
 }
 
-func (i GetProjectResourceQuotaArgs) ToOutput(ctx context.Context) pulumix.Output[GetProjectResourceQuota] {
-	return pulumix.Output[GetProjectResourceQuota]{
-		OutputState: i.ToGetProjectResourceQuotaOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetProjectResourceQuotaOutput struct{ *pulumi.OutputState }
 
 func (GetProjectResourceQuotaOutput) ElementType() reflect.Type {
@@ -1487,12 +1264,6 @@ func (o GetProjectResourceQuotaOutput) ToGetProjectResourceQuotaOutput() GetProj
 
 func (o GetProjectResourceQuotaOutput) ToGetProjectResourceQuotaOutputWithContext(ctx context.Context) GetProjectResourceQuotaOutput {
 	return o
-}
-
-func (o GetProjectResourceQuotaOutput) ToOutput(ctx context.Context) pulumix.Output[GetProjectResourceQuota] {
-	return pulumix.Output[GetProjectResourceQuota]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetProjectResourceQuotaOutput) NamespaceDefaultLimit() GetProjectResourceQuotaNamespaceDefaultLimitOutput {
@@ -1560,12 +1331,6 @@ func (i GetProjectResourceQuotaNamespaceDefaultLimitArgs) ToGetProjectResourceQu
 	return pulumi.ToOutputWithContext(ctx, i).(GetProjectResourceQuotaNamespaceDefaultLimitOutput)
 }
 
-func (i GetProjectResourceQuotaNamespaceDefaultLimitArgs) ToOutput(ctx context.Context) pulumix.Output[GetProjectResourceQuotaNamespaceDefaultLimit] {
-	return pulumix.Output[GetProjectResourceQuotaNamespaceDefaultLimit]{
-		OutputState: i.ToGetProjectResourceQuotaNamespaceDefaultLimitOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetProjectResourceQuotaNamespaceDefaultLimitOutput struct{ *pulumi.OutputState }
 
 func (GetProjectResourceQuotaNamespaceDefaultLimitOutput) ElementType() reflect.Type {
@@ -1578,12 +1343,6 @@ func (o GetProjectResourceQuotaNamespaceDefaultLimitOutput) ToGetProjectResource
 
 func (o GetProjectResourceQuotaNamespaceDefaultLimitOutput) ToGetProjectResourceQuotaNamespaceDefaultLimitOutputWithContext(ctx context.Context) GetProjectResourceQuotaNamespaceDefaultLimitOutput {
 	return o
-}
-
-func (o GetProjectResourceQuotaNamespaceDefaultLimitOutput) ToOutput(ctx context.Context) pulumix.Output[GetProjectResourceQuotaNamespaceDefaultLimit] {
-	return pulumix.Output[GetProjectResourceQuotaNamespaceDefaultLimit]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetProjectResourceQuotaNamespaceDefaultLimitOutput) ConfigMaps() pulumi.StringPtrOutput {
@@ -1693,12 +1452,6 @@ func (i GetProjectResourceQuotaProjectLimitArgs) ToGetProjectResourceQuotaProjec
 	return pulumi.ToOutputWithContext(ctx, i).(GetProjectResourceQuotaProjectLimitOutput)
 }
 
-func (i GetProjectResourceQuotaProjectLimitArgs) ToOutput(ctx context.Context) pulumix.Output[GetProjectResourceQuotaProjectLimit] {
-	return pulumix.Output[GetProjectResourceQuotaProjectLimit]{
-		OutputState: i.ToGetProjectResourceQuotaProjectLimitOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetProjectResourceQuotaProjectLimitOutput struct{ *pulumi.OutputState }
 
 func (GetProjectResourceQuotaProjectLimitOutput) ElementType() reflect.Type {
@@ -1711,12 +1464,6 @@ func (o GetProjectResourceQuotaProjectLimitOutput) ToGetProjectResourceQuotaProj
 
 func (o GetProjectResourceQuotaProjectLimitOutput) ToGetProjectResourceQuotaProjectLimitOutputWithContext(ctx context.Context) GetProjectResourceQuotaProjectLimitOutput {
 	return o
-}
-
-func (o GetProjectResourceQuotaProjectLimitOutput) ToOutput(ctx context.Context) pulumix.Output[GetProjectResourceQuotaProjectLimit] {
-	return pulumix.Output[GetProjectResourceQuotaProjectLimit]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetProjectResourceQuotaProjectLimitOutput) ConfigMaps() pulumi.StringPtrOutput {
@@ -1806,12 +1553,6 @@ func (i GetRegistryRegistryArgs) ToGetRegistryRegistryOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetRegistryRegistryOutput)
 }
 
-func (i GetRegistryRegistryArgs) ToOutput(ctx context.Context) pulumix.Output[GetRegistryRegistry] {
-	return pulumix.Output[GetRegistryRegistry]{
-		OutputState: i.ToGetRegistryRegistryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetRegistryRegistryArrayInput is an input type that accepts GetRegistryRegistryArray and GetRegistryRegistryArrayOutput values.
 // You can construct a concrete instance of `GetRegistryRegistryArrayInput` via:
 //
@@ -1837,12 +1578,6 @@ func (i GetRegistryRegistryArray) ToGetRegistryRegistryArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetRegistryRegistryArrayOutput)
 }
 
-func (i GetRegistryRegistryArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRegistryRegistry] {
-	return pulumix.Output[[]GetRegistryRegistry]{
-		OutputState: i.ToGetRegistryRegistryArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetRegistryRegistryOutput struct{ *pulumi.OutputState }
 
 func (GetRegistryRegistryOutput) ElementType() reflect.Type {
@@ -1855,12 +1590,6 @@ func (o GetRegistryRegistryOutput) ToGetRegistryRegistryOutput() GetRegistryRegi
 
 func (o GetRegistryRegistryOutput) ToGetRegistryRegistryOutputWithContext(ctx context.Context) GetRegistryRegistryOutput {
 	return o
-}
-
-func (o GetRegistryRegistryOutput) ToOutput(ctx context.Context) pulumix.Output[GetRegistryRegistry] {
-	return pulumix.Output[GetRegistryRegistry]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRegistryRegistryOutput) Address() pulumi.StringOutput {
@@ -1887,12 +1616,6 @@ func (o GetRegistryRegistryArrayOutput) ToGetRegistryRegistryArrayOutput() GetRe
 
 func (o GetRegistryRegistryArrayOutput) ToGetRegistryRegistryArrayOutputWithContext(ctx context.Context) GetRegistryRegistryArrayOutput {
 	return o
-}
-
-func (o GetRegistryRegistryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRegistryRegistry] {
-	return pulumix.Output[[]GetRegistryRegistry]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRegistryRegistryArrayOutput) Index(i pulumi.IntInput) GetRegistryRegistryOutput {
@@ -1940,12 +1663,6 @@ func (i GetRoleTempalteRuleArgs) ToGetRoleTempalteRuleOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetRoleTempalteRuleOutput)
 }
 
-func (i GetRoleTempalteRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GetRoleTempalteRule] {
-	return pulumix.Output[GetRoleTempalteRule]{
-		OutputState: i.ToGetRoleTempalteRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetRoleTempalteRuleArrayInput is an input type that accepts GetRoleTempalteRuleArray and GetRoleTempalteRuleArrayOutput values.
 // You can construct a concrete instance of `GetRoleTempalteRuleArrayInput` via:
 //
@@ -1971,12 +1688,6 @@ func (i GetRoleTempalteRuleArray) ToGetRoleTempalteRuleArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetRoleTempalteRuleArrayOutput)
 }
 
-func (i GetRoleTempalteRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRoleTempalteRule] {
-	return pulumix.Output[[]GetRoleTempalteRule]{
-		OutputState: i.ToGetRoleTempalteRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetRoleTempalteRuleOutput struct{ *pulumi.OutputState }
 
 func (GetRoleTempalteRuleOutput) ElementType() reflect.Type {
@@ -1989,12 +1700,6 @@ func (o GetRoleTempalteRuleOutput) ToGetRoleTempalteRuleOutput() GetRoleTempalte
 
 func (o GetRoleTempalteRuleOutput) ToGetRoleTempalteRuleOutputWithContext(ctx context.Context) GetRoleTempalteRuleOutput {
 	return o
-}
-
-func (o GetRoleTempalteRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GetRoleTempalteRule] {
-	return pulumix.Output[GetRoleTempalteRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRoleTempalteRuleOutput) ApiGroups() pulumi.StringArrayOutput {
@@ -2029,12 +1734,6 @@ func (o GetRoleTempalteRuleArrayOutput) ToGetRoleTempalteRuleArrayOutput() GetRo
 
 func (o GetRoleTempalteRuleArrayOutput) ToGetRoleTempalteRuleArrayOutputWithContext(ctx context.Context) GetRoleTempalteRuleArrayOutput {
 	return o
-}
-
-func (o GetRoleTempalteRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRoleTempalteRule] {
-	return pulumix.Output[[]GetRoleTempalteRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRoleTempalteRuleArrayOutput) Index(i pulumi.IntInput) GetRoleTempalteRuleOutput {
@@ -2082,12 +1781,6 @@ func (i GetRoleTemplateRuleArgs) ToGetRoleTemplateRuleOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetRoleTemplateRuleOutput)
 }
 
-func (i GetRoleTemplateRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GetRoleTemplateRule] {
-	return pulumix.Output[GetRoleTemplateRule]{
-		OutputState: i.ToGetRoleTemplateRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetRoleTemplateRuleArrayInput is an input type that accepts GetRoleTemplateRuleArray and GetRoleTemplateRuleArrayOutput values.
 // You can construct a concrete instance of `GetRoleTemplateRuleArrayInput` via:
 //
@@ -2113,12 +1806,6 @@ func (i GetRoleTemplateRuleArray) ToGetRoleTemplateRuleArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetRoleTemplateRuleArrayOutput)
 }
 
-func (i GetRoleTemplateRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRoleTemplateRule] {
-	return pulumix.Output[[]GetRoleTemplateRule]{
-		OutputState: i.ToGetRoleTemplateRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetRoleTemplateRuleOutput struct{ *pulumi.OutputState }
 
 func (GetRoleTemplateRuleOutput) ElementType() reflect.Type {
@@ -2131,12 +1818,6 @@ func (o GetRoleTemplateRuleOutput) ToGetRoleTemplateRuleOutput() GetRoleTemplate
 
 func (o GetRoleTemplateRuleOutput) ToGetRoleTemplateRuleOutputWithContext(ctx context.Context) GetRoleTemplateRuleOutput {
 	return o
-}
-
-func (o GetRoleTemplateRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GetRoleTemplateRule] {
-	return pulumix.Output[GetRoleTemplateRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRoleTemplateRuleOutput) ApiGroups() pulumi.StringArrayOutput {
@@ -2171,12 +1852,6 @@ func (o GetRoleTemplateRuleArrayOutput) ToGetRoleTemplateRuleArrayOutput() GetRo
 
 func (o GetRoleTemplateRuleArrayOutput) ToGetRoleTemplateRuleArrayOutputWithContext(ctx context.Context) GetRoleTemplateRuleArrayOutput {
 	return o
-}
-
-func (o GetRoleTemplateRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRoleTemplateRule] {
-	return pulumix.Output[[]GetRoleTemplateRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRoleTemplateRuleArrayOutput) Index(i pulumi.IntInput) GetRoleTemplateRuleOutput {

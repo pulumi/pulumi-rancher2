@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -292,12 +291,6 @@ func (i *AuthConfigAzureAd) ToAuthConfigAzureAdOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigAzureAdOutput)
 }
 
-func (i *AuthConfigAzureAd) ToOutput(ctx context.Context) pulumix.Output[*AuthConfigAzureAd] {
-	return pulumix.Output[*AuthConfigAzureAd]{
-		OutputState: i.ToAuthConfigAzureAdOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AuthConfigAzureAdArrayInput is an input type that accepts AuthConfigAzureAdArray and AuthConfigAzureAdArrayOutput values.
 // You can construct a concrete instance of `AuthConfigAzureAdArrayInput` via:
 //
@@ -321,12 +314,6 @@ func (i AuthConfigAzureAdArray) ToAuthConfigAzureAdArrayOutput() AuthConfigAzure
 
 func (i AuthConfigAzureAdArray) ToAuthConfigAzureAdArrayOutputWithContext(ctx context.Context) AuthConfigAzureAdArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigAzureAdArrayOutput)
-}
-
-func (i AuthConfigAzureAdArray) ToOutput(ctx context.Context) pulumix.Output[[]*AuthConfigAzureAd] {
-	return pulumix.Output[[]*AuthConfigAzureAd]{
-		OutputState: i.ToAuthConfigAzureAdArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AuthConfigAzureAdMapInput is an input type that accepts AuthConfigAzureAdMap and AuthConfigAzureAdMapOutput values.
@@ -354,12 +341,6 @@ func (i AuthConfigAzureAdMap) ToAuthConfigAzureAdMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigAzureAdMapOutput)
 }
 
-func (i AuthConfigAzureAdMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AuthConfigAzureAd] {
-	return pulumix.Output[map[string]*AuthConfigAzureAd]{
-		OutputState: i.ToAuthConfigAzureAdMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AuthConfigAzureAdOutput struct{ *pulumi.OutputState }
 
 func (AuthConfigAzureAdOutput) ElementType() reflect.Type {
@@ -372,12 +353,6 @@ func (o AuthConfigAzureAdOutput) ToAuthConfigAzureAdOutput() AuthConfigAzureAdOu
 
 func (o AuthConfigAzureAdOutput) ToAuthConfigAzureAdOutputWithContext(ctx context.Context) AuthConfigAzureAdOutput {
 	return o
-}
-
-func (o AuthConfigAzureAdOutput) ToOutput(ctx context.Context) pulumix.Output[*AuthConfigAzureAd] {
-	return pulumix.Output[*AuthConfigAzureAd]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -469,12 +444,6 @@ func (o AuthConfigAzureAdArrayOutput) ToAuthConfigAzureAdArrayOutputWithContext(
 	return o
 }
 
-func (o AuthConfigAzureAdArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AuthConfigAzureAd] {
-	return pulumix.Output[[]*AuthConfigAzureAd]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AuthConfigAzureAdArrayOutput) Index(i pulumi.IntInput) AuthConfigAzureAdOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AuthConfigAzureAd {
 		return vs[0].([]*AuthConfigAzureAd)[vs[1].(int)]
@@ -493,12 +462,6 @@ func (o AuthConfigAzureAdMapOutput) ToAuthConfigAzureAdMapOutput() AuthConfigAzu
 
 func (o AuthConfigAzureAdMapOutput) ToAuthConfigAzureAdMapOutputWithContext(ctx context.Context) AuthConfigAzureAdMapOutput {
 	return o
-}
-
-func (o AuthConfigAzureAdMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AuthConfigAzureAd] {
-	return pulumix.Output[map[string]*AuthConfigAzureAd]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuthConfigAzureAdMapOutput) MapIndex(k pulumi.StringInput) AuthConfigAzureAdOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Rancher ConfigMap v2 resource. This can be used to create k8s configMaps for Rancher v2 environments and retrieve their information. ConfigMap v2 resource is available at Rancher v2.5.x and above.
@@ -180,12 +179,6 @@ func (i *ConfigMapV2) ToConfigMapV2OutputWithContext(ctx context.Context) Config
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigMapV2Output)
 }
 
-func (i *ConfigMapV2) ToOutput(ctx context.Context) pulumix.Output[*ConfigMapV2] {
-	return pulumix.Output[*ConfigMapV2]{
-		OutputState: i.ToConfigMapV2OutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConfigMapV2ArrayInput is an input type that accepts ConfigMapV2Array and ConfigMapV2ArrayOutput values.
 // You can construct a concrete instance of `ConfigMapV2ArrayInput` via:
 //
@@ -209,12 +202,6 @@ func (i ConfigMapV2Array) ToConfigMapV2ArrayOutput() ConfigMapV2ArrayOutput {
 
 func (i ConfigMapV2Array) ToConfigMapV2ArrayOutputWithContext(ctx context.Context) ConfigMapV2ArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigMapV2ArrayOutput)
-}
-
-func (i ConfigMapV2Array) ToOutput(ctx context.Context) pulumix.Output[[]*ConfigMapV2] {
-	return pulumix.Output[[]*ConfigMapV2]{
-		OutputState: i.ToConfigMapV2ArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ConfigMapV2MapInput is an input type that accepts ConfigMapV2Map and ConfigMapV2MapOutput values.
@@ -242,12 +229,6 @@ func (i ConfigMapV2Map) ToConfigMapV2MapOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigMapV2MapOutput)
 }
 
-func (i ConfigMapV2Map) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConfigMapV2] {
-	return pulumix.Output[map[string]*ConfigMapV2]{
-		OutputState: i.ToConfigMapV2MapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConfigMapV2Output struct{ *pulumi.OutputState }
 
 func (ConfigMapV2Output) ElementType() reflect.Type {
@@ -260,12 +241,6 @@ func (o ConfigMapV2Output) ToConfigMapV2Output() ConfigMapV2Output {
 
 func (o ConfigMapV2Output) ToConfigMapV2OutputWithContext(ctx context.Context) ConfigMapV2Output {
 	return o
-}
-
-func (o ConfigMapV2Output) ToOutput(ctx context.Context) pulumix.Output[*ConfigMapV2] {
-	return pulumix.Output[*ConfigMapV2]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Annotations for the configMap v2 (map)
@@ -322,12 +297,6 @@ func (o ConfigMapV2ArrayOutput) ToConfigMapV2ArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o ConfigMapV2ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ConfigMapV2] {
-	return pulumix.Output[[]*ConfigMapV2]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConfigMapV2ArrayOutput) Index(i pulumi.IntInput) ConfigMapV2Output {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ConfigMapV2 {
 		return vs[0].([]*ConfigMapV2)[vs[1].(int)]
@@ -346,12 +315,6 @@ func (o ConfigMapV2MapOutput) ToConfigMapV2MapOutput() ConfigMapV2MapOutput {
 
 func (o ConfigMapV2MapOutput) ToConfigMapV2MapOutputWithContext(ctx context.Context) ConfigMapV2MapOutput {
 	return o
-}
-
-func (o ConfigMapV2MapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConfigMapV2] {
-	return pulumix.Output[map[string]*ConfigMapV2]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConfigMapV2MapOutput) MapIndex(k pulumi.StringInput) ConfigMapV2Output {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Rancher App v2 resource. This can be used to manage helm charts for Rancher v2 environments and retrieve their information. App v2 resource is available at Rancher v2.5.x and above.
@@ -325,12 +324,6 @@ func (i *AppV2) ToAppV2OutputWithContext(ctx context.Context) AppV2Output {
 	return pulumi.ToOutputWithContext(ctx, i).(AppV2Output)
 }
 
-func (i *AppV2) ToOutput(ctx context.Context) pulumix.Output[*AppV2] {
-	return pulumix.Output[*AppV2]{
-		OutputState: i.ToAppV2OutputWithContext(ctx).OutputState,
-	}
-}
-
 // AppV2ArrayInput is an input type that accepts AppV2Array and AppV2ArrayOutput values.
 // You can construct a concrete instance of `AppV2ArrayInput` via:
 //
@@ -354,12 +347,6 @@ func (i AppV2Array) ToAppV2ArrayOutput() AppV2ArrayOutput {
 
 func (i AppV2Array) ToAppV2ArrayOutputWithContext(ctx context.Context) AppV2ArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AppV2ArrayOutput)
-}
-
-func (i AppV2Array) ToOutput(ctx context.Context) pulumix.Output[[]*AppV2] {
-	return pulumix.Output[[]*AppV2]{
-		OutputState: i.ToAppV2ArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AppV2MapInput is an input type that accepts AppV2Map and AppV2MapOutput values.
@@ -387,12 +374,6 @@ func (i AppV2Map) ToAppV2MapOutputWithContext(ctx context.Context) AppV2MapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(AppV2MapOutput)
 }
 
-func (i AppV2Map) ToOutput(ctx context.Context) pulumix.Output[map[string]*AppV2] {
-	return pulumix.Output[map[string]*AppV2]{
-		OutputState: i.ToAppV2MapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AppV2Output struct{ *pulumi.OutputState }
 
 func (AppV2Output) ElementType() reflect.Type {
@@ -405,12 +386,6 @@ func (o AppV2Output) ToAppV2Output() AppV2Output {
 
 func (o AppV2Output) ToAppV2OutputWithContext(ctx context.Context) AppV2Output {
 	return o
-}
-
-func (o AppV2Output) ToOutput(ctx context.Context) pulumix.Output[*AppV2] {
-	return pulumix.Output[*AppV2]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Annotations for the app v2 (map)
@@ -519,12 +494,6 @@ func (o AppV2ArrayOutput) ToAppV2ArrayOutputWithContext(ctx context.Context) App
 	return o
 }
 
-func (o AppV2ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AppV2] {
-	return pulumix.Output[[]*AppV2]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AppV2ArrayOutput) Index(i pulumi.IntInput) AppV2Output {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AppV2 {
 		return vs[0].([]*AppV2)[vs[1].(int)]
@@ -543,12 +512,6 @@ func (o AppV2MapOutput) ToAppV2MapOutput() AppV2MapOutput {
 
 func (o AppV2MapOutput) ToAppV2MapOutputWithContext(ctx context.Context) AppV2MapOutput {
 	return o
-}
-
-func (o AppV2MapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AppV2] {
-	return pulumix.Output[map[string]*AppV2]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AppV2MapOutput) MapIndex(k pulumi.StringInput) AppV2Output {

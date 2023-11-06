@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about a Rancher v2 project alert rule.
@@ -130,12 +129,6 @@ func (o LookupProjectAlertRuleResultOutput) ToLookupProjectAlertRuleResultOutput
 
 func (o LookupProjectAlertRuleResultOutput) ToLookupProjectAlertRuleResultOutputWithContext(ctx context.Context) LookupProjectAlertRuleResultOutput {
 	return o
-}
-
-func (o LookupProjectAlertRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupProjectAlertRuleResult] {
-	return pulumix.Output[LookupProjectAlertRuleResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) The project alert rule annotations (map)
