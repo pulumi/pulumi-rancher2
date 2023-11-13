@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Rancher v2 Setting resource. This can be used to create settings for Rancher v2 environments and retrieve their information.
@@ -171,12 +170,6 @@ func (i *Setting) ToSettingOutputWithContext(ctx context.Context) SettingOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(SettingOutput)
 }
 
-func (i *Setting) ToOutput(ctx context.Context) pulumix.Output[*Setting] {
-	return pulumix.Output[*Setting]{
-		OutputState: i.ToSettingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SettingArrayInput is an input type that accepts SettingArray and SettingArrayOutput values.
 // You can construct a concrete instance of `SettingArrayInput` via:
 //
@@ -200,12 +193,6 @@ func (i SettingArray) ToSettingArrayOutput() SettingArrayOutput {
 
 func (i SettingArray) ToSettingArrayOutputWithContext(ctx context.Context) SettingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SettingArrayOutput)
-}
-
-func (i SettingArray) ToOutput(ctx context.Context) pulumix.Output[[]*Setting] {
-	return pulumix.Output[[]*Setting]{
-		OutputState: i.ToSettingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SettingMapInput is an input type that accepts SettingMap and SettingMapOutput values.
@@ -233,12 +220,6 @@ func (i SettingMap) ToSettingMapOutputWithContext(ctx context.Context) SettingMa
 	return pulumi.ToOutputWithContext(ctx, i).(SettingMapOutput)
 }
 
-func (i SettingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Setting] {
-	return pulumix.Output[map[string]*Setting]{
-		OutputState: i.ToSettingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SettingOutput struct{ *pulumi.OutputState }
 
 func (SettingOutput) ElementType() reflect.Type {
@@ -251,12 +232,6 @@ func (o SettingOutput) ToSettingOutput() SettingOutput {
 
 func (o SettingOutput) ToSettingOutputWithContext(ctx context.Context) SettingOutput {
 	return o
-}
-
-func (o SettingOutput) ToOutput(ctx context.Context) pulumix.Output[*Setting] {
-	return pulumix.Output[*Setting]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Annotations for setting object (map)
@@ -293,12 +268,6 @@ func (o SettingArrayOutput) ToSettingArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o SettingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Setting] {
-	return pulumix.Output[[]*Setting]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SettingArrayOutput) Index(i pulumi.IntInput) SettingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Setting {
 		return vs[0].([]*Setting)[vs[1].(int)]
@@ -317,12 +286,6 @@ func (o SettingMapOutput) ToSettingMapOutput() SettingMapOutput {
 
 func (o SettingMapOutput) ToSettingMapOutputWithContext(ctx context.Context) SettingMapOutput {
 	return o
-}
-
-func (o SettingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Setting] {
-	return pulumix.Output[map[string]*Setting]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SettingMapOutput) MapIndex(k pulumi.StringInput) SettingOutput {

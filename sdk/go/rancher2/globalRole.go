@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Rancher v2 Global Role resource. This can be used to create Global Role for Rancher v2 and retrieve their information.
@@ -203,12 +202,6 @@ func (i *GlobalRole) ToGlobalRoleOutputWithContext(ctx context.Context) GlobalRo
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalRoleOutput)
 }
 
-func (i *GlobalRole) ToOutput(ctx context.Context) pulumix.Output[*GlobalRole] {
-	return pulumix.Output[*GlobalRole]{
-		OutputState: i.ToGlobalRoleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GlobalRoleArrayInput is an input type that accepts GlobalRoleArray and GlobalRoleArrayOutput values.
 // You can construct a concrete instance of `GlobalRoleArrayInput` via:
 //
@@ -232,12 +225,6 @@ func (i GlobalRoleArray) ToGlobalRoleArrayOutput() GlobalRoleArrayOutput {
 
 func (i GlobalRoleArray) ToGlobalRoleArrayOutputWithContext(ctx context.Context) GlobalRoleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalRoleArrayOutput)
-}
-
-func (i GlobalRoleArray) ToOutput(ctx context.Context) pulumix.Output[[]*GlobalRole] {
-	return pulumix.Output[[]*GlobalRole]{
-		OutputState: i.ToGlobalRoleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GlobalRoleMapInput is an input type that accepts GlobalRoleMap and GlobalRoleMapOutput values.
@@ -265,12 +252,6 @@ func (i GlobalRoleMap) ToGlobalRoleMapOutputWithContext(ctx context.Context) Glo
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalRoleMapOutput)
 }
 
-func (i GlobalRoleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GlobalRole] {
-	return pulumix.Output[map[string]*GlobalRole]{
-		OutputState: i.ToGlobalRoleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GlobalRoleOutput struct{ *pulumi.OutputState }
 
 func (GlobalRoleOutput) ElementType() reflect.Type {
@@ -283,12 +264,6 @@ func (o GlobalRoleOutput) ToGlobalRoleOutput() GlobalRoleOutput {
 
 func (o GlobalRoleOutput) ToGlobalRoleOutputWithContext(ctx context.Context) GlobalRoleOutput {
 	return o
-}
-
-func (o GlobalRoleOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalRole] {
-	return pulumix.Output[*GlobalRole]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Annotations for global role object (map)
@@ -340,12 +315,6 @@ func (o GlobalRoleArrayOutput) ToGlobalRoleArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o GlobalRoleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GlobalRole] {
-	return pulumix.Output[[]*GlobalRole]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GlobalRoleArrayOutput) Index(i pulumi.IntInput) GlobalRoleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GlobalRole {
 		return vs[0].([]*GlobalRole)[vs[1].(int)]
@@ -364,12 +333,6 @@ func (o GlobalRoleMapOutput) ToGlobalRoleMapOutput() GlobalRoleMapOutput {
 
 func (o GlobalRoleMapOutput) ToGlobalRoleMapOutputWithContext(ctx context.Context) GlobalRoleMapOutput {
 	return o
-}
-
-func (o GlobalRoleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GlobalRole] {
-	return pulumix.Output[map[string]*GlobalRole]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GlobalRoleMapOutput) MapIndex(k pulumi.StringInput) GlobalRoleOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Rancher v2 Cluster Role Template Binding resource. This can be used to create Cluster Role Template Bindings for Rancher v2 environments and retrieve their information.
@@ -232,12 +231,6 @@ func (i *ClusterRoleTemplateBinding) ToClusterRoleTemplateBindingOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterRoleTemplateBindingOutput)
 }
 
-func (i *ClusterRoleTemplateBinding) ToOutput(ctx context.Context) pulumix.Output[*ClusterRoleTemplateBinding] {
-	return pulumix.Output[*ClusterRoleTemplateBinding]{
-		OutputState: i.ToClusterRoleTemplateBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ClusterRoleTemplateBindingArrayInput is an input type that accepts ClusterRoleTemplateBindingArray and ClusterRoleTemplateBindingArrayOutput values.
 // You can construct a concrete instance of `ClusterRoleTemplateBindingArrayInput` via:
 //
@@ -261,12 +254,6 @@ func (i ClusterRoleTemplateBindingArray) ToClusterRoleTemplateBindingArrayOutput
 
 func (i ClusterRoleTemplateBindingArray) ToClusterRoleTemplateBindingArrayOutputWithContext(ctx context.Context) ClusterRoleTemplateBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterRoleTemplateBindingArrayOutput)
-}
-
-func (i ClusterRoleTemplateBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*ClusterRoleTemplateBinding] {
-	return pulumix.Output[[]*ClusterRoleTemplateBinding]{
-		OutputState: i.ToClusterRoleTemplateBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ClusterRoleTemplateBindingMapInput is an input type that accepts ClusterRoleTemplateBindingMap and ClusterRoleTemplateBindingMapOutput values.
@@ -294,12 +281,6 @@ func (i ClusterRoleTemplateBindingMap) ToClusterRoleTemplateBindingMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterRoleTemplateBindingMapOutput)
 }
 
-func (i ClusterRoleTemplateBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClusterRoleTemplateBinding] {
-	return pulumix.Output[map[string]*ClusterRoleTemplateBinding]{
-		OutputState: i.ToClusterRoleTemplateBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterRoleTemplateBindingOutput struct{ *pulumi.OutputState }
 
 func (ClusterRoleTemplateBindingOutput) ElementType() reflect.Type {
@@ -312,12 +293,6 @@ func (o ClusterRoleTemplateBindingOutput) ToClusterRoleTemplateBindingOutput() C
 
 func (o ClusterRoleTemplateBindingOutput) ToClusterRoleTemplateBindingOutputWithContext(ctx context.Context) ClusterRoleTemplateBindingOutput {
 	return o
-}
-
-func (o ClusterRoleTemplateBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterRoleTemplateBinding] {
-	return pulumix.Output[*ClusterRoleTemplateBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Annotations for cluster role template binding (map)
@@ -381,12 +356,6 @@ func (o ClusterRoleTemplateBindingArrayOutput) ToClusterRoleTemplateBindingArray
 	return o
 }
 
-func (o ClusterRoleTemplateBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ClusterRoleTemplateBinding] {
-	return pulumix.Output[[]*ClusterRoleTemplateBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ClusterRoleTemplateBindingArrayOutput) Index(i pulumi.IntInput) ClusterRoleTemplateBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ClusterRoleTemplateBinding {
 		return vs[0].([]*ClusterRoleTemplateBinding)[vs[1].(int)]
@@ -405,12 +374,6 @@ func (o ClusterRoleTemplateBindingMapOutput) ToClusterRoleTemplateBindingMapOutp
 
 func (o ClusterRoleTemplateBindingMapOutput) ToClusterRoleTemplateBindingMapOutputWithContext(ctx context.Context) ClusterRoleTemplateBindingMapOutput {
 	return o
-}
-
-func (o ClusterRoleTemplateBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClusterRoleTemplateBinding] {
-	return pulumix.Output[map[string]*ClusterRoleTemplateBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterRoleTemplateBindingMapOutput) MapIndex(k pulumi.StringInput) ClusterRoleTemplateBindingOutput {

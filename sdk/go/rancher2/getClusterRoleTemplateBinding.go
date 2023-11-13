@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about a Rancher v2 cluster role template binding.
@@ -121,12 +120,6 @@ func (o LookupClusterRoleTemplateBindingResultOutput) ToLookupClusterRoleTemplat
 
 func (o LookupClusterRoleTemplateBindingResultOutput) ToLookupClusterRoleTemplateBindingResultOutputWithContext(ctx context.Context) LookupClusterRoleTemplateBindingResultOutput {
 	return o
-}
-
-func (o LookupClusterRoleTemplateBindingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupClusterRoleTemplateBindingResult] {
-	return pulumix.Output[LookupClusterRoleTemplateBindingResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) Annotations of the resource (map)

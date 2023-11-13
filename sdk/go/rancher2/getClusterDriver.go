@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about a Rancher v2 Cluster Driver resource.
@@ -119,12 +118,6 @@ func (o LookupClusterDriverResultOutput) ToLookupClusterDriverResultOutput() Loo
 
 func (o LookupClusterDriverResultOutput) ToLookupClusterDriverResultOutputWithContext(ctx context.Context) LookupClusterDriverResultOutput {
 	return o
-}
-
-func (o LookupClusterDriverResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupClusterDriverResult] {
-	return pulumix.Output[LookupClusterDriverResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) Specify if the cluster driver state (bool)

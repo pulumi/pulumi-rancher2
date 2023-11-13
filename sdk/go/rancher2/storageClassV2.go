@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Rancher Storage Class v2 resource. This can be used to manage k8s storage classes for Rancher v2 clusters and retrieve their information. Storage Class v2 resource is available at Rancher v2.5.x and above.
@@ -210,12 +209,6 @@ func (i *StorageClassV2) ToStorageClassV2OutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(StorageClassV2Output)
 }
 
-func (i *StorageClassV2) ToOutput(ctx context.Context) pulumix.Output[*StorageClassV2] {
-	return pulumix.Output[*StorageClassV2]{
-		OutputState: i.ToStorageClassV2OutputWithContext(ctx).OutputState,
-	}
-}
-
 // StorageClassV2ArrayInput is an input type that accepts StorageClassV2Array and StorageClassV2ArrayOutput values.
 // You can construct a concrete instance of `StorageClassV2ArrayInput` via:
 //
@@ -239,12 +232,6 @@ func (i StorageClassV2Array) ToStorageClassV2ArrayOutput() StorageClassV2ArrayOu
 
 func (i StorageClassV2Array) ToStorageClassV2ArrayOutputWithContext(ctx context.Context) StorageClassV2ArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StorageClassV2ArrayOutput)
-}
-
-func (i StorageClassV2Array) ToOutput(ctx context.Context) pulumix.Output[[]*StorageClassV2] {
-	return pulumix.Output[[]*StorageClassV2]{
-		OutputState: i.ToStorageClassV2ArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // StorageClassV2MapInput is an input type that accepts StorageClassV2Map and StorageClassV2MapOutput values.
@@ -272,12 +259,6 @@ func (i StorageClassV2Map) ToStorageClassV2MapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(StorageClassV2MapOutput)
 }
 
-func (i StorageClassV2Map) ToOutput(ctx context.Context) pulumix.Output[map[string]*StorageClassV2] {
-	return pulumix.Output[map[string]*StorageClassV2]{
-		OutputState: i.ToStorageClassV2MapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StorageClassV2Output struct{ *pulumi.OutputState }
 
 func (StorageClassV2Output) ElementType() reflect.Type {
@@ -290,12 +271,6 @@ func (o StorageClassV2Output) ToStorageClassV2Output() StorageClassV2Output {
 
 func (o StorageClassV2Output) ToStorageClassV2OutputWithContext(ctx context.Context) StorageClassV2Output {
 	return o
-}
-
-func (o StorageClassV2Output) ToOutput(ctx context.Context) pulumix.Output[*StorageClassV2] {
-	return pulumix.Output[*StorageClassV2]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Is the provisioner of the storageClass v2 allowing volume expansion? (bool)
@@ -367,12 +342,6 @@ func (o StorageClassV2ArrayOutput) ToStorageClassV2ArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o StorageClassV2ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*StorageClassV2] {
-	return pulumix.Output[[]*StorageClassV2]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o StorageClassV2ArrayOutput) Index(i pulumi.IntInput) StorageClassV2Output {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *StorageClassV2 {
 		return vs[0].([]*StorageClassV2)[vs[1].(int)]
@@ -391,12 +360,6 @@ func (o StorageClassV2MapOutput) ToStorageClassV2MapOutput() StorageClassV2MapOu
 
 func (o StorageClassV2MapOutput) ToStorageClassV2MapOutputWithContext(ctx context.Context) StorageClassV2MapOutput {
 	return o
-}
-
-func (o StorageClassV2MapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*StorageClassV2] {
-	return pulumix.Output[map[string]*StorageClassV2]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StorageClassV2MapOutput) MapIndex(k pulumi.StringInput) StorageClassV2Output {

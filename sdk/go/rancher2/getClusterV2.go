@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about a Rancher v2 cluster.
@@ -130,12 +129,6 @@ func (o LookupClusterV2ResultOutput) ToLookupClusterV2ResultOutput() LookupClust
 
 func (o LookupClusterV2ResultOutput) ToLookupClusterV2ResultOutputWithContext(ctx context.Context) LookupClusterV2ResultOutput {
 	return o
-}
-
-func (o LookupClusterV2ResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupClusterV2Result] {
-	return pulumix.Output[LookupClusterV2Result]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) Optional Agent Env Vars for Rancher agent (list)

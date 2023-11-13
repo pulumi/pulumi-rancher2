@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Rancher v2 Global Role Binding resource. This can be used to create Global Role Bindings for Rancher v2 environments and retrieve their information.
@@ -205,12 +204,6 @@ func (i *GlobalRoleBinding) ToGlobalRoleBindingOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalRoleBindingOutput)
 }
 
-func (i *GlobalRoleBinding) ToOutput(ctx context.Context) pulumix.Output[*GlobalRoleBinding] {
-	return pulumix.Output[*GlobalRoleBinding]{
-		OutputState: i.ToGlobalRoleBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GlobalRoleBindingArrayInput is an input type that accepts GlobalRoleBindingArray and GlobalRoleBindingArrayOutput values.
 // You can construct a concrete instance of `GlobalRoleBindingArrayInput` via:
 //
@@ -234,12 +227,6 @@ func (i GlobalRoleBindingArray) ToGlobalRoleBindingArrayOutput() GlobalRoleBindi
 
 func (i GlobalRoleBindingArray) ToGlobalRoleBindingArrayOutputWithContext(ctx context.Context) GlobalRoleBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalRoleBindingArrayOutput)
-}
-
-func (i GlobalRoleBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*GlobalRoleBinding] {
-	return pulumix.Output[[]*GlobalRoleBinding]{
-		OutputState: i.ToGlobalRoleBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GlobalRoleBindingMapInput is an input type that accepts GlobalRoleBindingMap and GlobalRoleBindingMapOutput values.
@@ -267,12 +254,6 @@ func (i GlobalRoleBindingMap) ToGlobalRoleBindingMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalRoleBindingMapOutput)
 }
 
-func (i GlobalRoleBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GlobalRoleBinding] {
-	return pulumix.Output[map[string]*GlobalRoleBinding]{
-		OutputState: i.ToGlobalRoleBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GlobalRoleBindingOutput struct{ *pulumi.OutputState }
 
 func (GlobalRoleBindingOutput) ElementType() reflect.Type {
@@ -285,12 +266,6 @@ func (o GlobalRoleBindingOutput) ToGlobalRoleBindingOutput() GlobalRoleBindingOu
 
 func (o GlobalRoleBindingOutput) ToGlobalRoleBindingOutputWithContext(ctx context.Context) GlobalRoleBindingOutput {
 	return o
-}
-
-func (o GlobalRoleBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalRoleBinding] {
-	return pulumix.Output[*GlobalRoleBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Annotations for global role binding (map)
@@ -339,12 +314,6 @@ func (o GlobalRoleBindingArrayOutput) ToGlobalRoleBindingArrayOutputWithContext(
 	return o
 }
 
-func (o GlobalRoleBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GlobalRoleBinding] {
-	return pulumix.Output[[]*GlobalRoleBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GlobalRoleBindingArrayOutput) Index(i pulumi.IntInput) GlobalRoleBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GlobalRoleBinding {
 		return vs[0].([]*GlobalRoleBinding)[vs[1].(int)]
@@ -363,12 +332,6 @@ func (o GlobalRoleBindingMapOutput) ToGlobalRoleBindingMapOutput() GlobalRoleBin
 
 func (o GlobalRoleBindingMapOutput) ToGlobalRoleBindingMapOutputWithContext(ctx context.Context) GlobalRoleBindingMapOutput {
 	return o
-}
-
-func (o GlobalRoleBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GlobalRoleBinding] {
-	return pulumix.Output[map[string]*GlobalRoleBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GlobalRoleBindingMapOutput) MapIndex(k pulumi.StringInput) GlobalRoleBindingOutput {

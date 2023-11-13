@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Rancher v2 Auth Config Ping resource. This can be used to configure and enable Auth Config Ping for Rancher v2 RKE clusters and retrieve their information.
@@ -314,12 +313,6 @@ func (i *AuthConfigPing) ToAuthConfigPingOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigPingOutput)
 }
 
-func (i *AuthConfigPing) ToOutput(ctx context.Context) pulumix.Output[*AuthConfigPing] {
-	return pulumix.Output[*AuthConfigPing]{
-		OutputState: i.ToAuthConfigPingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AuthConfigPingArrayInput is an input type that accepts AuthConfigPingArray and AuthConfigPingArrayOutput values.
 // You can construct a concrete instance of `AuthConfigPingArrayInput` via:
 //
@@ -343,12 +336,6 @@ func (i AuthConfigPingArray) ToAuthConfigPingArrayOutput() AuthConfigPingArrayOu
 
 func (i AuthConfigPingArray) ToAuthConfigPingArrayOutputWithContext(ctx context.Context) AuthConfigPingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigPingArrayOutput)
-}
-
-func (i AuthConfigPingArray) ToOutput(ctx context.Context) pulumix.Output[[]*AuthConfigPing] {
-	return pulumix.Output[[]*AuthConfigPing]{
-		OutputState: i.ToAuthConfigPingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AuthConfigPingMapInput is an input type that accepts AuthConfigPingMap and AuthConfigPingMapOutput values.
@@ -376,12 +363,6 @@ func (i AuthConfigPingMap) ToAuthConfigPingMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigPingMapOutput)
 }
 
-func (i AuthConfigPingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AuthConfigPing] {
-	return pulumix.Output[map[string]*AuthConfigPing]{
-		OutputState: i.ToAuthConfigPingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AuthConfigPingOutput struct{ *pulumi.OutputState }
 
 func (AuthConfigPingOutput) ElementType() reflect.Type {
@@ -394,12 +375,6 @@ func (o AuthConfigPingOutput) ToAuthConfigPingOutput() AuthConfigPingOutput {
 
 func (o AuthConfigPingOutput) ToAuthConfigPingOutputWithContext(ctx context.Context) AuthConfigPingOutput {
 	return o
-}
-
-func (o AuthConfigPingOutput) ToOutput(ctx context.Context) pulumix.Output[*AuthConfigPing] {
-	return pulumix.Output[*AuthConfigPing]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -496,12 +471,6 @@ func (o AuthConfigPingArrayOutput) ToAuthConfigPingArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o AuthConfigPingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AuthConfigPing] {
-	return pulumix.Output[[]*AuthConfigPing]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AuthConfigPingArrayOutput) Index(i pulumi.IntInput) AuthConfigPingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AuthConfigPing {
 		return vs[0].([]*AuthConfigPing)[vs[1].(int)]
@@ -520,12 +489,6 @@ func (o AuthConfigPingMapOutput) ToAuthConfigPingMapOutput() AuthConfigPingMapOu
 
 func (o AuthConfigPingMapOutput) ToAuthConfigPingMapOutputWithContext(ctx context.Context) AuthConfigPingMapOutput {
 	return o
-}
-
-func (o AuthConfigPingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AuthConfigPing] {
-	return pulumix.Output[map[string]*AuthConfigPing]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuthConfigPingMapOutput) MapIndex(k pulumi.StringInput) AuthConfigPingOutput {
