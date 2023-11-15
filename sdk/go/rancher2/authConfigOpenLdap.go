@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Rancher v2 Auth Config OpenLdap resource. This can be used to configure and enable Auth Config OpenLdap for Rancher v2 RKE clusters and retrieve their information.
@@ -454,12 +453,6 @@ func (i *AuthConfigOpenLdap) ToAuthConfigOpenLdapOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigOpenLdapOutput)
 }
 
-func (i *AuthConfigOpenLdap) ToOutput(ctx context.Context) pulumix.Output[*AuthConfigOpenLdap] {
-	return pulumix.Output[*AuthConfigOpenLdap]{
-		OutputState: i.ToAuthConfigOpenLdapOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AuthConfigOpenLdapArrayInput is an input type that accepts AuthConfigOpenLdapArray and AuthConfigOpenLdapArrayOutput values.
 // You can construct a concrete instance of `AuthConfigOpenLdapArrayInput` via:
 //
@@ -483,12 +476,6 @@ func (i AuthConfigOpenLdapArray) ToAuthConfigOpenLdapArrayOutput() AuthConfigOpe
 
 func (i AuthConfigOpenLdapArray) ToAuthConfigOpenLdapArrayOutputWithContext(ctx context.Context) AuthConfigOpenLdapArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigOpenLdapArrayOutput)
-}
-
-func (i AuthConfigOpenLdapArray) ToOutput(ctx context.Context) pulumix.Output[[]*AuthConfigOpenLdap] {
-	return pulumix.Output[[]*AuthConfigOpenLdap]{
-		OutputState: i.ToAuthConfigOpenLdapArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AuthConfigOpenLdapMapInput is an input type that accepts AuthConfigOpenLdapMap and AuthConfigOpenLdapMapOutput values.
@@ -516,12 +503,6 @@ func (i AuthConfigOpenLdapMap) ToAuthConfigOpenLdapMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(AuthConfigOpenLdapMapOutput)
 }
 
-func (i AuthConfigOpenLdapMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AuthConfigOpenLdap] {
-	return pulumix.Output[map[string]*AuthConfigOpenLdap]{
-		OutputState: i.ToAuthConfigOpenLdapMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AuthConfigOpenLdapOutput struct{ *pulumi.OutputState }
 
 func (AuthConfigOpenLdapOutput) ElementType() reflect.Type {
@@ -534,12 +515,6 @@ func (o AuthConfigOpenLdapOutput) ToAuthConfigOpenLdapOutput() AuthConfigOpenLda
 
 func (o AuthConfigOpenLdapOutput) ToAuthConfigOpenLdapOutputWithContext(ctx context.Context) AuthConfigOpenLdapOutput {
 	return o
-}
-
-func (o AuthConfigOpenLdapOutput) ToOutput(ctx context.Context) pulumix.Output[*AuthConfigOpenLdap] {
-	return pulumix.Output[*AuthConfigOpenLdap]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -728,12 +703,6 @@ func (o AuthConfigOpenLdapArrayOutput) ToAuthConfigOpenLdapArrayOutputWithContex
 	return o
 }
 
-func (o AuthConfigOpenLdapArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AuthConfigOpenLdap] {
-	return pulumix.Output[[]*AuthConfigOpenLdap]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AuthConfigOpenLdapArrayOutput) Index(i pulumi.IntInput) AuthConfigOpenLdapOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AuthConfigOpenLdap {
 		return vs[0].([]*AuthConfigOpenLdap)[vs[1].(int)]
@@ -752,12 +721,6 @@ func (o AuthConfigOpenLdapMapOutput) ToAuthConfigOpenLdapMapOutput() AuthConfigO
 
 func (o AuthConfigOpenLdapMapOutput) ToAuthConfigOpenLdapMapOutputWithContext(ctx context.Context) AuthConfigOpenLdapMapOutput {
 	return o
-}
-
-func (o AuthConfigOpenLdapMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AuthConfigOpenLdap] {
-	return pulumix.Output[map[string]*AuthConfigOpenLdap]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuthConfigOpenLdapMapOutput) MapIndex(k pulumi.StringInput) AuthConfigOpenLdapOutput {

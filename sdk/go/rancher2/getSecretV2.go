@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about a Rancher2 secret v2. Secret v2 resource is available at Rancher v2.5.x and above.
@@ -94,12 +93,6 @@ func (o LookupSecretV2ResultOutput) ToLookupSecretV2ResultOutput() LookupSecretV
 
 func (o LookupSecretV2ResultOutput) ToLookupSecretV2ResultOutputWithContext(ctx context.Context) LookupSecretV2ResultOutput {
 	return o
-}
-
-func (o LookupSecretV2ResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSecretV2Result] {
-	return pulumix.Output[LookupSecretV2Result]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) Annotations for the secret v2 (map)

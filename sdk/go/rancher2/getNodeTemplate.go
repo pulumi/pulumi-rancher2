@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about a Rancher v2 Node Template resource.
@@ -130,12 +129,6 @@ func (o LookupNodeTemplateResultOutput) ToLookupNodeTemplateResultOutput() Looku
 
 func (o LookupNodeTemplateResultOutput) ToLookupNodeTemplateResultOutputWithContext(ctx context.Context) LookupNodeTemplateResultOutput {
 	return o
-}
-
-func (o LookupNodeTemplateResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNodeTemplateResult] {
-	return pulumix.Output[LookupNodeTemplateResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) Annotations for Node Template object (map)

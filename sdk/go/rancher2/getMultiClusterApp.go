@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about a Rancher v2 multi cluster app.
@@ -124,12 +123,6 @@ func (o LookupMultiClusterAppResultOutput) ToLookupMultiClusterAppResultOutput()
 
 func (o LookupMultiClusterAppResultOutput) ToLookupMultiClusterAppResultOutputWithContext(ctx context.Context) LookupMultiClusterAppResultOutput {
 	return o
-}
-
-func (o LookupMultiClusterAppResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMultiClusterAppResult] {
-	return pulumix.Output[LookupMultiClusterAppResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) Annotations for multi cluster app object (map)

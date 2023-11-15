@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about a Rancher v2 cluster alert group.
@@ -118,12 +117,6 @@ func (o LookupClusterAlertGroupResultOutput) ToLookupClusterAlertGroupResultOutp
 
 func (o LookupClusterAlertGroupResultOutput) ToLookupClusterAlertGroupResultOutputWithContext(ctx context.Context) LookupClusterAlertGroupResultOutput {
 	return o
-}
-
-func (o LookupClusterAlertGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupClusterAlertGroupResult] {
-	return pulumix.Output[LookupClusterAlertGroupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) The cluster alert group annotations (map)

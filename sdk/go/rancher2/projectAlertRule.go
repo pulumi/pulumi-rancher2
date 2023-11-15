@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Rancher v2 Project Alert Rule resource. This can be used to create Project Alert Rule for Rancher v2 environments and retrieve their information.
@@ -297,12 +296,6 @@ func (i *ProjectAlertRule) ToProjectAlertRuleOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectAlertRuleOutput)
 }
 
-func (i *ProjectAlertRule) ToOutput(ctx context.Context) pulumix.Output[*ProjectAlertRule] {
-	return pulumix.Output[*ProjectAlertRule]{
-		OutputState: i.ToProjectAlertRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ProjectAlertRuleArrayInput is an input type that accepts ProjectAlertRuleArray and ProjectAlertRuleArrayOutput values.
 // You can construct a concrete instance of `ProjectAlertRuleArrayInput` via:
 //
@@ -326,12 +319,6 @@ func (i ProjectAlertRuleArray) ToProjectAlertRuleArrayOutput() ProjectAlertRuleA
 
 func (i ProjectAlertRuleArray) ToProjectAlertRuleArrayOutputWithContext(ctx context.Context) ProjectAlertRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectAlertRuleArrayOutput)
-}
-
-func (i ProjectAlertRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectAlertRule] {
-	return pulumix.Output[[]*ProjectAlertRule]{
-		OutputState: i.ToProjectAlertRuleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ProjectAlertRuleMapInput is an input type that accepts ProjectAlertRuleMap and ProjectAlertRuleMapOutput values.
@@ -359,12 +346,6 @@ func (i ProjectAlertRuleMap) ToProjectAlertRuleMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectAlertRuleMapOutput)
 }
 
-func (i ProjectAlertRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectAlertRule] {
-	return pulumix.Output[map[string]*ProjectAlertRule]{
-		OutputState: i.ToProjectAlertRuleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectAlertRuleOutput struct{ *pulumi.OutputState }
 
 func (ProjectAlertRuleOutput) ElementType() reflect.Type {
@@ -377,12 +358,6 @@ func (o ProjectAlertRuleOutput) ToProjectAlertRuleOutput() ProjectAlertRuleOutpu
 
 func (o ProjectAlertRuleOutput) ToProjectAlertRuleOutputWithContext(ctx context.Context) ProjectAlertRuleOutput {
 	return o
-}
-
-func (o ProjectAlertRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectAlertRule] {
-	return pulumix.Output[*ProjectAlertRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The project alert rule annotations (map)
@@ -464,12 +439,6 @@ func (o ProjectAlertRuleArrayOutput) ToProjectAlertRuleArrayOutputWithContext(ct
 	return o
 }
 
-func (o ProjectAlertRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectAlertRule] {
-	return pulumix.Output[[]*ProjectAlertRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ProjectAlertRuleArrayOutput) Index(i pulumi.IntInput) ProjectAlertRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectAlertRule {
 		return vs[0].([]*ProjectAlertRule)[vs[1].(int)]
@@ -488,12 +457,6 @@ func (o ProjectAlertRuleMapOutput) ToProjectAlertRuleMapOutput() ProjectAlertRul
 
 func (o ProjectAlertRuleMapOutput) ToProjectAlertRuleMapOutputWithContext(ctx context.Context) ProjectAlertRuleMapOutput {
 	return o
-}
-
-func (o ProjectAlertRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectAlertRule] {
-	return pulumix.Output[map[string]*ProjectAlertRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectAlertRuleMapOutput) MapIndex(k pulumi.StringInput) ProjectAlertRuleOutput {

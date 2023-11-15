@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about a Rancher2 configMap v2. ConfigMap v2 resource is available at Rancher v2.5.x and above.
@@ -92,12 +91,6 @@ func (o LookupConfigMapV2ResultOutput) ToLookupConfigMapV2ResultOutput() LookupC
 
 func (o LookupConfigMapV2ResultOutput) ToLookupConfigMapV2ResultOutputWithContext(ctx context.Context) LookupConfigMapV2ResultOutput {
 	return o
-}
-
-func (o LookupConfigMapV2ResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConfigMapV2Result] {
-	return pulumix.Output[LookupConfigMapV2Result]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) Annotations for the configMap v2 (map)
