@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about a Rancher v2 global role binding.
@@ -112,12 +111,6 @@ func (o LookupGlobalRoleBindingResultOutput) ToLookupGlobalRoleBindingResultOutp
 
 func (o LookupGlobalRoleBindingResultOutput) ToLookupGlobalRoleBindingResultOutputWithContext(ctx context.Context) LookupGlobalRoleBindingResultOutput {
 	return o
-}
-
-func (o LookupGlobalRoleBindingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGlobalRoleBindingResult] {
-	return pulumix.Output[LookupGlobalRoleBindingResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) Annotations of the resource (map)

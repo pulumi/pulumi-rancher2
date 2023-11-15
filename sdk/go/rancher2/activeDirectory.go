@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Rancher v2 Auth Config ActiveDirectory resource. This can be used to configure and enable Auth Config ActiveDirectory for Rancher v2 RKE clusters and retrieve their information.
@@ -471,12 +470,6 @@ func (i *ActiveDirectory) ToActiveDirectoryOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ActiveDirectoryOutput)
 }
 
-func (i *ActiveDirectory) ToOutput(ctx context.Context) pulumix.Output[*ActiveDirectory] {
-	return pulumix.Output[*ActiveDirectory]{
-		OutputState: i.ToActiveDirectoryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ActiveDirectoryArrayInput is an input type that accepts ActiveDirectoryArray and ActiveDirectoryArrayOutput values.
 // You can construct a concrete instance of `ActiveDirectoryArrayInput` via:
 //
@@ -500,12 +493,6 @@ func (i ActiveDirectoryArray) ToActiveDirectoryArrayOutput() ActiveDirectoryArra
 
 func (i ActiveDirectoryArray) ToActiveDirectoryArrayOutputWithContext(ctx context.Context) ActiveDirectoryArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ActiveDirectoryArrayOutput)
-}
-
-func (i ActiveDirectoryArray) ToOutput(ctx context.Context) pulumix.Output[[]*ActiveDirectory] {
-	return pulumix.Output[[]*ActiveDirectory]{
-		OutputState: i.ToActiveDirectoryArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ActiveDirectoryMapInput is an input type that accepts ActiveDirectoryMap and ActiveDirectoryMapOutput values.
@@ -533,12 +520,6 @@ func (i ActiveDirectoryMap) ToActiveDirectoryMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ActiveDirectoryMapOutput)
 }
 
-func (i ActiveDirectoryMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ActiveDirectory] {
-	return pulumix.Output[map[string]*ActiveDirectory]{
-		OutputState: i.ToActiveDirectoryMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ActiveDirectoryOutput struct{ *pulumi.OutputState }
 
 func (ActiveDirectoryOutput) ElementType() reflect.Type {
@@ -551,12 +532,6 @@ func (o ActiveDirectoryOutput) ToActiveDirectoryOutput() ActiveDirectoryOutput {
 
 func (o ActiveDirectoryOutput) ToActiveDirectoryOutputWithContext(ctx context.Context) ActiveDirectoryOutput {
 	return o
-}
-
-func (o ActiveDirectoryOutput) ToOutput(ctx context.Context) pulumix.Output[*ActiveDirectory] {
-	return pulumix.Output[*ActiveDirectory]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -748,12 +723,6 @@ func (o ActiveDirectoryArrayOutput) ToActiveDirectoryArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o ActiveDirectoryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ActiveDirectory] {
-	return pulumix.Output[[]*ActiveDirectory]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ActiveDirectoryArrayOutput) Index(i pulumi.IntInput) ActiveDirectoryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ActiveDirectory {
 		return vs[0].([]*ActiveDirectory)[vs[1].(int)]
@@ -772,12 +741,6 @@ func (o ActiveDirectoryMapOutput) ToActiveDirectoryMapOutput() ActiveDirectoryMa
 
 func (o ActiveDirectoryMapOutput) ToActiveDirectoryMapOutputWithContext(ctx context.Context) ActiveDirectoryMapOutput {
 	return o
-}
-
-func (o ActiveDirectoryMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ActiveDirectory] {
-	return pulumix.Output[map[string]*ActiveDirectory]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActiveDirectoryMapOutput) MapIndex(k pulumi.StringInput) ActiveDirectoryOutput {

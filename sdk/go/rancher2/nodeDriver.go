@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Rancher v2 Node Driver resource. This can be used to create Node Driver for Rancher v2 RKE clusters and retrieve their information.
@@ -252,12 +251,6 @@ func (i *NodeDriver) ToNodeDriverOutputWithContext(ctx context.Context) NodeDriv
 	return pulumi.ToOutputWithContext(ctx, i).(NodeDriverOutput)
 }
 
-func (i *NodeDriver) ToOutput(ctx context.Context) pulumix.Output[*NodeDriver] {
-	return pulumix.Output[*NodeDriver]{
-		OutputState: i.ToNodeDriverOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NodeDriverArrayInput is an input type that accepts NodeDriverArray and NodeDriverArrayOutput values.
 // You can construct a concrete instance of `NodeDriverArrayInput` via:
 //
@@ -281,12 +274,6 @@ func (i NodeDriverArray) ToNodeDriverArrayOutput() NodeDriverArrayOutput {
 
 func (i NodeDriverArray) ToNodeDriverArrayOutputWithContext(ctx context.Context) NodeDriverArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NodeDriverArrayOutput)
-}
-
-func (i NodeDriverArray) ToOutput(ctx context.Context) pulumix.Output[[]*NodeDriver] {
-	return pulumix.Output[[]*NodeDriver]{
-		OutputState: i.ToNodeDriverArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // NodeDriverMapInput is an input type that accepts NodeDriverMap and NodeDriverMapOutput values.
@@ -314,12 +301,6 @@ func (i NodeDriverMap) ToNodeDriverMapOutputWithContext(ctx context.Context) Nod
 	return pulumi.ToOutputWithContext(ctx, i).(NodeDriverMapOutput)
 }
 
-func (i NodeDriverMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NodeDriver] {
-	return pulumix.Output[map[string]*NodeDriver]{
-		OutputState: i.ToNodeDriverMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NodeDriverOutput struct{ *pulumi.OutputState }
 
 func (NodeDriverOutput) ElementType() reflect.Type {
@@ -332,12 +313,6 @@ func (o NodeDriverOutput) ToNodeDriverOutput() NodeDriverOutput {
 
 func (o NodeDriverOutput) ToNodeDriverOutputWithContext(ctx context.Context) NodeDriverOutput {
 	return o
-}
-
-func (o NodeDriverOutput) ToOutput(ctx context.Context) pulumix.Output[*NodeDriver] {
-	return pulumix.Output[*NodeDriver]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specify if the node driver state (bool)
@@ -409,12 +384,6 @@ func (o NodeDriverArrayOutput) ToNodeDriverArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o NodeDriverArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NodeDriver] {
-	return pulumix.Output[[]*NodeDriver]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NodeDriverArrayOutput) Index(i pulumi.IntInput) NodeDriverOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NodeDriver {
 		return vs[0].([]*NodeDriver)[vs[1].(int)]
@@ -433,12 +402,6 @@ func (o NodeDriverMapOutput) ToNodeDriverMapOutput() NodeDriverMapOutput {
 
 func (o NodeDriverMapOutput) ToNodeDriverMapOutputWithContext(ctx context.Context) NodeDriverMapOutput {
 	return o
-}
-
-func (o NodeDriverMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NodeDriver] {
-	return pulumix.Output[map[string]*NodeDriver]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NodeDriverMapOutput) MapIndex(k pulumi.StringInput) NodeDriverOutput {

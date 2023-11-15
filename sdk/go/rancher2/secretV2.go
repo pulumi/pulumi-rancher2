@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Rancher Secret v2 resource. This can be used to create k8s secrets for Rancher v2 environments and retrieve their information. Secret v2 resource is available at Rancher v2.5.x and above.
@@ -197,12 +196,6 @@ func (i *SecretV2) ToSecretV2OutputWithContext(ctx context.Context) SecretV2Outp
 	return pulumi.ToOutputWithContext(ctx, i).(SecretV2Output)
 }
 
-func (i *SecretV2) ToOutput(ctx context.Context) pulumix.Output[*SecretV2] {
-	return pulumix.Output[*SecretV2]{
-		OutputState: i.ToSecretV2OutputWithContext(ctx).OutputState,
-	}
-}
-
 // SecretV2ArrayInput is an input type that accepts SecretV2Array and SecretV2ArrayOutput values.
 // You can construct a concrete instance of `SecretV2ArrayInput` via:
 //
@@ -226,12 +219,6 @@ func (i SecretV2Array) ToSecretV2ArrayOutput() SecretV2ArrayOutput {
 
 func (i SecretV2Array) ToSecretV2ArrayOutputWithContext(ctx context.Context) SecretV2ArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecretV2ArrayOutput)
-}
-
-func (i SecretV2Array) ToOutput(ctx context.Context) pulumix.Output[[]*SecretV2] {
-	return pulumix.Output[[]*SecretV2]{
-		OutputState: i.ToSecretV2ArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SecretV2MapInput is an input type that accepts SecretV2Map and SecretV2MapOutput values.
@@ -259,12 +246,6 @@ func (i SecretV2Map) ToSecretV2MapOutputWithContext(ctx context.Context) SecretV
 	return pulumi.ToOutputWithContext(ctx, i).(SecretV2MapOutput)
 }
 
-func (i SecretV2Map) ToOutput(ctx context.Context) pulumix.Output[map[string]*SecretV2] {
-	return pulumix.Output[map[string]*SecretV2]{
-		OutputState: i.ToSecretV2MapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SecretV2Output struct{ *pulumi.OutputState }
 
 func (SecretV2Output) ElementType() reflect.Type {
@@ -277,12 +258,6 @@ func (o SecretV2Output) ToSecretV2Output() SecretV2Output {
 
 func (o SecretV2Output) ToSecretV2OutputWithContext(ctx context.Context) SecretV2Output {
 	return o
-}
-
-func (o SecretV2Output) ToOutput(ctx context.Context) pulumix.Output[*SecretV2] {
-	return pulumix.Output[*SecretV2]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Annotations for the secret v2 (map)
@@ -344,12 +319,6 @@ func (o SecretV2ArrayOutput) ToSecretV2ArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o SecretV2ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SecretV2] {
-	return pulumix.Output[[]*SecretV2]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SecretV2ArrayOutput) Index(i pulumi.IntInput) SecretV2Output {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SecretV2 {
 		return vs[0].([]*SecretV2)[vs[1].(int)]
@@ -368,12 +337,6 @@ func (o SecretV2MapOutput) ToSecretV2MapOutput() SecretV2MapOutput {
 
 func (o SecretV2MapOutput) ToSecretV2MapOutputWithContext(ctx context.Context) SecretV2MapOutput {
 	return o
-}
-
-func (o SecretV2MapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SecretV2] {
-	return pulumix.Output[map[string]*SecretV2]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecretV2MapOutput) MapIndex(k pulumi.StringInput) SecretV2Output {

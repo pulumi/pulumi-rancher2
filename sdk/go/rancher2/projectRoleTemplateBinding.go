@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Rancher v2 Project Role Template Binding resource. This can be used to create Project Role Template Bindings for Rancher v2 environments and retrieve their information.
@@ -232,12 +231,6 @@ func (i *ProjectRoleTemplateBinding) ToProjectRoleTemplateBindingOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectRoleTemplateBindingOutput)
 }
 
-func (i *ProjectRoleTemplateBinding) ToOutput(ctx context.Context) pulumix.Output[*ProjectRoleTemplateBinding] {
-	return pulumix.Output[*ProjectRoleTemplateBinding]{
-		OutputState: i.ToProjectRoleTemplateBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ProjectRoleTemplateBindingArrayInput is an input type that accepts ProjectRoleTemplateBindingArray and ProjectRoleTemplateBindingArrayOutput values.
 // You can construct a concrete instance of `ProjectRoleTemplateBindingArrayInput` via:
 //
@@ -261,12 +254,6 @@ func (i ProjectRoleTemplateBindingArray) ToProjectRoleTemplateBindingArrayOutput
 
 func (i ProjectRoleTemplateBindingArray) ToProjectRoleTemplateBindingArrayOutputWithContext(ctx context.Context) ProjectRoleTemplateBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectRoleTemplateBindingArrayOutput)
-}
-
-func (i ProjectRoleTemplateBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectRoleTemplateBinding] {
-	return pulumix.Output[[]*ProjectRoleTemplateBinding]{
-		OutputState: i.ToProjectRoleTemplateBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ProjectRoleTemplateBindingMapInput is an input type that accepts ProjectRoleTemplateBindingMap and ProjectRoleTemplateBindingMapOutput values.
@@ -294,12 +281,6 @@ func (i ProjectRoleTemplateBindingMap) ToProjectRoleTemplateBindingMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectRoleTemplateBindingMapOutput)
 }
 
-func (i ProjectRoleTemplateBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectRoleTemplateBinding] {
-	return pulumix.Output[map[string]*ProjectRoleTemplateBinding]{
-		OutputState: i.ToProjectRoleTemplateBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectRoleTemplateBindingOutput struct{ *pulumi.OutputState }
 
 func (ProjectRoleTemplateBindingOutput) ElementType() reflect.Type {
@@ -312,12 +293,6 @@ func (o ProjectRoleTemplateBindingOutput) ToProjectRoleTemplateBindingOutput() P
 
 func (o ProjectRoleTemplateBindingOutput) ToProjectRoleTemplateBindingOutputWithContext(ctx context.Context) ProjectRoleTemplateBindingOutput {
 	return o
-}
-
-func (o ProjectRoleTemplateBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectRoleTemplateBinding] {
-	return pulumix.Output[*ProjectRoleTemplateBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Annotations of the resource (map)
@@ -381,12 +356,6 @@ func (o ProjectRoleTemplateBindingArrayOutput) ToProjectRoleTemplateBindingArray
 	return o
 }
 
-func (o ProjectRoleTemplateBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectRoleTemplateBinding] {
-	return pulumix.Output[[]*ProjectRoleTemplateBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ProjectRoleTemplateBindingArrayOutput) Index(i pulumi.IntInput) ProjectRoleTemplateBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectRoleTemplateBinding {
 		return vs[0].([]*ProjectRoleTemplateBinding)[vs[1].(int)]
@@ -405,12 +374,6 @@ func (o ProjectRoleTemplateBindingMapOutput) ToProjectRoleTemplateBindingMapOutp
 
 func (o ProjectRoleTemplateBindingMapOutput) ToProjectRoleTemplateBindingMapOutputWithContext(ctx context.Context) ProjectRoleTemplateBindingMapOutput {
 	return o
-}
-
-func (o ProjectRoleTemplateBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectRoleTemplateBinding] {
-	return pulumix.Output[map[string]*ProjectRoleTemplateBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectRoleTemplateBindingMapOutput) MapIndex(k pulumi.StringInput) ProjectRoleTemplateBindingOutput {

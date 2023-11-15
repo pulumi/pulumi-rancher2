@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Rancher V2 Global DNS Provider resource. This can be used to create Global DNS Providers for Rancher V2. Supported Global DNS Providers: `alidns, cloudflare, route53`
@@ -251,12 +250,6 @@ func (i *GlobalDnsProvider) ToGlobalDnsProviderOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalDnsProviderOutput)
 }
 
-func (i *GlobalDnsProvider) ToOutput(ctx context.Context) pulumix.Output[*GlobalDnsProvider] {
-	return pulumix.Output[*GlobalDnsProvider]{
-		OutputState: i.ToGlobalDnsProviderOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GlobalDnsProviderArrayInput is an input type that accepts GlobalDnsProviderArray and GlobalDnsProviderArrayOutput values.
 // You can construct a concrete instance of `GlobalDnsProviderArrayInput` via:
 //
@@ -280,12 +273,6 @@ func (i GlobalDnsProviderArray) ToGlobalDnsProviderArrayOutput() GlobalDnsProvid
 
 func (i GlobalDnsProviderArray) ToGlobalDnsProviderArrayOutputWithContext(ctx context.Context) GlobalDnsProviderArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalDnsProviderArrayOutput)
-}
-
-func (i GlobalDnsProviderArray) ToOutput(ctx context.Context) pulumix.Output[[]*GlobalDnsProvider] {
-	return pulumix.Output[[]*GlobalDnsProvider]{
-		OutputState: i.ToGlobalDnsProviderArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GlobalDnsProviderMapInput is an input type that accepts GlobalDnsProviderMap and GlobalDnsProviderMapOutput values.
@@ -313,12 +300,6 @@ func (i GlobalDnsProviderMap) ToGlobalDnsProviderMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalDnsProviderMapOutput)
 }
 
-func (i GlobalDnsProviderMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GlobalDnsProvider] {
-	return pulumix.Output[map[string]*GlobalDnsProvider]{
-		OutputState: i.ToGlobalDnsProviderMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GlobalDnsProviderOutput struct{ *pulumi.OutputState }
 
 func (GlobalDnsProviderOutput) ElementType() reflect.Type {
@@ -331,12 +312,6 @@ func (o GlobalDnsProviderOutput) ToGlobalDnsProviderOutput() GlobalDnsProviderOu
 
 func (o GlobalDnsProviderOutput) ToGlobalDnsProviderOutputWithContext(ctx context.Context) GlobalDnsProviderOutput {
 	return o
-}
-
-func (o GlobalDnsProviderOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalDnsProvider] {
-	return pulumix.Output[*GlobalDnsProvider]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GlobalDnsProviderOutput) AlidnsConfig() GlobalDnsProviderAlidnsConfigPtrOutput {
@@ -390,12 +365,6 @@ func (o GlobalDnsProviderArrayOutput) ToGlobalDnsProviderArrayOutputWithContext(
 	return o
 }
 
-func (o GlobalDnsProviderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GlobalDnsProvider] {
-	return pulumix.Output[[]*GlobalDnsProvider]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GlobalDnsProviderArrayOutput) Index(i pulumi.IntInput) GlobalDnsProviderOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GlobalDnsProvider {
 		return vs[0].([]*GlobalDnsProvider)[vs[1].(int)]
@@ -414,12 +383,6 @@ func (o GlobalDnsProviderMapOutput) ToGlobalDnsProviderMapOutput() GlobalDnsProv
 
 func (o GlobalDnsProviderMapOutput) ToGlobalDnsProviderMapOutputWithContext(ctx context.Context) GlobalDnsProviderMapOutput {
 	return o
-}
-
-func (o GlobalDnsProviderMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GlobalDnsProvider] {
-	return pulumix.Output[map[string]*GlobalDnsProvider]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GlobalDnsProviderMapOutput) MapIndex(k pulumi.StringInput) GlobalDnsProviderOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Rancher v2 Project Alert Group resource. This can be used to create Project Alert Group for Rancher v2 environments and retrieve their information.
@@ -220,12 +219,6 @@ func (i *ProjectAlertGroup) ToProjectAlertGroupOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectAlertGroupOutput)
 }
 
-func (i *ProjectAlertGroup) ToOutput(ctx context.Context) pulumix.Output[*ProjectAlertGroup] {
-	return pulumix.Output[*ProjectAlertGroup]{
-		OutputState: i.ToProjectAlertGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ProjectAlertGroupArrayInput is an input type that accepts ProjectAlertGroupArray and ProjectAlertGroupArrayOutput values.
 // You can construct a concrete instance of `ProjectAlertGroupArrayInput` via:
 //
@@ -249,12 +242,6 @@ func (i ProjectAlertGroupArray) ToProjectAlertGroupArrayOutput() ProjectAlertGro
 
 func (i ProjectAlertGroupArray) ToProjectAlertGroupArrayOutputWithContext(ctx context.Context) ProjectAlertGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectAlertGroupArrayOutput)
-}
-
-func (i ProjectAlertGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectAlertGroup] {
-	return pulumix.Output[[]*ProjectAlertGroup]{
-		OutputState: i.ToProjectAlertGroupArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ProjectAlertGroupMapInput is an input type that accepts ProjectAlertGroupMap and ProjectAlertGroupMapOutput values.
@@ -282,12 +269,6 @@ func (i ProjectAlertGroupMap) ToProjectAlertGroupMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectAlertGroupMapOutput)
 }
 
-func (i ProjectAlertGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectAlertGroup] {
-	return pulumix.Output[map[string]*ProjectAlertGroup]{
-		OutputState: i.ToProjectAlertGroupMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectAlertGroupOutput struct{ *pulumi.OutputState }
 
 func (ProjectAlertGroupOutput) ElementType() reflect.Type {
@@ -300,12 +281,6 @@ func (o ProjectAlertGroupOutput) ToProjectAlertGroupOutput() ProjectAlertGroupOu
 
 func (o ProjectAlertGroupOutput) ToProjectAlertGroupOutputWithContext(ctx context.Context) ProjectAlertGroupOutput {
 	return o
-}
-
-func (o ProjectAlertGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectAlertGroup] {
-	return pulumix.Output[*ProjectAlertGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The project alert group annotations (map)
@@ -367,12 +342,6 @@ func (o ProjectAlertGroupArrayOutput) ToProjectAlertGroupArrayOutputWithContext(
 	return o
 }
 
-func (o ProjectAlertGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectAlertGroup] {
-	return pulumix.Output[[]*ProjectAlertGroup]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ProjectAlertGroupArrayOutput) Index(i pulumi.IntInput) ProjectAlertGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectAlertGroup {
 		return vs[0].([]*ProjectAlertGroup)[vs[1].(int)]
@@ -391,12 +360,6 @@ func (o ProjectAlertGroupMapOutput) ToProjectAlertGroupMapOutput() ProjectAlertG
 
 func (o ProjectAlertGroupMapOutput) ToProjectAlertGroupMapOutputWithContext(ctx context.Context) ProjectAlertGroupMapOutput {
 	return o
-}
-
-func (o ProjectAlertGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectAlertGroup] {
-	return pulumix.Output[map[string]*ProjectAlertGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectAlertGroupMapOutput) MapIndex(k pulumi.StringInput) ProjectAlertGroupOutput {
