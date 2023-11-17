@@ -51,7 +51,7 @@ public final class ClusterRkeConfigNode {
      */
     private @Nullable String port;
     /**
-     * @return Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
+     * @return (Requires) Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
      * 
      */
     private List<String> roles;
@@ -127,7 +127,7 @@ public final class ClusterRkeConfigNode {
         return Optional.ofNullable(this.port);
     }
     /**
-     * @return Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
+     * @return (Requires) Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
      * 
      */
     public List<String> roles() {

@@ -65,7 +65,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<Inputs.ClusterGkeConfigV2IpAllocationPolicyArgs>? IpAllocationPolicy { get; set; }
 
         /// <summary>
-        /// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        /// The kubernetes master version. Required if `imported=false` (string)
         /// </summary>
         [Input("kubernetesVersion")]
         public Input<string>? KubernetesVersion { get; set; }
@@ -119,7 +119,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? MonitoringService { get; set; }
 
         /// <summary>
-        /// The name of the Cluster (string)
+        /// The AKS cluster name (string)
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -140,7 +140,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<Inputs.ClusterGkeConfigV2NodePoolArgs>? _nodePools;
 
         /// <summary>
-        /// The GKE cluster node pools. Required for create new cluster (List)
+        /// The AKS nnode pools. Required if `imported=false` (list)
         /// </summary>
         public InputList<Inputs.ClusterGkeConfigV2NodePoolArgs> NodePools
         {

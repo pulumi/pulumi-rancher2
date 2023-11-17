@@ -19,13 +19,13 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? Configuration { get; set; }
 
         /// <summary>
-        /// The name of the Cluster (string)
+        /// The AKS cluster name (string)
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+        /// Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }

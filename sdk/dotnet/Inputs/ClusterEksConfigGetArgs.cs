@@ -62,7 +62,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? KeyPairName { get; set; }
 
         /// <summary>
-        /// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        /// The kubernetes master version. Required if `imported=false` (string)
         /// </summary>
         [Input("kubernetesVersion", required: true)]
         public Input<string> KubernetesVersion { get; set; } = null!;
@@ -160,7 +160,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? UserData { get; set; }
 
         /// <summary>
-        /// The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
+        /// The AKS virtual network (string)
         /// </summary>
         [Input("virtualNetwork")]
         public Input<string>? VirtualNetwork { get; set; }

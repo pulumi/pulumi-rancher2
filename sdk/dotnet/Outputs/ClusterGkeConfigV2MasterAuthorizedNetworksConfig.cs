@@ -18,7 +18,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock> CidrBlocks;
         /// <summary>
-        /// Enable the authorized cluster endpoint. Default `true` (bool)
+        /// Enable event rate limit. Default: `false` (bool)
         /// </summary>
         public readonly bool? Enabled;
 

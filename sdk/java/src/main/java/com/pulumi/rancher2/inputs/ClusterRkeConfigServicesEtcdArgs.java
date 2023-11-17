@@ -172,14 +172,14 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
     }
 
     /**
-     * The GKE taint key (string)
+     * TLS key for etcd service (string)
      * 
      */
     @Import(name="key")
     private @Nullable Output<String> key;
 
     /**
-     * @return The GKE taint key (string)
+     * @return TLS key for etcd service (string)
      * 
      */
     public Optional<Output<String>> key() {
@@ -187,14 +187,14 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
     }
 
     /**
-     * (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+     * Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
      * 
      */
     @Import(name="path")
     private @Nullable Output<String> path;
 
     /**
-     * @return (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+     * @return Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
      * 
      */
     public Optional<Output<String>> path() {
@@ -525,7 +525,7 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
         }
 
         /**
-         * @param key The GKE taint key (string)
+         * @param key TLS key for etcd service (string)
          * 
          * @return builder
          * 
@@ -536,7 +536,7 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
         }
 
         /**
-         * @param key The GKE taint key (string)
+         * @param key TLS key for etcd service (string)
          * 
          * @return builder
          * 
@@ -546,7 +546,7 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
         }
 
         /**
-         * @param path (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+         * @param path Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
          * 
          * @return builder
          * 
@@ -557,7 +557,7 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
         }
 
         /**
-         * @param path (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+         * @param path Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
          * 
          * @return builder
          * 

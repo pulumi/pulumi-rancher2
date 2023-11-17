@@ -46,7 +46,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? Preemptible;
         /// <summary>
-        /// The GKE node config tags (List)
+        /// The AKS cluster tags (map)
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>

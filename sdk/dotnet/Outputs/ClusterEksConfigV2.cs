@@ -26,7 +26,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? KmsKey;
         /// <summary>
-        /// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        /// The kubernetes master version. Required if `imported=false` (string)
         /// </summary>
         public readonly string? KubernetesVersion;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly ImmutableArray<string> LoggingTypes;
         /// <summary>
-        /// The name of the Cluster (string)
+        /// The AKS cluster name (string)
         /// </summary>
         public readonly string? Name;
         /// <summary>
@@ -74,7 +74,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Subnets;
         /// <summary>
-        /// The GKE node config tags (List)
+        /// The AKS cluster tags (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Tags;
 

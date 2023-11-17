@@ -46,7 +46,7 @@ public final class ClusterEksConfig {
      */
     private @Nullable String keyPairName;
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return The kubernetes master version. Required if `imported=false` (string)
      * 
      */
     private String kubernetesVersion;
@@ -101,7 +101,7 @@ public final class ClusterEksConfig {
      */
     private @Nullable String userData;
     /**
-     * @return The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
+     * @return The AKS virtual network (string)
      * 
      */
     private @Nullable String virtualNetwork;
@@ -153,7 +153,7 @@ public final class ClusterEksConfig {
         return Optional.ofNullable(this.keyPairName);
     }
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return The kubernetes master version. Required if `imported=false` (string)
      * 
      */
     public String kubernetesVersion() {
@@ -230,7 +230,7 @@ public final class ClusterEksConfig {
         return Optional.ofNullable(this.userData);
     }
     /**
-     * @return The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
+     * @return The AKS virtual network (string)
      * 
      */
     public Optional<String> virtualNetwork() {

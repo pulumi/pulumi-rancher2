@@ -112,7 +112,7 @@ public final class ClusterAksConfig {
      */
     private @Nullable Boolean enableMonitoring;
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return The kubernetes master version. Required if `imported=false` (string)
      * 
      */
     private String kubernetesVersion;
@@ -187,7 +187,7 @@ public final class ClusterAksConfig {
      */
     private String subscriptionId;
     /**
-     * @return Use `tags` argument instead as []string
+     * @return (Deprecated) Use `tags` argument instead as []string
      * 
      * @deprecated
      * Use tags argument instead as []string
@@ -196,7 +196,7 @@ public final class ClusterAksConfig {
     @Deprecated /* Use tags argument instead as []string */
     private @Nullable Map<String,Object> tag;
     /**
-     * @return The GKE node config tags (List)
+     * @return The AKS cluster tags (map)
      * 
      */
     private @Nullable List<String> tags;
@@ -206,7 +206,7 @@ public final class ClusterAksConfig {
      */
     private String tenantId;
     /**
-     * @return The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
+     * @return The AKS virtual network (string)
      * 
      */
     private String virtualNetwork;
@@ -351,7 +351,7 @@ public final class ClusterAksConfig {
         return Optional.ofNullable(this.enableMonitoring);
     }
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return The kubernetes master version. Required if `imported=false` (string)
      * 
      */
     public String kubernetesVersion() {
@@ -456,7 +456,7 @@ public final class ClusterAksConfig {
         return this.subscriptionId;
     }
     /**
-     * @return Use `tags` argument instead as []string
+     * @return (Deprecated) Use `tags` argument instead as []string
      * 
      * @deprecated
      * Use tags argument instead as []string
@@ -467,7 +467,7 @@ public final class ClusterAksConfig {
         return this.tag == null ? Map.of() : this.tag;
     }
     /**
-     * @return The GKE node config tags (List)
+     * @return The AKS cluster tags (map)
      * 
      */
     public List<String> tags() {
@@ -481,7 +481,7 @@ public final class ClusterAksConfig {
         return this.tenantId;
     }
     /**
-     * @return The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
+     * @return The AKS virtual network (string)
      * 
      */
     public String virtualNetwork() {

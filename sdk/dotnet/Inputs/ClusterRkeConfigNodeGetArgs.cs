@@ -64,7 +64,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _roles;
 
         /// <summary>
-        /// Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
+        /// (Requires) Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
         /// </summary>
         public InputList<string> Roles
         {

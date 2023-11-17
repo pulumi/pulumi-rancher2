@@ -37,7 +37,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<int>? MaxSize { get; set; }
 
         /// <summary>
-        /// (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+        /// Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }

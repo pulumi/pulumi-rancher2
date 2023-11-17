@@ -58,7 +58,7 @@ public final class ClusterGkeConfigV2NodePoolConfig {
      */
     private @Nullable Boolean preemptible;
     /**
-     * @return The GKE node config tags (List)
+     * @return The AKS cluster tags (map)
      * 
      */
     private @Nullable List<String> tags;
@@ -126,7 +126,7 @@ public final class ClusterGkeConfigV2NodePoolConfig {
         return Optional.ofNullable(this.preemptible);
     }
     /**
-     * @return The GKE node config tags (List)
+     * @return The AKS cluster tags (map)
      * 
      */
     public List<String> tags() {

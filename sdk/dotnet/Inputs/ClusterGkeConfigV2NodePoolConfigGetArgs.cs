@@ -76,7 +76,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The GKE node config tags (List)
+        /// The AKS cluster tags (map)
         /// </summary>
         public InputList<string> Tags
         {

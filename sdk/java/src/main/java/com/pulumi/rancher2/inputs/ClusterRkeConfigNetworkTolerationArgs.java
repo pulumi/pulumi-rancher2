@@ -17,14 +17,14 @@ public final class ClusterRkeConfigNetworkTolerationArgs extends com.pulumi.reso
     public static final ClusterRkeConfigNetworkTolerationArgs Empty = new ClusterRkeConfigNetworkTolerationArgs();
 
     /**
-     * The GKE taint effect (string)
+     * The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
      * 
      */
     @Import(name="effect")
     private @Nullable Output<String> effect;
 
     /**
-     * @return The GKE taint effect (string)
+     * @return The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
      * 
      */
     public Optional<Output<String>> effect() {
@@ -32,14 +32,14 @@ public final class ClusterRkeConfigNetworkTolerationArgs extends com.pulumi.reso
     }
 
     /**
-     * The GKE taint key (string)
+     * TLS key for etcd service (string)
      * 
      */
     @Import(name="key", required=true)
     private Output<String> key;
 
     /**
-     * @return The GKE taint key (string)
+     * @return TLS key for etcd service (string)
      * 
      */
     public Output<String> key() {
@@ -77,14 +77,14 @@ public final class ClusterRkeConfigNetworkTolerationArgs extends com.pulumi.reso
     }
 
     /**
-     * The GKE taint value (string)
+     * The toleration value (string)
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return The GKE taint value (string)
+     * @return The toleration value (string)
      * 
      */
     public Optional<Output<String>> value() {
@@ -120,7 +120,7 @@ public final class ClusterRkeConfigNetworkTolerationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param effect The GKE taint effect (string)
+         * @param effect The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class ClusterRkeConfigNetworkTolerationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param effect The GKE taint effect (string)
+         * @param effect The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class ClusterRkeConfigNetworkTolerationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param key The GKE taint key (string)
+         * @param key TLS key for etcd service (string)
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class ClusterRkeConfigNetworkTolerationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param key The GKE taint key (string)
+         * @param key TLS key for etcd service (string)
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class ClusterRkeConfigNetworkTolerationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param value The GKE taint value (string)
+         * @param value The toleration value (string)
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class ClusterRkeConfigNetworkTolerationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param value The GKE taint value (string)
+         * @param value The toleration value (string)
          * 
          * @return builder
          * 

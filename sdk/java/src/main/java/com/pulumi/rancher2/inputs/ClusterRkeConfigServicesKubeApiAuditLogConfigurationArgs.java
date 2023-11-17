@@ -77,14 +77,14 @@ public final class ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs exte
     }
 
     /**
-     * (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+     * Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
      * 
      */
     @Import(name="path")
     private @Nullable Output<String> path;
 
     /**
-     * @return (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+     * @return Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
      * 
      */
     public Optional<Output<String>> path() {
@@ -220,7 +220,7 @@ public final class ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs exte
         }
 
         /**
-         * @param path (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+         * @param path Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs exte
         }
 
         /**
-         * @param path (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+         * @param path Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
          * 
          * @return builder
          * 

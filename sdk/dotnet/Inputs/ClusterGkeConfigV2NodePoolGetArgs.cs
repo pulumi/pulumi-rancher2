@@ -43,7 +43,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<int>? MaxPodsConstraint { get; set; }
 
         /// <summary>
-        /// The name of the Cluster (string)
+        /// The AKS cluster name (string)
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

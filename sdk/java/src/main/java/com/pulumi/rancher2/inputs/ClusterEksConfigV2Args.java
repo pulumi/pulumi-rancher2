@@ -66,14 +66,14 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * The kubernetes master version. Required if `imported=false` (string)
      * 
      */
     @Import(name="kubernetesVersion")
     private @Nullable Output<String> kubernetesVersion;
 
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return The kubernetes master version. Required if `imported=false` (string)
      * 
      */
     public Optional<Output<String>> kubernetesVersion() {
@@ -96,14 +96,14 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The name of the Cluster (string)
+     * The AKS cluster name (string)
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the Cluster (string)
+     * @return The AKS cluster name (string)
      * 
      */
     public Optional<Output<String>> name() {
@@ -246,14 +246,14 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The GKE node config tags (List)
+     * The AKS cluster tags (map)
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
-     * @return The GKE node config tags (List)
+     * @return The AKS cluster tags (map)
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -363,7 +363,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param kubernetesVersion The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+         * @param kubernetesVersion The kubernetes master version. Required if `imported=false` (string)
          * 
          * @return builder
          * 
@@ -374,7 +374,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param kubernetesVersion The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+         * @param kubernetesVersion The kubernetes master version. Required if `imported=false` (string)
          * 
          * @return builder
          * 
@@ -415,7 +415,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name The name of the Cluster (string)
+         * @param name The AKS cluster name (string)
          * 
          * @return builder
          * 
@@ -426,7 +426,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name The name of the Cluster (string)
+         * @param name The AKS cluster name (string)
          * 
          * @return builder
          * 
@@ -665,7 +665,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param tags The GKE node config tags (List)
+         * @param tags The AKS cluster tags (map)
          * 
          * @return builder
          * 
@@ -676,7 +676,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param tags The GKE node config tags (List)
+         * @param tags The AKS cluster tags (map)
          * 
          * @return builder
          * 

@@ -90,7 +90,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? EnableMonitoring;
         /// <summary>
-        /// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        /// The kubernetes master version. Required if `imported=false` (string)
         /// </summary>
         public readonly string KubernetesVersion;
         /// <summary>
@@ -150,11 +150,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string SubscriptionId;
         /// <summary>
-        /// Use `tags` argument instead as []string
+        /// (Deprecated) Use `tags` argument instead as []string
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Tag;
         /// <summary>
-        /// The GKE node config tags (List)
+        /// The AKS cluster tags (map)
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
@@ -162,7 +162,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string TenantId;
         /// <summary>
-        /// The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
+        /// The AKS virtual network (string)
         /// </summary>
         public readonly string VirtualNetwork;
         /// <summary>

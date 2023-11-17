@@ -52,7 +52,7 @@ public final class ClusterAksConfigV2 {
      */
     private @Nullable Boolean imported;
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return The kubernetes master version. Required if `imported=false` (string)
      * 
      */
     private @Nullable String kubernetesVersion;
@@ -87,7 +87,7 @@ public final class ClusterAksConfigV2 {
      */
     private @Nullable Boolean monitoring;
     /**
-     * @return The name of the Cluster (string)
+     * @return The AKS cluster name (string)
      * 
      */
     private @Nullable String name;
@@ -122,7 +122,7 @@ public final class ClusterAksConfigV2 {
      */
     private @Nullable String networkServiceCidr;
     /**
-     * @return The GKE cluster node pools. Required for create new cluster (List)
+     * @return The AKS nnode pools. Required if `imported=false` (list)
      * 
      */
     private @Nullable List<ClusterAksConfigV2NodePool> nodePools;
@@ -147,12 +147,12 @@ public final class ClusterAksConfigV2 {
      */
     private @Nullable String subnet;
     /**
-     * @return The GKE node config tags (List)
+     * @return The AKS cluster tags (map)
      * 
      */
     private @Nullable Map<String,Object> tags;
     /**
-     * @return The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
+     * @return The AKS virtual network (string)
      * 
      */
     private @Nullable String virtualNetwork;
@@ -213,7 +213,7 @@ public final class ClusterAksConfigV2 {
         return Optional.ofNullable(this.imported);
     }
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return The kubernetes master version. Required if `imported=false` (string)
      * 
      */
     public Optional<String> kubernetesVersion() {
@@ -262,7 +262,7 @@ public final class ClusterAksConfigV2 {
         return Optional.ofNullable(this.monitoring);
     }
     /**
-     * @return The name of the Cluster (string)
+     * @return The AKS cluster name (string)
      * 
      */
     public Optional<String> name() {
@@ -311,7 +311,7 @@ public final class ClusterAksConfigV2 {
         return Optional.ofNullable(this.networkServiceCidr);
     }
     /**
-     * @return The GKE cluster node pools. Required for create new cluster (List)
+     * @return The AKS nnode pools. Required if `imported=false` (list)
      * 
      */
     public List<ClusterAksConfigV2NodePool> nodePools() {
@@ -346,14 +346,14 @@ public final class ClusterAksConfigV2 {
         return Optional.ofNullable(this.subnet);
     }
     /**
-     * @return The GKE node config tags (List)
+     * @return The AKS cluster tags (map)
      * 
      */
     public Map<String,Object> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
     /**
-     * @return The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
+     * @return The AKS virtual network (string)
      * 
      */
     public Optional<String> virtualNetwork() {

@@ -1108,7 +1108,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.enableClusterAlerting;
     }
     /**
-     * Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.
+     * (Deprecated) Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.
      * 
      * @deprecated
      * Deploy istio using rancher2_app resource instead
@@ -1119,7 +1119,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private Output<Boolean> enableClusterIstio;
 
     /**
-     * @return Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.
+     * @return (Deprecated) Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.
      * 
      */
     public Output<Boolean> enableClusterIstio() {
@@ -1266,14 +1266,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.labels;
     }
     /**
-     * The name of the Cluster (string)
+     * The AKS cluster name (string)
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the Cluster (string)
+     * @return The AKS cluster name (string)
      * 
      */
     public Output<String> name() {

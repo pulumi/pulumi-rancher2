@@ -62,7 +62,7 @@ public final class ClusterAksConfigV2NodePool {
      */
     private @Nullable String mode;
     /**
-     * @return The name of the Cluster (string)
+     * @return The AKS cluster name (string)
      * 
      */
     private String name;
@@ -162,7 +162,7 @@ public final class ClusterAksConfigV2NodePool {
         return Optional.ofNullable(this.mode);
     }
     /**
-     * @return The name of the Cluster (string)
+     * @return The AKS cluster name (string)
      * 
      */
     public String name() {

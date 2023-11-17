@@ -142,11 +142,11 @@ export interface CloudCredentialVsphereCredentialConfig {
 
 export interface ClusterAgentEnvVar {
     /**
-     * The name of the Cluster (string)
+     * The AKS cluster name (string)
      */
     name: string;
     /**
-     * The GKE taint value (string)
+     * The toleration value (string)
      */
     value: string;
 }
@@ -229,7 +229,7 @@ export interface ClusterAksConfig {
      */
     enableMonitoring?: boolean;
     /**
-     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * The kubernetes master version. Required if `imported=false` (string)
      */
     kubernetesVersion: string;
     /**
@@ -289,13 +289,13 @@ export interface ClusterAksConfig {
      */
     subscriptionId: string;
     /**
-     * Use `tags` argument instead as []string
+     * (Deprecated) Use `tags` argument instead as []string
      *
      * @deprecated Use tags argument instead as []string
      */
     tag: {[key: string]: any};
     /**
-     * The GKE node config tags (List)
+     * The AKS cluster tags (map)
      */
     tags: string[];
     /**
@@ -303,7 +303,7 @@ export interface ClusterAksConfig {
      */
     tenantId: string;
     /**
-     * The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
+     * The AKS virtual network (string)
      */
     virtualNetwork: string;
     /**
@@ -342,7 +342,7 @@ export interface ClusterAksConfigV2 {
      */
     imported?: boolean;
     /**
-     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * The kubernetes master version. Required if `imported=false` (string)
      */
     kubernetesVersion?: string;
     /**
@@ -370,7 +370,7 @@ export interface ClusterAksConfigV2 {
      */
     monitoring: boolean;
     /**
-     * The name of the Cluster (string)
+     * The AKS cluster name (string)
      */
     name: string;
     /**
@@ -398,7 +398,7 @@ export interface ClusterAksConfigV2 {
      */
     networkServiceCidr: string;
     /**
-     * The GKE cluster node pools. Required for create new cluster (List)
+     * The AKS nnode pools. Required if `imported=false` (list)
      */
     nodePools?: outputs.ClusterAksConfigV2NodePool[];
     /**
@@ -418,11 +418,11 @@ export interface ClusterAksConfigV2 {
      */
     subnet: string;
     /**
-     * The GKE node config tags (List)
+     * The AKS cluster tags (map)
      */
     tags: {[key: string]: any};
     /**
-     * The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
+     * The AKS virtual network (string)
      */
     virtualNetwork: string;
     /**
@@ -469,7 +469,7 @@ export interface ClusterAksConfigV2NodePool {
      */
     mode?: string;
     /**
-     * The name of the Cluster (string)
+     * The AKS cluster name (string)
      */
     name: string;
     /**
@@ -645,11 +645,11 @@ export interface ClusterClusterAgentDeploymentCustomization {
 
 export interface ClusterClusterAgentDeploymentCustomizationAppendToleration {
     /**
-     * The GKE taint effect (string)
+     * The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
      */
     effect?: string;
     /**
-     * The GKE taint key (string)
+     * TLS key for etcd service (string)
      */
     key: string;
     /**
@@ -661,7 +661,7 @@ export interface ClusterClusterAgentDeploymentCustomizationAppendToleration {
      */
     seconds: number;
     /**
-     * The GKE taint value (string)
+     * The toleration value (string)
      */
     value?: string;
 }
@@ -691,7 +691,7 @@ export interface ClusterClusterAuthEndpoint {
      */
     caCerts?: string;
     /**
-     * Enable the authorized cluster endpoint. Default `true` (bool)
+     * Enable event rate limit. Default: `false` (bool)
      */
     enabled?: boolean;
     /**
@@ -749,7 +749,7 @@ export interface ClusterClusterRegistrationToken {
      */
     manifestUrl: string;
     /**
-     * The name of the Cluster (string)
+     * The AKS cluster name (string)
      */
     name: string;
     /**
@@ -827,7 +827,7 @@ export interface ClusterEksConfig {
      */
     keyPairName?: string;
     /**
-     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * The kubernetes master version. Required if `imported=false` (string)
      */
     kubernetesVersion: string;
     /**
@@ -871,7 +871,7 @@ export interface ClusterEksConfig {
      */
     userData: string;
     /**
-     * The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
+     * The AKS virtual network (string)
      */
     virtualNetwork?: string;
 }
@@ -890,7 +890,7 @@ export interface ClusterEksConfigV2 {
      */
     kmsKey?: string;
     /**
-     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * The kubernetes master version. Required if `imported=false` (string)
      */
     kubernetesVersion: string;
     /**
@@ -898,7 +898,7 @@ export interface ClusterEksConfigV2 {
      */
     loggingTypes?: string[];
     /**
-     * The name of the Cluster (string)
+     * The AKS cluster name (string)
      */
     name: string;
     /**
@@ -938,7 +938,7 @@ export interface ClusterEksConfigV2 {
      */
     subnets?: string[];
     /**
-     * The GKE node config tags (List)
+     * The AKS cluster tags (map)
      */
     tags?: {[key: string]: any};
 }
@@ -985,7 +985,7 @@ export interface ClusterEksConfigV2NodeGroup {
      */
     minSize?: number;
     /**
-     * The name of the Cluster (string)
+     * The AKS cluster name (string)
      */
     name: string;
     /**
@@ -1009,7 +1009,7 @@ export interface ClusterEksConfigV2NodeGroup {
      */
     subnets: string[];
     /**
-     * The GKE node config tags (List)
+     * The AKS cluster tags (map)
      */
     tags?: {[key: string]: any};
     /**
@@ -1028,7 +1028,7 @@ export interface ClusterEksConfigV2NodeGroupLaunchTemplate {
      */
     id: string;
     /**
-     * The name of the Cluster (string)
+     * The AKS cluster name (string)
      */
     name: string;
     /**
@@ -1054,11 +1054,11 @@ export interface ClusterFleetAgentDeploymentCustomization {
 
 export interface ClusterFleetAgentDeploymentCustomizationAppendToleration {
     /**
-     * The GKE taint effect (string)
+     * The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
      */
     effect?: string;
     /**
-     * The GKE taint key (string)
+     * TLS key for etcd service (string)
      */
     key: string;
     /**
@@ -1070,7 +1070,7 @@ export interface ClusterFleetAgentDeploymentCustomizationAppendToleration {
      */
     seconds: number;
     /**
-     * The GKE taint value (string)
+     * The toleration value (string)
      */
     value?: string;
 }
@@ -1339,7 +1339,7 @@ export interface ClusterGkeConfigV2 {
      */
     ipAllocationPolicy: outputs.ClusterGkeConfigV2IpAllocationPolicy;
     /**
-     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * The kubernetes master version. Required if `imported=false` (string)
      */
     kubernetesVersion: string;
     /**
@@ -1367,7 +1367,7 @@ export interface ClusterGkeConfigV2 {
      */
     monitoringService: string;
     /**
-     * The name of the Cluster (string)
+     * The AKS cluster name (string)
      */
     name: string;
     /**
@@ -1379,7 +1379,7 @@ export interface ClusterGkeConfigV2 {
      */
     networkPolicyEnabled: boolean;
     /**
-     * The GKE cluster node pools. Required for create new cluster (List)
+     * The AKS nnode pools. Required if `imported=false` (list)
      */
     nodePools: outputs.ClusterGkeConfigV2NodePool[];
     /**
@@ -1460,7 +1460,7 @@ export interface ClusterGkeConfigV2MasterAuthorizedNetworksConfig {
      */
     cidrBlocks: outputs.ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock[];
     /**
-     * Enable the authorized cluster endpoint. Default `true` (bool)
+     * Enable event rate limit. Default: `false` (bool)
      */
     enabled?: boolean;
 }
@@ -1498,7 +1498,7 @@ export interface ClusterGkeConfigV2NodePool {
      */
     maxPodsConstraint: number;
     /**
-     * The name of the Cluster (string)
+     * The AKS cluster name (string)
      */
     name: string;
     /**
@@ -1509,7 +1509,7 @@ export interface ClusterGkeConfigV2NodePool {
 
 export interface ClusterGkeConfigV2NodePoolAutoscaling {
     /**
-     * Enable the authorized cluster endpoint. Default `true` (bool)
+     * Enable event rate limit. Default: `false` (bool)
      */
     enabled?: boolean;
     /**
@@ -1556,7 +1556,7 @@ export interface ClusterGkeConfigV2NodePoolConfig {
      */
     preemptible?: boolean;
     /**
-     * The GKE node config tags (List)
+     * The AKS cluster tags (map)
      */
     tags: string[];
     /**
@@ -1674,7 +1674,7 @@ export interface ClusterOkeConfig {
      */
     kmsKeyId?: string;
     /**
-     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * The kubernetes master version. Required if `imported=false` (string)
      */
     kubernetesVersion: string;
     /**
@@ -1843,7 +1843,7 @@ export interface ClusterRkeConfig {
      */
     ingress: outputs.ClusterRkeConfigIngress;
     /**
-     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * The kubernetes master version. Required if `imported=false` (string)
      */
     kubernetesVersion: string;
     /**
@@ -1955,7 +1955,7 @@ export interface ClusterRkeConfigCloudProvider {
      */
     customCloudProvider: string;
     /**
-     * The name of the Cluster (string)
+     * The AKS cluster name (string)
      */
     name?: string;
     /**
@@ -2384,7 +2384,7 @@ export interface ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter 
      */
     datacenters: string;
     /**
-     * The name of the Cluster (string)
+     * The AKS cluster name (string)
      */
     name: string;
     /**
@@ -2503,11 +2503,11 @@ export interface ClusterRkeConfigDnsNodelocal {
 
 export interface ClusterRkeConfigDnsToleration {
     /**
-     * The GKE taint effect (string)
+     * The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
      */
     effect?: string;
     /**
-     * The GKE taint key (string)
+     * TLS key for etcd service (string)
      */
     key: string;
     /**
@@ -2519,7 +2519,7 @@ export interface ClusterRkeConfigDnsToleration {
      */
     seconds: number;
     /**
-     * The GKE taint value (string)
+     * The toleration value (string)
      */
     value?: string;
 }
@@ -2595,11 +2595,11 @@ export interface ClusterRkeConfigIngress {
 
 export interface ClusterRkeConfigIngressToleration {
     /**
-     * The GKE taint effect (string)
+     * The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
      */
     effect?: string;
     /**
-     * The GKE taint key (string)
+     * TLS key for etcd service (string)
      */
     key: string;
     /**
@@ -2611,7 +2611,7 @@ export interface ClusterRkeConfigIngressToleration {
      */
     seconds: number;
     /**
-     * The GKE taint value (string)
+     * The toleration value (string)
      */
     value?: string;
 }
@@ -2663,11 +2663,11 @@ export interface ClusterRkeConfigMonitoring {
 
 export interface ClusterRkeConfigMonitoringToleration {
     /**
-     * The GKE taint effect (string)
+     * The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
      */
     effect?: string;
     /**
-     * The GKE taint key (string)
+     * TLS key for etcd service (string)
      */
     key: string;
     /**
@@ -2679,7 +2679,7 @@ export interface ClusterRkeConfigMonitoringToleration {
      */
     seconds: number;
     /**
-     * The GKE taint value (string)
+     * The toleration value (string)
      */
     value?: string;
 }
@@ -3067,11 +3067,11 @@ export interface ClusterRkeConfigNetworkFlannelNetworkProvider {
 
 export interface ClusterRkeConfigNetworkToleration {
     /**
-     * The GKE taint effect (string)
+     * The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
      */
     effect?: string;
     /**
-     * The GKE taint key (string)
+     * TLS key for etcd service (string)
      */
     key: string;
     /**
@@ -3083,7 +3083,7 @@ export interface ClusterRkeConfigNetworkToleration {
      */
     seconds: number;
     /**
-     * The GKE taint value (string)
+     * The toleration value (string)
      */
     value?: string;
 }
@@ -3125,7 +3125,7 @@ export interface ClusterRkeConfigNode {
      */
     port?: string;
     /**
-     * Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
+     * (Requires) Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
      */
     roles: string[];
     /**
@@ -3253,11 +3253,11 @@ export interface ClusterRkeConfigServicesEtcd {
      */
     image: string;
     /**
-     * The GKE taint key (string)
+     * TLS key for etcd service (string)
      */
     key: string;
     /**
-     * (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+     * Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
      */
     path: string;
     /**
@@ -3276,7 +3276,7 @@ export interface ClusterRkeConfigServicesEtcd {
 
 export interface ClusterRkeConfigServicesEtcdBackupConfig {
     /**
-     * Enable the authorized cluster endpoint. Default `true` (bool)
+     * Enable event rate limit. Default: `false` (bool)
      */
     enabled?: boolean;
     /**
@@ -3404,11 +3404,11 @@ export interface ClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin {
      */
     configuration: string;
     /**
-     * The name of the Cluster (string)
+     * The AKS cluster name (string)
      */
     name: string;
     /**
-     * (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+     * Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
      */
     path?: string;
 }
@@ -3419,7 +3419,7 @@ export interface ClusterRkeConfigServicesKubeApiAuditLog {
      */
     configuration: outputs.ClusterRkeConfigServicesKubeApiAuditLogConfiguration;
     /**
-     * Enable the authorized cluster endpoint. Default `true` (bool)
+     * Enable event rate limit. Default: `false` (bool)
      */
     enabled?: boolean;
 }
@@ -3442,7 +3442,7 @@ export interface ClusterRkeConfigServicesKubeApiAuditLogConfiguration {
      */
     maxSize?: number;
     /**
-     * (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+     * Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
      */
     path?: string;
     /**
@@ -3457,7 +3457,7 @@ export interface ClusterRkeConfigServicesKubeApiEventRateLimit {
      */
     configuration: string;
     /**
-     * Enable the authorized cluster endpoint. Default `true` (bool)
+     * Enable event rate limit. Default: `false` (bool)
      */
     enabled?: boolean;
 }
@@ -3472,7 +3472,7 @@ export interface ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig {
      */
     customConfig?: string;
     /**
-     * Enable the authorized cluster endpoint. Default `true` (bool)
+     * Enable event rate limit. Default: `false` (bool)
      */
     enabled?: boolean;
 }
@@ -7873,7 +7873,7 @@ export interface MachineConfigV2HarvesterConfig {
      */
     cpuCount?: string;
     /**
-     * Use `diskInfo` instead
+     * (Deprecated) Use `diskInfo` instead
      *
      * @deprecated Use disk_info instead
      */
@@ -7907,13 +7907,13 @@ export interface MachineConfigV2HarvesterConfig {
      */
     networkInfo?: string;
     /**
-     * Use `networkInfo` instead
+     * (Deprecated) Use `networkInfo` instead
      *
      * @deprecated Use network_info instead
      */
     networkModel?: string;
     /**
-     * Use `networkInfo` instead
+     * (Deprecated) Use `networkInfo` instead
      *
      * @deprecated Use network_info instead
      */
@@ -8157,10 +8157,9 @@ export interface MachineConfigV2OpenstackConfig {
      */
     username?: string;
     /**
-     * OpenStack volume device path (attaching). Applicable only when `bootFromVolume` is `true`. Omit for auto `/dev/vdb`. (string)
-     * > **Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.
-     * > **Note:**: `Required++` denotes that either the _name or _id is required unless `applicationCredentialId` is defined.
-     * > **Note for OpenStack users:**: `keypairName` is required to be in the schema even if there are no references in rancher itself
+     * OpenStack volume device path (attaching). Applicable only when `bootFromVolume` is `true`. Omit for auto `/dev/vdb`. (string)**Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.
+     * **Note:**: `Required++` denotes that either the _name or _id is required unless `applicationCredentialId` is defined.
+     * **Note for OpenStack users:**: `keypairName` is required to be in the schema even if there are no references in rancher itself
      */
     volumeDevicePath?: string;
     /**
@@ -8593,9 +8592,7 @@ export interface NodeTemplateAmazonec2Config {
      */
     usePrivateAddress?: boolean;
     /**
-     * Path to file with cloud-init user-data (string)
-     *
-     * > **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+     * Path to file with cloud-init user-data (string)**Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
      */
     userdata?: string;
     /**
@@ -8791,9 +8788,7 @@ export interface NodeTemplateDigitaloceanConfig {
      */
     tags?: string;
     /**
-     * Path to file with cloud-init user-data (string)
-     *
-     * > **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+     * Path to file with cloud-init user-data (string)**Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
      */
     userdata?: string;
 }
@@ -8804,7 +8799,7 @@ export interface NodeTemplateHarvesterConfig {
      */
     cpuCount?: string;
     /**
-     * Use `diskInfo` instead
+     * (Deprecated) Use `diskInfo` instead
      *
      * @deprecated Use disk_info instead
      */
@@ -8838,7 +8833,7 @@ export interface NodeTemplateHarvesterConfig {
      */
     networkInfo?: string;
     /**
-     * Use `networkInfo` instead
+     * (Deprecated) Use `networkInfo` instead
      *
      * @deprecated Use network_info instead
      */
@@ -8901,9 +8896,7 @@ export interface NodeTemplateHetznerConfig {
      */
     usePrivateNetwork?: boolean;
     /**
-     * Path to file with cloud-init user-data (string)
-     *
-     * > **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+     * Path to file with cloud-init user-data (string)**Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
      */
     userdata?: string;
     /**
@@ -9068,9 +9061,7 @@ export interface NodeTemplateOpennebulaConfig {
      */
     user: string;
     /**
-     * VCPUs for the VM (string)
-     *
-     * > **Note:**: `Required*` denotes that one of imageName / imageId or templateName / templateId is required but you cannot combine them.
+     * VCPUs for the VM (string)**Note:**: `Required*` denotes that one of imageName / imageId or templateName / templateId is required but you cannot combine them.
      */
     vcpu?: string;
     /**
@@ -9213,13 +9204,7 @@ export interface NodeTemplateOpenstackConfig {
      */
     username?: string;
     /**
-     * OpenStack volume device path (attaching). Applicable only when `bootFromVolume` is `true`. Omit for auto `/dev/vdb`. (string)
-     *
-     * > **Note:**: `Required*` denotes that either the _name or _id is required but you cannot use both.
-     *
-     * > **Note:**: `Required**` denotes that either the _name or _id is required unless `applicationCredentialId` is defined.
-     *
-     * > **Note for OpenStack users:**: `keypairName` is required to be in the schema even if there are no references in rancher itself
+     * OpenStack volume device path (attaching). Applicable only when `bootFromVolume` is `true`. Omit for auto `/dev/vdb`. (string)**Note:**: `Required*` denotes that either the _name or _id is required but you cannot use both.**Note:**: `Required**` denotes that either the _name or _id is required unless `applicationCredentialId` is defined.**Note for OpenStack users:**: `keypairName` is required to be in the schema even if there are no references in rancher itself
      */
     volumeDevicePath?: string;
     /**

@@ -14,11 +14,11 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterAgentEnvVar
     {
         /// <summary>
-        /// The name of the Cluster (string)
+        /// The AKS cluster name (string)
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The GKE taint value (string)
+        /// The toleration value (string)
         /// </summary>
         public readonly string Value;
 

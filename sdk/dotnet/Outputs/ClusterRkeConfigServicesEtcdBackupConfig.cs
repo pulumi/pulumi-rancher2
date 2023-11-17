@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterRkeConfigServicesEtcdBackupConfig
     {
         /// <summary>
-        /// Enable the authorized cluster endpoint. Default `true` (bool)
+        /// Enable event rate limit. Default: `false` (bool)
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>

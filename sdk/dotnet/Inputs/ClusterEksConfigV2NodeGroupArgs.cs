@@ -85,7 +85,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<int>? MinSize { get; set; }
 
         /// <summary>
-        /// The name of the Cluster (string)
+        /// The AKS cluster name (string)
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -142,7 +142,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// The GKE node config tags (List)
+        /// The AKS cluster tags (map)
         /// </summary>
         public InputMap<object> Tags
         {

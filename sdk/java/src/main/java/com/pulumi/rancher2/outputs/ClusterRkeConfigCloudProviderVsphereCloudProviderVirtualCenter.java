@@ -18,7 +18,7 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCente
      */
     private String datacenters;
     /**
-     * @return The name of the Cluster (string)
+     * @return The AKS cluster name (string)
      * 
      */
     private String name;
@@ -52,7 +52,7 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCente
         return this.datacenters;
     }
     /**
-     * @return The name of the Cluster (string)
+     * @return The AKS cluster name (string)
      * 
      */
     public String name() {

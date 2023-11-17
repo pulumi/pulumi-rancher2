@@ -196,14 +196,14 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * The kubernetes master version. Required if `imported=false` (string)
      * 
      */
     @Import(name="kubernetesVersion")
     private @Nullable Output<String> kubernetesVersion;
 
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return The kubernetes master version. Required if `imported=false` (string)
      * 
      */
     public Optional<Output<String>> kubernetesVersion() {
@@ -663,7 +663,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param kubernetesVersion The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+         * @param kubernetesVersion The kubernetes master version. Required if `imported=false` (string)
          * 
          * @return builder
          * 
@@ -674,7 +674,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param kubernetesVersion The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+         * @param kubernetesVersion The kubernetes master version. Required if `imported=false` (string)
          * 
          * @return builder
          * 

@@ -398,7 +398,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.
+     * (Deprecated) Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.
      * 
      * @deprecated
      * Deploy istio using rancher2_app resource instead
@@ -409,7 +409,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> enableClusterIstio;
 
     /**
-     * @return Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.
+     * @return (Deprecated) Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.
      * 
      * @deprecated
      * Deploy istio using rancher2_app resource instead
@@ -571,14 +571,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the Cluster (string)
+     * The AKS cluster name (string)
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the Cluster (string)
+     * @return The AKS cluster name (string)
      * 
      */
     public Optional<Output<String>> name() {
@@ -1259,7 +1259,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableClusterIstio Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.
+         * @param enableClusterIstio (Deprecated) Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.
          * 
          * @return builder
          * 
@@ -1274,7 +1274,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableClusterIstio Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.
+         * @param enableClusterIstio (Deprecated) Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.
          * 
          * @return builder
          * 
@@ -1508,7 +1508,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the Cluster (string)
+         * @param name The AKS cluster name (string)
          * 
          * @return builder
          * 
@@ -1519,7 +1519,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the Cluster (string)
+         * @param name The AKS cluster name (string)
          * 
          * @return builder
          * 

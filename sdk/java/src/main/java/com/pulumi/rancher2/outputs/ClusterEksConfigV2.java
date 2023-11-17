@@ -32,7 +32,7 @@ public final class ClusterEksConfigV2 {
      */
     private @Nullable String kmsKey;
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return The kubernetes master version. Required if `imported=false` (string)
      * 
      */
     private @Nullable String kubernetesVersion;
@@ -42,7 +42,7 @@ public final class ClusterEksConfigV2 {
      */
     private @Nullable List<String> loggingTypes;
     /**
-     * @return The name of the Cluster (string)
+     * @return The AKS cluster name (string)
      * 
      */
     private @Nullable String name;
@@ -92,7 +92,7 @@ public final class ClusterEksConfigV2 {
      */
     private @Nullable List<String> subnets;
     /**
-     * @return The GKE node config tags (List)
+     * @return The AKS cluster tags (map)
      * 
      */
     private @Nullable Map<String,Object> tags;
@@ -120,7 +120,7 @@ public final class ClusterEksConfigV2 {
         return Optional.ofNullable(this.kmsKey);
     }
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return The kubernetes master version. Required if `imported=false` (string)
      * 
      */
     public Optional<String> kubernetesVersion() {
@@ -134,7 +134,7 @@ public final class ClusterEksConfigV2 {
         return this.loggingTypes == null ? List.of() : this.loggingTypes;
     }
     /**
-     * @return The name of the Cluster (string)
+     * @return The AKS cluster name (string)
      * 
      */
     public Optional<String> name() {
@@ -204,7 +204,7 @@ public final class ClusterEksConfigV2 {
         return this.subnets == null ? List.of() : this.subnets;
     }
     /**
-     * @return The GKE node config tags (List)
+     * @return The AKS cluster tags (map)
      * 
      */
     public Map<String,Object> tags() {

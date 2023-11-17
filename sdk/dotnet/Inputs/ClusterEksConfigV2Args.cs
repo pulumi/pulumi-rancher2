@@ -31,7 +31,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? KmsKey { get; set; }
 
         /// <summary>
-        /// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        /// The kubernetes master version. Required if `imported=false` (string)
         /// </summary>
         [Input("kubernetesVersion")]
         public Input<string>? KubernetesVersion { get; set; }
@@ -49,7 +49,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// The name of the Cluster (string)
+        /// The AKS cluster name (string)
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -136,7 +136,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// The GKE node config tags (List)
+        /// The AKS cluster tags (map)
         /// </summary>
         public InputMap<object> Tags
         {

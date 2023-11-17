@@ -18,7 +18,7 @@ public final class ClusterClusterAuthEndpoint {
      */
     private @Nullable String caCerts;
     /**
-     * @return Enable the authorized cluster endpoint. Default `true` (bool)
+     * @return Enable event rate limit. Default: `false` (bool)
      * 
      */
     private @Nullable Boolean enabled;
@@ -37,7 +37,7 @@ public final class ClusterClusterAuthEndpoint {
         return Optional.ofNullable(this.caCerts);
     }
     /**
-     * @return Enable the authorized cluster endpoint. Default `true` (bool)
+     * @return Enable event rate limit. Default: `false` (bool)
      * 
      */
     public Optional<Boolean> enabled() {

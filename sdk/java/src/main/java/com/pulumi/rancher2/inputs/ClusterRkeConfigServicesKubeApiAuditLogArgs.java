@@ -32,14 +32,14 @@ public final class ClusterRkeConfigServicesKubeApiAuditLogArgs extends com.pulum
     }
 
     /**
-     * Enable the authorized cluster endpoint. Default `true` (bool)
+     * Enable event rate limit. Default: `false` (bool)
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable the authorized cluster endpoint. Default `true` (bool)
+     * @return Enable event rate limit. Default: `false` (bool)
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -93,7 +93,7 @@ public final class ClusterRkeConfigServicesKubeApiAuditLogArgs extends com.pulum
         }
 
         /**
-         * @param enabled Enable the authorized cluster endpoint. Default `true` (bool)
+         * @param enabled Enable event rate limit. Default: `false` (bool)
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ClusterRkeConfigServicesKubeApiAuditLogArgs extends com.pulum
         }
 
         /**
-         * @param enabled Enable the authorized cluster endpoint. Default `true` (bool)
+         * @param enabled Enable event rate limit. Default: `false` (bool)
          * 
          * @return builder
          * 

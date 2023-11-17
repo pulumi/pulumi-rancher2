@@ -17,12 +17,12 @@ public final class ClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin {
      */
     private @Nullable String configuration;
     /**
-     * @return The name of the Cluster (string)
+     * @return The AKS cluster name (string)
      * 
      */
     private @Nullable String name;
     /**
-     * @return (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+     * @return Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
      * 
      */
     private @Nullable String path;
@@ -36,14 +36,14 @@ public final class ClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin {
         return Optional.ofNullable(this.configuration);
     }
     /**
-     * @return The name of the Cluster (string)
+     * @return The AKS cluster name (string)
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+     * @return Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
      * 
      */
     public Optional<String> path() {

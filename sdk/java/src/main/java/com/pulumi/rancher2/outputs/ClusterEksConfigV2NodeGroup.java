@@ -68,7 +68,7 @@ public final class ClusterEksConfigV2NodeGroup {
      */
     private @Nullable Integer minSize;
     /**
-     * @return The name of the Cluster (string)
+     * @return The AKS cluster name (string)
      * 
      */
     private String name;
@@ -98,7 +98,7 @@ public final class ClusterEksConfigV2NodeGroup {
      */
     private @Nullable List<String> subnets;
     /**
-     * @return The GKE node config tags (List)
+     * @return The AKS cluster tags (map)
      * 
      */
     private @Nullable Map<String,Object> tags;
@@ -185,7 +185,7 @@ public final class ClusterEksConfigV2NodeGroup {
         return Optional.ofNullable(this.minSize);
     }
     /**
-     * @return The name of the Cluster (string)
+     * @return The AKS cluster name (string)
      * 
      */
     public String name() {
@@ -227,7 +227,7 @@ public final class ClusterEksConfigV2NodeGroup {
         return this.subnets == null ? List.of() : this.subnets;
     }
     /**
-     * @return The GKE node config tags (List)
+     * @return The AKS cluster tags (map)
      * 
      */
     public Map<String,Object> tags() {

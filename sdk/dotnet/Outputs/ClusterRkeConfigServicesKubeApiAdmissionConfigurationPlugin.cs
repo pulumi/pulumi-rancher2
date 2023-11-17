@@ -18,11 +18,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Configuration;
         /// <summary>
-        /// The name of the Cluster (string)
+        /// The AKS cluster name (string)
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+        /// Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
         /// </summary>
         public readonly string? Path;
 

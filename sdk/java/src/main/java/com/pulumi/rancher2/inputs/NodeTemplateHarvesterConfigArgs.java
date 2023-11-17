@@ -31,7 +31,7 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Use `disk_info` instead
+     * (Deprecated) Use `disk_info` instead
      * 
      * @deprecated
      * Use disk_info instead
@@ -42,7 +42,7 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
     private @Nullable Output<String> diskBus;
 
     /**
-     * @return Use `disk_info` instead
+     * @return (Deprecated) Use `disk_info` instead
      * 
      * @deprecated
      * Use disk_info instead
@@ -160,7 +160,7 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Use `network_info` instead
+     * (Deprecated) Use `network_info` instead
      * 
      * @deprecated
      * Use network_info instead
@@ -171,7 +171,7 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
     private @Nullable Output<String> networkModel;
 
     /**
-     * @return Use `network_info` instead
+     * @return (Deprecated) Use `network_info` instead
      * 
      * @deprecated
      * Use network_info instead
@@ -340,7 +340,7 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param diskBus Use `disk_info` instead
+         * @param diskBus (Deprecated) Use `disk_info` instead
          * 
          * @return builder
          * 
@@ -355,7 +355,7 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param diskBus Use `disk_info` instead
+         * @param diskBus (Deprecated) Use `disk_info` instead
          * 
          * @return builder
          * 
@@ -511,7 +511,7 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param networkModel Use `network_info` instead
+         * @param networkModel (Deprecated) Use `network_info` instead
          * 
          * @return builder
          * 
@@ -526,7 +526,7 @@ public final class NodeTemplateHarvesterConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param networkModel Use `network_info` instead
+         * @param networkModel (Deprecated) Use `network_info` instead
          * 
          * @return builder
          * 

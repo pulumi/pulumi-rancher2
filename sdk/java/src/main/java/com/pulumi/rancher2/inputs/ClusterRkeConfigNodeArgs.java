@@ -125,14 +125,14 @@ public final class ClusterRkeConfigNodeArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
+     * (Requires) Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
      * 
      */
     @Import(name="roles", required=true)
     private Output<List<String>> roles;
 
     /**
-     * @return Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
+     * @return (Requires) Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
      * 
      */
     public Output<List<String>> roles() {
@@ -382,7 +382,7 @@ public final class ClusterRkeConfigNodeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param roles Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
+         * @param roles (Requires) Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
          * 
          * @return builder
          * 
@@ -393,7 +393,7 @@ public final class ClusterRkeConfigNodeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param roles Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
+         * @param roles (Requires) Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
          * 
          * @return builder
          * 
@@ -403,7 +403,7 @@ public final class ClusterRkeConfigNodeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param roles Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
+         * @param roles (Requires) Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
          * 
          * @return builder
          * 

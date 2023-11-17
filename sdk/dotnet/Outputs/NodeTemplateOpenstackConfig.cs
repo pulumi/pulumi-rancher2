@@ -146,13 +146,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Username;
         /// <summary>
-        /// OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
-        /// 
-        /// &gt; **Note:**: `Required*` denotes that either the _name or _id is required but you cannot use both.
-        /// 
-        /// &gt; **Note:**: `Required**` denotes that either the _name or _id is required unless `application_credential_id` is defined.
-        /// 
-        /// &gt; **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
+        /// OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)**Note:**: `Required*` denotes that either the _name or _id is required but you cannot use both.**Note:**: `Required**` denotes that either the _name or _id is required unless `application_credential_id` is defined.**Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
         /// </summary>
         public readonly string? VolumeDevicePath;
         /// <summary>

@@ -42,7 +42,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Port;
         /// <summary>
-        /// Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
+        /// (Requires) Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
         /// </summary>
         public readonly ImmutableArray<string> Roles;
         /// <summary>

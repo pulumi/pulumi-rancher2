@@ -95,14 +95,14 @@ public final class ClusterGkeConfigV2NodePoolArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The name of the Cluster (string)
+     * The AKS cluster name (string)
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the Cluster (string)
+     * @return The AKS cluster name (string)
      * 
      */
     public Output<String> name() {
@@ -260,7 +260,7 @@ public final class ClusterGkeConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param name The name of the Cluster (string)
+         * @param name The AKS cluster name (string)
          * 
          * @return builder
          * 
@@ -271,7 +271,7 @@ public final class ClusterGkeConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param name The name of the Cluster (string)
+         * @param name The AKS cluster name (string)
          * 
          * @return builder
          * 

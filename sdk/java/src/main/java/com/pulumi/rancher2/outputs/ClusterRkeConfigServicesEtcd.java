@@ -68,12 +68,12 @@ public final class ClusterRkeConfigServicesEtcd {
      */
     private @Nullable String image;
     /**
-     * @return The GKE taint key (string)
+     * @return TLS key for etcd service (string)
      * 
      */
     private @Nullable String key;
     /**
-     * @return (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+     * @return Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
      * 
      */
     private @Nullable String path;
@@ -165,14 +165,14 @@ public final class ClusterRkeConfigServicesEtcd {
         return Optional.ofNullable(this.image);
     }
     /**
-     * @return The GKE taint key (string)
+     * @return TLS key for etcd service (string)
      * 
      */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
     /**
-     * @return (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+     * @return Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
      * 
      */
     public Optional<String> path() {

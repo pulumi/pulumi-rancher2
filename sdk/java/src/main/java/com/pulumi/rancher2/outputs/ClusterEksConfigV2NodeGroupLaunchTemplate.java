@@ -18,7 +18,7 @@ public final class ClusterEksConfigV2NodeGroupLaunchTemplate {
      */
     private String id;
     /**
-     * @return The name of the Cluster (string)
+     * @return The AKS cluster name (string)
      * 
      */
     private @Nullable String name;
@@ -37,7 +37,7 @@ public final class ClusterEksConfigV2NodeGroupLaunchTemplate {
         return this.id;
     }
     /**
-     * @return The name of the Cluster (string)
+     * @return The AKS cluster name (string)
      * 
      */
     public Optional<String> name() {

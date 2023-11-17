@@ -14,14 +14,14 @@ public final class ClusterAgentEnvVarArgs extends com.pulumi.resources.ResourceA
     public static final ClusterAgentEnvVarArgs Empty = new ClusterAgentEnvVarArgs();
 
     /**
-     * The name of the Cluster (string)
+     * The AKS cluster name (string)
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the Cluster (string)
+     * @return The AKS cluster name (string)
      * 
      */
     public Output<String> name() {
@@ -29,14 +29,14 @@ public final class ClusterAgentEnvVarArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The GKE taint value (string)
+     * The toleration value (string)
      * 
      */
     @Import(name="value", required=true)
     private Output<String> value;
 
     /**
-     * @return The GKE taint value (string)
+     * @return The toleration value (string)
      * 
      */
     public Output<String> value() {
@@ -69,7 +69,7 @@ public final class ClusterAgentEnvVarArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name The name of the Cluster (string)
+         * @param name The AKS cluster name (string)
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class ClusterAgentEnvVarArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name The name of the Cluster (string)
+         * @param name The AKS cluster name (string)
          * 
          * @return builder
          * 
@@ -90,7 +90,7 @@ public final class ClusterAgentEnvVarArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param value The GKE taint value (string)
+         * @param value The toleration value (string)
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class ClusterAgentEnvVarArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param value The GKE taint value (string)
+         * @param value The toleration value (string)
          * 
          * @return builder
          * 

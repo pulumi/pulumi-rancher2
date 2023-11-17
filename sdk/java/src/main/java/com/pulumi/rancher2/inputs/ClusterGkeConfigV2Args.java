@@ -130,14 +130,14 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * The kubernetes master version. Required if `imported=false` (string)
      * 
      */
     @Import(name="kubernetesVersion")
     private @Nullable Output<String> kubernetesVersion;
 
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return The kubernetes master version. Required if `imported=false` (string)
      * 
      */
     public Optional<Output<String>> kubernetesVersion() {
@@ -235,14 +235,14 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The name of the Cluster (string)
+     * The AKS cluster name (string)
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the Cluster (string)
+     * @return The AKS cluster name (string)
      * 
      */
     public Output<String> name() {
@@ -280,14 +280,14 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The GKE cluster node pools. Required for create new cluster (List)
+     * The AKS nnode pools. Required if `imported=false` (list)
      * 
      */
     @Import(name="nodePools")
     private @Nullable Output<List<ClusterGkeConfigV2NodePoolArgs>> nodePools;
 
     /**
-     * @return The GKE cluster node pools. Required for create new cluster (List)
+     * @return The AKS nnode pools. Required if `imported=false` (list)
      * 
      */
     public Optional<Output<List<ClusterGkeConfigV2NodePoolArgs>>> nodePools() {
@@ -563,7 +563,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param kubernetesVersion The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+         * @param kubernetesVersion The kubernetes master version. Required if `imported=false` (string)
          * 
          * @return builder
          * 
@@ -574,7 +574,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param kubernetesVersion The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+         * @param kubernetesVersion The kubernetes master version. Required if `imported=false` (string)
          * 
          * @return builder
          * 
@@ -720,7 +720,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name The name of the Cluster (string)
+         * @param name The AKS cluster name (string)
          * 
          * @return builder
          * 
@@ -731,7 +731,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name The name of the Cluster (string)
+         * @param name The AKS cluster name (string)
          * 
          * @return builder
          * 
@@ -783,7 +783,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param nodePools The GKE cluster node pools. Required for create new cluster (List)
+         * @param nodePools The AKS nnode pools. Required if `imported=false` (list)
          * 
          * @return builder
          * 
@@ -794,7 +794,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param nodePools The GKE cluster node pools. Required for create new cluster (List)
+         * @param nodePools The AKS nnode pools. Required if `imported=false` (list)
          * 
          * @return builder
          * 
@@ -804,7 +804,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param nodePools The GKE cluster node pools. Required for create new cluster (List)
+         * @param nodePools The AKS nnode pools. Required if `imported=false` (list)
          * 
          * @return builder
          * 

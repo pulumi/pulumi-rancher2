@@ -172,14 +172,14 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
     }
 
     /**
-     * The name of the Cluster (string)
+     * The AKS cluster name (string)
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the Cluster (string)
+     * @return The AKS cluster name (string)
      * 
      */
     public Output<String> name() {
@@ -262,14 +262,14 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
     }
 
     /**
-     * The GKE node config tags (List)
+     * The AKS cluster tags (map)
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
-     * @return The GKE node config tags (List)
+     * @return The AKS cluster tags (map)
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -569,7 +569,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param name The name of the Cluster (string)
+         * @param name The AKS cluster name (string)
          * 
          * @return builder
          * 
@@ -580,7 +580,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param name The name of the Cluster (string)
+         * @param name The AKS cluster name (string)
          * 
          * @return builder
          * 
@@ -715,7 +715,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param tags The GKE node config tags (List)
+         * @param tags The AKS cluster tags (map)
          * 
          * @return builder
          * 
@@ -726,7 +726,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param tags The GKE node config tags (List)
+         * @param tags The AKS cluster tags (map)
          * 
          * @return builder
          * 

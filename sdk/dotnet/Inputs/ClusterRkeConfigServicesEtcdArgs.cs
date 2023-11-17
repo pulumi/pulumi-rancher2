@@ -110,7 +110,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _key;
 
         /// <summary>
-        /// The GKE taint key (string)
+        /// TLS key for etcd service (string)
         /// </summary>
         public Input<string>? Key
         {
@@ -123,7 +123,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+        /// Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }

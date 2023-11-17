@@ -59,7 +59,7 @@ public final class ClusterOkeConfig {
      */
     private @Nullable String kmsKeyId;
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return The kubernetes master version. Required if `imported=false` (string)
      * 
      */
     private String kubernetesVersion;
@@ -239,7 +239,7 @@ public final class ClusterOkeConfig {
         return Optional.ofNullable(this.kmsKeyId);
     }
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return The kubernetes master version. Required if `imported=false` (string)
      * 
      */
     public String kubernetesVersion() {

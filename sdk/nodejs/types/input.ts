@@ -142,11 +142,11 @@ export interface CloudCredentialVsphereCredentialConfig {
 
 export interface ClusterAgentEnvVar {
     /**
-     * The name of the Cluster (string)
+     * The AKS cluster name (string)
      */
     name: pulumi.Input<string>;
     /**
-     * The GKE taint value (string)
+     * The toleration value (string)
      */
     value: pulumi.Input<string>;
 }
@@ -229,7 +229,7 @@ export interface ClusterAksConfig {
      */
     enableMonitoring?: pulumi.Input<boolean>;
     /**
-     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * The kubernetes master version. Required if `imported=false` (string)
      */
     kubernetesVersion: pulumi.Input<string>;
     /**
@@ -289,13 +289,13 @@ export interface ClusterAksConfig {
      */
     subscriptionId: pulumi.Input<string>;
     /**
-     * Use `tags` argument instead as []string
+     * (Deprecated) Use `tags` argument instead as []string
      *
      * @deprecated Use tags argument instead as []string
      */
     tag?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The GKE node config tags (List)
+     * The AKS cluster tags (map)
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -303,7 +303,7 @@ export interface ClusterAksConfig {
      */
     tenantId: pulumi.Input<string>;
     /**
-     * The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
+     * The AKS virtual network (string)
      */
     virtualNetwork: pulumi.Input<string>;
     /**
@@ -342,7 +342,7 @@ export interface ClusterAksConfigV2 {
      */
     imported?: pulumi.Input<boolean>;
     /**
-     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * The kubernetes master version. Required if `imported=false` (string)
      */
     kubernetesVersion?: pulumi.Input<string>;
     /**
@@ -370,7 +370,7 @@ export interface ClusterAksConfigV2 {
      */
     monitoring?: pulumi.Input<boolean>;
     /**
-     * The name of the Cluster (string)
+     * The AKS cluster name (string)
      */
     name?: pulumi.Input<string>;
     /**
@@ -398,7 +398,7 @@ export interface ClusterAksConfigV2 {
      */
     networkServiceCidr?: pulumi.Input<string>;
     /**
-     * The GKE cluster node pools. Required for create new cluster (List)
+     * The AKS nnode pools. Required if `imported=false` (list)
      */
     nodePools?: pulumi.Input<pulumi.Input<inputs.ClusterAksConfigV2NodePool>[]>;
     /**
@@ -418,11 +418,11 @@ export interface ClusterAksConfigV2 {
      */
     subnet?: pulumi.Input<string>;
     /**
-     * The GKE node config tags (List)
+     * The AKS cluster tags (map)
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
+     * The AKS virtual network (string)
      */
     virtualNetwork?: pulumi.Input<string>;
     /**
@@ -469,7 +469,7 @@ export interface ClusterAksConfigV2NodePool {
      */
     mode?: pulumi.Input<string>;
     /**
-     * The name of the Cluster (string)
+     * The AKS cluster name (string)
      */
     name: pulumi.Input<string>;
     /**
@@ -645,11 +645,11 @@ export interface ClusterClusterAgentDeploymentCustomization {
 
 export interface ClusterClusterAgentDeploymentCustomizationAppendToleration {
     /**
-     * The GKE taint effect (string)
+     * The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
      */
     effect?: pulumi.Input<string>;
     /**
-     * The GKE taint key (string)
+     * TLS key for etcd service (string)
      */
     key: pulumi.Input<string>;
     /**
@@ -661,7 +661,7 @@ export interface ClusterClusterAgentDeploymentCustomizationAppendToleration {
      */
     seconds?: pulumi.Input<number>;
     /**
-     * The GKE taint value (string)
+     * The toleration value (string)
      */
     value?: pulumi.Input<string>;
 }
@@ -691,7 +691,7 @@ export interface ClusterClusterAuthEndpoint {
      */
     caCerts?: pulumi.Input<string>;
     /**
-     * Enable the authorized cluster endpoint. Default `true` (bool)
+     * Enable event rate limit. Default: `false` (bool)
      */
     enabled?: pulumi.Input<boolean>;
     /**
@@ -749,7 +749,7 @@ export interface ClusterClusterRegistrationToken {
      */
     manifestUrl?: pulumi.Input<string>;
     /**
-     * The name of the Cluster (string)
+     * The AKS cluster name (string)
      */
     name?: pulumi.Input<string>;
     /**
@@ -827,7 +827,7 @@ export interface ClusterEksConfig {
      */
     keyPairName?: pulumi.Input<string>;
     /**
-     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * The kubernetes master version. Required if `imported=false` (string)
      */
     kubernetesVersion: pulumi.Input<string>;
     /**
@@ -871,7 +871,7 @@ export interface ClusterEksConfig {
      */
     userData?: pulumi.Input<string>;
     /**
-     * The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
+     * The AKS virtual network (string)
      */
     virtualNetwork?: pulumi.Input<string>;
 }
@@ -890,7 +890,7 @@ export interface ClusterEksConfigV2 {
      */
     kmsKey?: pulumi.Input<string>;
     /**
-     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * The kubernetes master version. Required if `imported=false` (string)
      */
     kubernetesVersion?: pulumi.Input<string>;
     /**
@@ -898,7 +898,7 @@ export interface ClusterEksConfigV2 {
      */
     loggingTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The name of the Cluster (string)
+     * The AKS cluster name (string)
      */
     name?: pulumi.Input<string>;
     /**
@@ -938,7 +938,7 @@ export interface ClusterEksConfigV2 {
      */
     subnets?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The GKE node config tags (List)
+     * The AKS cluster tags (map)
      */
     tags?: pulumi.Input<{[key: string]: any}>;
 }
@@ -985,7 +985,7 @@ export interface ClusterEksConfigV2NodeGroup {
      */
     minSize?: pulumi.Input<number>;
     /**
-     * The name of the Cluster (string)
+     * The AKS cluster name (string)
      */
     name: pulumi.Input<string>;
     /**
@@ -1009,7 +1009,7 @@ export interface ClusterEksConfigV2NodeGroup {
      */
     subnets?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The GKE node config tags (List)
+     * The AKS cluster tags (map)
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -1028,7 +1028,7 @@ export interface ClusterEksConfigV2NodeGroupLaunchTemplate {
      */
     id: pulumi.Input<string>;
     /**
-     * The name of the Cluster (string)
+     * The AKS cluster name (string)
      */
     name?: pulumi.Input<string>;
     /**
@@ -1054,11 +1054,11 @@ export interface ClusterFleetAgentDeploymentCustomization {
 
 export interface ClusterFleetAgentDeploymentCustomizationAppendToleration {
     /**
-     * The GKE taint effect (string)
+     * The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
      */
     effect?: pulumi.Input<string>;
     /**
-     * The GKE taint key (string)
+     * TLS key for etcd service (string)
      */
     key: pulumi.Input<string>;
     /**
@@ -1070,7 +1070,7 @@ export interface ClusterFleetAgentDeploymentCustomizationAppendToleration {
      */
     seconds?: pulumi.Input<number>;
     /**
-     * The GKE taint value (string)
+     * The toleration value (string)
      */
     value?: pulumi.Input<string>;
 }
@@ -1339,7 +1339,7 @@ export interface ClusterGkeConfigV2 {
      */
     ipAllocationPolicy?: pulumi.Input<inputs.ClusterGkeConfigV2IpAllocationPolicy>;
     /**
-     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * The kubernetes master version. Required if `imported=false` (string)
      */
     kubernetesVersion?: pulumi.Input<string>;
     /**
@@ -1367,7 +1367,7 @@ export interface ClusterGkeConfigV2 {
      */
     monitoringService?: pulumi.Input<string>;
     /**
-     * The name of the Cluster (string)
+     * The AKS cluster name (string)
      */
     name: pulumi.Input<string>;
     /**
@@ -1379,7 +1379,7 @@ export interface ClusterGkeConfigV2 {
      */
     networkPolicyEnabled?: pulumi.Input<boolean>;
     /**
-     * The GKE cluster node pools. Required for create new cluster (List)
+     * The AKS nnode pools. Required if `imported=false` (list)
      */
     nodePools?: pulumi.Input<pulumi.Input<inputs.ClusterGkeConfigV2NodePool>[]>;
     /**
@@ -1460,7 +1460,7 @@ export interface ClusterGkeConfigV2MasterAuthorizedNetworksConfig {
      */
     cidrBlocks: pulumi.Input<pulumi.Input<inputs.ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock>[]>;
     /**
-     * Enable the authorized cluster endpoint. Default `true` (bool)
+     * Enable event rate limit. Default: `false` (bool)
      */
     enabled?: pulumi.Input<boolean>;
 }
@@ -1498,7 +1498,7 @@ export interface ClusterGkeConfigV2NodePool {
      */
     maxPodsConstraint?: pulumi.Input<number>;
     /**
-     * The name of the Cluster (string)
+     * The AKS cluster name (string)
      */
     name: pulumi.Input<string>;
     /**
@@ -1509,7 +1509,7 @@ export interface ClusterGkeConfigV2NodePool {
 
 export interface ClusterGkeConfigV2NodePoolAutoscaling {
     /**
-     * Enable the authorized cluster endpoint. Default `true` (bool)
+     * Enable event rate limit. Default: `false` (bool)
      */
     enabled?: pulumi.Input<boolean>;
     /**
@@ -1556,7 +1556,7 @@ export interface ClusterGkeConfigV2NodePoolConfig {
      */
     preemptible?: pulumi.Input<boolean>;
     /**
-     * The GKE node config tags (List)
+     * The AKS cluster tags (map)
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1674,7 +1674,7 @@ export interface ClusterOkeConfig {
      */
     kmsKeyId?: pulumi.Input<string>;
     /**
-     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * The kubernetes master version. Required if `imported=false` (string)
      */
     kubernetesVersion: pulumi.Input<string>;
     /**
@@ -1843,7 +1843,7 @@ export interface ClusterRkeConfig {
      */
     ingress?: pulumi.Input<inputs.ClusterRkeConfigIngress>;
     /**
-     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * The kubernetes master version. Required if `imported=false` (string)
      */
     kubernetesVersion?: pulumi.Input<string>;
     /**
@@ -1955,7 +1955,7 @@ export interface ClusterRkeConfigCloudProvider {
      */
     customCloudProvider?: pulumi.Input<string>;
     /**
-     * The name of the Cluster (string)
+     * The AKS cluster name (string)
      */
     name?: pulumi.Input<string>;
     /**
@@ -2384,7 +2384,7 @@ export interface ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter 
      */
     datacenters: pulumi.Input<string>;
     /**
-     * The name of the Cluster (string)
+     * The AKS cluster name (string)
      */
     name: pulumi.Input<string>;
     /**
@@ -2503,11 +2503,11 @@ export interface ClusterRkeConfigDnsNodelocal {
 
 export interface ClusterRkeConfigDnsToleration {
     /**
-     * The GKE taint effect (string)
+     * The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
      */
     effect?: pulumi.Input<string>;
     /**
-     * The GKE taint key (string)
+     * TLS key for etcd service (string)
      */
     key: pulumi.Input<string>;
     /**
@@ -2519,7 +2519,7 @@ export interface ClusterRkeConfigDnsToleration {
      */
     seconds?: pulumi.Input<number>;
     /**
-     * The GKE taint value (string)
+     * The toleration value (string)
      */
     value?: pulumi.Input<string>;
 }
@@ -2595,11 +2595,11 @@ export interface ClusterRkeConfigIngress {
 
 export interface ClusterRkeConfigIngressToleration {
     /**
-     * The GKE taint effect (string)
+     * The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
      */
     effect?: pulumi.Input<string>;
     /**
-     * The GKE taint key (string)
+     * TLS key for etcd service (string)
      */
     key: pulumi.Input<string>;
     /**
@@ -2611,7 +2611,7 @@ export interface ClusterRkeConfigIngressToleration {
      */
     seconds?: pulumi.Input<number>;
     /**
-     * The GKE taint value (string)
+     * The toleration value (string)
      */
     value?: pulumi.Input<string>;
 }
@@ -2663,11 +2663,11 @@ export interface ClusterRkeConfigMonitoring {
 
 export interface ClusterRkeConfigMonitoringToleration {
     /**
-     * The GKE taint effect (string)
+     * The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
      */
     effect?: pulumi.Input<string>;
     /**
-     * The GKE taint key (string)
+     * TLS key for etcd service (string)
      */
     key: pulumi.Input<string>;
     /**
@@ -2679,7 +2679,7 @@ export interface ClusterRkeConfigMonitoringToleration {
      */
     seconds?: pulumi.Input<number>;
     /**
-     * The GKE taint value (string)
+     * The toleration value (string)
      */
     value?: pulumi.Input<string>;
 }
@@ -3067,11 +3067,11 @@ export interface ClusterRkeConfigNetworkFlannelNetworkProvider {
 
 export interface ClusterRkeConfigNetworkToleration {
     /**
-     * The GKE taint effect (string)
+     * The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
      */
     effect?: pulumi.Input<string>;
     /**
-     * The GKE taint key (string)
+     * TLS key for etcd service (string)
      */
     key: pulumi.Input<string>;
     /**
@@ -3083,7 +3083,7 @@ export interface ClusterRkeConfigNetworkToleration {
      */
     seconds?: pulumi.Input<number>;
     /**
-     * The GKE taint value (string)
+     * The toleration value (string)
      */
     value?: pulumi.Input<string>;
 }
@@ -3125,7 +3125,7 @@ export interface ClusterRkeConfigNode {
      */
     port?: pulumi.Input<string>;
     /**
-     * Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
+     * (Requires) Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
      */
     roles: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -3253,11 +3253,11 @@ export interface ClusterRkeConfigServicesEtcd {
      */
     image?: pulumi.Input<string>;
     /**
-     * The GKE taint key (string)
+     * TLS key for etcd service (string)
      */
     key?: pulumi.Input<string>;
     /**
-     * (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+     * Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
      */
     path?: pulumi.Input<string>;
     /**
@@ -3276,7 +3276,7 @@ export interface ClusterRkeConfigServicesEtcd {
 
 export interface ClusterRkeConfigServicesEtcdBackupConfig {
     /**
-     * Enable the authorized cluster endpoint. Default `true` (bool)
+     * Enable event rate limit. Default: `false` (bool)
      */
     enabled?: pulumi.Input<boolean>;
     /**
@@ -3404,11 +3404,11 @@ export interface ClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin {
      */
     configuration?: pulumi.Input<string>;
     /**
-     * The name of the Cluster (string)
+     * The AKS cluster name (string)
      */
     name?: pulumi.Input<string>;
     /**
-     * (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+     * Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
      */
     path?: pulumi.Input<string>;
 }
@@ -3419,7 +3419,7 @@ export interface ClusterRkeConfigServicesKubeApiAuditLog {
      */
     configuration?: pulumi.Input<inputs.ClusterRkeConfigServicesKubeApiAuditLogConfiguration>;
     /**
-     * Enable the authorized cluster endpoint. Default `true` (bool)
+     * Enable event rate limit. Default: `false` (bool)
      */
     enabled?: pulumi.Input<boolean>;
 }
@@ -3442,7 +3442,7 @@ export interface ClusterRkeConfigServicesKubeApiAuditLogConfiguration {
      */
     maxSize?: pulumi.Input<number>;
     /**
-     * (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+     * Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
      */
     path?: pulumi.Input<string>;
     /**
@@ -3457,7 +3457,7 @@ export interface ClusterRkeConfigServicesKubeApiEventRateLimit {
      */
     configuration?: pulumi.Input<string>;
     /**
-     * Enable the authorized cluster endpoint. Default `true` (bool)
+     * Enable event rate limit. Default: `false` (bool)
      */
     enabled?: pulumi.Input<boolean>;
 }
@@ -3472,7 +3472,7 @@ export interface ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig {
      */
     customConfig?: pulumi.Input<string>;
     /**
-     * Enable the authorized cluster endpoint. Default `true` (bool)
+     * Enable event rate limit. Default: `false` (bool)
      */
     enabled?: pulumi.Input<boolean>;
 }
@@ -5723,7 +5723,7 @@ export interface MachineConfigV2HarvesterConfig {
      */
     cpuCount?: pulumi.Input<string>;
     /**
-     * Use `diskInfo` instead
+     * (Deprecated) Use `diskInfo` instead
      *
      * @deprecated Use disk_info instead
      */
@@ -5757,13 +5757,13 @@ export interface MachineConfigV2HarvesterConfig {
      */
     networkInfo?: pulumi.Input<string>;
     /**
-     * Use `networkInfo` instead
+     * (Deprecated) Use `networkInfo` instead
      *
      * @deprecated Use network_info instead
      */
     networkModel?: pulumi.Input<string>;
     /**
-     * Use `networkInfo` instead
+     * (Deprecated) Use `networkInfo` instead
      *
      * @deprecated Use network_info instead
      */
@@ -6007,10 +6007,9 @@ export interface MachineConfigV2OpenstackConfig {
      */
     username?: pulumi.Input<string>;
     /**
-     * OpenStack volume device path (attaching). Applicable only when `bootFromVolume` is `true`. Omit for auto `/dev/vdb`. (string)
-     * > **Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.
-     * > **Note:**: `Required++` denotes that either the _name or _id is required unless `applicationCredentialId` is defined.
-     * > **Note for OpenStack users:**: `keypairName` is required to be in the schema even if there are no references in rancher itself
+     * OpenStack volume device path (attaching). Applicable only when `bootFromVolume` is `true`. Omit for auto `/dev/vdb`. (string)**Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.
+     * **Note:**: `Required++` denotes that either the _name or _id is required unless `applicationCredentialId` is defined.
+     * **Note for OpenStack users:**: `keypairName` is required to be in the schema even if there are no references in rancher itself
      */
     volumeDevicePath?: pulumi.Input<string>;
     /**
@@ -6443,9 +6442,7 @@ export interface NodeTemplateAmazonec2Config {
      */
     usePrivateAddress?: pulumi.Input<boolean>;
     /**
-     * Path to file with cloud-init user-data (string)
-     *
-     * > **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+     * Path to file with cloud-init user-data (string)**Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
      */
     userdata?: pulumi.Input<string>;
     /**
@@ -6641,9 +6638,7 @@ export interface NodeTemplateDigitaloceanConfig {
      */
     tags?: pulumi.Input<string>;
     /**
-     * Path to file with cloud-init user-data (string)
-     *
-     * > **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+     * Path to file with cloud-init user-data (string)**Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
      */
     userdata?: pulumi.Input<string>;
 }
@@ -6654,7 +6649,7 @@ export interface NodeTemplateHarvesterConfig {
      */
     cpuCount?: pulumi.Input<string>;
     /**
-     * Use `diskInfo` instead
+     * (Deprecated) Use `diskInfo` instead
      *
      * @deprecated Use disk_info instead
      */
@@ -6688,7 +6683,7 @@ export interface NodeTemplateHarvesterConfig {
      */
     networkInfo?: pulumi.Input<string>;
     /**
-     * Use `networkInfo` instead
+     * (Deprecated) Use `networkInfo` instead
      *
      * @deprecated Use network_info instead
      */
@@ -6751,9 +6746,7 @@ export interface NodeTemplateHetznerConfig {
      */
     usePrivateNetwork?: pulumi.Input<boolean>;
     /**
-     * Path to file with cloud-init user-data (string)
-     *
-     * > **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+     * Path to file with cloud-init user-data (string)**Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
      */
     userdata?: pulumi.Input<string>;
     /**
@@ -6918,9 +6911,7 @@ export interface NodeTemplateOpennebulaConfig {
      */
     user: pulumi.Input<string>;
     /**
-     * VCPUs for the VM (string)
-     *
-     * > **Note:**: `Required*` denotes that one of imageName / imageId or templateName / templateId is required but you cannot combine them.
+     * VCPUs for the VM (string)**Note:**: `Required*` denotes that one of imageName / imageId or templateName / templateId is required but you cannot combine them.
      */
     vcpu?: pulumi.Input<string>;
     /**
@@ -7063,13 +7054,7 @@ export interface NodeTemplateOpenstackConfig {
      */
     username?: pulumi.Input<string>;
     /**
-     * OpenStack volume device path (attaching). Applicable only when `bootFromVolume` is `true`. Omit for auto `/dev/vdb`. (string)
-     *
-     * > **Note:**: `Required*` denotes that either the _name or _id is required but you cannot use both.
-     *
-     * > **Note:**: `Required**` denotes that either the _name or _id is required unless `applicationCredentialId` is defined.
-     *
-     * > **Note for OpenStack users:**: `keypairName` is required to be in the schema even if there are no references in rancher itself
+     * OpenStack volume device path (attaching). Applicable only when `bootFromVolume` is `true`. Omit for auto `/dev/vdb`. (string)**Note:**: `Required*` denotes that either the _name or _id is required but you cannot use both.**Note:**: `Required**` denotes that either the _name or _id is required unless `applicationCredentialId` is defined.**Note for OpenStack users:**: `keypairName` is required to be in the schema even if there are no references in rancher itself
      */
     volumeDevicePath?: pulumi.Input<string>;
     /**

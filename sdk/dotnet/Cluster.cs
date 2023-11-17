@@ -818,7 +818,7 @@ namespace Pulumi.Rancher2
         public Output<bool> EnableClusterAlerting { get; private set; } = null!;
 
         /// <summary>
-        /// Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.
+        /// (Deprecated) Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.
         /// </summary>
         [Output("enableClusterIstio")]
         public Output<bool> EnableClusterIstio { get; private set; } = null!;
@@ -884,7 +884,7 @@ namespace Pulumi.Rancher2
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the Cluster (string)
+        /// The AKS cluster name (string)
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -1181,7 +1181,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// The name of the Cluster (string)
+        /// The AKS cluster name (string)
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -1397,7 +1397,7 @@ namespace Pulumi.Rancher2
         public Input<bool>? EnableClusterAlerting { get; set; }
 
         /// <summary>
-        /// Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.
+        /// (Deprecated) Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.
         /// </summary>
         [Input("enableClusterIstio")]
         public Input<bool>? EnableClusterIstio { get; set; }
@@ -1485,7 +1485,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// The name of the Cluster (string)
+        /// The AKS cluster name (string)
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

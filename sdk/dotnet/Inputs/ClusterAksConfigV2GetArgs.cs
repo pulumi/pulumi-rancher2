@@ -61,7 +61,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? Imported { get; set; }
 
         /// <summary>
-        /// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        /// The kubernetes master version. Required if `imported=false` (string)
         /// </summary>
         [Input("kubernetesVersion")]
         public Input<string>? KubernetesVersion { get; set; }
@@ -103,7 +103,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? Monitoring { get; set; }
 
         /// <summary>
-        /// The name of the Cluster (string)
+        /// The AKS cluster name (string)
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -148,7 +148,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<Inputs.ClusterAksConfigV2NodePoolGetArgs>? _nodePools;
 
         /// <summary>
-        /// The GKE cluster node pools. Required for create new cluster (List)
+        /// The AKS nnode pools. Required if `imported=false` (list)
         /// </summary>
         public InputList<Inputs.ClusterAksConfigV2NodePoolGetArgs> NodePools
         {
@@ -184,7 +184,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// The GKE node config tags (List)
+        /// The AKS cluster tags (map)
         /// </summary>
         public InputMap<object> Tags
         {
@@ -193,7 +193,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
+        /// The AKS virtual network (string)
         /// </summary>
         [Input("virtualNetwork")]
         public Input<string>? VirtualNetwork { get; set; }

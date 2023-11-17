@@ -18,7 +18,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? CpuCount;
         /// <summary>
-        /// Use `disk_info` instead
+        /// (Deprecated) Use `disk_info` instead
         /// </summary>
         public readonly string? DiskBus;
         /// <summary>
@@ -46,7 +46,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? NetworkInfo;
         /// <summary>
-        /// Use `network_info` instead
+        /// (Deprecated) Use `network_info` instead
         /// </summary>
         public readonly string? NetworkModel;
         /// <summary>

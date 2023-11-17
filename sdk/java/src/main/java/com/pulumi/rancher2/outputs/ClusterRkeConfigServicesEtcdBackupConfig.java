@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterRkeConfigServicesEtcdBackupConfig {
     /**
-     * @return Enable the authorized cluster endpoint. Default `true` (bool)
+     * @return Enable event rate limit. Default: `false` (bool)
      * 
      */
     private @Nullable Boolean enabled;
@@ -46,7 +46,7 @@ public final class ClusterRkeConfigServicesEtcdBackupConfig {
 
     private ClusterRkeConfigServicesEtcdBackupConfig() {}
     /**
-     * @return Enable the authorized cluster endpoint. Default `true` (bool)
+     * @return Enable event rate limit. Default: `false` (bool)
      * 
      */
     public Optional<Boolean> enabled() {

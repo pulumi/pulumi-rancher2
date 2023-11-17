@@ -14,11 +14,11 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterClusterAgentDeploymentCustomizationAppendToleration
     {
         /// <summary>
-        /// The GKE taint effect (string)
+        /// The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
         /// </summary>
         public readonly string? Effect;
         /// <summary>
-        /// The GKE taint key (string)
+        /// TLS key for etcd service (string)
         /// </summary>
         public readonly string Key;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly int? Seconds;
         /// <summary>
-        /// The GKE taint value (string)
+        /// The toleration value (string)
         /// </summary>
         public readonly string? Value;
 

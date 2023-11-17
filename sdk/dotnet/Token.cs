@@ -109,7 +109,7 @@ namespace Pulumi.Rancher2
         public Output<string> TokenName { get; private set; } = null!;
 
         /// <summary>
-        /// Token time to live in seconds. Default `0` (int) 
+        /// Token time to live in seconds. Default `0` (int)
         /// 
         /// From Rancher v2.4.6 `ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
         /// </summary>
@@ -216,7 +216,7 @@ namespace Pulumi.Rancher2
         public Input<bool>? Renew { get; set; }
 
         /// <summary>
-        /// Token time to live in seconds. Default `0` (int) 
+        /// Token time to live in seconds. Default `0` (int)
         /// 
         /// From Rancher v2.4.6 `ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
         /// </summary>
@@ -330,7 +330,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Token time to live in seconds. Default `0` (int) 
+        /// Token time to live in seconds. Default `0` (int)
         /// 
         /// From Rancher v2.4.6 `ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
         /// </summary>

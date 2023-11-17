@@ -17,7 +17,7 @@ public final class MachineConfigV2HarvesterConfig {
      */
     private @Nullable String cpuCount;
     /**
-     * @return Use `disk_info` instead
+     * @return (Deprecated) Use `disk_info` instead
      * 
      * @deprecated
      * Use disk_info instead
@@ -64,7 +64,7 @@ public final class MachineConfigV2HarvesterConfig {
      */
     private @Nullable String networkInfo;
     /**
-     * @return Use `network_info` instead
+     * @return (Deprecated) Use `network_info` instead
      * 
      * @deprecated
      * Use network_info instead
@@ -73,7 +73,7 @@ public final class MachineConfigV2HarvesterConfig {
     @Deprecated /* Use network_info instead */
     private @Nullable String networkModel;
     /**
-     * @return Use `network_info` instead
+     * @return (Deprecated) Use `network_info` instead
      * 
      * @deprecated
      * Use network_info instead
@@ -116,7 +116,7 @@ public final class MachineConfigV2HarvesterConfig {
         return Optional.ofNullable(this.cpuCount);
     }
     /**
-     * @return Use `disk_info` instead
+     * @return (Deprecated) Use `disk_info` instead
      * 
      * @deprecated
      * Use disk_info instead
@@ -177,7 +177,7 @@ public final class MachineConfigV2HarvesterConfig {
         return Optional.ofNullable(this.networkInfo);
     }
     /**
-     * @return Use `network_info` instead
+     * @return (Deprecated) Use `network_info` instead
      * 
      * @deprecated
      * Use network_info instead
@@ -188,7 +188,7 @@ public final class MachineConfigV2HarvesterConfig {
         return Optional.ofNullable(this.networkModel);
     }
     /**
-     * @return Use `network_info` instead
+     * @return (Deprecated) Use `network_info` instead
      * 
      * @deprecated
      * Use network_info instead

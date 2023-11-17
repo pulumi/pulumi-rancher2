@@ -18,7 +18,7 @@ public final class ClusterRkeConfigServicesKubeApiAuditLog {
      */
     private @Nullable ClusterRkeConfigServicesKubeApiAuditLogConfiguration configuration;
     /**
-     * @return Enable the authorized cluster endpoint. Default `true` (bool)
+     * @return Enable event rate limit. Default: `false` (bool)
      * 
      */
     private @Nullable Boolean enabled;
@@ -32,7 +32,7 @@ public final class ClusterRkeConfigServicesKubeApiAuditLog {
         return Optional.ofNullable(this.configuration);
     }
     /**
-     * @return Enable the authorized cluster endpoint. Default `true` (bool)
+     * @return Enable event rate limit. Default: `false` (bool)
      * 
      */
     public Optional<Boolean> enabled() {

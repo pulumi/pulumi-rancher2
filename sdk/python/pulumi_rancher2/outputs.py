@@ -1054,8 +1054,8 @@ class ClusterAgentEnvVar(dict):
                  name: str,
                  value: str):
         """
-        :param str name: The name of the Cluster (string)
-        :param str value: The GKE taint value (string)
+        :param str name: The AKS cluster name (string)
+        :param str value: The toleration value (string)
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -1064,7 +1064,7 @@ class ClusterAgentEnvVar(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the Cluster (string)
+        The AKS cluster name (string)
         """
         return pulumi.get(self, "name")
 
@@ -1072,7 +1072,7 @@ class ClusterAgentEnvVar(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        The GKE taint value (string)
+        The toleration value (string)
         """
         return pulumi.get(self, "value")
 
@@ -1206,14 +1206,14 @@ class ClusterAksConfig(dict):
         :param str agent_dns_prefix: DNS prefix to be used to create the FQDN for the agent pool (string)
         :param str client_id: Azure client ID to use (string)
         :param str client_secret: Azure client secret associated with the \\"client id\\" (string)
-        :param str kubernetes_version: The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        :param str kubernetes_version: The kubernetes master version. Required if `imported=false` (string)
         :param str master_dns_prefix: DNS prefix to use the Kubernetes cluster control pane (string)
         :param str resource_group: The AKS resource group (string)
         :param str ssh_public_key_contents: Contents of the SSH public key used to authenticate with Linux hosts (string)
         :param str subnet: The AKS subnet (string)
         :param str subscription_id: Subscription credentials which uniquely identify Microsoft Azure subscription (string)
         :param str tenant_id: Azure tenant ID to use (string)
-        :param str virtual_network: The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
+        :param str virtual_network: The AKS virtual network (string)
         :param str virtual_network_resource_group: The AKS virtual network resource group (string)
         :param str aad_server_app_secret: The secret of an Azure Active Directory server application (string)
         :param str aad_tenant_id: The ID of an Azure Active Directory tenant (string)
@@ -1240,8 +1240,8 @@ class ClusterAksConfig(dict):
         :param str network_policy: The AKS network policy (string)
         :param str pod_cidr: A CIDR IP range from which to assign Kubernetes Pod IPs (string)
         :param str service_cidr: A CIDR IP range from which to assign Kubernetes Service IPs (string)
-        :param Mapping[str, Any] tag: Use `tags` argument instead as []string
-        :param Sequence[str] tags: The GKE node config tags (List)
+        :param Mapping[str, Any] tag: (Deprecated) Use `tags` argument instead as []string
+        :param Sequence[str] tags: The AKS cluster tags (map)
         """
         pulumi.set(__self__, "agent_dns_prefix", agent_dns_prefix)
         pulumi.set(__self__, "client_id", client_id)
@@ -1338,7 +1338,7 @@ class ClusterAksConfig(dict):
     @pulumi.getter(name="kubernetesVersion")
     def kubernetes_version(self) -> str:
         """
-        The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        The kubernetes master version. Required if `imported=false` (string)
         """
         return pulumi.get(self, "kubernetes_version")
 
@@ -1394,7 +1394,7 @@ class ClusterAksConfig(dict):
     @pulumi.getter(name="virtualNetwork")
     def virtual_network(self) -> str:
         """
-        The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
+        The AKS virtual network (string)
         """
         return pulumi.get(self, "virtual_network")
 
@@ -1610,7 +1610,7 @@ class ClusterAksConfig(dict):
     @pulumi.getter
     def tag(self) -> Optional[Mapping[str, Any]]:
         """
-        Use `tags` argument instead as []string
+        (Deprecated) Use `tags` argument instead as []string
         """
         warnings.warn("""Use tags argument instead as []string""", DeprecationWarning)
         pulumi.log.warn("""tag is deprecated: Use tags argument instead as []string""")
@@ -1621,7 +1621,7 @@ class ClusterAksConfig(dict):
     @pulumi.getter
     def tags(self) -> Optional[Sequence[str]]:
         """
-        The GKE node config tags (List)
+        The AKS cluster tags (map)
         """
         return pulumi.get(self, "tags")
 
@@ -1731,25 +1731,25 @@ class ClusterAksConfigV2(dict):
         :param str dns_prefix: The AKS dns prefix. Required if `imported=false` (string)
         :param bool http_application_routing: Enable AKS http application routing? (bool)
         :param bool imported: Is GKE cluster imported? Default: `false` (bool)
-        :param str kubernetes_version: The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        :param str kubernetes_version: The kubernetes master version. Required if `imported=false` (string)
         :param str linux_admin_username: The AKS linux admin username (string)
         :param str linux_ssh_public_key: The AKS linux ssh public key (string)
         :param str load_balancer_sku: The AKS load balancer sku (string)
         :param str log_analytics_workspace_group: The AKS log analytics workspace group (string)
         :param str log_analytics_workspace_name: The AKS log analytics workspace name (string)
         :param bool monitoring: Is AKS cluster monitoring enabled? (bool)
-        :param str name: The name of the Cluster (string)
+        :param str name: The AKS cluster name (string)
         :param str network_dns_service_ip: The AKS network dns service ip (string)
         :param str network_docker_bridge_cidr: The AKS network docker bridge cidr (string)
         :param str network_plugin: The AKS network plugin. Required if `imported=false` (string)
         :param str network_pod_cidr: The AKS network pod cidr (string)
         :param str network_policy: The AKS network policy (string)
         :param str network_service_cidr: The AKS network service cidr (string)
-        :param Sequence['ClusterAksConfigV2NodePoolArgs'] node_pools: The GKE cluster node pools. Required for create new cluster (List)
+        :param Sequence['ClusterAksConfigV2NodePoolArgs'] node_pools: The AKS nnode pools. Required if `imported=false` (list)
         :param bool private_cluster: Is AKS cluster private? (bool)
         :param str subnet: The AKS subnet (string)
-        :param Mapping[str, Any] tags: The GKE node config tags (List)
-        :param str virtual_network: The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
+        :param Mapping[str, Any] tags: The AKS cluster tags (map)
+        :param str virtual_network: The AKS virtual network (string)
         :param str virtual_network_resource_group: The AKS virtual network resource group (string)
         """
         pulumi.set(__self__, "cloud_credential_id", cloud_credential_id)
@@ -1884,7 +1884,7 @@ class ClusterAksConfigV2(dict):
     @pulumi.getter(name="kubernetesVersion")
     def kubernetes_version(self) -> Optional[str]:
         """
-        The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        The kubernetes master version. Required if `imported=false` (string)
         """
         return pulumi.get(self, "kubernetes_version")
 
@@ -1940,7 +1940,7 @@ class ClusterAksConfigV2(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the Cluster (string)
+        The AKS cluster name (string)
         """
         return pulumi.get(self, "name")
 
@@ -1996,7 +1996,7 @@ class ClusterAksConfigV2(dict):
     @pulumi.getter(name="nodePools")
     def node_pools(self) -> Optional[Sequence['outputs.ClusterAksConfigV2NodePool']]:
         """
-        The GKE cluster node pools. Required for create new cluster (List)
+        The AKS nnode pools. Required if `imported=false` (list)
         """
         return pulumi.get(self, "node_pools")
 
@@ -2020,7 +2020,7 @@ class ClusterAksConfigV2(dict):
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, Any]]:
         """
-        The GKE node config tags (List)
+        The AKS cluster tags (map)
         """
         return pulumi.get(self, "tags")
 
@@ -2028,7 +2028,7 @@ class ClusterAksConfigV2(dict):
     @pulumi.getter(name="virtualNetwork")
     def virtual_network(self) -> Optional[str]:
         """
-        The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
+        The AKS virtual network (string)
         """
         return pulumi.get(self, "virtual_network")
 
@@ -2098,7 +2098,7 @@ class ClusterAksConfigV2NodePool(dict):
                  taints: Optional[Sequence[str]] = None,
                  vm_size: Optional[str] = None):
         """
-        :param str name: The name of the Cluster (string)
+        :param str name: The AKS cluster name (string)
         :param Sequence[str] availability_zones: The AKS node pool availability zones (list)
         :param int count: The AKS node pool count. Default: `1` (int)
         :param bool enable_auto_scaling: Is AKS node pool auto scaling enabled? Default: `false` (bool)
@@ -2151,7 +2151,7 @@ class ClusterAksConfigV2NodePool(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the Cluster (string)
+        The AKS cluster name (string)
         """
         return pulumi.get(self, "name")
 
@@ -2919,11 +2919,11 @@ class ClusterClusterAgentDeploymentCustomizationAppendToleration(dict):
                  seconds: Optional[int] = None,
                  value: Optional[str] = None):
         """
-        :param str key: The GKE taint key (string)
-        :param str effect: The GKE taint effect (string)
+        :param str key: TLS key for etcd service (string)
+        :param str effect: The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
         :param str operator: The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
         :param int seconds: The toleration seconds (int)
-        :param str value: The GKE taint value (string)
+        :param str value: The toleration value (string)
         """
         pulumi.set(__self__, "key", key)
         if effect is not None:
@@ -2939,7 +2939,7 @@ class ClusterClusterAgentDeploymentCustomizationAppendToleration(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        The GKE taint key (string)
+        TLS key for etcd service (string)
         """
         return pulumi.get(self, "key")
 
@@ -2947,7 +2947,7 @@ class ClusterClusterAgentDeploymentCustomizationAppendToleration(dict):
     @pulumi.getter
     def effect(self) -> Optional[str]:
         """
-        The GKE taint effect (string)
+        The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
         """
         return pulumi.get(self, "effect")
 
@@ -2971,7 +2971,7 @@ class ClusterClusterAgentDeploymentCustomizationAppendToleration(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The GKE taint value (string)
+        The toleration value (string)
         """
         return pulumi.get(self, "value")
 
@@ -3079,7 +3079,7 @@ class ClusterClusterAuthEndpoint(dict):
                  fqdn: Optional[str] = None):
         """
         :param str ca_certs: CA certs for the authorized cluster endpoint (string)
-        :param bool enabled: Enable the authorized cluster endpoint. Default `true` (bool)
+        :param bool enabled: Enable event rate limit. Default: `false` (bool)
         :param str fqdn: FQDN for the authorized cluster endpoint (string)
         """
         if ca_certs is not None:
@@ -3101,7 +3101,7 @@ class ClusterClusterAuthEndpoint(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        Enable the authorized cluster endpoint. Default `true` (bool)
+        Enable event rate limit. Default: `false` (bool)
         """
         return pulumi.get(self, "enabled")
 
@@ -3200,7 +3200,7 @@ class ClusterClusterRegistrationToken(dict):
         :param str insecure_windows_node_command: Insecure windows command to execute in a imported k8s cluster (string)
         :param Mapping[str, Any] labels: Labels for the Cluster (map)
         :param str manifest_url: K8s manifest url to execute with `kubectl` to import an existing k8s cluster (string)
-        :param str name: The name of the Cluster (string)
+        :param str name: The AKS cluster name (string)
         :param str node_command: Node command to execute in linux nodes for custom k8s cluster (string)
         :param str token: ACI token (string)
         :param str windows_node_command: Node command to execute in windows nodes for custom k8s cluster (string)
@@ -3308,7 +3308,7 @@ class ClusterClusterRegistrationToken(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the Cluster (string)
+        The AKS cluster name (string)
         """
         return pulumi.get(self, "name")
 
@@ -3523,7 +3523,7 @@ class ClusterEksConfig(dict):
                  virtual_network: Optional[str] = None):
         """
         :param str access_key: The AWS Client ID to use (string)
-        :param str kubernetes_version: The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        :param str kubernetes_version: The kubernetes master version. Required if `imported=false` (string)
         :param str secret_key: The AWS Client Secret associated with the Client ID (string)
         :param str ami: AMI ID to use for the worker nodes instead of the default (string)
         :param bool associate_worker_node_public_ip: Associate public ip EKS worker nodes. Default `true` (bool)
@@ -3539,7 +3539,7 @@ class ClusterEksConfig(dict):
         :param str session_token: A session token to use with the client key and secret if applicable (string)
         :param Sequence[str] subnets: The EKS node group subnets (list string)
         :param str user_data: The EKS node group user data (string)
-        :param str virtual_network: The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
+        :param str virtual_network: The AKS virtual network (string)
         """
         pulumi.set(__self__, "access_key", access_key)
         pulumi.set(__self__, "kubernetes_version", kubernetes_version)
@@ -3589,7 +3589,7 @@ class ClusterEksConfig(dict):
     @pulumi.getter(name="kubernetesVersion")
     def kubernetes_version(self) -> str:
         """
-        The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        The kubernetes master version. Required if `imported=false` (string)
         """
         return pulumi.get(self, "kubernetes_version")
 
@@ -3722,7 +3722,7 @@ class ClusterEksConfig(dict):
     @pulumi.getter(name="virtualNetwork")
     def virtual_network(self) -> Optional[str]:
         """
-        The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
+        The AKS virtual network (string)
         """
         return pulumi.get(self, "virtual_network")
 
@@ -3787,9 +3787,9 @@ class ClusterEksConfigV2(dict):
         :param str cloud_credential_id: The EKS cloud_credential id (string)
         :param bool imported: Is GKE cluster imported? Default: `false` (bool)
         :param str kms_key: The AWS kms key to use (string)
-        :param str kubernetes_version: The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        :param str kubernetes_version: The kubernetes master version. Required if `imported=false` (string)
         :param Sequence[str] logging_types: The AWS cloudwatch logging types. `audit`, `api`, `scheduler`, `controllerManager` and `authenticator` values are allowed (list)
-        :param str name: The name of the Cluster (string)
+        :param str name: The AKS cluster name (string)
         :param Sequence['ClusterEksConfigV2NodeGroupArgs'] node_groups: The EKS cluster name to import. Required to create a new cluster (list)
         :param bool private_access: The EKS cluster has private access (bool)
         :param bool public_access: The EKS cluster has public access (bool)
@@ -3799,7 +3799,7 @@ class ClusterEksConfigV2(dict):
         :param Sequence[str] security_groups: List of security groups to use for the cluster (list)
         :param str service_role: The AWS service role to use (string)
         :param Sequence[str] subnets: The EKS node group subnets (list string)
-        :param Mapping[str, Any] tags: The GKE node config tags (List)
+        :param Mapping[str, Any] tags: The AKS cluster tags (map)
         """
         pulumi.set(__self__, "cloud_credential_id", cloud_credential_id)
         if imported is not None:
@@ -3861,7 +3861,7 @@ class ClusterEksConfigV2(dict):
     @pulumi.getter(name="kubernetesVersion")
     def kubernetes_version(self) -> Optional[str]:
         """
-        The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        The kubernetes master version. Required if `imported=false` (string)
         """
         return pulumi.get(self, "kubernetes_version")
 
@@ -3877,7 +3877,7 @@ class ClusterEksConfigV2(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the Cluster (string)
+        The AKS cluster name (string)
         """
         return pulumi.get(self, "name")
 
@@ -3957,7 +3957,7 @@ class ClusterEksConfigV2(dict):
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, Any]]:
         """
-        The GKE node config tags (List)
+        The AKS cluster tags (map)
         """
         return pulumi.get(self, "tags")
 
@@ -4026,7 +4026,7 @@ class ClusterEksConfigV2NodeGroup(dict):
                  user_data: Optional[str] = None,
                  version: Optional[str] = None):
         """
-        :param str name: The name of the Cluster (string)
+        :param str name: The AKS cluster name (string)
         :param int desired_size: The EKS node group desired size. Default: `2` (int)
         :param int disk_size: The EKS node group disk size (Gb). Default: `20` (int)
         :param str ec2_ssh_key: The EKS node group ssh key (string)
@@ -4042,7 +4042,7 @@ class ClusterEksConfigV2NodeGroup(dict):
         :param Mapping[str, Any] resource_tags: The EKS node group resource tags (map)
         :param Sequence[str] spot_instance_types: The EKS node group sport instace types (list string)
         :param Sequence[str] subnets: The EKS node group subnets (list string)
-        :param Mapping[str, Any] tags: The GKE node config tags (List)
+        :param Mapping[str, Any] tags: The AKS cluster tags (map)
         :param str user_data: The EKS node group user data (string)
         :param str version: rancher-monitoring chart version (string)
         """
@@ -4088,7 +4088,7 @@ class ClusterEksConfigV2NodeGroup(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the Cluster (string)
+        The AKS cluster name (string)
         """
         return pulumi.get(self, "name")
 
@@ -4216,7 +4216,7 @@ class ClusterEksConfigV2NodeGroup(dict):
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, Any]]:
         """
-        The GKE node config tags (List)
+        The AKS cluster tags (map)
         """
         return pulumi.get(self, "tags")
 
@@ -4245,7 +4245,7 @@ class ClusterEksConfigV2NodeGroupLaunchTemplate(dict):
                  version: Optional[int] = None):
         """
         :param str id: The EKS node group launch template ID (string)
-        :param str name: The name of the Cluster (string)
+        :param str name: The AKS cluster name (string)
         :param int version: rancher-monitoring chart version (string)
         """
         pulumi.set(__self__, "id", id)
@@ -4266,7 +4266,7 @@ class ClusterEksConfigV2NodeGroupLaunchTemplate(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the Cluster (string)
+        The AKS cluster name (string)
         """
         return pulumi.get(self, "name")
 
@@ -4352,11 +4352,11 @@ class ClusterFleetAgentDeploymentCustomizationAppendToleration(dict):
                  seconds: Optional[int] = None,
                  value: Optional[str] = None):
         """
-        :param str key: The GKE taint key (string)
-        :param str effect: The GKE taint effect (string)
+        :param str key: TLS key for etcd service (string)
+        :param str effect: The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
         :param str operator: The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
         :param int seconds: The toleration seconds (int)
-        :param str value: The GKE taint value (string)
+        :param str value: The toleration value (string)
         """
         pulumi.set(__self__, "key", key)
         if effect is not None:
@@ -4372,7 +4372,7 @@ class ClusterFleetAgentDeploymentCustomizationAppendToleration(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        The GKE taint key (string)
+        TLS key for etcd service (string)
         """
         return pulumi.get(self, "key")
 
@@ -4380,7 +4380,7 @@ class ClusterFleetAgentDeploymentCustomizationAppendToleration(dict):
     @pulumi.getter
     def effect(self) -> Optional[str]:
         """
-        The GKE taint effect (string)
+        The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
         """
         return pulumi.get(self, "effect")
 
@@ -4404,7 +4404,7 @@ class ClusterFleetAgentDeploymentCustomizationAppendToleration(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The GKE taint value (string)
+        The toleration value (string)
         """
         return pulumi.get(self, "value")
 
@@ -5282,7 +5282,7 @@ class ClusterGkeConfigV2(dict):
                  zone: Optional[str] = None):
         """
         :param str google_credential_secret: Google credential secret (string)
-        :param str name: The name of the Cluster (string)
+        :param str name: The AKS cluster name (string)
         :param str project_id: Project ID to apply answer (string)
         :param 'ClusterGkeConfigV2ClusterAddonsArgs' cluster_addons: The GKE cluster addons (List maxitems:1)
         :param str cluster_ipv4_cidr_block: The GKE cluster ip v4 allocation cidr block (string)
@@ -5290,7 +5290,7 @@ class ClusterGkeConfigV2(dict):
         :param bool enable_kubernetes_alpha: Enable Kubernetes alpha. Default: `false` (bool)
         :param bool imported: Is GKE cluster imported? Default: `false` (bool)
         :param 'ClusterGkeConfigV2IpAllocationPolicyArgs' ip_allocation_policy: The GKE ip allocation policy (List maxitems:1)
-        :param str kubernetes_version: The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        :param str kubernetes_version: The kubernetes master version. Required if `imported=false` (string)
         :param Mapping[str, Any] labels: Labels for the Cluster (map)
         :param Sequence[str] locations: The GKE cluster locations (List)
         :param str logging_service: The GKE cluster logging service (string)
@@ -5299,7 +5299,7 @@ class ClusterGkeConfigV2(dict):
         :param str monitoring_service: The GKE cluster monitoring service (string)
         :param str network: The GKE cluster network. Required for create new cluster (string)
         :param bool network_policy_enabled: Is GKE cluster network policy enabled? Default: `false` (bool)
-        :param Sequence['ClusterGkeConfigV2NodePoolArgs'] node_pools: The GKE cluster node pools. Required for create new cluster (List)
+        :param Sequence['ClusterGkeConfigV2NodePoolArgs'] node_pools: The AKS nnode pools. Required if `imported=false` (list)
         :param 'ClusterGkeConfigV2PrivateClusterConfigArgs' private_cluster_config: The GKE private cluster config (List maxitems:1)
         :param str region: The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
         :param str subnetwork: The GKE cluster subnetwork. Required for create new cluster (string)
@@ -5361,7 +5361,7 @@ class ClusterGkeConfigV2(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the Cluster (string)
+        The AKS cluster name (string)
         """
         return pulumi.get(self, "name")
 
@@ -5425,7 +5425,7 @@ class ClusterGkeConfigV2(dict):
     @pulumi.getter(name="kubernetesVersion")
     def kubernetes_version(self) -> Optional[str]:
         """
-        The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        The kubernetes master version. Required if `imported=false` (string)
         """
         return pulumi.get(self, "kubernetes_version")
 
@@ -5497,7 +5497,7 @@ class ClusterGkeConfigV2(dict):
     @pulumi.getter(name="nodePools")
     def node_pools(self) -> Optional[Sequence['outputs.ClusterGkeConfigV2NodePool']]:
         """
-        The GKE cluster node pools. Required for create new cluster (List)
+        The AKS nnode pools. Required if `imported=false` (list)
         """
         return pulumi.get(self, "node_pools")
 
@@ -5756,7 +5756,7 @@ class ClusterGkeConfigV2MasterAuthorizedNetworksConfig(dict):
                  enabled: Optional[bool] = None):
         """
         :param Sequence['ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlockArgs'] cidr_blocks: The GKE master authorized network config cidr blocks (List)
-        :param bool enabled: Enable the authorized cluster endpoint. Default `true` (bool)
+        :param bool enabled: Enable event rate limit. Default: `false` (bool)
         """
         pulumi.set(__self__, "cidr_blocks", cidr_blocks)
         if enabled is not None:
@@ -5774,7 +5774,7 @@ class ClusterGkeConfigV2MasterAuthorizedNetworksConfig(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        Enable the authorized cluster endpoint. Default `true` (bool)
+        Enable event rate limit. Default: `false` (bool)
         """
         return pulumi.get(self, "enabled")
 
@@ -5859,7 +5859,7 @@ class ClusterGkeConfigV2NodePool(dict):
                  max_pods_constraint: Optional[int] = None):
         """
         :param int initial_node_count: The GKE node pool config initial node count (int)
-        :param str name: The name of the Cluster (string)
+        :param str name: The AKS cluster name (string)
         :param str version: rancher-monitoring chart version (string)
         :param 'ClusterGkeConfigV2NodePoolAutoscalingArgs' autoscaling: The GKE node pool config autoscaling (List maxitems:1)
         :param 'ClusterGkeConfigV2NodePoolConfigArgs' config: The GKE node pool node config (List maxitems:1)
@@ -5890,7 +5890,7 @@ class ClusterGkeConfigV2NodePool(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the Cluster (string)
+        The AKS cluster name (string)
         """
         return pulumi.get(self, "name")
 
@@ -5961,7 +5961,7 @@ class ClusterGkeConfigV2NodePoolAutoscaling(dict):
                  max_node_count: Optional[int] = None,
                  min_node_count: Optional[int] = None):
         """
-        :param bool enabled: Enable the authorized cluster endpoint. Default `true` (bool)
+        :param bool enabled: Enable event rate limit. Default: `false` (bool)
         :param int max_node_count: The GKE node pool config max node count (int)
         :param int min_node_count: The GKE node pool config min node count (int)
         """
@@ -5976,7 +5976,7 @@ class ClusterGkeConfigV2NodePoolAutoscaling(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        Enable the authorized cluster endpoint. Default `true` (bool)
+        Enable event rate limit. Default: `false` (bool)
         """
         return pulumi.get(self, "enabled")
 
@@ -6046,7 +6046,7 @@ class ClusterGkeConfigV2NodePoolConfig(dict):
         :param str machine_type: The GKE node config machine type (string)
         :param Sequence[str] oauth_scopes: The GKE node config oauth scopes (List)
         :param bool preemptible: Enable GKE node config preemptible. Default: `false` (bool)
-        :param Sequence[str] tags: The GKE node config tags (List)
+        :param Sequence[str] tags: The AKS cluster tags (map)
         :param Sequence['ClusterGkeConfigV2NodePoolConfigTaintArgs'] taints: The GKE node config taints (List)
         """
         if disk_size_gb is not None:
@@ -6138,7 +6138,7 @@ class ClusterGkeConfigV2NodePoolConfig(dict):
     @pulumi.getter
     def tags(self) -> Optional[Sequence[str]]:
         """
-        The GKE node config tags (List)
+        The AKS cluster tags (map)
         """
         return pulumi.get(self, "tags")
 
@@ -6541,7 +6541,7 @@ class ClusterOkeConfig(dict):
         """
         :param str compartment_id: The OCID of the compartment in which to create resources OKE cluster and related resources (string)
         :param str fingerprint: The fingerprint corresponding to the specified user's private API Key (string)
-        :param str kubernetes_version: The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        :param str kubernetes_version: The kubernetes master version. Required if `imported=false` (string)
         :param str node_image: The Oracle Linux OS image name to use for the OKE node(s). See [here](https://docs.cloud.oracle.com/en-us/iaas/images/) for a list of images. (string)
         :param str node_shape: The shape of the node (determines number of CPUs and  amount of memory on each OKE node) (string)
         :param str private_key_contents: The private API key file contents for the specified user, in PEM format (string)
@@ -6648,7 +6648,7 @@ class ClusterOkeConfig(dict):
     @pulumi.getter(name="kubernetesVersion")
     def kubernetes_version(self) -> str:
         """
-        The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        The kubernetes master version. Required if `imported=false` (string)
         """
         return pulumi.get(self, "kubernetes_version")
 
@@ -7092,7 +7092,7 @@ class ClusterRkeConfig(dict):
         :param bool enable_cri_dockerd: Enable/disable using cri-dockerd. Deafult: `false` [enable_cri_dockerd](https://rancher.com/docs/rke/latest/en/config-options/#cri-dockerd) (bool)
         :param bool ignore_docker_version: Ignore docker version. Default `true` (bool)
         :param 'ClusterRkeConfigIngressArgs' ingress: Kubernetes ingress configuration (list maxitems:1)
-        :param str kubernetes_version: The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        :param str kubernetes_version: The kubernetes master version. Required if `imported=false` (string)
         :param 'ClusterRkeConfigMonitoringArgs' monitoring: Is AKS cluster monitoring enabled? (bool)
         :param 'ClusterRkeConfigNetworkArgs' network: The GKE cluster network. Required for create new cluster (string)
         :param Sequence['ClusterRkeConfigNodeArgs'] nodes: RKE cluster nodes (list)
@@ -7244,7 +7244,7 @@ class ClusterRkeConfig(dict):
     @pulumi.getter(name="kubernetesVersion")
     def kubernetes_version(self) -> Optional[str]:
         """
-        The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        The kubernetes master version. Required if `imported=false` (string)
         """
         return pulumi.get(self, "kubernetes_version")
 
@@ -7535,7 +7535,7 @@ class ClusterRkeConfigCloudProvider(dict):
         :param 'ClusterRkeConfigCloudProviderAwsCloudProviderArgs' aws_cloud_provider: RKE AWS Cloud Provider config for Cloud Provider [rke-aws-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/aws/) (list maxitems:1)
         :param 'ClusterRkeConfigCloudProviderAzureCloudProviderArgs' azure_cloud_provider: RKE Azure Cloud Provider config for Cloud Provider [rke-azure-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/azure/) (list maxitems:1)
         :param str custom_cloud_provider: RKE Custom Cloud Provider config for Cloud Provider (string)
-        :param str name: The name of the Cluster (string)
+        :param str name: The AKS cluster name (string)
         :param 'ClusterRkeConfigCloudProviderOpenstackCloudProviderArgs' openstack_cloud_provider: RKE Openstack Cloud Provider config for Cloud Provider [rke-openstack-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/openstack/) (list maxitems:1)
         :param 'ClusterRkeConfigCloudProviderVsphereCloudProviderArgs' vsphere_cloud_provider: RKE Vsphere Cloud Provider config for Cloud Provider [rke-vsphere-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/vsphere/) Extra argument `name` is required on `virtual_center` configuration. (list maxitems:1)
         """
@@ -7580,7 +7580,7 @@ class ClusterRkeConfigCloudProvider(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the Cluster (string)
+        The AKS cluster name (string)
         """
         return pulumi.get(self, "name")
 
@@ -9176,7 +9176,7 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter(dict):
                  soap_roundtrip_count: Optional[int] = None):
         """
         :param str datacenters: (string)
-        :param str name: The name of the Cluster (string)
+        :param str name: The AKS cluster name (string)
         :param str password: Registry password (string)
         :param str user: Registry user (string)
         :param str port: Port for node. Default `22` (string)
@@ -9203,7 +9203,7 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the Cluster (string)
+        The AKS cluster name (string)
         """
         return pulumi.get(self, "name")
 
@@ -9610,11 +9610,11 @@ class ClusterRkeConfigDnsToleration(dict):
                  seconds: Optional[int] = None,
                  value: Optional[str] = None):
         """
-        :param str key: The GKE taint key (string)
-        :param str effect: The GKE taint effect (string)
+        :param str key: TLS key for etcd service (string)
+        :param str effect: The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
         :param str operator: The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
         :param int seconds: The toleration seconds (int)
-        :param str value: The GKE taint value (string)
+        :param str value: The toleration value (string)
         """
         pulumi.set(__self__, "key", key)
         if effect is not None:
@@ -9630,7 +9630,7 @@ class ClusterRkeConfigDnsToleration(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        The GKE taint key (string)
+        TLS key for etcd service (string)
         """
         return pulumi.get(self, "key")
 
@@ -9638,7 +9638,7 @@ class ClusterRkeConfigDnsToleration(dict):
     @pulumi.getter
     def effect(self) -> Optional[str]:
         """
-        The GKE taint effect (string)
+        The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
         """
         return pulumi.get(self, "effect")
 
@@ -9662,7 +9662,7 @@ class ClusterRkeConfigDnsToleration(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The GKE taint value (string)
+        The toleration value (string)
         """
         return pulumi.get(self, "value")
 
@@ -9944,11 +9944,11 @@ class ClusterRkeConfigIngressToleration(dict):
                  seconds: Optional[int] = None,
                  value: Optional[str] = None):
         """
-        :param str key: The GKE taint key (string)
-        :param str effect: The GKE taint effect (string)
+        :param str key: TLS key for etcd service (string)
+        :param str effect: The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
         :param str operator: The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
         :param int seconds: The toleration seconds (int)
-        :param str value: The GKE taint value (string)
+        :param str value: The toleration value (string)
         """
         pulumi.set(__self__, "key", key)
         if effect is not None:
@@ -9964,7 +9964,7 @@ class ClusterRkeConfigIngressToleration(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        The GKE taint key (string)
+        TLS key for etcd service (string)
         """
         return pulumi.get(self, "key")
 
@@ -9972,7 +9972,7 @@ class ClusterRkeConfigIngressToleration(dict):
     @pulumi.getter
     def effect(self) -> Optional[str]:
         """
-        The GKE taint effect (string)
+        The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
         """
         return pulumi.get(self, "effect")
 
@@ -9996,7 +9996,7 @@ class ClusterRkeConfigIngressToleration(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The GKE taint value (string)
+        The toleration value (string)
         """
         return pulumi.get(self, "value")
 
@@ -10192,11 +10192,11 @@ class ClusterRkeConfigMonitoringToleration(dict):
                  seconds: Optional[int] = None,
                  value: Optional[str] = None):
         """
-        :param str key: The GKE taint key (string)
-        :param str effect: The GKE taint effect (string)
+        :param str key: TLS key for etcd service (string)
+        :param str effect: The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
         :param str operator: The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
         :param int seconds: The toleration seconds (int)
-        :param str value: The GKE taint value (string)
+        :param str value: The toleration value (string)
         """
         pulumi.set(__self__, "key", key)
         if effect is not None:
@@ -10212,7 +10212,7 @@ class ClusterRkeConfigMonitoringToleration(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        The GKE taint key (string)
+        TLS key for etcd service (string)
         """
         return pulumi.get(self, "key")
 
@@ -10220,7 +10220,7 @@ class ClusterRkeConfigMonitoringToleration(dict):
     @pulumi.getter
     def effect(self) -> Optional[str]:
         """
-        The GKE taint effect (string)
+        The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
         """
         return pulumi.get(self, "effect")
 
@@ -10244,7 +10244,7 @@ class ClusterRkeConfigMonitoringToleration(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The GKE taint value (string)
+        The toleration value (string)
         """
         return pulumi.get(self, "value")
 
@@ -11598,11 +11598,11 @@ class ClusterRkeConfigNetworkToleration(dict):
                  seconds: Optional[int] = None,
                  value: Optional[str] = None):
         """
-        :param str key: The GKE taint key (string)
-        :param str effect: The GKE taint effect (string)
+        :param str key: TLS key for etcd service (string)
+        :param str effect: The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
         :param str operator: The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
         :param int seconds: The toleration seconds (int)
-        :param str value: The GKE taint value (string)
+        :param str value: The toleration value (string)
         """
         pulumi.set(__self__, "key", key)
         if effect is not None:
@@ -11618,7 +11618,7 @@ class ClusterRkeConfigNetworkToleration(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        The GKE taint key (string)
+        TLS key for etcd service (string)
         """
         return pulumi.get(self, "key")
 
@@ -11626,7 +11626,7 @@ class ClusterRkeConfigNetworkToleration(dict):
     @pulumi.getter
     def effect(self) -> Optional[str]:
         """
-        The GKE taint effect (string)
+        The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)
         """
         return pulumi.get(self, "effect")
 
@@ -11650,7 +11650,7 @@ class ClusterRkeConfigNetworkToleration(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The GKE taint value (string)
+        The toleration value (string)
         """
         return pulumi.get(self, "value")
 
@@ -11719,7 +11719,7 @@ class ClusterRkeConfigNode(dict):
                  ssh_key_path: Optional[str] = None):
         """
         :param str address: Address ip for node (string)
-        :param Sequence[str] roles: Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
+        :param Sequence[str] roles: (Requires) Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
         :param str user: Registry user (string)
         :param str docker_socket: Docker socket for node (string)
         :param str hostname_override: Hostname override for node (string)
@@ -11765,7 +11765,7 @@ class ClusterRkeConfigNode(dict):
     @pulumi.getter
     def roles(self) -> Sequence[str]:
         """
-        Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
+        (Requires) Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
         """
         return pulumi.get(self, "roles")
 
@@ -12153,8 +12153,8 @@ class ClusterRkeConfigServicesEtcd(dict):
         :param Sequence[str] extra_envs: Extra environment for scheduler service (list)
         :param int gid: Etcd service GID. Default: `0`. For Rancher v2.3.x and above (int)
         :param str image: Docker image for scheduler service (string)
-        :param str key: The GKE taint key (string)
-        :param str path: (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+        :param str key: TLS key for etcd service (string)
+        :param str path: Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
         :param str retention: Retention for etcd backup. Default `6` (int)
         :param bool snapshot: Snapshot option for etcd service (bool)
         :param int uid: Etcd service UID. Default: `0`. For Rancher v2.3.x and above (int)
@@ -12274,7 +12274,7 @@ class ClusterRkeConfigServicesEtcd(dict):
     @pulumi.getter
     def key(self) -> Optional[str]:
         """
-        The GKE taint key (string)
+        TLS key for etcd service (string)
         """
         return pulumi.get(self, "key")
 
@@ -12282,7 +12282,7 @@ class ClusterRkeConfigServicesEtcd(dict):
     @pulumi.getter
     def path(self) -> Optional[str]:
         """
-        (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+        Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
         """
         return pulumi.get(self, "path")
 
@@ -12342,7 +12342,7 @@ class ClusterRkeConfigServicesEtcdBackupConfig(dict):
                  safe_timestamp: Optional[bool] = None,
                  timeout: Optional[int] = None):
         """
-        :param bool enabled: Enable the authorized cluster endpoint. Default `true` (bool)
+        :param bool enabled: Enable event rate limit. Default: `false` (bool)
         :param int interval_hours: Interval hours for etcd backup. Default `12` (int)
         :param int retention: Retention for etcd backup. Default `6` (int)
         :param 'ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs' s3_backup_config: S3 config options for etcd backup (list maxitems:1)
@@ -12366,7 +12366,7 @@ class ClusterRkeConfigServicesEtcdBackupConfig(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        Enable the authorized cluster endpoint. Default `true` (bool)
+        Enable event rate limit. Default: `false` (bool)
         """
         return pulumi.get(self, "enabled")
 
@@ -12779,8 +12779,8 @@ class ClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin(dict):
                  path: Optional[str] = None):
         """
         :param str configuration: Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
-        :param str name: The name of the Cluster (string)
-        :param str path: (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+        :param str name: The AKS cluster name (string)
+        :param str path: Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
         """
         if configuration is not None:
             pulumi.set(__self__, "configuration", configuration)
@@ -12801,7 +12801,7 @@ class ClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the Cluster (string)
+        The AKS cluster name (string)
         """
         return pulumi.get(self, "name")
 
@@ -12809,7 +12809,7 @@ class ClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin(dict):
     @pulumi.getter
     def path(self) -> Optional[str]:
         """
-        (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+        Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
         """
         return pulumi.get(self, "path")
 
@@ -12821,7 +12821,7 @@ class ClusterRkeConfigServicesKubeApiAuditLog(dict):
                  enabled: Optional[bool] = None):
         """
         :param 'ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs' configuration: Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
-        :param bool enabled: Enable the authorized cluster endpoint. Default `true` (bool)
+        :param bool enabled: Enable event rate limit. Default: `false` (bool)
         """
         if configuration is not None:
             pulumi.set(__self__, "configuration", configuration)
@@ -12840,7 +12840,7 @@ class ClusterRkeConfigServicesKubeApiAuditLog(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        Enable the authorized cluster endpoint. Default `true` (bool)
+        Enable event rate limit. Default: `false` (bool)
         """
         return pulumi.get(self, "enabled")
 
@@ -12880,7 +12880,7 @@ class ClusterRkeConfigServicesKubeApiAuditLogConfiguration(dict):
         :param int max_age: Audit log max age. Default: `30` (int)
         :param int max_backup: Audit log max backup. Default: `10` (int)
         :param int max_size: The EKS node group maximum size. Default `2` (int)
-        :param str path: (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+        :param str path: Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
         :param str policy: Audit policy yaml encoded definition. `apiVersion` and `kind: Policy\\nrules:"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/audit-log/) (string) Ex:
         """
         if format is not None:
@@ -12932,7 +12932,7 @@ class ClusterRkeConfigServicesKubeApiAuditLogConfiguration(dict):
     @pulumi.getter
     def path(self) -> Optional[str]:
         """
-        (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+        Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
         """
         return pulumi.get(self, "path")
 
@@ -12952,7 +12952,7 @@ class ClusterRkeConfigServicesKubeApiEventRateLimit(dict):
                  enabled: Optional[bool] = None):
         """
         :param str configuration: Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
-        :param bool enabled: Enable the authorized cluster endpoint. Default `true` (bool)
+        :param bool enabled: Enable event rate limit. Default: `false` (bool)
         """
         if configuration is not None:
             pulumi.set(__self__, "configuration", configuration)
@@ -12971,7 +12971,7 @@ class ClusterRkeConfigServicesKubeApiEventRateLimit(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        Enable the authorized cluster endpoint. Default `true` (bool)
+        Enable event rate limit. Default: `false` (bool)
         """
         return pulumi.get(self, "enabled")
 
@@ -13004,7 +13004,7 @@ class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig(dict):
                ```python
                import pulumi
                ```
-        :param bool enabled: Enable the authorized cluster endpoint. Default `true` (bool)
+        :param bool enabled: Enable event rate limit. Default: `false` (bool)
         """
         if custom_config is not None:
             pulumi.set(__self__, "custom_config", custom_config)
@@ -13027,7 +13027,7 @@ class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        Enable the authorized cluster endpoint. Default `true` (bool)
+        Enable event rate limit. Default: `false` (bool)
         """
         return pulumi.get(self, "enabled")
 
@@ -23229,15 +23229,15 @@ class MachineConfigV2HarvesterConfig(dict):
         :param str ssh_user: If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
         :param str vm_namespace: Virtual machine namespace e.g. `default` (string)
         :param str cpu_count: vSphere CPU number for docker VM. Default `2` (string)
-        :param str disk_bus: Use `disk_info` instead
+        :param str disk_bus: (Deprecated) Use `disk_info` instead
         :param str disk_info: A JSON string specifying info for the disks e.g. `{\\"disks\\":[{\\"imageName\\":\\"harvester-public/image-57hzg\\",\\"bootOrder\\":1,\\"size\\":40},{\\"storageClassName\\":\\"node-driver-test\\",\\"bootOrder\\":2,\\"size\\":1}]}` (string)
         :param str disk_size: vSphere size of disk for docker VM (in MB). Default `20480` (string)
         :param str image_name: OpenStack image name to use for the instance. Conflicts with `image_id` (string)
         :param str memory_size: vSphere size of memory for docker VM (in MB). Default `2048` (string)
         :param str network_data: NetworkData content of cloud-init, base64 is supported (string)
         :param str network_info: A JSON string specifying info for the networks e.g. `{\\"interfaces\\":[{\\"networkName\\":\\"harvester-public/vlan1\\"},{\\"networkName\\":\\"harvester-public/vlan2\\"}]}` (string)
-        :param str network_model: Use `network_info` instead
-        :param str network_name: Use `network_info` instead
+        :param str network_model: (Deprecated) Use `network_info` instead
+        :param str network_name: (Deprecated) Use `network_info` instead
         :param str ssh_password: If using a non-B2D image you can specify the ssh password. Default `tcuser` (string)
         :param str user_data: UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata (string)
         :param str vm_affinity: Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 and above (string)
@@ -23299,7 +23299,7 @@ class MachineConfigV2HarvesterConfig(dict):
     @pulumi.getter(name="diskBus")
     def disk_bus(self) -> Optional[str]:
         """
-        Use `disk_info` instead
+        (Deprecated) Use `disk_info` instead
         """
         warnings.warn("""Use disk_info instead""", DeprecationWarning)
         pulumi.log.warn("""disk_bus is deprecated: Use disk_info instead""")
@@ -23364,7 +23364,7 @@ class MachineConfigV2HarvesterConfig(dict):
     @pulumi.getter(name="networkModel")
     def network_model(self) -> Optional[str]:
         """
-        Use `network_info` instead
+        (Deprecated) Use `network_info` instead
         """
         warnings.warn("""Use network_info instead""", DeprecationWarning)
         pulumi.log.warn("""network_model is deprecated: Use network_info instead""")
@@ -23375,7 +23375,7 @@ class MachineConfigV2HarvesterConfig(dict):
     @pulumi.getter(name="networkName")
     def network_name(self) -> Optional[str]:
         """
-        Use `network_info` instead
+        (Deprecated) Use `network_info` instead
         """
         warnings.warn("""Use network_info instead""", DeprecationWarning)
         pulumi.log.warn("""network_name is deprecated: Use network_info instead""")
@@ -23813,10 +23813,9 @@ class MachineConfigV2OpenstackConfig(dict):
         :param str user_domain_id: OpenStack user domain id. Conflicts with `user_domain_name` (string)
         :param str user_domain_name: OpenStack user domain name. Conflicts with `user_domain_id` (string)
         :param str username: OpenStack username (string)
-        :param str volume_device_path: OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
-               > **Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.
-               > **Note:**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
-               > **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
+        :param str volume_device_path: OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)**Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.
+               **Note:**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
+               **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
         :param str volume_id: OpenStack volume id of existing volume. Applicable only when `boot_from_volume` is `true` (string)
         :param str volume_name: OpenStack volume name of existing volume. Applicable only when `boot_from_volume` is `true` (string)
         :param str volume_size: OpenStack volume size (GiB). Required when `boot_from_volume` is `true` (string)
@@ -24204,10 +24203,9 @@ class MachineConfigV2OpenstackConfig(dict):
     @pulumi.getter(name="volumeDevicePath")
     def volume_device_path(self) -> Optional[str]:
         """
-        OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
-        > **Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.
-        > **Note:**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
-        > **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
+        OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)**Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.
+        **Note:**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
+        **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
         """
         return pulumi.get(self, "volume_device_path")
 
@@ -25461,9 +25459,7 @@ class NodeTemplateAmazonec2Config(dict):
         :param str tags: vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
         :param bool use_ebs_optimized_instance: Create an EBS optimized instance. Default `false` (bool)
         :param bool use_private_address: Force the usage of private IP address. Default `false` (bool)
-        :param str userdata: Path to file with cloud-init user-data (string)
-               
-               > **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+        :param str userdata: Path to file with cloud-init user-data (string)**Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
         :param str volume_type: OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
         """
         pulumi.set(__self__, "ami", ami)
@@ -25786,9 +25782,7 @@ class NodeTemplateAmazonec2Config(dict):
     @pulumi.getter
     def userdata(self) -> Optional[str]:
         """
-        Path to file with cloud-init user-data (string)
-
-        > **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+        Path to file with cloud-init user-data (string)**Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
         """
         return pulumi.get(self, "userdata")
 
@@ -26301,9 +26295,7 @@ class NodeTemplateDigitaloceanConfig(dict):
         :param str ssh_port: If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
         :param str ssh_user: If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
         :param str tags: vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
-        :param str userdata: Path to file with cloud-init user-data (string)
-               
-               > **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+        :param str userdata: Path to file with cloud-init user-data (string)**Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
         """
         if access_token is not None:
             pulumi.set(__self__, "access_token", access_token)
@@ -26442,9 +26434,7 @@ class NodeTemplateDigitaloceanConfig(dict):
     @pulumi.getter
     def userdata(self) -> Optional[str]:
         """
-        Path to file with cloud-init user-data (string)
-
-        > **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+        Path to file with cloud-init user-data (string)**Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
         """
         return pulumi.get(self, "userdata")
 
@@ -26516,14 +26506,14 @@ class NodeTemplateHarvesterConfig(dict):
         :param str ssh_user: If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
         :param str vm_namespace: Virtual machine namespace e.g. `default` (string)
         :param str cpu_count: vSphere CPU number for docker VM. Default `2` (string)
-        :param str disk_bus: Use `disk_info` instead
+        :param str disk_bus: (Deprecated) Use `disk_info` instead
         :param str disk_info: A JSON string specifying info for the disks e.g. `{\\"disks\\":[{\\"imageName\\":\\"harvester-public/image-57hzg\\",\\"bootOrder\\":1,\\"size\\":40},{\\"storageClassName\\":\\"node-driver-test\\",\\"bootOrder\\":2,\\"size\\":1}]}` (string)
         :param str disk_size: vSphere size of disk for docker VM (in MB). Default `20480` (string)
         :param str image_name: OpenStack image name to use for the instance. Conflicts with `image_id` (string)
         :param str memory_size: vSphere size of memory for docker VM (in MB). Default `2048` (string)
         :param str network_data: NetworkData content of cloud-init, base64 is supported (string)
         :param str network_info: A JSON string specifying info for the networks e.g. `{\\"interfaces\\":[{\\"networkName\\":\\"harvester-public/vlan1\\"},{\\"networkName\\":\\"harvester-public/vlan2\\"}]}` (string)
-        :param str network_model: Use `network_info` instead
+        :param str network_model: (Deprecated) Use `network_info` instead
         :param str network_name: Opennebula network to connect the machine to. Conflicts with `network_id` (string)
         :param str ssh_password: If using a non-B2D image you can specify the ssh password. Default `tcuser`. From Rancher v2.3.3 (string)
         :param str user_data: UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata (string)
@@ -26586,7 +26576,7 @@ class NodeTemplateHarvesterConfig(dict):
     @pulumi.getter(name="diskBus")
     def disk_bus(self) -> Optional[str]:
         """
-        Use `disk_info` instead
+        (Deprecated) Use `disk_info` instead
         """
         warnings.warn("""Use disk_info instead""", DeprecationWarning)
         pulumi.log.warn("""disk_bus is deprecated: Use disk_info instead""")
@@ -26651,7 +26641,7 @@ class NodeTemplateHarvesterConfig(dict):
     @pulumi.getter(name="networkModel")
     def network_model(self) -> Optional[str]:
         """
-        Use `network_info` instead
+        (Deprecated) Use `network_info` instead
         """
         warnings.warn("""Use network_info instead""", DeprecationWarning)
         pulumi.log.warn("""network_model is deprecated: Use network_info instead""")
@@ -26739,9 +26729,7 @@ class NodeTemplateHetznerConfig(dict):
         :param str server_location: Hetzner Cloud datacenter. Default `nbg1` (string)
         :param str server_type: Hetzner Cloud server type. Default `cx11` (string)
         :param bool use_private_network: Use private network. Default `false` (bool)
-        :param str userdata: Path to file with cloud-init user-data (string)
-               
-               > **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+        :param str userdata: Path to file with cloud-init user-data (string)**Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
         :param str volumes: Comma-separated list of volume IDs or names which should be attached to the server (string)
         """
         pulumi.set(__self__, "api_token", api_token)
@@ -26822,9 +26810,7 @@ class NodeTemplateHetznerConfig(dict):
     @pulumi.getter
     def userdata(self) -> Optional[str]:
         """
-        Path to file with cloud-init user-data (string)
-
-        > **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+        Path to file with cloud-init user-data (string)**Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
         """
         return pulumi.get(self, "userdata")
 
@@ -27225,9 +27211,7 @@ class NodeTemplateOpennebulaConfig(dict):
         :param str ssh_user: If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
         :param str template_id: Opennebula template ID to use. Conflicts with `template_name` (string)
         :param str template_name: Name of the Opennbula template to use. Conflicts with `template_id` (string)
-        :param str vcpu: VCPUs for the VM (string)
-               
-               > **Note:**: `Required*` denotes that one of image_name / image_id or template_name / template_id is required but you cannot combine them.
+        :param str vcpu: VCPUs for the VM (string)**Note:**: `Required*` denotes that one of image_name / image_id or template_name / template_id is required but you cannot combine them.
         """
         pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "user", user)
@@ -27413,9 +27397,7 @@ class NodeTemplateOpennebulaConfig(dict):
     @pulumi.getter
     def vcpu(self) -> Optional[str]:
         """
-        VCPUs for the VM (string)
-
-        > **Note:**: `Required*` denotes that one of image_name / image_id or template_name / template_id is required but you cannot combine them.
+        VCPUs for the VM (string)**Note:**: `Required*` denotes that one of image_name / image_id or template_name / template_id is required but you cannot combine them.
         """
         return pulumi.get(self, "vcpu")
 
@@ -27576,13 +27558,7 @@ class NodeTemplateOpenstackConfig(dict):
         :param str tenant_name: OpenStack tenant name. Conflicts with `tenant_id` (string)
         :param str user_data_file: File containing an openstack userdata script (string)
         :param str username: vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
-        :param str volume_device_path: OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
-               
-               > **Note:**: `Required*` denotes that either the _name or _id is required but you cannot use both.
-               
-               > **Note:**: `Required**` denotes that either the _name or _id is required unless `application_credential_id` is defined.
-               
-               > **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
+        :param str volume_device_path: OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)**Note:**: `Required*` denotes that either the _name or _id is required but you cannot use both.**Note:**: `Required**` denotes that either the _name or _id is required unless `application_credential_id` is defined.**Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
         :param str volume_id: OpenStack volume id of existing volume. Applicable only when `boot_from_volume` is `true` (string)
         :param str volume_name: OpenStack volume name of existing volume. Applicable only when `boot_from_volume` is `true` (string)
         :param str volume_size: OpenStack volume size (GiB). Required when `boot_from_volume` is `true` (string)
@@ -27930,13 +27906,7 @@ class NodeTemplateOpenstackConfig(dict):
     @pulumi.getter(name="volumeDevicePath")
     def volume_device_path(self) -> Optional[str]:
         """
-        OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
-
-        > **Note:**: `Required*` denotes that either the _name or _id is required but you cannot use both.
-
-        > **Note:**: `Required**` denotes that either the _name or _id is required unless `application_credential_id` is defined.
-
-        > **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
+        OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)**Note:**: `Required*` denotes that either the _name or _id is required but you cannot use both.**Note:**: `Required**` denotes that either the _name or _id is required unless `application_credential_id` is defined.**Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
         """
         return pulumi.get(self, "volume_device_path")
 

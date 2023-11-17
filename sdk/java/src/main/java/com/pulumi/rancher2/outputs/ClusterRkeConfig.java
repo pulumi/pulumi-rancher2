@@ -82,7 +82,7 @@ public final class ClusterRkeConfig {
      */
     private @Nullable ClusterRkeConfigIngress ingress;
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return The kubernetes master version. Required if `imported=false` (string)
      * 
      */
     private @Nullable String kubernetesVersion;
@@ -221,7 +221,7 @@ public final class ClusterRkeConfig {
         return Optional.ofNullable(this.ingress);
     }
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return The kubernetes master version. Required if `imported=false` (string)
      * 
      */
     public Optional<String> kubernetesVersion() {

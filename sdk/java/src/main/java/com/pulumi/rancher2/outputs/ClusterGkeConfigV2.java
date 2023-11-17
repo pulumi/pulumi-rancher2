@@ -56,7 +56,7 @@ public final class ClusterGkeConfigV2 {
      */
     private @Nullable ClusterGkeConfigV2IpAllocationPolicy ipAllocationPolicy;
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return The kubernetes master version. Required if `imported=false` (string)
      * 
      */
     private @Nullable String kubernetesVersion;
@@ -91,7 +91,7 @@ public final class ClusterGkeConfigV2 {
      */
     private @Nullable String monitoringService;
     /**
-     * @return The name of the Cluster (string)
+     * @return The AKS cluster name (string)
      * 
      */
     private String name;
@@ -106,7 +106,7 @@ public final class ClusterGkeConfigV2 {
      */
     private @Nullable Boolean networkPolicyEnabled;
     /**
-     * @return The GKE cluster node pools. Required for create new cluster (List)
+     * @return The AKS nnode pools. Required if `imported=false` (list)
      * 
      */
     private @Nullable List<ClusterGkeConfigV2NodePool> nodePools;
@@ -187,7 +187,7 @@ public final class ClusterGkeConfigV2 {
         return Optional.ofNullable(this.ipAllocationPolicy);
     }
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return The kubernetes master version. Required if `imported=false` (string)
      * 
      */
     public Optional<String> kubernetesVersion() {
@@ -236,7 +236,7 @@ public final class ClusterGkeConfigV2 {
         return Optional.ofNullable(this.monitoringService);
     }
     /**
-     * @return The name of the Cluster (string)
+     * @return The AKS cluster name (string)
      * 
      */
     public String name() {
@@ -257,7 +257,7 @@ public final class ClusterGkeConfigV2 {
         return Optional.ofNullable(this.networkPolicyEnabled);
     }
     /**
-     * @return The GKE cluster node pools. Required for create new cluster (List)
+     * @return The AKS nnode pools. Required if `imported=false` (list)
      * 
      */
     public List<ClusterGkeConfigV2NodePool> nodePools() {

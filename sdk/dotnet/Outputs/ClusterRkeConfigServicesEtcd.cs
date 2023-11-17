@@ -54,11 +54,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Image;
         /// <summary>
-        /// The GKE taint key (string)
+        /// TLS key for etcd service (string)
         /// </summary>
         public readonly string? Key;
         /// <summary>
-        /// (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+        /// Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
         /// </summary>
         public readonly string? Path;
         /// <summary>

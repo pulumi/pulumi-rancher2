@@ -620,7 +620,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly enableClusterAlerting!: pulumi.Output<boolean>;
     /**
-     * Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.
+     * (Deprecated) Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.
      *
      * @deprecated Deploy istio using rancher2_app resource instead
      */
@@ -666,7 +666,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
     /**
-     * The name of the Cluster (string)
+     * The AKS cluster name (string)
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -896,7 +896,7 @@ export interface ClusterState {
      */
     enableClusterAlerting?: pulumi.Input<boolean>;
     /**
-     * Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.
+     * (Deprecated) Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.
      *
      * @deprecated Deploy istio using rancher2_app resource instead
      */
@@ -942,7 +942,7 @@ export interface ClusterState {
      */
     labels?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The name of the Cluster (string)
+     * The AKS cluster name (string)
      */
     name?: pulumi.Input<string>;
     /**
@@ -1088,7 +1088,7 @@ export interface ClusterArgs {
      */
     labels?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The name of the Cluster (string)
+     * The AKS cluster name (string)
      */
     name?: pulumi.Input<string>;
     /**

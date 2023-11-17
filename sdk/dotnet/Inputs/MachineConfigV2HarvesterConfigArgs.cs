@@ -19,7 +19,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? CpuCount { get; set; }
 
         /// <summary>
-        /// Use `disk_info` instead
+        /// (Deprecated) Use `disk_info` instead
         /// </summary>
         [Input("diskBus")]
         public Input<string>? DiskBus { get; set; }
@@ -61,13 +61,13 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? NetworkInfo { get; set; }
 
         /// <summary>
-        /// Use `network_info` instead
+        /// (Deprecated) Use `network_info` instead
         /// </summary>
         [Input("networkModel")]
         public Input<string>? NetworkModel { get; set; }
 
         /// <summary>
-        /// Use `network_info` instead
+        /// (Deprecated) Use `network_info` instead
         /// </summary>
         [Input("networkName")]
         public Input<string>? NetworkName { get; set; }

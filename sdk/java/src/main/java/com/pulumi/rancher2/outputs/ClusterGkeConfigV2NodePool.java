@@ -41,7 +41,7 @@ public final class ClusterGkeConfigV2NodePool {
      */
     private @Nullable Integer maxPodsConstraint;
     /**
-     * @return The name of the Cluster (string)
+     * @return The AKS cluster name (string)
      * 
      */
     private String name;
@@ -88,7 +88,7 @@ public final class ClusterGkeConfigV2NodePool {
         return Optional.ofNullable(this.maxPodsConstraint);
     }
     /**
-     * @return The name of the Cluster (string)
+     * @return The AKS cluster name (string)
      * 
      */
     public String name() {

@@ -31,14 +31,14 @@ public final class ClusterRkeConfigServicesKubeApiAdmissionConfigurationPluginAr
     }
 
     /**
-     * The name of the Cluster (string)
+     * The AKS cluster name (string)
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the Cluster (string)
+     * @return The AKS cluster name (string)
      * 
      */
     public Optional<Output<String>> name() {
@@ -46,14 +46,14 @@ public final class ClusterRkeConfigServicesKubeApiAdmissionConfigurationPluginAr
     }
 
     /**
-     * (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+     * Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
      * 
      */
     @Import(name="path")
     private @Nullable Output<String> path;
 
     /**
-     * @return (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+     * @return Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
      * 
      */
     public Optional<Output<String>> path() {
@@ -108,7 +108,7 @@ public final class ClusterRkeConfigServicesKubeApiAdmissionConfigurationPluginAr
         }
 
         /**
-         * @param name The name of the Cluster (string)
+         * @param name The AKS cluster name (string)
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class ClusterRkeConfigServicesKubeApiAdmissionConfigurationPluginAr
         }
 
         /**
-         * @param name The name of the Cluster (string)
+         * @param name The AKS cluster name (string)
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class ClusterRkeConfigServicesKubeApiAdmissionConfigurationPluginAr
         }
 
         /**
-         * @param path (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+         * @param path Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class ClusterRkeConfigServicesKubeApiAdmissionConfigurationPluginAr
         }
 
         /**
-         * @param path (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+         * @param path Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
          * 
          * @return builder
          * 

@@ -59,7 +59,7 @@ public final class ClusterClusterRegistrationToken {
      */
     private @Nullable String manifestUrl;
     /**
-     * @return The name of the Cluster (string)
+     * @return The AKS cluster name (string)
      * 
      */
     private @Nullable String name;
@@ -144,7 +144,7 @@ public final class ClusterClusterRegistrationToken {
         return Optional.ofNullable(this.manifestUrl);
     }
     /**
-     * @return The name of the Cluster (string)
+     * @return The AKS cluster name (string)
      * 
      */
     public Optional<String> name() {

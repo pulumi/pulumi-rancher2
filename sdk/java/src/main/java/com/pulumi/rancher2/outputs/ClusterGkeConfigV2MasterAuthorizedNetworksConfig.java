@@ -19,7 +19,7 @@ public final class ClusterGkeConfigV2MasterAuthorizedNetworksConfig {
      */
     private List<ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock> cidrBlocks;
     /**
-     * @return Enable the authorized cluster endpoint. Default `true` (bool)
+     * @return Enable event rate limit. Default: `false` (bool)
      * 
      */
     private @Nullable Boolean enabled;
@@ -33,7 +33,7 @@ public final class ClusterGkeConfigV2MasterAuthorizedNetworksConfig {
         return this.cidrBlocks;
     }
     /**
-     * @return Enable the authorized cluster endpoint. Default `true` (bool)
+     * @return Enable event rate limit. Default: `false` (bool)
      * 
      */
     public Optional<Boolean> enabled() {

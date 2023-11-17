@@ -187,7 +187,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? EnableMonitoring { get; set; }
 
         /// <summary>
-        /// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        /// The kubernetes master version. Required if `imported=false` (string)
         /// </summary>
         [Input("kubernetesVersion", required: true)]
         public Input<string> KubernetesVersion { get; set; } = null!;
@@ -280,7 +280,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _tag;
 
         /// <summary>
-        /// Use `tags` argument instead as []string
+        /// (Deprecated) Use `tags` argument instead as []string
         /// </summary>
         [Obsolete(@"Use tags argument instead as []string")]
         public InputMap<object> Tag
@@ -293,7 +293,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The GKE node config tags (List)
+        /// The AKS cluster tags (map)
         /// </summary>
         public InputList<string> Tags
         {
@@ -308,7 +308,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string> TenantId { get; set; } = null!;
 
         /// <summary>
-        /// The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
+        /// The AKS virtual network (string)
         /// </summary>
         [Input("virtualNetwork", required: true)]
         public Input<string> VirtualNetwork { get; set; } = null!;

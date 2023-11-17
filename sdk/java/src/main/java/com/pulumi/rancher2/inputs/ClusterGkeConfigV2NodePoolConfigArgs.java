@@ -142,14 +142,14 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
     }
 
     /**
-     * The GKE node config tags (List)
+     * The AKS cluster tags (map)
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return The GKE node config tags (List)
+     * @return The AKS cluster tags (map)
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -383,7 +383,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param tags The GKE node config tags (List)
+         * @param tags The AKS cluster tags (map)
          * 
          * @return builder
          * 
@@ -394,7 +394,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param tags The GKE node config tags (List)
+         * @param tags The AKS cluster tags (map)
          * 
          * @return builder
          * 
@@ -404,7 +404,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param tags The GKE node config tags (List)
+         * @param tags The AKS cluster tags (map)
          * 
          * @return builder
          * 

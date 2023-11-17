@@ -153,14 +153,14 @@ public final class ClusterClusterRegistrationTokenArgs extends com.pulumi.resour
     }
 
     /**
-     * The name of the Cluster (string)
+     * The AKS cluster name (string)
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the Cluster (string)
+     * @return The AKS cluster name (string)
      * 
      */
     public Optional<Output<String>> name() {
@@ -438,7 +438,7 @@ public final class ClusterClusterRegistrationTokenArgs extends com.pulumi.resour
         }
 
         /**
-         * @param name The name of the Cluster (string)
+         * @param name The AKS cluster name (string)
          * 
          * @return builder
          * 
@@ -449,7 +449,7 @@ public final class ClusterClusterRegistrationTokenArgs extends com.pulumi.resour
         }
 
         /**
-         * @param name The name of the Cluster (string)
+         * @param name The AKS cluster name (string)
          * 
          * @return builder
          * 

@@ -40,7 +40,7 @@ public final class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig {
      */
     private @Nullable String customConfig;
     /**
-     * @return Enable the authorized cluster endpoint. Default `true` (bool)
+     * @return Enable event rate limit. Default: `false` (bool)
      * 
      */
     private @Nullable Boolean enabled;
@@ -76,7 +76,7 @@ public final class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig {
         return Optional.ofNullable(this.customConfig);
     }
     /**
-     * @return Enable the authorized cluster endpoint. Default `true` (bool)
+     * @return Enable event rate limit. Default: `false` (bool)
      * 
      */
     public Optional<Boolean> enabled() {

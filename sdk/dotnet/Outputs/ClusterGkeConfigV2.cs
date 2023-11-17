@@ -42,7 +42,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly Outputs.ClusterGkeConfigV2IpAllocationPolicy? IpAllocationPolicy;
         /// <summary>
-        /// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        /// The kubernetes master version. Required if `imported=false` (string)
         /// </summary>
         public readonly string? KubernetesVersion;
         /// <summary>
@@ -70,7 +70,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? MonitoringService;
         /// <summary>
-        /// The name of the Cluster (string)
+        /// The AKS cluster name (string)
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -82,7 +82,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? NetworkPolicyEnabled;
         /// <summary>
-        /// The GKE cluster node pools. Required for create new cluster (List)
+        /// The AKS nnode pools. Required if `imported=false` (list)
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterGkeConfigV2NodePool> NodePools;
         /// <summary>

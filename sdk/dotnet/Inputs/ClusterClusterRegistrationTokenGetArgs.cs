@@ -79,7 +79,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? ManifestUrl { get; set; }
 
         /// <summary>
-        /// The name of the Cluster (string)
+        /// The AKS cluster name (string)
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

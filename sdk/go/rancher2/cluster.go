@@ -748,7 +748,7 @@ type Cluster struct {
 	EksConfigV2 ClusterEksConfigV2Output `pulumi:"eksConfigV2"`
 	// Enable built-in cluster alerting (bool)
 	EnableClusterAlerting pulumi.BoolOutput `pulumi:"enableClusterAlerting"`
-	// Deploy istio on `system` project and `istio-system` namespace, using App resource instead. See above example.
+	// (Deprecated) Deploy istio on `system` project and `istio-system` namespace, using App resource instead. See above example.
 	//
 	// Deprecated: Deploy istio using rancher2_app resource instead
 	EnableClusterIstio pulumi.BoolOutput `pulumi:"enableClusterIstio"`
@@ -772,7 +772,7 @@ type Cluster struct {
 	KubeConfig pulumi.StringOutput `pulumi:"kubeConfig"`
 	// Labels for the Cluster (map)
 	Labels pulumi.MapOutput `pulumi:"labels"`
-	// The name of the Cluster (string)
+	// The AKS cluster name (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	OkeConfig ClusterOkeConfigPtrOutput `pulumi:"okeConfig"`
@@ -869,7 +869,7 @@ type clusterState struct {
 	EksConfigV2 *ClusterEksConfigV2 `pulumi:"eksConfigV2"`
 	// Enable built-in cluster alerting (bool)
 	EnableClusterAlerting *bool `pulumi:"enableClusterAlerting"`
-	// Deploy istio on `system` project and `istio-system` namespace, using App resource instead. See above example.
+	// (Deprecated) Deploy istio on `system` project and `istio-system` namespace, using App resource instead. See above example.
 	//
 	// Deprecated: Deploy istio using rancher2_app resource instead
 	EnableClusterIstio *bool `pulumi:"enableClusterIstio"`
@@ -893,7 +893,7 @@ type clusterState struct {
 	KubeConfig *string `pulumi:"kubeConfig"`
 	// Labels for the Cluster (map)
 	Labels map[string]interface{} `pulumi:"labels"`
-	// The name of the Cluster (string)
+	// The AKS cluster name (string)
 	Name *string `pulumi:"name"`
 	// The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	OkeConfig *ClusterOkeConfig `pulumi:"okeConfig"`
@@ -956,7 +956,7 @@ type ClusterState struct {
 	EksConfigV2 ClusterEksConfigV2PtrInput
 	// Enable built-in cluster alerting (bool)
 	EnableClusterAlerting pulumi.BoolPtrInput
-	// Deploy istio on `system` project and `istio-system` namespace, using App resource instead. See above example.
+	// (Deprecated) Deploy istio on `system` project and `istio-system` namespace, using App resource instead. See above example.
 	//
 	// Deprecated: Deploy istio using rancher2_app resource instead
 	EnableClusterIstio pulumi.BoolPtrInput
@@ -980,7 +980,7 @@ type ClusterState struct {
 	KubeConfig pulumi.StringPtrInput
 	// Labels for the Cluster (map)
 	Labels pulumi.MapInput
-	// The name of the Cluster (string)
+	// The AKS cluster name (string)
 	Name pulumi.StringPtrInput
 	// The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	OkeConfig ClusterOkeConfigPtrInput
@@ -1057,7 +1057,7 @@ type clusterArgs struct {
 	K3sConfig *ClusterK3sConfig `pulumi:"k3sConfig"`
 	// Labels for the Cluster (map)
 	Labels map[string]interface{} `pulumi:"labels"`
-	// The name of the Cluster (string)
+	// The AKS cluster name (string)
 	Name *string `pulumi:"name"`
 	// The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	OkeConfig *ClusterOkeConfig `pulumi:"okeConfig"`
@@ -1129,7 +1129,7 @@ type ClusterArgs struct {
 	K3sConfig ClusterK3sConfigPtrInput
 	// Labels for the Cluster (map)
 	Labels pulumi.MapInput
-	// The name of the Cluster (string)
+	// The AKS cluster name (string)
 	Name pulumi.StringPtrInput
 	// The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	OkeConfig ClusterOkeConfigPtrInput
@@ -1350,7 +1350,7 @@ func (o ClusterOutput) EnableClusterAlerting() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolOutput { return v.EnableClusterAlerting }).(pulumi.BoolOutput)
 }
 
-// Deploy istio on `system` project and `istio-system` namespace, using App resource instead. See above example.
+// (Deprecated) Deploy istio on `system` project and `istio-system` namespace, using App resource instead. See above example.
 //
 // Deprecated: Deploy istio using rancher2_app resource instead
 func (o ClusterOutput) EnableClusterIstio() pulumi.BoolOutput {
@@ -1409,7 +1409,7 @@ func (o ClusterOutput) Labels() pulumi.MapOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
 }
 
-// The name of the Cluster (string)
+// The AKS cluster name (string)
 func (o ClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
