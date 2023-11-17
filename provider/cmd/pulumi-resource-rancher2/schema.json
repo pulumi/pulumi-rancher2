@@ -329,11 +329,11 @@
             "properties": {
                 "name": {
                     "type": "string",
-                    "description": "The name of the Cluster (string)\n"
+                    "description": "The AKS cluster name (string)\n"
                 },
                 "value": {
                     "type": "string",
-                    "description": "The GKE taint value (string)\n"
+                    "description": "The toleration value (string)\n"
                 }
             },
             "type": "object",
@@ -428,7 +428,7 @@
                 },
                 "kubernetesVersion": {
                     "type": "string",
-                    "description": "The Kubernetes version that will be used for your master *and* OKE worker nodes (string)\n"
+                    "description": "The kubernetes master version. Required if `imported=false` (string)\n"
                 },
                 "loadBalancerSku": {
                     "type": "string",
@@ -491,7 +491,7 @@
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "Use `tags` argument instead as []string\n",
+                    "description": "(Deprecated) Use `tags` argument instead as []string\n",
                     "deprecationMessage": "Use tags argument instead as []string"
                 },
                 "tags": {
@@ -499,7 +499,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The GKE node config tags (List)\n"
+                    "description": "The AKS cluster tags (map)\n"
                 },
                 "tenantId": {
                     "type": "string",
@@ -507,7 +507,7 @@
                 },
                 "virtualNetwork": {
                     "type": "string",
-                    "description": "The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)\n"
+                    "description": "The AKS virtual network (string)\n"
                 },
                 "virtualNetworkResourceGroup": {
                     "type": "string",
@@ -587,7 +587,7 @@
                 },
                 "kubernetesVersion": {
                     "type": "string",
-                    "description": "The Kubernetes version that will be used for your master *and* OKE worker nodes (string)\n"
+                    "description": "The kubernetes master version. Required if `imported=false` (string)\n"
                 },
                 "linuxAdminUsername": {
                     "type": "string",
@@ -615,7 +615,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the Cluster (string)\n"
+                    "description": "The AKS cluster name (string)\n"
                 },
                 "networkDnsServiceIp": {
                     "type": "string",
@@ -646,7 +646,7 @@
                     "items": {
                         "$ref": "#/types/rancher2:index/ClusterAksConfigV2NodePool:ClusterAksConfigV2NodePool"
                     },
-                    "description": "The GKE cluster node pools. Required for create new cluster (List)\n"
+                    "description": "The AKS nnode pools. Required if `imported=false` (list)\n"
                 },
                 "privateCluster": {
                     "type": "boolean",
@@ -669,11 +669,11 @@
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "The GKE node config tags (List)\n"
+                    "description": "The AKS cluster tags (map)\n"
                 },
                 "virtualNetwork": {
                     "type": "string",
-                    "description": "The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)\n"
+                    "description": "The AKS virtual network (string)\n"
                 },
                 "virtualNetworkResourceGroup": {
                     "type": "string",
@@ -760,7 +760,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the Cluster (string)\n"
+                    "description": "The AKS cluster name (string)\n"
                 },
                 "orchestratorVersion": {
                     "type": "string",
@@ -1052,11 +1052,11 @@
             "properties": {
                 "effect": {
                     "type": "string",
-                    "description": "The GKE taint effect (string)\n"
+                    "description": "The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)\n"
                 },
                 "key": {
                     "type": "string",
-                    "description": "The GKE taint key (string)\n"
+                    "description": "TLS key for etcd service (string)\n"
                 },
                 "operator": {
                     "type": "string",
@@ -1068,7 +1068,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The GKE taint value (string)\n"
+                    "description": "The toleration value (string)\n"
                 }
             },
             "type": "object",
@@ -1113,7 +1113,7 @@
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "Enable the authorized cluster endpoint. Default `true` (bool)\n"
+                    "description": "Enable event rate limit. Default: `false` (bool)\n"
                 },
                 "fqdn": {
                     "type": "string",
@@ -1184,7 +1184,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the Cluster (string)\n"
+                    "description": "The AKS cluster name (string)\n"
                 },
                 "nodeCommand": {
                     "type": "string",
@@ -1307,7 +1307,7 @@
                 },
                 "kubernetesVersion": {
                     "type": "string",
-                    "description": "The Kubernetes version that will be used for your master *and* OKE worker nodes (string)\n"
+                    "description": "The kubernetes master version. Required if `imported=false` (string)\n"
                 },
                 "maximumNodes": {
                     "type": "integer",
@@ -1359,7 +1359,7 @@
                 },
                 "virtualNetwork": {
                     "type": "string",
-                    "description": "The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)\n"
+                    "description": "The AKS virtual network (string)\n"
                 }
             },
             "type": "object",
@@ -1395,7 +1395,7 @@
                 },
                 "kubernetesVersion": {
                     "type": "string",
-                    "description": "The Kubernetes version that will be used for your master *and* OKE worker nodes (string)\n"
+                    "description": "The kubernetes master version. Required if `imported=false` (string)\n"
                 },
                 "loggingTypes": {
                     "type": "array",
@@ -1406,7 +1406,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the Cluster (string)\n"
+                    "description": "The AKS cluster name (string)\n"
                 },
                 "nodeGroups": {
                     "type": "array",
@@ -1461,7 +1461,7 @@
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "The GKE node config tags (List)\n"
+                    "description": "The AKS cluster tags (map)\n"
                 }
             },
             "type": "object",
@@ -1533,7 +1533,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the Cluster (string)\n"
+                    "description": "The AKS cluster name (string)\n"
                 },
                 "nodeRole": {
                     "type": "string",
@@ -1569,7 +1569,7 @@
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "The GKE node config tags (List)\n"
+                    "description": "The AKS cluster tags (map)\n"
                 },
                 "userData": {
                     "type": "string",
@@ -1603,7 +1603,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the Cluster (string)\n"
+                    "description": "The AKS cluster name (string)\n"
                 },
                 "version": {
                     "type": "integer",
@@ -1650,11 +1650,11 @@
             "properties": {
                 "effect": {
                     "type": "string",
-                    "description": "The GKE taint effect (string)\n"
+                    "description": "The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)\n"
                 },
                 "key": {
                     "type": "string",
-                    "description": "The GKE taint key (string)\n"
+                    "description": "TLS key for etcd service (string)\n"
                 },
                 "operator": {
                     "type": "string",
@@ -1666,7 +1666,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The GKE taint value (string)\n"
+                    "description": "The toleration value (string)\n"
                 }
             },
             "type": "object",
@@ -2031,7 +2031,7 @@
                 },
                 "kubernetesVersion": {
                     "type": "string",
-                    "description": "The Kubernetes version that will be used for your master *and* OKE worker nodes (string)\n"
+                    "description": "The kubernetes master version. Required if `imported=false` (string)\n"
                 },
                 "labels": {
                     "type": "object",
@@ -2066,7 +2066,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the Cluster (string)\n",
+                    "description": "The AKS cluster name (string)\n",
                     "willReplaceOnChanges": true
                 },
                 "network": {
@@ -2083,7 +2083,7 @@
                     "items": {
                         "$ref": "#/types/rancher2:index/ClusterGkeConfigV2NodePool:ClusterGkeConfigV2NodePool"
                     },
-                    "description": "The GKE cluster node pools. Required for create new cluster (List)\n"
+                    "description": "The AKS nnode pools. Required if `imported=false` (list)\n"
                 },
                 "privateClusterConfig": {
                     "$ref": "#/types/rancher2:index/ClusterGkeConfigV2PrivateClusterConfig:ClusterGkeConfigV2PrivateClusterConfig",
@@ -2234,7 +2234,7 @@
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "Enable the authorized cluster endpoint. Default `true` (bool)\n"
+                    "description": "Enable event rate limit. Default: `false` (bool)\n"
                 }
             },
             "type": "object",
@@ -2283,7 +2283,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the Cluster (string)\n"
+                    "description": "The AKS cluster name (string)\n"
                 },
                 "version": {
                     "type": "string",
@@ -2314,7 +2314,7 @@
             "properties": {
                 "enabled": {
                     "type": "boolean",
-                    "description": "Enable the authorized cluster endpoint. Default `true` (bool)\n"
+                    "description": "Enable event rate limit. Default: `false` (bool)\n"
                 },
                 "maxNodeCount": {
                     "type": "integer",
@@ -2380,7 +2380,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The GKE node config tags (List)\n"
+                    "description": "The AKS cluster tags (map)\n"
                 },
                 "taints": {
                     "type": "array",
@@ -2547,7 +2547,7 @@
                 },
                 "kubernetesVersion": {
                     "type": "string",
-                    "description": "The Kubernetes version that will be used for your master *and* OKE worker nodes (string)\n"
+                    "description": "The kubernetes master version. Required if `imported=false` (string)\n"
                 },
                 "limitNodeCount": {
                     "type": "integer",
@@ -2746,7 +2746,7 @@
                 },
                 "kubernetesVersion": {
                     "type": "string",
-                    "description": "The Kubernetes version that will be used for your master *and* OKE worker nodes (string)\n"
+                    "description": "The kubernetes master version. Required if `imported=false` (string)\n"
                 },
                 "monitoring": {
                     "$ref": "#/types/rancher2:index/ClusterRkeConfigMonitoring:ClusterRkeConfigMonitoring",
@@ -2930,7 +2930,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the Cluster (string)\n"
+                    "description": "The AKS cluster name (string)\n"
                 },
                 "openstackCloudProvider": {
                     "$ref": "#/types/rancher2:index/ClusterRkeConfigCloudProviderOpenstackCloudProvider:ClusterRkeConfigCloudProviderOpenstackCloudProvider",
@@ -3604,7 +3604,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the Cluster (string)\n"
+                    "description": "The AKS cluster name (string)\n"
                 },
                 "password": {
                     "type": "string",
@@ -3797,11 +3797,11 @@
             "properties": {
                 "effect": {
                     "type": "string",
-                    "description": "The GKE taint effect (string)\n"
+                    "description": "The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)\n"
                 },
                 "key": {
                     "type": "string",
-                    "description": "The GKE taint key (string)\n"
+                    "description": "TLS key for etcd service (string)\n"
                 },
                 "operator": {
                     "type": "string",
@@ -3813,7 +3813,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The GKE taint value (string)\n"
+                    "description": "The toleration value (string)\n"
                 }
             },
             "type": "object",
@@ -3934,11 +3934,11 @@
             "properties": {
                 "effect": {
                     "type": "string",
-                    "description": "The GKE taint effect (string)\n"
+                    "description": "The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)\n"
                 },
                 "key": {
                     "type": "string",
-                    "description": "The GKE taint key (string)\n"
+                    "description": "TLS key for etcd service (string)\n"
                 },
                 "operator": {
                     "type": "string",
@@ -3950,7 +3950,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The GKE taint value (string)\n"
+                    "description": "The toleration value (string)\n"
                 }
             },
             "type": "object",
@@ -4039,11 +4039,11 @@
             "properties": {
                 "effect": {
                     "type": "string",
-                    "description": "The GKE taint effect (string)\n"
+                    "description": "The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)\n"
                 },
                 "key": {
                     "type": "string",
-                    "description": "The GKE taint key (string)\n"
+                    "description": "TLS key for etcd service (string)\n"
                 },
                 "operator": {
                     "type": "string",
@@ -4055,7 +4055,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The GKE taint value (string)\n"
+                    "description": "The toleration value (string)\n"
                 }
             },
             "type": "object",
@@ -4539,11 +4539,11 @@
             "properties": {
                 "effect": {
                     "type": "string",
-                    "description": "The GKE taint effect (string)\n"
+                    "description": "The toleration effect. `NoExecute`, `NoSchedule`, and `PreferNoSchedule` are supported. Default: `NoExecute` (string)\n"
                 },
                 "key": {
                     "type": "string",
-                    "description": "The GKE taint key (string)\n"
+                    "description": "TLS key for etcd service (string)\n"
                 },
                 "operator": {
                     "type": "string",
@@ -4555,7 +4555,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The GKE taint value (string)\n"
+                    "description": "The toleration value (string)\n"
                 }
             },
             "type": "object",
@@ -4621,7 +4621,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)\n"
+                    "description": "(Requires) Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)\n"
                 },
                 "sshAgentAuth": {
                     "type": "boolean",
@@ -4808,12 +4808,12 @@
                 },
                 "key": {
                     "type": "string",
-                    "description": "The GKE taint key (string)\n",
+                    "description": "TLS key for etcd service (string)\n",
                     "secret": true
                 },
                 "path": {
                     "type": "string",
-                    "description": "(Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)\n"
+                    "description": "Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)\n"
                 },
                 "retention": {
                     "type": "string",
@@ -4850,7 +4850,7 @@
             "properties": {
                 "enabled": {
                     "type": "boolean",
-                    "description": "Enable the authorized cluster endpoint. Default `true` (bool)\n"
+                    "description": "Enable event rate limit. Default: `false` (bool)\n"
                 },
                 "intervalHours": {
                     "type": "integer",
@@ -5028,11 +5028,11 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the Cluster (string)\n"
+                    "description": "The AKS cluster name (string)\n"
                 },
                 "path": {
                     "type": "string",
-                    "description": "(Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)\n"
+                    "description": "Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)\n"
                 }
             },
             "type": "object",
@@ -5053,7 +5053,7 @@
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "Enable the authorized cluster endpoint. Default `true` (bool)\n"
+                    "description": "Enable event rate limit. Default: `false` (bool)\n"
                 }
             },
             "type": "object",
@@ -5085,7 +5085,7 @@
                 },
                 "path": {
                     "type": "string",
-                    "description": "(Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)\n"
+                    "description": "Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)\n"
                 },
                 "policy": {
                     "type": "string",
@@ -5109,7 +5109,7 @@
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "Enable the authorized cluster endpoint. Default `true` (bool)\n"
+                    "description": "Enable event rate limit. Default: `false` (bool)\n"
                 }
             },
             "type": "object",
@@ -5129,7 +5129,7 @@
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "Enable the authorized cluster endpoint. Default `true` (bool)\n"
+                    "description": "Enable event rate limit. Default: `false` (bool)\n"
                 }
             },
             "type": "object"
@@ -9400,7 +9400,7 @@
                 },
                 "diskBus": {
                     "type": "string",
-                    "description": "Use `disk_info` instead\n",
+                    "description": "(Deprecated) Use `disk_info` instead\n",
                     "deprecationMessage": "Use disk_info instead"
                 },
                 "diskInfo": {
@@ -9431,12 +9431,12 @@
                 },
                 "networkModel": {
                     "type": "string",
-                    "description": "Use `network_info` instead\n",
+                    "description": "(Deprecated) Use `network_info` instead\n",
                     "deprecationMessage": "Use network_info instead"
                 },
                 "networkName": {
                     "type": "string",
-                    "description": "Use `network_info` instead\n",
+                    "description": "(Deprecated) Use `network_info` instead\n",
                     "deprecationMessage": "Use network_info instead"
                 },
                 "sshPassword": {
@@ -9693,7 +9693,7 @@
                 },
                 "volumeDevicePath": {
                     "type": "string",
-                    "description": "OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)\n\u003e **Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.\n\u003e **Note:**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.\n\u003e **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself\n"
+                    "description": "OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)**Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.\n**Note:**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.\n**Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself\n"
                 },
                 "volumeId": {
                     "type": "string",
@@ -10222,7 +10222,7 @@
                 },
                 "userdata": {
                     "type": "string",
-                    "description": "Path to file with cloud-init user-data (string)\n\n\u003e **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.\n"
+                    "description": "Path to file with cloud-init user-data (string)**Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.\n"
                 },
                 "volumeType": {
                     "type": "string",
@@ -10442,7 +10442,7 @@
                 },
                 "userdata": {
                     "type": "string",
-                    "description": "Path to file with cloud-init user-data (string)\n\n\u003e **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.\n"
+                    "description": "Path to file with cloud-init user-data (string)**Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.\n"
                 }
             },
             "type": "object"
@@ -10455,7 +10455,7 @@
                 },
                 "diskBus": {
                     "type": "string",
-                    "description": "Use `disk_info` instead\n",
+                    "description": "(Deprecated) Use `disk_info` instead\n",
                     "deprecationMessage": "Use disk_info instead"
                 },
                 "diskInfo": {
@@ -10486,7 +10486,7 @@
                 },
                 "networkModel": {
                     "type": "string",
-                    "description": "Use `network_info` instead\n",
+                    "description": "(Deprecated) Use `network_info` instead\n",
                     "deprecationMessage": "Use network_info instead"
                 },
                 "networkName": {
@@ -10558,7 +10558,7 @@
                 },
                 "userdata": {
                     "type": "string",
-                    "description": "Path to file with cloud-init user-data (string)\n\n\u003e **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.\n"
+                    "description": "Path to file with cloud-init user-data (string)**Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.\n"
                 },
                 "volumes": {
                     "type": "string",
@@ -10748,7 +10748,7 @@
                 },
                 "vcpu": {
                     "type": "string",
-                    "description": "VCPUs for the VM (string)\n\n\u003e **Note:**: `Required*` denotes that one of image_name / image_id or template_name / template_id is required but you cannot combine them.\n"
+                    "description": "VCPUs for the VM (string)**Note:**: `Required*` denotes that one of image_name / image_id or template_name / template_id is required but you cannot combine them.\n"
                 },
                 "xmlRpcUrl": {
                     "type": "string",
@@ -10901,7 +10901,7 @@
                 },
                 "volumeDevicePath": {
                     "type": "string",
-                    "description": "OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)\n\n\u003e **Note:**: `Required*` denotes that either the _name or _id is required but you cannot use both.\n\n\u003e **Note:**: `Required**` denotes that either the _name or _id is required unless `application_credential_id` is defined.\n\n\u003e **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself\n"
+                    "description": "OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)**Note:**: `Required*` denotes that either the _name or _id is required but you cannot use both.**Note:**: `Required**` denotes that either the _name or _id is required unless `application_credential_id` is defined.**Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself\n"
                 },
                 "volumeId": {
                     "type": "string",
@@ -25346,7 +25346,7 @@
                 },
                 "enableClusterIstio": {
                     "type": "boolean",
-                    "description": "Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.\n",
+                    "description": "(Deprecated) Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.\n",
                     "deprecationMessage": "Deploy istio using rancher2_app resource instead"
                 },
                 "enableClusterMonitoring": {
@@ -25398,7 +25398,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the Cluster (string)\n"
+                    "description": "The AKS cluster name (string)\n"
                 },
                 "okeConfig": {
                     "$ref": "#/types/rancher2:index/ClusterOkeConfig:ClusterOkeConfig",
@@ -25587,7 +25587,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the Cluster (string)\n"
+                    "description": "The AKS cluster name (string)\n"
                 },
                 "okeConfig": {
                     "$ref": "#/types/rancher2:index/ClusterOkeConfig:ClusterOkeConfig",
@@ -25721,7 +25721,7 @@
                     },
                     "enableClusterIstio": {
                         "type": "boolean",
-                        "description": "Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.\n",
+                        "description": "(Deprecated) Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.\n",
                         "deprecationMessage": "Deploy istio using rancher2_app resource instead"
                     },
                     "enableClusterMonitoring": {
@@ -25773,7 +25773,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The name of the Cluster (string)\n"
+                        "description": "The AKS cluster name (string)\n"
                     },
                     "okeConfig": {
                         "$ref": "#/types/rancher2:index/ClusterOkeConfig:ClusterOkeConfig",
@@ -27692,7 +27692,7 @@
                 },
                 "ttl": {
                     "type": "integer",
-                    "description": "Token time to live in seconds. Default `0` (int) \n\nFrom Rancher v2.4.6 `ttl` is read in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.\n"
+                    "description": "Token time to live in seconds. Default `0` (int)\n\nFrom Rancher v2.4.6 `ttl` is read in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.\n"
                 },
                 "userId": {
                     "type": "string",
@@ -27755,7 +27755,7 @@
                 },
                 "ttl": {
                     "type": "integer",
-                    "description": "Token time to live in seconds. Default `0` (int) \n\nFrom Rancher v2.4.6 `ttl` is read in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.\n",
+                    "description": "Token time to live in seconds. Default `0` (int)\n\nFrom Rancher v2.4.6 `ttl` is read in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.\n",
                     "willReplaceOnChanges": true
                 },
                 "username": {
@@ -27842,7 +27842,7 @@
                     },
                     "ttl": {
                         "type": "integer",
-                        "description": "Token time to live in seconds. Default `0` (int) \n\nFrom Rancher v2.4.6 `ttl` is read in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.\n",
+                        "description": "Token time to live in seconds. Default `0` (int)\n\nFrom Rancher v2.4.6 `ttl` is read in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.\n",
                         "willReplaceOnChanges": true
                     },
                     "userId": {
@@ -32657,7 +32657,7 @@
                 },
                 "ttl": {
                     "type": "integer",
-                    "description": "Token time to live in seconds. Default `0` (int) \n\nFrom Rancher v2.4.6 `ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.\n"
+                    "description": "Token time to live in seconds. Default `0` (int)\n\nFrom Rancher v2.4.6 `ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.\n"
                 },
                 "userId": {
                     "type": "string",
@@ -32707,7 +32707,7 @@
                 },
                 "ttl": {
                     "type": "integer",
-                    "description": "Token time to live in seconds. Default `0` (int) \n\nFrom Rancher v2.4.6 `ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.\n",
+                    "description": "Token time to live in seconds. Default `0` (int)\n\nFrom Rancher v2.4.6 `ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -32776,7 +32776,7 @@
                     },
                     "ttl": {
                         "type": "integer",
-                        "description": "Token time to live in seconds. Default `0` (int) \n\nFrom Rancher v2.4.6 `ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.\n",
+                        "description": "Token time to live in seconds. Default `0` (int)\n\nFrom Rancher v2.4.6 `ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.\n",
                         "willReplaceOnChanges": true
                     },
                     "userId": {
