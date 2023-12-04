@@ -252,7 +252,7 @@ namespace Pulumi.Rancher2
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new global::Pulumi.Alias { Type = "rancher2:index/activeDirectory:ActiveDirectory"},
+                    new global::Pulumi.Alias { Type = "rancher2:index/activeDirectory:ActiveDirectory" },
                 },
                 AdditionalSecretOutputs =
                 {

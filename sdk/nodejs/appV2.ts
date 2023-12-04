@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  *     repoName: "rancher-charts",
  *     chartName: "rancher-monitoring",
  *     chartVersion: "9.4.200",
- *     values: fs.readFileSync("values.yaml"),
+ *     values: fs.readFileSync("values.yaml", "utf8"),
  * });
  * ```
  *
