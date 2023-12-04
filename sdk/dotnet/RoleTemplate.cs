@@ -204,7 +204,7 @@ namespace Pulumi.Rancher2
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new global::Pulumi.Alias { Type = "rancher2:index/roleTempalte:RoleTempalte"},
+                    new global::Pulumi.Alias { Type = "rancher2:index/roleTempalte:RoleTempalte" },
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
