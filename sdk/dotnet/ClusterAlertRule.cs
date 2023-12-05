@@ -163,7 +163,7 @@ namespace Pulumi.Rancher2
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new global::Pulumi.Alias { Type = "rancher2:index/clusterAlterRule:ClusterAlterRule"},
+                    new global::Pulumi.Alias { Type = "rancher2:index/clusterAlterRule:ClusterAlterRule" },
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
