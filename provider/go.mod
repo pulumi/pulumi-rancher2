@@ -42,8 +42,8 @@ replace (
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk v1.17.2
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.67.0
-	github.com/pulumi/pulumi/sdk/v3 v3.95.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.67.1-0.20231211191944-3ea1c58acb4b
+	github.com/pulumi/pulumi/sdk/v3 v3.96.2
 	github.com/rancher/terraform-provider-rancher2 v1.25.1-0.20231013004807-59ba43ca3a23
 )
 
@@ -107,6 +107,7 @@ require (
 	github.com/containerd/console v1.0.4-0.20230313162750-1ae8d489ac81 // indirect
 	github.com/cyphar/filepath-securejoin v0.2.4 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
+	github.com/deckarep/golang-set/v2 v2.5.0 // indirect
 	github.com/djherbis/times v1.5.0 // indirect
 	github.com/edsrzf/mmap-go v1.1.0 // indirect
 	github.com/emicklei/go-restful/v3 v3.10.1 // indirect
@@ -237,7 +238,7 @@ require (
 	github.com/pulumi/pulumi-java/pkg v0.9.8 // indirect
 	github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.4 // indirect
 	github.com/pulumi/pulumi-yaml v1.4.3 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.95.0 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.96.2 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rancher/aks-operator v1.1.1-rc2 // indirect
