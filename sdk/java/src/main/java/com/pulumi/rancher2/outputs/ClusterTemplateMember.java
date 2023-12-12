@@ -86,11 +86,11 @@ public final class ClusterTemplateMember {
             return this;
         }
         public ClusterTemplateMember build() {
-            final var o = new ClusterTemplateMember();
-            o.accessType = accessType;
-            o.groupPrincipalId = groupPrincipalId;
-            o.userPrincipalId = userPrincipalId;
-            return o;
+            final var _resultValue = new ClusterTemplateMember();
+            _resultValue.accessType = accessType;
+            _resultValue.groupPrincipalId = groupPrincipalId;
+            _resultValue.userPrincipalId = userPrincipalId;
+            return _resultValue;
         }
     }
 }

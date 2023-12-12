@@ -98,14 +98,14 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServi
             return this;
         }
         public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServices build() {
-            final var o = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServices();
-            o.etcd = etcd;
-            o.kubeApi = kubeApi;
-            o.kubeController = kubeController;
-            o.kubelet = kubelet;
-            o.kubeproxy = kubeproxy;
-            o.scheduler = scheduler;
-            return o;
+            final var _resultValue = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServices();
+            _resultValue.etcd = etcd;
+            _resultValue.kubeApi = kubeApi;
+            _resultValue.kubeController = kubeController;
+            _resultValue.kubelet = kubelet;
+            _resultValue.kubeproxy = kubeproxy;
+            _resultValue.scheduler = scheduler;
+            return _resultValue;
         }
     }
 }

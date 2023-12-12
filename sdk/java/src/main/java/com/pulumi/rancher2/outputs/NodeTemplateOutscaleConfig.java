@@ -249,19 +249,19 @@ public final class NodeTemplateOutscaleConfig {
             return this;
         }
         public NodeTemplateOutscaleConfig build() {
-            final var o = new NodeTemplateOutscaleConfig();
-            o.accessKey = accessKey;
-            o.extraTagsAlls = extraTagsAlls;
-            o.extraTagsInstances = extraTagsInstances;
-            o.instanceType = instanceType;
-            o.region = region;
-            o.rootDiskIops = rootDiskIops;
-            o.rootDiskSize = rootDiskSize;
-            o.rootDiskType = rootDiskType;
-            o.secretKey = secretKey;
-            o.securityGroupIds = securityGroupIds;
-            o.sourceOmi = sourceOmi;
-            return o;
+            final var _resultValue = new NodeTemplateOutscaleConfig();
+            _resultValue.accessKey = accessKey;
+            _resultValue.extraTagsAlls = extraTagsAlls;
+            _resultValue.extraTagsInstances = extraTagsInstances;
+            _resultValue.instanceType = instanceType;
+            _resultValue.region = region;
+            _resultValue.rootDiskIops = rootDiskIops;
+            _resultValue.rootDiskSize = rootDiskSize;
+            _resultValue.rootDiskType = rootDiskType;
+            _resultValue.secretKey = secretKey;
+            _resultValue.securityGroupIds = securityGroupIds;
+            _resultValue.sourceOmi = sourceOmi;
+            return _resultValue;
         }
     }
 }

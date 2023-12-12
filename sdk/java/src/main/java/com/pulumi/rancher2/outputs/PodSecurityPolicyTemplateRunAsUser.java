@@ -71,10 +71,10 @@ public final class PodSecurityPolicyTemplateRunAsUser {
             return this;
         }
         public PodSecurityPolicyTemplateRunAsUser build() {
-            final var o = new PodSecurityPolicyTemplateRunAsUser();
-            o.ranges = ranges;
-            o.rule = rule;
-            return o;
+            final var _resultValue = new PodSecurityPolicyTemplateRunAsUser();
+            _resultValue.ranges = ranges;
+            _resultValue.rule = rule;
+            return _resultValue;
         }
     }
 }

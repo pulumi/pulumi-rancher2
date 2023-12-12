@@ -106,12 +106,12 @@ public final class ClusterTemplateTemplateRevisionQuestion {
             return this;
         }
         public ClusterTemplateTemplateRevisionQuestion build() {
-            final var o = new ClusterTemplateTemplateRevisionQuestion();
-            o.default_ = default_;
-            o.required = required;
-            o.type = type;
-            o.variable = variable;
-            return o;
+            final var _resultValue = new ClusterTemplateTemplateRevisionQuestion();
+            _resultValue.default_ = default_;
+            _resultValue.required = required;
+            _resultValue.type = type;
+            _resultValue.variable = variable;
+            return _resultValue;
         }
     }
 }

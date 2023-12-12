@@ -87,11 +87,11 @@ public final class GlobalDnsProviderCloudflareConfig {
             return this;
         }
         public GlobalDnsProviderCloudflareConfig build() {
-            final var o = new GlobalDnsProviderCloudflareConfig();
-            o.apiEmail = apiEmail;
-            o.apiKey = apiKey;
-            o.proxySetting = proxySetting;
-            return o;
+            final var _resultValue = new GlobalDnsProviderCloudflareConfig();
+            _resultValue.apiEmail = apiEmail;
+            _resultValue.apiKey = apiKey;
+            _resultValue.proxySetting = proxySetting;
+            return _resultValue;
         }
     }
 }

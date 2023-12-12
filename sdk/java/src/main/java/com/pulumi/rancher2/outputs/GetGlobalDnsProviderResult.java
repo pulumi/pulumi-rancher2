@@ -163,17 +163,17 @@ public final class GetGlobalDnsProviderResult {
             return this;
         }
         public GetGlobalDnsProviderResult build() {
-            final var o = new GetGlobalDnsProviderResult();
-            o.alidnsConfig = alidnsConfig;
-            o.annotations = annotations;
-            o.cloudflareConfig = cloudflareConfig;
-            o.dnsProvider = dnsProvider;
-            o.id = id;
-            o.labels = labels;
-            o.name = name;
-            o.rootDomain = rootDomain;
-            o.route53Config = route53Config;
-            return o;
+            final var _resultValue = new GetGlobalDnsProviderResult();
+            _resultValue.alidnsConfig = alidnsConfig;
+            _resultValue.annotations = annotations;
+            _resultValue.cloudflareConfig = cloudflareConfig;
+            _resultValue.dnsProvider = dnsProvider;
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.name = name;
+            _resultValue.rootDomain = rootDomain;
+            _resultValue.route53Config = route53Config;
+            return _resultValue;
         }
     }
 }

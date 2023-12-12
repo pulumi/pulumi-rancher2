@@ -125,13 +125,13 @@ public final class ClusterAlertRuleMetricRule {
             return this;
         }
         public ClusterAlertRuleMetricRule build() {
-            final var o = new ClusterAlertRuleMetricRule();
-            o.comparison = comparison;
-            o.description = description;
-            o.duration = duration;
-            o.expression = expression;
-            o.thresholdValue = thresholdValue;
-            return o;
+            final var _resultValue = new ClusterAlertRuleMetricRule();
+            _resultValue.comparison = comparison;
+            _resultValue.description = description;
+            _resultValue.duration = duration;
+            _resultValue.expression = expression;
+            _resultValue.thresholdValue = thresholdValue;
+            return _resultValue;
         }
     }
 }

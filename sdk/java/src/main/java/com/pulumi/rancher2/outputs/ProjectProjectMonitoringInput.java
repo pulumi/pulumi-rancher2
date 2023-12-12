@@ -69,10 +69,10 @@ public final class ProjectProjectMonitoringInput {
             return this;
         }
         public ProjectProjectMonitoringInput build() {
-            final var o = new ProjectProjectMonitoringInput();
-            o.answers = answers;
-            o.version = version;
-            return o;
+            final var _resultValue = new ProjectProjectMonitoringInput();
+            _resultValue.answers = answers;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

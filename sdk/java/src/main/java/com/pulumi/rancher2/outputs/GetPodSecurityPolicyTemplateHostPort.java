@@ -49,10 +49,10 @@ public final class GetPodSecurityPolicyTemplateHostPort {
             return this;
         }
         public GetPodSecurityPolicyTemplateHostPort build() {
-            final var o = new GetPodSecurityPolicyTemplateHostPort();
-            o.max = max;
-            o.min = min;
-            return o;
+            final var _resultValue = new GetPodSecurityPolicyTemplateHostPort();
+            _resultValue.max = max;
+            _resultValue.min = min;
+            return _resultValue;
         }
     }
 }

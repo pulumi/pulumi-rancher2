@@ -112,10 +112,10 @@ public final class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig {
             return this;
         }
         public ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig build() {
-            final var o = new ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig();
-            o.customConfig = customConfig;
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig();
+            _resultValue.customConfig = customConfig;
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

@@ -73,12 +73,12 @@ public final class GetNodePoolNodeTaint {
             return this;
         }
         public GetNodePoolNodeTaint build() {
-            final var o = new GetNodePoolNodeTaint();
-            o.effect = effect;
-            o.key = key;
-            o.timeAdded = timeAdded;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetNodePoolNodeTaint();
+            _resultValue.effect = effect;
+            _resultValue.key = key;
+            _resultValue.timeAdded = timeAdded;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

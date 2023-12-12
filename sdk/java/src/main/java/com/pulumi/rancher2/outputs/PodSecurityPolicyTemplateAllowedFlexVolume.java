@@ -38,9 +38,9 @@ public final class PodSecurityPolicyTemplateAllowedFlexVolume {
             return this;
         }
         public PodSecurityPolicyTemplateAllowedFlexVolume build() {
-            final var o = new PodSecurityPolicyTemplateAllowedFlexVolume();
-            o.driver = driver;
-            return o;
+            final var _resultValue = new PodSecurityPolicyTemplateAllowedFlexVolume();
+            _resultValue.driver = driver;
+            return _resultValue;
         }
     }
 }

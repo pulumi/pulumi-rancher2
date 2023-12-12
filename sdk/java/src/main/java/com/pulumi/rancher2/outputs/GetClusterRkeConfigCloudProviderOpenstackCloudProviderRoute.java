@@ -38,9 +38,9 @@ public final class GetClusterRkeConfigCloudProviderOpenstackCloudProviderRoute {
             return this;
         }
         public GetClusterRkeConfigCloudProviderOpenstackCloudProviderRoute build() {
-            final var o = new GetClusterRkeConfigCloudProviderOpenstackCloudProviderRoute();
-            o.routerId = routerId;
-            return o;
+            final var _resultValue = new GetClusterRkeConfigCloudProviderOpenstackCloudProviderRoute();
+            _resultValue.routerId = routerId;
+            return _resultValue;
         }
     }
 }

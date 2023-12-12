@@ -96,14 +96,14 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigBasti
             return this;
         }
         public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHost build() {
-            final var o = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHost();
-            o.address = address;
-            o.port = port;
-            o.sshAgentAuth = sshAgentAuth;
-            o.sshKey = sshKey;
-            o.sshKeyPath = sshKeyPath;
-            o.user = user;
-            return o;
+            final var _resultValue = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHost();
+            _resultValue.address = address;
+            _resultValue.port = port;
+            _resultValue.sshAgentAuth = sshAgentAuth;
+            _resultValue.sshKey = sshKey;
+            _resultValue.sshKeyPath = sshKeyPath;
+            _resultValue.user = user;
+            return _resultValue;
         }
     }
 }

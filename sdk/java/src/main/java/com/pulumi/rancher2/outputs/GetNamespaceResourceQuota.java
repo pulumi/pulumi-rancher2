@@ -38,9 +38,9 @@ public final class GetNamespaceResourceQuota {
             return this;
         }
         public GetNamespaceResourceQuota build() {
-            final var o = new GetNamespaceResourceQuota();
-            o.limit = limit;
-            return o;
+            final var _resultValue = new GetNamespaceResourceQuota();
+            _resultValue.limit = limit;
+            return _resultValue;
         }
     }
 }

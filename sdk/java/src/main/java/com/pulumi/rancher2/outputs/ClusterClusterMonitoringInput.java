@@ -69,10 +69,10 @@ public final class ClusterClusterMonitoringInput {
             return this;
         }
         public ClusterClusterMonitoringInput build() {
-            final var o = new ClusterClusterMonitoringInput();
-            o.answers = answers;
-            o.version = version;
-            return o;
+            final var _resultValue = new ClusterClusterMonitoringInput();
+            _resultValue.answers = answers;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

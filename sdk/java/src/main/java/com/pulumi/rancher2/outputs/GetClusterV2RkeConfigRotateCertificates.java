@@ -55,10 +55,10 @@ public final class GetClusterV2RkeConfigRotateCertificates {
             return services(List.of(services));
         }
         public GetClusterV2RkeConfigRotateCertificates build() {
-            final var o = new GetClusterV2RkeConfigRotateCertificates();
-            o.generation = generation;
-            o.services = services;
-            return o;
+            final var _resultValue = new GetClusterV2RkeConfigRotateCertificates();
+            _resultValue.generation = generation;
+            _resultValue.services = services;
+            return _resultValue;
         }
     }
 }

@@ -105,12 +105,12 @@ public final class NamespaceContainerResourceLimit {
             return this;
         }
         public NamespaceContainerResourceLimit build() {
-            final var o = new NamespaceContainerResourceLimit();
-            o.limitsCpu = limitsCpu;
-            o.limitsMemory = limitsMemory;
-            o.requestsCpu = requestsCpu;
-            o.requestsMemory = requestsMemory;
-            return o;
+            final var _resultValue = new NamespaceContainerResourceLimit();
+            _resultValue.limitsCpu = limitsCpu;
+            _resultValue.limitsMemory = limitsMemory;
+            _resultValue.requestsCpu = requestsCpu;
+            _resultValue.requestsMemory = requestsMemory;
+            return _resultValue;
         }
     }
 }

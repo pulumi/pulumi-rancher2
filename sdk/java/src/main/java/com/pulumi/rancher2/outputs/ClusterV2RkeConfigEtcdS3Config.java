@@ -163,15 +163,15 @@ public final class ClusterV2RkeConfigEtcdS3Config {
             return this;
         }
         public ClusterV2RkeConfigEtcdS3Config build() {
-            final var o = new ClusterV2RkeConfigEtcdS3Config();
-            o.bucket = bucket;
-            o.cloudCredentialName = cloudCredentialName;
-            o.endpoint = endpoint;
-            o.endpointCa = endpointCa;
-            o.folder = folder;
-            o.region = region;
-            o.skipSslVerify = skipSslVerify;
-            return o;
+            final var _resultValue = new ClusterV2RkeConfigEtcdS3Config();
+            _resultValue.bucket = bucket;
+            _resultValue.cloudCredentialName = cloudCredentialName;
+            _resultValue.endpoint = endpoint;
+            _resultValue.endpointCa = endpointCa;
+            _resultValue.folder = folder;
+            _resultValue.region = region;
+            _resultValue.skipSslVerify = skipSslVerify;
+            return _resultValue;
         }
     }
 }

@@ -74,12 +74,12 @@ public final class GetClusterTemplateTemplateRevisionQuestion {
             return this;
         }
         public GetClusterTemplateTemplateRevisionQuestion build() {
-            final var o = new GetClusterTemplateTemplateRevisionQuestion();
-            o.default_ = default_;
-            o.required = required;
-            o.type = type;
-            o.variable = variable;
-            return o;
+            final var _resultValue = new GetClusterTemplateTemplateRevisionQuestion();
+            _resultValue.default_ = default_;
+            _resultValue.required = required;
+            _resultValue.type = type;
+            _resultValue.variable = variable;
+            return _resultValue;
         }
     }
 }

@@ -57,10 +57,10 @@ public final class GetClusterV2AgentEnvVar {
             return this;
         }
         public GetClusterV2AgentEnvVar build() {
-            final var o = new GetClusterV2AgentEnvVar();
-            o.name = name;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetClusterV2AgentEnvVar();
+            _resultValue.name = name;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

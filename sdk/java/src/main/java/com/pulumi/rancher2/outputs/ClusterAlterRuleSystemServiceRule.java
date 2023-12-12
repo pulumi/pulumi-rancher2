@@ -40,9 +40,9 @@ public final class ClusterAlterRuleSystemServiceRule {
             return this;
         }
         public ClusterAlterRuleSystemServiceRule build() {
-            final var o = new ClusterAlterRuleSystemServiceRule();
-            o.condition = condition;
-            return o;
+            final var _resultValue = new ClusterAlterRuleSystemServiceRule();
+            _resultValue.condition = condition;
+            return _resultValue;
         }
     }
 }

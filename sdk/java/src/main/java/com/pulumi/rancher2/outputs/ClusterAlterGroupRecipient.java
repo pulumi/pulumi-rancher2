@@ -106,12 +106,12 @@ public final class ClusterAlterGroupRecipient {
             return this;
         }
         public ClusterAlterGroupRecipient build() {
-            final var o = new ClusterAlterGroupRecipient();
-            o.defaultRecipient = defaultRecipient;
-            o.notifierId = notifierId;
-            o.notifierType = notifierType;
-            o.recipient = recipient;
-            return o;
+            final var _resultValue = new ClusterAlterGroupRecipient();
+            _resultValue.defaultRecipient = defaultRecipient;
+            _resultValue.notifierId = notifierId;
+            _resultValue.notifierType = notifierType;
+            _resultValue.recipient = recipient;
+            return _resultValue;
         }
     }
 }

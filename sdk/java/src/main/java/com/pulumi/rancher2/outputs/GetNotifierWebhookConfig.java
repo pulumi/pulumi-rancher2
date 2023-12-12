@@ -51,10 +51,10 @@ public final class GetNotifierWebhookConfig {
             return this;
         }
         public GetNotifierWebhookConfig build() {
-            final var o = new GetNotifierWebhookConfig();
-            o.proxyUrl = proxyUrl;
-            o.url = url;
-            return o;
+            final var _resultValue = new GetNotifierWebhookConfig();
+            _resultValue.proxyUrl = proxyUrl;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

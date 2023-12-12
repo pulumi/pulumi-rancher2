@@ -225,19 +225,19 @@ public final class GetProjectResult {
             return this;
         }
         public GetProjectResult build() {
-            final var o = new GetProjectResult();
-            o.annotations = annotations;
-            o.clusterId = clusterId;
-            o.containerResourceLimit = containerResourceLimit;
-            o.description = description;
-            o.enableProjectMonitoring = enableProjectMonitoring;
-            o.id = id;
-            o.labels = labels;
-            o.name = name;
-            o.podSecurityPolicyTemplateId = podSecurityPolicyTemplateId;
-            o.resourceQuota = resourceQuota;
-            o.uuid = uuid;
-            return o;
+            final var _resultValue = new GetProjectResult();
+            _resultValue.annotations = annotations;
+            _resultValue.clusterId = clusterId;
+            _resultValue.containerResourceLimit = containerResourceLimit;
+            _resultValue.description = description;
+            _resultValue.enableProjectMonitoring = enableProjectMonitoring;
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.name = name;
+            _resultValue.podSecurityPolicyTemplateId = podSecurityPolicyTemplateId;
+            _resultValue.resourceQuota = resourceQuota;
+            _resultValue.uuid = uuid;
+            return _resultValue;
         }
     }
 }

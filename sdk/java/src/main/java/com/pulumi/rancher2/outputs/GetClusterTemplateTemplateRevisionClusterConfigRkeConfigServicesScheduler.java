@@ -81,12 +81,12 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServi
             return this;
         }
         public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesScheduler build() {
-            final var o = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesScheduler();
-            o.extraArgs = extraArgs;
-            o.extraBinds = extraBinds;
-            o.extraEnvs = extraEnvs;
-            o.image = image;
-            return o;
+            final var _resultValue = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesScheduler();
+            _resultValue.extraArgs = extraArgs;
+            _resultValue.extraBinds = extraBinds;
+            _resultValue.extraEnvs = extraEnvs;
+            _resultValue.image = image;
+            return _resultValue;
         }
     }
 }

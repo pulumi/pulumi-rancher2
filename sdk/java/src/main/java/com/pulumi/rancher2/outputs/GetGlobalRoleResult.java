@@ -179,16 +179,16 @@ public final class GetGlobalRoleResult {
             return rules(List.of(rules));
         }
         public GetGlobalRoleResult build() {
-            final var o = new GetGlobalRoleResult();
-            o.annotations = annotations;
-            o.builtin = builtin;
-            o.description = description;
-            o.id = id;
-            o.labels = labels;
-            o.name = name;
-            o.newUserDefault = newUserDefault;
-            o.rules = rules;
-            return o;
+            final var _resultValue = new GetGlobalRoleResult();
+            _resultValue.annotations = annotations;
+            _resultValue.builtin = builtin;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.name = name;
+            _resultValue.newUserDefault = newUserDefault;
+            _resultValue.rules = rules;
+            return _resultValue;
         }
     }
 }

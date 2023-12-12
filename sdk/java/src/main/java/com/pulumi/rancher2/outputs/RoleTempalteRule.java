@@ -139,13 +139,13 @@ public final class RoleTempalteRule {
             return verbs(List.of(verbs));
         }
         public RoleTempalteRule build() {
-            final var o = new RoleTempalteRule();
-            o.apiGroups = apiGroups;
-            o.nonResourceUrls = nonResourceUrls;
-            o.resourceNames = resourceNames;
-            o.resources = resources;
-            o.verbs = verbs;
-            return o;
+            final var _resultValue = new RoleTempalteRule();
+            _resultValue.apiGroups = apiGroups;
+            _resultValue.nonResourceUrls = nonResourceUrls;
+            _resultValue.resourceNames = resourceNames;
+            _resultValue.resources = resources;
+            _resultValue.verbs = verbs;
+            return _resultValue;
         }
     }
 }

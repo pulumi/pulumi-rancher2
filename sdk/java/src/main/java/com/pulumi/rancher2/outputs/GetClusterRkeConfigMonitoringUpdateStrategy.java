@@ -52,10 +52,10 @@ public final class GetClusterRkeConfigMonitoringUpdateStrategy {
             return this;
         }
         public GetClusterRkeConfigMonitoringUpdateStrategy build() {
-            final var o = new GetClusterRkeConfigMonitoringUpdateStrategy();
-            o.rollingUpdate = rollingUpdate;
-            o.strategy = strategy;
-            return o;
+            final var _resultValue = new GetClusterRkeConfigMonitoringUpdateStrategy();
+            _resultValue.rollingUpdate = rollingUpdate;
+            _resultValue.strategy = strategy;
+            return _resultValue;
         }
     }
 }

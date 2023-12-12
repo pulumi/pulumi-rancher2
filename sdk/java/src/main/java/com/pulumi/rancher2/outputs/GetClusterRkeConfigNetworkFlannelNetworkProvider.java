@@ -38,9 +38,9 @@ public final class GetClusterRkeConfigNetworkFlannelNetworkProvider {
             return this;
         }
         public GetClusterRkeConfigNetworkFlannelNetworkProvider build() {
-            final var o = new GetClusterRkeConfigNetworkFlannelNetworkProvider();
-            o.iface = iface;
-            return o;
+            final var _resultValue = new GetClusterRkeConfigNetworkFlannelNetworkProvider();
+            _resultValue.iface = iface;
+            return _resultValue;
         }
     }
 }

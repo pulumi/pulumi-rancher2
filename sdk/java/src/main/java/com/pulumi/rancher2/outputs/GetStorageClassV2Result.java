@@ -246,20 +246,20 @@ public final class GetStorageClassV2Result {
             return this;
         }
         public GetStorageClassV2Result build() {
-            final var o = new GetStorageClassV2Result();
-            o.allowVolumeExpansion = allowVolumeExpansion;
-            o.annotations = annotations;
-            o.clusterId = clusterId;
-            o.id = id;
-            o.k8sProvisioner = k8sProvisioner;
-            o.labels = labels;
-            o.mountOptions = mountOptions;
-            o.name = name;
-            o.parameters = parameters;
-            o.reclaimPolicy = reclaimPolicy;
-            o.resourceVersion = resourceVersion;
-            o.volumeBindingMode = volumeBindingMode;
-            return o;
+            final var _resultValue = new GetStorageClassV2Result();
+            _resultValue.allowVolumeExpansion = allowVolumeExpansion;
+            _resultValue.annotations = annotations;
+            _resultValue.clusterId = clusterId;
+            _resultValue.id = id;
+            _resultValue.k8sProvisioner = k8sProvisioner;
+            _resultValue.labels = labels;
+            _resultValue.mountOptions = mountOptions;
+            _resultValue.name = name;
+            _resultValue.parameters = parameters;
+            _resultValue.reclaimPolicy = reclaimPolicy;
+            _resultValue.resourceVersion = resourceVersion;
+            _resultValue.volumeBindingMode = volumeBindingMode;
+            return _resultValue;
         }
     }
 }

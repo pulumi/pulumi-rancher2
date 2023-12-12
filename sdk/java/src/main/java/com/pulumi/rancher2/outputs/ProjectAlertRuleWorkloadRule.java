@@ -89,11 +89,11 @@ public final class ProjectAlertRuleWorkloadRule {
             return this;
         }
         public ProjectAlertRuleWorkloadRule build() {
-            final var o = new ProjectAlertRuleWorkloadRule();
-            o.availablePercentage = availablePercentage;
-            o.selector = selector;
-            o.workloadId = workloadId;
-            return o;
+            final var _resultValue = new ProjectAlertRuleWorkloadRule();
+            _resultValue.availablePercentage = availablePercentage;
+            _resultValue.selector = selector;
+            _resultValue.workloadId = workloadId;
+            return _resultValue;
         }
     }
 }

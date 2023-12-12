@@ -49,10 +49,10 @@ public final class GetPodSecurityPolicyTemplateRunAsUserRange {
             return this;
         }
         public GetPodSecurityPolicyTemplateRunAsUserRange build() {
-            final var o = new GetPodSecurityPolicyTemplateRunAsUserRange();
-            o.max = max;
-            o.min = min;
-            return o;
+            final var _resultValue = new GetPodSecurityPolicyTemplateRunAsUserRange();
+            _resultValue.max = max;
+            _resultValue.min = min;
+            return _resultValue;
         }
     }
 }

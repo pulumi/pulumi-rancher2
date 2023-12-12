@@ -106,12 +106,12 @@ public final class ClusterRke2ConfigUpgradeStrategy {
             return this;
         }
         public ClusterRke2ConfigUpgradeStrategy build() {
-            final var o = new ClusterRke2ConfigUpgradeStrategy();
-            o.drainServerNodes = drainServerNodes;
-            o.drainWorkerNodes = drainWorkerNodes;
-            o.serverConcurrency = serverConcurrency;
-            o.workerConcurrency = workerConcurrency;
-            return o;
+            final var _resultValue = new ClusterRke2ConfigUpgradeStrategy();
+            _resultValue.drainServerNodes = drainServerNodes;
+            _resultValue.drainWorkerNodes = drainWorkerNodes;
+            _resultValue.serverConcurrency = serverConcurrency;
+            _resultValue.workerConcurrency = workerConcurrency;
+            return _resultValue;
         }
     }
 }

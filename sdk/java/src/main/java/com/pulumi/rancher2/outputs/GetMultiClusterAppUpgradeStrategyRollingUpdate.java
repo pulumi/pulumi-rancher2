@@ -51,10 +51,10 @@ public final class GetMultiClusterAppUpgradeStrategyRollingUpdate {
             return this;
         }
         public GetMultiClusterAppUpgradeStrategyRollingUpdate build() {
-            final var o = new GetMultiClusterAppUpgradeStrategyRollingUpdate();
-            o.batchSize = batchSize;
-            o.interval = interval;
-            return o;
+            final var _resultValue = new GetMultiClusterAppUpgradeStrategyRollingUpdate();
+            _resultValue.batchSize = batchSize;
+            _resultValue.interval = interval;
+            return _resultValue;
         }
     }
 }

@@ -93,14 +93,14 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloud
             return this;
         }
         public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverride build() {
-            final var o = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverride();
-            o.region = region;
-            o.service = service;
-            o.signingMethod = signingMethod;
-            o.signingName = signingName;
-            o.signingRegion = signingRegion;
-            o.url = url;
-            return o;
+            final var _resultValue = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverride();
+            _resultValue.region = region;
+            _resultValue.service = service;
+            _resultValue.signingMethod = signingMethod;
+            _resultValue.signingName = signingName;
+            _resultValue.signingRegion = signingRegion;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

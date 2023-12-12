@@ -63,11 +63,11 @@ public final class GetClusterClusterAuthEndpoint {
             return this;
         }
         public GetClusterClusterAuthEndpoint build() {
-            final var o = new GetClusterClusterAuthEndpoint();
-            o.caCerts = caCerts;
-            o.enabled = enabled;
-            o.fqdn = fqdn;
-            return o;
+            final var _resultValue = new GetClusterClusterAuthEndpoint();
+            _resultValue.caCerts = caCerts;
+            _resultValue.enabled = enabled;
+            _resultValue.fqdn = fqdn;
+            return _resultValue;
         }
     }
 }

@@ -69,10 +69,10 @@ public final class ClusterRkeConfigAuthorization {
             return this;
         }
         public ClusterRkeConfigAuthorization build() {
-            final var o = new ClusterRkeConfigAuthorization();
-            o.mode = mode;
-            o.options = options;
-            return o;
+            final var _resultValue = new ClusterRkeConfigAuthorization();
+            _resultValue.mode = mode;
+            _resultValue.options = options;
+            return _resultValue;
         }
     }
 }

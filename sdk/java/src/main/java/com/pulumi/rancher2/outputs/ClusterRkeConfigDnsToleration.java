@@ -125,13 +125,13 @@ public final class ClusterRkeConfigDnsToleration {
             return this;
         }
         public ClusterRkeConfigDnsToleration build() {
-            final var o = new ClusterRkeConfigDnsToleration();
-            o.effect = effect;
-            o.key = key;
-            o.operator = operator;
-            o.seconds = seconds;
-            o.value = value;
-            return o;
+            final var _resultValue = new ClusterRkeConfigDnsToleration();
+            _resultValue.effect = effect;
+            _resultValue.key = key;
+            _resultValue.operator = operator;
+            _resultValue.seconds = seconds;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

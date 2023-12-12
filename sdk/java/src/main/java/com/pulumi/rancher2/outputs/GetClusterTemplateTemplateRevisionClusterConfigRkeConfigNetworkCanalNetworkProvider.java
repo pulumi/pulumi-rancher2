@@ -38,9 +38,9 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwo
             return this;
         }
         public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider build() {
-            final var o = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider();
-            o.iface = iface;
-            return o;
+            final var _resultValue = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider();
+            _resultValue.iface = iface;
+            return _resultValue;
         }
     }
 }

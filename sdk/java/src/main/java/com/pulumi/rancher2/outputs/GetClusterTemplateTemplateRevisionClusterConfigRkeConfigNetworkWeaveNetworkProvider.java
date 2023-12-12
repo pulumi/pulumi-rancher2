@@ -38,9 +38,9 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwo
             return this;
         }
         public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider build() {
-            final var o = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider();
-            o.password = password;
-            return o;
+            final var _resultValue = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider();
+            _resultValue.password = password;
+            return _resultValue;
         }
     }
 }

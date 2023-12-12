@@ -53,10 +53,10 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodel
             return this;
         }
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal build() {
-            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal();
-            o.ipAddress = ipAddress;
-            o.nodeSelector = nodeSelector;
-            return o;
+            final var _resultValue = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal();
+            _resultValue.ipAddress = ipAddress;
+            _resultValue.nodeSelector = nodeSelector;
+            return _resultValue;
         }
     }
 }

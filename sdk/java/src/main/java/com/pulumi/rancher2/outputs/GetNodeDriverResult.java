@@ -246,20 +246,20 @@ public final class GetNodeDriverResult {
             return whitelistDomains(List.of(whitelistDomains));
         }
         public GetNodeDriverResult build() {
-            final var o = new GetNodeDriverResult();
-            o.active = active;
-            o.annotations = annotations;
-            o.builtin = builtin;
-            o.checksum = checksum;
-            o.description = description;
-            o.externalId = externalId;
-            o.id = id;
-            o.labels = labels;
-            o.name = name;
-            o.uiUrl = uiUrl;
-            o.url = url;
-            o.whitelistDomains = whitelistDomains;
-            return o;
+            final var _resultValue = new GetNodeDriverResult();
+            _resultValue.active = active;
+            _resultValue.annotations = annotations;
+            _resultValue.builtin = builtin;
+            _resultValue.checksum = checksum;
+            _resultValue.description = description;
+            _resultValue.externalId = externalId;
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.name = name;
+            _resultValue.uiUrl = uiUrl;
+            _resultValue.url = url;
+            _resultValue.whitelistDomains = whitelistDomains;
+            return _resultValue;
         }
     }
 }

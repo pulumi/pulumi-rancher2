@@ -69,10 +69,10 @@ public final class ClusterRkeConfigDnsNodelocal {
             return this;
         }
         public ClusterRkeConfigDnsNodelocal build() {
-            final var o = new ClusterRkeConfigDnsNodelocal();
-            o.ipAddress = ipAddress;
-            o.nodeSelector = nodeSelector;
-            return o;
+            final var _resultValue = new ClusterRkeConfigDnsNodelocal();
+            _resultValue.ipAddress = ipAddress;
+            _resultValue.nodeSelector = nodeSelector;
+            return _resultValue;
         }
     }
 }

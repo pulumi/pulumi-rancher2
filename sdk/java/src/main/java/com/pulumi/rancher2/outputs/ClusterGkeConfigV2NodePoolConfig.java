@@ -234,18 +234,18 @@ public final class ClusterGkeConfigV2NodePoolConfig {
             return taints(List.of(taints));
         }
         public ClusterGkeConfigV2NodePoolConfig build() {
-            final var o = new ClusterGkeConfigV2NodePoolConfig();
-            o.diskSizeGb = diskSizeGb;
-            o.diskType = diskType;
-            o.imageType = imageType;
-            o.labels = labels;
-            o.localSsdCount = localSsdCount;
-            o.machineType = machineType;
-            o.oauthScopes = oauthScopes;
-            o.preemptible = preemptible;
-            o.tags = tags;
-            o.taints = taints;
-            return o;
+            final var _resultValue = new ClusterGkeConfigV2NodePoolConfig();
+            _resultValue.diskSizeGb = diskSizeGb;
+            _resultValue.diskType = diskType;
+            _resultValue.imageType = imageType;
+            _resultValue.labels = labels;
+            _resultValue.localSsdCount = localSsdCount;
+            _resultValue.machineType = machineType;
+            _resultValue.oauthScopes = oauthScopes;
+            _resultValue.preemptible = preemptible;
+            _resultValue.tags = tags;
+            _resultValue.taints = taints;
+            return _resultValue;
         }
     }
 }

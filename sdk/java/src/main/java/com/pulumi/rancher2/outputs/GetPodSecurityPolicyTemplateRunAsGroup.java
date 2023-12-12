@@ -55,10 +55,10 @@ public final class GetPodSecurityPolicyTemplateRunAsGroup {
             return this;
         }
         public GetPodSecurityPolicyTemplateRunAsGroup build() {
-            final var o = new GetPodSecurityPolicyTemplateRunAsGroup();
-            o.ranges = ranges;
-            o.rule = rule;
-            return o;
+            final var _resultValue = new GetPodSecurityPolicyTemplateRunAsGroup();
+            _resultValue.ranges = ranges;
+            _resultValue.rule = rule;
+            return _resultValue;
         }
     }
 }

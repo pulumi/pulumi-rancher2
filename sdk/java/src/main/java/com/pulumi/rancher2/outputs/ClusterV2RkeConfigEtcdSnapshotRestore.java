@@ -87,11 +87,11 @@ public final class ClusterV2RkeConfigEtcdSnapshotRestore {
             return this;
         }
         public ClusterV2RkeConfigEtcdSnapshotRestore build() {
-            final var o = new ClusterV2RkeConfigEtcdSnapshotRestore();
-            o.generation = generation;
-            o.name = name;
-            o.restoreRkeConfig = restoreRkeConfig;
-            return o;
+            final var _resultValue = new ClusterV2RkeConfigEtcdSnapshotRestore();
+            _resultValue.generation = generation;
+            _resultValue.name = name;
+            _resultValue.restoreRkeConfig = restoreRkeConfig;
+            return _resultValue;
         }
     }
 }

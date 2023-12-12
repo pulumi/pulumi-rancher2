@@ -240,19 +240,19 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalanc
             return this;
         }
         public ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer build() {
-            final var o = new ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer();
-            o.createMonitor = createMonitor;
-            o.floatingNetworkId = floatingNetworkId;
-            o.lbMethod = lbMethod;
-            o.lbProvider = lbProvider;
-            o.lbVersion = lbVersion;
-            o.manageSecurityGroups = manageSecurityGroups;
-            o.monitorDelay = monitorDelay;
-            o.monitorMaxRetries = monitorMaxRetries;
-            o.monitorTimeout = monitorTimeout;
-            o.subnetId = subnetId;
-            o.useOctavia = useOctavia;
-            return o;
+            final var _resultValue = new ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer();
+            _resultValue.createMonitor = createMonitor;
+            _resultValue.floatingNetworkId = floatingNetworkId;
+            _resultValue.lbMethod = lbMethod;
+            _resultValue.lbProvider = lbProvider;
+            _resultValue.lbVersion = lbVersion;
+            _resultValue.manageSecurityGroups = manageSecurityGroups;
+            _resultValue.monitorDelay = monitorDelay;
+            _resultValue.monitorMaxRetries = monitorMaxRetries;
+            _resultValue.monitorTimeout = monitorTimeout;
+            _resultValue.subnetId = subnetId;
+            _resultValue.useOctavia = useOctavia;
+            return _resultValue;
         }
     }
 }

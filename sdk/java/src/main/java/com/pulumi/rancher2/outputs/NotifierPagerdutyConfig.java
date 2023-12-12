@@ -67,10 +67,10 @@ public final class NotifierPagerdutyConfig {
             return this;
         }
         public NotifierPagerdutyConfig build() {
-            final var o = new NotifierPagerdutyConfig();
-            o.proxyUrl = proxyUrl;
-            o.serviceKey = serviceKey;
-            return o;
+            final var _resultValue = new NotifierPagerdutyConfig();
+            _resultValue.proxyUrl = proxyUrl;
+            _resultValue.serviceKey = serviceKey;
+            return _resultValue;
         }
     }
 }

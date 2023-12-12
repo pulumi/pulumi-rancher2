@@ -167,16 +167,16 @@ public final class GetNamespaceResult {
             return this;
         }
         public GetNamespaceResult build() {
-            final var o = new GetNamespaceResult();
-            o.annotations = annotations;
-            o.containerResourceLimit = containerResourceLimit;
-            o.description = description;
-            o.id = id;
-            o.labels = labels;
-            o.name = name;
-            o.projectId = projectId;
-            o.resourceQuota = resourceQuota;
-            return o;
+            final var _resultValue = new GetNamespaceResult();
+            _resultValue.annotations = annotations;
+            _resultValue.containerResourceLimit = containerResourceLimit;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.name = name;
+            _resultValue.projectId = projectId;
+            _resultValue.resourceQuota = resourceQuota;
+            return _resultValue;
         }
     }
 }

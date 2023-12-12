@@ -204,21 +204,21 @@ public final class GetClusterV2RkeConfig {
             return this;
         }
         public GetClusterV2RkeConfig build() {
-            final var o = new GetClusterV2RkeConfig();
-            o.additionalManifest = additionalManifest;
-            o.chartValues = chartValues;
-            o.etcd = etcd;
-            o.etcdSnapshotCreate = etcdSnapshotCreate;
-            o.etcdSnapshotRestore = etcdSnapshotRestore;
-            o.localAuthEndpoint = localAuthEndpoint;
-            o.machineGlobalConfig = machineGlobalConfig;
-            o.machinePoolDefaults = machinePoolDefaults;
-            o.machinePools = machinePools;
-            o.machineSelectorConfigs = machineSelectorConfigs;
-            o.registries = registries;
-            o.rotateCertificates = rotateCertificates;
-            o.upgradeStrategy = upgradeStrategy;
-            return o;
+            final var _resultValue = new GetClusterV2RkeConfig();
+            _resultValue.additionalManifest = additionalManifest;
+            _resultValue.chartValues = chartValues;
+            _resultValue.etcd = etcd;
+            _resultValue.etcdSnapshotCreate = etcdSnapshotCreate;
+            _resultValue.etcdSnapshotRestore = etcdSnapshotRestore;
+            _resultValue.localAuthEndpoint = localAuthEndpoint;
+            _resultValue.machineGlobalConfig = machineGlobalConfig;
+            _resultValue.machinePoolDefaults = machinePoolDefaults;
+            _resultValue.machinePools = machinePools;
+            _resultValue.machineSelectorConfigs = machineSelectorConfigs;
+            _resultValue.registries = registries;
+            _resultValue.rotateCertificates = rotateCertificates;
+            _resultValue.upgradeStrategy = upgradeStrategy;
+            return _resultValue;
         }
     }
 }

@@ -85,13 +85,13 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngre
             return this;
         }
         public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressToleration build() {
-            final var o = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressToleration();
-            o.effect = effect;
-            o.key = key;
-            o.operator = operator;
-            o.seconds = seconds;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressToleration();
+            _resultValue.effect = effect;
+            _resultValue.key = key;
+            _resultValue.operator = operator;
+            _resultValue.seconds = seconds;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

@@ -67,10 +67,10 @@ public final class ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate {
             return this;
         }
         public ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate build() {
-            final var o = new ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate();
-            o.maxSurge = maxSurge;
-            o.maxUnavailable = maxUnavailable;
-            return o;
+            final var _resultValue = new ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate();
+            _resultValue.maxSurge = maxSurge;
+            _resultValue.maxUnavailable = maxUnavailable;
+            return _resultValue;
         }
     }
 }

@@ -209,17 +209,17 @@ public final class ClusterTemplateTemplateRevision {
             return questions(List.of(questions));
         }
         public ClusterTemplateTemplateRevision build() {
-            final var o = new ClusterTemplateTemplateRevision();
-            o.annotations = annotations;
-            o.clusterConfig = clusterConfig;
-            o.clusterTemplateId = clusterTemplateId;
-            o.default_ = default_;
-            o.enabled = enabled;
-            o.id = id;
-            o.labels = labels;
-            o.name = name;
-            o.questions = questions;
-            return o;
+            final var _resultValue = new ClusterTemplateTemplateRevision();
+            _resultValue.annotations = annotations;
+            _resultValue.clusterConfig = clusterConfig;
+            _resultValue.clusterTemplateId = clusterTemplateId;
+            _resultValue.default_ = default_;
+            _resultValue.enabled = enabled;
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.name = name;
+            _resultValue.questions = questions;
+            return _resultValue;
         }
     }
 }

@@ -403,37 +403,37 @@ public final class GetPodSecurityPolicyTemplateResult {
             return volumes(List.of(volumes));
         }
         public GetPodSecurityPolicyTemplateResult build() {
-            final var o = new GetPodSecurityPolicyTemplateResult();
-            o.allowPrivilegeEscalation = allowPrivilegeEscalation;
-            o.allowedCapabilities = allowedCapabilities;
-            o.allowedCsiDrivers = allowedCsiDrivers;
-            o.allowedFlexVolumes = allowedFlexVolumes;
-            o.allowedHostPaths = allowedHostPaths;
-            o.allowedProcMountTypes = allowedProcMountTypes;
-            o.allowedUnsafeSysctls = allowedUnsafeSysctls;
-            o.annotations = annotations;
-            o.defaultAddCapabilities = defaultAddCapabilities;
-            o.defaultAllowPrivilegeEscalation = defaultAllowPrivilegeEscalation;
-            o.description = description;
-            o.forbiddenSysctls = forbiddenSysctls;
-            o.fsGroup = fsGroup;
-            o.hostIpc = hostIpc;
-            o.hostNetwork = hostNetwork;
-            o.hostPid = hostPid;
-            o.hostPorts = hostPorts;
-            o.id = id;
-            o.labels = labels;
-            o.name = name;
-            o.privileged = privileged;
-            o.readOnlyRootFilesystem = readOnlyRootFilesystem;
-            o.requiredDropCapabilities = requiredDropCapabilities;
-            o.runAsGroup = runAsGroup;
-            o.runAsUser = runAsUser;
-            o.runtimeClass = runtimeClass;
-            o.seLinux = seLinux;
-            o.supplementalGroup = supplementalGroup;
-            o.volumes = volumes;
-            return o;
+            final var _resultValue = new GetPodSecurityPolicyTemplateResult();
+            _resultValue.allowPrivilegeEscalation = allowPrivilegeEscalation;
+            _resultValue.allowedCapabilities = allowedCapabilities;
+            _resultValue.allowedCsiDrivers = allowedCsiDrivers;
+            _resultValue.allowedFlexVolumes = allowedFlexVolumes;
+            _resultValue.allowedHostPaths = allowedHostPaths;
+            _resultValue.allowedProcMountTypes = allowedProcMountTypes;
+            _resultValue.allowedUnsafeSysctls = allowedUnsafeSysctls;
+            _resultValue.annotations = annotations;
+            _resultValue.defaultAddCapabilities = defaultAddCapabilities;
+            _resultValue.defaultAllowPrivilegeEscalation = defaultAllowPrivilegeEscalation;
+            _resultValue.description = description;
+            _resultValue.forbiddenSysctls = forbiddenSysctls;
+            _resultValue.fsGroup = fsGroup;
+            _resultValue.hostIpc = hostIpc;
+            _resultValue.hostNetwork = hostNetwork;
+            _resultValue.hostPid = hostPid;
+            _resultValue.hostPorts = hostPorts;
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.name = name;
+            _resultValue.privileged = privileged;
+            _resultValue.readOnlyRootFilesystem = readOnlyRootFilesystem;
+            _resultValue.requiredDropCapabilities = requiredDropCapabilities;
+            _resultValue.runAsGroup = runAsGroup;
+            _resultValue.runAsUser = runAsUser;
+            _resultValue.runtimeClass = runtimeClass;
+            _resultValue.seLinux = seLinux;
+            _resultValue.supplementalGroup = supplementalGroup;
+            _resultValue.volumes = volumes;
+            return _resultValue;
         }
     }
 }

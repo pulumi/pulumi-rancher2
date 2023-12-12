@@ -55,10 +55,10 @@ public final class GetPodSecurityPolicyTemplateRuntimeClass {
             return this;
         }
         public GetPodSecurityPolicyTemplateRuntimeClass build() {
-            final var o = new GetPodSecurityPolicyTemplateRuntimeClass();
-            o.allowedRuntimeClassNames = allowedRuntimeClassNames;
-            o.defaultRuntimeClassName = defaultRuntimeClassName;
-            return o;
+            final var _resultValue = new GetPodSecurityPolicyTemplateRuntimeClass();
+            _resultValue.allowedRuntimeClassNames = allowedRuntimeClassNames;
+            _resultValue.defaultRuntimeClassName = defaultRuntimeClassName;
+            return _resultValue;
         }
     }
 }

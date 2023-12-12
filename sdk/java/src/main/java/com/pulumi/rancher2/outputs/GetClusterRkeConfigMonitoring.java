@@ -104,14 +104,14 @@ public final class GetClusterRkeConfigMonitoring {
             return this;
         }
         public GetClusterRkeConfigMonitoring build() {
-            final var o = new GetClusterRkeConfigMonitoring();
-            o.nodeSelector = nodeSelector;
-            o.options = options;
-            o.provider = provider;
-            o.replicas = replicas;
-            o.tolerations = tolerations;
-            o.updateStrategy = updateStrategy;
-            return o;
+            final var _resultValue = new GetClusterRkeConfigMonitoring();
+            _resultValue.nodeSelector = nodeSelector;
+            _resultValue.options = options;
+            _resultValue.provider = provider;
+            _resultValue.replicas = replicas;
+            _resultValue.tolerations = tolerations;
+            _resultValue.updateStrategy = updateStrategy;
+            return _resultValue;
         }
     }
 }

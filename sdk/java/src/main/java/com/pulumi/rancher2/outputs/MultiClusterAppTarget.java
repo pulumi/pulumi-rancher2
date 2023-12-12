@@ -105,12 +105,12 @@ public final class MultiClusterAppTarget {
             return this;
         }
         public MultiClusterAppTarget build() {
-            final var o = new MultiClusterAppTarget();
-            o.appId = appId;
-            o.healthState = healthState;
-            o.projectId = projectId;
-            o.state = state;
-            return o;
+            final var _resultValue = new MultiClusterAppTarget();
+            _resultValue.appId = appId;
+            _resultValue.healthState = healthState;
+            _resultValue.projectId = projectId;
+            _resultValue.state = state;
+            return _resultValue;
         }
     }
 }

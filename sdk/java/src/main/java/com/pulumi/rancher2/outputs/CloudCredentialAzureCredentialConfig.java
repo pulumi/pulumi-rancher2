@@ -124,13 +124,13 @@ public final class CloudCredentialAzureCredentialConfig {
             return this;
         }
         public CloudCredentialAzureCredentialConfig build() {
-            final var o = new CloudCredentialAzureCredentialConfig();
-            o.clientId = clientId;
-            o.clientSecret = clientSecret;
-            o.environment = environment;
-            o.subscriptionId = subscriptionId;
-            o.tenantId = tenantId;
-            return o;
+            final var _resultValue = new CloudCredentialAzureCredentialConfig();
+            _resultValue.clientId = clientId;
+            _resultValue.clientSecret = clientSecret;
+            _resultValue.environment = environment;
+            _resultValue.subscriptionId = subscriptionId;
+            _resultValue.tenantId = tenantId;
+            return _resultValue;
         }
     }
 }

@@ -124,13 +124,13 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace {
             return this;
         }
         public ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace build() {
-            final var o = new ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace();
-            o.datacenter = datacenter;
-            o.defaultDatastore = defaultDatastore;
-            o.folder = folder;
-            o.resourcepoolPath = resourcepoolPath;
-            o.server = server;
-            return o;
+            final var _resultValue = new ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace();
+            _resultValue.datacenter = datacenter;
+            _resultValue.defaultDatastore = defaultDatastore;
+            _resultValue.folder = folder;
+            _resultValue.resourcepoolPath = resourcepoolPath;
+            _resultValue.server = server;
+            return _resultValue;
         }
     }
 }

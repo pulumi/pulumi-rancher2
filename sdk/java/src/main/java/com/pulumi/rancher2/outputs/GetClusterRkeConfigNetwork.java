@@ -141,17 +141,17 @@ public final class GetClusterRkeConfigNetwork {
             return this;
         }
         public GetClusterRkeConfigNetwork build() {
-            final var o = new GetClusterRkeConfigNetwork();
-            o.aciNetworkProvider = aciNetworkProvider;
-            o.calicoNetworkProvider = calicoNetworkProvider;
-            o.canalNetworkProvider = canalNetworkProvider;
-            o.flannelNetworkProvider = flannelNetworkProvider;
-            o.mtu = mtu;
-            o.options = options;
-            o.plugin = plugin;
-            o.tolerations = tolerations;
-            o.weaveNetworkProvider = weaveNetworkProvider;
-            return o;
+            final var _resultValue = new GetClusterRkeConfigNetwork();
+            _resultValue.aciNetworkProvider = aciNetworkProvider;
+            _resultValue.calicoNetworkProvider = calicoNetworkProvider;
+            _resultValue.canalNetworkProvider = canalNetworkProvider;
+            _resultValue.flannelNetworkProvider = flannelNetworkProvider;
+            _resultValue.mtu = mtu;
+            _resultValue.options = options;
+            _resultValue.plugin = plugin;
+            _resultValue.tolerations = tolerations;
+            _resultValue.weaveNetworkProvider = weaveNetworkProvider;
+            return _resultValue;
         }
     }
 }

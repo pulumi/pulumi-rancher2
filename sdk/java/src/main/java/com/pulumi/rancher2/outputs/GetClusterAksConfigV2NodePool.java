@@ -232,24 +232,24 @@ public final class GetClusterAksConfigV2NodePool {
             return this;
         }
         public GetClusterAksConfigV2NodePool build() {
-            final var o = new GetClusterAksConfigV2NodePool();
-            o.availabilityZones = availabilityZones;
-            o.count = count;
-            o.enableAutoScaling = enableAutoScaling;
-            o.labels = labels;
-            o.maxCount = maxCount;
-            o.maxPods = maxPods;
-            o.maxSurge = maxSurge;
-            o.minCount = minCount;
-            o.mode = mode;
-            o.name = name;
-            o.orchestratorVersion = orchestratorVersion;
-            o.osDiskSizeGb = osDiskSizeGb;
-            o.osDiskType = osDiskType;
-            o.osType = osType;
-            o.taints = taints;
-            o.vmSize = vmSize;
-            return o;
+            final var _resultValue = new GetClusterAksConfigV2NodePool();
+            _resultValue.availabilityZones = availabilityZones;
+            _resultValue.count = count;
+            _resultValue.enableAutoScaling = enableAutoScaling;
+            _resultValue.labels = labels;
+            _resultValue.maxCount = maxCount;
+            _resultValue.maxPods = maxPods;
+            _resultValue.maxSurge = maxSurge;
+            _resultValue.minCount = minCount;
+            _resultValue.mode = mode;
+            _resultValue.name = name;
+            _resultValue.orchestratorVersion = orchestratorVersion;
+            _resultValue.osDiskSizeGb = osDiskSizeGb;
+            _resultValue.osDiskType = osDiskType;
+            _resultValue.osType = osType;
+            _resultValue.taints = taints;
+            _resultValue.vmSize = vmSize;
+            return _resultValue;
         }
     }
 }

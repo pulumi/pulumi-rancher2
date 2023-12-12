@@ -127,13 +127,13 @@ public final class ClusterAlertRuleNodeRule {
             return this;
         }
         public ClusterAlertRuleNodeRule build() {
-            final var o = new ClusterAlertRuleNodeRule();
-            o.condition = condition;
-            o.cpuThreshold = cpuThreshold;
-            o.memThreshold = memThreshold;
-            o.nodeId = nodeId;
-            o.selector = selector;
-            return o;
+            final var _resultValue = new ClusterAlertRuleNodeRule();
+            _resultValue.condition = condition;
+            _resultValue.cpuThreshold = cpuThreshold;
+            _resultValue.memThreshold = memThreshold;
+            _resultValue.nodeId = nodeId;
+            _resultValue.selector = selector;
+            return _resultValue;
         }
     }
 }

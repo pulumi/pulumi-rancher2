@@ -318,24 +318,24 @@ public final class GetCatalogV2Result {
             return this;
         }
         public GetCatalogV2Result build() {
-            final var o = new GetCatalogV2Result();
-            o.annotations = annotations;
-            o.caBundle = caBundle;
-            o.clusterId = clusterId;
-            o.enabled = enabled;
-            o.gitBranch = gitBranch;
-            o.gitRepo = gitRepo;
-            o.id = id;
-            o.insecure = insecure;
-            o.labels = labels;
-            o.name = name;
-            o.resourceVersion = resourceVersion;
-            o.secretName = secretName;
-            o.secretNamespace = secretNamespace;
-            o.serviceAccount = serviceAccount;
-            o.serviceAccountNamespace = serviceAccountNamespace;
-            o.url = url;
-            return o;
+            final var _resultValue = new GetCatalogV2Result();
+            _resultValue.annotations = annotations;
+            _resultValue.caBundle = caBundle;
+            _resultValue.clusterId = clusterId;
+            _resultValue.enabled = enabled;
+            _resultValue.gitBranch = gitBranch;
+            _resultValue.gitRepo = gitRepo;
+            _resultValue.id = id;
+            _resultValue.insecure = insecure;
+            _resultValue.labels = labels;
+            _resultValue.name = name;
+            _resultValue.resourceVersion = resourceVersion;
+            _resultValue.secretName = secretName;
+            _resultValue.secretNamespace = secretNamespace;
+            _resultValue.serviceAccount = serviceAccount;
+            _resultValue.serviceAccountNamespace = serviceAccountNamespace;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

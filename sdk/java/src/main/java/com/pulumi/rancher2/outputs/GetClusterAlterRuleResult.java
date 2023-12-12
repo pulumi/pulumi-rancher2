@@ -305,23 +305,23 @@ public final class GetClusterAlterRuleResult {
             return this;
         }
         public GetClusterAlterRuleResult build() {
-            final var o = new GetClusterAlterRuleResult();
-            o.annotations = annotations;
-            o.clusterId = clusterId;
-            o.eventRule = eventRule;
-            o.groupId = groupId;
-            o.groupIntervalSeconds = groupIntervalSeconds;
-            o.groupWaitSeconds = groupWaitSeconds;
-            o.id = id;
-            o.inherited = inherited;
-            o.labels = labels;
-            o.metricRule = metricRule;
-            o.name = name;
-            o.nodeRule = nodeRule;
-            o.repeatIntervalSeconds = repeatIntervalSeconds;
-            o.severity = severity;
-            o.systemServiceRule = systemServiceRule;
-            return o;
+            final var _resultValue = new GetClusterAlterRuleResult();
+            _resultValue.annotations = annotations;
+            _resultValue.clusterId = clusterId;
+            _resultValue.eventRule = eventRule;
+            _resultValue.groupId = groupId;
+            _resultValue.groupIntervalSeconds = groupIntervalSeconds;
+            _resultValue.groupWaitSeconds = groupWaitSeconds;
+            _resultValue.id = id;
+            _resultValue.inherited = inherited;
+            _resultValue.labels = labels;
+            _resultValue.metricRule = metricRule;
+            _resultValue.name = name;
+            _resultValue.nodeRule = nodeRule;
+            _resultValue.repeatIntervalSeconds = repeatIntervalSeconds;
+            _resultValue.severity = severity;
+            _resultValue.systemServiceRule = systemServiceRule;
+            return _resultValue;
         }
     }
 }

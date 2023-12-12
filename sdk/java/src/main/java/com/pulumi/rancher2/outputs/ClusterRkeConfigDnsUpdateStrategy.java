@@ -68,10 +68,10 @@ public final class ClusterRkeConfigDnsUpdateStrategy {
             return this;
         }
         public ClusterRkeConfigDnsUpdateStrategy build() {
-            final var o = new ClusterRkeConfigDnsUpdateStrategy();
-            o.rollingUpdate = rollingUpdate;
-            o.strategy = strategy;
-            return o;
+            final var _resultValue = new ClusterRkeConfigDnsUpdateStrategy();
+            _resultValue.rollingUpdate = rollingUpdate;
+            _resultValue.strategy = strategy;
+            return _resultValue;
         }
     }
 }

@@ -152,14 +152,14 @@ public final class ClusterRkeConfigMonitoring {
             return this;
         }
         public ClusterRkeConfigMonitoring build() {
-            final var o = new ClusterRkeConfigMonitoring();
-            o.nodeSelector = nodeSelector;
-            o.options = options;
-            o.provider = provider;
-            o.replicas = replicas;
-            o.tolerations = tolerations;
-            o.updateStrategy = updateStrategy;
-            return o;
+            final var _resultValue = new ClusterRkeConfigMonitoring();
+            _resultValue.nodeSelector = nodeSelector;
+            _resultValue.options = options;
+            _resultValue.provider = provider;
+            _resultValue.replicas = replicas;
+            _resultValue.tolerations = tolerations;
+            _resultValue.updateStrategy = updateStrategy;
+            return _resultValue;
         }
     }
 }

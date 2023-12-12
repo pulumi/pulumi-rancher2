@@ -105,12 +105,12 @@ public final class ClusterV2FleetAgentDeploymentCustomizationOverrideResourceReq
             return this;
         }
         public ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement build() {
-            final var o = new ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement();
-            o.cpuLimit = cpuLimit;
-            o.cpuRequest = cpuRequest;
-            o.memoryLimit = memoryLimit;
-            o.memoryRequest = memoryRequest;
-            return o;
+            final var _resultValue = new ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement();
+            _resultValue.cpuLimit = cpuLimit;
+            _resultValue.cpuRequest = cpuRequest;
+            _resultValue.memoryLimit = memoryLimit;
+            _resultValue.memoryRequest = memoryRequest;
+            return _resultValue;
         }
     }
 }

@@ -76,11 +76,11 @@ public final class GetSettingResult {
             return this;
         }
         public GetSettingResult build() {
-            final var o = new GetSettingResult();
-            o.id = id;
-            o.name = name;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetSettingResult();
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

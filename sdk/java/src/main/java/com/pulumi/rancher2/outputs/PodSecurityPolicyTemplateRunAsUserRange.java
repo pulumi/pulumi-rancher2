@@ -65,10 +65,10 @@ public final class PodSecurityPolicyTemplateRunAsUserRange {
             return this;
         }
         public PodSecurityPolicyTemplateRunAsUserRange build() {
-            final var o = new PodSecurityPolicyTemplateRunAsUserRange();
-            o.max = max;
-            o.min = min;
-            return o;
+            final var _resultValue = new PodSecurityPolicyTemplateRunAsUserRange();
+            _resultValue.max = max;
+            _resultValue.min = min;
+            return _resultValue;
         }
     }
 }

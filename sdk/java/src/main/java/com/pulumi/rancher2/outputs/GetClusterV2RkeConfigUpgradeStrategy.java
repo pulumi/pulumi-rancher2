@@ -75,12 +75,12 @@ public final class GetClusterV2RkeConfigUpgradeStrategy {
             return this;
         }
         public GetClusterV2RkeConfigUpgradeStrategy build() {
-            final var o = new GetClusterV2RkeConfigUpgradeStrategy();
-            o.controlPlaneConcurrency = controlPlaneConcurrency;
-            o.controlPlaneDrainOptions = controlPlaneDrainOptions;
-            o.workerConcurrency = workerConcurrency;
-            o.workerDrainOptions = workerDrainOptions;
-            return o;
+            final var _resultValue = new GetClusterV2RkeConfigUpgradeStrategy();
+            _resultValue.controlPlaneConcurrency = controlPlaneConcurrency;
+            _resultValue.controlPlaneDrainOptions = controlPlaneDrainOptions;
+            _resultValue.workerConcurrency = workerConcurrency;
+            _resultValue.workerDrainOptions = workerDrainOptions;
+            return _resultValue;
         }
     }
 }

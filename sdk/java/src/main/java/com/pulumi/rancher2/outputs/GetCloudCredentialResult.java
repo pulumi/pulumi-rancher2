@@ -97,12 +97,12 @@ public final class GetCloudCredentialResult {
             return this;
         }
         public GetCloudCredentialResult build() {
-            final var o = new GetCloudCredentialResult();
-            o.annotations = annotations;
-            o.id = id;
-            o.labels = labels;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetCloudCredentialResult();
+            _resultValue.annotations = annotations;
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

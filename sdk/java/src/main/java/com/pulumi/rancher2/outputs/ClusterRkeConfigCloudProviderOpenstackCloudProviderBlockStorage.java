@@ -87,11 +87,11 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStora
             return this;
         }
         public ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage build() {
-            final var o = new ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage();
-            o.bsVersion = bsVersion;
-            o.ignoreVolumeAz = ignoreVolumeAz;
-            o.trustDevicePath = trustDevicePath;
-            return o;
+            final var _resultValue = new ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage();
+            _resultValue.bsVersion = bsVersion;
+            _resultValue.ignoreVolumeAz = ignoreVolumeAz;
+            _resultValue.trustDevicePath = trustDevicePath;
+            return _resultValue;
         }
     }
 }

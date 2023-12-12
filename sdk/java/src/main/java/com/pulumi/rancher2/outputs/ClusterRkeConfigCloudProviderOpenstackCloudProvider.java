@@ -128,13 +128,13 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProvider {
             return this;
         }
         public ClusterRkeConfigCloudProviderOpenstackCloudProvider build() {
-            final var o = new ClusterRkeConfigCloudProviderOpenstackCloudProvider();
-            o.blockStorage = blockStorage;
-            o.global = global;
-            o.loadBalancer = loadBalancer;
-            o.metadata = metadata;
-            o.route = route;
-            return o;
+            final var _resultValue = new ClusterRkeConfigCloudProviderOpenstackCloudProvider();
+            _resultValue.blockStorage = blockStorage;
+            _resultValue.global = global;
+            _resultValue.loadBalancer = loadBalancer;
+            _resultValue.metadata = metadata;
+            _resultValue.route = route;
+            return _resultValue;
         }
     }
 }

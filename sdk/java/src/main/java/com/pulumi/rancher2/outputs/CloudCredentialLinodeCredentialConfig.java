@@ -46,9 +46,9 @@ public final class CloudCredentialLinodeCredentialConfig {
             return this;
         }
         public CloudCredentialLinodeCredentialConfig build() {
-            final var o = new CloudCredentialLinodeCredentialConfig();
-            o.token = token;
-            return o;
+            final var _resultValue = new CloudCredentialLinodeCredentialConfig();
+            _resultValue.token = token;
+            return _resultValue;
         }
     }
 }

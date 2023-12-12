@@ -46,9 +46,9 @@ public final class CloudCredentialDigitaloceanCredentialConfig {
             return this;
         }
         public CloudCredentialDigitaloceanCredentialConfig build() {
-            final var o = new CloudCredentialDigitaloceanCredentialConfig();
-            o.accessToken = accessToken;
-            return o;
+            final var _resultValue = new CloudCredentialDigitaloceanCredentialConfig();
+            _resultValue.accessToken = accessToken;
+            return _resultValue;
         }
     }
 }

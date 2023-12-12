@@ -321,31 +321,31 @@ public final class GetClusterGkeConfigV2 {
             return this;
         }
         public GetClusterGkeConfigV2 build() {
-            final var o = new GetClusterGkeConfigV2();
-            o.clusterAddons = clusterAddons;
-            o.clusterIpv4CidrBlock = clusterIpv4CidrBlock;
-            o.description = description;
-            o.enableKubernetesAlpha = enableKubernetesAlpha;
-            o.googleCredentialSecret = googleCredentialSecret;
-            o.imported = imported;
-            o.ipAllocationPolicy = ipAllocationPolicy;
-            o.kubernetesVersion = kubernetesVersion;
-            o.labels = labels;
-            o.locations = locations;
-            o.loggingService = loggingService;
-            o.maintenanceWindow = maintenanceWindow;
-            o.masterAuthorizedNetworksConfig = masterAuthorizedNetworksConfig;
-            o.monitoringService = monitoringService;
-            o.name = name;
-            o.network = network;
-            o.networkPolicyEnabled = networkPolicyEnabled;
-            o.nodePools = nodePools;
-            o.privateClusterConfig = privateClusterConfig;
-            o.projectId = projectId;
-            o.region = region;
-            o.subnetwork = subnetwork;
-            o.zone = zone;
-            return o;
+            final var _resultValue = new GetClusterGkeConfigV2();
+            _resultValue.clusterAddons = clusterAddons;
+            _resultValue.clusterIpv4CidrBlock = clusterIpv4CidrBlock;
+            _resultValue.description = description;
+            _resultValue.enableKubernetesAlpha = enableKubernetesAlpha;
+            _resultValue.googleCredentialSecret = googleCredentialSecret;
+            _resultValue.imported = imported;
+            _resultValue.ipAllocationPolicy = ipAllocationPolicy;
+            _resultValue.kubernetesVersion = kubernetesVersion;
+            _resultValue.labels = labels;
+            _resultValue.locations = locations;
+            _resultValue.loggingService = loggingService;
+            _resultValue.maintenanceWindow = maintenanceWindow;
+            _resultValue.masterAuthorizedNetworksConfig = masterAuthorizedNetworksConfig;
+            _resultValue.monitoringService = monitoringService;
+            _resultValue.name = name;
+            _resultValue.network = network;
+            _resultValue.networkPolicyEnabled = networkPolicyEnabled;
+            _resultValue.nodePools = nodePools;
+            _resultValue.privateClusterConfig = privateClusterConfig;
+            _resultValue.projectId = projectId;
+            _resultValue.region = region;
+            _resultValue.subnetwork = subnetwork;
+            _resultValue.zone = zone;
+            return _resultValue;
         }
     }
 }

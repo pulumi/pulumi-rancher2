@@ -67,10 +67,10 @@ public final class ClusterAlertRuleEventRule {
             return this;
         }
         public ClusterAlertRuleEventRule build() {
-            final var o = new ClusterAlertRuleEventRule();
-            o.eventType = eventType;
-            o.resourceKind = resourceKind;
-            return o;
+            final var _resultValue = new ClusterAlertRuleEventRule();
+            _resultValue.eventType = eventType;
+            _resultValue.resourceKind = resourceKind;
+            return _resultValue;
         }
     }
 }

@@ -108,15 +108,15 @@ public final class GetNotifierSmtpConfig {
             return this;
         }
         public GetNotifierSmtpConfig build() {
-            final var o = new GetNotifierSmtpConfig();
-            o.defaultRecipient = defaultRecipient;
-            o.host = host;
-            o.password = password;
-            o.port = port;
-            o.sender = sender;
-            o.tls = tls;
-            o.username = username;
-            return o;
+            final var _resultValue = new GetNotifierSmtpConfig();
+            _resultValue.defaultRecipient = defaultRecipient;
+            _resultValue.host = host;
+            _resultValue.password = password;
+            _resultValue.port = port;
+            _resultValue.sender = sender;
+            _resultValue.tls = tls;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

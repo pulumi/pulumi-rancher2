@@ -195,18 +195,18 @@ public final class GetClusterRoleTemplateBindingResult {
             return this;
         }
         public GetClusterRoleTemplateBindingResult build() {
-            final var o = new GetClusterRoleTemplateBindingResult();
-            o.annotations = annotations;
-            o.clusterId = clusterId;
-            o.groupId = groupId;
-            o.groupPrincipalId = groupPrincipalId;
-            o.id = id;
-            o.labels = labels;
-            o.name = name;
-            o.roleTemplateId = roleTemplateId;
-            o.userId = userId;
-            o.userPrincipalId = userPrincipalId;
-            return o;
+            final var _resultValue = new GetClusterRoleTemplateBindingResult();
+            _resultValue.annotations = annotations;
+            _resultValue.clusterId = clusterId;
+            _resultValue.groupId = groupId;
+            _resultValue.groupPrincipalId = groupPrincipalId;
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.name = name;
+            _resultValue.roleTemplateId = roleTemplateId;
+            _resultValue.userId = userId;
+            _resultValue.userPrincipalId = userPrincipalId;
+            return _resultValue;
         }
     }
 }

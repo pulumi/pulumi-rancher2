@@ -46,9 +46,9 @@ public final class ClusterV2RkeConfigEtcdSnapshotCreate {
             return this;
         }
         public ClusterV2RkeConfigEtcdSnapshotCreate build() {
-            final var o = new ClusterV2RkeConfigEtcdSnapshotCreate();
-            o.generation = generation;
-            return o;
+            final var _resultValue = new ClusterV2RkeConfigEtcdSnapshotCreate();
+            _resultValue.generation = generation;
+            return _resultValue;
         }
     }
 }

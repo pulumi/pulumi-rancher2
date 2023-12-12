@@ -72,10 +72,10 @@ public final class PodSecurityPolicyTemplateSupplementalGroup {
             return this;
         }
         public PodSecurityPolicyTemplateSupplementalGroup build() {
-            final var o = new PodSecurityPolicyTemplateSupplementalGroup();
-            o.ranges = ranges;
-            o.rule = rule;
-            return o;
+            final var _resultValue = new PodSecurityPolicyTemplateSupplementalGroup();
+            _resultValue.ranges = ranges;
+            _resultValue.rule = rule;
+            return _resultValue;
         }
     }
 }

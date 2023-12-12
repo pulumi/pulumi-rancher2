@@ -405,27 +405,27 @@ public final class ClusterEksConfigV2NodeGroup {
             return this;
         }
         public ClusterEksConfigV2NodeGroup build() {
-            final var o = new ClusterEksConfigV2NodeGroup();
-            o.desiredSize = desiredSize;
-            o.diskSize = diskSize;
-            o.ec2SshKey = ec2SshKey;
-            o.gpu = gpu;
-            o.imageId = imageId;
-            o.instanceType = instanceType;
-            o.labels = labels;
-            o.launchTemplates = launchTemplates;
-            o.maxSize = maxSize;
-            o.minSize = minSize;
-            o.name = name;
-            o.nodeRole = nodeRole;
-            o.requestSpotInstances = requestSpotInstances;
-            o.resourceTags = resourceTags;
-            o.spotInstanceTypes = spotInstanceTypes;
-            o.subnets = subnets;
-            o.tags = tags;
-            o.userData = userData;
-            o.version = version;
-            return o;
+            final var _resultValue = new ClusterEksConfigV2NodeGroup();
+            _resultValue.desiredSize = desiredSize;
+            _resultValue.diskSize = diskSize;
+            _resultValue.ec2SshKey = ec2SshKey;
+            _resultValue.gpu = gpu;
+            _resultValue.imageId = imageId;
+            _resultValue.instanceType = instanceType;
+            _resultValue.labels = labels;
+            _resultValue.launchTemplates = launchTemplates;
+            _resultValue.maxSize = maxSize;
+            _resultValue.minSize = minSize;
+            _resultValue.name = name;
+            _resultValue.nodeRole = nodeRole;
+            _resultValue.requestSpotInstances = requestSpotInstances;
+            _resultValue.resourceTags = resourceTags;
+            _resultValue.spotInstanceTypes = spotInstanceTypes;
+            _resultValue.subnets = subnets;
+            _resultValue.tags = tags;
+            _resultValue.userData = userData;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

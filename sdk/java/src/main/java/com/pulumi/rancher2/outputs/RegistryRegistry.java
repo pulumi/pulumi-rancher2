@@ -86,11 +86,11 @@ public final class RegistryRegistry {
             return this;
         }
         public RegistryRegistry build() {
-            final var o = new RegistryRegistry();
-            o.address = address;
-            o.password = password;
-            o.username = username;
-            return o;
+            final var _resultValue = new RegistryRegistry();
+            _resultValue.address = address;
+            _resultValue.password = password;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

@@ -138,17 +138,17 @@ public final class GetClusterRkeConfigServicesKubelet {
             return this;
         }
         public GetClusterRkeConfigServicesKubelet build() {
-            final var o = new GetClusterRkeConfigServicesKubelet();
-            o.clusterDnsServer = clusterDnsServer;
-            o.clusterDomain = clusterDomain;
-            o.extraArgs = extraArgs;
-            o.extraBinds = extraBinds;
-            o.extraEnvs = extraEnvs;
-            o.failSwapOn = failSwapOn;
-            o.generateServingCertificate = generateServingCertificate;
-            o.image = image;
-            o.infraContainerImage = infraContainerImage;
-            return o;
+            final var _resultValue = new GetClusterRkeConfigServicesKubelet();
+            _resultValue.clusterDnsServer = clusterDnsServer;
+            _resultValue.clusterDomain = clusterDomain;
+            _resultValue.extraArgs = extraArgs;
+            _resultValue.extraBinds = extraBinds;
+            _resultValue.extraEnvs = extraEnvs;
+            _resultValue.failSwapOn = failSwapOn;
+            _resultValue.generateServingCertificate = generateServingCertificate;
+            _resultValue.image = image;
+            _resultValue.infraContainerImage = infraContainerImage;
+            return _resultValue;
         }
     }
 }

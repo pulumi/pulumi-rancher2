@@ -72,10 +72,10 @@ public final class ClusterRkeConfigCloudProviderAwsCloudProvider {
             return serviceOverrides(List.of(serviceOverrides));
         }
         public ClusterRkeConfigCloudProviderAwsCloudProvider build() {
-            final var o = new ClusterRkeConfigCloudProviderAwsCloudProvider();
-            o.global = global;
-            o.serviceOverrides = serviceOverrides;
-            return o;
+            final var _resultValue = new ClusterRkeConfigCloudProviderAwsCloudProvider();
+            _resultValue.global = global;
+            _resultValue.serviceOverrides = serviceOverrides;
+            return _resultValue;
         }
     }
 }

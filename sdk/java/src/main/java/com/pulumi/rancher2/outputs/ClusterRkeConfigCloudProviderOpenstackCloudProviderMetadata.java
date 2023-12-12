@@ -68,10 +68,10 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata {
             return this;
         }
         public ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata build() {
-            final var o = new ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata();
-            o.requestTimeout = requestTimeout;
-            o.searchOrder = searchOrder;
-            return o;
+            final var _resultValue = new ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata();
+            _resultValue.requestTimeout = requestTimeout;
+            _resultValue.searchOrder = searchOrder;
+            return _resultValue;
         }
     }
 }

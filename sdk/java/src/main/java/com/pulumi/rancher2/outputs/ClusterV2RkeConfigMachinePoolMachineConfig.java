@@ -65,10 +65,10 @@ public final class ClusterV2RkeConfigMachinePoolMachineConfig {
             return this;
         }
         public ClusterV2RkeConfigMachinePoolMachineConfig build() {
-            final var o = new ClusterV2RkeConfigMachinePoolMachineConfig();
-            o.kind = kind;
-            o.name = name;
-            return o;
+            final var _resultValue = new ClusterV2RkeConfigMachinePoolMachineConfig();
+            _resultValue.kind = kind;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

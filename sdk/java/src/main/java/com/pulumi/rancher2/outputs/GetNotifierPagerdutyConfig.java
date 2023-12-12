@@ -51,10 +51,10 @@ public final class GetNotifierPagerdutyConfig {
             return this;
         }
         public GetNotifierPagerdutyConfig build() {
-            final var o = new GetNotifierPagerdutyConfig();
-            o.proxyUrl = proxyUrl;
-            o.serviceKey = serviceKey;
-            return o;
+            final var _resultValue = new GetNotifierPagerdutyConfig();
+            _resultValue.proxyUrl = proxyUrl;
+            _resultValue.serviceKey = serviceKey;
+            return _resultValue;
         }
     }
 }

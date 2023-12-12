@@ -65,10 +65,10 @@ public final class PodSecurityPolicyTemplateHostPort {
             return this;
         }
         public PodSecurityPolicyTemplateHostPort build() {
-            final var o = new PodSecurityPolicyTemplateHostPort();
-            o.max = max;
-            o.min = min;
-            return o;
+            final var _resultValue = new PodSecurityPolicyTemplateHostPort();
+            _resultValue.max = max;
+            _resultValue.min = min;
+            return _resultValue;
         }
     }
 }

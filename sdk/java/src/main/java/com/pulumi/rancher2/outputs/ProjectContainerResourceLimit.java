@@ -105,12 +105,12 @@ public final class ProjectContainerResourceLimit {
             return this;
         }
         public ProjectContainerResourceLimit build() {
-            final var o = new ProjectContainerResourceLimit();
-            o.limitsCpu = limitsCpu;
-            o.limitsMemory = limitsMemory;
-            o.requestsCpu = requestsCpu;
-            o.requestsMemory = requestsMemory;
-            return o;
+            final var _resultValue = new ProjectContainerResourceLimit();
+            _resultValue.limitsCpu = limitsCpu;
+            _resultValue.limitsMemory = limitsMemory;
+            _resultValue.requestsCpu = requestsCpu;
+            _resultValue.requestsMemory = requestsMemory;
+            return _resultValue;
         }
     }
 }

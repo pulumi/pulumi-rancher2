@@ -144,14 +144,14 @@ public final class ClusterRkeConfigBastionHost {
             return this;
         }
         public ClusterRkeConfigBastionHost build() {
-            final var o = new ClusterRkeConfigBastionHost();
-            o.address = address;
-            o.port = port;
-            o.sshAgentAuth = sshAgentAuth;
-            o.sshKey = sshKey;
-            o.sshKeyPath = sshKeyPath;
-            o.user = user;
-            return o;
+            final var _resultValue = new ClusterRkeConfigBastionHost();
+            _resultValue.address = address;
+            _resultValue.port = port;
+            _resultValue.sshAgentAuth = sshAgentAuth;
+            _resultValue.sshKey = sshKey;
+            _resultValue.sshKeyPath = sshKeyPath;
+            _resultValue.user = user;
+            return _resultValue;
         }
     }
 }

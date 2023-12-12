@@ -86,11 +86,11 @@ public final class MultiClusterAppMember {
             return this;
         }
         public MultiClusterAppMember build() {
-            final var o = new MultiClusterAppMember();
-            o.accessType = accessType;
-            o.groupPrincipalId = groupPrincipalId;
-            o.userPrincipalId = userPrincipalId;
-            return o;
+            final var _resultValue = new MultiClusterAppMember();
+            _resultValue.accessType = accessType;
+            _resultValue.groupPrincipalId = groupPrincipalId;
+            _resultValue.userPrincipalId = userPrincipalId;
+            return _resultValue;
         }
     }
 }

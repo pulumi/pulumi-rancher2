@@ -46,9 +46,9 @@ public final class NamespaceResourceQuota {
             return this;
         }
         public NamespaceResourceQuota build() {
-            final var o = new NamespaceResourceQuota();
-            o.limit = limit;
-            return o;
+            final var _resultValue = new NamespaceResourceQuota();
+            _resultValue.limit = limit;
+            return _resultValue;
         }
     }
 }

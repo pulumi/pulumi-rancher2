@@ -51,10 +51,10 @@ public final class GetNotifierMsteamsConfig {
             return this;
         }
         public GetNotifierMsteamsConfig build() {
-            final var o = new GetNotifierMsteamsConfig();
-            o.proxyUrl = proxyUrl;
-            o.url = url;
-            return o;
+            final var _resultValue = new GetNotifierMsteamsConfig();
+            _resultValue.proxyUrl = proxyUrl;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

@@ -60,11 +60,11 @@ public final class GetClusterGkeConfigV2ClusterAddons {
             return this;
         }
         public GetClusterGkeConfigV2ClusterAddons build() {
-            final var o = new GetClusterGkeConfigV2ClusterAddons();
-            o.horizontalPodAutoscaling = horizontalPodAutoscaling;
-            o.httpLoadBalancing = httpLoadBalancing;
-            o.networkPolicyConfig = networkPolicyConfig;
-            return o;
+            final var _resultValue = new GetClusterGkeConfigV2ClusterAddons();
+            _resultValue.horizontalPodAutoscaling = horizontalPodAutoscaling;
+            _resultValue.httpLoadBalancing = httpLoadBalancing;
+            _resultValue.networkPolicyConfig = networkPolicyConfig;
+            return _resultValue;
         }
     }
 }

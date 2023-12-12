@@ -137,18 +137,18 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloud
             return this;
         }
         public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobal build() {
-            final var o = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobal();
-            o.authUrl = authUrl;
-            o.caFile = caFile;
-            o.domainId = domainId;
-            o.domainName = domainName;
-            o.password = password;
-            o.region = region;
-            o.tenantId = tenantId;
-            o.tenantName = tenantName;
-            o.trustId = trustId;
-            o.username = username;
-            return o;
+            final var _resultValue = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobal();
+            _resultValue.authUrl = authUrl;
+            _resultValue.caFile = caFile;
+            _resultValue.domainId = domainId;
+            _resultValue.domainName = domainName;
+            _resultValue.password = password;
+            _resultValue.region = region;
+            _resultValue.tenantId = tenantId;
+            _resultValue.tenantName = tenantName;
+            _resultValue.trustId = trustId;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

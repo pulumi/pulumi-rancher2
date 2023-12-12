@@ -247,27 +247,27 @@ public final class GetClusterEksConfig {
             return this;
         }
         public GetClusterEksConfig build() {
-            final var o = new GetClusterEksConfig();
-            o.accessKey = accessKey;
-            o.ami = ami;
-            o.associateWorkerNodePublicIp = associateWorkerNodePublicIp;
-            o.desiredNodes = desiredNodes;
-            o.ebsEncryption = ebsEncryption;
-            o.instanceType = instanceType;
-            o.keyPairName = keyPairName;
-            o.kubernetesVersion = kubernetesVersion;
-            o.maximumNodes = maximumNodes;
-            o.minimumNodes = minimumNodes;
-            o.nodeVolumeSize = nodeVolumeSize;
-            o.region = region;
-            o.secretKey = secretKey;
-            o.securityGroups = securityGroups;
-            o.serviceRole = serviceRole;
-            o.sessionToken = sessionToken;
-            o.subnets = subnets;
-            o.userData = userData;
-            o.virtualNetwork = virtualNetwork;
-            return o;
+            final var _resultValue = new GetClusterEksConfig();
+            _resultValue.accessKey = accessKey;
+            _resultValue.ami = ami;
+            _resultValue.associateWorkerNodePublicIp = associateWorkerNodePublicIp;
+            _resultValue.desiredNodes = desiredNodes;
+            _resultValue.ebsEncryption = ebsEncryption;
+            _resultValue.instanceType = instanceType;
+            _resultValue.keyPairName = keyPairName;
+            _resultValue.kubernetesVersion = kubernetesVersion;
+            _resultValue.maximumNodes = maximumNodes;
+            _resultValue.minimumNodes = minimumNodes;
+            _resultValue.nodeVolumeSize = nodeVolumeSize;
+            _resultValue.region = region;
+            _resultValue.secretKey = secretKey;
+            _resultValue.securityGroups = securityGroups;
+            _resultValue.serviceRole = serviceRole;
+            _resultValue.sessionToken = sessionToken;
+            _resultValue.subnets = subnets;
+            _resultValue.userData = userData;
+            _resultValue.virtualNetwork = virtualNetwork;
+            return _resultValue;
         }
     }
 }

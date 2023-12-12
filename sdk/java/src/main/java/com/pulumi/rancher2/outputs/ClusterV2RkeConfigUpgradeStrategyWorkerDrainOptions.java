@@ -201,17 +201,17 @@ public final class ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions {
             return this;
         }
         public ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions build() {
-            final var o = new ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions();
-            o.deleteEmptyDirData = deleteEmptyDirData;
-            o.disableEviction = disableEviction;
-            o.enabled = enabled;
-            o.force = force;
-            o.gracePeriod = gracePeriod;
-            o.ignoreDaemonSets = ignoreDaemonSets;
-            o.ignoreErrors = ignoreErrors;
-            o.skipWaitForDeleteTimeoutSeconds = skipWaitForDeleteTimeoutSeconds;
-            o.timeout = timeout;
-            return o;
+            final var _resultValue = new ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions();
+            _resultValue.deleteEmptyDirData = deleteEmptyDirData;
+            _resultValue.disableEviction = disableEviction;
+            _resultValue.enabled = enabled;
+            _resultValue.force = force;
+            _resultValue.gracePeriod = gracePeriod;
+            _resultValue.ignoreDaemonSets = ignoreDaemonSets;
+            _resultValue.ignoreErrors = ignoreErrors;
+            _resultValue.skipWaitForDeleteTimeoutSeconds = skipWaitForDeleteTimeoutSeconds;
+            _resultValue.timeout = timeout;
+            return _resultValue;
         }
     }
 }

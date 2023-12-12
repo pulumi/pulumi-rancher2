@@ -182,16 +182,16 @@ public final class ClusterGkeConfigV2IpAllocationPolicy {
             return this;
         }
         public ClusterGkeConfigV2IpAllocationPolicy build() {
-            final var o = new ClusterGkeConfigV2IpAllocationPolicy();
-            o.clusterIpv4CidrBlock = clusterIpv4CidrBlock;
-            o.clusterSecondaryRangeName = clusterSecondaryRangeName;
-            o.createSubnetwork = createSubnetwork;
-            o.nodeIpv4CidrBlock = nodeIpv4CidrBlock;
-            o.servicesIpv4CidrBlock = servicesIpv4CidrBlock;
-            o.servicesSecondaryRangeName = servicesSecondaryRangeName;
-            o.subnetworkName = subnetworkName;
-            o.useIpAliases = useIpAliases;
-            return o;
+            final var _resultValue = new ClusterGkeConfigV2IpAllocationPolicy();
+            _resultValue.clusterIpv4CidrBlock = clusterIpv4CidrBlock;
+            _resultValue.clusterSecondaryRangeName = clusterSecondaryRangeName;
+            _resultValue.createSubnetwork = createSubnetwork;
+            _resultValue.nodeIpv4CidrBlock = nodeIpv4CidrBlock;
+            _resultValue.servicesIpv4CidrBlock = servicesIpv4CidrBlock;
+            _resultValue.servicesSecondaryRangeName = servicesSecondaryRangeName;
+            _resultValue.subnetworkName = subnetworkName;
+            _resultValue.useIpAliases = useIpAliases;
+            return _resultValue;
         }
     }
 }

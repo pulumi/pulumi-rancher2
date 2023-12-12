@@ -285,22 +285,22 @@ public final class GetProjectAlertRuleResult {
             return this;
         }
         public GetProjectAlertRuleResult build() {
-            final var o = new GetProjectAlertRuleResult();
-            o.annotations = annotations;
-            o.groupId = groupId;
-            o.groupIntervalSeconds = groupIntervalSeconds;
-            o.groupWaitSeconds = groupWaitSeconds;
-            o.id = id;
-            o.inherited = inherited;
-            o.labels = labels;
-            o.metricRule = metricRule;
-            o.name = name;
-            o.podRule = podRule;
-            o.projectId = projectId;
-            o.repeatIntervalSeconds = repeatIntervalSeconds;
-            o.severity = severity;
-            o.workloadRule = workloadRule;
-            return o;
+            final var _resultValue = new GetProjectAlertRuleResult();
+            _resultValue.annotations = annotations;
+            _resultValue.groupId = groupId;
+            _resultValue.groupIntervalSeconds = groupIntervalSeconds;
+            _resultValue.groupWaitSeconds = groupWaitSeconds;
+            _resultValue.id = id;
+            _resultValue.inherited = inherited;
+            _resultValue.labels = labels;
+            _resultValue.metricRule = metricRule;
+            _resultValue.name = name;
+            _resultValue.podRule = podRule;
+            _resultValue.projectId = projectId;
+            _resultValue.repeatIntervalSeconds = repeatIntervalSeconds;
+            _resultValue.severity = severity;
+            _resultValue.workloadRule = workloadRule;
+            return _resultValue;
         }
     }
 }

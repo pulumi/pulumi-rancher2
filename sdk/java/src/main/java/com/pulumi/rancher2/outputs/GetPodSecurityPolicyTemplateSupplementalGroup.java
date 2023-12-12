@@ -56,10 +56,10 @@ public final class GetPodSecurityPolicyTemplateSupplementalGroup {
             return this;
         }
         public GetPodSecurityPolicyTemplateSupplementalGroup build() {
-            final var o = new GetPodSecurityPolicyTemplateSupplementalGroup();
-            o.ranges = ranges;
-            o.rule = rule;
-            return o;
+            final var _resultValue = new GetPodSecurityPolicyTemplateSupplementalGroup();
+            _resultValue.ranges = ranges;
+            _resultValue.rule = rule;
+            return _resultValue;
         }
     }
 }

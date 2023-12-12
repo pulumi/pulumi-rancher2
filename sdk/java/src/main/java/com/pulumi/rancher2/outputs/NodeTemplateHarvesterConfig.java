@@ -354,23 +354,23 @@ public final class NodeTemplateHarvesterConfig {
             return this;
         }
         public NodeTemplateHarvesterConfig build() {
-            final var o = new NodeTemplateHarvesterConfig();
-            o.cpuCount = cpuCount;
-            o.diskBus = diskBus;
-            o.diskInfo = diskInfo;
-            o.diskSize = diskSize;
-            o.imageName = imageName;
-            o.memorySize = memorySize;
-            o.networkData = networkData;
-            o.networkInfo = networkInfo;
-            o.networkModel = networkModel;
-            o.networkName = networkName;
-            o.sshPassword = sshPassword;
-            o.sshUser = sshUser;
-            o.userData = userData;
-            o.vmAffinity = vmAffinity;
-            o.vmNamespace = vmNamespace;
-            return o;
+            final var _resultValue = new NodeTemplateHarvesterConfig();
+            _resultValue.cpuCount = cpuCount;
+            _resultValue.diskBus = diskBus;
+            _resultValue.diskInfo = diskInfo;
+            _resultValue.diskSize = diskSize;
+            _resultValue.imageName = imageName;
+            _resultValue.memorySize = memorySize;
+            _resultValue.networkData = networkData;
+            _resultValue.networkInfo = networkInfo;
+            _resultValue.networkModel = networkModel;
+            _resultValue.networkName = networkName;
+            _resultValue.sshPassword = sshPassword;
+            _resultValue.sshUser = sshUser;
+            _resultValue.userData = userData;
+            _resultValue.vmAffinity = vmAffinity;
+            _resultValue.vmNamespace = vmNamespace;
+            return _resultValue;
         }
     }
 }

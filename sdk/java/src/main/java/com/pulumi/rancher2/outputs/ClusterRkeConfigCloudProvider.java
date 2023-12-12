@@ -147,14 +147,14 @@ public final class ClusterRkeConfigCloudProvider {
             return this;
         }
         public ClusterRkeConfigCloudProvider build() {
-            final var o = new ClusterRkeConfigCloudProvider();
-            o.awsCloudProvider = awsCloudProvider;
-            o.azureCloudProvider = azureCloudProvider;
-            o.customCloudProvider = customCloudProvider;
-            o.name = name;
-            o.openstackCloudProvider = openstackCloudProvider;
-            o.vsphereCloudProvider = vsphereCloudProvider;
-            return o;
+            final var _resultValue = new ClusterRkeConfigCloudProvider();
+            _resultValue.awsCloudProvider = awsCloudProvider;
+            _resultValue.azureCloudProvider = azureCloudProvider;
+            _resultValue.customCloudProvider = customCloudProvider;
+            _resultValue.name = name;
+            _resultValue.openstackCloudProvider = openstackCloudProvider;
+            _resultValue.vsphereCloudProvider = vsphereCloudProvider;
+            return _resultValue;
         }
     }
 }

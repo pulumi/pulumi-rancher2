@@ -125,13 +125,13 @@ public final class ClusterRkeConfigNetworkToleration {
             return this;
         }
         public ClusterRkeConfigNetworkToleration build() {
-            final var o = new ClusterRkeConfigNetworkToleration();
-            o.effect = effect;
-            o.key = key;
-            o.operator = operator;
-            o.seconds = seconds;
-            o.value = value;
-            return o;
+            final var _resultValue = new ClusterRkeConfigNetworkToleration();
+            _resultValue.effect = effect;
+            _resultValue.key = key;
+            _resultValue.operator = operator;
+            _resultValue.seconds = seconds;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

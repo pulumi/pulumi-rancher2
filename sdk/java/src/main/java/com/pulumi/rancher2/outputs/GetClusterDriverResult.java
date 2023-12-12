@@ -227,19 +227,19 @@ public final class GetClusterDriverResult {
             return whitelistDomains(List.of(whitelistDomains));
         }
         public GetClusterDriverResult build() {
-            final var o = new GetClusterDriverResult();
-            o.active = active;
-            o.actualUrl = actualUrl;
-            o.annotations = annotations;
-            o.builtin = builtin;
-            o.checksum = checksum;
-            o.id = id;
-            o.labels = labels;
-            o.name = name;
-            o.uiUrl = uiUrl;
-            o.url = url;
-            o.whitelistDomains = whitelistDomains;
-            return o;
+            final var _resultValue = new GetClusterDriverResult();
+            _resultValue.active = active;
+            _resultValue.actualUrl = actualUrl;
+            _resultValue.annotations = annotations;
+            _resultValue.builtin = builtin;
+            _resultValue.checksum = checksum;
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.name = name;
+            _resultValue.uiUrl = uiUrl;
+            _resultValue.url = url;
+            _resultValue.whitelistDomains = whitelistDomains;
+            return _resultValue;
         }
     }
 }

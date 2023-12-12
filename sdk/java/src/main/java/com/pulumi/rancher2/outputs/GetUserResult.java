@@ -172,16 +172,16 @@ public final class GetUserResult {
             return this;
         }
         public GetUserResult build() {
-            final var o = new GetUserResult();
-            o.annotations = annotations;
-            o.enabled = enabled;
-            o.id = id;
-            o.isExternal = isExternal;
-            o.labels = labels;
-            o.name = name;
-            o.principalIds = principalIds;
-            o.username = username;
-            return o;
+            final var _resultValue = new GetUserResult();
+            _resultValue.annotations = annotations;
+            _resultValue.enabled = enabled;
+            _resultValue.id = id;
+            _resultValue.isExternal = isExternal;
+            _resultValue.labels = labels;
+            _resultValue.name = name;
+            _resultValue.principalIds = principalIds;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

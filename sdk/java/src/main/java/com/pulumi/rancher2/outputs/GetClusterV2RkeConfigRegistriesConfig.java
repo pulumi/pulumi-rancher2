@@ -85,13 +85,13 @@ public final class GetClusterV2RkeConfigRegistriesConfig {
             return this;
         }
         public GetClusterV2RkeConfigRegistriesConfig build() {
-            final var o = new GetClusterV2RkeConfigRegistriesConfig();
-            o.authConfigSecretName = authConfigSecretName;
-            o.caBundle = caBundle;
-            o.hostname = hostname;
-            o.insecure = insecure;
-            o.tlsSecretName = tlsSecretName;
-            return o;
+            final var _resultValue = new GetClusterV2RkeConfigRegistriesConfig();
+            _resultValue.authConfigSecretName = authConfigSecretName;
+            _resultValue.caBundle = caBundle;
+            _resultValue.hostname = hostname;
+            _resultValue.insecure = insecure;
+            _resultValue.tlsSecretName = tlsSecretName;
+            return _resultValue;
         }
     }
 }

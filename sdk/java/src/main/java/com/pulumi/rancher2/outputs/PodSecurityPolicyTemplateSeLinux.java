@@ -68,10 +68,10 @@ public final class PodSecurityPolicyTemplateSeLinux {
             return this;
         }
         public PodSecurityPolicyTemplateSeLinux build() {
-            final var o = new PodSecurityPolicyTemplateSeLinux();
-            o.rule = rule;
-            o.seLinuxOption = seLinuxOption;
-            return o;
+            final var _resultValue = new PodSecurityPolicyTemplateSeLinux();
+            _resultValue.rule = rule;
+            _resultValue.seLinuxOption = seLinuxOption;
+            return _resultValue;
         }
     }
 }

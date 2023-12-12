@@ -91,11 +91,11 @@ public final class ClusterV2RkeConfigRegistriesMirror {
             return this;
         }
         public ClusterV2RkeConfigRegistriesMirror build() {
-            final var o = new ClusterV2RkeConfigRegistriesMirror();
-            o.endpoints = endpoints;
-            o.hostname = hostname;
-            o.rewrites = rewrites;
-            return o;
+            final var _resultValue = new ClusterV2RkeConfigRegistriesMirror();
+            _resultValue.endpoints = endpoints;
+            _resultValue.hostname = hostname;
+            _resultValue.rewrites = rewrites;
+            return _resultValue;
         }
     }
 }

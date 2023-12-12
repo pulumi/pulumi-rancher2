@@ -176,20 +176,20 @@ public final class GetClusterRkeConfigNode {
             return this;
         }
         public GetClusterRkeConfigNode build() {
-            final var o = new GetClusterRkeConfigNode();
-            o.address = address;
-            o.dockerSocket = dockerSocket;
-            o.hostnameOverride = hostnameOverride;
-            o.internalAddress = internalAddress;
-            o.labels = labels;
-            o.nodeId = nodeId;
-            o.port = port;
-            o.roles = roles;
-            o.sshAgentAuth = sshAgentAuth;
-            o.sshKey = sshKey;
-            o.sshKeyPath = sshKeyPath;
-            o.user = user;
-            return o;
+            final var _resultValue = new GetClusterRkeConfigNode();
+            _resultValue.address = address;
+            _resultValue.dockerSocket = dockerSocket;
+            _resultValue.hostnameOverride = hostnameOverride;
+            _resultValue.internalAddress = internalAddress;
+            _resultValue.labels = labels;
+            _resultValue.nodeId = nodeId;
+            _resultValue.port = port;
+            _resultValue.roles = roles;
+            _resultValue.sshAgentAuth = sshAgentAuth;
+            _resultValue.sshKey = sshKey;
+            _resultValue.sshKeyPath = sshKeyPath;
+            _resultValue.user = user;
+            return _resultValue;
         }
     }
 }

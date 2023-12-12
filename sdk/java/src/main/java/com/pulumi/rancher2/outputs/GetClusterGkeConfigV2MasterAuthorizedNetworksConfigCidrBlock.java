@@ -51,10 +51,10 @@ public final class GetClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock 
             return this;
         }
         public GetClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock build() {
-            final var o = new GetClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock();
-            o.cidrBlock = cidrBlock;
-            o.displayName = displayName;
-            return o;
+            final var _resultValue = new GetClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock();
+            _resultValue.cidrBlock = cidrBlock;
+            _resultValue.displayName = displayName;
+            return _resultValue;
         }
     }
 }

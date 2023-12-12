@@ -281,22 +281,22 @@ public final class GetCatalogResult {
             return this;
         }
         public GetCatalogResult build() {
-            final var o = new GetCatalogResult();
-            o.annotations = annotations;
-            o.branch = branch;
-            o.clusterId = clusterId;
-            o.description = description;
-            o.id = id;
-            o.kind = kind;
-            o.labels = labels;
-            o.name = name;
-            o.password = password;
-            o.projectId = projectId;
-            o.scope = scope;
-            o.url = url;
-            o.username = username;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetCatalogResult();
+            _resultValue.annotations = annotations;
+            _resultValue.branch = branch;
+            _resultValue.clusterId = clusterId;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.kind = kind;
+            _resultValue.labels = labels;
+            _resultValue.name = name;
+            _resultValue.password = password;
+            _resultValue.projectId = projectId;
+            _resultValue.scope = scope;
+            _resultValue.url = url;
+            _resultValue.username = username;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

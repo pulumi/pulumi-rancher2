@@ -139,13 +139,13 @@ public final class GlobalRoleRule {
             return verbs(List.of(verbs));
         }
         public GlobalRoleRule build() {
-            final var o = new GlobalRoleRule();
-            o.apiGroups = apiGroups;
-            o.nonResourceUrls = nonResourceUrls;
-            o.resourceNames = resourceNames;
-            o.resources = resources;
-            o.verbs = verbs;
-            return o;
+            final var _resultValue = new GlobalRoleRule();
+            _resultValue.apiGroups = apiGroups;
+            _resultValue.nonResourceUrls = nonResourceUrls;
+            _resultValue.resourceNames = resourceNames;
+            _resultValue.resources = resources;
+            _resultValue.verbs = verbs;
+            return _resultValue;
         }
     }
 }

@@ -252,20 +252,20 @@ public final class ClusterTemplateTemplateRevisionClusterConfig {
             return this;
         }
         public ClusterTemplateTemplateRevisionClusterConfig build() {
-            final var o = new ClusterTemplateTemplateRevisionClusterConfig();
-            o.clusterAuthEndpoint = clusterAuthEndpoint;
-            o.defaultClusterRoleForProjectMembers = defaultClusterRoleForProjectMembers;
-            o.defaultPodSecurityAdmissionConfigurationTemplateName = defaultPodSecurityAdmissionConfigurationTemplateName;
-            o.defaultPodSecurityPolicyTemplateId = defaultPodSecurityPolicyTemplateId;
-            o.desiredAgentImage = desiredAgentImage;
-            o.desiredAuthImage = desiredAuthImage;
-            o.dockerRootDir = dockerRootDir;
-            o.enableClusterAlerting = enableClusterAlerting;
-            o.enableClusterMonitoring = enableClusterMonitoring;
-            o.enableNetworkPolicy = enableNetworkPolicy;
-            o.rkeConfig = rkeConfig;
-            o.windowsPreferedCluster = windowsPreferedCluster;
-            return o;
+            final var _resultValue = new ClusterTemplateTemplateRevisionClusterConfig();
+            _resultValue.clusterAuthEndpoint = clusterAuthEndpoint;
+            _resultValue.defaultClusterRoleForProjectMembers = defaultClusterRoleForProjectMembers;
+            _resultValue.defaultPodSecurityAdmissionConfigurationTemplateName = defaultPodSecurityAdmissionConfigurationTemplateName;
+            _resultValue.defaultPodSecurityPolicyTemplateId = defaultPodSecurityPolicyTemplateId;
+            _resultValue.desiredAgentImage = desiredAgentImage;
+            _resultValue.desiredAuthImage = desiredAuthImage;
+            _resultValue.dockerRootDir = dockerRootDir;
+            _resultValue.enableClusterAlerting = enableClusterAlerting;
+            _resultValue.enableClusterMonitoring = enableClusterMonitoring;
+            _resultValue.enableNetworkPolicy = enableNetworkPolicy;
+            _resultValue.rkeConfig = rkeConfig;
+            _resultValue.windowsPreferedCluster = windowsPreferedCluster;
+            return _resultValue;
         }
     }
 }

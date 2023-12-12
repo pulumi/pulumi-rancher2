@@ -105,12 +105,12 @@ public final class CloudCredentialVsphereCredentialConfig {
             return this;
         }
         public CloudCredentialVsphereCredentialConfig build() {
-            final var o = new CloudCredentialVsphereCredentialConfig();
-            o.password = password;
-            o.username = username;
-            o.vcenter = vcenter;
-            o.vcenterPort = vcenterPort;
-            return o;
+            final var _resultValue = new CloudCredentialVsphereCredentialConfig();
+            _resultValue.password = password;
+            _resultValue.username = username;
+            _resultValue.vcenter = vcenter;
+            _resultValue.vcenterPort = vcenterPort;
+            return _resultValue;
         }
     }
 }

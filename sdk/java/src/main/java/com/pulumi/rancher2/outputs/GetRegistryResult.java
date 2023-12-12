@@ -164,16 +164,16 @@ public final class GetRegistryResult {
             return registries(List.of(registries));
         }
         public GetRegistryResult build() {
-            final var o = new GetRegistryResult();
-            o.annotations = annotations;
-            o.description = description;
-            o.id = id;
-            o.labels = labels;
-            o.name = name;
-            o.namespaceId = namespaceId;
-            o.projectId = projectId;
-            o.registries = registries;
-            return o;
+            final var _resultValue = new GetRegistryResult();
+            _resultValue.annotations = annotations;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.name = name;
+            _resultValue.namespaceId = namespaceId;
+            _resultValue.projectId = projectId;
+            _resultValue.registries = registries;
+            return _resultValue;
         }
     }
 }

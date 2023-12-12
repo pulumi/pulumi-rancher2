@@ -52,10 +52,10 @@ public final class GetClusterRkeConfigIngressUpdateStrategy {
             return this;
         }
         public GetClusterRkeConfigIngressUpdateStrategy build() {
-            final var o = new GetClusterRkeConfigIngressUpdateStrategy();
-            o.rollingUpdate = rollingUpdate;
-            o.strategy = strategy;
-            return o;
+            final var _resultValue = new GetClusterRkeConfigIngressUpdateStrategy();
+            _resultValue.rollingUpdate = rollingUpdate;
+            _resultValue.strategy = strategy;
+            return _resultValue;
         }
     }
 }

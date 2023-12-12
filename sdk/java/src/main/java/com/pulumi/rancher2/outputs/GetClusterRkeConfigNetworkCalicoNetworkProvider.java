@@ -38,9 +38,9 @@ public final class GetClusterRkeConfigNetworkCalicoNetworkProvider {
             return this;
         }
         public GetClusterRkeConfigNetworkCalicoNetworkProvider build() {
-            final var o = new GetClusterRkeConfigNetworkCalicoNetworkProvider();
-            o.cloudProvider = cloudProvider;
-            return o;
+            final var _resultValue = new GetClusterRkeConfigNetworkCalicoNetworkProvider();
+            _resultValue.cloudProvider = cloudProvider;
+            return _resultValue;
         }
     }
 }

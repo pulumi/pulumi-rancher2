@@ -145,14 +145,14 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal {
             return this;
         }
         public ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal build() {
-            final var o = new ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal();
-            o.datacenters = datacenters;
-            o.insecureFlag = insecureFlag;
-            o.password = password;
-            o.port = port;
-            o.soapRoundtripCount = soapRoundtripCount;
-            o.user = user;
-            return o;
+            final var _resultValue = new ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal();
+            _resultValue.datacenters = datacenters;
+            _resultValue.insecureFlag = insecureFlag;
+            _resultValue.password = password;
+            _resultValue.port = port;
+            _resultValue.soapRoundtripCount = soapRoundtripCount;
+            _resultValue.user = user;
+            return _resultValue;
         }
     }
 }

@@ -65,10 +65,10 @@ public final class ClusterAgentEnvVar {
             return this;
         }
         public ClusterAgentEnvVar build() {
-            final var o = new ClusterAgentEnvVar();
-            o.name = name;
-            o.value = value;
-            return o;
+            final var _resultValue = new ClusterAgentEnvVar();
+            _resultValue.name = name;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

@@ -86,13 +86,13 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateR
             return this;
         }
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry build() {
-            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry();
-            o.ecrCredentialPlugin = ecrCredentialPlugin;
-            o.isDefault = isDefault;
-            o.password = password;
-            o.url = url;
-            o.user = user;
-            return o;
+            final var _resultValue = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry();
+            _resultValue.ecrCredentialPlugin = ecrCredentialPlugin;
+            _resultValue.isDefault = isDefault;
+            _resultValue.password = password;
+            _resultValue.url = url;
+            _resultValue.user = user;
+            return _resultValue;
         }
     }
 }

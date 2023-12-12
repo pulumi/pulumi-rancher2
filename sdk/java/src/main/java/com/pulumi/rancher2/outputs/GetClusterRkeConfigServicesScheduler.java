@@ -81,12 +81,12 @@ public final class GetClusterRkeConfigServicesScheduler {
             return this;
         }
         public GetClusterRkeConfigServicesScheduler build() {
-            final var o = new GetClusterRkeConfigServicesScheduler();
-            o.extraArgs = extraArgs;
-            o.extraBinds = extraBinds;
-            o.extraEnvs = extraEnvs;
-            o.image = image;
-            return o;
+            final var _resultValue = new GetClusterRkeConfigServicesScheduler();
+            _resultValue.extraArgs = extraArgs;
+            _resultValue.extraBinds = extraBinds;
+            _resultValue.extraEnvs = extraEnvs;
+            _resultValue.image = image;
+            return _resultValue;
         }
     }
 }

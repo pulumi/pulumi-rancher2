@@ -73,12 +73,12 @@ public final class GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption {
             return this;
         }
         public GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption build() {
-            final var o = new GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption();
-            o.level = level;
-            o.role = role;
-            o.type = type;
-            o.user = user;
-            return o;
+            final var _resultValue = new GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption();
+            _resultValue.level = level;
+            _resultValue.role = role;
+            _resultValue.type = type;
+            _resultValue.user = user;
+            return _resultValue;
         }
     }
 }
