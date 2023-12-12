@@ -40,9 +40,9 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
             return this;
         }
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDisk build() {
-            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDisk();
-            o.scsiControllerType = scsiControllerType;
-            return o;
+            final var _resultValue = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDisk();
+            _resultValue.scsiControllerType = scsiControllerType;
+            return _resultValue;
         }
     }
 }

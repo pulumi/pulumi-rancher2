@@ -209,18 +209,18 @@ public final class GetClusterAlertGroupResult {
             return this;
         }
         public GetClusterAlertGroupResult build() {
-            final var o = new GetClusterAlertGroupResult();
-            o.annotations = annotations;
-            o.clusterId = clusterId;
-            o.description = description;
-            o.groupIntervalSeconds = groupIntervalSeconds;
-            o.groupWaitSeconds = groupWaitSeconds;
-            o.id = id;
-            o.labels = labels;
-            o.name = name;
-            o.recipients = recipients;
-            o.repeatIntervalSeconds = repeatIntervalSeconds;
-            return o;
+            final var _resultValue = new GetClusterAlertGroupResult();
+            _resultValue.annotations = annotations;
+            _resultValue.clusterId = clusterId;
+            _resultValue.description = description;
+            _resultValue.groupIntervalSeconds = groupIntervalSeconds;
+            _resultValue.groupWaitSeconds = groupWaitSeconds;
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.name = name;
+            _resultValue.recipients = recipients;
+            _resultValue.repeatIntervalSeconds = repeatIntervalSeconds;
+            return _resultValue;
         }
     }
 }

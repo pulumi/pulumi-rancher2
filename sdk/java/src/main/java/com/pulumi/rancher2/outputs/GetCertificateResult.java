@@ -159,16 +159,16 @@ public final class GetCertificateResult {
             return this;
         }
         public GetCertificateResult build() {
-            final var o = new GetCertificateResult();
-            o.annotations = annotations;
-            o.certs = certs;
-            o.description = description;
-            o.id = id;
-            o.labels = labels;
-            o.name = name;
-            o.namespaceId = namespaceId;
-            o.projectId = projectId;
-            return o;
+            final var _resultValue = new GetCertificateResult();
+            _resultValue.annotations = annotations;
+            _resultValue.certs = certs;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.name = name;
+            _resultValue.namespaceId = namespaceId;
+            _resultValue.projectId = projectId;
+            return _resultValue;
         }
     }
 }

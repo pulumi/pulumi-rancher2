@@ -146,15 +146,15 @@ public final class GetGlobalRoleBindingResult {
             return this;
         }
         public GetGlobalRoleBindingResult build() {
-            final var o = new GetGlobalRoleBindingResult();
-            o.annotations = annotations;
-            o.globalRoleId = globalRoleId;
-            o.groupPrincipalId = groupPrincipalId;
-            o.id = id;
-            o.labels = labels;
-            o.name = name;
-            o.userId = userId;
-            return o;
+            final var _resultValue = new GetGlobalRoleBindingResult();
+            _resultValue.annotations = annotations;
+            _resultValue.globalRoleId = globalRoleId;
+            _resultValue.groupPrincipalId = groupPrincipalId;
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.name = name;
+            _resultValue.userId = userId;
+            return _resultValue;
         }
     }
 }

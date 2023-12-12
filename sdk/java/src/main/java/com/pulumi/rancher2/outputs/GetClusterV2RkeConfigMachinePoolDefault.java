@@ -40,9 +40,9 @@ public final class GetClusterV2RkeConfigMachinePoolDefault {
             return this;
         }
         public GetClusterV2RkeConfigMachinePoolDefault build() {
-            final var o = new GetClusterV2RkeConfigMachinePoolDefault();
-            o.hostnameLengthLimit = hostnameLengthLimit;
-            return o;
+            final var _resultValue = new GetClusterV2RkeConfigMachinePoolDefault();
+            _resultValue.hostnameLengthLimit = hostnameLengthLimit;
+            return _resultValue;
         }
     }
 }

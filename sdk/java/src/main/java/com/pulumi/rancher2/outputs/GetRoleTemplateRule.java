@@ -99,13 +99,13 @@ public final class GetRoleTemplateRule {
             return verbs(List.of(verbs));
         }
         public GetRoleTemplateRule build() {
-            final var o = new GetRoleTemplateRule();
-            o.apiGroups = apiGroups;
-            o.nonResourceUrls = nonResourceUrls;
-            o.resourceNames = resourceNames;
-            o.resources = resources;
-            o.verbs = verbs;
-            return o;
+            final var _resultValue = new GetRoleTemplateRule();
+            _resultValue.apiGroups = apiGroups;
+            _resultValue.nonResourceUrls = nonResourceUrls;
+            _resultValue.resourceNames = resourceNames;
+            _resultValue.resources = resources;
+            _resultValue.verbs = verbs;
+            return _resultValue;
         }
     }
 }

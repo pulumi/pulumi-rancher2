@@ -92,13 +92,13 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
             return this;
         }
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProvider build() {
-            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProvider();
-            o.disk = disk;
-            o.global = global;
-            o.network = network;
-            o.virtualCenters = virtualCenters;
-            o.workspace = workspace;
-            return o;
+            final var _resultValue = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProvider();
+            _resultValue.disk = disk;
+            _resultValue.global = global;
+            _resultValue.network = network;
+            _resultValue.virtualCenters = virtualCenters;
+            _resultValue.workspace = workspace;
+            return _resultValue;
         }
     }
 }

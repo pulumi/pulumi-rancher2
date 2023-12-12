@@ -97,14 +97,14 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
             return this;
         }
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobal build() {
-            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobal();
-            o.datacenters = datacenters;
-            o.insecureFlag = insecureFlag;
-            o.password = password;
-            o.port = port;
-            o.soapRoundtripCount = soapRoundtripCount;
-            o.user = user;
-            return o;
+            final var _resultValue = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobal();
+            _resultValue.datacenters = datacenters;
+            _resultValue.insecureFlag = insecureFlag;
+            _resultValue.password = password;
+            _resultValue.port = port;
+            _resultValue.soapRoundtripCount = soapRoundtripCount;
+            _resultValue.user = user;
+            return _resultValue;
         }
     }
 }

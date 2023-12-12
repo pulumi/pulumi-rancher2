@@ -87,11 +87,11 @@ public final class ClusterGkeConfigV2PrivateClusterConfig {
             return this;
         }
         public ClusterGkeConfigV2PrivateClusterConfig build() {
-            final var o = new ClusterGkeConfigV2PrivateClusterConfig();
-            o.enablePrivateEndpoint = enablePrivateEndpoint;
-            o.enablePrivateNodes = enablePrivateNodes;
-            o.masterIpv4CidrBlock = masterIpv4CidrBlock;
-            return o;
+            final var _resultValue = new ClusterGkeConfigV2PrivateClusterConfig();
+            _resultValue.enablePrivateEndpoint = enablePrivateEndpoint;
+            _resultValue.enablePrivateNodes = enablePrivateNodes;
+            _resultValue.masterIpv4CidrBlock = masterIpv4CidrBlock;
+            return _resultValue;
         }
     }
 }

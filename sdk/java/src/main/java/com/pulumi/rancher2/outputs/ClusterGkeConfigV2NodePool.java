@@ -166,15 +166,15 @@ public final class ClusterGkeConfigV2NodePool {
             return this;
         }
         public ClusterGkeConfigV2NodePool build() {
-            final var o = new ClusterGkeConfigV2NodePool();
-            o.autoscaling = autoscaling;
-            o.config = config;
-            o.initialNodeCount = initialNodeCount;
-            o.management = management;
-            o.maxPodsConstraint = maxPodsConstraint;
-            o.name = name;
-            o.version = version;
-            return o;
+            final var _resultValue = new ClusterGkeConfigV2NodePool();
+            _resultValue.autoscaling = autoscaling;
+            _resultValue.config = config;
+            _resultValue.initialNodeCount = initialNodeCount;
+            _resultValue.management = management;
+            _resultValue.maxPodsConstraint = maxPodsConstraint;
+            _resultValue.name = name;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

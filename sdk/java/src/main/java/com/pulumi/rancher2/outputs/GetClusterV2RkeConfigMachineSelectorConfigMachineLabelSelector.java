@@ -57,10 +57,10 @@ public final class GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelecto
             return this;
         }
         public GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector build() {
-            final var o = new GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector();
-            o.matchExpressions = matchExpressions;
-            o.matchLabels = matchLabels;
-            return o;
+            final var _resultValue = new GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector();
+            _resultValue.matchExpressions = matchExpressions;
+            _resultValue.matchLabels = matchLabels;
+            return _resultValue;
         }
     }
 }

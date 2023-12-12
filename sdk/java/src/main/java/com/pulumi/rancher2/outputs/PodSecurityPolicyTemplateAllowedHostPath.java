@@ -68,10 +68,10 @@ public final class PodSecurityPolicyTemplateAllowedHostPath {
             return this;
         }
         public PodSecurityPolicyTemplateAllowedHostPath build() {
-            final var o = new PodSecurityPolicyTemplateAllowedHostPath();
-            o.pathPrefix = pathPrefix;
-            o.readOnly = readOnly;
-            return o;
+            final var _resultValue = new PodSecurityPolicyTemplateAllowedHostPath();
+            _resultValue.pathPrefix = pathPrefix;
+            _resultValue.readOnly = readOnly;
+            return _resultValue;
         }
     }
 }

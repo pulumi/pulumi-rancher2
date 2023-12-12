@@ -38,9 +38,9 @@ public final class GetClusterRkeConfigCloudProviderVsphereCloudProviderNetwork {
             return this;
         }
         public GetClusterRkeConfigCloudProviderVsphereCloudProviderNetwork build() {
-            final var o = new GetClusterRkeConfigCloudProviderVsphereCloudProviderNetwork();
-            o.publicNetwork = publicNetwork;
-            return o;
+            final var _resultValue = new GetClusterRkeConfigCloudProviderVsphereCloudProviderNetwork();
+            _resultValue.publicNetwork = publicNetwork;
+            return _resultValue;
         }
     }
 }

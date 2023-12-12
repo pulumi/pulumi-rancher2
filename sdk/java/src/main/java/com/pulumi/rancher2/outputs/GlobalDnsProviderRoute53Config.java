@@ -143,14 +143,14 @@ public final class GlobalDnsProviderRoute53Config {
             return this;
         }
         public GlobalDnsProviderRoute53Config build() {
-            final var o = new GlobalDnsProviderRoute53Config();
-            o.accessKey = accessKey;
-            o.credentialsPath = credentialsPath;
-            o.region = region;
-            o.roleArn = roleArn;
-            o.secretKey = secretKey;
-            o.zoneType = zoneType;
-            return o;
+            final var _resultValue = new GlobalDnsProviderRoute53Config();
+            _resultValue.accessKey = accessKey;
+            _resultValue.credentialsPath = credentialsPath;
+            _resultValue.region = region;
+            _resultValue.roleArn = roleArn;
+            _resultValue.secretKey = secretKey;
+            _resultValue.zoneType = zoneType;
+            return _resultValue;
         }
     }
 }

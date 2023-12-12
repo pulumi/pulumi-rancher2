@@ -175,20 +175,20 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServi
             return this;
         }
         public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi build() {
-            final var o = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi();
-            o.admissionConfiguration = admissionConfiguration;
-            o.alwaysPullImages = alwaysPullImages;
-            o.auditLog = auditLog;
-            o.eventRateLimit = eventRateLimit;
-            o.extraArgs = extraArgs;
-            o.extraBinds = extraBinds;
-            o.extraEnvs = extraEnvs;
-            o.image = image;
-            o.podSecurityPolicy = podSecurityPolicy;
-            o.secretsEncryptionConfig = secretsEncryptionConfig;
-            o.serviceClusterIpRange = serviceClusterIpRange;
-            o.serviceNodePortRange = serviceNodePortRange;
-            return o;
+            final var _resultValue = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi();
+            _resultValue.admissionConfiguration = admissionConfiguration;
+            _resultValue.alwaysPullImages = alwaysPullImages;
+            _resultValue.auditLog = auditLog;
+            _resultValue.eventRateLimit = eventRateLimit;
+            _resultValue.extraArgs = extraArgs;
+            _resultValue.extraBinds = extraBinds;
+            _resultValue.extraEnvs = extraEnvs;
+            _resultValue.image = image;
+            _resultValue.podSecurityPolicy = podSecurityPolicy;
+            _resultValue.secretsEncryptionConfig = secretsEncryptionConfig;
+            _resultValue.serviceClusterIpRange = serviceClusterIpRange;
+            _resultValue.serviceNodePortRange = serviceNodePortRange;
+            return _resultValue;
         }
     }
 }

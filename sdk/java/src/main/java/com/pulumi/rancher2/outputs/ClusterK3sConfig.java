@@ -68,10 +68,10 @@ public final class ClusterK3sConfig {
             return this;
         }
         public ClusterK3sConfig build() {
-            final var o = new ClusterK3sConfig();
-            o.upgradeStrategy = upgradeStrategy;
-            o.version = version;
-            return o;
+            final var _resultValue = new ClusterK3sConfig();
+            _resultValue.upgradeStrategy = upgradeStrategy;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

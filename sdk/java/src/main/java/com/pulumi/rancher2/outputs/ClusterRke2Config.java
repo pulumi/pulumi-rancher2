@@ -68,10 +68,10 @@ public final class ClusterRke2Config {
             return this;
         }
         public ClusterRke2Config build() {
-            final var o = new ClusterRke2Config();
-            o.upgradeStrategy = upgradeStrategy;
-            o.version = version;
-            return o;
+            final var _resultValue = new ClusterRke2Config();
+            _resultValue.upgradeStrategy = upgradeStrategy;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

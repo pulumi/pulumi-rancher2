@@ -107,14 +107,14 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
             return this;
         }
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvider build() {
-            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvider();
-            o.awsCloudProvider = awsCloudProvider;
-            o.azureCloudProvider = azureCloudProvider;
-            o.customCloudProvider = customCloudProvider;
-            o.name = name;
-            o.openstackCloudProvider = openstackCloudProvider;
-            o.vsphereCloudProvider = vsphereCloudProvider;
-            return o;
+            final var _resultValue = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvider();
+            _resultValue.awsCloudProvider = awsCloudProvider;
+            _resultValue.azureCloudProvider = azureCloudProvider;
+            _resultValue.customCloudProvider = customCloudProvider;
+            _resultValue.name = name;
+            _resultValue.openstackCloudProvider = openstackCloudProvider;
+            _resultValue.vsphereCloudProvider = vsphereCloudProvider;
+            return _resultValue;
         }
     }
 }

@@ -40,9 +40,9 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkF
             return this;
         }
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider build() {
-            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider();
-            o.iface = iface;
-            return o;
+            final var _resultValue = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider();
+            _resultValue.iface = iface;
+            return _resultValue;
         }
     }
 }

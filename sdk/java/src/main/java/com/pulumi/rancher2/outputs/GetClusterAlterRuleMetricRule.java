@@ -85,13 +85,13 @@ public final class GetClusterAlterRuleMetricRule {
             return this;
         }
         public GetClusterAlterRuleMetricRule build() {
-            final var o = new GetClusterAlterRuleMetricRule();
-            o.comparison = comparison;
-            o.description = description;
-            o.duration = duration;
-            o.expression = expression;
-            o.thresholdValue = thresholdValue;
-            return o;
+            final var _resultValue = new GetClusterAlterRuleMetricRule();
+            _resultValue.comparison = comparison;
+            _resultValue.description = description;
+            _resultValue.duration = duration;
+            _resultValue.expression = expression;
+            _resultValue.thresholdValue = thresholdValue;
+            return _resultValue;
         }
     }
 }

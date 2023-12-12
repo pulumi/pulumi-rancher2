@@ -75,12 +75,12 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgra
             return this;
         }
         public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy build() {
-            final var o = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy();
-            o.drain = drain;
-            o.drainInput = drainInput;
-            o.maxUnavailableControlplane = maxUnavailableControlplane;
-            o.maxUnavailableWorker = maxUnavailableWorker;
-            return o;
+            final var _resultValue = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy();
+            _resultValue.drain = drain;
+            _resultValue.drainInput = drainInput;
+            _resultValue.maxUnavailableControlplane = maxUnavailableControlplane;
+            _resultValue.maxUnavailableWorker = maxUnavailableWorker;
+            return _resultValue;
         }
     }
 }

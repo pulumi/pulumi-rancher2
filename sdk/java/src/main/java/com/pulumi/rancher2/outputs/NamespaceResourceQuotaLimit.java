@@ -272,21 +272,21 @@ public final class NamespaceResourceQuotaLimit {
             return this;
         }
         public NamespaceResourceQuotaLimit build() {
-            final var o = new NamespaceResourceQuotaLimit();
-            o.configMaps = configMaps;
-            o.limitsCpu = limitsCpu;
-            o.limitsMemory = limitsMemory;
-            o.persistentVolumeClaims = persistentVolumeClaims;
-            o.pods = pods;
-            o.replicationControllers = replicationControllers;
-            o.requestsCpu = requestsCpu;
-            o.requestsMemory = requestsMemory;
-            o.requestsStorage = requestsStorage;
-            o.secrets = secrets;
-            o.services = services;
-            o.servicesLoadBalancers = servicesLoadBalancers;
-            o.servicesNodePorts = servicesNodePorts;
-            return o;
+            final var _resultValue = new NamespaceResourceQuotaLimit();
+            _resultValue.configMaps = configMaps;
+            _resultValue.limitsCpu = limitsCpu;
+            _resultValue.limitsMemory = limitsMemory;
+            _resultValue.persistentVolumeClaims = persistentVolumeClaims;
+            _resultValue.pods = pods;
+            _resultValue.replicationControllers = replicationControllers;
+            _resultValue.requestsCpu = requestsCpu;
+            _resultValue.requestsMemory = requestsMemory;
+            _resultValue.requestsStorage = requestsStorage;
+            _resultValue.secrets = secrets;
+            _resultValue.services = services;
+            _resultValue.servicesLoadBalancers = servicesLoadBalancers;
+            _resultValue.servicesNodePorts = servicesNodePorts;
+            return _resultValue;
         }
     }
 }

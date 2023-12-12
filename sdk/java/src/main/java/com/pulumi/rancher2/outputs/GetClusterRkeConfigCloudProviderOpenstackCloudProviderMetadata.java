@@ -50,10 +50,10 @@ public final class GetClusterRkeConfigCloudProviderOpenstackCloudProviderMetadat
             return this;
         }
         public GetClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata build() {
-            final var o = new GetClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata();
-            o.requestTimeout = requestTimeout;
-            o.searchOrder = searchOrder;
-            return o;
+            final var _resultValue = new GetClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata();
+            _resultValue.requestTimeout = requestTimeout;
+            _resultValue.searchOrder = searchOrder;
+            return _resultValue;
         }
     }
 }

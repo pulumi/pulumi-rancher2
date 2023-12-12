@@ -40,9 +40,9 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
             return this;
         }
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRoute build() {
-            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRoute();
-            o.routerId = routerId;
-            return o;
+            final var _resultValue = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRoute();
+            _resultValue.routerId = routerId;
+            return _resultValue;
         }
     }
 }

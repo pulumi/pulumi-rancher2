@@ -339,24 +339,24 @@ public final class ClusterSyncNode {
             return this;
         }
         public ClusterSyncNode build() {
-            final var o = new ClusterSyncNode();
-            o.annotations = annotations;
-            o.capacity = capacity;
-            o.clusterId = clusterId;
-            o.externalIpAddress = externalIpAddress;
-            o.hostname = hostname;
-            o.id = id;
-            o.ipAddress = ipAddress;
-            o.labels = labels;
-            o.name = name;
-            o.nodePoolId = nodePoolId;
-            o.nodeTemplateId = nodeTemplateId;
-            o.providerId = providerId;
-            o.requestedHostname = requestedHostname;
-            o.roles = roles;
-            o.sshUser = sshUser;
-            o.systemInfo = systemInfo;
-            return o;
+            final var _resultValue = new ClusterSyncNode();
+            _resultValue.annotations = annotations;
+            _resultValue.capacity = capacity;
+            _resultValue.clusterId = clusterId;
+            _resultValue.externalIpAddress = externalIpAddress;
+            _resultValue.hostname = hostname;
+            _resultValue.id = id;
+            _resultValue.ipAddress = ipAddress;
+            _resultValue.labels = labels;
+            _resultValue.name = name;
+            _resultValue.nodePoolId = nodePoolId;
+            _resultValue.nodeTemplateId = nodeTemplateId;
+            _resultValue.providerId = providerId;
+            _resultValue.requestedHostname = requestedHostname;
+            _resultValue.roles = roles;
+            _resultValue.sshUser = sshUser;
+            _resultValue.systemInfo = systemInfo;
+            return _resultValue;
         }
     }
 }

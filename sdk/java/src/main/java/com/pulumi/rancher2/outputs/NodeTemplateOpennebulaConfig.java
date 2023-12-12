@@ -395,27 +395,27 @@ public final class NodeTemplateOpennebulaConfig {
             return this;
         }
         public NodeTemplateOpennebulaConfig build() {
-            final var o = new NodeTemplateOpennebulaConfig();
-            o.b2dSize = b2dSize;
-            o.cpu = cpu;
-            o.devPrefix = devPrefix;
-            o.disableVnc = disableVnc;
-            o.diskResize = diskResize;
-            o.imageId = imageId;
-            o.imageName = imageName;
-            o.imageOwner = imageOwner;
-            o.memory = memory;
-            o.networkId = networkId;
-            o.networkName = networkName;
-            o.networkOwner = networkOwner;
-            o.password = password;
-            o.sshUser = sshUser;
-            o.templateId = templateId;
-            o.templateName = templateName;
-            o.user = user;
-            o.vcpu = vcpu;
-            o.xmlRpcUrl = xmlRpcUrl;
-            return o;
+            final var _resultValue = new NodeTemplateOpennebulaConfig();
+            _resultValue.b2dSize = b2dSize;
+            _resultValue.cpu = cpu;
+            _resultValue.devPrefix = devPrefix;
+            _resultValue.disableVnc = disableVnc;
+            _resultValue.diskResize = diskResize;
+            _resultValue.imageId = imageId;
+            _resultValue.imageName = imageName;
+            _resultValue.imageOwner = imageOwner;
+            _resultValue.memory = memory;
+            _resultValue.networkId = networkId;
+            _resultValue.networkName = networkName;
+            _resultValue.networkOwner = networkOwner;
+            _resultValue.password = password;
+            _resultValue.sshUser = sshUser;
+            _resultValue.templateId = templateId;
+            _resultValue.templateName = templateName;
+            _resultValue.user = user;
+            _resultValue.vcpu = vcpu;
+            _resultValue.xmlRpcUrl = xmlRpcUrl;
+            return _resultValue;
         }
     }
 }

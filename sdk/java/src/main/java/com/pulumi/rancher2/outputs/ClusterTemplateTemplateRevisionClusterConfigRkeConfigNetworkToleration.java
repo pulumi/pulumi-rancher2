@@ -85,13 +85,13 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkT
             return this;
         }
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkToleration build() {
-            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkToleration();
-            o.effect = effect;
-            o.key = key;
-            o.operator = operator;
-            o.seconds = seconds;
-            o.value = value;
-            return o;
+            final var _resultValue = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkToleration();
+            _resultValue.effect = effect;
+            _resultValue.key = key;
+            _resultValue.operator = operator;
+            _resultValue.seconds = seconds;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

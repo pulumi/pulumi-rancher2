@@ -85,13 +85,13 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeS
             return this;
         }
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput build() {
-            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput();
-            o.deleteLocalData = deleteLocalData;
-            o.force = force;
-            o.gracePeriod = gracePeriod;
-            o.ignoreDaemonSets = ignoreDaemonSets;
-            o.timeout = timeout;
-            return o;
+            final var _resultValue = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInput();
+            _resultValue.deleteLocalData = deleteLocalData;
+            _resultValue.force = force;
+            _resultValue.gracePeriod = gracePeriod;
+            _resultValue.ignoreDaemonSets = ignoreDaemonSets;
+            _resultValue.timeout = timeout;
+            return _resultValue;
         }
     }
 }

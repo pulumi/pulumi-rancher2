@@ -55,10 +55,10 @@ public final class GetClusterRkeConfigCloudProviderAwsCloudProvider {
             return serviceOverrides(List.of(serviceOverrides));
         }
         public GetClusterRkeConfigCloudProviderAwsCloudProvider build() {
-            final var o = new GetClusterRkeConfigCloudProviderAwsCloudProvider();
-            o.global = global;
-            o.serviceOverrides = serviceOverrides;
-            return o;
+            final var _resultValue = new GetClusterRkeConfigCloudProviderAwsCloudProvider();
+            _resultValue.global = global;
+            _resultValue.serviceOverrides = serviceOverrides;
+            return _resultValue;
         }
     }
 }

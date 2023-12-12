@@ -74,10 +74,10 @@ public final class ClusterV2RkeConfigRegistries {
             return mirrors(List.of(mirrors));
         }
         public ClusterV2RkeConfigRegistries build() {
-            final var o = new ClusterV2RkeConfigRegistries();
-            o.configs = configs;
-            o.mirrors = mirrors;
-            return o;
+            final var _resultValue = new ClusterV2RkeConfigRegistries();
+            _resultValue.configs = configs;
+            _resultValue.mirrors = mirrors;
+            return _resultValue;
         }
     }
 }

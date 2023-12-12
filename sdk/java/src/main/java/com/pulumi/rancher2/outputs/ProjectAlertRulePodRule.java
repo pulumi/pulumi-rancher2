@@ -106,12 +106,12 @@ public final class ProjectAlertRulePodRule {
             return this;
         }
         public ProjectAlertRulePodRule build() {
-            final var o = new ProjectAlertRulePodRule();
-            o.condition = condition;
-            o.podId = podId;
-            o.restartIntervalSeconds = restartIntervalSeconds;
-            o.restartTimes = restartTimes;
-            return o;
+            final var _resultValue = new ProjectAlertRulePodRule();
+            _resultValue.condition = condition;
+            _resultValue.podId = podId;
+            _resultValue.restartIntervalSeconds = restartIntervalSeconds;
+            _resultValue.restartTimes = restartTimes;
+            return _resultValue;
         }
     }
 }

@@ -51,10 +51,10 @@ public final class ClusterAlterRuleEventRule {
             return this;
         }
         public ClusterAlterRuleEventRule build() {
-            final var o = new ClusterAlterRuleEventRule();
-            o.eventType = eventType;
-            o.resourceKind = resourceKind;
-            return o;
+            final var _resultValue = new ClusterAlterRuleEventRule();
+            _resultValue.eventType = eventType;
+            _resultValue.resourceKind = resourceKind;
+            return _resultValue;
         }
     }
 }

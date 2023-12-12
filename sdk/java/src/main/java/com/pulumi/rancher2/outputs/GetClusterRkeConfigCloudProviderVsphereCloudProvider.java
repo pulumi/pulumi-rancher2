@@ -90,13 +90,13 @@ public final class GetClusterRkeConfigCloudProviderVsphereCloudProvider {
             return this;
         }
         public GetClusterRkeConfigCloudProviderVsphereCloudProvider build() {
-            final var o = new GetClusterRkeConfigCloudProviderVsphereCloudProvider();
-            o.disk = disk;
-            o.global = global;
-            o.network = network;
-            o.virtualCenters = virtualCenters;
-            o.workspace = workspace;
-            return o;
+            final var _resultValue = new GetClusterRkeConfigCloudProviderVsphereCloudProvider();
+            _resultValue.disk = disk;
+            _resultValue.global = global;
+            _resultValue.network = network;
+            _resultValue.virtualCenters = virtualCenters;
+            _resultValue.workspace = workspace;
+            return _resultValue;
         }
     }
 }

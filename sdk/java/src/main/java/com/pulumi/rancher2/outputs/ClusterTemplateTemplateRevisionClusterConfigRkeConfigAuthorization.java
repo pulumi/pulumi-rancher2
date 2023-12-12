@@ -53,10 +53,10 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthoriz
             return this;
         }
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorization build() {
-            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorization();
-            o.mode = mode;
-            o.options = options;
-            return o;
+            final var _resultValue = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorization();
+            _resultValue.mode = mode;
+            _resultValue.options = options;
+            return _resultValue;
         }
     }
 }

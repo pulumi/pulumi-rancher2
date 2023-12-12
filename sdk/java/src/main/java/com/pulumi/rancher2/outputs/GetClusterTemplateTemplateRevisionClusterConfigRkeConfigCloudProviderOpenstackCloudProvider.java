@@ -86,13 +86,13 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloud
             return this;
         }
         public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProvider build() {
-            final var o = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProvider();
-            o.blockStorage = blockStorage;
-            o.global = global;
-            o.loadBalancer = loadBalancer;
-            o.metadata = metadata;
-            o.route = route;
-            return o;
+            final var _resultValue = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProvider();
+            _resultValue.blockStorage = blockStorage;
+            _resultValue.global = global;
+            _resultValue.loadBalancer = loadBalancer;
+            _resultValue.metadata = metadata;
+            _resultValue.route = route;
+            return _resultValue;
         }
     }
 }

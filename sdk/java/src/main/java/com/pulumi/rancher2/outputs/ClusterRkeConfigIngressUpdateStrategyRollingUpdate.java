@@ -48,9 +48,9 @@ public final class ClusterRkeConfigIngressUpdateStrategyRollingUpdate {
             return this;
         }
         public ClusterRkeConfigIngressUpdateStrategyRollingUpdate build() {
-            final var o = new ClusterRkeConfigIngressUpdateStrategyRollingUpdate();
-            o.maxUnavailable = maxUnavailable;
-            return o;
+            final var _resultValue = new ClusterRkeConfigIngressUpdateStrategyRollingUpdate();
+            _resultValue.maxUnavailable = maxUnavailable;
+            return _resultValue;
         }
     }
 }

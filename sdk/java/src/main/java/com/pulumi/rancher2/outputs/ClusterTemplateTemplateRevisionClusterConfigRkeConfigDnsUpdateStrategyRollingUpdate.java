@@ -51,10 +51,10 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdat
             return this;
         }
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate build() {
-            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate();
-            o.maxSurge = maxSurge;
-            o.maxUnavailable = maxUnavailable;
-            return o;
+            final var _resultValue = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate();
+            _resultValue.maxSurge = maxSurge;
+            _resultValue.maxUnavailable = maxUnavailable;
+            return _resultValue;
         }
     }
 }

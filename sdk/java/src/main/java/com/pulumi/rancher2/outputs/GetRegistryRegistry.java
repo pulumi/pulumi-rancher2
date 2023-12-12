@@ -62,11 +62,11 @@ public final class GetRegistryRegistry {
             return this;
         }
         public GetRegistryRegistry build() {
-            final var o = new GetRegistryRegistry();
-            o.address = address;
-            o.password = password;
-            o.username = username;
-            return o;
+            final var _resultValue = new GetRegistryRegistry();
+            _resultValue.address = address;
+            _resultValue.password = password;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

@@ -105,12 +105,12 @@ public final class ClusterClusterAgentDeploymentCustomizationOverrideResourceReq
             return this;
         }
         public ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirement build() {
-            final var o = new ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirement();
-            o.cpuLimit = cpuLimit;
-            o.cpuRequest = cpuRequest;
-            o.memoryLimit = memoryLimit;
-            o.memoryRequest = memoryRequest;
-            return o;
+            final var _resultValue = new ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirement();
+            _resultValue.cpuLimit = cpuLimit;
+            _resultValue.cpuRequest = cpuRequest;
+            _resultValue.memoryLimit = memoryLimit;
+            _resultValue.memoryRequest = memoryRequest;
+            return _resultValue;
         }
     }
 }

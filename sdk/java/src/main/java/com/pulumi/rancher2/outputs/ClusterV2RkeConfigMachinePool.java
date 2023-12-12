@@ -412,28 +412,28 @@ public final class ClusterV2RkeConfigMachinePool {
             return this;
         }
         public ClusterV2RkeConfigMachinePool build() {
-            final var o = new ClusterV2RkeConfigMachinePool();
-            o.annotations = annotations;
-            o.cloudCredentialSecretName = cloudCredentialSecretName;
-            o.controlPlaneRole = controlPlaneRole;
-            o.drainBeforeDelete = drainBeforeDelete;
-            o.etcdRole = etcdRole;
-            o.hostnameLengthLimit = hostnameLengthLimit;
-            o.labels = labels;
-            o.machineConfig = machineConfig;
-            o.machineLabels = machineLabels;
-            o.maxUnhealthy = maxUnhealthy;
-            o.name = name;
-            o.nodeDrainTimeout = nodeDrainTimeout;
-            o.nodeStartupTimeoutSeconds = nodeStartupTimeoutSeconds;
-            o.paused = paused;
-            o.quantity = quantity;
-            o.rollingUpdate = rollingUpdate;
-            o.taints = taints;
-            o.unhealthyNodeTimeoutSeconds = unhealthyNodeTimeoutSeconds;
-            o.unhealthyRange = unhealthyRange;
-            o.workerRole = workerRole;
-            return o;
+            final var _resultValue = new ClusterV2RkeConfigMachinePool();
+            _resultValue.annotations = annotations;
+            _resultValue.cloudCredentialSecretName = cloudCredentialSecretName;
+            _resultValue.controlPlaneRole = controlPlaneRole;
+            _resultValue.drainBeforeDelete = drainBeforeDelete;
+            _resultValue.etcdRole = etcdRole;
+            _resultValue.hostnameLengthLimit = hostnameLengthLimit;
+            _resultValue.labels = labels;
+            _resultValue.machineConfig = machineConfig;
+            _resultValue.machineLabels = machineLabels;
+            _resultValue.maxUnhealthy = maxUnhealthy;
+            _resultValue.name = name;
+            _resultValue.nodeDrainTimeout = nodeDrainTimeout;
+            _resultValue.nodeStartupTimeoutSeconds = nodeStartupTimeoutSeconds;
+            _resultValue.paused = paused;
+            _resultValue.quantity = quantity;
+            _resultValue.rollingUpdate = rollingUpdate;
+            _resultValue.taints = taints;
+            _resultValue.unhealthyNodeTimeoutSeconds = unhealthyNodeTimeoutSeconds;
+            _resultValue.unhealthyRange = unhealthyRange;
+            _resultValue.workerRole = workerRole;
+            return _resultValue;
         }
     }
 }

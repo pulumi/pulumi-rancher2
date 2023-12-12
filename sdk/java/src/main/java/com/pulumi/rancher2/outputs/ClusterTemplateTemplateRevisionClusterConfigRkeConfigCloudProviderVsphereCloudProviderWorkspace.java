@@ -84,13 +84,13 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
             return this;
         }
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspace build() {
-            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspace();
-            o.datacenter = datacenter;
-            o.defaultDatastore = defaultDatastore;
-            o.folder = folder;
-            o.resourcepoolPath = resourcepoolPath;
-            o.server = server;
-            return o;
+            final var _resultValue = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspace();
+            _resultValue.datacenter = datacenter;
+            _resultValue.defaultDatastore = defaultDatastore;
+            _resultValue.folder = folder;
+            _resultValue.resourcepoolPath = resourcepoolPath;
+            _resultValue.server = server;
+            return _resultValue;
         }
     }
 }

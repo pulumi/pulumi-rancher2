@@ -330,25 +330,25 @@ public final class GetClusterV2Result {
             return this;
         }
         public GetClusterV2Result build() {
-            final var o = new GetClusterV2Result();
-            o.agentEnvVars = agentEnvVars;
-            o.annotations = annotations;
-            o.cloudCredentialSecretName = cloudCredentialSecretName;
-            o.clusterRegistrationToken = clusterRegistrationToken;
-            o.clusterV1Id = clusterV1Id;
-            o.defaultClusterRoleForProjectMembers = defaultClusterRoleForProjectMembers;
-            o.defaultPodSecurityAdmissionConfigurationTemplateName = defaultPodSecurityAdmissionConfigurationTemplateName;
-            o.defaultPodSecurityPolicyTemplateName = defaultPodSecurityPolicyTemplateName;
-            o.enableNetworkPolicy = enableNetworkPolicy;
-            o.fleetNamespace = fleetNamespace;
-            o.id = id;
-            o.kubeConfig = kubeConfig;
-            o.kubernetesVersion = kubernetesVersion;
-            o.labels = labels;
-            o.name = name;
-            o.resourceVersion = resourceVersion;
-            o.rkeConfig = rkeConfig;
-            return o;
+            final var _resultValue = new GetClusterV2Result();
+            _resultValue.agentEnvVars = agentEnvVars;
+            _resultValue.annotations = annotations;
+            _resultValue.cloudCredentialSecretName = cloudCredentialSecretName;
+            _resultValue.clusterRegistrationToken = clusterRegistrationToken;
+            _resultValue.clusterV1Id = clusterV1Id;
+            _resultValue.defaultClusterRoleForProjectMembers = defaultClusterRoleForProjectMembers;
+            _resultValue.defaultPodSecurityAdmissionConfigurationTemplateName = defaultPodSecurityAdmissionConfigurationTemplateName;
+            _resultValue.defaultPodSecurityPolicyTemplateName = defaultPodSecurityPolicyTemplateName;
+            _resultValue.enableNetworkPolicy = enableNetworkPolicy;
+            _resultValue.fleetNamespace = fleetNamespace;
+            _resultValue.id = id;
+            _resultValue.kubeConfig = kubeConfig;
+            _resultValue.kubernetesVersion = kubernetesVersion;
+            _resultValue.labels = labels;
+            _resultValue.name = name;
+            _resultValue.resourceVersion = resourceVersion;
+            _resultValue.rkeConfig = rkeConfig;
+            return _resultValue;
         }
     }
 }

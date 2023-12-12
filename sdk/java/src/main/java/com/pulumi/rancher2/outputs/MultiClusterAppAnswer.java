@@ -88,11 +88,11 @@ public final class MultiClusterAppAnswer {
             return this;
         }
         public MultiClusterAppAnswer build() {
-            final var o = new MultiClusterAppAnswer();
-            o.clusterId = clusterId;
-            o.projectId = projectId;
-            o.values = values;
-            return o;
+            final var _resultValue = new MultiClusterAppAnswer();
+            _resultValue.clusterId = clusterId;
+            _resultValue.projectId = projectId;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

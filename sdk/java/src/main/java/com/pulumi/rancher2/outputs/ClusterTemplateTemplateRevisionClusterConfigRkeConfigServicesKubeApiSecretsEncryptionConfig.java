@@ -60,10 +60,10 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
             return this;
         }
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig build() {
-            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig();
-            o.customConfig = customConfig;
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig();
+            _resultValue.customConfig = customConfig;
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

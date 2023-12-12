@@ -71,10 +71,10 @@ public final class ClusterRkeConfigAuthentication {
             return this;
         }
         public ClusterRkeConfigAuthentication build() {
-            final var o = new ClusterRkeConfigAuthentication();
-            o.sans = sans;
-            o.strategy = strategy;
-            return o;
+            final var _resultValue = new ClusterRkeConfigAuthentication();
+            _resultValue.sans = sans;
+            _resultValue.strategy = strategy;
+            return _resultValue;
         }
     }
 }

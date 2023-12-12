@@ -259,21 +259,21 @@ public final class GetNodePoolResult {
             return this;
         }
         public GetNodePoolResult build() {
-            final var o = new GetNodePoolResult();
-            o.annotations = annotations;
-            o.clusterId = clusterId;
-            o.controlPlane = controlPlane;
-            o.deleteNotReadyAfterSecs = deleteNotReadyAfterSecs;
-            o.etcd = etcd;
-            o.hostnamePrefix = hostnamePrefix;
-            o.id = id;
-            o.labels = labels;
-            o.name = name;
-            o.nodeTaints = nodeTaints;
-            o.nodeTemplateId = nodeTemplateId;
-            o.quantity = quantity;
-            o.worker = worker;
-            return o;
+            final var _resultValue = new GetNodePoolResult();
+            _resultValue.annotations = annotations;
+            _resultValue.clusterId = clusterId;
+            _resultValue.controlPlane = controlPlane;
+            _resultValue.deleteNotReadyAfterSecs = deleteNotReadyAfterSecs;
+            _resultValue.etcd = etcd;
+            _resultValue.hostnamePrefix = hostnamePrefix;
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.name = name;
+            _resultValue.nodeTaints = nodeTaints;
+            _resultValue.nodeTemplateId = nodeTemplateId;
+            _resultValue.quantity = quantity;
+            _resultValue.worker = worker;
+            return _resultValue;
         }
     }
 }

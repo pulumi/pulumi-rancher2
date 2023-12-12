@@ -296,22 +296,22 @@ public final class MachineConfigV2DigitaloceanConfig {
             return this;
         }
         public MachineConfigV2DigitaloceanConfig build() {
-            final var o = new MachineConfigV2DigitaloceanConfig();
-            o.accessToken = accessToken;
-            o.backups = backups;
-            o.image = image;
-            o.ipv6 = ipv6;
-            o.monitoring = monitoring;
-            o.privateNetworking = privateNetworking;
-            o.region = region;
-            o.size = size;
-            o.sshKeyContents = sshKeyContents;
-            o.sshKeyFingerprint = sshKeyFingerprint;
-            o.sshPort = sshPort;
-            o.sshUser = sshUser;
-            o.tags = tags;
-            o.userdata = userdata;
-            return o;
+            final var _resultValue = new MachineConfigV2DigitaloceanConfig();
+            _resultValue.accessToken = accessToken;
+            _resultValue.backups = backups;
+            _resultValue.image = image;
+            _resultValue.ipv6 = ipv6;
+            _resultValue.monitoring = monitoring;
+            _resultValue.privateNetworking = privateNetworking;
+            _resultValue.region = region;
+            _resultValue.size = size;
+            _resultValue.sshKeyContents = sshKeyContents;
+            _resultValue.sshKeyFingerprint = sshKeyFingerprint;
+            _resultValue.sshPort = sshPort;
+            _resultValue.sshUser = sshUser;
+            _resultValue.tags = tags;
+            _resultValue.userdata = userdata;
+            return _resultValue;
         }
     }
 }

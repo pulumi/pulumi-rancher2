@@ -50,10 +50,10 @@ public final class GetClusterRke2Config {
             return this;
         }
         public GetClusterRke2Config build() {
-            final var o = new GetClusterRke2Config();
-            o.upgradeStrategy = upgradeStrategy;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetClusterRke2Config();
+            _resultValue.upgradeStrategy = upgradeStrategy;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

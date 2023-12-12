@@ -70,11 +70,11 @@ public final class GetPrincipalResult {
             return this;
         }
         public GetPrincipalResult build() {
-            final var o = new GetPrincipalResult();
-            o.id = id;
-            o.name = name;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetPrincipalResult();
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

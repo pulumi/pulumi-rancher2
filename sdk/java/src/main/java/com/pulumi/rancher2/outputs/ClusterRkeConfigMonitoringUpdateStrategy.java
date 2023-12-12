@@ -68,10 +68,10 @@ public final class ClusterRkeConfigMonitoringUpdateStrategy {
             return this;
         }
         public ClusterRkeConfigMonitoringUpdateStrategy build() {
-            final var o = new ClusterRkeConfigMonitoringUpdateStrategy();
-            o.rollingUpdate = rollingUpdate;
-            o.strategy = strategy;
-            return o;
+            final var _resultValue = new ClusterRkeConfigMonitoringUpdateStrategy();
+            _resultValue.rollingUpdate = rollingUpdate;
+            _resultValue.strategy = strategy;
+            return _resultValue;
         }
     }
 }

@@ -49,10 +49,10 @@ public final class GetGlobalDnsProviderAlidnsConfig {
             return this;
         }
         public GetGlobalDnsProviderAlidnsConfig build() {
-            final var o = new GetGlobalDnsProviderAlidnsConfig();
-            o.accessKey = accessKey;
-            o.secretKey = secretKey;
-            return o;
+            final var _resultValue = new GetGlobalDnsProviderAlidnsConfig();
+            _resultValue.accessKey = accessKey;
+            _resultValue.secretKey = secretKey;
+            return _resultValue;
         }
     }
 }

@@ -62,11 +62,11 @@ public final class GetNotifierSlackConfig {
             return this;
         }
         public GetNotifierSlackConfig build() {
-            final var o = new GetNotifierSlackConfig();
-            o.defaultRecipient = defaultRecipient;
-            o.proxyUrl = proxyUrl;
-            o.url = url;
-            return o;
+            final var _resultValue = new GetNotifierSlackConfig();
+            _resultValue.defaultRecipient = defaultRecipient;
+            _resultValue.proxyUrl = proxyUrl;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

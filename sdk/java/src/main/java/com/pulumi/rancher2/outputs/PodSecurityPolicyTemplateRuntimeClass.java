@@ -71,10 +71,10 @@ public final class PodSecurityPolicyTemplateRuntimeClass {
             return this;
         }
         public PodSecurityPolicyTemplateRuntimeClass build() {
-            final var o = new PodSecurityPolicyTemplateRuntimeClass();
-            o.allowedRuntimeClassNames = allowedRuntimeClassNames;
-            o.defaultRuntimeClassName = defaultRuntimeClassName;
-            return o;
+            final var _resultValue = new PodSecurityPolicyTemplateRuntimeClass();
+            _resultValue.allowedRuntimeClassNames = allowedRuntimeClassNames;
+            _resultValue.defaultRuntimeClassName = defaultRuntimeClassName;
+            return _resultValue;
         }
     }
 }

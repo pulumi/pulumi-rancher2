@@ -86,13 +86,13 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinea
             return this;
         }
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams build() {
-            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams();
-            o.coresPerReplica = coresPerReplica;
-            o.max = max;
-            o.min = min;
-            o.nodesPerReplica = nodesPerReplica;
-            o.preventSinglePointFailure = preventSinglePointFailure;
-            return o;
+            final var _resultValue = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams();
+            _resultValue.coresPerReplica = coresPerReplica;
+            _resultValue.max = max;
+            _resultValue.min = min;
+            _resultValue.nodesPerReplica = nodesPerReplica;
+            _resultValue.preventSinglePointFailure = preventSinglePointFailure;
+            return _resultValue;
         }
     }
 }

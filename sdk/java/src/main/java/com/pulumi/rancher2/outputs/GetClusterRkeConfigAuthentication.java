@@ -53,10 +53,10 @@ public final class GetClusterRkeConfigAuthentication {
             return this;
         }
         public GetClusterRkeConfigAuthentication build() {
-            final var o = new GetClusterRkeConfigAuthentication();
-            o.sans = sans;
-            o.strategy = strategy;
-            return o;
+            final var _resultValue = new GetClusterRkeConfigAuthentication();
+            _resultValue.sans = sans;
+            _resultValue.strategy = strategy;
+            return _resultValue;
         }
     }
 }

@@ -40,9 +40,9 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressU
             return this;
         }
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate build() {
-            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate();
-            o.maxUnavailable = maxUnavailable;
-            return o;
+            final var _resultValue = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate();
+            _resultValue.maxUnavailable = maxUnavailable;
+            return _resultValue;
         }
     }
 }

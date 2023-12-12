@@ -52,10 +52,10 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUp
             return this;
         }
         public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy build() {
-            final var o = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy();
-            o.rollingUpdate = rollingUpdate;
-            o.strategy = strategy;
-            return o;
+            final var _resultValue = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy();
+            _resultValue.rollingUpdate = rollingUpdate;
+            _resultValue.strategy = strategy;
+            return _resultValue;
         }
     }
 }

@@ -52,10 +52,10 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitori
             return this;
         }
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy build() {
-            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy();
-            o.rollingUpdate = rollingUpdate;
-            o.strategy = strategy;
-            return o;
+            final var _resultValue = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy();
+            _resultValue.rollingUpdate = rollingUpdate;
+            _resultValue.strategy = strategy;
+            return _resultValue;
         }
     }
 }

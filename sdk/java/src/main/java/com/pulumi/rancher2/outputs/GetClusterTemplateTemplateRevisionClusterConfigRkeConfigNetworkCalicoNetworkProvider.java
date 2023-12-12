@@ -38,9 +38,9 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwo
             return this;
         }
         public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider build() {
-            final var o = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider();
-            o.cloudProvider = cloudProvider;
-            return o;
+            final var _resultValue = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider();
+            _resultValue.cloudProvider = cloudProvider;
+            return _resultValue;
         }
     }
 }

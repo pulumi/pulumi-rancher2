@@ -108,12 +108,12 @@ public final class ClusterV2RkeConfigEtcd {
             return this;
         }
         public ClusterV2RkeConfigEtcd build() {
-            final var o = new ClusterV2RkeConfigEtcd();
-            o.disableSnapshots = disableSnapshots;
-            o.s3Config = s3Config;
-            o.snapshotRetention = snapshotRetention;
-            o.snapshotScheduleCron = snapshotScheduleCron;
-            return o;
+            final var _resultValue = new ClusterV2RkeConfigEtcd();
+            _resultValue.disableSnapshots = disableSnapshots;
+            _resultValue.s3Config = s3Config;
+            _resultValue.snapshotRetention = snapshotRetention;
+            _resultValue.snapshotScheduleCron = snapshotScheduleCron;
+            return _resultValue;
         }
     }
 }

@@ -334,24 +334,24 @@ public final class NodeTemplateLinodeConfig {
             return this;
         }
         public NodeTemplateLinodeConfig build() {
-            final var o = new NodeTemplateLinodeConfig();
-            o.authorizedUsers = authorizedUsers;
-            o.createPrivateIp = createPrivateIp;
-            o.dockerPort = dockerPort;
-            o.image = image;
-            o.instanceType = instanceType;
-            o.label = label;
-            o.region = region;
-            o.rootPass = rootPass;
-            o.sshPort = sshPort;
-            o.sshUser = sshUser;
-            o.stackscript = stackscript;
-            o.stackscriptData = stackscriptData;
-            o.swapSize = swapSize;
-            o.tags = tags;
-            o.token = token;
-            o.uaPrefix = uaPrefix;
-            return o;
+            final var _resultValue = new NodeTemplateLinodeConfig();
+            _resultValue.authorizedUsers = authorizedUsers;
+            _resultValue.createPrivateIp = createPrivateIp;
+            _resultValue.dockerPort = dockerPort;
+            _resultValue.image = image;
+            _resultValue.instanceType = instanceType;
+            _resultValue.label = label;
+            _resultValue.region = region;
+            _resultValue.rootPass = rootPass;
+            _resultValue.sshPort = sshPort;
+            _resultValue.sshUser = sshUser;
+            _resultValue.stackscript = stackscript;
+            _resultValue.stackscriptData = stackscriptData;
+            _resultValue.swapSize = swapSize;
+            _resultValue.tags = tags;
+            _resultValue.token = token;
+            _resultValue.uaPrefix = uaPrefix;
+            return _resultValue;
         }
     }
 }

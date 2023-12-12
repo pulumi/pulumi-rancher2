@@ -67,10 +67,10 @@ public final class ClusterGkeConfigV2NodePoolManagement {
             return this;
         }
         public ClusterGkeConfigV2NodePoolManagement build() {
-            final var o = new ClusterGkeConfigV2NodePoolManagement();
-            o.autoRepair = autoRepair;
-            o.autoUpgrade = autoUpgrade;
-            return o;
+            final var _resultValue = new ClusterGkeConfigV2NodePoolManagement();
+            _resultValue.autoRepair = autoRepair;
+            _resultValue.autoUpgrade = autoUpgrade;
+            return _resultValue;
         }
     }
 }

@@ -209,23 +209,23 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
             return this;
         }
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcd build() {
-            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcd();
-            o.backupConfig = backupConfig;
-            o.caCert = caCert;
-            o.cert = cert;
-            o.creation = creation;
-            o.externalUrls = externalUrls;
-            o.extraArgs = extraArgs;
-            o.extraBinds = extraBinds;
-            o.extraEnvs = extraEnvs;
-            o.gid = gid;
-            o.image = image;
-            o.key = key;
-            o.path = path;
-            o.retention = retention;
-            o.snapshot = snapshot;
-            o.uid = uid;
-            return o;
+            final var _resultValue = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcd();
+            _resultValue.backupConfig = backupConfig;
+            _resultValue.caCert = caCert;
+            _resultValue.cert = cert;
+            _resultValue.creation = creation;
+            _resultValue.externalUrls = externalUrls;
+            _resultValue.extraArgs = extraArgs;
+            _resultValue.extraBinds = extraBinds;
+            _resultValue.extraEnvs = extraEnvs;
+            _resultValue.gid = gid;
+            _resultValue.image = image;
+            _resultValue.key = key;
+            _resultValue.path = path;
+            _resultValue.retention = retention;
+            _resultValue.snapshot = snapshot;
+            _resultValue.uid = uid;
+            return _resultValue;
         }
     }
 }

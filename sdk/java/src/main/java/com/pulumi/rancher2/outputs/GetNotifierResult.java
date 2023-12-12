@@ -269,21 +269,21 @@ public final class GetNotifierResult {
             return this;
         }
         public GetNotifierResult build() {
-            final var o = new GetNotifierResult();
-            o.annotations = annotations;
-            o.clusterId = clusterId;
-            o.description = description;
-            o.dingtalkConfig = dingtalkConfig;
-            o.id = id;
-            o.labels = labels;
-            o.msteamsConfig = msteamsConfig;
-            o.name = name;
-            o.pagerdutyConfig = pagerdutyConfig;
-            o.slackConfig = slackConfig;
-            o.smtpConfig = smtpConfig;
-            o.webhookConfig = webhookConfig;
-            o.wechatConfig = wechatConfig;
-            return o;
+            final var _resultValue = new GetNotifierResult();
+            _resultValue.annotations = annotations;
+            _resultValue.clusterId = clusterId;
+            _resultValue.description = description;
+            _resultValue.dingtalkConfig = dingtalkConfig;
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.msteamsConfig = msteamsConfig;
+            _resultValue.name = name;
+            _resultValue.pagerdutyConfig = pagerdutyConfig;
+            _resultValue.slackConfig = slackConfig;
+            _resultValue.smtpConfig = smtpConfig;
+            _resultValue.webhookConfig = webhookConfig;
+            _resultValue.wechatConfig = wechatConfig;
+            return _resultValue;
         }
     }
 }

@@ -62,11 +62,11 @@ public final class GetClusterTemplateMember {
             return this;
         }
         public GetClusterTemplateMember build() {
-            final var o = new GetClusterTemplateMember();
-            o.accessType = accessType;
-            o.groupPrincipalId = groupPrincipalId;
-            o.userPrincipalId = userPrincipalId;
-            return o;
+            final var _resultValue = new GetClusterTemplateMember();
+            _resultValue.accessType = accessType;
+            _resultValue.groupPrincipalId = groupPrincipalId;
+            _resultValue.userPrincipalId = userPrincipalId;
+            return _resultValue;
         }
     }
 }

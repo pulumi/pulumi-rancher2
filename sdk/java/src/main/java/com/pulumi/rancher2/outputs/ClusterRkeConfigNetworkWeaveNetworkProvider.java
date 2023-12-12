@@ -46,9 +46,9 @@ public final class ClusterRkeConfigNetworkWeaveNetworkProvider {
             return this;
         }
         public ClusterRkeConfigNetworkWeaveNetworkProvider build() {
-            final var o = new ClusterRkeConfigNetworkWeaveNetworkProvider();
-            o.password = password;
-            return o;
+            final var _resultValue = new ClusterRkeConfigNetworkWeaveNetworkProvider();
+            _resultValue.password = password;
+            return _resultValue;
         }
     }
 }

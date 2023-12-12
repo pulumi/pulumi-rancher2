@@ -48,9 +48,9 @@ public final class ClusterRkeConfigNetworkCanalNetworkProvider {
             return this;
         }
         public ClusterRkeConfigNetworkCanalNetworkProvider build() {
-            final var o = new ClusterRkeConfigNetworkCanalNetworkProvider();
-            o.iface = iface;
-            return o;
+            final var _resultValue = new ClusterRkeConfigNetworkCanalNetworkProvider();
+            _resultValue.iface = iface;
+            return _resultValue;
         }
     }
 }

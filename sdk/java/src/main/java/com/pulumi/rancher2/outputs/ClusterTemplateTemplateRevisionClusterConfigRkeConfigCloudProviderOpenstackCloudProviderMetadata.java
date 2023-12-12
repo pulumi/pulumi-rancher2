@@ -52,10 +52,10 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
             return this;
         }
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadata build() {
-            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadata();
-            o.requestTimeout = requestTimeout;
-            o.searchOrder = searchOrder;
-            return o;
+            final var _resultValue = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadata();
+            _resultValue.requestTimeout = requestTimeout;
+            _resultValue.searchOrder = searchOrder;
+            return _resultValue;
         }
     }
 }

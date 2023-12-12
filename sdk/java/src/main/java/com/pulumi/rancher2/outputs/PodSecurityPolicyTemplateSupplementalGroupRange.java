@@ -65,10 +65,10 @@ public final class PodSecurityPolicyTemplateSupplementalGroupRange {
             return this;
         }
         public PodSecurityPolicyTemplateSupplementalGroupRange build() {
-            final var o = new PodSecurityPolicyTemplateSupplementalGroupRange();
-            o.max = max;
-            o.min = min;
-            return o;
+            final var _resultValue = new PodSecurityPolicyTemplateSupplementalGroupRange();
+            _resultValue.max = max;
+            _resultValue.min = min;
+            return _resultValue;
         }
     }
 }

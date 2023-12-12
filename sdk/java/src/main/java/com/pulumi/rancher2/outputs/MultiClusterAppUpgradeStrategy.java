@@ -48,9 +48,9 @@ public final class MultiClusterAppUpgradeStrategy {
             return this;
         }
         public MultiClusterAppUpgradeStrategy build() {
-            final var o = new MultiClusterAppUpgradeStrategy();
-            o.rollingUpdate = rollingUpdate;
-            return o;
+            final var _resultValue = new MultiClusterAppUpgradeStrategy();
+            _resultValue.rollingUpdate = rollingUpdate;
+            return _resultValue;
         }
     }
 }

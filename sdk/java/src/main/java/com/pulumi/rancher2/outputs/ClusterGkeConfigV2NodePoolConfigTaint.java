@@ -84,11 +84,11 @@ public final class ClusterGkeConfigV2NodePoolConfigTaint {
             return this;
         }
         public ClusterGkeConfigV2NodePoolConfigTaint build() {
-            final var o = new ClusterGkeConfigV2NodePoolConfigTaint();
-            o.effect = effect;
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new ClusterGkeConfigV2NodePoolConfigTaint();
+            _resultValue.effect = effect;
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

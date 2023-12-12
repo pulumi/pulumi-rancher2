@@ -73,10 +73,10 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector {
             return this;
         }
         public ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector build() {
-            final var o = new ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector();
-            o.matchExpressions = matchExpressions;
-            o.matchLabels = matchLabels;
-            return o;
+            final var _resultValue = new ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector();
+            _resultValue.matchExpressions = matchExpressions;
+            _resultValue.matchLabels = matchLabels;
+            return _resultValue;
         }
     }
 }

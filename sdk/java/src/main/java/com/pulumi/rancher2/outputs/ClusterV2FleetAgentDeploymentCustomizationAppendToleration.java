@@ -125,13 +125,13 @@ public final class ClusterV2FleetAgentDeploymentCustomizationAppendToleration {
             return this;
         }
         public ClusterV2FleetAgentDeploymentCustomizationAppendToleration build() {
-            final var o = new ClusterV2FleetAgentDeploymentCustomizationAppendToleration();
-            o.effect = effect;
-            o.key = key;
-            o.operator = operator;
-            o.seconds = seconds;
-            o.value = value;
-            return o;
+            final var _resultValue = new ClusterV2FleetAgentDeploymentCustomizationAppendToleration();
+            _resultValue.effect = effect;
+            _resultValue.key = key;
+            _resultValue.operator = operator;
+            _resultValue.seconds = seconds;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

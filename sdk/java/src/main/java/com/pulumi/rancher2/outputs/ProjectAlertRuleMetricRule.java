@@ -125,13 +125,13 @@ public final class ProjectAlertRuleMetricRule {
             return this;
         }
         public ProjectAlertRuleMetricRule build() {
-            final var o = new ProjectAlertRuleMetricRule();
-            o.comparison = comparison;
-            o.description = description;
-            o.duration = duration;
-            o.expression = expression;
-            o.thresholdValue = thresholdValue;
-            return o;
+            final var _resultValue = new ProjectAlertRuleMetricRule();
+            _resultValue.comparison = comparison;
+            _resultValue.description = description;
+            _resultValue.duration = duration;
+            _resultValue.expression = expression;
+            _resultValue.thresholdValue = thresholdValue;
+            return _resultValue;
         }
     }
 }

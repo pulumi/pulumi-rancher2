@@ -74,12 +74,12 @@ public final class GetClusterAlertGroupRecipient {
             return this;
         }
         public GetClusterAlertGroupRecipient build() {
-            final var o = new GetClusterAlertGroupRecipient();
-            o.defaultRecipient = defaultRecipient;
-            o.notifierId = notifierId;
-            o.notifierType = notifierType;
-            o.recipient = recipient;
-            return o;
+            final var _resultValue = new GetClusterAlertGroupRecipient();
+            _resultValue.defaultRecipient = defaultRecipient;
+            _resultValue.notifierId = notifierId;
+            _resultValue.notifierType = notifierType;
+            _resultValue.recipient = recipient;
+            return _resultValue;
         }
     }
 }

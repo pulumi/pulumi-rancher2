@@ -96,14 +96,14 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
             return this;
         }
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration build() {
-            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration();
-            o.format = format;
-            o.maxAge = maxAge;
-            o.maxBackup = maxBackup;
-            o.maxSize = maxSize;
-            o.path = path;
-            o.policy = policy;
-            return o;
+            final var _resultValue = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration();
+            _resultValue.format = format;
+            _resultValue.maxAge = maxAge;
+            _resultValue.maxBackup = maxBackup;
+            _resultValue.maxSize = maxSize;
+            _resultValue.path = path;
+            _resultValue.policy = policy;
+            return _resultValue;
         }
     }
 }

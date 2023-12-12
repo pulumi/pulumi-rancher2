@@ -174,16 +174,16 @@ public final class GetClusterTemplateResult {
             return templateRevisions(List.of(templateRevisions));
         }
         public GetClusterTemplateResult build() {
-            final var o = new GetClusterTemplateResult();
-            o.annotations = annotations;
-            o.defaultRevisionId = defaultRevisionId;
-            o.description = description;
-            o.id = id;
-            o.labels = labels;
-            o.members = members;
-            o.name = name;
-            o.templateRevisions = templateRevisions;
-            return o;
+            final var _resultValue = new GetClusterTemplateResult();
+            _resultValue.annotations = annotations;
+            _resultValue.defaultRevisionId = defaultRevisionId;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.members = members;
+            _resultValue.name = name;
+            _resultValue.templateRevisions = templateRevisions;
+            return _resultValue;
         }
     }
 }

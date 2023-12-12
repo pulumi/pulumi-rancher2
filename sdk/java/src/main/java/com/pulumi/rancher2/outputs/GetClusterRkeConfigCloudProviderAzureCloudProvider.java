@@ -350,37 +350,37 @@ public final class GetClusterRkeConfigCloudProviderAzureCloudProvider {
             return this;
         }
         public GetClusterRkeConfigCloudProviderAzureCloudProvider build() {
-            final var o = new GetClusterRkeConfigCloudProviderAzureCloudProvider();
-            o.aadClientCertPassword = aadClientCertPassword;
-            o.aadClientCertPath = aadClientCertPath;
-            o.aadClientId = aadClientId;
-            o.aadClientSecret = aadClientSecret;
-            o.cloud = cloud;
-            o.cloudProviderBackoff = cloudProviderBackoff;
-            o.cloudProviderBackoffDuration = cloudProviderBackoffDuration;
-            o.cloudProviderBackoffExponent = cloudProviderBackoffExponent;
-            o.cloudProviderBackoffJitter = cloudProviderBackoffJitter;
-            o.cloudProviderBackoffRetries = cloudProviderBackoffRetries;
-            o.cloudProviderRateLimit = cloudProviderRateLimit;
-            o.cloudProviderRateLimitBucket = cloudProviderRateLimitBucket;
-            o.cloudProviderRateLimitQps = cloudProviderRateLimitQps;
-            o.loadBalancerSku = loadBalancerSku;
-            o.location = location;
-            o.maximumLoadBalancerRuleCount = maximumLoadBalancerRuleCount;
-            o.primaryAvailabilitySetName = primaryAvailabilitySetName;
-            o.primaryScaleSetName = primaryScaleSetName;
-            o.resourceGroup = resourceGroup;
-            o.routeTableName = routeTableName;
-            o.securityGroupName = securityGroupName;
-            o.subnetName = subnetName;
-            o.subscriptionId = subscriptionId;
-            o.tenantId = tenantId;
-            o.useInstanceMetadata = useInstanceMetadata;
-            o.useManagedIdentityExtension = useManagedIdentityExtension;
-            o.vmType = vmType;
-            o.vnetName = vnetName;
-            o.vnetResourceGroup = vnetResourceGroup;
-            return o;
+            final var _resultValue = new GetClusterRkeConfigCloudProviderAzureCloudProvider();
+            _resultValue.aadClientCertPassword = aadClientCertPassword;
+            _resultValue.aadClientCertPath = aadClientCertPath;
+            _resultValue.aadClientId = aadClientId;
+            _resultValue.aadClientSecret = aadClientSecret;
+            _resultValue.cloud = cloud;
+            _resultValue.cloudProviderBackoff = cloudProviderBackoff;
+            _resultValue.cloudProviderBackoffDuration = cloudProviderBackoffDuration;
+            _resultValue.cloudProviderBackoffExponent = cloudProviderBackoffExponent;
+            _resultValue.cloudProviderBackoffJitter = cloudProviderBackoffJitter;
+            _resultValue.cloudProviderBackoffRetries = cloudProviderBackoffRetries;
+            _resultValue.cloudProviderRateLimit = cloudProviderRateLimit;
+            _resultValue.cloudProviderRateLimitBucket = cloudProviderRateLimitBucket;
+            _resultValue.cloudProviderRateLimitQps = cloudProviderRateLimitQps;
+            _resultValue.loadBalancerSku = loadBalancerSku;
+            _resultValue.location = location;
+            _resultValue.maximumLoadBalancerRuleCount = maximumLoadBalancerRuleCount;
+            _resultValue.primaryAvailabilitySetName = primaryAvailabilitySetName;
+            _resultValue.primaryScaleSetName = primaryScaleSetName;
+            _resultValue.resourceGroup = resourceGroup;
+            _resultValue.routeTableName = routeTableName;
+            _resultValue.securityGroupName = securityGroupName;
+            _resultValue.subnetName = subnetName;
+            _resultValue.subscriptionId = subscriptionId;
+            _resultValue.tenantId = tenantId;
+            _resultValue.useInstanceMetadata = useInstanceMetadata;
+            _resultValue.useManagedIdentityExtension = useManagedIdentityExtension;
+            _resultValue.vmType = vmType;
+            _resultValue.vnetName = vnetName;
+            _resultValue.vnetResourceGroup = vnetResourceGroup;
+            return _resultValue;
         }
     }
 }

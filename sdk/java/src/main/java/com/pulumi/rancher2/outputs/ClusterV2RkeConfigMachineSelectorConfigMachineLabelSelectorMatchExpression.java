@@ -90,11 +90,11 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMa
             return values(List.of(values));
         }
         public ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression build() {
-            final var o = new ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression();
-            o.key = key;
-            o.operator = operator;
-            o.values = values;
-            return o;
+            final var _resultValue = new ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression();
+            _resultValue.key = key;
+            _resultValue.operator = operator;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

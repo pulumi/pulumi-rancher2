@@ -63,11 +63,11 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigClusterAuthEnd
             return this;
         }
         public GetClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint build() {
-            final var o = new GetClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint();
-            o.caCerts = caCerts;
-            o.enabled = enabled;
-            o.fqdn = fqdn;
-            return o;
+            final var _resultValue = new GetClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint();
+            _resultValue.caCerts = caCerts;
+            _resultValue.enabled = enabled;
+            _resultValue.fqdn = fqdn;
+            return _resultValue;
         }
     }
 }

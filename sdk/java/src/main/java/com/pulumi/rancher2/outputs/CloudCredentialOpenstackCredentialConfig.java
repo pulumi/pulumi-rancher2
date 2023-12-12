@@ -46,9 +46,9 @@ public final class CloudCredentialOpenstackCredentialConfig {
             return this;
         }
         public CloudCredentialOpenstackCredentialConfig build() {
-            final var o = new CloudCredentialOpenstackCredentialConfig();
-            o.password = password;
-            return o;
+            final var _resultValue = new CloudCredentialOpenstackCredentialConfig();
+            _resultValue.password = password;
+            return _resultValue;
         }
     }
 }

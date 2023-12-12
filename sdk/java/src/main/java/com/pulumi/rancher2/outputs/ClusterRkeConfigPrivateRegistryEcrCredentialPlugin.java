@@ -86,11 +86,11 @@ public final class ClusterRkeConfigPrivateRegistryEcrCredentialPlugin {
             return this;
         }
         public ClusterRkeConfigPrivateRegistryEcrCredentialPlugin build() {
-            final var o = new ClusterRkeConfigPrivateRegistryEcrCredentialPlugin();
-            o.awsAccessKeyId = awsAccessKeyId;
-            o.awsSecretAccessKey = awsSecretAccessKey;
-            o.awsSessionToken = awsSessionToken;
-            return o;
+            final var _resultValue = new ClusterRkeConfigPrivateRegistryEcrCredentialPlugin();
+            _resultValue.awsAccessKeyId = awsAccessKeyId;
+            _resultValue.awsSecretAccessKey = awsSecretAccessKey;
+            _resultValue.awsSessionToken = awsSessionToken;
+            return _resultValue;
         }
     }
 }

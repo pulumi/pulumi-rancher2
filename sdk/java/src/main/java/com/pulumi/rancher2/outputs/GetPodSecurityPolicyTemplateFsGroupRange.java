@@ -49,10 +49,10 @@ public final class GetPodSecurityPolicyTemplateFsGroupRange {
             return this;
         }
         public GetPodSecurityPolicyTemplateFsGroupRange build() {
-            final var o = new GetPodSecurityPolicyTemplateFsGroupRange();
-            o.max = max;
-            o.min = min;
-            return o;
+            final var _resultValue = new GetPodSecurityPolicyTemplateFsGroupRange();
+            _resultValue.max = max;
+            _resultValue.min = min;
+            return _resultValue;
         }
     }
 }

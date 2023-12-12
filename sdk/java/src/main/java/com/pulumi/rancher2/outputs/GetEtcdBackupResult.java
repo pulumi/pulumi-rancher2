@@ -186,17 +186,17 @@ public final class GetEtcdBackupResult {
             return this;
         }
         public GetEtcdBackupResult build() {
-            final var o = new GetEtcdBackupResult();
-            o.annotations = annotations;
-            o.backupConfig = backupConfig;
-            o.clusterId = clusterId;
-            o.filename = filename;
-            o.id = id;
-            o.labels = labels;
-            o.manual = manual;
-            o.name = name;
-            o.namespaceId = namespaceId;
-            return o;
+            final var _resultValue = new GetEtcdBackupResult();
+            _resultValue.annotations = annotations;
+            _resultValue.backupConfig = backupConfig;
+            _resultValue.clusterId = clusterId;
+            _resultValue.filename = filename;
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.manual = manual;
+            _resultValue.name = name;
+            _resultValue.namespaceId = namespaceId;
+            return _resultValue;
         }
     }
 }

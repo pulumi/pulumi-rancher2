@@ -46,9 +46,9 @@ public final class CloudCredentialGoogleCredentialConfig {
             return this;
         }
         public CloudCredentialGoogleCredentialConfig build() {
-            final var o = new CloudCredentialGoogleCredentialConfig();
-            o.authEncodedJson = authEncodedJson;
-            return o;
+            final var _resultValue = new CloudCredentialGoogleCredentialConfig();
+            _resultValue.authEncodedJson = authEncodedJson;
+            return _resultValue;
         }
     }
 }

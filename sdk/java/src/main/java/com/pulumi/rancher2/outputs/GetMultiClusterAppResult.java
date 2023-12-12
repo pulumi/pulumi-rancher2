@@ -327,23 +327,23 @@ public final class GetMultiClusterAppResult {
             return upgradeStrategies(List.of(upgradeStrategies));
         }
         public GetMultiClusterAppResult build() {
-            final var o = new GetMultiClusterAppResult();
-            o.annotations = annotations;
-            o.answers = answers;
-            o.catalogName = catalogName;
-            o.id = id;
-            o.labels = labels;
-            o.members = members;
-            o.name = name;
-            o.revisionHistoryLimit = revisionHistoryLimit;
-            o.revisionId = revisionId;
-            o.roles = roles;
-            o.targets = targets;
-            o.templateName = templateName;
-            o.templateVersion = templateVersion;
-            o.templateVersionId = templateVersionId;
-            o.upgradeStrategies = upgradeStrategies;
-            return o;
+            final var _resultValue = new GetMultiClusterAppResult();
+            _resultValue.annotations = annotations;
+            _resultValue.answers = answers;
+            _resultValue.catalogName = catalogName;
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.members = members;
+            _resultValue.name = name;
+            _resultValue.revisionHistoryLimit = revisionHistoryLimit;
+            _resultValue.revisionId = revisionId;
+            _resultValue.roles = roles;
+            _resultValue.targets = targets;
+            _resultValue.templateName = templateName;
+            _resultValue.templateVersion = templateVersion;
+            _resultValue.templateVersionId = templateVersionId;
+            _resultValue.upgradeStrategies = upgradeStrategies;
+            return _resultValue;
         }
     }
 }

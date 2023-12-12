@@ -46,9 +46,9 @@ public final class GetPodSecurityPolicyTemplateAllowedCsiDriver {
             return this;
         }
         public GetPodSecurityPolicyTemplateAllowedCsiDriver build() {
-            final var o = new GetPodSecurityPolicyTemplateAllowedCsiDriver();
-            o.name = name;
-            return o;
+            final var _resultValue = new GetPodSecurityPolicyTemplateAllowedCsiDriver();
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

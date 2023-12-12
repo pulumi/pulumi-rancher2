@@ -140,18 +140,18 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloud
             return this;
         }
         public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal build() {
-            final var o = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal();
-            o.disableSecurityGroupIngress = disableSecurityGroupIngress;
-            o.disableStrictZoneCheck = disableStrictZoneCheck;
-            o.elbSecurityGroup = elbSecurityGroup;
-            o.kubernetesClusterId = kubernetesClusterId;
-            o.kubernetesClusterTag = kubernetesClusterTag;
-            o.roleArn = roleArn;
-            o.routeTableId = routeTableId;
-            o.subnetId = subnetId;
-            o.vpc = vpc;
-            o.zone = zone;
-            return o;
+            final var _resultValue = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal();
+            _resultValue.disableSecurityGroupIngress = disableSecurityGroupIngress;
+            _resultValue.disableStrictZoneCheck = disableStrictZoneCheck;
+            _resultValue.elbSecurityGroup = elbSecurityGroup;
+            _resultValue.kubernetesClusterId = kubernetesClusterId;
+            _resultValue.kubernetesClusterTag = kubernetesClusterTag;
+            _resultValue.roleArn = roleArn;
+            _resultValue.routeTableId = routeTableId;
+            _resultValue.subnetId = subnetId;
+            _resultValue.vpc = vpc;
+            _resultValue.zone = zone;
+            return _resultValue;
         }
     }
 }

@@ -98,12 +98,12 @@ public final class ProjectAlertGroupRecipient {
             return this;
         }
         public ProjectAlertGroupRecipient build() {
-            final var o = new ProjectAlertGroupRecipient();
-            o.defaultRecipient = defaultRecipient;
-            o.notifierId = notifierId;
-            o.notifierType = notifierType;
-            o.recipient = recipient;
-            return o;
+            final var _resultValue = new ProjectAlertGroupRecipient();
+            _resultValue.defaultRecipient = defaultRecipient;
+            _resultValue.notifierId = notifierId;
+            _resultValue.notifierType = notifierType;
+            _resultValue.recipient = recipient;
+            return _resultValue;
         }
     }
 }

@@ -72,10 +72,10 @@ public final class ClusterGkeConfigV2MasterAuthorizedNetworksConfig {
             return this;
         }
         public ClusterGkeConfigV2MasterAuthorizedNetworksConfig build() {
-            final var o = new ClusterGkeConfigV2MasterAuthorizedNetworksConfig();
-            o.cidrBlocks = cidrBlocks;
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new ClusterGkeConfigV2MasterAuthorizedNetworksConfig();
+            _resultValue.cidrBlocks = cidrBlocks;
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

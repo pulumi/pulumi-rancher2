@@ -86,11 +86,11 @@ public final class CloudCredentialHarvesterCredentialConfig {
             return this;
         }
         public CloudCredentialHarvesterCredentialConfig build() {
-            final var o = new CloudCredentialHarvesterCredentialConfig();
-            o.clusterId = clusterId;
-            o.clusterType = clusterType;
-            o.kubeconfigContent = kubeconfigContent;
-            return o;
+            final var _resultValue = new CloudCredentialHarvesterCredentialConfig();
+            _resultValue.clusterId = clusterId;
+            _resultValue.clusterType = clusterType;
+            _resultValue.kubeconfigContent = kubeconfigContent;
+            return _resultValue;
         }
     }
 }

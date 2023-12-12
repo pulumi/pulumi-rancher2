@@ -102,14 +102,14 @@ public final class GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCe
             return this;
         }
         public GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter build() {
-            final var o = new GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter();
-            o.datacenters = datacenters;
-            o.name = name;
-            o.password = password;
-            o.port = port;
-            o.soapRoundtripCount = soapRoundtripCount;
-            o.user = user;
-            return o;
+            final var _resultValue = new GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter();
+            _resultValue.datacenters = datacenters;
+            _resultValue.name = name;
+            _resultValue.password = password;
+            _resultValue.port = port;
+            _resultValue.soapRoundtripCount = soapRoundtripCount;
+            _resultValue.user = user;
+            return _resultValue;
         }
     }
 }

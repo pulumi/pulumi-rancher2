@@ -56,10 +56,10 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
             return serviceOverrides(List.of(serviceOverrides));
         }
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProvider build() {
-            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProvider();
-            o.global = global;
-            o.serviceOverrides = serviceOverrides;
-            return o;
+            final var _resultValue = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProvider();
+            _resultValue.global = global;
+            _resultValue.serviceOverrides = serviceOverrides;
+            return _resultValue;
         }
     }
 }

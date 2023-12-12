@@ -51,10 +51,10 @@ public final class GetClusterV2RkeConfigMachinePoolRollingUpdate {
             return this;
         }
         public GetClusterV2RkeConfigMachinePoolRollingUpdate build() {
-            final var o = new GetClusterV2RkeConfigMachinePoolRollingUpdate();
-            o.maxSurge = maxSurge;
-            o.maxUnavailable = maxUnavailable;
-            return o;
+            final var _resultValue = new GetClusterV2RkeConfigMachinePoolRollingUpdate();
+            _resultValue.maxSurge = maxSurge;
+            _resultValue.maxUnavailable = maxUnavailable;
+            return _resultValue;
         }
     }
 }

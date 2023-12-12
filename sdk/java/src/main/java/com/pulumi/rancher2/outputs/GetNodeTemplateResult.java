@@ -339,24 +339,24 @@ public final class GetNodeTemplateResult {
             return this;
         }
         public GetNodeTemplateResult build() {
-            final var o = new GetNodeTemplateResult();
-            o.annotations = annotations;
-            o.cloudCredentialId = cloudCredentialId;
-            o.description = description;
-            o.driver = driver;
-            o.engineEnv = engineEnv;
-            o.engineInsecureRegistries = engineInsecureRegistries;
-            o.engineInstallUrl = engineInstallUrl;
-            o.engineLabel = engineLabel;
-            o.engineOpt = engineOpt;
-            o.engineRegistryMirrors = engineRegistryMirrors;
-            o.engineStorageDriver = engineStorageDriver;
-            o.id = id;
-            o.labels = labels;
-            o.name = name;
-            o.nodeTaints = nodeTaints;
-            o.useInternalIpAddress = useInternalIpAddress;
-            return o;
+            final var _resultValue = new GetNodeTemplateResult();
+            _resultValue.annotations = annotations;
+            _resultValue.cloudCredentialId = cloudCredentialId;
+            _resultValue.description = description;
+            _resultValue.driver = driver;
+            _resultValue.engineEnv = engineEnv;
+            _resultValue.engineInsecureRegistries = engineInsecureRegistries;
+            _resultValue.engineInstallUrl = engineInstallUrl;
+            _resultValue.engineLabel = engineLabel;
+            _resultValue.engineOpt = engineOpt;
+            _resultValue.engineRegistryMirrors = engineRegistryMirrors;
+            _resultValue.engineStorageDriver = engineStorageDriver;
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.name = name;
+            _resultValue.nodeTaints = nodeTaints;
+            _resultValue.useInternalIpAddress = useInternalIpAddress;
+            return _resultValue;
         }
     }
 }

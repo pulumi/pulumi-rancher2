@@ -67,11 +67,11 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
             return plugins(List.of(plugins));
         }
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfiguration build() {
-            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfiguration();
-            o.apiVersion = apiVersion;
-            o.kind = kind;
-            o.plugins = plugins;
-            return o;
+            final var _resultValue = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfiguration();
+            _resultValue.apiVersion = apiVersion;
+            _resultValue.kind = kind;
+            _resultValue.plugins = plugins;
+            return _resultValue;
         }
     }
 }

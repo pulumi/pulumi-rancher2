@@ -95,11 +95,11 @@ public final class ClusterV2FleetAgentDeploymentCustomization {
             return overrideResourceRequirements(List.of(overrideResourceRequirements));
         }
         public ClusterV2FleetAgentDeploymentCustomization build() {
-            final var o = new ClusterV2FleetAgentDeploymentCustomization();
-            o.appendTolerations = appendTolerations;
-            o.overrideAffinity = overrideAffinity;
-            o.overrideResourceRequirements = overrideResourceRequirements;
-            return o;
+            final var _resultValue = new ClusterV2FleetAgentDeploymentCustomization();
+            _resultValue.appendTolerations = appendTolerations;
+            _resultValue.overrideAffinity = overrideAffinity;
+            _resultValue.overrideResourceRequirements = overrideResourceRequirements;
+            return _resultValue;
         }
     }
 }

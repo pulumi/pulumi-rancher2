@@ -48,9 +48,9 @@ public final class ClusterRkeConfigNetworkFlannelNetworkProvider {
             return this;
         }
         public ClusterRkeConfigNetworkFlannelNetworkProvider build() {
-            final var o = new ClusterRkeConfigNetworkFlannelNetworkProvider();
-            o.iface = iface;
-            return o;
+            final var _resultValue = new ClusterRkeConfigNetworkFlannelNetworkProvider();
+            _resultValue.iface = iface;
+            return _resultValue;
         }
     }
 }

@@ -68,10 +68,10 @@ public final class ClusterRkeConfigServicesKubeApiAuditLog {
             return this;
         }
         public ClusterRkeConfigServicesKubeApiAuditLog build() {
-            final var o = new ClusterRkeConfigServicesKubeApiAuditLog();
-            o.configuration = configuration;
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new ClusterRkeConfigServicesKubeApiAuditLog();
+            _resultValue.configuration = configuration;
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

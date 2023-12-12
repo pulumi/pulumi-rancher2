@@ -306,31 +306,31 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfig {
             return this;
         }
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfig build() {
-            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfig();
-            o.addonJobTimeout = addonJobTimeout;
-            o.addons = addons;
-            o.addonsIncludes = addonsIncludes;
-            o.authentication = authentication;
-            o.authorization = authorization;
-            o.bastionHost = bastionHost;
-            o.cloudProvider = cloudProvider;
-            o.dns = dns;
-            o.enableCriDockerd = enableCriDockerd;
-            o.ignoreDockerVersion = ignoreDockerVersion;
-            o.ingress = ingress;
-            o.kubernetesVersion = kubernetesVersion;
-            o.monitoring = monitoring;
-            o.network = network;
-            o.nodes = nodes;
-            o.prefixPath = prefixPath;
-            o.privateRegistries = privateRegistries;
-            o.services = services;
-            o.sshAgentAuth = sshAgentAuth;
-            o.sshCertPath = sshCertPath;
-            o.sshKeyPath = sshKeyPath;
-            o.upgradeStrategy = upgradeStrategy;
-            o.winPrefixPath = winPrefixPath;
-            return o;
+            final var _resultValue = new ClusterTemplateTemplateRevisionClusterConfigRkeConfig();
+            _resultValue.addonJobTimeout = addonJobTimeout;
+            _resultValue.addons = addons;
+            _resultValue.addonsIncludes = addonsIncludes;
+            _resultValue.authentication = authentication;
+            _resultValue.authorization = authorization;
+            _resultValue.bastionHost = bastionHost;
+            _resultValue.cloudProvider = cloudProvider;
+            _resultValue.dns = dns;
+            _resultValue.enableCriDockerd = enableCriDockerd;
+            _resultValue.ignoreDockerVersion = ignoreDockerVersion;
+            _resultValue.ingress = ingress;
+            _resultValue.kubernetesVersion = kubernetesVersion;
+            _resultValue.monitoring = monitoring;
+            _resultValue.network = network;
+            _resultValue.nodes = nodes;
+            _resultValue.prefixPath = prefixPath;
+            _resultValue.privateRegistries = privateRegistries;
+            _resultValue.services = services;
+            _resultValue.sshAgentAuth = sshAgentAuth;
+            _resultValue.sshCertPath = sshCertPath;
+            _resultValue.sshKeyPath = sshKeyPath;
+            _resultValue.upgradeStrategy = upgradeStrategy;
+            _resultValue.winPrefixPath = winPrefixPath;
+            return _resultValue;
         }
     }
 }

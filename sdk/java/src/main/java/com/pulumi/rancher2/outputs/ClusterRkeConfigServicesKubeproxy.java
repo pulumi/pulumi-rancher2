@@ -114,12 +114,12 @@ public final class ClusterRkeConfigServicesKubeproxy {
             return this;
         }
         public ClusterRkeConfigServicesKubeproxy build() {
-            final var o = new ClusterRkeConfigServicesKubeproxy();
-            o.extraArgs = extraArgs;
-            o.extraBinds = extraBinds;
-            o.extraEnvs = extraEnvs;
-            o.image = image;
-            return o;
+            final var _resultValue = new ClusterRkeConfigServicesKubeproxy();
+            _resultValue.extraArgs = extraArgs;
+            _resultValue.extraBinds = extraBinds;
+            _resultValue.extraEnvs = extraEnvs;
+            _resultValue.image = image;
+            return _resultValue;
         }
     }
 }

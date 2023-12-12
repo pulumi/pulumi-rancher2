@@ -271,22 +271,22 @@ public final class GetAppResult {
             return this;
         }
         public GetAppResult build() {
-            final var o = new GetAppResult();
-            o.annotations = annotations;
-            o.answers = answers;
-            o.catalogName = catalogName;
-            o.description = description;
-            o.externalId = externalId;
-            o.id = id;
-            o.labels = labels;
-            o.name = name;
-            o.projectId = projectId;
-            o.revisionId = revisionId;
-            o.targetNamespace = targetNamespace;
-            o.templateName = templateName;
-            o.templateVersion = templateVersion;
-            o.valuesYaml = valuesYaml;
-            return o;
+            final var _resultValue = new GetAppResult();
+            _resultValue.annotations = annotations;
+            _resultValue.answers = answers;
+            _resultValue.catalogName = catalogName;
+            _resultValue.description = description;
+            _resultValue.externalId = externalId;
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.name = name;
+            _resultValue.projectId = projectId;
+            _resultValue.revisionId = revisionId;
+            _resultValue.targetNamespace = targetNamespace;
+            _resultValue.templateName = templateName;
+            _resultValue.templateVersion = templateVersion;
+            _resultValue.valuesYaml = valuesYaml;
+            return _resultValue;
         }
     }
 }

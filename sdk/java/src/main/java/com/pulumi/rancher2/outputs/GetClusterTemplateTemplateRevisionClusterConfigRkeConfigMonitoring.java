@@ -104,14 +104,14 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonit
             return this;
         }
         public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring build() {
-            final var o = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring();
-            o.nodeSelector = nodeSelector;
-            o.options = options;
-            o.provider = provider;
-            o.replicas = replicas;
-            o.tolerations = tolerations;
-            o.updateStrategy = updateStrategy;
-            return o;
+            final var _resultValue = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring();
+            _resultValue.nodeSelector = nodeSelector;
+            _resultValue.options = options;
+            _resultValue.provider = provider;
+            _resultValue.replicas = replicas;
+            _resultValue.tolerations = tolerations;
+            _resultValue.updateStrategy = updateStrategy;
+            return _resultValue;
         }
     }
 }

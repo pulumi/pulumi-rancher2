@@ -70,11 +70,11 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServi
             return this;
         }
         public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPlugin build() {
-            final var o = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPlugin();
-            o.configuration = configuration;
-            o.name = name;
-            o.path = path;
-            return o;
+            final var _resultValue = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPlugin();
+            _resultValue.configuration = configuration;
+            _resultValue.name = name;
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }

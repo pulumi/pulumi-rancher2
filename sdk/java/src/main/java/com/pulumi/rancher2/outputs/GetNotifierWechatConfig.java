@@ -95,14 +95,14 @@ public final class GetNotifierWechatConfig {
             return this;
         }
         public GetNotifierWechatConfig build() {
-            final var o = new GetNotifierWechatConfig();
-            o.agent = agent;
-            o.corp = corp;
-            o.defaultRecipient = defaultRecipient;
-            o.proxyUrl = proxyUrl;
-            o.recipientType = recipientType;
-            o.secret = secret;
-            return o;
+            final var _resultValue = new GetNotifierWechatConfig();
+            _resultValue.agent = agent;
+            _resultValue.corp = corp;
+            _resultValue.defaultRecipient = defaultRecipient;
+            _resultValue.proxyUrl = proxyUrl;
+            _resultValue.recipientType = recipientType;
+            _resultValue.secret = secret;
+            return _resultValue;
         }
     }
 }

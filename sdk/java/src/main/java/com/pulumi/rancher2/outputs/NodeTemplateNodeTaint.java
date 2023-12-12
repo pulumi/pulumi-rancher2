@@ -105,12 +105,12 @@ public final class NodeTemplateNodeTaint {
             return this;
         }
         public NodeTemplateNodeTaint build() {
-            final var o = new NodeTemplateNodeTaint();
-            o.effect = effect;
-            o.key = key;
-            o.timeAdded = timeAdded;
-            o.value = value;
-            return o;
+            final var _resultValue = new NodeTemplateNodeTaint();
+            _resultValue.effect = effect;
+            _resultValue.key = key;
+            _resultValue.timeAdded = timeAdded;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

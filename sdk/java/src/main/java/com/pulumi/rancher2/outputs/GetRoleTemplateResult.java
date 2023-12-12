@@ -288,22 +288,22 @@ public final class GetRoleTemplateResult {
             return rules(List.of(rules));
         }
         public GetRoleTemplateResult build() {
-            final var o = new GetRoleTemplateResult();
-            o.administrative = administrative;
-            o.annotations = annotations;
-            o.builtin = builtin;
-            o.context = context;
-            o.defaultRole = defaultRole;
-            o.description = description;
-            o.external = external;
-            o.hidden = hidden;
-            o.id = id;
-            o.labels = labels;
-            o.locked = locked;
-            o.name = name;
-            o.roleTemplateIds = roleTemplateIds;
-            o.rules = rules;
-            return o;
+            final var _resultValue = new GetRoleTemplateResult();
+            _resultValue.administrative = administrative;
+            _resultValue.annotations = annotations;
+            _resultValue.builtin = builtin;
+            _resultValue.context = context;
+            _resultValue.defaultRole = defaultRole;
+            _resultValue.description = description;
+            _resultValue.external = external;
+            _resultValue.hidden = hidden;
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.locked = locked;
+            _resultValue.name = name;
+            _resultValue.roleTemplateIds = roleTemplateIds;
+            _resultValue.rules = rules;
+            return _resultValue;
         }
     }
 }

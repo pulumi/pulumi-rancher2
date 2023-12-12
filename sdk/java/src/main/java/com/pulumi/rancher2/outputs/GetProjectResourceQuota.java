@@ -50,10 +50,10 @@ public final class GetProjectResourceQuota {
             return this;
         }
         public GetProjectResourceQuota build() {
-            final var o = new GetProjectResourceQuota();
-            o.namespaceDefaultLimit = namespaceDefaultLimit;
-            o.projectLimit = projectLimit;
-            return o;
+            final var _resultValue = new GetProjectResourceQuota();
+            _resultValue.namespaceDefaultLimit = namespaceDefaultLimit;
+            _resultValue.projectLimit = projectLimit;
+            return _resultValue;
         }
     }
 }

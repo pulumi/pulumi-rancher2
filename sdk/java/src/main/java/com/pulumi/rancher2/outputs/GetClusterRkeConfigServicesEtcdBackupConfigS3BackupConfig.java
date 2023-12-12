@@ -106,15 +106,15 @@ public final class GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig {
             return this;
         }
         public GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig build() {
-            final var o = new GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig();
-            o.accessKey = accessKey;
-            o.bucketName = bucketName;
-            o.customCa = customCa;
-            o.endpoint = endpoint;
-            o.folder = folder;
-            o.region = region;
-            o.secretKey = secretKey;
-            return o;
+            final var _resultValue = new GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig();
+            _resultValue.accessKey = accessKey;
+            _resultValue.bucketName = bucketName;
+            _resultValue.customCa = customCa;
+            _resultValue.endpoint = endpoint;
+            _resultValue.folder = folder;
+            _resultValue.region = region;
+            _resultValue.secretKey = secretKey;
+            return _resultValue;
         }
     }
 }

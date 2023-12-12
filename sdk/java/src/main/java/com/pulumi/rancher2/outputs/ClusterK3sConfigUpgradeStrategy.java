@@ -106,12 +106,12 @@ public final class ClusterK3sConfigUpgradeStrategy {
             return this;
         }
         public ClusterK3sConfigUpgradeStrategy build() {
-            final var o = new ClusterK3sConfigUpgradeStrategy();
-            o.drainServerNodes = drainServerNodes;
-            o.drainWorkerNodes = drainWorkerNodes;
-            o.serverConcurrency = serverConcurrency;
-            o.workerConcurrency = workerConcurrency;
-            return o;
+            final var _resultValue = new ClusterK3sConfigUpgradeStrategy();
+            _resultValue.drainServerNodes = drainServerNodes;
+            _resultValue.drainWorkerNodes = drainWorkerNodes;
+            _resultValue.serverConcurrency = serverConcurrency;
+            _resultValue.workerConcurrency = workerConcurrency;
+            return _resultValue;
         }
     }
 }

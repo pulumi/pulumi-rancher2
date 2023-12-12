@@ -300,22 +300,22 @@ public final class NodeTemplateDigitaloceanConfig {
             return this;
         }
         public NodeTemplateDigitaloceanConfig build() {
-            final var o = new NodeTemplateDigitaloceanConfig();
-            o.accessToken = accessToken;
-            o.backups = backups;
-            o.image = image;
-            o.ipv6 = ipv6;
-            o.monitoring = monitoring;
-            o.privateNetworking = privateNetworking;
-            o.region = region;
-            o.size = size;
-            o.sshKeyFingerprint = sshKeyFingerprint;
-            o.sshKeyPath = sshKeyPath;
-            o.sshPort = sshPort;
-            o.sshUser = sshUser;
-            o.tags = tags;
-            o.userdata = userdata;
-            return o;
+            final var _resultValue = new NodeTemplateDigitaloceanConfig();
+            _resultValue.accessToken = accessToken;
+            _resultValue.backups = backups;
+            _resultValue.image = image;
+            _resultValue.ipv6 = ipv6;
+            _resultValue.monitoring = monitoring;
+            _resultValue.privateNetworking = privateNetworking;
+            _resultValue.region = region;
+            _resultValue.size = size;
+            _resultValue.sshKeyFingerprint = sshKeyFingerprint;
+            _resultValue.sshKeyPath = sshKeyPath;
+            _resultValue.sshPort = sshPort;
+            _resultValue.sshUser = sshUser;
+            _resultValue.tags = tags;
+            _resultValue.userdata = userdata;
+            return _resultValue;
         }
     }
 }

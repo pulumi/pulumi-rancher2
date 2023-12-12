@@ -56,10 +56,10 @@ public final class GetPodSecurityPolicyTemplateFsGroup {
             return this;
         }
         public GetPodSecurityPolicyTemplateFsGroup build() {
-            final var o = new GetPodSecurityPolicyTemplateFsGroup();
-            o.ranges = ranges;
-            o.rule = rule;
-            return o;
+            final var _resultValue = new GetPodSecurityPolicyTemplateFsGroup();
+            _resultValue.ranges = ranges;
+            _resultValue.rule = rule;
+            return _resultValue;
         }
     }
 }

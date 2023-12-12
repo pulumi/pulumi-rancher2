@@ -63,11 +63,11 @@ public final class GetGlobalDnsProviderCloudflareConfig {
             return this;
         }
         public GetGlobalDnsProviderCloudflareConfig build() {
-            final var o = new GetGlobalDnsProviderCloudflareConfig();
-            o.apiEmail = apiEmail;
-            o.apiKey = apiKey;
-            o.proxySetting = proxySetting;
-            return o;
+            final var _resultValue = new GetGlobalDnsProviderCloudflareConfig();
+            _resultValue.apiEmail = apiEmail;
+            _resultValue.apiKey = apiKey;
+            _resultValue.proxySetting = proxySetting;
+            return _resultValue;
         }
     }
 }

@@ -105,12 +105,12 @@ public final class PodSecurityPolicyTemplateSeLinuxSeLinuxOption {
             return this;
         }
         public PodSecurityPolicyTemplateSeLinuxSeLinuxOption build() {
-            final var o = new PodSecurityPolicyTemplateSeLinuxSeLinuxOption();
-            o.level = level;
-            o.role = role;
-            o.type = type;
-            o.user = user;
-            return o;
+            final var _resultValue = new PodSecurityPolicyTemplateSeLinuxSeLinuxOption();
+            _resultValue.level = level;
+            _resultValue.role = role;
+            _resultValue.type = type;
+            _resultValue.user = user;
+            return _resultValue;
         }
     }
 }

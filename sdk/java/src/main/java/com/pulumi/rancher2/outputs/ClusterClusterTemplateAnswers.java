@@ -88,11 +88,11 @@ public final class ClusterClusterTemplateAnswers {
             return this;
         }
         public ClusterClusterTemplateAnswers build() {
-            final var o = new ClusterClusterTemplateAnswers();
-            o.clusterId = clusterId;
-            o.projectId = projectId;
-            o.values = values;
-            return o;
+            final var _resultValue = new ClusterClusterTemplateAnswers();
+            _resultValue.clusterId = clusterId;
+            _resultValue.projectId = projectId;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

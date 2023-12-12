@@ -52,10 +52,10 @@ public final class GetPodSecurityPolicyTemplateAllowedHostPath {
             return this;
         }
         public GetPodSecurityPolicyTemplateAllowedHostPath build() {
-            final var o = new GetPodSecurityPolicyTemplateAllowedHostPath();
-            o.pathPrefix = pathPrefix;
-            o.readOnly = readOnly;
-            return o;
+            final var _resultValue = new GetPodSecurityPolicyTemplateAllowedHostPath();
+            _resultValue.pathPrefix = pathPrefix;
+            _resultValue.readOnly = readOnly;
+            return _resultValue;
         }
     }
 }

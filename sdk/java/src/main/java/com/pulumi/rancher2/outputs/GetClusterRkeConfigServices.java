@@ -98,14 +98,14 @@ public final class GetClusterRkeConfigServices {
             return this;
         }
         public GetClusterRkeConfigServices build() {
-            final var o = new GetClusterRkeConfigServices();
-            o.etcd = etcd;
-            o.kubeApi = kubeApi;
-            o.kubeController = kubeController;
-            o.kubelet = kubelet;
-            o.kubeproxy = kubeproxy;
-            o.scheduler = scheduler;
-            return o;
+            final var _resultValue = new GetClusterRkeConfigServices();
+            _resultValue.etcd = etcd;
+            _resultValue.kubeApi = kubeApi;
+            _resultValue.kubeController = kubeController;
+            _resultValue.kubelet = kubelet;
+            _resultValue.kubeproxy = kubeproxy;
+            _resultValue.scheduler = scheduler;
+            return _resultValue;
         }
     }
 }

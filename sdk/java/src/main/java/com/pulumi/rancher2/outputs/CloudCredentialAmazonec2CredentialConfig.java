@@ -86,11 +86,11 @@ public final class CloudCredentialAmazonec2CredentialConfig {
             return this;
         }
         public CloudCredentialAmazonec2CredentialConfig build() {
-            final var o = new CloudCredentialAmazonec2CredentialConfig();
-            o.accessKey = accessKey;
-            o.defaultRegion = defaultRegion;
-            o.secretKey = secretKey;
-            return o;
+            final var _resultValue = new CloudCredentialAmazonec2CredentialConfig();
+            _resultValue.accessKey = accessKey;
+            _resultValue.defaultRegion = defaultRegion;
+            _resultValue.secretKey = secretKey;
+            return _resultValue;
         }
     }
 }

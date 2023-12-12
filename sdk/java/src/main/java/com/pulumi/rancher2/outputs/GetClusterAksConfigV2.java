@@ -367,37 +367,37 @@ public final class GetClusterAksConfigV2 {
             return this;
         }
         public GetClusterAksConfigV2 build() {
-            final var o = new GetClusterAksConfigV2();
-            o.authBaseUrl = authBaseUrl;
-            o.authorizedIpRanges = authorizedIpRanges;
-            o.baseUrl = baseUrl;
-            o.cloudCredentialId = cloudCredentialId;
-            o.dnsPrefix = dnsPrefix;
-            o.httpApplicationRouting = httpApplicationRouting;
-            o.imported = imported;
-            o.kubernetesVersion = kubernetesVersion;
-            o.linuxAdminUsername = linuxAdminUsername;
-            o.linuxSshPublicKey = linuxSshPublicKey;
-            o.loadBalancerSku = loadBalancerSku;
-            o.logAnalyticsWorkspaceGroup = logAnalyticsWorkspaceGroup;
-            o.logAnalyticsWorkspaceName = logAnalyticsWorkspaceName;
-            o.monitoring = monitoring;
-            o.name = name;
-            o.networkDnsServiceIp = networkDnsServiceIp;
-            o.networkDockerBridgeCidr = networkDockerBridgeCidr;
-            o.networkPlugin = networkPlugin;
-            o.networkPodCidr = networkPodCidr;
-            o.networkPolicy = networkPolicy;
-            o.networkServiceCidr = networkServiceCidr;
-            o.nodePools = nodePools;
-            o.privateCluster = privateCluster;
-            o.resourceGroup = resourceGroup;
-            o.resourceLocation = resourceLocation;
-            o.subnet = subnet;
-            o.tags = tags;
-            o.virtualNetwork = virtualNetwork;
-            o.virtualNetworkResourceGroup = virtualNetworkResourceGroup;
-            return o;
+            final var _resultValue = new GetClusterAksConfigV2();
+            _resultValue.authBaseUrl = authBaseUrl;
+            _resultValue.authorizedIpRanges = authorizedIpRanges;
+            _resultValue.baseUrl = baseUrl;
+            _resultValue.cloudCredentialId = cloudCredentialId;
+            _resultValue.dnsPrefix = dnsPrefix;
+            _resultValue.httpApplicationRouting = httpApplicationRouting;
+            _resultValue.imported = imported;
+            _resultValue.kubernetesVersion = kubernetesVersion;
+            _resultValue.linuxAdminUsername = linuxAdminUsername;
+            _resultValue.linuxSshPublicKey = linuxSshPublicKey;
+            _resultValue.loadBalancerSku = loadBalancerSku;
+            _resultValue.logAnalyticsWorkspaceGroup = logAnalyticsWorkspaceGroup;
+            _resultValue.logAnalyticsWorkspaceName = logAnalyticsWorkspaceName;
+            _resultValue.monitoring = monitoring;
+            _resultValue.name = name;
+            _resultValue.networkDnsServiceIp = networkDnsServiceIp;
+            _resultValue.networkDockerBridgeCidr = networkDockerBridgeCidr;
+            _resultValue.networkPlugin = networkPlugin;
+            _resultValue.networkPodCidr = networkPodCidr;
+            _resultValue.networkPolicy = networkPolicy;
+            _resultValue.networkServiceCidr = networkServiceCidr;
+            _resultValue.nodePools = nodePools;
+            _resultValue.privateCluster = privateCluster;
+            _resultValue.resourceGroup = resourceGroup;
+            _resultValue.resourceLocation = resourceLocation;
+            _resultValue.subnet = subnet;
+            _resultValue.tags = tags;
+            _resultValue.virtualNetwork = virtualNetwork;
+            _resultValue.virtualNetworkResourceGroup = virtualNetworkResourceGroup;
+            return _resultValue;
         }
     }
 }

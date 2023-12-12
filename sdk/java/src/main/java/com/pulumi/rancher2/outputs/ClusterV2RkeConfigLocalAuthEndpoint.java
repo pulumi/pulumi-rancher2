@@ -87,11 +87,11 @@ public final class ClusterV2RkeConfigLocalAuthEndpoint {
             return this;
         }
         public ClusterV2RkeConfigLocalAuthEndpoint build() {
-            final var o = new ClusterV2RkeConfigLocalAuthEndpoint();
-            o.caCerts = caCerts;
-            o.enabled = enabled;
-            o.fqdn = fqdn;
-            return o;
+            final var _resultValue = new ClusterV2RkeConfigLocalAuthEndpoint();
+            _resultValue.caCerts = caCerts;
+            _resultValue.enabled = enabled;
+            _resultValue.fqdn = fqdn;
+            return _resultValue;
         }
     }
 }

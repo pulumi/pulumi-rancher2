@@ -38,9 +38,9 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloud
             return this;
         }
         public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetwork build() {
-            final var o = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetwork();
-            o.publicNetwork = publicNetwork;
-            return o;
+            final var _resultValue = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetwork();
+            _resultValue.publicNetwork = publicNetwork;
+            return _resultValue;
         }
     }
 }

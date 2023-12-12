@@ -209,18 +209,18 @@ public final class GetProjectAlertGroupResult {
             return this;
         }
         public GetProjectAlertGroupResult build() {
-            final var o = new GetProjectAlertGroupResult();
-            o.annotations = annotations;
-            o.description = description;
-            o.groupIntervalSeconds = groupIntervalSeconds;
-            o.groupWaitSeconds = groupWaitSeconds;
-            o.id = id;
-            o.labels = labels;
-            o.name = name;
-            o.projectId = projectId;
-            o.recipients = recipients;
-            o.repeatIntervalSeconds = repeatIntervalSeconds;
-            return o;
+            final var _resultValue = new GetProjectAlertGroupResult();
+            _resultValue.annotations = annotations;
+            _resultValue.description = description;
+            _resultValue.groupIntervalSeconds = groupIntervalSeconds;
+            _resultValue.groupWaitSeconds = groupWaitSeconds;
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.name = name;
+            _resultValue.projectId = projectId;
+            _resultValue.recipients = recipients;
+            _resultValue.repeatIntervalSeconds = repeatIntervalSeconds;
+            return _resultValue;
         }
     }
 }

@@ -159,16 +159,16 @@ public final class GetSecretResult {
             return this;
         }
         public GetSecretResult build() {
-            final var o = new GetSecretResult();
-            o.annotations = annotations;
-            o.data = data;
-            o.description = description;
-            o.id = id;
-            o.labels = labels;
-            o.name = name;
-            o.namespaceId = namespaceId;
-            o.projectId = projectId;
-            return o;
+            final var _resultValue = new GetSecretResult();
+            _resultValue.annotations = annotations;
+            _resultValue.data = data;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.name = name;
+            _resultValue.namespaceId = namespaceId;
+            _resultValue.projectId = projectId;
+            return _resultValue;
         }
     }
 }

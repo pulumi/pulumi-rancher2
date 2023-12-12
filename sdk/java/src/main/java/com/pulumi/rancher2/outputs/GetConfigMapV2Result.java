@@ -179,17 +179,17 @@ public final class GetConfigMapV2Result {
             return this;
         }
         public GetConfigMapV2Result build() {
-            final var o = new GetConfigMapV2Result();
-            o.annotations = annotations;
-            o.clusterId = clusterId;
-            o.data = data;
-            o.id = id;
-            o.immutable = immutable;
-            o.labels = labels;
-            o.name = name;
-            o.namespace = namespace;
-            o.resourceVersion = resourceVersion;
-            return o;
+            final var _resultValue = new GetConfigMapV2Result();
+            _resultValue.annotations = annotations;
+            _resultValue.clusterId = clusterId;
+            _resultValue.data = data;
+            _resultValue.id = id;
+            _resultValue.immutable = immutable;
+            _resultValue.labels = labels;
+            _resultValue.name = name;
+            _resultValue.namespace = namespace;
+            _resultValue.resourceVersion = resourceVersion;
+            return _resultValue;
         }
     }
 }

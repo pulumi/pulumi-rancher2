@@ -129,14 +129,14 @@ public final class EtcdBackupBackupConfig {
             return this;
         }
         public EtcdBackupBackupConfig build() {
-            final var o = new EtcdBackupBackupConfig();
-            o.enabled = enabled;
-            o.intervalHours = intervalHours;
-            o.retention = retention;
-            o.s3BackupConfig = s3BackupConfig;
-            o.safeTimestamp = safeTimestamp;
-            o.timeout = timeout;
-            return o;
+            final var _resultValue = new EtcdBackupBackupConfig();
+            _resultValue.enabled = enabled;
+            _resultValue.intervalHours = intervalHours;
+            _resultValue.retention = retention;
+            _resultValue.s3BackupConfig = s3BackupConfig;
+            _resultValue.safeTimestamp = safeTimestamp;
+            _resultValue.timeout = timeout;
+            return _resultValue;
         }
     }
 }

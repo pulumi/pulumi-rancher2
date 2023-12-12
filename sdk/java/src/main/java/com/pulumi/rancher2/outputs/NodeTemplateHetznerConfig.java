@@ -207,17 +207,17 @@ public final class NodeTemplateHetznerConfig {
             return this;
         }
         public NodeTemplateHetznerConfig build() {
-            final var o = new NodeTemplateHetznerConfig();
-            o.apiToken = apiToken;
-            o.image = image;
-            o.networks = networks;
-            o.serverLabels = serverLabels;
-            o.serverLocation = serverLocation;
-            o.serverType = serverType;
-            o.usePrivateNetwork = usePrivateNetwork;
-            o.userdata = userdata;
-            o.volumes = volumes;
-            return o;
+            final var _resultValue = new NodeTemplateHetznerConfig();
+            _resultValue.apiToken = apiToken;
+            _resultValue.image = image;
+            _resultValue.networks = networks;
+            _resultValue.serverLabels = serverLabels;
+            _resultValue.serverLocation = serverLocation;
+            _resultValue.serverType = serverType;
+            _resultValue.usePrivateNetwork = usePrivateNetwork;
+            _resultValue.userdata = userdata;
+            _resultValue.volumes = volumes;
+            return _resultValue;
         }
     }
 }

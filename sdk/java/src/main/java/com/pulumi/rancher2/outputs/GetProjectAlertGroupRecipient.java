@@ -74,12 +74,12 @@ public final class GetProjectAlertGroupRecipient {
             return this;
         }
         public GetProjectAlertGroupRecipient build() {
-            final var o = new GetProjectAlertGroupRecipient();
-            o.defaultRecipient = defaultRecipient;
-            o.notifierId = notifierId;
-            o.notifierType = notifierType;
-            o.recipient = recipient;
-            return o;
+            final var _resultValue = new GetProjectAlertGroupRecipient();
+            _resultValue.defaultRecipient = defaultRecipient;
+            _resultValue.notifierId = notifierId;
+            _resultValue.notifierType = notifierType;
+            _resultValue.recipient = recipient;
+            return _resultValue;
         }
     }
 }

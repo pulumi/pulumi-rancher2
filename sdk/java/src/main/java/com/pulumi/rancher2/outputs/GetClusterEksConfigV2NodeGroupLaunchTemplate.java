@@ -79,11 +79,11 @@ public final class GetClusterEksConfigV2NodeGroupLaunchTemplate {
             return this;
         }
         public GetClusterEksConfigV2NodeGroupLaunchTemplate build() {
-            final var o = new GetClusterEksConfigV2NodeGroupLaunchTemplate();
-            o.id = id;
-            o.name = name;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetClusterEksConfigV2NodeGroupLaunchTemplate();
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

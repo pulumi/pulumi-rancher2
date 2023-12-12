@@ -68,10 +68,10 @@ public final class ClusterRkeConfigIngressUpdateStrategy {
             return this;
         }
         public ClusterRkeConfigIngressUpdateStrategy build() {
-            final var o = new ClusterRkeConfigIngressUpdateStrategy();
-            o.rollingUpdate = rollingUpdate;
-            o.strategy = strategy;
-            return o;
+            final var _resultValue = new ClusterRkeConfigIngressUpdateStrategy();
+            _resultValue.rollingUpdate = rollingUpdate;
+            _resultValue.strategy = strategy;
+            return _resultValue;
         }
     }
 }

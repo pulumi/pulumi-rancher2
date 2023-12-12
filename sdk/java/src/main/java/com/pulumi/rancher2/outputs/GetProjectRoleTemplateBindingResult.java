@@ -195,18 +195,18 @@ public final class GetProjectRoleTemplateBindingResult {
             return this;
         }
         public GetProjectRoleTemplateBindingResult build() {
-            final var o = new GetProjectRoleTemplateBindingResult();
-            o.annotations = annotations;
-            o.groupId = groupId;
-            o.groupPrincipalId = groupPrincipalId;
-            o.id = id;
-            o.labels = labels;
-            o.name = name;
-            o.projectId = projectId;
-            o.roleTemplateId = roleTemplateId;
-            o.userId = userId;
-            o.userPrincipalId = userPrincipalId;
-            return o;
+            final var _resultValue = new GetProjectRoleTemplateBindingResult();
+            _resultValue.annotations = annotations;
+            _resultValue.groupId = groupId;
+            _resultValue.groupPrincipalId = groupPrincipalId;
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.name = name;
+            _resultValue.projectId = projectId;
+            _resultValue.roleTemplateId = roleTemplateId;
+            _resultValue.userId = userId;
+            _resultValue.userPrincipalId = userPrincipalId;
+            return _resultValue;
         }
     }
 }

@@ -188,21 +188,21 @@ public final class GetClusterV2ClusterRegistrationToken {
             return this;
         }
         public GetClusterV2ClusterRegistrationToken build() {
-            final var o = new GetClusterV2ClusterRegistrationToken();
-            o.annotations = annotations;
-            o.clusterId = clusterId;
-            o.command = command;
-            o.id = id;
-            o.insecureCommand = insecureCommand;
-            o.insecureNodeCommand = insecureNodeCommand;
-            o.insecureWindowsNodeCommand = insecureWindowsNodeCommand;
-            o.labels = labels;
-            o.manifestUrl = manifestUrl;
-            o.name = name;
-            o.nodeCommand = nodeCommand;
-            o.token = token;
-            o.windowsNodeCommand = windowsNodeCommand;
-            return o;
+            final var _resultValue = new GetClusterV2ClusterRegistrationToken();
+            _resultValue.annotations = annotations;
+            _resultValue.clusterId = clusterId;
+            _resultValue.command = command;
+            _resultValue.id = id;
+            _resultValue.insecureCommand = insecureCommand;
+            _resultValue.insecureNodeCommand = insecureNodeCommand;
+            _resultValue.insecureWindowsNodeCommand = insecureWindowsNodeCommand;
+            _resultValue.labels = labels;
+            _resultValue.manifestUrl = manifestUrl;
+            _resultValue.name = name;
+            _resultValue.nodeCommand = nodeCommand;
+            _resultValue.token = token;
+            _resultValue.windowsNodeCommand = windowsNodeCommand;
+            return _resultValue;
         }
     }
 }

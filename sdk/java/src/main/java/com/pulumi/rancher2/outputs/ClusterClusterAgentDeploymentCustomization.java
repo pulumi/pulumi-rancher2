@@ -95,11 +95,11 @@ public final class ClusterClusterAgentDeploymentCustomization {
             return overrideResourceRequirements(List.of(overrideResourceRequirements));
         }
         public ClusterClusterAgentDeploymentCustomization build() {
-            final var o = new ClusterClusterAgentDeploymentCustomization();
-            o.appendTolerations = appendTolerations;
-            o.overrideAffinity = overrideAffinity;
-            o.overrideResourceRequirements = overrideResourceRequirements;
-            return o;
+            final var _resultValue = new ClusterClusterAgentDeploymentCustomization();
+            _resultValue.appendTolerations = appendTolerations;
+            _resultValue.overrideAffinity = overrideAffinity;
+            _resultValue.overrideResourceRequirements = overrideResourceRequirements;
+            return _resultValue;
         }
     }
 }

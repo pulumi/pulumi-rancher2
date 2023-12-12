@@ -66,10 +66,10 @@ public final class ProjectResourceQuota {
             return this;
         }
         public ProjectResourceQuota build() {
-            final var o = new ProjectResourceQuota();
-            o.namespaceDefaultLimit = namespaceDefaultLimit;
-            o.projectLimit = projectLimit;
-            return o;
+            final var _resultValue = new ProjectResourceQuota();
+            _resultValue.namespaceDefaultLimit = namespaceDefaultLimit;
+            _resultValue.projectLimit = projectLimit;
+            return _resultValue;
         }
     }
 }

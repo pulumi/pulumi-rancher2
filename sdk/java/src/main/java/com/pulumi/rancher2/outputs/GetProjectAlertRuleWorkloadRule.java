@@ -65,11 +65,11 @@ public final class GetProjectAlertRuleWorkloadRule {
             return this;
         }
         public GetProjectAlertRuleWorkloadRule build() {
-            final var o = new GetProjectAlertRuleWorkloadRule();
-            o.availablePercentage = availablePercentage;
-            o.selector = selector;
-            o.workloadId = workloadId;
-            return o;
+            final var _resultValue = new GetProjectAlertRuleWorkloadRule();
+            _resultValue.availablePercentage = availablePercentage;
+            _resultValue.selector = selector;
+            _resultValue.workloadId = workloadId;
+            return _resultValue;
         }
     }
 }

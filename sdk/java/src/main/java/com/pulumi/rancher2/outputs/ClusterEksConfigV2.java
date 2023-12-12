@@ -353,24 +353,24 @@ public final class ClusterEksConfigV2 {
             return this;
         }
         public ClusterEksConfigV2 build() {
-            final var o = new ClusterEksConfigV2();
-            o.cloudCredentialId = cloudCredentialId;
-            o.imported = imported;
-            o.kmsKey = kmsKey;
-            o.kubernetesVersion = kubernetesVersion;
-            o.loggingTypes = loggingTypes;
-            o.name = name;
-            o.nodeGroups = nodeGroups;
-            o.privateAccess = privateAccess;
-            o.publicAccess = publicAccess;
-            o.publicAccessSources = publicAccessSources;
-            o.region = region;
-            o.secretsEncryption = secretsEncryption;
-            o.securityGroups = securityGroups;
-            o.serviceRole = serviceRole;
-            o.subnets = subnets;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new ClusterEksConfigV2();
+            _resultValue.cloudCredentialId = cloudCredentialId;
+            _resultValue.imported = imported;
+            _resultValue.kmsKey = kmsKey;
+            _resultValue.kubernetesVersion = kubernetesVersion;
+            _resultValue.loggingTypes = loggingTypes;
+            _resultValue.name = name;
+            _resultValue.nodeGroups = nodeGroups;
+            _resultValue.privateAccess = privateAccess;
+            _resultValue.publicAccess = publicAccess;
+            _resultValue.publicAccessSources = publicAccessSources;
+            _resultValue.region = region;
+            _resultValue.secretsEncryption = secretsEncryption;
+            _resultValue.securityGroups = securityGroups;
+            _resultValue.serviceRole = serviceRole;
+            _resultValue.subnets = subnets;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

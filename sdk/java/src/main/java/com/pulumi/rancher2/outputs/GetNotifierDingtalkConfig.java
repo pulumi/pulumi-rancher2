@@ -62,11 +62,11 @@ public final class GetNotifierDingtalkConfig {
             return this;
         }
         public GetNotifierDingtalkConfig build() {
-            final var o = new GetNotifierDingtalkConfig();
-            o.proxyUrl = proxyUrl;
-            o.secret = secret;
-            o.url = url;
-            return o;
+            final var _resultValue = new GetNotifierDingtalkConfig();
+            _resultValue.proxyUrl = proxyUrl;
+            _resultValue.secret = secret;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

@@ -55,10 +55,10 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenti
             return this;
         }
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication build() {
-            final var o = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication();
-            o.sans = sans;
-            o.strategy = strategy;
-            return o;
+            final var _resultValue = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication();
+            _resultValue.sans = sans;
+            _resultValue.strategy = strategy;
+            return _resultValue;
         }
     }
 }

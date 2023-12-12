@@ -93,13 +93,13 @@ public final class ClusterAlterRuleMetricRule {
             return this;
         }
         public ClusterAlterRuleMetricRule build() {
-            final var o = new ClusterAlterRuleMetricRule();
-            o.comparison = comparison;
-            o.description = description;
-            o.duration = duration;
-            o.expression = expression;
-            o.thresholdValue = thresholdValue;
-            return o;
+            final var _resultValue = new ClusterAlterRuleMetricRule();
+            _resultValue.comparison = comparison;
+            _resultValue.description = description;
+            _resultValue.duration = duration;
+            _resultValue.expression = expression;
+            _resultValue.thresholdValue = thresholdValue;
+            return _resultValue;
         }
     }
 }

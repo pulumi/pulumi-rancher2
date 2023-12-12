@@ -38,9 +38,9 @@ public final class GetClusterRkeConfigCloudProviderVsphereCloudProviderDisk {
             return this;
         }
         public GetClusterRkeConfigCloudProviderVsphereCloudProviderDisk build() {
-            final var o = new GetClusterRkeConfigCloudProviderVsphereCloudProviderDisk();
-            o.scsiControllerType = scsiControllerType;
-            return o;
+            final var _resultValue = new GetClusterRkeConfigCloudProviderVsphereCloudProviderDisk();
+            _resultValue.scsiControllerType = scsiControllerType;
+            return _resultValue;
         }
     }
 }

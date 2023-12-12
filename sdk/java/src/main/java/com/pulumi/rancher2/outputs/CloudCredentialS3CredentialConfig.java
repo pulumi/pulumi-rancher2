@@ -182,16 +182,16 @@ public final class CloudCredentialS3CredentialConfig {
             return this;
         }
         public CloudCredentialS3CredentialConfig build() {
-            final var o = new CloudCredentialS3CredentialConfig();
-            o.accessKey = accessKey;
-            o.defaultBucket = defaultBucket;
-            o.defaultEndpoint = defaultEndpoint;
-            o.defaultEndpointCa = defaultEndpointCa;
-            o.defaultFolder = defaultFolder;
-            o.defaultRegion = defaultRegion;
-            o.defaultSkipSslVerify = defaultSkipSslVerify;
-            o.secretKey = secretKey;
-            return o;
+            final var _resultValue = new CloudCredentialS3CredentialConfig();
+            _resultValue.accessKey = accessKey;
+            _resultValue.defaultBucket = defaultBucket;
+            _resultValue.defaultEndpoint = defaultEndpoint;
+            _resultValue.defaultEndpointCa = defaultEndpointCa;
+            _resultValue.defaultFolder = defaultFolder;
+            _resultValue.defaultRegion = defaultRegion;
+            _resultValue.defaultSkipSslVerify = defaultSkipSslVerify;
+            _resultValue.secretKey = secretKey;
+            return _resultValue;
         }
     }
 }

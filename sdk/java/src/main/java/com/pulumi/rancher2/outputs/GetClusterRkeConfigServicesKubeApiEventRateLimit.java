@@ -52,10 +52,10 @@ public final class GetClusterRkeConfigServicesKubeApiEventRateLimit {
             return this;
         }
         public GetClusterRkeConfigServicesKubeApiEventRateLimit build() {
-            final var o = new GetClusterRkeConfigServicesKubeApiEventRateLimit();
-            o.configuration = configuration;
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new GetClusterRkeConfigServicesKubeApiEventRateLimit();
+            _resultValue.configuration = configuration;
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

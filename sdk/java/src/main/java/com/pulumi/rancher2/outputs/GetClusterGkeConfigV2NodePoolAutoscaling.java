@@ -63,11 +63,11 @@ public final class GetClusterGkeConfigV2NodePoolAutoscaling {
             return this;
         }
         public GetClusterGkeConfigV2NodePoolAutoscaling build() {
-            final var o = new GetClusterGkeConfigV2NodePoolAutoscaling();
-            o.enabled = enabled;
-            o.maxNodeCount = maxNodeCount;
-            o.minNodeCount = minNodeCount;
-            return o;
+            final var _resultValue = new GetClusterGkeConfigV2NodePoolAutoscaling();
+            _resultValue.enabled = enabled;
+            _resultValue.maxNodeCount = maxNodeCount;
+            _resultValue.minNodeCount = minNodeCount;
+            return _resultValue;
         }
     }
 }

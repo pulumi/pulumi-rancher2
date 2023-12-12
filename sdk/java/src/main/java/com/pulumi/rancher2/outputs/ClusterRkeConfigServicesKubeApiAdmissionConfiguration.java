@@ -91,11 +91,11 @@ public final class ClusterRkeConfigServicesKubeApiAdmissionConfiguration {
             return plugins(List.of(plugins));
         }
         public ClusterRkeConfigServicesKubeApiAdmissionConfiguration build() {
-            final var o = new ClusterRkeConfigServicesKubeApiAdmissionConfiguration();
-            o.apiVersion = apiVersion;
-            o.kind = kind;
-            o.plugins = plugins;
-            return o;
+            final var _resultValue = new ClusterRkeConfigServicesKubeApiAdmissionConfiguration();
+            _resultValue.apiVersion = apiVersion;
+            _resultValue.kind = kind;
+            _resultValue.plugins = plugins;
+            return _resultValue;
         }
     }
 }

@@ -144,17 +144,17 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDns {
             return upstreamNameservers(List.of(upstreamNameservers));
         }
         public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDns build() {
-            final var o = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDns();
-            o.linearAutoscalerParams = linearAutoscalerParams;
-            o.nodeSelector = nodeSelector;
-            o.nodelocal = nodelocal;
-            o.options = options;
-            o.provider = provider;
-            o.reverseCidrs = reverseCidrs;
-            o.tolerations = tolerations;
-            o.updateStrategy = updateStrategy;
-            o.upstreamNameservers = upstreamNameservers;
-            return o;
+            final var _resultValue = new GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDns();
+            _resultValue.linearAutoscalerParams = linearAutoscalerParams;
+            _resultValue.nodeSelector = nodeSelector;
+            _resultValue.nodelocal = nodelocal;
+            _resultValue.options = options;
+            _resultValue.provider = provider;
+            _resultValue.reverseCidrs = reverseCidrs;
+            _resultValue.tolerations = tolerations;
+            _resultValue.updateStrategy = updateStrategy;
+            _resultValue.upstreamNameservers = upstreamNameservers;
+            return _resultValue;
         }
     }
 }
