@@ -51,16 +51,19 @@ public final class GetProjectAlertRuleWorkloadRule {
 
         @CustomType.Setter
         public Builder availablePercentage(@Nullable Integer availablePercentage) {
+
             this.availablePercentage = availablePercentage;
             return this;
         }
         @CustomType.Setter
         public Builder selector(@Nullable Map<String,Object> selector) {
+
             this.selector = selector;
             return this;
         }
         @CustomType.Setter
         public Builder workloadId(@Nullable String workloadId) {
+
             this.workloadId = workloadId;
             return this;
         }

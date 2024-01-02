@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.inputs.NamespaceResourceQuotaLimitArgs;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class NamespaceResourceQuotaArgs extends com.pulumi.resources.Resou
         }
 
         public NamespaceResourceQuotaArgs build() {
-            $.limit = Objects.requireNonNull($.limit, "expected parameter 'limit' to be non-null");
+            if ($.limit == null) {
+                throw new MissingRequiredPropertyException("NamespaceResourceQuotaArgs", "limit");
+            }
             return $;
         }
     }

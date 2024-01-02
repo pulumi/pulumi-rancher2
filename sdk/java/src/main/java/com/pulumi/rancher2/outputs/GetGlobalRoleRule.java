@@ -60,6 +60,7 @@ public final class GetGlobalRoleRule {
 
         @CustomType.Setter
         public Builder apiGroups(@Nullable List<String> apiGroups) {
+
             this.apiGroups = apiGroups;
             return this;
         }
@@ -68,6 +69,7 @@ public final class GetGlobalRoleRule {
         }
         @CustomType.Setter
         public Builder nonResourceUrls(@Nullable List<String> nonResourceUrls) {
+
             this.nonResourceUrls = nonResourceUrls;
             return this;
         }
@@ -76,6 +78,7 @@ public final class GetGlobalRoleRule {
         }
         @CustomType.Setter
         public Builder resourceNames(@Nullable List<String> resourceNames) {
+
             this.resourceNames = resourceNames;
             return this;
         }
@@ -84,6 +87,7 @@ public final class GetGlobalRoleRule {
         }
         @CustomType.Setter
         public Builder resources(@Nullable List<String> resources) {
+
             this.resources = resources;
             return this;
         }
@@ -92,6 +96,7 @@ public final class GetGlobalRoleRule {
         }
         @CustomType.Setter
         public Builder verbs(@Nullable List<String> verbs) {
+
             this.verbs = verbs;
             return this;
         }

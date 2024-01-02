@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -1513,18 +1514,42 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         public ClusterAksConfigArgs build() {
-            $.agentDnsPrefix = Objects.requireNonNull($.agentDnsPrefix, "expected parameter 'agentDnsPrefix' to be non-null");
-            $.clientId = Objects.requireNonNull($.clientId, "expected parameter 'clientId' to be non-null");
-            $.clientSecret = Objects.requireNonNull($.clientSecret, "expected parameter 'clientSecret' to be non-null");
-            $.kubernetesVersion = Objects.requireNonNull($.kubernetesVersion, "expected parameter 'kubernetesVersion' to be non-null");
-            $.masterDnsPrefix = Objects.requireNonNull($.masterDnsPrefix, "expected parameter 'masterDnsPrefix' to be non-null");
-            $.resourceGroup = Objects.requireNonNull($.resourceGroup, "expected parameter 'resourceGroup' to be non-null");
-            $.sshPublicKeyContents = Objects.requireNonNull($.sshPublicKeyContents, "expected parameter 'sshPublicKeyContents' to be non-null");
-            $.subnet = Objects.requireNonNull($.subnet, "expected parameter 'subnet' to be non-null");
-            $.subscriptionId = Objects.requireNonNull($.subscriptionId, "expected parameter 'subscriptionId' to be non-null");
-            $.tenantId = Objects.requireNonNull($.tenantId, "expected parameter 'tenantId' to be non-null");
-            $.virtualNetwork = Objects.requireNonNull($.virtualNetwork, "expected parameter 'virtualNetwork' to be non-null");
-            $.virtualNetworkResourceGroup = Objects.requireNonNull($.virtualNetworkResourceGroup, "expected parameter 'virtualNetworkResourceGroup' to be non-null");
+            if ($.agentDnsPrefix == null) {
+                throw new MissingRequiredPropertyException("ClusterAksConfigArgs", "agentDnsPrefix");
+            }
+            if ($.clientId == null) {
+                throw new MissingRequiredPropertyException("ClusterAksConfigArgs", "clientId");
+            }
+            if ($.clientSecret == null) {
+                throw new MissingRequiredPropertyException("ClusterAksConfigArgs", "clientSecret");
+            }
+            if ($.kubernetesVersion == null) {
+                throw new MissingRequiredPropertyException("ClusterAksConfigArgs", "kubernetesVersion");
+            }
+            if ($.masterDnsPrefix == null) {
+                throw new MissingRequiredPropertyException("ClusterAksConfigArgs", "masterDnsPrefix");
+            }
+            if ($.resourceGroup == null) {
+                throw new MissingRequiredPropertyException("ClusterAksConfigArgs", "resourceGroup");
+            }
+            if ($.sshPublicKeyContents == null) {
+                throw new MissingRequiredPropertyException("ClusterAksConfigArgs", "sshPublicKeyContents");
+            }
+            if ($.subnet == null) {
+                throw new MissingRequiredPropertyException("ClusterAksConfigArgs", "subnet");
+            }
+            if ($.subscriptionId == null) {
+                throw new MissingRequiredPropertyException("ClusterAksConfigArgs", "subscriptionId");
+            }
+            if ($.tenantId == null) {
+                throw new MissingRequiredPropertyException("ClusterAksConfigArgs", "tenantId");
+            }
+            if ($.virtualNetwork == null) {
+                throw new MissingRequiredPropertyException("ClusterAksConfigArgs", "virtualNetwork");
+            }
+            if ($.virtualNetworkResourceGroup == null) {
+                throw new MissingRequiredPropertyException("ClusterAksConfigArgs", "virtualNetworkResourceGroup");
+            }
             return $;
         }
     }

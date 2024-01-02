@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -65,7 +66,9 @@ public final class GetPodSecurityPolicyTemplateAllowedHostPath extends com.pulum
         }
 
         public GetPodSecurityPolicyTemplateAllowedHostPath build() {
-            $.pathPrefix = Objects.requireNonNull($.pathPrefix, "expected parameter 'pathPrefix' to be non-null");
+            if ($.pathPrefix == null) {
+                throw new MissingRequiredPropertyException("GetPodSecurityPolicyTemplateAllowedHostPath", "pathPrefix");
+            }
             return $;
         }
     }

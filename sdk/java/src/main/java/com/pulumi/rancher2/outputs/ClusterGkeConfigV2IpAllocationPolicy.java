@@ -143,41 +143,49 @@ public final class ClusterGkeConfigV2IpAllocationPolicy {
 
         @CustomType.Setter
         public Builder clusterIpv4CidrBlock(@Nullable String clusterIpv4CidrBlock) {
+
             this.clusterIpv4CidrBlock = clusterIpv4CidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder clusterSecondaryRangeName(@Nullable String clusterSecondaryRangeName) {
+
             this.clusterSecondaryRangeName = clusterSecondaryRangeName;
             return this;
         }
         @CustomType.Setter
         public Builder createSubnetwork(@Nullable Boolean createSubnetwork) {
+
             this.createSubnetwork = createSubnetwork;
             return this;
         }
         @CustomType.Setter
         public Builder nodeIpv4CidrBlock(@Nullable String nodeIpv4CidrBlock) {
+
             this.nodeIpv4CidrBlock = nodeIpv4CidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder servicesIpv4CidrBlock(@Nullable String servicesIpv4CidrBlock) {
+
             this.servicesIpv4CidrBlock = servicesIpv4CidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder servicesSecondaryRangeName(@Nullable String servicesSecondaryRangeName) {
+
             this.servicesSecondaryRangeName = servicesSecondaryRangeName;
             return this;
         }
         @CustomType.Setter
         public Builder subnetworkName(@Nullable String subnetworkName) {
+
             this.subnetworkName = subnetworkName;
             return this;
         }
         @CustomType.Setter
         public Builder useIpAliases(@Nullable Boolean useIpAliases) {
+
             this.useIpAliases = useIpAliases;
             return this;
         }

@@ -60,11 +60,13 @@ public final class ProjectProjectMonitoringInput {
 
         @CustomType.Setter
         public Builder answers(@Nullable Map<String,Object> answers) {
+
             this.answers = answers;
             return this;
         }
         @CustomType.Setter
         public Builder version(@Nullable String version) {
+
             this.version = version;
             return this;
         }

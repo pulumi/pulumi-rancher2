@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -43,7 +44,10 @@ public final class GetPodSecurityPolicyTemplateRuntimeClass {
 
         @CustomType.Setter
         public Builder allowedRuntimeClassNames(List<String> allowedRuntimeClassNames) {
-            this.allowedRuntimeClassNames = Objects.requireNonNull(allowedRuntimeClassNames);
+            if (allowedRuntimeClassNames == null) {
+              throw new MissingRequiredPropertyException("GetPodSecurityPolicyTemplateRuntimeClass", "allowedRuntimeClassNames");
+            }
+            this.allowedRuntimeClassNames = allowedRuntimeClassNames;
             return this;
         }
         public Builder allowedRuntimeClassNames(String... allowedRuntimeClassNames) {
@@ -51,6 +55,7 @@ public final class GetPodSecurityPolicyTemplateRuntimeClass {
         }
         @CustomType.Setter
         public Builder defaultRuntimeClassName(@Nullable String defaultRuntimeClassName) {
+
             this.defaultRuntimeClassName = defaultRuntimeClassName;
             return this;
         }

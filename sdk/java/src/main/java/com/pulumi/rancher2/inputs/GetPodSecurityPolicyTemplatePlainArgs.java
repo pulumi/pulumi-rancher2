@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.inputs.GetPodSecurityPolicyTemplateAllowedCsiDriver;
 import com.pulumi.rancher2.inputs.GetPodSecurityPolicyTemplateAllowedFlexVolume;
 import com.pulumi.rancher2.inputs.GetPodSecurityPolicyTemplateAllowedHostPath;
@@ -904,7 +905,9 @@ public final class GetPodSecurityPolicyTemplatePlainArgs extends com.pulumi.reso
         }
 
         public GetPodSecurityPolicyTemplatePlainArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetPodSecurityPolicyTemplatePlainArgs", "name");
+            }
             return $;
         }
     }

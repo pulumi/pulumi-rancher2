@@ -89,21 +89,25 @@ public final class ClusterV2RkeConfigEtcd {
 
         @CustomType.Setter
         public Builder disableSnapshots(@Nullable Boolean disableSnapshots) {
+
             this.disableSnapshots = disableSnapshots;
             return this;
         }
         @CustomType.Setter
         public Builder s3Config(@Nullable ClusterV2RkeConfigEtcdS3Config s3Config) {
+
             this.s3Config = s3Config;
             return this;
         }
         @CustomType.Setter
         public Builder snapshotRetention(@Nullable Integer snapshotRetention) {
+
             this.snapshotRetention = snapshotRetention;
             return this;
         }
         @CustomType.Setter
         public Builder snapshotScheduleCron(@Nullable String snapshotScheduleCron) {
+
             this.snapshotScheduleCron = snapshotScheduleCron;
             return this;
         }

@@ -117,16 +117,19 @@ public final class ClusterRkeConfigServicesKubeController {
 
         @CustomType.Setter
         public Builder clusterCidr(@Nullable String clusterCidr) {
+
             this.clusterCidr = clusterCidr;
             return this;
         }
         @CustomType.Setter
         public Builder extraArgs(@Nullable Map<String,Object> extraArgs) {
+
             this.extraArgs = extraArgs;
             return this;
         }
         @CustomType.Setter
         public Builder extraBinds(@Nullable List<String> extraBinds) {
+
             this.extraBinds = extraBinds;
             return this;
         }
@@ -135,6 +138,7 @@ public final class ClusterRkeConfigServicesKubeController {
         }
         @CustomType.Setter
         public Builder extraEnvs(@Nullable List<String> extraEnvs) {
+
             this.extraEnvs = extraEnvs;
             return this;
         }
@@ -143,11 +147,13 @@ public final class ClusterRkeConfigServicesKubeController {
         }
         @CustomType.Setter
         public Builder image(@Nullable String image) {
+
             this.image = image;
             return this;
         }
         @CustomType.Setter
         public Builder serviceClusterIpRange(@Nullable String serviceClusterIpRange) {
+
             this.serviceClusterIpRange = serviceClusterIpRange;
             return this;
         }

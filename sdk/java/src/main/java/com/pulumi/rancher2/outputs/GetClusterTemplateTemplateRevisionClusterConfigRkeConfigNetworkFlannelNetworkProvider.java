@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwo
 
         @CustomType.Setter
         public Builder iface(String iface) {
-            this.iface = Objects.requireNonNull(iface);
+            if (iface == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider", "iface");
+            }
+            this.iface = iface;
             return this;
         }
         public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider build() {

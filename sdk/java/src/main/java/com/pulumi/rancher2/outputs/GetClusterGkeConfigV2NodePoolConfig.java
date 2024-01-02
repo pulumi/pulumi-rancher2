@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterGkeConfigV2NodePoolConfigTaint;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -104,37 +105,48 @@ public final class GetClusterGkeConfigV2NodePoolConfig {
 
         @CustomType.Setter
         public Builder diskSizeGb(@Nullable Integer diskSizeGb) {
+
             this.diskSizeGb = diskSizeGb;
             return this;
         }
         @CustomType.Setter
         public Builder diskType(@Nullable String diskType) {
+
             this.diskType = diskType;
             return this;
         }
         @CustomType.Setter
         public Builder imageType(@Nullable String imageType) {
+
             this.imageType = imageType;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2NodePoolConfig", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder localSsdCount(@Nullable Integer localSsdCount) {
+
             this.localSsdCount = localSsdCount;
             return this;
         }
         @CustomType.Setter
         public Builder machineType(@Nullable String machineType) {
+
             this.machineType = machineType;
             return this;
         }
         @CustomType.Setter
         public Builder oauthScopes(List<String> oauthScopes) {
-            this.oauthScopes = Objects.requireNonNull(oauthScopes);
+            if (oauthScopes == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2NodePoolConfig", "oauthScopes");
+            }
+            this.oauthScopes = oauthScopes;
             return this;
         }
         public Builder oauthScopes(String... oauthScopes) {
@@ -142,12 +154,16 @@ public final class GetClusterGkeConfigV2NodePoolConfig {
         }
         @CustomType.Setter
         public Builder preemptible(@Nullable Boolean preemptible) {
+
             this.preemptible = preemptible;
             return this;
         }
         @CustomType.Setter
         public Builder tags(List<String> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2NodePoolConfig", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public Builder tags(String... tags) {
@@ -155,6 +171,7 @@ public final class GetClusterGkeConfigV2NodePoolConfig {
         }
         @CustomType.Setter
         public Builder taints(@Nullable List<GetClusterGkeConfigV2NodePoolConfigTaint> taints) {
+
             this.taints = taints;
             return this;
         }

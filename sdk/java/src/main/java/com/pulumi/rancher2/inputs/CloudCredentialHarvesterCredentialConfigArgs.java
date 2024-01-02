@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,8 +151,12 @@ public final class CloudCredentialHarvesterCredentialConfigArgs extends com.pulu
         }
 
         public CloudCredentialHarvesterCredentialConfigArgs build() {
-            $.clusterType = Objects.requireNonNull($.clusterType, "expected parameter 'clusterType' to be non-null");
-            $.kubeconfigContent = Objects.requireNonNull($.kubeconfigContent, "expected parameter 'kubeconfigContent' to be non-null");
+            if ($.clusterType == null) {
+                throw new MissingRequiredPropertyException("CloudCredentialHarvesterCredentialConfigArgs", "clusterType");
+            }
+            if ($.kubeconfigContent == null) {
+                throw new MissingRequiredPropertyException("CloudCredentialHarvesterCredentialConfigArgs", "kubeconfigContent");
+            }
             return $;
         }
     }

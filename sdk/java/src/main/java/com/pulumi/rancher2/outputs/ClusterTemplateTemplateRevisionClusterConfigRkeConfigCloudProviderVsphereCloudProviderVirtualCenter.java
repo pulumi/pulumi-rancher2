@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -75,32 +76,46 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
 
         @CustomType.Setter
         public Builder datacenters(String datacenters) {
-            this.datacenters = Objects.requireNonNull(datacenters);
+            if (datacenters == null) {
+              throw new MissingRequiredPropertyException("ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenter", "datacenters");
+            }
+            this.datacenters = datacenters;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenter", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder password(String password) {
-            this.password = Objects.requireNonNull(password);
+            if (password == null) {
+              throw new MissingRequiredPropertyException("ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenter", "password");
+            }
+            this.password = password;
             return this;
         }
         @CustomType.Setter
         public Builder port(@Nullable String port) {
+
             this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder soapRoundtripCount(@Nullable Integer soapRoundtripCount) {
+
             this.soapRoundtripCount = soapRoundtripCount;
             return this;
         }
         @CustomType.Setter
         public Builder user(String user) {
-            this.user = Objects.requireNonNull(user);
+            if (user == null) {
+              throw new MissingRequiredPropertyException("ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenter", "user");
+            }
+            this.user = user;
             return this;
         }
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenter build() {

@@ -36,6 +36,7 @@ public final class ClusterV2RkeConfigMachinePoolDefault {
 
         @CustomType.Setter
         public Builder hostnameLengthLimit(@Nullable Integer hostnameLengthLimit) {
+
             this.hostnameLengthLimit = hostnameLengthLimit;
             return this;
         }

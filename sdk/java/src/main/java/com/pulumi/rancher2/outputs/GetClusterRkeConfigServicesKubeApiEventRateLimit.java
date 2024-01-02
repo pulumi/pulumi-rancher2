@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -43,11 +44,15 @@ public final class GetClusterRkeConfigServicesKubeApiEventRateLimit {
 
         @CustomType.Setter
         public Builder configuration(String configuration) {
-            this.configuration = Objects.requireNonNull(configuration);
+            if (configuration == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigServicesKubeApiEventRateLimit", "configuration");
+            }
+            this.configuration = configuration;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }

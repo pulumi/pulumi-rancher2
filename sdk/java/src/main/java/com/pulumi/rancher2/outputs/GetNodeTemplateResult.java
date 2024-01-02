@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetNodeTemplateNodeTaint;
 import java.lang.Boolean;
 import java.lang.Object;
@@ -251,32 +252,50 @@ public final class GetNodeTemplateResult {
 
         @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
-            this.annotations = Objects.requireNonNull(annotations);
+            if (annotations == null) {
+              throw new MissingRequiredPropertyException("GetNodeTemplateResult", "annotations");
+            }
+            this.annotations = annotations;
             return this;
         }
         @CustomType.Setter
         public Builder cloudCredentialId(String cloudCredentialId) {
-            this.cloudCredentialId = Objects.requireNonNull(cloudCredentialId);
+            if (cloudCredentialId == null) {
+              throw new MissingRequiredPropertyException("GetNodeTemplateResult", "cloudCredentialId");
+            }
+            this.cloudCredentialId = cloudCredentialId;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetNodeTemplateResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder driver(String driver) {
-            this.driver = Objects.requireNonNull(driver);
+            if (driver == null) {
+              throw new MissingRequiredPropertyException("GetNodeTemplateResult", "driver");
+            }
+            this.driver = driver;
             return this;
         }
         @CustomType.Setter
         public Builder engineEnv(Map<String,Object> engineEnv) {
-            this.engineEnv = Objects.requireNonNull(engineEnv);
+            if (engineEnv == null) {
+              throw new MissingRequiredPropertyException("GetNodeTemplateResult", "engineEnv");
+            }
+            this.engineEnv = engineEnv;
             return this;
         }
         @CustomType.Setter
         public Builder engineInsecureRegistries(List<String> engineInsecureRegistries) {
-            this.engineInsecureRegistries = Objects.requireNonNull(engineInsecureRegistries);
+            if (engineInsecureRegistries == null) {
+              throw new MissingRequiredPropertyException("GetNodeTemplateResult", "engineInsecureRegistries");
+            }
+            this.engineInsecureRegistries = engineInsecureRegistries;
             return this;
         }
         public Builder engineInsecureRegistries(String... engineInsecureRegistries) {
@@ -284,22 +303,34 @@ public final class GetNodeTemplateResult {
         }
         @CustomType.Setter
         public Builder engineInstallUrl(String engineInstallUrl) {
-            this.engineInstallUrl = Objects.requireNonNull(engineInstallUrl);
+            if (engineInstallUrl == null) {
+              throw new MissingRequiredPropertyException("GetNodeTemplateResult", "engineInstallUrl");
+            }
+            this.engineInstallUrl = engineInstallUrl;
             return this;
         }
         @CustomType.Setter
         public Builder engineLabel(Map<String,Object> engineLabel) {
-            this.engineLabel = Objects.requireNonNull(engineLabel);
+            if (engineLabel == null) {
+              throw new MissingRequiredPropertyException("GetNodeTemplateResult", "engineLabel");
+            }
+            this.engineLabel = engineLabel;
             return this;
         }
         @CustomType.Setter
         public Builder engineOpt(Map<String,Object> engineOpt) {
-            this.engineOpt = Objects.requireNonNull(engineOpt);
+            if (engineOpt == null) {
+              throw new MissingRequiredPropertyException("GetNodeTemplateResult", "engineOpt");
+            }
+            this.engineOpt = engineOpt;
             return this;
         }
         @CustomType.Setter
         public Builder engineRegistryMirrors(List<String> engineRegistryMirrors) {
-            this.engineRegistryMirrors = Objects.requireNonNull(engineRegistryMirrors);
+            if (engineRegistryMirrors == null) {
+              throw new MissingRequiredPropertyException("GetNodeTemplateResult", "engineRegistryMirrors");
+            }
+            this.engineRegistryMirrors = engineRegistryMirrors;
             return this;
         }
         public Builder engineRegistryMirrors(String... engineRegistryMirrors) {
@@ -307,27 +338,42 @@ public final class GetNodeTemplateResult {
         }
         @CustomType.Setter
         public Builder engineStorageDriver(String engineStorageDriver) {
-            this.engineStorageDriver = Objects.requireNonNull(engineStorageDriver);
+            if (engineStorageDriver == null) {
+              throw new MissingRequiredPropertyException("GetNodeTemplateResult", "engineStorageDriver");
+            }
+            this.engineStorageDriver = engineStorageDriver;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetNodeTemplateResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetNodeTemplateResult", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetNodeTemplateResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nodeTaints(List<GetNodeTemplateNodeTaint> nodeTaints) {
-            this.nodeTaints = Objects.requireNonNull(nodeTaints);
+            if (nodeTaints == null) {
+              throw new MissingRequiredPropertyException("GetNodeTemplateResult", "nodeTaints");
+            }
+            this.nodeTaints = nodeTaints;
             return this;
         }
         public Builder nodeTaints(GetNodeTemplateNodeTaint... nodeTaints) {
@@ -335,6 +381,7 @@ public final class GetNodeTemplateResult {
         }
         @CustomType.Setter
         public Builder useInternalIpAddress(@Nullable Boolean useInternalIpAddress) {
+
             this.useInternalIpAddress = useInternalIpAddress;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -2045,28 +2046,72 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         public ClusterGkeConfigArgs build() {
-            $.clusterIpv4Cidr = Objects.requireNonNull($.clusterIpv4Cidr, "expected parameter 'clusterIpv4Cidr' to be non-null");
-            $.credential = Objects.requireNonNull($.credential, "expected parameter 'credential' to be non-null");
-            $.diskType = Objects.requireNonNull($.diskType, "expected parameter 'diskType' to be non-null");
-            $.imageType = Objects.requireNonNull($.imageType, "expected parameter 'imageType' to be non-null");
-            $.ipPolicyClusterIpv4CidrBlock = Objects.requireNonNull($.ipPolicyClusterIpv4CidrBlock, "expected parameter 'ipPolicyClusterIpv4CidrBlock' to be non-null");
-            $.ipPolicyClusterSecondaryRangeName = Objects.requireNonNull($.ipPolicyClusterSecondaryRangeName, "expected parameter 'ipPolicyClusterSecondaryRangeName' to be non-null");
-            $.ipPolicyNodeIpv4CidrBlock = Objects.requireNonNull($.ipPolicyNodeIpv4CidrBlock, "expected parameter 'ipPolicyNodeIpv4CidrBlock' to be non-null");
-            $.ipPolicyServicesIpv4CidrBlock = Objects.requireNonNull($.ipPolicyServicesIpv4CidrBlock, "expected parameter 'ipPolicyServicesIpv4CidrBlock' to be non-null");
-            $.ipPolicyServicesSecondaryRangeName = Objects.requireNonNull($.ipPolicyServicesSecondaryRangeName, "expected parameter 'ipPolicyServicesSecondaryRangeName' to be non-null");
-            $.ipPolicySubnetworkName = Objects.requireNonNull($.ipPolicySubnetworkName, "expected parameter 'ipPolicySubnetworkName' to be non-null");
-            $.locations = Objects.requireNonNull($.locations, "expected parameter 'locations' to be non-null");
-            $.machineType = Objects.requireNonNull($.machineType, "expected parameter 'machineType' to be non-null");
-            $.maintenanceWindow = Objects.requireNonNull($.maintenanceWindow, "expected parameter 'maintenanceWindow' to be non-null");
-            $.masterIpv4CidrBlock = Objects.requireNonNull($.masterIpv4CidrBlock, "expected parameter 'masterIpv4CidrBlock' to be non-null");
-            $.masterVersion = Objects.requireNonNull($.masterVersion, "expected parameter 'masterVersion' to be non-null");
-            $.network = Objects.requireNonNull($.network, "expected parameter 'network' to be non-null");
-            $.nodePool = Objects.requireNonNull($.nodePool, "expected parameter 'nodePool' to be non-null");
-            $.nodeVersion = Objects.requireNonNull($.nodeVersion, "expected parameter 'nodeVersion' to be non-null");
-            $.oauthScopes = Objects.requireNonNull($.oauthScopes, "expected parameter 'oauthScopes' to be non-null");
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
-            $.serviceAccount = Objects.requireNonNull($.serviceAccount, "expected parameter 'serviceAccount' to be non-null");
-            $.subNetwork = Objects.requireNonNull($.subNetwork, "expected parameter 'subNetwork' to be non-null");
+            if ($.clusterIpv4Cidr == null) {
+                throw new MissingRequiredPropertyException("ClusterGkeConfigArgs", "clusterIpv4Cidr");
+            }
+            if ($.credential == null) {
+                throw new MissingRequiredPropertyException("ClusterGkeConfigArgs", "credential");
+            }
+            if ($.diskType == null) {
+                throw new MissingRequiredPropertyException("ClusterGkeConfigArgs", "diskType");
+            }
+            if ($.imageType == null) {
+                throw new MissingRequiredPropertyException("ClusterGkeConfigArgs", "imageType");
+            }
+            if ($.ipPolicyClusterIpv4CidrBlock == null) {
+                throw new MissingRequiredPropertyException("ClusterGkeConfigArgs", "ipPolicyClusterIpv4CidrBlock");
+            }
+            if ($.ipPolicyClusterSecondaryRangeName == null) {
+                throw new MissingRequiredPropertyException("ClusterGkeConfigArgs", "ipPolicyClusterSecondaryRangeName");
+            }
+            if ($.ipPolicyNodeIpv4CidrBlock == null) {
+                throw new MissingRequiredPropertyException("ClusterGkeConfigArgs", "ipPolicyNodeIpv4CidrBlock");
+            }
+            if ($.ipPolicyServicesIpv4CidrBlock == null) {
+                throw new MissingRequiredPropertyException("ClusterGkeConfigArgs", "ipPolicyServicesIpv4CidrBlock");
+            }
+            if ($.ipPolicyServicesSecondaryRangeName == null) {
+                throw new MissingRequiredPropertyException("ClusterGkeConfigArgs", "ipPolicyServicesSecondaryRangeName");
+            }
+            if ($.ipPolicySubnetworkName == null) {
+                throw new MissingRequiredPropertyException("ClusterGkeConfigArgs", "ipPolicySubnetworkName");
+            }
+            if ($.locations == null) {
+                throw new MissingRequiredPropertyException("ClusterGkeConfigArgs", "locations");
+            }
+            if ($.machineType == null) {
+                throw new MissingRequiredPropertyException("ClusterGkeConfigArgs", "machineType");
+            }
+            if ($.maintenanceWindow == null) {
+                throw new MissingRequiredPropertyException("ClusterGkeConfigArgs", "maintenanceWindow");
+            }
+            if ($.masterIpv4CidrBlock == null) {
+                throw new MissingRequiredPropertyException("ClusterGkeConfigArgs", "masterIpv4CidrBlock");
+            }
+            if ($.masterVersion == null) {
+                throw new MissingRequiredPropertyException("ClusterGkeConfigArgs", "masterVersion");
+            }
+            if ($.network == null) {
+                throw new MissingRequiredPropertyException("ClusterGkeConfigArgs", "network");
+            }
+            if ($.nodePool == null) {
+                throw new MissingRequiredPropertyException("ClusterGkeConfigArgs", "nodePool");
+            }
+            if ($.nodeVersion == null) {
+                throw new MissingRequiredPropertyException("ClusterGkeConfigArgs", "nodeVersion");
+            }
+            if ($.oauthScopes == null) {
+                throw new MissingRequiredPropertyException("ClusterGkeConfigArgs", "oauthScopes");
+            }
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("ClusterGkeConfigArgs", "projectId");
+            }
+            if ($.serviceAccount == null) {
+                throw new MissingRequiredPropertyException("ClusterGkeConfigArgs", "serviceAccount");
+            }
+            if ($.subNetwork == null) {
+                throw new MissingRequiredPropertyException("ClusterGkeConfigArgs", "subNetwork");
+            }
             return $;
         }
     }

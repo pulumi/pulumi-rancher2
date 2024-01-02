@@ -71,31 +71,37 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
 
         @CustomType.Setter
         public Builder etcd(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcd etcd) {
+
             this.etcd = etcd;
             return this;
         }
         @CustomType.Setter
         public Builder kubeApi(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi kubeApi) {
+
             this.kubeApi = kubeApi;
             return this;
         }
         @CustomType.Setter
         public Builder kubeController(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeController kubeController) {
+
             this.kubeController = kubeController;
             return this;
         }
         @CustomType.Setter
         public Builder kubelet(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet kubelet) {
+
             this.kubelet = kubelet;
             return this;
         }
         @CustomType.Setter
         public Builder kubeproxy(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxy kubeproxy) {
+
             this.kubeproxy = kubeproxy;
             return this;
         }
         @CustomType.Setter
         public Builder scheduler(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesScheduler scheduler) {
+
             this.scheduler = scheduler;
             return this;
         }

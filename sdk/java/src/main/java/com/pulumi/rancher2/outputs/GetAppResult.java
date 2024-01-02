@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -202,72 +203,114 @@ public final class GetAppResult {
 
         @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
-            this.annotations = Objects.requireNonNull(annotations);
+            if (annotations == null) {
+              throw new MissingRequiredPropertyException("GetAppResult", "annotations");
+            }
+            this.annotations = annotations;
             return this;
         }
         @CustomType.Setter
         public Builder answers(Map<String,Object> answers) {
-            this.answers = Objects.requireNonNull(answers);
+            if (answers == null) {
+              throw new MissingRequiredPropertyException("GetAppResult", "answers");
+            }
+            this.answers = answers;
             return this;
         }
         @CustomType.Setter
         public Builder catalogName(String catalogName) {
-            this.catalogName = Objects.requireNonNull(catalogName);
+            if (catalogName == null) {
+              throw new MissingRequiredPropertyException("GetAppResult", "catalogName");
+            }
+            this.catalogName = catalogName;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetAppResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder externalId(String externalId) {
-            this.externalId = Objects.requireNonNull(externalId);
+            if (externalId == null) {
+              throw new MissingRequiredPropertyException("GetAppResult", "externalId");
+            }
+            this.externalId = externalId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAppResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetAppResult", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetAppResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetAppResult", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder revisionId(String revisionId) {
-            this.revisionId = Objects.requireNonNull(revisionId);
+            if (revisionId == null) {
+              throw new MissingRequiredPropertyException("GetAppResult", "revisionId");
+            }
+            this.revisionId = revisionId;
             return this;
         }
         @CustomType.Setter
         public Builder targetNamespace(String targetNamespace) {
-            this.targetNamespace = Objects.requireNonNull(targetNamespace);
+            if (targetNamespace == null) {
+              throw new MissingRequiredPropertyException("GetAppResult", "targetNamespace");
+            }
+            this.targetNamespace = targetNamespace;
             return this;
         }
         @CustomType.Setter
         public Builder templateName(String templateName) {
-            this.templateName = Objects.requireNonNull(templateName);
+            if (templateName == null) {
+              throw new MissingRequiredPropertyException("GetAppResult", "templateName");
+            }
+            this.templateName = templateName;
             return this;
         }
         @CustomType.Setter
         public Builder templateVersion(String templateVersion) {
-            this.templateVersion = Objects.requireNonNull(templateVersion);
+            if (templateVersion == null) {
+              throw new MissingRequiredPropertyException("GetAppResult", "templateVersion");
+            }
+            this.templateVersion = templateVersion;
             return this;
         }
         @CustomType.Setter
         public Builder valuesYaml(String valuesYaml) {
-            this.valuesYaml = Objects.requireNonNull(valuesYaml);
+            if (valuesYaml == null) {
+              throw new MissingRequiredPropertyException("GetAppResult", "valuesYaml");
+            }
+            this.valuesYaml = valuesYaml;
             return this;
         }
         public GetAppResult build() {

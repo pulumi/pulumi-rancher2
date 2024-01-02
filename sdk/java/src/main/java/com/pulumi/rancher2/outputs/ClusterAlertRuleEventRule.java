@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -58,12 +59,16 @@ public final class ClusterAlertRuleEventRule {
 
         @CustomType.Setter
         public Builder eventType(@Nullable String eventType) {
+
             this.eventType = eventType;
             return this;
         }
         @CustomType.Setter
         public Builder resourceKind(String resourceKind) {
-            this.resourceKind = Objects.requireNonNull(resourceKind);
+            if (resourceKind == null) {
+              throw new MissingRequiredPropertyException("ClusterAlertRuleEventRule", "resourceKind");
+            }
+            this.resourceKind = resourceKind;
             return this;
         }
         public ClusterAlertRuleEventRule build() {

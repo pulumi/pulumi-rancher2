@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.ClusterEksConfigV2NodeGroup;
 import java.lang.Boolean;
 import java.lang.Object;
@@ -259,26 +260,33 @@ public final class ClusterEksConfigV2 {
 
         @CustomType.Setter
         public Builder cloudCredentialId(String cloudCredentialId) {
-            this.cloudCredentialId = Objects.requireNonNull(cloudCredentialId);
+            if (cloudCredentialId == null) {
+              throw new MissingRequiredPropertyException("ClusterEksConfigV2", "cloudCredentialId");
+            }
+            this.cloudCredentialId = cloudCredentialId;
             return this;
         }
         @CustomType.Setter
         public Builder imported(@Nullable Boolean imported) {
+
             this.imported = imported;
             return this;
         }
         @CustomType.Setter
         public Builder kmsKey(@Nullable String kmsKey) {
+
             this.kmsKey = kmsKey;
             return this;
         }
         @CustomType.Setter
         public Builder kubernetesVersion(@Nullable String kubernetesVersion) {
+
             this.kubernetesVersion = kubernetesVersion;
             return this;
         }
         @CustomType.Setter
         public Builder loggingTypes(@Nullable List<String> loggingTypes) {
+
             this.loggingTypes = loggingTypes;
             return this;
         }
@@ -287,11 +295,13 @@ public final class ClusterEksConfigV2 {
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nodeGroups(@Nullable List<ClusterEksConfigV2NodeGroup> nodeGroups) {
+
             this.nodeGroups = nodeGroups;
             return this;
         }
@@ -300,16 +310,19 @@ public final class ClusterEksConfigV2 {
         }
         @CustomType.Setter
         public Builder privateAccess(@Nullable Boolean privateAccess) {
+
             this.privateAccess = privateAccess;
             return this;
         }
         @CustomType.Setter
         public Builder publicAccess(@Nullable Boolean publicAccess) {
+
             this.publicAccess = publicAccess;
             return this;
         }
         @CustomType.Setter
         public Builder publicAccessSources(@Nullable List<String> publicAccessSources) {
+
             this.publicAccessSources = publicAccessSources;
             return this;
         }
@@ -318,16 +331,19 @@ public final class ClusterEksConfigV2 {
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder secretsEncryption(@Nullable Boolean secretsEncryption) {
+
             this.secretsEncryption = secretsEncryption;
             return this;
         }
         @CustomType.Setter
         public Builder securityGroups(@Nullable List<String> securityGroups) {
+
             this.securityGroups = securityGroups;
             return this;
         }
@@ -336,11 +352,13 @@ public final class ClusterEksConfigV2 {
         }
         @CustomType.Setter
         public Builder serviceRole(@Nullable String serviceRole) {
+
             this.serviceRole = serviceRole;
             return this;
         }
         @CustomType.Setter
         public Builder subnets(@Nullable List<String> subnets) {
+
             this.subnets = subnets;
             return this;
         }
@@ -349,6 +367,7 @@ public final class ClusterEksConfigV2 {
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
+
             this.tags = tags;
             return this;
         }

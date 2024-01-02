@@ -44,11 +44,13 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthoriz
 
         @CustomType.Setter
         public Builder mode(@Nullable String mode) {
+
             this.mode = mode;
             return this;
         }
         @CustomType.Setter
         public Builder options(@Nullable Map<String,Object> options) {
+
             this.options = options;
             return this;
         }

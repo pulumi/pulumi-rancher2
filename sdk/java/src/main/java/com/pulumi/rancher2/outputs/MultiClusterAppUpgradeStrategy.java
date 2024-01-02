@@ -44,6 +44,7 @@ public final class MultiClusterAppUpgradeStrategy {
 
         @CustomType.Setter
         public Builder rollingUpdate(@Nullable MultiClusterAppUpgradeStrategyRollingUpdate rollingUpdate) {
+
             this.rollingUpdate = rollingUpdate;
             return this;
         }

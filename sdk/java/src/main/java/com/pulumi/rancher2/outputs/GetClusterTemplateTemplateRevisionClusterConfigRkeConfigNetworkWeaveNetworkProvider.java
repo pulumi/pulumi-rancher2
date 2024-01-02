@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwo
 
         @CustomType.Setter
         public Builder password(String password) {
-            this.password = Objects.requireNonNull(password);
+            if (password == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider", "password");
+            }
+            this.password = password;
             return this;
         }
         public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider build() {

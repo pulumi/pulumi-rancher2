@@ -44,6 +44,7 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderDisk {
 
         @CustomType.Setter
         public Builder scsiControllerType(@Nullable String scsiControllerType) {
+
             this.scsiControllerType = scsiControllerType;
             return this;
         }

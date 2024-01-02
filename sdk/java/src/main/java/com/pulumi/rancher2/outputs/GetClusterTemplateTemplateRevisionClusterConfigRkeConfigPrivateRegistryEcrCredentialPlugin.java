@@ -48,16 +48,19 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPriva
 
         @CustomType.Setter
         public Builder awsAccessKeyId(@Nullable String awsAccessKeyId) {
+
             this.awsAccessKeyId = awsAccessKeyId;
             return this;
         }
         @CustomType.Setter
         public Builder awsSecretAccessKey(@Nullable String awsSecretAccessKey) {
+
             this.awsSecretAccessKey = awsSecretAccessKey;
             return this;
         }
         @CustomType.Setter
         public Builder awsSessionToken(@Nullable String awsSessionToken) {
+
             this.awsSessionToken = awsSessionToken;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.ClusterRkeConfigCloudProviderVsphereCloudProviderDisk;
 import com.pulumi.rancher2.outputs.ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal;
 import com.pulumi.rancher2.outputs.ClusterRkeConfigCloudProviderVsphereCloudProviderNetwork;
@@ -105,22 +106,28 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProvider {
 
         @CustomType.Setter
         public Builder disk(@Nullable ClusterRkeConfigCloudProviderVsphereCloudProviderDisk disk) {
+
             this.disk = disk;
             return this;
         }
         @CustomType.Setter
         public Builder global(@Nullable ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal global) {
+
             this.global = global;
             return this;
         }
         @CustomType.Setter
         public Builder network(@Nullable ClusterRkeConfigCloudProviderVsphereCloudProviderNetwork network) {
+
             this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder virtualCenters(List<ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter> virtualCenters) {
-            this.virtualCenters = Objects.requireNonNull(virtualCenters);
+            if (virtualCenters == null) {
+              throw new MissingRequiredPropertyException("ClusterRkeConfigCloudProviderVsphereCloudProvider", "virtualCenters");
+            }
+            this.virtualCenters = virtualCenters;
             return this;
         }
         public Builder virtualCenters(ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter... virtualCenters) {
@@ -128,7 +135,10 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProvider {
         }
         @CustomType.Setter
         public Builder workspace(ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace workspace) {
-            this.workspace = Objects.requireNonNull(workspace);
+            if (workspace == null) {
+              throw new MissingRequiredPropertyException("ClusterRkeConfigCloudProviderVsphereCloudProvider", "workspace");
+            }
+            this.workspace = workspace;
             return this;
         }
         public ClusterRkeConfigCloudProviderVsphereCloudProvider build() {

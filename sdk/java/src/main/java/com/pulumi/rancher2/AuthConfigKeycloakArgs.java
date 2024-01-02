@@ -5,6 +5,7 @@ package com.pulumi.rancher2;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -571,14 +572,30 @@ public final class AuthConfigKeycloakArgs extends com.pulumi.resources.ResourceA
         }
 
         public AuthConfigKeycloakArgs build() {
-            $.displayNameField = Objects.requireNonNull($.displayNameField, "expected parameter 'displayNameField' to be non-null");
-            $.groupsField = Objects.requireNonNull($.groupsField, "expected parameter 'groupsField' to be non-null");
-            $.idpMetadataContent = Objects.requireNonNull($.idpMetadataContent, "expected parameter 'idpMetadataContent' to be non-null");
-            $.rancherApiHost = Objects.requireNonNull($.rancherApiHost, "expected parameter 'rancherApiHost' to be non-null");
-            $.spCert = Objects.requireNonNull($.spCert, "expected parameter 'spCert' to be non-null");
-            $.spKey = Objects.requireNonNull($.spKey, "expected parameter 'spKey' to be non-null");
-            $.uidField = Objects.requireNonNull($.uidField, "expected parameter 'uidField' to be non-null");
-            $.userNameField = Objects.requireNonNull($.userNameField, "expected parameter 'userNameField' to be non-null");
+            if ($.displayNameField == null) {
+                throw new MissingRequiredPropertyException("AuthConfigKeycloakArgs", "displayNameField");
+            }
+            if ($.groupsField == null) {
+                throw new MissingRequiredPropertyException("AuthConfigKeycloakArgs", "groupsField");
+            }
+            if ($.idpMetadataContent == null) {
+                throw new MissingRequiredPropertyException("AuthConfigKeycloakArgs", "idpMetadataContent");
+            }
+            if ($.rancherApiHost == null) {
+                throw new MissingRequiredPropertyException("AuthConfigKeycloakArgs", "rancherApiHost");
+            }
+            if ($.spCert == null) {
+                throw new MissingRequiredPropertyException("AuthConfigKeycloakArgs", "spCert");
+            }
+            if ($.spKey == null) {
+                throw new MissingRequiredPropertyException("AuthConfigKeycloakArgs", "spKey");
+            }
+            if ($.uidField == null) {
+                throw new MissingRequiredPropertyException("AuthConfigKeycloakArgs", "uidField");
+            }
+            if ($.userNameField == null) {
+                throw new MissingRequiredPropertyException("AuthConfigKeycloakArgs", "userNameField");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -44,12 +45,16 @@ public final class GetClusterRkeConfigAuthorization {
 
         @CustomType.Setter
         public Builder mode(@Nullable String mode) {
+
             this.mode = mode;
             return this;
         }
         @CustomType.Setter
         public Builder options(Map<String,Object> options) {
-            this.options = Objects.requireNonNull(options);
+            if (options == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigAuthorization", "options");
+            }
+            this.options = options;
             return this;
         }
         public GetClusterRkeConfigAuthorization build() {

@@ -58,11 +58,13 @@ public final class ClusterV2RkeConfigMachinePoolRollingUpdate {
 
         @CustomType.Setter
         public Builder maxSurge(@Nullable String maxSurge) {
+
             this.maxSurge = maxSurge;
             return this;
         }
         @CustomType.Setter
         public Builder maxUnavailable(@Nullable String maxUnavailable) {
+
             this.maxUnavailable = maxUnavailable;
             return this;
         }

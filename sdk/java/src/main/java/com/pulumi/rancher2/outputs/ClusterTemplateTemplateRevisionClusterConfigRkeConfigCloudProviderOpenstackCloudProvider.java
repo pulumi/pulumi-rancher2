@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorage;
 import com.pulumi.rancher2.outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobal;
 import com.pulumi.rancher2.outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer;
@@ -64,26 +65,33 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
 
         @CustomType.Setter
         public Builder blockStorage(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorage blockStorage) {
+
             this.blockStorage = blockStorage;
             return this;
         }
         @CustomType.Setter
         public Builder global(ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobal global) {
-            this.global = Objects.requireNonNull(global);
+            if (global == null) {
+              throw new MissingRequiredPropertyException("ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProvider", "global");
+            }
+            this.global = global;
             return this;
         }
         @CustomType.Setter
         public Builder loadBalancer(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer loadBalancer) {
+
             this.loadBalancer = loadBalancer;
             return this;
         }
         @CustomType.Setter
         public Builder metadata(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadata metadata) {
+
             this.metadata = metadata;
             return this;
         }
         @CustomType.Setter
         public Builder route(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRoute route) {
+
             this.route = route;
             return this;
         }

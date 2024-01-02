@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -58,27 +59,42 @@ public final class GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace
 
         @CustomType.Setter
         public Builder datacenter(String datacenter) {
-            this.datacenter = Objects.requireNonNull(datacenter);
+            if (datacenter == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace", "datacenter");
+            }
+            this.datacenter = datacenter;
             return this;
         }
         @CustomType.Setter
         public Builder defaultDatastore(String defaultDatastore) {
-            this.defaultDatastore = Objects.requireNonNull(defaultDatastore);
+            if (defaultDatastore == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace", "defaultDatastore");
+            }
+            this.defaultDatastore = defaultDatastore;
             return this;
         }
         @CustomType.Setter
         public Builder folder(String folder) {
-            this.folder = Objects.requireNonNull(folder);
+            if (folder == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace", "folder");
+            }
+            this.folder = folder;
             return this;
         }
         @CustomType.Setter
         public Builder resourcepoolPath(String resourcepoolPath) {
-            this.resourcepoolPath = Objects.requireNonNull(resourcepoolPath);
+            if (resourcepoolPath == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace", "resourcepoolPath");
+            }
+            this.resourcepoolPath = resourcepoolPath;
             return this;
         }
         @CustomType.Setter
         public Builder server(String server) {
-            this.server = Objects.requireNonNull(server);
+            if (server == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace", "server");
+            }
+            this.server = server;
             return this;
         }
         public GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace build() {

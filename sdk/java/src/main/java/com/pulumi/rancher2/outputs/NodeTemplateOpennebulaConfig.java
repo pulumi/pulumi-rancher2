@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -301,97 +302,122 @@ public final class NodeTemplateOpennebulaConfig {
 
         @CustomType.Setter
         public Builder b2dSize(@Nullable String b2dSize) {
+
             this.b2dSize = b2dSize;
             return this;
         }
         @CustomType.Setter
         public Builder cpu(@Nullable String cpu) {
+
             this.cpu = cpu;
             return this;
         }
         @CustomType.Setter
         public Builder devPrefix(@Nullable String devPrefix) {
+
             this.devPrefix = devPrefix;
             return this;
         }
         @CustomType.Setter
         public Builder disableVnc(@Nullable Boolean disableVnc) {
+
             this.disableVnc = disableVnc;
             return this;
         }
         @CustomType.Setter
         public Builder diskResize(@Nullable String diskResize) {
+
             this.diskResize = diskResize;
             return this;
         }
         @CustomType.Setter
         public Builder imageId(@Nullable String imageId) {
+
             this.imageId = imageId;
             return this;
         }
         @CustomType.Setter
         public Builder imageName(@Nullable String imageName) {
+
             this.imageName = imageName;
             return this;
         }
         @CustomType.Setter
         public Builder imageOwner(@Nullable String imageOwner) {
+
             this.imageOwner = imageOwner;
             return this;
         }
         @CustomType.Setter
         public Builder memory(@Nullable String memory) {
+
             this.memory = memory;
             return this;
         }
         @CustomType.Setter
         public Builder networkId(@Nullable String networkId) {
+
             this.networkId = networkId;
             return this;
         }
         @CustomType.Setter
         public Builder networkName(@Nullable String networkName) {
+
             this.networkName = networkName;
             return this;
         }
         @CustomType.Setter
         public Builder networkOwner(@Nullable String networkOwner) {
+
             this.networkOwner = networkOwner;
             return this;
         }
         @CustomType.Setter
         public Builder password(String password) {
-            this.password = Objects.requireNonNull(password);
+            if (password == null) {
+              throw new MissingRequiredPropertyException("NodeTemplateOpennebulaConfig", "password");
+            }
+            this.password = password;
             return this;
         }
         @CustomType.Setter
         public Builder sshUser(@Nullable String sshUser) {
+
             this.sshUser = sshUser;
             return this;
         }
         @CustomType.Setter
         public Builder templateId(@Nullable String templateId) {
+
             this.templateId = templateId;
             return this;
         }
         @CustomType.Setter
         public Builder templateName(@Nullable String templateName) {
+
             this.templateName = templateName;
             return this;
         }
         @CustomType.Setter
         public Builder user(String user) {
-            this.user = Objects.requireNonNull(user);
+            if (user == null) {
+              throw new MissingRequiredPropertyException("NodeTemplateOpennebulaConfig", "user");
+            }
+            this.user = user;
             return this;
         }
         @CustomType.Setter
         public Builder vcpu(@Nullable String vcpu) {
+
             this.vcpu = vcpu;
             return this;
         }
         @CustomType.Setter
         public Builder xmlRpcUrl(String xmlRpcUrl) {
-            this.xmlRpcUrl = Objects.requireNonNull(xmlRpcUrl);
+            if (xmlRpcUrl == null) {
+              throw new MissingRequiredPropertyException("NodeTemplateOpennebulaConfig", "xmlRpcUrl");
+            }
+            this.xmlRpcUrl = xmlRpcUrl;
             return this;
         }
         public NodeTemplateOpennebulaConfig build() {

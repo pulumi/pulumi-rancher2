@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -151,8 +152,12 @@ public final class GlobalDnsProviderCloudflareConfigArgs extends com.pulumi.reso
         }
 
         public GlobalDnsProviderCloudflareConfigArgs build() {
-            $.apiEmail = Objects.requireNonNull($.apiEmail, "expected parameter 'apiEmail' to be non-null");
-            $.apiKey = Objects.requireNonNull($.apiKey, "expected parameter 'apiKey' to be non-null");
+            if ($.apiEmail == null) {
+                throw new MissingRequiredPropertyException("GlobalDnsProviderCloudflareConfigArgs", "apiEmail");
+            }
+            if ($.apiKey == null) {
+                throw new MissingRequiredPropertyException("GlobalDnsProviderCloudflareConfigArgs", "apiKey");
+            }
             return $;
         }
     }

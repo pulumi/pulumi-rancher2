@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -1310,26 +1311,66 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkA
         }
 
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProviderArgs build() {
-            $.aep = Objects.requireNonNull($.aep, "expected parameter 'aep' to be non-null");
-            $.apicHosts = Objects.requireNonNull($.apicHosts, "expected parameter 'apicHosts' to be non-null");
-            $.apicUserCrt = Objects.requireNonNull($.apicUserCrt, "expected parameter 'apicUserCrt' to be non-null");
-            $.apicUserKey = Objects.requireNonNull($.apicUserKey, "expected parameter 'apicUserKey' to be non-null");
-            $.apicUserName = Objects.requireNonNull($.apicUserName, "expected parameter 'apicUserName' to be non-null");
-            $.encapType = Objects.requireNonNull($.encapType, "expected parameter 'encapType' to be non-null");
-            $.externDynamic = Objects.requireNonNull($.externDynamic, "expected parameter 'externDynamic' to be non-null");
-            $.externStatic = Objects.requireNonNull($.externStatic, "expected parameter 'externStatic' to be non-null");
-            $.kubeApiVlan = Objects.requireNonNull($.kubeApiVlan, "expected parameter 'kubeApiVlan' to be non-null");
-            $.l3out = Objects.requireNonNull($.l3out, "expected parameter 'l3out' to be non-null");
-            $.l3outExternalNetworks = Objects.requireNonNull($.l3outExternalNetworks, "expected parameter 'l3outExternalNetworks' to be non-null");
-            $.mcastRangeEnd = Objects.requireNonNull($.mcastRangeEnd, "expected parameter 'mcastRangeEnd' to be non-null");
-            $.mcastRangeStart = Objects.requireNonNull($.mcastRangeStart, "expected parameter 'mcastRangeStart' to be non-null");
-            $.nodeSubnet = Objects.requireNonNull($.nodeSubnet, "expected parameter 'nodeSubnet' to be non-null");
-            $.nodeSvcSubnet = Objects.requireNonNull($.nodeSvcSubnet, "expected parameter 'nodeSvcSubnet' to be non-null");
-            $.serviceVlan = Objects.requireNonNull($.serviceVlan, "expected parameter 'serviceVlan' to be non-null");
-            $.systemId = Objects.requireNonNull($.systemId, "expected parameter 'systemId' to be non-null");
-            $.token = Objects.requireNonNull($.token, "expected parameter 'token' to be non-null");
-            $.vrfName = Objects.requireNonNull($.vrfName, "expected parameter 'vrfName' to be non-null");
-            $.vrfTenant = Objects.requireNonNull($.vrfTenant, "expected parameter 'vrfTenant' to be non-null");
+            if ($.aep == null) {
+                throw new MissingRequiredPropertyException("ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProviderArgs", "aep");
+            }
+            if ($.apicHosts == null) {
+                throw new MissingRequiredPropertyException("ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProviderArgs", "apicHosts");
+            }
+            if ($.apicUserCrt == null) {
+                throw new MissingRequiredPropertyException("ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProviderArgs", "apicUserCrt");
+            }
+            if ($.apicUserKey == null) {
+                throw new MissingRequiredPropertyException("ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProviderArgs", "apicUserKey");
+            }
+            if ($.apicUserName == null) {
+                throw new MissingRequiredPropertyException("ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProviderArgs", "apicUserName");
+            }
+            if ($.encapType == null) {
+                throw new MissingRequiredPropertyException("ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProviderArgs", "encapType");
+            }
+            if ($.externDynamic == null) {
+                throw new MissingRequiredPropertyException("ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProviderArgs", "externDynamic");
+            }
+            if ($.externStatic == null) {
+                throw new MissingRequiredPropertyException("ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProviderArgs", "externStatic");
+            }
+            if ($.kubeApiVlan == null) {
+                throw new MissingRequiredPropertyException("ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProviderArgs", "kubeApiVlan");
+            }
+            if ($.l3out == null) {
+                throw new MissingRequiredPropertyException("ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProviderArgs", "l3out");
+            }
+            if ($.l3outExternalNetworks == null) {
+                throw new MissingRequiredPropertyException("ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProviderArgs", "l3outExternalNetworks");
+            }
+            if ($.mcastRangeEnd == null) {
+                throw new MissingRequiredPropertyException("ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProviderArgs", "mcastRangeEnd");
+            }
+            if ($.mcastRangeStart == null) {
+                throw new MissingRequiredPropertyException("ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProviderArgs", "mcastRangeStart");
+            }
+            if ($.nodeSubnet == null) {
+                throw new MissingRequiredPropertyException("ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProviderArgs", "nodeSubnet");
+            }
+            if ($.nodeSvcSubnet == null) {
+                throw new MissingRequiredPropertyException("ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProviderArgs", "nodeSvcSubnet");
+            }
+            if ($.serviceVlan == null) {
+                throw new MissingRequiredPropertyException("ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProviderArgs", "serviceVlan");
+            }
+            if ($.systemId == null) {
+                throw new MissingRequiredPropertyException("ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProviderArgs", "systemId");
+            }
+            if ($.token == null) {
+                throw new MissingRequiredPropertyException("ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProviderArgs", "token");
+            }
+            if ($.vrfName == null) {
+                throw new MissingRequiredPropertyException("ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProviderArgs", "vrfName");
+            }
+            if ($.vrfTenant == null) {
+                throw new MissingRequiredPropertyException("ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProviderArgs", "vrfTenant");
+            }
             return $;
         }
     }

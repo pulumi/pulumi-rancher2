@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -48,12 +49,18 @@ public final class GetClusterV2RkeConfigMachinePoolMachineConfig {
 
         @CustomType.Setter
         public Builder kind(String kind) {
-            this.kind = Objects.requireNonNull(kind);
+            if (kind == null) {
+              throw new MissingRequiredPropertyException("GetClusterV2RkeConfigMachinePoolMachineConfig", "kind");
+            }
+            this.kind = kind;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetClusterV2RkeConfigMachinePoolMachineConfig", "name");
+            }
+            this.name = name;
             return this;
         }
         public GetClusterV2RkeConfigMachinePoolMachineConfig build() {

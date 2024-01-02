@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorage;
 import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobal;
 import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer;
@@ -62,27 +63,42 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloud
 
         @CustomType.Setter
         public Builder blockStorage(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorage blockStorage) {
-            this.blockStorage = Objects.requireNonNull(blockStorage);
+            if (blockStorage == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProvider", "blockStorage");
+            }
+            this.blockStorage = blockStorage;
             return this;
         }
         @CustomType.Setter
         public Builder global(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobal global) {
-            this.global = Objects.requireNonNull(global);
+            if (global == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProvider", "global");
+            }
+            this.global = global;
             return this;
         }
         @CustomType.Setter
         public Builder loadBalancer(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer loadBalancer) {
-            this.loadBalancer = Objects.requireNonNull(loadBalancer);
+            if (loadBalancer == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProvider", "loadBalancer");
+            }
+            this.loadBalancer = loadBalancer;
             return this;
         }
         @CustomType.Setter
         public Builder metadata(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadata metadata) {
-            this.metadata = Objects.requireNonNull(metadata);
+            if (metadata == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProvider", "metadata");
+            }
+            this.metadata = metadata;
             return this;
         }
         @CustomType.Setter
         public Builder route(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRoute route) {
-            this.route = Objects.requireNonNull(route);
+            if (route == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProvider", "route");
+            }
+            this.route = route;
             return this;
         }
         public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProvider build() {

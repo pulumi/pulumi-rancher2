@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -114,42 +115,56 @@ public final class GetClusterRkeConfigNode {
 
         @CustomType.Setter
         public Builder address(String address) {
-            this.address = Objects.requireNonNull(address);
+            if (address == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigNode", "address");
+            }
+            this.address = address;
             return this;
         }
         @CustomType.Setter
         public Builder dockerSocket(String dockerSocket) {
-            this.dockerSocket = Objects.requireNonNull(dockerSocket);
+            if (dockerSocket == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigNode", "dockerSocket");
+            }
+            this.dockerSocket = dockerSocket;
             return this;
         }
         @CustomType.Setter
         public Builder hostnameOverride(@Nullable String hostnameOverride) {
+
             this.hostnameOverride = hostnameOverride;
             return this;
         }
         @CustomType.Setter
         public Builder internalAddress(@Nullable String internalAddress) {
+
             this.internalAddress = internalAddress;
             return this;
         }
         @CustomType.Setter
         public Builder labels(@Nullable Map<String,Object> labels) {
+
             this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder nodeId(@Nullable String nodeId) {
+
             this.nodeId = nodeId;
             return this;
         }
         @CustomType.Setter
         public Builder port(@Nullable String port) {
+
             this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder roles(List<String> roles) {
-            this.roles = Objects.requireNonNull(roles);
+            if (roles == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigNode", "roles");
+            }
+            this.roles = roles;
             return this;
         }
         public Builder roles(String... roles) {
@@ -157,22 +172,32 @@ public final class GetClusterRkeConfigNode {
         }
         @CustomType.Setter
         public Builder sshAgentAuth(@Nullable Boolean sshAgentAuth) {
+
             this.sshAgentAuth = sshAgentAuth;
             return this;
         }
         @CustomType.Setter
         public Builder sshKey(String sshKey) {
-            this.sshKey = Objects.requireNonNull(sshKey);
+            if (sshKey == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigNode", "sshKey");
+            }
+            this.sshKey = sshKey;
             return this;
         }
         @CustomType.Setter
         public Builder sshKeyPath(String sshKeyPath) {
-            this.sshKeyPath = Objects.requireNonNull(sshKeyPath);
+            if (sshKeyPath == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigNode", "sshKeyPath");
+            }
+            this.sshKeyPath = sshKeyPath;
             return this;
         }
         @CustomType.Setter
         public Builder user(String user) {
-            this.user = Objects.requireNonNull(user);
+            if (user == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigNode", "user");
+            }
+            this.user = user;
             return this;
         }
         public GetClusterRkeConfigNode build() {

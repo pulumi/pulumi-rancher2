@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -146,52 +147,82 @@ public final class GetProjectRoleTemplateBindingResult {
 
         @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
-            this.annotations = Objects.requireNonNull(annotations);
+            if (annotations == null) {
+              throw new MissingRequiredPropertyException("GetProjectRoleTemplateBindingResult", "annotations");
+            }
+            this.annotations = annotations;
             return this;
         }
         @CustomType.Setter
         public Builder groupId(String groupId) {
-            this.groupId = Objects.requireNonNull(groupId);
+            if (groupId == null) {
+              throw new MissingRequiredPropertyException("GetProjectRoleTemplateBindingResult", "groupId");
+            }
+            this.groupId = groupId;
             return this;
         }
         @CustomType.Setter
         public Builder groupPrincipalId(String groupPrincipalId) {
-            this.groupPrincipalId = Objects.requireNonNull(groupPrincipalId);
+            if (groupPrincipalId == null) {
+              throw new MissingRequiredPropertyException("GetProjectRoleTemplateBindingResult", "groupPrincipalId");
+            }
+            this.groupPrincipalId = groupPrincipalId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetProjectRoleTemplateBindingResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetProjectRoleTemplateBindingResult", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetProjectRoleTemplateBindingResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetProjectRoleTemplateBindingResult", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder roleTemplateId(String roleTemplateId) {
-            this.roleTemplateId = Objects.requireNonNull(roleTemplateId);
+            if (roleTemplateId == null) {
+              throw new MissingRequiredPropertyException("GetProjectRoleTemplateBindingResult", "roleTemplateId");
+            }
+            this.roleTemplateId = roleTemplateId;
             return this;
         }
         @CustomType.Setter
         public Builder userId(String userId) {
-            this.userId = Objects.requireNonNull(userId);
+            if (userId == null) {
+              throw new MissingRequiredPropertyException("GetProjectRoleTemplateBindingResult", "userId");
+            }
+            this.userId = userId;
             return this;
         }
         @CustomType.Setter
         public Builder userPrincipalId(String userPrincipalId) {
-            this.userPrincipalId = Objects.requireNonNull(userPrincipalId);
+            if (userPrincipalId == null) {
+              throw new MissingRequiredPropertyException("GetProjectRoleTemplateBindingResult", "userPrincipalId");
+            }
+            this.userPrincipalId = userPrincipalId;
             return this;
         }
         public GetProjectRoleTemplateBindingResult build() {

@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -163,7 +164,9 @@ public final class ClusterV2RkeConfigRegistriesMirrorArgs extends com.pulumi.res
         }
 
         public ClusterV2RkeConfigRegistriesMirrorArgs build() {
-            $.hostname = Objects.requireNonNull($.hostname, "expected parameter 'hostname' to be non-null");
+            if ($.hostname == null) {
+                throw new MissingRequiredPropertyException("ClusterV2RkeConfigRegistriesMirrorArgs", "hostname");
+            }
             return $;
         }
     }

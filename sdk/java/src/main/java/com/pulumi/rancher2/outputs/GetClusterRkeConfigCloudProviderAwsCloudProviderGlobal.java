@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -91,52 +92,78 @@ public final class GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal {
 
         @CustomType.Setter
         public Builder disableSecurityGroupIngress(@Nullable Boolean disableSecurityGroupIngress) {
+
             this.disableSecurityGroupIngress = disableSecurityGroupIngress;
             return this;
         }
         @CustomType.Setter
         public Builder disableStrictZoneCheck(@Nullable Boolean disableStrictZoneCheck) {
+
             this.disableStrictZoneCheck = disableStrictZoneCheck;
             return this;
         }
         @CustomType.Setter
         public Builder elbSecurityGroup(String elbSecurityGroup) {
-            this.elbSecurityGroup = Objects.requireNonNull(elbSecurityGroup);
+            if (elbSecurityGroup == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal", "elbSecurityGroup");
+            }
+            this.elbSecurityGroup = elbSecurityGroup;
             return this;
         }
         @CustomType.Setter
         public Builder kubernetesClusterId(String kubernetesClusterId) {
-            this.kubernetesClusterId = Objects.requireNonNull(kubernetesClusterId);
+            if (kubernetesClusterId == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal", "kubernetesClusterId");
+            }
+            this.kubernetesClusterId = kubernetesClusterId;
             return this;
         }
         @CustomType.Setter
         public Builder kubernetesClusterTag(String kubernetesClusterTag) {
-            this.kubernetesClusterTag = Objects.requireNonNull(kubernetesClusterTag);
+            if (kubernetesClusterTag == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal", "kubernetesClusterTag");
+            }
+            this.kubernetesClusterTag = kubernetesClusterTag;
             return this;
         }
         @CustomType.Setter
         public Builder roleArn(String roleArn) {
-            this.roleArn = Objects.requireNonNull(roleArn);
+            if (roleArn == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal", "roleArn");
+            }
+            this.roleArn = roleArn;
             return this;
         }
         @CustomType.Setter
         public Builder routeTableId(String routeTableId) {
-            this.routeTableId = Objects.requireNonNull(routeTableId);
+            if (routeTableId == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal", "routeTableId");
+            }
+            this.routeTableId = routeTableId;
             return this;
         }
         @CustomType.Setter
         public Builder subnetId(String subnetId) {
-            this.subnetId = Objects.requireNonNull(subnetId);
+            if (subnetId == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal", "subnetId");
+            }
+            this.subnetId = subnetId;
             return this;
         }
         @CustomType.Setter
         public Builder vpc(String vpc) {
-            this.vpc = Objects.requireNonNull(vpc);
+            if (vpc == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal", "vpc");
+            }
+            this.vpc = vpc;
             return this;
         }
         @CustomType.Setter
         public Builder zone(String zone) {
-            this.zone = Objects.requireNonNull(zone);
+            if (zone == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal", "zone");
+            }
+            this.zone = zone;
             return this;
         }
         public GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal build() {

@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -262,8 +263,12 @@ public final class ClusterRkeConfigBastionHostArgs extends com.pulumi.resources.
         }
 
         public ClusterRkeConfigBastionHostArgs build() {
-            $.address = Objects.requireNonNull($.address, "expected parameter 'address' to be non-null");
-            $.user = Objects.requireNonNull($.user, "expected parameter 'user' to be non-null");
+            if ($.address == null) {
+                throw new MissingRequiredPropertyException("ClusterRkeConfigBastionHostArgs", "address");
+            }
+            if ($.user == null) {
+                throw new MissingRequiredPropertyException("ClusterRkeConfigBastionHostArgs", "user");
+            }
             return $;
         }
     }

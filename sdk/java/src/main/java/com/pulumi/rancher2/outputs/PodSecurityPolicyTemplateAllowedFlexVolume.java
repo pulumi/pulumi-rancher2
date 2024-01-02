@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class PodSecurityPolicyTemplateAllowedFlexVolume {
 
         @CustomType.Setter
         public Builder driver(String driver) {
-            this.driver = Objects.requireNonNull(driver);
+            if (driver == null) {
+              throw new MissingRequiredPropertyException("PodSecurityPolicyTemplateAllowedFlexVolume", "driver");
+            }
+            this.driver = driver;
             return this;
         }
         public PodSecurityPolicyTemplateAllowedFlexVolume build() {

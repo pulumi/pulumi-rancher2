@@ -6,6 +6,7 @@ package com.pulumi.rancher2;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.core.internal.Codegen;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -391,7 +392,9 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ProviderArgs build() {
-            $.apiUrl = Objects.requireNonNull($.apiUrl, "expected parameter 'apiUrl' to be non-null");
+            if ($.apiUrl == null) {
+                throw new MissingRequiredPropertyException("ProviderArgs", "apiUrl");
+            }
             $.bootstrap = Codegen.booleanProp("bootstrap").output().arg($.bootstrap).env("RANCHER_BOOTSTRAP").def(false).getNullable();
             $.insecure = Codegen.booleanProp("insecure").output().arg($.insecure).env("RANCHER_INSECURE").def(false).getNullable();
             return $;

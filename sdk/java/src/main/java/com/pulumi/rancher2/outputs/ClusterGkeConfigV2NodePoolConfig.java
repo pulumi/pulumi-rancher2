@@ -176,36 +176,43 @@ public final class ClusterGkeConfigV2NodePoolConfig {
 
         @CustomType.Setter
         public Builder diskSizeGb(@Nullable Integer diskSizeGb) {
+
             this.diskSizeGb = diskSizeGb;
             return this;
         }
         @CustomType.Setter
         public Builder diskType(@Nullable String diskType) {
+
             this.diskType = diskType;
             return this;
         }
         @CustomType.Setter
         public Builder imageType(@Nullable String imageType) {
+
             this.imageType = imageType;
             return this;
         }
         @CustomType.Setter
         public Builder labels(@Nullable Map<String,Object> labels) {
+
             this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder localSsdCount(@Nullable Integer localSsdCount) {
+
             this.localSsdCount = localSsdCount;
             return this;
         }
         @CustomType.Setter
         public Builder machineType(@Nullable String machineType) {
+
             this.machineType = machineType;
             return this;
         }
         @CustomType.Setter
         public Builder oauthScopes(@Nullable List<String> oauthScopes) {
+
             this.oauthScopes = oauthScopes;
             return this;
         }
@@ -214,11 +221,13 @@ public final class ClusterGkeConfigV2NodePoolConfig {
         }
         @CustomType.Setter
         public Builder preemptible(@Nullable Boolean preemptible) {
+
             this.preemptible = preemptible;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
+
             this.tags = tags;
             return this;
         }
@@ -227,6 +236,7 @@ public final class ClusterGkeConfigV2NodePoolConfig {
         }
         @CustomType.Setter
         public Builder taints(@Nullable List<ClusterGkeConfigV2NodePoolConfigTaint> taints) {
+
             this.taints = taints;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -1307,12 +1308,24 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         public NodeTemplateAmazonec2ConfigArgs build() {
-            $.ami = Objects.requireNonNull($.ami, "expected parameter 'ami' to be non-null");
-            $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");
-            $.securityGroups = Objects.requireNonNull($.securityGroups, "expected parameter 'securityGroups' to be non-null");
-            $.subnetId = Objects.requireNonNull($.subnetId, "expected parameter 'subnetId' to be non-null");
-            $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
-            $.zone = Objects.requireNonNull($.zone, "expected parameter 'zone' to be non-null");
+            if ($.ami == null) {
+                throw new MissingRequiredPropertyException("NodeTemplateAmazonec2ConfigArgs", "ami");
+            }
+            if ($.region == null) {
+                throw new MissingRequiredPropertyException("NodeTemplateAmazonec2ConfigArgs", "region");
+            }
+            if ($.securityGroups == null) {
+                throw new MissingRequiredPropertyException("NodeTemplateAmazonec2ConfigArgs", "securityGroups");
+            }
+            if ($.subnetId == null) {
+                throw new MissingRequiredPropertyException("NodeTemplateAmazonec2ConfigArgs", "subnetId");
+            }
+            if ($.vpcId == null) {
+                throw new MissingRequiredPropertyException("NodeTemplateAmazonec2ConfigArgs", "vpcId");
+            }
+            if ($.zone == null) {
+                throw new MissingRequiredPropertyException("NodeTemplateAmazonec2ConfigArgs", "zone");
+            }
             return $;
         }
     }

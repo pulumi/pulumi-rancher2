@@ -58,11 +58,13 @@ public final class MultiClusterAppUpgradeStrategyRollingUpdate {
 
         @CustomType.Setter
         public Builder batchSize(@Nullable Integer batchSize) {
+
             this.batchSize = batchSize;
             return this;
         }
         @CustomType.Setter
         public Builder interval(@Nullable Integer interval) {
+
             this.interval = interval;
             return this;
         }

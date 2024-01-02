@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetProjectResourceQuotaNamespaceDefaultLimit;
 import com.pulumi.rancher2.outputs.GetProjectResourceQuotaProjectLimit;
 import java.util.Objects;
@@ -41,12 +42,18 @@ public final class GetProjectResourceQuota {
 
         @CustomType.Setter
         public Builder namespaceDefaultLimit(GetProjectResourceQuotaNamespaceDefaultLimit namespaceDefaultLimit) {
-            this.namespaceDefaultLimit = Objects.requireNonNull(namespaceDefaultLimit);
+            if (namespaceDefaultLimit == null) {
+              throw new MissingRequiredPropertyException("GetProjectResourceQuota", "namespaceDefaultLimit");
+            }
+            this.namespaceDefaultLimit = namespaceDefaultLimit;
             return this;
         }
         @CustomType.Setter
         public Builder projectLimit(GetProjectResourceQuotaProjectLimit projectLimit) {
-            this.projectLimit = Objects.requireNonNull(projectLimit);
+            if (projectLimit == null) {
+              throw new MissingRequiredPropertyException("GetProjectResourceQuota", "projectLimit");
+            }
+            this.projectLimit = projectLimit;
             return this;
         }
         public GetProjectResourceQuota build() {

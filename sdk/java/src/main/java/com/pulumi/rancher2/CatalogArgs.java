@@ -5,6 +5,7 @@ package com.pulumi.rancher2;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -560,7 +561,9 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public CatalogArgs build() {
-            $.url = Objects.requireNonNull($.url, "expected parameter 'url' to be non-null");
+            if ($.url == null) {
+                throw new MissingRequiredPropertyException("CatalogArgs", "url");
+            }
             return $;
         }
     }

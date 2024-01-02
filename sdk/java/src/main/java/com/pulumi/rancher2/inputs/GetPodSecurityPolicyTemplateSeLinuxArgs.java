@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.inputs.GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -74,7 +75,9 @@ public final class GetPodSecurityPolicyTemplateSeLinuxArgs extends com.pulumi.re
         }
 
         public GetPodSecurityPolicyTemplateSeLinuxArgs build() {
-            $.rule = Objects.requireNonNull($.rule, "expected parameter 'rule' to be non-null");
+            if ($.rule == null) {
+                throw new MissingRequiredPropertyException("GetPodSecurityPolicyTemplateSeLinuxArgs", "rule");
+            }
             return $;
         }
     }

@@ -72,16 +72,19 @@ public final class ClusterGkeConfigV2ClusterAddons {
 
         @CustomType.Setter
         public Builder horizontalPodAutoscaling(@Nullable Boolean horizontalPodAutoscaling) {
+
             this.horizontalPodAutoscaling = horizontalPodAutoscaling;
             return this;
         }
         @CustomType.Setter
         public Builder httpLoadBalancing(@Nullable Boolean httpLoadBalancing) {
+
             this.httpLoadBalancing = httpLoadBalancing;
             return this;
         }
         @CustomType.Setter
         public Builder networkPolicyConfig(@Nullable Boolean networkPolicyConfig) {
+
             this.networkPolicyConfig = networkPolicyConfig;
             return this;
         }

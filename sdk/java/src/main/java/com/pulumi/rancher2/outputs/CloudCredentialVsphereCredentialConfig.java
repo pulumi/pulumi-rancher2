@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -86,21 +87,31 @@ public final class CloudCredentialVsphereCredentialConfig {
 
         @CustomType.Setter
         public Builder password(String password) {
-            this.password = Objects.requireNonNull(password);
+            if (password == null) {
+              throw new MissingRequiredPropertyException("CloudCredentialVsphereCredentialConfig", "password");
+            }
+            this.password = password;
             return this;
         }
         @CustomType.Setter
         public Builder username(String username) {
-            this.username = Objects.requireNonNull(username);
+            if (username == null) {
+              throw new MissingRequiredPropertyException("CloudCredentialVsphereCredentialConfig", "username");
+            }
+            this.username = username;
             return this;
         }
         @CustomType.Setter
         public Builder vcenter(String vcenter) {
-            this.vcenter = Objects.requireNonNull(vcenter);
+            if (vcenter == null) {
+              throw new MissingRequiredPropertyException("CloudCredentialVsphereCredentialConfig", "vcenter");
+            }
+            this.vcenter = vcenter;
             return this;
         }
         @CustomType.Setter
         public Builder vcenterPort(@Nullable String vcenterPort) {
+
             this.vcenterPort = vcenterPort;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin;
 import java.lang.String;
 import java.util.List;
@@ -50,17 +51,22 @@ public final class GetClusterRkeConfigServicesKubeApiAdmissionConfiguration {
 
         @CustomType.Setter
         public Builder apiVersion(@Nullable String apiVersion) {
+
             this.apiVersion = apiVersion;
             return this;
         }
         @CustomType.Setter
         public Builder kind(@Nullable String kind) {
+
             this.kind = kind;
             return this;
         }
         @CustomType.Setter
         public Builder plugins(List<GetClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin> plugins) {
-            this.plugins = Objects.requireNonNull(plugins);
+            if (plugins == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigServicesKubeApiAdmissionConfiguration", "plugins");
+            }
+            this.plugins = plugins;
             return this;
         }
         public Builder plugins(GetClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin... plugins) {

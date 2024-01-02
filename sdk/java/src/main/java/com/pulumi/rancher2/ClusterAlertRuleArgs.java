@@ -5,6 +5,7 @@ package com.pulumi.rancher2;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.inputs.ClusterAlertRuleEventRuleArgs;
 import com.pulumi.rancher2.inputs.ClusterAlertRuleMetricRuleArgs;
 import com.pulumi.rancher2.inputs.ClusterAlertRuleNodeRuleArgs;
@@ -565,8 +566,12 @@ public final class ClusterAlertRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         public ClusterAlertRuleArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
-            $.groupId = Objects.requireNonNull($.groupId, "expected parameter 'groupId' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("ClusterAlertRuleArgs", "clusterId");
+            }
+            if ($.groupId == null) {
+                throw new MissingRequiredPropertyException("ClusterAlertRuleArgs", "groupId");
+            }
             return $;
         }
     }

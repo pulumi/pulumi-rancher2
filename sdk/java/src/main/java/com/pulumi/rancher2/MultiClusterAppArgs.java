@@ -5,6 +5,7 @@ package com.pulumi.rancher2;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.inputs.MultiClusterAppAnswerArgs;
 import com.pulumi.rancher2.inputs.MultiClusterAppMemberArgs;
 import com.pulumi.rancher2.inputs.MultiClusterAppTargetArgs;
@@ -606,10 +607,18 @@ public final class MultiClusterAppArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public MultiClusterAppArgs build() {
-            $.catalogName = Objects.requireNonNull($.catalogName, "expected parameter 'catalogName' to be non-null");
-            $.roles = Objects.requireNonNull($.roles, "expected parameter 'roles' to be non-null");
-            $.targets = Objects.requireNonNull($.targets, "expected parameter 'targets' to be non-null");
-            $.templateName = Objects.requireNonNull($.templateName, "expected parameter 'templateName' to be non-null");
+            if ($.catalogName == null) {
+                throw new MissingRequiredPropertyException("MultiClusterAppArgs", "catalogName");
+            }
+            if ($.roles == null) {
+                throw new MissingRequiredPropertyException("MultiClusterAppArgs", "roles");
+            }
+            if ($.targets == null) {
+                throw new MissingRequiredPropertyException("MultiClusterAppArgs", "targets");
+            }
+            if ($.templateName == null) {
+                throw new MissingRequiredPropertyException("MultiClusterAppArgs", "templateName");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -232,161 +233,211 @@ public final class GetClusterOkeConfig {
 
         @CustomType.Setter
         public Builder compartmentId(String compartmentId) {
-            this.compartmentId = Objects.requireNonNull(compartmentId);
+            if (compartmentId == null) {
+              throw new MissingRequiredPropertyException("GetClusterOkeConfig", "compartmentId");
+            }
+            this.compartmentId = compartmentId;
             return this;
         }
         @CustomType.Setter
         public Builder customBootVolumeSize(@Nullable Integer customBootVolumeSize) {
+
             this.customBootVolumeSize = customBootVolumeSize;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder enableKubernetesDashboard(@Nullable Boolean enableKubernetesDashboard) {
+
             this.enableKubernetesDashboard = enableKubernetesDashboard;
             return this;
         }
         @CustomType.Setter
         public Builder enablePrivateControlPlane(@Nullable Boolean enablePrivateControlPlane) {
+
             this.enablePrivateControlPlane = enablePrivateControlPlane;
             return this;
         }
         @CustomType.Setter
         public Builder enablePrivateNodes(@Nullable Boolean enablePrivateNodes) {
+
             this.enablePrivateNodes = enablePrivateNodes;
             return this;
         }
         @CustomType.Setter
         public Builder fingerprint(String fingerprint) {
-            this.fingerprint = Objects.requireNonNull(fingerprint);
+            if (fingerprint == null) {
+              throw new MissingRequiredPropertyException("GetClusterOkeConfig", "fingerprint");
+            }
+            this.fingerprint = fingerprint;
             return this;
         }
         @CustomType.Setter
         public Builder flexOcpus(@Nullable Integer flexOcpus) {
+
             this.flexOcpus = flexOcpus;
             return this;
         }
         @CustomType.Setter
         public Builder kmsKeyId(@Nullable String kmsKeyId) {
+
             this.kmsKeyId = kmsKeyId;
             return this;
         }
         @CustomType.Setter
         public Builder kubernetesVersion(String kubernetesVersion) {
-            this.kubernetesVersion = Objects.requireNonNull(kubernetesVersion);
+            if (kubernetesVersion == null) {
+              throw new MissingRequiredPropertyException("GetClusterOkeConfig", "kubernetesVersion");
+            }
+            this.kubernetesVersion = kubernetesVersion;
             return this;
         }
         @CustomType.Setter
         public Builder limitNodeCount(@Nullable Integer limitNodeCount) {
+
             this.limitNodeCount = limitNodeCount;
             return this;
         }
         @CustomType.Setter
         public Builder loadBalancerSubnetName1(@Nullable String loadBalancerSubnetName1) {
+
             this.loadBalancerSubnetName1 = loadBalancerSubnetName1;
             return this;
         }
         @CustomType.Setter
         public Builder loadBalancerSubnetName2(@Nullable String loadBalancerSubnetName2) {
+
             this.loadBalancerSubnetName2 = loadBalancerSubnetName2;
             return this;
         }
         @CustomType.Setter
         public Builder nodeImage(String nodeImage) {
-            this.nodeImage = Objects.requireNonNull(nodeImage);
+            if (nodeImage == null) {
+              throw new MissingRequiredPropertyException("GetClusterOkeConfig", "nodeImage");
+            }
+            this.nodeImage = nodeImage;
             return this;
         }
         @CustomType.Setter
         public Builder nodePoolDnsDomainName(@Nullable String nodePoolDnsDomainName) {
+
             this.nodePoolDnsDomainName = nodePoolDnsDomainName;
             return this;
         }
         @CustomType.Setter
         public Builder nodePoolSubnetName(@Nullable String nodePoolSubnetName) {
+
             this.nodePoolSubnetName = nodePoolSubnetName;
             return this;
         }
         @CustomType.Setter
         public Builder nodePublicKeyContents(@Nullable String nodePublicKeyContents) {
+
             this.nodePublicKeyContents = nodePublicKeyContents;
             return this;
         }
         @CustomType.Setter
         public Builder nodeShape(String nodeShape) {
-            this.nodeShape = Objects.requireNonNull(nodeShape);
+            if (nodeShape == null) {
+              throw new MissingRequiredPropertyException("GetClusterOkeConfig", "nodeShape");
+            }
+            this.nodeShape = nodeShape;
             return this;
         }
         @CustomType.Setter
         public Builder podCidr(@Nullable String podCidr) {
+
             this.podCidr = podCidr;
             return this;
         }
         @CustomType.Setter
         public Builder privateKeyContents(String privateKeyContents) {
-            this.privateKeyContents = Objects.requireNonNull(privateKeyContents);
+            if (privateKeyContents == null) {
+              throw new MissingRequiredPropertyException("GetClusterOkeConfig", "privateKeyContents");
+            }
+            this.privateKeyContents = privateKeyContents;
             return this;
         }
         @CustomType.Setter
         public Builder privateKeyPassphrase(@Nullable String privateKeyPassphrase) {
+
             this.privateKeyPassphrase = privateKeyPassphrase;
             return this;
         }
         @CustomType.Setter
         public Builder quantityOfNodeSubnets(@Nullable Integer quantityOfNodeSubnets) {
+
             this.quantityOfNodeSubnets = quantityOfNodeSubnets;
             return this;
         }
         @CustomType.Setter
         public Builder quantityPerSubnet(@Nullable Integer quantityPerSubnet) {
+
             this.quantityPerSubnet = quantityPerSubnet;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetClusterOkeConfig", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder serviceCidr(@Nullable String serviceCidr) {
+
             this.serviceCidr = serviceCidr;
             return this;
         }
         @CustomType.Setter
         public Builder serviceDnsDomainName(@Nullable String serviceDnsDomainName) {
+
             this.serviceDnsDomainName = serviceDnsDomainName;
             return this;
         }
         @CustomType.Setter
         public Builder skipVcnDelete(@Nullable Boolean skipVcnDelete) {
+
             this.skipVcnDelete = skipVcnDelete;
             return this;
         }
         @CustomType.Setter
         public Builder tenancyId(String tenancyId) {
-            this.tenancyId = Objects.requireNonNull(tenancyId);
+            if (tenancyId == null) {
+              throw new MissingRequiredPropertyException("GetClusterOkeConfig", "tenancyId");
+            }
+            this.tenancyId = tenancyId;
             return this;
         }
         @CustomType.Setter
         public Builder userOcid(String userOcid) {
-            this.userOcid = Objects.requireNonNull(userOcid);
+            if (userOcid == null) {
+              throw new MissingRequiredPropertyException("GetClusterOkeConfig", "userOcid");
+            }
+            this.userOcid = userOcid;
             return this;
         }
         @CustomType.Setter
         public Builder vcnCompartmentId(@Nullable String vcnCompartmentId) {
+
             this.vcnCompartmentId = vcnCompartmentId;
             return this;
         }
         @CustomType.Setter
         public Builder vcnName(@Nullable String vcnName) {
+
             this.vcnName = vcnName;
             return this;
         }
         @CustomType.Setter
         public Builder workerNodeIngressCidr(@Nullable String workerNodeIngressCidr) {
+
             this.workerNodeIngressCidr = workerNodeIngressCidr;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -170,52 +171,68 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal {
 
         @CustomType.Setter
         public Builder authUrl(String authUrl) {
-            this.authUrl = Objects.requireNonNull(authUrl);
+            if (authUrl == null) {
+              throw new MissingRequiredPropertyException("ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal", "authUrl");
+            }
+            this.authUrl = authUrl;
             return this;
         }
         @CustomType.Setter
         public Builder caFile(@Nullable String caFile) {
+
             this.caFile = caFile;
             return this;
         }
         @CustomType.Setter
         public Builder domainId(@Nullable String domainId) {
+
             this.domainId = domainId;
             return this;
         }
         @CustomType.Setter
         public Builder domainName(@Nullable String domainName) {
+
             this.domainName = domainName;
             return this;
         }
         @CustomType.Setter
         public Builder password(String password) {
-            this.password = Objects.requireNonNull(password);
+            if (password == null) {
+              throw new MissingRequiredPropertyException("ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal", "password");
+            }
+            this.password = password;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder tenantId(@Nullable String tenantId) {
+
             this.tenantId = tenantId;
             return this;
         }
         @CustomType.Setter
         public Builder tenantName(@Nullable String tenantName) {
+
             this.tenantName = tenantName;
             return this;
         }
         @CustomType.Setter
         public Builder trustId(@Nullable String trustId) {
+
             this.trustId = trustId;
             return this;
         }
         @CustomType.Setter
         public Builder username(String username) {
-            this.username = Objects.requireNonNull(username);
+            if (username == null) {
+              throw new MissingRequiredPropertyException("ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal", "username");
+            }
+            this.username = username;
             return this;
         }
         public ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal build() {

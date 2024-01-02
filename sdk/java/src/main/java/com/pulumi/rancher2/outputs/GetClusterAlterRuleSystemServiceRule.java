@@ -36,6 +36,7 @@ public final class GetClusterAlterRuleSystemServiceRule {
 
         @CustomType.Setter
         public Builder condition(@Nullable String condition) {
+
             this.condition = condition;
             return this;
         }

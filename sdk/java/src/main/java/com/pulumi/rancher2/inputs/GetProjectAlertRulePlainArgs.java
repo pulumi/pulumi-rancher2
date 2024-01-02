@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -121,8 +122,12 @@ public final class GetProjectAlertRulePlainArgs extends com.pulumi.resources.Inv
         }
 
         public GetProjectAlertRulePlainArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetProjectAlertRulePlainArgs", "name");
+            }
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("GetProjectAlertRulePlainArgs", "projectId");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -151,7 +152,9 @@ public final class ClusterGkeConfigV2PrivateClusterConfigArgs extends com.pulumi
         }
 
         public ClusterGkeConfigV2PrivateClusterConfigArgs build() {
-            $.masterIpv4CidrBlock = Objects.requireNonNull($.masterIpv4CidrBlock, "expected parameter 'masterIpv4CidrBlock' to be non-null");
+            if ($.masterIpv4CidrBlock == null) {
+                throw new MissingRequiredPropertyException("ClusterGkeConfigV2PrivateClusterConfigArgs", "masterIpv4CidrBlock");
+            }
             return $;
         }
     }

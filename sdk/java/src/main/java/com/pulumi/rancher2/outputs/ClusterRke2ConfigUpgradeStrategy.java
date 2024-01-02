@@ -87,21 +87,25 @@ public final class ClusterRke2ConfigUpgradeStrategy {
 
         @CustomType.Setter
         public Builder drainServerNodes(@Nullable Boolean drainServerNodes) {
+
             this.drainServerNodes = drainServerNodes;
             return this;
         }
         @CustomType.Setter
         public Builder drainWorkerNodes(@Nullable Boolean drainWorkerNodes) {
+
             this.drainWorkerNodes = drainWorkerNodes;
             return this;
         }
         @CustomType.Setter
         public Builder serverConcurrency(@Nullable Integer serverConcurrency) {
+
             this.serverConcurrency = serverConcurrency;
             return this;
         }
         @CustomType.Setter
         public Builder workerConcurrency(@Nullable Integer workerConcurrency) {
+
             this.workerConcurrency = workerConcurrency;
             return this;
         }

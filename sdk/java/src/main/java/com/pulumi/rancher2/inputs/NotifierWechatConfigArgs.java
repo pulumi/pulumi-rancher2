@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -261,10 +262,18 @@ public final class NotifierWechatConfigArgs extends com.pulumi.resources.Resourc
         }
 
         public NotifierWechatConfigArgs build() {
-            $.agent = Objects.requireNonNull($.agent, "expected parameter 'agent' to be non-null");
-            $.corp = Objects.requireNonNull($.corp, "expected parameter 'corp' to be non-null");
-            $.defaultRecipient = Objects.requireNonNull($.defaultRecipient, "expected parameter 'defaultRecipient' to be non-null");
-            $.secret = Objects.requireNonNull($.secret, "expected parameter 'secret' to be non-null");
+            if ($.agent == null) {
+                throw new MissingRequiredPropertyException("NotifierWechatConfigArgs", "agent");
+            }
+            if ($.corp == null) {
+                throw new MissingRequiredPropertyException("NotifierWechatConfigArgs", "corp");
+            }
+            if ($.defaultRecipient == null) {
+                throw new MissingRequiredPropertyException("NotifierWechatConfigArgs", "defaultRecipient");
+            }
+            if ($.secret == null) {
+                throw new MissingRequiredPropertyException("NotifierWechatConfigArgs", "secret");
+            }
             return $;
         }
     }

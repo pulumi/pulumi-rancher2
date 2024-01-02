@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -101,27 +102,38 @@ public final class ProjectAlertRuleMetricRule {
 
         @CustomType.Setter
         public Builder comparison(@Nullable String comparison) {
+
             this.comparison = comparison;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder duration(String duration) {
-            this.duration = Objects.requireNonNull(duration);
+            if (duration == null) {
+              throw new MissingRequiredPropertyException("ProjectAlertRuleMetricRule", "duration");
+            }
+            this.duration = duration;
             return this;
         }
         @CustomType.Setter
         public Builder expression(String expression) {
-            this.expression = Objects.requireNonNull(expression);
+            if (expression == null) {
+              throw new MissingRequiredPropertyException("ProjectAlertRuleMetricRule", "expression");
+            }
+            this.expression = expression;
             return this;
         }
         @CustomType.Setter
         public Builder thresholdValue(Double thresholdValue) {
-            this.thresholdValue = Objects.requireNonNull(thresholdValue);
+            if (thresholdValue == null) {
+              throw new MissingRequiredPropertyException("ProjectAlertRuleMetricRule", "thresholdValue");
+            }
+            this.thresholdValue = thresholdValue;
             return this;
         }
         public ProjectAlertRuleMetricRule build() {

@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock;
 import java.lang.Boolean;
 import java.util.List;
@@ -60,7 +61,10 @@ public final class ClusterGkeConfigV2MasterAuthorizedNetworksConfig {
 
         @CustomType.Setter
         public Builder cidrBlocks(List<ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock> cidrBlocks) {
-            this.cidrBlocks = Objects.requireNonNull(cidrBlocks);
+            if (cidrBlocks == null) {
+              throw new MissingRequiredPropertyException("ClusterGkeConfigV2MasterAuthorizedNetworksConfig", "cidrBlocks");
+            }
+            this.cidrBlocks = cidrBlocks;
             return this;
         }
         public Builder cidrBlocks(ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock... cidrBlocks) {
@@ -68,6 +72,7 @@ public final class ClusterGkeConfigV2MasterAuthorizedNetworksConfig {
         }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -124,9 +125,15 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
         }
 
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs build() {
-            $.datacenter = Objects.requireNonNull($.datacenter, "expected parameter 'datacenter' to be non-null");
-            $.folder = Objects.requireNonNull($.folder, "expected parameter 'folder' to be non-null");
-            $.server = Objects.requireNonNull($.server, "expected parameter 'server' to be non-null");
+            if ($.datacenter == null) {
+                throw new MissingRequiredPropertyException("ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs", "datacenter");
+            }
+            if ($.folder == null) {
+                throw new MissingRequiredPropertyException("ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs", "folder");
+            }
+            if ($.server == null) {
+                throw new MissingRequiredPropertyException("ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs", "server");
+            }
             return $;
         }
     }

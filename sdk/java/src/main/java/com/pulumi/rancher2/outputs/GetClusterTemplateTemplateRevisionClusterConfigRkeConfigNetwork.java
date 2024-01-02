@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProvider;
 import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider;
 import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider;
@@ -94,41 +95,53 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwo
 
         @CustomType.Setter
         public Builder aciNetworkProvider(@Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProvider aciNetworkProvider) {
+
             this.aciNetworkProvider = aciNetworkProvider;
             return this;
         }
         @CustomType.Setter
         public Builder calicoNetworkProvider(@Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider calicoNetworkProvider) {
+
             this.calicoNetworkProvider = calicoNetworkProvider;
             return this;
         }
         @CustomType.Setter
         public Builder canalNetworkProvider(@Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider canalNetworkProvider) {
+
             this.canalNetworkProvider = canalNetworkProvider;
             return this;
         }
         @CustomType.Setter
         public Builder flannelNetworkProvider(@Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider flannelNetworkProvider) {
+
             this.flannelNetworkProvider = flannelNetworkProvider;
             return this;
         }
         @CustomType.Setter
         public Builder mtu(@Nullable Integer mtu) {
+
             this.mtu = mtu;
             return this;
         }
         @CustomType.Setter
         public Builder options(Map<String,Object> options) {
-            this.options = Objects.requireNonNull(options);
+            if (options == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork", "options");
+            }
+            this.options = options;
             return this;
         }
         @CustomType.Setter
         public Builder plugin(String plugin) {
-            this.plugin = Objects.requireNonNull(plugin);
+            if (plugin == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork", "plugin");
+            }
+            this.plugin = plugin;
             return this;
         }
         @CustomType.Setter
         public Builder tolerations(@Nullable List<GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkToleration> tolerations) {
+
             this.tolerations = tolerations;
             return this;
         }
@@ -137,6 +150,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwo
         }
         @CustomType.Setter
         public Builder weaveNetworkProvider(@Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider weaveNetworkProvider) {
+
             this.weaveNetworkProvider = weaveNetworkProvider;
             return this;
         }

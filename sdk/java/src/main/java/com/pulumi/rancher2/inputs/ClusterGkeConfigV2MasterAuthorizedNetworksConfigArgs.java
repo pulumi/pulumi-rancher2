@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.inputs.ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlockArgs;
 import java.lang.Boolean;
 import java.util.List;
@@ -125,7 +126,9 @@ public final class ClusterGkeConfigV2MasterAuthorizedNetworksConfigArgs extends 
         }
 
         public ClusterGkeConfigV2MasterAuthorizedNetworksConfigArgs build() {
-            $.cidrBlocks = Objects.requireNonNull($.cidrBlocks, "expected parameter 'cidrBlocks' to be non-null");
+            if ($.cidrBlocks == null) {
+                throw new MissingRequiredPropertyException("ClusterGkeConfigV2MasterAuthorizedNetworksConfigArgs", "cidrBlocks");
+            }
             return $;
         }
     }

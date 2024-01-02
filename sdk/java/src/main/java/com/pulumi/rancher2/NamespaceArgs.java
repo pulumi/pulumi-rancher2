@@ -5,6 +5,7 @@ package com.pulumi.rancher2;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.inputs.NamespaceContainerResourceLimitArgs;
 import com.pulumi.rancher2.inputs.NamespaceResourceQuotaArgs;
 import java.lang.Boolean;
@@ -340,7 +341,9 @@ public final class NamespaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public NamespaceArgs build() {
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("NamespaceArgs", "projectId");
+            }
             return $;
         }
     }

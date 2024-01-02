@@ -255,81 +255,97 @@ public final class NodeTemplateLinodeConfig {
 
         @CustomType.Setter
         public Builder authorizedUsers(@Nullable String authorizedUsers) {
+
             this.authorizedUsers = authorizedUsers;
             return this;
         }
         @CustomType.Setter
         public Builder createPrivateIp(@Nullable Boolean createPrivateIp) {
+
             this.createPrivateIp = createPrivateIp;
             return this;
         }
         @CustomType.Setter
         public Builder dockerPort(@Nullable String dockerPort) {
+
             this.dockerPort = dockerPort;
             return this;
         }
         @CustomType.Setter
         public Builder image(@Nullable String image) {
+
             this.image = image;
             return this;
         }
         @CustomType.Setter
         public Builder instanceType(@Nullable String instanceType) {
+
             this.instanceType = instanceType;
             return this;
         }
         @CustomType.Setter
         public Builder label(@Nullable String label) {
+
             this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder rootPass(@Nullable String rootPass) {
+
             this.rootPass = rootPass;
             return this;
         }
         @CustomType.Setter
         public Builder sshPort(@Nullable String sshPort) {
+
             this.sshPort = sshPort;
             return this;
         }
         @CustomType.Setter
         public Builder sshUser(@Nullable String sshUser) {
+
             this.sshUser = sshUser;
             return this;
         }
         @CustomType.Setter
         public Builder stackscript(@Nullable String stackscript) {
+
             this.stackscript = stackscript;
             return this;
         }
         @CustomType.Setter
         public Builder stackscriptData(@Nullable String stackscriptData) {
+
             this.stackscriptData = stackscriptData;
             return this;
         }
         @CustomType.Setter
         public Builder swapSize(@Nullable String swapSize) {
+
             this.swapSize = swapSize;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable String tags) {
+
             this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder token(@Nullable String token) {
+
             this.token = token;
             return this;
         }
         @CustomType.Setter
         public Builder uaPrefix(@Nullable String uaPrefix) {
+
             this.uaPrefix = uaPrefix;
             return this;
         }

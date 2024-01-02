@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -184,37 +185,58 @@ public final class GetStorageClassV2Result {
 
         @CustomType.Setter
         public Builder allowVolumeExpansion(Boolean allowVolumeExpansion) {
-            this.allowVolumeExpansion = Objects.requireNonNull(allowVolumeExpansion);
+            if (allowVolumeExpansion == null) {
+              throw new MissingRequiredPropertyException("GetStorageClassV2Result", "allowVolumeExpansion");
+            }
+            this.allowVolumeExpansion = allowVolumeExpansion;
             return this;
         }
         @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
-            this.annotations = Objects.requireNonNull(annotations);
+            if (annotations == null) {
+              throw new MissingRequiredPropertyException("GetStorageClassV2Result", "annotations");
+            }
+            this.annotations = annotations;
             return this;
         }
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetStorageClassV2Result", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetStorageClassV2Result", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder k8sProvisioner(String k8sProvisioner) {
-            this.k8sProvisioner = Objects.requireNonNull(k8sProvisioner);
+            if (k8sProvisioner == null) {
+              throw new MissingRequiredPropertyException("GetStorageClassV2Result", "k8sProvisioner");
+            }
+            this.k8sProvisioner = k8sProvisioner;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetStorageClassV2Result", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder mountOptions(List<String> mountOptions) {
-            this.mountOptions = Objects.requireNonNull(mountOptions);
+            if (mountOptions == null) {
+              throw new MissingRequiredPropertyException("GetStorageClassV2Result", "mountOptions");
+            }
+            this.mountOptions = mountOptions;
             return this;
         }
         public Builder mountOptions(String... mountOptions) {
@@ -222,27 +244,42 @@ public final class GetStorageClassV2Result {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetStorageClassV2Result", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder parameters(Map<String,Object> parameters) {
-            this.parameters = Objects.requireNonNull(parameters);
+            if (parameters == null) {
+              throw new MissingRequiredPropertyException("GetStorageClassV2Result", "parameters");
+            }
+            this.parameters = parameters;
             return this;
         }
         @CustomType.Setter
         public Builder reclaimPolicy(String reclaimPolicy) {
-            this.reclaimPolicy = Objects.requireNonNull(reclaimPolicy);
+            if (reclaimPolicy == null) {
+              throw new MissingRequiredPropertyException("GetStorageClassV2Result", "reclaimPolicy");
+            }
+            this.reclaimPolicy = reclaimPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder resourceVersion(String resourceVersion) {
-            this.resourceVersion = Objects.requireNonNull(resourceVersion);
+            if (resourceVersion == null) {
+              throw new MissingRequiredPropertyException("GetStorageClassV2Result", "resourceVersion");
+            }
+            this.resourceVersion = resourceVersion;
             return this;
         }
         @CustomType.Setter
         public Builder volumeBindingMode(String volumeBindingMode) {
-            this.volumeBindingMode = Objects.requireNonNull(volumeBindingMode);
+            if (volumeBindingMode == null) {
+              throw new MissingRequiredPropertyException("GetStorageClassV2Result", "volumeBindingMode");
+            }
+            this.volumeBindingMode = volumeBindingMode;
             return this;
         }
         public GetStorageClassV2Result build() {

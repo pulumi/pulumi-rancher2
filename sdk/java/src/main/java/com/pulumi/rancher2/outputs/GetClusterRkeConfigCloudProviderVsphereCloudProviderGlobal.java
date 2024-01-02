@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -66,32 +67,50 @@ public final class GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobal {
 
         @CustomType.Setter
         public Builder datacenters(String datacenters) {
-            this.datacenters = Objects.requireNonNull(datacenters);
+            if (datacenters == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobal", "datacenters");
+            }
+            this.datacenters = datacenters;
             return this;
         }
         @CustomType.Setter
         public Builder insecureFlag(Boolean insecureFlag) {
-            this.insecureFlag = Objects.requireNonNull(insecureFlag);
+            if (insecureFlag == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobal", "insecureFlag");
+            }
+            this.insecureFlag = insecureFlag;
             return this;
         }
         @CustomType.Setter
         public Builder password(String password) {
-            this.password = Objects.requireNonNull(password);
+            if (password == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobal", "password");
+            }
+            this.password = password;
             return this;
         }
         @CustomType.Setter
         public Builder port(String port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobal", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder soapRoundtripCount(Integer soapRoundtripCount) {
-            this.soapRoundtripCount = Objects.requireNonNull(soapRoundtripCount);
+            if (soapRoundtripCount == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobal", "soapRoundtripCount");
+            }
+            this.soapRoundtripCount = soapRoundtripCount;
             return this;
         }
         @CustomType.Setter
         public Builder user(String user) {
-            this.user = Objects.requireNonNull(user);
+            if (user == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobal", "user");
+            }
+            this.user = user;
             return this;
         }
         public GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobal build() {

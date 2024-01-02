@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -129,36 +130,47 @@ public final class ClusterV2RkeConfigEtcdS3Config {
 
         @CustomType.Setter
         public Builder bucket(String bucket) {
-            this.bucket = Objects.requireNonNull(bucket);
+            if (bucket == null) {
+              throw new MissingRequiredPropertyException("ClusterV2RkeConfigEtcdS3Config", "bucket");
+            }
+            this.bucket = bucket;
             return this;
         }
         @CustomType.Setter
         public Builder cloudCredentialName(@Nullable String cloudCredentialName) {
+
             this.cloudCredentialName = cloudCredentialName;
             return this;
         }
         @CustomType.Setter
         public Builder endpoint(String endpoint) {
-            this.endpoint = Objects.requireNonNull(endpoint);
+            if (endpoint == null) {
+              throw new MissingRequiredPropertyException("ClusterV2RkeConfigEtcdS3Config", "endpoint");
+            }
+            this.endpoint = endpoint;
             return this;
         }
         @CustomType.Setter
         public Builder endpointCa(@Nullable String endpointCa) {
+
             this.endpointCa = endpointCa;
             return this;
         }
         @CustomType.Setter
         public Builder folder(@Nullable String folder) {
+
             this.folder = folder;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder skipSslVerify(@Nullable Boolean skipSslVerify) {
+
             this.skipSslVerify = skipSslVerify;
             return this;
         }

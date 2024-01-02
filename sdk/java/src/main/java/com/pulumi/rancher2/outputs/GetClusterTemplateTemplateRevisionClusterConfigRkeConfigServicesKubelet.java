@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -88,21 +89,31 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServi
 
         @CustomType.Setter
         public Builder clusterDnsServer(String clusterDnsServer) {
-            this.clusterDnsServer = Objects.requireNonNull(clusterDnsServer);
+            if (clusterDnsServer == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet", "clusterDnsServer");
+            }
+            this.clusterDnsServer = clusterDnsServer;
             return this;
         }
         @CustomType.Setter
         public Builder clusterDomain(String clusterDomain) {
-            this.clusterDomain = Objects.requireNonNull(clusterDomain);
+            if (clusterDomain == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet", "clusterDomain");
+            }
+            this.clusterDomain = clusterDomain;
             return this;
         }
         @CustomType.Setter
         public Builder extraArgs(Map<String,Object> extraArgs) {
-            this.extraArgs = Objects.requireNonNull(extraArgs);
+            if (extraArgs == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet", "extraArgs");
+            }
+            this.extraArgs = extraArgs;
             return this;
         }
         @CustomType.Setter
         public Builder extraBinds(@Nullable List<String> extraBinds) {
+
             this.extraBinds = extraBinds;
             return this;
         }
@@ -111,6 +122,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServi
         }
         @CustomType.Setter
         public Builder extraEnvs(@Nullable List<String> extraEnvs) {
+
             this.extraEnvs = extraEnvs;
             return this;
         }
@@ -119,22 +131,32 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServi
         }
         @CustomType.Setter
         public Builder failSwapOn(Boolean failSwapOn) {
-            this.failSwapOn = Objects.requireNonNull(failSwapOn);
+            if (failSwapOn == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet", "failSwapOn");
+            }
+            this.failSwapOn = failSwapOn;
             return this;
         }
         @CustomType.Setter
         public Builder generateServingCertificate(@Nullable Boolean generateServingCertificate) {
+
             this.generateServingCertificate = generateServingCertificate;
             return this;
         }
         @CustomType.Setter
         public Builder image(String image) {
-            this.image = Objects.requireNonNull(image);
+            if (image == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet", "image");
+            }
+            this.image = image;
             return this;
         }
         @CustomType.Setter
         public Builder infraContainerImage(String infraContainerImage) {
-            this.infraContainerImage = Objects.requireNonNull(infraContainerImage);
+            if (infraContainerImage == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet", "infraContainerImage");
+            }
+            this.infraContainerImage = infraContainerImage;
             return this;
         }
         public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet build() {

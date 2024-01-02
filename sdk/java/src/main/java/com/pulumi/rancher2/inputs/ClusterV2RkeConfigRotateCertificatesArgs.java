@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -125,7 +126,9 @@ public final class ClusterV2RkeConfigRotateCertificatesArgs extends com.pulumi.r
         }
 
         public ClusterV2RkeConfigRotateCertificatesArgs build() {
-            $.generation = Objects.requireNonNull($.generation, "expected parameter 'generation' to be non-null");
+            if ($.generation == null) {
+                throw new MissingRequiredPropertyException("ClusterV2RkeConfigRotateCertificatesArgs", "generation");
+            }
             return $;
         }
     }

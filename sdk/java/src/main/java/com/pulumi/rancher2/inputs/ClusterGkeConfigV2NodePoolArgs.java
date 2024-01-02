@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.inputs.ClusterGkeConfigV2NodePoolAutoscalingArgs;
 import com.pulumi.rancher2.inputs.ClusterGkeConfigV2NodePoolConfigArgs;
 import com.pulumi.rancher2.inputs.ClusterGkeConfigV2NodePoolManagementArgs;
@@ -302,9 +303,15 @@ public final class ClusterGkeConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         public ClusterGkeConfigV2NodePoolArgs build() {
-            $.initialNodeCount = Objects.requireNonNull($.initialNodeCount, "expected parameter 'initialNodeCount' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.version = Objects.requireNonNull($.version, "expected parameter 'version' to be non-null");
+            if ($.initialNodeCount == null) {
+                throw new MissingRequiredPropertyException("ClusterGkeConfigV2NodePoolArgs", "initialNodeCount");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("ClusterGkeConfigV2NodePoolArgs", "name");
+            }
+            if ($.version == null) {
+                throw new MissingRequiredPropertyException("ClusterGkeConfigV2NodePoolArgs", "version");
+            }
             return $;
         }
     }

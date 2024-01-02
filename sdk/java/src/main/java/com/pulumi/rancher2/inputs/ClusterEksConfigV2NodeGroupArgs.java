@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.inputs.ClusterEksConfigV2NodeGroupLaunchTemplateArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -778,7 +779,9 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         public ClusterEksConfigV2NodeGroupArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("ClusterEksConfigV2NodeGroupArgs", "name");
+            }
             return $;
         }
     }

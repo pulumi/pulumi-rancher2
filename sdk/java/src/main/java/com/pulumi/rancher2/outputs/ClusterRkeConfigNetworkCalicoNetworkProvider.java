@@ -44,6 +44,7 @@ public final class ClusterRkeConfigNetworkCalicoNetworkProvider {
 
         @CustomType.Setter
         public Builder cloudProvider(@Nullable String cloudProvider) {
+
             this.cloudProvider = cloudProvider;
             return this;
         }

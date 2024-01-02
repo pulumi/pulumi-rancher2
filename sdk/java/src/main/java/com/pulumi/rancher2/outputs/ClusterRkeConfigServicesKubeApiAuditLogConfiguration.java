@@ -115,31 +115,37 @@ public final class ClusterRkeConfigServicesKubeApiAuditLogConfiguration {
 
         @CustomType.Setter
         public Builder format(@Nullable String format) {
+
             this.format = format;
             return this;
         }
         @CustomType.Setter
         public Builder maxAge(@Nullable Integer maxAge) {
+
             this.maxAge = maxAge;
             return this;
         }
         @CustomType.Setter
         public Builder maxBackup(@Nullable Integer maxBackup) {
+
             this.maxBackup = maxBackup;
             return this;
         }
         @CustomType.Setter
         public Builder maxSize(@Nullable Integer maxSize) {
+
             this.maxSize = maxSize;
             return this;
         }
         @CustomType.Setter
         public Builder path(@Nullable String path) {
+
             this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder policy(@Nullable String policy) {
+
             this.policy = policy;
             return this;
         }

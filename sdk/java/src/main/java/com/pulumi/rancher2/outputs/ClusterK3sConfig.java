@@ -59,11 +59,13 @@ public final class ClusterK3sConfig {
 
         @CustomType.Setter
         public Builder upgradeStrategy(@Nullable ClusterK3sConfigUpgradeStrategy upgradeStrategy) {
+
             this.upgradeStrategy = upgradeStrategy;
             return this;
         }
         @CustomType.Setter
         public Builder version(@Nullable String version) {
+
             this.version = version;
             return this;
         }

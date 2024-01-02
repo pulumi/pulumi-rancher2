@@ -5,6 +5,7 @@ package com.pulumi.rancher2;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -347,8 +348,12 @@ public final class CustomUserTokenArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public CustomUserTokenArgs build() {
-            $.password = Objects.requireNonNull($.password, "expected parameter 'password' to be non-null");
-            $.username = Objects.requireNonNull($.username, "expected parameter 'username' to be non-null");
+            if ($.password == null) {
+                throw new MissingRequiredPropertyException("CustomUserTokenArgs", "password");
+            }
+            if ($.username == null) {
+                throw new MissingRequiredPropertyException("CustomUserTokenArgs", "username");
+            }
             return $;
         }
     }

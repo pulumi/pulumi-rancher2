@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProvider;
 import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProvider;
 import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProvider;
@@ -78,31 +79,39 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloud
 
         @CustomType.Setter
         public Builder awsCloudProvider(@Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProvider awsCloudProvider) {
+
             this.awsCloudProvider = awsCloudProvider;
             return this;
         }
         @CustomType.Setter
         public Builder azureCloudProvider(@Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProvider azureCloudProvider) {
+
             this.azureCloudProvider = azureCloudProvider;
             return this;
         }
         @CustomType.Setter
         public Builder customCloudProvider(String customCloudProvider) {
-            this.customCloudProvider = Objects.requireNonNull(customCloudProvider);
+            if (customCloudProvider == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvider", "customCloudProvider");
+            }
+            this.customCloudProvider = customCloudProvider;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder openstackCloudProvider(@Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProvider openstackCloudProvider) {
+
             this.openstackCloudProvider = openstackCloudProvider;
             return this;
         }
         @CustomType.Setter
         public Builder vsphereCloudProvider(@Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProvider vsphereCloudProvider) {
+
             this.vsphereCloudProvider = vsphereCloudProvider;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.rancher2;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.inputs.ClusterV2AgentEnvVarArgs;
 import com.pulumi.rancher2.inputs.ClusterV2ClusterAgentDeploymentCustomizationArgs;
 import com.pulumi.rancher2.inputs.ClusterV2FleetAgentDeploymentCustomizationArgs;
@@ -633,7 +634,9 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         public ClusterV2Args build() {
-            $.kubernetesVersion = Objects.requireNonNull($.kubernetesVersion, "expected parameter 'kubernetesVersion' to be non-null");
+            if ($.kubernetesVersion == null) {
+                throw new MissingRequiredPropertyException("ClusterV2Args", "kubernetesVersion");
+            }
             return $;
         }
     }

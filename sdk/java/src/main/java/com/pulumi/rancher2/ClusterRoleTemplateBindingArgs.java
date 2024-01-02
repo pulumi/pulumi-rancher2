@@ -5,6 +5,7 @@ package com.pulumi.rancher2;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -382,8 +383,12 @@ public final class ClusterRoleTemplateBindingArgs extends com.pulumi.resources.R
         }
 
         public ClusterRoleTemplateBindingArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
-            $.roleTemplateId = Objects.requireNonNull($.roleTemplateId, "expected parameter 'roleTemplateId' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("ClusterRoleTemplateBindingArgs", "clusterId");
+            }
+            if ($.roleTemplateId == null) {
+                throw new MissingRequiredPropertyException("ClusterRoleTemplateBindingArgs", "roleTemplateId");
+            }
             return $;
         }
     }

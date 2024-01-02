@@ -43,11 +43,13 @@ public final class GetClusterV2RkeConfigMachineSelectorConfig {
 
         @CustomType.Setter
         public Builder config(@Nullable String config) {
+
             this.config = config;
             return this;
         }
         @CustomType.Setter
         public Builder machineLabelSelector(@Nullable GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector machineLabelSelector) {
+
             this.machineLabelSelector = machineLabelSelector;
             return this;
         }

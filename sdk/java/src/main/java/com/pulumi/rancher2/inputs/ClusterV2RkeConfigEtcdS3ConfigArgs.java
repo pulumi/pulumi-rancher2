@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -299,8 +300,12 @@ public final class ClusterV2RkeConfigEtcdS3ConfigArgs extends com.pulumi.resourc
         }
 
         public ClusterV2RkeConfigEtcdS3ConfigArgs build() {
-            $.bucket = Objects.requireNonNull($.bucket, "expected parameter 'bucket' to be non-null");
-            $.endpoint = Objects.requireNonNull($.endpoint, "expected parameter 'endpoint' to be non-null");
+            if ($.bucket == null) {
+                throw new MissingRequiredPropertyException("ClusterV2RkeConfigEtcdS3ConfigArgs", "bucket");
+            }
+            if ($.endpoint == null) {
+                throw new MissingRequiredPropertyException("ClusterV2RkeConfigEtcdS3ConfigArgs", "endpoint");
+            }
             return $;
         }
     }

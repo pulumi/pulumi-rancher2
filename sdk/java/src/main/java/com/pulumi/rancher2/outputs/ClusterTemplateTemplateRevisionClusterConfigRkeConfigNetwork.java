@@ -94,41 +94,49 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork 
 
         @CustomType.Setter
         public Builder aciNetworkProvider(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProvider aciNetworkProvider) {
+
             this.aciNetworkProvider = aciNetworkProvider;
             return this;
         }
         @CustomType.Setter
         public Builder calicoNetworkProvider(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProvider calicoNetworkProvider) {
+
             this.calicoNetworkProvider = calicoNetworkProvider;
             return this;
         }
         @CustomType.Setter
         public Builder canalNetworkProvider(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider canalNetworkProvider) {
+
             this.canalNetworkProvider = canalNetworkProvider;
             return this;
         }
         @CustomType.Setter
         public Builder flannelNetworkProvider(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider flannelNetworkProvider) {
+
             this.flannelNetworkProvider = flannelNetworkProvider;
             return this;
         }
         @CustomType.Setter
         public Builder mtu(@Nullable Integer mtu) {
+
             this.mtu = mtu;
             return this;
         }
         @CustomType.Setter
         public Builder options(@Nullable Map<String,Object> options) {
+
             this.options = options;
             return this;
         }
         @CustomType.Setter
         public Builder plugin(@Nullable String plugin) {
+
             this.plugin = plugin;
             return this;
         }
         @CustomType.Setter
         public Builder tolerations(@Nullable List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkToleration> tolerations) {
+
             this.tolerations = tolerations;
             return this;
         }
@@ -137,6 +145,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork 
         }
         @CustomType.Setter
         public Builder weaveNetworkProvider(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider weaveNetworkProvider) {
+
             this.weaveNetworkProvider = weaveNetworkProvider;
             return this;
         }

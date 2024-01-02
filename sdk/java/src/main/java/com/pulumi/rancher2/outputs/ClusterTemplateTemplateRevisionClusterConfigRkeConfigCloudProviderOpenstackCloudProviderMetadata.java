@@ -43,11 +43,13 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
 
         @CustomType.Setter
         public Builder requestTimeout(@Nullable Integer requestTimeout) {
+
             this.requestTimeout = requestTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder searchOrder(@Nullable String searchOrder) {
+
             this.searchOrder = searchOrder;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.rancher2;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.inputs.ProjectAlertRuleMetricRuleArgs;
 import com.pulumi.rancher2.inputs.ProjectAlertRulePodRuleArgs;
 import com.pulumi.rancher2.inputs.ProjectAlertRuleWorkloadRuleArgs;
@@ -527,8 +528,12 @@ public final class ProjectAlertRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         public ProjectAlertRuleArgs build() {
-            $.groupId = Objects.requireNonNull($.groupId, "expected parameter 'groupId' to be non-null");
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
+            if ($.groupId == null) {
+                throw new MissingRequiredPropertyException("ProjectAlertRuleArgs", "groupId");
+            }
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("ProjectAlertRuleArgs", "projectId");
+            }
             return $;
         }
     }

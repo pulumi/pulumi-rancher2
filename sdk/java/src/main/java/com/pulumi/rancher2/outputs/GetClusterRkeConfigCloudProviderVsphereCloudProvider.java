@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterRkeConfigCloudProviderVsphereCloudProviderDisk;
 import com.pulumi.rancher2.outputs.GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobal;
 import com.pulumi.rancher2.outputs.GetClusterRkeConfigCloudProviderVsphereCloudProviderNetwork;
@@ -63,22 +64,34 @@ public final class GetClusterRkeConfigCloudProviderVsphereCloudProvider {
 
         @CustomType.Setter
         public Builder disk(GetClusterRkeConfigCloudProviderVsphereCloudProviderDisk disk) {
-            this.disk = Objects.requireNonNull(disk);
+            if (disk == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderVsphereCloudProvider", "disk");
+            }
+            this.disk = disk;
             return this;
         }
         @CustomType.Setter
         public Builder global(GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobal global) {
-            this.global = Objects.requireNonNull(global);
+            if (global == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderVsphereCloudProvider", "global");
+            }
+            this.global = global;
             return this;
         }
         @CustomType.Setter
         public Builder network(GetClusterRkeConfigCloudProviderVsphereCloudProviderNetwork network) {
-            this.network = Objects.requireNonNull(network);
+            if (network == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderVsphereCloudProvider", "network");
+            }
+            this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder virtualCenters(List<GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter> virtualCenters) {
-            this.virtualCenters = Objects.requireNonNull(virtualCenters);
+            if (virtualCenters == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderVsphereCloudProvider", "virtualCenters");
+            }
+            this.virtualCenters = virtualCenters;
             return this;
         }
         public Builder virtualCenters(GetClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter... virtualCenters) {
@@ -86,7 +99,10 @@ public final class GetClusterRkeConfigCloudProviderVsphereCloudProvider {
         }
         @CustomType.Setter
         public Builder workspace(GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace workspace) {
-            this.workspace = Objects.requireNonNull(workspace);
+            if (workspace == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderVsphereCloudProvider", "workspace");
+            }
+            this.workspace = workspace;
             return this;
         }
         public GetClusterRkeConfigCloudProviderVsphereCloudProvider build() {

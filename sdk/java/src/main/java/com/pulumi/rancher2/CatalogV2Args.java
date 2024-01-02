@@ -5,6 +5,7 @@ package com.pulumi.rancher2;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -560,7 +561,9 @@ public final class CatalogV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         public CatalogV2Args build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("CatalogV2Args", "clusterId");
+            }
             return $;
         }
     }

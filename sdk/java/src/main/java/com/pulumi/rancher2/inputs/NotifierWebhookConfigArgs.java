@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -113,7 +114,9 @@ public final class NotifierWebhookConfigArgs extends com.pulumi.resources.Resour
         }
 
         public NotifierWebhookConfigArgs build() {
-            $.url = Objects.requireNonNull($.url, "expected parameter 'url' to be non-null");
+            if ($.url == null) {
+                throw new MissingRequiredPropertyException("NotifierWebhookConfigArgs", "url");
+            }
             return $;
         }
     }

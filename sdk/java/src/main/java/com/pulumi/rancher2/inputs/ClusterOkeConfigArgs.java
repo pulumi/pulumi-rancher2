@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -1225,15 +1226,33 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         public ClusterOkeConfigArgs build() {
-            $.compartmentId = Objects.requireNonNull($.compartmentId, "expected parameter 'compartmentId' to be non-null");
-            $.fingerprint = Objects.requireNonNull($.fingerprint, "expected parameter 'fingerprint' to be non-null");
-            $.kubernetesVersion = Objects.requireNonNull($.kubernetesVersion, "expected parameter 'kubernetesVersion' to be non-null");
-            $.nodeImage = Objects.requireNonNull($.nodeImage, "expected parameter 'nodeImage' to be non-null");
-            $.nodeShape = Objects.requireNonNull($.nodeShape, "expected parameter 'nodeShape' to be non-null");
-            $.privateKeyContents = Objects.requireNonNull($.privateKeyContents, "expected parameter 'privateKeyContents' to be non-null");
-            $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");
-            $.tenancyId = Objects.requireNonNull($.tenancyId, "expected parameter 'tenancyId' to be non-null");
-            $.userOcid = Objects.requireNonNull($.userOcid, "expected parameter 'userOcid' to be non-null");
+            if ($.compartmentId == null) {
+                throw new MissingRequiredPropertyException("ClusterOkeConfigArgs", "compartmentId");
+            }
+            if ($.fingerprint == null) {
+                throw new MissingRequiredPropertyException("ClusterOkeConfigArgs", "fingerprint");
+            }
+            if ($.kubernetesVersion == null) {
+                throw new MissingRequiredPropertyException("ClusterOkeConfigArgs", "kubernetesVersion");
+            }
+            if ($.nodeImage == null) {
+                throw new MissingRequiredPropertyException("ClusterOkeConfigArgs", "nodeImage");
+            }
+            if ($.nodeShape == null) {
+                throw new MissingRequiredPropertyException("ClusterOkeConfigArgs", "nodeShape");
+            }
+            if ($.privateKeyContents == null) {
+                throw new MissingRequiredPropertyException("ClusterOkeConfigArgs", "privateKeyContents");
+            }
+            if ($.region == null) {
+                throw new MissingRequiredPropertyException("ClusterOkeConfigArgs", "region");
+            }
+            if ($.tenancyId == null) {
+                throw new MissingRequiredPropertyException("ClusterOkeConfigArgs", "tenancyId");
+            }
+            if ($.userOcid == null) {
+                throw new MissingRequiredPropertyException("ClusterOkeConfigArgs", "userOcid");
+            }
             return $;
         }
     }

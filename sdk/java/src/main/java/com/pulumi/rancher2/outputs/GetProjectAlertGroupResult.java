@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetProjectAlertGroupRecipient;
 import java.lang.Integer;
 import java.lang.Object;
@@ -157,47 +158,74 @@ public final class GetProjectAlertGroupResult {
 
         @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
-            this.annotations = Objects.requireNonNull(annotations);
+            if (annotations == null) {
+              throw new MissingRequiredPropertyException("GetProjectAlertGroupResult", "annotations");
+            }
+            this.annotations = annotations;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetProjectAlertGroupResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder groupIntervalSeconds(Integer groupIntervalSeconds) {
-            this.groupIntervalSeconds = Objects.requireNonNull(groupIntervalSeconds);
+            if (groupIntervalSeconds == null) {
+              throw new MissingRequiredPropertyException("GetProjectAlertGroupResult", "groupIntervalSeconds");
+            }
+            this.groupIntervalSeconds = groupIntervalSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder groupWaitSeconds(Integer groupWaitSeconds) {
-            this.groupWaitSeconds = Objects.requireNonNull(groupWaitSeconds);
+            if (groupWaitSeconds == null) {
+              throw new MissingRequiredPropertyException("GetProjectAlertGroupResult", "groupWaitSeconds");
+            }
+            this.groupWaitSeconds = groupWaitSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetProjectAlertGroupResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetProjectAlertGroupResult", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetProjectAlertGroupResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetProjectAlertGroupResult", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder recipients(List<GetProjectAlertGroupRecipient> recipients) {
-            this.recipients = Objects.requireNonNull(recipients);
+            if (recipients == null) {
+              throw new MissingRequiredPropertyException("GetProjectAlertGroupResult", "recipients");
+            }
+            this.recipients = recipients;
             return this;
         }
         public Builder recipients(GetProjectAlertGroupRecipient... recipients) {
@@ -205,7 +233,10 @@ public final class GetProjectAlertGroupResult {
         }
         @CustomType.Setter
         public Builder repeatIntervalSeconds(Integer repeatIntervalSeconds) {
-            this.repeatIntervalSeconds = Objects.requireNonNull(repeatIntervalSeconds);
+            if (repeatIntervalSeconds == null) {
+              throw new MissingRequiredPropertyException("GetProjectAlertGroupResult", "repeatIntervalSeconds");
+            }
+            this.repeatIntervalSeconds = repeatIntervalSeconds;
             return this;
         }
         public GetProjectAlertGroupResult build() {

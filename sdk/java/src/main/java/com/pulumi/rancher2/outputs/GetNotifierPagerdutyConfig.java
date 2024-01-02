@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -42,12 +43,16 @@ public final class GetNotifierPagerdutyConfig {
 
         @CustomType.Setter
         public Builder proxyUrl(@Nullable String proxyUrl) {
+
             this.proxyUrl = proxyUrl;
             return this;
         }
         @CustomType.Setter
         public Builder serviceKey(String serviceKey) {
-            this.serviceKey = Objects.requireNonNull(serviceKey);
+            if (serviceKey == null) {
+              throw new MissingRequiredPropertyException("GetNotifierPagerdutyConfig", "serviceKey");
+            }
+            this.serviceKey = serviceKey;
             return this;
         }
         public GetNotifierPagerdutyConfig build() {

@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetGlobalRoleRule;
 import java.lang.Boolean;
 import java.lang.Object;
@@ -137,42 +138,66 @@ public final class GetGlobalRoleResult {
 
         @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
-            this.annotations = Objects.requireNonNull(annotations);
+            if (annotations == null) {
+              throw new MissingRequiredPropertyException("GetGlobalRoleResult", "annotations");
+            }
+            this.annotations = annotations;
             return this;
         }
         @CustomType.Setter
         public Builder builtin(Boolean builtin) {
-            this.builtin = Objects.requireNonNull(builtin);
+            if (builtin == null) {
+              throw new MissingRequiredPropertyException("GetGlobalRoleResult", "builtin");
+            }
+            this.builtin = builtin;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetGlobalRoleResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGlobalRoleResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetGlobalRoleResult", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetGlobalRoleResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder newUserDefault(Boolean newUserDefault) {
-            this.newUserDefault = Objects.requireNonNull(newUserDefault);
+            if (newUserDefault == null) {
+              throw new MissingRequiredPropertyException("GetGlobalRoleResult", "newUserDefault");
+            }
+            this.newUserDefault = newUserDefault;
             return this;
         }
         @CustomType.Setter
         public Builder rules(List<GetGlobalRoleRule> rules) {
-            this.rules = Objects.requireNonNull(rules);
+            if (rules == null) {
+              throw new MissingRequiredPropertyException("GetGlobalRoleResult", "rules");
+            }
+            this.rules = rules;
             return this;
         }
         public Builder rules(GetGlobalRoleRule... rules) {

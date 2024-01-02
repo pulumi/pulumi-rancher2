@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -61,26 +62,35 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonit
 
         @CustomType.Setter
         public Builder effect(@Nullable String effect) {
+
             this.effect = effect;
             return this;
         }
         @CustomType.Setter
         public Builder key(String key) {
-            this.key = Objects.requireNonNull(key);
+            if (key == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringToleration", "key");
+            }
+            this.key = key;
             return this;
         }
         @CustomType.Setter
         public Builder operator(@Nullable String operator) {
+
             this.operator = operator;
             return this;
         }
         @CustomType.Setter
         public Builder seconds(Integer seconds) {
-            this.seconds = Objects.requireNonNull(seconds);
+            if (seconds == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringToleration", "seconds");
+            }
+            this.seconds = seconds;
             return this;
         }
         @CustomType.Setter
         public Builder value(@Nullable String value) {
+
             this.value = value;
             return this;
         }

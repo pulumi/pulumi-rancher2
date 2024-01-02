@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterRkeConfigNetworkAciNetworkProvider;
 import com.pulumi.rancher2.outputs.GetClusterRkeConfigNetworkCalicoNetworkProvider;
 import com.pulumi.rancher2.outputs.GetClusterRkeConfigNetworkCanalNetworkProvider;
@@ -94,41 +95,53 @@ public final class GetClusterRkeConfigNetwork {
 
         @CustomType.Setter
         public Builder aciNetworkProvider(@Nullable GetClusterRkeConfigNetworkAciNetworkProvider aciNetworkProvider) {
+
             this.aciNetworkProvider = aciNetworkProvider;
             return this;
         }
         @CustomType.Setter
         public Builder calicoNetworkProvider(@Nullable GetClusterRkeConfigNetworkCalicoNetworkProvider calicoNetworkProvider) {
+
             this.calicoNetworkProvider = calicoNetworkProvider;
             return this;
         }
         @CustomType.Setter
         public Builder canalNetworkProvider(@Nullable GetClusterRkeConfigNetworkCanalNetworkProvider canalNetworkProvider) {
+
             this.canalNetworkProvider = canalNetworkProvider;
             return this;
         }
         @CustomType.Setter
         public Builder flannelNetworkProvider(@Nullable GetClusterRkeConfigNetworkFlannelNetworkProvider flannelNetworkProvider) {
+
             this.flannelNetworkProvider = flannelNetworkProvider;
             return this;
         }
         @CustomType.Setter
         public Builder mtu(@Nullable Integer mtu) {
+
             this.mtu = mtu;
             return this;
         }
         @CustomType.Setter
         public Builder options(Map<String,Object> options) {
-            this.options = Objects.requireNonNull(options);
+            if (options == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigNetwork", "options");
+            }
+            this.options = options;
             return this;
         }
         @CustomType.Setter
         public Builder plugin(String plugin) {
-            this.plugin = Objects.requireNonNull(plugin);
+            if (plugin == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigNetwork", "plugin");
+            }
+            this.plugin = plugin;
             return this;
         }
         @CustomType.Setter
         public Builder tolerations(@Nullable List<GetClusterRkeConfigNetworkToleration> tolerations) {
+
             this.tolerations = tolerations;
             return this;
         }
@@ -137,6 +150,7 @@ public final class GetClusterRkeConfigNetwork {
         }
         @CustomType.Setter
         public Builder weaveNetworkProvider(@Nullable GetClusterRkeConfigNetworkWeaveNetworkProvider weaveNetworkProvider) {
+
             this.weaveNetworkProvider = weaveNetworkProvider;
             return this;
         }

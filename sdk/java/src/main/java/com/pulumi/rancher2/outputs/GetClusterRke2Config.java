@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterRke2ConfigUpgradeStrategy;
 import java.lang.String;
 import java.util.Objects;
@@ -41,12 +42,18 @@ public final class GetClusterRke2Config {
 
         @CustomType.Setter
         public Builder upgradeStrategy(GetClusterRke2ConfigUpgradeStrategy upgradeStrategy) {
-            this.upgradeStrategy = Objects.requireNonNull(upgradeStrategy);
+            if (upgradeStrategy == null) {
+              throw new MissingRequiredPropertyException("GetClusterRke2Config", "upgradeStrategy");
+            }
+            this.upgradeStrategy = upgradeStrategy;
             return this;
         }
         @CustomType.Setter
         public Builder version(String version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetClusterRke2Config", "version");
+            }
+            this.version = version;
             return this;
         }
         public GetClusterRke2Config build() {
