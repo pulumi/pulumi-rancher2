@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.inputs.ClusterGkeConfigV2ClusterAddonsArgs;
 import com.pulumi.rancher2.inputs.ClusterGkeConfigV2IpAllocationPolicyArgs;
 import com.pulumi.rancher2.inputs.ClusterGkeConfigV2MasterAuthorizedNetworksConfigArgs;
@@ -919,9 +920,15 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         public ClusterGkeConfigV2Args build() {
-            $.googleCredentialSecret = Objects.requireNonNull($.googleCredentialSecret, "expected parameter 'googleCredentialSecret' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
+            if ($.googleCredentialSecret == null) {
+                throw new MissingRequiredPropertyException("ClusterGkeConfigV2Args", "googleCredentialSecret");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("ClusterGkeConfigV2Args", "name");
+            }
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("ClusterGkeConfigV2Args", "projectId");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -74,6 +75,7 @@ public final class ClusterV2RkeConfigRegistriesMirror {
 
         @CustomType.Setter
         public Builder endpoints(@Nullable List<String> endpoints) {
+
             this.endpoints = endpoints;
             return this;
         }
@@ -82,11 +84,15 @@ public final class ClusterV2RkeConfigRegistriesMirror {
         }
         @CustomType.Setter
         public Builder hostname(String hostname) {
-            this.hostname = Objects.requireNonNull(hostname);
+            if (hostname == null) {
+              throw new MissingRequiredPropertyException("ClusterV2RkeConfigRegistriesMirror", "hostname");
+            }
+            this.hostname = hostname;
             return this;
         }
         @CustomType.Setter
         public Builder rewrites(@Nullable Map<String,Object> rewrites) {
+
             this.rewrites = rewrites;
             return this;
         }

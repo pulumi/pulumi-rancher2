@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,8 +151,12 @@ public final class CloudCredentialAmazonec2CredentialConfigArgs extends com.pulu
         }
 
         public CloudCredentialAmazonec2CredentialConfigArgs build() {
-            $.accessKey = Objects.requireNonNull($.accessKey, "expected parameter 'accessKey' to be non-null");
-            $.secretKey = Objects.requireNonNull($.secretKey, "expected parameter 'secretKey' to be non-null");
+            if ($.accessKey == null) {
+                throw new MissingRequiredPropertyException("CloudCredentialAmazonec2CredentialConfigArgs", "accessKey");
+            }
+            if ($.secretKey == null) {
+                throw new MissingRequiredPropertyException("CloudCredentialAmazonec2CredentialConfigArgs", "secretKey");
+            }
             return $;
         }
     }

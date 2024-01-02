@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -147,6 +148,7 @@ public final class GetClusterAksConfigV2NodePool {
 
         @CustomType.Setter
         public Builder availabilityZones(@Nullable List<String> availabilityZones) {
+
             this.availabilityZones = availabilityZones;
             return this;
         }
@@ -155,72 +157,92 @@ public final class GetClusterAksConfigV2NodePool {
         }
         @CustomType.Setter
         public Builder count(@Nullable Integer count) {
+
             this.count = count;
             return this;
         }
         @CustomType.Setter
         public Builder enableAutoScaling(@Nullable Boolean enableAutoScaling) {
+
             this.enableAutoScaling = enableAutoScaling;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetClusterAksConfigV2NodePool", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder maxCount(@Nullable Integer maxCount) {
+
             this.maxCount = maxCount;
             return this;
         }
         @CustomType.Setter
         public Builder maxPods(@Nullable Integer maxPods) {
+
             this.maxPods = maxPods;
             return this;
         }
         @CustomType.Setter
         public Builder maxSurge(@Nullable String maxSurge) {
+
             this.maxSurge = maxSurge;
             return this;
         }
         @CustomType.Setter
         public Builder minCount(@Nullable Integer minCount) {
+
             this.minCount = minCount;
             return this;
         }
         @CustomType.Setter
         public Builder mode(@Nullable String mode) {
+
             this.mode = mode;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetClusterAksConfigV2NodePool", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder orchestratorVersion(@Nullable String orchestratorVersion) {
+
             this.orchestratorVersion = orchestratorVersion;
             return this;
         }
         @CustomType.Setter
         public Builder osDiskSizeGb(@Nullable Integer osDiskSizeGb) {
+
             this.osDiskSizeGb = osDiskSizeGb;
             return this;
         }
         @CustomType.Setter
         public Builder osDiskType(@Nullable String osDiskType) {
+
             this.osDiskType = osDiskType;
             return this;
         }
         @CustomType.Setter
         public Builder osType(@Nullable String osType) {
+
             this.osType = osType;
             return this;
         }
         @CustomType.Setter
         public Builder taints(List<String> taints) {
-            this.taints = Objects.requireNonNull(taints);
+            if (taints == null) {
+              throw new MissingRequiredPropertyException("GetClusterAksConfigV2NodePool", "taints");
+            }
+            this.taints = taints;
             return this;
         }
         public Builder taints(String... taints) {
@@ -228,7 +250,10 @@ public final class GetClusterAksConfigV2NodePool {
         }
         @CustomType.Setter
         public Builder vmSize(String vmSize) {
-            this.vmSize = Objects.requireNonNull(vmSize);
+            if (vmSize == null) {
+              throw new MissingRequiredPropertyException("GetClusterAksConfigV2NodePool", "vmSize");
+            }
+            this.vmSize = vmSize;
             return this;
         }
         public GetClusterAksConfigV2NodePool build() {

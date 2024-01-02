@@ -5,6 +5,7 @@ package com.pulumi.rancher2;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.inputs.RegistryRegistryArgs;
 import java.lang.Object;
 import java.lang.String;
@@ -312,8 +313,12 @@ public final class RegistryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RegistryArgs build() {
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
-            $.registries = Objects.requireNonNull($.registries, "expected parameter 'registries' to be non-null");
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("RegistryArgs", "projectId");
+            }
+            if ($.registries == null) {
+                throw new MissingRequiredPropertyException("RegistryArgs", "registries");
+            }
             return $;
         }
     }

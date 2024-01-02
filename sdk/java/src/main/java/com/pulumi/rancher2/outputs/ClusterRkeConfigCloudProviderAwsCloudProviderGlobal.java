@@ -171,51 +171,61 @@ public final class ClusterRkeConfigCloudProviderAwsCloudProviderGlobal {
 
         @CustomType.Setter
         public Builder disableSecurityGroupIngress(@Nullable Boolean disableSecurityGroupIngress) {
+
             this.disableSecurityGroupIngress = disableSecurityGroupIngress;
             return this;
         }
         @CustomType.Setter
         public Builder disableStrictZoneCheck(@Nullable Boolean disableStrictZoneCheck) {
+
             this.disableStrictZoneCheck = disableStrictZoneCheck;
             return this;
         }
         @CustomType.Setter
         public Builder elbSecurityGroup(@Nullable String elbSecurityGroup) {
+
             this.elbSecurityGroup = elbSecurityGroup;
             return this;
         }
         @CustomType.Setter
         public Builder kubernetesClusterId(@Nullable String kubernetesClusterId) {
+
             this.kubernetesClusterId = kubernetesClusterId;
             return this;
         }
         @CustomType.Setter
         public Builder kubernetesClusterTag(@Nullable String kubernetesClusterTag) {
+
             this.kubernetesClusterTag = kubernetesClusterTag;
             return this;
         }
         @CustomType.Setter
         public Builder roleArn(@Nullable String roleArn) {
+
             this.roleArn = roleArn;
             return this;
         }
         @CustomType.Setter
         public Builder routeTableId(@Nullable String routeTableId) {
+
             this.routeTableId = routeTableId;
             return this;
         }
         @CustomType.Setter
         public Builder subnetId(@Nullable String subnetId) {
+
             this.subnetId = subnetId;
             return this;
         }
         @CustomType.Setter
         public Builder vpc(@Nullable String vpc) {
+
             this.vpc = vpc;
             return this;
         }
         @CustomType.Setter
         public Builder zone(@Nullable String zone) {
+
             this.zone = zone;
             return this;
         }

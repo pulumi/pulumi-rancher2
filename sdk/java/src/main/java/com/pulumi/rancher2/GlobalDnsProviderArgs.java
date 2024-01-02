@@ -5,6 +5,7 @@ package com.pulumi.rancher2;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.inputs.GlobalDnsProviderAlidnsConfigArgs;
 import com.pulumi.rancher2.inputs.GlobalDnsProviderCloudflareConfigArgs;
 import com.pulumi.rancher2.inputs.GlobalDnsProviderRoute53ConfigArgs;
@@ -243,7 +244,9 @@ public final class GlobalDnsProviderArgs extends com.pulumi.resources.ResourceAr
         }
 
         public GlobalDnsProviderArgs build() {
-            $.rootDomain = Objects.requireNonNull($.rootDomain, "expected parameter 'rootDomain' to be non-null");
+            if ($.rootDomain == null) {
+                throw new MissingRequiredPropertyException("GlobalDnsProviderArgs", "rootDomain");
+            }
             return $;
         }
     }

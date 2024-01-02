@@ -72,26 +72,31 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitori
 
         @CustomType.Setter
         public Builder nodeSelector(@Nullable Map<String,Object> nodeSelector) {
+
             this.nodeSelector = nodeSelector;
             return this;
         }
         @CustomType.Setter
         public Builder options(@Nullable Map<String,Object> options) {
+
             this.options = options;
             return this;
         }
         @CustomType.Setter
         public Builder provider(@Nullable String provider) {
+
             this.provider = provider;
             return this;
         }
         @CustomType.Setter
         public Builder replicas(@Nullable Integer replicas) {
+
             this.replicas = replicas;
             return this;
         }
         @CustomType.Setter
         public Builder tolerations(@Nullable List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringToleration> tolerations) {
+
             this.tolerations = tolerations;
             return this;
         }
@@ -100,6 +105,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitori
         }
         @CustomType.Setter
         public Builder updateStrategy(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy updateStrategy) {
+
             this.updateStrategy = updateStrategy;
             return this;
         }

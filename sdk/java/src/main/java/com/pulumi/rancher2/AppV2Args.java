@@ -5,6 +5,7 @@ package com.pulumi.rancher2;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -597,10 +598,18 @@ public final class AppV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         public AppV2Args build() {
-            $.chartName = Objects.requireNonNull($.chartName, "expected parameter 'chartName' to be non-null");
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
-            $.namespace = Objects.requireNonNull($.namespace, "expected parameter 'namespace' to be non-null");
-            $.repoName = Objects.requireNonNull($.repoName, "expected parameter 'repoName' to be non-null");
+            if ($.chartName == null) {
+                throw new MissingRequiredPropertyException("AppV2Args", "chartName");
+            }
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("AppV2Args", "clusterId");
+            }
+            if ($.namespace == null) {
+                throw new MissingRequiredPropertyException("AppV2Args", "namespace");
+            }
+            if ($.repoName == null) {
+                throw new MissingRequiredPropertyException("AppV2Args", "repoName");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterRkeConfigServicesEtcdBackupConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -134,26 +135,39 @@ public final class GetClusterRkeConfigServicesEtcd {
 
         @CustomType.Setter
         public Builder backupConfig(GetClusterRkeConfigServicesEtcdBackupConfig backupConfig) {
-            this.backupConfig = Objects.requireNonNull(backupConfig);
+            if (backupConfig == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigServicesEtcd", "backupConfig");
+            }
+            this.backupConfig = backupConfig;
             return this;
         }
         @CustomType.Setter
         public Builder caCert(String caCert) {
-            this.caCert = Objects.requireNonNull(caCert);
+            if (caCert == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigServicesEtcd", "caCert");
+            }
+            this.caCert = caCert;
             return this;
         }
         @CustomType.Setter
         public Builder cert(String cert) {
-            this.cert = Objects.requireNonNull(cert);
+            if (cert == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigServicesEtcd", "cert");
+            }
+            this.cert = cert;
             return this;
         }
         @CustomType.Setter
         public Builder creation(String creation) {
-            this.creation = Objects.requireNonNull(creation);
+            if (creation == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigServicesEtcd", "creation");
+            }
+            this.creation = creation;
             return this;
         }
         @CustomType.Setter
         public Builder externalUrls(@Nullable List<String> externalUrls) {
+
             this.externalUrls = externalUrls;
             return this;
         }
@@ -162,11 +176,15 @@ public final class GetClusterRkeConfigServicesEtcd {
         }
         @CustomType.Setter
         public Builder extraArgs(Map<String,Object> extraArgs) {
-            this.extraArgs = Objects.requireNonNull(extraArgs);
+            if (extraArgs == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigServicesEtcd", "extraArgs");
+            }
+            this.extraArgs = extraArgs;
             return this;
         }
         @CustomType.Setter
         public Builder extraBinds(@Nullable List<String> extraBinds) {
+
             this.extraBinds = extraBinds;
             return this;
         }
@@ -175,6 +193,7 @@ public final class GetClusterRkeConfigServicesEtcd {
         }
         @CustomType.Setter
         public Builder extraEnvs(@Nullable List<String> extraEnvs) {
+
             this.extraEnvs = extraEnvs;
             return this;
         }
@@ -183,36 +202,53 @@ public final class GetClusterRkeConfigServicesEtcd {
         }
         @CustomType.Setter
         public Builder gid(@Nullable Integer gid) {
+
             this.gid = gid;
             return this;
         }
         @CustomType.Setter
         public Builder image(String image) {
-            this.image = Objects.requireNonNull(image);
+            if (image == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigServicesEtcd", "image");
+            }
+            this.image = image;
             return this;
         }
         @CustomType.Setter
         public Builder key(String key) {
-            this.key = Objects.requireNonNull(key);
+            if (key == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigServicesEtcd", "key");
+            }
+            this.key = key;
             return this;
         }
         @CustomType.Setter
         public Builder path(String path) {
-            this.path = Objects.requireNonNull(path);
+            if (path == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigServicesEtcd", "path");
+            }
+            this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder retention(String retention) {
-            this.retention = Objects.requireNonNull(retention);
+            if (retention == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigServicesEtcd", "retention");
+            }
+            this.retention = retention;
             return this;
         }
         @CustomType.Setter
         public Builder snapshot(Boolean snapshot) {
-            this.snapshot = Objects.requireNonNull(snapshot);
+            if (snapshot == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigServicesEtcd", "snapshot");
+            }
+            this.snapshot = snapshot;
             return this;
         }
         @CustomType.Setter
         public Builder uid(@Nullable Integer uid) {
+
             this.uid = uid;
             return this;
         }

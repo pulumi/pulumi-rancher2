@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -46,17 +47,26 @@ public final class GetClusterGkeConfigV2ClusterAddons {
 
         @CustomType.Setter
         public Builder horizontalPodAutoscaling(Boolean horizontalPodAutoscaling) {
-            this.horizontalPodAutoscaling = Objects.requireNonNull(horizontalPodAutoscaling);
+            if (horizontalPodAutoscaling == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2ClusterAddons", "horizontalPodAutoscaling");
+            }
+            this.horizontalPodAutoscaling = horizontalPodAutoscaling;
             return this;
         }
         @CustomType.Setter
         public Builder httpLoadBalancing(Boolean httpLoadBalancing) {
-            this.httpLoadBalancing = Objects.requireNonNull(httpLoadBalancing);
+            if (httpLoadBalancing == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2ClusterAddons", "httpLoadBalancing");
+            }
+            this.httpLoadBalancing = httpLoadBalancing;
             return this;
         }
         @CustomType.Setter
         public Builder networkPolicyConfig(Boolean networkPolicyConfig) {
-            this.networkPolicyConfig = Objects.requireNonNull(networkPolicyConfig);
+            if (networkPolicyConfig == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2ClusterAddons", "networkPolicyConfig");
+            }
+            this.networkPolicyConfig = networkPolicyConfig;
             return this;
         }
         public GetClusterGkeConfigV2ClusterAddons build() {

@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -140,67 +141,106 @@ public final class GetClusterClusterRegistrationToken {
 
         @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
-            this.annotations = Objects.requireNonNull(annotations);
+            if (annotations == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterRegistrationToken", "annotations");
+            }
+            this.annotations = annotations;
             return this;
         }
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterRegistrationToken", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder command(String command) {
-            this.command = Objects.requireNonNull(command);
+            if (command == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterRegistrationToken", "command");
+            }
+            this.command = command;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterRegistrationToken", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder insecureCommand(String insecureCommand) {
-            this.insecureCommand = Objects.requireNonNull(insecureCommand);
+            if (insecureCommand == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterRegistrationToken", "insecureCommand");
+            }
+            this.insecureCommand = insecureCommand;
             return this;
         }
         @CustomType.Setter
         public Builder insecureNodeCommand(String insecureNodeCommand) {
-            this.insecureNodeCommand = Objects.requireNonNull(insecureNodeCommand);
+            if (insecureNodeCommand == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterRegistrationToken", "insecureNodeCommand");
+            }
+            this.insecureNodeCommand = insecureNodeCommand;
             return this;
         }
         @CustomType.Setter
         public Builder insecureWindowsNodeCommand(String insecureWindowsNodeCommand) {
-            this.insecureWindowsNodeCommand = Objects.requireNonNull(insecureWindowsNodeCommand);
+            if (insecureWindowsNodeCommand == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterRegistrationToken", "insecureWindowsNodeCommand");
+            }
+            this.insecureWindowsNodeCommand = insecureWindowsNodeCommand;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterRegistrationToken", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder manifestUrl(String manifestUrl) {
-            this.manifestUrl = Objects.requireNonNull(manifestUrl);
+            if (manifestUrl == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterRegistrationToken", "manifestUrl");
+            }
+            this.manifestUrl = manifestUrl;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterRegistrationToken", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nodeCommand(String nodeCommand) {
-            this.nodeCommand = Objects.requireNonNull(nodeCommand);
+            if (nodeCommand == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterRegistrationToken", "nodeCommand");
+            }
+            this.nodeCommand = nodeCommand;
             return this;
         }
         @CustomType.Setter
         public Builder token(String token) {
-            this.token = Objects.requireNonNull(token);
+            if (token == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterRegistrationToken", "token");
+            }
+            this.token = token;
             return this;
         }
         @CustomType.Setter
         public Builder windowsNodeCommand(String windowsNodeCommand) {
-            this.windowsNodeCommand = Objects.requireNonNull(windowsNodeCommand);
+            if (windowsNodeCommand == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterRegistrationToken", "windowsNodeCommand");
+            }
+            this.windowsNodeCommand = windowsNodeCommand;
             return this;
         }
         public GetClusterClusterRegistrationToken build() {

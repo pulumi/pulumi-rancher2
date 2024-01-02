@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -41,7 +42,10 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthe
 
         @CustomType.Setter
         public Builder sans(List<String> sans) {
-            this.sans = Objects.requireNonNull(sans);
+            if (sans == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication", "sans");
+            }
+            this.sans = sans;
             return this;
         }
         public Builder sans(String... sans) {
@@ -49,7 +53,10 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthe
         }
         @CustomType.Setter
         public Builder strategy(String strategy) {
-            this.strategy = Objects.requireNonNull(strategy);
+            if (strategy == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication", "strategy");
+            }
+            this.strategy = strategy;
             return this;
         }
         public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication build() {

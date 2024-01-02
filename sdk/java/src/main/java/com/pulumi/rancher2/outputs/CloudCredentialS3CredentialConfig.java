@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -143,42 +144,54 @@ public final class CloudCredentialS3CredentialConfig {
 
         @CustomType.Setter
         public Builder accessKey(String accessKey) {
-            this.accessKey = Objects.requireNonNull(accessKey);
+            if (accessKey == null) {
+              throw new MissingRequiredPropertyException("CloudCredentialS3CredentialConfig", "accessKey");
+            }
+            this.accessKey = accessKey;
             return this;
         }
         @CustomType.Setter
         public Builder defaultBucket(@Nullable String defaultBucket) {
+
             this.defaultBucket = defaultBucket;
             return this;
         }
         @CustomType.Setter
         public Builder defaultEndpoint(@Nullable String defaultEndpoint) {
+
             this.defaultEndpoint = defaultEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder defaultEndpointCa(@Nullable String defaultEndpointCa) {
+
             this.defaultEndpointCa = defaultEndpointCa;
             return this;
         }
         @CustomType.Setter
         public Builder defaultFolder(@Nullable String defaultFolder) {
+
             this.defaultFolder = defaultFolder;
             return this;
         }
         @CustomType.Setter
         public Builder defaultRegion(@Nullable String defaultRegion) {
+
             this.defaultRegion = defaultRegion;
             return this;
         }
         @CustomType.Setter
         public Builder defaultSkipSslVerify(@Nullable Boolean defaultSkipSslVerify) {
+
             this.defaultSkipSslVerify = defaultSkipSslVerify;
             return this;
         }
         @CustomType.Setter
         public Builder secretKey(String secretKey) {
-            this.secretKey = Objects.requireNonNull(secretKey);
+            if (secretKey == null) {
+              throw new MissingRequiredPropertyException("CloudCredentialS3CredentialConfig", "secretKey");
+            }
+            this.secretKey = secretKey;
             return this;
         }
         public CloudCredentialS3CredentialConfig build() {

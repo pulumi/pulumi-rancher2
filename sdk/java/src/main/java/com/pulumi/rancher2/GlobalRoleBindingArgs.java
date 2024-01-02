@@ -5,6 +5,7 @@ package com.pulumi.rancher2;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -271,7 +272,9 @@ public final class GlobalRoleBindingArgs extends com.pulumi.resources.ResourceAr
         }
 
         public GlobalRoleBindingArgs build() {
-            $.globalRoleId = Objects.requireNonNull($.globalRoleId, "expected parameter 'globalRoleId' to be non-null");
+            if ($.globalRoleId == null) {
+                throw new MissingRequiredPropertyException("GlobalRoleBindingArgs", "globalRoleId");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.rancher2;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -337,9 +338,15 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public CertificateArgs build() {
-            $.certs = Objects.requireNonNull($.certs, "expected parameter 'certs' to be non-null");
-            $.key = Objects.requireNonNull($.key, "expected parameter 'key' to be non-null");
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
+            if ($.certs == null) {
+                throw new MissingRequiredPropertyException("CertificateArgs", "certs");
+            }
+            if ($.key == null) {
+                throw new MissingRequiredPropertyException("CertificateArgs", "key");
+            }
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("CertificateArgs", "projectId");
+            }
             return $;
         }
     }

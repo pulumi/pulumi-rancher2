@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -57,16 +58,23 @@ public final class GetClusterV2RkeConfigEtcdSnapshotRestore {
 
         @CustomType.Setter
         public Builder generation(Integer generation) {
-            this.generation = Objects.requireNonNull(generation);
+            if (generation == null) {
+              throw new MissingRequiredPropertyException("GetClusterV2RkeConfigEtcdSnapshotRestore", "generation");
+            }
+            this.generation = generation;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetClusterV2RkeConfigEtcdSnapshotRestore", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder restoreRkeConfig(@Nullable String restoreRkeConfig) {
+
             this.restoreRkeConfig = restoreRkeConfig;
             return this;
         }

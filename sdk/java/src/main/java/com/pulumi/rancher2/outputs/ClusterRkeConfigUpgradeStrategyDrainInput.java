@@ -101,26 +101,31 @@ public final class ClusterRkeConfigUpgradeStrategyDrainInput {
 
         @CustomType.Setter
         public Builder deleteLocalData(@Nullable Boolean deleteLocalData) {
+
             this.deleteLocalData = deleteLocalData;
             return this;
         }
         @CustomType.Setter
         public Builder force(@Nullable Boolean force) {
+
             this.force = force;
             return this;
         }
         @CustomType.Setter
         public Builder gracePeriod(@Nullable Integer gracePeriod) {
+
             this.gracePeriod = gracePeriod;
             return this;
         }
         @CustomType.Setter
         public Builder ignoreDaemonSets(@Nullable Boolean ignoreDaemonSets) {
+
             this.ignoreDaemonSets = ignoreDaemonSets;
             return this;
         }
         @CustomType.Setter
         public Builder timeout(@Nullable Integer timeout) {
+
             this.timeout = timeout;
             return this;
         }

@@ -44,11 +44,13 @@ public final class GetClusterRkeConfigDnsNodelocal {
 
         @CustomType.Setter
         public Builder ipAddress(@Nullable String ipAddress) {
+
             this.ipAddress = ipAddress;
             return this;
         }
         @CustomType.Setter
         public Builder nodeSelector(@Nullable Map<String,Object> nodeSelector) {
+
             this.nodeSelector = nodeSelector;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class PodSecurityPolicyTemplateRunAsUserRangeArgs extends com.pulum
         }
 
         public PodSecurityPolicyTemplateRunAsUserRangeArgs build() {
-            $.max = Objects.requireNonNull($.max, "expected parameter 'max' to be non-null");
-            $.min = Objects.requireNonNull($.min, "expected parameter 'min' to be non-null");
+            if ($.max == null) {
+                throw new MissingRequiredPropertyException("PodSecurityPolicyTemplateRunAsUserRangeArgs", "max");
+            }
+            if ($.min == null) {
+                throw new MissingRequiredPropertyException("PodSecurityPolicyTemplateRunAsUserRangeArgs", "min");
+            }
             return $;
         }
     }

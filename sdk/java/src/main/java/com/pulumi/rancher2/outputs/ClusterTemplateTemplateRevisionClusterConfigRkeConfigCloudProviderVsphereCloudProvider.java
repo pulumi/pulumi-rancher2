@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDisk;
 import com.pulumi.rancher2.outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobal;
 import com.pulumi.rancher2.outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetwork;
@@ -65,22 +66,28 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
 
         @CustomType.Setter
         public Builder disk(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDisk disk) {
+
             this.disk = disk;
             return this;
         }
         @CustomType.Setter
         public Builder global(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobal global) {
+
             this.global = global;
             return this;
         }
         @CustomType.Setter
         public Builder network(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetwork network) {
+
             this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder virtualCenters(List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenter> virtualCenters) {
-            this.virtualCenters = Objects.requireNonNull(virtualCenters);
+            if (virtualCenters == null) {
+              throw new MissingRequiredPropertyException("ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProvider", "virtualCenters");
+            }
+            this.virtualCenters = virtualCenters;
             return this;
         }
         public Builder virtualCenters(ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenter... virtualCenters) {
@@ -88,7 +95,10 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
         }
         @CustomType.Setter
         public Builder workspace(ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspace workspace) {
-            this.workspace = Objects.requireNonNull(workspace);
+            if (workspace == null) {
+              throw new MissingRequiredPropertyException("ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProvider", "workspace");
+            }
+            this.workspace = workspace;
             return this;
         }
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProvider build() {

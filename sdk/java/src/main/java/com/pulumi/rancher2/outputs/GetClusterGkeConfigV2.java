@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterGkeConfigV2ClusterAddons;
 import com.pulumi.rancher2.outputs.GetClusterGkeConfigV2IpAllocationPolicy;
 import com.pulumi.rancher2.outputs.GetClusterGkeConfigV2MasterAuthorizedNetworksConfig;
@@ -201,52 +202,80 @@ public final class GetClusterGkeConfigV2 {
 
         @CustomType.Setter
         public Builder clusterAddons(GetClusterGkeConfigV2ClusterAddons clusterAddons) {
-            this.clusterAddons = Objects.requireNonNull(clusterAddons);
+            if (clusterAddons == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2", "clusterAddons");
+            }
+            this.clusterAddons = clusterAddons;
             return this;
         }
         @CustomType.Setter
         public Builder clusterIpv4CidrBlock(String clusterIpv4CidrBlock) {
-            this.clusterIpv4CidrBlock = Objects.requireNonNull(clusterIpv4CidrBlock);
+            if (clusterIpv4CidrBlock == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2", "clusterIpv4CidrBlock");
+            }
+            this.clusterIpv4CidrBlock = clusterIpv4CidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder enableKubernetesAlpha(Boolean enableKubernetesAlpha) {
-            this.enableKubernetesAlpha = Objects.requireNonNull(enableKubernetesAlpha);
+            if (enableKubernetesAlpha == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2", "enableKubernetesAlpha");
+            }
+            this.enableKubernetesAlpha = enableKubernetesAlpha;
             return this;
         }
         @CustomType.Setter
         public Builder googleCredentialSecret(String googleCredentialSecret) {
-            this.googleCredentialSecret = Objects.requireNonNull(googleCredentialSecret);
+            if (googleCredentialSecret == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2", "googleCredentialSecret");
+            }
+            this.googleCredentialSecret = googleCredentialSecret;
             return this;
         }
         @CustomType.Setter
         public Builder imported(@Nullable Boolean imported) {
+
             this.imported = imported;
             return this;
         }
         @CustomType.Setter
         public Builder ipAllocationPolicy(GetClusterGkeConfigV2IpAllocationPolicy ipAllocationPolicy) {
-            this.ipAllocationPolicy = Objects.requireNonNull(ipAllocationPolicy);
+            if (ipAllocationPolicy == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2", "ipAllocationPolicy");
+            }
+            this.ipAllocationPolicy = ipAllocationPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder kubernetesVersion(String kubernetesVersion) {
-            this.kubernetesVersion = Objects.requireNonNull(kubernetesVersion);
+            if (kubernetesVersion == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2", "kubernetesVersion");
+            }
+            this.kubernetesVersion = kubernetesVersion;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder locations(List<String> locations) {
-            this.locations = Objects.requireNonNull(locations);
+            if (locations == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2", "locations");
+            }
+            this.locations = locations;
             return this;
         }
         public Builder locations(String... locations) {
@@ -254,42 +283,66 @@ public final class GetClusterGkeConfigV2 {
         }
         @CustomType.Setter
         public Builder loggingService(String loggingService) {
-            this.loggingService = Objects.requireNonNull(loggingService);
+            if (loggingService == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2", "loggingService");
+            }
+            this.loggingService = loggingService;
             return this;
         }
         @CustomType.Setter
         public Builder maintenanceWindow(String maintenanceWindow) {
-            this.maintenanceWindow = Objects.requireNonNull(maintenanceWindow);
+            if (maintenanceWindow == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2", "maintenanceWindow");
+            }
+            this.maintenanceWindow = maintenanceWindow;
             return this;
         }
         @CustomType.Setter
         public Builder masterAuthorizedNetworksConfig(GetClusterGkeConfigV2MasterAuthorizedNetworksConfig masterAuthorizedNetworksConfig) {
-            this.masterAuthorizedNetworksConfig = Objects.requireNonNull(masterAuthorizedNetworksConfig);
+            if (masterAuthorizedNetworksConfig == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2", "masterAuthorizedNetworksConfig");
+            }
+            this.masterAuthorizedNetworksConfig = masterAuthorizedNetworksConfig;
             return this;
         }
         @CustomType.Setter
         public Builder monitoringService(String monitoringService) {
-            this.monitoringService = Objects.requireNonNull(monitoringService);
+            if (monitoringService == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2", "monitoringService");
+            }
+            this.monitoringService = monitoringService;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder network(String network) {
-            this.network = Objects.requireNonNull(network);
+            if (network == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2", "network");
+            }
+            this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder networkPolicyEnabled(Boolean networkPolicyEnabled) {
-            this.networkPolicyEnabled = Objects.requireNonNull(networkPolicyEnabled);
+            if (networkPolicyEnabled == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2", "networkPolicyEnabled");
+            }
+            this.networkPolicyEnabled = networkPolicyEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder nodePools(List<GetClusterGkeConfigV2NodePool> nodePools) {
-            this.nodePools = Objects.requireNonNull(nodePools);
+            if (nodePools == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2", "nodePools");
+            }
+            this.nodePools = nodePools;
             return this;
         }
         public Builder nodePools(GetClusterGkeConfigV2NodePool... nodePools) {
@@ -297,27 +350,42 @@ public final class GetClusterGkeConfigV2 {
         }
         @CustomType.Setter
         public Builder privateClusterConfig(GetClusterGkeConfigV2PrivateClusterConfig privateClusterConfig) {
-            this.privateClusterConfig = Objects.requireNonNull(privateClusterConfig);
+            if (privateClusterConfig == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2", "privateClusterConfig");
+            }
+            this.privateClusterConfig = privateClusterConfig;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder subnetwork(String subnetwork) {
-            this.subnetwork = Objects.requireNonNull(subnetwork);
+            if (subnetwork == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2", "subnetwork");
+            }
+            this.subnetwork = subnetwork;
             return this;
         }
         @CustomType.Setter
         public Builder zone(String zone) {
-            this.zone = Objects.requireNonNull(zone);
+            if (zone == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2", "zone");
+            }
+            this.zone = zone;
             return this;
         }
         public GetClusterGkeConfigV2 build() {

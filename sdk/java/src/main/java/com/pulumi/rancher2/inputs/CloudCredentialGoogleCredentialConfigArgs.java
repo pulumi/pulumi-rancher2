@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class CloudCredentialGoogleCredentialConfigArgs extends com.pulumi.
         }
 
         public CloudCredentialGoogleCredentialConfigArgs build() {
-            $.authEncodedJson = Objects.requireNonNull($.authEncodedJson, "expected parameter 'authEncodedJson' to be non-null");
+            if ($.authEncodedJson == null) {
+                throw new MissingRequiredPropertyException("CloudCredentialGoogleCredentialConfigArgs", "authEncodedJson");
+            }
             return $;
         }
     }

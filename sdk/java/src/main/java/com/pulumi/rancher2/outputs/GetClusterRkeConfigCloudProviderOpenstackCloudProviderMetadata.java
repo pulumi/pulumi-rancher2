@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -41,12 +42,18 @@ public final class GetClusterRkeConfigCloudProviderOpenstackCloudProviderMetadat
 
         @CustomType.Setter
         public Builder requestTimeout(Integer requestTimeout) {
-            this.requestTimeout = Objects.requireNonNull(requestTimeout);
+            if (requestTimeout == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata", "requestTimeout");
+            }
+            this.requestTimeout = requestTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder searchOrder(String searchOrder) {
-            this.searchOrder = Objects.requireNonNull(searchOrder);
+            if (searchOrder == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata", "searchOrder");
+            }
+            this.searchOrder = searchOrder;
             return this;
         }
         public GetClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata build() {

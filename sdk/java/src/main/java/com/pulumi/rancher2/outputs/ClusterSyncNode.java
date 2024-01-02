@@ -257,71 +257,85 @@ public final class ClusterSyncNode {
 
         @CustomType.Setter
         public Builder annotations(@Nullable Map<String,Object> annotations) {
+
             this.annotations = annotations;
             return this;
         }
         @CustomType.Setter
         public Builder capacity(@Nullable Map<String,Object> capacity) {
+
             this.capacity = capacity;
             return this;
         }
         @CustomType.Setter
         public Builder clusterId(@Nullable String clusterId) {
+
             this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder externalIpAddress(@Nullable String externalIpAddress) {
+
             this.externalIpAddress = externalIpAddress;
             return this;
         }
         @CustomType.Setter
         public Builder hostname(@Nullable String hostname) {
+
             this.hostname = hostname;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ipAddress(@Nullable String ipAddress) {
+
             this.ipAddress = ipAddress;
             return this;
         }
         @CustomType.Setter
         public Builder labels(@Nullable Map<String,Object> labels) {
+
             this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nodePoolId(@Nullable String nodePoolId) {
+
             this.nodePoolId = nodePoolId;
             return this;
         }
         @CustomType.Setter
         public Builder nodeTemplateId(@Nullable String nodeTemplateId) {
+
             this.nodeTemplateId = nodeTemplateId;
             return this;
         }
         @CustomType.Setter
         public Builder providerId(@Nullable String providerId) {
+
             this.providerId = providerId;
             return this;
         }
         @CustomType.Setter
         public Builder requestedHostname(@Nullable String requestedHostname) {
+
             this.requestedHostname = requestedHostname;
             return this;
         }
         @CustomType.Setter
         public Builder roles(@Nullable List<String> roles) {
+
             this.roles = roles;
             return this;
         }
@@ -330,11 +344,13 @@ public final class ClusterSyncNode {
         }
         @CustomType.Setter
         public Builder sshUser(@Nullable String sshUser) {
+
             this.sshUser = sshUser;
             return this;
         }
         @CustomType.Setter
         public Builder systemInfo(@Nullable Map<String,Object> systemInfo) {
+
             this.systemInfo = systemInfo;
             return this;
         }

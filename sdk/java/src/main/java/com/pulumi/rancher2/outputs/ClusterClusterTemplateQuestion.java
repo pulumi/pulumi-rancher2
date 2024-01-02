@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -87,22 +88,30 @@ public final class ClusterClusterTemplateQuestion {
 
         @CustomType.Setter("default")
         public Builder default_(String default_) {
-            this.default_ = Objects.requireNonNull(default_);
+            if (default_ == null) {
+              throw new MissingRequiredPropertyException("ClusterClusterTemplateQuestion", "default_");
+            }
+            this.default_ = default_;
             return this;
         }
         @CustomType.Setter
         public Builder required(@Nullable Boolean required) {
+
             this.required = required;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder variable(String variable) {
-            this.variable = Objects.requireNonNull(variable);
+            if (variable == null) {
+              throw new MissingRequiredPropertyException("ClusterClusterTemplateQuestion", "variable");
+            }
+            this.variable = variable;
             return this;
         }
         public ClusterClusterTemplateQuestion build() {

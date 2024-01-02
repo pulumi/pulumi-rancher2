@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -589,181 +590,235 @@ public final class ClusterAksConfig {
 
         @CustomType.Setter
         public Builder aadServerAppSecret(@Nullable String aadServerAppSecret) {
+
             this.aadServerAppSecret = aadServerAppSecret;
             return this;
         }
         @CustomType.Setter
         public Builder aadTenantId(@Nullable String aadTenantId) {
+
             this.aadTenantId = aadTenantId;
             return this;
         }
         @CustomType.Setter
         public Builder addClientAppId(@Nullable String addClientAppId) {
+
             this.addClientAppId = addClientAppId;
             return this;
         }
         @CustomType.Setter
         public Builder addServerAppId(@Nullable String addServerAppId) {
+
             this.addServerAppId = addServerAppId;
             return this;
         }
         @CustomType.Setter
         public Builder adminUsername(@Nullable String adminUsername) {
+
             this.adminUsername = adminUsername;
             return this;
         }
         @CustomType.Setter
         public Builder agentDnsPrefix(String agentDnsPrefix) {
-            this.agentDnsPrefix = Objects.requireNonNull(agentDnsPrefix);
+            if (agentDnsPrefix == null) {
+              throw new MissingRequiredPropertyException("ClusterAksConfig", "agentDnsPrefix");
+            }
+            this.agentDnsPrefix = agentDnsPrefix;
             return this;
         }
         @CustomType.Setter
         public Builder agentOsDiskSize(@Nullable Integer agentOsDiskSize) {
+
             this.agentOsDiskSize = agentOsDiskSize;
             return this;
         }
         @CustomType.Setter
         public Builder agentPoolName(@Nullable String agentPoolName) {
+
             this.agentPoolName = agentPoolName;
             return this;
         }
         @CustomType.Setter
         public Builder agentStorageProfile(@Nullable String agentStorageProfile) {
+
             this.agentStorageProfile = agentStorageProfile;
             return this;
         }
         @CustomType.Setter
         public Builder agentVmSize(@Nullable String agentVmSize) {
+
             this.agentVmSize = agentVmSize;
             return this;
         }
         @CustomType.Setter
         public Builder authBaseUrl(@Nullable String authBaseUrl) {
+
             this.authBaseUrl = authBaseUrl;
             return this;
         }
         @CustomType.Setter
         public Builder baseUrl(@Nullable String baseUrl) {
+
             this.baseUrl = baseUrl;
             return this;
         }
         @CustomType.Setter
         public Builder clientId(String clientId) {
-            this.clientId = Objects.requireNonNull(clientId);
+            if (clientId == null) {
+              throw new MissingRequiredPropertyException("ClusterAksConfig", "clientId");
+            }
+            this.clientId = clientId;
             return this;
         }
         @CustomType.Setter
         public Builder clientSecret(String clientSecret) {
-            this.clientSecret = Objects.requireNonNull(clientSecret);
+            if (clientSecret == null) {
+              throw new MissingRequiredPropertyException("ClusterAksConfig", "clientSecret");
+            }
+            this.clientSecret = clientSecret;
             return this;
         }
         @CustomType.Setter
         public Builder count(@Nullable Integer count) {
+
             this.count = count;
             return this;
         }
         @CustomType.Setter
         public Builder dnsServiceIp(@Nullable String dnsServiceIp) {
+
             this.dnsServiceIp = dnsServiceIp;
             return this;
         }
         @CustomType.Setter
         public Builder dockerBridgeCidr(@Nullable String dockerBridgeCidr) {
+
             this.dockerBridgeCidr = dockerBridgeCidr;
             return this;
         }
         @CustomType.Setter
         public Builder enableHttpApplicationRouting(@Nullable Boolean enableHttpApplicationRouting) {
+
             this.enableHttpApplicationRouting = enableHttpApplicationRouting;
             return this;
         }
         @CustomType.Setter
         public Builder enableMonitoring(@Nullable Boolean enableMonitoring) {
+
             this.enableMonitoring = enableMonitoring;
             return this;
         }
         @CustomType.Setter
         public Builder kubernetesVersion(String kubernetesVersion) {
-            this.kubernetesVersion = Objects.requireNonNull(kubernetesVersion);
+            if (kubernetesVersion == null) {
+              throw new MissingRequiredPropertyException("ClusterAksConfig", "kubernetesVersion");
+            }
+            this.kubernetesVersion = kubernetesVersion;
             return this;
         }
         @CustomType.Setter
         public Builder loadBalancerSku(@Nullable String loadBalancerSku) {
+
             this.loadBalancerSku = loadBalancerSku;
             return this;
         }
         @CustomType.Setter
         public Builder location(@Nullable String location) {
+
             this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder logAnalyticsWorkspace(@Nullable String logAnalyticsWorkspace) {
+
             this.logAnalyticsWorkspace = logAnalyticsWorkspace;
             return this;
         }
         @CustomType.Setter
         public Builder logAnalyticsWorkspaceResourceGroup(@Nullable String logAnalyticsWorkspaceResourceGroup) {
+
             this.logAnalyticsWorkspaceResourceGroup = logAnalyticsWorkspaceResourceGroup;
             return this;
         }
         @CustomType.Setter
         public Builder masterDnsPrefix(String masterDnsPrefix) {
-            this.masterDnsPrefix = Objects.requireNonNull(masterDnsPrefix);
+            if (masterDnsPrefix == null) {
+              throw new MissingRequiredPropertyException("ClusterAksConfig", "masterDnsPrefix");
+            }
+            this.masterDnsPrefix = masterDnsPrefix;
             return this;
         }
         @CustomType.Setter
         public Builder maxPods(@Nullable Integer maxPods) {
+
             this.maxPods = maxPods;
             return this;
         }
         @CustomType.Setter
         public Builder networkPlugin(@Nullable String networkPlugin) {
+
             this.networkPlugin = networkPlugin;
             return this;
         }
         @CustomType.Setter
         public Builder networkPolicy(@Nullable String networkPolicy) {
+
             this.networkPolicy = networkPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder podCidr(@Nullable String podCidr) {
+
             this.podCidr = podCidr;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroup(String resourceGroup) {
-            this.resourceGroup = Objects.requireNonNull(resourceGroup);
+            if (resourceGroup == null) {
+              throw new MissingRequiredPropertyException("ClusterAksConfig", "resourceGroup");
+            }
+            this.resourceGroup = resourceGroup;
             return this;
         }
         @CustomType.Setter
         public Builder serviceCidr(@Nullable String serviceCidr) {
+
             this.serviceCidr = serviceCidr;
             return this;
         }
         @CustomType.Setter
         public Builder sshPublicKeyContents(String sshPublicKeyContents) {
-            this.sshPublicKeyContents = Objects.requireNonNull(sshPublicKeyContents);
+            if (sshPublicKeyContents == null) {
+              throw new MissingRequiredPropertyException("ClusterAksConfig", "sshPublicKeyContents");
+            }
+            this.sshPublicKeyContents = sshPublicKeyContents;
             return this;
         }
         @CustomType.Setter
         public Builder subnet(String subnet) {
-            this.subnet = Objects.requireNonNull(subnet);
+            if (subnet == null) {
+              throw new MissingRequiredPropertyException("ClusterAksConfig", "subnet");
+            }
+            this.subnet = subnet;
             return this;
         }
         @CustomType.Setter
         public Builder subscriptionId(String subscriptionId) {
-            this.subscriptionId = Objects.requireNonNull(subscriptionId);
+            if (subscriptionId == null) {
+              throw new MissingRequiredPropertyException("ClusterAksConfig", "subscriptionId");
+            }
+            this.subscriptionId = subscriptionId;
             return this;
         }
         @CustomType.Setter
         public Builder tag(@Nullable Map<String,Object> tag) {
+
             this.tag = tag;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
+
             this.tags = tags;
             return this;
         }
@@ -772,17 +827,26 @@ public final class ClusterAksConfig {
         }
         @CustomType.Setter
         public Builder tenantId(String tenantId) {
-            this.tenantId = Objects.requireNonNull(tenantId);
+            if (tenantId == null) {
+              throw new MissingRequiredPropertyException("ClusterAksConfig", "tenantId");
+            }
+            this.tenantId = tenantId;
             return this;
         }
         @CustomType.Setter
         public Builder virtualNetwork(String virtualNetwork) {
-            this.virtualNetwork = Objects.requireNonNull(virtualNetwork);
+            if (virtualNetwork == null) {
+              throw new MissingRequiredPropertyException("ClusterAksConfig", "virtualNetwork");
+            }
+            this.virtualNetwork = virtualNetwork;
             return this;
         }
         @CustomType.Setter
         public Builder virtualNetworkResourceGroup(String virtualNetworkResourceGroup) {
-            this.virtualNetworkResourceGroup = Objects.requireNonNull(virtualNetworkResourceGroup);
+            if (virtualNetworkResourceGroup == null) {
+              throw new MissingRequiredPropertyException("ClusterAksConfig", "virtualNetworkResourceGroup");
+            }
+            this.virtualNetworkResourceGroup = virtualNetworkResourceGroup;
             return this;
         }
         public ClusterAksConfig build() {

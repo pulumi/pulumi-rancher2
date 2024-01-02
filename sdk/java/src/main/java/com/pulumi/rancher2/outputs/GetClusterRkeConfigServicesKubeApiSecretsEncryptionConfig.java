@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -43,11 +44,15 @@ public final class GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig {
 
         @CustomType.Setter
         public Builder customConfig(String customConfig) {
-            this.customConfig = Objects.requireNonNull(customConfig);
+            if (customConfig == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig", "customConfig");
+            }
+            this.customConfig = customConfig;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }

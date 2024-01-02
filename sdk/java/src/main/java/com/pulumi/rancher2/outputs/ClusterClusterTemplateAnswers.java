@@ -74,16 +74,19 @@ public final class ClusterClusterTemplateAnswers {
 
         @CustomType.Setter
         public Builder clusterId(@Nullable String clusterId) {
+
             this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(@Nullable String projectId) {
+
             this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder values(@Nullable Map<String,Object> values) {
+
             this.values = values;
             return this;
         }

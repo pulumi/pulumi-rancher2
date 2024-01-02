@@ -42,11 +42,13 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonit
 
         @CustomType.Setter
         public Builder maxSurge(@Nullable Integer maxSurge) {
+
             this.maxSurge = maxSurge;
             return this;
         }
         @CustomType.Setter
         public Builder maxUnavailable(@Nullable Integer maxUnavailable) {
+
             this.maxUnavailable = maxUnavailable;
             return this;
         }

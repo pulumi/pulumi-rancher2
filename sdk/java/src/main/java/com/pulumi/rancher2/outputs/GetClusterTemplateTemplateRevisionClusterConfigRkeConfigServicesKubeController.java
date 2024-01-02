@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -68,16 +69,23 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServi
 
         @CustomType.Setter
         public Builder clusterCidr(String clusterCidr) {
-            this.clusterCidr = Objects.requireNonNull(clusterCidr);
+            if (clusterCidr == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeController", "clusterCidr");
+            }
+            this.clusterCidr = clusterCidr;
             return this;
         }
         @CustomType.Setter
         public Builder extraArgs(Map<String,Object> extraArgs) {
-            this.extraArgs = Objects.requireNonNull(extraArgs);
+            if (extraArgs == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeController", "extraArgs");
+            }
+            this.extraArgs = extraArgs;
             return this;
         }
         @CustomType.Setter
         public Builder extraBinds(@Nullable List<String> extraBinds) {
+
             this.extraBinds = extraBinds;
             return this;
         }
@@ -86,6 +94,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServi
         }
         @CustomType.Setter
         public Builder extraEnvs(@Nullable List<String> extraEnvs) {
+
             this.extraEnvs = extraEnvs;
             return this;
         }
@@ -94,12 +103,18 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServi
         }
         @CustomType.Setter
         public Builder image(String image) {
-            this.image = Objects.requireNonNull(image);
+            if (image == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeController", "image");
+            }
+            this.image = image;
             return this;
         }
         @CustomType.Setter
         public Builder serviceClusterIpRange(String serviceClusterIpRange) {
-            this.serviceClusterIpRange = Objects.requireNonNull(serviceClusterIpRange);
+            if (serviceClusterIpRange == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeController", "serviceClusterIpRange");
+            }
+            this.serviceClusterIpRange = serviceClusterIpRange;
             return this;
         }
         public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeController build() {

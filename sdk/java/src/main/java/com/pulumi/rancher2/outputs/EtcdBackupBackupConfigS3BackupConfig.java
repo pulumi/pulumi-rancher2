@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -128,36 +129,47 @@ public final class EtcdBackupBackupConfigS3BackupConfig {
 
         @CustomType.Setter
         public Builder accessKey(@Nullable String accessKey) {
+
             this.accessKey = accessKey;
             return this;
         }
         @CustomType.Setter
         public Builder bucketName(String bucketName) {
-            this.bucketName = Objects.requireNonNull(bucketName);
+            if (bucketName == null) {
+              throw new MissingRequiredPropertyException("EtcdBackupBackupConfigS3BackupConfig", "bucketName");
+            }
+            this.bucketName = bucketName;
             return this;
         }
         @CustomType.Setter
         public Builder customCa(@Nullable String customCa) {
+
             this.customCa = customCa;
             return this;
         }
         @CustomType.Setter
         public Builder endpoint(String endpoint) {
-            this.endpoint = Objects.requireNonNull(endpoint);
+            if (endpoint == null) {
+              throw new MissingRequiredPropertyException("EtcdBackupBackupConfigS3BackupConfig", "endpoint");
+            }
+            this.endpoint = endpoint;
             return this;
         }
         @CustomType.Setter
         public Builder folder(@Nullable String folder) {
+
             this.folder = folder;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder secretKey(@Nullable String secretKey) {
+
             this.secretKey = secretKey;
             return this;
         }

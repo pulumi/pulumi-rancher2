@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -113,7 +114,9 @@ public final class ClusterAlertRuleEventRuleArgs extends com.pulumi.resources.Re
         }
 
         public ClusterAlertRuleEventRuleArgs build() {
-            $.resourceKind = Objects.requireNonNull($.resourceKind, "expected parameter 'resourceKind' to be non-null");
+            if ($.resourceKind == null) {
+                throw new MissingRequiredPropertyException("ClusterAlertRuleEventRuleArgs", "resourceKind");
+            }
             return $;
         }
     }

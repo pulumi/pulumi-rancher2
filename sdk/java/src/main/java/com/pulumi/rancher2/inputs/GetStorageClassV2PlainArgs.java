@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -90,8 +91,12 @@ public final class GetStorageClassV2PlainArgs extends com.pulumi.resources.Invok
         }
 
         public GetStorageClassV2PlainArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("GetStorageClassV2PlainArgs", "clusterId");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetStorageClassV2PlainArgs", "name");
+            }
             return $;
         }
     }

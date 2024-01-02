@@ -214,66 +214,79 @@ public final class ClusterV2ClusterRegistrationToken {
 
         @CustomType.Setter
         public Builder annotations(@Nullable Map<String,Object> annotations) {
+
             this.annotations = annotations;
             return this;
         }
         @CustomType.Setter
         public Builder clusterId(@Nullable String clusterId) {
+
             this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder command(@Nullable String command) {
+
             this.command = command;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder insecureCommand(@Nullable String insecureCommand) {
+
             this.insecureCommand = insecureCommand;
             return this;
         }
         @CustomType.Setter
         public Builder insecureNodeCommand(@Nullable String insecureNodeCommand) {
+
             this.insecureNodeCommand = insecureNodeCommand;
             return this;
         }
         @CustomType.Setter
         public Builder insecureWindowsNodeCommand(@Nullable String insecureWindowsNodeCommand) {
+
             this.insecureWindowsNodeCommand = insecureWindowsNodeCommand;
             return this;
         }
         @CustomType.Setter
         public Builder labels(@Nullable Map<String,Object> labels) {
+
             this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder manifestUrl(@Nullable String manifestUrl) {
+
             this.manifestUrl = manifestUrl;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nodeCommand(@Nullable String nodeCommand) {
+
             this.nodeCommand = nodeCommand;
             return this;
         }
         @CustomType.Setter
         public Builder token(@Nullable String token) {
+
             this.token = token;
             return this;
         }
         @CustomType.Setter
         public Builder windowsNodeCommand(@Nullable String windowsNodeCommand) {
+
             this.windowsNodeCommand = windowsNodeCommand;
             return this;
         }

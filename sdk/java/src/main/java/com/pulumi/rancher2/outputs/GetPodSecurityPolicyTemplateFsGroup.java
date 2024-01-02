@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetPodSecurityPolicyTemplateFsGroupRange;
 import java.lang.String;
 import java.util.List;
@@ -44,7 +45,10 @@ public final class GetPodSecurityPolicyTemplateFsGroup {
 
         @CustomType.Setter
         public Builder ranges(List<GetPodSecurityPolicyTemplateFsGroupRange> ranges) {
-            this.ranges = Objects.requireNonNull(ranges);
+            if (ranges == null) {
+              throw new MissingRequiredPropertyException("GetPodSecurityPolicyTemplateFsGroup", "ranges");
+            }
+            this.ranges = ranges;
             return this;
         }
         public Builder ranges(GetPodSecurityPolicyTemplateFsGroupRange... ranges) {
@@ -52,6 +56,7 @@ public final class GetPodSecurityPolicyTemplateFsGroup {
         }
         @CustomType.Setter
         public Builder rule(@Nullable String rule) {
+
             this.rule = rule;
             return this;
         }

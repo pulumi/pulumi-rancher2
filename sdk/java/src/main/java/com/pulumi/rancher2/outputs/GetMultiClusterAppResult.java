@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetMultiClusterAppAnswer;
 import com.pulumi.rancher2.outputs.GetMultiClusterAppMember;
 import com.pulumi.rancher2.outputs.GetMultiClusterAppTarget;
@@ -238,12 +239,18 @@ public final class GetMultiClusterAppResult {
 
         @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
-            this.annotations = Objects.requireNonNull(annotations);
+            if (annotations == null) {
+              throw new MissingRequiredPropertyException("GetMultiClusterAppResult", "annotations");
+            }
+            this.annotations = annotations;
             return this;
         }
         @CustomType.Setter
         public Builder answers(List<GetMultiClusterAppAnswer> answers) {
-            this.answers = Objects.requireNonNull(answers);
+            if (answers == null) {
+              throw new MissingRequiredPropertyException("GetMultiClusterAppResult", "answers");
+            }
+            this.answers = answers;
             return this;
         }
         public Builder answers(GetMultiClusterAppAnswer... answers) {
@@ -251,22 +258,34 @@ public final class GetMultiClusterAppResult {
         }
         @CustomType.Setter
         public Builder catalogName(String catalogName) {
-            this.catalogName = Objects.requireNonNull(catalogName);
+            if (catalogName == null) {
+              throw new MissingRequiredPropertyException("GetMultiClusterAppResult", "catalogName");
+            }
+            this.catalogName = catalogName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetMultiClusterAppResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetMultiClusterAppResult", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder members(List<GetMultiClusterAppMember> members) {
-            this.members = Objects.requireNonNull(members);
+            if (members == null) {
+              throw new MissingRequiredPropertyException("GetMultiClusterAppResult", "members");
+            }
+            this.members = members;
             return this;
         }
         public Builder members(GetMultiClusterAppMember... members) {
@@ -274,22 +293,34 @@ public final class GetMultiClusterAppResult {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetMultiClusterAppResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder revisionHistoryLimit(Integer revisionHistoryLimit) {
-            this.revisionHistoryLimit = Objects.requireNonNull(revisionHistoryLimit);
+            if (revisionHistoryLimit == null) {
+              throw new MissingRequiredPropertyException("GetMultiClusterAppResult", "revisionHistoryLimit");
+            }
+            this.revisionHistoryLimit = revisionHistoryLimit;
             return this;
         }
         @CustomType.Setter
         public Builder revisionId(String revisionId) {
-            this.revisionId = Objects.requireNonNull(revisionId);
+            if (revisionId == null) {
+              throw new MissingRequiredPropertyException("GetMultiClusterAppResult", "revisionId");
+            }
+            this.revisionId = revisionId;
             return this;
         }
         @CustomType.Setter
         public Builder roles(List<String> roles) {
-            this.roles = Objects.requireNonNull(roles);
+            if (roles == null) {
+              throw new MissingRequiredPropertyException("GetMultiClusterAppResult", "roles");
+            }
+            this.roles = roles;
             return this;
         }
         public Builder roles(String... roles) {
@@ -297,7 +328,10 @@ public final class GetMultiClusterAppResult {
         }
         @CustomType.Setter
         public Builder targets(List<GetMultiClusterAppTarget> targets) {
-            this.targets = Objects.requireNonNull(targets);
+            if (targets == null) {
+              throw new MissingRequiredPropertyException("GetMultiClusterAppResult", "targets");
+            }
+            this.targets = targets;
             return this;
         }
         public Builder targets(GetMultiClusterAppTarget... targets) {
@@ -305,22 +339,34 @@ public final class GetMultiClusterAppResult {
         }
         @CustomType.Setter
         public Builder templateName(String templateName) {
-            this.templateName = Objects.requireNonNull(templateName);
+            if (templateName == null) {
+              throw new MissingRequiredPropertyException("GetMultiClusterAppResult", "templateName");
+            }
+            this.templateName = templateName;
             return this;
         }
         @CustomType.Setter
         public Builder templateVersion(String templateVersion) {
-            this.templateVersion = Objects.requireNonNull(templateVersion);
+            if (templateVersion == null) {
+              throw new MissingRequiredPropertyException("GetMultiClusterAppResult", "templateVersion");
+            }
+            this.templateVersion = templateVersion;
             return this;
         }
         @CustomType.Setter
         public Builder templateVersionId(String templateVersionId) {
-            this.templateVersionId = Objects.requireNonNull(templateVersionId);
+            if (templateVersionId == null) {
+              throw new MissingRequiredPropertyException("GetMultiClusterAppResult", "templateVersionId");
+            }
+            this.templateVersionId = templateVersionId;
             return this;
         }
         @CustomType.Setter
         public Builder upgradeStrategies(List<GetMultiClusterAppUpgradeStrategy> upgradeStrategies) {
-            this.upgradeStrategies = Objects.requireNonNull(upgradeStrategies);
+            if (upgradeStrategies == null) {
+              throw new MissingRequiredPropertyException("GetMultiClusterAppResult", "upgradeStrategies");
+            }
+            this.upgradeStrategies = upgradeStrategies;
             return this;
         }
         public Builder upgradeStrategies(GetMultiClusterAppUpgradeStrategy... upgradeStrategies) {

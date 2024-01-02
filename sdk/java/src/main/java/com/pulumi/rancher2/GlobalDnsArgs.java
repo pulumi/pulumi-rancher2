@@ -5,6 +5,7 @@ package com.pulumi.rancher2;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -349,8 +350,12 @@ public final class GlobalDnsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public GlobalDnsArgs build() {
-            $.fqdn = Objects.requireNonNull($.fqdn, "expected parameter 'fqdn' to be non-null");
-            $.providerId = Objects.requireNonNull($.providerId, "expected parameter 'providerId' to be non-null");
+            if ($.fqdn == null) {
+                throw new MissingRequiredPropertyException("GlobalDnsArgs", "fqdn");
+            }
+            if ($.providerId == null) {
+                throw new MissingRequiredPropertyException("GlobalDnsArgs", "providerId");
+            }
             return $;
         }
     }

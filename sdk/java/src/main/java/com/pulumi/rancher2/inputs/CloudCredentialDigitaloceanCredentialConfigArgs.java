@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class CloudCredentialDigitaloceanCredentialConfigArgs extends com.p
         }
 
         public CloudCredentialDigitaloceanCredentialConfigArgs build() {
-            $.accessToken = Objects.requireNonNull($.accessToken, "expected parameter 'accessToken' to be non-null");
+            if ($.accessToken == null) {
+                throw new MissingRequiredPropertyException("CloudCredentialDigitaloceanCredentialConfigArgs", "accessToken");
+            }
             return $;
         }
     }

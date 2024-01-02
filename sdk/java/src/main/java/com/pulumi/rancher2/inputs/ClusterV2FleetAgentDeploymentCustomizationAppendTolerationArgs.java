@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -225,7 +226,9 @@ public final class ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArg
         }
 
         public ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArgs build() {
-            $.key = Objects.requireNonNull($.key, "expected parameter 'key' to be non-null");
+            if ($.key == null) {
+                throw new MissingRequiredPropertyException("ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArgs", "key");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -98,57 +99,84 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloud
 
         @CustomType.Setter
         public Builder createMonitor(Boolean createMonitor) {
-            this.createMonitor = Objects.requireNonNull(createMonitor);
+            if (createMonitor == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer", "createMonitor");
+            }
+            this.createMonitor = createMonitor;
             return this;
         }
         @CustomType.Setter
         public Builder floatingNetworkId(String floatingNetworkId) {
-            this.floatingNetworkId = Objects.requireNonNull(floatingNetworkId);
+            if (floatingNetworkId == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer", "floatingNetworkId");
+            }
+            this.floatingNetworkId = floatingNetworkId;
             return this;
         }
         @CustomType.Setter
         public Builder lbMethod(String lbMethod) {
-            this.lbMethod = Objects.requireNonNull(lbMethod);
+            if (lbMethod == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer", "lbMethod");
+            }
+            this.lbMethod = lbMethod;
             return this;
         }
         @CustomType.Setter
         public Builder lbProvider(String lbProvider) {
-            this.lbProvider = Objects.requireNonNull(lbProvider);
+            if (lbProvider == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer", "lbProvider");
+            }
+            this.lbProvider = lbProvider;
             return this;
         }
         @CustomType.Setter
         public Builder lbVersion(String lbVersion) {
-            this.lbVersion = Objects.requireNonNull(lbVersion);
+            if (lbVersion == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer", "lbVersion");
+            }
+            this.lbVersion = lbVersion;
             return this;
         }
         @CustomType.Setter
         public Builder manageSecurityGroups(Boolean manageSecurityGroups) {
-            this.manageSecurityGroups = Objects.requireNonNull(manageSecurityGroups);
+            if (manageSecurityGroups == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer", "manageSecurityGroups");
+            }
+            this.manageSecurityGroups = manageSecurityGroups;
             return this;
         }
         @CustomType.Setter
         public Builder monitorDelay(@Nullable String monitorDelay) {
+
             this.monitorDelay = monitorDelay;
             return this;
         }
         @CustomType.Setter
         public Builder monitorMaxRetries(@Nullable Integer monitorMaxRetries) {
+
             this.monitorMaxRetries = monitorMaxRetries;
             return this;
         }
         @CustomType.Setter
         public Builder monitorTimeout(@Nullable String monitorTimeout) {
+
             this.monitorTimeout = monitorTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder subnetId(String subnetId) {
-            this.subnetId = Objects.requireNonNull(subnetId);
+            if (subnetId == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer", "subnetId");
+            }
+            this.subnetId = subnetId;
             return this;
         }
         @CustomType.Setter
         public Builder useOctavia(Boolean useOctavia) {
-            this.useOctavia = Objects.requireNonNull(useOctavia);
+            if (useOctavia == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer", "useOctavia");
+            }
+            this.useOctavia = useOctavia;
             return this;
         }
         public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer build() {

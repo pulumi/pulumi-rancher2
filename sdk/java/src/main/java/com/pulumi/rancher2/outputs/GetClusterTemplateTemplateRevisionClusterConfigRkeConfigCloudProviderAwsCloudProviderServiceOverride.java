@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -64,32 +65,50 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloud
 
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverride", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder service(String service) {
-            this.service = Objects.requireNonNull(service);
+            if (service == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverride", "service");
+            }
+            this.service = service;
             return this;
         }
         @CustomType.Setter
         public Builder signingMethod(String signingMethod) {
-            this.signingMethod = Objects.requireNonNull(signingMethod);
+            if (signingMethod == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverride", "signingMethod");
+            }
+            this.signingMethod = signingMethod;
             return this;
         }
         @CustomType.Setter
         public Builder signingName(String signingName) {
-            this.signingName = Objects.requireNonNull(signingName);
+            if (signingName == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverride", "signingName");
+            }
+            this.signingName = signingName;
             return this;
         }
         @CustomType.Setter
         public Builder signingRegion(String signingRegion) {
-            this.signingRegion = Objects.requireNonNull(signingRegion);
+            if (signingRegion == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverride", "signingRegion");
+            }
+            this.signingRegion = signingRegion;
             return this;
         }
         @CustomType.Setter
         public Builder url(String url) {
-            this.url = Objects.requireNonNull(url);
+            if (url == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverride", "url");
+            }
+            this.url = url;
             return this;
         }
         public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverride build() {

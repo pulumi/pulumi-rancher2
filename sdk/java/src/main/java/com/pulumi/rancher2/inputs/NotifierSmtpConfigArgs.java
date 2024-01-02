@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -300,10 +301,18 @@ public final class NotifierSmtpConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         public NotifierSmtpConfigArgs build() {
-            $.defaultRecipient = Objects.requireNonNull($.defaultRecipient, "expected parameter 'defaultRecipient' to be non-null");
-            $.host = Objects.requireNonNull($.host, "expected parameter 'host' to be non-null");
-            $.port = Objects.requireNonNull($.port, "expected parameter 'port' to be non-null");
-            $.sender = Objects.requireNonNull($.sender, "expected parameter 'sender' to be non-null");
+            if ($.defaultRecipient == null) {
+                throw new MissingRequiredPropertyException("NotifierSmtpConfigArgs", "defaultRecipient");
+            }
+            if ($.host == null) {
+                throw new MissingRequiredPropertyException("NotifierSmtpConfigArgs", "host");
+            }
+            if ($.port == null) {
+                throw new MissingRequiredPropertyException("NotifierSmtpConfigArgs", "port");
+            }
+            if ($.sender == null) {
+                throw new MissingRequiredPropertyException("NotifierSmtpConfigArgs", "sender");
+            }
             return $;
         }
     }

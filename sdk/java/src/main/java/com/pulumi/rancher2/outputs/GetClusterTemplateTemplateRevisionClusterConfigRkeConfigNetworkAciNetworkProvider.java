@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -475,12 +476,18 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwo
 
         @CustomType.Setter
         public Builder aep(String aep) {
-            this.aep = Objects.requireNonNull(aep);
+            if (aep == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProvider", "aep");
+            }
+            this.aep = aep;
             return this;
         }
         @CustomType.Setter
         public Builder apicHosts(List<String> apicHosts) {
-            this.apicHosts = Objects.requireNonNull(apicHosts);
+            if (apicHosts == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProvider", "apicHosts");
+            }
+            this.apicHosts = apicHosts;
             return this;
         }
         public Builder apicHosts(String... apicHosts) {
@@ -488,126 +495,163 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwo
         }
         @CustomType.Setter
         public Builder apicRefreshTickerAdjust(@Nullable String apicRefreshTickerAdjust) {
+
             this.apicRefreshTickerAdjust = apicRefreshTickerAdjust;
             return this;
         }
         @CustomType.Setter
         public Builder apicRefreshTime(@Nullable String apicRefreshTime) {
+
             this.apicRefreshTime = apicRefreshTime;
             return this;
         }
         @CustomType.Setter
         public Builder apicSubscriptionDelay(@Nullable String apicSubscriptionDelay) {
+
             this.apicSubscriptionDelay = apicSubscriptionDelay;
             return this;
         }
         @CustomType.Setter
         public Builder apicUserCrt(String apicUserCrt) {
-            this.apicUserCrt = Objects.requireNonNull(apicUserCrt);
+            if (apicUserCrt == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProvider", "apicUserCrt");
+            }
+            this.apicUserCrt = apicUserCrt;
             return this;
         }
         @CustomType.Setter
         public Builder apicUserKey(String apicUserKey) {
-            this.apicUserKey = Objects.requireNonNull(apicUserKey);
+            if (apicUserKey == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProvider", "apicUserKey");
+            }
+            this.apicUserKey = apicUserKey;
             return this;
         }
         @CustomType.Setter
         public Builder apicUserName(String apicUserName) {
-            this.apicUserName = Objects.requireNonNull(apicUserName);
+            if (apicUserName == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProvider", "apicUserName");
+            }
+            this.apicUserName = apicUserName;
             return this;
         }
         @CustomType.Setter
         public Builder capic(@Nullable String capic) {
+
             this.capic = capic;
             return this;
         }
         @CustomType.Setter
         public Builder controllerLogLevel(@Nullable String controllerLogLevel) {
+
             this.controllerLogLevel = controllerLogLevel;
             return this;
         }
         @CustomType.Setter
         public Builder disablePeriodicSnatGlobalInfoSync(@Nullable String disablePeriodicSnatGlobalInfoSync) {
+
             this.disablePeriodicSnatGlobalInfoSync = disablePeriodicSnatGlobalInfoSync;
             return this;
         }
         @CustomType.Setter
         public Builder disableWaitForNetwork(@Nullable String disableWaitForNetwork) {
+
             this.disableWaitForNetwork = disableWaitForNetwork;
             return this;
         }
         @CustomType.Setter
         public Builder dropLogEnable(@Nullable String dropLogEnable) {
+
             this.dropLogEnable = dropLogEnable;
             return this;
         }
         @CustomType.Setter
         public Builder durationWaitForNetwork(@Nullable String durationWaitForNetwork) {
+
             this.durationWaitForNetwork = durationWaitForNetwork;
             return this;
         }
         @CustomType.Setter
         public Builder enableEndpointSlice(@Nullable String enableEndpointSlice) {
+
             this.enableEndpointSlice = enableEndpointSlice;
             return this;
         }
         @CustomType.Setter
         public Builder encapType(String encapType) {
-            this.encapType = Objects.requireNonNull(encapType);
+            if (encapType == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProvider", "encapType");
+            }
+            this.encapType = encapType;
             return this;
         }
         @CustomType.Setter
         public Builder epRegistry(@Nullable String epRegistry) {
+
             this.epRegistry = epRegistry;
             return this;
         }
         @CustomType.Setter
         public Builder externDynamic(String externDynamic) {
-            this.externDynamic = Objects.requireNonNull(externDynamic);
+            if (externDynamic == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProvider", "externDynamic");
+            }
+            this.externDynamic = externDynamic;
             return this;
         }
         @CustomType.Setter
         public Builder externStatic(String externStatic) {
-            this.externStatic = Objects.requireNonNull(externStatic);
+            if (externStatic == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProvider", "externStatic");
+            }
+            this.externStatic = externStatic;
             return this;
         }
         @CustomType.Setter
         public Builder gbpPodSubnet(@Nullable String gbpPodSubnet) {
+
             this.gbpPodSubnet = gbpPodSubnet;
             return this;
         }
         @CustomType.Setter
         public Builder hostAgentLogLevel(@Nullable String hostAgentLogLevel) {
+
             this.hostAgentLogLevel = hostAgentLogLevel;
             return this;
         }
         @CustomType.Setter
         public Builder imagePullPolicy(@Nullable String imagePullPolicy) {
+
             this.imagePullPolicy = imagePullPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder imagePullSecret(@Nullable String imagePullSecret) {
+
             this.imagePullSecret = imagePullSecret;
             return this;
         }
         @CustomType.Setter
         public Builder infraVlan(@Nullable String infraVlan) {
+
             this.infraVlan = infraVlan;
             return this;
         }
         @CustomType.Setter
         public Builder installIstio(@Nullable String installIstio) {
+
             this.installIstio = installIstio;
             return this;
         }
         @CustomType.Setter
         public Builder istioProfile(@Nullable String istioProfile) {
+
             this.istioProfile = istioProfile;
             return this;
         }
         @CustomType.Setter
         public Builder kafkaBrokers(@Nullable List<String> kafkaBrokers) {
+
             this.kafkaBrokers = kafkaBrokers;
             return this;
         }
@@ -616,27 +660,38 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwo
         }
         @CustomType.Setter
         public Builder kafkaClientCrt(@Nullable String kafkaClientCrt) {
+
             this.kafkaClientCrt = kafkaClientCrt;
             return this;
         }
         @CustomType.Setter
         public Builder kafkaClientKey(@Nullable String kafkaClientKey) {
+
             this.kafkaClientKey = kafkaClientKey;
             return this;
         }
         @CustomType.Setter
         public Builder kubeApiVlan(String kubeApiVlan) {
-            this.kubeApiVlan = Objects.requireNonNull(kubeApiVlan);
+            if (kubeApiVlan == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProvider", "kubeApiVlan");
+            }
+            this.kubeApiVlan = kubeApiVlan;
             return this;
         }
         @CustomType.Setter
         public Builder l3out(String l3out) {
-            this.l3out = Objects.requireNonNull(l3out);
+            if (l3out == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProvider", "l3out");
+            }
+            this.l3out = l3out;
             return this;
         }
         @CustomType.Setter
         public Builder l3outExternalNetworks(List<String> l3outExternalNetworks) {
-            this.l3outExternalNetworks = Objects.requireNonNull(l3outExternalNetworks);
+            if (l3outExternalNetworks == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProvider", "l3outExternalNetworks");
+            }
+            this.l3outExternalNetworks = l3outExternalNetworks;
             return this;
         }
         public Builder l3outExternalNetworks(String... l3outExternalNetworks) {
@@ -644,212 +699,272 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwo
         }
         @CustomType.Setter
         public Builder maxNodesSvcGraph(@Nullable String maxNodesSvcGraph) {
+
             this.maxNodesSvcGraph = maxNodesSvcGraph;
             return this;
         }
         @CustomType.Setter
         public Builder mcastRangeEnd(String mcastRangeEnd) {
-            this.mcastRangeEnd = Objects.requireNonNull(mcastRangeEnd);
+            if (mcastRangeEnd == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProvider", "mcastRangeEnd");
+            }
+            this.mcastRangeEnd = mcastRangeEnd;
             return this;
         }
         @CustomType.Setter
         public Builder mcastRangeStart(String mcastRangeStart) {
-            this.mcastRangeStart = Objects.requireNonNull(mcastRangeStart);
+            if (mcastRangeStart == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProvider", "mcastRangeStart");
+            }
+            this.mcastRangeStart = mcastRangeStart;
             return this;
         }
         @CustomType.Setter
         public Builder mtuHeadRoom(@Nullable String mtuHeadRoom) {
+
             this.mtuHeadRoom = mtuHeadRoom;
             return this;
         }
         @CustomType.Setter
         public Builder multusDisable(@Nullable String multusDisable) {
+
             this.multusDisable = multusDisable;
             return this;
         }
         @CustomType.Setter
         public Builder noPriorityClass(@Nullable String noPriorityClass) {
+
             this.noPriorityClass = noPriorityClass;
             return this;
         }
         @CustomType.Setter
         public Builder nodePodIfEnable(@Nullable String nodePodIfEnable) {
+
             this.nodePodIfEnable = nodePodIfEnable;
             return this;
         }
         @CustomType.Setter
         public Builder nodeSubnet(String nodeSubnet) {
-            this.nodeSubnet = Objects.requireNonNull(nodeSubnet);
+            if (nodeSubnet == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProvider", "nodeSubnet");
+            }
+            this.nodeSubnet = nodeSubnet;
             return this;
         }
         @CustomType.Setter
         public Builder nodeSvcSubnet(String nodeSvcSubnet) {
-            this.nodeSvcSubnet = Objects.requireNonNull(nodeSvcSubnet);
+            if (nodeSvcSubnet == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProvider", "nodeSvcSubnet");
+            }
+            this.nodeSvcSubnet = nodeSvcSubnet;
             return this;
         }
         @CustomType.Setter
         public Builder opflexClientSsl(@Nullable String opflexClientSsl) {
+
             this.opflexClientSsl = opflexClientSsl;
             return this;
         }
         @CustomType.Setter
         public Builder opflexDeviceDeleteTimeout(@Nullable String opflexDeviceDeleteTimeout) {
+
             this.opflexDeviceDeleteTimeout = opflexDeviceDeleteTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder opflexLogLevel(@Nullable String opflexLogLevel) {
+
             this.opflexLogLevel = opflexLogLevel;
             return this;
         }
         @CustomType.Setter
         public Builder opflexMode(@Nullable String opflexMode) {
+
             this.opflexMode = opflexMode;
             return this;
         }
         @CustomType.Setter
         public Builder opflexServerPort(@Nullable String opflexServerPort) {
+
             this.opflexServerPort = opflexServerPort;
             return this;
         }
         @CustomType.Setter
         public Builder overlayVrfName(@Nullable String overlayVrfName) {
+
             this.overlayVrfName = overlayVrfName;
             return this;
         }
         @CustomType.Setter
         public Builder ovsMemoryLimit(@Nullable String ovsMemoryLimit) {
+
             this.ovsMemoryLimit = ovsMemoryLimit;
             return this;
         }
         @CustomType.Setter
         public Builder pbrTrackingNonSnat(@Nullable String pbrTrackingNonSnat) {
+
             this.pbrTrackingNonSnat = pbrTrackingNonSnat;
             return this;
         }
         @CustomType.Setter
         public Builder podSubnetChunkSize(@Nullable String podSubnetChunkSize) {
+
             this.podSubnetChunkSize = podSubnetChunkSize;
             return this;
         }
         @CustomType.Setter
         public Builder runGbpContainer(@Nullable String runGbpContainer) {
+
             this.runGbpContainer = runGbpContainer;
             return this;
         }
         @CustomType.Setter
         public Builder runOpflexServerContainer(@Nullable String runOpflexServerContainer) {
+
             this.runOpflexServerContainer = runOpflexServerContainer;
             return this;
         }
         @CustomType.Setter
         public Builder serviceMonitorInterval(@Nullable String serviceMonitorInterval) {
+
             this.serviceMonitorInterval = serviceMonitorInterval;
             return this;
         }
         @CustomType.Setter
         public Builder serviceVlan(String serviceVlan) {
-            this.serviceVlan = Objects.requireNonNull(serviceVlan);
+            if (serviceVlan == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProvider", "serviceVlan");
+            }
+            this.serviceVlan = serviceVlan;
             return this;
         }
         @CustomType.Setter
         public Builder snatContractScope(@Nullable String snatContractScope) {
+
             this.snatContractScope = snatContractScope;
             return this;
         }
         @CustomType.Setter
         public Builder snatNamespace(@Nullable String snatNamespace) {
+
             this.snatNamespace = snatNamespace;
             return this;
         }
         @CustomType.Setter
         public Builder snatPortRangeEnd(@Nullable String snatPortRangeEnd) {
+
             this.snatPortRangeEnd = snatPortRangeEnd;
             return this;
         }
         @CustomType.Setter
         public Builder snatPortRangeStart(@Nullable String snatPortRangeStart) {
+
             this.snatPortRangeStart = snatPortRangeStart;
             return this;
         }
         @CustomType.Setter
         public Builder snatPortsPerNode(@Nullable String snatPortsPerNode) {
+
             this.snatPortsPerNode = snatPortsPerNode;
             return this;
         }
         @CustomType.Setter
         public Builder sriovEnable(@Nullable String sriovEnable) {
+
             this.sriovEnable = sriovEnable;
             return this;
         }
         @CustomType.Setter
         public Builder subnetDomainName(@Nullable String subnetDomainName) {
+
             this.subnetDomainName = subnetDomainName;
             return this;
         }
         @CustomType.Setter
         public Builder systemId(String systemId) {
-            this.systemId = Objects.requireNonNull(systemId);
+            if (systemId == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProvider", "systemId");
+            }
+            this.systemId = systemId;
             return this;
         }
         @CustomType.Setter
         public Builder tenant(@Nullable String tenant) {
+
             this.tenant = tenant;
             return this;
         }
         @CustomType.Setter
         public Builder token(String token) {
-            this.token = Objects.requireNonNull(token);
+            if (token == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProvider", "token");
+            }
+            this.token = token;
             return this;
         }
         @CustomType.Setter
         public Builder useAciAnywhereCrd(@Nullable String useAciAnywhereCrd) {
+
             this.useAciAnywhereCrd = useAciAnywhereCrd;
             return this;
         }
         @CustomType.Setter
         public Builder useAciCniPriorityClass(@Nullable String useAciCniPriorityClass) {
+
             this.useAciCniPriorityClass = useAciCniPriorityClass;
             return this;
         }
         @CustomType.Setter
         public Builder useClusterRole(@Nullable String useClusterRole) {
+
             this.useClusterRole = useClusterRole;
             return this;
         }
         @CustomType.Setter
         public Builder useHostNetnsVolume(@Nullable String useHostNetnsVolume) {
+
             this.useHostNetnsVolume = useHostNetnsVolume;
             return this;
         }
         @CustomType.Setter
         public Builder useOpflexServerVolume(@Nullable String useOpflexServerVolume) {
+
             this.useOpflexServerVolume = useOpflexServerVolume;
             return this;
         }
         @CustomType.Setter
         public Builder usePrivilegedContainer(@Nullable String usePrivilegedContainer) {
+
             this.usePrivilegedContainer = usePrivilegedContainer;
             return this;
         }
         @CustomType.Setter
         public Builder vmmController(@Nullable String vmmController) {
+
             this.vmmController = vmmController;
             return this;
         }
         @CustomType.Setter
         public Builder vmmDomain(@Nullable String vmmDomain) {
+
             this.vmmDomain = vmmDomain;
             return this;
         }
         @CustomType.Setter
         public Builder vrfName(String vrfName) {
-            this.vrfName = Objects.requireNonNull(vrfName);
+            if (vrfName == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProvider", "vrfName");
+            }
+            this.vrfName = vrfName;
             return this;
         }
         @CustomType.Setter
         public Builder vrfTenant(String vrfTenant) {
-            this.vrfTenant = Objects.requireNonNull(vrfTenant);
+            if (vrfTenant == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProvider", "vrfTenant");
+            }
+            this.vrfTenant = vrfTenant;
             return this;
         }
         public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProvider build() {

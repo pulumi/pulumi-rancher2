@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressToleration;
 import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy;
 import java.lang.Boolean;
@@ -103,51 +104,77 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngre
 
         @CustomType.Setter
         public Builder defaultBackend(@Nullable Boolean defaultBackend) {
+
             this.defaultBackend = defaultBackend;
             return this;
         }
         @CustomType.Setter
         public Builder dnsPolicy(String dnsPolicy) {
-            this.dnsPolicy = Objects.requireNonNull(dnsPolicy);
+            if (dnsPolicy == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress", "dnsPolicy");
+            }
+            this.dnsPolicy = dnsPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder extraArgs(Map<String,Object> extraArgs) {
-            this.extraArgs = Objects.requireNonNull(extraArgs);
+            if (extraArgs == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress", "extraArgs");
+            }
+            this.extraArgs = extraArgs;
             return this;
         }
         @CustomType.Setter
         public Builder httpPort(Integer httpPort) {
-            this.httpPort = Objects.requireNonNull(httpPort);
+            if (httpPort == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress", "httpPort");
+            }
+            this.httpPort = httpPort;
             return this;
         }
         @CustomType.Setter
         public Builder httpsPort(Integer httpsPort) {
-            this.httpsPort = Objects.requireNonNull(httpsPort);
+            if (httpsPort == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress", "httpsPort");
+            }
+            this.httpsPort = httpsPort;
             return this;
         }
         @CustomType.Setter
         public Builder networkMode(String networkMode) {
-            this.networkMode = Objects.requireNonNull(networkMode);
+            if (networkMode == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress", "networkMode");
+            }
+            this.networkMode = networkMode;
             return this;
         }
         @CustomType.Setter
         public Builder nodeSelector(Map<String,Object> nodeSelector) {
-            this.nodeSelector = Objects.requireNonNull(nodeSelector);
+            if (nodeSelector == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress", "nodeSelector");
+            }
+            this.nodeSelector = nodeSelector;
             return this;
         }
         @CustomType.Setter
         public Builder options(Map<String,Object> options) {
-            this.options = Objects.requireNonNull(options);
+            if (options == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress", "options");
+            }
+            this.options = options;
             return this;
         }
         @CustomType.Setter
         public Builder provider(String provider) {
-            this.provider = Objects.requireNonNull(provider);
+            if (provider == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress", "provider");
+            }
+            this.provider = provider;
             return this;
         }
         @CustomType.Setter
         public Builder tolerations(@Nullable List<GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressToleration> tolerations) {
+
             this.tolerations = tolerations;
             return this;
         }
@@ -156,6 +183,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngre
         }
         @CustomType.Setter
         public Builder updateStrategy(@Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy updateStrategy) {
+
             this.updateStrategy = updateStrategy;
             return this;
         }

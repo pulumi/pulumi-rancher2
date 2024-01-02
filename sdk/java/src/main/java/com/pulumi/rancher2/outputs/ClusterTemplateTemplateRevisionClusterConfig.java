@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint;
 import com.pulumi.rancher2.outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfig;
 import java.lang.Boolean;
@@ -193,61 +194,75 @@ public final class ClusterTemplateTemplateRevisionClusterConfig {
 
         @CustomType.Setter
         public Builder clusterAuthEndpoint(@Nullable ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint clusterAuthEndpoint) {
+
             this.clusterAuthEndpoint = clusterAuthEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder defaultClusterRoleForProjectMembers(@Nullable String defaultClusterRoleForProjectMembers) {
+
             this.defaultClusterRoleForProjectMembers = defaultClusterRoleForProjectMembers;
             return this;
         }
         @CustomType.Setter
         public Builder defaultPodSecurityAdmissionConfigurationTemplateName(@Nullable String defaultPodSecurityAdmissionConfigurationTemplateName) {
+
             this.defaultPodSecurityAdmissionConfigurationTemplateName = defaultPodSecurityAdmissionConfigurationTemplateName;
             return this;
         }
         @CustomType.Setter
         public Builder defaultPodSecurityPolicyTemplateId(@Nullable String defaultPodSecurityPolicyTemplateId) {
+
             this.defaultPodSecurityPolicyTemplateId = defaultPodSecurityPolicyTemplateId;
             return this;
         }
         @CustomType.Setter
         public Builder desiredAgentImage(@Nullable String desiredAgentImage) {
+
             this.desiredAgentImage = desiredAgentImage;
             return this;
         }
         @CustomType.Setter
         public Builder desiredAuthImage(@Nullable String desiredAuthImage) {
+
             this.desiredAuthImage = desiredAuthImage;
             return this;
         }
         @CustomType.Setter
         public Builder dockerRootDir(@Nullable String dockerRootDir) {
+
             this.dockerRootDir = dockerRootDir;
             return this;
         }
         @CustomType.Setter
         public Builder enableClusterAlerting(@Nullable Boolean enableClusterAlerting) {
+
             this.enableClusterAlerting = enableClusterAlerting;
             return this;
         }
         @CustomType.Setter
         public Builder enableClusterMonitoring(@Nullable Boolean enableClusterMonitoring) {
+
             this.enableClusterMonitoring = enableClusterMonitoring;
             return this;
         }
         @CustomType.Setter
         public Builder enableNetworkPolicy(@Nullable Boolean enableNetworkPolicy) {
+
             this.enableNetworkPolicy = enableNetworkPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder rkeConfig(ClusterTemplateTemplateRevisionClusterConfigRkeConfig rkeConfig) {
-            this.rkeConfig = Objects.requireNonNull(rkeConfig);
+            if (rkeConfig == null) {
+              throw new MissingRequiredPropertyException("ClusterTemplateTemplateRevisionClusterConfig", "rkeConfig");
+            }
+            this.rkeConfig = rkeConfig;
             return this;
         }
         @CustomType.Setter
         public Builder windowsPreferedCluster(@Nullable Boolean windowsPreferedCluster) {
+
             this.windowsPreferedCluster = windowsPreferedCluster;
             return this;
         }

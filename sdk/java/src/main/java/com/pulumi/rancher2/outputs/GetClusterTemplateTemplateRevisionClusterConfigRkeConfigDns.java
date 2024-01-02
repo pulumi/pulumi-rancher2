@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams;
 import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal;
 import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsToleration;
@@ -91,32 +92,44 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDns {
 
         @CustomType.Setter
         public Builder linearAutoscalerParams(@Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams linearAutoscalerParams) {
+
             this.linearAutoscalerParams = linearAutoscalerParams;
             return this;
         }
         @CustomType.Setter
         public Builder nodeSelector(Map<String,Object> nodeSelector) {
-            this.nodeSelector = Objects.requireNonNull(nodeSelector);
+            if (nodeSelector == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDns", "nodeSelector");
+            }
+            this.nodeSelector = nodeSelector;
             return this;
         }
         @CustomType.Setter
         public Builder nodelocal(@Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal nodelocal) {
+
             this.nodelocal = nodelocal;
             return this;
         }
         @CustomType.Setter
         public Builder options(Map<String,Object> options) {
-            this.options = Objects.requireNonNull(options);
+            if (options == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDns", "options");
+            }
+            this.options = options;
             return this;
         }
         @CustomType.Setter
         public Builder provider(@Nullable String provider) {
+
             this.provider = provider;
             return this;
         }
         @CustomType.Setter
         public Builder reverseCidrs(List<String> reverseCidrs) {
-            this.reverseCidrs = Objects.requireNonNull(reverseCidrs);
+            if (reverseCidrs == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDns", "reverseCidrs");
+            }
+            this.reverseCidrs = reverseCidrs;
             return this;
         }
         public Builder reverseCidrs(String... reverseCidrs) {
@@ -124,6 +137,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDns {
         }
         @CustomType.Setter
         public Builder tolerations(@Nullable List<GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsToleration> tolerations) {
+
             this.tolerations = tolerations;
             return this;
         }
@@ -132,12 +146,16 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDns {
         }
         @CustomType.Setter
         public Builder updateStrategy(@Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy updateStrategy) {
+
             this.updateStrategy = updateStrategy;
             return this;
         }
         @CustomType.Setter
         public Builder upstreamNameservers(List<String> upstreamNameservers) {
-            this.upstreamNameservers = Objects.requireNonNull(upstreamNameservers);
+            if (upstreamNameservers == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDns", "upstreamNameservers");
+            }
+            this.upstreamNameservers = upstreamNameservers;
             return this;
         }
         public Builder upstreamNameservers(String... upstreamNameservers) {

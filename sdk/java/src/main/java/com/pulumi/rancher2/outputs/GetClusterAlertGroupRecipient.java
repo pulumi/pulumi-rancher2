@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -55,22 +56,32 @@ public final class GetClusterAlertGroupRecipient {
 
         @CustomType.Setter
         public Builder defaultRecipient(@Nullable Boolean defaultRecipient) {
+
             this.defaultRecipient = defaultRecipient;
             return this;
         }
         @CustomType.Setter
         public Builder notifierId(String notifierId) {
-            this.notifierId = Objects.requireNonNull(notifierId);
+            if (notifierId == null) {
+              throw new MissingRequiredPropertyException("GetClusterAlertGroupRecipient", "notifierId");
+            }
+            this.notifierId = notifierId;
             return this;
         }
         @CustomType.Setter
         public Builder notifierType(String notifierType) {
-            this.notifierType = Objects.requireNonNull(notifierType);
+            if (notifierType == null) {
+              throw new MissingRequiredPropertyException("GetClusterAlertGroupRecipient", "notifierType");
+            }
+            this.notifierType = notifierType;
             return this;
         }
         @CustomType.Setter
         public Builder recipient(String recipient) {
-            this.recipient = Objects.requireNonNull(recipient);
+            if (recipient == null) {
+              throw new MissingRequiredPropertyException("GetClusterAlertGroupRecipient", "recipient");
+            }
+            this.recipient = recipient;
             return this;
         }
         public GetClusterAlertGroupRecipient build() {

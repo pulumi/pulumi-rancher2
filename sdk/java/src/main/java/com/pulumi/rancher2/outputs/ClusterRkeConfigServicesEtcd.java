@@ -246,26 +246,31 @@ public final class ClusterRkeConfigServicesEtcd {
 
         @CustomType.Setter
         public Builder backupConfig(@Nullable ClusterRkeConfigServicesEtcdBackupConfig backupConfig) {
+
             this.backupConfig = backupConfig;
             return this;
         }
         @CustomType.Setter
         public Builder caCert(@Nullable String caCert) {
+
             this.caCert = caCert;
             return this;
         }
         @CustomType.Setter
         public Builder cert(@Nullable String cert) {
+
             this.cert = cert;
             return this;
         }
         @CustomType.Setter
         public Builder creation(@Nullable String creation) {
+
             this.creation = creation;
             return this;
         }
         @CustomType.Setter
         public Builder externalUrls(@Nullable List<String> externalUrls) {
+
             this.externalUrls = externalUrls;
             return this;
         }
@@ -274,11 +279,13 @@ public final class ClusterRkeConfigServicesEtcd {
         }
         @CustomType.Setter
         public Builder extraArgs(@Nullable Map<String,Object> extraArgs) {
+
             this.extraArgs = extraArgs;
             return this;
         }
         @CustomType.Setter
         public Builder extraBinds(@Nullable List<String> extraBinds) {
+
             this.extraBinds = extraBinds;
             return this;
         }
@@ -287,6 +294,7 @@ public final class ClusterRkeConfigServicesEtcd {
         }
         @CustomType.Setter
         public Builder extraEnvs(@Nullable List<String> extraEnvs) {
+
             this.extraEnvs = extraEnvs;
             return this;
         }
@@ -295,36 +303,43 @@ public final class ClusterRkeConfigServicesEtcd {
         }
         @CustomType.Setter
         public Builder gid(@Nullable Integer gid) {
+
             this.gid = gid;
             return this;
         }
         @CustomType.Setter
         public Builder image(@Nullable String image) {
+
             this.image = image;
             return this;
         }
         @CustomType.Setter
         public Builder key(@Nullable String key) {
+
             this.key = key;
             return this;
         }
         @CustomType.Setter
         public Builder path(@Nullable String path) {
+
             this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder retention(@Nullable String retention) {
+
             this.retention = retention;
             return this;
         }
         @CustomType.Setter
         public Builder snapshot(@Nullable Boolean snapshot) {
+
             this.snapshot = snapshot;
             return this;
         }
         @CustomType.Setter
         public Builder uid(@Nullable Integer uid) {
+
             this.uid = uid;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfiguration;
 import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog;
 import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit;
@@ -110,31 +111,39 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServi
 
         @CustomType.Setter
         public Builder admissionConfiguration(@Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfiguration admissionConfiguration) {
+
             this.admissionConfiguration = admissionConfiguration;
             return this;
         }
         @CustomType.Setter
         public Builder alwaysPullImages(@Nullable Boolean alwaysPullImages) {
+
             this.alwaysPullImages = alwaysPullImages;
             return this;
         }
         @CustomType.Setter
         public Builder auditLog(@Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog auditLog) {
+
             this.auditLog = auditLog;
             return this;
         }
         @CustomType.Setter
         public Builder eventRateLimit(@Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit eventRateLimit) {
+
             this.eventRateLimit = eventRateLimit;
             return this;
         }
         @CustomType.Setter
         public Builder extraArgs(Map<String,Object> extraArgs) {
-            this.extraArgs = Objects.requireNonNull(extraArgs);
+            if (extraArgs == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi", "extraArgs");
+            }
+            this.extraArgs = extraArgs;
             return this;
         }
         @CustomType.Setter
         public Builder extraBinds(@Nullable List<String> extraBinds) {
+
             this.extraBinds = extraBinds;
             return this;
         }
@@ -143,6 +152,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServi
         }
         @CustomType.Setter
         public Builder extraEnvs(@Nullable List<String> extraEnvs) {
+
             this.extraEnvs = extraEnvs;
             return this;
         }
@@ -151,27 +161,38 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServi
         }
         @CustomType.Setter
         public Builder image(String image) {
-            this.image = Objects.requireNonNull(image);
+            if (image == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi", "image");
+            }
+            this.image = image;
             return this;
         }
         @CustomType.Setter
         public Builder podSecurityPolicy(@Nullable Boolean podSecurityPolicy) {
+
             this.podSecurityPolicy = podSecurityPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder secretsEncryptionConfig(@Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig secretsEncryptionConfig) {
+
             this.secretsEncryptionConfig = secretsEncryptionConfig;
             return this;
         }
         @CustomType.Setter
         public Builder serviceClusterIpRange(String serviceClusterIpRange) {
-            this.serviceClusterIpRange = Objects.requireNonNull(serviceClusterIpRange);
+            if (serviceClusterIpRange == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi", "serviceClusterIpRange");
+            }
+            this.serviceClusterIpRange = serviceClusterIpRange;
             return this;
         }
         @CustomType.Setter
         public Builder serviceNodePortRange(String serviceNodePortRange) {
-            this.serviceNodePortRange = Objects.requireNonNull(serviceNodePortRange);
+            if (serviceNodePortRange == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi", "serviceNodePortRange");
+            }
+            this.serviceNodePortRange = serviceNodePortRange;
             return this;
         }
         public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi build() {

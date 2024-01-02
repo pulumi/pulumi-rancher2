@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint;
 import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfig;
 import java.lang.Boolean;
@@ -105,61 +106,89 @@ public final class GetClusterTemplateTemplateRevisionClusterConfig {
 
         @CustomType.Setter
         public Builder clusterAuthEndpoint(GetClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint clusterAuthEndpoint) {
-            this.clusterAuthEndpoint = Objects.requireNonNull(clusterAuthEndpoint);
+            if (clusterAuthEndpoint == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfig", "clusterAuthEndpoint");
+            }
+            this.clusterAuthEndpoint = clusterAuthEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder defaultClusterRoleForProjectMembers(String defaultClusterRoleForProjectMembers) {
-            this.defaultClusterRoleForProjectMembers = Objects.requireNonNull(defaultClusterRoleForProjectMembers);
+            if (defaultClusterRoleForProjectMembers == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfig", "defaultClusterRoleForProjectMembers");
+            }
+            this.defaultClusterRoleForProjectMembers = defaultClusterRoleForProjectMembers;
             return this;
         }
         @CustomType.Setter
         public Builder defaultPodSecurityAdmissionConfigurationTemplateName(String defaultPodSecurityAdmissionConfigurationTemplateName) {
-            this.defaultPodSecurityAdmissionConfigurationTemplateName = Objects.requireNonNull(defaultPodSecurityAdmissionConfigurationTemplateName);
+            if (defaultPodSecurityAdmissionConfigurationTemplateName == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfig", "defaultPodSecurityAdmissionConfigurationTemplateName");
+            }
+            this.defaultPodSecurityAdmissionConfigurationTemplateName = defaultPodSecurityAdmissionConfigurationTemplateName;
             return this;
         }
         @CustomType.Setter
         public Builder defaultPodSecurityPolicyTemplateId(String defaultPodSecurityPolicyTemplateId) {
-            this.defaultPodSecurityPolicyTemplateId = Objects.requireNonNull(defaultPodSecurityPolicyTemplateId);
+            if (defaultPodSecurityPolicyTemplateId == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfig", "defaultPodSecurityPolicyTemplateId");
+            }
+            this.defaultPodSecurityPolicyTemplateId = defaultPodSecurityPolicyTemplateId;
             return this;
         }
         @CustomType.Setter
         public Builder desiredAgentImage(String desiredAgentImage) {
-            this.desiredAgentImage = Objects.requireNonNull(desiredAgentImage);
+            if (desiredAgentImage == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfig", "desiredAgentImage");
+            }
+            this.desiredAgentImage = desiredAgentImage;
             return this;
         }
         @CustomType.Setter
         public Builder desiredAuthImage(String desiredAuthImage) {
-            this.desiredAuthImage = Objects.requireNonNull(desiredAuthImage);
+            if (desiredAuthImage == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfig", "desiredAuthImage");
+            }
+            this.desiredAuthImage = desiredAuthImage;
             return this;
         }
         @CustomType.Setter
         public Builder dockerRootDir(String dockerRootDir) {
-            this.dockerRootDir = Objects.requireNonNull(dockerRootDir);
+            if (dockerRootDir == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfig", "dockerRootDir");
+            }
+            this.dockerRootDir = dockerRootDir;
             return this;
         }
         @CustomType.Setter
         public Builder enableClusterAlerting(@Nullable Boolean enableClusterAlerting) {
+
             this.enableClusterAlerting = enableClusterAlerting;
             return this;
         }
         @CustomType.Setter
         public Builder enableClusterMonitoring(@Nullable Boolean enableClusterMonitoring) {
+
             this.enableClusterMonitoring = enableClusterMonitoring;
             return this;
         }
         @CustomType.Setter
         public Builder enableNetworkPolicy(@Nullable Boolean enableNetworkPolicy) {
+
             this.enableNetworkPolicy = enableNetworkPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder rkeConfig(GetClusterTemplateTemplateRevisionClusterConfigRkeConfig rkeConfig) {
-            this.rkeConfig = Objects.requireNonNull(rkeConfig);
+            if (rkeConfig == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfig", "rkeConfig");
+            }
+            this.rkeConfig = rkeConfig;
             return this;
         }
         @CustomType.Setter
         public Builder windowsPreferedCluster(@Nullable Boolean windowsPreferedCluster) {
+
             this.windowsPreferedCluster = windowsPreferedCluster;
             return this;
         }

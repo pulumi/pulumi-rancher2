@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointArgs;
 import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs;
 import java.lang.Boolean;
@@ -466,7 +467,9 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
         }
 
         public ClusterTemplateTemplateRevisionClusterConfigArgs build() {
-            $.rkeConfig = Objects.requireNonNull($.rkeConfig, "expected parameter 'rkeConfig' to be non-null");
+            if ($.rkeConfig == null) {
+                throw new MissingRequiredPropertyException("ClusterTemplateTemplateRevisionClusterConfigArgs", "rkeConfig");
+            }
             return $;
         }
     }

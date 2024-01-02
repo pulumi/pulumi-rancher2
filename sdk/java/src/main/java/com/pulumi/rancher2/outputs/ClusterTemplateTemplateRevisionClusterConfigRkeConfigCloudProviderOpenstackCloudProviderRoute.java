@@ -36,6 +36,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
 
         @CustomType.Setter
         public Builder routerId(@Nullable String routerId) {
+
             this.routerId = routerId;
             return this;
         }

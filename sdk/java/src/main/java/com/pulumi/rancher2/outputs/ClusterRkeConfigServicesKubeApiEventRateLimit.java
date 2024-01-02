@@ -59,11 +59,13 @@ public final class ClusterRkeConfigServicesKubeApiEventRateLimit {
 
         @CustomType.Setter
         public Builder configuration(@Nullable String configuration) {
+
             this.configuration = configuration;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }

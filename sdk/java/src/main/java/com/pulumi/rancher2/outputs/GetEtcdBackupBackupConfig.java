@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetEtcdBackupBackupConfigS3BackupConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -68,32 +69,40 @@ public final class GetEtcdBackupBackupConfig {
 
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder intervalHours(@Nullable Integer intervalHours) {
+
             this.intervalHours = intervalHours;
             return this;
         }
         @CustomType.Setter
         public Builder retention(@Nullable Integer retention) {
+
             this.retention = retention;
             return this;
         }
         @CustomType.Setter
         public Builder s3BackupConfig(@Nullable GetEtcdBackupBackupConfigS3BackupConfig s3BackupConfig) {
+
             this.s3BackupConfig = s3BackupConfig;
             return this;
         }
         @CustomType.Setter
         public Builder safeTimestamp(@Nullable Boolean safeTimestamp) {
+
             this.safeTimestamp = safeTimestamp;
             return this;
         }
         @CustomType.Setter
         public Builder timeout(Integer timeout) {
-            this.timeout = Objects.requireNonNull(timeout);
+            if (timeout == null) {
+              throw new MissingRequiredPropertyException("GetEtcdBackupBackupConfig", "timeout");
+            }
+            this.timeout = timeout;
             return this;
         }
         public GetEtcdBackupBackupConfig build() {

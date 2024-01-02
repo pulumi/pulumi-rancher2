@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterAlterRuleEventRule;
 import com.pulumi.rancher2.outputs.GetClusterAlterRuleMetricRule;
 import com.pulumi.rancher2.outputs.GetClusterAlterRuleNodeRule;
@@ -231,77 +232,120 @@ public final class GetClusterAlterRuleResult {
 
         @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
-            this.annotations = Objects.requireNonNull(annotations);
+            if (annotations == null) {
+              throw new MissingRequiredPropertyException("GetClusterAlterRuleResult", "annotations");
+            }
+            this.annotations = annotations;
             return this;
         }
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetClusterAlterRuleResult", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder eventRule(GetClusterAlterRuleEventRule eventRule) {
-            this.eventRule = Objects.requireNonNull(eventRule);
+            if (eventRule == null) {
+              throw new MissingRequiredPropertyException("GetClusterAlterRuleResult", "eventRule");
+            }
+            this.eventRule = eventRule;
             return this;
         }
         @CustomType.Setter
         public Builder groupId(String groupId) {
-            this.groupId = Objects.requireNonNull(groupId);
+            if (groupId == null) {
+              throw new MissingRequiredPropertyException("GetClusterAlterRuleResult", "groupId");
+            }
+            this.groupId = groupId;
             return this;
         }
         @CustomType.Setter
         public Builder groupIntervalSeconds(Integer groupIntervalSeconds) {
-            this.groupIntervalSeconds = Objects.requireNonNull(groupIntervalSeconds);
+            if (groupIntervalSeconds == null) {
+              throw new MissingRequiredPropertyException("GetClusterAlterRuleResult", "groupIntervalSeconds");
+            }
+            this.groupIntervalSeconds = groupIntervalSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder groupWaitSeconds(Integer groupWaitSeconds) {
-            this.groupWaitSeconds = Objects.requireNonNull(groupWaitSeconds);
+            if (groupWaitSeconds == null) {
+              throw new MissingRequiredPropertyException("GetClusterAlterRuleResult", "groupWaitSeconds");
+            }
+            this.groupWaitSeconds = groupWaitSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetClusterAlterRuleResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder inherited(Boolean inherited) {
-            this.inherited = Objects.requireNonNull(inherited);
+            if (inherited == null) {
+              throw new MissingRequiredPropertyException("GetClusterAlterRuleResult", "inherited");
+            }
+            this.inherited = inherited;
             return this;
         }
         @CustomType.Setter
         public Builder labels(@Nullable Map<String,Object> labels) {
+
             this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder metricRule(GetClusterAlterRuleMetricRule metricRule) {
-            this.metricRule = Objects.requireNonNull(metricRule);
+            if (metricRule == null) {
+              throw new MissingRequiredPropertyException("GetClusterAlterRuleResult", "metricRule");
+            }
+            this.metricRule = metricRule;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetClusterAlterRuleResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nodeRule(GetClusterAlterRuleNodeRule nodeRule) {
-            this.nodeRule = Objects.requireNonNull(nodeRule);
+            if (nodeRule == null) {
+              throw new MissingRequiredPropertyException("GetClusterAlterRuleResult", "nodeRule");
+            }
+            this.nodeRule = nodeRule;
             return this;
         }
         @CustomType.Setter
         public Builder repeatIntervalSeconds(Integer repeatIntervalSeconds) {
-            this.repeatIntervalSeconds = Objects.requireNonNull(repeatIntervalSeconds);
+            if (repeatIntervalSeconds == null) {
+              throw new MissingRequiredPropertyException("GetClusterAlterRuleResult", "repeatIntervalSeconds");
+            }
+            this.repeatIntervalSeconds = repeatIntervalSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder severity(String severity) {
-            this.severity = Objects.requireNonNull(severity);
+            if (severity == null) {
+              throw new MissingRequiredPropertyException("GetClusterAlterRuleResult", "severity");
+            }
+            this.severity = severity;
             return this;
         }
         @CustomType.Setter
         public Builder systemServiceRule(GetClusterAlterRuleSystemServiceRule systemServiceRule) {
-            this.systemServiceRule = Objects.requireNonNull(systemServiceRule);
+            if (systemServiceRule == null) {
+              throw new MissingRequiredPropertyException("GetClusterAlterRuleResult", "systemServiceRule");
+            }
+            this.systemServiceRule = systemServiceRule;
             return this;
         }
         public GetClusterAlterRuleResult build() {

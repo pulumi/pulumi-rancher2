@@ -5,6 +5,7 @@ package com.pulumi.rancher2;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.inputs.NodePoolNodeTaintArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -536,9 +537,15 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public NodePoolArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
-            $.hostnamePrefix = Objects.requireNonNull($.hostnamePrefix, "expected parameter 'hostnamePrefix' to be non-null");
-            $.nodeTemplateId = Objects.requireNonNull($.nodeTemplateId, "expected parameter 'nodeTemplateId' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("NodePoolArgs", "clusterId");
+            }
+            if ($.hostnamePrefix == null) {
+                throw new MissingRequiredPropertyException("NodePoolArgs", "hostnamePrefix");
+            }
+            if ($.nodeTemplateId == null) {
+                throw new MissingRequiredPropertyException("NodePoolArgs", "nodeTemplateId");
+            }
             return $;
         }
     }

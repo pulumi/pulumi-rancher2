@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetProjectContainerResourceLimit;
 import com.pulumi.rancher2.outputs.GetProjectResourceQuota;
 import java.lang.Boolean;
@@ -171,57 +172,90 @@ public final class GetProjectResult {
 
         @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
-            this.annotations = Objects.requireNonNull(annotations);
+            if (annotations == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "annotations");
+            }
+            this.annotations = annotations;
             return this;
         }
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder containerResourceLimit(GetProjectContainerResourceLimit containerResourceLimit) {
-            this.containerResourceLimit = Objects.requireNonNull(containerResourceLimit);
+            if (containerResourceLimit == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "containerResourceLimit");
+            }
+            this.containerResourceLimit = containerResourceLimit;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder enableProjectMonitoring(Boolean enableProjectMonitoring) {
-            this.enableProjectMonitoring = Objects.requireNonNull(enableProjectMonitoring);
+            if (enableProjectMonitoring == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "enableProjectMonitoring");
+            }
+            this.enableProjectMonitoring = enableProjectMonitoring;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder podSecurityPolicyTemplateId(String podSecurityPolicyTemplateId) {
-            this.podSecurityPolicyTemplateId = Objects.requireNonNull(podSecurityPolicyTemplateId);
+            if (podSecurityPolicyTemplateId == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "podSecurityPolicyTemplateId");
+            }
+            this.podSecurityPolicyTemplateId = podSecurityPolicyTemplateId;
             return this;
         }
         @CustomType.Setter
         public Builder resourceQuota(GetProjectResourceQuota resourceQuota) {
-            this.resourceQuota = Objects.requireNonNull(resourceQuota);
+            if (resourceQuota == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "resourceQuota");
+            }
+            this.resourceQuota = resourceQuota;
             return this;
         }
         @CustomType.Setter
         public Builder uuid(String uuid) {
-            this.uuid = Objects.requireNonNull(uuid);
+            if (uuid == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "uuid");
+            }
+            this.uuid = uuid;
             return this;
         }
         public GetProjectResult build() {

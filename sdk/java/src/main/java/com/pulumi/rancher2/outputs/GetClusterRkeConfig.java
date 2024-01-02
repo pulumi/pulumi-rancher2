@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterRkeConfigAuthentication;
 import com.pulumi.rancher2.outputs.GetClusterRkeConfigAuthorization;
 import com.pulumi.rancher2.outputs.GetClusterRkeConfigBastionHost;
@@ -183,16 +184,21 @@ public final class GetClusterRkeConfig {
 
         @CustomType.Setter
         public Builder addonJobTimeout(Integer addonJobTimeout) {
-            this.addonJobTimeout = Objects.requireNonNull(addonJobTimeout);
+            if (addonJobTimeout == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfig", "addonJobTimeout");
+            }
+            this.addonJobTimeout = addonJobTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder addons(@Nullable String addons) {
+
             this.addons = addons;
             return this;
         }
         @CustomType.Setter
         public Builder addonsIncludes(@Nullable List<String> addonsIncludes) {
+
             this.addonsIncludes = addonsIncludes;
             return this;
         }
@@ -201,61 +207,91 @@ public final class GetClusterRkeConfig {
         }
         @CustomType.Setter
         public Builder authentication(GetClusterRkeConfigAuthentication authentication) {
-            this.authentication = Objects.requireNonNull(authentication);
+            if (authentication == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfig", "authentication");
+            }
+            this.authentication = authentication;
             return this;
         }
         @CustomType.Setter
         public Builder authorization(GetClusterRkeConfigAuthorization authorization) {
-            this.authorization = Objects.requireNonNull(authorization);
+            if (authorization == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfig", "authorization");
+            }
+            this.authorization = authorization;
             return this;
         }
         @CustomType.Setter
         public Builder bastionHost(GetClusterRkeConfigBastionHost bastionHost) {
-            this.bastionHost = Objects.requireNonNull(bastionHost);
+            if (bastionHost == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfig", "bastionHost");
+            }
+            this.bastionHost = bastionHost;
             return this;
         }
         @CustomType.Setter
         public Builder cloudProvider(GetClusterRkeConfigCloudProvider cloudProvider) {
-            this.cloudProvider = Objects.requireNonNull(cloudProvider);
+            if (cloudProvider == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfig", "cloudProvider");
+            }
+            this.cloudProvider = cloudProvider;
             return this;
         }
         @CustomType.Setter
         public Builder dns(GetClusterRkeConfigDns dns) {
-            this.dns = Objects.requireNonNull(dns);
+            if (dns == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfig", "dns");
+            }
+            this.dns = dns;
             return this;
         }
         @CustomType.Setter
         public Builder enableCriDockerd(@Nullable Boolean enableCriDockerd) {
+
             this.enableCriDockerd = enableCriDockerd;
             return this;
         }
         @CustomType.Setter
         public Builder ignoreDockerVersion(@Nullable Boolean ignoreDockerVersion) {
+
             this.ignoreDockerVersion = ignoreDockerVersion;
             return this;
         }
         @CustomType.Setter
         public Builder ingress(GetClusterRkeConfigIngress ingress) {
-            this.ingress = Objects.requireNonNull(ingress);
+            if (ingress == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfig", "ingress");
+            }
+            this.ingress = ingress;
             return this;
         }
         @CustomType.Setter
         public Builder kubernetesVersion(String kubernetesVersion) {
-            this.kubernetesVersion = Objects.requireNonNull(kubernetesVersion);
+            if (kubernetesVersion == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfig", "kubernetesVersion");
+            }
+            this.kubernetesVersion = kubernetesVersion;
             return this;
         }
         @CustomType.Setter
         public Builder monitoring(GetClusterRkeConfigMonitoring monitoring) {
-            this.monitoring = Objects.requireNonNull(monitoring);
+            if (monitoring == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfig", "monitoring");
+            }
+            this.monitoring = monitoring;
             return this;
         }
         @CustomType.Setter
         public Builder network(GetClusterRkeConfigNetwork network) {
-            this.network = Objects.requireNonNull(network);
+            if (network == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfig", "network");
+            }
+            this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder nodes(@Nullable List<GetClusterRkeConfigNode> nodes) {
+
             this.nodes = nodes;
             return this;
         }
@@ -264,11 +300,15 @@ public final class GetClusterRkeConfig {
         }
         @CustomType.Setter
         public Builder prefixPath(String prefixPath) {
-            this.prefixPath = Objects.requireNonNull(prefixPath);
+            if (prefixPath == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfig", "prefixPath");
+            }
+            this.prefixPath = prefixPath;
             return this;
         }
         @CustomType.Setter
         public Builder privateRegistries(@Nullable List<GetClusterRkeConfigPrivateRegistry> privateRegistries) {
+
             this.privateRegistries = privateRegistries;
             return this;
         }
@@ -277,32 +317,48 @@ public final class GetClusterRkeConfig {
         }
         @CustomType.Setter
         public Builder services(GetClusterRkeConfigServices services) {
-            this.services = Objects.requireNonNull(services);
+            if (services == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfig", "services");
+            }
+            this.services = services;
             return this;
         }
         @CustomType.Setter
         public Builder sshAgentAuth(@Nullable Boolean sshAgentAuth) {
+
             this.sshAgentAuth = sshAgentAuth;
             return this;
         }
         @CustomType.Setter
         public Builder sshCertPath(String sshCertPath) {
-            this.sshCertPath = Objects.requireNonNull(sshCertPath);
+            if (sshCertPath == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfig", "sshCertPath");
+            }
+            this.sshCertPath = sshCertPath;
             return this;
         }
         @CustomType.Setter
         public Builder sshKeyPath(String sshKeyPath) {
-            this.sshKeyPath = Objects.requireNonNull(sshKeyPath);
+            if (sshKeyPath == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfig", "sshKeyPath");
+            }
+            this.sshKeyPath = sshKeyPath;
             return this;
         }
         @CustomType.Setter
         public Builder upgradeStrategy(GetClusterRkeConfigUpgradeStrategy upgradeStrategy) {
-            this.upgradeStrategy = Objects.requireNonNull(upgradeStrategy);
+            if (upgradeStrategy == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfig", "upgradeStrategy");
+            }
+            this.upgradeStrategy = upgradeStrategy;
             return this;
         }
         @CustomType.Setter
         public Builder winPrefixPath(String winPrefixPath) {
-            this.winPrefixPath = Objects.requireNonNull(winPrefixPath);
+            if (winPrefixPath == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfig", "winPrefixPath");
+            }
+            this.winPrefixPath = winPrefixPath;
             return this;
         }
         public GetClusterRkeConfig build() {

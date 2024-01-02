@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloud
 
         @CustomType.Setter
         public Builder publicNetwork(String publicNetwork) {
-            this.publicNetwork = Objects.requireNonNull(publicNetwork);
+            if (publicNetwork == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetwork", "publicNetwork");
+            }
+            this.publicNetwork = publicNetwork;
             return this;
         }
         public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetwork build() {

@@ -465,11 +465,13 @@ public final class MachineConfigV2VsphereConfig {
 
         @CustomType.Setter
         public Builder boot2dockerUrl(@Nullable String boot2dockerUrl) {
+
             this.boot2dockerUrl = boot2dockerUrl;
             return this;
         }
         @CustomType.Setter
         public Builder cfgparams(@Nullable List<String> cfgparams) {
+
             this.cfgparams = cfgparams;
             return this;
         }
@@ -478,36 +480,43 @@ public final class MachineConfigV2VsphereConfig {
         }
         @CustomType.Setter
         public Builder cloneFrom(@Nullable String cloneFrom) {
+
             this.cloneFrom = cloneFrom;
             return this;
         }
         @CustomType.Setter
         public Builder cloudConfig(@Nullable String cloudConfig) {
+
             this.cloudConfig = cloudConfig;
             return this;
         }
         @CustomType.Setter
         public Builder cloudinit(@Nullable String cloudinit) {
+
             this.cloudinit = cloudinit;
             return this;
         }
         @CustomType.Setter
         public Builder contentLibrary(@Nullable String contentLibrary) {
+
             this.contentLibrary = contentLibrary;
             return this;
         }
         @CustomType.Setter
         public Builder cpuCount(@Nullable String cpuCount) {
+
             this.cpuCount = cpuCount;
             return this;
         }
         @CustomType.Setter
         public Builder creationType(@Nullable String creationType) {
+
             this.creationType = creationType;
             return this;
         }
         @CustomType.Setter
         public Builder customAttributes(@Nullable List<String> customAttributes) {
+
             this.customAttributes = customAttributes;
             return this;
         }
@@ -516,41 +525,49 @@ public final class MachineConfigV2VsphereConfig {
         }
         @CustomType.Setter
         public Builder datacenter(@Nullable String datacenter) {
+
             this.datacenter = datacenter;
             return this;
         }
         @CustomType.Setter
         public Builder datastore(@Nullable String datastore) {
+
             this.datastore = datastore;
             return this;
         }
         @CustomType.Setter
         public Builder datastoreCluster(@Nullable String datastoreCluster) {
+
             this.datastoreCluster = datastoreCluster;
             return this;
         }
         @CustomType.Setter
         public Builder diskSize(@Nullable String diskSize) {
+
             this.diskSize = diskSize;
             return this;
         }
         @CustomType.Setter
         public Builder folder(@Nullable String folder) {
+
             this.folder = folder;
             return this;
         }
         @CustomType.Setter
         public Builder hostsystem(@Nullable String hostsystem) {
+
             this.hostsystem = hostsystem;
             return this;
         }
         @CustomType.Setter
         public Builder memorySize(@Nullable String memorySize) {
+
             this.memorySize = memorySize;
             return this;
         }
         @CustomType.Setter
         public Builder networks(@Nullable List<String> networks) {
+
             this.networks = networks;
             return this;
         }
@@ -559,36 +576,43 @@ public final class MachineConfigV2VsphereConfig {
         }
         @CustomType.Setter
         public Builder password(@Nullable String password) {
+
             this.password = password;
             return this;
         }
         @CustomType.Setter
         public Builder pool(@Nullable String pool) {
+
             this.pool = pool;
             return this;
         }
         @CustomType.Setter
         public Builder sshPassword(@Nullable String sshPassword) {
+
             this.sshPassword = sshPassword;
             return this;
         }
         @CustomType.Setter
         public Builder sshPort(@Nullable String sshPort) {
+
             this.sshPort = sshPort;
             return this;
         }
         @CustomType.Setter
         public Builder sshUser(@Nullable String sshUser) {
+
             this.sshUser = sshUser;
             return this;
         }
         @CustomType.Setter
         public Builder sshUserGroup(@Nullable String sshUserGroup) {
+
             this.sshUserGroup = sshUserGroup;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
+
             this.tags = tags;
             return this;
         }
@@ -597,21 +621,25 @@ public final class MachineConfigV2VsphereConfig {
         }
         @CustomType.Setter
         public Builder username(@Nullable String username) {
+
             this.username = username;
             return this;
         }
         @CustomType.Setter
         public Builder vappIpAllocationPolicy(@Nullable String vappIpAllocationPolicy) {
+
             this.vappIpAllocationPolicy = vappIpAllocationPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder vappIpProtocol(@Nullable String vappIpProtocol) {
+
             this.vappIpProtocol = vappIpProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder vappProperties(@Nullable List<String> vappProperties) {
+
             this.vappProperties = vappProperties;
             return this;
         }
@@ -620,16 +648,19 @@ public final class MachineConfigV2VsphereConfig {
         }
         @CustomType.Setter
         public Builder vappTransport(@Nullable String vappTransport) {
+
             this.vappTransport = vappTransport;
             return this;
         }
         @CustomType.Setter
         public Builder vcenter(@Nullable String vcenter) {
+
             this.vcenter = vcenter;
             return this;
         }
         @CustomType.Setter
         public Builder vcenterPort(@Nullable String vcenterPort) {
+
             this.vcenterPort = vcenterPort;
             return this;
         }

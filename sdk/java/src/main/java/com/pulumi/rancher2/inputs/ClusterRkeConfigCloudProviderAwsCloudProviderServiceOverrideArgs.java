@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -261,7 +262,9 @@ public final class ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideA
         }
 
         public ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs build() {
-            $.service = Objects.requireNonNull($.service, "expected parameter 'service' to be non-null");
+            if ($.service == null) {
+                throw new MissingRequiredPropertyException("ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs", "service");
+            }
             return $;
         }
     }

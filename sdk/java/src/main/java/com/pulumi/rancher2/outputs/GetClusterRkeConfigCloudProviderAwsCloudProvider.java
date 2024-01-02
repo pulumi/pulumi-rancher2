@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal;
 import com.pulumi.rancher2.outputs.GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride;
 import java.util.List;
@@ -43,11 +44,15 @@ public final class GetClusterRkeConfigCloudProviderAwsCloudProvider {
 
         @CustomType.Setter
         public Builder global(GetClusterRkeConfigCloudProviderAwsCloudProviderGlobal global) {
-            this.global = Objects.requireNonNull(global);
+            if (global == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderAwsCloudProvider", "global");
+            }
+            this.global = global;
             return this;
         }
         @CustomType.Setter
         public Builder serviceOverrides(@Nullable List<GetClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride> serviceOverrides) {
+
             this.serviceOverrides = serviceOverrides;
             return this;
         }

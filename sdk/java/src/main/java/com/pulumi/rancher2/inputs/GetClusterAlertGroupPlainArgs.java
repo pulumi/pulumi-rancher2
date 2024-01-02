@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -90,8 +91,12 @@ public final class GetClusterAlertGroupPlainArgs extends com.pulumi.resources.In
         }
 
         public GetClusterAlertGroupPlainArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("GetClusterAlertGroupPlainArgs", "clusterId");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetClusterAlertGroupPlainArgs", "name");
+            }
             return $;
         }
     }

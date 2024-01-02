@@ -227,71 +227,85 @@ public final class MachineConfigV2DigitaloceanConfig {
 
         @CustomType.Setter
         public Builder accessToken(@Nullable String accessToken) {
+
             this.accessToken = accessToken;
             return this;
         }
         @CustomType.Setter
         public Builder backups(@Nullable Boolean backups) {
+
             this.backups = backups;
             return this;
         }
         @CustomType.Setter
         public Builder image(@Nullable String image) {
+
             this.image = image;
             return this;
         }
         @CustomType.Setter
         public Builder ipv6(@Nullable Boolean ipv6) {
+
             this.ipv6 = ipv6;
             return this;
         }
         @CustomType.Setter
         public Builder monitoring(@Nullable Boolean monitoring) {
+
             this.monitoring = monitoring;
             return this;
         }
         @CustomType.Setter
         public Builder privateNetworking(@Nullable Boolean privateNetworking) {
+
             this.privateNetworking = privateNetworking;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder size(@Nullable String size) {
+
             this.size = size;
             return this;
         }
         @CustomType.Setter
         public Builder sshKeyContents(@Nullable String sshKeyContents) {
+
             this.sshKeyContents = sshKeyContents;
             return this;
         }
         @CustomType.Setter
         public Builder sshKeyFingerprint(@Nullable String sshKeyFingerprint) {
+
             this.sshKeyFingerprint = sshKeyFingerprint;
             return this;
         }
         @CustomType.Setter
         public Builder sshPort(@Nullable String sshPort) {
+
             this.sshPort = sshPort;
             return this;
         }
         @CustomType.Setter
         public Builder sshUser(@Nullable String sshUser) {
+
             this.sshUser = sshUser;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable String tags) {
+
             this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder userdata(@Nullable String userdata) {
+
             this.userdata = userdata;
             return this;
         }

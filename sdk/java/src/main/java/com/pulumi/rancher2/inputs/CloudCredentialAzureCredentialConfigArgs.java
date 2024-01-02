@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -224,9 +225,15 @@ public final class CloudCredentialAzureCredentialConfigArgs extends com.pulumi.r
         }
 
         public CloudCredentialAzureCredentialConfigArgs build() {
-            $.clientId = Objects.requireNonNull($.clientId, "expected parameter 'clientId' to be non-null");
-            $.clientSecret = Objects.requireNonNull($.clientSecret, "expected parameter 'clientSecret' to be non-null");
-            $.subscriptionId = Objects.requireNonNull($.subscriptionId, "expected parameter 'subscriptionId' to be non-null");
+            if ($.clientId == null) {
+                throw new MissingRequiredPropertyException("CloudCredentialAzureCredentialConfigArgs", "clientId");
+            }
+            if ($.clientSecret == null) {
+                throw new MissingRequiredPropertyException("CloudCredentialAzureCredentialConfigArgs", "clientSecret");
+            }
+            if ($.subscriptionId == null) {
+                throw new MissingRequiredPropertyException("CloudCredentialAzureCredentialConfigArgs", "subscriptionId");
+            }
             return $;
         }
     }

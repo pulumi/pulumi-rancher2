@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -72,17 +73,24 @@ public final class CloudCredentialHarvesterCredentialConfig {
 
         @CustomType.Setter
         public Builder clusterId(@Nullable String clusterId) {
+
             this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder clusterType(String clusterType) {
-            this.clusterType = Objects.requireNonNull(clusterType);
+            if (clusterType == null) {
+              throw new MissingRequiredPropertyException("CloudCredentialHarvesterCredentialConfig", "clusterType");
+            }
+            this.clusterType = clusterType;
             return this;
         }
         @CustomType.Setter
         public Builder kubeconfigContent(String kubeconfigContent) {
-            this.kubeconfigContent = Objects.requireNonNull(kubeconfigContent);
+            if (kubeconfigContent == null) {
+              throw new MissingRequiredPropertyException("CloudCredentialHarvesterCredentialConfig", "kubeconfigContent");
+            }
+            this.kubeconfigContent = kubeconfigContent;
             return this;
         }
         public CloudCredentialHarvesterCredentialConfig build() {

@@ -5,6 +5,7 @@ package com.pulumi.rancher2;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.inputs.MachineConfigV2Amazonec2ConfigArgs;
 import com.pulumi.rancher2.inputs.MachineConfigV2AzureConfigArgs;
 import com.pulumi.rancher2.inputs.MachineConfigV2DigitaloceanConfigArgs;
@@ -463,7 +464,9 @@ public final class MachineConfigV2Args extends com.pulumi.resources.ResourceArgs
         }
 
         public MachineConfigV2Args build() {
-            $.generateName = Objects.requireNonNull($.generateName, "expected parameter 'generateName' to be non-null");
+            if ($.generateName == null) {
+                throw new MissingRequiredPropertyException("MachineConfigV2Args", "generateName");
+            }
             return $;
         }
     }

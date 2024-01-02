@@ -102,26 +102,31 @@ public final class ClusterRkeConfigDnsLinearAutoscalerParams {
 
         @CustomType.Setter
         public Builder coresPerReplica(@Nullable Double coresPerReplica) {
+
             this.coresPerReplica = coresPerReplica;
             return this;
         }
         @CustomType.Setter
         public Builder max(@Nullable Integer max) {
+
             this.max = max;
             return this;
         }
         @CustomType.Setter
         public Builder min(@Nullable Integer min) {
+
             this.min = min;
             return this;
         }
         @CustomType.Setter
         public Builder nodesPerReplica(@Nullable Double nodesPerReplica) {
+
             this.nodesPerReplica = nodesPerReplica;
             return this;
         }
         @CustomType.Setter
         public Builder preventSinglePointFailure(@Nullable Boolean preventSinglePointFailure) {
+
             this.preventSinglePointFailure = preventSinglePointFailure;
             return this;
         }

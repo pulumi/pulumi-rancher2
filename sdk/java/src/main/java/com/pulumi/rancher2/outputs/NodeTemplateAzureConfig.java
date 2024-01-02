@@ -464,86 +464,103 @@ public final class NodeTemplateAzureConfig {
 
         @CustomType.Setter
         public Builder acceleratedNetworking(@Nullable Boolean acceleratedNetworking) {
+
             this.acceleratedNetworking = acceleratedNetworking;
             return this;
         }
         @CustomType.Setter
         public Builder availabilitySet(@Nullable String availabilitySet) {
+
             this.availabilitySet = availabilitySet;
             return this;
         }
         @CustomType.Setter
         public Builder availabilityZone(@Nullable String availabilityZone) {
+
             this.availabilityZone = availabilityZone;
             return this;
         }
         @CustomType.Setter
         public Builder clientId(@Nullable String clientId) {
+
             this.clientId = clientId;
             return this;
         }
         @CustomType.Setter
         public Builder clientSecret(@Nullable String clientSecret) {
+
             this.clientSecret = clientSecret;
             return this;
         }
         @CustomType.Setter
         public Builder customData(@Nullable String customData) {
+
             this.customData = customData;
             return this;
         }
         @CustomType.Setter
         public Builder diskSize(@Nullable String diskSize) {
+
             this.diskSize = diskSize;
             return this;
         }
         @CustomType.Setter
         public Builder dns(@Nullable String dns) {
+
             this.dns = dns;
             return this;
         }
         @CustomType.Setter
         public Builder dockerPort(@Nullable String dockerPort) {
+
             this.dockerPort = dockerPort;
             return this;
         }
         @CustomType.Setter
         public Builder environment(@Nullable String environment) {
+
             this.environment = environment;
             return this;
         }
         @CustomType.Setter
         public Builder faultDomainCount(@Nullable String faultDomainCount) {
+
             this.faultDomainCount = faultDomainCount;
             return this;
         }
         @CustomType.Setter
         public Builder image(@Nullable String image) {
+
             this.image = image;
             return this;
         }
         @CustomType.Setter
         public Builder location(@Nullable String location) {
+
             this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder managedDisks(@Nullable Boolean managedDisks) {
+
             this.managedDisks = managedDisks;
             return this;
         }
         @CustomType.Setter
         public Builder noPublicIp(@Nullable Boolean noPublicIp) {
+
             this.noPublicIp = noPublicIp;
             return this;
         }
         @CustomType.Setter
         public Builder nsg(@Nullable String nsg) {
+
             this.nsg = nsg;
             return this;
         }
         @CustomType.Setter
         public Builder openPorts(@Nullable List<String> openPorts) {
+
             this.openPorts = openPorts;
             return this;
         }
@@ -552,76 +569,91 @@ public final class NodeTemplateAzureConfig {
         }
         @CustomType.Setter
         public Builder plan(@Nullable String plan) {
+
             this.plan = plan;
             return this;
         }
         @CustomType.Setter
         public Builder privateIpAddress(@Nullable String privateIpAddress) {
+
             this.privateIpAddress = privateIpAddress;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroup(@Nullable String resourceGroup) {
+
             this.resourceGroup = resourceGroup;
             return this;
         }
         @CustomType.Setter
         public Builder size(@Nullable String size) {
+
             this.size = size;
             return this;
         }
         @CustomType.Setter
         public Builder sshUser(@Nullable String sshUser) {
+
             this.sshUser = sshUser;
             return this;
         }
         @CustomType.Setter
         public Builder staticPublicIp(@Nullable Boolean staticPublicIp) {
+
             this.staticPublicIp = staticPublicIp;
             return this;
         }
         @CustomType.Setter
         public Builder storageType(@Nullable String storageType) {
+
             this.storageType = storageType;
             return this;
         }
         @CustomType.Setter
         public Builder subnet(@Nullable String subnet) {
+
             this.subnet = subnet;
             return this;
         }
         @CustomType.Setter
         public Builder subnetPrefix(@Nullable String subnetPrefix) {
+
             this.subnetPrefix = subnetPrefix;
             return this;
         }
         @CustomType.Setter
         public Builder subscriptionId(@Nullable String subscriptionId) {
+
             this.subscriptionId = subscriptionId;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable String tags) {
+
             this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder updateDomainCount(@Nullable String updateDomainCount) {
+
             this.updateDomainCount = updateDomainCount;
             return this;
         }
         @CustomType.Setter
         public Builder usePrivateIp(@Nullable Boolean usePrivateIp) {
+
             this.usePrivateIp = usePrivateIp;
             return this;
         }
         @CustomType.Setter
         public Builder usePublicIpStandardSku(@Nullable Boolean usePublicIpStandardSku) {
+
             this.usePublicIpStandardSku = usePublicIpStandardSku;
             return this;
         }
         @CustomType.Setter
         public Builder vnet(@Nullable String vnet) {
+
             this.vnet = vnet;
             return this;
         }

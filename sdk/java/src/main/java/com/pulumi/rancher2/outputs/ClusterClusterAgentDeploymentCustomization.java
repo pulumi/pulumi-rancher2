@@ -75,6 +75,7 @@ public final class ClusterClusterAgentDeploymentCustomization {
 
         @CustomType.Setter
         public Builder appendTolerations(@Nullable List<ClusterClusterAgentDeploymentCustomizationAppendToleration> appendTolerations) {
+
             this.appendTolerations = appendTolerations;
             return this;
         }
@@ -83,11 +84,13 @@ public final class ClusterClusterAgentDeploymentCustomization {
         }
         @CustomType.Setter
         public Builder overrideAffinity(@Nullable String overrideAffinity) {
+
             this.overrideAffinity = overrideAffinity;
             return this;
         }
         @CustomType.Setter
         public Builder overrideResourceRequirements(@Nullable List<ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirement> overrideResourceRequirements) {
+
             this.overrideResourceRequirements = overrideResourceRequirements;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.rancher2;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -1225,12 +1226,24 @@ public final class AuthConfigOpenLdapArgs extends com.pulumi.resources.ResourceA
         }
 
         public AuthConfigOpenLdapArgs build() {
-            $.servers = Objects.requireNonNull($.servers, "expected parameter 'servers' to be non-null");
-            $.serviceAccountDistinguishedName = Objects.requireNonNull($.serviceAccountDistinguishedName, "expected parameter 'serviceAccountDistinguishedName' to be non-null");
-            $.serviceAccountPassword = Objects.requireNonNull($.serviceAccountPassword, "expected parameter 'serviceAccountPassword' to be non-null");
-            $.testPassword = Objects.requireNonNull($.testPassword, "expected parameter 'testPassword' to be non-null");
-            $.testUsername = Objects.requireNonNull($.testUsername, "expected parameter 'testUsername' to be non-null");
-            $.userSearchBase = Objects.requireNonNull($.userSearchBase, "expected parameter 'userSearchBase' to be non-null");
+            if ($.servers == null) {
+                throw new MissingRequiredPropertyException("AuthConfigOpenLdapArgs", "servers");
+            }
+            if ($.serviceAccountDistinguishedName == null) {
+                throw new MissingRequiredPropertyException("AuthConfigOpenLdapArgs", "serviceAccountDistinguishedName");
+            }
+            if ($.serviceAccountPassword == null) {
+                throw new MissingRequiredPropertyException("AuthConfigOpenLdapArgs", "serviceAccountPassword");
+            }
+            if ($.testPassword == null) {
+                throw new MissingRequiredPropertyException("AuthConfigOpenLdapArgs", "testPassword");
+            }
+            if ($.testUsername == null) {
+                throw new MissingRequiredPropertyException("AuthConfigOpenLdapArgs", "testUsername");
+            }
+            if ($.userSearchBase == null) {
+                throw new MissingRequiredPropertyException("AuthConfigOpenLdapArgs", "userSearchBase");
+            }
             return $;
         }
     }

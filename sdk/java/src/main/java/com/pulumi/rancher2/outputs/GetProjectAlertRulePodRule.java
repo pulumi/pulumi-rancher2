@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -55,21 +56,27 @@ public final class GetProjectAlertRulePodRule {
 
         @CustomType.Setter
         public Builder condition(@Nullable String condition) {
+
             this.condition = condition;
             return this;
         }
         @CustomType.Setter
         public Builder podId(String podId) {
-            this.podId = Objects.requireNonNull(podId);
+            if (podId == null) {
+              throw new MissingRequiredPropertyException("GetProjectAlertRulePodRule", "podId");
+            }
+            this.podId = podId;
             return this;
         }
         @CustomType.Setter
         public Builder restartIntervalSeconds(@Nullable Integer restartIntervalSeconds) {
+
             this.restartIntervalSeconds = restartIntervalSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder restartTimes(@Nullable Integer restartTimes) {
+
             this.restartTimes = restartTimes;
             return this;
         }

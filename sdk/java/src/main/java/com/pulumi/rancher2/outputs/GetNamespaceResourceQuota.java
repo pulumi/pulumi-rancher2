@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetNamespaceResourceQuotaLimit;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetNamespaceResourceQuota {
 
         @CustomType.Setter
         public Builder limit(GetNamespaceResourceQuotaLimit limit) {
-            this.limit = Objects.requireNonNull(limit);
+            if (limit == null) {
+              throw new MissingRequiredPropertyException("GetNamespaceResourceQuota", "limit");
+            }
+            this.limit = limit;
             return this;
         }
         public GetNamespaceResourceQuota build() {

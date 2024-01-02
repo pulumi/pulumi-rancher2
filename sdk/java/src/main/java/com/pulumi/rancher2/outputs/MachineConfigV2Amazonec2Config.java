@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -492,71 +493,87 @@ public final class MachineConfigV2Amazonec2Config {
 
         @CustomType.Setter
         public Builder accessKey(@Nullable String accessKey) {
+
             this.accessKey = accessKey;
             return this;
         }
         @CustomType.Setter
         public Builder ami(String ami) {
-            this.ami = Objects.requireNonNull(ami);
+            if (ami == null) {
+              throw new MissingRequiredPropertyException("MachineConfigV2Amazonec2Config", "ami");
+            }
+            this.ami = ami;
             return this;
         }
         @CustomType.Setter
         public Builder blockDurationMinutes(@Nullable String blockDurationMinutes) {
+
             this.blockDurationMinutes = blockDurationMinutes;
             return this;
         }
         @CustomType.Setter
         public Builder deviceName(@Nullable String deviceName) {
+
             this.deviceName = deviceName;
             return this;
         }
         @CustomType.Setter
         public Builder encryptEbsVolume(@Nullable Boolean encryptEbsVolume) {
+
             this.encryptEbsVolume = encryptEbsVolume;
             return this;
         }
         @CustomType.Setter
         public Builder endpoint(@Nullable String endpoint) {
+
             this.endpoint = endpoint;
             return this;
         }
         @CustomType.Setter
         public Builder httpEndpoint(@Nullable String httpEndpoint) {
+
             this.httpEndpoint = httpEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder httpTokens(@Nullable String httpTokens) {
+
             this.httpTokens = httpTokens;
             return this;
         }
         @CustomType.Setter
         public Builder iamInstanceProfile(@Nullable String iamInstanceProfile) {
+
             this.iamInstanceProfile = iamInstanceProfile;
             return this;
         }
         @CustomType.Setter
         public Builder insecureTransport(@Nullable Boolean insecureTransport) {
+
             this.insecureTransport = insecureTransport;
             return this;
         }
         @CustomType.Setter
         public Builder instanceType(@Nullable String instanceType) {
+
             this.instanceType = instanceType;
             return this;
         }
         @CustomType.Setter
         public Builder kmsKey(@Nullable String kmsKey) {
+
             this.kmsKey = kmsKey;
             return this;
         }
         @CustomType.Setter
         public Builder monitoring(@Nullable Boolean monitoring) {
+
             this.monitoring = monitoring;
             return this;
         }
         @CustomType.Setter
         public Builder openPorts(@Nullable List<String> openPorts) {
+
             this.openPorts = openPorts;
             return this;
         }
@@ -565,42 +582,54 @@ public final class MachineConfigV2Amazonec2Config {
         }
         @CustomType.Setter
         public Builder privateAddressOnly(@Nullable Boolean privateAddressOnly) {
+
             this.privateAddressOnly = privateAddressOnly;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("MachineConfigV2Amazonec2Config", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder requestSpotInstance(@Nullable Boolean requestSpotInstance) {
+
             this.requestSpotInstance = requestSpotInstance;
             return this;
         }
         @CustomType.Setter
         public Builder retries(@Nullable String retries) {
+
             this.retries = retries;
             return this;
         }
         @CustomType.Setter
         public Builder rootSize(@Nullable String rootSize) {
+
             this.rootSize = rootSize;
             return this;
         }
         @CustomType.Setter
         public Builder secretKey(@Nullable String secretKey) {
+
             this.secretKey = secretKey;
             return this;
         }
         @CustomType.Setter
         public Builder securityGroupReadonly(@Nullable Boolean securityGroupReadonly) {
+
             this.securityGroupReadonly = securityGroupReadonly;
             return this;
         }
         @CustomType.Setter
         public Builder securityGroups(List<String> securityGroups) {
-            this.securityGroups = Objects.requireNonNull(securityGroups);
+            if (securityGroups == null) {
+              throw new MissingRequiredPropertyException("MachineConfigV2Amazonec2Config", "securityGroups");
+            }
+            this.securityGroups = securityGroups;
             return this;
         }
         public Builder securityGroups(String... securityGroups) {
@@ -608,62 +637,80 @@ public final class MachineConfigV2Amazonec2Config {
         }
         @CustomType.Setter
         public Builder sessionToken(@Nullable String sessionToken) {
+
             this.sessionToken = sessionToken;
             return this;
         }
         @CustomType.Setter
         public Builder spotPrice(@Nullable String spotPrice) {
+
             this.spotPrice = spotPrice;
             return this;
         }
         @CustomType.Setter
         public Builder sshKeyContents(@Nullable String sshKeyContents) {
+
             this.sshKeyContents = sshKeyContents;
             return this;
         }
         @CustomType.Setter
         public Builder sshUser(@Nullable String sshUser) {
+
             this.sshUser = sshUser;
             return this;
         }
         @CustomType.Setter
         public Builder subnetId(String subnetId) {
-            this.subnetId = Objects.requireNonNull(subnetId);
+            if (subnetId == null) {
+              throw new MissingRequiredPropertyException("MachineConfigV2Amazonec2Config", "subnetId");
+            }
+            this.subnetId = subnetId;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable String tags) {
+
             this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder useEbsOptimizedInstance(@Nullable Boolean useEbsOptimizedInstance) {
+
             this.useEbsOptimizedInstance = useEbsOptimizedInstance;
             return this;
         }
         @CustomType.Setter
         public Builder usePrivateAddress(@Nullable Boolean usePrivateAddress) {
+
             this.usePrivateAddress = usePrivateAddress;
             return this;
         }
         @CustomType.Setter
         public Builder userdata(@Nullable String userdata) {
+
             this.userdata = userdata;
             return this;
         }
         @CustomType.Setter
         public Builder volumeType(@Nullable String volumeType) {
+
             this.volumeType = volumeType;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("MachineConfigV2Amazonec2Config", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         @CustomType.Setter
         public Builder zone(String zone) {
-            this.zone = Objects.requireNonNull(zone);
+            if (zone == null) {
+              throw new MissingRequiredPropertyException("MachineConfigV2Amazonec2Config", "zone");
+            }
+            this.zone = zone;
             return this;
         }
         public MachineConfigV2Amazonec2Config build() {

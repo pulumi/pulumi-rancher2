@@ -88,21 +88,25 @@ public final class ClusterV2RkeConfigUpgradeStrategy {
 
         @CustomType.Setter
         public Builder controlPlaneConcurrency(@Nullable String controlPlaneConcurrency) {
+
             this.controlPlaneConcurrency = controlPlaneConcurrency;
             return this;
         }
         @CustomType.Setter
         public Builder controlPlaneDrainOptions(@Nullable ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions controlPlaneDrainOptions) {
+
             this.controlPlaneDrainOptions = controlPlaneDrainOptions;
             return this;
         }
         @CustomType.Setter
         public Builder workerConcurrency(@Nullable String workerConcurrency) {
+
             this.workerConcurrency = workerConcurrency;
             return this;
         }
         @CustomType.Setter
         public Builder workerDrainOptions(@Nullable ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions workerDrainOptions) {
+
             this.workerDrainOptions = workerDrainOptions;
             return this;
         }

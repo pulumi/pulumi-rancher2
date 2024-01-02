@@ -36,6 +36,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkC
 
         @CustomType.Setter
         public Builder cloudProvider(@Nullable String cloudProvider) {
+
             this.cloudProvider = cloudProvider;
             return this;
         }

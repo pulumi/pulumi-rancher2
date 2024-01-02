@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigArgs;
 import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionQuestionArgs;
 import java.lang.Boolean;
@@ -388,8 +389,12 @@ public final class ClusterTemplateTemplateRevisionArgs extends com.pulumi.resour
         }
 
         public ClusterTemplateTemplateRevisionArgs build() {
-            $.clusterConfig = Objects.requireNonNull($.clusterConfig, "expected parameter 'clusterConfig' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.clusterConfig == null) {
+                throw new MissingRequiredPropertyException("ClusterTemplateTemplateRevisionArgs", "clusterConfig");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("ClusterTemplateTemplateRevisionArgs", "name");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetNotifierDingtalkConfig;
 import com.pulumi.rancher2.outputs.GetNotifierMsteamsConfig;
 import com.pulumi.rancher2.outputs.GetNotifierPagerdutyConfig;
@@ -205,67 +206,102 @@ public final class GetNotifierResult {
 
         @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
-            this.annotations = Objects.requireNonNull(annotations);
+            if (annotations == null) {
+              throw new MissingRequiredPropertyException("GetNotifierResult", "annotations");
+            }
+            this.annotations = annotations;
             return this;
         }
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetNotifierResult", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetNotifierResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder dingtalkConfig(@Nullable GetNotifierDingtalkConfig dingtalkConfig) {
+
             this.dingtalkConfig = dingtalkConfig;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetNotifierResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetNotifierResult", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder msteamsConfig(@Nullable GetNotifierMsteamsConfig msteamsConfig) {
+
             this.msteamsConfig = msteamsConfig;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetNotifierResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder pagerdutyConfig(GetNotifierPagerdutyConfig pagerdutyConfig) {
-            this.pagerdutyConfig = Objects.requireNonNull(pagerdutyConfig);
+            if (pagerdutyConfig == null) {
+              throw new MissingRequiredPropertyException("GetNotifierResult", "pagerdutyConfig");
+            }
+            this.pagerdutyConfig = pagerdutyConfig;
             return this;
         }
         @CustomType.Setter
         public Builder slackConfig(GetNotifierSlackConfig slackConfig) {
-            this.slackConfig = Objects.requireNonNull(slackConfig);
+            if (slackConfig == null) {
+              throw new MissingRequiredPropertyException("GetNotifierResult", "slackConfig");
+            }
+            this.slackConfig = slackConfig;
             return this;
         }
         @CustomType.Setter
         public Builder smtpConfig(GetNotifierSmtpConfig smtpConfig) {
-            this.smtpConfig = Objects.requireNonNull(smtpConfig);
+            if (smtpConfig == null) {
+              throw new MissingRequiredPropertyException("GetNotifierResult", "smtpConfig");
+            }
+            this.smtpConfig = smtpConfig;
             return this;
         }
         @CustomType.Setter
         public Builder webhookConfig(GetNotifierWebhookConfig webhookConfig) {
-            this.webhookConfig = Objects.requireNonNull(webhookConfig);
+            if (webhookConfig == null) {
+              throw new MissingRequiredPropertyException("GetNotifierResult", "webhookConfig");
+            }
+            this.webhookConfig = webhookConfig;
             return this;
         }
         @CustomType.Setter
         public Builder wechatConfig(GetNotifierWechatConfig wechatConfig) {
-            this.wechatConfig = Objects.requireNonNull(wechatConfig);
+            if (wechatConfig == null) {
+              throw new MissingRequiredPropertyException("GetNotifierResult", "wechatConfig");
+            }
+            this.wechatConfig = wechatConfig;
             return this;
         }
         public GetNotifierResult build() {

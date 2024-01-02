@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -79,21 +80,27 @@ public final class ProjectAlertGroupRecipient {
 
         @CustomType.Setter
         public Builder defaultRecipient(@Nullable Boolean defaultRecipient) {
+
             this.defaultRecipient = defaultRecipient;
             return this;
         }
         @CustomType.Setter
         public Builder notifierId(String notifierId) {
-            this.notifierId = Objects.requireNonNull(notifierId);
+            if (notifierId == null) {
+              throw new MissingRequiredPropertyException("ProjectAlertGroupRecipient", "notifierId");
+            }
+            this.notifierId = notifierId;
             return this;
         }
         @CustomType.Setter
         public Builder notifierType(@Nullable String notifierType) {
+
             this.notifierType = notifierType;
             return this;
         }
         @CustomType.Setter
         public Builder recipient(@Nullable String recipient) {
+
             this.recipient = recipient;
             return this;
         }

@@ -166,41 +166,49 @@ public final class ClusterRkeConfigNetwork {
 
         @CustomType.Setter
         public Builder aciNetworkProvider(@Nullable ClusterRkeConfigNetworkAciNetworkProvider aciNetworkProvider) {
+
             this.aciNetworkProvider = aciNetworkProvider;
             return this;
         }
         @CustomType.Setter
         public Builder calicoNetworkProvider(@Nullable ClusterRkeConfigNetworkCalicoNetworkProvider calicoNetworkProvider) {
+
             this.calicoNetworkProvider = calicoNetworkProvider;
             return this;
         }
         @CustomType.Setter
         public Builder canalNetworkProvider(@Nullable ClusterRkeConfigNetworkCanalNetworkProvider canalNetworkProvider) {
+
             this.canalNetworkProvider = canalNetworkProvider;
             return this;
         }
         @CustomType.Setter
         public Builder flannelNetworkProvider(@Nullable ClusterRkeConfigNetworkFlannelNetworkProvider flannelNetworkProvider) {
+
             this.flannelNetworkProvider = flannelNetworkProvider;
             return this;
         }
         @CustomType.Setter
         public Builder mtu(@Nullable Integer mtu) {
+
             this.mtu = mtu;
             return this;
         }
         @CustomType.Setter
         public Builder options(@Nullable Map<String,Object> options) {
+
             this.options = options;
             return this;
         }
         @CustomType.Setter
         public Builder plugin(@Nullable String plugin) {
+
             this.plugin = plugin;
             return this;
         }
         @CustomType.Setter
         public Builder tolerations(@Nullable List<ClusterRkeConfigNetworkToleration> tolerations) {
+
             this.tolerations = tolerations;
             return this;
         }
@@ -209,6 +217,7 @@ public final class ClusterRkeConfigNetwork {
         }
         @CustomType.Setter
         public Builder weaveNetworkProvider(@Nullable ClusterRkeConfigNetworkWeaveNetworkProvider weaveNetworkProvider) {
+
             this.weaveNetworkProvider = weaveNetworkProvider;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -77,7 +78,9 @@ public final class GetNotifierDingtalkConfig extends com.pulumi.resources.Invoke
         }
 
         public GetNotifierDingtalkConfig build() {
-            $.url = Objects.requireNonNull($.url, "expected parameter 'url' to be non-null");
+            if ($.url == null) {
+                throw new MissingRequiredPropertyException("GetNotifierDingtalkConfig", "url");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -1470,9 +1471,15 @@ public final class NodeTemplateOpenstackConfigArgs extends com.pulumi.resources.
         }
 
         public NodeTemplateOpenstackConfigArgs build() {
-            $.authUrl = Objects.requireNonNull($.authUrl, "expected parameter 'authUrl' to be non-null");
-            $.availabilityZone = Objects.requireNonNull($.availabilityZone, "expected parameter 'availabilityZone' to be non-null");
-            $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");
+            if ($.authUrl == null) {
+                throw new MissingRequiredPropertyException("NodeTemplateOpenstackConfigArgs", "authUrl");
+            }
+            if ($.availabilityZone == null) {
+                throw new MissingRequiredPropertyException("NodeTemplateOpenstackConfigArgs", "availabilityZone");
+            }
+            if ($.region == null) {
+                throw new MissingRequiredPropertyException("NodeTemplateOpenstackConfigArgs", "region");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.rancher2;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.inputs.ProjectContainerResourceLimitArgs;
 import com.pulumi.rancher2.inputs.ProjectProjectMonitoringInputArgs;
 import com.pulumi.rancher2.inputs.ProjectResourceQuotaArgs;
@@ -452,7 +453,9 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ProjectArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("ProjectArgs", "clusterId");
+            }
             return $;
         }
     }

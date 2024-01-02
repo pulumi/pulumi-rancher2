@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage;
 import com.pulumi.rancher2.outputs.ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal;
 import com.pulumi.rancher2.outputs.ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer;
@@ -104,26 +105,33 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProvider {
 
         @CustomType.Setter
         public Builder blockStorage(@Nullable ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage blockStorage) {
+
             this.blockStorage = blockStorage;
             return this;
         }
         @CustomType.Setter
         public Builder global(ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal global) {
-            this.global = Objects.requireNonNull(global);
+            if (global == null) {
+              throw new MissingRequiredPropertyException("ClusterRkeConfigCloudProviderOpenstackCloudProvider", "global");
+            }
+            this.global = global;
             return this;
         }
         @CustomType.Setter
         public Builder loadBalancer(@Nullable ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer loadBalancer) {
+
             this.loadBalancer = loadBalancer;
             return this;
         }
         @CustomType.Setter
         public Builder metadata(@Nullable ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata metadata) {
+
             this.metadata = metadata;
             return this;
         }
         @CustomType.Setter
         public Builder route(@Nullable ClusterRkeConfigCloudProviderOpenstackCloudProviderRoute route) {
+
             this.route = route;
             return this;
         }

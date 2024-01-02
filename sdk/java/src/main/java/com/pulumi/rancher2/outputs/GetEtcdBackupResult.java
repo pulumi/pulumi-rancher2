@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetEtcdBackupBackupConfig;
 import java.lang.Boolean;
 import java.lang.Object;
@@ -142,47 +143,74 @@ public final class GetEtcdBackupResult {
 
         @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
-            this.annotations = Objects.requireNonNull(annotations);
+            if (annotations == null) {
+              throw new MissingRequiredPropertyException("GetEtcdBackupResult", "annotations");
+            }
+            this.annotations = annotations;
             return this;
         }
         @CustomType.Setter
         public Builder backupConfig(GetEtcdBackupBackupConfig backupConfig) {
-            this.backupConfig = Objects.requireNonNull(backupConfig);
+            if (backupConfig == null) {
+              throw new MissingRequiredPropertyException("GetEtcdBackupResult", "backupConfig");
+            }
+            this.backupConfig = backupConfig;
             return this;
         }
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetEtcdBackupResult", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder filename(String filename) {
-            this.filename = Objects.requireNonNull(filename);
+            if (filename == null) {
+              throw new MissingRequiredPropertyException("GetEtcdBackupResult", "filename");
+            }
+            this.filename = filename;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEtcdBackupResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetEtcdBackupResult", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder manual(Boolean manual) {
-            this.manual = Objects.requireNonNull(manual);
+            if (manual == null) {
+              throw new MissingRequiredPropertyException("GetEtcdBackupResult", "manual");
+            }
+            this.manual = manual;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetEtcdBackupResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder namespaceId(String namespaceId) {
-            this.namespaceId = Objects.requireNonNull(namespaceId);
+            if (namespaceId == null) {
+              throw new MissingRequiredPropertyException("GetEtcdBackupResult", "namespaceId");
+            }
+            this.namespaceId = namespaceId;
             return this;
         }
         public GetEtcdBackupResult build() {

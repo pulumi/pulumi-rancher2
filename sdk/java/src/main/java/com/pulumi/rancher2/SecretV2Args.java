@@ -5,6 +5,7 @@ package com.pulumi.rancher2;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -338,8 +339,12 @@ public final class SecretV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         public SecretV2Args build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
-            $.data = Objects.requireNonNull($.data, "expected parameter 'data' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("SecretV2Args", "clusterId");
+            }
+            if ($.data == null) {
+                throw new MissingRequiredPropertyException("SecretV2Args", "data");
+            }
             return $;
         }
     }

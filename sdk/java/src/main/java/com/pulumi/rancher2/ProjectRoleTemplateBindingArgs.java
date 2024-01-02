@@ -5,6 +5,7 @@ package com.pulumi.rancher2;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -382,8 +383,12 @@ public final class ProjectRoleTemplateBindingArgs extends com.pulumi.resources.R
         }
 
         public ProjectRoleTemplateBindingArgs build() {
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
-            $.roleTemplateId = Objects.requireNonNull($.roleTemplateId, "expected parameter 'roleTemplateId' to be non-null");
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("ProjectRoleTemplateBindingArgs", "projectId");
+            }
+            if ($.roleTemplateId == null) {
+                throw new MissingRequiredPropertyException("ProjectRoleTemplateBindingArgs", "roleTemplateId");
+            }
             return $;
         }
     }

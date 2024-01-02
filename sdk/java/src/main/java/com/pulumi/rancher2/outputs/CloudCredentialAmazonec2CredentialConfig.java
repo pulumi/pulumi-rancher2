@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -72,17 +73,24 @@ public final class CloudCredentialAmazonec2CredentialConfig {
 
         @CustomType.Setter
         public Builder accessKey(String accessKey) {
-            this.accessKey = Objects.requireNonNull(accessKey);
+            if (accessKey == null) {
+              throw new MissingRequiredPropertyException("CloudCredentialAmazonec2CredentialConfig", "accessKey");
+            }
+            this.accessKey = accessKey;
             return this;
         }
         @CustomType.Setter
         public Builder defaultRegion(@Nullable String defaultRegion) {
+
             this.defaultRegion = defaultRegion;
             return this;
         }
         @CustomType.Setter
         public Builder secretKey(String secretKey) {
-            this.secretKey = Objects.requireNonNull(secretKey);
+            if (secretKey == null) {
+              throw new MissingRequiredPropertyException("CloudCredentialAmazonec2CredentialConfig", "secretKey");
+            }
+            this.secretKey = secretKey;
             return this;
         }
         public CloudCredentialAmazonec2CredentialConfig build() {

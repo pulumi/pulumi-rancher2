@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.inputs.ClusterEksConfigV2NodeGroupArgs;
 import java.lang.Boolean;
 import java.lang.Object;
@@ -686,7 +687,9 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         public ClusterEksConfigV2Args build() {
-            $.cloudCredentialId = Objects.requireNonNull($.cloudCredentialId, "expected parameter 'cloudCredentialId' to be non-null");
+            if ($.cloudCredentialId == null) {
+                throw new MissingRequiredPropertyException("ClusterEksConfigV2Args", "cloudCredentialId");
+            }
             return $;
         }
     }
