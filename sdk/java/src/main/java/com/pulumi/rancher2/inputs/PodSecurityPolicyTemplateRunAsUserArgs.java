@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.inputs.PodSecurityPolicyTemplateRunAsUserRangeArgs;
 import java.lang.String;
 import java.util.List;
@@ -125,7 +126,9 @@ public final class PodSecurityPolicyTemplateRunAsUserArgs extends com.pulumi.res
         }
 
         public PodSecurityPolicyTemplateRunAsUserArgs build() {
-            $.rule = Objects.requireNonNull($.rule, "expected parameter 'rule' to be non-null");
+            if ($.rule == null) {
+                throw new MissingRequiredPropertyException("PodSecurityPolicyTemplateRunAsUserArgs", "rule");
+            }
             return $;
         }
     }

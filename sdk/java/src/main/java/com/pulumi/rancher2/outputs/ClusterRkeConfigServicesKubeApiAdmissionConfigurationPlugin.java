@@ -72,16 +72,19 @@ public final class ClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin {
 
         @CustomType.Setter
         public Builder configuration(@Nullable String configuration) {
+
             this.configuration = configuration;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder path(@Nullable String path) {
+
             this.path = path;
             return this;
         }

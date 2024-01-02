@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
@@ -85,47 +86,62 @@ public final class GetClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions 
 
         @CustomType.Setter
         public Builder deleteEmptyDirData(@Nullable Boolean deleteEmptyDirData) {
+
             this.deleteEmptyDirData = deleteEmptyDirData;
             return this;
         }
         @CustomType.Setter
         public Builder disableEviction(@Nullable Boolean disableEviction) {
+
             this.disableEviction = disableEviction;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder force(@Nullable Boolean force) {
+
             this.force = force;
             return this;
         }
         @CustomType.Setter
         public Builder gracePeriod(Integer gracePeriod) {
-            this.gracePeriod = Objects.requireNonNull(gracePeriod);
+            if (gracePeriod == null) {
+              throw new MissingRequiredPropertyException("GetClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions", "gracePeriod");
+            }
+            this.gracePeriod = gracePeriod;
             return this;
         }
         @CustomType.Setter
         public Builder ignoreDaemonSets(@Nullable Boolean ignoreDaemonSets) {
+
             this.ignoreDaemonSets = ignoreDaemonSets;
             return this;
         }
         @CustomType.Setter
         public Builder ignoreErrors(@Nullable Boolean ignoreErrors) {
+
             this.ignoreErrors = ignoreErrors;
             return this;
         }
         @CustomType.Setter
         public Builder skipWaitForDeleteTimeoutSeconds(Integer skipWaitForDeleteTimeoutSeconds) {
-            this.skipWaitForDeleteTimeoutSeconds = Objects.requireNonNull(skipWaitForDeleteTimeoutSeconds);
+            if (skipWaitForDeleteTimeoutSeconds == null) {
+              throw new MissingRequiredPropertyException("GetClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions", "skipWaitForDeleteTimeoutSeconds");
+            }
+            this.skipWaitForDeleteTimeoutSeconds = skipWaitForDeleteTimeoutSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder timeout(Integer timeout) {
-            this.timeout = Objects.requireNonNull(timeout);
+            if (timeout == null) {
+              throw new MissingRequiredPropertyException("GetClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions", "timeout");
+            }
+            this.timeout = timeout;
             return this;
         }
         public GetClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions build() {

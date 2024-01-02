@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -47,17 +48,26 @@ public final class GetClusterRkeConfigCloudProviderOpenstackCloudProviderBlockSt
 
         @CustomType.Setter
         public Builder bsVersion(String bsVersion) {
-            this.bsVersion = Objects.requireNonNull(bsVersion);
+            if (bsVersion == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage", "bsVersion");
+            }
+            this.bsVersion = bsVersion;
             return this;
         }
         @CustomType.Setter
         public Builder ignoreVolumeAz(Boolean ignoreVolumeAz) {
-            this.ignoreVolumeAz = Objects.requireNonNull(ignoreVolumeAz);
+            if (ignoreVolumeAz == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage", "ignoreVolumeAz");
+            }
+            this.ignoreVolumeAz = ignoreVolumeAz;
             return this;
         }
         @CustomType.Setter
         public Builder trustDevicePath(Boolean trustDevicePath) {
-            this.trustDevicePath = Objects.requireNonNull(trustDevicePath);
+            if (trustDevicePath == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage", "trustDevicePath");
+            }
+            this.trustDevicePath = trustDevicePath;
             return this;
         }
         public GetClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage build() {

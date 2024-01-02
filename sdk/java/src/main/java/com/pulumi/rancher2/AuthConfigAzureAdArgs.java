@@ -5,6 +5,7 @@ package com.pulumi.rancher2;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -534,13 +535,27 @@ public final class AuthConfigAzureAdArgs extends com.pulumi.resources.ResourceAr
         }
 
         public AuthConfigAzureAdArgs build() {
-            $.applicationId = Objects.requireNonNull($.applicationId, "expected parameter 'applicationId' to be non-null");
-            $.applicationSecret = Objects.requireNonNull($.applicationSecret, "expected parameter 'applicationSecret' to be non-null");
-            $.authEndpoint = Objects.requireNonNull($.authEndpoint, "expected parameter 'authEndpoint' to be non-null");
-            $.graphEndpoint = Objects.requireNonNull($.graphEndpoint, "expected parameter 'graphEndpoint' to be non-null");
-            $.rancherUrl = Objects.requireNonNull($.rancherUrl, "expected parameter 'rancherUrl' to be non-null");
-            $.tenantId = Objects.requireNonNull($.tenantId, "expected parameter 'tenantId' to be non-null");
-            $.tokenEndpoint = Objects.requireNonNull($.tokenEndpoint, "expected parameter 'tokenEndpoint' to be non-null");
+            if ($.applicationId == null) {
+                throw new MissingRequiredPropertyException("AuthConfigAzureAdArgs", "applicationId");
+            }
+            if ($.applicationSecret == null) {
+                throw new MissingRequiredPropertyException("AuthConfigAzureAdArgs", "applicationSecret");
+            }
+            if ($.authEndpoint == null) {
+                throw new MissingRequiredPropertyException("AuthConfigAzureAdArgs", "authEndpoint");
+            }
+            if ($.graphEndpoint == null) {
+                throw new MissingRequiredPropertyException("AuthConfigAzureAdArgs", "graphEndpoint");
+            }
+            if ($.rancherUrl == null) {
+                throw new MissingRequiredPropertyException("AuthConfigAzureAdArgs", "rancherUrl");
+            }
+            if ($.tenantId == null) {
+                throw new MissingRequiredPropertyException("AuthConfigAzureAdArgs", "tenantId");
+            }
+            if ($.tokenEndpoint == null) {
+                throw new MissingRequiredPropertyException("AuthConfigAzureAdArgs", "tokenEndpoint");
+            }
             return $;
         }
     }

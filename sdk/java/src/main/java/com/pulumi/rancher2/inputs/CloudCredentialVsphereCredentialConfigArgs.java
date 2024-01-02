@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -187,9 +188,15 @@ public final class CloudCredentialVsphereCredentialConfigArgs extends com.pulumi
         }
 
         public CloudCredentialVsphereCredentialConfigArgs build() {
-            $.password = Objects.requireNonNull($.password, "expected parameter 'password' to be non-null");
-            $.username = Objects.requireNonNull($.username, "expected parameter 'username' to be non-null");
-            $.vcenter = Objects.requireNonNull($.vcenter, "expected parameter 'vcenter' to be non-null");
+            if ($.password == null) {
+                throw new MissingRequiredPropertyException("CloudCredentialVsphereCredentialConfigArgs", "password");
+            }
+            if ($.username == null) {
+                throw new MissingRequiredPropertyException("CloudCredentialVsphereCredentialConfigArgs", "username");
+            }
+            if ($.vcenter == null) {
+                throw new MissingRequiredPropertyException("CloudCredentialVsphereCredentialConfigArgs", "vcenter");
+            }
             return $;
         }
     }

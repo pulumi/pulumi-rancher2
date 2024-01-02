@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.ClusterEksConfigV2NodeGroupLaunchTemplate;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -302,41 +303,49 @@ public final class ClusterEksConfigV2NodeGroup {
 
         @CustomType.Setter
         public Builder desiredSize(@Nullable Integer desiredSize) {
+
             this.desiredSize = desiredSize;
             return this;
         }
         @CustomType.Setter
         public Builder diskSize(@Nullable Integer diskSize) {
+
             this.diskSize = diskSize;
             return this;
         }
         @CustomType.Setter
         public Builder ec2SshKey(@Nullable String ec2SshKey) {
+
             this.ec2SshKey = ec2SshKey;
             return this;
         }
         @CustomType.Setter
         public Builder gpu(@Nullable Boolean gpu) {
+
             this.gpu = gpu;
             return this;
         }
         @CustomType.Setter
         public Builder imageId(@Nullable String imageId) {
+
             this.imageId = imageId;
             return this;
         }
         @CustomType.Setter
         public Builder instanceType(@Nullable String instanceType) {
+
             this.instanceType = instanceType;
             return this;
         }
         @CustomType.Setter
         public Builder labels(@Nullable Map<String,Object> labels) {
+
             this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder launchTemplates(@Nullable List<ClusterEksConfigV2NodeGroupLaunchTemplate> launchTemplates) {
+
             this.launchTemplates = launchTemplates;
             return this;
         }
@@ -345,36 +354,45 @@ public final class ClusterEksConfigV2NodeGroup {
         }
         @CustomType.Setter
         public Builder maxSize(@Nullable Integer maxSize) {
+
             this.maxSize = maxSize;
             return this;
         }
         @CustomType.Setter
         public Builder minSize(@Nullable Integer minSize) {
+
             this.minSize = minSize;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("ClusterEksConfigV2NodeGroup", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nodeRole(@Nullable String nodeRole) {
+
             this.nodeRole = nodeRole;
             return this;
         }
         @CustomType.Setter
         public Builder requestSpotInstances(@Nullable Boolean requestSpotInstances) {
+
             this.requestSpotInstances = requestSpotInstances;
             return this;
         }
         @CustomType.Setter
         public Builder resourceTags(@Nullable Map<String,Object> resourceTags) {
+
             this.resourceTags = resourceTags;
             return this;
         }
         @CustomType.Setter
         public Builder spotInstanceTypes(@Nullable List<String> spotInstanceTypes) {
+
             this.spotInstanceTypes = spotInstanceTypes;
             return this;
         }
@@ -383,6 +401,7 @@ public final class ClusterEksConfigV2NodeGroup {
         }
         @CustomType.Setter
         public Builder subnets(@Nullable List<String> subnets) {
+
             this.subnets = subnets;
             return this;
         }
@@ -391,16 +410,19 @@ public final class ClusterEksConfigV2NodeGroup {
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
+
             this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder userData(@Nullable String userData) {
+
             this.userData = userData;
             return this;
         }
         @CustomType.Setter
         public Builder version(@Nullable String version) {
+
             this.version = version;
             return this;
         }

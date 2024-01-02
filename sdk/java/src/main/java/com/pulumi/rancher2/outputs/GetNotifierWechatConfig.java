@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -66,32 +67,46 @@ public final class GetNotifierWechatConfig {
 
         @CustomType.Setter
         public Builder agent(String agent) {
-            this.agent = Objects.requireNonNull(agent);
+            if (agent == null) {
+              throw new MissingRequiredPropertyException("GetNotifierWechatConfig", "agent");
+            }
+            this.agent = agent;
             return this;
         }
         @CustomType.Setter
         public Builder corp(String corp) {
-            this.corp = Objects.requireNonNull(corp);
+            if (corp == null) {
+              throw new MissingRequiredPropertyException("GetNotifierWechatConfig", "corp");
+            }
+            this.corp = corp;
             return this;
         }
         @CustomType.Setter
         public Builder defaultRecipient(String defaultRecipient) {
-            this.defaultRecipient = Objects.requireNonNull(defaultRecipient);
+            if (defaultRecipient == null) {
+              throw new MissingRequiredPropertyException("GetNotifierWechatConfig", "defaultRecipient");
+            }
+            this.defaultRecipient = defaultRecipient;
             return this;
         }
         @CustomType.Setter
         public Builder proxyUrl(@Nullable String proxyUrl) {
+
             this.proxyUrl = proxyUrl;
             return this;
         }
         @CustomType.Setter
         public Builder recipientType(@Nullable String recipientType) {
+
             this.recipientType = recipientType;
             return this;
         }
         @CustomType.Setter
         public Builder secret(String secret) {
-            this.secret = Objects.requireNonNull(secret);
+            if (secret == null) {
+              throw new MissingRequiredPropertyException("GetNotifierWechatConfig", "secret");
+            }
+            this.secret = secret;
             return this;
         }
         public GetNotifierWechatConfig build() {

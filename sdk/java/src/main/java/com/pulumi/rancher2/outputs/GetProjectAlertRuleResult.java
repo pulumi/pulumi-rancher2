@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetProjectAlertRuleMetricRule;
 import com.pulumi.rancher2.outputs.GetProjectAlertRulePodRule;
 import com.pulumi.rancher2.outputs.GetProjectAlertRuleWorkloadRule;
@@ -216,72 +217,112 @@ public final class GetProjectAlertRuleResult {
 
         @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
-            this.annotations = Objects.requireNonNull(annotations);
+            if (annotations == null) {
+              throw new MissingRequiredPropertyException("GetProjectAlertRuleResult", "annotations");
+            }
+            this.annotations = annotations;
             return this;
         }
         @CustomType.Setter
         public Builder groupId(String groupId) {
-            this.groupId = Objects.requireNonNull(groupId);
+            if (groupId == null) {
+              throw new MissingRequiredPropertyException("GetProjectAlertRuleResult", "groupId");
+            }
+            this.groupId = groupId;
             return this;
         }
         @CustomType.Setter
         public Builder groupIntervalSeconds(Integer groupIntervalSeconds) {
-            this.groupIntervalSeconds = Objects.requireNonNull(groupIntervalSeconds);
+            if (groupIntervalSeconds == null) {
+              throw new MissingRequiredPropertyException("GetProjectAlertRuleResult", "groupIntervalSeconds");
+            }
+            this.groupIntervalSeconds = groupIntervalSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder groupWaitSeconds(Integer groupWaitSeconds) {
-            this.groupWaitSeconds = Objects.requireNonNull(groupWaitSeconds);
+            if (groupWaitSeconds == null) {
+              throw new MissingRequiredPropertyException("GetProjectAlertRuleResult", "groupWaitSeconds");
+            }
+            this.groupWaitSeconds = groupWaitSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetProjectAlertRuleResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder inherited(Boolean inherited) {
-            this.inherited = Objects.requireNonNull(inherited);
+            if (inherited == null) {
+              throw new MissingRequiredPropertyException("GetProjectAlertRuleResult", "inherited");
+            }
+            this.inherited = inherited;
             return this;
         }
         @CustomType.Setter
         public Builder labels(@Nullable Map<String,Object> labels) {
+
             this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder metricRule(GetProjectAlertRuleMetricRule metricRule) {
-            this.metricRule = Objects.requireNonNull(metricRule);
+            if (metricRule == null) {
+              throw new MissingRequiredPropertyException("GetProjectAlertRuleResult", "metricRule");
+            }
+            this.metricRule = metricRule;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetProjectAlertRuleResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder podRule(GetProjectAlertRulePodRule podRule) {
-            this.podRule = Objects.requireNonNull(podRule);
+            if (podRule == null) {
+              throw new MissingRequiredPropertyException("GetProjectAlertRuleResult", "podRule");
+            }
+            this.podRule = podRule;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetProjectAlertRuleResult", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder repeatIntervalSeconds(Integer repeatIntervalSeconds) {
-            this.repeatIntervalSeconds = Objects.requireNonNull(repeatIntervalSeconds);
+            if (repeatIntervalSeconds == null) {
+              throw new MissingRequiredPropertyException("GetProjectAlertRuleResult", "repeatIntervalSeconds");
+            }
+            this.repeatIntervalSeconds = repeatIntervalSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder severity(String severity) {
-            this.severity = Objects.requireNonNull(severity);
+            if (severity == null) {
+              throw new MissingRequiredPropertyException("GetProjectAlertRuleResult", "severity");
+            }
+            this.severity = severity;
             return this;
         }
         @CustomType.Setter
         public Builder workloadRule(GetProjectAlertRuleWorkloadRule workloadRule) {
-            this.workloadRule = Objects.requireNonNull(workloadRule);
+            if (workloadRule == null) {
+              throw new MissingRequiredPropertyException("GetProjectAlertRuleResult", "workloadRule");
+            }
+            this.workloadRule = workloadRule;
             return this;
         }
         public GetProjectAlertRuleResult build() {

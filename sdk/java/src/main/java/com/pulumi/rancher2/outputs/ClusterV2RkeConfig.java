@@ -223,41 +223,49 @@ public final class ClusterV2RkeConfig {
 
         @CustomType.Setter
         public Builder additionalManifest(@Nullable String additionalManifest) {
+
             this.additionalManifest = additionalManifest;
             return this;
         }
         @CustomType.Setter
         public Builder chartValues(@Nullable String chartValues) {
+
             this.chartValues = chartValues;
             return this;
         }
         @CustomType.Setter
         public Builder etcd(@Nullable ClusterV2RkeConfigEtcd etcd) {
+
             this.etcd = etcd;
             return this;
         }
         @CustomType.Setter
         public Builder etcdSnapshotCreate(@Nullable ClusterV2RkeConfigEtcdSnapshotCreate etcdSnapshotCreate) {
+
             this.etcdSnapshotCreate = etcdSnapshotCreate;
             return this;
         }
         @CustomType.Setter
         public Builder etcdSnapshotRestore(@Nullable ClusterV2RkeConfigEtcdSnapshotRestore etcdSnapshotRestore) {
+
             this.etcdSnapshotRestore = etcdSnapshotRestore;
             return this;
         }
         @CustomType.Setter
         public Builder localAuthEndpoint(@Nullable ClusterV2RkeConfigLocalAuthEndpoint localAuthEndpoint) {
+
             this.localAuthEndpoint = localAuthEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder machineGlobalConfig(@Nullable String machineGlobalConfig) {
+
             this.machineGlobalConfig = machineGlobalConfig;
             return this;
         }
         @CustomType.Setter
         public Builder machinePoolDefaults(@Nullable List<ClusterV2RkeConfigMachinePoolDefault> machinePoolDefaults) {
+
             this.machinePoolDefaults = machinePoolDefaults;
             return this;
         }
@@ -266,6 +274,7 @@ public final class ClusterV2RkeConfig {
         }
         @CustomType.Setter
         public Builder machinePools(@Nullable List<ClusterV2RkeConfigMachinePool> machinePools) {
+
             this.machinePools = machinePools;
             return this;
         }
@@ -274,6 +283,7 @@ public final class ClusterV2RkeConfig {
         }
         @CustomType.Setter
         public Builder machineSelectorConfigs(@Nullable List<ClusterV2RkeConfigMachineSelectorConfig> machineSelectorConfigs) {
+
             this.machineSelectorConfigs = machineSelectorConfigs;
             return this;
         }
@@ -282,16 +292,19 @@ public final class ClusterV2RkeConfig {
         }
         @CustomType.Setter
         public Builder registries(@Nullable ClusterV2RkeConfigRegistries registries) {
+
             this.registries = registries;
             return this;
         }
         @CustomType.Setter
         public Builder rotateCertificates(@Nullable ClusterV2RkeConfigRotateCertificates rotateCertificates) {
+
             this.rotateCertificates = rotateCertificates;
             return this;
         }
         @CustomType.Setter
         public Builder upgradeStrategy(@Nullable ClusterV2RkeConfigUpgradeStrategy upgradeStrategy) {
+
             this.upgradeStrategy = upgradeStrategy;
             return this;
         }

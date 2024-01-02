@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterGkeConfigV2NodePoolAutoscaling;
 import com.pulumi.rancher2.outputs.GetClusterGkeConfigV2NodePoolConfig;
 import com.pulumi.rancher2.outputs.GetClusterGkeConfigV2NodePoolManagement;
@@ -82,37 +83,58 @@ public final class GetClusterGkeConfigV2NodePool {
 
         @CustomType.Setter
         public Builder autoscaling(GetClusterGkeConfigV2NodePoolAutoscaling autoscaling) {
-            this.autoscaling = Objects.requireNonNull(autoscaling);
+            if (autoscaling == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2NodePool", "autoscaling");
+            }
+            this.autoscaling = autoscaling;
             return this;
         }
         @CustomType.Setter
         public Builder config(GetClusterGkeConfigV2NodePoolConfig config) {
-            this.config = Objects.requireNonNull(config);
+            if (config == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2NodePool", "config");
+            }
+            this.config = config;
             return this;
         }
         @CustomType.Setter
         public Builder initialNodeCount(Integer initialNodeCount) {
-            this.initialNodeCount = Objects.requireNonNull(initialNodeCount);
+            if (initialNodeCount == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2NodePool", "initialNodeCount");
+            }
+            this.initialNodeCount = initialNodeCount;
             return this;
         }
         @CustomType.Setter
         public Builder management(GetClusterGkeConfigV2NodePoolManagement management) {
-            this.management = Objects.requireNonNull(management);
+            if (management == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2NodePool", "management");
+            }
+            this.management = management;
             return this;
         }
         @CustomType.Setter
         public Builder maxPodsConstraint(Integer maxPodsConstraint) {
-            this.maxPodsConstraint = Objects.requireNonNull(maxPodsConstraint);
+            if (maxPodsConstraint == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2NodePool", "maxPodsConstraint");
+            }
+            this.maxPodsConstraint = maxPodsConstraint;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2NodePool", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder version(String version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2NodePool", "version");
+            }
+            this.version = version;
             return this;
         }
         public GetClusterGkeConfigV2NodePool build() {

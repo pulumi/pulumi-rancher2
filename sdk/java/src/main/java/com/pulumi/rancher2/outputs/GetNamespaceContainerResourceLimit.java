@@ -54,21 +54,25 @@ public final class GetNamespaceContainerResourceLimit {
 
         @CustomType.Setter
         public Builder limitsCpu(@Nullable String limitsCpu) {
+
             this.limitsCpu = limitsCpu;
             return this;
         }
         @CustomType.Setter
         public Builder limitsMemory(@Nullable String limitsMemory) {
+
             this.limitsMemory = limitsMemory;
             return this;
         }
         @CustomType.Setter
         public Builder requestsCpu(@Nullable String requestsCpu) {
+
             this.requestsCpu = requestsCpu;
             return this;
         }
         @CustomType.Setter
         public Builder requestsMemory(@Nullable String requestsMemory) {
+
             this.requestsMemory = requestsMemory;
             return this;
         }

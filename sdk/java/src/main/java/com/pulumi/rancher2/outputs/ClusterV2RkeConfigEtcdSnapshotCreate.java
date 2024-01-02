@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class ClusterV2RkeConfigEtcdSnapshotCreate {
 
         @CustomType.Setter
         public Builder generation(Integer generation) {
-            this.generation = Objects.requireNonNull(generation);
+            if (generation == null) {
+              throw new MissingRequiredPropertyException("ClusterV2RkeConfigEtcdSnapshotCreate", "generation");
+            }
+            this.generation = generation;
             return this;
         }
         public ClusterV2RkeConfigEtcdSnapshotCreate build() {

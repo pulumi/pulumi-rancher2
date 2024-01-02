@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.ClusterGkeConfigV2ClusterAddons;
 import com.pulumi.rancher2.outputs.ClusterGkeConfigV2IpAllocationPolicy;
 import com.pulumi.rancher2.outputs.ClusterGkeConfigV2MasterAuthorizedNetworksConfig;
@@ -361,51 +362,63 @@ public final class ClusterGkeConfigV2 {
 
         @CustomType.Setter
         public Builder clusterAddons(@Nullable ClusterGkeConfigV2ClusterAddons clusterAddons) {
+
             this.clusterAddons = clusterAddons;
             return this;
         }
         @CustomType.Setter
         public Builder clusterIpv4CidrBlock(@Nullable String clusterIpv4CidrBlock) {
+
             this.clusterIpv4CidrBlock = clusterIpv4CidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder enableKubernetesAlpha(@Nullable Boolean enableKubernetesAlpha) {
+
             this.enableKubernetesAlpha = enableKubernetesAlpha;
             return this;
         }
         @CustomType.Setter
         public Builder googleCredentialSecret(String googleCredentialSecret) {
-            this.googleCredentialSecret = Objects.requireNonNull(googleCredentialSecret);
+            if (googleCredentialSecret == null) {
+              throw new MissingRequiredPropertyException("ClusterGkeConfigV2", "googleCredentialSecret");
+            }
+            this.googleCredentialSecret = googleCredentialSecret;
             return this;
         }
         @CustomType.Setter
         public Builder imported(@Nullable Boolean imported) {
+
             this.imported = imported;
             return this;
         }
         @CustomType.Setter
         public Builder ipAllocationPolicy(@Nullable ClusterGkeConfigV2IpAllocationPolicy ipAllocationPolicy) {
+
             this.ipAllocationPolicy = ipAllocationPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder kubernetesVersion(@Nullable String kubernetesVersion) {
+
             this.kubernetesVersion = kubernetesVersion;
             return this;
         }
         @CustomType.Setter
         public Builder labels(@Nullable Map<String,Object> labels) {
+
             this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder locations(@Nullable List<String> locations) {
+
             this.locations = locations;
             return this;
         }
@@ -414,41 +427,51 @@ public final class ClusterGkeConfigV2 {
         }
         @CustomType.Setter
         public Builder loggingService(@Nullable String loggingService) {
+
             this.loggingService = loggingService;
             return this;
         }
         @CustomType.Setter
         public Builder maintenanceWindow(@Nullable String maintenanceWindow) {
+
             this.maintenanceWindow = maintenanceWindow;
             return this;
         }
         @CustomType.Setter
         public Builder masterAuthorizedNetworksConfig(@Nullable ClusterGkeConfigV2MasterAuthorizedNetworksConfig masterAuthorizedNetworksConfig) {
+
             this.masterAuthorizedNetworksConfig = masterAuthorizedNetworksConfig;
             return this;
         }
         @CustomType.Setter
         public Builder monitoringService(@Nullable String monitoringService) {
+
             this.monitoringService = monitoringService;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("ClusterGkeConfigV2", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder network(@Nullable String network) {
+
             this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder networkPolicyEnabled(@Nullable Boolean networkPolicyEnabled) {
+
             this.networkPolicyEnabled = networkPolicyEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder nodePools(@Nullable List<ClusterGkeConfigV2NodePool> nodePools) {
+
             this.nodePools = nodePools;
             return this;
         }
@@ -457,26 +480,33 @@ public final class ClusterGkeConfigV2 {
         }
         @CustomType.Setter
         public Builder privateClusterConfig(@Nullable ClusterGkeConfigV2PrivateClusterConfig privateClusterConfig) {
+
             this.privateClusterConfig = privateClusterConfig;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("ClusterGkeConfigV2", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder subnetwork(@Nullable String subnetwork) {
+
             this.subnetwork = subnetwork;
             return this;
         }
         @CustomType.Setter
         public Builder zone(@Nullable String zone) {
+
             this.zone = zone;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -48,17 +49,24 @@ public final class GetNotifierSlackConfig {
 
         @CustomType.Setter
         public Builder defaultRecipient(String defaultRecipient) {
-            this.defaultRecipient = Objects.requireNonNull(defaultRecipient);
+            if (defaultRecipient == null) {
+              throw new MissingRequiredPropertyException("GetNotifierSlackConfig", "defaultRecipient");
+            }
+            this.defaultRecipient = defaultRecipient;
             return this;
         }
         @CustomType.Setter
         public Builder proxyUrl(@Nullable String proxyUrl) {
+
             this.proxyUrl = proxyUrl;
             return this;
         }
         @CustomType.Setter
         public Builder url(String url) {
-            this.url = Objects.requireNonNull(url);
+            if (url == null) {
+              throw new MissingRequiredPropertyException("GetNotifierSlackConfig", "url");
+            }
+            this.url = url;
             return this;
         }
         public GetNotifierSlackConfig build() {

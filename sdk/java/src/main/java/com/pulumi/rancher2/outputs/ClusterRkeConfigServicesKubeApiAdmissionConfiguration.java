@@ -74,16 +74,19 @@ public final class ClusterRkeConfigServicesKubeApiAdmissionConfiguration {
 
         @CustomType.Setter
         public Builder apiVersion(@Nullable String apiVersion) {
+
             this.apiVersion = apiVersion;
             return this;
         }
         @CustomType.Setter
         public Builder kind(@Nullable String kind) {
+
             this.kind = kind;
             return this;
         }
         @CustomType.Setter
         public Builder plugins(@Nullable List<ClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin> plugins) {
+
             this.plugins = plugins;
             return this;
         }

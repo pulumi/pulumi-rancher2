@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.PodSecurityPolicyTemplateRunAsUserRange;
 import java.lang.String;
 import java.util.List;
@@ -59,6 +60,7 @@ public final class PodSecurityPolicyTemplateRunAsUser {
 
         @CustomType.Setter
         public Builder ranges(@Nullable List<PodSecurityPolicyTemplateRunAsUserRange> ranges) {
+
             this.ranges = ranges;
             return this;
         }
@@ -67,7 +69,10 @@ public final class PodSecurityPolicyTemplateRunAsUser {
         }
         @CustomType.Setter
         public Builder rule(String rule) {
-            this.rule = Objects.requireNonNull(rule);
+            if (rule == null) {
+              throw new MissingRequiredPropertyException("PodSecurityPolicyTemplateRunAsUser", "rule");
+            }
+            this.rule = rule;
             return this;
         }
         public PodSecurityPolicyTemplateRunAsUser build() {

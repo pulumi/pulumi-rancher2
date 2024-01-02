@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.inputs.GetNotifierDingtalkConfig;
 import com.pulumi.rancher2.inputs.GetNotifierMsteamsConfig;
 import java.lang.String;
@@ -148,8 +149,12 @@ public final class GetNotifierPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         public GetNotifierPlainArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("GetNotifierPlainArgs", "clusterId");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetNotifierPlainArgs", "name");
+            }
             return $;
         }
     }

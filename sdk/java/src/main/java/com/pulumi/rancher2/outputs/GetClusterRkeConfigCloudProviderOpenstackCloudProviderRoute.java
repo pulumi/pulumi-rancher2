@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetClusterRkeConfigCloudProviderOpenstackCloudProviderRoute {
 
         @CustomType.Setter
         public Builder routerId(String routerId) {
-            this.routerId = Objects.requireNonNull(routerId);
+            if (routerId == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderOpenstackCloudProviderRoute", "routerId");
+            }
+            this.routerId = routerId;
             return this;
         }
         public GetClusterRkeConfigCloudProviderOpenstackCloudProviderRoute build() {

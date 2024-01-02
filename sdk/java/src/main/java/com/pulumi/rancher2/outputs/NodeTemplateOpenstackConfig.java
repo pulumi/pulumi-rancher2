@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -575,191 +576,235 @@ public final class NodeTemplateOpenstackConfig {
 
         @CustomType.Setter
         public Builder activeTimeout(@Nullable String activeTimeout) {
+
             this.activeTimeout = activeTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder applicationCredentialId(@Nullable String applicationCredentialId) {
+
             this.applicationCredentialId = applicationCredentialId;
             return this;
         }
         @CustomType.Setter
         public Builder applicationCredentialName(@Nullable String applicationCredentialName) {
+
             this.applicationCredentialName = applicationCredentialName;
             return this;
         }
         @CustomType.Setter
         public Builder applicationCredentialSecret(@Nullable String applicationCredentialSecret) {
+
             this.applicationCredentialSecret = applicationCredentialSecret;
             return this;
         }
         @CustomType.Setter
         public Builder authUrl(String authUrl) {
-            this.authUrl = Objects.requireNonNull(authUrl);
+            if (authUrl == null) {
+              throw new MissingRequiredPropertyException("NodeTemplateOpenstackConfig", "authUrl");
+            }
+            this.authUrl = authUrl;
             return this;
         }
         @CustomType.Setter
         public Builder availabilityZone(String availabilityZone) {
-            this.availabilityZone = Objects.requireNonNull(availabilityZone);
+            if (availabilityZone == null) {
+              throw new MissingRequiredPropertyException("NodeTemplateOpenstackConfig", "availabilityZone");
+            }
+            this.availabilityZone = availabilityZone;
             return this;
         }
         @CustomType.Setter
         public Builder bootFromVolume(@Nullable Boolean bootFromVolume) {
+
             this.bootFromVolume = bootFromVolume;
             return this;
         }
         @CustomType.Setter
         public Builder cacert(@Nullable String cacert) {
+
             this.cacert = cacert;
             return this;
         }
         @CustomType.Setter
         public Builder configDrive(@Nullable Boolean configDrive) {
+
             this.configDrive = configDrive;
             return this;
         }
         @CustomType.Setter
         public Builder domainId(@Nullable String domainId) {
+
             this.domainId = domainId;
             return this;
         }
         @CustomType.Setter
         public Builder domainName(@Nullable String domainName) {
+
             this.domainName = domainName;
             return this;
         }
         @CustomType.Setter
         public Builder endpointType(@Nullable String endpointType) {
+
             this.endpointType = endpointType;
             return this;
         }
         @CustomType.Setter
         public Builder flavorId(@Nullable String flavorId) {
+
             this.flavorId = flavorId;
             return this;
         }
         @CustomType.Setter
         public Builder flavorName(@Nullable String flavorName) {
+
             this.flavorName = flavorName;
             return this;
         }
         @CustomType.Setter
         public Builder floatingIpPool(@Nullable String floatingIpPool) {
+
             this.floatingIpPool = floatingIpPool;
             return this;
         }
         @CustomType.Setter
         public Builder imageId(@Nullable String imageId) {
+
             this.imageId = imageId;
             return this;
         }
         @CustomType.Setter
         public Builder imageName(@Nullable String imageName) {
+
             this.imageName = imageName;
             return this;
         }
         @CustomType.Setter
         public Builder insecure(@Nullable Boolean insecure) {
+
             this.insecure = insecure;
             return this;
         }
         @CustomType.Setter
         public Builder ipVersion(@Nullable String ipVersion) {
+
             this.ipVersion = ipVersion;
             return this;
         }
         @CustomType.Setter
         public Builder keypairName(@Nullable String keypairName) {
+
             this.keypairName = keypairName;
             return this;
         }
         @CustomType.Setter
         public Builder netId(@Nullable String netId) {
+
             this.netId = netId;
             return this;
         }
         @CustomType.Setter
         public Builder netName(@Nullable String netName) {
+
             this.netName = netName;
             return this;
         }
         @CustomType.Setter
         public Builder novaNetwork(@Nullable Boolean novaNetwork) {
+
             this.novaNetwork = novaNetwork;
             return this;
         }
         @CustomType.Setter
         public Builder password(@Nullable String password) {
+
             this.password = password;
             return this;
         }
         @CustomType.Setter
         public Builder privateKeyFile(@Nullable String privateKeyFile) {
+
             this.privateKeyFile = privateKeyFile;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("NodeTemplateOpenstackConfig", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder secGroups(@Nullable String secGroups) {
+
             this.secGroups = secGroups;
             return this;
         }
         @CustomType.Setter
         public Builder sshPort(@Nullable String sshPort) {
+
             this.sshPort = sshPort;
             return this;
         }
         @CustomType.Setter
         public Builder sshUser(@Nullable String sshUser) {
+
             this.sshUser = sshUser;
             return this;
         }
         @CustomType.Setter
         public Builder tenantId(@Nullable String tenantId) {
+
             this.tenantId = tenantId;
             return this;
         }
         @CustomType.Setter
         public Builder tenantName(@Nullable String tenantName) {
+
             this.tenantName = tenantName;
             return this;
         }
         @CustomType.Setter
         public Builder userDataFile(@Nullable String userDataFile) {
+
             this.userDataFile = userDataFile;
             return this;
         }
         @CustomType.Setter
         public Builder username(@Nullable String username) {
+
             this.username = username;
             return this;
         }
         @CustomType.Setter
         public Builder volumeDevicePath(@Nullable String volumeDevicePath) {
+
             this.volumeDevicePath = volumeDevicePath;
             return this;
         }
         @CustomType.Setter
         public Builder volumeId(@Nullable String volumeId) {
+
             this.volumeId = volumeId;
             return this;
         }
         @CustomType.Setter
         public Builder volumeName(@Nullable String volumeName) {
+
             this.volumeName = volumeName;
             return this;
         }
         @CustomType.Setter
         public Builder volumeSize(@Nullable String volumeSize) {
+
             this.volumeSize = volumeSize;
             return this;
         }
         @CustomType.Setter
         public Builder volumeType(@Nullable String volumeType) {
+
             this.volumeType = volumeType;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterEksConfigV2NodeGroupLaunchTemplate;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -166,41 +167,49 @@ public final class GetClusterEksConfigV2NodeGroup {
 
         @CustomType.Setter
         public Builder desiredSize(@Nullable Integer desiredSize) {
+
             this.desiredSize = desiredSize;
             return this;
         }
         @CustomType.Setter
         public Builder diskSize(@Nullable Integer diskSize) {
+
             this.diskSize = diskSize;
             return this;
         }
         @CustomType.Setter
         public Builder ec2SshKey(@Nullable String ec2SshKey) {
+
             this.ec2SshKey = ec2SshKey;
             return this;
         }
         @CustomType.Setter
         public Builder gpu(@Nullable Boolean gpu) {
+
             this.gpu = gpu;
             return this;
         }
         @CustomType.Setter
         public Builder imageId(@Nullable String imageId) {
+
             this.imageId = imageId;
             return this;
         }
         @CustomType.Setter
         public Builder instanceType(@Nullable String instanceType) {
+
             this.instanceType = instanceType;
             return this;
         }
         @CustomType.Setter
         public Builder labels(@Nullable Map<String,Object> labels) {
+
             this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder launchTemplates(@Nullable List<GetClusterEksConfigV2NodeGroupLaunchTemplate> launchTemplates) {
+
             this.launchTemplates = launchTemplates;
             return this;
         }
@@ -209,36 +218,45 @@ public final class GetClusterEksConfigV2NodeGroup {
         }
         @CustomType.Setter
         public Builder maxSize(@Nullable Integer maxSize) {
+
             this.maxSize = maxSize;
             return this;
         }
         @CustomType.Setter
         public Builder minSize(@Nullable Integer minSize) {
+
             this.minSize = minSize;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetClusterEksConfigV2NodeGroup", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nodeRole(@Nullable String nodeRole) {
+
             this.nodeRole = nodeRole;
             return this;
         }
         @CustomType.Setter
         public Builder requestSpotInstances(@Nullable Boolean requestSpotInstances) {
+
             this.requestSpotInstances = requestSpotInstances;
             return this;
         }
         @CustomType.Setter
         public Builder resourceTags(@Nullable Map<String,Object> resourceTags) {
+
             this.resourceTags = resourceTags;
             return this;
         }
         @CustomType.Setter
         public Builder spotInstanceTypes(@Nullable List<String> spotInstanceTypes) {
+
             this.spotInstanceTypes = spotInstanceTypes;
             return this;
         }
@@ -247,7 +265,10 @@ public final class GetClusterEksConfigV2NodeGroup {
         }
         @CustomType.Setter
         public Builder subnets(List<String> subnets) {
-            this.subnets = Objects.requireNonNull(subnets);
+            if (subnets == null) {
+              throw new MissingRequiredPropertyException("GetClusterEksConfigV2NodeGroup", "subnets");
+            }
+            this.subnets = subnets;
             return this;
         }
         public Builder subnets(String... subnets) {
@@ -255,17 +276,24 @@ public final class GetClusterEksConfigV2NodeGroup {
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
+
             this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder userData(String userData) {
-            this.userData = Objects.requireNonNull(userData);
+            if (userData == null) {
+              throw new MissingRequiredPropertyException("GetClusterEksConfigV2NodeGroup", "userData");
+            }
+            this.userData = userData;
             return this;
         }
         @CustomType.Setter
         public Builder version(String version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetClusterEksConfigV2NodeGroup", "version");
+            }
+            this.version = version;
             return this;
         }
         public GetClusterEksConfigV2NodeGroup build() {

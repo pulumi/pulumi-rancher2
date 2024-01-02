@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcd;
 import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi;
 import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeController;
@@ -69,32 +70,50 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServi
 
         @CustomType.Setter
         public Builder etcd(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcd etcd) {
-            this.etcd = Objects.requireNonNull(etcd);
+            if (etcd == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServices", "etcd");
+            }
+            this.etcd = etcd;
             return this;
         }
         @CustomType.Setter
         public Builder kubeApi(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi kubeApi) {
-            this.kubeApi = Objects.requireNonNull(kubeApi);
+            if (kubeApi == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServices", "kubeApi");
+            }
+            this.kubeApi = kubeApi;
             return this;
         }
         @CustomType.Setter
         public Builder kubeController(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeController kubeController) {
-            this.kubeController = Objects.requireNonNull(kubeController);
+            if (kubeController == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServices", "kubeController");
+            }
+            this.kubeController = kubeController;
             return this;
         }
         @CustomType.Setter
         public Builder kubelet(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet kubelet) {
-            this.kubelet = Objects.requireNonNull(kubelet);
+            if (kubelet == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServices", "kubelet");
+            }
+            this.kubelet = kubelet;
             return this;
         }
         @CustomType.Setter
         public Builder kubeproxy(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxy kubeproxy) {
-            this.kubeproxy = Objects.requireNonNull(kubeproxy);
+            if (kubeproxy == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServices", "kubeproxy");
+            }
+            this.kubeproxy = kubeproxy;
             return this;
         }
         @CustomType.Setter
         public Builder scheduler(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesScheduler scheduler) {
-            this.scheduler = Objects.requireNonNull(scheduler);
+            if (scheduler == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServices", "scheduler");
+            }
+            this.scheduler = scheduler;
             return this;
         }
         public GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServices build() {

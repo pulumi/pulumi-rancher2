@@ -206,31 +206,37 @@ public final class ClusterRkeConfigServicesKubeApi {
 
         @CustomType.Setter
         public Builder admissionConfiguration(@Nullable ClusterRkeConfigServicesKubeApiAdmissionConfiguration admissionConfiguration) {
+
             this.admissionConfiguration = admissionConfiguration;
             return this;
         }
         @CustomType.Setter
         public Builder alwaysPullImages(@Nullable Boolean alwaysPullImages) {
+
             this.alwaysPullImages = alwaysPullImages;
             return this;
         }
         @CustomType.Setter
         public Builder auditLog(@Nullable ClusterRkeConfigServicesKubeApiAuditLog auditLog) {
+
             this.auditLog = auditLog;
             return this;
         }
         @CustomType.Setter
         public Builder eventRateLimit(@Nullable ClusterRkeConfigServicesKubeApiEventRateLimit eventRateLimit) {
+
             this.eventRateLimit = eventRateLimit;
             return this;
         }
         @CustomType.Setter
         public Builder extraArgs(@Nullable Map<String,Object> extraArgs) {
+
             this.extraArgs = extraArgs;
             return this;
         }
         @CustomType.Setter
         public Builder extraBinds(@Nullable List<String> extraBinds) {
+
             this.extraBinds = extraBinds;
             return this;
         }
@@ -239,6 +245,7 @@ public final class ClusterRkeConfigServicesKubeApi {
         }
         @CustomType.Setter
         public Builder extraEnvs(@Nullable List<String> extraEnvs) {
+
             this.extraEnvs = extraEnvs;
             return this;
         }
@@ -247,26 +254,31 @@ public final class ClusterRkeConfigServicesKubeApi {
         }
         @CustomType.Setter
         public Builder image(@Nullable String image) {
+
             this.image = image;
             return this;
         }
         @CustomType.Setter
         public Builder podSecurityPolicy(@Nullable Boolean podSecurityPolicy) {
+
             this.podSecurityPolicy = podSecurityPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder secretsEncryptionConfig(@Nullable ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig secretsEncryptionConfig) {
+
             this.secretsEncryptionConfig = secretsEncryptionConfig;
             return this;
         }
         @CustomType.Setter
         public Builder serviceClusterIpRange(@Nullable String serviceClusterIpRange) {
+
             this.serviceClusterIpRange = serviceClusterIpRange;
             return this;
         }
         @CustomType.Setter
         public Builder serviceNodePortRange(@Nullable String serviceNodePortRange) {
+
             this.serviceNodePortRange = serviceNodePortRange;
             return this;
         }

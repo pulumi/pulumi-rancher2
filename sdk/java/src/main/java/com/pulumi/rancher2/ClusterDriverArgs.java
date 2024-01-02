@@ -5,6 +5,7 @@ package com.pulumi.rancher2;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -423,9 +424,15 @@ public final class ClusterDriverArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ClusterDriverArgs build() {
-            $.active = Objects.requireNonNull($.active, "expected parameter 'active' to be non-null");
-            $.builtin = Objects.requireNonNull($.builtin, "expected parameter 'builtin' to be non-null");
-            $.url = Objects.requireNonNull($.url, "expected parameter 'url' to be non-null");
+            if ($.active == null) {
+                throw new MissingRequiredPropertyException("ClusterDriverArgs", "active");
+            }
+            if ($.builtin == null) {
+                throw new MissingRequiredPropertyException("ClusterDriverArgs", "builtin");
+            }
+            if ($.url == null) {
+                throw new MissingRequiredPropertyException("ClusterDriverArgs", "url");
+            }
             return $;
         }
     }

@@ -163,31 +163,37 @@ public final class ClusterRkeConfigDns {
 
         @CustomType.Setter
         public Builder linearAutoscalerParams(@Nullable ClusterRkeConfigDnsLinearAutoscalerParams linearAutoscalerParams) {
+
             this.linearAutoscalerParams = linearAutoscalerParams;
             return this;
         }
         @CustomType.Setter
         public Builder nodeSelector(@Nullable Map<String,Object> nodeSelector) {
+
             this.nodeSelector = nodeSelector;
             return this;
         }
         @CustomType.Setter
         public Builder nodelocal(@Nullable ClusterRkeConfigDnsNodelocal nodelocal) {
+
             this.nodelocal = nodelocal;
             return this;
         }
         @CustomType.Setter
         public Builder options(@Nullable Map<String,Object> options) {
+
             this.options = options;
             return this;
         }
         @CustomType.Setter
         public Builder provider(@Nullable String provider) {
+
             this.provider = provider;
             return this;
         }
         @CustomType.Setter
         public Builder reverseCidrs(@Nullable List<String> reverseCidrs) {
+
             this.reverseCidrs = reverseCidrs;
             return this;
         }
@@ -196,6 +202,7 @@ public final class ClusterRkeConfigDns {
         }
         @CustomType.Setter
         public Builder tolerations(@Nullable List<ClusterRkeConfigDnsToleration> tolerations) {
+
             this.tolerations = tolerations;
             return this;
         }
@@ -204,11 +211,13 @@ public final class ClusterRkeConfigDns {
         }
         @CustomType.Setter
         public Builder updateStrategy(@Nullable ClusterRkeConfigDnsUpdateStrategy updateStrategy) {
+
             this.updateStrategy = updateStrategy;
             return this;
         }
         @CustomType.Setter
         public Builder upstreamNameservers(@Nullable List<String> upstreamNameservers) {
+
             this.upstreamNameservers = upstreamNameservers;
             return this;
         }

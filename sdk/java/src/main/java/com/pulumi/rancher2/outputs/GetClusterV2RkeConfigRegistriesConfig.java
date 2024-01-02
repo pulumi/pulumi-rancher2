@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -61,26 +62,33 @@ public final class GetClusterV2RkeConfigRegistriesConfig {
 
         @CustomType.Setter
         public Builder authConfigSecretName(@Nullable String authConfigSecretName) {
+
             this.authConfigSecretName = authConfigSecretName;
             return this;
         }
         @CustomType.Setter
         public Builder caBundle(@Nullable String caBundle) {
+
             this.caBundle = caBundle;
             return this;
         }
         @CustomType.Setter
         public Builder hostname(String hostname) {
-            this.hostname = Objects.requireNonNull(hostname);
+            if (hostname == null) {
+              throw new MissingRequiredPropertyException("GetClusterV2RkeConfigRegistriesConfig", "hostname");
+            }
+            this.hostname = hostname;
             return this;
         }
         @CustomType.Setter
         public Builder insecure(@Nullable Boolean insecure) {
+
             this.insecure = insecure;
             return this;
         }
         @CustomType.Setter
         public Builder tlsSecretName(@Nullable String tlsSecretName) {
+
             this.tlsSecretName = tlsSecretName;
             return this;
         }

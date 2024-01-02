@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetClusterRkeConfigCloudProviderVsphereCloudProviderDisk {
 
         @CustomType.Setter
         public Builder scsiControllerType(String scsiControllerType) {
-            this.scsiControllerType = Objects.requireNonNull(scsiControllerType);
+            if (scsiControllerType == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderVsphereCloudProviderDisk", "scsiControllerType");
+            }
+            this.scsiControllerType = scsiControllerType;
             return this;
         }
         public GetClusterRkeConfigCloudProviderVsphereCloudProviderDisk build() {

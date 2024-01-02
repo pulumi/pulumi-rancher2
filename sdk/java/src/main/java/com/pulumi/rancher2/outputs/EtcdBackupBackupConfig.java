@@ -100,31 +100,37 @@ public final class EtcdBackupBackupConfig {
 
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder intervalHours(@Nullable Integer intervalHours) {
+
             this.intervalHours = intervalHours;
             return this;
         }
         @CustomType.Setter
         public Builder retention(@Nullable Integer retention) {
+
             this.retention = retention;
             return this;
         }
         @CustomType.Setter
         public Builder s3BackupConfig(@Nullable EtcdBackupBackupConfigS3BackupConfig s3BackupConfig) {
+
             this.s3BackupConfig = s3BackupConfig;
             return this;
         }
         @CustomType.Setter
         public Builder safeTimestamp(@Nullable Boolean safeTimestamp) {
+
             this.safeTimestamp = safeTimestamp;
             return this;
         }
         @CustomType.Setter
         public Builder timeout(@Nullable Integer timeout) {
+
             this.timeout = timeout;
             return this;
         }

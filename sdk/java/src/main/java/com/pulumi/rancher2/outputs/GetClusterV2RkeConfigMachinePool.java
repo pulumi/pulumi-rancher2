@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterV2RkeConfigMachinePoolMachineConfig;
 import com.pulumi.rancher2.outputs.GetClusterV2RkeConfigMachinePoolRollingUpdate;
 import com.pulumi.rancher2.outputs.GetClusterV2RkeConfigMachinePoolTaint;
@@ -174,86 +175,113 @@ public final class GetClusterV2RkeConfigMachinePool {
 
         @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
-            this.annotations = Objects.requireNonNull(annotations);
+            if (annotations == null) {
+              throw new MissingRequiredPropertyException("GetClusterV2RkeConfigMachinePool", "annotations");
+            }
+            this.annotations = annotations;
             return this;
         }
         @CustomType.Setter
         public Builder cloudCredentialSecretName(@Nullable String cloudCredentialSecretName) {
+
             this.cloudCredentialSecretName = cloudCredentialSecretName;
             return this;
         }
         @CustomType.Setter
         public Builder controlPlaneRole(@Nullable Boolean controlPlaneRole) {
+
             this.controlPlaneRole = controlPlaneRole;
             return this;
         }
         @CustomType.Setter
         public Builder drainBeforeDelete(@Nullable Boolean drainBeforeDelete) {
+
             this.drainBeforeDelete = drainBeforeDelete;
             return this;
         }
         @CustomType.Setter
         public Builder etcdRole(@Nullable Boolean etcdRole) {
+
             this.etcdRole = etcdRole;
             return this;
         }
         @CustomType.Setter
         public Builder hostnameLengthLimit(@Nullable Integer hostnameLengthLimit) {
+
             this.hostnameLengthLimit = hostnameLengthLimit;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetClusterV2RkeConfigMachinePool", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder machineConfig(GetClusterV2RkeConfigMachinePoolMachineConfig machineConfig) {
-            this.machineConfig = Objects.requireNonNull(machineConfig);
+            if (machineConfig == null) {
+              throw new MissingRequiredPropertyException("GetClusterV2RkeConfigMachinePool", "machineConfig");
+            }
+            this.machineConfig = machineConfig;
             return this;
         }
         @CustomType.Setter
         public Builder machineLabels(Map<String,Object> machineLabels) {
-            this.machineLabels = Objects.requireNonNull(machineLabels);
+            if (machineLabels == null) {
+              throw new MissingRequiredPropertyException("GetClusterV2RkeConfigMachinePool", "machineLabels");
+            }
+            this.machineLabels = machineLabels;
             return this;
         }
         @CustomType.Setter
         public Builder maxUnhealthy(@Nullable String maxUnhealthy) {
+
             this.maxUnhealthy = maxUnhealthy;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetClusterV2RkeConfigMachinePool", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nodeDrainTimeout(@Nullable Integer nodeDrainTimeout) {
+
             this.nodeDrainTimeout = nodeDrainTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder nodeStartupTimeoutSeconds(@Nullable Integer nodeStartupTimeoutSeconds) {
+
             this.nodeStartupTimeoutSeconds = nodeStartupTimeoutSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder paused(@Nullable Boolean paused) {
+
             this.paused = paused;
             return this;
         }
         @CustomType.Setter
         public Builder quantity(@Nullable Integer quantity) {
+
             this.quantity = quantity;
             return this;
         }
         @CustomType.Setter
         public Builder rollingUpdate(@Nullable GetClusterV2RkeConfigMachinePoolRollingUpdate rollingUpdate) {
+
             this.rollingUpdate = rollingUpdate;
             return this;
         }
         @CustomType.Setter
         public Builder taints(@Nullable List<GetClusterV2RkeConfigMachinePoolTaint> taints) {
+
             this.taints = taints;
             return this;
         }
@@ -262,16 +290,19 @@ public final class GetClusterV2RkeConfigMachinePool {
         }
         @CustomType.Setter
         public Builder unhealthyNodeTimeoutSeconds(@Nullable Integer unhealthyNodeTimeoutSeconds) {
+
             this.unhealthyNodeTimeoutSeconds = unhealthyNodeTimeoutSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder unhealthyRange(@Nullable String unhealthyRange) {
+
             this.unhealthyRange = unhealthyRange;
             return this;
         }
         @CustomType.Setter
         public Builder workerRole(@Nullable Boolean workerRole) {
+
             this.workerRole = workerRole;
             return this;
         }

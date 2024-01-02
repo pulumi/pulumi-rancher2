@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -751,9 +752,15 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
         }
 
         public NodeTemplateOpennebulaConfigArgs build() {
-            $.password = Objects.requireNonNull($.password, "expected parameter 'password' to be non-null");
-            $.user = Objects.requireNonNull($.user, "expected parameter 'user' to be non-null");
-            $.xmlRpcUrl = Objects.requireNonNull($.xmlRpcUrl, "expected parameter 'xmlRpcUrl' to be non-null");
+            if ($.password == null) {
+                throw new MissingRequiredPropertyException("NodeTemplateOpennebulaConfigArgs", "password");
+            }
+            if ($.user == null) {
+                throw new MissingRequiredPropertyException("NodeTemplateOpennebulaConfigArgs", "user");
+            }
+            if ($.xmlRpcUrl == null) {
+                throw new MissingRequiredPropertyException("NodeTemplateOpennebulaConfigArgs", "xmlRpcUrl");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterEksConfigV2NodeGroup;
 import java.lang.Boolean;
 import java.lang.Object;
@@ -139,26 +140,35 @@ public final class GetClusterEksConfigV2 {
 
         @CustomType.Setter
         public Builder cloudCredentialId(String cloudCredentialId) {
-            this.cloudCredentialId = Objects.requireNonNull(cloudCredentialId);
+            if (cloudCredentialId == null) {
+              throw new MissingRequiredPropertyException("GetClusterEksConfigV2", "cloudCredentialId");
+            }
+            this.cloudCredentialId = cloudCredentialId;
             return this;
         }
         @CustomType.Setter
         public Builder imported(@Nullable Boolean imported) {
+
             this.imported = imported;
             return this;
         }
         @CustomType.Setter
         public Builder kmsKey(@Nullable String kmsKey) {
+
             this.kmsKey = kmsKey;
             return this;
         }
         @CustomType.Setter
         public Builder kubernetesVersion(String kubernetesVersion) {
-            this.kubernetesVersion = Objects.requireNonNull(kubernetesVersion);
+            if (kubernetesVersion == null) {
+              throw new MissingRequiredPropertyException("GetClusterEksConfigV2", "kubernetesVersion");
+            }
+            this.kubernetesVersion = kubernetesVersion;
             return this;
         }
         @CustomType.Setter
         public Builder loggingTypes(@Nullable List<String> loggingTypes) {
+
             this.loggingTypes = loggingTypes;
             return this;
         }
@@ -167,12 +177,18 @@ public final class GetClusterEksConfigV2 {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetClusterEksConfigV2", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nodeGroups(List<GetClusterEksConfigV2NodeGroup> nodeGroups) {
-            this.nodeGroups = Objects.requireNonNull(nodeGroups);
+            if (nodeGroups == null) {
+              throw new MissingRequiredPropertyException("GetClusterEksConfigV2", "nodeGroups");
+            }
+            this.nodeGroups = nodeGroups;
             return this;
         }
         public Builder nodeGroups(GetClusterEksConfigV2NodeGroup... nodeGroups) {
@@ -180,17 +196,26 @@ public final class GetClusterEksConfigV2 {
         }
         @CustomType.Setter
         public Builder privateAccess(Boolean privateAccess) {
-            this.privateAccess = Objects.requireNonNull(privateAccess);
+            if (privateAccess == null) {
+              throw new MissingRequiredPropertyException("GetClusterEksConfigV2", "privateAccess");
+            }
+            this.privateAccess = privateAccess;
             return this;
         }
         @CustomType.Setter
         public Builder publicAccess(Boolean publicAccess) {
-            this.publicAccess = Objects.requireNonNull(publicAccess);
+            if (publicAccess == null) {
+              throw new MissingRequiredPropertyException("GetClusterEksConfigV2", "publicAccess");
+            }
+            this.publicAccess = publicAccess;
             return this;
         }
         @CustomType.Setter
         public Builder publicAccessSources(List<String> publicAccessSources) {
-            this.publicAccessSources = Objects.requireNonNull(publicAccessSources);
+            if (publicAccessSources == null) {
+              throw new MissingRequiredPropertyException("GetClusterEksConfigV2", "publicAccessSources");
+            }
+            this.publicAccessSources = publicAccessSources;
             return this;
         }
         public Builder publicAccessSources(String... publicAccessSources) {
@@ -198,16 +223,21 @@ public final class GetClusterEksConfigV2 {
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder secretsEncryption(Boolean secretsEncryption) {
-            this.secretsEncryption = Objects.requireNonNull(secretsEncryption);
+            if (secretsEncryption == null) {
+              throw new MissingRequiredPropertyException("GetClusterEksConfigV2", "secretsEncryption");
+            }
+            this.secretsEncryption = secretsEncryption;
             return this;
         }
         @CustomType.Setter
         public Builder securityGroups(@Nullable List<String> securityGroups) {
+
             this.securityGroups = securityGroups;
             return this;
         }
@@ -216,11 +246,13 @@ public final class GetClusterEksConfigV2 {
         }
         @CustomType.Setter
         public Builder serviceRole(@Nullable String serviceRole) {
+
             this.serviceRole = serviceRole;
             return this;
         }
         @CustomType.Setter
         public Builder subnets(@Nullable List<String> subnets) {
+
             this.subnets = subnets;
             return this;
         }
@@ -229,6 +261,7 @@ public final class GetClusterEksConfigV2 {
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
+
             this.tags = tags;
             return this;
         }

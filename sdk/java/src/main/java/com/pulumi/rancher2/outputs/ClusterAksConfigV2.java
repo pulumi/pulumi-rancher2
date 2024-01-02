@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.ClusterAksConfigV2NodePool;
 import java.lang.Boolean;
 import java.lang.Object;
@@ -441,11 +442,13 @@ public final class ClusterAksConfigV2 {
 
         @CustomType.Setter
         public Builder authBaseUrl(@Nullable String authBaseUrl) {
+
             this.authBaseUrl = authBaseUrl;
             return this;
         }
         @CustomType.Setter
         public Builder authorizedIpRanges(@Nullable List<String> authorizedIpRanges) {
+
             this.authorizedIpRanges = authorizedIpRanges;
             return this;
         }
@@ -454,101 +457,123 @@ public final class ClusterAksConfigV2 {
         }
         @CustomType.Setter
         public Builder baseUrl(@Nullable String baseUrl) {
+
             this.baseUrl = baseUrl;
             return this;
         }
         @CustomType.Setter
         public Builder cloudCredentialId(String cloudCredentialId) {
-            this.cloudCredentialId = Objects.requireNonNull(cloudCredentialId);
+            if (cloudCredentialId == null) {
+              throw new MissingRequiredPropertyException("ClusterAksConfigV2", "cloudCredentialId");
+            }
+            this.cloudCredentialId = cloudCredentialId;
             return this;
         }
         @CustomType.Setter
         public Builder dnsPrefix(@Nullable String dnsPrefix) {
+
             this.dnsPrefix = dnsPrefix;
             return this;
         }
         @CustomType.Setter
         public Builder httpApplicationRouting(@Nullable Boolean httpApplicationRouting) {
+
             this.httpApplicationRouting = httpApplicationRouting;
             return this;
         }
         @CustomType.Setter
         public Builder imported(@Nullable Boolean imported) {
+
             this.imported = imported;
             return this;
         }
         @CustomType.Setter
         public Builder kubernetesVersion(@Nullable String kubernetesVersion) {
+
             this.kubernetesVersion = kubernetesVersion;
             return this;
         }
         @CustomType.Setter
         public Builder linuxAdminUsername(@Nullable String linuxAdminUsername) {
+
             this.linuxAdminUsername = linuxAdminUsername;
             return this;
         }
         @CustomType.Setter
         public Builder linuxSshPublicKey(@Nullable String linuxSshPublicKey) {
+
             this.linuxSshPublicKey = linuxSshPublicKey;
             return this;
         }
         @CustomType.Setter
         public Builder loadBalancerSku(@Nullable String loadBalancerSku) {
+
             this.loadBalancerSku = loadBalancerSku;
             return this;
         }
         @CustomType.Setter
         public Builder logAnalyticsWorkspaceGroup(@Nullable String logAnalyticsWorkspaceGroup) {
+
             this.logAnalyticsWorkspaceGroup = logAnalyticsWorkspaceGroup;
             return this;
         }
         @CustomType.Setter
         public Builder logAnalyticsWorkspaceName(@Nullable String logAnalyticsWorkspaceName) {
+
             this.logAnalyticsWorkspaceName = logAnalyticsWorkspaceName;
             return this;
         }
         @CustomType.Setter
         public Builder monitoring(@Nullable Boolean monitoring) {
+
             this.monitoring = monitoring;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder networkDnsServiceIp(@Nullable String networkDnsServiceIp) {
+
             this.networkDnsServiceIp = networkDnsServiceIp;
             return this;
         }
         @CustomType.Setter
         public Builder networkDockerBridgeCidr(@Nullable String networkDockerBridgeCidr) {
+
             this.networkDockerBridgeCidr = networkDockerBridgeCidr;
             return this;
         }
         @CustomType.Setter
         public Builder networkPlugin(@Nullable String networkPlugin) {
+
             this.networkPlugin = networkPlugin;
             return this;
         }
         @CustomType.Setter
         public Builder networkPodCidr(@Nullable String networkPodCidr) {
+
             this.networkPodCidr = networkPodCidr;
             return this;
         }
         @CustomType.Setter
         public Builder networkPolicy(@Nullable String networkPolicy) {
+
             this.networkPolicy = networkPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder networkServiceCidr(@Nullable String networkServiceCidr) {
+
             this.networkServiceCidr = networkServiceCidr;
             return this;
         }
         @CustomType.Setter
         public Builder nodePools(@Nullable List<ClusterAksConfigV2NodePool> nodePools) {
+
             this.nodePools = nodePools;
             return this;
         }
@@ -557,36 +582,47 @@ public final class ClusterAksConfigV2 {
         }
         @CustomType.Setter
         public Builder privateCluster(@Nullable Boolean privateCluster) {
+
             this.privateCluster = privateCluster;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroup(String resourceGroup) {
-            this.resourceGroup = Objects.requireNonNull(resourceGroup);
+            if (resourceGroup == null) {
+              throw new MissingRequiredPropertyException("ClusterAksConfigV2", "resourceGroup");
+            }
+            this.resourceGroup = resourceGroup;
             return this;
         }
         @CustomType.Setter
         public Builder resourceLocation(String resourceLocation) {
-            this.resourceLocation = Objects.requireNonNull(resourceLocation);
+            if (resourceLocation == null) {
+              throw new MissingRequiredPropertyException("ClusterAksConfigV2", "resourceLocation");
+            }
+            this.resourceLocation = resourceLocation;
             return this;
         }
         @CustomType.Setter
         public Builder subnet(@Nullable String subnet) {
+
             this.subnet = subnet;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
+
             this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder virtualNetwork(@Nullable String virtualNetwork) {
+
             this.virtualNetwork = virtualNetwork;
             return this;
         }
         @CustomType.Setter
         public Builder virtualNetworkResourceGroup(@Nullable String virtualNetworkResourceGroup) {
+
             this.virtualNetworkResourceGroup = virtualNetworkResourceGroup;
             return this;
         }

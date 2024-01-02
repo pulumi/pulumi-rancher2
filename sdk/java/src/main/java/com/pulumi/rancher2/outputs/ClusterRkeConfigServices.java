@@ -119,31 +119,37 @@ public final class ClusterRkeConfigServices {
 
         @CustomType.Setter
         public Builder etcd(@Nullable ClusterRkeConfigServicesEtcd etcd) {
+
             this.etcd = etcd;
             return this;
         }
         @CustomType.Setter
         public Builder kubeApi(@Nullable ClusterRkeConfigServicesKubeApi kubeApi) {
+
             this.kubeApi = kubeApi;
             return this;
         }
         @CustomType.Setter
         public Builder kubeController(@Nullable ClusterRkeConfigServicesKubeController kubeController) {
+
             this.kubeController = kubeController;
             return this;
         }
         @CustomType.Setter
         public Builder kubelet(@Nullable ClusterRkeConfigServicesKubelet kubelet) {
+
             this.kubelet = kubelet;
             return this;
         }
         @CustomType.Setter
         public Builder kubeproxy(@Nullable ClusterRkeConfigServicesKubeproxy kubeproxy) {
+
             this.kubeproxy = kubeproxy;
             return this;
         }
         @CustomType.Setter
         public Builder scheduler(@Nullable ClusterRkeConfigServicesScheduler scheduler) {
+
             this.scheduler = scheduler;
             return this;
         }

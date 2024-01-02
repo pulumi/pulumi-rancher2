@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -113,7 +114,9 @@ public final class NotifierPagerdutyConfigArgs extends com.pulumi.resources.Reso
         }
 
         public NotifierPagerdutyConfigArgs build() {
-            $.serviceKey = Objects.requireNonNull($.serviceKey, "expected parameter 'serviceKey' to be non-null");
+            if ($.serviceKey == null) {
+                throw new MissingRequiredPropertyException("NotifierPagerdutyConfigArgs", "serviceKey");
+            }
             return $;
         }
     }

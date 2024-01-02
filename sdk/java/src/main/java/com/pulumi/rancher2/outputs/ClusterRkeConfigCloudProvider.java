@@ -118,31 +118,37 @@ public final class ClusterRkeConfigCloudProvider {
 
         @CustomType.Setter
         public Builder awsCloudProvider(@Nullable ClusterRkeConfigCloudProviderAwsCloudProvider awsCloudProvider) {
+
             this.awsCloudProvider = awsCloudProvider;
             return this;
         }
         @CustomType.Setter
         public Builder azureCloudProvider(@Nullable ClusterRkeConfigCloudProviderAzureCloudProvider azureCloudProvider) {
+
             this.azureCloudProvider = azureCloudProvider;
             return this;
         }
         @CustomType.Setter
         public Builder customCloudProvider(@Nullable String customCloudProvider) {
+
             this.customCloudProvider = customCloudProvider;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder openstackCloudProvider(@Nullable ClusterRkeConfigCloudProviderOpenstackCloudProvider openstackCloudProvider) {
+
             this.openstackCloudProvider = openstackCloudProvider;
             return this;
         }
         @CustomType.Setter
         public Builder vsphereCloudProvider(@Nullable ClusterRkeConfigCloudProviderVsphereCloudProvider vsphereCloudProvider) {
+
             this.vsphereCloudProvider = vsphereCloudProvider;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -67,32 +68,40 @@ public final class GetClusterRkeConfigServicesKubeApiAuditLogConfiguration {
 
         @CustomType.Setter
         public Builder format(@Nullable String format) {
+
             this.format = format;
             return this;
         }
         @CustomType.Setter
         public Builder maxAge(@Nullable Integer maxAge) {
+
             this.maxAge = maxAge;
             return this;
         }
         @CustomType.Setter
         public Builder maxBackup(@Nullable Integer maxBackup) {
+
             this.maxBackup = maxBackup;
             return this;
         }
         @CustomType.Setter
         public Builder maxSize(@Nullable Integer maxSize) {
+
             this.maxSize = maxSize;
             return this;
         }
         @CustomType.Setter
         public Builder path(@Nullable String path) {
+
             this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder policy(String policy) {
-            this.policy = Objects.requireNonNull(policy);
+            if (policy == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigServicesKubeApiAuditLogConfiguration", "policy");
+            }
+            this.policy = policy;
             return this;
         }
         public GetClusterRkeConfigServicesKubeApiAuditLogConfiguration build() {

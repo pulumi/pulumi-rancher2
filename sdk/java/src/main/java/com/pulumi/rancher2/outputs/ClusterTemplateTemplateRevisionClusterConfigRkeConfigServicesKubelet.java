@@ -88,21 +88,25 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
 
         @CustomType.Setter
         public Builder clusterDnsServer(@Nullable String clusterDnsServer) {
+
             this.clusterDnsServer = clusterDnsServer;
             return this;
         }
         @CustomType.Setter
         public Builder clusterDomain(@Nullable String clusterDomain) {
+
             this.clusterDomain = clusterDomain;
             return this;
         }
         @CustomType.Setter
         public Builder extraArgs(@Nullable Map<String,Object> extraArgs) {
+
             this.extraArgs = extraArgs;
             return this;
         }
         @CustomType.Setter
         public Builder extraBinds(@Nullable List<String> extraBinds) {
+
             this.extraBinds = extraBinds;
             return this;
         }
@@ -111,6 +115,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
         }
         @CustomType.Setter
         public Builder extraEnvs(@Nullable List<String> extraEnvs) {
+
             this.extraEnvs = extraEnvs;
             return this;
         }
@@ -119,21 +124,25 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
         }
         @CustomType.Setter
         public Builder failSwapOn(@Nullable Boolean failSwapOn) {
+
             this.failSwapOn = failSwapOn;
             return this;
         }
         @CustomType.Setter
         public Builder generateServingCertificate(@Nullable Boolean generateServingCertificate) {
+
             this.generateServingCertificate = generateServingCertificate;
             return this;
         }
         @CustomType.Setter
         public Builder image(@Nullable String image) {
+
             this.image = image;
             return this;
         }
         @CustomType.Setter
         public Builder infraContainerImage(@Nullable String infraContainerImage) {
+
             this.infraContainerImage = infraContainerImage;
             return this;
         }

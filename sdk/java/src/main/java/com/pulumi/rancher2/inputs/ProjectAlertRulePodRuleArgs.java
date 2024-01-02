@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -188,7 +189,9 @@ public final class ProjectAlertRulePodRuleArgs extends com.pulumi.resources.Reso
         }
 
         public ProjectAlertRulePodRuleArgs build() {
-            $.podId = Objects.requireNonNull($.podId, "expected parameter 'podId' to be non-null");
+            if ($.podId == null) {
+                throw new MissingRequiredPropertyException("ProjectAlertRulePodRuleArgs", "podId");
+            }
             return $;
         }
     }

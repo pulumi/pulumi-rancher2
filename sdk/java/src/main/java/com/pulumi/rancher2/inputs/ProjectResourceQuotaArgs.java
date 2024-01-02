@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.inputs.ProjectResourceQuotaNamespaceDefaultLimitArgs;
 import com.pulumi.rancher2.inputs.ProjectResourceQuotaProjectLimitArgs;
 import java.util.Objects;
@@ -112,8 +113,12 @@ public final class ProjectResourceQuotaArgs extends com.pulumi.resources.Resourc
         }
 
         public ProjectResourceQuotaArgs build() {
-            $.namespaceDefaultLimit = Objects.requireNonNull($.namespaceDefaultLimit, "expected parameter 'namespaceDefaultLimit' to be non-null");
-            $.projectLimit = Objects.requireNonNull($.projectLimit, "expected parameter 'projectLimit' to be non-null");
+            if ($.namespaceDefaultLimit == null) {
+                throw new MissingRequiredPropertyException("ProjectResourceQuotaArgs", "namespaceDefaultLimit");
+            }
+            if ($.projectLimit == null) {
+                throw new MissingRequiredPropertyException("ProjectResourceQuotaArgs", "projectLimit");
+            }
             return $;
         }
     }

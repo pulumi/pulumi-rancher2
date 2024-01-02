@@ -5,6 +5,7 @@ package com.pulumi.rancher2;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.inputs.EtcdBackupBackupConfigArgs;
 import java.lang.Boolean;
 import java.lang.Object;
@@ -339,7 +340,9 @@ public final class EtcdBackupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public EtcdBackupArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("EtcdBackupArgs", "clusterId");
+            }
             return $;
         }
     }

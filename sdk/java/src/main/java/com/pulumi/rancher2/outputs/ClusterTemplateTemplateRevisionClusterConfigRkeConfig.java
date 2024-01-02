@@ -183,16 +183,19 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfig {
 
         @CustomType.Setter
         public Builder addonJobTimeout(@Nullable Integer addonJobTimeout) {
+
             this.addonJobTimeout = addonJobTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder addons(@Nullable String addons) {
+
             this.addons = addons;
             return this;
         }
         @CustomType.Setter
         public Builder addonsIncludes(@Nullable List<String> addonsIncludes) {
+
             this.addonsIncludes = addonsIncludes;
             return this;
         }
@@ -201,61 +204,73 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfig {
         }
         @CustomType.Setter
         public Builder authentication(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication authentication) {
+
             this.authentication = authentication;
             return this;
         }
         @CustomType.Setter
         public Builder authorization(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorization authorization) {
+
             this.authorization = authorization;
             return this;
         }
         @CustomType.Setter
         public Builder bastionHost(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHost bastionHost) {
+
             this.bastionHost = bastionHost;
             return this;
         }
         @CustomType.Setter
         public Builder cloudProvider(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvider cloudProvider) {
+
             this.cloudProvider = cloudProvider;
             return this;
         }
         @CustomType.Setter
         public Builder dns(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns dns) {
+
             this.dns = dns;
             return this;
         }
         @CustomType.Setter
         public Builder enableCriDockerd(@Nullable Boolean enableCriDockerd) {
+
             this.enableCriDockerd = enableCriDockerd;
             return this;
         }
         @CustomType.Setter
         public Builder ignoreDockerVersion(@Nullable Boolean ignoreDockerVersion) {
+
             this.ignoreDockerVersion = ignoreDockerVersion;
             return this;
         }
         @CustomType.Setter
         public Builder ingress(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress ingress) {
+
             this.ingress = ingress;
             return this;
         }
         @CustomType.Setter
         public Builder kubernetesVersion(@Nullable String kubernetesVersion) {
+
             this.kubernetesVersion = kubernetesVersion;
             return this;
         }
         @CustomType.Setter
         public Builder monitoring(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring monitoring) {
+
             this.monitoring = monitoring;
             return this;
         }
         @CustomType.Setter
         public Builder network(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork network) {
+
             this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder nodes(@Nullable List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigNode> nodes) {
+
             this.nodes = nodes;
             return this;
         }
@@ -264,11 +279,13 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfig {
         }
         @CustomType.Setter
         public Builder prefixPath(@Nullable String prefixPath) {
+
             this.prefixPath = prefixPath;
             return this;
         }
         @CustomType.Setter
         public Builder privateRegistries(@Nullable List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry> privateRegistries) {
+
             this.privateRegistries = privateRegistries;
             return this;
         }
@@ -277,31 +294,37 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfig {
         }
         @CustomType.Setter
         public Builder services(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices services) {
+
             this.services = services;
             return this;
         }
         @CustomType.Setter
         public Builder sshAgentAuth(@Nullable Boolean sshAgentAuth) {
+
             this.sshAgentAuth = sshAgentAuth;
             return this;
         }
         @CustomType.Setter
         public Builder sshCertPath(@Nullable String sshCertPath) {
+
             this.sshCertPath = sshCertPath;
             return this;
         }
         @CustomType.Setter
         public Builder sshKeyPath(@Nullable String sshKeyPath) {
+
             this.sshKeyPath = sshKeyPath;
             return this;
         }
         @CustomType.Setter
         public Builder upgradeStrategy(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy upgradeStrategy) {
+
             this.upgradeStrategy = upgradeStrategy;
             return this;
         }
         @CustomType.Setter
         public Builder winPrefixPath(@Nullable String winPrefixPath) {
+
             this.winPrefixPath = winPrefixPath;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -438,146 +439,183 @@ public final class ClusterRkeConfigCloudProviderAzureCloudProvider {
 
         @CustomType.Setter
         public Builder aadClientCertPassword(@Nullable String aadClientCertPassword) {
+
             this.aadClientCertPassword = aadClientCertPassword;
             return this;
         }
         @CustomType.Setter
         public Builder aadClientCertPath(@Nullable String aadClientCertPath) {
+
             this.aadClientCertPath = aadClientCertPath;
             return this;
         }
         @CustomType.Setter
         public Builder aadClientId(String aadClientId) {
-            this.aadClientId = Objects.requireNonNull(aadClientId);
+            if (aadClientId == null) {
+              throw new MissingRequiredPropertyException("ClusterRkeConfigCloudProviderAzureCloudProvider", "aadClientId");
+            }
+            this.aadClientId = aadClientId;
             return this;
         }
         @CustomType.Setter
         public Builder aadClientSecret(String aadClientSecret) {
-            this.aadClientSecret = Objects.requireNonNull(aadClientSecret);
+            if (aadClientSecret == null) {
+              throw new MissingRequiredPropertyException("ClusterRkeConfigCloudProviderAzureCloudProvider", "aadClientSecret");
+            }
+            this.aadClientSecret = aadClientSecret;
             return this;
         }
         @CustomType.Setter
         public Builder cloud(@Nullable String cloud) {
+
             this.cloud = cloud;
             return this;
         }
         @CustomType.Setter
         public Builder cloudProviderBackoff(@Nullable Boolean cloudProviderBackoff) {
+
             this.cloudProviderBackoff = cloudProviderBackoff;
             return this;
         }
         @CustomType.Setter
         public Builder cloudProviderBackoffDuration(@Nullable Integer cloudProviderBackoffDuration) {
+
             this.cloudProviderBackoffDuration = cloudProviderBackoffDuration;
             return this;
         }
         @CustomType.Setter
         public Builder cloudProviderBackoffExponent(@Nullable Integer cloudProviderBackoffExponent) {
+
             this.cloudProviderBackoffExponent = cloudProviderBackoffExponent;
             return this;
         }
         @CustomType.Setter
         public Builder cloudProviderBackoffJitter(@Nullable Integer cloudProviderBackoffJitter) {
+
             this.cloudProviderBackoffJitter = cloudProviderBackoffJitter;
             return this;
         }
         @CustomType.Setter
         public Builder cloudProviderBackoffRetries(@Nullable Integer cloudProviderBackoffRetries) {
+
             this.cloudProviderBackoffRetries = cloudProviderBackoffRetries;
             return this;
         }
         @CustomType.Setter
         public Builder cloudProviderRateLimit(@Nullable Boolean cloudProviderRateLimit) {
+
             this.cloudProviderRateLimit = cloudProviderRateLimit;
             return this;
         }
         @CustomType.Setter
         public Builder cloudProviderRateLimitBucket(@Nullable Integer cloudProviderRateLimitBucket) {
+
             this.cloudProviderRateLimitBucket = cloudProviderRateLimitBucket;
             return this;
         }
         @CustomType.Setter
         public Builder cloudProviderRateLimitQps(@Nullable Integer cloudProviderRateLimitQps) {
+
             this.cloudProviderRateLimitQps = cloudProviderRateLimitQps;
             return this;
         }
         @CustomType.Setter
         public Builder loadBalancerSku(@Nullable String loadBalancerSku) {
+
             this.loadBalancerSku = loadBalancerSku;
             return this;
         }
         @CustomType.Setter
         public Builder location(@Nullable String location) {
+
             this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder maximumLoadBalancerRuleCount(@Nullable Integer maximumLoadBalancerRuleCount) {
+
             this.maximumLoadBalancerRuleCount = maximumLoadBalancerRuleCount;
             return this;
         }
         @CustomType.Setter
         public Builder primaryAvailabilitySetName(@Nullable String primaryAvailabilitySetName) {
+
             this.primaryAvailabilitySetName = primaryAvailabilitySetName;
             return this;
         }
         @CustomType.Setter
         public Builder primaryScaleSetName(@Nullable String primaryScaleSetName) {
+
             this.primaryScaleSetName = primaryScaleSetName;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroup(@Nullable String resourceGroup) {
+
             this.resourceGroup = resourceGroup;
             return this;
         }
         @CustomType.Setter
         public Builder routeTableName(@Nullable String routeTableName) {
+
             this.routeTableName = routeTableName;
             return this;
         }
         @CustomType.Setter
         public Builder securityGroupName(@Nullable String securityGroupName) {
+
             this.securityGroupName = securityGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder subnetName(@Nullable String subnetName) {
+
             this.subnetName = subnetName;
             return this;
         }
         @CustomType.Setter
         public Builder subscriptionId(String subscriptionId) {
-            this.subscriptionId = Objects.requireNonNull(subscriptionId);
+            if (subscriptionId == null) {
+              throw new MissingRequiredPropertyException("ClusterRkeConfigCloudProviderAzureCloudProvider", "subscriptionId");
+            }
+            this.subscriptionId = subscriptionId;
             return this;
         }
         @CustomType.Setter
         public Builder tenantId(String tenantId) {
-            this.tenantId = Objects.requireNonNull(tenantId);
+            if (tenantId == null) {
+              throw new MissingRequiredPropertyException("ClusterRkeConfigCloudProviderAzureCloudProvider", "tenantId");
+            }
+            this.tenantId = tenantId;
             return this;
         }
         @CustomType.Setter
         public Builder useInstanceMetadata(@Nullable Boolean useInstanceMetadata) {
+
             this.useInstanceMetadata = useInstanceMetadata;
             return this;
         }
         @CustomType.Setter
         public Builder useManagedIdentityExtension(@Nullable Boolean useManagedIdentityExtension) {
+
             this.useManagedIdentityExtension = useManagedIdentityExtension;
             return this;
         }
         @CustomType.Setter
         public Builder vmType(@Nullable String vmType) {
+
             this.vmType = vmType;
             return this;
         }
         @CustomType.Setter
         public Builder vnetName(@Nullable String vnetName) {
+
             this.vnetName = vnetName;
             return this;
         }
         @CustomType.Setter
         public Builder vnetResourceGroup(@Nullable String vnetResourceGroup) {
+
             this.vnetResourceGroup = vnetResourceGroup;
             return this;
         }

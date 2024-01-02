@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.ClusterTemplateTemplateRevisionClusterConfig;
 import com.pulumi.rancher2.outputs.ClusterTemplateTemplateRevisionQuestion;
 import java.lang.Boolean;
@@ -162,46 +163,59 @@ public final class ClusterTemplateTemplateRevision {
 
         @CustomType.Setter
         public Builder annotations(@Nullable Map<String,Object> annotations) {
+
             this.annotations = annotations;
             return this;
         }
         @CustomType.Setter
         public Builder clusterConfig(ClusterTemplateTemplateRevisionClusterConfig clusterConfig) {
-            this.clusterConfig = Objects.requireNonNull(clusterConfig);
+            if (clusterConfig == null) {
+              throw new MissingRequiredPropertyException("ClusterTemplateTemplateRevision", "clusterConfig");
+            }
+            this.clusterConfig = clusterConfig;
             return this;
         }
         @CustomType.Setter
         public Builder clusterTemplateId(@Nullable String clusterTemplateId) {
+
             this.clusterTemplateId = clusterTemplateId;
             return this;
         }
         @CustomType.Setter("default")
         public Builder default_(@Nullable Boolean default_) {
+
             this.default_ = default_;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder labels(@Nullable Map<String,Object> labels) {
+
             this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("ClusterTemplateTemplateRevision", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder questions(@Nullable List<ClusterTemplateTemplateRevisionQuestion> questions) {
+
             this.questions = questions;
             return this;
         }

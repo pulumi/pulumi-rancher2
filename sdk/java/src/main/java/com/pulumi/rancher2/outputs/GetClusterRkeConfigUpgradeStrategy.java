@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterRkeConfigUpgradeStrategyDrainInput;
 import java.lang.Boolean;
 import java.lang.String;
@@ -56,21 +57,27 @@ public final class GetClusterRkeConfigUpgradeStrategy {
 
         @CustomType.Setter
         public Builder drain(@Nullable Boolean drain) {
+
             this.drain = drain;
             return this;
         }
         @CustomType.Setter
         public Builder drainInput(GetClusterRkeConfigUpgradeStrategyDrainInput drainInput) {
-            this.drainInput = Objects.requireNonNull(drainInput);
+            if (drainInput == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigUpgradeStrategy", "drainInput");
+            }
+            this.drainInput = drainInput;
             return this;
         }
         @CustomType.Setter
         public Builder maxUnavailableControlplane(@Nullable String maxUnavailableControlplane) {
+
             this.maxUnavailableControlplane = maxUnavailableControlplane;
             return this;
         }
         @CustomType.Setter
         public Builder maxUnavailableWorker(@Nullable String maxUnavailableWorker) {
+
             this.maxUnavailableWorker = maxUnavailableWorker;
             return this;
         }

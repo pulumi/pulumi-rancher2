@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterV2AgentEnvVar;
 import com.pulumi.rancher2.outputs.GetClusterV2ClusterRegistrationToken;
 import com.pulumi.rancher2.outputs.GetClusterV2RkeConfig;
@@ -243,7 +244,10 @@ public final class GetClusterV2Result {
 
         @CustomType.Setter
         public Builder agentEnvVars(List<GetClusterV2AgentEnvVar> agentEnvVars) {
-            this.agentEnvVars = Objects.requireNonNull(agentEnvVars);
+            if (agentEnvVars == null) {
+              throw new MissingRequiredPropertyException("GetClusterV2Result", "agentEnvVars");
+            }
+            this.agentEnvVars = agentEnvVars;
             return this;
         }
         public Builder agentEnvVars(GetClusterV2AgentEnvVar... agentEnvVars) {
@@ -251,82 +255,128 @@ public final class GetClusterV2Result {
         }
         @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
-            this.annotations = Objects.requireNonNull(annotations);
+            if (annotations == null) {
+              throw new MissingRequiredPropertyException("GetClusterV2Result", "annotations");
+            }
+            this.annotations = annotations;
             return this;
         }
         @CustomType.Setter
         public Builder cloudCredentialSecretName(String cloudCredentialSecretName) {
-            this.cloudCredentialSecretName = Objects.requireNonNull(cloudCredentialSecretName);
+            if (cloudCredentialSecretName == null) {
+              throw new MissingRequiredPropertyException("GetClusterV2Result", "cloudCredentialSecretName");
+            }
+            this.cloudCredentialSecretName = cloudCredentialSecretName;
             return this;
         }
         @CustomType.Setter
         public Builder clusterRegistrationToken(GetClusterV2ClusterRegistrationToken clusterRegistrationToken) {
-            this.clusterRegistrationToken = Objects.requireNonNull(clusterRegistrationToken);
+            if (clusterRegistrationToken == null) {
+              throw new MissingRequiredPropertyException("GetClusterV2Result", "clusterRegistrationToken");
+            }
+            this.clusterRegistrationToken = clusterRegistrationToken;
             return this;
         }
         @CustomType.Setter
         public Builder clusterV1Id(String clusterV1Id) {
-            this.clusterV1Id = Objects.requireNonNull(clusterV1Id);
+            if (clusterV1Id == null) {
+              throw new MissingRequiredPropertyException("GetClusterV2Result", "clusterV1Id");
+            }
+            this.clusterV1Id = clusterV1Id;
             return this;
         }
         @CustomType.Setter
         public Builder defaultClusterRoleForProjectMembers(String defaultClusterRoleForProjectMembers) {
-            this.defaultClusterRoleForProjectMembers = Objects.requireNonNull(defaultClusterRoleForProjectMembers);
+            if (defaultClusterRoleForProjectMembers == null) {
+              throw new MissingRequiredPropertyException("GetClusterV2Result", "defaultClusterRoleForProjectMembers");
+            }
+            this.defaultClusterRoleForProjectMembers = defaultClusterRoleForProjectMembers;
             return this;
         }
         @CustomType.Setter
         public Builder defaultPodSecurityAdmissionConfigurationTemplateName(String defaultPodSecurityAdmissionConfigurationTemplateName) {
-            this.defaultPodSecurityAdmissionConfigurationTemplateName = Objects.requireNonNull(defaultPodSecurityAdmissionConfigurationTemplateName);
+            if (defaultPodSecurityAdmissionConfigurationTemplateName == null) {
+              throw new MissingRequiredPropertyException("GetClusterV2Result", "defaultPodSecurityAdmissionConfigurationTemplateName");
+            }
+            this.defaultPodSecurityAdmissionConfigurationTemplateName = defaultPodSecurityAdmissionConfigurationTemplateName;
             return this;
         }
         @CustomType.Setter
         public Builder defaultPodSecurityPolicyTemplateName(String defaultPodSecurityPolicyTemplateName) {
-            this.defaultPodSecurityPolicyTemplateName = Objects.requireNonNull(defaultPodSecurityPolicyTemplateName);
+            if (defaultPodSecurityPolicyTemplateName == null) {
+              throw new MissingRequiredPropertyException("GetClusterV2Result", "defaultPodSecurityPolicyTemplateName");
+            }
+            this.defaultPodSecurityPolicyTemplateName = defaultPodSecurityPolicyTemplateName;
             return this;
         }
         @CustomType.Setter
         public Builder enableNetworkPolicy(Boolean enableNetworkPolicy) {
-            this.enableNetworkPolicy = Objects.requireNonNull(enableNetworkPolicy);
+            if (enableNetworkPolicy == null) {
+              throw new MissingRequiredPropertyException("GetClusterV2Result", "enableNetworkPolicy");
+            }
+            this.enableNetworkPolicy = enableNetworkPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder fleetNamespace(@Nullable String fleetNamespace) {
+
             this.fleetNamespace = fleetNamespace;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetClusterV2Result", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder kubeConfig(String kubeConfig) {
-            this.kubeConfig = Objects.requireNonNull(kubeConfig);
+            if (kubeConfig == null) {
+              throw new MissingRequiredPropertyException("GetClusterV2Result", "kubeConfig");
+            }
+            this.kubeConfig = kubeConfig;
             return this;
         }
         @CustomType.Setter
         public Builder kubernetesVersion(String kubernetesVersion) {
-            this.kubernetesVersion = Objects.requireNonNull(kubernetesVersion);
+            if (kubernetesVersion == null) {
+              throw new MissingRequiredPropertyException("GetClusterV2Result", "kubernetesVersion");
+            }
+            this.kubernetesVersion = kubernetesVersion;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetClusterV2Result", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetClusterV2Result", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder resourceVersion(String resourceVersion) {
-            this.resourceVersion = Objects.requireNonNull(resourceVersion);
+            if (resourceVersion == null) {
+              throw new MissingRequiredPropertyException("GetClusterV2Result", "resourceVersion");
+            }
+            this.resourceVersion = resourceVersion;
             return this;
         }
         @CustomType.Setter
         public Builder rkeConfig(GetClusterV2RkeConfig rkeConfig) {
-            this.rkeConfig = Objects.requireNonNull(rkeConfig);
+            if (rkeConfig == null) {
+              throw new MissingRequiredPropertyException("GetClusterV2Result", "rkeConfig");
+            }
+            this.rkeConfig = rkeConfig;
             return this;
         }
         public GetClusterV2Result build() {

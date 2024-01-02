@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -77,42 +78,66 @@ public final class GetClusterGkeConfigV2IpAllocationPolicy {
 
         @CustomType.Setter
         public Builder clusterIpv4CidrBlock(String clusterIpv4CidrBlock) {
-            this.clusterIpv4CidrBlock = Objects.requireNonNull(clusterIpv4CidrBlock);
+            if (clusterIpv4CidrBlock == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2IpAllocationPolicy", "clusterIpv4CidrBlock");
+            }
+            this.clusterIpv4CidrBlock = clusterIpv4CidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder clusterSecondaryRangeName(String clusterSecondaryRangeName) {
-            this.clusterSecondaryRangeName = Objects.requireNonNull(clusterSecondaryRangeName);
+            if (clusterSecondaryRangeName == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2IpAllocationPolicy", "clusterSecondaryRangeName");
+            }
+            this.clusterSecondaryRangeName = clusterSecondaryRangeName;
             return this;
         }
         @CustomType.Setter
         public Builder createSubnetwork(Boolean createSubnetwork) {
-            this.createSubnetwork = Objects.requireNonNull(createSubnetwork);
+            if (createSubnetwork == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2IpAllocationPolicy", "createSubnetwork");
+            }
+            this.createSubnetwork = createSubnetwork;
             return this;
         }
         @CustomType.Setter
         public Builder nodeIpv4CidrBlock(String nodeIpv4CidrBlock) {
-            this.nodeIpv4CidrBlock = Objects.requireNonNull(nodeIpv4CidrBlock);
+            if (nodeIpv4CidrBlock == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2IpAllocationPolicy", "nodeIpv4CidrBlock");
+            }
+            this.nodeIpv4CidrBlock = nodeIpv4CidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder servicesIpv4CidrBlock(String servicesIpv4CidrBlock) {
-            this.servicesIpv4CidrBlock = Objects.requireNonNull(servicesIpv4CidrBlock);
+            if (servicesIpv4CidrBlock == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2IpAllocationPolicy", "servicesIpv4CidrBlock");
+            }
+            this.servicesIpv4CidrBlock = servicesIpv4CidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder servicesSecondaryRangeName(String servicesSecondaryRangeName) {
-            this.servicesSecondaryRangeName = Objects.requireNonNull(servicesSecondaryRangeName);
+            if (servicesSecondaryRangeName == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2IpAllocationPolicy", "servicesSecondaryRangeName");
+            }
+            this.servicesSecondaryRangeName = servicesSecondaryRangeName;
             return this;
         }
         @CustomType.Setter
         public Builder subnetworkName(String subnetworkName) {
-            this.subnetworkName = Objects.requireNonNull(subnetworkName);
+            if (subnetworkName == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2IpAllocationPolicy", "subnetworkName");
+            }
+            this.subnetworkName = subnetworkName;
             return this;
         }
         @CustomType.Setter
         public Builder useIpAliases(Boolean useIpAliases) {
-            this.useIpAliases = Objects.requireNonNull(useIpAliases);
+            if (useIpAliases == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2IpAllocationPolicy", "useIpAliases");
+            }
+            this.useIpAliases = useIpAliases;
             return this;
         }
         public GetClusterGkeConfigV2IpAllocationPolicy build() {

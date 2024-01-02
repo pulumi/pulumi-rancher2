@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -206,147 +207,232 @@ public final class GetClusterRkeConfigCloudProviderAzureCloudProvider {
 
         @CustomType.Setter
         public Builder aadClientCertPassword(String aadClientCertPassword) {
-            this.aadClientCertPassword = Objects.requireNonNull(aadClientCertPassword);
+            if (aadClientCertPassword == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderAzureCloudProvider", "aadClientCertPassword");
+            }
+            this.aadClientCertPassword = aadClientCertPassword;
             return this;
         }
         @CustomType.Setter
         public Builder aadClientCertPath(String aadClientCertPath) {
-            this.aadClientCertPath = Objects.requireNonNull(aadClientCertPath);
+            if (aadClientCertPath == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderAzureCloudProvider", "aadClientCertPath");
+            }
+            this.aadClientCertPath = aadClientCertPath;
             return this;
         }
         @CustomType.Setter
         public Builder aadClientId(String aadClientId) {
-            this.aadClientId = Objects.requireNonNull(aadClientId);
+            if (aadClientId == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderAzureCloudProvider", "aadClientId");
+            }
+            this.aadClientId = aadClientId;
             return this;
         }
         @CustomType.Setter
         public Builder aadClientSecret(String aadClientSecret) {
-            this.aadClientSecret = Objects.requireNonNull(aadClientSecret);
+            if (aadClientSecret == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderAzureCloudProvider", "aadClientSecret");
+            }
+            this.aadClientSecret = aadClientSecret;
             return this;
         }
         @CustomType.Setter
         public Builder cloud(String cloud) {
-            this.cloud = Objects.requireNonNull(cloud);
+            if (cloud == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderAzureCloudProvider", "cloud");
+            }
+            this.cloud = cloud;
             return this;
         }
         @CustomType.Setter
         public Builder cloudProviderBackoff(Boolean cloudProviderBackoff) {
-            this.cloudProviderBackoff = Objects.requireNonNull(cloudProviderBackoff);
+            if (cloudProviderBackoff == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderAzureCloudProvider", "cloudProviderBackoff");
+            }
+            this.cloudProviderBackoff = cloudProviderBackoff;
             return this;
         }
         @CustomType.Setter
         public Builder cloudProviderBackoffDuration(Integer cloudProviderBackoffDuration) {
-            this.cloudProviderBackoffDuration = Objects.requireNonNull(cloudProviderBackoffDuration);
+            if (cloudProviderBackoffDuration == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderAzureCloudProvider", "cloudProviderBackoffDuration");
+            }
+            this.cloudProviderBackoffDuration = cloudProviderBackoffDuration;
             return this;
         }
         @CustomType.Setter
         public Builder cloudProviderBackoffExponent(Integer cloudProviderBackoffExponent) {
-            this.cloudProviderBackoffExponent = Objects.requireNonNull(cloudProviderBackoffExponent);
+            if (cloudProviderBackoffExponent == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderAzureCloudProvider", "cloudProviderBackoffExponent");
+            }
+            this.cloudProviderBackoffExponent = cloudProviderBackoffExponent;
             return this;
         }
         @CustomType.Setter
         public Builder cloudProviderBackoffJitter(Integer cloudProviderBackoffJitter) {
-            this.cloudProviderBackoffJitter = Objects.requireNonNull(cloudProviderBackoffJitter);
+            if (cloudProviderBackoffJitter == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderAzureCloudProvider", "cloudProviderBackoffJitter");
+            }
+            this.cloudProviderBackoffJitter = cloudProviderBackoffJitter;
             return this;
         }
         @CustomType.Setter
         public Builder cloudProviderBackoffRetries(Integer cloudProviderBackoffRetries) {
-            this.cloudProviderBackoffRetries = Objects.requireNonNull(cloudProviderBackoffRetries);
+            if (cloudProviderBackoffRetries == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderAzureCloudProvider", "cloudProviderBackoffRetries");
+            }
+            this.cloudProviderBackoffRetries = cloudProviderBackoffRetries;
             return this;
         }
         @CustomType.Setter
         public Builder cloudProviderRateLimit(Boolean cloudProviderRateLimit) {
-            this.cloudProviderRateLimit = Objects.requireNonNull(cloudProviderRateLimit);
+            if (cloudProviderRateLimit == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderAzureCloudProvider", "cloudProviderRateLimit");
+            }
+            this.cloudProviderRateLimit = cloudProviderRateLimit;
             return this;
         }
         @CustomType.Setter
         public Builder cloudProviderRateLimitBucket(Integer cloudProviderRateLimitBucket) {
-            this.cloudProviderRateLimitBucket = Objects.requireNonNull(cloudProviderRateLimitBucket);
+            if (cloudProviderRateLimitBucket == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderAzureCloudProvider", "cloudProviderRateLimitBucket");
+            }
+            this.cloudProviderRateLimitBucket = cloudProviderRateLimitBucket;
             return this;
         }
         @CustomType.Setter
         public Builder cloudProviderRateLimitQps(Integer cloudProviderRateLimitQps) {
-            this.cloudProviderRateLimitQps = Objects.requireNonNull(cloudProviderRateLimitQps);
+            if (cloudProviderRateLimitQps == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderAzureCloudProvider", "cloudProviderRateLimitQps");
+            }
+            this.cloudProviderRateLimitQps = cloudProviderRateLimitQps;
             return this;
         }
         @CustomType.Setter
         public Builder loadBalancerSku(@Nullable String loadBalancerSku) {
+
             this.loadBalancerSku = loadBalancerSku;
             return this;
         }
         @CustomType.Setter
         public Builder location(String location) {
-            this.location = Objects.requireNonNull(location);
+            if (location == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderAzureCloudProvider", "location");
+            }
+            this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder maximumLoadBalancerRuleCount(Integer maximumLoadBalancerRuleCount) {
-            this.maximumLoadBalancerRuleCount = Objects.requireNonNull(maximumLoadBalancerRuleCount);
+            if (maximumLoadBalancerRuleCount == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderAzureCloudProvider", "maximumLoadBalancerRuleCount");
+            }
+            this.maximumLoadBalancerRuleCount = maximumLoadBalancerRuleCount;
             return this;
         }
         @CustomType.Setter
         public Builder primaryAvailabilitySetName(String primaryAvailabilitySetName) {
-            this.primaryAvailabilitySetName = Objects.requireNonNull(primaryAvailabilitySetName);
+            if (primaryAvailabilitySetName == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderAzureCloudProvider", "primaryAvailabilitySetName");
+            }
+            this.primaryAvailabilitySetName = primaryAvailabilitySetName;
             return this;
         }
         @CustomType.Setter
         public Builder primaryScaleSetName(String primaryScaleSetName) {
-            this.primaryScaleSetName = Objects.requireNonNull(primaryScaleSetName);
+            if (primaryScaleSetName == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderAzureCloudProvider", "primaryScaleSetName");
+            }
+            this.primaryScaleSetName = primaryScaleSetName;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroup(String resourceGroup) {
-            this.resourceGroup = Objects.requireNonNull(resourceGroup);
+            if (resourceGroup == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderAzureCloudProvider", "resourceGroup");
+            }
+            this.resourceGroup = resourceGroup;
             return this;
         }
         @CustomType.Setter
         public Builder routeTableName(String routeTableName) {
-            this.routeTableName = Objects.requireNonNull(routeTableName);
+            if (routeTableName == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderAzureCloudProvider", "routeTableName");
+            }
+            this.routeTableName = routeTableName;
             return this;
         }
         @CustomType.Setter
         public Builder securityGroupName(String securityGroupName) {
-            this.securityGroupName = Objects.requireNonNull(securityGroupName);
+            if (securityGroupName == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderAzureCloudProvider", "securityGroupName");
+            }
+            this.securityGroupName = securityGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder subnetName(String subnetName) {
-            this.subnetName = Objects.requireNonNull(subnetName);
+            if (subnetName == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderAzureCloudProvider", "subnetName");
+            }
+            this.subnetName = subnetName;
             return this;
         }
         @CustomType.Setter
         public Builder subscriptionId(String subscriptionId) {
-            this.subscriptionId = Objects.requireNonNull(subscriptionId);
+            if (subscriptionId == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderAzureCloudProvider", "subscriptionId");
+            }
+            this.subscriptionId = subscriptionId;
             return this;
         }
         @CustomType.Setter
         public Builder tenantId(String tenantId) {
-            this.tenantId = Objects.requireNonNull(tenantId);
+            if (tenantId == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderAzureCloudProvider", "tenantId");
+            }
+            this.tenantId = tenantId;
             return this;
         }
         @CustomType.Setter
         public Builder useInstanceMetadata(Boolean useInstanceMetadata) {
-            this.useInstanceMetadata = Objects.requireNonNull(useInstanceMetadata);
+            if (useInstanceMetadata == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderAzureCloudProvider", "useInstanceMetadata");
+            }
+            this.useInstanceMetadata = useInstanceMetadata;
             return this;
         }
         @CustomType.Setter
         public Builder useManagedIdentityExtension(Boolean useManagedIdentityExtension) {
-            this.useManagedIdentityExtension = Objects.requireNonNull(useManagedIdentityExtension);
+            if (useManagedIdentityExtension == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderAzureCloudProvider", "useManagedIdentityExtension");
+            }
+            this.useManagedIdentityExtension = useManagedIdentityExtension;
             return this;
         }
         @CustomType.Setter
         public Builder vmType(String vmType) {
-            this.vmType = Objects.requireNonNull(vmType);
+            if (vmType == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderAzureCloudProvider", "vmType");
+            }
+            this.vmType = vmType;
             return this;
         }
         @CustomType.Setter
         public Builder vnetName(String vnetName) {
-            this.vnetName = Objects.requireNonNull(vnetName);
+            if (vnetName == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderAzureCloudProvider", "vnetName");
+            }
+            this.vnetName = vnetName;
             return this;
         }
         @CustomType.Setter
         public Builder vnetResourceGroup(String vnetResourceGroup) {
-            this.vnetResourceGroup = Objects.requireNonNull(vnetResourceGroup);
+            if (vnetResourceGroup == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderAzureCloudProvider", "vnetResourceGroup");
+            }
+            this.vnetResourceGroup = vnetResourceGroup;
             return this;
         }
         public GetClusterRkeConfigCloudProviderAzureCloudProvider build() {

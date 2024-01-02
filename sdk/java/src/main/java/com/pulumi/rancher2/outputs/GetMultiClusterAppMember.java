@@ -48,16 +48,19 @@ public final class GetMultiClusterAppMember {
 
         @CustomType.Setter
         public Builder accessType(@Nullable String accessType) {
+
             this.accessType = accessType;
             return this;
         }
         @CustomType.Setter
         public Builder groupPrincipalId(@Nullable String groupPrincipalId) {
+
             this.groupPrincipalId = groupPrincipalId;
             return this;
         }
         @CustomType.Setter
         public Builder userPrincipalId(@Nullable String userPrincipalId) {
+
             this.userPrincipalId = userPrincipalId;
             return this;
         }

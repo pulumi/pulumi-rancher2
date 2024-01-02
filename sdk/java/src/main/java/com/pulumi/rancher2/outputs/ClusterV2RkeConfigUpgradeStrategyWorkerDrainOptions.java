@@ -157,46 +157,55 @@ public final class ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions {
 
         @CustomType.Setter
         public Builder deleteEmptyDirData(@Nullable Boolean deleteEmptyDirData) {
+
             this.deleteEmptyDirData = deleteEmptyDirData;
             return this;
         }
         @CustomType.Setter
         public Builder disableEviction(@Nullable Boolean disableEviction) {
+
             this.disableEviction = disableEviction;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder force(@Nullable Boolean force) {
+
             this.force = force;
             return this;
         }
         @CustomType.Setter
         public Builder gracePeriod(@Nullable Integer gracePeriod) {
+
             this.gracePeriod = gracePeriod;
             return this;
         }
         @CustomType.Setter
         public Builder ignoreDaemonSets(@Nullable Boolean ignoreDaemonSets) {
+
             this.ignoreDaemonSets = ignoreDaemonSets;
             return this;
         }
         @CustomType.Setter
         public Builder ignoreErrors(@Nullable Boolean ignoreErrors) {
+
             this.ignoreErrors = ignoreErrors;
             return this;
         }
         @CustomType.Setter
         public Builder skipWaitForDeleteTimeoutSeconds(@Nullable Integer skipWaitForDeleteTimeoutSeconds) {
+
             this.skipWaitForDeleteTimeoutSeconds = skipWaitForDeleteTimeoutSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder timeout(@Nullable Integer timeout) {
+
             this.timeout = timeout;
             return this;
         }

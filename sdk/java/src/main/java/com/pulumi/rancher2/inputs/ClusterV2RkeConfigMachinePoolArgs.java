@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.inputs.ClusterV2RkeConfigMachinePoolMachineConfigArgs;
 import com.pulumi.rancher2.inputs.ClusterV2RkeConfigMachinePoolRollingUpdateArgs;
 import com.pulumi.rancher2.inputs.ClusterV2RkeConfigMachinePoolTaintArgs;
@@ -777,8 +778,12 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         public ClusterV2RkeConfigMachinePoolArgs build() {
-            $.machineConfig = Objects.requireNonNull($.machineConfig, "expected parameter 'machineConfig' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.machineConfig == null) {
+                throw new MissingRequiredPropertyException("ClusterV2RkeConfigMachinePoolArgs", "machineConfig");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("ClusterV2RkeConfigMachinePoolArgs", "name");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetClusterRkeConfigNetworkCalicoNetworkProvider {
 
         @CustomType.Setter
         public Builder cloudProvider(String cloudProvider) {
-            this.cloudProvider = Objects.requireNonNull(cloudProvider);
+            if (cloudProvider == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigNetworkCalicoNetworkProvider", "cloudProvider");
+            }
+            this.cloudProvider = cloudProvider;
             return this;
         }
         public GetClusterRkeConfigNetworkCalicoNetworkProvider build() {

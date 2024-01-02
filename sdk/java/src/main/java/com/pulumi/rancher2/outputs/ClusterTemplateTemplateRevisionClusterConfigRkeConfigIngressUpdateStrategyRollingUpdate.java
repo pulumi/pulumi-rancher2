@@ -36,6 +36,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressU
 
         @CustomType.Setter
         public Builder maxUnavailable(@Nullable Integer maxUnavailable) {
+
             this.maxUnavailable = maxUnavailable;
             return this;
         }

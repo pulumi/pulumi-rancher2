@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetRoleTempalteRule;
 import java.lang.Boolean;
 import java.lang.Object;
@@ -213,67 +214,106 @@ public final class GetRoleTempalteResult {
 
         @CustomType.Setter
         public Builder administrative(Boolean administrative) {
-            this.administrative = Objects.requireNonNull(administrative);
+            if (administrative == null) {
+              throw new MissingRequiredPropertyException("GetRoleTempalteResult", "administrative");
+            }
+            this.administrative = administrative;
             return this;
         }
         @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
-            this.annotations = Objects.requireNonNull(annotations);
+            if (annotations == null) {
+              throw new MissingRequiredPropertyException("GetRoleTempalteResult", "annotations");
+            }
+            this.annotations = annotations;
             return this;
         }
         @CustomType.Setter
         public Builder builtin(Boolean builtin) {
-            this.builtin = Objects.requireNonNull(builtin);
+            if (builtin == null) {
+              throw new MissingRequiredPropertyException("GetRoleTempalteResult", "builtin");
+            }
+            this.builtin = builtin;
             return this;
         }
         @CustomType.Setter
         public Builder context(String context) {
-            this.context = Objects.requireNonNull(context);
+            if (context == null) {
+              throw new MissingRequiredPropertyException("GetRoleTempalteResult", "context");
+            }
+            this.context = context;
             return this;
         }
         @CustomType.Setter
         public Builder defaultRole(Boolean defaultRole) {
-            this.defaultRole = Objects.requireNonNull(defaultRole);
+            if (defaultRole == null) {
+              throw new MissingRequiredPropertyException("GetRoleTempalteResult", "defaultRole");
+            }
+            this.defaultRole = defaultRole;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetRoleTempalteResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder external(Boolean external) {
-            this.external = Objects.requireNonNull(external);
+            if (external == null) {
+              throw new MissingRequiredPropertyException("GetRoleTempalteResult", "external");
+            }
+            this.external = external;
             return this;
         }
         @CustomType.Setter
         public Builder hidden(Boolean hidden) {
-            this.hidden = Objects.requireNonNull(hidden);
+            if (hidden == null) {
+              throw new MissingRequiredPropertyException("GetRoleTempalteResult", "hidden");
+            }
+            this.hidden = hidden;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRoleTempalteResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetRoleTempalteResult", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder locked(Boolean locked) {
-            this.locked = Objects.requireNonNull(locked);
+            if (locked == null) {
+              throw new MissingRequiredPropertyException("GetRoleTempalteResult", "locked");
+            }
+            this.locked = locked;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetRoleTempalteResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder roleTemplateIds(List<String> roleTemplateIds) {
-            this.roleTemplateIds = Objects.requireNonNull(roleTemplateIds);
+            if (roleTemplateIds == null) {
+              throw new MissingRequiredPropertyException("GetRoleTempalteResult", "roleTemplateIds");
+            }
+            this.roleTemplateIds = roleTemplateIds;
             return this;
         }
         public Builder roleTemplateIds(String... roleTemplateIds) {
@@ -281,7 +321,10 @@ public final class GetRoleTempalteResult {
         }
         @CustomType.Setter
         public Builder rules(List<GetRoleTempalteRule> rules) {
-            this.rules = Objects.requireNonNull(rules);
+            if (rules == null) {
+              throw new MissingRequiredPropertyException("GetRoleTempalteResult", "rules");
+            }
+            this.rules = rules;
             return this;
         }
         public Builder rules(GetRoleTempalteRule... rules) {

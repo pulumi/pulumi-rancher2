@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -280,77 +281,96 @@ public final class MachineConfigV2HarvesterConfig {
 
         @CustomType.Setter
         public Builder cpuCount(@Nullable String cpuCount) {
+
             this.cpuCount = cpuCount;
             return this;
         }
         @CustomType.Setter
         public Builder diskBus(@Nullable String diskBus) {
+
             this.diskBus = diskBus;
             return this;
         }
         @CustomType.Setter
         public Builder diskInfo(@Nullable String diskInfo) {
+
             this.diskInfo = diskInfo;
             return this;
         }
         @CustomType.Setter
         public Builder diskSize(@Nullable String diskSize) {
+
             this.diskSize = diskSize;
             return this;
         }
         @CustomType.Setter
         public Builder imageName(@Nullable String imageName) {
+
             this.imageName = imageName;
             return this;
         }
         @CustomType.Setter
         public Builder memorySize(@Nullable String memorySize) {
+
             this.memorySize = memorySize;
             return this;
         }
         @CustomType.Setter
         public Builder networkData(@Nullable String networkData) {
+
             this.networkData = networkData;
             return this;
         }
         @CustomType.Setter
         public Builder networkInfo(@Nullable String networkInfo) {
+
             this.networkInfo = networkInfo;
             return this;
         }
         @CustomType.Setter
         public Builder networkModel(@Nullable String networkModel) {
+
             this.networkModel = networkModel;
             return this;
         }
         @CustomType.Setter
         public Builder networkName(@Nullable String networkName) {
+
             this.networkName = networkName;
             return this;
         }
         @CustomType.Setter
         public Builder sshPassword(@Nullable String sshPassword) {
+
             this.sshPassword = sshPassword;
             return this;
         }
         @CustomType.Setter
         public Builder sshUser(String sshUser) {
-            this.sshUser = Objects.requireNonNull(sshUser);
+            if (sshUser == null) {
+              throw new MissingRequiredPropertyException("MachineConfigV2HarvesterConfig", "sshUser");
+            }
+            this.sshUser = sshUser;
             return this;
         }
         @CustomType.Setter
         public Builder userData(@Nullable String userData) {
+
             this.userData = userData;
             return this;
         }
         @CustomType.Setter
         public Builder vmAffinity(@Nullable String vmAffinity) {
+
             this.vmAffinity = vmAffinity;
             return this;
         }
         @CustomType.Setter
         public Builder vmNamespace(String vmNamespace) {
-            this.vmNamespace = Objects.requireNonNull(vmNamespace);
+            if (vmNamespace == null) {
+              throw new MissingRequiredPropertyException("MachineConfigV2HarvesterConfig", "vmNamespace");
+            }
+            this.vmNamespace = vmNamespace;
             return this;
         }
         public MachineConfigV2HarvesterConfig build() {

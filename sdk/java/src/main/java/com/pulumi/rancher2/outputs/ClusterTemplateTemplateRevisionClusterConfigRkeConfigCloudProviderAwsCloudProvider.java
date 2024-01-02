@@ -44,11 +44,13 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
 
         @CustomType.Setter
         public Builder global(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobal global) {
+
             this.global = global;
             return this;
         }
         @CustomType.Setter
         public Builder serviceOverrides(@Nullable List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverride> serviceOverrides) {
+
             this.serviceOverrides = serviceOverrides;
             return this;
         }

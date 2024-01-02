@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -73,17 +74,22 @@ public final class ClusterGkeConfigV2PrivateClusterConfig {
 
         @CustomType.Setter
         public Builder enablePrivateEndpoint(@Nullable Boolean enablePrivateEndpoint) {
+
             this.enablePrivateEndpoint = enablePrivateEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder enablePrivateNodes(@Nullable Boolean enablePrivateNodes) {
+
             this.enablePrivateNodes = enablePrivateNodes;
             return this;
         }
         @CustomType.Setter
         public Builder masterIpv4CidrBlock(String masterIpv4CidrBlock) {
-            this.masterIpv4CidrBlock = Objects.requireNonNull(masterIpv4CidrBlock);
+            if (masterIpv4CidrBlock == null) {
+              throw new MissingRequiredPropertyException("ClusterGkeConfigV2PrivateClusterConfig", "masterIpv4CidrBlock");
+            }
+            this.masterIpv4CidrBlock = masterIpv4CidrBlock;
             return this;
         }
         public ClusterGkeConfigV2PrivateClusterConfig build() {

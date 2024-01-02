@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -67,32 +68,42 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionH
 
         @CustomType.Setter
         public Builder address(String address) {
-            this.address = Objects.requireNonNull(address);
+            if (address == null) {
+              throw new MissingRequiredPropertyException("ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHost", "address");
+            }
+            this.address = address;
             return this;
         }
         @CustomType.Setter
         public Builder port(@Nullable String port) {
+
             this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder sshAgentAuth(@Nullable Boolean sshAgentAuth) {
+
             this.sshAgentAuth = sshAgentAuth;
             return this;
         }
         @CustomType.Setter
         public Builder sshKey(@Nullable String sshKey) {
+
             this.sshKey = sshKey;
             return this;
         }
         @CustomType.Setter
         public Builder sshKeyPath(@Nullable String sshKeyPath) {
+
             this.sshKeyPath = sshKeyPath;
             return this;
         }
         @CustomType.Setter
         public Builder user(String user) {
-            this.user = Objects.requireNonNull(user);
+            if (user == null) {
+              throw new MissingRequiredPropertyException("ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHost", "user");
+            }
+            this.user = user;
             return this;
         }
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHost build() {

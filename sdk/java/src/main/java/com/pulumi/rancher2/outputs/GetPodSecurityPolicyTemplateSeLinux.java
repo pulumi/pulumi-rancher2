@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption;
 import java.lang.String;
 import java.util.Objects;
@@ -43,11 +44,15 @@ public final class GetPodSecurityPolicyTemplateSeLinux {
 
         @CustomType.Setter
         public Builder rule(String rule) {
-            this.rule = Objects.requireNonNull(rule);
+            if (rule == null) {
+              throw new MissingRequiredPropertyException("GetPodSecurityPolicyTemplateSeLinux", "rule");
+            }
+            this.rule = rule;
             return this;
         }
         @CustomType.Setter
         public Builder seLinuxOption(@Nullable GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption seLinuxOption) {
+
             this.seLinuxOption = seLinuxOption;
             return this;
         }

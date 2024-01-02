@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -745,9 +746,15 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         public ClusterEksConfigArgs build() {
-            $.accessKey = Objects.requireNonNull($.accessKey, "expected parameter 'accessKey' to be non-null");
-            $.kubernetesVersion = Objects.requireNonNull($.kubernetesVersion, "expected parameter 'kubernetesVersion' to be non-null");
-            $.secretKey = Objects.requireNonNull($.secretKey, "expected parameter 'secretKey' to be non-null");
+            if ($.accessKey == null) {
+                throw new MissingRequiredPropertyException("ClusterEksConfigArgs", "accessKey");
+            }
+            if ($.kubernetesVersion == null) {
+                throw new MissingRequiredPropertyException("ClusterEksConfigArgs", "kubernetesVersion");
+            }
+            if ($.secretKey == null) {
+                throw new MissingRequiredPropertyException("ClusterEksConfigArgs", "secretKey");
+            }
             return $;
         }
     }

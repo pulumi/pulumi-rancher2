@@ -43,6 +43,7 @@ public final class GetClusterV2RkeConfigRegistries {
 
         @CustomType.Setter
         public Builder configs(@Nullable List<GetClusterV2RkeConfigRegistriesConfig> configs) {
+
             this.configs = configs;
             return this;
         }
@@ -51,6 +52,7 @@ public final class GetClusterV2RkeConfigRegistries {
         }
         @CustomType.Setter
         public Builder mirrors(@Nullable List<GetClusterV2RkeConfigRegistriesMirror> mirrors) {
+
             this.mirrors = mirrors;
             return this;
         }

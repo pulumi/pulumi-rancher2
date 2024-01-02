@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterAksConfigV2NodePool;
 import java.lang.Boolean;
 import java.lang.Object;
@@ -217,11 +218,13 @@ public final class GetClusterAksConfigV2 {
 
         @CustomType.Setter
         public Builder authBaseUrl(@Nullable String authBaseUrl) {
+
             this.authBaseUrl = authBaseUrl;
             return this;
         }
         @CustomType.Setter
         public Builder authorizedIpRanges(@Nullable List<String> authorizedIpRanges) {
+
             this.authorizedIpRanges = authorizedIpRanges;
             return this;
         }
@@ -230,101 +233,149 @@ public final class GetClusterAksConfigV2 {
         }
         @CustomType.Setter
         public Builder baseUrl(@Nullable String baseUrl) {
+
             this.baseUrl = baseUrl;
             return this;
         }
         @CustomType.Setter
         public Builder cloudCredentialId(String cloudCredentialId) {
-            this.cloudCredentialId = Objects.requireNonNull(cloudCredentialId);
+            if (cloudCredentialId == null) {
+              throw new MissingRequiredPropertyException("GetClusterAksConfigV2", "cloudCredentialId");
+            }
+            this.cloudCredentialId = cloudCredentialId;
             return this;
         }
         @CustomType.Setter
         public Builder dnsPrefix(@Nullable String dnsPrefix) {
+
             this.dnsPrefix = dnsPrefix;
             return this;
         }
         @CustomType.Setter
         public Builder httpApplicationRouting(Boolean httpApplicationRouting) {
-            this.httpApplicationRouting = Objects.requireNonNull(httpApplicationRouting);
+            if (httpApplicationRouting == null) {
+              throw new MissingRequiredPropertyException("GetClusterAksConfigV2", "httpApplicationRouting");
+            }
+            this.httpApplicationRouting = httpApplicationRouting;
             return this;
         }
         @CustomType.Setter
         public Builder imported(@Nullable Boolean imported) {
+
             this.imported = imported;
             return this;
         }
         @CustomType.Setter
         public Builder kubernetesVersion(@Nullable String kubernetesVersion) {
+
             this.kubernetesVersion = kubernetesVersion;
             return this;
         }
         @CustomType.Setter
         public Builder linuxAdminUsername(String linuxAdminUsername) {
-            this.linuxAdminUsername = Objects.requireNonNull(linuxAdminUsername);
+            if (linuxAdminUsername == null) {
+              throw new MissingRequiredPropertyException("GetClusterAksConfigV2", "linuxAdminUsername");
+            }
+            this.linuxAdminUsername = linuxAdminUsername;
             return this;
         }
         @CustomType.Setter
         public Builder linuxSshPublicKey(String linuxSshPublicKey) {
-            this.linuxSshPublicKey = Objects.requireNonNull(linuxSshPublicKey);
+            if (linuxSshPublicKey == null) {
+              throw new MissingRequiredPropertyException("GetClusterAksConfigV2", "linuxSshPublicKey");
+            }
+            this.linuxSshPublicKey = linuxSshPublicKey;
             return this;
         }
         @CustomType.Setter
         public Builder loadBalancerSku(String loadBalancerSku) {
-            this.loadBalancerSku = Objects.requireNonNull(loadBalancerSku);
+            if (loadBalancerSku == null) {
+              throw new MissingRequiredPropertyException("GetClusterAksConfigV2", "loadBalancerSku");
+            }
+            this.loadBalancerSku = loadBalancerSku;
             return this;
         }
         @CustomType.Setter
         public Builder logAnalyticsWorkspaceGroup(String logAnalyticsWorkspaceGroup) {
-            this.logAnalyticsWorkspaceGroup = Objects.requireNonNull(logAnalyticsWorkspaceGroup);
+            if (logAnalyticsWorkspaceGroup == null) {
+              throw new MissingRequiredPropertyException("GetClusterAksConfigV2", "logAnalyticsWorkspaceGroup");
+            }
+            this.logAnalyticsWorkspaceGroup = logAnalyticsWorkspaceGroup;
             return this;
         }
         @CustomType.Setter
         public Builder logAnalyticsWorkspaceName(String logAnalyticsWorkspaceName) {
-            this.logAnalyticsWorkspaceName = Objects.requireNonNull(logAnalyticsWorkspaceName);
+            if (logAnalyticsWorkspaceName == null) {
+              throw new MissingRequiredPropertyException("GetClusterAksConfigV2", "logAnalyticsWorkspaceName");
+            }
+            this.logAnalyticsWorkspaceName = logAnalyticsWorkspaceName;
             return this;
         }
         @CustomType.Setter
         public Builder monitoring(Boolean monitoring) {
-            this.monitoring = Objects.requireNonNull(monitoring);
+            if (monitoring == null) {
+              throw new MissingRequiredPropertyException("GetClusterAksConfigV2", "monitoring");
+            }
+            this.monitoring = monitoring;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetClusterAksConfigV2", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder networkDnsServiceIp(String networkDnsServiceIp) {
-            this.networkDnsServiceIp = Objects.requireNonNull(networkDnsServiceIp);
+            if (networkDnsServiceIp == null) {
+              throw new MissingRequiredPropertyException("GetClusterAksConfigV2", "networkDnsServiceIp");
+            }
+            this.networkDnsServiceIp = networkDnsServiceIp;
             return this;
         }
         @CustomType.Setter
         public Builder networkDockerBridgeCidr(String networkDockerBridgeCidr) {
-            this.networkDockerBridgeCidr = Objects.requireNonNull(networkDockerBridgeCidr);
+            if (networkDockerBridgeCidr == null) {
+              throw new MissingRequiredPropertyException("GetClusterAksConfigV2", "networkDockerBridgeCidr");
+            }
+            this.networkDockerBridgeCidr = networkDockerBridgeCidr;
             return this;
         }
         @CustomType.Setter
         public Builder networkPlugin(@Nullable String networkPlugin) {
+
             this.networkPlugin = networkPlugin;
             return this;
         }
         @CustomType.Setter
         public Builder networkPodCidr(String networkPodCidr) {
-            this.networkPodCidr = Objects.requireNonNull(networkPodCidr);
+            if (networkPodCidr == null) {
+              throw new MissingRequiredPropertyException("GetClusterAksConfigV2", "networkPodCidr");
+            }
+            this.networkPodCidr = networkPodCidr;
             return this;
         }
         @CustomType.Setter
         public Builder networkPolicy(String networkPolicy) {
-            this.networkPolicy = Objects.requireNonNull(networkPolicy);
+            if (networkPolicy == null) {
+              throw new MissingRequiredPropertyException("GetClusterAksConfigV2", "networkPolicy");
+            }
+            this.networkPolicy = networkPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder networkServiceCidr(String networkServiceCidr) {
-            this.networkServiceCidr = Objects.requireNonNull(networkServiceCidr);
+            if (networkServiceCidr == null) {
+              throw new MissingRequiredPropertyException("GetClusterAksConfigV2", "networkServiceCidr");
+            }
+            this.networkServiceCidr = networkServiceCidr;
             return this;
         }
         @CustomType.Setter
         public Builder nodePools(@Nullable List<GetClusterAksConfigV2NodePool> nodePools) {
+
             this.nodePools = nodePools;
             return this;
         }
@@ -333,37 +384,58 @@ public final class GetClusterAksConfigV2 {
         }
         @CustomType.Setter
         public Builder privateCluster(Boolean privateCluster) {
-            this.privateCluster = Objects.requireNonNull(privateCluster);
+            if (privateCluster == null) {
+              throw new MissingRequiredPropertyException("GetClusterAksConfigV2", "privateCluster");
+            }
+            this.privateCluster = privateCluster;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroup(String resourceGroup) {
-            this.resourceGroup = Objects.requireNonNull(resourceGroup);
+            if (resourceGroup == null) {
+              throw new MissingRequiredPropertyException("GetClusterAksConfigV2", "resourceGroup");
+            }
+            this.resourceGroup = resourceGroup;
             return this;
         }
         @CustomType.Setter
         public Builder resourceLocation(String resourceLocation) {
-            this.resourceLocation = Objects.requireNonNull(resourceLocation);
+            if (resourceLocation == null) {
+              throw new MissingRequiredPropertyException("GetClusterAksConfigV2", "resourceLocation");
+            }
+            this.resourceLocation = resourceLocation;
             return this;
         }
         @CustomType.Setter
         public Builder subnet(String subnet) {
-            this.subnet = Objects.requireNonNull(subnet);
+            if (subnet == null) {
+              throw new MissingRequiredPropertyException("GetClusterAksConfigV2", "subnet");
+            }
+            this.subnet = subnet;
             return this;
         }
         @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetClusterAksConfigV2", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder virtualNetwork(String virtualNetwork) {
-            this.virtualNetwork = Objects.requireNonNull(virtualNetwork);
+            if (virtualNetwork == null) {
+              throw new MissingRequiredPropertyException("GetClusterAksConfigV2", "virtualNetwork");
+            }
+            this.virtualNetwork = virtualNetwork;
             return this;
         }
         @CustomType.Setter
         public Builder virtualNetworkResourceGroup(String virtualNetworkResourceGroup) {
-            this.virtualNetworkResourceGroup = Objects.requireNonNull(virtualNetworkResourceGroup);
+            if (virtualNetworkResourceGroup == null) {
+              throw new MissingRequiredPropertyException("GetClusterAksConfigV2", "virtualNetworkResourceGroup");
+            }
+            this.virtualNetworkResourceGroup = virtualNetworkResourceGroup;
             return this;
         }
         public GetClusterAksConfigV2 build() {

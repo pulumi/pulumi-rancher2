@@ -59,11 +59,13 @@ public final class ClusterRke2Config {
 
         @CustomType.Setter
         public Builder upgradeStrategy(@Nullable ClusterRke2ConfigUpgradeStrategy upgradeStrategy) {
+
             this.upgradeStrategy = upgradeStrategy;
             return this;
         }
         @CustomType.Setter
         public Builder version(@Nullable String version) {
+
             this.version = version;
             return this;
         }

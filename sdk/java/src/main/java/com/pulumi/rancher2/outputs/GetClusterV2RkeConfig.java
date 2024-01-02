@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterV2RkeConfigEtcd;
 import com.pulumi.rancher2.outputs.GetClusterV2RkeConfigEtcdSnapshotCreate;
 import com.pulumi.rancher2.outputs.GetClusterV2RkeConfigEtcdSnapshotRestore;
@@ -131,42 +132,54 @@ public final class GetClusterV2RkeConfig {
 
         @CustomType.Setter
         public Builder additionalManifest(@Nullable String additionalManifest) {
+
             this.additionalManifest = additionalManifest;
             return this;
         }
         @CustomType.Setter
         public Builder chartValues(@Nullable String chartValues) {
+
             this.chartValues = chartValues;
             return this;
         }
         @CustomType.Setter
         public Builder etcd(GetClusterV2RkeConfigEtcd etcd) {
-            this.etcd = Objects.requireNonNull(etcd);
+            if (etcd == null) {
+              throw new MissingRequiredPropertyException("GetClusterV2RkeConfig", "etcd");
+            }
+            this.etcd = etcd;
             return this;
         }
         @CustomType.Setter
         public Builder etcdSnapshotCreate(@Nullable GetClusterV2RkeConfigEtcdSnapshotCreate etcdSnapshotCreate) {
+
             this.etcdSnapshotCreate = etcdSnapshotCreate;
             return this;
         }
         @CustomType.Setter
         public Builder etcdSnapshotRestore(@Nullable GetClusterV2RkeConfigEtcdSnapshotRestore etcdSnapshotRestore) {
+
             this.etcdSnapshotRestore = etcdSnapshotRestore;
             return this;
         }
         @CustomType.Setter
         public Builder localAuthEndpoint(@Nullable GetClusterV2RkeConfigLocalAuthEndpoint localAuthEndpoint) {
+
             this.localAuthEndpoint = localAuthEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder machineGlobalConfig(@Nullable String machineGlobalConfig) {
+
             this.machineGlobalConfig = machineGlobalConfig;
             return this;
         }
         @CustomType.Setter
         public Builder machinePoolDefaults(List<GetClusterV2RkeConfigMachinePoolDefault> machinePoolDefaults) {
-            this.machinePoolDefaults = Objects.requireNonNull(machinePoolDefaults);
+            if (machinePoolDefaults == null) {
+              throw new MissingRequiredPropertyException("GetClusterV2RkeConfig", "machinePoolDefaults");
+            }
+            this.machinePoolDefaults = machinePoolDefaults;
             return this;
         }
         public Builder machinePoolDefaults(GetClusterV2RkeConfigMachinePoolDefault... machinePoolDefaults) {
@@ -174,7 +187,10 @@ public final class GetClusterV2RkeConfig {
         }
         @CustomType.Setter
         public Builder machinePools(List<GetClusterV2RkeConfigMachinePool> machinePools) {
-            this.machinePools = Objects.requireNonNull(machinePools);
+            if (machinePools == null) {
+              throw new MissingRequiredPropertyException("GetClusterV2RkeConfig", "machinePools");
+            }
+            this.machinePools = machinePools;
             return this;
         }
         public Builder machinePools(GetClusterV2RkeConfigMachinePool... machinePools) {
@@ -182,7 +198,10 @@ public final class GetClusterV2RkeConfig {
         }
         @CustomType.Setter
         public Builder machineSelectorConfigs(List<GetClusterV2RkeConfigMachineSelectorConfig> machineSelectorConfigs) {
-            this.machineSelectorConfigs = Objects.requireNonNull(machineSelectorConfigs);
+            if (machineSelectorConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterV2RkeConfig", "machineSelectorConfigs");
+            }
+            this.machineSelectorConfigs = machineSelectorConfigs;
             return this;
         }
         public Builder machineSelectorConfigs(GetClusterV2RkeConfigMachineSelectorConfig... machineSelectorConfigs) {
@@ -190,16 +209,19 @@ public final class GetClusterV2RkeConfig {
         }
         @CustomType.Setter
         public Builder registries(@Nullable GetClusterV2RkeConfigRegistries registries) {
+
             this.registries = registries;
             return this;
         }
         @CustomType.Setter
         public Builder rotateCertificates(@Nullable GetClusterV2RkeConfigRotateCertificates rotateCertificates) {
+
             this.rotateCertificates = rotateCertificates;
             return this;
         }
         @CustomType.Setter
         public Builder upgradeStrategy(@Nullable GetClusterV2RkeConfigUpgradeStrategy upgradeStrategy) {
+
             this.upgradeStrategy = upgradeStrategy;
             return this;
         }

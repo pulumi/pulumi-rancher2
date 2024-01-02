@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -145,9 +146,15 @@ public final class ClusterAlterRuleMetricRuleArgs extends com.pulumi.resources.R
         }
 
         public ClusterAlterRuleMetricRuleArgs build() {
-            $.duration = Objects.requireNonNull($.duration, "expected parameter 'duration' to be non-null");
-            $.expression = Objects.requireNonNull($.expression, "expected parameter 'expression' to be non-null");
-            $.thresholdValue = Objects.requireNonNull($.thresholdValue, "expected parameter 'thresholdValue' to be non-null");
+            if ($.duration == null) {
+                throw new MissingRequiredPropertyException("ClusterAlterRuleMetricRuleArgs", "duration");
+            }
+            if ($.expression == null) {
+                throw new MissingRequiredPropertyException("ClusterAlterRuleMetricRuleArgs", "expression");
+            }
+            if ($.thresholdValue == null) {
+                throw new MissingRequiredPropertyException("ClusterAlterRuleMetricRuleArgs", "thresholdValue");
+            }
             return $;
         }
     }

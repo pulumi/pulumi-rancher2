@@ -103,11 +103,13 @@ public final class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig {
 
         @CustomType.Setter
         public Builder customConfig(@Nullable String customConfig) {
+
             this.customConfig = customConfig;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }

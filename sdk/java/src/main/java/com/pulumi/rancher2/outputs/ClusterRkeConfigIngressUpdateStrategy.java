@@ -59,11 +59,13 @@ public final class ClusterRkeConfigIngressUpdateStrategy {
 
         @CustomType.Setter
         public Builder rollingUpdate(@Nullable ClusterRkeConfigIngressUpdateStrategyRollingUpdate rollingUpdate) {
+
             this.rollingUpdate = rollingUpdate;
             return this;
         }
         @CustomType.Setter
         public Builder strategy(@Nullable String strategy) {
+
             this.strategy = strategy;
             return this;
         }

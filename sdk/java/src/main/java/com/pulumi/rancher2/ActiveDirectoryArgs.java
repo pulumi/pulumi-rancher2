@@ -5,6 +5,7 @@ package com.pulumi.rancher2;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -1285,12 +1286,24 @@ public final class ActiveDirectoryArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public ActiveDirectoryArgs build() {
-            $.servers = Objects.requireNonNull($.servers, "expected parameter 'servers' to be non-null");
-            $.serviceAccountPassword = Objects.requireNonNull($.serviceAccountPassword, "expected parameter 'serviceAccountPassword' to be non-null");
-            $.serviceAccountUsername = Objects.requireNonNull($.serviceAccountUsername, "expected parameter 'serviceAccountUsername' to be non-null");
-            $.testPassword = Objects.requireNonNull($.testPassword, "expected parameter 'testPassword' to be non-null");
-            $.testUsername = Objects.requireNonNull($.testUsername, "expected parameter 'testUsername' to be non-null");
-            $.userSearchBase = Objects.requireNonNull($.userSearchBase, "expected parameter 'userSearchBase' to be non-null");
+            if ($.servers == null) {
+                throw new MissingRequiredPropertyException("ActiveDirectoryArgs", "servers");
+            }
+            if ($.serviceAccountPassword == null) {
+                throw new MissingRequiredPropertyException("ActiveDirectoryArgs", "serviceAccountPassword");
+            }
+            if ($.serviceAccountUsername == null) {
+                throw new MissingRequiredPropertyException("ActiveDirectoryArgs", "serviceAccountUsername");
+            }
+            if ($.testPassword == null) {
+                throw new MissingRequiredPropertyException("ActiveDirectoryArgs", "testPassword");
+            }
+            if ($.testUsername == null) {
+                throw new MissingRequiredPropertyException("ActiveDirectoryArgs", "testUsername");
+            }
+            if ($.userSearchBase == null) {
+                throw new MissingRequiredPropertyException("ActiveDirectoryArgs", "userSearchBase");
+            }
             return $;
         }
     }

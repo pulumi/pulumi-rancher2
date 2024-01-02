@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -186,11 +187,15 @@ public final class NodeTemplateOutscaleConfig {
 
         @CustomType.Setter
         public Builder accessKey(String accessKey) {
-            this.accessKey = Objects.requireNonNull(accessKey);
+            if (accessKey == null) {
+              throw new MissingRequiredPropertyException("NodeTemplateOutscaleConfig", "accessKey");
+            }
+            this.accessKey = accessKey;
             return this;
         }
         @CustomType.Setter
         public Builder extraTagsAlls(@Nullable List<String> extraTagsAlls) {
+
             this.extraTagsAlls = extraTagsAlls;
             return this;
         }
@@ -199,6 +204,7 @@ public final class NodeTemplateOutscaleConfig {
         }
         @CustomType.Setter
         public Builder extraTagsInstances(@Nullable List<String> extraTagsInstances) {
+
             this.extraTagsInstances = extraTagsInstances;
             return this;
         }
@@ -207,36 +213,45 @@ public final class NodeTemplateOutscaleConfig {
         }
         @CustomType.Setter
         public Builder instanceType(@Nullable String instanceType) {
+
             this.instanceType = instanceType;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder rootDiskIops(@Nullable Integer rootDiskIops) {
+
             this.rootDiskIops = rootDiskIops;
             return this;
         }
         @CustomType.Setter
         public Builder rootDiskSize(@Nullable Integer rootDiskSize) {
+
             this.rootDiskSize = rootDiskSize;
             return this;
         }
         @CustomType.Setter
         public Builder rootDiskType(@Nullable String rootDiskType) {
+
             this.rootDiskType = rootDiskType;
             return this;
         }
         @CustomType.Setter
         public Builder secretKey(String secretKey) {
-            this.secretKey = Objects.requireNonNull(secretKey);
+            if (secretKey == null) {
+              throw new MissingRequiredPropertyException("NodeTemplateOutscaleConfig", "secretKey");
+            }
+            this.secretKey = secretKey;
             return this;
         }
         @CustomType.Setter
         public Builder securityGroupIds(@Nullable List<String> securityGroupIds) {
+
             this.securityGroupIds = securityGroupIds;
             return this;
         }
@@ -245,6 +260,7 @@ public final class NodeTemplateOutscaleConfig {
         }
         @CustomType.Setter
         public Builder sourceOmi(@Nullable String sourceOmi) {
+
             this.sourceOmi = sourceOmi;
             return this;
         }

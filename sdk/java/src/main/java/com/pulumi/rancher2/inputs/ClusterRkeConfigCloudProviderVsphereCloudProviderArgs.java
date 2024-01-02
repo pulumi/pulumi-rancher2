@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.inputs.ClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgs;
 import com.pulumi.rancher2.inputs.ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs;
 import com.pulumi.rancher2.inputs.ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs;
@@ -239,8 +240,12 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderArgs extends
         }
 
         public ClusterRkeConfigCloudProviderVsphereCloudProviderArgs build() {
-            $.virtualCenters = Objects.requireNonNull($.virtualCenters, "expected parameter 'virtualCenters' to be non-null");
-            $.workspace = Objects.requireNonNull($.workspace, "expected parameter 'workspace' to be non-null");
+            if ($.virtualCenters == null) {
+                throw new MissingRequiredPropertyException("ClusterRkeConfigCloudProviderVsphereCloudProviderArgs", "virtualCenters");
+            }
+            if ($.workspace == null) {
+                throw new MissingRequiredPropertyException("ClusterRkeConfigCloudProviderVsphereCloudProviderArgs", "workspace");
+            }
             return $;
         }
     }

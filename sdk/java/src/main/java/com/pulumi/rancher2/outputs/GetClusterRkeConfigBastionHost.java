@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -67,32 +68,46 @@ public final class GetClusterRkeConfigBastionHost {
 
         @CustomType.Setter
         public Builder address(String address) {
-            this.address = Objects.requireNonNull(address);
+            if (address == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigBastionHost", "address");
+            }
+            this.address = address;
             return this;
         }
         @CustomType.Setter
         public Builder port(@Nullable String port) {
+
             this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder sshAgentAuth(@Nullable Boolean sshAgentAuth) {
+
             this.sshAgentAuth = sshAgentAuth;
             return this;
         }
         @CustomType.Setter
         public Builder sshKey(String sshKey) {
-            this.sshKey = Objects.requireNonNull(sshKey);
+            if (sshKey == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigBastionHost", "sshKey");
+            }
+            this.sshKey = sshKey;
             return this;
         }
         @CustomType.Setter
         public Builder sshKeyPath(String sshKeyPath) {
-            this.sshKeyPath = Objects.requireNonNull(sshKeyPath);
+            if (sshKeyPath == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigBastionHost", "sshKeyPath");
+            }
+            this.sshKeyPath = sshKeyPath;
             return this;
         }
         @CustomType.Setter
         public Builder user(String user) {
-            this.user = Objects.requireNonNull(user);
+            if (user == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigBastionHost", "user");
+            }
+            this.user = user;
             return this;
         }
         public GetClusterRkeConfigBastionHost build() {

@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.inputs.GetPodSecurityPolicyTemplateSupplementalGroupRange;
 import java.lang.String;
 import java.util.List;
@@ -70,7 +71,9 @@ public final class GetPodSecurityPolicyTemplateSupplementalGroup extends com.pul
         }
 
         public GetPodSecurityPolicyTemplateSupplementalGroup build() {
-            $.ranges = Objects.requireNonNull($.ranges, "expected parameter 'ranges' to be non-null");
+            if ($.ranges == null) {
+                throw new MissingRequiredPropertyException("GetPodSecurityPolicyTemplateSupplementalGroup", "ranges");
+            }
             return $;
         }
     }

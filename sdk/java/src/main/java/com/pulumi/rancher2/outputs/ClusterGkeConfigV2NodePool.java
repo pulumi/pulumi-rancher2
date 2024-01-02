@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.ClusterGkeConfigV2NodePoolAutoscaling;
 import com.pulumi.rancher2.outputs.ClusterGkeConfigV2NodePoolConfig;
 import com.pulumi.rancher2.outputs.ClusterGkeConfigV2NodePoolManagement;
@@ -132,37 +133,50 @@ public final class ClusterGkeConfigV2NodePool {
 
         @CustomType.Setter
         public Builder autoscaling(@Nullable ClusterGkeConfigV2NodePoolAutoscaling autoscaling) {
+
             this.autoscaling = autoscaling;
             return this;
         }
         @CustomType.Setter
         public Builder config(@Nullable ClusterGkeConfigV2NodePoolConfig config) {
+
             this.config = config;
             return this;
         }
         @CustomType.Setter
         public Builder initialNodeCount(Integer initialNodeCount) {
-            this.initialNodeCount = Objects.requireNonNull(initialNodeCount);
+            if (initialNodeCount == null) {
+              throw new MissingRequiredPropertyException("ClusterGkeConfigV2NodePool", "initialNodeCount");
+            }
+            this.initialNodeCount = initialNodeCount;
             return this;
         }
         @CustomType.Setter
         public Builder management(@Nullable ClusterGkeConfigV2NodePoolManagement management) {
+
             this.management = management;
             return this;
         }
         @CustomType.Setter
         public Builder maxPodsConstraint(@Nullable Integer maxPodsConstraint) {
+
             this.maxPodsConstraint = maxPodsConstraint;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("ClusterGkeConfigV2NodePool", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder version(String version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("ClusterGkeConfigV2NodePool", "version");
+            }
+            this.version = version;
             return this;
         }
         public ClusterGkeConfigV2NodePool build() {

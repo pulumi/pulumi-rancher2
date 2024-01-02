@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -130,36 +131,51 @@ public final class NotifierSmtpConfig {
 
         @CustomType.Setter
         public Builder defaultRecipient(String defaultRecipient) {
-            this.defaultRecipient = Objects.requireNonNull(defaultRecipient);
+            if (defaultRecipient == null) {
+              throw new MissingRequiredPropertyException("NotifierSmtpConfig", "defaultRecipient");
+            }
+            this.defaultRecipient = defaultRecipient;
             return this;
         }
         @CustomType.Setter
         public Builder host(String host) {
-            this.host = Objects.requireNonNull(host);
+            if (host == null) {
+              throw new MissingRequiredPropertyException("NotifierSmtpConfig", "host");
+            }
+            this.host = host;
             return this;
         }
         @CustomType.Setter
         public Builder password(@Nullable String password) {
+
             this.password = password;
             return this;
         }
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("NotifierSmtpConfig", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder sender(String sender) {
-            this.sender = Objects.requireNonNull(sender);
+            if (sender == null) {
+              throw new MissingRequiredPropertyException("NotifierSmtpConfig", "sender");
+            }
+            this.sender = sender;
             return this;
         }
         @CustomType.Setter
         public Builder tls(@Nullable Boolean tls) {
+
             this.tls = tls;
             return this;
         }
         @CustomType.Setter
         public Builder username(@Nullable String username) {
+
             this.username = username;
             return this;
         }

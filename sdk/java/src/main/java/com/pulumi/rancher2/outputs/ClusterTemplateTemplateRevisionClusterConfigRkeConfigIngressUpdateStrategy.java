@@ -43,11 +43,13 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressU
 
         @CustomType.Setter
         public Builder rollingUpdate(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate rollingUpdate) {
+
             this.rollingUpdate = rollingUpdate;
             return this;
         }
         @CustomType.Setter
         public Builder strategy(@Nullable String strategy) {
+
             this.strategy = strategy;
             return this;
         }

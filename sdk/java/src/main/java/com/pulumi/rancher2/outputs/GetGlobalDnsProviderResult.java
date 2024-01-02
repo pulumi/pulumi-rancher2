@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetGlobalDnsProviderAlidnsConfig;
 import com.pulumi.rancher2.outputs.GetGlobalDnsProviderCloudflareConfig;
 import com.pulumi.rancher2.outputs.GetGlobalDnsProviderRoute53Config;
@@ -119,47 +120,74 @@ public final class GetGlobalDnsProviderResult {
 
         @CustomType.Setter
         public Builder alidnsConfig(GetGlobalDnsProviderAlidnsConfig alidnsConfig) {
-            this.alidnsConfig = Objects.requireNonNull(alidnsConfig);
+            if (alidnsConfig == null) {
+              throw new MissingRequiredPropertyException("GetGlobalDnsProviderResult", "alidnsConfig");
+            }
+            this.alidnsConfig = alidnsConfig;
             return this;
         }
         @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
-            this.annotations = Objects.requireNonNull(annotations);
+            if (annotations == null) {
+              throw new MissingRequiredPropertyException("GetGlobalDnsProviderResult", "annotations");
+            }
+            this.annotations = annotations;
             return this;
         }
         @CustomType.Setter
         public Builder cloudflareConfig(GetGlobalDnsProviderCloudflareConfig cloudflareConfig) {
-            this.cloudflareConfig = Objects.requireNonNull(cloudflareConfig);
+            if (cloudflareConfig == null) {
+              throw new MissingRequiredPropertyException("GetGlobalDnsProviderResult", "cloudflareConfig");
+            }
+            this.cloudflareConfig = cloudflareConfig;
             return this;
         }
         @CustomType.Setter
         public Builder dnsProvider(String dnsProvider) {
-            this.dnsProvider = Objects.requireNonNull(dnsProvider);
+            if (dnsProvider == null) {
+              throw new MissingRequiredPropertyException("GetGlobalDnsProviderResult", "dnsProvider");
+            }
+            this.dnsProvider = dnsProvider;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGlobalDnsProviderResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetGlobalDnsProviderResult", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetGlobalDnsProviderResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder rootDomain(String rootDomain) {
-            this.rootDomain = Objects.requireNonNull(rootDomain);
+            if (rootDomain == null) {
+              throw new MissingRequiredPropertyException("GetGlobalDnsProviderResult", "rootDomain");
+            }
+            this.rootDomain = rootDomain;
             return this;
         }
         @CustomType.Setter
         public Builder route53Config(GetGlobalDnsProviderRoute53Config route53Config) {
-            this.route53Config = Objects.requireNonNull(route53Config);
+            if (route53Config == null) {
+              throw new MissingRequiredPropertyException("GetGlobalDnsProviderResult", "route53Config");
+            }
+            this.route53Config = route53Config;
             return this;
         }
         public GetGlobalDnsProviderResult build() {

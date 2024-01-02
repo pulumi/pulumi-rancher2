@@ -186,56 +186,67 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalanc
 
         @CustomType.Setter
         public Builder createMonitor(@Nullable Boolean createMonitor) {
+
             this.createMonitor = createMonitor;
             return this;
         }
         @CustomType.Setter
         public Builder floatingNetworkId(@Nullable String floatingNetworkId) {
+
             this.floatingNetworkId = floatingNetworkId;
             return this;
         }
         @CustomType.Setter
         public Builder lbMethod(@Nullable String lbMethod) {
+
             this.lbMethod = lbMethod;
             return this;
         }
         @CustomType.Setter
         public Builder lbProvider(@Nullable String lbProvider) {
+
             this.lbProvider = lbProvider;
             return this;
         }
         @CustomType.Setter
         public Builder lbVersion(@Nullable String lbVersion) {
+
             this.lbVersion = lbVersion;
             return this;
         }
         @CustomType.Setter
         public Builder manageSecurityGroups(@Nullable Boolean manageSecurityGroups) {
+
             this.manageSecurityGroups = manageSecurityGroups;
             return this;
         }
         @CustomType.Setter
         public Builder monitorDelay(@Nullable String monitorDelay) {
+
             this.monitorDelay = monitorDelay;
             return this;
         }
         @CustomType.Setter
         public Builder monitorMaxRetries(@Nullable Integer monitorMaxRetries) {
+
             this.monitorMaxRetries = monitorMaxRetries;
             return this;
         }
         @CustomType.Setter
         public Builder monitorTimeout(@Nullable String monitorTimeout) {
+
             this.monitorTimeout = monitorTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder subnetId(@Nullable String subnetId) {
+
             this.subnetId = subnetId;
             return this;
         }
         @CustomType.Setter
         public Builder useOctavia(@Nullable Boolean useOctavia) {
+
             this.useOctavia = useOctavia;
             return this;
         }

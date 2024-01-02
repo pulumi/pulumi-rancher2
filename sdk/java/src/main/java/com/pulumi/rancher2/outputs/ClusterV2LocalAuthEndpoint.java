@@ -73,16 +73,19 @@ public final class ClusterV2LocalAuthEndpoint {
 
         @CustomType.Setter
         public Builder caCerts(@Nullable String caCerts) {
+
             this.caCerts = caCerts;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder fqdn(@Nullable String fqdn) {
+
             this.fqdn = fqdn;
             return this;
         }

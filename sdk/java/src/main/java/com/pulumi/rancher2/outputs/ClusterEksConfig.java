@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -291,71 +292,91 @@ public final class ClusterEksConfig {
 
         @CustomType.Setter
         public Builder accessKey(String accessKey) {
-            this.accessKey = Objects.requireNonNull(accessKey);
+            if (accessKey == null) {
+              throw new MissingRequiredPropertyException("ClusterEksConfig", "accessKey");
+            }
+            this.accessKey = accessKey;
             return this;
         }
         @CustomType.Setter
         public Builder ami(@Nullable String ami) {
+
             this.ami = ami;
             return this;
         }
         @CustomType.Setter
         public Builder associateWorkerNodePublicIp(@Nullable Boolean associateWorkerNodePublicIp) {
+
             this.associateWorkerNodePublicIp = associateWorkerNodePublicIp;
             return this;
         }
         @CustomType.Setter
         public Builder desiredNodes(@Nullable Integer desiredNodes) {
+
             this.desiredNodes = desiredNodes;
             return this;
         }
         @CustomType.Setter
         public Builder ebsEncryption(@Nullable Boolean ebsEncryption) {
+
             this.ebsEncryption = ebsEncryption;
             return this;
         }
         @CustomType.Setter
         public Builder instanceType(@Nullable String instanceType) {
+
             this.instanceType = instanceType;
             return this;
         }
         @CustomType.Setter
         public Builder keyPairName(@Nullable String keyPairName) {
+
             this.keyPairName = keyPairName;
             return this;
         }
         @CustomType.Setter
         public Builder kubernetesVersion(String kubernetesVersion) {
-            this.kubernetesVersion = Objects.requireNonNull(kubernetesVersion);
+            if (kubernetesVersion == null) {
+              throw new MissingRequiredPropertyException("ClusterEksConfig", "kubernetesVersion");
+            }
+            this.kubernetesVersion = kubernetesVersion;
             return this;
         }
         @CustomType.Setter
         public Builder maximumNodes(@Nullable Integer maximumNodes) {
+
             this.maximumNodes = maximumNodes;
             return this;
         }
         @CustomType.Setter
         public Builder minimumNodes(@Nullable Integer minimumNodes) {
+
             this.minimumNodes = minimumNodes;
             return this;
         }
         @CustomType.Setter
         public Builder nodeVolumeSize(@Nullable Integer nodeVolumeSize) {
+
             this.nodeVolumeSize = nodeVolumeSize;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder secretKey(String secretKey) {
-            this.secretKey = Objects.requireNonNull(secretKey);
+            if (secretKey == null) {
+              throw new MissingRequiredPropertyException("ClusterEksConfig", "secretKey");
+            }
+            this.secretKey = secretKey;
             return this;
         }
         @CustomType.Setter
         public Builder securityGroups(@Nullable List<String> securityGroups) {
+
             this.securityGroups = securityGroups;
             return this;
         }
@@ -364,16 +385,19 @@ public final class ClusterEksConfig {
         }
         @CustomType.Setter
         public Builder serviceRole(@Nullable String serviceRole) {
+
             this.serviceRole = serviceRole;
             return this;
         }
         @CustomType.Setter
         public Builder sessionToken(@Nullable String sessionToken) {
+
             this.sessionToken = sessionToken;
             return this;
         }
         @CustomType.Setter
         public Builder subnets(@Nullable List<String> subnets) {
+
             this.subnets = subnets;
             return this;
         }
@@ -382,11 +406,13 @@ public final class ClusterEksConfig {
         }
         @CustomType.Setter
         public Builder userData(@Nullable String userData) {
+
             this.userData = userData;
             return this;
         }
         @CustomType.Setter
         public Builder virtualNetwork(@Nullable String virtualNetwork) {
+
             this.virtualNetwork = virtualNetwork;
             return this;
         }

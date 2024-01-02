@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class ClusterV2RkeConfigMachinePoolMachineConfigArgs extends com.pu
         }
 
         public ClusterV2RkeConfigMachinePoolMachineConfigArgs build() {
-            $.kind = Objects.requireNonNull($.kind, "expected parameter 'kind' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.kind == null) {
+                throw new MissingRequiredPropertyException("ClusterV2RkeConfigMachinePoolMachineConfigArgs", "kind");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("ClusterV2RkeConfigMachinePoolMachineConfigArgs", "name");
+            }
             return $;
         }
     }

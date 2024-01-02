@@ -5,6 +5,7 @@ package com.pulumi.rancher2;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -568,10 +569,18 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AppArgs build() {
-            $.catalogName = Objects.requireNonNull($.catalogName, "expected parameter 'catalogName' to be non-null");
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
-            $.targetNamespace = Objects.requireNonNull($.targetNamespace, "expected parameter 'targetNamespace' to be non-null");
-            $.templateName = Objects.requireNonNull($.templateName, "expected parameter 'templateName' to be non-null");
+            if ($.catalogName == null) {
+                throw new MissingRequiredPropertyException("AppArgs", "catalogName");
+            }
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("AppArgs", "projectId");
+            }
+            if ($.targetNamespace == null) {
+                throw new MissingRequiredPropertyException("AppArgs", "targetNamespace");
+            }
+            if ($.templateName == null) {
+                throw new MissingRequiredPropertyException("AppArgs", "templateName");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -73,16 +74,23 @@ public final class GlobalDnsProviderCloudflareConfig {
 
         @CustomType.Setter
         public Builder apiEmail(String apiEmail) {
-            this.apiEmail = Objects.requireNonNull(apiEmail);
+            if (apiEmail == null) {
+              throw new MissingRequiredPropertyException("GlobalDnsProviderCloudflareConfig", "apiEmail");
+            }
+            this.apiEmail = apiEmail;
             return this;
         }
         @CustomType.Setter
         public Builder apiKey(String apiKey) {
-            this.apiKey = Objects.requireNonNull(apiKey);
+            if (apiKey == null) {
+              throw new MissingRequiredPropertyException("GlobalDnsProviderCloudflareConfig", "apiKey");
+            }
+            this.apiKey = apiKey;
             return this;
         }
         @CustomType.Setter
         public Builder proxySetting(@Nullable Boolean proxySetting) {
+
             this.proxySetting = proxySetting;
             return this;
         }

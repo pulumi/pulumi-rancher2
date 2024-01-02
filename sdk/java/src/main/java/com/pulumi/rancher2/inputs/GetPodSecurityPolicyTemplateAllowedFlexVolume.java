@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -49,7 +50,9 @@ public final class GetPodSecurityPolicyTemplateAllowedFlexVolume extends com.pul
         }
 
         public GetPodSecurityPolicyTemplateAllowedFlexVolume build() {
-            $.driver = Objects.requireNonNull($.driver, "expected parameter 'driver' to be non-null");
+            if ($.driver == null) {
+                throw new MissingRequiredPropertyException("GetPodSecurityPolicyTemplateAllowedFlexVolume", "driver");
+            }
             return $;
         }
     }

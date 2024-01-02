@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -674,8 +675,12 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         public MachineConfigV2HarvesterConfigArgs build() {
-            $.sshUser = Objects.requireNonNull($.sshUser, "expected parameter 'sshUser' to be non-null");
-            $.vmNamespace = Objects.requireNonNull($.vmNamespace, "expected parameter 'vmNamespace' to be non-null");
+            if ($.sshUser == null) {
+                throw new MissingRequiredPropertyException("MachineConfigV2HarvesterConfigArgs", "sshUser");
+            }
+            if ($.vmNamespace == null) {
+                throw new MissingRequiredPropertyException("MachineConfigV2HarvesterConfigArgs", "vmNamespace");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetClusterGkeConfigV2NodePoolManagement {
 
         @CustomType.Setter
         public Builder autoRepair(Boolean autoRepair) {
-            this.autoRepair = Objects.requireNonNull(autoRepair);
+            if (autoRepair == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2NodePoolManagement", "autoRepair");
+            }
+            this.autoRepair = autoRepair;
             return this;
         }
         @CustomType.Setter
         public Builder autoUpgrade(Boolean autoUpgrade) {
-            this.autoUpgrade = Objects.requireNonNull(autoUpgrade);
+            if (autoUpgrade == null) {
+              throw new MissingRequiredPropertyException("GetClusterGkeConfigV2NodePoolManagement", "autoUpgrade");
+            }
+            this.autoUpgrade = autoUpgrade;
             return this;
         }
         public GetClusterGkeConfigV2NodePoolManagement build() {

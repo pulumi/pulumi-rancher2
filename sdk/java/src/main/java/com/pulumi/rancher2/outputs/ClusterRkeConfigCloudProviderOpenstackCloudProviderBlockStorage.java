@@ -73,16 +73,19 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStora
 
         @CustomType.Setter
         public Builder bsVersion(@Nullable String bsVersion) {
+
             this.bsVersion = bsVersion;
             return this;
         }
         @CustomType.Setter
         public Builder ignoreVolumeAz(@Nullable Boolean ignoreVolumeAz) {
+
             this.ignoreVolumeAz = ignoreVolumeAz;
             return this;
         }
         @CustomType.Setter
         public Builder trustDevicePath(@Nullable Boolean trustDevicePath) {
+
             this.trustDevicePath = trustDevicePath;
             return this;
         }

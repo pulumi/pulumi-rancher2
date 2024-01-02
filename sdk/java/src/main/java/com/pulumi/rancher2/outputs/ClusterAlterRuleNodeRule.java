@@ -63,26 +63,31 @@ public final class ClusterAlterRuleNodeRule {
 
         @CustomType.Setter
         public Builder condition(@Nullable String condition) {
+
             this.condition = condition;
             return this;
         }
         @CustomType.Setter
         public Builder cpuThreshold(@Nullable Integer cpuThreshold) {
+
             this.cpuThreshold = cpuThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder memThreshold(@Nullable Integer memThreshold) {
+
             this.memThreshold = memThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder nodeId(@Nullable String nodeId) {
+
             this.nodeId = nodeId;
             return this;
         }
         @CustomType.Setter
         public Builder selector(@Nullable Map<String,Object> selector) {
+
             this.selector = selector;
             return this;
         }

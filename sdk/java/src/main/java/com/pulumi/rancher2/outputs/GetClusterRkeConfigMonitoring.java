@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterRkeConfigMonitoringToleration;
 import com.pulumi.rancher2.outputs.GetClusterRkeConfigMonitoringUpdateStrategy;
 import java.lang.Integer;
@@ -72,26 +73,37 @@ public final class GetClusterRkeConfigMonitoring {
 
         @CustomType.Setter
         public Builder nodeSelector(@Nullable Map<String,Object> nodeSelector) {
+
             this.nodeSelector = nodeSelector;
             return this;
         }
         @CustomType.Setter
         public Builder options(Map<String,Object> options) {
-            this.options = Objects.requireNonNull(options);
+            if (options == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigMonitoring", "options");
+            }
+            this.options = options;
             return this;
         }
         @CustomType.Setter
         public Builder provider(String provider) {
-            this.provider = Objects.requireNonNull(provider);
+            if (provider == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigMonitoring", "provider");
+            }
+            this.provider = provider;
             return this;
         }
         @CustomType.Setter
         public Builder replicas(Integer replicas) {
-            this.replicas = Objects.requireNonNull(replicas);
+            if (replicas == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigMonitoring", "replicas");
+            }
+            this.replicas = replicas;
             return this;
         }
         @CustomType.Setter
         public Builder tolerations(@Nullable List<GetClusterRkeConfigMonitoringToleration> tolerations) {
+
             this.tolerations = tolerations;
             return this;
         }
@@ -100,6 +112,7 @@ public final class GetClusterRkeConfigMonitoring {
         }
         @CustomType.Setter
         public Builder updateStrategy(@Nullable GetClusterRkeConfigMonitoringUpdateStrategy updateStrategy) {
+
             this.updateStrategy = updateStrategy;
             return this;
         }

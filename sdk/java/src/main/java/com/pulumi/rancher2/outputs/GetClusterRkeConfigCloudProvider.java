@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterRkeConfigCloudProviderAwsCloudProvider;
 import com.pulumi.rancher2.outputs.GetClusterRkeConfigCloudProviderAzureCloudProvider;
 import com.pulumi.rancher2.outputs.GetClusterRkeConfigCloudProviderOpenstackCloudProvider;
@@ -78,31 +79,39 @@ public final class GetClusterRkeConfigCloudProvider {
 
         @CustomType.Setter
         public Builder awsCloudProvider(@Nullable GetClusterRkeConfigCloudProviderAwsCloudProvider awsCloudProvider) {
+
             this.awsCloudProvider = awsCloudProvider;
             return this;
         }
         @CustomType.Setter
         public Builder azureCloudProvider(@Nullable GetClusterRkeConfigCloudProviderAzureCloudProvider azureCloudProvider) {
+
             this.azureCloudProvider = azureCloudProvider;
             return this;
         }
         @CustomType.Setter
         public Builder customCloudProvider(String customCloudProvider) {
-            this.customCloudProvider = Objects.requireNonNull(customCloudProvider);
+            if (customCloudProvider == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProvider", "customCloudProvider");
+            }
+            this.customCloudProvider = customCloudProvider;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder openstackCloudProvider(@Nullable GetClusterRkeConfigCloudProviderOpenstackCloudProvider openstackCloudProvider) {
+
             this.openstackCloudProvider = openstackCloudProvider;
             return this;
         }
         @CustomType.Setter
         public Builder vsphereCloudProvider(@Nullable GetClusterRkeConfigCloudProviderVsphereCloudProvider vsphereCloudProvider) {
+
             this.vsphereCloudProvider = vsphereCloudProvider;
             return this;
         }

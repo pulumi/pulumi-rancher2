@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.inputs.ClusterAksConfigV2NodePoolArgs;
 import java.lang.Boolean;
 import java.lang.Object;
@@ -1137,9 +1138,15 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         public ClusterAksConfigV2Args build() {
-            $.cloudCredentialId = Objects.requireNonNull($.cloudCredentialId, "expected parameter 'cloudCredentialId' to be non-null");
-            $.resourceGroup = Objects.requireNonNull($.resourceGroup, "expected parameter 'resourceGroup' to be non-null");
-            $.resourceLocation = Objects.requireNonNull($.resourceLocation, "expected parameter 'resourceLocation' to be non-null");
+            if ($.cloudCredentialId == null) {
+                throw new MissingRequiredPropertyException("ClusterAksConfigV2Args", "cloudCredentialId");
+            }
+            if ($.resourceGroup == null) {
+                throw new MissingRequiredPropertyException("ClusterAksConfigV2Args", "resourceGroup");
+            }
+            if ($.resourceLocation == null) {
+                throw new MissingRequiredPropertyException("ClusterAksConfigV2Args", "resourceLocation");
+            }
             return $;
         }
     }

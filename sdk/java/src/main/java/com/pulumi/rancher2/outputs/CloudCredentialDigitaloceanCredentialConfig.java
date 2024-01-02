@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class CloudCredentialDigitaloceanCredentialConfig {
 
         @CustomType.Setter
         public Builder accessToken(String accessToken) {
-            this.accessToken = Objects.requireNonNull(accessToken);
+            if (accessToken == null) {
+              throw new MissingRequiredPropertyException("CloudCredentialDigitaloceanCredentialConfig", "accessToken");
+            }
+            this.accessToken = accessToken;
             return this;
         }
         public CloudCredentialDigitaloceanCredentialConfig build() {

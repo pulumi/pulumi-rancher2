@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetPodSecurityPolicyTemplateAllowedCsiDriver;
 import com.pulumi.rancher2.outputs.GetPodSecurityPolicyTemplateAllowedFlexVolume;
 import com.pulumi.rancher2.outputs.GetPodSecurityPolicyTemplateAllowedHostPath;
@@ -226,11 +227,15 @@ public final class GetPodSecurityPolicyTemplateResult {
 
         @CustomType.Setter
         public Builder allowPrivilegeEscalation(Boolean allowPrivilegeEscalation) {
-            this.allowPrivilegeEscalation = Objects.requireNonNull(allowPrivilegeEscalation);
+            if (allowPrivilegeEscalation == null) {
+              throw new MissingRequiredPropertyException("GetPodSecurityPolicyTemplateResult", "allowPrivilegeEscalation");
+            }
+            this.allowPrivilegeEscalation = allowPrivilegeEscalation;
             return this;
         }
         @CustomType.Setter
         public Builder allowedCapabilities(@Nullable List<String> allowedCapabilities) {
+
             this.allowedCapabilities = allowedCapabilities;
             return this;
         }
@@ -239,6 +244,7 @@ public final class GetPodSecurityPolicyTemplateResult {
         }
         @CustomType.Setter
         public Builder allowedCsiDrivers(@Nullable List<GetPodSecurityPolicyTemplateAllowedCsiDriver> allowedCsiDrivers) {
+
             this.allowedCsiDrivers = allowedCsiDrivers;
             return this;
         }
@@ -247,6 +253,7 @@ public final class GetPodSecurityPolicyTemplateResult {
         }
         @CustomType.Setter
         public Builder allowedFlexVolumes(@Nullable List<GetPodSecurityPolicyTemplateAllowedFlexVolume> allowedFlexVolumes) {
+
             this.allowedFlexVolumes = allowedFlexVolumes;
             return this;
         }
@@ -255,6 +262,7 @@ public final class GetPodSecurityPolicyTemplateResult {
         }
         @CustomType.Setter
         public Builder allowedHostPaths(@Nullable List<GetPodSecurityPolicyTemplateAllowedHostPath> allowedHostPaths) {
+
             this.allowedHostPaths = allowedHostPaths;
             return this;
         }
@@ -263,6 +271,7 @@ public final class GetPodSecurityPolicyTemplateResult {
         }
         @CustomType.Setter
         public Builder allowedProcMountTypes(@Nullable List<String> allowedProcMountTypes) {
+
             this.allowedProcMountTypes = allowedProcMountTypes;
             return this;
         }
@@ -271,6 +280,7 @@ public final class GetPodSecurityPolicyTemplateResult {
         }
         @CustomType.Setter
         public Builder allowedUnsafeSysctls(@Nullable List<String> allowedUnsafeSysctls) {
+
             this.allowedUnsafeSysctls = allowedUnsafeSysctls;
             return this;
         }
@@ -279,11 +289,15 @@ public final class GetPodSecurityPolicyTemplateResult {
         }
         @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
-            this.annotations = Objects.requireNonNull(annotations);
+            if (annotations == null) {
+              throw new MissingRequiredPropertyException("GetPodSecurityPolicyTemplateResult", "annotations");
+            }
+            this.annotations = annotations;
             return this;
         }
         @CustomType.Setter
         public Builder defaultAddCapabilities(@Nullable List<String> defaultAddCapabilities) {
+
             this.defaultAddCapabilities = defaultAddCapabilities;
             return this;
         }
@@ -292,16 +306,21 @@ public final class GetPodSecurityPolicyTemplateResult {
         }
         @CustomType.Setter
         public Builder defaultAllowPrivilegeEscalation(@Nullable Boolean defaultAllowPrivilegeEscalation) {
+
             this.defaultAllowPrivilegeEscalation = defaultAllowPrivilegeEscalation;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetPodSecurityPolicyTemplateResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder forbiddenSysctls(@Nullable List<String> forbiddenSysctls) {
+
             this.forbiddenSysctls = forbiddenSysctls;
             return this;
         }
@@ -310,27 +329,42 @@ public final class GetPodSecurityPolicyTemplateResult {
         }
         @CustomType.Setter
         public Builder fsGroup(GetPodSecurityPolicyTemplateFsGroup fsGroup) {
-            this.fsGroup = Objects.requireNonNull(fsGroup);
+            if (fsGroup == null) {
+              throw new MissingRequiredPropertyException("GetPodSecurityPolicyTemplateResult", "fsGroup");
+            }
+            this.fsGroup = fsGroup;
             return this;
         }
         @CustomType.Setter
         public Builder hostIpc(Boolean hostIpc) {
-            this.hostIpc = Objects.requireNonNull(hostIpc);
+            if (hostIpc == null) {
+              throw new MissingRequiredPropertyException("GetPodSecurityPolicyTemplateResult", "hostIpc");
+            }
+            this.hostIpc = hostIpc;
             return this;
         }
         @CustomType.Setter
         public Builder hostNetwork(Boolean hostNetwork) {
-            this.hostNetwork = Objects.requireNonNull(hostNetwork);
+            if (hostNetwork == null) {
+              throw new MissingRequiredPropertyException("GetPodSecurityPolicyTemplateResult", "hostNetwork");
+            }
+            this.hostNetwork = hostNetwork;
             return this;
         }
         @CustomType.Setter
         public Builder hostPid(Boolean hostPid) {
-            this.hostPid = Objects.requireNonNull(hostPid);
+            if (hostPid == null) {
+              throw new MissingRequiredPropertyException("GetPodSecurityPolicyTemplateResult", "hostPid");
+            }
+            this.hostPid = hostPid;
             return this;
         }
         @CustomType.Setter
         public Builder hostPorts(List<GetPodSecurityPolicyTemplateHostPort> hostPorts) {
-            this.hostPorts = Objects.requireNonNull(hostPorts);
+            if (hostPorts == null) {
+              throw new MissingRequiredPropertyException("GetPodSecurityPolicyTemplateResult", "hostPorts");
+            }
+            this.hostPorts = hostPorts;
             return this;
         }
         public Builder hostPorts(GetPodSecurityPolicyTemplateHostPort... hostPorts) {
@@ -338,31 +372,47 @@ public final class GetPodSecurityPolicyTemplateResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPodSecurityPolicyTemplateResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetPodSecurityPolicyTemplateResult", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetPodSecurityPolicyTemplateResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder privileged(Boolean privileged) {
-            this.privileged = Objects.requireNonNull(privileged);
+            if (privileged == null) {
+              throw new MissingRequiredPropertyException("GetPodSecurityPolicyTemplateResult", "privileged");
+            }
+            this.privileged = privileged;
             return this;
         }
         @CustomType.Setter
         public Builder readOnlyRootFilesystem(Boolean readOnlyRootFilesystem) {
-            this.readOnlyRootFilesystem = Objects.requireNonNull(readOnlyRootFilesystem);
+            if (readOnlyRootFilesystem == null) {
+              throw new MissingRequiredPropertyException("GetPodSecurityPolicyTemplateResult", "readOnlyRootFilesystem");
+            }
+            this.readOnlyRootFilesystem = readOnlyRootFilesystem;
             return this;
         }
         @CustomType.Setter
         public Builder requiredDropCapabilities(@Nullable List<String> requiredDropCapabilities) {
+
             this.requiredDropCapabilities = requiredDropCapabilities;
             return this;
         }
@@ -371,32 +421,46 @@ public final class GetPodSecurityPolicyTemplateResult {
         }
         @CustomType.Setter
         public Builder runAsGroup(@Nullable GetPodSecurityPolicyTemplateRunAsGroup runAsGroup) {
+
             this.runAsGroup = runAsGroup;
             return this;
         }
         @CustomType.Setter
         public Builder runAsUser(GetPodSecurityPolicyTemplateRunAsUser runAsUser) {
-            this.runAsUser = Objects.requireNonNull(runAsUser);
+            if (runAsUser == null) {
+              throw new MissingRequiredPropertyException("GetPodSecurityPolicyTemplateResult", "runAsUser");
+            }
+            this.runAsUser = runAsUser;
             return this;
         }
         @CustomType.Setter
         public Builder runtimeClass(@Nullable GetPodSecurityPolicyTemplateRuntimeClass runtimeClass) {
+
             this.runtimeClass = runtimeClass;
             return this;
         }
         @CustomType.Setter
         public Builder seLinux(GetPodSecurityPolicyTemplateSeLinux seLinux) {
-            this.seLinux = Objects.requireNonNull(seLinux);
+            if (seLinux == null) {
+              throw new MissingRequiredPropertyException("GetPodSecurityPolicyTemplateResult", "seLinux");
+            }
+            this.seLinux = seLinux;
             return this;
         }
         @CustomType.Setter
         public Builder supplementalGroup(GetPodSecurityPolicyTemplateSupplementalGroup supplementalGroup) {
-            this.supplementalGroup = Objects.requireNonNull(supplementalGroup);
+            if (supplementalGroup == null) {
+              throw new MissingRequiredPropertyException("GetPodSecurityPolicyTemplateResult", "supplementalGroup");
+            }
+            this.supplementalGroup = supplementalGroup;
             return this;
         }
         @CustomType.Setter
         public Builder volumes(List<String> volumes) {
-            this.volumes = Objects.requireNonNull(volumes);
+            if (volumes == null) {
+              throw new MissingRequiredPropertyException("GetPodSecurityPolicyTemplateResult", "volumes");
+            }
+            this.volumes = volumes;
             return this;
         }
         public Builder volumes(String... volumes) {

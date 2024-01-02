@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class CloudCredentialGoogleCredentialConfig {
 
         @CustomType.Setter
         public Builder authEncodedJson(String authEncodedJson) {
-            this.authEncodedJson = Objects.requireNonNull(authEncodedJson);
+            if (authEncodedJson == null) {
+              throw new MissingRequiredPropertyException("CloudCredentialGoogleCredentialConfig", "authEncodedJson");
+            }
+            this.authEncodedJson = authEncodedJson;
             return this;
         }
         public CloudCredentialGoogleCredentialConfig build() {

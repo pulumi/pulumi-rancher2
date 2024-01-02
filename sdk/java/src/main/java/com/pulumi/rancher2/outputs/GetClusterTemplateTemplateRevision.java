@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConfig;
 import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionQuestion;
 import java.lang.Boolean;
@@ -122,46 +123,67 @@ public final class GetClusterTemplateTemplateRevision {
 
         @CustomType.Setter
         public Builder annotations(Map<String,Object> annotations) {
-            this.annotations = Objects.requireNonNull(annotations);
+            if (annotations == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevision", "annotations");
+            }
+            this.annotations = annotations;
             return this;
         }
         @CustomType.Setter
         public Builder clusterConfig(GetClusterTemplateTemplateRevisionClusterConfig clusterConfig) {
-            this.clusterConfig = Objects.requireNonNull(clusterConfig);
+            if (clusterConfig == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevision", "clusterConfig");
+            }
+            this.clusterConfig = clusterConfig;
             return this;
         }
         @CustomType.Setter
         public Builder clusterTemplateId(String clusterTemplateId) {
-            this.clusterTemplateId = Objects.requireNonNull(clusterTemplateId);
+            if (clusterTemplateId == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevision", "clusterTemplateId");
+            }
+            this.clusterTemplateId = clusterTemplateId;
             return this;
         }
         @CustomType.Setter("default")
         public Builder default_(@Nullable Boolean default_) {
+
             this.default_ = default_;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevision", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevision", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevision", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder questions(@Nullable List<GetClusterTemplateTemplateRevisionQuestion> questions) {
+
             this.questions = questions;
             return this;
         }

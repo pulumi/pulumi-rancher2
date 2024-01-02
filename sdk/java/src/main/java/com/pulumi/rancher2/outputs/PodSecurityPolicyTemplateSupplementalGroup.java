@@ -60,6 +60,7 @@ public final class PodSecurityPolicyTemplateSupplementalGroup {
 
         @CustomType.Setter
         public Builder ranges(@Nullable List<PodSecurityPolicyTemplateSupplementalGroupRange> ranges) {
+
             this.ranges = ranges;
             return this;
         }
@@ -68,6 +69,7 @@ public final class PodSecurityPolicyTemplateSupplementalGroup {
         }
         @CustomType.Setter
         public Builder rule(@Nullable String rule) {
+
             this.rule = rule;
             return this;
         }

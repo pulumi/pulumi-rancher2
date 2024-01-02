@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -168,7 +169,9 @@ public final class ProjectAlertGroupRecipientArgs extends com.pulumi.resources.R
         }
 
         public ProjectAlertGroupRecipientArgs build() {
-            $.notifierId = Objects.requireNonNull($.notifierId, "expected parameter 'notifierId' to be non-null");
+            if ($.notifierId == null) {
+                throw new MissingRequiredPropertyException("ProjectAlertGroupRecipientArgs", "notifierId");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -163,46 +164,57 @@ public final class NodeTemplateHetznerConfig {
 
         @CustomType.Setter
         public Builder apiToken(String apiToken) {
-            this.apiToken = Objects.requireNonNull(apiToken);
+            if (apiToken == null) {
+              throw new MissingRequiredPropertyException("NodeTemplateHetznerConfig", "apiToken");
+            }
+            this.apiToken = apiToken;
             return this;
         }
         @CustomType.Setter
         public Builder image(@Nullable String image) {
+
             this.image = image;
             return this;
         }
         @CustomType.Setter
         public Builder networks(@Nullable String networks) {
+
             this.networks = networks;
             return this;
         }
         @CustomType.Setter
         public Builder serverLabels(@Nullable Map<String,Object> serverLabels) {
+
             this.serverLabels = serverLabels;
             return this;
         }
         @CustomType.Setter
         public Builder serverLocation(@Nullable String serverLocation) {
+
             this.serverLocation = serverLocation;
             return this;
         }
         @CustomType.Setter
         public Builder serverType(@Nullable String serverType) {
+
             this.serverType = serverType;
             return this;
         }
         @CustomType.Setter
         public Builder usePrivateNetwork(@Nullable Boolean usePrivateNetwork) {
+
             this.usePrivateNetwork = usePrivateNetwork;
             return this;
         }
         @CustomType.Setter
         public Builder userdata(@Nullable String userdata) {
+
             this.userdata = userdata;
             return this;
         }
         @CustomType.Setter
         public Builder volumes(@Nullable String volumes) {
+
             this.volumes = volumes;
             return this;
         }

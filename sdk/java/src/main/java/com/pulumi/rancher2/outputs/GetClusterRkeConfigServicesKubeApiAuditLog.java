@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterRkeConfigServicesKubeApiAuditLogConfiguration;
 import java.lang.Boolean;
 import java.util.Objects;
@@ -43,11 +44,15 @@ public final class GetClusterRkeConfigServicesKubeApiAuditLog {
 
         @CustomType.Setter
         public Builder configuration(GetClusterRkeConfigServicesKubeApiAuditLogConfiguration configuration) {
-            this.configuration = Objects.requireNonNull(configuration);
+            if (configuration == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigServicesKubeApiAuditLog", "configuration");
+            }
+            this.configuration = configuration;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }

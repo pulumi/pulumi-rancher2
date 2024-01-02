@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -777,162 +778,216 @@ public final class ClusterGkeConfig {
 
         @CustomType.Setter
         public Builder clusterIpv4Cidr(String clusterIpv4Cidr) {
-            this.clusterIpv4Cidr = Objects.requireNonNull(clusterIpv4Cidr);
+            if (clusterIpv4Cidr == null) {
+              throw new MissingRequiredPropertyException("ClusterGkeConfig", "clusterIpv4Cidr");
+            }
+            this.clusterIpv4Cidr = clusterIpv4Cidr;
             return this;
         }
         @CustomType.Setter
         public Builder credential(String credential) {
-            this.credential = Objects.requireNonNull(credential);
+            if (credential == null) {
+              throw new MissingRequiredPropertyException("ClusterGkeConfig", "credential");
+            }
+            this.credential = credential;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder diskSizeGb(@Nullable Integer diskSizeGb) {
+
             this.diskSizeGb = diskSizeGb;
             return this;
         }
         @CustomType.Setter
         public Builder diskType(String diskType) {
-            this.diskType = Objects.requireNonNull(diskType);
+            if (diskType == null) {
+              throw new MissingRequiredPropertyException("ClusterGkeConfig", "diskType");
+            }
+            this.diskType = diskType;
             return this;
         }
         @CustomType.Setter
         public Builder enableAlphaFeature(@Nullable Boolean enableAlphaFeature) {
+
             this.enableAlphaFeature = enableAlphaFeature;
             return this;
         }
         @CustomType.Setter
         public Builder enableAutoRepair(@Nullable Boolean enableAutoRepair) {
+
             this.enableAutoRepair = enableAutoRepair;
             return this;
         }
         @CustomType.Setter
         public Builder enableAutoUpgrade(@Nullable Boolean enableAutoUpgrade) {
+
             this.enableAutoUpgrade = enableAutoUpgrade;
             return this;
         }
         @CustomType.Setter
         public Builder enableHorizontalPodAutoscaling(@Nullable Boolean enableHorizontalPodAutoscaling) {
+
             this.enableHorizontalPodAutoscaling = enableHorizontalPodAutoscaling;
             return this;
         }
         @CustomType.Setter
         public Builder enableHttpLoadBalancing(@Nullable Boolean enableHttpLoadBalancing) {
+
             this.enableHttpLoadBalancing = enableHttpLoadBalancing;
             return this;
         }
         @CustomType.Setter
         public Builder enableKubernetesDashboard(@Nullable Boolean enableKubernetesDashboard) {
+
             this.enableKubernetesDashboard = enableKubernetesDashboard;
             return this;
         }
         @CustomType.Setter
         public Builder enableLegacyAbac(@Nullable Boolean enableLegacyAbac) {
+
             this.enableLegacyAbac = enableLegacyAbac;
             return this;
         }
         @CustomType.Setter
         public Builder enableMasterAuthorizedNetwork(@Nullable Boolean enableMasterAuthorizedNetwork) {
+
             this.enableMasterAuthorizedNetwork = enableMasterAuthorizedNetwork;
             return this;
         }
         @CustomType.Setter
         public Builder enableNetworkPolicyConfig(@Nullable Boolean enableNetworkPolicyConfig) {
+
             this.enableNetworkPolicyConfig = enableNetworkPolicyConfig;
             return this;
         }
         @CustomType.Setter
         public Builder enableNodepoolAutoscaling(@Nullable Boolean enableNodepoolAutoscaling) {
+
             this.enableNodepoolAutoscaling = enableNodepoolAutoscaling;
             return this;
         }
         @CustomType.Setter
         public Builder enablePrivateEndpoint(@Nullable Boolean enablePrivateEndpoint) {
+
             this.enablePrivateEndpoint = enablePrivateEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder enablePrivateNodes(@Nullable Boolean enablePrivateNodes) {
+
             this.enablePrivateNodes = enablePrivateNodes;
             return this;
         }
         @CustomType.Setter
         public Builder enableStackdriverLogging(@Nullable Boolean enableStackdriverLogging) {
+
             this.enableStackdriverLogging = enableStackdriverLogging;
             return this;
         }
         @CustomType.Setter
         public Builder enableStackdriverMonitoring(@Nullable Boolean enableStackdriverMonitoring) {
+
             this.enableStackdriverMonitoring = enableStackdriverMonitoring;
             return this;
         }
         @CustomType.Setter
         public Builder imageType(String imageType) {
-            this.imageType = Objects.requireNonNull(imageType);
+            if (imageType == null) {
+              throw new MissingRequiredPropertyException("ClusterGkeConfig", "imageType");
+            }
+            this.imageType = imageType;
             return this;
         }
         @CustomType.Setter
         public Builder ipPolicyClusterIpv4CidrBlock(String ipPolicyClusterIpv4CidrBlock) {
-            this.ipPolicyClusterIpv4CidrBlock = Objects.requireNonNull(ipPolicyClusterIpv4CidrBlock);
+            if (ipPolicyClusterIpv4CidrBlock == null) {
+              throw new MissingRequiredPropertyException("ClusterGkeConfig", "ipPolicyClusterIpv4CidrBlock");
+            }
+            this.ipPolicyClusterIpv4CidrBlock = ipPolicyClusterIpv4CidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder ipPolicyClusterSecondaryRangeName(String ipPolicyClusterSecondaryRangeName) {
-            this.ipPolicyClusterSecondaryRangeName = Objects.requireNonNull(ipPolicyClusterSecondaryRangeName);
+            if (ipPolicyClusterSecondaryRangeName == null) {
+              throw new MissingRequiredPropertyException("ClusterGkeConfig", "ipPolicyClusterSecondaryRangeName");
+            }
+            this.ipPolicyClusterSecondaryRangeName = ipPolicyClusterSecondaryRangeName;
             return this;
         }
         @CustomType.Setter
         public Builder ipPolicyCreateSubnetwork(@Nullable Boolean ipPolicyCreateSubnetwork) {
+
             this.ipPolicyCreateSubnetwork = ipPolicyCreateSubnetwork;
             return this;
         }
         @CustomType.Setter
         public Builder ipPolicyNodeIpv4CidrBlock(String ipPolicyNodeIpv4CidrBlock) {
-            this.ipPolicyNodeIpv4CidrBlock = Objects.requireNonNull(ipPolicyNodeIpv4CidrBlock);
+            if (ipPolicyNodeIpv4CidrBlock == null) {
+              throw new MissingRequiredPropertyException("ClusterGkeConfig", "ipPolicyNodeIpv4CidrBlock");
+            }
+            this.ipPolicyNodeIpv4CidrBlock = ipPolicyNodeIpv4CidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder ipPolicyServicesIpv4CidrBlock(String ipPolicyServicesIpv4CidrBlock) {
-            this.ipPolicyServicesIpv4CidrBlock = Objects.requireNonNull(ipPolicyServicesIpv4CidrBlock);
+            if (ipPolicyServicesIpv4CidrBlock == null) {
+              throw new MissingRequiredPropertyException("ClusterGkeConfig", "ipPolicyServicesIpv4CidrBlock");
+            }
+            this.ipPolicyServicesIpv4CidrBlock = ipPolicyServicesIpv4CidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder ipPolicyServicesSecondaryRangeName(String ipPolicyServicesSecondaryRangeName) {
-            this.ipPolicyServicesSecondaryRangeName = Objects.requireNonNull(ipPolicyServicesSecondaryRangeName);
+            if (ipPolicyServicesSecondaryRangeName == null) {
+              throw new MissingRequiredPropertyException("ClusterGkeConfig", "ipPolicyServicesSecondaryRangeName");
+            }
+            this.ipPolicyServicesSecondaryRangeName = ipPolicyServicesSecondaryRangeName;
             return this;
         }
         @CustomType.Setter
         public Builder ipPolicySubnetworkName(String ipPolicySubnetworkName) {
-            this.ipPolicySubnetworkName = Objects.requireNonNull(ipPolicySubnetworkName);
+            if (ipPolicySubnetworkName == null) {
+              throw new MissingRequiredPropertyException("ClusterGkeConfig", "ipPolicySubnetworkName");
+            }
+            this.ipPolicySubnetworkName = ipPolicySubnetworkName;
             return this;
         }
         @CustomType.Setter
         public Builder issueClientCertificate(@Nullable Boolean issueClientCertificate) {
+
             this.issueClientCertificate = issueClientCertificate;
             return this;
         }
         @CustomType.Setter
         public Builder kubernetesDashboard(@Nullable Boolean kubernetesDashboard) {
+
             this.kubernetesDashboard = kubernetesDashboard;
             return this;
         }
         @CustomType.Setter
         public Builder labels(@Nullable Map<String,Object> labels) {
+
             this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder localSsdCount(@Nullable Integer localSsdCount) {
+
             this.localSsdCount = localSsdCount;
             return this;
         }
         @CustomType.Setter
         public Builder locations(List<String> locations) {
-            this.locations = Objects.requireNonNull(locations);
+            if (locations == null) {
+              throw new MissingRequiredPropertyException("ClusterGkeConfig", "locations");
+            }
+            this.locations = locations;
             return this;
         }
         public Builder locations(String... locations) {
@@ -940,16 +995,23 @@ public final class ClusterGkeConfig {
         }
         @CustomType.Setter
         public Builder machineType(String machineType) {
-            this.machineType = Objects.requireNonNull(machineType);
+            if (machineType == null) {
+              throw new MissingRequiredPropertyException("ClusterGkeConfig", "machineType");
+            }
+            this.machineType = machineType;
             return this;
         }
         @CustomType.Setter
         public Builder maintenanceWindow(String maintenanceWindow) {
-            this.maintenanceWindow = Objects.requireNonNull(maintenanceWindow);
+            if (maintenanceWindow == null) {
+              throw new MissingRequiredPropertyException("ClusterGkeConfig", "maintenanceWindow");
+            }
+            this.maintenanceWindow = maintenanceWindow;
             return this;
         }
         @CustomType.Setter
         public Builder masterAuthorizedNetworkCidrBlocks(@Nullable List<String> masterAuthorizedNetworkCidrBlocks) {
+
             this.masterAuthorizedNetworkCidrBlocks = masterAuthorizedNetworkCidrBlocks;
             return this;
         }
@@ -958,47 +1020,68 @@ public final class ClusterGkeConfig {
         }
         @CustomType.Setter
         public Builder masterIpv4CidrBlock(String masterIpv4CidrBlock) {
-            this.masterIpv4CidrBlock = Objects.requireNonNull(masterIpv4CidrBlock);
+            if (masterIpv4CidrBlock == null) {
+              throw new MissingRequiredPropertyException("ClusterGkeConfig", "masterIpv4CidrBlock");
+            }
+            this.masterIpv4CidrBlock = masterIpv4CidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder masterVersion(String masterVersion) {
-            this.masterVersion = Objects.requireNonNull(masterVersion);
+            if (masterVersion == null) {
+              throw new MissingRequiredPropertyException("ClusterGkeConfig", "masterVersion");
+            }
+            this.masterVersion = masterVersion;
             return this;
         }
         @CustomType.Setter
         public Builder maxNodeCount(@Nullable Integer maxNodeCount) {
+
             this.maxNodeCount = maxNodeCount;
             return this;
         }
         @CustomType.Setter
         public Builder minNodeCount(@Nullable Integer minNodeCount) {
+
             this.minNodeCount = minNodeCount;
             return this;
         }
         @CustomType.Setter
         public Builder network(String network) {
-            this.network = Objects.requireNonNull(network);
+            if (network == null) {
+              throw new MissingRequiredPropertyException("ClusterGkeConfig", "network");
+            }
+            this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder nodeCount(@Nullable Integer nodeCount) {
+
             this.nodeCount = nodeCount;
             return this;
         }
         @CustomType.Setter
         public Builder nodePool(String nodePool) {
-            this.nodePool = Objects.requireNonNull(nodePool);
+            if (nodePool == null) {
+              throw new MissingRequiredPropertyException("ClusterGkeConfig", "nodePool");
+            }
+            this.nodePool = nodePool;
             return this;
         }
         @CustomType.Setter
         public Builder nodeVersion(String nodeVersion) {
-            this.nodeVersion = Objects.requireNonNull(nodeVersion);
+            if (nodeVersion == null) {
+              throw new MissingRequiredPropertyException("ClusterGkeConfig", "nodeVersion");
+            }
+            this.nodeVersion = nodeVersion;
             return this;
         }
         @CustomType.Setter
         public Builder oauthScopes(List<String> oauthScopes) {
-            this.oauthScopes = Objects.requireNonNull(oauthScopes);
+            if (oauthScopes == null) {
+              throw new MissingRequiredPropertyException("ClusterGkeConfig", "oauthScopes");
+            }
+            this.oauthScopes = oauthScopes;
             return this;
         }
         public Builder oauthScopes(String... oauthScopes) {
@@ -1006,36 +1089,49 @@ public final class ClusterGkeConfig {
         }
         @CustomType.Setter
         public Builder preemptible(@Nullable Boolean preemptible) {
+
             this.preemptible = preemptible;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("ClusterGkeConfig", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder resourceLabels(@Nullable Map<String,Object> resourceLabels) {
+
             this.resourceLabels = resourceLabels;
             return this;
         }
         @CustomType.Setter
         public Builder serviceAccount(String serviceAccount) {
-            this.serviceAccount = Objects.requireNonNull(serviceAccount);
+            if (serviceAccount == null) {
+              throw new MissingRequiredPropertyException("ClusterGkeConfig", "serviceAccount");
+            }
+            this.serviceAccount = serviceAccount;
             return this;
         }
         @CustomType.Setter
         public Builder subNetwork(String subNetwork) {
-            this.subNetwork = Objects.requireNonNull(subNetwork);
+            if (subNetwork == null) {
+              throw new MissingRequiredPropertyException("ClusterGkeConfig", "subNetwork");
+            }
+            this.subNetwork = subNetwork;
             return this;
         }
         @CustomType.Setter
         public Builder taints(@Nullable List<String> taints) {
+
             this.taints = taints;
             return this;
         }
@@ -1044,11 +1140,13 @@ public final class ClusterGkeConfig {
         }
         @CustomType.Setter
         public Builder useIpAliases(@Nullable Boolean useIpAliases) {
+
             this.useIpAliases = useIpAliases;
             return this;
         }
         @CustomType.Setter
         public Builder zone(@Nullable String zone) {
+
             this.zone = zone;
             return this;
         }

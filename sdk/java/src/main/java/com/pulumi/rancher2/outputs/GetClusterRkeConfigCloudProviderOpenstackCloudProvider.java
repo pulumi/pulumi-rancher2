@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage;
 import com.pulumi.rancher2.outputs.GetClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal;
 import com.pulumi.rancher2.outputs.GetClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer;
@@ -62,27 +63,42 @@ public final class GetClusterRkeConfigCloudProviderOpenstackCloudProvider {
 
         @CustomType.Setter
         public Builder blockStorage(GetClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage blockStorage) {
-            this.blockStorage = Objects.requireNonNull(blockStorage);
+            if (blockStorage == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderOpenstackCloudProvider", "blockStorage");
+            }
+            this.blockStorage = blockStorage;
             return this;
         }
         @CustomType.Setter
         public Builder global(GetClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal global) {
-            this.global = Objects.requireNonNull(global);
+            if (global == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderOpenstackCloudProvider", "global");
+            }
+            this.global = global;
             return this;
         }
         @CustomType.Setter
         public Builder loadBalancer(GetClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer loadBalancer) {
-            this.loadBalancer = Objects.requireNonNull(loadBalancer);
+            if (loadBalancer == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderOpenstackCloudProvider", "loadBalancer");
+            }
+            this.loadBalancer = loadBalancer;
             return this;
         }
         @CustomType.Setter
         public Builder metadata(GetClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata metadata) {
-            this.metadata = Objects.requireNonNull(metadata);
+            if (metadata == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderOpenstackCloudProvider", "metadata");
+            }
+            this.metadata = metadata;
             return this;
         }
         @CustomType.Setter
         public Builder route(GetClusterRkeConfigCloudProviderOpenstackCloudProviderRoute route) {
-            this.route = Objects.requireNonNull(route);
+            if (route == null) {
+              throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderOpenstackCloudProvider", "route");
+            }
+            this.route = route;
             return this;
         }
         public GetClusterRkeConfigCloudProviderOpenstackCloudProvider build() {
