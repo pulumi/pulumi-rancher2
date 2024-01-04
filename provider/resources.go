@@ -23,13 +23,13 @@ import (
 	"unicode"
 
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
-	"github.com/pulumi/pulumi-rancher2/provider/v5/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
+	tks "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 	"github.com/rancher/terraform-provider-rancher2/rancher2"
+
+	"github.com/pulumi/pulumi-rancher2/provider/v5/pkg/version"
 )
 
 // all of the token components used below.
@@ -249,11 +249,8 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		})
 
-	defaults := x.TokensSingleModule("rancher2_", mainMod, x.MakeStandardToken(mainPkg))
-	err := x.ComputeDefaults(&prov, defaults)
-	contract.AssertNoErrorf(err, "failed to compute auto token mapping defaults")
-	err = x.AutoAliasing(&prov, prov.GetMetadata())
-	contract.AssertNoErrorf(err, "auto aliasing apply failed")
+	prov.MustComputeTokens(tks.SingleModule("rancher2_", mainMod, tks.MakeStandard(mainPkg)))
+	prov.MustApplyAutoAliases()
 	prov.SetAutonaming(255, "-")
 
 	return prov

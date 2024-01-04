@@ -811,43 +811,6 @@
                     }
                 }
             },
-            "rancher2_cluster_logging": {
-                "current": "rancher2:index/clusterLogging:ClusterLogging",
-                "fields": {
-                    "custom_target_config": {
-                        "maxItemsOne": true
-                    },
-                    "elasticsearch_config": {
-                        "maxItemsOne": true
-                    },
-                    "fluentd_config": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "fluent_servers": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "kafka_config": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "broker_endpoints": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "splunk_config": {
-                        "maxItemsOne": true
-                    },
-                    "syslog_config": {
-                        "maxItemsOne": true
-                    }
-                }
-            },
             "rancher2_cluster_role_template_binding": {
                 "current": "rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding",
                 "majorVersion": 5
@@ -1891,43 +1854,6 @@
                     }
                 }
             },
-            "rancher2_project_logging": {
-                "current": "rancher2:index/projectLogging:ProjectLogging",
-                "fields": {
-                    "custom_target_config": {
-                        "maxItemsOne": true
-                    },
-                    "elasticsearch_config": {
-                        "maxItemsOne": true
-                    },
-                    "fluentd_config": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "fluent_servers": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "kafka_config": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "broker_endpoints": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "splunk_config": {
-                        "maxItemsOne": true
-                    },
-                    "syslog_config": {
-                        "maxItemsOne": true
-                    }
-                }
-            },
             "rancher2_project_role_template_binding": {
                 "current": "rancher2:index/projectRoleTemplateBinding:ProjectRoleTemplateBinding",
                 "majorVersion": 5
@@ -2657,15 +2583,9 @@
                     }
                 }
             },
-            "rancher2_cluster_logging": {
-                "current": "rancher2:index/getClusterLogging:getClusterLogging"
-            },
             "rancher2_cluster_role_template_binding": {
                 "current": "rancher2:index/getClusterRoleTemplateBinding:getClusterRoleTemplateBinding",
                 "majorVersion": 5
-            },
-            "rancher2_cluster_scan": {
-                "current": "rancher2:index/getClusterScan:getClusterScan"
             },
             "rancher2_cluster_template": {
                 "current": "rancher2:index/getClusterTemplate:getClusterTemplate",
@@ -3500,9 +3420,6 @@
                     }
                 }
             },
-            "rancher2_project_logging": {
-                "current": "rancher2:index/getProjectLogging:getProjectLogging"
-            },
             "rancher2_project_role_template_binding": {
                 "current": "rancher2:index/getProjectRoleTemplateBinding:getProjectRoleTemplateBinding",
                 "majorVersion": 5
@@ -3610,6 +3527,7 @@
             }
         }
     },
+    "auto-settings": {},
     "renames": {
         "resources": {
             "rancher2:index/activeDirectory:ActiveDirectory": "rancher2_auth_config_activedirectory_legacy",
