@@ -16,18 +16,20 @@ package rancher2
 
 import (
 	"fmt"
-	// embed is used to store bridge-metadata.json in the compiled binary
-	_ "embed"
 	"path/filepath"
 	"strings"
 	"unicode"
 
+	// embed is used to store bridge-metadata.json in the compiled binary
+	_ "embed"
+
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+	"github.com/rancher/terraform-provider-rancher2/rancher2"
+
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tks "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
-	"github.com/rancher/terraform-provider-rancher2/rancher2"
 
 	"github.com/pulumi/pulumi-rancher2/provider/v5/pkg/version"
 )
