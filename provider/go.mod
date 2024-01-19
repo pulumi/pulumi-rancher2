@@ -42,8 +42,8 @@ replace (
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk v1.17.2
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.70.0
-	github.com/pulumi/pulumi/sdk/v3 v3.99.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.71.0
+	github.com/pulumi/pulumi/sdk/v3 v3.101.1
 	github.com/rancher/terraform-provider-rancher2 v1.25.1-0.20231013004807-59ba43ca3a23
 )
 
@@ -57,10 +57,10 @@ require (
 	cloud.google.com/go/longrunning v0.5.1 // indirect
 	cloud.google.com/go/storage v1.30.1 // indirect
 	dario.cat/mergo v1.0.0 // indirect
-	github.com/Azure/azure-sdk-for-go/sdk/azcore v1.3.1 // indirect
+	github.com/Azure/azure-sdk-for-go/sdk/azcore v1.4.0 // indirect
 	github.com/Azure/azure-sdk-for-go/sdk/azidentity v1.2.1 // indirect
-	github.com/Azure/azure-sdk-for-go/sdk/internal v1.1.2 // indirect
-	github.com/Azure/azure-sdk-for-go/sdk/keyvault/azkeys v0.9.0 // indirect
+	github.com/Azure/azure-sdk-for-go/sdk/internal v1.2.0 // indirect
+	github.com/Azure/azure-sdk-for-go/sdk/keyvault/azkeys v0.10.0 // indirect
 	github.com/Azure/azure-sdk-for-go/sdk/keyvault/internal v0.7.1 // indirect
 	github.com/AzureAD/microsoft-authentication-library-for-go v0.8.1 // indirect
 	github.com/BurntSushi/toml v1.2.1 // indirect
@@ -236,10 +236,10 @@ require (
 	github.com/prometheus/procfs v0.8.0 // indirect
 	github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 // indirect
 	github.com/pulumi/esc v0.6.2 // indirect
-	github.com/pulumi/pulumi-java/pkg v0.9.8 // indirect
-	github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.4 // indirect
-	github.com/pulumi/pulumi-yaml v1.4.4 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.99.0 // indirect
+	github.com/pulumi/pulumi-java/pkg v0.9.9 // indirect
+	github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.7 // indirect
+	github.com/pulumi/pulumi-yaml v1.4.5 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.101.1 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rancher/aks-operator v1.1.1-rc2 // indirect
