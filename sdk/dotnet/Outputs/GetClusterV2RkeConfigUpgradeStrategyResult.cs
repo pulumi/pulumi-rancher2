@@ -13,9 +13,21 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterV2RkeConfigUpgradeStrategyResult
     {
+        /// <summary>
+        /// How many controlplane nodes should be upgrade at time, 0 is infinite. Percentages are also accepted
+        /// </summary>
         public readonly string? ControlPlaneConcurrency;
+        /// <summary>
+        /// Controlplane nodes drain options
+        /// </summary>
         public readonly Outputs.GetClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsResult? ControlPlaneDrainOptions;
+        /// <summary>
+        /// How many worker nodes should be upgrade at time
+        /// </summary>
         public readonly string? WorkerConcurrency;
+        /// <summary>
+        /// Worker nodes drain options
+        /// </summary>
         public readonly Outputs.GetClusterV2RkeConfigUpgradeStrategyWorkerDrainOptionsResult? WorkerDrainOptions;
 
         [OutputConstructor]

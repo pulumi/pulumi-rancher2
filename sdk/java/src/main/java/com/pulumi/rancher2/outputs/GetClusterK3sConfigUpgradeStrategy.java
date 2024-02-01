@@ -12,21 +12,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterK3sConfigUpgradeStrategy {
+    /**
+     * @return Drain server nodes
+     * 
+     */
     private @Nullable Boolean drainServerNodes;
+    /**
+     * @return Drain worker nodes
+     * 
+     */
     private @Nullable Boolean drainWorkerNodes;
+    /**
+     * @return Server concurrency
+     * 
+     */
     private @Nullable Integer serverConcurrency;
+    /**
+     * @return Worker concurrency
+     * 
+     */
     private @Nullable Integer workerConcurrency;
 
     private GetClusterK3sConfigUpgradeStrategy() {}
+    /**
+     * @return Drain server nodes
+     * 
+     */
     public Optional<Boolean> drainServerNodes() {
         return Optional.ofNullable(this.drainServerNodes);
     }
+    /**
+     * @return Drain worker nodes
+     * 
+     */
     public Optional<Boolean> drainWorkerNodes() {
         return Optional.ofNullable(this.drainWorkerNodes);
     }
+    /**
+     * @return Server concurrency
+     * 
+     */
     public Optional<Integer> serverConcurrency() {
         return Optional.ofNullable(this.serverConcurrency);
     }
+    /**
+     * @return Worker concurrency
+     * 
+     */
     public Optional<Integer> workerConcurrency() {
         return Optional.ofNullable(this.workerConcurrency);
     }

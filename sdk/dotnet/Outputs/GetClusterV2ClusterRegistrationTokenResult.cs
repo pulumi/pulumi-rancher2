@@ -13,6 +13,9 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterV2ClusterRegistrationTokenResult
     {
+        /// <summary>
+        /// Annotations of the resource
+        /// </summary>
         public readonly ImmutableDictionary<string, object> Annotations;
         public readonly string ClusterId;
         public readonly string Command;
@@ -23,6 +26,9 @@ namespace Pulumi.Rancher2.Outputs
         public readonly string InsecureCommand;
         public readonly string InsecureNodeCommand;
         public readonly string InsecureWindowsNodeCommand;
+        /// <summary>
+        /// Labels of the resource
+        /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
         public readonly string ManifestUrl;
         /// <summary>

@@ -15,16 +15,32 @@ public final class GetNotifierMsteamsConfig extends com.pulumi.resources.InvokeA
 
     public static final GetNotifierMsteamsConfig Empty = new GetNotifierMsteamsConfig();
 
+    /**
+     * MS teams proxy URL
+     * 
+     */
     @Import(name="proxyUrl")
     private @Nullable String proxyUrl;
 
+    /**
+     * @return MS teams proxy URL
+     * 
+     */
     public Optional<String> proxyUrl() {
         return Optional.ofNullable(this.proxyUrl);
     }
 
+    /**
+     * Webhook URL
+     * 
+     */
     @Import(name="url", required=true)
     private String url;
 
+    /**
+     * @return Webhook URL
+     * 
+     */
     public String url() {
         return this.url;
     }
@@ -54,11 +70,23 @@ public final class GetNotifierMsteamsConfig extends com.pulumi.resources.InvokeA
             $ = new GetNotifierMsteamsConfig(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param proxyUrl MS teams proxy URL
+         * 
+         * @return builder
+         * 
+         */
         public Builder proxyUrl(@Nullable String proxyUrl) {
             $.proxyUrl = proxyUrl;
             return this;
         }
 
+        /**
+         * @param url Webhook URL
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(String url) {
             $.url = url;
             return this;

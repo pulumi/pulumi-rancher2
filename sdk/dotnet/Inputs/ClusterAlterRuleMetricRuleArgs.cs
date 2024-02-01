@@ -12,6 +12,9 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterAlterRuleMetricRuleArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Metric rule comparison
+        /// </summary>
         [Input("comparison")]
         public Input<string>? Comparison { get; set; }
 
@@ -21,12 +24,21 @@ namespace Pulumi.Rancher2.Inputs
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Metric rule duration
+        /// </summary>
         [Input("duration", required: true)]
         public Input<string> Duration { get; set; } = null!;
 
+        /// <summary>
+        /// Metric rule expression
+        /// </summary>
         [Input("expression", required: true)]
         public Input<string> Expression { get; set; } = null!;
 
+        /// <summary>
+        /// Metric rule threshold value
+        /// </summary>
         [Input("thresholdValue", required: true)]
         public Input<double> ThresholdValue { get; set; } = null!;
 

@@ -13,28 +13,91 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfig
     {
+        /// <summary>
+        /// Optional duration in seconds of addon job.
+        /// </summary>
         public readonly int? AddonJobTimeout;
+        /// <summary>
+        /// Optional addons descripton to deploy on rke cluster.
+        /// </summary>
         public readonly string? Addons;
+        /// <summary>
+        /// Optional addons yaml manisfest to deploy on rke cluster.
+        /// </summary>
         public readonly ImmutableArray<string> AddonsIncludes;
+        /// <summary>
+        /// Kubernetes cluster authentication
+        /// </summary>
         public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication? Authentication;
+        /// <summary>
+        /// Kubernetes cluster authorization
+        /// </summary>
         public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorization? Authorization;
+        /// <summary>
+        /// RKE bastion host
+        /// </summary>
         public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHost? BastionHost;
         public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvider? CloudProvider;
         public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns? Dns;
+        /// <summary>
+        /// Enable/disable using cri-dockerd
+        /// </summary>
         public readonly bool? EnableCriDockerd;
+        /// <summary>
+        /// Optional ignore docker version on nodes
+        /// </summary>
         public readonly bool? IgnoreDockerVersion;
+        /// <summary>
+        /// Kubernetes ingress configuration
+        /// </summary>
         public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress? Ingress;
+        /// <summary>
+        /// Optional kubernetes version to deploy
+        /// </summary>
         public readonly string? KubernetesVersion;
+        /// <summary>
+        /// Kubernetes cluster monitoring
+        /// </summary>
         public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring? Monitoring;
+        /// <summary>
+        /// Kubernetes cluster networking
+        /// </summary>
         public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork? Network;
+        /// <summary>
+        /// Optional RKE cluster nodes
+        /// </summary>
         public readonly ImmutableArray<Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNode> Nodes;
+        /// <summary>
+        /// Optional prefix to customize kubernetes path
+        /// </summary>
         public readonly string? PrefixPath;
+        /// <summary>
+        /// Optional private registries for docker images
+        /// </summary>
         public readonly ImmutableArray<Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry> PrivateRegistries;
+        /// <summary>
+        /// Kubernetes cluster services
+        /// </summary>
         public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices? Services;
+        /// <summary>
+        /// Optional use ssh agent auth
+        /// </summary>
         public readonly bool? SshAgentAuth;
+        /// <summary>
+        /// Optional cluster level SSH certificate path
+        /// </summary>
         public readonly string? SshCertPath;
+        /// <summary>
+        /// Optional cluster level SSH private key path
+        /// </summary>
         public readonly string? SshKeyPath;
+        /// <summary>
+        /// RKE upgrade strategy
+        /// </summary>
         public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy? UpgradeStrategy;
+        /// <summary>
+        /// Optional prefix to customize kubernetes path for windows
+        /// </summary>
         public readonly string? WinPrefixPath;
 
         [OutputConstructor]

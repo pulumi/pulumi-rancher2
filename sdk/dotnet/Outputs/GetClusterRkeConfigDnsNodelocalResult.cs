@@ -14,6 +14,9 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class GetClusterRkeConfigDnsNodelocalResult
     {
         public readonly string? IpAddress;
+        /// <summary>
+        /// Node selector key pair
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? NodeSelector;
 
         [OutputConstructor]

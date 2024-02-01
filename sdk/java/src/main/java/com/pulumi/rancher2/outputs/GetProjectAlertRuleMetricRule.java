@@ -13,25 +13,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetProjectAlertRuleMetricRule {
+    /**
+     * @return Metric rule comparison
+     * 
+     */
     private @Nullable String comparison;
+    /**
+     * @return Metric rule description
+     * 
+     */
     private @Nullable String description;
+    /**
+     * @return Metric rule duration
+     * 
+     */
     private String duration;
+    /**
+     * @return Metric rule expression
+     * 
+     */
     private String expression;
+    /**
+     * @return Metric rule threshold value
+     * 
+     */
     private Double thresholdValue;
 
     private GetProjectAlertRuleMetricRule() {}
+    /**
+     * @return Metric rule comparison
+     * 
+     */
     public Optional<String> comparison() {
         return Optional.ofNullable(this.comparison);
     }
+    /**
+     * @return Metric rule description
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return Metric rule duration
+     * 
+     */
     public String duration() {
         return this.duration;
     }
+    /**
+     * @return Metric rule expression
+     * 
+     */
     public String expression() {
         return this.expression;
     }
+    /**
+     * @return Metric rule threshold value
+     * 
+     */
     public Double thresholdValue() {
         return this.thresholdValue;
     }

@@ -56,6 +56,10 @@ namespace Pulumi.Rancher2.Inputs
 
         [Input("machinePoolDefaults")]
         private InputList<Inputs.ClusterV2RkeConfigMachinePoolDefaultGetArgs>? _machinePoolDefaults;
+
+        /// <summary>
+        /// Default values for machine pool configurations if unset
+        /// </summary>
         public InputList<Inputs.ClusterV2RkeConfigMachinePoolDefaultGetArgs> MachinePoolDefaults
         {
             get => _machinePoolDefaults ?? (_machinePoolDefaults = new InputList<Inputs.ClusterV2RkeConfigMachinePoolDefaultGetArgs>());

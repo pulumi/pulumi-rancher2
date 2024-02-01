@@ -13,8 +13,17 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetProjectAlertRuleWorkloadRuleResult
     {
+        /// <summary>
+        /// Workload rule available percentage
+        /// </summary>
         public readonly int? AvailablePercentage;
+        /// <summary>
+        /// Workload rule selector
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? Selector;
+        /// <summary>
+        /// Workload ID
+        /// </summary>
         public readonly string? WorkloadId;
 
         [OutputConstructor]

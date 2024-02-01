@@ -12,9 +12,15 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class GetPodSecurityPolicyTemplateSeLinuxInputArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// rule is the strategy that will dictate the allowable labels that may be set.
+        /// </summary>
         [Input("rule", required: true)]
         public Input<string> Rule { get; set; } = null!;
 
+        /// <summary>
+        /// seLinuxOptions required to run as; required for MustRunAs. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+        /// </summary>
         [Input("seLinuxOption")]
         public Input<Inputs.GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionInputArgs>? SeLinuxOption { get; set; }
 

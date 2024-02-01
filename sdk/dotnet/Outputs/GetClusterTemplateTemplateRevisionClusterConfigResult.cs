@@ -13,17 +13,53 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterTemplateTemplateRevisionClusterConfigResult
     {
+        /// <summary>
+        /// Local cluster auth endpoint
+        /// </summary>
         public readonly Outputs.GetClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointResult ClusterAuthEndpoint;
+        /// <summary>
+        /// Default cluster role for project members
+        /// </summary>
         public readonly string DefaultClusterRoleForProjectMembers;
+        /// <summary>
+        /// Default pod security admission configuration template name
+        /// </summary>
         public readonly string DefaultPodSecurityAdmissionConfigurationTemplateName;
+        /// <summary>
+        /// Default pod security policy template ID
+        /// </summary>
         public readonly string DefaultPodSecurityPolicyTemplateId;
+        /// <summary>
+        /// Desired agent image
+        /// </summary>
         public readonly string DesiredAgentImage;
+        /// <summary>
+        /// Desired auth image
+        /// </summary>
         public readonly string DesiredAuthImage;
+        /// <summary>
+        /// Docker Root Dir
+        /// </summary>
         public readonly string DockerRootDir;
+        /// <summary>
+        /// Enable built-in cluster alerting
+        /// </summary>
         public readonly bool? EnableClusterAlerting;
+        /// <summary>
+        /// Enable built-in cluster monitoring
+        /// </summary>
         public readonly bool? EnableClusterMonitoring;
+        /// <summary>
+        /// Enable project network isolation
+        /// </summary>
         public readonly bool? EnableNetworkPolicy;
+        /// <summary>
+        /// Rancher Kubernetes Engine Config
+        /// </summary>
         public readonly Outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigResult RkeConfig;
+        /// <summary>
+        /// Windows prefered cluster
+        /// </summary>
         public readonly bool? WindowsPreferedCluster;
 
         [OutputConstructor]

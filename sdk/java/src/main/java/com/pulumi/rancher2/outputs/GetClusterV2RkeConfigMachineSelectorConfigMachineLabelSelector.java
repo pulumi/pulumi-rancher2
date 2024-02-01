@@ -14,13 +14,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector {
+    /**
+     * @return Label selector match expressions
+     * 
+     */
     private @Nullable List<GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression> matchExpressions;
+    /**
+     * @return Label selector match labels
+     * 
+     */
     private @Nullable Map<String,Object> matchLabels;
 
     private GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector() {}
+    /**
+     * @return Label selector match expressions
+     * 
+     */
     public List<GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression> matchExpressions() {
         return this.matchExpressions == null ? List.of() : this.matchExpressions;
     }
+    /**
+     * @return Label selector match labels
+     * 
+     */
     public Map<String,Object> matchLabels() {
         return this.matchLabels == null ? Map.of() : this.matchLabels;
     }

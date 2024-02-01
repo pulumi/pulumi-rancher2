@@ -10,6 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterV2RkeConfigMachinePoolMachineConfig {
+    /**
+     * @return Machine config kind
+     * 
+     */
     private String kind;
     /**
      * @return The name of the Cluster v2 (string)
@@ -18,6 +22,10 @@ public final class GetClusterV2RkeConfigMachinePoolMachineConfig {
     private String name;
 
     private GetClusterV2RkeConfigMachinePoolMachineConfig() {}
+    /**
+     * @return Machine config kind
+     * 
+     */
     public String kind() {
         return this.kind;
     }

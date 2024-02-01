@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterRke2Config {
+    /**
+     * @return The RKE2 upgrade strategy
+     * 
+     */
     private GetClusterRke2ConfigUpgradeStrategy upgradeStrategy;
+    /**
+     * @return The RKE2 kubernetes version
+     * 
+     */
     private String version;
 
     private GetClusterRke2Config() {}
+    /**
+     * @return The RKE2 upgrade strategy
+     * 
+     */
     public GetClusterRke2ConfigUpgradeStrategy upgradeStrategy() {
         return this.upgradeStrategy;
     }
+    /**
+     * @return The RKE2 kubernetes version
+     * 
+     */
     public String version() {
         return this.version;
     }

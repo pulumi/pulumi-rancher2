@@ -35,6 +35,10 @@ public final class ClusterEksConfig {
      * 
      */
     private @Nullable Integer desiredNodes;
+    /**
+     * @return Enables EBS encryption of worker nodes
+     * 
+     */
     private @Nullable Boolean ebsEncryption;
     /**
      * @return The EKS node group instance type. Default: `t3.medium` (string)
@@ -136,6 +140,10 @@ public final class ClusterEksConfig {
     public Optional<Integer> desiredNodes() {
         return Optional.ofNullable(this.desiredNodes);
     }
+    /**
+     * @return Enables EBS encryption of worker nodes
+     * 
+     */
     public Optional<Boolean> ebsEncryption() {
         return Optional.ofNullable(this.ebsEncryption);
     }

@@ -13,10 +13,25 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterAlterRuleNodeRule
     {
+        /// <summary>
+        /// Node rule condition
+        /// </summary>
         public readonly string? Condition;
+        /// <summary>
+        /// Node rule cpu threshold
+        /// </summary>
         public readonly int? CpuThreshold;
+        /// <summary>
+        /// Node rule mem threshold
+        /// </summary>
         public readonly int? MemThreshold;
+        /// <summary>
+        /// Node ID
+        /// </summary>
         public readonly string? NodeId;
+        /// <summary>
+        /// Node rule selector
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? Selector;
 
         [OutputConstructor]

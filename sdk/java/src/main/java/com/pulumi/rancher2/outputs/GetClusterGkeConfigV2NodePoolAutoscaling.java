@@ -13,17 +13,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterGkeConfigV2NodePoolAutoscaling {
+    /**
+     * @return Enable GKE node pool config autoscaling
+     * 
+     */
     private @Nullable Boolean enabled;
+    /**
+     * @return The GKE node pool config max node count
+     * 
+     */
     private Integer maxNodeCount;
+    /**
+     * @return The GKE node pool config min node count
+     * 
+     */
     private Integer minNodeCount;
 
     private GetClusterGkeConfigV2NodePoolAutoscaling() {}
+    /**
+     * @return Enable GKE node pool config autoscaling
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return The GKE node pool config max node count
+     * 
+     */
     public Integer maxNodeCount() {
         return this.maxNodeCount;
     }
+    /**
+     * @return The GKE node pool config min node count
+     * 
+     */
     public Integer minNodeCount() {
         return this.minNodeCount;
     }

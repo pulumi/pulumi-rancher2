@@ -13,7 +13,13 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetMultiClusterAppUpgradeStrategyRollingUpdateResult
     {
+        /// <summary>
+        /// Rolling update batch size
+        /// </summary>
         public readonly int? BatchSize;
+        /// <summary>
+        /// Rolling update interval
+        /// </summary>
         public readonly int? Interval;
 
         [OutputConstructor]

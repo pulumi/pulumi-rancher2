@@ -23,43 +23,115 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterV2RkeConfig {
+    /**
+     * @return Cluster V2 additional manifest
+     * 
+     */
     private @Nullable String additionalManifest;
+    /**
+     * @return Cluster V2 chart values. It should be in YAML format
+     * 
+     */
     private @Nullable String chartValues;
+    /**
+     * @return Cluster V2 etcd
+     * 
+     */
     private GetClusterV2RkeConfigEtcd etcd;
+    /**
+     * @return Cluster V2 etcd snapshot create
+     * 
+     */
     private @Nullable GetClusterV2RkeConfigEtcdSnapshotCreate etcdSnapshotCreate;
+    /**
+     * @return Cluster V2 etcd snapshot restore
+     * 
+     */
     private @Nullable GetClusterV2RkeConfigEtcdSnapshotRestore etcdSnapshotRestore;
     /**
+     * @return Cluster V2 local auth endpoint
+     * 
      * @deprecated
      * Use rancher2_cluster_v2.local_auth_endpoint instead
      * 
      */
     @Deprecated /* Use rancher2_cluster_v2.local_auth_endpoint instead */
     private @Nullable GetClusterV2RkeConfigLocalAuthEndpoint localAuthEndpoint;
+    /**
+     * @return Cluster V2 machine global config
+     * 
+     */
     private @Nullable String machineGlobalConfig;
+    /**
+     * @return Default values for machine pool configurations if unset
+     * 
+     */
     private List<GetClusterV2RkeConfigMachinePoolDefault> machinePoolDefaults;
+    /**
+     * @return Cluster V2 machine pools
+     * 
+     */
     private List<GetClusterV2RkeConfigMachinePool> machinePools;
+    /**
+     * @return Cluster V2 machine selector config
+     * 
+     */
     private List<GetClusterV2RkeConfigMachineSelectorConfig> machineSelectorConfigs;
+    /**
+     * @return Cluster V2 registries
+     * 
+     */
     private @Nullable GetClusterV2RkeConfigRegistries registries;
+    /**
+     * @return Cluster V2 certificate rotation
+     * 
+     */
     private @Nullable GetClusterV2RkeConfigRotateCertificates rotateCertificates;
+    /**
+     * @return Cluster V2 upgrade strategy
+     * 
+     */
     private @Nullable GetClusterV2RkeConfigUpgradeStrategy upgradeStrategy;
 
     private GetClusterV2RkeConfig() {}
+    /**
+     * @return Cluster V2 additional manifest
+     * 
+     */
     public Optional<String> additionalManifest() {
         return Optional.ofNullable(this.additionalManifest);
     }
+    /**
+     * @return Cluster V2 chart values. It should be in YAML format
+     * 
+     */
     public Optional<String> chartValues() {
         return Optional.ofNullable(this.chartValues);
     }
+    /**
+     * @return Cluster V2 etcd
+     * 
+     */
     public GetClusterV2RkeConfigEtcd etcd() {
         return this.etcd;
     }
+    /**
+     * @return Cluster V2 etcd snapshot create
+     * 
+     */
     public Optional<GetClusterV2RkeConfigEtcdSnapshotCreate> etcdSnapshotCreate() {
         return Optional.ofNullable(this.etcdSnapshotCreate);
     }
+    /**
+     * @return Cluster V2 etcd snapshot restore
+     * 
+     */
     public Optional<GetClusterV2RkeConfigEtcdSnapshotRestore> etcdSnapshotRestore() {
         return Optional.ofNullable(this.etcdSnapshotRestore);
     }
     /**
+     * @return Cluster V2 local auth endpoint
+     * 
      * @deprecated
      * Use rancher2_cluster_v2.local_auth_endpoint instead
      * 
@@ -68,24 +140,52 @@ public final class GetClusterV2RkeConfig {
     public Optional<GetClusterV2RkeConfigLocalAuthEndpoint> localAuthEndpoint() {
         return Optional.ofNullable(this.localAuthEndpoint);
     }
+    /**
+     * @return Cluster V2 machine global config
+     * 
+     */
     public Optional<String> machineGlobalConfig() {
         return Optional.ofNullable(this.machineGlobalConfig);
     }
+    /**
+     * @return Default values for machine pool configurations if unset
+     * 
+     */
     public List<GetClusterV2RkeConfigMachinePoolDefault> machinePoolDefaults() {
         return this.machinePoolDefaults;
     }
+    /**
+     * @return Cluster V2 machine pools
+     * 
+     */
     public List<GetClusterV2RkeConfigMachinePool> machinePools() {
         return this.machinePools;
     }
+    /**
+     * @return Cluster V2 machine selector config
+     * 
+     */
     public List<GetClusterV2RkeConfigMachineSelectorConfig> machineSelectorConfigs() {
         return this.machineSelectorConfigs;
     }
+    /**
+     * @return Cluster V2 registries
+     * 
+     */
     public Optional<GetClusterV2RkeConfigRegistries> registries() {
         return Optional.ofNullable(this.registries);
     }
+    /**
+     * @return Cluster V2 certificate rotation
+     * 
+     */
     public Optional<GetClusterV2RkeConfigRotateCertificates> rotateCertificates() {
         return Optional.ofNullable(this.rotateCertificates);
     }
+    /**
+     * @return Cluster V2 upgrade strategy
+     * 
+     */
     public Optional<GetClusterV2RkeConfigUpgradeStrategy> upgradeStrategy() {
         return Optional.ofNullable(this.upgradeStrategy);
     }

@@ -17,38 +17,106 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterAksConfigV2NodePool {
+    /**
+     * @return The AKS node pool availability zones
+     * 
+     */
     private @Nullable List<String> availabilityZones;
+    /**
+     * @return The AKS node pool count
+     * 
+     */
     private @Nullable Integer count;
+    /**
+     * @return Is AKS node pool auto scaling enabled?
+     * 
+     */
     private @Nullable Boolean enableAutoScaling;
     /**
      * @return (Computed) Labels for Node Pool object (map)
      * 
      */
     private Map<String,Object> labels;
+    /**
+     * @return The AKS node pool max count
+     * 
+     */
     private @Nullable Integer maxCount;
+    /**
+     * @return The AKS node pool max pods
+     * 
+     */
     private @Nullable Integer maxPods;
+    /**
+     * @return The AKS node pool max surge
+     * 
+     */
     private @Nullable String maxSurge;
+    /**
+     * @return The AKS node pool min count
+     * 
+     */
     private @Nullable Integer minCount;
+    /**
+     * @return The AKS node pool mode
+     * 
+     */
     private @Nullable String mode;
     /**
      * @return The name of the Cluster (string)
      * 
      */
     private String name;
+    /**
+     * @return The AKS node pool orchestrator version
+     * 
+     */
     private @Nullable String orchestratorVersion;
+    /**
+     * @return The AKS node pool os disk size gb
+     * 
+     */
     private @Nullable Integer osDiskSizeGb;
+    /**
+     * @return The AKS node pool os disk type
+     * 
+     */
     private @Nullable String osDiskType;
+    /**
+     * @return Enable AKS node pool os type
+     * 
+     */
     private @Nullable String osType;
+    /**
+     * @return The AKS node pool taints
+     * 
+     */
     private List<String> taints;
+    /**
+     * @return The AKS node pool vm size
+     * 
+     */
     private String vmSize;
 
     private GetClusterAksConfigV2NodePool() {}
+    /**
+     * @return The AKS node pool availability zones
+     * 
+     */
     public List<String> availabilityZones() {
         return this.availabilityZones == null ? List.of() : this.availabilityZones;
     }
+    /**
+     * @return The AKS node pool count
+     * 
+     */
     public Optional<Integer> count() {
         return Optional.ofNullable(this.count);
     }
+    /**
+     * @return Is AKS node pool auto scaling enabled?
+     * 
+     */
     public Optional<Boolean> enableAutoScaling() {
         return Optional.ofNullable(this.enableAutoScaling);
     }
@@ -59,18 +127,38 @@ public final class GetClusterAksConfigV2NodePool {
     public Map<String,Object> labels() {
         return this.labels;
     }
+    /**
+     * @return The AKS node pool max count
+     * 
+     */
     public Optional<Integer> maxCount() {
         return Optional.ofNullable(this.maxCount);
     }
+    /**
+     * @return The AKS node pool max pods
+     * 
+     */
     public Optional<Integer> maxPods() {
         return Optional.ofNullable(this.maxPods);
     }
+    /**
+     * @return The AKS node pool max surge
+     * 
+     */
     public Optional<String> maxSurge() {
         return Optional.ofNullable(this.maxSurge);
     }
+    /**
+     * @return The AKS node pool min count
+     * 
+     */
     public Optional<Integer> minCount() {
         return Optional.ofNullable(this.minCount);
     }
+    /**
+     * @return The AKS node pool mode
+     * 
+     */
     public Optional<String> mode() {
         return Optional.ofNullable(this.mode);
     }
@@ -81,21 +169,45 @@ public final class GetClusterAksConfigV2NodePool {
     public String name() {
         return this.name;
     }
+    /**
+     * @return The AKS node pool orchestrator version
+     * 
+     */
     public Optional<String> orchestratorVersion() {
         return Optional.ofNullable(this.orchestratorVersion);
     }
+    /**
+     * @return The AKS node pool os disk size gb
+     * 
+     */
     public Optional<Integer> osDiskSizeGb() {
         return Optional.ofNullable(this.osDiskSizeGb);
     }
+    /**
+     * @return The AKS node pool os disk type
+     * 
+     */
     public Optional<String> osDiskType() {
         return Optional.ofNullable(this.osDiskType);
     }
+    /**
+     * @return Enable AKS node pool os type
+     * 
+     */
     public Optional<String> osType() {
         return Optional.ofNullable(this.osType);
     }
+    /**
+     * @return The AKS node pool taints
+     * 
+     */
     public List<String> taints() {
         return this.taints;
     }
+    /**
+     * @return The AKS node pool vm size
+     * 
+     */
     public String vmSize() {
         return this.vmSize;
     }

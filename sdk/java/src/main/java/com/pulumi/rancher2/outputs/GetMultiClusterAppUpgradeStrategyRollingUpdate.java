@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMultiClusterAppUpgradeStrategyRollingUpdate {
+    /**
+     * @return Rolling update batch size
+     * 
+     */
     private @Nullable Integer batchSize;
+    /**
+     * @return Rolling update interval
+     * 
+     */
     private @Nullable Integer interval;
 
     private GetMultiClusterAppUpgradeStrategyRollingUpdate() {}
+    /**
+     * @return Rolling update batch size
+     * 
+     */
     public Optional<Integer> batchSize() {
         return Optional.ofNullable(this.batchSize);
     }
+    /**
+     * @return Rolling update interval
+     * 
+     */
     public Optional<Integer> interval() {
         return Optional.ofNullable(this.interval);
     }

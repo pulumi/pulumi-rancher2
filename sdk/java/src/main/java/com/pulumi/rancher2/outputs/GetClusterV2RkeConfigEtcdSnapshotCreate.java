@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterV2RkeConfigEtcdSnapshotCreate {
+    /**
+     * @return ETCD generation to initiate a snapshot
+     * 
+     */
     private Integer generation;
 
     private GetClusterV2RkeConfigEtcdSnapshotCreate() {}
+    /**
+     * @return ETCD generation to initiate a snapshot
+     * 
+     */
     public Integer generation() {
         return this.generation;
     }

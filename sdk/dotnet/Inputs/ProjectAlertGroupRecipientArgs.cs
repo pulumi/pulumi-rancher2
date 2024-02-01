@@ -12,6 +12,9 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ProjectAlertGroupRecipientArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Use notifier default recipient
+        /// </summary>
         [Input("defaultRecipient")]
         public Input<bool>? DefaultRecipient { get; set; }
 

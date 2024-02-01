@@ -109,6 +109,9 @@ namespace Pulumi.Rancher2.Outputs
         /// AWS spot instance bid price (in dollar). Default `0.50` (string)
         /// </summary>
         public readonly string? SpotPrice;
+        /// <summary>
+        /// SSH Key for Instance
+        /// </summary>
         public readonly string? SshKeypath;
         /// <summary>
         /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)

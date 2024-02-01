@@ -17,40 +17,120 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterEksConfigV2 {
+    /**
+     * @return The AWS Cloud Credential ID to use
+     * 
+     */
     private String cloudCredentialId;
+    /**
+     * @return Is EKS cluster imported?
+     * 
+     */
     private @Nullable Boolean imported;
+    /**
+     * @return The AWS kms key to use
+     * 
+     */
     private @Nullable String kmsKey;
+    /**
+     * @return The kubernetes master version
+     * 
+     */
     private String kubernetesVersion;
+    /**
+     * @return The AWS logging types
+     * 
+     */
     private @Nullable List<String> loggingTypes;
     /**
      * @return The name of the Cluster (string)
      * 
      */
     private String name;
+    /**
+     * @return The AWS node groups to use
+     * 
+     */
     private List<GetClusterEksConfigV2NodeGroup> nodeGroups;
+    /**
+     * @return The EKS cluster has private access
+     * 
+     */
     private Boolean privateAccess;
+    /**
+     * @return The EKS cluster has public access
+     * 
+     */
     private Boolean publicAccess;
+    /**
+     * @return The EKS cluster public access sources
+     * 
+     */
     private List<String> publicAccessSources;
+    /**
+     * @return The AWS Region to create the EKS cluster in
+     * 
+     */
     private @Nullable String region;
+    /**
+     * @return Enable EKS cluster secret encryption
+     * 
+     */
     private Boolean secretsEncryption;
+    /**
+     * @return List of security groups to use for the cluster
+     * 
+     */
     private @Nullable List<String> securityGroups;
+    /**
+     * @return The AWS service role to use
+     * 
+     */
     private @Nullable String serviceRole;
+    /**
+     * @return List of subnets in the virtual network to use
+     * 
+     */
     private @Nullable List<String> subnets;
+    /**
+     * @return The EKS cluster tags
+     * 
+     */
     private @Nullable Map<String,Object> tags;
 
     private GetClusterEksConfigV2() {}
+    /**
+     * @return The AWS Cloud Credential ID to use
+     * 
+     */
     public String cloudCredentialId() {
         return this.cloudCredentialId;
     }
+    /**
+     * @return Is EKS cluster imported?
+     * 
+     */
     public Optional<Boolean> imported() {
         return Optional.ofNullable(this.imported);
     }
+    /**
+     * @return The AWS kms key to use
+     * 
+     */
     public Optional<String> kmsKey() {
         return Optional.ofNullable(this.kmsKey);
     }
+    /**
+     * @return The kubernetes master version
+     * 
+     */
     public String kubernetesVersion() {
         return this.kubernetesVersion;
     }
+    /**
+     * @return The AWS logging types
+     * 
+     */
     public List<String> loggingTypes() {
         return this.loggingTypes == null ? List.of() : this.loggingTypes;
     }
@@ -61,33 +141,73 @@ public final class GetClusterEksConfigV2 {
     public String name() {
         return this.name;
     }
+    /**
+     * @return The AWS node groups to use
+     * 
+     */
     public List<GetClusterEksConfigV2NodeGroup> nodeGroups() {
         return this.nodeGroups;
     }
+    /**
+     * @return The EKS cluster has private access
+     * 
+     */
     public Boolean privateAccess() {
         return this.privateAccess;
     }
+    /**
+     * @return The EKS cluster has public access
+     * 
+     */
     public Boolean publicAccess() {
         return this.publicAccess;
     }
+    /**
+     * @return The EKS cluster public access sources
+     * 
+     */
     public List<String> publicAccessSources() {
         return this.publicAccessSources;
     }
+    /**
+     * @return The AWS Region to create the EKS cluster in
+     * 
+     */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
+    /**
+     * @return Enable EKS cluster secret encryption
+     * 
+     */
     public Boolean secretsEncryption() {
         return this.secretsEncryption;
     }
+    /**
+     * @return List of security groups to use for the cluster
+     * 
+     */
     public List<String> securityGroups() {
         return this.securityGroups == null ? List.of() : this.securityGroups;
     }
+    /**
+     * @return The AWS service role to use
+     * 
+     */
     public Optional<String> serviceRole() {
         return Optional.ofNullable(this.serviceRole);
     }
+    /**
+     * @return List of subnets in the virtual network to use
+     * 
+     */
     public List<String> subnets() {
         return this.subnets == null ? List.of() : this.subnets;
     }
+    /**
+     * @return The EKS cluster tags
+     * 
+     */
     public Map<String,Object> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }

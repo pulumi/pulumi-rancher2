@@ -13,9 +13,21 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterAlertGroupRecipientResult
     {
+        /// <summary>
+        /// Use notifier default recipient
+        /// </summary>
         public readonly bool? DefaultRecipient;
+        /// <summary>
+        /// Recipient notifier ID
+        /// </summary>
         public readonly string NotifierId;
+        /// <summary>
+        /// Recipient notifier type
+        /// </summary>
         public readonly string NotifierType;
+        /// <summary>
+        /// Recipient
+        /// </summary>
         public readonly string Recipient;
 
         [OutputConstructor]

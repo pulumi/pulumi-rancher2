@@ -13,9 +13,21 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterRke2ConfigUpgradeStrategyResult
     {
+        /// <summary>
+        /// Drain server nodes
+        /// </summary>
         public readonly bool? DrainServerNodes;
+        /// <summary>
+        /// Drain worker nodes
+        /// </summary>
         public readonly bool? DrainWorkerNodes;
+        /// <summary>
+        /// Server concurrency
+        /// </summary>
         public readonly int? ServerConcurrency;
+        /// <summary>
+        /// Worker concurrency
+        /// </summary>
         public readonly int? WorkerConcurrency;
 
         [OutputConstructor]

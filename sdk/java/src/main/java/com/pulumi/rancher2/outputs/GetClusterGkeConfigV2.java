@@ -21,46 +21,134 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterGkeConfigV2 {
+    /**
+     * @return The GKE cluster addons
+     * 
+     */
     private GetClusterGkeConfigV2ClusterAddons clusterAddons;
+    /**
+     * @return The GKE ip v4 cidr block
+     * 
+     */
     private String clusterIpv4CidrBlock;
     /**
      * @return (Computed) The description for Cluster (string)
      * 
      */
     private String description;
+    /**
+     * @return Enable Kubernetes alpha
+     * 
+     */
     private Boolean enableKubernetesAlpha;
+    /**
+     * @return Google credential secret
+     * 
+     */
     private String googleCredentialSecret;
+    /**
+     * @return Is GKE cluster imported?
+     * 
+     */
     private @Nullable Boolean imported;
+    /**
+     * @return The GKE ip allocation policy
+     * 
+     */
     private GetClusterGkeConfigV2IpAllocationPolicy ipAllocationPolicy;
+    /**
+     * @return The kubernetes master version
+     * 
+     */
     private String kubernetesVersion;
     /**
      * @return (Computed) Labels for Node Pool object (map)
      * 
      */
     private Map<String,Object> labels;
+    /**
+     * @return The GKE cluster locations
+     * 
+     */
     private List<String> locations;
+    /**
+     * @return The GKE cluster logging service
+     * 
+     */
     private String loggingService;
+    /**
+     * @return The GKE cluster maintenance window
+     * 
+     */
     private String maintenanceWindow;
+    /**
+     * @return The GKE cluster master authorized networks config
+     * 
+     */
     private GetClusterGkeConfigV2MasterAuthorizedNetworksConfig masterAuthorizedNetworksConfig;
+    /**
+     * @return The GKE cluster monitoring service
+     * 
+     */
     private String monitoringService;
     /**
      * @return The name of the Cluster (string)
      * 
      */
     private String name;
+    /**
+     * @return The GKE cluster network
+     * 
+     */
     private String network;
+    /**
+     * @return Is GKE cluster network policy enabled?
+     * 
+     */
     private Boolean networkPolicyEnabled;
+    /**
+     * @return The GKE cluster node pools
+     * 
+     */
     private List<GetClusterGkeConfigV2NodePool> nodePools;
+    /**
+     * @return The GKE private cluster config
+     * 
+     */
     private GetClusterGkeConfigV2PrivateClusterConfig privateClusterConfig;
+    /**
+     * @return The GKE project id
+     * 
+     */
     private String projectId;
+    /**
+     * @return The GKE cluster region. Required if `zone` is empty
+     * 
+     */
     private String region;
+    /**
+     * @return The GKE cluster subnetwork
+     * 
+     */
     private String subnetwork;
+    /**
+     * @return The GKE cluster zone. Required if `region` is empty
+     * 
+     */
     private String zone;
 
     private GetClusterGkeConfigV2() {}
+    /**
+     * @return The GKE cluster addons
+     * 
+     */
     public GetClusterGkeConfigV2ClusterAddons clusterAddons() {
         return this.clusterAddons;
     }
+    /**
+     * @return The GKE ip v4 cidr block
+     * 
+     */
     public String clusterIpv4CidrBlock() {
         return this.clusterIpv4CidrBlock;
     }
@@ -71,18 +159,38 @@ public final class GetClusterGkeConfigV2 {
     public String description() {
         return this.description;
     }
+    /**
+     * @return Enable Kubernetes alpha
+     * 
+     */
     public Boolean enableKubernetesAlpha() {
         return this.enableKubernetesAlpha;
     }
+    /**
+     * @return Google credential secret
+     * 
+     */
     public String googleCredentialSecret() {
         return this.googleCredentialSecret;
     }
+    /**
+     * @return Is GKE cluster imported?
+     * 
+     */
     public Optional<Boolean> imported() {
         return Optional.ofNullable(this.imported);
     }
+    /**
+     * @return The GKE ip allocation policy
+     * 
+     */
     public GetClusterGkeConfigV2IpAllocationPolicy ipAllocationPolicy() {
         return this.ipAllocationPolicy;
     }
+    /**
+     * @return The kubernetes master version
+     * 
+     */
     public String kubernetesVersion() {
         return this.kubernetesVersion;
     }
@@ -93,18 +201,38 @@ public final class GetClusterGkeConfigV2 {
     public Map<String,Object> labels() {
         return this.labels;
     }
+    /**
+     * @return The GKE cluster locations
+     * 
+     */
     public List<String> locations() {
         return this.locations;
     }
+    /**
+     * @return The GKE cluster logging service
+     * 
+     */
     public String loggingService() {
         return this.loggingService;
     }
+    /**
+     * @return The GKE cluster maintenance window
+     * 
+     */
     public String maintenanceWindow() {
         return this.maintenanceWindow;
     }
+    /**
+     * @return The GKE cluster master authorized networks config
+     * 
+     */
     public GetClusterGkeConfigV2MasterAuthorizedNetworksConfig masterAuthorizedNetworksConfig() {
         return this.masterAuthorizedNetworksConfig;
     }
+    /**
+     * @return The GKE cluster monitoring service
+     * 
+     */
     public String monitoringService() {
         return this.monitoringService;
     }
@@ -115,27 +243,59 @@ public final class GetClusterGkeConfigV2 {
     public String name() {
         return this.name;
     }
+    /**
+     * @return The GKE cluster network
+     * 
+     */
     public String network() {
         return this.network;
     }
+    /**
+     * @return Is GKE cluster network policy enabled?
+     * 
+     */
     public Boolean networkPolicyEnabled() {
         return this.networkPolicyEnabled;
     }
+    /**
+     * @return The GKE cluster node pools
+     * 
+     */
     public List<GetClusterGkeConfigV2NodePool> nodePools() {
         return this.nodePools;
     }
+    /**
+     * @return The GKE private cluster config
+     * 
+     */
     public GetClusterGkeConfigV2PrivateClusterConfig privateClusterConfig() {
         return this.privateClusterConfig;
     }
+    /**
+     * @return The GKE project id
+     * 
+     */
     public String projectId() {
         return this.projectId;
     }
+    /**
+     * @return The GKE cluster region. Required if `zone` is empty
+     * 
+     */
     public String region() {
         return this.region;
     }
+    /**
+     * @return The GKE cluster subnetwork
+     * 
+     */
     public String subnetwork() {
         return this.subnetwork;
     }
+    /**
+     * @return The GKE cluster zone. Required if `region` is empty
+     * 
+     */
     public String zone() {
         return this.zone;
     }

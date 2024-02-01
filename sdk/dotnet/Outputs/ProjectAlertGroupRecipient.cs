@@ -13,6 +13,9 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ProjectAlertGroupRecipient
     {
+        /// <summary>
+        /// Use notifier default recipient
+        /// </summary>
         public readonly bool? DefaultRecipient;
         /// <summary>
         /// Recipient notifier ID (string)

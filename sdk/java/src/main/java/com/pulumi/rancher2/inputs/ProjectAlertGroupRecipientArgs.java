@@ -17,9 +17,17 @@ public final class ProjectAlertGroupRecipientArgs extends com.pulumi.resources.R
 
     public static final ProjectAlertGroupRecipientArgs Empty = new ProjectAlertGroupRecipientArgs();
 
+    /**
+     * Use notifier default recipient
+     * 
+     */
     @Import(name="defaultRecipient")
     private @Nullable Output<Boolean> defaultRecipient;
 
+    /**
+     * @return Use notifier default recipient
+     * 
+     */
     public Optional<Output<Boolean>> defaultRecipient() {
         return Optional.ofNullable(this.defaultRecipient);
     }
@@ -96,11 +104,23 @@ public final class ProjectAlertGroupRecipientArgs extends com.pulumi.resources.R
             $ = new ProjectAlertGroupRecipientArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param defaultRecipient Use notifier default recipient
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultRecipient(@Nullable Output<Boolean> defaultRecipient) {
             $.defaultRecipient = defaultRecipient;
             return this;
         }
 
+        /**
+         * @param defaultRecipient Use notifier default recipient
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultRecipient(Boolean defaultRecipient) {
             return defaultRecipient(Output.of(defaultRecipient));
         }

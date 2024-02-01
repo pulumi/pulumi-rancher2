@@ -13,7 +13,13 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetPodSecurityPolicyTemplateSupplementalGroupResult
     {
+        /// <summary>
+        /// ranges are the allowed ranges of supplemental groups.  If you would like to force a single supplemental group then supply a single range with the same start and end. Required for MustRunAs.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetPodSecurityPolicyTemplateSupplementalGroupRangeResult> Ranges;
+        /// <summary>
+        /// rule is the strategy that will dictate what supplemental groups is used in the SecurityContext.
+        /// </summary>
         public readonly string? Rule;
 
         [OutputConstructor]

@@ -13,28 +13,91 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterRkeConfigResult
     {
+        /// <summary>
+        /// Optional duration in seconds of addon job.
+        /// </summary>
         public readonly int AddonJobTimeout;
+        /// <summary>
+        /// Optional addons descripton to deploy on rke cluster.
+        /// </summary>
         public readonly string? Addons;
+        /// <summary>
+        /// Optional addons yaml manisfest to deploy on rke cluster.
+        /// </summary>
         public readonly ImmutableArray<string> AddonsIncludes;
+        /// <summary>
+        /// Kubernetes cluster authentication
+        /// </summary>
         public readonly Outputs.GetClusterRkeConfigAuthenticationResult Authentication;
+        /// <summary>
+        /// Kubernetes cluster authorization
+        /// </summary>
         public readonly Outputs.GetClusterRkeConfigAuthorizationResult Authorization;
+        /// <summary>
+        /// RKE bastion host
+        /// </summary>
         public readonly Outputs.GetClusterRkeConfigBastionHostResult BastionHost;
         public readonly Outputs.GetClusterRkeConfigCloudProviderResult CloudProvider;
         public readonly Outputs.GetClusterRkeConfigDnsResult Dns;
+        /// <summary>
+        /// Enable/disable using cri-dockerd
+        /// </summary>
         public readonly bool? EnableCriDockerd;
+        /// <summary>
+        /// Optional ignore docker version on nodes
+        /// </summary>
         public readonly bool? IgnoreDockerVersion;
+        /// <summary>
+        /// Kubernetes ingress configuration
+        /// </summary>
         public readonly Outputs.GetClusterRkeConfigIngressResult Ingress;
+        /// <summary>
+        /// Optional kubernetes version to deploy
+        /// </summary>
         public readonly string KubernetesVersion;
+        /// <summary>
+        /// Kubernetes cluster monitoring
+        /// </summary>
         public readonly Outputs.GetClusterRkeConfigMonitoringResult Monitoring;
+        /// <summary>
+        /// Kubernetes cluster networking
+        /// </summary>
         public readonly Outputs.GetClusterRkeConfigNetworkResult Network;
+        /// <summary>
+        /// Optional RKE cluster nodes
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterRkeConfigNodeResult> Nodes;
+        /// <summary>
+        /// Optional prefix to customize kubernetes path
+        /// </summary>
         public readonly string PrefixPath;
+        /// <summary>
+        /// Optional private registries for docker images
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterRkeConfigPrivateRegistryResult> PrivateRegistries;
+        /// <summary>
+        /// Kubernetes cluster services
+        /// </summary>
         public readonly Outputs.GetClusterRkeConfigServicesResult Services;
+        /// <summary>
+        /// Optional use ssh agent auth
+        /// </summary>
         public readonly bool? SshAgentAuth;
+        /// <summary>
+        /// Optional cluster level SSH certificate path
+        /// </summary>
         public readonly string SshCertPath;
+        /// <summary>
+        /// Optional cluster level SSH private key path
+        /// </summary>
         public readonly string SshKeyPath;
+        /// <summary>
+        /// RKE upgrade strategy
+        /// </summary>
         public readonly Outputs.GetClusterRkeConfigUpgradeStrategyResult UpgradeStrategy;
+        /// <summary>
+        /// Optional prefix to customize kubernetes path for windows nodes
+        /// </summary>
         public readonly string WinPrefixPath;
 
         [OutputConstructor]

@@ -23,6 +23,10 @@ public final class GetClusterEksConfigV2NodeGroupLaunchTemplate {
      * 
      */
     private String name;
+    /**
+     * @return The EKS node group launch template version
+     * 
+     */
     private @Nullable Integer version;
 
     private GetClusterEksConfigV2NodeGroupLaunchTemplate() {}
@@ -40,6 +44,10 @@ public final class GetClusterEksConfigV2NodeGroupLaunchTemplate {
     public String name() {
         return this.name;
     }
+    /**
+     * @return The EKS node group launch template version
+     * 
+     */
     public Optional<Integer> version() {
         return Optional.ofNullable(this.version);
     }

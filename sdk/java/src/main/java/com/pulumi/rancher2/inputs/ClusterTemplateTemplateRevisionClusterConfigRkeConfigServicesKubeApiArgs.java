@@ -23,9 +23,17 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
 
     public static final ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiArgs Empty = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiArgs();
 
+    /**
+     * Cluster admission configuration
+     * 
+     */
     @Import(name="admissionConfiguration")
     private @Nullable Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationArgs> admissionConfiguration;
 
+    /**
+     * @return Cluster admission configuration
+     * 
+     */
     public Optional<Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationArgs>> admissionConfiguration() {
         return Optional.ofNullable(this.admissionConfiguration);
     }
@@ -142,11 +150,23 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
             $ = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param admissionConfiguration Cluster admission configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder admissionConfiguration(@Nullable Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationArgs> admissionConfiguration) {
             $.admissionConfiguration = admissionConfiguration;
             return this;
         }
 
+        /**
+         * @param admissionConfiguration Cluster admission configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder admissionConfiguration(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationArgs admissionConfiguration) {
             return admissionConfiguration(Output.of(admissionConfiguration));
         }

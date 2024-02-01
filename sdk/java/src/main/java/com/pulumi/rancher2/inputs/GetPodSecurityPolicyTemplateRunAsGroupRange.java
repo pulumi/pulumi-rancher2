@@ -13,16 +13,32 @@ public final class GetPodSecurityPolicyTemplateRunAsGroupRange extends com.pulum
 
     public static final GetPodSecurityPolicyTemplateRunAsGroupRange Empty = new GetPodSecurityPolicyTemplateRunAsGroupRange();
 
+    /**
+     * max is the end of the range, inclusive.
+     * 
+     */
     @Import(name="max", required=true)
     private Integer max;
 
+    /**
+     * @return max is the end of the range, inclusive.
+     * 
+     */
     public Integer max() {
         return this.max;
     }
 
+    /**
+     * min is the start of the range, inclusive.
+     * 
+     */
     @Import(name="min", required=true)
     private Integer min;
 
+    /**
+     * @return min is the start of the range, inclusive.
+     * 
+     */
     public Integer min() {
         return this.min;
     }
@@ -52,11 +68,23 @@ public final class GetPodSecurityPolicyTemplateRunAsGroupRange extends com.pulum
             $ = new GetPodSecurityPolicyTemplateRunAsGroupRange(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param max max is the end of the range, inclusive.
+         * 
+         * @return builder
+         * 
+         */
         public Builder max(Integer max) {
             $.max = max;
             return this;
         }
 
+        /**
+         * @param min min is the start of the range, inclusive.
+         * 
+         * @return builder
+         * 
+         */
         public Builder min(Integer min) {
             $.min = min;
             return this;

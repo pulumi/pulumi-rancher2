@@ -41,6 +41,9 @@ namespace Pulumi.Rancher2.Outputs
         /// Cluster V2 machine global config. Must be in YAML format (string)
         /// </summary>
         public readonly string? MachineGlobalConfig;
+        /// <summary>
+        /// Default values for machine pool configurations if unset
+        /// </summary>
         public readonly ImmutableArray<Outputs.ClusterV2RkeConfigMachinePoolDefault> MachinePoolDefaults;
         /// <summary>
         /// Cluster V2 machine pools (list)

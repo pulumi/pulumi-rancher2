@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNotifierPagerdutyConfig {
+    /**
+     * @return Pagerduty proxy URL
+     * 
+     */
     private @Nullable String proxyUrl;
+    /**
+     * @return Pagerduty service key
+     * 
+     */
     private String serviceKey;
 
     private GetNotifierPagerdutyConfig() {}
+    /**
+     * @return Pagerduty proxy URL
+     * 
+     */
     public Optional<String> proxyUrl() {
         return Optional.ofNullable(this.proxyUrl);
     }
+    /**
+     * @return Pagerduty service key
+     * 
+     */
     public String serviceKey() {
         return this.serviceKey;
     }

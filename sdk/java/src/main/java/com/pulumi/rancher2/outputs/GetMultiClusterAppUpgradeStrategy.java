@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMultiClusterAppUpgradeStrategy {
+    /**
+     * @return Rolling update for upgrade strategy
+     * 
+     */
     private @Nullable GetMultiClusterAppUpgradeStrategyRollingUpdate rollingUpdate;
 
     private GetMultiClusterAppUpgradeStrategy() {}
+    /**
+     * @return Rolling update for upgrade strategy
+     * 
+     */
     public Optional<GetMultiClusterAppUpgradeStrategyRollingUpdate> rollingUpdate() {
         return Optional.ofNullable(this.rollingUpdate);
     }

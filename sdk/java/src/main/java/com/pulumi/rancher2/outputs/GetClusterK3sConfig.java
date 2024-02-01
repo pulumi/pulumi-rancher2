@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterK3sConfig {
+    /**
+     * @return The K3S upgrade strategy
+     * 
+     */
     private GetClusterK3sConfigUpgradeStrategy upgradeStrategy;
+    /**
+     * @return The K3S kubernetes version
+     * 
+     */
     private String version;
 
     private GetClusterK3sConfig() {}
+    /**
+     * @return The K3S upgrade strategy
+     * 
+     */
     public GetClusterK3sConfigUpgradeStrategy upgradeStrategy() {
         return this.upgradeStrategy;
     }
+    /**
+     * @return The K3S kubernetes version
+     * 
+     */
     public String version() {
         return this.version;
     }

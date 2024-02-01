@@ -29,6 +29,10 @@ public final class GetClusterRkeConfigNetwork {
     private @Nullable Integer mtu;
     private Map<String,Object> options;
     private String plugin;
+    /**
+     * @return Network add-on tolerations
+     * 
+     */
     private @Nullable List<GetClusterRkeConfigNetworkToleration> tolerations;
     private @Nullable GetClusterRkeConfigNetworkWeaveNetworkProvider weaveNetworkProvider;
 
@@ -54,6 +58,10 @@ public final class GetClusterRkeConfigNetwork {
     public String plugin() {
         return this.plugin;
     }
+    /**
+     * @return Network add-on tolerations
+     * 
+     */
     public List<GetClusterRkeConfigNetworkToleration> tolerations() {
         return this.tolerations == null ? List.of() : this.tolerations;
     }

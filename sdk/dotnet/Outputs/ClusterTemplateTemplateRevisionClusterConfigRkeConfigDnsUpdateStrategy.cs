@@ -13,7 +13,13 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy
     {
+        /// <summary>
+        /// Rolling update for update strategy
+        /// </summary>
         public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate? RollingUpdate;
+        /// <summary>
+        /// Strategy
+        /// </summary>
         public readonly string? Strategy;
 
         [OutputConstructor]

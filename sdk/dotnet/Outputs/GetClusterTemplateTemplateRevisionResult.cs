@@ -17,9 +17,21 @@ namespace Pulumi.Rancher2.Outputs
         /// (Computed) Annotations for the cluster template (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object> Annotations;
+        /// <summary>
+        /// Cluster configuration
+        /// </summary>
         public readonly Outputs.GetClusterTemplateTemplateRevisionClusterConfigResult ClusterConfig;
+        /// <summary>
+        /// Cluster template ID
+        /// </summary>
         public readonly string ClusterTemplateId;
+        /// <summary>
+        /// Default cluster template revision
+        /// </summary>
         public readonly bool? Default;
+        /// <summary>
+        /// Enable cluster template revision
+        /// </summary>
         public readonly bool? Enabled;
         /// <summary>
         /// (Computed) The ID of the resource (string)
@@ -33,6 +45,9 @@ namespace Pulumi.Rancher2.Outputs
         /// The cluster template name (string)
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Cluster template questions
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterTemplateTemplateRevisionQuestionResult> Questions;
 
         [OutputConstructor]

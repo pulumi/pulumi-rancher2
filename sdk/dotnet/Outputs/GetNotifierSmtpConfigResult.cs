@@ -13,12 +13,33 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetNotifierSmtpConfigResult
     {
+        /// <summary>
+        /// SMTP default recipient address
+        /// </summary>
         public readonly string DefaultRecipient;
+        /// <summary>
+        /// SMTP host
+        /// </summary>
         public readonly string Host;
+        /// <summary>
+        /// SMTP password
+        /// </summary>
         public readonly string? Password;
+        /// <summary>
+        /// SMTP port
+        /// </summary>
         public readonly int Port;
+        /// <summary>
+        /// SMTP sender
+        /// </summary>
         public readonly string Sender;
+        /// <summary>
+        /// SMTP TLS
+        /// </summary>
         public readonly bool? Tls;
+        /// <summary>
+        /// SMTP username
+        /// </summary>
         public readonly string? Username;
 
         [OutputConstructor]

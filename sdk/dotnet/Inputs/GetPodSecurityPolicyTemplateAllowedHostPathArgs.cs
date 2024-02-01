@@ -12,9 +12,15 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class GetPodSecurityPolicyTemplateAllowedHostPathInputArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// pathPrefix is the path prefix that the host volume must match. It does not support `*`. Trailing slashes are trimmed when validating the path prefix with a host path.
+        /// </summary>
         [Input("pathPrefix", required: true)]
         public Input<string> PathPrefix { get; set; } = null!;
 
+        /// <summary>
+        /// when set to true, will allow host volumes matching the pathPrefix only if all volume mounts are readOnly.
+        /// </summary>
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
 

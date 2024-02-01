@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MachineConfigV2Amazonec2Config {
+    /**
+     * @return AWS Access Key
+     * 
+     */
     private @Nullable String accessKey;
     /**
      * @return AWS machine image (string)
@@ -105,6 +109,10 @@ public final class MachineConfigV2Amazonec2Config {
      * 
      */
     private @Nullable String rootSize;
+    /**
+     * @return AWS Secret Key
+     * 
+     */
     private @Nullable String secretKey;
     /**
      * @return Skip adding default rules to security groups (bool)
@@ -178,6 +186,10 @@ public final class MachineConfigV2Amazonec2Config {
     private String zone;
 
     private MachineConfigV2Amazonec2Config() {}
+    /**
+     * @return AWS Access Key
+     * 
+     */
     public Optional<String> accessKey() {
         return Optional.ofNullable(this.accessKey);
     }
@@ -307,6 +319,10 @@ public final class MachineConfigV2Amazonec2Config {
     public Optional<String> rootSize() {
         return Optional.ofNullable(this.rootSize);
     }
+    /**
+     * @return AWS Secret Key
+     * 
+     */
     public Optional<String> secretKey() {
         return Optional.ofNullable(this.secretKey);
     }

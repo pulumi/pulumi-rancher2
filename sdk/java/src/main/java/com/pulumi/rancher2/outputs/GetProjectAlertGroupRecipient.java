@@ -13,21 +13,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetProjectAlertGroupRecipient {
+    /**
+     * @return Use notifier default recipient
+     * 
+     */
     private @Nullable Boolean defaultRecipient;
+    /**
+     * @return Recipient notifier ID
+     * 
+     */
     private String notifierId;
+    /**
+     * @return Recipient notifier type
+     * 
+     */
     private String notifierType;
+    /**
+     * @return Recipient
+     * 
+     */
     private String recipient;
 
     private GetProjectAlertGroupRecipient() {}
+    /**
+     * @return Use notifier default recipient
+     * 
+     */
     public Optional<Boolean> defaultRecipient() {
         return Optional.ofNullable(this.defaultRecipient);
     }
+    /**
+     * @return Recipient notifier ID
+     * 
+     */
     public String notifierId() {
         return this.notifierId;
     }
+    /**
+     * @return Recipient notifier type
+     * 
+     */
     public String notifierType() {
         return this.notifierType;
     }
+    /**
+     * @return Recipient
+     * 
+     */
     public String recipient() {
         return this.recipient;
     }

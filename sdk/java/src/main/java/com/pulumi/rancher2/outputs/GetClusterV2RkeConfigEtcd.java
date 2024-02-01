@@ -14,21 +14,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterV2RkeConfigEtcd {
+    /**
+     * @return Disable ETCD snapshots
+     * 
+     */
     private @Nullable Boolean disableSnapshots;
+    /**
+     * @return ETCD snapshot S3 config
+     * 
+     */
     private @Nullable GetClusterV2RkeConfigEtcdS3Config s3Config;
+    /**
+     * @return ETCD snapshot retention
+     * 
+     */
     private @Nullable Integer snapshotRetention;
+    /**
+     * @return ETCD snapshot schedule cron (e.g `&#34;0 *{@literal /}5 * * *&#34;`)
+     * 
+     */
     private @Nullable String snapshotScheduleCron;
 
     private GetClusterV2RkeConfigEtcd() {}
+    /**
+     * @return Disable ETCD snapshots
+     * 
+     */
     public Optional<Boolean> disableSnapshots() {
         return Optional.ofNullable(this.disableSnapshots);
     }
+    /**
+     * @return ETCD snapshot S3 config
+     * 
+     */
     public Optional<GetClusterV2RkeConfigEtcdS3Config> s3Config() {
         return Optional.ofNullable(this.s3Config);
     }
+    /**
+     * @return ETCD snapshot retention
+     * 
+     */
     public Optional<Integer> snapshotRetention() {
         return Optional.ofNullable(this.snapshotRetention);
     }
+    /**
+     * @return ETCD snapshot schedule cron (e.g `&#34;0 *{@literal /}5 * * *&#34;`)
+     * 
+     */
     public Optional<String> snapshotScheduleCron() {
         return Optional.ofNullable(this.snapshotScheduleCron);
     }

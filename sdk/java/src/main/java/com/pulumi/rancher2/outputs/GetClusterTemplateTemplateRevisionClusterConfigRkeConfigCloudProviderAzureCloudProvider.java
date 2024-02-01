@@ -27,6 +27,10 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloud
     private Boolean cloudProviderRateLimit;
     private Integer cloudProviderRateLimitBucket;
     private Integer cloudProviderRateLimitQps;
+    /**
+     * @return Load balancer type (basic | standard). Must be standard for auto-scaling
+     * 
+     */
     private @Nullable String loadBalancerSku;
     private String location;
     private Integer maximumLoadBalancerRuleCount;
@@ -84,6 +88,10 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloud
     public Integer cloudProviderRateLimitQps() {
         return this.cloudProviderRateLimitQps;
     }
+    /**
+     * @return Load balancer type (basic | standard). Must be standard for auto-scaling
+     * 
+     */
     public Optional<String> loadBalancerSku() {
         return Optional.ofNullable(this.loadBalancerSku);
     }

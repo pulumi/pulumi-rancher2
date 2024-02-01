@@ -13,7 +13,13 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterAlterRuleEventRuleResult
     {
+        /// <summary>
+        /// Event type
+        /// </summary>
         public readonly string? EventType;
+        /// <summary>
+        /// Resource kind
+        /// </summary>
         public readonly string ResourceKind;
 
         [OutputConstructor]

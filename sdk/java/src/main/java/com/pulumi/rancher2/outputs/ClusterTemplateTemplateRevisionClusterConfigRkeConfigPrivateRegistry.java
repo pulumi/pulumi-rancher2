@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry {
+    /**
+     * @return ECR credential plugin config
+     * 
+     */
     private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPlugin ecrCredentialPlugin;
     private @Nullable Boolean isDefault;
     private @Nullable String password;
@@ -21,6 +25,10 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateR
     private @Nullable String user;
 
     private ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry() {}
+    /**
+     * @return ECR credential plugin config
+     * 
+     */
     public Optional<ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPlugin> ecrCredentialPlugin() {
         return Optional.ofNullable(this.ecrCredentialPlugin);
     }

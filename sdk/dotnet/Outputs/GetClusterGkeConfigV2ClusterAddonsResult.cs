@@ -13,8 +13,17 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterGkeConfigV2ClusterAddonsResult
     {
+        /// <summary>
+        /// Enable GKE horizontal pod autoscaling
+        /// </summary>
         public readonly bool HorizontalPodAutoscaling;
+        /// <summary>
+        /// Enable GKE HTTP load balancing
+        /// </summary>
         public readonly bool HttpLoadBalancing;
+        /// <summary>
+        /// Enable GKE network policy config
+        /// </summary>
         public readonly bool NetworkPolicyConfig;
 
         [OutputConstructor]

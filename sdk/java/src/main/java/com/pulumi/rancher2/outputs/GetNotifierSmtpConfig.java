@@ -14,33 +14,89 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNotifierSmtpConfig {
+    /**
+     * @return SMTP default recipient address
+     * 
+     */
     private String defaultRecipient;
+    /**
+     * @return SMTP host
+     * 
+     */
     private String host;
+    /**
+     * @return SMTP password
+     * 
+     */
     private @Nullable String password;
+    /**
+     * @return SMTP port
+     * 
+     */
     private Integer port;
+    /**
+     * @return SMTP sender
+     * 
+     */
     private String sender;
+    /**
+     * @return SMTP TLS
+     * 
+     */
     private @Nullable Boolean tls;
+    /**
+     * @return SMTP username
+     * 
+     */
     private @Nullable String username;
 
     private GetNotifierSmtpConfig() {}
+    /**
+     * @return SMTP default recipient address
+     * 
+     */
     public String defaultRecipient() {
         return this.defaultRecipient;
     }
+    /**
+     * @return SMTP host
+     * 
+     */
     public String host() {
         return this.host;
     }
+    /**
+     * @return SMTP password
+     * 
+     */
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
     }
+    /**
+     * @return SMTP port
+     * 
+     */
     public Integer port() {
         return this.port;
     }
+    /**
+     * @return SMTP sender
+     * 
+     */
     public String sender() {
         return this.sender;
     }
+    /**
+     * @return SMTP TLS
+     * 
+     */
     public Optional<Boolean> tls() {
         return Optional.ofNullable(this.tls);
     }
+    /**
+     * @return SMTP username
+     * 
+     */
     public Optional<String> username() {
         return Optional.ofNullable(this.username);
     }

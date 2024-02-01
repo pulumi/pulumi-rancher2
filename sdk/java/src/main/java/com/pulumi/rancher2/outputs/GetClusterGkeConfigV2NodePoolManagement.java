@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterGkeConfigV2NodePoolManagement {
+    /**
+     * @return Enable GKE node pool config management auto repair
+     * 
+     */
     private Boolean autoRepair;
+    /**
+     * @return Enable GKE node pool config management auto upgrade
+     * 
+     */
     private Boolean autoUpgrade;
 
     private GetClusterGkeConfigV2NodePoolManagement() {}
+    /**
+     * @return Enable GKE node pool config management auto repair
+     * 
+     */
     public Boolean autoRepair() {
         return this.autoRepair;
     }
+    /**
+     * @return Enable GKE node pool config management auto upgrade
+     * 
+     */
     public Boolean autoUpgrade() {
         return this.autoUpgrade;
     }

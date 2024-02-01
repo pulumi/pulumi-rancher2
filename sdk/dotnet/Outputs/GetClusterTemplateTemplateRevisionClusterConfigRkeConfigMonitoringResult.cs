@@ -17,7 +17,13 @@ namespace Pulumi.Rancher2.Outputs
         public readonly ImmutableDictionary<string, object> Options;
         public readonly string Provider;
         public readonly int Replicas;
+        /// <summary>
+        /// Monitoring add-on tolerations
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringTolerationResult> Tolerations;
+        /// <summary>
+        /// Update deployment strategy
+        /// </summary>
         public readonly Outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyResult? UpdateStrategy;
 
         [OutputConstructor]

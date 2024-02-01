@@ -15,16 +15,32 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdat
 
     public static final ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateArgs Empty = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateArgs();
 
+    /**
+     * Rolling update max surge
+     * 
+     */
     @Import(name="maxSurge")
     private @Nullable Output<Integer> maxSurge;
 
+    /**
+     * @return Rolling update max surge
+     * 
+     */
     public Optional<Output<Integer>> maxSurge() {
         return Optional.ofNullable(this.maxSurge);
     }
 
+    /**
+     * Rolling update max unavailable
+     * 
+     */
     @Import(name="maxUnavailable")
     private @Nullable Output<Integer> maxUnavailable;
 
+    /**
+     * @return Rolling update max unavailable
+     * 
+     */
     public Optional<Output<Integer>> maxUnavailable() {
         return Optional.ofNullable(this.maxUnavailable);
     }
@@ -54,20 +70,44 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdat
             $ = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param maxSurge Rolling update max surge
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxSurge(@Nullable Output<Integer> maxSurge) {
             $.maxSurge = maxSurge;
             return this;
         }
 
+        /**
+         * @param maxSurge Rolling update max surge
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxSurge(Integer maxSurge) {
             return maxSurge(Output.of(maxSurge));
         }
 
+        /**
+         * @param maxUnavailable Rolling update max unavailable
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxUnavailable(@Nullable Output<Integer> maxUnavailable) {
             $.maxUnavailable = maxUnavailable;
             return this;
         }
 
+        /**
+         * @param maxUnavailable Rolling update max unavailable
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxUnavailable(Integer maxUnavailable) {
             return maxUnavailable(Output.of(maxUnavailable));
         }

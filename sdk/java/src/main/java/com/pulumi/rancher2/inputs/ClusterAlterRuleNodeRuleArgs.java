@@ -18,37 +18,77 @@ public final class ClusterAlterRuleNodeRuleArgs extends com.pulumi.resources.Res
 
     public static final ClusterAlterRuleNodeRuleArgs Empty = new ClusterAlterRuleNodeRuleArgs();
 
+    /**
+     * Node rule condition
+     * 
+     */
     @Import(name="condition")
     private @Nullable Output<String> condition;
 
+    /**
+     * @return Node rule condition
+     * 
+     */
     public Optional<Output<String>> condition() {
         return Optional.ofNullable(this.condition);
     }
 
+    /**
+     * Node rule cpu threshold
+     * 
+     */
     @Import(name="cpuThreshold")
     private @Nullable Output<Integer> cpuThreshold;
 
+    /**
+     * @return Node rule cpu threshold
+     * 
+     */
     public Optional<Output<Integer>> cpuThreshold() {
         return Optional.ofNullable(this.cpuThreshold);
     }
 
+    /**
+     * Node rule mem threshold
+     * 
+     */
     @Import(name="memThreshold")
     private @Nullable Output<Integer> memThreshold;
 
+    /**
+     * @return Node rule mem threshold
+     * 
+     */
     public Optional<Output<Integer>> memThreshold() {
         return Optional.ofNullable(this.memThreshold);
     }
 
+    /**
+     * Node ID
+     * 
+     */
     @Import(name="nodeId")
     private @Nullable Output<String> nodeId;
 
+    /**
+     * @return Node ID
+     * 
+     */
     public Optional<Output<String>> nodeId() {
         return Optional.ofNullable(this.nodeId);
     }
 
+    /**
+     * Node rule selector
+     * 
+     */
     @Import(name="selector")
     private @Nullable Output<Map<String,Object>> selector;
 
+    /**
+     * @return Node rule selector
+     * 
+     */
     public Optional<Output<Map<String,Object>>> selector() {
         return Optional.ofNullable(this.selector);
     }
@@ -81,47 +121,107 @@ public final class ClusterAlterRuleNodeRuleArgs extends com.pulumi.resources.Res
             $ = new ClusterAlterRuleNodeRuleArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param condition Node rule condition
+         * 
+         * @return builder
+         * 
+         */
         public Builder condition(@Nullable Output<String> condition) {
             $.condition = condition;
             return this;
         }
 
+        /**
+         * @param condition Node rule condition
+         * 
+         * @return builder
+         * 
+         */
         public Builder condition(String condition) {
             return condition(Output.of(condition));
         }
 
+        /**
+         * @param cpuThreshold Node rule cpu threshold
+         * 
+         * @return builder
+         * 
+         */
         public Builder cpuThreshold(@Nullable Output<Integer> cpuThreshold) {
             $.cpuThreshold = cpuThreshold;
             return this;
         }
 
+        /**
+         * @param cpuThreshold Node rule cpu threshold
+         * 
+         * @return builder
+         * 
+         */
         public Builder cpuThreshold(Integer cpuThreshold) {
             return cpuThreshold(Output.of(cpuThreshold));
         }
 
+        /**
+         * @param memThreshold Node rule mem threshold
+         * 
+         * @return builder
+         * 
+         */
         public Builder memThreshold(@Nullable Output<Integer> memThreshold) {
             $.memThreshold = memThreshold;
             return this;
         }
 
+        /**
+         * @param memThreshold Node rule mem threshold
+         * 
+         * @return builder
+         * 
+         */
         public Builder memThreshold(Integer memThreshold) {
             return memThreshold(Output.of(memThreshold));
         }
 
+        /**
+         * @param nodeId Node ID
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeId(@Nullable Output<String> nodeId) {
             $.nodeId = nodeId;
             return this;
         }
 
+        /**
+         * @param nodeId Node ID
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeId(String nodeId) {
             return nodeId(Output.of(nodeId));
         }
 
+        /**
+         * @param selector Node rule selector
+         * 
+         * @return builder
+         * 
+         */
         public Builder selector(@Nullable Output<Map<String,Object>> selector) {
             $.selector = selector;
             return this;
         }
 
+        /**
+         * @param selector Node rule selector
+         * 
+         * @return builder
+         * 
+         */
         public Builder selector(Map<String,Object> selector) {
             return selector(Output.of(selector));
         }

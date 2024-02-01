@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterAlterRuleEventRule {
+    /**
+     * @return Event type
+     * 
+     */
     private @Nullable String eventType;
+    /**
+     * @return Resource kind
+     * 
+     */
     private String resourceKind;
 
     private GetClusterAlterRuleEventRule() {}
+    /**
+     * @return Event type
+     * 
+     */
     public Optional<String> eventType() {
         return Optional.ofNullable(this.eventType);
     }
+    /**
+     * @return Resource kind
+     * 
+     */
     public String resourceKind() {
         return this.resourceKind;
     }

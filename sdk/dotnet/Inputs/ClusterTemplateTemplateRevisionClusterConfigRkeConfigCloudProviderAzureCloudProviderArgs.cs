@@ -78,6 +78,9 @@ namespace Pulumi.Rancher2.Inputs
         [Input("cloudProviderRateLimitQps")]
         public Input<int>? CloudProviderRateLimitQps { get; set; }
 
+        /// <summary>
+        /// Load balancer type (basic | standard). Must be standard for auto-scaling
+        /// </summary>
         [Input("loadBalancerSku")]
         public Input<string>? LoadBalancerSku { get; set; }
 

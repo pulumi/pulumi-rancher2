@@ -26,46 +26,154 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfig {
+    /**
+     * @return Optional duration in seconds of addon job.
+     * 
+     */
     private @Nullable Integer addonJobTimeout;
+    /**
+     * @return Optional addons descripton to deploy on rke cluster.
+     * 
+     */
     private @Nullable String addons;
+    /**
+     * @return Optional addons yaml manisfest to deploy on rke cluster.
+     * 
+     */
     private @Nullable List<String> addonsIncludes;
+    /**
+     * @return Kubernetes cluster authentication
+     * 
+     */
     private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication authentication;
+    /**
+     * @return Kubernetes cluster authorization
+     * 
+     */
     private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorization authorization;
+    /**
+     * @return RKE bastion host
+     * 
+     */
     private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHost bastionHost;
     private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvider cloudProvider;
     private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns dns;
+    /**
+     * @return Enable/disable using cri-dockerd
+     * 
+     */
     private @Nullable Boolean enableCriDockerd;
+    /**
+     * @return Optional ignore docker version on nodes
+     * 
+     */
     private @Nullable Boolean ignoreDockerVersion;
+    /**
+     * @return Kubernetes ingress configuration
+     * 
+     */
     private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress ingress;
+    /**
+     * @return Optional kubernetes version to deploy
+     * 
+     */
     private @Nullable String kubernetesVersion;
+    /**
+     * @return Kubernetes cluster monitoring
+     * 
+     */
     private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring monitoring;
+    /**
+     * @return Kubernetes cluster networking
+     * 
+     */
     private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork network;
+    /**
+     * @return Optional RKE cluster nodes
+     * 
+     */
     private @Nullable List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigNode> nodes;
+    /**
+     * @return Optional prefix to customize kubernetes path
+     * 
+     */
     private @Nullable String prefixPath;
+    /**
+     * @return Optional private registries for docker images
+     * 
+     */
     private @Nullable List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry> privateRegistries;
+    /**
+     * @return Kubernetes cluster services
+     * 
+     */
     private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices services;
+    /**
+     * @return Optional use ssh agent auth
+     * 
+     */
     private @Nullable Boolean sshAgentAuth;
+    /**
+     * @return Optional cluster level SSH certificate path
+     * 
+     */
     private @Nullable String sshCertPath;
+    /**
+     * @return Optional cluster level SSH private key path
+     * 
+     */
     private @Nullable String sshKeyPath;
+    /**
+     * @return RKE upgrade strategy
+     * 
+     */
     private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy upgradeStrategy;
+    /**
+     * @return Optional prefix to customize kubernetes path for windows
+     * 
+     */
     private @Nullable String winPrefixPath;
 
     private ClusterTemplateTemplateRevisionClusterConfigRkeConfig() {}
+    /**
+     * @return Optional duration in seconds of addon job.
+     * 
+     */
     public Optional<Integer> addonJobTimeout() {
         return Optional.ofNullable(this.addonJobTimeout);
     }
+    /**
+     * @return Optional addons descripton to deploy on rke cluster.
+     * 
+     */
     public Optional<String> addons() {
         return Optional.ofNullable(this.addons);
     }
+    /**
+     * @return Optional addons yaml manisfest to deploy on rke cluster.
+     * 
+     */
     public List<String> addonsIncludes() {
         return this.addonsIncludes == null ? List.of() : this.addonsIncludes;
     }
+    /**
+     * @return Kubernetes cluster authentication
+     * 
+     */
     public Optional<ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication> authentication() {
         return Optional.ofNullable(this.authentication);
     }
+    /**
+     * @return Kubernetes cluster authorization
+     * 
+     */
     public Optional<ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorization> authorization() {
         return Optional.ofNullable(this.authorization);
     }
+    /**
+     * @return RKE bastion host
+     * 
+     */
     public Optional<ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHost> bastionHost() {
         return Optional.ofNullable(this.bastionHost);
     }
@@ -75,48 +183,108 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfig {
     public Optional<ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns> dns() {
         return Optional.ofNullable(this.dns);
     }
+    /**
+     * @return Enable/disable using cri-dockerd
+     * 
+     */
     public Optional<Boolean> enableCriDockerd() {
         return Optional.ofNullable(this.enableCriDockerd);
     }
+    /**
+     * @return Optional ignore docker version on nodes
+     * 
+     */
     public Optional<Boolean> ignoreDockerVersion() {
         return Optional.ofNullable(this.ignoreDockerVersion);
     }
+    /**
+     * @return Kubernetes ingress configuration
+     * 
+     */
     public Optional<ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress> ingress() {
         return Optional.ofNullable(this.ingress);
     }
+    /**
+     * @return Optional kubernetes version to deploy
+     * 
+     */
     public Optional<String> kubernetesVersion() {
         return Optional.ofNullable(this.kubernetesVersion);
     }
+    /**
+     * @return Kubernetes cluster monitoring
+     * 
+     */
     public Optional<ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring> monitoring() {
         return Optional.ofNullable(this.monitoring);
     }
+    /**
+     * @return Kubernetes cluster networking
+     * 
+     */
     public Optional<ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork> network() {
         return Optional.ofNullable(this.network);
     }
+    /**
+     * @return Optional RKE cluster nodes
+     * 
+     */
     public List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigNode> nodes() {
         return this.nodes == null ? List.of() : this.nodes;
     }
+    /**
+     * @return Optional prefix to customize kubernetes path
+     * 
+     */
     public Optional<String> prefixPath() {
         return Optional.ofNullable(this.prefixPath);
     }
+    /**
+     * @return Optional private registries for docker images
+     * 
+     */
     public List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry> privateRegistries() {
         return this.privateRegistries == null ? List.of() : this.privateRegistries;
     }
+    /**
+     * @return Kubernetes cluster services
+     * 
+     */
     public Optional<ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices> services() {
         return Optional.ofNullable(this.services);
     }
+    /**
+     * @return Optional use ssh agent auth
+     * 
+     */
     public Optional<Boolean> sshAgentAuth() {
         return Optional.ofNullable(this.sshAgentAuth);
     }
+    /**
+     * @return Optional cluster level SSH certificate path
+     * 
+     */
     public Optional<String> sshCertPath() {
         return Optional.ofNullable(this.sshCertPath);
     }
+    /**
+     * @return Optional cluster level SSH private key path
+     * 
+     */
     public Optional<String> sshKeyPath() {
         return Optional.ofNullable(this.sshKeyPath);
     }
+    /**
+     * @return RKE upgrade strategy
+     * 
+     */
     public Optional<ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy> upgradeStrategy() {
         return Optional.ofNullable(this.upgradeStrategy);
     }
+    /**
+     * @return Optional prefix to customize kubernetes path for windows
+     * 
+     */
     public Optional<String> winPrefixPath() {
         return Optional.ofNullable(this.winPrefixPath);
     }

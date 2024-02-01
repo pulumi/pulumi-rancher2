@@ -18,16 +18,32 @@ public final class GetPodSecurityPolicyTemplateFsGroupArgs extends com.pulumi.re
 
     public static final GetPodSecurityPolicyTemplateFsGroupArgs Empty = new GetPodSecurityPolicyTemplateFsGroupArgs();
 
+    /**
+     * ranges are the allowed ranges of fs groups.  If you would like to force a single fs group then supply a single range with the same start and end. Required for MustRunAs.
+     * 
+     */
     @Import(name="ranges", required=true)
     private Output<List<GetPodSecurityPolicyTemplateFsGroupRangeArgs>> ranges;
 
+    /**
+     * @return ranges are the allowed ranges of fs groups.  If you would like to force a single fs group then supply a single range with the same start and end. Required for MustRunAs.
+     * 
+     */
     public Output<List<GetPodSecurityPolicyTemplateFsGroupRangeArgs>> ranges() {
         return this.ranges;
     }
 
+    /**
+     * rule is the strategy that will dictate what FSGroup is used in the SecurityContext.
+     * 
+     */
     @Import(name="rule")
     private @Nullable Output<String> rule;
 
+    /**
+     * @return rule is the strategy that will dictate what FSGroup is used in the SecurityContext.
+     * 
+     */
     public Optional<Output<String>> rule() {
         return Optional.ofNullable(this.rule);
     }
@@ -57,24 +73,54 @@ public final class GetPodSecurityPolicyTemplateFsGroupArgs extends com.pulumi.re
             $ = new GetPodSecurityPolicyTemplateFsGroupArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ranges ranges are the allowed ranges of fs groups.  If you would like to force a single fs group then supply a single range with the same start and end. Required for MustRunAs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ranges(Output<List<GetPodSecurityPolicyTemplateFsGroupRangeArgs>> ranges) {
             $.ranges = ranges;
             return this;
         }
 
+        /**
+         * @param ranges ranges are the allowed ranges of fs groups.  If you would like to force a single fs group then supply a single range with the same start and end. Required for MustRunAs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ranges(List<GetPodSecurityPolicyTemplateFsGroupRangeArgs> ranges) {
             return ranges(Output.of(ranges));
         }
 
+        /**
+         * @param ranges ranges are the allowed ranges of fs groups.  If you would like to force a single fs group then supply a single range with the same start and end. Required for MustRunAs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ranges(GetPodSecurityPolicyTemplateFsGroupRangeArgs... ranges) {
             return ranges(List.of(ranges));
         }
 
+        /**
+         * @param rule rule is the strategy that will dictate what FSGroup is used in the SecurityContext.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rule(@Nullable Output<String> rule) {
             $.rule = rule;
             return this;
         }
 
+        /**
+         * @param rule rule is the strategy that will dictate what FSGroup is used in the SecurityContext.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rule(String rule) {
             return rule(Output.of(rule));
         }
