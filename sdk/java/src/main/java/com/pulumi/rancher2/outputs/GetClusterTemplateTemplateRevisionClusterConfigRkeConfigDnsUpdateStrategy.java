@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy {
+    /**
+     * @return Rolling update for update strategy
+     * 
+     */
     private @Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate rollingUpdate;
+    /**
+     * @return Strategy
+     * 
+     */
     private @Nullable String strategy;
 
     private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy() {}
+    /**
+     * @return Rolling update for update strategy
+     * 
+     */
     public Optional<GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate> rollingUpdate() {
         return Optional.ofNullable(this.rollingUpdate);
     }
+    /**
+     * @return Strategy
+     * 
+     */
     public Optional<String> strategy() {
         return Optional.ofNullable(this.strategy);
     }

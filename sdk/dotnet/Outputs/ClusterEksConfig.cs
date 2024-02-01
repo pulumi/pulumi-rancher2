@@ -29,6 +29,9 @@ namespace Pulumi.Rancher2.Outputs
         /// The desired number of worker nodes. For Rancher v2.3.x and above. Default `3` (int)
         /// </summary>
         public readonly int? DesiredNodes;
+        /// <summary>
+        /// Enables EBS encryption of worker nodes
+        /// </summary>
         public readonly bool? EbsEncryption;
         /// <summary>
         /// The EKS node group instance type. Default: `t3.medium` (string)

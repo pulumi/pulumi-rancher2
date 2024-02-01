@@ -13,8 +13,17 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterGkeConfigV2PrivateClusterConfigResult
     {
+        /// <summary>
+        /// Enable GKE cluster private endpoint
+        /// </summary>
         public readonly bool? EnablePrivateEndpoint;
+        /// <summary>
+        /// Enable GKE cluster private nodes
+        /// </summary>
         public readonly bool? EnablePrivateNodes;
+        /// <summary>
+        /// The GKE cluster private master ip v4 cidr block
+        /// </summary>
         public readonly string MasterIpv4CidrBlock;
 
         [OutputConstructor]

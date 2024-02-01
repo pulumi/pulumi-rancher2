@@ -28,7 +28,15 @@ public final class GetClusterRkeConfigIngress {
     private Map<String,Object> nodeSelector;
     private Map<String,Object> options;
     private String provider;
+    /**
+     * @return Ingress add-on tolerations
+     * 
+     */
     private @Nullable List<GetClusterRkeConfigIngressToleration> tolerations;
+    /**
+     * @return Update daemon set strategy
+     * 
+     */
     private @Nullable GetClusterRkeConfigIngressUpdateStrategy updateStrategy;
 
     private GetClusterRkeConfigIngress() {}
@@ -59,9 +67,17 @@ public final class GetClusterRkeConfigIngress {
     public String provider() {
         return this.provider;
     }
+    /**
+     * @return Ingress add-on tolerations
+     * 
+     */
     public List<GetClusterRkeConfigIngressToleration> tolerations() {
         return this.tolerations == null ? List.of() : this.tolerations;
     }
+    /**
+     * @return Update daemon set strategy
+     * 
+     */
     public Optional<GetClusterRkeConfigIngressUpdateStrategy> updateStrategy() {
         return Optional.ofNullable(this.updateStrategy);
     }

@@ -13,6 +13,9 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class MachineConfigV2Amazonec2Config
     {
+        /// <summary>
+        /// AWS Access Key
+        /// </summary>
         public readonly string? AccessKey;
         /// <summary>
         /// AWS machine image (string)
@@ -86,6 +89,9 @@ namespace Pulumi.Rancher2.Outputs
         /// AWS root disk size (in GB). Default `16` (string)
         /// </summary>
         public readonly string? RootSize;
+        /// <summary>
+        /// AWS Secret Key
+        /// </summary>
         public readonly string? SecretKey;
         /// <summary>
         /// Skip adding default rules to security groups (bool)

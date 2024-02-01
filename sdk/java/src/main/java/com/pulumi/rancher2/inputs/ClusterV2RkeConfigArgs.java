@@ -139,9 +139,17 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.machineGlobalConfig);
     }
 
+    /**
+     * Default values for machine pool configurations if unset
+     * 
+     */
     @Import(name="machinePoolDefaults")
     private @Nullable Output<List<ClusterV2RkeConfigMachinePoolDefaultArgs>> machinePoolDefaults;
 
+    /**
+     * @return Default values for machine pool configurations if unset
+     * 
+     */
     public Optional<Output<List<ClusterV2RkeConfigMachinePoolDefaultArgs>>> machinePoolDefaults() {
         return Optional.ofNullable(this.machinePoolDefaults);
     }
@@ -412,15 +420,33 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
             return machineGlobalConfig(Output.of(machineGlobalConfig));
         }
 
+        /**
+         * @param machinePoolDefaults Default values for machine pool configurations if unset
+         * 
+         * @return builder
+         * 
+         */
         public Builder machinePoolDefaults(@Nullable Output<List<ClusterV2RkeConfigMachinePoolDefaultArgs>> machinePoolDefaults) {
             $.machinePoolDefaults = machinePoolDefaults;
             return this;
         }
 
+        /**
+         * @param machinePoolDefaults Default values for machine pool configurations if unset
+         * 
+         * @return builder
+         * 
+         */
         public Builder machinePoolDefaults(List<ClusterV2RkeConfigMachinePoolDefaultArgs> machinePoolDefaults) {
             return machinePoolDefaults(Output.of(machinePoolDefaults));
         }
 
+        /**
+         * @param machinePoolDefaults Default values for machine pool configurations if unset
+         * 
+         * @return builder
+         * 
+         */
         public Builder machinePoolDefaults(ClusterV2RkeConfigMachinePoolDefaultArgs... machinePoolDefaults) {
             return machinePoolDefaults(List.of(machinePoolDefaults));
         }

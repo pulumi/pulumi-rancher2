@@ -12,6 +12,9 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Linear Autoscaler Params
+        /// </summary>
         [Input("linearAutoscalerParams")]
         public Input<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsGetArgs>? LinearAutoscalerParams { get; set; }
 
@@ -23,6 +26,9 @@ namespace Pulumi.Rancher2.Inputs
             set => _nodeSelector = value;
         }
 
+        /// <summary>
+        /// Nodelocal dns
+        /// </summary>
         [Input("nodelocal")]
         public Input<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalGetArgs>? Nodelocal { get; set; }
 
@@ -47,12 +53,19 @@ namespace Pulumi.Rancher2.Inputs
 
         [Input("tolerations")]
         private InputList<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsTolerationGetArgs>? _tolerations;
+
+        /// <summary>
+        /// DNS service tolerations
+        /// </summary>
         public InputList<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsTolerationGetArgs> Tolerations
         {
             get => _tolerations ?? (_tolerations = new InputList<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsTolerationGetArgs>());
             set => _tolerations = value;
         }
 
+        /// <summary>
+        /// Update deployment strategy
+        /// </summary>
         [Input("updateStrategy")]
         public Input<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyGetArgs>? UpdateStrategy { get; set; }
 

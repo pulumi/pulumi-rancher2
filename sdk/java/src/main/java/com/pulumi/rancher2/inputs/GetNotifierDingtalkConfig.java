@@ -15,23 +15,47 @@ public final class GetNotifierDingtalkConfig extends com.pulumi.resources.Invoke
 
     public static final GetNotifierDingtalkConfig Empty = new GetNotifierDingtalkConfig();
 
+    /**
+     * Dingtalk proxy URL
+     * 
+     */
     @Import(name="proxyUrl")
     private @Nullable String proxyUrl;
 
+    /**
+     * @return Dingtalk proxy URL
+     * 
+     */
     public Optional<String> proxyUrl() {
         return Optional.ofNullable(this.proxyUrl);
     }
 
+    /**
+     * Required for webhook with sign enabled
+     * 
+     */
     @Import(name="secret")
     private @Nullable String secret;
 
+    /**
+     * @return Required for webhook with sign enabled
+     * 
+     */
     public Optional<String> secret() {
         return Optional.ofNullable(this.secret);
     }
 
+    /**
+     * Webhook URL
+     * 
+     */
     @Import(name="url", required=true)
     private String url;
 
+    /**
+     * @return Webhook URL
+     * 
+     */
     public String url() {
         return this.url;
     }
@@ -62,16 +86,34 @@ public final class GetNotifierDingtalkConfig extends com.pulumi.resources.Invoke
             $ = new GetNotifierDingtalkConfig(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param proxyUrl Dingtalk proxy URL
+         * 
+         * @return builder
+         * 
+         */
         public Builder proxyUrl(@Nullable String proxyUrl) {
             $.proxyUrl = proxyUrl;
             return this;
         }
 
+        /**
+         * @param secret Required for webhook with sign enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder secret(@Nullable String secret) {
             $.secret = secret;
             return this;
         }
 
+        /**
+         * @param url Webhook URL
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(String url) {
             $.url = url;
             return this;

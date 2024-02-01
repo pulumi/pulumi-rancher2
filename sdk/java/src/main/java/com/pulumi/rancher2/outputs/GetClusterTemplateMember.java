@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterTemplateMember {
+    /**
+     * @return Member access type: member, owner, read-only
+     * 
+     */
     private @Nullable String accessType;
+    /**
+     * @return Member group principal id
+     * 
+     */
     private @Nullable String groupPrincipalId;
+    /**
+     * @return Member user principal id
+     * 
+     */
     private @Nullable String userPrincipalId;
 
     private GetClusterTemplateMember() {}
+    /**
+     * @return Member access type: member, owner, read-only
+     * 
+     */
     public Optional<String> accessType() {
         return Optional.ofNullable(this.accessType);
     }
+    /**
+     * @return Member group principal id
+     * 
+     */
     public Optional<String> groupPrincipalId() {
         return Optional.ofNullable(this.groupPrincipalId);
     }
+    /**
+     * @return Member user principal id
+     * 
+     */
     public Optional<String> userPrincipalId() {
         return Optional.ofNullable(this.userPrincipalId);
     }

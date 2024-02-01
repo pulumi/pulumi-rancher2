@@ -11,37 +11,101 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterGkeConfigV2IpAllocationPolicy {
+    /**
+     * @return The GKE cluster ip v4 allocation cidr block
+     * 
+     */
     private String clusterIpv4CidrBlock;
+    /**
+     * @return The GKE cluster ip v4 allocation secondary range name
+     * 
+     */
     private String clusterSecondaryRangeName;
+    /**
+     * @return Create GKE subnetwork?
+     * 
+     */
     private Boolean createSubnetwork;
+    /**
+     * @return The GKE node ip v4 allocation cidr block
+     * 
+     */
     private String nodeIpv4CidrBlock;
+    /**
+     * @return The GKE services ip v4 allocation cidr block
+     * 
+     */
     private String servicesIpv4CidrBlock;
+    /**
+     * @return The GKE services ip v4 allocation secondary range name
+     * 
+     */
     private String servicesSecondaryRangeName;
+    /**
+     * @return The GKE cluster subnetwork name
+     * 
+     */
     private String subnetworkName;
+    /**
+     * @return Use GKE ip aliases?
+     * 
+     */
     private Boolean useIpAliases;
 
     private GetClusterGkeConfigV2IpAllocationPolicy() {}
+    /**
+     * @return The GKE cluster ip v4 allocation cidr block
+     * 
+     */
     public String clusterIpv4CidrBlock() {
         return this.clusterIpv4CidrBlock;
     }
+    /**
+     * @return The GKE cluster ip v4 allocation secondary range name
+     * 
+     */
     public String clusterSecondaryRangeName() {
         return this.clusterSecondaryRangeName;
     }
+    /**
+     * @return Create GKE subnetwork?
+     * 
+     */
     public Boolean createSubnetwork() {
         return this.createSubnetwork;
     }
+    /**
+     * @return The GKE node ip v4 allocation cidr block
+     * 
+     */
     public String nodeIpv4CidrBlock() {
         return this.nodeIpv4CidrBlock;
     }
+    /**
+     * @return The GKE services ip v4 allocation cidr block
+     * 
+     */
     public String servicesIpv4CidrBlock() {
         return this.servicesIpv4CidrBlock;
     }
+    /**
+     * @return The GKE services ip v4 allocation secondary range name
+     * 
+     */
     public String servicesSecondaryRangeName() {
         return this.servicesSecondaryRangeName;
     }
+    /**
+     * @return The GKE cluster subnetwork name
+     * 
+     */
     public String subnetworkName() {
         return this.subnetworkName;
     }
+    /**
+     * @return Use GKE ip aliases?
+     * 
+     */
     public Boolean useIpAliases() {
         return this.useIpAliases;
     }

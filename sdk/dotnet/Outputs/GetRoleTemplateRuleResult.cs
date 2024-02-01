@@ -13,10 +13,25 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetRoleTemplateRuleResult
     {
+        /// <summary>
+        /// Policy rule api groups
+        /// </summary>
         public readonly ImmutableArray<string> ApiGroups;
+        /// <summary>
+        /// Policy rule non resource urls
+        /// </summary>
         public readonly ImmutableArray<string> NonResourceUrls;
+        /// <summary>
+        /// Policy rule resource names
+        /// </summary>
         public readonly ImmutableArray<string> ResourceNames;
+        /// <summary>
+        /// Policy rule resources
+        /// </summary>
         public readonly ImmutableArray<string> Resources;
+        /// <summary>
+        /// Policy rule verbs
+        /// </summary>
         public readonly ImmutableArray<string> Verbs;
 
         [OutputConstructor]

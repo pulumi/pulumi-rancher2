@@ -13,7 +13,13 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetNotifierPagerdutyConfigResult
     {
+        /// <summary>
+        /// Pagerduty proxy URL
+        /// </summary>
         public readonly string? ProxyUrl;
+        /// <summary>
+        /// Pagerduty service key
+        /// </summary>
         public readonly string ServiceKey;
 
         [OutputConstructor]

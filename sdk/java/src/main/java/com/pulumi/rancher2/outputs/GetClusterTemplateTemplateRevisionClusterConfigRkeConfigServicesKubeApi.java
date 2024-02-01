@@ -20,6 +20,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi {
+    /**
+     * @return Cluster admission configuration
+     * 
+     */
     private @Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfiguration admissionConfiguration;
     private @Nullable Boolean alwaysPullImages;
     private @Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog auditLog;
@@ -34,6 +38,10 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServi
     private String serviceNodePortRange;
 
     private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi() {}
+    /**
+     * @return Cluster admission configuration
+     * 
+     */
     public Optional<GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfiguration> admissionConfiguration() {
         return Optional.ofNullable(this.admissionConfiguration);
     }

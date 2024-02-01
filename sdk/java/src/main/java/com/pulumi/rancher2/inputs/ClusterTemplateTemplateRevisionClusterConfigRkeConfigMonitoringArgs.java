@@ -49,16 +49,32 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitori
         return Optional.ofNullable(this.replicas);
     }
 
+    /**
+     * Monitoring add-on tolerations
+     * 
+     */
     @Import(name="tolerations")
     private @Nullable Output<List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringTolerationArgs>> tolerations;
 
+    /**
+     * @return Monitoring add-on tolerations
+     * 
+     */
     public Optional<Output<List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringTolerationArgs>>> tolerations() {
         return Optional.ofNullable(this.tolerations);
     }
 
+    /**
+     * Update deployment strategy
+     * 
+     */
     @Import(name="updateStrategy")
     private @Nullable Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs> updateStrategy;
 
+    /**
+     * @return Update deployment strategy
+     * 
+     */
     public Optional<Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs>> updateStrategy() {
         return Optional.ofNullable(this.updateStrategy);
     }
@@ -128,24 +144,54 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitori
             return replicas(Output.of(replicas));
         }
 
+        /**
+         * @param tolerations Monitoring add-on tolerations
+         * 
+         * @return builder
+         * 
+         */
         public Builder tolerations(@Nullable Output<List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringTolerationArgs>> tolerations) {
             $.tolerations = tolerations;
             return this;
         }
 
+        /**
+         * @param tolerations Monitoring add-on tolerations
+         * 
+         * @return builder
+         * 
+         */
         public Builder tolerations(List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringTolerationArgs> tolerations) {
             return tolerations(Output.of(tolerations));
         }
 
+        /**
+         * @param tolerations Monitoring add-on tolerations
+         * 
+         * @return builder
+         * 
+         */
         public Builder tolerations(ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringTolerationArgs... tolerations) {
             return tolerations(List.of(tolerations));
         }
 
+        /**
+         * @param updateStrategy Update deployment strategy
+         * 
+         * @return builder
+         * 
+         */
         public Builder updateStrategy(@Nullable Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs> updateStrategy) {
             $.updateStrategy = updateStrategy;
             return this;
         }
 
+        /**
+         * @param updateStrategy Update deployment strategy
+         * 
+         * @return builder
+         * 
+         */
         public Builder updateStrategy(ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs updateStrategy) {
             return updateStrategy(Output.of(updateStrategy));
         }

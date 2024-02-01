@@ -13,17 +13,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterGkeConfigV2PrivateClusterConfig {
+    /**
+     * @return Enable GKE cluster private endpoint
+     * 
+     */
     private @Nullable Boolean enablePrivateEndpoint;
+    /**
+     * @return Enable GKE cluster private nodes
+     * 
+     */
     private @Nullable Boolean enablePrivateNodes;
+    /**
+     * @return The GKE cluster private master ip v4 cidr block
+     * 
+     */
     private String masterIpv4CidrBlock;
 
     private GetClusterGkeConfigV2PrivateClusterConfig() {}
+    /**
+     * @return Enable GKE cluster private endpoint
+     * 
+     */
     public Optional<Boolean> enablePrivateEndpoint() {
         return Optional.ofNullable(this.enablePrivateEndpoint);
     }
+    /**
+     * @return Enable GKE cluster private nodes
+     * 
+     */
     public Optional<Boolean> enablePrivateNodes() {
         return Optional.ofNullable(this.enablePrivateNodes);
     }
+    /**
+     * @return The GKE cluster private master ip v4 cidr block
+     * 
+     */
     public String masterIpv4CidrBlock() {
         return this.masterIpv4CidrBlock;
     }

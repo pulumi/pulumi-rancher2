@@ -17,80 +17,248 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterAksConfigV2 {
+    /**
+     * @return The AKS auth base url
+     * 
+     */
     private @Nullable String authBaseUrl;
+    /**
+     * @return The AKS authorized ip ranges
+     * 
+     */
     private @Nullable List<String> authorizedIpRanges;
+    /**
+     * @return The AKS base url
+     * 
+     */
     private @Nullable String baseUrl;
+    /**
+     * @return The AKS Cloud Credential ID to use
+     * 
+     */
     private String cloudCredentialId;
+    /**
+     * @return The AKS dns prefix. Required if `import=false`
+     * 
+     */
     private @Nullable String dnsPrefix;
+    /**
+     * @return Enable AKS http application routing?
+     * 
+     */
     private Boolean httpApplicationRouting;
+    /**
+     * @return Is AKS cluster imported?
+     * 
+     */
     private @Nullable Boolean imported;
+    /**
+     * @return The kubernetes master version. Required if `import=false`
+     * 
+     */
     private @Nullable String kubernetesVersion;
+    /**
+     * @return The AKS linux admin username
+     * 
+     */
     private String linuxAdminUsername;
+    /**
+     * @return The AKS linux ssh public key
+     * 
+     */
     private String linuxSshPublicKey;
+    /**
+     * @return The AKS load balancer sku
+     * 
+     */
     private String loadBalancerSku;
+    /**
+     * @return The AKS log analytics workspace group
+     * 
+     */
     private String logAnalyticsWorkspaceGroup;
+    /**
+     * @return The AKS log analytics workspace name
+     * 
+     */
     private String logAnalyticsWorkspaceName;
+    /**
+     * @return Is AKS cluster monitoring enabled?
+     * 
+     */
     private Boolean monitoring;
     /**
      * @return The name of the Cluster (string)
      * 
      */
     private String name;
+    /**
+     * @return The AKS network dns service ip
+     * 
+     */
     private String networkDnsServiceIp;
+    /**
+     * @return The AKS network docker bridge cidr
+     * 
+     */
     private String networkDockerBridgeCidr;
+    /**
+     * @return The AKS network plugin. Required if `import=false`
+     * 
+     */
     private @Nullable String networkPlugin;
+    /**
+     * @return The AKS network pod cidr
+     * 
+     */
     private String networkPodCidr;
+    /**
+     * @return The AKS network policy
+     * 
+     */
     private String networkPolicy;
+    /**
+     * @return The AKS network service cidr
+     * 
+     */
     private String networkServiceCidr;
+    /**
+     * @return The AKS node pools to use. Required if `import=false`
+     * 
+     */
     private @Nullable List<GetClusterAksConfigV2NodePool> nodePools;
+    /**
+     * @return Is AKS cluster private?
+     * 
+     */
     private Boolean privateCluster;
+    /**
+     * @return The AKS resource group
+     * 
+     */
     private String resourceGroup;
+    /**
+     * @return The AKS resource location
+     * 
+     */
     private String resourceLocation;
+    /**
+     * @return The AKS subnet
+     * 
+     */
     private String subnet;
+    /**
+     * @return The AKS cluster tags
+     * 
+     */
     private Map<String,Object> tags;
+    /**
+     * @return The AKS virtual network
+     * 
+     */
     private String virtualNetwork;
+    /**
+     * @return The AKS virtual network resource group
+     * 
+     */
     private String virtualNetworkResourceGroup;
 
     private GetClusterAksConfigV2() {}
+    /**
+     * @return The AKS auth base url
+     * 
+     */
     public Optional<String> authBaseUrl() {
         return Optional.ofNullable(this.authBaseUrl);
     }
+    /**
+     * @return The AKS authorized ip ranges
+     * 
+     */
     public List<String> authorizedIpRanges() {
         return this.authorizedIpRanges == null ? List.of() : this.authorizedIpRanges;
     }
+    /**
+     * @return The AKS base url
+     * 
+     */
     public Optional<String> baseUrl() {
         return Optional.ofNullable(this.baseUrl);
     }
+    /**
+     * @return The AKS Cloud Credential ID to use
+     * 
+     */
     public String cloudCredentialId() {
         return this.cloudCredentialId;
     }
+    /**
+     * @return The AKS dns prefix. Required if `import=false`
+     * 
+     */
     public Optional<String> dnsPrefix() {
         return Optional.ofNullable(this.dnsPrefix);
     }
+    /**
+     * @return Enable AKS http application routing?
+     * 
+     */
     public Boolean httpApplicationRouting() {
         return this.httpApplicationRouting;
     }
+    /**
+     * @return Is AKS cluster imported?
+     * 
+     */
     public Optional<Boolean> imported() {
         return Optional.ofNullable(this.imported);
     }
+    /**
+     * @return The kubernetes master version. Required if `import=false`
+     * 
+     */
     public Optional<String> kubernetesVersion() {
         return Optional.ofNullable(this.kubernetesVersion);
     }
+    /**
+     * @return The AKS linux admin username
+     * 
+     */
     public String linuxAdminUsername() {
         return this.linuxAdminUsername;
     }
+    /**
+     * @return The AKS linux ssh public key
+     * 
+     */
     public String linuxSshPublicKey() {
         return this.linuxSshPublicKey;
     }
+    /**
+     * @return The AKS load balancer sku
+     * 
+     */
     public String loadBalancerSku() {
         return this.loadBalancerSku;
     }
+    /**
+     * @return The AKS log analytics workspace group
+     * 
+     */
     public String logAnalyticsWorkspaceGroup() {
         return this.logAnalyticsWorkspaceGroup;
     }
+    /**
+     * @return The AKS log analytics workspace name
+     * 
+     */
     public String logAnalyticsWorkspaceName() {
         return this.logAnalyticsWorkspaceName;
     }
+    /**
+     * @return Is AKS cluster monitoring enabled?
+     * 
+     */
     public Boolean monitoring() {
         return this.monitoring;
     }
@@ -101,45 +269,101 @@ public final class GetClusterAksConfigV2 {
     public String name() {
         return this.name;
     }
+    /**
+     * @return The AKS network dns service ip
+     * 
+     */
     public String networkDnsServiceIp() {
         return this.networkDnsServiceIp;
     }
+    /**
+     * @return The AKS network docker bridge cidr
+     * 
+     */
     public String networkDockerBridgeCidr() {
         return this.networkDockerBridgeCidr;
     }
+    /**
+     * @return The AKS network plugin. Required if `import=false`
+     * 
+     */
     public Optional<String> networkPlugin() {
         return Optional.ofNullable(this.networkPlugin);
     }
+    /**
+     * @return The AKS network pod cidr
+     * 
+     */
     public String networkPodCidr() {
         return this.networkPodCidr;
     }
+    /**
+     * @return The AKS network policy
+     * 
+     */
     public String networkPolicy() {
         return this.networkPolicy;
     }
+    /**
+     * @return The AKS network service cidr
+     * 
+     */
     public String networkServiceCidr() {
         return this.networkServiceCidr;
     }
+    /**
+     * @return The AKS node pools to use. Required if `import=false`
+     * 
+     */
     public List<GetClusterAksConfigV2NodePool> nodePools() {
         return this.nodePools == null ? List.of() : this.nodePools;
     }
+    /**
+     * @return Is AKS cluster private?
+     * 
+     */
     public Boolean privateCluster() {
         return this.privateCluster;
     }
+    /**
+     * @return The AKS resource group
+     * 
+     */
     public String resourceGroup() {
         return this.resourceGroup;
     }
+    /**
+     * @return The AKS resource location
+     * 
+     */
     public String resourceLocation() {
         return this.resourceLocation;
     }
+    /**
+     * @return The AKS subnet
+     * 
+     */
     public String subnet() {
         return this.subnet;
     }
+    /**
+     * @return The AKS cluster tags
+     * 
+     */
     public Map<String,Object> tags() {
         return this.tags;
     }
+    /**
+     * @return The AKS virtual network
+     * 
+     */
     public String virtualNetwork() {
         return this.virtualNetwork;
     }
+    /**
+     * @return The AKS virtual network resource group
+     * 
+     */
     public String virtualNetworkResourceGroup() {
         return this.virtualNetworkResourceGroup;
     }

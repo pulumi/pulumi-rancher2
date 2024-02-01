@@ -17,16 +17,32 @@ public final class GetPodSecurityPolicyTemplateAllowedHostPathArgs extends com.p
 
     public static final GetPodSecurityPolicyTemplateAllowedHostPathArgs Empty = new GetPodSecurityPolicyTemplateAllowedHostPathArgs();
 
+    /**
+     * pathPrefix is the path prefix that the host volume must match. It does not support `*`. Trailing slashes are trimmed when validating the path prefix with a host path.
+     * 
+     */
     @Import(name="pathPrefix", required=true)
     private Output<String> pathPrefix;
 
+    /**
+     * @return pathPrefix is the path prefix that the host volume must match. It does not support `*`. Trailing slashes are trimmed when validating the path prefix with a host path.
+     * 
+     */
     public Output<String> pathPrefix() {
         return this.pathPrefix;
     }
 
+    /**
+     * when set to true, will allow host volumes matching the pathPrefix only if all volume mounts are readOnly.
+     * 
+     */
     @Import(name="readOnly")
     private @Nullable Output<Boolean> readOnly;
 
+    /**
+     * @return when set to true, will allow host volumes matching the pathPrefix only if all volume mounts are readOnly.
+     * 
+     */
     public Optional<Output<Boolean>> readOnly() {
         return Optional.ofNullable(this.readOnly);
     }
@@ -56,20 +72,44 @@ public final class GetPodSecurityPolicyTemplateAllowedHostPathArgs extends com.p
             $ = new GetPodSecurityPolicyTemplateAllowedHostPathArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param pathPrefix pathPrefix is the path prefix that the host volume must match. It does not support `*`. Trailing slashes are trimmed when validating the path prefix with a host path.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pathPrefix(Output<String> pathPrefix) {
             $.pathPrefix = pathPrefix;
             return this;
         }
 
+        /**
+         * @param pathPrefix pathPrefix is the path prefix that the host volume must match. It does not support `*`. Trailing slashes are trimmed when validating the path prefix with a host path.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pathPrefix(String pathPrefix) {
             return pathPrefix(Output.of(pathPrefix));
         }
 
+        /**
+         * @param readOnly when set to true, will allow host volumes matching the pathPrefix only if all volume mounts are readOnly.
+         * 
+         * @return builder
+         * 
+         */
         public Builder readOnly(@Nullable Output<Boolean> readOnly) {
             $.readOnly = readOnly;
             return this;
         }
 
+        /**
+         * @param readOnly when set to true, will allow host volumes matching the pathPrefix only if all volume mounts are readOnly.
+         * 
+         * @return builder
+         * 
+         */
         public Builder readOnly(Boolean readOnly) {
             return readOnly(Output.of(readOnly));
         }

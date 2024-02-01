@@ -13,15 +13,27 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterV2RkeConfigEtcdSnapshotRestore {
+    /**
+     * @return ETCD snapshot desired generation
+     * 
+     */
     private Integer generation;
     /**
      * @return The name of the Cluster v2 (string)
      * 
      */
     private String name;
+    /**
+     * @return ETCD restore RKE config (set to none, all, or kubernetesVersion)
+     * 
+     */
     private @Nullable String restoreRkeConfig;
 
     private GetClusterV2RkeConfigEtcdSnapshotRestore() {}
+    /**
+     * @return ETCD snapshot desired generation
+     * 
+     */
     public Integer generation() {
         return this.generation;
     }
@@ -32,6 +44,10 @@ public final class GetClusterV2RkeConfigEtcdSnapshotRestore {
     public String name() {
         return this.name;
     }
+    /**
+     * @return ETCD restore RKE config (set to none, all, or kubernetesVersion)
+     * 
+     */
     public Optional<String> restoreRkeConfig() {
         return Optional.ofNullable(this.restoreRkeConfig);
     }

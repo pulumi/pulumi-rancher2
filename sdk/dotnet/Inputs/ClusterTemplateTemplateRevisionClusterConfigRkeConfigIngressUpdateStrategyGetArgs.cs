@@ -12,9 +12,15 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Rolling update for update strategy
+        /// </summary>
         [Input("rollingUpdate")]
         public Input<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdateGetArgs>? RollingUpdate { get; set; }
 
+        /// <summary>
+        /// Strategy
+        /// </summary>
         [Input("strategy")]
         public Input<string>? Strategy { get; set; }
 

@@ -22,7 +22,13 @@ namespace Pulumi.Rancher2.Outputs
         public readonly ImmutableDictionary<string, object>? NodeSelector;
         public readonly ImmutableDictionary<string, object>? Options;
         public readonly string? Provider;
+        /// <summary>
+        /// Ingress add-on tolerations
+        /// </summary>
         public readonly ImmutableArray<Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressToleration> Tolerations;
+        /// <summary>
+        /// Update daemon set strategy
+        /// </summary>
         public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy? UpdateStrategy;
 
         [OutputConstructor]

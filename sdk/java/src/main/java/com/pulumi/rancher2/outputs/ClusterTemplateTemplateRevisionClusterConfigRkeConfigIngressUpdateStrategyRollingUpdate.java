@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate {
+    /**
+     * @return Rolling update max unavailable
+     * 
+     */
     private @Nullable Integer maxUnavailable;
 
     private ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate() {}
+    /**
+     * @return Rolling update max unavailable
+     * 
+     */
     public Optional<Integer> maxUnavailable() {
         return Optional.ofNullable(this.maxUnavailable);
     }

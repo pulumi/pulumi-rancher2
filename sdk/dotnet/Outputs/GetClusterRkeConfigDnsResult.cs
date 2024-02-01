@@ -13,13 +13,25 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterRkeConfigDnsResult
     {
+        /// <summary>
+        /// Linear Autoscaler Params
+        /// </summary>
         public readonly Outputs.GetClusterRkeConfigDnsLinearAutoscalerParamsResult? LinearAutoscalerParams;
         public readonly ImmutableDictionary<string, object> NodeSelector;
+        /// <summary>
+        /// Nodelocal dns
+        /// </summary>
         public readonly Outputs.GetClusterRkeConfigDnsNodelocalResult? Nodelocal;
         public readonly ImmutableDictionary<string, object> Options;
         public readonly string? Provider;
         public readonly ImmutableArray<string> ReverseCidrs;
+        /// <summary>
+        /// DNS service tolerations
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterRkeConfigDnsTolerationResult> Tolerations;
+        /// <summary>
+        /// Update deployment strategy
+        /// </summary>
         public readonly Outputs.GetClusterRkeConfigDnsUpdateStrategyResult? UpdateStrategy;
         public readonly ImmutableArray<string> UpstreamNameservers;
 

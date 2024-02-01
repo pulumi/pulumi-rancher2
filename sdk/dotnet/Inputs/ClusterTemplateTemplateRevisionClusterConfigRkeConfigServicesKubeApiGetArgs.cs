@@ -12,6 +12,9 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Cluster admission configuration
+        /// </summary>
         [Input("admissionConfiguration")]
         public Input<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationGetArgs>? AdmissionConfiguration { get; set; }
 

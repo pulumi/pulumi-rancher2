@@ -13,6 +13,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ProjectAlertGroupRecipient {
+    /**
+     * @return Use notifier default recipient
+     * 
+     */
     private @Nullable Boolean defaultRecipient;
     /**
      * @return Recipient notifier ID (string)
@@ -31,6 +35,10 @@ public final class ProjectAlertGroupRecipient {
     private @Nullable String recipient;
 
     private ProjectAlertGroupRecipient() {}
+    /**
+     * @return Use notifier default recipient
+     * 
+     */
     public Optional<Boolean> defaultRecipient() {
         return Optional.ofNullable(this.defaultRecipient);
     }

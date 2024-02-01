@@ -13,7 +13,13 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterRke2ConfigResult
     {
+        /// <summary>
+        /// The RKE2 upgrade strategy
+        /// </summary>
         public readonly Outputs.GetClusterRke2ConfigUpgradeStrategyResult UpgradeStrategy;
+        /// <summary>
+        /// The RKE2 kubernetes version
+        /// </summary>
         public readonly string Version;
 
         [OutputConstructor]

@@ -39,7 +39,7 @@ func GetCaCerts(ctx *pulumi.Context) string {
 	return config.Get(ctx, "rancher2:caCerts")
 }
 
-// Allow insecure connections to Rancher. Mandatory if self signed tls and not ca_certs provided
+// Allow insecure connections to Rancher. Mandatory if self signed tls and not caCerts provided
 func GetInsecure(ctx *pulumi.Context) bool {
 	v, err := config.TryBool(ctx, "rancher2:insecure")
 	if err == nil {

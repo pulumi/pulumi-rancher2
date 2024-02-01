@@ -12,9 +12,15 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class GetPodSecurityPolicyTemplateRunAsUserRangeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// max is the end of the range, inclusive.
+        /// </summary>
         [Input("max", required: true)]
         public int Max { get; set; }
 
+        /// <summary>
+        /// min is the start of the range, inclusive.
+        /// </summary>
         [Input("min", required: true)]
         public int Min { get; set; }
 

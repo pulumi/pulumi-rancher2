@@ -30,44 +30,92 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs ext
 
     public static final ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs Empty = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs();
 
+    /**
+     * Optional duration in seconds of addon job.
+     * 
+     */
     @Import(name="addonJobTimeout")
     private @Nullable Output<Integer> addonJobTimeout;
 
+    /**
+     * @return Optional duration in seconds of addon job.
+     * 
+     */
     public Optional<Output<Integer>> addonJobTimeout() {
         return Optional.ofNullable(this.addonJobTimeout);
     }
 
+    /**
+     * Optional addons descripton to deploy on rke cluster.
+     * 
+     */
     @Import(name="addons")
     private @Nullable Output<String> addons;
 
+    /**
+     * @return Optional addons descripton to deploy on rke cluster.
+     * 
+     */
     public Optional<Output<String>> addons() {
         return Optional.ofNullable(this.addons);
     }
 
+    /**
+     * Optional addons yaml manisfest to deploy on rke cluster.
+     * 
+     */
     @Import(name="addonsIncludes")
     private @Nullable Output<List<String>> addonsIncludes;
 
+    /**
+     * @return Optional addons yaml manisfest to deploy on rke cluster.
+     * 
+     */
     public Optional<Output<List<String>>> addonsIncludes() {
         return Optional.ofNullable(this.addonsIncludes);
     }
 
+    /**
+     * Kubernetes cluster authentication
+     * 
+     */
     @Import(name="authentication")
     private @Nullable Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationArgs> authentication;
 
+    /**
+     * @return Kubernetes cluster authentication
+     * 
+     */
     public Optional<Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationArgs>> authentication() {
         return Optional.ofNullable(this.authentication);
     }
 
+    /**
+     * Kubernetes cluster authorization
+     * 
+     */
     @Import(name="authorization")
     private @Nullable Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationArgs> authorization;
 
+    /**
+     * @return Kubernetes cluster authorization
+     * 
+     */
     public Optional<Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationArgs>> authorization() {
         return Optional.ofNullable(this.authorization);
     }
 
+    /**
+     * RKE bastion host
+     * 
+     */
     @Import(name="bastionHost")
     private @Nullable Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHostArgs> bastionHost;
 
+    /**
+     * @return RKE bastion host
+     * 
+     */
     public Optional<Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHostArgs>> bastionHost() {
         return Optional.ofNullable(this.bastionHost);
     }
@@ -86,107 +134,227 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs ext
         return Optional.ofNullable(this.dns);
     }
 
+    /**
+     * Enable/disable using cri-dockerd
+     * 
+     */
     @Import(name="enableCriDockerd")
     private @Nullable Output<Boolean> enableCriDockerd;
 
+    /**
+     * @return Enable/disable using cri-dockerd
+     * 
+     */
     public Optional<Output<Boolean>> enableCriDockerd() {
         return Optional.ofNullable(this.enableCriDockerd);
     }
 
+    /**
+     * Optional ignore docker version on nodes
+     * 
+     */
     @Import(name="ignoreDockerVersion")
     private @Nullable Output<Boolean> ignoreDockerVersion;
 
+    /**
+     * @return Optional ignore docker version on nodes
+     * 
+     */
     public Optional<Output<Boolean>> ignoreDockerVersion() {
         return Optional.ofNullable(this.ignoreDockerVersion);
     }
 
+    /**
+     * Kubernetes ingress configuration
+     * 
+     */
     @Import(name="ingress")
     private @Nullable Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressArgs> ingress;
 
+    /**
+     * @return Kubernetes ingress configuration
+     * 
+     */
     public Optional<Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressArgs>> ingress() {
         return Optional.ofNullable(this.ingress);
     }
 
+    /**
+     * Optional kubernetes version to deploy
+     * 
+     */
     @Import(name="kubernetesVersion")
     private @Nullable Output<String> kubernetesVersion;
 
+    /**
+     * @return Optional kubernetes version to deploy
+     * 
+     */
     public Optional<Output<String>> kubernetesVersion() {
         return Optional.ofNullable(this.kubernetesVersion);
     }
 
+    /**
+     * Kubernetes cluster monitoring
+     * 
+     */
     @Import(name="monitoring")
     private @Nullable Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringArgs> monitoring;
 
+    /**
+     * @return Kubernetes cluster monitoring
+     * 
+     */
     public Optional<Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringArgs>> monitoring() {
         return Optional.ofNullable(this.monitoring);
     }
 
+    /**
+     * Kubernetes cluster networking
+     * 
+     */
     @Import(name="network")
     private @Nullable Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs> network;
 
+    /**
+     * @return Kubernetes cluster networking
+     * 
+     */
     public Optional<Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs>> network() {
         return Optional.ofNullable(this.network);
     }
 
+    /**
+     * Optional RKE cluster nodes
+     * 
+     */
     @Import(name="nodes")
     private @Nullable Output<List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArgs>> nodes;
 
+    /**
+     * @return Optional RKE cluster nodes
+     * 
+     */
     public Optional<Output<List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArgs>>> nodes() {
         return Optional.ofNullable(this.nodes);
     }
 
+    /**
+     * Optional prefix to customize kubernetes path
+     * 
+     */
     @Import(name="prefixPath")
     private @Nullable Output<String> prefixPath;
 
+    /**
+     * @return Optional prefix to customize kubernetes path
+     * 
+     */
     public Optional<Output<String>> prefixPath() {
         return Optional.ofNullable(this.prefixPath);
     }
 
+    /**
+     * Optional private registries for docker images
+     * 
+     */
     @Import(name="privateRegistries")
     private @Nullable Output<List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArgs>> privateRegistries;
 
+    /**
+     * @return Optional private registries for docker images
+     * 
+     */
     public Optional<Output<List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArgs>>> privateRegistries() {
         return Optional.ofNullable(this.privateRegistries);
     }
 
+    /**
+     * Kubernetes cluster services
+     * 
+     */
     @Import(name="services")
     private @Nullable Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs> services;
 
+    /**
+     * @return Kubernetes cluster services
+     * 
+     */
     public Optional<Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs>> services() {
         return Optional.ofNullable(this.services);
     }
 
+    /**
+     * Optional use ssh agent auth
+     * 
+     */
     @Import(name="sshAgentAuth")
     private @Nullable Output<Boolean> sshAgentAuth;
 
+    /**
+     * @return Optional use ssh agent auth
+     * 
+     */
     public Optional<Output<Boolean>> sshAgentAuth() {
         return Optional.ofNullable(this.sshAgentAuth);
     }
 
+    /**
+     * Optional cluster level SSH certificate path
+     * 
+     */
     @Import(name="sshCertPath")
     private @Nullable Output<String> sshCertPath;
 
+    /**
+     * @return Optional cluster level SSH certificate path
+     * 
+     */
     public Optional<Output<String>> sshCertPath() {
         return Optional.ofNullable(this.sshCertPath);
     }
 
+    /**
+     * Optional cluster level SSH private key path
+     * 
+     */
     @Import(name="sshKeyPath")
     private @Nullable Output<String> sshKeyPath;
 
+    /**
+     * @return Optional cluster level SSH private key path
+     * 
+     */
     public Optional<Output<String>> sshKeyPath() {
         return Optional.ofNullable(this.sshKeyPath);
     }
 
+    /**
+     * RKE upgrade strategy
+     * 
+     */
     @Import(name="upgradeStrategy")
     private @Nullable Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs> upgradeStrategy;
 
+    /**
+     * @return RKE upgrade strategy
+     * 
+     */
     public Optional<Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs>> upgradeStrategy() {
         return Optional.ofNullable(this.upgradeStrategy);
     }
 
+    /**
+     * Optional prefix to customize kubernetes path for windows
+     * 
+     */
     @Import(name="winPrefixPath")
     private @Nullable Output<String> winPrefixPath;
 
+    /**
+     * @return Optional prefix to customize kubernetes path for windows
+     * 
+     */
     public Optional<Output<String>> winPrefixPath() {
         return Optional.ofNullable(this.winPrefixPath);
     }
@@ -237,60 +405,138 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs ext
             $ = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param addonJobTimeout Optional duration in seconds of addon job.
+         * 
+         * @return builder
+         * 
+         */
         public Builder addonJobTimeout(@Nullable Output<Integer> addonJobTimeout) {
             $.addonJobTimeout = addonJobTimeout;
             return this;
         }
 
+        /**
+         * @param addonJobTimeout Optional duration in seconds of addon job.
+         * 
+         * @return builder
+         * 
+         */
         public Builder addonJobTimeout(Integer addonJobTimeout) {
             return addonJobTimeout(Output.of(addonJobTimeout));
         }
 
+        /**
+         * @param addons Optional addons descripton to deploy on rke cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder addons(@Nullable Output<String> addons) {
             $.addons = addons;
             return this;
         }
 
+        /**
+         * @param addons Optional addons descripton to deploy on rke cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder addons(String addons) {
             return addons(Output.of(addons));
         }
 
+        /**
+         * @param addonsIncludes Optional addons yaml manisfest to deploy on rke cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder addonsIncludes(@Nullable Output<List<String>> addonsIncludes) {
             $.addonsIncludes = addonsIncludes;
             return this;
         }
 
+        /**
+         * @param addonsIncludes Optional addons yaml manisfest to deploy on rke cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder addonsIncludes(List<String> addonsIncludes) {
             return addonsIncludes(Output.of(addonsIncludes));
         }
 
+        /**
+         * @param addonsIncludes Optional addons yaml manisfest to deploy on rke cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder addonsIncludes(String... addonsIncludes) {
             return addonsIncludes(List.of(addonsIncludes));
         }
 
+        /**
+         * @param authentication Kubernetes cluster authentication
+         * 
+         * @return builder
+         * 
+         */
         public Builder authentication(@Nullable Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationArgs> authentication) {
             $.authentication = authentication;
             return this;
         }
 
+        /**
+         * @param authentication Kubernetes cluster authentication
+         * 
+         * @return builder
+         * 
+         */
         public Builder authentication(ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationArgs authentication) {
             return authentication(Output.of(authentication));
         }
 
+        /**
+         * @param authorization Kubernetes cluster authorization
+         * 
+         * @return builder
+         * 
+         */
         public Builder authorization(@Nullable Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationArgs> authorization) {
             $.authorization = authorization;
             return this;
         }
 
+        /**
+         * @param authorization Kubernetes cluster authorization
+         * 
+         * @return builder
+         * 
+         */
         public Builder authorization(ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationArgs authorization) {
             return authorization(Output.of(authorization));
         }
 
+        /**
+         * @param bastionHost RKE bastion host
+         * 
+         * @return builder
+         * 
+         */
         public Builder bastionHost(@Nullable Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHostArgs> bastionHost) {
             $.bastionHost = bastionHost;
             return this;
         }
 
+        /**
+         * @param bastionHost RKE bastion host
+         * 
+         * @return builder
+         * 
+         */
         public Builder bastionHost(ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHostArgs bastionHost) {
             return bastionHost(Output.of(bastionHost));
         }
@@ -313,145 +559,337 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs ext
             return dns(Output.of(dns));
         }
 
+        /**
+         * @param enableCriDockerd Enable/disable using cri-dockerd
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableCriDockerd(@Nullable Output<Boolean> enableCriDockerd) {
             $.enableCriDockerd = enableCriDockerd;
             return this;
         }
 
+        /**
+         * @param enableCriDockerd Enable/disable using cri-dockerd
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableCriDockerd(Boolean enableCriDockerd) {
             return enableCriDockerd(Output.of(enableCriDockerd));
         }
 
+        /**
+         * @param ignoreDockerVersion Optional ignore docker version on nodes
+         * 
+         * @return builder
+         * 
+         */
         public Builder ignoreDockerVersion(@Nullable Output<Boolean> ignoreDockerVersion) {
             $.ignoreDockerVersion = ignoreDockerVersion;
             return this;
         }
 
+        /**
+         * @param ignoreDockerVersion Optional ignore docker version on nodes
+         * 
+         * @return builder
+         * 
+         */
         public Builder ignoreDockerVersion(Boolean ignoreDockerVersion) {
             return ignoreDockerVersion(Output.of(ignoreDockerVersion));
         }
 
+        /**
+         * @param ingress Kubernetes ingress configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder ingress(@Nullable Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressArgs> ingress) {
             $.ingress = ingress;
             return this;
         }
 
+        /**
+         * @param ingress Kubernetes ingress configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder ingress(ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressArgs ingress) {
             return ingress(Output.of(ingress));
         }
 
+        /**
+         * @param kubernetesVersion Optional kubernetes version to deploy
+         * 
+         * @return builder
+         * 
+         */
         public Builder kubernetesVersion(@Nullable Output<String> kubernetesVersion) {
             $.kubernetesVersion = kubernetesVersion;
             return this;
         }
 
+        /**
+         * @param kubernetesVersion Optional kubernetes version to deploy
+         * 
+         * @return builder
+         * 
+         */
         public Builder kubernetesVersion(String kubernetesVersion) {
             return kubernetesVersion(Output.of(kubernetesVersion));
         }
 
+        /**
+         * @param monitoring Kubernetes cluster monitoring
+         * 
+         * @return builder
+         * 
+         */
         public Builder monitoring(@Nullable Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringArgs> monitoring) {
             $.monitoring = monitoring;
             return this;
         }
 
+        /**
+         * @param monitoring Kubernetes cluster monitoring
+         * 
+         * @return builder
+         * 
+         */
         public Builder monitoring(ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringArgs monitoring) {
             return monitoring(Output.of(monitoring));
         }
 
+        /**
+         * @param network Kubernetes cluster networking
+         * 
+         * @return builder
+         * 
+         */
         public Builder network(@Nullable Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs> network) {
             $.network = network;
             return this;
         }
 
+        /**
+         * @param network Kubernetes cluster networking
+         * 
+         * @return builder
+         * 
+         */
         public Builder network(ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs network) {
             return network(Output.of(network));
         }
 
+        /**
+         * @param nodes Optional RKE cluster nodes
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodes(@Nullable Output<List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArgs>> nodes) {
             $.nodes = nodes;
             return this;
         }
 
+        /**
+         * @param nodes Optional RKE cluster nodes
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodes(List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArgs> nodes) {
             return nodes(Output.of(nodes));
         }
 
+        /**
+         * @param nodes Optional RKE cluster nodes
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodes(ClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArgs... nodes) {
             return nodes(List.of(nodes));
         }
 
+        /**
+         * @param prefixPath Optional prefix to customize kubernetes path
+         * 
+         * @return builder
+         * 
+         */
         public Builder prefixPath(@Nullable Output<String> prefixPath) {
             $.prefixPath = prefixPath;
             return this;
         }
 
+        /**
+         * @param prefixPath Optional prefix to customize kubernetes path
+         * 
+         * @return builder
+         * 
+         */
         public Builder prefixPath(String prefixPath) {
             return prefixPath(Output.of(prefixPath));
         }
 
+        /**
+         * @param privateRegistries Optional private registries for docker images
+         * 
+         * @return builder
+         * 
+         */
         public Builder privateRegistries(@Nullable Output<List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArgs>> privateRegistries) {
             $.privateRegistries = privateRegistries;
             return this;
         }
 
+        /**
+         * @param privateRegistries Optional private registries for docker images
+         * 
+         * @return builder
+         * 
+         */
         public Builder privateRegistries(List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArgs> privateRegistries) {
             return privateRegistries(Output.of(privateRegistries));
         }
 
+        /**
+         * @param privateRegistries Optional private registries for docker images
+         * 
+         * @return builder
+         * 
+         */
         public Builder privateRegistries(ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArgs... privateRegistries) {
             return privateRegistries(List.of(privateRegistries));
         }
 
+        /**
+         * @param services Kubernetes cluster services
+         * 
+         * @return builder
+         * 
+         */
         public Builder services(@Nullable Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs> services) {
             $.services = services;
             return this;
         }
 
+        /**
+         * @param services Kubernetes cluster services
+         * 
+         * @return builder
+         * 
+         */
         public Builder services(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs services) {
             return services(Output.of(services));
         }
 
+        /**
+         * @param sshAgentAuth Optional use ssh agent auth
+         * 
+         * @return builder
+         * 
+         */
         public Builder sshAgentAuth(@Nullable Output<Boolean> sshAgentAuth) {
             $.sshAgentAuth = sshAgentAuth;
             return this;
         }
 
+        /**
+         * @param sshAgentAuth Optional use ssh agent auth
+         * 
+         * @return builder
+         * 
+         */
         public Builder sshAgentAuth(Boolean sshAgentAuth) {
             return sshAgentAuth(Output.of(sshAgentAuth));
         }
 
+        /**
+         * @param sshCertPath Optional cluster level SSH certificate path
+         * 
+         * @return builder
+         * 
+         */
         public Builder sshCertPath(@Nullable Output<String> sshCertPath) {
             $.sshCertPath = sshCertPath;
             return this;
         }
 
+        /**
+         * @param sshCertPath Optional cluster level SSH certificate path
+         * 
+         * @return builder
+         * 
+         */
         public Builder sshCertPath(String sshCertPath) {
             return sshCertPath(Output.of(sshCertPath));
         }
 
+        /**
+         * @param sshKeyPath Optional cluster level SSH private key path
+         * 
+         * @return builder
+         * 
+         */
         public Builder sshKeyPath(@Nullable Output<String> sshKeyPath) {
             $.sshKeyPath = sshKeyPath;
             return this;
         }
 
+        /**
+         * @param sshKeyPath Optional cluster level SSH private key path
+         * 
+         * @return builder
+         * 
+         */
         public Builder sshKeyPath(String sshKeyPath) {
             return sshKeyPath(Output.of(sshKeyPath));
         }
 
+        /**
+         * @param upgradeStrategy RKE upgrade strategy
+         * 
+         * @return builder
+         * 
+         */
         public Builder upgradeStrategy(@Nullable Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs> upgradeStrategy) {
             $.upgradeStrategy = upgradeStrategy;
             return this;
         }
 
+        /**
+         * @param upgradeStrategy RKE upgrade strategy
+         * 
+         * @return builder
+         * 
+         */
         public Builder upgradeStrategy(ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs upgradeStrategy) {
             return upgradeStrategy(Output.of(upgradeStrategy));
         }
 
+        /**
+         * @param winPrefixPath Optional prefix to customize kubernetes path for windows
+         * 
+         * @return builder
+         * 
+         */
         public Builder winPrefixPath(@Nullable Output<String> winPrefixPath) {
             $.winPrefixPath = winPrefixPath;
             return this;
         }
 
+        /**
+         * @param winPrefixPath Optional prefix to customize kubernetes path for windows
+         * 
+         * @return builder
+         * 
+         */
         public Builder winPrefixPath(String winPrefixPath) {
             return winPrefixPath(Output.of(winPrefixPath));
         }

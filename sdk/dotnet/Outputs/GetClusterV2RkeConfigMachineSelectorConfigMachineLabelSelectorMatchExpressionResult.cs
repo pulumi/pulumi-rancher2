@@ -13,8 +13,17 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionResult
     {
+        /// <summary>
+        /// Label selector requirement key
+        /// </summary>
         public readonly string? Key;
+        /// <summary>
+        /// Label selector operator
+        /// </summary>
         public readonly string? Operator;
+        /// <summary>
+        /// Label selector requirement values
+        /// </summary>
         public readonly ImmutableArray<string> Values;
 
         [OutputConstructor]

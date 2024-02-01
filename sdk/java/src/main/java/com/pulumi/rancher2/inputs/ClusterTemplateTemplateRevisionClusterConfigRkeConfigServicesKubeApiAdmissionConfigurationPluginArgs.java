@@ -15,9 +15,17 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
 
     public static final ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPluginArgs Empty = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPluginArgs();
 
+    /**
+     * Plugin configuration
+     * 
+     */
     @Import(name="configuration")
     private @Nullable Output<String> configuration;
 
+    /**
+     * @return Plugin configuration
+     * 
+     */
     public Optional<Output<String>> configuration() {
         return Optional.ofNullable(this.configuration);
     }
@@ -37,9 +45,17 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Plugin path
+     * 
+     */
     @Import(name="path")
     private @Nullable Output<String> path;
 
+    /**
+     * @return Plugin path
+     * 
+     */
     public Optional<Output<String>> path() {
         return Optional.ofNullable(this.path);
     }
@@ -70,11 +86,23 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
             $ = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPluginArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param configuration Plugin configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder configuration(@Nullable Output<String> configuration) {
             $.configuration = configuration;
             return this;
         }
 
+        /**
+         * @param configuration Plugin configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder configuration(String configuration) {
             return configuration(Output.of(configuration));
         }
@@ -100,11 +128,23 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
             return name(Output.of(name));
         }
 
+        /**
+         * @param path Plugin path
+         * 
+         * @return builder
+         * 
+         */
         public Builder path(@Nullable Output<String> path) {
             $.path = path;
             return this;
         }
 
+        /**
+         * @param path Plugin path
+         * 
+         * @return builder
+         * 
+         */
         public Builder path(String path) {
             return path(Output.of(path));
         }

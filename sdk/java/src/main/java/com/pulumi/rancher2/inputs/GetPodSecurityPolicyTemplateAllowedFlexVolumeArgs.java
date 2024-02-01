@@ -14,9 +14,17 @@ public final class GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs extends com
 
     public static final GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs Empty = new GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs();
 
+    /**
+     * driver is the name of the Flexvolume driver.
+     * 
+     */
     @Import(name="driver", required=true)
     private Output<String> driver;
 
+    /**
+     * @return driver is the name of the Flexvolume driver.
+     * 
+     */
     public Output<String> driver() {
         return this.driver;
     }
@@ -45,11 +53,23 @@ public final class GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs extends com
             $ = new GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param driver driver is the name of the Flexvolume driver.
+         * 
+         * @return builder
+         * 
+         */
         public Builder driver(Output<String> driver) {
             $.driver = driver;
             return this;
         }
 
+        /**
+         * @param driver driver is the name of the Flexvolume driver.
+         * 
+         * @return builder
+         * 
+         */
         public Builder driver(String driver) {
             return driver(Output.of(driver));
         }

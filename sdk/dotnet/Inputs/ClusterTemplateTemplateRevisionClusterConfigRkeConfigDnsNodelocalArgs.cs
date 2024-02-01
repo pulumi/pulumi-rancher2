@@ -17,6 +17,10 @@ namespace Pulumi.Rancher2.Inputs
 
         [Input("nodeSelector")]
         private InputMap<object>? _nodeSelector;
+
+        /// <summary>
+        /// Node selector key pair
+        /// </summary>
         public InputMap<object> NodeSelector
         {
             get => _nodeSelector ?? (_nodeSelector = new InputMap<object>());

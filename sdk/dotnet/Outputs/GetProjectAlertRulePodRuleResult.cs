@@ -13,9 +13,21 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetProjectAlertRulePodRuleResult
     {
+        /// <summary>
+        /// Pod rule condition
+        /// </summary>
         public readonly string? Condition;
+        /// <summary>
+        /// Pod ID
+        /// </summary>
         public readonly string PodId;
+        /// <summary>
+        /// Pod rule restart interval seconds
+        /// </summary>
         public readonly int? RestartIntervalSeconds;
+        /// <summary>
+        /// Pod rule restart times
+        /// </summary>
         public readonly int? RestartTimes;
 
         [OutputConstructor]

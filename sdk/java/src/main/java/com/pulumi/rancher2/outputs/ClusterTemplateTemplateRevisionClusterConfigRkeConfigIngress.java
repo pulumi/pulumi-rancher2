@@ -27,7 +27,15 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress 
     private @Nullable Map<String,Object> nodeSelector;
     private @Nullable Map<String,Object> options;
     private @Nullable String provider;
+    /**
+     * @return Ingress add-on tolerations
+     * 
+     */
     private @Nullable List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressToleration> tolerations;
+    /**
+     * @return Update daemon set strategy
+     * 
+     */
     private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy updateStrategy;
 
     private ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress() {}
@@ -58,9 +66,17 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress 
     public Optional<String> provider() {
         return Optional.ofNullable(this.provider);
     }
+    /**
+     * @return Ingress add-on tolerations
+     * 
+     */
     public List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressToleration> tolerations() {
         return this.tolerations == null ? List.of() : this.tolerations;
     }
+    /**
+     * @return Update daemon set strategy
+     * 
+     */
     public Optional<ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy> updateStrategy() {
         return Optional.ofNullable(this.updateStrategy);
     }

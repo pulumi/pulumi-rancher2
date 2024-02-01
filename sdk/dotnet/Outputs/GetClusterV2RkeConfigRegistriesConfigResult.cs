@@ -13,10 +13,25 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterV2RkeConfigRegistriesConfigResult
     {
+        /// <summary>
+        /// Registry auth config secret name
+        /// </summary>
         public readonly string? AuthConfigSecretName;
+        /// <summary>
+        /// Registry CA bundle
+        /// </summary>
         public readonly string? CaBundle;
+        /// <summary>
+        /// Registry hostname
+        /// </summary>
         public readonly string Hostname;
+        /// <summary>
+        /// Registry insecure connectivity
+        /// </summary>
         public readonly bool? Insecure;
+        /// <summary>
+        /// Registry TLS secret name. TLS is a pair of Cert/Key
+        /// </summary>
         public readonly string? TlsSecretName;
 
         [OutputConstructor]

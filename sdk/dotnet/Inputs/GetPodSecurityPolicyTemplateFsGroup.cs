@@ -14,12 +14,19 @@ namespace Pulumi.Rancher2.Inputs
     {
         [Input("ranges", required: true)]
         private List<Inputs.GetPodSecurityPolicyTemplateFsGroupRangeArgs>? _ranges;
+
+        /// <summary>
+        /// ranges are the allowed ranges of fs groups.  If you would like to force a single fs group then supply a single range with the same start and end. Required for MustRunAs.
+        /// </summary>
         public List<Inputs.GetPodSecurityPolicyTemplateFsGroupRangeArgs> Ranges
         {
             get => _ranges ?? (_ranges = new List<Inputs.GetPodSecurityPolicyTemplateFsGroupRangeArgs>());
             set => _ranges = value;
         }
 
+        /// <summary>
+        /// rule is the strategy that will dictate what FSGroup is used in the SecurityContext.
+        /// </summary>
         [Input("rule")]
         public string? Rule { get; set; }
 

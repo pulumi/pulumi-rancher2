@@ -13,6 +13,9 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterRkeConfigIngressUpdateStrategyRollingUpdateResult
     {
+        /// <summary>
+        /// Rolling update max unavailable
+        /// </summary>
         public readonly int? MaxUnavailable;
 
         [OutputConstructor]

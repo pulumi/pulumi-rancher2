@@ -12,15 +12,27 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Level is SELinux level label that applies to the container.
+        /// </summary>
         [Input("level")]
         public string? Level { get; set; }
 
+        /// <summary>
+        /// Role is a SELinux role label that applies to the container.
+        /// </summary>
         [Input("role")]
         public string? Role { get; set; }
 
+        /// <summary>
+        /// Type is a SELinux type label that applies to the container.
+        /// </summary>
         [Input("type")]
         public string? Type { get; set; }
 
+        /// <summary>
+        /// User is a SELinux user label that applies to the container.
+        /// </summary>
         [Input("user")]
         public string? User { get; set; }
 

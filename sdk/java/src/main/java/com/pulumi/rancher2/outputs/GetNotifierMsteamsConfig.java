@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNotifierMsteamsConfig {
+    /**
+     * @return MS teams proxy URL
+     * 
+     */
     private @Nullable String proxyUrl;
+    /**
+     * @return Webhook URL
+     * 
+     */
     private String url;
 
     private GetNotifierMsteamsConfig() {}
+    /**
+     * @return MS teams proxy URL
+     * 
+     */
     public Optional<String> proxyUrl() {
         return Optional.ofNullable(this.proxyUrl);
     }
+    /**
+     * @return Webhook URL
+     * 
+     */
     public String url() {
         return this.url;
     }

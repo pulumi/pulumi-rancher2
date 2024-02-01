@@ -14,7 +14,9 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type GetPodSecurityPolicyTemplateRunAsUserRange struct {
+	// max is the end of the range, inclusive.
 	Max int `pulumi:"max"`
+	// min is the start of the range, inclusive.
 	Min int `pulumi:"min"`
 }
 
@@ -30,7 +32,9 @@ type GetPodSecurityPolicyTemplateRunAsUserRangeInput interface {
 }
 
 type GetPodSecurityPolicyTemplateRunAsUserRangeArgs struct {
+	// max is the end of the range, inclusive.
 	Max pulumi.IntInput `pulumi:"max"`
+	// min is the start of the range, inclusive.
 	Min pulumi.IntInput `pulumi:"min"`
 }
 
@@ -85,10 +89,12 @@ func (o GetPodSecurityPolicyTemplateRunAsUserRangeOutput) ToGetPodSecurityPolicy
 	return o
 }
 
+// max is the end of the range, inclusive.
 func (o GetPodSecurityPolicyTemplateRunAsUserRangeOutput) Max() pulumi.IntOutput {
 	return o.ApplyT(func(v GetPodSecurityPolicyTemplateRunAsUserRange) int { return v.Max }).(pulumi.IntOutput)
 }
 
+// min is the start of the range, inclusive.
 func (o GetPodSecurityPolicyTemplateRunAsUserRangeOutput) Min() pulumi.IntOutput {
 	return o.ApplyT(func(v GetPodSecurityPolicyTemplateRunAsUserRange) int { return v.Min }).(pulumi.IntOutput)
 }
@@ -114,8 +120,10 @@ func (o GetPodSecurityPolicyTemplateRunAsUserRangeArrayOutput) Index(i pulumi.In
 }
 
 type GetPodSecurityPolicyTemplateRuntimeClass struct {
+	// allowedRuntimeClassNames is a whitelist of RuntimeClass names that may be specified on a pod. A value of "*" means that any RuntimeClass name is allowed, and must be the only item in the list. An empty list requires the RuntimeClassName field to be unset.
 	AllowedRuntimeClassNames []string `pulumi:"allowedRuntimeClassNames"`
-	DefaultRuntimeClassName  *string  `pulumi:"defaultRuntimeClassName"`
+	// defaultRuntimeClassName is the default RuntimeClassName to set on the pod. The default MUST be allowed by the allowedRuntimeClassNames list. A value of nil does not mutate the Pod.
+	DefaultRuntimeClassName *string `pulumi:"defaultRuntimeClassName"`
 }
 
 // GetPodSecurityPolicyTemplateRuntimeClassInput is an input type that accepts GetPodSecurityPolicyTemplateRuntimeClassArgs and GetPodSecurityPolicyTemplateRuntimeClassOutput values.
@@ -130,8 +138,10 @@ type GetPodSecurityPolicyTemplateRuntimeClassInput interface {
 }
 
 type GetPodSecurityPolicyTemplateRuntimeClassArgs struct {
+	// allowedRuntimeClassNames is a whitelist of RuntimeClass names that may be specified on a pod. A value of "*" means that any RuntimeClass name is allowed, and must be the only item in the list. An empty list requires the RuntimeClassName field to be unset.
 	AllowedRuntimeClassNames pulumi.StringArrayInput `pulumi:"allowedRuntimeClassNames"`
-	DefaultRuntimeClassName  pulumi.StringPtrInput   `pulumi:"defaultRuntimeClassName"`
+	// defaultRuntimeClassName is the default RuntimeClassName to set on the pod. The default MUST be allowed by the allowedRuntimeClassNames list. A value of nil does not mutate the Pod.
+	DefaultRuntimeClassName pulumi.StringPtrInput `pulumi:"defaultRuntimeClassName"`
 }
 
 func (GetPodSecurityPolicyTemplateRuntimeClassArgs) ElementType() reflect.Type {
@@ -211,10 +221,12 @@ func (o GetPodSecurityPolicyTemplateRuntimeClassOutput) ToGetPodSecurityPolicyTe
 	}).(GetPodSecurityPolicyTemplateRuntimeClassPtrOutput)
 }
 
+// allowedRuntimeClassNames is a whitelist of RuntimeClass names that may be specified on a pod. A value of "*" means that any RuntimeClass name is allowed, and must be the only item in the list. An empty list requires the RuntimeClassName field to be unset.
 func (o GetPodSecurityPolicyTemplateRuntimeClassOutput) AllowedRuntimeClassNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPodSecurityPolicyTemplateRuntimeClass) []string { return v.AllowedRuntimeClassNames }).(pulumi.StringArrayOutput)
 }
 
+// defaultRuntimeClassName is the default RuntimeClassName to set on the pod. The default MUST be allowed by the allowedRuntimeClassNames list. A value of nil does not mutate the Pod.
 func (o GetPodSecurityPolicyTemplateRuntimeClassOutput) DefaultRuntimeClassName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPodSecurityPolicyTemplateRuntimeClass) *string { return v.DefaultRuntimeClassName }).(pulumi.StringPtrOutput)
 }
@@ -243,6 +255,7 @@ func (o GetPodSecurityPolicyTemplateRuntimeClassPtrOutput) Elem() GetPodSecurity
 	}).(GetPodSecurityPolicyTemplateRuntimeClassOutput)
 }
 
+// allowedRuntimeClassNames is a whitelist of RuntimeClass names that may be specified on a pod. A value of "*" means that any RuntimeClass name is allowed, and must be the only item in the list. An empty list requires the RuntimeClassName field to be unset.
 func (o GetPodSecurityPolicyTemplateRuntimeClassPtrOutput) AllowedRuntimeClassNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GetPodSecurityPolicyTemplateRuntimeClass) []string {
 		if v == nil {
@@ -252,6 +265,7 @@ func (o GetPodSecurityPolicyTemplateRuntimeClassPtrOutput) AllowedRuntimeClassNa
 	}).(pulumi.StringArrayOutput)
 }
 
+// defaultRuntimeClassName is the default RuntimeClassName to set on the pod. The default MUST be allowed by the allowedRuntimeClassNames list. A value of nil does not mutate the Pod.
 func (o GetPodSecurityPolicyTemplateRuntimeClassPtrOutput) DefaultRuntimeClassName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPodSecurityPolicyTemplateRuntimeClass) *string {
 		if v == nil {
@@ -262,7 +276,9 @@ func (o GetPodSecurityPolicyTemplateRuntimeClassPtrOutput) DefaultRuntimeClassNa
 }
 
 type GetPodSecurityPolicyTemplateSeLinux struct {
-	Rule          string                                            `pulumi:"rule"`
+	// rule is the strategy that will dictate the allowable labels that may be set.
+	Rule string `pulumi:"rule"`
+	// seLinuxOptions required to run as; required for MustRunAs. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 	SeLinuxOption *GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption `pulumi:"seLinuxOption"`
 }
 
@@ -278,7 +294,9 @@ type GetPodSecurityPolicyTemplateSeLinuxInput interface {
 }
 
 type GetPodSecurityPolicyTemplateSeLinuxArgs struct {
-	Rule          pulumi.StringInput                                       `pulumi:"rule"`
+	// rule is the strategy that will dictate the allowable labels that may be set.
+	Rule pulumi.StringInput `pulumi:"rule"`
+	// seLinuxOptions required to run as; required for MustRunAs. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 	SeLinuxOption GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrInput `pulumi:"seLinuxOption"`
 }
 
@@ -359,10 +377,12 @@ func (o GetPodSecurityPolicyTemplateSeLinuxOutput) ToGetPodSecurityPolicyTemplat
 	}).(GetPodSecurityPolicyTemplateSeLinuxPtrOutput)
 }
 
+// rule is the strategy that will dictate the allowable labels that may be set.
 func (o GetPodSecurityPolicyTemplateSeLinuxOutput) Rule() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPodSecurityPolicyTemplateSeLinux) string { return v.Rule }).(pulumi.StringOutput)
 }
 
+// seLinuxOptions required to run as; required for MustRunAs. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 func (o GetPodSecurityPolicyTemplateSeLinuxOutput) SeLinuxOption() GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput {
 	return o.ApplyT(func(v GetPodSecurityPolicyTemplateSeLinux) *GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption {
 		return v.SeLinuxOption
@@ -393,6 +413,7 @@ func (o GetPodSecurityPolicyTemplateSeLinuxPtrOutput) Elem() GetPodSecurityPolic
 	}).(GetPodSecurityPolicyTemplateSeLinuxOutput)
 }
 
+// rule is the strategy that will dictate the allowable labels that may be set.
 func (o GetPodSecurityPolicyTemplateSeLinuxPtrOutput) Rule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPodSecurityPolicyTemplateSeLinux) *string {
 		if v == nil {
@@ -402,6 +423,7 @@ func (o GetPodSecurityPolicyTemplateSeLinuxPtrOutput) Rule() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// seLinuxOptions required to run as; required for MustRunAs. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 func (o GetPodSecurityPolicyTemplateSeLinuxPtrOutput) SeLinuxOption() GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput {
 	return o.ApplyT(func(v *GetPodSecurityPolicyTemplateSeLinux) *GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption {
 		if v == nil {
@@ -412,10 +434,14 @@ func (o GetPodSecurityPolicyTemplateSeLinuxPtrOutput) SeLinuxOption() GetPodSecu
 }
 
 type GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption struct {
+	// Level is SELinux level label that applies to the container.
 	Level *string `pulumi:"level"`
-	Role  *string `pulumi:"role"`
-	Type  *string `pulumi:"type"`
-	User  *string `pulumi:"user"`
+	// Role is a SELinux role label that applies to the container.
+	Role *string `pulumi:"role"`
+	// Type is a SELinux type label that applies to the container.
+	Type *string `pulumi:"type"`
+	// User is a SELinux user label that applies to the container.
+	User *string `pulumi:"user"`
 }
 
 // GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionInput is an input type that accepts GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs and GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput values.
@@ -430,10 +456,14 @@ type GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionInput interface {
 }
 
 type GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs struct {
+	// Level is SELinux level label that applies to the container.
 	Level pulumi.StringPtrInput `pulumi:"level"`
-	Role  pulumi.StringPtrInput `pulumi:"role"`
-	Type  pulumi.StringPtrInput `pulumi:"type"`
-	User  pulumi.StringPtrInput `pulumi:"user"`
+	// Role is a SELinux role label that applies to the container.
+	Role pulumi.StringPtrInput `pulumi:"role"`
+	// Type is a SELinux type label that applies to the container.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// User is a SELinux user label that applies to the container.
+	User pulumi.StringPtrInput `pulumi:"user"`
 }
 
 func (GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs) ElementType() reflect.Type {
@@ -513,18 +543,22 @@ func (o GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput) ToGetPodSecurity
 	}).(GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput)
 }
 
+// Level is SELinux level label that applies to the container.
 func (o GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput) Level() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption) *string { return v.Level }).(pulumi.StringPtrOutput)
 }
 
+// Role is a SELinux role label that applies to the container.
 func (o GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
 
+// Type is a SELinux type label that applies to the container.
 func (o GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+// User is a SELinux user label that applies to the container.
 func (o GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput) User() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption) *string { return v.User }).(pulumi.StringPtrOutput)
 }
@@ -553,6 +587,7 @@ func (o GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput) Elem() GetPod
 	}).(GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionOutput)
 }
 
+// Level is SELinux level label that applies to the container.
 func (o GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput) Level() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption) *string {
 		if v == nil {
@@ -562,6 +597,7 @@ func (o GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput) Level() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
+// Role is a SELinux role label that applies to the container.
 func (o GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption) *string {
 		if v == nil {
@@ -571,6 +607,7 @@ func (o GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput) Role() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// Type is a SELinux type label that applies to the container.
 func (o GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption) *string {
 		if v == nil {
@@ -580,6 +617,7 @@ func (o GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput) Type() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// User is a SELinux user label that applies to the container.
 func (o GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput) User() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption) *string {
 		if v == nil {
@@ -590,8 +628,10 @@ func (o GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionPtrOutput) User() pulumi
 }
 
 type GetPodSecurityPolicyTemplateSupplementalGroup struct {
+	// ranges are the allowed ranges of supplemental groups.  If you would like to force a single supplemental group then supply a single range with the same start and end. Required for MustRunAs.
 	Ranges []GetPodSecurityPolicyTemplateSupplementalGroupRange `pulumi:"ranges"`
-	Rule   *string                                              `pulumi:"rule"`
+	// rule is the strategy that will dictate what supplemental groups is used in the SecurityContext.
+	Rule *string `pulumi:"rule"`
 }
 
 // GetPodSecurityPolicyTemplateSupplementalGroupInput is an input type that accepts GetPodSecurityPolicyTemplateSupplementalGroupArgs and GetPodSecurityPolicyTemplateSupplementalGroupOutput values.
@@ -606,8 +646,10 @@ type GetPodSecurityPolicyTemplateSupplementalGroupInput interface {
 }
 
 type GetPodSecurityPolicyTemplateSupplementalGroupArgs struct {
+	// ranges are the allowed ranges of supplemental groups.  If you would like to force a single supplemental group then supply a single range with the same start and end. Required for MustRunAs.
 	Ranges GetPodSecurityPolicyTemplateSupplementalGroupRangeArrayInput `pulumi:"ranges"`
-	Rule   pulumi.StringPtrInput                                        `pulumi:"rule"`
+	// rule is the strategy that will dictate what supplemental groups is used in the SecurityContext.
+	Rule pulumi.StringPtrInput `pulumi:"rule"`
 }
 
 func (GetPodSecurityPolicyTemplateSupplementalGroupArgs) ElementType() reflect.Type {
@@ -687,12 +729,14 @@ func (o GetPodSecurityPolicyTemplateSupplementalGroupOutput) ToGetPodSecurityPol
 	}).(GetPodSecurityPolicyTemplateSupplementalGroupPtrOutput)
 }
 
+// ranges are the allowed ranges of supplemental groups.  If you would like to force a single supplemental group then supply a single range with the same start and end. Required for MustRunAs.
 func (o GetPodSecurityPolicyTemplateSupplementalGroupOutput) Ranges() GetPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput {
 	return o.ApplyT(func(v GetPodSecurityPolicyTemplateSupplementalGroup) []GetPodSecurityPolicyTemplateSupplementalGroupRange {
 		return v.Ranges
 	}).(GetPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput)
 }
 
+// rule is the strategy that will dictate what supplemental groups is used in the SecurityContext.
 func (o GetPodSecurityPolicyTemplateSupplementalGroupOutput) Rule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPodSecurityPolicyTemplateSupplementalGroup) *string { return v.Rule }).(pulumi.StringPtrOutput)
 }
@@ -721,6 +765,7 @@ func (o GetPodSecurityPolicyTemplateSupplementalGroupPtrOutput) Elem() GetPodSec
 	}).(GetPodSecurityPolicyTemplateSupplementalGroupOutput)
 }
 
+// ranges are the allowed ranges of supplemental groups.  If you would like to force a single supplemental group then supply a single range with the same start and end. Required for MustRunAs.
 func (o GetPodSecurityPolicyTemplateSupplementalGroupPtrOutput) Ranges() GetPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput {
 	return o.ApplyT(func(v *GetPodSecurityPolicyTemplateSupplementalGroup) []GetPodSecurityPolicyTemplateSupplementalGroupRange {
 		if v == nil {
@@ -730,6 +775,7 @@ func (o GetPodSecurityPolicyTemplateSupplementalGroupPtrOutput) Ranges() GetPodS
 	}).(GetPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput)
 }
 
+// rule is the strategy that will dictate what supplemental groups is used in the SecurityContext.
 func (o GetPodSecurityPolicyTemplateSupplementalGroupPtrOutput) Rule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPodSecurityPolicyTemplateSupplementalGroup) *string {
 		if v == nil {
@@ -740,7 +786,9 @@ func (o GetPodSecurityPolicyTemplateSupplementalGroupPtrOutput) Rule() pulumi.St
 }
 
 type GetPodSecurityPolicyTemplateSupplementalGroupRange struct {
+	// max is the end of the range, inclusive.
 	Max int `pulumi:"max"`
+	// min is the start of the range, inclusive.
 	Min int `pulumi:"min"`
 }
 
@@ -756,7 +804,9 @@ type GetPodSecurityPolicyTemplateSupplementalGroupRangeInput interface {
 }
 
 type GetPodSecurityPolicyTemplateSupplementalGroupRangeArgs struct {
+	// max is the end of the range, inclusive.
 	Max pulumi.IntInput `pulumi:"max"`
+	// min is the start of the range, inclusive.
 	Min pulumi.IntInput `pulumi:"min"`
 }
 
@@ -811,10 +861,12 @@ func (o GetPodSecurityPolicyTemplateSupplementalGroupRangeOutput) ToGetPodSecuri
 	return o
 }
 
+// max is the end of the range, inclusive.
 func (o GetPodSecurityPolicyTemplateSupplementalGroupRangeOutput) Max() pulumi.IntOutput {
 	return o.ApplyT(func(v GetPodSecurityPolicyTemplateSupplementalGroupRange) int { return v.Max }).(pulumi.IntOutput)
 }
 
+// min is the start of the range, inclusive.
 func (o GetPodSecurityPolicyTemplateSupplementalGroupRangeOutput) Min() pulumi.IntOutput {
 	return o.ApplyT(func(v GetPodSecurityPolicyTemplateSupplementalGroupRange) int { return v.Min }).(pulumi.IntOutput)
 }
@@ -840,10 +892,14 @@ func (o GetPodSecurityPolicyTemplateSupplementalGroupRangeArrayOutput) Index(i p
 }
 
 type GetProjectAlertGroupRecipient struct {
-	DefaultRecipient *bool  `pulumi:"defaultRecipient"`
-	NotifierId       string `pulumi:"notifierId"`
-	NotifierType     string `pulumi:"notifierType"`
-	Recipient        string `pulumi:"recipient"`
+	// Use notifier default recipient
+	DefaultRecipient *bool `pulumi:"defaultRecipient"`
+	// Recipient notifier ID
+	NotifierId string `pulumi:"notifierId"`
+	// Recipient notifier type
+	NotifierType string `pulumi:"notifierType"`
+	// Recipient
+	Recipient string `pulumi:"recipient"`
 }
 
 // GetProjectAlertGroupRecipientInput is an input type that accepts GetProjectAlertGroupRecipientArgs and GetProjectAlertGroupRecipientOutput values.
@@ -858,10 +914,14 @@ type GetProjectAlertGroupRecipientInput interface {
 }
 
 type GetProjectAlertGroupRecipientArgs struct {
+	// Use notifier default recipient
 	DefaultRecipient pulumi.BoolPtrInput `pulumi:"defaultRecipient"`
-	NotifierId       pulumi.StringInput  `pulumi:"notifierId"`
-	NotifierType     pulumi.StringInput  `pulumi:"notifierType"`
-	Recipient        pulumi.StringInput  `pulumi:"recipient"`
+	// Recipient notifier ID
+	NotifierId pulumi.StringInput `pulumi:"notifierId"`
+	// Recipient notifier type
+	NotifierType pulumi.StringInput `pulumi:"notifierType"`
+	// Recipient
+	Recipient pulumi.StringInput `pulumi:"recipient"`
 }
 
 func (GetProjectAlertGroupRecipientArgs) ElementType() reflect.Type {
@@ -915,18 +975,22 @@ func (o GetProjectAlertGroupRecipientOutput) ToGetProjectAlertGroupRecipientOutp
 	return o
 }
 
+// Use notifier default recipient
 func (o GetProjectAlertGroupRecipientOutput) DefaultRecipient() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetProjectAlertGroupRecipient) *bool { return v.DefaultRecipient }).(pulumi.BoolPtrOutput)
 }
 
+// Recipient notifier ID
 func (o GetProjectAlertGroupRecipientOutput) NotifierId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectAlertGroupRecipient) string { return v.NotifierId }).(pulumi.StringOutput)
 }
 
+// Recipient notifier type
 func (o GetProjectAlertGroupRecipientOutput) NotifierType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectAlertGroupRecipient) string { return v.NotifierType }).(pulumi.StringOutput)
 }
 
+// Recipient
 func (o GetProjectAlertGroupRecipientOutput) Recipient() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectAlertGroupRecipient) string { return v.Recipient }).(pulumi.StringOutput)
 }
@@ -952,10 +1016,15 @@ func (o GetProjectAlertGroupRecipientArrayOutput) Index(i pulumi.IntInput) GetPr
 }
 
 type GetProjectAlertRuleMetricRule struct {
-	Comparison     *string `pulumi:"comparison"`
-	Description    *string `pulumi:"description"`
-	Duration       string  `pulumi:"duration"`
-	Expression     string  `pulumi:"expression"`
+	// Metric rule comparison
+	Comparison *string `pulumi:"comparison"`
+	// Metric rule description
+	Description *string `pulumi:"description"`
+	// Metric rule duration
+	Duration string `pulumi:"duration"`
+	// Metric rule expression
+	Expression string `pulumi:"expression"`
+	// Metric rule threshold value
 	ThresholdValue float64 `pulumi:"thresholdValue"`
 }
 
@@ -971,11 +1040,16 @@ type GetProjectAlertRuleMetricRuleInput interface {
 }
 
 type GetProjectAlertRuleMetricRuleArgs struct {
-	Comparison     pulumi.StringPtrInput `pulumi:"comparison"`
-	Description    pulumi.StringPtrInput `pulumi:"description"`
-	Duration       pulumi.StringInput    `pulumi:"duration"`
-	Expression     pulumi.StringInput    `pulumi:"expression"`
-	ThresholdValue pulumi.Float64Input   `pulumi:"thresholdValue"`
+	// Metric rule comparison
+	Comparison pulumi.StringPtrInput `pulumi:"comparison"`
+	// Metric rule description
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Metric rule duration
+	Duration pulumi.StringInput `pulumi:"duration"`
+	// Metric rule expression
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// Metric rule threshold value
+	ThresholdValue pulumi.Float64Input `pulumi:"thresholdValue"`
 }
 
 func (GetProjectAlertRuleMetricRuleArgs) ElementType() reflect.Type {
@@ -1004,31 +1078,40 @@ func (o GetProjectAlertRuleMetricRuleOutput) ToGetProjectAlertRuleMetricRuleOutp
 	return o
 }
 
+// Metric rule comparison
 func (o GetProjectAlertRuleMetricRuleOutput) Comparison() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetProjectAlertRuleMetricRule) *string { return v.Comparison }).(pulumi.StringPtrOutput)
 }
 
+// Metric rule description
 func (o GetProjectAlertRuleMetricRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetProjectAlertRuleMetricRule) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Metric rule duration
 func (o GetProjectAlertRuleMetricRuleOutput) Duration() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectAlertRuleMetricRule) string { return v.Duration }).(pulumi.StringOutput)
 }
 
+// Metric rule expression
 func (o GetProjectAlertRuleMetricRuleOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectAlertRuleMetricRule) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+// Metric rule threshold value
 func (o GetProjectAlertRuleMetricRuleOutput) ThresholdValue() pulumi.Float64Output {
 	return o.ApplyT(func(v GetProjectAlertRuleMetricRule) float64 { return v.ThresholdValue }).(pulumi.Float64Output)
 }
 
 type GetProjectAlertRulePodRule struct {
-	Condition              *string `pulumi:"condition"`
-	PodId                  string  `pulumi:"podId"`
-	RestartIntervalSeconds *int    `pulumi:"restartIntervalSeconds"`
-	RestartTimes           *int    `pulumi:"restartTimes"`
+	// Pod rule condition
+	Condition *string `pulumi:"condition"`
+	// Pod ID
+	PodId string `pulumi:"podId"`
+	// Pod rule restart interval seconds
+	RestartIntervalSeconds *int `pulumi:"restartIntervalSeconds"`
+	// Pod rule restart times
+	RestartTimes *int `pulumi:"restartTimes"`
 }
 
 // GetProjectAlertRulePodRuleInput is an input type that accepts GetProjectAlertRulePodRuleArgs and GetProjectAlertRulePodRuleOutput values.
@@ -1043,10 +1126,14 @@ type GetProjectAlertRulePodRuleInput interface {
 }
 
 type GetProjectAlertRulePodRuleArgs struct {
-	Condition              pulumi.StringPtrInput `pulumi:"condition"`
-	PodId                  pulumi.StringInput    `pulumi:"podId"`
-	RestartIntervalSeconds pulumi.IntPtrInput    `pulumi:"restartIntervalSeconds"`
-	RestartTimes           pulumi.IntPtrInput    `pulumi:"restartTimes"`
+	// Pod rule condition
+	Condition pulumi.StringPtrInput `pulumi:"condition"`
+	// Pod ID
+	PodId pulumi.StringInput `pulumi:"podId"`
+	// Pod rule restart interval seconds
+	RestartIntervalSeconds pulumi.IntPtrInput `pulumi:"restartIntervalSeconds"`
+	// Pod rule restart times
+	RestartTimes pulumi.IntPtrInput `pulumi:"restartTimes"`
 }
 
 func (GetProjectAlertRulePodRuleArgs) ElementType() reflect.Type {
@@ -1075,26 +1162,33 @@ func (o GetProjectAlertRulePodRuleOutput) ToGetProjectAlertRulePodRuleOutputWith
 	return o
 }
 
+// Pod rule condition
 func (o GetProjectAlertRulePodRuleOutput) Condition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetProjectAlertRulePodRule) *string { return v.Condition }).(pulumi.StringPtrOutput)
 }
 
+// Pod ID
 func (o GetProjectAlertRulePodRuleOutput) PodId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectAlertRulePodRule) string { return v.PodId }).(pulumi.StringOutput)
 }
 
+// Pod rule restart interval seconds
 func (o GetProjectAlertRulePodRuleOutput) RestartIntervalSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetProjectAlertRulePodRule) *int { return v.RestartIntervalSeconds }).(pulumi.IntPtrOutput)
 }
 
+// Pod rule restart times
 func (o GetProjectAlertRulePodRuleOutput) RestartTimes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetProjectAlertRulePodRule) *int { return v.RestartTimes }).(pulumi.IntPtrOutput)
 }
 
 type GetProjectAlertRuleWorkloadRule struct {
-	AvailablePercentage *int                   `pulumi:"availablePercentage"`
-	Selector            map[string]interface{} `pulumi:"selector"`
-	WorkloadId          *string                `pulumi:"workloadId"`
+	// Workload rule available percentage
+	AvailablePercentage *int `pulumi:"availablePercentage"`
+	// Workload rule selector
+	Selector map[string]interface{} `pulumi:"selector"`
+	// Workload ID
+	WorkloadId *string `pulumi:"workloadId"`
 }
 
 // GetProjectAlertRuleWorkloadRuleInput is an input type that accepts GetProjectAlertRuleWorkloadRuleArgs and GetProjectAlertRuleWorkloadRuleOutput values.
@@ -1109,9 +1203,12 @@ type GetProjectAlertRuleWorkloadRuleInput interface {
 }
 
 type GetProjectAlertRuleWorkloadRuleArgs struct {
-	AvailablePercentage pulumi.IntPtrInput    `pulumi:"availablePercentage"`
-	Selector            pulumi.MapInput       `pulumi:"selector"`
-	WorkloadId          pulumi.StringPtrInput `pulumi:"workloadId"`
+	// Workload rule available percentage
+	AvailablePercentage pulumi.IntPtrInput `pulumi:"availablePercentage"`
+	// Workload rule selector
+	Selector pulumi.MapInput `pulumi:"selector"`
+	// Workload ID
+	WorkloadId pulumi.StringPtrInput `pulumi:"workloadId"`
 }
 
 func (GetProjectAlertRuleWorkloadRuleArgs) ElementType() reflect.Type {
@@ -1140,14 +1237,17 @@ func (o GetProjectAlertRuleWorkloadRuleOutput) ToGetProjectAlertRuleWorkloadRule
 	return o
 }
 
+// Workload rule available percentage
 func (o GetProjectAlertRuleWorkloadRuleOutput) AvailablePercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetProjectAlertRuleWorkloadRule) *int { return v.AvailablePercentage }).(pulumi.IntPtrOutput)
 }
 
+// Workload rule selector
 func (o GetProjectAlertRuleWorkloadRuleOutput) Selector() pulumi.MapOutput {
 	return o.ApplyT(func(v GetProjectAlertRuleWorkloadRule) map[string]interface{} { return v.Selector }).(pulumi.MapOutput)
 }
 
+// Workload ID
 func (o GetProjectAlertRuleWorkloadRuleOutput) WorkloadId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetProjectAlertRuleWorkloadRule) *string { return v.WorkloadId }).(pulumi.StringPtrOutput)
 }
@@ -1625,11 +1725,16 @@ func (o GetRegistryRegistryArrayOutput) Index(i pulumi.IntInput) GetRegistryRegi
 }
 
 type GetRoleTempalteRule struct {
-	ApiGroups       []string `pulumi:"apiGroups"`
+	// Policy rule api groups
+	ApiGroups []string `pulumi:"apiGroups"`
+	// Policy rule non resource urls
 	NonResourceUrls []string `pulumi:"nonResourceUrls"`
-	ResourceNames   []string `pulumi:"resourceNames"`
-	Resources       []string `pulumi:"resources"`
-	Verbs           []string `pulumi:"verbs"`
+	// Policy rule resource names
+	ResourceNames []string `pulumi:"resourceNames"`
+	// Policy rule resources
+	Resources []string `pulumi:"resources"`
+	// Policy rule verbs
+	Verbs []string `pulumi:"verbs"`
 }
 
 // GetRoleTempalteRuleInput is an input type that accepts GetRoleTempalteRuleArgs and GetRoleTempalteRuleOutput values.
@@ -1644,11 +1749,16 @@ type GetRoleTempalteRuleInput interface {
 }
 
 type GetRoleTempalteRuleArgs struct {
-	ApiGroups       pulumi.StringArrayInput `pulumi:"apiGroups"`
+	// Policy rule api groups
+	ApiGroups pulumi.StringArrayInput `pulumi:"apiGroups"`
+	// Policy rule non resource urls
 	NonResourceUrls pulumi.StringArrayInput `pulumi:"nonResourceUrls"`
-	ResourceNames   pulumi.StringArrayInput `pulumi:"resourceNames"`
-	Resources       pulumi.StringArrayInput `pulumi:"resources"`
-	Verbs           pulumi.StringArrayInput `pulumi:"verbs"`
+	// Policy rule resource names
+	ResourceNames pulumi.StringArrayInput `pulumi:"resourceNames"`
+	// Policy rule resources
+	Resources pulumi.StringArrayInput `pulumi:"resources"`
+	// Policy rule verbs
+	Verbs pulumi.StringArrayInput `pulumi:"verbs"`
 }
 
 func (GetRoleTempalteRuleArgs) ElementType() reflect.Type {
@@ -1702,22 +1812,27 @@ func (o GetRoleTempalteRuleOutput) ToGetRoleTempalteRuleOutputWithContext(ctx co
 	return o
 }
 
+// Policy rule api groups
 func (o GetRoleTempalteRuleOutput) ApiGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRoleTempalteRule) []string { return v.ApiGroups }).(pulumi.StringArrayOutput)
 }
 
+// Policy rule non resource urls
 func (o GetRoleTempalteRuleOutput) NonResourceUrls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRoleTempalteRule) []string { return v.NonResourceUrls }).(pulumi.StringArrayOutput)
 }
 
+// Policy rule resource names
 func (o GetRoleTempalteRuleOutput) ResourceNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRoleTempalteRule) []string { return v.ResourceNames }).(pulumi.StringArrayOutput)
 }
 
+// Policy rule resources
 func (o GetRoleTempalteRuleOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRoleTempalteRule) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
 
+// Policy rule verbs
 func (o GetRoleTempalteRuleOutput) Verbs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRoleTempalteRule) []string { return v.Verbs }).(pulumi.StringArrayOutput)
 }
@@ -1743,11 +1858,16 @@ func (o GetRoleTempalteRuleArrayOutput) Index(i pulumi.IntInput) GetRoleTempalte
 }
 
 type GetRoleTemplateRule struct {
-	ApiGroups       []string `pulumi:"apiGroups"`
+	// Policy rule api groups
+	ApiGroups []string `pulumi:"apiGroups"`
+	// Policy rule non resource urls
 	NonResourceUrls []string `pulumi:"nonResourceUrls"`
-	ResourceNames   []string `pulumi:"resourceNames"`
-	Resources       []string `pulumi:"resources"`
-	Verbs           []string `pulumi:"verbs"`
+	// Policy rule resource names
+	ResourceNames []string `pulumi:"resourceNames"`
+	// Policy rule resources
+	Resources []string `pulumi:"resources"`
+	// Policy rule verbs
+	Verbs []string `pulumi:"verbs"`
 }
 
 // GetRoleTemplateRuleInput is an input type that accepts GetRoleTemplateRuleArgs and GetRoleTemplateRuleOutput values.
@@ -1762,11 +1882,16 @@ type GetRoleTemplateRuleInput interface {
 }
 
 type GetRoleTemplateRuleArgs struct {
-	ApiGroups       pulumi.StringArrayInput `pulumi:"apiGroups"`
+	// Policy rule api groups
+	ApiGroups pulumi.StringArrayInput `pulumi:"apiGroups"`
+	// Policy rule non resource urls
 	NonResourceUrls pulumi.StringArrayInput `pulumi:"nonResourceUrls"`
-	ResourceNames   pulumi.StringArrayInput `pulumi:"resourceNames"`
-	Resources       pulumi.StringArrayInput `pulumi:"resources"`
-	Verbs           pulumi.StringArrayInput `pulumi:"verbs"`
+	// Policy rule resource names
+	ResourceNames pulumi.StringArrayInput `pulumi:"resourceNames"`
+	// Policy rule resources
+	Resources pulumi.StringArrayInput `pulumi:"resources"`
+	// Policy rule verbs
+	Verbs pulumi.StringArrayInput `pulumi:"verbs"`
 }
 
 func (GetRoleTemplateRuleArgs) ElementType() reflect.Type {
@@ -1820,22 +1945,27 @@ func (o GetRoleTemplateRuleOutput) ToGetRoleTemplateRuleOutputWithContext(ctx co
 	return o
 }
 
+// Policy rule api groups
 func (o GetRoleTemplateRuleOutput) ApiGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRoleTemplateRule) []string { return v.ApiGroups }).(pulumi.StringArrayOutput)
 }
 
+// Policy rule non resource urls
 func (o GetRoleTemplateRuleOutput) NonResourceUrls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRoleTemplateRule) []string { return v.NonResourceUrls }).(pulumi.StringArrayOutput)
 }
 
+// Policy rule resource names
 func (o GetRoleTemplateRuleOutput) ResourceNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRoleTemplateRule) []string { return v.ResourceNames }).(pulumi.StringArrayOutput)
 }
 
+// Policy rule resources
 func (o GetRoleTemplateRuleOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRoleTemplateRule) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
 
+// Policy rule verbs
 func (o GetRoleTemplateRuleOutput) Verbs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRoleTemplateRule) []string { return v.Verbs }).(pulumi.StringArrayOutput)
 }

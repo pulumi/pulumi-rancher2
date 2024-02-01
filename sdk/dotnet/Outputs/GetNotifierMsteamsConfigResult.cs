@@ -13,7 +13,13 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetNotifierMsteamsConfigResult
     {
+        /// <summary>
+        /// MS teams proxy URL
+        /// </summary>
         public readonly string? ProxyUrl;
+        /// <summary>
+        /// Webhook URL
+        /// </summary>
         public readonly string Url;
 
         [OutputConstructor]

@@ -85,16 +85,32 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressA
         return Optional.ofNullable(this.provider);
     }
 
+    /**
+     * Ingress add-on tolerations
+     * 
+     */
     @Import(name="tolerations")
     private @Nullable Output<List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressTolerationArgs>> tolerations;
 
+    /**
+     * @return Ingress add-on tolerations
+     * 
+     */
     public Optional<Output<List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressTolerationArgs>>> tolerations() {
         return Optional.ofNullable(this.tolerations);
     }
 
+    /**
+     * Update daemon set strategy
+     * 
+     */
     @Import(name="updateStrategy")
     private @Nullable Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyArgs> updateStrategy;
 
+    /**
+     * @return Update daemon set strategy
+     * 
+     */
     public Optional<Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyArgs>> updateStrategy() {
         return Optional.ofNullable(this.updateStrategy);
     }
@@ -214,24 +230,54 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressA
             return provider(Output.of(provider));
         }
 
+        /**
+         * @param tolerations Ingress add-on tolerations
+         * 
+         * @return builder
+         * 
+         */
         public Builder tolerations(@Nullable Output<List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressTolerationArgs>> tolerations) {
             $.tolerations = tolerations;
             return this;
         }
 
+        /**
+         * @param tolerations Ingress add-on tolerations
+         * 
+         * @return builder
+         * 
+         */
         public Builder tolerations(List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressTolerationArgs> tolerations) {
             return tolerations(Output.of(tolerations));
         }
 
+        /**
+         * @param tolerations Ingress add-on tolerations
+         * 
+         * @return builder
+         * 
+         */
         public Builder tolerations(ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressTolerationArgs... tolerations) {
             return tolerations(List.of(tolerations));
         }
 
+        /**
+         * @param updateStrategy Update daemon set strategy
+         * 
+         * @return builder
+         * 
+         */
         public Builder updateStrategy(@Nullable Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyArgs> updateStrategy) {
             $.updateStrategy = updateStrategy;
             return this;
         }
 
+        /**
+         * @param updateStrategy Update daemon set strategy
+         * 
+         * @return builder
+         * 
+         */
         public Builder updateStrategy(ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyArgs updateStrategy) {
             return updateStrategy(Output.of(updateStrategy));
         }

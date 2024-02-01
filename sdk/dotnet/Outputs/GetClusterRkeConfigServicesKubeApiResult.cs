@@ -13,6 +13,9 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterRkeConfigServicesKubeApiResult
     {
+        /// <summary>
+        /// Cluster admission configuration
+        /// </summary>
         public readonly Outputs.GetClusterRkeConfigServicesKubeApiAdmissionConfigurationResult? AdmissionConfiguration;
         public readonly bool? AlwaysPullImages;
         public readonly Outputs.GetClusterRkeConfigServicesKubeApiAuditLogResult? AuditLog;

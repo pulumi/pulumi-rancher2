@@ -13,21 +13,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterV2RkeConfigUpgradeStrategy {
+    /**
+     * @return How many controlplane nodes should be upgrade at time, 0 is infinite. Percentages are also accepted
+     * 
+     */
     private @Nullable String controlPlaneConcurrency;
+    /**
+     * @return Controlplane nodes drain options
+     * 
+     */
     private @Nullable GetClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions controlPlaneDrainOptions;
+    /**
+     * @return How many worker nodes should be upgrade at time
+     * 
+     */
     private @Nullable String workerConcurrency;
+    /**
+     * @return Worker nodes drain options
+     * 
+     */
     private @Nullable GetClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions workerDrainOptions;
 
     private GetClusterV2RkeConfigUpgradeStrategy() {}
+    /**
+     * @return How many controlplane nodes should be upgrade at time, 0 is infinite. Percentages are also accepted
+     * 
+     */
     public Optional<String> controlPlaneConcurrency() {
         return Optional.ofNullable(this.controlPlaneConcurrency);
     }
+    /**
+     * @return Controlplane nodes drain options
+     * 
+     */
     public Optional<GetClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions> controlPlaneDrainOptions() {
         return Optional.ofNullable(this.controlPlaneDrainOptions);
     }
+    /**
+     * @return How many worker nodes should be upgrade at time
+     * 
+     */
     public Optional<String> workerConcurrency() {
         return Optional.ofNullable(this.workerConcurrency);
     }
+    /**
+     * @return Worker nodes drain options
+     * 
+     */
     public Optional<GetClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions> workerDrainOptions() {
         return Optional.ofNullable(this.workerDrainOptions);
     }

@@ -13,33 +13,89 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterV2RkeConfigEtcdS3Config {
+    /**
+     * @return ETCD snapshot S3 bucket
+     * 
+     */
     private String bucket;
+    /**
+     * @return ETCD snapshot S3 cloud credential name
+     * 
+     */
     private @Nullable String cloudCredentialName;
+    /**
+     * @return ETCD snapshot S3 endpoint
+     * 
+     */
     private String endpoint;
+    /**
+     * @return ETCD snapshot S3 endpoint CA
+     * 
+     */
     private @Nullable String endpointCa;
+    /**
+     * @return ETCD snapshot S3 folder
+     * 
+     */
     private @Nullable String folder;
+    /**
+     * @return ETCD snapshot S3 region
+     * 
+     */
     private @Nullable String region;
+    /**
+     * @return Disable ETCD skip ssl verify
+     * 
+     */
     private @Nullable Boolean skipSslVerify;
 
     private GetClusterV2RkeConfigEtcdS3Config() {}
+    /**
+     * @return ETCD snapshot S3 bucket
+     * 
+     */
     public String bucket() {
         return this.bucket;
     }
+    /**
+     * @return ETCD snapshot S3 cloud credential name
+     * 
+     */
     public Optional<String> cloudCredentialName() {
         return Optional.ofNullable(this.cloudCredentialName);
     }
+    /**
+     * @return ETCD snapshot S3 endpoint
+     * 
+     */
     public String endpoint() {
         return this.endpoint;
     }
+    /**
+     * @return ETCD snapshot S3 endpoint CA
+     * 
+     */
     public Optional<String> endpointCa() {
         return Optional.ofNullable(this.endpointCa);
     }
+    /**
+     * @return ETCD snapshot S3 folder
+     * 
+     */
     public Optional<String> folder() {
         return Optional.ofNullable(this.folder);
     }
+    /**
+     * @return ETCD snapshot S3 region
+     * 
+     */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
+    /**
+     * @return Disable ETCD skip ssl verify
+     * 
+     */
     public Optional<Boolean> skipSslVerify() {
         return Optional.ofNullable(this.skipSslVerify);
     }

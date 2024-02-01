@@ -16,16 +16,32 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressU
 
     public static final ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyArgs Empty = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyArgs();
 
+    /**
+     * Rolling update for update strategy
+     * 
+     */
     @Import(name="rollingUpdate")
     private @Nullable Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdateArgs> rollingUpdate;
 
+    /**
+     * @return Rolling update for update strategy
+     * 
+     */
     public Optional<Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdateArgs>> rollingUpdate() {
         return Optional.ofNullable(this.rollingUpdate);
     }
 
+    /**
+     * Strategy
+     * 
+     */
     @Import(name="strategy")
     private @Nullable Output<String> strategy;
 
+    /**
+     * @return Strategy
+     * 
+     */
     public Optional<Output<String>> strategy() {
         return Optional.ofNullable(this.strategy);
     }
@@ -55,20 +71,44 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressU
             $ = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param rollingUpdate Rolling update for update strategy
+         * 
+         * @return builder
+         * 
+         */
         public Builder rollingUpdate(@Nullable Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdateArgs> rollingUpdate) {
             $.rollingUpdate = rollingUpdate;
             return this;
         }
 
+        /**
+         * @param rollingUpdate Rolling update for update strategy
+         * 
+         * @return builder
+         * 
+         */
         public Builder rollingUpdate(ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdateArgs rollingUpdate) {
             return rollingUpdate(Output.of(rollingUpdate));
         }
 
+        /**
+         * @param strategy Strategy
+         * 
+         * @return builder
+         * 
+         */
         public Builder strategy(@Nullable Output<String> strategy) {
             $.strategy = strategy;
             return this;
         }
 
+        /**
+         * @param strategy Strategy
+         * 
+         * @return builder
+         * 
+         */
         public Builder strategy(String strategy) {
             return strategy(Output.of(strategy));
         }

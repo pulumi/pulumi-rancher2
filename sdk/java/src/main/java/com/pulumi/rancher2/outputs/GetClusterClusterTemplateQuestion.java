@@ -13,21 +13,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterClusterTemplateQuestion {
+    /**
+     * @return Default variable value
+     * 
+     */
     private String default_;
+    /**
+     * @return Required variable
+     * 
+     */
     private @Nullable Boolean required;
+    /**
+     * @return Variable type
+     * 
+     */
     private @Nullable String type;
+    /**
+     * @return Variable name
+     * 
+     */
     private String variable;
 
     private GetClusterClusterTemplateQuestion() {}
+    /**
+     * @return Default variable value
+     * 
+     */
     public String default_() {
         return this.default_;
     }
+    /**
+     * @return Required variable
+     * 
+     */
     public Optional<Boolean> required() {
         return Optional.ofNullable(this.required);
     }
+    /**
+     * @return Variable type
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
+    /**
+     * @return Variable name
+     * 
+     */
     public String variable() {
         return this.variable;
     }

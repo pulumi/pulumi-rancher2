@@ -13,13 +13,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPodSecurityPolicyTemplateSeLinux {
+    /**
+     * @return rule is the strategy that will dictate the allowable labels that may be set.
+     * 
+     */
     private String rule;
+    /**
+     * @return seLinuxOptions required to run as; required for MustRunAs. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+     * 
+     */
     private @Nullable GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption seLinuxOption;
 
     private GetPodSecurityPolicyTemplateSeLinux() {}
+    /**
+     * @return rule is the strategy that will dictate the allowable labels that may be set.
+     * 
+     */
     public String rule() {
         return this.rule;
     }
+    /**
+     * @return seLinuxOptions required to run as; required for MustRunAs. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+     * 
+     */
     public Optional<GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption> seLinuxOption() {
         return Optional.ofNullable(this.seLinuxOption);
     }

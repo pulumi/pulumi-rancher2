@@ -12,6 +12,9 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPluginArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Plugin configuration
+        /// </summary>
         [Input("configuration")]
         public Input<string>? Configuration { get; set; }
 
@@ -21,6 +24,9 @@ namespace Pulumi.Rancher2.Inputs
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Plugin path
+        /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
 

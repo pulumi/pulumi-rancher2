@@ -12,9 +12,15 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterAlterRuleEventRuleArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Event type
+        /// </summary>
         [Input("eventType")]
         public Input<string>? EventType { get; set; }
 
+        /// <summary>
+        /// Resource kind
+        /// </summary>
         [Input("resourceKind", required: true)]
         public Input<string> ResourceKind { get; set; } = null!;
 

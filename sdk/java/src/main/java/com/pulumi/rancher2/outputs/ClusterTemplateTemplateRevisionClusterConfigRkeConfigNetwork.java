@@ -28,6 +28,10 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork 
     private @Nullable Integer mtu;
     private @Nullable Map<String,Object> options;
     private @Nullable String plugin;
+    /**
+     * @return Network add-on tolerations
+     * 
+     */
     private @Nullable List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkToleration> tolerations;
     private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider weaveNetworkProvider;
 
@@ -53,6 +57,10 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork 
     public Optional<String> plugin() {
         return Optional.ofNullable(this.plugin);
     }
+    /**
+     * @return Network add-on tolerations
+     * 
+     */
     public List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkToleration> tolerations() {
         return this.tolerations == null ? List.of() : this.tolerations;
     }

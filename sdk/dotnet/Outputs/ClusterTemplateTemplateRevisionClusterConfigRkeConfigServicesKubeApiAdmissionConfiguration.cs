@@ -13,8 +13,17 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfiguration
     {
+        /// <summary>
+        /// Admission configuration ApiVersion
+        /// </summary>
         public readonly string? ApiVersion;
+        /// <summary>
+        /// Admission configuration Kind
+        /// </summary>
         public readonly string? Kind;
+        /// <summary>
+        /// Admission configuration plugins
+        /// </summary>
         public readonly ImmutableArray<Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPlugin> Plugins;
 
         [OutputConstructor]

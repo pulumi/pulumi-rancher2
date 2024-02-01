@@ -12,6 +12,9 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// ECR credential plugin config
+        /// </summary>
         [Input("ecrCredentialPlugin")]
         public Input<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPluginArgs>? EcrCredentialPlugin { get; set; }
 

@@ -12,17 +12,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNotifierDingtalkConfig {
+    /**
+     * @return Dingtalk proxy URL
+     * 
+     */
     private @Nullable String proxyUrl;
+    /**
+     * @return Required for webhook with sign enabled
+     * 
+     */
     private @Nullable String secret;
+    /**
+     * @return Webhook URL
+     * 
+     */
     private String url;
 
     private GetNotifierDingtalkConfig() {}
+    /**
+     * @return Dingtalk proxy URL
+     * 
+     */
     public Optional<String> proxyUrl() {
         return Optional.ofNullable(this.proxyUrl);
     }
+    /**
+     * @return Required for webhook with sign enabled
+     * 
+     */
     public Optional<String> secret() {
         return Optional.ofNullable(this.secret);
     }
+    /**
+     * @return Webhook URL
+     * 
+     */
     public String url() {
         return this.url;
     }

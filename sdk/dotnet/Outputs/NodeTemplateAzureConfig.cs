@@ -13,6 +13,9 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class NodeTemplateAzureConfig
     {
+        /// <summary>
+        /// Enable Accelerated Networking when creating an Azure Network Interface
+        /// </summary>
         public readonly bool? AcceleratedNetworking;
         /// <summary>
         /// Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
@@ -130,6 +133,9 @@ namespace Pulumi.Rancher2.Outputs
         /// Use private IP address of the machine to connect. Default `false` (bool)
         /// </summary>
         public readonly bool? UsePrivateIp;
+        /// <summary>
+        /// Use the Standard SKU when creating a public IP for an Azure VM
+        /// </summary>
         public readonly bool? UsePublicIpStandardSku;
         /// <summary>
         /// Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format). Default `docker-machine-vnet` (string)

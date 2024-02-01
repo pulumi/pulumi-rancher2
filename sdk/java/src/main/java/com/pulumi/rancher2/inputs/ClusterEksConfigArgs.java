@@ -79,9 +79,17 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.desiredNodes);
     }
 
+    /**
+     * Enables EBS encryption of worker nodes
+     * 
+     */
     @Import(name="ebsEncryption")
     private @Nullable Output<Boolean> ebsEncryption;
 
+    /**
+     * @return Enables EBS encryption of worker nodes
+     * 
+     */
     public Optional<Output<Boolean>> ebsEncryption() {
         return Optional.ofNullable(this.ebsEncryption);
     }
@@ -422,11 +430,23 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
             return desiredNodes(Output.of(desiredNodes));
         }
 
+        /**
+         * @param ebsEncryption Enables EBS encryption of worker nodes
+         * 
+         * @return builder
+         * 
+         */
         public Builder ebsEncryption(@Nullable Output<Boolean> ebsEncryption) {
             $.ebsEncryption = ebsEncryption;
             return this;
         }
 
+        /**
+         * @param ebsEncryption Enables EBS encryption of worker nodes
+         * 
+         * @return builder
+         * 
+         */
         public Builder ebsEncryption(Boolean ebsEncryption) {
             return ebsEncryption(Output.of(ebsEncryption));
         }

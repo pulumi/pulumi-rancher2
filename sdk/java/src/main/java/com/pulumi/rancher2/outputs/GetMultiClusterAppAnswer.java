@@ -12,17 +12,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetMultiClusterAppAnswer {
+    /**
+     * @return Cluster ID for answer
+     * 
+     */
     private String clusterId;
+    /**
+     * @return Project ID for answer
+     * 
+     */
     private String projectId;
+    /**
+     * @return Key/values for answer
+     * 
+     */
     private Map<String,Object> values;
 
     private GetMultiClusterAppAnswer() {}
+    /**
+     * @return Cluster ID for answer
+     * 
+     */
     public String clusterId() {
         return this.clusterId;
     }
+    /**
+     * @return Project ID for answer
+     * 
+     */
     public String projectId() {
         return this.projectId;
     }
+    /**
+     * @return Key/values for answer
+     * 
+     */
     public Map<String,Object> values() {
         return this.values;
     }

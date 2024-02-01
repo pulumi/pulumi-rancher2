@@ -22,9 +22,17 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs 
 
     public static final ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs Empty = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs();
 
+    /**
+     * Linear Autoscaler Params
+     * 
+     */
     @Import(name="linearAutoscalerParams")
     private @Nullable Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsArgs> linearAutoscalerParams;
 
+    /**
+     * @return Linear Autoscaler Params
+     * 
+     */
     public Optional<Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsArgs>> linearAutoscalerParams() {
         return Optional.ofNullable(this.linearAutoscalerParams);
     }
@@ -36,9 +44,17 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs 
         return Optional.ofNullable(this.nodeSelector);
     }
 
+    /**
+     * Nodelocal dns
+     * 
+     */
     @Import(name="nodelocal")
     private @Nullable Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs> nodelocal;
 
+    /**
+     * @return Nodelocal dns
+     * 
+     */
     public Optional<Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs>> nodelocal() {
         return Optional.ofNullable(this.nodelocal);
     }
@@ -64,16 +80,32 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs 
         return Optional.ofNullable(this.reverseCidrs);
     }
 
+    /**
+     * DNS service tolerations
+     * 
+     */
     @Import(name="tolerations")
     private @Nullable Output<List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsTolerationArgs>> tolerations;
 
+    /**
+     * @return DNS service tolerations
+     * 
+     */
     public Optional<Output<List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsTolerationArgs>>> tolerations() {
         return Optional.ofNullable(this.tolerations);
     }
 
+    /**
+     * Update deployment strategy
+     * 
+     */
     @Import(name="updateStrategy")
     private @Nullable Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgs> updateStrategy;
 
+    /**
+     * @return Update deployment strategy
+     * 
+     */
     public Optional<Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgs>> updateStrategy() {
         return Optional.ofNullable(this.updateStrategy);
     }
@@ -117,11 +149,23 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs 
             $ = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param linearAutoscalerParams Linear Autoscaler Params
+         * 
+         * @return builder
+         * 
+         */
         public Builder linearAutoscalerParams(@Nullable Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsArgs> linearAutoscalerParams) {
             $.linearAutoscalerParams = linearAutoscalerParams;
             return this;
         }
 
+        /**
+         * @param linearAutoscalerParams Linear Autoscaler Params
+         * 
+         * @return builder
+         * 
+         */
         public Builder linearAutoscalerParams(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsArgs linearAutoscalerParams) {
             return linearAutoscalerParams(Output.of(linearAutoscalerParams));
         }
@@ -135,11 +179,23 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs 
             return nodeSelector(Output.of(nodeSelector));
         }
 
+        /**
+         * @param nodelocal Nodelocal dns
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodelocal(@Nullable Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs> nodelocal) {
             $.nodelocal = nodelocal;
             return this;
         }
 
+        /**
+         * @param nodelocal Nodelocal dns
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodelocal(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs nodelocal) {
             return nodelocal(Output.of(nodelocal));
         }
@@ -175,24 +231,54 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs 
             return reverseCidrs(List.of(reverseCidrs));
         }
 
+        /**
+         * @param tolerations DNS service tolerations
+         * 
+         * @return builder
+         * 
+         */
         public Builder tolerations(@Nullable Output<List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsTolerationArgs>> tolerations) {
             $.tolerations = tolerations;
             return this;
         }
 
+        /**
+         * @param tolerations DNS service tolerations
+         * 
+         * @return builder
+         * 
+         */
         public Builder tolerations(List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsTolerationArgs> tolerations) {
             return tolerations(Output.of(tolerations));
         }
 
+        /**
+         * @param tolerations DNS service tolerations
+         * 
+         * @return builder
+         * 
+         */
         public Builder tolerations(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsTolerationArgs... tolerations) {
             return tolerations(List.of(tolerations));
         }
 
+        /**
+         * @param updateStrategy Update deployment strategy
+         * 
+         * @return builder
+         * 
+         */
         public Builder updateStrategy(@Nullable Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgs> updateStrategy) {
             $.updateStrategy = updateStrategy;
             return this;
         }
 
+        /**
+         * @param updateStrategy Update deployment strategy
+         * 
+         * @return builder
+         * 
+         */
         public Builder updateStrategy(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgs updateStrategy) {
             return updateStrategy(Output.of(updateStrategy));
         }

@@ -13,16 +13,32 @@ public final class GetPodSecurityPolicyTemplateRunAsUserRange extends com.pulumi
 
     public static final GetPodSecurityPolicyTemplateRunAsUserRange Empty = new GetPodSecurityPolicyTemplateRunAsUserRange();
 
+    /**
+     * max is the end of the range, inclusive.
+     * 
+     */
     @Import(name="max", required=true)
     private Integer max;
 
+    /**
+     * @return max is the end of the range, inclusive.
+     * 
+     */
     public Integer max() {
         return this.max;
     }
 
+    /**
+     * min is the start of the range, inclusive.
+     * 
+     */
     @Import(name="min", required=true)
     private Integer min;
 
+    /**
+     * @return min is the start of the range, inclusive.
+     * 
+     */
     public Integer min() {
         return this.min;
     }
@@ -52,11 +68,23 @@ public final class GetPodSecurityPolicyTemplateRunAsUserRange extends com.pulumi
             $ = new GetPodSecurityPolicyTemplateRunAsUserRange(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param max max is the end of the range, inclusive.
+         * 
+         * @return builder
+         * 
+         */
         public Builder max(Integer max) {
             $.max = max;
             return this;
         }
 
+        /**
+         * @param min min is the start of the range, inclusive.
+         * 
+         * @return builder
+         * 
+         */
         public Builder min(Integer min) {
             $.min = min;
             return this;

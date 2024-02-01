@@ -74,9 +74,17 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkA
         return Optional.ofNullable(this.plugin);
     }
 
+    /**
+     * Network add-on tolerations
+     * 
+     */
     @Import(name="tolerations")
     private @Nullable Output<List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkTolerationArgs>> tolerations;
 
+    /**
+     * @return Network add-on tolerations
+     * 
+     */
     public Optional<Output<List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkTolerationArgs>>> tolerations() {
         return Optional.ofNullable(this.tolerations);
     }
@@ -183,15 +191,33 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkA
             return plugin(Output.of(plugin));
         }
 
+        /**
+         * @param tolerations Network add-on tolerations
+         * 
+         * @return builder
+         * 
+         */
         public Builder tolerations(@Nullable Output<List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkTolerationArgs>> tolerations) {
             $.tolerations = tolerations;
             return this;
         }
 
+        /**
+         * @param tolerations Network add-on tolerations
+         * 
+         * @return builder
+         * 
+         */
         public Builder tolerations(List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkTolerationArgs> tolerations) {
             return tolerations(Output.of(tolerations));
         }
 
+        /**
+         * @param tolerations Network add-on tolerations
+         * 
+         * @return builder
+         * 
+         */
         public Builder tolerations(ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkTolerationArgs... tolerations) {
             return tolerations(List.of(tolerations));
         }

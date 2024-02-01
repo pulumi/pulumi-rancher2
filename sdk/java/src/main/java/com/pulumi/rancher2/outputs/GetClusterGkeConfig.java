@@ -17,72 +17,284 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterGkeConfig {
+    /**
+     * @return The IP address range of the container pods
+     * 
+     */
     private String clusterIpv4Cidr;
+    /**
+     * @return The contents of the GC credential file
+     * 
+     */
     private String credential;
     /**
      * @return (Computed) The description for Cluster (string)
      * 
      */
     private @Nullable String description;
+    /**
+     * @return Size of the disk attached to each node
+     * 
+     */
     private @Nullable Integer diskSizeGb;
+    /**
+     * @return Type of the disk attached to each node
+     * 
+     */
     private String diskType;
+    /**
+     * @return To enable kubernetes alpha feature
+     * 
+     */
     private @Nullable Boolean enableAlphaFeature;
+    /**
+     * @return Specifies whether the node auto-repair is enabled for the node pool
+     * 
+     */
     private @Nullable Boolean enableAutoRepair;
+    /**
+     * @return Specifies whether node auto-upgrade is enabled for the node pool
+     * 
+     */
     private @Nullable Boolean enableAutoUpgrade;
+    /**
+     * @return Enable horizontal pod autoscaling for the cluster
+     * 
+     */
     private @Nullable Boolean enableHorizontalPodAutoscaling;
+    /**
+     * @return Enable http load balancing for the cluster
+     * 
+     */
     private @Nullable Boolean enableHttpLoadBalancing;
+    /**
+     * @return Whether to enable the kubernetes dashboard
+     * 
+     */
     private @Nullable Boolean enableKubernetesDashboard;
+    /**
+     * @return Whether to enable legacy abac on the cluster
+     * 
+     */
     private @Nullable Boolean enableLegacyAbac;
+    /**
+     * @return Whether or not master authorized network is enabled
+     * 
+     */
     private @Nullable Boolean enableMasterAuthorizedNetwork;
+    /**
+     * @return Enable network policy config for the cluster
+     * 
+     */
     private @Nullable Boolean enableNetworkPolicyConfig;
+    /**
+     * @return Enable nodepool autoscaling
+     * 
+     */
     private @Nullable Boolean enableNodepoolAutoscaling;
+    /**
+     * @return Whether the master&#39;s internal IP address is used as the cluster endpoint
+     * 
+     */
     private @Nullable Boolean enablePrivateEndpoint;
+    /**
+     * @return Whether nodes have internal IP address only
+     * 
+     */
     private @Nullable Boolean enablePrivateNodes;
+    /**
+     * @return Enable stackdriver logging
+     * 
+     */
     private @Nullable Boolean enableStackdriverLogging;
+    /**
+     * @return Enable stackdriver monitoring
+     * 
+     */
     private @Nullable Boolean enableStackdriverMonitoring;
+    /**
+     * @return The image to use for the worker nodes
+     * 
+     */
     private String imageType;
+    /**
+     * @return The IP address range for the cluster pod IPs
+     * 
+     */
     private String ipPolicyClusterIpv4CidrBlock;
+    /**
+     * @return The name of the secondary range to be used for the cluster CIDR block
+     * 
+     */
     private String ipPolicyClusterSecondaryRangeName;
+    /**
+     * @return Whether a new subnetwork will be created automatically for the cluster
+     * 
+     */
     private @Nullable Boolean ipPolicyCreateSubnetwork;
+    /**
+     * @return The IP address range of the instance IPs in this cluster
+     * 
+     */
     private String ipPolicyNodeIpv4CidrBlock;
+    /**
+     * @return The IP address range of the services IPs in this cluster
+     * 
+     */
     private String ipPolicyServicesIpv4CidrBlock;
+    /**
+     * @return The name of the secondary range to be used for the services CIDR block
+     * 
+     */
     private String ipPolicyServicesSecondaryRangeName;
+    /**
+     * @return A custom subnetwork name to be used if createSubnetwork is true
+     * 
+     */
     private String ipPolicySubnetworkName;
+    /**
+     * @return Issue a client certificate
+     * 
+     */
     private @Nullable Boolean issueClientCertificate;
+    /**
+     * @return Enable the kubernetes dashboard
+     * 
+     */
     private @Nullable Boolean kubernetesDashboard;
     /**
      * @return (Computed) Labels for Node Pool object (map)
      * 
      */
     private Map<String,Object> labels;
+    /**
+     * @return The number of local SSD disks to be attached to the node
+     * 
+     */
     private @Nullable Integer localSsdCount;
+    /**
+     * @return Locations to use for the cluster
+     * 
+     */
     private List<String> locations;
+    /**
+     * @return The machine type to use for the worker nodes
+     * 
+     */
     private String machineType;
+    /**
+     * @return When to performance updates on the nodes, in 24-hour time
+     * 
+     */
     private String maintenanceWindow;
+    /**
+     * @return Define up to 10 external networks that could access Kubernetes master through HTTPS
+     * 
+     */
     private @Nullable List<String> masterAuthorizedNetworkCidrBlocks;
+    /**
+     * @return The IP range in CIDR notation to use for the hosted master network
+     * 
+     */
     private String masterIpv4CidrBlock;
+    /**
+     * @return The kubernetes master version
+     * 
+     */
     private String masterVersion;
+    /**
+     * @return Maximum number of nodes in the NodePool. Must be &gt;= minNodeCount. There has to enough quota to scale up the cluster
+     * 
+     */
     private @Nullable Integer maxNodeCount;
+    /**
+     * @return Minimmum number of nodes in the NodePool. Must be &gt;= 1 and &lt;= maxNodeCount
+     * 
+     */
     private @Nullable Integer minNodeCount;
+    /**
+     * @return The network to use for the cluster
+     * 
+     */
     private String network;
+    /**
+     * @return The number of nodes to create in this cluster
+     * 
+     */
     private @Nullable Integer nodeCount;
+    /**
+     * @return The ID of the cluster node pool
+     * 
+     */
     private String nodePool;
+    /**
+     * @return The version of kubernetes to use on the nodes
+     * 
+     */
     private String nodeVersion;
+    /**
+     * @return The set of Google API scopes to be made available on all of the node VMs under the default service account
+     * 
+     */
     private List<String> oauthScopes;
+    /**
+     * @return Whether the nodes are created as preemptible VM instances
+     * 
+     */
     private @Nullable Boolean preemptible;
+    /**
+     * @return The ID of your project to use when creating a cluster
+     * 
+     */
     private String projectId;
+    /**
+     * @return The region to launch the cluster. Region or zone should be used
+     * 
+     */
     private @Nullable String region;
+    /**
+     * @return The map of Kubernetes labels (key/value pairs) to be applied to each cluster
+     * 
+     */
     private Map<String,Object> resourceLabels;
+    /**
+     * @return The Google Cloud Platform Service Account to be used by the node VMs
+     * 
+     */
     private String serviceAccount;
+    /**
+     * @return The sub-network to use for the cluster
+     * 
+     */
     private String subNetwork;
+    /**
+     * @return List of kubernetes taints to be applied to each node
+     * 
+     */
     private @Nullable List<String> taints;
+    /**
+     * @return Whether alias IPs will be used for pod IPs in the cluster
+     * 
+     */
     private @Nullable Boolean useIpAliases;
+    /**
+     * @return The zone to launch the cluster. Zone or region should be used
+     * 
+     */
     private @Nullable String zone;
 
     private GetClusterGkeConfig() {}
+    /**
+     * @return The IP address range of the container pods
+     * 
+     */
     public String clusterIpv4Cidr() {
         return this.clusterIpv4Cidr;
     }
+    /**
+     * @return The contents of the GC credential file
+     * 
+     */
     public String credential() {
         return this.credential;
     }
@@ -93,81 +305,185 @@ public final class GetClusterGkeConfig {
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return Size of the disk attached to each node
+     * 
+     */
     public Optional<Integer> diskSizeGb() {
         return Optional.ofNullable(this.diskSizeGb);
     }
+    /**
+     * @return Type of the disk attached to each node
+     * 
+     */
     public String diskType() {
         return this.diskType;
     }
+    /**
+     * @return To enable kubernetes alpha feature
+     * 
+     */
     public Optional<Boolean> enableAlphaFeature() {
         return Optional.ofNullable(this.enableAlphaFeature);
     }
+    /**
+     * @return Specifies whether the node auto-repair is enabled for the node pool
+     * 
+     */
     public Optional<Boolean> enableAutoRepair() {
         return Optional.ofNullable(this.enableAutoRepair);
     }
+    /**
+     * @return Specifies whether node auto-upgrade is enabled for the node pool
+     * 
+     */
     public Optional<Boolean> enableAutoUpgrade() {
         return Optional.ofNullable(this.enableAutoUpgrade);
     }
+    /**
+     * @return Enable horizontal pod autoscaling for the cluster
+     * 
+     */
     public Optional<Boolean> enableHorizontalPodAutoscaling() {
         return Optional.ofNullable(this.enableHorizontalPodAutoscaling);
     }
+    /**
+     * @return Enable http load balancing for the cluster
+     * 
+     */
     public Optional<Boolean> enableHttpLoadBalancing() {
         return Optional.ofNullable(this.enableHttpLoadBalancing);
     }
+    /**
+     * @return Whether to enable the kubernetes dashboard
+     * 
+     */
     public Optional<Boolean> enableKubernetesDashboard() {
         return Optional.ofNullable(this.enableKubernetesDashboard);
     }
+    /**
+     * @return Whether to enable legacy abac on the cluster
+     * 
+     */
     public Optional<Boolean> enableLegacyAbac() {
         return Optional.ofNullable(this.enableLegacyAbac);
     }
+    /**
+     * @return Whether or not master authorized network is enabled
+     * 
+     */
     public Optional<Boolean> enableMasterAuthorizedNetwork() {
         return Optional.ofNullable(this.enableMasterAuthorizedNetwork);
     }
+    /**
+     * @return Enable network policy config for the cluster
+     * 
+     */
     public Optional<Boolean> enableNetworkPolicyConfig() {
         return Optional.ofNullable(this.enableNetworkPolicyConfig);
     }
+    /**
+     * @return Enable nodepool autoscaling
+     * 
+     */
     public Optional<Boolean> enableNodepoolAutoscaling() {
         return Optional.ofNullable(this.enableNodepoolAutoscaling);
     }
+    /**
+     * @return Whether the master&#39;s internal IP address is used as the cluster endpoint
+     * 
+     */
     public Optional<Boolean> enablePrivateEndpoint() {
         return Optional.ofNullable(this.enablePrivateEndpoint);
     }
+    /**
+     * @return Whether nodes have internal IP address only
+     * 
+     */
     public Optional<Boolean> enablePrivateNodes() {
         return Optional.ofNullable(this.enablePrivateNodes);
     }
+    /**
+     * @return Enable stackdriver logging
+     * 
+     */
     public Optional<Boolean> enableStackdriverLogging() {
         return Optional.ofNullable(this.enableStackdriverLogging);
     }
+    /**
+     * @return Enable stackdriver monitoring
+     * 
+     */
     public Optional<Boolean> enableStackdriverMonitoring() {
         return Optional.ofNullable(this.enableStackdriverMonitoring);
     }
+    /**
+     * @return The image to use for the worker nodes
+     * 
+     */
     public String imageType() {
         return this.imageType;
     }
+    /**
+     * @return The IP address range for the cluster pod IPs
+     * 
+     */
     public String ipPolicyClusterIpv4CidrBlock() {
         return this.ipPolicyClusterIpv4CidrBlock;
     }
+    /**
+     * @return The name of the secondary range to be used for the cluster CIDR block
+     * 
+     */
     public String ipPolicyClusterSecondaryRangeName() {
         return this.ipPolicyClusterSecondaryRangeName;
     }
+    /**
+     * @return Whether a new subnetwork will be created automatically for the cluster
+     * 
+     */
     public Optional<Boolean> ipPolicyCreateSubnetwork() {
         return Optional.ofNullable(this.ipPolicyCreateSubnetwork);
     }
+    /**
+     * @return The IP address range of the instance IPs in this cluster
+     * 
+     */
     public String ipPolicyNodeIpv4CidrBlock() {
         return this.ipPolicyNodeIpv4CidrBlock;
     }
+    /**
+     * @return The IP address range of the services IPs in this cluster
+     * 
+     */
     public String ipPolicyServicesIpv4CidrBlock() {
         return this.ipPolicyServicesIpv4CidrBlock;
     }
+    /**
+     * @return The name of the secondary range to be used for the services CIDR block
+     * 
+     */
     public String ipPolicyServicesSecondaryRangeName() {
         return this.ipPolicyServicesSecondaryRangeName;
     }
+    /**
+     * @return A custom subnetwork name to be used if createSubnetwork is true
+     * 
+     */
     public String ipPolicySubnetworkName() {
         return this.ipPolicySubnetworkName;
     }
+    /**
+     * @return Issue a client certificate
+     * 
+     */
     public Optional<Boolean> issueClientCertificate() {
         return Optional.ofNullable(this.issueClientCertificate);
     }
+    /**
+     * @return Enable the kubernetes dashboard
+     * 
+     */
     public Optional<Boolean> kubernetesDashboard() {
         return Optional.ofNullable(this.kubernetesDashboard);
     }
@@ -178,72 +494,164 @@ public final class GetClusterGkeConfig {
     public Map<String,Object> labels() {
         return this.labels;
     }
+    /**
+     * @return The number of local SSD disks to be attached to the node
+     * 
+     */
     public Optional<Integer> localSsdCount() {
         return Optional.ofNullable(this.localSsdCount);
     }
+    /**
+     * @return Locations to use for the cluster
+     * 
+     */
     public List<String> locations() {
         return this.locations;
     }
+    /**
+     * @return The machine type to use for the worker nodes
+     * 
+     */
     public String machineType() {
         return this.machineType;
     }
+    /**
+     * @return When to performance updates on the nodes, in 24-hour time
+     * 
+     */
     public String maintenanceWindow() {
         return this.maintenanceWindow;
     }
+    /**
+     * @return Define up to 10 external networks that could access Kubernetes master through HTTPS
+     * 
+     */
     public List<String> masterAuthorizedNetworkCidrBlocks() {
         return this.masterAuthorizedNetworkCidrBlocks == null ? List.of() : this.masterAuthorizedNetworkCidrBlocks;
     }
+    /**
+     * @return The IP range in CIDR notation to use for the hosted master network
+     * 
+     */
     public String masterIpv4CidrBlock() {
         return this.masterIpv4CidrBlock;
     }
+    /**
+     * @return The kubernetes master version
+     * 
+     */
     public String masterVersion() {
         return this.masterVersion;
     }
+    /**
+     * @return Maximum number of nodes in the NodePool. Must be &gt;= minNodeCount. There has to enough quota to scale up the cluster
+     * 
+     */
     public Optional<Integer> maxNodeCount() {
         return Optional.ofNullable(this.maxNodeCount);
     }
+    /**
+     * @return Minimmum number of nodes in the NodePool. Must be &gt;= 1 and &lt;= maxNodeCount
+     * 
+     */
     public Optional<Integer> minNodeCount() {
         return Optional.ofNullable(this.minNodeCount);
     }
+    /**
+     * @return The network to use for the cluster
+     * 
+     */
     public String network() {
         return this.network;
     }
+    /**
+     * @return The number of nodes to create in this cluster
+     * 
+     */
     public Optional<Integer> nodeCount() {
         return Optional.ofNullable(this.nodeCount);
     }
+    /**
+     * @return The ID of the cluster node pool
+     * 
+     */
     public String nodePool() {
         return this.nodePool;
     }
+    /**
+     * @return The version of kubernetes to use on the nodes
+     * 
+     */
     public String nodeVersion() {
         return this.nodeVersion;
     }
+    /**
+     * @return The set of Google API scopes to be made available on all of the node VMs under the default service account
+     * 
+     */
     public List<String> oauthScopes() {
         return this.oauthScopes;
     }
+    /**
+     * @return Whether the nodes are created as preemptible VM instances
+     * 
+     */
     public Optional<Boolean> preemptible() {
         return Optional.ofNullable(this.preemptible);
     }
+    /**
+     * @return The ID of your project to use when creating a cluster
+     * 
+     */
     public String projectId() {
         return this.projectId;
     }
+    /**
+     * @return The region to launch the cluster. Region or zone should be used
+     * 
+     */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
+    /**
+     * @return The map of Kubernetes labels (key/value pairs) to be applied to each cluster
+     * 
+     */
     public Map<String,Object> resourceLabels() {
         return this.resourceLabels;
     }
+    /**
+     * @return The Google Cloud Platform Service Account to be used by the node VMs
+     * 
+     */
     public String serviceAccount() {
         return this.serviceAccount;
     }
+    /**
+     * @return The sub-network to use for the cluster
+     * 
+     */
     public String subNetwork() {
         return this.subNetwork;
     }
+    /**
+     * @return List of kubernetes taints to be applied to each node
+     * 
+     */
     public List<String> taints() {
         return this.taints == null ? List.of() : this.taints;
     }
+    /**
+     * @return Whether alias IPs will be used for pod IPs in the cluster
+     * 
+     */
     public Optional<Boolean> useIpAliases() {
         return Optional.ofNullable(this.useIpAliases);
     }
+    /**
+     * @return The zone to launch the cluster. Zone or region should be used
+     * 
+     */
     public Optional<String> zone() {
         return Optional.ofNullable(this.zone);
     }

@@ -17,9 +17,17 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
 
     public static final MachineConfigV2AzureConfigArgs Empty = new MachineConfigV2AzureConfigArgs();
 
+    /**
+     * Use Accelerated Networking when creating a network interface for the Azure VM
+     * 
+     */
     @Import(name="acceleratedNetworking")
     private @Nullable Output<Boolean> acceleratedNetworking;
 
+    /**
+     * @return Use Accelerated Networking when creating a network interface for the Azure VM
+     * 
+     */
     public Optional<Output<Boolean>> acceleratedNetworking() {
         return Optional.ofNullable(this.acceleratedNetworking);
     }
@@ -474,9 +482,17 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         return Optional.ofNullable(this.usePrivateIp);
     }
 
+    /**
+     * Use the standard SKU when creating a Public IP for the Azure VM instance
+     * 
+     */
     @Import(name="usePublicIpStandardSku")
     private @Nullable Output<Boolean> usePublicIpStandardSku;
 
+    /**
+     * @return Use the standard SKU when creating a Public IP for the Azure VM instance
+     * 
+     */
     public Optional<Output<Boolean>> usePublicIpStandardSku() {
         return Optional.ofNullable(this.usePublicIpStandardSku);
     }
@@ -552,11 +568,23 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
             $ = new MachineConfigV2AzureConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param acceleratedNetworking Use Accelerated Networking when creating a network interface for the Azure VM
+         * 
+         * @return builder
+         * 
+         */
         public Builder acceleratedNetworking(@Nullable Output<Boolean> acceleratedNetworking) {
             $.acceleratedNetworking = acceleratedNetworking;
             return this;
         }
 
+        /**
+         * @param acceleratedNetworking Use Accelerated Networking when creating a network interface for the Azure VM
+         * 
+         * @return builder
+         * 
+         */
         public Builder acceleratedNetworking(Boolean acceleratedNetworking) {
             return acceleratedNetworking(Output.of(acceleratedNetworking));
         }
@@ -1201,11 +1229,23 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
             return usePrivateIp(Output.of(usePrivateIp));
         }
 
+        /**
+         * @param usePublicIpStandardSku Use the standard SKU when creating a Public IP for the Azure VM instance
+         * 
+         * @return builder
+         * 
+         */
         public Builder usePublicIpStandardSku(@Nullable Output<Boolean> usePublicIpStandardSku) {
             $.usePublicIpStandardSku = usePublicIpStandardSku;
             return this;
         }
 
+        /**
+         * @param usePublicIpStandardSku Use the standard SKU when creating a Public IP for the Azure VM instance
+         * 
+         * @return builder
+         * 
+         */
         public Builder usePublicIpStandardSku(Boolean usePublicIpStandardSku) {
             return usePublicIpStandardSku(Output.of(usePublicIpStandardSku));
         }

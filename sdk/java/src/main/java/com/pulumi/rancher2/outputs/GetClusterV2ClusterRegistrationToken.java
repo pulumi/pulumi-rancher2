@@ -12,6 +12,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterV2ClusterRegistrationToken {
+    /**
+     * @return Annotations of the resource
+     * 
+     */
     private Map<String,Object> annotations;
     private String clusterId;
     private String command;
@@ -23,6 +27,10 @@ public final class GetClusterV2ClusterRegistrationToken {
     private String insecureCommand;
     private String insecureNodeCommand;
     private String insecureWindowsNodeCommand;
+    /**
+     * @return Labels of the resource
+     * 
+     */
     private Map<String,Object> labels;
     private String manifestUrl;
     /**
@@ -35,6 +43,10 @@ public final class GetClusterV2ClusterRegistrationToken {
     private String windowsNodeCommand;
 
     private GetClusterV2ClusterRegistrationToken() {}
+    /**
+     * @return Annotations of the resource
+     * 
+     */
     public Map<String,Object> annotations() {
         return this.annotations;
     }
@@ -60,6 +72,10 @@ public final class GetClusterV2ClusterRegistrationToken {
     public String insecureWindowsNodeCommand() {
         return this.insecureWindowsNodeCommand;
     }
+    /**
+     * @return Labels of the resource
+     * 
+     */
     public Map<String,Object> labels() {
         return this.labels;
     }

@@ -13,18 +13,57 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterV2RkeConfigResult
     {
+        /// <summary>
+        /// Cluster V2 additional manifest
+        /// </summary>
         public readonly string? AdditionalManifest;
+        /// <summary>
+        /// Cluster V2 chart values. It should be in YAML format
+        /// </summary>
         public readonly string? ChartValues;
+        /// <summary>
+        /// Cluster V2 etcd
+        /// </summary>
         public readonly Outputs.GetClusterV2RkeConfigEtcdResult Etcd;
+        /// <summary>
+        /// Cluster V2 etcd snapshot create
+        /// </summary>
         public readonly Outputs.GetClusterV2RkeConfigEtcdSnapshotCreateResult? EtcdSnapshotCreate;
+        /// <summary>
+        /// Cluster V2 etcd snapshot restore
+        /// </summary>
         public readonly Outputs.GetClusterV2RkeConfigEtcdSnapshotRestoreResult? EtcdSnapshotRestore;
+        /// <summary>
+        /// Cluster V2 local auth endpoint
+        /// </summary>
         public readonly Outputs.GetClusterV2RkeConfigLocalAuthEndpointResult? LocalAuthEndpoint;
+        /// <summary>
+        /// Cluster V2 machine global config
+        /// </summary>
         public readonly string? MachineGlobalConfig;
+        /// <summary>
+        /// Default values for machine pool configurations if unset
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterV2RkeConfigMachinePoolDefaultResult> MachinePoolDefaults;
+        /// <summary>
+        /// Cluster V2 machine pools
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterV2RkeConfigMachinePoolResult> MachinePools;
+        /// <summary>
+        /// Cluster V2 machine selector config
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterV2RkeConfigMachineSelectorConfigResult> MachineSelectorConfigs;
+        /// <summary>
+        /// Cluster V2 registries
+        /// </summary>
         public readonly Outputs.GetClusterV2RkeConfigRegistriesResult? Registries;
+        /// <summary>
+        /// Cluster V2 certificate rotation
+        /// </summary>
         public readonly Outputs.GetClusterV2RkeConfigRotateCertificatesResult? RotateCertificates;
+        /// <summary>
+        /// Cluster V2 upgrade strategy
+        /// </summary>
         public readonly Outputs.GetClusterV2RkeConfigUpgradeStrategyResult? UpgradeStrategy;
 
         [OutputConstructor]

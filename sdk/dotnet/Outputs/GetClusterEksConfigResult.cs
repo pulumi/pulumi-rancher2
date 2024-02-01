@@ -13,24 +13,81 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterEksConfigResult
     {
+        /// <summary>
+        /// The AWS Client ID to use
+        /// </summary>
         public readonly string AccessKey;
+        /// <summary>
+        /// A custom AMI ID to use for the worker nodes instead of the default
+        /// </summary>
         public readonly string? Ami;
+        /// <summary>
+        /// Associate public ip EKS worker nodes
+        /// </summary>
         public readonly bool? AssociateWorkerNodePublicIp;
+        /// <summary>
+        /// The desired number of worker nodes
+        /// </summary>
         public readonly int? DesiredNodes;
+        /// <summary>
+        /// Enables EBS encryption of worker nodes
+        /// </summary>
         public readonly bool? EbsEncryption;
+        /// <summary>
+        /// The type of machine to use for worker nodes
+        /// </summary>
         public readonly string? InstanceType;
+        /// <summary>
+        /// Allow user to specify key name to use
+        /// </summary>
         public readonly string? KeyPairName;
+        /// <summary>
+        /// The kubernetes master version
+        /// </summary>
         public readonly string KubernetesVersion;
+        /// <summary>
+        /// The maximum number of worker nodes
+        /// </summary>
         public readonly int? MaximumNodes;
+        /// <summary>
+        /// The minimum number of worker nodes
+        /// </summary>
         public readonly int? MinimumNodes;
+        /// <summary>
+        /// The volume size for each node
+        /// </summary>
         public readonly int? NodeVolumeSize;
+        /// <summary>
+        /// The AWS Region to create the EKS cluster in
+        /// </summary>
         public readonly string? Region;
+        /// <summary>
+        /// The AWS Client Secret associated with the Client ID
+        /// </summary>
         public readonly string SecretKey;
+        /// <summary>
+        /// List of security groups to use for the cluster
+        /// </summary>
         public readonly ImmutableArray<string> SecurityGroups;
+        /// <summary>
+        /// The service role to use to perform the cluster operations in AWS
+        /// </summary>
         public readonly string? ServiceRole;
+        /// <summary>
+        /// A session token to use with the client key and secret if applicable
+        /// </summary>
         public readonly string? SessionToken;
+        /// <summary>
+        /// List of subnets in the virtual network to use
+        /// </summary>
         public readonly ImmutableArray<string> Subnets;
+        /// <summary>
+        /// Pass user-data to the nodes to perform automated configuration tasks
+        /// </summary>
         public readonly string UserData;
+        /// <summary>
+        /// The name of the virtual network to use
+        /// </summary>
         public readonly string? VirtualNetwork;
 
         [OutputConstructor]
