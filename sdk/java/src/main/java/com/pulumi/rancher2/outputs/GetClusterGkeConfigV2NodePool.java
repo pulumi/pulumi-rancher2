@@ -14,31 +14,75 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterGkeConfigV2NodePool {
+    /**
+     * @return The GKE node pool config autoscaling
+     * 
+     */
     private GetClusterGkeConfigV2NodePoolAutoscaling autoscaling;
+    /**
+     * @return The GKE node pool node config
+     * 
+     */
     private GetClusterGkeConfigV2NodePoolConfig config;
+    /**
+     * @return The GKE node pool config initial node count
+     * 
+     */
     private Integer initialNodeCount;
+    /**
+     * @return The GKE node pool config management
+     * 
+     */
     private GetClusterGkeConfigV2NodePoolManagement management;
+    /**
+     * @return The GKE node pool config max pods constraint
+     * 
+     */
     private Integer maxPodsConstraint;
     /**
      * @return The name of the Cluster (string)
      * 
      */
     private String name;
+    /**
+     * @return The GKE node pool config version
+     * 
+     */
     private String version;
 
     private GetClusterGkeConfigV2NodePool() {}
+    /**
+     * @return The GKE node pool config autoscaling
+     * 
+     */
     public GetClusterGkeConfigV2NodePoolAutoscaling autoscaling() {
         return this.autoscaling;
     }
+    /**
+     * @return The GKE node pool node config
+     * 
+     */
     public GetClusterGkeConfigV2NodePoolConfig config() {
         return this.config;
     }
+    /**
+     * @return The GKE node pool config initial node count
+     * 
+     */
     public Integer initialNodeCount() {
         return this.initialNodeCount;
     }
+    /**
+     * @return The GKE node pool config management
+     * 
+     */
     public GetClusterGkeConfigV2NodePoolManagement management() {
         return this.management;
     }
+    /**
+     * @return The GKE node pool config max pods constraint
+     * 
+     */
     public Integer maxPodsConstraint() {
         return this.maxPodsConstraint;
     }
@@ -49,6 +93,10 @@ public final class GetClusterGkeConfigV2NodePool {
     public String name() {
         return this.name;
     }
+    /**
+     * @return The GKE node pool config version
+     * 
+     */
     public String version() {
         return this.version;
     }

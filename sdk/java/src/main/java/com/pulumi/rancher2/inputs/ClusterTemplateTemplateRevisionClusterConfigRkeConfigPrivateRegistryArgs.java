@@ -18,9 +18,17 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateR
 
     public static final ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArgs Empty = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArgs();
 
+    /**
+     * ECR credential plugin config
+     * 
+     */
     @Import(name="ecrCredentialPlugin")
     private @Nullable Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPluginArgs> ecrCredentialPlugin;
 
+    /**
+     * @return ECR credential plugin config
+     * 
+     */
     public Optional<Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPluginArgs>> ecrCredentialPlugin() {
         return Optional.ofNullable(this.ecrCredentialPlugin);
     }
@@ -81,11 +89,23 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateR
             $ = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ecrCredentialPlugin ECR credential plugin config
+         * 
+         * @return builder
+         * 
+         */
         public Builder ecrCredentialPlugin(@Nullable Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPluginArgs> ecrCredentialPlugin) {
             $.ecrCredentialPlugin = ecrCredentialPlugin;
             return this;
         }
 
+        /**
+         * @param ecrCredentialPlugin ECR credential plugin config
+         * 
+         * @return builder
+         * 
+         */
         public Builder ecrCredentialPlugin(ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPluginArgs ecrCredentialPlugin) {
             return ecrCredentialPlugin(Output.of(ecrCredentialPlugin));
         }

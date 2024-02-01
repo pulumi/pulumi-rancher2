@@ -12,17 +12,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression {
+    /**
+     * @return Label selector requirement key
+     * 
+     */
     private @Nullable String key;
+    /**
+     * @return Label selector operator
+     * 
+     */
     private @Nullable String operator;
+    /**
+     * @return Label selector requirement values
+     * 
+     */
     private @Nullable List<String> values;
 
     private GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression() {}
+    /**
+     * @return Label selector requirement key
+     * 
+     */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
+    /**
+     * @return Label selector operator
+     * 
+     */
     public Optional<String> operator() {
         return Optional.ofNullable(this.operator);
     }
+    /**
+     * @return Label selector requirement values
+     * 
+     */
     public List<String> values() {
         return this.values == null ? List.of() : this.values;
     }

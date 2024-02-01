@@ -12,20 +12,36 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterAlterRuleNodeRuleGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Node rule condition
+        /// </summary>
         [Input("condition")]
         public Input<string>? Condition { get; set; }
 
+        /// <summary>
+        /// Node rule cpu threshold
+        /// </summary>
         [Input("cpuThreshold")]
         public Input<int>? CpuThreshold { get; set; }
 
+        /// <summary>
+        /// Node rule mem threshold
+        /// </summary>
         [Input("memThreshold")]
         public Input<int>? MemThreshold { get; set; }
 
+        /// <summary>
+        /// Node ID
+        /// </summary>
         [Input("nodeId")]
         public Input<string>? NodeId { get; set; }
 
         [Input("selector")]
         private InputMap<object>? _selector;
+
+        /// <summary>
+        /// Node rule selector
+        /// </summary>
         public InputMap<object> Selector
         {
             get => _selector ?? (_selector = new InputMap<object>());

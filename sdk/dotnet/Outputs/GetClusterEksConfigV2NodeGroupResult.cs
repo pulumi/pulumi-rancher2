@@ -13,30 +13,81 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterEksConfigV2NodeGroupResult
     {
+        /// <summary>
+        /// The EKS node group desired size
+        /// </summary>
         public readonly int? DesiredSize;
+        /// <summary>
+        /// The EKS node group disk size
+        /// </summary>
         public readonly int? DiskSize;
+        /// <summary>
+        /// The EKS node group ssh key
+        /// </summary>
         public readonly string? Ec2SshKey;
+        /// <summary>
+        /// Is EKS cluster using gpu?
+        /// </summary>
         public readonly bool? Gpu;
+        /// <summary>
+        /// The EKS node group image ID
+        /// </summary>
         public readonly string? ImageId;
+        /// <summary>
+        /// The EKS node group instance type
+        /// </summary>
         public readonly string? InstanceType;
         /// <summary>
         /// (Computed) Labels for Node Pool object (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Labels;
+        /// <summary>
+        /// The EKS node groups launch template
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterEksConfigV2NodeGroupLaunchTemplateResult> LaunchTemplates;
+        /// <summary>
+        /// The EKS node group maximum size
+        /// </summary>
         public readonly int? MaxSize;
+        /// <summary>
+        /// The EKS node group minimum size
+        /// </summary>
         public readonly int? MinSize;
         /// <summary>
         /// The name of the Cluster (string)
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The EKS node group node role ARN
+        /// </summary>
         public readonly string? NodeRole;
+        /// <summary>
+        /// Enable EKS node group request spot instances
+        /// </summary>
         public readonly bool? RequestSpotInstances;
+        /// <summary>
+        /// The EKS node group resource tags
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? ResourceTags;
+        /// <summary>
+        /// The EKS node group spot instance types
+        /// </summary>
         public readonly ImmutableArray<string> SpotInstanceTypes;
+        /// <summary>
+        /// The EKS node group subnets
+        /// </summary>
         public readonly ImmutableArray<string> Subnets;
+        /// <summary>
+        /// The EKS node group tags
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? Tags;
+        /// <summary>
+        /// The EKS node group user data
+        /// </summary>
         public readonly string UserData;
+        /// <summary>
+        /// The EKS node group k8s version
+        /// </summary>
         public readonly string Version;
 
         [OutputConstructor]

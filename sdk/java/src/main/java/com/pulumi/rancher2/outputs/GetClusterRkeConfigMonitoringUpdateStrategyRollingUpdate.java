@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdate {
+    /**
+     * @return Rolling update max surge
+     * 
+     */
     private @Nullable Integer maxSurge;
+    /**
+     * @return Rolling update max unavailable
+     * 
+     */
     private @Nullable Integer maxUnavailable;
 
     private GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdate() {}
+    /**
+     * @return Rolling update max surge
+     * 
+     */
     public Optional<Integer> maxSurge() {
         return Optional.ofNullable(this.maxSurge);
     }
+    /**
+     * @return Rolling update max unavailable
+     * 
+     */
     public Optional<Integer> maxUnavailable() {
         return Optional.ofNullable(this.maxUnavailable);
     }

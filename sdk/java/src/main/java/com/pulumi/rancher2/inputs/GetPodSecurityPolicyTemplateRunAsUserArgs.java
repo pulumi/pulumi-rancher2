@@ -18,16 +18,32 @@ public final class GetPodSecurityPolicyTemplateRunAsUserArgs extends com.pulumi.
 
     public static final GetPodSecurityPolicyTemplateRunAsUserArgs Empty = new GetPodSecurityPolicyTemplateRunAsUserArgs();
 
+    /**
+     * ranges are the allowed ranges of uids that may be used. If you would like to force a single uid then supply a single range with the same start and end. Required for MustRunAs.
+     * 
+     */
     @Import(name="ranges")
     private @Nullable Output<List<GetPodSecurityPolicyTemplateRunAsUserRangeArgs>> ranges;
 
+    /**
+     * @return ranges are the allowed ranges of uids that may be used. If you would like to force a single uid then supply a single range with the same start and end. Required for MustRunAs.
+     * 
+     */
     public Optional<Output<List<GetPodSecurityPolicyTemplateRunAsUserRangeArgs>>> ranges() {
         return Optional.ofNullable(this.ranges);
     }
 
+    /**
+     * rule is the strategy that will dictate the allowable RunAsUser values that may be set.
+     * 
+     */
     @Import(name="rule", required=true)
     private Output<String> rule;
 
+    /**
+     * @return rule is the strategy that will dictate the allowable RunAsUser values that may be set.
+     * 
+     */
     public Output<String> rule() {
         return this.rule;
     }
@@ -57,24 +73,54 @@ public final class GetPodSecurityPolicyTemplateRunAsUserArgs extends com.pulumi.
             $ = new GetPodSecurityPolicyTemplateRunAsUserArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ranges ranges are the allowed ranges of uids that may be used. If you would like to force a single uid then supply a single range with the same start and end. Required for MustRunAs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ranges(@Nullable Output<List<GetPodSecurityPolicyTemplateRunAsUserRangeArgs>> ranges) {
             $.ranges = ranges;
             return this;
         }
 
+        /**
+         * @param ranges ranges are the allowed ranges of uids that may be used. If you would like to force a single uid then supply a single range with the same start and end. Required for MustRunAs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ranges(List<GetPodSecurityPolicyTemplateRunAsUserRangeArgs> ranges) {
             return ranges(Output.of(ranges));
         }
 
+        /**
+         * @param ranges ranges are the allowed ranges of uids that may be used. If you would like to force a single uid then supply a single range with the same start and end. Required for MustRunAs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ranges(GetPodSecurityPolicyTemplateRunAsUserRangeArgs... ranges) {
             return ranges(List.of(ranges));
         }
 
+        /**
+         * @param rule rule is the strategy that will dictate the allowable RunAsUser values that may be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rule(Output<String> rule) {
             $.rule = rule;
             return this;
         }
 
+        /**
+         * @param rule rule is the strategy that will dictate the allowable RunAsUser values that may be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rule(String rule) {
             return rule(Output.of(rule));
         }

@@ -14,12 +14,19 @@ namespace Pulumi.Rancher2.Inputs
     {
         [Input("ranges")]
         private List<Inputs.GetPodSecurityPolicyTemplateRunAsUserRangeArgs>? _ranges;
+
+        /// <summary>
+        /// ranges are the allowed ranges of uids that may be used. If you would like to force a single uid then supply a single range with the same start and end. Required for MustRunAs.
+        /// </summary>
         public List<Inputs.GetPodSecurityPolicyTemplateRunAsUserRangeArgs> Ranges
         {
             get => _ranges ?? (_ranges = new List<Inputs.GetPodSecurityPolicyTemplateRunAsUserRangeArgs>());
             set => _ranges = value;
         }
 
+        /// <summary>
+        /// rule is the strategy that will dictate the allowable RunAsUser values that may be set.
+        /// </summary>
         [Input("rule", required: true)]
         public string Rule { get; set; } = null!;
 

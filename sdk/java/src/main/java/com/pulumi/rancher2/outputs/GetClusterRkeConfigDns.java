@@ -19,23 +19,47 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterRkeConfigDns {
+    /**
+     * @return Linear Autoscaler Params
+     * 
+     */
     private @Nullable GetClusterRkeConfigDnsLinearAutoscalerParams linearAutoscalerParams;
     private Map<String,Object> nodeSelector;
+    /**
+     * @return Nodelocal dns
+     * 
+     */
     private @Nullable GetClusterRkeConfigDnsNodelocal nodelocal;
     private Map<String,Object> options;
     private @Nullable String provider;
     private List<String> reverseCidrs;
+    /**
+     * @return DNS service tolerations
+     * 
+     */
     private @Nullable List<GetClusterRkeConfigDnsToleration> tolerations;
+    /**
+     * @return Update deployment strategy
+     * 
+     */
     private @Nullable GetClusterRkeConfigDnsUpdateStrategy updateStrategy;
     private List<String> upstreamNameservers;
 
     private GetClusterRkeConfigDns() {}
+    /**
+     * @return Linear Autoscaler Params
+     * 
+     */
     public Optional<GetClusterRkeConfigDnsLinearAutoscalerParams> linearAutoscalerParams() {
         return Optional.ofNullable(this.linearAutoscalerParams);
     }
     public Map<String,Object> nodeSelector() {
         return this.nodeSelector;
     }
+    /**
+     * @return Nodelocal dns
+     * 
+     */
     public Optional<GetClusterRkeConfigDnsNodelocal> nodelocal() {
         return Optional.ofNullable(this.nodelocal);
     }
@@ -48,9 +72,17 @@ public final class GetClusterRkeConfigDns {
     public List<String> reverseCidrs() {
         return this.reverseCidrs;
     }
+    /**
+     * @return DNS service tolerations
+     * 
+     */
     public List<GetClusterRkeConfigDnsToleration> tolerations() {
         return this.tolerations == null ? List.of() : this.tolerations;
     }
+    /**
+     * @return Update deployment strategy
+     * 
+     */
     public Optional<GetClusterRkeConfigDnsUpdateStrategy> updateStrategy() {
         return Optional.ofNullable(this.updateStrategy);
     }

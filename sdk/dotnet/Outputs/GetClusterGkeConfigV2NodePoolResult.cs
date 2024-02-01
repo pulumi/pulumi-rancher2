@@ -13,15 +13,33 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterGkeConfigV2NodePoolResult
     {
+        /// <summary>
+        /// The GKE node pool config autoscaling
+        /// </summary>
         public readonly Outputs.GetClusterGkeConfigV2NodePoolAutoscalingResult Autoscaling;
+        /// <summary>
+        /// The GKE node pool node config
+        /// </summary>
         public readonly Outputs.GetClusterGkeConfigV2NodePoolConfigResult Config;
+        /// <summary>
+        /// The GKE node pool config initial node count
+        /// </summary>
         public readonly int InitialNodeCount;
+        /// <summary>
+        /// The GKE node pool config management
+        /// </summary>
         public readonly Outputs.GetClusterGkeConfigV2NodePoolManagementResult Management;
+        /// <summary>
+        /// The GKE node pool config max pods constraint
+        /// </summary>
         public readonly int MaxPodsConstraint;
         /// <summary>
         /// The name of the Cluster (string)
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The GKE node pool config version
+        /// </summary>
         public readonly string Version;
 
         [OutputConstructor]

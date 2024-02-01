@@ -21,7 +21,15 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitori
     private @Nullable Map<String,Object> options;
     private @Nullable String provider;
     private @Nullable Integer replicas;
+    /**
+     * @return Monitoring add-on tolerations
+     * 
+     */
     private @Nullable List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringToleration> tolerations;
+    /**
+     * @return Update deployment strategy
+     * 
+     */
     private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy updateStrategy;
 
     private ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring() {}
@@ -37,9 +45,17 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitori
     public Optional<Integer> replicas() {
         return Optional.ofNullable(this.replicas);
     }
+    /**
+     * @return Monitoring add-on tolerations
+     * 
+     */
     public List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringToleration> tolerations() {
         return this.tolerations == null ? List.of() : this.tolerations;
     }
+    /**
+     * @return Update deployment strategy
+     * 
+     */
     public Optional<ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy> updateStrategy() {
         return Optional.ofNullable(this.updateStrategy);
     }

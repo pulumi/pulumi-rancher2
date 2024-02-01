@@ -22,7 +22,15 @@ public final class GetClusterRkeConfigMonitoring {
     private Map<String,Object> options;
     private String provider;
     private Integer replicas;
+    /**
+     * @return Monitoring add-on tolerations
+     * 
+     */
     private @Nullable List<GetClusterRkeConfigMonitoringToleration> tolerations;
+    /**
+     * @return Update deployment strategy
+     * 
+     */
     private @Nullable GetClusterRkeConfigMonitoringUpdateStrategy updateStrategy;
 
     private GetClusterRkeConfigMonitoring() {}
@@ -38,9 +46,17 @@ public final class GetClusterRkeConfigMonitoring {
     public Integer replicas() {
         return this.replicas;
     }
+    /**
+     * @return Monitoring add-on tolerations
+     * 
+     */
     public List<GetClusterRkeConfigMonitoringToleration> tolerations() {
         return this.tolerations == null ? List.of() : this.tolerations;
     }
+    /**
+     * @return Update deployment strategy
+     * 
+     */
     public Optional<GetClusterRkeConfigMonitoringUpdateStrategy> updateStrategy() {
         return Optional.ofNullable(this.updateStrategy);
     }

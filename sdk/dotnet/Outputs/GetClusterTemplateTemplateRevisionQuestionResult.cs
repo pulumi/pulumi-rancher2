@@ -13,9 +13,21 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterTemplateTemplateRevisionQuestionResult
     {
+        /// <summary>
+        /// Default variable value
+        /// </summary>
         public readonly string Default;
+        /// <summary>
+        /// Required variable
+        /// </summary>
         public readonly bool? Required;
+        /// <summary>
+        /// Variable type
+        /// </summary>
         public readonly string? Type;
+        /// <summary>
+        /// Variable name
+        /// </summary>
         public readonly string Variable;
 
         [OutputConstructor]

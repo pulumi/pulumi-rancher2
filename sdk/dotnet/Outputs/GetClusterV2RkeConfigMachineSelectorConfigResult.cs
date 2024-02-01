@@ -13,7 +13,13 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterV2RkeConfigMachineSelectorConfigResult
     {
+        /// <summary>
+        /// Machine selector config
+        /// </summary>
         public readonly string? Config;
+        /// <summary>
+        /// Machine label selector
+        /// </summary>
         public readonly Outputs.GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorResult? MachineLabelSelector;
 
         [OutputConstructor]

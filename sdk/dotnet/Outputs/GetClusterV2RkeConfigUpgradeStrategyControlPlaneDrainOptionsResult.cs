@@ -13,14 +13,41 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsResult
     {
+        /// <summary>
+        /// Drain options delete empty dir data
+        /// </summary>
         public readonly bool? DeleteEmptyDirData;
+        /// <summary>
+        /// Drain options disable eviction
+        /// </summary>
         public readonly bool? DisableEviction;
+        /// <summary>
+        /// Drain options enabled?
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// Drain options force
+        /// </summary>
         public readonly bool? Force;
+        /// <summary>
+        /// Drain options grace period
+        /// </summary>
         public readonly int GracePeriod;
+        /// <summary>
+        /// Drain options ignore daemon sets
+        /// </summary>
         public readonly bool? IgnoreDaemonSets;
+        /// <summary>
+        /// Drain options ignore errors
+        /// </summary>
         public readonly bool? IgnoreErrors;
+        /// <summary>
+        /// Drain options skip wait for delete timeout seconds
+        /// </summary>
         public readonly int SkipWaitForDeleteTimeoutSeconds;
+        /// <summary>
+        /// Drain options timeout
+        /// </summary>
         public readonly int Timeout;
 
         [OutputConstructor]

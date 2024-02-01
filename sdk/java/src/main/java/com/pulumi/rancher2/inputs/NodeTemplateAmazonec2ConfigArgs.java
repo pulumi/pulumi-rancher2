@@ -378,9 +378,17 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.spotPrice);
     }
 
+    /**
+     * SSH Key for Instance
+     * 
+     */
     @Import(name="sshKeypath")
     private @Nullable Output<String> sshKeypath;
 
+    /**
+     * @return SSH Key for Instance
+     * 
+     */
     public Optional<Output<String>> sshKeypath() {
         return Optional.ofNullable(this.sshKeypath);
     }
@@ -1105,11 +1113,23 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
             return spotPrice(Output.of(spotPrice));
         }
 
+        /**
+         * @param sshKeypath SSH Key for Instance
+         * 
+         * @return builder
+         * 
+         */
         public Builder sshKeypath(@Nullable Output<String> sshKeypath) {
             $.sshKeypath = sshKeypath;
             return this;
         }
 
+        /**
+         * @param sshKeypath SSH Key for Instance
+         * 
+         * @return builder
+         * 
+         */
         public Builder sshKeypath(String sshKeypath) {
             return sshKeypath(Output.of(sshKeypath));
         }

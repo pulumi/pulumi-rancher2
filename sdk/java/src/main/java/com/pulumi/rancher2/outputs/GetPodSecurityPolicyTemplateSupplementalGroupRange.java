@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetPodSecurityPolicyTemplateSupplementalGroupRange {
+    /**
+     * @return max is the end of the range, inclusive.
+     * 
+     */
     private Integer max;
+    /**
+     * @return min is the start of the range, inclusive.
+     * 
+     */
     private Integer min;
 
     private GetPodSecurityPolicyTemplateSupplementalGroupRange() {}
+    /**
+     * @return max is the end of the range, inclusive.
+     * 
+     */
     public Integer max() {
         return this.max;
     }
+    /**
+     * @return min is the start of the range, inclusive.
+     * 
+     */
     public Integer min() {
         return this.min;
     }

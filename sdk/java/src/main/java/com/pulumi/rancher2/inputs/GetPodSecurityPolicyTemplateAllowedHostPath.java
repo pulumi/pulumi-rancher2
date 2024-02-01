@@ -16,16 +16,32 @@ public final class GetPodSecurityPolicyTemplateAllowedHostPath extends com.pulum
 
     public static final GetPodSecurityPolicyTemplateAllowedHostPath Empty = new GetPodSecurityPolicyTemplateAllowedHostPath();
 
+    /**
+     * pathPrefix is the path prefix that the host volume must match. It does not support `*`. Trailing slashes are trimmed when validating the path prefix with a host path.
+     * 
+     */
     @Import(name="pathPrefix", required=true)
     private String pathPrefix;
 
+    /**
+     * @return pathPrefix is the path prefix that the host volume must match. It does not support `*`. Trailing slashes are trimmed when validating the path prefix with a host path.
+     * 
+     */
     public String pathPrefix() {
         return this.pathPrefix;
     }
 
+    /**
+     * when set to true, will allow host volumes matching the pathPrefix only if all volume mounts are readOnly.
+     * 
+     */
     @Import(name="readOnly")
     private @Nullable Boolean readOnly;
 
+    /**
+     * @return when set to true, will allow host volumes matching the pathPrefix only if all volume mounts are readOnly.
+     * 
+     */
     public Optional<Boolean> readOnly() {
         return Optional.ofNullable(this.readOnly);
     }
@@ -55,11 +71,23 @@ public final class GetPodSecurityPolicyTemplateAllowedHostPath extends com.pulum
             $ = new GetPodSecurityPolicyTemplateAllowedHostPath(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param pathPrefix pathPrefix is the path prefix that the host volume must match. It does not support `*`. Trailing slashes are trimmed when validating the path prefix with a host path.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pathPrefix(String pathPrefix) {
             $.pathPrefix = pathPrefix;
             return this;
         }
 
+        /**
+         * @param readOnly when set to true, will allow host volumes matching the pathPrefix only if all volume mounts are readOnly.
+         * 
+         * @return builder
+         * 
+         */
         public Builder readOnly(@Nullable Boolean readOnly) {
             $.readOnly = readOnly;
             return this;

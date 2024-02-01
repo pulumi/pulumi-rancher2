@@ -17,16 +17,32 @@ public final class GetPodSecurityPolicyTemplateSeLinuxArgs extends com.pulumi.re
 
     public static final GetPodSecurityPolicyTemplateSeLinuxArgs Empty = new GetPodSecurityPolicyTemplateSeLinuxArgs();
 
+    /**
+     * rule is the strategy that will dictate the allowable labels that may be set.
+     * 
+     */
     @Import(name="rule", required=true)
     private Output<String> rule;
 
+    /**
+     * @return rule is the strategy that will dictate the allowable labels that may be set.
+     * 
+     */
     public Output<String> rule() {
         return this.rule;
     }
 
+    /**
+     * seLinuxOptions required to run as; required for MustRunAs. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+     * 
+     */
     @Import(name="seLinuxOption")
     private @Nullable Output<GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs> seLinuxOption;
 
+    /**
+     * @return seLinuxOptions required to run as; required for MustRunAs. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+     * 
+     */
     public Optional<Output<GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs>> seLinuxOption() {
         return Optional.ofNullable(this.seLinuxOption);
     }
@@ -56,20 +72,44 @@ public final class GetPodSecurityPolicyTemplateSeLinuxArgs extends com.pulumi.re
             $ = new GetPodSecurityPolicyTemplateSeLinuxArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param rule rule is the strategy that will dictate the allowable labels that may be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rule(Output<String> rule) {
             $.rule = rule;
             return this;
         }
 
+        /**
+         * @param rule rule is the strategy that will dictate the allowable labels that may be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rule(String rule) {
             return rule(Output.of(rule));
         }
 
+        /**
+         * @param seLinuxOption seLinuxOptions required to run as; required for MustRunAs. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+         * 
+         * @return builder
+         * 
+         */
         public Builder seLinuxOption(@Nullable Output<GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs> seLinuxOption) {
             $.seLinuxOption = seLinuxOption;
             return this;
         }
 
+        /**
+         * @param seLinuxOption seLinuxOptions required to run as; required for MustRunAs. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+         * 
+         * @return builder
+         * 
+         */
         public Builder seLinuxOption(GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs seLinuxOption) {
             return seLinuxOption(Output.of(seLinuxOption));
         }

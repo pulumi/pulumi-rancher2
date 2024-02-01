@@ -13,8 +13,17 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetNotifierDingtalkConfigResult
     {
+        /// <summary>
+        /// Dingtalk proxy URL
+        /// </summary>
         public readonly string? ProxyUrl;
+        /// <summary>
+        /// Required for webhook with sign enabled
+        /// </summary>
         public readonly string? Secret;
+        /// <summary>
+        /// Webhook URL
+        /// </summary>
         public readonly string Url;
 
         [OutputConstructor]

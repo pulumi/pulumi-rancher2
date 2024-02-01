@@ -25,6 +25,10 @@ public final class ClusterTemplateTemplateRevisionClusterConfig {
      * 
      */
     private @Nullable String defaultClusterRoleForProjectMembers;
+    /**
+     * @return Default pod security admission configuration template name
+     * 
+     */
     private @Nullable String defaultPodSecurityAdmissionConfigurationTemplateName;
     /**
      * @return Default pod security policy template ID (string)
@@ -87,6 +91,10 @@ public final class ClusterTemplateTemplateRevisionClusterConfig {
     public Optional<String> defaultClusterRoleForProjectMembers() {
         return Optional.ofNullable(this.defaultClusterRoleForProjectMembers);
     }
+    /**
+     * @return Default pod security admission configuration template name
+     * 
+     */
     public Optional<String> defaultPodSecurityAdmissionConfigurationTemplateName() {
         return Optional.ofNullable(this.defaultPodSecurityAdmissionConfigurationTemplateName);
     }

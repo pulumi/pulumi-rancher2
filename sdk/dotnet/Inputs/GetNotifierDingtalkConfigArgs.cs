@@ -12,11 +12,18 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class GetNotifierDingtalkConfigInputArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Dingtalk proxy URL
+        /// </summary>
         [Input("proxyUrl")]
         public Input<string>? ProxyUrl { get; set; }
 
         [Input("secret")]
         private Input<string>? _secret;
+
+        /// <summary>
+        /// Required for webhook with sign enabled
+        /// </summary>
         public Input<string>? Secret
         {
             get => _secret;
@@ -27,6 +34,9 @@ namespace Pulumi.Rancher2.Inputs
             }
         }
 
+        /// <summary>
+        /// Webhook URL
+        /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
 

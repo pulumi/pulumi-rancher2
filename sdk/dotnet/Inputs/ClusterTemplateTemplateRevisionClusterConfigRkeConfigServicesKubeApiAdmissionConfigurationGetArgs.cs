@@ -12,14 +12,24 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Admission configuration ApiVersion
+        /// </summary>
         [Input("apiVersion")]
         public Input<string>? ApiVersion { get; set; }
 
+        /// <summary>
+        /// Admission configuration Kind
+        /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
         [Input("plugins")]
         private InputList<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPluginGetArgs>? _plugins;
+
+        /// <summary>
+        /// Admission configuration plugins
+        /// </summary>
         public InputList<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPluginGetArgs> Plugins
         {
             get => _plugins ?? (_plugins = new InputList<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPluginGetArgs>());

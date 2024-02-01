@@ -11,21 +11,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption {
+    /**
+     * @return Level is SELinux level label that applies to the container.
+     * 
+     */
     private @Nullable String level;
+    /**
+     * @return Role is a SELinux role label that applies to the container.
+     * 
+     */
     private @Nullable String role;
+    /**
+     * @return Type is a SELinux type label that applies to the container.
+     * 
+     */
     private @Nullable String type;
+    /**
+     * @return User is a SELinux user label that applies to the container.
+     * 
+     */
     private @Nullable String user;
 
     private GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption() {}
+    /**
+     * @return Level is SELinux level label that applies to the container.
+     * 
+     */
     public Optional<String> level() {
         return Optional.ofNullable(this.level);
     }
+    /**
+     * @return Role is a SELinux role label that applies to the container.
+     * 
+     */
     public Optional<String> role() {
         return Optional.ofNullable(this.role);
     }
+    /**
+     * @return Type is a SELinux type label that applies to the container.
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
+    /**
+     * @return User is a SELinux user label that applies to the container.
+     * 
+     */
     public Optional<String> user() {
         return Optional.ofNullable(this.user);
     }

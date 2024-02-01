@@ -13,7 +13,13 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetPodSecurityPolicyTemplateSupplementalGroupRangeResult
     {
+        /// <summary>
+        /// max is the end of the range, inclusive.
+        /// </summary>
         public readonly int Max;
+        /// <summary>
+        /// min is the start of the range, inclusive.
+        /// </summary>
         public readonly int Min;
 
         [OutputConstructor]

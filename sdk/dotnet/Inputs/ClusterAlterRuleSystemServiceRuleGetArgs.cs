@@ -12,6 +12,9 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterAlterRuleSystemServiceRuleGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// System service rule condition
+        /// </summary>
         [Input("condition")]
         public Input<string>? Condition { get; set; }
 

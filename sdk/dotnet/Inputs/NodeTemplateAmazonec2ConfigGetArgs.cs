@@ -198,6 +198,9 @@ namespace Pulumi.Rancher2.Inputs
         [Input("spotPrice")]
         public Input<string>? SpotPrice { get; set; }
 
+        /// <summary>
+        /// SSH Key for Instance
+        /// </summary>
         [Input("sshKeypath")]
         public Input<string>? SshKeypath { get; set; }
 

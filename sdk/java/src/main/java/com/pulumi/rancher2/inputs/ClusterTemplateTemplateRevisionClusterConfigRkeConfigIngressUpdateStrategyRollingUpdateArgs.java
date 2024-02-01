@@ -15,9 +15,17 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressU
 
     public static final ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdateArgs Empty = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdateArgs();
 
+    /**
+     * Rolling update max unavailable
+     * 
+     */
     @Import(name="maxUnavailable")
     private @Nullable Output<Integer> maxUnavailable;
 
+    /**
+     * @return Rolling update max unavailable
+     * 
+     */
     public Optional<Output<Integer>> maxUnavailable() {
         return Optional.ofNullable(this.maxUnavailable);
     }
@@ -46,11 +54,23 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressU
             $ = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdateArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param maxUnavailable Rolling update max unavailable
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxUnavailable(@Nullable Output<Integer> maxUnavailable) {
             $.maxUnavailable = maxUnavailable;
             return this;
         }
 
+        /**
+         * @param maxUnavailable Rolling update max unavailable
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxUnavailable(Integer maxUnavailable) {
             return maxUnavailable(Output.of(maxUnavailable));
         }

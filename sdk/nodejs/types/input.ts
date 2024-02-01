@@ -601,30 +601,66 @@ export interface ClusterAlterGroupRecipient {
 }
 
 export interface ClusterAlterRuleEventRule {
+    /**
+     * Event type
+     */
     eventType?: pulumi.Input<string>;
+    /**
+     * Resource kind
+     */
     resourceKind: pulumi.Input<string>;
 }
 
 export interface ClusterAlterRuleMetricRule {
+    /**
+     * Metric rule comparison
+     */
     comparison?: pulumi.Input<string>;
     /**
      * The cluster alert group description (string)
      */
     description?: pulumi.Input<string>;
+    /**
+     * Metric rule duration
+     */
     duration: pulumi.Input<string>;
+    /**
+     * Metric rule expression
+     */
     expression: pulumi.Input<string>;
+    /**
+     * Metric rule threshold value
+     */
     thresholdValue: pulumi.Input<number>;
 }
 
 export interface ClusterAlterRuleNodeRule {
+    /**
+     * Node rule condition
+     */
     condition?: pulumi.Input<string>;
+    /**
+     * Node rule cpu threshold
+     */
     cpuThreshold?: pulumi.Input<number>;
+    /**
+     * Node rule mem threshold
+     */
     memThreshold?: pulumi.Input<number>;
+    /**
+     * Node ID
+     */
     nodeId?: pulumi.Input<string>;
+    /**
+     * Node rule selector
+     */
     selector?: pulumi.Input<{[key: string]: any}>;
 }
 
 export interface ClusterAlterRuleSystemServiceRule {
+    /**
+     * System service rule condition
+     */
     condition?: pulumi.Input<string>;
 }
 
@@ -817,6 +853,9 @@ export interface ClusterEksConfig {
      * The desired number of worker nodes. For Rancher v2.3.x and above. Default `3` (int)
      */
     desiredNodes?: pulumi.Input<number>;
+    /**
+     * Enables EBS encryption of worker nodes
+     */
     ebsEncryption?: pulumi.Input<boolean>;
     /**
      * The EKS node group instance type. Default: `t3.medium` (string)
@@ -3753,6 +3792,9 @@ export interface ClusterTemplateTemplateRevisionClusterConfig {
      * Default cluster role for project members (string)
      */
     defaultClusterRoleForProjectMembers?: pulumi.Input<string>;
+    /**
+     * Default pod security admission configuration template name
+     */
     defaultPodSecurityAdmissionConfigurationTemplateName?: pulumi.Input<string>;
     /**
      * Default pod security policy template ID (string)
@@ -3802,28 +3844,91 @@ export interface ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfig {
+    /**
+     * Optional duration in seconds of addon job.
+     */
     addonJobTimeout?: pulumi.Input<number>;
+    /**
+     * Optional addons descripton to deploy on rke cluster.
+     */
     addons?: pulumi.Input<string>;
+    /**
+     * Optional addons yaml manisfest to deploy on rke cluster.
+     */
     addonsIncludes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Kubernetes cluster authentication
+     */
     authentication?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication>;
+    /**
+     * Kubernetes cluster authorization
+     */
     authorization?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorization>;
+    /**
+     * RKE bastion host
+     */
     bastionHost?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHost>;
     cloudProvider?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvider>;
     dns?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns>;
+    /**
+     * Enable/disable using cri-dockerd
+     */
     enableCriDockerd?: pulumi.Input<boolean>;
+    /**
+     * Optional ignore docker version on nodes
+     */
     ignoreDockerVersion?: pulumi.Input<boolean>;
+    /**
+     * Kubernetes ingress configuration
+     */
     ingress?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress>;
+    /**
+     * Optional kubernetes version to deploy
+     */
     kubernetesVersion?: pulumi.Input<string>;
+    /**
+     * Kubernetes cluster monitoring
+     */
     monitoring?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring>;
+    /**
+     * Kubernetes cluster networking
+     */
     network?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork>;
+    /**
+     * Optional RKE cluster nodes
+     */
     nodes?: pulumi.Input<pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNode>[]>;
+    /**
+     * Optional prefix to customize kubernetes path
+     */
     prefixPath?: pulumi.Input<string>;
+    /**
+     * Optional private registries for docker images
+     */
     privateRegistries?: pulumi.Input<pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry>[]>;
+    /**
+     * Kubernetes cluster services
+     */
     services?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices>;
+    /**
+     * Optional use ssh agent auth
+     */
     sshAgentAuth?: pulumi.Input<boolean>;
+    /**
+     * Optional cluster level SSH certificate path
+     */
     sshCertPath?: pulumi.Input<string>;
+    /**
+     * Optional cluster level SSH private key path
+     */
     sshKeyPath?: pulumi.Input<string>;
+    /**
+     * RKE upgrade strategy
+     */
     upgradeStrategy?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy>;
+    /**
+     * Optional prefix to customize kubernetes path for windows
+     */
     winPrefixPath?: pulumi.Input<string>;
 }
 
@@ -3899,6 +4004,9 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvi
     cloudProviderRateLimit?: pulumi.Input<boolean>;
     cloudProviderRateLimitBucket?: pulumi.Input<number>;
     cloudProviderRateLimitQps?: pulumi.Input<number>;
+    /**
+     * Load balancer type (basic | standard). Must be standard for auto-scaling
+     */
     loadBalancerSku?: pulumi.Input<string>;
     location?: pulumi.Input<string>;
     maximumLoadBalancerRuleCount?: pulumi.Input<number>;
@@ -4013,13 +4121,25 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvi
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns {
+    /**
+     * Linear Autoscaler Params
+     */
     linearAutoscalerParams?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams>;
     nodeSelector?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Nodelocal dns
+     */
     nodelocal?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal>;
     options?: pulumi.Input<{[key: string]: any}>;
     provider?: pulumi.Input<string>;
     reverseCidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * DNS service tolerations
+     */
     tolerations?: pulumi.Input<pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsToleration>[]>;
+    /**
+     * Update deployment strategy
+     */
     updateStrategy?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy>;
     upstreamNameservers?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -4034,6 +4154,9 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearA
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal {
     ipAddress?: pulumi.Input<string>;
+    /**
+     * Node selector key pair
+     */
     nodeSelector?: pulumi.Input<{[key: string]: any}>;
 }
 
@@ -4046,12 +4169,24 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsTolerat
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy {
+    /**
+     * Rolling update for update strategy
+     */
     rollingUpdate?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate>;
+    /**
+     * Strategy
+     */
     strategy?: pulumi.Input<string>;
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate {
+    /**
+     * Rolling update max surge
+     */
     maxSurge?: pulumi.Input<number>;
+    /**
+     * Rolling update max unavailable
+     */
     maxUnavailable?: pulumi.Input<number>;
 }
 
@@ -4065,7 +4200,13 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress {
     nodeSelector?: pulumi.Input<{[key: string]: any}>;
     options?: pulumi.Input<{[key: string]: any}>;
     provider?: pulumi.Input<string>;
+    /**
+     * Ingress add-on tolerations
+     */
     tolerations?: pulumi.Input<pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressToleration>[]>;
+    /**
+     * Update daemon set strategy
+     */
     updateStrategy?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy>;
 }
 
@@ -4078,11 +4219,20 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressTol
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy {
+    /**
+     * Rolling update for update strategy
+     */
     rollingUpdate?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate>;
+    /**
+     * Strategy
+     */
     strategy?: pulumi.Input<string>;
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate {
+    /**
+     * Rolling update max unavailable
+     */
     maxUnavailable?: pulumi.Input<number>;
 }
 
@@ -4091,7 +4241,13 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring
     options?: pulumi.Input<{[key: string]: any}>;
     provider?: pulumi.Input<string>;
     replicas?: pulumi.Input<number>;
+    /**
+     * Monitoring add-on tolerations
+     */
     tolerations?: pulumi.Input<pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringToleration>[]>;
+    /**
+     * Update deployment strategy
+     */
     updateStrategy?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy>;
 }
 
@@ -4104,12 +4260,24 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy {
+    /**
+     * Rolling update for update strategy
+     */
     rollingUpdate?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate>;
+    /**
+     * Strategy
+     */
     strategy?: pulumi.Input<string>;
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate {
+    /**
+     * Rolling update max surge
+     */
     maxSurge?: pulumi.Input<number>;
+    /**
+     * Rolling update max unavailable
+     */
     maxUnavailable?: pulumi.Input<number>;
 }
 
@@ -4121,6 +4289,9 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork {
     mtu?: pulumi.Input<number>;
     options?: pulumi.Input<{[key: string]: any}>;
     plugin?: pulumi.Input<string>;
+    /**
+     * Network add-on tolerations
+     */
     tolerations?: pulumi.Input<pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkToleration>[]>;
     weaveNetworkProvider?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider>;
 }
@@ -4245,6 +4416,9 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigNode {
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry {
+    /**
+     * ECR credential plugin config
+     */
     ecrCredentialPlugin?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPlugin>;
     isDefault?: pulumi.Input<boolean>;
     password?: pulumi.Input<string>;
@@ -4308,6 +4482,9 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEt
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi {
+    /**
+     * Cluster admission configuration
+     */
     admissionConfiguration?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfiguration>;
     alwaysPullImages?: pulumi.Input<boolean>;
     auditLog?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog>;
@@ -4323,17 +4500,32 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKu
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfiguration {
+    /**
+     * Admission configuration ApiVersion
+     */
     apiVersion?: pulumi.Input<string>;
+    /**
+     * Admission configuration Kind
+     */
     kind?: pulumi.Input<string>;
+    /**
+     * Admission configuration plugins
+     */
     plugins?: pulumi.Input<pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPlugin>[]>;
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPlugin {
+    /**
+     * Plugin configuration
+     */
     configuration?: pulumi.Input<string>;
     /**
      * The cluster template name (string)
      */
     name?: pulumi.Input<string>;
+    /**
+     * Plugin path
+     */
     path?: pulumi.Input<string>;
 }
 
@@ -4665,6 +4857,9 @@ export interface ClusterV2RkeConfig {
      * Cluster V2 machine global config. Must be in YAML format (string)
      */
     machineGlobalConfig?: pulumi.Input<string>;
+    /**
+     * Default values for machine pool configurations if unset
+     */
     machinePoolDefaults?: pulumi.Input<pulumi.Input<inputs.ClusterV2RkeConfigMachinePoolDefault>[]>;
     /**
      * Cluster V2 machine pools (list)
@@ -4796,6 +4991,9 @@ export interface ClusterV2RkeConfigMachinePool {
      * Machine pool etcd role? (bool)
      */
     etcdRole?: pulumi.Input<boolean>;
+    /**
+     * maximum length for autogenerated hostname
+     */
     hostnameLengthLimit?: pulumi.Input<number>;
     /**
      * Labels for the Cluster V2 (map)
@@ -4856,6 +5054,9 @@ export interface ClusterV2RkeConfigMachinePool {
 }
 
 export interface ClusterV2RkeConfigMachinePoolDefault {
+    /**
+     * maximum length for autogenerated hostname
+     */
     hostnameLengthLimit?: pulumi.Input<number>;
 }
 
@@ -5143,24 +5344,54 @@ export interface EtcdBackupBackupConfigS3BackupConfig {
 }
 
 export interface GetNotifierDingtalkConfig {
+    /**
+     * Dingtalk proxy URL
+     */
     proxyUrl?: string;
+    /**
+     * Required for webhook with sign enabled
+     */
     secret?: string;
+    /**
+     * Webhook URL
+     */
     url: string;
 }
 
 export interface GetNotifierDingtalkConfigArgs {
+    /**
+     * Dingtalk proxy URL
+     */
     proxyUrl?: pulumi.Input<string>;
+    /**
+     * Required for webhook with sign enabled
+     */
     secret?: pulumi.Input<string>;
+    /**
+     * Webhook URL
+     */
     url: pulumi.Input<string>;
 }
 
 export interface GetNotifierMsteamsConfig {
+    /**
+     * MS teams proxy URL
+     */
     proxyUrl?: string;
+    /**
+     * Webhook URL
+     */
     url: string;
 }
 
 export interface GetNotifierMsteamsConfigArgs {
+    /**
+     * MS teams proxy URL
+     */
     proxyUrl?: pulumi.Input<string>;
+    /**
+     * Webhook URL
+     */
     url: pulumi.Input<string>;
 }
 
@@ -5179,144 +5410,318 @@ export interface GetPodSecurityPolicyTemplateAllowedCsiDriverArgs {
 }
 
 export interface GetPodSecurityPolicyTemplateAllowedFlexVolume {
+    /**
+     * driver is the name of the Flexvolume driver.
+     */
     driver: string;
 }
 
 export interface GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs {
+    /**
+     * driver is the name of the Flexvolume driver.
+     */
     driver: pulumi.Input<string>;
 }
 
 export interface GetPodSecurityPolicyTemplateAllowedHostPath {
+    /**
+     * pathPrefix is the path prefix that the host volume must match. It does not support `*`. Trailing slashes are trimmed when validating the path prefix with a host path.
+     */
     pathPrefix: string;
+    /**
+     * when set to true, will allow host volumes matching the pathPrefix only if all volume mounts are readOnly.
+     */
     readOnly?: boolean;
 }
 
 export interface GetPodSecurityPolicyTemplateAllowedHostPathArgs {
+    /**
+     * pathPrefix is the path prefix that the host volume must match. It does not support `*`. Trailing slashes are trimmed when validating the path prefix with a host path.
+     */
     pathPrefix: pulumi.Input<string>;
+    /**
+     * when set to true, will allow host volumes matching the pathPrefix only if all volume mounts are readOnly.
+     */
     readOnly?: pulumi.Input<boolean>;
 }
 
 export interface GetPodSecurityPolicyTemplateFsGroup {
+    /**
+     * ranges are the allowed ranges of fs groups.  If you would like to force a single fs group then supply a single range with the same start and end. Required for MustRunAs.
+     */
     ranges?: inputs.GetPodSecurityPolicyTemplateFsGroupRange[];
+    /**
+     * rule is the strategy that will dictate what FSGroup is used in the SecurityContext.
+     */
     rule?: string;
 }
 
 export interface GetPodSecurityPolicyTemplateFsGroupArgs {
+    /**
+     * ranges are the allowed ranges of fs groups.  If you would like to force a single fs group then supply a single range with the same start and end. Required for MustRunAs.
+     */
     ranges?: pulumi.Input<pulumi.Input<inputs.GetPodSecurityPolicyTemplateFsGroupRangeArgs>[]>;
+    /**
+     * rule is the strategy that will dictate what FSGroup is used in the SecurityContext.
+     */
     rule?: pulumi.Input<string>;
 }
 
 export interface GetPodSecurityPolicyTemplateFsGroupRange {
+    /**
+     * max is the end of the range, inclusive.
+     */
     max: number;
+    /**
+     * min is the start of the range, inclusive.
+     */
     min: number;
 }
 
 export interface GetPodSecurityPolicyTemplateFsGroupRangeArgs {
+    /**
+     * max is the end of the range, inclusive.
+     */
     max: pulumi.Input<number>;
+    /**
+     * min is the start of the range, inclusive.
+     */
     min: pulumi.Input<number>;
 }
 
 export interface GetPodSecurityPolicyTemplateHostPort {
+    /**
+     * max is the end of the range, inclusive.
+     */
     max: number;
+    /**
+     * min is the start of the range, inclusive.
+     */
     min: number;
 }
 
 export interface GetPodSecurityPolicyTemplateHostPortArgs {
+    /**
+     * max is the end of the range, inclusive.
+     */
     max: pulumi.Input<number>;
+    /**
+     * min is the start of the range, inclusive.
+     */
     min: pulumi.Input<number>;
 }
 
 export interface GetPodSecurityPolicyTemplateRunAsGroup {
+    /**
+     * ranges are the allowed ranges of gids that may be used. If you would like to force a single gid then supply a single range with the same start and end. Required for MustRunAs.
+     */
     ranges?: inputs.GetPodSecurityPolicyTemplateRunAsGroupRange[];
+    /**
+     * rule is the strategy that will dictate the allowable RunAsGroup values that may be set.
+     */
     rule: string;
 }
 
 export interface GetPodSecurityPolicyTemplateRunAsGroupArgs {
+    /**
+     * ranges are the allowed ranges of gids that may be used. If you would like to force a single gid then supply a single range with the same start and end. Required for MustRunAs.
+     */
     ranges?: pulumi.Input<pulumi.Input<inputs.GetPodSecurityPolicyTemplateRunAsGroupRangeArgs>[]>;
+    /**
+     * rule is the strategy that will dictate the allowable RunAsGroup values that may be set.
+     */
     rule: pulumi.Input<string>;
 }
 
 export interface GetPodSecurityPolicyTemplateRunAsGroupRange {
+    /**
+     * max is the end of the range, inclusive.
+     */
     max: number;
+    /**
+     * min is the start of the range, inclusive.
+     */
     min: number;
 }
 
 export interface GetPodSecurityPolicyTemplateRunAsGroupRangeArgs {
+    /**
+     * max is the end of the range, inclusive.
+     */
     max: pulumi.Input<number>;
+    /**
+     * min is the start of the range, inclusive.
+     */
     min: pulumi.Input<number>;
 }
 
 export interface GetPodSecurityPolicyTemplateRunAsUser {
+    /**
+     * ranges are the allowed ranges of uids that may be used. If you would like to force a single uid then supply a single range with the same start and end. Required for MustRunAs.
+     */
     ranges?: inputs.GetPodSecurityPolicyTemplateRunAsUserRange[];
+    /**
+     * rule is the strategy that will dictate the allowable RunAsUser values that may be set.
+     */
     rule: string;
 }
 
 export interface GetPodSecurityPolicyTemplateRunAsUserArgs {
+    /**
+     * ranges are the allowed ranges of uids that may be used. If you would like to force a single uid then supply a single range with the same start and end. Required for MustRunAs.
+     */
     ranges?: pulumi.Input<pulumi.Input<inputs.GetPodSecurityPolicyTemplateRunAsUserRangeArgs>[]>;
+    /**
+     * rule is the strategy that will dictate the allowable RunAsUser values that may be set.
+     */
     rule: pulumi.Input<string>;
 }
 
 export interface GetPodSecurityPolicyTemplateRunAsUserRange {
+    /**
+     * max is the end of the range, inclusive.
+     */
     max: number;
+    /**
+     * min is the start of the range, inclusive.
+     */
     min: number;
 }
 
 export interface GetPodSecurityPolicyTemplateRunAsUserRangeArgs {
+    /**
+     * max is the end of the range, inclusive.
+     */
     max: pulumi.Input<number>;
+    /**
+     * min is the start of the range, inclusive.
+     */
     min: pulumi.Input<number>;
 }
 
 export interface GetPodSecurityPolicyTemplateRuntimeClass {
+    /**
+     * allowedRuntimeClassNames is a whitelist of RuntimeClass names that may be specified on a pod. A value of "*" means that any RuntimeClass name is allowed, and must be the only item in the list. An empty list requires the RuntimeClassName field to be unset.
+     */
     allowedRuntimeClassNames: string[];
+    /**
+     * defaultRuntimeClassName is the default RuntimeClassName to set on the pod. The default MUST be allowed by the allowedRuntimeClassNames list. A value of nil does not mutate the Pod.
+     */
     defaultRuntimeClassName?: string;
 }
 
 export interface GetPodSecurityPolicyTemplateRuntimeClassArgs {
+    /**
+     * allowedRuntimeClassNames is a whitelist of RuntimeClass names that may be specified on a pod. A value of "*" means that any RuntimeClass name is allowed, and must be the only item in the list. An empty list requires the RuntimeClassName field to be unset.
+     */
     allowedRuntimeClassNames: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * defaultRuntimeClassName is the default RuntimeClassName to set on the pod. The default MUST be allowed by the allowedRuntimeClassNames list. A value of nil does not mutate the Pod.
+     */
     defaultRuntimeClassName?: pulumi.Input<string>;
 }
 
 export interface GetPodSecurityPolicyTemplateSeLinux {
+    /**
+     * rule is the strategy that will dictate the allowable labels that may be set.
+     */
     rule: string;
+    /**
+     * seLinuxOptions required to run as; required for MustRunAs. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+     */
     seLinuxOption?: inputs.GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption;
 }
 
 export interface GetPodSecurityPolicyTemplateSeLinuxArgs {
+    /**
+     * rule is the strategy that will dictate the allowable labels that may be set.
+     */
     rule: pulumi.Input<string>;
+    /**
+     * seLinuxOptions required to run as; required for MustRunAs. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+     */
     seLinuxOption?: pulumi.Input<inputs.GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs>;
 }
 
 export interface GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption {
+    /**
+     * Level is SELinux level label that applies to the container.
+     */
     level?: string;
+    /**
+     * Role is a SELinux role label that applies to the container.
+     */
     role?: string;
+    /**
+     * Type is a SELinux type label that applies to the container.
+     */
     type?: string;
+    /**
+     * User is a SELinux user label that applies to the container.
+     */
     user?: string;
 }
 
 export interface GetPodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs {
+    /**
+     * Level is SELinux level label that applies to the container.
+     */
     level?: pulumi.Input<string>;
+    /**
+     * Role is a SELinux role label that applies to the container.
+     */
     role?: pulumi.Input<string>;
+    /**
+     * Type is a SELinux type label that applies to the container.
+     */
     type?: pulumi.Input<string>;
+    /**
+     * User is a SELinux user label that applies to the container.
+     */
     user?: pulumi.Input<string>;
 }
 
 export interface GetPodSecurityPolicyTemplateSupplementalGroup {
+    /**
+     * ranges are the allowed ranges of supplemental groups.  If you would like to force a single supplemental group then supply a single range with the same start and end. Required for MustRunAs.
+     */
     ranges?: inputs.GetPodSecurityPolicyTemplateSupplementalGroupRange[];
+    /**
+     * rule is the strategy that will dictate what supplemental groups is used in the SecurityContext.
+     */
     rule?: string;
 }
 
 export interface GetPodSecurityPolicyTemplateSupplementalGroupArgs {
+    /**
+     * ranges are the allowed ranges of supplemental groups.  If you would like to force a single supplemental group then supply a single range with the same start and end. Required for MustRunAs.
+     */
     ranges?: pulumi.Input<pulumi.Input<inputs.GetPodSecurityPolicyTemplateSupplementalGroupRangeArgs>[]>;
+    /**
+     * rule is the strategy that will dictate what supplemental groups is used in the SecurityContext.
+     */
     rule?: pulumi.Input<string>;
 }
 
 export interface GetPodSecurityPolicyTemplateSupplementalGroupRange {
+    /**
+     * max is the end of the range, inclusive.
+     */
     max: number;
+    /**
+     * min is the start of the range, inclusive.
+     */
     min: number;
 }
 
 export interface GetPodSecurityPolicyTemplateSupplementalGroupRangeArgs {
+    /**
+     * max is the end of the range, inclusive.
+     */
     max: pulumi.Input<number>;
+    /**
+     * min is the start of the range, inclusive.
+     */
     min: pulumi.Input<number>;
 }
 
@@ -5397,6 +5802,9 @@ export interface GlobalRoleRule {
 }
 
 export interface MachineConfigV2Amazonec2Config {
+    /**
+     * AWS Access Key
+     */
     accessKey?: pulumi.Input<string>;
     /**
      * AWS machine image (string)
@@ -5470,6 +5878,9 @@ export interface MachineConfigV2Amazonec2Config {
      * AWS root disk size (in GB). Default `16` (string)
      */
     rootSize?: pulumi.Input<string>;
+    /**
+     * AWS Secret Key
+     */
     secretKey?: pulumi.Input<string>;
     /**
      * Skip adding default rules to security groups (bool)
@@ -5530,6 +5941,9 @@ export interface MachineConfigV2Amazonec2Config {
 }
 
 export interface MachineConfigV2AzureConfig {
+    /**
+     * Use Accelerated Networking when creating a network interface for the Azure VM
+     */
     acceleratedNetworking?: pulumi.Input<boolean>;
     /**
      * Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
@@ -5651,6 +6065,9 @@ export interface MachineConfigV2AzureConfig {
      * Use private IP address of the machine to connect. Default `false` (bool)
      */
     usePrivateIp?: pulumi.Input<boolean>;
+    /**
+     * Use the standard SKU when creating a Public IP for the Azure VM instance
+     */
     usePublicIpStandardSku?: pulumi.Input<boolean>;
     /**
      * Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format). Default `docker-machine-vnet` (string)
@@ -6421,6 +6838,9 @@ export interface NodeTemplateAmazonec2Config {
      * AWS spot instance bid price (in dollar). Default `0.50` (string)
      */
     spotPrice?: pulumi.Input<string>;
+    /**
+     * SSH Key for Instance
+     */
     sshKeypath?: pulumi.Input<string>;
     /**
      * If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
@@ -6463,6 +6883,9 @@ export interface NodeTemplateAmazonec2Config {
 }
 
 export interface NodeTemplateAzureConfig {
+    /**
+     * Enable Accelerated Networking when creating an Azure Network Interface
+     */
     acceleratedNetworking?: pulumi.Input<boolean>;
     /**
      * Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
@@ -6580,6 +7003,9 @@ export interface NodeTemplateAzureConfig {
      * Use private IP address of the machine to connect. Default `false` (bool)
      */
     usePrivateIp?: pulumi.Input<boolean>;
+    /**
+     * Use the Standard SKU when creating a public IP for an Azure VM
+     */
     usePublicIpStandardSku?: pulumi.Input<boolean>;
     /**
      * Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format). Default `docker-machine-vnet` (string)
@@ -7393,6 +7819,9 @@ export interface PodSecurityPolicyTemplateAllowedCsiDriver {
 }
 
 export interface PodSecurityPolicyTemplateAllowedFlexVolume {
+    /**
+     * driver is the name of the Flexvolume driver.
+     */
     driver: pulumi.Input<string>;
 }
 
@@ -7548,6 +7977,9 @@ export interface PodSecurityPolicyTemplateSupplementalGroupRange {
 }
 
 export interface ProjectAlertGroupRecipient {
+    /**
+     * Use notifier default recipient
+     */
     defaultRecipient?: pulumi.Input<boolean>;
     /**
      * Recipient notifier ID (string)

@@ -134,6 +134,10 @@ public final class NodeTemplateAmazonec2Config {
      * 
      */
     private @Nullable String spotPrice;
+    /**
+     * @return SSH Key for Instance
+     * 
+     */
     private @Nullable String sshKeypath;
     /**
      * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
@@ -352,6 +356,10 @@ public final class NodeTemplateAmazonec2Config {
     public Optional<String> spotPrice() {
         return Optional.ofNullable(this.spotPrice);
     }
+    /**
+     * @return SSH Key for Instance
+     * 
+     */
     public Optional<String> sshKeypath() {
         return Optional.ofNullable(this.sshKeypath);
     }

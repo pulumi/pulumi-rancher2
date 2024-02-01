@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterV2RkeConfigRegistries {
+    /**
+     * @return Registry config
+     * 
+     */
     private @Nullable List<GetClusterV2RkeConfigRegistriesConfig> configs;
+    /**
+     * @return Registry mirrors
+     * 
+     */
     private @Nullable List<GetClusterV2RkeConfigRegistriesMirror> mirrors;
 
     private GetClusterV2RkeConfigRegistries() {}
+    /**
+     * @return Registry config
+     * 
+     */
     public List<GetClusterV2RkeConfigRegistriesConfig> configs() {
         return this.configs == null ? List.of() : this.configs;
     }
+    /**
+     * @return Registry mirrors
+     * 
+     */
     public List<GetClusterV2RkeConfigRegistriesMirror> mirrors() {
         return this.mirrors == null ? List.of() : this.mirrors;
     }

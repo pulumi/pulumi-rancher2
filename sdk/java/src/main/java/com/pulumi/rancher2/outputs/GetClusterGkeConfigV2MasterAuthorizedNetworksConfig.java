@@ -14,13 +14,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterGkeConfigV2MasterAuthorizedNetworksConfig {
+    /**
+     * @return The GKE master authorized network config cidr blocks
+     * 
+     */
     private List<GetClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock> cidrBlocks;
+    /**
+     * @return Enable GKE master authorized network config
+     * 
+     */
     private @Nullable Boolean enabled;
 
     private GetClusterGkeConfigV2MasterAuthorizedNetworksConfig() {}
+    /**
+     * @return The GKE master authorized network config cidr blocks
+     * 
+     */
     public List<GetClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock> cidrBlocks() {
         return this.cidrBlocks;
     }
+    /**
+     * @return Enable GKE master authorized network config
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }

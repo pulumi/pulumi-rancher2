@@ -16,16 +16,32 @@ public final class GetPodSecurityPolicyTemplateSeLinux extends com.pulumi.resour
 
     public static final GetPodSecurityPolicyTemplateSeLinux Empty = new GetPodSecurityPolicyTemplateSeLinux();
 
+    /**
+     * rule is the strategy that will dictate the allowable labels that may be set.
+     * 
+     */
     @Import(name="rule", required=true)
     private String rule;
 
+    /**
+     * @return rule is the strategy that will dictate the allowable labels that may be set.
+     * 
+     */
     public String rule() {
         return this.rule;
     }
 
+    /**
+     * seLinuxOptions required to run as; required for MustRunAs. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+     * 
+     */
     @Import(name="seLinuxOption")
     private @Nullable GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption seLinuxOption;
 
+    /**
+     * @return seLinuxOptions required to run as; required for MustRunAs. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+     * 
+     */
     public Optional<GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption> seLinuxOption() {
         return Optional.ofNullable(this.seLinuxOption);
     }
@@ -55,11 +71,23 @@ public final class GetPodSecurityPolicyTemplateSeLinux extends com.pulumi.resour
             $ = new GetPodSecurityPolicyTemplateSeLinux(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param rule rule is the strategy that will dictate the allowable labels that may be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rule(String rule) {
             $.rule = rule;
             return this;
         }
 
+        /**
+         * @param seLinuxOption seLinuxOptions required to run as; required for MustRunAs. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+         * 
+         * @return builder
+         * 
+         */
         public Builder seLinuxOption(@Nullable GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption seLinuxOption) {
             $.seLinuxOption = seLinuxOption;
             return this;

@@ -23,9 +23,25 @@ public final class GetClusterTemplateTemplateRevision {
      * 
      */
     private Map<String,Object> annotations;
+    /**
+     * @return Cluster configuration
+     * 
+     */
     private GetClusterTemplateTemplateRevisionClusterConfig clusterConfig;
+    /**
+     * @return Cluster template ID
+     * 
+     */
     private String clusterTemplateId;
+    /**
+     * @return Default cluster template revision
+     * 
+     */
     private @Nullable Boolean default_;
+    /**
+     * @return Enable cluster template revision
+     * 
+     */
     private @Nullable Boolean enabled;
     /**
      * @return (Computed) The ID of the resource (string)
@@ -42,6 +58,10 @@ public final class GetClusterTemplateTemplateRevision {
      * 
      */
     private String name;
+    /**
+     * @return Cluster template questions
+     * 
+     */
     private @Nullable List<GetClusterTemplateTemplateRevisionQuestion> questions;
 
     private GetClusterTemplateTemplateRevision() {}
@@ -52,15 +72,31 @@ public final class GetClusterTemplateTemplateRevision {
     public Map<String,Object> annotations() {
         return this.annotations;
     }
+    /**
+     * @return Cluster configuration
+     * 
+     */
     public GetClusterTemplateTemplateRevisionClusterConfig clusterConfig() {
         return this.clusterConfig;
     }
+    /**
+     * @return Cluster template ID
+     * 
+     */
     public String clusterTemplateId() {
         return this.clusterTemplateId;
     }
+    /**
+     * @return Default cluster template revision
+     * 
+     */
     public Optional<Boolean> default_() {
         return Optional.ofNullable(this.default_);
     }
+    /**
+     * @return Enable cluster template revision
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -85,6 +121,10 @@ public final class GetClusterTemplateTemplateRevision {
     public String name() {
         return this.name;
     }
+    /**
+     * @return Cluster template questions
+     * 
+     */
     public List<GetClusterTemplateTemplateRevisionQuestion> questions() {
         return this.questions == null ? List.of() : this.questions;
     }

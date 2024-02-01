@@ -13,9 +13,21 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetMultiClusterAppTargetResult
     {
+        /// <summary>
+        /// App ID for target
+        /// </summary>
         public readonly string AppId;
+        /// <summary>
+        /// App health state for target
+        /// </summary>
         public readonly string HealthState;
+        /// <summary>
+        /// Project ID for target
+        /// </summary>
         public readonly string ProjectId;
+        /// <summary>
+        /// App state for target
+        /// </summary>
         public readonly string State;
 
         [OutputConstructor]

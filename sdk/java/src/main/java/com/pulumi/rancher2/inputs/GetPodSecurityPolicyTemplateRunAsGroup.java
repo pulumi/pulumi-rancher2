@@ -17,16 +17,32 @@ public final class GetPodSecurityPolicyTemplateRunAsGroup extends com.pulumi.res
 
     public static final GetPodSecurityPolicyTemplateRunAsGroup Empty = new GetPodSecurityPolicyTemplateRunAsGroup();
 
+    /**
+     * ranges are the allowed ranges of gids that may be used. If you would like to force a single gid then supply a single range with the same start and end. Required for MustRunAs.
+     * 
+     */
     @Import(name="ranges")
     private @Nullable List<GetPodSecurityPolicyTemplateRunAsGroupRange> ranges;
 
+    /**
+     * @return ranges are the allowed ranges of gids that may be used. If you would like to force a single gid then supply a single range with the same start and end. Required for MustRunAs.
+     * 
+     */
     public Optional<List<GetPodSecurityPolicyTemplateRunAsGroupRange>> ranges() {
         return Optional.ofNullable(this.ranges);
     }
 
+    /**
+     * rule is the strategy that will dictate the allowable RunAsGroup values that may be set.
+     * 
+     */
     @Import(name="rule", required=true)
     private String rule;
 
+    /**
+     * @return rule is the strategy that will dictate the allowable RunAsGroup values that may be set.
+     * 
+     */
     public String rule() {
         return this.rule;
     }
@@ -56,15 +72,33 @@ public final class GetPodSecurityPolicyTemplateRunAsGroup extends com.pulumi.res
             $ = new GetPodSecurityPolicyTemplateRunAsGroup(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ranges ranges are the allowed ranges of gids that may be used. If you would like to force a single gid then supply a single range with the same start and end. Required for MustRunAs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ranges(@Nullable List<GetPodSecurityPolicyTemplateRunAsGroupRange> ranges) {
             $.ranges = ranges;
             return this;
         }
 
+        /**
+         * @param ranges ranges are the allowed ranges of gids that may be used. If you would like to force a single gid then supply a single range with the same start and end. Required for MustRunAs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ranges(GetPodSecurityPolicyTemplateRunAsGroupRange... ranges) {
             return ranges(List.of(ranges));
         }
 
+        /**
+         * @param rule rule is the strategy that will dictate the allowable RunAsGroup values that may be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rule(String rule) {
             $.rule = rule;
             return this;

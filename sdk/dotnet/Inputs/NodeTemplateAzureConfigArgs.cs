@@ -12,6 +12,9 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class NodeTemplateAzureConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Enable Accelerated Networking when creating an Azure Network Interface
+        /// </summary>
         [Input("acceleratedNetworking")]
         public Input<bool>? AcceleratedNetworking { get; set; }
 
@@ -225,6 +228,9 @@ namespace Pulumi.Rancher2.Inputs
         [Input("usePrivateIp")]
         public Input<bool>? UsePrivateIp { get; set; }
 
+        /// <summary>
+        /// Use the Standard SKU when creating a public IP for an Azure VM
+        /// </summary>
         [Input("usePublicIpStandardSku")]
         public Input<bool>? UsePublicIpStandardSku { get; set; }
 

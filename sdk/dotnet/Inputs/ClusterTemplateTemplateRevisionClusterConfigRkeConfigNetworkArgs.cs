@@ -40,6 +40,10 @@ namespace Pulumi.Rancher2.Inputs
 
         [Input("tolerations")]
         private InputList<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkTolerationArgs>? _tolerations;
+
+        /// <summary>
+        /// Network add-on tolerations
+        /// </summary>
         public InputList<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkTolerationArgs> Tolerations
         {
             get => _tolerations ?? (_tolerations = new InputList<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkTolerationArgs>());

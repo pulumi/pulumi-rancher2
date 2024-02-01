@@ -13,6 +13,9 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterV2RkeConfigMachinePoolMachineConfigResult
     {
+        /// <summary>
+        /// Machine config kind
+        /// </summary>
         public readonly string Kind;
         /// <summary>
         /// The name of the Cluster v2 (string)

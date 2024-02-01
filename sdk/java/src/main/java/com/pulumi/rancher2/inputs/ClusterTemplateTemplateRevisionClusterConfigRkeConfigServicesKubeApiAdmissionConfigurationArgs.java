@@ -17,23 +17,47 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
 
     public static final ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationArgs Empty = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationArgs();
 
+    /**
+     * Admission configuration ApiVersion
+     * 
+     */
     @Import(name="apiVersion")
     private @Nullable Output<String> apiVersion;
 
+    /**
+     * @return Admission configuration ApiVersion
+     * 
+     */
     public Optional<Output<String>> apiVersion() {
         return Optional.ofNullable(this.apiVersion);
     }
 
+    /**
+     * Admission configuration Kind
+     * 
+     */
     @Import(name="kind")
     private @Nullable Output<String> kind;
 
+    /**
+     * @return Admission configuration Kind
+     * 
+     */
     public Optional<Output<String>> kind() {
         return Optional.ofNullable(this.kind);
     }
 
+    /**
+     * Admission configuration plugins
+     * 
+     */
     @Import(name="plugins")
     private @Nullable Output<List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPluginArgs>> plugins;
 
+    /**
+     * @return Admission configuration plugins
+     * 
+     */
     public Optional<Output<List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPluginArgs>>> plugins() {
         return Optional.ofNullable(this.plugins);
     }
@@ -64,33 +88,75 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
             $ = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param apiVersion Admission configuration ApiVersion
+         * 
+         * @return builder
+         * 
+         */
         public Builder apiVersion(@Nullable Output<String> apiVersion) {
             $.apiVersion = apiVersion;
             return this;
         }
 
+        /**
+         * @param apiVersion Admission configuration ApiVersion
+         * 
+         * @return builder
+         * 
+         */
         public Builder apiVersion(String apiVersion) {
             return apiVersion(Output.of(apiVersion));
         }
 
+        /**
+         * @param kind Admission configuration Kind
+         * 
+         * @return builder
+         * 
+         */
         public Builder kind(@Nullable Output<String> kind) {
             $.kind = kind;
             return this;
         }
 
+        /**
+         * @param kind Admission configuration Kind
+         * 
+         * @return builder
+         * 
+         */
         public Builder kind(String kind) {
             return kind(Output.of(kind));
         }
 
+        /**
+         * @param plugins Admission configuration plugins
+         * 
+         * @return builder
+         * 
+         */
         public Builder plugins(@Nullable Output<List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPluginArgs>> plugins) {
             $.plugins = plugins;
             return this;
         }
 
+        /**
+         * @param plugins Admission configuration plugins
+         * 
+         * @return builder
+         * 
+         */
         public Builder plugins(List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPluginArgs> plugins) {
             return plugins(Output.of(plugins));
         }
 
+        /**
+         * @param plugins Admission configuration plugins
+         * 
+         * @return builder
+         * 
+         */
         public Builder plugins(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPluginArgs... plugins) {
             return plugins(List.of(plugins));
         }

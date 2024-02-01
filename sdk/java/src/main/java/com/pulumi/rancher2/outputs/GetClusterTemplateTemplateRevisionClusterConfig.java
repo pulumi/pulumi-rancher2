@@ -15,53 +15,149 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterTemplateTemplateRevisionClusterConfig {
+    /**
+     * @return Local cluster auth endpoint
+     * 
+     */
     private GetClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint clusterAuthEndpoint;
+    /**
+     * @return Default cluster role for project members
+     * 
+     */
     private String defaultClusterRoleForProjectMembers;
+    /**
+     * @return Default pod security admission configuration template name
+     * 
+     */
     private String defaultPodSecurityAdmissionConfigurationTemplateName;
+    /**
+     * @return Default pod security policy template ID
+     * 
+     */
     private String defaultPodSecurityPolicyTemplateId;
+    /**
+     * @return Desired agent image
+     * 
+     */
     private String desiredAgentImage;
+    /**
+     * @return Desired auth image
+     * 
+     */
     private String desiredAuthImage;
+    /**
+     * @return Docker Root Dir
+     * 
+     */
     private String dockerRootDir;
+    /**
+     * @return Enable built-in cluster alerting
+     * 
+     */
     private @Nullable Boolean enableClusterAlerting;
+    /**
+     * @return Enable built-in cluster monitoring
+     * 
+     */
     private @Nullable Boolean enableClusterMonitoring;
+    /**
+     * @return Enable project network isolation
+     * 
+     */
     private @Nullable Boolean enableNetworkPolicy;
+    /**
+     * @return Rancher Kubernetes Engine Config
+     * 
+     */
     private GetClusterTemplateTemplateRevisionClusterConfigRkeConfig rkeConfig;
+    /**
+     * @return Windows prefered cluster
+     * 
+     */
     private @Nullable Boolean windowsPreferedCluster;
 
     private GetClusterTemplateTemplateRevisionClusterConfig() {}
+    /**
+     * @return Local cluster auth endpoint
+     * 
+     */
     public GetClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint clusterAuthEndpoint() {
         return this.clusterAuthEndpoint;
     }
+    /**
+     * @return Default cluster role for project members
+     * 
+     */
     public String defaultClusterRoleForProjectMembers() {
         return this.defaultClusterRoleForProjectMembers;
     }
+    /**
+     * @return Default pod security admission configuration template name
+     * 
+     */
     public String defaultPodSecurityAdmissionConfigurationTemplateName() {
         return this.defaultPodSecurityAdmissionConfigurationTemplateName;
     }
+    /**
+     * @return Default pod security policy template ID
+     * 
+     */
     public String defaultPodSecurityPolicyTemplateId() {
         return this.defaultPodSecurityPolicyTemplateId;
     }
+    /**
+     * @return Desired agent image
+     * 
+     */
     public String desiredAgentImage() {
         return this.desiredAgentImage;
     }
+    /**
+     * @return Desired auth image
+     * 
+     */
     public String desiredAuthImage() {
         return this.desiredAuthImage;
     }
+    /**
+     * @return Docker Root Dir
+     * 
+     */
     public String dockerRootDir() {
         return this.dockerRootDir;
     }
+    /**
+     * @return Enable built-in cluster alerting
+     * 
+     */
     public Optional<Boolean> enableClusterAlerting() {
         return Optional.ofNullable(this.enableClusterAlerting);
     }
+    /**
+     * @return Enable built-in cluster monitoring
+     * 
+     */
     public Optional<Boolean> enableClusterMonitoring() {
         return Optional.ofNullable(this.enableClusterMonitoring);
     }
+    /**
+     * @return Enable project network isolation
+     * 
+     */
     public Optional<Boolean> enableNetworkPolicy() {
         return Optional.ofNullable(this.enableNetworkPolicy);
     }
+    /**
+     * @return Rancher Kubernetes Engine Config
+     * 
+     */
     public GetClusterTemplateTemplateRevisionClusterConfigRkeConfig rkeConfig() {
         return this.rkeConfig;
     }
+    /**
+     * @return Windows prefered cluster
+     * 
+     */
     public Optional<Boolean> windowsPreferedCluster() {
         return Optional.ofNullable(this.windowsPreferedCluster);
     }

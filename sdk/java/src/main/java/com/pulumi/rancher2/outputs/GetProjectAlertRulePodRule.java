@@ -13,21 +13,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetProjectAlertRulePodRule {
+    /**
+     * @return Pod rule condition
+     * 
+     */
     private @Nullable String condition;
+    /**
+     * @return Pod ID
+     * 
+     */
     private String podId;
+    /**
+     * @return Pod rule restart interval seconds
+     * 
+     */
     private @Nullable Integer restartIntervalSeconds;
+    /**
+     * @return Pod rule restart times
+     * 
+     */
     private @Nullable Integer restartTimes;
 
     private GetProjectAlertRulePodRule() {}
+    /**
+     * @return Pod rule condition
+     * 
+     */
     public Optional<String> condition() {
         return Optional.ofNullable(this.condition);
     }
+    /**
+     * @return Pod ID
+     * 
+     */
     public String podId() {
         return this.podId;
     }
+    /**
+     * @return Pod rule restart interval seconds
+     * 
+     */
     public Optional<Integer> restartIntervalSeconds() {
         return Optional.ofNullable(this.restartIntervalSeconds);
     }
+    /**
+     * @return Pod rule restart times
+     * 
+     */
     public Optional<Integer> restartTimes() {
         return Optional.ofNullable(this.restartTimes);
     }

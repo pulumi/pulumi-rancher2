@@ -13,6 +13,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MachineConfigV2AzureConfig {
+    /**
+     * @return Use Accelerated Networking when creating a network interface for the Azure VM
+     * 
+     */
     private @Nullable Boolean acceleratedNetworking;
     /**
      * @return Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
@@ -164,6 +168,10 @@ public final class MachineConfigV2AzureConfig {
      * 
      */
     private @Nullable Boolean usePrivateIp;
+    /**
+     * @return Use the standard SKU when creating a Public IP for the Azure VM instance
+     * 
+     */
     private @Nullable Boolean usePublicIpStandardSku;
     /**
      * @return Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format). Default `docker-machine-vnet` (string)
@@ -172,6 +180,10 @@ public final class MachineConfigV2AzureConfig {
     private @Nullable String vnet;
 
     private MachineConfigV2AzureConfig() {}
+    /**
+     * @return Use Accelerated Networking when creating a network interface for the Azure VM
+     * 
+     */
     public Optional<Boolean> acceleratedNetworking() {
         return Optional.ofNullable(this.acceleratedNetworking);
     }
@@ -385,6 +397,10 @@ public final class MachineConfigV2AzureConfig {
     public Optional<Boolean> usePrivateIp() {
         return Optional.ofNullable(this.usePrivateIp);
     }
+    /**
+     * @return Use the standard SKU when creating a Public IP for the Azure VM instance
+     * 
+     */
     public Optional<Boolean> usePublicIpStandardSku() {
         return Optional.ofNullable(this.usePublicIpStandardSku);
     }

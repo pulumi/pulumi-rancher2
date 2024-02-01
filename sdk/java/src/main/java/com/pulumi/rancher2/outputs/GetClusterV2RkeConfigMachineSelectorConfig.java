@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterV2RkeConfigMachineSelectorConfig {
+    /**
+     * @return Machine selector config
+     * 
+     */
     private @Nullable String config;
+    /**
+     * @return Machine label selector
+     * 
+     */
     private @Nullable GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector machineLabelSelector;
 
     private GetClusterV2RkeConfigMachineSelectorConfig() {}
+    /**
+     * @return Machine selector config
+     * 
+     */
     public Optional<String> config() {
         return Optional.ofNullable(this.config);
     }
+    /**
+     * @return Machine label selector
+     * 
+     */
     public Optional<GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector> machineLabelSelector() {
         return Optional.ofNullable(this.machineLabelSelector);
     }

@@ -12,17 +12,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNotifierSlackConfig {
+    /**
+     * @return Slack default channel
+     * 
+     */
     private String defaultRecipient;
+    /**
+     * @return Slack proxy URL
+     * 
+     */
     private @Nullable String proxyUrl;
+    /**
+     * @return Slack URL
+     * 
+     */
     private String url;
 
     private GetNotifierSlackConfig() {}
+    /**
+     * @return Slack default channel
+     * 
+     */
     public String defaultRecipient() {
         return this.defaultRecipient;
     }
+    /**
+     * @return Slack proxy URL
+     * 
+     */
     public Optional<String> proxyUrl() {
         return Optional.ofNullable(this.proxyUrl);
     }
+    /**
+     * @return Slack URL
+     * 
+     */
     public String url() {
         return this.url;
     }

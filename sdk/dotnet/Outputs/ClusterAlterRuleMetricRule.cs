@@ -13,13 +13,25 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterAlterRuleMetricRule
     {
+        /// <summary>
+        /// Metric rule comparison
+        /// </summary>
         public readonly string? Comparison;
         /// <summary>
         /// The cluster alert group description (string)
         /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// Metric rule duration
+        /// </summary>
         public readonly string Duration;
+        /// <summary>
+        /// Metric rule expression
+        /// </summary>
         public readonly string Expression;
+        /// <summary>
+        /// Metric rule threshold value
+        /// </summary>
         public readonly double ThresholdValue;
 
         [OutputConstructor]

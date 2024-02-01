@@ -14,25 +14,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterAlterRuleNodeRule {
+    /**
+     * @return Node rule condition
+     * 
+     */
     private @Nullable String condition;
+    /**
+     * @return Node rule cpu threshold
+     * 
+     */
     private @Nullable Integer cpuThreshold;
+    /**
+     * @return Node rule mem threshold
+     * 
+     */
     private @Nullable Integer memThreshold;
+    /**
+     * @return Node ID
+     * 
+     */
     private @Nullable String nodeId;
+    /**
+     * @return Node rule selector
+     * 
+     */
     private @Nullable Map<String,Object> selector;
 
     private ClusterAlterRuleNodeRule() {}
+    /**
+     * @return Node rule condition
+     * 
+     */
     public Optional<String> condition() {
         return Optional.ofNullable(this.condition);
     }
+    /**
+     * @return Node rule cpu threshold
+     * 
+     */
     public Optional<Integer> cpuThreshold() {
         return Optional.ofNullable(this.cpuThreshold);
     }
+    /**
+     * @return Node rule mem threshold
+     * 
+     */
     public Optional<Integer> memThreshold() {
         return Optional.ofNullable(this.memThreshold);
     }
+    /**
+     * @return Node ID
+     * 
+     */
     public Optional<String> nodeId() {
         return Optional.ofNullable(this.nodeId);
     }
+    /**
+     * @return Node rule selector
+     * 
+     */
     public Map<String,Object> selector() {
         return this.selector == null ? Map.of() : this.selector;
     }

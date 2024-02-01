@@ -13,16 +13,32 @@ public final class GetPodSecurityPolicyTemplateHostPort extends com.pulumi.resou
 
     public static final GetPodSecurityPolicyTemplateHostPort Empty = new GetPodSecurityPolicyTemplateHostPort();
 
+    /**
+     * max is the end of the range, inclusive.
+     * 
+     */
     @Import(name="max", required=true)
     private Integer max;
 
+    /**
+     * @return max is the end of the range, inclusive.
+     * 
+     */
     public Integer max() {
         return this.max;
     }
 
+    /**
+     * min is the start of the range, inclusive.
+     * 
+     */
     @Import(name="min", required=true)
     private Integer min;
 
+    /**
+     * @return min is the start of the range, inclusive.
+     * 
+     */
     public Integer min() {
         return this.min;
     }
@@ -52,11 +68,23 @@ public final class GetPodSecurityPolicyTemplateHostPort extends com.pulumi.resou
             $ = new GetPodSecurityPolicyTemplateHostPort(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param max max is the end of the range, inclusive.
+         * 
+         * @return builder
+         * 
+         */
         public Builder max(Integer max) {
             $.max = max;
             return this;
         }
 
+        /**
+         * @param min min is the start of the range, inclusive.
+         * 
+         * @return builder
+         * 
+         */
         public Builder min(Integer min) {
             $.min = min;
             return this;

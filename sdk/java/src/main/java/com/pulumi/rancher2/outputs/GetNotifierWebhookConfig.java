@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNotifierWebhookConfig {
+    /**
+     * @return Webhook proxy URL
+     * 
+     */
     private @Nullable String proxyUrl;
+    /**
+     * @return Webhook URL
+     * 
+     */
     private String url;
 
     private GetNotifierWebhookConfig() {}
+    /**
+     * @return Webhook proxy URL
+     * 
+     */
     public Optional<String> proxyUrl() {
         return Optional.ofNullable(this.proxyUrl);
     }
+    /**
+     * @return Webhook URL
+     * 
+     */
     public String url() {
         return this.url;
     }
