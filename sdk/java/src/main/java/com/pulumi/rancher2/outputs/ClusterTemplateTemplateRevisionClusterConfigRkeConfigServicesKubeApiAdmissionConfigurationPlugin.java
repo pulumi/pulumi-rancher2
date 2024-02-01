@@ -11,15 +11,27 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPlugin {
+    /**
+     * @return Plugin configuration
+     * 
+     */
     private @Nullable String configuration;
     /**
      * @return The cluster template name (string)
      * 
      */
     private @Nullable String name;
+    /**
+     * @return Plugin path
+     * 
+     */
     private @Nullable String path;
 
     private ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPlugin() {}
+    /**
+     * @return Plugin configuration
+     * 
+     */
     public Optional<String> configuration() {
         return Optional.ofNullable(this.configuration);
     }
@@ -30,6 +42,10 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return Plugin path
+     * 
+     */
     public Optional<String> path() {
         return Optional.ofNullable(this.path);
     }

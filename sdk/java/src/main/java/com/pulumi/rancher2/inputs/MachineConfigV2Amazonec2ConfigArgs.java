@@ -18,9 +18,17 @@ public final class MachineConfigV2Amazonec2ConfigArgs extends com.pulumi.resourc
 
     public static final MachineConfigV2Amazonec2ConfigArgs Empty = new MachineConfigV2Amazonec2ConfigArgs();
 
+    /**
+     * AWS Access Key
+     * 
+     */
     @Import(name="accessKey")
     private @Nullable Output<String> accessKey;
 
+    /**
+     * @return AWS Access Key
+     * 
+     */
     public Optional<Output<String>> accessKey() {
         return Optional.ofNullable(this.accessKey);
     }
@@ -295,9 +303,17 @@ public final class MachineConfigV2Amazonec2ConfigArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.rootSize);
     }
 
+    /**
+     * AWS Secret Key
+     * 
+     */
     @Import(name="secretKey")
     private @Nullable Output<String> secretKey;
 
+    /**
+     * @return AWS Secret Key
+     * 
+     */
     public Optional<Output<String>> secretKey() {
         return Optional.ofNullable(this.secretKey);
     }
@@ -569,11 +585,23 @@ public final class MachineConfigV2Amazonec2ConfigArgs extends com.pulumi.resourc
             $ = new MachineConfigV2Amazonec2ConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accessKey AWS Access Key
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessKey(@Nullable Output<String> accessKey) {
             $.accessKey = accessKey;
             return this;
         }
 
+        /**
+         * @param accessKey AWS Access Key
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessKey(String accessKey) {
             return accessKey(Output.of(accessKey));
         }
@@ -966,11 +994,23 @@ public final class MachineConfigV2Amazonec2ConfigArgs extends com.pulumi.resourc
             return rootSize(Output.of(rootSize));
         }
 
+        /**
+         * @param secretKey AWS Secret Key
+         * 
+         * @return builder
+         * 
+         */
         public Builder secretKey(@Nullable Output<String> secretKey) {
             $.secretKey = secretKey;
             return this;
         }
 
+        /**
+         * @param secretKey AWS Secret Key
+         * 
+         * @return builder
+         * 
+         */
         public Builder secretKey(String secretKey) {
             return secretKey(Output.of(secretKey));
         }

@@ -16,23 +16,47 @@ public final class GetNotifierDingtalkConfigArgs extends com.pulumi.resources.Re
 
     public static final GetNotifierDingtalkConfigArgs Empty = new GetNotifierDingtalkConfigArgs();
 
+    /**
+     * Dingtalk proxy URL
+     * 
+     */
     @Import(name="proxyUrl")
     private @Nullable Output<String> proxyUrl;
 
+    /**
+     * @return Dingtalk proxy URL
+     * 
+     */
     public Optional<Output<String>> proxyUrl() {
         return Optional.ofNullable(this.proxyUrl);
     }
 
+    /**
+     * Required for webhook with sign enabled
+     * 
+     */
     @Import(name="secret")
     private @Nullable Output<String> secret;
 
+    /**
+     * @return Required for webhook with sign enabled
+     * 
+     */
     public Optional<Output<String>> secret() {
         return Optional.ofNullable(this.secret);
     }
 
+    /**
+     * Webhook URL
+     * 
+     */
     @Import(name="url", required=true)
     private Output<String> url;
 
+    /**
+     * @return Webhook URL
+     * 
+     */
     public Output<String> url() {
         return this.url;
     }
@@ -63,29 +87,65 @@ public final class GetNotifierDingtalkConfigArgs extends com.pulumi.resources.Re
             $ = new GetNotifierDingtalkConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param proxyUrl Dingtalk proxy URL
+         * 
+         * @return builder
+         * 
+         */
         public Builder proxyUrl(@Nullable Output<String> proxyUrl) {
             $.proxyUrl = proxyUrl;
             return this;
         }
 
+        /**
+         * @param proxyUrl Dingtalk proxy URL
+         * 
+         * @return builder
+         * 
+         */
         public Builder proxyUrl(String proxyUrl) {
             return proxyUrl(Output.of(proxyUrl));
         }
 
+        /**
+         * @param secret Required for webhook with sign enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder secret(@Nullable Output<String> secret) {
             $.secret = secret;
             return this;
         }
 
+        /**
+         * @param secret Required for webhook with sign enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder secret(String secret) {
             return secret(Output.of(secret));
         }
 
+        /**
+         * @param url Webhook URL
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(Output<String> url) {
             $.url = url;
             return this;
         }
 
+        /**
+         * @param url Webhook URL
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(String url) {
             return url(Output.of(url));
         }

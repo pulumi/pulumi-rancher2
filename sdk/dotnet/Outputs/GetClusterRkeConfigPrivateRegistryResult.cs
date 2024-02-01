@@ -13,6 +13,9 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterRkeConfigPrivateRegistryResult
     {
+        /// <summary>
+        /// ECR credential plugin config
+        /// </summary>
         public readonly Outputs.GetClusterRkeConfigPrivateRegistryEcrCredentialPluginResult? EcrCredentialPlugin;
         public readonly bool? IsDefault;
         public readonly string? Password;

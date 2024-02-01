@@ -18,28 +18,76 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterGkeConfigV2NodePoolConfig {
+    /**
+     * @return The GKE node config disk size (Gb)
+     * 
+     */
     private @Nullable Integer diskSizeGb;
+    /**
+     * @return The GKE node config disk type
+     * 
+     */
     private @Nullable String diskType;
+    /**
+     * @return The GKE node config image type
+     * 
+     */
     private @Nullable String imageType;
     /**
      * @return (Computed) Labels for Node Pool object (map)
      * 
      */
     private Map<String,Object> labels;
+    /**
+     * @return The GKE node config local ssd count
+     * 
+     */
     private @Nullable Integer localSsdCount;
+    /**
+     * @return The GKE node config machine type
+     * 
+     */
     private @Nullable String machineType;
+    /**
+     * @return The GKE node config oauth scopes
+     * 
+     */
     private List<String> oauthScopes;
+    /**
+     * @return Enable GKE node config preemptible
+     * 
+     */
     private @Nullable Boolean preemptible;
+    /**
+     * @return The GKE node config tags
+     * 
+     */
     private List<String> tags;
+    /**
+     * @return The GKE node config taints
+     * 
+     */
     private @Nullable List<GetClusterGkeConfigV2NodePoolConfigTaint> taints;
 
     private GetClusterGkeConfigV2NodePoolConfig() {}
+    /**
+     * @return The GKE node config disk size (Gb)
+     * 
+     */
     public Optional<Integer> diskSizeGb() {
         return Optional.ofNullable(this.diskSizeGb);
     }
+    /**
+     * @return The GKE node config disk type
+     * 
+     */
     public Optional<String> diskType() {
         return Optional.ofNullable(this.diskType);
     }
+    /**
+     * @return The GKE node config image type
+     * 
+     */
     public Optional<String> imageType() {
         return Optional.ofNullable(this.imageType);
     }
@@ -50,21 +98,45 @@ public final class GetClusterGkeConfigV2NodePoolConfig {
     public Map<String,Object> labels() {
         return this.labels;
     }
+    /**
+     * @return The GKE node config local ssd count
+     * 
+     */
     public Optional<Integer> localSsdCount() {
         return Optional.ofNullable(this.localSsdCount);
     }
+    /**
+     * @return The GKE node config machine type
+     * 
+     */
     public Optional<String> machineType() {
         return Optional.ofNullable(this.machineType);
     }
+    /**
+     * @return The GKE node config oauth scopes
+     * 
+     */
     public List<String> oauthScopes() {
         return this.oauthScopes;
     }
+    /**
+     * @return Enable GKE node config preemptible
+     * 
+     */
     public Optional<Boolean> preemptible() {
         return Optional.ofNullable(this.preemptible);
     }
+    /**
+     * @return The GKE node config tags
+     * 
+     */
     public List<String> tags() {
         return this.tags;
     }
+    /**
+     * @return The GKE node config taints
+     * 
+     */
     public List<GetClusterGkeConfigV2NodePoolConfigTaint> taints() {
         return this.taints == null ? List.of() : this.taints;
     }

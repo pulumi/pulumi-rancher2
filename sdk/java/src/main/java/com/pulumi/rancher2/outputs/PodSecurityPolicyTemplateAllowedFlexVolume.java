@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class PodSecurityPolicyTemplateAllowedFlexVolume {
+    /**
+     * @return driver is the name of the Flexvolume driver.
+     * 
+     */
     private String driver;
 
     private PodSecurityPolicyTemplateAllowedFlexVolume() {}
+    /**
+     * @return driver is the name of the Flexvolume driver.
+     * 
+     */
     public String driver() {
         return this.driver;
     }

@@ -17,16 +17,32 @@ public final class GetPodSecurityPolicyTemplateRuntimeClassArgs extends com.pulu
 
     public static final GetPodSecurityPolicyTemplateRuntimeClassArgs Empty = new GetPodSecurityPolicyTemplateRuntimeClassArgs();
 
+    /**
+     * allowedRuntimeClassNames is a whitelist of RuntimeClass names that may be specified on a pod. A value of &#34;*&#34; means that any RuntimeClass name is allowed, and must be the only item in the list. An empty list requires the RuntimeClassName field to be unset.
+     * 
+     */
     @Import(name="allowedRuntimeClassNames", required=true)
     private Output<List<String>> allowedRuntimeClassNames;
 
+    /**
+     * @return allowedRuntimeClassNames is a whitelist of RuntimeClass names that may be specified on a pod. A value of &#34;*&#34; means that any RuntimeClass name is allowed, and must be the only item in the list. An empty list requires the RuntimeClassName field to be unset.
+     * 
+     */
     public Output<List<String>> allowedRuntimeClassNames() {
         return this.allowedRuntimeClassNames;
     }
 
+    /**
+     * defaultRuntimeClassName is the default RuntimeClassName to set on the pod. The default MUST be allowed by the allowedRuntimeClassNames list. A value of nil does not mutate the Pod.
+     * 
+     */
     @Import(name="defaultRuntimeClassName")
     private @Nullable Output<String> defaultRuntimeClassName;
 
+    /**
+     * @return defaultRuntimeClassName is the default RuntimeClassName to set on the pod. The default MUST be allowed by the allowedRuntimeClassNames list. A value of nil does not mutate the Pod.
+     * 
+     */
     public Optional<Output<String>> defaultRuntimeClassName() {
         return Optional.ofNullable(this.defaultRuntimeClassName);
     }
@@ -56,24 +72,54 @@ public final class GetPodSecurityPolicyTemplateRuntimeClassArgs extends com.pulu
             $ = new GetPodSecurityPolicyTemplateRuntimeClassArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param allowedRuntimeClassNames allowedRuntimeClassNames is a whitelist of RuntimeClass names that may be specified on a pod. A value of &#34;*&#34; means that any RuntimeClass name is allowed, and must be the only item in the list. An empty list requires the RuntimeClassName field to be unset.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedRuntimeClassNames(Output<List<String>> allowedRuntimeClassNames) {
             $.allowedRuntimeClassNames = allowedRuntimeClassNames;
             return this;
         }
 
+        /**
+         * @param allowedRuntimeClassNames allowedRuntimeClassNames is a whitelist of RuntimeClass names that may be specified on a pod. A value of &#34;*&#34; means that any RuntimeClass name is allowed, and must be the only item in the list. An empty list requires the RuntimeClassName field to be unset.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedRuntimeClassNames(List<String> allowedRuntimeClassNames) {
             return allowedRuntimeClassNames(Output.of(allowedRuntimeClassNames));
         }
 
+        /**
+         * @param allowedRuntimeClassNames allowedRuntimeClassNames is a whitelist of RuntimeClass names that may be specified on a pod. A value of &#34;*&#34; means that any RuntimeClass name is allowed, and must be the only item in the list. An empty list requires the RuntimeClassName field to be unset.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedRuntimeClassNames(String... allowedRuntimeClassNames) {
             return allowedRuntimeClassNames(List.of(allowedRuntimeClassNames));
         }
 
+        /**
+         * @param defaultRuntimeClassName defaultRuntimeClassName is the default RuntimeClassName to set on the pod. The default MUST be allowed by the allowedRuntimeClassNames list. A value of nil does not mutate the Pod.
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultRuntimeClassName(@Nullable Output<String> defaultRuntimeClassName) {
             $.defaultRuntimeClassName = defaultRuntimeClassName;
             return this;
         }
 
+        /**
+         * @param defaultRuntimeClassName defaultRuntimeClassName is the default RuntimeClassName to set on the pod. The default MUST be allowed by the allowedRuntimeClassNames list. A value of nil does not mutate the Pod.
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultRuntimeClassName(String defaultRuntimeClassName) {
             return defaultRuntimeClassName(Output.of(defaultRuntimeClassName));
         }

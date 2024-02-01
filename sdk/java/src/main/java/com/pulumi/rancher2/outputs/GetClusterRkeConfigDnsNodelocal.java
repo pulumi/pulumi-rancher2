@@ -14,12 +14,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetClusterRkeConfigDnsNodelocal {
     private @Nullable String ipAddress;
+    /**
+     * @return Node selector key pair
+     * 
+     */
     private @Nullable Map<String,Object> nodeSelector;
 
     private GetClusterRkeConfigDnsNodelocal() {}
     public Optional<String> ipAddress() {
         return Optional.ofNullable(this.ipAddress);
     }
+    /**
+     * @return Node selector key pair
+     * 
+     */
     public Map<String,Object> nodeSelector() {
         return this.nodeSelector == null ? Map.of() : this.nodeSelector;
     }

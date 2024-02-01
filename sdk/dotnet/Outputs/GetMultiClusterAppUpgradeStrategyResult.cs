@@ -13,6 +13,9 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetMultiClusterAppUpgradeStrategyResult
     {
+        /// <summary>
+        /// Rolling update for upgrade strategy
+        /// </summary>
         public readonly Outputs.GetMultiClusterAppUpgradeStrategyRollingUpdateResult? RollingUpdate;
 
         [OutputConstructor]

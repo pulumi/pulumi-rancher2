@@ -11,25 +11,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRoleTempalteRule {
+    /**
+     * @return Policy rule api groups
+     * 
+     */
     private @Nullable List<String> apiGroups;
+    /**
+     * @return Policy rule non resource urls
+     * 
+     */
     private @Nullable List<String> nonResourceUrls;
+    /**
+     * @return Policy rule resource names
+     * 
+     */
     private @Nullable List<String> resourceNames;
+    /**
+     * @return Policy rule resources
+     * 
+     */
     private @Nullable List<String> resources;
+    /**
+     * @return Policy rule verbs
+     * 
+     */
     private @Nullable List<String> verbs;
 
     private GetRoleTempalteRule() {}
+    /**
+     * @return Policy rule api groups
+     * 
+     */
     public List<String> apiGroups() {
         return this.apiGroups == null ? List.of() : this.apiGroups;
     }
+    /**
+     * @return Policy rule non resource urls
+     * 
+     */
     public List<String> nonResourceUrls() {
         return this.nonResourceUrls == null ? List.of() : this.nonResourceUrls;
     }
+    /**
+     * @return Policy rule resource names
+     * 
+     */
     public List<String> resourceNames() {
         return this.resourceNames == null ? List.of() : this.resourceNames;
     }
+    /**
+     * @return Policy rule resources
+     * 
+     */
     public List<String> resources() {
         return this.resources == null ? List.of() : this.resources;
     }
+    /**
+     * @return Policy rule verbs
+     * 
+     */
     public List<String> verbs() {
         return this.verbs == null ? List.of() : this.verbs;
     }

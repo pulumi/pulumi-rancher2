@@ -13,17 +13,37 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterAlterRuleMetricRule {
+    /**
+     * @return Metric rule comparison
+     * 
+     */
     private @Nullable String comparison;
     /**
      * @return The cluster alert group description (string)
      * 
      */
     private @Nullable String description;
+    /**
+     * @return Metric rule duration
+     * 
+     */
     private String duration;
+    /**
+     * @return Metric rule expression
+     * 
+     */
     private String expression;
+    /**
+     * @return Metric rule threshold value
+     * 
+     */
     private Double thresholdValue;
 
     private ClusterAlterRuleMetricRule() {}
+    /**
+     * @return Metric rule comparison
+     * 
+     */
     public Optional<String> comparison() {
         return Optional.ofNullable(this.comparison);
     }
@@ -34,12 +54,24 @@ public final class ClusterAlterRuleMetricRule {
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return Metric rule duration
+     * 
+     */
     public String duration() {
         return this.duration;
     }
+    /**
+     * @return Metric rule expression
+     * 
+     */
     public String expression() {
         return this.expression;
     }
+    /**
+     * @return Metric rule threshold value
+     * 
+     */
     public Double thresholdValue() {
         return this.thresholdValue;
     }

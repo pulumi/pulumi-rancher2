@@ -12,6 +12,9 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class GetPodSecurityPolicyTemplateAllowedFlexVolumeInputArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// driver is the name of the Flexvolume driver.
+        /// </summary>
         [Input("driver", required: true)]
         public Input<string> Driver { get; set; } = null!;
 

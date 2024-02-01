@@ -18,23 +18,47 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns {
+    /**
+     * @return Linear Autoscaler Params
+     * 
+     */
     private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams linearAutoscalerParams;
     private @Nullable Map<String,Object> nodeSelector;
+    /**
+     * @return Nodelocal dns
+     * 
+     */
     private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal nodelocal;
     private @Nullable Map<String,Object> options;
     private @Nullable String provider;
     private @Nullable List<String> reverseCidrs;
+    /**
+     * @return DNS service tolerations
+     * 
+     */
     private @Nullable List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsToleration> tolerations;
+    /**
+     * @return Update deployment strategy
+     * 
+     */
     private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy updateStrategy;
     private @Nullable List<String> upstreamNameservers;
 
     private ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns() {}
+    /**
+     * @return Linear Autoscaler Params
+     * 
+     */
     public Optional<ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams> linearAutoscalerParams() {
         return Optional.ofNullable(this.linearAutoscalerParams);
     }
     public Map<String,Object> nodeSelector() {
         return this.nodeSelector == null ? Map.of() : this.nodeSelector;
     }
+    /**
+     * @return Nodelocal dns
+     * 
+     */
     public Optional<ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal> nodelocal() {
         return Optional.ofNullable(this.nodelocal);
     }
@@ -47,9 +71,17 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns {
     public List<String> reverseCidrs() {
         return this.reverseCidrs == null ? List.of() : this.reverseCidrs;
     }
+    /**
+     * @return DNS service tolerations
+     * 
+     */
     public List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsToleration> tolerations() {
         return this.tolerations == null ? List.of() : this.tolerations;
     }
+    /**
+     * @return Update deployment strategy
+     * 
+     */
     public Optional<ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy> updateStrategy() {
         return Optional.ofNullable(this.updateStrategy);
     }

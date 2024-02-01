@@ -13,37 +13,97 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterGkeConfigV2Result
     {
+        /// <summary>
+        /// The GKE cluster addons
+        /// </summary>
         public readonly Outputs.GetClusterGkeConfigV2ClusterAddonsResult ClusterAddons;
+        /// <summary>
+        /// The GKE ip v4 cidr block
+        /// </summary>
         public readonly string ClusterIpv4CidrBlock;
         /// <summary>
         /// (Computed) The description for Cluster (string)
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// Enable Kubernetes alpha
+        /// </summary>
         public readonly bool EnableKubernetesAlpha;
+        /// <summary>
+        /// Google credential secret
+        /// </summary>
         public readonly string GoogleCredentialSecret;
+        /// <summary>
+        /// Is GKE cluster imported?
+        /// </summary>
         public readonly bool? Imported;
+        /// <summary>
+        /// The GKE ip allocation policy
+        /// </summary>
         public readonly Outputs.GetClusterGkeConfigV2IpAllocationPolicyResult IpAllocationPolicy;
+        /// <summary>
+        /// The kubernetes master version
+        /// </summary>
         public readonly string KubernetesVersion;
         /// <summary>
         /// (Computed) Labels for Node Pool object (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
+        /// <summary>
+        /// The GKE cluster locations
+        /// </summary>
         public readonly ImmutableArray<string> Locations;
+        /// <summary>
+        /// The GKE cluster logging service
+        /// </summary>
         public readonly string LoggingService;
+        /// <summary>
+        /// The GKE cluster maintenance window
+        /// </summary>
         public readonly string MaintenanceWindow;
+        /// <summary>
+        /// The GKE cluster master authorized networks config
+        /// </summary>
         public readonly Outputs.GetClusterGkeConfigV2MasterAuthorizedNetworksConfigResult MasterAuthorizedNetworksConfig;
+        /// <summary>
+        /// The GKE cluster monitoring service
+        /// </summary>
         public readonly string MonitoringService;
         /// <summary>
         /// The name of the Cluster (string)
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The GKE cluster network
+        /// </summary>
         public readonly string Network;
+        /// <summary>
+        /// Is GKE cluster network policy enabled?
+        /// </summary>
         public readonly bool NetworkPolicyEnabled;
+        /// <summary>
+        /// The GKE cluster node pools
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterGkeConfigV2NodePoolResult> NodePools;
+        /// <summary>
+        /// The GKE private cluster config
+        /// </summary>
         public readonly Outputs.GetClusterGkeConfigV2PrivateClusterConfigResult PrivateClusterConfig;
+        /// <summary>
+        /// The GKE project id
+        /// </summary>
         public readonly string ProjectId;
+        /// <summary>
+        /// The GKE cluster region. Required if `zone` is empty
+        /// </summary>
         public readonly string Region;
+        /// <summary>
+        /// The GKE cluster subnetwork
+        /// </summary>
         public readonly string Subnetwork;
+        /// <summary>
+        /// The GKE cluster zone. Required if `region` is empty
+        /// </summary>
         public readonly string Zone;
 
         [OutputConstructor]

@@ -14,6 +14,10 @@ namespace Pulumi.Rancher2.Inputs
     {
         [Input("accessKey")]
         private Input<string>? _accessKey;
+
+        /// <summary>
+        /// AWS Access Key
+        /// </summary>
         public Input<string>? AccessKey
         {
             get => _accessKey;
@@ -140,6 +144,10 @@ namespace Pulumi.Rancher2.Inputs
 
         [Input("secretKey")]
         private Input<string>? _secretKey;
+
+        /// <summary>
+        /// AWS Secret Key
+        /// </summary>
         public Input<string>? SecretKey
         {
             get => _secretKey;

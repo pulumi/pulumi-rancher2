@@ -14,17 +14,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetProjectAlertRuleWorkloadRule {
+    /**
+     * @return Workload rule available percentage
+     * 
+     */
     private @Nullable Integer availablePercentage;
+    /**
+     * @return Workload rule selector
+     * 
+     */
     private @Nullable Map<String,Object> selector;
+    /**
+     * @return Workload ID
+     * 
+     */
     private @Nullable String workloadId;
 
     private GetProjectAlertRuleWorkloadRule() {}
+    /**
+     * @return Workload rule available percentage
+     * 
+     */
     public Optional<Integer> availablePercentage() {
         return Optional.ofNullable(this.availablePercentage);
     }
+    /**
+     * @return Workload rule selector
+     * 
+     */
     public Map<String,Object> selector() {
         return this.selector == null ? Map.of() : this.selector;
     }
+    /**
+     * @return Workload ID
+     * 
+     */
     public Optional<String> workloadId() {
         return Optional.ofNullable(this.workloadId);
     }

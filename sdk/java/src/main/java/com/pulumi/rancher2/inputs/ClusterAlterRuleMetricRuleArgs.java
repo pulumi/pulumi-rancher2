@@ -17,9 +17,17 @@ public final class ClusterAlterRuleMetricRuleArgs extends com.pulumi.resources.R
 
     public static final ClusterAlterRuleMetricRuleArgs Empty = new ClusterAlterRuleMetricRuleArgs();
 
+    /**
+     * Metric rule comparison
+     * 
+     */
     @Import(name="comparison")
     private @Nullable Output<String> comparison;
 
+    /**
+     * @return Metric rule comparison
+     * 
+     */
     public Optional<Output<String>> comparison() {
         return Optional.ofNullable(this.comparison);
     }
@@ -39,23 +47,47 @@ public final class ClusterAlterRuleMetricRuleArgs extends com.pulumi.resources.R
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * Metric rule duration
+     * 
+     */
     @Import(name="duration", required=true)
     private Output<String> duration;
 
+    /**
+     * @return Metric rule duration
+     * 
+     */
     public Output<String> duration() {
         return this.duration;
     }
 
+    /**
+     * Metric rule expression
+     * 
+     */
     @Import(name="expression", required=true)
     private Output<String> expression;
 
+    /**
+     * @return Metric rule expression
+     * 
+     */
     public Output<String> expression() {
         return this.expression;
     }
 
+    /**
+     * Metric rule threshold value
+     * 
+     */
     @Import(name="thresholdValue", required=true)
     private Output<Double> thresholdValue;
 
+    /**
+     * @return Metric rule threshold value
+     * 
+     */
     public Output<Double> thresholdValue() {
         return this.thresholdValue;
     }
@@ -88,11 +120,23 @@ public final class ClusterAlterRuleMetricRuleArgs extends com.pulumi.resources.R
             $ = new ClusterAlterRuleMetricRuleArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param comparison Metric rule comparison
+         * 
+         * @return builder
+         * 
+         */
         public Builder comparison(@Nullable Output<String> comparison) {
             $.comparison = comparison;
             return this;
         }
 
+        /**
+         * @param comparison Metric rule comparison
+         * 
+         * @return builder
+         * 
+         */
         public Builder comparison(String comparison) {
             return comparison(Output.of(comparison));
         }
@@ -118,29 +162,65 @@ public final class ClusterAlterRuleMetricRuleArgs extends com.pulumi.resources.R
             return description(Output.of(description));
         }
 
+        /**
+         * @param duration Metric rule duration
+         * 
+         * @return builder
+         * 
+         */
         public Builder duration(Output<String> duration) {
             $.duration = duration;
             return this;
         }
 
+        /**
+         * @param duration Metric rule duration
+         * 
+         * @return builder
+         * 
+         */
         public Builder duration(String duration) {
             return duration(Output.of(duration));
         }
 
+        /**
+         * @param expression Metric rule expression
+         * 
+         * @return builder
+         * 
+         */
         public Builder expression(Output<String> expression) {
             $.expression = expression;
             return this;
         }
 
+        /**
+         * @param expression Metric rule expression
+         * 
+         * @return builder
+         * 
+         */
         public Builder expression(String expression) {
             return expression(Output.of(expression));
         }
 
+        /**
+         * @param thresholdValue Metric rule threshold value
+         * 
+         * @return builder
+         * 
+         */
         public Builder thresholdValue(Output<Double> thresholdValue) {
             $.thresholdValue = thresholdValue;
             return this;
         }
 
+        /**
+         * @param thresholdValue Metric rule threshold value
+         * 
+         * @return builder
+         * 
+         */
         public Builder thresholdValue(Double thresholdValue) {
             return thresholdValue(Output.of(thresholdValue));
         }

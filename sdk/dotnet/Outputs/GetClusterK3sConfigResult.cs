@@ -13,7 +13,13 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterK3sConfigResult
     {
+        /// <summary>
+        /// The K3S upgrade strategy
+        /// </summary>
         public readonly Outputs.GetClusterK3sConfigUpgradeStrategyResult UpgradeStrategy;
+        /// <summary>
+        /// The K3S kubernetes version
+        /// </summary>
         public readonly string Version;
 
         [OutputConstructor]

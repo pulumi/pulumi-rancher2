@@ -10,21 +10,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetMultiClusterAppTarget {
+    /**
+     * @return App ID for target
+     * 
+     */
     private String appId;
+    /**
+     * @return App health state for target
+     * 
+     */
     private String healthState;
+    /**
+     * @return Project ID for target
+     * 
+     */
     private String projectId;
+    /**
+     * @return App state for target
+     * 
+     */
     private String state;
 
     private GetMultiClusterAppTarget() {}
+    /**
+     * @return App ID for target
+     * 
+     */
     public String appId() {
         return this.appId;
     }
+    /**
+     * @return App health state for target
+     * 
+     */
     public String healthState() {
         return this.healthState;
     }
+    /**
+     * @return Project ID for target
+     * 
+     */
     public String projectId() {
         return this.projectId;
     }
+    /**
+     * @return App state for target
+     * 
+     */
     public String state() {
         return this.state;
     }

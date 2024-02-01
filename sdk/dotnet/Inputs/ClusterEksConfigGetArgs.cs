@@ -46,6 +46,9 @@ namespace Pulumi.Rancher2.Inputs
         [Input("desiredNodes")]
         public Input<int>? DesiredNodes { get; set; }
 
+        /// <summary>
+        /// Enables EBS encryption of worker nodes
+        /// </summary>
         [Input("ebsEncryption")]
         public Input<bool>? EbsEncryption { get; set; }
 

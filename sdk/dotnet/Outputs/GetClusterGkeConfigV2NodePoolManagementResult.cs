@@ -13,7 +13,13 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterGkeConfigV2NodePoolManagementResult
     {
+        /// <summary>
+        /// Enable GKE node pool config management auto repair
+        /// </summary>
         public readonly bool AutoRepair;
+        /// <summary>
+        /// Enable GKE node pool config management auto upgrade
+        /// </summary>
         public readonly bool AutoUpgrade;
 
         [OutputConstructor]

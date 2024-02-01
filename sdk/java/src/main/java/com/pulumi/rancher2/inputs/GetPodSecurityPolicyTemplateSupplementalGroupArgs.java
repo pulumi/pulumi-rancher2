@@ -18,16 +18,32 @@ public final class GetPodSecurityPolicyTemplateSupplementalGroupArgs extends com
 
     public static final GetPodSecurityPolicyTemplateSupplementalGroupArgs Empty = new GetPodSecurityPolicyTemplateSupplementalGroupArgs();
 
+    /**
+     * ranges are the allowed ranges of supplemental groups.  If you would like to force a single supplemental group then supply a single range with the same start and end. Required for MustRunAs.
+     * 
+     */
     @Import(name="ranges", required=true)
     private Output<List<GetPodSecurityPolicyTemplateSupplementalGroupRangeArgs>> ranges;
 
+    /**
+     * @return ranges are the allowed ranges of supplemental groups.  If you would like to force a single supplemental group then supply a single range with the same start and end. Required for MustRunAs.
+     * 
+     */
     public Output<List<GetPodSecurityPolicyTemplateSupplementalGroupRangeArgs>> ranges() {
         return this.ranges;
     }
 
+    /**
+     * rule is the strategy that will dictate what supplemental groups is used in the SecurityContext.
+     * 
+     */
     @Import(name="rule")
     private @Nullable Output<String> rule;
 
+    /**
+     * @return rule is the strategy that will dictate what supplemental groups is used in the SecurityContext.
+     * 
+     */
     public Optional<Output<String>> rule() {
         return Optional.ofNullable(this.rule);
     }
@@ -57,24 +73,54 @@ public final class GetPodSecurityPolicyTemplateSupplementalGroupArgs extends com
             $ = new GetPodSecurityPolicyTemplateSupplementalGroupArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ranges ranges are the allowed ranges of supplemental groups.  If you would like to force a single supplemental group then supply a single range with the same start and end. Required for MustRunAs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ranges(Output<List<GetPodSecurityPolicyTemplateSupplementalGroupRangeArgs>> ranges) {
             $.ranges = ranges;
             return this;
         }
 
+        /**
+         * @param ranges ranges are the allowed ranges of supplemental groups.  If you would like to force a single supplemental group then supply a single range with the same start and end. Required for MustRunAs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ranges(List<GetPodSecurityPolicyTemplateSupplementalGroupRangeArgs> ranges) {
             return ranges(Output.of(ranges));
         }
 
+        /**
+         * @param ranges ranges are the allowed ranges of supplemental groups.  If you would like to force a single supplemental group then supply a single range with the same start and end. Required for MustRunAs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ranges(GetPodSecurityPolicyTemplateSupplementalGroupRangeArgs... ranges) {
             return ranges(List.of(ranges));
         }
 
+        /**
+         * @param rule rule is the strategy that will dictate what supplemental groups is used in the SecurityContext.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rule(@Nullable Output<String> rule) {
             $.rule = rule;
             return this;
         }
 
+        /**
+         * @param rule rule is the strategy that will dictate what supplemental groups is used in the SecurityContext.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rule(String rule) {
             return rule(Output.of(rule));
         }

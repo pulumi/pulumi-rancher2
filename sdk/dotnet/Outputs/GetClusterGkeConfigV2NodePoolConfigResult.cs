@@ -13,18 +13,45 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterGkeConfigV2NodePoolConfigResult
     {
+        /// <summary>
+        /// The GKE node config disk size (Gb)
+        /// </summary>
         public readonly int? DiskSizeGb;
+        /// <summary>
+        /// The GKE node config disk type
+        /// </summary>
         public readonly string? DiskType;
+        /// <summary>
+        /// The GKE node config image type
+        /// </summary>
         public readonly string? ImageType;
         /// <summary>
         /// (Computed) Labels for Node Pool object (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
+        /// <summary>
+        /// The GKE node config local ssd count
+        /// </summary>
         public readonly int? LocalSsdCount;
+        /// <summary>
+        /// The GKE node config machine type
+        /// </summary>
         public readonly string? MachineType;
+        /// <summary>
+        /// The GKE node config oauth scopes
+        /// </summary>
         public readonly ImmutableArray<string> OauthScopes;
+        /// <summary>
+        /// Enable GKE node config preemptible
+        /// </summary>
         public readonly bool? Preemptible;
+        /// <summary>
+        /// The GKE node config tags
+        /// </summary>
         public readonly ImmutableArray<string> Tags;
+        /// <summary>
+        /// The GKE node config taints
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterGkeConfigV2NodePoolConfigTaintResult> Taints;
 
         [OutputConstructor]

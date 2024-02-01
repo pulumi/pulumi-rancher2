@@ -13,6 +13,9 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class PodSecurityPolicyTemplateAllowedFlexVolume
     {
+        /// <summary>
+        /// driver is the name of the Flexvolume driver.
+        /// </summary>
         public readonly string Driver;
 
         [OutputConstructor]

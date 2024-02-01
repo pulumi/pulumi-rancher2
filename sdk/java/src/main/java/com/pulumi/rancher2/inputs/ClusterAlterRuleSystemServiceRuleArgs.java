@@ -15,9 +15,17 @@ public final class ClusterAlterRuleSystemServiceRuleArgs extends com.pulumi.reso
 
     public static final ClusterAlterRuleSystemServiceRuleArgs Empty = new ClusterAlterRuleSystemServiceRuleArgs();
 
+    /**
+     * System service rule condition
+     * 
+     */
     @Import(name="condition")
     private @Nullable Output<String> condition;
 
+    /**
+     * @return System service rule condition
+     * 
+     */
     public Optional<Output<String>> condition() {
         return Optional.ofNullable(this.condition);
     }
@@ -46,11 +54,23 @@ public final class ClusterAlterRuleSystemServiceRuleArgs extends com.pulumi.reso
             $ = new ClusterAlterRuleSystemServiceRuleArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param condition System service rule condition
+         * 
+         * @return builder
+         * 
+         */
         public Builder condition(@Nullable Output<String> condition) {
             $.condition = condition;
             return this;
         }
 
+        /**
+         * @param condition System service rule condition
+         * 
+         * @return builder
+         * 
+         */
         public Builder condition(String condition) {
             return condition(Output.of(condition));
         }

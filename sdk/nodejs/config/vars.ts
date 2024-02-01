@@ -52,7 +52,7 @@ Object.defineProperty(exports, "caCerts", {
 });
 
 /**
- * Allow insecure connections to Rancher. Mandatory if self signed tls and not ca_certs provided
+ * Allow insecure connections to Rancher. Mandatory if self signed tls and not caCerts provided
  */
 export declare const insecure: boolean;
 Object.defineProperty(exports, "insecure", {

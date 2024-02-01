@@ -13,41 +13,113 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions {
+    /**
+     * @return Drain options delete empty dir data
+     * 
+     */
     private @Nullable Boolean deleteEmptyDirData;
+    /**
+     * @return Drain options disable eviction
+     * 
+     */
     private @Nullable Boolean disableEviction;
+    /**
+     * @return Drain options enabled?
+     * 
+     */
     private @Nullable Boolean enabled;
+    /**
+     * @return Drain options force
+     * 
+     */
     private @Nullable Boolean force;
+    /**
+     * @return Drain options grace period
+     * 
+     */
     private Integer gracePeriod;
+    /**
+     * @return Drain options ignore daemon sets
+     * 
+     */
     private @Nullable Boolean ignoreDaemonSets;
+    /**
+     * @return Drain options ignore errors
+     * 
+     */
     private @Nullable Boolean ignoreErrors;
+    /**
+     * @return Drain options skip wait for delete timeout seconds
+     * 
+     */
     private Integer skipWaitForDeleteTimeoutSeconds;
+    /**
+     * @return Drain options timeout
+     * 
+     */
     private Integer timeout;
 
     private GetClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions() {}
+    /**
+     * @return Drain options delete empty dir data
+     * 
+     */
     public Optional<Boolean> deleteEmptyDirData() {
         return Optional.ofNullable(this.deleteEmptyDirData);
     }
+    /**
+     * @return Drain options disable eviction
+     * 
+     */
     public Optional<Boolean> disableEviction() {
         return Optional.ofNullable(this.disableEviction);
     }
+    /**
+     * @return Drain options enabled?
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return Drain options force
+     * 
+     */
     public Optional<Boolean> force() {
         return Optional.ofNullable(this.force);
     }
+    /**
+     * @return Drain options grace period
+     * 
+     */
     public Integer gracePeriod() {
         return this.gracePeriod;
     }
+    /**
+     * @return Drain options ignore daemon sets
+     * 
+     */
     public Optional<Boolean> ignoreDaemonSets() {
         return Optional.ofNullable(this.ignoreDaemonSets);
     }
+    /**
+     * @return Drain options ignore errors
+     * 
+     */
     public Optional<Boolean> ignoreErrors() {
         return Optional.ofNullable(this.ignoreErrors);
     }
+    /**
+     * @return Drain options skip wait for delete timeout seconds
+     * 
+     */
     public Integer skipWaitForDeleteTimeoutSeconds() {
         return this.skipWaitForDeleteTimeoutSeconds;
     }
+    /**
+     * @return Drain options timeout
+     * 
+     */
     public Integer timeout() {
         return this.timeout;
     }

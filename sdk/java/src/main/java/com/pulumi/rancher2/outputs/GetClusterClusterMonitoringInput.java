@@ -13,13 +13,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterClusterMonitoringInput {
+    /**
+     * @return Answers for monitor input
+     * 
+     */
     private @Nullable Map<String,Object> answers;
+    /**
+     * @return Monitoring version
+     * 
+     */
     private @Nullable String version;
 
     private GetClusterClusterMonitoringInput() {}
+    /**
+     * @return Answers for monitor input
+     * 
+     */
     public Map<String,Object> answers() {
         return this.answers == null ? Map.of() : this.answers;
     }
+    /**
+     * @return Monitoring version
+     * 
+     */
     public Optional<String> version() {
         return Optional.ofNullable(this.version);
     }

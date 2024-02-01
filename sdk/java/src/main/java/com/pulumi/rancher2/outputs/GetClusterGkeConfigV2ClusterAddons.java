@@ -10,17 +10,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterGkeConfigV2ClusterAddons {
+    /**
+     * @return Enable GKE horizontal pod autoscaling
+     * 
+     */
     private Boolean horizontalPodAutoscaling;
+    /**
+     * @return Enable GKE HTTP load balancing
+     * 
+     */
     private Boolean httpLoadBalancing;
+    /**
+     * @return Enable GKE network policy config
+     * 
+     */
     private Boolean networkPolicyConfig;
 
     private GetClusterGkeConfigV2ClusterAddons() {}
+    /**
+     * @return Enable GKE horizontal pod autoscaling
+     * 
+     */
     public Boolean horizontalPodAutoscaling() {
         return this.horizontalPodAutoscaling;
     }
+    /**
+     * @return Enable GKE HTTP load balancing
+     * 
+     */
     public Boolean httpLoadBalancing() {
         return this.httpLoadBalancing;
     }
+    /**
+     * @return Enable GKE network policy config
+     * 
+     */
     public Boolean networkPolicyConfig() {
         return this.networkPolicyConfig;
     }

@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterAlterRuleSystemServiceRule {
+    /**
+     * @return System service rule condition
+     * 
+     */
     private @Nullable String condition;
 
     private ClusterAlterRuleSystemServiceRule() {}
+    /**
+     * @return System service rule condition
+     * 
+     */
     public Optional<String> condition() {
         return Optional.ofNullable(this.condition);
     }

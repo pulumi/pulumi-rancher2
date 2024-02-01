@@ -24,9 +24,17 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodel
         return Optional.ofNullable(this.ipAddress);
     }
 
+    /**
+     * Node selector key pair
+     * 
+     */
     @Import(name="nodeSelector")
     private @Nullable Output<Map<String,Object>> nodeSelector;
 
+    /**
+     * @return Node selector key pair
+     * 
+     */
     public Optional<Output<Map<String,Object>>> nodeSelector() {
         return Optional.ofNullable(this.nodeSelector);
     }
@@ -65,11 +73,23 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodel
             return ipAddress(Output.of(ipAddress));
         }
 
+        /**
+         * @param nodeSelector Node selector key pair
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeSelector(@Nullable Output<Map<String,Object>> nodeSelector) {
             $.nodeSelector = nodeSelector;
             return this;
         }
 
+        /**
+         * @param nodeSelector Node selector key pair
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeSelector(Map<String,Object> nodeSelector) {
             return nodeSelector(Output.of(nodeSelector));
         }

@@ -601,30 +601,66 @@ export interface ClusterAlterGroupRecipient {
 }
 
 export interface ClusterAlterRuleEventRule {
+    /**
+     * Event type
+     */
     eventType?: string;
+    /**
+     * Resource kind
+     */
     resourceKind: string;
 }
 
 export interface ClusterAlterRuleMetricRule {
+    /**
+     * Metric rule comparison
+     */
     comparison?: string;
     /**
      * The cluster alert group description (string)
      */
     description?: string;
+    /**
+     * Metric rule duration
+     */
     duration: string;
+    /**
+     * Metric rule expression
+     */
     expression: string;
+    /**
+     * Metric rule threshold value
+     */
     thresholdValue: number;
 }
 
 export interface ClusterAlterRuleNodeRule {
+    /**
+     * Node rule condition
+     */
     condition?: string;
+    /**
+     * Node rule cpu threshold
+     */
     cpuThreshold?: number;
+    /**
+     * Node rule mem threshold
+     */
     memThreshold?: number;
+    /**
+     * Node ID
+     */
     nodeId?: string;
+    /**
+     * Node rule selector
+     */
     selector?: {[key: string]: any};
 }
 
 export interface ClusterAlterRuleSystemServiceRule {
+    /**
+     * System service rule condition
+     */
     condition?: string;
 }
 
@@ -817,6 +853,9 @@ export interface ClusterEksConfig {
      * The desired number of worker nodes. For Rancher v2.3.x and above. Default `3` (int)
      */
     desiredNodes?: number;
+    /**
+     * Enables EBS encryption of worker nodes
+     */
     ebsEncryption?: boolean;
     /**
      * The EKS node group instance type. Default: `t3.medium` (string)
@@ -3753,6 +3792,9 @@ export interface ClusterTemplateTemplateRevisionClusterConfig {
      * Default cluster role for project members (string)
      */
     defaultClusterRoleForProjectMembers: string;
+    /**
+     * Default pod security admission configuration template name
+     */
     defaultPodSecurityAdmissionConfigurationTemplateName: string;
     /**
      * Default pod security policy template ID (string)
@@ -3802,28 +3844,91 @@ export interface ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfig {
+    /**
+     * Optional duration in seconds of addon job.
+     */
     addonJobTimeout: number;
+    /**
+     * Optional addons descripton to deploy on rke cluster.
+     */
     addons?: string;
+    /**
+     * Optional addons yaml manisfest to deploy on rke cluster.
+     */
     addonsIncludes?: string[];
+    /**
+     * Kubernetes cluster authentication
+     */
     authentication: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication;
+    /**
+     * Kubernetes cluster authorization
+     */
     authorization: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorization;
+    /**
+     * RKE bastion host
+     */
     bastionHost: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHost;
     cloudProvider: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvider;
     dns: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns;
+    /**
+     * Enable/disable using cri-dockerd
+     */
     enableCriDockerd?: boolean;
+    /**
+     * Optional ignore docker version on nodes
+     */
     ignoreDockerVersion?: boolean;
+    /**
+     * Kubernetes ingress configuration
+     */
     ingress: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress;
+    /**
+     * Optional kubernetes version to deploy
+     */
     kubernetesVersion: string;
+    /**
+     * Kubernetes cluster monitoring
+     */
     monitoring: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring;
+    /**
+     * Kubernetes cluster networking
+     */
     network: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork;
+    /**
+     * Optional RKE cluster nodes
+     */
     nodes?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNode[];
+    /**
+     * Optional prefix to customize kubernetes path
+     */
     prefixPath: string;
+    /**
+     * Optional private registries for docker images
+     */
     privateRegistries?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry[];
+    /**
+     * Kubernetes cluster services
+     */
     services: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices;
+    /**
+     * Optional use ssh agent auth
+     */
     sshAgentAuth?: boolean;
+    /**
+     * Optional cluster level SSH certificate path
+     */
     sshCertPath: string;
+    /**
+     * Optional cluster level SSH private key path
+     */
     sshKeyPath: string;
+    /**
+     * RKE upgrade strategy
+     */
     upgradeStrategy: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy;
+    /**
+     * Optional prefix to customize kubernetes path for windows
+     */
     winPrefixPath: string;
 }
 
@@ -3899,6 +4004,9 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvi
     cloudProviderRateLimit: boolean;
     cloudProviderRateLimitBucket: number;
     cloudProviderRateLimitQps: number;
+    /**
+     * Load balancer type (basic | standard). Must be standard for auto-scaling
+     */
     loadBalancerSku?: string;
     location: string;
     maximumLoadBalancerRuleCount: number;
@@ -4013,13 +4121,25 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvi
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns {
+    /**
+     * Linear Autoscaler Params
+     */
     linearAutoscalerParams?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams;
     nodeSelector: {[key: string]: any};
+    /**
+     * Nodelocal dns
+     */
     nodelocal?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal;
     options: {[key: string]: any};
     provider?: string;
     reverseCidrs: string[];
+    /**
+     * DNS service tolerations
+     */
     tolerations?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsToleration[];
+    /**
+     * Update deployment strategy
+     */
     updateStrategy?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy;
     upstreamNameservers: string[];
 }
@@ -4034,6 +4154,9 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearA
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal {
     ipAddress?: string;
+    /**
+     * Node selector key pair
+     */
     nodeSelector?: {[key: string]: any};
 }
 
@@ -4046,12 +4169,24 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsTolerat
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy {
+    /**
+     * Rolling update for update strategy
+     */
     rollingUpdate?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate;
+    /**
+     * Strategy
+     */
     strategy?: string;
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate {
+    /**
+     * Rolling update max surge
+     */
     maxSurge?: number;
+    /**
+     * Rolling update max unavailable
+     */
     maxUnavailable?: number;
 }
 
@@ -4065,7 +4200,13 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress {
     nodeSelector: {[key: string]: any};
     options: {[key: string]: any};
     provider: string;
+    /**
+     * Ingress add-on tolerations
+     */
     tolerations?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressToleration[];
+    /**
+     * Update daemon set strategy
+     */
     updateStrategy?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy;
 }
 
@@ -4078,11 +4219,20 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressTol
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy {
+    /**
+     * Rolling update for update strategy
+     */
     rollingUpdate?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate;
+    /**
+     * Strategy
+     */
     strategy?: string;
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate {
+    /**
+     * Rolling update max unavailable
+     */
     maxUnavailable?: number;
 }
 
@@ -4091,7 +4241,13 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring
     options: {[key: string]: any};
     provider: string;
     replicas: number;
+    /**
+     * Monitoring add-on tolerations
+     */
     tolerations?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringToleration[];
+    /**
+     * Update deployment strategy
+     */
     updateStrategy?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy;
 }
 
@@ -4104,12 +4260,24 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy {
+    /**
+     * Rolling update for update strategy
+     */
     rollingUpdate?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate;
+    /**
+     * Strategy
+     */
     strategy?: string;
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate {
+    /**
+     * Rolling update max surge
+     */
     maxSurge?: number;
+    /**
+     * Rolling update max unavailable
+     */
     maxUnavailable?: number;
 }
 
@@ -4121,6 +4289,9 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork {
     mtu?: number;
     options: {[key: string]: any};
     plugin: string;
+    /**
+     * Network add-on tolerations
+     */
     tolerations?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkToleration[];
     weaveNetworkProvider?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider;
 }
@@ -4245,6 +4416,9 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigNode {
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry {
+    /**
+     * ECR credential plugin config
+     */
     ecrCredentialPlugin?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPlugin;
     isDefault?: boolean;
     password?: string;
@@ -4308,6 +4482,9 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEt
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi {
+    /**
+     * Cluster admission configuration
+     */
     admissionConfiguration?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfiguration;
     alwaysPullImages?: boolean;
     auditLog?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog;
@@ -4323,17 +4500,32 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKu
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfiguration {
+    /**
+     * Admission configuration ApiVersion
+     */
     apiVersion?: string;
+    /**
+     * Admission configuration Kind
+     */
     kind?: string;
+    /**
+     * Admission configuration plugins
+     */
     plugins: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPlugin[];
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPlugin {
+    /**
+     * Plugin configuration
+     */
     configuration: string;
     /**
      * The cluster template name (string)
      */
     name: string;
+    /**
+     * Plugin path
+     */
     path?: string;
 }
 
@@ -4665,6 +4857,9 @@ export interface ClusterV2RkeConfig {
      * Cluster V2 machine global config. Must be in YAML format (string)
      */
     machineGlobalConfig?: string;
+    /**
+     * Default values for machine pool configurations if unset
+     */
     machinePoolDefaults: outputs.ClusterV2RkeConfigMachinePoolDefault[];
     /**
      * Cluster V2 machine pools (list)
@@ -4796,6 +4991,9 @@ export interface ClusterV2RkeConfigMachinePool {
      * Machine pool etcd role? (bool)
      */
     etcdRole?: boolean;
+    /**
+     * maximum length for autogenerated hostname
+     */
     hostnameLengthLimit?: number;
     /**
      * Labels for the Cluster V2 (map)
@@ -4856,6 +5054,9 @@ export interface ClusterV2RkeConfigMachinePool {
 }
 
 export interface ClusterV2RkeConfigMachinePoolDefault {
+    /**
+     * maximum length for autogenerated hostname
+     */
     hostnameLengthLimit?: number;
 }
 
@@ -5143,139 +5344,432 @@ export interface EtcdBackupBackupConfigS3BackupConfig {
 }
 
 export interface GetClusterAksConfig {
+    /**
+     * The secret of an Azure Active Directory server application
+     */
     aadServerAppSecret?: string;
+    /**
+     * The ID of an Azure Active Directory tenant
+     */
     aadTenantId?: string;
+    /**
+     * The ID of an Azure Active Directory client application of type "Native". This application is for user login via kubectl
+     */
     addClientAppId?: string;
+    /**
+     * The ID of an Azure Active Directory server application of type "Web app/API". This application represents the managed cluster's apiserver (Server application)
+     */
     addServerAppId?: string;
+    /**
+     * The administrator username to use for Linux hosts
+     */
     adminUsername?: string;
+    /**
+     * DNS prefix to be used to create the FQDN for the agent pool
+     */
     agentDnsPrefix: string;
+    /**
+     * GB size to be used to specify the disk for every machine in the agent pool. If you specify 0, it will apply the default according to the "agent vm size" specified
+     */
     agentOsDiskSize?: number;
+    /**
+     * Name for the agent pool, upto 12 alphanumeric characters
+     */
     agentPoolName?: string;
+    /**
+     * Storage profile specifies what kind of storage used on machine in the agent pool. Chooses from [ManagedDisks StorageAccount]
+     */
     agentStorageProfile?: string;
+    /**
+     * Size of machine in the agent pool
+     */
     agentVmSize?: string;
+    /**
+     * Different authentication API url to use
+     */
     authBaseUrl?: string;
+    /**
+     * Different resource management API url to use
+     */
     baseUrl?: string;
+    /**
+     * Azure client ID to use
+     */
     clientId: string;
+    /**
+     * Azure client secret associated with the "client id"
+     */
     clientSecret: string;
+    /**
+     * Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive)
+     */
     count?: number;
+    /**
+     * An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes Service address range specified in "service cidr"
+     */
     dnsServiceIp?: string;
+    /**
+     * A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes Service address range specified in "service cidr"
+     */
     dockerBridgeCidr?: string;
+    /**
+     * Enable the Kubernetes ingress with automatic public DNS name creation
+     */
     enableHttpApplicationRouting?: boolean;
+    /**
+     * Turn on Azure Log Analytics monitoring. Uses the Log Analytics "Default" workspace if it exists, else creates one. if using an existing workspace, specifies "log analytics workspace resource id"
+     */
     enableMonitoring?: boolean;
+    /**
+     * Specify the version of Kubernetes
+     */
     kubernetesVersion: string;
+    /**
+     * Load balancer type (basic | standard). Must be standard for auto-scaling
+     */
     loadBalancerSku: string;
+    /**
+     * Azure Kubernetes cluster location
+     */
     location?: string;
+    /**
+     * The name of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses '{resource group}-{subscription id}-{location code}'
+     */
     logAnalyticsWorkspace?: string;
+    /**
+     * The resource group of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses the 'Cluster' resource group
+     */
     logAnalyticsWorkspaceResourceGroup?: string;
+    /**
+     * DNS prefix to use the Kubernetes cluster control pane
+     */
     masterDnsPrefix: string;
+    /**
+     * Maximum number of pods that can run on a node
+     */
     maxPods?: number;
+    /**
+     * Network plugin used for building Kubernetes network. Chooses from [azure kubenet]
+     */
     networkPlugin?: string;
+    /**
+     * Network policy used for building Kubernetes network. Chooses from [calico]
+     */
     networkPolicy?: string;
+    /**
+     * A CIDR notation IP range from which to assign Kubernetes Pod IPs when "network plugin" is specified in "kubenet".
+     */
     podCidr?: string;
+    /**
+     * The name of the Cluster resource group
+     */
     resourceGroup: string;
+    /**
+     * A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges
+     */
     serviceCidr?: string;
+    /**
+     * Contents of the SSH public key used to authenticate with Linux hosts
+     */
     sshPublicKeyContents: string;
+    /**
+     * The name of an existing Azure Virtual Subnet. Composite of agent virtual network subnet ID
+     */
     subnet: string;
+    /**
+     * Subscription credentials which uniquely identify Microsoft Azure subscription
+     */
     subscriptionId: string;
     /**
+     * Tags for Kubernetes cluster. For example, foo=bar
+     *
      * @deprecated Use tags argument instead as []string
      */
     tag: {[key: string]: any};
+    /**
+     * Tags for Kubernetes cluster. For example, `["foo=bar","bar=foo"]`
+     */
     tags: string[];
+    /**
+     * Azure tenant ID to use
+     */
     tenantId: string;
+    /**
+     * The name of an existing Azure Virtual Network. Composite of agent virtual network subnet ID
+     */
     virtualNetwork: string;
+    /**
+     * The resource group of an existing Azure Virtual Network. Composite of agent virtual network subnet ID
+     */
     virtualNetworkResourceGroup: string;
 }
 
 export interface GetClusterAksConfigV2 {
+    /**
+     * The AKS auth base url
+     */
     authBaseUrl?: string;
+    /**
+     * The AKS authorized ip ranges
+     */
     authorizedIpRanges?: string[];
+    /**
+     * The AKS base url
+     */
     baseUrl?: string;
+    /**
+     * The AKS Cloud Credential ID to use
+     */
     cloudCredentialId: string;
+    /**
+     * The AKS dns prefix. Required if `import=false`
+     */
     dnsPrefix?: string;
+    /**
+     * Enable AKS http application routing?
+     */
     httpApplicationRouting: boolean;
+    /**
+     * Is AKS cluster imported?
+     */
     imported?: boolean;
+    /**
+     * The kubernetes master version. Required if `import=false`
+     */
     kubernetesVersion?: string;
+    /**
+     * The AKS linux admin username
+     */
     linuxAdminUsername: string;
+    /**
+     * The AKS linux ssh public key
+     */
     linuxSshPublicKey: string;
+    /**
+     * The AKS load balancer sku
+     */
     loadBalancerSku: string;
+    /**
+     * The AKS log analytics workspace group
+     */
     logAnalyticsWorkspaceGroup: string;
+    /**
+     * The AKS log analytics workspace name
+     */
     logAnalyticsWorkspaceName: string;
+    /**
+     * Is AKS cluster monitoring enabled?
+     */
     monitoring: boolean;
     /**
      * The name of the Cluster (string)
      */
     name: string;
+    /**
+     * The AKS network dns service ip
+     */
     networkDnsServiceIp: string;
+    /**
+     * The AKS network docker bridge cidr
+     */
     networkDockerBridgeCidr: string;
+    /**
+     * The AKS network plugin. Required if `import=false`
+     */
     networkPlugin?: string;
+    /**
+     * The AKS network pod cidr
+     */
     networkPodCidr: string;
+    /**
+     * The AKS network policy
+     */
     networkPolicy: string;
+    /**
+     * The AKS network service cidr
+     */
     networkServiceCidr: string;
+    /**
+     * The AKS node pools to use. Required if `import=false`
+     */
     nodePools?: outputs.GetClusterAksConfigV2NodePool[];
+    /**
+     * Is AKS cluster private?
+     */
     privateCluster: boolean;
+    /**
+     * The AKS resource group
+     */
     resourceGroup: string;
+    /**
+     * The AKS resource location
+     */
     resourceLocation: string;
+    /**
+     * The AKS subnet
+     */
     subnet: string;
+    /**
+     * The AKS cluster tags
+     */
     tags: {[key: string]: any};
+    /**
+     * The AKS virtual network
+     */
     virtualNetwork: string;
+    /**
+     * The AKS virtual network resource group
+     */
     virtualNetworkResourceGroup: string;
 }
 
 export interface GetClusterAksConfigV2NodePool {
+    /**
+     * The AKS node pool availability zones
+     */
     availabilityZones?: string[];
+    /**
+     * The AKS node pool count
+     */
     count?: number;
+    /**
+     * Is AKS node pool auto scaling enabled?
+     */
     enableAutoScaling?: boolean;
     /**
      * (Computed) Labels for Node Pool object (map)
      */
     labels: {[key: string]: any};
+    /**
+     * The AKS node pool max count
+     */
     maxCount?: number;
+    /**
+     * The AKS node pool max pods
+     */
     maxPods?: number;
+    /**
+     * The AKS node pool max surge
+     */
     maxSurge?: string;
+    /**
+     * The AKS node pool min count
+     */
     minCount?: number;
+    /**
+     * The AKS node pool mode
+     */
     mode?: string;
     /**
      * The name of the Cluster (string)
      */
     name: string;
+    /**
+     * The AKS node pool orchestrator version
+     */
     orchestratorVersion?: string;
+    /**
+     * The AKS node pool os disk size gb
+     */
     osDiskSizeGb?: number;
+    /**
+     * The AKS node pool os disk type
+     */
     osDiskType?: string;
+    /**
+     * Enable AKS node pool os type
+     */
     osType?: string;
+    /**
+     * The AKS node pool taints
+     */
     taints: string[];
+    /**
+     * The AKS node pool vm size
+     */
     vmSize: string;
 }
 
 export interface GetClusterAlertGroupRecipient {
+    /**
+     * Use notifier default recipient
+     */
     defaultRecipient?: boolean;
+    /**
+     * Recipient notifier ID
+     */
     notifierId: string;
+    /**
+     * Recipient notifier type
+     */
     notifierType: string;
+    /**
+     * Recipient
+     */
     recipient: string;
 }
 
 export interface GetClusterAlterRuleEventRule {
+    /**
+     * Event type
+     */
     eventType?: string;
+    /**
+     * Resource kind
+     */
     resourceKind: string;
 }
 
 export interface GetClusterAlterRuleMetricRule {
+    /**
+     * Metric rule comparison
+     */
     comparison?: string;
+    /**
+     * Metric rule description
+     */
     description?: string;
+    /**
+     * Metric rule duration
+     */
     duration: string;
+    /**
+     * Metric rule expression
+     */
     expression: string;
+    /**
+     * Metric rule threshold value
+     */
     thresholdValue: number;
 }
 
 export interface GetClusterAlterRuleNodeRule {
+    /**
+     * Node rule condition
+     */
     condition?: string;
+    /**
+     * Node rule cpu threshold
+     */
     cpuThreshold?: number;
+    /**
+     * Node rule mem threshold
+     */
     memThreshold?: number;
+    /**
+     * Node ID
+     */
     nodeId?: string;
+    /**
+     * Node rule selector
+     */
     selector?: {[key: string]: any};
 }
 
 export interface GetClusterAlterRuleSystemServiceRule {
+    /**
+     * System service rule condition
+     */
     condition?: string;
 }
 
@@ -5286,7 +5780,13 @@ export interface GetClusterClusterAuthEndpoint {
 }
 
 export interface GetClusterClusterMonitoringInput {
+    /**
+     * Answers for monitor input
+     */
     answers?: {[key: string]: any};
+    /**
+     * Monitoring version
+     */
     version?: string;
 }
 
@@ -5319,87 +5819,261 @@ export interface GetClusterClusterRegistrationToken {
 }
 
 export interface GetClusterClusterTemplateAnswers {
+    /**
+     * Cluster ID for answer
+     */
     clusterId: string;
+    /**
+     * Project ID for answer
+     */
     projectId: string;
+    /**
+     * Key/values for answer
+     */
     values: {[key: string]: any};
 }
 
 export interface GetClusterClusterTemplateQuestion {
+    /**
+     * Default variable value
+     */
     default: string;
+    /**
+     * Required variable
+     */
     required?: boolean;
+    /**
+     * Variable type
+     */
     type?: string;
+    /**
+     * Variable name
+     */
     variable: string;
 }
 
 export interface GetClusterEksConfig {
+    /**
+     * The AWS Client ID to use
+     */
     accessKey: string;
+    /**
+     * A custom AMI ID to use for the worker nodes instead of the default
+     */
     ami?: string;
+    /**
+     * Associate public ip EKS worker nodes
+     */
     associateWorkerNodePublicIp?: boolean;
+    /**
+     * The desired number of worker nodes
+     */
     desiredNodes?: number;
+    /**
+     * Enables EBS encryption of worker nodes
+     */
     ebsEncryption?: boolean;
+    /**
+     * The type of machine to use for worker nodes
+     */
     instanceType?: string;
+    /**
+     * Allow user to specify key name to use
+     */
     keyPairName?: string;
+    /**
+     * The kubernetes master version
+     */
     kubernetesVersion: string;
+    /**
+     * The maximum number of worker nodes
+     */
     maximumNodes?: number;
+    /**
+     * The minimum number of worker nodes
+     */
     minimumNodes?: number;
+    /**
+     * The volume size for each node
+     */
     nodeVolumeSize?: number;
+    /**
+     * The AWS Region to create the EKS cluster in
+     */
     region?: string;
+    /**
+     * The AWS Client Secret associated with the Client ID
+     */
     secretKey: string;
+    /**
+     * List of security groups to use for the cluster
+     */
     securityGroups?: string[];
+    /**
+     * The service role to use to perform the cluster operations in AWS
+     */
     serviceRole?: string;
+    /**
+     * A session token to use with the client key and secret if applicable
+     */
     sessionToken?: string;
+    /**
+     * List of subnets in the virtual network to use
+     */
     subnets?: string[];
+    /**
+     * Pass user-data to the nodes to perform automated configuration tasks
+     */
     userData: string;
+    /**
+     * The name of the virtual network to use
+     */
     virtualNetwork?: string;
 }
 
 export interface GetClusterEksConfigV2 {
+    /**
+     * The AWS Cloud Credential ID to use
+     */
     cloudCredentialId: string;
+    /**
+     * Is EKS cluster imported?
+     */
     imported?: boolean;
+    /**
+     * The AWS kms key to use
+     */
     kmsKey?: string;
+    /**
+     * The kubernetes master version
+     */
     kubernetesVersion: string;
+    /**
+     * The AWS logging types
+     */
     loggingTypes?: string[];
     /**
      * The name of the Cluster (string)
      */
     name: string;
+    /**
+     * The AWS node groups to use
+     */
     nodeGroups: outputs.GetClusterEksConfigV2NodeGroup[];
+    /**
+     * The EKS cluster has private access
+     */
     privateAccess: boolean;
+    /**
+     * The EKS cluster has public access
+     */
     publicAccess: boolean;
+    /**
+     * The EKS cluster public access sources
+     */
     publicAccessSources: string[];
+    /**
+     * The AWS Region to create the EKS cluster in
+     */
     region?: string;
+    /**
+     * Enable EKS cluster secret encryption
+     */
     secretsEncryption: boolean;
+    /**
+     * List of security groups to use for the cluster
+     */
     securityGroups?: string[];
+    /**
+     * The AWS service role to use
+     */
     serviceRole?: string;
+    /**
+     * List of subnets in the virtual network to use
+     */
     subnets?: string[];
+    /**
+     * The EKS cluster tags
+     */
     tags?: {[key: string]: any};
 }
 
 export interface GetClusterEksConfigV2NodeGroup {
+    /**
+     * The EKS node group desired size
+     */
     desiredSize?: number;
+    /**
+     * The EKS node group disk size
+     */
     diskSize?: number;
+    /**
+     * The EKS node group ssh key
+     */
     ec2SshKey?: string;
+    /**
+     * Is EKS cluster using gpu?
+     */
     gpu?: boolean;
+    /**
+     * The EKS node group image ID
+     */
     imageId?: string;
+    /**
+     * The EKS node group instance type
+     */
     instanceType?: string;
     /**
      * (Computed) Labels for Node Pool object (map)
      */
     labels?: {[key: string]: any};
+    /**
+     * The EKS node groups launch template
+     */
     launchTemplates?: outputs.GetClusterEksConfigV2NodeGroupLaunchTemplate[];
+    /**
+     * The EKS node group maximum size
+     */
     maxSize?: number;
+    /**
+     * The EKS node group minimum size
+     */
     minSize?: number;
     /**
      * The name of the Cluster (string)
      */
     name: string;
+    /**
+     * The EKS node group node role ARN
+     */
     nodeRole?: string;
+    /**
+     * Enable EKS node group request spot instances
+     */
     requestSpotInstances?: boolean;
+    /**
+     * The EKS node group resource tags
+     */
     resourceTags?: {[key: string]: any};
+    /**
+     * The EKS node group spot instance types
+     */
     spotInstanceTypes?: string[];
+    /**
+     * The EKS node group subnets
+     */
     subnets: string[];
+    /**
+     * The EKS node group tags
+     */
     tags?: {[key: string]: any};
+    /**
+     * The EKS node group user data
+     */
     userData: string;
+    /**
+     * The EKS node group k8s version
+     */
     version: string;
 }
 
@@ -5412,165 +6086,480 @@ export interface GetClusterEksConfigV2NodeGroupLaunchTemplate {
      * The name of the Cluster (string)
      */
     name: string;
+    /**
+     * The EKS node group launch template version
+     */
     version?: number;
 }
 
 export interface GetClusterGkeConfig {
+    /**
+     * The IP address range of the container pods
+     */
     clusterIpv4Cidr: string;
+    /**
+     * The contents of the GC credential file
+     */
     credential: string;
     /**
      * (Computed) The description for Cluster (string)
      */
     description?: string;
+    /**
+     * Size of the disk attached to each node
+     */
     diskSizeGb?: number;
+    /**
+     * Type of the disk attached to each node
+     */
     diskType: string;
+    /**
+     * To enable kubernetes alpha feature
+     */
     enableAlphaFeature?: boolean;
+    /**
+     * Specifies whether the node auto-repair is enabled for the node pool
+     */
     enableAutoRepair?: boolean;
+    /**
+     * Specifies whether node auto-upgrade is enabled for the node pool
+     */
     enableAutoUpgrade?: boolean;
+    /**
+     * Enable horizontal pod autoscaling for the cluster
+     */
     enableHorizontalPodAutoscaling?: boolean;
+    /**
+     * Enable http load balancing for the cluster
+     */
     enableHttpLoadBalancing?: boolean;
+    /**
+     * Whether to enable the kubernetes dashboard
+     */
     enableKubernetesDashboard?: boolean;
+    /**
+     * Whether to enable legacy abac on the cluster
+     */
     enableLegacyAbac?: boolean;
+    /**
+     * Whether or not master authorized network is enabled
+     */
     enableMasterAuthorizedNetwork?: boolean;
+    /**
+     * Enable network policy config for the cluster
+     */
     enableNetworkPolicyConfig?: boolean;
+    /**
+     * Enable nodepool autoscaling
+     */
     enableNodepoolAutoscaling?: boolean;
+    /**
+     * Whether the master's internal IP address is used as the cluster endpoint
+     */
     enablePrivateEndpoint?: boolean;
+    /**
+     * Whether nodes have internal IP address only
+     */
     enablePrivateNodes?: boolean;
+    /**
+     * Enable stackdriver logging
+     */
     enableStackdriverLogging?: boolean;
+    /**
+     * Enable stackdriver monitoring
+     */
     enableStackdriverMonitoring?: boolean;
+    /**
+     * The image to use for the worker nodes
+     */
     imageType: string;
+    /**
+     * The IP address range for the cluster pod IPs
+     */
     ipPolicyClusterIpv4CidrBlock: string;
+    /**
+     * The name of the secondary range to be used for the cluster CIDR block
+     */
     ipPolicyClusterSecondaryRangeName: string;
+    /**
+     * Whether a new subnetwork will be created automatically for the cluster
+     */
     ipPolicyCreateSubnetwork?: boolean;
+    /**
+     * The IP address range of the instance IPs in this cluster
+     */
     ipPolicyNodeIpv4CidrBlock: string;
+    /**
+     * The IP address range of the services IPs in this cluster
+     */
     ipPolicyServicesIpv4CidrBlock: string;
+    /**
+     * The name of the secondary range to be used for the services CIDR block
+     */
     ipPolicyServicesSecondaryRangeName: string;
+    /**
+     * A custom subnetwork name to be used if createSubnetwork is true
+     */
     ipPolicySubnetworkName: string;
+    /**
+     * Issue a client certificate
+     */
     issueClientCertificate?: boolean;
+    /**
+     * Enable the kubernetes dashboard
+     */
     kubernetesDashboard?: boolean;
     /**
      * (Computed) Labels for Node Pool object (map)
      */
     labels: {[key: string]: any};
+    /**
+     * The number of local SSD disks to be attached to the node
+     */
     localSsdCount?: number;
+    /**
+     * Locations to use for the cluster
+     */
     locations: string[];
+    /**
+     * The machine type to use for the worker nodes
+     */
     machineType: string;
+    /**
+     * When to performance updates on the nodes, in 24-hour time
+     */
     maintenanceWindow: string;
+    /**
+     * Define up to 10 external networks that could access Kubernetes master through HTTPS
+     */
     masterAuthorizedNetworkCidrBlocks?: string[];
+    /**
+     * The IP range in CIDR notation to use for the hosted master network
+     */
     masterIpv4CidrBlock: string;
+    /**
+     * The kubernetes master version
+     */
     masterVersion: string;
+    /**
+     * Maximum number of nodes in the NodePool. Must be >= minNodeCount. There has to enough quota to scale up the cluster
+     */
     maxNodeCount?: number;
+    /**
+     * Minimmum number of nodes in the NodePool. Must be >= 1 and <= maxNodeCount
+     */
     minNodeCount?: number;
+    /**
+     * The network to use for the cluster
+     */
     network: string;
+    /**
+     * The number of nodes to create in this cluster
+     */
     nodeCount?: number;
+    /**
+     * The ID of the cluster node pool
+     */
     nodePool: string;
+    /**
+     * The version of kubernetes to use on the nodes
+     */
     nodeVersion: string;
+    /**
+     * The set of Google API scopes to be made available on all of the node VMs under the default service account
+     */
     oauthScopes: string[];
+    /**
+     * Whether the nodes are created as preemptible VM instances
+     */
     preemptible?: boolean;
+    /**
+     * The ID of your project to use when creating a cluster
+     */
     projectId: string;
+    /**
+     * The region to launch the cluster. Region or zone should be used
+     */
     region?: string;
+    /**
+     * The map of Kubernetes labels (key/value pairs) to be applied to each cluster
+     */
     resourceLabels: {[key: string]: any};
+    /**
+     * The Google Cloud Platform Service Account to be used by the node VMs
+     */
     serviceAccount: string;
+    /**
+     * The sub-network to use for the cluster
+     */
     subNetwork: string;
+    /**
+     * List of kubernetes taints to be applied to each node
+     */
     taints?: string[];
+    /**
+     * Whether alias IPs will be used for pod IPs in the cluster
+     */
     useIpAliases?: boolean;
+    /**
+     * The zone to launch the cluster. Zone or region should be used
+     */
     zone?: string;
 }
 
 export interface GetClusterGkeConfigV2 {
+    /**
+     * The GKE cluster addons
+     */
     clusterAddons: outputs.GetClusterGkeConfigV2ClusterAddons;
+    /**
+     * The GKE ip v4 cidr block
+     */
     clusterIpv4CidrBlock: string;
     /**
      * (Computed) The description for Cluster (string)
      */
     description: string;
+    /**
+     * Enable Kubernetes alpha
+     */
     enableKubernetesAlpha: boolean;
+    /**
+     * Google credential secret
+     */
     googleCredentialSecret: string;
+    /**
+     * Is GKE cluster imported?
+     */
     imported?: boolean;
+    /**
+     * The GKE ip allocation policy
+     */
     ipAllocationPolicy: outputs.GetClusterGkeConfigV2IpAllocationPolicy;
+    /**
+     * The kubernetes master version
+     */
     kubernetesVersion: string;
     /**
      * (Computed) Labels for Node Pool object (map)
      */
     labels: {[key: string]: any};
+    /**
+     * The GKE cluster locations
+     */
     locations: string[];
+    /**
+     * The GKE cluster logging service
+     */
     loggingService: string;
+    /**
+     * The GKE cluster maintenance window
+     */
     maintenanceWindow: string;
+    /**
+     * The GKE cluster master authorized networks config
+     */
     masterAuthorizedNetworksConfig: outputs.GetClusterGkeConfigV2MasterAuthorizedNetworksConfig;
+    /**
+     * The GKE cluster monitoring service
+     */
     monitoringService: string;
     /**
      * The name of the Cluster (string)
      */
     name: string;
+    /**
+     * The GKE cluster network
+     */
     network: string;
+    /**
+     * Is GKE cluster network policy enabled?
+     */
     networkPolicyEnabled: boolean;
+    /**
+     * The GKE cluster node pools
+     */
     nodePools: outputs.GetClusterGkeConfigV2NodePool[];
+    /**
+     * The GKE private cluster config
+     */
     privateClusterConfig: outputs.GetClusterGkeConfigV2PrivateClusterConfig;
+    /**
+     * The GKE project id
+     */
     projectId: string;
+    /**
+     * The GKE cluster region. Required if `zone` is empty
+     */
     region: string;
+    /**
+     * The GKE cluster subnetwork
+     */
     subnetwork: string;
+    /**
+     * The GKE cluster zone. Required if `region` is empty
+     */
     zone: string;
 }
 
 export interface GetClusterGkeConfigV2ClusterAddons {
+    /**
+     * Enable GKE horizontal pod autoscaling
+     */
     horizontalPodAutoscaling: boolean;
+    /**
+     * Enable GKE HTTP load balancing
+     */
     httpLoadBalancing: boolean;
+    /**
+     * Enable GKE network policy config
+     */
     networkPolicyConfig: boolean;
 }
 
 export interface GetClusterGkeConfigV2IpAllocationPolicy {
+    /**
+     * The GKE cluster ip v4 allocation cidr block
+     */
     clusterIpv4CidrBlock: string;
+    /**
+     * The GKE cluster ip v4 allocation secondary range name
+     */
     clusterSecondaryRangeName: string;
+    /**
+     * Create GKE subnetwork?
+     */
     createSubnetwork: boolean;
+    /**
+     * The GKE node ip v4 allocation cidr block
+     */
     nodeIpv4CidrBlock: string;
+    /**
+     * The GKE services ip v4 allocation cidr block
+     */
     servicesIpv4CidrBlock: string;
+    /**
+     * The GKE services ip v4 allocation secondary range name
+     */
     servicesSecondaryRangeName: string;
+    /**
+     * The GKE cluster subnetwork name
+     */
     subnetworkName: string;
+    /**
+     * Use GKE ip aliases?
+     */
     useIpAliases: boolean;
 }
 
 export interface GetClusterGkeConfigV2MasterAuthorizedNetworksConfig {
+    /**
+     * The GKE master authorized network config cidr blocks
+     */
     cidrBlocks: outputs.GetClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock[];
+    /**
+     * Enable GKE master authorized network config
+     */
     enabled?: boolean;
 }
 
 export interface GetClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock {
+    /**
+     * The GKE master authorized network config cidr block
+     */
     cidrBlock: string;
+    /**
+     * The GKE master authorized network config cidr block dispaly name
+     */
     displayName?: string;
 }
 
 export interface GetClusterGkeConfigV2NodePool {
+    /**
+     * The GKE node pool config autoscaling
+     */
     autoscaling: outputs.GetClusterGkeConfigV2NodePoolAutoscaling;
+    /**
+     * The GKE node pool node config
+     */
     config: outputs.GetClusterGkeConfigV2NodePoolConfig;
+    /**
+     * The GKE node pool config initial node count
+     */
     initialNodeCount: number;
+    /**
+     * The GKE node pool config management
+     */
     management: outputs.GetClusterGkeConfigV2NodePoolManagement;
+    /**
+     * The GKE node pool config max pods constraint
+     */
     maxPodsConstraint: number;
     /**
      * The name of the Cluster (string)
      */
     name: string;
+    /**
+     * The GKE node pool config version
+     */
     version: string;
 }
 
 export interface GetClusterGkeConfigV2NodePoolAutoscaling {
+    /**
+     * Enable GKE node pool config autoscaling
+     */
     enabled?: boolean;
+    /**
+     * The GKE node pool config max node count
+     */
     maxNodeCount: number;
+    /**
+     * The GKE node pool config min node count
+     */
     minNodeCount: number;
 }
 
 export interface GetClusterGkeConfigV2NodePoolConfig {
+    /**
+     * The GKE node config disk size (Gb)
+     */
     diskSizeGb?: number;
+    /**
+     * The GKE node config disk type
+     */
     diskType?: string;
+    /**
+     * The GKE node config image type
+     */
     imageType?: string;
     /**
      * (Computed) Labels for Node Pool object (map)
      */
     labels: {[key: string]: any};
+    /**
+     * The GKE node config local ssd count
+     */
     localSsdCount?: number;
+    /**
+     * The GKE node config machine type
+     */
     machineType?: string;
+    /**
+     * The GKE node config oauth scopes
+     */
     oauthScopes: string[];
+    /**
+     * Enable GKE node config preemptible
+     */
     preemptible?: boolean;
+    /**
+     * The GKE node config tags
+     */
     tags: string[];
+    /**
+     * The GKE node config taints
+     */
     taints?: outputs.GetClusterGkeConfigV2NodePoolConfigTaint[];
 }
 
@@ -5581,101 +6570,308 @@ export interface GetClusterGkeConfigV2NodePoolConfigTaint {
 }
 
 export interface GetClusterGkeConfigV2NodePoolManagement {
+    /**
+     * Enable GKE node pool config management auto repair
+     */
     autoRepair: boolean;
+    /**
+     * Enable GKE node pool config management auto upgrade
+     */
     autoUpgrade: boolean;
 }
 
 export interface GetClusterGkeConfigV2PrivateClusterConfig {
+    /**
+     * Enable GKE cluster private endpoint
+     */
     enablePrivateEndpoint?: boolean;
+    /**
+     * Enable GKE cluster private nodes
+     */
     enablePrivateNodes?: boolean;
+    /**
+     * The GKE cluster private master ip v4 cidr block
+     */
     masterIpv4CidrBlock: string;
 }
 
 export interface GetClusterK3sConfig {
+    /**
+     * The K3S upgrade strategy
+     */
     upgradeStrategy: outputs.GetClusterK3sConfigUpgradeStrategy;
+    /**
+     * The K3S kubernetes version
+     */
     version: string;
 }
 
 export interface GetClusterK3sConfigUpgradeStrategy {
+    /**
+     * Drain server nodes
+     */
     drainServerNodes?: boolean;
+    /**
+     * Drain worker nodes
+     */
     drainWorkerNodes?: boolean;
+    /**
+     * Server concurrency
+     */
     serverConcurrency?: number;
+    /**
+     * Worker concurrency
+     */
     workerConcurrency?: number;
 }
 
 export interface GetClusterOkeConfig {
+    /**
+     * The OCID of the compartment in which to create resources (VCN, worker nodes, etc.)
+     */
     compartmentId: string;
+    /**
+     * An optional custom boot volume size (in GB) for the nodes
+     */
     customBootVolumeSize?: number;
     /**
      * (Computed) The description for Cluster (string)
      */
     description?: string;
+    /**
+     * Enable the kubernetes dashboard
+     */
     enableKubernetesDashboard?: boolean;
+    /**
+     * Whether Kubernetes API endpoint is a private IP only accessible from within the VCN
+     */
     enablePrivateControlPlane?: boolean;
+    /**
+     * Whether worker nodes are deployed into a new private subnet
+     */
     enablePrivateNodes?: boolean;
+    /**
+     * The fingerprint corresponding to the specified user's private API Key
+     */
     fingerprint: string;
+    /**
+     * Optional number of OCPUs for nodes (requires flexible node_shape)
+     */
     flexOcpus?: number;
+    /**
+     * Optional specify the OCID of the KMS Vault master key
+     */
     kmsKeyId?: string;
+    /**
+     * The Kubernetes version that will be used for your master *and* worker nodes e.g. v1.19.7
+     */
     kubernetesVersion: string;
+    /**
+     * Optional limit on the total number of nodes in the pool
+     */
     limitNodeCount?: number;
+    /**
+     * The name of the first existing subnet to use for Kubernetes services / LB
+     */
     loadBalancerSubnetName1?: string;
+    /**
+     * The (optional) name of a second existing subnet to use for Kubernetes services / LB
+     */
     loadBalancerSubnetName2?: string;
+    /**
+     * The OS for the node image
+     */
     nodeImage: string;
+    /**
+     * Optional name for DNS domain of node pool subnet
+     */
     nodePoolDnsDomainName?: string;
+    /**
+     * Optional name for node pool subnet
+     */
     nodePoolSubnetName?: string;
+    /**
+     * The contents of the SSH public key file to use for the nodes
+     */
     nodePublicKeyContents?: string;
+    /**
+     * The shape of the node (determines number of CPUs and  amount of memory on each node)
+     */
     nodeShape: string;
+    /**
+     * Optional specify the pod CIDR, defaults to 10.244.0.0/16
+     */
     podCidr?: string;
+    /**
+     * The private API key file contents for the specified user, in PEM format
+     */
     privateKeyContents: string;
+    /**
+     * The passphrase of the private key for the OKE cluster
+     */
     privateKeyPassphrase?: string;
+    /**
+     * Number of node subnets (defaults to creating 1 regional subnet)
+     */
     quantityOfNodeSubnets?: number;
+    /**
+     * Number of worker nodes in each subnet / availability domain
+     */
     quantityPerSubnet?: number;
+    /**
+     * The availability domain within the region to host the OKE cluster
+     */
     region: string;
+    /**
+     * Optional specify the service CIDR, defaults to 10.96.0.0/16
+     */
     serviceCidr?: string;
+    /**
+     * Optional name for DNS domain of service subnet
+     */
     serviceDnsDomainName?: string;
+    /**
+     * Whether to skip deleting VCN
+     */
     skipVcnDelete?: boolean;
+    /**
+     * The OCID of the tenancy in which to create resources
+     */
     tenancyId: string;
+    /**
+     * The OCID of a user who has access to the tenancy/compartment
+     */
     userOcid: string;
+    /**
+     * The OCID of the compartment (if different from compartment_id) in which to find the pre-existing virtual network set with vcn_name.
+     */
     vcnCompartmentId?: string;
+    /**
+     * The optional name of an existing virtual network to use for the cluster creation. A new VCN will be created if not specified.
+     */
     vcnName?: string;
+    /**
+     * Additional CIDR from which to allow ingress to worker nodes
+     */
     workerNodeIngressCidr?: string;
 }
 
 export interface GetClusterRke2Config {
+    /**
+     * The RKE2 upgrade strategy
+     */
     upgradeStrategy: outputs.GetClusterRke2ConfigUpgradeStrategy;
+    /**
+     * The RKE2 kubernetes version
+     */
     version: string;
 }
 
 export interface GetClusterRke2ConfigUpgradeStrategy {
+    /**
+     * Drain server nodes
+     */
     drainServerNodes?: boolean;
+    /**
+     * Drain worker nodes
+     */
     drainWorkerNodes?: boolean;
+    /**
+     * Server concurrency
+     */
     serverConcurrency?: number;
+    /**
+     * Worker concurrency
+     */
     workerConcurrency?: number;
 }
 
 export interface GetClusterRkeConfig {
+    /**
+     * Optional duration in seconds of addon job.
+     */
     addonJobTimeout: number;
+    /**
+     * Optional addons descripton to deploy on rke cluster.
+     */
     addons?: string;
+    /**
+     * Optional addons yaml manisfest to deploy on rke cluster.
+     */
     addonsIncludes?: string[];
+    /**
+     * Kubernetes cluster authentication
+     */
     authentication: outputs.GetClusterRkeConfigAuthentication;
+    /**
+     * Kubernetes cluster authorization
+     */
     authorization: outputs.GetClusterRkeConfigAuthorization;
+    /**
+     * RKE bastion host
+     */
     bastionHost: outputs.GetClusterRkeConfigBastionHost;
     cloudProvider: outputs.GetClusterRkeConfigCloudProvider;
     dns: outputs.GetClusterRkeConfigDns;
+    /**
+     * Enable/disable using cri-dockerd
+     */
     enableCriDockerd?: boolean;
+    /**
+     * Optional ignore docker version on nodes
+     */
     ignoreDockerVersion?: boolean;
+    /**
+     * Kubernetes ingress configuration
+     */
     ingress: outputs.GetClusterRkeConfigIngress;
+    /**
+     * Optional kubernetes version to deploy
+     */
     kubernetesVersion: string;
+    /**
+     * Kubernetes cluster monitoring
+     */
     monitoring: outputs.GetClusterRkeConfigMonitoring;
+    /**
+     * Kubernetes cluster networking
+     */
     network: outputs.GetClusterRkeConfigNetwork;
+    /**
+     * Optional RKE cluster nodes
+     */
     nodes?: outputs.GetClusterRkeConfigNode[];
+    /**
+     * Optional prefix to customize kubernetes path
+     */
     prefixPath: string;
+    /**
+     * Optional private registries for docker images
+     */
     privateRegistries?: outputs.GetClusterRkeConfigPrivateRegistry[];
+    /**
+     * Kubernetes cluster services
+     */
     services: outputs.GetClusterRkeConfigServices;
+    /**
+     * Optional use ssh agent auth
+     */
     sshAgentAuth?: boolean;
+    /**
+     * Optional cluster level SSH certificate path
+     */
     sshCertPath: string;
+    /**
+     * Optional cluster level SSH private key path
+     */
     sshKeyPath: string;
+    /**
+     * RKE upgrade strategy
+     */
     upgradeStrategy: outputs.GetClusterRkeConfigUpgradeStrategy;
+    /**
+     * Optional prefix to customize kubernetes path for windows nodes
+     */
     winPrefixPath: string;
 }
 
@@ -5751,6 +6947,9 @@ export interface GetClusterRkeConfigCloudProviderAzureCloudProvider {
     cloudProviderRateLimit: boolean;
     cloudProviderRateLimitBucket: number;
     cloudProviderRateLimitQps: number;
+    /**
+     * Load balancer type (basic | standard). Must be standard for auto-scaling
+     */
     loadBalancerSku?: string;
     location: string;
     maximumLoadBalancerRuleCount: number;
@@ -5865,13 +7064,25 @@ export interface GetClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace {
 }
 
 export interface GetClusterRkeConfigDns {
+    /**
+     * Linear Autoscaler Params
+     */
     linearAutoscalerParams?: outputs.GetClusterRkeConfigDnsLinearAutoscalerParams;
     nodeSelector: {[key: string]: any};
+    /**
+     * Nodelocal dns
+     */
     nodelocal?: outputs.GetClusterRkeConfigDnsNodelocal;
     options: {[key: string]: any};
     provider?: string;
     reverseCidrs: string[];
+    /**
+     * DNS service tolerations
+     */
     tolerations?: outputs.GetClusterRkeConfigDnsToleration[];
+    /**
+     * Update deployment strategy
+     */
     updateStrategy?: outputs.GetClusterRkeConfigDnsUpdateStrategy;
     upstreamNameservers: string[];
 }
@@ -5886,6 +7097,9 @@ export interface GetClusterRkeConfigDnsLinearAutoscalerParams {
 
 export interface GetClusterRkeConfigDnsNodelocal {
     ipAddress?: string;
+    /**
+     * Node selector key pair
+     */
     nodeSelector?: {[key: string]: any};
 }
 
@@ -5898,12 +7112,24 @@ export interface GetClusterRkeConfigDnsToleration {
 }
 
 export interface GetClusterRkeConfigDnsUpdateStrategy {
+    /**
+     * Rolling update for update strategy
+     */
     rollingUpdate?: outputs.GetClusterRkeConfigDnsUpdateStrategyRollingUpdate;
+    /**
+     * Strategy
+     */
     strategy?: string;
 }
 
 export interface GetClusterRkeConfigDnsUpdateStrategyRollingUpdate {
+    /**
+     * Rolling update max surge
+     */
     maxSurge?: number;
+    /**
+     * Rolling update max unavailable
+     */
     maxUnavailable?: number;
 }
 
@@ -5917,7 +7143,13 @@ export interface GetClusterRkeConfigIngress {
     nodeSelector: {[key: string]: any};
     options: {[key: string]: any};
     provider: string;
+    /**
+     * Ingress add-on tolerations
+     */
     tolerations?: outputs.GetClusterRkeConfigIngressToleration[];
+    /**
+     * Update daemon set strategy
+     */
     updateStrategy?: outputs.GetClusterRkeConfigIngressUpdateStrategy;
 }
 
@@ -5930,11 +7162,20 @@ export interface GetClusterRkeConfigIngressToleration {
 }
 
 export interface GetClusterRkeConfigIngressUpdateStrategy {
+    /**
+     * Rolling update for update strategy
+     */
     rollingUpdate?: outputs.GetClusterRkeConfigIngressUpdateStrategyRollingUpdate;
+    /**
+     * Strategy
+     */
     strategy?: string;
 }
 
 export interface GetClusterRkeConfigIngressUpdateStrategyRollingUpdate {
+    /**
+     * Rolling update max unavailable
+     */
     maxUnavailable?: number;
 }
 
@@ -5943,7 +7184,13 @@ export interface GetClusterRkeConfigMonitoring {
     options: {[key: string]: any};
     provider: string;
     replicas: number;
+    /**
+     * Monitoring add-on tolerations
+     */
     tolerations?: outputs.GetClusterRkeConfigMonitoringToleration[];
+    /**
+     * Update deployment strategy
+     */
     updateStrategy?: outputs.GetClusterRkeConfigMonitoringUpdateStrategy;
 }
 
@@ -5956,12 +7203,24 @@ export interface GetClusterRkeConfigMonitoringToleration {
 }
 
 export interface GetClusterRkeConfigMonitoringUpdateStrategy {
+    /**
+     * Rolling update for update strategy
+     */
     rollingUpdate?: outputs.GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdate;
+    /**
+     * Strategy
+     */
     strategy?: string;
 }
 
 export interface GetClusterRkeConfigMonitoringUpdateStrategyRollingUpdate {
+    /**
+     * Rolling update max surge
+     */
     maxSurge?: number;
+    /**
+     * Rolling update max unavailable
+     */
     maxUnavailable?: number;
 }
 
@@ -5973,6 +7232,9 @@ export interface GetClusterRkeConfigNetwork {
     mtu?: number;
     options: {[key: string]: any};
     plugin: string;
+    /**
+     * Network add-on tolerations
+     */
     tolerations?: outputs.GetClusterRkeConfigNetworkToleration[];
     weaveNetworkProvider?: outputs.GetClusterRkeConfigNetworkWeaveNetworkProvider;
 }
@@ -6097,6 +7359,9 @@ export interface GetClusterRkeConfigNode {
 }
 
 export interface GetClusterRkeConfigPrivateRegistry {
+    /**
+     * ECR credential plugin config
+     */
     ecrCredentialPlugin?: outputs.GetClusterRkeConfigPrivateRegistryEcrCredentialPlugin;
     isDefault?: boolean;
     password?: string;
@@ -6160,6 +7425,9 @@ export interface GetClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig {
 }
 
 export interface GetClusterRkeConfigServicesKubeApi {
+    /**
+     * Cluster admission configuration
+     */
     admissionConfiguration?: outputs.GetClusterRkeConfigServicesKubeApiAdmissionConfiguration;
     alwaysPullImages?: boolean;
     auditLog?: outputs.GetClusterRkeConfigServicesKubeApiAuditLog;
@@ -6175,17 +7443,32 @@ export interface GetClusterRkeConfigServicesKubeApi {
 }
 
 export interface GetClusterRkeConfigServicesKubeApiAdmissionConfiguration {
+    /**
+     * Admission configuration ApiVersion
+     */
     apiVersion?: string;
+    /**
+     * Admission configuration Kind
+     */
     kind?: string;
+    /**
+     * Admission configuration plugins
+     */
     plugins: outputs.GetClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin[];
 }
 
 export interface GetClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin {
+    /**
+     * Plugin configuration
+     */
     configuration: string;
     /**
      * The name of the Cluster (string)
      */
     name: string;
+    /**
+     * Plugin path
+     */
     path?: string;
 }
 
@@ -6264,8 +7547,17 @@ export interface GetClusterRkeConfigUpgradeStrategyDrainInput {
 }
 
 export interface GetClusterTemplateMember {
+    /**
+     * Member access type: member, owner, read-only
+     */
     accessType?: string;
+    /**
+     * Member group principal id
+     */
     groupPrincipalId?: string;
+    /**
+     * Member user principal id
+     */
     userPrincipalId?: string;
 }
 
@@ -6274,9 +7566,21 @@ export interface GetClusterTemplateTemplateRevision {
      * (Computed) Annotations for the cluster template (map)
      */
     annotations: {[key: string]: any};
+    /**
+     * Cluster configuration
+     */
     clusterConfig: outputs.GetClusterTemplateTemplateRevisionClusterConfig;
+    /**
+     * Cluster template ID
+     */
     clusterTemplateId: string;
+    /**
+     * Default cluster template revision
+     */
     default?: boolean;
+    /**
+     * Enable cluster template revision
+     */
     enabled?: boolean;
     /**
      * (Computed) The ID of the resource (string)
@@ -6290,21 +7594,60 @@ export interface GetClusterTemplateTemplateRevision {
      * The cluster template name (string)
      */
     name: string;
+    /**
+     * Cluster template questions
+     */
     questions?: outputs.GetClusterTemplateTemplateRevisionQuestion[];
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfig {
+    /**
+     * Local cluster auth endpoint
+     */
     clusterAuthEndpoint: outputs.GetClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint;
+    /**
+     * Default cluster role for project members
+     */
     defaultClusterRoleForProjectMembers: string;
+    /**
+     * Default pod security admission configuration template name
+     */
     defaultPodSecurityAdmissionConfigurationTemplateName: string;
+    /**
+     * Default pod security policy template ID
+     */
     defaultPodSecurityPolicyTemplateId: string;
+    /**
+     * Desired agent image
+     */
     desiredAgentImage: string;
+    /**
+     * Desired auth image
+     */
     desiredAuthImage: string;
+    /**
+     * Docker Root Dir
+     */
     dockerRootDir: string;
+    /**
+     * Enable built-in cluster alerting
+     */
     enableClusterAlerting?: boolean;
+    /**
+     * Enable built-in cluster monitoring
+     */
     enableClusterMonitoring?: boolean;
+    /**
+     * Enable project network isolation
+     */
     enableNetworkPolicy?: boolean;
+    /**
+     * Rancher Kubernetes Engine Config
+     */
     rkeConfig: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfig;
+    /**
+     * Windows prefered cluster
+     */
     windowsPreferedCluster?: boolean;
 }
 
@@ -6315,28 +7658,91 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpo
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfig {
+    /**
+     * Optional duration in seconds of addon job.
+     */
     addonJobTimeout: number;
+    /**
+     * Optional addons descripton to deploy on rke cluster.
+     */
     addons?: string;
+    /**
+     * Optional addons yaml manisfest to deploy on rke cluster.
+     */
     addonsIncludes?: string[];
+    /**
+     * Kubernetes cluster authentication
+     */
     authentication: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentication;
+    /**
+     * Kubernetes cluster authorization
+     */
     authorization: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorization;
+    /**
+     * RKE bastion host
+     */
     bastionHost: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHost;
     cloudProvider: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvider;
     dns: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDns;
+    /**
+     * Enable/disable using cri-dockerd
+     */
     enableCriDockerd?: boolean;
+    /**
+     * Optional ignore docker version on nodes
+     */
     ignoreDockerVersion?: boolean;
+    /**
+     * Kubernetes ingress configuration
+     */
     ingress: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress;
+    /**
+     * Optional kubernetes version to deploy
+     */
     kubernetesVersion: string;
+    /**
+     * Kubernetes cluster monitoring
+     */
     monitoring: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring;
+    /**
+     * Kubernetes cluster networking
+     */
     network: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork;
+    /**
+     * Optional RKE cluster nodes
+     */
     nodes?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNode[];
+    /**
+     * Optional prefix to customize kubernetes path
+     */
     prefixPath: string;
+    /**
+     * Optional private registries for docker images
+     */
     privateRegistries?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry[];
+    /**
+     * Kubernetes cluster services
+     */
     services: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServices;
+    /**
+     * Optional use ssh agent auth
+     */
     sshAgentAuth?: boolean;
+    /**
+     * Optional cluster level SSH certificate path
+     */
     sshCertPath: string;
+    /**
+     * Optional cluster level SSH private key path
+     */
     sshKeyPath: string;
+    /**
+     * RKE upgrade strategy
+     */
     upgradeStrategy: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategy;
+    /**
+     * Optional prefix to customize kubernetes path for windows nodes
+     */
     winPrefixPath: string;
 }
 
@@ -6412,6 +7818,9 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPr
     cloudProviderRateLimit: boolean;
     cloudProviderRateLimitBucket: number;
     cloudProviderRateLimitQps: number;
+    /**
+     * Load balancer type (basic | standard). Must be standard for auto-scaling
+     */
     loadBalancerSku?: string;
     location: string;
     maximumLoadBalancerRuleCount: number;
@@ -6526,13 +7935,25 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPr
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDns {
+    /**
+     * Linear Autoscaler Params
+     */
     linearAutoscalerParams?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams;
     nodeSelector: {[key: string]: any};
+    /**
+     * Nodelocal dns
+     */
     nodelocal?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal;
     options: {[key: string]: any};
     provider?: string;
     reverseCidrs: string[];
+    /**
+     * DNS service tolerations
+     */
     tolerations?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsToleration[];
+    /**
+     * Update deployment strategy
+     */
     updateStrategy?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy;
     upstreamNameservers: string[];
 }
@@ -6547,6 +7968,9 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLine
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal {
     ipAddress?: string;
+    /**
+     * Node selector key pair
+     */
     nodeSelector?: {[key: string]: any};
 }
 
@@ -6559,12 +7983,24 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsTole
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy {
+    /**
+     * Rolling update for update strategy
+     */
     rollingUpdate?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate;
+    /**
+     * Strategy
+     */
     strategy?: string;
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdate {
+    /**
+     * Rolling update max surge
+     */
     maxSurge?: number;
+    /**
+     * Rolling update max unavailable
+     */
     maxUnavailable?: number;
 }
 
@@ -6578,7 +8014,13 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress
     nodeSelector: {[key: string]: any};
     options: {[key: string]: any};
     provider: string;
+    /**
+     * Ingress add-on tolerations
+     */
     tolerations?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressToleration[];
+    /**
+     * Update daemon set strategy
+     */
     updateStrategy?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy;
 }
 
@@ -6591,11 +8033,20 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy {
+    /**
+     * Rolling update for update strategy
+     */
     rollingUpdate?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate;
+    /**
+     * Strategy
+     */
     strategy?: string;
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdate {
+    /**
+     * Rolling update max unavailable
+     */
     maxUnavailable?: number;
 }
 
@@ -6604,7 +8055,13 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitor
     options: {[key: string]: any};
     provider: string;
     replicas: number;
+    /**
+     * Monitoring add-on tolerations
+     */
     tolerations?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringToleration[];
+    /**
+     * Update deployment strategy
+     */
     updateStrategy?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy;
 }
 
@@ -6617,12 +8074,24 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitor
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy {
+    /**
+     * Rolling update for update strategy
+     */
     rollingUpdate?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate;
+    /**
+     * Strategy
+     */
     strategy?: string;
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdate {
+    /**
+     * Rolling update max surge
+     */
     maxSurge?: number;
+    /**
+     * Rolling update max unavailable
+     */
     maxUnavailable?: number;
 }
 
@@ -6634,6 +8103,9 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork
     mtu?: number;
     options: {[key: string]: any};
     plugin: string;
+    /**
+     * Network add-on tolerations
+     */
     tolerations?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkToleration[];
     weaveNetworkProvider?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider;
 }
@@ -6758,6 +8230,9 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNode {
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistry {
+    /**
+     * ECR credential plugin config
+     */
     ecrCredentialPlugin?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPlugin;
     isDefault?: boolean;
     password?: string;
@@ -6818,6 +8293,9 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigService
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi {
+    /**
+     * Cluster admission configuration
+     */
     admissionConfiguration?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfiguration;
     alwaysPullImages?: boolean;
     auditLog?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog;
@@ -6833,17 +8311,32 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigService
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfiguration {
+    /**
+     * Admission configuration ApiVersion
+     */
     apiVersion?: string;
+    /**
+     * Admission configuration Kind
+     */
     kind?: string;
+    /**
+     * Admission configuration plugins
+     */
     plugins: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPlugin[];
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPlugin {
+    /**
+     * Plugin configuration
+     */
     configuration: string;
     /**
      * The cluster template name (string)
      */
     name: string;
+    /**
+     * Plugin path
+     */
     path?: string;
 }
 
@@ -6922,9 +8415,21 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgrade
 }
 
 export interface GetClusterTemplateTemplateRevisionQuestion {
+    /**
+     * Default variable value
+     */
     default: string;
+    /**
+     * Required variable
+     */
     required?: boolean;
+    /**
+     * Variable type
+     */
     type?: string;
+    /**
+     * Variable name
+     */
     variable: string;
 }
 
@@ -6937,6 +8442,9 @@ export interface GetClusterV2AgentEnvVar {
 }
 
 export interface GetClusterV2ClusterRegistrationToken {
+    /**
+     * Annotations of the resource
+     */
     annotations: {[key: string]: any};
     clusterId: string;
     command: string;
@@ -6947,6 +8455,9 @@ export interface GetClusterV2ClusterRegistrationToken {
     insecureCommand: string;
     insecureNodeCommand: string;
     insecureWindowsNodeCommand: string;
+    /**
+     * Labels of the resource
+     */
     labels: {[key: string]: any};
     manifestUrl: string;
     /**
@@ -6959,51 +8470,131 @@ export interface GetClusterV2ClusterRegistrationToken {
 }
 
 export interface GetClusterV2RkeConfig {
+    /**
+     * Cluster V2 additional manifest
+     */
     additionalManifest?: string;
+    /**
+     * Cluster V2 chart values. It should be in YAML format
+     */
     chartValues?: string;
+    /**
+     * Cluster V2 etcd
+     */
     etcd: outputs.GetClusterV2RkeConfigEtcd;
+    /**
+     * Cluster V2 etcd snapshot create
+     */
     etcdSnapshotCreate?: outputs.GetClusterV2RkeConfigEtcdSnapshotCreate;
+    /**
+     * Cluster V2 etcd snapshot restore
+     */
     etcdSnapshotRestore?: outputs.GetClusterV2RkeConfigEtcdSnapshotRestore;
     /**
+     * Cluster V2 local auth endpoint
+     *
      * @deprecated Use rancher2_cluster_v2.local_auth_endpoint instead
      */
     localAuthEndpoint?: outputs.GetClusterV2RkeConfigLocalAuthEndpoint;
+    /**
+     * Cluster V2 machine global config
+     */
     machineGlobalConfig?: string;
+    /**
+     * Default values for machine pool configurations if unset
+     */
     machinePoolDefaults: outputs.GetClusterV2RkeConfigMachinePoolDefault[];
+    /**
+     * Cluster V2 machine pools
+     */
     machinePools: outputs.GetClusterV2RkeConfigMachinePool[];
+    /**
+     * Cluster V2 machine selector config
+     */
     machineSelectorConfigs: outputs.GetClusterV2RkeConfigMachineSelectorConfig[];
+    /**
+     * Cluster V2 registries
+     */
     registries?: outputs.GetClusterV2RkeConfigRegistries;
+    /**
+     * Cluster V2 certificate rotation
+     */
     rotateCertificates?: outputs.GetClusterV2RkeConfigRotateCertificates;
+    /**
+     * Cluster V2 upgrade strategy
+     */
     upgradeStrategy?: outputs.GetClusterV2RkeConfigUpgradeStrategy;
 }
 
 export interface GetClusterV2RkeConfigEtcd {
+    /**
+     * Disable ETCD snapshots
+     */
     disableSnapshots?: boolean;
+    /**
+     * ETCD snapshot S3 config
+     */
     s3Config?: outputs.GetClusterV2RkeConfigEtcdS3Config;
+    /**
+     * ETCD snapshot retention
+     */
     snapshotRetention?: number;
+    /**
+     * ETCD snapshot schedule cron (e.g `"0 *&#47;5 * * *"`)
+     */
     snapshotScheduleCron?: string;
 }
 
 export interface GetClusterV2RkeConfigEtcdS3Config {
+    /**
+     * ETCD snapshot S3 bucket
+     */
     bucket: string;
+    /**
+     * ETCD snapshot S3 cloud credential name
+     */
     cloudCredentialName?: string;
+    /**
+     * ETCD snapshot S3 endpoint
+     */
     endpoint: string;
+    /**
+     * ETCD snapshot S3 endpoint CA
+     */
     endpointCa?: string;
+    /**
+     * ETCD snapshot S3 folder
+     */
     folder?: string;
+    /**
+     * ETCD snapshot S3 region
+     */
     region?: string;
+    /**
+     * Disable ETCD skip ssl verify
+     */
     skipSslVerify?: boolean;
 }
 
 export interface GetClusterV2RkeConfigEtcdSnapshotCreate {
+    /**
+     * ETCD generation to initiate a snapshot
+     */
     generation: number;
 }
 
 export interface GetClusterV2RkeConfigEtcdSnapshotRestore {
+    /**
+     * ETCD snapshot desired generation
+     */
     generation: number;
     /**
      * The name of the Cluster v2 (string)
      */
     name: string;
+    /**
+     * ETCD restore RKE config (set to none, all, or kubernetesVersion)
+     */
     restoreRkeConfig?: string;
 }
 
@@ -7014,39 +8605,99 @@ export interface GetClusterV2RkeConfigLocalAuthEndpoint {
 }
 
 export interface GetClusterV2RkeConfigMachinePool {
+    /**
+     * Annotations of the resource
+     */
     annotations: {[key: string]: any};
     /**
      * (Computed) Cluster V2 cloud credential secret name (string)
      */
     cloudCredentialSecretName?: string;
+    /**
+     * Machine pool control plane role
+     */
     controlPlaneRole?: boolean;
+    /**
+     * Machine pool drain before delete
+     */
     drainBeforeDelete?: boolean;
+    /**
+     * Machine pool etcd role
+     */
     etcdRole?: boolean;
+    /**
+     * maximum length for autogenerated hostname
+     */
     hostnameLengthLimit?: number;
+    /**
+     * Labels of the resource
+     */
     labels: {[key: string]: any};
+    /**
+     * Machine config data
+     */
     machineConfig: outputs.GetClusterV2RkeConfigMachinePoolMachineConfig;
+    /**
+     * Labels of the machine
+     */
     machineLabels: {[key: string]: any};
+    /**
+     * max unhealthy nodes for automated replacement to be allowed
+     */
     maxUnhealthy?: string;
     /**
      * The name of the Cluster v2 (string)
      */
     name: string;
+    /**
+     * seconds to wait for machine pool drain to complete before machine deletion
+     */
     nodeDrainTimeout?: number;
+    /**
+     * seconds a new node has to become active before it is replaced
+     */
     nodeStartupTimeoutSeconds?: number;
+    /**
+     * Machine pool paused
+     */
     paused?: boolean;
+    /**
+     * Machine pool quantity
+     */
     quantity?: number;
+    /**
+     * Machine pool rolling update
+     */
     rollingUpdate?: outputs.GetClusterV2RkeConfigMachinePoolRollingUpdate;
+    /**
+     * Machine pool taints
+     */
     taints?: outputs.GetClusterV2RkeConfigMachinePoolTaint[];
+    /**
+     * seconds an unhealthy node has to become active before it is replaced
+     */
     unhealthyNodeTimeoutSeconds?: number;
+    /**
+     * range of unhealthy nodes for automated replacement to be allowed
+     */
     unhealthyRange?: string;
+    /**
+     * Machine pool worker role
+     */
     workerRole?: boolean;
 }
 
 export interface GetClusterV2RkeConfigMachinePoolDefault {
+    /**
+     * maximum length for autogenerated hostname
+     */
     hostnameLengthLimit?: number;
 }
 
 export interface GetClusterV2RkeConfigMachinePoolMachineConfig {
+    /**
+     * Machine config kind
+     */
     kind: string;
     /**
      * The name of the Cluster v2 (string)
@@ -7055,7 +8706,13 @@ export interface GetClusterV2RkeConfigMachinePoolMachineConfig {
 }
 
 export interface GetClusterV2RkeConfigMachinePoolRollingUpdate {
+    /**
+     * Rolling update max surge
+     */
     maxSurge?: string;
+    /**
+     * Rolling update max unavailable
+     */
     maxUnavailable?: string;
 }
 
@@ -7066,73 +8723,196 @@ export interface GetClusterV2RkeConfigMachinePoolTaint {
 }
 
 export interface GetClusterV2RkeConfigMachineSelectorConfig {
+    /**
+     * Machine selector config
+     */
     config?: string;
+    /**
+     * Machine label selector
+     */
     machineLabelSelector?: outputs.GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector;
 }
 
 export interface GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector {
+    /**
+     * Label selector match expressions
+     */
     matchExpressions?: outputs.GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression[];
+    /**
+     * Label selector match labels
+     */
     matchLabels?: {[key: string]: any};
 }
 
 export interface GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression {
+    /**
+     * Label selector requirement key
+     */
     key?: string;
+    /**
+     * Label selector operator
+     */
     operator?: string;
+    /**
+     * Label selector requirement values
+     */
     values?: string[];
 }
 
 export interface GetClusterV2RkeConfigRegistries {
+    /**
+     * Registry config
+     */
     configs?: outputs.GetClusterV2RkeConfigRegistriesConfig[];
+    /**
+     * Registry mirrors
+     */
     mirrors?: outputs.GetClusterV2RkeConfigRegistriesMirror[];
 }
 
 export interface GetClusterV2RkeConfigRegistriesConfig {
+    /**
+     * Registry auth config secret name
+     */
     authConfigSecretName?: string;
+    /**
+     * Registry CA bundle
+     */
     caBundle?: string;
+    /**
+     * Registry hostname
+     */
     hostname: string;
+    /**
+     * Registry insecure connectivity
+     */
     insecure?: boolean;
+    /**
+     * Registry TLS secret name. TLS is a pair of Cert/Key
+     */
     tlsSecretName?: string;
 }
 
 export interface GetClusterV2RkeConfigRegistriesMirror {
+    /**
+     * Registry mirror endpoints
+     */
     endpoints?: string[];
+    /**
+     * Registry hostname
+     */
     hostname: string;
+    /**
+     * Registry mirror rewrites
+     */
     rewrites?: {[key: string]: any};
 }
 
 export interface GetClusterV2RkeConfigRotateCertificates {
+    /**
+     * Desired certificate rotation generation.
+     */
     generation: number;
+    /**
+     * Service certificates to rotate with this generation.
+     */
     services?: string[];
 }
 
 export interface GetClusterV2RkeConfigUpgradeStrategy {
+    /**
+     * How many controlplane nodes should be upgrade at time, 0 is infinite. Percentages are also accepted
+     */
     controlPlaneConcurrency?: string;
+    /**
+     * Controlplane nodes drain options
+     */
     controlPlaneDrainOptions?: outputs.GetClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions;
+    /**
+     * How many worker nodes should be upgrade at time
+     */
     workerConcurrency?: string;
+    /**
+     * Worker nodes drain options
+     */
     workerDrainOptions?: outputs.GetClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions;
 }
 
 export interface GetClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions {
+    /**
+     * Drain options delete empty dir data
+     */
     deleteEmptyDirData?: boolean;
+    /**
+     * Drain options disable eviction
+     */
     disableEviction?: boolean;
+    /**
+     * Drain options enabled?
+     */
     enabled?: boolean;
+    /**
+     * Drain options force
+     */
     force?: boolean;
+    /**
+     * Drain options grace period
+     */
     gracePeriod: number;
+    /**
+     * Drain options ignore daemon sets
+     */
     ignoreDaemonSets?: boolean;
+    /**
+     * Drain options ignore errors
+     */
     ignoreErrors?: boolean;
+    /**
+     * Drain options skip wait for delete timeout seconds
+     */
     skipWaitForDeleteTimeoutSeconds: number;
+    /**
+     * Drain options timeout
+     */
     timeout: number;
 }
 
 export interface GetClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions {
+    /**
+     * Drain options delete empty dir data
+     */
     deleteEmptyDirData?: boolean;
+    /**
+     * Drain options disable eviction
+     */
     disableEviction?: boolean;
+    /**
+     * Drain options enabled?
+     */
     enabled?: boolean;
+    /**
+     * Drain options force
+     */
     force?: boolean;
+    /**
+     * Drain options grace period
+     */
     gracePeriod: number;
+    /**
+     * Drain options ignore daemon sets
+     */
     ignoreDaemonSets?: boolean;
+    /**
+     * Drain options ignore errors
+     */
     ignoreErrors?: boolean;
+    /**
+     * Drain options skip wait for delete timeout seconds
+     */
     skipWaitForDeleteTimeoutSeconds: number;
+    /**
+     * Drain options timeout
+     */
     timeout: number;
 }
 
@@ -7176,38 +8956,92 @@ export interface GetGlobalDnsProviderRoute53Config {
 }
 
 export interface GetGlobalRoleRule {
+    /**
+     * Policy rule api groups
+     */
     apiGroups?: string[];
+    /**
+     * Policy rule non resource urls
+     */
     nonResourceUrls?: string[];
+    /**
+     * Policy rule resource names
+     */
     resourceNames?: string[];
+    /**
+     * Policy rule resources
+     */
     resources?: string[];
+    /**
+     * Policy rule verbs
+     */
     verbs?: string[];
 }
 
 export interface GetMultiClusterAppAnswer {
+    /**
+     * Cluster ID for answer
+     */
     clusterId: string;
+    /**
+     * Project ID for answer
+     */
     projectId: string;
+    /**
+     * Key/values for answer
+     */
     values: {[key: string]: any};
 }
 
 export interface GetMultiClusterAppMember {
+    /**
+     * Member access type: member, owner, read-only
+     */
     accessType?: string;
+    /**
+     * Member group principal id
+     */
     groupPrincipalId?: string;
+    /**
+     * Member user principal id
+     */
     userPrincipalId?: string;
 }
 
 export interface GetMultiClusterAppTarget {
+    /**
+     * App ID for target
+     */
     appId: string;
+    /**
+     * App health state for target
+     */
     healthState: string;
+    /**
+     * Project ID for target
+     */
     projectId: string;
+    /**
+     * App state for target
+     */
     state: string;
 }
 
 export interface GetMultiClusterAppUpgradeStrategy {
+    /**
+     * Rolling update for upgrade strategy
+     */
     rollingUpdate?: outputs.GetMultiClusterAppUpgradeStrategyRollingUpdate;
 }
 
 export interface GetMultiClusterAppUpgradeStrategyRollingUpdate {
+    /**
+     * Rolling update batch size
+     */
     batchSize?: number;
+    /**
+     * Rolling update interval
+     */
     interval?: number;
 }
 
@@ -7253,48 +9087,123 @@ export interface GetNodeTemplateNodeTaint {
 }
 
 export interface GetNotifierDingtalkConfig {
+    /**
+     * Dingtalk proxy URL
+     */
     proxyUrl?: string;
+    /**
+     * Required for webhook with sign enabled
+     */
     secret?: string;
+    /**
+     * Webhook URL
+     */
     url: string;
 }
 
 export interface GetNotifierMsteamsConfig {
+    /**
+     * MS teams proxy URL
+     */
     proxyUrl?: string;
+    /**
+     * Webhook URL
+     */
     url: string;
 }
 
 export interface GetNotifierPagerdutyConfig {
+    /**
+     * Pagerduty proxy URL
+     */
     proxyUrl?: string;
+    /**
+     * Pagerduty service key
+     */
     serviceKey: string;
 }
 
 export interface GetNotifierSlackConfig {
+    /**
+     * Slack default channel
+     */
     defaultRecipient: string;
+    /**
+     * Slack proxy URL
+     */
     proxyUrl?: string;
+    /**
+     * Slack URL
+     */
     url: string;
 }
 
 export interface GetNotifierSmtpConfig {
+    /**
+     * SMTP default recipient address
+     */
     defaultRecipient: string;
+    /**
+     * SMTP host
+     */
     host: string;
+    /**
+     * SMTP password
+     */
     password?: string;
+    /**
+     * SMTP port
+     */
     port: number;
+    /**
+     * SMTP sender
+     */
     sender: string;
+    /**
+     * SMTP TLS
+     */
     tls?: boolean;
+    /**
+     * SMTP username
+     */
     username?: string;
 }
 
 export interface GetNotifierWebhookConfig {
+    /**
+     * Webhook proxy URL
+     */
     proxyUrl?: string;
+    /**
+     * Webhook URL
+     */
     url: string;
 }
 
 export interface GetNotifierWechatConfig {
+    /**
+     * Wechat application agent ID
+     */
     agent: string;
+    /**
+     * Wechat corporation ID
+     */
     corp: string;
+    /**
+     * Wechat default channel
+     */
     defaultRecipient: string;
+    /**
+     * Wechat proxy URL
+     */
     proxyUrl?: string;
+    /**
+     * Wechat recipient type
+     */
     recipientType?: string;
+    /**
+     * Wechat application secret
+     */
     secret: string;
 }
 
@@ -7306,101 +9215,236 @@ export interface GetPodSecurityPolicyTemplateAllowedCsiDriver {
 }
 
 export interface GetPodSecurityPolicyTemplateAllowedFlexVolume {
+    /**
+     * driver is the name of the Flexvolume driver.
+     */
     driver: string;
 }
 
 export interface GetPodSecurityPolicyTemplateAllowedHostPath {
+    /**
+     * pathPrefix is the path prefix that the host volume must match. It does not support `*`. Trailing slashes are trimmed when validating the path prefix with a host path.
+     */
     pathPrefix: string;
+    /**
+     * when set to true, will allow host volumes matching the pathPrefix only if all volume mounts are readOnly.
+     */
     readOnly?: boolean;
 }
 
 export interface GetPodSecurityPolicyTemplateFsGroup {
+    /**
+     * ranges are the allowed ranges of fs groups.  If you would like to force a single fs group then supply a single range with the same start and end. Required for MustRunAs.
+     */
     ranges: outputs.GetPodSecurityPolicyTemplateFsGroupRange[];
+    /**
+     * rule is the strategy that will dictate what FSGroup is used in the SecurityContext.
+     */
     rule?: string;
 }
 
 export interface GetPodSecurityPolicyTemplateFsGroupRange {
+    /**
+     * max is the end of the range, inclusive.
+     */
     max: number;
+    /**
+     * min is the start of the range, inclusive.
+     */
     min: number;
 }
 
 export interface GetPodSecurityPolicyTemplateHostPort {
+    /**
+     * max is the end of the range, inclusive.
+     */
     max: number;
+    /**
+     * min is the start of the range, inclusive.
+     */
     min: number;
 }
 
 export interface GetPodSecurityPolicyTemplateRunAsGroup {
+    /**
+     * ranges are the allowed ranges of gids that may be used. If you would like to force a single gid then supply a single range with the same start and end. Required for MustRunAs.
+     */
     ranges?: outputs.GetPodSecurityPolicyTemplateRunAsGroupRange[];
+    /**
+     * rule is the strategy that will dictate the allowable RunAsGroup values that may be set.
+     */
     rule: string;
 }
 
 export interface GetPodSecurityPolicyTemplateRunAsGroupRange {
+    /**
+     * max is the end of the range, inclusive.
+     */
     max: number;
+    /**
+     * min is the start of the range, inclusive.
+     */
     min: number;
 }
 
 export interface GetPodSecurityPolicyTemplateRunAsUser {
+    /**
+     * ranges are the allowed ranges of uids that may be used. If you would like to force a single uid then supply a single range with the same start and end. Required for MustRunAs.
+     */
     ranges?: outputs.GetPodSecurityPolicyTemplateRunAsUserRange[];
+    /**
+     * rule is the strategy that will dictate the allowable RunAsUser values that may be set.
+     */
     rule: string;
 }
 
 export interface GetPodSecurityPolicyTemplateRunAsUserRange {
+    /**
+     * max is the end of the range, inclusive.
+     */
     max: number;
+    /**
+     * min is the start of the range, inclusive.
+     */
     min: number;
 }
 
 export interface GetPodSecurityPolicyTemplateRuntimeClass {
+    /**
+     * allowedRuntimeClassNames is a whitelist of RuntimeClass names that may be specified on a pod. A value of "*" means that any RuntimeClass name is allowed, and must be the only item in the list. An empty list requires the RuntimeClassName field to be unset.
+     */
     allowedRuntimeClassNames: string[];
+    /**
+     * defaultRuntimeClassName is the default RuntimeClassName to set on the pod. The default MUST be allowed by the allowedRuntimeClassNames list. A value of nil does not mutate the Pod.
+     */
     defaultRuntimeClassName?: string;
 }
 
 export interface GetPodSecurityPolicyTemplateSeLinux {
+    /**
+     * rule is the strategy that will dictate the allowable labels that may be set.
+     */
     rule: string;
+    /**
+     * seLinuxOptions required to run as; required for MustRunAs. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+     */
     seLinuxOption?: outputs.GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption;
 }
 
 export interface GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption {
+    /**
+     * Level is SELinux level label that applies to the container.
+     */
     level?: string;
+    /**
+     * Role is a SELinux role label that applies to the container.
+     */
     role?: string;
+    /**
+     * Type is a SELinux type label that applies to the container.
+     */
     type?: string;
+    /**
+     * User is a SELinux user label that applies to the container.
+     */
     user?: string;
 }
 
 export interface GetPodSecurityPolicyTemplateSupplementalGroup {
+    /**
+     * ranges are the allowed ranges of supplemental groups.  If you would like to force a single supplemental group then supply a single range with the same start and end. Required for MustRunAs.
+     */
     ranges: outputs.GetPodSecurityPolicyTemplateSupplementalGroupRange[];
+    /**
+     * rule is the strategy that will dictate what supplemental groups is used in the SecurityContext.
+     */
     rule?: string;
 }
 
 export interface GetPodSecurityPolicyTemplateSupplementalGroupRange {
+    /**
+     * max is the end of the range, inclusive.
+     */
     max: number;
+    /**
+     * min is the start of the range, inclusive.
+     */
     min: number;
 }
 
 export interface GetProjectAlertGroupRecipient {
+    /**
+     * Use notifier default recipient
+     */
     defaultRecipient?: boolean;
+    /**
+     * Recipient notifier ID
+     */
     notifierId: string;
+    /**
+     * Recipient notifier type
+     */
     notifierType: string;
+    /**
+     * Recipient
+     */
     recipient: string;
 }
 
 export interface GetProjectAlertRuleMetricRule {
+    /**
+     * Metric rule comparison
+     */
     comparison?: string;
+    /**
+     * Metric rule description
+     */
     description?: string;
+    /**
+     * Metric rule duration
+     */
     duration: string;
+    /**
+     * Metric rule expression
+     */
     expression: string;
+    /**
+     * Metric rule threshold value
+     */
     thresholdValue: number;
 }
 
 export interface GetProjectAlertRulePodRule {
+    /**
+     * Pod rule condition
+     */
     condition?: string;
+    /**
+     * Pod ID
+     */
     podId: string;
+    /**
+     * Pod rule restart interval seconds
+     */
     restartIntervalSeconds?: number;
+    /**
+     * Pod rule restart times
+     */
     restartTimes?: number;
 }
 
 export interface GetProjectAlertRuleWorkloadRule {
+    /**
+     * Workload rule available percentage
+     */
     availablePercentage?: number;
+    /**
+     * Workload rule selector
+     */
     selector?: {[key: string]: any};
+    /**
+     * Workload ID
+     */
     workloadId?: string;
 }
 
@@ -7455,18 +9499,48 @@ export interface GetRegistryRegistry {
 }
 
 export interface GetRoleTempalteRule {
+    /**
+     * Policy rule api groups
+     */
     apiGroups?: string[];
+    /**
+     * Policy rule non resource urls
+     */
     nonResourceUrls?: string[];
+    /**
+     * Policy rule resource names
+     */
     resourceNames?: string[];
+    /**
+     * Policy rule resources
+     */
     resources?: string[];
+    /**
+     * Policy rule verbs
+     */
     verbs?: string[];
 }
 
 export interface GetRoleTemplateRule {
+    /**
+     * Policy rule api groups
+     */
     apiGroups?: string[];
+    /**
+     * Policy rule non resource urls
+     */
     nonResourceUrls?: string[];
+    /**
+     * Policy rule resource names
+     */
     resourceNames?: string[];
+    /**
+     * Policy rule resources
+     */
     resources?: string[];
+    /**
+     * Policy rule verbs
+     */
     verbs?: string[];
 }
 
@@ -7547,6 +9621,9 @@ export interface GlobalRoleRule {
 }
 
 export interface MachineConfigV2Amazonec2Config {
+    /**
+     * AWS Access Key
+     */
     accessKey?: string;
     /**
      * AWS machine image (string)
@@ -7620,6 +9697,9 @@ export interface MachineConfigV2Amazonec2Config {
      * AWS root disk size (in GB). Default `16` (string)
      */
     rootSize?: string;
+    /**
+     * AWS Secret Key
+     */
     secretKey?: string;
     /**
      * Skip adding default rules to security groups (bool)
@@ -7680,6 +9760,9 @@ export interface MachineConfigV2Amazonec2Config {
 }
 
 export interface MachineConfigV2AzureConfig {
+    /**
+     * Use Accelerated Networking when creating a network interface for the Azure VM
+     */
     acceleratedNetworking?: boolean;
     /**
      * Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
@@ -7801,6 +9884,9 @@ export interface MachineConfigV2AzureConfig {
      * Use private IP address of the machine to connect. Default `false` (bool)
      */
     usePrivateIp?: boolean;
+    /**
+     * Use the standard SKU when creating a Public IP for the Azure VM instance
+     */
     usePublicIpStandardSku?: boolean;
     /**
      * Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format). Default `docker-machine-vnet` (string)
@@ -8571,6 +10657,9 @@ export interface NodeTemplateAmazonec2Config {
      * AWS spot instance bid price (in dollar). Default `0.50` (string)
      */
     spotPrice?: string;
+    /**
+     * SSH Key for Instance
+     */
     sshKeypath?: string;
     /**
      * If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
@@ -8613,6 +10702,9 @@ export interface NodeTemplateAmazonec2Config {
 }
 
 export interface NodeTemplateAzureConfig {
+    /**
+     * Enable Accelerated Networking when creating an Azure Network Interface
+     */
     acceleratedNetworking?: boolean;
     /**
      * Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
@@ -8730,6 +10822,9 @@ export interface NodeTemplateAzureConfig {
      * Use private IP address of the machine to connect. Default `false` (bool)
      */
     usePrivateIp?: boolean;
+    /**
+     * Use the Standard SKU when creating a public IP for an Azure VM
+     */
     usePublicIpStandardSku?: boolean;
     /**
      * Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format). Default `docker-machine-vnet` (string)
@@ -9543,6 +11638,9 @@ export interface PodSecurityPolicyTemplateAllowedCsiDriver {
 }
 
 export interface PodSecurityPolicyTemplateAllowedFlexVolume {
+    /**
+     * driver is the name of the Flexvolume driver.
+     */
     driver: string;
 }
 
@@ -9698,6 +11796,9 @@ export interface PodSecurityPolicyTemplateSupplementalGroupRange {
 }
 
 export interface ProjectAlertGroupRecipient {
+    /**
+     * Use notifier default recipient
+     */
     defaultRecipient?: boolean;
     /**
      * Recipient notifier ID (string)

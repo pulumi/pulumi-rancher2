@@ -13,24 +13,69 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterEksConfigV2Result
     {
+        /// <summary>
+        /// The AWS Cloud Credential ID to use
+        /// </summary>
         public readonly string CloudCredentialId;
+        /// <summary>
+        /// Is EKS cluster imported?
+        /// </summary>
         public readonly bool? Imported;
+        /// <summary>
+        /// The AWS kms key to use
+        /// </summary>
         public readonly string? KmsKey;
+        /// <summary>
+        /// The kubernetes master version
+        /// </summary>
         public readonly string KubernetesVersion;
+        /// <summary>
+        /// The AWS logging types
+        /// </summary>
         public readonly ImmutableArray<string> LoggingTypes;
         /// <summary>
         /// The name of the Cluster (string)
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The AWS node groups to use
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterEksConfigV2NodeGroupResult> NodeGroups;
+        /// <summary>
+        /// The EKS cluster has private access
+        /// </summary>
         public readonly bool PrivateAccess;
+        /// <summary>
+        /// The EKS cluster has public access
+        /// </summary>
         public readonly bool PublicAccess;
+        /// <summary>
+        /// The EKS cluster public access sources
+        /// </summary>
         public readonly ImmutableArray<string> PublicAccessSources;
+        /// <summary>
+        /// The AWS Region to create the EKS cluster in
+        /// </summary>
         public readonly string? Region;
+        /// <summary>
+        /// Enable EKS cluster secret encryption
+        /// </summary>
         public readonly bool SecretsEncryption;
+        /// <summary>
+        /// List of security groups to use for the cluster
+        /// </summary>
         public readonly ImmutableArray<string> SecurityGroups;
+        /// <summary>
+        /// The AWS service role to use
+        /// </summary>
         public readonly string? ServiceRole;
+        /// <summary>
+        /// List of subnets in the virtual network to use
+        /// </summary>
         public readonly ImmutableArray<string> Subnets;
+        /// <summary>
+        /// The EKS cluster tags
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? Tags;
 
         [OutputConstructor]

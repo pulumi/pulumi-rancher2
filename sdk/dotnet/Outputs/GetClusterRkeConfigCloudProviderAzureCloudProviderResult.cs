@@ -26,6 +26,9 @@ namespace Pulumi.Rancher2.Outputs
         public readonly bool CloudProviderRateLimit;
         public readonly int CloudProviderRateLimitBucket;
         public readonly int CloudProviderRateLimitQps;
+        /// <summary>
+        /// Load balancer type (basic | standard). Must be standard for auto-scaling
+        /// </summary>
         public readonly string? LoadBalancerSku;
         public readonly string Location;
         public readonly int MaximumLoadBalancerRuleCount;

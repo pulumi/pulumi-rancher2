@@ -21,6 +21,9 @@ namespace Pulumi.Rancher2.Outputs
         /// The name of the Cluster (string)
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The EKS node group launch template version
+        /// </summary>
         public readonly int? Version;
 
         [OutputConstructor]

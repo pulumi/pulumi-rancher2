@@ -20,6 +20,9 @@ namespace Pulumi.Rancher2.Outputs
         public readonly int? Mtu;
         public readonly ImmutableDictionary<string, object> Options;
         public readonly string Plugin;
+        /// <summary>
+        /// Network add-on tolerations
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterRkeConfigNetworkTolerationResult> Tolerations;
         public readonly Outputs.GetClusterRkeConfigNetworkWeaveNetworkProviderResult? WeaveNetworkProvider;
 

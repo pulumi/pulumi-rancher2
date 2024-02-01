@@ -13,11 +13,17 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterRkeConfigServicesKubeApiAdmissionConfigurationPluginResult
     {
+        /// <summary>
+        /// Plugin configuration
+        /// </summary>
         public readonly string Configuration;
         /// <summary>
         /// The name of the Cluster (string)
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Plugin path
+        /// </summary>
         public readonly string? Path;
 
         [OutputConstructor]

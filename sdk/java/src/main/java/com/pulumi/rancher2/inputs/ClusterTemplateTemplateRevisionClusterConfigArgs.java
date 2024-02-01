@@ -49,9 +49,17 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
         return Optional.ofNullable(this.defaultClusterRoleForProjectMembers);
     }
 
+    /**
+     * Default pod security admission configuration template name
+     * 
+     */
     @Import(name="defaultPodSecurityAdmissionConfigurationTemplateName")
     private @Nullable Output<String> defaultPodSecurityAdmissionConfigurationTemplateName;
 
+    /**
+     * @return Default pod security admission configuration template name
+     * 
+     */
     public Optional<Output<String>> defaultPodSecurityAdmissionConfigurationTemplateName() {
         return Optional.ofNullable(this.defaultPodSecurityAdmissionConfigurationTemplateName);
     }
@@ -268,11 +276,23 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
             return defaultClusterRoleForProjectMembers(Output.of(defaultClusterRoleForProjectMembers));
         }
 
+        /**
+         * @param defaultPodSecurityAdmissionConfigurationTemplateName Default pod security admission configuration template name
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultPodSecurityAdmissionConfigurationTemplateName(@Nullable Output<String> defaultPodSecurityAdmissionConfigurationTemplateName) {
             $.defaultPodSecurityAdmissionConfigurationTemplateName = defaultPodSecurityAdmissionConfigurationTemplateName;
             return this;
         }
 
+        /**
+         * @param defaultPodSecurityAdmissionConfigurationTemplateName Default pod security admission configuration template name
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultPodSecurityAdmissionConfigurationTemplateName(String defaultPodSecurityAdmissionConfigurationTemplateName) {
             return defaultPodSecurityAdmissionConfigurationTemplateName(Output.of(defaultPodSecurityAdmissionConfigurationTemplateName));
         }

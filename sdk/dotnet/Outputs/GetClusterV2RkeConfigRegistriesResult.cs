@@ -13,7 +13,13 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterV2RkeConfigRegistriesResult
     {
+        /// <summary>
+        /// Registry config
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterV2RkeConfigRegistriesConfigResult> Configs;
+        /// <summary>
+        /// Registry mirrors
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterV2RkeConfigRegistriesMirrorResult> Mirrors;
 
         [OutputConstructor]

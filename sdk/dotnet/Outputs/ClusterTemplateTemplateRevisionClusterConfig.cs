@@ -21,6 +21,9 @@ namespace Pulumi.Rancher2.Outputs
         /// Default cluster role for project members (string)
         /// </summary>
         public readonly string? DefaultClusterRoleForProjectMembers;
+        /// <summary>
+        /// Default pod security admission configuration template name
+        /// </summary>
         public readonly string? DefaultPodSecurityAdmissionConfigurationTemplateName;
         /// <summary>
         /// Default pod security policy template ID (string)

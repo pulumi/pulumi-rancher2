@@ -13,6 +13,9 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterAlterRuleSystemServiceRuleResult
     {
+        /// <summary>
+        /// System service rule condition
+        /// </summary>
         public readonly string? Condition;
 
         [OutputConstructor]

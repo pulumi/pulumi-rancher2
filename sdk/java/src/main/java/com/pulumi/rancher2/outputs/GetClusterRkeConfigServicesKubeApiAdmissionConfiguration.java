@@ -14,17 +14,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterRkeConfigServicesKubeApiAdmissionConfiguration {
+    /**
+     * @return Admission configuration ApiVersion
+     * 
+     */
     private @Nullable String apiVersion;
+    /**
+     * @return Admission configuration Kind
+     * 
+     */
     private @Nullable String kind;
+    /**
+     * @return Admission configuration plugins
+     * 
+     */
     private List<GetClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin> plugins;
 
     private GetClusterRkeConfigServicesKubeApiAdmissionConfiguration() {}
+    /**
+     * @return Admission configuration ApiVersion
+     * 
+     */
     public Optional<String> apiVersion() {
         return Optional.ofNullable(this.apiVersion);
     }
+    /**
+     * @return Admission configuration Kind
+     * 
+     */
     public Optional<String> kind() {
         return Optional.ofNullable(this.kind);
     }
+    /**
+     * @return Admission configuration plugins
+     * 
+     */
     public List<GetClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin> plugins() {
         return this.plugins;
     }

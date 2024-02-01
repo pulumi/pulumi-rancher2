@@ -18,50 +18,142 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterEksConfigV2NodeGroup {
+    /**
+     * @return The EKS node group desired size
+     * 
+     */
     private @Nullable Integer desiredSize;
+    /**
+     * @return The EKS node group disk size
+     * 
+     */
     private @Nullable Integer diskSize;
+    /**
+     * @return The EKS node group ssh key
+     * 
+     */
     private @Nullable String ec2SshKey;
+    /**
+     * @return Is EKS cluster using gpu?
+     * 
+     */
     private @Nullable Boolean gpu;
+    /**
+     * @return The EKS node group image ID
+     * 
+     */
     private @Nullable String imageId;
+    /**
+     * @return The EKS node group instance type
+     * 
+     */
     private @Nullable String instanceType;
     /**
      * @return (Computed) Labels for Node Pool object (map)
      * 
      */
     private @Nullable Map<String,Object> labels;
+    /**
+     * @return The EKS node groups launch template
+     * 
+     */
     private @Nullable List<GetClusterEksConfigV2NodeGroupLaunchTemplate> launchTemplates;
+    /**
+     * @return The EKS node group maximum size
+     * 
+     */
     private @Nullable Integer maxSize;
+    /**
+     * @return The EKS node group minimum size
+     * 
+     */
     private @Nullable Integer minSize;
     /**
      * @return The name of the Cluster (string)
      * 
      */
     private String name;
+    /**
+     * @return The EKS node group node role ARN
+     * 
+     */
     private @Nullable String nodeRole;
+    /**
+     * @return Enable EKS node group request spot instances
+     * 
+     */
     private @Nullable Boolean requestSpotInstances;
+    /**
+     * @return The EKS node group resource tags
+     * 
+     */
     private @Nullable Map<String,Object> resourceTags;
+    /**
+     * @return The EKS node group spot instance types
+     * 
+     */
     private @Nullable List<String> spotInstanceTypes;
+    /**
+     * @return The EKS node group subnets
+     * 
+     */
     private List<String> subnets;
+    /**
+     * @return The EKS node group tags
+     * 
+     */
     private @Nullable Map<String,Object> tags;
+    /**
+     * @return The EKS node group user data
+     * 
+     */
     private String userData;
+    /**
+     * @return The EKS node group k8s version
+     * 
+     */
     private String version;
 
     private GetClusterEksConfigV2NodeGroup() {}
+    /**
+     * @return The EKS node group desired size
+     * 
+     */
     public Optional<Integer> desiredSize() {
         return Optional.ofNullable(this.desiredSize);
     }
+    /**
+     * @return The EKS node group disk size
+     * 
+     */
     public Optional<Integer> diskSize() {
         return Optional.ofNullable(this.diskSize);
     }
+    /**
+     * @return The EKS node group ssh key
+     * 
+     */
     public Optional<String> ec2SshKey() {
         return Optional.ofNullable(this.ec2SshKey);
     }
+    /**
+     * @return Is EKS cluster using gpu?
+     * 
+     */
     public Optional<Boolean> gpu() {
         return Optional.ofNullable(this.gpu);
     }
+    /**
+     * @return The EKS node group image ID
+     * 
+     */
     public Optional<String> imageId() {
         return Optional.ofNullable(this.imageId);
     }
+    /**
+     * @return The EKS node group instance type
+     * 
+     */
     public Optional<String> instanceType() {
         return Optional.ofNullable(this.instanceType);
     }
@@ -72,12 +164,24 @@ public final class GetClusterEksConfigV2NodeGroup {
     public Map<String,Object> labels() {
         return this.labels == null ? Map.of() : this.labels;
     }
+    /**
+     * @return The EKS node groups launch template
+     * 
+     */
     public List<GetClusterEksConfigV2NodeGroupLaunchTemplate> launchTemplates() {
         return this.launchTemplates == null ? List.of() : this.launchTemplates;
     }
+    /**
+     * @return The EKS node group maximum size
+     * 
+     */
     public Optional<Integer> maxSize() {
         return Optional.ofNullable(this.maxSize);
     }
+    /**
+     * @return The EKS node group minimum size
+     * 
+     */
     public Optional<Integer> minSize() {
         return Optional.ofNullable(this.minSize);
     }
@@ -88,27 +192,59 @@ public final class GetClusterEksConfigV2NodeGroup {
     public String name() {
         return this.name;
     }
+    /**
+     * @return The EKS node group node role ARN
+     * 
+     */
     public Optional<String> nodeRole() {
         return Optional.ofNullable(this.nodeRole);
     }
+    /**
+     * @return Enable EKS node group request spot instances
+     * 
+     */
     public Optional<Boolean> requestSpotInstances() {
         return Optional.ofNullable(this.requestSpotInstances);
     }
+    /**
+     * @return The EKS node group resource tags
+     * 
+     */
     public Map<String,Object> resourceTags() {
         return this.resourceTags == null ? Map.of() : this.resourceTags;
     }
+    /**
+     * @return The EKS node group spot instance types
+     * 
+     */
     public List<String> spotInstanceTypes() {
         return this.spotInstanceTypes == null ? List.of() : this.spotInstanceTypes;
     }
+    /**
+     * @return The EKS node group subnets
+     * 
+     */
     public List<String> subnets() {
         return this.subnets;
     }
+    /**
+     * @return The EKS node group tags
+     * 
+     */
     public Map<String,Object> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
+    /**
+     * @return The EKS node group user data
+     * 
+     */
     public String userData() {
         return this.userData;
     }
+    /**
+     * @return The EKS node group k8s version
+     * 
+     */
     public String version() {
         return this.version;
     }

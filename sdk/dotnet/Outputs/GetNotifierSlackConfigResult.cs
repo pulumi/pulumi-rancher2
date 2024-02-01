@@ -13,8 +13,17 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetNotifierSlackConfigResult
     {
+        /// <summary>
+        /// Slack default channel
+        /// </summary>
         public readonly string DefaultRecipient;
+        /// <summary>
+        /// Slack proxy URL
+        /// </summary>
         public readonly string? ProxyUrl;
+        /// <summary>
+        /// Slack URL
+        /// </summary>
         public readonly string Url;
 
         [OutputConstructor]

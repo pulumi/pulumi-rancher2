@@ -61,6 +61,10 @@ public final class ClusterV2RkeConfig {
      * 
      */
     private @Nullable String machineGlobalConfig;
+    /**
+     * @return Default values for machine pool configurations if unset
+     * 
+     */
     private @Nullable List<ClusterV2RkeConfigMachinePoolDefault> machinePoolDefaults;
     /**
      * @return Cluster V2 machine pools (list)
@@ -142,6 +146,10 @@ public final class ClusterV2RkeConfig {
     public Optional<String> machineGlobalConfig() {
         return Optional.ofNullable(this.machineGlobalConfig);
     }
+    /**
+     * @return Default values for machine pool configurations if unset
+     * 
+     */
     public List<ClusterV2RkeConfigMachinePoolDefault> machinePoolDefaults() {
         return this.machinePoolDefaults == null ? List.of() : this.machinePoolDefaults;
     }

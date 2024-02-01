@@ -16,16 +16,32 @@ public final class ClusterAlterRuleEventRuleArgs extends com.pulumi.resources.Re
 
     public static final ClusterAlterRuleEventRuleArgs Empty = new ClusterAlterRuleEventRuleArgs();
 
+    /**
+     * Event type
+     * 
+     */
     @Import(name="eventType")
     private @Nullable Output<String> eventType;
 
+    /**
+     * @return Event type
+     * 
+     */
     public Optional<Output<String>> eventType() {
         return Optional.ofNullable(this.eventType);
     }
 
+    /**
+     * Resource kind
+     * 
+     */
     @Import(name="resourceKind", required=true)
     private Output<String> resourceKind;
 
+    /**
+     * @return Resource kind
+     * 
+     */
     public Output<String> resourceKind() {
         return this.resourceKind;
     }
@@ -55,20 +71,44 @@ public final class ClusterAlterRuleEventRuleArgs extends com.pulumi.resources.Re
             $ = new ClusterAlterRuleEventRuleArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param eventType Event type
+         * 
+         * @return builder
+         * 
+         */
         public Builder eventType(@Nullable Output<String> eventType) {
             $.eventType = eventType;
             return this;
         }
 
+        /**
+         * @param eventType Event type
+         * 
+         * @return builder
+         * 
+         */
         public Builder eventType(String eventType) {
             return eventType(Output.of(eventType));
         }
 
+        /**
+         * @param resourceKind Resource kind
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceKind(Output<String> resourceKind) {
             $.resourceKind = resourceKind;
             return this;
         }
 
+        /**
+         * @param resourceKind Resource kind
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceKind(String resourceKind) {
             return resourceKind(Output.of(resourceKind));
         }

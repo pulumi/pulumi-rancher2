@@ -13,13 +13,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterV2RkeConfigRotateCertificates {
+    /**
+     * @return Desired certificate rotation generation.
+     * 
+     */
     private Integer generation;
+    /**
+     * @return Service certificates to rotate with this generation.
+     * 
+     */
     private @Nullable List<String> services;
 
     private GetClusterV2RkeConfigRotateCertificates() {}
+    /**
+     * @return Desired certificate rotation generation.
+     * 
+     */
     public Integer generation() {
         return this.generation;
     }
+    /**
+     * @return Service certificates to rotate with this generation.
+     * 
+     */
     public List<String> services() {
         return this.services == null ? List.of() : this.services;
     }

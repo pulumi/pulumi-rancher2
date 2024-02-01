@@ -12,6 +12,9 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdateArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Rolling update max unavailable
+        /// </summary>
         [Input("maxUnavailable")]
         public Input<int>? MaxUnavailable { get; set; }
 
