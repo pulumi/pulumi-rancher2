@@ -42,8 +42,8 @@ replace (
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk v1.17.2
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.73.0
-	github.com/pulumi/pulumi/sdk/v3 v3.104.2
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.73.1-0.20240208124624-45cdb2507f38
+	github.com/pulumi/pulumi/sdk/v3 v3.105.0
 	github.com/rancher/terraform-provider-rancher2 v1.25.1-0.20231013004807-59ba43ca3a23
 )
 
@@ -172,10 +172,11 @@ require (
 	github.com/hashicorp/hil v0.0.0-20190212132231-97b3a9cdfa93 // indirect
 	github.com/hashicorp/logutils v1.0.0 // indirect
 	github.com/hashicorp/terraform-config-inspect v0.0.0-20191212124732-c6ae6269b9d7 // indirect
-	github.com/hashicorp/terraform-exec v0.13.3 // indirect
-	github.com/hashicorp/terraform-json v0.13.0 // indirect
+	github.com/hashicorp/terraform-exec v0.19.0 // indirect
+	github.com/hashicorp/terraform-json v0.17.1 // indirect
 	github.com/hashicorp/terraform-plugin-go v0.21.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
+	github.com/hashicorp/terraform-plugin-sdk/v2 v2.29.0 // indirect
 	github.com/hashicorp/terraform-plugin-test/v2 v2.2.1 // indirect
 	github.com/hashicorp/terraform-svchost v0.1.1 // indirect
 	github.com/hashicorp/vault/api v1.8.2 // indirect
@@ -240,7 +241,7 @@ require (
 	github.com/pulumi/pulumi-java/pkg v0.9.9 // indirect
 	github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.7 // indirect
 	github.com/pulumi/pulumi-yaml v1.5.0 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.104.2 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.105.0 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rancher/aks-operator v1.1.1-rc2 // indirect
@@ -278,6 +279,7 @@ require (
 	github.com/uber/jaeger-client-go v2.30.0+incompatible // indirect
 	github.com/uber/jaeger-lib v2.4.1+incompatible // indirect
 	github.com/ulikunitz/xz v0.5.11 // indirect
+	github.com/vmihailenco/msgpack v4.0.4+incompatible // indirect
 	github.com/vmihailenco/msgpack/v5 v5.4.1 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
 	github.com/xanzy/ssh-agent v0.3.3 // indirect
@@ -334,3 +336,5 @@ require (
 	sigs.k8s.io/structured-merge-diff/v4 v4.2.3 // indirect
 	sigs.k8s.io/yaml v1.3.0 // indirect
 )
+
+replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240202163305-e2a20ae13ef9
