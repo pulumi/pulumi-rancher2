@@ -515,13 +515,31 @@ class CloudCredential(pulumi.CustomResource):
 
         ## Import
 
-        Cloud Credential can be imported using the Cloud Credential ID and the Driver name. bash
+        Cloud Credential can be imported using the Cloud Credential ID and the Driver name.
+
+         bash
 
         ```sh
-         $ pulumi import rancher2:index/cloudCredential:CloudCredential foo &lt;CLOUD_CREDENTIAL_ID&gt;.&lt;DRIVER&gt;
+        $ pulumi import rancher2:index/cloudCredential:CloudCredential foo &lt;CLOUD_CREDENTIAL_ID&gt;.&lt;DRIVER&gt;
         ```
 
-         The following drivers are supported* amazonec2 * azure * digitalocean * googlekubernetesengine * linode * openstack * s3 * vmwarevsphere
+         The following drivers are supported:
+
+         * amazonec2
+
+         * azure
+
+         * digitalocean
+
+         * googlekubernetesengine
+
+         * linode
+
+         * openstack
+
+         * s3
+
+         * vmwarevsphere
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -580,13 +598,31 @@ class CloudCredential(pulumi.CustomResource):
 
         ## Import
 
-        Cloud Credential can be imported using the Cloud Credential ID and the Driver name. bash
+        Cloud Credential can be imported using the Cloud Credential ID and the Driver name.
+
+         bash
 
         ```sh
-         $ pulumi import rancher2:index/cloudCredential:CloudCredential foo &lt;CLOUD_CREDENTIAL_ID&gt;.&lt;DRIVER&gt;
+        $ pulumi import rancher2:index/cloudCredential:CloudCredential foo &lt;CLOUD_CREDENTIAL_ID&gt;.&lt;DRIVER&gt;
         ```
 
-         The following drivers are supported* amazonec2 * azure * digitalocean * googlekubernetesengine * linode * openstack * s3 * vmwarevsphere
+         The following drivers are supported:
+
+         * amazonec2
+
+         * azure
+
+         * digitalocean
+
+         * googlekubernetesengine
+
+         * linode
+
+         * openstack
+
+         * s3
+
+         * vmwarevsphere
 
         :param str resource_name: The name of the resource.
         :param CloudCredentialArgs args: The arguments to use to populate this resource's properties.
