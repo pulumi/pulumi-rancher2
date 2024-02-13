@@ -31,7 +31,7 @@ import (
 	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 
-	"github.com/pulumi/pulumi-rancher2/provider/v5/pkg/version"
+	"github.com/pulumi/pulumi-rancher2/provider/v6/pkg/version"
 )
 
 // all of the token components used below.
@@ -73,15 +73,16 @@ func Provider() tfbridge.ProviderInfo {
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
-		P:           p,
-		Name:        "rancher2",
-		Description: "A Pulumi package for creating and managing rancher2 resources.",
-		Keywords:    []string{"pulumi", "rancher2"},
-		License:     "Apache-2.0",
-		Homepage:    "https://pulumi.io",
-		Repository:  "https://github.com/pulumi/pulumi-rancher2",
-		GitHubOrg:   "rancher",
-		Version:     version.Version,
+		P:            p,
+		Name:         "rancher2",
+		Description:  "A Pulumi package for creating and managing rancher2 resources.",
+		Keywords:     []string{"pulumi", "rancher2"},
+		License:      "Apache-2.0",
+		Homepage:     "https://pulumi.io",
+		Repository:   "https://github.com/pulumi/pulumi-rancher2",
+		GitHubOrg:    "rancher",
+		Version:      version.Version,
+		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 		Config: map[string]*tfbridge.SchemaInfo{
 			"bootstrap": {
 				Default: &tfbridge.DefaultInfo{
@@ -199,14 +200,12 @@ func Provider() tfbridge.ProviderInfo {
 				"@types/mime": "^2.0.0",
 			},
 		},
-		Python: (func() *tfbridge.PythonInfo {
-			i := &tfbridge.PythonInfo{
-				Requires: map[string]string{
-					"pulumi": ">=3.0.0,<4.0.0",
-				}}
-			i.PyProject.Enabled = true
-			return i
-		})(),
+		Python: &tfbridge.PythonInfo{
+			Requires: map[string]string{
+				"pulumi": ">=3.0.0,<4.0.0",
+			},
+			PyProject: struct{ Enabled bool }{true},
+		},
 
 		Golang: &tfbridge.GolangInfo{
 			ImportBasePath: filepath.Join(
@@ -222,7 +221,7 @@ func Provider() tfbridge.ProviderInfo {
 				"Pulumi": "3.*",
 			},
 			Namespaces: namespaceMap,
-		}, MetadataInfo: tfbridge.NewProviderMetadata(metadata),
+		},
 	}
 
 	prov.RenameDataSource("rancher2_role_template", makeDataSource(mainMod, "getRoleTempalte"),

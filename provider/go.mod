@@ -1,17 +1,31 @@
-module github.com/pulumi/pulumi-rancher2/provider/v5
+module github.com/pulumi/pulumi-rancher2/provider/v6
 
 go 1.21
 
 replace (
-	github.com/crewjam/saml => github.com/crewjam/saml v0.4.1
-	github.com/docker/distribution => github.com/docker/distribution v2.7.1+incompatible
-	github.com/docker/docker => github.com/docker/docker v20.10.6+incompatible
-	github.com/hashicorp/go-getter => github.com/hashicorp/go-getter v1.7.0
+	// tfinstall was removed from terraform-exec in v0.16.0.
+	//
+	// Pinning avoids this error:
+	//
+	//	go: finding module for package github.com/hashicorp/terraform-exec/tfinstall
+	//	go: github.com/pulumi/pulumi-rancher2/provider/v6 imports
+	//	        github.com/rancher/terraform-provider-rancher2/rancher2 imports
+	//	        github.com/hashicorp/terraform-plugin-sdk/helper/resource imports
+	//	        github.com/hashicorp/terraform-plugin-test/v2 imports
+	//	        github.com/hashicorp/terraform-exec/tfinstall: module github.com/hashicorp/terraform-exec@latest found (v0.20.0), but does not contain package github.com/hashicorp/terraform-exec/tfinstall
 	github.com/hashicorp/terraform-exec => github.com/hashicorp/terraform-exec v0.15.0
-	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
-	github.com/rancher/rancher/pkg/apis => github.com/rancher/rancher/pkg/apis v0.0.0-20230512212658-eaa7b90049a4
-	github.com/rancher/rancher/pkg/client => github.com/rancher/rancher/pkg/client v0.0.0-20230512212658-eaa7b90049a4
+	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240202163305-e2a20ae13ef9
+)
+
+// Replace block copied from upstream
+replace (
+	github.com/crewjam/saml => github.com/crewjam/saml v0.4.5
+	github.com/docker/distribution => github.com/docker/distribution v2.8.1+incompatible
+	github.com/docker/docker => github.com/docker/docker v20.10.17+incompatible
+	github.com/rancher/rancher/pkg/apis => github.com/rancher/rancher/pkg/apis v0.0.0-20230901132600-5e1ee2611616
+	github.com/rancher/rancher/pkg/client => github.com/rancher/rancher/pkg/client v0.0.0-20230901132600-5e1ee2611616
 	github.com/spf13/afero => github.com/spf13/afero v1.2.2
+	helm.sh/helm/v3 => github.com/rancher/helm/v3 v3.9.0-rancher1
 	k8s.io/api => k8s.io/api v0.25.4
 	k8s.io/apiextensions-apiserver => k8s.io/apiextensions-apiserver v0.25.4
 	k8s.io/apimachinery => k8s.io/apimachinery v0.25.4
@@ -38,13 +52,14 @@ replace (
 	k8s.io/mount-utils => k8s.io/mount-utils v0.25.4
 	k8s.io/pod-security-admission => k8s.io/pod-security-admission v0.25.4
 	k8s.io/sample-apiserver => k8s.io/sample-apiserver v0.25.4
+	launchpad.net/gocheck => github.com/go-check/check v0.0.0-20200227125254-8fa46927fb4f
 )
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk v1.17.2
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.74.0
 	github.com/pulumi/pulumi/sdk/v3 v3.105.0
-	github.com/rancher/terraform-provider-rancher2 v1.25.1-0.20231013004807-59ba43ca3a23
+	github.com/rancher/terraform-provider-rancher2 v1.25.1-0.20240205172342-160eda274458
 )
 
 require (
@@ -172,7 +187,7 @@ require (
 	github.com/hashicorp/hil v0.0.0-20190212132231-97b3a9cdfa93 // indirect
 	github.com/hashicorp/logutils v1.0.0 // indirect
 	github.com/hashicorp/terraform-config-inspect v0.0.0-20191212124732-c6ae6269b9d7 // indirect
-	github.com/hashicorp/terraform-exec v0.19.0 // indirect
+	github.com/hashicorp/terraform-exec v0.20.0 // indirect
 	github.com/hashicorp/terraform-json v0.17.1 // indirect
 	github.com/hashicorp/terraform-plugin-go v0.21.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
@@ -244,18 +259,18 @@ require (
 	github.com/pulumi/pulumi/pkg/v3 v3.105.0 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
-	github.com/rancher/aks-operator v1.1.1-rc2 // indirect
+	github.com/rancher/aks-operator v1.2.0-rc2 // indirect
 	github.com/rancher/apiserver v0.0.0-20230120214941-e88c32739dc7 // indirect
 	github.com/rancher/channelserver v0.5.1-0.20220405170618-28c9b37deff1 // indirect
-	github.com/rancher/eks-operator v1.2.1 // indirect
-	github.com/rancher/fleet/pkg/apis v0.0.0-20230420151154-ab055fa31e05 // indirect
-	github.com/rancher/gke-operator v1.1.5 // indirect
-	github.com/rancher/lasso v0.0.0-20230428185353-36908edf817b // indirect
+	github.com/rancher/eks-operator v1.2.2-rc3 // indirect
+	github.com/rancher/fleet/pkg/apis v0.0.0-20230810121238-9d0ee7f56848 // indirect
+	github.com/rancher/gke-operator v1.1.6-rc2 // indirect
+	github.com/rancher/lasso v0.0.0-20230629200414-8a54b32e6792 // indirect
 	github.com/rancher/norman v0.0.0-20230426211126-d3552b018687 // indirect
-	github.com/rancher/rancher v0.0.0-20230512212658-eaa7b90049a4 // indirect
+	github.com/rancher/rancher v0.0.0-20230525094739-ff2e09449efc // indirect
 	github.com/rancher/rancher/pkg/apis v0.0.0 // indirect
 	github.com/rancher/rancher/pkg/client v0.0.0 // indirect
-	github.com/rancher/rke v1.4.6-rc3 // indirect
+	github.com/rancher/rke v1.5.0-rc2 // indirect
 	github.com/rancher/wrangler v1.1.1 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
 	github.com/rogpeppe/go-internal v1.11.0 // indirect
@@ -267,7 +282,7 @@ require (
 	github.com/segmentio/encoding v0.3.5 // indirect
 	github.com/sergi/go-diff v1.3.1 // indirect
 	github.com/shopspring/decimal v1.3.1 // indirect
-	github.com/sirupsen/logrus v1.9.2 // indirect
+	github.com/sirupsen/logrus v1.9.3 // indirect
 	github.com/skeema/knownhosts v1.2.1 // indirect
 	github.com/spf13/afero v1.9.5 // indirect
 	github.com/spf13/cast v1.5.0 // indirect
@@ -325,7 +340,7 @@ require (
 	k8s.io/component-base v0.25.4 // indirect
 	k8s.io/gengo v0.0.0-20220902162205-c0856e24416d // indirect
 	k8s.io/klog/v2 v2.90.1 // indirect
-	k8s.io/kube-openapi v0.0.0-20230308215209-15aac26d736a // indirect
+	k8s.io/kube-openapi v0.0.0-20230501164219-8b0f38b5fd1f // indirect
 	k8s.io/kubernetes v1.25.4 // indirect
 	k8s.io/utils v0.0.0-20230209194617-a36077c30491 // indirect
 	lukechampine.com/frand v1.4.2 // indirect
@@ -336,5 +351,3 @@ require (
 	sigs.k8s.io/structured-merge-diff/v4 v4.2.3 // indirect
 	sigs.k8s.io/yaml v1.3.0 // indirect
 )
-
-replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240202163305-e2a20ae13ef9
