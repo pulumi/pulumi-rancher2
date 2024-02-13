@@ -40,7 +40,7 @@ from .get_certificate import *
 from .get_cloud_credential import *
 from .get_cluster import *
 from .get_cluster_alert_group import *
-from .get_cluster_alter_rule import *
+from .get_cluster_alert_rule import *
 from .get_cluster_driver import *
 from .get_cluster_role_template_binding import *
 from .get_cluster_template import *

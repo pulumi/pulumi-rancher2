@@ -299,10 +299,10 @@ __all__ = [
     'GetClusterAksConfigV2Result',
     'GetClusterAksConfigV2NodePoolResult',
     'GetClusterAlertGroupRecipientResult',
-    'GetClusterAlterRuleEventRuleResult',
-    'GetClusterAlterRuleMetricRuleResult',
-    'GetClusterAlterRuleNodeRuleResult',
-    'GetClusterAlterRuleSystemServiceRuleResult',
+    'GetClusterAlertRuleEventRuleResult',
+    'GetClusterAlertRuleMetricRuleResult',
+    'GetClusterAlertRuleNodeRuleResult',
+    'GetClusterAlertRuleSystemServiceRuleResult',
     'GetClusterClusterAuthEndpointResult',
     'GetClusterClusterMonitoringInputResult',
     'GetClusterClusterRegistrationTokenResult',
@@ -32109,7 +32109,7 @@ class GetClusterAlertGroupRecipientResult(dict):
 
 
 @pulumi.output_type
-class GetClusterAlterRuleEventRuleResult(dict):
+class GetClusterAlertRuleEventRuleResult(dict):
     def __init__(__self__, *,
                  resource_kind: str,
                  event_type: Optional[str] = None):
@@ -32139,7 +32139,7 @@ class GetClusterAlterRuleEventRuleResult(dict):
 
 
 @pulumi.output_type
-class GetClusterAlterRuleMetricRuleResult(dict):
+class GetClusterAlertRuleMetricRuleResult(dict):
     def __init__(__self__, *,
                  duration: str,
                  expression: str,
@@ -32203,7 +32203,7 @@ class GetClusterAlterRuleMetricRuleResult(dict):
 
 
 @pulumi.output_type
-class GetClusterAlterRuleNodeRuleResult(dict):
+class GetClusterAlertRuleNodeRuleResult(dict):
     def __init__(__self__, *,
                  condition: Optional[str] = None,
                  cpu_threshold: Optional[int] = None,
@@ -32270,7 +32270,7 @@ class GetClusterAlterRuleNodeRuleResult(dict):
 
 
 @pulumi.output_type
-class GetClusterAlterRuleSystemServiceRuleResult(dict):
+class GetClusterAlertRuleSystemServiceRuleResult(dict):
     def __init__(__self__, *,
                  condition: Optional[str] = None):
         """

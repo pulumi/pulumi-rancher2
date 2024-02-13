@@ -50,7 +50,7 @@
         "getCloudCredential.ts",
         "getCluster.ts",
         "getClusterAlertGroup.ts",
-        "getClusterAlterRule.ts",
+        "getClusterAlertRule.ts",
         "getClusterDriver.ts",
         "getClusterRoleTemplateBinding.ts",
         "getClusterTemplate.ts",

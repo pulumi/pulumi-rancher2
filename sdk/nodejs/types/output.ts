@@ -5760,7 +5760,7 @@ export interface GetClusterAlertGroupRecipient {
     recipient: string;
 }
 
-export interface GetClusterAlterRuleEventRule {
+export interface GetClusterAlertRuleEventRule {
     /**
      * Event type
      */
@@ -5771,7 +5771,7 @@ export interface GetClusterAlterRuleEventRule {
     resourceKind: string;
 }
 
-export interface GetClusterAlterRuleMetricRule {
+export interface GetClusterAlertRuleMetricRule {
     /**
      * Metric rule comparison
      */
@@ -5794,7 +5794,7 @@ export interface GetClusterAlterRuleMetricRule {
     thresholdValue: number;
 }
 
-export interface GetClusterAlterRuleNodeRule {
+export interface GetClusterAlertRuleNodeRule {
     /**
      * Node rule condition
      */
@@ -5817,7 +5817,7 @@ export interface GetClusterAlterRuleNodeRule {
     selector?: {[key: string]: any};
 }
 
-export interface GetClusterAlterRuleSystemServiceRule {
+export interface GetClusterAlertRuleSystemServiceRule {
     /**
      * System service rule condition
      */

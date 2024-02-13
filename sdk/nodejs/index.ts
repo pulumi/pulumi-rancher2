@@ -180,10 +180,10 @@ export const getClusterAlertGroup: typeof import("./getClusterAlertGroup").getCl
 export const getClusterAlertGroupOutput: typeof import("./getClusterAlertGroup").getClusterAlertGroupOutput = null as any;
 utilities.lazyLoad(exports, ["getClusterAlertGroup","getClusterAlertGroupOutput"], () => require("./getClusterAlertGroup"));
 
-export { GetClusterAlterRuleArgs, GetClusterAlterRuleResult, GetClusterAlterRuleOutputArgs } from "./getClusterAlterRule";
-export const getClusterAlterRule: typeof import("./getClusterAlterRule").getClusterAlterRule = null as any;
-export const getClusterAlterRuleOutput: typeof import("./getClusterAlterRule").getClusterAlterRuleOutput = null as any;
-utilities.lazyLoad(exports, ["getClusterAlterRule","getClusterAlterRuleOutput"], () => require("./getClusterAlterRule"));
+export { GetClusterAlertRuleArgs, GetClusterAlertRuleResult, GetClusterAlertRuleOutputArgs } from "./getClusterAlertRule";
+export const getClusterAlertRule: typeof import("./getClusterAlertRule").getClusterAlertRule = null as any;
+export const getClusterAlertRuleOutput: typeof import("./getClusterAlertRule").getClusterAlertRuleOutput = null as any;
+utilities.lazyLoad(exports, ["getClusterAlertRule","getClusterAlertRuleOutput"], () => require("./getClusterAlertRule"));
 
 export { GetClusterDriverArgs, GetClusterDriverResult, GetClusterDriverOutputArgs } from "./getClusterDriver";
 export const getClusterDriver: typeof import("./getClusterDriver").getClusterDriver = null as any;

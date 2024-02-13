@@ -20,8 +20,8 @@ import com.pulumi.rancher2.inputs.GetCloudCredentialArgs;
 import com.pulumi.rancher2.inputs.GetCloudCredentialPlainArgs;
 import com.pulumi.rancher2.inputs.GetClusterAlertGroupArgs;
 import com.pulumi.rancher2.inputs.GetClusterAlertGroupPlainArgs;
-import com.pulumi.rancher2.inputs.GetClusterAlterRuleArgs;
-import com.pulumi.rancher2.inputs.GetClusterAlterRulePlainArgs;
+import com.pulumi.rancher2.inputs.GetClusterAlertRuleArgs;
+import com.pulumi.rancher2.inputs.GetClusterAlertRulePlainArgs;
 import com.pulumi.rancher2.inputs.GetClusterArgs;
 import com.pulumi.rancher2.inputs.GetClusterDriverArgs;
 import com.pulumi.rancher2.inputs.GetClusterDriverPlainArgs;
@@ -86,7 +86,7 @@ import com.pulumi.rancher2.outputs.GetCatalogV2Result;
 import com.pulumi.rancher2.outputs.GetCertificateResult;
 import com.pulumi.rancher2.outputs.GetCloudCredentialResult;
 import com.pulumi.rancher2.outputs.GetClusterAlertGroupResult;
-import com.pulumi.rancher2.outputs.GetClusterAlterRuleResult;
+import com.pulumi.rancher2.outputs.GetClusterAlertRuleResult;
 import com.pulumi.rancher2.outputs.GetClusterDriverResult;
 import com.pulumi.rancher2.outputs.GetClusterResult;
 import com.pulumi.rancher2.outputs.GetClusterRoleTemplateBindingResult;
@@ -1198,7 +1198,7 @@ public final class Rancher2Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
-     * import com.pulumi.rancher2.inputs.GetClusterAlterRuleArgs;
+     * import com.pulumi.rancher2.inputs.GetClusterAlertRuleArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1212,7 +1212,7 @@ public final class Rancher2Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = Rancher2Functions.getClusterAlterRule(GetClusterAlterRuleArgs.builder()
+     *         final var foo = Rancher2Functions.getClusterAlertRule(GetClusterAlertRuleArgs.builder()
      *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
      *             .name(&#34;&lt;cluster_alert_rule_name&gt;&#34;)
      *             .build());
@@ -1222,8 +1222,8 @@ public final class Rancher2Functions {
      * ```
      * 
      */
-    public static Output<GetClusterAlterRuleResult> getClusterAlterRule(GetClusterAlterRuleArgs args) {
-        return getClusterAlterRule(args, InvokeOptions.Empty);
+    public static Output<GetClusterAlertRuleResult> getClusterAlertRule(GetClusterAlertRuleArgs args) {
+        return getClusterAlertRule(args, InvokeOptions.Empty);
     }
     /**
      * Use this data source to retrieve information about a Rancher v2 cluster alert rule.
@@ -1236,7 +1236,7 @@ public final class Rancher2Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
-     * import com.pulumi.rancher2.inputs.GetClusterAlterRuleArgs;
+     * import com.pulumi.rancher2.inputs.GetClusterAlertRuleArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1250,7 +1250,7 @@ public final class Rancher2Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = Rancher2Functions.getClusterAlterRule(GetClusterAlterRuleArgs.builder()
+     *         final var foo = Rancher2Functions.getClusterAlertRule(GetClusterAlertRuleArgs.builder()
      *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
      *             .name(&#34;&lt;cluster_alert_rule_name&gt;&#34;)
      *             .build());
@@ -1260,8 +1260,8 @@ public final class Rancher2Functions {
      * ```
      * 
      */
-    public static CompletableFuture<GetClusterAlterRuleResult> getClusterAlterRulePlain(GetClusterAlterRulePlainArgs args) {
-        return getClusterAlterRulePlain(args, InvokeOptions.Empty);
+    public static CompletableFuture<GetClusterAlertRuleResult> getClusterAlertRulePlain(GetClusterAlertRulePlainArgs args) {
+        return getClusterAlertRulePlain(args, InvokeOptions.Empty);
     }
     /**
      * Use this data source to retrieve information about a Rancher v2 cluster alert rule.
@@ -1274,7 +1274,7 @@ public final class Rancher2Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
-     * import com.pulumi.rancher2.inputs.GetClusterAlterRuleArgs;
+     * import com.pulumi.rancher2.inputs.GetClusterAlertRuleArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1288,7 +1288,7 @@ public final class Rancher2Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = Rancher2Functions.getClusterAlterRule(GetClusterAlterRuleArgs.builder()
+     *         final var foo = Rancher2Functions.getClusterAlertRule(GetClusterAlertRuleArgs.builder()
      *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
      *             .name(&#34;&lt;cluster_alert_rule_name&gt;&#34;)
      *             .build());
@@ -1298,8 +1298,8 @@ public final class Rancher2Functions {
      * ```
      * 
      */
-    public static Output<GetClusterAlterRuleResult> getClusterAlterRule(GetClusterAlterRuleArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("rancher2:index/getClusterAlterRule:getClusterAlterRule", TypeShape.of(GetClusterAlterRuleResult.class), args, Utilities.withVersion(options));
+    public static Output<GetClusterAlertRuleResult> getClusterAlertRule(GetClusterAlertRuleArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("rancher2:index/getClusterAlertRule:getClusterAlertRule", TypeShape.of(GetClusterAlertRuleResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to retrieve information about a Rancher v2 cluster alert rule.
@@ -1312,7 +1312,7 @@ public final class Rancher2Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
-     * import com.pulumi.rancher2.inputs.GetClusterAlterRuleArgs;
+     * import com.pulumi.rancher2.inputs.GetClusterAlertRuleArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1326,7 +1326,7 @@ public final class Rancher2Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = Rancher2Functions.getClusterAlterRule(GetClusterAlterRuleArgs.builder()
+     *         final var foo = Rancher2Functions.getClusterAlertRule(GetClusterAlertRuleArgs.builder()
      *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
      *             .name(&#34;&lt;cluster_alert_rule_name&gt;&#34;)
      *             .build());
@@ -1336,8 +1336,8 @@ public final class Rancher2Functions {
      * ```
      * 
      */
-    public static CompletableFuture<GetClusterAlterRuleResult> getClusterAlterRulePlain(GetClusterAlterRulePlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("rancher2:index/getClusterAlterRule:getClusterAlterRule", TypeShape.of(GetClusterAlterRuleResult.class), args, Utilities.withVersion(options));
+    public static CompletableFuture<GetClusterAlertRuleResult> getClusterAlertRulePlain(GetClusterAlertRulePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("rancher2:index/getClusterAlertRule:getClusterAlertRule", TypeShape.of(GetClusterAlertRuleResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to retrieve information about a Rancher v2 Cluster Driver resource.
