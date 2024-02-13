@@ -17,14 +17,14 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMa
     public static final ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionArgs Empty = new ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionArgs();
 
     /**
-     * Machine selector label match expressions key (string)
+     * Key is the name of the key of the item to retrieve.
      * 
      */
     @Import(name="key")
     private @Nullable Output<String> key;
 
     /**
-     * @return Machine selector label match expressions key (string)
+     * @return Key is the name of the key of the item to retrieve.
      * 
      */
     public Optional<Output<String>> key() {
@@ -32,14 +32,14 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMa
     }
 
     /**
-     * Machine selector label match expressions operator (string)
+     * Operator represents a key&#39;s relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
      * 
      */
     @Import(name="operator")
     private @Nullable Output<String> operator;
 
     /**
-     * @return Machine selector label match expressions operator (string)
+     * @return Operator represents a key&#39;s relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
      * 
      */
     public Optional<Output<String>> operator() {
@@ -47,14 +47,14 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMa
     }
 
     /**
-     * Machine selector label match expressions values (List string)
+     * Values is a list of string values.
      * 
      */
     @Import(name="values")
     private @Nullable Output<List<String>> values;
 
     /**
-     * @return Machine selector label match expressions values (List string)
+     * @return Values is a list of string values.
      * 
      */
     public Optional<Output<List<String>>> values() {
@@ -88,7 +88,7 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMa
         }
 
         /**
-         * @param key Machine selector label match expressions key (string)
+         * @param key Key is the name of the key of the item to retrieve.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMa
         }
 
         /**
-         * @param key Machine selector label match expressions key (string)
+         * @param key Key is the name of the key of the item to retrieve.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMa
         }
 
         /**
-         * @param operator Machine selector label match expressions operator (string)
+         * @param operator Operator represents a key&#39;s relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMa
         }
 
         /**
-         * @param operator Machine selector label match expressions operator (string)
+         * @param operator Operator represents a key&#39;s relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMa
         }
 
         /**
-         * @param values Machine selector label match expressions values (List string)
+         * @param values Values is a list of string values.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMa
         }
 
         /**
-         * @param values Machine selector label match expressions values (List string)
+         * @param values Values is a list of string values.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMa
         }
 
         /**
-         * @param values Machine selector label match expressions values (List string)
+         * @param values Values is a list of string values.
          * 
          * @return builder
          * 

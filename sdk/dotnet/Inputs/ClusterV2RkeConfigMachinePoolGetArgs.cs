@@ -16,7 +16,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations for the Cluster V2 (map)
+        /// Annotations for the Cluster.
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -25,25 +25,25 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Cluster V2 cloud credential secret name (string)
+        /// Cloud credential secret name is the secret to be used when a cloud credential secret name is not specified at the machine pool level.
         /// </summary>
         [Input("cloudCredentialSecretName")]
         public Input<string>? CloudCredentialSecretName { get; set; }
 
         /// <summary>
-        /// Machine pool control plane role? (bool)
+        /// Machine pool control plane role?
         /// </summary>
         [Input("controlPlaneRole")]
         public Input<bool>? ControlPlaneRole { get; set; }
 
         /// <summary>
-        /// Machine Pool Drain Before Delete? (bool)
+        /// Machine Pool Drain Before Delete?
         /// </summary>
         [Input("drainBeforeDelete")]
         public Input<bool>? DrainBeforeDelete { get; set; }
 
         /// <summary>
-        /// Machine pool etcd role? (bool)
+        /// Machine pool etcd role?
         /// </summary>
         [Input("etcdRole")]
         public Input<bool>? EtcdRole { get; set; }
@@ -58,7 +58,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels for the Cluster V2 (map)
+        /// Labels for the Cluster.
         /// </summary>
         public InputMap<object> Labels
         {
@@ -67,7 +67,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Machine pool node config (list)
+        /// Machine pool node config.
         /// </summary>
         [Input("machineConfig", required: true)]
         public Input<Inputs.ClusterV2RkeConfigMachinePoolMachineConfigGetArgs> MachineConfig { get; set; } = null!;
@@ -76,7 +76,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _machineLabels;
 
         /// <summary>
-        /// Labels for Machine pool nodes (map)
+        /// Labels for Machine pool nodes.
         /// </summary>
         public InputMap<object> MachineLabels
         {
@@ -85,43 +85,43 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Max unhealthy nodes for automated replacement to be allowed (string)
+        /// Max unhealthy nodes for automated replacement to be allowed.
         /// </summary>
         [Input("maxUnhealthy")]
         public Input<string>? MaxUnhealthy { get; set; }
 
         /// <summary>
-        /// The name of the Cluster v2 (string)
+        /// The name of the cluster.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Seconds a machine has to drain before deletion (int)
+        /// Seconds a machine has to drain before deletion.
         /// </summary>
         [Input("nodeDrainTimeout")]
         public Input<int>? NodeDrainTimeout { get; set; }
 
         /// <summary>
-        /// Seconds a new node has to become active before it is replaced (int)
+        /// Seconds a new node has to become active before it is replaced.
         /// </summary>
         [Input("nodeStartupTimeoutSeconds")]
         public Input<int>? NodeStartupTimeoutSeconds { get; set; }
 
         /// <summary>
-        /// Machine pool paused? (bool)
+        /// Machine pool paused?
         /// </summary>
         [Input("paused")]
         public Input<bool>? Paused { get; set; }
 
         /// <summary>
-        /// Machine pool quantity (int)
+        /// Machine pool quantity.
         /// </summary>
         [Input("quantity")]
         public Input<int>? Quantity { get; set; }
 
         /// <summary>
-        /// Machine pool rolling update (List maxitems:1)
+        /// Machine pool rolling update.
         /// </summary>
         [Input("rollingUpdate")]
         public Input<Inputs.ClusterV2RkeConfigMachinePoolRollingUpdateGetArgs>? RollingUpdate { get; set; }
@@ -130,7 +130,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<Inputs.ClusterV2RkeConfigMachinePoolTaintGetArgs>? _taints;
 
         /// <summary>
-        /// Machine pool taints (list)
+        /// Machine pool taints.
         /// </summary>
         public InputList<Inputs.ClusterV2RkeConfigMachinePoolTaintGetArgs> Taints
         {
@@ -139,19 +139,19 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Seconds an unhealthy node has to become active before it is replaced (int)
+        /// Seconds an unhealthy node has to become active before it is replaced.
         /// </summary>
         [Input("unhealthyNodeTimeoutSeconds")]
         public Input<int>? UnhealthyNodeTimeoutSeconds { get; set; }
 
         /// <summary>
-        /// Range of unhealthy nodes for automated replacement to be allowed (string)
+        /// Range of unhealthy nodes for automated replacement to be allowed.
         /// </summary>
         [Input("unhealthyRange")]
         public Input<string>? UnhealthyRange { get; set; }
 
         /// <summary>
-        /// Machine pool worker role? (bool)
+        /// Machine pool worker role?
         /// </summary>
         [Input("workerRole")]
         public Input<bool>? WorkerRole { get; set; }

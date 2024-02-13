@@ -20,14 +20,14 @@ public final class ClusterV2RkeConfigRegistriesMirrorArgs extends com.pulumi.res
     public static final ClusterV2RkeConfigRegistriesMirrorArgs Empty = new ClusterV2RkeConfigRegistriesMirrorArgs();
 
     /**
-     * Registry mirror endpoints (List)
+     * Registry mirror endpoints.
      * 
      */
     @Import(name="endpoints")
     private @Nullable Output<List<String>> endpoints;
 
     /**
-     * @return Registry mirror endpoints (List)
+     * @return Registry mirror endpoints.
      * 
      */
     public Optional<Output<List<String>>> endpoints() {
@@ -35,14 +35,14 @@ public final class ClusterV2RkeConfigRegistriesMirrorArgs extends com.pulumi.res
     }
 
     /**
-     * Registry hostname (string)
+     * Registry hostname.
      * 
      */
     @Import(name="hostname", required=true)
     private Output<String> hostname;
 
     /**
-     * @return Registry hostname (string)
+     * @return Registry hostname.
      * 
      */
     public Output<String> hostname() {
@@ -50,14 +50,14 @@ public final class ClusterV2RkeConfigRegistriesMirrorArgs extends com.pulumi.res
     }
 
     /**
-     * Registry mirror rewrites (map)
+     * Registry mirror rewrites.
      * 
      */
     @Import(name="rewrites")
     private @Nullable Output<Map<String,Object>> rewrites;
 
     /**
-     * @return Registry mirror rewrites (map)
+     * @return Registry mirror rewrites.
      * 
      */
     public Optional<Output<Map<String,Object>>> rewrites() {
@@ -91,7 +91,7 @@ public final class ClusterV2RkeConfigRegistriesMirrorArgs extends com.pulumi.res
         }
 
         /**
-         * @param endpoints Registry mirror endpoints (List)
+         * @param endpoints Registry mirror endpoints.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class ClusterV2RkeConfigRegistriesMirrorArgs extends com.pulumi.res
         }
 
         /**
-         * @param endpoints Registry mirror endpoints (List)
+         * @param endpoints Registry mirror endpoints.
          * 
          * @return builder
          * 
@@ -112,7 +112,7 @@ public final class ClusterV2RkeConfigRegistriesMirrorArgs extends com.pulumi.res
         }
 
         /**
-         * @param endpoints Registry mirror endpoints (List)
+         * @param endpoints Registry mirror endpoints.
          * 
          * @return builder
          * 
@@ -122,7 +122,7 @@ public final class ClusterV2RkeConfigRegistriesMirrorArgs extends com.pulumi.res
         }
 
         /**
-         * @param hostname Registry hostname (string)
+         * @param hostname Registry hostname.
          * 
          * @return builder
          * 
@@ -133,7 +133,7 @@ public final class ClusterV2RkeConfigRegistriesMirrorArgs extends com.pulumi.res
         }
 
         /**
-         * @param hostname Registry hostname (string)
+         * @param hostname Registry hostname.
          * 
          * @return builder
          * 
@@ -143,7 +143,7 @@ public final class ClusterV2RkeConfigRegistriesMirrorArgs extends com.pulumi.res
         }
 
         /**
-         * @param rewrites Registry mirror rewrites (map)
+         * @param rewrites Registry mirror rewrites.
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class ClusterV2RkeConfigRegistriesMirrorArgs extends com.pulumi.res
         }
 
         /**
-         * @param rewrites Registry mirror rewrites (map)
+         * @param rewrites Registry mirror rewrites.
          * 
          * @return builder
          * 

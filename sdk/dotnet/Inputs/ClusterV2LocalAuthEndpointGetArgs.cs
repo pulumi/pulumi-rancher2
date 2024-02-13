@@ -13,19 +13,19 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterV2LocalAuthEndpointGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// CA certs for the authorized cluster endpoint (string)
+        /// CA certs for the authorized cluster endpoint. It is only needed if there is a load balancer in front of the downstream cluster that is using an untrusted certificate. If you have a valid certificate, then nothing needs to be added to the CA Certificates field.
         /// </summary>
         [Input("caCerts")]
         public Input<string>? CaCerts { get; set; }
 
         /// <summary>
-        /// Drain options enabled? Default `true` (bool)
+        /// If `enabled` is set to true, nodes will be drained before upgrade.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// FQDN for the authorized cluster endpoint (string)
+        /// FQDN for the authorized cluster endpoint. If one is entered, it should point to the downstream cluster.
         /// </summary>
         [Input("fqdn")]
         public Input<string>? Fqdn { get; set; }

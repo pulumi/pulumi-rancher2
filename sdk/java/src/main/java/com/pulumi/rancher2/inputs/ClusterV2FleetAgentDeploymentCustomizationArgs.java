@@ -19,14 +19,14 @@ public final class ClusterV2FleetAgentDeploymentCustomizationArgs extends com.pu
     public static final ClusterV2FleetAgentDeploymentCustomizationArgs Empty = new ClusterV2FleetAgentDeploymentCustomizationArgs();
 
     /**
-     * User defined tolerations to append to agent (list)
+     * A list of tolerations to be appended to the default tolerations.
      * 
      */
     @Import(name="appendTolerations")
     private @Nullable Output<List<ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArgs>> appendTolerations;
 
     /**
-     * @return User defined tolerations to append to agent (list)
+     * @return A list of tolerations to be appended to the default tolerations.
      * 
      */
     public Optional<Output<List<ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArgs>>> appendTolerations() {
@@ -34,14 +34,14 @@ public final class ClusterV2FleetAgentDeploymentCustomizationArgs extends com.pu
     }
 
     /**
-     * User defined affinity to override default agent affinity (string)
+     * Override affinity overrides the global default affinity setting.
      * 
      */
     @Import(name="overrideAffinity")
     private @Nullable Output<String> overrideAffinity;
 
     /**
-     * @return User defined affinity to override default agent affinity (string)
+     * @return Override affinity overrides the global default affinity setting.
      * 
      */
     public Optional<Output<String>> overrideAffinity() {
@@ -49,14 +49,14 @@ public final class ClusterV2FleetAgentDeploymentCustomizationArgs extends com.pu
     }
 
     /**
-     * User defined resource requirements to set on the agent (list)
+     * Override resource requirements overrides the default value for requests and/or limits.
      * 
      */
     @Import(name="overrideResourceRequirements")
     private @Nullable Output<List<ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirementArgs>> overrideResourceRequirements;
 
     /**
-     * @return User defined resource requirements to set on the agent (list)
+     * @return Override resource requirements overrides the default value for requests and/or limits.
      * 
      */
     public Optional<Output<List<ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirementArgs>>> overrideResourceRequirements() {
@@ -90,7 +90,7 @@ public final class ClusterV2FleetAgentDeploymentCustomizationArgs extends com.pu
         }
 
         /**
-         * @param appendTolerations User defined tolerations to append to agent (list)
+         * @param appendTolerations A list of tolerations to be appended to the default tolerations.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class ClusterV2FleetAgentDeploymentCustomizationArgs extends com.pu
         }
 
         /**
-         * @param appendTolerations User defined tolerations to append to agent (list)
+         * @param appendTolerations A list of tolerations to be appended to the default tolerations.
          * 
          * @return builder
          * 
@@ -111,7 +111,7 @@ public final class ClusterV2FleetAgentDeploymentCustomizationArgs extends com.pu
         }
 
         /**
-         * @param appendTolerations User defined tolerations to append to agent (list)
+         * @param appendTolerations A list of tolerations to be appended to the default tolerations.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class ClusterV2FleetAgentDeploymentCustomizationArgs extends com.pu
         }
 
         /**
-         * @param overrideAffinity User defined affinity to override default agent affinity (string)
+         * @param overrideAffinity Override affinity overrides the global default affinity setting.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class ClusterV2FleetAgentDeploymentCustomizationArgs extends com.pu
         }
 
         /**
-         * @param overrideAffinity User defined affinity to override default agent affinity (string)
+         * @param overrideAffinity Override affinity overrides the global default affinity setting.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class ClusterV2FleetAgentDeploymentCustomizationArgs extends com.pu
         }
 
         /**
-         * @param overrideResourceRequirements User defined resource requirements to set on the agent (list)
+         * @param overrideResourceRequirements Override resource requirements overrides the default value for requests and/or limits.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class ClusterV2FleetAgentDeploymentCustomizationArgs extends com.pu
         }
 
         /**
-         * @param overrideResourceRequirements User defined resource requirements to set on the agent (list)
+         * @param overrideResourceRequirements Override resource requirements overrides the default value for requests and/or limits.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class ClusterV2FleetAgentDeploymentCustomizationArgs extends com.pu
         }
 
         /**
-         * @param overrideResourceRequirements User defined resource requirements to set on the agent (list)
+         * @param overrideResourceRequirements Override resource requirements overrides the default value for requests and/or limits.
          * 
          * @return builder
          * 

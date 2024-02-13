@@ -219,6 +219,14 @@ __all__ = [
     'ClusterV2RkeConfigMachineSelectorConfig',
     'ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector',
     'ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression',
+    'ClusterV2RkeConfigMachineSelectorFile',
+    'ClusterV2RkeConfigMachineSelectorFileFileSource',
+    'ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmap',
+    'ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapItem',
+    'ClusterV2RkeConfigMachineSelectorFileFileSourceSecret',
+    'ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItem',
+    'ClusterV2RkeConfigMachineSelectorFileMachineLabelSelector',
+    'ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpression',
     'ClusterV2RkeConfigRegistries',
     'ClusterV2RkeConfigRegistriesConfig',
     'ClusterV2RkeConfigRegistriesMirror',
@@ -472,6 +480,14 @@ __all__ = [
     'GetClusterV2RkeConfigMachineSelectorConfigResult',
     'GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorResult',
     'GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionResult',
+    'GetClusterV2RkeConfigMachineSelectorFileResult',
+    'GetClusterV2RkeConfigMachineSelectorFileFileSourceResult',
+    'GetClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapResult',
+    'GetClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapItemResult',
+    'GetClusterV2RkeConfigMachineSelectorFileFileSourceSecretResult',
+    'GetClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemResult',
+    'GetClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorResult',
+    'GetClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpressionResult',
     'GetClusterV2RkeConfigRegistriesResult',
     'GetClusterV2RkeConfigRegistriesConfigResult',
     'GetClusterV2RkeConfigRegistriesMirrorResult',
@@ -3844,7 +3860,7 @@ class ClusterEksConfigV2(dict):
         """
         :param str cloud_credential_id: The EKS cloud_credential id (string)
         :param bool imported: Is GKE cluster imported? Default: `false` (bool)
-        :param str kms_key: The AWS kms key to use (string)
+        :param str kms_key: The AWS kms label ARN to use (string, e.g. arn:aws:kms:<ZONE>:<123456789100>:alias/<NAME>)
         :param str kubernetes_version: The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
         :param Sequence[str] logging_types: The AWS cloudwatch logging types. `audit`, `api`, `scheduler`, `controllerManager` and `authenticator` values are allowed (list)
         :param str name: The name of the Cluster (string)
@@ -3911,7 +3927,7 @@ class ClusterEksConfigV2(dict):
     @pulumi.getter(name="kmsKey")
     def kms_key(self) -> Optional[str]:
         """
-        The AWS kms key to use (string)
+        The AWS kms label ARN to use (string, e.g. arn:aws:kms:<ZONE>:<123456789100>:alias/<NAME>)
         """
         return pulumi.get(self, "kms_key")
 
@@ -9077,7 +9093,9 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "insecureFlag":
+        if key == "gracefulShutdownTimeout":
+            suggest = "graceful_shutdown_timeout"
+        elif key == "insecureFlag":
             suggest = "insecure_flag"
         elif key == "soapRoundtripCount":
             suggest = "soap_roundtrip_count"
@@ -9095,6 +9113,7 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal(dict):
 
     def __init__(__self__, *,
                  datacenters: Optional[str] = None,
+                 graceful_shutdown_timeout: Optional[str] = None,
                  insecure_flag: Optional[bool] = None,
                  password: Optional[str] = None,
                  port: Optional[str] = None,
@@ -9110,6 +9129,8 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal(dict):
         """
         if datacenters is not None:
             pulumi.set(__self__, "datacenters", datacenters)
+        if graceful_shutdown_timeout is not None:
+            pulumi.set(__self__, "graceful_shutdown_timeout", graceful_shutdown_timeout)
         if insecure_flag is not None:
             pulumi.set(__self__, "insecure_flag", insecure_flag)
         if password is not None:
@@ -9128,6 +9149,11 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal(dict):
         (string)
         """
         return pulumi.get(self, "datacenters")
+
+    @property
+    @pulumi.getter(name="gracefulShutdownTimeout")
+    def graceful_shutdown_timeout(self) -> Optional[str]:
+        return pulumi.get(self, "graceful_shutdown_timeout")
 
     @property
     @pulumi.getter(name="insecureFlag")
@@ -15901,7 +15927,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereC
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "insecureFlag":
+        if key == "gracefulShutdownTimeout":
+            suggest = "graceful_shutdown_timeout"
+        elif key == "insecureFlag":
             suggest = "insecure_flag"
         elif key == "soapRoundtripCount":
             suggest = "soap_roundtrip_count"
@@ -15919,6 +15947,7 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereC
 
     def __init__(__self__, *,
                  datacenters: Optional[str] = None,
+                 graceful_shutdown_timeout: Optional[str] = None,
                  insecure_flag: Optional[bool] = None,
                  password: Optional[str] = None,
                  port: Optional[str] = None,
@@ -15926,6 +15955,8 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereC
                  user: Optional[str] = None):
         if datacenters is not None:
             pulumi.set(__self__, "datacenters", datacenters)
+        if graceful_shutdown_timeout is not None:
+            pulumi.set(__self__, "graceful_shutdown_timeout", graceful_shutdown_timeout)
         if insecure_flag is not None:
             pulumi.set(__self__, "insecure_flag", insecure_flag)
         if password is not None:
@@ -15941,6 +15972,11 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereC
     @pulumi.getter
     def datacenters(self) -> Optional[str]:
         return pulumi.get(self, "datacenters")
+
+    @property
+    @pulumi.getter(name="gracefulShutdownTimeout")
+    def graceful_shutdown_timeout(self) -> Optional[str]:
+        return pulumi.get(self, "graceful_shutdown_timeout")
 
     @property
     @pulumi.getter(name="insecureFlag")
@@ -19483,8 +19519,8 @@ class ClusterV2AgentEnvVar(dict):
                  name: str,
                  value: str):
         """
-        :param str name: The name of the Cluster v2 (string)
-        :param str value: The taint value (string)
+        :param str name: The name of the cluster.
+        :param str value: The taint value.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -19493,7 +19529,7 @@ class ClusterV2AgentEnvVar(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the Cluster v2 (string)
+        The name of the cluster.
         """
         return pulumi.get(self, "name")
 
@@ -19501,7 +19537,7 @@ class ClusterV2AgentEnvVar(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        The taint value (string)
+        The taint value.
         """
         return pulumi.get(self, "value")
 
@@ -19534,9 +19570,9 @@ class ClusterV2ClusterAgentDeploymentCustomization(dict):
                  override_affinity: Optional[str] = None,
                  override_resource_requirements: Optional[Sequence['outputs.ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement']] = None):
         """
-        :param Sequence['ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArgs'] append_tolerations: User defined tolerations to append to agent (list)
-        :param str override_affinity: User defined affinity to override default agent affinity (string)
-        :param Sequence['ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs'] override_resource_requirements: User defined resource requirements to set on the agent (list)
+        :param Sequence['ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArgs'] append_tolerations: A list of tolerations to be appended to the default tolerations.
+        :param str override_affinity: Override affinity overrides the global default affinity setting.
+        :param Sequence['ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs'] override_resource_requirements: Override resource requirements overrides the default value for requests and/or limits.
         """
         if append_tolerations is not None:
             pulumi.set(__self__, "append_tolerations", append_tolerations)
@@ -19549,7 +19585,7 @@ class ClusterV2ClusterAgentDeploymentCustomization(dict):
     @pulumi.getter(name="appendTolerations")
     def append_tolerations(self) -> Optional[Sequence['outputs.ClusterV2ClusterAgentDeploymentCustomizationAppendToleration']]:
         """
-        User defined tolerations to append to agent (list)
+        A list of tolerations to be appended to the default tolerations.
         """
         return pulumi.get(self, "append_tolerations")
 
@@ -19557,7 +19593,7 @@ class ClusterV2ClusterAgentDeploymentCustomization(dict):
     @pulumi.getter(name="overrideAffinity")
     def override_affinity(self) -> Optional[str]:
         """
-        User defined affinity to override default agent affinity (string)
+        Override affinity overrides the global default affinity setting.
         """
         return pulumi.get(self, "override_affinity")
 
@@ -19565,7 +19601,7 @@ class ClusterV2ClusterAgentDeploymentCustomization(dict):
     @pulumi.getter(name="overrideResourceRequirements")
     def override_resource_requirements(self) -> Optional[Sequence['outputs.ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement']]:
         """
-        User defined resource requirements to set on the agent (list)
+        Override resource requirements overrides the default value for requests and/or limits.
         """
         return pulumi.get(self, "override_resource_requirements")
 
@@ -19579,11 +19615,11 @@ class ClusterV2ClusterAgentDeploymentCustomizationAppendToleration(dict):
                  seconds: Optional[int] = None,
                  value: Optional[str] = None):
         """
-        :param str key: Machine selector label match expressions key (string)
-        :param str effect: The taint effect. Default: `\\"NoExecute\\"` (string)
-        :param str operator: Machine selector label match expressions operator (string)
-        :param int seconds: The number of seconds a pod will stay bound to a node with a matching taint (int)
-        :param str value: The taint value (string)
+        :param str key: Key is the name of the key of the item to retrieve.
+        :param str effect: The taint effect. Default: `\\"NoExecute\\"`.
+        :param str operator: Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+        :param int seconds: The number of seconds a pod will stay bound to a node with a matching taint.
+        :param str value: The taint value.
         """
         pulumi.set(__self__, "key", key)
         if effect is not None:
@@ -19599,7 +19635,7 @@ class ClusterV2ClusterAgentDeploymentCustomizationAppendToleration(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        Machine selector label match expressions key (string)
+        Key is the name of the key of the item to retrieve.
         """
         return pulumi.get(self, "key")
 
@@ -19607,7 +19643,7 @@ class ClusterV2ClusterAgentDeploymentCustomizationAppendToleration(dict):
     @pulumi.getter
     def effect(self) -> Optional[str]:
         """
-        The taint effect. Default: `\\"NoExecute\\"` (string)
+        The taint effect. Default: `\\"NoExecute\\"`.
         """
         return pulumi.get(self, "effect")
 
@@ -19615,7 +19651,7 @@ class ClusterV2ClusterAgentDeploymentCustomizationAppendToleration(dict):
     @pulumi.getter
     def operator(self) -> Optional[str]:
         """
-        Machine selector label match expressions operator (string)
+        Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
         """
         return pulumi.get(self, "operator")
 
@@ -19623,7 +19659,7 @@ class ClusterV2ClusterAgentDeploymentCustomizationAppendToleration(dict):
     @pulumi.getter
     def seconds(self) -> Optional[int]:
         """
-        The number of seconds a pod will stay bound to a node with a matching taint (int)
+        The number of seconds a pod will stay bound to a node with a matching taint.
         """
         return pulumi.get(self, "seconds")
 
@@ -19631,7 +19667,7 @@ class ClusterV2ClusterAgentDeploymentCustomizationAppendToleration(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The taint value (string)
+        The taint value.
         """
         return pulumi.get(self, "value")
 
@@ -19667,10 +19703,10 @@ class ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement(di
                  memory_limit: Optional[str] = None,
                  memory_request: Optional[str] = None):
         """
-        :param str cpu_limit: The maximum CPU limit for agent (string)
-        :param str cpu_request: The minimum CPU required for agent (string)
-        :param str memory_limit: The maximum memory limit for agent (string)
-        :param str memory_request: The minimum memory required for agent (string)
+        :param str cpu_limit: The maximum CPU limit for agent.
+        :param str cpu_request: The minimum CPU required for agent.
+        :param str memory_limit: The maximum memory limit for agent.
+        :param str memory_request: The minimum memory required for agent.
         """
         if cpu_limit is not None:
             pulumi.set(__self__, "cpu_limit", cpu_limit)
@@ -19685,7 +19721,7 @@ class ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement(di
     @pulumi.getter(name="cpuLimit")
     def cpu_limit(self) -> Optional[str]:
         """
-        The maximum CPU limit for agent (string)
+        The maximum CPU limit for agent.
         """
         return pulumi.get(self, "cpu_limit")
 
@@ -19693,7 +19729,7 @@ class ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement(di
     @pulumi.getter(name="cpuRequest")
     def cpu_request(self) -> Optional[str]:
         """
-        The minimum CPU required for agent (string)
+        The minimum CPU required for agent.
         """
         return pulumi.get(self, "cpu_request")
 
@@ -19701,7 +19737,7 @@ class ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement(di
     @pulumi.getter(name="memoryLimit")
     def memory_limit(self) -> Optional[str]:
         """
-        The maximum memory limit for agent (string)
+        The maximum memory limit for agent.
         """
         return pulumi.get(self, "memory_limit")
 
@@ -19709,7 +19745,7 @@ class ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement(di
     @pulumi.getter(name="memoryRequest")
     def memory_request(self) -> Optional[str]:
         """
-        The minimum memory required for agent (string)
+        The minimum memory required for agent.
         """
         return pulumi.get(self, "memory_request")
 
@@ -19760,19 +19796,19 @@ class ClusterV2ClusterRegistrationToken(dict):
                  token: Optional[str] = None,
                  windows_node_command: Optional[str] = None):
         """
-        :param Mapping[str, Any] annotations: Annotations for the Cluster V2 (map)
-        :param str cluster_id: Cluster ID (string)
-        :param str command: Command to execute in a imported k8s cluster (string)
-        :param str id: (Computed) The ID of the resource (string)
-        :param str insecure_command: Insecure command to execute in a imported k8s cluster (string)
-        :param str insecure_node_command: Insecure node command to execute in a imported k8s cluster (string)
-        :param str insecure_windows_node_command: Insecure windows command to execute in a imported k8s cluster (string)
-        :param Mapping[str, Any] labels: Labels for the Cluster V2 (map)
-        :param str manifest_url: K8s manifest url to execute with `kubectl` to import an existing k8s cluster (string)
-        :param str name: The name of the Cluster v2 (string)
-        :param str node_command: Node command to execute in linux nodes for custom k8s cluster (string)
-        :param str token: Token for cluster registration token object (string)
-        :param str windows_node_command: Node command to execute in windows nodes for custom k8s cluster (string)
+        :param Mapping[str, Any] annotations: Annotations for the Cluster.
+        :param str cluster_id: Cluster ID.
+        :param str command: Command to execute in an imported k8s cluster.
+        :param str id: (Computed, string) The ID of the resource.
+        :param str insecure_command: Insecure command to execute in an imported k8s cluster.
+        :param str insecure_node_command: Insecure node command to execute in an imported k8s cluster.
+        :param str insecure_windows_node_command: Insecure windows command to execute in an imported k8s cluster.
+        :param Mapping[str, Any] labels: Labels for the Cluster.
+        :param str manifest_url: K8s manifest url to execute with `kubectl` to import an existing k8s cluster.
+        :param str name: The name of the cluster.
+        :param str node_command: Node command to execute in Linux nodes for custom k8s cluster.
+        :param str token: Token for cluster registration token object.
+        :param str windows_node_command: Node command to execute in Windows nodes for custom k8s cluster.
         """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
@@ -19805,7 +19841,7 @@ class ClusterV2ClusterRegistrationToken(dict):
     @pulumi.getter
     def annotations(self) -> Optional[Mapping[str, Any]]:
         """
-        Annotations for the Cluster V2 (map)
+        Annotations for the Cluster.
         """
         return pulumi.get(self, "annotations")
 
@@ -19813,7 +19849,7 @@ class ClusterV2ClusterRegistrationToken(dict):
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[str]:
         """
-        Cluster ID (string)
+        Cluster ID.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -19821,7 +19857,7 @@ class ClusterV2ClusterRegistrationToken(dict):
     @pulumi.getter
     def command(self) -> Optional[str]:
         """
-        Command to execute in a imported k8s cluster (string)
+        Command to execute in an imported k8s cluster.
         """
         return pulumi.get(self, "command")
 
@@ -19829,7 +19865,7 @@ class ClusterV2ClusterRegistrationToken(dict):
     @pulumi.getter
     def id(self) -> Optional[str]:
         """
-        (Computed) The ID of the resource (string)
+        (Computed, string) The ID of the resource.
         """
         return pulumi.get(self, "id")
 
@@ -19837,7 +19873,7 @@ class ClusterV2ClusterRegistrationToken(dict):
     @pulumi.getter(name="insecureCommand")
     def insecure_command(self) -> Optional[str]:
         """
-        Insecure command to execute in a imported k8s cluster (string)
+        Insecure command to execute in an imported k8s cluster.
         """
         return pulumi.get(self, "insecure_command")
 
@@ -19845,7 +19881,7 @@ class ClusterV2ClusterRegistrationToken(dict):
     @pulumi.getter(name="insecureNodeCommand")
     def insecure_node_command(self) -> Optional[str]:
         """
-        Insecure node command to execute in a imported k8s cluster (string)
+        Insecure node command to execute in an imported k8s cluster.
         """
         return pulumi.get(self, "insecure_node_command")
 
@@ -19853,7 +19889,7 @@ class ClusterV2ClusterRegistrationToken(dict):
     @pulumi.getter(name="insecureWindowsNodeCommand")
     def insecure_windows_node_command(self) -> Optional[str]:
         """
-        Insecure windows command to execute in a imported k8s cluster (string)
+        Insecure windows command to execute in an imported k8s cluster.
         """
         return pulumi.get(self, "insecure_windows_node_command")
 
@@ -19861,7 +19897,7 @@ class ClusterV2ClusterRegistrationToken(dict):
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, Any]]:
         """
-        Labels for the Cluster V2 (map)
+        Labels for the Cluster.
         """
         return pulumi.get(self, "labels")
 
@@ -19869,7 +19905,7 @@ class ClusterV2ClusterRegistrationToken(dict):
     @pulumi.getter(name="manifestUrl")
     def manifest_url(self) -> Optional[str]:
         """
-        K8s manifest url to execute with `kubectl` to import an existing k8s cluster (string)
+        K8s manifest url to execute with `kubectl` to import an existing k8s cluster.
         """
         return pulumi.get(self, "manifest_url")
 
@@ -19877,7 +19913,7 @@ class ClusterV2ClusterRegistrationToken(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the Cluster v2 (string)
+        The name of the cluster.
         """
         return pulumi.get(self, "name")
 
@@ -19885,7 +19921,7 @@ class ClusterV2ClusterRegistrationToken(dict):
     @pulumi.getter(name="nodeCommand")
     def node_command(self) -> Optional[str]:
         """
-        Node command to execute in linux nodes for custom k8s cluster (string)
+        Node command to execute in Linux nodes for custom k8s cluster.
         """
         return pulumi.get(self, "node_command")
 
@@ -19893,7 +19929,7 @@ class ClusterV2ClusterRegistrationToken(dict):
     @pulumi.getter
     def token(self) -> Optional[str]:
         """
-        Token for cluster registration token object (string)
+        Token for cluster registration token object.
         """
         return pulumi.get(self, "token")
 
@@ -19901,7 +19937,7 @@ class ClusterV2ClusterRegistrationToken(dict):
     @pulumi.getter(name="windowsNodeCommand")
     def windows_node_command(self) -> Optional[str]:
         """
-        Node command to execute in windows nodes for custom k8s cluster (string)
+        Node command to execute in Windows nodes for custom k8s cluster.
         """
         return pulumi.get(self, "windows_node_command")
 
@@ -19934,9 +19970,9 @@ class ClusterV2FleetAgentDeploymentCustomization(dict):
                  override_affinity: Optional[str] = None,
                  override_resource_requirements: Optional[Sequence['outputs.ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement']] = None):
         """
-        :param Sequence['ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArgs'] append_tolerations: User defined tolerations to append to agent (list)
-        :param str override_affinity: User defined affinity to override default agent affinity (string)
-        :param Sequence['ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirementArgs'] override_resource_requirements: User defined resource requirements to set on the agent (list)
+        :param Sequence['ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArgs'] append_tolerations: A list of tolerations to be appended to the default tolerations.
+        :param str override_affinity: Override affinity overrides the global default affinity setting.
+        :param Sequence['ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirementArgs'] override_resource_requirements: Override resource requirements overrides the default value for requests and/or limits.
         """
         if append_tolerations is not None:
             pulumi.set(__self__, "append_tolerations", append_tolerations)
@@ -19949,7 +19985,7 @@ class ClusterV2FleetAgentDeploymentCustomization(dict):
     @pulumi.getter(name="appendTolerations")
     def append_tolerations(self) -> Optional[Sequence['outputs.ClusterV2FleetAgentDeploymentCustomizationAppendToleration']]:
         """
-        User defined tolerations to append to agent (list)
+        A list of tolerations to be appended to the default tolerations.
         """
         return pulumi.get(self, "append_tolerations")
 
@@ -19957,7 +19993,7 @@ class ClusterV2FleetAgentDeploymentCustomization(dict):
     @pulumi.getter(name="overrideAffinity")
     def override_affinity(self) -> Optional[str]:
         """
-        User defined affinity to override default agent affinity (string)
+        Override affinity overrides the global default affinity setting.
         """
         return pulumi.get(self, "override_affinity")
 
@@ -19965,7 +20001,7 @@ class ClusterV2FleetAgentDeploymentCustomization(dict):
     @pulumi.getter(name="overrideResourceRequirements")
     def override_resource_requirements(self) -> Optional[Sequence['outputs.ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement']]:
         """
-        User defined resource requirements to set on the agent (list)
+        Override resource requirements overrides the default value for requests and/or limits.
         """
         return pulumi.get(self, "override_resource_requirements")
 
@@ -19979,11 +20015,11 @@ class ClusterV2FleetAgentDeploymentCustomizationAppendToleration(dict):
                  seconds: Optional[int] = None,
                  value: Optional[str] = None):
         """
-        :param str key: Machine selector label match expressions key (string)
-        :param str effect: The taint effect. Default: `\\"NoExecute\\"` (string)
-        :param str operator: Machine selector label match expressions operator (string)
-        :param int seconds: The number of seconds a pod will stay bound to a node with a matching taint (int)
-        :param str value: The taint value (string)
+        :param str key: Key is the name of the key of the item to retrieve.
+        :param str effect: The taint effect. Default: `\\"NoExecute\\"`.
+        :param str operator: Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+        :param int seconds: The number of seconds a pod will stay bound to a node with a matching taint.
+        :param str value: The taint value.
         """
         pulumi.set(__self__, "key", key)
         if effect is not None:
@@ -19999,7 +20035,7 @@ class ClusterV2FleetAgentDeploymentCustomizationAppendToleration(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        Machine selector label match expressions key (string)
+        Key is the name of the key of the item to retrieve.
         """
         return pulumi.get(self, "key")
 
@@ -20007,7 +20043,7 @@ class ClusterV2FleetAgentDeploymentCustomizationAppendToleration(dict):
     @pulumi.getter
     def effect(self) -> Optional[str]:
         """
-        The taint effect. Default: `\\"NoExecute\\"` (string)
+        The taint effect. Default: `\\"NoExecute\\"`.
         """
         return pulumi.get(self, "effect")
 
@@ -20015,7 +20051,7 @@ class ClusterV2FleetAgentDeploymentCustomizationAppendToleration(dict):
     @pulumi.getter
     def operator(self) -> Optional[str]:
         """
-        Machine selector label match expressions operator (string)
+        Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
         """
         return pulumi.get(self, "operator")
 
@@ -20023,7 +20059,7 @@ class ClusterV2FleetAgentDeploymentCustomizationAppendToleration(dict):
     @pulumi.getter
     def seconds(self) -> Optional[int]:
         """
-        The number of seconds a pod will stay bound to a node with a matching taint (int)
+        The number of seconds a pod will stay bound to a node with a matching taint.
         """
         return pulumi.get(self, "seconds")
 
@@ -20031,7 +20067,7 @@ class ClusterV2FleetAgentDeploymentCustomizationAppendToleration(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The taint value (string)
+        The taint value.
         """
         return pulumi.get(self, "value")
 
@@ -20067,10 +20103,10 @@ class ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement(dict
                  memory_limit: Optional[str] = None,
                  memory_request: Optional[str] = None):
         """
-        :param str cpu_limit: The maximum CPU limit for agent (string)
-        :param str cpu_request: The minimum CPU required for agent (string)
-        :param str memory_limit: The maximum memory limit for agent (string)
-        :param str memory_request: The minimum memory required for agent (string)
+        :param str cpu_limit: The maximum CPU limit for agent.
+        :param str cpu_request: The minimum CPU required for agent.
+        :param str memory_limit: The maximum memory limit for agent.
+        :param str memory_request: The minimum memory required for agent.
         """
         if cpu_limit is not None:
             pulumi.set(__self__, "cpu_limit", cpu_limit)
@@ -20085,7 +20121,7 @@ class ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement(dict
     @pulumi.getter(name="cpuLimit")
     def cpu_limit(self) -> Optional[str]:
         """
-        The maximum CPU limit for agent (string)
+        The maximum CPU limit for agent.
         """
         return pulumi.get(self, "cpu_limit")
 
@@ -20093,7 +20129,7 @@ class ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement(dict
     @pulumi.getter(name="cpuRequest")
     def cpu_request(self) -> Optional[str]:
         """
-        The minimum CPU required for agent (string)
+        The minimum CPU required for agent.
         """
         return pulumi.get(self, "cpu_request")
 
@@ -20101,7 +20137,7 @@ class ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement(dict
     @pulumi.getter(name="memoryLimit")
     def memory_limit(self) -> Optional[str]:
         """
-        The maximum memory limit for agent (string)
+        The maximum memory limit for agent.
         """
         return pulumi.get(self, "memory_limit")
 
@@ -20109,7 +20145,7 @@ class ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement(dict
     @pulumi.getter(name="memoryRequest")
     def memory_request(self) -> Optional[str]:
         """
-        The minimum memory required for agent (string)
+        The minimum memory required for agent.
         """
         return pulumi.get(self, "memory_request")
 
@@ -20138,9 +20174,9 @@ class ClusterV2LocalAuthEndpoint(dict):
                  enabled: Optional[bool] = None,
                  fqdn: Optional[str] = None):
         """
-        :param str ca_certs: CA certs for the authorized cluster endpoint (string)
-        :param bool enabled: Drain options enabled? Default `true` (bool)
-        :param str fqdn: FQDN for the authorized cluster endpoint (string)
+        :param str ca_certs: CA certs for the authorized cluster endpoint. It is only needed if there is a load balancer in front of the downstream cluster that is using an untrusted certificate. If you have a valid certificate, then nothing needs to be added to the CA Certificates field.
+        :param bool enabled: If `enabled` is set to true, nodes will be drained before upgrade.
+        :param str fqdn: FQDN for the authorized cluster endpoint. If one is entered, it should point to the downstream cluster.
         """
         if ca_certs is not None:
             pulumi.set(__self__, "ca_certs", ca_certs)
@@ -20153,7 +20189,7 @@ class ClusterV2LocalAuthEndpoint(dict):
     @pulumi.getter(name="caCerts")
     def ca_certs(self) -> Optional[str]:
         """
-        CA certs for the authorized cluster endpoint (string)
+        CA certs for the authorized cluster endpoint. It is only needed if there is a load balancer in front of the downstream cluster that is using an untrusted certificate. If you have a valid certificate, then nothing needs to be added to the CA Certificates field.
         """
         return pulumi.get(self, "ca_certs")
 
@@ -20161,7 +20197,7 @@ class ClusterV2LocalAuthEndpoint(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        Drain options enabled? Default `true` (bool)
+        If `enabled` is set to true, nodes will be drained before upgrade.
         """
         return pulumi.get(self, "enabled")
 
@@ -20169,7 +20205,7 @@ class ClusterV2LocalAuthEndpoint(dict):
     @pulumi.getter
     def fqdn(self) -> Optional[str]:
         """
-        FQDN for the authorized cluster endpoint (string)
+        FQDN for the authorized cluster endpoint. If one is entered, it should point to the downstream cluster.
         """
         return pulumi.get(self, "fqdn")
 
@@ -20197,6 +20233,8 @@ class ClusterV2RkeConfig(dict):
             suggest = "machine_pools"
         elif key == "machineSelectorConfigs":
             suggest = "machine_selector_configs"
+        elif key == "machineSelectorFiles":
+            suggest = "machine_selector_files"
         elif key == "rotateCertificates":
             suggest = "rotate_certificates"
         elif key == "upgradeStrategy":
@@ -20224,23 +20262,25 @@ class ClusterV2RkeConfig(dict):
                  machine_pool_defaults: Optional[Sequence['outputs.ClusterV2RkeConfigMachinePoolDefault']] = None,
                  machine_pools: Optional[Sequence['outputs.ClusterV2RkeConfigMachinePool']] = None,
                  machine_selector_configs: Optional[Sequence['outputs.ClusterV2RkeConfigMachineSelectorConfig']] = None,
+                 machine_selector_files: Optional[Sequence['outputs.ClusterV2RkeConfigMachineSelectorFile']] = None,
                  registries: Optional['outputs.ClusterV2RkeConfigRegistries'] = None,
                  rotate_certificates: Optional['outputs.ClusterV2RkeConfigRotateCertificates'] = None,
                  upgrade_strategy: Optional['outputs.ClusterV2RkeConfigUpgradeStrategy'] = None):
         """
-        :param str additional_manifest: Cluster V2 additional manifest (string)
-        :param str chart_values: Cluster V2 chart values. Must be in YAML format (string)
-        :param 'ClusterV2RkeConfigEtcdArgs' etcd: Cluster V2 etcd (list maxitems:1)
-        :param 'ClusterV2RkeConfigEtcdSnapshotCreateArgs' etcd_snapshot_create: Cluster V2 etcd snapshot create (list maxitems:1)
-        :param 'ClusterV2RkeConfigEtcdSnapshotRestoreArgs' etcd_snapshot_restore: Cluster V2 etcd snapshot restore (list maxitems:1)
-        :param 'ClusterV2RkeConfigLocalAuthEndpointArgs' local_auth_endpoint: Cluster V2 local auth endpoint (list maxitems:1)
-        :param str machine_global_config: Cluster V2 machine global config. Must be in YAML format (string)
+        :param str additional_manifest: The value of the additional manifest is delivered to the path `/var/lib/rancher/rke2/server/manifests/rancher/addons.yaml` or `/var/lib/rancher/k3s/server/manifests/rancher/addons.yaml` on the control plane nodes.
+        :param str chart_values: The value for the system charts installed by the distribution. For more information about how RKE2 or K3s manage packaged components, please refer to [RKE2 documentation](https://docs.rke2.io/helm) or [K3s documentation](https://docs.k3s.io/installation/packaged-components).
+        :param 'ClusterV2RkeConfigEtcdArgs' etcd: Etcd configures the behavior of the automatic etcd snapshot feature.
+        :param 'ClusterV2RkeConfigEtcdSnapshotCreateArgs' etcd_snapshot_create: Cluster V2 etcd snapshot create.
+        :param 'ClusterV2RkeConfigEtcdSnapshotRestoreArgs' etcd_snapshot_restore: Cluster V2 etcd snapshot restore.
+        :param 'ClusterV2RkeConfigLocalAuthEndpointArgs' local_auth_endpoint: Local auth endpoint configures the Authorized Cluster Endpoint (ACE) which can be used to directly access the Kubernetes API server, without requiring communication through Rancher. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters).
+        :param str machine_global_config: Machine global config specifies the distribution-specified server configuration applied to all nodes. For the full list of server configurations, please refer to [RKE2 server configuration](https://docs.rke2.io/reference/server_config) or [K3s server configuration](https://docs.k3s.io/cli/server).
         :param Sequence['ClusterV2RkeConfigMachinePoolDefaultArgs'] machine_pool_defaults: Default values for machine pool configurations if unset
-        :param Sequence['ClusterV2RkeConfigMachinePoolArgs'] machine_pools: Cluster V2 machine pools (list)
-        :param Sequence['ClusterV2RkeConfigMachineSelectorConfigArgs'] machine_selector_configs: Cluster V2 machine selector config (list)
-        :param 'ClusterV2RkeConfigRegistriesArgs' registries: Cluster V2 docker registries (list maxitems:1)
-        :param 'ClusterV2RkeConfigRotateCertificatesArgs' rotate_certificates: Cluster V2 certificate rotation (list maxitems:1)
-        :param 'ClusterV2RkeConfigUpgradeStrategyArgs' upgrade_strategy: Cluster V2 upgrade strategy (list maxitems:1)
+        :param Sequence['ClusterV2RkeConfigMachinePoolArgs'] machine_pools: Cluster V2 machine pools.
+        :param Sequence['ClusterV2RkeConfigMachineSelectorConfigArgs'] machine_selector_configs: Machine selector config is the same as machine_global_config except that a label selector can be specified with the configuration. The configuration will only be applied to nodes that match the provided label selector. The configuration from machine_selector_config takes precedence over the one from machine_global_config. This argument is available in Rancher v2.7.2 and later.
+        :param Sequence['ClusterV2RkeConfigMachineSelectorFileArgs'] machine_selector_files: Machine selector files provide a means to deliver files to nodes so that the files can be in place before initiating RKE2/K3s server or agent processes. Please refer to Rancher documentation for [RKE2 Cluster Configuration Reference](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration#machineselectorfiles) and [K3s Cluster Configuration Reference](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/k3s-cluster-configuration#machineselectorfiles). This argument is available in Rancher v2.7.2 and later.
+        :param 'ClusterV2RkeConfigRegistriesArgs' registries: Docker registries from which the cluster pulls images.
+        :param 'ClusterV2RkeConfigRotateCertificatesArgs' rotate_certificates: Cluster V2 certificate rotation.
+        :param 'ClusterV2RkeConfigUpgradeStrategyArgs' upgrade_strategy: Cluster upgrade strategy.
         """
         if additional_manifest is not None:
             pulumi.set(__self__, "additional_manifest", additional_manifest)
@@ -20262,6 +20302,8 @@ class ClusterV2RkeConfig(dict):
             pulumi.set(__self__, "machine_pools", machine_pools)
         if machine_selector_configs is not None:
             pulumi.set(__self__, "machine_selector_configs", machine_selector_configs)
+        if machine_selector_files is not None:
+            pulumi.set(__self__, "machine_selector_files", machine_selector_files)
         if registries is not None:
             pulumi.set(__self__, "registries", registries)
         if rotate_certificates is not None:
@@ -20273,7 +20315,7 @@ class ClusterV2RkeConfig(dict):
     @pulumi.getter(name="additionalManifest")
     def additional_manifest(self) -> Optional[str]:
         """
-        Cluster V2 additional manifest (string)
+        The value of the additional manifest is delivered to the path `/var/lib/rancher/rke2/server/manifests/rancher/addons.yaml` or `/var/lib/rancher/k3s/server/manifests/rancher/addons.yaml` on the control plane nodes.
         """
         return pulumi.get(self, "additional_manifest")
 
@@ -20281,7 +20323,7 @@ class ClusterV2RkeConfig(dict):
     @pulumi.getter(name="chartValues")
     def chart_values(self) -> Optional[str]:
         """
-        Cluster V2 chart values. Must be in YAML format (string)
+        The value for the system charts installed by the distribution. For more information about how RKE2 or K3s manage packaged components, please refer to [RKE2 documentation](https://docs.rke2.io/helm) or [K3s documentation](https://docs.k3s.io/installation/packaged-components).
         """
         return pulumi.get(self, "chart_values")
 
@@ -20289,7 +20331,7 @@ class ClusterV2RkeConfig(dict):
     @pulumi.getter
     def etcd(self) -> Optional['outputs.ClusterV2RkeConfigEtcd']:
         """
-        Cluster V2 etcd (list maxitems:1)
+        Etcd configures the behavior of the automatic etcd snapshot feature.
         """
         return pulumi.get(self, "etcd")
 
@@ -20297,7 +20339,7 @@ class ClusterV2RkeConfig(dict):
     @pulumi.getter(name="etcdSnapshotCreate")
     def etcd_snapshot_create(self) -> Optional['outputs.ClusterV2RkeConfigEtcdSnapshotCreate']:
         """
-        Cluster V2 etcd snapshot create (list maxitems:1)
+        Cluster V2 etcd snapshot create.
         """
         return pulumi.get(self, "etcd_snapshot_create")
 
@@ -20305,7 +20347,7 @@ class ClusterV2RkeConfig(dict):
     @pulumi.getter(name="etcdSnapshotRestore")
     def etcd_snapshot_restore(self) -> Optional['outputs.ClusterV2RkeConfigEtcdSnapshotRestore']:
         """
-        Cluster V2 etcd snapshot restore (list maxitems:1)
+        Cluster V2 etcd snapshot restore.
         """
         return pulumi.get(self, "etcd_snapshot_restore")
 
@@ -20313,7 +20355,7 @@ class ClusterV2RkeConfig(dict):
     @pulumi.getter(name="localAuthEndpoint")
     def local_auth_endpoint(self) -> Optional['outputs.ClusterV2RkeConfigLocalAuthEndpoint']:
         """
-        Cluster V2 local auth endpoint (list maxitems:1)
+        Local auth endpoint configures the Authorized Cluster Endpoint (ACE) which can be used to directly access the Kubernetes API server, without requiring communication through Rancher. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters).
         """
         warnings.warn("""Use rancher2_cluster_v2.local_auth_endpoint instead""", DeprecationWarning)
         pulumi.log.warn("""local_auth_endpoint is deprecated: Use rancher2_cluster_v2.local_auth_endpoint instead""")
@@ -20324,7 +20366,7 @@ class ClusterV2RkeConfig(dict):
     @pulumi.getter(name="machineGlobalConfig")
     def machine_global_config(self) -> Optional[str]:
         """
-        Cluster V2 machine global config. Must be in YAML format (string)
+        Machine global config specifies the distribution-specified server configuration applied to all nodes. For the full list of server configurations, please refer to [RKE2 server configuration](https://docs.rke2.io/reference/server_config) or [K3s server configuration](https://docs.k3s.io/cli/server).
         """
         return pulumi.get(self, "machine_global_config")
 
@@ -20340,7 +20382,7 @@ class ClusterV2RkeConfig(dict):
     @pulumi.getter(name="machinePools")
     def machine_pools(self) -> Optional[Sequence['outputs.ClusterV2RkeConfigMachinePool']]:
         """
-        Cluster V2 machine pools (list)
+        Cluster V2 machine pools.
         """
         return pulumi.get(self, "machine_pools")
 
@@ -20348,15 +20390,23 @@ class ClusterV2RkeConfig(dict):
     @pulumi.getter(name="machineSelectorConfigs")
     def machine_selector_configs(self) -> Optional[Sequence['outputs.ClusterV2RkeConfigMachineSelectorConfig']]:
         """
-        Cluster V2 machine selector config (list)
+        Machine selector config is the same as machine_global_config except that a label selector can be specified with the configuration. The configuration will only be applied to nodes that match the provided label selector. The configuration from machine_selector_config takes precedence over the one from machine_global_config. This argument is available in Rancher v2.7.2 and later.
         """
         return pulumi.get(self, "machine_selector_configs")
+
+    @property
+    @pulumi.getter(name="machineSelectorFiles")
+    def machine_selector_files(self) -> Optional[Sequence['outputs.ClusterV2RkeConfigMachineSelectorFile']]:
+        """
+        Machine selector files provide a means to deliver files to nodes so that the files can be in place before initiating RKE2/K3s server or agent processes. Please refer to Rancher documentation for [RKE2 Cluster Configuration Reference](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration#machineselectorfiles) and [K3s Cluster Configuration Reference](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/k3s-cluster-configuration#machineselectorfiles). This argument is available in Rancher v2.7.2 and later.
+        """
+        return pulumi.get(self, "machine_selector_files")
 
     @property
     @pulumi.getter
     def registries(self) -> Optional['outputs.ClusterV2RkeConfigRegistries']:
         """
-        Cluster V2 docker registries (list maxitems:1)
+        Docker registries from which the cluster pulls images.
         """
         return pulumi.get(self, "registries")
 
@@ -20364,7 +20414,7 @@ class ClusterV2RkeConfig(dict):
     @pulumi.getter(name="rotateCertificates")
     def rotate_certificates(self) -> Optional['outputs.ClusterV2RkeConfigRotateCertificates']:
         """
-        Cluster V2 certificate rotation (list maxitems:1)
+        Cluster V2 certificate rotation.
         """
         return pulumi.get(self, "rotate_certificates")
 
@@ -20372,7 +20422,7 @@ class ClusterV2RkeConfig(dict):
     @pulumi.getter(name="upgradeStrategy")
     def upgrade_strategy(self) -> Optional['outputs.ClusterV2RkeConfigUpgradeStrategy']:
         """
-        Cluster V2 upgrade strategy (list maxitems:1)
+        Cluster upgrade strategy.
         """
         return pulumi.get(self, "upgrade_strategy")
 
@@ -20408,10 +20458,10 @@ class ClusterV2RkeConfigEtcd(dict):
                  snapshot_retention: Optional[int] = None,
                  snapshot_schedule_cron: Optional[str] = None):
         """
-        :param bool disable_snapshots: Disable ETCD snapshots. Default: `false` (bool)
-        :param 'ClusterV2RkeConfigEtcdS3ConfigArgs' s3_config: Creation option for etcd service (list maxitems:1)
-        :param int snapshot_retention: ETCD snapshot retention (int)
-        :param str snapshot_schedule_cron: ETCD snapshot schedule cron (e.g `\\"0 */5 * * *\\"`) (string)
+        :param bool disable_snapshots: Disable ETCD snapshots.
+        :param 'ClusterV2RkeConfigEtcdS3ConfigArgs' s3_config: Creation option for etcd service.
+        :param int snapshot_retention: ETCD snapshot retention.
+        :param str snapshot_schedule_cron: ETCD snapshot schedule cron (e.g `\\"0 */5 * * *\\"`).
         """
         if disable_snapshots is not None:
             pulumi.set(__self__, "disable_snapshots", disable_snapshots)
@@ -20426,7 +20476,7 @@ class ClusterV2RkeConfigEtcd(dict):
     @pulumi.getter(name="disableSnapshots")
     def disable_snapshots(self) -> Optional[bool]:
         """
-        Disable ETCD snapshots. Default: `false` (bool)
+        Disable ETCD snapshots.
         """
         return pulumi.get(self, "disable_snapshots")
 
@@ -20434,7 +20484,7 @@ class ClusterV2RkeConfigEtcd(dict):
     @pulumi.getter(name="s3Config")
     def s3_config(self) -> Optional['outputs.ClusterV2RkeConfigEtcdS3Config']:
         """
-        Creation option for etcd service (list maxitems:1)
+        Creation option for etcd service.
         """
         return pulumi.get(self, "s3_config")
 
@@ -20442,7 +20492,7 @@ class ClusterV2RkeConfigEtcd(dict):
     @pulumi.getter(name="snapshotRetention")
     def snapshot_retention(self) -> Optional[int]:
         """
-        ETCD snapshot retention (int)
+        ETCD snapshot retention.
         """
         return pulumi.get(self, "snapshot_retention")
 
@@ -20450,7 +20500,7 @@ class ClusterV2RkeConfigEtcd(dict):
     @pulumi.getter(name="snapshotScheduleCron")
     def snapshot_schedule_cron(self) -> Optional[str]:
         """
-        ETCD snapshot schedule cron (e.g `\\"0 */5 * * *\\"`) (string)
+        ETCD snapshot schedule cron (e.g `\\"0 */5 * * *\\"`).
         """
         return pulumi.get(self, "snapshot_schedule_cron")
 
@@ -20487,13 +20537,13 @@ class ClusterV2RkeConfigEtcdS3Config(dict):
                  region: Optional[str] = None,
                  skip_ssl_verify: Optional[bool] = None):
         """
-        :param str bucket: Bucket name for S3 service (string)
-        :param str endpoint: ETCD snapshot S3 endpoint (string)
-        :param str cloud_credential_name: ETCD snapshot S3 cloud credential name (string)
-        :param str endpoint_ca: ETCD snapshot S3 endpoint CA (string)
-        :param str folder: ETCD snapshot S3 folder (string)
-        :param str region: ETCD snapshot S3 region (string)
-        :param bool skip_ssl_verify: Disable ETCD skip ssl verify. Default: `false` (bool)
+        :param str bucket: Bucket name for S3 service.
+        :param str endpoint: ETCD snapshot S3 endpoint.
+        :param str cloud_credential_name: ETCD snapshot S3 cloud credential name.
+        :param str endpoint_ca: ETCD snapshot S3 endpoint CA.
+        :param str folder: ETCD snapshot S3 folder.
+        :param str region: ETCD snapshot S3 region.
+        :param bool skip_ssl_verify: Disable ETCD skip ssl verify.
         """
         pulumi.set(__self__, "bucket", bucket)
         pulumi.set(__self__, "endpoint", endpoint)
@@ -20512,7 +20562,7 @@ class ClusterV2RkeConfigEtcdS3Config(dict):
     @pulumi.getter
     def bucket(self) -> str:
         """
-        Bucket name for S3 service (string)
+        Bucket name for S3 service.
         """
         return pulumi.get(self, "bucket")
 
@@ -20520,7 +20570,7 @@ class ClusterV2RkeConfigEtcdS3Config(dict):
     @pulumi.getter
     def endpoint(self) -> str:
         """
-        ETCD snapshot S3 endpoint (string)
+        ETCD snapshot S3 endpoint.
         """
         return pulumi.get(self, "endpoint")
 
@@ -20528,7 +20578,7 @@ class ClusterV2RkeConfigEtcdS3Config(dict):
     @pulumi.getter(name="cloudCredentialName")
     def cloud_credential_name(self) -> Optional[str]:
         """
-        ETCD snapshot S3 cloud credential name (string)
+        ETCD snapshot S3 cloud credential name.
         """
         return pulumi.get(self, "cloud_credential_name")
 
@@ -20536,7 +20586,7 @@ class ClusterV2RkeConfigEtcdS3Config(dict):
     @pulumi.getter(name="endpointCa")
     def endpoint_ca(self) -> Optional[str]:
         """
-        ETCD snapshot S3 endpoint CA (string)
+        ETCD snapshot S3 endpoint CA.
         """
         return pulumi.get(self, "endpoint_ca")
 
@@ -20544,7 +20594,7 @@ class ClusterV2RkeConfigEtcdS3Config(dict):
     @pulumi.getter
     def folder(self) -> Optional[str]:
         """
-        ETCD snapshot S3 folder (string)
+        ETCD snapshot S3 folder.
         """
         return pulumi.get(self, "folder")
 
@@ -20552,7 +20602,7 @@ class ClusterV2RkeConfigEtcdS3Config(dict):
     @pulumi.getter
     def region(self) -> Optional[str]:
         """
-        ETCD snapshot S3 region (string)
+        ETCD snapshot S3 region.
         """
         return pulumi.get(self, "region")
 
@@ -20560,7 +20610,7 @@ class ClusterV2RkeConfigEtcdS3Config(dict):
     @pulumi.getter(name="skipSslVerify")
     def skip_ssl_verify(self) -> Optional[bool]:
         """
-        Disable ETCD skip ssl verify. Default: `false` (bool)
+        Disable ETCD skip ssl verify.
         """
         return pulumi.get(self, "skip_ssl_verify")
 
@@ -20570,7 +20620,7 @@ class ClusterV2RkeConfigEtcdSnapshotCreate(dict):
     def __init__(__self__, *,
                  generation: int):
         """
-        :param int generation: ETCD snapshot desired generation (int)
+        :param int generation: ETCD snapshot desired generation.
         """
         pulumi.set(__self__, "generation", generation)
 
@@ -20578,7 +20628,7 @@ class ClusterV2RkeConfigEtcdSnapshotCreate(dict):
     @pulumi.getter
     def generation(self) -> int:
         """
-        ETCD snapshot desired generation (int)
+        ETCD snapshot desired generation.
         """
         return pulumi.get(self, "generation")
 
@@ -20607,9 +20657,9 @@ class ClusterV2RkeConfigEtcdSnapshotRestore(dict):
                  name: str,
                  restore_rke_config: Optional[str] = None):
         """
-        :param int generation: ETCD snapshot desired generation (int)
-        :param str name: The name of the Cluster v2 (string)
-        :param str restore_rke_config: ETCD restore RKE config (set to none, all, or kubernetesVersion) (string)
+        :param int generation: ETCD snapshot desired generation.
+        :param str name: The name of the cluster.
+        :param str restore_rke_config: ETCD restore RKE config (set to none, all, or kubernetesVersion).
         """
         pulumi.set(__self__, "generation", generation)
         pulumi.set(__self__, "name", name)
@@ -20620,7 +20670,7 @@ class ClusterV2RkeConfigEtcdSnapshotRestore(dict):
     @pulumi.getter
     def generation(self) -> int:
         """
-        ETCD snapshot desired generation (int)
+        ETCD snapshot desired generation.
         """
         return pulumi.get(self, "generation")
 
@@ -20628,7 +20678,7 @@ class ClusterV2RkeConfigEtcdSnapshotRestore(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the Cluster v2 (string)
+        The name of the cluster.
         """
         return pulumi.get(self, "name")
 
@@ -20636,7 +20686,7 @@ class ClusterV2RkeConfigEtcdSnapshotRestore(dict):
     @pulumi.getter(name="restoreRkeConfig")
     def restore_rke_config(self) -> Optional[str]:
         """
-        ETCD restore RKE config (set to none, all, or kubernetesVersion) (string)
+        ETCD restore RKE config (set to none, all, or kubernetesVersion).
         """
         return pulumi.get(self, "restore_rke_config")
 
@@ -20665,9 +20715,9 @@ class ClusterV2RkeConfigLocalAuthEndpoint(dict):
                  enabled: Optional[bool] = None,
                  fqdn: Optional[str] = None):
         """
-        :param str ca_certs: CA certs for the authorized cluster endpoint (string)
-        :param bool enabled: Drain options enabled? Default `true` (bool)
-        :param str fqdn: FQDN for the authorized cluster endpoint (string)
+        :param str ca_certs: CA certs for the authorized cluster endpoint. It is only needed if there is a load balancer in front of the downstream cluster that is using an untrusted certificate. If you have a valid certificate, then nothing needs to be added to the CA Certificates field.
+        :param bool enabled: If `enabled` is set to true, nodes will be drained before upgrade.
+        :param str fqdn: FQDN for the authorized cluster endpoint. If one is entered, it should point to the downstream cluster.
         """
         if ca_certs is not None:
             pulumi.set(__self__, "ca_certs", ca_certs)
@@ -20680,7 +20730,7 @@ class ClusterV2RkeConfigLocalAuthEndpoint(dict):
     @pulumi.getter(name="caCerts")
     def ca_certs(self) -> Optional[str]:
         """
-        CA certs for the authorized cluster endpoint (string)
+        CA certs for the authorized cluster endpoint. It is only needed if there is a load balancer in front of the downstream cluster that is using an untrusted certificate. If you have a valid certificate, then nothing needs to be added to the CA Certificates field.
         """
         return pulumi.get(self, "ca_certs")
 
@@ -20688,7 +20738,7 @@ class ClusterV2RkeConfigLocalAuthEndpoint(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        Drain options enabled? Default `true` (bool)
+        If `enabled` is set to true, nodes will be drained before upgrade.
         """
         return pulumi.get(self, "enabled")
 
@@ -20696,7 +20746,7 @@ class ClusterV2RkeConfigLocalAuthEndpoint(dict):
     @pulumi.getter
     def fqdn(self) -> Optional[str]:
         """
-        FQDN for the authorized cluster endpoint (string)
+        FQDN for the authorized cluster endpoint. If one is entered, it should point to the downstream cluster.
         """
         return pulumi.get(self, "fqdn")
 
@@ -20768,26 +20818,26 @@ class ClusterV2RkeConfigMachinePool(dict):
                  unhealthy_range: Optional[str] = None,
                  worker_role: Optional[bool] = None):
         """
-        :param 'ClusterV2RkeConfigMachinePoolMachineConfigArgs' machine_config: Machine pool node config (list)
-        :param str name: The name of the Cluster v2 (string)
-        :param Mapping[str, Any] annotations: Annotations for the Cluster V2 (map)
-        :param str cloud_credential_secret_name: Cluster V2 cloud credential secret name (string)
-        :param bool control_plane_role: Machine pool control plane role? (bool)
-        :param bool drain_before_delete: Machine Pool Drain Before Delete? (bool)
-        :param bool etcd_role: Machine pool etcd role? (bool)
+        :param 'ClusterV2RkeConfigMachinePoolMachineConfigArgs' machine_config: Machine pool node config.
+        :param str name: The name of the cluster.
+        :param Mapping[str, Any] annotations: Annotations for the Cluster.
+        :param str cloud_credential_secret_name: Cloud credential secret name is the secret to be used when a cloud credential secret name is not specified at the machine pool level.
+        :param bool control_plane_role: Machine pool control plane role?
+        :param bool drain_before_delete: Machine Pool Drain Before Delete?
+        :param bool etcd_role: Machine pool etcd role?
         :param int hostname_length_limit: maximum length for autogenerated hostname
-        :param Mapping[str, Any] labels: Labels for the Cluster V2 (map)
-        :param Mapping[str, Any] machine_labels: Labels for Machine pool nodes (map)
-        :param str max_unhealthy: Max unhealthy nodes for automated replacement to be allowed (string)
-        :param int node_drain_timeout: Seconds a machine has to drain before deletion (int)
-        :param int node_startup_timeout_seconds: Seconds a new node has to become active before it is replaced (int)
-        :param bool paused: Machine pool paused? (bool)
-        :param int quantity: Machine pool quantity (int)
-        :param 'ClusterV2RkeConfigMachinePoolRollingUpdateArgs' rolling_update: Machine pool rolling update (List maxitems:1)
-        :param Sequence['ClusterV2RkeConfigMachinePoolTaintArgs'] taints: Machine pool taints (list)
-        :param int unhealthy_node_timeout_seconds: Seconds an unhealthy node has to become active before it is replaced (int)
-        :param str unhealthy_range: Range of unhealthy nodes for automated replacement to be allowed (string)
-        :param bool worker_role: Machine pool worker role? (bool)
+        :param Mapping[str, Any] labels: Labels for the Cluster.
+        :param Mapping[str, Any] machine_labels: Labels for Machine pool nodes.
+        :param str max_unhealthy: Max unhealthy nodes for automated replacement to be allowed.
+        :param int node_drain_timeout: Seconds a machine has to drain before deletion.
+        :param int node_startup_timeout_seconds: Seconds a new node has to become active before it is replaced.
+        :param bool paused: Machine pool paused?
+        :param int quantity: Machine pool quantity.
+        :param 'ClusterV2RkeConfigMachinePoolRollingUpdateArgs' rolling_update: Machine pool rolling update.
+        :param Sequence['ClusterV2RkeConfigMachinePoolTaintArgs'] taints: Machine pool taints.
+        :param int unhealthy_node_timeout_seconds: Seconds an unhealthy node has to become active before it is replaced.
+        :param str unhealthy_range: Range of unhealthy nodes for automated replacement to be allowed.
+        :param bool worker_role: Machine pool worker role?
         """
         pulumi.set(__self__, "machine_config", machine_config)
         pulumi.set(__self__, "name", name)
@@ -20832,7 +20882,7 @@ class ClusterV2RkeConfigMachinePool(dict):
     @pulumi.getter(name="machineConfig")
     def machine_config(self) -> 'outputs.ClusterV2RkeConfigMachinePoolMachineConfig':
         """
-        Machine pool node config (list)
+        Machine pool node config.
         """
         return pulumi.get(self, "machine_config")
 
@@ -20840,7 +20890,7 @@ class ClusterV2RkeConfigMachinePool(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the Cluster v2 (string)
+        The name of the cluster.
         """
         return pulumi.get(self, "name")
 
@@ -20848,7 +20898,7 @@ class ClusterV2RkeConfigMachinePool(dict):
     @pulumi.getter
     def annotations(self) -> Optional[Mapping[str, Any]]:
         """
-        Annotations for the Cluster V2 (map)
+        Annotations for the Cluster.
         """
         return pulumi.get(self, "annotations")
 
@@ -20856,7 +20906,7 @@ class ClusterV2RkeConfigMachinePool(dict):
     @pulumi.getter(name="cloudCredentialSecretName")
     def cloud_credential_secret_name(self) -> Optional[str]:
         """
-        Cluster V2 cloud credential secret name (string)
+        Cloud credential secret name is the secret to be used when a cloud credential secret name is not specified at the machine pool level.
         """
         return pulumi.get(self, "cloud_credential_secret_name")
 
@@ -20864,7 +20914,7 @@ class ClusterV2RkeConfigMachinePool(dict):
     @pulumi.getter(name="controlPlaneRole")
     def control_plane_role(self) -> Optional[bool]:
         """
-        Machine pool control plane role? (bool)
+        Machine pool control plane role?
         """
         return pulumi.get(self, "control_plane_role")
 
@@ -20872,7 +20922,7 @@ class ClusterV2RkeConfigMachinePool(dict):
     @pulumi.getter(name="drainBeforeDelete")
     def drain_before_delete(self) -> Optional[bool]:
         """
-        Machine Pool Drain Before Delete? (bool)
+        Machine Pool Drain Before Delete?
         """
         return pulumi.get(self, "drain_before_delete")
 
@@ -20880,7 +20930,7 @@ class ClusterV2RkeConfigMachinePool(dict):
     @pulumi.getter(name="etcdRole")
     def etcd_role(self) -> Optional[bool]:
         """
-        Machine pool etcd role? (bool)
+        Machine pool etcd role?
         """
         return pulumi.get(self, "etcd_role")
 
@@ -20896,7 +20946,7 @@ class ClusterV2RkeConfigMachinePool(dict):
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, Any]]:
         """
-        Labels for the Cluster V2 (map)
+        Labels for the Cluster.
         """
         return pulumi.get(self, "labels")
 
@@ -20904,7 +20954,7 @@ class ClusterV2RkeConfigMachinePool(dict):
     @pulumi.getter(name="machineLabels")
     def machine_labels(self) -> Optional[Mapping[str, Any]]:
         """
-        Labels for Machine pool nodes (map)
+        Labels for Machine pool nodes.
         """
         return pulumi.get(self, "machine_labels")
 
@@ -20912,7 +20962,7 @@ class ClusterV2RkeConfigMachinePool(dict):
     @pulumi.getter(name="maxUnhealthy")
     def max_unhealthy(self) -> Optional[str]:
         """
-        Max unhealthy nodes for automated replacement to be allowed (string)
+        Max unhealthy nodes for automated replacement to be allowed.
         """
         return pulumi.get(self, "max_unhealthy")
 
@@ -20920,7 +20970,7 @@ class ClusterV2RkeConfigMachinePool(dict):
     @pulumi.getter(name="nodeDrainTimeout")
     def node_drain_timeout(self) -> Optional[int]:
         """
-        Seconds a machine has to drain before deletion (int)
+        Seconds a machine has to drain before deletion.
         """
         return pulumi.get(self, "node_drain_timeout")
 
@@ -20928,7 +20978,7 @@ class ClusterV2RkeConfigMachinePool(dict):
     @pulumi.getter(name="nodeStartupTimeoutSeconds")
     def node_startup_timeout_seconds(self) -> Optional[int]:
         """
-        Seconds a new node has to become active before it is replaced (int)
+        Seconds a new node has to become active before it is replaced.
         """
         return pulumi.get(self, "node_startup_timeout_seconds")
 
@@ -20936,7 +20986,7 @@ class ClusterV2RkeConfigMachinePool(dict):
     @pulumi.getter
     def paused(self) -> Optional[bool]:
         """
-        Machine pool paused? (bool)
+        Machine pool paused?
         """
         return pulumi.get(self, "paused")
 
@@ -20944,7 +20994,7 @@ class ClusterV2RkeConfigMachinePool(dict):
     @pulumi.getter
     def quantity(self) -> Optional[int]:
         """
-        Machine pool quantity (int)
+        Machine pool quantity.
         """
         return pulumi.get(self, "quantity")
 
@@ -20952,7 +21002,7 @@ class ClusterV2RkeConfigMachinePool(dict):
     @pulumi.getter(name="rollingUpdate")
     def rolling_update(self) -> Optional['outputs.ClusterV2RkeConfigMachinePoolRollingUpdate']:
         """
-        Machine pool rolling update (List maxitems:1)
+        Machine pool rolling update.
         """
         return pulumi.get(self, "rolling_update")
 
@@ -20960,7 +21010,7 @@ class ClusterV2RkeConfigMachinePool(dict):
     @pulumi.getter
     def taints(self) -> Optional[Sequence['outputs.ClusterV2RkeConfigMachinePoolTaint']]:
         """
-        Machine pool taints (list)
+        Machine pool taints.
         """
         return pulumi.get(self, "taints")
 
@@ -20968,7 +21018,7 @@ class ClusterV2RkeConfigMachinePool(dict):
     @pulumi.getter(name="unhealthyNodeTimeoutSeconds")
     def unhealthy_node_timeout_seconds(self) -> Optional[int]:
         """
-        Seconds an unhealthy node has to become active before it is replaced (int)
+        Seconds an unhealthy node has to become active before it is replaced.
         """
         return pulumi.get(self, "unhealthy_node_timeout_seconds")
 
@@ -20976,7 +21026,7 @@ class ClusterV2RkeConfigMachinePool(dict):
     @pulumi.getter(name="unhealthyRange")
     def unhealthy_range(self) -> Optional[str]:
         """
-        Range of unhealthy nodes for automated replacement to be allowed (string)
+        Range of unhealthy nodes for automated replacement to be allowed.
         """
         return pulumi.get(self, "unhealthy_range")
 
@@ -20984,7 +21034,7 @@ class ClusterV2RkeConfigMachinePool(dict):
     @pulumi.getter(name="workerRole")
     def worker_role(self) -> Optional[bool]:
         """
-        Machine pool worker role? (bool)
+        Machine pool worker role?
         """
         return pulumi.get(self, "worker_role")
 
@@ -21027,21 +21077,42 @@ class ClusterV2RkeConfigMachinePoolDefault(dict):
 
 @pulumi.output_type
 class ClusterV2RkeConfigMachinePoolMachineConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiVersion":
+            suggest = "api_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterV2RkeConfigMachinePoolMachineConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterV2RkeConfigMachinePoolMachineConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterV2RkeConfigMachinePoolMachineConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  kind: str,
-                 name: str):
+                 name: str,
+                 api_version: Optional[str] = None):
         """
-        :param str kind: Machine config kind (string)
-        :param str name: The name of the Cluster v2 (string)
+        :param str kind: Machine config kind.
+        :param str name: The name of the cluster.
+        :param str api_version: Api version of the machine_config.
         """
         pulumi.set(__self__, "kind", kind)
         pulumi.set(__self__, "name", name)
+        if api_version is not None:
+            pulumi.set(__self__, "api_version", api_version)
 
     @property
     @pulumi.getter
     def kind(self) -> str:
         """
-        Machine config kind (string)
+        Machine config kind.
         """
         return pulumi.get(self, "kind")
 
@@ -21049,9 +21120,17 @@ class ClusterV2RkeConfigMachinePoolMachineConfig(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the Cluster v2 (string)
+        The name of the cluster.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="apiVersion")
+    def api_version(self) -> Optional[str]:
+        """
+        Api version of the machine_config.
+        """
+        return pulumi.get(self, "api_version")
 
 
 @pulumi.output_type
@@ -21079,8 +21158,8 @@ class ClusterV2RkeConfigMachinePoolRollingUpdate(dict):
                  max_surge: Optional[str] = None,
                  max_unavailable: Optional[str] = None):
         """
-        :param str max_surge: Rolling update max surge (string)
-        :param str max_unavailable: Rolling update max unavailable (string)
+        :param str max_surge: Rolling update max surge.
+        :param str max_unavailable: Rolling update max unavailable.
         """
         if max_surge is not None:
             pulumi.set(__self__, "max_surge", max_surge)
@@ -21091,7 +21170,7 @@ class ClusterV2RkeConfigMachinePoolRollingUpdate(dict):
     @pulumi.getter(name="maxSurge")
     def max_surge(self) -> Optional[str]:
         """
-        Rolling update max surge (string)
+        Rolling update max surge.
         """
         return pulumi.get(self, "max_surge")
 
@@ -21099,7 +21178,7 @@ class ClusterV2RkeConfigMachinePoolRollingUpdate(dict):
     @pulumi.getter(name="maxUnavailable")
     def max_unavailable(self) -> Optional[str]:
         """
-        Rolling update max unavailable (string)
+        Rolling update max unavailable.
         """
         return pulumi.get(self, "max_unavailable")
 
@@ -21111,9 +21190,9 @@ class ClusterV2RkeConfigMachinePoolTaint(dict):
                  value: str,
                  effect: Optional[str] = None):
         """
-        :param str key: Machine selector label match expressions key (string)
-        :param str value: The taint value (string)
-        :param str effect: The taint effect. Default: `\\"NoExecute\\"` (string)
+        :param str key: Key is the name of the key of the item to retrieve.
+        :param str value: The taint value.
+        :param str effect: The taint effect. Default: `\\"NoExecute\\"`.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
@@ -21124,7 +21203,7 @@ class ClusterV2RkeConfigMachinePoolTaint(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        Machine selector label match expressions key (string)
+        Key is the name of the key of the item to retrieve.
         """
         return pulumi.get(self, "key")
 
@@ -21132,7 +21211,7 @@ class ClusterV2RkeConfigMachinePoolTaint(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        The taint value (string)
+        The taint value.
         """
         return pulumi.get(self, "value")
 
@@ -21140,7 +21219,7 @@ class ClusterV2RkeConfigMachinePoolTaint(dict):
     @pulumi.getter
     def effect(self) -> Optional[str]:
         """
-        The taint effect. Default: `\\"NoExecute\\"` (string)
+        The taint effect. Default: `\\"NoExecute\\"`.
         """
         return pulumi.get(self, "effect")
 
@@ -21168,8 +21247,8 @@ class ClusterV2RkeConfigMachineSelectorConfig(dict):
                  config: Optional[str] = None,
                  machine_label_selector: Optional['outputs.ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector'] = None):
         """
-        :param str config: Machine selector config. Must be in YAML format (string)
-        :param 'ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorArgs' machine_label_selector: Machine selector label (list maxitems:1)
+        :param str config: Config is the distribution-specify configuration to be applied to nodes that match the provided label selector. For more information, please refer to Rancher's documentation for [RKE2 Cluster Configuration](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration#machineselectorconfig) or [K3s Cluster Configuration](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/k3s-cluster-configuration#machineselectorconfig)
+        :param 'ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorArgs' machine_label_selector: Machine selector label is a label query over a set of resources. The result of match_labels and match_expressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
         """
         if config is not None:
             pulumi.set(__self__, "config", config)
@@ -21180,7 +21259,7 @@ class ClusterV2RkeConfigMachineSelectorConfig(dict):
     @pulumi.getter
     def config(self) -> Optional[str]:
         """
-        Machine selector config. Must be in YAML format (string)
+        Config is the distribution-specify configuration to be applied to nodes that match the provided label selector. For more information, please refer to Rancher's documentation for [RKE2 Cluster Configuration](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration#machineselectorconfig) or [K3s Cluster Configuration](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/k3s-cluster-configuration#machineselectorconfig)
         """
         return pulumi.get(self, "config")
 
@@ -21188,7 +21267,7 @@ class ClusterV2RkeConfigMachineSelectorConfig(dict):
     @pulumi.getter(name="machineLabelSelector")
     def machine_label_selector(self) -> Optional['outputs.ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector']:
         """
-        Machine selector label (list maxitems:1)
+        Machine selector label is a label query over a set of resources. The result of match_labels and match_expressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
         """
         return pulumi.get(self, "machine_label_selector")
 
@@ -21218,8 +21297,8 @@ class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector(dict):
                  match_expressions: Optional[Sequence['outputs.ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression']] = None,
                  match_labels: Optional[Mapping[str, Any]] = None):
         """
-        :param Sequence['ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionArgs'] match_expressions: Machine selector label match expressions (list)
-        :param Mapping[str, Any] match_labels: Machine selector label match labels (map)
+        :param Sequence['ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionArgs'] match_expressions: Match expressions is a list of label selector requirements. The requirements are ANDed.
+        :param Mapping[str, Any] match_labels: Machine selector label is a map of {key,value} pairs, the requirements are ANDed.
         """
         if match_expressions is not None:
             pulumi.set(__self__, "match_expressions", match_expressions)
@@ -21230,7 +21309,7 @@ class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector(dict):
     @pulumi.getter(name="matchExpressions")
     def match_expressions(self) -> Optional[Sequence['outputs.ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression']]:
         """
-        Machine selector label match expressions (list)
+        Match expressions is a list of label selector requirements. The requirements are ANDed.
         """
         return pulumi.get(self, "match_expressions")
 
@@ -21238,7 +21317,7 @@ class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector(dict):
     @pulumi.getter(name="matchLabels")
     def match_labels(self) -> Optional[Mapping[str, Any]]:
         """
-        Machine selector label match labels (map)
+        Machine selector label is a map of {key,value} pairs, the requirements are ANDed.
         """
         return pulumi.get(self, "match_labels")
 
@@ -21250,9 +21329,9 @@ class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression
                  operator: Optional[str] = None,
                  values: Optional[Sequence[str]] = None):
         """
-        :param str key: Machine selector label match expressions key (string)
-        :param str operator: Machine selector label match expressions operator (string)
-        :param Sequence[str] values: Machine selector label match expressions values (List string)
+        :param str key: Key is the name of the key of the item to retrieve.
+        :param str operator: Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+        :param Sequence[str] values: Values is a list of string values.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -21265,7 +21344,7 @@ class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression
     @pulumi.getter
     def key(self) -> Optional[str]:
         """
-        Machine selector label match expressions key (string)
+        Key is the name of the key of the item to retrieve.
         """
         return pulumi.get(self, "key")
 
@@ -21273,7 +21352,7 @@ class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression
     @pulumi.getter
     def operator(self) -> Optional[str]:
         """
-        Machine selector label match expressions operator (string)
+        Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
         """
         return pulumi.get(self, "operator")
 
@@ -21281,7 +21360,429 @@ class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression
     @pulumi.getter
     def values(self) -> Optional[Sequence[str]]:
         """
-        Machine selector label match expressions values (List string)
+        Values is a list of string values.
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class ClusterV2RkeConfigMachineSelectorFile(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fileSources":
+            suggest = "file_sources"
+        elif key == "machineLabelSelector":
+            suggest = "machine_label_selector"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterV2RkeConfigMachineSelectorFile. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterV2RkeConfigMachineSelectorFile.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterV2RkeConfigMachineSelectorFile.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 file_sources: Optional[Sequence['outputs.ClusterV2RkeConfigMachineSelectorFileFileSource']] = None,
+                 machine_label_selector: Optional['outputs.ClusterV2RkeConfigMachineSelectorFileMachineLabelSelector'] = None):
+        """
+        :param Sequence['ClusterV2RkeConfigMachineSelectorFileFileSourceArgs'] file_sources: File sources represents the source of the files. Multiple files can be delivered to nodes that match the provided label selector.
+        :param 'ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorArgs' machine_label_selector: Machine selector label is a label query over a set of resources. The result of match_labels and match_expressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
+        """
+        if file_sources is not None:
+            pulumi.set(__self__, "file_sources", file_sources)
+        if machine_label_selector is not None:
+            pulumi.set(__self__, "machine_label_selector", machine_label_selector)
+
+    @property
+    @pulumi.getter(name="fileSources")
+    def file_sources(self) -> Optional[Sequence['outputs.ClusterV2RkeConfigMachineSelectorFileFileSource']]:
+        """
+        File sources represents the source of the files. Multiple files can be delivered to nodes that match the provided label selector.
+        """
+        return pulumi.get(self, "file_sources")
+
+    @property
+    @pulumi.getter(name="machineLabelSelector")
+    def machine_label_selector(self) -> Optional['outputs.ClusterV2RkeConfigMachineSelectorFileMachineLabelSelector']:
+        """
+        Machine selector label is a label query over a set of resources. The result of match_labels and match_expressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
+        """
+        return pulumi.get(self, "machine_label_selector")
+
+
+@pulumi.output_type
+class ClusterV2RkeConfigMachineSelectorFileFileSource(dict):
+    def __init__(__self__, *,
+                 configmap: Optional['outputs.ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmap'] = None,
+                 secret: Optional['outputs.ClusterV2RkeConfigMachineSelectorFileFileSourceSecret'] = None):
+        """
+        :param 'ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapArgs' configmap: Configmap represents a K8s configmap which is the source of files. It is mutually exclusive with secret.
+        :param 'ClusterV2RkeConfigMachineSelectorFileFileSourceSecretArgs' secret: Secret represents a K8s secret which is the source of files. It is mutually exclusive with configmap.
+        """
+        if configmap is not None:
+            pulumi.set(__self__, "configmap", configmap)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
+
+    @property
+    @pulumi.getter
+    def configmap(self) -> Optional['outputs.ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmap']:
+        """
+        Configmap represents a K8s configmap which is the source of files. It is mutually exclusive with secret.
+        """
+        return pulumi.get(self, "configmap")
+
+    @property
+    @pulumi.getter
+    def secret(self) -> Optional['outputs.ClusterV2RkeConfigMachineSelectorFileFileSourceSecret']:
+        """
+        Secret represents a K8s secret which is the source of files. It is mutually exclusive with configmap.
+        """
+        return pulumi.get(self, "secret")
+
+
+@pulumi.output_type
+class ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmap(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultPermissions":
+            suggest = "default_permissions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmap. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmap.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmap.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 default_permissions: Optional[str] = None,
+                 items: Optional[Sequence['outputs.ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapItem']] = None):
+        """
+        :param str name: The name of the cluster.
+        :param str default_permissions: The numeric representation of the default file permissions for all files defined under the items.
+        :param Sequence['ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapItemArgs'] items: Items is a list of configurations for files, such as where to retrieve the content from the source, where to put the file on nodes, etc.
+        """
+        pulumi.set(__self__, "name", name)
+        if default_permissions is not None:
+            pulumi.set(__self__, "default_permissions", default_permissions)
+        if items is not None:
+            pulumi.set(__self__, "items", items)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the cluster.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="defaultPermissions")
+    def default_permissions(self) -> Optional[str]:
+        """
+        The numeric representation of the default file permissions for all files defined under the items.
+        """
+        return pulumi.get(self, "default_permissions")
+
+    @property
+    @pulumi.getter
+    def items(self) -> Optional[Sequence['outputs.ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapItem']]:
+        """
+        Items is a list of configurations for files, such as where to retrieve the content from the source, where to put the file on nodes, etc.
+        """
+        return pulumi.get(self, "items")
+
+
+@pulumi.output_type
+class ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapItem(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 path: str,
+                 dynamic: Optional[bool] = None,
+                 hash: Optional[str] = None,
+                 permissions: Optional[str] = None):
+        """
+        :param str key: Key is the name of the key of the item to retrieve.
+        :param str path: Path is the absolute path to put the file in the target node.
+        :param bool dynamic: If true, the file is ignored when determining whether the node should be drained before updating the node plan.
+        :param str hash: Hash is the base64 encoded value of the SHA256 checksum of the file's content. If specified, it is used to validate the integrity of the file content.
+        :param str permissions: Permissions is the numeric representation of the file permission. It takes precedence over the default permissions at the outer level.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "path", path)
+        if dynamic is not None:
+            pulumi.set(__self__, "dynamic", dynamic)
+        if hash is not None:
+            pulumi.set(__self__, "hash", hash)
+        if permissions is not None:
+            pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Key is the name of the key of the item to retrieve.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        Path is the absolute path to put the file in the target node.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def dynamic(self) -> Optional[bool]:
+        """
+        If true, the file is ignored when determining whether the node should be drained before updating the node plan.
+        """
+        return pulumi.get(self, "dynamic")
+
+    @property
+    @pulumi.getter
+    def hash(self) -> Optional[str]:
+        """
+        Hash is the base64 encoded value of the SHA256 checksum of the file's content. If specified, it is used to validate the integrity of the file content.
+        """
+        return pulumi.get(self, "hash")
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> Optional[str]:
+        """
+        Permissions is the numeric representation of the file permission. It takes precedence over the default permissions at the outer level.
+        """
+        return pulumi.get(self, "permissions")
+
+
+@pulumi.output_type
+class ClusterV2RkeConfigMachineSelectorFileFileSourceSecret(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultPermissions":
+            suggest = "default_permissions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterV2RkeConfigMachineSelectorFileFileSourceSecret. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterV2RkeConfigMachineSelectorFileFileSourceSecret.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterV2RkeConfigMachineSelectorFileFileSourceSecret.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 default_permissions: Optional[str] = None,
+                 items: Optional[Sequence['outputs.ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItem']] = None):
+        """
+        :param str name: The name of the cluster.
+        :param str default_permissions: The numeric representation of the default file permissions for all files defined under the items.
+        :param Sequence['ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemArgs'] items: Items is a list of configurations for files, such as where to retrieve the content from the source, where to put the file on nodes, etc.
+        """
+        pulumi.set(__self__, "name", name)
+        if default_permissions is not None:
+            pulumi.set(__self__, "default_permissions", default_permissions)
+        if items is not None:
+            pulumi.set(__self__, "items", items)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the cluster.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="defaultPermissions")
+    def default_permissions(self) -> Optional[str]:
+        """
+        The numeric representation of the default file permissions for all files defined under the items.
+        """
+        return pulumi.get(self, "default_permissions")
+
+    @property
+    @pulumi.getter
+    def items(self) -> Optional[Sequence['outputs.ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItem']]:
+        """
+        Items is a list of configurations for files, such as where to retrieve the content from the source, where to put the file on nodes, etc.
+        """
+        return pulumi.get(self, "items")
+
+
+@pulumi.output_type
+class ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItem(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 path: str,
+                 dynamic: Optional[bool] = None,
+                 hash: Optional[str] = None,
+                 permissions: Optional[str] = None):
+        """
+        :param str key: Key is the name of the key of the item to retrieve.
+        :param str path: Path is the absolute path to put the file in the target node.
+        :param bool dynamic: If true, the file is ignored when determining whether the node should be drained before updating the node plan.
+        :param str hash: Hash is the base64 encoded value of the SHA256 checksum of the file's content. If specified, it is used to validate the integrity of the file content.
+        :param str permissions: Permissions is the numeric representation of the file permission. It takes precedence over the default permissions at the outer level.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "path", path)
+        if dynamic is not None:
+            pulumi.set(__self__, "dynamic", dynamic)
+        if hash is not None:
+            pulumi.set(__self__, "hash", hash)
+        if permissions is not None:
+            pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Key is the name of the key of the item to retrieve.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        Path is the absolute path to put the file in the target node.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def dynamic(self) -> Optional[bool]:
+        """
+        If true, the file is ignored when determining whether the node should be drained before updating the node plan.
+        """
+        return pulumi.get(self, "dynamic")
+
+    @property
+    @pulumi.getter
+    def hash(self) -> Optional[str]:
+        """
+        Hash is the base64 encoded value of the SHA256 checksum of the file's content. If specified, it is used to validate the integrity of the file content.
+        """
+        return pulumi.get(self, "hash")
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> Optional[str]:
+        """
+        Permissions is the numeric representation of the file permission. It takes precedence over the default permissions at the outer level.
+        """
+        return pulumi.get(self, "permissions")
+
+
+@pulumi.output_type
+class ClusterV2RkeConfigMachineSelectorFileMachineLabelSelector(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "matchExpressions":
+            suggest = "match_expressions"
+        elif key == "matchLabels":
+            suggest = "match_labels"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterV2RkeConfigMachineSelectorFileMachineLabelSelector. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterV2RkeConfigMachineSelectorFileMachineLabelSelector.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterV2RkeConfigMachineSelectorFileMachineLabelSelector.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 match_expressions: Optional[Sequence['outputs.ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpression']] = None,
+                 match_labels: Optional[Mapping[str, Any]] = None):
+        """
+        :param Sequence['ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpressionArgs'] match_expressions: Match expressions is a list of label selector requirements. The requirements are ANDed.
+        :param Mapping[str, Any] match_labels: Machine selector label is a map of {key,value} pairs, the requirements are ANDed.
+        """
+        if match_expressions is not None:
+            pulumi.set(__self__, "match_expressions", match_expressions)
+        if match_labels is not None:
+            pulumi.set(__self__, "match_labels", match_labels)
+
+    @property
+    @pulumi.getter(name="matchExpressions")
+    def match_expressions(self) -> Optional[Sequence['outputs.ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpression']]:
+        """
+        Match expressions is a list of label selector requirements. The requirements are ANDed.
+        """
+        return pulumi.get(self, "match_expressions")
+
+    @property
+    @pulumi.getter(name="matchLabels")
+    def match_labels(self) -> Optional[Mapping[str, Any]]:
+        """
+        Machine selector label is a map of {key,value} pairs, the requirements are ANDed.
+        """
+        return pulumi.get(self, "match_labels")
+
+
+@pulumi.output_type
+class ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpression(dict):
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 operator: Optional[str] = None,
+                 values: Optional[Sequence[str]] = None):
+        """
+        :param str key: Key is the name of the key of the item to retrieve.
+        :param str operator: Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+        :param Sequence[str] values: Values is a list of string values.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        Key is the name of the key of the item to retrieve.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        """
+        Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[str]]:
+        """
+        Values is a list of string values.
         """
         return pulumi.get(self, "values")
 
@@ -21292,8 +21793,8 @@ class ClusterV2RkeConfigRegistries(dict):
                  configs: Optional[Sequence['outputs.ClusterV2RkeConfigRegistriesConfig']] = None,
                  mirrors: Optional[Sequence['outputs.ClusterV2RkeConfigRegistriesMirror']] = None):
         """
-        :param Sequence['ClusterV2RkeConfigRegistriesConfigArgs'] configs: Cluster V2 docker registries config (list)
-        :param Sequence['ClusterV2RkeConfigRegistriesMirrorArgs'] mirrors: Cluster V2 docker registries mirror (list)
+        :param Sequence['ClusterV2RkeConfigRegistriesConfigArgs'] configs: Cluster V2 docker registries config.
+        :param Sequence['ClusterV2RkeConfigRegistriesMirrorArgs'] mirrors: Cluster V2 docker registries mirror.
         """
         if configs is not None:
             pulumi.set(__self__, "configs", configs)
@@ -21304,7 +21805,7 @@ class ClusterV2RkeConfigRegistries(dict):
     @pulumi.getter
     def configs(self) -> Optional[Sequence['outputs.ClusterV2RkeConfigRegistriesConfig']]:
         """
-        Cluster V2 docker registries config (list)
+        Cluster V2 docker registries config.
         """
         return pulumi.get(self, "configs")
 
@@ -21312,7 +21813,7 @@ class ClusterV2RkeConfigRegistries(dict):
     @pulumi.getter
     def mirrors(self) -> Optional[Sequence['outputs.ClusterV2RkeConfigRegistriesMirror']]:
         """
-        Cluster V2 docker registries mirror (list)
+        Cluster V2 docker registries mirror.
         """
         return pulumi.get(self, "mirrors")
 
@@ -21347,11 +21848,11 @@ class ClusterV2RkeConfigRegistriesConfig(dict):
                  insecure: Optional[bool] = None,
                  tls_secret_name: Optional[str] = None):
         """
-        :param str hostname: Registry hostname (string)
-        :param str auth_config_secret_name: Registry auth config secret name (string)
-        :param str ca_bundle: Registry CA bundle (string)
-        :param bool insecure: Registry insecure connectivity (bool)
-        :param str tls_secret_name: Registry TLS secret name. TLS is a pair of Cert/Key (string)
+        :param str hostname: Registry hostname.
+        :param str auth_config_secret_name: Name of the secret that contains two keys with base64 encoded values: the username and password for the specified custom registry. No secret is required if the system-default-registry is not authenticated.
+        :param str ca_bundle: Registry CA bundle.
+        :param bool insecure: Registry insecure connectivity.
+        :param str tls_secret_name: Registry TLS secret name. TLS is a pair of Cert/Key.
         """
         pulumi.set(__self__, "hostname", hostname)
         if auth_config_secret_name is not None:
@@ -21367,7 +21868,7 @@ class ClusterV2RkeConfigRegistriesConfig(dict):
     @pulumi.getter
     def hostname(self) -> str:
         """
-        Registry hostname (string)
+        Registry hostname.
         """
         return pulumi.get(self, "hostname")
 
@@ -21375,7 +21876,7 @@ class ClusterV2RkeConfigRegistriesConfig(dict):
     @pulumi.getter(name="authConfigSecretName")
     def auth_config_secret_name(self) -> Optional[str]:
         """
-        Registry auth config secret name (string)
+        Name of the secret that contains two keys with base64 encoded values: the username and password for the specified custom registry. No secret is required if the system-default-registry is not authenticated.
         """
         return pulumi.get(self, "auth_config_secret_name")
 
@@ -21383,7 +21884,7 @@ class ClusterV2RkeConfigRegistriesConfig(dict):
     @pulumi.getter(name="caBundle")
     def ca_bundle(self) -> Optional[str]:
         """
-        Registry CA bundle (string)
+        Registry CA bundle.
         """
         return pulumi.get(self, "ca_bundle")
 
@@ -21391,7 +21892,7 @@ class ClusterV2RkeConfigRegistriesConfig(dict):
     @pulumi.getter
     def insecure(self) -> Optional[bool]:
         """
-        Registry insecure connectivity (bool)
+        Registry insecure connectivity.
         """
         return pulumi.get(self, "insecure")
 
@@ -21399,7 +21900,7 @@ class ClusterV2RkeConfigRegistriesConfig(dict):
     @pulumi.getter(name="tlsSecretName")
     def tls_secret_name(self) -> Optional[str]:
         """
-        Registry TLS secret name. TLS is a pair of Cert/Key (string)
+        Registry TLS secret name. TLS is a pair of Cert/Key.
         """
         return pulumi.get(self, "tls_secret_name")
 
@@ -21411,9 +21912,9 @@ class ClusterV2RkeConfigRegistriesMirror(dict):
                  endpoints: Optional[Sequence[str]] = None,
                  rewrites: Optional[Mapping[str, Any]] = None):
         """
-        :param str hostname: Registry hostname (string)
-        :param Sequence[str] endpoints: Registry mirror endpoints (List)
-        :param Mapping[str, Any] rewrites: Registry mirror rewrites (map)
+        :param str hostname: Registry hostname.
+        :param Sequence[str] endpoints: Registry mirror endpoints.
+        :param Mapping[str, Any] rewrites: Registry mirror rewrites.
         """
         pulumi.set(__self__, "hostname", hostname)
         if endpoints is not None:
@@ -21425,7 +21926,7 @@ class ClusterV2RkeConfigRegistriesMirror(dict):
     @pulumi.getter
     def hostname(self) -> str:
         """
-        Registry hostname (string)
+        Registry hostname.
         """
         return pulumi.get(self, "hostname")
 
@@ -21433,7 +21934,7 @@ class ClusterV2RkeConfigRegistriesMirror(dict):
     @pulumi.getter
     def endpoints(self) -> Optional[Sequence[str]]:
         """
-        Registry mirror endpoints (List)
+        Registry mirror endpoints.
         """
         return pulumi.get(self, "endpoints")
 
@@ -21441,7 +21942,7 @@ class ClusterV2RkeConfigRegistriesMirror(dict):
     @pulumi.getter
     def rewrites(self) -> Optional[Mapping[str, Any]]:
         """
-        Registry mirror rewrites (map)
+        Registry mirror rewrites.
         """
         return pulumi.get(self, "rewrites")
 
@@ -21452,8 +21953,8 @@ class ClusterV2RkeConfigRotateCertificates(dict):
                  generation: int,
                  services: Optional[Sequence[str]] = None):
         """
-        :param int generation: ETCD snapshot desired generation (int)
-        :param Sequence[str] services: Service certificates to rotate with this generation (string)
+        :param int generation: ETCD snapshot desired generation.
+        :param Sequence[str] services: Service certificates to rotate with this generation.
         """
         pulumi.set(__self__, "generation", generation)
         if services is not None:
@@ -21463,7 +21964,7 @@ class ClusterV2RkeConfigRotateCertificates(dict):
     @pulumi.getter
     def generation(self) -> int:
         """
-        ETCD snapshot desired generation (int)
+        ETCD snapshot desired generation.
         """
         return pulumi.get(self, "generation")
 
@@ -21471,7 +21972,7 @@ class ClusterV2RkeConfigRotateCertificates(dict):
     @pulumi.getter
     def services(self) -> Optional[Sequence[str]]:
         """
-        Service certificates to rotate with this generation (string)
+        Service certificates to rotate with this generation.
         """
         return pulumi.get(self, "services")
 
@@ -21507,10 +22008,10 @@ class ClusterV2RkeConfigUpgradeStrategy(dict):
                  worker_concurrency: Optional[str] = None,
                  worker_drain_options: Optional['outputs.ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions'] = None):
         """
-        :param str control_plane_concurrency: How many controlplane nodes should be upgrade at time, 0 is infinite. Percentages are also accepted (string)
-        :param 'ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgs' control_plane_drain_options: Controlplane nodes drain options (list maxitems:1)
-        :param str worker_concurrency: How many worker nodes should be upgrade at time. Percentages are also accepted (string)
-        :param 'ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptionsArgs' worker_drain_options: Worker nodes drain options (list maxitems:1)
+        :param str control_plane_concurrency: How many control plane nodes should be upgraded at a time, 0 is infinite. Percentages are also accepted.
+        :param 'ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgs' control_plane_drain_options: Controlplane nodes drain options.
+        :param str worker_concurrency: How many worker nodes should be upgraded at a time. Percentages are also accepted.
+        :param 'ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptionsArgs' worker_drain_options: Worker nodes drain options.
         """
         if control_plane_concurrency is not None:
             pulumi.set(__self__, "control_plane_concurrency", control_plane_concurrency)
@@ -21525,7 +22026,7 @@ class ClusterV2RkeConfigUpgradeStrategy(dict):
     @pulumi.getter(name="controlPlaneConcurrency")
     def control_plane_concurrency(self) -> Optional[str]:
         """
-        How many controlplane nodes should be upgrade at time, 0 is infinite. Percentages are also accepted (string)
+        How many control plane nodes should be upgraded at a time, 0 is infinite. Percentages are also accepted.
         """
         return pulumi.get(self, "control_plane_concurrency")
 
@@ -21533,7 +22034,7 @@ class ClusterV2RkeConfigUpgradeStrategy(dict):
     @pulumi.getter(name="controlPlaneDrainOptions")
     def control_plane_drain_options(self) -> Optional['outputs.ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions']:
         """
-        Controlplane nodes drain options (list maxitems:1)
+        Controlplane nodes drain options.
         """
         return pulumi.get(self, "control_plane_drain_options")
 
@@ -21541,7 +22042,7 @@ class ClusterV2RkeConfigUpgradeStrategy(dict):
     @pulumi.getter(name="workerConcurrency")
     def worker_concurrency(self) -> Optional[str]:
         """
-        How many worker nodes should be upgrade at time. Percentages are also accepted (string)
+        How many worker nodes should be upgraded at a time. Percentages are also accepted.
         """
         return pulumi.get(self, "worker_concurrency")
 
@@ -21549,7 +22050,7 @@ class ClusterV2RkeConfigUpgradeStrategy(dict):
     @pulumi.getter(name="workerDrainOptions")
     def worker_drain_options(self) -> Optional['outputs.ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions']:
         """
-        Worker nodes drain options (list maxitems:1)
+        Worker nodes drain options.
         """
         return pulumi.get(self, "worker_drain_options")
 
@@ -21594,15 +22095,15 @@ class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions(dict):
                  skip_wait_for_delete_timeout_seconds: Optional[int] = None,
                  timeout: Optional[int] = None):
         """
-        :param bool delete_empty_dir_data: Drain options delete empty dir data. Default `false` (bool)
-        :param bool disable_eviction: Drain options disable eviction. Default `false` (bool)
-        :param bool enabled: Drain options enabled? Default `true` (bool)
-        :param bool force: Drain options force. Default `false` (bool)
-        :param int grace_period: Drain options grace period (int)
-        :param bool ignore_daemon_sets: Drain options ignore daemon sets. Default `true` (bool)
-        :param bool ignore_errors: Drain options ignore errors. Default `false` (bool)
-        :param int skip_wait_for_delete_timeout_seconds: Drain options skip wait for delete timeout seconds (int)
-        :param int timeout: Drain options timeout (int)
+        :param bool delete_empty_dir_data: if `delete_empty_dir_data` is set to true, continue draining even if there are pods using emptyDir (local storage).
+        :param bool disable_eviction: If `disable_eviction` is set to true, force drain to use delete rather than evict.
+        :param bool enabled: If `enabled` is set to true, nodes will be drained before upgrade.
+        :param bool force: If `force` is set to true, drain nodes even if there are standalone pods that are not managed by a ReplicationController, Job, or DaemonSet. Drain will not proceed without `force` set to true if there are such pods.
+        :param int grace_period: Time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used.
+        :param bool ignore_daemon_sets: If `ignore_daemon_sets` is set to false, drain will not proceed if there are DaemonSet-managed pods.
+        :param bool ignore_errors: If `ignore_errors` is set to true,  errors that occurred between drain nodes in group are ignored.
+        :param int skip_wait_for_delete_timeout_seconds: Skip waiting for the pods that have a DeletionTimeStamp > N seconds to be deleted. Seconds must be greater than 0 to skip. Such pods will be force deleted.
+        :param int timeout: Time to wait (in seconds) before giving up for one try.
         """
         if delete_empty_dir_data is not None:
             pulumi.set(__self__, "delete_empty_dir_data", delete_empty_dir_data)
@@ -21627,7 +22128,7 @@ class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions(dict):
     @pulumi.getter(name="deleteEmptyDirData")
     def delete_empty_dir_data(self) -> Optional[bool]:
         """
-        Drain options delete empty dir data. Default `false` (bool)
+        if `delete_empty_dir_data` is set to true, continue draining even if there are pods using emptyDir (local storage).
         """
         return pulumi.get(self, "delete_empty_dir_data")
 
@@ -21635,7 +22136,7 @@ class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions(dict):
     @pulumi.getter(name="disableEviction")
     def disable_eviction(self) -> Optional[bool]:
         """
-        Drain options disable eviction. Default `false` (bool)
+        If `disable_eviction` is set to true, force drain to use delete rather than evict.
         """
         return pulumi.get(self, "disable_eviction")
 
@@ -21643,7 +22144,7 @@ class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        Drain options enabled? Default `true` (bool)
+        If `enabled` is set to true, nodes will be drained before upgrade.
         """
         return pulumi.get(self, "enabled")
 
@@ -21651,7 +22152,7 @@ class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions(dict):
     @pulumi.getter
     def force(self) -> Optional[bool]:
         """
-        Drain options force. Default `false` (bool)
+        If `force` is set to true, drain nodes even if there are standalone pods that are not managed by a ReplicationController, Job, or DaemonSet. Drain will not proceed without `force` set to true if there are such pods.
         """
         return pulumi.get(self, "force")
 
@@ -21659,7 +22160,7 @@ class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions(dict):
     @pulumi.getter(name="gracePeriod")
     def grace_period(self) -> Optional[int]:
         """
-        Drain options grace period (int)
+        Time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used.
         """
         return pulumi.get(self, "grace_period")
 
@@ -21667,7 +22168,7 @@ class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions(dict):
     @pulumi.getter(name="ignoreDaemonSets")
     def ignore_daemon_sets(self) -> Optional[bool]:
         """
-        Drain options ignore daemon sets. Default `true` (bool)
+        If `ignore_daemon_sets` is set to false, drain will not proceed if there are DaemonSet-managed pods.
         """
         return pulumi.get(self, "ignore_daemon_sets")
 
@@ -21675,7 +22176,7 @@ class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions(dict):
     @pulumi.getter(name="ignoreErrors")
     def ignore_errors(self) -> Optional[bool]:
         """
-        Drain options ignore errors. Default `false` (bool)
+        If `ignore_errors` is set to true,  errors that occurred between drain nodes in group are ignored.
         """
         return pulumi.get(self, "ignore_errors")
 
@@ -21683,7 +22184,7 @@ class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions(dict):
     @pulumi.getter(name="skipWaitForDeleteTimeoutSeconds")
     def skip_wait_for_delete_timeout_seconds(self) -> Optional[int]:
         """
-        Drain options skip wait for delete timeout seconds (int)
+        Skip waiting for the pods that have a DeletionTimeStamp > N seconds to be deleted. Seconds must be greater than 0 to skip. Such pods will be force deleted.
         """
         return pulumi.get(self, "skip_wait_for_delete_timeout_seconds")
 
@@ -21691,7 +22192,7 @@ class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions(dict):
     @pulumi.getter
     def timeout(self) -> Optional[int]:
         """
-        Drain options timeout (int)
+        Time to wait (in seconds) before giving up for one try.
         """
         return pulumi.get(self, "timeout")
 
@@ -21736,15 +22237,15 @@ class ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions(dict):
                  skip_wait_for_delete_timeout_seconds: Optional[int] = None,
                  timeout: Optional[int] = None):
         """
-        :param bool delete_empty_dir_data: Drain options delete empty dir data. Default `false` (bool)
-        :param bool disable_eviction: Drain options disable eviction. Default `false` (bool)
-        :param bool enabled: Drain options enabled? Default `true` (bool)
-        :param bool force: Drain options force. Default `false` (bool)
-        :param int grace_period: Drain options grace period (int)
-        :param bool ignore_daemon_sets: Drain options ignore daemon sets. Default `true` (bool)
-        :param bool ignore_errors: Drain options ignore errors. Default `false` (bool)
-        :param int skip_wait_for_delete_timeout_seconds: Drain options skip wait for delete timeout seconds (int)
-        :param int timeout: Drain options timeout (int)
+        :param bool delete_empty_dir_data: if `delete_empty_dir_data` is set to true, continue draining even if there are pods using emptyDir (local storage).
+        :param bool disable_eviction: If `disable_eviction` is set to true, force drain to use delete rather than evict.
+        :param bool enabled: If `enabled` is set to true, nodes will be drained before upgrade.
+        :param bool force: If `force` is set to true, drain nodes even if there are standalone pods that are not managed by a ReplicationController, Job, or DaemonSet. Drain will not proceed without `force` set to true if there are such pods.
+        :param int grace_period: Time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used.
+        :param bool ignore_daemon_sets: If `ignore_daemon_sets` is set to false, drain will not proceed if there are DaemonSet-managed pods.
+        :param bool ignore_errors: If `ignore_errors` is set to true,  errors that occurred between drain nodes in group are ignored.
+        :param int skip_wait_for_delete_timeout_seconds: Skip waiting for the pods that have a DeletionTimeStamp > N seconds to be deleted. Seconds must be greater than 0 to skip. Such pods will be force deleted.
+        :param int timeout: Time to wait (in seconds) before giving up for one try.
         """
         if delete_empty_dir_data is not None:
             pulumi.set(__self__, "delete_empty_dir_data", delete_empty_dir_data)
@@ -21769,7 +22270,7 @@ class ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions(dict):
     @pulumi.getter(name="deleteEmptyDirData")
     def delete_empty_dir_data(self) -> Optional[bool]:
         """
-        Drain options delete empty dir data. Default `false` (bool)
+        if `delete_empty_dir_data` is set to true, continue draining even if there are pods using emptyDir (local storage).
         """
         return pulumi.get(self, "delete_empty_dir_data")
 
@@ -21777,7 +22278,7 @@ class ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions(dict):
     @pulumi.getter(name="disableEviction")
     def disable_eviction(self) -> Optional[bool]:
         """
-        Drain options disable eviction. Default `false` (bool)
+        If `disable_eviction` is set to true, force drain to use delete rather than evict.
         """
         return pulumi.get(self, "disable_eviction")
 
@@ -21785,7 +22286,7 @@ class ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        Drain options enabled? Default `true` (bool)
+        If `enabled` is set to true, nodes will be drained before upgrade.
         """
         return pulumi.get(self, "enabled")
 
@@ -21793,7 +22294,7 @@ class ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions(dict):
     @pulumi.getter
     def force(self) -> Optional[bool]:
         """
-        Drain options force. Default `false` (bool)
+        If `force` is set to true, drain nodes even if there are standalone pods that are not managed by a ReplicationController, Job, or DaemonSet. Drain will not proceed without `force` set to true if there are such pods.
         """
         return pulumi.get(self, "force")
 
@@ -21801,7 +22302,7 @@ class ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions(dict):
     @pulumi.getter(name="gracePeriod")
     def grace_period(self) -> Optional[int]:
         """
-        Drain options grace period (int)
+        Time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used.
         """
         return pulumi.get(self, "grace_period")
 
@@ -21809,7 +22310,7 @@ class ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions(dict):
     @pulumi.getter(name="ignoreDaemonSets")
     def ignore_daemon_sets(self) -> Optional[bool]:
         """
-        Drain options ignore daemon sets. Default `true` (bool)
+        If `ignore_daemon_sets` is set to false, drain will not proceed if there are DaemonSet-managed pods.
         """
         return pulumi.get(self, "ignore_daemon_sets")
 
@@ -21817,7 +22318,7 @@ class ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions(dict):
     @pulumi.getter(name="ignoreErrors")
     def ignore_errors(self) -> Optional[bool]:
         """
-        Drain options ignore errors. Default `false` (bool)
+        If `ignore_errors` is set to true,  errors that occurred between drain nodes in group are ignored.
         """
         return pulumi.get(self, "ignore_errors")
 
@@ -21825,7 +22326,7 @@ class ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions(dict):
     @pulumi.getter(name="skipWaitForDeleteTimeoutSeconds")
     def skip_wait_for_delete_timeout_seconds(self) -> Optional[int]:
         """
-        Drain options skip wait for delete timeout seconds (int)
+        Skip waiting for the pods that have a DeletionTimeStamp > N seconds to be deleted. Seconds must be greater than 0 to skip. Such pods will be force deleted.
         """
         return pulumi.get(self, "skip_wait_for_delete_timeout_seconds")
 
@@ -21833,7 +22334,7 @@ class ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions(dict):
     @pulumi.getter
     def timeout(self) -> Optional[int]:
         """
-        Drain options timeout (int)
+        Time to wait (in seconds) before giving up for one try.
         """
         return pulumi.get(self, "timeout")
 
@@ -24591,6 +25092,8 @@ class MachineConfigV2VsphereConfig(dict):
             suggest = "datastore_cluster"
         elif key == "diskSize":
             suggest = "disk_size"
+        elif key == "gracefulShutdownTimeout":
+            suggest = "graceful_shutdown_timeout"
         elif key == "memorySize":
             suggest = "memory_size"
         elif key == "sshPassword":
@@ -24638,6 +25141,7 @@ class MachineConfigV2VsphereConfig(dict):
                  datastore_cluster: Optional[str] = None,
                  disk_size: Optional[str] = None,
                  folder: Optional[str] = None,
+                 graceful_shutdown_timeout: Optional[str] = None,
                  hostsystem: Optional[str] = None,
                  memory_size: Optional[str] = None,
                  networks: Optional[Sequence[str]] = None,
@@ -24670,6 +25174,7 @@ class MachineConfigV2VsphereConfig(dict):
         :param str datastore_cluster: vSphere datastore cluster for virtual machine (string)
         :param str disk_size: vSphere size of disk for docker VM (in MB). Default `20480` (string)
         :param str folder: vSphere folder for the docker VM. This folder must already exist in the datacenter (string)
+        :param str graceful_shutdown_timeout: Duration in seconds before the graceful shutdown of the VM times out and the VM is destroyed. A force destroy will be performed when the value is zero (string)
         :param str hostsystem: vSphere compute resource where the docker VM will be instantiated. This can be omitted if using a cluster with DRS (string)
         :param str memory_size: vSphere size of memory for docker VM (in MB). Default `2048` (string)
         :param Sequence[str] networks: vSphere network where the docker VM will be attached (list)
@@ -24716,6 +25221,8 @@ class MachineConfigV2VsphereConfig(dict):
             pulumi.set(__self__, "disk_size", disk_size)
         if folder is not None:
             pulumi.set(__self__, "folder", folder)
+        if graceful_shutdown_timeout is not None:
+            pulumi.set(__self__, "graceful_shutdown_timeout", graceful_shutdown_timeout)
         if hostsystem is not None:
             pulumi.set(__self__, "hostsystem", hostsystem)
         if memory_size is not None:
@@ -24862,6 +25369,14 @@ class MachineConfigV2VsphereConfig(dict):
         vSphere folder for the docker VM. This folder must already exist in the datacenter (string)
         """
         return pulumi.get(self, "folder")
+
+    @property
+    @pulumi.getter(name="gracefulShutdownTimeout")
+    def graceful_shutdown_timeout(self) -> Optional[str]:
+        """
+        Duration in seconds before the graceful shutdown of the VM times out and the VM is destroyed. A force destroy will be performed when the value is zero (string)
+        """
+        return pulumi.get(self, "graceful_shutdown_timeout")
 
     @property
     @pulumi.getter
@@ -28504,6 +29019,8 @@ class NodeTemplateVsphereConfig(dict):
             suggest = "datastore_cluster"
         elif key == "diskSize":
             suggest = "disk_size"
+        elif key == "gracefulShutdownTimeout":
+            suggest = "graceful_shutdown_timeout"
         elif key == "memorySize":
             suggest = "memory_size"
         elif key == "sshPassword":
@@ -28551,6 +29068,7 @@ class NodeTemplateVsphereConfig(dict):
                  datastore_cluster: Optional[str] = None,
                  disk_size: Optional[str] = None,
                  folder: Optional[str] = None,
+                 graceful_shutdown_timeout: Optional[str] = None,
                  hostsystem: Optional[str] = None,
                  memory_size: Optional[str] = None,
                  networks: Optional[Sequence[str]] = None,
@@ -28583,6 +29101,7 @@ class NodeTemplateVsphereConfig(dict):
         :param str datastore_cluster: vSphere datastore cluster for virtual machine. From Rancher v2.3.3 (string)
         :param str disk_size: vSphere size of disk for docker VM (in MB). Default `20480` (string)
         :param str folder: vSphere folder for the docker VM. This folder must already exist in the datacenter (string)
+        :param str graceful_shutdown_timeout: Duration in seconds before the graceful shutdown of the VM times out and the VM is destroyed. A force destroy will be performed when the value is zero
         :param str hostsystem: vSphere compute resource where the docker VM will be instantiated. This can be omitted if using a cluster with DRS (string)
         :param str memory_size: vSphere size of memory for docker VM (in MB). Default `2048` (string)
         :param Sequence[str] networks: vSphere network where the docker VM will be attached (list)
@@ -28629,6 +29148,8 @@ class NodeTemplateVsphereConfig(dict):
             pulumi.set(__self__, "disk_size", disk_size)
         if folder is not None:
             pulumi.set(__self__, "folder", folder)
+        if graceful_shutdown_timeout is not None:
+            pulumi.set(__self__, "graceful_shutdown_timeout", graceful_shutdown_timeout)
         if hostsystem is not None:
             pulumi.set(__self__, "hostsystem", hostsystem)
         if memory_size is not None:
@@ -28775,6 +29296,14 @@ class NodeTemplateVsphereConfig(dict):
         vSphere folder for the docker VM. This folder must already exist in the datacenter (string)
         """
         return pulumi.get(self, "folder")
+
+    @property
+    @pulumi.getter(name="gracefulShutdownTimeout")
+    def graceful_shutdown_timeout(self) -> Optional[str]:
+        """
+        Duration in seconds before the graceful shutdown of the VM times out and the VM is destroyed. A force destroy will be performed when the value is zero
+        """
+        return pulumi.get(self, "graceful_shutdown_timeout")
 
     @property
     @pulumi.getter
@@ -36179,13 +36708,16 @@ class GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobalResult(dict):
                  password: str,
                  port: str,
                  soap_roundtrip_count: int,
-                 user: str):
+                 user: str,
+                 graceful_shutdown_timeout: Optional[str] = None):
         pulumi.set(__self__, "datacenters", datacenters)
         pulumi.set(__self__, "insecure_flag", insecure_flag)
         pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "soap_roundtrip_count", soap_roundtrip_count)
         pulumi.set(__self__, "user", user)
+        if graceful_shutdown_timeout is not None:
+            pulumi.set(__self__, "graceful_shutdown_timeout", graceful_shutdown_timeout)
 
     @property
     @pulumi.getter
@@ -36216,6 +36748,11 @@ class GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobalResult(dict):
     @pulumi.getter
     def user(self) -> str:
         return pulumi.get(self, "user")
+
+    @property
+    @pulumi.getter(name="gracefulShutdownTimeout")
+    def graceful_shutdown_timeout(self) -> Optional[str]:
+        return pulumi.get(self, "graceful_shutdown_timeout")
 
 
 @pulumi.output_type
@@ -40126,13 +40663,16 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphe
                  password: str,
                  port: str,
                  soap_roundtrip_count: int,
-                 user: str):
+                 user: str,
+                 graceful_shutdown_timeout: Optional[str] = None):
         pulumi.set(__self__, "datacenters", datacenters)
         pulumi.set(__self__, "insecure_flag", insecure_flag)
         pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "soap_roundtrip_count", soap_roundtrip_count)
         pulumi.set(__self__, "user", user)
+        if graceful_shutdown_timeout is not None:
+            pulumi.set(__self__, "graceful_shutdown_timeout", graceful_shutdown_timeout)
 
     @property
     @pulumi.getter
@@ -40163,6 +40703,11 @@ class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphe
     @pulumi.getter
     def user(self) -> str:
         return pulumi.get(self, "user")
+
+    @property
+    @pulumi.getter(name="gracefulShutdownTimeout")
+    def graceful_shutdown_timeout(self) -> Optional[str]:
+        return pulumi.get(self, "graceful_shutdown_timeout")
 
 
 @pulumi.output_type
@@ -42861,6 +43406,7 @@ class GetClusterV2RkeConfigResult(dict):
                  machine_pool_defaults: Sequence['outputs.GetClusterV2RkeConfigMachinePoolDefaultResult'],
                  machine_pools: Sequence['outputs.GetClusterV2RkeConfigMachinePoolResult'],
                  machine_selector_configs: Sequence['outputs.GetClusterV2RkeConfigMachineSelectorConfigResult'],
+                 machine_selector_files: Sequence['outputs.GetClusterV2RkeConfigMachineSelectorFileResult'],
                  additional_manifest: Optional[str] = None,
                  chart_values: Optional[str] = None,
                  etcd_snapshot_create: Optional['outputs.GetClusterV2RkeConfigEtcdSnapshotCreateResult'] = None,
@@ -42875,6 +43421,7 @@ class GetClusterV2RkeConfigResult(dict):
         :param Sequence['GetClusterV2RkeConfigMachinePoolDefaultArgs'] machine_pool_defaults: Default values for machine pool configurations if unset
         :param Sequence['GetClusterV2RkeConfigMachinePoolArgs'] machine_pools: Cluster V2 machine pools
         :param Sequence['GetClusterV2RkeConfigMachineSelectorConfigArgs'] machine_selector_configs: Cluster V2 machine selector config
+        :param Sequence['GetClusterV2RkeConfigMachineSelectorFileArgs'] machine_selector_files: Cluster V2 machine selector files
         :param str additional_manifest: Cluster V2 additional manifest
         :param str chart_values: Cluster V2 chart values. It should be in YAML format
         :param 'GetClusterV2RkeConfigEtcdSnapshotCreateArgs' etcd_snapshot_create: Cluster V2 etcd snapshot create
@@ -42889,6 +43436,7 @@ class GetClusterV2RkeConfigResult(dict):
         pulumi.set(__self__, "machine_pool_defaults", machine_pool_defaults)
         pulumi.set(__self__, "machine_pools", machine_pools)
         pulumi.set(__self__, "machine_selector_configs", machine_selector_configs)
+        pulumi.set(__self__, "machine_selector_files", machine_selector_files)
         if additional_manifest is not None:
             pulumi.set(__self__, "additional_manifest", additional_manifest)
         if chart_values is not None:
@@ -42939,6 +43487,14 @@ class GetClusterV2RkeConfigResult(dict):
         Cluster V2 machine selector config
         """
         return pulumi.get(self, "machine_selector_configs")
+
+    @property
+    @pulumi.getter(name="machineSelectorFiles")
+    def machine_selector_files(self) -> Sequence['outputs.GetClusterV2RkeConfigMachineSelectorFileResult']:
+        """
+        Cluster V2 machine selector files
+        """
+        return pulumi.get(self, "machine_selector_files")
 
     @property
     @pulumi.getter(name="additionalManifest")
@@ -43513,13 +44069,17 @@ class GetClusterV2RkeConfigMachinePoolDefaultResult(dict):
 class GetClusterV2RkeConfigMachinePoolMachineConfigResult(dict):
     def __init__(__self__, *,
                  kind: str,
-                 name: str):
+                 name: str,
+                 api_version: Optional[str] = None):
         """
         :param str kind: Machine config kind
         :param str name: The name of the Cluster v2 (string)
+        :param str api_version: Machine config API version
         """
         pulumi.set(__self__, "kind", kind)
         pulumi.set(__self__, "name", name)
+        if api_version is not None:
+            pulumi.set(__self__, "api_version", api_version)
 
     @property
     @pulumi.getter
@@ -43536,6 +44096,14 @@ class GetClusterV2RkeConfigMachinePoolMachineConfigResult(dict):
         The name of the Cluster v2 (string)
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="apiVersion")
+    def api_version(self) -> Optional[str]:
+        """
+        Machine config API version
+        """
+        return pulumi.get(self, "api_version")
 
 
 @pulumi.output_type
@@ -43660,6 +44228,356 @@ class GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorResult(dict)
 
 @pulumi.output_type
 class GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionResult(dict):
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 operator: Optional[str] = None,
+                 values: Optional[Sequence[str]] = None):
+        """
+        :param str key: Label selector requirement key
+        :param str operator: Label selector operator
+        :param Sequence[str] values: Label selector requirement values
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        Label selector requirement key
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        """
+        Label selector operator
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[str]]:
+        """
+        Label selector requirement values
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetClusterV2RkeConfigMachineSelectorFileResult(dict):
+    def __init__(__self__, *,
+                 file_sources: Optional[Sequence['outputs.GetClusterV2RkeConfigMachineSelectorFileFileSourceResult']] = None,
+                 machine_label_selector: Optional['outputs.GetClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorResult'] = None):
+        """
+        :param Sequence['GetClusterV2RkeConfigMachineSelectorFileFileSourceArgs'] file_sources: File sources
+        :param 'GetClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorArgs' machine_label_selector: Machine label selector
+        """
+        if file_sources is not None:
+            pulumi.set(__self__, "file_sources", file_sources)
+        if machine_label_selector is not None:
+            pulumi.set(__self__, "machine_label_selector", machine_label_selector)
+
+    @property
+    @pulumi.getter(name="fileSources")
+    def file_sources(self) -> Optional[Sequence['outputs.GetClusterV2RkeConfigMachineSelectorFileFileSourceResult']]:
+        """
+        File sources
+        """
+        return pulumi.get(self, "file_sources")
+
+    @property
+    @pulumi.getter(name="machineLabelSelector")
+    def machine_label_selector(self) -> Optional['outputs.GetClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorResult']:
+        """
+        Machine label selector
+        """
+        return pulumi.get(self, "machine_label_selector")
+
+
+@pulumi.output_type
+class GetClusterV2RkeConfigMachineSelectorFileFileSourceResult(dict):
+    def __init__(__self__, *,
+                 configmap: Optional['outputs.GetClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapResult'] = None,
+                 secret: Optional['outputs.GetClusterV2RkeConfigMachineSelectorFileFileSourceSecretResult'] = None):
+        """
+        :param 'GetClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapArgs' configmap: The configmap which is the source of files
+        :param 'GetClusterV2RkeConfigMachineSelectorFileFileSourceSecretArgs' secret: The secret which is the source of files
+        """
+        if configmap is not None:
+            pulumi.set(__self__, "configmap", configmap)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
+
+    @property
+    @pulumi.getter
+    def configmap(self) -> Optional['outputs.GetClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapResult']:
+        """
+        The configmap which is the source of files
+        """
+        return pulumi.get(self, "configmap")
+
+    @property
+    @pulumi.getter
+    def secret(self) -> Optional['outputs.GetClusterV2RkeConfigMachineSelectorFileFileSourceSecretResult']:
+        """
+        The secret which is the source of files
+        """
+        return pulumi.get(self, "secret")
+
+
+@pulumi.output_type
+class GetClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 default_permissions: Optional[str] = None,
+                 items: Optional[Sequence['outputs.GetClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapItemResult']] = None):
+        """
+        :param str name: The name of the Cluster v2 (string)
+        :param str default_permissions: The default permissions to be applied when they are not set at the item level
+        :param Sequence['GetClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapItemArgs'] items: Items(files) to retrieve from the K8s object
+        """
+        pulumi.set(__self__, "name", name)
+        if default_permissions is not None:
+            pulumi.set(__self__, "default_permissions", default_permissions)
+        if items is not None:
+            pulumi.set(__self__, "items", items)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the Cluster v2 (string)
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="defaultPermissions")
+    def default_permissions(self) -> Optional[str]:
+        """
+        The default permissions to be applied when they are not set at the item level
+        """
+        return pulumi.get(self, "default_permissions")
+
+    @property
+    @pulumi.getter
+    def items(self) -> Optional[Sequence['outputs.GetClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapItemResult']]:
+        """
+        Items(files) to retrieve from the K8s object
+        """
+        return pulumi.get(self, "items")
+
+
+@pulumi.output_type
+class GetClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapItemResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 path: str,
+                 dynamic: Optional[bool] = None,
+                 hash: Optional[str] = None,
+                 permissions: Optional[str] = None):
+        """
+        :param str key: The key of the item(file) to retrieve
+        :param str path: The path to put the file in the target node
+        :param bool dynamic: If ture, the file is ignored when determining whether the node should be drained before updating the node plan (default: true).
+        :param str hash: The base64 encoded value of the SHA256 checksum of the file's content
+        :param str permissions: The numeric representation of the file permissions
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "path", path)
+        if dynamic is not None:
+            pulumi.set(__self__, "dynamic", dynamic)
+        if hash is not None:
+            pulumi.set(__self__, "hash", hash)
+        if permissions is not None:
+            pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The key of the item(file) to retrieve
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        The path to put the file in the target node
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def dynamic(self) -> Optional[bool]:
+        """
+        If ture, the file is ignored when determining whether the node should be drained before updating the node plan (default: true).
+        """
+        return pulumi.get(self, "dynamic")
+
+    @property
+    @pulumi.getter
+    def hash(self) -> Optional[str]:
+        """
+        The base64 encoded value of the SHA256 checksum of the file's content
+        """
+        return pulumi.get(self, "hash")
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> Optional[str]:
+        """
+        The numeric representation of the file permissions
+        """
+        return pulumi.get(self, "permissions")
+
+
+@pulumi.output_type
+class GetClusterV2RkeConfigMachineSelectorFileFileSourceSecretResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 default_permissions: Optional[str] = None,
+                 items: Optional[Sequence['outputs.GetClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemResult']] = None):
+        """
+        :param str name: The name of the Cluster v2 (string)
+        :param str default_permissions: The default permissions to be applied when they are not set at the item level
+        :param Sequence['GetClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemArgs'] items: Items(files) to retrieve from the K8s object
+        """
+        pulumi.set(__self__, "name", name)
+        if default_permissions is not None:
+            pulumi.set(__self__, "default_permissions", default_permissions)
+        if items is not None:
+            pulumi.set(__self__, "items", items)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the Cluster v2 (string)
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="defaultPermissions")
+    def default_permissions(self) -> Optional[str]:
+        """
+        The default permissions to be applied when they are not set at the item level
+        """
+        return pulumi.get(self, "default_permissions")
+
+    @property
+    @pulumi.getter
+    def items(self) -> Optional[Sequence['outputs.GetClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemResult']]:
+        """
+        Items(files) to retrieve from the K8s object
+        """
+        return pulumi.get(self, "items")
+
+
+@pulumi.output_type
+class GetClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 path: str,
+                 dynamic: Optional[bool] = None,
+                 hash: Optional[str] = None,
+                 permissions: Optional[str] = None):
+        """
+        :param str key: The key of the item(file) to retrieve
+        :param str path: The path to put the file in the target node
+        :param bool dynamic: If ture, the file is ignored when determining whether the node should be drained before updating the node plan (default: true).
+        :param str hash: The base64 encoded value of the SHA256 checksum of the file's content
+        :param str permissions: The numeric representation of the file permissions
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "path", path)
+        if dynamic is not None:
+            pulumi.set(__self__, "dynamic", dynamic)
+        if hash is not None:
+            pulumi.set(__self__, "hash", hash)
+        if permissions is not None:
+            pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The key of the item(file) to retrieve
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        The path to put the file in the target node
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def dynamic(self) -> Optional[bool]:
+        """
+        If ture, the file is ignored when determining whether the node should be drained before updating the node plan (default: true).
+        """
+        return pulumi.get(self, "dynamic")
+
+    @property
+    @pulumi.getter
+    def hash(self) -> Optional[str]:
+        """
+        The base64 encoded value of the SHA256 checksum of the file's content
+        """
+        return pulumi.get(self, "hash")
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> Optional[str]:
+        """
+        The numeric representation of the file permissions
+        """
+        return pulumi.get(self, "permissions")
+
+
+@pulumi.output_type
+class GetClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorResult(dict):
+    def __init__(__self__, *,
+                 match_expressions: Optional[Sequence['outputs.GetClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpressionResult']] = None,
+                 match_labels: Optional[Mapping[str, Any]] = None):
+        """
+        :param Sequence['GetClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpressionArgs'] match_expressions: Label selector match expressions
+        :param Mapping[str, Any] match_labels: Label selector match labels
+        """
+        if match_expressions is not None:
+            pulumi.set(__self__, "match_expressions", match_expressions)
+        if match_labels is not None:
+            pulumi.set(__self__, "match_labels", match_labels)
+
+    @property
+    @pulumi.getter(name="matchExpressions")
+    def match_expressions(self) -> Optional[Sequence['outputs.GetClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpressionResult']]:
+        """
+        Label selector match expressions
+        """
+        return pulumi.get(self, "match_expressions")
+
+    @property
+    @pulumi.getter(name="matchLabels")
+    def match_labels(self) -> Optional[Mapping[str, Any]]:
+        """
+        Label selector match labels
+        """
+        return pulumi.get(self, "match_labels")
+
+
+@pulumi.output_type
+class GetClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpressionResult(dict):
     def __init__(__self__, *,
                  key: Optional[str] = None,
                  operator: Optional[str] = None,

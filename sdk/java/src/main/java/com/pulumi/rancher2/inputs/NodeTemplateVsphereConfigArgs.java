@@ -227,6 +227,21 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * Duration in seconds before the graceful shutdown of the VM times out and the VM is destroyed. A force destroy will be performed when the value is zero
+     * 
+     */
+    @Import(name="gracefulShutdownTimeout")
+    private @Nullable Output<String> gracefulShutdownTimeout;
+
+    /**
+     * @return Duration in seconds before the graceful shutdown of the VM times out and the VM is destroyed. A force destroy will be performed when the value is zero
+     * 
+     */
+    public Optional<Output<String>> gracefulShutdownTimeout() {
+        return Optional.ofNullable(this.gracefulShutdownTimeout);
+    }
+
+    /**
      * vSphere compute resource where the docker VM will be instantiated. This can be omitted if using a cluster with DRS (string)
      * 
      */
@@ -498,6 +513,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         this.datastoreCluster = $.datastoreCluster;
         this.diskSize = $.diskSize;
         this.folder = $.folder;
+        this.gracefulShutdownTimeout = $.gracefulShutdownTimeout;
         this.hostsystem = $.hostsystem;
         this.memorySize = $.memorySize;
         this.networks = $.networks;
@@ -847,6 +863,27 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
          */
         public Builder folder(String folder) {
             return folder(Output.of(folder));
+        }
+
+        /**
+         * @param gracefulShutdownTimeout Duration in seconds before the graceful shutdown of the VM times out and the VM is destroyed. A force destroy will be performed when the value is zero
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gracefulShutdownTimeout(@Nullable Output<String> gracefulShutdownTimeout) {
+            $.gracefulShutdownTimeout = gracefulShutdownTimeout;
+            return this;
+        }
+
+        /**
+         * @param gracefulShutdownTimeout Duration in seconds before the graceful shutdown of the VM times out and the VM is destroyed. A force destroy will be performed when the value is zero
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gracefulShutdownTimeout(String gracefulShutdownTimeout) {
+            return gracefulShutdownTimeout(Output.of(gracefulShutdownTimeout));
         }
 
         /**

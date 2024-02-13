@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v6/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v6/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -71,6 +71,8 @@ type GlobalRole struct {
 	Builtin pulumi.BoolOutput `pulumi:"builtin"`
 	// Global role description (string)
 	Description pulumi.StringOutput `pulumi:"description"`
+	// Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster
+	InheritedClusterRoles pulumi.StringArrayOutput `pulumi:"inheritedClusterRoles"`
 	// Labels for global role object (map)
 	Labels pulumi.MapOutput `pulumi:"labels"`
 	// Global role name (string)
@@ -117,6 +119,8 @@ type globalRoleState struct {
 	Builtin *bool `pulumi:"builtin"`
 	// Global role description (string)
 	Description *string `pulumi:"description"`
+	// Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster
+	InheritedClusterRoles []string `pulumi:"inheritedClusterRoles"`
 	// Labels for global role object (map)
 	Labels map[string]interface{} `pulumi:"labels"`
 	// Global role name (string)
@@ -134,6 +138,8 @@ type GlobalRoleState struct {
 	Builtin pulumi.BoolPtrInput
 	// Global role description (string)
 	Description pulumi.StringPtrInput
+	// Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster
+	InheritedClusterRoles pulumi.StringArrayInput
 	// Labels for global role object (map)
 	Labels pulumi.MapInput
 	// Global role name (string)
@@ -153,6 +159,8 @@ type globalRoleArgs struct {
 	Annotations map[string]interface{} `pulumi:"annotations"`
 	// Global role description (string)
 	Description *string `pulumi:"description"`
+	// Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster
+	InheritedClusterRoles []string `pulumi:"inheritedClusterRoles"`
 	// Labels for global role object (map)
 	Labels map[string]interface{} `pulumi:"labels"`
 	// Global role name (string)
@@ -169,6 +177,8 @@ type GlobalRoleArgs struct {
 	Annotations pulumi.MapInput
 	// Global role description (string)
 	Description pulumi.StringPtrInput
+	// Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster
+	InheritedClusterRoles pulumi.StringArrayInput
 	// Labels for global role object (map)
 	Labels pulumi.MapInput
 	// Global role name (string)
@@ -279,6 +289,11 @@ func (o GlobalRoleOutput) Builtin() pulumi.BoolOutput {
 // Global role description (string)
 func (o GlobalRoleOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalRole) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster
+func (o GlobalRoleOutput) InheritedClusterRoles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GlobalRole) pulumi.StringArrayOutput { return v.InheritedClusterRoles }).(pulumi.StringArrayOutput)
 }
 
 // Labels for global role object (map)

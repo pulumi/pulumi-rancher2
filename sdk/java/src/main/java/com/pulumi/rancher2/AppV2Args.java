@@ -215,6 +215,21 @@ public final class AppV2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * System default registry providing images for app deployment (string)
+     * 
+     */
+    @Import(name="systemDefaultRegistry")
+    private @Nullable Output<String> systemDefaultRegistry;
+
+    /**
+     * @return System default registry providing images for app deployment (string)
+     * 
+     */
+    public Optional<Output<String>> systemDefaultRegistry() {
+        return Optional.ofNullable(this.systemDefaultRegistry);
+    }
+
+    /**
      * The app v2 values yaml. Yaml format is required (string)
      * 
      */
@@ -260,6 +275,7 @@ public final class AppV2Args extends com.pulumi.resources.ResourceArgs {
         this.namespace = $.namespace;
         this.projectId = $.projectId;
         this.repoName = $.repoName;
+        this.systemDefaultRegistry = $.systemDefaultRegistry;
         this.values = $.values;
         this.wait = $.wait;
     }
@@ -553,6 +569,27 @@ public final class AppV2Args extends com.pulumi.resources.ResourceArgs {
          */
         public Builder repoName(String repoName) {
             return repoName(Output.of(repoName));
+        }
+
+        /**
+         * @param systemDefaultRegistry System default registry providing images for app deployment (string)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder systemDefaultRegistry(@Nullable Output<String> systemDefaultRegistry) {
+            $.systemDefaultRegistry = systemDefaultRegistry;
+            return this;
+        }
+
+        /**
+         * @param systemDefaultRegistry System default registry providing images for app deployment (string)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder systemDefaultRegistry(String systemDefaultRegistry) {
+            return systemDefaultRegistry(Output.of(systemDefaultRegistry));
         }
 
         /**

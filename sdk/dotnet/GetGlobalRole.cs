@@ -71,6 +71,18 @@ namespace Pulumi.Rancher2
 
     public sealed class GetGlobalRoleArgs : global::Pulumi.InvokeArgs
     {
+        [Input("inheritedClusterRoles")]
+        private List<string>? _inheritedClusterRoles;
+
+        /// <summary>
+        /// (Optional) Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
+        /// </summary>
+        public List<string> InheritedClusterRoles
+        {
+            get => _inheritedClusterRoles ?? (_inheritedClusterRoles = new List<string>());
+            set => _inheritedClusterRoles = value;
+        }
+
         /// <summary>
         /// The name of the Global Role (string)
         /// </summary>
@@ -85,6 +97,18 @@ namespace Pulumi.Rancher2
 
     public sealed class GetGlobalRoleInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("inheritedClusterRoles")]
+        private InputList<string>? _inheritedClusterRoles;
+
+        /// <summary>
+        /// (Optional) Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
+        /// </summary>
+        public InputList<string> InheritedClusterRoles
+        {
+            get => _inheritedClusterRoles ?? (_inheritedClusterRoles = new InputList<string>());
+            set => _inheritedClusterRoles = value;
+        }
+
         /// <summary>
         /// The name of the Global Role (string)
         /// </summary>
@@ -118,6 +142,10 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// (Optional) Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
+        /// </summary>
+        public readonly ImmutableArray<string> InheritedClusterRoles;
+        /// <summary>
         /// (Computed) Labels for global role object (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
@@ -141,6 +169,8 @@ namespace Pulumi.Rancher2
 
             string id,
 
+            ImmutableArray<string> inheritedClusterRoles,
+
             ImmutableDictionary<string, object> labels,
 
             string name,
@@ -153,6 +183,7 @@ namespace Pulumi.Rancher2
             Builtin = builtin;
             Description = description;
             Id = id;
+            InheritedClusterRoles = inheritedClusterRoles;
             Labels = labels;
             Name = name;
             NewUserDefault = newUserDefault;

@@ -15,50 +15,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterV2RkeConfigEtcd {
     /**
-     * @return Disable ETCD snapshots. Default: `false` (bool)
+     * @return Disable ETCD snapshots.
      * 
      */
     private @Nullable Boolean disableSnapshots;
     /**
-     * @return Creation option for etcd service (list maxitems:1)
+     * @return Creation option for etcd service.
      * 
      */
     private @Nullable ClusterV2RkeConfigEtcdS3Config s3Config;
     /**
-     * @return ETCD snapshot retention (int)
+     * @return ETCD snapshot retention.
      * 
      */
     private @Nullable Integer snapshotRetention;
     /**
-     * @return ETCD snapshot schedule cron (e.g `\&#34;0 *{@literal /}5 * * *\&#34;`) (string)
+     * @return ETCD snapshot schedule cron (e.g `\&#34;0 *{@literal /}5 * * *\&#34;`).
      * 
      */
     private @Nullable String snapshotScheduleCron;
 
     private ClusterV2RkeConfigEtcd() {}
     /**
-     * @return Disable ETCD snapshots. Default: `false` (bool)
+     * @return Disable ETCD snapshots.
      * 
      */
     public Optional<Boolean> disableSnapshots() {
         return Optional.ofNullable(this.disableSnapshots);
     }
     /**
-     * @return Creation option for etcd service (list maxitems:1)
+     * @return Creation option for etcd service.
      * 
      */
     public Optional<ClusterV2RkeConfigEtcdS3Config> s3Config() {
         return Optional.ofNullable(this.s3Config);
     }
     /**
-     * @return ETCD snapshot retention (int)
+     * @return ETCD snapshot retention.
      * 
      */
     public Optional<Integer> snapshotRetention() {
         return Optional.ofNullable(this.snapshotRetention);
     }
     /**
-     * @return ETCD snapshot schedule cron (e.g `\&#34;0 *{@literal /}5 * * *\&#34;`) (string)
+     * @return ETCD snapshot schedule cron (e.g `\&#34;0 *{@literal /}5 * * *\&#34;`).
      * 
      */
     public Optional<String> snapshotScheduleCron() {

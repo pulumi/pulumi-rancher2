@@ -18,14 +18,14 @@ public final class ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArg
     public static final ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArgs Empty = new ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArgs();
 
     /**
-     * The taint effect. Default: `\&#34;NoExecute\&#34;` (string)
+     * The taint effect. Default: `\&#34;NoExecute\&#34;`.
      * 
      */
     @Import(name="effect")
     private @Nullable Output<String> effect;
 
     /**
-     * @return The taint effect. Default: `\&#34;NoExecute\&#34;` (string)
+     * @return The taint effect. Default: `\&#34;NoExecute\&#34;`.
      * 
      */
     public Optional<Output<String>> effect() {
@@ -33,14 +33,14 @@ public final class ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArg
     }
 
     /**
-     * Machine selector label match expressions key (string)
+     * Key is the name of the key of the item to retrieve.
      * 
      */
     @Import(name="key", required=true)
     private Output<String> key;
 
     /**
-     * @return Machine selector label match expressions key (string)
+     * @return Key is the name of the key of the item to retrieve.
      * 
      */
     public Output<String> key() {
@@ -48,14 +48,14 @@ public final class ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArg
     }
 
     /**
-     * Machine selector label match expressions operator (string)
+     * Operator represents a key&#39;s relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
      * 
      */
     @Import(name="operator")
     private @Nullable Output<String> operator;
 
     /**
-     * @return Machine selector label match expressions operator (string)
+     * @return Operator represents a key&#39;s relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
      * 
      */
     public Optional<Output<String>> operator() {
@@ -63,14 +63,14 @@ public final class ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArg
     }
 
     /**
-     * The number of seconds a pod will stay bound to a node with a matching taint (int)
+     * The number of seconds a pod will stay bound to a node with a matching taint.
      * 
      */
     @Import(name="seconds")
     private @Nullable Output<Integer> seconds;
 
     /**
-     * @return The number of seconds a pod will stay bound to a node with a matching taint (int)
+     * @return The number of seconds a pod will stay bound to a node with a matching taint.
      * 
      */
     public Optional<Output<Integer>> seconds() {
@@ -78,14 +78,14 @@ public final class ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArg
     }
 
     /**
-     * The taint value (string)
+     * The taint value.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return The taint value (string)
+     * @return The taint value.
      * 
      */
     public Optional<Output<String>> value() {
@@ -121,7 +121,7 @@ public final class ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArg
         }
 
         /**
-         * @param effect The taint effect. Default: `\&#34;NoExecute\&#34;` (string)
+         * @param effect The taint effect. Default: `\&#34;NoExecute\&#34;`.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArg
         }
 
         /**
-         * @param effect The taint effect. Default: `\&#34;NoExecute\&#34;` (string)
+         * @param effect The taint effect. Default: `\&#34;NoExecute\&#34;`.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArg
         }
 
         /**
-         * @param key Machine selector label match expressions key (string)
+         * @param key Key is the name of the key of the item to retrieve.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArg
         }
 
         /**
-         * @param key Machine selector label match expressions key (string)
+         * @param key Key is the name of the key of the item to retrieve.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArg
         }
 
         /**
-         * @param operator Machine selector label match expressions operator (string)
+         * @param operator Operator represents a key&#39;s relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArg
         }
 
         /**
-         * @param operator Machine selector label match expressions operator (string)
+         * @param operator Operator represents a key&#39;s relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArg
         }
 
         /**
-         * @param seconds The number of seconds a pod will stay bound to a node with a matching taint (int)
+         * @param seconds The number of seconds a pod will stay bound to a node with a matching taint.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArg
         }
 
         /**
-         * @param seconds The number of seconds a pod will stay bound to a node with a matching taint (int)
+         * @param seconds The number of seconds a pod will stay bound to a node with a matching taint.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArg
         }
 
         /**
-         * @param value The taint value (string)
+         * @param value The taint value.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArg
         }
 
         /**
-         * @param value The taint value (string)
+         * @param value The taint value.
          * 
          * @return builder
          * 

@@ -15,6 +15,9 @@ namespace Pulumi.Rancher2.Inputs
         [Input("datacenters")]
         public Input<string>? Datacenters { get; set; }
 
+        [Input("gracefulShutdownTimeout")]
+        public Input<string>? GracefulShutdownTimeout { get; set; }
+
         [Input("insecureFlag")]
         public Input<bool>? InsecureFlag { get; set; }
 

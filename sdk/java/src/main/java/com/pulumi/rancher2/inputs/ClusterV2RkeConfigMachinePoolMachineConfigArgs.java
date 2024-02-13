@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ClusterV2RkeConfigMachinePoolMachineConfigArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,14 +17,29 @@ public final class ClusterV2RkeConfigMachinePoolMachineConfigArgs extends com.pu
     public static final ClusterV2RkeConfigMachinePoolMachineConfigArgs Empty = new ClusterV2RkeConfigMachinePoolMachineConfigArgs();
 
     /**
-     * Machine config kind (string)
+     * Api version of the machine_config.
+     * 
+     */
+    @Import(name="apiVersion")
+    private @Nullable Output<String> apiVersion;
+
+    /**
+     * @return Api version of the machine_config.
+     * 
+     */
+    public Optional<Output<String>> apiVersion() {
+        return Optional.ofNullable(this.apiVersion);
+    }
+
+    /**
+     * Machine config kind.
      * 
      */
     @Import(name="kind", required=true)
     private Output<String> kind;
 
     /**
-     * @return Machine config kind (string)
+     * @return Machine config kind.
      * 
      */
     public Output<String> kind() {
@@ -30,14 +47,14 @@ public final class ClusterV2RkeConfigMachinePoolMachineConfigArgs extends com.pu
     }
 
     /**
-     * The name of the Cluster v2 (string)
+     * The name of the cluster.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the Cluster v2 (string)
+     * @return The name of the cluster.
      * 
      */
     public Output<String> name() {
@@ -47,6 +64,7 @@ public final class ClusterV2RkeConfigMachinePoolMachineConfigArgs extends com.pu
     private ClusterV2RkeConfigMachinePoolMachineConfigArgs() {}
 
     private ClusterV2RkeConfigMachinePoolMachineConfigArgs(ClusterV2RkeConfigMachinePoolMachineConfigArgs $) {
+        this.apiVersion = $.apiVersion;
         this.kind = $.kind;
         this.name = $.name;
     }
@@ -70,7 +88,28 @@ public final class ClusterV2RkeConfigMachinePoolMachineConfigArgs extends com.pu
         }
 
         /**
-         * @param kind Machine config kind (string)
+         * @param apiVersion Api version of the machine_config.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiVersion(@Nullable Output<String> apiVersion) {
+            $.apiVersion = apiVersion;
+            return this;
+        }
+
+        /**
+         * @param apiVersion Api version of the machine_config.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiVersion(String apiVersion) {
+            return apiVersion(Output.of(apiVersion));
+        }
+
+        /**
+         * @param kind Machine config kind.
          * 
          * @return builder
          * 
@@ -81,7 +120,7 @@ public final class ClusterV2RkeConfigMachinePoolMachineConfigArgs extends com.pu
         }
 
         /**
-         * @param kind Machine config kind (string)
+         * @param kind Machine config kind.
          * 
          * @return builder
          * 
@@ -91,7 +130,7 @@ public final class ClusterV2RkeConfigMachinePoolMachineConfigArgs extends com.pu
         }
 
         /**
-         * @param name The name of the Cluster v2 (string)
+         * @param name The name of the cluster.
          * 
          * @return builder
          * 
@@ -102,7 +141,7 @@ public final class ClusterV2RkeConfigMachinePoolMachineConfigArgs extends com.pu
         }
 
         /**
-         * @param name The name of the Cluster v2 (string)
+         * @param name The name of the cluster.
          * 
          * @return builder
          * 

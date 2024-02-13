@@ -14,15 +14,15 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression
     {
         /// <summary>
-        /// Machine selector label match expressions key (string)
+        /// Key is the name of the key of the item to retrieve.
         /// </summary>
         public readonly string? Key;
         /// <summary>
-        /// Machine selector label match expressions operator (string)
+        /// Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
         /// </summary>
         public readonly string? Operator;
         /// <summary>
-        /// Machine selector label match expressions values (List string)
+        /// Values is a list of string values.
         /// </summary>
         public readonly ImmutableArray<string> Values;
 

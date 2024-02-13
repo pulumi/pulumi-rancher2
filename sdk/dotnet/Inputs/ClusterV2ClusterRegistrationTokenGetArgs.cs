@@ -16,7 +16,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _annotations;
 
         /// <summary>
-        /// Annotations for the Cluster V2 (map)
+        /// Annotations for the Cluster.
         /// </summary>
         public InputMap<object> Annotations
         {
@@ -25,37 +25,37 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Cluster ID (string)
+        /// Cluster ID.
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// Command to execute in a imported k8s cluster (string)
+        /// Command to execute in an imported k8s cluster.
         /// </summary>
         [Input("command")]
         public Input<string>? Command { get; set; }
 
         /// <summary>
-        /// (Computed) The ID of the resource (string)
+        /// (Computed, string) The ID of the resource.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// Insecure command to execute in a imported k8s cluster (string)
+        /// Insecure command to execute in an imported k8s cluster.
         /// </summary>
         [Input("insecureCommand")]
         public Input<string>? InsecureCommand { get; set; }
 
         /// <summary>
-        /// Insecure node command to execute in a imported k8s cluster (string)
+        /// Insecure node command to execute in an imported k8s cluster.
         /// </summary>
         [Input("insecureNodeCommand")]
         public Input<string>? InsecureNodeCommand { get; set; }
 
         /// <summary>
-        /// Insecure windows command to execute in a imported k8s cluster (string)
+        /// Insecure windows command to execute in an imported k8s cluster.
         /// </summary>
         [Input("insecureWindowsNodeCommand")]
         public Input<string>? InsecureWindowsNodeCommand { get; set; }
@@ -64,7 +64,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// Labels for the Cluster V2 (map)
+        /// Labels for the Cluster.
         /// </summary>
         public InputMap<object> Labels
         {
@@ -73,19 +73,19 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// K8s manifest url to execute with `kubectl` to import an existing k8s cluster (string)
+        /// K8s manifest url to execute with `kubectl` to import an existing k8s cluster.
         /// </summary>
         [Input("manifestUrl")]
         public Input<string>? ManifestUrl { get; set; }
 
         /// <summary>
-        /// The name of the Cluster v2 (string)
+        /// The name of the cluster.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Node command to execute in linux nodes for custom k8s cluster (string)
+        /// Node command to execute in Linux nodes for custom k8s cluster.
         /// </summary>
         [Input("nodeCommand")]
         public Input<string>? NodeCommand { get; set; }
@@ -94,7 +94,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _token;
 
         /// <summary>
-        /// Token for cluster registration token object (string)
+        /// Token for cluster registration token object.
         /// </summary>
         public Input<string>? Token
         {
@@ -107,7 +107,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Node command to execute in windows nodes for custom k8s cluster (string)
+        /// Node command to execute in Windows nodes for custom k8s cluster.
         /// </summary>
         [Input("windowsNodeCommand")]
         public Input<string>? WindowsNodeCommand { get; set; }

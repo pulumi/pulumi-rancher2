@@ -32,7 +32,7 @@ class CatalogV2Args:
         The set of arguments for constructing a CatalogV2 resource.
         :param pulumi.Input[str] cluster_id: The cluster id of the catalog V2 (string)
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the catalog v2 (map)
-        :param pulumi.Input[str] ca_bundle: PEM encoded CA bundle which will be used to validate the repo's certificate (string)
+        :param pulumi.Input[str] ca_bundle: CA certificate in base64-encoded DER format which will be used to validate the repo's certificate (string)
         :param pulumi.Input[bool] enabled: If disabled the repo clone will not be updated or allowed to be installed from. Default: `true` (bool)
         :param pulumi.Input[str] git_branch: Git Repository branch containing Helm chart definitions. Default `master` (string)
         :param pulumi.Input[str] git_repo: The url of the catalog v2 repo. Conflicts with `url` (string)
@@ -101,7 +101,7 @@ class CatalogV2Args:
     @pulumi.getter(name="caBundle")
     def ca_bundle(self) -> Optional[pulumi.Input[str]]:
         """
-        PEM encoded CA bundle which will be used to validate the repo's certificate (string)
+        CA certificate in base64-encoded DER format which will be used to validate the repo's certificate (string)
         """
         return pulumi.get(self, "ca_bundle")
 
@@ -263,7 +263,7 @@ class _CatalogV2State:
         """
         Input properties used for looking up and filtering CatalogV2 resources.
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the catalog v2 (map)
-        :param pulumi.Input[str] ca_bundle: PEM encoded CA bundle which will be used to validate the repo's certificate (string)
+        :param pulumi.Input[str] ca_bundle: CA certificate in base64-encoded DER format which will be used to validate the repo's certificate (string)
         :param pulumi.Input[str] cluster_id: The cluster id of the catalog V2 (string)
         :param pulumi.Input[bool] enabled: If disabled the repo clone will not be updated or allowed to be installed from. Default: `true` (bool)
         :param pulumi.Input[str] git_branch: Git Repository branch containing Helm chart definitions. Default `master` (string)
@@ -325,7 +325,7 @@ class _CatalogV2State:
     @pulumi.getter(name="caBundle")
     def ca_bundle(self) -> Optional[pulumi.Input[str]]:
         """
-        PEM encoded CA bundle which will be used to validate the repo's certificate (string)
+        CA certificate in base64-encoded DER format which will be used to validate the repo's certificate (string)
         """
         return pulumi.get(self, "ca_bundle")
 
@@ -524,7 +524,7 @@ class CatalogV2(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the catalog v2 (map)
-        :param pulumi.Input[str] ca_bundle: PEM encoded CA bundle which will be used to validate the repo's certificate (string)
+        :param pulumi.Input[str] ca_bundle: CA certificate in base64-encoded DER format which will be used to validate the repo's certificate (string)
         :param pulumi.Input[str] cluster_id: The cluster id of the catalog V2 (string)
         :param pulumi.Input[bool] enabled: If disabled the repo clone will not be updated or allowed to be installed from. Default: `true` (bool)
         :param pulumi.Input[str] git_branch: Git Repository branch containing Helm chart definitions. Default `master` (string)
@@ -643,7 +643,7 @@ class CatalogV2(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the catalog v2 (map)
-        :param pulumi.Input[str] ca_bundle: PEM encoded CA bundle which will be used to validate the repo's certificate (string)
+        :param pulumi.Input[str] ca_bundle: CA certificate in base64-encoded DER format which will be used to validate the repo's certificate (string)
         :param pulumi.Input[str] cluster_id: The cluster id of the catalog V2 (string)
         :param pulumi.Input[bool] enabled: If disabled the repo clone will not be updated or allowed to be installed from. Default: `true` (bool)
         :param pulumi.Input[str] git_branch: Git Repository branch containing Helm chart definitions. Default `master` (string)
@@ -691,7 +691,7 @@ class CatalogV2(pulumi.CustomResource):
     @pulumi.getter(name="caBundle")
     def ca_bundle(self) -> pulumi.Output[Optional[str]]:
         """
-        PEM encoded CA bundle which will be used to validate the repo's certificate (string)
+        CA certificate in base64-encoded DER format which will be used to validate the repo's certificate (string)
         """
         return pulumi.get(self, "ca_bundle")
 

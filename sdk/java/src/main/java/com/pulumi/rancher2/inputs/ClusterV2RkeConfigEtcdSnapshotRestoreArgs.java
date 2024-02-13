@@ -18,14 +18,14 @@ public final class ClusterV2RkeConfigEtcdSnapshotRestoreArgs extends com.pulumi.
     public static final ClusterV2RkeConfigEtcdSnapshotRestoreArgs Empty = new ClusterV2RkeConfigEtcdSnapshotRestoreArgs();
 
     /**
-     * ETCD snapshot desired generation (int)
+     * ETCD snapshot desired generation.
      * 
      */
     @Import(name="generation", required=true)
     private Output<Integer> generation;
 
     /**
-     * @return ETCD snapshot desired generation (int)
+     * @return ETCD snapshot desired generation.
      * 
      */
     public Output<Integer> generation() {
@@ -33,14 +33,14 @@ public final class ClusterV2RkeConfigEtcdSnapshotRestoreArgs extends com.pulumi.
     }
 
     /**
-     * The name of the Cluster v2 (string)
+     * The name of the cluster.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the Cluster v2 (string)
+     * @return The name of the cluster.
      * 
      */
     public Output<String> name() {
@@ -48,14 +48,14 @@ public final class ClusterV2RkeConfigEtcdSnapshotRestoreArgs extends com.pulumi.
     }
 
     /**
-     * ETCD restore RKE config (set to none, all, or kubernetesVersion) (string)
+     * ETCD restore RKE config (set to none, all, or kubernetesVersion).
      * 
      */
     @Import(name="restoreRkeConfig")
     private @Nullable Output<String> restoreRkeConfig;
 
     /**
-     * @return ETCD restore RKE config (set to none, all, or kubernetesVersion) (string)
+     * @return ETCD restore RKE config (set to none, all, or kubernetesVersion).
      * 
      */
     public Optional<Output<String>> restoreRkeConfig() {
@@ -89,7 +89,7 @@ public final class ClusterV2RkeConfigEtcdSnapshotRestoreArgs extends com.pulumi.
         }
 
         /**
-         * @param generation ETCD snapshot desired generation (int)
+         * @param generation ETCD snapshot desired generation.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class ClusterV2RkeConfigEtcdSnapshotRestoreArgs extends com.pulumi.
         }
 
         /**
-         * @param generation ETCD snapshot desired generation (int)
+         * @param generation ETCD snapshot desired generation.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class ClusterV2RkeConfigEtcdSnapshotRestoreArgs extends com.pulumi.
         }
 
         /**
-         * @param name The name of the Cluster v2 (string)
+         * @param name The name of the cluster.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class ClusterV2RkeConfigEtcdSnapshotRestoreArgs extends com.pulumi.
         }
 
         /**
-         * @param name The name of the Cluster v2 (string)
+         * @param name The name of the cluster.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class ClusterV2RkeConfigEtcdSnapshotRestoreArgs extends com.pulumi.
         }
 
         /**
-         * @param restoreRkeConfig ETCD restore RKE config (set to none, all, or kubernetesVersion) (string)
+         * @param restoreRkeConfig ETCD restore RKE config (set to none, all, or kubernetesVersion).
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class ClusterV2RkeConfigEtcdSnapshotRestoreArgs extends com.pulumi.
         }
 
         /**
-         * @param restoreRkeConfig ETCD restore RKE config (set to none, all, or kubernetesVersion) (string)
+         * @param restoreRkeConfig ETCD restore RKE config (set to none, all, or kubernetesVersion).
          * 
          * @return builder
          * 

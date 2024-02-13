@@ -113,6 +113,20 @@ public class GlobalRole extends com.pulumi.resources.CustomResource {
         return this.description;
     }
     /**
+     * Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster
+     * 
+     */
+    @Export(name="inheritedClusterRoles", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> inheritedClusterRoles;
+
+    /**
+     * @return Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster
+     * 
+     */
+    public Output<Optional<List<String>>> inheritedClusterRoles() {
+        return Codegen.optional(this.inheritedClusterRoles);
+    }
+    /**
      * Labels for global role object (map)
      * 
      */

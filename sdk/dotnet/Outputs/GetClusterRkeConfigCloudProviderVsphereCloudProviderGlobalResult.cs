@@ -14,6 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobalResult
     {
         public readonly string Datacenters;
+        public readonly string? GracefulShutdownTimeout;
         public readonly bool InsecureFlag;
         public readonly string Password;
         public readonly string Port;
@@ -23,6 +24,8 @@ namespace Pulumi.Rancher2.Outputs
         [OutputConstructor]
         private GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobalResult(
             string datacenters,
+
+            string? gracefulShutdownTimeout,
 
             bool insecureFlag,
 
@@ -35,6 +38,7 @@ namespace Pulumi.Rancher2.Outputs
             string user)
         {
             Datacenters = datacenters;
+            GracefulShutdownTimeout = gracefulShutdownTimeout;
             InsecureFlag = insecureFlag;
             Password = password;
             Port = port;

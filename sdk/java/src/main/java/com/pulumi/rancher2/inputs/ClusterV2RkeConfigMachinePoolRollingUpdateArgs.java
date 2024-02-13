@@ -16,14 +16,14 @@ public final class ClusterV2RkeConfigMachinePoolRollingUpdateArgs extends com.pu
     public static final ClusterV2RkeConfigMachinePoolRollingUpdateArgs Empty = new ClusterV2RkeConfigMachinePoolRollingUpdateArgs();
 
     /**
-     * Rolling update max surge (string)
+     * Rolling update max surge.
      * 
      */
     @Import(name="maxSurge")
     private @Nullable Output<String> maxSurge;
 
     /**
-     * @return Rolling update max surge (string)
+     * @return Rolling update max surge.
      * 
      */
     public Optional<Output<String>> maxSurge() {
@@ -31,14 +31,14 @@ public final class ClusterV2RkeConfigMachinePoolRollingUpdateArgs extends com.pu
     }
 
     /**
-     * Rolling update max unavailable (string)
+     * Rolling update max unavailable.
      * 
      */
     @Import(name="maxUnavailable")
     private @Nullable Output<String> maxUnavailable;
 
     /**
-     * @return Rolling update max unavailable (string)
+     * @return Rolling update max unavailable.
      * 
      */
     public Optional<Output<String>> maxUnavailable() {
@@ -71,7 +71,7 @@ public final class ClusterV2RkeConfigMachinePoolRollingUpdateArgs extends com.pu
         }
 
         /**
-         * @param maxSurge Rolling update max surge (string)
+         * @param maxSurge Rolling update max surge.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class ClusterV2RkeConfigMachinePoolRollingUpdateArgs extends com.pu
         }
 
         /**
-         * @param maxSurge Rolling update max surge (string)
+         * @param maxSurge Rolling update max surge.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class ClusterV2RkeConfigMachinePoolRollingUpdateArgs extends com.pu
         }
 
         /**
-         * @param maxUnavailable Rolling update max unavailable (string)
+         * @param maxUnavailable Rolling update max unavailable.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class ClusterV2RkeConfigMachinePoolRollingUpdateArgs extends com.pu
         }
 
         /**
-         * @param maxUnavailable Rolling update max unavailable (string)
+         * @param maxUnavailable Rolling update max unavailable.
          * 
          * @return builder
          * 

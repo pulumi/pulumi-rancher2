@@ -14,23 +14,23 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterV2RkeConfigMachinePool
     {
         /// <summary>
-        /// Annotations for the Cluster V2 (map)
+        /// Annotations for the Cluster.
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Annotations;
         /// <summary>
-        /// Cluster V2 cloud credential secret name (string)
+        /// Cloud credential secret name is the secret to be used when a cloud credential secret name is not specified at the machine pool level.
         /// </summary>
         public readonly string? CloudCredentialSecretName;
         /// <summary>
-        /// Machine pool control plane role? (bool)
+        /// Machine pool control plane role?
         /// </summary>
         public readonly bool? ControlPlaneRole;
         /// <summary>
-        /// Machine Pool Drain Before Delete? (bool)
+        /// Machine Pool Drain Before Delete?
         /// </summary>
         public readonly bool? DrainBeforeDelete;
         /// <summary>
-        /// Machine pool etcd role? (bool)
+        /// Machine pool etcd role?
         /// </summary>
         public readonly bool? EtcdRole;
         /// <summary>
@@ -38,59 +38,59 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly int? HostnameLengthLimit;
         /// <summary>
-        /// Labels for the Cluster V2 (map)
+        /// Labels for the Cluster.
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Labels;
         /// <summary>
-        /// Machine pool node config (list)
+        /// Machine pool node config.
         /// </summary>
         public readonly Outputs.ClusterV2RkeConfigMachinePoolMachineConfig MachineConfig;
         /// <summary>
-        /// Labels for Machine pool nodes (map)
+        /// Labels for Machine pool nodes.
         /// </summary>
         public readonly ImmutableDictionary<string, object>? MachineLabels;
         /// <summary>
-        /// Max unhealthy nodes for automated replacement to be allowed (string)
+        /// Max unhealthy nodes for automated replacement to be allowed.
         /// </summary>
         public readonly string? MaxUnhealthy;
         /// <summary>
-        /// The name of the Cluster v2 (string)
+        /// The name of the cluster.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Seconds a machine has to drain before deletion (int)
+        /// Seconds a machine has to drain before deletion.
         /// </summary>
         public readonly int? NodeDrainTimeout;
         /// <summary>
-        /// Seconds a new node has to become active before it is replaced (int)
+        /// Seconds a new node has to become active before it is replaced.
         /// </summary>
         public readonly int? NodeStartupTimeoutSeconds;
         /// <summary>
-        /// Machine pool paused? (bool)
+        /// Machine pool paused?
         /// </summary>
         public readonly bool? Paused;
         /// <summary>
-        /// Machine pool quantity (int)
+        /// Machine pool quantity.
         /// </summary>
         public readonly int? Quantity;
         /// <summary>
-        /// Machine pool rolling update (List maxitems:1)
+        /// Machine pool rolling update.
         /// </summary>
         public readonly Outputs.ClusterV2RkeConfigMachinePoolRollingUpdate? RollingUpdate;
         /// <summary>
-        /// Machine pool taints (list)
+        /// Machine pool taints.
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterV2RkeConfigMachinePoolTaint> Taints;
         /// <summary>
-        /// Seconds an unhealthy node has to become active before it is replaced (int)
+        /// Seconds an unhealthy node has to become active before it is replaced.
         /// </summary>
         public readonly int? UnhealthyNodeTimeoutSeconds;
         /// <summary>
-        /// Range of unhealthy nodes for automated replacement to be allowed (string)
+        /// Range of unhealthy nodes for automated replacement to be allowed.
         /// </summary>
         public readonly string? UnhealthyRange;
         /// <summary>
-        /// Machine pool worker role? (bool)
+        /// Machine pool worker role?
         /// </summary>
         public readonly bool? WorkerRole;
 

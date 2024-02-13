@@ -24,6 +24,13 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
         return Optional.ofNullable(this.datacenters);
     }
 
+    @Import(name="gracefulShutdownTimeout")
+    private @Nullable Output<String> gracefulShutdownTimeout;
+
+    public Optional<Output<String>> gracefulShutdownTimeout() {
+        return Optional.ofNullable(this.gracefulShutdownTimeout);
+    }
+
     @Import(name="insecureFlag")
     private @Nullable Output<Boolean> insecureFlag;
 
@@ -63,6 +70,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
 
     private ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobalArgs(ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobalArgs $) {
         this.datacenters = $.datacenters;
+        this.gracefulShutdownTimeout = $.gracefulShutdownTimeout;
         this.insecureFlag = $.insecureFlag;
         this.password = $.password;
         this.port = $.port;
@@ -95,6 +103,15 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
 
         public Builder datacenters(String datacenters) {
             return datacenters(Output.of(datacenters));
+        }
+
+        public Builder gracefulShutdownTimeout(@Nullable Output<String> gracefulShutdownTimeout) {
+            $.gracefulShutdownTimeout = gracefulShutdownTimeout;
+            return this;
+        }
+
+        public Builder gracefulShutdownTimeout(String gracefulShutdownTimeout) {
+            return gracefulShutdownTimeout(Output.of(gracefulShutdownTimeout));
         }
 
         public Builder insecureFlag(@Nullable Output<Boolean> insecureFlag) {

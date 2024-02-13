@@ -15,14 +15,14 @@ public final class ClusterV2AgentEnvVarArgs extends com.pulumi.resources.Resourc
     public static final ClusterV2AgentEnvVarArgs Empty = new ClusterV2AgentEnvVarArgs();
 
     /**
-     * The name of the Cluster v2 (string)
+     * The name of the cluster.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the Cluster v2 (string)
+     * @return The name of the cluster.
      * 
      */
     public Output<String> name() {
@@ -30,14 +30,14 @@ public final class ClusterV2AgentEnvVarArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The taint value (string)
+     * The taint value.
      * 
      */
     @Import(name="value", required=true)
     private Output<String> value;
 
     /**
-     * @return The taint value (string)
+     * @return The taint value.
      * 
      */
     public Output<String> value() {
@@ -70,7 +70,7 @@ public final class ClusterV2AgentEnvVarArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name The name of the Cluster v2 (string)
+         * @param name The name of the cluster.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class ClusterV2AgentEnvVarArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name The name of the Cluster v2 (string)
+         * @param name The name of the cluster.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class ClusterV2AgentEnvVarArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param value The taint value (string)
+         * @param value The taint value.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class ClusterV2AgentEnvVarArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param value The taint value (string)
+         * @param value The taint value.
          * 
          * @return builder
          * 

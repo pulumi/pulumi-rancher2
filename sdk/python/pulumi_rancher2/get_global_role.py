@@ -22,7 +22,7 @@ class GetGlobalRoleResult:
     """
     A collection of values returned by getGlobalRole.
     """
-    def __init__(__self__, annotations=None, builtin=None, description=None, id=None, labels=None, name=None, new_user_default=None, rules=None):
+    def __init__(__self__, annotations=None, builtin=None, description=None, id=None, inherited_cluster_roles=None, labels=None, name=None, new_user_default=None, rules=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -35,6 +35,9 @@ class GetGlobalRoleResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if inherited_cluster_roles and not isinstance(inherited_cluster_roles, list):
+            raise TypeError("Expected argument 'inherited_cluster_roles' to be a list")
+        pulumi.set(__self__, "inherited_cluster_roles", inherited_cluster_roles)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -81,6 +84,14 @@ class GetGlobalRoleResult:
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter(name="inheritedClusterRoles")
+    def inherited_cluster_roles(self) -> Optional[Sequence[str]]:
+        """
+        (Optional) Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
+        """
+        return pulumi.get(self, "inherited_cluster_roles")
+
+    @property
     @pulumi.getter
     def labels(self) -> Mapping[str, Any]:
         """
@@ -120,13 +131,15 @@ class AwaitableGetGlobalRoleResult(GetGlobalRoleResult):
             builtin=self.builtin,
             description=self.description,
             id=self.id,
+            inherited_cluster_roles=self.inherited_cluster_roles,
             labels=self.labels,
             name=self.name,
             new_user_default=self.new_user_default,
             rules=self.rules)
 
 
-def get_global_role(name: Optional[str] = None,
+def get_global_role(inherited_cluster_roles: Optional[Sequence[str]] = None,
+                    name: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGlobalRoleResult:
     """
     Use this data source to retrieve information about a Rancher v2 global role resource.
@@ -141,9 +154,11 @@ def get_global_role(name: Optional[str] = None,
     ```
 
 
+    :param Sequence[str] inherited_cluster_roles: (Optional) Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
     :param str name: The name of the Global Role (string)
     """
     __args__ = dict()
+    __args__['inheritedClusterRoles'] = inherited_cluster_roles
     __args__['name'] = name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('rancher2:index/getGlobalRole:getGlobalRole', __args__, opts=opts, typ=GetGlobalRoleResult).value
@@ -153,6 +168,7 @@ def get_global_role(name: Optional[str] = None,
         builtin=pulumi.get(__ret__, 'builtin'),
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
+        inherited_cluster_roles=pulumi.get(__ret__, 'inherited_cluster_roles'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
         new_user_default=pulumi.get(__ret__, 'new_user_default'),
@@ -160,7 +176,8 @@ def get_global_role(name: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_global_role)
-def get_global_role_output(name: Optional[pulumi.Input[str]] = None,
+def get_global_role_output(inherited_cluster_roles: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                           name: Optional[pulumi.Input[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGlobalRoleResult]:
     """
     Use this data source to retrieve information about a Rancher v2 global role resource.
@@ -175,6 +192,7 @@ def get_global_role_output(name: Optional[pulumi.Input[str]] = None,
     ```
 
 
+    :param Sequence[str] inherited_cluster_roles: (Optional) Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
     :param str name: The name of the Global Role (string)
     """
     ...

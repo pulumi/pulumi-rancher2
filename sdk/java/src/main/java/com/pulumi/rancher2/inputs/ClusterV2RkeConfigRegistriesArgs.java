@@ -18,14 +18,14 @@ public final class ClusterV2RkeConfigRegistriesArgs extends com.pulumi.resources
     public static final ClusterV2RkeConfigRegistriesArgs Empty = new ClusterV2RkeConfigRegistriesArgs();
 
     /**
-     * Cluster V2 docker registries config (list)
+     * Cluster V2 docker registries config.
      * 
      */
     @Import(name="configs")
     private @Nullable Output<List<ClusterV2RkeConfigRegistriesConfigArgs>> configs;
 
     /**
-     * @return Cluster V2 docker registries config (list)
+     * @return Cluster V2 docker registries config.
      * 
      */
     public Optional<Output<List<ClusterV2RkeConfigRegistriesConfigArgs>>> configs() {
@@ -33,14 +33,14 @@ public final class ClusterV2RkeConfigRegistriesArgs extends com.pulumi.resources
     }
 
     /**
-     * Cluster V2 docker registries mirror (list)
+     * Cluster V2 docker registries mirror.
      * 
      */
     @Import(name="mirrors")
     private @Nullable Output<List<ClusterV2RkeConfigRegistriesMirrorArgs>> mirrors;
 
     /**
-     * @return Cluster V2 docker registries mirror (list)
+     * @return Cluster V2 docker registries mirror.
      * 
      */
     public Optional<Output<List<ClusterV2RkeConfigRegistriesMirrorArgs>>> mirrors() {
@@ -73,7 +73,7 @@ public final class ClusterV2RkeConfigRegistriesArgs extends com.pulumi.resources
         }
 
         /**
-         * @param configs Cluster V2 docker registries config (list)
+         * @param configs Cluster V2 docker registries config.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class ClusterV2RkeConfigRegistriesArgs extends com.pulumi.resources
         }
 
         /**
-         * @param configs Cluster V2 docker registries config (list)
+         * @param configs Cluster V2 docker registries config.
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class ClusterV2RkeConfigRegistriesArgs extends com.pulumi.resources
         }
 
         /**
-         * @param configs Cluster V2 docker registries config (list)
+         * @param configs Cluster V2 docker registries config.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ClusterV2RkeConfigRegistriesArgs extends com.pulumi.resources
         }
 
         /**
-         * @param mirrors Cluster V2 docker registries mirror (list)
+         * @param mirrors Cluster V2 docker registries mirror.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class ClusterV2RkeConfigRegistriesArgs extends com.pulumi.resources
         }
 
         /**
-         * @param mirrors Cluster V2 docker registries mirror (list)
+         * @param mirrors Cluster V2 docker registries mirror.
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class ClusterV2RkeConfigRegistriesArgs extends com.pulumi.resources
         }
 
         /**
-         * @param mirrors Cluster V2 docker registries mirror (list)
+         * @param mirrors Cluster V2 docker registries mirror.
          * 
          * @return builder
          * 

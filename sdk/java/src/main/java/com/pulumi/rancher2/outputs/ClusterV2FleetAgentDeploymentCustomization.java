@@ -15,38 +15,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterV2FleetAgentDeploymentCustomization {
     /**
-     * @return User defined tolerations to append to agent (list)
+     * @return A list of tolerations to be appended to the default tolerations.
      * 
      */
     private @Nullable List<ClusterV2FleetAgentDeploymentCustomizationAppendToleration> appendTolerations;
     /**
-     * @return User defined affinity to override default agent affinity (string)
+     * @return Override affinity overrides the global default affinity setting.
      * 
      */
     private @Nullable String overrideAffinity;
     /**
-     * @return User defined resource requirements to set on the agent (list)
+     * @return Override resource requirements overrides the default value for requests and/or limits.
      * 
      */
     private @Nullable List<ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement> overrideResourceRequirements;
 
     private ClusterV2FleetAgentDeploymentCustomization() {}
     /**
-     * @return User defined tolerations to append to agent (list)
+     * @return A list of tolerations to be appended to the default tolerations.
      * 
      */
     public List<ClusterV2FleetAgentDeploymentCustomizationAppendToleration> appendTolerations() {
         return this.appendTolerations == null ? List.of() : this.appendTolerations;
     }
     /**
-     * @return User defined affinity to override default agent affinity (string)
+     * @return Override affinity overrides the global default affinity setting.
      * 
      */
     public Optional<String> overrideAffinity() {
         return Optional.ofNullable(this.overrideAffinity);
     }
     /**
-     * @return User defined resource requirements to set on the agent (list)
+     * @return Override resource requirements overrides the default value for requests and/or limits.
      * 
      */
     public List<ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement> overrideResourceRequirements() {

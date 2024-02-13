@@ -13,13 +13,13 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterV2AgentEnvVarArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the Cluster v2 (string)
+        /// The name of the cluster.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The taint value (string)
+        /// The taint value.
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;

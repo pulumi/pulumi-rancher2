@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v6/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +23,7 @@ import (
 //
 //	"os"
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v6/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -45,6 +45,37 @@ import (
 //				ChartName:    pulumi.String("rancher-monitoring"),
 //				ChartVersion: pulumi.String("9.4.200"),
 //				Values:       readFileOrPanic("values.yaml"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Create an App from a Helm Chart using a different registry
+//
+// The `systemDefaultRegistry` argument can override the global value at App installation. If argument is not provided, the global value for System Default Registry will be used instead.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v6/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewAppV2(ctx, "cisBenchmark", &rancher2.AppV2Args{
+//				ChartName:             pulumi.String("rancher-cis-benchmark"),
+//				ClusterId:             pulumi.String("<CLUSTER_ID>"),
+//				Namespace:             pulumi.String("cis-operator-system"),
+//				RepoName:              pulumi.String("rancher-charts"),
+//				SystemDefaultRegistry: pulumi.String("<some.dns.here>:<PORT>"),
 //			})
 //			if err != nil {
 //				return err
@@ -99,7 +130,7 @@ type AppV2 struct {
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// Repo name (string)
 	RepoName pulumi.StringOutput `pulumi:"repoName"`
-	// (Computed) The system default registry of the app (string)
+	// System default registry providing images for app deployment (string)
 	SystemDefaultRegistry pulumi.StringOutput `pulumi:"systemDefaultRegistry"`
 	// The app v2 values yaml. Yaml format is required (string)
 	Values pulumi.StringPtrOutput `pulumi:"values"`
@@ -181,7 +212,7 @@ type appV2State struct {
 	ProjectId *string `pulumi:"projectId"`
 	// Repo name (string)
 	RepoName *string `pulumi:"repoName"`
-	// (Computed) The system default registry of the app (string)
+	// System default registry providing images for app deployment (string)
 	SystemDefaultRegistry *string `pulumi:"systemDefaultRegistry"`
 	// The app v2 values yaml. Yaml format is required (string)
 	Values *string `pulumi:"values"`
@@ -222,7 +253,7 @@ type AppV2State struct {
 	ProjectId pulumi.StringPtrInput
 	// Repo name (string)
 	RepoName pulumi.StringPtrInput
-	// (Computed) The system default registry of the app (string)
+	// System default registry providing images for app deployment (string)
 	SystemDefaultRegistry pulumi.StringPtrInput
 	// The app v2 values yaml. Yaml format is required (string)
 	Values pulumi.StringPtrInput
@@ -261,6 +292,8 @@ type appV2Args struct {
 	ProjectId *string `pulumi:"projectId"`
 	// Repo name (string)
 	RepoName string `pulumi:"repoName"`
+	// System default registry providing images for app deployment (string)
+	SystemDefaultRegistry *string `pulumi:"systemDefaultRegistry"`
 	// The app v2 values yaml. Yaml format is required (string)
 	Values *string `pulumi:"values"`
 	// Wait until app is deployed. Default: `true` (bool)
@@ -295,6 +328,8 @@ type AppV2Args struct {
 	ProjectId pulumi.StringPtrInput
 	// Repo name (string)
 	RepoName pulumi.StringInput
+	// System default registry providing images for app deployment (string)
+	SystemDefaultRegistry pulumi.StringPtrInput
 	// The app v2 values yaml. Yaml format is required (string)
 	Values pulumi.StringPtrInput
 	// Wait until app is deployed. Default: `true` (bool)
@@ -465,7 +500,7 @@ func (o AppV2Output) RepoName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppV2) pulumi.StringOutput { return v.RepoName }).(pulumi.StringOutput)
 }
 
-// (Computed) The system default registry of the app (string)
+// System default registry providing images for app deployment (string)
 func (o AppV2Output) SystemDefaultRegistry() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppV2) pulumi.StringOutput { return v.SystemDefaultRegistry }).(pulumi.StringOutput)
 }

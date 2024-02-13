@@ -14,23 +14,23 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterV2RkeConfigRegistriesConfig
     {
         /// <summary>
-        /// Registry auth config secret name (string)
+        /// Name of the secret that contains two keys with base64 encoded values: the username and password for the specified custom registry. No secret is required if the system-default-registry is not authenticated.
         /// </summary>
         public readonly string? AuthConfigSecretName;
         /// <summary>
-        /// Registry CA bundle (string)
+        /// Registry CA bundle.
         /// </summary>
         public readonly string? CaBundle;
         /// <summary>
-        /// Registry hostname (string)
+        /// Registry hostname.
         /// </summary>
         public readonly string Hostname;
         /// <summary>
-        /// Registry insecure connectivity (bool)
+        /// Registry insecure connectivity.
         /// </summary>
         public readonly bool? Insecure;
         /// <summary>
-        /// Registry TLS secret name. TLS is a pair of Cert/Key (string)
+        /// Registry TLS secret name. TLS is a pair of Cert/Key.
         /// </summary>
         public readonly string? TlsSecretName;
 

@@ -248,14 +248,14 @@ public final class AppV2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Computed) The system default registry of the app (string)
+     * System default registry providing images for app deployment (string)
      * 
      */
     @Import(name="systemDefaultRegistry")
     private @Nullable Output<String> systemDefaultRegistry;
 
     /**
-     * @return (Computed) The system default registry of the app (string)
+     * @return System default registry providing images for app deployment (string)
      * 
      */
     public Optional<Output<String>> systemDefaultRegistry() {
@@ -653,7 +653,7 @@ public final class AppV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDefaultRegistry (Computed) The system default registry of the app (string)
+         * @param systemDefaultRegistry System default registry providing images for app deployment (string)
          * 
          * @return builder
          * 
@@ -664,7 +664,7 @@ public final class AppV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDefaultRegistry (Computed) The system default registry of the app (string)
+         * @param systemDefaultRegistry System default registry providing images for app deployment (string)
          * 
          * @return builder
          * 

@@ -25,7 +25,7 @@ class ProjectRoleTemplateBindingArgs:
                  user_principal_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ProjectRoleTemplateBinding resource.
-        :param pulumi.Input[str] project_id: The project id where bind project role template (string)
+        :param pulumi.Input[str] project_id: The project id where bind project role template, in format `cluster_id:project_id`, e.g. `c-abc12:p-def34` (string)
         :param pulumi.Input[str] role_template_id: The role template id from create project role template binding (string)
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
         :param pulumi.Input[str] group_id: The group ID to assign project role template binding (string)
@@ -58,7 +58,7 @@ class ProjectRoleTemplateBindingArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Input[str]:
         """
-        The project id where bind project role template (string)
+        The project id where bind project role template, in format `cluster_id:project_id`, e.g. `c-abc12:p-def34` (string)
         """
         return pulumi.get(self, "project_id")
 
@@ -186,7 +186,7 @@ class _ProjectRoleTemplateBindingState:
                
                **Note:** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
         :param pulumi.Input[str] name: The name of the project role template binding (string)
-        :param pulumi.Input[str] project_id: The project id where bind project role template (string)
+        :param pulumi.Input[str] project_id: The project id where bind project role template, in format `cluster_id:project_id`, e.g. `c-abc12:p-def34` (string)
         :param pulumi.Input[str] role_template_id: The role template id from create project role template binding (string)
         :param pulumi.Input[str] user_id: The user ID to assign project role template binding (string)
         :param pulumi.Input[str] user_principal_id: The user_principal ID to assign project role template binding (string)
@@ -276,7 +276,7 @@ class _ProjectRoleTemplateBindingState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The project id where bind project role template (string)
+        The project id where bind project role template, in format `cluster_id:project_id`, e.g. `c-abc12:p-def34` (string)
         """
         return pulumi.get(self, "project_id")
 
@@ -369,7 +369,7 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
                
                **Note:** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
         :param pulumi.Input[str] name: The name of the project role template binding (string)
-        :param pulumi.Input[str] project_id: The project id where bind project role template (string)
+        :param pulumi.Input[str] project_id: The project id where bind project role template, in format `cluster_id:project_id`, e.g. `c-abc12:p-def34` (string)
         :param pulumi.Input[str] role_template_id: The role template id from create project role template binding (string)
         :param pulumi.Input[str] user_id: The user ID to assign project role template binding (string)
         :param pulumi.Input[str] user_principal_id: The user_principal ID to assign project role template binding (string)
@@ -483,7 +483,7 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
                
                **Note:** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
         :param pulumi.Input[str] name: The name of the project role template binding (string)
-        :param pulumi.Input[str] project_id: The project id where bind project role template (string)
+        :param pulumi.Input[str] project_id: The project id where bind project role template, in format `cluster_id:project_id`, e.g. `c-abc12:p-def34` (string)
         :param pulumi.Input[str] role_template_id: The role template id from create project role template binding (string)
         :param pulumi.Input[str] user_id: The user ID to assign project role template binding (string)
         :param pulumi.Input[str] user_principal_id: The user_principal ID to assign project role template binding (string)
@@ -549,7 +549,7 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[str]:
         """
-        The project id where bind project role template (string)
+        The project id where bind project role template, in format `cluster_id:project_id`, e.g. `c-abc12:p-def34` (string)
         """
         return pulumi.get(self, "project_id")
 

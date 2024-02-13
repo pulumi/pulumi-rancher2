@@ -16,14 +16,14 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceR
     public static final ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs Empty = new ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs();
 
     /**
-     * The maximum CPU limit for agent (string)
+     * The maximum CPU limit for agent.
      * 
      */
     @Import(name="cpuLimit")
     private @Nullable Output<String> cpuLimit;
 
     /**
-     * @return The maximum CPU limit for agent (string)
+     * @return The maximum CPU limit for agent.
      * 
      */
     public Optional<Output<String>> cpuLimit() {
@@ -31,14 +31,14 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceR
     }
 
     /**
-     * The minimum CPU required for agent (string)
+     * The minimum CPU required for agent.
      * 
      */
     @Import(name="cpuRequest")
     private @Nullable Output<String> cpuRequest;
 
     /**
-     * @return The minimum CPU required for agent (string)
+     * @return The minimum CPU required for agent.
      * 
      */
     public Optional<Output<String>> cpuRequest() {
@@ -46,14 +46,14 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceR
     }
 
     /**
-     * The maximum memory limit for agent (string)
+     * The maximum memory limit for agent.
      * 
      */
     @Import(name="memoryLimit")
     private @Nullable Output<String> memoryLimit;
 
     /**
-     * @return The maximum memory limit for agent (string)
+     * @return The maximum memory limit for agent.
      * 
      */
     public Optional<Output<String>> memoryLimit() {
@@ -61,14 +61,14 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceR
     }
 
     /**
-     * The minimum memory required for agent (string)
+     * The minimum memory required for agent.
      * 
      */
     @Import(name="memoryRequest")
     private @Nullable Output<String> memoryRequest;
 
     /**
-     * @return The minimum memory required for agent (string)
+     * @return The minimum memory required for agent.
      * 
      */
     public Optional<Output<String>> memoryRequest() {
@@ -103,7 +103,7 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceR
         }
 
         /**
-         * @param cpuLimit The maximum CPU limit for agent (string)
+         * @param cpuLimit The maximum CPU limit for agent.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceR
         }
 
         /**
-         * @param cpuLimit The maximum CPU limit for agent (string)
+         * @param cpuLimit The maximum CPU limit for agent.
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceR
         }
 
         /**
-         * @param cpuRequest The minimum CPU required for agent (string)
+         * @param cpuRequest The minimum CPU required for agent.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceR
         }
 
         /**
-         * @param cpuRequest The minimum CPU required for agent (string)
+         * @param cpuRequest The minimum CPU required for agent.
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceR
         }
 
         /**
-         * @param memoryLimit The maximum memory limit for agent (string)
+         * @param memoryLimit The maximum memory limit for agent.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceR
         }
 
         /**
-         * @param memoryLimit The maximum memory limit for agent (string)
+         * @param memoryLimit The maximum memory limit for agent.
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceR
         }
 
         /**
-         * @param memoryRequest The minimum memory required for agent (string)
+         * @param memoryRequest The minimum memory required for agent.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceR
         }
 
         /**
-         * @param memoryRequest The minimum memory required for agent (string)
+         * @param memoryRequest The minimum memory required for agent.
          * 
          * @return builder
          * 

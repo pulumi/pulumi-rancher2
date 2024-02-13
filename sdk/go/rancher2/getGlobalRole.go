@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v6/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v6/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -50,6 +50,8 @@ func LookupGlobalRole(ctx *pulumi.Context, args *LookupGlobalRoleArgs, opts ...p
 
 // A collection of arguments for invoking getGlobalRole.
 type LookupGlobalRoleArgs struct {
+	// (Optional) Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
+	InheritedClusterRoles []string `pulumi:"inheritedClusterRoles"`
 	// The name of the Global Role (string)
 	Name string `pulumi:"name"`
 }
@@ -64,6 +66,8 @@ type LookupGlobalRoleResult struct {
 	Description string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// (Optional) Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
+	InheritedClusterRoles []string `pulumi:"inheritedClusterRoles"`
 	// (Computed) Labels for global role object (map)
 	Labels map[string]interface{} `pulumi:"labels"`
 	Name   string                 `pulumi:"name"`
@@ -88,6 +92,8 @@ func LookupGlobalRoleOutput(ctx *pulumi.Context, args LookupGlobalRoleOutputArgs
 
 // A collection of arguments for invoking getGlobalRole.
 type LookupGlobalRoleOutputArgs struct {
+	// (Optional) Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
+	InheritedClusterRoles pulumi.StringArrayInput `pulumi:"inheritedClusterRoles"`
 	// The name of the Global Role (string)
 	Name pulumi.StringInput `pulumi:"name"`
 }
@@ -129,6 +135,11 @@ func (o LookupGlobalRoleResultOutput) Description() pulumi.StringOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o LookupGlobalRoleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGlobalRoleResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// (Optional) Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
+func (o LookupGlobalRoleResultOutput) InheritedClusterRoles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupGlobalRoleResult) []string { return v.InheritedClusterRoles }).(pulumi.StringArrayOutput)
 }
 
 // (Computed) Labels for global role object (map)

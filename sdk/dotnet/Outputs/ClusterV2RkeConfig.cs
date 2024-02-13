@@ -14,31 +14,31 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterV2RkeConfig
     {
         /// <summary>
-        /// Cluster V2 additional manifest (string)
+        /// The value of the additional manifest is delivered to the path `/var/lib/rancher/rke2/server/manifests/rancher/addons.yaml` or `/var/lib/rancher/k3s/server/manifests/rancher/addons.yaml` on the control plane nodes.
         /// </summary>
         public readonly string? AdditionalManifest;
         /// <summary>
-        /// Cluster V2 chart values. Must be in YAML format (string)
+        /// The value for the system charts installed by the distribution. For more information about how RKE2 or K3s manage packaged components, please refer to [RKE2 documentation](https://docs.rke2.io/helm) or [K3s documentation](https://docs.k3s.io/installation/packaged-components).
         /// </summary>
         public readonly string? ChartValues;
         /// <summary>
-        /// Cluster V2 etcd (list maxitems:1)
+        /// Etcd configures the behavior of the automatic etcd snapshot feature.
         /// </summary>
         public readonly Outputs.ClusterV2RkeConfigEtcd? Etcd;
         /// <summary>
-        /// Cluster V2 etcd snapshot create (list maxitems:1)
+        /// Cluster V2 etcd snapshot create.
         /// </summary>
         public readonly Outputs.ClusterV2RkeConfigEtcdSnapshotCreate? EtcdSnapshotCreate;
         /// <summary>
-        /// Cluster V2 etcd snapshot restore (list maxitems:1)
+        /// Cluster V2 etcd snapshot restore.
         /// </summary>
         public readonly Outputs.ClusterV2RkeConfigEtcdSnapshotRestore? EtcdSnapshotRestore;
         /// <summary>
-        /// Cluster V2 local auth endpoint (list maxitems:1)
+        /// Local auth endpoint configures the Authorized Cluster Endpoint (ACE) which can be used to directly access the Kubernetes API server, without requiring communication through Rancher. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters).
         /// </summary>
         public readonly Outputs.ClusterV2RkeConfigLocalAuthEndpoint? LocalAuthEndpoint;
         /// <summary>
-        /// Cluster V2 machine global config. Must be in YAML format (string)
+        /// Machine global config specifies the distribution-specified server configuration applied to all nodes. For the full list of server configurations, please refer to [RKE2 server configuration](https://docs.rke2.io/reference/server_config) or [K3s server configuration](https://docs.k3s.io/cli/server).
         /// </summary>
         public readonly string? MachineGlobalConfig;
         /// <summary>
@@ -46,23 +46,27 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterV2RkeConfigMachinePoolDefault> MachinePoolDefaults;
         /// <summary>
-        /// Cluster V2 machine pools (list)
+        /// Cluster V2 machine pools.
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterV2RkeConfigMachinePool> MachinePools;
         /// <summary>
-        /// Cluster V2 machine selector config (list)
+        /// Machine selector config is the same as machine_global_config except that a label selector can be specified with the configuration. The configuration will only be applied to nodes that match the provided label selector. The configuration from machine_selector_config takes precedence over the one from machine_global_config. This argument is available in Rancher v2.7.2 and later.
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterV2RkeConfigMachineSelectorConfig> MachineSelectorConfigs;
         /// <summary>
-        /// Cluster V2 docker registries (list maxitems:1)
+        /// Machine selector files provide a means to deliver files to nodes so that the files can be in place before initiating RKE2/K3s server or agent processes. Please refer to Rancher documentation for [RKE2 Cluster Configuration Reference](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration#machineselectorfiles) and [K3s Cluster Configuration Reference](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/k3s-cluster-configuration#machineselectorfiles). This argument is available in Rancher v2.7.2 and later.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ClusterV2RkeConfigMachineSelectorFile> MachineSelectorFiles;
+        /// <summary>
+        /// Docker registries from which the cluster pulls images.
         /// </summary>
         public readonly Outputs.ClusterV2RkeConfigRegistries? Registries;
         /// <summary>
-        /// Cluster V2 certificate rotation (list maxitems:1)
+        /// Cluster V2 certificate rotation.
         /// </summary>
         public readonly Outputs.ClusterV2RkeConfigRotateCertificates? RotateCertificates;
         /// <summary>
-        /// Cluster V2 upgrade strategy (list maxitems:1)
+        /// Cluster upgrade strategy.
         /// </summary>
         public readonly Outputs.ClusterV2RkeConfigUpgradeStrategy? UpgradeStrategy;
 
@@ -88,6 +92,8 @@ namespace Pulumi.Rancher2.Outputs
 
             ImmutableArray<Outputs.ClusterV2RkeConfigMachineSelectorConfig> machineSelectorConfigs,
 
+            ImmutableArray<Outputs.ClusterV2RkeConfigMachineSelectorFile> machineSelectorFiles,
+
             Outputs.ClusterV2RkeConfigRegistries? registries,
 
             Outputs.ClusterV2RkeConfigRotateCertificates? rotateCertificates,
@@ -104,6 +110,7 @@ namespace Pulumi.Rancher2.Outputs
             MachinePoolDefaults = machinePoolDefaults;
             MachinePools = machinePools;
             MachineSelectorConfigs = machineSelectorConfigs;
+            MachineSelectorFiles = machineSelectorFiles;
             Registries = registries;
             RotateCertificates = rotateCertificates;
             UpgradeStrategy = upgradeStrategy;

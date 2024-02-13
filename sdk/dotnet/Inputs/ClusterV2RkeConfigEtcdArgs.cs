@@ -13,25 +13,25 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterV2RkeConfigEtcdArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Disable ETCD snapshots. Default: `false` (bool)
+        /// Disable ETCD snapshots.
         /// </summary>
         [Input("disableSnapshots")]
         public Input<bool>? DisableSnapshots { get; set; }
 
         /// <summary>
-        /// Creation option for etcd service (list maxitems:1)
+        /// Creation option for etcd service.
         /// </summary>
         [Input("s3Config")]
         public Input<Inputs.ClusterV2RkeConfigEtcdS3ConfigArgs>? S3Config { get; set; }
 
         /// <summary>
-        /// ETCD snapshot retention (int)
+        /// ETCD snapshot retention.
         /// </summary>
         [Input("snapshotRetention")]
         public Input<int>? SnapshotRetention { get; set; }
 
         /// <summary>
-        /// ETCD snapshot schedule cron (e.g `\"0 */5 * * *\"`) (string)
+        /// ETCD snapshot schedule cron (e.g `\"0 */5 * * *\"`).
         /// </summary>
         [Input("snapshotScheduleCron")]
         public Input<string>? SnapshotScheduleCron { get; set; }

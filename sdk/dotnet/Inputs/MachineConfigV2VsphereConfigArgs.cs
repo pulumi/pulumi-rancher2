@@ -109,6 +109,12 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? Folder { get; set; }
 
         /// <summary>
+        /// Duration in seconds before the graceful shutdown of the VM times out and the VM is destroyed. A force destroy will be performed when the value is zero (string)
+        /// </summary>
+        [Input("gracefulShutdownTimeout")]
+        public Input<string>? GracefulShutdownTimeout { get; set; }
+
+        /// <summary>
         /// vSphere compute resource where the docker VM will be instantiated. This can be omitted if using a cluster with DRS (string)
         /// </summary>
         [Input("hostsystem")]

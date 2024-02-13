@@ -15,14 +15,14 @@ public final class ClusterV2RkeConfigEtcdSnapshotCreateArgs extends com.pulumi.r
     public static final ClusterV2RkeConfigEtcdSnapshotCreateArgs Empty = new ClusterV2RkeConfigEtcdSnapshotCreateArgs();
 
     /**
-     * ETCD snapshot desired generation (int)
+     * ETCD snapshot desired generation.
      * 
      */
     @Import(name="generation", required=true)
     private Output<Integer> generation;
 
     /**
-     * @return ETCD snapshot desired generation (int)
+     * @return ETCD snapshot desired generation.
      * 
      */
     public Output<Integer> generation() {
@@ -54,7 +54,7 @@ public final class ClusterV2RkeConfigEtcdSnapshotCreateArgs extends com.pulumi.r
         }
 
         /**
-         * @param generation ETCD snapshot desired generation (int)
+         * @param generation ETCD snapshot desired generation.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class ClusterV2RkeConfigEtcdSnapshotCreateArgs extends com.pulumi.r
         }
 
         /**
-         * @param generation ETCD snapshot desired generation (int)
+         * @param generation ETCD snapshot desired generation.
          * 
          * @return builder
          * 

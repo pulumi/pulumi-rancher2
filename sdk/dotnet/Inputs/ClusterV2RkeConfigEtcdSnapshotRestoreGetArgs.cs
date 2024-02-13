@@ -13,19 +13,19 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterV2RkeConfigEtcdSnapshotRestoreGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ETCD snapshot desired generation (int)
+        /// ETCD snapshot desired generation.
         /// </summary>
         [Input("generation", required: true)]
         public Input<int> Generation { get; set; } = null!;
 
         /// <summary>
-        /// The name of the Cluster v2 (string)
+        /// The name of the cluster.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// ETCD restore RKE config (set to none, all, or kubernetesVersion) (string)
+        /// ETCD restore RKE config (set to none, all, or kubernetesVersion).
         /// </summary>
         [Input("restoreRkeConfig")]
         public Input<string>? RestoreRkeConfig { get; set; }

@@ -76,6 +76,10 @@ export class GlobalRole extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster
+     */
+    public readonly inheritedClusterRoles!: pulumi.Output<string[] | undefined>;
+    /**
      * Labels for global role object (map)
      */
     public readonly labels!: pulumi.Output<{[key: string]: any}>;
@@ -108,6 +112,7 @@ export class GlobalRole extends pulumi.CustomResource {
             resourceInputs["annotations"] = state ? state.annotations : undefined;
             resourceInputs["builtin"] = state ? state.builtin : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["inheritedClusterRoles"] = state ? state.inheritedClusterRoles : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["newUserDefault"] = state ? state.newUserDefault : undefined;
@@ -116,6 +121,7 @@ export class GlobalRole extends pulumi.CustomResource {
             const args = argsOrState as GlobalRoleArgs | undefined;
             resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["inheritedClusterRoles"] = args ? args.inheritedClusterRoles : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["newUserDefault"] = args ? args.newUserDefault : undefined;
@@ -143,6 +149,10 @@ export interface GlobalRoleState {
      * Global role description (string)
      */
     description?: pulumi.Input<string>;
+    /**
+     * Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster
+     */
+    inheritedClusterRoles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Labels for global role object (map)
      */
@@ -173,6 +183,10 @@ export interface GlobalRoleArgs {
      * Global role description (string)
      */
     description?: pulumi.Input<string>;
+    /**
+     * Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster
+     */
+    inheritedClusterRoles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Labels for global role object (map)
      */

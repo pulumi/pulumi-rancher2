@@ -14,15 +14,15 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterV2FleetAgentDeploymentCustomization
     {
         /// <summary>
-        /// User defined tolerations to append to agent (list)
+        /// A list of tolerations to be appended to the default tolerations.
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterV2FleetAgentDeploymentCustomizationAppendToleration> AppendTolerations;
         /// <summary>
-        /// User defined affinity to override default agent affinity (string)
+        /// Override affinity overrides the global default affinity setting.
         /// </summary>
         public readonly string? OverrideAffinity;
         /// <summary>
-        /// User defined resource requirements to set on the agent (list)
+        /// Override resource requirements overrides the default value for requests and/or limits.
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement> OverrideResourceRequirements;
 

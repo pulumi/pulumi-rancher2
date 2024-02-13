@@ -14,6 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobal {
     private @Nullable String datacenters;
+    private @Nullable String gracefulShutdownTimeout;
     private @Nullable Boolean insecureFlag;
     private @Nullable String password;
     private @Nullable String port;
@@ -23,6 +24,9 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
     private ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobal() {}
     public Optional<String> datacenters() {
         return Optional.ofNullable(this.datacenters);
+    }
+    public Optional<String> gracefulShutdownTimeout() {
+        return Optional.ofNullable(this.gracefulShutdownTimeout);
     }
     public Optional<Boolean> insecureFlag() {
         return Optional.ofNullable(this.insecureFlag);
@@ -50,6 +54,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String datacenters;
+        private @Nullable String gracefulShutdownTimeout;
         private @Nullable Boolean insecureFlag;
         private @Nullable String password;
         private @Nullable String port;
@@ -59,6 +64,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
         public Builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobal defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.datacenters = defaults.datacenters;
+    	      this.gracefulShutdownTimeout = defaults.gracefulShutdownTimeout;
     	      this.insecureFlag = defaults.insecureFlag;
     	      this.password = defaults.password;
     	      this.port = defaults.port;
@@ -70,6 +76,12 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
         public Builder datacenters(@Nullable String datacenters) {
 
             this.datacenters = datacenters;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gracefulShutdownTimeout(@Nullable String gracefulShutdownTimeout) {
+
+            this.gracefulShutdownTimeout = gracefulShutdownTimeout;
             return this;
         }
         @CustomType.Setter
@@ -105,6 +117,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPro
         public ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobal build() {
             final var _resultValue = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobal();
             _resultValue.datacenters = datacenters;
+            _resultValue.gracefulShutdownTimeout = gracefulShutdownTimeout;
             _resultValue.insecureFlag = insecureFlag;
             _resultValue.password = password;
             _resultValue.port = port;

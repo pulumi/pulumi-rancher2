@@ -14,20 +14,27 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterV2RkeConfigMachinePoolMachineConfig
     {
         /// <summary>
-        /// Machine config kind (string)
+        /// Api version of the machine_config.
+        /// </summary>
+        public readonly string? ApiVersion;
+        /// <summary>
+        /// Machine config kind.
         /// </summary>
         public readonly string Kind;
         /// <summary>
-        /// The name of the Cluster v2 (string)
+        /// The name of the cluster.
         /// </summary>
         public readonly string Name;
 
         [OutputConstructor]
         private ClusterV2RkeConfigMachinePoolMachineConfig(
+            string? apiVersion,
+
             string kind,
 
             string name)
         {
+            ApiVersion = apiVersion;
             Kind = kind;
             Name = name;
         }

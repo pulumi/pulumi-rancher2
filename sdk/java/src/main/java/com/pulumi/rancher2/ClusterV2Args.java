@@ -26,14 +26,14 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
     public static final ClusterV2Args Empty = new ClusterV2Args();
 
     /**
-     * Optional Agent Env Vars for Rancher agent (list)
+     * Agent env vars is a list of additional environment variables to be appended to the `cattle-cluster-agent` and `fleet-agent` deployment, and the plan for the [system upgrade controller](https://github.com/rancher/system-upgrade-controller) to upgrade nodes.
      * 
      */
     @Import(name="agentEnvVars")
     private @Nullable Output<List<ClusterV2AgentEnvVarArgs>> agentEnvVars;
 
     /**
-     * @return Optional Agent Env Vars for Rancher agent (list)
+     * @return Agent env vars is a list of additional environment variables to be appended to the `cattle-cluster-agent` and `fleet-agent` deployment, and the plan for the [system upgrade controller](https://github.com/rancher/system-upgrade-controller) to upgrade nodes.
      * 
      */
     public Optional<Output<List<ClusterV2AgentEnvVarArgs>>> agentEnvVars() {
@@ -41,14 +41,14 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Annotations for the Cluster V2 (map)
+     * Annotations for the Cluster.
      * 
      */
     @Import(name="annotations")
     private @Nullable Output<Map<String,Object>> annotations;
 
     /**
-     * @return Annotations for the Cluster V2 (map)
+     * @return Annotations for the Cluster.
      * 
      */
     public Optional<Output<Map<String,Object>>> annotations() {
@@ -56,14 +56,14 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cluster V2 cloud credential secret name (string)
+     * Cloud credential secret name is the secret to be used when a cloud credential secret name is not specified at the machine pool level.
      * 
      */
     @Import(name="cloudCredentialSecretName")
     private @Nullable Output<String> cloudCredentialSecretName;
 
     /**
-     * @return Cluster V2 cloud credential secret name (string)
+     * @return Cloud credential secret name is the secret to be used when a cloud credential secret name is not specified at the machine pool level.
      * 
      */
     public Optional<Output<String>> cloudCredentialSecretName() {
@@ -71,14 +71,14 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional customization for cluster agent (list)
+     * Cluster agent deployment customization specifies the additional tolerations, new affinity rules, and new resource requirements on the `cattle-cluster-agent` deployment. This argument is available in Rancher v2.7.5 and above.
      * 
      */
     @Import(name="clusterAgentDeploymentCustomizations")
     private @Nullable Output<List<ClusterV2ClusterAgentDeploymentCustomizationArgs>> clusterAgentDeploymentCustomizations;
 
     /**
-     * @return Optional customization for cluster agent (list)
+     * @return Cluster agent deployment customization specifies the additional tolerations, new affinity rules, and new resource requirements on the `cattle-cluster-agent` deployment. This argument is available in Rancher v2.7.5 and above.
      * 
      */
     public Optional<Output<List<ClusterV2ClusterAgentDeploymentCustomizationArgs>>> clusterAgentDeploymentCustomizations() {
@@ -86,14 +86,14 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cluster V2 default cluster role for project members (string)
+     * Default cluster role for project members.
      * 
      */
     @Import(name="defaultClusterRoleForProjectMembers")
     private @Nullable Output<String> defaultClusterRoleForProjectMembers;
 
     /**
-     * @return Cluster V2 default cluster role for project members (string)
+     * @return Default cluster role for project members.
      * 
      */
     public Optional<Output<String>> defaultClusterRoleForProjectMembers() {
@@ -101,14 +101,14 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cluster V2 default pod security admission configuration template name (string)
+     * The name of the pre-defined pod security admission configuration template to be applied to the cluster. Rancher admins (or those with the right permissions) can create, manage, and edit those templates. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates). The argument is available in Rancher v2.7.2 and above.
      * 
      */
     @Import(name="defaultPodSecurityAdmissionConfigurationTemplateName")
     private @Nullable Output<String> defaultPodSecurityAdmissionConfigurationTemplateName;
 
     /**
-     * @return Cluster V2 default pod security admission configuration template name (string)
+     * @return The name of the pre-defined pod security admission configuration template to be applied to the cluster. Rancher admins (or those with the right permissions) can create, manage, and edit those templates. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates). The argument is available in Rancher v2.7.2 and above.
      * 
      */
     public Optional<Output<String>> defaultPodSecurityAdmissionConfigurationTemplateName() {
@@ -116,14 +116,14 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cluster V2 default pod security policy template name (string)
+     * Default pod security policy template name specifies the default PSP for the cluster. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies).
      * 
      */
     @Import(name="defaultPodSecurityPolicyTemplateName")
     private @Nullable Output<String> defaultPodSecurityPolicyTemplateName;
 
     /**
-     * @return Cluster V2 default pod security policy template name (string)
+     * @return Default pod security policy template name specifies the default PSP for the cluster. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies).
      * 
      */
     public Optional<Output<String>> defaultPodSecurityPolicyTemplateName() {
@@ -131,14 +131,14 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable k8s network policy at Cluster V2 (bool)
+     * Enable k8s network policy on the cluster.
      * 
      */
     @Import(name="enableNetworkPolicy")
     private @Nullable Output<Boolean> enableNetworkPolicy;
 
     /**
-     * @return Enable k8s network policy at Cluster V2 (bool)
+     * @return Enable k8s network policy on the cluster.
      * 
      */
     public Optional<Output<Boolean>> enableNetworkPolicy() {
@@ -146,14 +146,14 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional customization for fleet agent (list)
+     * Fleet agent deployment customization specifies the additional tolerations, new affinity rules, and new resource requirements on the `fleet-agent` deployment. The argument is available in Rancher v2.7.5 and above.
      * 
      */
     @Import(name="fleetAgentDeploymentCustomizations")
     private @Nullable Output<List<ClusterV2FleetAgentDeploymentCustomizationArgs>> fleetAgentDeploymentCustomizations;
 
     /**
-     * @return Optional customization for fleet agent (list)
+     * @return Fleet agent deployment customization specifies the additional tolerations, new affinity rules, and new resource requirements on the `fleet-agent` deployment. The argument is available in Rancher v2.7.5 and above.
      * 
      */
     public Optional<Output<List<ClusterV2FleetAgentDeploymentCustomizationArgs>>> fleetAgentDeploymentCustomizations() {
@@ -161,14 +161,14 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The fleet namespace of the Cluster v2. Default: `\&#34;fleet-default\&#34;` (string)
+     * Fleet namespace is the namespace where the cluster is to create in the local cluster. It is recommended to leave it as the default value.
      * 
      */
     @Import(name="fleetNamespace")
     private @Nullable Output<String> fleetNamespace;
 
     /**
-     * @return The fleet namespace of the Cluster v2. Default: `\&#34;fleet-default\&#34;` (string)
+     * @return Fleet namespace is the namespace where the cluster is to create in the local cluster. It is recommended to leave it as the default value.
      * 
      */
     public Optional<Output<String>> fleetNamespace() {
@@ -176,14 +176,14 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The kubernetes version of the Cluster v2 (list maxitems:1)
+     * The RKE2 or K3s version for the cluster.
      * 
      */
     @Import(name="kubernetesVersion", required=true)
     private Output<String> kubernetesVersion;
 
     /**
-     * @return The kubernetes version of the Cluster v2 (list maxitems:1)
+     * @return The RKE2 or K3s version for the cluster.
      * 
      */
     public Output<String> kubernetesVersion() {
@@ -191,14 +191,14 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Labels for the Cluster V2 (map)
+     * Labels for the Cluster.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,Object>> labels;
 
     /**
-     * @return Labels for the Cluster V2 (map)
+     * @return Labels for the Cluster.
      * 
      */
     public Optional<Output<Map<String,Object>>> labels() {
@@ -206,14 +206,14 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cluster V2 local auth endpoint (list maxitems:1)
+     * Local auth endpoint configures the Authorized Cluster Endpoint (ACE) which can be used to directly access the Kubernetes API server, without requiring communication through Rancher. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters).
      * 
      */
     @Import(name="localAuthEndpoint")
     private @Nullable Output<ClusterV2LocalAuthEndpointArgs> localAuthEndpoint;
 
     /**
-     * @return Cluster V2 local auth endpoint (list maxitems:1)
+     * @return Local auth endpoint configures the Authorized Cluster Endpoint (ACE) which can be used to directly access the Kubernetes API server, without requiring communication through Rancher. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters).
      * 
      */
     public Optional<Output<ClusterV2LocalAuthEndpointArgs>> localAuthEndpoint() {
@@ -221,14 +221,14 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the Cluster v2 (string)
+     * The name of the cluster.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the Cluster v2 (string)
+     * @return The name of the cluster.
      * 
      */
     public Optional<Output<String>> name() {
@@ -236,14 +236,14 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The RKE configuration for `k3s` and `rke2` Clusters v2. (list maxitems:1)
+     * The RKE configuration for the cluster.
      * 
      */
     @Import(name="rkeConfig")
     private @Nullable Output<ClusterV2RkeConfigArgs> rkeConfig;
 
     /**
-     * @return The RKE configuration for `k3s` and `rke2` Clusters v2. (list maxitems:1)
+     * @return The RKE configuration for the cluster.
      * 
      */
     public Optional<Output<ClusterV2RkeConfigArgs>> rkeConfig() {
@@ -289,7 +289,7 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param agentEnvVars Optional Agent Env Vars for Rancher agent (list)
+         * @param agentEnvVars Agent env vars is a list of additional environment variables to be appended to the `cattle-cluster-agent` and `fleet-agent` deployment, and the plan for the [system upgrade controller](https://github.com/rancher/system-upgrade-controller) to upgrade nodes.
          * 
          * @return builder
          * 
@@ -300,7 +300,7 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param agentEnvVars Optional Agent Env Vars for Rancher agent (list)
+         * @param agentEnvVars Agent env vars is a list of additional environment variables to be appended to the `cattle-cluster-agent` and `fleet-agent` deployment, and the plan for the [system upgrade controller](https://github.com/rancher/system-upgrade-controller) to upgrade nodes.
          * 
          * @return builder
          * 
@@ -310,7 +310,7 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param agentEnvVars Optional Agent Env Vars for Rancher agent (list)
+         * @param agentEnvVars Agent env vars is a list of additional environment variables to be appended to the `cattle-cluster-agent` and `fleet-agent` deployment, and the plan for the [system upgrade controller](https://github.com/rancher/system-upgrade-controller) to upgrade nodes.
          * 
          * @return builder
          * 
@@ -320,7 +320,7 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param annotations Annotations for the Cluster V2 (map)
+         * @param annotations Annotations for the Cluster.
          * 
          * @return builder
          * 
@@ -331,7 +331,7 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param annotations Annotations for the Cluster V2 (map)
+         * @param annotations Annotations for the Cluster.
          * 
          * @return builder
          * 
@@ -341,7 +341,7 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cloudCredentialSecretName Cluster V2 cloud credential secret name (string)
+         * @param cloudCredentialSecretName Cloud credential secret name is the secret to be used when a cloud credential secret name is not specified at the machine pool level.
          * 
          * @return builder
          * 
@@ -352,7 +352,7 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cloudCredentialSecretName Cluster V2 cloud credential secret name (string)
+         * @param cloudCredentialSecretName Cloud credential secret name is the secret to be used when a cloud credential secret name is not specified at the machine pool level.
          * 
          * @return builder
          * 
@@ -362,7 +362,7 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterAgentDeploymentCustomizations Optional customization for cluster agent (list)
+         * @param clusterAgentDeploymentCustomizations Cluster agent deployment customization specifies the additional tolerations, new affinity rules, and new resource requirements on the `cattle-cluster-agent` deployment. This argument is available in Rancher v2.7.5 and above.
          * 
          * @return builder
          * 
@@ -373,7 +373,7 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterAgentDeploymentCustomizations Optional customization for cluster agent (list)
+         * @param clusterAgentDeploymentCustomizations Cluster agent deployment customization specifies the additional tolerations, new affinity rules, and new resource requirements on the `cattle-cluster-agent` deployment. This argument is available in Rancher v2.7.5 and above.
          * 
          * @return builder
          * 
@@ -383,7 +383,7 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterAgentDeploymentCustomizations Optional customization for cluster agent (list)
+         * @param clusterAgentDeploymentCustomizations Cluster agent deployment customization specifies the additional tolerations, new affinity rules, and new resource requirements on the `cattle-cluster-agent` deployment. This argument is available in Rancher v2.7.5 and above.
          * 
          * @return builder
          * 
@@ -393,7 +393,7 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultClusterRoleForProjectMembers Cluster V2 default cluster role for project members (string)
+         * @param defaultClusterRoleForProjectMembers Default cluster role for project members.
          * 
          * @return builder
          * 
@@ -404,7 +404,7 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultClusterRoleForProjectMembers Cluster V2 default cluster role for project members (string)
+         * @param defaultClusterRoleForProjectMembers Default cluster role for project members.
          * 
          * @return builder
          * 
@@ -414,7 +414,7 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultPodSecurityAdmissionConfigurationTemplateName Cluster V2 default pod security admission configuration template name (string)
+         * @param defaultPodSecurityAdmissionConfigurationTemplateName The name of the pre-defined pod security admission configuration template to be applied to the cluster. Rancher admins (or those with the right permissions) can create, manage, and edit those templates. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates). The argument is available in Rancher v2.7.2 and above.
          * 
          * @return builder
          * 
@@ -425,7 +425,7 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultPodSecurityAdmissionConfigurationTemplateName Cluster V2 default pod security admission configuration template name (string)
+         * @param defaultPodSecurityAdmissionConfigurationTemplateName The name of the pre-defined pod security admission configuration template to be applied to the cluster. Rancher admins (or those with the right permissions) can create, manage, and edit those templates. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates). The argument is available in Rancher v2.7.2 and above.
          * 
          * @return builder
          * 
@@ -435,7 +435,7 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultPodSecurityPolicyTemplateName Cluster V2 default pod security policy template name (string)
+         * @param defaultPodSecurityPolicyTemplateName Default pod security policy template name specifies the default PSP for the cluster. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies).
          * 
          * @return builder
          * 
@@ -446,7 +446,7 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultPodSecurityPolicyTemplateName Cluster V2 default pod security policy template name (string)
+         * @param defaultPodSecurityPolicyTemplateName Default pod security policy template name specifies the default PSP for the cluster. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies).
          * 
          * @return builder
          * 
@@ -456,7 +456,7 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableNetworkPolicy Enable k8s network policy at Cluster V2 (bool)
+         * @param enableNetworkPolicy Enable k8s network policy on the cluster.
          * 
          * @return builder
          * 
@@ -467,7 +467,7 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableNetworkPolicy Enable k8s network policy at Cluster V2 (bool)
+         * @param enableNetworkPolicy Enable k8s network policy on the cluster.
          * 
          * @return builder
          * 
@@ -477,7 +477,7 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fleetAgentDeploymentCustomizations Optional customization for fleet agent (list)
+         * @param fleetAgentDeploymentCustomizations Fleet agent deployment customization specifies the additional tolerations, new affinity rules, and new resource requirements on the `fleet-agent` deployment. The argument is available in Rancher v2.7.5 and above.
          * 
          * @return builder
          * 
@@ -488,7 +488,7 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fleetAgentDeploymentCustomizations Optional customization for fleet agent (list)
+         * @param fleetAgentDeploymentCustomizations Fleet agent deployment customization specifies the additional tolerations, new affinity rules, and new resource requirements on the `fleet-agent` deployment. The argument is available in Rancher v2.7.5 and above.
          * 
          * @return builder
          * 
@@ -498,7 +498,7 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fleetAgentDeploymentCustomizations Optional customization for fleet agent (list)
+         * @param fleetAgentDeploymentCustomizations Fleet agent deployment customization specifies the additional tolerations, new affinity rules, and new resource requirements on the `fleet-agent` deployment. The argument is available in Rancher v2.7.5 and above.
          * 
          * @return builder
          * 
@@ -508,7 +508,7 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fleetNamespace The fleet namespace of the Cluster v2. Default: `\&#34;fleet-default\&#34;` (string)
+         * @param fleetNamespace Fleet namespace is the namespace where the cluster is to create in the local cluster. It is recommended to leave it as the default value.
          * 
          * @return builder
          * 
@@ -519,7 +519,7 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fleetNamespace The fleet namespace of the Cluster v2. Default: `\&#34;fleet-default\&#34;` (string)
+         * @param fleetNamespace Fleet namespace is the namespace where the cluster is to create in the local cluster. It is recommended to leave it as the default value.
          * 
          * @return builder
          * 
@@ -529,7 +529,7 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kubernetesVersion The kubernetes version of the Cluster v2 (list maxitems:1)
+         * @param kubernetesVersion The RKE2 or K3s version for the cluster.
          * 
          * @return builder
          * 
@@ -540,7 +540,7 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kubernetesVersion The kubernetes version of the Cluster v2 (list maxitems:1)
+         * @param kubernetesVersion The RKE2 or K3s version for the cluster.
          * 
          * @return builder
          * 
@@ -550,7 +550,7 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Labels for the Cluster V2 (map)
+         * @param labels Labels for the Cluster.
          * 
          * @return builder
          * 
@@ -561,7 +561,7 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Labels for the Cluster V2 (map)
+         * @param labels Labels for the Cluster.
          * 
          * @return builder
          * 
@@ -571,7 +571,7 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param localAuthEndpoint Cluster V2 local auth endpoint (list maxitems:1)
+         * @param localAuthEndpoint Local auth endpoint configures the Authorized Cluster Endpoint (ACE) which can be used to directly access the Kubernetes API server, without requiring communication through Rancher. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters).
          * 
          * @return builder
          * 
@@ -582,7 +582,7 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param localAuthEndpoint Cluster V2 local auth endpoint (list maxitems:1)
+         * @param localAuthEndpoint Local auth endpoint configures the Authorized Cluster Endpoint (ACE) which can be used to directly access the Kubernetes API server, without requiring communication through Rancher. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters).
          * 
          * @return builder
          * 
@@ -592,7 +592,7 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the Cluster v2 (string)
+         * @param name The name of the cluster.
          * 
          * @return builder
          * 
@@ -603,7 +603,7 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the Cluster v2 (string)
+         * @param name The name of the cluster.
          * 
          * @return builder
          * 
@@ -613,7 +613,7 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rkeConfig The RKE configuration for `k3s` and `rke2` Clusters v2. (list maxitems:1)
+         * @param rkeConfig The RKE configuration for the cluster.
          * 
          * @return builder
          * 
@@ -624,7 +624,7 @@ public final class ClusterV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rkeConfig The RKE configuration for `k3s` and `rke2` Clusters v2. (list maxitems:1)
+         * @param rkeConfig The RKE configuration for the cluster.
          * 
          * @return builder
          * 

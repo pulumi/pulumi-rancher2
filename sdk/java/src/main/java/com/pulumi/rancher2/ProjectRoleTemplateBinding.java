@@ -136,14 +136,14 @@ public class ProjectRoleTemplateBinding extends com.pulumi.resources.CustomResou
         return this.name;
     }
     /**
-     * The project id where bind project role template (string)
+     * The project id where bind project role template, in format `cluster_id:project_id`, e.g. `c-abc12:p-def34` (string)
      * 
      */
     @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
     /**
-     * @return The project id where bind project role template (string)
+     * @return The project id where bind project role template, in format `cluster_id:project_id`, e.g. `c-abc12:p-def34` (string)
      * 
      */
     public Output<String> projectId() {

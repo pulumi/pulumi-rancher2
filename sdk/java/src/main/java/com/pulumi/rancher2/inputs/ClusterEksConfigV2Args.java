@@ -52,14 +52,14 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The AWS kms key to use (string)
+     * The AWS kms label ARN to use (string, e.g. arn:aws:kms:&lt;ZONE&gt;:&lt;123456789100&gt;:alias/&lt;NAME&gt;)
      * 
      */
     @Import(name="kmsKey")
     private @Nullable Output<String> kmsKey;
 
     /**
-     * @return The AWS kms key to use (string)
+     * @return The AWS kms label ARN to use (string, e.g. arn:aws:kms:&lt;ZONE&gt;:&lt;123456789100&gt;:alias/&lt;NAME&gt;)
      * 
      */
     public Optional<Output<String>> kmsKey() {
@@ -343,7 +343,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param kmsKey The AWS kms key to use (string)
+         * @param kmsKey The AWS kms label ARN to use (string, e.g. arn:aws:kms:&lt;ZONE&gt;:&lt;123456789100&gt;:alias/&lt;NAME&gt;)
          * 
          * @return builder
          * 
@@ -354,7 +354,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param kmsKey The AWS kms key to use (string)
+         * @param kmsKey The AWS kms label ARN to use (string, e.g. arn:aws:kms:&lt;ZONE&gt;:&lt;123456789100&gt;:alias/&lt;NAME&gt;)
          * 
          * @return builder
          * 

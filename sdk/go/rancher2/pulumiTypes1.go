@@ -7,11 +7,1829 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v6/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = internal.GetEnvOrDefault
+
+type GetNotifierDingtalkConfig struct {
+	// Dingtalk proxy URL
+	ProxyUrl *string `pulumi:"proxyUrl"`
+	// Required for webhook with sign enabled
+	Secret *string `pulumi:"secret"`
+	// Webhook URL
+	Url string `pulumi:"url"`
+}
+
+// GetNotifierDingtalkConfigInput is an input type that accepts GetNotifierDingtalkConfigArgs and GetNotifierDingtalkConfigOutput values.
+// You can construct a concrete instance of `GetNotifierDingtalkConfigInput` via:
+//
+//	GetNotifierDingtalkConfigArgs{...}
+type GetNotifierDingtalkConfigInput interface {
+	pulumi.Input
+
+	ToGetNotifierDingtalkConfigOutput() GetNotifierDingtalkConfigOutput
+	ToGetNotifierDingtalkConfigOutputWithContext(context.Context) GetNotifierDingtalkConfigOutput
+}
+
+type GetNotifierDingtalkConfigArgs struct {
+	// Dingtalk proxy URL
+	ProxyUrl pulumi.StringPtrInput `pulumi:"proxyUrl"`
+	// Required for webhook with sign enabled
+	Secret pulumi.StringPtrInput `pulumi:"secret"`
+	// Webhook URL
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (GetNotifierDingtalkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotifierDingtalkConfig)(nil)).Elem()
+}
+
+func (i GetNotifierDingtalkConfigArgs) ToGetNotifierDingtalkConfigOutput() GetNotifierDingtalkConfigOutput {
+	return i.ToGetNotifierDingtalkConfigOutputWithContext(context.Background())
+}
+
+func (i GetNotifierDingtalkConfigArgs) ToGetNotifierDingtalkConfigOutputWithContext(ctx context.Context) GetNotifierDingtalkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNotifierDingtalkConfigOutput)
+}
+
+func (i GetNotifierDingtalkConfigArgs) ToGetNotifierDingtalkConfigPtrOutput() GetNotifierDingtalkConfigPtrOutput {
+	return i.ToGetNotifierDingtalkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetNotifierDingtalkConfigArgs) ToGetNotifierDingtalkConfigPtrOutputWithContext(ctx context.Context) GetNotifierDingtalkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNotifierDingtalkConfigOutput).ToGetNotifierDingtalkConfigPtrOutputWithContext(ctx)
+}
+
+// GetNotifierDingtalkConfigPtrInput is an input type that accepts GetNotifierDingtalkConfigArgs, GetNotifierDingtalkConfigPtr and GetNotifierDingtalkConfigPtrOutput values.
+// You can construct a concrete instance of `GetNotifierDingtalkConfigPtrInput` via:
+//
+//	        GetNotifierDingtalkConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetNotifierDingtalkConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetNotifierDingtalkConfigPtrOutput() GetNotifierDingtalkConfigPtrOutput
+	ToGetNotifierDingtalkConfigPtrOutputWithContext(context.Context) GetNotifierDingtalkConfigPtrOutput
+}
+
+type getNotifierDingtalkConfigPtrType GetNotifierDingtalkConfigArgs
+
+func GetNotifierDingtalkConfigPtr(v *GetNotifierDingtalkConfigArgs) GetNotifierDingtalkConfigPtrInput {
+	return (*getNotifierDingtalkConfigPtrType)(v)
+}
+
+func (*getNotifierDingtalkConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetNotifierDingtalkConfig)(nil)).Elem()
+}
+
+func (i *getNotifierDingtalkConfigPtrType) ToGetNotifierDingtalkConfigPtrOutput() GetNotifierDingtalkConfigPtrOutput {
+	return i.ToGetNotifierDingtalkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getNotifierDingtalkConfigPtrType) ToGetNotifierDingtalkConfigPtrOutputWithContext(ctx context.Context) GetNotifierDingtalkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNotifierDingtalkConfigPtrOutput)
+}
+
+type GetNotifierDingtalkConfigOutput struct{ *pulumi.OutputState }
+
+func (GetNotifierDingtalkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotifierDingtalkConfig)(nil)).Elem()
+}
+
+func (o GetNotifierDingtalkConfigOutput) ToGetNotifierDingtalkConfigOutput() GetNotifierDingtalkConfigOutput {
+	return o
+}
+
+func (o GetNotifierDingtalkConfigOutput) ToGetNotifierDingtalkConfigOutputWithContext(ctx context.Context) GetNotifierDingtalkConfigOutput {
+	return o
+}
+
+func (o GetNotifierDingtalkConfigOutput) ToGetNotifierDingtalkConfigPtrOutput() GetNotifierDingtalkConfigPtrOutput {
+	return o.ToGetNotifierDingtalkConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetNotifierDingtalkConfigOutput) ToGetNotifierDingtalkConfigPtrOutputWithContext(ctx context.Context) GetNotifierDingtalkConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetNotifierDingtalkConfig) *GetNotifierDingtalkConfig {
+		return &v
+	}).(GetNotifierDingtalkConfigPtrOutput)
+}
+
+// Dingtalk proxy URL
+func (o GetNotifierDingtalkConfigOutput) ProxyUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNotifierDingtalkConfig) *string { return v.ProxyUrl }).(pulumi.StringPtrOutput)
+}
+
+// Required for webhook with sign enabled
+func (o GetNotifierDingtalkConfigOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNotifierDingtalkConfig) *string { return v.Secret }).(pulumi.StringPtrOutput)
+}
+
+// Webhook URL
+func (o GetNotifierDingtalkConfigOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotifierDingtalkConfig) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetNotifierDingtalkConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetNotifierDingtalkConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetNotifierDingtalkConfig)(nil)).Elem()
+}
+
+func (o GetNotifierDingtalkConfigPtrOutput) ToGetNotifierDingtalkConfigPtrOutput() GetNotifierDingtalkConfigPtrOutput {
+	return o
+}
+
+func (o GetNotifierDingtalkConfigPtrOutput) ToGetNotifierDingtalkConfigPtrOutputWithContext(ctx context.Context) GetNotifierDingtalkConfigPtrOutput {
+	return o
+}
+
+func (o GetNotifierDingtalkConfigPtrOutput) Elem() GetNotifierDingtalkConfigOutput {
+	return o.ApplyT(func(v *GetNotifierDingtalkConfig) GetNotifierDingtalkConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetNotifierDingtalkConfig
+		return ret
+	}).(GetNotifierDingtalkConfigOutput)
+}
+
+// Dingtalk proxy URL
+func (o GetNotifierDingtalkConfigPtrOutput) ProxyUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetNotifierDingtalkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required for webhook with sign enabled
+func (o GetNotifierDingtalkConfigPtrOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetNotifierDingtalkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Secret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Webhook URL
+func (o GetNotifierDingtalkConfigPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetNotifierDingtalkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetNotifierMsteamsConfig struct {
+	// MS teams proxy URL
+	ProxyUrl *string `pulumi:"proxyUrl"`
+	// Webhook URL
+	Url string `pulumi:"url"`
+}
+
+// GetNotifierMsteamsConfigInput is an input type that accepts GetNotifierMsteamsConfigArgs and GetNotifierMsteamsConfigOutput values.
+// You can construct a concrete instance of `GetNotifierMsteamsConfigInput` via:
+//
+//	GetNotifierMsteamsConfigArgs{...}
+type GetNotifierMsteamsConfigInput interface {
+	pulumi.Input
+
+	ToGetNotifierMsteamsConfigOutput() GetNotifierMsteamsConfigOutput
+	ToGetNotifierMsteamsConfigOutputWithContext(context.Context) GetNotifierMsteamsConfigOutput
+}
+
+type GetNotifierMsteamsConfigArgs struct {
+	// MS teams proxy URL
+	ProxyUrl pulumi.StringPtrInput `pulumi:"proxyUrl"`
+	// Webhook URL
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (GetNotifierMsteamsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotifierMsteamsConfig)(nil)).Elem()
+}
+
+func (i GetNotifierMsteamsConfigArgs) ToGetNotifierMsteamsConfigOutput() GetNotifierMsteamsConfigOutput {
+	return i.ToGetNotifierMsteamsConfigOutputWithContext(context.Background())
+}
+
+func (i GetNotifierMsteamsConfigArgs) ToGetNotifierMsteamsConfigOutputWithContext(ctx context.Context) GetNotifierMsteamsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNotifierMsteamsConfigOutput)
+}
+
+func (i GetNotifierMsteamsConfigArgs) ToGetNotifierMsteamsConfigPtrOutput() GetNotifierMsteamsConfigPtrOutput {
+	return i.ToGetNotifierMsteamsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetNotifierMsteamsConfigArgs) ToGetNotifierMsteamsConfigPtrOutputWithContext(ctx context.Context) GetNotifierMsteamsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNotifierMsteamsConfigOutput).ToGetNotifierMsteamsConfigPtrOutputWithContext(ctx)
+}
+
+// GetNotifierMsteamsConfigPtrInput is an input type that accepts GetNotifierMsteamsConfigArgs, GetNotifierMsteamsConfigPtr and GetNotifierMsteamsConfigPtrOutput values.
+// You can construct a concrete instance of `GetNotifierMsteamsConfigPtrInput` via:
+//
+//	        GetNotifierMsteamsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetNotifierMsteamsConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetNotifierMsteamsConfigPtrOutput() GetNotifierMsteamsConfigPtrOutput
+	ToGetNotifierMsteamsConfigPtrOutputWithContext(context.Context) GetNotifierMsteamsConfigPtrOutput
+}
+
+type getNotifierMsteamsConfigPtrType GetNotifierMsteamsConfigArgs
+
+func GetNotifierMsteamsConfigPtr(v *GetNotifierMsteamsConfigArgs) GetNotifierMsteamsConfigPtrInput {
+	return (*getNotifierMsteamsConfigPtrType)(v)
+}
+
+func (*getNotifierMsteamsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetNotifierMsteamsConfig)(nil)).Elem()
+}
+
+func (i *getNotifierMsteamsConfigPtrType) ToGetNotifierMsteamsConfigPtrOutput() GetNotifierMsteamsConfigPtrOutput {
+	return i.ToGetNotifierMsteamsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getNotifierMsteamsConfigPtrType) ToGetNotifierMsteamsConfigPtrOutputWithContext(ctx context.Context) GetNotifierMsteamsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNotifierMsteamsConfigPtrOutput)
+}
+
+type GetNotifierMsteamsConfigOutput struct{ *pulumi.OutputState }
+
+func (GetNotifierMsteamsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotifierMsteamsConfig)(nil)).Elem()
+}
+
+func (o GetNotifierMsteamsConfigOutput) ToGetNotifierMsteamsConfigOutput() GetNotifierMsteamsConfigOutput {
+	return o
+}
+
+func (o GetNotifierMsteamsConfigOutput) ToGetNotifierMsteamsConfigOutputWithContext(ctx context.Context) GetNotifierMsteamsConfigOutput {
+	return o
+}
+
+func (o GetNotifierMsteamsConfigOutput) ToGetNotifierMsteamsConfigPtrOutput() GetNotifierMsteamsConfigPtrOutput {
+	return o.ToGetNotifierMsteamsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetNotifierMsteamsConfigOutput) ToGetNotifierMsteamsConfigPtrOutputWithContext(ctx context.Context) GetNotifierMsteamsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetNotifierMsteamsConfig) *GetNotifierMsteamsConfig {
+		return &v
+	}).(GetNotifierMsteamsConfigPtrOutput)
+}
+
+// MS teams proxy URL
+func (o GetNotifierMsteamsConfigOutput) ProxyUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNotifierMsteamsConfig) *string { return v.ProxyUrl }).(pulumi.StringPtrOutput)
+}
+
+// Webhook URL
+func (o GetNotifierMsteamsConfigOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotifierMsteamsConfig) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetNotifierMsteamsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetNotifierMsteamsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetNotifierMsteamsConfig)(nil)).Elem()
+}
+
+func (o GetNotifierMsteamsConfigPtrOutput) ToGetNotifierMsteamsConfigPtrOutput() GetNotifierMsteamsConfigPtrOutput {
+	return o
+}
+
+func (o GetNotifierMsteamsConfigPtrOutput) ToGetNotifierMsteamsConfigPtrOutputWithContext(ctx context.Context) GetNotifierMsteamsConfigPtrOutput {
+	return o
+}
+
+func (o GetNotifierMsteamsConfigPtrOutput) Elem() GetNotifierMsteamsConfigOutput {
+	return o.ApplyT(func(v *GetNotifierMsteamsConfig) GetNotifierMsteamsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetNotifierMsteamsConfig
+		return ret
+	}).(GetNotifierMsteamsConfigOutput)
+}
+
+// MS teams proxy URL
+func (o GetNotifierMsteamsConfigPtrOutput) ProxyUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetNotifierMsteamsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Webhook URL
+func (o GetNotifierMsteamsConfigPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetNotifierMsteamsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetNotifierPagerdutyConfig struct {
+	// Pagerduty proxy URL
+	ProxyUrl *string `pulumi:"proxyUrl"`
+	// Pagerduty service key
+	ServiceKey string `pulumi:"serviceKey"`
+}
+
+// GetNotifierPagerdutyConfigInput is an input type that accepts GetNotifierPagerdutyConfigArgs and GetNotifierPagerdutyConfigOutput values.
+// You can construct a concrete instance of `GetNotifierPagerdutyConfigInput` via:
+//
+//	GetNotifierPagerdutyConfigArgs{...}
+type GetNotifierPagerdutyConfigInput interface {
+	pulumi.Input
+
+	ToGetNotifierPagerdutyConfigOutput() GetNotifierPagerdutyConfigOutput
+	ToGetNotifierPagerdutyConfigOutputWithContext(context.Context) GetNotifierPagerdutyConfigOutput
+}
+
+type GetNotifierPagerdutyConfigArgs struct {
+	// Pagerduty proxy URL
+	ProxyUrl pulumi.StringPtrInput `pulumi:"proxyUrl"`
+	// Pagerduty service key
+	ServiceKey pulumi.StringInput `pulumi:"serviceKey"`
+}
+
+func (GetNotifierPagerdutyConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotifierPagerdutyConfig)(nil)).Elem()
+}
+
+func (i GetNotifierPagerdutyConfigArgs) ToGetNotifierPagerdutyConfigOutput() GetNotifierPagerdutyConfigOutput {
+	return i.ToGetNotifierPagerdutyConfigOutputWithContext(context.Background())
+}
+
+func (i GetNotifierPagerdutyConfigArgs) ToGetNotifierPagerdutyConfigOutputWithContext(ctx context.Context) GetNotifierPagerdutyConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNotifierPagerdutyConfigOutput)
+}
+
+type GetNotifierPagerdutyConfigOutput struct{ *pulumi.OutputState }
+
+func (GetNotifierPagerdutyConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotifierPagerdutyConfig)(nil)).Elem()
+}
+
+func (o GetNotifierPagerdutyConfigOutput) ToGetNotifierPagerdutyConfigOutput() GetNotifierPagerdutyConfigOutput {
+	return o
+}
+
+func (o GetNotifierPagerdutyConfigOutput) ToGetNotifierPagerdutyConfigOutputWithContext(ctx context.Context) GetNotifierPagerdutyConfigOutput {
+	return o
+}
+
+// Pagerduty proxy URL
+func (o GetNotifierPagerdutyConfigOutput) ProxyUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNotifierPagerdutyConfig) *string { return v.ProxyUrl }).(pulumi.StringPtrOutput)
+}
+
+// Pagerduty service key
+func (o GetNotifierPagerdutyConfigOutput) ServiceKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotifierPagerdutyConfig) string { return v.ServiceKey }).(pulumi.StringOutput)
+}
+
+type GetNotifierSlackConfig struct {
+	// Slack default channel
+	DefaultRecipient string `pulumi:"defaultRecipient"`
+	// Slack proxy URL
+	ProxyUrl *string `pulumi:"proxyUrl"`
+	// Slack URL
+	Url string `pulumi:"url"`
+}
+
+// GetNotifierSlackConfigInput is an input type that accepts GetNotifierSlackConfigArgs and GetNotifierSlackConfigOutput values.
+// You can construct a concrete instance of `GetNotifierSlackConfigInput` via:
+//
+//	GetNotifierSlackConfigArgs{...}
+type GetNotifierSlackConfigInput interface {
+	pulumi.Input
+
+	ToGetNotifierSlackConfigOutput() GetNotifierSlackConfigOutput
+	ToGetNotifierSlackConfigOutputWithContext(context.Context) GetNotifierSlackConfigOutput
+}
+
+type GetNotifierSlackConfigArgs struct {
+	// Slack default channel
+	DefaultRecipient pulumi.StringInput `pulumi:"defaultRecipient"`
+	// Slack proxy URL
+	ProxyUrl pulumi.StringPtrInput `pulumi:"proxyUrl"`
+	// Slack URL
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (GetNotifierSlackConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotifierSlackConfig)(nil)).Elem()
+}
+
+func (i GetNotifierSlackConfigArgs) ToGetNotifierSlackConfigOutput() GetNotifierSlackConfigOutput {
+	return i.ToGetNotifierSlackConfigOutputWithContext(context.Background())
+}
+
+func (i GetNotifierSlackConfigArgs) ToGetNotifierSlackConfigOutputWithContext(ctx context.Context) GetNotifierSlackConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNotifierSlackConfigOutput)
+}
+
+type GetNotifierSlackConfigOutput struct{ *pulumi.OutputState }
+
+func (GetNotifierSlackConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotifierSlackConfig)(nil)).Elem()
+}
+
+func (o GetNotifierSlackConfigOutput) ToGetNotifierSlackConfigOutput() GetNotifierSlackConfigOutput {
+	return o
+}
+
+func (o GetNotifierSlackConfigOutput) ToGetNotifierSlackConfigOutputWithContext(ctx context.Context) GetNotifierSlackConfigOutput {
+	return o
+}
+
+// Slack default channel
+func (o GetNotifierSlackConfigOutput) DefaultRecipient() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotifierSlackConfig) string { return v.DefaultRecipient }).(pulumi.StringOutput)
+}
+
+// Slack proxy URL
+func (o GetNotifierSlackConfigOutput) ProxyUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNotifierSlackConfig) *string { return v.ProxyUrl }).(pulumi.StringPtrOutput)
+}
+
+// Slack URL
+func (o GetNotifierSlackConfigOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotifierSlackConfig) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetNotifierSmtpConfig struct {
+	// SMTP default recipient address
+	DefaultRecipient string `pulumi:"defaultRecipient"`
+	// SMTP host
+	Host string `pulumi:"host"`
+	// SMTP password
+	Password *string `pulumi:"password"`
+	// SMTP port
+	Port int `pulumi:"port"`
+	// SMTP sender
+	Sender string `pulumi:"sender"`
+	// SMTP TLS
+	Tls *bool `pulumi:"tls"`
+	// SMTP username
+	Username *string `pulumi:"username"`
+}
+
+// GetNotifierSmtpConfigInput is an input type that accepts GetNotifierSmtpConfigArgs and GetNotifierSmtpConfigOutput values.
+// You can construct a concrete instance of `GetNotifierSmtpConfigInput` via:
+//
+//	GetNotifierSmtpConfigArgs{...}
+type GetNotifierSmtpConfigInput interface {
+	pulumi.Input
+
+	ToGetNotifierSmtpConfigOutput() GetNotifierSmtpConfigOutput
+	ToGetNotifierSmtpConfigOutputWithContext(context.Context) GetNotifierSmtpConfigOutput
+}
+
+type GetNotifierSmtpConfigArgs struct {
+	// SMTP default recipient address
+	DefaultRecipient pulumi.StringInput `pulumi:"defaultRecipient"`
+	// SMTP host
+	Host pulumi.StringInput `pulumi:"host"`
+	// SMTP password
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// SMTP port
+	Port pulumi.IntInput `pulumi:"port"`
+	// SMTP sender
+	Sender pulumi.StringInput `pulumi:"sender"`
+	// SMTP TLS
+	Tls pulumi.BoolPtrInput `pulumi:"tls"`
+	// SMTP username
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GetNotifierSmtpConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotifierSmtpConfig)(nil)).Elem()
+}
+
+func (i GetNotifierSmtpConfigArgs) ToGetNotifierSmtpConfigOutput() GetNotifierSmtpConfigOutput {
+	return i.ToGetNotifierSmtpConfigOutputWithContext(context.Background())
+}
+
+func (i GetNotifierSmtpConfigArgs) ToGetNotifierSmtpConfigOutputWithContext(ctx context.Context) GetNotifierSmtpConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNotifierSmtpConfigOutput)
+}
+
+type GetNotifierSmtpConfigOutput struct{ *pulumi.OutputState }
+
+func (GetNotifierSmtpConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotifierSmtpConfig)(nil)).Elem()
+}
+
+func (o GetNotifierSmtpConfigOutput) ToGetNotifierSmtpConfigOutput() GetNotifierSmtpConfigOutput {
+	return o
+}
+
+func (o GetNotifierSmtpConfigOutput) ToGetNotifierSmtpConfigOutputWithContext(ctx context.Context) GetNotifierSmtpConfigOutput {
+	return o
+}
+
+// SMTP default recipient address
+func (o GetNotifierSmtpConfigOutput) DefaultRecipient() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotifierSmtpConfig) string { return v.DefaultRecipient }).(pulumi.StringOutput)
+}
+
+// SMTP host
+func (o GetNotifierSmtpConfigOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotifierSmtpConfig) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// SMTP password
+func (o GetNotifierSmtpConfigOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNotifierSmtpConfig) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// SMTP port
+func (o GetNotifierSmtpConfigOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNotifierSmtpConfig) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// SMTP sender
+func (o GetNotifierSmtpConfigOutput) Sender() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotifierSmtpConfig) string { return v.Sender }).(pulumi.StringOutput)
+}
+
+// SMTP TLS
+func (o GetNotifierSmtpConfigOutput) Tls() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetNotifierSmtpConfig) *bool { return v.Tls }).(pulumi.BoolPtrOutput)
+}
+
+// SMTP username
+func (o GetNotifierSmtpConfigOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNotifierSmtpConfig) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GetNotifierWebhookConfig struct {
+	// Webhook proxy URL
+	ProxyUrl *string `pulumi:"proxyUrl"`
+	// Webhook URL
+	Url string `pulumi:"url"`
+}
+
+// GetNotifierWebhookConfigInput is an input type that accepts GetNotifierWebhookConfigArgs and GetNotifierWebhookConfigOutput values.
+// You can construct a concrete instance of `GetNotifierWebhookConfigInput` via:
+//
+//	GetNotifierWebhookConfigArgs{...}
+type GetNotifierWebhookConfigInput interface {
+	pulumi.Input
+
+	ToGetNotifierWebhookConfigOutput() GetNotifierWebhookConfigOutput
+	ToGetNotifierWebhookConfigOutputWithContext(context.Context) GetNotifierWebhookConfigOutput
+}
+
+type GetNotifierWebhookConfigArgs struct {
+	// Webhook proxy URL
+	ProxyUrl pulumi.StringPtrInput `pulumi:"proxyUrl"`
+	// Webhook URL
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (GetNotifierWebhookConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotifierWebhookConfig)(nil)).Elem()
+}
+
+func (i GetNotifierWebhookConfigArgs) ToGetNotifierWebhookConfigOutput() GetNotifierWebhookConfigOutput {
+	return i.ToGetNotifierWebhookConfigOutputWithContext(context.Background())
+}
+
+func (i GetNotifierWebhookConfigArgs) ToGetNotifierWebhookConfigOutputWithContext(ctx context.Context) GetNotifierWebhookConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNotifierWebhookConfigOutput)
+}
+
+type GetNotifierWebhookConfigOutput struct{ *pulumi.OutputState }
+
+func (GetNotifierWebhookConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotifierWebhookConfig)(nil)).Elem()
+}
+
+func (o GetNotifierWebhookConfigOutput) ToGetNotifierWebhookConfigOutput() GetNotifierWebhookConfigOutput {
+	return o
+}
+
+func (o GetNotifierWebhookConfigOutput) ToGetNotifierWebhookConfigOutputWithContext(ctx context.Context) GetNotifierWebhookConfigOutput {
+	return o
+}
+
+// Webhook proxy URL
+func (o GetNotifierWebhookConfigOutput) ProxyUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNotifierWebhookConfig) *string { return v.ProxyUrl }).(pulumi.StringPtrOutput)
+}
+
+// Webhook URL
+func (o GetNotifierWebhookConfigOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotifierWebhookConfig) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetNotifierWechatConfig struct {
+	// Wechat application agent ID
+	Agent string `pulumi:"agent"`
+	// Wechat corporation ID
+	Corp string `pulumi:"corp"`
+	// Wechat default channel
+	DefaultRecipient string `pulumi:"defaultRecipient"`
+	// Wechat proxy URL
+	ProxyUrl *string `pulumi:"proxyUrl"`
+	// Wechat recipient type
+	RecipientType *string `pulumi:"recipientType"`
+	// Wechat application secret
+	Secret string `pulumi:"secret"`
+}
+
+// GetNotifierWechatConfigInput is an input type that accepts GetNotifierWechatConfigArgs and GetNotifierWechatConfigOutput values.
+// You can construct a concrete instance of `GetNotifierWechatConfigInput` via:
+//
+//	GetNotifierWechatConfigArgs{...}
+type GetNotifierWechatConfigInput interface {
+	pulumi.Input
+
+	ToGetNotifierWechatConfigOutput() GetNotifierWechatConfigOutput
+	ToGetNotifierWechatConfigOutputWithContext(context.Context) GetNotifierWechatConfigOutput
+}
+
+type GetNotifierWechatConfigArgs struct {
+	// Wechat application agent ID
+	Agent pulumi.StringInput `pulumi:"agent"`
+	// Wechat corporation ID
+	Corp pulumi.StringInput `pulumi:"corp"`
+	// Wechat default channel
+	DefaultRecipient pulumi.StringInput `pulumi:"defaultRecipient"`
+	// Wechat proxy URL
+	ProxyUrl pulumi.StringPtrInput `pulumi:"proxyUrl"`
+	// Wechat recipient type
+	RecipientType pulumi.StringPtrInput `pulumi:"recipientType"`
+	// Wechat application secret
+	Secret pulumi.StringInput `pulumi:"secret"`
+}
+
+func (GetNotifierWechatConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotifierWechatConfig)(nil)).Elem()
+}
+
+func (i GetNotifierWechatConfigArgs) ToGetNotifierWechatConfigOutput() GetNotifierWechatConfigOutput {
+	return i.ToGetNotifierWechatConfigOutputWithContext(context.Background())
+}
+
+func (i GetNotifierWechatConfigArgs) ToGetNotifierWechatConfigOutputWithContext(ctx context.Context) GetNotifierWechatConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNotifierWechatConfigOutput)
+}
+
+type GetNotifierWechatConfigOutput struct{ *pulumi.OutputState }
+
+func (GetNotifierWechatConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotifierWechatConfig)(nil)).Elem()
+}
+
+func (o GetNotifierWechatConfigOutput) ToGetNotifierWechatConfigOutput() GetNotifierWechatConfigOutput {
+	return o
+}
+
+func (o GetNotifierWechatConfigOutput) ToGetNotifierWechatConfigOutputWithContext(ctx context.Context) GetNotifierWechatConfigOutput {
+	return o
+}
+
+// Wechat application agent ID
+func (o GetNotifierWechatConfigOutput) Agent() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotifierWechatConfig) string { return v.Agent }).(pulumi.StringOutput)
+}
+
+// Wechat corporation ID
+func (o GetNotifierWechatConfigOutput) Corp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotifierWechatConfig) string { return v.Corp }).(pulumi.StringOutput)
+}
+
+// Wechat default channel
+func (o GetNotifierWechatConfigOutput) DefaultRecipient() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotifierWechatConfig) string { return v.DefaultRecipient }).(pulumi.StringOutput)
+}
+
+// Wechat proxy URL
+func (o GetNotifierWechatConfigOutput) ProxyUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNotifierWechatConfig) *string { return v.ProxyUrl }).(pulumi.StringPtrOutput)
+}
+
+// Wechat recipient type
+func (o GetNotifierWechatConfigOutput) RecipientType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNotifierWechatConfig) *string { return v.RecipientType }).(pulumi.StringPtrOutput)
+}
+
+// Wechat application secret
+func (o GetNotifierWechatConfigOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotifierWechatConfig) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+type GetPodSecurityPolicyTemplateAllowedCsiDriver struct {
+	// The name of the PodSecurityPolicyTemplate (string)
+	Name string `pulumi:"name"`
+}
+
+// GetPodSecurityPolicyTemplateAllowedCsiDriverInput is an input type that accepts GetPodSecurityPolicyTemplateAllowedCsiDriverArgs and GetPodSecurityPolicyTemplateAllowedCsiDriverOutput values.
+// You can construct a concrete instance of `GetPodSecurityPolicyTemplateAllowedCsiDriverInput` via:
+//
+//	GetPodSecurityPolicyTemplateAllowedCsiDriverArgs{...}
+type GetPodSecurityPolicyTemplateAllowedCsiDriverInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateAllowedCsiDriverOutput() GetPodSecurityPolicyTemplateAllowedCsiDriverOutput
+	ToGetPodSecurityPolicyTemplateAllowedCsiDriverOutputWithContext(context.Context) GetPodSecurityPolicyTemplateAllowedCsiDriverOutput
+}
+
+type GetPodSecurityPolicyTemplateAllowedCsiDriverArgs struct {
+	// The name of the PodSecurityPolicyTemplate (string)
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetPodSecurityPolicyTemplateAllowedCsiDriverArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateAllowedCsiDriver)(nil)).Elem()
+}
+
+func (i GetPodSecurityPolicyTemplateAllowedCsiDriverArgs) ToGetPodSecurityPolicyTemplateAllowedCsiDriverOutput() GetPodSecurityPolicyTemplateAllowedCsiDriverOutput {
+	return i.ToGetPodSecurityPolicyTemplateAllowedCsiDriverOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateAllowedCsiDriverArgs) ToGetPodSecurityPolicyTemplateAllowedCsiDriverOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateAllowedCsiDriverOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateAllowedCsiDriverOutput)
+}
+
+// GetPodSecurityPolicyTemplateAllowedCsiDriverArrayInput is an input type that accepts GetPodSecurityPolicyTemplateAllowedCsiDriverArray and GetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutput values.
+// You can construct a concrete instance of `GetPodSecurityPolicyTemplateAllowedCsiDriverArrayInput` via:
+//
+//	GetPodSecurityPolicyTemplateAllowedCsiDriverArray{ GetPodSecurityPolicyTemplateAllowedCsiDriverArgs{...} }
+type GetPodSecurityPolicyTemplateAllowedCsiDriverArrayInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutput() GetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutput
+	ToGetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutputWithContext(context.Context) GetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutput
+}
+
+type GetPodSecurityPolicyTemplateAllowedCsiDriverArray []GetPodSecurityPolicyTemplateAllowedCsiDriverInput
+
+func (GetPodSecurityPolicyTemplateAllowedCsiDriverArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPodSecurityPolicyTemplateAllowedCsiDriver)(nil)).Elem()
+}
+
+func (i GetPodSecurityPolicyTemplateAllowedCsiDriverArray) ToGetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutput() GetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutput {
+	return i.ToGetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateAllowedCsiDriverArray) ToGetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutput)
+}
+
+type GetPodSecurityPolicyTemplateAllowedCsiDriverOutput struct{ *pulumi.OutputState }
+
+func (GetPodSecurityPolicyTemplateAllowedCsiDriverOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateAllowedCsiDriver)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateAllowedCsiDriverOutput) ToGetPodSecurityPolicyTemplateAllowedCsiDriverOutput() GetPodSecurityPolicyTemplateAllowedCsiDriverOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateAllowedCsiDriverOutput) ToGetPodSecurityPolicyTemplateAllowedCsiDriverOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateAllowedCsiDriverOutput {
+	return o
+}
+
+// The name of the PodSecurityPolicyTemplate (string)
+func (o GetPodSecurityPolicyTemplateAllowedCsiDriverOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPodSecurityPolicyTemplateAllowedCsiDriver) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPodSecurityPolicyTemplateAllowedCsiDriver)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutput) ToGetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutput() GetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutput) ToGetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutput) Index(i pulumi.IntInput) GetPodSecurityPolicyTemplateAllowedCsiDriverOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPodSecurityPolicyTemplateAllowedCsiDriver {
+		return vs[0].([]GetPodSecurityPolicyTemplateAllowedCsiDriver)[vs[1].(int)]
+	}).(GetPodSecurityPolicyTemplateAllowedCsiDriverOutput)
+}
+
+type GetPodSecurityPolicyTemplateAllowedFlexVolume struct {
+	// driver is the name of the Flexvolume driver.
+	Driver string `pulumi:"driver"`
+}
+
+// GetPodSecurityPolicyTemplateAllowedFlexVolumeInput is an input type that accepts GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs and GetPodSecurityPolicyTemplateAllowedFlexVolumeOutput values.
+// You can construct a concrete instance of `GetPodSecurityPolicyTemplateAllowedFlexVolumeInput` via:
+//
+//	GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs{...}
+type GetPodSecurityPolicyTemplateAllowedFlexVolumeInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateAllowedFlexVolumeOutput() GetPodSecurityPolicyTemplateAllowedFlexVolumeOutput
+	ToGetPodSecurityPolicyTemplateAllowedFlexVolumeOutputWithContext(context.Context) GetPodSecurityPolicyTemplateAllowedFlexVolumeOutput
+}
+
+type GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs struct {
+	// driver is the name of the Flexvolume driver.
+	Driver pulumi.StringInput `pulumi:"driver"`
+}
+
+func (GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateAllowedFlexVolume)(nil)).Elem()
+}
+
+func (i GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs) ToGetPodSecurityPolicyTemplateAllowedFlexVolumeOutput() GetPodSecurityPolicyTemplateAllowedFlexVolumeOutput {
+	return i.ToGetPodSecurityPolicyTemplateAllowedFlexVolumeOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs) ToGetPodSecurityPolicyTemplateAllowedFlexVolumeOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateAllowedFlexVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateAllowedFlexVolumeOutput)
+}
+
+// GetPodSecurityPolicyTemplateAllowedFlexVolumeArrayInput is an input type that accepts GetPodSecurityPolicyTemplateAllowedFlexVolumeArray and GetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput values.
+// You can construct a concrete instance of `GetPodSecurityPolicyTemplateAllowedFlexVolumeArrayInput` via:
+//
+//	GetPodSecurityPolicyTemplateAllowedFlexVolumeArray{ GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs{...} }
+type GetPodSecurityPolicyTemplateAllowedFlexVolumeArrayInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput() GetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput
+	ToGetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutputWithContext(context.Context) GetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput
+}
+
+type GetPodSecurityPolicyTemplateAllowedFlexVolumeArray []GetPodSecurityPolicyTemplateAllowedFlexVolumeInput
+
+func (GetPodSecurityPolicyTemplateAllowedFlexVolumeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPodSecurityPolicyTemplateAllowedFlexVolume)(nil)).Elem()
+}
+
+func (i GetPodSecurityPolicyTemplateAllowedFlexVolumeArray) ToGetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput() GetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput {
+	return i.ToGetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateAllowedFlexVolumeArray) ToGetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput)
+}
+
+type GetPodSecurityPolicyTemplateAllowedFlexVolumeOutput struct{ *pulumi.OutputState }
+
+func (GetPodSecurityPolicyTemplateAllowedFlexVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateAllowedFlexVolume)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateAllowedFlexVolumeOutput) ToGetPodSecurityPolicyTemplateAllowedFlexVolumeOutput() GetPodSecurityPolicyTemplateAllowedFlexVolumeOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateAllowedFlexVolumeOutput) ToGetPodSecurityPolicyTemplateAllowedFlexVolumeOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateAllowedFlexVolumeOutput {
+	return o
+}
+
+// driver is the name of the Flexvolume driver.
+func (o GetPodSecurityPolicyTemplateAllowedFlexVolumeOutput) Driver() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPodSecurityPolicyTemplateAllowedFlexVolume) string { return v.Driver }).(pulumi.StringOutput)
+}
+
+type GetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPodSecurityPolicyTemplateAllowedFlexVolume)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput) ToGetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput() GetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput) ToGetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput) Index(i pulumi.IntInput) GetPodSecurityPolicyTemplateAllowedFlexVolumeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPodSecurityPolicyTemplateAllowedFlexVolume {
+		return vs[0].([]GetPodSecurityPolicyTemplateAllowedFlexVolume)[vs[1].(int)]
+	}).(GetPodSecurityPolicyTemplateAllowedFlexVolumeOutput)
+}
+
+type GetPodSecurityPolicyTemplateAllowedHostPath struct {
+	// pathPrefix is the path prefix that the host volume must match. It does not support `*`. Trailing slashes are trimmed when validating the path prefix with a host path.
+	PathPrefix string `pulumi:"pathPrefix"`
+	// when set to true, will allow host volumes matching the pathPrefix only if all volume mounts are readOnly.
+	ReadOnly *bool `pulumi:"readOnly"`
+}
+
+// GetPodSecurityPolicyTemplateAllowedHostPathInput is an input type that accepts GetPodSecurityPolicyTemplateAllowedHostPathArgs and GetPodSecurityPolicyTemplateAllowedHostPathOutput values.
+// You can construct a concrete instance of `GetPodSecurityPolicyTemplateAllowedHostPathInput` via:
+//
+//	GetPodSecurityPolicyTemplateAllowedHostPathArgs{...}
+type GetPodSecurityPolicyTemplateAllowedHostPathInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateAllowedHostPathOutput() GetPodSecurityPolicyTemplateAllowedHostPathOutput
+	ToGetPodSecurityPolicyTemplateAllowedHostPathOutputWithContext(context.Context) GetPodSecurityPolicyTemplateAllowedHostPathOutput
+}
+
+type GetPodSecurityPolicyTemplateAllowedHostPathArgs struct {
+	// pathPrefix is the path prefix that the host volume must match. It does not support `*`. Trailing slashes are trimmed when validating the path prefix with a host path.
+	PathPrefix pulumi.StringInput `pulumi:"pathPrefix"`
+	// when set to true, will allow host volumes matching the pathPrefix only if all volume mounts are readOnly.
+	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
+}
+
+func (GetPodSecurityPolicyTemplateAllowedHostPathArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateAllowedHostPath)(nil)).Elem()
+}
+
+func (i GetPodSecurityPolicyTemplateAllowedHostPathArgs) ToGetPodSecurityPolicyTemplateAllowedHostPathOutput() GetPodSecurityPolicyTemplateAllowedHostPathOutput {
+	return i.ToGetPodSecurityPolicyTemplateAllowedHostPathOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateAllowedHostPathArgs) ToGetPodSecurityPolicyTemplateAllowedHostPathOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateAllowedHostPathOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateAllowedHostPathOutput)
+}
+
+// GetPodSecurityPolicyTemplateAllowedHostPathArrayInput is an input type that accepts GetPodSecurityPolicyTemplateAllowedHostPathArray and GetPodSecurityPolicyTemplateAllowedHostPathArrayOutput values.
+// You can construct a concrete instance of `GetPodSecurityPolicyTemplateAllowedHostPathArrayInput` via:
+//
+//	GetPodSecurityPolicyTemplateAllowedHostPathArray{ GetPodSecurityPolicyTemplateAllowedHostPathArgs{...} }
+type GetPodSecurityPolicyTemplateAllowedHostPathArrayInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateAllowedHostPathArrayOutput() GetPodSecurityPolicyTemplateAllowedHostPathArrayOutput
+	ToGetPodSecurityPolicyTemplateAllowedHostPathArrayOutputWithContext(context.Context) GetPodSecurityPolicyTemplateAllowedHostPathArrayOutput
+}
+
+type GetPodSecurityPolicyTemplateAllowedHostPathArray []GetPodSecurityPolicyTemplateAllowedHostPathInput
+
+func (GetPodSecurityPolicyTemplateAllowedHostPathArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPodSecurityPolicyTemplateAllowedHostPath)(nil)).Elem()
+}
+
+func (i GetPodSecurityPolicyTemplateAllowedHostPathArray) ToGetPodSecurityPolicyTemplateAllowedHostPathArrayOutput() GetPodSecurityPolicyTemplateAllowedHostPathArrayOutput {
+	return i.ToGetPodSecurityPolicyTemplateAllowedHostPathArrayOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateAllowedHostPathArray) ToGetPodSecurityPolicyTemplateAllowedHostPathArrayOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateAllowedHostPathArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateAllowedHostPathArrayOutput)
+}
+
+type GetPodSecurityPolicyTemplateAllowedHostPathOutput struct{ *pulumi.OutputState }
+
+func (GetPodSecurityPolicyTemplateAllowedHostPathOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateAllowedHostPath)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateAllowedHostPathOutput) ToGetPodSecurityPolicyTemplateAllowedHostPathOutput() GetPodSecurityPolicyTemplateAllowedHostPathOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateAllowedHostPathOutput) ToGetPodSecurityPolicyTemplateAllowedHostPathOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateAllowedHostPathOutput {
+	return o
+}
+
+// pathPrefix is the path prefix that the host volume must match. It does not support `*`. Trailing slashes are trimmed when validating the path prefix with a host path.
+func (o GetPodSecurityPolicyTemplateAllowedHostPathOutput) PathPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPodSecurityPolicyTemplateAllowedHostPath) string { return v.PathPrefix }).(pulumi.StringOutput)
+}
+
+// when set to true, will allow host volumes matching the pathPrefix only if all volume mounts are readOnly.
+func (o GetPodSecurityPolicyTemplateAllowedHostPathOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPodSecurityPolicyTemplateAllowedHostPath) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+type GetPodSecurityPolicyTemplateAllowedHostPathArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPodSecurityPolicyTemplateAllowedHostPathArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPodSecurityPolicyTemplateAllowedHostPath)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateAllowedHostPathArrayOutput) ToGetPodSecurityPolicyTemplateAllowedHostPathArrayOutput() GetPodSecurityPolicyTemplateAllowedHostPathArrayOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateAllowedHostPathArrayOutput) ToGetPodSecurityPolicyTemplateAllowedHostPathArrayOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateAllowedHostPathArrayOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateAllowedHostPathArrayOutput) Index(i pulumi.IntInput) GetPodSecurityPolicyTemplateAllowedHostPathOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPodSecurityPolicyTemplateAllowedHostPath {
+		return vs[0].([]GetPodSecurityPolicyTemplateAllowedHostPath)[vs[1].(int)]
+	}).(GetPodSecurityPolicyTemplateAllowedHostPathOutput)
+}
+
+type GetPodSecurityPolicyTemplateFsGroup struct {
+	// ranges are the allowed ranges of fs groups.  If you would like to force a single fs group then supply a single range with the same start and end. Required for MustRunAs.
+	Ranges []GetPodSecurityPolicyTemplateFsGroupRange `pulumi:"ranges"`
+	// rule is the strategy that will dictate what FSGroup is used in the SecurityContext.
+	Rule *string `pulumi:"rule"`
+}
+
+// GetPodSecurityPolicyTemplateFsGroupInput is an input type that accepts GetPodSecurityPolicyTemplateFsGroupArgs and GetPodSecurityPolicyTemplateFsGroupOutput values.
+// You can construct a concrete instance of `GetPodSecurityPolicyTemplateFsGroupInput` via:
+//
+//	GetPodSecurityPolicyTemplateFsGroupArgs{...}
+type GetPodSecurityPolicyTemplateFsGroupInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateFsGroupOutput() GetPodSecurityPolicyTemplateFsGroupOutput
+	ToGetPodSecurityPolicyTemplateFsGroupOutputWithContext(context.Context) GetPodSecurityPolicyTemplateFsGroupOutput
+}
+
+type GetPodSecurityPolicyTemplateFsGroupArgs struct {
+	// ranges are the allowed ranges of fs groups.  If you would like to force a single fs group then supply a single range with the same start and end. Required for MustRunAs.
+	Ranges GetPodSecurityPolicyTemplateFsGroupRangeArrayInput `pulumi:"ranges"`
+	// rule is the strategy that will dictate what FSGroup is used in the SecurityContext.
+	Rule pulumi.StringPtrInput `pulumi:"rule"`
+}
+
+func (GetPodSecurityPolicyTemplateFsGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateFsGroup)(nil)).Elem()
+}
+
+func (i GetPodSecurityPolicyTemplateFsGroupArgs) ToGetPodSecurityPolicyTemplateFsGroupOutput() GetPodSecurityPolicyTemplateFsGroupOutput {
+	return i.ToGetPodSecurityPolicyTemplateFsGroupOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateFsGroupArgs) ToGetPodSecurityPolicyTemplateFsGroupOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateFsGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateFsGroupOutput)
+}
+
+func (i GetPodSecurityPolicyTemplateFsGroupArgs) ToGetPodSecurityPolicyTemplateFsGroupPtrOutput() GetPodSecurityPolicyTemplateFsGroupPtrOutput {
+	return i.ToGetPodSecurityPolicyTemplateFsGroupPtrOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateFsGroupArgs) ToGetPodSecurityPolicyTemplateFsGroupPtrOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateFsGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateFsGroupOutput).ToGetPodSecurityPolicyTemplateFsGroupPtrOutputWithContext(ctx)
+}
+
+// GetPodSecurityPolicyTemplateFsGroupPtrInput is an input type that accepts GetPodSecurityPolicyTemplateFsGroupArgs, GetPodSecurityPolicyTemplateFsGroupPtr and GetPodSecurityPolicyTemplateFsGroupPtrOutput values.
+// You can construct a concrete instance of `GetPodSecurityPolicyTemplateFsGroupPtrInput` via:
+//
+//	        GetPodSecurityPolicyTemplateFsGroupArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPodSecurityPolicyTemplateFsGroupPtrInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateFsGroupPtrOutput() GetPodSecurityPolicyTemplateFsGroupPtrOutput
+	ToGetPodSecurityPolicyTemplateFsGroupPtrOutputWithContext(context.Context) GetPodSecurityPolicyTemplateFsGroupPtrOutput
+}
+
+type getPodSecurityPolicyTemplateFsGroupPtrType GetPodSecurityPolicyTemplateFsGroupArgs
+
+func GetPodSecurityPolicyTemplateFsGroupPtr(v *GetPodSecurityPolicyTemplateFsGroupArgs) GetPodSecurityPolicyTemplateFsGroupPtrInput {
+	return (*getPodSecurityPolicyTemplateFsGroupPtrType)(v)
+}
+
+func (*getPodSecurityPolicyTemplateFsGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPodSecurityPolicyTemplateFsGroup)(nil)).Elem()
+}
+
+func (i *getPodSecurityPolicyTemplateFsGroupPtrType) ToGetPodSecurityPolicyTemplateFsGroupPtrOutput() GetPodSecurityPolicyTemplateFsGroupPtrOutput {
+	return i.ToGetPodSecurityPolicyTemplateFsGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *getPodSecurityPolicyTemplateFsGroupPtrType) ToGetPodSecurityPolicyTemplateFsGroupPtrOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateFsGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateFsGroupPtrOutput)
+}
+
+type GetPodSecurityPolicyTemplateFsGroupOutput struct{ *pulumi.OutputState }
+
+func (GetPodSecurityPolicyTemplateFsGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateFsGroup)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateFsGroupOutput) ToGetPodSecurityPolicyTemplateFsGroupOutput() GetPodSecurityPolicyTemplateFsGroupOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateFsGroupOutput) ToGetPodSecurityPolicyTemplateFsGroupOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateFsGroupOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateFsGroupOutput) ToGetPodSecurityPolicyTemplateFsGroupPtrOutput() GetPodSecurityPolicyTemplateFsGroupPtrOutput {
+	return o.ToGetPodSecurityPolicyTemplateFsGroupPtrOutputWithContext(context.Background())
+}
+
+func (o GetPodSecurityPolicyTemplateFsGroupOutput) ToGetPodSecurityPolicyTemplateFsGroupPtrOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateFsGroupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPodSecurityPolicyTemplateFsGroup) *GetPodSecurityPolicyTemplateFsGroup {
+		return &v
+	}).(GetPodSecurityPolicyTemplateFsGroupPtrOutput)
+}
+
+// ranges are the allowed ranges of fs groups.  If you would like to force a single fs group then supply a single range with the same start and end. Required for MustRunAs.
+func (o GetPodSecurityPolicyTemplateFsGroupOutput) Ranges() GetPodSecurityPolicyTemplateFsGroupRangeArrayOutput {
+	return o.ApplyT(func(v GetPodSecurityPolicyTemplateFsGroup) []GetPodSecurityPolicyTemplateFsGroupRange {
+		return v.Ranges
+	}).(GetPodSecurityPolicyTemplateFsGroupRangeArrayOutput)
+}
+
+// rule is the strategy that will dictate what FSGroup is used in the SecurityContext.
+func (o GetPodSecurityPolicyTemplateFsGroupOutput) Rule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPodSecurityPolicyTemplateFsGroup) *string { return v.Rule }).(pulumi.StringPtrOutput)
+}
+
+type GetPodSecurityPolicyTemplateFsGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPodSecurityPolicyTemplateFsGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPodSecurityPolicyTemplateFsGroup)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateFsGroupPtrOutput) ToGetPodSecurityPolicyTemplateFsGroupPtrOutput() GetPodSecurityPolicyTemplateFsGroupPtrOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateFsGroupPtrOutput) ToGetPodSecurityPolicyTemplateFsGroupPtrOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateFsGroupPtrOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateFsGroupPtrOutput) Elem() GetPodSecurityPolicyTemplateFsGroupOutput {
+	return o.ApplyT(func(v *GetPodSecurityPolicyTemplateFsGroup) GetPodSecurityPolicyTemplateFsGroup {
+		if v != nil {
+			return *v
+		}
+		var ret GetPodSecurityPolicyTemplateFsGroup
+		return ret
+	}).(GetPodSecurityPolicyTemplateFsGroupOutput)
+}
+
+// ranges are the allowed ranges of fs groups.  If you would like to force a single fs group then supply a single range with the same start and end. Required for MustRunAs.
+func (o GetPodSecurityPolicyTemplateFsGroupPtrOutput) Ranges() GetPodSecurityPolicyTemplateFsGroupRangeArrayOutput {
+	return o.ApplyT(func(v *GetPodSecurityPolicyTemplateFsGroup) []GetPodSecurityPolicyTemplateFsGroupRange {
+		if v == nil {
+			return nil
+		}
+		return v.Ranges
+	}).(GetPodSecurityPolicyTemplateFsGroupRangeArrayOutput)
+}
+
+// rule is the strategy that will dictate what FSGroup is used in the SecurityContext.
+func (o GetPodSecurityPolicyTemplateFsGroupPtrOutput) Rule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPodSecurityPolicyTemplateFsGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Rule
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPodSecurityPolicyTemplateFsGroupRange struct {
+	// max is the end of the range, inclusive.
+	Max int `pulumi:"max"`
+	// min is the start of the range, inclusive.
+	Min int `pulumi:"min"`
+}
+
+// GetPodSecurityPolicyTemplateFsGroupRangeInput is an input type that accepts GetPodSecurityPolicyTemplateFsGroupRangeArgs and GetPodSecurityPolicyTemplateFsGroupRangeOutput values.
+// You can construct a concrete instance of `GetPodSecurityPolicyTemplateFsGroupRangeInput` via:
+//
+//	GetPodSecurityPolicyTemplateFsGroupRangeArgs{...}
+type GetPodSecurityPolicyTemplateFsGroupRangeInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateFsGroupRangeOutput() GetPodSecurityPolicyTemplateFsGroupRangeOutput
+	ToGetPodSecurityPolicyTemplateFsGroupRangeOutputWithContext(context.Context) GetPodSecurityPolicyTemplateFsGroupRangeOutput
+}
+
+type GetPodSecurityPolicyTemplateFsGroupRangeArgs struct {
+	// max is the end of the range, inclusive.
+	Max pulumi.IntInput `pulumi:"max"`
+	// min is the start of the range, inclusive.
+	Min pulumi.IntInput `pulumi:"min"`
+}
+
+func (GetPodSecurityPolicyTemplateFsGroupRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateFsGroupRange)(nil)).Elem()
+}
+
+func (i GetPodSecurityPolicyTemplateFsGroupRangeArgs) ToGetPodSecurityPolicyTemplateFsGroupRangeOutput() GetPodSecurityPolicyTemplateFsGroupRangeOutput {
+	return i.ToGetPodSecurityPolicyTemplateFsGroupRangeOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateFsGroupRangeArgs) ToGetPodSecurityPolicyTemplateFsGroupRangeOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateFsGroupRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateFsGroupRangeOutput)
+}
+
+// GetPodSecurityPolicyTemplateFsGroupRangeArrayInput is an input type that accepts GetPodSecurityPolicyTemplateFsGroupRangeArray and GetPodSecurityPolicyTemplateFsGroupRangeArrayOutput values.
+// You can construct a concrete instance of `GetPodSecurityPolicyTemplateFsGroupRangeArrayInput` via:
+//
+//	GetPodSecurityPolicyTemplateFsGroupRangeArray{ GetPodSecurityPolicyTemplateFsGroupRangeArgs{...} }
+type GetPodSecurityPolicyTemplateFsGroupRangeArrayInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateFsGroupRangeArrayOutput() GetPodSecurityPolicyTemplateFsGroupRangeArrayOutput
+	ToGetPodSecurityPolicyTemplateFsGroupRangeArrayOutputWithContext(context.Context) GetPodSecurityPolicyTemplateFsGroupRangeArrayOutput
+}
+
+type GetPodSecurityPolicyTemplateFsGroupRangeArray []GetPodSecurityPolicyTemplateFsGroupRangeInput
+
+func (GetPodSecurityPolicyTemplateFsGroupRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPodSecurityPolicyTemplateFsGroupRange)(nil)).Elem()
+}
+
+func (i GetPodSecurityPolicyTemplateFsGroupRangeArray) ToGetPodSecurityPolicyTemplateFsGroupRangeArrayOutput() GetPodSecurityPolicyTemplateFsGroupRangeArrayOutput {
+	return i.ToGetPodSecurityPolicyTemplateFsGroupRangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateFsGroupRangeArray) ToGetPodSecurityPolicyTemplateFsGroupRangeArrayOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateFsGroupRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateFsGroupRangeArrayOutput)
+}
+
+type GetPodSecurityPolicyTemplateFsGroupRangeOutput struct{ *pulumi.OutputState }
+
+func (GetPodSecurityPolicyTemplateFsGroupRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateFsGroupRange)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateFsGroupRangeOutput) ToGetPodSecurityPolicyTemplateFsGroupRangeOutput() GetPodSecurityPolicyTemplateFsGroupRangeOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateFsGroupRangeOutput) ToGetPodSecurityPolicyTemplateFsGroupRangeOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateFsGroupRangeOutput {
+	return o
+}
+
+// max is the end of the range, inclusive.
+func (o GetPodSecurityPolicyTemplateFsGroupRangeOutput) Max() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPodSecurityPolicyTemplateFsGroupRange) int { return v.Max }).(pulumi.IntOutput)
+}
+
+// min is the start of the range, inclusive.
+func (o GetPodSecurityPolicyTemplateFsGroupRangeOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPodSecurityPolicyTemplateFsGroupRange) int { return v.Min }).(pulumi.IntOutput)
+}
+
+type GetPodSecurityPolicyTemplateFsGroupRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPodSecurityPolicyTemplateFsGroupRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPodSecurityPolicyTemplateFsGroupRange)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateFsGroupRangeArrayOutput) ToGetPodSecurityPolicyTemplateFsGroupRangeArrayOutput() GetPodSecurityPolicyTemplateFsGroupRangeArrayOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateFsGroupRangeArrayOutput) ToGetPodSecurityPolicyTemplateFsGroupRangeArrayOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateFsGroupRangeArrayOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateFsGroupRangeArrayOutput) Index(i pulumi.IntInput) GetPodSecurityPolicyTemplateFsGroupRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPodSecurityPolicyTemplateFsGroupRange {
+		return vs[0].([]GetPodSecurityPolicyTemplateFsGroupRange)[vs[1].(int)]
+	}).(GetPodSecurityPolicyTemplateFsGroupRangeOutput)
+}
+
+type GetPodSecurityPolicyTemplateHostPort struct {
+	// max is the end of the range, inclusive.
+	Max int `pulumi:"max"`
+	// min is the start of the range, inclusive.
+	Min int `pulumi:"min"`
+}
+
+// GetPodSecurityPolicyTemplateHostPortInput is an input type that accepts GetPodSecurityPolicyTemplateHostPortArgs and GetPodSecurityPolicyTemplateHostPortOutput values.
+// You can construct a concrete instance of `GetPodSecurityPolicyTemplateHostPortInput` via:
+//
+//	GetPodSecurityPolicyTemplateHostPortArgs{...}
+type GetPodSecurityPolicyTemplateHostPortInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateHostPortOutput() GetPodSecurityPolicyTemplateHostPortOutput
+	ToGetPodSecurityPolicyTemplateHostPortOutputWithContext(context.Context) GetPodSecurityPolicyTemplateHostPortOutput
+}
+
+type GetPodSecurityPolicyTemplateHostPortArgs struct {
+	// max is the end of the range, inclusive.
+	Max pulumi.IntInput `pulumi:"max"`
+	// min is the start of the range, inclusive.
+	Min pulumi.IntInput `pulumi:"min"`
+}
+
+func (GetPodSecurityPolicyTemplateHostPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateHostPort)(nil)).Elem()
+}
+
+func (i GetPodSecurityPolicyTemplateHostPortArgs) ToGetPodSecurityPolicyTemplateHostPortOutput() GetPodSecurityPolicyTemplateHostPortOutput {
+	return i.ToGetPodSecurityPolicyTemplateHostPortOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateHostPortArgs) ToGetPodSecurityPolicyTemplateHostPortOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateHostPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateHostPortOutput)
+}
+
+// GetPodSecurityPolicyTemplateHostPortArrayInput is an input type that accepts GetPodSecurityPolicyTemplateHostPortArray and GetPodSecurityPolicyTemplateHostPortArrayOutput values.
+// You can construct a concrete instance of `GetPodSecurityPolicyTemplateHostPortArrayInput` via:
+//
+//	GetPodSecurityPolicyTemplateHostPortArray{ GetPodSecurityPolicyTemplateHostPortArgs{...} }
+type GetPodSecurityPolicyTemplateHostPortArrayInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateHostPortArrayOutput() GetPodSecurityPolicyTemplateHostPortArrayOutput
+	ToGetPodSecurityPolicyTemplateHostPortArrayOutputWithContext(context.Context) GetPodSecurityPolicyTemplateHostPortArrayOutput
+}
+
+type GetPodSecurityPolicyTemplateHostPortArray []GetPodSecurityPolicyTemplateHostPortInput
+
+func (GetPodSecurityPolicyTemplateHostPortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPodSecurityPolicyTemplateHostPort)(nil)).Elem()
+}
+
+func (i GetPodSecurityPolicyTemplateHostPortArray) ToGetPodSecurityPolicyTemplateHostPortArrayOutput() GetPodSecurityPolicyTemplateHostPortArrayOutput {
+	return i.ToGetPodSecurityPolicyTemplateHostPortArrayOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateHostPortArray) ToGetPodSecurityPolicyTemplateHostPortArrayOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateHostPortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateHostPortArrayOutput)
+}
+
+type GetPodSecurityPolicyTemplateHostPortOutput struct{ *pulumi.OutputState }
+
+func (GetPodSecurityPolicyTemplateHostPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateHostPort)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateHostPortOutput) ToGetPodSecurityPolicyTemplateHostPortOutput() GetPodSecurityPolicyTemplateHostPortOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateHostPortOutput) ToGetPodSecurityPolicyTemplateHostPortOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateHostPortOutput {
+	return o
+}
+
+// max is the end of the range, inclusive.
+func (o GetPodSecurityPolicyTemplateHostPortOutput) Max() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPodSecurityPolicyTemplateHostPort) int { return v.Max }).(pulumi.IntOutput)
+}
+
+// min is the start of the range, inclusive.
+func (o GetPodSecurityPolicyTemplateHostPortOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPodSecurityPolicyTemplateHostPort) int { return v.Min }).(pulumi.IntOutput)
+}
+
+type GetPodSecurityPolicyTemplateHostPortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPodSecurityPolicyTemplateHostPortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPodSecurityPolicyTemplateHostPort)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateHostPortArrayOutput) ToGetPodSecurityPolicyTemplateHostPortArrayOutput() GetPodSecurityPolicyTemplateHostPortArrayOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateHostPortArrayOutput) ToGetPodSecurityPolicyTemplateHostPortArrayOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateHostPortArrayOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateHostPortArrayOutput) Index(i pulumi.IntInput) GetPodSecurityPolicyTemplateHostPortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPodSecurityPolicyTemplateHostPort {
+		return vs[0].([]GetPodSecurityPolicyTemplateHostPort)[vs[1].(int)]
+	}).(GetPodSecurityPolicyTemplateHostPortOutput)
+}
+
+type GetPodSecurityPolicyTemplateRunAsGroup struct {
+	// ranges are the allowed ranges of gids that may be used. If you would like to force a single gid then supply a single range with the same start and end. Required for MustRunAs.
+	Ranges []GetPodSecurityPolicyTemplateRunAsGroupRange `pulumi:"ranges"`
+	// rule is the strategy that will dictate the allowable RunAsGroup values that may be set.
+	Rule string `pulumi:"rule"`
+}
+
+// GetPodSecurityPolicyTemplateRunAsGroupInput is an input type that accepts GetPodSecurityPolicyTemplateRunAsGroupArgs and GetPodSecurityPolicyTemplateRunAsGroupOutput values.
+// You can construct a concrete instance of `GetPodSecurityPolicyTemplateRunAsGroupInput` via:
+//
+//	GetPodSecurityPolicyTemplateRunAsGroupArgs{...}
+type GetPodSecurityPolicyTemplateRunAsGroupInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateRunAsGroupOutput() GetPodSecurityPolicyTemplateRunAsGroupOutput
+	ToGetPodSecurityPolicyTemplateRunAsGroupOutputWithContext(context.Context) GetPodSecurityPolicyTemplateRunAsGroupOutput
+}
+
+type GetPodSecurityPolicyTemplateRunAsGroupArgs struct {
+	// ranges are the allowed ranges of gids that may be used. If you would like to force a single gid then supply a single range with the same start and end. Required for MustRunAs.
+	Ranges GetPodSecurityPolicyTemplateRunAsGroupRangeArrayInput `pulumi:"ranges"`
+	// rule is the strategy that will dictate the allowable RunAsGroup values that may be set.
+	Rule pulumi.StringInput `pulumi:"rule"`
+}
+
+func (GetPodSecurityPolicyTemplateRunAsGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateRunAsGroup)(nil)).Elem()
+}
+
+func (i GetPodSecurityPolicyTemplateRunAsGroupArgs) ToGetPodSecurityPolicyTemplateRunAsGroupOutput() GetPodSecurityPolicyTemplateRunAsGroupOutput {
+	return i.ToGetPodSecurityPolicyTemplateRunAsGroupOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateRunAsGroupArgs) ToGetPodSecurityPolicyTemplateRunAsGroupOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateRunAsGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateRunAsGroupOutput)
+}
+
+func (i GetPodSecurityPolicyTemplateRunAsGroupArgs) ToGetPodSecurityPolicyTemplateRunAsGroupPtrOutput() GetPodSecurityPolicyTemplateRunAsGroupPtrOutput {
+	return i.ToGetPodSecurityPolicyTemplateRunAsGroupPtrOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateRunAsGroupArgs) ToGetPodSecurityPolicyTemplateRunAsGroupPtrOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateRunAsGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateRunAsGroupOutput).ToGetPodSecurityPolicyTemplateRunAsGroupPtrOutputWithContext(ctx)
+}
+
+// GetPodSecurityPolicyTemplateRunAsGroupPtrInput is an input type that accepts GetPodSecurityPolicyTemplateRunAsGroupArgs, GetPodSecurityPolicyTemplateRunAsGroupPtr and GetPodSecurityPolicyTemplateRunAsGroupPtrOutput values.
+// You can construct a concrete instance of `GetPodSecurityPolicyTemplateRunAsGroupPtrInput` via:
+//
+//	        GetPodSecurityPolicyTemplateRunAsGroupArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPodSecurityPolicyTemplateRunAsGroupPtrInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateRunAsGroupPtrOutput() GetPodSecurityPolicyTemplateRunAsGroupPtrOutput
+	ToGetPodSecurityPolicyTemplateRunAsGroupPtrOutputWithContext(context.Context) GetPodSecurityPolicyTemplateRunAsGroupPtrOutput
+}
+
+type getPodSecurityPolicyTemplateRunAsGroupPtrType GetPodSecurityPolicyTemplateRunAsGroupArgs
+
+func GetPodSecurityPolicyTemplateRunAsGroupPtr(v *GetPodSecurityPolicyTemplateRunAsGroupArgs) GetPodSecurityPolicyTemplateRunAsGroupPtrInput {
+	return (*getPodSecurityPolicyTemplateRunAsGroupPtrType)(v)
+}
+
+func (*getPodSecurityPolicyTemplateRunAsGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPodSecurityPolicyTemplateRunAsGroup)(nil)).Elem()
+}
+
+func (i *getPodSecurityPolicyTemplateRunAsGroupPtrType) ToGetPodSecurityPolicyTemplateRunAsGroupPtrOutput() GetPodSecurityPolicyTemplateRunAsGroupPtrOutput {
+	return i.ToGetPodSecurityPolicyTemplateRunAsGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *getPodSecurityPolicyTemplateRunAsGroupPtrType) ToGetPodSecurityPolicyTemplateRunAsGroupPtrOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateRunAsGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateRunAsGroupPtrOutput)
+}
+
+type GetPodSecurityPolicyTemplateRunAsGroupOutput struct{ *pulumi.OutputState }
+
+func (GetPodSecurityPolicyTemplateRunAsGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateRunAsGroup)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateRunAsGroupOutput) ToGetPodSecurityPolicyTemplateRunAsGroupOutput() GetPodSecurityPolicyTemplateRunAsGroupOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateRunAsGroupOutput) ToGetPodSecurityPolicyTemplateRunAsGroupOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateRunAsGroupOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateRunAsGroupOutput) ToGetPodSecurityPolicyTemplateRunAsGroupPtrOutput() GetPodSecurityPolicyTemplateRunAsGroupPtrOutput {
+	return o.ToGetPodSecurityPolicyTemplateRunAsGroupPtrOutputWithContext(context.Background())
+}
+
+func (o GetPodSecurityPolicyTemplateRunAsGroupOutput) ToGetPodSecurityPolicyTemplateRunAsGroupPtrOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateRunAsGroupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPodSecurityPolicyTemplateRunAsGroup) *GetPodSecurityPolicyTemplateRunAsGroup {
+		return &v
+	}).(GetPodSecurityPolicyTemplateRunAsGroupPtrOutput)
+}
+
+// ranges are the allowed ranges of gids that may be used. If you would like to force a single gid then supply a single range with the same start and end. Required for MustRunAs.
+func (o GetPodSecurityPolicyTemplateRunAsGroupOutput) Ranges() GetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput {
+	return o.ApplyT(func(v GetPodSecurityPolicyTemplateRunAsGroup) []GetPodSecurityPolicyTemplateRunAsGroupRange {
+		return v.Ranges
+	}).(GetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput)
+}
+
+// rule is the strategy that will dictate the allowable RunAsGroup values that may be set.
+func (o GetPodSecurityPolicyTemplateRunAsGroupOutput) Rule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPodSecurityPolicyTemplateRunAsGroup) string { return v.Rule }).(pulumi.StringOutput)
+}
+
+type GetPodSecurityPolicyTemplateRunAsGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPodSecurityPolicyTemplateRunAsGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPodSecurityPolicyTemplateRunAsGroup)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateRunAsGroupPtrOutput) ToGetPodSecurityPolicyTemplateRunAsGroupPtrOutput() GetPodSecurityPolicyTemplateRunAsGroupPtrOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateRunAsGroupPtrOutput) ToGetPodSecurityPolicyTemplateRunAsGroupPtrOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateRunAsGroupPtrOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateRunAsGroupPtrOutput) Elem() GetPodSecurityPolicyTemplateRunAsGroupOutput {
+	return o.ApplyT(func(v *GetPodSecurityPolicyTemplateRunAsGroup) GetPodSecurityPolicyTemplateRunAsGroup {
+		if v != nil {
+			return *v
+		}
+		var ret GetPodSecurityPolicyTemplateRunAsGroup
+		return ret
+	}).(GetPodSecurityPolicyTemplateRunAsGroupOutput)
+}
+
+// ranges are the allowed ranges of gids that may be used. If you would like to force a single gid then supply a single range with the same start and end. Required for MustRunAs.
+func (o GetPodSecurityPolicyTemplateRunAsGroupPtrOutput) Ranges() GetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput {
+	return o.ApplyT(func(v *GetPodSecurityPolicyTemplateRunAsGroup) []GetPodSecurityPolicyTemplateRunAsGroupRange {
+		if v == nil {
+			return nil
+		}
+		return v.Ranges
+	}).(GetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput)
+}
+
+// rule is the strategy that will dictate the allowable RunAsGroup values that may be set.
+func (o GetPodSecurityPolicyTemplateRunAsGroupPtrOutput) Rule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPodSecurityPolicyTemplateRunAsGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Rule
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPodSecurityPolicyTemplateRunAsGroupRange struct {
+	// max is the end of the range, inclusive.
+	Max int `pulumi:"max"`
+	// min is the start of the range, inclusive.
+	Min int `pulumi:"min"`
+}
+
+// GetPodSecurityPolicyTemplateRunAsGroupRangeInput is an input type that accepts GetPodSecurityPolicyTemplateRunAsGroupRangeArgs and GetPodSecurityPolicyTemplateRunAsGroupRangeOutput values.
+// You can construct a concrete instance of `GetPodSecurityPolicyTemplateRunAsGroupRangeInput` via:
+//
+//	GetPodSecurityPolicyTemplateRunAsGroupRangeArgs{...}
+type GetPodSecurityPolicyTemplateRunAsGroupRangeInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateRunAsGroupRangeOutput() GetPodSecurityPolicyTemplateRunAsGroupRangeOutput
+	ToGetPodSecurityPolicyTemplateRunAsGroupRangeOutputWithContext(context.Context) GetPodSecurityPolicyTemplateRunAsGroupRangeOutput
+}
+
+type GetPodSecurityPolicyTemplateRunAsGroupRangeArgs struct {
+	// max is the end of the range, inclusive.
+	Max pulumi.IntInput `pulumi:"max"`
+	// min is the start of the range, inclusive.
+	Min pulumi.IntInput `pulumi:"min"`
+}
+
+func (GetPodSecurityPolicyTemplateRunAsGroupRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateRunAsGroupRange)(nil)).Elem()
+}
+
+func (i GetPodSecurityPolicyTemplateRunAsGroupRangeArgs) ToGetPodSecurityPolicyTemplateRunAsGroupRangeOutput() GetPodSecurityPolicyTemplateRunAsGroupRangeOutput {
+	return i.ToGetPodSecurityPolicyTemplateRunAsGroupRangeOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateRunAsGroupRangeArgs) ToGetPodSecurityPolicyTemplateRunAsGroupRangeOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateRunAsGroupRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateRunAsGroupRangeOutput)
+}
+
+// GetPodSecurityPolicyTemplateRunAsGroupRangeArrayInput is an input type that accepts GetPodSecurityPolicyTemplateRunAsGroupRangeArray and GetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput values.
+// You can construct a concrete instance of `GetPodSecurityPolicyTemplateRunAsGroupRangeArrayInput` via:
+//
+//	GetPodSecurityPolicyTemplateRunAsGroupRangeArray{ GetPodSecurityPolicyTemplateRunAsGroupRangeArgs{...} }
+type GetPodSecurityPolicyTemplateRunAsGroupRangeArrayInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput() GetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput
+	ToGetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutputWithContext(context.Context) GetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput
+}
+
+type GetPodSecurityPolicyTemplateRunAsGroupRangeArray []GetPodSecurityPolicyTemplateRunAsGroupRangeInput
+
+func (GetPodSecurityPolicyTemplateRunAsGroupRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPodSecurityPolicyTemplateRunAsGroupRange)(nil)).Elem()
+}
+
+func (i GetPodSecurityPolicyTemplateRunAsGroupRangeArray) ToGetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput() GetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput {
+	return i.ToGetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateRunAsGroupRangeArray) ToGetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput)
+}
+
+type GetPodSecurityPolicyTemplateRunAsGroupRangeOutput struct{ *pulumi.OutputState }
+
+func (GetPodSecurityPolicyTemplateRunAsGroupRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateRunAsGroupRange)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateRunAsGroupRangeOutput) ToGetPodSecurityPolicyTemplateRunAsGroupRangeOutput() GetPodSecurityPolicyTemplateRunAsGroupRangeOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateRunAsGroupRangeOutput) ToGetPodSecurityPolicyTemplateRunAsGroupRangeOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateRunAsGroupRangeOutput {
+	return o
+}
+
+// max is the end of the range, inclusive.
+func (o GetPodSecurityPolicyTemplateRunAsGroupRangeOutput) Max() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPodSecurityPolicyTemplateRunAsGroupRange) int { return v.Max }).(pulumi.IntOutput)
+}
+
+// min is the start of the range, inclusive.
+func (o GetPodSecurityPolicyTemplateRunAsGroupRangeOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPodSecurityPolicyTemplateRunAsGroupRange) int { return v.Min }).(pulumi.IntOutput)
+}
+
+type GetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPodSecurityPolicyTemplateRunAsGroupRange)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput) ToGetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput() GetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput) ToGetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput) Index(i pulumi.IntInput) GetPodSecurityPolicyTemplateRunAsGroupRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPodSecurityPolicyTemplateRunAsGroupRange {
+		return vs[0].([]GetPodSecurityPolicyTemplateRunAsGroupRange)[vs[1].(int)]
+	}).(GetPodSecurityPolicyTemplateRunAsGroupRangeOutput)
+}
+
+type GetPodSecurityPolicyTemplateRunAsUser struct {
+	// ranges are the allowed ranges of uids that may be used. If you would like to force a single uid then supply a single range with the same start and end. Required for MustRunAs.
+	Ranges []GetPodSecurityPolicyTemplateRunAsUserRange `pulumi:"ranges"`
+	// rule is the strategy that will dictate the allowable RunAsUser values that may be set.
+	Rule string `pulumi:"rule"`
+}
+
+// GetPodSecurityPolicyTemplateRunAsUserInput is an input type that accepts GetPodSecurityPolicyTemplateRunAsUserArgs and GetPodSecurityPolicyTemplateRunAsUserOutput values.
+// You can construct a concrete instance of `GetPodSecurityPolicyTemplateRunAsUserInput` via:
+//
+//	GetPodSecurityPolicyTemplateRunAsUserArgs{...}
+type GetPodSecurityPolicyTemplateRunAsUserInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateRunAsUserOutput() GetPodSecurityPolicyTemplateRunAsUserOutput
+	ToGetPodSecurityPolicyTemplateRunAsUserOutputWithContext(context.Context) GetPodSecurityPolicyTemplateRunAsUserOutput
+}
+
+type GetPodSecurityPolicyTemplateRunAsUserArgs struct {
+	// ranges are the allowed ranges of uids that may be used. If you would like to force a single uid then supply a single range with the same start and end. Required for MustRunAs.
+	Ranges GetPodSecurityPolicyTemplateRunAsUserRangeArrayInput `pulumi:"ranges"`
+	// rule is the strategy that will dictate the allowable RunAsUser values that may be set.
+	Rule pulumi.StringInput `pulumi:"rule"`
+}
+
+func (GetPodSecurityPolicyTemplateRunAsUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateRunAsUser)(nil)).Elem()
+}
+
+func (i GetPodSecurityPolicyTemplateRunAsUserArgs) ToGetPodSecurityPolicyTemplateRunAsUserOutput() GetPodSecurityPolicyTemplateRunAsUserOutput {
+	return i.ToGetPodSecurityPolicyTemplateRunAsUserOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateRunAsUserArgs) ToGetPodSecurityPolicyTemplateRunAsUserOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateRunAsUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateRunAsUserOutput)
+}
+
+func (i GetPodSecurityPolicyTemplateRunAsUserArgs) ToGetPodSecurityPolicyTemplateRunAsUserPtrOutput() GetPodSecurityPolicyTemplateRunAsUserPtrOutput {
+	return i.ToGetPodSecurityPolicyTemplateRunAsUserPtrOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityPolicyTemplateRunAsUserArgs) ToGetPodSecurityPolicyTemplateRunAsUserPtrOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateRunAsUserPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateRunAsUserOutput).ToGetPodSecurityPolicyTemplateRunAsUserPtrOutputWithContext(ctx)
+}
+
+// GetPodSecurityPolicyTemplateRunAsUserPtrInput is an input type that accepts GetPodSecurityPolicyTemplateRunAsUserArgs, GetPodSecurityPolicyTemplateRunAsUserPtr and GetPodSecurityPolicyTemplateRunAsUserPtrOutput values.
+// You can construct a concrete instance of `GetPodSecurityPolicyTemplateRunAsUserPtrInput` via:
+//
+//	        GetPodSecurityPolicyTemplateRunAsUserArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPodSecurityPolicyTemplateRunAsUserPtrInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityPolicyTemplateRunAsUserPtrOutput() GetPodSecurityPolicyTemplateRunAsUserPtrOutput
+	ToGetPodSecurityPolicyTemplateRunAsUserPtrOutputWithContext(context.Context) GetPodSecurityPolicyTemplateRunAsUserPtrOutput
+}
+
+type getPodSecurityPolicyTemplateRunAsUserPtrType GetPodSecurityPolicyTemplateRunAsUserArgs
+
+func GetPodSecurityPolicyTemplateRunAsUserPtr(v *GetPodSecurityPolicyTemplateRunAsUserArgs) GetPodSecurityPolicyTemplateRunAsUserPtrInput {
+	return (*getPodSecurityPolicyTemplateRunAsUserPtrType)(v)
+}
+
+func (*getPodSecurityPolicyTemplateRunAsUserPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPodSecurityPolicyTemplateRunAsUser)(nil)).Elem()
+}
+
+func (i *getPodSecurityPolicyTemplateRunAsUserPtrType) ToGetPodSecurityPolicyTemplateRunAsUserPtrOutput() GetPodSecurityPolicyTemplateRunAsUserPtrOutput {
+	return i.ToGetPodSecurityPolicyTemplateRunAsUserPtrOutputWithContext(context.Background())
+}
+
+func (i *getPodSecurityPolicyTemplateRunAsUserPtrType) ToGetPodSecurityPolicyTemplateRunAsUserPtrOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateRunAsUserPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityPolicyTemplateRunAsUserPtrOutput)
+}
+
+type GetPodSecurityPolicyTemplateRunAsUserOutput struct{ *pulumi.OutputState }
+
+func (GetPodSecurityPolicyTemplateRunAsUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityPolicyTemplateRunAsUser)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateRunAsUserOutput) ToGetPodSecurityPolicyTemplateRunAsUserOutput() GetPodSecurityPolicyTemplateRunAsUserOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateRunAsUserOutput) ToGetPodSecurityPolicyTemplateRunAsUserOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateRunAsUserOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateRunAsUserOutput) ToGetPodSecurityPolicyTemplateRunAsUserPtrOutput() GetPodSecurityPolicyTemplateRunAsUserPtrOutput {
+	return o.ToGetPodSecurityPolicyTemplateRunAsUserPtrOutputWithContext(context.Background())
+}
+
+func (o GetPodSecurityPolicyTemplateRunAsUserOutput) ToGetPodSecurityPolicyTemplateRunAsUserPtrOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateRunAsUserPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPodSecurityPolicyTemplateRunAsUser) *GetPodSecurityPolicyTemplateRunAsUser {
+		return &v
+	}).(GetPodSecurityPolicyTemplateRunAsUserPtrOutput)
+}
+
+// ranges are the allowed ranges of uids that may be used. If you would like to force a single uid then supply a single range with the same start and end. Required for MustRunAs.
+func (o GetPodSecurityPolicyTemplateRunAsUserOutput) Ranges() GetPodSecurityPolicyTemplateRunAsUserRangeArrayOutput {
+	return o.ApplyT(func(v GetPodSecurityPolicyTemplateRunAsUser) []GetPodSecurityPolicyTemplateRunAsUserRange {
+		return v.Ranges
+	}).(GetPodSecurityPolicyTemplateRunAsUserRangeArrayOutput)
+}
+
+// rule is the strategy that will dictate the allowable RunAsUser values that may be set.
+func (o GetPodSecurityPolicyTemplateRunAsUserOutput) Rule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPodSecurityPolicyTemplateRunAsUser) string { return v.Rule }).(pulumi.StringOutput)
+}
+
+type GetPodSecurityPolicyTemplateRunAsUserPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPodSecurityPolicyTemplateRunAsUserPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPodSecurityPolicyTemplateRunAsUser)(nil)).Elem()
+}
+
+func (o GetPodSecurityPolicyTemplateRunAsUserPtrOutput) ToGetPodSecurityPolicyTemplateRunAsUserPtrOutput() GetPodSecurityPolicyTemplateRunAsUserPtrOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateRunAsUserPtrOutput) ToGetPodSecurityPolicyTemplateRunAsUserPtrOutputWithContext(ctx context.Context) GetPodSecurityPolicyTemplateRunAsUserPtrOutput {
+	return o
+}
+
+func (o GetPodSecurityPolicyTemplateRunAsUserPtrOutput) Elem() GetPodSecurityPolicyTemplateRunAsUserOutput {
+	return o.ApplyT(func(v *GetPodSecurityPolicyTemplateRunAsUser) GetPodSecurityPolicyTemplateRunAsUser {
+		if v != nil {
+			return *v
+		}
+		var ret GetPodSecurityPolicyTemplateRunAsUser
+		return ret
+	}).(GetPodSecurityPolicyTemplateRunAsUserOutput)
+}
+
+// ranges are the allowed ranges of uids that may be used. If you would like to force a single uid then supply a single range with the same start and end. Required for MustRunAs.
+func (o GetPodSecurityPolicyTemplateRunAsUserPtrOutput) Ranges() GetPodSecurityPolicyTemplateRunAsUserRangeArrayOutput {
+	return o.ApplyT(func(v *GetPodSecurityPolicyTemplateRunAsUser) []GetPodSecurityPolicyTemplateRunAsUserRange {
+		if v == nil {
+			return nil
+		}
+		return v.Ranges
+	}).(GetPodSecurityPolicyTemplateRunAsUserRangeArrayOutput)
+}
+
+// rule is the strategy that will dictate the allowable RunAsUser values that may be set.
+func (o GetPodSecurityPolicyTemplateRunAsUserPtrOutput) Rule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPodSecurityPolicyTemplateRunAsUser) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Rule
+	}).(pulumi.StringPtrOutput)
+}
 
 type GetPodSecurityPolicyTemplateRunAsUserRange struct {
 	// max is the end of the range, inclusive.
@@ -1991,6 +3809,33 @@ func (o GetRoleTemplateRuleArrayOutput) Index(i pulumi.IntInput) GetRoleTemplate
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNotifierDingtalkConfigInput)(nil)).Elem(), GetNotifierDingtalkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNotifierDingtalkConfigPtrInput)(nil)).Elem(), GetNotifierDingtalkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNotifierMsteamsConfigInput)(nil)).Elem(), GetNotifierMsteamsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNotifierMsteamsConfigPtrInput)(nil)).Elem(), GetNotifierMsteamsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNotifierPagerdutyConfigInput)(nil)).Elem(), GetNotifierPagerdutyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNotifierSlackConfigInput)(nil)).Elem(), GetNotifierSlackConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNotifierSmtpConfigInput)(nil)).Elem(), GetNotifierSmtpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNotifierWebhookConfigInput)(nil)).Elem(), GetNotifierWebhookConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNotifierWechatConfigInput)(nil)).Elem(), GetNotifierWechatConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPodSecurityPolicyTemplateAllowedCsiDriverInput)(nil)).Elem(), GetPodSecurityPolicyTemplateAllowedCsiDriverArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPodSecurityPolicyTemplateAllowedCsiDriverArrayInput)(nil)).Elem(), GetPodSecurityPolicyTemplateAllowedCsiDriverArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPodSecurityPolicyTemplateAllowedFlexVolumeInput)(nil)).Elem(), GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPodSecurityPolicyTemplateAllowedFlexVolumeArrayInput)(nil)).Elem(), GetPodSecurityPolicyTemplateAllowedFlexVolumeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPodSecurityPolicyTemplateAllowedHostPathInput)(nil)).Elem(), GetPodSecurityPolicyTemplateAllowedHostPathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPodSecurityPolicyTemplateAllowedHostPathArrayInput)(nil)).Elem(), GetPodSecurityPolicyTemplateAllowedHostPathArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPodSecurityPolicyTemplateFsGroupInput)(nil)).Elem(), GetPodSecurityPolicyTemplateFsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPodSecurityPolicyTemplateFsGroupPtrInput)(nil)).Elem(), GetPodSecurityPolicyTemplateFsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPodSecurityPolicyTemplateFsGroupRangeInput)(nil)).Elem(), GetPodSecurityPolicyTemplateFsGroupRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPodSecurityPolicyTemplateFsGroupRangeArrayInput)(nil)).Elem(), GetPodSecurityPolicyTemplateFsGroupRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPodSecurityPolicyTemplateHostPortInput)(nil)).Elem(), GetPodSecurityPolicyTemplateHostPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPodSecurityPolicyTemplateHostPortArrayInput)(nil)).Elem(), GetPodSecurityPolicyTemplateHostPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPodSecurityPolicyTemplateRunAsGroupInput)(nil)).Elem(), GetPodSecurityPolicyTemplateRunAsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPodSecurityPolicyTemplateRunAsGroupPtrInput)(nil)).Elem(), GetPodSecurityPolicyTemplateRunAsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPodSecurityPolicyTemplateRunAsGroupRangeInput)(nil)).Elem(), GetPodSecurityPolicyTemplateRunAsGroupRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPodSecurityPolicyTemplateRunAsGroupRangeArrayInput)(nil)).Elem(), GetPodSecurityPolicyTemplateRunAsGroupRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPodSecurityPolicyTemplateRunAsUserInput)(nil)).Elem(), GetPodSecurityPolicyTemplateRunAsUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPodSecurityPolicyTemplateRunAsUserPtrInput)(nil)).Elem(), GetPodSecurityPolicyTemplateRunAsUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPodSecurityPolicyTemplateRunAsUserRangeInput)(nil)).Elem(), GetPodSecurityPolicyTemplateRunAsUserRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPodSecurityPolicyTemplateRunAsUserRangeArrayInput)(nil)).Elem(), GetPodSecurityPolicyTemplateRunAsUserRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPodSecurityPolicyTemplateRuntimeClassInput)(nil)).Elem(), GetPodSecurityPolicyTemplateRuntimeClassArgs{})
@@ -2018,6 +3863,33 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRoleTempalteRuleArrayInput)(nil)).Elem(), GetRoleTempalteRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRoleTemplateRuleInput)(nil)).Elem(), GetRoleTemplateRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRoleTemplateRuleArrayInput)(nil)).Elem(), GetRoleTemplateRuleArray{})
+	pulumi.RegisterOutputType(GetNotifierDingtalkConfigOutput{})
+	pulumi.RegisterOutputType(GetNotifierDingtalkConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetNotifierMsteamsConfigOutput{})
+	pulumi.RegisterOutputType(GetNotifierMsteamsConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetNotifierPagerdutyConfigOutput{})
+	pulumi.RegisterOutputType(GetNotifierSlackConfigOutput{})
+	pulumi.RegisterOutputType(GetNotifierSmtpConfigOutput{})
+	pulumi.RegisterOutputType(GetNotifierWebhookConfigOutput{})
+	pulumi.RegisterOutputType(GetNotifierWechatConfigOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateAllowedCsiDriverOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateAllowedFlexVolumeOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateAllowedFlexVolumeArrayOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateAllowedHostPathOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateAllowedHostPathArrayOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateFsGroupOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateFsGroupPtrOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateFsGroupRangeOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateFsGroupRangeArrayOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateHostPortOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateHostPortArrayOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateRunAsGroupOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateRunAsGroupPtrOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateRunAsGroupRangeOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateRunAsGroupRangeArrayOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateRunAsUserOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateRunAsUserPtrOutput{})
 	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateRunAsUserRangeOutput{})
 	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateRunAsUserRangeArrayOutput{})
 	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateRuntimeClassOutput{})

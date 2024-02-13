@@ -13,55 +13,55 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptionsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Drain options delete empty dir data. Default `false` (bool)
+        /// if `delete_empty_dir_data` is set to true, continue draining even if there are pods using emptyDir (local storage).
         /// </summary>
         [Input("deleteEmptyDirData")]
         public Input<bool>? DeleteEmptyDirData { get; set; }
 
         /// <summary>
-        /// Drain options disable eviction. Default `false` (bool)
+        /// If `disable_eviction` is set to true, force drain to use delete rather than evict.
         /// </summary>
         [Input("disableEviction")]
         public Input<bool>? DisableEviction { get; set; }
 
         /// <summary>
-        /// Drain options enabled? Default `true` (bool)
+        /// If `enabled` is set to true, nodes will be drained before upgrade.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Drain options force. Default `false` (bool)
+        /// If `force` is set to true, drain nodes even if there are standalone pods that are not managed by a ReplicationController, Job, or DaemonSet. Drain will not proceed without `force` set to true if there are such pods.
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// Drain options grace period (int)
+        /// Time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used.
         /// </summary>
         [Input("gracePeriod")]
         public Input<int>? GracePeriod { get; set; }
 
         /// <summary>
-        /// Drain options ignore daemon sets. Default `true` (bool)
+        /// If `ignore_daemon_sets` is set to false, drain will not proceed if there are DaemonSet-managed pods.
         /// </summary>
         [Input("ignoreDaemonSets")]
         public Input<bool>? IgnoreDaemonSets { get; set; }
 
         /// <summary>
-        /// Drain options ignore errors. Default `false` (bool)
+        /// If `ignore_errors` is set to true,  errors that occurred between drain nodes in group are ignored.
         /// </summary>
         [Input("ignoreErrors")]
         public Input<bool>? IgnoreErrors { get; set; }
 
         /// <summary>
-        /// Drain options skip wait for delete timeout seconds (int)
+        /// Skip waiting for the pods that have a DeletionTimeStamp &gt; N seconds to be deleted. Seconds must be greater than 0 to skip. Such pods will be force deleted.
         /// </summary>
         [Input("skipWaitForDeleteTimeoutSeconds")]
         public Input<int>? SkipWaitForDeleteTimeoutSeconds { get; set; }
 
         /// <summary>
-        /// Drain options timeout (int)
+        /// Time to wait (in seconds) before giving up for one try.
         /// </summary>
         [Input("timeout")]
         public Input<int>? Timeout { get; set; }

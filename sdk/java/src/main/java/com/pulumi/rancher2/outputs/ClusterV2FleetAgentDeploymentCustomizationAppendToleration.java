@@ -14,62 +14,62 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterV2FleetAgentDeploymentCustomizationAppendToleration {
     /**
-     * @return The taint effect. Default: `\&#34;NoExecute\&#34;` (string)
+     * @return The taint effect. Default: `\&#34;NoExecute\&#34;`.
      * 
      */
     private @Nullable String effect;
     /**
-     * @return Machine selector label match expressions key (string)
+     * @return Key is the name of the key of the item to retrieve.
      * 
      */
     private String key;
     /**
-     * @return Machine selector label match expressions operator (string)
+     * @return Operator represents a key&#39;s relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
      * 
      */
     private @Nullable String operator;
     /**
-     * @return The number of seconds a pod will stay bound to a node with a matching taint (int)
+     * @return The number of seconds a pod will stay bound to a node with a matching taint.
      * 
      */
     private @Nullable Integer seconds;
     /**
-     * @return The taint value (string)
+     * @return The taint value.
      * 
      */
     private @Nullable String value;
 
     private ClusterV2FleetAgentDeploymentCustomizationAppendToleration() {}
     /**
-     * @return The taint effect. Default: `\&#34;NoExecute\&#34;` (string)
+     * @return The taint effect. Default: `\&#34;NoExecute\&#34;`.
      * 
      */
     public Optional<String> effect() {
         return Optional.ofNullable(this.effect);
     }
     /**
-     * @return Machine selector label match expressions key (string)
+     * @return Key is the name of the key of the item to retrieve.
      * 
      */
     public String key() {
         return this.key;
     }
     /**
-     * @return Machine selector label match expressions operator (string)
+     * @return Operator represents a key&#39;s relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
      * 
      */
     public Optional<String> operator() {
         return Optional.ofNullable(this.operator);
     }
     /**
-     * @return The number of seconds a pod will stay bound to a node with a matching taint (int)
+     * @return The number of seconds a pod will stay bound to a node with a matching taint.
      * 
      */
     public Optional<Integer> seconds() {
         return Optional.ofNullable(this.seconds);
     }
     /**
-     * @return The taint value (string)
+     * @return The taint value.
      * 
      */
     public Optional<String> value() {

@@ -46,14 +46,14 @@ public class CatalogV2 extends com.pulumi.resources.CustomResource {
         return this.annotations;
     }
     /**
-     * PEM encoded CA bundle which will be used to validate the repo&#39;s certificate (string)
+     * CA certificate in base64-encoded DER format which will be used to validate the repo&#39;s certificate (string)
      * 
      */
     @Export(name="caBundle", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> caBundle;
 
     /**
-     * @return PEM encoded CA bundle which will be used to validate the repo&#39;s certificate (string)
+     * @return CA certificate in base64-encoded DER format which will be used to validate the repo&#39;s certificate (string)
      * 
      */
     public Output<Optional<String>> caBundle() {

@@ -13,38 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression {
     /**
-     * @return Machine selector label match expressions key (string)
+     * @return Key is the name of the key of the item to retrieve.
      * 
      */
     private @Nullable String key;
     /**
-     * @return Machine selector label match expressions operator (string)
+     * @return Operator represents a key&#39;s relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
      * 
      */
     private @Nullable String operator;
     /**
-     * @return Machine selector label match expressions values (List string)
+     * @return Values is a list of string values.
      * 
      */
     private @Nullable List<String> values;
 
     private ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression() {}
     /**
-     * @return Machine selector label match expressions key (string)
+     * @return Key is the name of the key of the item to retrieve.
      * 
      */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
     /**
-     * @return Machine selector label match expressions operator (string)
+     * @return Operator represents a key&#39;s relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
      * 
      */
     public Optional<String> operator() {
         return Optional.ofNullable(this.operator);
     }
     /**
-     * @return Machine selector label match expressions values (List string)
+     * @return Values is a list of string values.
      * 
      */
     public List<String> values() {

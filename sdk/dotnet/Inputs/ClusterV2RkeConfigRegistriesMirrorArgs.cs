@@ -16,7 +16,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _endpoints;
 
         /// <summary>
-        /// Registry mirror endpoints (List)
+        /// Registry mirror endpoints.
         /// </summary>
         public InputList<string> Endpoints
         {
@@ -25,7 +25,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Registry hostname (string)
+        /// Registry hostname.
         /// </summary>
         [Input("hostname", required: true)]
         public Input<string> Hostname { get; set; } = null!;
@@ -34,7 +34,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _rewrites;
 
         /// <summary>
-        /// Registry mirror rewrites (map)
+        /// Registry mirror rewrites.
         /// </summary>
         public InputMap<object> Rewrites
         {

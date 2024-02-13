@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v6/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -28,7 +28,7 @@ type CatalogV2 struct {
 
 	// Annotations for the catalog v2 (map)
 	Annotations pulumi.MapOutput `pulumi:"annotations"`
-	// PEM encoded CA bundle which will be used to validate the repo's certificate (string)
+	// CA certificate in base64-encoded DER format which will be used to validate the repo's certificate (string)
 	CaBundle pulumi.StringPtrOutput `pulumi:"caBundle"`
 	// The cluster id of the catalog V2 (string)
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
@@ -93,7 +93,7 @@ func GetCatalogV2(ctx *pulumi.Context,
 type catalogV2State struct {
 	// Annotations for the catalog v2 (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	// PEM encoded CA bundle which will be used to validate the repo's certificate (string)
+	// CA certificate in base64-encoded DER format which will be used to validate the repo's certificate (string)
 	CaBundle *string `pulumi:"caBundle"`
 	// The cluster id of the catalog V2 (string)
 	ClusterId *string `pulumi:"clusterId"`
@@ -126,7 +126,7 @@ type catalogV2State struct {
 type CatalogV2State struct {
 	// Annotations for the catalog v2 (map)
 	Annotations pulumi.MapInput
-	// PEM encoded CA bundle which will be used to validate the repo's certificate (string)
+	// CA certificate in base64-encoded DER format which will be used to validate the repo's certificate (string)
 	CaBundle pulumi.StringPtrInput
 	// The cluster id of the catalog V2 (string)
 	ClusterId pulumi.StringPtrInput
@@ -163,7 +163,7 @@ func (CatalogV2State) ElementType() reflect.Type {
 type catalogV2Args struct {
 	// Annotations for the catalog v2 (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	// PEM encoded CA bundle which will be used to validate the repo's certificate (string)
+	// CA certificate in base64-encoded DER format which will be used to validate the repo's certificate (string)
 	CaBundle *string `pulumi:"caBundle"`
 	// The cluster id of the catalog V2 (string)
 	ClusterId string `pulumi:"clusterId"`
@@ -195,7 +195,7 @@ type catalogV2Args struct {
 type CatalogV2Args struct {
 	// Annotations for the catalog v2 (map)
 	Annotations pulumi.MapInput
-	// PEM encoded CA bundle which will be used to validate the repo's certificate (string)
+	// CA certificate in base64-encoded DER format which will be used to validate the repo's certificate (string)
 	CaBundle pulumi.StringPtrInput
 	// The cluster id of the catalog V2 (string)
 	ClusterId pulumi.StringInput
@@ -315,7 +315,7 @@ func (o CatalogV2Output) Annotations() pulumi.MapOutput {
 	return o.ApplyT(func(v *CatalogV2) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
 }
 
-// PEM encoded CA bundle which will be used to validate the repo's certificate (string)
+// CA certificate in base64-encoded DER format which will be used to validate the repo's certificate (string)
 func (o CatalogV2Output) CaBundle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CatalogV2) pulumi.StringPtrOutput { return v.CaBundle }).(pulumi.StringPtrOutput)
 }

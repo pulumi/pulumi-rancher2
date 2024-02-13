@@ -24,6 +24,22 @@ import * as utilities from "./utilities";
  *     values: fs.readFileSync("values.yaml", "utf8"),
  * });
  * ```
+ * ### Create an App from a Helm Chart using a different registry
+ *
+ * The `systemDefaultRegistry` argument can override the global value at App installation. If argument is not provided, the global value for System Default Registry will be used instead.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const cisBenchmark = new rancher2.AppV2("cisBenchmark", {
+ *     chartName: "rancher-cis-benchmark",
+ *     clusterId: "<CLUSTER_ID>",
+ *     namespace: "cis-operator-system",
+ *     repoName: "rancher-charts",
+ *     systemDefaultRegistry: "<some.dns.here>:<PORT>",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -124,9 +140,9 @@ export class AppV2 extends pulumi.CustomResource {
      */
     public readonly repoName!: pulumi.Output<string>;
     /**
-     * (Computed) The system default registry of the app (string)
+     * System default registry providing images for app deployment (string)
      */
-    public /*out*/ readonly systemDefaultRegistry!: pulumi.Output<string>;
+    public readonly systemDefaultRegistry!: pulumi.Output<string>;
     /**
      * The app v2 values yaml. Yaml format is required (string)
      */
@@ -194,11 +210,11 @@ export class AppV2 extends pulumi.CustomResource {
             resourceInputs["namespace"] = args ? args.namespace : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
             resourceInputs["repoName"] = args ? args.repoName : undefined;
+            resourceInputs["systemDefaultRegistry"] = args ? args.systemDefaultRegistry : undefined;
             resourceInputs["values"] = args ? args.values : undefined;
             resourceInputs["wait"] = args ? args.wait : undefined;
             resourceInputs["clusterName"] = undefined /*out*/;
             resourceInputs["deploymentValues"] = undefined /*out*/;
-            resourceInputs["systemDefaultRegistry"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AppV2.__pulumiType, name, resourceInputs, opts);
@@ -272,7 +288,7 @@ export interface AppV2State {
      */
     repoName?: pulumi.Input<string>;
     /**
-     * (Computed) The system default registry of the app (string)
+     * System default registry providing images for app deployment (string)
      */
     systemDefaultRegistry?: pulumi.Input<string>;
     /**
@@ -341,6 +357,10 @@ export interface AppV2Args {
      * Repo name (string)
      */
     repoName: pulumi.Input<string>;
+    /**
+     * System default registry providing images for app deployment (string)
+     */
+    systemDefaultRegistry?: pulumi.Input<string>;
     /**
      * The app v2 values yaml. Yaml format is required (string)
      */

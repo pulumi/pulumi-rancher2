@@ -70,6 +70,10 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Folder;
         /// <summary>
+        /// Duration in seconds before the graceful shutdown of the VM times out and the VM is destroyed. A force destroy will be performed when the value is zero
+        /// </summary>
+        public readonly string? GracefulShutdownTimeout;
+        /// <summary>
         /// vSphere compute resource where the docker VM will be instantiated. This can be omitted if using a cluster with DRS (string)
         /// </summary>
         public readonly string? Hostsystem;
@@ -168,6 +172,8 @@ namespace Pulumi.Rancher2.Outputs
 
             string? folder,
 
+            string? gracefulShutdownTimeout,
+
             string? hostsystem,
 
             string? memorySize,
@@ -216,6 +222,7 @@ namespace Pulumi.Rancher2.Outputs
             DatastoreCluster = datastoreCluster;
             DiskSize = diskSize;
             Folder = folder;
+            GracefulShutdownTimeout = gracefulShutdownTimeout;
             Hostsystem = hostsystem;
             MemorySize = memorySize;
             Networks = networks;

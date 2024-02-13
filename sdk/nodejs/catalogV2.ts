@@ -48,7 +48,7 @@ export class CatalogV2 extends pulumi.CustomResource {
      */
     public readonly annotations!: pulumi.Output<{[key: string]: any}>;
     /**
-     * PEM encoded CA bundle which will be used to validate the repo's certificate (string)
+     * CA certificate in base64-encoded DER format which will be used to validate the repo's certificate (string)
      */
     public readonly caBundle!: pulumi.Output<string | undefined>;
     /**
@@ -167,7 +167,7 @@ export interface CatalogV2State {
      */
     annotations?: pulumi.Input<{[key: string]: any}>;
     /**
-     * PEM encoded CA bundle which will be used to validate the repo's certificate (string)
+     * CA certificate in base64-encoded DER format which will be used to validate the repo's certificate (string)
      */
     caBundle?: pulumi.Input<string>;
     /**
@@ -233,7 +233,7 @@ export interface CatalogV2Args {
      */
     annotations?: pulumi.Input<{[key: string]: any}>;
     /**
-     * PEM encoded CA bundle which will be used to validate the repo's certificate (string)
+     * CA certificate in base64-encoded DER format which will be used to validate the repo's certificate (string)
      */
     caBundle?: pulumi.Input<string>;
     /**
