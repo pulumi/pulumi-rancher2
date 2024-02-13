@@ -2541,7 +2541,14 @@
                 }
             },
             "rancher2_cluster_alert_rule": {
-                "current": "rancher2:index/getClusterAlterRule:getClusterAlterRule",
+                "current": "rancher2:index/getClusterAlertRule:getClusterAlertRule",
+                "past": [
+                    {
+                        "name": "rancher2:index/getClusterAlterRule:getClusterAlterRule",
+                        "inCodegen": true,
+                        "majorVersion": 5
+                    }
+                ],
                 "majorVersion": 6,
                 "fields": {
                     "event_rule": {
@@ -3598,7 +3605,7 @@
             "rancher2:index/getCloudCredential:getCloudCredential": "rancher2_cloud_credential",
             "rancher2:index/getCluster:getCluster": "rancher2_cluster",
             "rancher2:index/getClusterAlertGroup:getClusterAlertGroup": "rancher2_cluster_alert_group",
-            "rancher2:index/getClusterAlterRule:getClusterAlterRule": "rancher2_cluster_alert_rule",
+            "rancher2:index/getClusterAlertRule:getClusterAlertRule": "rancher2_cluster_alert_rule",
             "rancher2:index/getClusterDriver:getClusterDriver": "rancher2_cluster_driver",
             "rancher2:index/getClusterRoleTemplateBinding:getClusterRoleTemplateBinding": "rancher2_cluster_role_template_binding",
             "rancher2:index/getClusterTemplate:getClusterTemplate": "rancher2_cluster_template",
@@ -5906,7 +5913,7 @@
                 "notifierId": "notifier_id",
                 "notifierType": "notifier_type"
             },
-            "rancher2:index/getClusterAlterRule:getClusterAlterRule": {
+            "rancher2:index/getClusterAlertRule:getClusterAlertRule": {
                 "clusterId": "cluster_id",
                 "eventRule": "event_rule",
                 "groupId": "group_id",
@@ -5917,14 +5924,14 @@
                 "repeatIntervalSeconds": "repeat_interval_seconds",
                 "systemServiceRule": "system_service_rule"
             },
-            "rancher2:index/getClusterAlterRuleEventRule:getClusterAlterRuleEventRule": {
+            "rancher2:index/getClusterAlertRuleEventRule:getClusterAlertRuleEventRule": {
                 "eventType": "event_type",
                 "resourceKind": "resource_kind"
             },
-            "rancher2:index/getClusterAlterRuleMetricRule:getClusterAlterRuleMetricRule": {
+            "rancher2:index/getClusterAlertRuleMetricRule:getClusterAlertRuleMetricRule": {
                 "thresholdValue": "threshold_value"
             },
-            "rancher2:index/getClusterAlterRuleNodeRule:getClusterAlterRuleNodeRule": {
+            "rancher2:index/getClusterAlertRuleNodeRule:getClusterAlertRuleNodeRule": {
                 "cpuThreshold": "cpu_threshold",
                 "memThreshold": "mem_threshold",
                 "nodeId": "node_id"

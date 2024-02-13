@@ -17,10 +17,6 @@
             "packageReferences": {
                 "Pulumi": "3.*"
             },
-            "namespaces": {
-                "index": "index",
-                "rancher2": "Rancher2"
-            },
             "compatibility": "tfbridge20"
         },
         "go": {
@@ -12532,7 +12528,7 @@
                 }
             }
         },
-        "rancher2:index/getClusterAlterRuleEventRule:getClusterAlterRuleEventRule": {
+        "rancher2:index/getClusterAlertRuleEventRule:getClusterAlertRuleEventRule": {
             "properties": {
                 "eventType": {
                     "type": "string",
@@ -12553,7 +12549,7 @@
                 }
             }
         },
-        "rancher2:index/getClusterAlterRuleMetricRule:getClusterAlterRuleMetricRule": {
+        "rancher2:index/getClusterAlertRuleMetricRule:getClusterAlertRuleMetricRule": {
             "properties": {
                 "comparison": {
                     "type": "string",
@@ -12588,7 +12584,7 @@
                 }
             }
         },
-        "rancher2:index/getClusterAlterRuleNodeRule:getClusterAlterRuleNodeRule": {
+        "rancher2:index/getClusterAlertRuleNodeRule:getClusterAlertRuleNodeRule": {
             "properties": {
                 "condition": {
                     "type": "string",
@@ -12616,7 +12612,7 @@
             },
             "type": "object"
         },
-        "rancher2:index/getClusterAlterRuleSystemServiceRule:getClusterAlterRuleSystemServiceRule": {
+        "rancher2:index/getClusterAlertRuleSystemServiceRule:getClusterAlertRuleSystemServiceRule": {
             "properties": {
                 "condition": {
                     "type": "string",
@@ -33496,10 +33492,10 @@
                 ]
             }
         },
-        "rancher2:index/getClusterAlterRule:getClusterAlterRule": {
-            "description": "Use this data source to retrieve information about a Rancher v2 cluster alert rule.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\nconst foo = rancher2.getClusterAlterRule({\n    clusterId: \"\u003ccluster_id\u003e\",\n    name: \"\u003ccluster_alert_rule_name\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\nfoo = rancher2.get_cluster_alter_rule(cluster_id=\"\u003ccluster_id\u003e\",\n    name=\"\u003ccluster_alert_rule_name\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = Rancher2.GetClusterAlterRule.Invoke(new()\n    {\n        ClusterId = \"\u003ccluster_id\u003e\",\n        Name = \"\u003ccluster_alert_rule_name\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v6/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.GetClusterAlterRule(ctx, \u0026rancher2.GetClusterAlterRuleArgs{\n\t\t\tClusterId: \"\u003ccluster_id\u003e\",\n\t\t\tName:      \"\u003ccluster_alert_rule_name\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.rancher2.Rancher2Functions;\nimport com.pulumi.rancher2.inputs.GetClusterAlterRuleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var foo = Rancher2Functions.getClusterAlterRule(GetClusterAlterRuleArgs.builder()\n            .clusterId(\"\u003ccluster_id\u003e\")\n            .name(\"\u003ccluster_alert_rule_name\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  foo:\n    fn::invoke:\n      Function: rancher2:getClusterAlterRule\n      Arguments:\n        clusterId: \u003ccluster_id\u003e\n        name: \u003ccluster_alert_rule_name\u003e\n```\n{{% /example %}}\n{{% /examples %}}",
+        "rancher2:index/getClusterAlertRule:getClusterAlertRule": {
+            "description": "Use this data source to retrieve information about a Rancher v2 cluster alert rule.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rancher2 from \"@pulumi/rancher2\";\n\nconst foo = rancher2.getClusterAlertRule({\n    clusterId: \"\u003ccluster_id\u003e\",\n    name: \"\u003ccluster_alert_rule_name\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_rancher2 as rancher2\n\nfoo = rancher2.get_cluster_alert_rule(cluster_id=\"\u003ccluster_id\u003e\",\n    name=\"\u003ccluster_alert_rule_name\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Rancher2 = Pulumi.Rancher2;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = Rancher2.GetClusterAlertRule.Invoke(new()\n    {\n        ClusterId = \"\u003ccluster_id\u003e\",\n        Name = \"\u003ccluster_alert_rule_name\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rancher2/sdk/v6/go/rancher2\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rancher2.LookupClusterAlertRule(ctx, \u0026rancher2.LookupClusterAlertRuleArgs{\n\t\t\tClusterId: \"\u003ccluster_id\u003e\",\n\t\t\tName:      \"\u003ccluster_alert_rule_name\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.rancher2.Rancher2Functions;\nimport com.pulumi.rancher2.inputs.GetClusterAlertRuleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var foo = Rancher2Functions.getClusterAlertRule(GetClusterAlertRuleArgs.builder()\n            .clusterId(\"\u003ccluster_id\u003e\")\n            .name(\"\u003ccluster_alert_rule_name\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  foo:\n    fn::invoke:\n      Function: rancher2:getClusterAlertRule\n      Arguments:\n        clusterId: \u003ccluster_id\u003e\n        name: \u003ccluster_alert_rule_name\u003e\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
-                "description": "A collection of arguments for invoking getClusterAlterRule.\n",
+                "description": "A collection of arguments for invoking getClusterAlertRule.\n",
                 "properties": {
                     "clusterId": {
                         "type": "string",
@@ -33524,7 +33520,7 @@
                 ]
             },
             "outputs": {
-                "description": "A collection of values returned by getClusterAlterRule.\n",
+                "description": "A collection of values returned by getClusterAlertRule.\n",
                 "properties": {
                     "annotations": {
                         "type": "object",
@@ -33537,7 +33533,7 @@
                         "type": "string"
                     },
                     "eventRule": {
-                        "$ref": "#/types/rancher2:index/getClusterAlterRuleEventRule:getClusterAlterRuleEventRule",
+                        "$ref": "#/types/rancher2:index/getClusterAlertRuleEventRule:getClusterAlertRuleEventRule",
                         "description": "(Computed) The cluster alert rule event rule. ConflictsWith: `\"metric_rule\", \"node_rule\", \"system_service_rule\"` (list Maxitems:1)\n"
                     },
                     "groupId": {
@@ -33568,14 +33564,14 @@
                         "description": "(Computed) The cluster alert rule labels (map)\n"
                     },
                     "metricRule": {
-                        "$ref": "#/types/rancher2:index/getClusterAlterRuleMetricRule:getClusterAlterRuleMetricRule",
+                        "$ref": "#/types/rancher2:index/getClusterAlertRuleMetricRule:getClusterAlertRuleMetricRule",
                         "description": "(Computed) The cluster alert rule metric rule. ConflictsWith: `\"event_rule\", \"node_rule\", \"system_service_rule\"`` (list Maxitems:1)\n"
                     },
                     "name": {
                         "type": "string"
                     },
                     "nodeRule": {
-                        "$ref": "#/types/rancher2:index/getClusterAlterRuleNodeRule:getClusterAlterRuleNodeRule",
+                        "$ref": "#/types/rancher2:index/getClusterAlertRuleNodeRule:getClusterAlertRuleNodeRule",
                         "description": "(Computed) The cluster alert rule node rule. ConflictsWith: `\"event_rule\", \"metric_rule\", \"system_service_rule\"`` (list Maxitems:1)\n"
                     },
                     "repeatIntervalSeconds": {
@@ -33587,7 +33583,7 @@
                         "description": "(Computed) The cluster alert rule severity. Supported values : `\"critical\" | \"info\" | \"warning\"`. Default: `critical` (string)\n"
                     },
                     "systemServiceRule": {
-                        "$ref": "#/types/rancher2:index/getClusterAlterRuleSystemServiceRule:getClusterAlterRuleSystemServiceRule",
+                        "$ref": "#/types/rancher2:index/getClusterAlertRuleSystemServiceRule:getClusterAlertRuleSystemServiceRule",
                         "description": "(Computed) The cluster alert rule system service rule. ConflictsWith: `\"event_rule\", \"metric_rule\", \"node_rule\"`` (list Maxitems:1)\n"
                     }
                 },
