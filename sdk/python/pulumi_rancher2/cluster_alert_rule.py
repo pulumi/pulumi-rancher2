@@ -636,8 +636,6 @@ class ClusterAlertRule(pulumi.CustomResource):
             __props__.__dict__["repeat_interval_seconds"] = repeat_interval_seconds
             __props__.__dict__["severity"] = severity
             __props__.__dict__["system_service_rule"] = system_service_rule
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="rancher2:index/clusterAlterRule:ClusterAlterRule")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ClusterAlertRule, __self__).__init__(
             'rancher2:index/clusterAlertRule:ClusterAlertRule',
             resource_name,

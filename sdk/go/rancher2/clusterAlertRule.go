@@ -107,12 +107,6 @@ func NewClusterAlertRule(ctx *pulumi.Context,
 	if args.GroupId == nil {
 		return nil, errors.New("invalid value for required argument 'GroupId'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("rancher2:index/clusterAlterRule:ClusterAlterRule"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ClusterAlertRule
 	err := ctx.RegisterResource("rancher2:index/clusterAlertRule:ClusterAlertRule", name, args, &resource, opts...)

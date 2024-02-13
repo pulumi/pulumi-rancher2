@@ -5,11 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
-export { ActiveDirectoryArgs, ActiveDirectoryState } from "./activeDirectory";
-export type ActiveDirectory = import("./activeDirectory").ActiveDirectory;
-export const ActiveDirectory: typeof import("./activeDirectory").ActiveDirectory = null as any;
-utilities.lazyLoad(exports, ["ActiveDirectory"], () => require("./activeDirectory"));
-
 export { AppArgs, AppState } from "./app";
 export type App = import("./app").App;
 export const App: typeof import("./app").App = null as any;
@@ -104,16 +99,6 @@ export { ClusterAlertRuleArgs, ClusterAlertRuleState } from "./clusterAlertRule"
 export type ClusterAlertRule = import("./clusterAlertRule").ClusterAlertRule;
 export const ClusterAlertRule: typeof import("./clusterAlertRule").ClusterAlertRule = null as any;
 utilities.lazyLoad(exports, ["ClusterAlertRule"], () => require("./clusterAlertRule"));
-
-export { ClusterAlterGroupArgs, ClusterAlterGroupState } from "./clusterAlterGroup";
-export type ClusterAlterGroup = import("./clusterAlterGroup").ClusterAlterGroup;
-export const ClusterAlterGroup: typeof import("./clusterAlterGroup").ClusterAlterGroup = null as any;
-utilities.lazyLoad(exports, ["ClusterAlterGroup"], () => require("./clusterAlterGroup"));
-
-export { ClusterAlterRuleArgs, ClusterAlterRuleState } from "./clusterAlterRule";
-export type ClusterAlterRule = import("./clusterAlterRule").ClusterAlterRule;
-export const ClusterAlterRule: typeof import("./clusterAlterRule").ClusterAlterRule = null as any;
-utilities.lazyLoad(exports, ["ClusterAlterRule"], () => require("./clusterAlterRule"));
 
 export { ClusterDriverArgs, ClusterDriverState } from "./clusterDriver";
 export type ClusterDriver = import("./clusterDriver").ClusterDriver;
@@ -310,11 +295,6 @@ export const getRegistry: typeof import("./getRegistry").getRegistry = null as a
 export const getRegistryOutput: typeof import("./getRegistry").getRegistryOutput = null as any;
 utilities.lazyLoad(exports, ["getRegistry","getRegistryOutput"], () => require("./getRegistry"));
 
-export { GetRoleTempalteArgs, GetRoleTempalteResult, GetRoleTempalteOutputArgs } from "./getRoleTempalte";
-export const getRoleTempalte: typeof import("./getRoleTempalte").getRoleTempalte = null as any;
-export const getRoleTempalteOutput: typeof import("./getRoleTempalte").getRoleTempalteOutput = null as any;
-utilities.lazyLoad(exports, ["getRoleTempalte","getRoleTempalteOutput"], () => require("./getRoleTempalte"));
-
 export { GetRoleTemplateArgs, GetRoleTemplateResult, GetRoleTemplateOutputArgs } from "./getRoleTemplate";
 export const getRoleTemplate: typeof import("./getRoleTemplate").getRoleTemplate = null as any;
 export const getRoleTemplateOutput: typeof import("./getRoleTemplate").getRoleTemplateOutput = null as any;
@@ -435,11 +415,6 @@ export type Registry = import("./registry").Registry;
 export const Registry: typeof import("./registry").Registry = null as any;
 utilities.lazyLoad(exports, ["Registry"], () => require("./registry"));
 
-export { RoleTempalteArgs, RoleTempalteState } from "./roleTempalte";
-export type RoleTempalte = import("./roleTempalte").RoleTempalte;
-export const RoleTempalte: typeof import("./roleTempalte").RoleTempalte = null as any;
-utilities.lazyLoad(exports, ["RoleTempalte"], () => require("./roleTempalte"));
-
 export { RoleTemplateArgs, RoleTemplateState } from "./roleTemplate";
 export type RoleTemplate = import("./roleTemplate").RoleTemplate;
 export const RoleTemplate: typeof import("./roleTemplate").RoleTemplate = null as any;
@@ -489,8 +464,6 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "rancher2:index/activeDirectory:ActiveDirectory":
-                return new ActiveDirectory(name, <any>undefined, { urn })
             case "rancher2:index/app:App":
                 return new App(name, <any>undefined, { urn })
             case "rancher2:index/appV2:AppV2":
@@ -529,10 +502,6 @@ const _module = {
                 return new ClusterAlertGroup(name, <any>undefined, { urn })
             case "rancher2:index/clusterAlertRule:ClusterAlertRule":
                 return new ClusterAlertRule(name, <any>undefined, { urn })
-            case "rancher2:index/clusterAlterGroup:ClusterAlterGroup":
-                return new ClusterAlterGroup(name, <any>undefined, { urn })
-            case "rancher2:index/clusterAlterRule:ClusterAlterRule":
-                return new ClusterAlterRule(name, <any>undefined, { urn })
             case "rancher2:index/clusterDriver:ClusterDriver":
                 return new ClusterDriver(name, <any>undefined, { urn })
             case "rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding":
@@ -585,8 +554,6 @@ const _module = {
                 return new ProjectRoleTemplateBinding(name, <any>undefined, { urn })
             case "rancher2:index/registry:Registry":
                 return new Registry(name, <any>undefined, { urn })
-            case "rancher2:index/roleTempalte:RoleTempalte":
-                return new RoleTempalte(name, <any>undefined, { urn })
             case "rancher2:index/roleTemplate:RoleTemplate":
                 return new RoleTemplate(name, <any>undefined, { urn })
             case "rancher2:index/secret:Secret":
@@ -606,7 +573,6 @@ const _module = {
         }
     },
 };
-pulumi.runtime.registerResourceModule("rancher2", "index/activeDirectory", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/app", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/appV2", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/authConfigActiveDirectory", _module)
@@ -626,8 +592,6 @@ pulumi.runtime.registerResourceModule("rancher2", "index/cloudCredential", _modu
 pulumi.runtime.registerResourceModule("rancher2", "index/cluster", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/clusterAlertGroup", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/clusterAlertRule", _module)
-pulumi.runtime.registerResourceModule("rancher2", "index/clusterAlterGroup", _module)
-pulumi.runtime.registerResourceModule("rancher2", "index/clusterAlterRule", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/clusterDriver", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/clusterRoleTemplateBinding", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/clusterSync", _module)
@@ -654,7 +618,6 @@ pulumi.runtime.registerResourceModule("rancher2", "index/projectAlertGroup", _mo
 pulumi.runtime.registerResourceModule("rancher2", "index/projectAlertRule", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/projectRoleTemplateBinding", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/registry", _module)
-pulumi.runtime.registerResourceModule("rancher2", "index/roleTempalte", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/roleTemplate", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/secret", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/secretV2", _module)

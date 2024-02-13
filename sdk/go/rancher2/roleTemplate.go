@@ -142,12 +142,6 @@ func NewRoleTemplate(ctx *pulumi.Context,
 		args = &RoleTemplateArgs{}
 	}
 
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("rancher2:index/roleTempalte:RoleTempalte"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RoleTemplate
 	err := ctx.RegisterResource("rancher2:index/roleTemplate:RoleTemplate", name, args, &resource, opts...)

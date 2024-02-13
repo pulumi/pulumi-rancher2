@@ -283,8 +283,6 @@ export class AuthConfigActiveDirectory extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "rancher2:index/activeDirectory:ActiveDirectory" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         const secretOpts = { additionalSecretOutputs: ["certificate", "serviceAccountPassword", "serviceAccountUsername", "testPassword"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(AuthConfigActiveDirectory.__pulumiType, name, resourceInputs, opts);

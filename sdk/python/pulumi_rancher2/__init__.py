@@ -5,7 +5,6 @@
 from . import _utilities
 import typing
 # Export this package's modules as members:
-from .active_directory import *
 from .app import *
 from .app_v2 import *
 from .auth_config_active_directory import *
@@ -25,8 +24,6 @@ from .cloud_credential import *
 from .cluster import *
 from .cluster_alert_group import *
 from .cluster_alert_rule import *
-from .cluster_alter_group import *
-from .cluster_alter_rule import *
 from .cluster_driver import *
 from .cluster_role_template_binding import *
 from .cluster_sync import *
@@ -66,7 +63,6 @@ from .get_project_alert_group import *
 from .get_project_alert_rule import *
 from .get_project_role_template_binding import *
 from .get_registry import *
-from .get_role_tempalte import *
 from .get_role_template import *
 from .get_secret import *
 from .get_secret_v2 import *
@@ -91,7 +87,6 @@ from .project_alert_rule import *
 from .project_role_template_binding import *
 from .provider import *
 from .registry import *
-from .role_tempalte import *
 from .role_template import *
 from .secret import *
 from .secret_v2 import *
@@ -112,14 +107,6 @@ else:
 _utilities.register(
     resource_modules="""
 [
- {
-  "pkg": "rancher2",
-  "mod": "index/activeDirectory",
-  "fqn": "pulumi_rancher2",
-  "classes": {
-   "rancher2:index/activeDirectory:ActiveDirectory": "ActiveDirectory"
-  }
- },
  {
   "pkg": "rancher2",
   "mod": "index/app",
@@ -270,22 +257,6 @@ _utilities.register(
   "fqn": "pulumi_rancher2",
   "classes": {
    "rancher2:index/clusterAlertRule:ClusterAlertRule": "ClusterAlertRule"
-  }
- },
- {
-  "pkg": "rancher2",
-  "mod": "index/clusterAlterGroup",
-  "fqn": "pulumi_rancher2",
-  "classes": {
-   "rancher2:index/clusterAlterGroup:ClusterAlterGroup": "ClusterAlterGroup"
-  }
- },
- {
-  "pkg": "rancher2",
-  "mod": "index/clusterAlterRule",
-  "fqn": "pulumi_rancher2",
-  "classes": {
-   "rancher2:index/clusterAlterRule:ClusterAlterRule": "ClusterAlterRule"
   }
  },
  {
@@ -494,14 +465,6 @@ _utilities.register(
   "fqn": "pulumi_rancher2",
   "classes": {
    "rancher2:index/registry:Registry": "Registry"
-  }
- },
- {
-  "pkg": "rancher2",
-  "mod": "index/roleTempalte",
-  "fqn": "pulumi_rancher2",
-  "classes": {
-   "rancher2:index/roleTempalte:RoleTempalte": "RoleTempalte"
   }
  },
  {

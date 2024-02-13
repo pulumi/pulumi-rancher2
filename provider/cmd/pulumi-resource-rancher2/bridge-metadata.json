@@ -21,18 +21,6 @@
                     }
                 }
             },
-            "rancher2_auth_config_activedirectory_legacy": {
-                "current": "rancher2:index/activeDirectory:ActiveDirectory",
-                "majorVersion": 6,
-                "fields": {
-                    "allowed_principal_ids": {
-                        "maxItemsOne": false
-                    },
-                    "servers": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
             "rancher2_auth_config_adfs": {
                 "current": "rancher2:index/authConfigAdfs:AuthConfigAdfs",
                 "majorVersion": 6,
@@ -757,35 +745,8 @@
                     }
                 }
             },
-            "rancher2_cluster_alert_group_legacy": {
-                "current": "rancher2:index/clusterAlterGroup:ClusterAlterGroup",
-                "majorVersion": 6,
-                "fields": {
-                    "recipients": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
             "rancher2_cluster_alert_rule": {
                 "current": "rancher2:index/clusterAlertRule:ClusterAlertRule",
-                "majorVersion": 6,
-                "fields": {
-                    "event_rule": {
-                        "maxItemsOne": true
-                    },
-                    "metric_rule": {
-                        "maxItemsOne": true
-                    },
-                    "node_rule": {
-                        "maxItemsOne": true
-                    },
-                    "system_service_rule": {
-                        "maxItemsOne": true
-                    }
-                }
-            },
-            "rancher2_cluster_alert_rule_legacy": {
-                "current": "rancher2:index/clusterAlterRule:ClusterAlterRule",
                 "majorVersion": 6,
                 "fields": {
                     "event_rule": {
@@ -1923,37 +1884,6 @@
             },
             "rancher2_role_template": {
                 "current": "rancher2:index/roleTemplate:RoleTemplate",
-                "majorVersion": 6,
-                "fields": {
-                    "role_template_ids": {
-                        "maxItemsOne": false
-                    },
-                    "rules": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "api_groups": {
-                                    "maxItemsOne": false
-                                },
-                                "non_resource_urls": {
-                                    "maxItemsOne": false
-                                },
-                                "resource_names": {
-                                    "maxItemsOne": false
-                                },
-                                "resources": {
-                                    "maxItemsOne": false
-                                },
-                                "verbs": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "rancher2_role_template_legacy": {
-                "current": "rancher2:index/roleTempalte:RoleTempalte",
                 "majorVersion": 6,
                 "fields": {
                     "role_template_ids": {
@@ -3572,37 +3502,6 @@
                     }
                 }
             },
-            "rancher2_role_template_legacy": {
-                "current": "rancher2:index/getRoleTempalte:getRoleTempalte",
-                "majorVersion": 6,
-                "fields": {
-                    "role_template_ids": {
-                        "maxItemsOne": false
-                    },
-                    "rules": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "api_groups": {
-                                    "maxItemsOne": false
-                                },
-                                "non_resource_urls": {
-                                    "maxItemsOne": false
-                                },
-                                "resource_names": {
-                                    "maxItemsOne": false
-                                },
-                                "resources": {
-                                    "maxItemsOne": false
-                                },
-                                "verbs": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    }
-                }
-            },
             "rancher2_secret": {
                 "current": "rancher2:index/getSecret:getSecret",
                 "majorVersion": 6
@@ -3638,7 +3537,6 @@
     "auto-settings": {},
     "renames": {
         "resources": {
-            "rancher2:index/activeDirectory:ActiveDirectory": "rancher2_auth_config_activedirectory_legacy",
             "rancher2:index/app:App": "rancher2_app",
             "rancher2:index/appV2:AppV2": "rancher2_app_v2",
             "rancher2:index/authConfigActiveDirectory:AuthConfigActiveDirectory": "rancher2_auth_config_activedirectory",
@@ -3658,8 +3556,6 @@
             "rancher2:index/cluster:Cluster": "rancher2_cluster",
             "rancher2:index/clusterAlertGroup:ClusterAlertGroup": "rancher2_cluster_alert_group",
             "rancher2:index/clusterAlertRule:ClusterAlertRule": "rancher2_cluster_alert_rule",
-            "rancher2:index/clusterAlterGroup:ClusterAlterGroup": "rancher2_cluster_alert_group_legacy",
-            "rancher2:index/clusterAlterRule:ClusterAlterRule": "rancher2_cluster_alert_rule_legacy",
             "rancher2:index/clusterDriver:ClusterDriver": "rancher2_cluster_driver",
             "rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding": "rancher2_cluster_role_template_binding",
             "rancher2:index/clusterSync:ClusterSync": "rancher2_cluster_sync",
@@ -3686,7 +3582,6 @@
             "rancher2:index/projectAlertRule:ProjectAlertRule": "rancher2_project_alert_rule",
             "rancher2:index/projectRoleTemplateBinding:ProjectRoleTemplateBinding": "rancher2_project_role_template_binding",
             "rancher2:index/registry:Registry": "rancher2_registry",
-            "rancher2:index/roleTempalte:RoleTempalte": "rancher2_role_template_legacy",
             "rancher2:index/roleTemplate:RoleTemplate": "rancher2_role_template",
             "rancher2:index/secret:Secret": "rancher2_secret",
             "rancher2:index/secretV2:SecretV2": "rancher2_secret_v2",
@@ -3726,7 +3621,6 @@
             "rancher2:index/getProjectAlertRule:getProjectAlertRule": "rancher2_project_alert_rule",
             "rancher2:index/getProjectRoleTemplateBinding:getProjectRoleTemplateBinding": "rancher2_project_role_template_binding",
             "rancher2:index/getRegistry:getRegistry": "rancher2_registry",
-            "rancher2:index/getRoleTempalte:getRoleTempalte": "rancher2_role_template_legacy",
             "rancher2:index/getRoleTemplate:getRoleTemplate": "rancher2_role_template",
             "rancher2:index/getSecret:getSecret": "rancher2_secret",
             "rancher2:index/getSecretV2:getSecretV2": "rancher2_secret_v2",
@@ -3858,23 +3752,6 @@
                 "thresholdValue": "threshold_value"
             },
             "rancher2:index/ClusterAlertRuleNodeRule:ClusterAlertRuleNodeRule": {
-                "cpuThreshold": "cpu_threshold",
-                "memThreshold": "mem_threshold",
-                "nodeId": "node_id"
-            },
-            "rancher2:index/ClusterAlterGroupRecipient:ClusterAlterGroupRecipient": {
-                "defaultRecipient": "default_recipient",
-                "notifierId": "notifier_id",
-                "notifierType": "notifier_type"
-            },
-            "rancher2:index/ClusterAlterRuleEventRule:ClusterAlterRuleEventRule": {
-                "eventType": "event_type",
-                "resourceKind": "resource_kind"
-            },
-            "rancher2:index/ClusterAlterRuleMetricRule:ClusterAlterRuleMetricRule": {
-                "thresholdValue": "threshold_value"
-            },
-            "rancher2:index/ClusterAlterRuleNodeRule:ClusterAlterRuleNodeRule": {
                 "cpuThreshold": "cpu_threshold",
                 "memThreshold": "mem_threshold",
                 "nodeId": "node_id"
@@ -5545,43 +5422,10 @@
                 "servicesLoadBalancers": "services_load_balancers",
                 "servicesNodePorts": "services_node_ports"
             },
-            "rancher2:index/RoleTempalteRule:RoleTempalteRule": {
-                "apiGroups": "api_groups",
-                "nonResourceUrls": "non_resource_urls",
-                "resourceNames": "resource_names"
-            },
             "rancher2:index/RoleTemplateRule:RoleTemplateRule": {
                 "apiGroups": "api_groups",
                 "nonResourceUrls": "non_resource_urls",
                 "resourceNames": "resource_names"
-            },
-            "rancher2:index/activeDirectory:ActiveDirectory": {
-                "accessMode": "access_mode",
-                "allowedPrincipalIds": "allowed_principal_ids",
-                "connectionTimeout": "connection_timeout",
-                "defaultLoginDomain": "default_login_domain",
-                "groupDnAttribute": "group_dn_attribute",
-                "groupMemberMappingAttribute": "group_member_mapping_attribute",
-                "groupMemberUserAttribute": "group_member_user_attribute",
-                "groupNameAttribute": "group_name_attribute",
-                "groupObjectClass": "group_object_class",
-                "groupSearchAttribute": "group_search_attribute",
-                "groupSearchBase": "group_search_base",
-                "groupSearchFilter": "group_search_filter",
-                "nestedGroupMembershipEnabled": "nested_group_membership_enabled",
-                "serviceAccountPassword": "service_account_password",
-                "serviceAccountUsername": "service_account_username",
-                "startTls": "start_tls",
-                "testPassword": "test_password",
-                "testUsername": "test_username",
-                "userDisabledBitMask": "user_disabled_bit_mask",
-                "userEnabledAttribute": "user_enabled_attribute",
-                "userLoginAttribute": "user_login_attribute",
-                "userNameAttribute": "user_name_attribute",
-                "userObjectClass": "user_object_class",
-                "userSearchAttribute": "user_search_attribute",
-                "userSearchBase": "user_search_base",
-                "userSearchFilter": "user_search_filter"
             },
             "rancher2:index/app:App": {
                 "catalogName": "catalog_name",
@@ -5844,23 +5688,6 @@
                 "repeatIntervalSeconds": "repeat_interval_seconds"
             },
             "rancher2:index/clusterAlertRule:ClusterAlertRule": {
-                "clusterId": "cluster_id",
-                "eventRule": "event_rule",
-                "groupId": "group_id",
-                "groupIntervalSeconds": "group_interval_seconds",
-                "groupWaitSeconds": "group_wait_seconds",
-                "metricRule": "metric_rule",
-                "nodeRule": "node_rule",
-                "repeatIntervalSeconds": "repeat_interval_seconds",
-                "systemServiceRule": "system_service_rule"
-            },
-            "rancher2:index/clusterAlterGroup:ClusterAlterGroup": {
-                "clusterId": "cluster_id",
-                "groupIntervalSeconds": "group_interval_seconds",
-                "groupWaitSeconds": "group_wait_seconds",
-                "repeatIntervalSeconds": "repeat_interval_seconds"
-            },
-            "rancher2:index/clusterAlterRule:ClusterAlterRule": {
                 "clusterId": "cluster_id",
                 "eventRule": "event_rule",
                 "groupId": "group_id",
@@ -7538,15 +7365,6 @@
                 "namespaceId": "namespace_id",
                 "projectId": "project_id"
             },
-            "rancher2:index/getRoleTempalte:getRoleTempalte": {
-                "defaultRole": "default_role",
-                "roleTemplateIds": "role_template_ids"
-            },
-            "rancher2:index/getRoleTempalteRule:getRoleTempalteRule": {
-                "apiGroups": "api_groups",
-                "nonResourceUrls": "non_resource_urls",
-                "resourceNames": "resource_names"
-            },
             "rancher2:index/getRoleTemplate:getRoleTemplate": {
                 "defaultRole": "default_role",
                 "roleTemplateIds": "role_template_ids"
@@ -7735,10 +7553,6 @@
             "rancher2:index/registry:Registry": {
                 "namespaceId": "namespace_id",
                 "projectId": "project_id"
-            },
-            "rancher2:index/roleTempalte:RoleTempalte": {
-                "defaultRole": "default_role",
-                "roleTemplateIds": "role_template_ids"
             },
             "rancher2:index/roleTemplate:RoleTemplate": {
                 "defaultRole": "default_role",

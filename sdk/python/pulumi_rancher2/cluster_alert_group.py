@@ -443,8 +443,6 @@ class ClusterAlertGroup(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["recipients"] = recipients
             __props__.__dict__["repeat_interval_seconds"] = repeat_interval_seconds
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="rancher2:index/clusterAlterGroup:ClusterAlterGroup")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ClusterAlertGroup, __self__).__init__(
             'rancher2:index/clusterAlertGroup:ClusterAlertGroup',
             resource_name,

@@ -16,7 +16,7 @@ package rancher2
 
 import (
 	"fmt"
-	"path/filepath"
+	"path"
 	"strings"
 	"unicode"
 
@@ -152,6 +152,9 @@ func Provider() tfbridge.ProviderInfo {
 			"rancher2_machine_config_v2":            {Tok: makeResource(mainMod, "MachineConfigV2")},
 			"rancher2_storage_class_v2":             {Tok: makeResource(mainMod, "StorageClassV2")},
 			"rancher2_config_map_v2":                {Tok: makeResource(mainMod, "ConfigMapV2")},
+
+			// Override capitalization for backwards compatibility.
+			"rancher2_auth_config_activedirectory": {Tok: makeResource(mainMod, "AuthConfigActiveDirectory")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"rancher2_app":                           {Tok: makeDataSource(mainMod, "getApp")},
@@ -208,7 +211,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 
 		Golang: &tfbridge.GolangInfo{
-			ImportBasePath: filepath.Join(
+			ImportBasePath: path.Join(
 				fmt.Sprintf("github.com/pulumi/pulumi-%[1]s/sdk/", mainPkg),
 				tfbridge.GetModuleMajorVersion(version.Version),
 				"go",
@@ -223,32 +226,6 @@ func Provider() tfbridge.ProviderInfo {
 			Namespaces: namespaceMap,
 		},
 	}
-
-	prov.RenameDataSource("rancher2_role_template", makeDataSource(mainMod, "getRoleTempalte"),
-		makeDataSource(mainMod, "getRoleTemplate"), mainMod, mainMod, &tfbridge.DataSourceInfo{
-			Docs: &tfbridge.DocInfo{Source: "role_template.md"},
-		})
-
-	prov.RenameResourceWithAlias("rancher2_cluster_alert_group", makeResource(mainMod, "ClusterAlterGroup"),
-		makeResource(mainMod, "ClusterAlertGroup"), mainMod, mainMod, &tfbridge.ResourceInfo{
-			Docs: &tfbridge.DocInfo{Source: "cluster_alert_group.md"},
-		})
-	prov.RenameResourceWithAlias("rancher2_cluster_alert_rule", makeResource(mainMod, "ClusterAlterRule"),
-		makeResource(mainMod, "ClusterAlertRule"), mainMod, mainMod, &tfbridge.ResourceInfo{
-			Docs: &tfbridge.DocInfo{Source: "cluster_alert_group.md"},
-		})
-	prov.RenameResourceWithAlias("rancher2_role_template", makeResource(mainMod, "RoleTempalte"),
-		makeResource(mainMod, "RoleTemplate"), mainMod, mainMod,
-		&tfbridge.ResourceInfo{
-			Docs: &tfbridge.DocInfo{Source: "role_template.md"},
-		})
-	prov.RenameResourceWithAlias("rancher2_auth_config_activedirectory", makeResource(mainMod, "ActiveDirectory"),
-		makeResource(mainMod, "AuthConfigActiveDirectory"), mainMod, mainMod,
-		&tfbridge.ResourceInfo{
-			Docs: &tfbridge.DocInfo{
-				Source: "auth_config_activedirectory.md",
-			},
-		})
 
 	prov.MustComputeTokens(tks.SingleModule("rancher2_", mainMod, tks.MakeStandard(mainPkg)))
 	prov.MustApplyAutoAliases()

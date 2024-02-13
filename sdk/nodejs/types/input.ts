@@ -581,89 +581,6 @@ export interface ClusterAlertRuleSystemServiceRule {
     condition?: pulumi.Input<string>;
 }
 
-export interface ClusterAlterGroupRecipient {
-    /**
-     * Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
-     */
-    defaultRecipient?: pulumi.Input<boolean>;
-    /**
-     * Recipient notifier ID (string)
-     */
-    notifierId: pulumi.Input<string>;
-    /**
-     * Recipient notifier ID. Supported values : `"dingtalk" | "msteams" | "pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
-     */
-    notifierType?: pulumi.Input<string>;
-    /**
-     * Recipient (string)
-     */
-    recipient?: pulumi.Input<string>;
-}
-
-export interface ClusterAlterRuleEventRule {
-    /**
-     * Event type
-     */
-    eventType?: pulumi.Input<string>;
-    /**
-     * Resource kind
-     */
-    resourceKind: pulumi.Input<string>;
-}
-
-export interface ClusterAlterRuleMetricRule {
-    /**
-     * Metric rule comparison
-     */
-    comparison?: pulumi.Input<string>;
-    /**
-     * The cluster alert group description (string)
-     */
-    description?: pulumi.Input<string>;
-    /**
-     * Metric rule duration
-     */
-    duration: pulumi.Input<string>;
-    /**
-     * Metric rule expression
-     */
-    expression: pulumi.Input<string>;
-    /**
-     * Metric rule threshold value
-     */
-    thresholdValue: pulumi.Input<number>;
-}
-
-export interface ClusterAlterRuleNodeRule {
-    /**
-     * Node rule condition
-     */
-    condition?: pulumi.Input<string>;
-    /**
-     * Node rule cpu threshold
-     */
-    cpuThreshold?: pulumi.Input<number>;
-    /**
-     * Node rule mem threshold
-     */
-    memThreshold?: pulumi.Input<number>;
-    /**
-     * Node ID
-     */
-    nodeId?: pulumi.Input<string>;
-    /**
-     * Node rule selector
-     */
-    selector?: pulumi.Input<{[key: string]: any}>;
-}
-
-export interface ClusterAlterRuleSystemServiceRule {
-    /**
-     * System service rule condition
-     */
-    condition?: pulumi.Input<string>;
-}
-
 export interface ClusterClusterAgentDeploymentCustomization {
     /**
      * User defined tolerations to append to agent (list)
@@ -8356,29 +8273,6 @@ export interface RegistryRegistry {
      * Username for the registry (string)
      */
     username?: pulumi.Input<string>;
-}
-
-export interface RoleTempalteRule {
-    /**
-     * Policy rule api groups (list)
-     */
-    apiGroups?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Policy rule non resource urls (list)
-     */
-    nonResourceUrls?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Policy rule resource names (list)
-     */
-    resourceNames?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Policy rule resources (list)
-     */
-    resources?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Policy rule verbs. `bind`, `create`, `delete`, `deletecollection`, `escalate`, `get`, `impersonate`, `list`, `patch`, `update`, `use`, `view`, `watch`, `own` and `*` values are supported (list)
-     */
-    verbs?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface RoleTemplateRule {

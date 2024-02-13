@@ -581,89 +581,6 @@ export interface ClusterAlertRuleSystemServiceRule {
     condition?: string;
 }
 
-export interface ClusterAlterGroupRecipient {
-    /**
-     * Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
-     */
-    defaultRecipient?: boolean;
-    /**
-     * Recipient notifier ID (string)
-     */
-    notifierId: string;
-    /**
-     * Recipient notifier ID. Supported values : `"dingtalk" | "msteams" | "pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
-     */
-    notifierType: string;
-    /**
-     * Recipient (string)
-     */
-    recipient: string;
-}
-
-export interface ClusterAlterRuleEventRule {
-    /**
-     * Event type
-     */
-    eventType?: string;
-    /**
-     * Resource kind
-     */
-    resourceKind: string;
-}
-
-export interface ClusterAlterRuleMetricRule {
-    /**
-     * Metric rule comparison
-     */
-    comparison?: string;
-    /**
-     * The cluster alert group description (string)
-     */
-    description?: string;
-    /**
-     * Metric rule duration
-     */
-    duration: string;
-    /**
-     * Metric rule expression
-     */
-    expression: string;
-    /**
-     * Metric rule threshold value
-     */
-    thresholdValue: number;
-}
-
-export interface ClusterAlterRuleNodeRule {
-    /**
-     * Node rule condition
-     */
-    condition?: string;
-    /**
-     * Node rule cpu threshold
-     */
-    cpuThreshold?: number;
-    /**
-     * Node rule mem threshold
-     */
-    memThreshold?: number;
-    /**
-     * Node ID
-     */
-    nodeId?: string;
-    /**
-     * Node rule selector
-     */
-    selector?: {[key: string]: any};
-}
-
-export interface ClusterAlterRuleSystemServiceRule {
-    /**
-     * System service rule condition
-     */
-    condition?: string;
-}
-
 export interface ClusterClusterAgentDeploymentCustomization {
     /**
      * User defined tolerations to append to agent (list)
@@ -9766,29 +9683,6 @@ export interface GetRegistryRegistry {
     username?: string;
 }
 
-export interface GetRoleTempalteRule {
-    /**
-     * Policy rule api groups
-     */
-    apiGroups?: string[];
-    /**
-     * Policy rule non resource urls
-     */
-    nonResourceUrls?: string[];
-    /**
-     * Policy rule resource names
-     */
-    resourceNames?: string[];
-    /**
-     * Policy rule resources
-     */
-    resources?: string[];
-    /**
-     * Policy rule verbs
-     */
-    verbs?: string[];
-}
-
 export interface GetRoleTemplateRule {
     /**
      * Policy rule api groups
@@ -12309,29 +12203,6 @@ export interface RegistryRegistry {
      * Username for the registry (string)
      */
     username?: string;
-}
-
-export interface RoleTempalteRule {
-    /**
-     * Policy rule api groups (list)
-     */
-    apiGroups?: string[];
-    /**
-     * Policy rule non resource urls (list)
-     */
-    nonResourceUrls?: string[];
-    /**
-     * Policy rule resource names (list)
-     */
-    resourceNames?: string[];
-    /**
-     * Policy rule resources (list)
-     */
-    resources?: string[];
-    /**
-     * Policy rule verbs. `bind`, `create`, `delete`, `deletecollection`, `escalate`, `get`, `impersonate`, `list`, `patch`, `update`, `use`, `view`, `watch`, `own` and `*` values are supported (list)
-     */
-    verbs?: string[];
 }
 
 export interface RoleTemplateRule {

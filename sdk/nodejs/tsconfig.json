@@ -13,7 +13,6 @@
         "strict": true
     },
     "files": [
-        "activeDirectory.ts",
         "app.ts",
         "appV2.ts",
         "authConfigActiveDirectory.ts",
@@ -33,8 +32,6 @@
         "cluster.ts",
         "clusterAlertGroup.ts",
         "clusterAlertRule.ts",
-        "clusterAlterGroup.ts",
-        "clusterAlterRule.ts",
         "clusterDriver.ts",
         "clusterRoleTemplateBinding.ts",
         "clusterSync.ts",
@@ -76,7 +73,6 @@
         "getProjectAlertRule.ts",
         "getProjectRoleTemplateBinding.ts",
         "getRegistry.ts",
-        "getRoleTempalte.ts",
         "getRoleTemplate.ts",
         "getSecret.ts",
         "getSecretV2.ts",
@@ -102,7 +98,6 @@
         "projectRoleTemplateBinding.ts",
         "provider.ts",
         "registry.ts",
-        "roleTempalte.ts",
         "roleTemplate.ts",
         "secret.ts",
         "secretV2.ts",

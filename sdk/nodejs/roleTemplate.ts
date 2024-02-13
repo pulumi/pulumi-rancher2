@@ -179,8 +179,6 @@ export class RoleTemplate extends pulumi.CustomResource {
             resourceInputs["builtin"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "rancher2:index/roleTempalte:RoleTempalte" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(RoleTemplate.__pulumiType, name, resourceInputs, opts);
     }
 }

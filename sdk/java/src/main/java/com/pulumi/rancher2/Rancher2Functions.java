@@ -68,8 +68,6 @@ import com.pulumi.rancher2.inputs.GetProjectRoleTemplateBindingArgs;
 import com.pulumi.rancher2.inputs.GetProjectRoleTemplateBindingPlainArgs;
 import com.pulumi.rancher2.inputs.GetRegistryArgs;
 import com.pulumi.rancher2.inputs.GetRegistryPlainArgs;
-import com.pulumi.rancher2.inputs.GetRoleTempalteArgs;
-import com.pulumi.rancher2.inputs.GetRoleTempaltePlainArgs;
 import com.pulumi.rancher2.inputs.GetRoleTemplateArgs;
 import com.pulumi.rancher2.inputs.GetRoleTemplatePlainArgs;
 import com.pulumi.rancher2.inputs.GetSecretArgs;
@@ -112,7 +110,6 @@ import com.pulumi.rancher2.outputs.GetProjectAlertRuleResult;
 import com.pulumi.rancher2.outputs.GetProjectResult;
 import com.pulumi.rancher2.outputs.GetProjectRoleTemplateBindingResult;
 import com.pulumi.rancher2.outputs.GetRegistryResult;
-import com.pulumi.rancher2.outputs.GetRoleTempalteResult;
 import com.pulumi.rancher2.outputs.GetRoleTemplateResult;
 import com.pulumi.rancher2.outputs.GetSecretResult;
 import com.pulumi.rancher2.outputs.GetSecretV2Result;
@@ -4529,170 +4526,6 @@ public final class Rancher2Functions {
      */
     public static CompletableFuture<GetRegistryResult> getRegistryPlain(GetRegistryPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("rancher2:index/getRegistry:getRegistry", TypeShape.of(GetRegistryResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to retrieve information about a Rancher v2 role template resource.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.rancher2.Rancher2Functions;
-     * import com.pulumi.rancher2.inputs.GetRoleTemplateArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = Rancher2Functions.getRoleTemplate(GetRoleTemplateArgs.builder()
-     *             .name(&#34;foo&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * @deprecated
-     * rancher2.getRoleTempalte has been deprecated in favor of rancher2.getRoleTemplate
-     * 
-     */
-    @Deprecated /* rancher2.getRoleTempalte has been deprecated in favor of rancher2.getRoleTemplate */
-    public static Output<GetRoleTempalteResult> getRoleTempalte(GetRoleTempalteArgs args) {
-        return getRoleTempalte(args, InvokeOptions.Empty);
-    }
-    /**
-     * Use this data source to retrieve information about a Rancher v2 role template resource.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.rancher2.Rancher2Functions;
-     * import com.pulumi.rancher2.inputs.GetRoleTemplateArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = Rancher2Functions.getRoleTemplate(GetRoleTemplateArgs.builder()
-     *             .name(&#34;foo&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * @deprecated
-     * rancher2.getRoleTempalte has been deprecated in favor of rancher2.getRoleTemplate
-     * 
-     */
-    @Deprecated /* rancher2.getRoleTempalte has been deprecated in favor of rancher2.getRoleTemplate */
-    public static CompletableFuture<GetRoleTempalteResult> getRoleTempaltePlain(GetRoleTempaltePlainArgs args) {
-        return getRoleTempaltePlain(args, InvokeOptions.Empty);
-    }
-    /**
-     * Use this data source to retrieve information about a Rancher v2 role template resource.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.rancher2.Rancher2Functions;
-     * import com.pulumi.rancher2.inputs.GetRoleTemplateArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = Rancher2Functions.getRoleTemplate(GetRoleTemplateArgs.builder()
-     *             .name(&#34;foo&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * @deprecated
-     * rancher2.getRoleTempalte has been deprecated in favor of rancher2.getRoleTemplate
-     * 
-     */
-    @Deprecated /* rancher2.getRoleTempalte has been deprecated in favor of rancher2.getRoleTemplate */
-    public static Output<GetRoleTempalteResult> getRoleTempalte(GetRoleTempalteArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("rancher2:index/getRoleTempalte:getRoleTempalte", TypeShape.of(GetRoleTempalteResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to retrieve information about a Rancher v2 role template resource.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.rancher2.Rancher2Functions;
-     * import com.pulumi.rancher2.inputs.GetRoleTemplateArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = Rancher2Functions.getRoleTemplate(GetRoleTemplateArgs.builder()
-     *             .name(&#34;foo&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * @deprecated
-     * rancher2.getRoleTempalte has been deprecated in favor of rancher2.getRoleTemplate
-     * 
-     */
-    @Deprecated /* rancher2.getRoleTempalte has been deprecated in favor of rancher2.getRoleTemplate */
-    public static CompletableFuture<GetRoleTempalteResult> getRoleTempaltePlain(GetRoleTempaltePlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("rancher2:index/getRoleTempalte:getRoleTempalte", TypeShape.of(GetRoleTempalteResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to retrieve information about a Rancher v2 role template resource.

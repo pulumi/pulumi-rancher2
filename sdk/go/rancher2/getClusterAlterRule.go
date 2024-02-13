@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rancher2.LookupClusterAlterRule(ctx, &rancher2.LookupClusterAlterRuleArgs{
+//			_, err := rancher2.GetClusterAlterRule(ctx, &rancher2.GetClusterAlterRuleArgs{
 //				ClusterId: "<cluster_id>",
 //				Name:      "<cluster_alert_rule_name>",
 //			}, nil)
@@ -39,9 +39,9 @@ import (
 //	}
 //
 // ```
-func LookupClusterAlterRule(ctx *pulumi.Context, args *LookupClusterAlterRuleArgs, opts ...pulumi.InvokeOption) (*LookupClusterAlterRuleResult, error) {
+func GetClusterAlterRule(ctx *pulumi.Context, args *GetClusterAlterRuleArgs, opts ...pulumi.InvokeOption) (*GetClusterAlterRuleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv LookupClusterAlterRuleResult
+	var rv GetClusterAlterRuleResult
 	err := ctx.Invoke("rancher2:index/getClusterAlterRule:getClusterAlterRule", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -50,7 +50,7 @@ func LookupClusterAlterRule(ctx *pulumi.Context, args *LookupClusterAlterRuleArg
 }
 
 // A collection of arguments for invoking getClusterAlterRule.
-type LookupClusterAlterRuleArgs struct {
+type GetClusterAlterRuleArgs struct {
 	// The cluster id where create cluster alert rule (string)
 	ClusterId string `pulumi:"clusterId"`
 	// (Computed) The cluster alert rule labels (map)
@@ -60,7 +60,7 @@ type LookupClusterAlterRuleArgs struct {
 }
 
 // A collection of values returned by getClusterAlterRule.
-type LookupClusterAlterRuleResult struct {
+type GetClusterAlterRuleResult struct {
 	// (Computed) The cluster alert rule annotations (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
 	ClusterId   string                 `pulumi:"clusterId"`
@@ -91,21 +91,21 @@ type LookupClusterAlterRuleResult struct {
 	SystemServiceRule GetClusterAlterRuleSystemServiceRule `pulumi:"systemServiceRule"`
 }
 
-func LookupClusterAlterRuleOutput(ctx *pulumi.Context, args LookupClusterAlterRuleOutputArgs, opts ...pulumi.InvokeOption) LookupClusterAlterRuleResultOutput {
+func GetClusterAlterRuleOutput(ctx *pulumi.Context, args GetClusterAlterRuleOutputArgs, opts ...pulumi.InvokeOption) GetClusterAlterRuleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupClusterAlterRuleResult, error) {
-			args := v.(LookupClusterAlterRuleArgs)
-			r, err := LookupClusterAlterRule(ctx, &args, opts...)
-			var s LookupClusterAlterRuleResult
+		ApplyT(func(v interface{}) (GetClusterAlterRuleResult, error) {
+			args := v.(GetClusterAlterRuleArgs)
+			r, err := GetClusterAlterRule(ctx, &args, opts...)
+			var s GetClusterAlterRuleResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupClusterAlterRuleResultOutput)
+		}).(GetClusterAlterRuleResultOutput)
 }
 
 // A collection of arguments for invoking getClusterAlterRule.
-type LookupClusterAlterRuleOutputArgs struct {
+type GetClusterAlterRuleOutputArgs struct {
 	// The cluster id where create cluster alert rule (string)
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
 	// (Computed) The cluster alert rule labels (map)
@@ -114,98 +114,98 @@ type LookupClusterAlterRuleOutputArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
-func (LookupClusterAlterRuleOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupClusterAlterRuleArgs)(nil)).Elem()
+func (GetClusterAlterRuleOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAlterRuleArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getClusterAlterRule.
-type LookupClusterAlterRuleResultOutput struct{ *pulumi.OutputState }
+type GetClusterAlterRuleResultOutput struct{ *pulumi.OutputState }
 
-func (LookupClusterAlterRuleResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupClusterAlterRuleResult)(nil)).Elem()
+func (GetClusterAlterRuleResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAlterRuleResult)(nil)).Elem()
 }
 
-func (o LookupClusterAlterRuleResultOutput) ToLookupClusterAlterRuleResultOutput() LookupClusterAlterRuleResultOutput {
+func (o GetClusterAlterRuleResultOutput) ToGetClusterAlterRuleResultOutput() GetClusterAlterRuleResultOutput {
 	return o
 }
 
-func (o LookupClusterAlterRuleResultOutput) ToLookupClusterAlterRuleResultOutputWithContext(ctx context.Context) LookupClusterAlterRuleResultOutput {
+func (o GetClusterAlterRuleResultOutput) ToGetClusterAlterRuleResultOutputWithContext(ctx context.Context) GetClusterAlterRuleResultOutput {
 	return o
 }
 
 // (Computed) The cluster alert rule annotations (map)
-func (o LookupClusterAlterRuleResultOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupClusterAlterRuleResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+func (o GetClusterAlterRuleResultOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClusterAlterRuleResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
 }
 
-func (o LookupClusterAlterRuleResultOutput) ClusterId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupClusterAlterRuleResult) string { return v.ClusterId }).(pulumi.StringOutput)
+func (o GetClusterAlterRuleResultOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterAlterRuleResult) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
 // (Computed) The cluster alert rule event rule. ConflictsWith: `"metricRule", "nodeRule", "systemServiceRule"` (list Maxitems:1)
-func (o LookupClusterAlterRuleResultOutput) EventRule() GetClusterAlterRuleEventRuleOutput {
-	return o.ApplyT(func(v LookupClusterAlterRuleResult) GetClusterAlterRuleEventRule { return v.EventRule }).(GetClusterAlterRuleEventRuleOutput)
+func (o GetClusterAlterRuleResultOutput) EventRule() GetClusterAlterRuleEventRuleOutput {
+	return o.ApplyT(func(v GetClusterAlterRuleResult) GetClusterAlterRuleEventRule { return v.EventRule }).(GetClusterAlterRuleEventRuleOutput)
 }
 
 // (Computed) The cluster alert rule alert group ID (string)
-func (o LookupClusterAlterRuleResultOutput) GroupId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupClusterAlterRuleResult) string { return v.GroupId }).(pulumi.StringOutput)
+func (o GetClusterAlterRuleResultOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterAlterRuleResult) string { return v.GroupId }).(pulumi.StringOutput)
 }
 
 // (Computed) The cluster alert rule group interval seconds. Default: `180` (int)
-func (o LookupClusterAlterRuleResultOutput) GroupIntervalSeconds() pulumi.IntOutput {
-	return o.ApplyT(func(v LookupClusterAlterRuleResult) int { return v.GroupIntervalSeconds }).(pulumi.IntOutput)
+func (o GetClusterAlterRuleResultOutput) GroupIntervalSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterAlterRuleResult) int { return v.GroupIntervalSeconds }).(pulumi.IntOutput)
 }
 
 // (Computed) The cluster alert rule group wait seconds. Default: `180` (int)
-func (o LookupClusterAlterRuleResultOutput) GroupWaitSeconds() pulumi.IntOutput {
-	return o.ApplyT(func(v LookupClusterAlterRuleResult) int { return v.GroupWaitSeconds }).(pulumi.IntOutput)
+func (o GetClusterAlterRuleResultOutput) GroupWaitSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterAlterRuleResult) int { return v.GroupWaitSeconds }).(pulumi.IntOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
-func (o LookupClusterAlterRuleResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupClusterAlterRuleResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetClusterAlterRuleResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterAlterRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // (Computed) The cluster alert rule inherited. Default: `true` (bool)
-func (o LookupClusterAlterRuleResultOutput) Inherited() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupClusterAlterRuleResult) bool { return v.Inherited }).(pulumi.BoolOutput)
+func (o GetClusterAlterRuleResultOutput) Inherited() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterAlterRuleResult) bool { return v.Inherited }).(pulumi.BoolOutput)
 }
 
 // (Computed) The cluster alert rule labels (map)
-func (o LookupClusterAlterRuleResultOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupClusterAlterRuleResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+func (o GetClusterAlterRuleResultOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClusterAlterRuleResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
 }
 
 // (Computed) The cluster alert rule metric rule. ConflictsWith: `"eventRule", "nodeRule", "systemServiceRule"“ (list Maxitems:1)
-func (o LookupClusterAlterRuleResultOutput) MetricRule() GetClusterAlterRuleMetricRuleOutput {
-	return o.ApplyT(func(v LookupClusterAlterRuleResult) GetClusterAlterRuleMetricRule { return v.MetricRule }).(GetClusterAlterRuleMetricRuleOutput)
+func (o GetClusterAlterRuleResultOutput) MetricRule() GetClusterAlterRuleMetricRuleOutput {
+	return o.ApplyT(func(v GetClusterAlterRuleResult) GetClusterAlterRuleMetricRule { return v.MetricRule }).(GetClusterAlterRuleMetricRuleOutput)
 }
 
-func (o LookupClusterAlterRuleResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupClusterAlterRuleResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetClusterAlterRuleResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterAlterRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // (Computed) The cluster alert rule node rule. ConflictsWith: `"eventRule", "metricRule", "systemServiceRule"“ (list Maxitems:1)
-func (o LookupClusterAlterRuleResultOutput) NodeRule() GetClusterAlterRuleNodeRuleOutput {
-	return o.ApplyT(func(v LookupClusterAlterRuleResult) GetClusterAlterRuleNodeRule { return v.NodeRule }).(GetClusterAlterRuleNodeRuleOutput)
+func (o GetClusterAlterRuleResultOutput) NodeRule() GetClusterAlterRuleNodeRuleOutput {
+	return o.ApplyT(func(v GetClusterAlterRuleResult) GetClusterAlterRuleNodeRule { return v.NodeRule }).(GetClusterAlterRuleNodeRuleOutput)
 }
 
 // (Optional) The cluster alert rule wait seconds. Default: `3600` (int)
-func (o LookupClusterAlterRuleResultOutput) RepeatIntervalSeconds() pulumi.IntOutput {
-	return o.ApplyT(func(v LookupClusterAlterRuleResult) int { return v.RepeatIntervalSeconds }).(pulumi.IntOutput)
+func (o GetClusterAlterRuleResultOutput) RepeatIntervalSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterAlterRuleResult) int { return v.RepeatIntervalSeconds }).(pulumi.IntOutput)
 }
 
 // (Computed) The cluster alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
-func (o LookupClusterAlterRuleResultOutput) Severity() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupClusterAlterRuleResult) string { return v.Severity }).(pulumi.StringOutput)
+func (o GetClusterAlterRuleResultOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterAlterRuleResult) string { return v.Severity }).(pulumi.StringOutput)
 }
 
 // (Computed) The cluster alert rule system service rule. ConflictsWith: `"eventRule", "metricRule", "nodeRule"“ (list Maxitems:1)
-func (o LookupClusterAlterRuleResultOutput) SystemServiceRule() GetClusterAlterRuleSystemServiceRuleOutput {
-	return o.ApplyT(func(v LookupClusterAlterRuleResult) GetClusterAlterRuleSystemServiceRule { return v.SystemServiceRule }).(GetClusterAlterRuleSystemServiceRuleOutput)
+func (o GetClusterAlterRuleResultOutput) SystemServiceRule() GetClusterAlterRuleSystemServiceRuleOutput {
+	return o.ApplyT(func(v GetClusterAlterRuleResult) GetClusterAlterRuleSystemServiceRule { return v.SystemServiceRule }).(GetClusterAlterRuleSystemServiceRuleOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupClusterAlterRuleResultOutput{})
+	pulumi.RegisterOutputType(GetClusterAlterRuleResultOutput{})
 }

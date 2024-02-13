@@ -1304,8 +1304,6 @@ class AuthConfigActiveDirectory(pulumi.CustomResource):
             __props__.__dict__["user_search_filter"] = user_search_filter
             __props__.__dict__["name"] = None
             __props__.__dict__["type"] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="rancher2:index/activeDirectory:ActiveDirectory")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["certificate", "serviceAccountPassword", "serviceAccountUsername", "testPassword"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(AuthConfigActiveDirectory, __self__).__init__(
