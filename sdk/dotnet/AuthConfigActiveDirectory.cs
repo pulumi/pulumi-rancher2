@@ -250,10 +250,6 @@ namespace Pulumi.Rancher2
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                Aliases =
-                {
-                    new global::Pulumi.Alias { Type = "rancher2:index/activeDirectory:ActiveDirectory" },
-                },
                 AdditionalSecretOutputs =
                 {
                     "certificate",

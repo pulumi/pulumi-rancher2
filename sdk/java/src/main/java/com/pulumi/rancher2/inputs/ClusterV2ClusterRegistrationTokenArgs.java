@@ -18,14 +18,14 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
     public static final ClusterV2ClusterRegistrationTokenArgs Empty = new ClusterV2ClusterRegistrationTokenArgs();
 
     /**
-     * Annotations for the Cluster V2 (map)
+     * Annotations for the Cluster.
      * 
      */
     @Import(name="annotations")
     private @Nullable Output<Map<String,Object>> annotations;
 
     /**
-     * @return Annotations for the Cluster V2 (map)
+     * @return Annotations for the Cluster.
      * 
      */
     public Optional<Output<Map<String,Object>>> annotations() {
@@ -33,14 +33,14 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
     }
 
     /**
-     * Cluster ID (string)
+     * Cluster ID.
      * 
      */
     @Import(name="clusterId")
     private @Nullable Output<String> clusterId;
 
     /**
-     * @return Cluster ID (string)
+     * @return Cluster ID.
      * 
      */
     public Optional<Output<String>> clusterId() {
@@ -48,14 +48,14 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
     }
 
     /**
-     * Command to execute in a imported k8s cluster (string)
+     * Command to execute in an imported k8s cluster.
      * 
      */
     @Import(name="command")
     private @Nullable Output<String> command;
 
     /**
-     * @return Command to execute in a imported k8s cluster (string)
+     * @return Command to execute in an imported k8s cluster.
      * 
      */
     public Optional<Output<String>> command() {
@@ -63,14 +63,14 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
     }
 
     /**
-     * (Computed) The ID of the resource (string)
+     * (Computed, string) The ID of the resource.
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return (Computed) The ID of the resource (string)
+     * @return (Computed, string) The ID of the resource.
      * 
      */
     public Optional<Output<String>> id() {
@@ -78,14 +78,14 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
     }
 
     /**
-     * Insecure command to execute in a imported k8s cluster (string)
+     * Insecure command to execute in an imported k8s cluster.
      * 
      */
     @Import(name="insecureCommand")
     private @Nullable Output<String> insecureCommand;
 
     /**
-     * @return Insecure command to execute in a imported k8s cluster (string)
+     * @return Insecure command to execute in an imported k8s cluster.
      * 
      */
     public Optional<Output<String>> insecureCommand() {
@@ -93,14 +93,14 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
     }
 
     /**
-     * Insecure node command to execute in a imported k8s cluster (string)
+     * Insecure node command to execute in an imported k8s cluster.
      * 
      */
     @Import(name="insecureNodeCommand")
     private @Nullable Output<String> insecureNodeCommand;
 
     /**
-     * @return Insecure node command to execute in a imported k8s cluster (string)
+     * @return Insecure node command to execute in an imported k8s cluster.
      * 
      */
     public Optional<Output<String>> insecureNodeCommand() {
@@ -108,14 +108,14 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
     }
 
     /**
-     * Insecure windows command to execute in a imported k8s cluster (string)
+     * Insecure windows command to execute in an imported k8s cluster.
      * 
      */
     @Import(name="insecureWindowsNodeCommand")
     private @Nullable Output<String> insecureWindowsNodeCommand;
 
     /**
-     * @return Insecure windows command to execute in a imported k8s cluster (string)
+     * @return Insecure windows command to execute in an imported k8s cluster.
      * 
      */
     public Optional<Output<String>> insecureWindowsNodeCommand() {
@@ -123,14 +123,14 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
     }
 
     /**
-     * Labels for the Cluster V2 (map)
+     * Labels for the Cluster.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,Object>> labels;
 
     /**
-     * @return Labels for the Cluster V2 (map)
+     * @return Labels for the Cluster.
      * 
      */
     public Optional<Output<Map<String,Object>>> labels() {
@@ -138,14 +138,14 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
     }
 
     /**
-     * K8s manifest url to execute with `kubectl` to import an existing k8s cluster (string)
+     * K8s manifest url to execute with `kubectl` to import an existing k8s cluster.
      * 
      */
     @Import(name="manifestUrl")
     private @Nullable Output<String> manifestUrl;
 
     /**
-     * @return K8s manifest url to execute with `kubectl` to import an existing k8s cluster (string)
+     * @return K8s manifest url to execute with `kubectl` to import an existing k8s cluster.
      * 
      */
     public Optional<Output<String>> manifestUrl() {
@@ -153,14 +153,14 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
     }
 
     /**
-     * The name of the Cluster v2 (string)
+     * The name of the cluster.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the Cluster v2 (string)
+     * @return The name of the cluster.
      * 
      */
     public Optional<Output<String>> name() {
@@ -168,14 +168,14 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
     }
 
     /**
-     * Node command to execute in linux nodes for custom k8s cluster (string)
+     * Node command to execute in Linux nodes for custom k8s cluster.
      * 
      */
     @Import(name="nodeCommand")
     private @Nullable Output<String> nodeCommand;
 
     /**
-     * @return Node command to execute in linux nodes for custom k8s cluster (string)
+     * @return Node command to execute in Linux nodes for custom k8s cluster.
      * 
      */
     public Optional<Output<String>> nodeCommand() {
@@ -183,14 +183,14 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
     }
 
     /**
-     * Token for cluster registration token object (string)
+     * Token for cluster registration token object.
      * 
      */
     @Import(name="token")
     private @Nullable Output<String> token;
 
     /**
-     * @return Token for cluster registration token object (string)
+     * @return Token for cluster registration token object.
      * 
      */
     public Optional<Output<String>> token() {
@@ -198,14 +198,14 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
     }
 
     /**
-     * Node command to execute in windows nodes for custom k8s cluster (string)
+     * Node command to execute in Windows nodes for custom k8s cluster.
      * 
      */
     @Import(name="windowsNodeCommand")
     private @Nullable Output<String> windowsNodeCommand;
 
     /**
-     * @return Node command to execute in windows nodes for custom k8s cluster (string)
+     * @return Node command to execute in Windows nodes for custom k8s cluster.
      * 
      */
     public Optional<Output<String>> windowsNodeCommand() {
@@ -249,7 +249,7 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
         }
 
         /**
-         * @param annotations Annotations for the Cluster V2 (map)
+         * @param annotations Annotations for the Cluster.
          * 
          * @return builder
          * 
@@ -260,7 +260,7 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
         }
 
         /**
-         * @param annotations Annotations for the Cluster V2 (map)
+         * @param annotations Annotations for the Cluster.
          * 
          * @return builder
          * 
@@ -270,7 +270,7 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
         }
 
         /**
-         * @param clusterId Cluster ID (string)
+         * @param clusterId Cluster ID.
          * 
          * @return builder
          * 
@@ -281,7 +281,7 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
         }
 
         /**
-         * @param clusterId Cluster ID (string)
+         * @param clusterId Cluster ID.
          * 
          * @return builder
          * 
@@ -291,7 +291,7 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
         }
 
         /**
-         * @param command Command to execute in a imported k8s cluster (string)
+         * @param command Command to execute in an imported k8s cluster.
          * 
          * @return builder
          * 
@@ -302,7 +302,7 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
         }
 
         /**
-         * @param command Command to execute in a imported k8s cluster (string)
+         * @param command Command to execute in an imported k8s cluster.
          * 
          * @return builder
          * 
@@ -312,7 +312,7 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
         }
 
         /**
-         * @param id (Computed) The ID of the resource (string)
+         * @param id (Computed, string) The ID of the resource.
          * 
          * @return builder
          * 
@@ -323,7 +323,7 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
         }
 
         /**
-         * @param id (Computed) The ID of the resource (string)
+         * @param id (Computed, string) The ID of the resource.
          * 
          * @return builder
          * 
@@ -333,7 +333,7 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
         }
 
         /**
-         * @param insecureCommand Insecure command to execute in a imported k8s cluster (string)
+         * @param insecureCommand Insecure command to execute in an imported k8s cluster.
          * 
          * @return builder
          * 
@@ -344,7 +344,7 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
         }
 
         /**
-         * @param insecureCommand Insecure command to execute in a imported k8s cluster (string)
+         * @param insecureCommand Insecure command to execute in an imported k8s cluster.
          * 
          * @return builder
          * 
@@ -354,7 +354,7 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
         }
 
         /**
-         * @param insecureNodeCommand Insecure node command to execute in a imported k8s cluster (string)
+         * @param insecureNodeCommand Insecure node command to execute in an imported k8s cluster.
          * 
          * @return builder
          * 
@@ -365,7 +365,7 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
         }
 
         /**
-         * @param insecureNodeCommand Insecure node command to execute in a imported k8s cluster (string)
+         * @param insecureNodeCommand Insecure node command to execute in an imported k8s cluster.
          * 
          * @return builder
          * 
@@ -375,7 +375,7 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
         }
 
         /**
-         * @param insecureWindowsNodeCommand Insecure windows command to execute in a imported k8s cluster (string)
+         * @param insecureWindowsNodeCommand Insecure windows command to execute in an imported k8s cluster.
          * 
          * @return builder
          * 
@@ -386,7 +386,7 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
         }
 
         /**
-         * @param insecureWindowsNodeCommand Insecure windows command to execute in a imported k8s cluster (string)
+         * @param insecureWindowsNodeCommand Insecure windows command to execute in an imported k8s cluster.
          * 
          * @return builder
          * 
@@ -396,7 +396,7 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
         }
 
         /**
-         * @param labels Labels for the Cluster V2 (map)
+         * @param labels Labels for the Cluster.
          * 
          * @return builder
          * 
@@ -407,7 +407,7 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
         }
 
         /**
-         * @param labels Labels for the Cluster V2 (map)
+         * @param labels Labels for the Cluster.
          * 
          * @return builder
          * 
@@ -417,7 +417,7 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
         }
 
         /**
-         * @param manifestUrl K8s manifest url to execute with `kubectl` to import an existing k8s cluster (string)
+         * @param manifestUrl K8s manifest url to execute with `kubectl` to import an existing k8s cluster.
          * 
          * @return builder
          * 
@@ -428,7 +428,7 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
         }
 
         /**
-         * @param manifestUrl K8s manifest url to execute with `kubectl` to import an existing k8s cluster (string)
+         * @param manifestUrl K8s manifest url to execute with `kubectl` to import an existing k8s cluster.
          * 
          * @return builder
          * 
@@ -438,7 +438,7 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
         }
 
         /**
-         * @param name The name of the Cluster v2 (string)
+         * @param name The name of the cluster.
          * 
          * @return builder
          * 
@@ -449,7 +449,7 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
         }
 
         /**
-         * @param name The name of the Cluster v2 (string)
+         * @param name The name of the cluster.
          * 
          * @return builder
          * 
@@ -459,7 +459,7 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
         }
 
         /**
-         * @param nodeCommand Node command to execute in linux nodes for custom k8s cluster (string)
+         * @param nodeCommand Node command to execute in Linux nodes for custom k8s cluster.
          * 
          * @return builder
          * 
@@ -470,7 +470,7 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
         }
 
         /**
-         * @param nodeCommand Node command to execute in linux nodes for custom k8s cluster (string)
+         * @param nodeCommand Node command to execute in Linux nodes for custom k8s cluster.
          * 
          * @return builder
          * 
@@ -480,7 +480,7 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
         }
 
         /**
-         * @param token Token for cluster registration token object (string)
+         * @param token Token for cluster registration token object.
          * 
          * @return builder
          * 
@@ -491,7 +491,7 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
         }
 
         /**
-         * @param token Token for cluster registration token object (string)
+         * @param token Token for cluster registration token object.
          * 
          * @return builder
          * 
@@ -501,7 +501,7 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
         }
 
         /**
-         * @param windowsNodeCommand Node command to execute in windows nodes for custom k8s cluster (string)
+         * @param windowsNodeCommand Node command to execute in Windows nodes for custom k8s cluster.
          * 
          * @return builder
          * 
@@ -512,7 +512,7 @@ public final class ClusterV2ClusterRegistrationTokenArgs extends com.pulumi.reso
         }
 
         /**
-         * @param windowsNodeCommand Node command to execute in windows nodes for custom k8s cluster (string)
+         * @param windowsNodeCommand Node command to execute in Windows nodes for custom k8s cluster.
          * 
          * @return builder
          * 

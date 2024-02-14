@@ -66,6 +66,21 @@ public final class GlobalRoleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster
+     * 
+     */
+    @Import(name="inheritedClusterRoles")
+    private @Nullable Output<List<String>> inheritedClusterRoles;
+
+    /**
+     * @return Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster
+     * 
+     */
+    public Optional<Output<List<String>>> inheritedClusterRoles() {
+        return Optional.ofNullable(this.inheritedClusterRoles);
+    }
+
+    /**
      * Labels for global role object (map)
      * 
      */
@@ -131,6 +146,7 @@ public final class GlobalRoleState extends com.pulumi.resources.ResourceArgs {
         this.annotations = $.annotations;
         this.builtin = $.builtin;
         this.description = $.description;
+        this.inheritedClusterRoles = $.inheritedClusterRoles;
         this.labels = $.labels;
         this.name = $.name;
         this.newUserDefault = $.newUserDefault;
@@ -216,6 +232,37 @@ public final class GlobalRoleState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param inheritedClusterRoles Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inheritedClusterRoles(@Nullable Output<List<String>> inheritedClusterRoles) {
+            $.inheritedClusterRoles = inheritedClusterRoles;
+            return this;
+        }
+
+        /**
+         * @param inheritedClusterRoles Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inheritedClusterRoles(List<String> inheritedClusterRoles) {
+            return inheritedClusterRoles(Output.of(inheritedClusterRoles));
+        }
+
+        /**
+         * @param inheritedClusterRoles Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inheritedClusterRoles(String... inheritedClusterRoles) {
+            return inheritedClusterRoles(List.of(inheritedClusterRoles));
         }
 
         /**

@@ -30,273 +30,273 @@ import javax.annotation.Nullable;
  * Clusters v2 can be imported using the Rancher Cluster v2 ID, that is in the form &amp;lt;FLEET_NAMESPACE&amp;gt;/&amp;lt;CLUSTER_NAME&amp;gt;
  * 
  * ```sh
- *  $ pulumi import rancher2:index/clusterV2:ClusterV2 foo &amp;lt;FLEET_NAMESPACE&amp;gt;/&amp;lt;CLUSTER_NAME&amp;gt;
+ *  $ pulumi import rancher2:index/clusterV2:ClusterV2 foo &lt;FLEET_NAMESPACE&gt;/&lt;CLUSTER_NAME&gt;
  * ```
  * 
  */
 @ResourceType(type="rancher2:index/clusterV2:ClusterV2")
 public class ClusterV2 extends com.pulumi.resources.CustomResource {
     /**
-     * Optional Agent Env Vars for Rancher agent (list)
+     * Agent env vars is a list of additional environment variables to be appended to the `cattle-cluster-agent` and `fleet-agent` deployment, and the plan for the [system upgrade controller](https://github.com/rancher/system-upgrade-controller) to upgrade nodes.
      * 
      */
     @Export(name="agentEnvVars", refs={List.class,ClusterV2AgentEnvVar.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ClusterV2AgentEnvVar>> agentEnvVars;
 
     /**
-     * @return Optional Agent Env Vars for Rancher agent (list)
+     * @return Agent env vars is a list of additional environment variables to be appended to the `cattle-cluster-agent` and `fleet-agent` deployment, and the plan for the [system upgrade controller](https://github.com/rancher/system-upgrade-controller) to upgrade nodes.
      * 
      */
     public Output<Optional<List<ClusterV2AgentEnvVar>>> agentEnvVars() {
         return Codegen.optional(this.agentEnvVars);
     }
     /**
-     * Annotations for the Cluster V2 (map)
+     * Annotations for the Cluster.
      * 
      */
     @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> annotations;
 
     /**
-     * @return Annotations for the Cluster V2 (map)
+     * @return Annotations for the Cluster.
      * 
      */
     public Output<Map<String,Object>> annotations() {
         return this.annotations;
     }
     /**
-     * Cluster V2 cloud credential secret name (string)
+     * Cloud credential secret name is the secret to be used when a cloud credential secret name is not specified at the machine pool level.
      * 
      */
     @Export(name="cloudCredentialSecretName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cloudCredentialSecretName;
 
     /**
-     * @return Cluster V2 cloud credential secret name (string)
+     * @return Cloud credential secret name is the secret to be used when a cloud credential secret name is not specified at the machine pool level.
      * 
      */
     public Output<Optional<String>> cloudCredentialSecretName() {
         return Codegen.optional(this.cloudCredentialSecretName);
     }
     /**
-     * Optional customization for cluster agent (list)
+     * Cluster agent deployment customization specifies the additional tolerations, new affinity rules, and new resource requirements on the `cattle-cluster-agent` deployment. This argument is available in Rancher v2.7.5 and above.
      * 
      */
     @Export(name="clusterAgentDeploymentCustomizations", refs={List.class,ClusterV2ClusterAgentDeploymentCustomization.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ClusterV2ClusterAgentDeploymentCustomization>> clusterAgentDeploymentCustomizations;
 
     /**
-     * @return Optional customization for cluster agent (list)
+     * @return Cluster agent deployment customization specifies the additional tolerations, new affinity rules, and new resource requirements on the `cattle-cluster-agent` deployment. This argument is available in Rancher v2.7.5 and above.
      * 
      */
     public Output<Optional<List<ClusterV2ClusterAgentDeploymentCustomization>>> clusterAgentDeploymentCustomizations() {
         return Codegen.optional(this.clusterAgentDeploymentCustomizations);
     }
     /**
-     * (Computed/Sensitive) Cluster Registration Token generated for the cluster v2 (list maxitems:1)
+     * (Computed, sensitive, list, max length: 1) Cluster Registration Token generated for the cluster.
      * 
      */
     @Export(name="clusterRegistrationToken", refs={ClusterV2ClusterRegistrationToken.class}, tree="[0]")
     private Output<ClusterV2ClusterRegistrationToken> clusterRegistrationToken;
 
     /**
-     * @return (Computed/Sensitive) Cluster Registration Token generated for the cluster v2 (list maxitems:1)
+     * @return (Computed, sensitive, list, max length: 1) Cluster Registration Token generated for the cluster.
      * 
      */
     public Output<ClusterV2ClusterRegistrationToken> clusterRegistrationToken() {
         return this.clusterRegistrationToken;
     }
     /**
-     * (Computed) Cluster v1 id for cluster v2. (e.g to be used with `rancher2_sync`) (string)
+     * (Computed, string) Cluster v1 id for cluster v2. (e.g. to be used with `rancher2_sync`).
      * 
      */
     @Export(name="clusterV1Id", refs={String.class}, tree="[0]")
     private Output<String> clusterV1Id;
 
     /**
-     * @return (Computed) Cluster v1 id for cluster v2. (e.g to be used with `rancher2_sync`) (string)
+     * @return (Computed, string) Cluster v1 id for cluster v2. (e.g. to be used with `rancher2_sync`).
      * 
      */
     public Output<String> clusterV1Id() {
         return this.clusterV1Id;
     }
     /**
-     * Cluster V2 default cluster role for project members (string)
+     * Default cluster role for project members.
      * 
      */
     @Export(name="defaultClusterRoleForProjectMembers", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> defaultClusterRoleForProjectMembers;
 
     /**
-     * @return Cluster V2 default cluster role for project members (string)
+     * @return Default cluster role for project members.
      * 
      */
     public Output<Optional<String>> defaultClusterRoleForProjectMembers() {
         return Codegen.optional(this.defaultClusterRoleForProjectMembers);
     }
     /**
-     * Cluster V2 default pod security admission configuration template name (string)
+     * The name of the pre-defined pod security admission configuration template to be applied to the cluster. Rancher admins (or those with the right permissions) can create, manage, and edit those templates. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates). The argument is available in Rancher v2.7.2 and above.
      * 
      */
     @Export(name="defaultPodSecurityAdmissionConfigurationTemplateName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> defaultPodSecurityAdmissionConfigurationTemplateName;
 
     /**
-     * @return Cluster V2 default pod security admission configuration template name (string)
+     * @return The name of the pre-defined pod security admission configuration template to be applied to the cluster. Rancher admins (or those with the right permissions) can create, manage, and edit those templates. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates). The argument is available in Rancher v2.7.2 and above.
      * 
      */
     public Output<Optional<String>> defaultPodSecurityAdmissionConfigurationTemplateName() {
         return Codegen.optional(this.defaultPodSecurityAdmissionConfigurationTemplateName);
     }
     /**
-     * Cluster V2 default pod security policy template name (string)
+     * Default pod security policy template name specifies the default PSP for the cluster. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies).
      * 
      */
     @Export(name="defaultPodSecurityPolicyTemplateName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> defaultPodSecurityPolicyTemplateName;
 
     /**
-     * @return Cluster V2 default pod security policy template name (string)
+     * @return Default pod security policy template name specifies the default PSP for the cluster. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies).
      * 
      */
     public Output<Optional<String>> defaultPodSecurityPolicyTemplateName() {
         return Codegen.optional(this.defaultPodSecurityPolicyTemplateName);
     }
     /**
-     * Enable k8s network policy at Cluster V2 (bool)
+     * Enable k8s network policy on the cluster.
      * 
      */
     @Export(name="enableNetworkPolicy", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableNetworkPolicy;
 
     /**
-     * @return Enable k8s network policy at Cluster V2 (bool)
+     * @return Enable k8s network policy on the cluster.
      * 
      */
     public Output<Boolean> enableNetworkPolicy() {
         return this.enableNetworkPolicy;
     }
     /**
-     * Optional customization for fleet agent (list)
+     * Fleet agent deployment customization specifies the additional tolerations, new affinity rules, and new resource requirements on the `fleet-agent` deployment. The argument is available in Rancher v2.7.5 and above.
      * 
      */
     @Export(name="fleetAgentDeploymentCustomizations", refs={List.class,ClusterV2FleetAgentDeploymentCustomization.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ClusterV2FleetAgentDeploymentCustomization>> fleetAgentDeploymentCustomizations;
 
     /**
-     * @return Optional customization for fleet agent (list)
+     * @return Fleet agent deployment customization specifies the additional tolerations, new affinity rules, and new resource requirements on the `fleet-agent` deployment. The argument is available in Rancher v2.7.5 and above.
      * 
      */
     public Output<Optional<List<ClusterV2FleetAgentDeploymentCustomization>>> fleetAgentDeploymentCustomizations() {
         return Codegen.optional(this.fleetAgentDeploymentCustomizations);
     }
     /**
-     * The fleet namespace of the Cluster v2. Default: `\&#34;fleet-default\&#34;` (string)
+     * Fleet namespace is the namespace where the cluster is to create in the local cluster. It is recommended to leave it as the default value.
      * 
      */
     @Export(name="fleetNamespace", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> fleetNamespace;
 
     /**
-     * @return The fleet namespace of the Cluster v2. Default: `\&#34;fleet-default\&#34;` (string)
+     * @return Fleet namespace is the namespace where the cluster is to create in the local cluster. It is recommended to leave it as the default value.
      * 
      */
     public Output<Optional<String>> fleetNamespace() {
         return Codegen.optional(this.fleetNamespace);
     }
     /**
-     * (Computed/Sensitive) Kube Config generated for the cluster v2. Note: When the cluster has `local_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected` (string)
+     * (Computed/Sensitive) Kube Config generated for the cluster. Note: When the cluster has `local_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected`.
      * 
      */
     @Export(name="kubeConfig", refs={String.class}, tree="[0]")
     private Output<String> kubeConfig;
 
     /**
-     * @return (Computed/Sensitive) Kube Config generated for the cluster v2. Note: When the cluster has `local_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected` (string)
+     * @return (Computed/Sensitive) Kube Config generated for the cluster. Note: When the cluster has `local_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected`.
      * 
      */
     public Output<String> kubeConfig() {
         return this.kubeConfig;
     }
     /**
-     * The kubernetes version of the Cluster v2 (list maxitems:1)
+     * The RKE2 or K3s version for the cluster.
      * 
      */
     @Export(name="kubernetesVersion", refs={String.class}, tree="[0]")
     private Output<String> kubernetesVersion;
 
     /**
-     * @return The kubernetes version of the Cluster v2 (list maxitems:1)
+     * @return The RKE2 or K3s version for the cluster.
      * 
      */
     public Output<String> kubernetesVersion() {
         return this.kubernetesVersion;
     }
     /**
-     * Labels for the Cluster V2 (map)
+     * Labels for the Cluster.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
-     * @return Labels for the Cluster V2 (map)
+     * @return Labels for the Cluster.
      * 
      */
     public Output<Map<String,Object>> labels() {
         return this.labels;
     }
     /**
-     * Cluster V2 local auth endpoint (list maxitems:1)
+     * Local auth endpoint configures the Authorized Cluster Endpoint (ACE) which can be used to directly access the Kubernetes API server, without requiring communication through Rancher. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters).
      * 
      */
     @Export(name="localAuthEndpoint", refs={ClusterV2LocalAuthEndpoint.class}, tree="[0]")
     private Output</* @Nullable */ ClusterV2LocalAuthEndpoint> localAuthEndpoint;
 
     /**
-     * @return Cluster V2 local auth endpoint (list maxitems:1)
+     * @return Local auth endpoint configures the Authorized Cluster Endpoint (ACE) which can be used to directly access the Kubernetes API server, without requiring communication through Rancher. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters).
      * 
      */
     public Output<Optional<ClusterV2LocalAuthEndpoint>> localAuthEndpoint() {
         return Codegen.optional(this.localAuthEndpoint);
     }
     /**
-     * The name of the Cluster v2 (string)
+     * The name of the cluster.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the Cluster v2 (string)
+     * @return The name of the cluster.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * (Computed) Cluster v2 k8s resource version (string)
+     * (Computed, string) Cluster&#39;s k8s resource version.
      * 
      */
     @Export(name="resourceVersion", refs={String.class}, tree="[0]")
     private Output<String> resourceVersion;
 
     /**
-     * @return (Computed) Cluster v2 k8s resource version (string)
+     * @return (Computed, string) Cluster&#39;s k8s resource version.
      * 
      */
     public Output<String> resourceVersion() {
         return this.resourceVersion;
     }
     /**
-     * The RKE configuration for `k3s` and `rke2` Clusters v2. (list maxitems:1)
+     * The RKE configuration for the cluster.
      * 
      */
     @Export(name="rkeConfig", refs={ClusterV2RkeConfig.class}, tree="[0]")
     private Output<ClusterV2RkeConfig> rkeConfig;
 
     /**
-     * @return The RKE configuration for `k3s` and `rke2` Clusters v2. (list maxitems:1)
+     * @return The RKE configuration for the cluster.
      * 
      */
     public Output<ClusterV2RkeConfig> rkeConfig() {

@@ -54,6 +54,41 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Create an App from a Helm Chart using a different registry
+ * 
+ * The `system_default_registry` argument can override the global value at App installation. If argument is not provided, the global value for System Default Registry will be used instead.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.AppV2;
+ * import com.pulumi.rancher2.AppV2Args;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var cisBenchmark = new AppV2(&#34;cisBenchmark&#34;, AppV2Args.builder()        
+ *             .chartName(&#34;rancher-cis-benchmark&#34;)
+ *             .clusterId(&#34;&lt;CLUSTER_ID&gt;&#34;)
+ *             .namespace(&#34;cis-operator-system&#34;)
+ *             .repoName(&#34;rancher-charts&#34;)
+ *             .systemDefaultRegistry(&#34;&lt;some.dns.here&gt;:&lt;PORT&gt;&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -281,14 +316,14 @@ public class AppV2 extends com.pulumi.resources.CustomResource {
         return this.repoName;
     }
     /**
-     * (Computed) The system default registry of the app (string)
+     * System default registry providing images for app deployment (string)
      * 
      */
     @Export(name="systemDefaultRegistry", refs={String.class}, tree="[0]")
     private Output<String> systemDefaultRegistry;
 
     /**
-     * @return (Computed) The system default registry of the app (string)
+     * @return System default registry providing images for app deployment (string)
      * 
      */
     public Output<String> systemDefaultRegistry() {

@@ -21,27 +21,27 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterV2RkeConfigMachinePool {
     /**
-     * @return Annotations for the Cluster V2 (map)
+     * @return Annotations for the Cluster.
      * 
      */
     private @Nullable Map<String,Object> annotations;
     /**
-     * @return Cluster V2 cloud credential secret name (string)
+     * @return Cloud credential secret name is the secret to be used when a cloud credential secret name is not specified at the machine pool level.
      * 
      */
     private @Nullable String cloudCredentialSecretName;
     /**
-     * @return Machine pool control plane role? (bool)
+     * @return Machine pool control plane role?
      * 
      */
     private @Nullable Boolean controlPlaneRole;
     /**
-     * @return Machine Pool Drain Before Delete? (bool)
+     * @return Machine Pool Drain Before Delete?
      * 
      */
     private @Nullable Boolean drainBeforeDelete;
     /**
-     * @return Machine pool etcd role? (bool)
+     * @return Machine pool etcd role?
      * 
      */
     private @Nullable Boolean etcdRole;
@@ -51,107 +51,107 @@ public final class ClusterV2RkeConfigMachinePool {
      */
     private @Nullable Integer hostnameLengthLimit;
     /**
-     * @return Labels for the Cluster V2 (map)
+     * @return Labels for the Cluster.
      * 
      */
     private @Nullable Map<String,Object> labels;
     /**
-     * @return Machine pool node config (list)
+     * @return Machine pool node config.
      * 
      */
     private ClusterV2RkeConfigMachinePoolMachineConfig machineConfig;
     /**
-     * @return Labels for Machine pool nodes (map)
+     * @return Labels for Machine pool nodes.
      * 
      */
     private @Nullable Map<String,Object> machineLabels;
     /**
-     * @return Max unhealthy nodes for automated replacement to be allowed (string)
+     * @return Max unhealthy nodes for automated replacement to be allowed.
      * 
      */
     private @Nullable String maxUnhealthy;
     /**
-     * @return The name of the Cluster v2 (string)
+     * @return The name of the cluster.
      * 
      */
     private String name;
     /**
-     * @return Seconds a machine has to drain before deletion (int)
+     * @return Seconds a machine has to drain before deletion.
      * 
      */
     private @Nullable Integer nodeDrainTimeout;
     /**
-     * @return Seconds a new node has to become active before it is replaced (int)
+     * @return Seconds a new node has to become active before it is replaced.
      * 
      */
     private @Nullable Integer nodeStartupTimeoutSeconds;
     /**
-     * @return Machine pool paused? (bool)
+     * @return Machine pool paused?
      * 
      */
     private @Nullable Boolean paused;
     /**
-     * @return Machine pool quantity (int)
+     * @return Machine pool quantity.
      * 
      */
     private @Nullable Integer quantity;
     /**
-     * @return Machine pool rolling update (List maxitems:1)
+     * @return Machine pool rolling update.
      * 
      */
     private @Nullable ClusterV2RkeConfigMachinePoolRollingUpdate rollingUpdate;
     /**
-     * @return Machine pool taints (list)
+     * @return Machine pool taints.
      * 
      */
     private @Nullable List<ClusterV2RkeConfigMachinePoolTaint> taints;
     /**
-     * @return Seconds an unhealthy node has to become active before it is replaced (int)
+     * @return Seconds an unhealthy node has to become active before it is replaced.
      * 
      */
     private @Nullable Integer unhealthyNodeTimeoutSeconds;
     /**
-     * @return Range of unhealthy nodes for automated replacement to be allowed (string)
+     * @return Range of unhealthy nodes for automated replacement to be allowed.
      * 
      */
     private @Nullable String unhealthyRange;
     /**
-     * @return Machine pool worker role? (bool)
+     * @return Machine pool worker role?
      * 
      */
     private @Nullable Boolean workerRole;
 
     private ClusterV2RkeConfigMachinePool() {}
     /**
-     * @return Annotations for the Cluster V2 (map)
+     * @return Annotations for the Cluster.
      * 
      */
     public Map<String,Object> annotations() {
         return this.annotations == null ? Map.of() : this.annotations;
     }
     /**
-     * @return Cluster V2 cloud credential secret name (string)
+     * @return Cloud credential secret name is the secret to be used when a cloud credential secret name is not specified at the machine pool level.
      * 
      */
     public Optional<String> cloudCredentialSecretName() {
         return Optional.ofNullable(this.cloudCredentialSecretName);
     }
     /**
-     * @return Machine pool control plane role? (bool)
+     * @return Machine pool control plane role?
      * 
      */
     public Optional<Boolean> controlPlaneRole() {
         return Optional.ofNullable(this.controlPlaneRole);
     }
     /**
-     * @return Machine Pool Drain Before Delete? (bool)
+     * @return Machine Pool Drain Before Delete?
      * 
      */
     public Optional<Boolean> drainBeforeDelete() {
         return Optional.ofNullable(this.drainBeforeDelete);
     }
     /**
-     * @return Machine pool etcd role? (bool)
+     * @return Machine pool etcd role?
      * 
      */
     public Optional<Boolean> etcdRole() {
@@ -165,98 +165,98 @@ public final class ClusterV2RkeConfigMachinePool {
         return Optional.ofNullable(this.hostnameLengthLimit);
     }
     /**
-     * @return Labels for the Cluster V2 (map)
+     * @return Labels for the Cluster.
      * 
      */
     public Map<String,Object> labels() {
         return this.labels == null ? Map.of() : this.labels;
     }
     /**
-     * @return Machine pool node config (list)
+     * @return Machine pool node config.
      * 
      */
     public ClusterV2RkeConfigMachinePoolMachineConfig machineConfig() {
         return this.machineConfig;
     }
     /**
-     * @return Labels for Machine pool nodes (map)
+     * @return Labels for Machine pool nodes.
      * 
      */
     public Map<String,Object> machineLabels() {
         return this.machineLabels == null ? Map.of() : this.machineLabels;
     }
     /**
-     * @return Max unhealthy nodes for automated replacement to be allowed (string)
+     * @return Max unhealthy nodes for automated replacement to be allowed.
      * 
      */
     public Optional<String> maxUnhealthy() {
         return Optional.ofNullable(this.maxUnhealthy);
     }
     /**
-     * @return The name of the Cluster v2 (string)
+     * @return The name of the cluster.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return Seconds a machine has to drain before deletion (int)
+     * @return Seconds a machine has to drain before deletion.
      * 
      */
     public Optional<Integer> nodeDrainTimeout() {
         return Optional.ofNullable(this.nodeDrainTimeout);
     }
     /**
-     * @return Seconds a new node has to become active before it is replaced (int)
+     * @return Seconds a new node has to become active before it is replaced.
      * 
      */
     public Optional<Integer> nodeStartupTimeoutSeconds() {
         return Optional.ofNullable(this.nodeStartupTimeoutSeconds);
     }
     /**
-     * @return Machine pool paused? (bool)
+     * @return Machine pool paused?
      * 
      */
     public Optional<Boolean> paused() {
         return Optional.ofNullable(this.paused);
     }
     /**
-     * @return Machine pool quantity (int)
+     * @return Machine pool quantity.
      * 
      */
     public Optional<Integer> quantity() {
         return Optional.ofNullable(this.quantity);
     }
     /**
-     * @return Machine pool rolling update (List maxitems:1)
+     * @return Machine pool rolling update.
      * 
      */
     public Optional<ClusterV2RkeConfigMachinePoolRollingUpdate> rollingUpdate() {
         return Optional.ofNullable(this.rollingUpdate);
     }
     /**
-     * @return Machine pool taints (list)
+     * @return Machine pool taints.
      * 
      */
     public List<ClusterV2RkeConfigMachinePoolTaint> taints() {
         return this.taints == null ? List.of() : this.taints;
     }
     /**
-     * @return Seconds an unhealthy node has to become active before it is replaced (int)
+     * @return Seconds an unhealthy node has to become active before it is replaced.
      * 
      */
     public Optional<Integer> unhealthyNodeTimeoutSeconds() {
         return Optional.ofNullable(this.unhealthyNodeTimeoutSeconds);
     }
     /**
-     * @return Range of unhealthy nodes for automated replacement to be allowed (string)
+     * @return Range of unhealthy nodes for automated replacement to be allowed.
      * 
      */
     public Optional<String> unhealthyRange() {
         return Optional.ofNullable(this.unhealthyRange);
     }
     /**
-     * @return Machine pool worker role? (bool)
+     * @return Machine pool worker role?
      * 
      */
     public Optional<Boolean> workerRole() {

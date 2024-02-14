@@ -83,6 +83,11 @@ public final class MachineConfigV2VsphereConfig {
      */
     private @Nullable String folder;
     /**
+     * @return Duration in seconds before the graceful shutdown of the VM times out and the VM is destroyed. A force destroy will be performed when the value is zero (string)
+     * 
+     */
+    private @Nullable String gracefulShutdownTimeout;
+    /**
      * @return vSphere compute resource where the docker VM will be instantiated. This can be omitted if using a cluster with DRS (string)
      * 
      */
@@ -268,6 +273,13 @@ public final class MachineConfigV2VsphereConfig {
         return Optional.ofNullable(this.folder);
     }
     /**
+     * @return Duration in seconds before the graceful shutdown of the VM times out and the VM is destroyed. A force destroy will be performed when the value is zero (string)
+     * 
+     */
+    public Optional<String> gracefulShutdownTimeout() {
+        return Optional.ofNullable(this.gracefulShutdownTimeout);
+    }
+    /**
      * @return vSphere compute resource where the docker VM will be instantiated. This can be omitted if using a cluster with DRS (string)
      * 
      */
@@ -410,6 +422,7 @@ public final class MachineConfigV2VsphereConfig {
         private @Nullable String datastoreCluster;
         private @Nullable String diskSize;
         private @Nullable String folder;
+        private @Nullable String gracefulShutdownTimeout;
         private @Nullable String hostsystem;
         private @Nullable String memorySize;
         private @Nullable List<String> networks;
@@ -444,6 +457,7 @@ public final class MachineConfigV2VsphereConfig {
     	      this.datastoreCluster = defaults.datastoreCluster;
     	      this.diskSize = defaults.diskSize;
     	      this.folder = defaults.folder;
+    	      this.gracefulShutdownTimeout = defaults.gracefulShutdownTimeout;
     	      this.hostsystem = defaults.hostsystem;
     	      this.memorySize = defaults.memorySize;
     	      this.networks = defaults.networks;
@@ -551,6 +565,12 @@ public final class MachineConfigV2VsphereConfig {
         public Builder folder(@Nullable String folder) {
 
             this.folder = folder;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gracefulShutdownTimeout(@Nullable String gracefulShutdownTimeout) {
+
+            this.gracefulShutdownTimeout = gracefulShutdownTimeout;
             return this;
         }
         @CustomType.Setter
@@ -680,6 +700,7 @@ public final class MachineConfigV2VsphereConfig {
             _resultValue.datastoreCluster = datastoreCluster;
             _resultValue.diskSize = diskSize;
             _resultValue.folder = folder;
+            _resultValue.gracefulShutdownTimeout = gracefulShutdownTimeout;
             _resultValue.hostsystem = hostsystem;
             _resultValue.memorySize = memorySize;
             _resultValue.networks = networks;

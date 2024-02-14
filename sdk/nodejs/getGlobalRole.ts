@@ -24,6 +24,7 @@ export function getGlobalRole(args: GetGlobalRoleArgs, opts?: pulumi.InvokeOptio
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getGlobalRole:getGlobalRole", {
+        "inheritedClusterRoles": args.inheritedClusterRoles,
         "name": args.name,
     }, opts);
 }
@@ -32,6 +33,10 @@ export function getGlobalRole(args: GetGlobalRoleArgs, opts?: pulumi.InvokeOptio
  * A collection of arguments for invoking getGlobalRole.
  */
 export interface GetGlobalRoleArgs {
+    /**
+     * (Optional) Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
+     */
+    inheritedClusterRoles?: string[];
     /**
      * The name of the Global Role (string)
      */
@@ -58,6 +63,10 @@ export interface GetGlobalRoleResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * (Optional) Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
+     */
+    readonly inheritedClusterRoles?: string[];
     /**
      * (Computed) Labels for global role object (map)
      */
@@ -94,6 +103,10 @@ export function getGlobalRoleOutput(args: GetGlobalRoleOutputArgs, opts?: pulumi
  * A collection of arguments for invoking getGlobalRole.
  */
 export interface GetGlobalRoleOutputArgs {
+    /**
+     * (Optional) Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
+     */
+    inheritedClusterRoles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of the Global Role (string)
      */

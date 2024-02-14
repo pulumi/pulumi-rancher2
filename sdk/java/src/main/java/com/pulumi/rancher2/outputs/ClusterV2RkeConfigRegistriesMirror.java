@@ -15,38 +15,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterV2RkeConfigRegistriesMirror {
     /**
-     * @return Registry mirror endpoints (List)
+     * @return Registry mirror endpoints.
      * 
      */
     private @Nullable List<String> endpoints;
     /**
-     * @return Registry hostname (string)
+     * @return Registry hostname.
      * 
      */
     private String hostname;
     /**
-     * @return Registry mirror rewrites (map)
+     * @return Registry mirror rewrites.
      * 
      */
     private @Nullable Map<String,Object> rewrites;
 
     private ClusterV2RkeConfigRegistriesMirror() {}
     /**
-     * @return Registry mirror endpoints (List)
+     * @return Registry mirror endpoints.
      * 
      */
     public List<String> endpoints() {
         return this.endpoints == null ? List.of() : this.endpoints;
     }
     /**
-     * @return Registry hostname (string)
+     * @return Registry hostname.
      * 
      */
     public String hostname() {
         return this.hostname;
     }
     /**
-     * @return Registry mirror rewrites (map)
+     * @return Registry mirror rewrites.
      * 
      */
     public Map<String,Object> rewrites() {

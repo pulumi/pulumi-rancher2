@@ -19,14 +19,14 @@ public final class ClusterV2RkeConfigRotateCertificatesArgs extends com.pulumi.r
     public static final ClusterV2RkeConfigRotateCertificatesArgs Empty = new ClusterV2RkeConfigRotateCertificatesArgs();
 
     /**
-     * ETCD snapshot desired generation (int)
+     * ETCD snapshot desired generation.
      * 
      */
     @Import(name="generation", required=true)
     private Output<Integer> generation;
 
     /**
-     * @return ETCD snapshot desired generation (int)
+     * @return ETCD snapshot desired generation.
      * 
      */
     public Output<Integer> generation() {
@@ -34,14 +34,14 @@ public final class ClusterV2RkeConfigRotateCertificatesArgs extends com.pulumi.r
     }
 
     /**
-     * Service certificates to rotate with this generation (string)
+     * Service certificates to rotate with this generation.
      * 
      */
     @Import(name="services")
     private @Nullable Output<List<String>> services;
 
     /**
-     * @return Service certificates to rotate with this generation (string)
+     * @return Service certificates to rotate with this generation.
      * 
      */
     public Optional<Output<List<String>>> services() {
@@ -74,7 +74,7 @@ public final class ClusterV2RkeConfigRotateCertificatesArgs extends com.pulumi.r
         }
 
         /**
-         * @param generation ETCD snapshot desired generation (int)
+         * @param generation ETCD snapshot desired generation.
          * 
          * @return builder
          * 
@@ -85,7 +85,7 @@ public final class ClusterV2RkeConfigRotateCertificatesArgs extends com.pulumi.r
         }
 
         /**
-         * @param generation ETCD snapshot desired generation (int)
+         * @param generation ETCD snapshot desired generation.
          * 
          * @return builder
          * 
@@ -95,7 +95,7 @@ public final class ClusterV2RkeConfigRotateCertificatesArgs extends com.pulumi.r
         }
 
         /**
-         * @param services Service certificates to rotate with this generation (string)
+         * @param services Service certificates to rotate with this generation.
          * 
          * @return builder
          * 
@@ -106,7 +106,7 @@ public final class ClusterV2RkeConfigRotateCertificatesArgs extends com.pulumi.r
         }
 
         /**
-         * @param services Service certificates to rotate with this generation (string)
+         * @param services Service certificates to rotate with this generation.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class ClusterV2RkeConfigRotateCertificatesArgs extends com.pulumi.r
         }
 
         /**
-         * @param services Service certificates to rotate with this generation (string)
+         * @param services Service certificates to rotate with this generation.
          * 
          * @return builder
          * 

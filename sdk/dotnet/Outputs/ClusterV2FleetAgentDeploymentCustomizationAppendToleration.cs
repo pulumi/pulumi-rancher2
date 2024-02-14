@@ -14,23 +14,23 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterV2FleetAgentDeploymentCustomizationAppendToleration
     {
         /// <summary>
-        /// The taint effect. Default: `\"NoExecute\"` (string)
+        /// The taint effect. Default: `\"NoExecute\"`.
         /// </summary>
         public readonly string? Effect;
         /// <summary>
-        /// Machine selector label match expressions key (string)
+        /// Key is the name of the key of the item to retrieve.
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// Machine selector label match expressions operator (string)
+        /// Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
         /// </summary>
         public readonly string? Operator;
         /// <summary>
-        /// The number of seconds a pod will stay bound to a node with a matching taint (int)
+        /// The number of seconds a pod will stay bound to a node with a matching taint.
         /// </summary>
         public readonly int? Seconds;
         /// <summary>
-        /// The taint value (string)
+        /// The taint value.
         /// </summary>
         public readonly string? Value;
 

@@ -22,7 +22,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? Imported;
         /// <summary>
-        /// The AWS kms key to use (string)
+        /// The AWS kms label ARN to use (string, e.g. arn:aws:kms:&lt;ZONE&gt;:&lt;123456789100&gt;:alias/&lt;NAME&gt;)
         /// </summary>
         public readonly string? KmsKey;
         /// <summary>

@@ -15,26 +15,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector {
     /**
-     * @return Machine selector label match expressions (list)
+     * @return Match expressions is a list of label selector requirements. The requirements are ANDed.
      * 
      */
     private @Nullable List<ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression> matchExpressions;
     /**
-     * @return Machine selector label match labels (map)
+     * @return Machine selector label is a map of {key,value} pairs, the requirements are ANDed.
      * 
      */
     private @Nullable Map<String,Object> matchLabels;
 
     private ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector() {}
     /**
-     * @return Machine selector label match expressions (list)
+     * @return Match expressions is a list of label selector requirements. The requirements are ANDed.
      * 
      */
     public List<ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression> matchExpressions() {
         return this.matchExpressions == null ? List.of() : this.matchExpressions;
     }
     /**
-     * @return Machine selector label match labels (map)
+     * @return Machine selector label is a map of {key,value} pairs, the requirements are ANDed.
      * 
      */
     public Map<String,Object> matchLabels() {

@@ -20,8 +20,8 @@ import com.pulumi.rancher2.inputs.GetCloudCredentialArgs;
 import com.pulumi.rancher2.inputs.GetCloudCredentialPlainArgs;
 import com.pulumi.rancher2.inputs.GetClusterAlertGroupArgs;
 import com.pulumi.rancher2.inputs.GetClusterAlertGroupPlainArgs;
-import com.pulumi.rancher2.inputs.GetClusterAlterRuleArgs;
-import com.pulumi.rancher2.inputs.GetClusterAlterRulePlainArgs;
+import com.pulumi.rancher2.inputs.GetClusterAlertRuleArgs;
+import com.pulumi.rancher2.inputs.GetClusterAlertRulePlainArgs;
 import com.pulumi.rancher2.inputs.GetClusterArgs;
 import com.pulumi.rancher2.inputs.GetClusterDriverArgs;
 import com.pulumi.rancher2.inputs.GetClusterDriverPlainArgs;
@@ -68,8 +68,6 @@ import com.pulumi.rancher2.inputs.GetProjectRoleTemplateBindingArgs;
 import com.pulumi.rancher2.inputs.GetProjectRoleTemplateBindingPlainArgs;
 import com.pulumi.rancher2.inputs.GetRegistryArgs;
 import com.pulumi.rancher2.inputs.GetRegistryPlainArgs;
-import com.pulumi.rancher2.inputs.GetRoleTempalteArgs;
-import com.pulumi.rancher2.inputs.GetRoleTempaltePlainArgs;
 import com.pulumi.rancher2.inputs.GetRoleTemplateArgs;
 import com.pulumi.rancher2.inputs.GetRoleTemplatePlainArgs;
 import com.pulumi.rancher2.inputs.GetSecretArgs;
@@ -88,7 +86,7 @@ import com.pulumi.rancher2.outputs.GetCatalogV2Result;
 import com.pulumi.rancher2.outputs.GetCertificateResult;
 import com.pulumi.rancher2.outputs.GetCloudCredentialResult;
 import com.pulumi.rancher2.outputs.GetClusterAlertGroupResult;
-import com.pulumi.rancher2.outputs.GetClusterAlterRuleResult;
+import com.pulumi.rancher2.outputs.GetClusterAlertRuleResult;
 import com.pulumi.rancher2.outputs.GetClusterDriverResult;
 import com.pulumi.rancher2.outputs.GetClusterResult;
 import com.pulumi.rancher2.outputs.GetClusterRoleTemplateBindingResult;
@@ -112,7 +110,6 @@ import com.pulumi.rancher2.outputs.GetProjectAlertRuleResult;
 import com.pulumi.rancher2.outputs.GetProjectResult;
 import com.pulumi.rancher2.outputs.GetProjectRoleTemplateBindingResult;
 import com.pulumi.rancher2.outputs.GetRegistryResult;
-import com.pulumi.rancher2.outputs.GetRoleTempalteResult;
 import com.pulumi.rancher2.outputs.GetRoleTemplateResult;
 import com.pulumi.rancher2.outputs.GetSecretResult;
 import com.pulumi.rancher2.outputs.GetSecretV2Result;
@@ -1201,7 +1198,7 @@ public final class Rancher2Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
-     * import com.pulumi.rancher2.inputs.GetClusterAlterRuleArgs;
+     * import com.pulumi.rancher2.inputs.GetClusterAlertRuleArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1215,7 +1212,7 @@ public final class Rancher2Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = Rancher2Functions.getClusterAlterRule(GetClusterAlterRuleArgs.builder()
+     *         final var foo = Rancher2Functions.getClusterAlertRule(GetClusterAlertRuleArgs.builder()
      *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
      *             .name(&#34;&lt;cluster_alert_rule_name&gt;&#34;)
      *             .build());
@@ -1225,8 +1222,8 @@ public final class Rancher2Functions {
      * ```
      * 
      */
-    public static Output<GetClusterAlterRuleResult> getClusterAlterRule(GetClusterAlterRuleArgs args) {
-        return getClusterAlterRule(args, InvokeOptions.Empty);
+    public static Output<GetClusterAlertRuleResult> getClusterAlertRule(GetClusterAlertRuleArgs args) {
+        return getClusterAlertRule(args, InvokeOptions.Empty);
     }
     /**
      * Use this data source to retrieve information about a Rancher v2 cluster alert rule.
@@ -1239,7 +1236,7 @@ public final class Rancher2Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
-     * import com.pulumi.rancher2.inputs.GetClusterAlterRuleArgs;
+     * import com.pulumi.rancher2.inputs.GetClusterAlertRuleArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1253,7 +1250,7 @@ public final class Rancher2Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = Rancher2Functions.getClusterAlterRule(GetClusterAlterRuleArgs.builder()
+     *         final var foo = Rancher2Functions.getClusterAlertRule(GetClusterAlertRuleArgs.builder()
      *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
      *             .name(&#34;&lt;cluster_alert_rule_name&gt;&#34;)
      *             .build());
@@ -1263,8 +1260,8 @@ public final class Rancher2Functions {
      * ```
      * 
      */
-    public static CompletableFuture<GetClusterAlterRuleResult> getClusterAlterRulePlain(GetClusterAlterRulePlainArgs args) {
-        return getClusterAlterRulePlain(args, InvokeOptions.Empty);
+    public static CompletableFuture<GetClusterAlertRuleResult> getClusterAlertRulePlain(GetClusterAlertRulePlainArgs args) {
+        return getClusterAlertRulePlain(args, InvokeOptions.Empty);
     }
     /**
      * Use this data source to retrieve information about a Rancher v2 cluster alert rule.
@@ -1277,7 +1274,7 @@ public final class Rancher2Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
-     * import com.pulumi.rancher2.inputs.GetClusterAlterRuleArgs;
+     * import com.pulumi.rancher2.inputs.GetClusterAlertRuleArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1291,7 +1288,7 @@ public final class Rancher2Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = Rancher2Functions.getClusterAlterRule(GetClusterAlterRuleArgs.builder()
+     *         final var foo = Rancher2Functions.getClusterAlertRule(GetClusterAlertRuleArgs.builder()
      *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
      *             .name(&#34;&lt;cluster_alert_rule_name&gt;&#34;)
      *             .build());
@@ -1301,8 +1298,8 @@ public final class Rancher2Functions {
      * ```
      * 
      */
-    public static Output<GetClusterAlterRuleResult> getClusterAlterRule(GetClusterAlterRuleArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("rancher2:index/getClusterAlterRule:getClusterAlterRule", TypeShape.of(GetClusterAlterRuleResult.class), args, Utilities.withVersion(options));
+    public static Output<GetClusterAlertRuleResult> getClusterAlertRule(GetClusterAlertRuleArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("rancher2:index/getClusterAlertRule:getClusterAlertRule", TypeShape.of(GetClusterAlertRuleResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to retrieve information about a Rancher v2 cluster alert rule.
@@ -1315,7 +1312,7 @@ public final class Rancher2Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
-     * import com.pulumi.rancher2.inputs.GetClusterAlterRuleArgs;
+     * import com.pulumi.rancher2.inputs.GetClusterAlertRuleArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1329,7 +1326,7 @@ public final class Rancher2Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = Rancher2Functions.getClusterAlterRule(GetClusterAlterRuleArgs.builder()
+     *         final var foo = Rancher2Functions.getClusterAlertRule(GetClusterAlertRuleArgs.builder()
      *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
      *             .name(&#34;&lt;cluster_alert_rule_name&gt;&#34;)
      *             .build());
@@ -1339,8 +1336,8 @@ public final class Rancher2Functions {
      * ```
      * 
      */
-    public static CompletableFuture<GetClusterAlterRuleResult> getClusterAlterRulePlain(GetClusterAlterRulePlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("rancher2:index/getClusterAlterRule:getClusterAlterRule", TypeShape.of(GetClusterAlterRuleResult.class), args, Utilities.withVersion(options));
+    public static CompletableFuture<GetClusterAlertRuleResult> getClusterAlertRulePlain(GetClusterAlertRulePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("rancher2:index/getClusterAlertRule:getClusterAlertRule", TypeShape.of(GetClusterAlertRuleResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to retrieve information about a Rancher v2 Cluster Driver resource.
@@ -4529,170 +4526,6 @@ public final class Rancher2Functions {
      */
     public static CompletableFuture<GetRegistryResult> getRegistryPlain(GetRegistryPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("rancher2:index/getRegistry:getRegistry", TypeShape.of(GetRegistryResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to retrieve information about a Rancher v2 role template resource.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.rancher2.Rancher2Functions;
-     * import com.pulumi.rancher2.inputs.GetRoleTemplateArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = Rancher2Functions.getRoleTemplate(GetRoleTemplateArgs.builder()
-     *             .name(&#34;foo&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * @deprecated
-     * rancher2.getRoleTempalte has been deprecated in favor of rancher2.getRoleTemplate
-     * 
-     */
-    @Deprecated /* rancher2.getRoleTempalte has been deprecated in favor of rancher2.getRoleTemplate */
-    public static Output<GetRoleTempalteResult> getRoleTempalte(GetRoleTempalteArgs args) {
-        return getRoleTempalte(args, InvokeOptions.Empty);
-    }
-    /**
-     * Use this data source to retrieve information about a Rancher v2 role template resource.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.rancher2.Rancher2Functions;
-     * import com.pulumi.rancher2.inputs.GetRoleTemplateArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = Rancher2Functions.getRoleTemplate(GetRoleTemplateArgs.builder()
-     *             .name(&#34;foo&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * @deprecated
-     * rancher2.getRoleTempalte has been deprecated in favor of rancher2.getRoleTemplate
-     * 
-     */
-    @Deprecated /* rancher2.getRoleTempalte has been deprecated in favor of rancher2.getRoleTemplate */
-    public static CompletableFuture<GetRoleTempalteResult> getRoleTempaltePlain(GetRoleTempaltePlainArgs args) {
-        return getRoleTempaltePlain(args, InvokeOptions.Empty);
-    }
-    /**
-     * Use this data source to retrieve information about a Rancher v2 role template resource.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.rancher2.Rancher2Functions;
-     * import com.pulumi.rancher2.inputs.GetRoleTemplateArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = Rancher2Functions.getRoleTemplate(GetRoleTemplateArgs.builder()
-     *             .name(&#34;foo&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * @deprecated
-     * rancher2.getRoleTempalte has been deprecated in favor of rancher2.getRoleTemplate
-     * 
-     */
-    @Deprecated /* rancher2.getRoleTempalte has been deprecated in favor of rancher2.getRoleTemplate */
-    public static Output<GetRoleTempalteResult> getRoleTempalte(GetRoleTempalteArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("rancher2:index/getRoleTempalte:getRoleTempalte", TypeShape.of(GetRoleTempalteResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to retrieve information about a Rancher v2 role template resource.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.rancher2.Rancher2Functions;
-     * import com.pulumi.rancher2.inputs.GetRoleTemplateArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = Rancher2Functions.getRoleTemplate(GetRoleTemplateArgs.builder()
-     *             .name(&#34;foo&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * @deprecated
-     * rancher2.getRoleTempalte has been deprecated in favor of rancher2.getRoleTemplate
-     * 
-     */
-    @Deprecated /* rancher2.getRoleTempalte has been deprecated in favor of rancher2.getRoleTemplate */
-    public static CompletableFuture<GetRoleTempalteResult> getRoleTempaltePlain(GetRoleTempaltePlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("rancher2:index/getRoleTempalte:getRoleTempalte", TypeShape.of(GetRoleTempalteResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to retrieve information about a Rancher v2 role template resource.

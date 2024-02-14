@@ -13,7 +13,7 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterV2RkeConfigRotateCertificatesGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ETCD snapshot desired generation (int)
+        /// ETCD snapshot desired generation.
         /// </summary>
         [Input("generation", required: true)]
         public Input<int> Generation { get; set; } = null!;
@@ -22,7 +22,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _services;
 
         /// <summary>
-        /// Service certificates to rotate with this generation (string)
+        /// Service certificates to rotate with this generation.
         /// </summary>
         public InputList<string> Services
         {

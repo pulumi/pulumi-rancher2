@@ -13,13 +13,19 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterV2RkeConfigMachinePoolMachineConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Machine config kind (string)
+        /// Api version of the machine_config.
+        /// </summary>
+        [Input("apiVersion")]
+        public Input<string>? ApiVersion { get; set; }
+
+        /// <summary>
+        /// Machine config kind.
         /// </summary>
         [Input("kind", required: true)]
         public Input<string> Kind { get; set; } = null!;
 
         /// <summary>
-        /// The name of the Cluster v2 (string)
+        /// The name of the cluster.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

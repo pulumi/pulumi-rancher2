@@ -7,9 +7,16 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterV2RkeConfigMachinePoolMachineConfig {
+    /**
+     * @return Machine config API version
+     * 
+     */
+    private @Nullable String apiVersion;
     /**
      * @return Machine config kind
      * 
@@ -22,6 +29,13 @@ public final class GetClusterV2RkeConfigMachinePoolMachineConfig {
     private String name;
 
     private GetClusterV2RkeConfigMachinePoolMachineConfig() {}
+    /**
+     * @return Machine config API version
+     * 
+     */
+    public Optional<String> apiVersion() {
+        return Optional.ofNullable(this.apiVersion);
+    }
     /**
      * @return Machine config kind
      * 
@@ -46,15 +60,23 @@ public final class GetClusterV2RkeConfigMachinePoolMachineConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String apiVersion;
         private String kind;
         private String name;
         public Builder() {}
         public Builder(GetClusterV2RkeConfigMachinePoolMachineConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.apiVersion = defaults.apiVersion;
     	      this.kind = defaults.kind;
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
+        public Builder apiVersion(@Nullable String apiVersion) {
+
+            this.apiVersion = apiVersion;
+            return this;
+        }
         @CustomType.Setter
         public Builder kind(String kind) {
             if (kind == null) {
@@ -73,6 +95,7 @@ public final class GetClusterV2RkeConfigMachinePoolMachineConfig {
         }
         public GetClusterV2RkeConfigMachinePoolMachineConfig build() {
             final var _resultValue = new GetClusterV2RkeConfigMachinePoolMachineConfig();
+            _resultValue.apiVersion = apiVersion;
             _resultValue.kind = kind;
             _resultValue.name = name;
             return _resultValue;

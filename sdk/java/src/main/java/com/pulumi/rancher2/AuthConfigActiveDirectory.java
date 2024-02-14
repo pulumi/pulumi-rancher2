@@ -3,7 +3,6 @@
 
 package com.pulumi.rancher2;
 
-import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -551,9 +550,6 @@ public class AuthConfigActiveDirectory extends com.pulumi.resources.CustomResour
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .aliases(List.of(
-                Output.of(Alias.builder().type("rancher2:index/activeDirectory:ActiveDirectory").build())
-            ))
             .additionalSecretOutputs(List.of(
                 "certificate",
                 "serviceAccountPassword",

@@ -17,6 +17,7 @@ namespace Pulumi.Rancher2.Outputs
         /// (string)
         /// </summary>
         public readonly string? Datacenters;
+        public readonly string? GracefulShutdownTimeout;
         /// <summary>
         /// (bool)
         /// </summary>
@@ -42,6 +43,8 @@ namespace Pulumi.Rancher2.Outputs
         private ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal(
             string? datacenters,
 
+            string? gracefulShutdownTimeout,
+
             bool? insecureFlag,
 
             string? password,
@@ -53,6 +56,7 @@ namespace Pulumi.Rancher2.Outputs
             string? user)
         {
             Datacenters = datacenters;
+            GracefulShutdownTimeout = gracefulShutdownTimeout;
             InsecureFlag = insecureFlag;
             Password = password;
             Port = port;

@@ -9,10 +9,13 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobal {
     private String datacenters;
+    private @Nullable String gracefulShutdownTimeout;
     private Boolean insecureFlag;
     private String password;
     private String port;
@@ -22,6 +25,9 @@ public final class GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobal {
     private GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobal() {}
     public String datacenters() {
         return this.datacenters;
+    }
+    public Optional<String> gracefulShutdownTimeout() {
+        return Optional.ofNullable(this.gracefulShutdownTimeout);
     }
     public Boolean insecureFlag() {
         return this.insecureFlag;
@@ -49,6 +55,7 @@ public final class GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobal {
     @CustomType.Builder
     public static final class Builder {
         private String datacenters;
+        private @Nullable String gracefulShutdownTimeout;
         private Boolean insecureFlag;
         private String password;
         private String port;
@@ -58,6 +65,7 @@ public final class GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobal {
         public Builder(GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobal defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.datacenters = defaults.datacenters;
+    	      this.gracefulShutdownTimeout = defaults.gracefulShutdownTimeout;
     	      this.insecureFlag = defaults.insecureFlag;
     	      this.password = defaults.password;
     	      this.port = defaults.port;
@@ -71,6 +79,12 @@ public final class GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobal {
               throw new MissingRequiredPropertyException("GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobal", "datacenters");
             }
             this.datacenters = datacenters;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gracefulShutdownTimeout(@Nullable String gracefulShutdownTimeout) {
+
+            this.gracefulShutdownTimeout = gracefulShutdownTimeout;
             return this;
         }
         @CustomType.Setter
@@ -116,6 +130,7 @@ public final class GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobal {
         public GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobal build() {
             final var _resultValue = new GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobal();
             _resultValue.datacenters = datacenters;
+            _resultValue.gracefulShutdownTimeout = gracefulShutdownTimeout;
             _resultValue.insecureFlag = insecureFlag;
             _resultValue.password = password;
             _resultValue.port = port;

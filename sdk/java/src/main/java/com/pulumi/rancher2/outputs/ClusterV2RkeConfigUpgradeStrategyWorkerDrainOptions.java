@@ -13,110 +13,110 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions {
     /**
-     * @return Drain options delete empty dir data. Default `false` (bool)
+     * @return if `delete_empty_dir_data` is set to true, continue draining even if there are pods using emptyDir (local storage).
      * 
      */
     private @Nullable Boolean deleteEmptyDirData;
     /**
-     * @return Drain options disable eviction. Default `false` (bool)
+     * @return If `disable_eviction` is set to true, force drain to use delete rather than evict.
      * 
      */
     private @Nullable Boolean disableEviction;
     /**
-     * @return Drain options enabled? Default `true` (bool)
+     * @return If `enabled` is set to true, nodes will be drained before upgrade.
      * 
      */
     private @Nullable Boolean enabled;
     /**
-     * @return Drain options force. Default `false` (bool)
+     * @return If `force` is set to true, drain nodes even if there are standalone pods that are not managed by a ReplicationController, Job, or DaemonSet. Drain will not proceed without `force` set to true if there are such pods.
      * 
      */
     private @Nullable Boolean force;
     /**
-     * @return Drain options grace period (int)
+     * @return Time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used.
      * 
      */
     private @Nullable Integer gracePeriod;
     /**
-     * @return Drain options ignore daemon sets. Default `true` (bool)
+     * @return If `ignore_daemon_sets` is set to false, drain will not proceed if there are DaemonSet-managed pods.
      * 
      */
     private @Nullable Boolean ignoreDaemonSets;
     /**
-     * @return Drain options ignore errors. Default `false` (bool)
+     * @return If `ignore_errors` is set to true,  errors that occurred between drain nodes in group are ignored.
      * 
      */
     private @Nullable Boolean ignoreErrors;
     /**
-     * @return Drain options skip wait for delete timeout seconds (int)
+     * @return Skip waiting for the pods that have a DeletionTimeStamp &gt; N seconds to be deleted. Seconds must be greater than 0 to skip. Such pods will be force deleted.
      * 
      */
     private @Nullable Integer skipWaitForDeleteTimeoutSeconds;
     /**
-     * @return Drain options timeout (int)
+     * @return Time to wait (in seconds) before giving up for one try.
      * 
      */
     private @Nullable Integer timeout;
 
     private ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions() {}
     /**
-     * @return Drain options delete empty dir data. Default `false` (bool)
+     * @return if `delete_empty_dir_data` is set to true, continue draining even if there are pods using emptyDir (local storage).
      * 
      */
     public Optional<Boolean> deleteEmptyDirData() {
         return Optional.ofNullable(this.deleteEmptyDirData);
     }
     /**
-     * @return Drain options disable eviction. Default `false` (bool)
+     * @return If `disable_eviction` is set to true, force drain to use delete rather than evict.
      * 
      */
     public Optional<Boolean> disableEviction() {
         return Optional.ofNullable(this.disableEviction);
     }
     /**
-     * @return Drain options enabled? Default `true` (bool)
+     * @return If `enabled` is set to true, nodes will be drained before upgrade.
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Drain options force. Default `false` (bool)
+     * @return If `force` is set to true, drain nodes even if there are standalone pods that are not managed by a ReplicationController, Job, or DaemonSet. Drain will not proceed without `force` set to true if there are such pods.
      * 
      */
     public Optional<Boolean> force() {
         return Optional.ofNullable(this.force);
     }
     /**
-     * @return Drain options grace period (int)
+     * @return Time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used.
      * 
      */
     public Optional<Integer> gracePeriod() {
         return Optional.ofNullable(this.gracePeriod);
     }
     /**
-     * @return Drain options ignore daemon sets. Default `true` (bool)
+     * @return If `ignore_daemon_sets` is set to false, drain will not proceed if there are DaemonSet-managed pods.
      * 
      */
     public Optional<Boolean> ignoreDaemonSets() {
         return Optional.ofNullable(this.ignoreDaemonSets);
     }
     /**
-     * @return Drain options ignore errors. Default `false` (bool)
+     * @return If `ignore_errors` is set to true,  errors that occurred between drain nodes in group are ignored.
      * 
      */
     public Optional<Boolean> ignoreErrors() {
         return Optional.ofNullable(this.ignoreErrors);
     }
     /**
-     * @return Drain options skip wait for delete timeout seconds (int)
+     * @return Skip waiting for the pods that have a DeletionTimeStamp &gt; N seconds to be deleted. Seconds must be greater than 0 to skip. Such pods will be force deleted.
      * 
      */
     public Optional<Integer> skipWaitForDeleteTimeoutSeconds() {
         return Optional.ofNullable(this.skipWaitForDeleteTimeoutSeconds);
     }
     /**
-     * @return Drain options timeout (int)
+     * @return Time to wait (in seconds) before giving up for one try.
      * 
      */
     public Optional<Integer> timeout() {

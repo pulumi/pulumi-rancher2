@@ -97,14 +97,14 @@ public final class ProjectRoleTemplateBindingState extends com.pulumi.resources.
     }
 
     /**
-     * The project id where bind project role template (string)
+     * The project id where bind project role template, in format `cluster_id:project_id`, e.g. `c-abc12:p-def34` (string)
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return The project id where bind project role template (string)
+     * @return The project id where bind project role template, in format `cluster_id:project_id`, e.g. `c-abc12:p-def34` (string)
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -298,7 +298,7 @@ public final class ProjectRoleTemplateBindingState extends com.pulumi.resources.
         }
 
         /**
-         * @param projectId The project id where bind project role template (string)
+         * @param projectId The project id where bind project role template, in format `cluster_id:project_id`, e.g. `c-abc12:p-def34` (string)
          * 
          * @return builder
          * 
@@ -309,7 +309,7 @@ public final class ProjectRoleTemplateBindingState extends com.pulumi.resources.
         }
 
         /**
-         * @param projectId The project id where bind project role template (string)
+         * @param projectId The project id where bind project role template, in format `cluster_id:project_id`, e.g. `c-abc12:p-def34` (string)
          * 
          * @return builder
          * 

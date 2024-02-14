@@ -28,7 +28,7 @@ public final class ClusterEksConfigV2 {
      */
     private @Nullable Boolean imported;
     /**
-     * @return The AWS kms key to use (string)
+     * @return The AWS kms label ARN to use (string, e.g. arn:aws:kms:&lt;ZONE&gt;:&lt;123456789100&gt;:alias/&lt;NAME&gt;)
      * 
      */
     private @Nullable String kmsKey;
@@ -114,7 +114,7 @@ public final class ClusterEksConfigV2 {
         return Optional.ofNullable(this.imported);
     }
     /**
-     * @return The AWS kms key to use (string)
+     * @return The AWS kms label ARN to use (string, e.g. arn:aws:kms:&lt;ZONE&gt;:&lt;123456789100&gt;:alias/&lt;NAME&gt;)
      * 
      */
     public Optional<String> kmsKey() {

@@ -581,89 +581,6 @@ export interface ClusterAlertRuleSystemServiceRule {
     condition?: string;
 }
 
-export interface ClusterAlterGroupRecipient {
-    /**
-     * Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
-     */
-    defaultRecipient?: boolean;
-    /**
-     * Recipient notifier ID (string)
-     */
-    notifierId: string;
-    /**
-     * Recipient notifier ID. Supported values : `"dingtalk" | "msteams" | "pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
-     */
-    notifierType: string;
-    /**
-     * Recipient (string)
-     */
-    recipient: string;
-}
-
-export interface ClusterAlterRuleEventRule {
-    /**
-     * Event type
-     */
-    eventType?: string;
-    /**
-     * Resource kind
-     */
-    resourceKind: string;
-}
-
-export interface ClusterAlterRuleMetricRule {
-    /**
-     * Metric rule comparison
-     */
-    comparison?: string;
-    /**
-     * The cluster alert group description (string)
-     */
-    description?: string;
-    /**
-     * Metric rule duration
-     */
-    duration: string;
-    /**
-     * Metric rule expression
-     */
-    expression: string;
-    /**
-     * Metric rule threshold value
-     */
-    thresholdValue: number;
-}
-
-export interface ClusterAlterRuleNodeRule {
-    /**
-     * Node rule condition
-     */
-    condition?: string;
-    /**
-     * Node rule cpu threshold
-     */
-    cpuThreshold?: number;
-    /**
-     * Node rule mem threshold
-     */
-    memThreshold?: number;
-    /**
-     * Node ID
-     */
-    nodeId?: string;
-    /**
-     * Node rule selector
-     */
-    selector?: {[key: string]: any};
-}
-
-export interface ClusterAlterRuleSystemServiceRule {
-    /**
-     * System service rule condition
-     */
-    condition?: string;
-}
-
 export interface ClusterClusterAgentDeploymentCustomization {
     /**
      * User defined tolerations to append to agent (list)
@@ -925,7 +842,7 @@ export interface ClusterEksConfigV2 {
      */
     imported?: boolean;
     /**
-     * The AWS kms key to use (string)
+     * The AWS kms label ARN to use (string, e.g. arn:aws:kms:<ZONE>:<123456789100>:alias/<NAME>)
      */
     kmsKey?: string;
     /**
@@ -2388,6 +2305,7 @@ export interface ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal {
      * (string)
      */
     datacenters: string;
+    gracefulShutdownTimeout?: string;
     /**
      * (bool)
      */
@@ -4089,6 +4007,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvi
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobal {
     datacenters: string;
+    gracefulShutdownTimeout?: string;
     insecureFlag: boolean;
     password: string;
     port: string;
@@ -4633,228 +4552,228 @@ export interface ClusterTemplateTemplateRevisionQuestion {
 
 export interface ClusterV2AgentEnvVar {
     /**
-     * The name of the Cluster v2 (string)
+     * The name of the cluster.
      */
     name: string;
     /**
-     * The taint value (string)
+     * The taint value.
      */
     value: string;
 }
 
 export interface ClusterV2ClusterAgentDeploymentCustomization {
     /**
-     * User defined tolerations to append to agent (list)
+     * A list of tolerations to be appended to the default tolerations.
      */
     appendTolerations?: outputs.ClusterV2ClusterAgentDeploymentCustomizationAppendToleration[];
     /**
-     * User defined affinity to override default agent affinity (string)
+     * Override affinity overrides the global default affinity setting.
      */
     overrideAffinity?: string;
     /**
-     * User defined resource requirements to set on the agent (list)
+     * Override resource requirements overrides the default value for requests and/or limits.
      */
     overrideResourceRequirements?: outputs.ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement[];
 }
 
 export interface ClusterV2ClusterAgentDeploymentCustomizationAppendToleration {
     /**
-     * The taint effect. Default: `\"NoExecute\"` (string)
+     * The taint effect. Default: `\"NoExecute\"`.
      */
     effect?: string;
     /**
-     * Machine selector label match expressions key (string)
+     * Key is the name of the key of the item to retrieve.
      */
     key: string;
     /**
-     * Machine selector label match expressions operator (string)
+     * Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
      */
     operator?: string;
     /**
-     * The number of seconds a pod will stay bound to a node with a matching taint (int)
+     * The number of seconds a pod will stay bound to a node with a matching taint.
      */
     seconds: number;
     /**
-     * The taint value (string)
+     * The taint value.
      */
     value?: string;
 }
 
 export interface ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement {
     /**
-     * The maximum CPU limit for agent (string)
+     * The maximum CPU limit for agent.
      */
     cpuLimit?: string;
     /**
-     * The minimum CPU required for agent (string)
+     * The minimum CPU required for agent.
      */
     cpuRequest?: string;
     /**
-     * The maximum memory limit for agent (string)
+     * The maximum memory limit for agent.
      */
     memoryLimit?: string;
     /**
-     * The minimum memory required for agent (string)
+     * The minimum memory required for agent.
      */
     memoryRequest?: string;
 }
 
 export interface ClusterV2ClusterRegistrationToken {
     /**
-     * Annotations for the Cluster V2 (map)
+     * Annotations for the Cluster.
      */
     annotations: {[key: string]: any};
     /**
-     * Cluster ID (string)
+     * Cluster ID.
      */
     clusterId: string;
     /**
-     * Command to execute in a imported k8s cluster (string)
+     * Command to execute in an imported k8s cluster.
      */
     command: string;
     /**
-     * (Computed) The ID of the resource (string)
+     * (Computed, string) The ID of the resource.
      */
     id: string;
     /**
-     * Insecure command to execute in a imported k8s cluster (string)
+     * Insecure command to execute in an imported k8s cluster.
      */
     insecureCommand: string;
     /**
-     * Insecure node command to execute in a imported k8s cluster (string)
+     * Insecure node command to execute in an imported k8s cluster.
      */
     insecureNodeCommand: string;
     /**
-     * Insecure windows command to execute in a imported k8s cluster (string)
+     * Insecure windows command to execute in an imported k8s cluster.
      */
     insecureWindowsNodeCommand: string;
     /**
-     * Labels for the Cluster V2 (map)
+     * Labels for the Cluster.
      */
     labels: {[key: string]: any};
     /**
-     * K8s manifest url to execute with `kubectl` to import an existing k8s cluster (string)
+     * K8s manifest url to execute with `kubectl` to import an existing k8s cluster.
      */
     manifestUrl: string;
     /**
-     * The name of the Cluster v2 (string)
+     * The name of the cluster.
      */
     name: string;
     /**
-     * Node command to execute in linux nodes for custom k8s cluster (string)
+     * Node command to execute in Linux nodes for custom k8s cluster.
      */
     nodeCommand: string;
     /**
-     * Token for cluster registration token object (string)
+     * Token for cluster registration token object.
      */
     token: string;
     /**
-     * Node command to execute in windows nodes for custom k8s cluster (string)
+     * Node command to execute in Windows nodes for custom k8s cluster.
      */
     windowsNodeCommand: string;
 }
 
 export interface ClusterV2FleetAgentDeploymentCustomization {
     /**
-     * User defined tolerations to append to agent (list)
+     * A list of tolerations to be appended to the default tolerations.
      */
     appendTolerations?: outputs.ClusterV2FleetAgentDeploymentCustomizationAppendToleration[];
     /**
-     * User defined affinity to override default agent affinity (string)
+     * Override affinity overrides the global default affinity setting.
      */
     overrideAffinity?: string;
     /**
-     * User defined resource requirements to set on the agent (list)
+     * Override resource requirements overrides the default value for requests and/or limits.
      */
     overrideResourceRequirements?: outputs.ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement[];
 }
 
 export interface ClusterV2FleetAgentDeploymentCustomizationAppendToleration {
     /**
-     * The taint effect. Default: `\"NoExecute\"` (string)
+     * The taint effect. Default: `\"NoExecute\"`.
      */
     effect?: string;
     /**
-     * Machine selector label match expressions key (string)
+     * Key is the name of the key of the item to retrieve.
      */
     key: string;
     /**
-     * Machine selector label match expressions operator (string)
+     * Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
      */
     operator?: string;
     /**
-     * The number of seconds a pod will stay bound to a node with a matching taint (int)
+     * The number of seconds a pod will stay bound to a node with a matching taint.
      */
     seconds: number;
     /**
-     * The taint value (string)
+     * The taint value.
      */
     value?: string;
 }
 
 export interface ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement {
     /**
-     * The maximum CPU limit for agent (string)
+     * The maximum CPU limit for agent.
      */
     cpuLimit?: string;
     /**
-     * The minimum CPU required for agent (string)
+     * The minimum CPU required for agent.
      */
     cpuRequest?: string;
     /**
-     * The maximum memory limit for agent (string)
+     * The maximum memory limit for agent.
      */
     memoryLimit?: string;
     /**
-     * The minimum memory required for agent (string)
+     * The minimum memory required for agent.
      */
     memoryRequest?: string;
 }
 
 export interface ClusterV2LocalAuthEndpoint {
     /**
-     * CA certs for the authorized cluster endpoint (string)
+     * CA certs for the authorized cluster endpoint. It is only needed if there is a load balancer in front of the downstream cluster that is using an untrusted certificate. If you have a valid certificate, then nothing needs to be added to the CA Certificates field.
      */
     caCerts?: string;
     /**
-     * Drain options enabled? Default `true` (bool)
+     * If `enabled` is set to true, nodes will be drained before upgrade.
      */
     enabled?: boolean;
     /**
-     * FQDN for the authorized cluster endpoint (string)
+     * FQDN for the authorized cluster endpoint. If one is entered, it should point to the downstream cluster.
      */
     fqdn?: string;
 }
 
 export interface ClusterV2RkeConfig {
     /**
-     * Cluster V2 additional manifest (string)
+     * The value of the additional manifest is delivered to the path `/var/lib/rancher/rke2/server/manifests/rancher/addons.yaml` or `/var/lib/rancher/k3s/server/manifests/rancher/addons.yaml` on the control plane nodes.
      */
     additionalManifest?: string;
     /**
-     * Cluster V2 chart values. Must be in YAML format (string)
+     * The value for the system charts installed by the distribution. For more information about how RKE2 or K3s manage packaged components, please refer to [RKE2 documentation](https://docs.rke2.io/helm) or [K3s documentation](https://docs.k3s.io/installation/packaged-components).
      */
     chartValues?: string;
     /**
-     * Cluster V2 etcd (list maxitems:1)
+     * Etcd configures the behavior of the automatic etcd snapshot feature.
      */
     etcd: outputs.ClusterV2RkeConfigEtcd;
     /**
-     * Cluster V2 etcd snapshot create (list maxitems:1)
+     * Cluster V2 etcd snapshot create.
      */
     etcdSnapshotCreate?: outputs.ClusterV2RkeConfigEtcdSnapshotCreate;
     /**
-     * Cluster V2 etcd snapshot restore (list maxitems:1)
+     * Cluster V2 etcd snapshot restore.
      */
     etcdSnapshotRestore?: outputs.ClusterV2RkeConfigEtcdSnapshotRestore;
     /**
-     * Cluster V2 local auth endpoint (list maxitems:1)
+     * Local auth endpoint configures the Authorized Cluster Endpoint (ACE) which can be used to directly access the Kubernetes API server, without requiring communication through Rancher. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters).
      *
      * @deprecated Use rancher2_cluster_v2.local_auth_endpoint instead
      */
     localAuthEndpoint?: outputs.ClusterV2RkeConfigLocalAuthEndpoint;
     /**
-     * Cluster V2 machine global config. Must be in YAML format (string)
+     * Machine global config specifies the distribution-specified server configuration applied to all nodes. For the full list of server configurations, please refer to [RKE2 server configuration](https://docs.rke2.io/reference/server_config) or [K3s server configuration](https://docs.k3s.io/cli/server).
      */
     machineGlobalConfig?: string;
     /**
@@ -4862,133 +4781,137 @@ export interface ClusterV2RkeConfig {
      */
     machinePoolDefaults: outputs.ClusterV2RkeConfigMachinePoolDefault[];
     /**
-     * Cluster V2 machine pools (list)
+     * Cluster V2 machine pools.
      */
     machinePools: outputs.ClusterV2RkeConfigMachinePool[];
     /**
-     * Cluster V2 machine selector config (list)
+     * Machine selector config is the same as machineGlobalConfig except that a label selector can be specified with the configuration. The configuration will only be applied to nodes that match the provided label selector. The configuration from machineSelectorConfig takes precedence over the one from machine_global_config. This argument is available in Rancher v2.7.2 and later.
      */
     machineSelectorConfigs: outputs.ClusterV2RkeConfigMachineSelectorConfig[];
     /**
-     * Cluster V2 docker registries (list maxitems:1)
+     * Machine selector files provide a means to deliver files to nodes so that the files can be in place before initiating RKE2/K3s server or agent processes. Please refer to Rancher documentation for [RKE2 Cluster Configuration Reference](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration#machineselectorfiles) and [K3s Cluster Configuration Reference](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/k3s-cluster-configuration#machineselectorfiles). This argument is available in Rancher v2.7.2 and later.
+     */
+    machineSelectorFiles: outputs.ClusterV2RkeConfigMachineSelectorFile[];
+    /**
+     * Docker registries from which the cluster pulls images.
      */
     registries?: outputs.ClusterV2RkeConfigRegistries;
     /**
-     * Cluster V2 certificate rotation (list maxitems:1)
+     * Cluster V2 certificate rotation.
      */
     rotateCertificates?: outputs.ClusterV2RkeConfigRotateCertificates;
     /**
-     * Cluster V2 upgrade strategy (list maxitems:1)
+     * Cluster upgrade strategy.
      */
     upgradeStrategy?: outputs.ClusterV2RkeConfigUpgradeStrategy;
 }
 
 export interface ClusterV2RkeConfigEtcd {
     /**
-     * Disable ETCD snapshots. Default: `false` (bool)
+     * Disable ETCD snapshots.
      */
     disableSnapshots?: boolean;
     /**
-     * Creation option for etcd service (list maxitems:1)
+     * Creation option for etcd service.
      */
     s3Config?: outputs.ClusterV2RkeConfigEtcdS3Config;
     /**
-     * ETCD snapshot retention (int)
+     * ETCD snapshot retention.
      */
     snapshotRetention?: number;
     /**
-     * ETCD snapshot schedule cron (e.g `\"0 *&#47;5 * * *\"`) (string)
+     * ETCD snapshot schedule cron (e.g `\"0 *&#47;5 * * *\"`).
      */
     snapshotScheduleCron?: string;
 }
 
 export interface ClusterV2RkeConfigEtcdS3Config {
     /**
-     * Bucket name for S3 service (string)
+     * Bucket name for S3 service.
      */
     bucket: string;
     /**
-     * ETCD snapshot S3 cloud credential name (string)
+     * ETCD snapshot S3 cloud credential name.
      */
     cloudCredentialName?: string;
     /**
-     * ETCD snapshot S3 endpoint (string)
+     * ETCD snapshot S3 endpoint.
      */
     endpoint: string;
     /**
-     * ETCD snapshot S3 endpoint CA (string)
+     * ETCD snapshot S3 endpoint CA.
      */
     endpointCa?: string;
     /**
-     * ETCD snapshot S3 folder (string)
+     * ETCD snapshot S3 folder.
      */
     folder?: string;
     /**
-     * ETCD snapshot S3 region (string)
+     * ETCD snapshot S3 region.
      */
     region?: string;
     /**
-     * Disable ETCD skip ssl verify. Default: `false` (bool)
+     * Disable ETCD skip ssl verify.
      */
     skipSslVerify?: boolean;
 }
 
 export interface ClusterV2RkeConfigEtcdSnapshotCreate {
     /**
-     * ETCD snapshot desired generation (int)
+     * ETCD snapshot desired generation.
      */
     generation: number;
 }
 
 export interface ClusterV2RkeConfigEtcdSnapshotRestore {
     /**
-     * ETCD snapshot desired generation (int)
+     * ETCD snapshot desired generation.
      */
     generation: number;
     /**
-     * The name of the Cluster v2 (string)
+     * The name of the cluster.
      */
     name: string;
     /**
-     * ETCD restore RKE config (set to none, all, or kubernetesVersion) (string)
+     * ETCD restore RKE config (set to none, all, or kubernetesVersion).
      */
     restoreRkeConfig?: string;
 }
 
 export interface ClusterV2RkeConfigLocalAuthEndpoint {
     /**
-     * CA certs for the authorized cluster endpoint (string)
+     * CA certs for the authorized cluster endpoint. It is only needed if there is a load balancer in front of the downstream cluster that is using an untrusted certificate. If you have a valid certificate, then nothing needs to be added to the CA Certificates field.
      */
     caCerts?: string;
     /**
-     * Drain options enabled? Default `true` (bool)
+     * If `enabled` is set to true, nodes will be drained before upgrade.
      */
     enabled?: boolean;
     /**
-     * FQDN for the authorized cluster endpoint (string)
+     * FQDN for the authorized cluster endpoint. If one is entered, it should point to the downstream cluster.
      */
     fqdn?: string;
 }
 
 export interface ClusterV2RkeConfigMachinePool {
     /**
-     * Annotations for the Cluster V2 (map)
+     * Annotations for the Cluster.
      */
     annotations: {[key: string]: any};
     /**
-     * Cluster V2 cloud credential secret name (string)
+     * Cloud credential secret name is the secret to be used when a cloud credential secret name is not specified at the machine pool level.
      */
     cloudCredentialSecretName?: string;
     /**
-     * Machine pool control plane role? (bool)
+     * Machine pool control plane role?
      */
     controlPlaneRole?: boolean;
     /**
-     * Machine Pool Drain Before Delete? (bool)
+     * Machine Pool Drain Before Delete?
      */
     drainBeforeDelete?: boolean;
     /**
-     * Machine pool etcd role? (bool)
+     * Machine pool etcd role?
      */
     etcdRole?: boolean;
     /**
@@ -4996,59 +4919,59 @@ export interface ClusterV2RkeConfigMachinePool {
      */
     hostnameLengthLimit?: number;
     /**
-     * Labels for the Cluster V2 (map)
+     * Labels for the Cluster.
      */
     labels: {[key: string]: any};
     /**
-     * Machine pool node config (list)
+     * Machine pool node config.
      */
     machineConfig: outputs.ClusterV2RkeConfigMachinePoolMachineConfig;
     /**
-     * Labels for Machine pool nodes (map)
+     * Labels for Machine pool nodes.
      */
     machineLabels: {[key: string]: any};
     /**
-     * Max unhealthy nodes for automated replacement to be allowed (string)
+     * Max unhealthy nodes for automated replacement to be allowed.
      */
     maxUnhealthy?: string;
     /**
-     * The name of the Cluster v2 (string)
+     * The name of the cluster.
      */
     name: string;
     /**
-     * Seconds a machine has to drain before deletion (int)
+     * Seconds a machine has to drain before deletion.
      */
     nodeDrainTimeout?: number;
     /**
-     * Seconds a new node has to become active before it is replaced (int)
+     * Seconds a new node has to become active before it is replaced.
      */
     nodeStartupTimeoutSeconds?: number;
     /**
-     * Machine pool paused? (bool)
+     * Machine pool paused?
      */
     paused?: boolean;
     /**
-     * Machine pool quantity (int)
+     * Machine pool quantity.
      */
     quantity?: number;
     /**
-     * Machine pool rolling update (List maxitems:1)
+     * Machine pool rolling update.
      */
     rollingUpdate?: outputs.ClusterV2RkeConfigMachinePoolRollingUpdate;
     /**
-     * Machine pool taints (list)
+     * Machine pool taints.
      */
     taints?: outputs.ClusterV2RkeConfigMachinePoolTaint[];
     /**
-     * Seconds an unhealthy node has to become active before it is replaced (int)
+     * Seconds an unhealthy node has to become active before it is replaced.
      */
     unhealthyNodeTimeoutSeconds?: number;
     /**
-     * Range of unhealthy nodes for automated replacement to be allowed (string)
+     * Range of unhealthy nodes for automated replacement to be allowed.
      */
     unhealthyRange?: string;
     /**
-     * Machine pool worker role? (bool)
+     * Machine pool worker role?
      */
     workerRole?: boolean;
 }
@@ -5062,231 +4985,359 @@ export interface ClusterV2RkeConfigMachinePoolDefault {
 
 export interface ClusterV2RkeConfigMachinePoolMachineConfig {
     /**
-     * Machine config kind (string)
+     * Api version of the machine_config.
+     */
+    apiVersion?: string;
+    /**
+     * Machine config kind.
      */
     kind: string;
     /**
-     * The name of the Cluster v2 (string)
+     * The name of the cluster.
      */
     name: string;
 }
 
 export interface ClusterV2RkeConfigMachinePoolRollingUpdate {
     /**
-     * Rolling update max surge (string)
+     * Rolling update max surge.
      */
     maxSurge?: string;
     /**
-     * Rolling update max unavailable (string)
+     * Rolling update max unavailable.
      */
     maxUnavailable?: string;
 }
 
 export interface ClusterV2RkeConfigMachinePoolTaint {
     /**
-     * The taint effect. Default: `\"NoExecute\"` (string)
+     * The taint effect. Default: `\"NoExecute\"`.
      */
     effect?: string;
     /**
-     * Machine selector label match expressions key (string)
+     * Key is the name of the key of the item to retrieve.
      */
     key: string;
     /**
-     * The taint value (string)
+     * The taint value.
      */
     value: string;
 }
 
 export interface ClusterV2RkeConfigMachineSelectorConfig {
     /**
-     * Machine selector config. Must be in YAML format (string)
+     * Config is the distribution-specify configuration to be applied to nodes that match the provided label selector. For more information, please refer to Rancher's documentation for [RKE2 Cluster Configuration](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration#machineselectorconfig) or [K3s Cluster Configuration](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/k3s-cluster-configuration#machineselectorconfig)
      */
     config?: string;
     /**
-     * Machine selector label (list maxitems:1)
+     * Machine selector label is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
      */
     machineLabelSelector?: outputs.ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector;
 }
 
 export interface ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector {
     /**
-     * Machine selector label match expressions (list)
+     * Match expressions is a list of label selector requirements. The requirements are ANDed.
      */
     matchExpressions?: outputs.ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression[];
     /**
-     * Machine selector label match labels (map)
+     * Machine selector label is a map of {key,value} pairs, the requirements are ANDed.
      */
     matchLabels?: {[key: string]: any};
 }
 
 export interface ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression {
     /**
-     * Machine selector label match expressions key (string)
+     * Key is the name of the key of the item to retrieve.
      */
     key?: string;
     /**
-     * Machine selector label match expressions operator (string)
+     * Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
      */
     operator?: string;
     /**
-     * Machine selector label match expressions values (List string)
+     * Values is a list of string values.
+     */
+    values?: string[];
+}
+
+export interface ClusterV2RkeConfigMachineSelectorFile {
+    /**
+     * File sources represents the source of the files. Multiple files can be delivered to nodes that match the provided label selector.
+     */
+    fileSources?: outputs.ClusterV2RkeConfigMachineSelectorFileFileSource[];
+    /**
+     * Machine selector label is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
+     */
+    machineLabelSelector?: outputs.ClusterV2RkeConfigMachineSelectorFileMachineLabelSelector;
+}
+
+export interface ClusterV2RkeConfigMachineSelectorFileFileSource {
+    /**
+     * Configmap represents a K8s configmap which is the source of files. It is mutually exclusive with secret.
+     */
+    configmap?: outputs.ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmap;
+    /**
+     * Secret represents a K8s secret which is the source of files. It is mutually exclusive with configmap.
+     */
+    secret?: outputs.ClusterV2RkeConfigMachineSelectorFileFileSourceSecret;
+}
+
+export interface ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmap {
+    /**
+     * The numeric representation of the default file permissions for all files defined under the items.
+     */
+    defaultPermissions?: string;
+    /**
+     * Items is a list of configurations for files, such as where to retrieve the content from the source, where to put the file on nodes, etc.
+     */
+    items?: outputs.ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapItem[];
+    /**
+     * The name of the cluster.
+     */
+    name: string;
+}
+
+export interface ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapItem {
+    /**
+     * If true, the file is ignored when determining whether the node should be drained before updating the node plan.
+     */
+    dynamic?: boolean;
+    /**
+     * Hash is the base64 encoded value of the SHA256 checksum of the file's content. If specified, it is used to validate the integrity of the file content.
+     */
+    hash?: string;
+    /**
+     * Key is the name of the key of the item to retrieve.
+     */
+    key: string;
+    /**
+     * Path is the absolute path to put the file in the target node.
+     */
+    path: string;
+    /**
+     * Permissions is the numeric representation of the file permission. It takes precedence over the default permissions at the outer level.
+     */
+    permissions?: string;
+}
+
+export interface ClusterV2RkeConfigMachineSelectorFileFileSourceSecret {
+    /**
+     * The numeric representation of the default file permissions for all files defined under the items.
+     */
+    defaultPermissions?: string;
+    /**
+     * Items is a list of configurations for files, such as where to retrieve the content from the source, where to put the file on nodes, etc.
+     */
+    items?: outputs.ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItem[];
+    /**
+     * The name of the cluster.
+     */
+    name: string;
+}
+
+export interface ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItem {
+    /**
+     * If true, the file is ignored when determining whether the node should be drained before updating the node plan.
+     */
+    dynamic?: boolean;
+    /**
+     * Hash is the base64 encoded value of the SHA256 checksum of the file's content. If specified, it is used to validate the integrity of the file content.
+     */
+    hash?: string;
+    /**
+     * Key is the name of the key of the item to retrieve.
+     */
+    key: string;
+    /**
+     * Path is the absolute path to put the file in the target node.
+     */
+    path: string;
+    /**
+     * Permissions is the numeric representation of the file permission. It takes precedence over the default permissions at the outer level.
+     */
+    permissions?: string;
+}
+
+export interface ClusterV2RkeConfigMachineSelectorFileMachineLabelSelector {
+    /**
+     * Match expressions is a list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: outputs.ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpression[];
+    /**
+     * Machine selector label is a map of {key,value} pairs, the requirements are ANDed.
+     */
+    matchLabels?: {[key: string]: any};
+}
+
+export interface ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpression {
+    /**
+     * Key is the name of the key of the item to retrieve.
+     */
+    key?: string;
+    /**
+     * Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+     */
+    operator?: string;
+    /**
+     * Values is a list of string values.
      */
     values?: string[];
 }
 
 export interface ClusterV2RkeConfigRegistries {
     /**
-     * Cluster V2 docker registries config (list)
+     * Cluster V2 docker registries config.
      */
     configs?: outputs.ClusterV2RkeConfigRegistriesConfig[];
     /**
-     * Cluster V2 docker registries mirror (list)
+     * Cluster V2 docker registries mirror.
      */
     mirrors?: outputs.ClusterV2RkeConfigRegistriesMirror[];
 }
 
 export interface ClusterV2RkeConfigRegistriesConfig {
     /**
-     * Registry auth config secret name (string)
+     * Name of the secret that contains two keys with base64 encoded values: the username and password for the specified custom registry. No secret is required if the system-default-registry is not authenticated.
      */
     authConfigSecretName?: string;
     /**
-     * Registry CA bundle (string)
+     * Registry CA bundle.
      */
     caBundle?: string;
     /**
-     * Registry hostname (string)
+     * Registry hostname.
      */
     hostname: string;
     /**
-     * Registry insecure connectivity (bool)
+     * Registry insecure connectivity.
      */
     insecure?: boolean;
     /**
-     * Registry TLS secret name. TLS is a pair of Cert/Key (string)
+     * Registry TLS secret name. TLS is a pair of Cert/Key.
      */
     tlsSecretName?: string;
 }
 
 export interface ClusterV2RkeConfigRegistriesMirror {
     /**
-     * Registry mirror endpoints (List)
+     * Registry mirror endpoints.
      */
     endpoints?: string[];
     /**
-     * Registry hostname (string)
+     * Registry hostname.
      */
     hostname: string;
     /**
-     * Registry mirror rewrites (map)
+     * Registry mirror rewrites.
      */
     rewrites?: {[key: string]: any};
 }
 
 export interface ClusterV2RkeConfigRotateCertificates {
     /**
-     * ETCD snapshot desired generation (int)
+     * ETCD snapshot desired generation.
      */
     generation: number;
     /**
-     * Service certificates to rotate with this generation (string)
+     * Service certificates to rotate with this generation.
      */
     services?: string[];
 }
 
 export interface ClusterV2RkeConfigUpgradeStrategy {
     /**
-     * How many controlplane nodes should be upgrade at time, 0 is infinite. Percentages are also accepted (string)
+     * How many control plane nodes should be upgraded at a time, 0 is infinite. Percentages are also accepted.
      */
     controlPlaneConcurrency?: string;
     /**
-     * Controlplane nodes drain options (list maxitems:1)
+     * Controlplane nodes drain options.
      */
     controlPlaneDrainOptions?: outputs.ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions;
     /**
-     * How many worker nodes should be upgrade at time. Percentages are also accepted (string)
+     * How many worker nodes should be upgraded at a time. Percentages are also accepted.
      */
     workerConcurrency?: string;
     /**
-     * Worker nodes drain options (list maxitems:1)
+     * Worker nodes drain options.
      */
     workerDrainOptions?: outputs.ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions;
 }
 
 export interface ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions {
     /**
-     * Drain options delete empty dir data. Default `false` (bool)
+     * if `deleteEmptyDirData` is set to true, continue draining even if there are pods using emptyDir (local storage).
      */
     deleteEmptyDirData?: boolean;
     /**
-     * Drain options disable eviction. Default `false` (bool)
+     * If `disableEviction` is set to true, force drain to use delete rather than evict.
      */
     disableEviction?: boolean;
     /**
-     * Drain options enabled? Default `true` (bool)
+     * If `enabled` is set to true, nodes will be drained before upgrade.
      */
     enabled?: boolean;
     /**
-     * Drain options force. Default `false` (bool)
+     * If `force` is set to true, drain nodes even if there are standalone pods that are not managed by a ReplicationController, Job, or DaemonSet. Drain will not proceed without `force` set to true if there are such pods.
      */
     force?: boolean;
     /**
-     * Drain options grace period (int)
+     * Time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used.
      */
     gracePeriod: number;
     /**
-     * Drain options ignore daemon sets. Default `true` (bool)
+     * If `ignoreDaemonSets` is set to false, drain will not proceed if there are DaemonSet-managed pods.
      */
     ignoreDaemonSets?: boolean;
     /**
-     * Drain options ignore errors. Default `false` (bool)
+     * If `ignoreErrors` is set to true,  errors that occurred between drain nodes in group are ignored.
      */
     ignoreErrors?: boolean;
     /**
-     * Drain options skip wait for delete timeout seconds (int)
+     * Skip waiting for the pods that have a DeletionTimeStamp > N seconds to be deleted. Seconds must be greater than 0 to skip. Such pods will be force deleted.
      */
     skipWaitForDeleteTimeoutSeconds: number;
     /**
-     * Drain options timeout (int)
+     * Time to wait (in seconds) before giving up for one try.
      */
     timeout: number;
 }
 
 export interface ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions {
     /**
-     * Drain options delete empty dir data. Default `false` (bool)
+     * if `deleteEmptyDirData` is set to true, continue draining even if there are pods using emptyDir (local storage).
      */
     deleteEmptyDirData?: boolean;
     /**
-     * Drain options disable eviction. Default `false` (bool)
+     * If `disableEviction` is set to true, force drain to use delete rather than evict.
      */
     disableEviction?: boolean;
     /**
-     * Drain options enabled? Default `true` (bool)
+     * If `enabled` is set to true, nodes will be drained before upgrade.
      */
     enabled?: boolean;
     /**
-     * Drain options force. Default `false` (bool)
+     * If `force` is set to true, drain nodes even if there are standalone pods that are not managed by a ReplicationController, Job, or DaemonSet. Drain will not proceed without `force` set to true if there are such pods.
      */
     force?: boolean;
     /**
-     * Drain options grace period (int)
+     * Time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used.
      */
     gracePeriod: number;
     /**
-     * Drain options ignore daemon sets. Default `true` (bool)
+     * If `ignoreDaemonSets` is set to false, drain will not proceed if there are DaemonSet-managed pods.
      */
     ignoreDaemonSets?: boolean;
     /**
-     * Drain options ignore errors. Default `false` (bool)
+     * If `ignoreErrors` is set to true,  errors that occurred between drain nodes in group are ignored.
      */
     ignoreErrors?: boolean;
     /**
-     * Drain options skip wait for delete timeout seconds (int)
+     * Skip waiting for the pods that have a DeletionTimeStamp > N seconds to be deleted. Seconds must be greater than 0 to skip. Such pods will be force deleted.
      */
     skipWaitForDeleteTimeoutSeconds: number;
     /**
-     * Drain options timeout (int)
+     * Time to wait (in seconds) before giving up for one try.
      */
     timeout: number;
 }
@@ -5709,7 +5760,7 @@ export interface GetClusterAlertGroupRecipient {
     recipient: string;
 }
 
-export interface GetClusterAlterRuleEventRule {
+export interface GetClusterAlertRuleEventRule {
     /**
      * Event type
      */
@@ -5720,7 +5771,7 @@ export interface GetClusterAlterRuleEventRule {
     resourceKind: string;
 }
 
-export interface GetClusterAlterRuleMetricRule {
+export interface GetClusterAlertRuleMetricRule {
     /**
      * Metric rule comparison
      */
@@ -5743,7 +5794,7 @@ export interface GetClusterAlterRuleMetricRule {
     thresholdValue: number;
 }
 
-export interface GetClusterAlterRuleNodeRule {
+export interface GetClusterAlertRuleNodeRule {
     /**
      * Node rule condition
      */
@@ -5766,7 +5817,7 @@ export interface GetClusterAlterRuleNodeRule {
     selector?: {[key: string]: any};
 }
 
-export interface GetClusterAlterRuleSystemServiceRule {
+export interface GetClusterAlertRuleSystemServiceRule {
     /**
      * System service rule condition
      */
@@ -7032,6 +7083,7 @@ export interface GetClusterRkeConfigCloudProviderVsphereCloudProviderDisk {
 
 export interface GetClusterRkeConfigCloudProviderVsphereCloudProviderGlobal {
     datacenters: string;
+    gracefulShutdownTimeout?: string;
     insecureFlag: boolean;
     password: string;
     port: string;
@@ -7903,6 +7955,7 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudPr
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobal {
     datacenters: string;
+    gracefulShutdownTimeout?: string;
     insecureFlag: boolean;
     password: string;
     port: string;
@@ -8513,6 +8566,10 @@ export interface GetClusterV2RkeConfig {
      */
     machineSelectorConfigs: outputs.GetClusterV2RkeConfigMachineSelectorConfig[];
     /**
+     * Cluster V2 machine selector files
+     */
+    machineSelectorFiles: outputs.GetClusterV2RkeConfigMachineSelectorFile[];
+    /**
      * Cluster V2 registries
      */
     registries?: outputs.GetClusterV2RkeConfigRegistries;
@@ -8696,6 +8753,10 @@ export interface GetClusterV2RkeConfigMachinePoolDefault {
 
 export interface GetClusterV2RkeConfigMachinePoolMachineConfig {
     /**
+     * Machine config API version
+     */
+    apiVersion?: string;
+    /**
      * Machine config kind
      */
     kind: string;
@@ -8745,6 +8806,130 @@ export interface GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector 
 }
 
 export interface GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression {
+    /**
+     * Label selector requirement key
+     */
+    key?: string;
+    /**
+     * Label selector operator
+     */
+    operator?: string;
+    /**
+     * Label selector requirement values
+     */
+    values?: string[];
+}
+
+export interface GetClusterV2RkeConfigMachineSelectorFile {
+    /**
+     * File sources
+     */
+    fileSources?: outputs.GetClusterV2RkeConfigMachineSelectorFileFileSource[];
+    /**
+     * Machine label selector
+     */
+    machineLabelSelector?: outputs.GetClusterV2RkeConfigMachineSelectorFileMachineLabelSelector;
+}
+
+export interface GetClusterV2RkeConfigMachineSelectorFileFileSource {
+    /**
+     * The configmap which is the source of files
+     */
+    configmap?: outputs.GetClusterV2RkeConfigMachineSelectorFileFileSourceConfigmap;
+    /**
+     * The secret which is the source of files
+     */
+    secret?: outputs.GetClusterV2RkeConfigMachineSelectorFileFileSourceSecret;
+}
+
+export interface GetClusterV2RkeConfigMachineSelectorFileFileSourceConfigmap {
+    /**
+     * The default permissions to be applied when they are not set at the item level
+     */
+    defaultPermissions?: string;
+    /**
+     * Items(files) to retrieve from the K8s object
+     */
+    items?: outputs.GetClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapItem[];
+    /**
+     * The name of the Cluster v2 (string)
+     */
+    name: string;
+}
+
+export interface GetClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapItem {
+    /**
+     * If ture, the file is ignored when determining whether the node should be drained before updating the node plan (default: true).
+     */
+    dynamic?: boolean;
+    /**
+     * The base64 encoded value of the SHA256 checksum of the file's content
+     */
+    hash?: string;
+    /**
+     * The key of the item(file) to retrieve
+     */
+    key: string;
+    /**
+     * The path to put the file in the target node
+     */
+    path: string;
+    /**
+     * The numeric representation of the file permissions
+     */
+    permissions?: string;
+}
+
+export interface GetClusterV2RkeConfigMachineSelectorFileFileSourceSecret {
+    /**
+     * The default permissions to be applied when they are not set at the item level
+     */
+    defaultPermissions?: string;
+    /**
+     * Items(files) to retrieve from the K8s object
+     */
+    items?: outputs.GetClusterV2RkeConfigMachineSelectorFileFileSourceSecretItem[];
+    /**
+     * The name of the Cluster v2 (string)
+     */
+    name: string;
+}
+
+export interface GetClusterV2RkeConfigMachineSelectorFileFileSourceSecretItem {
+    /**
+     * If ture, the file is ignored when determining whether the node should be drained before updating the node plan (default: true).
+     */
+    dynamic?: boolean;
+    /**
+     * The base64 encoded value of the SHA256 checksum of the file's content
+     */
+    hash?: string;
+    /**
+     * The key of the item(file) to retrieve
+     */
+    key: string;
+    /**
+     * The path to put the file in the target node
+     */
+    path: string;
+    /**
+     * The numeric representation of the file permissions
+     */
+    permissions?: string;
+}
+
+export interface GetClusterV2RkeConfigMachineSelectorFileMachineLabelSelector {
+    /**
+     * Label selector match expressions
+     */
+    matchExpressions?: outputs.GetClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpression[];
+    /**
+     * Label selector match labels
+     */
+    matchLabels?: {[key: string]: any};
+}
+
+export interface GetClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpression {
     /**
      * Label selector requirement key
      */
@@ -9496,29 +9681,6 @@ export interface GetRegistryRegistry {
     address: string;
     password?: string;
     username?: string;
-}
-
-export interface GetRoleTempalteRule {
-    /**
-     * Policy rule api groups
-     */
-    apiGroups?: string[];
-    /**
-     * Policy rule non resource urls
-     */
-    nonResourceUrls?: string[];
-    /**
-     * Policy rule resource names
-     */
-    resourceNames?: string[];
-    /**
-     * Policy rule resources
-     */
-    resources?: string[];
-    /**
-     * Policy rule verbs
-     */
-    verbs?: string[];
 }
 
 export interface GetRoleTemplateRule {
@@ -10324,6 +10486,10 @@ export interface MachineConfigV2VsphereConfig {
      * vSphere folder for the docker VM. This folder must already exist in the datacenter (string)
      */
     folder?: string;
+    /**
+     * Duration in seconds before the graceful shutdown of the VM times out and the VM is destroyed. A force destroy will be performed when the value is zero (string)
+     */
+    gracefulShutdownTimeout?: string;
     /**
      * vSphere compute resource where the docker VM will be instantiated. This can be omitted if using a cluster with DRS (string)
      */
@@ -11440,6 +11606,10 @@ export interface NodeTemplateVsphereConfig {
      */
     folder?: string;
     /**
+     * Duration in seconds before the graceful shutdown of the VM times out and the VM is destroyed. A force destroy will be performed when the value is zero
+     */
+    gracefulShutdownTimeout?: string;
+    /**
      * vSphere compute resource where the docker VM will be instantiated. This can be omitted if using a cluster with DRS (string)
      */
     hostsystem?: string;
@@ -12033,29 +12203,6 @@ export interface RegistryRegistry {
      * Username for the registry (string)
      */
     username?: string;
-}
-
-export interface RoleTempalteRule {
-    /**
-     * Policy rule api groups (list)
-     */
-    apiGroups?: string[];
-    /**
-     * Policy rule non resource urls (list)
-     */
-    nonResourceUrls?: string[];
-    /**
-     * Policy rule resource names (list)
-     */
-    resourceNames?: string[];
-    /**
-     * Policy rule resources (list)
-     */
-    resources?: string[];
-    /**
-     * Policy rule verbs. `bind`, `create`, `delete`, `deletecollection`, `escalate`, `get`, `impersonate`, `list`, `patch`, `update`, `use`, `view`, `watch`, `own` and `*` values are supported (list)
-     */
-    verbs?: string[];
 }
 
 export interface RoleTemplateRule {

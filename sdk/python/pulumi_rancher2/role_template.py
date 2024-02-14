@@ -611,8 +611,6 @@ class RoleTemplate(pulumi.CustomResource):
             __props__.__dict__["role_template_ids"] = role_template_ids
             __props__.__dict__["rules"] = rules
             __props__.__dict__["builtin"] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="rancher2:index/roleTempalte:RoleTempalte")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(RoleTemplate, __self__).__init__(
             'rancher2:index/roleTemplate:RoleTemplate',
             resource_name,

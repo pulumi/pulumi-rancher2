@@ -14,39 +14,39 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions
     {
         /// <summary>
-        /// Drain options delete empty dir data. Default `false` (bool)
+        /// if `delete_empty_dir_data` is set to true, continue draining even if there are pods using emptyDir (local storage).
         /// </summary>
         public readonly bool? DeleteEmptyDirData;
         /// <summary>
-        /// Drain options disable eviction. Default `false` (bool)
+        /// If `disable_eviction` is set to true, force drain to use delete rather than evict.
         /// </summary>
         public readonly bool? DisableEviction;
         /// <summary>
-        /// Drain options enabled? Default `true` (bool)
+        /// If `enabled` is set to true, nodes will be drained before upgrade.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Drain options force. Default `false` (bool)
+        /// If `force` is set to true, drain nodes even if there are standalone pods that are not managed by a ReplicationController, Job, or DaemonSet. Drain will not proceed without `force` set to true if there are such pods.
         /// </summary>
         public readonly bool? Force;
         /// <summary>
-        /// Drain options grace period (int)
+        /// Time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used.
         /// </summary>
         public readonly int? GracePeriod;
         /// <summary>
-        /// Drain options ignore daemon sets. Default `true` (bool)
+        /// If `ignore_daemon_sets` is set to false, drain will not proceed if there are DaemonSet-managed pods.
         /// </summary>
         public readonly bool? IgnoreDaemonSets;
         /// <summary>
-        /// Drain options ignore errors. Default `false` (bool)
+        /// If `ignore_errors` is set to true,  errors that occurred between drain nodes in group are ignored.
         /// </summary>
         public readonly bool? IgnoreErrors;
         /// <summary>
-        /// Drain options skip wait for delete timeout seconds (int)
+        /// Skip waiting for the pods that have a DeletionTimeStamp &gt; N seconds to be deleted. Seconds must be greater than 0 to skip. Such pods will be force deleted.
         /// </summary>
         public readonly int? SkipWaitForDeleteTimeoutSeconds;
         /// <summary>
-        /// Drain options timeout (int)
+        /// Time to wait (in seconds) before giving up for one try.
         /// </summary>
         public readonly int? Timeout;
 

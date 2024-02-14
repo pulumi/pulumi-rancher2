@@ -122,10 +122,6 @@ namespace Pulumi.Rancher2
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                Aliases =
-                {
-                    new global::Pulumi.Alias { Type = "rancher2:index/clusterAlterGroup:ClusterAlterGroup" },
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

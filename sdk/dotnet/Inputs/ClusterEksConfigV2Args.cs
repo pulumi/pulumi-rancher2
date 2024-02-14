@@ -25,7 +25,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? Imported { get; set; }
 
         /// <summary>
-        /// The AWS kms key to use (string)
+        /// The AWS kms label ARN to use (string, e.g. arn:aws:kms:&lt;ZONE&gt;:&lt;123456789100&gt;:alias/&lt;NAME&gt;)
         /// </summary>
         [Input("kmsKey")]
         public Input<string>? KmsKey { get; set; }

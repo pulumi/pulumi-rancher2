@@ -14,31 +14,31 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterV2RkeConfigEtcdS3Config
     {
         /// <summary>
-        /// Bucket name for S3 service (string)
+        /// Bucket name for S3 service.
         /// </summary>
         public readonly string Bucket;
         /// <summary>
-        /// ETCD snapshot S3 cloud credential name (string)
+        /// ETCD snapshot S3 cloud credential name.
         /// </summary>
         public readonly string? CloudCredentialName;
         /// <summary>
-        /// ETCD snapshot S3 endpoint (string)
+        /// ETCD snapshot S3 endpoint.
         /// </summary>
         public readonly string Endpoint;
         /// <summary>
-        /// ETCD snapshot S3 endpoint CA (string)
+        /// ETCD snapshot S3 endpoint CA.
         /// </summary>
         public readonly string? EndpointCa;
         /// <summary>
-        /// ETCD snapshot S3 folder (string)
+        /// ETCD snapshot S3 folder.
         /// </summary>
         public readonly string? Folder;
         /// <summary>
-        /// ETCD snapshot S3 region (string)
+        /// ETCD snapshot S3 region.
         /// </summary>
         public readonly string? Region;
         /// <summary>
-        /// Disable ETCD skip ssl verify. Default: `false` (bool)
+        /// Disable ETCD skip ssl verify.
         /// </summary>
         public readonly bool? SkipSslVerify;
 

@@ -175,8 +175,6 @@ export class ClusterAlertRule extends pulumi.CustomResource {
             resourceInputs["systemServiceRule"] = args ? args.systemServiceRule : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "rancher2:index/clusterAlterRule:ClusterAlterRule" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ClusterAlertRule.__pulumiType, name, resourceInputs, opts);
     }
 }

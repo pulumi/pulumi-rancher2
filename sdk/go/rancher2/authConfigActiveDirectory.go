@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v6/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -115,12 +115,6 @@ func NewAuthConfigActiveDirectory(ctx *pulumi.Context,
 	if args.UserSearchBase == nil {
 		return nil, errors.New("invalid value for required argument 'UserSearchBase'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("rancher2:index/activeDirectory:ActiveDirectory"),
-		},
-	})
-	opts = append(opts, aliases)
 	if args.Certificate != nil {
 		args.Certificate = pulumi.ToSecret(args.Certificate).(pulumi.StringPtrInput)
 	}

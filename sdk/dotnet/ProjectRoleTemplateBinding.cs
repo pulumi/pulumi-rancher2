@@ -77,7 +77,7 @@ namespace Pulumi.Rancher2
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The project id where bind project role template (string)
+        /// The project id where bind project role template, in format `cluster_id:project_id`, e.g. `c-abc12:p-def34` (string)
         /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
@@ -191,7 +191,7 @@ namespace Pulumi.Rancher2
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The project id where bind project role template (string)
+        /// The project id where bind project role template, in format `cluster_id:project_id`, e.g. `c-abc12:p-def34` (string)
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
@@ -267,7 +267,7 @@ namespace Pulumi.Rancher2
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The project id where bind project role template (string)
+        /// The project id where bind project role template, in format `cluster_id:project_id`, e.g. `c-abc12:p-def34` (string)
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }

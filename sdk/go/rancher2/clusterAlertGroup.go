@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v6/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v6/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -85,12 +85,6 @@ func NewClusterAlertGroup(ctx *pulumi.Context,
 	if args.ClusterId == nil {
 		return nil, errors.New("invalid value for required argument 'ClusterId'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("rancher2:index/clusterAlterGroup:ClusterAlterGroup"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ClusterAlertGroup
 	err := ctx.RegisterResource("rancher2:index/clusterAlertGroup:ClusterAlertGroup", name, args, &resource, opts...)

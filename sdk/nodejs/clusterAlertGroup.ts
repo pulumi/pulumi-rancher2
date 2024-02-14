@@ -135,8 +135,6 @@ export class ClusterAlertGroup extends pulumi.CustomResource {
             resourceInputs["repeatIntervalSeconds"] = args ? args.repeatIntervalSeconds : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "rancher2:index/clusterAlterGroup:ClusterAlterGroup" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ClusterAlertGroup.__pulumiType, name, resourceInputs, opts);
     }
 }

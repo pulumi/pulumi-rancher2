@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v6/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,7 +22,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v6/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -61,7 +61,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v6/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -142,12 +142,6 @@ func NewRoleTemplate(ctx *pulumi.Context,
 		args = &RoleTemplateArgs{}
 	}
 
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("rancher2:index/roleTempalte:RoleTempalte"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RoleTemplate
 	err := ctx.RegisterResource("rancher2:index/roleTemplate:RoleTemplate", name, args, &resource, opts...)

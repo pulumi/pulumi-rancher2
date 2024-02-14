@@ -13,31 +13,31 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterV2RkeConfigRegistriesConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Registry auth config secret name (string)
+        /// Name of the secret that contains two keys with base64 encoded values: the username and password for the specified custom registry. No secret is required if the system-default-registry is not authenticated.
         /// </summary>
         [Input("authConfigSecretName")]
         public Input<string>? AuthConfigSecretName { get; set; }
 
         /// <summary>
-        /// Registry CA bundle (string)
+        /// Registry CA bundle.
         /// </summary>
         [Input("caBundle")]
         public Input<string>? CaBundle { get; set; }
 
         /// <summary>
-        /// Registry hostname (string)
+        /// Registry hostname.
         /// </summary>
         [Input("hostname", required: true)]
         public Input<string> Hostname { get; set; } = null!;
 
         /// <summary>
-        /// Registry insecure connectivity (bool)
+        /// Registry insecure connectivity.
         /// </summary>
         [Input("insecure")]
         public Input<bool>? Insecure { get; set; }
 
         /// <summary>
-        /// Registry TLS secret name. TLS is a pair of Cert/Key (string)
+        /// Registry TLS secret name. TLS is a pair of Cert/Key.
         /// </summary>
         [Input("tlsSecretName")]
         public Input<string>? TlsSecretName { get; set; }

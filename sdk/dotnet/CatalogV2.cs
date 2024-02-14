@@ -30,7 +30,7 @@ namespace Pulumi.Rancher2
         public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
 
         /// <summary>
-        /// PEM encoded CA bundle which will be used to validate the repo's certificate (string)
+        /// CA certificate in base64-encoded DER format which will be used to validate the repo's certificate (string)
         /// </summary>
         [Output("caBundle")]
         public Output<string?> CaBundle { get; private set; } = null!;
@@ -172,7 +172,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// PEM encoded CA bundle which will be used to validate the repo's certificate (string)
+        /// CA certificate in base64-encoded DER format which will be used to validate the repo's certificate (string)
         /// </summary>
         [Input("caBundle")]
         public Input<string>? CaBundle { get; set; }
@@ -276,7 +276,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// PEM encoded CA bundle which will be used to validate the repo's certificate (string)
+        /// CA certificate in base64-encoded DER format which will be used to validate the repo's certificate (string)
         /// </summary>
         [Input("caBundle")]
         public Input<string>? CaBundle { get; set; }

@@ -27,6 +27,7 @@ class AppV2Args:
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
+                 system_default_registry: Optional[pulumi.Input[str]] = None,
                  values: Optional[pulumi.Input[str]] = None,
                  wait: Optional[pulumi.Input[bool]] = None):
         """
@@ -44,6 +45,7 @@ class AppV2Args:
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for the app v2 (map)
         :param pulumi.Input[str] name: The name of the app v2 (string)
         :param pulumi.Input[str] project_id: Deploy the app v2 within project ID (string)
+        :param pulumi.Input[str] system_default_registry: System default registry providing images for app deployment (string)
         :param pulumi.Input[str] values: The app v2 values yaml. Yaml format is required (string)
         :param pulumi.Input[bool] wait: Wait until app is deployed. Default: `true` (bool)
         """
@@ -69,6 +71,8 @@ class AppV2Args:
             pulumi.set(__self__, "name", name)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
+        if system_default_registry is not None:
+            pulumi.set(__self__, "system_default_registry", system_default_registry)
         if values is not None:
             pulumi.set(__self__, "values", values)
         if wait is not None:
@@ -231,6 +235,18 @@ class AppV2Args:
         pulumi.set(self, "project_id", value)
 
     @property
+    @pulumi.getter(name="systemDefaultRegistry")
+    def system_default_registry(self) -> Optional[pulumi.Input[str]]:
+        """
+        System default registry providing images for app deployment (string)
+        """
+        return pulumi.get(self, "system_default_registry")
+
+    @system_default_registry.setter
+    def system_default_registry(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "system_default_registry", value)
+
+    @property
     @pulumi.getter
     def values(self) -> Optional[pulumi.Input[str]]:
         """
@@ -295,7 +311,7 @@ class _AppV2State:
         :param pulumi.Input[str] namespace: The namespace of the app v2 (string)
         :param pulumi.Input[str] project_id: Deploy the app v2 within project ID (string)
         :param pulumi.Input[str] repo_name: Repo name (string)
-        :param pulumi.Input[str] system_default_registry: (Computed) The system default registry of the app (string)
+        :param pulumi.Input[str] system_default_registry: System default registry providing images for app deployment (string)
         :param pulumi.Input[str] values: The app v2 values yaml. Yaml format is required (string)
         :param pulumi.Input[bool] wait: Wait until app is deployed. Default: `true` (bool)
         """
@@ -522,7 +538,7 @@ class _AppV2State:
     @pulumi.getter(name="systemDefaultRegistry")
     def system_default_registry(self) -> Optional[pulumi.Input[str]]:
         """
-        (Computed) The system default registry of the app (string)
+        System default registry providing images for app deployment (string)
         """
         return pulumi.get(self, "system_default_registry")
 
@@ -573,6 +589,7 @@ class AppV2(pulumi.CustomResource):
                  namespace: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  repo_name: Optional[pulumi.Input[str]] = None,
+                 system_default_registry: Optional[pulumi.Input[str]] = None,
                  values: Optional[pulumi.Input[str]] = None,
                  wait: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -593,6 +610,21 @@ class AppV2(pulumi.CustomResource):
             chart_name="rancher-monitoring",
             chart_version="9.4.200",
             values=(lambda path: open(path).read())("values.yaml"))
+        ```
+        ### Create an App from a Helm Chart using a different registry
+
+        The `system_default_registry` argument can override the global value at App installation. If argument is not provided, the global value for System Default Registry will be used instead.
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        cis_benchmark = rancher2.AppV2("cisBenchmark",
+            chart_name="rancher-cis-benchmark",
+            cluster_id="<CLUSTER_ID>",
+            namespace="cis-operator-system",
+            repo_name="rancher-charts",
+            system_default_registry="<some.dns.here>:<PORT>")
         ```
 
         ## Import
@@ -618,6 +650,7 @@ class AppV2(pulumi.CustomResource):
         :param pulumi.Input[str] namespace: The namespace of the app v2 (string)
         :param pulumi.Input[str] project_id: Deploy the app v2 within project ID (string)
         :param pulumi.Input[str] repo_name: Repo name (string)
+        :param pulumi.Input[str] system_default_registry: System default registry providing images for app deployment (string)
         :param pulumi.Input[str] values: The app v2 values yaml. Yaml format is required (string)
         :param pulumi.Input[bool] wait: Wait until app is deployed. Default: `true` (bool)
         """
@@ -644,6 +677,21 @@ class AppV2(pulumi.CustomResource):
             chart_name="rancher-monitoring",
             chart_version="9.4.200",
             values=(lambda path: open(path).read())("values.yaml"))
+        ```
+        ### Create an App from a Helm Chart using a different registry
+
+        The `system_default_registry` argument can override the global value at App installation. If argument is not provided, the global value for System Default Registry will be used instead.
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        cis_benchmark = rancher2.AppV2("cisBenchmark",
+            chart_name="rancher-cis-benchmark",
+            cluster_id="<CLUSTER_ID>",
+            namespace="cis-operator-system",
+            repo_name="rancher-charts",
+            system_default_registry="<some.dns.here>:<PORT>")
         ```
 
         ## Import
@@ -682,6 +730,7 @@ class AppV2(pulumi.CustomResource):
                  namespace: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  repo_name: Optional[pulumi.Input[str]] = None,
+                 system_default_registry: Optional[pulumi.Input[str]] = None,
                  values: Optional[pulumi.Input[str]] = None,
                  wait: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -714,11 +763,11 @@ class AppV2(pulumi.CustomResource):
             if repo_name is None and not opts.urn:
                 raise TypeError("Missing required property 'repo_name'")
             __props__.__dict__["repo_name"] = repo_name
+            __props__.__dict__["system_default_registry"] = system_default_registry
             __props__.__dict__["values"] = values
             __props__.__dict__["wait"] = wait
             __props__.__dict__["cluster_name"] = None
             __props__.__dict__["deployment_values"] = None
-            __props__.__dict__["system_default_registry"] = None
         super(AppV2, __self__).__init__(
             'rancher2:index/appV2:AppV2',
             resource_name,
@@ -771,7 +820,7 @@ class AppV2(pulumi.CustomResource):
         :param pulumi.Input[str] namespace: The namespace of the app v2 (string)
         :param pulumi.Input[str] project_id: Deploy the app v2 within project ID (string)
         :param pulumi.Input[str] repo_name: Repo name (string)
-        :param pulumi.Input[str] system_default_registry: (Computed) The system default registry of the app (string)
+        :param pulumi.Input[str] system_default_registry: System default registry providing images for app deployment (string)
         :param pulumi.Input[str] values: The app v2 values yaml. Yaml format is required (string)
         :param pulumi.Input[bool] wait: Wait until app is deployed. Default: `true` (bool)
         """
@@ -925,7 +974,7 @@ class AppV2(pulumi.CustomResource):
     @pulumi.getter(name="systemDefaultRegistry")
     def system_default_registry(self) -> pulumi.Output[str]:
         """
-        (Computed) The system default registry of the app (string)
+        System default registry providing images for app deployment (string)
         """
         return pulumi.get(self, "system_default_registry")
 

@@ -80,7 +80,7 @@ export class ProjectRoleTemplateBinding extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The project id where bind project role template (string)
+     * The project id where bind project role template, in format `cluster_id:project_id`, e.g. `c-abc12:p-def34` (string)
      */
     public readonly projectId!: pulumi.Output<string>;
     /**
@@ -168,7 +168,7 @@ export interface ProjectRoleTemplateBindingState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The project id where bind project role template (string)
+     * The project id where bind project role template, in format `cluster_id:project_id`, e.g. `c-abc12:p-def34` (string)
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -212,7 +212,7 @@ export interface ProjectRoleTemplateBindingArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The project id where bind project role template (string)
+     * The project id where bind project role template, in format `cluster_id:project_id`, e.g. `c-abc12:p-def34` (string)
      */
     projectId: pulumi.Input<string>;
     /**

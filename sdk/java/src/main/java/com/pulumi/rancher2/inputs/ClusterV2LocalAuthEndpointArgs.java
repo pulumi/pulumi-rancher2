@@ -17,14 +17,14 @@ public final class ClusterV2LocalAuthEndpointArgs extends com.pulumi.resources.R
     public static final ClusterV2LocalAuthEndpointArgs Empty = new ClusterV2LocalAuthEndpointArgs();
 
     /**
-     * CA certs for the authorized cluster endpoint (string)
+     * CA certs for the authorized cluster endpoint. It is only needed if there is a load balancer in front of the downstream cluster that is using an untrusted certificate. If you have a valid certificate, then nothing needs to be added to the CA Certificates field.
      * 
      */
     @Import(name="caCerts")
     private @Nullable Output<String> caCerts;
 
     /**
-     * @return CA certs for the authorized cluster endpoint (string)
+     * @return CA certs for the authorized cluster endpoint. It is only needed if there is a load balancer in front of the downstream cluster that is using an untrusted certificate. If you have a valid certificate, then nothing needs to be added to the CA Certificates field.
      * 
      */
     public Optional<Output<String>> caCerts() {
@@ -32,14 +32,14 @@ public final class ClusterV2LocalAuthEndpointArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Drain options enabled? Default `true` (bool)
+     * If `enabled` is set to true, nodes will be drained before upgrade.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Drain options enabled? Default `true` (bool)
+     * @return If `enabled` is set to true, nodes will be drained before upgrade.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -47,14 +47,14 @@ public final class ClusterV2LocalAuthEndpointArgs extends com.pulumi.resources.R
     }
 
     /**
-     * FQDN for the authorized cluster endpoint (string)
+     * FQDN for the authorized cluster endpoint. If one is entered, it should point to the downstream cluster.
      * 
      */
     @Import(name="fqdn")
     private @Nullable Output<String> fqdn;
 
     /**
-     * @return FQDN for the authorized cluster endpoint (string)
+     * @return FQDN for the authorized cluster endpoint. If one is entered, it should point to the downstream cluster.
      * 
      */
     public Optional<Output<String>> fqdn() {
@@ -88,7 +88,7 @@ public final class ClusterV2LocalAuthEndpointArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param caCerts CA certs for the authorized cluster endpoint (string)
+         * @param caCerts CA certs for the authorized cluster endpoint. It is only needed if there is a load balancer in front of the downstream cluster that is using an untrusted certificate. If you have a valid certificate, then nothing needs to be added to the CA Certificates field.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class ClusterV2LocalAuthEndpointArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param caCerts CA certs for the authorized cluster endpoint (string)
+         * @param caCerts CA certs for the authorized cluster endpoint. It is only needed if there is a load balancer in front of the downstream cluster that is using an untrusted certificate. If you have a valid certificate, then nothing needs to be added to the CA Certificates field.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class ClusterV2LocalAuthEndpointArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param enabled Drain options enabled? Default `true` (bool)
+         * @param enabled If `enabled` is set to true, nodes will be drained before upgrade.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class ClusterV2LocalAuthEndpointArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param enabled Drain options enabled? Default `true` (bool)
+         * @param enabled If `enabled` is set to true, nodes will be drained before upgrade.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class ClusterV2LocalAuthEndpointArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param fqdn FQDN for the authorized cluster endpoint (string)
+         * @param fqdn FQDN for the authorized cluster endpoint. If one is entered, it should point to the downstream cluster.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class ClusterV2LocalAuthEndpointArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param fqdn FQDN for the authorized cluster endpoint (string)
+         * @param fqdn FQDN for the authorized cluster endpoint. If one is entered, it should point to the downstream cluster.
          * 
          * @return builder
          * 

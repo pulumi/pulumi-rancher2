@@ -12,6 +12,7 @@ import java.lang.String;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGlobalRoleResult {
@@ -35,6 +36,11 @@ public final class GetGlobalRoleResult {
      * 
      */
     private String id;
+    /**
+     * @return (Optional) Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
+     * 
+     */
+    private @Nullable List<String> inheritedClusterRoles;
     /**
      * @return (Computed) Labels for global role object (map)
      * 
@@ -82,6 +88,13 @@ public final class GetGlobalRoleResult {
         return this.id;
     }
     /**
+     * @return (Optional) Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
+     * 
+     */
+    public List<String> inheritedClusterRoles() {
+        return this.inheritedClusterRoles == null ? List.of() : this.inheritedClusterRoles;
+    }
+    /**
      * @return (Computed) Labels for global role object (map)
      * 
      */
@@ -119,6 +132,7 @@ public final class GetGlobalRoleResult {
         private Boolean builtin;
         private String description;
         private String id;
+        private @Nullable List<String> inheritedClusterRoles;
         private Map<String,Object> labels;
         private String name;
         private Boolean newUserDefault;
@@ -130,6 +144,7 @@ public final class GetGlobalRoleResult {
     	      this.builtin = defaults.builtin;
     	      this.description = defaults.description;
     	      this.id = defaults.id;
+    	      this.inheritedClusterRoles = defaults.inheritedClusterRoles;
     	      this.labels = defaults.labels;
     	      this.name = defaults.name;
     	      this.newUserDefault = defaults.newUserDefault;
@@ -167,6 +182,15 @@ public final class GetGlobalRoleResult {
             }
             this.id = id;
             return this;
+        }
+        @CustomType.Setter
+        public Builder inheritedClusterRoles(@Nullable List<String> inheritedClusterRoles) {
+
+            this.inheritedClusterRoles = inheritedClusterRoles;
+            return this;
+        }
+        public Builder inheritedClusterRoles(String... inheritedClusterRoles) {
+            return inheritedClusterRoles(List.of(inheritedClusterRoles));
         }
         @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
@@ -209,6 +233,7 @@ public final class GetGlobalRoleResult {
             _resultValue.builtin = builtin;
             _resultValue.description = description;
             _resultValue.id = id;
+            _resultValue.inheritedClusterRoles = inheritedClusterRoles;
             _resultValue.labels = labels;
             _resultValue.name = name;
             _resultValue.newUserDefault = newUserDefault;

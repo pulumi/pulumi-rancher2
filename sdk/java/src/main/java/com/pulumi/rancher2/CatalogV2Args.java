@@ -35,14 +35,14 @@ public final class CatalogV2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * PEM encoded CA bundle which will be used to validate the repo&#39;s certificate (string)
+     * CA certificate in base64-encoded DER format which will be used to validate the repo&#39;s certificate (string)
      * 
      */
     @Import(name="caBundle")
     private @Nullable Output<String> caBundle;
 
     /**
-     * @return PEM encoded CA bundle which will be used to validate the repo&#39;s certificate (string)
+     * @return CA certificate in base64-encoded DER format which will be used to validate the repo&#39;s certificate (string)
      * 
      */
     public Optional<Output<String>> caBundle() {
@@ -288,7 +288,7 @@ public final class CatalogV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param caBundle PEM encoded CA bundle which will be used to validate the repo&#39;s certificate (string)
+         * @param caBundle CA certificate in base64-encoded DER format which will be used to validate the repo&#39;s certificate (string)
          * 
          * @return builder
          * 
@@ -299,7 +299,7 @@ public final class CatalogV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param caBundle PEM encoded CA bundle which will be used to validate the repo&#39;s certificate (string)
+         * @param caBundle CA certificate in base64-encoded DER format which will be used to validate the repo&#39;s certificate (string)
          * 
          * @return builder
          * 

@@ -581,89 +581,6 @@ export interface ClusterAlertRuleSystemServiceRule {
     condition?: pulumi.Input<string>;
 }
 
-export interface ClusterAlterGroupRecipient {
-    /**
-     * Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
-     */
-    defaultRecipient?: pulumi.Input<boolean>;
-    /**
-     * Recipient notifier ID (string)
-     */
-    notifierId: pulumi.Input<string>;
-    /**
-     * Recipient notifier ID. Supported values : `"dingtalk" | "msteams" | "pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
-     */
-    notifierType?: pulumi.Input<string>;
-    /**
-     * Recipient (string)
-     */
-    recipient?: pulumi.Input<string>;
-}
-
-export interface ClusterAlterRuleEventRule {
-    /**
-     * Event type
-     */
-    eventType?: pulumi.Input<string>;
-    /**
-     * Resource kind
-     */
-    resourceKind: pulumi.Input<string>;
-}
-
-export interface ClusterAlterRuleMetricRule {
-    /**
-     * Metric rule comparison
-     */
-    comparison?: pulumi.Input<string>;
-    /**
-     * The cluster alert group description (string)
-     */
-    description?: pulumi.Input<string>;
-    /**
-     * Metric rule duration
-     */
-    duration: pulumi.Input<string>;
-    /**
-     * Metric rule expression
-     */
-    expression: pulumi.Input<string>;
-    /**
-     * Metric rule threshold value
-     */
-    thresholdValue: pulumi.Input<number>;
-}
-
-export interface ClusterAlterRuleNodeRule {
-    /**
-     * Node rule condition
-     */
-    condition?: pulumi.Input<string>;
-    /**
-     * Node rule cpu threshold
-     */
-    cpuThreshold?: pulumi.Input<number>;
-    /**
-     * Node rule mem threshold
-     */
-    memThreshold?: pulumi.Input<number>;
-    /**
-     * Node ID
-     */
-    nodeId?: pulumi.Input<string>;
-    /**
-     * Node rule selector
-     */
-    selector?: pulumi.Input<{[key: string]: any}>;
-}
-
-export interface ClusterAlterRuleSystemServiceRule {
-    /**
-     * System service rule condition
-     */
-    condition?: pulumi.Input<string>;
-}
-
 export interface ClusterClusterAgentDeploymentCustomization {
     /**
      * User defined tolerations to append to agent (list)
@@ -925,7 +842,7 @@ export interface ClusterEksConfigV2 {
      */
     imported?: pulumi.Input<boolean>;
     /**
-     * The AWS kms key to use (string)
+     * The AWS kms label ARN to use (string, e.g. arn:aws:kms:<ZONE>:<123456789100>:alias/<NAME>)
      */
     kmsKey?: pulumi.Input<string>;
     /**
@@ -2388,6 +2305,7 @@ export interface ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal {
      * (string)
      */
     datacenters?: pulumi.Input<string>;
+    gracefulShutdownTimeout?: pulumi.Input<string>;
     /**
      * (bool)
      */
@@ -4089,6 +4007,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProvi
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobal {
     datacenters?: pulumi.Input<string>;
+    gracefulShutdownTimeout?: pulumi.Input<string>;
     insecureFlag?: pulumi.Input<boolean>;
     password?: pulumi.Input<string>;
     port?: pulumi.Input<string>;
@@ -4633,228 +4552,228 @@ export interface ClusterTemplateTemplateRevisionQuestion {
 
 export interface ClusterV2AgentEnvVar {
     /**
-     * The name of the Cluster v2 (string)
+     * The name of the cluster.
      */
     name: pulumi.Input<string>;
     /**
-     * The taint value (string)
+     * The taint value.
      */
     value: pulumi.Input<string>;
 }
 
 export interface ClusterV2ClusterAgentDeploymentCustomization {
     /**
-     * User defined tolerations to append to agent (list)
+     * A list of tolerations to be appended to the default tolerations.
      */
     appendTolerations?: pulumi.Input<pulumi.Input<inputs.ClusterV2ClusterAgentDeploymentCustomizationAppendToleration>[]>;
     /**
-     * User defined affinity to override default agent affinity (string)
+     * Override affinity overrides the global default affinity setting.
      */
     overrideAffinity?: pulumi.Input<string>;
     /**
-     * User defined resource requirements to set on the agent (list)
+     * Override resource requirements overrides the default value for requests and/or limits.
      */
     overrideResourceRequirements?: pulumi.Input<pulumi.Input<inputs.ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement>[]>;
 }
 
 export interface ClusterV2ClusterAgentDeploymentCustomizationAppendToleration {
     /**
-     * The taint effect. Default: `\"NoExecute\"` (string)
+     * The taint effect. Default: `\"NoExecute\"`.
      */
     effect?: pulumi.Input<string>;
     /**
-     * Machine selector label match expressions key (string)
+     * Key is the name of the key of the item to retrieve.
      */
     key: pulumi.Input<string>;
     /**
-     * Machine selector label match expressions operator (string)
+     * Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
      */
     operator?: pulumi.Input<string>;
     /**
-     * The number of seconds a pod will stay bound to a node with a matching taint (int)
+     * The number of seconds a pod will stay bound to a node with a matching taint.
      */
     seconds?: pulumi.Input<number>;
     /**
-     * The taint value (string)
+     * The taint value.
      */
     value?: pulumi.Input<string>;
 }
 
 export interface ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement {
     /**
-     * The maximum CPU limit for agent (string)
+     * The maximum CPU limit for agent.
      */
     cpuLimit?: pulumi.Input<string>;
     /**
-     * The minimum CPU required for agent (string)
+     * The minimum CPU required for agent.
      */
     cpuRequest?: pulumi.Input<string>;
     /**
-     * The maximum memory limit for agent (string)
+     * The maximum memory limit for agent.
      */
     memoryLimit?: pulumi.Input<string>;
     /**
-     * The minimum memory required for agent (string)
+     * The minimum memory required for agent.
      */
     memoryRequest?: pulumi.Input<string>;
 }
 
 export interface ClusterV2ClusterRegistrationToken {
     /**
-     * Annotations for the Cluster V2 (map)
+     * Annotations for the Cluster.
      */
     annotations?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Cluster ID (string)
+     * Cluster ID.
      */
     clusterId?: pulumi.Input<string>;
     /**
-     * Command to execute in a imported k8s cluster (string)
+     * Command to execute in an imported k8s cluster.
      */
     command?: pulumi.Input<string>;
     /**
-     * (Computed) The ID of the resource (string)
+     * (Computed, string) The ID of the resource.
      */
     id?: pulumi.Input<string>;
     /**
-     * Insecure command to execute in a imported k8s cluster (string)
+     * Insecure command to execute in an imported k8s cluster.
      */
     insecureCommand?: pulumi.Input<string>;
     /**
-     * Insecure node command to execute in a imported k8s cluster (string)
+     * Insecure node command to execute in an imported k8s cluster.
      */
     insecureNodeCommand?: pulumi.Input<string>;
     /**
-     * Insecure windows command to execute in a imported k8s cluster (string)
+     * Insecure windows command to execute in an imported k8s cluster.
      */
     insecureWindowsNodeCommand?: pulumi.Input<string>;
     /**
-     * Labels for the Cluster V2 (map)
+     * Labels for the Cluster.
      */
     labels?: pulumi.Input<{[key: string]: any}>;
     /**
-     * K8s manifest url to execute with `kubectl` to import an existing k8s cluster (string)
+     * K8s manifest url to execute with `kubectl` to import an existing k8s cluster.
      */
     manifestUrl?: pulumi.Input<string>;
     /**
-     * The name of the Cluster v2 (string)
+     * The name of the cluster.
      */
     name?: pulumi.Input<string>;
     /**
-     * Node command to execute in linux nodes for custom k8s cluster (string)
+     * Node command to execute in Linux nodes for custom k8s cluster.
      */
     nodeCommand?: pulumi.Input<string>;
     /**
-     * Token for cluster registration token object (string)
+     * Token for cluster registration token object.
      */
     token?: pulumi.Input<string>;
     /**
-     * Node command to execute in windows nodes for custom k8s cluster (string)
+     * Node command to execute in Windows nodes for custom k8s cluster.
      */
     windowsNodeCommand?: pulumi.Input<string>;
 }
 
 export interface ClusterV2FleetAgentDeploymentCustomization {
     /**
-     * User defined tolerations to append to agent (list)
+     * A list of tolerations to be appended to the default tolerations.
      */
     appendTolerations?: pulumi.Input<pulumi.Input<inputs.ClusterV2FleetAgentDeploymentCustomizationAppendToleration>[]>;
     /**
-     * User defined affinity to override default agent affinity (string)
+     * Override affinity overrides the global default affinity setting.
      */
     overrideAffinity?: pulumi.Input<string>;
     /**
-     * User defined resource requirements to set on the agent (list)
+     * Override resource requirements overrides the default value for requests and/or limits.
      */
     overrideResourceRequirements?: pulumi.Input<pulumi.Input<inputs.ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement>[]>;
 }
 
 export interface ClusterV2FleetAgentDeploymentCustomizationAppendToleration {
     /**
-     * The taint effect. Default: `\"NoExecute\"` (string)
+     * The taint effect. Default: `\"NoExecute\"`.
      */
     effect?: pulumi.Input<string>;
     /**
-     * Machine selector label match expressions key (string)
+     * Key is the name of the key of the item to retrieve.
      */
     key: pulumi.Input<string>;
     /**
-     * Machine selector label match expressions operator (string)
+     * Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
      */
     operator?: pulumi.Input<string>;
     /**
-     * The number of seconds a pod will stay bound to a node with a matching taint (int)
+     * The number of seconds a pod will stay bound to a node with a matching taint.
      */
     seconds?: pulumi.Input<number>;
     /**
-     * The taint value (string)
+     * The taint value.
      */
     value?: pulumi.Input<string>;
 }
 
 export interface ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement {
     /**
-     * The maximum CPU limit for agent (string)
+     * The maximum CPU limit for agent.
      */
     cpuLimit?: pulumi.Input<string>;
     /**
-     * The minimum CPU required for agent (string)
+     * The minimum CPU required for agent.
      */
     cpuRequest?: pulumi.Input<string>;
     /**
-     * The maximum memory limit for agent (string)
+     * The maximum memory limit for agent.
      */
     memoryLimit?: pulumi.Input<string>;
     /**
-     * The minimum memory required for agent (string)
+     * The minimum memory required for agent.
      */
     memoryRequest?: pulumi.Input<string>;
 }
 
 export interface ClusterV2LocalAuthEndpoint {
     /**
-     * CA certs for the authorized cluster endpoint (string)
+     * CA certs for the authorized cluster endpoint. It is only needed if there is a load balancer in front of the downstream cluster that is using an untrusted certificate. If you have a valid certificate, then nothing needs to be added to the CA Certificates field.
      */
     caCerts?: pulumi.Input<string>;
     /**
-     * Drain options enabled? Default `true` (bool)
+     * If `enabled` is set to true, nodes will be drained before upgrade.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * FQDN for the authorized cluster endpoint (string)
+     * FQDN for the authorized cluster endpoint. If one is entered, it should point to the downstream cluster.
      */
     fqdn?: pulumi.Input<string>;
 }
 
 export interface ClusterV2RkeConfig {
     /**
-     * Cluster V2 additional manifest (string)
+     * The value of the additional manifest is delivered to the path `/var/lib/rancher/rke2/server/manifests/rancher/addons.yaml` or `/var/lib/rancher/k3s/server/manifests/rancher/addons.yaml` on the control plane nodes.
      */
     additionalManifest?: pulumi.Input<string>;
     /**
-     * Cluster V2 chart values. Must be in YAML format (string)
+     * The value for the system charts installed by the distribution. For more information about how RKE2 or K3s manage packaged components, please refer to [RKE2 documentation](https://docs.rke2.io/helm) or [K3s documentation](https://docs.k3s.io/installation/packaged-components).
      */
     chartValues?: pulumi.Input<string>;
     /**
-     * Cluster V2 etcd (list maxitems:1)
+     * Etcd configures the behavior of the automatic etcd snapshot feature.
      */
     etcd?: pulumi.Input<inputs.ClusterV2RkeConfigEtcd>;
     /**
-     * Cluster V2 etcd snapshot create (list maxitems:1)
+     * Cluster V2 etcd snapshot create.
      */
     etcdSnapshotCreate?: pulumi.Input<inputs.ClusterV2RkeConfigEtcdSnapshotCreate>;
     /**
-     * Cluster V2 etcd snapshot restore (list maxitems:1)
+     * Cluster V2 etcd snapshot restore.
      */
     etcdSnapshotRestore?: pulumi.Input<inputs.ClusterV2RkeConfigEtcdSnapshotRestore>;
     /**
-     * Cluster V2 local auth endpoint (list maxitems:1)
+     * Local auth endpoint configures the Authorized Cluster Endpoint (ACE) which can be used to directly access the Kubernetes API server, without requiring communication through Rancher. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters).
      *
      * @deprecated Use rancher2_cluster_v2.local_auth_endpoint instead
      */
     localAuthEndpoint?: pulumi.Input<inputs.ClusterV2RkeConfigLocalAuthEndpoint>;
     /**
-     * Cluster V2 machine global config. Must be in YAML format (string)
+     * Machine global config specifies the distribution-specified server configuration applied to all nodes. For the full list of server configurations, please refer to [RKE2 server configuration](https://docs.rke2.io/reference/server_config) or [K3s server configuration](https://docs.k3s.io/cli/server).
      */
     machineGlobalConfig?: pulumi.Input<string>;
     /**
@@ -4862,133 +4781,137 @@ export interface ClusterV2RkeConfig {
      */
     machinePoolDefaults?: pulumi.Input<pulumi.Input<inputs.ClusterV2RkeConfigMachinePoolDefault>[]>;
     /**
-     * Cluster V2 machine pools (list)
+     * Cluster V2 machine pools.
      */
     machinePools?: pulumi.Input<pulumi.Input<inputs.ClusterV2RkeConfigMachinePool>[]>;
     /**
-     * Cluster V2 machine selector config (list)
+     * Machine selector config is the same as machineGlobalConfig except that a label selector can be specified with the configuration. The configuration will only be applied to nodes that match the provided label selector. The configuration from machineSelectorConfig takes precedence over the one from machine_global_config. This argument is available in Rancher v2.7.2 and later.
      */
     machineSelectorConfigs?: pulumi.Input<pulumi.Input<inputs.ClusterV2RkeConfigMachineSelectorConfig>[]>;
     /**
-     * Cluster V2 docker registries (list maxitems:1)
+     * Machine selector files provide a means to deliver files to nodes so that the files can be in place before initiating RKE2/K3s server or agent processes. Please refer to Rancher documentation for [RKE2 Cluster Configuration Reference](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration#machineselectorfiles) and [K3s Cluster Configuration Reference](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/k3s-cluster-configuration#machineselectorfiles). This argument is available in Rancher v2.7.2 and later.
+     */
+    machineSelectorFiles?: pulumi.Input<pulumi.Input<inputs.ClusterV2RkeConfigMachineSelectorFile>[]>;
+    /**
+     * Docker registries from which the cluster pulls images.
      */
     registries?: pulumi.Input<inputs.ClusterV2RkeConfigRegistries>;
     /**
-     * Cluster V2 certificate rotation (list maxitems:1)
+     * Cluster V2 certificate rotation.
      */
     rotateCertificates?: pulumi.Input<inputs.ClusterV2RkeConfigRotateCertificates>;
     /**
-     * Cluster V2 upgrade strategy (list maxitems:1)
+     * Cluster upgrade strategy.
      */
     upgradeStrategy?: pulumi.Input<inputs.ClusterV2RkeConfigUpgradeStrategy>;
 }
 
 export interface ClusterV2RkeConfigEtcd {
     /**
-     * Disable ETCD snapshots. Default: `false` (bool)
+     * Disable ETCD snapshots.
      */
     disableSnapshots?: pulumi.Input<boolean>;
     /**
-     * Creation option for etcd service (list maxitems:1)
+     * Creation option for etcd service.
      */
     s3Config?: pulumi.Input<inputs.ClusterV2RkeConfigEtcdS3Config>;
     /**
-     * ETCD snapshot retention (int)
+     * ETCD snapshot retention.
      */
     snapshotRetention?: pulumi.Input<number>;
     /**
-     * ETCD snapshot schedule cron (e.g `\"0 *&#47;5 * * *\"`) (string)
+     * ETCD snapshot schedule cron (e.g `\"0 *&#47;5 * * *\"`).
      */
     snapshotScheduleCron?: pulumi.Input<string>;
 }
 
 export interface ClusterV2RkeConfigEtcdS3Config {
     /**
-     * Bucket name for S3 service (string)
+     * Bucket name for S3 service.
      */
     bucket: pulumi.Input<string>;
     /**
-     * ETCD snapshot S3 cloud credential name (string)
+     * ETCD snapshot S3 cloud credential name.
      */
     cloudCredentialName?: pulumi.Input<string>;
     /**
-     * ETCD snapshot S3 endpoint (string)
+     * ETCD snapshot S3 endpoint.
      */
     endpoint: pulumi.Input<string>;
     /**
-     * ETCD snapshot S3 endpoint CA (string)
+     * ETCD snapshot S3 endpoint CA.
      */
     endpointCa?: pulumi.Input<string>;
     /**
-     * ETCD snapshot S3 folder (string)
+     * ETCD snapshot S3 folder.
      */
     folder?: pulumi.Input<string>;
     /**
-     * ETCD snapshot S3 region (string)
+     * ETCD snapshot S3 region.
      */
     region?: pulumi.Input<string>;
     /**
-     * Disable ETCD skip ssl verify. Default: `false` (bool)
+     * Disable ETCD skip ssl verify.
      */
     skipSslVerify?: pulumi.Input<boolean>;
 }
 
 export interface ClusterV2RkeConfigEtcdSnapshotCreate {
     /**
-     * ETCD snapshot desired generation (int)
+     * ETCD snapshot desired generation.
      */
     generation: pulumi.Input<number>;
 }
 
 export interface ClusterV2RkeConfigEtcdSnapshotRestore {
     /**
-     * ETCD snapshot desired generation (int)
+     * ETCD snapshot desired generation.
      */
     generation: pulumi.Input<number>;
     /**
-     * The name of the Cluster v2 (string)
+     * The name of the cluster.
      */
     name: pulumi.Input<string>;
     /**
-     * ETCD restore RKE config (set to none, all, or kubernetesVersion) (string)
+     * ETCD restore RKE config (set to none, all, or kubernetesVersion).
      */
     restoreRkeConfig?: pulumi.Input<string>;
 }
 
 export interface ClusterV2RkeConfigLocalAuthEndpoint {
     /**
-     * CA certs for the authorized cluster endpoint (string)
+     * CA certs for the authorized cluster endpoint. It is only needed if there is a load balancer in front of the downstream cluster that is using an untrusted certificate. If you have a valid certificate, then nothing needs to be added to the CA Certificates field.
      */
     caCerts?: pulumi.Input<string>;
     /**
-     * Drain options enabled? Default `true` (bool)
+     * If `enabled` is set to true, nodes will be drained before upgrade.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * FQDN for the authorized cluster endpoint (string)
+     * FQDN for the authorized cluster endpoint. If one is entered, it should point to the downstream cluster.
      */
     fqdn?: pulumi.Input<string>;
 }
 
 export interface ClusterV2RkeConfigMachinePool {
     /**
-     * Annotations for the Cluster V2 (map)
+     * Annotations for the Cluster.
      */
     annotations?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Cluster V2 cloud credential secret name (string)
+     * Cloud credential secret name is the secret to be used when a cloud credential secret name is not specified at the machine pool level.
      */
     cloudCredentialSecretName?: pulumi.Input<string>;
     /**
-     * Machine pool control plane role? (bool)
+     * Machine pool control plane role?
      */
     controlPlaneRole?: pulumi.Input<boolean>;
     /**
-     * Machine Pool Drain Before Delete? (bool)
+     * Machine Pool Drain Before Delete?
      */
     drainBeforeDelete?: pulumi.Input<boolean>;
     /**
-     * Machine pool etcd role? (bool)
+     * Machine pool etcd role?
      */
     etcdRole?: pulumi.Input<boolean>;
     /**
@@ -4996,59 +4919,59 @@ export interface ClusterV2RkeConfigMachinePool {
      */
     hostnameLengthLimit?: pulumi.Input<number>;
     /**
-     * Labels for the Cluster V2 (map)
+     * Labels for the Cluster.
      */
     labels?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Machine pool node config (list)
+     * Machine pool node config.
      */
     machineConfig: pulumi.Input<inputs.ClusterV2RkeConfigMachinePoolMachineConfig>;
     /**
-     * Labels for Machine pool nodes (map)
+     * Labels for Machine pool nodes.
      */
     machineLabels?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Max unhealthy nodes for automated replacement to be allowed (string)
+     * Max unhealthy nodes for automated replacement to be allowed.
      */
     maxUnhealthy?: pulumi.Input<string>;
     /**
-     * The name of the Cluster v2 (string)
+     * The name of the cluster.
      */
     name: pulumi.Input<string>;
     /**
-     * Seconds a machine has to drain before deletion (int)
+     * Seconds a machine has to drain before deletion.
      */
     nodeDrainTimeout?: pulumi.Input<number>;
     /**
-     * Seconds a new node has to become active before it is replaced (int)
+     * Seconds a new node has to become active before it is replaced.
      */
     nodeStartupTimeoutSeconds?: pulumi.Input<number>;
     /**
-     * Machine pool paused? (bool)
+     * Machine pool paused?
      */
     paused?: pulumi.Input<boolean>;
     /**
-     * Machine pool quantity (int)
+     * Machine pool quantity.
      */
     quantity?: pulumi.Input<number>;
     /**
-     * Machine pool rolling update (List maxitems:1)
+     * Machine pool rolling update.
      */
     rollingUpdate?: pulumi.Input<inputs.ClusterV2RkeConfigMachinePoolRollingUpdate>;
     /**
-     * Machine pool taints (list)
+     * Machine pool taints.
      */
     taints?: pulumi.Input<pulumi.Input<inputs.ClusterV2RkeConfigMachinePoolTaint>[]>;
     /**
-     * Seconds an unhealthy node has to become active before it is replaced (int)
+     * Seconds an unhealthy node has to become active before it is replaced.
      */
     unhealthyNodeTimeoutSeconds?: pulumi.Input<number>;
     /**
-     * Range of unhealthy nodes for automated replacement to be allowed (string)
+     * Range of unhealthy nodes for automated replacement to be allowed.
      */
     unhealthyRange?: pulumi.Input<string>;
     /**
-     * Machine pool worker role? (bool)
+     * Machine pool worker role?
      */
     workerRole?: pulumi.Input<boolean>;
 }
@@ -5062,231 +4985,359 @@ export interface ClusterV2RkeConfigMachinePoolDefault {
 
 export interface ClusterV2RkeConfigMachinePoolMachineConfig {
     /**
-     * Machine config kind (string)
+     * Api version of the machine_config.
+     */
+    apiVersion?: pulumi.Input<string>;
+    /**
+     * Machine config kind.
      */
     kind: pulumi.Input<string>;
     /**
-     * The name of the Cluster v2 (string)
+     * The name of the cluster.
      */
     name: pulumi.Input<string>;
 }
 
 export interface ClusterV2RkeConfigMachinePoolRollingUpdate {
     /**
-     * Rolling update max surge (string)
+     * Rolling update max surge.
      */
     maxSurge?: pulumi.Input<string>;
     /**
-     * Rolling update max unavailable (string)
+     * Rolling update max unavailable.
      */
     maxUnavailable?: pulumi.Input<string>;
 }
 
 export interface ClusterV2RkeConfigMachinePoolTaint {
     /**
-     * The taint effect. Default: `\"NoExecute\"` (string)
+     * The taint effect. Default: `\"NoExecute\"`.
      */
     effect?: pulumi.Input<string>;
     /**
-     * Machine selector label match expressions key (string)
+     * Key is the name of the key of the item to retrieve.
      */
     key: pulumi.Input<string>;
     /**
-     * The taint value (string)
+     * The taint value.
      */
     value: pulumi.Input<string>;
 }
 
 export interface ClusterV2RkeConfigMachineSelectorConfig {
     /**
-     * Machine selector config. Must be in YAML format (string)
+     * Config is the distribution-specify configuration to be applied to nodes that match the provided label selector. For more information, please refer to Rancher's documentation for [RKE2 Cluster Configuration](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration#machineselectorconfig) or [K3s Cluster Configuration](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/k3s-cluster-configuration#machineselectorconfig)
      */
     config?: pulumi.Input<string>;
     /**
-     * Machine selector label (list maxitems:1)
+     * Machine selector label is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
      */
     machineLabelSelector?: pulumi.Input<inputs.ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector>;
 }
 
 export interface ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector {
     /**
-     * Machine selector label match expressions (list)
+     * Match expressions is a list of label selector requirements. The requirements are ANDed.
      */
     matchExpressions?: pulumi.Input<pulumi.Input<inputs.ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression>[]>;
     /**
-     * Machine selector label match labels (map)
+     * Machine selector label is a map of {key,value} pairs, the requirements are ANDed.
      */
     matchLabels?: pulumi.Input<{[key: string]: any}>;
 }
 
 export interface ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression {
     /**
-     * Machine selector label match expressions key (string)
+     * Key is the name of the key of the item to retrieve.
      */
     key?: pulumi.Input<string>;
     /**
-     * Machine selector label match expressions operator (string)
+     * Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
      */
     operator?: pulumi.Input<string>;
     /**
-     * Machine selector label match expressions values (List string)
+     * Values is a list of string values.
+     */
+    values?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ClusterV2RkeConfigMachineSelectorFile {
+    /**
+     * File sources represents the source of the files. Multiple files can be delivered to nodes that match the provided label selector.
+     */
+    fileSources?: pulumi.Input<pulumi.Input<inputs.ClusterV2RkeConfigMachineSelectorFileFileSource>[]>;
+    /**
+     * Machine selector label is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
+     */
+    machineLabelSelector?: pulumi.Input<inputs.ClusterV2RkeConfigMachineSelectorFileMachineLabelSelector>;
+}
+
+export interface ClusterV2RkeConfigMachineSelectorFileFileSource {
+    /**
+     * Configmap represents a K8s configmap which is the source of files. It is mutually exclusive with secret.
+     */
+    configmap?: pulumi.Input<inputs.ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmap>;
+    /**
+     * Secret represents a K8s secret which is the source of files. It is mutually exclusive with configmap.
+     */
+    secret?: pulumi.Input<inputs.ClusterV2RkeConfigMachineSelectorFileFileSourceSecret>;
+}
+
+export interface ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmap {
+    /**
+     * The numeric representation of the default file permissions for all files defined under the items.
+     */
+    defaultPermissions?: pulumi.Input<string>;
+    /**
+     * Items is a list of configurations for files, such as where to retrieve the content from the source, where to put the file on nodes, etc.
+     */
+    items?: pulumi.Input<pulumi.Input<inputs.ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapItem>[]>;
+    /**
+     * The name of the cluster.
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapItem {
+    /**
+     * If true, the file is ignored when determining whether the node should be drained before updating the node plan.
+     */
+    dynamic?: pulumi.Input<boolean>;
+    /**
+     * Hash is the base64 encoded value of the SHA256 checksum of the file's content. If specified, it is used to validate the integrity of the file content.
+     */
+    hash?: pulumi.Input<string>;
+    /**
+     * Key is the name of the key of the item to retrieve.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * Path is the absolute path to put the file in the target node.
+     */
+    path: pulumi.Input<string>;
+    /**
+     * Permissions is the numeric representation of the file permission. It takes precedence over the default permissions at the outer level.
+     */
+    permissions?: pulumi.Input<string>;
+}
+
+export interface ClusterV2RkeConfigMachineSelectorFileFileSourceSecret {
+    /**
+     * The numeric representation of the default file permissions for all files defined under the items.
+     */
+    defaultPermissions?: pulumi.Input<string>;
+    /**
+     * Items is a list of configurations for files, such as where to retrieve the content from the source, where to put the file on nodes, etc.
+     */
+    items?: pulumi.Input<pulumi.Input<inputs.ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItem>[]>;
+    /**
+     * The name of the cluster.
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItem {
+    /**
+     * If true, the file is ignored when determining whether the node should be drained before updating the node plan.
+     */
+    dynamic?: pulumi.Input<boolean>;
+    /**
+     * Hash is the base64 encoded value of the SHA256 checksum of the file's content. If specified, it is used to validate the integrity of the file content.
+     */
+    hash?: pulumi.Input<string>;
+    /**
+     * Key is the name of the key of the item to retrieve.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * Path is the absolute path to put the file in the target node.
+     */
+    path: pulumi.Input<string>;
+    /**
+     * Permissions is the numeric representation of the file permission. It takes precedence over the default permissions at the outer level.
+     */
+    permissions?: pulumi.Input<string>;
+}
+
+export interface ClusterV2RkeConfigMachineSelectorFileMachineLabelSelector {
+    /**
+     * Match expressions is a list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: pulumi.Input<pulumi.Input<inputs.ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpression>[]>;
+    /**
+     * Machine selector label is a map of {key,value} pairs, the requirements are ANDed.
+     */
+    matchLabels?: pulumi.Input<{[key: string]: any}>;
+}
+
+export interface ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpression {
+    /**
+     * Key is the name of the key of the item to retrieve.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * Values is a list of string values.
      */
     values?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ClusterV2RkeConfigRegistries {
     /**
-     * Cluster V2 docker registries config (list)
+     * Cluster V2 docker registries config.
      */
     configs?: pulumi.Input<pulumi.Input<inputs.ClusterV2RkeConfigRegistriesConfig>[]>;
     /**
-     * Cluster V2 docker registries mirror (list)
+     * Cluster V2 docker registries mirror.
      */
     mirrors?: pulumi.Input<pulumi.Input<inputs.ClusterV2RkeConfigRegistriesMirror>[]>;
 }
 
 export interface ClusterV2RkeConfigRegistriesConfig {
     /**
-     * Registry auth config secret name (string)
+     * Name of the secret that contains two keys with base64 encoded values: the username and password for the specified custom registry. No secret is required if the system-default-registry is not authenticated.
      */
     authConfigSecretName?: pulumi.Input<string>;
     /**
-     * Registry CA bundle (string)
+     * Registry CA bundle.
      */
     caBundle?: pulumi.Input<string>;
     /**
-     * Registry hostname (string)
+     * Registry hostname.
      */
     hostname: pulumi.Input<string>;
     /**
-     * Registry insecure connectivity (bool)
+     * Registry insecure connectivity.
      */
     insecure?: pulumi.Input<boolean>;
     /**
-     * Registry TLS secret name. TLS is a pair of Cert/Key (string)
+     * Registry TLS secret name. TLS is a pair of Cert/Key.
      */
     tlsSecretName?: pulumi.Input<string>;
 }
 
 export interface ClusterV2RkeConfigRegistriesMirror {
     /**
-     * Registry mirror endpoints (List)
+     * Registry mirror endpoints.
      */
     endpoints?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Registry hostname (string)
+     * Registry hostname.
      */
     hostname: pulumi.Input<string>;
     /**
-     * Registry mirror rewrites (map)
+     * Registry mirror rewrites.
      */
     rewrites?: pulumi.Input<{[key: string]: any}>;
 }
 
 export interface ClusterV2RkeConfigRotateCertificates {
     /**
-     * ETCD snapshot desired generation (int)
+     * ETCD snapshot desired generation.
      */
     generation: pulumi.Input<number>;
     /**
-     * Service certificates to rotate with this generation (string)
+     * Service certificates to rotate with this generation.
      */
     services?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ClusterV2RkeConfigUpgradeStrategy {
     /**
-     * How many controlplane nodes should be upgrade at time, 0 is infinite. Percentages are also accepted (string)
+     * How many control plane nodes should be upgraded at a time, 0 is infinite. Percentages are also accepted.
      */
     controlPlaneConcurrency?: pulumi.Input<string>;
     /**
-     * Controlplane nodes drain options (list maxitems:1)
+     * Controlplane nodes drain options.
      */
     controlPlaneDrainOptions?: pulumi.Input<inputs.ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions>;
     /**
-     * How many worker nodes should be upgrade at time. Percentages are also accepted (string)
+     * How many worker nodes should be upgraded at a time. Percentages are also accepted.
      */
     workerConcurrency?: pulumi.Input<string>;
     /**
-     * Worker nodes drain options (list maxitems:1)
+     * Worker nodes drain options.
      */
     workerDrainOptions?: pulumi.Input<inputs.ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions>;
 }
 
 export interface ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions {
     /**
-     * Drain options delete empty dir data. Default `false` (bool)
+     * if `deleteEmptyDirData` is set to true, continue draining even if there are pods using emptyDir (local storage).
      */
     deleteEmptyDirData?: pulumi.Input<boolean>;
     /**
-     * Drain options disable eviction. Default `false` (bool)
+     * If `disableEviction` is set to true, force drain to use delete rather than evict.
      */
     disableEviction?: pulumi.Input<boolean>;
     /**
-     * Drain options enabled? Default `true` (bool)
+     * If `enabled` is set to true, nodes will be drained before upgrade.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Drain options force. Default `false` (bool)
+     * If `force` is set to true, drain nodes even if there are standalone pods that are not managed by a ReplicationController, Job, or DaemonSet. Drain will not proceed without `force` set to true if there are such pods.
      */
     force?: pulumi.Input<boolean>;
     /**
-     * Drain options grace period (int)
+     * Time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used.
      */
     gracePeriod?: pulumi.Input<number>;
     /**
-     * Drain options ignore daemon sets. Default `true` (bool)
+     * If `ignoreDaemonSets` is set to false, drain will not proceed if there are DaemonSet-managed pods.
      */
     ignoreDaemonSets?: pulumi.Input<boolean>;
     /**
-     * Drain options ignore errors. Default `false` (bool)
+     * If `ignoreErrors` is set to true,  errors that occurred between drain nodes in group are ignored.
      */
     ignoreErrors?: pulumi.Input<boolean>;
     /**
-     * Drain options skip wait for delete timeout seconds (int)
+     * Skip waiting for the pods that have a DeletionTimeStamp > N seconds to be deleted. Seconds must be greater than 0 to skip. Such pods will be force deleted.
      */
     skipWaitForDeleteTimeoutSeconds?: pulumi.Input<number>;
     /**
-     * Drain options timeout (int)
+     * Time to wait (in seconds) before giving up for one try.
      */
     timeout?: pulumi.Input<number>;
 }
 
 export interface ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions {
     /**
-     * Drain options delete empty dir data. Default `false` (bool)
+     * if `deleteEmptyDirData` is set to true, continue draining even if there are pods using emptyDir (local storage).
      */
     deleteEmptyDirData?: pulumi.Input<boolean>;
     /**
-     * Drain options disable eviction. Default `false` (bool)
+     * If `disableEviction` is set to true, force drain to use delete rather than evict.
      */
     disableEviction?: pulumi.Input<boolean>;
     /**
-     * Drain options enabled? Default `true` (bool)
+     * If `enabled` is set to true, nodes will be drained before upgrade.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Drain options force. Default `false` (bool)
+     * If `force` is set to true, drain nodes even if there are standalone pods that are not managed by a ReplicationController, Job, or DaemonSet. Drain will not proceed without `force` set to true if there are such pods.
      */
     force?: pulumi.Input<boolean>;
     /**
-     * Drain options grace period (int)
+     * Time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used.
      */
     gracePeriod?: pulumi.Input<number>;
     /**
-     * Drain options ignore daemon sets. Default `true` (bool)
+     * If `ignoreDaemonSets` is set to false, drain will not proceed if there are DaemonSet-managed pods.
      */
     ignoreDaemonSets?: pulumi.Input<boolean>;
     /**
-     * Drain options ignore errors. Default `false` (bool)
+     * If `ignoreErrors` is set to true,  errors that occurred between drain nodes in group are ignored.
      */
     ignoreErrors?: pulumi.Input<boolean>;
     /**
-     * Drain options skip wait for delete timeout seconds (int)
+     * Skip waiting for the pods that have a DeletionTimeStamp > N seconds to be deleted. Seconds must be greater than 0 to skip. Such pods will be force deleted.
      */
     skipWaitForDeleteTimeoutSeconds?: pulumi.Input<number>;
     /**
-     * Drain options timeout (int)
+     * Time to wait (in seconds) before giving up for one try.
      */
     timeout?: pulumi.Input<number>;
 }
@@ -6506,6 +6557,10 @@ export interface MachineConfigV2VsphereConfig {
      */
     folder?: pulumi.Input<string>;
     /**
+     * Duration in seconds before the graceful shutdown of the VM times out and the VM is destroyed. A force destroy will be performed when the value is zero (string)
+     */
+    gracefulShutdownTimeout?: pulumi.Input<string>;
+    /**
      * vSphere compute resource where the docker VM will be instantiated. This can be omitted if using a cluster with DRS (string)
      */
     hostsystem?: pulumi.Input<string>;
@@ -7621,6 +7676,10 @@ export interface NodeTemplateVsphereConfig {
      */
     folder?: pulumi.Input<string>;
     /**
+     * Duration in seconds before the graceful shutdown of the VM times out and the VM is destroyed. A force destroy will be performed when the value is zero
+     */
+    gracefulShutdownTimeout?: pulumi.Input<string>;
+    /**
      * vSphere compute resource where the docker VM will be instantiated. This can be omitted if using a cluster with DRS (string)
      */
     hostsystem?: pulumi.Input<string>;
@@ -8214,29 +8273,6 @@ export interface RegistryRegistry {
      * Username for the registry (string)
      */
     username?: pulumi.Input<string>;
-}
-
-export interface RoleTempalteRule {
-    /**
-     * Policy rule api groups (list)
-     */
-    apiGroups?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Policy rule non resource urls (list)
-     */
-    nonResourceUrls?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Policy rule resource names (list)
-     */
-    resourceNames?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Policy rule resources (list)
-     */
-    resources?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Policy rule verbs. `bind`, `create`, `delete`, `deletecollection`, `escalate`, `get`, `impersonate`, `list`, `patch`, `update`, `use`, `view`, `watch`, `own` and `*` values are supported (list)
-     */
-    verbs?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface RoleTemplateRule {

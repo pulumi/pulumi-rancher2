@@ -14,19 +14,19 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterV2RkeConfigEtcd
     {
         /// <summary>
-        /// Disable ETCD snapshots. Default: `false` (bool)
+        /// Disable ETCD snapshots.
         /// </summary>
         public readonly bool? DisableSnapshots;
         /// <summary>
-        /// Creation option for etcd service (list maxitems:1)
+        /// Creation option for etcd service.
         /// </summary>
         public readonly Outputs.ClusterV2RkeConfigEtcdS3Config? S3Config;
         /// <summary>
-        /// ETCD snapshot retention (int)
+        /// ETCD snapshot retention.
         /// </summary>
         public readonly int? SnapshotRetention;
         /// <summary>
-        /// ETCD snapshot schedule cron (e.g `\"0 */5 * * *\"`) (string)
+        /// ETCD snapshot schedule cron (e.g `\"0 */5 * * *\"`).
         /// </summary>
         public readonly string? SnapshotScheduleCron;
 

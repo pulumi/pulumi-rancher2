@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v6/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,8 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "rancher2:index/activeDirectory:ActiveDirectory":
-		r = &ActiveDirectory{}
 	case "rancher2:index/app:App":
 		r = &App{}
 	case "rancher2:index/appV2:AppV2":
@@ -61,10 +59,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ClusterAlertGroup{}
 	case "rancher2:index/clusterAlertRule:ClusterAlertRule":
 		r = &ClusterAlertRule{}
-	case "rancher2:index/clusterAlterGroup:ClusterAlterGroup":
-		r = &ClusterAlterGroup{}
-	case "rancher2:index/clusterAlterRule:ClusterAlterRule":
-		r = &ClusterAlterRule{}
 	case "rancher2:index/clusterDriver:ClusterDriver":
 		r = &ClusterDriver{}
 	case "rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding":
@@ -117,8 +111,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectRoleTemplateBinding{}
 	case "rancher2:index/registry:Registry":
 		r = &Registry{}
-	case "rancher2:index/roleTempalte:RoleTempalte":
-		r = &RoleTempalte{}
 	case "rancher2:index/roleTemplate:RoleTemplate":
 		r = &RoleTemplate{}
 	case "rancher2:index/secret:Secret":
@@ -164,11 +156,6 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
-	pulumi.RegisterResourceModule(
-		"rancher2",
-		"index/activeDirectory",
-		&module{version},
-	)
 	pulumi.RegisterResourceModule(
 		"rancher2",
 		"index/app",
@@ -262,16 +249,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"rancher2",
 		"index/clusterAlertRule",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"rancher2",
-		"index/clusterAlterGroup",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"rancher2",
-		"index/clusterAlterRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -402,11 +379,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"rancher2",
 		"index/registry",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"rancher2",
-		"index/roleTempalte",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -14,55 +14,55 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterV2ClusterRegistrationToken
     {
         /// <summary>
-        /// Annotations for the Cluster V2 (map)
+        /// Annotations for the Cluster.
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Annotations;
         /// <summary>
-        /// Cluster ID (string)
+        /// Cluster ID.
         /// </summary>
         public readonly string? ClusterId;
         /// <summary>
-        /// Command to execute in a imported k8s cluster (string)
+        /// Command to execute in an imported k8s cluster.
         /// </summary>
         public readonly string? Command;
         /// <summary>
-        /// (Computed) The ID of the resource (string)
+        /// (Computed, string) The ID of the resource.
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// Insecure command to execute in a imported k8s cluster (string)
+        /// Insecure command to execute in an imported k8s cluster.
         /// </summary>
         public readonly string? InsecureCommand;
         /// <summary>
-        /// Insecure node command to execute in a imported k8s cluster (string)
+        /// Insecure node command to execute in an imported k8s cluster.
         /// </summary>
         public readonly string? InsecureNodeCommand;
         /// <summary>
-        /// Insecure windows command to execute in a imported k8s cluster (string)
+        /// Insecure windows command to execute in an imported k8s cluster.
         /// </summary>
         public readonly string? InsecureWindowsNodeCommand;
         /// <summary>
-        /// Labels for the Cluster V2 (map)
+        /// Labels for the Cluster.
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Labels;
         /// <summary>
-        /// K8s manifest url to execute with `kubectl` to import an existing k8s cluster (string)
+        /// K8s manifest url to execute with `kubectl` to import an existing k8s cluster.
         /// </summary>
         public readonly string? ManifestUrl;
         /// <summary>
-        /// The name of the Cluster v2 (string)
+        /// The name of the cluster.
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Node command to execute in linux nodes for custom k8s cluster (string)
+        /// Node command to execute in Linux nodes for custom k8s cluster.
         /// </summary>
         public readonly string? NodeCommand;
         /// <summary>
-        /// Token for cluster registration token object (string)
+        /// Token for cluster registration token object.
         /// </summary>
         public readonly string? Token;
         /// <summary>
-        /// Node command to execute in windows nodes for custom k8s cluster (string)
+        /// Node command to execute in Windows nodes for custom k8s cluster.
         /// </summary>
         public readonly string? WindowsNodeCommand;
 

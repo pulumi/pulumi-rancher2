@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v6/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v5/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v6/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -66,7 +66,7 @@ type ProjectRoleTemplateBinding struct {
 	Labels pulumi.MapOutput `pulumi:"labels"`
 	// The name of the project role template binding (string)
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The project id where bind project role template (string)
+	// The project id where bind project role template, in format `cluster_id:project_id`, e.g. `c-abc12:p-def34` (string)
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// The role template id from create project role template binding (string)
 	RoleTemplateId pulumi.StringOutput `pulumi:"roleTemplateId"`
@@ -124,7 +124,7 @@ type projectRoleTemplateBindingState struct {
 	Labels map[string]interface{} `pulumi:"labels"`
 	// The name of the project role template binding (string)
 	Name *string `pulumi:"name"`
-	// The project id where bind project role template (string)
+	// The project id where bind project role template, in format `cluster_id:project_id`, e.g. `c-abc12:p-def34` (string)
 	ProjectId *string `pulumi:"projectId"`
 	// The role template id from create project role template binding (string)
 	RoleTemplateId *string `pulumi:"roleTemplateId"`
@@ -147,7 +147,7 @@ type ProjectRoleTemplateBindingState struct {
 	Labels pulumi.MapInput
 	// The name of the project role template binding (string)
 	Name pulumi.StringPtrInput
-	// The project id where bind project role template (string)
+	// The project id where bind project role template, in format `cluster_id:project_id`, e.g. `c-abc12:p-def34` (string)
 	ProjectId pulumi.StringPtrInput
 	// The role template id from create project role template binding (string)
 	RoleTemplateId pulumi.StringPtrInput
@@ -174,7 +174,7 @@ type projectRoleTemplateBindingArgs struct {
 	Labels map[string]interface{} `pulumi:"labels"`
 	// The name of the project role template binding (string)
 	Name *string `pulumi:"name"`
-	// The project id where bind project role template (string)
+	// The project id where bind project role template, in format `cluster_id:project_id`, e.g. `c-abc12:p-def34` (string)
 	ProjectId string `pulumi:"projectId"`
 	// The role template id from create project role template binding (string)
 	RoleTemplateId string `pulumi:"roleTemplateId"`
@@ -198,7 +198,7 @@ type ProjectRoleTemplateBindingArgs struct {
 	Labels pulumi.MapInput
 	// The name of the project role template binding (string)
 	Name pulumi.StringPtrInput
-	// The project id where bind project role template (string)
+	// The project id where bind project role template, in format `cluster_id:project_id`, e.g. `c-abc12:p-def34` (string)
 	ProjectId pulumi.StringInput
 	// The role template id from create project role template binding (string)
 	RoleTemplateId pulumi.StringInput
@@ -322,7 +322,7 @@ func (o ProjectRoleTemplateBindingOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectRoleTemplateBinding) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The project id where bind project role template (string)
+// The project id where bind project role template, in format `cluster_id:project_id`, e.g. `c-abc12:p-def34` (string)
 func (o ProjectRoleTemplateBindingOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectRoleTemplateBinding) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }

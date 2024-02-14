@@ -17,14 +17,14 @@ public final class ClusterV2RkeConfigMachinePoolTaintArgs extends com.pulumi.res
     public static final ClusterV2RkeConfigMachinePoolTaintArgs Empty = new ClusterV2RkeConfigMachinePoolTaintArgs();
 
     /**
-     * The taint effect. Default: `\&#34;NoExecute\&#34;` (string)
+     * The taint effect. Default: `\&#34;NoExecute\&#34;`.
      * 
      */
     @Import(name="effect")
     private @Nullable Output<String> effect;
 
     /**
-     * @return The taint effect. Default: `\&#34;NoExecute\&#34;` (string)
+     * @return The taint effect. Default: `\&#34;NoExecute\&#34;`.
      * 
      */
     public Optional<Output<String>> effect() {
@@ -32,14 +32,14 @@ public final class ClusterV2RkeConfigMachinePoolTaintArgs extends com.pulumi.res
     }
 
     /**
-     * Machine selector label match expressions key (string)
+     * Key is the name of the key of the item to retrieve.
      * 
      */
     @Import(name="key", required=true)
     private Output<String> key;
 
     /**
-     * @return Machine selector label match expressions key (string)
+     * @return Key is the name of the key of the item to retrieve.
      * 
      */
     public Output<String> key() {
@@ -47,14 +47,14 @@ public final class ClusterV2RkeConfigMachinePoolTaintArgs extends com.pulumi.res
     }
 
     /**
-     * The taint value (string)
+     * The taint value.
      * 
      */
     @Import(name="value", required=true)
     private Output<String> value;
 
     /**
-     * @return The taint value (string)
+     * @return The taint value.
      * 
      */
     public Output<String> value() {
@@ -88,7 +88,7 @@ public final class ClusterV2RkeConfigMachinePoolTaintArgs extends com.pulumi.res
         }
 
         /**
-         * @param effect The taint effect. Default: `\&#34;NoExecute\&#34;` (string)
+         * @param effect The taint effect. Default: `\&#34;NoExecute\&#34;`.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class ClusterV2RkeConfigMachinePoolTaintArgs extends com.pulumi.res
         }
 
         /**
-         * @param effect The taint effect. Default: `\&#34;NoExecute\&#34;` (string)
+         * @param effect The taint effect. Default: `\&#34;NoExecute\&#34;`.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class ClusterV2RkeConfigMachinePoolTaintArgs extends com.pulumi.res
         }
 
         /**
-         * @param key Machine selector label match expressions key (string)
+         * @param key Key is the name of the key of the item to retrieve.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class ClusterV2RkeConfigMachinePoolTaintArgs extends com.pulumi.res
         }
 
         /**
-         * @param key Machine selector label match expressions key (string)
+         * @param key Key is the name of the key of the item to retrieve.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class ClusterV2RkeConfigMachinePoolTaintArgs extends com.pulumi.res
         }
 
         /**
-         * @param value The taint value (string)
+         * @param value The taint value.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class ClusterV2RkeConfigMachinePoolTaintArgs extends com.pulumi.res
         }
 
         /**
-         * @param value The taint value (string)
+         * @param value The taint value.
          * 
          * @return builder
          * 

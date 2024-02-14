@@ -13,13 +13,13 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterV2RkeConfigMachinePoolRollingUpdateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Rolling update max surge (string)
+        /// Rolling update max surge.
         /// </summary>
         [Input("maxSurge")]
         public Input<string>? MaxSurge { get; set; }
 
         /// <summary>
-        /// Rolling update max unavailable (string)
+        /// Rolling update max unavailable.
         /// </summary>
         [Input("maxUnavailable")]
         public Input<string>? MaxUnavailable { get; set; }

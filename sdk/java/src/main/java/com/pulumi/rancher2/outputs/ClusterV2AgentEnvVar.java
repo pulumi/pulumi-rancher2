@@ -11,26 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class ClusterV2AgentEnvVar {
     /**
-     * @return The name of the Cluster v2 (string)
+     * @return The name of the cluster.
      * 
      */
     private String name;
     /**
-     * @return The taint value (string)
+     * @return The taint value.
      * 
      */
     private String value;
 
     private ClusterV2AgentEnvVar() {}
     /**
-     * @return The name of the Cluster v2 (string)
+     * @return The name of the cluster.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return The taint value (string)
+     * @return The taint value.
      * 
      */
     public String value() {

@@ -14,11 +14,11 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterV2RkeConfigMachinePoolRollingUpdate
     {
         /// <summary>
-        /// Rolling update max surge (string)
+        /// Rolling update max surge.
         /// </summary>
         public readonly string? MaxSurge;
         /// <summary>
-        /// Rolling update max unavailable (string)
+        /// Rolling update max unavailable.
         /// </summary>
         public readonly string? MaxUnavailable;
 

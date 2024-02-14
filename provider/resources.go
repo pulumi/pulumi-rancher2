@@ -16,9 +16,7 @@ package rancher2
 
 import (
 	"fmt"
-	"path/filepath"
-	"strings"
-	"unicode"
+	"path"
 
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
@@ -31,7 +29,7 @@ import (
 	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 
-	"github.com/pulumi/pulumi-rancher2/provider/v5/pkg/version"
+	"github.com/pulumi/pulumi-rancher2/provider/v6/pkg/version"
 )
 
 // all of the token components used below.
@@ -42,28 +40,8 @@ const (
 	mainMod = "index" // the Main module
 )
 
-var namespaceMap = map[string]string{
-	mainPkg: "Rancher2",
-}
-
-func makeMember(moduleTitle string, mem string) tokens.ModuleMember {
-	moduleName := strings.ToLower(moduleTitle)
-	namespaceMap[moduleName] = moduleTitle
-	fn := string(unicode.ToLower(rune(mem[0]))) + mem[1:]
-	token := moduleName + "/" + fn
-	return tokens.ModuleMember(mainPkg + ":" + token + ":" + mem)
-}
-
-func makeType(mod string, typ string) tokens.Type {
-	return tokens.Type(makeMember(mod, typ))
-}
-
-func makeDataSource(mod string, res string) tokens.ModuleMember {
-	return makeMember(mod, res)
-}
-
-func makeResource(mod string, res string) tokens.Type {
-	return makeType(mod, res)
+func makeResource(res string) tokens.Type {
+	return tfbridge.MakeResource(mainPkg, mainMod, res)
 }
 
 // Provider returns additional overlaid schema and metadata associated with the provider..
@@ -73,15 +51,16 @@ func Provider() tfbridge.ProviderInfo {
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
-		P:           p,
-		Name:        "rancher2",
-		Description: "A Pulumi package for creating and managing rancher2 resources.",
-		Keywords:    []string{"pulumi", "rancher2"},
-		License:     "Apache-2.0",
-		Homepage:    "https://pulumi.io",
-		Repository:  "https://github.com/pulumi/pulumi-rancher2",
-		GitHubOrg:   "rancher",
-		Version:     version.Version,
+		P:            p,
+		Name:         "rancher2",
+		Description:  "A Pulumi package for creating and managing rancher2 resources.",
+		Keywords:     []string{"pulumi", "rancher2"},
+		License:      "Apache-2.0",
+		Homepage:     "https://pulumi.io",
+		Repository:   "https://github.com/pulumi/pulumi-rancher2",
+		GitHubOrg:    "rancher",
+		Version:      version.Version,
+		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 		Config: map[string]*tfbridge.SchemaInfo{
 			"bootstrap": {
 				Default: &tfbridge.DefaultInfo{
@@ -97,97 +76,19 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"rancher2_app":                           {Tok: makeResource(mainMod, "App")},
-			"rancher2_auth_config_adfs":              {Tok: makeResource(mainMod, "AuthConfigAdfs")},
-			"rancher2_auth_config_azuread":           {Tok: makeResource(mainMod, "AuthConfigAzureAd")},
-			"rancher2_auth_config_freeipa":           {Tok: makeResource(mainMod, "AuthConfigFreeIpa")},
-			"rancher2_auth_config_github":            {Tok: makeResource(mainMod, "AuthConfigGithub")},
-			"rancher2_auth_config_keycloak":          {Tok: makeResource(mainMod, "AuthConfigKeycloak")},
-			"rancher2_auth_config_okta":              {Tok: makeResource(mainMod, "AuthConfigOkta")},
-			"rancher2_auth_config_openldap":          {Tok: makeResource(mainMod, "AuthConfigOpenLdap")},
-			"rancher2_auth_config_ping":              {Tok: makeResource(mainMod, "AuthConfigPing")},
-			"rancher2_bootstrap":                     {Tok: makeResource(mainMod, "Bootstrap")},
-			"rancher2_catalog":                       {Tok: makeResource(mainMod, "Catalog")},
-			"rancher2_certificate":                   {Tok: makeResource(mainMod, "Certificate")},
-			"rancher2_cloud_credential":              {Tok: makeResource(mainMod, "CloudCredential")},
-			"rancher2_cluster":                       {Tok: makeResource(mainMod, "Cluster")},
-			"rancher2_cluster_v2":                    {Tok: makeResource(mainMod, "ClusterV2")},
-			"rancher2_cluster_driver":                {Tok: makeResource(mainMod, "ClusterDriver")},
-			"rancher2_cluster_role_template_binding": {Tok: makeResource(mainMod, "ClusterRoleTemplateBinding")},
-			"rancher2_cluster_sync":                  {Tok: makeResource(mainMod, "ClusterSync")},
-			"rancher2_cluster_template":              {Tok: makeResource(mainMod, "ClusterTemplate")},
-			"rancher2_etcd_backup":                   {Tok: makeResource(mainMod, "EtcdBackup")},
-			"rancher2_global_role_binding":           {Tok: makeResource(mainMod, "GlobalRoleBinding")},
-			"rancher2_multi_cluster_app":             {Tok: makeResource(mainMod, "MultiClusterApp")},
-			"rancher2_namespace":                     {Tok: makeResource(mainMod, "Namespace")},
-			"rancher2_node_driver":                   {Tok: makeResource(mainMod, "NodeDriver")},
-			"rancher2_node_pool":                     {Tok: makeResource(mainMod, "NodePool")},
-			"rancher2_node_template":                 {Tok: makeResource(mainMod, "NodeTemplate")},
-			"rancher2_notifier":                      {Tok: makeResource(mainMod, "Notifier")},
-			"rancher2_project":                       {Tok: makeResource(mainMod, "Project")},
-			"rancher2_project_alert_group":           {Tok: makeResource(mainMod, "ProjectAlertGroup")},
-			"rancher2_project_alert_rule":            {Tok: makeResource(mainMod, "ProjectAlertRule")},
-			"rancher2_project_role_template_binding": {Tok: makeResource(mainMod, "ProjectRoleTemplateBinding")},
-			"rancher2_registry":                      {Tok: makeResource(mainMod, "Registry")},
-			"rancher2_secret":                        {Tok: makeResource(mainMod, "Secret")},
-			"rancher2_setting":                       {Tok: makeResource(mainMod, "Setting")},
+			"rancher2_auth_config_azuread":  {Tok: makeResource("AuthConfigAzureAd")},
+			"rancher2_auth_config_freeipa":  {Tok: makeResource("AuthConfigFreeIpa")},
+			"rancher2_auth_config_openldap": {Tok: makeResource("AuthConfigOpenLdap")},
 			"rancher2_token": {
-				Tok: makeResource(mainMod, "Token"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"token": {
 						CSharpName: "TokenName",
 					},
 				},
 			},
-			"rancher2_user":                         {Tok: makeResource(mainMod, "User")},
-			"rancher2_pod_security_policy_template": {Tok: makeResource(mainMod, "PodSecurityPolicyTemplate")},
-			"rancher2_catalog_v2":                   {Tok: makeResource(mainMod, "CatalogV2")},
-			"rancher2_app_v2":                       {Tok: makeResource(mainMod, "AppV2")},
-			"rancher2_global_dns":                   {Tok: makeResource(mainMod, "GlobalDns")},
-			"rancher2_global_dns_provider":          {Tok: makeResource(mainMod, "GlobalDnsProvider")},
-			"rancher2_global_role":                  {Tok: makeResource(mainMod, "GlobalRole")},
-			"rancher2_feature":                      {Tok: makeResource(mainMod, "Feature")},
-			"rancher2_secret_v2":                    {Tok: makeResource(mainMod, "SecretV2")},
-			"rancher2_machine_config_v2":            {Tok: makeResource(mainMod, "MachineConfigV2")},
-			"rancher2_storage_class_v2":             {Tok: makeResource(mainMod, "StorageClassV2")},
-			"rancher2_config_map_v2":                {Tok: makeResource(mainMod, "ConfigMapV2")},
-		},
-		DataSources: map[string]*tfbridge.DataSourceInfo{
-			"rancher2_app":                           {Tok: makeDataSource(mainMod, "getApp")},
-			"rancher2_catalog":                       {Tok: makeDataSource(mainMod, "getCatalog")},
-			"rancher2_certificate":                   {Tok: makeDataSource(mainMod, "getCertificate")},
-			"rancher2_cloud_credential":              {Tok: makeDataSource(mainMod, "getCloudCredential")},
-			"rancher2_cluster":                       {Tok: makeDataSource(mainMod, "getCluster")},
-			"rancher2_cluster_alert_group":           {Tok: makeDataSource(mainMod, "getClusterAlertGroup")},
-			"rancher2_cluster_alert_rule":            {Tok: makeDataSource(mainMod, "getClusterAlterRule")},
-			"rancher2_cluster_driver":                {Tok: makeDataSource(mainMod, "getClusterDriver")},
-			"rancher2_cluster_role_template_binding": {Tok: makeDataSource(mainMod, "getClusterRoleTemplateBinding")},
-			"rancher2_cluster_template":              {Tok: makeDataSource(mainMod, "getClusterTemplate")},
-			"rancher2_etcd_backup":                   {Tok: makeDataSource(mainMod, "getEtcdBackup")},
-			"rancher2_global_role_binding":           {Tok: makeDataSource(mainMod, "getGlobalRoleBinding")},
-			"rancher2_multi_cluster_app":             {Tok: makeDataSource(mainMod, "getMultiClusterApp")},
-			"rancher2_namespace":                     {Tok: makeDataSource(mainMod, "getNamespace")},
-			"rancher2_node_driver":                   {Tok: makeDataSource(mainMod, "getNodeDriver")},
-			"rancher2_node_pool":                     {Tok: makeDataSource(mainMod, "getNodePool")},
-			"rancher2_node_template":                 {Tok: makeDataSource(mainMod, "getNodeTemplate")},
-			"rancher2_notifier":                      {Tok: makeDataSource(mainMod, "getNotifier")},
-			"rancher2_project":                       {Tok: makeDataSource(mainMod, "getProject")},
-			"rancher2_project_alert_group":           {Tok: makeDataSource(mainMod, "getProjectAlertGroup")},
-			"rancher2_project_alert_rule":            {Tok: makeDataSource(mainMod, "getProjectAlertRule")},
-			"rancher2_project_role_template_binding": {Tok: makeDataSource(mainMod, "getProjectRoleTemplateBinding")},
-			"rancher2_registry":                      {Tok: makeDataSource(mainMod, "getRegistry")},
-			"rancher2_secret":                        {Tok: makeDataSource(mainMod, "getSecret")},
-			"rancher2_setting":                       {Tok: makeDataSource(mainMod, "getSetting")},
-			"rancher2_user":                          {Tok: makeDataSource(mainMod, "getUser")},
-			"rancher2_pod_security_policy_template":  {Tok: makeDataSource(mainMod, "getPodSecurityPolicyTemplate")},
-			"rancher2_catalog_v2":                    {Tok: makeDataSource(mainMod, "getCatalogV2")},
-			"rancher2_global_dns_provider":           {Tok: makeDataSource(mainMod, "getGlobalDnsProvider")},
-			"rancher2_global_role":                   {Tok: makeDataSource(mainMod, "getGlobalRole")},
-			"rancher2_secret_v2":                     {Tok: makeDataSource(mainMod, "getSecretV2")},
-			"rancher2_cluster_v2":                    {Tok: makeDataSource(mainMod, "getClusterV2")},
-			"rancher2_storage_class_v2":              {Tok: makeDataSource(mainMod, "getStorageClassV2")},
-			"rancher2_config_map_v2":                 {Tok: makeDataSource(mainMod, "getConfigMapV2")},
-			"rancher2_principal":                     {Tok: makeDataSource(mainMod, "getPrincipal")},
+
+			// Override capitalization for backwards compatibility.
+			"rancher2_auth_config_activedirectory": {Tok: makeResource("AuthConfigActiveDirectory")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions
@@ -199,17 +100,15 @@ func Provider() tfbridge.ProviderInfo {
 				"@types/mime": "^2.0.0",
 			},
 		},
-		Python: (func() *tfbridge.PythonInfo {
-			i := &tfbridge.PythonInfo{
-				Requires: map[string]string{
-					"pulumi": ">=3.0.0,<4.0.0",
-				}}
-			i.PyProject.Enabled = true
-			return i
-		})(),
+		Python: &tfbridge.PythonInfo{
+			Requires: map[string]string{
+				"pulumi": ">=3.0.0,<4.0.0",
+			},
+			PyProject: struct{ Enabled bool }{true},
+		},
 
 		Golang: &tfbridge.GolangInfo{
-			ImportBasePath: filepath.Join(
+			ImportBasePath: path.Join(
 				fmt.Sprintf("github.com/pulumi/pulumi-%[1]s/sdk/", mainPkg),
 				tfbridge.GetModuleMajorVersion(version.Version),
 				"go",
@@ -221,35 +120,8 @@ func Provider() tfbridge.ProviderInfo {
 			PackageReferences: map[string]string{
 				"Pulumi": "3.*",
 			},
-			Namespaces: namespaceMap,
-		}, MetadataInfo: tfbridge.NewProviderMetadata(metadata),
+		},
 	}
-
-	prov.RenameDataSource("rancher2_role_template", makeDataSource(mainMod, "getRoleTempalte"),
-		makeDataSource(mainMod, "getRoleTemplate"), mainMod, mainMod, &tfbridge.DataSourceInfo{
-			Docs: &tfbridge.DocInfo{Source: "role_template.md"},
-		})
-
-	prov.RenameResourceWithAlias("rancher2_cluster_alert_group", makeResource(mainMod, "ClusterAlterGroup"),
-		makeResource(mainMod, "ClusterAlertGroup"), mainMod, mainMod, &tfbridge.ResourceInfo{
-			Docs: &tfbridge.DocInfo{Source: "cluster_alert_group.md"},
-		})
-	prov.RenameResourceWithAlias("rancher2_cluster_alert_rule", makeResource(mainMod, "ClusterAlterRule"),
-		makeResource(mainMod, "ClusterAlertRule"), mainMod, mainMod, &tfbridge.ResourceInfo{
-			Docs: &tfbridge.DocInfo{Source: "cluster_alert_group.md"},
-		})
-	prov.RenameResourceWithAlias("rancher2_role_template", makeResource(mainMod, "RoleTempalte"),
-		makeResource(mainMod, "RoleTemplate"), mainMod, mainMod,
-		&tfbridge.ResourceInfo{
-			Docs: &tfbridge.DocInfo{Source: "role_template.md"},
-		})
-	prov.RenameResourceWithAlias("rancher2_auth_config_activedirectory", makeResource(mainMod, "ActiveDirectory"),
-		makeResource(mainMod, "AuthConfigActiveDirectory"), mainMod, mainMod,
-		&tfbridge.ResourceInfo{
-			Docs: &tfbridge.DocInfo{
-				Source: "auth_config_activedirectory.md",
-			},
-		})
 
 	prov.MustComputeTokens(tks.SingleModule("rancher2_", mainMod, tks.MakeStandard(mainPkg)))
 	prov.MustApplyAutoAliases()

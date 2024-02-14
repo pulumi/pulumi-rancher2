@@ -36,6 +36,29 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
+    /// ### Create an App from a Helm Chart using a different registry
+    /// 
+    /// The `system_default_registry` argument can override the global value at App installation. If argument is not provided, the global value for System Default Registry will be used instead.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var cisBenchmark = new Rancher2.AppV2("cisBenchmark", new()
+    ///     {
+    ///         ChartName = "rancher-cis-benchmark",
+    ///         ClusterId = "&lt;CLUSTER_ID&gt;",
+    ///         Namespace = "cis-operator-system",
+    ///         RepoName = "rancher-charts",
+    ///         SystemDefaultRegistry = "&lt;some.dns.here&gt;:&lt;PORT&gt;",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -141,7 +164,7 @@ namespace Pulumi.Rancher2
         public Output<string> RepoName { get; private set; } = null!;
 
         /// <summary>
-        /// (Computed) The system default registry of the app (string)
+        /// System default registry providing images for app deployment (string)
         /// </summary>
         [Output("systemDefaultRegistry")]
         public Output<string> SystemDefaultRegistry { get; private set; } = null!;
@@ -295,6 +318,12 @@ namespace Pulumi.Rancher2
         public Input<string> RepoName { get; set; } = null!;
 
         /// <summary>
+        /// System default registry providing images for app deployment (string)
+        /// </summary>
+        [Input("systemDefaultRegistry")]
+        public Input<string>? SystemDefaultRegistry { get; set; }
+
+        /// <summary>
         /// The app v2 values yaml. Yaml format is required (string)
         /// </summary>
         [Input("values")]
@@ -419,7 +448,7 @@ namespace Pulumi.Rancher2
         public Input<string>? RepoName { get; set; }
 
         /// <summary>
-        /// (Computed) The system default registry of the app (string)
+        /// System default registry providing images for app deployment (string)
         /// </summary>
         [Input("systemDefaultRegistry")]
         public Input<string>? SystemDefaultRegistry { get; set; }

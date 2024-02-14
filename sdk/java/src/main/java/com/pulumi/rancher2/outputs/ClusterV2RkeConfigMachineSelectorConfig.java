@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterV2RkeConfigMachineSelectorConfig {
     /**
-     * @return Machine selector config. Must be in YAML format (string)
+     * @return Config is the distribution-specify configuration to be applied to nodes that match the provided label selector. For more information, please refer to Rancher&#39;s documentation for [RKE2 Cluster Configuration](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration#machineselectorconfig) or [K3s Cluster Configuration](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/k3s-cluster-configuration#machineselectorconfig)
      * 
      */
     private @Nullable String config;
     /**
-     * @return Machine selector label (list maxitems:1)
+     * @return Machine selector label is a label query over a set of resources. The result of match_labels and match_expressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
      * 
      */
     private @Nullable ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector machineLabelSelector;
 
     private ClusterV2RkeConfigMachineSelectorConfig() {}
     /**
-     * @return Machine selector config. Must be in YAML format (string)
+     * @return Config is the distribution-specify configuration to be applied to nodes that match the provided label selector. For more information, please refer to Rancher&#39;s documentation for [RKE2 Cluster Configuration](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration#machineselectorconfig) or [K3s Cluster Configuration](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/k3s-cluster-configuration#machineselectorconfig)
      * 
      */
     public Optional<String> config() {
         return Optional.ofNullable(this.config);
     }
     /**
-     * @return Machine selector label (list maxitems:1)
+     * @return Machine selector label is a label query over a set of resources. The result of match_labels and match_expressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
      * 
      */
     public Optional<ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector> machineLabelSelector() {
