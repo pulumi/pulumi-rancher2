@@ -4,7 +4,6 @@ go 1.21
 
 require (
 	github.com/blang/semver v3.5.1+incompatible
-	github.com/pulumi/pulumi-rancher2/sdk/v5 v5.2.2
 	github.com/pulumi/pulumi/sdk/v3 v3.105.0
 )
 
