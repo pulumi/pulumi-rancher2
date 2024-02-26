@@ -28,6 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 Node Driver
 //			_, err := rancher2.NewNodeDriver(ctx, "foo", &rancher2.NodeDriverArgs{
 //				Active:      pulumi.Bool(true),
 //				Builtin:     pulumi.Bool(false),

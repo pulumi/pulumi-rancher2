@@ -28,6 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new Rancher2 Cluster Alert Group
 //			_, err := rancher2.NewClusterAlertGroup(ctx, "foo", &rancher2.ClusterAlertGroupArgs{
 //				ClusterId:             pulumi.String("<cluster_id>"),
 //				Description:           pulumi.String("Terraform cluster alert group"),

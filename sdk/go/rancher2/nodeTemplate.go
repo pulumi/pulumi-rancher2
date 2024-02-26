@@ -31,6 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 Node Template up to Rancher 2.1.x
 //			_, err := rancher2.NewNodeTemplate(ctx, "foo", &rancher2.NodeTemplateArgs{
 //				Amazonec2Config: &rancher2.NodeTemplateAmazonec2ConfigArgs{
 //					AccessKey: pulumi.String("AWS_ACCESS_KEY"),
@@ -67,6 +68,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 Node Template from Rancher 2.2.x
 //			fooCloudCredential, err := rancher2.NewCloudCredential(ctx, "fooCloudCredential", &rancher2.CloudCredentialArgs{
 //				Description: pulumi.String("foo test"),
 //				Amazonec2CredentialConfig: &rancher2.CloudCredentialAmazonec2CredentialConfigArgs{
@@ -119,6 +121,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Create a new Cloud Credential for an imported Harvester cluster
 //			_, err = rancher2.NewCloudCredential(ctx, "foo-harvesterCloudCredential", &rancher2.CloudCredentialArgs{
 //				HarvesterCredentialConfig: &rancher2.CloudCredentialHarvesterCredentialConfigArgs{
 //					ClusterId:         *pulumi.String(foo_harvesterClusterV2.ClusterV1Id),
@@ -129,6 +132,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Create a new rancher2 Node Template using harvester node_driver
 //			_, err = rancher2.NewNodeTemplate(ctx, "foo-harvesterNodeTemplate", &rancher2.NodeTemplateArgs{
 //				CloudCredentialId: foo_harvesterCloudCredential.ID(),
 //				EngineInstallUrl:  pulumi.String("https://releases.rancher.com/install-docker/20.10.sh"),
@@ -189,6 +193,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 Node Template using hetzner node_driver
 //			hetznerNodeDriver, err := rancher2.NewNodeDriver(ctx, "hetznerNodeDriver", &rancher2.NodeDriverArgs{
 //				Active:  pulumi.Bool(true),
 //				Builtin: pulumi.Bool(false),
