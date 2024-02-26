@@ -37,6 +37,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Create a new Cloud Credential for an imported Harvester cluster
 //			_, err = rancher2.NewCloudCredential(ctx, "foo-harvesterCloudCredential", &rancher2.CloudCredentialArgs{
 //				HarvesterCredentialConfig: &rancher2.CloudCredentialHarvesterCredentialConfigArgs{
 //					ClusterId:         *pulumi.String(foo_harvesterClusterV2.ClusterV1Id),
@@ -47,6 +48,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Create a new rancher2 machine config v2 using harvester node_driver
 //			_, err = rancher2.NewMachineConfigV2(ctx, "foo-harvester-v2", &rancher2.MachineConfigV2Args{
 //				GenerateName: pulumi.String("foo-harvester-v2"),
 //				HarvesterConfig: &rancher2.MachineConfigV2HarvesterConfigArgs{

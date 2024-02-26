@@ -27,6 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 PodSecurityPolicyTemplate
 //			_, err := rancher2.NewPodSecurityPolicyTemplate(ctx, "foo", &rancher2.PodSecurityPolicyTemplateArgs{
 //				AllowPrivilegeEscalation: pulumi.Bool(false),
 //				AllowedCsiDrivers: rancher2.PodSecurityPolicyTemplateAllowedCsiDriverArray{

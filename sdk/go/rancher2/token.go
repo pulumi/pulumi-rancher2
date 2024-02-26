@@ -33,6 +33,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 Token scoped
 //			_, err := rancher2.NewToken(ctx, "foo", &rancher2.TokenArgs{
 //				ClusterId:   pulumi.String("<cluster-id>"),
 //				Description: pulumi.String("foo token"),

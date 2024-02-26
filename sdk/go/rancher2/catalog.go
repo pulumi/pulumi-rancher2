@@ -28,12 +28,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new Rancher2 Global Catalog
 //			_, err := rancher2.NewCatalog(ctx, "foo-global", &rancher2.CatalogArgs{
 //				Url: pulumi.String("https://<CATALOG_URL>"),
 //			})
 //			if err != nil {
 //				return err
 //			}
+//			// Create a new Rancher2 Cluster Catalog
 //			_, err = rancher2.NewCatalog(ctx, "foo-cluster", &rancher2.CatalogArgs{
 //				Scope: pulumi.String("cluster"),
 //				Url:   pulumi.String("https://<CATALOG_URL>"),
@@ -41,6 +43,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Create a new Rancher2 Project Catalog
 //			_, err = rancher2.NewCatalog(ctx, "foo-project", &rancher2.CatalogArgs{
 //				Scope: pulumi.String("project"),
 //				Url:   pulumi.String("https://<CATALOG_URL>"),

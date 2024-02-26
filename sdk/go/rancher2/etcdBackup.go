@@ -30,6 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 Etcd Backup
 //			_, err := rancher2.NewEtcdBackup(ctx, "foo", &rancher2.EtcdBackupArgs{
 //				BackupConfig: &rancher2.EtcdBackupBackupConfigArgs{
 //					Enabled:       pulumi.Bool(true),

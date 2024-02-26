@@ -27,6 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 Global Role
 //			_, err := rancher2.NewGlobalRole(ctx, "foo", &rancher2.GlobalRoleArgs{
 //				Description:    pulumi.String("Terraform global role acceptance test"),
 //				NewUserDefault: pulumi.Bool(true),

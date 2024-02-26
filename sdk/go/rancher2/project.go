@@ -28,6 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 Project
 //			_, err := rancher2.NewProject(ctx, "foo", &rancher2.ProjectArgs{
 //				ClusterId: pulumi.String("<CLUSTER_ID>"),
 //				ContainerResourceLimit: &rancher2.ProjectContainerResourceLimitArgs{
@@ -70,6 +71,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 Project enabling and customizing monitoring
 //			_, err := rancher2.NewProject(ctx, "foo", &rancher2.ProjectArgs{
 //				ClusterId: pulumi.String("<CLUSTER_ID>"),
 //				ContainerResourceLimit: &rancher2.ProjectContainerResourceLimitArgs{

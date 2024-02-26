@@ -32,6 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 Project Registry
 //			_, err := rancher2.NewRegistry(ctx, "foo", &rancher2.RegistryArgs{
 //				Description: pulumi.String("Terraform registry foo"),
 //				ProjectId:   pulumi.String("<project_id>"),
@@ -64,6 +65,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 Namespaced Registry
 //			_, err := rancher2.NewRegistry(ctx, "foo", &rancher2.RegistryArgs{
 //				Description: pulumi.String("Terraform registry foo"),
 //				NamespaceId: pulumi.String("<namespace_id>"),

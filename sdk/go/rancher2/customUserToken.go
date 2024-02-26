@@ -36,6 +36,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a rancher2 Token
 //			fooUser, err := rancher2.NewUser(ctx, "fooUser", &rancher2.UserArgs{
 //				Username: pulumi.String("foo"),
 //				Password: pulumi.String("changeme"),
