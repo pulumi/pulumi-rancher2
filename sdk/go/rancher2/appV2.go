@@ -38,6 +38,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new Rancher2 App V2 using
 //			_, err := rancher2.NewAppV2(ctx, "foo", &rancher2.AppV2Args{
 //				ClusterId:    pulumi.String("<CLUSTER_ID>"),
 //				Namespace:    pulumi.String("cattle-monitoring-system"),

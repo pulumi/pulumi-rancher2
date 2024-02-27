@@ -28,6 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 Global DNS Provider - alidns
 //			_, err := rancher2.NewGlobalDnsProvider(ctx, "foo", &rancher2.GlobalDnsProviderArgs{
 //				AlidnsConfig: &rancher2.GlobalDnsProviderAlidnsConfigArgs{
 //					AccessKey: pulumi.String("YYYYYYYYYYYYYYYYYYYY"),
@@ -56,6 +57,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 Global DNS Provider - cloudflare
 //			_, err := rancher2.NewGlobalDnsProvider(ctx, "foo", &rancher2.GlobalDnsProviderArgs{
 //				CloudflareConfig: &rancher2.GlobalDnsProviderCloudflareConfigArgs{
 //					ApiEmail:     pulumi.String("test@test.local"),
@@ -85,6 +87,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 Global DNS Provider - route53
 //			_, err := rancher2.NewGlobalDnsProvider(ctx, "foo", &rancher2.GlobalDnsProviderArgs{
 //				RootDomain: pulumi.String("example.com"),
 //				Route53Config: &rancher2.GlobalDnsProviderRoute53ConfigArgs{

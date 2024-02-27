@@ -30,6 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 Auth Config Ping
 //			_, err := rancher2.NewAuthConfigPing(ctx, "ping", &rancher2.AuthConfigPingArgs{
 //				DisplayNameField:   pulumi.String("<DISPLAY_NAME_FIELD>"),
 //				GroupsField:        pulumi.String("<GROUPS_FIELD>"),

@@ -29,6 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 Cloud Credential
 //			_, err := rancher2.NewCloudCredential(ctx, "foo", &rancher2.CloudCredentialArgs{
 //				Amazonec2CredentialConfig: &rancher2.CloudCredentialAmazonec2CredentialConfigArgs{
 //					AccessKey: pulumi.String("<AWS_ACCESS_KEY>"),
@@ -63,6 +64,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Create a new Cloud Credential for an imported Harvester cluster
 //			_, err = rancher2.NewCloudCredential(ctx, "foo-harvesterCloudCredential", &rancher2.CloudCredentialArgs{
 //				HarvesterCredentialConfig: &rancher2.CloudCredentialHarvesterCredentialConfigArgs{
 //					ClusterId:         *pulumi.String(foo_harvesterClusterV2.ClusterV1Id),

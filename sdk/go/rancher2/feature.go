@@ -33,6 +33,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 Feature
 //			_, err := rancher2.NewFeature(ctx, "fleet", &rancher2.FeatureArgs{
 //				Value: pulumi.Bool("<VALUE>"),
 //			})

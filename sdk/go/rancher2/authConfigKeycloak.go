@@ -30,6 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 Auth Config KeyCloak
 //			_, err := rancher2.NewAuthConfigKeycloak(ctx, "keycloak", &rancher2.AuthConfigKeycloakArgs{
 //				DisplayNameField:   pulumi.String("<DISPLAY_NAME_FIELD>"),
 //				GroupsField:        pulumi.String("<GROUPS_FIELD>"),

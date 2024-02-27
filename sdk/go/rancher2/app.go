@@ -35,6 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 App
 //			_, err := rancher2.NewApp(ctx, "foo", &rancher2.AppArgs{
 //				Answers: pulumi.Map{
 //					"foo": pulumi.Any("bar"),
@@ -69,6 +70,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 App in a new namespace
 //			fooNamespace, err := rancher2.NewNamespace(ctx, "fooNamespace", &rancher2.NamespaceArgs{
 //				Description: pulumi.String("Foo namespace"),
 //				ProjectId:   pulumi.String("<project_id>"),
