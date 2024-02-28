@@ -30,6 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 User
 //			fooUser, err := rancher2.NewUser(ctx, "fooUser", &rancher2.UserArgs{
 //				Username: pulumi.String("foo"),
 //				Password: pulumi.String("changeme"),
@@ -38,6 +39,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Create a new rancher2 global_role_binding for User
 //			_, err = rancher2.NewGlobalRoleBinding(ctx, "fooGlobalRoleBinding", &rancher2.GlobalRoleBindingArgs{
 //				GlobalRoleId: pulumi.String("user-base"),
 //				UserId:       fooUser.ID(),

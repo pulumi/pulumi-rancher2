@@ -25,6 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2_bootstrap
 //			_, err := rancher2.NewBootstrap(ctx, "admin", &rancher2.BootstrapArgs{
 //				Password:  pulumi.String("blahblah"),
 //				Telemetry: pulumi.Bool(true),
@@ -50,6 +51,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2_bootstrap for Rancher v2.6.0 and above
 //			_, err := rancher2.NewBootstrap(ctx, "admin", &rancher2.BootstrapArgs{
 //				InitialPassword: pulumi.String("<INSTALL_PASSWORD>"),
 //				Password:        pulumi.String("blahblah"),
@@ -76,6 +78,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Provider bootstrap config with alias
 //			_, err := rancher2.NewProvider(ctx, "bootstrap", &rancher2.ProviderArgs{
 //				ApiUrl:    pulumi.String("https://rancher.my-domain.com"),
 //				Bootstrap: pulumi.Bool(true),
@@ -83,6 +86,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Create a new rancher2_bootstrap using bootstrap provider config
 //			_, err = rancher2.NewBootstrap(ctx, "admin", &rancher2.BootstrapArgs{
 //				Password:  pulumi.String("blahblah"),
 //				Telemetry: pulumi.Bool(true),

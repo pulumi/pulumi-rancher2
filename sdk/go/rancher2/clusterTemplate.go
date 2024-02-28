@@ -29,6 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 Cluster Template
 //			_, err := rancher2.NewClusterTemplate(ctx, "foo", &rancher2.ClusterTemplateArgs{
 //				Description: pulumi.String("Terraform cluster template foo"),
 //				Members: rancher2.ClusterTemplateMemberArray{
@@ -80,6 +81,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 Cluster Template
 //			_, err := rancher2.NewClusterTemplate(ctx, "foo", &rancher2.ClusterTemplateArgs{
 //				Description: pulumi.String("Terraform cluster template foo"),
 //				Members: rancher2.ClusterTemplateMemberArray{

@@ -35,6 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 Multi Cluster App
 //			_, err := rancher2.NewMultiClusterApp(ctx, "foo", &rancher2.MultiClusterAppArgs{
 //				Answers: rancher2.MultiClusterAppAnswerArray{
 //					&rancher2.MultiClusterAppAnswerArgs{
@@ -76,6 +77,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 Multi Cluster App overriding answers
 //			_, err := rancher2.NewMultiClusterApp(ctx, "foo", &rancher2.MultiClusterAppArgs{
 //				Answers: rancher2.MultiClusterAppAnswerArray{
 //					&rancher2.MultiClusterAppAnswerArgs{

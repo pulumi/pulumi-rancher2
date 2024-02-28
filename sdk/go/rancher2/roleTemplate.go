@@ -29,6 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 cluster Role Template
 //			_, err := rancher2.NewRoleTemplate(ctx, "foo", &rancher2.RoleTemplateArgs{
 //				Context:     pulumi.String("cluster"),
 //				DefaultRole: pulumi.Bool(true),
@@ -68,6 +69,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 project Role Template
 //			_, err := rancher2.NewRoleTemplate(ctx, "foo", &rancher2.RoleTemplateArgs{
 //				Context:     pulumi.String("project"),
 //				DefaultRole: pulumi.Bool(true),

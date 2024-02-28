@@ -28,6 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 Global DNS Provider
 //			fooGlobalDnsProvider, err := rancher2.NewGlobalDnsProvider(ctx, "fooGlobalDnsProvider", &rancher2.GlobalDnsProviderArgs{
 //				RootDomain: pulumi.String("example.com"),
 //				Route53Config: &rancher2.GlobalDnsProviderRoute53ConfigArgs{
@@ -40,6 +41,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Create a new rancher2 Global DNS using project IDs
 //			_, err = rancher2.NewGlobalDns(ctx, "fooGlobalDns", &rancher2.GlobalDnsArgs{
 //				Fqdn:       pulumi.String("foo.example.com"),
 //				ProviderId: fooGlobalDnsProvider.ID(),
@@ -69,6 +71,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 Global DNS Provider
 //			fooGlobalDnsProvider, err := rancher2.NewGlobalDnsProvider(ctx, "fooGlobalDnsProvider", &rancher2.GlobalDnsProviderArgs{
 //				RootDomain: pulumi.String("example.com"),
 //				Route53Config: &rancher2.GlobalDnsProviderRoute53ConfigArgs{
@@ -81,6 +84,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Create a new rancher2 Global DNS using MultiClusterApp ID
 //			_, err = rancher2.NewGlobalDns(ctx, "fooGlobalDns", &rancher2.GlobalDnsArgs{
 //				Fqdn:              pulumi.String("foo.example.com"),
 //				ProviderId:        fooGlobalDnsProvider.ID(),

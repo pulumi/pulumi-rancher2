@@ -32,6 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 RKE Cluster
 //			_, err := rancher2.NewCluster(ctx, "foo-custom", &rancher2.ClusterArgs{
 //				ClusterMonitoringInput: &rancher2.ClusterClusterMonitoringInputArgs{
 //					Answers: pulumi.Map{
@@ -86,6 +87,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 RKE Cluster
 //			_, err := rancher2.NewCluster(ctx, "foo-customCluster", &rancher2.ClusterArgs{
 //				Description: pulumi.String("Foo rancher2 custom cluster"),
 //				RkeConfig: &rancher2.ClusterRkeConfigArgs{
@@ -121,6 +123,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Create a new rancher2 Cluster Sync for foo-custom cluster
 //			_, err = rancher2.NewClusterSync(ctx, "foo-customClusterSync", &rancher2.ClusterSyncArgs{
 //				ClusterId:      foo_customCluster.ID(),
 //				WaitMonitoring: foo_customCluster.EnableClusterMonitoring,
@@ -128,6 +131,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Create a new rancher2 Namespace
 //			_, err = rancher2.NewNamespace(ctx, "foo-istio", &rancher2.NamespaceArgs{
 //				ProjectId:   foo_customClusterSync.SystemProjectId,
 //				Description: pulumi.String("istio namespace"),
@@ -135,6 +139,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Create a new rancher2 App deploying istio (should wait until monitoring is up and running)
 //			_, err = rancher2.NewApp(ctx, "istio", &rancher2.AppArgs{
 //				CatalogName:     pulumi.String("system-library"),
 //				Description:     pulumi.String("Terraform app acceptance test"),
@@ -206,6 +211,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 RKE Cluster
 //			_, err := rancher2.NewCluster(ctx, "foo-custom", &rancher2.ClusterArgs{
 //				Description: pulumi.String("Foo rancher2 custom cluster"),
 //				RkeConfig: &rancher2.ClusterRkeConfigArgs{
@@ -217,6 +223,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Create a new rancher2 Node Template
 //			fooNodeTemplate, err := rancher2.NewNodeTemplate(ctx, "fooNodeTemplate", &rancher2.NodeTemplateArgs{
 //				Description: pulumi.String("foo test"),
 //				Amazonec2Config: &rancher2.NodeTemplateAmazonec2ConfigArgs{
@@ -235,6 +242,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Create a new rancher2 Node Pool
 //			_, err = rancher2.NewNodePool(ctx, "fooNodePool", &rancher2.NodePoolArgs{
 //				ClusterId:      foo_custom.ID(),
 //				HostnamePrefix: pulumi.String("foo-cluster-0"),
@@ -266,6 +274,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 cluster template
 //			fooClusterTemplate, err := rancher2.NewClusterTemplate(ctx, "fooClusterTemplate", &rancher2.ClusterTemplateArgs{
 //				Members: rancher2.ClusterTemplateMemberArray{
 //					&rancher2.ClusterTemplateMemberArgs{
@@ -297,6 +306,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Create a new rancher2 RKE Cluster from template
 //			_, err = rancher2.NewCluster(ctx, "fooCluster", &rancher2.ClusterArgs{
 //				ClusterTemplateId: fooClusterTemplate.ID(),
 //				ClusterTemplateRevisionId: fooClusterTemplate.TemplateRevisions.ApplyT(func(templateRevisions []rancher2.ClusterTemplateTemplateRevision) (*string, error) {

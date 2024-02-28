@@ -32,6 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 Setting
 //			_, err := rancher2.NewSetting(ctx, "foo", &rancher2.SettingArgs{
 //				Value: pulumi.String("<VALUE>"),
 //			})

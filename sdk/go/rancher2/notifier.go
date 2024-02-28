@@ -28,6 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 Notifier
 //			_, err := rancher2.NewNotifier(ctx, "foo", &rancher2.NotifierArgs{
 //				ClusterId:   pulumi.String("<cluster_id>"),
 //				Description: pulumi.String("Terraform notifier acceptance test"),
