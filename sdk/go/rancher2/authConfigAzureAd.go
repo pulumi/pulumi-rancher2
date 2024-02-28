@@ -26,6 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 Auth Config AzureAD
 //			_, err := rancher2.NewAuthConfigAzureAd(ctx, "azuread", &rancher2.AuthConfigAzureAdArgs{
 //				ApplicationId:     pulumi.String("<AZUREAD_APP_ID>"),
 //				ApplicationSecret: pulumi.String("<AZUREAD_APP_SECRET>"),

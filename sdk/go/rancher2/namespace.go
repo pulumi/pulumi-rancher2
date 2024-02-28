@@ -28,6 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 Namespace
 //			_, err := rancher2.NewNamespace(ctx, "foo", &rancher2.NamespaceArgs{
 //				ContainerResourceLimit: &rancher2.NamespaceContainerResourceLimitArgs{
 //					LimitsCpu:      pulumi.String("20m"),
@@ -66,6 +67,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 Cluster
 //			_, err := rancher2.NewCluster(ctx, "foo-custom", &rancher2.ClusterArgs{
 //				Description: pulumi.String("Foo rancher2 custom cluster"),
 //				RkeConfig: &rancher2.ClusterRkeConfigArgs{
@@ -77,6 +79,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Create a new rancher2 Namespace assigned to default cluster project
 //			_, err = rancher2.NewNamespace(ctx, "foo", &rancher2.NamespaceArgs{
 //				ProjectId:   foo_custom.DefaultProjectId,
 //				Description: pulumi.String("foo namespace"),

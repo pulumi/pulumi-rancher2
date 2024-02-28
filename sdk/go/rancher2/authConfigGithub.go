@@ -30,6 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 Auth Config Github
 //			_, err := rancher2.NewAuthConfigGithub(ctx, "github", &rancher2.AuthConfigGithubArgs{
 //				ClientId:     pulumi.String("<GITHUB_CLIENT_ID>"),
 //				ClientSecret: pulumi.String("<GITHUB_CLIENT_SECRET>"),
