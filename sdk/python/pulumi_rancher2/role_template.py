@@ -454,6 +454,7 @@ class RoleTemplate(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -469,7 +470,9 @@ class RoleTemplate(pulumi.CustomResource):
                 verbs=["create"],
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -485,13 +488,14 @@ class RoleTemplate(pulumi.CustomResource):
                 verbs=["create"],
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Role Template can be imported using the Rancher Role Template ID
 
         ```sh
-         $ pulumi import rancher2:index/roleTemplate:RoleTemplate foo &lt;role_template_id&gt;
+        $ pulumi import rancher2:index/roleTemplate:RoleTemplate foo &lt;role_template_id&gt;
         ```
 
         :param str resource_name: The name of the resource.
@@ -522,6 +526,7 @@ class RoleTemplate(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -537,7 +542,9 @@ class RoleTemplate(pulumi.CustomResource):
                 verbs=["create"],
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -553,13 +560,14 @@ class RoleTemplate(pulumi.CustomResource):
                 verbs=["create"],
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Role Template can be imported using the Rancher Role Template ID
 
         ```sh
-         $ pulumi import rancher2:index/roleTemplate:RoleTemplate foo &lt;role_template_id&gt;
+        $ pulumi import rancher2:index/roleTemplate:RoleTemplate foo &lt;role_template_id&gt;
         ```
 
         :param str resource_name: The name of the resource.

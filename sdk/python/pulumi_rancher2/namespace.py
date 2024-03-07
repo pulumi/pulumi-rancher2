@@ -303,6 +303,7 @@ class Namespace(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -325,7 +326,9 @@ class Namespace(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -356,6 +359,7 @@ class Namespace(pulumi.CustomResource):
                 requests_memory="1Mi",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -365,11 +369,11 @@ class Namespace(pulumi.CustomResource):
         $ pulumi import rancher2:index/namespace:Namespace foo &lt;project_id&gt;.&lt;namespaces_id&gt;
         ```
 
-         `<project_id>` is in the format `<cluster_id>:<id>`, but <id> part is optional:
+        `<project_id>` is in the format `<cluster_id>:<id>`, but <id> part is optional:
 
-         - If full project_id is provided, `<project_id>=<cluster_id>:<id>`, the namespace'll be assigned to corresponding cluster project once it's imported.
+        - If full project_id is provided, `<project_id>=<cluster_id>:<id>`, the namespace'll be assigned to corresponding cluster project once it's imported.
 
-         - If `<id>` part is omitted `<project_id>=<cluster_id>`, the namespace'll not be assigned to any project. To move it into a project, `<project_id>=<cluster_id>:<id>` needs to be updated in tf file. Namespace movement is only supported inside same `cluster_id`.
+        - If `<id>` part is omitted `<project_id>=<cluster_id>`, the namespace'll not be assigned to any project. To move it into a project, `<project_id>=<cluster_id>:<id>` needs to be updated in tf file. Namespace movement is only supported inside same `cluster_id`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -393,6 +397,7 @@ class Namespace(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -415,7 +420,9 @@ class Namespace(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -446,6 +453,7 @@ class Namespace(pulumi.CustomResource):
                 requests_memory="1Mi",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -455,11 +463,11 @@ class Namespace(pulumi.CustomResource):
         $ pulumi import rancher2:index/namespace:Namespace foo &lt;project_id&gt;.&lt;namespaces_id&gt;
         ```
 
-         `<project_id>` is in the format `<cluster_id>:<id>`, but <id> part is optional:
+        `<project_id>` is in the format `<cluster_id>:<id>`, but <id> part is optional:
 
-         - If full project_id is provided, `<project_id>=<cluster_id>:<id>`, the namespace'll be assigned to corresponding cluster project once it's imported.
+        - If full project_id is provided, `<project_id>=<cluster_id>:<id>`, the namespace'll be assigned to corresponding cluster project once it's imported.
 
-         - If `<id>` part is omitted `<project_id>=<cluster_id>`, the namespace'll not be assigned to any project. To move it into a project, `<project_id>=<cluster_id>:<id>` needs to be updated in tf file. Namespace movement is only supported inside same `cluster_id`.
+        - If `<id>` part is omitted `<project_id>=<cluster_id>`, the namespace'll not be assigned to any project. To move it into a project, `<project_id>=<cluster_id>:<id>` needs to be updated in tf file. Namespace movement is only supported inside same `cluster_id`.
 
         :param str resource_name: The name of the resource.
         :param NamespaceArgs args: The arguments to use to populate this resource's properties.

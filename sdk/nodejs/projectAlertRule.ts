@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -53,13 +54,14 @@ import * as utilities from "./utilities";
  *     repeatIntervalSeconds: 6000,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Project Alert Rule can be imported using the Rancher project alert rule ID
  *
  * ```sh
- *  $ pulumi import rancher2:index/projectAlertRule:ProjectAlertRule foo &lt;project_alert_rule_id&gt;
+ * $ pulumi import rancher2:index/projectAlertRule:ProjectAlertRule foo &lt;project_alert_rule_id&gt;
  * ```
  */
 export class ProjectAlertRule extends pulumi.CustomResource {

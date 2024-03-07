@@ -84,12 +84,14 @@ def get_cloud_credential(name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
 
     test = rancher2.get_cloud_credential(name="test")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The Cloud Credential name.
@@ -114,12 +116,14 @@ def get_cloud_credential_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
 
     test = rancher2.get_cloud_credential(name="test")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The Cloud Credential name.

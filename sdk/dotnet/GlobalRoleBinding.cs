@@ -14,6 +14,7 @@ namespace Pulumi.Rancher2
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -38,13 +39,14 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Global Role Bindings can be imported using the Rancher Global Role Binding ID
     /// 
     /// ```sh
-    ///  $ pulumi import rancher2:index/globalRoleBinding:GlobalRoleBinding foo &amp;lt;GLOBAL_ROLE_BINDING_ID&amp;gt;
+    /// $ pulumi import rancher2:index/globalRoleBinding:GlobalRoleBinding foo &amp;lt;GLOBAL_ROLE_BINDING_ID&amp;gt;
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/globalRoleBinding:GlobalRoleBinding")]

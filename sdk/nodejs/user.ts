@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -27,13 +28,14 @@ import * as utilities from "./utilities";
  *     userId: fooUser.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Users can be imported using the Rancher User ID
  *
  * ```sh
- *  $ pulumi import rancher2:index/user:User foo &lt;user_id&gt;
+ * $ pulumi import rancher2:index/user:User foo &lt;user_id&gt;
  * ```
  */
 export class User extends pulumi.CustomResource {

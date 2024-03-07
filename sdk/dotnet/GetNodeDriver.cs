@@ -14,10 +14,9 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 Node Driver resource. 
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,8 +32,7 @@ namespace Pulumi.Rancher2
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetNodeDriverResult> InvokeAsync(GetNodeDriverArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNodeDriverResult>("rancher2:index/getNodeDriver:getNodeDriver", args ?? new GetNodeDriverArgs(), options.WithDefaults());
@@ -42,10 +40,9 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 Node Driver resource. 
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,8 +58,7 @@ namespace Pulumi.Rancher2
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetNodeDriverResult> Invoke(GetNodeDriverInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNodeDriverResult>("rancher2:index/getNodeDriver:getNodeDriver", args ?? new GetNodeDriverInvokeArgs(), options.WithDefaults());

@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -17,6 +18,7 @@ import * as utilities from "./utilities";
  *     name: "catalog",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getCatalog(args: GetCatalogArgs, opts?: pulumi.InvokeOptions): Promise<GetCatalogResult> {
 
@@ -101,6 +103,7 @@ export interface GetCatalogResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -109,6 +112,7 @@ export interface GetCatalogResult {
  *     name: "catalog",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getCatalogOutput(args: GetCatalogOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCatalogResult> {
     return pulumi.output(args).apply((a: any) => getCatalog(a, opts))

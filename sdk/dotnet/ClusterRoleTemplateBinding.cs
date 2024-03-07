@@ -14,6 +14,7 @@ namespace Pulumi.Rancher2
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -32,13 +33,14 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Cluster Role Template Bindings can be imported using the Rancher cluster Role Template Binding ID
     /// 
     /// ```sh
-    ///  $ pulumi import rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding foo &amp;lt;CLUSTER_ROLE_TEMPLATE_BINDING_ID&amp;gt;
+    /// $ pulumi import rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding foo &amp;lt;CLUSTER_ROLE_TEMPLATE_BINDING_ID&amp;gt;
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding")]

@@ -194,6 +194,7 @@ def get_notifier(cluster_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
@@ -201,6 +202,7 @@ def get_notifier(cluster_id: Optional[str] = None,
     foo = rancher2.get_notifier(cluster_id="<cluster_id>",
         name="foo")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: The cluster id where create notifier (string)
@@ -243,6 +245,7 @@ def get_notifier_output(cluster_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
@@ -250,6 +253,7 @@ def get_notifier_output(cluster_id: Optional[pulumi.Input[str]] = None,
     foo = rancher2.get_notifier(cluster_id="<cluster_id>",
         name="foo")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: The cluster id where create notifier (string)

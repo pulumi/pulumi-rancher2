@@ -598,6 +598,7 @@ class AppV2(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -611,10 +612,13 @@ class AppV2(pulumi.CustomResource):
             chart_version="9.4.200",
             values=(lambda path: open(path).read())("values.yaml"))
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Create an App from a Helm Chart using a different registry
 
         The `system_default_registry` argument can override the global value at App installation. If argument is not provided, the global value for System Default Registry will be used instead.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -626,13 +630,14 @@ class AppV2(pulumi.CustomResource):
             repo_name="rancher-charts",
             system_default_registry="<some.dns.here>:<PORT>")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         V2 apps can be imported using the Rancher cluster ID and App V2 name, which is composed of `<namespace>/<application_name>`.
 
         ```sh
-         $ pulumi import rancher2:index/appV2:AppV2 foo &lt;CLUSTER_ID&gt;.&lt;APP_V2_NAME&gt;
+        $ pulumi import rancher2:index/appV2:AppV2 foo &lt;CLUSTER_ID&gt;.&lt;APP_V2_NAME&gt;
         ```
 
         :param str resource_name: The name of the resource.
@@ -665,6 +670,7 @@ class AppV2(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -678,10 +684,13 @@ class AppV2(pulumi.CustomResource):
             chart_version="9.4.200",
             values=(lambda path: open(path).read())("values.yaml"))
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Create an App from a Helm Chart using a different registry
 
         The `system_default_registry` argument can override the global value at App installation. If argument is not provided, the global value for System Default Registry will be used instead.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -693,13 +702,14 @@ class AppV2(pulumi.CustomResource):
             repo_name="rancher-charts",
             system_default_registry="<some.dns.here>:<PORT>")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         V2 apps can be imported using the Rancher cluster ID and App V2 name, which is composed of `<namespace>/<application_name>`.
 
         ```sh
-         $ pulumi import rancher2:index/appV2:AppV2 foo &lt;CLUSTER_ID&gt;.&lt;APP_V2_NAME&gt;
+        $ pulumi import rancher2:index/appV2:AppV2 foo &lt;CLUSTER_ID&gt;.&lt;APP_V2_NAME&gt;
         ```
 
         :param str resource_name: The name of the resource.

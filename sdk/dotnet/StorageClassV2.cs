@@ -17,7 +17,7 @@ namespace Pulumi.Rancher2
     /// V2 storage classs can be imported using the Rancher cluster ID and StorageClass V2 name.
     /// 
     /// ```sh
-    ///  $ pulumi import rancher2:index/storageClassV2:StorageClassV2 foo &amp;lt;CLUSTER_ID&amp;gt;.&amp;lt;STORAGE_CLASS_V2_NAME&amp;gt;
+    /// $ pulumi import rancher2:index/storageClassV2:StorageClassV2 foo &amp;lt;CLUSTER_ID&amp;gt;.&amp;lt;STORAGE_CLASS_V2_NAME&amp;gt;
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/storageClassV2:StorageClassV2")]

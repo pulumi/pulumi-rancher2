@@ -19,9 +19,7 @@ import (
 // V2 storage classs can be imported using the Rancher cluster ID and StorageClass V2 name.
 //
 // ```sh
-//
-//	$ pulumi import rancher2:index/storageClassV2:StorageClassV2 foo &lt;CLUSTER_ID&gt;.&lt;STORAGE_CLASS_V2_NAME&gt;
-//
+// $ pulumi import rancher2:index/storageClassV2:StorageClassV2 foo &lt;CLUSTER_ID&gt;.&lt;STORAGE_CLASS_V2_NAME&gt;
 // ```
 type StorageClassV2 struct {
 	pulumi.CustomResourceState

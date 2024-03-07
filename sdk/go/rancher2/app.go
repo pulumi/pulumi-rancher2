@@ -23,6 +23,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -57,7 +58,9 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -106,15 +109,14 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Apps can be imported using the app ID in the format `<project_id>:<app_name>`
 //
 // ```sh
-//
-//	$ pulumi import rancher2:index/app:App foo &lt;PROJECT_ID_ID&gt;:&lt;APP_NAME&gt;
-//
+// $ pulumi import rancher2:index/app:App foo &lt;PROJECT_ID_ID&gt;:&lt;APP_NAME&gt;
 // ```
 type App struct {
 	pulumi.CustomResourceState

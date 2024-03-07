@@ -19,9 +19,7 @@ import (
 // V2 configMaps can be imported using the Rancher cluster ID, ConfigMap V2 namespace and name.
 //
 // ```sh
-//
-//	$ pulumi import rancher2:index/configMapV2:ConfigMapV2 foo &lt;CLUSTER_ID&gt;.&lt;SECRET_V2_NAMESPACE&gt;/&lt;SECRET_V2_NAME&gt;
-//
+// $ pulumi import rancher2:index/configMapV2:ConfigMapV2 foo &lt;CLUSTER_ID&gt;.&lt;SECRET_V2_NAMESPACE&gt;/&lt;SECRET_V2_NAME&gt;
 // ```
 type ConfigMapV2 struct {
 	pulumi.CustomResourceState

@@ -201,6 +201,7 @@ def get_app(annotations: Optional[Mapping[str, Any]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
@@ -209,6 +210,7 @@ def get_app(annotations: Optional[Mapping[str, Any]] = None,
         project_id="<project_id>",
         target_namespace="<namespace_name>")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Mapping[str, Any] annotations: (Computed) Annotations for the catalog (map)
@@ -252,6 +254,7 @@ def get_app_output(annotations: Optional[pulumi.Input[Optional[Mapping[str, Any]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
@@ -260,6 +263,7 @@ def get_app_output(annotations: Optional[pulumi.Input[Optional[Mapping[str, Any]
         project_id="<project_id>",
         target_namespace="<namespace_name>")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Mapping[str, Any] annotations: (Computed) Annotations for the catalog (map)

@@ -18,6 +18,7 @@ namespace Pulumi.Rancher2
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -48,7 +49,9 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -88,8 +91,11 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ### Using the Harvester Node Driver
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -156,8 +162,11 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ### Using the Hetzner Node Driver
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -193,14 +202,25 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
-    /// ## Import
+    /// ## Upgrading to Rancher v2.3.3
     /// 
-    /// Node Template can be imported using the Rancher Node Template ID
+    /// **Important** This process could update `rancher2.NodeTemplate` data on tfstate file. Be sure to save a copy of tfstate file before proceed
     /// 
-    /// ```sh
-    ///  $ pulumi import rancher2:index/nodeTemplate:NodeTemplate foo &amp;lt;node_template_id&amp;gt;
+    /// Due to [this feature](https://github.com/rancher/rancher/pull/23718) included on Rancher v2.3.3, `rancher2.NodeTemplate` are now global scoped objects with RBAC around them, instead of user scoped objects as they were. This means that existing node templates `id` field is changing on upgrade. Provider implements `fixNodeTemplateID()` that will update tfstate with proper id.
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;sh
+    /// $ pulumi import rancher2:index/nodeTemplate:NodeTemplate foo &amp;lt;node_template_id&amp;gt;
     /// </summary>
     [Rancher2ResourceType("rancher2:index/nodeTemplate:NodeTemplate")]
     public partial class NodeTemplate : global::Pulumi.CustomResource

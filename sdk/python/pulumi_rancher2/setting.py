@@ -173,6 +173,7 @@ class Setting(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -180,13 +181,14 @@ class Setting(pulumi.CustomResource):
         # Create a new rancher2 Setting
         foo = rancher2.Setting("foo", value="<VALUE>")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Setting can be imported using the Rancher setting ID.
 
         ```sh
-         $ pulumi import rancher2:index/setting:Setting foo &lt;setting_id&gt;
+        $ pulumi import rancher2:index/setting:Setting foo &lt;setting_id&gt;
         ```
 
         :param str resource_name: The name of the resource.
@@ -211,6 +213,7 @@ class Setting(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -218,13 +221,14 @@ class Setting(pulumi.CustomResource):
         # Create a new rancher2 Setting
         foo = rancher2.Setting("foo", value="<VALUE>")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Setting can be imported using the Rancher setting ID.
 
         ```sh
-         $ pulumi import rancher2:index/setting:Setting foo &lt;setting_id&gt;
+        $ pulumi import rancher2:index/setting:Setting foo &lt;setting_id&gt;
         ```
 
         :param str resource_name: The name of the resource.

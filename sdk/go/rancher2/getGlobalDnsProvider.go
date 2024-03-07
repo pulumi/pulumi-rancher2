@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -38,6 +39,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupGlobalDnsProvider(ctx *pulumi.Context, args *LookupGlobalDnsProviderArgs, opts ...pulumi.InvokeOption) (*LookupGlobalDnsProviderResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGlobalDnsProviderResult

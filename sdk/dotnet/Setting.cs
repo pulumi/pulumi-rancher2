@@ -18,6 +18,7 @@ namespace Pulumi.Rancher2
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -34,13 +35,14 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Setting can be imported using the Rancher setting ID.
     /// 
     /// ```sh
-    ///  $ pulumi import rancher2:index/setting:Setting foo &amp;lt;setting_id&amp;gt;
+    /// $ pulumi import rancher2:index/setting:Setting foo &amp;lt;setting_id&amp;gt;
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/setting:Setting")]

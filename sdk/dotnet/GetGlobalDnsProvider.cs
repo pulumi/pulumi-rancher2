@@ -14,10 +14,9 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// Provides a Rancher V2 Global DNS Provider data source. Use this data source to retrieve information about a Rancher v2 global DNS provider
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,8 +32,7 @@ namespace Pulumi.Rancher2
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetGlobalDnsProviderResult> InvokeAsync(GetGlobalDnsProviderArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGlobalDnsProviderResult>("rancher2:index/getGlobalDnsProvider:getGlobalDnsProvider", args ?? new GetGlobalDnsProviderArgs(), options.WithDefaults());
@@ -42,10 +40,9 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// Provides a Rancher V2 Global DNS Provider data source. Use this data source to retrieve information about a Rancher v2 global DNS provider
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,8 +58,7 @@ namespace Pulumi.Rancher2
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetGlobalDnsProviderResult> Invoke(GetGlobalDnsProviderInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGlobalDnsProviderResult>("rancher2:index/getGlobalDnsProvider:getGlobalDnsProvider", args ?? new GetGlobalDnsProviderInvokeArgs(), options.WithDefaults());

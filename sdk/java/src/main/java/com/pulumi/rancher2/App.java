@@ -28,6 +28,8 @@ import javax.annotation.Nullable;
  * Note: In case of multiple resource modifications in a row, `rollback` has preference over `upgrade`.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -66,6 +68,9 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -120,13 +125,14 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Apps can be imported using the app ID in the format `&lt;project_id&gt;:&lt;app_name&gt;`
  * 
  * ```sh
- *  $ pulumi import rancher2:index/app:App foo &amp;lt;PROJECT_ID_ID&amp;gt;:&amp;lt;APP_NAME&amp;gt;
+ * $ pulumi import rancher2:index/app:App foo &amp;lt;PROJECT_ID_ID&amp;gt;:&amp;lt;APP_NAME&amp;gt;
  * ```
  * 
  */

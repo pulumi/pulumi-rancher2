@@ -17,7 +17,7 @@ namespace Pulumi.Rancher2
     /// Node Pool can be imported using the Rancher Node Pool ID
     /// 
     /// ```sh
-    ///  $ pulumi import rancher2:index/nodePool:NodePool foo &amp;lt;node_pool_id&amp;gt;
+    /// $ pulumi import rancher2:index/nodePool:NodePool foo &amp;lt;node_pool_id&amp;gt;
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/nodePool:NodePool")]

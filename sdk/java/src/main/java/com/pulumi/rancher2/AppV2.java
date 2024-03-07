@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
  * Provides a Rancher App v2 resource. This can be used to manage helm charts for Rancher v2 environments and retrieve their information. App v2 resource is available at Rancher v2.5.x and above.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -54,9 +56,13 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Create an App from a Helm Chart using a different registry
  * 
  * The `system_default_registry` argument can override the global value at App installation. If argument is not provided, the global value for System Default Registry will be used instead.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -89,13 +95,14 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * V2 apps can be imported using the Rancher cluster ID and App V2 name, which is composed of `&lt;namespace&gt;/&lt;application_name&gt;`.
  * 
  * ```sh
- *  $ pulumi import rancher2:index/appV2:AppV2 foo &amp;lt;CLUSTER_ID&amp;gt;.&amp;lt;APP_V2_NAME&amp;gt;
+ * $ pulumi import rancher2:index/appV2:AppV2 foo &amp;lt;CLUSTER_ID&amp;gt;.&amp;lt;APP_V2_NAME&amp;gt;
  * ```
  * 
  */

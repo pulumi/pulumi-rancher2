@@ -14,10 +14,9 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 notifier.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,8 +33,7 @@ namespace Pulumi.Rancher2
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetNotifierResult> InvokeAsync(GetNotifierArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNotifierResult>("rancher2:index/getNotifier:getNotifier", args ?? new GetNotifierArgs(), options.WithDefaults());
@@ -43,10 +41,9 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// Use this data source to retrieve information about a Rancher v2 notifier.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -63,8 +60,7 @@ namespace Pulumi.Rancher2
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetNotifierResult> Invoke(GetNotifierInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNotifierResult>("rancher2:index/getNotifier:getNotifier", args ?? new GetNotifierInvokeArgs(), options.WithDefaults());

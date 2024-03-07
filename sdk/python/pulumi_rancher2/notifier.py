@@ -468,6 +468,7 @@ class Notifier(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -482,13 +483,14 @@ class Notifier(pulumi.CustomResource):
             ),
             send_resolved=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Notifiers can be imported using the Rancher nNtifier ID
 
         ```sh
-         $ pulumi import rancher2:index/notifier:Notifier foo &lt;notifier_id&gt;
+        $ pulumi import rancher2:index/notifier:Notifier foo &lt;notifier_id&gt;
         ```
 
         :param str resource_name: The name of the resource.
@@ -518,6 +520,7 @@ class Notifier(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -532,13 +535,14 @@ class Notifier(pulumi.CustomResource):
             ),
             send_resolved=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Notifiers can be imported using the Rancher nNtifier ID
 
         ```sh
-         $ pulumi import rancher2:index/notifier:Notifier foo &lt;notifier_id&gt;
+        $ pulumi import rancher2:index/notifier:Notifier foo &lt;notifier_id&gt;
         ```
 
         :param str resource_name: The name of the resource.

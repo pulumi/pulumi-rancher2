@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  * V2 secrets can be imported using the Rancher cluster ID, Secret V2 namespace and name.
  * 
  * ```sh
- *  $ pulumi import rancher2:index/secretV2:SecretV2 foo &amp;lt;CLUSTER_ID&amp;gt;.&amp;lt;SECRET_V2_NAMESPACE&amp;gt;/&amp;lt;SECRET_V2_NAME&amp;gt;
+ * $ pulumi import rancher2:index/secretV2:SecretV2 foo &amp;lt;CLUSTER_ID&amp;gt;.&amp;lt;SECRET_V2_NAMESPACE&amp;gt;/&amp;lt;SECRET_V2_NAME&amp;gt;
  * ```
  * 
  */

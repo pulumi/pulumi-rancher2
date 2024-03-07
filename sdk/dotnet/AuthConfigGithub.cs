@@ -16,6 +16,7 @@ namespace Pulumi.Rancher2
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -33,6 +34,7 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [Rancher2ResourceType("rancher2:index/authConfigGithub:AuthConfigGithub")]
     public partial class AuthConfigGithub : global::Pulumi.CustomResource

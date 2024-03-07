@@ -118,6 +118,7 @@ def get_global_role_binding(global_role_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
@@ -125,6 +126,7 @@ def get_global_role_binding(global_role_id: Optional[str] = None,
     foo = rancher2.get_global_role_binding(global_role_id="foo_id",
         name="foo")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str global_role_id: The global role id (string)
@@ -155,6 +157,7 @@ def get_global_role_binding_output(global_role_id: Optional[pulumi.Input[Optiona
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
@@ -162,6 +165,7 @@ def get_global_role_binding_output(global_role_id: Optional[pulumi.Input[Optiona
     foo = rancher2.get_global_role_binding(global_role_id="foo_id",
         name="foo")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str global_role_id: The global role id (string)

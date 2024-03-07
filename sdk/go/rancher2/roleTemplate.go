@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -56,7 +57,9 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -96,15 +99,14 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // # Role Template can be imported using the Rancher Role Template ID
 //
 // ```sh
-//
-//	$ pulumi import rancher2:index/roleTemplate:RoleTemplate foo &lt;role_template_id&gt;
-//
+// $ pulumi import rancher2:index/roleTemplate:RoleTemplate foo &lt;role_template_id&gt;
 // ```
 type RoleTemplate struct {
 	pulumi.CustomResourceState

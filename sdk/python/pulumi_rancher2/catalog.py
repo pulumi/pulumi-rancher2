@@ -499,6 +499,7 @@ class Catalog(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -514,13 +515,14 @@ class Catalog(pulumi.CustomResource):
             scope="project",
             url="https://<CATALOG_URL>")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Catalogs can be imported using the Rancher Catalog ID and its scope.
 
         ```sh
-         $ pulumi import rancher2:index/catalog:Catalog foo &lt;SCOPE&gt;.&lt;CATALOG_ID_ID&gt;
+        $ pulumi import rancher2:index/catalog:Catalog foo &lt;SCOPE&gt;.&lt;CATALOG_ID_ID&gt;
         ```
 
         :param str resource_name: The name of the resource.
@@ -551,6 +553,7 @@ class Catalog(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -566,13 +569,14 @@ class Catalog(pulumi.CustomResource):
             scope="project",
             url="https://<CATALOG_URL>")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Catalogs can be imported using the Rancher Catalog ID and its scope.
 
         ```sh
-         $ pulumi import rancher2:index/catalog:Catalog foo &lt;SCOPE&gt;.&lt;CATALOG_ID_ID&gt;
+        $ pulumi import rancher2:index/catalog:Catalog foo &lt;SCOPE&gt;.&lt;CATALOG_ID_ID&gt;
         ```
 
         :param str resource_name: The name of the resource.

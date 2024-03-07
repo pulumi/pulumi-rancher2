@@ -19,6 +19,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -55,7 +56,9 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -101,8 +104,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Using the Harvester Node Driver
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -179,8 +185,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Using the Hetzner Node Driver
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -223,16 +232,32 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
-// ## Import
+// ## Upgrading to Rancher v2.3.3
 //
-// # Node Template can be imported using the Rancher Node Template ID
+// **Important** This process could update `NodeTemplate` data on tfstate file. Be sure to save a copy of tfstate file before proceed
 //
-// ```sh
+// Due to [this feature](https://github.com/rancher/rancher/pull/23718) included on Rancher v2.3.3, `NodeTemplate` are now global scoped objects with RBAC around them, instead of user scoped objects as they were. This means that existing node templates `id` field is changing on upgrade. Provider implements `fixNodeTemplateID()` that will update tfstate with proper id.
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
 //
-//	$ pulumi import rancher2:index/nodeTemplate:NodeTemplate foo &lt;node_template_id&gt;
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
 //
 // ```
+// <!--End PulumiCodeChooser -->sh
+// $ pulumi import rancher2:index/nodeTemplate:NodeTemplate foo &lt;node_template_id&gt;
 type NodeTemplate struct {
 	pulumi.CustomResourceState
 

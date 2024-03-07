@@ -16,6 +16,7 @@ namespace Pulumi.Rancher2
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -48,13 +49,14 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Etcd Backup can be imported using the Rancher etcd backup ID
     /// 
     /// ```sh
-    ///  $ pulumi import rancher2:index/etcdBackup:EtcdBackup foo &amp;lt;ETCD_BACKUP_ID&amp;gt;
+    /// $ pulumi import rancher2:index/etcdBackup:EtcdBackup foo &amp;lt;ETCD_BACKUP_ID&amp;gt;
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/etcdBackup:EtcdBackup")]

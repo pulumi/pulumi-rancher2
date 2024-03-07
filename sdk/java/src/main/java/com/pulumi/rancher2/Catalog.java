@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
  * Provides a Rancher v2 Catalog resource. This can be used to create cluster, global and/or project catalogs for Rancher v2 environments and retrieve their information.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -60,13 +62,14 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Catalogs can be imported using the Rancher Catalog ID and its scope.
  * 
  * ```sh
- *  $ pulumi import rancher2:index/catalog:Catalog foo &amp;lt;SCOPE&amp;gt;.&amp;lt;CATALOG_ID_ID&amp;gt;
+ * $ pulumi import rancher2:index/catalog:Catalog foo &amp;lt;SCOPE&amp;gt;.&amp;lt;CATALOG_ID_ID&amp;gt;
  * ```
  * 
  */

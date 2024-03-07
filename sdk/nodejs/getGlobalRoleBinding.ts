@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -18,6 +19,7 @@ import * as utilities from "./utilities";
  *     name: "foo",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getGlobalRoleBinding(args: GetGlobalRoleBindingArgs, opts?: pulumi.InvokeOptions): Promise<GetGlobalRoleBindingResult> {
 
@@ -74,6 +76,7 @@ export interface GetGlobalRoleBindingResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -83,6 +86,7 @@ export interface GetGlobalRoleBindingResult {
  *     name: "foo",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getGlobalRoleBindingOutput(args: GetGlobalRoleBindingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGlobalRoleBindingResult> {
     return pulumi.output(args).apply((a: any) => getGlobalRoleBinding(a, opts))

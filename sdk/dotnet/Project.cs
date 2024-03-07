@@ -14,6 +14,7 @@ namespace Pulumi.Rancher2
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -52,7 +53,9 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -116,13 +119,14 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Projects can be imported using the Rancher Project ID
     /// 
     /// ```sh
-    ///  $ pulumi import rancher2:index/project:Project foo &amp;lt;project_id&amp;gt;
+    /// $ pulumi import rancher2:index/project:Project foo &amp;lt;project_id&amp;gt;
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/project:Project")]

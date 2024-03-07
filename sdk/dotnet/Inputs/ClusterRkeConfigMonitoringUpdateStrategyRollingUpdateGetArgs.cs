@@ -13,7 +13,7 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The AKS node pool max surge (string), example value: `25%`
+        /// The AKS node pool max surge (string), example value: `25%!`(MISSING)
         /// </summary>
         [Input("maxSurge")]
         public Input<int>? MaxSurge { get; set; }

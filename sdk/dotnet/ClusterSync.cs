@@ -12,6 +12,7 @@ namespace Pulumi.Rancher2
     /// <summary>
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -106,6 +107,7 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [Rancher2ResourceType("rancher2:index/clusterSync:ClusterSync")]
     public partial class ClusterSync : global::Pulumi.CustomResource

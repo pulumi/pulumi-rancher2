@@ -287,6 +287,7 @@ class GlobalRole(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -301,13 +302,14 @@ class GlobalRole(pulumi.CustomResource):
                 verbs=["create"],
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Global Role can be imported using the Rancher Global Role ID
 
         ```sh
-         $ pulumi import rancher2:index/globalRole:GlobalRole foo &lt;global_role_id&gt;
+        $ pulumi import rancher2:index/globalRole:GlobalRole foo &lt;global_role_id&gt;
         ```
 
         :param str resource_name: The name of the resource.
@@ -331,6 +333,7 @@ class GlobalRole(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -345,13 +348,14 @@ class GlobalRole(pulumi.CustomResource):
                 verbs=["create"],
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Global Role can be imported using the Rancher Global Role ID
 
         ```sh
-         $ pulumi import rancher2:index/globalRole:GlobalRole foo &lt;global_role_id&gt;
+        $ pulumi import rancher2:index/globalRole:GlobalRole foo &lt;global_role_id&gt;
         ```
 
         :param str resource_name: The name of the resource.
