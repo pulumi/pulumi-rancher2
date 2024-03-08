@@ -467,6 +467,7 @@ class ProjectAlertRule(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -506,13 +507,14 @@ class ProjectAlertRule(pulumi.CustomResource):
             group_interval_seconds=600,
             repeat_interval_seconds=6000)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Project Alert Rule can be imported using the Rancher project alert rule ID
 
         ```sh
-         $ pulumi import rancher2:index/projectAlertRule:ProjectAlertRule foo &lt;project_alert_rule_id&gt;
+        $ pulumi import rancher2:index/projectAlertRule:ProjectAlertRule foo &lt;project_alert_rule_id&gt;
         ```
 
         :param str resource_name: The name of the resource.
@@ -542,6 +544,7 @@ class ProjectAlertRule(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -581,13 +584,14 @@ class ProjectAlertRule(pulumi.CustomResource):
             group_interval_seconds=600,
             repeat_interval_seconds=6000)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Project Alert Rule can be imported using the Rancher project alert rule ID
 
         ```sh
-         $ pulumi import rancher2:index/projectAlertRule:ProjectAlertRule foo &lt;project_alert_rule_id&gt;
+        $ pulumi import rancher2:index/projectAlertRule:ProjectAlertRule foo &lt;project_alert_rule_id&gt;
         ```
 
         :param str resource_name: The name of the resource.

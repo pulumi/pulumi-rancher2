@@ -24,6 +24,8 @@ import javax.annotation.Nullable;
  * Provides a Rancher v2 Project resource. This can be used to create projects for Rancher v2 environments and retrieve their information.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -74,6 +76,9 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -148,13 +153,14 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Projects can be imported using the Rancher Project ID
  * 
  * ```sh
- *  $ pulumi import rancher2:index/project:Project foo &amp;lt;project_id&amp;gt;
+ * $ pulumi import rancher2:index/project:Project foo &amp;lt;project_id&amp;gt;
  * ```
  * 
  */

@@ -20,6 +20,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -52,7 +53,9 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -86,18 +89,16 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Registries can be imported using the registry ID in the format `<namespace_id>.<project_id>.<registry_id>`
 //
 // ```sh
-//
-//	$ pulumi import rancher2:index/registry:Registry foo &lt;namespace_id&gt;.&lt;project_id&gt;.&lt;registry_id&gt;
-//
+// $ pulumi import rancher2:index/registry:Registry foo &lt;namespace_id&gt;.&lt;project_id&gt;.&lt;registry_id&gt;
 // ```
-//
-//	`<namespace_id>` is optional, just needed for namespaced registry.
+// `<namespace_id>` is optional, just needed for namespaced registry.
 type Registry struct {
 	pulumi.CustomResourceState
 

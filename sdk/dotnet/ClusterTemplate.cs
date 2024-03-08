@@ -16,6 +16,7 @@ namespace Pulumi.Rancher2
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -66,9 +67,11 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Creating Rancher v2 RKE cluster template with upgrade strategy. For Rancher v2.4.x and above.
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -124,13 +127,14 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Cluster Template can be imported using the rancher Cluster Template ID
     /// 
     /// ```sh
-    ///  $ pulumi import rancher2:index/clusterTemplate:ClusterTemplate foo &amp;lt;CLUSTER_TEMPLATE_ID&amp;gt;
+    /// $ pulumi import rancher2:index/clusterTemplate:ClusterTemplate foo &amp;lt;CLUSTER_TEMPLATE_ID&amp;gt;
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/clusterTemplate:ClusterTemplate")]

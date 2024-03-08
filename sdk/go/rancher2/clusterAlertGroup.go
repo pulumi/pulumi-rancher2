@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -43,15 +44,14 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // # Cluster Alert Group can be imported using the Rancher cluster alert group ID
 //
 // ```sh
-//
-//	$ pulumi import rancher2:index/clusterAlertGroup:ClusterAlertGroup foo &lt;CLUSTER_ALERT_GROUP_ID&gt;
-//
+// $ pulumi import rancher2:index/clusterAlertGroup:ClusterAlertGroup foo &lt;CLUSTER_ALERT_GROUP_ID&gt;
 // ```
 type ClusterAlertGroup struct {
 	pulumi.CustomResourceState

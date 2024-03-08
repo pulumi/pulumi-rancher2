@@ -305,6 +305,7 @@ class EtcdBackup(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -327,13 +328,14 @@ class EtcdBackup(pulumi.CustomResource):
             cluster_id="<CLUSTER_ID>",
             filename="<FILENAME>")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Etcd Backup can be imported using the Rancher etcd backup ID
 
         ```sh
-         $ pulumi import rancher2:index/etcdBackup:EtcdBackup foo &lt;ETCD_BACKUP_ID&gt;
+        $ pulumi import rancher2:index/etcdBackup:EtcdBackup foo &lt;ETCD_BACKUP_ID&gt;
         ```
 
         :param str resource_name: The name of the resource.
@@ -360,6 +362,7 @@ class EtcdBackup(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -382,13 +385,14 @@ class EtcdBackup(pulumi.CustomResource):
             cluster_id="<CLUSTER_ID>",
             filename="<FILENAME>")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Etcd Backup can be imported using the Rancher etcd backup ID
 
         ```sh
-         $ pulumi import rancher2:index/etcdBackup:EtcdBackup foo &lt;ETCD_BACKUP_ID&gt;
+        $ pulumi import rancher2:index/etcdBackup:EtcdBackup foo &lt;ETCD_BACKUP_ID&gt;
         ```
 
         :param str resource_name: The name of the resource.

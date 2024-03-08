@@ -21,6 +21,7 @@ namespace Pulumi.Rancher2
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -60,7 +61,9 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -112,13 +115,14 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Multi cluster app can be imported using the multi cluster app ID in the format `&lt;multi_cluster_app_name&gt;`
     /// 
     /// ```sh
-    ///  $ pulumi import rancher2:index/multiClusterApp:MultiClusterApp foo &amp;lt;MULTI_CLUSTER_APP_ID&amp;gt;
+    /// $ pulumi import rancher2:index/multiClusterApp:MultiClusterApp foo &amp;lt;MULTI_CLUSTER_APP_ID&amp;gt;
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/multiClusterApp:MultiClusterApp")]

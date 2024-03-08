@@ -16,6 +16,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -35,7 +36,9 @@ import * as utilities from "./utilities";
  *     templateVersion: "<template_version>",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -66,13 +69,14 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Apps can be imported using the app ID in the format `<project_id>:<app_name>`
  *
  * ```sh
- *  $ pulumi import rancher2:index/app:App foo &lt;PROJECT_ID_ID&gt;:&lt;APP_NAME&gt;
+ * $ pulumi import rancher2:index/app:App foo &lt;PROJECT_ID_ID&gt;:&lt;APP_NAME&gt;
  * ```
  */
 export class App extends pulumi.CustomResource {

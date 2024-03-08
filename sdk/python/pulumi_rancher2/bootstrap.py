@@ -346,6 +346,7 @@ class Bootstrap(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -355,7 +356,9 @@ class Bootstrap(pulumi.CustomResource):
             password="blahblah",
             telemetry=True)
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -366,7 +369,9 @@ class Bootstrap(pulumi.CustomResource):
             password="blahblah",
             telemetry=True)
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -381,6 +386,7 @@ class Bootstrap(pulumi.CustomResource):
             telemetry=True,
             opts=pulumi.ResourceOptions(provider="rancher2.bootstrap"))
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -400,6 +406,7 @@ class Bootstrap(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -409,7 +416,9 @@ class Bootstrap(pulumi.CustomResource):
             password="blahblah",
             telemetry=True)
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -420,7 +429,9 @@ class Bootstrap(pulumi.CustomResource):
             password="blahblah",
             telemetry=True)
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -435,6 +446,7 @@ class Bootstrap(pulumi.CustomResource):
             telemetry=True,
             opts=pulumi.ResourceOptions(provider="rancher2.bootstrap"))
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param BootstrapArgs args: The arguments to use to populate this resource's properties.

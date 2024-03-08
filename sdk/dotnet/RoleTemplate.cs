@@ -16,6 +16,7 @@ namespace Pulumi.Rancher2
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -52,7 +53,9 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -89,13 +92,14 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Role Template can be imported using the Rancher Role Template ID
     /// 
     /// ```sh
-    ///  $ pulumi import rancher2:index/roleTemplate:RoleTemplate foo &amp;lt;role_template_id&amp;gt;
+    /// $ pulumi import rancher2:index/roleTemplate:RoleTemplate foo &amp;lt;role_template_id&amp;gt;
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/roleTemplate:RoleTemplate")]

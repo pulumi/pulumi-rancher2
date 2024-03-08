@@ -14,6 +14,7 @@ namespace Pulumi.Rancher2
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -32,13 +33,14 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Project Role Template Bindings can be imported using the Rancher Project Role Template Binding ID
     /// 
     /// ```sh
-    ///  $ pulumi import rancher2:index/projectRoleTemplateBinding:ProjectRoleTemplateBinding foo &amp;lt;project_role_template_binding_id&amp;gt;
+    /// $ pulumi import rancher2:index/projectRoleTemplateBinding:ProjectRoleTemplateBinding foo &amp;lt;project_role_template_binding_id&amp;gt;
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/projectRoleTemplateBinding:ProjectRoleTemplateBinding")]

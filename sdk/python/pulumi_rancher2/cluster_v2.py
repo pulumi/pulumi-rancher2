@@ -599,7 +599,7 @@ class ClusterV2(pulumi.CustomResource):
         Clusters v2 can be imported using the Rancher Cluster v2 ID, that is in the form &lt;FLEET_NAMESPACE&gt;/&lt;CLUSTER_NAME&gt;
 
         ```sh
-         $ pulumi import rancher2:index/clusterV2:ClusterV2 foo <FLEET_NAMESPACE>/<CLUSTER_NAME>
+        $ pulumi import rancher2:index/clusterV2:ClusterV2 foo <FLEET_NAMESPACE>/<CLUSTER_NAME>
         ```
 
         :param str resource_name: The name of the resource.
@@ -632,7 +632,7 @@ class ClusterV2(pulumi.CustomResource):
         Clusters v2 can be imported using the Rancher Cluster v2 ID, that is in the form &lt;FLEET_NAMESPACE&gt;/&lt;CLUSTER_NAME&gt;
 
         ```sh
-         $ pulumi import rancher2:index/clusterV2:ClusterV2 foo <FLEET_NAMESPACE>/<CLUSTER_NAME>
+        $ pulumi import rancher2:index/clusterV2:ClusterV2 foo <FLEET_NAMESPACE>/<CLUSTER_NAME>
         ```
 
         :param str resource_name: The name of the resource.

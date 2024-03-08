@@ -155,6 +155,7 @@ def get_cluster_alert_group(cluster_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
@@ -162,6 +163,7 @@ def get_cluster_alert_group(cluster_id: Optional[str] = None,
     foo = rancher2.get_cluster_alert_group(cluster_id="<cluster_id>",
         name="<cluster_alert_group_name>")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: The cluster id where create cluster alert group (string)
@@ -195,6 +197,7 @@ def get_cluster_alert_group_output(cluster_id: Optional[pulumi.Input[str]] = Non
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
@@ -202,6 +205,7 @@ def get_cluster_alert_group_output(cluster_id: Optional[pulumi.Input[str]] = Non
     foo = rancher2.get_cluster_alert_group(cluster_id="<cluster_id>",
         name="<cluster_alert_group_name>")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: The cluster id where create cluster alert group (string)

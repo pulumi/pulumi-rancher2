@@ -521,6 +521,7 @@ class MultiClusterApp(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -540,7 +541,9 @@ class MultiClusterApp(pulumi.CustomResource):
             template_name="<template_name>",
             template_version="<template_version>")
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -573,13 +576,14 @@ class MultiClusterApp(pulumi.CustomResource):
             template_name="<template_name>",
             template_version="<template_version>")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Multi cluster app can be imported using the multi cluster app ID in the format `<multi_cluster_app_name>`
 
         ```sh
-         $ pulumi import rancher2:index/multiClusterApp:MultiClusterApp foo &lt;MULTI_CLUSTER_APP_ID&gt;
+        $ pulumi import rancher2:index/multiClusterApp:MultiClusterApp foo &lt;MULTI_CLUSTER_APP_ID&gt;
         ```
 
         :param str resource_name: The name of the resource.
@@ -617,6 +621,7 @@ class MultiClusterApp(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -636,7 +641,9 @@ class MultiClusterApp(pulumi.CustomResource):
             template_name="<template_name>",
             template_version="<template_version>")
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -669,13 +676,14 @@ class MultiClusterApp(pulumi.CustomResource):
             template_name="<template_name>",
             template_version="<template_version>")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Multi cluster app can be imported using the multi cluster app ID in the format `<multi_cluster_app_name>`
 
         ```sh
-         $ pulumi import rancher2:index/multiClusterApp:MultiClusterApp foo &lt;MULTI_CLUSTER_APP_ID&gt;
+        $ pulumi import rancher2:index/multiClusterApp:MultiClusterApp foo &lt;MULTI_CLUSTER_APP_ID&gt;
         ```
 
         :param str resource_name: The name of the resource.

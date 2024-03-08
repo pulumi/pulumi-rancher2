@@ -14,6 +14,7 @@ namespace Pulumi.Rancher2
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -35,7 +36,9 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -58,7 +61,9 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -82,13 +87,14 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Global DNS Providers can be imported using the Rancher Global DNS Provider ID
     /// 
     /// ```sh
-    ///  $ pulumi import rancher2:index/globalDnsProvider:GlobalDnsProvider foo &lt;global_dns_provider_id&gt;
+    /// $ pulumi import rancher2:index/globalDnsProvider:GlobalDnsProvider foo &lt;global_dns_provider_id&gt;
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/globalDnsProvider:GlobalDnsProvider")]

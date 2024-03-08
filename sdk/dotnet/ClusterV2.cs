@@ -15,7 +15,7 @@ namespace Pulumi.Rancher2
     /// Clusters v2 can be imported using the Rancher Cluster v2 ID, that is in the form &amp;lt;FLEET_NAMESPACE&amp;gt;/&amp;lt;CLUSTER_NAME&amp;gt;
     /// 
     /// ```sh
-    ///  $ pulumi import rancher2:index/clusterV2:ClusterV2 foo &lt;FLEET_NAMESPACE&gt;/&lt;CLUSTER_NAME&gt;
+    /// $ pulumi import rancher2:index/clusterV2:ClusterV2 foo &lt;FLEET_NAMESPACE&gt;/&lt;CLUSTER_NAME&gt;
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/clusterV2:ClusterV2")]

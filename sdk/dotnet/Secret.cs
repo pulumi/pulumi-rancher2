@@ -21,9 +21,9 @@ namespace Pulumi.Rancher2
     /// Secrets can be imported using the secret ID in the format `&lt;namespace_id&gt;.&lt;project_id&gt;.&lt;secret_id&gt;`
     /// 
     /// ```sh
-    ///  $ pulumi import rancher2:index/secret:Secret foo &amp;lt;namespace_id&amp;gt;.&amp;lt;project_id&amp;gt;.&amp;lt;secret_id&amp;gt;
+    /// $ pulumi import rancher2:index/secret:Secret foo &amp;lt;namespace_id&amp;gt;.&amp;lt;project_id&amp;gt;.&amp;lt;secret_id&amp;gt;
     /// ```
-    ///  `&lt;namespace_id&gt;` is optional, just needed for namespaced secret.
+    /// `&lt;namespace_id&gt;` is optional, just needed for namespaced secret.
     /// </summary>
     [Rancher2ResourceType("rancher2:index/secret:Secret")]
     public partial class Secret : global::Pulumi.CustomResource

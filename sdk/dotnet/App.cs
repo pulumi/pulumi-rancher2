@@ -21,6 +21,7 @@ namespace Pulumi.Rancher2
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -48,7 +49,9 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -91,13 +94,14 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Apps can be imported using the app ID in the format `&lt;project_id&gt;:&lt;app_name&gt;`
     /// 
     /// ```sh
-    ///  $ pulumi import rancher2:index/app:App foo &amp;lt;PROJECT_ID_ID&amp;gt;:&amp;lt;APP_NAME&amp;gt;
+    /// $ pulumi import rancher2:index/app:App foo &amp;lt;PROJECT_ID_ID&amp;gt;:&amp;lt;APP_NAME&amp;gt;
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/app:App")]

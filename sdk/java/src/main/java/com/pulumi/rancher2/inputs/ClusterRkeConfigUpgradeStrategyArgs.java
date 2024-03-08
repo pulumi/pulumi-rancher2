@@ -63,14 +63,14 @@ public final class ClusterRkeConfigUpgradeStrategyArgs extends com.pulumi.resour
     }
 
     /**
-     * RKE max unavailable worker nodes. Default: `10%` (string)
+     * RKE max unavailable worker nodes. Default: `10%!`(MISSING) (string)
      * 
      */
     @Import(name="maxUnavailableWorker")
     private @Nullable Output<String> maxUnavailableWorker;
 
     /**
-     * @return RKE max unavailable worker nodes. Default: `10%` (string)
+     * @return RKE max unavailable worker nodes. Default: `10%!`(MISSING) (string)
      * 
      */
     public Optional<Output<String>> maxUnavailableWorker() {
@@ -168,7 +168,7 @@ public final class ClusterRkeConfigUpgradeStrategyArgs extends com.pulumi.resour
         }
 
         /**
-         * @param maxUnavailableWorker RKE max unavailable worker nodes. Default: `10%` (string)
+         * @param maxUnavailableWorker RKE max unavailable worker nodes. Default: `10%!`(MISSING) (string)
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class ClusterRkeConfigUpgradeStrategyArgs extends com.pulumi.resour
         }
 
         /**
-         * @param maxUnavailableWorker RKE max unavailable worker nodes. Default: `10%` (string)
+         * @param maxUnavailableWorker RKE max unavailable worker nodes. Default: `10%!`(MISSING) (string)
          * 
          * @return builder
          * 

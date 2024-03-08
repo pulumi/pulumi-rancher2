@@ -18,6 +18,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -38,7 +39,9 @@ import * as utilities from "./utilities";
  *     templateVersion: "<template_version>",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -72,13 +75,14 @@ import * as utilities from "./utilities";
  *     templateVersion: "<template_version>",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Multi cluster app can be imported using the multi cluster app ID in the format `<multi_cluster_app_name>`
  *
  * ```sh
- *  $ pulumi import rancher2:index/multiClusterApp:MultiClusterApp foo &lt;MULTI_CLUSTER_APP_ID&gt;
+ * $ pulumi import rancher2:index/multiClusterApp:MultiClusterApp foo &lt;MULTI_CLUSTER_APP_ID&gt;
  * ```
  */
 export class MultiClusterApp extends pulumi.CustomResource {

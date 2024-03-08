@@ -28,8 +28,9 @@ import javax.annotation.Nullable;
  * 
  * The supported cloud providers includes `amazonec2`, `azure`, `digitalocean`, `harvester`, `linode`, `openstack`, and `vsphere`.
  * 
- * ## Example Usage
  * ### Using the Harvester Node Driver
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -109,6 +110,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="rancher2:index/machineConfigV2:MachineConfigV2")

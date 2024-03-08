@@ -262,6 +262,7 @@ class GlobalDnsProvider(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -274,7 +275,9 @@ class GlobalDnsProvider(pulumi.CustomResource):
             ),
             root_domain="example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -288,7 +291,9 @@ class GlobalDnsProvider(pulumi.CustomResource):
             ),
             root_domain="example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -303,13 +308,14 @@ class GlobalDnsProvider(pulumi.CustomResource):
                 zone_type="private",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Global DNS Providers can be imported using the Rancher Global DNS Provider ID
 
         ```sh
-         $ pulumi import rancher2:index/globalDnsProvider:GlobalDnsProvider foo <global_dns_provider_id>
+        $ pulumi import rancher2:index/globalDnsProvider:GlobalDnsProvider foo <global_dns_provider_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -330,6 +336,7 @@ class GlobalDnsProvider(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -342,7 +349,9 @@ class GlobalDnsProvider(pulumi.CustomResource):
             ),
             root_domain="example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -356,7 +365,9 @@ class GlobalDnsProvider(pulumi.CustomResource):
             ),
             root_domain="example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -371,13 +382,14 @@ class GlobalDnsProvider(pulumi.CustomResource):
                 zone_type="private",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Global DNS Providers can be imported using the Rancher Global DNS Provider ID
 
         ```sh
-         $ pulumi import rancher2:index/globalDnsProvider:GlobalDnsProvider foo <global_dns_provider_id>
+        $ pulumi import rancher2:index/globalDnsProvider:GlobalDnsProvider foo <global_dns_provider_id>
         ```
 
         :param str resource_name: The name of the resource.

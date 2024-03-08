@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -56,15 +57,14 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Catalogs can be imported using the Rancher Catalog ID and its scope.
 //
 // ```sh
-//
-//	$ pulumi import rancher2:index/catalog:Catalog foo &lt;SCOPE&gt;.&lt;CATALOG_ID_ID&gt;
-//
+// $ pulumi import rancher2:index/catalog:Catalog foo &lt;SCOPE&gt;.&lt;CATALOG_ID_ID&gt;
 // ```
 type Catalog struct {
 	pulumi.CustomResourceState

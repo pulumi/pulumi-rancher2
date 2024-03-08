@@ -23,12 +23,9 @@ import (
 // Secrets can be imported using the secret ID in the format `<namespace_id>.<project_id>.<secret_id>`
 //
 // ```sh
-//
-//	$ pulumi import rancher2:index/secret:Secret foo &lt;namespace_id&gt;.&lt;project_id&gt;.&lt;secret_id&gt;
-//
+// $ pulumi import rancher2:index/secret:Secret foo &lt;namespace_id&gt;.&lt;project_id&gt;.&lt;secret_id&gt;
 // ```
-//
-//	`<namespace_id>` is optional, just needed for namespaced secret.
+// `<namespace_id>` is optional, just needed for namespaced secret.
 type Secret struct {
 	pulumi.CustomResourceState
 

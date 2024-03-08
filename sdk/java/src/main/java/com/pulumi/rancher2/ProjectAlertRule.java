@@ -25,6 +25,8 @@ import javax.annotation.Nullable;
  * Provides a Rancher v2 Project Alert Rule resource. This can be used to create Project Alert Rule for Rancher v2 environments and retrieve their information.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -94,13 +96,14 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Project Alert Rule can be imported using the Rancher project alert rule ID
  * 
  * ```sh
- *  $ pulumi import rancher2:index/projectAlertRule:ProjectAlertRule foo &amp;lt;project_alert_rule_id&amp;gt;
+ * $ pulumi import rancher2:index/projectAlertRule:ProjectAlertRule foo &amp;lt;project_alert_rule_id&amp;gt;
  * ```
  * 
  */

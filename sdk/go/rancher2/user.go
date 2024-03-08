@@ -18,6 +18,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -52,15 +53,14 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // # Users can be imported using the Rancher User ID
 //
 // ```sh
-//
-//	$ pulumi import rancher2:index/user:User foo &lt;user_id&gt;
-//
+// $ pulumi import rancher2:index/user:User foo &lt;user_id&gt;
 // ```
 type User struct {
 	pulumi.CustomResourceState

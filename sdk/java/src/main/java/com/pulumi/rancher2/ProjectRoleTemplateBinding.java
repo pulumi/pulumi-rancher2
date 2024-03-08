@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * Provides a Rancher v2 Project Role Template Binding resource. This can be used to create Project Role Template Bindings for Rancher v2 environments and retrieve their information.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -49,13 +51,14 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Project Role Template Bindings can be imported using the Rancher Project Role Template Binding ID
  * 
  * ```sh
- *  $ pulumi import rancher2:index/projectRoleTemplateBinding:ProjectRoleTemplateBinding foo &amp;lt;project_role_template_binding_id&amp;gt;
+ * $ pulumi import rancher2:index/projectRoleTemplateBinding:ProjectRoleTemplateBinding foo &amp;lt;project_role_template_binding_id&amp;gt;
  * ```
  * 
  */

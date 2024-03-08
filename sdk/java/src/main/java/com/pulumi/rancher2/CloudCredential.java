@@ -31,6 +31,8 @@ import javax.annotation.Nullable;
  * amazonec2, azure, digitalocean, harvester, linode, openstack and vsphere credentials config are supported for Cloud Credential.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -64,6 +66,9 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -103,34 +108,35 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Cloud Credential can be imported using the Cloud Credential ID and the Driver name.
  * 
- *  bash
+ * bash
  * 
  * ```sh
  * $ pulumi import rancher2:index/cloudCredential:CloudCredential foo &amp;lt;CLOUD_CREDENTIAL_ID&amp;gt;.&amp;lt;DRIVER&amp;gt;
  * ```
  * 
- *  The following drivers are supported:
+ * The following drivers are supported:
  * 
- *  * amazonec2
+ * * amazonec2
  * 
- *  * azure
+ * * azure
  * 
- *  * digitalocean
+ * * digitalocean
  * 
- *  * googlekubernetesengine
+ * * googlekubernetesengine
  * 
- *  * linode
+ * * linode
  * 
- *  * openstack
+ * * openstack
  * 
- *  * s3
+ * * s3
  * 
- *  * vmwarevsphere
+ * * vmwarevsphere
  * 
  */
 @ResourceType(type="rancher2:index/cloudCredential:CloudCredential")

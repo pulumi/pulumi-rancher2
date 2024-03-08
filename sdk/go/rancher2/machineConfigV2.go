@@ -16,9 +16,9 @@ import (
 //
 // The supported cloud providers includes `amazonec2`, `azure`, `digitalocean`, `harvester`, `linode`, `openstack`, and `vsphere`.
 //
-// ## Example Usage
 // ### Using the Harvester Node Driver
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -94,6 +94,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 type MachineConfigV2 struct {
 	pulumi.CustomResourceState
 
