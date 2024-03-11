@@ -61,7 +61,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<int>? MaxPods { get; set; }
 
         /// <summary>
-        /// The AKS node pool max surge (string), example value: `25%`
+        /// The AKS node pool max surge (string), example value: `25%!`(MISSING)
         /// </summary>
         [Input("maxSurge")]
         public Input<string>? MaxSurge { get; set; }

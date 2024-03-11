@@ -155,6 +155,7 @@ def get_project_alert_group(name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
@@ -162,6 +163,7 @@ def get_project_alert_group(name: Optional[str] = None,
     foo = rancher2.get_project_alert_group(name="<project_alert_group_name>",
         project_id="<project_id>")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The project alert group name (string)
@@ -195,6 +197,7 @@ def get_project_alert_group_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
@@ -202,6 +205,7 @@ def get_project_alert_group_output(name: Optional[pulumi.Input[str]] = None,
     foo = rancher2.get_project_alert_group(name="<project_alert_group_name>",
         project_id="<project_id>")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The project alert group name (string)

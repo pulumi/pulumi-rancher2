@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -33,7 +34,9 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -55,13 +58,14 @@ import * as utilities from "./utilities";
  *     multiClusterAppId: "<MCA_ID>",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Global DNS Entry can be imported using the Rancher Global DNS ID
  *
  * ```sh
- *  $ pulumi import rancher2:index/globalDns:GlobalDns foo <global_dns_id>
+ * $ pulumi import rancher2:index/globalDns:GlobalDns foo <global_dns_id>
  * ```
  */
 export class GlobalDns extends pulumi.CustomResource {

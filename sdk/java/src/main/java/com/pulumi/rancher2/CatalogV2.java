@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
  * V2 catalogs can be imported using the Rancher cluster ID and Catalog V2 name.
  * 
  * ```sh
- *  $ pulumi import rancher2:index/catalogV2:CatalogV2 foo &amp;lt;CLUSTER_ID&amp;gt;.&amp;lt;CATALOG_V2_NAME&amp;gt;
+ * $ pulumi import rancher2:index/catalogV2:CatalogV2 foo &amp;lt;CLUSTER_ID&amp;gt;.&amp;lt;CATALOG_V2_NAME&amp;gt;
  * ```
  * 
  */

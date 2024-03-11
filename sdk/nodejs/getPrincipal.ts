@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -17,6 +18,7 @@ import * as utilities from "./utilities";
  *     name: "user@example.com",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPrincipal(args: GetPrincipalArgs, opts?: pulumi.InvokeOptions): Promise<GetPrincipalResult> {
 
@@ -57,6 +59,7 @@ export interface GetPrincipalResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -65,6 +68,7 @@ export interface GetPrincipalResult {
  *     name: "user@example.com",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPrincipalOutput(args: GetPrincipalOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrincipalResult> {
     return pulumi.output(args).apply((a: any) => getPrincipal(a, opts))

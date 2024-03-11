@@ -398,6 +398,7 @@ class NodeDriver(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -413,13 +414,14 @@ class NodeDriver(pulumi.CustomResource):
             url="local://",
             whitelist_domains=["*.foo.com"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Node Driver can be imported using the Rancher Node Driver ID
 
         ```sh
-         $ pulumi import rancher2:index/nodeDriver:NodeDriver foo &lt;node_driver_id&gt;
+        $ pulumi import rancher2:index/nodeDriver:NodeDriver foo &lt;node_driver_id&gt;
         ```
 
         :param str resource_name: The name of the resource.
@@ -447,6 +449,7 @@ class NodeDriver(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -462,13 +465,14 @@ class NodeDriver(pulumi.CustomResource):
             url="local://",
             whitelist_domains=["*.foo.com"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Node Driver can be imported using the Rancher Node Driver ID
 
         ```sh
-         $ pulumi import rancher2:index/nodeDriver:NodeDriver foo &lt;node_driver_id&gt;
+        $ pulumi import rancher2:index/nodeDriver:NodeDriver foo &lt;node_driver_id&gt;
         ```
 
         :param str resource_name: The name of the resource.

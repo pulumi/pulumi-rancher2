@@ -204,6 +204,7 @@ def get_project_alert_rule(labels: Optional[Mapping[str, Any]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
@@ -211,6 +212,7 @@ def get_project_alert_rule(labels: Optional[Mapping[str, Any]] = None,
     foo = rancher2.get_project_alert_rule(name="<project_alert_rule_name>",
         project_id="<project_id>")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Mapping[str, Any] labels: (Computed) The project alert rule labels (map)
@@ -251,6 +253,7 @@ def get_project_alert_rule_output(labels: Optional[pulumi.Input[Optional[Mapping
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
@@ -258,6 +261,7 @@ def get_project_alert_rule_output(labels: Optional[pulumi.Input[Optional[Mapping
     foo = rancher2.get_project_alert_rule(name="<project_alert_rule_name>",
         project_id="<project_id>")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Mapping[str, Any] labels: (Computed) The project alert rule labels (map)

@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -26,13 +27,14 @@ import * as utilities from "./utilities";
  *     sendResolved: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Notifiers can be imported using the Rancher nNtifier ID
  *
  * ```sh
- *  $ pulumi import rancher2:index/notifier:Notifier foo &lt;notifier_id&gt;
+ * $ pulumi import rancher2:index/notifier:Notifier foo &lt;notifier_id&gt;
  * ```
  */
 export class Notifier extends pulumi.CustomResource {

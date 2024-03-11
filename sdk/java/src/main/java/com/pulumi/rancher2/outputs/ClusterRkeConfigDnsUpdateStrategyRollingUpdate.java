@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterRkeConfigDnsUpdateStrategyRollingUpdate {
     /**
-     * @return The AKS node pool max surge (string), example value: `25%`
+     * @return The AKS node pool max surge (string), example value: `25%!`(MISSING)
      * 
      */
     private @Nullable Integer maxSurge;
@@ -24,7 +24,7 @@ public final class ClusterRkeConfigDnsUpdateStrategyRollingUpdate {
 
     private ClusterRkeConfigDnsUpdateStrategyRollingUpdate() {}
     /**
-     * @return The AKS node pool max surge (string), example value: `25%`
+     * @return The AKS node pool max surge (string), example value: `25%!`(MISSING)
      * 
      */
     public Optional<Integer> maxSurge() {

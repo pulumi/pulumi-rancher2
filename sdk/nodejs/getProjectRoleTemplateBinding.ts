@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -18,6 +19,7 @@ import * as utilities from "./utilities";
  *     projectId: "foo_id",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getProjectRoleTemplateBinding(args: GetProjectRoleTemplateBindingArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectRoleTemplateBindingResult> {
 
@@ -88,6 +90,7 @@ export interface GetProjectRoleTemplateBindingResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -97,6 +100,7 @@ export interface GetProjectRoleTemplateBindingResult {
  *     projectId: "foo_id",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getProjectRoleTemplateBindingOutput(args: GetProjectRoleTemplateBindingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectRoleTemplateBindingResult> {
     return pulumi.output(args).apply((a: any) => getProjectRoleTemplateBinding(a, opts))

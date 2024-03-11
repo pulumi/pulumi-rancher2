@@ -23,6 +23,8 @@ import javax.annotation.Nullable;
  * Provides a Rancher v2 Project Alert Group resource. This can be used to create Project Alert Group for Rancher v2 environments and retrieve their information.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -54,13 +56,14 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Project Alert Group can be imported using the Rancher project alert group ID
  * 
  * ```sh
- *  $ pulumi import rancher2:index/projectAlertGroup:ProjectAlertGroup foo &amp;lt;project_alert_group_id&amp;gt;
+ * $ pulumi import rancher2:index/projectAlertGroup:ProjectAlertGroup foo &amp;lt;project_alert_group_id&amp;gt;
  * ```
  * 
  */

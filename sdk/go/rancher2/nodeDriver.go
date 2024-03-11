@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,15 +50,14 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // # Node Driver can be imported using the Rancher Node Driver ID
 //
 // ```sh
-//
-//	$ pulumi import rancher2:index/nodeDriver:NodeDriver foo &lt;node_driver_id&gt;
-//
+// $ pulumi import rancher2:index/nodeDriver:NodeDriver foo &lt;node_driver_id&gt;
 // ```
 type NodeDriver struct {
 	pulumi.CustomResourceState

@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -26,13 +27,14 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Global Role can be imported using the Rancher Global Role ID
  *
  * ```sh
- *  $ pulumi import rancher2:index/globalRole:GlobalRole foo &lt;global_role_id&gt;
+ * $ pulumi import rancher2:index/globalRole:GlobalRole foo &lt;global_role_id&gt;
  * ```
  */
 export class GlobalRole extends pulumi.CustomResource {

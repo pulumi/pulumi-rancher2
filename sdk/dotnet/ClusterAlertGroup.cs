@@ -14,6 +14,7 @@ namespace Pulumi.Rancher2
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -33,13 +34,14 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Cluster Alert Group can be imported using the Rancher cluster alert group ID
     /// 
     /// ```sh
-    ///  $ pulumi import rancher2:index/clusterAlertGroup:ClusterAlertGroup foo &amp;lt;CLUSTER_ALERT_GROUP_ID&amp;gt;
+    /// $ pulumi import rancher2:index/clusterAlertGroup:ClusterAlertGroup foo &amp;lt;CLUSTER_ALERT_GROUP_ID&amp;gt;
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/clusterAlertGroup:ClusterAlertGroup")]

@@ -402,6 +402,7 @@ class Project(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -428,7 +429,9 @@ class Project(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -478,13 +481,14 @@ class Project(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Projects can be imported using the Rancher Project ID
 
         ```sh
-         $ pulumi import rancher2:index/project:Project foo &lt;project_id&gt;
+        $ pulumi import rancher2:index/project:Project foo &lt;project_id&gt;
         ```
 
         :param str resource_name: The name of the resource.
@@ -512,6 +516,7 @@ class Project(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -538,7 +543,9 @@ class Project(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -588,13 +595,14 @@ class Project(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Projects can be imported using the Rancher Project ID
 
         ```sh
-         $ pulumi import rancher2:index/project:Project foo &lt;project_id&gt;
+        $ pulumi import rancher2:index/project:Project foo &lt;project_id&gt;
         ```
 
         :param str resource_name: The name of the resource.

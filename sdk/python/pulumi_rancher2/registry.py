@@ -273,6 +273,7 @@ class Registry(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -287,7 +288,9 @@ class Registry(pulumi.CustomResource):
                 username="user",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -303,15 +306,16 @@ class Registry(pulumi.CustomResource):
                 username="user2",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Registries can be imported using the registry ID in the format `<namespace_id>.<project_id>.<registry_id>`
 
         ```sh
-         $ pulumi import rancher2:index/registry:Registry foo &lt;namespace_id&gt;.&lt;project_id&gt;.&lt;registry_id&gt;
+        $ pulumi import rancher2:index/registry:Registry foo &lt;namespace_id&gt;.&lt;project_id&gt;.&lt;registry_id&gt;
         ```
-         `<namespace_id>` is optional, just needed for namespaced registry.
+        `<namespace_id>` is optional, just needed for namespaced registry.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -338,6 +342,7 @@ class Registry(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -352,7 +357,9 @@ class Registry(pulumi.CustomResource):
                 username="user",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -368,15 +375,16 @@ class Registry(pulumi.CustomResource):
                 username="user2",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Registries can be imported using the registry ID in the format `<namespace_id>.<project_id>.<registry_id>`
 
         ```sh
-         $ pulumi import rancher2:index/registry:Registry foo &lt;namespace_id&gt;.&lt;project_id&gt;.&lt;registry_id&gt;
+        $ pulumi import rancher2:index/registry:Registry foo &lt;namespace_id&gt;.&lt;project_id&gt;.&lt;registry_id&gt;
         ```
-         `<namespace_id>` is optional, just needed for namespaced registry.
+        `<namespace_id>` is optional, just needed for namespaced registry.
 
         :param str resource_name: The name of the resource.
         :param RegistryArgs args: The arguments to use to populate this resource's properties.

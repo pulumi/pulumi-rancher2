@@ -367,6 +367,7 @@ class AuthConfigGithub(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -376,6 +377,7 @@ class AuthConfigGithub(pulumi.CustomResource):
             client_id="<GITHUB_CLIENT_ID>",
             client_secret="<GITHUB_CLIENT_SECRET>")
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -402,6 +404,7 @@ class AuthConfigGithub(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -411,6 +414,7 @@ class AuthConfigGithub(pulumi.CustomResource):
             client_id="<GITHUB_CLIENT_ID>",
             client_secret="<GITHUB_CLIENT_SECRET>")
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param AuthConfigGithubArgs args: The arguments to use to populate this resource's properties.

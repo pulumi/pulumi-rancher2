@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -17,6 +18,7 @@ import * as utilities from "./utilities";
  *     name: "test",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getCloudCredential(args: GetCloudCredentialArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudCredentialResult> {
 
@@ -59,6 +61,7 @@ export interface GetCloudCredentialResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -67,6 +70,7 @@ export interface GetCloudCredentialResult {
  *     name: "test",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getCloudCredentialOutput(args: GetCloudCredentialOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCloudCredentialResult> {
     return pulumi.output(args).apply((a: any) => getCloudCredential(a, opts))

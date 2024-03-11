@@ -189,6 +189,7 @@ def get_node_pool(cluster_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
@@ -196,6 +197,7 @@ def get_node_pool(cluster_id: Optional[str] = None,
     foo = rancher2.get_node_pool(cluster_id=rancher2_cluster["foo-custom"]["id"],
         name="foo")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: The RKE cluster id to use Node Pool (string)
@@ -235,6 +237,7 @@ def get_node_pool_output(cluster_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
@@ -242,6 +245,7 @@ def get_node_pool_output(cluster_id: Optional[pulumi.Input[str]] = None,
     foo = rancher2.get_node_pool(cluster_id=rancher2_cluster["foo-custom"]["id"],
         name="foo")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: The RKE cluster id to use Node Pool (string)

@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -38,6 +39,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetPrincipal(ctx *pulumi.Context, args *GetPrincipalArgs, opts ...pulumi.InvokeOption) (*GetPrincipalResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPrincipalResult

@@ -14,6 +14,7 @@ namespace Pulumi.Rancher2
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -47,7 +48,9 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -94,6 +97,7 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -103,11 +107,11 @@ namespace Pulumi.Rancher2
     /// $ pulumi import rancher2:index/namespace:Namespace foo &amp;lt;project_id&amp;gt;.&amp;lt;namespaces_id&amp;gt;
     /// ```
     /// 
-    ///  `&lt;project_id&gt;` is in the format `&lt;cluster_id&gt;:&lt;id&gt;`, but &lt;id&gt; part is optional:
+    /// `&lt;project_id&gt;` is in the format `&lt;cluster_id&gt;:&lt;id&gt;`, but &lt;id&gt; part is optional:
     /// 
-    ///  - If full project_id is provided, `&lt;project_id&gt;=&lt;cluster_id&gt;:&lt;id&gt;`, the namespace'll be assigned to corresponding cluster project once it's imported.
+    /// - If full project_id is provided, `&lt;project_id&gt;=&lt;cluster_id&gt;:&lt;id&gt;`, the namespace'll be assigned to corresponding cluster project once it's imported.
     /// 
-    ///  - If `&lt;id&gt;` part is omitted `&lt;project_id&gt;=&lt;cluster_id&gt;`, the namespace'll not be assigned to any project. To move it into a project, `&lt;project_id&gt;=&lt;cluster_id&gt;:&lt;id&gt;` needs to be updated in tf file. Namespace movement is only supported inside same `cluster_id`.
+    /// - If `&lt;id&gt;` part is omitted `&lt;project_id&gt;=&lt;cluster_id&gt;`, the namespace'll not be assigned to any project. To move it into a project, `&lt;project_id&gt;=&lt;cluster_id&gt;:&lt;id&gt;` needs to be updated in tf file. Namespace movement is only supported inside same `cluster_id`.
     /// </summary>
     [Rancher2ResourceType("rancher2:index/namespace:Namespace")]
     public partial class Namespace : global::Pulumi.CustomResource

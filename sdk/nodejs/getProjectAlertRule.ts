@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -20,6 +21,7 @@ import * as utilities from "./utilities";
  *     projectId: "<project_id>",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getProjectAlertRule(args: GetProjectAlertRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectAlertRuleResult> {
 
@@ -109,6 +111,7 @@ export interface GetProjectAlertRuleResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -118,6 +121,7 @@ export interface GetProjectAlertRuleResult {
  *     projectId: "<project_id>",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getProjectAlertRuleOutput(args: GetProjectAlertRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectAlertRuleResult> {
     return pulumi.output(args).apply((a: any) => getProjectAlertRule(a, opts))

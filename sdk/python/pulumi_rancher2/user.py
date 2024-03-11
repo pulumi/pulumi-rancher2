@@ -244,6 +244,7 @@ class User(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -258,13 +259,14 @@ class User(pulumi.CustomResource):
             global_role_id="user-base",
             user_id=foo_user.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Users can be imported using the Rancher User ID
 
         ```sh
-         $ pulumi import rancher2:index/user:User foo &lt;user_id&gt;
+        $ pulumi import rancher2:index/user:User foo &lt;user_id&gt;
         ```
 
         :param str resource_name: The name of the resource.
@@ -288,6 +290,7 @@ class User(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -302,13 +305,14 @@ class User(pulumi.CustomResource):
             global_role_id="user-base",
             user_id=foo_user.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Users can be imported using the Rancher User ID
 
         ```sh
-         $ pulumi import rancher2:index/user:User foo &lt;user_id&gt;
+        $ pulumi import rancher2:index/user:User foo &lt;user_id&gt;
         ```
 
         :param str resource_name: The name of the resource.

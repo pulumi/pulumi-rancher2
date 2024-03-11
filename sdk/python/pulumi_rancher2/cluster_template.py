@@ -256,6 +256,7 @@ class ClusterTemplate(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -285,9 +286,11 @@ class ClusterTemplate(pulumi.CustomResource):
                 name="V1",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         Creating Rancher v2 RKE cluster template with upgrade strategy. For Rancher v2.4.x and above.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -321,13 +324,14 @@ class ClusterTemplate(pulumi.CustomResource):
                 name="V1",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Cluster Template can be imported using the rancher Cluster Template ID
 
         ```sh
-         $ pulumi import rancher2:index/clusterTemplate:ClusterTemplate foo &lt;CLUSTER_TEMPLATE_ID&gt;
+        $ pulumi import rancher2:index/clusterTemplate:ClusterTemplate foo &lt;CLUSTER_TEMPLATE_ID&gt;
         ```
 
         :param str resource_name: The name of the resource.
@@ -352,6 +356,7 @@ class ClusterTemplate(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -381,9 +386,11 @@ class ClusterTemplate(pulumi.CustomResource):
                 name="V1",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         Creating Rancher v2 RKE cluster template with upgrade strategy. For Rancher v2.4.x and above.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -417,13 +424,14 @@ class ClusterTemplate(pulumi.CustomResource):
                 name="V1",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Cluster Template can be imported using the rancher Cluster Template ID
 
         ```sh
-         $ pulumi import rancher2:index/clusterTemplate:ClusterTemplate foo &lt;CLUSTER_TEMPLATE_ID&gt;
+        $ pulumi import rancher2:index/clusterTemplate:ClusterTemplate foo &lt;CLUSTER_TEMPLATE_ID&gt;
         ```
 
         :param str resource_name: The name of the resource.

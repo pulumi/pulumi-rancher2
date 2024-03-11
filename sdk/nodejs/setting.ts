@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -20,13 +21,14 @@ import * as utilities from "./utilities";
  * // Create a new rancher2 Setting
  * const foo = new rancher2.Setting("foo", {value: "<VALUE>"});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Setting can be imported using the Rancher setting ID.
  *
  * ```sh
- *  $ pulumi import rancher2:index/setting:Setting foo &lt;setting_id&gt;
+ * $ pulumi import rancher2:index/setting:Setting foo &lt;setting_id&gt;
  * ```
  */
 export class Setting extends pulumi.CustomResource {

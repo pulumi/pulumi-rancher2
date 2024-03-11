@@ -23,6 +23,8 @@ import javax.annotation.Nullable;
  * Provides a Rancher v2 Cluster Alert Group resource. This can be used to create Cluster Alert Group for Rancher v2 environments and retrieve their information.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -54,13 +56,14 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Cluster Alert Group can be imported using the Rancher cluster alert group ID
  * 
  * ```sh
- *  $ pulumi import rancher2:index/clusterAlertGroup:ClusterAlertGroup foo &amp;lt;CLUSTER_ALERT_GROUP_ID&amp;gt;
+ * $ pulumi import rancher2:index/clusterAlertGroup:ClusterAlertGroup foo &amp;lt;CLUSTER_ALERT_GROUP_ID&amp;gt;
  * ```
  * 
  */

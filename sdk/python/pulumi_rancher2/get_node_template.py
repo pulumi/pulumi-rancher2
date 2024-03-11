@@ -230,12 +230,14 @@ def get_node_template(name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
 
     foo = rancher2.get_node_template(name="foo")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the Node Template (string)
@@ -275,12 +277,14 @@ def get_node_template_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
 
     foo = rancher2.get_node_template(name="foo")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the Node Template (string)

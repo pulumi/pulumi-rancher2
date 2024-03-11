@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -17,6 +18,7 @@ import * as utilities from "./utilities";
  *     name: "server-image",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getSetting(args: GetSettingArgs, opts?: pulumi.InvokeOptions): Promise<GetSettingResult> {
 
@@ -55,6 +57,7 @@ export interface GetSettingResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -63,6 +66,7 @@ export interface GetSettingResult {
  *     name: "server-image",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getSettingOutput(args: GetSettingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSettingResult> {
     return pulumi.output(args).apply((a: any) => getSetting(a, opts))

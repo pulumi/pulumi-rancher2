@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fs from "fs";
@@ -24,10 +25,13 @@ import * as utilities from "./utilities";
  *     values: fs.readFileSync("values.yaml", "utf8"),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Create an App from a Helm Chart using a different registry
  *
  * The `systemDefaultRegistry` argument can override the global value at App installation. If argument is not provided, the global value for System Default Registry will be used instead.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -40,13 +44,14 @@ import * as utilities from "./utilities";
  *     systemDefaultRegistry: "<some.dns.here>:<PORT>",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * V2 apps can be imported using the Rancher cluster ID and App V2 name, which is composed of `<namespace>/<application_name>`.
  *
  * ```sh
- *  $ pulumi import rancher2:index/appV2:AppV2 foo &lt;CLUSTER_ID&gt;.&lt;APP_V2_NAME&gt;
+ * $ pulumi import rancher2:index/appV2:AppV2 foo &lt;CLUSTER_ID&gt;.&lt;APP_V2_NAME&gt;
  * ```
  */
 export class AppV2 extends pulumi.CustomResource {

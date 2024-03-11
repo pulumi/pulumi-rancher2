@@ -26,6 +26,8 @@ import javax.annotation.Nullable;
  * Provides a Rancher v2 Cluster Alert Rule resource. This can be used to create Cluster Alert Rule for Rancher v2 environments and retrieve their information.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -66,13 +68,14 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Cluster Alert Rule can be imported using the Rancher cluster alert rule ID
  * 
  * ```sh
- *  $ pulumi import rancher2:index/clusterAlertRule:ClusterAlertRule foo &amp;lt;CLUSTER_ALERT_RULE_ID&amp;gt;
+ * $ pulumi import rancher2:index/clusterAlertRule:ClusterAlertRule foo &amp;lt;CLUSTER_ALERT_RULE_ID&amp;gt;
  * ```
  * 
  */

@@ -527,6 +527,7 @@ class App(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -545,7 +546,9 @@ class App(pulumi.CustomResource):
             template_name="<template_name>",
             template_version="<template_version>")
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -574,13 +577,14 @@ class App(pulumi.CustomResource):
                 "ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect": True,
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Apps can be imported using the app ID in the format `<project_id>:<app_name>`
 
         ```sh
-         $ pulumi import rancher2:index/app:App foo &lt;PROJECT_ID_ID&gt;:&lt;APP_NAME&gt;
+        $ pulumi import rancher2:index/app:App foo &lt;PROJECT_ID_ID&gt;:&lt;APP_NAME&gt;
         ```
 
         :param str resource_name: The name of the resource.
@@ -620,6 +624,7 @@ class App(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -638,7 +643,9 @@ class App(pulumi.CustomResource):
             template_name="<template_name>",
             template_version="<template_version>")
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -667,13 +674,14 @@ class App(pulumi.CustomResource):
                 "ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect": True,
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Apps can be imported using the app ID in the format `<project_id>:<app_name>`
 
         ```sh
-         $ pulumi import rancher2:index/app:App foo &lt;PROJECT_ID_ID&gt;:&lt;APP_NAME&gt;
+        $ pulumi import rancher2:index/app:App foo &lt;PROJECT_ID_ID&gt;:&lt;APP_NAME&gt;
         ```
 
         :param str resource_name: The name of the resource.

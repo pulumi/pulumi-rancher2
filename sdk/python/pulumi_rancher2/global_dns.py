@@ -300,6 +300,7 @@ class GlobalDns(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -322,7 +323,9 @@ class GlobalDns(pulumi.CustomResource):
                 "project2",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -342,13 +345,14 @@ class GlobalDns(pulumi.CustomResource):
             provider_id=foo_global_dns_provider.id,
             multi_cluster_app_id="<MCA_ID>")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Global DNS Entry can be imported using the Rancher Global DNS ID
 
         ```sh
-         $ pulumi import rancher2:index/globalDns:GlobalDns foo <global_dns_id>
+        $ pulumi import rancher2:index/globalDns:GlobalDns foo <global_dns_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -373,6 +377,7 @@ class GlobalDns(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -395,7 +400,9 @@ class GlobalDns(pulumi.CustomResource):
                 "project2",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -415,13 +422,14 @@ class GlobalDns(pulumi.CustomResource):
             provider_id=foo_global_dns_provider.id,
             multi_cluster_app_id="<MCA_ID>")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Global DNS Entry can be imported using the Rancher Global DNS ID
 
         ```sh
-         $ pulumi import rancher2:index/globalDns:GlobalDns foo <global_dns_id>
+        $ pulumi import rancher2:index/globalDns:GlobalDns foo <global_dns_id>
         ```
 
         :param str resource_name: The name of the resource.

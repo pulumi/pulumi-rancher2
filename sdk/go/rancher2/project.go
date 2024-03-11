@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -58,7 +59,9 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -124,15 +127,14 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // # Projects can be imported using the Rancher Project ID
 //
 // ```sh
-//
-//	$ pulumi import rancher2:index/project:Project foo &lt;project_id&gt;
-//
+// $ pulumi import rancher2:index/project:Project foo &lt;project_id&gt;
 // ```
 type Project struct {
 	pulumi.CustomResourceState

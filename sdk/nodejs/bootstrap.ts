@@ -7,6 +7,7 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -17,7 +18,9 @@ import * as utilities from "./utilities";
  *     telemetry: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -29,7 +32,9 @@ import * as utilities from "./utilities";
  *     telemetry: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -47,6 +52,7 @@ import * as utilities from "./utilities";
  *     provider: "rancher2.bootstrap",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class Bootstrap extends pulumi.CustomResource {
     /**

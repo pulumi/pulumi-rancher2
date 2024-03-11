@@ -17,7 +17,7 @@ namespace Pulumi.Rancher2
     /// Cluster Driver can be imported using the Rancher Cluster Driver ID
     /// 
     /// ```sh
-    ///  $ pulumi import rancher2:index/clusterDriver:ClusterDriver foo &amp;lt;CLUSTER_DRIVER_ID&amp;gt;
+    /// $ pulumi import rancher2:index/clusterDriver:ClusterDriver foo &amp;lt;CLUSTER_DRIVER_ID&amp;gt;
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/clusterDriver:ClusterDriver")]

@@ -163,7 +163,8 @@ def get_project(cluster_id: Optional[str] = None,
                 name: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
 
     :param str cluster_id: ID of the Rancher 2 cluster (string)
     :param str name: The project name (string)
@@ -193,7 +194,8 @@ def get_project_output(cluster_id: Optional[pulumi.Input[str]] = None,
                        name: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectResult]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
 
     :param str cluster_id: ID of the Rancher 2 cluster (string)
     :param str name: The project name (string)

@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -53,15 +54,14 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // # Global Role can be imported using the Rancher Global Role ID
 //
 // ```sh
-//
-//	$ pulumi import rancher2:index/globalRole:GlobalRole foo &lt;global_role_id&gt;
-//
+// $ pulumi import rancher2:index/globalRole:GlobalRole foo &lt;global_role_id&gt;
 // ```
 type GlobalRole struct {
 	pulumi.CustomResourceState

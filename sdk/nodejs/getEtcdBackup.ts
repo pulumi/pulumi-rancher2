@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -20,6 +21,7 @@ import * as utilities from "./utilities";
  *     name: "foo",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getEtcdBackup(args: GetEtcdBackupArgs, opts?: pulumi.InvokeOptions): Promise<GetEtcdBackupResult> {
 
@@ -84,6 +86,7 @@ export interface GetEtcdBackupResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -93,6 +96,7 @@ export interface GetEtcdBackupResult {
  *     name: "foo",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getEtcdBackupOutput(args: GetEtcdBackupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEtcdBackupResult> {
     return pulumi.output(args).apply((a: any) => getEtcdBackup(a, opts))

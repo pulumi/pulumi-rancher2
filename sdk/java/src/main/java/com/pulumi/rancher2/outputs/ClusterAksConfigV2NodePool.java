@@ -48,7 +48,7 @@ public final class ClusterAksConfigV2NodePool {
      */
     private @Nullable Integer maxPods;
     /**
-     * @return The AKS node pool max surge (string), example value: `25%`
+     * @return The AKS node pool max surge (string), example value: `25%!`(MISSING)
      * 
      */
     private @Nullable String maxSurge;
@@ -142,7 +142,7 @@ public final class ClusterAksConfigV2NodePool {
         return Optional.ofNullable(this.maxPods);
     }
     /**
-     * @return The AKS node pool max surge (string), example value: `25%`
+     * @return The AKS node pool max surge (string), example value: `25%!`(MISSING)
      * 
      */
     public Optional<String> maxSurge() {
