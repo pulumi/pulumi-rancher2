@@ -23,6 +23,8 @@ import javax.annotation.Nullable;
  * Provides a Rancher v2 Global Role resource. This can be used to create Global Role for Rancher v2 and retrieve their information.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -58,13 +60,14 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Global Role can be imported using the Rancher Global Role ID
  * 
  * ```sh
- *  $ pulumi import rancher2:index/globalRole:GlobalRole foo &amp;lt;global_role_id&amp;gt;
+ * $ pulumi import rancher2:index/globalRole:GlobalRole foo &amp;lt;global_role_id&amp;gt;
  * ```
  * 
  */

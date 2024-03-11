@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,15 +47,14 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // # Notifiers can be imported using the Rancher nNtifier ID
 //
 // ```sh
-//
-//	$ pulumi import rancher2:index/notifier:Notifier foo &lt;notifier_id&gt;
-//
+// $ pulumi import rancher2:index/notifier:Notifier foo &lt;notifier_id&gt;
 // ```
 type Notifier struct {
 	pulumi.CustomResourceState

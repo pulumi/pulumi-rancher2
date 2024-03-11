@@ -964,116 +964,12 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
 
         ## Example Usage
 
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 PodSecurityPolicyTemplate
-        foo = rancher2.PodSecurityPolicyTemplate("foo",
-            allow_privilege_escalation=False,
-            allowed_csi_drivers=[
-                rancher2.PodSecurityPolicyTemplateAllowedCsiDriverArgs(
-                    name="something",
-                ),
-                rancher2.PodSecurityPolicyTemplateAllowedCsiDriverArgs(
-                    name="something-else",
-                ),
-            ],
-            allowed_flex_volumes=[
-                rancher2.PodSecurityPolicyTemplateAllowedFlexVolumeArgs(
-                    driver="something",
-                ),
-                rancher2.PodSecurityPolicyTemplateAllowedFlexVolumeArgs(
-                    driver="something-else",
-                ),
-            ],
-            allowed_host_paths=[
-                rancher2.PodSecurityPolicyTemplateAllowedHostPathArgs(
-                    path_prefix="/",
-                    read_only=True,
-                ),
-                rancher2.PodSecurityPolicyTemplateAllowedHostPathArgs(
-                    path_prefix="//",
-                    read_only=False,
-                ),
-            ],
-            allowed_proc_mount_types=["Default"],
-            default_allow_privilege_escalation=False,
-            description="Terraform PodSecurityPolicyTemplate acceptance test - update",
-            fs_group=rancher2.PodSecurityPolicyTemplateFsGroupArgs(
-                ranges=[
-                    rancher2.PodSecurityPolicyTemplateFsGroupRangeArgs(
-                        max=100,
-                        min=0,
-                    ),
-                    rancher2.PodSecurityPolicyTemplateFsGroupRangeArgs(
-                        max=100,
-                        min=0,
-                    ),
-                ],
-                rule="MustRunAs",
-            ),
-            host_ipc=False,
-            host_network=False,
-            host_pid=False,
-            host_ports=[
-                rancher2.PodSecurityPolicyTemplateHostPortArgs(
-                    max=65535,
-                    min=0,
-                ),
-                rancher2.PodSecurityPolicyTemplateHostPortArgs(
-                    max=8080,
-                    min=1024,
-                ),
-            ],
-            privileged=False,
-            read_only_root_filesystem=False,
-            required_drop_capabilities=["something"],
-            run_as_group=rancher2.PodSecurityPolicyTemplateRunAsGroupArgs(
-                ranges=[
-                    rancher2.PodSecurityPolicyTemplateRunAsGroupRangeArgs(
-                        max=100,
-                        min=1,
-                    ),
-                    rancher2.PodSecurityPolicyTemplateRunAsGroupRangeArgs(
-                        max=1024,
-                        min=2,
-                    ),
-                ],
-                rule="MustRunAs",
-            ),
-            run_as_user=rancher2.PodSecurityPolicyTemplateRunAsUserArgs(
-                ranges=[
-                    rancher2.PodSecurityPolicyTemplateRunAsUserRangeArgs(
-                        max=100,
-                        min=1,
-                    ),
-                    rancher2.PodSecurityPolicyTemplateRunAsUserRangeArgs(
-                        max=1024,
-                        min=2,
-                    ),
-                ],
-                rule="MustRunAs",
-            ),
-            runtime_class=rancher2.PodSecurityPolicyTemplateRuntimeClassArgs(
-                allowed_runtime_class_names=["something"],
-                default_runtime_class_name="something",
-            ),
-            se_linux=rancher2.PodSecurityPolicyTemplateSeLinuxArgs(
-                rule="RunAsAny",
-            ),
-            supplemental_group=rancher2.PodSecurityPolicyTemplateSupplementalGroupArgs(
-                rule="RunAsAny",
-            ),
-            volumes=["azureFile"])
-        ```
-
         ## Import
 
         PodSecurityPolicyTemplate can be imported using the Rancher PodSecurityPolicyTemplate Name
 
         ```sh
-         $ pulumi import rancher2:index/podSecurityPolicyTemplate:PodSecurityPolicyTemplate foo &lt;pod_security_policy_name&gt;
+        $ pulumi import rancher2:index/podSecurityPolicyTemplate:PodSecurityPolicyTemplate foo &lt;pod_security_policy_name&gt;
         ```
 
         :param str resource_name: The name of the resource.
@@ -1118,116 +1014,12 @@ class PodSecurityPolicyTemplate(pulumi.CustomResource):
 
         ## Example Usage
 
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 PodSecurityPolicyTemplate
-        foo = rancher2.PodSecurityPolicyTemplate("foo",
-            allow_privilege_escalation=False,
-            allowed_csi_drivers=[
-                rancher2.PodSecurityPolicyTemplateAllowedCsiDriverArgs(
-                    name="something",
-                ),
-                rancher2.PodSecurityPolicyTemplateAllowedCsiDriverArgs(
-                    name="something-else",
-                ),
-            ],
-            allowed_flex_volumes=[
-                rancher2.PodSecurityPolicyTemplateAllowedFlexVolumeArgs(
-                    driver="something",
-                ),
-                rancher2.PodSecurityPolicyTemplateAllowedFlexVolumeArgs(
-                    driver="something-else",
-                ),
-            ],
-            allowed_host_paths=[
-                rancher2.PodSecurityPolicyTemplateAllowedHostPathArgs(
-                    path_prefix="/",
-                    read_only=True,
-                ),
-                rancher2.PodSecurityPolicyTemplateAllowedHostPathArgs(
-                    path_prefix="//",
-                    read_only=False,
-                ),
-            ],
-            allowed_proc_mount_types=["Default"],
-            default_allow_privilege_escalation=False,
-            description="Terraform PodSecurityPolicyTemplate acceptance test - update",
-            fs_group=rancher2.PodSecurityPolicyTemplateFsGroupArgs(
-                ranges=[
-                    rancher2.PodSecurityPolicyTemplateFsGroupRangeArgs(
-                        max=100,
-                        min=0,
-                    ),
-                    rancher2.PodSecurityPolicyTemplateFsGroupRangeArgs(
-                        max=100,
-                        min=0,
-                    ),
-                ],
-                rule="MustRunAs",
-            ),
-            host_ipc=False,
-            host_network=False,
-            host_pid=False,
-            host_ports=[
-                rancher2.PodSecurityPolicyTemplateHostPortArgs(
-                    max=65535,
-                    min=0,
-                ),
-                rancher2.PodSecurityPolicyTemplateHostPortArgs(
-                    max=8080,
-                    min=1024,
-                ),
-            ],
-            privileged=False,
-            read_only_root_filesystem=False,
-            required_drop_capabilities=["something"],
-            run_as_group=rancher2.PodSecurityPolicyTemplateRunAsGroupArgs(
-                ranges=[
-                    rancher2.PodSecurityPolicyTemplateRunAsGroupRangeArgs(
-                        max=100,
-                        min=1,
-                    ),
-                    rancher2.PodSecurityPolicyTemplateRunAsGroupRangeArgs(
-                        max=1024,
-                        min=2,
-                    ),
-                ],
-                rule="MustRunAs",
-            ),
-            run_as_user=rancher2.PodSecurityPolicyTemplateRunAsUserArgs(
-                ranges=[
-                    rancher2.PodSecurityPolicyTemplateRunAsUserRangeArgs(
-                        max=100,
-                        min=1,
-                    ),
-                    rancher2.PodSecurityPolicyTemplateRunAsUserRangeArgs(
-                        max=1024,
-                        min=2,
-                    ),
-                ],
-                rule="MustRunAs",
-            ),
-            runtime_class=rancher2.PodSecurityPolicyTemplateRuntimeClassArgs(
-                allowed_runtime_class_names=["something"],
-                default_runtime_class_name="something",
-            ),
-            se_linux=rancher2.PodSecurityPolicyTemplateSeLinuxArgs(
-                rule="RunAsAny",
-            ),
-            supplemental_group=rancher2.PodSecurityPolicyTemplateSupplementalGroupArgs(
-                rule="RunAsAny",
-            ),
-            volumes=["azureFile"])
-        ```
-
         ## Import
 
         PodSecurityPolicyTemplate can be imported using the Rancher PodSecurityPolicyTemplate Name
 
         ```sh
-         $ pulumi import rancher2:index/podSecurityPolicyTemplate:PodSecurityPolicyTemplate foo &lt;pod_security_policy_name&gt;
+        $ pulumi import rancher2:index/podSecurityPolicyTemplate:PodSecurityPolicyTemplate foo &lt;pod_security_policy_name&gt;
         ```
 
         :param str resource_name: The name of the resource.

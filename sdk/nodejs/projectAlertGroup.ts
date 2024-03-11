@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -23,13 +24,14 @@ import * as utilities from "./utilities";
  *     repeatIntervalSeconds: 3600,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Project Alert Group can be imported using the Rancher project alert group ID
  *
  * ```sh
- *  $ pulumi import rancher2:index/projectAlertGroup:ProjectAlertGroup foo &lt;project_alert_group_id&gt;
+ * $ pulumi import rancher2:index/projectAlertGroup:ProjectAlertGroup foo &lt;project_alert_group_id&gt;
  * ```
  */
 export class ProjectAlertGroup extends pulumi.CustomResource {

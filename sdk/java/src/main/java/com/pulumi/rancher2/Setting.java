@@ -23,6 +23,8 @@ import javax.annotation.Nullable;
  * On destroy, if setting is a system setting like `server-url`, provider&#39;ll not delete it from Rancher, it&#39;ll just update setting value to default and remove it from tfstate.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -51,13 +53,14 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Setting can be imported using the Rancher setting ID.
  * 
  * ```sh
- *  $ pulumi import rancher2:index/setting:Setting foo &amp;lt;setting_id&amp;gt;
+ * $ pulumi import rancher2:index/setting:Setting foo &amp;lt;setting_id&amp;gt;
  * ```
  * 
  */

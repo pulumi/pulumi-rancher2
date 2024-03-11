@@ -368,7 +368,7 @@ class ClusterDriver(pulumi.CustomResource):
         Cluster Driver can be imported using the Rancher Cluster Driver ID
 
         ```sh
-         $ pulumi import rancher2:index/clusterDriver:ClusterDriver foo &lt;CLUSTER_DRIVER_ID&gt;
+        $ pulumi import rancher2:index/clusterDriver:ClusterDriver foo &lt;CLUSTER_DRIVER_ID&gt;
         ```
 
         :param str resource_name: The name of the resource.
@@ -398,7 +398,7 @@ class ClusterDriver(pulumi.CustomResource):
         Cluster Driver can be imported using the Rancher Cluster Driver ID
 
         ```sh
-         $ pulumi import rancher2:index/clusterDriver:ClusterDriver foo &lt;CLUSTER_DRIVER_ID&gt;
+        $ pulumi import rancher2:index/clusterDriver:ClusterDriver foo &lt;CLUSTER_DRIVER_ID&gt;
         ```
 
         :param str resource_name: The name of the resource.

@@ -19,9 +19,7 @@ import (
 // # Cluster Driver can be imported using the Rancher Cluster Driver ID
 //
 // ```sh
-//
-//	$ pulumi import rancher2:index/clusterDriver:ClusterDriver foo &lt;CLUSTER_DRIVER_ID&gt;
-//
+// $ pulumi import rancher2:index/clusterDriver:ClusterDriver foo &lt;CLUSTER_DRIVER_ID&gt;
 // ```
 type ClusterDriver struct {
 	pulumi.CustomResourceState

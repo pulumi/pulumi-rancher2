@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -58,7 +59,9 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -98,15 +101,14 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // # Global DNS Entry can be imported using the Rancher Global DNS ID
 //
 // ```sh
-//
-//	$ pulumi import rancher2:index/globalDns:GlobalDns foo <global_dns_id>
-//
+// $ pulumi import rancher2:index/globalDns:GlobalDns foo <global_dns_id>
 // ```
 type GlobalDns struct {
 	pulumi.CustomResourceState

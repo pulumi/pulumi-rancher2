@@ -146,12 +146,14 @@ def get_global_role(inherited_cluster_roles: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
 
     foo = rancher2.get_global_role(name="foo")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] inherited_cluster_roles: (Optional) Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
@@ -184,12 +186,14 @@ def get_global_role_output(inherited_cluster_roles: Optional[pulumi.Input[Option
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
 
     foo = rancher2.get_global_role(name="foo")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] inherited_cluster_roles: (Optional) Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)

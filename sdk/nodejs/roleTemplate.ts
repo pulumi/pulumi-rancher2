@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -29,7 +30,9 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -46,13 +49,14 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Role Template can be imported using the Rancher Role Template ID
  *
  * ```sh
- *  $ pulumi import rancher2:index/roleTemplate:RoleTemplate foo &lt;role_template_id&gt;
+ * $ pulumi import rancher2:index/roleTemplate:RoleTemplate foo &lt;role_template_id&gt;
  * ```
  */
 export class RoleTemplate extends pulumi.CustomResource {

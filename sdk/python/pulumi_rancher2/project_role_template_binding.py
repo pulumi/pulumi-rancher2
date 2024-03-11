@@ -341,6 +341,7 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -351,13 +352,14 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
             role_template_id="<role_template_id>",
             user_id="<user_id>")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Project Role Template Bindings can be imported using the Rancher Project Role Template Binding ID
 
         ```sh
-         $ pulumi import rancher2:index/projectRoleTemplateBinding:ProjectRoleTemplateBinding foo &lt;project_role_template_binding_id&gt;
+        $ pulumi import rancher2:index/projectRoleTemplateBinding:ProjectRoleTemplateBinding foo &lt;project_role_template_binding_id&gt;
         ```
 
         :param str resource_name: The name of the resource.
@@ -385,6 +387,7 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -395,13 +398,14 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
             role_template_id="<role_template_id>",
             user_id="<user_id>")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Project Role Template Bindings can be imported using the Rancher Project Role Template Binding ID
 
         ```sh
-         $ pulumi import rancher2:index/projectRoleTemplateBinding:ProjectRoleTemplateBinding foo &lt;project_role_template_binding_id&gt;
+        $ pulumi import rancher2:index/projectRoleTemplateBinding:ProjectRoleTemplateBinding foo &lt;project_role_template_binding_id&gt;
         ```
 
         :param str resource_name: The name of the resource.

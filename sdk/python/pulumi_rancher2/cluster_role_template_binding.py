@@ -341,6 +341,7 @@ class ClusterRoleTemplateBinding(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -351,13 +352,14 @@ class ClusterRoleTemplateBinding(pulumi.CustomResource):
             role_template_id="<role_template_id>",
             user_id="<user_id>")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Cluster Role Template Bindings can be imported using the Rancher cluster Role Template Binding ID
 
         ```sh
-         $ pulumi import rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding foo &lt;CLUSTER_ROLE_TEMPLATE_BINDING_ID&gt;
+        $ pulumi import rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding foo &lt;CLUSTER_ROLE_TEMPLATE_BINDING_ID&gt;
         ```
 
         :param str resource_name: The name of the resource.
@@ -385,6 +387,7 @@ class ClusterRoleTemplateBinding(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -395,13 +398,14 @@ class ClusterRoleTemplateBinding(pulumi.CustomResource):
             role_template_id="<role_template_id>",
             user_id="<user_id>")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Cluster Role Template Bindings can be imported using the Rancher cluster Role Template Binding ID
 
         ```sh
-         $ pulumi import rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding foo &lt;CLUSTER_ROLE_TEMPLATE_BINDING_ID&gt;
+        $ pulumi import rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding foo &lt;CLUSTER_ROLE_TEMPLATE_BINDING_ID&gt;
         ```
 
         :param str resource_name: The name of the resource.

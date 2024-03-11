@@ -487,6 +487,7 @@ class CloudCredential(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -499,7 +500,9 @@ class CloudCredential(pulumi.CustomResource):
             ),
             description="foo test")
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -512,34 +515,35 @@ class CloudCredential(pulumi.CustomResource):
             kubeconfig_content=foo_harvester_cluster_v2.kube_config,
         ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Cloud Credential can be imported using the Cloud Credential ID and the Driver name.
 
-         bash
+        bash
 
         ```sh
         $ pulumi import rancher2:index/cloudCredential:CloudCredential foo &lt;CLOUD_CREDENTIAL_ID&gt;.&lt;DRIVER&gt;
         ```
 
-         The following drivers are supported:
+        The following drivers are supported:
 
-         * amazonec2
+        * amazonec2
 
-         * azure
+        * azure
 
-         * digitalocean
+        * digitalocean
 
-         * googlekubernetesengine
+        * googlekubernetesengine
 
-         * linode
+        * linode
 
-         * openstack
+        * openstack
 
-         * s3
+        * s3
 
-         * vmwarevsphere
+        * vmwarevsphere
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -570,6 +574,7 @@ class CloudCredential(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -582,7 +587,9 @@ class CloudCredential(pulumi.CustomResource):
             ),
             description="foo test")
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -595,34 +602,35 @@ class CloudCredential(pulumi.CustomResource):
             kubeconfig_content=foo_harvester_cluster_v2.kube_config,
         ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Cloud Credential can be imported using the Cloud Credential ID and the Driver name.
 
-         bash
+        bash
 
         ```sh
         $ pulumi import rancher2:index/cloudCredential:CloudCredential foo &lt;CLOUD_CREDENTIAL_ID&gt;.&lt;DRIVER&gt;
         ```
 
-         The following drivers are supported:
+        The following drivers are supported:
 
-         * amazonec2
+        * amazonec2
 
-         * azure
+        * azure
 
-         * digitalocean
+        * digitalocean
 
-         * googlekubernetesengine
+        * googlekubernetesengine
 
-         * linode
+        * linode
 
-         * openstack
+        * openstack
 
-         * s3
+        * s3
 
-         * vmwarevsphere
+        * vmwarevsphere
 
         :param str resource_name: The name of the resource.
         :param CloudCredentialArgs args: The arguments to use to populate this resource's properties.

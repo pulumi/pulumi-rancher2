@@ -336,6 +336,7 @@ class ClusterAlertGroup(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -347,13 +348,14 @@ class ClusterAlertGroup(pulumi.CustomResource):
             group_interval_seconds=300,
             repeat_interval_seconds=3600)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Cluster Alert Group can be imported using the Rancher cluster alert group ID
 
         ```sh
-         $ pulumi import rancher2:index/clusterAlertGroup:ClusterAlertGroup foo &lt;CLUSTER_ALERT_GROUP_ID&gt;
+        $ pulumi import rancher2:index/clusterAlertGroup:ClusterAlertGroup foo &lt;CLUSTER_ALERT_GROUP_ID&gt;
         ```
 
         :param str resource_name: The name of the resource.
@@ -379,6 +381,7 @@ class ClusterAlertGroup(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -390,13 +393,14 @@ class ClusterAlertGroup(pulumi.CustomResource):
             group_interval_seconds=300,
             repeat_interval_seconds=3600)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Cluster Alert Group can be imported using the Rancher cluster alert group ID
 
         ```sh
-         $ pulumi import rancher2:index/clusterAlertGroup:ClusterAlertGroup foo &lt;CLUSTER_ALERT_GROUP_ID&gt;
+        $ pulumi import rancher2:index/clusterAlertGroup:ClusterAlertGroup foo &lt;CLUSTER_ALERT_GROUP_ID&gt;
         ```
 
         :param str resource_name: The name of the resource.

@@ -500,6 +500,7 @@ class ClusterAlertRule(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -517,13 +518,14 @@ class ClusterAlertRule(pulumi.CustomResource):
             group_interval_seconds=600,
             repeat_interval_seconds=6000)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Cluster Alert Rule can be imported using the Rancher cluster alert rule ID
 
         ```sh
-         $ pulumi import rancher2:index/clusterAlertRule:ClusterAlertRule foo &lt;CLUSTER_ALERT_RULE_ID&gt;
+        $ pulumi import rancher2:index/clusterAlertRule:ClusterAlertRule foo &lt;CLUSTER_ALERT_RULE_ID&gt;
         ```
 
         :param str resource_name: The name of the resource.
@@ -554,6 +556,7 @@ class ClusterAlertRule(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -571,13 +574,14 @@ class ClusterAlertRule(pulumi.CustomResource):
             group_interval_seconds=600,
             repeat_interval_seconds=6000)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Cluster Alert Rule can be imported using the Rancher cluster alert rule ID
 
         ```sh
-         $ pulumi import rancher2:index/clusterAlertRule:ClusterAlertRule foo &lt;CLUSTER_ALERT_RULE_ID&gt;
+        $ pulumi import rancher2:index/clusterAlertRule:ClusterAlertRule foo &lt;CLUSTER_ALERT_RULE_ID&gt;
         ```
 
         :param str resource_name: The name of the resource.

@@ -20,6 +20,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,15 +45,14 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Setting can be imported using the Rancher setting ID.
 //
 // ```sh
-//
-//	$ pulumi import rancher2:index/setting:Setting foo &lt;setting_id&gt;
-//
+// $ pulumi import rancher2:index/setting:Setting foo &lt;setting_id&gt;
 // ```
 type Setting struct {
 	pulumi.CustomResourceState

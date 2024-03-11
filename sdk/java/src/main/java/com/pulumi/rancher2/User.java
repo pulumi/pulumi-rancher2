@@ -24,6 +24,8 @@ import javax.annotation.Nullable;
  * When a Rancher User is created, it doesn&#39;t have a global role binding. At least, `user-base` global role binding in needed in order to enable user login.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -61,13 +63,14 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Users can be imported using the Rancher User ID
  * 
  * ```sh
- *  $ pulumi import rancher2:index/user:User foo &amp;lt;user_id&amp;gt;
+ * $ pulumi import rancher2:index/user:User foo &amp;lt;user_id&amp;gt;
  * ```
  * 
  */

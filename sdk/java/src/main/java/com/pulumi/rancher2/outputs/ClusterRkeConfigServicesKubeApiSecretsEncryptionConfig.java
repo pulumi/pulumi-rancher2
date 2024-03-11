@@ -14,6 +14,8 @@ import javax.annotation.Nullable;
 public final class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig {
     /**
      * @return Secrets encryption yaml encoded custom configuration. `&#34;apiVersion&#34;` and `&#34;kind&#34;:&#34;EncryptionConfiguration&#34;` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/) (string) Ex:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -36,6 +38,7 @@ public final class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     private @Nullable String customConfig;
@@ -48,6 +51,8 @@ public final class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig {
     private ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig() {}
     /**
      * @return Secrets encryption yaml encoded custom configuration. `&#34;apiVersion&#34;` and `&#34;kind&#34;:&#34;EncryptionConfiguration&#34;` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/) (string) Ex:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -70,6 +75,7 @@ public final class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Optional<String> customConfig() {

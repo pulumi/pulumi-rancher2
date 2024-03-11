@@ -28,6 +28,8 @@ import javax.annotation.Nullable;
  * Provides a Rancher v2 Notifier resource. This can be used to create notifiers for Rancher v2 environments and retrieve their information.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -63,13 +65,14 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Notifiers can be imported using the Rancher nNtifier ID
  * 
  * ```sh
- *  $ pulumi import rancher2:index/notifier:Notifier foo &amp;lt;notifier_id&amp;gt;
+ * $ pulumi import rancher2:index/notifier:Notifier foo &amp;lt;notifier_id&amp;gt;
  * ```
  * 
  */

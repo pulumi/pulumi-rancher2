@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * Provides a Rancher v2 Global Role Binding resource. This can be used to create Global Role Bindings for Rancher v2 environments and retrieve their information.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -53,13 +55,14 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Global Role Bindings can be imported using the Rancher Global Role Binding ID
  * 
  * ```sh
- *  $ pulumi import rancher2:index/globalRoleBinding:GlobalRoleBinding foo &amp;lt;GLOBAL_ROLE_BINDING_ID&amp;gt;
+ * $ pulumi import rancher2:index/globalRoleBinding:GlobalRoleBinding foo &amp;lt;GLOBAL_ROLE_BINDING_ID&amp;gt;
  * ```
  * 
  */

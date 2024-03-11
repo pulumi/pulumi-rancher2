@@ -23,6 +23,8 @@ import javax.annotation.Nullable;
  * Provides a Rancher v2 Namespace resource. This can be used to create namespaces for Rancher v2 environments and retrieve their information.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -68,6 +70,9 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -126,6 +131,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -135,11 +141,11 @@ import javax.annotation.Nullable;
  * $ pulumi import rancher2:index/namespace:Namespace foo &amp;lt;project_id&amp;gt;.&amp;lt;namespaces_id&amp;gt;
  * ```
  * 
- *  `&lt;project_id&gt;` is in the format `&lt;cluster_id&gt;:&lt;id&gt;`, but &lt;id&gt; part is optional:
+ * `&lt;project_id&gt;` is in the format `&lt;cluster_id&gt;:&lt;id&gt;`, but &lt;id&gt; part is optional:
  * 
- *  - If full project_id is provided, `&lt;project_id&gt;=&lt;cluster_id&gt;:&lt;id&gt;`, the namespace&#39;ll be assigned to corresponding cluster project once it&#39;s imported.
+ * - If full project_id is provided, `&lt;project_id&gt;=&lt;cluster_id&gt;:&lt;id&gt;`, the namespace&#39;ll be assigned to corresponding cluster project once it&#39;s imported.
  * 
- *  - If `&lt;id&gt;` part is omitted `&lt;project_id&gt;=&lt;cluster_id&gt;`, the namespace&#39;ll not be assigned to any project. To move it into a project, `&lt;project_id&gt;=&lt;cluster_id&gt;:&lt;id&gt;` needs to be updated in tf file. Namespace movement is only supported inside same `cluster_id`.
+ * - If `&lt;id&gt;` part is omitted `&lt;project_id&gt;=&lt;cluster_id&gt;`, the namespace&#39;ll not be assigned to any project. To move it into a project, `&lt;project_id&gt;=&lt;cluster_id&gt;:&lt;id&gt;` needs to be updated in tf file. Namespace movement is only supported inside same `cluster_id`.
  * 
  */
 @ResourceType(type="rancher2:index/namespace:Namespace")

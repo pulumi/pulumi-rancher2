@@ -34,6 +34,8 @@ import javax.annotation.Nullable;
  * Note: In case of multiple resource modification in a row, `rollback` has preference.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -73,6 +75,9 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -121,13 +126,14 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Multi cluster app can be imported using the multi cluster app ID in the format `&lt;multi_cluster_app_name&gt;`
  * 
  * ```sh
- *  $ pulumi import rancher2:index/multiClusterApp:MultiClusterApp foo &amp;lt;MULTI_CLUSTER_APP_ID&amp;gt;
+ * $ pulumi import rancher2:index/multiClusterApp:MultiClusterApp foo &amp;lt;MULTI_CLUSTER_APP_ID&amp;gt;
  * ```
  * 
  */

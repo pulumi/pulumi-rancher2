@@ -25,6 +25,8 @@ import javax.annotation.Nullable;
  * Cluster Templates are available from Rancher v2.3.x and above.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -81,8 +83,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Creating Rancher v2 RKE cluster template with upgrade strategy. For Rancher v2.4.x and above.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -144,13 +149,14 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Cluster Template can be imported using the rancher Cluster Template ID
  * 
  * ```sh
- *  $ pulumi import rancher2:index/clusterTemplate:ClusterTemplate foo &amp;lt;CLUSTER_TEMPLATE_ID&amp;gt;
+ * $ pulumi import rancher2:index/clusterTemplate:ClusterTemplate foo &amp;lt;CLUSTER_TEMPLATE_ID&amp;gt;
  * ```
  * 
  */

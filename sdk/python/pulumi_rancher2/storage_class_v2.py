@@ -385,7 +385,7 @@ class StorageClassV2(pulumi.CustomResource):
         V2 storage classs can be imported using the Rancher cluster ID and StorageClass V2 name.
 
         ```sh
-         $ pulumi import rancher2:index/storageClassV2:StorageClassV2 foo &lt;CLUSTER_ID&gt;.&lt;STORAGE_CLASS_V2_NAME&gt;
+        $ pulumi import rancher2:index/storageClassV2:StorageClassV2 foo &lt;CLUSTER_ID&gt;.&lt;STORAGE_CLASS_V2_NAME&gt;
         ```
 
         :param str resource_name: The name of the resource.
@@ -415,7 +415,7 @@ class StorageClassV2(pulumi.CustomResource):
         V2 storage classs can be imported using the Rancher cluster ID and StorageClass V2 name.
 
         ```sh
-         $ pulumi import rancher2:index/storageClassV2:StorageClassV2 foo &lt;CLUSTER_ID&gt;.&lt;STORAGE_CLASS_V2_NAME&gt;
+        $ pulumi import rancher2:index/storageClassV2:StorageClassV2 foo &lt;CLUSTER_ID&gt;.&lt;STORAGE_CLASS_V2_NAME&gt;
         ```
 
         :param str resource_name: The name of the resource.

@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
  * Provides a Rancher V2 Global DNS resource. This can be used to create Global DNS records for Rancher V2.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -67,6 +69,9 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -110,13 +115,14 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Global DNS Entry can be imported using the Rancher Global DNS ID
  * 
  * ```sh
- *  $ pulumi import rancher2:index/globalDns:GlobalDns foo &lt;global_dns_id&gt;
+ * $ pulumi import rancher2:index/globalDns:GlobalDns foo &lt;global_dns_id&gt;
  * ```
  * 
  */

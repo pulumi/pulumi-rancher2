@@ -133,12 +133,14 @@ def get_global_dns_provider(name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
 
     foo = rancher2.get_global_dns_provider(name="foo")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the global DNS provider (string)
@@ -168,12 +170,14 @@ def get_global_dns_provider_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
 
     foo = rancher2.get_global_dns_provider(name="foo")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the global DNS provider (string)

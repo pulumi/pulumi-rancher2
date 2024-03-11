@@ -25,6 +25,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -100,13 +101,14 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Node Pool can be imported using the Rancher Node Pool ID
  * 
  * ```sh
- *  $ pulumi import rancher2:index/nodePool:NodePool foo &amp;lt;node_pool_id&amp;gt;
+ * $ pulumi import rancher2:index/nodePool:NodePool foo &amp;lt;node_pool_id&amp;gt;
  * ```
  * 
  */

@@ -14,6 +14,7 @@ namespace Pulumi.Rancher2
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -44,13 +45,14 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Catalogs can be imported using the Rancher Catalog ID and its scope.
     /// 
     /// ```sh
-    ///  $ pulumi import rancher2:index/catalog:Catalog foo &amp;lt;SCOPE&amp;gt;.&amp;lt;CATALOG_ID_ID&amp;gt;
+    /// $ pulumi import rancher2:index/catalog:Catalog foo &amp;lt;SCOPE&amp;gt;.&amp;lt;CATALOG_ID_ID&amp;gt;
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/catalog:Catalog")]

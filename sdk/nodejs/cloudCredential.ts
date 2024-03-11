@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -26,7 +27,9 @@ import * as utilities from "./utilities";
  *     description: "foo test",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -41,34 +44,35 @@ import * as utilities from "./utilities";
  *     kubeconfigContent: foo_harvesterClusterV2.then(foo_harvesterClusterV2 => foo_harvesterClusterV2.kubeConfig),
  * }});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Cloud Credential can be imported using the Cloud Credential ID and the Driver name.
  *
- *  bash
+ * bash
  *
  * ```sh
  * $ pulumi import rancher2:index/cloudCredential:CloudCredential foo &lt;CLOUD_CREDENTIAL_ID&gt;.&lt;DRIVER&gt;
  * ```
  *
- *  The following drivers are supported:
+ * The following drivers are supported:
  *
- *  * amazonec2
+ * * amazonec2
  *
- *  * azure
+ * * azure
  *
- *  * digitalocean
+ * * digitalocean
  *
- *  * googlekubernetesengine
+ * * googlekubernetesengine
  *
- *  * linode
+ * * linode
  *
- *  * openstack
+ * * openstack
  *
- *  * s3
+ * * s3
  *
- *  * vmwarevsphere
+ * * vmwarevsphere
  */
 export class CloudCredential extends pulumi.CustomResource {
     /**

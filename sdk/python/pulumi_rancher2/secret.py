@@ -274,9 +274,9 @@ class Secret(pulumi.CustomResource):
         Secrets can be imported using the secret ID in the format `<namespace_id>.<project_id>.<secret_id>`
 
         ```sh
-         $ pulumi import rancher2:index/secret:Secret foo &lt;namespace_id&gt;.&lt;project_id&gt;.&lt;secret_id&gt;
+        $ pulumi import rancher2:index/secret:Secret foo &lt;namespace_id&gt;.&lt;project_id&gt;.&lt;secret_id&gt;
         ```
-         `<namespace_id>` is optional, just needed for namespaced secret.
+        `<namespace_id>` is optional, just needed for namespaced secret.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -306,9 +306,9 @@ class Secret(pulumi.CustomResource):
         Secrets can be imported using the secret ID in the format `<namespace_id>.<project_id>.<secret_id>`
 
         ```sh
-         $ pulumi import rancher2:index/secret:Secret foo &lt;namespace_id&gt;.&lt;project_id&gt;.&lt;secret_id&gt;
+        $ pulumi import rancher2:index/secret:Secret foo &lt;namespace_id&gt;.&lt;project_id&gt;.&lt;secret_id&gt;
         ```
-         `<namespace_id>` is optional, just needed for namespaced secret.
+        `<namespace_id>` is optional, just needed for namespaced secret.
 
         :param str resource_name: The name of the resource.
         :param SecretArgs args: The arguments to use to populate this resource's properties.

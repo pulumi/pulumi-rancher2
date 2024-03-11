@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -20,6 +21,7 @@ import * as utilities from "./utilities";
  *     name: "foo",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getClusterV2(args: GetClusterV2Args, opts?: pulumi.InvokeOptions): Promise<GetClusterV2Result> {
 
@@ -110,6 +112,7 @@ export interface GetClusterV2Result {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -119,6 +122,7 @@ export interface GetClusterV2Result {
  *     name: "foo",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getClusterV2Output(args: GetClusterV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterV2Result> {
     return pulumi.output(args).apply((a: any) => getClusterV2(a, opts))

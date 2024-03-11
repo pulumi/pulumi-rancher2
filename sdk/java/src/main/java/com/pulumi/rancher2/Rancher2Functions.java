@@ -123,6 +123,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 app.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -153,6 +155,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAppResult> getApp(GetAppArgs args) {
@@ -162,6 +165,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 app.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -192,6 +197,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAppResult> getAppPlain(GetAppPlainArgs args) {
@@ -201,6 +207,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 app.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -231,6 +239,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAppResult> getApp(GetAppArgs args, InvokeOptions options) {
@@ -240,6 +249,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 app.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -270,6 +281,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAppResult> getAppPlain(GetAppPlainArgs args, InvokeOptions options) {
@@ -279,6 +291,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 catalog.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -307,6 +321,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCatalogResult> getCatalog(GetCatalogArgs args) {
@@ -316,6 +331,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 catalog.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -344,6 +361,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCatalogResult> getCatalogPlain(GetCatalogPlainArgs args) {
@@ -353,6 +371,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 catalog.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -381,6 +401,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCatalogResult> getCatalog(GetCatalogArgs args, InvokeOptions options) {
@@ -390,6 +411,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 catalog.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -418,6 +441,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCatalogResult> getCatalogPlain(GetCatalogPlainArgs args, InvokeOptions options) {
@@ -459,6 +483,8 @@ public final class Rancher2Functions {
      * - Namespaced certificate: Available to just `namespace_id` in the `project_id`
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -488,6 +514,9 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -518,6 +547,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCertificateResult> getCertificate(GetCertificateArgs args) {
@@ -531,6 +561,8 @@ public final class Rancher2Functions {
      * - Namespaced certificate: Available to just `namespace_id` in the `project_id`
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -560,6 +592,9 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -590,6 +625,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCertificateResult> getCertificatePlain(GetCertificatePlainArgs args) {
@@ -603,6 +639,8 @@ public final class Rancher2Functions {
      * - Namespaced certificate: Available to just `namespace_id` in the `project_id`
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -632,6 +670,9 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -662,6 +703,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCertificateResult> getCertificate(GetCertificateArgs args, InvokeOptions options) {
@@ -675,6 +717,8 @@ public final class Rancher2Functions {
      * - Namespaced certificate: Available to just `namespace_id` in the `project_id`
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -704,6 +748,9 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -734,6 +781,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCertificateResult> getCertificatePlain(GetCertificatePlainArgs args, InvokeOptions options) {
@@ -743,6 +791,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Cloud Credential.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -771,6 +821,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCloudCredentialResult> getCloudCredential(GetCloudCredentialArgs args) {
@@ -780,6 +831,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Cloud Credential.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -808,6 +861,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCloudCredentialResult> getCloudCredentialPlain(GetCloudCredentialPlainArgs args) {
@@ -817,6 +871,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Cloud Credential.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -845,6 +901,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCloudCredentialResult> getCloudCredential(GetCloudCredentialArgs args, InvokeOptions options) {
@@ -854,6 +911,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Cloud Credential.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -882,6 +941,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCloudCredentialResult> getCloudCredentialPlain(GetCloudCredentialPlainArgs args, InvokeOptions options) {
@@ -891,6 +951,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 cluster.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -919,6 +981,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClusterResult> getCluster(GetClusterArgs args) {
@@ -928,6 +991,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 cluster.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -956,6 +1021,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClusterResult> getClusterPlain(GetClusterPlainArgs args) {
@@ -965,6 +1031,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 cluster.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -993,6 +1061,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClusterResult> getCluster(GetClusterArgs args, InvokeOptions options) {
@@ -1002,6 +1071,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 cluster.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1030,6 +1101,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClusterResult> getClusterPlain(GetClusterPlainArgs args, InvokeOptions options) {
@@ -1039,6 +1111,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 cluster alert group.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1068,6 +1142,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClusterAlertGroupResult> getClusterAlertGroup(GetClusterAlertGroupArgs args) {
@@ -1077,6 +1152,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 cluster alert group.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1106,6 +1183,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClusterAlertGroupResult> getClusterAlertGroupPlain(GetClusterAlertGroupPlainArgs args) {
@@ -1115,6 +1193,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 cluster alert group.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1144,6 +1224,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClusterAlertGroupResult> getClusterAlertGroup(GetClusterAlertGroupArgs args, InvokeOptions options) {
@@ -1153,6 +1234,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 cluster alert group.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1182,6 +1265,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClusterAlertGroupResult> getClusterAlertGroupPlain(GetClusterAlertGroupPlainArgs args, InvokeOptions options) {
@@ -1191,6 +1275,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 cluster alert rule.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1220,6 +1306,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClusterAlertRuleResult> getClusterAlertRule(GetClusterAlertRuleArgs args) {
@@ -1229,6 +1316,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 cluster alert rule.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1258,6 +1347,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClusterAlertRuleResult> getClusterAlertRulePlain(GetClusterAlertRulePlainArgs args) {
@@ -1267,6 +1357,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 cluster alert rule.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1296,6 +1388,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClusterAlertRuleResult> getClusterAlertRule(GetClusterAlertRuleArgs args, InvokeOptions options) {
@@ -1305,6 +1398,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 cluster alert rule.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1334,6 +1429,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClusterAlertRuleResult> getClusterAlertRulePlain(GetClusterAlertRulePlainArgs args, InvokeOptions options) {
@@ -1343,6 +1439,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Cluster Driver resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1371,6 +1469,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClusterDriverResult> getClusterDriver(GetClusterDriverArgs args) {
@@ -1380,6 +1479,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Cluster Driver resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1408,6 +1509,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClusterDriverResult> getClusterDriverPlain(GetClusterDriverPlainArgs args) {
@@ -1417,6 +1519,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Cluster Driver resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1445,6 +1549,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClusterDriverResult> getClusterDriver(GetClusterDriverArgs args, InvokeOptions options) {
@@ -1454,6 +1559,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Cluster Driver resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1482,6 +1589,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClusterDriverResult> getClusterDriverPlain(GetClusterDriverPlainArgs args, InvokeOptions options) {
@@ -1491,6 +1599,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 cluster role template binding.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1520,6 +1630,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClusterRoleTemplateBindingResult> getClusterRoleTemplateBinding(GetClusterRoleTemplateBindingArgs args) {
@@ -1529,6 +1640,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 cluster role template binding.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1558,6 +1671,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClusterRoleTemplateBindingResult> getClusterRoleTemplateBindingPlain(GetClusterRoleTemplateBindingPlainArgs args) {
@@ -1567,6 +1681,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 cluster role template binding.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1596,6 +1712,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClusterRoleTemplateBindingResult> getClusterRoleTemplateBinding(GetClusterRoleTemplateBindingArgs args, InvokeOptions options) {
@@ -1605,6 +1722,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 cluster role template binding.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1634,6 +1753,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClusterRoleTemplateBindingResult> getClusterRoleTemplateBindingPlain(GetClusterRoleTemplateBindingPlainArgs args, InvokeOptions options) {
@@ -1645,6 +1765,8 @@ public final class Rancher2Functions {
      * Cluster Templates are available from Rancher v2.3.x and above.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1673,6 +1795,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClusterTemplateResult> getClusterTemplate(GetClusterTemplateArgs args) {
@@ -1684,6 +1807,8 @@ public final class Rancher2Functions {
      * Cluster Templates are available from Rancher v2.3.x and above.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1712,6 +1837,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClusterTemplateResult> getClusterTemplatePlain(GetClusterTemplatePlainArgs args) {
@@ -1723,6 +1849,8 @@ public final class Rancher2Functions {
      * Cluster Templates are available from Rancher v2.3.x and above.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1751,6 +1879,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClusterTemplateResult> getClusterTemplate(GetClusterTemplateArgs args, InvokeOptions options) {
@@ -1762,6 +1891,8 @@ public final class Rancher2Functions {
      * Cluster Templates are available from Rancher v2.3.x and above.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1790,6 +1921,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClusterTemplateResult> getClusterTemplatePlain(GetClusterTemplatePlainArgs args, InvokeOptions options) {
@@ -1799,6 +1931,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 cluster.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1828,6 +1962,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClusterV2Result> getClusterV2(GetClusterV2Args args) {
@@ -1837,6 +1972,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 cluster.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1866,6 +2003,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClusterV2Result> getClusterV2Plain(GetClusterV2PlainArgs args) {
@@ -1875,6 +2013,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 cluster.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1904,6 +2044,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClusterV2Result> getClusterV2(GetClusterV2Args args, InvokeOptions options) {
@@ -1913,6 +2054,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 cluster.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1942,6 +2085,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClusterV2Result> getClusterV2Plain(GetClusterV2PlainArgs args, InvokeOptions options) {
@@ -1979,6 +2123,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 etcd backup.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2008,6 +2154,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEtcdBackupResult> getEtcdBackup(GetEtcdBackupArgs args) {
@@ -2017,6 +2164,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 etcd backup.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2046,6 +2195,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEtcdBackupResult> getEtcdBackupPlain(GetEtcdBackupPlainArgs args) {
@@ -2055,6 +2205,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 etcd backup.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2084,6 +2236,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEtcdBackupResult> getEtcdBackup(GetEtcdBackupArgs args, InvokeOptions options) {
@@ -2093,6 +2246,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 etcd backup.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2122,6 +2277,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEtcdBackupResult> getEtcdBackupPlain(GetEtcdBackupPlainArgs args, InvokeOptions options) {
@@ -2131,6 +2287,8 @@ public final class Rancher2Functions {
      * Provides a Rancher V2 Global DNS Provider data source. Use this data source to retrieve information about a Rancher v2 global DNS provider
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2159,6 +2317,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGlobalDnsProviderResult> getGlobalDnsProvider(GetGlobalDnsProviderArgs args) {
@@ -2168,6 +2327,8 @@ public final class Rancher2Functions {
      * Provides a Rancher V2 Global DNS Provider data source. Use this data source to retrieve information about a Rancher v2 global DNS provider
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2196,6 +2357,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGlobalDnsProviderResult> getGlobalDnsProviderPlain(GetGlobalDnsProviderPlainArgs args) {
@@ -2205,6 +2367,8 @@ public final class Rancher2Functions {
      * Provides a Rancher V2 Global DNS Provider data source. Use this data source to retrieve information about a Rancher v2 global DNS provider
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2233,6 +2397,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGlobalDnsProviderResult> getGlobalDnsProvider(GetGlobalDnsProviderArgs args, InvokeOptions options) {
@@ -2242,6 +2407,8 @@ public final class Rancher2Functions {
      * Provides a Rancher V2 Global DNS Provider data source. Use this data source to retrieve information about a Rancher v2 global DNS provider
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2270,6 +2437,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGlobalDnsProviderResult> getGlobalDnsProviderPlain(GetGlobalDnsProviderPlainArgs args, InvokeOptions options) {
@@ -2279,6 +2447,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 global role resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2307,6 +2477,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGlobalRoleResult> getGlobalRole(GetGlobalRoleArgs args) {
@@ -2316,6 +2487,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 global role resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2344,6 +2517,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGlobalRoleResult> getGlobalRolePlain(GetGlobalRolePlainArgs args) {
@@ -2353,6 +2527,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 global role resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2381,6 +2557,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGlobalRoleResult> getGlobalRole(GetGlobalRoleArgs args, InvokeOptions options) {
@@ -2390,6 +2567,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 global role resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2418,6 +2597,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGlobalRoleResult> getGlobalRolePlain(GetGlobalRolePlainArgs args, InvokeOptions options) {
@@ -2427,6 +2607,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 global role binding.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2456,6 +2638,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGlobalRoleBindingResult> getGlobalRoleBinding(GetGlobalRoleBindingArgs args) {
@@ -2465,6 +2648,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 global role binding.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2494,6 +2679,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGlobalRoleBindingResult> getGlobalRoleBindingPlain(GetGlobalRoleBindingPlainArgs args) {
@@ -2503,6 +2689,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 global role binding.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2532,6 +2720,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGlobalRoleBindingResult> getGlobalRoleBinding(GetGlobalRoleBindingArgs args, InvokeOptions options) {
@@ -2541,6 +2730,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 global role binding.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2570,6 +2761,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGlobalRoleBindingResult> getGlobalRoleBindingPlain(GetGlobalRoleBindingPlainArgs args, InvokeOptions options) {
@@ -2579,6 +2771,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 multi cluster app.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2607,6 +2801,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMultiClusterAppResult> getMultiClusterApp(GetMultiClusterAppArgs args) {
@@ -2616,6 +2811,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 multi cluster app.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2644,6 +2841,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMultiClusterAppResult> getMultiClusterAppPlain(GetMultiClusterAppPlainArgs args) {
@@ -2653,6 +2851,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 multi cluster app.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2681,6 +2881,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMultiClusterAppResult> getMultiClusterApp(GetMultiClusterAppArgs args, InvokeOptions options) {
@@ -2690,6 +2891,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 multi cluster app.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2718,6 +2921,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMultiClusterAppResult> getMultiClusterAppPlain(GetMultiClusterAppPlainArgs args, InvokeOptions options) {
@@ -2727,6 +2931,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 namespace.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2756,6 +2962,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNamespaceResult> getNamespace(GetNamespaceArgs args) {
@@ -2765,6 +2972,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 namespace.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2794,6 +3003,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNamespaceResult> getNamespacePlain(GetNamespacePlainArgs args) {
@@ -2803,6 +3013,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 namespace.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2832,6 +3044,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNamespaceResult> getNamespace(GetNamespaceArgs args, InvokeOptions options) {
@@ -2841,6 +3054,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 namespace.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2870,6 +3085,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNamespaceResult> getNamespacePlain(GetNamespacePlainArgs args, InvokeOptions options) {
@@ -2879,6 +3095,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Node Driver resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2907,6 +3125,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNodeDriverResult> getNodeDriver(GetNodeDriverArgs args) {
@@ -2916,6 +3135,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Node Driver resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2944,6 +3165,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNodeDriverResult> getNodeDriverPlain(GetNodeDriverPlainArgs args) {
@@ -2953,6 +3175,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Node Driver resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2981,6 +3205,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNodeDriverResult> getNodeDriver(GetNodeDriverArgs args, InvokeOptions options) {
@@ -2990,6 +3215,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Node Driver resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3018,6 +3245,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNodeDriverResult> getNodeDriverPlain(GetNodeDriverPlainArgs args, InvokeOptions options) {
@@ -3027,6 +3255,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Node Pool resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3056,6 +3286,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNodePoolResult> getNodePool(GetNodePoolArgs args) {
@@ -3065,6 +3296,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Node Pool resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3094,6 +3327,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNodePoolResult> getNodePoolPlain(GetNodePoolPlainArgs args) {
@@ -3103,6 +3337,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Node Pool resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3132,6 +3368,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNodePoolResult> getNodePool(GetNodePoolArgs args, InvokeOptions options) {
@@ -3141,6 +3378,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Node Pool resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3170,6 +3409,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNodePoolResult> getNodePoolPlain(GetNodePoolPlainArgs args, InvokeOptions options) {
@@ -3179,6 +3419,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Node Template resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3207,6 +3449,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNodeTemplateResult> getNodeTemplate(GetNodeTemplateArgs args) {
@@ -3216,6 +3459,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Node Template resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3244,6 +3489,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNodeTemplateResult> getNodeTemplatePlain(GetNodeTemplatePlainArgs args) {
@@ -3253,6 +3499,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Node Template resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3281,6 +3529,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNodeTemplateResult> getNodeTemplate(GetNodeTemplateArgs args, InvokeOptions options) {
@@ -3290,6 +3539,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Node Template resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3318,6 +3569,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNodeTemplateResult> getNodeTemplatePlain(GetNodeTemplatePlainArgs args, InvokeOptions options) {
@@ -3327,6 +3579,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 notifier.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3356,6 +3610,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNotifierResult> getNotifier(GetNotifierArgs args) {
@@ -3365,6 +3620,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 notifier.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3394,6 +3651,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNotifierResult> getNotifierPlain(GetNotifierPlainArgs args) {
@@ -3403,6 +3661,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 notifier.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3432,6 +3692,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNotifierResult> getNotifier(GetNotifierArgs args, InvokeOptions options) {
@@ -3441,6 +3702,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 notifier.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3470,6 +3733,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNotifierResult> getNotifierPlain(GetNotifierPlainArgs args, InvokeOptions options) {
@@ -3479,34 +3743,6 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 PodSecurityPolicyTemplate.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.rancher2.Rancher2Functions;
-     * import com.pulumi.rancher2.inputs.GetPodSecurityPolicyTemplateArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = Rancher2Functions.getPodSecurityPolicyTemplate(GetPodSecurityPolicyTemplateArgs.builder()
-     *             .name(&#34;foo&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetPodSecurityPolicyTemplateResult> getPodSecurityPolicyTemplate(GetPodSecurityPolicyTemplateArgs args) {
@@ -3516,34 +3752,6 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 PodSecurityPolicyTemplate.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.rancher2.Rancher2Functions;
-     * import com.pulumi.rancher2.inputs.GetPodSecurityPolicyTemplateArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = Rancher2Functions.getPodSecurityPolicyTemplate(GetPodSecurityPolicyTemplateArgs.builder()
-     *             .name(&#34;foo&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetPodSecurityPolicyTemplateResult> getPodSecurityPolicyTemplatePlain(GetPodSecurityPolicyTemplatePlainArgs args) {
@@ -3553,34 +3761,6 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 PodSecurityPolicyTemplate.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.rancher2.Rancher2Functions;
-     * import com.pulumi.rancher2.inputs.GetPodSecurityPolicyTemplateArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = Rancher2Functions.getPodSecurityPolicyTemplate(GetPodSecurityPolicyTemplateArgs.builder()
-     *             .name(&#34;foo&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetPodSecurityPolicyTemplateResult> getPodSecurityPolicyTemplate(GetPodSecurityPolicyTemplateArgs args, InvokeOptions options) {
@@ -3590,34 +3770,6 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 PodSecurityPolicyTemplate.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.rancher2.Rancher2Functions;
-     * import com.pulumi.rancher2.inputs.GetPodSecurityPolicyTemplateArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = Rancher2Functions.getPodSecurityPolicyTemplate(GetPodSecurityPolicyTemplateArgs.builder()
-     *             .name(&#34;foo&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetPodSecurityPolicyTemplateResult> getPodSecurityPolicyTemplatePlain(GetPodSecurityPolicyTemplatePlainArgs args, InvokeOptions options) {
@@ -3627,6 +3779,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Principal resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3655,6 +3809,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPrincipalResult> getPrincipal(GetPrincipalArgs args) {
@@ -3664,6 +3819,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Principal resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3692,6 +3849,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPrincipalResult> getPrincipalPlain(GetPrincipalPlainArgs args) {
@@ -3701,6 +3859,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Principal resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3729,6 +3889,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPrincipalResult> getPrincipal(GetPrincipalArgs args, InvokeOptions options) {
@@ -3738,6 +3899,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 Principal resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3766,20 +3929,37 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPrincipalResult> getPrincipalPlain(GetPrincipalPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("rancher2:index/getPrincipal:getPrincipal", TypeShape.of(GetPrincipalResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * ## Example Usage
+     * 
+     */
     public static Output<GetProjectResult> getProject(GetProjectArgs args) {
         return getProject(args, InvokeOptions.Empty);
     }
+    /**
+     * ## Example Usage
+     * 
+     */
     public static CompletableFuture<GetProjectResult> getProjectPlain(GetProjectPlainArgs args) {
         return getProjectPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * ## Example Usage
+     * 
+     */
     public static Output<GetProjectResult> getProject(GetProjectArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("rancher2:index/getProject:getProject", TypeShape.of(GetProjectResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * ## Example Usage
+     * 
+     */
     public static CompletableFuture<GetProjectResult> getProjectPlain(GetProjectPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("rancher2:index/getProject:getProject", TypeShape.of(GetProjectResult.class), args, Utilities.withVersion(options));
     }
@@ -3787,6 +3967,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 project alert group.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3816,6 +3998,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectAlertGroupResult> getProjectAlertGroup(GetProjectAlertGroupArgs args) {
@@ -3825,6 +4008,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 project alert group.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3854,6 +4039,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectAlertGroupResult> getProjectAlertGroupPlain(GetProjectAlertGroupPlainArgs args) {
@@ -3863,6 +4049,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 project alert group.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3892,6 +4080,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectAlertGroupResult> getProjectAlertGroup(GetProjectAlertGroupArgs args, InvokeOptions options) {
@@ -3901,6 +4090,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 project alert group.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3930,6 +4121,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectAlertGroupResult> getProjectAlertGroupPlain(GetProjectAlertGroupPlainArgs args, InvokeOptions options) {
@@ -3939,6 +4131,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 project alert rule.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3968,6 +4162,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectAlertRuleResult> getProjectAlertRule(GetProjectAlertRuleArgs args) {
@@ -3977,6 +4172,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 project alert rule.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4006,6 +4203,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectAlertRuleResult> getProjectAlertRulePlain(GetProjectAlertRulePlainArgs args) {
@@ -4015,6 +4213,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 project alert rule.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4044,6 +4244,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectAlertRuleResult> getProjectAlertRule(GetProjectAlertRuleArgs args, InvokeOptions options) {
@@ -4053,6 +4254,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 project alert rule.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4082,6 +4285,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectAlertRuleResult> getProjectAlertRulePlain(GetProjectAlertRulePlainArgs args, InvokeOptions options) {
@@ -4091,6 +4295,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 project role template binding.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4120,6 +4326,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectRoleTemplateBindingResult> getProjectRoleTemplateBinding(GetProjectRoleTemplateBindingArgs args) {
@@ -4129,6 +4336,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 project role template binding.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4158,6 +4367,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectRoleTemplateBindingResult> getProjectRoleTemplateBindingPlain(GetProjectRoleTemplateBindingPlainArgs args) {
@@ -4167,6 +4377,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 project role template binding.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4196,6 +4408,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectRoleTemplateBindingResult> getProjectRoleTemplateBinding(GetProjectRoleTemplateBindingArgs args, InvokeOptions options) {
@@ -4205,6 +4418,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 project role template binding.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4234,6 +4449,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectRoleTemplateBindingResult> getProjectRoleTemplateBindingPlain(GetProjectRoleTemplateBindingPlainArgs args, InvokeOptions options) {
@@ -4247,6 +4463,8 @@ public final class Rancher2Functions {
      * - Namespaced registry: Available to just `namespace_id` in the `project_id`
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4276,6 +4494,9 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4306,6 +4527,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRegistryResult> getRegistry(GetRegistryArgs args) {
@@ -4319,6 +4541,8 @@ public final class Rancher2Functions {
      * - Namespaced registry: Available to just `namespace_id` in the `project_id`
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4348,6 +4572,9 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4378,6 +4605,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRegistryResult> getRegistryPlain(GetRegistryPlainArgs args) {
@@ -4391,6 +4619,8 @@ public final class Rancher2Functions {
      * - Namespaced registry: Available to just `namespace_id` in the `project_id`
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4420,6 +4650,9 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4450,6 +4683,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRegistryResult> getRegistry(GetRegistryArgs args, InvokeOptions options) {
@@ -4463,6 +4697,8 @@ public final class Rancher2Functions {
      * - Namespaced registry: Available to just `namespace_id` in the `project_id`
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4492,6 +4728,9 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4522,6 +4761,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRegistryResult> getRegistryPlain(GetRegistryPlainArgs args, InvokeOptions options) {
@@ -4531,6 +4771,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 role template resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4559,6 +4801,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRoleTemplateResult> getRoleTemplate(GetRoleTemplateArgs args) {
@@ -4568,6 +4811,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 role template resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4596,6 +4841,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRoleTemplateResult> getRoleTemplatePlain(GetRoleTemplatePlainArgs args) {
@@ -4605,6 +4851,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 role template resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4633,6 +4881,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRoleTemplateResult> getRoleTemplate(GetRoleTemplateArgs args, InvokeOptions options) {
@@ -4642,6 +4891,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 role template resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4670,6 +4921,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRoleTemplateResult> getRoleTemplatePlain(GetRoleTemplatePlainArgs args, InvokeOptions options) {
@@ -4683,6 +4935,8 @@ public final class Rancher2Functions {
      * - Namespaced secret: Available to just `namespace_id` in the `project_id`
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4712,6 +4966,9 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4742,6 +4999,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSecretResult> getSecret(GetSecretArgs args) {
@@ -4755,6 +5013,8 @@ public final class Rancher2Functions {
      * - Namespaced secret: Available to just `namespace_id` in the `project_id`
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4784,6 +5044,9 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4814,6 +5077,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSecretResult> getSecretPlain(GetSecretPlainArgs args) {
@@ -4827,6 +5091,8 @@ public final class Rancher2Functions {
      * - Namespaced secret: Available to just `namespace_id` in the `project_id`
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4856,6 +5122,9 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4886,6 +5155,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSecretResult> getSecret(GetSecretArgs args, InvokeOptions options) {
@@ -4899,6 +5169,8 @@ public final class Rancher2Functions {
      * - Namespaced secret: Available to just `namespace_id` in the `project_id`
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4928,6 +5200,9 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4958,6 +5233,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSecretResult> getSecretPlain(GetSecretPlainArgs args, InvokeOptions options) {
@@ -4995,6 +5271,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 setting.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5023,6 +5301,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSettingResult> getSetting(GetSettingArgs args) {
@@ -5032,6 +5311,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 setting.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5060,6 +5341,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSettingResult> getSettingPlain(GetSettingPlainArgs args) {
@@ -5069,6 +5351,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 setting.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5097,6 +5381,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSettingResult> getSetting(GetSettingArgs args, InvokeOptions options) {
@@ -5106,6 +5391,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 setting.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5134,6 +5421,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSettingResult> getSettingPlain(GetSettingPlainArgs args, InvokeOptions options) {
@@ -5171,6 +5459,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 user
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5199,6 +5489,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetUserResult> getUser() {
@@ -5208,6 +5499,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 user
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5236,6 +5529,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUserResult> getUserPlain() {
@@ -5245,6 +5539,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 user
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5273,6 +5569,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetUserResult> getUser(GetUserArgs args) {
@@ -5282,6 +5579,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 user
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5310,6 +5609,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUserResult> getUserPlain(GetUserPlainArgs args) {
@@ -5319,6 +5619,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 user
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5347,6 +5649,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetUserResult> getUser(GetUserArgs args, InvokeOptions options) {
@@ -5356,6 +5659,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 user
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5384,6 +5689,7 @@ public final class Rancher2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUserResult> getUserPlain(GetUserPlainArgs args, InvokeOptions options) {

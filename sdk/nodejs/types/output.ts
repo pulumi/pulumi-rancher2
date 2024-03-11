@@ -457,7 +457,7 @@ export interface ClusterAksConfigV2NodePool {
      */
     maxPods?: number;
     /**
-     * The AKS node pool max surge (string), example value: `25%`
+     * The AKS node pool max surge (string), example value: `25%!`(MISSING)
      */
     maxSurge?: string;
     /**
@@ -2494,7 +2494,7 @@ export interface ClusterRkeConfigDnsUpdateStrategy {
 
 export interface ClusterRkeConfigDnsUpdateStrategyRollingUpdate {
     /**
-     * The AKS node pool max surge (string), example value: `25%`
+     * The AKS node pool max surge (string), example value: `25%!`(MISSING)
      */
     maxSurge?: number;
     /**
@@ -2654,7 +2654,7 @@ export interface ClusterRkeConfigMonitoringUpdateStrategy {
 
 export interface ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate {
     /**
-     * The AKS node pool max surge (string), example value: `25%`
+     * The AKS node pool max surge (string), example value: `25%!`(MISSING)
      */
     maxSurge?: number;
     /**
@@ -3358,6 +3358,12 @@ export interface ClusterRkeConfigServicesKubeApiAdmissionConfiguration {
 export interface ClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin {
     /**
      * Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
+     *
+     * <!--Start PulumiCodeChooser -->
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * ```
+     * <!--End PulumiCodeChooser -->
      */
     configuration: string;
     /**
@@ -3373,6 +3379,12 @@ export interface ClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin {
 export interface ClusterRkeConfigServicesKubeApiAuditLog {
     /**
      * Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
+     *
+     * <!--Start PulumiCodeChooser -->
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * ```
+     * <!--End PulumiCodeChooser -->
      */
     configuration: outputs.ClusterRkeConfigServicesKubeApiAuditLogConfiguration;
     /**
@@ -3404,6 +3416,12 @@ export interface ClusterRkeConfigServicesKubeApiAuditLogConfiguration {
     path?: string;
     /**
      * Audit policy yaml encoded definition. `apiVersion` and `kind: Policy\nrules:"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/audit-log/) (string) Ex:
+     *
+     * <!--Start PulumiCodeChooser -->
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * ```
+     * <!--End PulumiCodeChooser -->
      */
     policy: string;
 }
@@ -3411,6 +3429,12 @@ export interface ClusterRkeConfigServicesKubeApiAuditLogConfiguration {
 export interface ClusterRkeConfigServicesKubeApiEventRateLimit {
     /**
      * Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
+     *
+     * <!--Start PulumiCodeChooser -->
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * ```
+     * <!--End PulumiCodeChooser -->
      */
     configuration: string;
     /**
@@ -3423,9 +3447,11 @@ export interface ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig {
     /**
      * Secrets encryption yaml encoded custom configuration. `"apiVersion"` and `"kind":"EncryptionConfiguration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/) (string) Ex:
      *
+     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * ```
+     * <!--End PulumiCodeChooser -->
      */
     customConfig?: string;
     /**
@@ -3552,7 +3578,7 @@ export interface ClusterRkeConfigUpgradeStrategy {
      */
     maxUnavailableControlplane?: string;
     /**
-     * RKE max unavailable worker nodes. Default: `10%` (string)
+     * RKE max unavailable worker nodes. Default: `10%!`(MISSING) (string)
      */
     maxUnavailableWorker?: string;
 }

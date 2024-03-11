@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * Provides a Rancher v2 Cluster Role Template Binding resource. This can be used to create Cluster Role Template Bindings for Rancher v2 environments and retrieve their information.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -49,13 +51,14 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Cluster Role Template Bindings can be imported using the Rancher cluster Role Template Binding ID
  * 
  * ```sh
- *  $ pulumi import rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding foo &amp;lt;CLUSTER_ROLE_TEMPLATE_BINDING_ID&amp;gt;
+ * $ pulumi import rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding foo &amp;lt;CLUSTER_ROLE_TEMPLATE_BINDING_ID&amp;gt;
  * ```
  * 
  */

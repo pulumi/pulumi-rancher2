@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -19,6 +20,7 @@ import * as utilities from "./utilities";
  *     name: "foo",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getGlobalRole(args: GetGlobalRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetGlobalRoleResult> {
 
@@ -86,6 +88,7 @@ export interface GetGlobalRoleResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -94,6 +97,7 @@ export interface GetGlobalRoleResult {
  *     name: "foo",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getGlobalRoleOutput(args: GetGlobalRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGlobalRoleResult> {
     return pulumi.output(args).apply((a: any) => getGlobalRole(a, opts))

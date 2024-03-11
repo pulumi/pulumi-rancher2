@@ -2114,7 +2114,7 @@ class ClusterAksConfigV2NodePool(dict):
         :param Mapping[str, Any] labels: Labels for the Cluster (map)
         :param int max_count: The AKS node pool max count. Required if `enable_auto_scaling=true` (int)
         :param int max_pods: The AKS node pool max pods. Default: `110` (int)
-        :param str max_surge: The AKS node pool max surge (string), example value: `25%`
+        :param str max_surge: The AKS node pool max surge (string), example value: `25%!`(MISSING)
         :param int min_count: The AKS node pool min count. Required if `enable_auto_scaling=true` (int)
         :param str mode: The AKS node group mode. Default: `System` (string)
         :param str orchestrator_version: The AKS node pool orchestrator version (string)
@@ -2216,7 +2216,7 @@ class ClusterAksConfigV2NodePool(dict):
     @pulumi.getter(name="maxSurge")
     def max_surge(self) -> Optional[str]:
         """
-        The AKS node pool max surge (string), example value: `25%`
+        The AKS node pool max surge (string), example value: `25%!`(MISSING)
         """
         return pulumi.get(self, "max_surge")
 
@@ -9505,7 +9505,7 @@ class ClusterRkeConfigDnsUpdateStrategyRollingUpdate(dict):
                  max_surge: Optional[int] = None,
                  max_unavailable: Optional[int] = None):
         """
-        :param int max_surge: The AKS node pool max surge (string), example value: `25%`
+        :param int max_surge: The AKS node pool max surge (string), example value: `25%!`(MISSING)
         :param int max_unavailable: Monitoring deployment rolling update max unavailable. Default: `1` (int)
         """
         if max_surge is not None:
@@ -9517,7 +9517,7 @@ class ClusterRkeConfigDnsUpdateStrategyRollingUpdate(dict):
     @pulumi.getter(name="maxSurge")
     def max_surge(self) -> Optional[int]:
         """
-        The AKS node pool max surge (string), example value: `25%`
+        The AKS node pool max surge (string), example value: `25%!`(MISSING)
         """
         return pulumi.get(self, "max_surge")
 
@@ -10087,7 +10087,7 @@ class ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate(dict):
                  max_surge: Optional[int] = None,
                  max_unavailable: Optional[int] = None):
         """
-        :param int max_surge: The AKS node pool max surge (string), example value: `25%`
+        :param int max_surge: The AKS node pool max surge (string), example value: `25%!`(MISSING)
         :param int max_unavailable: Monitoring deployment rolling update max unavailable. Default: `1` (int)
         """
         if max_surge is not None:
@@ -10099,7 +10099,7 @@ class ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate(dict):
     @pulumi.getter(name="maxSurge")
     def max_surge(self) -> Optional[int]:
         """
-        The AKS node pool max surge (string), example value: `25%`
+        The AKS node pool max surge (string), example value: `25%!`(MISSING)
         """
         return pulumi.get(self, "max_surge")
 
@@ -12544,6 +12544,12 @@ class ClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin(dict):
                  path: Optional[str] = None):
         """
         :param str configuration: Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
+               
+               <!--Start PulumiCodeChooser -->
+               ```python
+               import pulumi
+               ```
+               <!--End PulumiCodeChooser -->
         :param str name: The name of the Cluster (string)
         :param str path: (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
         """
@@ -12559,6 +12565,12 @@ class ClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin(dict):
     def configuration(self) -> Optional[str]:
         """
         Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        ```
+        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "configuration")
 
@@ -12586,6 +12598,12 @@ class ClusterRkeConfigServicesKubeApiAuditLog(dict):
                  enabled: Optional[bool] = None):
         """
         :param 'ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs' configuration: Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
+               
+               <!--Start PulumiCodeChooser -->
+               ```python
+               import pulumi
+               ```
+               <!--End PulumiCodeChooser -->
         :param bool enabled: Enable the authorized cluster endpoint. Default `true` (bool)
         """
         if configuration is not None:
@@ -12598,6 +12616,12 @@ class ClusterRkeConfigServicesKubeApiAuditLog(dict):
     def configuration(self) -> Optional['outputs.ClusterRkeConfigServicesKubeApiAuditLogConfiguration']:
         """
         Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        ```
+        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "configuration")
 
@@ -12647,6 +12671,12 @@ class ClusterRkeConfigServicesKubeApiAuditLogConfiguration(dict):
         :param int max_size: The EKS node group maximum size. Default `2` (int)
         :param str path: (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
         :param str policy: Audit policy yaml encoded definition. `apiVersion` and `kind: Policy\\nrules:"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/audit-log/) (string) Ex:
+               
+               <!--Start PulumiCodeChooser -->
+               ```python
+               import pulumi
+               ```
+               <!--End PulumiCodeChooser -->
         """
         if format is not None:
             pulumi.set(__self__, "format", format)
@@ -12706,6 +12736,12 @@ class ClusterRkeConfigServicesKubeApiAuditLogConfiguration(dict):
     def policy(self) -> Optional[str]:
         """
         Audit policy yaml encoded definition. `apiVersion` and `kind: Policy\\nrules:"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/audit-log/) (string) Ex:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        ```
+        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "policy")
 
@@ -12717,6 +12753,12 @@ class ClusterRkeConfigServicesKubeApiEventRateLimit(dict):
                  enabled: Optional[bool] = None):
         """
         :param str configuration: Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
+               
+               <!--Start PulumiCodeChooser -->
+               ```python
+               import pulumi
+               ```
+               <!--End PulumiCodeChooser -->
         :param bool enabled: Enable the authorized cluster endpoint. Default `true` (bool)
         """
         if configuration is not None:
@@ -12729,6 +12771,12 @@ class ClusterRkeConfigServicesKubeApiEventRateLimit(dict):
     def configuration(self) -> Optional[str]:
         """
         Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        ```
+        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "configuration")
 
@@ -12766,9 +12814,11 @@ class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig(dict):
         """
         :param str custom_config: Secrets encryption yaml encoded custom configuration. `"apiVersion"` and `"kind":"EncryptionConfiguration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/) (string) Ex:
                
+               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                ```
+               <!--End PulumiCodeChooser -->
         :param bool enabled: Enable the authorized cluster endpoint. Default `true` (bool)
         """
         if custom_config is not None:
@@ -12782,9 +12832,11 @@ class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig(dict):
         """
         Secrets encryption yaml encoded custom configuration. `"apiVersion"` and `"kind":"EncryptionConfiguration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/) (string) Ex:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "custom_config")
 
@@ -13231,7 +13283,7 @@ class ClusterRkeConfigUpgradeStrategy(dict):
         :param bool drain: RKE drain nodes. Default: `false` (bool)
         :param 'ClusterRkeConfigUpgradeStrategyDrainInputArgs' drain_input: RKE drain node input (list Maxitems: 1)
         :param str max_unavailable_controlplane: RKE max unavailable controlplane nodes. Default: `1` (string)
-        :param str max_unavailable_worker: RKE max unavailable worker nodes. Default: `10%` (string)
+        :param str max_unavailable_worker: RKE max unavailable worker nodes. Default: `10%!`(MISSING) (string)
         """
         if drain is not None:
             pulumi.set(__self__, "drain", drain)
@@ -13270,7 +13322,7 @@ class ClusterRkeConfigUpgradeStrategy(dict):
     @pulumi.getter(name="maxUnavailableWorker")
     def max_unavailable_worker(self) -> Optional[str]:
         """
-        RKE max unavailable worker nodes. Default: `10%` (string)
+        RKE max unavailable worker nodes. Default: `10%!`(MISSING) (string)
         """
         return pulumi.get(self, "max_unavailable_worker")
 

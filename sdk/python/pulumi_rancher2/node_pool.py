@@ -469,7 +469,7 @@ class NodePool(pulumi.CustomResource):
         Node Pool can be imported using the Rancher Node Pool ID
 
         ```sh
-         $ pulumi import rancher2:index/nodePool:NodePool foo &lt;node_pool_id&gt;
+        $ pulumi import rancher2:index/nodePool:NodePool foo &lt;node_pool_id&gt;
         ```
 
         :param str resource_name: The name of the resource.
@@ -502,7 +502,7 @@ class NodePool(pulumi.CustomResource):
         Node Pool can be imported using the Rancher Node Pool ID
 
         ```sh
-         $ pulumi import rancher2:index/nodePool:NodePool foo &lt;node_pool_id&gt;
+        $ pulumi import rancher2:index/nodePool:NodePool foo &lt;node_pool_id&gt;
         ```
 
         :param str resource_name: The name of the resource.

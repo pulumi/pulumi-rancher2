@@ -24,6 +24,8 @@ import javax.annotation.Nullable;
  * In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -53,6 +55,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="rancher2:index/authConfigGithub:AuthConfigGithub")

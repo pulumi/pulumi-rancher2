@@ -518,7 +518,7 @@ class CatalogV2(pulumi.CustomResource):
         V2 catalogs can be imported using the Rancher cluster ID and Catalog V2 name.
 
         ```sh
-         $ pulumi import rancher2:index/catalogV2:CatalogV2 foo &lt;CLUSTER_ID&gt;.&lt;CATALOG_V2_NAME&gt;
+        $ pulumi import rancher2:index/catalogV2:CatalogV2 foo &lt;CLUSTER_ID&gt;.&lt;CATALOG_V2_NAME&gt;
         ```
 
         :param str resource_name: The name of the resource.
@@ -552,7 +552,7 @@ class CatalogV2(pulumi.CustomResource):
         V2 catalogs can be imported using the Rancher cluster ID and Catalog V2 name.
 
         ```sh
-         $ pulumi import rancher2:index/catalogV2:CatalogV2 foo &lt;CLUSTER_ID&gt;.&lt;CATALOG_V2_NAME&gt;
+        $ pulumi import rancher2:index/catalogV2:CatalogV2 foo &lt;CLUSTER_ID&gt;.&lt;CATALOG_V2_NAME&gt;
         ```
 
         :param str resource_name: The name of the resource.
