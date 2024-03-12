@@ -359,6 +359,45 @@ import * as utilities from "./utilities";
  * ```
  * <!--End PulumiCodeChooser -->
  *
+ * ### Creating Rancher v2 RKE cluster with Pod Security Admission Configuration Template (PSACT). For Rancher v2.7.2 and above.
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * // Custom PSACT (if you wish to use your own)
+ * const fooPodSecurityAdmissionConfigurationTemplate = new rancher2.PodSecurityAdmissionConfigurationTemplate("fooPodSecurityAdmissionConfigurationTemplate", {
+ *     defaults: {
+ *         audit: "restricted",
+ *         auditVersion: "latest",
+ *         enforce: "restricted",
+ *         enforceVersion: "latest",
+ *         warn: "restricted",
+ *         warnVersion: "latest",
+ *     },
+ *     description: "This is my custom Pod Security Admission Configuration Template",
+ *     exemptions: {
+ *         namespaces: [
+ *             "ingress-nginx",
+ *             "kube-system",
+ *         ],
+ *         runtimeClasses: ["testclass"],
+ *         usernames: ["testuser"],
+ *     },
+ * });
+ * const fooCluster = new rancher2.Cluster("fooCluster", {
+ *     defaultPodSecurityAdmissionConfigurationTemplateName: "<name>",
+ *     description: "Terraform cluster with PSACT",
+ *     rkeConfig: {
+ *         network: {
+ *             plugin: "canal",
+ *         },
+ *     },
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Importing EKS cluster to Rancher v2, using `eksConfigV2`. For Rancher v2.5.x and above.
  *
  * <!--Start PulumiCodeChooser -->
@@ -369,16 +408,16 @@ import * as utilities from "./utilities";
  * const fooCloudCredential = new rancher2.CloudCredential("fooCloudCredential", {
  *     description: "foo test",
  *     amazonec2CredentialConfig: {
- *         accessKey: "<AWS_ACCESS_KEY>",
- *         secretKey: "<AWS_SECRET_KEY>",
+ *         accessKey: "<aws-access-key>",
+ *         secretKey: "<aws-secret-key>",
  *     },
  * });
  * const fooCluster = new rancher2.Cluster("fooCluster", {
  *     description: "Terraform EKS cluster",
  *     eksConfigV2: {
  *         cloudCredentialId: fooCloudCredential.id,
- *         name: "<CLUSTER_NAME>",
- *         region: "<EKS_REGION>",
+ *         name: "<cluster-name>",
+ *         region: "<eks-region>",
  *         imported: true,
  *     },
  * });
@@ -395,8 +434,8 @@ import * as utilities from "./utilities";
  * const fooCloudCredential = new rancher2.CloudCredential("fooCloudCredential", {
  *     description: "foo test",
  *     amazonec2CredentialConfig: {
- *         accessKey: "<AWS_ACCESS_KEY>",
- *         secretKey: "<AWS_SECRET_KEY>",
+ *         accessKey: "<aws-access-key>",
+ *         secretKey: "<aws-secret-key>",
  *     },
  * });
  * const fooCluster = new rancher2.Cluster("fooCluster", {
@@ -433,6 +472,8 @@ import * as utilities from "./utilities";
  *
  * ### Creating EKS cluster from Rancher v2, using `eksConfigV2` and launch template. For Rancher v2.5.6 and above.
  *
+ * Note: To use `launchTemplate` you must provide the ID (seen as `<EC2_LAUNCH_TEMPLATE_ID>`) to the template either as a static value. Or fetched via AWS data-source using one of: awsAmi first and provide the ID to that.
+ *
  * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -441,8 +482,8 @@ import * as utilities from "./utilities";
  * const fooCloudCredential = new rancher2.CloudCredential("fooCloudCredential", {
  *     description: "foo test",
  *     amazonec2CredentialConfig: {
- *         accessKey: "<AWS_ACCESS_KEY>",
- *         secretKey: "<AWS_SECRET_KEY>",
+ *         accessKey: "<aws-access-key>",
+ *         secretKey: "<aws-secret-key>",
  *     },
  * });
  * const fooCluster = new rancher2.Cluster("fooCluster", {
@@ -460,7 +501,7 @@ import * as utilities from "./utilities";
  *             maxSize: 5,
  *             name: "node_group1",
  *             launchTemplates: [{
- *                 id: "<EC2_LAUNCH_TEMPLATE_ID>",
+ *                 id: "<ec2-launch-template-id>",
  *                 version: 1,
  *             }],
  *         }],
@@ -479,19 +520,19 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * const foo_aks = new rancher2.CloudCredential("foo-aks", {azureCredentialConfig: {
- *     clientId: "<CLIENT_ID>",
- *     clientSecret: "<CLIENT_SECRET>",
- *     subscriptionId: "<SUBSCRIPTION_ID>",
+ *     clientId: "<client-id>",
+ *     clientSecret: "<client-secret>",
+ *     subscriptionId: "<subscription-id>",
  * }});
  * const foo = new rancher2.Cluster("foo", {
  *     description: "Terraform AKS cluster",
  *     aksConfigV2: {
  *         cloudCredentialId: foo_aks.id,
- *         resourceGroup: "<RESOURCE_GROUP>",
- *         resourceLocation: "<RESOURCE_LOCATION>",
- *         dnsPrefix: "<DNS_PREFIX>",
+ *         resourceGroup: "<resource-group>",
+ *         resourceLocation: "<resource-location>",
+ *         dnsPrefix: "<dns-prefix>",
  *         kubernetesVersion: "1.24.6",
- *         networkPlugin: "<NETWORK_PLUGIN>",
+ *         networkPlugin: "<network-plugin>",
  *         nodePools: [
  *             {
  *                 availabilityZones: [
@@ -499,7 +540,7 @@ import * as utilities from "./utilities";
  *                     "2",
  *                     "3",
  *                 ],
- *                 name: "<NODEPOOL_NAME_1>",
+ *                 name: "<nodepool-name-1>",
  *                 mode: "System",
  *                 count: 1,
  *                 orchestratorVersion: "1.21.2",
@@ -512,7 +553,7 @@ import * as utilities from "./utilities";
  *                     "2",
  *                     "3",
  *                 ],
- *                 name: "<NODEPOOL_NAME_2>",
+ *                 name: "<nodepool-name-2>",
  *                 count: 1,
  *                 mode: "User",
  *                 orchestratorVersion: "1.21.2",
@@ -620,7 +661,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly clusterTemplateRevisionId!: pulumi.Output<string | undefined>;
     /**
-     * Cluster default pod security admission configuration template name (string)
+     * The name of the pre-defined pod security admission configuration template to be applied to the cluster. Rancher admins (or those with the right permissions) can create, manage, and edit those templates. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates). The argument is available in Rancher v2.7.2 and above (string)
      */
     public readonly defaultPodSecurityAdmissionConfigurationTemplateName!: pulumi.Output<string>;
     /**
@@ -896,7 +937,7 @@ export interface ClusterState {
      */
     clusterTemplateRevisionId?: pulumi.Input<string>;
     /**
-     * Cluster default pod security admission configuration template name (string)
+     * The name of the pre-defined pod security admission configuration template to be applied to the cluster. Rancher admins (or those with the right permissions) can create, manage, and edit those templates. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates). The argument is available in Rancher v2.7.2 and above (string)
      */
     defaultPodSecurityAdmissionConfigurationTemplateName?: pulumi.Input<string>;
     /**
@@ -1060,7 +1101,7 @@ export interface ClusterArgs {
      */
     clusterTemplateRevisionId?: pulumi.Input<string>;
     /**
-     * Cluster default pod security admission configuration template name (string)
+     * The name of the pre-defined pod security admission configuration template to be applied to the cluster. Rancher admins (or those with the right permissions) can create, manage, and edit those templates. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates). The argument is available in Rancher v2.7.2 and above (string)
      */
     defaultPodSecurityAdmissionConfigurationTemplateName?: pulumi.Input<string>;
     /**

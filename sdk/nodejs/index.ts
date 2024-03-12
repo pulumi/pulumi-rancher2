@@ -260,6 +260,11 @@ export const getNotifier: typeof import("./getNotifier").getNotifier = null as a
 export const getNotifierOutput: typeof import("./getNotifier").getNotifierOutput = null as any;
 utilities.lazyLoad(exports, ["getNotifier","getNotifierOutput"], () => require("./getNotifier"));
 
+export { GetPodSecurityAdmissionConfigurationTemplateArgs, GetPodSecurityAdmissionConfigurationTemplateResult, GetPodSecurityAdmissionConfigurationTemplateOutputArgs } from "./getPodSecurityAdmissionConfigurationTemplate";
+export const getPodSecurityAdmissionConfigurationTemplate: typeof import("./getPodSecurityAdmissionConfigurationTemplate").getPodSecurityAdmissionConfigurationTemplate = null as any;
+export const getPodSecurityAdmissionConfigurationTemplateOutput: typeof import("./getPodSecurityAdmissionConfigurationTemplate").getPodSecurityAdmissionConfigurationTemplateOutput = null as any;
+utilities.lazyLoad(exports, ["getPodSecurityAdmissionConfigurationTemplate","getPodSecurityAdmissionConfigurationTemplateOutput"], () => require("./getPodSecurityAdmissionConfigurationTemplate"));
+
 export { GetPodSecurityPolicyTemplateArgs, GetPodSecurityPolicyTemplateResult, GetPodSecurityPolicyTemplateOutputArgs } from "./getPodSecurityPolicyTemplate";
 export const getPodSecurityPolicyTemplate: typeof import("./getPodSecurityPolicyTemplate").getPodSecurityPolicyTemplate = null as any;
 export const getPodSecurityPolicyTemplateOutput: typeof import("./getPodSecurityPolicyTemplate").getPodSecurityPolicyTemplateOutput = null as any;
@@ -379,6 +384,11 @@ export { NotifierArgs, NotifierState } from "./notifier";
 export type Notifier = import("./notifier").Notifier;
 export const Notifier: typeof import("./notifier").Notifier = null as any;
 utilities.lazyLoad(exports, ["Notifier"], () => require("./notifier"));
+
+export { PodSecurityAdmissionConfigurationTemplateArgs, PodSecurityAdmissionConfigurationTemplateState } from "./podSecurityAdmissionConfigurationTemplate";
+export type PodSecurityAdmissionConfigurationTemplate = import("./podSecurityAdmissionConfigurationTemplate").PodSecurityAdmissionConfigurationTemplate;
+export const PodSecurityAdmissionConfigurationTemplate: typeof import("./podSecurityAdmissionConfigurationTemplate").PodSecurityAdmissionConfigurationTemplate = null as any;
+utilities.lazyLoad(exports, ["PodSecurityAdmissionConfigurationTemplate"], () => require("./podSecurityAdmissionConfigurationTemplate"));
 
 export { PodSecurityPolicyTemplateArgs, PodSecurityPolicyTemplateState } from "./podSecurityPolicyTemplate";
 export type PodSecurityPolicyTemplate = import("./podSecurityPolicyTemplate").PodSecurityPolicyTemplate;
@@ -542,6 +552,8 @@ const _module = {
                 return new NodeTemplate(name, <any>undefined, { urn })
             case "rancher2:index/notifier:Notifier":
                 return new Notifier(name, <any>undefined, { urn })
+            case "rancher2:index/podSecurityAdmissionConfigurationTemplate:PodSecurityAdmissionConfigurationTemplate":
+                return new PodSecurityAdmissionConfigurationTemplate(name, <any>undefined, { urn })
             case "rancher2:index/podSecurityPolicyTemplate:PodSecurityPolicyTemplate":
                 return new PodSecurityPolicyTemplate(name, <any>undefined, { urn })
             case "rancher2:index/project:Project":
@@ -612,6 +624,7 @@ pulumi.runtime.registerResourceModule("rancher2", "index/nodeDriver", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/nodePool", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/nodeTemplate", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/notifier", _module)
+pulumi.runtime.registerResourceModule("rancher2", "index/podSecurityAdmissionConfigurationTemplate", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/podSecurityPolicyTemplate", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/project", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/projectAlertGroup", _module)

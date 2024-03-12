@@ -9418,6 +9418,48 @@ export interface GetNotifierWechatConfig {
     secret: string;
 }
 
+export interface GetPodSecurityAdmissionConfigurationTemplateDefaults {
+    /**
+     * Pod Security Admission Configuration audit. This audits a pod in violation of privileged, baseline, or restricted policy (default: privileged)
+     */
+    audit?: string;
+    /**
+     * Pod Security Admission Configuration audit version (default: latest)
+     */
+    auditVersion?: string;
+    /**
+     * Pod Security Admission Configuration enforce. This rejects a pod in violation of privileged, baseline, or restricted policy (default: privileged)
+     */
+    enforce?: string;
+    /**
+     * Pod Security Admission Configuration enforce version (default: latest)
+     */
+    enforceVersion?: string;
+    /**
+     * Pod Security Admission Configuration warn. This warns the user about a pod in violation of privileged, baseline, or restricted policy (default: privileged)
+     */
+    warn?: string;
+    /**
+     * Pod Security Admission Configuration warn version (default: latest)
+     */
+    warnVersion?: string;
+}
+
+export interface GetPodSecurityAdmissionConfigurationTemplateExemptions {
+    /**
+     * Pod Security Admission Configuration namespace exemptions
+     */
+    namespaces?: string[];
+    /**
+     * Pod Security Admission Configuration runtime class exemptions
+     */
+    runtimeClasses?: string[];
+    /**
+     * Pod Security Admission Configuration username exemptions
+     */
+    usernames?: string[];
+}
+
 export interface GetPodSecurityPolicyTemplateAllowedCsiDriver {
     /**
      * The name of the PodSecurityPolicyTemplate (string)
@@ -11824,6 +11866,48 @@ export interface NotifierWechatConfig {
      * Wechat agent ID (string)
      */
     secret: string;
+}
+
+export interface PodSecurityAdmissionConfigurationTemplateDefaults {
+    /**
+     * Pod Security Admission Configuration audit. This audits a pod in violation of privileged, baseline, or restricted policy (default: privileged)
+     */
+    audit?: string;
+    /**
+     * Pod Security Admission Configuration audit version (default: latest)
+     */
+    auditVersion?: string;
+    /**
+     * Pod Security Admission Configuration enforce. This rejects a pod in violation of privileged, baseline, or restricted policy (default: privileged)
+     */
+    enforce?: string;
+    /**
+     * Pod Security Admission Configuration enforce version (default: latest)
+     */
+    enforceVersion?: string;
+    /**
+     * Pod Security Admission Configuration warn. This warns the user about a pod in violation of privileged, baseline, or restricted policy (default: privileged)
+     */
+    warn?: string;
+    /**
+     * Pod Security Admission Configuration warn version (default: latest)
+     */
+    warnVersion?: string;
+}
+
+export interface PodSecurityAdmissionConfigurationTemplateExemptions {
+    /**
+     * Pod Security Admission Configuration namespace exemptions
+     */
+    namespaces?: string[];
+    /**
+     * Pod Security Admission Configuration runtime class exemptions
+     */
+    runtimeClasses?: string[];
+    /**
+     * Pod Security Admission Configuration username exemptions
+     */
+    usernames?: string[];
 }
 
 export interface PodSecurityPolicyTemplateAllowedCsiDriver {

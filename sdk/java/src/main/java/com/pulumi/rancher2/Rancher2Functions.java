@@ -54,6 +54,8 @@ import com.pulumi.rancher2.inputs.GetNodeTemplateArgs;
 import com.pulumi.rancher2.inputs.GetNodeTemplatePlainArgs;
 import com.pulumi.rancher2.inputs.GetNotifierArgs;
 import com.pulumi.rancher2.inputs.GetNotifierPlainArgs;
+import com.pulumi.rancher2.inputs.GetPodSecurityAdmissionConfigurationTemplateArgs;
+import com.pulumi.rancher2.inputs.GetPodSecurityAdmissionConfigurationTemplatePlainArgs;
 import com.pulumi.rancher2.inputs.GetPodSecurityPolicyTemplateArgs;
 import com.pulumi.rancher2.inputs.GetPodSecurityPolicyTemplatePlainArgs;
 import com.pulumi.rancher2.inputs.GetPrincipalArgs;
@@ -103,6 +105,7 @@ import com.pulumi.rancher2.outputs.GetNodeDriverResult;
 import com.pulumi.rancher2.outputs.GetNodePoolResult;
 import com.pulumi.rancher2.outputs.GetNodeTemplateResult;
 import com.pulumi.rancher2.outputs.GetNotifierResult;
+import com.pulumi.rancher2.outputs.GetPodSecurityAdmissionConfigurationTemplateResult;
 import com.pulumi.rancher2.outputs.GetPodSecurityPolicyTemplateResult;
 import com.pulumi.rancher2.outputs.GetPrincipalResult;
 import com.pulumi.rancher2.outputs.GetProjectAlertGroupResult;
@@ -3738,6 +3741,18 @@ public final class Rancher2Functions {
      */
     public static CompletableFuture<GetNotifierResult> getNotifierPlain(GetNotifierPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("rancher2:index/getNotifier:getNotifier", TypeShape.of(GetNotifierResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetPodSecurityAdmissionConfigurationTemplateResult> getPodSecurityAdmissionConfigurationTemplate(GetPodSecurityAdmissionConfigurationTemplateArgs args) {
+        return getPodSecurityAdmissionConfigurationTemplate(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetPodSecurityAdmissionConfigurationTemplateResult> getPodSecurityAdmissionConfigurationTemplatePlain(GetPodSecurityAdmissionConfigurationTemplatePlainArgs args) {
+        return getPodSecurityAdmissionConfigurationTemplatePlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetPodSecurityAdmissionConfigurationTemplateResult> getPodSecurityAdmissionConfigurationTemplate(GetPodSecurityAdmissionConfigurationTemplateArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("rancher2:index/getPodSecurityAdmissionConfigurationTemplate:getPodSecurityAdmissionConfigurationTemplate", TypeShape.of(GetPodSecurityAdmissionConfigurationTemplateResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetPodSecurityAdmissionConfigurationTemplateResult> getPodSecurityAdmissionConfigurationTemplatePlain(GetPodSecurityAdmissionConfigurationTemplatePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("rancher2:index/getPodSecurityAdmissionConfigurationTemplate:getPodSecurityAdmissionConfigurationTemplate", TypeShape.of(GetPodSecurityAdmissionConfigurationTemplateResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to retrieve information about a Rancher v2 PodSecurityPolicyTemplate.

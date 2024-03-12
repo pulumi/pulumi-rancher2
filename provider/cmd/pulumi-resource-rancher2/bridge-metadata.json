@@ -1721,6 +1721,31 @@
                     }
                 }
             },
+            "rancher2_pod_security_admission_configuration_template": {
+                "current": "rancher2:index/podSecurityAdmissionConfigurationTemplate:PodSecurityAdmissionConfigurationTemplate",
+                "majorVersion": 6,
+                "fields": {
+                    "defaults": {
+                        "maxItemsOne": true
+                    },
+                    "exemptions": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "namespaces": {
+                                    "maxItemsOne": false
+                                },
+                                "runtime_classes": {
+                                    "maxItemsOne": false
+                                },
+                                "usernames": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "rancher2_pod_security_policy_template": {
                 "current": "rancher2:index/podSecurityPolicyTemplate:PodSecurityPolicyTemplate",
                 "majorVersion": 6,
@@ -3313,6 +3338,31 @@
                     },
                     "wechat_config": {
                         "maxItemsOne": true
+                    }
+                }
+            },
+            "rancher2_pod_security_admission_configuration_template": {
+                "current": "rancher2:index/getPodSecurityAdmissionConfigurationTemplate:getPodSecurityAdmissionConfigurationTemplate",
+                "majorVersion": 6,
+                "fields": {
+                    "defaults": {
+                        "maxItemsOne": true
+                    },
+                    "exemptions": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "namespaces": {
+                                    "maxItemsOne": false
+                                },
+                                "runtime_classes": {
+                                    "maxItemsOne": false
+                                },
+                                "usernames": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },

@@ -567,6 +567,70 @@ import javax.annotation.Nullable;
  * ```
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ### Creating Rancher v2 RKE cluster with Pod Security Admission Configuration Template (PSACT). For Rancher v2.7.2 and above.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.PodSecurityAdmissionConfigurationTemplate;
+ * import com.pulumi.rancher2.PodSecurityAdmissionConfigurationTemplateArgs;
+ * import com.pulumi.rancher2.inputs.PodSecurityAdmissionConfigurationTemplateDefaultsArgs;
+ * import com.pulumi.rancher2.inputs.PodSecurityAdmissionConfigurationTemplateExemptionsArgs;
+ * import com.pulumi.rancher2.Cluster;
+ * import com.pulumi.rancher2.ClusterArgs;
+ * import com.pulumi.rancher2.inputs.ClusterRkeConfigArgs;
+ * import com.pulumi.rancher2.inputs.ClusterRkeConfigNetworkArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var fooPodSecurityAdmissionConfigurationTemplate = new PodSecurityAdmissionConfigurationTemplate(&#34;fooPodSecurityAdmissionConfigurationTemplate&#34;, PodSecurityAdmissionConfigurationTemplateArgs.builder()        
+ *             .defaults(PodSecurityAdmissionConfigurationTemplateDefaultsArgs.builder()
+ *                 .audit(&#34;restricted&#34;)
+ *                 .auditVersion(&#34;latest&#34;)
+ *                 .enforce(&#34;restricted&#34;)
+ *                 .enforceVersion(&#34;latest&#34;)
+ *                 .warn(&#34;restricted&#34;)
+ *                 .warnVersion(&#34;latest&#34;)
+ *                 .build())
+ *             .description(&#34;This is my custom Pod Security Admission Configuration Template&#34;)
+ *             .exemptions(PodSecurityAdmissionConfigurationTemplateExemptionsArgs.builder()
+ *                 .namespaces(                
+ *                     &#34;ingress-nginx&#34;,
+ *                     &#34;kube-system&#34;)
+ *                 .runtimeClasses(&#34;testclass&#34;)
+ *                 .usernames(&#34;testuser&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var fooCluster = new Cluster(&#34;fooCluster&#34;, ClusterArgs.builder()        
+ *             .defaultPodSecurityAdmissionConfigurationTemplateName(&#34;&lt;name&gt;&#34;)
+ *             .description(&#34;Terraform cluster with PSACT&#34;)
+ *             .rkeConfig(ClusterRkeConfigArgs.builder()
+ *                 .network(ClusterRkeConfigNetworkArgs.builder()
+ *                     .plugin(&#34;canal&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Importing EKS cluster to Rancher v2, using `eks_config_v2`. For Rancher v2.5.x and above.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -598,8 +662,8 @@ import javax.annotation.Nullable;
  *         var fooCloudCredential = new CloudCredential(&#34;fooCloudCredential&#34;, CloudCredentialArgs.builder()        
  *             .description(&#34;foo test&#34;)
  *             .amazonec2CredentialConfig(CloudCredentialAmazonec2CredentialConfigArgs.builder()
- *                 .accessKey(&#34;&lt;AWS_ACCESS_KEY&gt;&#34;)
- *                 .secretKey(&#34;&lt;AWS_SECRET_KEY&gt;&#34;)
+ *                 .accessKey(&#34;&lt;aws-access-key&gt;&#34;)
+ *                 .secretKey(&#34;&lt;aws-secret-key&gt;&#34;)
  *                 .build())
  *             .build());
  * 
@@ -607,8 +671,8 @@ import javax.annotation.Nullable;
  *             .description(&#34;Terraform EKS cluster&#34;)
  *             .eksConfigV2(ClusterEksConfigV2Args.builder()
  *                 .cloudCredentialId(fooCloudCredential.id())
- *                 .name(&#34;&lt;CLUSTER_NAME&gt;&#34;)
- *                 .region(&#34;&lt;EKS_REGION&gt;&#34;)
+ *                 .name(&#34;&lt;cluster-name&gt;&#34;)
+ *                 .region(&#34;&lt;eks-region&gt;&#34;)
  *                 .imported(true)
  *                 .build())
  *             .build());
@@ -649,8 +713,8 @@ import javax.annotation.Nullable;
  *         var fooCloudCredential = new CloudCredential(&#34;fooCloudCredential&#34;, CloudCredentialArgs.builder()        
  *             .description(&#34;foo test&#34;)
  *             .amazonec2CredentialConfig(CloudCredentialAmazonec2CredentialConfigArgs.builder()
- *                 .accessKey(&#34;&lt;AWS_ACCESS_KEY&gt;&#34;)
- *                 .secretKey(&#34;&lt;AWS_SECRET_KEY&gt;&#34;)
+ *                 .accessKey(&#34;&lt;aws-access-key&gt;&#34;)
+ *                 .secretKey(&#34;&lt;aws-secret-key&gt;&#34;)
  *                 .build())
  *             .build());
  * 
@@ -689,6 +753,8 @@ import javax.annotation.Nullable;
  * 
  * ### Creating EKS cluster from Rancher v2, using `eks_config_v2` and launch template. For Rancher v2.5.6 and above.
  * 
+ * Note: To use `launch_template` you must provide the ID (seen as `&lt;EC2_LAUNCH_TEMPLATE_ID&gt;`) to the template either as a static value. Or fetched via AWS data-source using one of: aws_ami first and provide the ID to that.
+ * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
@@ -718,8 +784,8 @@ import javax.annotation.Nullable;
  *         var fooCloudCredential = new CloudCredential(&#34;fooCloudCredential&#34;, CloudCredentialArgs.builder()        
  *             .description(&#34;foo test&#34;)
  *             .amazonec2CredentialConfig(CloudCredentialAmazonec2CredentialConfigArgs.builder()
- *                 .accessKey(&#34;&lt;AWS_ACCESS_KEY&gt;&#34;)
- *                 .secretKey(&#34;&lt;AWS_SECRET_KEY&gt;&#34;)
+ *                 .accessKey(&#34;&lt;aws-access-key&gt;&#34;)
+ *                 .secretKey(&#34;&lt;aws-secret-key&gt;&#34;)
  *                 .build())
  *             .build());
  * 
@@ -737,7 +803,7 @@ import javax.annotation.Nullable;
  *                     .maxSize(5)
  *                     .name(&#34;node_group1&#34;)
  *                     .launchTemplates(ClusterEksConfigV2NodeGroupLaunchTemplateArgs.builder()
- *                         .id(&#34;&lt;EC2_LAUNCH_TEMPLATE_ID&gt;&#34;)
+ *                         .id(&#34;&lt;ec2-launch-template-id&gt;&#34;)
  *                         .version(1)
  *                         .build())
  *                     .build())
@@ -781,9 +847,9 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var foo_aks = new CloudCredential(&#34;foo-aks&#34;, CloudCredentialArgs.builder()        
  *             .azureCredentialConfig(CloudCredentialAzureCredentialConfigArgs.builder()
- *                 .clientId(&#34;&lt;CLIENT_ID&gt;&#34;)
- *                 .clientSecret(&#34;&lt;CLIENT_SECRET&gt;&#34;)
- *                 .subscriptionId(&#34;&lt;SUBSCRIPTION_ID&gt;&#34;)
+ *                 .clientId(&#34;&lt;client-id&gt;&#34;)
+ *                 .clientSecret(&#34;&lt;client-secret&gt;&#34;)
+ *                 .subscriptionId(&#34;&lt;subscription-id&gt;&#34;)
  *                 .build())
  *             .build());
  * 
@@ -791,18 +857,18 @@ import javax.annotation.Nullable;
  *             .description(&#34;Terraform AKS cluster&#34;)
  *             .aksConfigV2(ClusterAksConfigV2Args.builder()
  *                 .cloudCredentialId(foo_aks.id())
- *                 .resourceGroup(&#34;&lt;RESOURCE_GROUP&gt;&#34;)
- *                 .resourceLocation(&#34;&lt;RESOURCE_LOCATION&gt;&#34;)
- *                 .dnsPrefix(&#34;&lt;DNS_PREFIX&gt;&#34;)
+ *                 .resourceGroup(&#34;&lt;resource-group&gt;&#34;)
+ *                 .resourceLocation(&#34;&lt;resource-location&gt;&#34;)
+ *                 .dnsPrefix(&#34;&lt;dns-prefix&gt;&#34;)
  *                 .kubernetesVersion(&#34;1.24.6&#34;)
- *                 .networkPlugin(&#34;&lt;NETWORK_PLUGIN&gt;&#34;)
+ *                 .networkPlugin(&#34;&lt;network-plugin&gt;&#34;)
  *                 .nodePools(                
  *                     ClusterAksConfigV2NodePoolArgs.builder()
  *                         .availabilityZones(                        
  *                             &#34;1&#34;,
  *                             &#34;2&#34;,
  *                             &#34;3&#34;)
- *                         .name(&#34;&lt;NODEPOOL_NAME_1&gt;&#34;)
+ *                         .name(&#34;&lt;nodepool-name-1&gt;&#34;)
  *                         .mode(&#34;System&#34;)
  *                         .count(1)
  *                         .orchestratorVersion(&#34;1.21.2&#34;)
@@ -814,7 +880,7 @@ import javax.annotation.Nullable;
  *                             &#34;1&#34;,
  *                             &#34;2&#34;,
  *                             &#34;3&#34;)
- *                         .name(&#34;&lt;NODEPOOL_NAME_2&gt;&#34;)
+ *                         .name(&#34;&lt;nodepool-name-2&gt;&#34;)
  *                         .count(1)
  *                         .mode(&#34;User&#34;)
  *                         .orchestratorVersion(&#34;1.21.2&#34;)
@@ -1029,14 +1095,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.clusterTemplateRevisionId);
     }
     /**
-     * Cluster default pod security admission configuration template name (string)
+     * The name of the pre-defined pod security admission configuration template to be applied to the cluster. Rancher admins (or those with the right permissions) can create, manage, and edit those templates. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates). The argument is available in Rancher v2.7.2 and above (string)
      * 
      */
     @Export(name="defaultPodSecurityAdmissionConfigurationTemplateName", refs={String.class}, tree="[0]")
     private Output<String> defaultPodSecurityAdmissionConfigurationTemplateName;
 
     /**
-     * @return Cluster default pod security admission configuration template name (string)
+     * @return The name of the pre-defined pod security admission configuration template to be applied to the cluster. Rancher admins (or those with the right permissions) can create, manage, and edit those templates. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates). The argument is available in Rancher v2.7.2 and above (string)
      * 
      */
     public Output<String> defaultPodSecurityAdmissionConfigurationTemplateName() {

@@ -202,14 +202,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cluster default pod security admission configuration template name (string)
+     * The name of the pre-defined pod security admission configuration template to be applied to the cluster. Rancher admins (or those with the right permissions) can create, manage, and edit those templates. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates). The argument is available in Rancher v2.7.2 and above (string)
      * 
      */
     @Import(name="defaultPodSecurityAdmissionConfigurationTemplateName")
     private @Nullable Output<String> defaultPodSecurityAdmissionConfigurationTemplateName;
 
     /**
-     * @return Cluster default pod security admission configuration template name (string)
+     * @return The name of the pre-defined pod security admission configuration template to be applied to the cluster. Rancher admins (or those with the right permissions) can create, manage, and edit those templates. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates). The argument is available in Rancher v2.7.2 and above (string)
      * 
      */
     public Optional<Output<String>> defaultPodSecurityAdmissionConfigurationTemplateName() {
@@ -865,7 +865,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultPodSecurityAdmissionConfigurationTemplateName Cluster default pod security admission configuration template name (string)
+         * @param defaultPodSecurityAdmissionConfigurationTemplateName The name of the pre-defined pod security admission configuration template to be applied to the cluster. Rancher admins (or those with the right permissions) can create, manage, and edit those templates. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates). The argument is available in Rancher v2.7.2 and above (string)
          * 
          * @return builder
          * 
@@ -876,7 +876,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultPodSecurityAdmissionConfigurationTemplateName Cluster default pod security admission configuration template name (string)
+         * @param defaultPodSecurityAdmissionConfigurationTemplateName The name of the pre-defined pod security admission configuration template to be applied to the cluster. Rancher admins (or those with the right permissions) can create, manage, and edit those templates. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates). The argument is available in Rancher v2.7.2 and above (string)
          * 
          * @return builder
          * 

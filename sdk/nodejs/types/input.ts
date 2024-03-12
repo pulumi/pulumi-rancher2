@@ -7896,6 +7896,48 @@ export interface NotifierWechatConfig {
     secret: pulumi.Input<string>;
 }
 
+export interface PodSecurityAdmissionConfigurationTemplateDefaults {
+    /**
+     * Pod Security Admission Configuration audit. This audits a pod in violation of privileged, baseline, or restricted policy (default: privileged)
+     */
+    audit?: pulumi.Input<string>;
+    /**
+     * Pod Security Admission Configuration audit version (default: latest)
+     */
+    auditVersion?: pulumi.Input<string>;
+    /**
+     * Pod Security Admission Configuration enforce. This rejects a pod in violation of privileged, baseline, or restricted policy (default: privileged)
+     */
+    enforce?: pulumi.Input<string>;
+    /**
+     * Pod Security Admission Configuration enforce version (default: latest)
+     */
+    enforceVersion?: pulumi.Input<string>;
+    /**
+     * Pod Security Admission Configuration warn. This warns the user about a pod in violation of privileged, baseline, or restricted policy (default: privileged)
+     */
+    warn?: pulumi.Input<string>;
+    /**
+     * Pod Security Admission Configuration warn version (default: latest)
+     */
+    warnVersion?: pulumi.Input<string>;
+}
+
+export interface PodSecurityAdmissionConfigurationTemplateExemptions {
+    /**
+     * Pod Security Admission Configuration namespace exemptions
+     */
+    namespaces?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Pod Security Admission Configuration runtime class exemptions
+     */
+    runtimeClasses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Pod Security Admission Configuration username exemptions
+     */
+    usernames?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface PodSecurityPolicyTemplateAllowedCsiDriver {
     /**
      * The name of the PodSecurityPolicyTemplate (string)

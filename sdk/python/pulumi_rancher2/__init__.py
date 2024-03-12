@@ -56,6 +56,7 @@ from .get_node_driver import *
 from .get_node_pool import *
 from .get_node_template import *
 from .get_notifier import *
+from .get_pod_security_admission_configuration_template import *
 from .get_pod_security_policy_template import *
 from .get_principal import *
 from .get_project import *
@@ -80,6 +81,7 @@ from .node_driver import *
 from .node_pool import *
 from .node_template import *
 from .notifier import *
+from .pod_security_admission_configuration_template import *
 from .pod_security_policy_template import *
 from .project import *
 from .project_alert_group import *
@@ -417,6 +419,14 @@ _utilities.register(
   "fqn": "pulumi_rancher2",
   "classes": {
    "rancher2:index/notifier:Notifier": "Notifier"
+  }
+ },
+ {
+  "pkg": "rancher2",
+  "mod": "index/podSecurityAdmissionConfigurationTemplate",
+  "fqn": "pulumi_rancher2",
+  "classes": {
+   "rancher2:index/podSecurityAdmissionConfigurationTemplate:PodSecurityAdmissionConfigurationTemplate": "PodSecurityAdmissionConfigurationTemplate"
   }
  },
  {

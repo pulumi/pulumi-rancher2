@@ -89,6 +89,13 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Override capitalization for backwards compatibility.
 			"rancher2_auth_config_activedirectory": {Tok: makeResource("AuthConfigActiveDirectory")},
+
+			"rancher2_pod_security_admission_configuration_template": {
+				Docs: &tfbridge.DocInfo{AllowMissing: true}},
+		},
+		DataSources: map[string]*tfbridge.DataSourceInfo{
+			"rancher2_pod_security_admission_configuration_template": {
+				Docs: &tfbridge.DocInfo{AllowMissing: true}},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions
