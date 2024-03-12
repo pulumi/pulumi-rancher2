@@ -13,6 +13,173 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetNotifierSmtpConfig struct {
+	// SMTP default recipient address
+	DefaultRecipient string `pulumi:"defaultRecipient"`
+	// SMTP host
+	Host string `pulumi:"host"`
+	// SMTP password
+	Password *string `pulumi:"password"`
+	// SMTP port
+	Port int `pulumi:"port"`
+	// SMTP sender
+	Sender string `pulumi:"sender"`
+	// SMTP TLS
+	Tls *bool `pulumi:"tls"`
+	// SMTP username
+	Username *string `pulumi:"username"`
+}
+
+// GetNotifierSmtpConfigInput is an input type that accepts GetNotifierSmtpConfigArgs and GetNotifierSmtpConfigOutput values.
+// You can construct a concrete instance of `GetNotifierSmtpConfigInput` via:
+//
+//	GetNotifierSmtpConfigArgs{...}
+type GetNotifierSmtpConfigInput interface {
+	pulumi.Input
+
+	ToGetNotifierSmtpConfigOutput() GetNotifierSmtpConfigOutput
+	ToGetNotifierSmtpConfigOutputWithContext(context.Context) GetNotifierSmtpConfigOutput
+}
+
+type GetNotifierSmtpConfigArgs struct {
+	// SMTP default recipient address
+	DefaultRecipient pulumi.StringInput `pulumi:"defaultRecipient"`
+	// SMTP host
+	Host pulumi.StringInput `pulumi:"host"`
+	// SMTP password
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// SMTP port
+	Port pulumi.IntInput `pulumi:"port"`
+	// SMTP sender
+	Sender pulumi.StringInput `pulumi:"sender"`
+	// SMTP TLS
+	Tls pulumi.BoolPtrInput `pulumi:"tls"`
+	// SMTP username
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GetNotifierSmtpConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotifierSmtpConfig)(nil)).Elem()
+}
+
+func (i GetNotifierSmtpConfigArgs) ToGetNotifierSmtpConfigOutput() GetNotifierSmtpConfigOutput {
+	return i.ToGetNotifierSmtpConfigOutputWithContext(context.Background())
+}
+
+func (i GetNotifierSmtpConfigArgs) ToGetNotifierSmtpConfigOutputWithContext(ctx context.Context) GetNotifierSmtpConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNotifierSmtpConfigOutput)
+}
+
+type GetNotifierSmtpConfigOutput struct{ *pulumi.OutputState }
+
+func (GetNotifierSmtpConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotifierSmtpConfig)(nil)).Elem()
+}
+
+func (o GetNotifierSmtpConfigOutput) ToGetNotifierSmtpConfigOutput() GetNotifierSmtpConfigOutput {
+	return o
+}
+
+func (o GetNotifierSmtpConfigOutput) ToGetNotifierSmtpConfigOutputWithContext(ctx context.Context) GetNotifierSmtpConfigOutput {
+	return o
+}
+
+// SMTP default recipient address
+func (o GetNotifierSmtpConfigOutput) DefaultRecipient() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotifierSmtpConfig) string { return v.DefaultRecipient }).(pulumi.StringOutput)
+}
+
+// SMTP host
+func (o GetNotifierSmtpConfigOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotifierSmtpConfig) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// SMTP password
+func (o GetNotifierSmtpConfigOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNotifierSmtpConfig) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// SMTP port
+func (o GetNotifierSmtpConfigOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNotifierSmtpConfig) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// SMTP sender
+func (o GetNotifierSmtpConfigOutput) Sender() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotifierSmtpConfig) string { return v.Sender }).(pulumi.StringOutput)
+}
+
+// SMTP TLS
+func (o GetNotifierSmtpConfigOutput) Tls() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetNotifierSmtpConfig) *bool { return v.Tls }).(pulumi.BoolPtrOutput)
+}
+
+// SMTP username
+func (o GetNotifierSmtpConfigOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNotifierSmtpConfig) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GetNotifierWebhookConfig struct {
+	// Webhook proxy URL
+	ProxyUrl *string `pulumi:"proxyUrl"`
+	// Webhook URL
+	Url string `pulumi:"url"`
+}
+
+// GetNotifierWebhookConfigInput is an input type that accepts GetNotifierWebhookConfigArgs and GetNotifierWebhookConfigOutput values.
+// You can construct a concrete instance of `GetNotifierWebhookConfigInput` via:
+//
+//	GetNotifierWebhookConfigArgs{...}
+type GetNotifierWebhookConfigInput interface {
+	pulumi.Input
+
+	ToGetNotifierWebhookConfigOutput() GetNotifierWebhookConfigOutput
+	ToGetNotifierWebhookConfigOutputWithContext(context.Context) GetNotifierWebhookConfigOutput
+}
+
+type GetNotifierWebhookConfigArgs struct {
+	// Webhook proxy URL
+	ProxyUrl pulumi.StringPtrInput `pulumi:"proxyUrl"`
+	// Webhook URL
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (GetNotifierWebhookConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotifierWebhookConfig)(nil)).Elem()
+}
+
+func (i GetNotifierWebhookConfigArgs) ToGetNotifierWebhookConfigOutput() GetNotifierWebhookConfigOutput {
+	return i.ToGetNotifierWebhookConfigOutputWithContext(context.Background())
+}
+
+func (i GetNotifierWebhookConfigArgs) ToGetNotifierWebhookConfigOutputWithContext(ctx context.Context) GetNotifierWebhookConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNotifierWebhookConfigOutput)
+}
+
+type GetNotifierWebhookConfigOutput struct{ *pulumi.OutputState }
+
+func (GetNotifierWebhookConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotifierWebhookConfig)(nil)).Elem()
+}
+
+func (o GetNotifierWebhookConfigOutput) ToGetNotifierWebhookConfigOutput() GetNotifierWebhookConfigOutput {
+	return o
+}
+
+func (o GetNotifierWebhookConfigOutput) ToGetNotifierWebhookConfigOutputWithContext(ctx context.Context) GetNotifierWebhookConfigOutput {
+	return o
+}
+
+// Webhook proxy URL
+func (o GetNotifierWebhookConfigOutput) ProxyUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNotifierWebhookConfig) *string { return v.ProxyUrl }).(pulumi.StringPtrOutput)
+}
+
+// Webhook URL
+func (o GetNotifierWebhookConfigOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotifierWebhookConfig) string { return v.Url }).(pulumi.StringOutput)
+}
+
 type GetNotifierWechatConfig struct {
 	// Wechat application agent ID
 	Agent string `pulumi:"agent"`
@@ -108,6 +275,173 @@ func (o GetNotifierWechatConfigOutput) RecipientType() pulumi.StringPtrOutput {
 // Wechat application secret
 func (o GetNotifierWechatConfigOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNotifierWechatConfig) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+type GetPodSecurityAdmissionConfigurationTemplateDefaults struct {
+	// Pod Security Admission Configuration audit. This audits a pod in violation of privileged, baseline, or restricted policy (default: privileged)
+	Audit *string `pulumi:"audit"`
+	// Pod Security Admission Configuration audit version (default: latest)
+	AuditVersion *string `pulumi:"auditVersion"`
+	// Pod Security Admission Configuration enforce. This rejects a pod in violation of privileged, baseline, or restricted policy (default: privileged)
+	Enforce *string `pulumi:"enforce"`
+	// Pod Security Admission Configuration enforce version (default: latest)
+	EnforceVersion *string `pulumi:"enforceVersion"`
+	// Pod Security Admission Configuration warn. This warns the user about a pod in violation of privileged, baseline, or restricted policy (default: privileged)
+	Warn *string `pulumi:"warn"`
+	// Pod Security Admission Configuration warn version (default: latest)
+	WarnVersion *string `pulumi:"warnVersion"`
+}
+
+// GetPodSecurityAdmissionConfigurationTemplateDefaultsInput is an input type that accepts GetPodSecurityAdmissionConfigurationTemplateDefaultsArgs and GetPodSecurityAdmissionConfigurationTemplateDefaultsOutput values.
+// You can construct a concrete instance of `GetPodSecurityAdmissionConfigurationTemplateDefaultsInput` via:
+//
+//	GetPodSecurityAdmissionConfigurationTemplateDefaultsArgs{...}
+type GetPodSecurityAdmissionConfigurationTemplateDefaultsInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityAdmissionConfigurationTemplateDefaultsOutput() GetPodSecurityAdmissionConfigurationTemplateDefaultsOutput
+	ToGetPodSecurityAdmissionConfigurationTemplateDefaultsOutputWithContext(context.Context) GetPodSecurityAdmissionConfigurationTemplateDefaultsOutput
+}
+
+type GetPodSecurityAdmissionConfigurationTemplateDefaultsArgs struct {
+	// Pod Security Admission Configuration audit. This audits a pod in violation of privileged, baseline, or restricted policy (default: privileged)
+	Audit pulumi.StringPtrInput `pulumi:"audit"`
+	// Pod Security Admission Configuration audit version (default: latest)
+	AuditVersion pulumi.StringPtrInput `pulumi:"auditVersion"`
+	// Pod Security Admission Configuration enforce. This rejects a pod in violation of privileged, baseline, or restricted policy (default: privileged)
+	Enforce pulumi.StringPtrInput `pulumi:"enforce"`
+	// Pod Security Admission Configuration enforce version (default: latest)
+	EnforceVersion pulumi.StringPtrInput `pulumi:"enforceVersion"`
+	// Pod Security Admission Configuration warn. This warns the user about a pod in violation of privileged, baseline, or restricted policy (default: privileged)
+	Warn pulumi.StringPtrInput `pulumi:"warn"`
+	// Pod Security Admission Configuration warn version (default: latest)
+	WarnVersion pulumi.StringPtrInput `pulumi:"warnVersion"`
+}
+
+func (GetPodSecurityAdmissionConfigurationTemplateDefaultsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityAdmissionConfigurationTemplateDefaults)(nil)).Elem()
+}
+
+func (i GetPodSecurityAdmissionConfigurationTemplateDefaultsArgs) ToGetPodSecurityAdmissionConfigurationTemplateDefaultsOutput() GetPodSecurityAdmissionConfigurationTemplateDefaultsOutput {
+	return i.ToGetPodSecurityAdmissionConfigurationTemplateDefaultsOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityAdmissionConfigurationTemplateDefaultsArgs) ToGetPodSecurityAdmissionConfigurationTemplateDefaultsOutputWithContext(ctx context.Context) GetPodSecurityAdmissionConfigurationTemplateDefaultsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityAdmissionConfigurationTemplateDefaultsOutput)
+}
+
+type GetPodSecurityAdmissionConfigurationTemplateDefaultsOutput struct{ *pulumi.OutputState }
+
+func (GetPodSecurityAdmissionConfigurationTemplateDefaultsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityAdmissionConfigurationTemplateDefaults)(nil)).Elem()
+}
+
+func (o GetPodSecurityAdmissionConfigurationTemplateDefaultsOutput) ToGetPodSecurityAdmissionConfigurationTemplateDefaultsOutput() GetPodSecurityAdmissionConfigurationTemplateDefaultsOutput {
+	return o
+}
+
+func (o GetPodSecurityAdmissionConfigurationTemplateDefaultsOutput) ToGetPodSecurityAdmissionConfigurationTemplateDefaultsOutputWithContext(ctx context.Context) GetPodSecurityAdmissionConfigurationTemplateDefaultsOutput {
+	return o
+}
+
+// Pod Security Admission Configuration audit. This audits a pod in violation of privileged, baseline, or restricted policy (default: privileged)
+func (o GetPodSecurityAdmissionConfigurationTemplateDefaultsOutput) Audit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPodSecurityAdmissionConfigurationTemplateDefaults) *string { return v.Audit }).(pulumi.StringPtrOutput)
+}
+
+// Pod Security Admission Configuration audit version (default: latest)
+func (o GetPodSecurityAdmissionConfigurationTemplateDefaultsOutput) AuditVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPodSecurityAdmissionConfigurationTemplateDefaults) *string { return v.AuditVersion }).(pulumi.StringPtrOutput)
+}
+
+// Pod Security Admission Configuration enforce. This rejects a pod in violation of privileged, baseline, or restricted policy (default: privileged)
+func (o GetPodSecurityAdmissionConfigurationTemplateDefaultsOutput) Enforce() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPodSecurityAdmissionConfigurationTemplateDefaults) *string { return v.Enforce }).(pulumi.StringPtrOutput)
+}
+
+// Pod Security Admission Configuration enforce version (default: latest)
+func (o GetPodSecurityAdmissionConfigurationTemplateDefaultsOutput) EnforceVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPodSecurityAdmissionConfigurationTemplateDefaults) *string { return v.EnforceVersion }).(pulumi.StringPtrOutput)
+}
+
+// Pod Security Admission Configuration warn. This warns the user about a pod in violation of privileged, baseline, or restricted policy (default: privileged)
+func (o GetPodSecurityAdmissionConfigurationTemplateDefaultsOutput) Warn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPodSecurityAdmissionConfigurationTemplateDefaults) *string { return v.Warn }).(pulumi.StringPtrOutput)
+}
+
+// Pod Security Admission Configuration warn version (default: latest)
+func (o GetPodSecurityAdmissionConfigurationTemplateDefaultsOutput) WarnVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPodSecurityAdmissionConfigurationTemplateDefaults) *string { return v.WarnVersion }).(pulumi.StringPtrOutput)
+}
+
+type GetPodSecurityAdmissionConfigurationTemplateExemptions struct {
+	// Pod Security Admission Configuration namespace exemptions
+	Namespaces []string `pulumi:"namespaces"`
+	// Pod Security Admission Configuration runtime class exemptions
+	RuntimeClasses []string `pulumi:"runtimeClasses"`
+	// Pod Security Admission Configuration username exemptions
+	Usernames []string `pulumi:"usernames"`
+}
+
+// GetPodSecurityAdmissionConfigurationTemplateExemptionsInput is an input type that accepts GetPodSecurityAdmissionConfigurationTemplateExemptionsArgs and GetPodSecurityAdmissionConfigurationTemplateExemptionsOutput values.
+// You can construct a concrete instance of `GetPodSecurityAdmissionConfigurationTemplateExemptionsInput` via:
+//
+//	GetPodSecurityAdmissionConfigurationTemplateExemptionsArgs{...}
+type GetPodSecurityAdmissionConfigurationTemplateExemptionsInput interface {
+	pulumi.Input
+
+	ToGetPodSecurityAdmissionConfigurationTemplateExemptionsOutput() GetPodSecurityAdmissionConfigurationTemplateExemptionsOutput
+	ToGetPodSecurityAdmissionConfigurationTemplateExemptionsOutputWithContext(context.Context) GetPodSecurityAdmissionConfigurationTemplateExemptionsOutput
+}
+
+type GetPodSecurityAdmissionConfigurationTemplateExemptionsArgs struct {
+	// Pod Security Admission Configuration namespace exemptions
+	Namespaces pulumi.StringArrayInput `pulumi:"namespaces"`
+	// Pod Security Admission Configuration runtime class exemptions
+	RuntimeClasses pulumi.StringArrayInput `pulumi:"runtimeClasses"`
+	// Pod Security Admission Configuration username exemptions
+	Usernames pulumi.StringArrayInput `pulumi:"usernames"`
+}
+
+func (GetPodSecurityAdmissionConfigurationTemplateExemptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityAdmissionConfigurationTemplateExemptions)(nil)).Elem()
+}
+
+func (i GetPodSecurityAdmissionConfigurationTemplateExemptionsArgs) ToGetPodSecurityAdmissionConfigurationTemplateExemptionsOutput() GetPodSecurityAdmissionConfigurationTemplateExemptionsOutput {
+	return i.ToGetPodSecurityAdmissionConfigurationTemplateExemptionsOutputWithContext(context.Background())
+}
+
+func (i GetPodSecurityAdmissionConfigurationTemplateExemptionsArgs) ToGetPodSecurityAdmissionConfigurationTemplateExemptionsOutputWithContext(ctx context.Context) GetPodSecurityAdmissionConfigurationTemplateExemptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPodSecurityAdmissionConfigurationTemplateExemptionsOutput)
+}
+
+type GetPodSecurityAdmissionConfigurationTemplateExemptionsOutput struct{ *pulumi.OutputState }
+
+func (GetPodSecurityAdmissionConfigurationTemplateExemptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPodSecurityAdmissionConfigurationTemplateExemptions)(nil)).Elem()
+}
+
+func (o GetPodSecurityAdmissionConfigurationTemplateExemptionsOutput) ToGetPodSecurityAdmissionConfigurationTemplateExemptionsOutput() GetPodSecurityAdmissionConfigurationTemplateExemptionsOutput {
+	return o
+}
+
+func (o GetPodSecurityAdmissionConfigurationTemplateExemptionsOutput) ToGetPodSecurityAdmissionConfigurationTemplateExemptionsOutputWithContext(ctx context.Context) GetPodSecurityAdmissionConfigurationTemplateExemptionsOutput {
+	return o
+}
+
+// Pod Security Admission Configuration namespace exemptions
+func (o GetPodSecurityAdmissionConfigurationTemplateExemptionsOutput) Namespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPodSecurityAdmissionConfigurationTemplateExemptions) []string { return v.Namespaces }).(pulumi.StringArrayOutput)
+}
+
+// Pod Security Admission Configuration runtime class exemptions
+func (o GetPodSecurityAdmissionConfigurationTemplateExemptionsOutput) RuntimeClasses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPodSecurityAdmissionConfigurationTemplateExemptions) []string { return v.RuntimeClasses }).(pulumi.StringArrayOutput)
+}
+
+// Pod Security Admission Configuration username exemptions
+func (o GetPodSecurityAdmissionConfigurationTemplateExemptionsOutput) Usernames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPodSecurityAdmissionConfigurationTemplateExemptions) []string { return v.Usernames }).(pulumi.StringArrayOutput)
 }
 
 type GetPodSecurityPolicyTemplateAllowedCsiDriver struct {
@@ -3047,7 +3381,11 @@ func (o GetRoleTemplateRuleArrayOutput) Index(i pulumi.IntInput) GetRoleTemplate
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNotifierSmtpConfigInput)(nil)).Elem(), GetNotifierSmtpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNotifierWebhookConfigInput)(nil)).Elem(), GetNotifierWebhookConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNotifierWechatConfigInput)(nil)).Elem(), GetNotifierWechatConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPodSecurityAdmissionConfigurationTemplateDefaultsInput)(nil)).Elem(), GetPodSecurityAdmissionConfigurationTemplateDefaultsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPodSecurityAdmissionConfigurationTemplateExemptionsInput)(nil)).Elem(), GetPodSecurityAdmissionConfigurationTemplateExemptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPodSecurityPolicyTemplateAllowedCsiDriverInput)(nil)).Elem(), GetPodSecurityPolicyTemplateAllowedCsiDriverArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPodSecurityPolicyTemplateAllowedCsiDriverArrayInput)(nil)).Elem(), GetPodSecurityPolicyTemplateAllowedCsiDriverArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPodSecurityPolicyTemplateAllowedFlexVolumeInput)(nil)).Elem(), GetPodSecurityPolicyTemplateAllowedFlexVolumeArgs{})
@@ -3091,7 +3429,11 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegistryRegistryArrayInput)(nil)).Elem(), GetRegistryRegistryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRoleTemplateRuleInput)(nil)).Elem(), GetRoleTemplateRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRoleTemplateRuleArrayInput)(nil)).Elem(), GetRoleTemplateRuleArray{})
+	pulumi.RegisterOutputType(GetNotifierSmtpConfigOutput{})
+	pulumi.RegisterOutputType(GetNotifierWebhookConfigOutput{})
 	pulumi.RegisterOutputType(GetNotifierWechatConfigOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityAdmissionConfigurationTemplateDefaultsOutput{})
+	pulumi.RegisterOutputType(GetPodSecurityAdmissionConfigurationTemplateExemptionsOutput{})
 	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateAllowedCsiDriverOutput{})
 	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateAllowedCsiDriverArrayOutput{})
 	pulumi.RegisterOutputType(GetPodSecurityPolicyTemplateAllowedFlexVolumeOutput{})

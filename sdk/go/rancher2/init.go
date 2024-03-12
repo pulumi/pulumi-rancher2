@@ -99,6 +99,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NodeTemplate{}
 	case "rancher2:index/notifier:Notifier":
 		r = &Notifier{}
+	case "rancher2:index/podSecurityAdmissionConfigurationTemplate:PodSecurityAdmissionConfigurationTemplate":
+		r = &PodSecurityAdmissionConfigurationTemplate{}
 	case "rancher2:index/podSecurityPolicyTemplate:PodSecurityPolicyTemplate":
 		r = &PodSecurityPolicyTemplate{}
 	case "rancher2:index/project:Project":
@@ -349,6 +351,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"rancher2",
 		"index/notifier",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rancher2",
+		"index/podSecurityAdmissionConfigurationTemplate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

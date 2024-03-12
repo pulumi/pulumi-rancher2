@@ -268,6 +268,8 @@ __all__ = [
     'NotifierSmtpConfigArgs',
     'NotifierWebhookConfigArgs',
     'NotifierWechatConfigArgs',
+    'PodSecurityAdmissionConfigurationTemplateDefaultsArgs',
+    'PodSecurityAdmissionConfigurationTemplateExemptionsArgs',
     'PodSecurityPolicyTemplateAllowedCsiDriverArgs',
     'PodSecurityPolicyTemplateAllowedFlexVolumeArgs',
     'PodSecurityPolicyTemplateAllowedHostPathArgs',
@@ -31444,6 +31446,164 @@ class NotifierWechatConfigArgs:
     @recipient_type.setter
     def recipient_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "recipient_type", value)
+
+
+@pulumi.input_type
+class PodSecurityAdmissionConfigurationTemplateDefaultsArgs:
+    def __init__(__self__, *,
+                 audit: Optional[pulumi.Input[str]] = None,
+                 audit_version: Optional[pulumi.Input[str]] = None,
+                 enforce: Optional[pulumi.Input[str]] = None,
+                 enforce_version: Optional[pulumi.Input[str]] = None,
+                 warn: Optional[pulumi.Input[str]] = None,
+                 warn_version: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] audit: Pod Security Admission Configuration audit. This audits a pod in violation of privileged, baseline, or restricted policy (default: privileged)
+        :param pulumi.Input[str] audit_version: Pod Security Admission Configuration audit version (default: latest)
+        :param pulumi.Input[str] enforce: Pod Security Admission Configuration enforce. This rejects a pod in violation of privileged, baseline, or restricted policy (default: privileged)
+        :param pulumi.Input[str] enforce_version: Pod Security Admission Configuration enforce version (default: latest)
+        :param pulumi.Input[str] warn: Pod Security Admission Configuration warn. This warns the user about a pod in violation of privileged, baseline, or restricted policy (default: privileged)
+        :param pulumi.Input[str] warn_version: Pod Security Admission Configuration warn version (default: latest)
+        """
+        if audit is not None:
+            pulumi.set(__self__, "audit", audit)
+        if audit_version is not None:
+            pulumi.set(__self__, "audit_version", audit_version)
+        if enforce is not None:
+            pulumi.set(__self__, "enforce", enforce)
+        if enforce_version is not None:
+            pulumi.set(__self__, "enforce_version", enforce_version)
+        if warn is not None:
+            pulumi.set(__self__, "warn", warn)
+        if warn_version is not None:
+            pulumi.set(__self__, "warn_version", warn_version)
+
+    @property
+    @pulumi.getter
+    def audit(self) -> Optional[pulumi.Input[str]]:
+        """
+        Pod Security Admission Configuration audit. This audits a pod in violation of privileged, baseline, or restricted policy (default: privileged)
+        """
+        return pulumi.get(self, "audit")
+
+    @audit.setter
+    def audit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "audit", value)
+
+    @property
+    @pulumi.getter(name="auditVersion")
+    def audit_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Pod Security Admission Configuration audit version (default: latest)
+        """
+        return pulumi.get(self, "audit_version")
+
+    @audit_version.setter
+    def audit_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "audit_version", value)
+
+    @property
+    @pulumi.getter
+    def enforce(self) -> Optional[pulumi.Input[str]]:
+        """
+        Pod Security Admission Configuration enforce. This rejects a pod in violation of privileged, baseline, or restricted policy (default: privileged)
+        """
+        return pulumi.get(self, "enforce")
+
+    @enforce.setter
+    def enforce(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enforce", value)
+
+    @property
+    @pulumi.getter(name="enforceVersion")
+    def enforce_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Pod Security Admission Configuration enforce version (default: latest)
+        """
+        return pulumi.get(self, "enforce_version")
+
+    @enforce_version.setter
+    def enforce_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enforce_version", value)
+
+    @property
+    @pulumi.getter
+    def warn(self) -> Optional[pulumi.Input[str]]:
+        """
+        Pod Security Admission Configuration warn. This warns the user about a pod in violation of privileged, baseline, or restricted policy (default: privileged)
+        """
+        return pulumi.get(self, "warn")
+
+    @warn.setter
+    def warn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "warn", value)
+
+    @property
+    @pulumi.getter(name="warnVersion")
+    def warn_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Pod Security Admission Configuration warn version (default: latest)
+        """
+        return pulumi.get(self, "warn_version")
+
+    @warn_version.setter
+    def warn_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "warn_version", value)
+
+
+@pulumi.input_type
+class PodSecurityAdmissionConfigurationTemplateExemptionsArgs:
+    def __init__(__self__, *,
+                 namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 runtime_classes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 usernames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] namespaces: Pod Security Admission Configuration namespace exemptions
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] runtime_classes: Pod Security Admission Configuration runtime class exemptions
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] usernames: Pod Security Admission Configuration username exemptions
+        """
+        if namespaces is not None:
+            pulumi.set(__self__, "namespaces", namespaces)
+        if runtime_classes is not None:
+            pulumi.set(__self__, "runtime_classes", runtime_classes)
+        if usernames is not None:
+            pulumi.set(__self__, "usernames", usernames)
+
+    @property
+    @pulumi.getter
+    def namespaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Pod Security Admission Configuration namespace exemptions
+        """
+        return pulumi.get(self, "namespaces")
+
+    @namespaces.setter
+    def namespaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "namespaces", value)
+
+    @property
+    @pulumi.getter(name="runtimeClasses")
+    def runtime_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Pod Security Admission Configuration runtime class exemptions
+        """
+        return pulumi.get(self, "runtime_classes")
+
+    @runtime_classes.setter
+    def runtime_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "runtime_classes", value)
+
+    @property
+    @pulumi.getter
+    def usernames(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Pod Security Admission Configuration username exemptions
+        """
+        return pulumi.get(self, "usernames")
+
+    @usernames.setter
+    def usernames(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "usernames", value)
 
 
 @pulumi.input_type
