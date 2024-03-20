@@ -40,9 +40,9 @@ import (
 //			// Create a new Cloud Credential for an imported Harvester cluster
 //			_, err = rancher2.NewCloudCredential(ctx, "foo-harvesterCloudCredential", &rancher2.CloudCredentialArgs{
 //				HarvesterCredentialConfig: &rancher2.CloudCredentialHarvesterCredentialConfigArgs{
-//					ClusterId:         *pulumi.String(foo_harvesterClusterV2.ClusterV1Id),
+//					ClusterId:         pulumi.String(foo_harvesterClusterV2.ClusterV1Id),
 //					ClusterType:       pulumi.String("imported"),
-//					KubeconfigContent: *pulumi.String(foo_harvesterClusterV2.KubeConfig),
+//					KubeconfigContent: pulumi.String(foo_harvesterClusterV2.KubeConfig),
 //				},
 //			})
 //			if err != nil {
