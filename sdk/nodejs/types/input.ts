@@ -6219,7 +6219,7 @@ export interface MachineConfigV2HarvesterConfig {
     /**
      * Use `diskInfo` instead
      *
-     * @deprecated Use disk_info instead
+     * @deprecated Use diskInfo instead
      */
     diskBus?: pulumi.Input<string>;
     /**
@@ -6229,13 +6229,13 @@ export interface MachineConfigV2HarvesterConfig {
     /**
      * vSphere size of disk for docker VM (in MB). Default `20480` (string)
      *
-     * @deprecated Use disk_info instead
+     * @deprecated Use diskInfo instead
      */
     diskSize?: pulumi.Input<string>;
     /**
      * OpenStack image name to use for the instance. Conflicts with `imageId` (string)
      *
-     * @deprecated Use disk_info instead
+     * @deprecated Use diskInfo instead
      */
     imageName?: pulumi.Input<string>;
     /**
@@ -6253,13 +6253,13 @@ export interface MachineConfigV2HarvesterConfig {
     /**
      * Use `networkInfo` instead
      *
-     * @deprecated Use network_info instead
+     * @deprecated Use networkInfo instead
      */
     networkModel?: pulumi.Input<string>;
     /**
      * Use `networkInfo` instead
      *
-     * @deprecated Use network_info instead
+     * @deprecated Use networkInfo instead
      */
     networkName?: pulumi.Input<string>;
     /**
@@ -7163,7 +7163,7 @@ export interface NodeTemplateHarvesterConfig {
     /**
      * Use `diskInfo` instead
      *
-     * @deprecated Use disk_info instead
+     * @deprecated Use diskInfo instead
      */
     diskBus?: pulumi.Input<string>;
     /**
@@ -7173,13 +7173,13 @@ export interface NodeTemplateHarvesterConfig {
     /**
      * vSphere size of disk for docker VM (in MB). Default `20480` (string)
      *
-     * @deprecated Use disk_info instead
+     * @deprecated Use diskInfo instead
      */
     diskSize?: pulumi.Input<string>;
     /**
      * OpenStack image name to use for the instance. Conflicts with `imageId` (string)
      *
-     * @deprecated Use disk_info instead
+     * @deprecated Use diskInfo instead
      */
     imageName?: pulumi.Input<string>;
     /**
@@ -7197,13 +7197,13 @@ export interface NodeTemplateHarvesterConfig {
     /**
      * Use `networkInfo` instead
      *
-     * @deprecated Use network_info instead
+     * @deprecated Use networkInfo instead
      */
     networkModel?: pulumi.Input<string>;
     /**
      * Opennebula network to connect the machine to. Conflicts with `networkId` (string)
      *
-     * @deprecated Use network_info instead
+     * @deprecated Use networkInfo instead
      */
     networkName?: pulumi.Input<string>;
     /**
