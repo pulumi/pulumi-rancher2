@@ -707,7 +707,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.
      *
-     * @deprecated Deploy istio using rancher2_app resource instead
+     * @deprecated Deploy istio using rancher2.App resource instead
      */
     public /*out*/ readonly enableClusterIstio!: pulumi.Output<boolean>;
     /**
@@ -983,7 +983,7 @@ export interface ClusterState {
     /**
      * Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.
      *
-     * @deprecated Deploy istio using rancher2_app resource instead
+     * @deprecated Deploy istio using rancher2.App resource instead
      */
     enableClusterIstio?: pulumi.Input<boolean>;
     /**
