@@ -25854,7 +25854,7 @@
                 "enableClusterIstio": {
                     "type": "boolean",
                     "description": "Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.\n",
-                    "deprecationMessage": "Deploy istio using rancher2.App resource instead"
+                    "deprecationMessage": "Deploy istio using rancher2_app resource instead"
                 },
                 "enableClusterMonitoring": {
                     "type": "boolean",
@@ -26229,7 +26229,7 @@
                     "enableClusterIstio": {
                         "type": "boolean",
                         "description": "Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.\n",
-                        "deprecationMessage": "Deploy istio using rancher2.App resource instead"
+                        "deprecationMessage": "Deploy istio using rancher2_app resource instead"
                     },
                     "enableClusterMonitoring": {
                         "type": "boolean",
