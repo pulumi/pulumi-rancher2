@@ -882,7 +882,7 @@ type Cluster struct {
 	EnableClusterAlerting pulumi.BoolOutput `pulumi:"enableClusterAlerting"`
 	// Deploy istio on `system` project and `istio-system` namespace, using App resource instead. See above example.
 	//
-	// Deprecated: Deploy istio using App resource instead
+	// Deprecated: Deploy istio using rancher2_app resource instead
 	EnableClusterIstio pulumi.BoolOutput `pulumi:"enableClusterIstio"`
 	// Enable built-in cluster monitoring (bool)
 	EnableClusterMonitoring pulumi.BoolOutput `pulumi:"enableClusterMonitoring"`
@@ -1003,7 +1003,7 @@ type clusterState struct {
 	EnableClusterAlerting *bool `pulumi:"enableClusterAlerting"`
 	// Deploy istio on `system` project and `istio-system` namespace, using App resource instead. See above example.
 	//
-	// Deprecated: Deploy istio using App resource instead
+	// Deprecated: Deploy istio using rancher2_app resource instead
 	EnableClusterIstio *bool `pulumi:"enableClusterIstio"`
 	// Enable built-in cluster monitoring (bool)
 	EnableClusterMonitoring *bool `pulumi:"enableClusterMonitoring"`
@@ -1090,7 +1090,7 @@ type ClusterState struct {
 	EnableClusterAlerting pulumi.BoolPtrInput
 	// Deploy istio on `system` project and `istio-system` namespace, using App resource instead. See above example.
 	//
-	// Deprecated: Deploy istio using App resource instead
+	// Deprecated: Deploy istio using rancher2_app resource instead
 	EnableClusterIstio pulumi.BoolPtrInput
 	// Enable built-in cluster monitoring (bool)
 	EnableClusterMonitoring pulumi.BoolPtrInput
@@ -1484,7 +1484,7 @@ func (o ClusterOutput) EnableClusterAlerting() pulumi.BoolOutput {
 
 // Deploy istio on `system` project and `istio-system` namespace, using App resource instead. See above example.
 //
-// Deprecated: Deploy istio using App resource instead
+// Deprecated: Deploy istio using rancher2_app resource instead
 func (o ClusterOutput) EnableClusterIstio() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolOutput { return v.EnableClusterIstio }).(pulumi.BoolOutput)
 }
