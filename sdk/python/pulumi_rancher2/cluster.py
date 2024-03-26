@@ -702,8 +702,8 @@ class _ClusterState:
         if enable_cluster_alerting is not None:
             pulumi.set(__self__, "enable_cluster_alerting", enable_cluster_alerting)
         if enable_cluster_istio is not None:
-            warnings.warn("""Deploy istio using App resource instead""", DeprecationWarning)
-            pulumi.log.warn("""enable_cluster_istio is deprecated: Deploy istio using App resource instead""")
+            warnings.warn("""Deploy istio using rancher2_app resource instead""", DeprecationWarning)
+            pulumi.log.warn("""enable_cluster_istio is deprecated: Deploy istio using rancher2_app resource instead""")
         if enable_cluster_istio is not None:
             pulumi.set(__self__, "enable_cluster_istio", enable_cluster_istio)
         if enable_cluster_monitoring is not None:
@@ -1033,8 +1033,8 @@ class _ClusterState:
         """
         Deploy istio on `system` project and `istio-system` namespace, using App resource instead. See above example.
         """
-        warnings.warn("""Deploy istio using App resource instead""", DeprecationWarning)
-        pulumi.log.warn("""enable_cluster_istio is deprecated: Deploy istio using App resource instead""")
+        warnings.warn("""Deploy istio using rancher2_app resource instead""", DeprecationWarning)
+        pulumi.log.warn("""enable_cluster_istio is deprecated: Deploy istio using rancher2_app resource instead""")
 
         return pulumi.get(self, "enable_cluster_istio")
 
@@ -2870,8 +2870,8 @@ class Cluster(pulumi.CustomResource):
         """
         Deploy istio on `system` project and `istio-system` namespace, using App resource instead. See above example.
         """
-        warnings.warn("""Deploy istio using App resource instead""", DeprecationWarning)
-        pulumi.log.warn("""enable_cluster_istio is deprecated: Deploy istio using App resource instead""")
+        warnings.warn("""Deploy istio using rancher2_app resource instead""", DeprecationWarning)
+        pulumi.log.warn("""enable_cluster_istio is deprecated: Deploy istio using rancher2_app resource instead""")
 
         return pulumi.get(self, "enable_cluster_istio")
 

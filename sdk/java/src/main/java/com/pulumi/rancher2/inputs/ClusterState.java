@@ -401,10 +401,10 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      * Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.
      * 
      * @deprecated
-     * Deploy istio using rancher2.App resource instead
+     * Deploy istio using rancher2_app resource instead
      * 
      */
-    @Deprecated /* Deploy istio using rancher2.App resource instead */
+    @Deprecated /* Deploy istio using rancher2_app resource instead */
     @Import(name="enableClusterIstio")
     private @Nullable Output<Boolean> enableClusterIstio;
 
@@ -412,10 +412,10 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      * @return Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.
      * 
      * @deprecated
-     * Deploy istio using rancher2.App resource instead
+     * Deploy istio using rancher2_app resource instead
      * 
      */
-    @Deprecated /* Deploy istio using rancher2.App resource instead */
+    @Deprecated /* Deploy istio using rancher2_app resource instead */
     public Optional<Output<Boolean>> enableClusterIstio() {
         return Optional.ofNullable(this.enableClusterIstio);
     }
@@ -1264,10 +1264,10 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Deploy istio using rancher2.App resource instead
+         * Deploy istio using rancher2_app resource instead
          * 
          */
-        @Deprecated /* Deploy istio using rancher2.App resource instead */
+        @Deprecated /* Deploy istio using rancher2_app resource instead */
         public Builder enableClusterIstio(@Nullable Output<Boolean> enableClusterIstio) {
             $.enableClusterIstio = enableClusterIstio;
             return this;
@@ -1279,10 +1279,10 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Deploy istio using rancher2.App resource instead
+         * Deploy istio using rancher2_app resource instead
          * 
          */
-        @Deprecated /* Deploy istio using rancher2.App resource instead */
+        @Deprecated /* Deploy istio using rancher2_app resource instead */
         public Builder enableClusterIstio(Boolean enableClusterIstio) {
             return enableClusterIstio(Output.of(enableClusterIstio));
         }
