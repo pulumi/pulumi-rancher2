@@ -44,6 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new Rancher2 App V2 using
  *         var foo = new AppV2(&#34;foo&#34;, AppV2Args.builder()        
  *             .clusterId(&#34;&lt;CLUSTER_ID&gt;&#34;)
  *             .namespace(&#34;cattle-monitoring-system&#34;)

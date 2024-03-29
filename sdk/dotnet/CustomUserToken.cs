@@ -53,9 +53,9 @@ namespace Pulumi.Rancher2
     ///         Ttl = 0,
     ///     }, new CustomResourceOptions
     ///     {
-    ///         DependsOn = new[]
+    ///         DependsOn =
     ///         {
-    ///             foo_login,
+    ///             foo_login, 
     ///         },
     ///     });
     /// 

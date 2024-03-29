@@ -45,15 +45,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new Rancher2 Global Catalog
  *         var foo_global = new Catalog(&#34;foo-global&#34;, CatalogArgs.builder()        
  *             .url(&#34;https://&lt;CATALOG_URL&gt;&#34;)
  *             .build());
  * 
+ *         // Create a new Rancher2 Cluster Catalog
  *         var foo_cluster = new Catalog(&#34;foo-cluster&#34;, CatalogArgs.builder()        
  *             .scope(&#34;cluster&#34;)
  *             .url(&#34;https://&lt;CATALOG_URL&gt;&#34;)
  *             .build());
  * 
+ *         // Create a new Rancher2 Project Catalog
  *         var foo_project = new Catalog(&#34;foo-project&#34;, CatalogArgs.builder()        
  *             .scope(&#34;project&#34;)
  *             .url(&#34;https://&lt;CATALOG_URL&gt;&#34;)

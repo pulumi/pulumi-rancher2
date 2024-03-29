@@ -42,6 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new rancher2 Project Role Template Binding
  *         var foo = new ProjectRoleTemplateBinding(&#34;foo&#34;, ProjectRoleTemplateBindingArgs.builder()        
  *             .projectId(&#34;&lt;project_id&gt;&#34;)
  *             .roleTemplateId(&#34;&lt;role_template_id&gt;&#34;)

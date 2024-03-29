@@ -49,6 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new rancher2 cluster Role Template
  *         var foo = new RoleTemplate(&#34;foo&#34;, RoleTemplateArgs.builder()        
  *             .context(&#34;cluster&#34;)
  *             .defaultRole(true)
@@ -88,6 +89,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new rancher2 project Role Template
  *         var foo = new RoleTemplate(&#34;foo&#34;, RoleTemplateArgs.builder()        
  *             .context(&#34;project&#34;)
  *             .defaultRole(true)

@@ -51,6 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new rancher2 Project
  *         var foo = new Project(&#34;foo&#34;, ProjectArgs.builder()        
  *             .clusterId(&#34;&lt;CLUSTER_ID&gt;&#34;)
  *             .containerResourceLimit(ProjectContainerResourceLimitArgs.builder()
@@ -105,6 +106,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new rancher2 Project enabling and customizing monitoring
  *         var foo = new Project(&#34;foo&#34;, ProjectArgs.builder()        
  *             .clusterId(&#34;&lt;CLUSTER_ID&gt;&#34;)
  *             .containerResourceLimit(ProjectContainerResourceLimitArgs.builder()

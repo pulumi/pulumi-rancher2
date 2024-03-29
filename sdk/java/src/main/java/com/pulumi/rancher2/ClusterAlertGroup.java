@@ -46,6 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new Rancher2 Cluster Alert Group
  *         var foo = new ClusterAlertGroup(&#34;foo&#34;, ClusterAlertGroupArgs.builder()        
  *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
  *             .description(&#34;Terraform cluster alert group&#34;)

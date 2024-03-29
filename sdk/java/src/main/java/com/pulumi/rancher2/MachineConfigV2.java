@@ -62,6 +62,7 @@ import javax.annotation.Nullable;
  *             .name(&#34;foo-harvester&#34;)
  *             .build());
  * 
+ *         // Create a new Cloud Credential for an imported Harvester cluster
  *         var foo_harvesterCloudCredential = new CloudCredential(&#34;foo-harvesterCloudCredential&#34;, CloudCredentialArgs.builder()        
  *             .harvesterCredentialConfig(CloudCredentialHarvesterCredentialConfigArgs.builder()
  *                 .clusterId(foo_harvesterClusterV2.clusterV1Id())
@@ -70,6 +71,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Create a new rancher2 machine config v2 using harvester node_driver
  *         var foo_harvester_v2 = new MachineConfigV2(&#34;foo-harvester-v2&#34;, MachineConfigV2Args.builder()        
  *             .generateName(&#34;foo-harvester-v2&#34;)
  *             .harvesterConfig(MachineConfigV2HarvesterConfigArgs.builder()

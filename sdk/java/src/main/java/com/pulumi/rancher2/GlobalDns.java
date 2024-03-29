@@ -48,6 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new rancher2 Global DNS Provider
  *         var fooGlobalDnsProvider = new GlobalDnsProvider(&#34;fooGlobalDnsProvider&#34;, GlobalDnsProviderArgs.builder()        
  *             .rootDomain(&#34;example.com&#34;)
  *             .route53Config(GlobalDnsProviderRoute53ConfigArgs.builder()
@@ -58,6 +59,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Create a new rancher2 Global DNS using project IDs
  *         var fooGlobalDns = new GlobalDns(&#34;fooGlobalDns&#34;, GlobalDnsArgs.builder()        
  *             .fqdn(&#34;foo.example.com&#34;)
  *             .providerId(fooGlobalDnsProvider.id())
@@ -96,6 +98,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new rancher2 Global DNS Provider
  *         var fooGlobalDnsProvider = new GlobalDnsProvider(&#34;fooGlobalDnsProvider&#34;, GlobalDnsProviderArgs.builder()        
  *             .rootDomain(&#34;example.com&#34;)
  *             .route53Config(GlobalDnsProviderRoute53ConfigArgs.builder()
@@ -106,6 +109,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Create a new rancher2 Global DNS using MultiClusterApp ID
  *         var fooGlobalDns = new GlobalDns(&#34;fooGlobalDns&#34;, GlobalDnsArgs.builder()        
  *             .fqdn(&#34;foo.example.com&#34;)
  *             .providerId(fooGlobalDnsProvider.id())
