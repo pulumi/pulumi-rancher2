@@ -49,12 +49,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new rancher2 User
  *         var fooUser = new User(&#34;fooUser&#34;, UserArgs.builder()        
  *             .username(&#34;foo&#34;)
  *             .password(&#34;changeme&#34;)
  *             .enabled(true)
  *             .build());
  * 
+ *         // Create a new rancher2 global_role_binding for User
  *         var fooGlobalRoleBinding = new GlobalRoleBinding(&#34;fooGlobalRoleBinding&#34;, GlobalRoleBindingArgs.builder()        
  *             .globalRoleId(&#34;user-base&#34;)
  *             .userId(fooUser.id())

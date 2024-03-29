@@ -52,6 +52,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new rancher2 Token scoped
  *         var foo = new Token(&#34;foo&#34;, TokenArgs.builder()        
  *             .clusterId(&#34;&lt;cluster-id&gt;&#34;)
  *             .description(&#34;foo token&#34;)

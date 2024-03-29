@@ -47,6 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new rancher2 Auth Config OKTA
  *         var okta = new AuthConfigOkta(&#34;okta&#34;, AuthConfigOktaArgs.builder()        
  *             .displayNameField(&#34;&lt;DISPLAY_NAME_FIELD&gt;&#34;)
  *             .groupsField(&#34;&lt;GROUPS_FIELD&gt;&#34;)

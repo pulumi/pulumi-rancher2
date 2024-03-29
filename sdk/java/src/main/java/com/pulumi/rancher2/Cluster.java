@@ -67,6 +67,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new rancher2 imported Cluster
  *         var foo_imported = new Cluster(&#34;foo-imported&#34;, ClusterArgs.builder()        
  *             .description(&#34;Foo rancher2 imported cluster&#34;)
  *             .build());
@@ -107,6 +108,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new rancher2 RKE Cluster
  *         var foo_custom = new Cluster(&#34;foo-custom&#34;, ClusterArgs.builder()        
  *             .clusterMonitoringInput(ClusterClusterMonitoringInputArgs.builder()
  *                 .answers(Map.ofEntries(
@@ -178,6 +180,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new rancher2 RKE Cluster
  *         var foo_customCluster = new Cluster(&#34;foo-customCluster&#34;, ClusterArgs.builder()        
  *             .description(&#34;Foo rancher2 custom cluster&#34;)
  *             .rkeConfig(ClusterRkeConfigArgs.builder()
@@ -211,16 +214,19 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Create a new rancher2 Cluster Sync for foo-custom cluster
  *         var foo_customClusterSync = new ClusterSync(&#34;foo-customClusterSync&#34;, ClusterSyncArgs.builder()        
  *             .clusterId(foo_customCluster.id())
  *             .waitMonitoring(foo_customCluster.enableClusterMonitoring())
  *             .build());
  * 
+ *         // Create a new rancher2 Namespace
  *         var foo_istio = new Namespace(&#34;foo-istio&#34;, NamespaceArgs.builder()        
  *             .projectId(foo_customClusterSync.systemProjectId())
  *             .description(&#34;istio namespace&#34;)
  *             .build());
  * 
+ *         // Create a new rancher2 App deploying istio (should wait until monitoring is up and running)
  *         var istio = new App(&#34;istio&#34;, AppArgs.builder()        
  *             .catalogName(&#34;system-library&#34;)
  *             .description(&#34;Terraform app acceptance test&#34;)
@@ -307,6 +313,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new rancher2 RKE Cluster
  *         var foo_custom = new Cluster(&#34;foo-custom&#34;, ClusterArgs.builder()        
  *             .description(&#34;Foo rancher2 custom cluster&#34;)
  *             .rkeConfig(ClusterRkeConfigArgs.builder()
@@ -316,6 +323,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Create a new rancher2 Node Template
  *         var fooNodeTemplate = new NodeTemplate(&#34;fooNodeTemplate&#34;, NodeTemplateArgs.builder()        
  *             .description(&#34;foo test&#34;)
  *             .amazonec2Config(NodeTemplateAmazonec2ConfigArgs.builder()
@@ -330,6 +338,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Create a new rancher2 Node Pool
  *         var fooNodePool = new NodePool(&#34;fooNodePool&#34;, NodePoolArgs.builder()        
  *             .clusterId(foo_custom.id())
  *             .hostnamePrefix(&#34;foo-cluster-0&#34;)
@@ -378,6 +387,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new rancher2 cluster template
  *         var fooClusterTemplate = new ClusterTemplate(&#34;fooClusterTemplate&#34;, ClusterTemplateArgs.builder()        
  *             .members(ClusterTemplateMemberArgs.builder()
  *                 .accessType(&#34;owner&#34;)
@@ -403,6 +413,7 @@ import javax.annotation.Nullable;
  *             .description(&#34;Test cluster template v2&#34;)
  *             .build());
  * 
+ *         // Create a new rancher2 RKE Cluster from template
  *         var fooCluster = new Cluster(&#34;fooCluster&#34;, ClusterArgs.builder()        
  *             .clusterTemplateId(fooClusterTemplate.id())
  *             .clusterTemplateRevisionId(fooClusterTemplate.templateRevisions().applyValue(templateRevisions -&gt; templateRevisions[0].id()))
@@ -597,6 +608,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Custom PSACT (if you wish to use your own)
  *         var fooPodSecurityAdmissionConfigurationTemplate = new PodSecurityAdmissionConfigurationTemplate(&#34;fooPodSecurityAdmissionConfigurationTemplate&#34;, PodSecurityAdmissionConfigurationTemplateArgs.builder()        
  *             .defaults(PodSecurityAdmissionConfigurationTemplateDefaultsArgs.builder()
  *                 .audit(&#34;restricted&#34;)

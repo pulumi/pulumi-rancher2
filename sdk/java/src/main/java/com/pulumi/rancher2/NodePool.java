@@ -57,6 +57,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new rancher2 RKE Cluster 
  *         var foo_custom = new Cluster(&#34;foo-custom&#34;, ClusterArgs.builder()        
  *             .description(&#34;Foo rancher2 custom cluster&#34;)
  *             .kind(&#34;rke&#34;)
@@ -67,6 +68,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Create a new rancher2 Cloud Credential
  *         var fooCloudCredential = new CloudCredential(&#34;fooCloudCredential&#34;, CloudCredentialArgs.builder()        
  *             .description(&#34;Terraform cloudCredential acceptance test&#34;)
  *             .amazonec2CredentialConfig(CloudCredentialAmazonec2CredentialConfigArgs.builder()
@@ -75,6 +77,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Create a new rancher2 Node Template
  *         var fooNodeTemplate = new NodeTemplate(&#34;fooNodeTemplate&#34;, NodeTemplateArgs.builder()        
  *             .description(&#34;foo test&#34;)
  *             .cloudCredentialId(fooCloudCredential.id())
@@ -88,6 +91,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Create a new rancher2 Node Pool
  *         var fooNodePool = new NodePool(&#34;fooNodePool&#34;, NodePoolArgs.builder()        
  *             .clusterId(foo_custom.id())
  *             .hostnamePrefix(&#34;foo-cluster-0&#34;)

@@ -42,6 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new rancher2_bootstrap
  *         var admin = new Bootstrap(&#34;admin&#34;, BootstrapArgs.builder()        
  *             .password(&#34;blahblah&#34;)
  *             .telemetry(true)
@@ -74,6 +75,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new rancher2_bootstrap for Rancher v2.6.0 and above
  *         var admin = new Bootstrap(&#34;admin&#34;, BootstrapArgs.builder()        
  *             .initialPassword(&#34;&lt;INSTALL_PASSWORD&gt;&#34;)
  *             .password(&#34;blahblah&#34;)
@@ -110,11 +112,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Provider bootstrap config with alias
  *         var bootstrap = new Provider(&#34;bootstrap&#34;, ProviderArgs.builder()        
  *             .apiUrl(&#34;https://rancher.my-domain.com&#34;)
  *             .bootstrap(true)
  *             .build());
  * 
+ *         // Create a new rancher2_bootstrap using bootstrap provider config
  *         var admin = new Bootstrap(&#34;admin&#34;, BootstrapArgs.builder()        
  *             .password(&#34;blahblah&#34;)
  *             .telemetry(true)

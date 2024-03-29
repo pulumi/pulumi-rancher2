@@ -61,6 +61,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new rancher2 Node Template up to Rancher 2.1.x
  *         var foo = new NodeTemplate(&#34;foo&#34;, NodeTemplateArgs.builder()        
  *             .amazonec2Config(NodeTemplateAmazonec2ConfigArgs.builder()
  *                 .accessKey(&#34;AWS_ACCESS_KEY&#34;)
@@ -106,6 +107,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new rancher2 Node Template from Rancher 2.2.x
  *         var fooCloudCredential = new CloudCredential(&#34;fooCloudCredential&#34;, CloudCredentialArgs.builder()        
  *             .description(&#34;foo test&#34;)
  *             .amazonec2CredentialConfig(CloudCredentialAmazonec2CredentialConfigArgs.builder()
@@ -166,6 +168,7 @@ import javax.annotation.Nullable;
  *             .name(&#34;foo-harvester&#34;)
  *             .build());
  * 
+ *         // Create a new Cloud Credential for an imported Harvester cluster
  *         var foo_harvesterCloudCredential = new CloudCredential(&#34;foo-harvesterCloudCredential&#34;, CloudCredentialArgs.builder()        
  *             .harvesterCredentialConfig(CloudCredentialHarvesterCredentialConfigArgs.builder()
  *                 .clusterId(foo_harvesterClusterV2.clusterV1Id())
@@ -174,6 +177,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Create a new rancher2 Node Template using harvester node_driver
  *         var foo_harvesterNodeTemplate = new NodeTemplate(&#34;foo-harvesterNodeTemplate&#34;, NodeTemplateArgs.builder()        
  *             .cloudCredentialId(foo_harvesterCloudCredential.id())
  *             .engineInstallUrl(&#34;https://releases.rancher.com/install-docker/20.10.sh&#34;)
@@ -244,6 +248,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new rancher2 Node Template using hetzner node_driver
  *         var hetznerNodeDriver = new NodeDriver(&#34;hetznerNodeDriver&#34;, NodeDriverArgs.builder()        
  *             .active(true)
  *             .builtin(false)

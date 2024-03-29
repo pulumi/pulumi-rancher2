@@ -47,6 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new rancher2 Global DNS Provider - alidns
  *         var foo = new GlobalDnsProvider(&#34;foo&#34;, GlobalDnsProviderArgs.builder()        
  *             .alidnsConfig(GlobalDnsProviderAlidnsConfigArgs.builder()
  *                 .accessKey(&#34;YYYYYYYYYYYYYYYYYYYY&#34;)
@@ -83,6 +84,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new rancher2 Global DNS Provider - cloudflare
  *         var foo = new GlobalDnsProvider(&#34;foo&#34;, GlobalDnsProviderArgs.builder()        
  *             .cloudflareConfig(GlobalDnsProviderCloudflareConfigArgs.builder()
  *                 .apiEmail(&#34;test@test.local&#34;)
@@ -120,6 +122,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new rancher2 Global DNS Provider - route53
  *         var foo = new GlobalDnsProvider(&#34;foo&#34;, GlobalDnsProviderArgs.builder()        
  *             .rootDomain(&#34;example.com&#34;)
  *             .route53Config(GlobalDnsProviderRoute53ConfigArgs.builder()

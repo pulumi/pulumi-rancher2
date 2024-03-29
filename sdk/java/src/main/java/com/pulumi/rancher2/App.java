@@ -51,6 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new rancher2 App
  *         var foo = new App(&#34;foo&#34;, AppArgs.builder()        
  *             .answers(Map.ofEntries(
  *                 Map.entry(&#34;foo&#34;, &#34;bar&#34;),
@@ -96,6 +97,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new rancher2 App in a new namespace
  *         var fooNamespace = new Namespace(&#34;fooNamespace&#34;, NamespaceArgs.builder()        
  *             .description(&#34;Foo namespace&#34;)
  *             .projectId(&#34;&lt;project_id&gt;&#34;)

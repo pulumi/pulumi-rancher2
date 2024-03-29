@@ -58,6 +58,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new rancher2 rke Cluster 
  *         var foo_customCluster = new Cluster(&#34;foo-customCluster&#34;, ClusterArgs.builder()        
  *             .description(&#34;Foo rancher2 custom cluster&#34;)
  *             .rkeConfig(ClusterRkeConfigArgs.builder()
@@ -67,6 +68,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Create a new rancher2 Node Template
  *         var fooNodeTemplate = new NodeTemplate(&#34;fooNodeTemplate&#34;, NodeTemplateArgs.builder()        
  *             .description(&#34;foo test&#34;)
  *             .amazonec2Config(NodeTemplateAmazonec2ConfigArgs.builder()
@@ -81,6 +83,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Create a new rancher2 Node Pool
  *         var fooNodePool = new NodePool(&#34;fooNodePool&#34;, NodePoolArgs.builder()        
  *             .clusterId(foo_customCluster.id())
  *             .hostnamePrefix(&#34;foo-cluster-0&#34;)
@@ -91,11 +94,13 @@ import javax.annotation.Nullable;
  *             .worker(true)
  *             .build());
  * 
+ *         // Create a new rancher2 Cluster Sync
  *         var foo_customClusterSync = new ClusterSync(&#34;foo-customClusterSync&#34;, ClusterSyncArgs.builder()        
  *             .clusterId(foo_customCluster.id())
  *             .nodePoolIds(fooNodePool.id())
  *             .build());
  * 
+ *         // Create a new rancher2 Project
  *         var fooProject = new Project(&#34;fooProject&#34;, ProjectArgs.builder()        
  *             .clusterId(foo_customClusterSync.id())
  *             .description(&#34;Terraform namespace acceptance test&#34;)

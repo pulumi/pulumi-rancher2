@@ -49,6 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new rancher2 Namespace
  *         var foo = new Namespace(&#34;foo&#34;, NamespaceArgs.builder()        
  *             .containerResourceLimit(NamespaceContainerResourceLimitArgs.builder()
  *                 .limitsCpu(&#34;20m&#34;)
@@ -101,6 +102,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new rancher2 Cluster 
  *         var foo_custom = new Cluster(&#34;foo-custom&#34;, ClusterArgs.builder()        
  *             .description(&#34;Foo rancher2 custom cluster&#34;)
  *             .rkeConfig(ClusterRkeConfigArgs.builder()
@@ -110,6 +112,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Create a new rancher2 Namespace assigned to default cluster project
  *         var foo = new Namespace(&#34;foo&#34;, NamespaceArgs.builder()        
  *             .projectId(foo_custom.defaultProjectId())
  *             .description(&#34;foo namespace&#34;)
