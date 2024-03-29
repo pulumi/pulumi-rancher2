@@ -47,6 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new rancher2 Auth Config Github
  *         var github = new AuthConfigGithub(&#34;github&#34;, AuthConfigGithubArgs.builder()        
  *             .clientId(&#34;&lt;GITHUB_CLIENT_ID&gt;&#34;)
  *             .clientSecret(&#34;&lt;GITHUB_CLIENT_SECRET&gt;&#34;)

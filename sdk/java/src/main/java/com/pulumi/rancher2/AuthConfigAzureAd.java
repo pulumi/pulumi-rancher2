@@ -43,6 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new rancher2 Auth Config AzureAD
  *         var azuread = new AuthConfigAzureAd(&#34;azuread&#34;, AuthConfigAzureAdArgs.builder()        
  *             .applicationId(&#34;&lt;AZUREAD_APP_ID&gt;&#34;)
  *             .applicationSecret(&#34;&lt;AZUREAD_APP_SECRET&gt;&#34;)

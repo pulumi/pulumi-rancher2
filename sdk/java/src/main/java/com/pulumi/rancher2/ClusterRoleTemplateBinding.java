@@ -42,6 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new Rancher2 Cluster Role Template Binding
  *         var foo = new ClusterRoleTemplateBinding(&#34;foo&#34;, ClusterRoleTemplateBindingArgs.builder()        
  *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
  *             .roleTemplateId(&#34;&lt;role_template_id&gt;&#34;)

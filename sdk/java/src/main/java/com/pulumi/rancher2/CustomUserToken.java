@@ -59,6 +59,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a rancher2 Token
  *         var fooUser = new User(&#34;fooUser&#34;, UserArgs.builder()        
  *             .username(&#34;foo&#34;)
  *             .password(&#34;changeme&#34;)

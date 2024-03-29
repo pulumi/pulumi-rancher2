@@ -49,6 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new rancher2 Etcd Backup
  *         var foo = new EtcdBackup(&#34;foo&#34;, EtcdBackupArgs.builder()        
  *             .backupConfig(EtcdBackupBackupConfigArgs.builder()
  *                 .enabled(true)

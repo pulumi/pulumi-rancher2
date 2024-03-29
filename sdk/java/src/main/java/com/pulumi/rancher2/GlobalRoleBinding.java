@@ -42,11 +42,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new rancher2 Global Role Binding using user_id
  *         var foo = new GlobalRoleBinding(&#34;foo&#34;, GlobalRoleBindingArgs.builder()        
  *             .globalRoleId(&#34;admin&#34;)
  *             .userId(&#34;user-XXXXX&#34;)
  *             .build());
  * 
+ *         // Create a new rancher2 Global Role Binding using group_principal_id
  *         var foo2 = new GlobalRoleBinding(&#34;foo2&#34;, GlobalRoleBindingArgs.builder()        
  *             .globalRoleId(&#34;admin&#34;)
  *             .groupPrincipalId(&#34;local://g-XXXXX&#34;)

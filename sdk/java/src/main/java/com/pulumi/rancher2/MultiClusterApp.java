@@ -59,6 +59,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new rancher2 Multi Cluster App
  *         var foo = new MultiClusterApp(&#34;foo&#34;, MultiClusterAppArgs.builder()        
  *             .answers(MultiClusterAppAnswerArgs.builder()
  *                 .values(Map.of(&#34;ingressHost&#34;, &#34;test.xip.io&#34;))
@@ -101,6 +102,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new rancher2 Multi Cluster App overriding answers
  *         var foo = new MultiClusterApp(&#34;foo&#34;, MultiClusterAppArgs.builder()        
  *             .answers(            
  *                 MultiClusterAppAnswerArgs.builder()
