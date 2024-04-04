@@ -744,7 +744,7 @@
                 },
                 "maxSurge": {
                     "type": "string",
-                    "description": "The AKS node pool max surge (string), example value: `25%!`(MISSING)\n"
+                    "description": "The AKS node pool max surge (string), example value: `25%`\n"
                 },
                 "minCount": {
                     "type": "integer",
@@ -3742,7 +3742,7 @@
             "properties": {
                 "maxSurge": {
                     "type": "integer",
-                    "description": "The AKS node pool max surge (string), example value: `25%!`(MISSING)\n"
+                    "description": "The AKS node pool max surge (string), example value: `25%`\n"
                 },
                 "maxUnavailable": {
                     "type": "integer",
@@ -3984,7 +3984,7 @@
             "properties": {
                 "maxSurge": {
                     "type": "integer",
-                    "description": "The AKS node pool max surge (string), example value: `25%!`(MISSING)\n"
+                    "description": "The AKS node pool max surge (string), example value: `25%`\n"
                 },
                 "maxUnavailable": {
                     "type": "integer",
@@ -5232,7 +5232,7 @@
                 },
                 "maxUnavailableWorker": {
                     "type": "string",
-                    "description": "RKE max unavailable worker nodes. Default: `10%!`(MISSING) (string)\n"
+                    "description": "RKE max unavailable worker nodes. Default: `10%` (string)\n"
                 }
             },
             "type": "object",
