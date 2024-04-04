@@ -457,7 +457,7 @@ export interface ClusterAksConfigV2NodePool {
      */
     maxPods?: pulumi.Input<number>;
     /**
-     * The AKS node pool max surge (string), example value: `25%!`(MISSING)
+     * The AKS node pool max surge (string), example value: `25%`
      */
     maxSurge?: pulumi.Input<string>;
     /**
@@ -2494,7 +2494,7 @@ export interface ClusterRkeConfigDnsUpdateStrategy {
 
 export interface ClusterRkeConfigDnsUpdateStrategyRollingUpdate {
     /**
-     * The AKS node pool max surge (string), example value: `25%!`(MISSING)
+     * The AKS node pool max surge (string), example value: `25%`
      */
     maxSurge?: pulumi.Input<number>;
     /**
@@ -2654,7 +2654,7 @@ export interface ClusterRkeConfigMonitoringUpdateStrategy {
 
 export interface ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate {
     /**
-     * The AKS node pool max surge (string), example value: `25%!`(MISSING)
+     * The AKS node pool max surge (string), example value: `25%`
      */
     maxSurge?: pulumi.Input<number>;
     /**
@@ -3578,7 +3578,7 @@ export interface ClusterRkeConfigUpgradeStrategy {
      */
     maxUnavailableControlplane?: pulumi.Input<string>;
     /**
-     * RKE max unavailable worker nodes. Default: `10%!`(MISSING) (string)
+     * RKE max unavailable worker nodes. Default: `10%` (string)
      */
     maxUnavailableWorker?: pulumi.Input<string>;
 }

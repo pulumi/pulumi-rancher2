@@ -1951,7 +1951,7 @@ class ClusterAksConfigV2NodePoolArgs:
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for the Cluster (map)
         :param pulumi.Input[int] max_count: The AKS node pool max count. Required if `enable_auto_scaling=true` (int)
         :param pulumi.Input[int] max_pods: The AKS node pool max pods. Default: `110` (int)
-        :param pulumi.Input[str] max_surge: The AKS node pool max surge (string), example value: `25%!`(MISSING)
+        :param pulumi.Input[str] max_surge: The AKS node pool max surge (string), example value: `25%`
         :param pulumi.Input[int] min_count: The AKS node pool min count. Required if `enable_auto_scaling=true` (int)
         :param pulumi.Input[str] mode: The AKS node group mode. Default: `System` (string)
         :param pulumi.Input[str] orchestrator_version: The AKS node pool orchestrator version (string)
@@ -2081,7 +2081,7 @@ class ClusterAksConfigV2NodePoolArgs:
     @pulumi.getter(name="maxSurge")
     def max_surge(self) -> Optional[pulumi.Input[str]]:
         """
-        The AKS node pool max surge (string), example value: `25%!`(MISSING)
+        The AKS node pool max surge (string), example value: `25%`
         """
         return pulumi.get(self, "max_surge")
 
@@ -9782,7 +9782,7 @@ class ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs:
                  max_surge: Optional[pulumi.Input[int]] = None,
                  max_unavailable: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[int] max_surge: The AKS node pool max surge (string), example value: `25%!`(MISSING)
+        :param pulumi.Input[int] max_surge: The AKS node pool max surge (string), example value: `25%`
         :param pulumi.Input[int] max_unavailable: Monitoring deployment rolling update max unavailable. Default: `1` (int)
         """
         if max_surge is not None:
@@ -9794,7 +9794,7 @@ class ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs:
     @pulumi.getter(name="maxSurge")
     def max_surge(self) -> Optional[pulumi.Input[int]]:
         """
-        The AKS node pool max surge (string), example value: `25%!`(MISSING)
+        The AKS node pool max surge (string), example value: `25%`
         """
         return pulumi.get(self, "max_surge")
 
@@ -10380,7 +10380,7 @@ class ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs:
                  max_surge: Optional[pulumi.Input[int]] = None,
                  max_unavailable: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[int] max_surge: The AKS node pool max surge (string), example value: `25%!`(MISSING)
+        :param pulumi.Input[int] max_surge: The AKS node pool max surge (string), example value: `25%`
         :param pulumi.Input[int] max_unavailable: Monitoring deployment rolling update max unavailable. Default: `1` (int)
         """
         if max_surge is not None:
@@ -10392,7 +10392,7 @@ class ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs:
     @pulumi.getter(name="maxSurge")
     def max_surge(self) -> Optional[pulumi.Input[int]]:
         """
-        The AKS node pool max surge (string), example value: `25%!`(MISSING)
+        The AKS node pool max surge (string), example value: `25%`
         """
         return pulumi.get(self, "max_surge")
 
@@ -13815,7 +13815,7 @@ class ClusterRkeConfigUpgradeStrategyArgs:
         :param pulumi.Input[bool] drain: RKE drain nodes. Default: `false` (bool)
         :param pulumi.Input['ClusterRkeConfigUpgradeStrategyDrainInputArgs'] drain_input: RKE drain node input (list Maxitems: 1)
         :param pulumi.Input[str] max_unavailable_controlplane: RKE max unavailable controlplane nodes. Default: `1` (string)
-        :param pulumi.Input[str] max_unavailable_worker: RKE max unavailable worker nodes. Default: `10%!`(MISSING) (string)
+        :param pulumi.Input[str] max_unavailable_worker: RKE max unavailable worker nodes. Default: `10%` (string)
         """
         if drain is not None:
             pulumi.set(__self__, "drain", drain)
@@ -13866,7 +13866,7 @@ class ClusterRkeConfigUpgradeStrategyArgs:
     @pulumi.getter(name="maxUnavailableWorker")
     def max_unavailable_worker(self) -> Optional[pulumi.Input[str]]:
         """
-        RKE max unavailable worker nodes. Default: `10%!`(MISSING) (string)
+        RKE max unavailable worker nodes. Default: `10%` (string)
         """
         return pulumi.get(self, "max_unavailable_worker")
 

@@ -112,14 +112,14 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The AKS node pool max surge (string), example value: `25%!`(MISSING)
+     * The AKS node pool max surge (string), example value: `25%`
      * 
      */
     @Import(name="maxSurge")
     private @Nullable Output<String> maxSurge;
 
     /**
-     * @return The AKS node pool max surge (string), example value: `25%!`(MISSING)
+     * @return The AKS node pool max surge (string), example value: `25%`
      * 
      */
     public Optional<Output<String>> maxSurge() {
@@ -437,7 +437,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param maxSurge The AKS node pool max surge (string), example value: `25%!`(MISSING)
+         * @param maxSurge The AKS node pool max surge (string), example value: `25%`
          * 
          * @return builder
          * 
@@ -448,7 +448,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param maxSurge The AKS node pool max surge (string), example value: `25%!`(MISSING)
+         * @param maxSurge The AKS node pool max surge (string), example value: `25%`
          * 
          * @return builder
          * 
