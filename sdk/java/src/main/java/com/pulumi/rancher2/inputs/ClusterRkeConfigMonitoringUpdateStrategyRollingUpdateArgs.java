@@ -16,14 +16,14 @@ public final class ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs ext
     public static final ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs Empty = new ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs();
 
     /**
-     * The AKS node pool max surge (string), example value: `25%!`(MISSING)
+     * The AKS node pool max surge (string), example value: `25%`
      * 
      */
     @Import(name="maxSurge")
     private @Nullable Output<Integer> maxSurge;
 
     /**
-     * @return The AKS node pool max surge (string), example value: `25%!`(MISSING)
+     * @return The AKS node pool max surge (string), example value: `25%`
      * 
      */
     public Optional<Output<Integer>> maxSurge() {
@@ -71,7 +71,7 @@ public final class ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs ext
         }
 
         /**
-         * @param maxSurge The AKS node pool max surge (string), example value: `25%!`(MISSING)
+         * @param maxSurge The AKS node pool max surge (string), example value: `25%`
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs ext
         }
 
         /**
-         * @param maxSurge The AKS node pool max surge (string), example value: `25%!`(MISSING)
+         * @param maxSurge The AKS node pool max surge (string), example value: `25%`
          * 
          * @return builder
          * 

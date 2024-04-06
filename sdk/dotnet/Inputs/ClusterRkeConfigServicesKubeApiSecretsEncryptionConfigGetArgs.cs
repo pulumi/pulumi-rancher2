@@ -15,17 +15,22 @@ namespace Pulumi.Rancher2.Inputs
         /// <summary>
         /// Secrets encryption yaml encoded custom configuration. `"apiVersion"` and `"kind":"EncryptionConfiguration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/) (string) Ex:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// custom_config = &lt;&lt;EOF
+        /// apiVersion: apiserver.config.k8s.io/v1
+        /// kind: EncryptionConfiguration
+        /// resources:
+        /// - resources:
+        /// - secrets
+        /// providers:
+        /// - aescbc:
+        /// keys:
+        /// - name: k-fw5hn
+        /// secret: RTczRjFDODMwQzAyMDVBREU4NDJBMUZFNDhCNzM5N0I=
+        /// identity: {}
+        /// EOF
+        /// 
+        /// ```
         /// </summary>
         [Input("customConfig")]
         public Input<string>? CustomConfig { get; set; }
