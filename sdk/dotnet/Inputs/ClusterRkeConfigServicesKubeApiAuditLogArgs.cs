@@ -15,17 +15,16 @@ namespace Pulumi.Rancher2.Inputs
         /// <summary>
         /// Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// configuration = &lt;&lt;EOF
+        /// apiVersion: eventratelimit.admission.k8s.io/v1alpha1
+        /// kind: Configuration
+        /// limits:
+        /// - type: Server
+        /// burst: 35000
+        /// qps: 6000
+        /// EOF
+        /// ```
         /// </summary>
         [Input("configuration")]
         public Input<Inputs.ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs>? Configuration { get; set; }

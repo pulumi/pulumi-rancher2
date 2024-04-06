@@ -277,31 +277,6 @@ import javax.annotation.Nullable;
  * **Important** This process could update `rancher2.NodeTemplate` data on tfstate file. Be sure to save a copy of tfstate file before proceed
  * 
  * Due to [this feature](https://github.com/rancher/rancher/pull/23718) included on Rancher v2.3.3, `rancher2.NodeTemplate` are now global scoped objects with RBAC around them, instead of user scoped objects as they were. This means that existing node templates `id` field is changing on upgrade. Provider implements `fixNodeTemplateID()` that will update tfstate with proper id.
- * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *     }
- * }
- * ```
- * &lt;!--End PulumiCodeChooser --&gt;sh
- * $ pulumi import rancher2:index/nodeTemplate:NodeTemplate foo &amp;lt;node_template_id&amp;gt;
  * 
  */
 @ResourceType(type="rancher2:index/nodeTemplate:NodeTemplate")

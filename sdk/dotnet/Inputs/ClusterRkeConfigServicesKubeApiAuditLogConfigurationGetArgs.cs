@@ -45,17 +45,17 @@ namespace Pulumi.Rancher2.Inputs
         /// <summary>
         /// Audit policy yaml encoded definition. `apiVersion` and `kind: Policy\nrules:"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/audit-log/) (string) Ex:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// policy = &lt;&lt;EOF
+        /// apiVersion: audit.k8s.io/v1
+        /// kind: Policy
+        /// rules:
+        /// - level: RequestResponse
+        /// resources:
+        /// - resources:
+        /// - pods
+        /// EOF
+        /// ```
         /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }

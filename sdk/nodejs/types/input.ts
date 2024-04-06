@@ -457,7 +457,7 @@ export interface ClusterAksConfigV2NodePool {
      */
     maxPods?: pulumi.Input<number>;
     /**
-     * The AKS node pool max surge (string), example value: `25%!`(MISSING)
+     * The AKS node pool max surge (string), example value: `25%`
      */
     maxSurge?: pulumi.Input<string>;
     /**
@@ -2494,7 +2494,7 @@ export interface ClusterRkeConfigDnsUpdateStrategy {
 
 export interface ClusterRkeConfigDnsUpdateStrategyRollingUpdate {
     /**
-     * The AKS node pool max surge (string), example value: `25%!`(MISSING)
+     * The AKS node pool max surge (string), example value: `25%`
      */
     maxSurge?: pulumi.Input<number>;
     /**
@@ -2654,7 +2654,7 @@ export interface ClusterRkeConfigMonitoringUpdateStrategy {
 
 export interface ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate {
     /**
-     * The AKS node pool max surge (string), example value: `25%!`(MISSING)
+     * The AKS node pool max surge (string), example value: `25%`
      */
     maxSurge?: pulumi.Input<number>;
     /**
@@ -3359,11 +3359,16 @@ export interface ClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin {
     /**
      * Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
      *
-     * <!--Start PulumiCodeChooser -->
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
      * ```
-     * <!--End PulumiCodeChooser -->
+     * configuration = <<EOF
+     * apiVersion: eventratelimit.admission.k8s.io/v1alpha1
+     * kind: Configuration
+     * limits:
+     * - type: Server
+     * burst: 35000
+     * qps: 6000
+     * EOF
+     * ```
      */
     configuration?: pulumi.Input<string>;
     /**
@@ -3380,11 +3385,16 @@ export interface ClusterRkeConfigServicesKubeApiAuditLog {
     /**
      * Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
      *
-     * <!--Start PulumiCodeChooser -->
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
      * ```
-     * <!--End PulumiCodeChooser -->
+     * configuration = <<EOF
+     * apiVersion: eventratelimit.admission.k8s.io/v1alpha1
+     * kind: Configuration
+     * limits:
+     * - type: Server
+     * burst: 35000
+     * qps: 6000
+     * EOF
+     * ```
      */
     configuration?: pulumi.Input<inputs.ClusterRkeConfigServicesKubeApiAuditLogConfiguration>;
     /**
@@ -3417,11 +3427,17 @@ export interface ClusterRkeConfigServicesKubeApiAuditLogConfiguration {
     /**
      * Audit policy yaml encoded definition. `apiVersion` and `kind: Policy\nrules:"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/audit-log/) (string) Ex:
      *
-     * <!--Start PulumiCodeChooser -->
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
      * ```
-     * <!--End PulumiCodeChooser -->
+     * policy = <<EOF
+     * apiVersion: audit.k8s.io/v1
+     * kind: Policy
+     * rules:
+     * - level: RequestResponse
+     * resources:
+     * - resources:
+     * - pods
+     * EOF
+     * ```
      */
     policy?: pulumi.Input<string>;
 }
@@ -3430,11 +3446,16 @@ export interface ClusterRkeConfigServicesKubeApiEventRateLimit {
     /**
      * Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
      *
-     * <!--Start PulumiCodeChooser -->
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
      * ```
-     * <!--End PulumiCodeChooser -->
+     * configuration = <<EOF
+     * apiVersion: eventratelimit.admission.k8s.io/v1alpha1
+     * kind: Configuration
+     * limits:
+     * - type: Server
+     * burst: 35000
+     * qps: 6000
+     * EOF
+     * ```
      */
     configuration?: pulumi.Input<string>;
     /**
@@ -3447,11 +3468,22 @@ export interface ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig {
     /**
      * Secrets encryption yaml encoded custom configuration. `"apiVersion"` and `"kind":"EncryptionConfiguration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/) (string) Ex:
      *
-     * <!--Start PulumiCodeChooser -->
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
      * ```
-     * <!--End PulumiCodeChooser -->
+     * custom_config = <<EOF
+     * apiVersion: apiserver.config.k8s.io/v1
+     * kind: EncryptionConfiguration
+     * resources:
+     * - resources:
+     * - secrets
+     * providers:
+     * - aescbc:
+     * keys:
+     * - name: k-fw5hn
+     * secret: RTczRjFDODMwQzAyMDVBREU4NDJBMUZFNDhCNzM5N0I=
+     * identity: {}
+     * EOF
+     *
+     * ```
      */
     customConfig?: pulumi.Input<string>;
     /**
@@ -3578,7 +3610,7 @@ export interface ClusterRkeConfigUpgradeStrategy {
      */
     maxUnavailableControlplane?: pulumi.Input<string>;
     /**
-     * RKE max unavailable worker nodes. Default: `10%!`(MISSING) (string)
+     * RKE max unavailable worker nodes. Default: `10%` (string)
      */
     maxUnavailableWorker?: pulumi.Input<string>;
 }

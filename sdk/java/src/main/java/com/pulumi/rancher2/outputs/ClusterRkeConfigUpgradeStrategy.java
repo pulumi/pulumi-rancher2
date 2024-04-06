@@ -29,7 +29,7 @@ public final class ClusterRkeConfigUpgradeStrategy {
      */
     private @Nullable String maxUnavailableControlplane;
     /**
-     * @return RKE max unavailable worker nodes. Default: `10%!`(MISSING) (string)
+     * @return RKE max unavailable worker nodes. Default: `10%` (string)
      * 
      */
     private @Nullable String maxUnavailableWorker;
@@ -57,7 +57,7 @@ public final class ClusterRkeConfigUpgradeStrategy {
         return Optional.ofNullable(this.maxUnavailableControlplane);
     }
     /**
-     * @return RKE max unavailable worker nodes. Default: `10%!`(MISSING) (string)
+     * @return RKE max unavailable worker nodes. Default: `10%` (string)
      * 
      */
     public Optional<String> maxUnavailableWorker() {

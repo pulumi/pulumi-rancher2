@@ -31,7 +31,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? MaxUnavailableControlplane { get; set; }
 
         /// <summary>
-        /// RKE max unavailable worker nodes. Default: `10%!`(MISSING) (string)
+        /// RKE max unavailable worker nodes. Default: `10%` (string)
         /// </summary>
         [Input("maxUnavailableWorker")]
         public Input<string>? MaxUnavailableWorker { get; set; }

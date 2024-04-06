@@ -26,7 +26,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? MaxUnavailableControlplane;
         /// <summary>
-        /// RKE max unavailable worker nodes. Default: `10%!`(MISSING) (string)
+        /// RKE max unavailable worker nodes. Default: `10%` (string)
         /// </summary>
         public readonly string? MaxUnavailableWorker;
 
