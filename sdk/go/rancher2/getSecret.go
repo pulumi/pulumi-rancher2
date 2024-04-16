@@ -32,6 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Retrieve a rancher2 Project Secret
 //			_, err := rancher2.LookupSecret(ctx, &rancher2.LookupSecretArgs{
 //				Name:      "<name>",
 //				ProjectId: "<project_id>",
@@ -59,10 +60,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Retrieve a rancher2 Namespaced Secret
 //			_, err := rancher2.LookupSecret(ctx, &rancher2.LookupSecretArgs{
 //				Name:        "<name>",
-//				NamespaceId: pulumi.StringRef("<namespace_id>"),
 //				ProjectId:   "<project_id>",
+//				NamespaceId: pulumi.StringRef("<namespace_id>"),
 //			}, nil)
 //			if err != nil {
 //				return err

@@ -376,15 +376,10 @@ class Bootstrap(pulumi.CustomResource):
         import pulumi
         import pulumi_rancher2 as rancher2
 
-        # Provider bootstrap config with alias
-        bootstrap = rancher2.Provider("bootstrap",
-            api_url="https://rancher.my-domain.com",
-            bootstrap=True)
         # Create a new rancher2_bootstrap using bootstrap provider config
         admin = rancher2.Bootstrap("admin",
             password="blahblah",
-            telemetry=True,
-            opts=pulumi.ResourceOptions(provider="rancher2.bootstrap"))
+            telemetry=True)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -436,15 +431,10 @@ class Bootstrap(pulumi.CustomResource):
         import pulumi
         import pulumi_rancher2 as rancher2
 
-        # Provider bootstrap config with alias
-        bootstrap = rancher2.Provider("bootstrap",
-            api_url="https://rancher.my-domain.com",
-            bootstrap=True)
         # Create a new rancher2_bootstrap using bootstrap provider config
         admin = rancher2.Bootstrap("admin",
             password="blahblah",
-            telemetry=True,
-            opts=pulumi.ResourceOptions(provider="rancher2.bootstrap"))
+            telemetry=True)
         ```
         <!--End PulumiCodeChooser -->
 

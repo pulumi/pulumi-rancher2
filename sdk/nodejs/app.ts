@@ -23,17 +23,18 @@ import * as utilities from "./utilities";
  *
  * // Create a new rancher2 App
  * const foo = new rancher2.App("foo", {
- *     answers: {
- *         foo: "bar",
- *         "ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect": true,
- *         ingress_host: "test.xip.io",
- *     },
  *     catalogName: "<catalog_name>",
+ *     name: "foo",
  *     description: "Foo app",
  *     projectId: "<project_id>",
- *     targetNamespace: "<namespace_name>",
  *     templateName: "<template_name>",
  *     templateVersion: "<template_version>",
+ *     targetNamespace: "<namespace_name>",
+ *     answers: {
+ *         ingress_host: "test.xip.io",
+ *         foo: "bar",
+ *         "ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect": true,
+ *     },
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -44,7 +45,8 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * // Create a new rancher2 App in a new namespace
- * const fooNamespace = new rancher2.Namespace("fooNamespace", {
+ * const foo = new rancher2.Namespace("foo", {
+ *     name: "foo",
  *     description: "Foo namespace",
  *     projectId: "<project_id>",
  *     resourceQuota: {
@@ -55,13 +57,14 @@ import * as utilities from "./utilities";
  *         },
  *     },
  * });
- * const fooApp = new rancher2.App("fooApp", {
+ * const fooApp = new rancher2.App("foo", {
  *     catalogName: "<catalog_name>",
+ *     name: "foo",
  *     description: "Foo app",
  *     projectId: "<project_id>",
  *     templateName: "<template_name>",
  *     templateVersion: "<template_version>",
- *     targetNamespace: fooNamespace.id,
+ *     targetNamespace: foo.id,
  *     answers: {
  *         ingress_host: "test.xip.io",
  *         foo: "bar",

@@ -31,20 +31,21 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 Namespace
 //			_, err := rancher2.NewNamespace(ctx, "foo", &rancher2.NamespaceArgs{
-//				ContainerResourceLimit: &rancher2.NamespaceContainerResourceLimitArgs{
-//					LimitsCpu:      pulumi.String("20m"),
-//					LimitsMemory:   pulumi.String("20Mi"),
-//					RequestsCpu:    pulumi.String("1m"),
-//					RequestsMemory: pulumi.String("1Mi"),
-//				},
-//				Description: pulumi.String("foo namespace"),
+//				Name:        pulumi.String("foo"),
 //				ProjectId:   pulumi.String("<PROJECT_ID>"),
+//				Description: pulumi.String("foo namespace"),
 //				ResourceQuota: &rancher2.NamespaceResourceQuotaArgs{
 //					Limit: &rancher2.NamespaceResourceQuotaLimitArgs{
 //						LimitsCpu:       pulumi.String("100m"),
 //						LimitsMemory:    pulumi.String("100Mi"),
 //						RequestsStorage: pulumi.String("1Gi"),
 //					},
+//				},
+//				ContainerResourceLimit: &rancher2.NamespaceContainerResourceLimitArgs{
+//					LimitsCpu:      pulumi.String("20m"),
+//					LimitsMemory:   pulumi.String("20Mi"),
+//					RequestsCpu:    pulumi.String("1m"),
+//					RequestsMemory: pulumi.String("1Mi"),
 //				},
 //			})
 //			if err != nil {
@@ -72,6 +73,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 Cluster
 //			_, err := rancher2.NewCluster(ctx, "foo-custom", &rancher2.ClusterArgs{
+//				Name:        pulumi.String("foo-custom"),
 //				Description: pulumi.String("Foo rancher2 custom cluster"),
 //				RkeConfig: &rancher2.ClusterRkeConfigArgs{
 //					Network: &rancher2.ClusterRkeConfigNetworkArgs{
@@ -84,6 +86,7 @@ import (
 //			}
 //			// Create a new rancher2 Namespace assigned to default cluster project
 //			_, err = rancher2.NewNamespace(ctx, "foo", &rancher2.NamespaceArgs{
+//				Name:        pulumi.String("foo"),
 //				ProjectId:   foo_custom.DefaultProjectId,
 //				Description: pulumi.String("foo namespace"),
 //				ResourceQuota: &rancher2.NamespaceResourceQuotaArgs{

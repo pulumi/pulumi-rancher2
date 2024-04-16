@@ -32,11 +32,12 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 Cloud Credential
 //			_, err := rancher2.NewCloudCredential(ctx, "foo", &rancher2.CloudCredentialArgs{
+//				Name:        pulumi.String("foo"),
+//				Description: pulumi.String("foo test"),
 //				Amazonec2CredentialConfig: &rancher2.CloudCredentialAmazonec2CredentialConfigArgs{
 //					AccessKey: pulumi.String("<AWS_ACCESS_KEY>"),
 //					SecretKey: pulumi.String("<AWS_SECRET_KEY>"),
 //				},
-//				Description: pulumi.String("foo test"),
 //			})
 //			if err != nil {
 //				return err
@@ -61,18 +62,20 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			foo_harvesterClusterV2, err := rancher2.LookupClusterV2(ctx, &rancher2.LookupClusterV2Args{
+//			// Get imported harvester cluster info
+//			foo_harvester, err := rancher2.LookupClusterV2(ctx, &rancher2.LookupClusterV2Args{
 //				Name: "foo-harvester",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			// Create a new Cloud Credential for an imported Harvester cluster
-//			_, err = rancher2.NewCloudCredential(ctx, "foo-harvesterCloudCredential", &rancher2.CloudCredentialArgs{
+//			_, err = rancher2.NewCloudCredential(ctx, "foo-harvester", &rancher2.CloudCredentialArgs{
+//				Name: pulumi.String("foo-harvester"),
 //				HarvesterCredentialConfig: &rancher2.CloudCredentialHarvesterCredentialConfigArgs{
-//					ClusterId:         pulumi.String(foo_harvesterClusterV2.ClusterV1Id),
+//					ClusterId:         pulumi.String(foo_harvester.ClusterV1Id),
 //					ClusterType:       pulumi.String("imported"),
-//					KubeconfigContent: pulumi.String(foo_harvesterClusterV2.KubeConfig),
+//					KubeconfigContent: pulumi.String(foo_harvester.KubeConfig),
 //				},
 //			})
 //			if err != nil {

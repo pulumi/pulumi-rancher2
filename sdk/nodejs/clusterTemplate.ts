@@ -20,12 +20,13 @@ import * as utilities from "./utilities";
  *
  * // Create a new rancher2 Cluster Template
  * const foo = new rancher2.ClusterTemplate("foo", {
- *     description: "Terraform cluster template foo",
+ *     name: "foo",
  *     members: [{
  *         accessType: "owner",
  *         userPrincipalId: "local://user-XXXXX",
  *     }],
  *     templateRevisions: [{
+ *         name: "V1",
  *         clusterConfig: {
  *             rkeConfig: {
  *                 network: {
@@ -40,8 +41,8 @@ import * as utilities from "./utilities";
  *             },
  *         },
  *         "default": true,
- *         name: "V1",
  *     }],
+ *     description: "Terraform cluster template foo",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -55,12 +56,13 @@ import * as utilities from "./utilities";
  *
  * // Create a new rancher2 Cluster Template
  * const foo = new rancher2.ClusterTemplate("foo", {
- *     description: "Terraform cluster template foo",
+ *     name: "foo",
  *     members: [{
  *         accessType: "owner",
  *         userPrincipalId: "local://user-XXXXX",
  *     }],
  *     templateRevisions: [{
+ *         name: "V1",
  *         clusterConfig: {
  *             rkeConfig: {
  *                 network: {
@@ -79,8 +81,8 @@ import * as utilities from "./utilities";
  *             },
  *         },
  *         "default": true,
- *         name: "V1",
  *     }],
+ *     description: "Terraform cluster template foo",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

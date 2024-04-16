@@ -20,45 +20,6 @@ import javax.annotation.Nullable;
 /**
  * Provides a Rancher App v2 resource. This can be used to manage helm charts for Rancher v2 environments and retrieve their information. App v2 resource is available at Rancher v2.5.x and above.
  * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.rancher2.AppV2;
- * import com.pulumi.rancher2.AppV2Args;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         // Create a new Rancher2 App V2 using
- *         var foo = new AppV2(&#34;foo&#34;, AppV2Args.builder()        
- *             .clusterId(&#34;&lt;CLUSTER_ID&gt;&#34;)
- *             .namespace(&#34;cattle-monitoring-system&#34;)
- *             .repoName(&#34;rancher-charts&#34;)
- *             .chartName(&#34;rancher-monitoring&#34;)
- *             .chartVersion(&#34;9.4.200&#34;)
- *             .values(Files.readString(Paths.get(&#34;values.yaml&#34;)))
- *             .build());
- * 
- *     }
- * }
- * ```
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ### Create an App from a Helm Chart using a different registry
  * 
  * The `system_default_registry` argument can override the global value at App installation. If argument is not provided, the global value for System Default Registry will be used instead.
@@ -86,10 +47,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var cisBenchmark = new AppV2(&#34;cisBenchmark&#34;, AppV2Args.builder()        
- *             .chartName(&#34;rancher-cis-benchmark&#34;)
  *             .clusterId(&#34;&lt;CLUSTER_ID&gt;&#34;)
+ *             .name(&#34;rancher-cis-benchmark&#34;)
  *             .namespace(&#34;cis-operator-system&#34;)
  *             .repoName(&#34;rancher-charts&#34;)
+ *             .chartName(&#34;rancher-cis-benchmark&#34;)
  *             .systemDefaultRegistry(&#34;&lt;some.dns.here&gt;:&lt;PORT&gt;&#34;)
  *             .build());
  * 

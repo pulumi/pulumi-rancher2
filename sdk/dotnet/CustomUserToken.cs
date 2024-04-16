@@ -32,8 +32,9 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a rancher2 Token
-    ///     var fooUser = new Rancher2.User("fooUser", new()
+    ///     var foo = new Rancher2.User("foo", new()
     ///     {
+    ///         Name = "foo",
     ///         Username = "foo",
     ///         Password = "changeme",
     ///         Enabled = true,
@@ -41,14 +42,15 @@ namespace Pulumi.Rancher2
     /// 
     ///     var foo_login = new Rancher2.GlobalRoleBinding("foo-login", new()
     ///     {
+    ///         Name = "foo-login-binding",
     ///         GlobalRoleId = "user-base",
-    ///         UserId = fooUser.Id,
+    ///         UserId = foo.Id,
     ///     });
     /// 
-    ///     var fooCustomUserToken = new Rancher2.CustomUserToken("fooCustomUserToken", new()
+    ///     var fooCustomUserToken = new Rancher2.CustomUserToken("foo", new()
     ///     {
-    ///         Username = fooUser.Username,
-    ///         Password = fooUser.Password,
+    ///         Username = foo.Username,
+    ///         Password = foo.Password,
     ///         Description = "foo token",
     ///         Ttl = 0,
     ///     }, new CustomResourceOptions

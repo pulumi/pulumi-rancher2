@@ -30,8 +30,9 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 Global Role
 //			_, err := rancher2.NewGlobalRole(ctx, "foo", &rancher2.GlobalRoleArgs{
-//				Description:    pulumi.String("Terraform global role acceptance test"),
+//				Name:           pulumi.String("foo"),
 //				NewUserDefault: pulumi.Bool(true),
+//				Description:    pulumi.String("Terraform global role acceptance test"),
 //				Rules: rancher2.GlobalRoleRuleArray{
 //					&rancher2.GlobalRoleRuleArgs{
 //						ApiGroups: pulumi.StringArray{

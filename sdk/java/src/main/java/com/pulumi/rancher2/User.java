@@ -50,7 +50,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 User
- *         var fooUser = new User(&#34;fooUser&#34;, UserArgs.builder()        
+ *         var foo = new User(&#34;foo&#34;, UserArgs.builder()        
+ *             .name(&#34;Foo user&#34;)
  *             .username(&#34;foo&#34;)
  *             .password(&#34;changeme&#34;)
  *             .enabled(true)
@@ -58,8 +59,9 @@ import javax.annotation.Nullable;
  * 
  *         // Create a new rancher2 global_role_binding for User
  *         var fooGlobalRoleBinding = new GlobalRoleBinding(&#34;fooGlobalRoleBinding&#34;, GlobalRoleBindingArgs.builder()        
+ *             .name(&#34;foo&#34;)
  *             .globalRoleId(&#34;user-base&#34;)
- *             .userId(fooUser.id())
+ *             .userId(foo.id())
  *             .build());
  * 
  *     }

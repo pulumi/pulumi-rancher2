@@ -31,9 +31,10 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new Rancher2 Project Alert Group
 //			_, err := rancher2.NewProjectAlertGroup(ctx, "foo", &rancher2.ProjectAlertGroupArgs{
+//				Name:                  pulumi.String("foo"),
 //				Description:           pulumi.String("Terraform project alert group"),
-//				GroupIntervalSeconds:  pulumi.Int(300),
 //				ProjectId:             pulumi.String("<project_id>"),
+//				GroupIntervalSeconds:  pulumi.Int(300),
 //				RepeatIntervalSeconds: pulumi.Int(3600),
 //			})
 //			if err != nil {

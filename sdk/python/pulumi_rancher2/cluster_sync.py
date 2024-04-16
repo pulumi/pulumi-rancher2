@@ -338,7 +338,8 @@ class ClusterSync(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         # Create a new rancher2 rke Cluster 
-        foo_custom_cluster = rancher2.Cluster("foo-customCluster",
+        foo_custom = rancher2.Cluster("foo-custom",
+            name="foo-custom",
             description="Foo rancher2 custom cluster",
             rke_config=rancher2.ClusterRkeConfigArgs(
                 network=rancher2.ClusterRkeConfigNetworkArgs(
@@ -346,7 +347,8 @@ class ClusterSync(pulumi.CustomResource):
                 ),
             ))
         # Create a new rancher2 Node Template
-        foo_node_template = rancher2.NodeTemplate("fooNodeTemplate",
+        foo = rancher2.NodeTemplate("foo",
+            name="foo",
             description="foo test",
             amazonec2_config=rancher2.NodeTemplateAmazonec2ConfigArgs(
                 access_key="<AWS_ACCESS_KEY>",
@@ -359,20 +361,22 @@ class ClusterSync(pulumi.CustomResource):
                 zone="<ZONE>",
             ))
         # Create a new rancher2 Node Pool
-        foo_node_pool = rancher2.NodePool("fooNodePool",
-            cluster_id=foo_custom_cluster.id,
+        foo_node_pool = rancher2.NodePool("foo",
+            cluster_id=foo_custom.id,
+            name="foo",
             hostname_prefix="foo-cluster-0",
-            node_template_id=foo_node_template.id,
+            node_template_id=foo.id,
             quantity=3,
             control_plane=True,
             etcd=True,
             worker=True)
         # Create a new rancher2 Cluster Sync
-        foo_custom_cluster_sync = rancher2.ClusterSync("foo-customClusterSync",
-            cluster_id=foo_custom_cluster.id,
+        foo_custom_cluster_sync = rancher2.ClusterSync("foo-custom",
+            cluster_id=foo_custom.id,
             node_pool_ids=[foo_node_pool.id])
         # Create a new rancher2 Project
-        foo_project = rancher2.Project("fooProject",
+        foo_project = rancher2.Project("foo",
+            name="foo",
             cluster_id=foo_custom_cluster_sync.id,
             description="Terraform namespace acceptance test",
             resource_quota=rancher2.ProjectResourceQuotaArgs(
@@ -422,7 +426,8 @@ class ClusterSync(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         # Create a new rancher2 rke Cluster 
-        foo_custom_cluster = rancher2.Cluster("foo-customCluster",
+        foo_custom = rancher2.Cluster("foo-custom",
+            name="foo-custom",
             description="Foo rancher2 custom cluster",
             rke_config=rancher2.ClusterRkeConfigArgs(
                 network=rancher2.ClusterRkeConfigNetworkArgs(
@@ -430,7 +435,8 @@ class ClusterSync(pulumi.CustomResource):
                 ),
             ))
         # Create a new rancher2 Node Template
-        foo_node_template = rancher2.NodeTemplate("fooNodeTemplate",
+        foo = rancher2.NodeTemplate("foo",
+            name="foo",
             description="foo test",
             amazonec2_config=rancher2.NodeTemplateAmazonec2ConfigArgs(
                 access_key="<AWS_ACCESS_KEY>",
@@ -443,20 +449,22 @@ class ClusterSync(pulumi.CustomResource):
                 zone="<ZONE>",
             ))
         # Create a new rancher2 Node Pool
-        foo_node_pool = rancher2.NodePool("fooNodePool",
-            cluster_id=foo_custom_cluster.id,
+        foo_node_pool = rancher2.NodePool("foo",
+            cluster_id=foo_custom.id,
+            name="foo",
             hostname_prefix="foo-cluster-0",
-            node_template_id=foo_node_template.id,
+            node_template_id=foo.id,
             quantity=3,
             control_plane=True,
             etcd=True,
             worker=True)
         # Create a new rancher2 Cluster Sync
-        foo_custom_cluster_sync = rancher2.ClusterSync("foo-customClusterSync",
-            cluster_id=foo_custom_cluster.id,
+        foo_custom_cluster_sync = rancher2.ClusterSync("foo-custom",
+            cluster_id=foo_custom.id,
             node_pool_ids=[foo_node_pool.id])
         # Create a new rancher2 Project
-        foo_project = rancher2.Project("fooProject",
+        foo_project = rancher2.Project("foo",
+            name="foo",
             cluster_id=foo_custom_cluster_sync.id,
             description="Terraform namespace acceptance test",
             resource_quota=rancher2.ProjectResourceQuotaArgs(

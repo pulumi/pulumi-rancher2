@@ -34,10 +34,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.rancher2.Project;
  * import com.pulumi.rancher2.ProjectArgs;
- * import com.pulumi.rancher2.inputs.ProjectContainerResourceLimitArgs;
  * import com.pulumi.rancher2.inputs.ProjectResourceQuotaArgs;
- * import com.pulumi.rancher2.inputs.ProjectResourceQuotaNamespaceDefaultLimitArgs;
  * import com.pulumi.rancher2.inputs.ProjectResourceQuotaProjectLimitArgs;
+ * import com.pulumi.rancher2.inputs.ProjectResourceQuotaNamespaceDefaultLimitArgs;
+ * import com.pulumi.rancher2.inputs.ProjectContainerResourceLimitArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -53,24 +53,25 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Project
  *         var foo = new Project(&#34;foo&#34;, ProjectArgs.builder()        
+ *             .name(&#34;foo&#34;)
  *             .clusterId(&#34;&lt;CLUSTER_ID&gt;&#34;)
- *             .containerResourceLimit(ProjectContainerResourceLimitArgs.builder()
- *                 .limitsCpu(&#34;20m&#34;)
- *                 .limitsMemory(&#34;20Mi&#34;)
- *                 .requestsCpu(&#34;1m&#34;)
- *                 .requestsMemory(&#34;1Mi&#34;)
- *                 .build())
  *             .resourceQuota(ProjectResourceQuotaArgs.builder()
- *                 .namespaceDefaultLimit(ProjectResourceQuotaNamespaceDefaultLimitArgs.builder()
- *                     .limitsCpu(&#34;2000m&#34;)
- *                     .limitsMemory(&#34;500Mi&#34;)
- *                     .requestsStorage(&#34;1Gi&#34;)
- *                     .build())
  *                 .projectLimit(ProjectResourceQuotaProjectLimitArgs.builder()
  *                     .limitsCpu(&#34;2000m&#34;)
  *                     .limitsMemory(&#34;2000Mi&#34;)
  *                     .requestsStorage(&#34;2Gi&#34;)
  *                     .build())
+ *                 .namespaceDefaultLimit(ProjectResourceQuotaNamespaceDefaultLimitArgs.builder()
+ *                     .limitsCpu(&#34;2000m&#34;)
+ *                     .limitsMemory(&#34;500Mi&#34;)
+ *                     .requestsStorage(&#34;1Gi&#34;)
+ *                     .build())
+ *                 .build())
+ *             .containerResourceLimit(ProjectContainerResourceLimitArgs.builder()
+ *                 .limitsCpu(&#34;20m&#34;)
+ *                 .limitsMemory(&#34;20Mi&#34;)
+ *                 .requestsCpu(&#34;1m&#34;)
+ *                 .requestsMemory(&#34;1Mi&#34;)
  *                 .build())
  *             .build());
  * 
@@ -88,11 +89,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.rancher2.Project;
  * import com.pulumi.rancher2.ProjectArgs;
+ * import com.pulumi.rancher2.inputs.ProjectResourceQuotaArgs;
+ * import com.pulumi.rancher2.inputs.ProjectResourceQuotaProjectLimitArgs;
+ * import com.pulumi.rancher2.inputs.ProjectResourceQuotaNamespaceDefaultLimitArgs;
  * import com.pulumi.rancher2.inputs.ProjectContainerResourceLimitArgs;
  * import com.pulumi.rancher2.inputs.ProjectProjectMonitoringInputArgs;
- * import com.pulumi.rancher2.inputs.ProjectResourceQuotaArgs;
- * import com.pulumi.rancher2.inputs.ProjectResourceQuotaNamespaceDefaultLimitArgs;
- * import com.pulumi.rancher2.inputs.ProjectResourceQuotaProjectLimitArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -108,7 +109,20 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Project enabling and customizing monitoring
  *         var foo = new Project(&#34;foo&#34;, ProjectArgs.builder()        
+ *             .name(&#34;foo&#34;)
  *             .clusterId(&#34;&lt;CLUSTER_ID&gt;&#34;)
+ *             .resourceQuota(ProjectResourceQuotaArgs.builder()
+ *                 .projectLimit(ProjectResourceQuotaProjectLimitArgs.builder()
+ *                     .limitsCpu(&#34;2000m&#34;)
+ *                     .limitsMemory(&#34;2000Mi&#34;)
+ *                     .requestsStorage(&#34;2Gi&#34;)
+ *                     .build())
+ *                 .namespaceDefaultLimit(ProjectResourceQuotaNamespaceDefaultLimitArgs.builder()
+ *                     .limitsCpu(&#34;2000m&#34;)
+ *                     .limitsMemory(&#34;500Mi&#34;)
+ *                     .requestsStorage(&#34;1Gi&#34;)
+ *                     .build())
+ *                 .build())
  *             .containerResourceLimit(ProjectContainerResourceLimitArgs.builder()
  *                 .limitsCpu(&#34;20m&#34;)
  *                 .limitsMemory(&#34;20Mi&#34;)
@@ -137,18 +151,6 @@ import javax.annotation.Nullable;
  *                     Map.entry(&#34;prometheus.resources.core.requests.memory&#34;, &#34;750Mi&#34;),
  *                     Map.entry(&#34;prometheus.retention&#34;, &#34;12h&#34;)
  *                 ))
- *                 .build())
- *             .resourceQuota(ProjectResourceQuotaArgs.builder()
- *                 .namespaceDefaultLimit(ProjectResourceQuotaNamespaceDefaultLimitArgs.builder()
- *                     .limitsCpu(&#34;2000m&#34;)
- *                     .limitsMemory(&#34;500Mi&#34;)
- *                     .requestsStorage(&#34;1Gi&#34;)
- *                     .build())
- *                 .projectLimit(ProjectResourceQuotaProjectLimitArgs.builder()
- *                     .limitsCpu(&#34;2000m&#34;)
- *                     .limitsMemory(&#34;2000Mi&#34;)
- *                     .requestsStorage(&#34;2Gi&#34;)
- *                     .build())
  *                 .build())
  *             .build());
  * 

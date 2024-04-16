@@ -294,8 +294,9 @@ class GlobalRole(pulumi.CustomResource):
 
         # Create a new rancher2 Global Role
         foo = rancher2.GlobalRole("foo",
-            description="Terraform global role acceptance test",
+            name="foo",
             new_user_default=True,
+            description="Terraform global role acceptance test",
             rules=[rancher2.GlobalRoleRuleArgs(
                 api_groups=["*"],
                 resources=["secrets"],
@@ -340,8 +341,9 @@ class GlobalRole(pulumi.CustomResource):
 
         # Create a new rancher2 Global Role
         foo = rancher2.GlobalRole("foo",
-            description="Terraform global role acceptance test",
+            name="foo",
             new_user_default=True,
+            description="Terraform global role acceptance test",
             rules=[rancher2.GlobalRoleRuleArgs(
                 api_groups=["*"],
                 resources=["secrets"],

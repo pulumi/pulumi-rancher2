@@ -29,6 +29,7 @@ namespace Pulumi.Rancher2
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Retrieve a rancher2 Project Certificate
         ///     var foo = Rancher2.GetCertificate.Invoke(new()
         ///     {
         ///         Name = "&lt;name&gt;",
@@ -48,11 +49,12 @@ namespace Pulumi.Rancher2
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Retrieve a rancher2 Namespaced Certificate
         ///     var foo = Rancher2.GetCertificate.Invoke(new()
         ///     {
         ///         Name = "&lt;name&gt;",
-        ///         NamespaceId = "&lt;namespace_id&gt;",
         ///         ProjectId = "&lt;project_id&gt;",
+        ///         NamespaceId = "&lt;namespace_id&gt;",
         ///     });
         /// 
         /// });
@@ -80,6 +82,7 @@ namespace Pulumi.Rancher2
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Retrieve a rancher2 Project Certificate
         ///     var foo = Rancher2.GetCertificate.Invoke(new()
         ///     {
         ///         Name = "&lt;name&gt;",
@@ -99,11 +102,12 @@ namespace Pulumi.Rancher2
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Retrieve a rancher2 Namespaced Certificate
         ///     var foo = Rancher2.GetCertificate.Invoke(new()
         ///     {
         ///         Name = "&lt;name&gt;",
-        ///         NamespaceId = "&lt;namespace_id&gt;",
         ///         ProjectId = "&lt;project_id&gt;",
+        ///         NamespaceId = "&lt;namespace_id&gt;",
         ///     });
         /// 
         /// });

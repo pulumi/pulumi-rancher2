@@ -59,7 +59,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 rke Cluster 
- *         var foo_customCluster = new Cluster(&#34;foo-customCluster&#34;, ClusterArgs.builder()        
+ *         var foo_custom = new Cluster(&#34;foo-custom&#34;, ClusterArgs.builder()        
+ *             .name(&#34;foo-custom&#34;)
  *             .description(&#34;Foo rancher2 custom cluster&#34;)
  *             .rkeConfig(ClusterRkeConfigArgs.builder()
  *                 .network(ClusterRkeConfigNetworkArgs.builder()
@@ -69,7 +70,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // Create a new rancher2 Node Template
- *         var fooNodeTemplate = new NodeTemplate(&#34;fooNodeTemplate&#34;, NodeTemplateArgs.builder()        
+ *         var foo = new NodeTemplate(&#34;foo&#34;, NodeTemplateArgs.builder()        
+ *             .name(&#34;foo&#34;)
  *             .description(&#34;foo test&#34;)
  *             .amazonec2Config(NodeTemplateAmazonec2ConfigArgs.builder()
  *                 .accessKey(&#34;&lt;AWS_ACCESS_KEY&gt;&#34;)
@@ -85,9 +87,10 @@ import javax.annotation.Nullable;
  * 
  *         // Create a new rancher2 Node Pool
  *         var fooNodePool = new NodePool(&#34;fooNodePool&#34;, NodePoolArgs.builder()        
- *             .clusterId(foo_customCluster.id())
+ *             .clusterId(foo_custom.id())
+ *             .name(&#34;foo&#34;)
  *             .hostnamePrefix(&#34;foo-cluster-0&#34;)
- *             .nodeTemplateId(fooNodeTemplate.id())
+ *             .nodeTemplateId(foo.id())
  *             .quantity(3)
  *             .controlPlane(true)
  *             .etcd(true)
@@ -96,12 +99,13 @@ import javax.annotation.Nullable;
  * 
  *         // Create a new rancher2 Cluster Sync
  *         var foo_customClusterSync = new ClusterSync(&#34;foo-customClusterSync&#34;, ClusterSyncArgs.builder()        
- *             .clusterId(foo_customCluster.id())
+ *             .clusterId(foo_custom.id())
  *             .nodePoolIds(fooNodePool.id())
  *             .build());
  * 
  *         // Create a new rancher2 Project
  *         var fooProject = new Project(&#34;fooProject&#34;, ProjectArgs.builder()        
+ *             .name(&#34;foo&#34;)
  *             .clusterId(foo_customClusterSync.id())
  *             .description(&#34;Terraform namespace acceptance test&#34;)
  *             .resourceQuota(ProjectResourceQuotaArgs.builder()

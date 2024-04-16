@@ -49,6 +49,7 @@ import javax.annotation.Nullable;
  *         // Create a new Rancher2 Cluster Alert Group
  *         var foo = new ClusterAlertGroup(&#34;foo&#34;, ClusterAlertGroupArgs.builder()        
  *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
+ *             .name(&#34;foo&#34;)
  *             .description(&#34;Terraform cluster alert group&#34;)
  *             .groupIntervalSeconds(300)
  *             .repeatIntervalSeconds(3600)

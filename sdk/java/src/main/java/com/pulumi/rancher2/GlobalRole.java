@@ -49,8 +49,9 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Global Role
  *         var foo = new GlobalRole(&#34;foo&#34;, GlobalRoleArgs.builder()        
- *             .description(&#34;Terraform global role acceptance test&#34;)
+ *             .name(&#34;foo&#34;)
  *             .newUserDefault(true)
+ *             .description(&#34;Terraform global role acceptance test&#34;)
  *             .rules(GlobalRoleRuleArgs.builder()
  *                 .apiGroups(&#34;*&#34;)
  *                 .resources(&#34;secrets&#34;)

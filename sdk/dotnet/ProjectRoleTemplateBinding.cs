@@ -26,6 +26,7 @@ namespace Pulumi.Rancher2
     ///     // Create a new rancher2 Project Role Template Binding
     ///     var foo = new Rancher2.ProjectRoleTemplateBinding("foo", new()
     ///     {
+    ///         Name = "foo",
     ///         ProjectId = "&lt;project_id&gt;",
     ///         RoleTemplateId = "&lt;role_template_id&gt;",
     ///         UserId = "&lt;user_id&gt;",

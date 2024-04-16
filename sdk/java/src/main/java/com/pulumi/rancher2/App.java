@@ -53,17 +53,18 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 App
  *         var foo = new App(&#34;foo&#34;, AppArgs.builder()        
- *             .answers(Map.ofEntries(
- *                 Map.entry(&#34;foo&#34;, &#34;bar&#34;),
- *                 Map.entry(&#34;ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect&#34;, true),
- *                 Map.entry(&#34;ingress_host&#34;, &#34;test.xip.io&#34;)
- *             ))
  *             .catalogName(&#34;&lt;catalog_name&gt;&#34;)
+ *             .name(&#34;foo&#34;)
  *             .description(&#34;Foo app&#34;)
  *             .projectId(&#34;&lt;project_id&gt;&#34;)
- *             .targetNamespace(&#34;&lt;namespace_name&gt;&#34;)
  *             .templateName(&#34;&lt;template_name&gt;&#34;)
  *             .templateVersion(&#34;&lt;template_version&gt;&#34;)
+ *             .targetNamespace(&#34;&lt;namespace_name&gt;&#34;)
+ *             .answers(Map.ofEntries(
+ *                 Map.entry(&#34;ingress_host&#34;, &#34;test.xip.io&#34;),
+ *                 Map.entry(&#34;foo&#34;, &#34;bar&#34;),
+ *                 Map.entry(&#34;ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect&#34;, true)
+ *             ))
  *             .build());
  * 
  *     }
@@ -98,7 +99,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 App in a new namespace
- *         var fooNamespace = new Namespace(&#34;fooNamespace&#34;, NamespaceArgs.builder()        
+ *         var foo = new Namespace(&#34;foo&#34;, NamespaceArgs.builder()        
+ *             .name(&#34;foo&#34;)
  *             .description(&#34;Foo namespace&#34;)
  *             .projectId(&#34;&lt;project_id&gt;&#34;)
  *             .resourceQuota(NamespaceResourceQuotaArgs.builder()
@@ -112,11 +114,12 @@ import javax.annotation.Nullable;
  * 
  *         var fooApp = new App(&#34;fooApp&#34;, AppArgs.builder()        
  *             .catalogName(&#34;&lt;catalog_name&gt;&#34;)
+ *             .name(&#34;foo&#34;)
  *             .description(&#34;Foo app&#34;)
  *             .projectId(&#34;&lt;project_id&gt;&#34;)
  *             .templateName(&#34;&lt;template_name&gt;&#34;)
  *             .templateVersion(&#34;&lt;template_version&gt;&#34;)
- *             .targetNamespace(fooNamespace.id())
+ *             .targetNamespace(foo.id())
  *             .answers(Map.ofEntries(
  *                 Map.entry(&#34;ingress_host&#34;, &#34;test.xip.io&#34;),
  *                 Map.entry(&#34;foo&#34;, &#34;bar&#34;),

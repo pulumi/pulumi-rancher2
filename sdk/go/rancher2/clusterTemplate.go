@@ -32,7 +32,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 Cluster Template
 //			_, err := rancher2.NewClusterTemplate(ctx, "foo", &rancher2.ClusterTemplateArgs{
-//				Description: pulumi.String("Terraform cluster template foo"),
+//				Name: pulumi.String("foo"),
 //				Members: rancher2.ClusterTemplateMemberArray{
 //					&rancher2.ClusterTemplateMemberArgs{
 //						AccessType:      pulumi.String("owner"),
@@ -41,6 +41,7 @@ import (
 //				},
 //				TemplateRevisions: rancher2.ClusterTemplateTemplateRevisionArray{
 //					&rancher2.ClusterTemplateTemplateRevisionArgs{
+//						Name: pulumi.String("V1"),
 //						ClusterConfig: &rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs{
 //							RkeConfig: &rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs{
 //								Network: &rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs{
@@ -55,9 +56,9 @@ import (
 //							},
 //						},
 //						Default: pulumi.Bool(true),
-//						Name:    pulumi.String("V1"),
 //					},
 //				},
+//				Description: pulumi.String("Terraform cluster template foo"),
 //			})
 //			if err != nil {
 //				return err
@@ -86,7 +87,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 Cluster Template
 //			_, err := rancher2.NewClusterTemplate(ctx, "foo", &rancher2.ClusterTemplateArgs{
-//				Description: pulumi.String("Terraform cluster template foo"),
+//				Name: pulumi.String("foo"),
 //				Members: rancher2.ClusterTemplateMemberArray{
 //					&rancher2.ClusterTemplateMemberArgs{
 //						AccessType:      pulumi.String("owner"),
@@ -95,6 +96,7 @@ import (
 //				},
 //				TemplateRevisions: rancher2.ClusterTemplateTemplateRevisionArray{
 //					&rancher2.ClusterTemplateTemplateRevisionArgs{
+//						Name: pulumi.String("V1"),
 //						ClusterConfig: &rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs{
 //							RkeConfig: &rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs{
 //								Network: &rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs{
@@ -113,9 +115,9 @@ import (
 //							},
 //						},
 //						Default: pulumi.Bool(true),
-//						Name:    pulumi.String("V1"),
 //					},
 //				},
+//				Description: pulumi.String("Terraform cluster template foo"),
 //			})
 //			if err != nil {
 //				return err

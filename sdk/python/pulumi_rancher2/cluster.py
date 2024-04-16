@@ -1290,7 +1290,9 @@ class Cluster(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         # Create a new rancher2 imported Cluster
-        foo_imported = rancher2.Cluster("foo-imported", description="Foo rancher2 imported cluster")
+        foo_imported = rancher2.Cluster("foo-imported",
+            name="foo-imported",
+            description="Foo rancher2 imported cluster")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -1307,6 +1309,14 @@ class Cluster(pulumi.CustomResource):
 
         # Create a new rancher2 RKE Cluster
         foo_custom = rancher2.Cluster("foo-custom",
+            name="foo-custom",
+            description="Foo rancher2 custom cluster",
+            rke_config=rancher2.ClusterRkeConfigArgs(
+                network=rancher2.ClusterRkeConfigNetworkArgs(
+                    plugin="canal",
+                ),
+            ),
+            enable_cluster_monitoring=True,
             cluster_monitoring_input=rancher2.ClusterClusterMonitoringInputArgs(
                 answers={
                     "exporter-kubelets.https": True,
@@ -1329,13 +1339,6 @@ class Cluster(pulumi.CustomResource):
                     "prometheus.retention": "12h",
                 },
                 version="0.1.0",
-            ),
-            description="Foo rancher2 custom cluster",
-            enable_cluster_monitoring=True,
-            rke_config=rancher2.ClusterRkeConfigArgs(
-                network=rancher2.ClusterRkeConfigNetworkArgs(
-                    plugin="canal",
-                ),
             ))
         ```
         <!--End PulumiCodeChooser -->
@@ -1348,7 +1351,8 @@ class Cluster(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         # Create a new rancher2 RKE Cluster
-        foo_custom_cluster = rancher2.Cluster("foo-customCluster",
+        foo_custom = rancher2.Cluster("foo-custom",
+            name="foo-custom",
             description="Foo rancher2 custom cluster",
             rke_config=rancher2.ClusterRkeConfigArgs(
                 network=rancher2.ClusterRkeConfigNetworkArgs(
@@ -1380,16 +1384,18 @@ class Cluster(pulumi.CustomResource):
                 version="0.1.0",
             ))
         # Create a new rancher2 Cluster Sync for foo-custom cluster
-        foo_custom_cluster_sync = rancher2.ClusterSync("foo-customClusterSync",
-            cluster_id=foo_custom_cluster.id,
-            wait_monitoring=foo_custom_cluster.enable_cluster_monitoring)
+        foo_custom_cluster_sync = rancher2.ClusterSync("foo-custom",
+            cluster_id=foo_custom.id,
+            wait_monitoring=foo_custom.enable_cluster_monitoring)
         # Create a new rancher2 Namespace
         foo_istio = rancher2.Namespace("foo-istio",
+            name="istio-system",
             project_id=foo_custom_cluster_sync.system_project_id,
             description="istio namespace")
         # Create a new rancher2 App deploying istio (should wait until monitoring is up and running)
         istio = rancher2.App("istio",
             catalog_name="system-library",
+            name="cluster-istio",
             description="Terraform app acceptance test",
             project_id=foo_istio.project_id,
             template_name="rancher-istio",
@@ -1448,6 +1454,7 @@ class Cluster(pulumi.CustomResource):
 
         # Create a new rancher2 RKE Cluster
         foo_custom = rancher2.Cluster("foo-custom",
+            name="foo-custom",
             description="Foo rancher2 custom cluster",
             rke_config=rancher2.ClusterRkeConfigArgs(
                 network=rancher2.ClusterRkeConfigNetworkArgs(
@@ -1455,7 +1462,8 @@ class Cluster(pulumi.CustomResource):
                 ),
             ))
         # Create a new rancher2 Node Template
-        foo_node_template = rancher2.NodeTemplate("fooNodeTemplate",
+        foo = rancher2.NodeTemplate("foo",
+            name="foo",
             description="foo test",
             amazonec2_config=rancher2.NodeTemplateAmazonec2ConfigArgs(
                 access_key="<AWS_ACCESS_KEY>",
@@ -1468,10 +1476,11 @@ class Cluster(pulumi.CustomResource):
                 zone="<ZONE>",
             ))
         # Create a new rancher2 Node Pool
-        foo_node_pool = rancher2.NodePool("fooNodePool",
+        foo_node_pool = rancher2.NodePool("foo",
             cluster_id=foo_custom.id,
+            name="foo",
             hostname_prefix="foo-cluster-0",
-            node_template_id=foo_node_template.id,
+            node_template_id=foo.id,
             quantity=3,
             control_plane=True,
             etcd=True,
@@ -1487,7 +1496,8 @@ class Cluster(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         # Create a new rancher2 cluster template
-        foo_cluster_template = rancher2.ClusterTemplate("fooClusterTemplate",
+        foo = rancher2.ClusterTemplate("foo",
+            name="foo",
             members=[rancher2.ClusterTemplateMemberArgs(
                 access_type="owner",
                 user_principal_id="local://user-XXXXX",
@@ -1511,9 +1521,10 @@ class Cluster(pulumi.CustomResource):
             )],
             description="Test cluster template v2")
         # Create a new rancher2 RKE Cluster from template
-        foo_cluster = rancher2.Cluster("fooCluster",
-            cluster_template_id=foo_cluster_template.id,
-            cluster_template_revision_id=foo_cluster_template.template_revisions[0].id)
+        foo_cluster = rancher2.Cluster("foo",
+            name="foo",
+            cluster_template_id=foo.id,
+            cluster_template_revision_id=foo.template_revisions[0].id)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -1525,6 +1536,7 @@ class Cluster(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         foo = rancher2.Cluster("foo",
+            name="foo",
             description="Terraform custom cluster",
             rke_config=rancher2.ClusterRkeConfigArgs(
                 network=rancher2.ClusterRkeConfigNetworkArgs(
@@ -1537,12 +1549,13 @@ class Cluster(pulumi.CustomResource):
                     ),
                     kube_api=rancher2.ClusterRkeConfigServicesKubeApiArgs(
                         audit_log=rancher2.ClusterRkeConfigServicesKubeApiAuditLogArgs(
+                            enabled=True,
                             configuration=rancher2.ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs(
-                                format="json",
                                 max_age=5,
                                 max_backup=5,
                                 max_size=100,
                                 path="-",
+                                format="json",
                                 policy=\"\"\"apiVersion: audit.k8s.io/v1
         kind: Policy
         metadata:
@@ -1554,10 +1567,8 @@ class Cluster(pulumi.CustomResource):
           resources:
           - resources:
             - pods
-
         \"\"\",
                             ),
-                            enabled=True,
                         ),
                     ),
                 ),
@@ -1577,6 +1588,13 @@ class Cluster(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         foo = rancher2.Cluster("foo",
+            name="foo",
+            description="Terraform cluster with agent customization",
+            rke_config=rancher2.ClusterRkeConfigArgs(
+                network=rancher2.ClusterRkeConfigNetworkArgs(
+                    plugin="canal",
+                ),
+            ),
             cluster_agent_deployment_customizations=[rancher2.ClusterClusterAgentDeploymentCustomizationArgs(
                 append_tolerations=[rancher2.ClusterClusterAgentDeploymentCustomizationAppendTolerationArgs(
                     effect="NoSchedule",
@@ -1598,7 +1616,6 @@ class Cluster(pulumi.CustomResource):
             }
           }
         }
-
         \"\"\",
                 override_resource_requirements=[rancher2.ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs(
                     cpu_limit="800",
@@ -1606,13 +1623,7 @@ class Cluster(pulumi.CustomResource):
                     memory_limit="800",
                     memory_request="500",
                 )],
-            )],
-            description="Terraform cluster with agent customization",
-            rke_config=rancher2.ClusterRkeConfigArgs(
-                network=rancher2.ClusterRkeConfigNetworkArgs(
-                    plugin="canal",
-                ),
-            ))
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -1624,7 +1635,9 @@ class Cluster(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         # Custom PSACT (if you wish to use your own)
-        foo_pod_security_admission_configuration_template = rancher2.PodSecurityAdmissionConfigurationTemplate("fooPodSecurityAdmissionConfigurationTemplate",
+        foo = rancher2.PodSecurityAdmissionConfigurationTemplate("foo",
+            name="custom-psact",
+            description="This is my custom Pod Security Admission Configuration Template",
             defaults=rancher2.PodSecurityAdmissionConfigurationTemplateDefaultsArgs(
                 audit="restricted",
                 audit_version="latest",
@@ -1633,18 +1646,18 @@ class Cluster(pulumi.CustomResource):
                 warn="restricted",
                 warn_version="latest",
             ),
-            description="This is my custom Pod Security Admission Configuration Template",
             exemptions=rancher2.PodSecurityAdmissionConfigurationTemplateExemptionsArgs(
+                usernames=["testuser"],
+                runtime_classes=["testclass"],
                 namespaces=[
                     "ingress-nginx",
                     "kube-system",
                 ],
-                runtime_classes=["testclass"],
-                usernames=["testuser"],
             ))
-        foo_cluster = rancher2.Cluster("fooCluster",
-            default_pod_security_admission_configuration_template_name="<name>",
+        foo_cluster = rancher2.Cluster("foo",
+            name="foo",
             description="Terraform cluster with PSACT",
+            default_pod_security_admission_configuration_template_name="<name>",
             rke_config=rancher2.ClusterRkeConfigArgs(
                 network=rancher2.ClusterRkeConfigNetworkArgs(
                     plugin="canal",
@@ -1660,16 +1673,18 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_rancher2 as rancher2
 
-        foo_cloud_credential = rancher2.CloudCredential("fooCloudCredential",
+        foo = rancher2.CloudCredential("foo",
+            name="foo",
             description="foo test",
             amazonec2_credential_config=rancher2.CloudCredentialAmazonec2CredentialConfigArgs(
                 access_key="<aws-access-key>",
                 secret_key="<aws-secret-key>",
             ))
-        foo_cluster = rancher2.Cluster("fooCluster",
+        foo_cluster = rancher2.Cluster("foo",
+            name="foo",
             description="Terraform EKS cluster",
             eks_config_v2=rancher2.ClusterEksConfigV2Args(
-                cloud_credential_id=foo_cloud_credential.id,
+                cloud_credential_id=foo.id,
                 name="<cluster-name>",
                 region="<eks-region>",
                 imported=True,
@@ -1684,16 +1699,18 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_rancher2 as rancher2
 
-        foo_cloud_credential = rancher2.CloudCredential("fooCloudCredential",
+        foo = rancher2.CloudCredential("foo",
+            name="foo",
             description="foo test",
             amazonec2_credential_config=rancher2.CloudCredentialAmazonec2CredentialConfigArgs(
                 access_key="<aws-access-key>",
                 secret_key="<aws-secret-key>",
             ))
-        foo_cluster = rancher2.Cluster("fooCluster",
+        foo_cluster = rancher2.Cluster("foo",
+            name="foo",
             description="Terraform EKS cluster",
             eks_config_v2=rancher2.ClusterEksConfigV2Args(
-                cloud_credential_id=foo_cloud_credential.id,
+                cloud_credential_id=foo.id,
                 region="<EKS_REGION>",
                 kubernetes_version="1.24",
                 logging_types=[
@@ -1730,16 +1747,18 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_rancher2 as rancher2
 
-        foo_cloud_credential = rancher2.CloudCredential("fooCloudCredential",
+        foo = rancher2.CloudCredential("foo",
+            name="foo",
             description="foo test",
             amazonec2_credential_config=rancher2.CloudCredentialAmazonec2CredentialConfigArgs(
                 access_key="<aws-access-key>",
                 secret_key="<aws-secret-key>",
             ))
-        foo_cluster = rancher2.Cluster("fooCluster",
+        foo_cluster = rancher2.Cluster("foo",
+            name="foo",
             description="Terraform EKS cluster",
             eks_config_v2=rancher2.ClusterEksConfigV2Args(
-                cloud_credential_id=foo_cloud_credential.id,
+                cloud_credential_id=foo.id,
                 region="<EKS_REGION>",
                 kubernetes_version="1.24",
                 logging_types=[
@@ -1768,12 +1787,15 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_rancher2 as rancher2
 
-        foo_aks = rancher2.CloudCredential("foo-aks", azure_credential_config=rancher2.CloudCredentialAzureCredentialConfigArgs(
-            client_id="<client-id>",
-            client_secret="<client-secret>",
-            subscription_id="<subscription-id>",
-        ))
+        foo_aks = rancher2.CloudCredential("foo-aks",
+            name="foo-aks",
+            azure_credential_config=rancher2.CloudCredentialAzureCredentialConfigArgs(
+                client_id="<client-id>",
+                client_secret="<client-secret>",
+                subscription_id="<subscription-id>",
+            ))
         foo = rancher2.Cluster("foo",
+            name="foo",
             description="Terraform AKS cluster",
             aks_config_v2=rancher2.ClusterAksConfigV2Args(
                 cloud_credential_id=foo_aks.id,
@@ -1886,7 +1908,9 @@ class Cluster(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         # Create a new rancher2 imported Cluster
-        foo_imported = rancher2.Cluster("foo-imported", description="Foo rancher2 imported cluster")
+        foo_imported = rancher2.Cluster("foo-imported",
+            name="foo-imported",
+            description="Foo rancher2 imported cluster")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -1903,6 +1927,14 @@ class Cluster(pulumi.CustomResource):
 
         # Create a new rancher2 RKE Cluster
         foo_custom = rancher2.Cluster("foo-custom",
+            name="foo-custom",
+            description="Foo rancher2 custom cluster",
+            rke_config=rancher2.ClusterRkeConfigArgs(
+                network=rancher2.ClusterRkeConfigNetworkArgs(
+                    plugin="canal",
+                ),
+            ),
+            enable_cluster_monitoring=True,
             cluster_monitoring_input=rancher2.ClusterClusterMonitoringInputArgs(
                 answers={
                     "exporter-kubelets.https": True,
@@ -1925,13 +1957,6 @@ class Cluster(pulumi.CustomResource):
                     "prometheus.retention": "12h",
                 },
                 version="0.1.0",
-            ),
-            description="Foo rancher2 custom cluster",
-            enable_cluster_monitoring=True,
-            rke_config=rancher2.ClusterRkeConfigArgs(
-                network=rancher2.ClusterRkeConfigNetworkArgs(
-                    plugin="canal",
-                ),
             ))
         ```
         <!--End PulumiCodeChooser -->
@@ -1944,7 +1969,8 @@ class Cluster(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         # Create a new rancher2 RKE Cluster
-        foo_custom_cluster = rancher2.Cluster("foo-customCluster",
+        foo_custom = rancher2.Cluster("foo-custom",
+            name="foo-custom",
             description="Foo rancher2 custom cluster",
             rke_config=rancher2.ClusterRkeConfigArgs(
                 network=rancher2.ClusterRkeConfigNetworkArgs(
@@ -1976,16 +2002,18 @@ class Cluster(pulumi.CustomResource):
                 version="0.1.0",
             ))
         # Create a new rancher2 Cluster Sync for foo-custom cluster
-        foo_custom_cluster_sync = rancher2.ClusterSync("foo-customClusterSync",
-            cluster_id=foo_custom_cluster.id,
-            wait_monitoring=foo_custom_cluster.enable_cluster_monitoring)
+        foo_custom_cluster_sync = rancher2.ClusterSync("foo-custom",
+            cluster_id=foo_custom.id,
+            wait_monitoring=foo_custom.enable_cluster_monitoring)
         # Create a new rancher2 Namespace
         foo_istio = rancher2.Namespace("foo-istio",
+            name="istio-system",
             project_id=foo_custom_cluster_sync.system_project_id,
             description="istio namespace")
         # Create a new rancher2 App deploying istio (should wait until monitoring is up and running)
         istio = rancher2.App("istio",
             catalog_name="system-library",
+            name="cluster-istio",
             description="Terraform app acceptance test",
             project_id=foo_istio.project_id,
             template_name="rancher-istio",
@@ -2044,6 +2072,7 @@ class Cluster(pulumi.CustomResource):
 
         # Create a new rancher2 RKE Cluster
         foo_custom = rancher2.Cluster("foo-custom",
+            name="foo-custom",
             description="Foo rancher2 custom cluster",
             rke_config=rancher2.ClusterRkeConfigArgs(
                 network=rancher2.ClusterRkeConfigNetworkArgs(
@@ -2051,7 +2080,8 @@ class Cluster(pulumi.CustomResource):
                 ),
             ))
         # Create a new rancher2 Node Template
-        foo_node_template = rancher2.NodeTemplate("fooNodeTemplate",
+        foo = rancher2.NodeTemplate("foo",
+            name="foo",
             description="foo test",
             amazonec2_config=rancher2.NodeTemplateAmazonec2ConfigArgs(
                 access_key="<AWS_ACCESS_KEY>",
@@ -2064,10 +2094,11 @@ class Cluster(pulumi.CustomResource):
                 zone="<ZONE>",
             ))
         # Create a new rancher2 Node Pool
-        foo_node_pool = rancher2.NodePool("fooNodePool",
+        foo_node_pool = rancher2.NodePool("foo",
             cluster_id=foo_custom.id,
+            name="foo",
             hostname_prefix="foo-cluster-0",
-            node_template_id=foo_node_template.id,
+            node_template_id=foo.id,
             quantity=3,
             control_plane=True,
             etcd=True,
@@ -2083,7 +2114,8 @@ class Cluster(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         # Create a new rancher2 cluster template
-        foo_cluster_template = rancher2.ClusterTemplate("fooClusterTemplate",
+        foo = rancher2.ClusterTemplate("foo",
+            name="foo",
             members=[rancher2.ClusterTemplateMemberArgs(
                 access_type="owner",
                 user_principal_id="local://user-XXXXX",
@@ -2107,9 +2139,10 @@ class Cluster(pulumi.CustomResource):
             )],
             description="Test cluster template v2")
         # Create a new rancher2 RKE Cluster from template
-        foo_cluster = rancher2.Cluster("fooCluster",
-            cluster_template_id=foo_cluster_template.id,
-            cluster_template_revision_id=foo_cluster_template.template_revisions[0].id)
+        foo_cluster = rancher2.Cluster("foo",
+            name="foo",
+            cluster_template_id=foo.id,
+            cluster_template_revision_id=foo.template_revisions[0].id)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -2121,6 +2154,7 @@ class Cluster(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         foo = rancher2.Cluster("foo",
+            name="foo",
             description="Terraform custom cluster",
             rke_config=rancher2.ClusterRkeConfigArgs(
                 network=rancher2.ClusterRkeConfigNetworkArgs(
@@ -2133,12 +2167,13 @@ class Cluster(pulumi.CustomResource):
                     ),
                     kube_api=rancher2.ClusterRkeConfigServicesKubeApiArgs(
                         audit_log=rancher2.ClusterRkeConfigServicesKubeApiAuditLogArgs(
+                            enabled=True,
                             configuration=rancher2.ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs(
-                                format="json",
                                 max_age=5,
                                 max_backup=5,
                                 max_size=100,
                                 path="-",
+                                format="json",
                                 policy=\"\"\"apiVersion: audit.k8s.io/v1
         kind: Policy
         metadata:
@@ -2150,10 +2185,8 @@ class Cluster(pulumi.CustomResource):
           resources:
           - resources:
             - pods
-
         \"\"\",
                             ),
-                            enabled=True,
                         ),
                     ),
                 ),
@@ -2173,6 +2206,13 @@ class Cluster(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         foo = rancher2.Cluster("foo",
+            name="foo",
+            description="Terraform cluster with agent customization",
+            rke_config=rancher2.ClusterRkeConfigArgs(
+                network=rancher2.ClusterRkeConfigNetworkArgs(
+                    plugin="canal",
+                ),
+            ),
             cluster_agent_deployment_customizations=[rancher2.ClusterClusterAgentDeploymentCustomizationArgs(
                 append_tolerations=[rancher2.ClusterClusterAgentDeploymentCustomizationAppendTolerationArgs(
                     effect="NoSchedule",
@@ -2194,7 +2234,6 @@ class Cluster(pulumi.CustomResource):
             }
           }
         }
-
         \"\"\",
                 override_resource_requirements=[rancher2.ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs(
                     cpu_limit="800",
@@ -2202,13 +2241,7 @@ class Cluster(pulumi.CustomResource):
                     memory_limit="800",
                     memory_request="500",
                 )],
-            )],
-            description="Terraform cluster with agent customization",
-            rke_config=rancher2.ClusterRkeConfigArgs(
-                network=rancher2.ClusterRkeConfigNetworkArgs(
-                    plugin="canal",
-                ),
-            ))
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -2220,7 +2253,9 @@ class Cluster(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         # Custom PSACT (if you wish to use your own)
-        foo_pod_security_admission_configuration_template = rancher2.PodSecurityAdmissionConfigurationTemplate("fooPodSecurityAdmissionConfigurationTemplate",
+        foo = rancher2.PodSecurityAdmissionConfigurationTemplate("foo",
+            name="custom-psact",
+            description="This is my custom Pod Security Admission Configuration Template",
             defaults=rancher2.PodSecurityAdmissionConfigurationTemplateDefaultsArgs(
                 audit="restricted",
                 audit_version="latest",
@@ -2229,18 +2264,18 @@ class Cluster(pulumi.CustomResource):
                 warn="restricted",
                 warn_version="latest",
             ),
-            description="This is my custom Pod Security Admission Configuration Template",
             exemptions=rancher2.PodSecurityAdmissionConfigurationTemplateExemptionsArgs(
+                usernames=["testuser"],
+                runtime_classes=["testclass"],
                 namespaces=[
                     "ingress-nginx",
                     "kube-system",
                 ],
-                runtime_classes=["testclass"],
-                usernames=["testuser"],
             ))
-        foo_cluster = rancher2.Cluster("fooCluster",
-            default_pod_security_admission_configuration_template_name="<name>",
+        foo_cluster = rancher2.Cluster("foo",
+            name="foo",
             description="Terraform cluster with PSACT",
+            default_pod_security_admission_configuration_template_name="<name>",
             rke_config=rancher2.ClusterRkeConfigArgs(
                 network=rancher2.ClusterRkeConfigNetworkArgs(
                     plugin="canal",
@@ -2256,16 +2291,18 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_rancher2 as rancher2
 
-        foo_cloud_credential = rancher2.CloudCredential("fooCloudCredential",
+        foo = rancher2.CloudCredential("foo",
+            name="foo",
             description="foo test",
             amazonec2_credential_config=rancher2.CloudCredentialAmazonec2CredentialConfigArgs(
                 access_key="<aws-access-key>",
                 secret_key="<aws-secret-key>",
             ))
-        foo_cluster = rancher2.Cluster("fooCluster",
+        foo_cluster = rancher2.Cluster("foo",
+            name="foo",
             description="Terraform EKS cluster",
             eks_config_v2=rancher2.ClusterEksConfigV2Args(
-                cloud_credential_id=foo_cloud_credential.id,
+                cloud_credential_id=foo.id,
                 name="<cluster-name>",
                 region="<eks-region>",
                 imported=True,
@@ -2280,16 +2317,18 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_rancher2 as rancher2
 
-        foo_cloud_credential = rancher2.CloudCredential("fooCloudCredential",
+        foo = rancher2.CloudCredential("foo",
+            name="foo",
             description="foo test",
             amazonec2_credential_config=rancher2.CloudCredentialAmazonec2CredentialConfigArgs(
                 access_key="<aws-access-key>",
                 secret_key="<aws-secret-key>",
             ))
-        foo_cluster = rancher2.Cluster("fooCluster",
+        foo_cluster = rancher2.Cluster("foo",
+            name="foo",
             description="Terraform EKS cluster",
             eks_config_v2=rancher2.ClusterEksConfigV2Args(
-                cloud_credential_id=foo_cloud_credential.id,
+                cloud_credential_id=foo.id,
                 region="<EKS_REGION>",
                 kubernetes_version="1.24",
                 logging_types=[
@@ -2326,16 +2365,18 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_rancher2 as rancher2
 
-        foo_cloud_credential = rancher2.CloudCredential("fooCloudCredential",
+        foo = rancher2.CloudCredential("foo",
+            name="foo",
             description="foo test",
             amazonec2_credential_config=rancher2.CloudCredentialAmazonec2CredentialConfigArgs(
                 access_key="<aws-access-key>",
                 secret_key="<aws-secret-key>",
             ))
-        foo_cluster = rancher2.Cluster("fooCluster",
+        foo_cluster = rancher2.Cluster("foo",
+            name="foo",
             description="Terraform EKS cluster",
             eks_config_v2=rancher2.ClusterEksConfigV2Args(
-                cloud_credential_id=foo_cloud_credential.id,
+                cloud_credential_id=foo.id,
                 region="<EKS_REGION>",
                 kubernetes_version="1.24",
                 logging_types=[
@@ -2364,12 +2405,15 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_rancher2 as rancher2
 
-        foo_aks = rancher2.CloudCredential("foo-aks", azure_credential_config=rancher2.CloudCredentialAzureCredentialConfigArgs(
-            client_id="<client-id>",
-            client_secret="<client-secret>",
-            subscription_id="<subscription-id>",
-        ))
+        foo_aks = rancher2.CloudCredential("foo-aks",
+            name="foo-aks",
+            azure_credential_config=rancher2.CloudCredentialAzureCredentialConfigArgs(
+                client_id="<client-id>",
+                client_secret="<client-secret>",
+                subscription_id="<subscription-id>",
+            ))
         foo = rancher2.Cluster("foo",
+            name="foo",
             description="Terraform AKS cluster",
             aks_config_v2=rancher2.ClusterAksConfigV2Args(
                 cloud_credential_id=foo_aks.id,

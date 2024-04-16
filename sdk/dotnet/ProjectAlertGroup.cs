@@ -26,9 +26,10 @@ namespace Pulumi.Rancher2
     ///     // Create a new Rancher2 Project Alert Group
     ///     var foo = new Rancher2.ProjectAlertGroup("foo", new()
     ///     {
+    ///         Name = "foo",
     ///         Description = "Terraform project alert group",
-    ///         GroupIntervalSeconds = 300,
     ///         ProjectId = "&lt;project_id&gt;",
+    ///         GroupIntervalSeconds = 300,
     ///         RepeatIntervalSeconds = 3600,
     ///     });
     /// 

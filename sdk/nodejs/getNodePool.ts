@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * const foo = rancher2.getNodePool({
- *     clusterId: rancher2_cluster["foo-custom"].id,
+ *     clusterId: foo_custom.id,
  *     name: "foo",
  * });
  * ```
@@ -110,7 +110,7 @@ export interface GetNodePoolResult {
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * const foo = rancher2.getNodePool({
- *     clusterId: rancher2_cluster["foo-custom"].id,
+ *     clusterId: foo_custom.id,
  *     name: "foo",
  * });
  * ```

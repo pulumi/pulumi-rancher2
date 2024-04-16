@@ -24,19 +24,21 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new Rancher2 Cluster Alert Group
-    ///     var fooClusterAlertGroup = new Rancher2.ClusterAlertGroup("fooClusterAlertGroup", new()
+    ///     var foo = new Rancher2.ClusterAlertGroup("foo", new()
     ///     {
     ///         ClusterId = "&lt;cluster_id&gt;",
+    ///         Name = "foo",
     ///         Description = "Terraform cluster alert group",
     ///         GroupIntervalSeconds = 300,
     ///         RepeatIntervalSeconds = 3600,
     ///     });
     /// 
     ///     // Create a new Rancher2 Cluster Alert Rule
-    ///     var fooClusterAlertRule = new Rancher2.ClusterAlertRule("fooClusterAlertRule", new()
+    ///     var fooClusterAlertRule = new Rancher2.ClusterAlertRule("foo", new()
     ///     {
-    ///         ClusterId = fooClusterAlertGroup.ClusterId,
-    ///         GroupId = fooClusterAlertGroup.Id,
+    ///         ClusterId = foo.ClusterId,
+    ///         GroupId = foo.Id,
+    ///         Name = "foo",
     ///         GroupIntervalSeconds = 600,
     ///         RepeatIntervalSeconds = 6000,
     ///     });

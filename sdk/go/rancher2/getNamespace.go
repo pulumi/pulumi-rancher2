@@ -30,7 +30,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := rancher2.LookupNamespace(ctx, &rancher2.LookupNamespaceArgs{
 //				Name:      "foo",
-//				ProjectId: rancher2_cluster.FooCustom.Default_project_id,
+//				ProjectId: foo_custom.DefaultProjectId,
 //			}, nil)
 //			if err != nil {
 //				return err

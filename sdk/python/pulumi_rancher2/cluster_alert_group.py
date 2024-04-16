@@ -344,6 +344,7 @@ class ClusterAlertGroup(pulumi.CustomResource):
         # Create a new Rancher2 Cluster Alert Group
         foo = rancher2.ClusterAlertGroup("foo",
             cluster_id="<cluster_id>",
+            name="foo",
             description="Terraform cluster alert group",
             group_interval_seconds=300,
             repeat_interval_seconds=3600)
@@ -389,6 +390,7 @@ class ClusterAlertGroup(pulumi.CustomResource):
         # Create a new Rancher2 Cluster Alert Group
         foo = rancher2.ClusterAlertGroup("foo",
             cluster_id="<cluster_id>",
+            name="foo",
             description="Terraform cluster alert group",
             group_interval_seconds=300,
             repeat_interval_seconds=3600)

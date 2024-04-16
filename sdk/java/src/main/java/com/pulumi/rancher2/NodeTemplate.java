@@ -63,17 +63,18 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Node Template up to Rancher 2.1.x
  *         var foo = new NodeTemplate(&#34;foo&#34;, NodeTemplateArgs.builder()        
+ *             .name(&#34;foo&#34;)
+ *             .description(&#34;foo test&#34;)
  *             .amazonec2Config(NodeTemplateAmazonec2ConfigArgs.builder()
  *                 .accessKey(&#34;AWS_ACCESS_KEY&#34;)
+ *                 .secretKey(&#34;&lt;AWS_SECRET_KEY&gt;&#34;)
  *                 .ami(&#34;&lt;AMI_ID&gt;&#34;)
  *                 .region(&#34;&lt;REGION&gt;&#34;)
- *                 .secretKey(&#34;&lt;AWS_SECRET_KEY&gt;&#34;)
  *                 .securityGroups(&#34;&lt;AWS_SECURITY_GROUP&gt;&#34;)
  *                 .subnetId(&#34;&lt;SUBNET_ID&gt;&#34;)
  *                 .vpcId(&#34;&lt;VPC_ID&gt;&#34;)
  *                 .zone(&#34;&lt;ZONE&gt;&#34;)
  *                 .build())
- *             .description(&#34;foo test&#34;)
  *             .build());
  * 
  *     }
@@ -108,7 +109,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Node Template from Rancher 2.2.x
- *         var fooCloudCredential = new CloudCredential(&#34;fooCloudCredential&#34;, CloudCredentialArgs.builder()        
+ *         var foo = new CloudCredential(&#34;foo&#34;, CloudCredentialArgs.builder()        
+ *             .name(&#34;foo&#34;)
  *             .description(&#34;foo test&#34;)
  *             .amazonec2CredentialConfig(CloudCredentialAmazonec2CredentialConfigArgs.builder()
  *                 .accessKey(&#34;&lt;AWS_ACCESS_KEY&gt;&#34;)
@@ -117,8 +119,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var fooNodeTemplate = new NodeTemplate(&#34;fooNodeTemplate&#34;, NodeTemplateArgs.builder()        
+ *             .name(&#34;foo&#34;)
  *             .description(&#34;foo test&#34;)
- *             .cloudCredentialId(fooCloudCredential.id())
+ *             .cloudCredentialId(foo.id())
  *             .amazonec2Config(NodeTemplateAmazonec2ConfigArgs.builder()
  *                 .ami(&#34;&lt;AMI_ID&gt;&#34;)
  *                 .region(&#34;&lt;REGION&gt;&#34;)
@@ -164,21 +167,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var foo-harvesterClusterV2 = Rancher2Functions.getClusterV2(GetClusterV2Args.builder()
+ *         // Get imported harvester cluster info
+ *         final var foo-harvester = Rancher2Functions.getClusterV2(GetClusterV2Args.builder()
  *             .name(&#34;foo-harvester&#34;)
  *             .build());
  * 
  *         // Create a new Cloud Credential for an imported Harvester cluster
  *         var foo_harvesterCloudCredential = new CloudCredential(&#34;foo-harvesterCloudCredential&#34;, CloudCredentialArgs.builder()        
+ *             .name(&#34;foo-harvester&#34;)
  *             .harvesterCredentialConfig(CloudCredentialHarvesterCredentialConfigArgs.builder()
- *                 .clusterId(foo_harvesterClusterV2.clusterV1Id())
+ *                 .clusterId(foo_harvester.clusterV1Id())
  *                 .clusterType(&#34;imported&#34;)
- *                 .kubeconfigContent(foo_harvesterClusterV2.kubeConfig())
+ *                 .kubeconfigContent(foo_harvester.kubeConfig())
  *                 .build())
  *             .build());
  * 
  *         // Create a new rancher2 Node Template using harvester node_driver
  *         var foo_harvesterNodeTemplate = new NodeTemplate(&#34;foo-harvesterNodeTemplate&#34;, NodeTemplateArgs.builder()        
+ *             .name(&#34;foo-harvester&#34;)
  *             .cloudCredentialId(foo_harvesterCloudCredential.id())
  *             .engineInstallUrl(&#34;https://releases.rancher.com/install-docker/20.10.sh&#34;)
  *             .harvesterConfig(NodeTemplateHarvesterConfigArgs.builder()
@@ -193,16 +199,16 @@ import javax.annotation.Nullable;
  *             &#34;bootOrder&#34;: 1
  *         }]
  *     }
- *     EOF,
- *     networkInfo = &lt;&lt;EOF
+ *                 &#34;&#34;&#34;)
+ *                 .networkInfo(&#34;&#34;&#34;
  *     {
  *         &#34;interfaces&#34;: [{
  *             &#34;networkName&#34;: &#34;harvester-public/vlan1&#34;
  *         }]
  *     }
- *     EOF,
- *     sshUser = &#34;ubuntu&#34;,
- *     userData = &lt;&lt;EOF
+ *                 &#34;&#34;&#34;)
+ *                 .sshUser(&#34;ubuntu&#34;)
+ *                 .userData(&#34;&#34;&#34;
  *     package_update: true
  *     packages:
  *       - qemu-guest-agent
@@ -252,12 +258,14 @@ import javax.annotation.Nullable;
  *         var hetznerNodeDriver = new NodeDriver(&#34;hetznerNodeDriver&#34;, NodeDriverArgs.builder()        
  *             .active(true)
  *             .builtin(false)
+ *             .name(&#34;Hetzner&#34;)
  *             .uiUrl(&#34;https://storage.googleapis.com/hcloud-rancher-v2-ui-driver/component.js&#34;)
  *             .url(&#34;https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/download/3.6.0/docker-machine-driver-hetzner_3.6.0_linux_amd64.tar.gz&#34;)
  *             .whitelistDomains(&#34;storage.googleapis.com&#34;)
  *             .build());
  * 
  *         var myHetznerNodeTemplate = new NodeTemplate(&#34;myHetznerNodeTemplate&#34;, NodeTemplateArgs.builder()        
+ *             .name(&#34;my-hetzner-node-template&#34;)
  *             .driverId(hetznerNodeDriver.id())
  *             .hetznerConfig(NodeTemplateHetznerConfigArgs.builder()
  *                 .apiToken(&#34;XXXXXXXXXX&#34;)

@@ -18,20 +18,21 @@ import * as utilities from "./utilities";
  *
  * // Create a new rancher2 Namespace
  * const foo = new rancher2.Namespace("foo", {
- *     containerResourceLimit: {
- *         limitsCpu: "20m",
- *         limitsMemory: "20Mi",
- *         requestsCpu: "1m",
- *         requestsMemory: "1Mi",
- *     },
- *     description: "foo namespace",
+ *     name: "foo",
  *     projectId: "<PROJECT_ID>",
+ *     description: "foo namespace",
  *     resourceQuota: {
  *         limit: {
  *             limitsCpu: "100m",
  *             limitsMemory: "100Mi",
  *             requestsStorage: "1Gi",
  *         },
+ *     },
+ *     containerResourceLimit: {
+ *         limitsCpu: "20m",
+ *         limitsMemory: "20Mi",
+ *         requestsCpu: "1m",
+ *         requestsMemory: "1Mi",
  *     },
  * });
  * ```
@@ -44,6 +45,7 @@ import * as utilities from "./utilities";
  *
  * // Create a new rancher2 Cluster 
  * const foo_custom = new rancher2.Cluster("foo-custom", {
+ *     name: "foo-custom",
  *     description: "Foo rancher2 custom cluster",
  *     rkeConfig: {
  *         network: {
@@ -53,6 +55,7 @@ import * as utilities from "./utilities";
  * });
  * // Create a new rancher2 Namespace assigned to default cluster project
  * const foo = new rancher2.Namespace("foo", {
+ *     name: "foo",
  *     projectId: foo_custom.defaultProjectId,
  *     description: "foo namespace",
  *     resourceQuota: {

@@ -534,17 +534,18 @@ class App(pulumi.CustomResource):
 
         # Create a new rancher2 App
         foo = rancher2.App("foo",
-            answers={
-                "foo": "bar",
-                "ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect": True,
-                "ingress_host": "test.xip.io",
-            },
             catalog_name="<catalog_name>",
+            name="foo",
             description="Foo app",
             project_id="<project_id>",
-            target_namespace="<namespace_name>",
             template_name="<template_name>",
-            template_version="<template_version>")
+            template_version="<template_version>",
+            target_namespace="<namespace_name>",
+            answers={
+                "ingress_host": "test.xip.io",
+                "foo": "bar",
+                "ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect": True,
+            })
         ```
         <!--End PulumiCodeChooser -->
 
@@ -554,7 +555,8 @@ class App(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         # Create a new rancher2 App in a new namespace
-        foo_namespace = rancher2.Namespace("fooNamespace",
+        foo = rancher2.Namespace("foo",
+            name="foo",
             description="Foo namespace",
             project_id="<project_id>",
             resource_quota=rancher2.NamespaceResourceQuotaArgs(
@@ -564,13 +566,14 @@ class App(pulumi.CustomResource):
                     requests_storage="1Gi",
                 ),
             ))
-        foo_app = rancher2.App("fooApp",
+        foo_app = rancher2.App("foo",
             catalog_name="<catalog_name>",
+            name="foo",
             description="Foo app",
             project_id="<project_id>",
             template_name="<template_name>",
             template_version="<template_version>",
-            target_namespace=foo_namespace.id,
+            target_namespace=foo.id,
             answers={
                 "ingress_host": "test.xip.io",
                 "foo": "bar",
@@ -631,17 +634,18 @@ class App(pulumi.CustomResource):
 
         # Create a new rancher2 App
         foo = rancher2.App("foo",
-            answers={
-                "foo": "bar",
-                "ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect": True,
-                "ingress_host": "test.xip.io",
-            },
             catalog_name="<catalog_name>",
+            name="foo",
             description="Foo app",
             project_id="<project_id>",
-            target_namespace="<namespace_name>",
             template_name="<template_name>",
-            template_version="<template_version>")
+            template_version="<template_version>",
+            target_namespace="<namespace_name>",
+            answers={
+                "ingress_host": "test.xip.io",
+                "foo": "bar",
+                "ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect": True,
+            })
         ```
         <!--End PulumiCodeChooser -->
 
@@ -651,7 +655,8 @@ class App(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         # Create a new rancher2 App in a new namespace
-        foo_namespace = rancher2.Namespace("fooNamespace",
+        foo = rancher2.Namespace("foo",
+            name="foo",
             description="Foo namespace",
             project_id="<project_id>",
             resource_quota=rancher2.NamespaceResourceQuotaArgs(
@@ -661,13 +666,14 @@ class App(pulumi.CustomResource):
                     requests_storage="1Gi",
                 ),
             ))
-        foo_app = rancher2.App("fooApp",
+        foo_app = rancher2.App("foo",
             catalog_name="<catalog_name>",
+            name="foo",
             description="Foo app",
             project_id="<project_id>",
             template_name="<template_name>",
             template_version="<template_version>",
-            target_namespace=foo_namespace.id,
+            target_namespace=foo.id,
             answers={
                 "ingress_host": "test.xip.io",
                 "foo": "bar",

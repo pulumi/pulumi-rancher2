@@ -30,6 +30,7 @@ namespace Pulumi.Rancher2
     ///     // Create a new rancher2 Setting
     ///     var foo = new Rancher2.Setting("foo", new()
     ///     {
+    ///         Name = "foo",
     ///         Value = "&lt;VALUE&gt;",
     ///     });
     /// 

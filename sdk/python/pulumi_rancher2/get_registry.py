@@ -138,6 +138,7 @@ def get_registry(name: Optional[str] = None,
     import pulumi
     import pulumi_rancher2 as rancher2
 
+    # Retrieve a rancher2 Project Registry
     foo = rancher2.get_registry(name="<name>",
         project_id="<project_id>")
     ```
@@ -148,9 +149,10 @@ def get_registry(name: Optional[str] = None,
     import pulumi
     import pulumi_rancher2 as rancher2
 
+    # Retrieve a rancher2 Namespaced Registry
     foo = rancher2.get_registry(name="<name>",
-        namespace_id="<namespace_id>",
-        project_id="<project_id>")
+        project_id="<project_id>",
+        namespace_id="<namespace_id>")
     ```
     <!--End PulumiCodeChooser -->
 
@@ -196,6 +198,7 @@ def get_registry_output(name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_rancher2 as rancher2
 
+    # Retrieve a rancher2 Project Registry
     foo = rancher2.get_registry(name="<name>",
         project_id="<project_id>")
     ```
@@ -206,9 +209,10 @@ def get_registry_output(name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_rancher2 as rancher2
 
+    # Retrieve a rancher2 Namespaced Registry
     foo = rancher2.get_registry(name="<name>",
-        namespace_id="<namespace_id>",
-        project_id="<project_id>")
+        project_id="<project_id>",
+        namespace_id="<namespace_id>")
     ```
     <!--End PulumiCodeChooser -->
 

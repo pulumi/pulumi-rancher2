@@ -24,8 +24,9 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new rancher2 Global DNS Provider
-    ///     var fooGlobalDnsProvider = new Rancher2.GlobalDnsProvider("fooGlobalDnsProvider", new()
+    ///     var foo = new Rancher2.GlobalDnsProvider("foo", new()
     ///     {
+    ///         Name = "foo",
     ///         RootDomain = "example.com",
     ///         Route53Config = new Rancher2.Inputs.GlobalDnsProviderRoute53ConfigArgs
     ///         {
@@ -37,10 +38,11 @@ namespace Pulumi.Rancher2
     ///     });
     /// 
     ///     // Create a new rancher2 Global DNS using project IDs
-    ///     var fooGlobalDns = new Rancher2.GlobalDns("fooGlobalDns", new()
+    ///     var fooGlobalDns = new Rancher2.GlobalDns("foo", new()
     ///     {
+    ///         Name = "foo",
     ///         Fqdn = "foo.example.com",
-    ///         ProviderId = fooGlobalDnsProvider.Id,
+    ///         ProviderId = foo.Id,
     ///         ProjectIds = new[]
     ///         {
     ///             "project1",
@@ -62,8 +64,9 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new rancher2 Global DNS Provider
-    ///     var fooGlobalDnsProvider = new Rancher2.GlobalDnsProvider("fooGlobalDnsProvider", new()
+    ///     var foo = new Rancher2.GlobalDnsProvider("foo", new()
     ///     {
+    ///         Name = "foo",
     ///         RootDomain = "example.com",
     ///         Route53Config = new Rancher2.Inputs.GlobalDnsProviderRoute53ConfigArgs
     ///         {
@@ -75,10 +78,11 @@ namespace Pulumi.Rancher2
     ///     });
     /// 
     ///     // Create a new rancher2 Global DNS using MultiClusterApp ID
-    ///     var fooGlobalDns = new Rancher2.GlobalDns("fooGlobalDns", new()
+    ///     var fooGlobalDns = new Rancher2.GlobalDns("foo", new()
     ///     {
+    ///         Name = "foo",
     ///         Fqdn = "foo.example.com",
-    ///         ProviderId = fooGlobalDnsProvider.Id,
+    ///         ProviderId = foo.Id,
     ///         MultiClusterAppId = "&lt;MCA_ID&gt;",
     ///     });
     /// 

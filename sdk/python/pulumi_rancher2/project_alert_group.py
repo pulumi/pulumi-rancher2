@@ -343,9 +343,10 @@ class ProjectAlertGroup(pulumi.CustomResource):
 
         # Create a new Rancher2 Project Alert Group
         foo = rancher2.ProjectAlertGroup("foo",
+            name="foo",
             description="Terraform project alert group",
-            group_interval_seconds=300,
             project_id="<project_id>",
+            group_interval_seconds=300,
             repeat_interval_seconds=3600)
         ```
         <!--End PulumiCodeChooser -->
@@ -388,9 +389,10 @@ class ProjectAlertGroup(pulumi.CustomResource):
 
         # Create a new Rancher2 Project Alert Group
         foo = rancher2.ProjectAlertGroup("foo",
+            name="foo",
             description="Terraform project alert group",
-            group_interval_seconds=300,
             project_id="<project_id>",
+            group_interval_seconds=300,
             repeat_interval_seconds=3600)
         ```
         <!--End PulumiCodeChooser -->

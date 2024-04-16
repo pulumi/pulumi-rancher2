@@ -15,8 +15,8 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * const foo = rancher2.getGlobalRoleBinding({
- *     globalRoleId: "foo_id",
  *     name: "foo",
+ *     globalRoleId: "foo_id",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -82,8 +82,8 @@ export interface GetGlobalRoleBindingResult {
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * const foo = rancher2.getGlobalRoleBinding({
- *     globalRoleId: "foo_id",
  *     name: "foo",
+ *     globalRoleId: "foo_id",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

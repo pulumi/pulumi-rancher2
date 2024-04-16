@@ -94,11 +94,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.rancher2.Provider;
- * import com.pulumi.rancher2.ProviderArgs;
  * import com.pulumi.rancher2.Bootstrap;
  * import com.pulumi.rancher2.BootstrapArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -112,19 +109,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         // Provider bootstrap config with alias
- *         var bootstrap = new Provider(&#34;bootstrap&#34;, ProviderArgs.builder()        
- *             .apiUrl(&#34;https://rancher.my-domain.com&#34;)
- *             .bootstrap(true)
- *             .build());
- * 
  *         // Create a new rancher2_bootstrap using bootstrap provider config
  *         var admin = new Bootstrap(&#34;admin&#34;, BootstrapArgs.builder()        
  *             .password(&#34;blahblah&#34;)
  *             .telemetry(true)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(&#34;rancher2.bootstrap&#34;)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

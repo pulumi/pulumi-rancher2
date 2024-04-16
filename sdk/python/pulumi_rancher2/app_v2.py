@@ -596,24 +596,6 @@ class AppV2(pulumi.CustomResource):
         """
         Provides a Rancher App v2 resource. This can be used to manage helm charts for Rancher v2 environments and retrieve their information. App v2 resource is available at Rancher v2.5.x and above.
 
-        ## Example Usage
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new Rancher2 App V2 using
-        foo = rancher2.AppV2("foo",
-            cluster_id="<CLUSTER_ID>",
-            namespace="cattle-monitoring-system",
-            repo_name="rancher-charts",
-            chart_name="rancher-monitoring",
-            chart_version="9.4.200",
-            values=(lambda path: open(path).read())("values.yaml"))
-        ```
-        <!--End PulumiCodeChooser -->
-
         ### Create an App from a Helm Chart using a different registry
 
         The `system_default_registry` argument can override the global value at App installation. If argument is not provided, the global value for System Default Registry will be used instead.
@@ -623,11 +605,12 @@ class AppV2(pulumi.CustomResource):
         import pulumi
         import pulumi_rancher2 as rancher2
 
-        cis_benchmark = rancher2.AppV2("cisBenchmark",
-            chart_name="rancher-cis-benchmark",
+        cis_benchmark = rancher2.AppV2("cis_benchmark",
             cluster_id="<CLUSTER_ID>",
+            name="rancher-cis-benchmark",
             namespace="cis-operator-system",
             repo_name="rancher-charts",
+            chart_name="rancher-cis-benchmark",
             system_default_registry="<some.dns.here>:<PORT>")
         ```
         <!--End PulumiCodeChooser -->
@@ -668,24 +651,6 @@ class AppV2(pulumi.CustomResource):
         """
         Provides a Rancher App v2 resource. This can be used to manage helm charts for Rancher v2 environments and retrieve their information. App v2 resource is available at Rancher v2.5.x and above.
 
-        ## Example Usage
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new Rancher2 App V2 using
-        foo = rancher2.AppV2("foo",
-            cluster_id="<CLUSTER_ID>",
-            namespace="cattle-monitoring-system",
-            repo_name="rancher-charts",
-            chart_name="rancher-monitoring",
-            chart_version="9.4.200",
-            values=(lambda path: open(path).read())("values.yaml"))
-        ```
-        <!--End PulumiCodeChooser -->
-
         ### Create an App from a Helm Chart using a different registry
 
         The `system_default_registry` argument can override the global value at App installation. If argument is not provided, the global value for System Default Registry will be used instead.
@@ -695,11 +660,12 @@ class AppV2(pulumi.CustomResource):
         import pulumi
         import pulumi_rancher2 as rancher2
 
-        cis_benchmark = rancher2.AppV2("cisBenchmark",
-            chart_name="rancher-cis-benchmark",
+        cis_benchmark = rancher2.AppV2("cis_benchmark",
             cluster_id="<CLUSTER_ID>",
+            name="rancher-cis-benchmark",
             namespace="cis-operator-system",
             repo_name="rancher-charts",
+            chart_name="rancher-cis-benchmark",
             system_default_registry="<some.dns.here>:<PORT>")
         ```
         <!--End PulumiCodeChooser -->

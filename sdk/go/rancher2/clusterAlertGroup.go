@@ -32,6 +32,7 @@ import (
 //			// Create a new Rancher2 Cluster Alert Group
 //			_, err := rancher2.NewClusterAlertGroup(ctx, "foo", &rancher2.ClusterAlertGroupArgs{
 //				ClusterId:             pulumi.String("<cluster_id>"),
+//				Name:                  pulumi.String("foo"),
 //				Description:           pulumi.String("Terraform cluster alert group"),
 //				GroupIntervalSeconds:  pulumi.Int(300),
 //				RepeatIntervalSeconds: pulumi.Int(3600),

@@ -34,11 +34,13 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 Node Template up to Rancher 2.1.x
 //			_, err := rancher2.NewNodeTemplate(ctx, "foo", &rancher2.NodeTemplateArgs{
+//				Name:        pulumi.String("foo"),
+//				Description: pulumi.String("foo test"),
 //				Amazonec2Config: &rancher2.NodeTemplateAmazonec2ConfigArgs{
 //					AccessKey: pulumi.String("AWS_ACCESS_KEY"),
+//					SecretKey: pulumi.String("<AWS_SECRET_KEY>"),
 //					Ami:       pulumi.String("<AMI_ID>"),
 //					Region:    pulumi.String("<REGION>"),
-//					SecretKey: pulumi.String("<AWS_SECRET_KEY>"),
 //					SecurityGroups: pulumi.StringArray{
 //						pulumi.String("<AWS_SECURITY_GROUP>"),
 //					},
@@ -46,7 +48,6 @@ import (
 //					VpcId:    pulumi.String("<VPC_ID>"),
 //					Zone:     pulumi.String("<ZONE>"),
 //				},
-//				Description: pulumi.String("foo test"),
 //			})
 //			if err != nil {
 //				return err
@@ -72,7 +73,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 Node Template from Rancher 2.2.x
-//			fooCloudCredential, err := rancher2.NewCloudCredential(ctx, "fooCloudCredential", &rancher2.CloudCredentialArgs{
+//			foo, err := rancher2.NewCloudCredential(ctx, "foo", &rancher2.CloudCredentialArgs{
+//				Name:        pulumi.String("foo"),
 //				Description: pulumi.String("foo test"),
 //				Amazonec2CredentialConfig: &rancher2.CloudCredentialAmazonec2CredentialConfigArgs{
 //					AccessKey: pulumi.String("<AWS_ACCESS_KEY>"),
@@ -82,9 +84,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = rancher2.NewNodeTemplate(ctx, "fooNodeTemplate", &rancher2.NodeTemplateArgs{
+//			_, err = rancher2.NewNodeTemplate(ctx, "foo", &rancher2.NodeTemplateArgs{
+//				Name:              pulumi.String("foo"),
 //				Description:       pulumi.String("foo test"),
-//				CloudCredentialId: fooCloudCredential.ID(),
+//				CloudCredentialId: foo.ID(),
 //				Amazonec2Config: &rancher2.NodeTemplateAmazonec2ConfigArgs{
 //					Ami:    pulumi.String("<AMI_ID>"),
 //					Region: pulumi.String("<REGION>"),
@@ -121,25 +124,28 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			foo_harvesterClusterV2, err := rancher2.LookupClusterV2(ctx, &rancher2.LookupClusterV2Args{
+//			// Get imported harvester cluster info
+//			foo_harvester, err := rancher2.LookupClusterV2(ctx, &rancher2.LookupClusterV2Args{
 //				Name: "foo-harvester",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			// Create a new Cloud Credential for an imported Harvester cluster
-//			_, err = rancher2.NewCloudCredential(ctx, "foo-harvesterCloudCredential", &rancher2.CloudCredentialArgs{
+//			_, err = rancher2.NewCloudCredential(ctx, "foo-harvester", &rancher2.CloudCredentialArgs{
+//				Name: pulumi.String("foo-harvester"),
 //				HarvesterCredentialConfig: &rancher2.CloudCredentialHarvesterCredentialConfigArgs{
-//					ClusterId:         pulumi.String(foo_harvesterClusterV2.ClusterV1Id),
+//					ClusterId:         pulumi.String(foo_harvester.ClusterV1Id),
 //					ClusterType:       pulumi.String("imported"),
-//					KubeconfigContent: pulumi.String(foo_harvesterClusterV2.KubeConfig),
+//					KubeconfigContent: pulumi.String(foo_harvester.KubeConfig),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Create a new rancher2 Node Template using harvester node_driver
-//			_, err = rancher2.NewNodeTemplate(ctx, "foo-harvesterNodeTemplate", &rancher2.NodeTemplateArgs{
+//			_, err = rancher2.NewNodeTemplate(ctx, "foo-harvester", &rancher2.NodeTemplateArgs{
+//				Name:              pulumi.String("foo-harvester"),
 //				CloudCredentialId: foo_harvesterCloudCredential.ID(),
 //				EngineInstallUrl:  pulumi.String("https://releases.rancher.com/install-docker/20.10.sh"),
 //				HarvesterConfig: &rancher2.NodeTemplateHarvesterConfigArgs{
@@ -153,17 +159,19 @@ import (
 //	            "bootOrder": 1
 //	        }]
 //	    }
-//	    EOF,
-//	    networkInfo = <<EOF
-//	    {
+//
+// `),
+//
+//					NetworkInfo: pulumi.String(`    {
 //	        "interfaces": [{
 //	            "networkName": "harvester-public/vlan1"
 //	        }]
 //	    }
-//	    EOF,
-//	    sshUser = "ubuntu",
-//	    userData = <<EOF
-//	    package_update: true
+//
+// `),
+//
+//					SshUser: pulumi.String("ubuntu"),
+//					UserData: pulumi.String(`    package_update: true
 //	    packages:
 //	      - qemu-guest-agent
 //	      - iptables
@@ -203,9 +211,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 Node Template using hetzner node_driver
-//			hetznerNodeDriver, err := rancher2.NewNodeDriver(ctx, "hetznerNodeDriver", &rancher2.NodeDriverArgs{
+//			hetznerNodeDriver, err := rancher2.NewNodeDriver(ctx, "hetzner_node_driver", &rancher2.NodeDriverArgs{
 //				Active:  pulumi.Bool(true),
 //				Builtin: pulumi.Bool(false),
+//				Name:    pulumi.String("Hetzner"),
 //				UiUrl:   pulumi.String("https://storage.googleapis.com/hcloud-rancher-v2-ui-driver/component.js"),
 //				Url:     pulumi.String("https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/download/3.6.0/docker-machine-driver-hetzner_3.6.0_linux_amd64.tar.gz"),
 //				WhitelistDomains: pulumi.StringArray{
@@ -215,7 +224,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = rancher2.NewNodeTemplate(ctx, "myHetznerNodeTemplate", &rancher2.NodeTemplateArgs{
+//			_, err = rancher2.NewNodeTemplate(ctx, "my_hetzner_node_template", &rancher2.NodeTemplateArgs{
+//				Name:     pulumi.String("my-hetzner-node-template"),
 //				DriverId: hetznerNodeDriver.ID(),
 //				HetznerConfig: &rancher2.NodeTemplateHetznerConfigArgs{
 //					ApiToken:       pulumi.String("XXXXXXXXXX"),

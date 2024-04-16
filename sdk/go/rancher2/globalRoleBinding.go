@@ -31,6 +31,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 Global Role Binding using user_id
 //			_, err := rancher2.NewGlobalRoleBinding(ctx, "foo", &rancher2.GlobalRoleBindingArgs{
+//				Name:         pulumi.String("foo"),
 //				GlobalRoleId: pulumi.String("admin"),
 //				UserId:       pulumi.String("user-XXXXX"),
 //			})
@@ -39,6 +40,7 @@ import (
 //			}
 //			// Create a new rancher2 Global Role Binding using group_principal_id
 //			_, err = rancher2.NewGlobalRoleBinding(ctx, "foo2", &rancher2.GlobalRoleBindingArgs{
+//				Name:             pulumi.String("foo2"),
 //				GlobalRoleId:     pulumi.String("admin"),
 //				GroupPrincipalId: pulumi.String("local://g-XXXXX"),
 //			})

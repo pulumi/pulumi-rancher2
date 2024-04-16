@@ -473,7 +473,8 @@ class ProjectAlertRule(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         # Create a new Rancher2 Project
-        foo_project = rancher2.Project("fooProject",
+        foo = rancher2.Project("foo",
+            name="foo",
             cluster_id="<cluster_id>",
             description="Terraform project ",
             resource_quota=rancher2.ProjectResourceQuotaArgs(
@@ -495,15 +496,17 @@ class ProjectAlertRule(pulumi.CustomResource):
                 requests_memory="1Mi",
             ))
         # Create a new Rancher2 Project Alert Group
-        foo_project_alert_group = rancher2.ProjectAlertGroup("fooProjectAlertGroup",
+        foo_project_alert_group = rancher2.ProjectAlertGroup("foo",
+            name="foo",
             description="Terraform project alert group",
-            project_id=foo_project.id,
+            project_id=foo.id,
             group_interval_seconds=300,
             repeat_interval_seconds=3600)
         # Create a new Rancher2 Project Alert Rule
-        foo_project_alert_rule = rancher2.ProjectAlertRule("fooProjectAlertRule",
+        foo_project_alert_rule = rancher2.ProjectAlertRule("foo",
             project_id=foo_project_alert_group.project_id,
             group_id=foo_project_alert_group.id,
+            name="foo",
             group_interval_seconds=600,
             repeat_interval_seconds=6000)
         ```
@@ -550,7 +553,8 @@ class ProjectAlertRule(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         # Create a new Rancher2 Project
-        foo_project = rancher2.Project("fooProject",
+        foo = rancher2.Project("foo",
+            name="foo",
             cluster_id="<cluster_id>",
             description="Terraform project ",
             resource_quota=rancher2.ProjectResourceQuotaArgs(
@@ -572,15 +576,17 @@ class ProjectAlertRule(pulumi.CustomResource):
                 requests_memory="1Mi",
             ))
         # Create a new Rancher2 Project Alert Group
-        foo_project_alert_group = rancher2.ProjectAlertGroup("fooProjectAlertGroup",
+        foo_project_alert_group = rancher2.ProjectAlertGroup("foo",
+            name="foo",
             description="Terraform project alert group",
-            project_id=foo_project.id,
+            project_id=foo.id,
             group_interval_seconds=300,
             repeat_interval_seconds=3600)
         # Create a new Rancher2 Project Alert Rule
-        foo_project_alert_rule = rancher2.ProjectAlertRule("fooProjectAlertRule",
+        foo_project_alert_rule = rancher2.ProjectAlertRule("foo",
             project_id=foo_project_alert_group.project_id,
             group_id=foo_project_alert_group.id,
+            name="foo",
             group_interval_seconds=600,
             repeat_interval_seconds=6000)
         ```

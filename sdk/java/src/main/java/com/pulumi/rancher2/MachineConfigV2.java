@@ -58,16 +58,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var foo-harvesterClusterV2 = Rancher2Functions.getClusterV2(GetClusterV2Args.builder()
+ *         // Get imported harvester cluster info
+ *         final var foo-harvester = Rancher2Functions.getClusterV2(GetClusterV2Args.builder()
  *             .name(&#34;foo-harvester&#34;)
  *             .build());
  * 
  *         // Create a new Cloud Credential for an imported Harvester cluster
  *         var foo_harvesterCloudCredential = new CloudCredential(&#34;foo-harvesterCloudCredential&#34;, CloudCredentialArgs.builder()        
+ *             .name(&#34;foo-harvester&#34;)
  *             .harvesterCredentialConfig(CloudCredentialHarvesterCredentialConfigArgs.builder()
- *                 .clusterId(foo_harvesterClusterV2.clusterV1Id())
+ *                 .clusterId(foo_harvester.clusterV1Id())
  *                 .clusterType(&#34;imported&#34;)
- *                 .kubeconfigContent(foo_harvesterClusterV2.kubeConfig())
+ *                 .kubeconfigContent(foo_harvester.kubeConfig())
  *                 .build())
  *             .build());
  * 
@@ -86,16 +88,16 @@ import javax.annotation.Nullable;
  *             &#34;bootOrder&#34;: 1
  *         }]
  *     }
- *     EOF,
- *     networkInfo = &lt;&lt;EOF
+ *                 &#34;&#34;&#34;)
+ *                 .networkInfo(&#34;&#34;&#34;
  *     {
  *         &#34;interfaces&#34;: [{
  *             &#34;networkName&#34;: &#34;harvester-public/vlan1&#34;
  *         }]
  *     }
- *     EOF,
- *     sshUser = &#34;ubuntu&#34;,
- *     userData = &lt;&lt;EOF
+ *                 &#34;&#34;&#34;)
+ *                 .sshUser(&#34;ubuntu&#34;)
+ *                 .userData(&#34;&#34;&#34;
  *     package_update: true
  *     packages:
  *       - qemu-guest-agent

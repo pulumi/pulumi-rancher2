@@ -49,11 +49,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Global DNS Provider - alidns
  *         var foo = new GlobalDnsProvider(&#34;foo&#34;, GlobalDnsProviderArgs.builder()        
+ *             .name(&#34;foo&#34;)
+ *             .rootDomain(&#34;example.com&#34;)
  *             .alidnsConfig(GlobalDnsProviderAlidnsConfigArgs.builder()
  *                 .accessKey(&#34;YYYYYYYYYYYYYYYYYYYY&#34;)
  *                 .secretKey(&#34;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&#34;)
  *                 .build())
- *             .rootDomain(&#34;example.com&#34;)
  *             .build());
  * 
  *     }
@@ -86,12 +87,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Global DNS Provider - cloudflare
  *         var foo = new GlobalDnsProvider(&#34;foo&#34;, GlobalDnsProviderArgs.builder()        
+ *             .name(&#34;foo&#34;)
+ *             .rootDomain(&#34;example.com&#34;)
  *             .cloudflareConfig(GlobalDnsProviderCloudflareConfigArgs.builder()
  *                 .apiEmail(&#34;test@test.local&#34;)
  *                 .apiKey(&#34;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&#34;)
  *                 .proxySetting(true)
  *                 .build())
- *             .rootDomain(&#34;example.com&#34;)
  *             .build());
  * 
  *     }
@@ -124,12 +126,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Global DNS Provider - route53
  *         var foo = new GlobalDnsProvider(&#34;foo&#34;, GlobalDnsProviderArgs.builder()        
+ *             .name(&#34;foo&#34;)
  *             .rootDomain(&#34;example.com&#34;)
  *             .route53Config(GlobalDnsProviderRoute53ConfigArgs.builder()
  *                 .accessKey(&#34;YYYYYYYYYYYYYYYYYYYY&#34;)
- *                 .region(&#34;us-east-1&#34;)
  *                 .secretKey(&#34;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&#34;)
  *                 .zoneType(&#34;private&#34;)
+ *                 .region(&#34;us-east-1&#34;)
  *                 .build())
  *             .build());
  * 

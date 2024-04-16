@@ -54,13 +54,14 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Notifier
  *         var foo = new Notifier(&#34;foo&#34;, NotifierArgs.builder()        
+ *             .name(&#34;foo&#34;)
  *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
  *             .description(&#34;Terraform notifier acceptance test&#34;)
- *             .pagerdutyConfig(NotifierPagerdutyConfigArgs.builder()
- *                 .proxyUrl(&#34;http://proxy.test.io&#34;)
- *                 .serviceKey(&#34;XXXXXXXX&#34;)
- *                 .build())
  *             .sendResolved(&#34;true&#34;)
+ *             .pagerdutyConfig(NotifierPagerdutyConfigArgs.builder()
+ *                 .serviceKey(&#34;XXXXXXXX&#34;)
+ *                 .proxyUrl(&#34;http://proxy.test.io&#34;)
+ *                 .build())
  *             .build());
  * 
  *     }

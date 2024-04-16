@@ -26,6 +26,7 @@ namespace Pulumi.Rancher2
     ///     // Create a new Rancher2 Cluster Role Template Binding
     ///     var foo = new Rancher2.ClusterRoleTemplateBinding("foo", new()
     ///     {
+    ///         Name = "foo",
     ///         ClusterId = "&lt;cluster_id&gt;",
     ///         RoleTemplateId = "&lt;role_template_id&gt;",
     ///         UserId = "&lt;user_id&gt;",

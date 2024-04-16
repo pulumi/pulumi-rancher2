@@ -966,17 +966,18 @@ class NodeTemplate(pulumi.CustomResource):
 
         # Create a new rancher2 Node Template up to Rancher 2.1.x
         foo = rancher2.NodeTemplate("foo",
+            name="foo",
+            description="foo test",
             amazonec2_config=rancher2.NodeTemplateAmazonec2ConfigArgs(
                 access_key="AWS_ACCESS_KEY",
+                secret_key="<AWS_SECRET_KEY>",
                 ami="<AMI_ID>",
                 region="<REGION>",
-                secret_key="<AWS_SECRET_KEY>",
                 security_groups=["<AWS_SECURITY_GROUP>"],
                 subnet_id="<SUBNET_ID>",
                 vpc_id="<VPC_ID>",
                 zone="<ZONE>",
-            ),
-            description="foo test")
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -986,15 +987,17 @@ class NodeTemplate(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         # Create a new rancher2 Node Template from Rancher 2.2.x
-        foo_cloud_credential = rancher2.CloudCredential("fooCloudCredential",
+        foo = rancher2.CloudCredential("foo",
+            name="foo",
             description="foo test",
             amazonec2_credential_config=rancher2.CloudCredentialAmazonec2CredentialConfigArgs(
                 access_key="<AWS_ACCESS_KEY>",
                 secret_key="<AWS_SECRET_KEY>",
             ))
-        foo_node_template = rancher2.NodeTemplate("fooNodeTemplate",
+        foo_node_template = rancher2.NodeTemplate("foo",
+            name="foo",
             description="foo test",
-            cloud_credential_id=foo_cloud_credential.id,
+            cloud_credential_id=foo.id,
             amazonec2_config=rancher2.NodeTemplateAmazonec2ConfigArgs(
                 ami="<AMI_ID>",
                 region="<REGION>",
@@ -1013,15 +1016,19 @@ class NodeTemplate(pulumi.CustomResource):
         import pulumi
         import pulumi_rancher2 as rancher2
 
-        foo_harvester_cluster_v2 = rancher2.get_cluster_v2(name="foo-harvester")
+        # Get imported harvester cluster info
+        foo_harvester = rancher2.get_cluster_v2(name="foo-harvester")
         # Create a new Cloud Credential for an imported Harvester cluster
-        foo_harvester_cloud_credential = rancher2.CloudCredential("foo-harvesterCloudCredential", harvester_credential_config=rancher2.CloudCredentialHarvesterCredentialConfigArgs(
-            cluster_id=foo_harvester_cluster_v2.cluster_v1_id,
-            cluster_type="imported",
-            kubeconfig_content=foo_harvester_cluster_v2.kube_config,
-        ))
+        foo_harvester_cloud_credential = rancher2.CloudCredential("foo-harvester",
+            name="foo-harvester",
+            harvester_credential_config=rancher2.CloudCredentialHarvesterCredentialConfigArgs(
+                cluster_id=foo_harvester.cluster_v1_id,
+                cluster_type="imported",
+                kubeconfig_content=foo_harvester.kube_config,
+            ))
         # Create a new rancher2 Node Template using harvester node_driver
-        foo_harvester_node_template = rancher2.NodeTemplate("foo-harvesterNodeTemplate",
+        foo_harvester_node_template = rancher2.NodeTemplate("foo-harvester",
+            name="foo-harvester",
             cloud_credential_id=foo_harvester_cloud_credential.id,
             engine_install_url="https://releases.rancher.com/install-docker/20.10.sh",
             harvester_config=rancher2.NodeTemplateHarvesterConfigArgs(
@@ -1035,17 +1042,15 @@ class NodeTemplate(pulumi.CustomResource):
                     "bootOrder": 1
                 }]
             }
-            EOF,
-            networkInfo = <<EOF
-            {
+        \"\"\",
+                network_info=\"\"\"    {
                 "interfaces": [{
                     "networkName": "harvester-public/vlan1"
                 }]
             }
-            EOF,
-            sshUser = "ubuntu",
-            userData = <<EOF
-            package_update: true
+        \"\"\",
+                ssh_user="ubuntu",
+                user_data=\"\"\"    package_update: true
             packages:
               - qemu-guest-agent
               - iptables
@@ -1067,13 +1072,15 @@ class NodeTemplate(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         # Create a new rancher2 Node Template using hetzner node_driver
-        hetzner_node_driver = rancher2.NodeDriver("hetznerNodeDriver",
+        hetzner_node_driver = rancher2.NodeDriver("hetzner_node_driver",
             active=True,
             builtin=False,
+            name="Hetzner",
             ui_url="https://storage.googleapis.com/hcloud-rancher-v2-ui-driver/component.js",
             url="https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/download/3.6.0/docker-machine-driver-hetzner_3.6.0_linux_amd64.tar.gz",
             whitelist_domains=["storage.googleapis.com"])
-        my_hetzner_node_template = rancher2.NodeTemplate("myHetznerNodeTemplate",
+        my_hetzner_node_template = rancher2.NodeTemplate("my_hetzner_node_template",
+            name="my-hetzner-node-template",
             driver_id=hetzner_node_driver.id,
             hetzner_config=rancher2.NodeTemplateHetznerConfigArgs(
                 api_token="XXXXXXXXXX",
@@ -1144,17 +1151,18 @@ class NodeTemplate(pulumi.CustomResource):
 
         # Create a new rancher2 Node Template up to Rancher 2.1.x
         foo = rancher2.NodeTemplate("foo",
+            name="foo",
+            description="foo test",
             amazonec2_config=rancher2.NodeTemplateAmazonec2ConfigArgs(
                 access_key="AWS_ACCESS_KEY",
+                secret_key="<AWS_SECRET_KEY>",
                 ami="<AMI_ID>",
                 region="<REGION>",
-                secret_key="<AWS_SECRET_KEY>",
                 security_groups=["<AWS_SECURITY_GROUP>"],
                 subnet_id="<SUBNET_ID>",
                 vpc_id="<VPC_ID>",
                 zone="<ZONE>",
-            ),
-            description="foo test")
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -1164,15 +1172,17 @@ class NodeTemplate(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         # Create a new rancher2 Node Template from Rancher 2.2.x
-        foo_cloud_credential = rancher2.CloudCredential("fooCloudCredential",
+        foo = rancher2.CloudCredential("foo",
+            name="foo",
             description="foo test",
             amazonec2_credential_config=rancher2.CloudCredentialAmazonec2CredentialConfigArgs(
                 access_key="<AWS_ACCESS_KEY>",
                 secret_key="<AWS_SECRET_KEY>",
             ))
-        foo_node_template = rancher2.NodeTemplate("fooNodeTemplate",
+        foo_node_template = rancher2.NodeTemplate("foo",
+            name="foo",
             description="foo test",
-            cloud_credential_id=foo_cloud_credential.id,
+            cloud_credential_id=foo.id,
             amazonec2_config=rancher2.NodeTemplateAmazonec2ConfigArgs(
                 ami="<AMI_ID>",
                 region="<REGION>",
@@ -1191,15 +1201,19 @@ class NodeTemplate(pulumi.CustomResource):
         import pulumi
         import pulumi_rancher2 as rancher2
 
-        foo_harvester_cluster_v2 = rancher2.get_cluster_v2(name="foo-harvester")
+        # Get imported harvester cluster info
+        foo_harvester = rancher2.get_cluster_v2(name="foo-harvester")
         # Create a new Cloud Credential for an imported Harvester cluster
-        foo_harvester_cloud_credential = rancher2.CloudCredential("foo-harvesterCloudCredential", harvester_credential_config=rancher2.CloudCredentialHarvesterCredentialConfigArgs(
-            cluster_id=foo_harvester_cluster_v2.cluster_v1_id,
-            cluster_type="imported",
-            kubeconfig_content=foo_harvester_cluster_v2.kube_config,
-        ))
+        foo_harvester_cloud_credential = rancher2.CloudCredential("foo-harvester",
+            name="foo-harvester",
+            harvester_credential_config=rancher2.CloudCredentialHarvesterCredentialConfigArgs(
+                cluster_id=foo_harvester.cluster_v1_id,
+                cluster_type="imported",
+                kubeconfig_content=foo_harvester.kube_config,
+            ))
         # Create a new rancher2 Node Template using harvester node_driver
-        foo_harvester_node_template = rancher2.NodeTemplate("foo-harvesterNodeTemplate",
+        foo_harvester_node_template = rancher2.NodeTemplate("foo-harvester",
+            name="foo-harvester",
             cloud_credential_id=foo_harvester_cloud_credential.id,
             engine_install_url="https://releases.rancher.com/install-docker/20.10.sh",
             harvester_config=rancher2.NodeTemplateHarvesterConfigArgs(
@@ -1213,17 +1227,15 @@ class NodeTemplate(pulumi.CustomResource):
                     "bootOrder": 1
                 }]
             }
-            EOF,
-            networkInfo = <<EOF
-            {
+        \"\"\",
+                network_info=\"\"\"    {
                 "interfaces": [{
                     "networkName": "harvester-public/vlan1"
                 }]
             }
-            EOF,
-            sshUser = "ubuntu",
-            userData = <<EOF
-            package_update: true
+        \"\"\",
+                ssh_user="ubuntu",
+                user_data=\"\"\"    package_update: true
             packages:
               - qemu-guest-agent
               - iptables
@@ -1245,13 +1257,15 @@ class NodeTemplate(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         # Create a new rancher2 Node Template using hetzner node_driver
-        hetzner_node_driver = rancher2.NodeDriver("hetznerNodeDriver",
+        hetzner_node_driver = rancher2.NodeDriver("hetzner_node_driver",
             active=True,
             builtin=False,
+            name="Hetzner",
             ui_url="https://storage.googleapis.com/hcloud-rancher-v2-ui-driver/component.js",
             url="https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/download/3.6.0/docker-machine-driver-hetzner_3.6.0_linux_amd64.tar.gz",
             whitelist_domains=["storage.googleapis.com"])
-        my_hetzner_node_template = rancher2.NodeTemplate("myHetznerNodeTemplate",
+        my_hetzner_node_template = rancher2.NodeTemplate("my_hetzner_node_template",
+            name="my-hetzner-node-template",
             driver_id=hetzner_node_driver.id,
             hetzner_config=rancher2.NodeTemplateHetznerConfigArgs(
                 api_token="XXXXXXXXXX",

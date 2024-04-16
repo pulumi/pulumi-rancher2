@@ -31,13 +31,14 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 Notifier
 //			_, err := rancher2.NewNotifier(ctx, "foo", &rancher2.NotifierArgs{
-//				ClusterId:   pulumi.String("<cluster_id>"),
-//				Description: pulumi.String("Terraform notifier acceptance test"),
-//				PagerdutyConfig: &rancher2.NotifierPagerdutyConfigArgs{
-//					ProxyUrl:   pulumi.String("http://proxy.test.io"),
-//					ServiceKey: pulumi.String("XXXXXXXX"),
-//				},
+//				Name:         pulumi.String("foo"),
+//				ClusterId:    pulumi.String("<cluster_id>"),
+//				Description:  pulumi.String("Terraform notifier acceptance test"),
 //				SendResolved: pulumi.Bool(true),
+//				PagerdutyConfig: &rancher2.NotifierPagerdutyConfigArgs{
+//					ServiceKey: pulumi.String("XXXXXXXX"),
+//					ProxyUrl:   pulumi.String("http://proxy.test.io"),
+//				},
 //			})
 //			if err != nil {
 //				return err

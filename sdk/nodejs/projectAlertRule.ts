@@ -17,7 +17,8 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * // Create a new Rancher2 Project
- * const fooProject = new rancher2.Project("fooProject", {
+ * const foo = new rancher2.Project("foo", {
+ *     name: "foo",
  *     clusterId: "<cluster_id>",
  *     description: "Terraform project ",
  *     resourceQuota: {
@@ -40,16 +41,18 @@ import * as utilities from "./utilities";
  *     },
  * });
  * // Create a new Rancher2 Project Alert Group
- * const fooProjectAlertGroup = new rancher2.ProjectAlertGroup("fooProjectAlertGroup", {
+ * const fooProjectAlertGroup = new rancher2.ProjectAlertGroup("foo", {
+ *     name: "foo",
  *     description: "Terraform project alert group",
- *     projectId: fooProject.id,
+ *     projectId: foo.id,
  *     groupIntervalSeconds: 300,
  *     repeatIntervalSeconds: 3600,
  * });
  * // Create a new Rancher2 Project Alert Rule
- * const fooProjectAlertRule = new rancher2.ProjectAlertRule("fooProjectAlertRule", {
+ * const fooProjectAlertRule = new rancher2.ProjectAlertRule("foo", {
  *     projectId: fooProjectAlertGroup.projectId,
  *     groupId: fooProjectAlertGroup.id,
+ *     name: "foo",
  *     groupIntervalSeconds: 600,
  *     repeatIntervalSeconds: 6000,
  * });

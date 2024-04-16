@@ -157,8 +157,8 @@ def get_cluster_role_template_binding(cluster_id: Optional[str] = None,
     import pulumi
     import pulumi_rancher2 as rancher2
 
-    foo = rancher2.get_cluster_role_template_binding(cluster_id="foo_id",
-        name="foo")
+    foo = rancher2.get_cluster_role_template_binding(name="foo",
+        cluster_id="foo_id")
     ```
     <!--End PulumiCodeChooser -->
 
@@ -202,8 +202,8 @@ def get_cluster_role_template_binding_output(cluster_id: Optional[pulumi.Input[s
     import pulumi
     import pulumi_rancher2 as rancher2
 
-    foo = rancher2.get_cluster_role_template_binding(cluster_id="foo_id",
-        name="foo")
+    foo = rancher2.get_cluster_role_template_binding(name="foo",
+        cluster_id="foo_id")
     ```
     <!--End PulumiCodeChooser -->
 

@@ -31,6 +31,7 @@ namespace Pulumi.Rancher2
     ///         Checksum = "0x0",
     ///         Description = "Foo description",
     ///         ExternalId = "foo_external",
+    ///         Name = "foo",
     ///         UiUrl = "local://ui",
     ///         Url = "local://",
     ///         WhitelistDomains = new[]

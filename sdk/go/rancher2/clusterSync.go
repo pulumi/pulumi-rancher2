@@ -28,7 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 rke Cluster
-//			_, err := rancher2.NewCluster(ctx, "foo-customCluster", &rancher2.ClusterArgs{
+//			_, err := rancher2.NewCluster(ctx, "foo-custom", &rancher2.ClusterArgs{
+//				Name:        pulumi.String("foo-custom"),
 //				Description: pulumi.String("Foo rancher2 custom cluster"),
 //				RkeConfig: &rancher2.ClusterRkeConfigArgs{
 //					Network: &rancher2.ClusterRkeConfigNetworkArgs{
@@ -40,7 +41,8 @@ import (
 //				return err
 //			}
 //			// Create a new rancher2 Node Template
-//			fooNodeTemplate, err := rancher2.NewNodeTemplate(ctx, "fooNodeTemplate", &rancher2.NodeTemplateArgs{
+//			foo, err := rancher2.NewNodeTemplate(ctx, "foo", &rancher2.NodeTemplateArgs{
+//				Name:        pulumi.String("foo"),
 //				Description: pulumi.String("foo test"),
 //				Amazonec2Config: &rancher2.NodeTemplateAmazonec2ConfigArgs{
 //					AccessKey: pulumi.String("<AWS_ACCESS_KEY>"),
@@ -59,10 +61,11 @@ import (
 //				return err
 //			}
 //			// Create a new rancher2 Node Pool
-//			fooNodePool, err := rancher2.NewNodePool(ctx, "fooNodePool", &rancher2.NodePoolArgs{
-//				ClusterId:      foo_customCluster.ID(),
+//			fooNodePool, err := rancher2.NewNodePool(ctx, "foo", &rancher2.NodePoolArgs{
+//				ClusterId:      foo_custom.ID(),
+//				Name:           pulumi.String("foo"),
 //				HostnamePrefix: pulumi.String("foo-cluster-0"),
-//				NodeTemplateId: fooNodeTemplate.ID(),
+//				NodeTemplateId: foo.ID(),
 //				Quantity:       pulumi.Int(3),
 //				ControlPlane:   pulumi.Bool(true),
 //				Etcd:           pulumi.Bool(true),
@@ -72,8 +75,8 @@ import (
 //				return err
 //			}
 //			// Create a new rancher2 Cluster Sync
-//			_, err = rancher2.NewClusterSync(ctx, "foo-customClusterSync", &rancher2.ClusterSyncArgs{
-//				ClusterId: foo_customCluster.ID(),
+//			_, err = rancher2.NewClusterSync(ctx, "foo-custom", &rancher2.ClusterSyncArgs{
+//				ClusterId: foo_custom.ID(),
 //				NodePoolIds: pulumi.StringArray{
 //					fooNodePool.ID(),
 //				},
@@ -82,7 +85,8 @@ import (
 //				return err
 //			}
 //			// Create a new rancher2 Project
-//			_, err = rancher2.NewProject(ctx, "fooProject", &rancher2.ProjectArgs{
+//			_, err = rancher2.NewProject(ctx, "foo", &rancher2.ProjectArgs{
+//				Name:        pulumi.String("foo"),
 //				ClusterId:   foo_customClusterSync.ID(),
 //				Description: pulumi.String("Terraform namespace acceptance test"),
 //				ResourceQuota: &rancher2.ProjectResourceQuotaArgs{

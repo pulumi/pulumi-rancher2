@@ -27,6 +27,7 @@ namespace Pulumi.Rancher2
     ///     var foo = new Rancher2.ClusterAlertGroup("foo", new()
     ///     {
     ///         ClusterId = "&lt;cluster_id&gt;",
+    ///         Name = "foo",
     ///         Description = "Terraform cluster alert group",
     ///         GroupIntervalSeconds = 300,
     ///         RepeatIntervalSeconds = 3600,

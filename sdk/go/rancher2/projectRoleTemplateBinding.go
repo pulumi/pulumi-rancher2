@@ -31,6 +31,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 Project Role Template Binding
 //			_, err := rancher2.NewProjectRoleTemplateBinding(ctx, "foo", &rancher2.ProjectRoleTemplateBindingArgs{
+//				Name:           pulumi.String("foo"),
 //				ProjectId:      pulumi.String("<project_id>"),
 //				RoleTemplateId: pulumi.String("<role_template_id>"),
 //				UserId:         pulumi.String("<user_id>"),

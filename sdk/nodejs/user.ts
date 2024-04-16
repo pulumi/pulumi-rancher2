@@ -17,15 +17,17 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * // Create a new rancher2 User
- * const fooUser = new rancher2.User("fooUser", {
+ * const foo = new rancher2.User("foo", {
+ *     name: "Foo user",
  *     username: "foo",
  *     password: "changeme",
  *     enabled: true,
  * });
  * // Create a new rancher2 global_role_binding for User
- * const fooGlobalRoleBinding = new rancher2.GlobalRoleBinding("fooGlobalRoleBinding", {
+ * const fooGlobalRoleBinding = new rancher2.GlobalRoleBinding("foo", {
+ *     name: "foo",
  *     globalRoleId: "user-base",
- *     userId: fooUser.id,
+ *     userId: foo.id,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

@@ -326,6 +326,7 @@ class EtcdBackup(pulumi.CustomResource):
                 ),
             ),
             cluster_id="<CLUSTER_ID>",
+            name="foo",
             filename="<FILENAME>")
         ```
         <!--End PulumiCodeChooser -->
@@ -383,6 +384,7 @@ class EtcdBackup(pulumi.CustomResource):
                 ),
             ),
             cluster_id="<CLUSTER_ID>",
+            name="foo",
             filename="<FILENAME>")
         ```
         <!--End PulumiCodeChooser -->

@@ -27,8 +27,8 @@ namespace Pulumi.Rancher2
         /// {
         ///     var foo = Rancher2.GetGlobalRoleBinding.Invoke(new()
         ///     {
-        ///         GlobalRoleId = "foo_id",
         ///         Name = "foo",
+        ///         GlobalRoleId = "foo_id",
         ///     });
         /// 
         /// });
@@ -54,8 +54,8 @@ namespace Pulumi.Rancher2
         /// {
         ///     var foo = Rancher2.GetGlobalRoleBinding.Invoke(new()
         ///     {
-        ///         GlobalRoleId = "foo_id",
         ///         Name = "foo",
+        ///         GlobalRoleId = "foo_id",
         ///     });
         /// 
         /// });

@@ -27,7 +27,7 @@ namespace Pulumi.Rancher2
         /// {
         ///     var foo = Rancher2.GetNodePool.Invoke(new()
         ///     {
-        ///         ClusterId = rancher2_cluster.Foo_custom.Id,
+        ///         ClusterId = foo_custom.Id,
         ///         Name = "foo",
         ///     });
         /// 
@@ -54,7 +54,7 @@ namespace Pulumi.Rancher2
         /// {
         ///     var foo = Rancher2.GetNodePool.Invoke(new()
         ///     {
-        ///         ClusterId = rancher2_cluster.Foo_custom.Id,
+        ///         ClusterId = foo_custom.Id,
         ///         Name = "foo",
         ///     });
         /// 

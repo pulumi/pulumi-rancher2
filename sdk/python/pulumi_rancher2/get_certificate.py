@@ -137,6 +137,7 @@ def get_certificate(name: Optional[str] = None,
     import pulumi
     import pulumi_rancher2 as rancher2
 
+    # Retrieve a rancher2 Project Certificate
     foo = rancher2.get_certificate(name="<name>",
         project_id="<project_id>")
     ```
@@ -147,9 +148,10 @@ def get_certificate(name: Optional[str] = None,
     import pulumi
     import pulumi_rancher2 as rancher2
 
+    # Retrieve a rancher2 Namespaced Certificate
     foo = rancher2.get_certificate(name="<name>",
-        namespace_id="<namespace_id>",
-        project_id="<project_id>")
+        project_id="<project_id>",
+        namespace_id="<namespace_id>")
     ```
     <!--End PulumiCodeChooser -->
 
@@ -195,6 +197,7 @@ def get_certificate_output(name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_rancher2 as rancher2
 
+    # Retrieve a rancher2 Project Certificate
     foo = rancher2.get_certificate(name="<name>",
         project_id="<project_id>")
     ```
@@ -205,9 +208,10 @@ def get_certificate_output(name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_rancher2 as rancher2
 
+    # Retrieve a rancher2 Namespaced Certificate
     foo = rancher2.get_certificate(name="<name>",
-        namespace_id="<namespace_id>",
-        project_id="<project_id>")
+        project_id="<project_id>",
+        namespace_id="<namespace_id>")
     ```
     <!--End PulumiCodeChooser -->
 

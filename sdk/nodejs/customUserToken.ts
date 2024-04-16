@@ -23,18 +23,20 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * // Create a rancher2 Token
- * const fooUser = new rancher2.User("fooUser", {
+ * const foo = new rancher2.User("foo", {
+ *     name: "foo",
  *     username: "foo",
  *     password: "changeme",
  *     enabled: true,
  * });
  * const foo_login = new rancher2.GlobalRoleBinding("foo-login", {
+ *     name: "foo-login-binding",
  *     globalRoleId: "user-base",
- *     userId: fooUser.id,
+ *     userId: foo.id,
  * });
- * const fooCustomUserToken = new rancher2.CustomUserToken("fooCustomUserToken", {
- *     username: fooUser.username,
- *     password: fooUser.password,
+ * const fooCustomUserToken = new rancher2.CustomUserToken("foo", {
+ *     username: foo.username,
+ *     password: foo.password,
  *     description: "foo token",
  *     ttl: 0,
  * }, {

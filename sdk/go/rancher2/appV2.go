@@ -14,50 +14,6 @@ import (
 
 // Provides a Rancher App v2 resource. This can be used to manage helm charts for Rancher v2 environments and retrieve their information. App v2 resource is available at Rancher v2.5.x and above.
 //
-// ## Example Usage
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"os"
-//
-//	"github.com/pulumi/pulumi-rancher2/sdk/v6/go/rancher2"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := os.ReadFile(path)
-//		if err != nil {
-//			panic(err.Error())
-//		}
-//		return pulumi.String(string(data))
-//	}
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Create a new Rancher2 App V2 using
-//			_, err := rancher2.NewAppV2(ctx, "foo", &rancher2.AppV2Args{
-//				ClusterId:    pulumi.String("<CLUSTER_ID>"),
-//				Namespace:    pulumi.String("cattle-monitoring-system"),
-//				RepoName:     pulumi.String("rancher-charts"),
-//				ChartName:    pulumi.String("rancher-monitoring"),
-//				ChartVersion: pulumi.String("9.4.200"),
-//				Values:       readFileOrPanic("values.yaml"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
-//
 // ### Create an App from a Helm Chart using a different registry
 //
 // The `systemDefaultRegistry` argument can override the global value at App installation. If argument is not provided, the global value for System Default Registry will be used instead.
@@ -75,11 +31,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rancher2.NewAppV2(ctx, "cisBenchmark", &rancher2.AppV2Args{
-//				ChartName:             pulumi.String("rancher-cis-benchmark"),
+//			_, err := rancher2.NewAppV2(ctx, "cis_benchmark", &rancher2.AppV2Args{
 //				ClusterId:             pulumi.String("<CLUSTER_ID>"),
+//				Name:                  pulumi.String("rancher-cis-benchmark"),
 //				Namespace:             pulumi.String("cis-operator-system"),
 //				RepoName:              pulumi.String("rancher-charts"),
+//				ChartName:             pulumi.String("rancher-cis-benchmark"),
 //				SystemDefaultRegistry: pulumi.String("<some.dns.here>:<PORT>"),
 //			})
 //			if err != nil {

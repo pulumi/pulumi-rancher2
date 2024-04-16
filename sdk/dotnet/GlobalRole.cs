@@ -26,8 +26,9 @@ namespace Pulumi.Rancher2
     ///     // Create a new rancher2 Global Role
     ///     var foo = new Rancher2.GlobalRole("foo", new()
     ///     {
-    ///         Description = "Terraform global role acceptance test",
+    ///         Name = "foo",
     ///         NewUserDefault = true,
+    ///         Description = "Terraform global role acceptance test",
     ///         Rules = new[]
     ///         {
     ///             new Rancher2.Inputs.GlobalRoleRuleArgs

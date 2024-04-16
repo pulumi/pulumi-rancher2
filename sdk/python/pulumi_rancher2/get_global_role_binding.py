@@ -123,8 +123,8 @@ def get_global_role_binding(global_role_id: Optional[str] = None,
     import pulumi
     import pulumi_rancher2 as rancher2
 
-    foo = rancher2.get_global_role_binding(global_role_id="foo_id",
-        name="foo")
+    foo = rancher2.get_global_role_binding(name="foo",
+        global_role_id="foo_id")
     ```
     <!--End PulumiCodeChooser -->
 
@@ -162,8 +162,8 @@ def get_global_role_binding_output(global_role_id: Optional[pulumi.Input[Optiona
     import pulumi
     import pulumi_rancher2 as rancher2
 
-    foo = rancher2.get_global_role_binding(global_role_id="foo_id",
-        name="foo")
+    foo = rancher2.get_global_role_binding(name="foo",
+        global_role_id="foo_id")
     ```
     <!--End PulumiCodeChooser -->
 

@@ -475,13 +475,14 @@ class Notifier(pulumi.CustomResource):
 
         # Create a new rancher2 Notifier
         foo = rancher2.Notifier("foo",
+            name="foo",
             cluster_id="<cluster_id>",
             description="Terraform notifier acceptance test",
+            send_resolved=True,
             pagerduty_config=rancher2.NotifierPagerdutyConfigArgs(
-                proxy_url="http://proxy.test.io",
                 service_key="XXXXXXXX",
-            ),
-            send_resolved=True)
+                proxy_url="http://proxy.test.io",
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -527,13 +528,14 @@ class Notifier(pulumi.CustomResource):
 
         # Create a new rancher2 Notifier
         foo = rancher2.Notifier("foo",
+            name="foo",
             cluster_id="<cluster_id>",
             description="Terraform notifier acceptance test",
+            send_resolved=True,
             pagerduty_config=rancher2.NotifierPagerdutyConfigArgs(
-                proxy_url="http://proxy.test.io",
                 service_key="XXXXXXXX",
-            ),
-            send_resolved=True)
+                proxy_url="http://proxy.test.io",
+            ))
         ```
         <!--End PulumiCodeChooser -->
 

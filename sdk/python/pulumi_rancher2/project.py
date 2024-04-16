@@ -409,24 +409,25 @@ class Project(pulumi.CustomResource):
 
         # Create a new rancher2 Project
         foo = rancher2.Project("foo",
+            name="foo",
             cluster_id="<CLUSTER_ID>",
-            container_resource_limit=rancher2.ProjectContainerResourceLimitArgs(
-                limits_cpu="20m",
-                limits_memory="20Mi",
-                requests_cpu="1m",
-                requests_memory="1Mi",
-            ),
             resource_quota=rancher2.ProjectResourceQuotaArgs(
-                namespace_default_limit=rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs(
-                    limits_cpu="2000m",
-                    limits_memory="500Mi",
-                    requests_storage="1Gi",
-                ),
                 project_limit=rancher2.ProjectResourceQuotaProjectLimitArgs(
                     limits_cpu="2000m",
                     limits_memory="2000Mi",
                     requests_storage="2Gi",
                 ),
+                namespace_default_limit=rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs(
+                    limits_cpu="2000m",
+                    limits_memory="500Mi",
+                    requests_storage="1Gi",
+                ),
+            ),
+            container_resource_limit=rancher2.ProjectContainerResourceLimitArgs(
+                limits_cpu="20m",
+                limits_memory="20Mi",
+                requests_cpu="1m",
+                requests_memory="1Mi",
             ))
         ```
         <!--End PulumiCodeChooser -->
@@ -438,7 +439,20 @@ class Project(pulumi.CustomResource):
 
         # Create a new rancher2 Project enabling and customizing monitoring
         foo = rancher2.Project("foo",
+            name="foo",
             cluster_id="<CLUSTER_ID>",
+            resource_quota=rancher2.ProjectResourceQuotaArgs(
+                project_limit=rancher2.ProjectResourceQuotaProjectLimitArgs(
+                    limits_cpu="2000m",
+                    limits_memory="2000Mi",
+                    requests_storage="2Gi",
+                ),
+                namespace_default_limit=rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs(
+                    limits_cpu="2000m",
+                    limits_memory="500Mi",
+                    requests_storage="1Gi",
+                ),
+            ),
             container_resource_limit=rancher2.ProjectContainerResourceLimitArgs(
                 limits_cpu="20m",
                 limits_memory="20Mi",
@@ -467,18 +481,6 @@ class Project(pulumi.CustomResource):
                     "prometheus.resources.core.requests.memory": "750Mi",
                     "prometheus.retention": "12h",
                 },
-            ),
-            resource_quota=rancher2.ProjectResourceQuotaArgs(
-                namespace_default_limit=rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs(
-                    limits_cpu="2000m",
-                    limits_memory="500Mi",
-                    requests_storage="1Gi",
-                ),
-                project_limit=rancher2.ProjectResourceQuotaProjectLimitArgs(
-                    limits_cpu="2000m",
-                    limits_memory="2000Mi",
-                    requests_storage="2Gi",
-                ),
             ))
         ```
         <!--End PulumiCodeChooser -->
@@ -523,24 +525,25 @@ class Project(pulumi.CustomResource):
 
         # Create a new rancher2 Project
         foo = rancher2.Project("foo",
+            name="foo",
             cluster_id="<CLUSTER_ID>",
-            container_resource_limit=rancher2.ProjectContainerResourceLimitArgs(
-                limits_cpu="20m",
-                limits_memory="20Mi",
-                requests_cpu="1m",
-                requests_memory="1Mi",
-            ),
             resource_quota=rancher2.ProjectResourceQuotaArgs(
-                namespace_default_limit=rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs(
-                    limits_cpu="2000m",
-                    limits_memory="500Mi",
-                    requests_storage="1Gi",
-                ),
                 project_limit=rancher2.ProjectResourceQuotaProjectLimitArgs(
                     limits_cpu="2000m",
                     limits_memory="2000Mi",
                     requests_storage="2Gi",
                 ),
+                namespace_default_limit=rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs(
+                    limits_cpu="2000m",
+                    limits_memory="500Mi",
+                    requests_storage="1Gi",
+                ),
+            ),
+            container_resource_limit=rancher2.ProjectContainerResourceLimitArgs(
+                limits_cpu="20m",
+                limits_memory="20Mi",
+                requests_cpu="1m",
+                requests_memory="1Mi",
             ))
         ```
         <!--End PulumiCodeChooser -->
@@ -552,7 +555,20 @@ class Project(pulumi.CustomResource):
 
         # Create a new rancher2 Project enabling and customizing monitoring
         foo = rancher2.Project("foo",
+            name="foo",
             cluster_id="<CLUSTER_ID>",
+            resource_quota=rancher2.ProjectResourceQuotaArgs(
+                project_limit=rancher2.ProjectResourceQuotaProjectLimitArgs(
+                    limits_cpu="2000m",
+                    limits_memory="2000Mi",
+                    requests_storage="2Gi",
+                ),
+                namespace_default_limit=rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs(
+                    limits_cpu="2000m",
+                    limits_memory="500Mi",
+                    requests_storage="1Gi",
+                ),
+            ),
             container_resource_limit=rancher2.ProjectContainerResourceLimitArgs(
                 limits_cpu="20m",
                 limits_memory="20Mi",
@@ -581,18 +597,6 @@ class Project(pulumi.CustomResource):
                     "prometheus.resources.core.requests.memory": "750Mi",
                     "prometheus.retention": "12h",
                 },
-            ),
-            resource_quota=rancher2.ProjectResourceQuotaArgs(
-                namespace_default_limit=rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs(
-                    limits_cpu="2000m",
-                    limits_memory="500Mi",
-                    requests_storage="1Gi",
-                ),
-                project_limit=rancher2.ProjectResourceQuotaProjectLimitArgs(
-                    limits_cpu="2000m",
-                    limits_memory="2000Mi",
-                    requests_storage="2Gi",
-                ),
             ))
         ```
         <!--End PulumiCodeChooser -->

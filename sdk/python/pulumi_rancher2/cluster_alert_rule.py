@@ -506,15 +506,17 @@ class ClusterAlertRule(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         # Create a new Rancher2 Cluster Alert Group
-        foo_cluster_alert_group = rancher2.ClusterAlertGroup("fooClusterAlertGroup",
+        foo = rancher2.ClusterAlertGroup("foo",
             cluster_id="<cluster_id>",
+            name="foo",
             description="Terraform cluster alert group",
             group_interval_seconds=300,
             repeat_interval_seconds=3600)
         # Create a new Rancher2 Cluster Alert Rule
-        foo_cluster_alert_rule = rancher2.ClusterAlertRule("fooClusterAlertRule",
-            cluster_id=foo_cluster_alert_group.cluster_id,
-            group_id=foo_cluster_alert_group.id,
+        foo_cluster_alert_rule = rancher2.ClusterAlertRule("foo",
+            cluster_id=foo.cluster_id,
+            group_id=foo.id,
+            name="foo",
             group_interval_seconds=600,
             repeat_interval_seconds=6000)
         ```
@@ -562,15 +564,17 @@ class ClusterAlertRule(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         # Create a new Rancher2 Cluster Alert Group
-        foo_cluster_alert_group = rancher2.ClusterAlertGroup("fooClusterAlertGroup",
+        foo = rancher2.ClusterAlertGroup("foo",
             cluster_id="<cluster_id>",
+            name="foo",
             description="Terraform cluster alert group",
             group_interval_seconds=300,
             repeat_interval_seconds=3600)
         # Create a new Rancher2 Cluster Alert Rule
-        foo_cluster_alert_rule = rancher2.ClusterAlertRule("fooClusterAlertRule",
-            cluster_id=foo_cluster_alert_group.cluster_id,
-            group_id=foo_cluster_alert_group.id,
+        foo_cluster_alert_rule = rancher2.ClusterAlertRule("foo",
+            cluster_id=foo.cluster_id,
+            group_id=foo.id,
+            name="foo",
             group_interval_seconds=600,
             repeat_interval_seconds=6000)
         ```

@@ -26,14 +26,15 @@ namespace Pulumi.Rancher2
     ///     // Create a new rancher2 Notifier
     ///     var foo = new Rancher2.Notifier("foo", new()
     ///     {
+    ///         Name = "foo",
     ///         ClusterId = "&lt;cluster_id&gt;",
     ///         Description = "Terraform notifier acceptance test",
+    ///         SendResolved = true,
     ///         PagerdutyConfig = new Rancher2.Inputs.NotifierPagerdutyConfigArgs
     ///         {
-    ///             ProxyUrl = "http://proxy.test.io",
     ///             ServiceKey = "XXXXXXXX",
+    ///             ProxyUrl = "http://proxy.test.io",
     ///         },
-    ///         SendResolved = true,
     ///     });
     /// 
     /// });

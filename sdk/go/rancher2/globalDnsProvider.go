@@ -31,11 +31,12 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 Global DNS Provider - alidns
 //			_, err := rancher2.NewGlobalDnsProvider(ctx, "foo", &rancher2.GlobalDnsProviderArgs{
+//				Name:       pulumi.String("foo"),
+//				RootDomain: pulumi.String("example.com"),
 //				AlidnsConfig: &rancher2.GlobalDnsProviderAlidnsConfigArgs{
 //					AccessKey: pulumi.String("YYYYYYYYYYYYYYYYYYYY"),
 //					SecretKey: pulumi.String("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"),
 //				},
-//				RootDomain: pulumi.String("example.com"),
 //			})
 //			if err != nil {
 //				return err
@@ -62,12 +63,13 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 Global DNS Provider - cloudflare
 //			_, err := rancher2.NewGlobalDnsProvider(ctx, "foo", &rancher2.GlobalDnsProviderArgs{
+//				Name:       pulumi.String("foo"),
+//				RootDomain: pulumi.String("example.com"),
 //				CloudflareConfig: &rancher2.GlobalDnsProviderCloudflareConfigArgs{
 //					ApiEmail:     pulumi.String("test@test.local"),
 //					ApiKey:       pulumi.String("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"),
 //					ProxySetting: pulumi.Bool(true),
 //				},
-//				RootDomain: pulumi.String("example.com"),
 //			})
 //			if err != nil {
 //				return err
@@ -94,12 +96,13 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 Global DNS Provider - route53
 //			_, err := rancher2.NewGlobalDnsProvider(ctx, "foo", &rancher2.GlobalDnsProviderArgs{
+//				Name:       pulumi.String("foo"),
 //				RootDomain: pulumi.String("example.com"),
 //				Route53Config: &rancher2.GlobalDnsProviderRoute53ConfigArgs{
 //					AccessKey: pulumi.String("YYYYYYYYYYYYYYYYYYYY"),
-//					Region:    pulumi.String("us-east-1"),
 //					SecretKey: pulumi.String("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"),
 //					ZoneType:  pulumi.String("private"),
+//					Region:    pulumi.String("us-east-1"),
 //				},
 //			})
 //			if err != nil {

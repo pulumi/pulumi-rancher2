@@ -18,11 +18,12 @@ import * as utilities from "./utilities";
  *
  * // Create a new rancher2 Global DNS Provider - alidns
  * const foo = new rancher2.GlobalDnsProvider("foo", {
+ *     name: "foo",
+ *     rootDomain: "example.com",
  *     alidnsConfig: {
  *         accessKey: "YYYYYYYYYYYYYYYYYYYY",
  *         secretKey: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
  *     },
- *     rootDomain: "example.com",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -34,12 +35,13 @@ import * as utilities from "./utilities";
  *
  * // Create a new rancher2 Global DNS Provider - cloudflare
  * const foo = new rancher2.GlobalDnsProvider("foo", {
+ *     name: "foo",
+ *     rootDomain: "example.com",
  *     cloudflareConfig: {
  *         apiEmail: "test@test.local",
  *         apiKey: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
  *         proxySetting: true,
  *     },
- *     rootDomain: "example.com",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -51,12 +53,13 @@ import * as utilities from "./utilities";
  *
  * // Create a new rancher2 Global DNS Provider - route53
  * const foo = new rancher2.GlobalDnsProvider("foo", {
+ *     name: "foo",
  *     rootDomain: "example.com",
  *     route53Config: {
  *         accessKey: "YYYYYYYYYYYYYYYYYYYY",
- *         region: "us-east-1",
  *         secretKey: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
  *         zoneType: "private",
+ *         region: "us-east-1",
  *     },
  * });
  * ```

@@ -32,6 +32,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 cluster Role Template
 //			_, err := rancher2.NewRoleTemplate(ctx, "foo", &rancher2.RoleTemplateArgs{
+//				Name:        pulumi.String("foo"),
 //				Context:     pulumi.String("cluster"),
 //				DefaultRole: pulumi.Bool(true),
 //				Description: pulumi.String("Terraform role template acceptance test"),
@@ -74,6 +75,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 project Role Template
 //			_, err := rancher2.NewRoleTemplate(ctx, "foo", &rancher2.RoleTemplateArgs{
+//				Name:        pulumi.String("foo"),
 //				Context:     pulumi.String("project"),
 //				DefaultRole: pulumi.Bool(true),
 //				Description: pulumi.String("Terraform role template acceptance test"),

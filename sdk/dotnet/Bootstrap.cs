@@ -62,21 +62,11 @@ namespace Pulumi.Rancher2
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Provider bootstrap config with alias
-    ///     var bootstrap = new Rancher2.Provider("bootstrap", new()
-    ///     {
-    ///         ApiUrl = "https://rancher.my-domain.com",
-    ///         Bootstrap = true,
-    ///     });
-    /// 
     ///     // Create a new rancher2_bootstrap using bootstrap provider config
     ///     var admin = new Rancher2.Bootstrap("admin", new()
     ///     {
     ///         Password = "blahblah",
     ///         Telemetry = true,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = "rancher2.bootstrap",
     ///     });
     /// 
     /// });

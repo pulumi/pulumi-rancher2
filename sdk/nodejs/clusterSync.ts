@@ -15,7 +15,8 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * // Create a new rancher2 rke Cluster 
- * const foo_customCluster = new rancher2.Cluster("foo-customCluster", {
+ * const foo_custom = new rancher2.Cluster("foo-custom", {
+ *     name: "foo-custom",
  *     description: "Foo rancher2 custom cluster",
  *     rkeConfig: {
  *         network: {
@@ -24,7 +25,8 @@ import * as utilities from "./utilities";
  *     },
  * });
  * // Create a new rancher2 Node Template
- * const fooNodeTemplate = new rancher2.NodeTemplate("fooNodeTemplate", {
+ * const foo = new rancher2.NodeTemplate("foo", {
+ *     name: "foo",
  *     description: "foo test",
  *     amazonec2Config: {
  *         accessKey: "<AWS_ACCESS_KEY>",
@@ -38,22 +40,24 @@ import * as utilities from "./utilities";
  *     },
  * });
  * // Create a new rancher2 Node Pool
- * const fooNodePool = new rancher2.NodePool("fooNodePool", {
- *     clusterId: foo_customCluster.id,
+ * const fooNodePool = new rancher2.NodePool("foo", {
+ *     clusterId: foo_custom.id,
+ *     name: "foo",
  *     hostnamePrefix: "foo-cluster-0",
- *     nodeTemplateId: fooNodeTemplate.id,
+ *     nodeTemplateId: foo.id,
  *     quantity: 3,
  *     controlPlane: true,
  *     etcd: true,
  *     worker: true,
  * });
  * // Create a new rancher2 Cluster Sync
- * const foo_customClusterSync = new rancher2.ClusterSync("foo-customClusterSync", {
- *     clusterId: foo_customCluster.id,
+ * const foo_customClusterSync = new rancher2.ClusterSync("foo-custom", {
+ *     clusterId: foo_custom.id,
  *     nodePoolIds: [fooNodePool.id],
  * });
  * // Create a new rancher2 Project
- * const fooProject = new rancher2.Project("fooProject", {
+ * const fooProject = new rancher2.Project("foo", {
+ *     name: "foo",
  *     clusterId: foo_customClusterSync.id,
  *     description: "Terraform namespace acceptance test",
  *     resourceQuota: {

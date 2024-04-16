@@ -348,6 +348,7 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
 
         # Create a new rancher2 Project Role Template Binding
         foo = rancher2.ProjectRoleTemplateBinding("foo",
+            name="foo",
             project_id="<project_id>",
             role_template_id="<role_template_id>",
             user_id="<user_id>")
@@ -394,6 +395,7 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
 
         # Create a new rancher2 Project Role Template Binding
         foo = rancher2.ProjectRoleTemplateBinding("foo",
+            name="foo",
             project_id="<project_id>",
             role_template_id="<role_template_id>",
             user_id="<user_id>")

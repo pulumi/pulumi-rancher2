@@ -36,6 +36,7 @@ import (
 //				Checksum:    pulumi.String("0x0"),
 //				Description: pulumi.String("Foo description"),
 //				ExternalId:  pulumi.String("foo_external"),
+//				Name:        pulumi.String("foo"),
 //				UiUrl:       pulumi.String("local://ui"),
 //				Url:         pulumi.String("local://"),
 //				WhitelistDomains: pulumi.StringArray{

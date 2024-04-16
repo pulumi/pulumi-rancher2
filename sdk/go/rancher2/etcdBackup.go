@@ -47,6 +47,7 @@ import (
 //					},
 //				},
 //				ClusterId: pulumi.String("<CLUSTER_ID>"),
+//				Name:      pulumi.String("foo"),
 //				Filename:  pulumi.String("<FILENAME>"),
 //			})
 //			if err != nil {

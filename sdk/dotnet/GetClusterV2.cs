@@ -27,8 +27,8 @@ namespace Pulumi.Rancher2
         /// {
         ///     var foo = Rancher2.GetClusterV2.Invoke(new()
         ///     {
-        ///         FleetNamespace = "fleet-ns",
         ///         Name = "foo",
+        ///         FleetNamespace = "fleet-ns",
         ///     });
         /// 
         /// });
@@ -54,8 +54,8 @@ namespace Pulumi.Rancher2
         /// {
         ///     var foo = Rancher2.GetClusterV2.Invoke(new()
         ///     {
-        ///         FleetNamespace = "fleet-ns",
         ///         Name = "foo",
+        ///         FleetNamespace = "fleet-ns",
         ///     });
         /// 
         /// });

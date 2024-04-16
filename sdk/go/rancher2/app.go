@@ -38,17 +38,18 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 App
 //			_, err := rancher2.NewApp(ctx, "foo", &rancher2.AppArgs{
-//				Answers: pulumi.Map{
-//					"foo": pulumi.Any("bar"),
-//					"ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect": pulumi.Any(true),
-//					"ingress_host": pulumi.Any("test.xip.io"),
-//				},
 //				CatalogName:     pulumi.String("<catalog_name>"),
+//				Name:            pulumi.String("foo"),
 //				Description:     pulumi.String("Foo app"),
 //				ProjectId:       pulumi.String("<project_id>"),
-//				TargetNamespace: pulumi.String("<namespace_name>"),
 //				TemplateName:    pulumi.String("<template_name>"),
 //				TemplateVersion: pulumi.String("<template_version>"),
+//				TargetNamespace: pulumi.String("<namespace_name>"),
+//				Answers: pulumi.Map{
+//					"ingress_host": pulumi.Any("test.xip.io"),
+//					"foo":          pulumi.Any("bar"),
+//					"ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect": pulumi.Any(true),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -74,7 +75,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 App in a new namespace
-//			fooNamespace, err := rancher2.NewNamespace(ctx, "fooNamespace", &rancher2.NamespaceArgs{
+//			foo, err := rancher2.NewNamespace(ctx, "foo", &rancher2.NamespaceArgs{
+//				Name:        pulumi.String("foo"),
 //				Description: pulumi.String("Foo namespace"),
 //				ProjectId:   pulumi.String("<project_id>"),
 //				ResourceQuota: &rancher2.NamespaceResourceQuotaArgs{
@@ -88,13 +90,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = rancher2.NewApp(ctx, "fooApp", &rancher2.AppArgs{
+//			_, err = rancher2.NewApp(ctx, "foo", &rancher2.AppArgs{
 //				CatalogName:     pulumi.String("<catalog_name>"),
+//				Name:            pulumi.String("foo"),
 //				Description:     pulumi.String("Foo app"),
 //				ProjectId:       pulumi.String("<project_id>"),
 //				TemplateName:    pulumi.String("<template_name>"),
 //				TemplateVersion: pulumi.String("<template_version>"),
-//				TargetNamespace: fooNamespace.ID(),
+//				TargetNamespace: foo.ID(),
 //				Answers: pulumi.Map{
 //					"ingress_host": pulumi.Any("test.xip.io"),
 //					"foo":          pulumi.Any("bar"),

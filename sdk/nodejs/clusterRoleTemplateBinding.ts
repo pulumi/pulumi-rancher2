@@ -16,6 +16,7 @@ import * as utilities from "./utilities";
  *
  * // Create a new Rancher2 Cluster Role Template Binding
  * const foo = new rancher2.ClusterRoleTemplateBinding("foo", {
+ *     name: "foo",
  *     clusterId: "<cluster_id>",
  *     roleTemplateId: "<role_template_id>",
  *     userId: "<user_id>",

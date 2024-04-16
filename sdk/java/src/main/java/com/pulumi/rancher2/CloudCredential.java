@@ -57,11 +57,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Cloud Credential
  *         var foo = new CloudCredential(&#34;foo&#34;, CloudCredentialArgs.builder()        
+ *             .name(&#34;foo&#34;)
+ *             .description(&#34;foo test&#34;)
  *             .amazonec2CredentialConfig(CloudCredentialAmazonec2CredentialConfigArgs.builder()
  *                 .accessKey(&#34;&lt;AWS_ACCESS_KEY&gt;&#34;)
  *                 .secretKey(&#34;&lt;AWS_SECRET_KEY&gt;&#34;)
  *                 .build())
- *             .description(&#34;foo test&#34;)
  *             .build());
  * 
  *     }
@@ -94,16 +95,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var foo-harvesterClusterV2 = Rancher2Functions.getClusterV2(GetClusterV2Args.builder()
+ *         // Get imported harvester cluster info
+ *         final var foo-harvester = Rancher2Functions.getClusterV2(GetClusterV2Args.builder()
  *             .name(&#34;foo-harvester&#34;)
  *             .build());
  * 
  *         // Create a new Cloud Credential for an imported Harvester cluster
  *         var foo_harvesterCloudCredential = new CloudCredential(&#34;foo-harvesterCloudCredential&#34;, CloudCredentialArgs.builder()        
+ *             .name(&#34;foo-harvester&#34;)
  *             .harvesterCredentialConfig(CloudCredentialHarvesterCredentialConfigArgs.builder()
- *                 .clusterId(foo_harvesterClusterV2.clusterV1Id())
+ *                 .clusterId(foo_harvester.clusterV1Id())
  *                 .clusterType(&#34;imported&#34;)
- *                 .kubeconfigContent(foo_harvesterClusterV2.kubeConfig())
+ *                 .kubeconfigContent(foo_harvester.kubeConfig())
  *                 .build())
  *             .build());
  * 

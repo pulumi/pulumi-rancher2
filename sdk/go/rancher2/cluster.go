@@ -34,6 +34,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 imported Cluster
 //			_, err := rancher2.NewCluster(ctx, "foo-imported", &rancher2.ClusterArgs{
+//				Name:        pulumi.String("foo-imported"),
 //				Description: pulumi.String("Foo rancher2 imported cluster"),
 //			})
 //			if err != nil {
@@ -67,6 +68,14 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 RKE Cluster
 //			_, err := rancher2.NewCluster(ctx, "foo-custom", &rancher2.ClusterArgs{
+//				Name:        pulumi.String("foo-custom"),
+//				Description: pulumi.String("Foo rancher2 custom cluster"),
+//				RkeConfig: &rancher2.ClusterRkeConfigArgs{
+//					Network: &rancher2.ClusterRkeConfigNetworkArgs{
+//						Plugin: pulumi.String("canal"),
+//					},
+//				},
+//				EnableClusterMonitoring: pulumi.Bool(true),
 //				ClusterMonitoringInput: &rancher2.ClusterClusterMonitoringInputArgs{
 //					Answers: pulumi.Map{
 //						"exporter-kubelets.https":                   pulumi.Any(true),
@@ -89,13 +98,6 @@ import (
 //						"prometheus.retention":                      pulumi.Any("12h"),
 //					},
 //					Version: pulumi.String("0.1.0"),
-//				},
-//				Description:             pulumi.String("Foo rancher2 custom cluster"),
-//				EnableClusterMonitoring: pulumi.Bool(true),
-//				RkeConfig: &rancher2.ClusterRkeConfigArgs{
-//					Network: &rancher2.ClusterRkeConfigNetworkArgs{
-//						Plugin: pulumi.String("canal"),
-//					},
 //				},
 //			})
 //			if err != nil {
@@ -124,7 +126,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 RKE Cluster
-//			_, err := rancher2.NewCluster(ctx, "foo-customCluster", &rancher2.ClusterArgs{
+//			_, err := rancher2.NewCluster(ctx, "foo-custom", &rancher2.ClusterArgs{
+//				Name:        pulumi.String("foo-custom"),
 //				Description: pulumi.String("Foo rancher2 custom cluster"),
 //				RkeConfig: &rancher2.ClusterRkeConfigArgs{
 //					Network: &rancher2.ClusterRkeConfigNetworkArgs{
@@ -160,15 +163,16 @@ import (
 //				return err
 //			}
 //			// Create a new rancher2 Cluster Sync for foo-custom cluster
-//			_, err = rancher2.NewClusterSync(ctx, "foo-customClusterSync", &rancher2.ClusterSyncArgs{
-//				ClusterId:      foo_customCluster.ID(),
-//				WaitMonitoring: foo_customCluster.EnableClusterMonitoring,
+//			_, err = rancher2.NewClusterSync(ctx, "foo-custom", &rancher2.ClusterSyncArgs{
+//				ClusterId:      foo_custom.ID(),
+//				WaitMonitoring: foo_custom.EnableClusterMonitoring,
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Create a new rancher2 Namespace
 //			_, err = rancher2.NewNamespace(ctx, "foo-istio", &rancher2.NamespaceArgs{
+//				Name:        pulumi.String("istio-system"),
 //				ProjectId:   foo_customClusterSync.SystemProjectId,
 //				Description: pulumi.String("istio namespace"),
 //			})
@@ -178,6 +182,7 @@ import (
 //			// Create a new rancher2 App deploying istio (should wait until monitoring is up and running)
 //			_, err = rancher2.NewApp(ctx, "istio", &rancher2.AppArgs{
 //				CatalogName:     pulumi.String("system-library"),
+//				Name:            pulumi.String("cluster-istio"),
 //				Description:     pulumi.String("Terraform app acceptance test"),
 //				ProjectId:       foo_istio.ProjectId,
 //				TemplateName:    pulumi.String("rancher-istio"),
@@ -252,6 +257,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 RKE Cluster
 //			_, err := rancher2.NewCluster(ctx, "foo-custom", &rancher2.ClusterArgs{
+//				Name:        pulumi.String("foo-custom"),
 //				Description: pulumi.String("Foo rancher2 custom cluster"),
 //				RkeConfig: &rancher2.ClusterRkeConfigArgs{
 //					Network: &rancher2.ClusterRkeConfigNetworkArgs{
@@ -263,7 +269,8 @@ import (
 //				return err
 //			}
 //			// Create a new rancher2 Node Template
-//			fooNodeTemplate, err := rancher2.NewNodeTemplate(ctx, "fooNodeTemplate", &rancher2.NodeTemplateArgs{
+//			foo, err := rancher2.NewNodeTemplate(ctx, "foo", &rancher2.NodeTemplateArgs{
+//				Name:        pulumi.String("foo"),
 //				Description: pulumi.String("foo test"),
 //				Amazonec2Config: &rancher2.NodeTemplateAmazonec2ConfigArgs{
 //					AccessKey: pulumi.String("<AWS_ACCESS_KEY>"),
@@ -282,10 +289,11 @@ import (
 //				return err
 //			}
 //			// Create a new rancher2 Node Pool
-//			_, err = rancher2.NewNodePool(ctx, "fooNodePool", &rancher2.NodePoolArgs{
+//			_, err = rancher2.NewNodePool(ctx, "foo", &rancher2.NodePoolArgs{
 //				ClusterId:      foo_custom.ID(),
+//				Name:           pulumi.String("foo"),
 //				HostnamePrefix: pulumi.String("foo-cluster-0"),
-//				NodeTemplateId: fooNodeTemplate.ID(),
+//				NodeTemplateId: foo.ID(),
 //				Quantity:       pulumi.Int(3),
 //				ControlPlane:   pulumi.Bool(true),
 //				Etcd:           pulumi.Bool(true),
@@ -317,7 +325,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 cluster template
-//			fooClusterTemplate, err := rancher2.NewClusterTemplate(ctx, "fooClusterTemplate", &rancher2.ClusterTemplateArgs{
+//			foo, err := rancher2.NewClusterTemplate(ctx, "foo", &rancher2.ClusterTemplateArgs{
+//				Name: pulumi.String("foo"),
 //				Members: rancher2.ClusterTemplateMemberArray{
 //					&rancher2.ClusterTemplateMemberArgs{
 //						AccessType:      pulumi.String("owner"),
@@ -349,9 +358,10 @@ import (
 //				return err
 //			}
 //			// Create a new rancher2 RKE Cluster from template
-//			_, err = rancher2.NewCluster(ctx, "fooCluster", &rancher2.ClusterArgs{
-//				ClusterTemplateId: fooClusterTemplate.ID(),
-//				ClusterTemplateRevisionId: fooClusterTemplate.TemplateRevisions.ApplyT(func(templateRevisions []rancher2.ClusterTemplateTemplateRevision) (*string, error) {
+//			_, err = rancher2.NewCluster(ctx, "foo", &rancher2.ClusterArgs{
+//				Name:              pulumi.String("foo"),
+//				ClusterTemplateId: foo.ID(),
+//				ClusterTemplateRevisionId: foo.TemplateRevisions.ApplyT(func(templateRevisions []rancher2.ClusterTemplateTemplateRevision) (*string, error) {
 //					return &templateRevisions[0].Id, nil
 //				}).(pulumi.StringPtrOutput),
 //			})
@@ -381,6 +391,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := rancher2.NewCluster(ctx, "foo", &rancher2.ClusterArgs{
+//				Name:        pulumi.String("foo"),
 //				Description: pulumi.String("Terraform custom cluster"),
 //				RkeConfig: &rancher2.ClusterRkeConfigArgs{
 //					Network: &rancher2.ClusterRkeConfigNetworkArgs{
@@ -393,12 +404,13 @@ import (
 //						},
 //						KubeApi: &rancher2.ClusterRkeConfigServicesKubeApiArgs{
 //							AuditLog: &rancher2.ClusterRkeConfigServicesKubeApiAuditLogArgs{
+//								Enabled: pulumi.Bool(true),
 //								Configuration: &rancher2.ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs{
-//									Format:    pulumi.String("json"),
 //									MaxAge:    pulumi.Int(5),
 //									MaxBackup: pulumi.Int(5),
 //									MaxSize:   pulumi.Int(100),
 //									Path:      pulumi.String("-"),
+//									Format:    pulumi.String("json"),
 //									Policy: pulumi.String(`apiVersion: audit.k8s.io/v1
 //
 // kind: Policy
@@ -417,7 +429,6 @@ import (
 // `),
 //
 //								},
-//								Enabled: pulumi.Bool(true),
 //							},
 //						},
 //					},
@@ -453,6 +464,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := rancher2.NewCluster(ctx, "foo", &rancher2.ClusterArgs{
+//				Name:        pulumi.String("foo"),
+//				Description: pulumi.String("Terraform cluster with agent customization"),
+//				RkeConfig: &rancher2.ClusterRkeConfigArgs{
+//					Network: &rancher2.ClusterRkeConfigNetworkArgs{
+//						Plugin: pulumi.String("canal"),
+//					},
+//				},
 //				ClusterAgentDeploymentCustomizations: rancher2.ClusterClusterAgentDeploymentCustomizationArray{
 //					&rancher2.ClusterClusterAgentDeploymentCustomizationArgs{
 //						AppendTolerations: rancher2.ClusterClusterAgentDeploymentCustomizationAppendTolerationArray{
@@ -490,12 +508,6 @@ import (
 //						},
 //					},
 //				},
-//				Description: pulumi.String("Terraform cluster with agent customization"),
-//				RkeConfig: &rancher2.ClusterRkeConfigArgs{
-//					Network: &rancher2.ClusterRkeConfigNetworkArgs{
-//						Plugin: pulumi.String("canal"),
-//					},
-//				},
 //			})
 //			if err != nil {
 //				return err
@@ -523,7 +535,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Custom PSACT (if you wish to use your own)
-//			_, err := rancher2.NewPodSecurityAdmissionConfigurationTemplate(ctx, "fooPodSecurityAdmissionConfigurationTemplate", &rancher2.PodSecurityAdmissionConfigurationTemplateArgs{
+//			_, err := rancher2.NewPodSecurityAdmissionConfigurationTemplate(ctx, "foo", &rancher2.PodSecurityAdmissionConfigurationTemplateArgs{
+//				Name:        pulumi.String("custom-psact"),
+//				Description: pulumi.String("This is my custom Pod Security Admission Configuration Template"),
 //				Defaults: &rancher2.PodSecurityAdmissionConfigurationTemplateDefaultsArgs{
 //					Audit:          pulumi.String("restricted"),
 //					AuditVersion:   pulumi.String("latest"),
@@ -532,26 +546,26 @@ import (
 //					Warn:           pulumi.String("restricted"),
 //					WarnVersion:    pulumi.String("latest"),
 //				},
-//				Description: pulumi.String("This is my custom Pod Security Admission Configuration Template"),
 //				Exemptions: &rancher2.PodSecurityAdmissionConfigurationTemplateExemptionsArgs{
-//					Namespaces: pulumi.StringArray{
-//						pulumi.String("ingress-nginx"),
-//						pulumi.String("kube-system"),
+//					Usernames: pulumi.StringArray{
+//						pulumi.String("testuser"),
 //					},
 //					RuntimeClasses: pulumi.StringArray{
 //						pulumi.String("testclass"),
 //					},
-//					Usernames: pulumi.StringArray{
-//						pulumi.String("testuser"),
+//					Namespaces: pulumi.StringArray{
+//						pulumi.String("ingress-nginx"),
+//						pulumi.String("kube-system"),
 //					},
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = rancher2.NewCluster(ctx, "fooCluster", &rancher2.ClusterArgs{
-//				DefaultPodSecurityAdmissionConfigurationTemplateName: pulumi.String("<name>"),
+//			_, err = rancher2.NewCluster(ctx, "foo", &rancher2.ClusterArgs{
+//				Name:        pulumi.String("foo"),
 //				Description: pulumi.String("Terraform cluster with PSACT"),
+//				DefaultPodSecurityAdmissionConfigurationTemplateName: pulumi.String("<name>"),
 //				RkeConfig: &rancher2.ClusterRkeConfigArgs{
 //					Network: &rancher2.ClusterRkeConfigNetworkArgs{
 //						Plugin: pulumi.String("canal"),
@@ -583,7 +597,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			fooCloudCredential, err := rancher2.NewCloudCredential(ctx, "fooCloudCredential", &rancher2.CloudCredentialArgs{
+//			foo, err := rancher2.NewCloudCredential(ctx, "foo", &rancher2.CloudCredentialArgs{
+//				Name:        pulumi.String("foo"),
 //				Description: pulumi.String("foo test"),
 //				Amazonec2CredentialConfig: &rancher2.CloudCredentialAmazonec2CredentialConfigArgs{
 //					AccessKey: pulumi.String("<aws-access-key>"),
@@ -593,10 +608,11 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = rancher2.NewCluster(ctx, "fooCluster", &rancher2.ClusterArgs{
+//			_, err = rancher2.NewCluster(ctx, "foo", &rancher2.ClusterArgs{
+//				Name:        pulumi.String("foo"),
 //				Description: pulumi.String("Terraform EKS cluster"),
 //				EksConfigV2: &rancher2.ClusterEksConfigV2Args{
-//					CloudCredentialId: fooCloudCredential.ID(),
+//					CloudCredentialId: foo.ID(),
 //					Name:              pulumi.String("<cluster-name>"),
 //					Region:            pulumi.String("<eks-region>"),
 //					Imported:          pulumi.Bool(true),
@@ -627,7 +643,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			fooCloudCredential, err := rancher2.NewCloudCredential(ctx, "fooCloudCredential", &rancher2.CloudCredentialArgs{
+//			foo, err := rancher2.NewCloudCredential(ctx, "foo", &rancher2.CloudCredentialArgs{
+//				Name:        pulumi.String("foo"),
 //				Description: pulumi.String("foo test"),
 //				Amazonec2CredentialConfig: &rancher2.CloudCredentialAmazonec2CredentialConfigArgs{
 //					AccessKey: pulumi.String("<aws-access-key>"),
@@ -637,10 +654,11 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = rancher2.NewCluster(ctx, "fooCluster", &rancher2.ClusterArgs{
+//			_, err = rancher2.NewCluster(ctx, "foo", &rancher2.ClusterArgs{
+//				Name:        pulumi.String("foo"),
 //				Description: pulumi.String("Terraform EKS cluster"),
 //				EksConfigV2: &rancher2.ClusterEksConfigV2Args{
-//					CloudCredentialId: fooCloudCredential.ID(),
+//					CloudCredentialId: foo.ID(),
 //					Region:            pulumi.String("<EKS_REGION>"),
 //					KubernetesVersion: pulumi.String("1.24"),
 //					LoggingTypes: pulumi.StringArray{
@@ -693,7 +711,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			fooCloudCredential, err := rancher2.NewCloudCredential(ctx, "fooCloudCredential", &rancher2.CloudCredentialArgs{
+//			foo, err := rancher2.NewCloudCredential(ctx, "foo", &rancher2.CloudCredentialArgs{
+//				Name:        pulumi.String("foo"),
 //				Description: pulumi.String("foo test"),
 //				Amazonec2CredentialConfig: &rancher2.CloudCredentialAmazonec2CredentialConfigArgs{
 //					AccessKey: pulumi.String("<aws-access-key>"),
@@ -703,10 +722,11 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = rancher2.NewCluster(ctx, "fooCluster", &rancher2.ClusterArgs{
+//			_, err = rancher2.NewCluster(ctx, "foo", &rancher2.ClusterArgs{
+//				Name:        pulumi.String("foo"),
 //				Description: pulumi.String("Terraform EKS cluster"),
 //				EksConfigV2: &rancher2.ClusterEksConfigV2Args{
-//					CloudCredentialId: fooCloudCredential.ID(),
+//					CloudCredentialId: foo.ID(),
 //					Region:            pulumi.String("<EKS_REGION>"),
 //					KubernetesVersion: pulumi.String("1.24"),
 //					LoggingTypes: pulumi.StringArray{
@@ -756,6 +776,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := rancher2.NewCloudCredential(ctx, "foo-aks", &rancher2.CloudCredentialArgs{
+//				Name: pulumi.String("foo-aks"),
 //				AzureCredentialConfig: &rancher2.CloudCredentialAzureCredentialConfigArgs{
 //					ClientId:       pulumi.String("<client-id>"),
 //					ClientSecret:   pulumi.String("<client-secret>"),
@@ -766,6 +787,7 @@ import (
 //				return err
 //			}
 //			_, err = rancher2.NewCluster(ctx, "foo", &rancher2.ClusterArgs{
+//				Name:        pulumi.String("foo"),
 //				Description: pulumi.String("Terraform AKS cluster"),
 //				AksConfigV2: &rancher2.ClusterAksConfigV2Args{
 //					CloudCredentialId: foo_aks.ID(),

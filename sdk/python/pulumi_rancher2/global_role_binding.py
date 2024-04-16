@@ -250,10 +250,12 @@ class GlobalRoleBinding(pulumi.CustomResource):
 
         # Create a new rancher2 Global Role Binding using user_id
         foo = rancher2.GlobalRoleBinding("foo",
+            name="foo",
             global_role_id="admin",
             user_id="user-XXXXX")
         # Create a new rancher2 Global Role Binding using group_principal_id
         foo2 = rancher2.GlobalRoleBinding("foo2",
+            name="foo2",
             global_role_id="admin",
             group_principal_id="local://g-XXXXX")
         ```
@@ -296,10 +298,12 @@ class GlobalRoleBinding(pulumi.CustomResource):
 
         # Create a new rancher2 Global Role Binding using user_id
         foo = rancher2.GlobalRoleBinding("foo",
+            name="foo",
             global_role_id="admin",
             user_id="user-XXXXX")
         # Create a new rancher2 Global Role Binding using group_principal_id
         foo2 = rancher2.GlobalRoleBinding("foo2",
+            name="foo2",
             global_role_id="admin",
             group_principal_id="local://g-XXXXX")
         ```

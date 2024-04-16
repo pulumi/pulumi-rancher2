@@ -18,13 +18,14 @@ import * as utilities from "./utilities";
  *
  * // Create a new rancher2 Notifier
  * const foo = new rancher2.Notifier("foo", {
+ *     name: "foo",
  *     clusterId: "<cluster_id>",
  *     description: "Terraform notifier acceptance test",
- *     pagerdutyConfig: {
- *         proxyUrl: "http://proxy.test.io",
- *         serviceKey: "XXXXXXXX",
- *     },
  *     sendResolved: true,
+ *     pagerdutyConfig: {
+ *         serviceKey: "XXXXXXXX",
+ *         proxyUrl: "http://proxy.test.io",
+ *     },
  * });
  * ```
  * <!--End PulumiCodeChooser -->
