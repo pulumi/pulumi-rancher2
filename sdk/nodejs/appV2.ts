@@ -7,6 +7,29 @@ import * as utilities from "./utilities";
 /**
  * Provides a Rancher App v2 resource. This can be used to manage helm charts for Rancher v2 environments and retrieve their information. App v2 resource is available at Rancher v2.5.x and above.
  *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ * import * as std from "@pulumi/std";
+ *
+ * // Create a new Rancher2 App V2 using
+ * const foo = new rancher2.AppV2("foo", {
+ *     clusterId: "<CLUSTER_ID>",
+ *     name: "rancher-monitoring",
+ *     namespace: "cattle-monitoring-system",
+ *     repoName: "rancher-charts",
+ *     chartName: "rancher-monitoring",
+ *     chartVersion: "9.4.200",
+ *     values: std.file({
+ *         input: "values.yaml",
+ *     }).then(invoke => invoke.result),
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Create an App from a Helm Chart using a different registry
  *
  * The `systemDefaultRegistry` argument can override the global value at App installation. If argument is not provided, the global value for System Default Registry will be used instead.

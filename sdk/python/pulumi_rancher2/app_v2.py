@@ -596,6 +596,26 @@ class AppV2(pulumi.CustomResource):
         """
         Provides a Rancher App v2 resource. This can be used to manage helm charts for Rancher v2 environments and retrieve their information. App v2 resource is available at Rancher v2.5.x and above.
 
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+        import pulumi_std as std
+
+        # Create a new Rancher2 App V2 using
+        foo = rancher2.AppV2("foo",
+            cluster_id="<CLUSTER_ID>",
+            name="rancher-monitoring",
+            namespace="cattle-monitoring-system",
+            repo_name="rancher-charts",
+            chart_name="rancher-monitoring",
+            chart_version="9.4.200",
+            values=std.file(input="values.yaml").result)
+        ```
+        <!--End PulumiCodeChooser -->
+
         ### Create an App from a Helm Chart using a different registry
 
         The `system_default_registry` argument can override the global value at App installation. If argument is not provided, the global value for System Default Registry will be used instead.
@@ -650,6 +670,26 @@ class AppV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Rancher App v2 resource. This can be used to manage helm charts for Rancher v2 environments and retrieve their information. App v2 resource is available at Rancher v2.5.x and above.
+
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+        import pulumi_std as std
+
+        # Create a new Rancher2 App V2 using
+        foo = rancher2.AppV2("foo",
+            cluster_id="<CLUSTER_ID>",
+            name="rancher-monitoring",
+            namespace="cattle-monitoring-system",
+            repo_name="rancher-charts",
+            chart_name="rancher-monitoring",
+            chart_version="9.4.200",
+            values=std.file(input="values.yaml").result)
+        ```
+        <!--End PulumiCodeChooser -->
 
         ### Create an App from a Helm Chart using a different registry
 

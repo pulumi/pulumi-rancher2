@@ -14,6 +14,48 @@ import (
 
 // Provides a Rancher App v2 resource. This can be used to manage helm charts for Rancher v2 environments and retrieve their information. App v2 resource is available at Rancher v2.5.x and above.
 //
+// ## Example Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v6/go/rancher2"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "values.yaml",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// Create a new Rancher2 App V2 using
+//			_, err = rancher2.NewAppV2(ctx, "foo", &rancher2.AppV2Args{
+//				ClusterId:    pulumi.String("<CLUSTER_ID>"),
+//				Name:         pulumi.String("rancher-monitoring"),
+//				Namespace:    pulumi.String("cattle-monitoring-system"),
+//				RepoName:     pulumi.String("rancher-charts"),
+//				ChartName:    pulumi.String("rancher-monitoring"),
+//				ChartVersion: pulumi.String("9.4.200"),
+//				Values:       invokeFile.Result,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Create an App from a Helm Chart using a different registry
 //
 // The `systemDefaultRegistry` argument can override the global value at App installation. If argument is not provided, the global value for System Default Registry will be used instead.

@@ -16,6 +16,83 @@ namespace Pulumi.Rancher2
     /// - Project secret: Available to all namespaces in the `project_id`
     /// - Namespaced secret: Available to just `namespace_id` in the `project_id`
     /// 
+    /// ## Example Usage
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a new rancher2 Project Secret
+    ///     var foo = new Rancher2.Secret("foo", new()
+    ///     {
+    ///         Name = "foo",
+    ///         Description = "Terraform secret foo",
+    ///         ProjectId = "&lt;project_id&gt;",
+    ///         Data = 
+    ///         {
+    ///             { "address", Std.Base64encode.Invoke(new()
+    ///             {
+    ///                 Input = "test.io",
+    ///             }).Apply(invoke =&gt; invoke.Result) },
+    ///             { "username", Std.Base64encode.Invoke(new()
+    ///             {
+    ///                 Input = "user2",
+    ///             }).Apply(invoke =&gt; invoke.Result) },
+    ///             { "password", Std.Base64encode.Invoke(new()
+    ///             {
+    ///                 Input = "pass",
+    ///             }).Apply(invoke =&gt; invoke.Result) },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a new rancher2 Namespaced Secret
+    ///     var foo = new Rancher2.Secret("foo", new()
+    ///     {
+    ///         Name = "foo",
+    ///         Description = "Terraform secret foo",
+    ///         ProjectId = "&lt;project_id&gt;",
+    ///         NamespaceId = "&lt;namespace_id&gt;",
+    ///         Data = 
+    ///         {
+    ///             { "address", Std.Base64encode.Invoke(new()
+    ///             {
+    ///                 Input = "test.io",
+    ///             }).Apply(invoke =&gt; invoke.Result) },
+    ///             { "username", Std.Base64encode.Invoke(new()
+    ///             {
+    ///                 Input = "user2",
+    ///             }).Apply(invoke =&gt; invoke.Result) },
+    ///             { "password", Std.Base64encode.Invoke(new()
+    ///             {
+    ///                 Input = "pass",
+    ///             }).Apply(invoke =&gt; invoke.Result) },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Import
     /// 
     /// Secrets can be imported using the secret ID in the format `&lt;namespace_id&gt;.&lt;project_id&gt;.&lt;secret_id&gt;`
