@@ -55,7 +55,7 @@ namespace Pulumi.Rancher2
     ///     {
     ///         DependsOn =
     ///         {
-    ///             foo_login, 
+    ///             foo_login,
     ///         },
     ///     });
     /// 
