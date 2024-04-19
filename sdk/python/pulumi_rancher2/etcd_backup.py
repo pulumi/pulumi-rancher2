@@ -305,7 +305,6 @@ class EtcdBackup(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -328,7 +327,6 @@ class EtcdBackup(pulumi.CustomResource):
             cluster_id="<CLUSTER_ID>",
             filename="<FILENAME>")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -362,7 +360,6 @@ class EtcdBackup(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -385,7 +382,6 @@ class EtcdBackup(pulumi.CustomResource):
             cluster_id="<CLUSTER_ID>",
             filename="<FILENAME>")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

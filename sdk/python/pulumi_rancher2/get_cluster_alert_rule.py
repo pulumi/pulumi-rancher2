@@ -216,7 +216,6 @@ def get_cluster_alert_rule(cluster_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
@@ -224,7 +223,6 @@ def get_cluster_alert_rule(cluster_id: Optional[str] = None,
     foo = rancher2.get_cluster_alert_rule(cluster_id="<cluster_id>",
         name="<cluster_alert_rule_name>")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: The cluster id where create cluster alert rule (string)
@@ -266,7 +264,6 @@ def get_cluster_alert_rule_output(cluster_id: Optional[pulumi.Input[str]] = None
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
@@ -274,7 +271,6 @@ def get_cluster_alert_rule_output(cluster_id: Optional[pulumi.Input[str]] = None
     foo = rancher2.get_cluster_alert_rule(cluster_id="<cluster_id>",
         name="<cluster_alert_rule_name>")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: The cluster id where create cluster alert rule (string)

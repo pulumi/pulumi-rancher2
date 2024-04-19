@@ -487,7 +487,6 @@ class CloudCredential(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -500,9 +499,7 @@ class CloudCredential(pulumi.CustomResource):
             ),
             description="foo test")
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -515,7 +512,6 @@ class CloudCredential(pulumi.CustomResource):
             kubeconfig_content=foo_harvester_cluster_v2.kube_config,
         ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -574,7 +570,6 @@ class CloudCredential(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -587,9 +582,7 @@ class CloudCredential(pulumi.CustomResource):
             ),
             description="foo test")
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -602,7 +595,6 @@ class CloudCredential(pulumi.CustomResource):
             kubeconfig_content=foo_harvester_cluster_v2.kube_config,
         ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

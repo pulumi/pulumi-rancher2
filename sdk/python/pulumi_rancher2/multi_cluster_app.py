@@ -521,7 +521,6 @@ class MultiClusterApp(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -541,9 +540,7 @@ class MultiClusterApp(pulumi.CustomResource):
             template_name="<template_name>",
             template_version="<template_version>")
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -576,7 +573,6 @@ class MultiClusterApp(pulumi.CustomResource):
             template_name="<template_name>",
             template_version="<template_version>")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -621,7 +617,6 @@ class MultiClusterApp(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -641,9 +636,7 @@ class MultiClusterApp(pulumi.CustomResource):
             template_name="<template_name>",
             template_version="<template_version>")
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -676,7 +669,6 @@ class MultiClusterApp(pulumi.CustomResource):
             template_name="<template_name>",
             template_version="<template_version>")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

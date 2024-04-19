@@ -256,7 +256,6 @@ class ClusterTemplate(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -286,11 +285,9 @@ class ClusterTemplate(pulumi.CustomResource):
                 name="V1",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         Creating Rancher v2 RKE cluster template with upgrade strategy. For Rancher v2.4.x and above.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -324,7 +321,6 @@ class ClusterTemplate(pulumi.CustomResource):
                 name="V1",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -356,7 +352,6 @@ class ClusterTemplate(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -386,11 +381,9 @@ class ClusterTemplate(pulumi.CustomResource):
                 name="V1",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         Creating Rancher v2 RKE cluster template with upgrade strategy. For Rancher v2.4.x and above.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -424,7 +417,6 @@ class ClusterTemplate(pulumi.CustomResource):
                 name="V1",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

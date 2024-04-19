@@ -244,7 +244,6 @@ class User(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -259,7 +258,6 @@ class User(pulumi.CustomResource):
             global_role_id="user-base",
             user_id=foo_user.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -290,7 +288,6 @@ class User(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -305,7 +302,6 @@ class User(pulumi.CustomResource):
             global_role_id="user-base",
             user_id=foo_user.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

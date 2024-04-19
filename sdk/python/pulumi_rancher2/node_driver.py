@@ -398,7 +398,6 @@ class NodeDriver(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -414,7 +413,6 @@ class NodeDriver(pulumi.CustomResource):
             url="local://",
             whitelist_domains=["*.foo.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -449,7 +447,6 @@ class NodeDriver(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -465,7 +462,6 @@ class NodeDriver(pulumi.CustomResource):
             url="local://",
             whitelist_domains=["*.foo.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

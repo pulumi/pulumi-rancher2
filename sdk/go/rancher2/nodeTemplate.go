@@ -19,7 +19,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -56,9 +55,7 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -104,11 +101,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Using the Harvester Node Driver
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -185,11 +180,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Using the Hetzner Node Driver
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -232,7 +225,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Upgrading to Rancher v2.3.3
 //

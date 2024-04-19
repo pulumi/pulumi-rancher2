@@ -527,7 +527,6 @@ class App(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -546,9 +545,7 @@ class App(pulumi.CustomResource):
             template_name="<template_name>",
             template_version="<template_version>")
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -577,7 +574,6 @@ class App(pulumi.CustomResource):
                 "ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect": True,
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -624,7 +620,6 @@ class App(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -643,9 +638,7 @@ class App(pulumi.CustomResource):
             template_name="<template_name>",
             template_version="<template_version>")
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -674,7 +667,6 @@ class App(pulumi.CustomResource):
                 "ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect": True,
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

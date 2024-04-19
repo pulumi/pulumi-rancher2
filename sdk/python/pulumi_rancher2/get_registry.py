@@ -133,7 +133,6 @@ def get_registry(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
@@ -141,9 +140,7 @@ def get_registry(name: Optional[str] = None,
     foo = rancher2.get_registry(name="<name>",
         project_id="<project_id>")
     ```
-    <!--End PulumiCodeChooser -->
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
@@ -152,7 +149,6 @@ def get_registry(name: Optional[str] = None,
         namespace_id="<namespace_id>",
         project_id="<project_id>")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the registry (string)
@@ -191,7 +187,6 @@ def get_registry_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
@@ -199,9 +194,7 @@ def get_registry_output(name: Optional[pulumi.Input[str]] = None,
     foo = rancher2.get_registry(name="<name>",
         project_id="<project_id>")
     ```
-    <!--End PulumiCodeChooser -->
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
@@ -210,7 +203,6 @@ def get_registry_output(name: Optional[pulumi.Input[str]] = None,
         namespace_id="<namespace_id>",
         project_id="<project_id>")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the registry (string)

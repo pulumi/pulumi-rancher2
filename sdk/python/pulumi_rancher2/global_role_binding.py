@@ -243,7 +243,6 @@ class GlobalRoleBinding(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -257,7 +256,6 @@ class GlobalRoleBinding(pulumi.CustomResource):
             global_role_id="admin",
             group_principal_id="local://g-XXXXX")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -289,7 +287,6 @@ class GlobalRoleBinding(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -303,7 +300,6 @@ class GlobalRoleBinding(pulumi.CustomResource):
             global_role_id="admin",
             group_principal_id="local://g-XXXXX")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -21,7 +20,6 @@ import * as utilities from "./utilities";
  * // Create a new rancher2 Setting
  * const foo = new rancher2.Setting("foo", {value: "<VALUE>"});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

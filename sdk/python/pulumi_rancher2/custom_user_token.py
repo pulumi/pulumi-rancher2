@@ -460,7 +460,6 @@ class CustomUserToken(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -480,7 +479,6 @@ class CustomUserToken(pulumi.CustomResource):
             ttl=0,
             opts=pulumi.ResourceOptions(depends_on=[foo_login]))
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -514,7 +512,6 @@ class CustomUserToken(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -534,7 +531,6 @@ class CustomUserToken(pulumi.CustomResource):
             ttl=0,
             opts=pulumi.ResourceOptions(depends_on=[foo_login]))
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param CustomUserTokenArgs args: The arguments to use to populate this resource's properties.

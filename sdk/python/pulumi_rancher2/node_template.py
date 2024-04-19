@@ -959,7 +959,6 @@ class NodeTemplate(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -978,9 +977,7 @@ class NodeTemplate(pulumi.CustomResource):
             ),
             description="foo test")
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -1004,11 +1001,9 @@ class NodeTemplate(pulumi.CustomResource):
                 zone="<ZONE>",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Using the Harvester Node Driver
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -1057,11 +1052,9 @@ class NodeTemplate(pulumi.CustomResource):
         \"\"\",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Using the Hetzner Node Driver
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -1082,7 +1075,6 @@ class NodeTemplate(pulumi.CustomResource):
                 server_type="cx11",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Upgrading to Rancher v2.3.3
 
@@ -1137,7 +1129,6 @@ class NodeTemplate(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -1156,9 +1147,7 @@ class NodeTemplate(pulumi.CustomResource):
             ),
             description="foo test")
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -1182,11 +1171,9 @@ class NodeTemplate(pulumi.CustomResource):
                 zone="<ZONE>",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Using the Harvester Node Driver
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -1235,11 +1222,9 @@ class NodeTemplate(pulumi.CustomResource):
         \"\"\",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Using the Hetzner Node Driver
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -1260,7 +1245,6 @@ class NodeTemplate(pulumi.CustomResource):
                 server_type="cx11",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Upgrading to Rancher v2.3.3
 

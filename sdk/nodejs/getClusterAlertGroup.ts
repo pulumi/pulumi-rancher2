@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -21,7 +20,6 @@ import * as utilities from "./utilities";
  *     name: "<cluster_alert_group_name>",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getClusterAlertGroup(args: GetClusterAlertGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterAlertGroupResult> {
 
@@ -90,7 +88,6 @@ export interface GetClusterAlertGroupResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -100,7 +97,6 @@ export interface GetClusterAlertGroupResult {
  *     name: "<cluster_alert_group_name>",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getClusterAlertGroupOutput(args: GetClusterAlertGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterAlertGroupResult> {
     return pulumi.output(args).apply((a: any) => getClusterAlertGroup(a, opts))

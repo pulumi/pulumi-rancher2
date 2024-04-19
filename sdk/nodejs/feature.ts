@@ -15,7 +15,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -23,7 +22,6 @@ import * as utilities from "./utilities";
  * // Create a new rancher2 Feature
  * const fleet = new rancher2.Feature("fleet", {value: "<VALUE>"});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class Feature extends pulumi.CustomResource {
     /**

@@ -273,7 +273,6 @@ class Registry(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -288,9 +287,7 @@ class Registry(pulumi.CustomResource):
                 username="user",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -306,7 +303,6 @@ class Registry(pulumi.CustomResource):
                 username="user2",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -342,7 +338,6 @@ class Registry(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -357,9 +352,7 @@ class Registry(pulumi.CustomResource):
                 username="user",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -375,7 +368,6 @@ class Registry(pulumi.CustomResource):
                 username="user2",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

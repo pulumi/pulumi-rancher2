@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -25,7 +24,6 @@ import * as utilities from "./utilities";
  *     groupPrincipalId: "local://g-XXXXX",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

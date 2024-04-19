@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,7 +39,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupGlobalRoleBinding(ctx *pulumi.Context, args *LookupGlobalRoleBindingArgs, opts ...pulumi.InvokeOption) (*LookupGlobalRoleBindingResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGlobalRoleBindingResult

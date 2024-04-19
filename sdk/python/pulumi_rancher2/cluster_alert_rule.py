@@ -500,7 +500,6 @@ class ClusterAlertRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -518,7 +517,6 @@ class ClusterAlertRule(pulumi.CustomResource):
             group_interval_seconds=600,
             repeat_interval_seconds=6000)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -556,7 +554,6 @@ class ClusterAlertRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -574,7 +571,6 @@ class ClusterAlertRule(pulumi.CustomResource):
             group_interval_seconds=600,
             repeat_interval_seconds=6000)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

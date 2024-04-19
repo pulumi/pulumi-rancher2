@@ -16,7 +16,6 @@ namespace Pulumi.Rancher2
     /// 
     /// ### Using the Harvester Node Driver
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -82,7 +81,6 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [Rancher2ResourceType("rancher2:index/machineConfigV2:MachineConfigV2")]
     public partial class MachineConfigV2 : global::Pulumi.CustomResource

@@ -203,14 +203,12 @@ def get_role_template(context: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
 
     foo = rancher2.get_role_template(name="foo")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str context: Role template context. `cluster` and `project` values are supported (string)
@@ -248,14 +246,12 @@ def get_role_template_output(context: Optional[pulumi.Input[Optional[str]]] = No
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
 
     foo = rancher2.get_role_template(name="foo")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str context: Role template context. `cluster` and `project` values are supported (string)

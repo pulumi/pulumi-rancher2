@@ -598,7 +598,6 @@ class AppV2(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -612,13 +611,11 @@ class AppV2(pulumi.CustomResource):
             chart_version="9.4.200",
             values=(lambda path: open(path).read())("values.yaml"))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create an App from a Helm Chart using a different registry
 
         The `system_default_registry` argument can override the global value at App installation. If argument is not provided, the global value for System Default Registry will be used instead.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -630,7 +627,6 @@ class AppV2(pulumi.CustomResource):
             repo_name="rancher-charts",
             system_default_registry="<some.dns.here>:<PORT>")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -670,7 +666,6 @@ class AppV2(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -684,13 +679,11 @@ class AppV2(pulumi.CustomResource):
             chart_version="9.4.200",
             values=(lambda path: open(path).read())("values.yaml"))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create an App from a Helm Chart using a different registry
 
         The `system_default_registry` argument can override the global value at App installation. If argument is not provided, the global value for System Default Registry will be used instead.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -702,7 +695,6 @@ class AppV2(pulumi.CustomResource):
             repo_name="rancher-charts",
             system_default_registry="<some.dns.here>:<PORT>")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

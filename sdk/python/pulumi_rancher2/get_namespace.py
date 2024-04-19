@@ -131,7 +131,6 @@ def get_namespace(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
@@ -139,7 +138,6 @@ def get_namespace(name: Optional[str] = None,
     foo = rancher2.get_namespace(name="foo",
         project_id=rancher2_cluster["foo-custom"]["default_project_id"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the namespace (string)
@@ -171,7 +169,6 @@ def get_namespace_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
@@ -179,7 +176,6 @@ def get_namespace_output(name: Optional[pulumi.Input[str]] = None,
     foo = rancher2.get_namespace(name="foo",
         project_id=rancher2_cluster["foo-custom"]["default_project_id"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the namespace (string)
