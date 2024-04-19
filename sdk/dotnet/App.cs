@@ -33,18 +33,19 @@ namespace Pulumi.Rancher2
     ///     // Create a new rancher2 App
     ///     var foo = new Rancher2.App("foo", new()
     ///     {
-    ///         Answers = 
-    ///         {
-    ///             { "foo", "bar" },
-    ///             { "ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect", true },
-    ///             { "ingress_host", "test.xip.io" },
-    ///         },
     ///         CatalogName = "&lt;catalog_name&gt;",
+    ///         Name = "foo",
     ///         Description = "Foo app",
     ///         ProjectId = "&lt;project_id&gt;",
-    ///         TargetNamespace = "&lt;namespace_name&gt;",
     ///         TemplateName = "&lt;template_name&gt;",
     ///         TemplateVersion = "&lt;template_version&gt;",
+    ///         TargetNamespace = "&lt;namespace_name&gt;",
+    ///         Answers = 
+    ///         {
+    ///             { "ingress_host", "test.xip.io" },
+    ///             { "foo", "bar" },
+    ///             { "ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect", true },
+    ///         },
     ///     });
     /// 
     /// });
@@ -61,8 +62,9 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new rancher2 App in a new namespace
-    ///     var fooNamespace = new Rancher2.Namespace("fooNamespace", new()
+    ///     var foo = new Rancher2.Namespace("foo", new()
     ///     {
+    ///         Name = "foo",
     ///         Description = "Foo namespace",
     ///         ProjectId = "&lt;project_id&gt;",
     ///         ResourceQuota = new Rancher2.Inputs.NamespaceResourceQuotaArgs
@@ -76,14 +78,15 @@ namespace Pulumi.Rancher2
     ///         },
     ///     });
     /// 
-    ///     var fooApp = new Rancher2.App("fooApp", new()
+    ///     var fooApp = new Rancher2.App("foo", new()
     ///     {
     ///         CatalogName = "&lt;catalog_name&gt;",
+    ///         Name = "foo",
     ///         Description = "Foo app",
     ///         ProjectId = "&lt;project_id&gt;",
     ///         TemplateName = "&lt;template_name&gt;",
     ///         TemplateVersion = "&lt;template_version&gt;",
-    ///         TargetNamespace = fooNamespace.Id,
+    ///         TargetNamespace = foo.Id,
     ///         Answers = 
     ///         {
     ///             { "ingress_host", "test.xip.io" },

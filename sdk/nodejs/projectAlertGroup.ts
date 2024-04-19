@@ -18,9 +18,10 @@ import * as utilities from "./utilities";
  *
  * // Create a new Rancher2 Project Alert Group
  * const foo = new rancher2.ProjectAlertGroup("foo", {
+ *     name: "foo",
  *     description: "Terraform project alert group",
- *     groupIntervalSeconds: 300,
  *     projectId: "<project_id>",
+ *     groupIntervalSeconds: 300,
  *     repeatIntervalSeconds: 3600,
  * });
  * ```

@@ -59,6 +59,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 RKE Cluster 
  *         var foo_custom = new Cluster(&#34;foo-custom&#34;, ClusterArgs.builder()        
+ *             .name(&#34;foo-custom&#34;)
  *             .description(&#34;Foo rancher2 custom cluster&#34;)
  *             .kind(&#34;rke&#34;)
  *             .rkeConfig(ClusterRkeConfigArgs.builder()
@@ -69,7 +70,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // Create a new rancher2 Cloud Credential
- *         var fooCloudCredential = new CloudCredential(&#34;fooCloudCredential&#34;, CloudCredentialArgs.builder()        
+ *         var foo = new CloudCredential(&#34;foo&#34;, CloudCredentialArgs.builder()        
+ *             .name(&#34;foo&#34;)
  *             .description(&#34;Terraform cloudCredential acceptance test&#34;)
  *             .amazonec2CredentialConfig(CloudCredentialAmazonec2CredentialConfigArgs.builder()
  *                 .accessKey(&#34;XXXXXXXXXXXXXXXXXXXX&#34;)
@@ -79,8 +81,9 @@ import javax.annotation.Nullable;
  * 
  *         // Create a new rancher2 Node Template
  *         var fooNodeTemplate = new NodeTemplate(&#34;fooNodeTemplate&#34;, NodeTemplateArgs.builder()        
+ *             .name(&#34;foo&#34;)
  *             .description(&#34;foo test&#34;)
- *             .cloudCredentialId(fooCloudCredential.id())
+ *             .cloudCredentialId(foo.id())
  *             .amazonec2Config(NodeTemplateAmazonec2ConfigArgs.builder()
  *                 .ami(&#34;&lt;AMI_ID&gt;&#34;)
  *                 .region(&#34;&lt;REGION&gt;&#34;)
@@ -94,6 +97,7 @@ import javax.annotation.Nullable;
  *         // Create a new rancher2 Node Pool
  *         var fooNodePool = new NodePool(&#34;fooNodePool&#34;, NodePoolArgs.builder()        
  *             .clusterId(foo_custom.id())
+ *             .name(&#34;foo&#34;)
  *             .hostnamePrefix(&#34;foo-cluster-0&#34;)
  *             .nodeTemplateId(fooNodeTemplate.id())
  *             .quantity(1)

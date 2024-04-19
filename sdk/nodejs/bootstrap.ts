@@ -39,17 +39,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * // Provider bootstrap config with alias
- * const bootstrap = new rancher2.Provider("bootstrap", {
- *     apiUrl: "https://rancher.my-domain.com",
- *     bootstrap: true,
- * });
  * // Create a new rancher2_bootstrap using bootstrap provider config
  * const admin = new rancher2.Bootstrap("admin", {
  *     password: "blahblah",
  *     telemetry: true,
- * }, {
- *     provider: "rancher2.bootstrap",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

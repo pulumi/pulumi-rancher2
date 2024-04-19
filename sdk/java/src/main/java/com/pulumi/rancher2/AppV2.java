@@ -47,11 +47,14 @@ import javax.annotation.Nullable;
  *         // Create a new Rancher2 App V2 using
  *         var foo = new AppV2(&#34;foo&#34;, AppV2Args.builder()        
  *             .clusterId(&#34;&lt;CLUSTER_ID&gt;&#34;)
+ *             .name(&#34;rancher-monitoring&#34;)
  *             .namespace(&#34;cattle-monitoring-system&#34;)
  *             .repoName(&#34;rancher-charts&#34;)
  *             .chartName(&#34;rancher-monitoring&#34;)
  *             .chartVersion(&#34;9.4.200&#34;)
- *             .values(Files.readString(Paths.get(&#34;values.yaml&#34;)))
+ *             .values(StdFunctions.file(FileArgs.builder()
+ *                 .input(&#34;values.yaml&#34;)
+ *                 .build()).result())
  *             .build());
  * 
  *     }
@@ -86,10 +89,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var cisBenchmark = new AppV2(&#34;cisBenchmark&#34;, AppV2Args.builder()        
- *             .chartName(&#34;rancher-cis-benchmark&#34;)
  *             .clusterId(&#34;&lt;CLUSTER_ID&gt;&#34;)
+ *             .name(&#34;rancher-cis-benchmark&#34;)
  *             .namespace(&#34;cis-operator-system&#34;)
  *             .repoName(&#34;rancher-charts&#34;)
+ *             .chartName(&#34;rancher-cis-benchmark&#34;)
  *             .systemDefaultRegistry(&#34;&lt;some.dns.here&gt;:&lt;PORT&gt;&#34;)
  *             .build());
  * 

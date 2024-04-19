@@ -17,16 +17,18 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * // Create a new Rancher2 Cluster Alert Group
- * const fooClusterAlertGroup = new rancher2.ClusterAlertGroup("fooClusterAlertGroup", {
+ * const foo = new rancher2.ClusterAlertGroup("foo", {
  *     clusterId: "<cluster_id>",
+ *     name: "foo",
  *     description: "Terraform cluster alert group",
  *     groupIntervalSeconds: 300,
  *     repeatIntervalSeconds: 3600,
  * });
  * // Create a new Rancher2 Cluster Alert Rule
- * const fooClusterAlertRule = new rancher2.ClusterAlertRule("fooClusterAlertRule", {
- *     clusterId: fooClusterAlertGroup.clusterId,
- *     groupId: fooClusterAlertGroup.id,
+ * const fooClusterAlertRule = new rancher2.ClusterAlertRule("foo", {
+ *     clusterId: foo.clusterId,
+ *     groupId: foo.id,
+ *     name: "foo",
  *     groupIntervalSeconds: 600,
  *     repeatIntervalSeconds: 6000,
  * });

@@ -250,14 +250,16 @@ class User(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         # Create a new rancher2 User
-        foo_user = rancher2.User("fooUser",
+        foo = rancher2.User("foo",
+            name="Foo user",
             username="foo",
             password="changeme",
             enabled=True)
         # Create a new rancher2 global_role_binding for User
-        foo_global_role_binding = rancher2.GlobalRoleBinding("fooGlobalRoleBinding",
+        foo_global_role_binding = rancher2.GlobalRoleBinding("foo",
+            name="foo",
             global_role_id="user-base",
-            user_id=foo_user.id)
+            user_id=foo.id)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -296,14 +298,16 @@ class User(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         # Create a new rancher2 User
-        foo_user = rancher2.User("fooUser",
+        foo = rancher2.User("foo",
+            name="Foo user",
             username="foo",
             password="changeme",
             enabled=True)
         # Create a new rancher2 global_role_binding for User
-        foo_global_role_binding = rancher2.GlobalRoleBinding("fooGlobalRoleBinding",
+        foo_global_role_binding = rancher2.GlobalRoleBinding("foo",
+            name="foo",
             global_role_id="user-base",
-            user_id=foo_user.id)
+            user_id=foo.id)
         ```
         <!--End PulumiCodeChooser -->
 

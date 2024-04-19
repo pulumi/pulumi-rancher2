@@ -30,7 +30,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new Rancher2 Project
-//			fooProject, err := rancher2.NewProject(ctx, "fooProject", &rancher2.ProjectArgs{
+//			foo, err := rancher2.NewProject(ctx, "foo", &rancher2.ProjectArgs{
+//				Name:        pulumi.String("foo"),
 //				ClusterId:   pulumi.String("<cluster_id>"),
 //				Description: pulumi.String("Terraform project "),
 //				ResourceQuota: &rancher2.ProjectResourceQuotaArgs{
@@ -56,9 +57,10 @@ import (
 //				return err
 //			}
 //			// Create a new Rancher2 Project Alert Group
-//			fooProjectAlertGroup, err := rancher2.NewProjectAlertGroup(ctx, "fooProjectAlertGroup", &rancher2.ProjectAlertGroupArgs{
+//			fooProjectAlertGroup, err := rancher2.NewProjectAlertGroup(ctx, "foo", &rancher2.ProjectAlertGroupArgs{
+//				Name:                  pulumi.String("foo"),
 //				Description:           pulumi.String("Terraform project alert group"),
-//				ProjectId:             fooProject.ID(),
+//				ProjectId:             foo.ID(),
 //				GroupIntervalSeconds:  pulumi.Int(300),
 //				RepeatIntervalSeconds: pulumi.Int(3600),
 //			})
@@ -66,9 +68,10 @@ import (
 //				return err
 //			}
 //			// Create a new Rancher2 Project Alert Rule
-//			_, err = rancher2.NewProjectAlertRule(ctx, "fooProjectAlertRule", &rancher2.ProjectAlertRuleArgs{
+//			_, err = rancher2.NewProjectAlertRule(ctx, "foo", &rancher2.ProjectAlertRuleArgs{
 //				ProjectId:             fooProjectAlertGroup.ProjectId,
 //				GroupId:               fooProjectAlertGroup.ID(),
+//				Name:                  pulumi.String("foo"),
 //				GroupIntervalSeconds:  pulumi.Int(600),
 //				RepeatIntervalSeconds: pulumi.Int(6000),
 //			})

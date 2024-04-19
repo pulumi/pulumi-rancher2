@@ -15,16 +15,21 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * // Create a new Rancher2 Global Catalog
- * const foo_global = new rancher2.Catalog("foo-global", {url: "https://<CATALOG_URL>"});
+ * const foo_global = new rancher2.Catalog("foo-global", {
+ *     name: "foo-global",
+ *     url: "https://<CATALOG_URL>",
+ * });
  * // Create a new Rancher2 Cluster Catalog
  * const foo_cluster = new rancher2.Catalog("foo-cluster", {
- *     scope: "cluster",
+ *     name: "foo-cluster",
  *     url: "https://<CATALOG_URL>",
+ *     scope: "cluster",
  * });
  * // Create a new Rancher2 Project Catalog
  * const foo_project = new rancher2.Catalog("foo-project", {
- *     scope: "project",
+ *     name: "foo-project",
  *     url: "https://<CATALOG_URL>",
+ *     scope: "project",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

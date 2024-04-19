@@ -30,6 +30,7 @@ namespace Pulumi.Rancher2
     ///     // Create a new rancher2 imported Cluster
     ///     var foo_imported = new Rancher2.Cluster("foo-imported", new()
     ///     {
+    ///         Name = "foo-imported",
     ///         Description = "Foo rancher2 imported cluster",
     ///     });
     /// 
@@ -55,6 +56,16 @@ namespace Pulumi.Rancher2
     ///     // Create a new rancher2 RKE Cluster
     ///     var foo_custom = new Rancher2.Cluster("foo-custom", new()
     ///     {
+    ///         Name = "foo-custom",
+    ///         Description = "Foo rancher2 custom cluster",
+    ///         RkeConfig = new Rancher2.Inputs.ClusterRkeConfigArgs
+    ///         {
+    ///             Network = new Rancher2.Inputs.ClusterRkeConfigNetworkArgs
+    ///             {
+    ///                 Plugin = "canal",
+    ///             },
+    ///         },
+    ///         EnableClusterMonitoring = true,
     ///         ClusterMonitoringInput = new Rancher2.Inputs.ClusterClusterMonitoringInputArgs
     ///         {
     ///             Answers = 
@@ -80,15 +91,6 @@ namespace Pulumi.Rancher2
     ///             },
     ///             Version = "0.1.0",
     ///         },
-    ///         Description = "Foo rancher2 custom cluster",
-    ///         EnableClusterMonitoring = true,
-    ///         RkeConfig = new Rancher2.Inputs.ClusterRkeConfigArgs
-    ///         {
-    ///             Network = new Rancher2.Inputs.ClusterRkeConfigNetworkArgs
-    ///             {
-    ///                 Plugin = "canal",
-    ///             },
-    ///         },
     ///     });
     /// 
     /// });
@@ -107,8 +109,9 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new rancher2 RKE Cluster
-    ///     var foo_customCluster = new Rancher2.Cluster("foo-customCluster", new()
+    ///     var foo_custom = new Rancher2.Cluster("foo-custom", new()
     ///     {
+    ///         Name = "foo-custom",
     ///         Description = "Foo rancher2 custom cluster",
     ///         RkeConfig = new Rancher2.Inputs.ClusterRkeConfigArgs
     ///         {
@@ -146,15 +149,16 @@ namespace Pulumi.Rancher2
     ///     });
     /// 
     ///     // Create a new rancher2 Cluster Sync for foo-custom cluster
-    ///     var foo_customClusterSync = new Rancher2.ClusterSync("foo-customClusterSync", new()
+    ///     var foo_customClusterSync = new Rancher2.ClusterSync("foo-custom", new()
     ///     {
-    ///         ClusterId = foo_customCluster.Id,
-    ///         WaitMonitoring = foo_customCluster.EnableClusterMonitoring,
+    ///         ClusterId = foo_custom.Id,
+    ///         WaitMonitoring = foo_custom.EnableClusterMonitoring,
     ///     });
     /// 
     ///     // Create a new rancher2 Namespace
     ///     var foo_istio = new Rancher2.Namespace("foo-istio", new()
     ///     {
+    ///         Name = "istio-system",
     ///         ProjectId = foo_customClusterSync.SystemProjectId,
     ///         Description = "istio namespace",
     ///     });
@@ -163,6 +167,7 @@ namespace Pulumi.Rancher2
     ///     var istio = new Rancher2.App("istio", new()
     ///     {
     ///         CatalogName = "system-library",
+    ///         Name = "cluster-istio",
     ///         Description = "Terraform app acceptance test",
     ///         ProjectId = foo_istio.ProjectId,
     ///         TemplateName = "rancher-istio",
@@ -230,6 +235,7 @@ namespace Pulumi.Rancher2
     ///     // Create a new rancher2 RKE Cluster
     ///     var foo_custom = new Rancher2.Cluster("foo-custom", new()
     ///     {
+    ///         Name = "foo-custom",
     ///         Description = "Foo rancher2 custom cluster",
     ///         RkeConfig = new Rancher2.Inputs.ClusterRkeConfigArgs
     ///         {
@@ -241,8 +247,9 @@ namespace Pulumi.Rancher2
     ///     });
     /// 
     ///     // Create a new rancher2 Node Template
-    ///     var fooNodeTemplate = new Rancher2.NodeTemplate("fooNodeTemplate", new()
+    ///     var foo = new Rancher2.NodeTemplate("foo", new()
     ///     {
+    ///         Name = "foo",
     ///         Description = "foo test",
     ///         Amazonec2Config = new Rancher2.Inputs.NodeTemplateAmazonec2ConfigArgs
     ///         {
@@ -261,11 +268,12 @@ namespace Pulumi.Rancher2
     ///     });
     /// 
     ///     // Create a new rancher2 Node Pool
-    ///     var fooNodePool = new Rancher2.NodePool("fooNodePool", new()
+    ///     var fooNodePool = new Rancher2.NodePool("foo", new()
     ///     {
     ///         ClusterId = foo_custom.Id,
+    ///         Name = "foo",
     ///         HostnamePrefix = "foo-cluster-0",
-    ///         NodeTemplateId = fooNodeTemplate.Id,
+    ///         NodeTemplateId = foo.Id,
     ///         Quantity = 3,
     ///         ControlPlane = true,
     ///         Etcd = true,
@@ -288,8 +296,9 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new rancher2 cluster template
-    ///     var fooClusterTemplate = new Rancher2.ClusterTemplate("fooClusterTemplate", new()
+    ///     var foo = new Rancher2.ClusterTemplate("foo", new()
     ///     {
+    ///         Name = "foo",
     ///         Members = new[]
     ///         {
     ///             new Rancher2.Inputs.ClusterTemplateMemberArgs
@@ -328,10 +337,11 @@ namespace Pulumi.Rancher2
     ///     });
     /// 
     ///     // Create a new rancher2 RKE Cluster from template
-    ///     var fooCluster = new Rancher2.Cluster("fooCluster", new()
+    ///     var fooCluster = new Rancher2.Cluster("foo", new()
     ///     {
-    ///         ClusterTemplateId = fooClusterTemplate.Id,
-    ///         ClusterTemplateRevisionId = fooClusterTemplate.TemplateRevisions.Apply(templateRevisions =&gt; templateRevisions[0].Id),
+    ///         Name = "foo",
+    ///         ClusterTemplateId = foo.Id,
+    ///         ClusterTemplateRevisionId = foo.TemplateRevisions.Apply(templateRevisions =&gt; templateRevisions[0].Id),
     ///     });
     /// 
     /// });
@@ -351,6 +361,7 @@ namespace Pulumi.Rancher2
     /// {
     ///     var foo = new Rancher2.Cluster("foo", new()
     ///     {
+    ///         Name = "foo",
     ///         Description = "Terraform custom cluster",
     ///         RkeConfig = new Rancher2.Inputs.ClusterRkeConfigArgs
     ///         {
@@ -369,13 +380,14 @@ namespace Pulumi.Rancher2
     ///                 {
     ///                     AuditLog = new Rancher2.Inputs.ClusterRkeConfigServicesKubeApiAuditLogArgs
     ///                     {
+    ///                         Enabled = true,
     ///                         Configuration = new Rancher2.Inputs.ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs
     ///                         {
-    ///                             Format = "json",
     ///                             MaxAge = 5,
     ///                             MaxBackup = 5,
     ///                             MaxSize = 100,
     ///                             Path = "-",
+    ///                             Format = "json",
     ///                             Policy = @"apiVersion: audit.k8s.io/v1
     /// kind: Policy
     /// metadata:
@@ -387,10 +399,8 @@ namespace Pulumi.Rancher2
     ///   resources:
     ///   - resources:
     ///     - pods
-    /// 
     /// ",
     ///                         },
-    ///                         Enabled = true,
     ///                     },
     ///                 },
     ///             },
@@ -419,6 +429,15 @@ namespace Pulumi.Rancher2
     /// {
     ///     var foo = new Rancher2.Cluster("foo", new()
     ///     {
+    ///         Name = "foo",
+    ///         Description = "Terraform cluster with agent customization",
+    ///         RkeConfig = new Rancher2.Inputs.ClusterRkeConfigArgs
+    ///         {
+    ///             Network = new Rancher2.Inputs.ClusterRkeConfigNetworkArgs
+    ///             {
+    ///                 Plugin = "canal",
+    ///             },
+    ///         },
     ///         ClusterAgentDeploymentCustomizations = new[]
     ///         {
     ///             new Rancher2.Inputs.ClusterClusterAgentDeploymentCustomizationArgs
@@ -447,7 +466,6 @@ namespace Pulumi.Rancher2
     ///     }
     ///   }
     /// }
-    /// 
     /// ",
     ///                 OverrideResourceRequirements = new[]
     ///                 {
@@ -459,14 +477,6 @@ namespace Pulumi.Rancher2
     ///                         MemoryRequest = "500",
     ///                     },
     ///                 },
-    ///             },
-    ///         },
-    ///         Description = "Terraform cluster with agent customization",
-    ///         RkeConfig = new Rancher2.Inputs.ClusterRkeConfigArgs
-    ///         {
-    ///             Network = new Rancher2.Inputs.ClusterRkeConfigNetworkArgs
-    ///             {
-    ///                 Plugin = "canal",
     ///             },
     ///         },
     ///     });
@@ -487,8 +497,10 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Custom PSACT (if you wish to use your own)
-    ///     var fooPodSecurityAdmissionConfigurationTemplate = new Rancher2.PodSecurityAdmissionConfigurationTemplate("fooPodSecurityAdmissionConfigurationTemplate", new()
+    ///     var foo = new Rancher2.PodSecurityAdmissionConfigurationTemplate("foo", new()
     ///     {
+    ///         Name = "custom-psact",
+    ///         Description = "This is my custom Pod Security Admission Configuration Template",
     ///         Defaults = new Rancher2.Inputs.PodSecurityAdmissionConfigurationTemplateDefaultsArgs
     ///         {
     ///             Audit = "restricted",
@@ -498,29 +510,29 @@ namespace Pulumi.Rancher2
     ///             Warn = "restricted",
     ///             WarnVersion = "latest",
     ///         },
-    ///         Description = "This is my custom Pod Security Admission Configuration Template",
     ///         Exemptions = new Rancher2.Inputs.PodSecurityAdmissionConfigurationTemplateExemptionsArgs
     ///         {
-    ///             Namespaces = new[]
+    ///             Usernames = new[]
     ///             {
-    ///                 "ingress-nginx",
-    ///                 "kube-system",
+    ///                 "testuser",
     ///             },
     ///             RuntimeClasses = new[]
     ///             {
     ///                 "testclass",
     ///             },
-    ///             Usernames = new[]
+    ///             Namespaces = new[]
     ///             {
-    ///                 "testuser",
+    ///                 "ingress-nginx",
+    ///                 "kube-system",
     ///             },
     ///         },
     ///     });
     /// 
-    ///     var fooCluster = new Rancher2.Cluster("fooCluster", new()
+    ///     var fooCluster = new Rancher2.Cluster("foo", new()
     ///     {
-    ///         DefaultPodSecurityAdmissionConfigurationTemplateName = "&lt;name&gt;",
+    ///         Name = "foo",
     ///         Description = "Terraform cluster with PSACT",
+    ///         DefaultPodSecurityAdmissionConfigurationTemplateName = "&lt;name&gt;",
     ///         RkeConfig = new Rancher2.Inputs.ClusterRkeConfigArgs
     ///         {
     ///             Network = new Rancher2.Inputs.ClusterRkeConfigNetworkArgs
@@ -545,8 +557,9 @@ namespace Pulumi.Rancher2
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var fooCloudCredential = new Rancher2.CloudCredential("fooCloudCredential", new()
+    ///     var foo = new Rancher2.CloudCredential("foo", new()
     ///     {
+    ///         Name = "foo",
     ///         Description = "foo test",
     ///         Amazonec2CredentialConfig = new Rancher2.Inputs.CloudCredentialAmazonec2CredentialConfigArgs
     ///         {
@@ -555,12 +568,13 @@ namespace Pulumi.Rancher2
     ///         },
     ///     });
     /// 
-    ///     var fooCluster = new Rancher2.Cluster("fooCluster", new()
+    ///     var fooCluster = new Rancher2.Cluster("foo", new()
     ///     {
+    ///         Name = "foo",
     ///         Description = "Terraform EKS cluster",
     ///         EksConfigV2 = new Rancher2.Inputs.ClusterEksConfigV2Args
     ///         {
-    ///             CloudCredentialId = fooCloudCredential.Id,
+    ///             CloudCredentialId = foo.Id,
     ///             Name = "&lt;cluster-name&gt;",
     ///             Region = "&lt;eks-region&gt;",
     ///             Imported = true,
@@ -582,8 +596,9 @@ namespace Pulumi.Rancher2
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var fooCloudCredential = new Rancher2.CloudCredential("fooCloudCredential", new()
+    ///     var foo = new Rancher2.CloudCredential("foo", new()
     ///     {
+    ///         Name = "foo",
     ///         Description = "foo test",
     ///         Amazonec2CredentialConfig = new Rancher2.Inputs.CloudCredentialAmazonec2CredentialConfigArgs
     ///         {
@@ -592,12 +607,13 @@ namespace Pulumi.Rancher2
     ///         },
     ///     });
     /// 
-    ///     var fooCluster = new Rancher2.Cluster("fooCluster", new()
+    ///     var fooCluster = new Rancher2.Cluster("foo", new()
     ///     {
+    ///         Name = "foo",
     ///         Description = "Terraform EKS cluster",
     ///         EksConfigV2 = new Rancher2.Inputs.ClusterEksConfigV2Args
     ///         {
-    ///             CloudCredentialId = fooCloudCredential.Id,
+    ///             CloudCredentialId = foo.Id,
     ///             Region = "&lt;EKS_REGION&gt;",
     ///             KubernetesVersion = "1.24",
     ///             LoggingTypes = new[]
@@ -645,8 +661,9 @@ namespace Pulumi.Rancher2
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var fooCloudCredential = new Rancher2.CloudCredential("fooCloudCredential", new()
+    ///     var foo = new Rancher2.CloudCredential("foo", new()
     ///     {
+    ///         Name = "foo",
     ///         Description = "foo test",
     ///         Amazonec2CredentialConfig = new Rancher2.Inputs.CloudCredentialAmazonec2CredentialConfigArgs
     ///         {
@@ -655,12 +672,13 @@ namespace Pulumi.Rancher2
     ///         },
     ///     });
     /// 
-    ///     var fooCluster = new Rancher2.Cluster("fooCluster", new()
+    ///     var fooCluster = new Rancher2.Cluster("foo", new()
     ///     {
+    ///         Name = "foo",
     ///         Description = "Terraform EKS cluster",
     ///         EksConfigV2 = new Rancher2.Inputs.ClusterEksConfigV2Args
     ///         {
-    ///             CloudCredentialId = fooCloudCredential.Id,
+    ///             CloudCredentialId = foo.Id,
     ///             Region = "&lt;EKS_REGION&gt;",
     ///             KubernetesVersion = "1.24",
     ///             LoggingTypes = new[]
@@ -707,6 +725,7 @@ namespace Pulumi.Rancher2
     /// {
     ///     var foo_aks = new Rancher2.CloudCredential("foo-aks", new()
     ///     {
+    ///         Name = "foo-aks",
     ///         AzureCredentialConfig = new Rancher2.Inputs.CloudCredentialAzureCredentialConfigArgs
     ///         {
     ///             ClientId = "&lt;client-id&gt;",
@@ -717,6 +736,7 @@ namespace Pulumi.Rancher2
     /// 
     ///     var foo = new Rancher2.Cluster("foo", new()
     ///     {
+    ///         Name = "foo",
     ///         Description = "Terraform AKS cluster",
     ///         AksConfigV2 = new Rancher2.Inputs.ClusterAksConfigV2Args
     ///         {

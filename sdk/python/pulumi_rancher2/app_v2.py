@@ -602,15 +602,17 @@ class AppV2(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
+        import pulumi_std as std
 
         # Create a new Rancher2 App V2 using
         foo = rancher2.AppV2("foo",
             cluster_id="<CLUSTER_ID>",
+            name="rancher-monitoring",
             namespace="cattle-monitoring-system",
             repo_name="rancher-charts",
             chart_name="rancher-monitoring",
             chart_version="9.4.200",
-            values=(lambda path: open(path).read())("values.yaml"))
+            values=std.file(input="values.yaml").result)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -623,11 +625,12 @@ class AppV2(pulumi.CustomResource):
         import pulumi
         import pulumi_rancher2 as rancher2
 
-        cis_benchmark = rancher2.AppV2("cisBenchmark",
-            chart_name="rancher-cis-benchmark",
+        cis_benchmark = rancher2.AppV2("cis_benchmark",
             cluster_id="<CLUSTER_ID>",
+            name="rancher-cis-benchmark",
             namespace="cis-operator-system",
             repo_name="rancher-charts",
+            chart_name="rancher-cis-benchmark",
             system_default_registry="<some.dns.here>:<PORT>")
         ```
         <!--End PulumiCodeChooser -->
@@ -674,15 +677,17 @@ class AppV2(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
+        import pulumi_std as std
 
         # Create a new Rancher2 App V2 using
         foo = rancher2.AppV2("foo",
             cluster_id="<CLUSTER_ID>",
+            name="rancher-monitoring",
             namespace="cattle-monitoring-system",
             repo_name="rancher-charts",
             chart_name="rancher-monitoring",
             chart_version="9.4.200",
-            values=(lambda path: open(path).read())("values.yaml"))
+            values=std.file(input="values.yaml").result)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -695,11 +700,12 @@ class AppV2(pulumi.CustomResource):
         import pulumi
         import pulumi_rancher2 as rancher2
 
-        cis_benchmark = rancher2.AppV2("cisBenchmark",
-            chart_name="rancher-cis-benchmark",
+        cis_benchmark = rancher2.AppV2("cis_benchmark",
             cluster_id="<CLUSTER_ID>",
+            name="rancher-cis-benchmark",
             namespace="cis-operator-system",
             repo_name="rancher-charts",
+            chart_name="rancher-cis-benchmark",
             system_default_registry="<some.dns.here>:<PORT>")
         ```
         <!--End PulumiCodeChooser -->

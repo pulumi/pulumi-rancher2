@@ -21,7 +21,10 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * // Create a new rancher2 Feature
- * const fleet = new rancher2.Feature("fleet", {value: "<VALUE>"});
+ * const fleet = new rancher2.Feature("fleet", {
+ *     name: "fleet",
+ *     value: "<VALUE>",
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  */

@@ -410,6 +410,7 @@ class NodeDriver(pulumi.CustomResource):
             checksum="0x0",
             description="Foo description",
             external_id="foo_external",
+            name="foo",
             ui_url="local://ui",
             url="local://",
             whitelist_domains=["*.foo.com"])
@@ -461,6 +462,7 @@ class NodeDriver(pulumi.CustomResource):
             checksum="0x0",
             description="Foo description",
             external_id="foo_external",
+            name="foo",
             ui_url="local://ui",
             url="local://",
             whitelist_domains=["*.foo.com"])

@@ -28,7 +28,7 @@ namespace Pulumi.Rancher2
         ///     var foo = Rancher2.GetNamespace.Invoke(new()
         ///     {
         ///         Name = "foo",
-        ///         ProjectId = rancher2_cluster.Foo_custom.Default_project_id,
+        ///         ProjectId = foo_custom.DefaultProjectId,
         ///     });
         /// 
         /// });
@@ -55,7 +55,7 @@ namespace Pulumi.Rancher2
         ///     var foo = Rancher2.GetNamespace.Invoke(new()
         ///     {
         ///         Name = "foo",
-        ///         ProjectId = rancher2_cluster.Foo_custom.Default_project_id,
+        ///         ProjectId = foo_custom.DefaultProjectId,
         ///     });
         /// 
         /// });

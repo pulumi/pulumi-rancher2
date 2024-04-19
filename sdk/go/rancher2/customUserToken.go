@@ -38,7 +38,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a rancher2 Token
-//			fooUser, err := rancher2.NewUser(ctx, "fooUser", &rancher2.UserArgs{
+//			foo, err := rancher2.NewUser(ctx, "foo", &rancher2.UserArgs{
+//				Name:     pulumi.String("foo"),
 //				Username: pulumi.String("foo"),
 //				Password: pulumi.String("changeme"),
 //				Enabled:  pulumi.Bool(true),
@@ -47,15 +48,16 @@ import (
 //				return err
 //			}
 //			_, err = rancher2.NewGlobalRoleBinding(ctx, "foo-login", &rancher2.GlobalRoleBindingArgs{
+//				Name:         pulumi.String("foo-login-binding"),
 //				GlobalRoleId: pulumi.String("user-base"),
-//				UserId:       fooUser.ID(),
+//				UserId:       foo.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = rancher2.NewCustomUserToken(ctx, "fooCustomUserToken", &rancher2.CustomUserTokenArgs{
-//				Username:    fooUser.Username,
-//				Password:    fooUser.Password,
+//			_, err = rancher2.NewCustomUserToken(ctx, "foo", &rancher2.CustomUserTokenArgs{
+//				Username:    foo.Username,
+//				Password:    foo.Password,
 //				Description: pulumi.String("foo token"),
 //				Ttl:         pulumi.Int(0),
 //			}, pulumi.DependsOn([]pulumi.Resource{

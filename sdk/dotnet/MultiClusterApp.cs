@@ -33,21 +33,8 @@ namespace Pulumi.Rancher2
     ///     // Create a new rancher2 Multi Cluster App
     ///     var foo = new Rancher2.MultiClusterApp("foo", new()
     ///     {
-    ///         Answers = new[]
-    ///         {
-    ///             new Rancher2.Inputs.MultiClusterAppAnswerArgs
-    ///             {
-    ///                 Values = 
-    ///                 {
-    ///                     { "ingressHost", "test.xip.io" },
-    ///                 },
-    ///             },
-    ///         },
     ///         CatalogName = "&lt;catalog_name&gt;",
-    ///         Roles = new[]
-    ///         {
-    ///             "project-member",
-    ///         },
+    ///         Name = "foo",
     ///         Targets = new[]
     ///         {
     ///             new Rancher2.Inputs.MultiClusterAppTargetArgs
@@ -57,6 +44,20 @@ namespace Pulumi.Rancher2
     ///         },
     ///         TemplateName = "&lt;template_name&gt;",
     ///         TemplateVersion = "&lt;template_version&gt;",
+    ///         Answers = new[]
+    ///         {
+    ///             new Rancher2.Inputs.MultiClusterAppAnswerArgs
+    ///             {
+    ///                 Values = 
+    ///                 {
+    ///                     { "ingress_host", "test.xip.io" },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Roles = new[]
+    ///         {
+    ///             "project-member",
+    ///         },
     ///     });
     /// 
     /// });
@@ -75,29 +76,8 @@ namespace Pulumi.Rancher2
     ///     // Create a new rancher2 Multi Cluster App overriding answers
     ///     var foo = new Rancher2.MultiClusterApp("foo", new()
     ///     {
-    ///         Answers = new[]
-    ///         {
-    ///             new Rancher2.Inputs.MultiClusterAppAnswerArgs
-    ///             {
-    ///                 Values = 
-    ///                 {
-    ///                     { "ingressHost", "test.xip.io" },
-    ///                 },
-    ///             },
-    ///             new Rancher2.Inputs.MultiClusterAppAnswerArgs
-    ///             {
-    ///                 ProjectId = "&lt;project_id2&gt;",
-    ///                 Values = 
-    ///                 {
-    ///                     { "ingressHost", "test2.xip.io" },
-    ///                 },
-    ///             },
-    ///         },
     ///         CatalogName = "&lt;catalog_name&gt;",
-    ///         Roles = new[]
-    ///         {
-    ///             "project-member",
-    ///         },
+    ///         Name = "foo",
     ///         Targets = new[]
     ///         {
     ///             new Rancher2.Inputs.MultiClusterAppTargetArgs
@@ -111,6 +91,28 @@ namespace Pulumi.Rancher2
     ///         },
     ///         TemplateName = "&lt;template_name&gt;",
     ///         TemplateVersion = "&lt;template_version&gt;",
+    ///         Answers = new[]
+    ///         {
+    ///             new Rancher2.Inputs.MultiClusterAppAnswerArgs
+    ///             {
+    ///                 Values = 
+    ///                 {
+    ///                     { "ingress_host", "test.xip.io" },
+    ///                 },
+    ///             },
+    ///             new Rancher2.Inputs.MultiClusterAppAnswerArgs
+    ///             {
+    ///                 ProjectId = "&lt;project_id2&gt;",
+    ///                 Values = 
+    ///                 {
+    ///                     { "ingress_host", "test2.xip.io" },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Roles = new[]
+    ///         {
+    ///             "project-member",
+    ///         },
     ///     });
     /// 
     /// });

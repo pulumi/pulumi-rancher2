@@ -26,28 +26,29 @@ namespace Pulumi.Rancher2
     ///     // Create a new rancher2 Project
     ///     var foo = new Rancher2.Project("foo", new()
     ///     {
+    ///         Name = "foo",
     ///         ClusterId = "&lt;CLUSTER_ID&gt;",
-    ///         ContainerResourceLimit = new Rancher2.Inputs.ProjectContainerResourceLimitArgs
-    ///         {
-    ///             LimitsCpu = "20m",
-    ///             LimitsMemory = "20Mi",
-    ///             RequestsCpu = "1m",
-    ///             RequestsMemory = "1Mi",
-    ///         },
     ///         ResourceQuota = new Rancher2.Inputs.ProjectResourceQuotaArgs
     ///         {
-    ///             NamespaceDefaultLimit = new Rancher2.Inputs.ProjectResourceQuotaNamespaceDefaultLimitArgs
-    ///             {
-    ///                 LimitsCpu = "2000m",
-    ///                 LimitsMemory = "500Mi",
-    ///                 RequestsStorage = "1Gi",
-    ///             },
     ///             ProjectLimit = new Rancher2.Inputs.ProjectResourceQuotaProjectLimitArgs
     ///             {
     ///                 LimitsCpu = "2000m",
     ///                 LimitsMemory = "2000Mi",
     ///                 RequestsStorage = "2Gi",
     ///             },
+    ///             NamespaceDefaultLimit = new Rancher2.Inputs.ProjectResourceQuotaNamespaceDefaultLimitArgs
+    ///             {
+    ///                 LimitsCpu = "2000m",
+    ///                 LimitsMemory = "500Mi",
+    ///                 RequestsStorage = "1Gi",
+    ///             },
+    ///         },
+    ///         ContainerResourceLimit = new Rancher2.Inputs.ProjectContainerResourceLimitArgs
+    ///         {
+    ///             LimitsCpu = "20m",
+    ///             LimitsMemory = "20Mi",
+    ///             RequestsCpu = "1m",
+    ///             RequestsMemory = "1Mi",
     ///         },
     ///     });
     /// 
@@ -67,7 +68,23 @@ namespace Pulumi.Rancher2
     ///     // Create a new rancher2 Project enabling and customizing monitoring
     ///     var foo = new Rancher2.Project("foo", new()
     ///     {
+    ///         Name = "foo",
     ///         ClusterId = "&lt;CLUSTER_ID&gt;",
+    ///         ResourceQuota = new Rancher2.Inputs.ProjectResourceQuotaArgs
+    ///         {
+    ///             ProjectLimit = new Rancher2.Inputs.ProjectResourceQuotaProjectLimitArgs
+    ///             {
+    ///                 LimitsCpu = "2000m",
+    ///                 LimitsMemory = "2000Mi",
+    ///                 RequestsStorage = "2Gi",
+    ///             },
+    ///             NamespaceDefaultLimit = new Rancher2.Inputs.ProjectResourceQuotaNamespaceDefaultLimitArgs
+    ///             {
+    ///                 LimitsCpu = "2000m",
+    ///                 LimitsMemory = "500Mi",
+    ///                 RequestsStorage = "1Gi",
+    ///             },
+    ///         },
     ///         ContainerResourceLimit = new Rancher2.Inputs.ProjectContainerResourceLimitArgs
     ///         {
     ///             LimitsCpu = "20m",
@@ -98,21 +115,6 @@ namespace Pulumi.Rancher2
     ///                 { "prometheus.resources.core.requests.cpu", "750m" },
     ///                 { "prometheus.resources.core.requests.memory", "750Mi" },
     ///                 { "prometheus.retention", "12h" },
-    ///             },
-    ///         },
-    ///         ResourceQuota = new Rancher2.Inputs.ProjectResourceQuotaArgs
-    ///         {
-    ///             NamespaceDefaultLimit = new Rancher2.Inputs.ProjectResourceQuotaNamespaceDefaultLimitArgs
-    ///             {
-    ///                 LimitsCpu = "2000m",
-    ///                 LimitsMemory = "500Mi",
-    ///                 RequestsStorage = "1Gi",
-    ///             },
-    ///             ProjectLimit = new Rancher2.Inputs.ProjectResourceQuotaProjectLimitArgs
-    ///             {
-    ///                 LimitsCpu = "2000m",
-    ///                 LimitsMemory = "2000Mi",
-    ///                 RequestsStorage = "2Gi",
     ///             },
     ///         },
     ///     });

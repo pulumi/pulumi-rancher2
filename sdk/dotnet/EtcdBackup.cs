@@ -44,6 +44,7 @@ namespace Pulumi.Rancher2
     ///             },
     ///         },
     ///         ClusterId = "&lt;CLUSTER_ID&gt;",
+    ///         Name = "foo",
     ///         Filename = "&lt;FILENAME&gt;",
     ///     });
     /// 

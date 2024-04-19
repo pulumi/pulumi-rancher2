@@ -466,16 +466,18 @@ class CustomUserToken(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         # Create a rancher2 Token
-        foo_user = rancher2.User("fooUser",
+        foo = rancher2.User("foo",
+            name="foo",
             username="foo",
             password="changeme",
             enabled=True)
         foo_login = rancher2.GlobalRoleBinding("foo-login",
+            name="foo-login-binding",
             global_role_id="user-base",
-            user_id=foo_user.id)
-        foo_custom_user_token = rancher2.CustomUserToken("fooCustomUserToken",
-            username=foo_user.username,
-            password=foo_user.password,
+            user_id=foo.id)
+        foo_custom_user_token = rancher2.CustomUserToken("foo",
+            username=foo.username,
+            password=foo.password,
             description="foo token",
             ttl=0,
             opts=pulumi.ResourceOptions(depends_on=[foo_login]))
@@ -520,16 +522,18 @@ class CustomUserToken(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         # Create a rancher2 Token
-        foo_user = rancher2.User("fooUser",
+        foo = rancher2.User("foo",
+            name="foo",
             username="foo",
             password="changeme",
             enabled=True)
         foo_login = rancher2.GlobalRoleBinding("foo-login",
+            name="foo-login-binding",
             global_role_id="user-base",
-            user_id=foo_user.id)
-        foo_custom_user_token = rancher2.CustomUserToken("fooCustomUserToken",
-            username=foo_user.username,
-            password=foo_user.password,
+            user_id=foo.id)
+        foo_custom_user_token = rancher2.CustomUserToken("foo",
+            username=foo.username,
+            password=foo.password,
             description="foo token",
             ttl=0,
             opts=pulumi.ResourceOptions(depends_on=[foo_login]))

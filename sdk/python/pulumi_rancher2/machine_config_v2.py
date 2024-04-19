@@ -465,13 +465,16 @@ class MachineConfigV2(pulumi.CustomResource):
         import pulumi
         import pulumi_rancher2 as rancher2
 
-        foo_harvester_cluster_v2 = rancher2.get_cluster_v2(name="foo-harvester")
+        # Get imported harvester cluster info
+        foo_harvester = rancher2.get_cluster_v2(name="foo-harvester")
         # Create a new Cloud Credential for an imported Harvester cluster
-        foo_harvester_cloud_credential = rancher2.CloudCredential("foo-harvesterCloudCredential", harvester_credential_config=rancher2.CloudCredentialHarvesterCredentialConfigArgs(
-            cluster_id=foo_harvester_cluster_v2.cluster_v1_id,
-            cluster_type="imported",
-            kubeconfig_content=foo_harvester_cluster_v2.kube_config,
-        ))
+        foo_harvester_cloud_credential = rancher2.CloudCredential("foo-harvester",
+            name="foo-harvester",
+            harvester_credential_config=rancher2.CloudCredentialHarvesterCredentialConfigArgs(
+                cluster_id=foo_harvester.cluster_v1_id,
+                cluster_type="imported",
+                kubeconfig_content=foo_harvester.kube_config,
+            ))
         # Create a new rancher2 machine config v2 using harvester node_driver
         foo_harvester_v2 = rancher2.MachineConfigV2("foo-harvester-v2",
             generate_name="foo-harvester-v2",
@@ -486,17 +489,15 @@ class MachineConfigV2(pulumi.CustomResource):
                     "bootOrder": 1
                 }]
             }
-            EOF,
-            networkInfo = <<EOF
-            {
+        \"\"\",
+                network_info=\"\"\"    {
                 "interfaces": [{
                     "networkName": "harvester-public/vlan1"
                 }]
             }
-            EOF,
-            sshUser = "ubuntu",
-            userData = <<EOF
-            package_update: true
+        \"\"\",
+                ssh_user="ubuntu",
+                user_data=\"\"\"    package_update: true
             packages:
               - qemu-guest-agent
               - iptables
@@ -544,13 +545,16 @@ class MachineConfigV2(pulumi.CustomResource):
         import pulumi
         import pulumi_rancher2 as rancher2
 
-        foo_harvester_cluster_v2 = rancher2.get_cluster_v2(name="foo-harvester")
+        # Get imported harvester cluster info
+        foo_harvester = rancher2.get_cluster_v2(name="foo-harvester")
         # Create a new Cloud Credential for an imported Harvester cluster
-        foo_harvester_cloud_credential = rancher2.CloudCredential("foo-harvesterCloudCredential", harvester_credential_config=rancher2.CloudCredentialHarvesterCredentialConfigArgs(
-            cluster_id=foo_harvester_cluster_v2.cluster_v1_id,
-            cluster_type="imported",
-            kubeconfig_content=foo_harvester_cluster_v2.kube_config,
-        ))
+        foo_harvester_cloud_credential = rancher2.CloudCredential("foo-harvester",
+            name="foo-harvester",
+            harvester_credential_config=rancher2.CloudCredentialHarvesterCredentialConfigArgs(
+                cluster_id=foo_harvester.cluster_v1_id,
+                cluster_type="imported",
+                kubeconfig_content=foo_harvester.kube_config,
+            ))
         # Create a new rancher2 machine config v2 using harvester node_driver
         foo_harvester_v2 = rancher2.MachineConfigV2("foo-harvester-v2",
             generate_name="foo-harvester-v2",
@@ -565,17 +569,15 @@ class MachineConfigV2(pulumi.CustomResource):
                     "bootOrder": 1
                 }]
             }
-            EOF,
-            networkInfo = <<EOF
-            {
+        \"\"\",
+                network_info=\"\"\"    {
                 "interfaces": [{
                     "networkName": "harvester-public/vlan1"
                 }]
             }
-            EOF,
-            sshUser = "ubuntu",
-            userData = <<EOF
-            package_update: true
+        \"\"\",
+                ssh_user="ubuntu",
+                user_data=\"\"\"    package_update: true
             packages:
               - qemu-guest-agent
               - iptables

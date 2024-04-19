@@ -26,21 +26,24 @@ namespace Pulumi.Rancher2
     ///     // Create a new Rancher2 Global Catalog
     ///     var foo_global = new Rancher2.Catalog("foo-global", new()
     ///     {
+    ///         Name = "foo-global",
     ///         Url = "https://&lt;CATALOG_URL&gt;",
     ///     });
     /// 
     ///     // Create a new Rancher2 Cluster Catalog
     ///     var foo_cluster = new Rancher2.Catalog("foo-cluster", new()
     ///     {
-    ///         Scope = "cluster",
+    ///         Name = "foo-cluster",
     ///         Url = "https://&lt;CATALOG_URL&gt;",
+    ///         Scope = "cluster",
     ///     });
     /// 
     ///     // Create a new Rancher2 Project Catalog
     ///     var foo_project = new Rancher2.Catalog("foo-project", new()
     ///     {
-    ///         Scope = "project",
+    ///         Name = "foo-project",
     ///         Url = "https://&lt;CATALOG_URL&gt;",
+    ///         Scope = "project",
     ///     });
     /// 
     /// });

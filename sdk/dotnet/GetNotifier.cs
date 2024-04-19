@@ -27,8 +27,8 @@ namespace Pulumi.Rancher2
         /// {
         ///     var foo = Rancher2.GetNotifier.Invoke(new()
         ///     {
-        ///         ClusterId = "&lt;cluster_id&gt;",
         ///         Name = "foo",
+        ///         ClusterId = "&lt;cluster_id&gt;",
         ///     });
         /// 
         /// });
@@ -54,8 +54,8 @@ namespace Pulumi.Rancher2
         /// {
         ///     var foo = Rancher2.GetNotifier.Invoke(new()
         ///     {
-        ///         ClusterId = "&lt;cluster_id&gt;",
         ///         Name = "foo",
+        ///         ClusterId = "&lt;cluster_id&gt;",
         ///     });
         /// 
         /// });

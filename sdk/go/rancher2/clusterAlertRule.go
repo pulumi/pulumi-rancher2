@@ -30,8 +30,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new Rancher2 Cluster Alert Group
-//			fooClusterAlertGroup, err := rancher2.NewClusterAlertGroup(ctx, "fooClusterAlertGroup", &rancher2.ClusterAlertGroupArgs{
+//			foo, err := rancher2.NewClusterAlertGroup(ctx, "foo", &rancher2.ClusterAlertGroupArgs{
 //				ClusterId:             pulumi.String("<cluster_id>"),
+//				Name:                  pulumi.String("foo"),
 //				Description:           pulumi.String("Terraform cluster alert group"),
 //				GroupIntervalSeconds:  pulumi.Int(300),
 //				RepeatIntervalSeconds: pulumi.Int(3600),
@@ -40,9 +41,10 @@ import (
 //				return err
 //			}
 //			// Create a new Rancher2 Cluster Alert Rule
-//			_, err = rancher2.NewClusterAlertRule(ctx, "fooClusterAlertRule", &rancher2.ClusterAlertRuleArgs{
-//				ClusterId:             fooClusterAlertGroup.ClusterId,
-//				GroupId:               fooClusterAlertGroup.ID(),
+//			_, err = rancher2.NewClusterAlertRule(ctx, "foo", &rancher2.ClusterAlertRuleArgs{
+//				ClusterId:             foo.ClusterId,
+//				GroupId:               foo.ID(),
+//				Name:                  pulumi.String("foo"),
 //				GroupIntervalSeconds:  pulumi.Int(600),
 //				RepeatIntervalSeconds: pulumi.Int(6000),
 //			})

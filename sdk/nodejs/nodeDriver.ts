@@ -21,6 +21,7 @@ import * as utilities from "./utilities";
  *     checksum: "0x0",
  *     description: "Foo description",
  *     externalId: "foo_external",
+ *     name: "foo",
  *     uiUrl: "local://ui",
  *     url: "local://",
  *     whitelistDomains: ["*.foo.com"],

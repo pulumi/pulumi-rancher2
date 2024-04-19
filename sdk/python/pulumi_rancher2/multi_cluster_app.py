@@ -528,18 +528,19 @@ class MultiClusterApp(pulumi.CustomResource):
 
         # Create a new rancher2 Multi Cluster App
         foo = rancher2.MultiClusterApp("foo",
-            answers=[rancher2.MultiClusterAppAnswerArgs(
-                values={
-                    "ingressHost": "test.xip.io",
-                },
-            )],
             catalog_name="<catalog_name>",
-            roles=["project-member"],
+            name="foo",
             targets=[rancher2.MultiClusterAppTargetArgs(
                 project_id="<project_id>",
             )],
             template_name="<template_name>",
-            template_version="<template_version>")
+            template_version="<template_version>",
+            answers=[rancher2.MultiClusterAppAnswerArgs(
+                values={
+                    "ingress_host": "test.xip.io",
+                },
+            )],
+            roles=["project-member"])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -550,21 +551,8 @@ class MultiClusterApp(pulumi.CustomResource):
 
         # Create a new rancher2 Multi Cluster App overriding answers
         foo = rancher2.MultiClusterApp("foo",
-            answers=[
-                rancher2.MultiClusterAppAnswerArgs(
-                    values={
-                        "ingressHost": "test.xip.io",
-                    },
-                ),
-                rancher2.MultiClusterAppAnswerArgs(
-                    project_id="<project_id2>",
-                    values={
-                        "ingressHost": "test2.xip.io",
-                    },
-                ),
-            ],
             catalog_name="<catalog_name>",
-            roles=["project-member"],
+            name="foo",
             targets=[
                 rancher2.MultiClusterAppTargetArgs(
                     project_id="<project_id1>",
@@ -574,7 +562,21 @@ class MultiClusterApp(pulumi.CustomResource):
                 ),
             ],
             template_name="<template_name>",
-            template_version="<template_version>")
+            template_version="<template_version>",
+            answers=[
+                rancher2.MultiClusterAppAnswerArgs(
+                    values={
+                        "ingress_host": "test.xip.io",
+                    },
+                ),
+                rancher2.MultiClusterAppAnswerArgs(
+                    project_id="<project_id2>",
+                    values={
+                        "ingress_host": "test2.xip.io",
+                    },
+                ),
+            ],
+            roles=["project-member"])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -628,18 +630,19 @@ class MultiClusterApp(pulumi.CustomResource):
 
         # Create a new rancher2 Multi Cluster App
         foo = rancher2.MultiClusterApp("foo",
-            answers=[rancher2.MultiClusterAppAnswerArgs(
-                values={
-                    "ingressHost": "test.xip.io",
-                },
-            )],
             catalog_name="<catalog_name>",
-            roles=["project-member"],
+            name="foo",
             targets=[rancher2.MultiClusterAppTargetArgs(
                 project_id="<project_id>",
             )],
             template_name="<template_name>",
-            template_version="<template_version>")
+            template_version="<template_version>",
+            answers=[rancher2.MultiClusterAppAnswerArgs(
+                values={
+                    "ingress_host": "test.xip.io",
+                },
+            )],
+            roles=["project-member"])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -650,21 +653,8 @@ class MultiClusterApp(pulumi.CustomResource):
 
         # Create a new rancher2 Multi Cluster App overriding answers
         foo = rancher2.MultiClusterApp("foo",
-            answers=[
-                rancher2.MultiClusterAppAnswerArgs(
-                    values={
-                        "ingressHost": "test.xip.io",
-                    },
-                ),
-                rancher2.MultiClusterAppAnswerArgs(
-                    project_id="<project_id2>",
-                    values={
-                        "ingressHost": "test2.xip.io",
-                    },
-                ),
-            ],
             catalog_name="<catalog_name>",
-            roles=["project-member"],
+            name="foo",
             targets=[
                 rancher2.MultiClusterAppTargetArgs(
                     project_id="<project_id1>",
@@ -674,7 +664,21 @@ class MultiClusterApp(pulumi.CustomResource):
                 ),
             ],
             template_name="<template_name>",
-            template_version="<template_version>")
+            template_version="<template_version>",
+            answers=[
+                rancher2.MultiClusterAppAnswerArgs(
+                    values={
+                        "ingress_host": "test.xip.io",
+                    },
+                ),
+                rancher2.MultiClusterAppAnswerArgs(
+                    project_id="<project_id2>",
+                    values={
+                        "ingress_host": "test2.xip.io",
+                    },
+                ),
+            ],
+            roles=["project-member"])
         ```
         <!--End PulumiCodeChooser -->
 

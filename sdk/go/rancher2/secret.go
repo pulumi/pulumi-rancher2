@@ -18,6 +18,115 @@ import (
 // - Project secret: Available to all namespaces in the `projectId`
 // - Namespaced secret: Available to just `namespaceId` in the `projectId`
 //
+// ## Example Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v6/go/rancher2"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			invokeBase64encode, err := std.Base64encode(ctx, &std.Base64encodeArgs{
+//				Input: "test.io",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeBase64encode1, err := std.Base64encode(ctx, &std.Base64encodeArgs{
+//				Input: "user2",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeBase64encode2, err := std.Base64encode(ctx, &std.Base64encodeArgs{
+//				Input: "pass",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// Create a new rancher2 Project Secret
+//			_, err = rancher2.NewSecret(ctx, "foo", &rancher2.SecretArgs{
+//				Name:        pulumi.String("foo"),
+//				Description: pulumi.String("Terraform secret foo"),
+//				ProjectId:   pulumi.String("<project_id>"),
+//				Data: pulumi.Map{
+//					"address":  invokeBase64encode.Result,
+//					"username": invokeBase64encode1.Result,
+//					"password": invokeBase64encode2.Result,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v6/go/rancher2"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			invokeBase64encode, err := std.Base64encode(ctx, &std.Base64encodeArgs{
+//				Input: "test.io",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeBase64encode1, err := std.Base64encode(ctx, &std.Base64encodeArgs{
+//				Input: "user2",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeBase64encode2, err := std.Base64encode(ctx, &std.Base64encodeArgs{
+//				Input: "pass",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// Create a new rancher2 Namespaced Secret
+//			_, err = rancher2.NewSecret(ctx, "foo", &rancher2.SecretArgs{
+//				Name:        pulumi.String("foo"),
+//				Description: pulumi.String("Terraform secret foo"),
+//				ProjectId:   pulumi.String("<project_id>"),
+//				NamespaceId: pulumi.String("<namespace_id>"),
+//				Data: pulumi.Map{
+//					"address":  invokeBase64encode.Result,
+//					"username": invokeBase64encode1.Result,
+//					"password": invokeBase64encode2.Result,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Import
 //
 // Secrets can be imported using the secret ID in the format `<namespace_id>.<project_id>.<secret_id>`

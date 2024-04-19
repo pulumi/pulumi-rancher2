@@ -16,6 +16,7 @@ import * as utilities from "./utilities";
  *
  * // Create a new rancher2 Project Role Template Binding
  * const foo = new rancher2.ProjectRoleTemplateBinding("foo", {
+ *     name: "foo",
  *     projectId: "<project_id>",
  *     roleTemplateId: "<role_template_id>",
  *     userId: "<user_id>",

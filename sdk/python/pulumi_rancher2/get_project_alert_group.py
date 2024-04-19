@@ -160,8 +160,8 @@ def get_project_alert_group(name: Optional[str] = None,
     import pulumi
     import pulumi_rancher2 as rancher2
 
-    foo = rancher2.get_project_alert_group(name="<project_alert_group_name>",
-        project_id="<project_id>")
+    foo = rancher2.get_project_alert_group(project_id="<project_id>",
+        name="<project_alert_group_name>")
     ```
     <!--End PulumiCodeChooser -->
 
@@ -202,8 +202,8 @@ def get_project_alert_group_output(name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_rancher2 as rancher2
 
-    foo = rancher2.get_project_alert_group(name="<project_alert_group_name>",
-        project_id="<project_id>")
+    foo = rancher2.get_project_alert_group(project_id="<project_id>",
+        name="<project_alert_group_name>")
     ```
     <!--End PulumiCodeChooser -->
 

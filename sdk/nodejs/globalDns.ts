@@ -15,7 +15,8 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * // Create a new rancher2 Global DNS Provider
- * const fooGlobalDnsProvider = new rancher2.GlobalDnsProvider("fooGlobalDnsProvider", {
+ * const foo = new rancher2.GlobalDnsProvider("foo", {
+ *     name: "foo",
  *     rootDomain: "example.com",
  *     route53Config: {
  *         accessKey: "YYYYYYYYYYYYYYYYYYYY",
@@ -25,9 +26,10 @@ import * as utilities from "./utilities";
  *     },
  * });
  * // Create a new rancher2 Global DNS using project IDs
- * const fooGlobalDns = new rancher2.GlobalDns("fooGlobalDns", {
+ * const fooGlobalDns = new rancher2.GlobalDns("foo", {
+ *     name: "foo",
  *     fqdn: "foo.example.com",
- *     providerId: fooGlobalDnsProvider.id,
+ *     providerId: foo.id,
  *     projectIds: [
  *         "project1",
  *         "project2",
@@ -42,7 +44,8 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * // Create a new rancher2 Global DNS Provider
- * const fooGlobalDnsProvider = new rancher2.GlobalDnsProvider("fooGlobalDnsProvider", {
+ * const foo = new rancher2.GlobalDnsProvider("foo", {
+ *     name: "foo",
  *     rootDomain: "example.com",
  *     route53Config: {
  *         accessKey: "YYYYYYYYYYYYYYYYYYYY",
@@ -52,9 +55,10 @@ import * as utilities from "./utilities";
  *     },
  * });
  * // Create a new rancher2 Global DNS using MultiClusterApp ID
- * const fooGlobalDns = new rancher2.GlobalDns("fooGlobalDns", {
+ * const fooGlobalDns = new rancher2.GlobalDns("foo", {
+ *     name: "foo",
  *     fqdn: "foo.example.com",
- *     providerId: fooGlobalDnsProvider.id,
+ *     providerId: foo.id,
  *     multiClusterAppId: "<MCA_ID>",
  * });
  * ```

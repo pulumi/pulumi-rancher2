@@ -209,8 +209,8 @@ def get_project_alert_rule(labels: Optional[Mapping[str, Any]] = None,
     import pulumi
     import pulumi_rancher2 as rancher2
 
-    foo = rancher2.get_project_alert_rule(name="<project_alert_rule_name>",
-        project_id="<project_id>")
+    foo = rancher2.get_project_alert_rule(project_id="<project_id>",
+        name="<project_alert_rule_name>")
     ```
     <!--End PulumiCodeChooser -->
 
@@ -258,8 +258,8 @@ def get_project_alert_rule_output(labels: Optional[pulumi.Input[Optional[Mapping
     import pulumi
     import pulumi_rancher2 as rancher2
 
-    foo = rancher2.get_project_alert_rule(name="<project_alert_rule_name>",
-        project_id="<project_id>")
+    foo = rancher2.get_project_alert_rule(project_id="<project_id>",
+        name="<project_alert_rule_name>")
     ```
     <!--End PulumiCodeChooser -->
 

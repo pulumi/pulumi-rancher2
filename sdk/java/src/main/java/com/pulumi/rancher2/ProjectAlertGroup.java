@@ -48,9 +48,10 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new Rancher2 Project Alert Group
  *         var foo = new ProjectAlertGroup(&#34;foo&#34;, ProjectAlertGroupArgs.builder()        
+ *             .name(&#34;foo&#34;)
  *             .description(&#34;Terraform project alert group&#34;)
- *             .groupIntervalSeconds(300)
  *             .projectId(&#34;&lt;project_id&gt;&#34;)
+ *             .groupIntervalSeconds(300)
  *             .repeatIntervalSeconds(3600)
  *             .build());
  * 

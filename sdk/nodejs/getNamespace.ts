@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  *
  * const foo = rancher2.getNamespace({
  *     name: "foo",
- *     projectId: rancher2_cluster["foo-custom"].default_project_id,
+ *     projectId: foo_custom.defaultProjectId,
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -89,7 +89,7 @@ export interface GetNamespaceResult {
  *
  * const foo = rancher2.getNamespace({
  *     name: "foo",
- *     projectId: rancher2_cluster["foo-custom"].default_project_id,
+ *     projectId: foo_custom.defaultProjectId,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

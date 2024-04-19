@@ -65,6 +65,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .clusterId(&#34;&lt;CLUSTER_ID&gt;&#34;)
+ *             .name(&#34;foo&#34;)
  *             .filename(&#34;&lt;FILENAME&gt;&#34;)
  *             .build());
  * 

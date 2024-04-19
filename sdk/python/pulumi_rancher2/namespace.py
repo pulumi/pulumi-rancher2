@@ -310,20 +310,21 @@ class Namespace(pulumi.CustomResource):
 
         # Create a new rancher2 Namespace
         foo = rancher2.Namespace("foo",
-            container_resource_limit=rancher2.NamespaceContainerResourceLimitArgs(
-                limits_cpu="20m",
-                limits_memory="20Mi",
-                requests_cpu="1m",
-                requests_memory="1Mi",
-            ),
-            description="foo namespace",
+            name="foo",
             project_id="<PROJECT_ID>",
+            description="foo namespace",
             resource_quota=rancher2.NamespaceResourceQuotaArgs(
                 limit=rancher2.NamespaceResourceQuotaLimitArgs(
                     limits_cpu="100m",
                     limits_memory="100Mi",
                     requests_storage="1Gi",
                 ),
+            ),
+            container_resource_limit=rancher2.NamespaceContainerResourceLimitArgs(
+                limits_cpu="20m",
+                limits_memory="20Mi",
+                requests_cpu="1m",
+                requests_memory="1Mi",
             ))
         ```
         <!--End PulumiCodeChooser -->
@@ -335,6 +336,7 @@ class Namespace(pulumi.CustomResource):
 
         # Create a new rancher2 Cluster 
         foo_custom = rancher2.Cluster("foo-custom",
+            name="foo-custom",
             description="Foo rancher2 custom cluster",
             rke_config=rancher2.ClusterRkeConfigArgs(
                 network=rancher2.ClusterRkeConfigNetworkArgs(
@@ -343,6 +345,7 @@ class Namespace(pulumi.CustomResource):
             ))
         # Create a new rancher2 Namespace assigned to default cluster project
         foo = rancher2.Namespace("foo",
+            name="foo",
             project_id=foo_custom.default_project_id,
             description="foo namespace",
             resource_quota=rancher2.NamespaceResourceQuotaArgs(
@@ -404,20 +407,21 @@ class Namespace(pulumi.CustomResource):
 
         # Create a new rancher2 Namespace
         foo = rancher2.Namespace("foo",
-            container_resource_limit=rancher2.NamespaceContainerResourceLimitArgs(
-                limits_cpu="20m",
-                limits_memory="20Mi",
-                requests_cpu="1m",
-                requests_memory="1Mi",
-            ),
-            description="foo namespace",
+            name="foo",
             project_id="<PROJECT_ID>",
+            description="foo namespace",
             resource_quota=rancher2.NamespaceResourceQuotaArgs(
                 limit=rancher2.NamespaceResourceQuotaLimitArgs(
                     limits_cpu="100m",
                     limits_memory="100Mi",
                     requests_storage="1Gi",
                 ),
+            ),
+            container_resource_limit=rancher2.NamespaceContainerResourceLimitArgs(
+                limits_cpu="20m",
+                limits_memory="20Mi",
+                requests_cpu="1m",
+                requests_memory="1Mi",
             ))
         ```
         <!--End PulumiCodeChooser -->
@@ -429,6 +433,7 @@ class Namespace(pulumi.CustomResource):
 
         # Create a new rancher2 Cluster 
         foo_custom = rancher2.Cluster("foo-custom",
+            name="foo-custom",
             description="Foo rancher2 custom cluster",
             rke_config=rancher2.ClusterRkeConfigArgs(
                 network=rancher2.ClusterRkeConfigNetworkArgs(
@@ -437,6 +442,7 @@ class Namespace(pulumi.CustomResource):
             ))
         # Create a new rancher2 Namespace assigned to default cluster project
         foo = rancher2.Namespace("foo",
+            name="foo",
             project_id=foo_custom.default_project_id,
             description="foo namespace",
             resource_quota=rancher2.NamespaceResourceQuotaArgs(

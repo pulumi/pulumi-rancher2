@@ -21,7 +21,10 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * // Create a new rancher2 imported Cluster
- * const foo_imported = new rancher2.Cluster("foo-imported", {description: "Foo rancher2 imported cluster"});
+ * const foo_imported = new rancher2.Cluster("foo-imported", {
+ *     name: "foo-imported",
+ *     description: "Foo rancher2 imported cluster",
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *
@@ -38,6 +41,14 @@ import * as utilities from "./utilities";
  *
  * // Create a new rancher2 RKE Cluster
  * const foo_custom = new rancher2.Cluster("foo-custom", {
+ *     name: "foo-custom",
+ *     description: "Foo rancher2 custom cluster",
+ *     rkeConfig: {
+ *         network: {
+ *             plugin: "canal",
+ *         },
+ *     },
+ *     enableClusterMonitoring: true,
  *     clusterMonitoringInput: {
  *         answers: {
  *             "exporter-kubelets.https": true,
@@ -61,13 +72,6 @@ import * as utilities from "./utilities";
  *         },
  *         version: "0.1.0",
  *     },
- *     description: "Foo rancher2 custom cluster",
- *     enableClusterMonitoring: true,
- *     rkeConfig: {
- *         network: {
- *             plugin: "canal",
- *         },
- *     },
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -80,7 +84,8 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * // Create a new rancher2 RKE Cluster
- * const foo_customCluster = new rancher2.Cluster("foo-customCluster", {
+ * const foo_custom = new rancher2.Cluster("foo-custom", {
+ *     name: "foo-custom",
  *     description: "Foo rancher2 custom cluster",
  *     rkeConfig: {
  *         network: {
@@ -113,18 +118,20 @@ import * as utilities from "./utilities";
  *     },
  * });
  * // Create a new rancher2 Cluster Sync for foo-custom cluster
- * const foo_customClusterSync = new rancher2.ClusterSync("foo-customClusterSync", {
- *     clusterId: foo_customCluster.id,
- *     waitMonitoring: foo_customCluster.enableClusterMonitoring,
+ * const foo_customClusterSync = new rancher2.ClusterSync("foo-custom", {
+ *     clusterId: foo_custom.id,
+ *     waitMonitoring: foo_custom.enableClusterMonitoring,
  * });
  * // Create a new rancher2 Namespace
  * const foo_istio = new rancher2.Namespace("foo-istio", {
+ *     name: "istio-system",
  *     projectId: foo_customClusterSync.systemProjectId,
  *     description: "istio namespace",
  * });
  * // Create a new rancher2 App deploying istio (should wait until monitoring is up and running)
  * const istio = new rancher2.App("istio", {
  *     catalogName: "system-library",
+ *     name: "cluster-istio",
  *     description: "Terraform app acceptance test",
  *     projectId: foo_istio.projectId,
  *     templateName: "rancher-istio",
@@ -184,6 +191,7 @@ import * as utilities from "./utilities";
  *
  * // Create a new rancher2 RKE Cluster
  * const foo_custom = new rancher2.Cluster("foo-custom", {
+ *     name: "foo-custom",
  *     description: "Foo rancher2 custom cluster",
  *     rkeConfig: {
  *         network: {
@@ -192,7 +200,8 @@ import * as utilities from "./utilities";
  *     },
  * });
  * // Create a new rancher2 Node Template
- * const fooNodeTemplate = new rancher2.NodeTemplate("fooNodeTemplate", {
+ * const foo = new rancher2.NodeTemplate("foo", {
+ *     name: "foo",
  *     description: "foo test",
  *     amazonec2Config: {
  *         accessKey: "<AWS_ACCESS_KEY>",
@@ -206,10 +215,11 @@ import * as utilities from "./utilities";
  *     },
  * });
  * // Create a new rancher2 Node Pool
- * const fooNodePool = new rancher2.NodePool("fooNodePool", {
+ * const fooNodePool = new rancher2.NodePool("foo", {
  *     clusterId: foo_custom.id,
+ *     name: "foo",
  *     hostnamePrefix: "foo-cluster-0",
- *     nodeTemplateId: fooNodeTemplate.id,
+ *     nodeTemplateId: foo.id,
  *     quantity: 3,
  *     controlPlane: true,
  *     etcd: true,
@@ -226,7 +236,8 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * // Create a new rancher2 cluster template
- * const fooClusterTemplate = new rancher2.ClusterTemplate("fooClusterTemplate", {
+ * const foo = new rancher2.ClusterTemplate("foo", {
+ *     name: "foo",
  *     members: [{
  *         accessType: "owner",
  *         userPrincipalId: "local://user-XXXXX",
@@ -251,9 +262,10 @@ import * as utilities from "./utilities";
  *     description: "Test cluster template v2",
  * });
  * // Create a new rancher2 RKE Cluster from template
- * const fooCluster = new rancher2.Cluster("fooCluster", {
- *     clusterTemplateId: fooClusterTemplate.id,
- *     clusterTemplateRevisionId: fooClusterTemplate.templateRevisions.apply(templateRevisions => templateRevisions[0].id),
+ * const fooCluster = new rancher2.Cluster("foo", {
+ *     name: "foo",
+ *     clusterTemplateId: foo.id,
+ *     clusterTemplateRevisionId: foo.templateRevisions.apply(templateRevisions => templateRevisions[0].id),
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -266,6 +278,7 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * const foo = new rancher2.Cluster("foo", {
+ *     name: "foo",
  *     description: "Terraform custom cluster",
  *     rkeConfig: {
  *         network: {
@@ -278,12 +291,13 @@ import * as utilities from "./utilities";
  *             },
  *             kubeApi: {
  *                 auditLog: {
+ *                     enabled: true,
  *                     configuration: {
- *                         format: "json",
  *                         maxAge: 5,
  *                         maxBackup: 5,
  *                         maxSize: 100,
  *                         path: "-",
+ *                         format: "json",
  *                         policy: `apiVersion: audit.k8s.io/v1
  * kind: Policy
  * metadata:
@@ -295,10 +309,8 @@ import * as utilities from "./utilities";
  *   resources:
  *   - resources:
  *     - pods
- *
  * `,
  *                     },
- *                     enabled: true,
  *                 },
  *             },
  *         },
@@ -319,6 +331,13 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * const foo = new rancher2.Cluster("foo", {
+ *     name: "foo",
+ *     description: "Terraform cluster with agent customization",
+ *     rkeConfig: {
+ *         network: {
+ *             plugin: "canal",
+ *         },
+ *     },
  *     clusterAgentDeploymentCustomizations: [{
  *         appendTolerations: [{
  *             effect: "NoSchedule",
@@ -340,7 +359,6 @@ import * as utilities from "./utilities";
  *     }
  *   }
  * }
- *
  * `,
  *         overrideResourceRequirements: [{
  *             cpuLimit: "800",
@@ -349,12 +367,6 @@ import * as utilities from "./utilities";
  *             memoryRequest: "500",
  *         }],
  *     }],
- *     description: "Terraform cluster with agent customization",
- *     rkeConfig: {
- *         network: {
- *             plugin: "canal",
- *         },
- *     },
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -367,7 +379,9 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * // Custom PSACT (if you wish to use your own)
- * const fooPodSecurityAdmissionConfigurationTemplate = new rancher2.PodSecurityAdmissionConfigurationTemplate("fooPodSecurityAdmissionConfigurationTemplate", {
+ * const foo = new rancher2.PodSecurityAdmissionConfigurationTemplate("foo", {
+ *     name: "custom-psact",
+ *     description: "This is my custom Pod Security Admission Configuration Template",
  *     defaults: {
  *         audit: "restricted",
  *         auditVersion: "latest",
@@ -376,19 +390,19 @@ import * as utilities from "./utilities";
  *         warn: "restricted",
  *         warnVersion: "latest",
  *     },
- *     description: "This is my custom Pod Security Admission Configuration Template",
  *     exemptions: {
+ *         usernames: ["testuser"],
+ *         runtimeClasses: ["testclass"],
  *         namespaces: [
  *             "ingress-nginx",
  *             "kube-system",
  *         ],
- *         runtimeClasses: ["testclass"],
- *         usernames: ["testuser"],
  *     },
  * });
- * const fooCluster = new rancher2.Cluster("fooCluster", {
- *     defaultPodSecurityAdmissionConfigurationTemplateName: "<name>",
+ * const fooCluster = new rancher2.Cluster("foo", {
+ *     name: "foo",
  *     description: "Terraform cluster with PSACT",
+ *     defaultPodSecurityAdmissionConfigurationTemplateName: "<name>",
  *     rkeConfig: {
  *         network: {
  *             plugin: "canal",
@@ -405,17 +419,19 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * const fooCloudCredential = new rancher2.CloudCredential("fooCloudCredential", {
+ * const foo = new rancher2.CloudCredential("foo", {
+ *     name: "foo",
  *     description: "foo test",
  *     amazonec2CredentialConfig: {
  *         accessKey: "<aws-access-key>",
  *         secretKey: "<aws-secret-key>",
  *     },
  * });
- * const fooCluster = new rancher2.Cluster("fooCluster", {
+ * const fooCluster = new rancher2.Cluster("foo", {
+ *     name: "foo",
  *     description: "Terraform EKS cluster",
  *     eksConfigV2: {
- *         cloudCredentialId: fooCloudCredential.id,
+ *         cloudCredentialId: foo.id,
  *         name: "<cluster-name>",
  *         region: "<eks-region>",
  *         imported: true,
@@ -431,17 +447,19 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * const fooCloudCredential = new rancher2.CloudCredential("fooCloudCredential", {
+ * const foo = new rancher2.CloudCredential("foo", {
+ *     name: "foo",
  *     description: "foo test",
  *     amazonec2CredentialConfig: {
  *         accessKey: "<aws-access-key>",
  *         secretKey: "<aws-secret-key>",
  *     },
  * });
- * const fooCluster = new rancher2.Cluster("fooCluster", {
+ * const fooCluster = new rancher2.Cluster("foo", {
+ *     name: "foo",
  *     description: "Terraform EKS cluster",
  *     eksConfigV2: {
- *         cloudCredentialId: fooCloudCredential.id,
+ *         cloudCredentialId: foo.id,
  *         region: "<EKS_REGION>",
  *         kubernetesVersion: "1.24",
  *         loggingTypes: [
@@ -479,17 +497,19 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * const fooCloudCredential = new rancher2.CloudCredential("fooCloudCredential", {
+ * const foo = new rancher2.CloudCredential("foo", {
+ *     name: "foo",
  *     description: "foo test",
  *     amazonec2CredentialConfig: {
  *         accessKey: "<aws-access-key>",
  *         secretKey: "<aws-secret-key>",
  *     },
  * });
- * const fooCluster = new rancher2.Cluster("fooCluster", {
+ * const fooCluster = new rancher2.Cluster("foo", {
+ *     name: "foo",
  *     description: "Terraform EKS cluster",
  *     eksConfigV2: {
- *         cloudCredentialId: fooCloudCredential.id,
+ *         cloudCredentialId: foo.id,
  *         region: "<EKS_REGION>",
  *         kubernetesVersion: "1.24",
  *         loggingTypes: [
@@ -519,12 +539,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * const foo_aks = new rancher2.CloudCredential("foo-aks", {azureCredentialConfig: {
- *     clientId: "<client-id>",
- *     clientSecret: "<client-secret>",
- *     subscriptionId: "<subscription-id>",
- * }});
+ * const foo_aks = new rancher2.CloudCredential("foo-aks", {
+ *     name: "foo-aks",
+ *     azureCredentialConfig: {
+ *         clientId: "<client-id>",
+ *         clientSecret: "<client-secret>",
+ *         subscriptionId: "<subscription-id>",
+ *     },
+ * });
  * const foo = new rancher2.Cluster("foo", {
+ *     name: "foo",
  *     description: "Terraform AKS cluster",
  *     aksConfigV2: {
  *         cloudCredentialId: foo_aks.id,

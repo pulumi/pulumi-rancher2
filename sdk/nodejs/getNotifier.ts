@@ -17,8 +17,8 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * const foo = rancher2.getNotifier({
- *     clusterId: "<cluster_id>",
  *     name: "foo",
+ *     clusterId: "<cluster_id>",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -118,8 +118,8 @@ export interface GetNotifierResult {
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * const foo = rancher2.getNotifier({
- *     clusterId: "<cluster_id>",
  *     name: "foo",
+ *     clusterId: "<cluster_id>",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

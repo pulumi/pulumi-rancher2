@@ -22,8 +22,9 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new rancher2 rke Cluster 
-    ///     var foo_customCluster = new Rancher2.Cluster("foo-customCluster", new()
+    ///     var foo_custom = new Rancher2.Cluster("foo-custom", new()
     ///     {
+    ///         Name = "foo-custom",
     ///         Description = "Foo rancher2 custom cluster",
     ///         RkeConfig = new Rancher2.Inputs.ClusterRkeConfigArgs
     ///         {
@@ -35,8 +36,9 @@ namespace Pulumi.Rancher2
     ///     });
     /// 
     ///     // Create a new rancher2 Node Template
-    ///     var fooNodeTemplate = new Rancher2.NodeTemplate("fooNodeTemplate", new()
+    ///     var foo = new Rancher2.NodeTemplate("foo", new()
     ///     {
+    ///         Name = "foo",
     ///         Description = "foo test",
     ///         Amazonec2Config = new Rancher2.Inputs.NodeTemplateAmazonec2ConfigArgs
     ///         {
@@ -55,11 +57,12 @@ namespace Pulumi.Rancher2
     ///     });
     /// 
     ///     // Create a new rancher2 Node Pool
-    ///     var fooNodePool = new Rancher2.NodePool("fooNodePool", new()
+    ///     var fooNodePool = new Rancher2.NodePool("foo", new()
     ///     {
-    ///         ClusterId = foo_customCluster.Id,
+    ///         ClusterId = foo_custom.Id,
+    ///         Name = "foo",
     ///         HostnamePrefix = "foo-cluster-0",
-    ///         NodeTemplateId = fooNodeTemplate.Id,
+    ///         NodeTemplateId = foo.Id,
     ///         Quantity = 3,
     ///         ControlPlane = true,
     ///         Etcd = true,
@@ -67,9 +70,9 @@ namespace Pulumi.Rancher2
     ///     });
     /// 
     ///     // Create a new rancher2 Cluster Sync
-    ///     var foo_customClusterSync = new Rancher2.ClusterSync("foo-customClusterSync", new()
+    ///     var foo_customClusterSync = new Rancher2.ClusterSync("foo-custom", new()
     ///     {
-    ///         ClusterId = foo_customCluster.Id,
+    ///         ClusterId = foo_custom.Id,
     ///         NodePoolIds = new[]
     ///         {
     ///             fooNodePool.Id,
@@ -77,8 +80,9 @@ namespace Pulumi.Rancher2
     ///     });
     /// 
     ///     // Create a new rancher2 Project
-    ///     var fooProject = new Rancher2.Project("fooProject", new()
+    ///     var fooProject = new Rancher2.Project("foo", new()
     ///     {
+    ///         Name = "foo",
     ///         ClusterId = foo_customClusterSync.Id,
     ///         Description = "Terraform namespace acceptance test",
     ///         ResourceQuota = new Rancher2.Inputs.ProjectResourceQuotaArgs

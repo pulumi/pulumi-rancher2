@@ -49,7 +49,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Global DNS Provider
- *         var fooGlobalDnsProvider = new GlobalDnsProvider(&#34;fooGlobalDnsProvider&#34;, GlobalDnsProviderArgs.builder()        
+ *         var foo = new GlobalDnsProvider(&#34;foo&#34;, GlobalDnsProviderArgs.builder()        
+ *             .name(&#34;foo&#34;)
  *             .rootDomain(&#34;example.com&#34;)
  *             .route53Config(GlobalDnsProviderRoute53ConfigArgs.builder()
  *                 .accessKey(&#34;YYYYYYYYYYYYYYYYYYYY&#34;)
@@ -61,8 +62,9 @@ import javax.annotation.Nullable;
  * 
  *         // Create a new rancher2 Global DNS using project IDs
  *         var fooGlobalDns = new GlobalDns(&#34;fooGlobalDns&#34;, GlobalDnsArgs.builder()        
+ *             .name(&#34;foo&#34;)
  *             .fqdn(&#34;foo.example.com&#34;)
- *             .providerId(fooGlobalDnsProvider.id())
+ *             .providerId(foo.id())
  *             .projectIds(            
  *                 &#34;project1&#34;,
  *                 &#34;project2&#34;)
@@ -99,7 +101,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Global DNS Provider
- *         var fooGlobalDnsProvider = new GlobalDnsProvider(&#34;fooGlobalDnsProvider&#34;, GlobalDnsProviderArgs.builder()        
+ *         var foo = new GlobalDnsProvider(&#34;foo&#34;, GlobalDnsProviderArgs.builder()        
+ *             .name(&#34;foo&#34;)
  *             .rootDomain(&#34;example.com&#34;)
  *             .route53Config(GlobalDnsProviderRoute53ConfigArgs.builder()
  *                 .accessKey(&#34;YYYYYYYYYYYYYYYYYYYY&#34;)
@@ -111,8 +114,9 @@ import javax.annotation.Nullable;
  * 
  *         // Create a new rancher2 Global DNS using MultiClusterApp ID
  *         var fooGlobalDns = new GlobalDns(&#34;fooGlobalDns&#34;, GlobalDnsArgs.builder()        
+ *             .name(&#34;foo&#34;)
  *             .fqdn(&#34;foo.example.com&#34;)
- *             .providerId(fooGlobalDnsProvider.id())
+ *             .providerId(foo.id())
  *             .multiClusterAppId(&#34;&lt;MCA_ID&gt;&#34;)
  *             .build());
  * 

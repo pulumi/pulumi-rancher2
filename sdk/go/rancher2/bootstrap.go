@@ -83,19 +83,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Provider bootstrap config with alias
-//			_, err := rancher2.NewProvider(ctx, "bootstrap", &rancher2.ProviderArgs{
-//				ApiUrl:    pulumi.String("https://rancher.my-domain.com"),
-//				Bootstrap: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			// Create a new rancher2_bootstrap using bootstrap provider config
-//			_, err = rancher2.NewBootstrap(ctx, "admin", &rancher2.BootstrapArgs{
+//			_, err := rancher2.NewBootstrap(ctx, "admin", &rancher2.BootstrapArgs{
 //				Password:  pulumi.String("blahblah"),
 //				Telemetry: pulumi.Bool(true),
-//			}, pulumi.Provider("rancher2.bootstrap"))
+//			})
 //			if err != nil {
 //				return err
 //			}

@@ -18,6 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
+ * // Retrieve a rancher2 Project Certificate
  * const foo = rancher2.getCertificate({
  *     name: "<name>",
  *     projectId: "<project_id>",
@@ -30,10 +31,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
+ * // Retrieve a rancher2 Namespaced Certificate
  * const foo = rancher2.getCertificate({
  *     name: "<name>",
- *     namespaceId: "<namespace_id>",
  *     projectId: "<project_id>",
+ *     namespaceId: "<namespace_id>",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -108,6 +110,7 @@ export interface GetCertificateResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
+ * // Retrieve a rancher2 Project Certificate
  * const foo = rancher2.getCertificate({
  *     name: "<name>",
  *     projectId: "<project_id>",
@@ -120,10 +123,11 @@ export interface GetCertificateResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
+ * // Retrieve a rancher2 Namespaced Certificate
  * const foo = rancher2.getCertificate({
  *     name: "<name>",
- *     namespaceId: "<namespace_id>",
  *     projectId: "<project_id>",
+ *     namespaceId: "<namespace_id>",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

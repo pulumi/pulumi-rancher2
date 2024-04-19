@@ -27,8 +27,8 @@ namespace Pulumi.Rancher2
         /// {
         ///     var foo = Rancher2.GetProjectAlertGroup.Invoke(new()
         ///     {
-        ///         Name = "&lt;project_alert_group_name&gt;",
         ///         ProjectId = "&lt;project_id&gt;",
+        ///         Name = "&lt;project_alert_group_name&gt;",
         ///     });
         /// 
         /// });
@@ -54,8 +54,8 @@ namespace Pulumi.Rancher2
         /// {
         ///     var foo = Rancher2.GetProjectAlertGroup.Invoke(new()
         ///     {
-        ///         Name = "&lt;project_alert_group_name&gt;",
         ///         ProjectId = "&lt;project_id&gt;",
+        ///         Name = "&lt;project_alert_group_name&gt;",
         ///     });
         /// 
         /// });

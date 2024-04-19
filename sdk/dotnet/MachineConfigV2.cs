@@ -25,19 +25,21 @@ namespace Pulumi.Rancher2
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo_harvesterClusterV2 = Rancher2.GetClusterV2.Invoke(new()
+    ///     // Get imported harvester cluster info
+    ///     var foo_harvester = Rancher2.GetClusterV2.Invoke(new()
     ///     {
     ///         Name = "foo-harvester",
     ///     });
     /// 
     ///     // Create a new Cloud Credential for an imported Harvester cluster
-    ///     var foo_harvesterCloudCredential = new Rancher2.CloudCredential("foo-harvesterCloudCredential", new()
+    ///     var foo_harvesterCloudCredential = new Rancher2.CloudCredential("foo-harvester", new()
     ///     {
+    ///         Name = "foo-harvester",
     ///         HarvesterCredentialConfig = new Rancher2.Inputs.CloudCredentialHarvesterCredentialConfigArgs
     ///         {
-    ///             ClusterId = foo_harvesterClusterV2.Apply(foo_harvesterClusterV2 =&gt; foo_harvesterClusterV2.Apply(getClusterV2Result =&gt; getClusterV2Result.ClusterV1Id)),
+    ///             ClusterId = foo_harvester.Apply(foo_harvester =&gt; foo_harvester.Apply(getClusterV2Result =&gt; getClusterV2Result.ClusterV1Id)),
     ///             ClusterType = "imported",
-    ///             KubeconfigContent = foo_harvesterClusterV2.Apply(foo_harvesterClusterV2 =&gt; foo_harvesterClusterV2.Apply(getClusterV2Result =&gt; getClusterV2Result.KubeConfig)),
+    ///             KubeconfigContent = foo_harvester.Apply(foo_harvester =&gt; foo_harvester.Apply(getClusterV2Result =&gt; getClusterV2Result.KubeConfig)),
     ///         },
     ///     });
     /// 
@@ -57,17 +59,15 @@ namespace Pulumi.Rancher2
     ///             ""bootOrder"": 1
     ///         }]
     ///     }
-    ///     EOF,
-    ///     networkInfo = &lt;&lt;EOF
-    ///     {
+    /// ",
+    ///             NetworkInfo = @"    {
     ///         ""interfaces"": [{
     ///             ""networkName"": ""harvester-public/vlan1""
     ///         }]
     ///     }
-    ///     EOF,
-    ///     sshUser = ""ubuntu"",
-    ///     userData = &lt;&lt;EOF
-    ///     package_update: true
+    /// ",
+    ///             SshUser = "ubuntu",
+    ///             UserData = @"    package_update: true
     ///     packages:
     ///       - qemu-guest-agent
     ///       - iptables

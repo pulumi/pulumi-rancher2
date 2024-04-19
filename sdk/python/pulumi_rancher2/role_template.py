@@ -461,6 +461,7 @@ class RoleTemplate(pulumi.CustomResource):
 
         # Create a new rancher2 cluster Role Template
         foo = rancher2.RoleTemplate("foo",
+            name="foo",
             context="cluster",
             default_role=True,
             description="Terraform role template acceptance test",
@@ -479,6 +480,7 @@ class RoleTemplate(pulumi.CustomResource):
 
         # Create a new rancher2 project Role Template
         foo = rancher2.RoleTemplate("foo",
+            name="foo",
             context="project",
             default_role=True,
             description="Terraform role template acceptance test",
@@ -533,6 +535,7 @@ class RoleTemplate(pulumi.CustomResource):
 
         # Create a new rancher2 cluster Role Template
         foo = rancher2.RoleTemplate("foo",
+            name="foo",
             context="cluster",
             default_role=True,
             description="Terraform role template acceptance test",
@@ -551,6 +554,7 @@ class RoleTemplate(pulumi.CustomResource):
 
         # Create a new rancher2 project Role Template
         foo = rancher2.RoleTemplate("foo",
+            name="foo",
             context="project",
             default_role=True,
             description="Terraform role template acceptance test",

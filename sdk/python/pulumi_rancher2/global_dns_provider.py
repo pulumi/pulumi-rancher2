@@ -269,11 +269,12 @@ class GlobalDnsProvider(pulumi.CustomResource):
 
         # Create a new rancher2 Global DNS Provider - alidns
         foo = rancher2.GlobalDnsProvider("foo",
+            name="foo",
+            root_domain="example.com",
             alidns_config=rancher2.GlobalDnsProviderAlidnsConfigArgs(
                 access_key="YYYYYYYYYYYYYYYYYYYY",
                 secret_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-            ),
-            root_domain="example.com")
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -284,12 +285,13 @@ class GlobalDnsProvider(pulumi.CustomResource):
 
         # Create a new rancher2 Global DNS Provider - cloudflare
         foo = rancher2.GlobalDnsProvider("foo",
+            name="foo",
+            root_domain="example.com",
             cloudflare_config=rancher2.GlobalDnsProviderCloudflareConfigArgs(
                 api_email="test@test.local",
                 api_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
                 proxy_setting=True,
-            ),
-            root_domain="example.com")
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -300,12 +302,13 @@ class GlobalDnsProvider(pulumi.CustomResource):
 
         # Create a new rancher2 Global DNS Provider - route53
         foo = rancher2.GlobalDnsProvider("foo",
+            name="foo",
             root_domain="example.com",
             route53_config=rancher2.GlobalDnsProviderRoute53ConfigArgs(
                 access_key="YYYYYYYYYYYYYYYYYYYY",
-                region="us-east-1",
                 secret_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
                 zone_type="private",
+                region="us-east-1",
             ))
         ```
         <!--End PulumiCodeChooser -->
@@ -343,11 +346,12 @@ class GlobalDnsProvider(pulumi.CustomResource):
 
         # Create a new rancher2 Global DNS Provider - alidns
         foo = rancher2.GlobalDnsProvider("foo",
+            name="foo",
+            root_domain="example.com",
             alidns_config=rancher2.GlobalDnsProviderAlidnsConfigArgs(
                 access_key="YYYYYYYYYYYYYYYYYYYY",
                 secret_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-            ),
-            root_domain="example.com")
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -358,12 +362,13 @@ class GlobalDnsProvider(pulumi.CustomResource):
 
         # Create a new rancher2 Global DNS Provider - cloudflare
         foo = rancher2.GlobalDnsProvider("foo",
+            name="foo",
+            root_domain="example.com",
             cloudflare_config=rancher2.GlobalDnsProviderCloudflareConfigArgs(
                 api_email="test@test.local",
                 api_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
                 proxy_setting=True,
-            ),
-            root_domain="example.com")
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -374,12 +379,13 @@ class GlobalDnsProvider(pulumi.CustomResource):
 
         # Create a new rancher2 Global DNS Provider - route53
         foo = rancher2.GlobalDnsProvider("foo",
+            name="foo",
             root_domain="example.com",
             route53_config=rancher2.GlobalDnsProviderRoute53ConfigArgs(
                 access_key="YYYYYYYYYYYYYYYYYYYY",
-                region="us-east-1",
                 secret_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
                 zone_type="private",
+                region="us-east-1",
             ))
         ```
         <!--End PulumiCodeChooser -->

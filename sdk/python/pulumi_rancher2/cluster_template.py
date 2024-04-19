@@ -263,12 +263,13 @@ class ClusterTemplate(pulumi.CustomResource):
 
         # Create a new rancher2 Cluster Template
         foo = rancher2.ClusterTemplate("foo",
-            description="Terraform cluster template foo",
+            name="foo",
             members=[rancher2.ClusterTemplateMemberArgs(
                 access_type="owner",
                 user_principal_id="local://user-XXXXX",
             )],
             template_revisions=[rancher2.ClusterTemplateTemplateRevisionArgs(
+                name="V1",
                 cluster_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs(
                     rke_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs(
                         network=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs(
@@ -283,8 +284,8 @@ class ClusterTemplate(pulumi.CustomResource):
                     ),
                 ),
                 default=True,
-                name="V1",
-            )])
+            )],
+            description="Terraform cluster template foo")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -297,12 +298,13 @@ class ClusterTemplate(pulumi.CustomResource):
 
         # Create a new rancher2 Cluster Template
         foo = rancher2.ClusterTemplate("foo",
-            description="Terraform cluster template foo",
+            name="foo",
             members=[rancher2.ClusterTemplateMemberArgs(
                 access_type="owner",
                 user_principal_id="local://user-XXXXX",
             )],
             template_revisions=[rancher2.ClusterTemplateTemplateRevisionArgs(
+                name="V1",
                 cluster_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs(
                     rke_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs(
                         network=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs(
@@ -321,8 +323,8 @@ class ClusterTemplate(pulumi.CustomResource):
                     ),
                 ),
                 default=True,
-                name="V1",
-            )])
+            )],
+            description="Terraform cluster template foo")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -363,12 +365,13 @@ class ClusterTemplate(pulumi.CustomResource):
 
         # Create a new rancher2 Cluster Template
         foo = rancher2.ClusterTemplate("foo",
-            description="Terraform cluster template foo",
+            name="foo",
             members=[rancher2.ClusterTemplateMemberArgs(
                 access_type="owner",
                 user_principal_id="local://user-XXXXX",
             )],
             template_revisions=[rancher2.ClusterTemplateTemplateRevisionArgs(
+                name="V1",
                 cluster_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs(
                     rke_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs(
                         network=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs(
@@ -383,8 +386,8 @@ class ClusterTemplate(pulumi.CustomResource):
                     ),
                 ),
                 default=True,
-                name="V1",
-            )])
+            )],
+            description="Terraform cluster template foo")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -397,12 +400,13 @@ class ClusterTemplate(pulumi.CustomResource):
 
         # Create a new rancher2 Cluster Template
         foo = rancher2.ClusterTemplate("foo",
-            description="Terraform cluster template foo",
+            name="foo",
             members=[rancher2.ClusterTemplateMemberArgs(
                 access_type="owner",
                 user_principal_id="local://user-XXXXX",
             )],
             template_revisions=[rancher2.ClusterTemplateTemplateRevisionArgs(
+                name="V1",
                 cluster_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs(
                     rke_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs(
                         network=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs(
@@ -421,8 +425,8 @@ class ClusterTemplate(pulumi.CustomResource):
                     ),
                 ),
                 default=True,
-                name="V1",
-            )])
+            )],
+            description="Terraform cluster template foo")
         ```
         <!--End PulumiCodeChooser -->
 

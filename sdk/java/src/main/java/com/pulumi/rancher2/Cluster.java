@@ -69,6 +69,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 imported Cluster
  *         var foo_imported = new Cluster(&#34;foo-imported&#34;, ClusterArgs.builder()        
+ *             .name(&#34;foo-imported&#34;)
  *             .description(&#34;Foo rancher2 imported cluster&#34;)
  *             .build());
  * 
@@ -92,9 +93,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.rancher2.Cluster;
  * import com.pulumi.rancher2.ClusterArgs;
- * import com.pulumi.rancher2.inputs.ClusterClusterMonitoringInputArgs;
  * import com.pulumi.rancher2.inputs.ClusterRkeConfigArgs;
  * import com.pulumi.rancher2.inputs.ClusterRkeConfigNetworkArgs;
+ * import com.pulumi.rancher2.inputs.ClusterClusterMonitoringInputArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -110,6 +111,14 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 RKE Cluster
  *         var foo_custom = new Cluster(&#34;foo-custom&#34;, ClusterArgs.builder()        
+ *             .name(&#34;foo-custom&#34;)
+ *             .description(&#34;Foo rancher2 custom cluster&#34;)
+ *             .rkeConfig(ClusterRkeConfigArgs.builder()
+ *                 .network(ClusterRkeConfigNetworkArgs.builder()
+ *                     .plugin(&#34;canal&#34;)
+ *                     .build())
+ *                 .build())
+ *             .enableClusterMonitoring(true)
  *             .clusterMonitoringInput(ClusterClusterMonitoringInputArgs.builder()
  *                 .answers(Map.ofEntries(
  *                     Map.entry(&#34;exporter-kubelets.https&#34;, true),
@@ -132,13 +141,6 @@ import javax.annotation.Nullable;
  *                     Map.entry(&#34;prometheus.retention&#34;, &#34;12h&#34;)
  *                 ))
  *                 .version(&#34;0.1.0&#34;)
- *                 .build())
- *             .description(&#34;Foo rancher2 custom cluster&#34;)
- *             .enableClusterMonitoring(true)
- *             .rkeConfig(ClusterRkeConfigArgs.builder()
- *                 .network(ClusterRkeConfigNetworkArgs.builder()
- *                     .plugin(&#34;canal&#34;)
- *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -181,7 +183,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 RKE Cluster
- *         var foo_customCluster = new Cluster(&#34;foo-customCluster&#34;, ClusterArgs.builder()        
+ *         var foo_custom = new Cluster(&#34;foo-custom&#34;, ClusterArgs.builder()        
+ *             .name(&#34;foo-custom&#34;)
  *             .description(&#34;Foo rancher2 custom cluster&#34;)
  *             .rkeConfig(ClusterRkeConfigArgs.builder()
  *                 .network(ClusterRkeConfigNetworkArgs.builder()
@@ -216,12 +219,13 @@ import javax.annotation.Nullable;
  * 
  *         // Create a new rancher2 Cluster Sync for foo-custom cluster
  *         var foo_customClusterSync = new ClusterSync(&#34;foo-customClusterSync&#34;, ClusterSyncArgs.builder()        
- *             .clusterId(foo_customCluster.id())
- *             .waitMonitoring(foo_customCluster.enableClusterMonitoring())
+ *             .clusterId(foo_custom.id())
+ *             .waitMonitoring(foo_custom.enableClusterMonitoring())
  *             .build());
  * 
  *         // Create a new rancher2 Namespace
  *         var foo_istio = new Namespace(&#34;foo-istio&#34;, NamespaceArgs.builder()        
+ *             .name(&#34;istio-system&#34;)
  *             .projectId(foo_customClusterSync.systemProjectId())
  *             .description(&#34;istio namespace&#34;)
  *             .build());
@@ -229,6 +233,7 @@ import javax.annotation.Nullable;
  *         // Create a new rancher2 App deploying istio (should wait until monitoring is up and running)
  *         var istio = new App(&#34;istio&#34;, AppArgs.builder()        
  *             .catalogName(&#34;system-library&#34;)
+ *             .name(&#34;cluster-istio&#34;)
  *             .description(&#34;Terraform app acceptance test&#34;)
  *             .projectId(foo_istio.projectId())
  *             .templateName(&#34;rancher-istio&#34;)
@@ -315,6 +320,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 RKE Cluster
  *         var foo_custom = new Cluster(&#34;foo-custom&#34;, ClusterArgs.builder()        
+ *             .name(&#34;foo-custom&#34;)
  *             .description(&#34;Foo rancher2 custom cluster&#34;)
  *             .rkeConfig(ClusterRkeConfigArgs.builder()
  *                 .network(ClusterRkeConfigNetworkArgs.builder()
@@ -324,7 +330,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // Create a new rancher2 Node Template
- *         var fooNodeTemplate = new NodeTemplate(&#34;fooNodeTemplate&#34;, NodeTemplateArgs.builder()        
+ *         var foo = new NodeTemplate(&#34;foo&#34;, NodeTemplateArgs.builder()        
+ *             .name(&#34;foo&#34;)
  *             .description(&#34;foo test&#34;)
  *             .amazonec2Config(NodeTemplateAmazonec2ConfigArgs.builder()
  *                 .accessKey(&#34;&lt;AWS_ACCESS_KEY&gt;&#34;)
@@ -341,8 +348,9 @@ import javax.annotation.Nullable;
  *         // Create a new rancher2 Node Pool
  *         var fooNodePool = new NodePool(&#34;fooNodePool&#34;, NodePoolArgs.builder()        
  *             .clusterId(foo_custom.id())
+ *             .name(&#34;foo&#34;)
  *             .hostnamePrefix(&#34;foo-cluster-0&#34;)
- *             .nodeTemplateId(fooNodeTemplate.id())
+ *             .nodeTemplateId(foo.id())
  *             .quantity(3)
  *             .controlPlane(true)
  *             .etcd(true)
@@ -388,7 +396,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 cluster template
- *         var fooClusterTemplate = new ClusterTemplate(&#34;fooClusterTemplate&#34;, ClusterTemplateArgs.builder()        
+ *         var foo = new ClusterTemplate(&#34;foo&#34;, ClusterTemplateArgs.builder()        
+ *             .name(&#34;foo&#34;)
  *             .members(ClusterTemplateMemberArgs.builder()
  *                 .accessType(&#34;owner&#34;)
  *                 .userPrincipalId(&#34;local://user-XXXXX&#34;)
@@ -415,8 +424,9 @@ import javax.annotation.Nullable;
  * 
  *         // Create a new rancher2 RKE Cluster from template
  *         var fooCluster = new Cluster(&#34;fooCluster&#34;, ClusterArgs.builder()        
- *             .clusterTemplateId(fooClusterTemplate.id())
- *             .clusterTemplateRevisionId(fooClusterTemplate.templateRevisions().applyValue(templateRevisions -&gt; templateRevisions[0].id()))
+ *             .name(&#34;foo&#34;)
+ *             .clusterTemplateId(foo.id())
+ *             .clusterTemplateRevisionId(foo.templateRevisions().applyValue(templateRevisions -&gt; templateRevisions[0].id()))
  *             .build());
  * 
  *     }
@@ -457,6 +467,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foo = new Cluster(&#34;foo&#34;, ClusterArgs.builder()        
+ *             .name(&#34;foo&#34;)
  *             .description(&#34;Terraform custom cluster&#34;)
  *             .rkeConfig(ClusterRkeConfigArgs.builder()
  *                 .network(ClusterRkeConfigNetworkArgs.builder()
@@ -469,12 +480,13 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .kubeApi(ClusterRkeConfigServicesKubeApiArgs.builder()
  *                         .auditLog(ClusterRkeConfigServicesKubeApiAuditLogArgs.builder()
+ *                             .enabled(true)
  *                             .configuration(ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs.builder()
- *                                 .format(&#34;json&#34;)
  *                                 .maxAge(5)
  *                                 .maxBackup(5)
  *                                 .maxSize(100)
  *                                 .path(&#34;-&#34;)
+ *                                 .format(&#34;json&#34;)
  *                                 .policy(&#34;&#34;&#34;
  * apiVersion: audit.k8s.io/v1
  * kind: Policy
@@ -487,10 +499,8 @@ import javax.annotation.Nullable;
  *   resources:
  *   - resources:
  *     - pods
- * 
  *                                 &#34;&#34;&#34;)
  *                                 .build())
- *                             .enabled(true)
  *                             .build())
  *                         .build())
  *                     .build())
@@ -517,9 +527,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.rancher2.Cluster;
  * import com.pulumi.rancher2.ClusterArgs;
- * import com.pulumi.rancher2.inputs.ClusterClusterAgentDeploymentCustomizationArgs;
  * import com.pulumi.rancher2.inputs.ClusterRkeConfigArgs;
  * import com.pulumi.rancher2.inputs.ClusterRkeConfigNetworkArgs;
+ * import com.pulumi.rancher2.inputs.ClusterClusterAgentDeploymentCustomizationArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -534,6 +544,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foo = new Cluster(&#34;foo&#34;, ClusterArgs.builder()        
+ *             .name(&#34;foo&#34;)
+ *             .description(&#34;Terraform cluster with agent customization&#34;)
+ *             .rkeConfig(ClusterRkeConfigArgs.builder()
+ *                 .network(ClusterRkeConfigNetworkArgs.builder()
+ *                     .plugin(&#34;canal&#34;)
+ *                     .build())
+ *                 .build())
  *             .clusterAgentDeploymentCustomizations(ClusterClusterAgentDeploymentCustomizationArgs.builder()
  *                 .appendTolerations(ClusterClusterAgentDeploymentCustomizationAppendTolerationArgs.builder()
  *                     .effect(&#34;NoSchedule&#34;)
@@ -556,19 +573,12 @@ import javax.annotation.Nullable;
  *     }
  *   }
  * }
- * 
  *                 &#34;&#34;&#34;)
  *                 .overrideResourceRequirements(ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs.builder()
  *                     .cpuLimit(&#34;800&#34;)
  *                     .cpuRequest(&#34;500&#34;)
  *                     .memoryLimit(&#34;800&#34;)
  *                     .memoryRequest(&#34;500&#34;)
- *                     .build())
- *                 .build())
- *             .description(&#34;Terraform cluster with agent customization&#34;)
- *             .rkeConfig(ClusterRkeConfigArgs.builder()
- *                 .network(ClusterRkeConfigNetworkArgs.builder()
- *                     .plugin(&#34;canal&#34;)
  *                     .build())
  *                 .build())
  *             .build());
@@ -609,7 +619,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Custom PSACT (if you wish to use your own)
- *         var fooPodSecurityAdmissionConfigurationTemplate = new PodSecurityAdmissionConfigurationTemplate(&#34;fooPodSecurityAdmissionConfigurationTemplate&#34;, PodSecurityAdmissionConfigurationTemplateArgs.builder()        
+ *         var foo = new PodSecurityAdmissionConfigurationTemplate(&#34;foo&#34;, PodSecurityAdmissionConfigurationTemplateArgs.builder()        
+ *             .name(&#34;custom-psact&#34;)
+ *             .description(&#34;This is my custom Pod Security Admission Configuration Template&#34;)
  *             .defaults(PodSecurityAdmissionConfigurationTemplateDefaultsArgs.builder()
  *                 .audit(&#34;restricted&#34;)
  *                 .auditVersion(&#34;latest&#34;)
@@ -618,19 +630,19 @@ import javax.annotation.Nullable;
  *                 .warn(&#34;restricted&#34;)
  *                 .warnVersion(&#34;latest&#34;)
  *                 .build())
- *             .description(&#34;This is my custom Pod Security Admission Configuration Template&#34;)
  *             .exemptions(PodSecurityAdmissionConfigurationTemplateExemptionsArgs.builder()
+ *                 .usernames(&#34;testuser&#34;)
+ *                 .runtimeClasses(&#34;testclass&#34;)
  *                 .namespaces(                
  *                     &#34;ingress-nginx&#34;,
  *                     &#34;kube-system&#34;)
- *                 .runtimeClasses(&#34;testclass&#34;)
- *                 .usernames(&#34;testuser&#34;)
  *                 .build())
  *             .build());
  * 
  *         var fooCluster = new Cluster(&#34;fooCluster&#34;, ClusterArgs.builder()        
- *             .defaultPodSecurityAdmissionConfigurationTemplateName(&#34;&lt;name&gt;&#34;)
+ *             .name(&#34;foo&#34;)
  *             .description(&#34;Terraform cluster with PSACT&#34;)
+ *             .defaultPodSecurityAdmissionConfigurationTemplateName(&#34;&lt;name&gt;&#34;)
  *             .rkeConfig(ClusterRkeConfigArgs.builder()
  *                 .network(ClusterRkeConfigNetworkArgs.builder()
  *                     .plugin(&#34;canal&#34;)
@@ -671,7 +683,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var fooCloudCredential = new CloudCredential(&#34;fooCloudCredential&#34;, CloudCredentialArgs.builder()        
+ *         var foo = new CloudCredential(&#34;foo&#34;, CloudCredentialArgs.builder()        
+ *             .name(&#34;foo&#34;)
  *             .description(&#34;foo test&#34;)
  *             .amazonec2CredentialConfig(CloudCredentialAmazonec2CredentialConfigArgs.builder()
  *                 .accessKey(&#34;&lt;aws-access-key&gt;&#34;)
@@ -680,9 +693,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var fooCluster = new Cluster(&#34;fooCluster&#34;, ClusterArgs.builder()        
+ *             .name(&#34;foo&#34;)
  *             .description(&#34;Terraform EKS cluster&#34;)
  *             .eksConfigV2(ClusterEksConfigV2Args.builder()
- *                 .cloudCredentialId(fooCloudCredential.id())
+ *                 .cloudCredentialId(foo.id())
  *                 .name(&#34;&lt;cluster-name&gt;&#34;)
  *                 .region(&#34;&lt;eks-region&gt;&#34;)
  *                 .imported(true)
@@ -722,7 +736,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var fooCloudCredential = new CloudCredential(&#34;fooCloudCredential&#34;, CloudCredentialArgs.builder()        
+ *         var foo = new CloudCredential(&#34;foo&#34;, CloudCredentialArgs.builder()        
+ *             .name(&#34;foo&#34;)
  *             .description(&#34;foo test&#34;)
  *             .amazonec2CredentialConfig(CloudCredentialAmazonec2CredentialConfigArgs.builder()
  *                 .accessKey(&#34;&lt;aws-access-key&gt;&#34;)
@@ -731,9 +746,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var fooCluster = new Cluster(&#34;fooCluster&#34;, ClusterArgs.builder()        
+ *             .name(&#34;foo&#34;)
  *             .description(&#34;Terraform EKS cluster&#34;)
  *             .eksConfigV2(ClusterEksConfigV2Args.builder()
- *                 .cloudCredentialId(fooCloudCredential.id())
+ *                 .cloudCredentialId(foo.id())
  *                 .region(&#34;&lt;EKS_REGION&gt;&#34;)
  *                 .kubernetesVersion(&#34;1.24&#34;)
  *                 .loggingTypes(                
@@ -793,7 +809,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var fooCloudCredential = new CloudCredential(&#34;fooCloudCredential&#34;, CloudCredentialArgs.builder()        
+ *         var foo = new CloudCredential(&#34;foo&#34;, CloudCredentialArgs.builder()        
+ *             .name(&#34;foo&#34;)
  *             .description(&#34;foo test&#34;)
  *             .amazonec2CredentialConfig(CloudCredentialAmazonec2CredentialConfigArgs.builder()
  *                 .accessKey(&#34;&lt;aws-access-key&gt;&#34;)
@@ -802,9 +819,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var fooCluster = new Cluster(&#34;fooCluster&#34;, ClusterArgs.builder()        
+ *             .name(&#34;foo&#34;)
  *             .description(&#34;Terraform EKS cluster&#34;)
  *             .eksConfigV2(ClusterEksConfigV2Args.builder()
- *                 .cloudCredentialId(fooCloudCredential.id())
+ *                 .cloudCredentialId(foo.id())
  *                 .region(&#34;&lt;EKS_REGION&gt;&#34;)
  *                 .kubernetesVersion(&#34;1.24&#34;)
  *                 .loggingTypes(                
@@ -858,6 +876,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foo_aks = new CloudCredential(&#34;foo-aks&#34;, CloudCredentialArgs.builder()        
+ *             .name(&#34;foo-aks&#34;)
  *             .azureCredentialConfig(CloudCredentialAzureCredentialConfigArgs.builder()
  *                 .clientId(&#34;&lt;client-id&gt;&#34;)
  *                 .clientSecret(&#34;&lt;client-secret&gt;&#34;)
@@ -866,6 +885,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var foo = new Cluster(&#34;foo&#34;, ClusterArgs.builder()        
+ *             .name(&#34;foo&#34;)
  *             .description(&#34;Terraform AKS cluster&#34;)
  *             .aksConfigV2(ClusterAksConfigV2Args.builder()
  *                 .cloudCredentialId(foo_aks.id())

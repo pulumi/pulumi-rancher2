@@ -15,8 +15,8 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * const foo = rancher2.getClusterRoleTemplateBinding({
- *     clusterId: "foo_id",
  *     name: "foo",
+ *     clusterId: "foo_id",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -96,8 +96,8 @@ export interface GetClusterRoleTemplateBindingResult {
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * const foo = rancher2.getClusterRoleTemplateBinding({
- *     clusterId: "foo_id",
  *     name: "foo",
+ *     clusterId: "foo_id",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

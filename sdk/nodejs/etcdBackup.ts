@@ -34,6 +34,7 @@ import * as utilities from "./utilities";
  *         },
  *     },
  *     clusterId: "<CLUSTER_ID>",
+ *     name: "foo",
  *     filename: "<FILENAME>",
  * });
  * ```

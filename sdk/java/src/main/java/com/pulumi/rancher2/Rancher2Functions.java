@@ -509,6 +509,7 @@ public final class Rancher2Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Retrieve a rancher2 Project Certificate
      *         final var foo = Rancher2Functions.getCertificate(GetCertificateArgs.builder()
      *             .name(&#34;&lt;name&gt;&#34;)
      *             .projectId(&#34;&lt;project_id&gt;&#34;)
@@ -541,10 +542,11 @@ public final class Rancher2Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Retrieve a rancher2 Namespaced Certificate
      *         final var foo = Rancher2Functions.getCertificate(GetCertificateArgs.builder()
      *             .name(&#34;&lt;name&gt;&#34;)
-     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
      *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
      *             .build());
      * 
      *     }
@@ -587,6 +589,7 @@ public final class Rancher2Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Retrieve a rancher2 Project Certificate
      *         final var foo = Rancher2Functions.getCertificate(GetCertificateArgs.builder()
      *             .name(&#34;&lt;name&gt;&#34;)
      *             .projectId(&#34;&lt;project_id&gt;&#34;)
@@ -619,10 +622,11 @@ public final class Rancher2Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Retrieve a rancher2 Namespaced Certificate
      *         final var foo = Rancher2Functions.getCertificate(GetCertificateArgs.builder()
      *             .name(&#34;&lt;name&gt;&#34;)
-     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
      *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
      *             .build());
      * 
      *     }
@@ -665,6 +669,7 @@ public final class Rancher2Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Retrieve a rancher2 Project Certificate
      *         final var foo = Rancher2Functions.getCertificate(GetCertificateArgs.builder()
      *             .name(&#34;&lt;name&gt;&#34;)
      *             .projectId(&#34;&lt;project_id&gt;&#34;)
@@ -697,10 +702,11 @@ public final class Rancher2Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Retrieve a rancher2 Namespaced Certificate
      *         final var foo = Rancher2Functions.getCertificate(GetCertificateArgs.builder()
      *             .name(&#34;&lt;name&gt;&#34;)
-     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
      *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
      *             .build());
      * 
      *     }
@@ -743,6 +749,7 @@ public final class Rancher2Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Retrieve a rancher2 Project Certificate
      *         final var foo = Rancher2Functions.getCertificate(GetCertificateArgs.builder()
      *             .name(&#34;&lt;name&gt;&#34;)
      *             .projectId(&#34;&lt;project_id&gt;&#34;)
@@ -775,10 +782,11 @@ public final class Rancher2Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Retrieve a rancher2 Namespaced Certificate
      *         final var foo = Rancher2Functions.getCertificate(GetCertificateArgs.builder()
      *             .name(&#34;&lt;name&gt;&#34;)
-     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
      *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
      *             .build());
      * 
      *     }
@@ -1626,8 +1634,8 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getClusterRoleTemplateBinding(GetClusterRoleTemplateBindingArgs.builder()
-     *             .clusterId(&#34;foo_id&#34;)
      *             .name(&#34;foo&#34;)
+     *             .clusterId(&#34;foo_id&#34;)
      *             .build());
      * 
      *     }
@@ -1667,8 +1675,8 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getClusterRoleTemplateBinding(GetClusterRoleTemplateBindingArgs.builder()
-     *             .clusterId(&#34;foo_id&#34;)
      *             .name(&#34;foo&#34;)
+     *             .clusterId(&#34;foo_id&#34;)
      *             .build());
      * 
      *     }
@@ -1708,8 +1716,8 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getClusterRoleTemplateBinding(GetClusterRoleTemplateBindingArgs.builder()
-     *             .clusterId(&#34;foo_id&#34;)
      *             .name(&#34;foo&#34;)
+     *             .clusterId(&#34;foo_id&#34;)
      *             .build());
      * 
      *     }
@@ -1749,8 +1757,8 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getClusterRoleTemplateBinding(GetClusterRoleTemplateBindingArgs.builder()
-     *             .clusterId(&#34;foo_id&#34;)
      *             .name(&#34;foo&#34;)
+     *             .clusterId(&#34;foo_id&#34;)
      *             .build());
      * 
      *     }
@@ -1958,8 +1966,8 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getClusterV2(GetClusterV2Args.builder()
-     *             .fleetNamespace(&#34;fleet-ns&#34;)
      *             .name(&#34;foo&#34;)
+     *             .fleetNamespace(&#34;fleet-ns&#34;)
      *             .build());
      * 
      *     }
@@ -1999,8 +2007,8 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getClusterV2(GetClusterV2Args.builder()
-     *             .fleetNamespace(&#34;fleet-ns&#34;)
      *             .name(&#34;foo&#34;)
+     *             .fleetNamespace(&#34;fleet-ns&#34;)
      *             .build());
      * 
      *     }
@@ -2040,8 +2048,8 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getClusterV2(GetClusterV2Args.builder()
-     *             .fleetNamespace(&#34;fleet-ns&#34;)
      *             .name(&#34;foo&#34;)
+     *             .fleetNamespace(&#34;fleet-ns&#34;)
      *             .build());
      * 
      *     }
@@ -2081,8 +2089,8 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getClusterV2(GetClusterV2Args.builder()
-     *             .fleetNamespace(&#34;fleet-ns&#34;)
      *             .name(&#34;foo&#34;)
+     *             .fleetNamespace(&#34;fleet-ns&#34;)
      *             .build());
      * 
      *     }
@@ -2634,8 +2642,8 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getGlobalRoleBinding(GetGlobalRoleBindingArgs.builder()
-     *             .globalRoleId(&#34;foo_id&#34;)
      *             .name(&#34;foo&#34;)
+     *             .globalRoleId(&#34;foo_id&#34;)
      *             .build());
      * 
      *     }
@@ -2675,8 +2683,8 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getGlobalRoleBinding(GetGlobalRoleBindingArgs.builder()
-     *             .globalRoleId(&#34;foo_id&#34;)
      *             .name(&#34;foo&#34;)
+     *             .globalRoleId(&#34;foo_id&#34;)
      *             .build());
      * 
      *     }
@@ -2716,8 +2724,8 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getGlobalRoleBinding(GetGlobalRoleBindingArgs.builder()
-     *             .globalRoleId(&#34;foo_id&#34;)
      *             .name(&#34;foo&#34;)
+     *             .globalRoleId(&#34;foo_id&#34;)
      *             .build());
      * 
      *     }
@@ -2757,8 +2765,8 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getGlobalRoleBinding(GetGlobalRoleBindingArgs.builder()
-     *             .globalRoleId(&#34;foo_id&#34;)
      *             .name(&#34;foo&#34;)
+     *             .globalRoleId(&#34;foo_id&#34;)
      *             .build());
      * 
      *     }
@@ -2959,7 +2967,7 @@ public final class Rancher2Functions {
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getNamespace(GetNamespaceArgs.builder()
      *             .name(&#34;foo&#34;)
-     *             .projectId(rancher2_cluster.foo-custom().default_project_id())
+     *             .projectId(foo_custom.defaultProjectId())
      *             .build());
      * 
      *     }
@@ -3000,7 +3008,7 @@ public final class Rancher2Functions {
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getNamespace(GetNamespaceArgs.builder()
      *             .name(&#34;foo&#34;)
-     *             .projectId(rancher2_cluster.foo-custom().default_project_id())
+     *             .projectId(foo_custom.defaultProjectId())
      *             .build());
      * 
      *     }
@@ -3041,7 +3049,7 @@ public final class Rancher2Functions {
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getNamespace(GetNamespaceArgs.builder()
      *             .name(&#34;foo&#34;)
-     *             .projectId(rancher2_cluster.foo-custom().default_project_id())
+     *             .projectId(foo_custom.defaultProjectId())
      *             .build());
      * 
      *     }
@@ -3082,7 +3090,7 @@ public final class Rancher2Functions {
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getNamespace(GetNamespaceArgs.builder()
      *             .name(&#34;foo&#34;)
-     *             .projectId(rancher2_cluster.foo-custom().default_project_id())
+     *             .projectId(foo_custom.defaultProjectId())
      *             .build());
      * 
      *     }
@@ -3282,7 +3290,7 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getNodePool(GetNodePoolArgs.builder()
-     *             .clusterId(rancher2_cluster.foo-custom().id())
+     *             .clusterId(foo_custom.id())
      *             .name(&#34;foo&#34;)
      *             .build());
      * 
@@ -3323,7 +3331,7 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getNodePool(GetNodePoolArgs.builder()
-     *             .clusterId(rancher2_cluster.foo-custom().id())
+     *             .clusterId(foo_custom.id())
      *             .name(&#34;foo&#34;)
      *             .build());
      * 
@@ -3364,7 +3372,7 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getNodePool(GetNodePoolArgs.builder()
-     *             .clusterId(rancher2_cluster.foo-custom().id())
+     *             .clusterId(foo_custom.id())
      *             .name(&#34;foo&#34;)
      *             .build());
      * 
@@ -3405,7 +3413,7 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getNodePool(GetNodePoolArgs.builder()
-     *             .clusterId(rancher2_cluster.foo-custom().id())
+     *             .clusterId(foo_custom.id())
      *             .name(&#34;foo&#34;)
      *             .build());
      * 
@@ -3606,8 +3614,8 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getNotifier(GetNotifierArgs.builder()
-     *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
      *             .name(&#34;foo&#34;)
+     *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
      *             .build());
      * 
      *     }
@@ -3647,8 +3655,8 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getNotifier(GetNotifierArgs.builder()
-     *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
      *             .name(&#34;foo&#34;)
+     *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
      *             .build());
      * 
      *     }
@@ -3688,8 +3696,8 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getNotifier(GetNotifierArgs.builder()
-     *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
      *             .name(&#34;foo&#34;)
+     *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
      *             .build());
      * 
      *     }
@@ -3729,8 +3737,8 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getNotifier(GetNotifierArgs.builder()
-     *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
      *             .name(&#34;foo&#34;)
+     *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
      *             .build());
      * 
      *     }
@@ -4006,8 +4014,8 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getProjectAlertGroup(GetProjectAlertGroupArgs.builder()
-     *             .name(&#34;&lt;project_alert_group_name&gt;&#34;)
      *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .name(&#34;&lt;project_alert_group_name&gt;&#34;)
      *             .build());
      * 
      *     }
@@ -4047,8 +4055,8 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getProjectAlertGroup(GetProjectAlertGroupArgs.builder()
-     *             .name(&#34;&lt;project_alert_group_name&gt;&#34;)
      *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .name(&#34;&lt;project_alert_group_name&gt;&#34;)
      *             .build());
      * 
      *     }
@@ -4088,8 +4096,8 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getProjectAlertGroup(GetProjectAlertGroupArgs.builder()
-     *             .name(&#34;&lt;project_alert_group_name&gt;&#34;)
      *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .name(&#34;&lt;project_alert_group_name&gt;&#34;)
      *             .build());
      * 
      *     }
@@ -4129,8 +4137,8 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getProjectAlertGroup(GetProjectAlertGroupArgs.builder()
-     *             .name(&#34;&lt;project_alert_group_name&gt;&#34;)
      *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .name(&#34;&lt;project_alert_group_name&gt;&#34;)
      *             .build());
      * 
      *     }
@@ -4170,8 +4178,8 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getProjectAlertRule(GetProjectAlertRuleArgs.builder()
-     *             .name(&#34;&lt;project_alert_rule_name&gt;&#34;)
      *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .name(&#34;&lt;project_alert_rule_name&gt;&#34;)
      *             .build());
      * 
      *     }
@@ -4211,8 +4219,8 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getProjectAlertRule(GetProjectAlertRuleArgs.builder()
-     *             .name(&#34;&lt;project_alert_rule_name&gt;&#34;)
      *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .name(&#34;&lt;project_alert_rule_name&gt;&#34;)
      *             .build());
      * 
      *     }
@@ -4252,8 +4260,8 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getProjectAlertRule(GetProjectAlertRuleArgs.builder()
-     *             .name(&#34;&lt;project_alert_rule_name&gt;&#34;)
      *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .name(&#34;&lt;project_alert_rule_name&gt;&#34;)
      *             .build());
      * 
      *     }
@@ -4293,8 +4301,8 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getProjectAlertRule(GetProjectAlertRuleArgs.builder()
-     *             .name(&#34;&lt;project_alert_rule_name&gt;&#34;)
      *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .name(&#34;&lt;project_alert_rule_name&gt;&#34;)
      *             .build());
      * 
      *     }
@@ -4501,6 +4509,7 @@ public final class Rancher2Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Retrieve a rancher2 Project Registry
      *         final var foo = Rancher2Functions.getRegistry(GetRegistryArgs.builder()
      *             .name(&#34;&lt;name&gt;&#34;)
      *             .projectId(&#34;&lt;project_id&gt;&#34;)
@@ -4533,10 +4542,11 @@ public final class Rancher2Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Retrieve a rancher2 Namespaced Registry
      *         final var foo = Rancher2Functions.getRegistry(GetRegistryArgs.builder()
      *             .name(&#34;&lt;name&gt;&#34;)
-     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
      *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
      *             .build());
      * 
      *     }
@@ -4579,6 +4589,7 @@ public final class Rancher2Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Retrieve a rancher2 Project Registry
      *         final var foo = Rancher2Functions.getRegistry(GetRegistryArgs.builder()
      *             .name(&#34;&lt;name&gt;&#34;)
      *             .projectId(&#34;&lt;project_id&gt;&#34;)
@@ -4611,10 +4622,11 @@ public final class Rancher2Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Retrieve a rancher2 Namespaced Registry
      *         final var foo = Rancher2Functions.getRegistry(GetRegistryArgs.builder()
      *             .name(&#34;&lt;name&gt;&#34;)
-     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
      *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
      *             .build());
      * 
      *     }
@@ -4657,6 +4669,7 @@ public final class Rancher2Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Retrieve a rancher2 Project Registry
      *         final var foo = Rancher2Functions.getRegistry(GetRegistryArgs.builder()
      *             .name(&#34;&lt;name&gt;&#34;)
      *             .projectId(&#34;&lt;project_id&gt;&#34;)
@@ -4689,10 +4702,11 @@ public final class Rancher2Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Retrieve a rancher2 Namespaced Registry
      *         final var foo = Rancher2Functions.getRegistry(GetRegistryArgs.builder()
      *             .name(&#34;&lt;name&gt;&#34;)
-     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
      *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
      *             .build());
      * 
      *     }
@@ -4735,6 +4749,7 @@ public final class Rancher2Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Retrieve a rancher2 Project Registry
      *         final var foo = Rancher2Functions.getRegistry(GetRegistryArgs.builder()
      *             .name(&#34;&lt;name&gt;&#34;)
      *             .projectId(&#34;&lt;project_id&gt;&#34;)
@@ -4767,10 +4782,11 @@ public final class Rancher2Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Retrieve a rancher2 Namespaced Registry
      *         final var foo = Rancher2Functions.getRegistry(GetRegistryArgs.builder()
      *             .name(&#34;&lt;name&gt;&#34;)
-     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
      *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
      *             .build());
      * 
      *     }
@@ -4973,6 +4989,7 @@ public final class Rancher2Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Retrieve a rancher2 Project Secret
      *         final var foo = Rancher2Functions.getSecret(GetSecretArgs.builder()
      *             .name(&#34;&lt;name&gt;&#34;)
      *             .projectId(&#34;&lt;project_id&gt;&#34;)
@@ -5005,10 +5022,11 @@ public final class Rancher2Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Retrieve a rancher2 Namespaced Secret
      *         final var foo = Rancher2Functions.getSecret(GetSecretArgs.builder()
      *             .name(&#34;&lt;name&gt;&#34;)
-     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
      *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
      *             .build());
      * 
      *     }
@@ -5051,6 +5069,7 @@ public final class Rancher2Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Retrieve a rancher2 Project Secret
      *         final var foo = Rancher2Functions.getSecret(GetSecretArgs.builder()
      *             .name(&#34;&lt;name&gt;&#34;)
      *             .projectId(&#34;&lt;project_id&gt;&#34;)
@@ -5083,10 +5102,11 @@ public final class Rancher2Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Retrieve a rancher2 Namespaced Secret
      *         final var foo = Rancher2Functions.getSecret(GetSecretArgs.builder()
      *             .name(&#34;&lt;name&gt;&#34;)
-     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
      *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
      *             .build());
      * 
      *     }
@@ -5129,6 +5149,7 @@ public final class Rancher2Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Retrieve a rancher2 Project Secret
      *         final var foo = Rancher2Functions.getSecret(GetSecretArgs.builder()
      *             .name(&#34;&lt;name&gt;&#34;)
      *             .projectId(&#34;&lt;project_id&gt;&#34;)
@@ -5161,10 +5182,11 @@ public final class Rancher2Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Retrieve a rancher2 Namespaced Secret
      *         final var foo = Rancher2Functions.getSecret(GetSecretArgs.builder()
      *             .name(&#34;&lt;name&gt;&#34;)
-     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
      *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
      *             .build());
      * 
      *     }
@@ -5207,6 +5229,7 @@ public final class Rancher2Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Retrieve a rancher2 Project Secret
      *         final var foo = Rancher2Functions.getSecret(GetSecretArgs.builder()
      *             .name(&#34;&lt;name&gt;&#34;)
      *             .projectId(&#34;&lt;project_id&gt;&#34;)
@@ -5239,10 +5262,11 @@ public final class Rancher2Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Retrieve a rancher2 Namespaced Secret
      *         final var foo = Rancher2Functions.getSecret(GetSecretArgs.builder()
      *             .name(&#34;&lt;name&gt;&#34;)
-     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
      *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
      *             .build());
      * 
      *     }

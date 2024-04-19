@@ -26,15 +26,9 @@ namespace Pulumi.Rancher2
     ///     // Create a new rancher2 Namespace
     ///     var foo = new Rancher2.Namespace("foo", new()
     ///     {
-    ///         ContainerResourceLimit = new Rancher2.Inputs.NamespaceContainerResourceLimitArgs
-    ///         {
-    ///             LimitsCpu = "20m",
-    ///             LimitsMemory = "20Mi",
-    ///             RequestsCpu = "1m",
-    ///             RequestsMemory = "1Mi",
-    ///         },
-    ///         Description = "foo namespace",
+    ///         Name = "foo",
     ///         ProjectId = "&lt;PROJECT_ID&gt;",
+    ///         Description = "foo namespace",
     ///         ResourceQuota = new Rancher2.Inputs.NamespaceResourceQuotaArgs
     ///         {
     ///             Limit = new Rancher2.Inputs.NamespaceResourceQuotaLimitArgs
@@ -43,6 +37,13 @@ namespace Pulumi.Rancher2
     ///                 LimitsMemory = "100Mi",
     ///                 RequestsStorage = "1Gi",
     ///             },
+    ///         },
+    ///         ContainerResourceLimit = new Rancher2.Inputs.NamespaceContainerResourceLimitArgs
+    ///         {
+    ///             LimitsCpu = "20m",
+    ///             LimitsMemory = "20Mi",
+    ///             RequestsCpu = "1m",
+    ///             RequestsMemory = "1Mi",
     ///         },
     ///     });
     /// 
@@ -62,6 +63,7 @@ namespace Pulumi.Rancher2
     ///     // Create a new rancher2 Cluster 
     ///     var foo_custom = new Rancher2.Cluster("foo-custom", new()
     ///     {
+    ///         Name = "foo-custom",
     ///         Description = "Foo rancher2 custom cluster",
     ///         RkeConfig = new Rancher2.Inputs.ClusterRkeConfigArgs
     ///         {
@@ -75,6 +77,7 @@ namespace Pulumi.Rancher2
     ///     // Create a new rancher2 Namespace assigned to default cluster project
     ///     var foo = new Rancher2.Namespace("foo", new()
     ///     {
+    ///         Name = "foo",
     ///         ProjectId = foo_custom.DefaultProjectId,
     ///         Description = "foo namespace",
     ///         ResourceQuota = new Rancher2.Inputs.NamespaceResourceQuotaArgs

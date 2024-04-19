@@ -20,11 +20,12 @@ import * as utilities from "./utilities";
  *
  * // Create a new rancher2 Cloud Credential
  * const foo = new rancher2.CloudCredential("foo", {
+ *     name: "foo",
+ *     description: "foo test",
  *     amazonec2CredentialConfig: {
  *         accessKey: "<AWS_ACCESS_KEY>",
  *         secretKey: "<AWS_SECRET_KEY>",
  *     },
- *     description: "foo test",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -34,15 +35,19 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * const foo-harvesterClusterV2 = rancher2.getClusterV2({
+ * // Get imported harvester cluster info
+ * const foo-harvester = rancher2.getClusterV2({
  *     name: "foo-harvester",
  * });
  * // Create a new Cloud Credential for an imported Harvester cluster
- * const foo_harvesterCloudCredential = new rancher2.CloudCredential("foo-harvesterCloudCredential", {harvesterCredentialConfig: {
- *     clusterId: foo_harvesterClusterV2.then(foo_harvesterClusterV2 => foo_harvesterClusterV2.clusterV1Id),
- *     clusterType: "imported",
- *     kubeconfigContent: foo_harvesterClusterV2.then(foo_harvesterClusterV2 => foo_harvesterClusterV2.kubeConfig),
- * }});
+ * const foo_harvesterCloudCredential = new rancher2.CloudCredential("foo-harvester", {
+ *     name: "foo-harvester",
+ *     harvesterCredentialConfig: {
+ *         clusterId: foo_harvester.then(foo_harvester => foo_harvester.clusterV1Id),
+ *         clusterType: "imported",
+ *         kubeconfigContent: foo_harvester.then(foo_harvester => foo_harvester.kubeConfig),
+ *     },
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *

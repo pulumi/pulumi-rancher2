@@ -22,12 +22,13 @@ import * as utilities from "./utilities";
  *
  * // Create a new rancher2 Project Registry
  * const foo = new rancher2.Registry("foo", {
+ *     name: "foo",
  *     description: "Terraform registry foo",
  *     projectId: "<project_id>",
  *     registries: [{
  *         address: "test.io",
- *         password: "pass",
  *         username: "user",
+ *         password: "pass",
  *     }],
  * });
  * ```
@@ -40,13 +41,14 @@ import * as utilities from "./utilities";
  *
  * // Create a new rancher2 Namespaced Registry
  * const foo = new rancher2.Registry("foo", {
+ *     name: "foo",
  *     description: "Terraform registry foo",
- *     namespaceId: "<namespace_id>",
  *     projectId: "<project_id>",
+ *     namespaceId: "<namespace_id>",
  *     registries: [{
  *         address: "test.io",
- *         password: "pass",
  *         username: "user2",
+ *         password: "pass",
  *     }],
  * });
  * ```

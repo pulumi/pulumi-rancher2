@@ -35,13 +35,14 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 Project Registry
 //			_, err := rancher2.NewRegistry(ctx, "foo", &rancher2.RegistryArgs{
+//				Name:        pulumi.String("foo"),
 //				Description: pulumi.String("Terraform registry foo"),
 //				ProjectId:   pulumi.String("<project_id>"),
 //				Registries: rancher2.RegistryRegistryArray{
 //					&rancher2.RegistryRegistryArgs{
 //						Address:  pulumi.String("test.io"),
-//						Password: pulumi.String("pass"),
 //						Username: pulumi.String("user"),
+//						Password: pulumi.String("pass"),
 //					},
 //				},
 //			})
@@ -70,14 +71,15 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 Namespaced Registry
 //			_, err := rancher2.NewRegistry(ctx, "foo", &rancher2.RegistryArgs{
+//				Name:        pulumi.String("foo"),
 //				Description: pulumi.String("Terraform registry foo"),
-//				NamespaceId: pulumi.String("<namespace_id>"),
 //				ProjectId:   pulumi.String("<project_id>"),
+//				NamespaceId: pulumi.String("<namespace_id>"),
 //				Registries: rancher2.RegistryRegistryArray{
 //					&rancher2.RegistryRegistryArgs{
 //						Address:  pulumi.String("test.io"),
-//						Password: pulumi.String("pass"),
 //						Username: pulumi.String("user2"),
+//						Password: pulumi.String("pass"),
 //					},
 //				},
 //			})

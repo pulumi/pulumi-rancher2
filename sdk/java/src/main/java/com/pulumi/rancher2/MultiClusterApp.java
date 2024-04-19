@@ -44,8 +44,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.rancher2.MultiClusterApp;
  * import com.pulumi.rancher2.MultiClusterAppArgs;
- * import com.pulumi.rancher2.inputs.MultiClusterAppAnswerArgs;
  * import com.pulumi.rancher2.inputs.MultiClusterAppTargetArgs;
+ * import com.pulumi.rancher2.inputs.MultiClusterAppAnswerArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -61,16 +61,17 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Multi Cluster App
  *         var foo = new MultiClusterApp(&#34;foo&#34;, MultiClusterAppArgs.builder()        
- *             .answers(MultiClusterAppAnswerArgs.builder()
- *                 .values(Map.of(&#34;ingressHost&#34;, &#34;test.xip.io&#34;))
- *                 .build())
  *             .catalogName(&#34;&lt;catalog_name&gt;&#34;)
- *             .roles(&#34;project-member&#34;)
+ *             .name(&#34;foo&#34;)
  *             .targets(MultiClusterAppTargetArgs.builder()
  *                 .projectId(&#34;&lt;project_id&gt;&#34;)
  *                 .build())
  *             .templateName(&#34;&lt;template_name&gt;&#34;)
  *             .templateVersion(&#34;&lt;template_version&gt;&#34;)
+ *             .answers(MultiClusterAppAnswerArgs.builder()
+ *                 .values(Map.of(&#34;ingress_host&#34;, &#34;test.xip.io&#34;))
+ *                 .build())
+ *             .roles(&#34;project-member&#34;)
  *             .build());
  * 
  *     }
@@ -87,8 +88,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.rancher2.MultiClusterApp;
  * import com.pulumi.rancher2.MultiClusterAppArgs;
- * import com.pulumi.rancher2.inputs.MultiClusterAppAnswerArgs;
  * import com.pulumi.rancher2.inputs.MultiClusterAppTargetArgs;
+ * import com.pulumi.rancher2.inputs.MultiClusterAppAnswerArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -104,16 +105,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Multi Cluster App overriding answers
  *         var foo = new MultiClusterApp(&#34;foo&#34;, MultiClusterAppArgs.builder()        
- *             .answers(            
- *                 MultiClusterAppAnswerArgs.builder()
- *                     .values(Map.of(&#34;ingressHost&#34;, &#34;test.xip.io&#34;))
- *                     .build(),
- *                 MultiClusterAppAnswerArgs.builder()
- *                     .projectId(&#34;&lt;project_id2&gt;&#34;)
- *                     .values(Map.of(&#34;ingressHost&#34;, &#34;test2.xip.io&#34;))
- *                     .build())
  *             .catalogName(&#34;&lt;catalog_name&gt;&#34;)
- *             .roles(&#34;project-member&#34;)
+ *             .name(&#34;foo&#34;)
  *             .targets(            
  *                 MultiClusterAppTargetArgs.builder()
  *                     .projectId(&#34;&lt;project_id1&gt;&#34;)
@@ -123,6 +116,15 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .templateName(&#34;&lt;template_name&gt;&#34;)
  *             .templateVersion(&#34;&lt;template_version&gt;&#34;)
+ *             .answers(            
+ *                 MultiClusterAppAnswerArgs.builder()
+ *                     .values(Map.of(&#34;ingress_host&#34;, &#34;test.xip.io&#34;))
+ *                     .build(),
+ *                 MultiClusterAppAnswerArgs.builder()
+ *                     .projectId(&#34;&lt;project_id2&gt;&#34;)
+ *                     .values(Map.of(&#34;ingress_host&#34;, &#34;test2.xip.io&#34;))
+ *                     .build())
+ *             .roles(&#34;project-member&#34;)
  *             .build());
  * 
  *     }

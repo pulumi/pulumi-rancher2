@@ -22,17 +22,18 @@ import * as utilities from "./utilities";
  *
  * // Create a new rancher2 Node Template up to Rancher 2.1.x
  * const foo = new rancher2.NodeTemplate("foo", {
+ *     name: "foo",
+ *     description: "foo test",
  *     amazonec2Config: {
  *         accessKey: "AWS_ACCESS_KEY",
+ *         secretKey: "<AWS_SECRET_KEY>",
  *         ami: "<AMI_ID>",
  *         region: "<REGION>",
- *         secretKey: "<AWS_SECRET_KEY>",
  *         securityGroups: ["<AWS_SECURITY_GROUP>"],
  *         subnetId: "<SUBNET_ID>",
  *         vpcId: "<VPC_ID>",
  *         zone: "<ZONE>",
  *     },
- *     description: "foo test",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -43,16 +44,18 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * // Create a new rancher2 Node Template from Rancher 2.2.x
- * const fooCloudCredential = new rancher2.CloudCredential("fooCloudCredential", {
+ * const foo = new rancher2.CloudCredential("foo", {
+ *     name: "foo",
  *     description: "foo test",
  *     amazonec2CredentialConfig: {
  *         accessKey: "<AWS_ACCESS_KEY>",
  *         secretKey: "<AWS_SECRET_KEY>",
  *     },
  * });
- * const fooNodeTemplate = new rancher2.NodeTemplate("fooNodeTemplate", {
+ * const fooNodeTemplate = new rancher2.NodeTemplate("foo", {
+ *     name: "foo",
  *     description: "foo test",
- *     cloudCredentialId: fooCloudCredential.id,
+ *     cloudCredentialId: foo.id,
  *     amazonec2Config: {
  *         ami: "<AMI_ID>",
  *         region: "<REGION>",
@@ -72,17 +75,22 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * const foo-harvesterClusterV2 = rancher2.getClusterV2({
+ * // Get imported harvester cluster info
+ * const foo-harvester = rancher2.getClusterV2({
  *     name: "foo-harvester",
  * });
  * // Create a new Cloud Credential for an imported Harvester cluster
- * const foo_harvesterCloudCredential = new rancher2.CloudCredential("foo-harvesterCloudCredential", {harvesterCredentialConfig: {
- *     clusterId: foo_harvesterClusterV2.then(foo_harvesterClusterV2 => foo_harvesterClusterV2.clusterV1Id),
- *     clusterType: "imported",
- *     kubeconfigContent: foo_harvesterClusterV2.then(foo_harvesterClusterV2 => foo_harvesterClusterV2.kubeConfig),
- * }});
+ * const foo_harvesterCloudCredential = new rancher2.CloudCredential("foo-harvester", {
+ *     name: "foo-harvester",
+ *     harvesterCredentialConfig: {
+ *         clusterId: foo_harvester.then(foo_harvester => foo_harvester.clusterV1Id),
+ *         clusterType: "imported",
+ *         kubeconfigContent: foo_harvester.then(foo_harvester => foo_harvester.kubeConfig),
+ *     },
+ * });
  * // Create a new rancher2 Node Template using harvester node_driver
- * const foo_harvesterNodeTemplate = new rancher2.NodeTemplate("foo-harvesterNodeTemplate", {
+ * const foo_harvesterNodeTemplate = new rancher2.NodeTemplate("foo-harvester", {
+ *     name: "foo-harvester",
  *     cloudCredentialId: foo_harvesterCloudCredential.id,
  *     engineInstallUrl: "https://releases.rancher.com/install-docker/20.10.sh",
  *     harvesterConfig: {
@@ -96,17 +104,15 @@ import * as utilities from "./utilities";
  *             "bootOrder": 1
  *         }]
  *     }
- *     EOF,
- *     networkInfo = <<EOF
- *     {
+ * `,
+ *         networkInfo: `    {
  *         "interfaces": [{
  *             "networkName": "harvester-public/vlan1"
  *         }]
  *     }
- *     EOF,
- *     sshUser = "ubuntu",
- *     userData = <<EOF
- *     package_update: true
+ * `,
+ *         sshUser: "ubuntu",
+ *         userData: `    package_update: true
  *     packages:
  *       - qemu-guest-agent
  *       - iptables
@@ -129,14 +135,16 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * // Create a new rancher2 Node Template using hetzner node_driver
- * const hetznerNodeDriver = new rancher2.NodeDriver("hetznerNodeDriver", {
+ * const hetznerNodeDriver = new rancher2.NodeDriver("hetzner_node_driver", {
  *     active: true,
  *     builtin: false,
+ *     name: "Hetzner",
  *     uiUrl: "https://storage.googleapis.com/hcloud-rancher-v2-ui-driver/component.js",
  *     url: "https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/download/3.6.0/docker-machine-driver-hetzner_3.6.0_linux_amd64.tar.gz",
  *     whitelistDomains: ["storage.googleapis.com"],
  * });
- * const myHetznerNodeTemplate = new rancher2.NodeTemplate("myHetznerNodeTemplate", {
+ * const myHetznerNodeTemplate = new rancher2.NodeTemplate("my_hetzner_node_template", {
+ *     name: "my-hetzner-node-template",
  *     driverId: hetznerNodeDriver.id,
  *     hetznerConfig: {
  *         apiToken: "XXXXXXXXXX",

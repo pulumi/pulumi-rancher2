@@ -26,6 +26,7 @@ namespace Pulumi.Rancher2
     ///     // Create a new rancher2 Global Role Binding using user_id
     ///     var foo = new Rancher2.GlobalRoleBinding("foo", new()
     ///     {
+    ///         Name = "foo",
     ///         GlobalRoleId = "admin",
     ///         UserId = "user-XXXXX",
     ///     });
@@ -33,6 +34,7 @@ namespace Pulumi.Rancher2
     ///     // Create a new rancher2 Global Role Binding using group_principal_id
     ///     var foo2 = new Rancher2.GlobalRoleBinding("foo2", new()
     ///     {
+    ///         Name = "foo2",
     ///         GlobalRoleId = "admin",
     ///         GroupPrincipalId = "local://g-XXXXX",
     ///     });

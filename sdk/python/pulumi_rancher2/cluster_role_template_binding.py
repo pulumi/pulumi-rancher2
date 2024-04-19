@@ -348,6 +348,7 @@ class ClusterRoleTemplateBinding(pulumi.CustomResource):
 
         # Create a new Rancher2 Cluster Role Template Binding
         foo = rancher2.ClusterRoleTemplateBinding("foo",
+            name="foo",
             cluster_id="<cluster_id>",
             role_template_id="<role_template_id>",
             user_id="<user_id>")
@@ -394,6 +395,7 @@ class ClusterRoleTemplateBinding(pulumi.CustomResource):
 
         # Create a new Rancher2 Cluster Role Template Binding
         foo = rancher2.ClusterRoleTemplateBinding("foo",
+            name="foo",
             cluster_id="<cluster_id>",
             role_template_id="<role_template_id>",
             user_id="<user_id>")

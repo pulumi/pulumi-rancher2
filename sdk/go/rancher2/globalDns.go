@@ -30,7 +30,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 Global DNS Provider
-//			fooGlobalDnsProvider, err := rancher2.NewGlobalDnsProvider(ctx, "fooGlobalDnsProvider", &rancher2.GlobalDnsProviderArgs{
+//			foo, err := rancher2.NewGlobalDnsProvider(ctx, "foo", &rancher2.GlobalDnsProviderArgs{
+//				Name:       pulumi.String("foo"),
 //				RootDomain: pulumi.String("example.com"),
 //				Route53Config: &rancher2.GlobalDnsProviderRoute53ConfigArgs{
 //					AccessKey: pulumi.String("YYYYYYYYYYYYYYYYYYYY"),
@@ -43,9 +44,10 @@ import (
 //				return err
 //			}
 //			// Create a new rancher2 Global DNS using project IDs
-//			_, err = rancher2.NewGlobalDns(ctx, "fooGlobalDns", &rancher2.GlobalDnsArgs{
+//			_, err = rancher2.NewGlobalDns(ctx, "foo", &rancher2.GlobalDnsArgs{
+//				Name:       pulumi.String("foo"),
 //				Fqdn:       pulumi.String("foo.example.com"),
-//				ProviderId: fooGlobalDnsProvider.ID(),
+//				ProviderId: foo.ID(),
 //				ProjectIds: pulumi.StringArray{
 //					pulumi.String("project1"),
 //					pulumi.String("project2"),
@@ -75,7 +77,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 Global DNS Provider
-//			fooGlobalDnsProvider, err := rancher2.NewGlobalDnsProvider(ctx, "fooGlobalDnsProvider", &rancher2.GlobalDnsProviderArgs{
+//			foo, err := rancher2.NewGlobalDnsProvider(ctx, "foo", &rancher2.GlobalDnsProviderArgs{
+//				Name:       pulumi.String("foo"),
 //				RootDomain: pulumi.String("example.com"),
 //				Route53Config: &rancher2.GlobalDnsProviderRoute53ConfigArgs{
 //					AccessKey: pulumi.String("YYYYYYYYYYYYYYYYYYYY"),
@@ -88,9 +91,10 @@ import (
 //				return err
 //			}
 //			// Create a new rancher2 Global DNS using MultiClusterApp ID
-//			_, err = rancher2.NewGlobalDns(ctx, "fooGlobalDns", &rancher2.GlobalDnsArgs{
+//			_, err = rancher2.NewGlobalDns(ctx, "foo", &rancher2.GlobalDnsArgs{
+//				Name:              pulumi.String("foo"),
 //				Fqdn:              pulumi.String("foo.example.com"),
-//				ProviderId:        fooGlobalDnsProvider.ID(),
+//				ProviderId:        foo.ID(),
 //				MultiClusterAppId: pulumi.String("<MCA_ID>"),
 //			})
 //			if err != nil {

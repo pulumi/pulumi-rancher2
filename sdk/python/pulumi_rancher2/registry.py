@@ -280,12 +280,13 @@ class Registry(pulumi.CustomResource):
 
         # Create a new rancher2 Project Registry
         foo = rancher2.Registry("foo",
+            name="foo",
             description="Terraform registry foo",
             project_id="<project_id>",
             registries=[rancher2.RegistryRegistryArgs(
                 address="test.io",
-                password="pass",
                 username="user",
+                password="pass",
             )])
         ```
         <!--End PulumiCodeChooser -->
@@ -297,13 +298,14 @@ class Registry(pulumi.CustomResource):
 
         # Create a new rancher2 Namespaced Registry
         foo = rancher2.Registry("foo",
+            name="foo",
             description="Terraform registry foo",
-            namespace_id="<namespace_id>",
             project_id="<project_id>",
+            namespace_id="<namespace_id>",
             registries=[rancher2.RegistryRegistryArgs(
                 address="test.io",
-                password="pass",
                 username="user2",
+                password="pass",
             )])
         ```
         <!--End PulumiCodeChooser -->
@@ -349,12 +351,13 @@ class Registry(pulumi.CustomResource):
 
         # Create a new rancher2 Project Registry
         foo = rancher2.Registry("foo",
+            name="foo",
             description="Terraform registry foo",
             project_id="<project_id>",
             registries=[rancher2.RegistryRegistryArgs(
                 address="test.io",
-                password="pass",
                 username="user",
+                password="pass",
             )])
         ```
         <!--End PulumiCodeChooser -->
@@ -366,13 +369,14 @@ class Registry(pulumi.CustomResource):
 
         # Create a new rancher2 Namespaced Registry
         foo = rancher2.Registry("foo",
+            name="foo",
             description="Terraform registry foo",
-            namespace_id="<namespace_id>",
             project_id="<project_id>",
+            namespace_id="<namespace_id>",
             registries=[rancher2.RegistryRegistryArgs(
                 address="test.io",
-                password="pass",
                 username="user2",
+                password="pass",
             )])
         ```
         <!--End PulumiCodeChooser -->

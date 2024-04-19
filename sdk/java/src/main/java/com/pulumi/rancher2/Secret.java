@@ -24,6 +24,99 @@ import javax.annotation.Nullable;
  * - Project secret: Available to all namespaces in the `project_id`
  * - Namespaced secret: Available to just `namespace_id` in the `project_id`
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.Secret;
+ * import com.pulumi.rancher2.SecretArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Create a new rancher2 Project Secret
+ *         var foo = new Secret(&#34;foo&#34;, SecretArgs.builder()        
+ *             .name(&#34;foo&#34;)
+ *             .description(&#34;Terraform secret foo&#34;)
+ *             .projectId(&#34;&lt;project_id&gt;&#34;)
+ *             .data(Map.ofEntries(
+ *                 Map.entry(&#34;address&#34;, StdFunctions.base64encode(Base64encodeArgs.builder()
+ *                     .input(&#34;test.io&#34;)
+ *                     .build()).result()),
+ *                 Map.entry(&#34;username&#34;, StdFunctions.base64encode(Base64encodeArgs.builder()
+ *                     .input(&#34;user2&#34;)
+ *                     .build()).result()),
+ *                 Map.entry(&#34;password&#34;, StdFunctions.base64encode(Base64encodeArgs.builder()
+ *                     .input(&#34;pass&#34;)
+ *                     .build()).result())
+ *             ))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.Secret;
+ * import com.pulumi.rancher2.SecretArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Create a new rancher2 Namespaced Secret
+ *         var foo = new Secret(&#34;foo&#34;, SecretArgs.builder()        
+ *             .name(&#34;foo&#34;)
+ *             .description(&#34;Terraform secret foo&#34;)
+ *             .projectId(&#34;&lt;project_id&gt;&#34;)
+ *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
+ *             .data(Map.ofEntries(
+ *                 Map.entry(&#34;address&#34;, StdFunctions.base64encode(Base64encodeArgs.builder()
+ *                     .input(&#34;test.io&#34;)
+ *                     .build()).result()),
+ *                 Map.entry(&#34;username&#34;, StdFunctions.base64encode(Base64encodeArgs.builder()
+ *                     .input(&#34;user2&#34;)
+ *                     .build()).result()),
+ *                 Map.entry(&#34;password&#34;, StdFunctions.base64encode(Base64encodeArgs.builder()
+ *                     .input(&#34;pass&#34;)
+ *                     .build()).result())
+ *             ))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Secrets can be imported using the secret ID in the format `&lt;namespace_id&gt;.&lt;project_id&gt;.&lt;secret_id&gt;`

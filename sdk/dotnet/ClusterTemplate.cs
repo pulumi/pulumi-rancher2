@@ -28,7 +28,7 @@ namespace Pulumi.Rancher2
     ///     // Create a new rancher2 Cluster Template
     ///     var foo = new Rancher2.ClusterTemplate("foo", new()
     ///     {
-    ///         Description = "Terraform cluster template foo",
+    ///         Name = "foo",
     ///         Members = new[]
     ///         {
     ///             new Rancher2.Inputs.ClusterTemplateMemberArgs
@@ -41,6 +41,7 @@ namespace Pulumi.Rancher2
     ///         {
     ///             new Rancher2.Inputs.ClusterTemplateTemplateRevisionArgs
     ///             {
+    ///                 Name = "V1",
     ///                 ClusterConfig = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigArgs
     ///                 {
     ///                     RkeConfig = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs
@@ -60,9 +61,9 @@ namespace Pulumi.Rancher2
     ///                     },
     ///                 },
     ///                 Default = true,
-    ///                 Name = "V1",
     ///             },
     ///         },
+    ///         Description = "Terraform cluster template foo",
     ///     });
     /// 
     /// });
@@ -83,7 +84,7 @@ namespace Pulumi.Rancher2
     ///     // Create a new rancher2 Cluster Template
     ///     var foo = new Rancher2.ClusterTemplate("foo", new()
     ///     {
-    ///         Description = "Terraform cluster template foo",
+    ///         Name = "foo",
     ///         Members = new[]
     ///         {
     ///             new Rancher2.Inputs.ClusterTemplateMemberArgs
@@ -96,6 +97,7 @@ namespace Pulumi.Rancher2
     ///         {
     ///             new Rancher2.Inputs.ClusterTemplateTemplateRevisionArgs
     ///             {
+    ///                 Name = "V1",
     ///                 ClusterConfig = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigArgs
     ///                 {
     ///                     RkeConfig = new Rancher2.Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs
@@ -120,9 +122,9 @@ namespace Pulumi.Rancher2
     ///                     },
     ///                 },
     ///                 Default = true,
-    ///                 Name = "V1",
     ///             },
     ///         },
+    ///         Description = "Terraform cluster template foo",
     ///     });
     /// 
     /// });

@@ -31,18 +31,20 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			foo_harvesterClusterV2, err := rancher2.LookupClusterV2(ctx, &rancher2.LookupClusterV2Args{
+//			// Get imported harvester cluster info
+//			foo_harvester, err := rancher2.LookupClusterV2(ctx, &rancher2.LookupClusterV2Args{
 //				Name: "foo-harvester",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			// Create a new Cloud Credential for an imported Harvester cluster
-//			_, err = rancher2.NewCloudCredential(ctx, "foo-harvesterCloudCredential", &rancher2.CloudCredentialArgs{
+//			_, err = rancher2.NewCloudCredential(ctx, "foo-harvester", &rancher2.CloudCredentialArgs{
+//				Name: pulumi.String("foo-harvester"),
 //				HarvesterCredentialConfig: &rancher2.CloudCredentialHarvesterCredentialConfigArgs{
-//					ClusterId:         pulumi.String(foo_harvesterClusterV2.ClusterV1Id),
+//					ClusterId:         pulumi.String(foo_harvester.ClusterV1Id),
 //					ClusterType:       pulumi.String("imported"),
-//					KubeconfigContent: pulumi.String(foo_harvesterClusterV2.KubeConfig),
+//					KubeconfigContent: pulumi.String(foo_harvester.KubeConfig),
 //				},
 //			})
 //			if err != nil {
@@ -62,17 +64,19 @@ import (
 //	            "bootOrder": 1
 //	        }]
 //	    }
-//	    EOF,
-//	    networkInfo = <<EOF
-//	    {
+//
+// `),
+//
+//					NetworkInfo: pulumi.String(`    {
 //	        "interfaces": [{
 //	            "networkName": "harvester-public/vlan1"
 //	        }]
 //	    }
-//	    EOF,
-//	    sshUser = "ubuntu",
-//	    userData = <<EOF
-//	    package_update: true
+//
+// `),
+//
+//					SshUser: pulumi.String("ubuntu"),
+//					UserData: pulumi.String(`    package_update: true
 //	    packages:
 //	      - qemu-guest-agent
 //	      - iptables

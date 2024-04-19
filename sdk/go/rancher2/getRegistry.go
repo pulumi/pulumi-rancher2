@@ -32,6 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Retrieve a rancher2 Project Registry
 //			_, err := rancher2.LookupRegistry(ctx, &rancher2.LookupRegistryArgs{
 //				Name:      "<name>",
 //				ProjectId: "<project_id>",
@@ -59,10 +60,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Retrieve a rancher2 Namespaced Registry
 //			_, err := rancher2.LookupRegistry(ctx, &rancher2.LookupRegistryArgs{
 //				Name:        "<name>",
-//				NamespaceId: pulumi.StringRef("<namespace_id>"),
 //				ProjectId:   "<project_id>",
+//				NamespaceId: pulumi.StringRef("<namespace_id>"),
 //			}, nil)
 //			if err != nil {
 //				return err

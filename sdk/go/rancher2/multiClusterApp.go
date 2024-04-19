@@ -38,17 +38,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 Multi Cluster App
 //			_, err := rancher2.NewMultiClusterApp(ctx, "foo", &rancher2.MultiClusterAppArgs{
-//				Answers: rancher2.MultiClusterAppAnswerArray{
-//					&rancher2.MultiClusterAppAnswerArgs{
-//						Values: pulumi.Map{
-//							"ingressHost": pulumi.Any("test.xip.io"),
-//						},
-//					},
-//				},
 //				CatalogName: pulumi.String("<catalog_name>"),
-//				Roles: pulumi.StringArray{
-//					pulumi.String("project-member"),
-//				},
+//				Name:        pulumi.String("foo"),
 //				Targets: rancher2.MultiClusterAppTargetArray{
 //					&rancher2.MultiClusterAppTargetArgs{
 //						ProjectId: pulumi.String("<project_id>"),
@@ -56,6 +47,16 @@ import (
 //				},
 //				TemplateName:    pulumi.String("<template_name>"),
 //				TemplateVersion: pulumi.String("<template_version>"),
+//				Answers: rancher2.MultiClusterAppAnswerArray{
+//					&rancher2.MultiClusterAppAnswerArgs{
+//						Values: pulumi.Map{
+//							"ingress_host": pulumi.Any("test.xip.io"),
+//						},
+//					},
+//				},
+//				Roles: pulumi.StringArray{
+//					pulumi.String("project-member"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -82,23 +83,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 Multi Cluster App overriding answers
 //			_, err := rancher2.NewMultiClusterApp(ctx, "foo", &rancher2.MultiClusterAppArgs{
-//				Answers: rancher2.MultiClusterAppAnswerArray{
-//					&rancher2.MultiClusterAppAnswerArgs{
-//						Values: pulumi.Map{
-//							"ingressHost": pulumi.Any("test.xip.io"),
-//						},
-//					},
-//					&rancher2.MultiClusterAppAnswerArgs{
-//						ProjectId: pulumi.String("<project_id2>"),
-//						Values: pulumi.Map{
-//							"ingressHost": pulumi.Any("test2.xip.io"),
-//						},
-//					},
-//				},
 //				CatalogName: pulumi.String("<catalog_name>"),
-//				Roles: pulumi.StringArray{
-//					pulumi.String("project-member"),
-//				},
+//				Name:        pulumi.String("foo"),
 //				Targets: rancher2.MultiClusterAppTargetArray{
 //					&rancher2.MultiClusterAppTargetArgs{
 //						ProjectId: pulumi.String("<project_id1>"),
@@ -109,6 +95,22 @@ import (
 //				},
 //				TemplateName:    pulumi.String("<template_name>"),
 //				TemplateVersion: pulumi.String("<template_version>"),
+//				Answers: rancher2.MultiClusterAppAnswerArray{
+//					&rancher2.MultiClusterAppAnswerArgs{
+//						Values: pulumi.Map{
+//							"ingress_host": pulumi.Any("test.xip.io"),
+//						},
+//					},
+//					&rancher2.MultiClusterAppAnswerArgs{
+//						ProjectId: pulumi.String("<project_id2>"),
+//						Values: pulumi.Map{
+//							"ingress_host": pulumi.Any("test2.xip.io"),
+//						},
+//					},
+//				},
+//				Roles: pulumi.StringArray{
+//					pulumi.String("project-member"),
+//				},
 //			})
 //			if err != nil {
 //				return err

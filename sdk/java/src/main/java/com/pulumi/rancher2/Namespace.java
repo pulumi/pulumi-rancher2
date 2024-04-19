@@ -33,9 +33,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.rancher2.Namespace;
  * import com.pulumi.rancher2.NamespaceArgs;
- * import com.pulumi.rancher2.inputs.NamespaceContainerResourceLimitArgs;
  * import com.pulumi.rancher2.inputs.NamespaceResourceQuotaArgs;
  * import com.pulumi.rancher2.inputs.NamespaceResourceQuotaLimitArgs;
+ * import com.pulumi.rancher2.inputs.NamespaceContainerResourceLimitArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -51,20 +51,21 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Namespace
  *         var foo = new Namespace(&#34;foo&#34;, NamespaceArgs.builder()        
- *             .containerResourceLimit(NamespaceContainerResourceLimitArgs.builder()
- *                 .limitsCpu(&#34;20m&#34;)
- *                 .limitsMemory(&#34;20Mi&#34;)
- *                 .requestsCpu(&#34;1m&#34;)
- *                 .requestsMemory(&#34;1Mi&#34;)
- *                 .build())
- *             .description(&#34;foo namespace&#34;)
+ *             .name(&#34;foo&#34;)
  *             .projectId(&#34;&lt;PROJECT_ID&gt;&#34;)
+ *             .description(&#34;foo namespace&#34;)
  *             .resourceQuota(NamespaceResourceQuotaArgs.builder()
  *                 .limit(NamespaceResourceQuotaLimitArgs.builder()
  *                     .limitsCpu(&#34;100m&#34;)
  *                     .limitsMemory(&#34;100Mi&#34;)
  *                     .requestsStorage(&#34;1Gi&#34;)
  *                     .build())
+ *                 .build())
+ *             .containerResourceLimit(NamespaceContainerResourceLimitArgs.builder()
+ *                 .limitsCpu(&#34;20m&#34;)
+ *                 .limitsMemory(&#34;20Mi&#34;)
+ *                 .requestsCpu(&#34;1m&#34;)
+ *                 .requestsMemory(&#34;1Mi&#34;)
  *                 .build())
  *             .build());
  * 
@@ -104,6 +105,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Cluster 
  *         var foo_custom = new Cluster(&#34;foo-custom&#34;, ClusterArgs.builder()        
+ *             .name(&#34;foo-custom&#34;)
  *             .description(&#34;Foo rancher2 custom cluster&#34;)
  *             .rkeConfig(ClusterRkeConfigArgs.builder()
  *                 .network(ClusterRkeConfigNetworkArgs.builder()
@@ -114,6 +116,7 @@ import javax.annotation.Nullable;
  * 
  *         // Create a new rancher2 Namespace assigned to default cluster project
  *         var foo = new Namespace(&#34;foo&#34;, NamespaceArgs.builder()        
+ *             .name(&#34;foo&#34;)
  *             .projectId(foo_custom.defaultProjectId())
  *             .description(&#34;foo namespace&#34;)
  *             .resourceQuota(NamespaceResourceQuotaArgs.builder()

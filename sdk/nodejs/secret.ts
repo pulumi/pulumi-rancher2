@@ -11,6 +11,61 @@ import * as utilities from "./utilities";
  * - Project secret: Available to all namespaces in the `projectId`
  * - Namespaced secret: Available to just `namespaceId` in the `projectId`
  *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ * import * as std from "@pulumi/std";
+ *
+ * // Create a new rancher2 Project Secret
+ * const foo = new rancher2.Secret("foo", {
+ *     name: "foo",
+ *     description: "Terraform secret foo",
+ *     projectId: "<project_id>",
+ *     data: {
+ *         address: std.base64encode({
+ *             input: "test.io",
+ *         }).then(invoke => invoke.result),
+ *         username: std.base64encode({
+ *             input: "user2",
+ *         }).then(invoke => invoke.result),
+ *         password: std.base64encode({
+ *             input: "pass",
+ *         }).then(invoke => invoke.result),
+ *     },
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ * import * as std from "@pulumi/std";
+ *
+ * // Create a new rancher2 Namespaced Secret
+ * const foo = new rancher2.Secret("foo", {
+ *     name: "foo",
+ *     description: "Terraform secret foo",
+ *     projectId: "<project_id>",
+ *     namespaceId: "<namespace_id>",
+ *     data: {
+ *         address: std.base64encode({
+ *             input: "test.io",
+ *         }).then(invoke => invoke.result),
+ *         username: std.base64encode({
+ *             input: "user2",
+ *         }).then(invoke => invoke.result),
+ *         password: std.base64encode({
+ *             input: "pass",
+ *         }).then(invoke => invoke.result),
+ *     },
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * Secrets can be imported using the secret ID in the format `<namespace_id>.<project_id>.<secret_id>`

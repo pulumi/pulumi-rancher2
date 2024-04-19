@@ -12,17 +12,20 @@ import * as utilities from "./utilities";
  * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
  * import * as rancher2 from "@pulumi/rancher2";
+ * import * as std from "@pulumi/std";
  *
  * // Create a new Rancher2 App V2 using
  * const foo = new rancher2.AppV2("foo", {
  *     clusterId: "<CLUSTER_ID>",
+ *     name: "rancher-monitoring",
  *     namespace: "cattle-monitoring-system",
  *     repoName: "rancher-charts",
  *     chartName: "rancher-monitoring",
  *     chartVersion: "9.4.200",
- *     values: fs.readFileSync("values.yaml", "utf8"),
+ *     values: std.file({
+ *         input: "values.yaml",
+ *     }).then(invoke => invoke.result),
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -36,11 +39,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * const cisBenchmark = new rancher2.AppV2("cisBenchmark", {
- *     chartName: "rancher-cis-benchmark",
+ * const cisBenchmark = new rancher2.AppV2("cis_benchmark", {
  *     clusterId: "<CLUSTER_ID>",
+ *     name: "rancher-cis-benchmark",
  *     namespace: "cis-operator-system",
  *     repoName: "rancher-charts",
+ *     chartName: "rancher-cis-benchmark",
  *     systemDefaultRegistry: "<some.dns.here>:<PORT>",
  * });
  * ```

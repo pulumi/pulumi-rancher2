@@ -26,12 +26,13 @@ namespace Pulumi.Rancher2
     ///     // Create a new rancher2 Global DNS Provider - alidns
     ///     var foo = new Rancher2.GlobalDnsProvider("foo", new()
     ///     {
+    ///         Name = "foo",
+    ///         RootDomain = "example.com",
     ///         AlidnsConfig = new Rancher2.Inputs.GlobalDnsProviderAlidnsConfigArgs
     ///         {
     ///             AccessKey = "YYYYYYYYYYYYYYYYYYYY",
     ///             SecretKey = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
     ///         },
-    ///         RootDomain = "example.com",
     ///     });
     /// 
     /// });
@@ -50,13 +51,14 @@ namespace Pulumi.Rancher2
     ///     // Create a new rancher2 Global DNS Provider - cloudflare
     ///     var foo = new Rancher2.GlobalDnsProvider("foo", new()
     ///     {
+    ///         Name = "foo",
+    ///         RootDomain = "example.com",
     ///         CloudflareConfig = new Rancher2.Inputs.GlobalDnsProviderCloudflareConfigArgs
     ///         {
     ///             ApiEmail = "test@test.local",
     ///             ApiKey = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
     ///             ProxySetting = true,
     ///         },
-    ///         RootDomain = "example.com",
     ///     });
     /// 
     /// });
@@ -75,13 +77,14 @@ namespace Pulumi.Rancher2
     ///     // Create a new rancher2 Global DNS Provider - route53
     ///     var foo = new Rancher2.GlobalDnsProvider("foo", new()
     ///     {
+    ///         Name = "foo",
     ///         RootDomain = "example.com",
     ///         Route53Config = new Rancher2.Inputs.GlobalDnsProviderRoute53ConfigArgs
     ///         {
     ///             AccessKey = "YYYYYYYYYYYYYYYYYYYY",
-    ///             Region = "us-east-1",
     ///             SecretKey = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
     ///             ZoneType = "private",
+    ///             Region = "us-east-1",
     ///         },
     ///     });
     /// 

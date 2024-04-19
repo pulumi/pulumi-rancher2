@@ -57,12 +57,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Cluster Template
  *         var foo = new ClusterTemplate(&#34;foo&#34;, ClusterTemplateArgs.builder()        
- *             .description(&#34;Terraform cluster template foo&#34;)
+ *             .name(&#34;foo&#34;)
  *             .members(ClusterTemplateMemberArgs.builder()
  *                 .accessType(&#34;owner&#34;)
  *                 .userPrincipalId(&#34;local://user-XXXXX&#34;)
  *                 .build())
  *             .templateRevisions(ClusterTemplateTemplateRevisionArgs.builder()
+ *                 .name(&#34;V1&#34;)
  *                 .clusterConfig(ClusterTemplateTemplateRevisionClusterConfigArgs.builder()
  *                     .rkeConfig(ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs.builder()
  *                         .network(ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs.builder()
@@ -77,8 +78,8 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .default_(true)
- *                 .name(&#34;V1&#34;)
  *                 .build())
+ *             .description(&#34;Terraform cluster template foo&#34;)
  *             .build());
  * 
  *     }
@@ -120,12 +121,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Cluster Template
  *         var foo = new ClusterTemplate(&#34;foo&#34;, ClusterTemplateArgs.builder()        
- *             .description(&#34;Terraform cluster template foo&#34;)
+ *             .name(&#34;foo&#34;)
  *             .members(ClusterTemplateMemberArgs.builder()
  *                 .accessType(&#34;owner&#34;)
  *                 .userPrincipalId(&#34;local://user-XXXXX&#34;)
  *                 .build())
  *             .templateRevisions(ClusterTemplateTemplateRevisionArgs.builder()
+ *                 .name(&#34;V1&#34;)
  *                 .clusterConfig(ClusterTemplateTemplateRevisionClusterConfigArgs.builder()
  *                     .rkeConfig(ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs.builder()
  *                         .network(ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs.builder()
@@ -144,8 +146,8 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .default_(true)
- *                 .name(&#34;V1&#34;)
  *                 .build())
+ *             .description(&#34;Terraform cluster template foo&#34;)
  *             .build());
  * 
  *     }

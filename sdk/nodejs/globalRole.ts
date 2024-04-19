@@ -18,8 +18,9 @@ import * as utilities from "./utilities";
  *
  * // Create a new rancher2 Global Role
  * const foo = new rancher2.GlobalRole("foo", {
- *     description: "Terraform global role acceptance test",
+ *     name: "foo",
  *     newUserDefault: true,
+ *     description: "Terraform global role acceptance test",
  *     rules: [{
  *         apiGroups: ["*"],
  *         resources: ["secrets"],

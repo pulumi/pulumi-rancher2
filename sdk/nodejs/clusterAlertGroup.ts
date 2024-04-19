@@ -19,6 +19,7 @@ import * as utilities from "./utilities";
  * // Create a new Rancher2 Cluster Alert Group
  * const foo = new rancher2.ClusterAlertGroup("foo", {
  *     clusterId: "<cluster_id>",
+ *     name: "foo",
  *     description: "Terraform cluster alert group",
  *     groupIntervalSeconds: 300,
  *     repeatIntervalSeconds: 3600,

@@ -25,18 +25,19 @@ import * as utilities from "./utilities";
  *
  * // Create a new rancher2 Multi Cluster App
  * const foo = new rancher2.MultiClusterApp("foo", {
- *     answers: [{
- *         values: {
- *             ingressHost: "test.xip.io",
- *         },
- *     }],
  *     catalogName: "<catalog_name>",
- *     roles: ["project-member"],
+ *     name: "foo",
  *     targets: [{
  *         projectId: "<project_id>",
  *     }],
  *     templateName: "<template_name>",
  *     templateVersion: "<template_version>",
+ *     answers: [{
+ *         values: {
+ *             ingress_host: "test.xip.io",
+ *         },
+ *     }],
+ *     roles: ["project-member"],
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -48,21 +49,8 @@ import * as utilities from "./utilities";
  *
  * // Create a new rancher2 Multi Cluster App overriding answers
  * const foo = new rancher2.MultiClusterApp("foo", {
- *     answers: [
- *         {
- *             values: {
- *                 ingressHost: "test.xip.io",
- *             },
- *         },
- *         {
- *             projectId: "<project_id2>",
- *             values: {
- *                 ingressHost: "test2.xip.io",
- *             },
- *         },
- *     ],
  *     catalogName: "<catalog_name>",
- *     roles: ["project-member"],
+ *     name: "foo",
  *     targets: [
  *         {
  *             projectId: "<project_id1>",
@@ -73,6 +61,20 @@ import * as utilities from "./utilities";
  *     ],
  *     templateName: "<template_name>",
  *     templateVersion: "<template_version>",
+ *     answers: [
+ *         {
+ *             values: {
+ *                 ingress_host: "test.xip.io",
+ *             },
+ *         },
+ *         {
+ *             projectId: "<project_id2>",
+ *             values: {
+ *                 ingress_host: "test2.xip.io",
+ *             },
+ *         },
+ *     ],
+ *     roles: ["project-member"],
  * });
  * ```
  * <!--End PulumiCodeChooser -->

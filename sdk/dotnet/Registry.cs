@@ -30,6 +30,7 @@ namespace Pulumi.Rancher2
     ///     // Create a new rancher2 Project Registry
     ///     var foo = new Rancher2.Registry("foo", new()
     ///     {
+    ///         Name = "foo",
     ///         Description = "Terraform registry foo",
     ///         ProjectId = "&lt;project_id&gt;",
     ///         Registries = new[]
@@ -37,8 +38,8 @@ namespace Pulumi.Rancher2
     ///             new Rancher2.Inputs.RegistryRegistryArgs
     ///             {
     ///                 Address = "test.io",
-    ///                 Password = "pass",
     ///                 Username = "user",
+    ///                 Password = "pass",
     ///             },
     ///         },
     ///     });
@@ -59,16 +60,17 @@ namespace Pulumi.Rancher2
     ///     // Create a new rancher2 Namespaced Registry
     ///     var foo = new Rancher2.Registry("foo", new()
     ///     {
+    ///         Name = "foo",
     ///         Description = "Terraform registry foo",
-    ///         NamespaceId = "&lt;namespace_id&gt;",
     ///         ProjectId = "&lt;project_id&gt;",
+    ///         NamespaceId = "&lt;namespace_id&gt;",
     ///         Registries = new[]
     ///         {
     ///             new Rancher2.Inputs.RegistryRegistryArgs
     ///             {
     ///                 Address = "test.io",
-    ///                 Password = "pass",
     ///                 Username = "user2",
+    ///                 Password = "pass",
     ///             },
     ///         },
     ///     });

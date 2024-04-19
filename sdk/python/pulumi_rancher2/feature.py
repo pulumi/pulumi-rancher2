@@ -182,7 +182,9 @@ class Feature(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         # Create a new rancher2 Feature
-        fleet = rancher2.Feature("fleet", value="<VALUE>")
+        fleet = rancher2.Feature("fleet",
+            name="fleet",
+            value="<VALUE>")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -216,7 +218,9 @@ class Feature(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         # Create a new rancher2 Feature
-        fleet = rancher2.Feature("fleet", value="<VALUE>")
+        fleet = rancher2.Feature("fleet",
+            name="fleet",
+            value="<VALUE>")
         ```
         <!--End PulumiCodeChooser -->
 

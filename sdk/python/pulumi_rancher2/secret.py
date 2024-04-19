@@ -269,6 +269,47 @@ class Secret(pulumi.CustomResource):
         - Project secret: Available to all namespaces in the `project_id`
         - Namespaced secret: Available to just `namespace_id` in the `project_id`
 
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+        import pulumi_std as std
+
+        # Create a new rancher2 Project Secret
+        foo = rancher2.Secret("foo",
+            name="foo",
+            description="Terraform secret foo",
+            project_id="<project_id>",
+            data={
+                "address": std.base64encode(input="test.io").result,
+                "username": std.base64encode(input="user2").result,
+                "password": std.base64encode(input="pass").result,
+            })
+        ```
+        <!--End PulumiCodeChooser -->
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+        import pulumi_std as std
+
+        # Create a new rancher2 Namespaced Secret
+        foo = rancher2.Secret("foo",
+            name="foo",
+            description="Terraform secret foo",
+            project_id="<project_id>",
+            namespace_id="<namespace_id>",
+            data={
+                "address": std.base64encode(input="test.io").result,
+                "username": std.base64encode(input="user2").result,
+                "password": std.base64encode(input="pass").result,
+            })
+        ```
+        <!--End PulumiCodeChooser -->
+
         ## Import
 
         Secrets can be imported using the secret ID in the format `<namespace_id>.<project_id>.<secret_id>`
@@ -300,6 +341,47 @@ class Secret(pulumi.CustomResource):
         Depending of the availability, there are 2 types of Rancher v2 secrets:
         - Project secret: Available to all namespaces in the `project_id`
         - Namespaced secret: Available to just `namespace_id` in the `project_id`
+
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+        import pulumi_std as std
+
+        # Create a new rancher2 Project Secret
+        foo = rancher2.Secret("foo",
+            name="foo",
+            description="Terraform secret foo",
+            project_id="<project_id>",
+            data={
+                "address": std.base64encode(input="test.io").result,
+                "username": std.base64encode(input="user2").result,
+                "password": std.base64encode(input="pass").result,
+            })
+        ```
+        <!--End PulumiCodeChooser -->
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+        import pulumi_std as std
+
+        # Create a new rancher2 Namespaced Secret
+        foo = rancher2.Secret("foo",
+            name="foo",
+            description="Terraform secret foo",
+            project_id="<project_id>",
+            namespace_id="<namespace_id>",
+            data={
+                "address": std.base64encode(input="test.io").result,
+                "username": std.base64encode(input="user2").result,
+                "password": std.base64encode(input="pass").result,
+            })
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

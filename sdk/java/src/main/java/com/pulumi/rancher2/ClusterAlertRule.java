@@ -52,8 +52,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new Rancher2 Cluster Alert Group
- *         var fooClusterAlertGroup = new ClusterAlertGroup(&#34;fooClusterAlertGroup&#34;, ClusterAlertGroupArgs.builder()        
+ *         var foo = new ClusterAlertGroup(&#34;foo&#34;, ClusterAlertGroupArgs.builder()        
  *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
+ *             .name(&#34;foo&#34;)
  *             .description(&#34;Terraform cluster alert group&#34;)
  *             .groupIntervalSeconds(300)
  *             .repeatIntervalSeconds(3600)
@@ -61,8 +62,9 @@ import javax.annotation.Nullable;
  * 
  *         // Create a new Rancher2 Cluster Alert Rule
  *         var fooClusterAlertRule = new ClusterAlertRule(&#34;fooClusterAlertRule&#34;, ClusterAlertRuleArgs.builder()        
- *             .clusterId(fooClusterAlertGroup.clusterId())
- *             .groupId(fooClusterAlertGroup.id())
+ *             .clusterId(foo.clusterId())
+ *             .groupId(foo.id())
+ *             .name(&#34;foo&#34;)
  *             .groupIntervalSeconds(600)
  *             .repeatIntervalSeconds(6000)
  *             .build());

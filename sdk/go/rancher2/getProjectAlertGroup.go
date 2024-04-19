@@ -29,8 +29,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := rancher2.LookupProjectAlertGroup(ctx, &rancher2.LookupProjectAlertGroupArgs{
-//				Name:      "<project_alert_group_name>",
 //				ProjectId: "<project_id>",
+//				Name:      "<project_alert_group_name>",
 //			}, nil)
 //			if err != nil {
 //				return err

@@ -17,8 +17,8 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * const foo = rancher2.getProjectAlertRule({
- *     name: "<project_alert_rule_name>",
  *     projectId: "<project_id>",
+ *     name: "<project_alert_rule_name>",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -117,8 +117,8 @@ export interface GetProjectAlertRuleResult {
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * const foo = rancher2.getProjectAlertRule({
- *     name: "<project_alert_rule_name>",
  *     projectId: "<project_id>",
+ *     name: "<project_alert_rule_name>",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

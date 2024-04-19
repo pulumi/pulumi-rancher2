@@ -199,8 +199,8 @@ def get_notifier(cluster_id: Optional[str] = None,
     import pulumi
     import pulumi_rancher2 as rancher2
 
-    foo = rancher2.get_notifier(cluster_id="<cluster_id>",
-        name="foo")
+    foo = rancher2.get_notifier(name="foo",
+        cluster_id="<cluster_id>")
     ```
     <!--End PulumiCodeChooser -->
 
@@ -250,8 +250,8 @@ def get_notifier_output(cluster_id: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_rancher2 as rancher2
 
-    foo = rancher2.get_notifier(cluster_id="<cluster_id>",
-        name="foo")
+    foo = rancher2.get_notifier(name="foo",
+        cluster_id="<cluster_id>")
     ```
     <!--End PulumiCodeChooser -->
 

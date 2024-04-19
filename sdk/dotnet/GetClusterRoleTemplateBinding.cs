@@ -27,8 +27,8 @@ namespace Pulumi.Rancher2
         /// {
         ///     var foo = Rancher2.GetClusterRoleTemplateBinding.Invoke(new()
         ///     {
-        ///         ClusterId = "foo_id",
         ///         Name = "foo",
+        ///         ClusterId = "foo_id",
         ///     });
         /// 
         /// });
@@ -54,8 +54,8 @@ namespace Pulumi.Rancher2
         /// {
         ///     var foo = Rancher2.GetClusterRoleTemplateBinding.Invoke(new()
         ///     {
-        ///         ClusterId = "foo_id",
         ///         Name = "foo",
+        ///         ClusterId = "foo_id",
         ///     });
         /// 
         /// });

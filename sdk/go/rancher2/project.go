@@ -31,24 +31,25 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 Project
 //			_, err := rancher2.NewProject(ctx, "foo", &rancher2.ProjectArgs{
+//				Name:      pulumi.String("foo"),
 //				ClusterId: pulumi.String("<CLUSTER_ID>"),
-//				ContainerResourceLimit: &rancher2.ProjectContainerResourceLimitArgs{
-//					LimitsCpu:      pulumi.String("20m"),
-//					LimitsMemory:   pulumi.String("20Mi"),
-//					RequestsCpu:    pulumi.String("1m"),
-//					RequestsMemory: pulumi.String("1Mi"),
-//				},
 //				ResourceQuota: &rancher2.ProjectResourceQuotaArgs{
-//					NamespaceDefaultLimit: &rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs{
-//						LimitsCpu:       pulumi.String("2000m"),
-//						LimitsMemory:    pulumi.String("500Mi"),
-//						RequestsStorage: pulumi.String("1Gi"),
-//					},
 //					ProjectLimit: &rancher2.ProjectResourceQuotaProjectLimitArgs{
 //						LimitsCpu:       pulumi.String("2000m"),
 //						LimitsMemory:    pulumi.String("2000Mi"),
 //						RequestsStorage: pulumi.String("2Gi"),
 //					},
+//					NamespaceDefaultLimit: &rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs{
+//						LimitsCpu:       pulumi.String("2000m"),
+//						LimitsMemory:    pulumi.String("500Mi"),
+//						RequestsStorage: pulumi.String("1Gi"),
+//					},
+//				},
+//				ContainerResourceLimit: &rancher2.ProjectContainerResourceLimitArgs{
+//					LimitsCpu:      pulumi.String("20m"),
+//					LimitsMemory:   pulumi.String("20Mi"),
+//					RequestsCpu:    pulumi.String("1m"),
+//					RequestsMemory: pulumi.String("1Mi"),
 //				},
 //			})
 //			if err != nil {
@@ -76,7 +77,20 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 Project enabling and customizing monitoring
 //			_, err := rancher2.NewProject(ctx, "foo", &rancher2.ProjectArgs{
+//				Name:      pulumi.String("foo"),
 //				ClusterId: pulumi.String("<CLUSTER_ID>"),
+//				ResourceQuota: &rancher2.ProjectResourceQuotaArgs{
+//					ProjectLimit: &rancher2.ProjectResourceQuotaProjectLimitArgs{
+//						LimitsCpu:       pulumi.String("2000m"),
+//						LimitsMemory:    pulumi.String("2000Mi"),
+//						RequestsStorage: pulumi.String("2Gi"),
+//					},
+//					NamespaceDefaultLimit: &rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs{
+//						LimitsCpu:       pulumi.String("2000m"),
+//						LimitsMemory:    pulumi.String("500Mi"),
+//						RequestsStorage: pulumi.String("1Gi"),
+//					},
+//				},
 //				ContainerResourceLimit: &rancher2.ProjectContainerResourceLimitArgs{
 //					LimitsCpu:      pulumi.String("20m"),
 //					LimitsMemory:   pulumi.String("20Mi"),
@@ -104,18 +118,6 @@ import (
 //						"prometheus.resources.core.requests.cpu":    pulumi.Any("750m"),
 //						"prometheus.resources.core.requests.memory": pulumi.Any("750Mi"),
 //						"prometheus.retention":                      pulumi.Any("12h"),
-//					},
-//				},
-//				ResourceQuota: &rancher2.ProjectResourceQuotaArgs{
-//					NamespaceDefaultLimit: &rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs{
-//						LimitsCpu:       pulumi.String("2000m"),
-//						LimitsMemory:    pulumi.String("500Mi"),
-//						RequestsStorage: pulumi.String("1Gi"),
-//					},
-//					ProjectLimit: &rancher2.ProjectResourceQuotaProjectLimitArgs{
-//						LimitsCpu:       pulumi.String("2000m"),
-//						LimitsMemory:    pulumi.String("2000Mi"),
-//						RequestsStorage: pulumi.String("2Gi"),
 //					},
 //				},
 //			})

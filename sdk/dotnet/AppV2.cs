@@ -17,10 +17,10 @@ namespace Pulumi.Rancher2
     /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.IO;
     /// using System.Linq;
     /// using Pulumi;
     /// using Rancher2 = Pulumi.Rancher2;
+    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -28,11 +28,15 @@ namespace Pulumi.Rancher2
     ///     var foo = new Rancher2.AppV2("foo", new()
     ///     {
     ///         ClusterId = "&lt;CLUSTER_ID&gt;",
+    ///         Name = "rancher-monitoring",
     ///         Namespace = "cattle-monitoring-system",
     ///         RepoName = "rancher-charts",
     ///         ChartName = "rancher-monitoring",
     ///         ChartVersion = "9.4.200",
-    ///         Values = File.ReadAllText("values.yaml"),
+    ///         Values = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "values.yaml",
+    ///         }).Apply(invoke =&gt; invoke.Result),
     ///     });
     /// 
     /// });
@@ -52,12 +56,13 @@ namespace Pulumi.Rancher2
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var cisBenchmark = new Rancher2.AppV2("cisBenchmark", new()
+    ///     var cisBenchmark = new Rancher2.AppV2("cis_benchmark", new()
     ///     {
-    ///         ChartName = "rancher-cis-benchmark",
     ///         ClusterId = "&lt;CLUSTER_ID&gt;",
+    ///         Name = "rancher-cis-benchmark",
     ///         Namespace = "cis-operator-system",
     ///         RepoName = "rancher-charts",
+    ///         ChartName = "rancher-cis-benchmark",
     ///         SystemDefaultRegistry = "&lt;some.dns.here&gt;:&lt;PORT&gt;",
     ///     });
     /// 

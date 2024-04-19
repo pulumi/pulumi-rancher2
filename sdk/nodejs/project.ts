@@ -18,24 +18,25 @@ import * as utilities from "./utilities";
  *
  * // Create a new rancher2 Project
  * const foo = new rancher2.Project("foo", {
+ *     name: "foo",
  *     clusterId: "<CLUSTER_ID>",
- *     containerResourceLimit: {
- *         limitsCpu: "20m",
- *         limitsMemory: "20Mi",
- *         requestsCpu: "1m",
- *         requestsMemory: "1Mi",
- *     },
  *     resourceQuota: {
- *         namespaceDefaultLimit: {
- *             limitsCpu: "2000m",
- *             limitsMemory: "500Mi",
- *             requestsStorage: "1Gi",
- *         },
  *         projectLimit: {
  *             limitsCpu: "2000m",
  *             limitsMemory: "2000Mi",
  *             requestsStorage: "2Gi",
  *         },
+ *         namespaceDefaultLimit: {
+ *             limitsCpu: "2000m",
+ *             limitsMemory: "500Mi",
+ *             requestsStorage: "1Gi",
+ *         },
+ *     },
+ *     containerResourceLimit: {
+ *         limitsCpu: "20m",
+ *         limitsMemory: "20Mi",
+ *         requestsCpu: "1m",
+ *         requestsMemory: "1Mi",
  *     },
  * });
  * ```
@@ -48,7 +49,20 @@ import * as utilities from "./utilities";
  *
  * // Create a new rancher2 Project enabling and customizing monitoring
  * const foo = new rancher2.Project("foo", {
+ *     name: "foo",
  *     clusterId: "<CLUSTER_ID>",
+ *     resourceQuota: {
+ *         projectLimit: {
+ *             limitsCpu: "2000m",
+ *             limitsMemory: "2000Mi",
+ *             requestsStorage: "2Gi",
+ *         },
+ *         namespaceDefaultLimit: {
+ *             limitsCpu: "2000m",
+ *             limitsMemory: "500Mi",
+ *             requestsStorage: "1Gi",
+ *         },
+ *     },
  *     containerResourceLimit: {
  *         limitsCpu: "20m",
  *         limitsMemory: "20Mi",
@@ -76,18 +90,6 @@ import * as utilities from "./utilities";
  *             "prometheus.resources.core.requests.cpu": "750m",
  *             "prometheus.resources.core.requests.memory": "750Mi",
  *             "prometheus.retention": "12h",
- *         },
- *     },
- *     resourceQuota: {
- *         namespaceDefaultLimit: {
- *             limitsCpu: "2000m",
- *             limitsMemory: "500Mi",
- *             requestsStorage: "1Gi",
- *         },
- *         projectLimit: {
- *             limitsCpu: "2000m",
- *             limitsMemory: "2000Mi",
- *             requestsStorage: "2Gi",
  *         },
  *     },
  * });

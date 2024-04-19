@@ -17,8 +17,8 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * const foo = rancher2.getClusterV2({
- *     fleetNamespace: "fleet-ns",
  *     name: "foo",
+ *     fleetNamespace: "fleet-ns",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -118,8 +118,8 @@ export interface GetClusterV2Result {
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * const foo = rancher2.getClusterV2({
- *     fleetNamespace: "fleet-ns",
  *     name: "foo",
+ *     fleetNamespace: "fleet-ns",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

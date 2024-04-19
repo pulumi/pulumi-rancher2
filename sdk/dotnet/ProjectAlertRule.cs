@@ -24,8 +24,9 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new Rancher2 Project
-    ///     var fooProject = new Rancher2.Project("fooProject", new()
+    ///     var foo = new Rancher2.Project("foo", new()
     ///     {
+    ///         Name = "foo",
     ///         ClusterId = "&lt;cluster_id&gt;",
     ///         Description = "Terraform project ",
     ///         ResourceQuota = new Rancher2.Inputs.ProjectResourceQuotaArgs
@@ -53,19 +54,21 @@ namespace Pulumi.Rancher2
     ///     });
     /// 
     ///     // Create a new Rancher2 Project Alert Group
-    ///     var fooProjectAlertGroup = new Rancher2.ProjectAlertGroup("fooProjectAlertGroup", new()
+    ///     var fooProjectAlertGroup = new Rancher2.ProjectAlertGroup("foo", new()
     ///     {
+    ///         Name = "foo",
     ///         Description = "Terraform project alert group",
-    ///         ProjectId = fooProject.Id,
+    ///         ProjectId = foo.Id,
     ///         GroupIntervalSeconds = 300,
     ///         RepeatIntervalSeconds = 3600,
     ///     });
     /// 
     ///     // Create a new Rancher2 Project Alert Rule
-    ///     var fooProjectAlertRule = new Rancher2.ProjectAlertRule("fooProjectAlertRule", new()
+    ///     var fooProjectAlertRule = new Rancher2.ProjectAlertRule("foo", new()
     ///     {
     ///         ProjectId = fooProjectAlertGroup.ProjectId,
     ///         GroupId = fooProjectAlertGroup.Id,
+    ///         Name = "foo",
     ///         GroupIntervalSeconds = 600,
     ///         RepeatIntervalSeconds = 6000,
     ///     });

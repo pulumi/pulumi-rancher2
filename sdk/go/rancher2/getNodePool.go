@@ -29,7 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := rancher2.LookupNodePool(ctx, &rancher2.LookupNodePoolArgs{
-//				ClusterId: rancher2_cluster.FooCustom.Id,
+//				ClusterId: foo_custom.Id,
 //				Name:      "foo",
 //			}, nil)
 //			if err != nil {
