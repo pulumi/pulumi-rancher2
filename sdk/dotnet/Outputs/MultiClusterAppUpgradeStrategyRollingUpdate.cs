@@ -14,11 +14,11 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class MultiClusterAppUpgradeStrategyRollingUpdate
     {
         /// <summary>
-        /// Rolling update batch size. Default `1` (int)
+        /// Rolling update batch size
         /// </summary>
         public readonly int? BatchSize;
         /// <summary>
-        /// Rolling update interval. Default `1` (int)
+        /// Rolling update interval
         /// </summary>
         public readonly int? Interval;
 

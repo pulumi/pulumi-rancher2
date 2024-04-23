@@ -13,13 +13,13 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterGkeConfigV2Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The GKE cluster addons (List maxitems:1)
+        /// The GKE cluster addons
         /// </summary>
         [Input("clusterAddons")]
         public Input<Inputs.ClusterGkeConfigV2ClusterAddonsArgs>? ClusterAddons { get; set; }
 
         /// <summary>
-        /// The GKE cluster ip v4 allocation cidr block (string)
+        /// The GKE ip v4 cidr block
         /// </summary>
         [Input("clusterIpv4CidrBlock")]
         public Input<string>? ClusterIpv4CidrBlock { get; set; }
@@ -31,7 +31,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Enable Kubernetes alpha. Default: `false` (bool)
+        /// Enable Kubernetes alpha
         /// </summary>
         [Input("enableKubernetesAlpha")]
         public Input<bool>? EnableKubernetesAlpha { get; set; }
@@ -40,7 +40,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _googleCredentialSecret;
 
         /// <summary>
-        /// Google credential secret (string)
+        /// Google credential secret
         /// </summary>
         public Input<string>? GoogleCredentialSecret
         {
@@ -53,19 +53,19 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Is GKE cluster imported? Default: `false` (bool)
+        /// Is GKE cluster imported?
         /// </summary>
         [Input("imported")]
         public Input<bool>? Imported { get; set; }
 
         /// <summary>
-        /// The GKE ip allocation policy (List maxitems:1)
+        /// The GKE ip allocation policy
         /// </summary>
         [Input("ipAllocationPolicy")]
         public Input<Inputs.ClusterGkeConfigV2IpAllocationPolicyArgs>? IpAllocationPolicy { get; set; }
 
         /// <summary>
-        /// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        /// The kubernetes master version
         /// </summary>
         [Input("kubernetesVersion")]
         public Input<string>? KubernetesVersion { get; set; }
@@ -86,7 +86,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _locations;
 
         /// <summary>
-        /// The GKE cluster locations (List)
+        /// The GKE cluster locations
         /// </summary>
         public InputList<string> Locations
         {
@@ -95,25 +95,25 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// The GKE cluster logging service (string)
+        /// The GKE cluster logging service
         /// </summary>
         [Input("loggingService")]
         public Input<string>? LoggingService { get; set; }
 
         /// <summary>
-        /// The GKE cluster maintenance window (string)
+        /// The GKE cluster maintenance window
         /// </summary>
         [Input("maintenanceWindow")]
         public Input<string>? MaintenanceWindow { get; set; }
 
         /// <summary>
-        /// The GKE cluster master authorized networks config (List maxitems:1)
+        /// The GKE cluster master authorized networks config
         /// </summary>
         [Input("masterAuthorizedNetworksConfig")]
         public Input<Inputs.ClusterGkeConfigV2MasterAuthorizedNetworksConfigArgs>? MasterAuthorizedNetworksConfig { get; set; }
 
         /// <summary>
-        /// The GKE cluster monitoring service (string)
+        /// The GKE cluster monitoring service
         /// </summary>
         [Input("monitoringService")]
         public Input<string>? MonitoringService { get; set; }
@@ -125,13 +125,13 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The GKE cluster network. Required for create new cluster (string)
+        /// The GKE cluster network
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// Is GKE cluster network policy enabled? Default: `false` (bool)
+        /// Is GKE cluster network policy enabled?
         /// </summary>
         [Input("networkPolicyEnabled")]
         public Input<bool>? NetworkPolicyEnabled { get; set; }
@@ -140,7 +140,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<Inputs.ClusterGkeConfigV2NodePoolArgs>? _nodePools;
 
         /// <summary>
-        /// The GKE cluster node pools. Required for create new cluster (List)
+        /// The GKE cluster node pools
         /// </summary>
         public InputList<Inputs.ClusterGkeConfigV2NodePoolArgs> NodePools
         {
@@ -149,31 +149,31 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// The GKE private cluster config (List maxitems:1)
+        /// The GKE private cluster config
         /// </summary>
         [Input("privateClusterConfig")]
         public Input<Inputs.ClusterGkeConfigV2PrivateClusterConfigArgs>? PrivateClusterConfig { get; set; }
 
         /// <summary>
-        /// Project ID to apply answer (string)
+        /// The GKE project id
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
         /// <summary>
-        /// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+        /// The GKE cluster region. Required if `zone` is empty
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The GKE cluster subnetwork. Required for create new cluster (string)
+        /// The GKE cluster subnetwork
         /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }
 
         /// <summary>
-        /// The GKE cluster zone. Required if `region` not set (string)
+        /// The GKE cluster zone. Required if `region` is empty
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

@@ -22,14 +22,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     public static final ClusterAksConfigArgs Empty = new ClusterAksConfigArgs();
 
     /**
-     * The secret of an Azure Active Directory server application (string)
+     * The secret of an Azure Active Directory server application
      * 
      */
     @Import(name="aadServerAppSecret")
     private @Nullable Output<String> aadServerAppSecret;
 
     /**
-     * @return The secret of an Azure Active Directory server application (string)
+     * @return The secret of an Azure Active Directory server application
      * 
      */
     public Optional<Output<String>> aadServerAppSecret() {
@@ -37,14 +37,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The ID of an Azure Active Directory tenant (string)
+     * The ID of an Azure Active Directory tenant
      * 
      */
     @Import(name="aadTenantId")
     private @Nullable Output<String> aadTenantId;
 
     /**
-     * @return The ID of an Azure Active Directory tenant (string)
+     * @return The ID of an Azure Active Directory tenant
      * 
      */
     public Optional<Output<String>> aadTenantId() {
@@ -52,14 +52,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The ID of an Azure Active Directory client application of type \&#34;Native\&#34;. This application is for user login via kubectl (string)
+     * The ID of an Azure Active Directory client application of type &#34;Native&#34;. This application is for user login via kubectl
      * 
      */
     @Import(name="addClientAppId")
     private @Nullable Output<String> addClientAppId;
 
     /**
-     * @return The ID of an Azure Active Directory client application of type \&#34;Native\&#34;. This application is for user login via kubectl (string)
+     * @return The ID of an Azure Active Directory client application of type &#34;Native&#34;. This application is for user login via kubectl
      * 
      */
     public Optional<Output<String>> addClientAppId() {
@@ -67,14 +67,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The ID of an Azure Active Directory server application of type \&#34;Web app/API\&#34;. This application represents the managed cluster&#39;s apiserver (Server application) (string)
+     * The ID of an Azure Active Directory server application of type &#34;Web app/API&#34;. This application represents the managed cluster&#39;s apiserver (Server application)
      * 
      */
     @Import(name="addServerAppId")
     private @Nullable Output<String> addServerAppId;
 
     /**
-     * @return The ID of an Azure Active Directory server application of type \&#34;Web app/API\&#34;. This application represents the managed cluster&#39;s apiserver (Server application) (string)
+     * @return The ID of an Azure Active Directory server application of type &#34;Web app/API&#34;. This application represents the managed cluster&#39;s apiserver (Server application)
      * 
      */
     public Optional<Output<String>> addServerAppId() {
@@ -82,14 +82,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The administrator username to use for Linux hosts. Default `azureuser` (string)
+     * The administrator username to use for Linux hosts
      * 
      */
     @Import(name="adminUsername")
     private @Nullable Output<String> adminUsername;
 
     /**
-     * @return The administrator username to use for Linux hosts. Default `azureuser` (string)
+     * @return The administrator username to use for Linux hosts
      * 
      */
     public Optional<Output<String>> adminUsername() {
@@ -97,14 +97,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * DNS prefix to be used to create the FQDN for the agent pool (string)
+     * DNS prefix to be used to create the FQDN for the agent pool
      * 
      */
     @Import(name="agentDnsPrefix", required=true)
     private Output<String> agentDnsPrefix;
 
     /**
-     * @return DNS prefix to be used to create the FQDN for the agent pool (string)
+     * @return DNS prefix to be used to create the FQDN for the agent pool
      * 
      */
     public Output<String> agentDnsPrefix() {
@@ -112,14 +112,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * GB size to be used to specify the disk for every machine in the agent pool. If you specify 0, it will apply the default according to the \&#34;agent vm size\&#34; specified. Default `0` (int)
+     * GB size to be used to specify the disk for every machine in the agent pool. If you specify 0, it will apply the default according to the &#34;agent vm size&#34; specified
      * 
      */
     @Import(name="agentOsDiskSize")
     private @Nullable Output<Integer> agentOsDiskSize;
 
     /**
-     * @return GB size to be used to specify the disk for every machine in the agent pool. If you specify 0, it will apply the default according to the \&#34;agent vm size\&#34; specified. Default `0` (int)
+     * @return GB size to be used to specify the disk for every machine in the agent pool. If you specify 0, it will apply the default according to the &#34;agent vm size&#34; specified
      * 
      */
     public Optional<Output<Integer>> agentOsDiskSize() {
@@ -127,14 +127,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Name for the agent pool, upto 12 alphanumeric characters. Default `agentpool0` (string)
+     * Name for the agent pool, upto 12 alphanumeric characters
      * 
      */
     @Import(name="agentPoolName")
     private @Nullable Output<String> agentPoolName;
 
     /**
-     * @return Name for the agent pool, upto 12 alphanumeric characters. Default `agentpool0` (string)
+     * @return Name for the agent pool, upto 12 alphanumeric characters
      * 
      */
     public Optional<Output<String>> agentPoolName() {
@@ -142,14 +142,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Storage profile specifies what kind of storage used on machine in the agent pool. Chooses from [ManagedDisks StorageAccount]. Default `ManagedDisks` (string)
+     * Storage profile specifies what kind of storage used on machine in the agent pool. Chooses from [ManagedDisks StorageAccount]
      * 
      */
     @Import(name="agentStorageProfile")
     private @Nullable Output<String> agentStorageProfile;
 
     /**
-     * @return Storage profile specifies what kind of storage used on machine in the agent pool. Chooses from [ManagedDisks StorageAccount]. Default `ManagedDisks` (string)
+     * @return Storage profile specifies what kind of storage used on machine in the agent pool. Chooses from [ManagedDisks StorageAccount]
      * 
      */
     public Optional<Output<String>> agentStorageProfile() {
@@ -157,14 +157,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Size of machine in the agent pool. Default `Standard_D1_v2` (string)
+     * Size of machine in the agent pool
      * 
      */
     @Import(name="agentVmSize")
     private @Nullable Output<String> agentVmSize;
 
     /**
-     * @return Size of machine in the agent pool. Default `Standard_D1_v2` (string)
+     * @return Size of machine in the agent pool
      * 
      */
     public Optional<Output<String>> agentVmSize() {
@@ -172,14 +172,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The AKS auth base url (string)
+     * Different authentication API url to use
      * 
      */
     @Import(name="authBaseUrl")
     private @Nullable Output<String> authBaseUrl;
 
     /**
-     * @return The AKS auth base url (string)
+     * @return Different authentication API url to use
      * 
      */
     public Optional<Output<String>> authBaseUrl() {
@@ -187,14 +187,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The AKS base url (string)
+     * Different resource management API url to use
      * 
      */
     @Import(name="baseUrl")
     private @Nullable Output<String> baseUrl;
 
     /**
-     * @return The AKS base url (string)
+     * @return Different resource management API url to use
      * 
      */
     public Optional<Output<String>> baseUrl() {
@@ -202,14 +202,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Azure client ID to use (string)
+     * Azure client ID to use
      * 
      */
     @Import(name="clientId", required=true)
     private Output<String> clientId;
 
     /**
-     * @return Azure client ID to use (string)
+     * @return Azure client ID to use
      * 
      */
     public Output<String> clientId() {
@@ -217,14 +217,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Azure client secret associated with the \&#34;client id\&#34; (string)
+     * Azure client secret associated with the &#34;client id&#34;
      * 
      */
     @Import(name="clientSecret", required=true)
     private Output<String> clientSecret;
 
     /**
-     * @return Azure client secret associated with the \&#34;client id\&#34; (string)
+     * @return Azure client secret associated with the &#34;client id&#34;
      * 
      */
     public Output<String> clientSecret() {
@@ -232,14 +232,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The AKS node pool count. Default: `1` (int)
+     * Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive)
      * 
      */
     @Import(name="count")
     private @Nullable Output<Integer> count;
 
     /**
-     * @return The AKS node pool count. Default: `1` (int)
+     * @return Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive)
      * 
      */
     public Optional<Output<Integer>> count() {
@@ -247,14 +247,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes Service address range specified in \&#34;service cidr\&#34;. Default `10.0.0.10` (string)
+     * An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes Service address range specified in &#34;service cidr&#34;
      * 
      */
     @Import(name="dnsServiceIp")
     private @Nullable Output<String> dnsServiceIp;
 
     /**
-     * @return An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes Service address range specified in \&#34;service cidr\&#34;. Default `10.0.0.10` (string)
+     * @return An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes Service address range specified in &#34;service cidr&#34;
      * 
      */
     public Optional<Output<String>> dnsServiceIp() {
@@ -262,14 +262,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes Service address range specified in \&#34;service cidr\&#34;. Default `172.17.0.1/16` (string)
+     * A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes Service address range specified in &#34;service cidr&#34;
      * 
      */
     @Import(name="dockerBridgeCidr")
     private @Nullable Output<String> dockerBridgeCidr;
 
     /**
-     * @return A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes Service address range specified in \&#34;service cidr\&#34;. Default `172.17.0.1/16` (string)
+     * @return A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes Service address range specified in &#34;service cidr&#34;
      * 
      */
     public Optional<Output<String>> dockerBridgeCidr() {
@@ -277,14 +277,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Enable the Kubernetes ingress with automatic public DNS name creation. Default `false` (bool)
+     * Enable the Kubernetes ingress with automatic public DNS name creation
      * 
      */
     @Import(name="enableHttpApplicationRouting")
     private @Nullable Output<Boolean> enableHttpApplicationRouting;
 
     /**
-     * @return Enable the Kubernetes ingress with automatic public DNS name creation. Default `false` (bool)
+     * @return Enable the Kubernetes ingress with automatic public DNS name creation
      * 
      */
     public Optional<Output<Boolean>> enableHttpApplicationRouting() {
@@ -292,14 +292,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Turn on Azure Log Analytics monitoring. Uses the Log Analytics \&#34;Default\&#34; workspace if it exists, else creates one. if using an existing workspace, specifies \&#34;log analytics workspace resource id\&#34;. Default `true` (bool)
+     * Turn on Azure Log Analytics monitoring. Uses the Log Analytics &#34;Default&#34; workspace if it exists, else creates one. if using an existing workspace, specifies &#34;log analytics workspace resource id&#34;
      * 
      */
     @Import(name="enableMonitoring")
     private @Nullable Output<Boolean> enableMonitoring;
 
     /**
-     * @return Turn on Azure Log Analytics monitoring. Uses the Log Analytics \&#34;Default\&#34; workspace if it exists, else creates one. if using an existing workspace, specifies \&#34;log analytics workspace resource id\&#34;. Default `true` (bool)
+     * @return Turn on Azure Log Analytics monitoring. Uses the Log Analytics &#34;Default&#34; workspace if it exists, else creates one. if using an existing workspace, specifies &#34;log analytics workspace resource id&#34;
      * 
      */
     public Optional<Output<Boolean>> enableMonitoring() {
@@ -307,14 +307,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * Specify the version of Kubernetes
      * 
      */
     @Import(name="kubernetesVersion", required=true)
     private Output<String> kubernetesVersion;
 
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return Specify the version of Kubernetes
      * 
      */
     public Output<String> kubernetesVersion() {
@@ -322,14 +322,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The AKS load balancer sku (string)
+     * Load balancer type (basic | standard). Must be standard for auto-scaling
      * 
      */
     @Import(name="loadBalancerSku")
     private @Nullable Output<String> loadBalancerSku;
 
     /**
-     * @return The AKS load balancer sku (string)
+     * @return Load balancer type (basic | standard). Must be standard for auto-scaling
      * 
      */
     public Optional<Output<String>> loadBalancerSku() {
@@ -337,14 +337,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Azure Kubernetes cluster location. Default `eastus` (string)
+     * Azure Kubernetes cluster location
      * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
-     * @return Azure Kubernetes cluster location. Default `eastus` (string)
+     * @return Azure Kubernetes cluster location
      * 
      */
     public Optional<Output<String>> location() {
@@ -352,14 +352,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The name of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses &#39;{resource group}-{subscription id}-{location code}&#39; (string)
+     * The name of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses &#39;{resource group}-{subscription id}-{location code}&#39;
      * 
      */
     @Import(name="logAnalyticsWorkspace")
     private @Nullable Output<String> logAnalyticsWorkspace;
 
     /**
-     * @return The name of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses &#39;{resource group}-{subscription id}-{location code}&#39; (string)
+     * @return The name of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses &#39;{resource group}-{subscription id}-{location code}&#39;
      * 
      */
     public Optional<Output<String>> logAnalyticsWorkspace() {
@@ -367,14 +367,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The resource group of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses the &#39;Cluster&#39; resource group (string)
+     * The resource group of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses the &#39;Cluster&#39; resource group
      * 
      */
     @Import(name="logAnalyticsWorkspaceResourceGroup")
     private @Nullable Output<String> logAnalyticsWorkspaceResourceGroup;
 
     /**
-     * @return The resource group of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses the &#39;Cluster&#39; resource group (string)
+     * @return The resource group of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses the &#39;Cluster&#39; resource group
      * 
      */
     public Optional<Output<String>> logAnalyticsWorkspaceResourceGroup() {
@@ -382,14 +382,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * DNS prefix to use the Kubernetes cluster control pane (string)
+     * DNS prefix to use the Kubernetes cluster control pane
      * 
      */
     @Import(name="masterDnsPrefix", required=true)
     private Output<String> masterDnsPrefix;
 
     /**
-     * @return DNS prefix to use the Kubernetes cluster control pane (string)
+     * @return DNS prefix to use the Kubernetes cluster control pane
      * 
      */
     public Output<String> masterDnsPrefix() {
@@ -397,14 +397,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The AKS node pool max pods. Default: `110` (int)
+     * Maximum number of pods that can run on a node
      * 
      */
     @Import(name="maxPods")
     private @Nullable Output<Integer> maxPods;
 
     /**
-     * @return The AKS node pool max pods. Default: `110` (int)
+     * @return Maximum number of pods that can run on a node
      * 
      */
     public Optional<Output<Integer>> maxPods() {
@@ -412,14 +412,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The AKS network plugin. Required if `imported=false` (string)
+     * Network plugin used for building Kubernetes network. Chooses from [azure kubenet]
      * 
      */
     @Import(name="networkPlugin")
     private @Nullable Output<String> networkPlugin;
 
     /**
-     * @return The AKS network plugin. Required if `imported=false` (string)
+     * @return Network plugin used for building Kubernetes network. Chooses from [azure kubenet]
      * 
      */
     public Optional<Output<String>> networkPlugin() {
@@ -427,14 +427,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The AKS network policy (string)
+     * Network policy used for building Kubernetes network. Chooses from [calico]
      * 
      */
     @Import(name="networkPolicy")
     private @Nullable Output<String> networkPolicy;
 
     /**
-     * @return The AKS network policy (string)
+     * @return Network policy used for building Kubernetes network. Chooses from [calico]
      * 
      */
     public Optional<Output<String>> networkPolicy() {
@@ -442,14 +442,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * A CIDR IP range from which to assign Kubernetes Pod IPs (string)
+     * A CIDR notation IP range from which to assign Kubernetes Pod IPs when &#34;network plugin&#34; is specified in &#34;kubenet&#34;.
      * 
      */
     @Import(name="podCidr")
     private @Nullable Output<String> podCidr;
 
     /**
-     * @return A CIDR IP range from which to assign Kubernetes Pod IPs (string)
+     * @return A CIDR notation IP range from which to assign Kubernetes Pod IPs when &#34;network plugin&#34; is specified in &#34;kubenet&#34;.
      * 
      */
     public Optional<Output<String>> podCidr() {
@@ -457,14 +457,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The AKS resource group (string)
+     * The name of the Cluster resource group
      * 
      */
     @Import(name="resourceGroup", required=true)
     private Output<String> resourceGroup;
 
     /**
-     * @return The AKS resource group (string)
+     * @return The name of the Cluster resource group
      * 
      */
     public Output<String> resourceGroup() {
@@ -472,14 +472,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * A CIDR IP range from which to assign Kubernetes Service IPs (string)
+     * A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges
      * 
      */
     @Import(name="serviceCidr")
     private @Nullable Output<String> serviceCidr;
 
     /**
-     * @return A CIDR IP range from which to assign Kubernetes Service IPs (string)
+     * @return A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges
      * 
      */
     public Optional<Output<String>> serviceCidr() {
@@ -487,14 +487,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Contents of the SSH public key used to authenticate with Linux hosts (string)
+     * Contents of the SSH public key used to authenticate with Linux hosts
      * 
      */
     @Import(name="sshPublicKeyContents", required=true)
     private Output<String> sshPublicKeyContents;
 
     /**
-     * @return Contents of the SSH public key used to authenticate with Linux hosts (string)
+     * @return Contents of the SSH public key used to authenticate with Linux hosts
      * 
      */
     public Output<String> sshPublicKeyContents() {
@@ -502,14 +502,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The AKS subnet (string)
+     * The name of an existing Azure Virtual Subnet. Composite of agent virtual network subnet ID
      * 
      */
     @Import(name="subnet", required=true)
     private Output<String> subnet;
 
     /**
-     * @return The AKS subnet (string)
+     * @return The name of an existing Azure Virtual Subnet. Composite of agent virtual network subnet ID
      * 
      */
     public Output<String> subnet() {
@@ -517,14 +517,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Subscription credentials which uniquely identify Microsoft Azure subscription (string)
+     * Subscription credentials which uniquely identify Microsoft Azure subscription
      * 
      */
     @Import(name="subscriptionId", required=true)
     private Output<String> subscriptionId;
 
     /**
-     * @return Subscription credentials which uniquely identify Microsoft Azure subscription (string)
+     * @return Subscription credentials which uniquely identify Microsoft Azure subscription
      * 
      */
     public Output<String> subscriptionId() {
@@ -532,7 +532,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Use `tags` argument instead as []string
+     * Tags for Kubernetes cluster. For example, foo=bar
      * 
      * @deprecated
      * Use tags argument instead as []string
@@ -543,7 +543,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     private @Nullable Output<Map<String,Object>> tag;
 
     /**
-     * @return Use `tags` argument instead as []string
+     * @return Tags for Kubernetes cluster. For example, foo=bar
      * 
      * @deprecated
      * Use tags argument instead as []string
@@ -555,14 +555,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The GKE node config tags (List)
+     * Tags for Kubernetes cluster. For example, `[&#34;foo=bar&#34;,&#34;bar=foo&#34;]`
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return The GKE node config tags (List)
+     * @return Tags for Kubernetes cluster. For example, `[&#34;foo=bar&#34;,&#34;bar=foo&#34;]`
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -570,14 +570,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Azure tenant ID to use (string)
+     * Azure tenant ID to use
      * 
      */
     @Import(name="tenantId", required=true)
     private Output<String> tenantId;
 
     /**
-     * @return Azure tenant ID to use (string)
+     * @return Azure tenant ID to use
      * 
      */
     public Output<String> tenantId() {
@@ -585,14 +585,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
+     * The name of an existing Azure Virtual Network. Composite of agent virtual network subnet ID
      * 
      */
     @Import(name="virtualNetwork", required=true)
     private Output<String> virtualNetwork;
 
     /**
-     * @return The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
+     * @return The name of an existing Azure Virtual Network. Composite of agent virtual network subnet ID
      * 
      */
     public Output<String> virtualNetwork() {
@@ -600,14 +600,14 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The AKS virtual network resource group (string)
+     * The resource group of an existing Azure Virtual Network. Composite of agent virtual network subnet ID
      * 
      */
     @Import(name="virtualNetworkResourceGroup", required=true)
     private Output<String> virtualNetworkResourceGroup;
 
     /**
-     * @return The AKS virtual network resource group (string)
+     * @return The resource group of an existing Azure Virtual Network. Composite of agent virtual network subnet ID
      * 
      */
     public Output<String> virtualNetworkResourceGroup() {
@@ -677,7 +677,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param aadServerAppSecret The secret of an Azure Active Directory server application (string)
+         * @param aadServerAppSecret The secret of an Azure Active Directory server application
          * 
          * @return builder
          * 
@@ -688,7 +688,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param aadServerAppSecret The secret of an Azure Active Directory server application (string)
+         * @param aadServerAppSecret The secret of an Azure Active Directory server application
          * 
          * @return builder
          * 
@@ -698,7 +698,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param aadTenantId The ID of an Azure Active Directory tenant (string)
+         * @param aadTenantId The ID of an Azure Active Directory tenant
          * 
          * @return builder
          * 
@@ -709,7 +709,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param aadTenantId The ID of an Azure Active Directory tenant (string)
+         * @param aadTenantId The ID of an Azure Active Directory tenant
          * 
          * @return builder
          * 
@@ -719,7 +719,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param addClientAppId The ID of an Azure Active Directory client application of type \&#34;Native\&#34;. This application is for user login via kubectl (string)
+         * @param addClientAppId The ID of an Azure Active Directory client application of type &#34;Native&#34;. This application is for user login via kubectl
          * 
          * @return builder
          * 
@@ -730,7 +730,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param addClientAppId The ID of an Azure Active Directory client application of type \&#34;Native\&#34;. This application is for user login via kubectl (string)
+         * @param addClientAppId The ID of an Azure Active Directory client application of type &#34;Native&#34;. This application is for user login via kubectl
          * 
          * @return builder
          * 
@@ -740,7 +740,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param addServerAppId The ID of an Azure Active Directory server application of type \&#34;Web app/API\&#34;. This application represents the managed cluster&#39;s apiserver (Server application) (string)
+         * @param addServerAppId The ID of an Azure Active Directory server application of type &#34;Web app/API&#34;. This application represents the managed cluster&#39;s apiserver (Server application)
          * 
          * @return builder
          * 
@@ -751,7 +751,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param addServerAppId The ID of an Azure Active Directory server application of type \&#34;Web app/API\&#34;. This application represents the managed cluster&#39;s apiserver (Server application) (string)
+         * @param addServerAppId The ID of an Azure Active Directory server application of type &#34;Web app/API&#34;. This application represents the managed cluster&#39;s apiserver (Server application)
          * 
          * @return builder
          * 
@@ -761,7 +761,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param adminUsername The administrator username to use for Linux hosts. Default `azureuser` (string)
+         * @param adminUsername The administrator username to use for Linux hosts
          * 
          * @return builder
          * 
@@ -772,7 +772,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param adminUsername The administrator username to use for Linux hosts. Default `azureuser` (string)
+         * @param adminUsername The administrator username to use for Linux hosts
          * 
          * @return builder
          * 
@@ -782,7 +782,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param agentDnsPrefix DNS prefix to be used to create the FQDN for the agent pool (string)
+         * @param agentDnsPrefix DNS prefix to be used to create the FQDN for the agent pool
          * 
          * @return builder
          * 
@@ -793,7 +793,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param agentDnsPrefix DNS prefix to be used to create the FQDN for the agent pool (string)
+         * @param agentDnsPrefix DNS prefix to be used to create the FQDN for the agent pool
          * 
          * @return builder
          * 
@@ -803,7 +803,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param agentOsDiskSize GB size to be used to specify the disk for every machine in the agent pool. If you specify 0, it will apply the default according to the \&#34;agent vm size\&#34; specified. Default `0` (int)
+         * @param agentOsDiskSize GB size to be used to specify the disk for every machine in the agent pool. If you specify 0, it will apply the default according to the &#34;agent vm size&#34; specified
          * 
          * @return builder
          * 
@@ -814,7 +814,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param agentOsDiskSize GB size to be used to specify the disk for every machine in the agent pool. If you specify 0, it will apply the default according to the \&#34;agent vm size\&#34; specified. Default `0` (int)
+         * @param agentOsDiskSize GB size to be used to specify the disk for every machine in the agent pool. If you specify 0, it will apply the default according to the &#34;agent vm size&#34; specified
          * 
          * @return builder
          * 
@@ -824,7 +824,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param agentPoolName Name for the agent pool, upto 12 alphanumeric characters. Default `agentpool0` (string)
+         * @param agentPoolName Name for the agent pool, upto 12 alphanumeric characters
          * 
          * @return builder
          * 
@@ -835,7 +835,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param agentPoolName Name for the agent pool, upto 12 alphanumeric characters. Default `agentpool0` (string)
+         * @param agentPoolName Name for the agent pool, upto 12 alphanumeric characters
          * 
          * @return builder
          * 
@@ -845,7 +845,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param agentStorageProfile Storage profile specifies what kind of storage used on machine in the agent pool. Chooses from [ManagedDisks StorageAccount]. Default `ManagedDisks` (string)
+         * @param agentStorageProfile Storage profile specifies what kind of storage used on machine in the agent pool. Chooses from [ManagedDisks StorageAccount]
          * 
          * @return builder
          * 
@@ -856,7 +856,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param agentStorageProfile Storage profile specifies what kind of storage used on machine in the agent pool. Chooses from [ManagedDisks StorageAccount]. Default `ManagedDisks` (string)
+         * @param agentStorageProfile Storage profile specifies what kind of storage used on machine in the agent pool. Chooses from [ManagedDisks StorageAccount]
          * 
          * @return builder
          * 
@@ -866,7 +866,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param agentVmSize Size of machine in the agent pool. Default `Standard_D1_v2` (string)
+         * @param agentVmSize Size of machine in the agent pool
          * 
          * @return builder
          * 
@@ -877,7 +877,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param agentVmSize Size of machine in the agent pool. Default `Standard_D1_v2` (string)
+         * @param agentVmSize Size of machine in the agent pool
          * 
          * @return builder
          * 
@@ -887,7 +887,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param authBaseUrl The AKS auth base url (string)
+         * @param authBaseUrl Different authentication API url to use
          * 
          * @return builder
          * 
@@ -898,7 +898,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param authBaseUrl The AKS auth base url (string)
+         * @param authBaseUrl Different authentication API url to use
          * 
          * @return builder
          * 
@@ -908,7 +908,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param baseUrl The AKS base url (string)
+         * @param baseUrl Different resource management API url to use
          * 
          * @return builder
          * 
@@ -919,7 +919,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param baseUrl The AKS base url (string)
+         * @param baseUrl Different resource management API url to use
          * 
          * @return builder
          * 
@@ -929,7 +929,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param clientId Azure client ID to use (string)
+         * @param clientId Azure client ID to use
          * 
          * @return builder
          * 
@@ -940,7 +940,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param clientId Azure client ID to use (string)
+         * @param clientId Azure client ID to use
          * 
          * @return builder
          * 
@@ -950,7 +950,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param clientSecret Azure client secret associated with the \&#34;client id\&#34; (string)
+         * @param clientSecret Azure client secret associated with the &#34;client id&#34;
          * 
          * @return builder
          * 
@@ -961,7 +961,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param clientSecret Azure client secret associated with the \&#34;client id\&#34; (string)
+         * @param clientSecret Azure client secret associated with the &#34;client id&#34;
          * 
          * @return builder
          * 
@@ -971,7 +971,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param count The AKS node pool count. Default: `1` (int)
+         * @param count Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive)
          * 
          * @return builder
          * 
@@ -982,7 +982,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param count The AKS node pool count. Default: `1` (int)
+         * @param count Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive)
          * 
          * @return builder
          * 
@@ -992,7 +992,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param dnsServiceIp An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes Service address range specified in \&#34;service cidr\&#34;. Default `10.0.0.10` (string)
+         * @param dnsServiceIp An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes Service address range specified in &#34;service cidr&#34;
          * 
          * @return builder
          * 
@@ -1003,7 +1003,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param dnsServiceIp An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes Service address range specified in \&#34;service cidr\&#34;. Default `10.0.0.10` (string)
+         * @param dnsServiceIp An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes Service address range specified in &#34;service cidr&#34;
          * 
          * @return builder
          * 
@@ -1013,7 +1013,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param dockerBridgeCidr A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes Service address range specified in \&#34;service cidr\&#34;. Default `172.17.0.1/16` (string)
+         * @param dockerBridgeCidr A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes Service address range specified in &#34;service cidr&#34;
          * 
          * @return builder
          * 
@@ -1024,7 +1024,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param dockerBridgeCidr A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes Service address range specified in \&#34;service cidr\&#34;. Default `172.17.0.1/16` (string)
+         * @param dockerBridgeCidr A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes Service address range specified in &#34;service cidr&#34;
          * 
          * @return builder
          * 
@@ -1034,7 +1034,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enableHttpApplicationRouting Enable the Kubernetes ingress with automatic public DNS name creation. Default `false` (bool)
+         * @param enableHttpApplicationRouting Enable the Kubernetes ingress with automatic public DNS name creation
          * 
          * @return builder
          * 
@@ -1045,7 +1045,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enableHttpApplicationRouting Enable the Kubernetes ingress with automatic public DNS name creation. Default `false` (bool)
+         * @param enableHttpApplicationRouting Enable the Kubernetes ingress with automatic public DNS name creation
          * 
          * @return builder
          * 
@@ -1055,7 +1055,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enableMonitoring Turn on Azure Log Analytics monitoring. Uses the Log Analytics \&#34;Default\&#34; workspace if it exists, else creates one. if using an existing workspace, specifies \&#34;log analytics workspace resource id\&#34;. Default `true` (bool)
+         * @param enableMonitoring Turn on Azure Log Analytics monitoring. Uses the Log Analytics &#34;Default&#34; workspace if it exists, else creates one. if using an existing workspace, specifies &#34;log analytics workspace resource id&#34;
          * 
          * @return builder
          * 
@@ -1066,7 +1066,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enableMonitoring Turn on Azure Log Analytics monitoring. Uses the Log Analytics \&#34;Default\&#34; workspace if it exists, else creates one. if using an existing workspace, specifies \&#34;log analytics workspace resource id\&#34;. Default `true` (bool)
+         * @param enableMonitoring Turn on Azure Log Analytics monitoring. Uses the Log Analytics &#34;Default&#34; workspace if it exists, else creates one. if using an existing workspace, specifies &#34;log analytics workspace resource id&#34;
          * 
          * @return builder
          * 
@@ -1076,7 +1076,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param kubernetesVersion The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+         * @param kubernetesVersion Specify the version of Kubernetes
          * 
          * @return builder
          * 
@@ -1087,7 +1087,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param kubernetesVersion The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+         * @param kubernetesVersion Specify the version of Kubernetes
          * 
          * @return builder
          * 
@@ -1097,7 +1097,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param loadBalancerSku The AKS load balancer sku (string)
+         * @param loadBalancerSku Load balancer type (basic | standard). Must be standard for auto-scaling
          * 
          * @return builder
          * 
@@ -1108,7 +1108,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param loadBalancerSku The AKS load balancer sku (string)
+         * @param loadBalancerSku Load balancer type (basic | standard). Must be standard for auto-scaling
          * 
          * @return builder
          * 
@@ -1118,7 +1118,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param location Azure Kubernetes cluster location. Default `eastus` (string)
+         * @param location Azure Kubernetes cluster location
          * 
          * @return builder
          * 
@@ -1129,7 +1129,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param location Azure Kubernetes cluster location. Default `eastus` (string)
+         * @param location Azure Kubernetes cluster location
          * 
          * @return builder
          * 
@@ -1139,7 +1139,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param logAnalyticsWorkspace The name of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses &#39;{resource group}-{subscription id}-{location code}&#39; (string)
+         * @param logAnalyticsWorkspace The name of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses &#39;{resource group}-{subscription id}-{location code}&#39;
          * 
          * @return builder
          * 
@@ -1150,7 +1150,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param logAnalyticsWorkspace The name of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses &#39;{resource group}-{subscription id}-{location code}&#39; (string)
+         * @param logAnalyticsWorkspace The name of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses &#39;{resource group}-{subscription id}-{location code}&#39;
          * 
          * @return builder
          * 
@@ -1160,7 +1160,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param logAnalyticsWorkspaceResourceGroup The resource group of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses the &#39;Cluster&#39; resource group (string)
+         * @param logAnalyticsWorkspaceResourceGroup The resource group of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses the &#39;Cluster&#39; resource group
          * 
          * @return builder
          * 
@@ -1171,7 +1171,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param logAnalyticsWorkspaceResourceGroup The resource group of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses the &#39;Cluster&#39; resource group (string)
+         * @param logAnalyticsWorkspaceResourceGroup The resource group of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses the &#39;Cluster&#39; resource group
          * 
          * @return builder
          * 
@@ -1181,7 +1181,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param masterDnsPrefix DNS prefix to use the Kubernetes cluster control pane (string)
+         * @param masterDnsPrefix DNS prefix to use the Kubernetes cluster control pane
          * 
          * @return builder
          * 
@@ -1192,7 +1192,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param masterDnsPrefix DNS prefix to use the Kubernetes cluster control pane (string)
+         * @param masterDnsPrefix DNS prefix to use the Kubernetes cluster control pane
          * 
          * @return builder
          * 
@@ -1202,7 +1202,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxPods The AKS node pool max pods. Default: `110` (int)
+         * @param maxPods Maximum number of pods that can run on a node
          * 
          * @return builder
          * 
@@ -1213,7 +1213,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxPods The AKS node pool max pods. Default: `110` (int)
+         * @param maxPods Maximum number of pods that can run on a node
          * 
          * @return builder
          * 
@@ -1223,7 +1223,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param networkPlugin The AKS network plugin. Required if `imported=false` (string)
+         * @param networkPlugin Network plugin used for building Kubernetes network. Chooses from [azure kubenet]
          * 
          * @return builder
          * 
@@ -1234,7 +1234,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param networkPlugin The AKS network plugin. Required if `imported=false` (string)
+         * @param networkPlugin Network plugin used for building Kubernetes network. Chooses from [azure kubenet]
          * 
          * @return builder
          * 
@@ -1244,7 +1244,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param networkPolicy The AKS network policy (string)
+         * @param networkPolicy Network policy used for building Kubernetes network. Chooses from [calico]
          * 
          * @return builder
          * 
@@ -1255,7 +1255,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param networkPolicy The AKS network policy (string)
+         * @param networkPolicy Network policy used for building Kubernetes network. Chooses from [calico]
          * 
          * @return builder
          * 
@@ -1265,7 +1265,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param podCidr A CIDR IP range from which to assign Kubernetes Pod IPs (string)
+         * @param podCidr A CIDR notation IP range from which to assign Kubernetes Pod IPs when &#34;network plugin&#34; is specified in &#34;kubenet&#34;.
          * 
          * @return builder
          * 
@@ -1276,7 +1276,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param podCidr A CIDR IP range from which to assign Kubernetes Pod IPs (string)
+         * @param podCidr A CIDR notation IP range from which to assign Kubernetes Pod IPs when &#34;network plugin&#34; is specified in &#34;kubenet&#34;.
          * 
          * @return builder
          * 
@@ -1286,7 +1286,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param resourceGroup The AKS resource group (string)
+         * @param resourceGroup The name of the Cluster resource group
          * 
          * @return builder
          * 
@@ -1297,7 +1297,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param resourceGroup The AKS resource group (string)
+         * @param resourceGroup The name of the Cluster resource group
          * 
          * @return builder
          * 
@@ -1307,7 +1307,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param serviceCidr A CIDR IP range from which to assign Kubernetes Service IPs (string)
+         * @param serviceCidr A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges
          * 
          * @return builder
          * 
@@ -1318,7 +1318,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param serviceCidr A CIDR IP range from which to assign Kubernetes Service IPs (string)
+         * @param serviceCidr A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges
          * 
          * @return builder
          * 
@@ -1328,7 +1328,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param sshPublicKeyContents Contents of the SSH public key used to authenticate with Linux hosts (string)
+         * @param sshPublicKeyContents Contents of the SSH public key used to authenticate with Linux hosts
          * 
          * @return builder
          * 
@@ -1339,7 +1339,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param sshPublicKeyContents Contents of the SSH public key used to authenticate with Linux hosts (string)
+         * @param sshPublicKeyContents Contents of the SSH public key used to authenticate with Linux hosts
          * 
          * @return builder
          * 
@@ -1349,7 +1349,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param subnet The AKS subnet (string)
+         * @param subnet The name of an existing Azure Virtual Subnet. Composite of agent virtual network subnet ID
          * 
          * @return builder
          * 
@@ -1360,7 +1360,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param subnet The AKS subnet (string)
+         * @param subnet The name of an existing Azure Virtual Subnet. Composite of agent virtual network subnet ID
          * 
          * @return builder
          * 
@@ -1370,7 +1370,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param subscriptionId Subscription credentials which uniquely identify Microsoft Azure subscription (string)
+         * @param subscriptionId Subscription credentials which uniquely identify Microsoft Azure subscription
          * 
          * @return builder
          * 
@@ -1381,7 +1381,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param subscriptionId Subscription credentials which uniquely identify Microsoft Azure subscription (string)
+         * @param subscriptionId Subscription credentials which uniquely identify Microsoft Azure subscription
          * 
          * @return builder
          * 
@@ -1391,7 +1391,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param tag Use `tags` argument instead as []string
+         * @param tag Tags for Kubernetes cluster. For example, foo=bar
          * 
          * @return builder
          * 
@@ -1406,7 +1406,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param tag Use `tags` argument instead as []string
+         * @param tag Tags for Kubernetes cluster. For example, foo=bar
          * 
          * @return builder
          * 
@@ -1420,7 +1420,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param tags The GKE node config tags (List)
+         * @param tags Tags for Kubernetes cluster. For example, `[&#34;foo=bar&#34;,&#34;bar=foo&#34;]`
          * 
          * @return builder
          * 
@@ -1431,7 +1431,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param tags The GKE node config tags (List)
+         * @param tags Tags for Kubernetes cluster. For example, `[&#34;foo=bar&#34;,&#34;bar=foo&#34;]`
          * 
          * @return builder
          * 
@@ -1441,7 +1441,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param tags The GKE node config tags (List)
+         * @param tags Tags for Kubernetes cluster. For example, `[&#34;foo=bar&#34;,&#34;bar=foo&#34;]`
          * 
          * @return builder
          * 
@@ -1451,7 +1451,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param tenantId Azure tenant ID to use (string)
+         * @param tenantId Azure tenant ID to use
          * 
          * @return builder
          * 
@@ -1462,7 +1462,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param tenantId Azure tenant ID to use (string)
+         * @param tenantId Azure tenant ID to use
          * 
          * @return builder
          * 
@@ -1472,7 +1472,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param virtualNetwork The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
+         * @param virtualNetwork The name of an existing Azure Virtual Network. Composite of agent virtual network subnet ID
          * 
          * @return builder
          * 
@@ -1483,7 +1483,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param virtualNetwork The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
+         * @param virtualNetwork The name of an existing Azure Virtual Network. Composite of agent virtual network subnet ID
          * 
          * @return builder
          * 
@@ -1493,7 +1493,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param virtualNetworkResourceGroup The AKS virtual network resource group (string)
+         * @param virtualNetworkResourceGroup The resource group of an existing Azure Virtual Network. Composite of agent virtual network subnet ID
          * 
          * @return builder
          * 
@@ -1504,7 +1504,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param virtualNetworkResourceGroup The AKS virtual network resource group (string)
+         * @param virtualNetworkResourceGroup The resource group of an existing Azure Virtual Network. Composite of agent virtual network subnet ID
          * 
          * @return builder
          * 

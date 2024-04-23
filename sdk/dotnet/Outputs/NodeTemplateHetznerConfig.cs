@@ -14,41 +14,39 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class NodeTemplateHetznerConfig
     {
         /// <summary>
-        /// Hetzner Cloud project API token (string)
+        /// Hetzner Cloud project API token
         /// </summary>
         public readonly string ApiToken;
         /// <summary>
-        /// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        /// Hetzner Cloud server image
         /// </summary>
         public readonly string? Image;
         /// <summary>
-        /// Comma-separated list of network IDs or names which should be attached to the server private network interface (string)
+        /// Comma-separated list of network IDs or names which should be attached to the server private network interface
         /// </summary>
         public readonly string? Networks;
         /// <summary>
-        /// Map of the labels which will be assigned to the server. This argument is only available on [Hetzner Docker Node Driver:v3.6.0](https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/tag/3.6.0) and above (map)
+        /// Map of the labels which will be assigned to the server
         /// </summary>
         public readonly ImmutableDictionary<string, object>? ServerLabels;
         /// <summary>
-        /// Hetzner Cloud datacenter. Default `nbg1` (string)
+        /// Hetzner Cloud datacenter
         /// </summary>
         public readonly string? ServerLocation;
         /// <summary>
-        /// Hetzner Cloud server type. Default `cx11` (string)
+        /// Hetzner Cloud server type
         /// </summary>
         public readonly string? ServerType;
         /// <summary>
-        /// Use private network. Default `false` (bool)
+        /// Use private network
         /// </summary>
         public readonly bool? UsePrivateNetwork;
         /// <summary>
-        /// Path to file with cloud-init user-data (string)
-        /// 
-        /// &gt; **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+        /// Path to file with cloud-init user-data
         /// </summary>
         public readonly string? Userdata;
         /// <summary>
-        /// Comma-separated list of volume IDs or names which should be attached to the server (string)
+        /// Comma-separated list of volume IDs or names which should be attached to the server
         /// </summary>
         public readonly string? Volumes;
 

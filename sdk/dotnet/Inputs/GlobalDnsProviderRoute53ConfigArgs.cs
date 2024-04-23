@@ -12,39 +12,21 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class GlobalDnsProviderRoute53ConfigArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The AWS Access key (string)
-        /// </summary>
         [Input("accessKey", required: true)]
         public Input<string> AccessKey { get; set; } = null!;
 
-        /// <summary>
-        /// The AWS credentials path. Default: `"/.aws"` (string)
-        /// </summary>
         [Input("credentialsPath")]
         public Input<string>? CredentialsPath { get; set; }
 
-        /// <summary>
-        /// The AWS Region. Default: `"us-west-2"` (string)
-        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
-        /// <summary>
-        /// The AWS Role ARN (string)
-        /// </summary>
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }
 
-        /// <summary>
-        /// The AWS Secret key (string)
-        /// </summary>
         [Input("secretKey", required: true)]
         public Input<string> SecretKey { get; set; } = null!;
 
-        /// <summary>
-        /// The Route53 zone type `public, private`. Default: `"public"` (string)
-        /// </summary>
         [Input("zoneType")]
         public Input<string>? ZoneType { get; set; }
 

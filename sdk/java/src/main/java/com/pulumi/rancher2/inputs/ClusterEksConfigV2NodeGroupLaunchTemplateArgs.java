@@ -18,14 +18,14 @@ public final class ClusterEksConfigV2NodeGroupLaunchTemplateArgs extends com.pul
     public static final ClusterEksConfigV2NodeGroupLaunchTemplateArgs Empty = new ClusterEksConfigV2NodeGroupLaunchTemplateArgs();
 
     /**
-     * The EKS node group launch template ID (string)
+     * (Computed) The ID of the resource (string)
      * 
      */
     @Import(name="id", required=true)
     private Output<String> id;
 
     /**
-     * @return The EKS node group launch template ID (string)
+     * @return (Computed) The ID of the resource (string)
      * 
      */
     public Output<String> id() {
@@ -48,14 +48,14 @@ public final class ClusterEksConfigV2NodeGroupLaunchTemplateArgs extends com.pul
     }
 
     /**
-     * rancher-monitoring chart version (string)
+     * The EKS node group launch template version
      * 
      */
     @Import(name="version")
     private @Nullable Output<Integer> version;
 
     /**
-     * @return rancher-monitoring chart version (string)
+     * @return The EKS node group launch template version
      * 
      */
     public Optional<Output<Integer>> version() {
@@ -89,7 +89,7 @@ public final class ClusterEksConfigV2NodeGroupLaunchTemplateArgs extends com.pul
         }
 
         /**
-         * @param id The EKS node group launch template ID (string)
+         * @param id (Computed) The ID of the resource (string)
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class ClusterEksConfigV2NodeGroupLaunchTemplateArgs extends com.pul
         }
 
         /**
-         * @param id The EKS node group launch template ID (string)
+         * @param id (Computed) The ID of the resource (string)
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class ClusterEksConfigV2NodeGroupLaunchTemplateArgs extends com.pul
         }
 
         /**
-         * @param version rancher-monitoring chart version (string)
+         * @param version The EKS node group launch template version
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class ClusterEksConfigV2NodeGroupLaunchTemplateArgs extends com.pul
         }
 
         /**
-         * @param version rancher-monitoring chart version (string)
+         * @param version The EKS node group launch template version
          * 
          * @return builder
          * 

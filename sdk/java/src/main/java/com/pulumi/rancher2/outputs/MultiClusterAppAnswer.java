@@ -14,38 +14,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class MultiClusterAppAnswer {
     /**
-     * @return Cluster ID for answer (string)
+     * @return Cluster ID for answer
      * 
      */
     private @Nullable String clusterId;
     /**
-     * @return Project ID for target (string)
+     * @return Project ID for answer
      * 
      */
     private @Nullable String projectId;
     /**
-     * @return Key/values for answer (map)
+     * @return Key/values for answer
      * 
      */
     private @Nullable Map<String,Object> values;
 
     private MultiClusterAppAnswer() {}
     /**
-     * @return Cluster ID for answer (string)
+     * @return Cluster ID for answer
      * 
      */
     public Optional<String> clusterId() {
         return Optional.ofNullable(this.clusterId);
     }
     /**
-     * @return Project ID for target (string)
+     * @return Project ID for answer
      * 
      */
     public Optional<String> projectId() {
         return Optional.ofNullable(this.projectId);
     }
     /**
-     * @return Key/values for answer (map)
+     * @return Key/values for answer
      * 
      */
     public Map<String,Object> values() {

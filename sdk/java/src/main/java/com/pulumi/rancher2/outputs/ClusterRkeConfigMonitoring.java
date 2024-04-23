@@ -17,75 +17,43 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterRkeConfigMonitoring {
-    /**
-     * @return RKE monitoring node selector (map)
-     * 
-     */
     private @Nullable Map<String,Object> nodeSelector;
-    /**
-     * @return RKE options for network (map)
-     * 
-     */
     private @Nullable Map<String,Object> options;
-    /**
-     * @return RKE monitoring provider (string)
-     * 
-     */
     private @Nullable String provider;
-    /**
-     * @return RKE monitoring replicas (int)
-     * 
-     */
     private @Nullable Integer replicas;
     /**
-     * @return Network add-on tolerations (list)
+     * @return Monitoring add-on tolerations
      * 
      */
     private @Nullable List<ClusterRkeConfigMonitoringToleration> tolerations;
     /**
-     * @return RKE monitoring update strategy (list Maxitems: 1)
+     * @return Update deployment strategy
      * 
      */
     private @Nullable ClusterRkeConfigMonitoringUpdateStrategy updateStrategy;
 
     private ClusterRkeConfigMonitoring() {}
-    /**
-     * @return RKE monitoring node selector (map)
-     * 
-     */
     public Map<String,Object> nodeSelector() {
         return this.nodeSelector == null ? Map.of() : this.nodeSelector;
     }
-    /**
-     * @return RKE options for network (map)
-     * 
-     */
     public Map<String,Object> options() {
         return this.options == null ? Map.of() : this.options;
     }
-    /**
-     * @return RKE monitoring provider (string)
-     * 
-     */
     public Optional<String> provider() {
         return Optional.ofNullable(this.provider);
     }
-    /**
-     * @return RKE monitoring replicas (int)
-     * 
-     */
     public Optional<Integer> replicas() {
         return Optional.ofNullable(this.replicas);
     }
     /**
-     * @return Network add-on tolerations (list)
+     * @return Monitoring add-on tolerations
      * 
      */
     public List<ClusterRkeConfigMonitoringToleration> tolerations() {
         return this.tolerations == null ? List.of() : this.tolerations;
     }
     /**
-     * @return RKE monitoring update strategy (list Maxitems: 1)
+     * @return Update deployment strategy
      * 
      */
     public Optional<ClusterRkeConfigMonitoringUpdateStrategy> updateStrategy() {

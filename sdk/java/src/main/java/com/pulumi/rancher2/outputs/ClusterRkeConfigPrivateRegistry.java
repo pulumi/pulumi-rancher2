@@ -15,64 +15,32 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterRkeConfigPrivateRegistry {
     /**
-     * @return ECR credential plugin config (list maxitems:1)
+     * @return ECR credential plugin config
      * 
      */
     private @Nullable ClusterRkeConfigPrivateRegistryEcrCredentialPlugin ecrCredentialPlugin;
-    /**
-     * @return Set as default registry. Default `false` (bool)
-     * 
-     */
     private @Nullable Boolean isDefault;
-    /**
-     * @return Registry password (string)
-     * 
-     */
     private @Nullable String password;
-    /**
-     * @return Registry URL (string)
-     * 
-     */
     private String url;
-    /**
-     * @return Registry user (string)
-     * 
-     */
     private @Nullable String user;
 
     private ClusterRkeConfigPrivateRegistry() {}
     /**
-     * @return ECR credential plugin config (list maxitems:1)
+     * @return ECR credential plugin config
      * 
      */
     public Optional<ClusterRkeConfigPrivateRegistryEcrCredentialPlugin> ecrCredentialPlugin() {
         return Optional.ofNullable(this.ecrCredentialPlugin);
     }
-    /**
-     * @return Set as default registry. Default `false` (bool)
-     * 
-     */
     public Optional<Boolean> isDefault() {
         return Optional.ofNullable(this.isDefault);
     }
-    /**
-     * @return Registry password (string)
-     * 
-     */
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
     }
-    /**
-     * @return Registry URL (string)
-     * 
-     */
     public String url() {
         return this.url;
     }
-    /**
-     * @return Registry user (string)
-     * 
-     */
     public Optional<String> user() {
         return Optional.ofNullable(this.user);
     }

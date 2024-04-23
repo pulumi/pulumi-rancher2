@@ -19,14 +19,14 @@ public final class ClusterAlertRuleNodeRuleArgs extends com.pulumi.resources.Res
     public static final ClusterAlertRuleNodeRuleArgs Empty = new ClusterAlertRuleNodeRuleArgs();
 
     /**
-     * System service rule condition. Supported values : `&#34;controller-manager&#34; | &#34;etcd&#34; | &#34;scheduler&#34;`. Default: `scheduler` (string)
+     * Node rule condition
      * 
      */
     @Import(name="condition")
     private @Nullable Output<String> condition;
 
     /**
-     * @return System service rule condition. Supported values : `&#34;controller-manager&#34; | &#34;etcd&#34; | &#34;scheduler&#34;`. Default: `scheduler` (string)
+     * @return Node rule condition
      * 
      */
     public Optional<Output<String>> condition() {
@@ -34,14 +34,14 @@ public final class ClusterAlertRuleNodeRuleArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Node rule cpu threshold. Default: `70` (int)
+     * Node rule cpu threshold
      * 
      */
     @Import(name="cpuThreshold")
     private @Nullable Output<Integer> cpuThreshold;
 
     /**
-     * @return Node rule cpu threshold. Default: `70` (int)
+     * @return Node rule cpu threshold
      * 
      */
     public Optional<Output<Integer>> cpuThreshold() {
@@ -49,14 +49,14 @@ public final class ClusterAlertRuleNodeRuleArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Node rule mem threshold. Default: `70` (int)
+     * Node rule mem threshold
      * 
      */
     @Import(name="memThreshold")
     private @Nullable Output<Integer> memThreshold;
 
     /**
-     * @return Node rule mem threshold. Default: `70` (int)
+     * @return Node rule mem threshold
      * 
      */
     public Optional<Output<Integer>> memThreshold() {
@@ -64,14 +64,14 @@ public final class ClusterAlertRuleNodeRuleArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Node ID (string)
+     * Node ID
      * 
      */
     @Import(name="nodeId")
     private @Nullable Output<String> nodeId;
 
     /**
-     * @return Node ID (string)
+     * @return Node ID
      * 
      */
     public Optional<Output<String>> nodeId() {
@@ -79,14 +79,14 @@ public final class ClusterAlertRuleNodeRuleArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Node rule selector (map)
+     * Node rule selector
      * 
      */
     @Import(name="selector")
     private @Nullable Output<Map<String,Object>> selector;
 
     /**
-     * @return Node rule selector (map)
+     * @return Node rule selector
      * 
      */
     public Optional<Output<Map<String,Object>>> selector() {
@@ -122,7 +122,7 @@ public final class ClusterAlertRuleNodeRuleArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param condition System service rule condition. Supported values : `&#34;controller-manager&#34; | &#34;etcd&#34; | &#34;scheduler&#34;`. Default: `scheduler` (string)
+         * @param condition Node rule condition
          * 
          * @return builder
          * 
@@ -133,7 +133,7 @@ public final class ClusterAlertRuleNodeRuleArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param condition System service rule condition. Supported values : `&#34;controller-manager&#34; | &#34;etcd&#34; | &#34;scheduler&#34;`. Default: `scheduler` (string)
+         * @param condition Node rule condition
          * 
          * @return builder
          * 
@@ -143,7 +143,7 @@ public final class ClusterAlertRuleNodeRuleArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param cpuThreshold Node rule cpu threshold. Default: `70` (int)
+         * @param cpuThreshold Node rule cpu threshold
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class ClusterAlertRuleNodeRuleArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param cpuThreshold Node rule cpu threshold. Default: `70` (int)
+         * @param cpuThreshold Node rule cpu threshold
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class ClusterAlertRuleNodeRuleArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param memThreshold Node rule mem threshold. Default: `70` (int)
+         * @param memThreshold Node rule mem threshold
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class ClusterAlertRuleNodeRuleArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param memThreshold Node rule mem threshold. Default: `70` (int)
+         * @param memThreshold Node rule mem threshold
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class ClusterAlertRuleNodeRuleArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param nodeId Node ID (string)
+         * @param nodeId Node ID
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class ClusterAlertRuleNodeRuleArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param nodeId Node ID (string)
+         * @param nodeId Node ID
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class ClusterAlertRuleNodeRuleArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param selector Node rule selector (map)
+         * @param selector Node rule selector
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class ClusterAlertRuleNodeRuleArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param selector Node rule selector (map)
+         * @param selector Node rule selector
          * 
          * @return builder
          * 

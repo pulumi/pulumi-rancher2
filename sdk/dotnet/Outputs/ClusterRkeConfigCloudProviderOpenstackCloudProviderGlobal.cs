@@ -13,45 +13,15 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal
     {
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string AuthUrl;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string? CaFile;
-        /// <summary>
-        /// Required if `domain_name` not provided. (string)
-        /// </summary>
         public readonly string? DomainId;
-        /// <summary>
-        /// Required if `domain_id` not provided. (string)
-        /// </summary>
         public readonly string? DomainName;
-        /// <summary>
-        /// Registry password (string)
-        /// </summary>
         public readonly string Password;
-        /// <summary>
-        /// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
-        /// </summary>
         public readonly string? Region;
-        /// <summary>
-        /// Azure tenant ID to use (string)
-        /// </summary>
         public readonly string? TenantId;
-        /// <summary>
-        /// Required if `tenant_id` not provided. (string)
-        /// </summary>
         public readonly string? TenantName;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string? TrustId;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string Username;
 
         [OutputConstructor]

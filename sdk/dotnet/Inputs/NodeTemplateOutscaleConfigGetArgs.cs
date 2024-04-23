@@ -16,7 +16,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _accessKey;
 
         /// <summary>
-        /// Outscale Access Key (string)
+        /// Outscale Access Key
         /// </summary>
         public Input<string>? AccessKey
         {
@@ -32,7 +32,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _extraTagsAlls;
 
         /// <summary>
-        /// Extra tags for all created resources (e.g. key1=value1,key2=value2) (list)
+        /// Extra tags for all created resources (e.g. key1=value1,key2=value2)
         /// </summary>
         public InputList<string> ExtraTagsAlls
         {
@@ -44,7 +44,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _extraTagsInstances;
 
         /// <summary>
-        /// Extra tags only for instances (e.g. key1=value1,key2=value2) (list)
+        /// Extra tags only for instances (e.g. key1=value1,key2=value2)
         /// </summary>
         public InputList<string> ExtraTagsInstances
         {
@@ -53,13 +53,13 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Outscale VM type. Default `tinav2.c1r2p3` (string)
+        /// Outscale VM type
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
 
         /// <summary>
-        /// AWS region. Default `eu-west-2` (string)
+        /// Outscale Region
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -86,7 +86,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _secretKey;
 
         /// <summary>
-        /// Outscale Secret Key (string)
+        /// Outscale Secret Key
         /// </summary>
         public Input<string>? SecretKey
         {
@@ -102,7 +102,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _securityGroupIds;
 
         /// <summary>
-        /// Ids of user defined Security Groups to add to the machine. (list)
+        /// Ids of user defined Security Groups to add to the machine
         /// </summary>
         public InputList<string> SecurityGroupIds
         {
@@ -111,7 +111,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Outscale Machine Image to use as bootstrap for the VM. Default `ami-2cf1fa3e` (string)
+        /// Outscale Machine Image to use as bootstrap for the VM
         /// </summary>
         [Input("sourceOmi")]
         public Input<string>? SourceOmi { get; set; }

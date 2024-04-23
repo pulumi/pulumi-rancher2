@@ -15,14 +15,14 @@ public final class CloudCredentialGoogleCredentialConfigArgs extends com.pulumi.
     public static final CloudCredentialGoogleCredentialConfigArgs Empty = new CloudCredentialGoogleCredentialConfigArgs();
 
     /**
-     * Google auth encoded json (string)
+     * Google auth encoded json
      * 
      */
     @Import(name="authEncodedJson", required=true)
     private Output<String> authEncodedJson;
 
     /**
-     * @return Google auth encoded json (string)
+     * @return Google auth encoded json
      * 
      */
     public Output<String> authEncodedJson() {
@@ -54,7 +54,7 @@ public final class CloudCredentialGoogleCredentialConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param authEncodedJson Google auth encoded json (string)
+         * @param authEncodedJson Google auth encoded json
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class CloudCredentialGoogleCredentialConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param authEncodedJson Google auth encoded json (string)
+         * @param authEncodedJson Google auth encoded json
          * 
          * @return builder
          * 

@@ -70,14 +70,12 @@ def get_principal(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
 
     foo = rancher2.get_principal(name="user@example.com")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The full name of the principal (string)
@@ -104,14 +102,12 @@ def get_principal_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
 
     foo = rancher2.get_principal(name="user@example.com")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The full name of the principal (string)

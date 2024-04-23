@@ -13,9 +13,6 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterRkeConfigCloudProviderVsphereCloudProviderDisk
     {
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string? ScsiControllerType;
 
         [OutputConstructor]

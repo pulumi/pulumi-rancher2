@@ -14,11 +14,11 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class PodSecurityPolicyTemplateSeLinux
     {
         /// <summary>
-        /// (string)
+        /// rule is the strategy that will dictate the allowable labels that may be set.
         /// </summary>
         public readonly string Rule;
         /// <summary>
-        /// (list maxitems:1)
+        /// seLinuxOptions required to run as; required for MustRunAs. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
         /// </summary>
         public readonly Outputs.PodSecurityPolicyTemplateSeLinuxSeLinuxOption? SeLinuxOption;
 

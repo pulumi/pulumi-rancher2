@@ -14,11 +14,11 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterV2RkeConfigMachineSelectorFile
     {
         /// <summary>
-        /// File sources represents the source of the files. Multiple files can be delivered to nodes that match the provided label selector.
+        /// File sources
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterV2RkeConfigMachineSelectorFileFileSource> FileSources;
         /// <summary>
-        /// Machine selector label is a label query over a set of resources. The result of match_labels and match_expressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
+        /// Machine label selector
         /// </summary>
         public readonly Outputs.ClusterV2RkeConfigMachineSelectorFileMachineLabelSelector? MachineLabelSelector;
 

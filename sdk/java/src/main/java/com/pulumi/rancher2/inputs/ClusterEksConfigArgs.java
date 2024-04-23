@@ -20,14 +20,14 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
     public static final ClusterEksConfigArgs Empty = new ClusterEksConfigArgs();
 
     /**
-     * The AWS Client ID to use (string)
+     * The AWS Client ID to use
      * 
      */
     @Import(name="accessKey", required=true)
     private Output<String> accessKey;
 
     /**
-     * @return The AWS Client ID to use (string)
+     * @return The AWS Client ID to use
      * 
      */
     public Output<String> accessKey() {
@@ -35,14 +35,14 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * AMI ID to use for the worker nodes instead of the default (string)
+     * A custom AMI ID to use for the worker nodes instead of the default
      * 
      */
     @Import(name="ami")
     private @Nullable Output<String> ami;
 
     /**
-     * @return AMI ID to use for the worker nodes instead of the default (string)
+     * @return A custom AMI ID to use for the worker nodes instead of the default
      * 
      */
     public Optional<Output<String>> ami() {
@@ -50,14 +50,14 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Associate public ip EKS worker nodes. Default `true` (bool)
+     * Associate public ip EKS worker nodes
      * 
      */
     @Import(name="associateWorkerNodePublicIp")
     private @Nullable Output<Boolean> associateWorkerNodePublicIp;
 
     /**
-     * @return Associate public ip EKS worker nodes. Default `true` (bool)
+     * @return Associate public ip EKS worker nodes
      * 
      */
     public Optional<Output<Boolean>> associateWorkerNodePublicIp() {
@@ -65,14 +65,14 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The desired number of worker nodes. For Rancher v2.3.x and above. Default `3` (int)
+     * The desired number of worker nodes
      * 
      */
     @Import(name="desiredNodes")
     private @Nullable Output<Integer> desiredNodes;
 
     /**
-     * @return The desired number of worker nodes. For Rancher v2.3.x and above. Default `3` (int)
+     * @return The desired number of worker nodes
      * 
      */
     public Optional<Output<Integer>> desiredNodes() {
@@ -95,14 +95,14 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The EKS node group instance type. Default: `t3.medium` (string)
+     * The type of machine to use for worker nodes
      * 
      */
     @Import(name="instanceType")
     private @Nullable Output<String> instanceType;
 
     /**
-     * @return The EKS node group instance type. Default: `t3.medium` (string)
+     * @return The type of machine to use for worker nodes
      * 
      */
     public Optional<Output<String>> instanceType() {
@@ -110,14 +110,14 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Allow user to specify key name to use. For Rancher v2.2.7 and above (string)
+     * Allow user to specify key name to use
      * 
      */
     @Import(name="keyPairName")
     private @Nullable Output<String> keyPairName;
 
     /**
-     * @return Allow user to specify key name to use. For Rancher v2.2.7 and above (string)
+     * @return Allow user to specify key name to use
      * 
      */
     public Optional<Output<String>> keyPairName() {
@@ -125,14 +125,14 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * The kubernetes master version
      * 
      */
     @Import(name="kubernetesVersion", required=true)
     private Output<String> kubernetesVersion;
 
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return The kubernetes master version
      * 
      */
     public Output<String> kubernetesVersion() {
@@ -140,14 +140,14 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The maximum number of worker nodes. Default `3` (int)
+     * The maximum number of worker nodes
      * 
      */
     @Import(name="maximumNodes")
     private @Nullable Output<Integer> maximumNodes;
 
     /**
-     * @return The maximum number of worker nodes. Default `3` (int)
+     * @return The maximum number of worker nodes
      * 
      */
     public Optional<Output<Integer>> maximumNodes() {
@@ -155,14 +155,14 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The minimum number of worker nodes. Default `1` (int)
+     * The minimum number of worker nodes
      * 
      */
     @Import(name="minimumNodes")
     private @Nullable Output<Integer> minimumNodes;
 
     /**
-     * @return The minimum number of worker nodes. Default `1` (int)
+     * @return The minimum number of worker nodes
      * 
      */
     public Optional<Output<Integer>> minimumNodes() {
@@ -170,14 +170,14 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The volume size for each node. Default `20` (int)
+     * The volume size for each node
      * 
      */
     @Import(name="nodeVolumeSize")
     private @Nullable Output<Integer> nodeVolumeSize;
 
     /**
-     * @return The volume size for each node. Default `20` (int)
+     * @return The volume size for each node
      * 
      */
     public Optional<Output<Integer>> nodeVolumeSize() {
@@ -185,14 +185,14 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     * The AWS Region to create the EKS cluster in
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     * @return The AWS Region to create the EKS cluster in
      * 
      */
     public Optional<Output<String>> region() {
@@ -200,14 +200,14 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The AWS Client Secret associated with the Client ID (string)
+     * The AWS Client Secret associated with the Client ID
      * 
      */
     @Import(name="secretKey", required=true)
     private Output<String> secretKey;
 
     /**
-     * @return The AWS Client Secret associated with the Client ID (string)
+     * @return The AWS Client Secret associated with the Client ID
      * 
      */
     public Output<String> secretKey() {
@@ -215,14 +215,14 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * List of security groups to use for the cluster (list)
+     * List of security groups to use for the cluster
      * 
      */
     @Import(name="securityGroups")
     private @Nullable Output<List<String>> securityGroups;
 
     /**
-     * @return List of security groups to use for the cluster (list)
+     * @return List of security groups to use for the cluster
      * 
      */
     public Optional<Output<List<String>>> securityGroups() {
@@ -230,14 +230,14 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The AWS service role to use (string)
+     * The service role to use to perform the cluster operations in AWS
      * 
      */
     @Import(name="serviceRole")
     private @Nullable Output<String> serviceRole;
 
     /**
-     * @return The AWS service role to use (string)
+     * @return The service role to use to perform the cluster operations in AWS
      * 
      */
     public Optional<Output<String>> serviceRole() {
@@ -245,14 +245,14 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * A session token to use with the client key and secret if applicable (string)
+     * A session token to use with the client key and secret if applicable
      * 
      */
     @Import(name="sessionToken")
     private @Nullable Output<String> sessionToken;
 
     /**
-     * @return A session token to use with the client key and secret if applicable (string)
+     * @return A session token to use with the client key and secret if applicable
      * 
      */
     public Optional<Output<String>> sessionToken() {
@@ -260,14 +260,14 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The EKS node group subnets (list string)
+     * List of subnets in the virtual network to use
      * 
      */
     @Import(name="subnets")
     private @Nullable Output<List<String>> subnets;
 
     /**
-     * @return The EKS node group subnets (list string)
+     * @return List of subnets in the virtual network to use
      * 
      */
     public Optional<Output<List<String>>> subnets() {
@@ -275,14 +275,14 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The EKS node group user data (string)
+     * Pass user-data to the nodes to perform automated configuration tasks
      * 
      */
     @Import(name="userData")
     private @Nullable Output<String> userData;
 
     /**
-     * @return The EKS node group user data (string)
+     * @return Pass user-data to the nodes to perform automated configuration tasks
      * 
      */
     public Optional<Output<String>> userData() {
@@ -290,14 +290,14 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
+     * The name of the virtual network to use
      * 
      */
     @Import(name="virtualNetwork")
     private @Nullable Output<String> virtualNetwork;
 
     /**
-     * @return The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
+     * @return The name of the virtual network to use
      * 
      */
     public Optional<Output<String>> virtualNetwork() {
@@ -347,7 +347,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param accessKey The AWS Client ID to use (string)
+         * @param accessKey The AWS Client ID to use
          * 
          * @return builder
          * 
@@ -358,7 +358,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param accessKey The AWS Client ID to use (string)
+         * @param accessKey The AWS Client ID to use
          * 
          * @return builder
          * 
@@ -368,7 +368,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ami AMI ID to use for the worker nodes instead of the default (string)
+         * @param ami A custom AMI ID to use for the worker nodes instead of the default
          * 
          * @return builder
          * 
@@ -379,7 +379,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ami AMI ID to use for the worker nodes instead of the default (string)
+         * @param ami A custom AMI ID to use for the worker nodes instead of the default
          * 
          * @return builder
          * 
@@ -389,7 +389,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param associateWorkerNodePublicIp Associate public ip EKS worker nodes. Default `true` (bool)
+         * @param associateWorkerNodePublicIp Associate public ip EKS worker nodes
          * 
          * @return builder
          * 
@@ -400,7 +400,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param associateWorkerNodePublicIp Associate public ip EKS worker nodes. Default `true` (bool)
+         * @param associateWorkerNodePublicIp Associate public ip EKS worker nodes
          * 
          * @return builder
          * 
@@ -410,7 +410,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param desiredNodes The desired number of worker nodes. For Rancher v2.3.x and above. Default `3` (int)
+         * @param desiredNodes The desired number of worker nodes
          * 
          * @return builder
          * 
@@ -421,7 +421,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param desiredNodes The desired number of worker nodes. For Rancher v2.3.x and above. Default `3` (int)
+         * @param desiredNodes The desired number of worker nodes
          * 
          * @return builder
          * 
@@ -452,7 +452,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param instanceType The EKS node group instance type. Default: `t3.medium` (string)
+         * @param instanceType The type of machine to use for worker nodes
          * 
          * @return builder
          * 
@@ -463,7 +463,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param instanceType The EKS node group instance type. Default: `t3.medium` (string)
+         * @param instanceType The type of machine to use for worker nodes
          * 
          * @return builder
          * 
@@ -473,7 +473,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param keyPairName Allow user to specify key name to use. For Rancher v2.2.7 and above (string)
+         * @param keyPairName Allow user to specify key name to use
          * 
          * @return builder
          * 
@@ -484,7 +484,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param keyPairName Allow user to specify key name to use. For Rancher v2.2.7 and above (string)
+         * @param keyPairName Allow user to specify key name to use
          * 
          * @return builder
          * 
@@ -494,7 +494,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param kubernetesVersion The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+         * @param kubernetesVersion The kubernetes master version
          * 
          * @return builder
          * 
@@ -505,7 +505,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param kubernetesVersion The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+         * @param kubernetesVersion The kubernetes master version
          * 
          * @return builder
          * 
@@ -515,7 +515,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maximumNodes The maximum number of worker nodes. Default `3` (int)
+         * @param maximumNodes The maximum number of worker nodes
          * 
          * @return builder
          * 
@@ -526,7 +526,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maximumNodes The maximum number of worker nodes. Default `3` (int)
+         * @param maximumNodes The maximum number of worker nodes
          * 
          * @return builder
          * 
@@ -536,7 +536,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param minimumNodes The minimum number of worker nodes. Default `1` (int)
+         * @param minimumNodes The minimum number of worker nodes
          * 
          * @return builder
          * 
@@ -547,7 +547,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param minimumNodes The minimum number of worker nodes. Default `1` (int)
+         * @param minimumNodes The minimum number of worker nodes
          * 
          * @return builder
          * 
@@ -557,7 +557,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param nodeVolumeSize The volume size for each node. Default `20` (int)
+         * @param nodeVolumeSize The volume size for each node
          * 
          * @return builder
          * 
@@ -568,7 +568,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param nodeVolumeSize The volume size for each node. Default `20` (int)
+         * @param nodeVolumeSize The volume size for each node
          * 
          * @return builder
          * 
@@ -578,7 +578,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param region The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+         * @param region The AWS Region to create the EKS cluster in
          * 
          * @return builder
          * 
@@ -589,7 +589,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param region The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+         * @param region The AWS Region to create the EKS cluster in
          * 
          * @return builder
          * 
@@ -599,7 +599,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param secretKey The AWS Client Secret associated with the Client ID (string)
+         * @param secretKey The AWS Client Secret associated with the Client ID
          * 
          * @return builder
          * 
@@ -610,7 +610,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param secretKey The AWS Client Secret associated with the Client ID (string)
+         * @param secretKey The AWS Client Secret associated with the Client ID
          * 
          * @return builder
          * 
@@ -620,7 +620,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param securityGroups List of security groups to use for the cluster (list)
+         * @param securityGroups List of security groups to use for the cluster
          * 
          * @return builder
          * 
@@ -631,7 +631,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param securityGroups List of security groups to use for the cluster (list)
+         * @param securityGroups List of security groups to use for the cluster
          * 
          * @return builder
          * 
@@ -641,7 +641,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param securityGroups List of security groups to use for the cluster (list)
+         * @param securityGroups List of security groups to use for the cluster
          * 
          * @return builder
          * 
@@ -651,7 +651,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param serviceRole The AWS service role to use (string)
+         * @param serviceRole The service role to use to perform the cluster operations in AWS
          * 
          * @return builder
          * 
@@ -662,7 +662,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param serviceRole The AWS service role to use (string)
+         * @param serviceRole The service role to use to perform the cluster operations in AWS
          * 
          * @return builder
          * 
@@ -672,7 +672,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param sessionToken A session token to use with the client key and secret if applicable (string)
+         * @param sessionToken A session token to use with the client key and secret if applicable
          * 
          * @return builder
          * 
@@ -683,7 +683,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param sessionToken A session token to use with the client key and secret if applicable (string)
+         * @param sessionToken A session token to use with the client key and secret if applicable
          * 
          * @return builder
          * 
@@ -693,7 +693,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param subnets The EKS node group subnets (list string)
+         * @param subnets List of subnets in the virtual network to use
          * 
          * @return builder
          * 
@@ -704,7 +704,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param subnets The EKS node group subnets (list string)
+         * @param subnets List of subnets in the virtual network to use
          * 
          * @return builder
          * 
@@ -714,7 +714,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param subnets The EKS node group subnets (list string)
+         * @param subnets List of subnets in the virtual network to use
          * 
          * @return builder
          * 
@@ -724,7 +724,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param userData The EKS node group user data (string)
+         * @param userData Pass user-data to the nodes to perform automated configuration tasks
          * 
          * @return builder
          * 
@@ -735,7 +735,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param userData The EKS node group user data (string)
+         * @param userData Pass user-data to the nodes to perform automated configuration tasks
          * 
          * @return builder
          * 
@@ -745,7 +745,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param virtualNetwork The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
+         * @param virtualNetwork The name of the virtual network to use
          * 
          * @return builder
          * 
@@ -756,7 +756,7 @@ public final class ClusterEksConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param virtualNetwork The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
+         * @param virtualNetwork The name of the virtual network to use
          * 
          * @return builder
          * 

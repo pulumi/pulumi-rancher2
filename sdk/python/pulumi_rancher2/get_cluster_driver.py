@@ -166,14 +166,12 @@ def get_cluster_driver(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
 
     foo = rancher2.get_cluster_driver(name="foo")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: Name of the cluster driver (string)
@@ -208,14 +206,12 @@ def get_cluster_driver_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
 
     foo = rancher2.get_cluster_driver(name="foo")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: Name of the cluster driver (string)

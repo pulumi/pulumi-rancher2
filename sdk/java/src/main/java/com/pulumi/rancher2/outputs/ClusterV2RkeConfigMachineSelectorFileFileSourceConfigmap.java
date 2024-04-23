@@ -15,12 +15,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmap {
     /**
-     * @return The numeric representation of the default file permissions for all files defined under the items.
+     * @return The default permissions to be applied when they are not set at the item level
      * 
      */
     private @Nullable String defaultPermissions;
     /**
-     * @return Items is a list of configurations for files, such as where to retrieve the content from the source, where to put the file on nodes, etc.
+     * @return Items(files) to retrieve from the K8s object
      * 
      */
     private @Nullable List<ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapItem> items;
@@ -32,14 +32,14 @@ public final class ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmap {
 
     private ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmap() {}
     /**
-     * @return The numeric representation of the default file permissions for all files defined under the items.
+     * @return The default permissions to be applied when they are not set at the item level
      * 
      */
     public Optional<String> defaultPermissions() {
         return Optional.ofNullable(this.defaultPermissions);
     }
     /**
-     * @return Items is a list of configurations for files, such as where to retrieve the content from the source, where to put the file on nodes, etc.
+     * @return Items(files) to retrieve from the K8s object
      * 
      */
     public List<ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapItem> items() {

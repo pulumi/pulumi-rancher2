@@ -1001,14 +1001,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.annotations;
     }
     /**
-     * TLS CA certificate for etcd service (string)
+     * (Computed/Sensitive) K8s cluster ca cert (string)
      * 
      */
     @Export(name="caCert", refs={String.class}, tree="[0]")
     private Output<String> caCert;
 
     /**
-     * @return TLS CA certificate for etcd service (string)
+     * @return (Computed/Sensitive) K8s cluster ca cert (string)
      * 
      */
     public Output<String> caCert() {

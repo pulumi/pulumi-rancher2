@@ -38,14 +38,14 @@ public final class ClusterTemplateTemplateRevisionArgs extends com.pulumi.resour
     }
 
     /**
-     * Cluster configuration (list maxitem: 1)
+     * Cluster configuration
      * 
      */
     @Import(name="clusterConfig", required=true)
     private Output<ClusterTemplateTemplateRevisionClusterConfigArgs> clusterConfig;
 
     /**
-     * @return Cluster configuration (list maxitem: 1)
+     * @return Cluster configuration
      * 
      */
     public Output<ClusterTemplateTemplateRevisionClusterConfigArgs> clusterConfig() {
@@ -53,14 +53,14 @@ public final class ClusterTemplateTemplateRevisionArgs extends com.pulumi.resour
     }
 
     /**
-     * Cluster template ID (string)
+     * Cluster template ID
      * 
      */
     @Import(name="clusterTemplateId")
     private @Nullable Output<String> clusterTemplateId;
 
     /**
-     * @return Cluster template ID (string)
+     * @return Cluster template ID
      * 
      */
     public Optional<Output<String>> clusterTemplateId() {
@@ -68,14 +68,14 @@ public final class ClusterTemplateTemplateRevisionArgs extends com.pulumi.resour
     }
 
     /**
-     * Default variable value (string)
+     * Default cluster template revision
      * 
      */
     @Import(name="default")
     private @Nullable Output<Boolean> default_;
 
     /**
-     * @return Default variable value (string)
+     * @return Default cluster template revision
      * 
      */
     public Optional<Output<Boolean>> default_() {
@@ -83,14 +83,14 @@ public final class ClusterTemplateTemplateRevisionArgs extends com.pulumi.resour
     }
 
     /**
-     * Enable cluster template revision. Default `true` (bool)
+     * Enable cluster template revision
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable cluster template revision. Default `true` (bool)
+     * @return Enable cluster template revision
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -98,14 +98,14 @@ public final class ClusterTemplateTemplateRevisionArgs extends com.pulumi.resour
     }
 
     /**
-     * The cluster template revision ID (string)
+     * (Computed) The ID of the resource (string)
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return The cluster template revision ID (string)
+     * @return (Computed) The ID of the resource (string)
      * 
      */
     public Optional<Output<String>> id() {
@@ -143,14 +143,14 @@ public final class ClusterTemplateTemplateRevisionArgs extends com.pulumi.resour
     }
 
     /**
-     * Cluster template questions (list)
+     * Cluster template questions
      * 
      */
     @Import(name="questions")
     private @Nullable Output<List<ClusterTemplateTemplateRevisionQuestionArgs>> questions;
 
     /**
-     * @return Cluster template questions (list)
+     * @return Cluster template questions
      * 
      */
     public Optional<Output<List<ClusterTemplateTemplateRevisionQuestionArgs>>> questions() {
@@ -211,7 +211,7 @@ public final class ClusterTemplateTemplateRevisionArgs extends com.pulumi.resour
         }
 
         /**
-         * @param clusterConfig Cluster configuration (list maxitem: 1)
+         * @param clusterConfig Cluster configuration
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class ClusterTemplateTemplateRevisionArgs extends com.pulumi.resour
         }
 
         /**
-         * @param clusterConfig Cluster configuration (list maxitem: 1)
+         * @param clusterConfig Cluster configuration
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class ClusterTemplateTemplateRevisionArgs extends com.pulumi.resour
         }
 
         /**
-         * @param clusterTemplateId Cluster template ID (string)
+         * @param clusterTemplateId Cluster template ID
          * 
          * @return builder
          * 
@@ -243,7 +243,7 @@ public final class ClusterTemplateTemplateRevisionArgs extends com.pulumi.resour
         }
 
         /**
-         * @param clusterTemplateId Cluster template ID (string)
+         * @param clusterTemplateId Cluster template ID
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class ClusterTemplateTemplateRevisionArgs extends com.pulumi.resour
         }
 
         /**
-         * @param default_ Default variable value (string)
+         * @param default_ Default cluster template revision
          * 
          * @return builder
          * 
@@ -264,7 +264,7 @@ public final class ClusterTemplateTemplateRevisionArgs extends com.pulumi.resour
         }
 
         /**
-         * @param default_ Default variable value (string)
+         * @param default_ Default cluster template revision
          * 
          * @return builder
          * 
@@ -274,7 +274,7 @@ public final class ClusterTemplateTemplateRevisionArgs extends com.pulumi.resour
         }
 
         /**
-         * @param enabled Enable cluster template revision. Default `true` (bool)
+         * @param enabled Enable cluster template revision
          * 
          * @return builder
          * 
@@ -285,7 +285,7 @@ public final class ClusterTemplateTemplateRevisionArgs extends com.pulumi.resour
         }
 
         /**
-         * @param enabled Enable cluster template revision. Default `true` (bool)
+         * @param enabled Enable cluster template revision
          * 
          * @return builder
          * 
@@ -295,7 +295,7 @@ public final class ClusterTemplateTemplateRevisionArgs extends com.pulumi.resour
         }
 
         /**
-         * @param id The cluster template revision ID (string)
+         * @param id (Computed) The ID of the resource (string)
          * 
          * @return builder
          * 
@@ -306,7 +306,7 @@ public final class ClusterTemplateTemplateRevisionArgs extends com.pulumi.resour
         }
 
         /**
-         * @param id The cluster template revision ID (string)
+         * @param id (Computed) The ID of the resource (string)
          * 
          * @return builder
          * 
@@ -358,7 +358,7 @@ public final class ClusterTemplateTemplateRevisionArgs extends com.pulumi.resour
         }
 
         /**
-         * @param questions Cluster template questions (list)
+         * @param questions Cluster template questions
          * 
          * @return builder
          * 
@@ -369,7 +369,7 @@ public final class ClusterTemplateTemplateRevisionArgs extends com.pulumi.resour
         }
 
         /**
-         * @param questions Cluster template questions (list)
+         * @param questions Cluster template questions
          * 
          * @return builder
          * 
@@ -379,7 +379,7 @@ public final class ClusterTemplateTemplateRevisionArgs extends com.pulumi.resour
         }
 
         /**
-         * @param questions Cluster template questions (list)
+         * @param questions Cluster template questions
          * 
          * @return builder
          * 

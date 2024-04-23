@@ -17,14 +17,14 @@ public final class CloudCredentialAmazonec2CredentialConfigArgs extends com.pulu
     public static final CloudCredentialAmazonec2CredentialConfigArgs Empty = new CloudCredentialAmazonec2CredentialConfigArgs();
 
     /**
-     * AWS access key (string)
+     * AWS Access Key
      * 
      */
     @Import(name="accessKey", required=true)
     private Output<String> accessKey;
 
     /**
-     * @return AWS access key (string)
+     * @return AWS Access Key
      * 
      */
     public Output<String> accessKey() {
@@ -32,14 +32,14 @@ public final class CloudCredentialAmazonec2CredentialConfigArgs extends com.pulu
     }
 
     /**
-     * AWS default region (string)
+     * AWS default region
      * 
      */
     @Import(name="defaultRegion")
     private @Nullable Output<String> defaultRegion;
 
     /**
-     * @return AWS default region (string)
+     * @return AWS default region
      * 
      */
     public Optional<Output<String>> defaultRegion() {
@@ -47,14 +47,14 @@ public final class CloudCredentialAmazonec2CredentialConfigArgs extends com.pulu
     }
 
     /**
-     * AWS secret key (string)
+     * AWS Secret Key
      * 
      */
     @Import(name="secretKey", required=true)
     private Output<String> secretKey;
 
     /**
-     * @return AWS secret key (string)
+     * @return AWS Secret Key
      * 
      */
     public Output<String> secretKey() {
@@ -88,7 +88,7 @@ public final class CloudCredentialAmazonec2CredentialConfigArgs extends com.pulu
         }
 
         /**
-         * @param accessKey AWS access key (string)
+         * @param accessKey AWS Access Key
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class CloudCredentialAmazonec2CredentialConfigArgs extends com.pulu
         }
 
         /**
-         * @param accessKey AWS access key (string)
+         * @param accessKey AWS Access Key
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class CloudCredentialAmazonec2CredentialConfigArgs extends com.pulu
         }
 
         /**
-         * @param defaultRegion AWS default region (string)
+         * @param defaultRegion AWS default region
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class CloudCredentialAmazonec2CredentialConfigArgs extends com.pulu
         }
 
         /**
-         * @param defaultRegion AWS default region (string)
+         * @param defaultRegion AWS default region
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class CloudCredentialAmazonec2CredentialConfigArgs extends com.pulu
         }
 
         /**
-         * @param secretKey AWS secret key (string)
+         * @param secretKey AWS Secret Key
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class CloudCredentialAmazonec2CredentialConfigArgs extends com.pulu
         }
 
         /**
-         * @param secretKey AWS secret key (string)
+         * @param secretKey AWS Secret Key
          * 
          * @return builder
          * 

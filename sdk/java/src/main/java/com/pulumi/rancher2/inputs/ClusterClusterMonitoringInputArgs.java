@@ -18,14 +18,14 @@ public final class ClusterClusterMonitoringInputArgs extends com.pulumi.resource
     public static final ClusterClusterMonitoringInputArgs Empty = new ClusterClusterMonitoringInputArgs();
 
     /**
-     * Key/value answers for monitor input (map)
+     * Answers for monitor input
      * 
      */
     @Import(name="answers")
     private @Nullable Output<Map<String,Object>> answers;
 
     /**
-     * @return Key/value answers for monitor input (map)
+     * @return Answers for monitor input
      * 
      */
     public Optional<Output<Map<String,Object>>> answers() {
@@ -33,14 +33,14 @@ public final class ClusterClusterMonitoringInputArgs extends com.pulumi.resource
     }
 
     /**
-     * rancher-monitoring chart version (string)
+     * Monitoring version
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return rancher-monitoring chart version (string)
+     * @return Monitoring version
      * 
      */
     public Optional<Output<String>> version() {
@@ -73,7 +73,7 @@ public final class ClusterClusterMonitoringInputArgs extends com.pulumi.resource
         }
 
         /**
-         * @param answers Key/value answers for monitor input (map)
+         * @param answers Answers for monitor input
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class ClusterClusterMonitoringInputArgs extends com.pulumi.resource
         }
 
         /**
-         * @param answers Key/value answers for monitor input (map)
+         * @param answers Answers for monitor input
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class ClusterClusterMonitoringInputArgs extends com.pulumi.resource
         }
 
         /**
-         * @param version rancher-monitoring chart version (string)
+         * @param version Monitoring version
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class ClusterClusterMonitoringInputArgs extends com.pulumi.resource
         }
 
         /**
-         * @param version rancher-monitoring chart version (string)
+         * @param version Monitoring version
          * 
          * @return builder
          * 

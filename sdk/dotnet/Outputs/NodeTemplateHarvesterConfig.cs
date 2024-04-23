@@ -14,63 +14,63 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class NodeTemplateHarvesterConfig
     {
         /// <summary>
-        /// vSphere CPU number for docker VM. Default `2` (string)
+        /// CPU count
         /// </summary>
         public readonly string? CpuCount;
         /// <summary>
-        /// Use `disk_info` instead
+        /// Disk bus
         /// </summary>
         public readonly string? DiskBus;
         /// <summary>
-        /// A JSON string specifying info for the disks e.g. `{\"disks\":[{\"imageName\":\"harvester-public/image-57hzg\",\"bootOrder\":1,\"size\":40},{\"storageClassName\":\"node-driver-test\",\"bootOrder\":2,\"size\":1}]}` (string)
+        /// A JSON string specifying info for the disks e.g. `{"disks":[{"imageName":"harvester-public/image-57hzg","bootOrder":1,"size":40},{"storageClassName":"node-driver-test","bootOrder":2,"size":1}]}`
         /// </summary>
         public readonly string? DiskInfo;
         /// <summary>
-        /// vSphere size of disk for docker VM (in MB). Default `20480` (string)
+        /// Disk size (in GiB)
         /// </summary>
         public readonly string? DiskSize;
         /// <summary>
-        /// OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+        /// Image name
         /// </summary>
         public readonly string? ImageName;
         /// <summary>
-        /// vSphere size of memory for docker VM (in MB). Default `2048` (string)
+        /// Memory size (in GiB)
         /// </summary>
         public readonly string? MemorySize;
         /// <summary>
-        /// NetworkData content of cloud-init, base64 is supported (string)
+        /// NetworkData content of cloud-init, base64 is supported
         /// </summary>
         public readonly string? NetworkData;
         /// <summary>
-        /// A JSON string specifying info for the networks e.g. `{\"interfaces\":[{\"networkName\":\"harvester-public/vlan1\"},{\"networkName\":\"harvester-public/vlan2\"}]}` (string)
+        /// A JSON string specifying info for the networks e.g. `{"interfaces":[{"networkName":"harvester-public/vlan1"},{"networkName":"harvester-public/vlan2"}]}`
         /// </summary>
         public readonly string? NetworkInfo;
         /// <summary>
-        /// Use `network_info` instead
+        /// Network model
         /// </summary>
         public readonly string? NetworkModel;
         /// <summary>
-        /// Opennebula network to connect the machine to. Conflicts with `network_id` (string)
+        /// Network name
         /// </summary>
         public readonly string? NetworkName;
         /// <summary>
-        /// If using a non-B2D image you can specify the ssh password. Default `tcuser`. From Rancher v2.3.3 (string)
+        /// SSH password
         /// </summary>
         public readonly string? SshPassword;
         /// <summary>
-        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        /// SSH username
         /// </summary>
         public readonly string SshUser;
         /// <summary>
-        /// UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata (string)
+        /// UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata
         /// </summary>
         public readonly string? UserData;
         /// <summary>
-        /// Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 and above (string)
+        /// VM affinity, base64 is supported
         /// </summary>
         public readonly string? VmAffinity;
         /// <summary>
-        /// Virtual machine namespace e.g. `default` (string)
+        /// Virtual machine namespace
         /// </summary>
         public readonly string VmNamespace;
 

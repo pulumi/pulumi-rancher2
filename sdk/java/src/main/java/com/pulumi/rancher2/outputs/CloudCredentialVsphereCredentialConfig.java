@@ -13,50 +13,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CloudCredentialVsphereCredentialConfig {
     /**
-     * @return vSphere password (string)
+     * @return vSphere password
      * 
      */
     private String password;
     /**
-     * @return vSphere username (string)
+     * @return vSphere username
      * 
      */
     private String username;
     /**
-     * @return vSphere IP/hostname for vCenter (string)
+     * @return vSphere IP/hostname for vCenter
      * 
      */
     private String vcenter;
     /**
-     * @return vSphere Port for vCenter. Default `443` (string)
+     * @return vSphere Port for vCenter
      * 
      */
     private @Nullable String vcenterPort;
 
     private CloudCredentialVsphereCredentialConfig() {}
     /**
-     * @return vSphere password (string)
+     * @return vSphere password
      * 
      */
     public String password() {
         return this.password;
     }
     /**
-     * @return vSphere username (string)
+     * @return vSphere username
      * 
      */
     public String username() {
         return this.username;
     }
     /**
-     * @return vSphere IP/hostname for vCenter (string)
+     * @return vSphere IP/hostname for vCenter
      * 
      */
     public String vcenter() {
         return this.vcenter;
     }
     /**
-     * @return vSphere Port for vCenter. Default `443` (string)
+     * @return vSphere Port for vCenter
      * 
      */
     public Optional<String> vcenterPort() {

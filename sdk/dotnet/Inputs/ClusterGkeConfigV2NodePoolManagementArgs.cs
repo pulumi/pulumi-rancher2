@@ -13,13 +13,13 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterGkeConfigV2NodePoolManagementArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable GKE node pool config management auto repair. Default: `false` (bool)
+        /// Enable GKE node pool config management auto repair
         /// </summary>
         [Input("autoRepair")]
         public Input<bool>? AutoRepair { get; set; }
 
         /// <summary>
-        /// Enable GKE node pool config management auto upgrade. Default: `false` (bool)
+        /// Enable GKE node pool config management auto upgrade
         /// </summary>
         [Input("autoUpgrade")]
         public Input<bool>? AutoUpgrade { get; set; }

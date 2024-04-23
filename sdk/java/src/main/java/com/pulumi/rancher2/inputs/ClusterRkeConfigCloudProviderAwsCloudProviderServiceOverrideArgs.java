@@ -16,92 +16,44 @@ public final class ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideA
 
     public static final ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs Empty = new ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs();
 
-    /**
-     * The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
-     * 
-     */
     @Import(name="region")
     private @Nullable Output<String> region;
 
-    /**
-     * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
-     * 
-     */
     public Optional<Output<String>> region() {
         return Optional.ofNullable(this.region);
     }
 
-    /**
-     * (string)
-     * 
-     */
     @Import(name="service", required=true)
     private Output<String> service;
 
-    /**
-     * @return (string)
-     * 
-     */
     public Output<String> service() {
         return this.service;
     }
 
-    /**
-     * (string)
-     * 
-     */
     @Import(name="signingMethod")
     private @Nullable Output<String> signingMethod;
 
-    /**
-     * @return (string)
-     * 
-     */
     public Optional<Output<String>> signingMethod() {
         return Optional.ofNullable(this.signingMethod);
     }
 
-    /**
-     * (string)
-     * 
-     */
     @Import(name="signingName")
     private @Nullable Output<String> signingName;
 
-    /**
-     * @return (string)
-     * 
-     */
     public Optional<Output<String>> signingName() {
         return Optional.ofNullable(this.signingName);
     }
 
-    /**
-     * (string)
-     * 
-     */
     @Import(name="signingRegion")
     private @Nullable Output<String> signingRegion;
 
-    /**
-     * @return (string)
-     * 
-     */
     public Optional<Output<String>> signingRegion() {
         return Optional.ofNullable(this.signingRegion);
     }
 
-    /**
-     * Registry URL (string)
-     * 
-     */
     @Import(name="url")
     private @Nullable Output<String> url;
 
-    /**
-     * @return Registry URL (string)
-     * 
-     */
     public Optional<Output<String>> url() {
         return Optional.ofNullable(this.url);
     }
@@ -135,128 +87,56 @@ public final class ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideA
             $ = new ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param region The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder region(@Nullable Output<String> region) {
             $.region = region;
             return this;
         }
 
-        /**
-         * @param region The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder region(String region) {
             return region(Output.of(region));
         }
 
-        /**
-         * @param service (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder service(Output<String> service) {
             $.service = service;
             return this;
         }
 
-        /**
-         * @param service (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder service(String service) {
             return service(Output.of(service));
         }
 
-        /**
-         * @param signingMethod (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder signingMethod(@Nullable Output<String> signingMethod) {
             $.signingMethod = signingMethod;
             return this;
         }
 
-        /**
-         * @param signingMethod (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder signingMethod(String signingMethod) {
             return signingMethod(Output.of(signingMethod));
         }
 
-        /**
-         * @param signingName (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder signingName(@Nullable Output<String> signingName) {
             $.signingName = signingName;
             return this;
         }
 
-        /**
-         * @param signingName (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder signingName(String signingName) {
             return signingName(Output.of(signingName));
         }
 
-        /**
-         * @param signingRegion (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder signingRegion(@Nullable Output<String> signingRegion) {
             $.signingRegion = signingRegion;
             return this;
         }
 
-        /**
-         * @param signingRegion (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder signingRegion(String signingRegion) {
             return signingRegion(Output.of(signingRegion));
         }
 
-        /**
-         * @param url Registry URL (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder url(@Nullable Output<String> url) {
             $.url = url;
             return this;
         }
 
-        /**
-         * @param url Registry URL (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder url(String url) {
             return url(Output.of(url));
         }

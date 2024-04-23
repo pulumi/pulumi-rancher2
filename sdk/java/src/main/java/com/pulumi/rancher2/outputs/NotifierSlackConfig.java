@@ -13,38 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NotifierSlackConfig {
     /**
-     * @return Wechat default recipient (string)
+     * @return Slack default channel
      * 
      */
     private String defaultRecipient;
     /**
-     * @return Wechat proxy url (string)
+     * @return Slack proxy URL
      * 
      */
     private @Nullable String proxyUrl;
     /**
-     * @return Slack url (string)
+     * @return Slack URL
      * 
      */
     private String url;
 
     private NotifierSlackConfig() {}
     /**
-     * @return Wechat default recipient (string)
+     * @return Slack default channel
      * 
      */
     public String defaultRecipient() {
         return this.defaultRecipient;
     }
     /**
-     * @return Wechat proxy url (string)
+     * @return Slack proxy URL
      * 
      */
     public Optional<String> proxyUrl() {
         return Optional.ofNullable(this.proxyUrl);
     }
     /**
-     * @return Slack url (string)
+     * @return Slack URL
      * 
      */
     public String url() {

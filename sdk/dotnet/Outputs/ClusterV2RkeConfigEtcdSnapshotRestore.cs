@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterV2RkeConfigEtcdSnapshotRestore
     {
         /// <summary>
-        /// ETCD snapshot desired generation.
+        /// ETCD snapshot desired generation
         /// </summary>
         public readonly int Generation;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// ETCD restore RKE config (set to none, all, or kubernetesVersion).
+        /// ETCD restore RKE config (set to none, all, or kubernetesVersion)
         /// </summary>
         public readonly string? RestoreRkeConfig;
 

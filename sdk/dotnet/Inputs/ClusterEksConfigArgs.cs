@@ -16,7 +16,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _accessKey;
 
         /// <summary>
-        /// The AWS Client ID to use (string)
+        /// The AWS Client ID to use
         /// </summary>
         public Input<string>? AccessKey
         {
@@ -29,19 +29,19 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// AMI ID to use for the worker nodes instead of the default (string)
+        /// A custom AMI ID to use for the worker nodes instead of the default
         /// </summary>
         [Input("ami")]
         public Input<string>? Ami { get; set; }
 
         /// <summary>
-        /// Associate public ip EKS worker nodes. Default `true` (bool)
+        /// Associate public ip EKS worker nodes
         /// </summary>
         [Input("associateWorkerNodePublicIp")]
         public Input<bool>? AssociateWorkerNodePublicIp { get; set; }
 
         /// <summary>
-        /// The desired number of worker nodes. For Rancher v2.3.x and above. Default `3` (int)
+        /// The desired number of worker nodes
         /// </summary>
         [Input("desiredNodes")]
         public Input<int>? DesiredNodes { get; set; }
@@ -53,43 +53,43 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? EbsEncryption { get; set; }
 
         /// <summary>
-        /// The EKS node group instance type. Default: `t3.medium` (string)
+        /// The type of machine to use for worker nodes
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
 
         /// <summary>
-        /// Allow user to specify key name to use. For Rancher v2.2.7 and above (string)
+        /// Allow user to specify key name to use
         /// </summary>
         [Input("keyPairName")]
         public Input<string>? KeyPairName { get; set; }
 
         /// <summary>
-        /// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        /// The kubernetes master version
         /// </summary>
         [Input("kubernetesVersion", required: true)]
         public Input<string> KubernetesVersion { get; set; } = null!;
 
         /// <summary>
-        /// The maximum number of worker nodes. Default `3` (int)
+        /// The maximum number of worker nodes
         /// </summary>
         [Input("maximumNodes")]
         public Input<int>? MaximumNodes { get; set; }
 
         /// <summary>
-        /// The minimum number of worker nodes. Default `1` (int)
+        /// The minimum number of worker nodes
         /// </summary>
         [Input("minimumNodes")]
         public Input<int>? MinimumNodes { get; set; }
 
         /// <summary>
-        /// The volume size for each node. Default `20` (int)
+        /// The volume size for each node
         /// </summary>
         [Input("nodeVolumeSize")]
         public Input<int>? NodeVolumeSize { get; set; }
 
         /// <summary>
-        /// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+        /// The AWS Region to create the EKS cluster in
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -98,7 +98,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _secretKey;
 
         /// <summary>
-        /// The AWS Client Secret associated with the Client ID (string)
+        /// The AWS Client Secret associated with the Client ID
         /// </summary>
         public Input<string>? SecretKey
         {
@@ -114,7 +114,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _securityGroups;
 
         /// <summary>
-        /// List of security groups to use for the cluster (list)
+        /// List of security groups to use for the cluster
         /// </summary>
         public InputList<string> SecurityGroups
         {
@@ -123,7 +123,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// The AWS service role to use (string)
+        /// The service role to use to perform the cluster operations in AWS
         /// </summary>
         [Input("serviceRole")]
         public Input<string>? ServiceRole { get; set; }
@@ -132,7 +132,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _sessionToken;
 
         /// <summary>
-        /// A session token to use with the client key and secret if applicable (string)
+        /// A session token to use with the client key and secret if applicable
         /// </summary>
         public Input<string>? SessionToken
         {
@@ -148,7 +148,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _subnets;
 
         /// <summary>
-        /// The EKS node group subnets (list string)
+        /// List of subnets in the virtual network to use
         /// </summary>
         public InputList<string> Subnets
         {
@@ -157,13 +157,13 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// The EKS node group user data (string)
+        /// Pass user-data to the nodes to perform automated configuration tasks
         /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }
 
         /// <summary>
-        /// The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
+        /// The name of the virtual network to use
         /// </summary>
         [Input("virtualNetwork")]
         public Input<string>? VirtualNetwork { get; set; }

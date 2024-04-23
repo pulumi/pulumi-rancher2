@@ -18,14 +18,14 @@ public final class PodSecurityPolicyTemplateSupplementalGroupArgs extends com.pu
     public static final PodSecurityPolicyTemplateSupplementalGroupArgs Empty = new PodSecurityPolicyTemplateSupplementalGroupArgs();
 
     /**
-     * (list)
+     * ranges are the allowed ranges of supplemental groups.  If you would like to force a single supplemental group then supply a single range with the same start and end. Required for MustRunAs.
      * 
      */
     @Import(name="ranges")
     private @Nullable Output<List<PodSecurityPolicyTemplateSupplementalGroupRangeArgs>> ranges;
 
     /**
-     * @return (list)
+     * @return ranges are the allowed ranges of supplemental groups.  If you would like to force a single supplemental group then supply a single range with the same start and end. Required for MustRunAs.
      * 
      */
     public Optional<Output<List<PodSecurityPolicyTemplateSupplementalGroupRangeArgs>>> ranges() {
@@ -33,14 +33,14 @@ public final class PodSecurityPolicyTemplateSupplementalGroupArgs extends com.pu
     }
 
     /**
-     * (string)
+     * rule is the strategy that will dictate what supplemental groups is used in the SecurityContext.
      * 
      */
     @Import(name="rule")
     private @Nullable Output<String> rule;
 
     /**
-     * @return (string)
+     * @return rule is the strategy that will dictate what supplemental groups is used in the SecurityContext.
      * 
      */
     public Optional<Output<String>> rule() {
@@ -73,7 +73,7 @@ public final class PodSecurityPolicyTemplateSupplementalGroupArgs extends com.pu
         }
 
         /**
-         * @param ranges (list)
+         * @param ranges ranges are the allowed ranges of supplemental groups.  If you would like to force a single supplemental group then supply a single range with the same start and end. Required for MustRunAs.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class PodSecurityPolicyTemplateSupplementalGroupArgs extends com.pu
         }
 
         /**
-         * @param ranges (list)
+         * @param ranges ranges are the allowed ranges of supplemental groups.  If you would like to force a single supplemental group then supply a single range with the same start and end. Required for MustRunAs.
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class PodSecurityPolicyTemplateSupplementalGroupArgs extends com.pu
         }
 
         /**
-         * @param ranges (list)
+         * @param ranges ranges are the allowed ranges of supplemental groups.  If you would like to force a single supplemental group then supply a single range with the same start and end. Required for MustRunAs.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class PodSecurityPolicyTemplateSupplementalGroupArgs extends com.pu
         }
 
         /**
-         * @param rule (string)
+         * @param rule rule is the strategy that will dictate what supplemental groups is used in the SecurityContext.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class PodSecurityPolicyTemplateSupplementalGroupArgs extends com.pu
         }
 
         /**
-         * @param rule (string)
+         * @param rule rule is the strategy that will dictate what supplemental groups is used in the SecurityContext.
          * 
          * @return builder
          * 

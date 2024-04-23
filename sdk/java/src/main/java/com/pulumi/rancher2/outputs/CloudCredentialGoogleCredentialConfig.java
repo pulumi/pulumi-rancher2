@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class CloudCredentialGoogleCredentialConfig {
     /**
-     * @return Google auth encoded json (string)
+     * @return Google auth encoded json
      * 
      */
     private String authEncodedJson;
 
     private CloudCredentialGoogleCredentialConfig() {}
     /**
-     * @return Google auth encoded json (string)
+     * @return Google auth encoded json
      * 
      */
     public String authEncodedJson() {

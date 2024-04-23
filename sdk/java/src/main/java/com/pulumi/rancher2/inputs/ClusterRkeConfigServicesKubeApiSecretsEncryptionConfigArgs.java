@@ -16,32 +16,16 @@ public final class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs ex
 
     public static final ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs Empty = new ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs();
 
-    /**
-     * Secrets encryption yaml encoded custom configuration. `&#34;apiVersion&#34;` and `&#34;kind&#34;:&#34;EncryptionConfiguration&#34;` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/) (string) Ex:
-     * 
-     */
     @Import(name="customConfig")
     private @Nullable Output<String> customConfig;
 
-    /**
-     * @return Secrets encryption yaml encoded custom configuration. `&#34;apiVersion&#34;` and `&#34;kind&#34;:&#34;EncryptionConfiguration&#34;` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/) (string) Ex:
-     * 
-     */
     public Optional<Output<String>> customConfig() {
         return Optional.ofNullable(this.customConfig);
     }
 
-    /**
-     * Enable the authorized cluster endpoint. Default `true` (bool)
-     * 
-     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
-    /**
-     * @return Enable the authorized cluster endpoint. Default `true` (bool)
-     * 
-     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -71,44 +55,20 @@ public final class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs ex
             $ = new ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param customConfig Secrets encryption yaml encoded custom configuration. `&#34;apiVersion&#34;` and `&#34;kind&#34;:&#34;EncryptionConfiguration&#34;` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/) (string) Ex:
-         * 
-         * @return builder
-         * 
-         */
         public Builder customConfig(@Nullable Output<String> customConfig) {
             $.customConfig = customConfig;
             return this;
         }
 
-        /**
-         * @param customConfig Secrets encryption yaml encoded custom configuration. `&#34;apiVersion&#34;` and `&#34;kind&#34;:&#34;EncryptionConfiguration&#34;` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/) (string) Ex:
-         * 
-         * @return builder
-         * 
-         */
         public Builder customConfig(String customConfig) {
             return customConfig(Output.of(customConfig));
         }
 
-        /**
-         * @param enabled Enable the authorized cluster endpoint. Default `true` (bool)
-         * 
-         * @return builder
-         * 
-         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
-        /**
-         * @param enabled Enable the authorized cluster endpoint. Default `true` (bool)
-         * 
-         * @return builder
-         * 
-         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

@@ -13,9 +13,6 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterRkeConfigNetworkCalicoNetworkProvider
     {
-        /// <summary>
-        /// RKE options for Calico network provider (string)
-        /// </summary>
         public readonly string? CloudProvider;
 
         [OutputConstructor]

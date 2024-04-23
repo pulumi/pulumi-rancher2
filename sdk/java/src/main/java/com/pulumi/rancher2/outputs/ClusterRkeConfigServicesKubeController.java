@@ -14,77 +14,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterRkeConfigServicesKubeController {
-    /**
-     * @return Cluster CIDR option for kube controller service (string)
-     * 
-     */
     private @Nullable String clusterCidr;
-    /**
-     * @return Extra arguments for scheduler service (map)
-     * 
-     */
     private @Nullable Map<String,Object> extraArgs;
-    /**
-     * @return Extra binds for scheduler service (list)
-     * 
-     */
     private @Nullable List<String> extraBinds;
-    /**
-     * @return Extra environment for scheduler service (list)
-     * 
-     */
     private @Nullable List<String> extraEnvs;
-    /**
-     * @return Docker image for scheduler service (string)
-     * 
-     */
     private @Nullable String image;
-    /**
-     * @return Service Cluster ip Range option for kube controller service (string)
-     * 
-     */
     private @Nullable String serviceClusterIpRange;
 
     private ClusterRkeConfigServicesKubeController() {}
-    /**
-     * @return Cluster CIDR option for kube controller service (string)
-     * 
-     */
     public Optional<String> clusterCidr() {
         return Optional.ofNullable(this.clusterCidr);
     }
-    /**
-     * @return Extra arguments for scheduler service (map)
-     * 
-     */
     public Map<String,Object> extraArgs() {
         return this.extraArgs == null ? Map.of() : this.extraArgs;
     }
-    /**
-     * @return Extra binds for scheduler service (list)
-     * 
-     */
     public List<String> extraBinds() {
         return this.extraBinds == null ? List.of() : this.extraBinds;
     }
-    /**
-     * @return Extra environment for scheduler service (list)
-     * 
-     */
     public List<String> extraEnvs() {
         return this.extraEnvs == null ? List.of() : this.extraEnvs;
     }
-    /**
-     * @return Docker image for scheduler service (string)
-     * 
-     */
     public Optional<String> image() {
         return Optional.ofNullable(this.image);
     }
-    /**
-     * @return Service Cluster ip Range option for kube controller service (string)
-     * 
-     */
     public Optional<String> serviceClusterIpRange() {
         return Optional.ofNullable(this.serviceClusterIpRange);
     }

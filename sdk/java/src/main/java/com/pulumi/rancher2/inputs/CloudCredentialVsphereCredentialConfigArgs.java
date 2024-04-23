@@ -17,14 +17,14 @@ public final class CloudCredentialVsphereCredentialConfigArgs extends com.pulumi
     public static final CloudCredentialVsphereCredentialConfigArgs Empty = new CloudCredentialVsphereCredentialConfigArgs();
 
     /**
-     * vSphere password (string)
+     * vSphere password
      * 
      */
     @Import(name="password", required=true)
     private Output<String> password;
 
     /**
-     * @return vSphere password (string)
+     * @return vSphere password
      * 
      */
     public Output<String> password() {
@@ -32,14 +32,14 @@ public final class CloudCredentialVsphereCredentialConfigArgs extends com.pulumi
     }
 
     /**
-     * vSphere username (string)
+     * vSphere username
      * 
      */
     @Import(name="username", required=true)
     private Output<String> username;
 
     /**
-     * @return vSphere username (string)
+     * @return vSphere username
      * 
      */
     public Output<String> username() {
@@ -47,14 +47,14 @@ public final class CloudCredentialVsphereCredentialConfigArgs extends com.pulumi
     }
 
     /**
-     * vSphere IP/hostname for vCenter (string)
+     * vSphere IP/hostname for vCenter
      * 
      */
     @Import(name="vcenter", required=true)
     private Output<String> vcenter;
 
     /**
-     * @return vSphere IP/hostname for vCenter (string)
+     * @return vSphere IP/hostname for vCenter
      * 
      */
     public Output<String> vcenter() {
@@ -62,14 +62,14 @@ public final class CloudCredentialVsphereCredentialConfigArgs extends com.pulumi
     }
 
     /**
-     * vSphere Port for vCenter. Default `443` (string)
+     * vSphere Port for vCenter
      * 
      */
     @Import(name="vcenterPort")
     private @Nullable Output<String> vcenterPort;
 
     /**
-     * @return vSphere Port for vCenter. Default `443` (string)
+     * @return vSphere Port for vCenter
      * 
      */
     public Optional<Output<String>> vcenterPort() {
@@ -104,7 +104,7 @@ public final class CloudCredentialVsphereCredentialConfigArgs extends com.pulumi
         }
 
         /**
-         * @param password vSphere password (string)
+         * @param password vSphere password
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class CloudCredentialVsphereCredentialConfigArgs extends com.pulumi
         }
 
         /**
-         * @param password vSphere password (string)
+         * @param password vSphere password
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class CloudCredentialVsphereCredentialConfigArgs extends com.pulumi
         }
 
         /**
-         * @param username vSphere username (string)
+         * @param username vSphere username
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class CloudCredentialVsphereCredentialConfigArgs extends com.pulumi
         }
 
         /**
-         * @param username vSphere username (string)
+         * @param username vSphere username
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class CloudCredentialVsphereCredentialConfigArgs extends com.pulumi
         }
 
         /**
-         * @param vcenter vSphere IP/hostname for vCenter (string)
+         * @param vcenter vSphere IP/hostname for vCenter
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class CloudCredentialVsphereCredentialConfigArgs extends com.pulumi
         }
 
         /**
-         * @param vcenter vSphere IP/hostname for vCenter (string)
+         * @param vcenter vSphere IP/hostname for vCenter
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class CloudCredentialVsphereCredentialConfigArgs extends com.pulumi
         }
 
         /**
-         * @param vcenterPort vSphere Port for vCenter. Default `443` (string)
+         * @param vcenterPort vSphere Port for vCenter
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class CloudCredentialVsphereCredentialConfigArgs extends com.pulumi
         }
 
         /**
-         * @param vcenterPort vSphere Port for vCenter. Default `443` (string)
+         * @param vcenterPort vSphere Port for vCenter
          * 
          * @return builder
          * 

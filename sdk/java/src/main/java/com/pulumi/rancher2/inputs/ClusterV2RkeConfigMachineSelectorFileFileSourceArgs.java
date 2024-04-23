@@ -17,14 +17,14 @@ public final class ClusterV2RkeConfigMachineSelectorFileFileSourceArgs extends c
     public static final ClusterV2RkeConfigMachineSelectorFileFileSourceArgs Empty = new ClusterV2RkeConfigMachineSelectorFileFileSourceArgs();
 
     /**
-     * Configmap represents a K8s configmap which is the source of files. It is mutually exclusive with secret.
+     * The configmap which is the source of files
      * 
      */
     @Import(name="configmap")
     private @Nullable Output<ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapArgs> configmap;
 
     /**
-     * @return Configmap represents a K8s configmap which is the source of files. It is mutually exclusive with secret.
+     * @return The configmap which is the source of files
      * 
      */
     public Optional<Output<ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapArgs>> configmap() {
@@ -32,14 +32,14 @@ public final class ClusterV2RkeConfigMachineSelectorFileFileSourceArgs extends c
     }
 
     /**
-     * Secret represents a K8s secret which is the source of files. It is mutually exclusive with configmap.
+     * The secret which is the source of files
      * 
      */
     @Import(name="secret")
     private @Nullable Output<ClusterV2RkeConfigMachineSelectorFileFileSourceSecretArgs> secret;
 
     /**
-     * @return Secret represents a K8s secret which is the source of files. It is mutually exclusive with configmap.
+     * @return The secret which is the source of files
      * 
      */
     public Optional<Output<ClusterV2RkeConfigMachineSelectorFileFileSourceSecretArgs>> secret() {
@@ -72,7 +72,7 @@ public final class ClusterV2RkeConfigMachineSelectorFileFileSourceArgs extends c
         }
 
         /**
-         * @param configmap Configmap represents a K8s configmap which is the source of files. It is mutually exclusive with secret.
+         * @param configmap The configmap which is the source of files
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ClusterV2RkeConfigMachineSelectorFileFileSourceArgs extends c
         }
 
         /**
-         * @param configmap Configmap represents a K8s configmap which is the source of files. It is mutually exclusive with secret.
+         * @param configmap The configmap which is the source of files
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class ClusterV2RkeConfigMachineSelectorFileFileSourceArgs extends c
         }
 
         /**
-         * @param secret Secret represents a K8s secret which is the source of files. It is mutually exclusive with configmap.
+         * @param secret The secret which is the source of files
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ClusterV2RkeConfigMachineSelectorFileFileSourceArgs extends c
         }
 
         /**
-         * @param secret Secret represents a K8s secret which is the source of files. It is mutually exclusive with configmap.
+         * @param secret The secret which is the source of files
          * 
          * @return builder
          * 

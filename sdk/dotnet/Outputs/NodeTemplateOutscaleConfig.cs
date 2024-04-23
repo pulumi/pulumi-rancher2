@@ -14,23 +14,23 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class NodeTemplateOutscaleConfig
     {
         /// <summary>
-        /// Outscale Access Key (string)
+        /// Outscale Access Key
         /// </summary>
         public readonly string AccessKey;
         /// <summary>
-        /// Extra tags for all created resources (e.g. key1=value1,key2=value2) (list)
+        /// Extra tags for all created resources (e.g. key1=value1,key2=value2)
         /// </summary>
         public readonly ImmutableArray<string> ExtraTagsAlls;
         /// <summary>
-        /// Extra tags only for instances (e.g. key1=value1,key2=value2) (list)
+        /// Extra tags only for instances (e.g. key1=value1,key2=value2)
         /// </summary>
         public readonly ImmutableArray<string> ExtraTagsInstances;
         /// <summary>
-        /// Outscale VM type. Default `tinav2.c1r2p3` (string)
+        /// Outscale VM type
         /// </summary>
         public readonly string? InstanceType;
         /// <summary>
-        /// AWS region. Default `eu-west-2` (string)
+        /// Outscale Region
         /// </summary>
         public readonly string? Region;
         /// <summary>
@@ -46,15 +46,15 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? RootDiskType;
         /// <summary>
-        /// Outscale Secret Key (string)
+        /// Outscale Secret Key
         /// </summary>
         public readonly string SecretKey;
         /// <summary>
-        /// Ids of user defined Security Groups to add to the machine. (list)
+        /// Ids of user defined Security Groups to add to the machine
         /// </summary>
         public readonly ImmutableArray<string> SecurityGroupIds;
         /// <summary>
-        /// Outscale Machine Image to use as bootstrap for the VM. Default `ami-2cf1fa3e` (string)
+        /// Outscale Machine Image to use as bootstrap for the VM
         /// </summary>
         public readonly string? SourceOmi;
 

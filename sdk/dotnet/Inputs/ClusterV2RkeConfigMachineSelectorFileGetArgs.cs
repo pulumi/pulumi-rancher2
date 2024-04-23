@@ -16,7 +16,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<Inputs.ClusterV2RkeConfigMachineSelectorFileFileSourceGetArgs>? _fileSources;
 
         /// <summary>
-        /// File sources represents the source of the files. Multiple files can be delivered to nodes that match the provided label selector.
+        /// File sources
         /// </summary>
         public InputList<Inputs.ClusterV2RkeConfigMachineSelectorFileFileSourceGetArgs> FileSources
         {
@@ -25,7 +25,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Machine selector label is a label query over a set of resources. The result of match_labels and match_expressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
+        /// Machine label selector
         /// </summary>
         [Input("machineLabelSelector")]
         public Input<Inputs.ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorGetArgs>? MachineLabelSelector { get; set; }

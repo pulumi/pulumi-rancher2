@@ -18,14 +18,14 @@ public final class CloudCredentialS3CredentialConfigArgs extends com.pulumi.reso
     public static final CloudCredentialS3CredentialConfigArgs Empty = new CloudCredentialS3CredentialConfigArgs();
 
     /**
-     * AWS access key (string)
+     * AWS Access Key
      * 
      */
     @Import(name="accessKey", required=true)
     private Output<String> accessKey;
 
     /**
-     * @return AWS access key (string)
+     * @return AWS Access Key
      * 
      */
     public Output<String> accessKey() {
@@ -33,14 +33,14 @@ public final class CloudCredentialS3CredentialConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * AWS default bucket (string)
+     * AWS default bucket
      * 
      */
     @Import(name="defaultBucket")
     private @Nullable Output<String> defaultBucket;
 
     /**
-     * @return AWS default bucket (string)
+     * @return AWS default bucket
      * 
      */
     public Optional<Output<String>> defaultBucket() {
@@ -48,14 +48,14 @@ public final class CloudCredentialS3CredentialConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * AWS default endpoint (string)
+     * AWS default endpoint
      * 
      */
     @Import(name="defaultEndpoint")
     private @Nullable Output<String> defaultEndpoint;
 
     /**
-     * @return AWS default endpoint (string)
+     * @return AWS default endpoint
      * 
      */
     public Optional<Output<String>> defaultEndpoint() {
@@ -63,14 +63,14 @@ public final class CloudCredentialS3CredentialConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * AWS default endpoint CA (string)
+     * AWS default endpoint CA
      * 
      */
     @Import(name="defaultEndpointCa")
     private @Nullable Output<String> defaultEndpointCa;
 
     /**
-     * @return AWS default endpoint CA (string)
+     * @return AWS default endpoint CA
      * 
      */
     public Optional<Output<String>> defaultEndpointCa() {
@@ -78,14 +78,14 @@ public final class CloudCredentialS3CredentialConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * AWS default folder (string)
+     * AWS default folder
      * 
      */
     @Import(name="defaultFolder")
     private @Nullable Output<String> defaultFolder;
 
     /**
-     * @return AWS default folder (string)
+     * @return AWS default folder
      * 
      */
     public Optional<Output<String>> defaultFolder() {
@@ -93,14 +93,14 @@ public final class CloudCredentialS3CredentialConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * AWS default region (string)
+     * AWS default region
      * 
      */
     @Import(name="defaultRegion")
     private @Nullable Output<String> defaultRegion;
 
     /**
-     * @return AWS default region (string)
+     * @return AWS default region
      * 
      */
     public Optional<Output<String>> defaultRegion() {
@@ -108,14 +108,14 @@ public final class CloudCredentialS3CredentialConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * AWS default skip ssl verify. Default: `false` (bool)
+     * AWS default skip ssl verify
      * 
      */
     @Import(name="defaultSkipSslVerify")
     private @Nullable Output<Boolean> defaultSkipSslVerify;
 
     /**
-     * @return AWS default skip ssl verify. Default: `false` (bool)
+     * @return AWS default skip ssl verify
      * 
      */
     public Optional<Output<Boolean>> defaultSkipSslVerify() {
@@ -123,14 +123,14 @@ public final class CloudCredentialS3CredentialConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * AWS secret key (string)
+     * AWS Secret Key
      * 
      */
     @Import(name="secretKey", required=true)
     private Output<String> secretKey;
 
     /**
-     * @return AWS secret key (string)
+     * @return AWS Secret Key
      * 
      */
     public Output<String> secretKey() {
@@ -169,7 +169,7 @@ public final class CloudCredentialS3CredentialConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param accessKey AWS access key (string)
+         * @param accessKey AWS Access Key
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class CloudCredentialS3CredentialConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param accessKey AWS access key (string)
+         * @param accessKey AWS Access Key
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class CloudCredentialS3CredentialConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param defaultBucket AWS default bucket (string)
+         * @param defaultBucket AWS default bucket
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class CloudCredentialS3CredentialConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param defaultBucket AWS default bucket (string)
+         * @param defaultBucket AWS default bucket
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class CloudCredentialS3CredentialConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param defaultEndpoint AWS default endpoint (string)
+         * @param defaultEndpoint AWS default endpoint
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class CloudCredentialS3CredentialConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param defaultEndpoint AWS default endpoint (string)
+         * @param defaultEndpoint AWS default endpoint
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class CloudCredentialS3CredentialConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param defaultEndpointCa AWS default endpoint CA (string)
+         * @param defaultEndpointCa AWS default endpoint CA
          * 
          * @return builder
          * 
@@ -243,7 +243,7 @@ public final class CloudCredentialS3CredentialConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param defaultEndpointCa AWS default endpoint CA (string)
+         * @param defaultEndpointCa AWS default endpoint CA
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class CloudCredentialS3CredentialConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param defaultFolder AWS default folder (string)
+         * @param defaultFolder AWS default folder
          * 
          * @return builder
          * 
@@ -264,7 +264,7 @@ public final class CloudCredentialS3CredentialConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param defaultFolder AWS default folder (string)
+         * @param defaultFolder AWS default folder
          * 
          * @return builder
          * 
@@ -274,7 +274,7 @@ public final class CloudCredentialS3CredentialConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param defaultRegion AWS default region (string)
+         * @param defaultRegion AWS default region
          * 
          * @return builder
          * 
@@ -285,7 +285,7 @@ public final class CloudCredentialS3CredentialConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param defaultRegion AWS default region (string)
+         * @param defaultRegion AWS default region
          * 
          * @return builder
          * 
@@ -295,7 +295,7 @@ public final class CloudCredentialS3CredentialConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param defaultSkipSslVerify AWS default skip ssl verify. Default: `false` (bool)
+         * @param defaultSkipSslVerify AWS default skip ssl verify
          * 
          * @return builder
          * 
@@ -306,7 +306,7 @@ public final class CloudCredentialS3CredentialConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param defaultSkipSslVerify AWS default skip ssl verify. Default: `false` (bool)
+         * @param defaultSkipSslVerify AWS default skip ssl verify
          * 
          * @return builder
          * 
@@ -316,7 +316,7 @@ public final class CloudCredentialS3CredentialConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param secretKey AWS secret key (string)
+         * @param secretKey AWS Secret Key
          * 
          * @return builder
          * 
@@ -327,7 +327,7 @@ public final class CloudCredentialS3CredentialConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param secretKey AWS secret key (string)
+         * @param secretKey AWS Secret Key
          * 
          * @return builder
          * 

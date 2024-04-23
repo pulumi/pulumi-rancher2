@@ -13,21 +13,9 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class NodeTemplateNodeTaint
     {
-        /// <summary>
-        /// Taint effect. Supported values : `"NoExecute" | "NoSchedule" | "PreferNoSchedule"` (string)
-        /// </summary>
         public readonly string? Effect;
-        /// <summary>
-        /// Taint key (string)
-        /// </summary>
         public readonly string Key;
-        /// <summary>
-        /// Taint time added (string)
-        /// </summary>
         public readonly string? TimeAdded;
-        /// <summary>
-        /// Taint value (string)
-        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

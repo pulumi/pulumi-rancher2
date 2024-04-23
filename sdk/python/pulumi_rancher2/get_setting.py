@@ -72,14 +72,12 @@ def get_setting(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
 
     server_image = rancher2.get_setting(name="server-image")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The setting name.
@@ -103,14 +101,12 @@ def get_setting_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
 
     server_image = rancher2.get_setting(name="server-image")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The setting name.

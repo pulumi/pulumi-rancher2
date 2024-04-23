@@ -20,14 +20,14 @@ public final class ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorArgs
     public static final ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorArgs Empty = new ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorArgs();
 
     /**
-     * Match expressions is a list of label selector requirements. The requirements are ANDed.
+     * Label selector match expressions
      * 
      */
     @Import(name="matchExpressions")
     private @Nullable Output<List<ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpressionArgs>> matchExpressions;
 
     /**
-     * @return Match expressions is a list of label selector requirements. The requirements are ANDed.
+     * @return Label selector match expressions
      * 
      */
     public Optional<Output<List<ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpressionArgs>>> matchExpressions() {
@@ -35,14 +35,14 @@ public final class ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorArgs
     }
 
     /**
-     * Machine selector label is a map of {key,value} pairs, the requirements are ANDed.
+     * Label selector match labels
      * 
      */
     @Import(name="matchLabels")
     private @Nullable Output<Map<String,Object>> matchLabels;
 
     /**
-     * @return Machine selector label is a map of {key,value} pairs, the requirements are ANDed.
+     * @return Label selector match labels
      * 
      */
     public Optional<Output<Map<String,Object>>> matchLabels() {
@@ -75,7 +75,7 @@ public final class ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorArgs
         }
 
         /**
-         * @param matchExpressions Match expressions is a list of label selector requirements. The requirements are ANDed.
+         * @param matchExpressions Label selector match expressions
          * 
          * @return builder
          * 
@@ -86,7 +86,7 @@ public final class ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorArgs
         }
 
         /**
-         * @param matchExpressions Match expressions is a list of label selector requirements. The requirements are ANDed.
+         * @param matchExpressions Label selector match expressions
          * 
          * @return builder
          * 
@@ -96,7 +96,7 @@ public final class ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorArgs
         }
 
         /**
-         * @param matchExpressions Match expressions is a list of label selector requirements. The requirements are ANDed.
+         * @param matchExpressions Label selector match expressions
          * 
          * @return builder
          * 
@@ -106,7 +106,7 @@ public final class ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorArgs
         }
 
         /**
-         * @param matchLabels Machine selector label is a map of {key,value} pairs, the requirements are ANDed.
+         * @param matchLabels Label selector match labels
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorArgs
         }
 
         /**
-         * @param matchLabels Machine selector label is a map of {key,value} pairs, the requirements are ANDed.
+         * @param matchLabels Label selector match labels
          * 
          * @return builder
          * 

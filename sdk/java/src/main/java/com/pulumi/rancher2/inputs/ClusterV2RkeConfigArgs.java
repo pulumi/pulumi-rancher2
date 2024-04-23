@@ -28,14 +28,14 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
     public static final ClusterV2RkeConfigArgs Empty = new ClusterV2RkeConfigArgs();
 
     /**
-     * The value of the additional manifest is delivered to the path `/var/lib/rancher/rke2/server/manifests/rancher/addons.yaml` or `/var/lib/rancher/k3s/server/manifests/rancher/addons.yaml` on the control plane nodes.
+     * Cluster V2 additional manifest
      * 
      */
     @Import(name="additionalManifest")
     private @Nullable Output<String> additionalManifest;
 
     /**
-     * @return The value of the additional manifest is delivered to the path `/var/lib/rancher/rke2/server/manifests/rancher/addons.yaml` or `/var/lib/rancher/k3s/server/manifests/rancher/addons.yaml` on the control plane nodes.
+     * @return Cluster V2 additional manifest
      * 
      */
     public Optional<Output<String>> additionalManifest() {
@@ -43,14 +43,14 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The value for the system charts installed by the distribution. For more information about how RKE2 or K3s manage packaged components, please refer to [RKE2 documentation](https://docs.rke2.io/helm) or [K3s documentation](https://docs.k3s.io/installation/packaged-components).
+     * Cluster V2 chart values. It should be in YAML format
      * 
      */
     @Import(name="chartValues")
     private @Nullable Output<String> chartValues;
 
     /**
-     * @return The value for the system charts installed by the distribution. For more information about how RKE2 or K3s manage packaged components, please refer to [RKE2 documentation](https://docs.rke2.io/helm) or [K3s documentation](https://docs.k3s.io/installation/packaged-components).
+     * @return Cluster V2 chart values. It should be in YAML format
      * 
      */
     public Optional<Output<String>> chartValues() {
@@ -58,14 +58,14 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Etcd configures the behavior of the automatic etcd snapshot feature.
+     * Cluster V2 etcd
      * 
      */
     @Import(name="etcd")
     private @Nullable Output<ClusterV2RkeConfigEtcdArgs> etcd;
 
     /**
-     * @return Etcd configures the behavior of the automatic etcd snapshot feature.
+     * @return Cluster V2 etcd
      * 
      */
     public Optional<Output<ClusterV2RkeConfigEtcdArgs>> etcd() {
@@ -73,14 +73,14 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Cluster V2 etcd snapshot create.
+     * Cluster V2 etcd snapshot create
      * 
      */
     @Import(name="etcdSnapshotCreate")
     private @Nullable Output<ClusterV2RkeConfigEtcdSnapshotCreateArgs> etcdSnapshotCreate;
 
     /**
-     * @return Cluster V2 etcd snapshot create.
+     * @return Cluster V2 etcd snapshot create
      * 
      */
     public Optional<Output<ClusterV2RkeConfigEtcdSnapshotCreateArgs>> etcdSnapshotCreate() {
@@ -88,14 +88,14 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Cluster V2 etcd snapshot restore.
+     * Cluster V2 etcd snapshot restore
      * 
      */
     @Import(name="etcdSnapshotRestore")
     private @Nullable Output<ClusterV2RkeConfigEtcdSnapshotRestoreArgs> etcdSnapshotRestore;
 
     /**
-     * @return Cluster V2 etcd snapshot restore.
+     * @return Cluster V2 etcd snapshot restore
      * 
      */
     public Optional<Output<ClusterV2RkeConfigEtcdSnapshotRestoreArgs>> etcdSnapshotRestore() {
@@ -126,14 +126,14 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Machine global config specifies the distribution-specified server configuration applied to all nodes. For the full list of server configurations, please refer to [RKE2 server configuration](https://docs.rke2.io/reference/server_config) or [K3s server configuration](https://docs.k3s.io/cli/server).
+     * Cluster V2 machine global config
      * 
      */
     @Import(name="machineGlobalConfig")
     private @Nullable Output<String> machineGlobalConfig;
 
     /**
-     * @return Machine global config specifies the distribution-specified server configuration applied to all nodes. For the full list of server configurations, please refer to [RKE2 server configuration](https://docs.rke2.io/reference/server_config) or [K3s server configuration](https://docs.k3s.io/cli/server).
+     * @return Cluster V2 machine global config
      * 
      */
     public Optional<Output<String>> machineGlobalConfig() {
@@ -156,14 +156,14 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Cluster V2 machine pools.
+     * Cluster V2 machine pools
      * 
      */
     @Import(name="machinePools")
     private @Nullable Output<List<ClusterV2RkeConfigMachinePoolArgs>> machinePools;
 
     /**
-     * @return Cluster V2 machine pools.
+     * @return Cluster V2 machine pools
      * 
      */
     public Optional<Output<List<ClusterV2RkeConfigMachinePoolArgs>>> machinePools() {
@@ -171,14 +171,14 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Machine selector config is the same as machine_global_config except that a label selector can be specified with the configuration. The configuration will only be applied to nodes that match the provided label selector. The configuration from machine_selector_config takes precedence over the one from machine_global_config. This argument is available in Rancher v2.7.2 and later.
+     * Cluster V2 machine selector config
      * 
      */
     @Import(name="machineSelectorConfigs")
     private @Nullable Output<List<ClusterV2RkeConfigMachineSelectorConfigArgs>> machineSelectorConfigs;
 
     /**
-     * @return Machine selector config is the same as machine_global_config except that a label selector can be specified with the configuration. The configuration will only be applied to nodes that match the provided label selector. The configuration from machine_selector_config takes precedence over the one from machine_global_config. This argument is available in Rancher v2.7.2 and later.
+     * @return Cluster V2 machine selector config
      * 
      */
     public Optional<Output<List<ClusterV2RkeConfigMachineSelectorConfigArgs>>> machineSelectorConfigs() {
@@ -186,14 +186,14 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Machine selector files provide a means to deliver files to nodes so that the files can be in place before initiating RKE2/K3s server or agent processes. Please refer to Rancher documentation for [RKE2 Cluster Configuration Reference](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration#machineselectorfiles) and [K3s Cluster Configuration Reference](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/k3s-cluster-configuration#machineselectorfiles). This argument is available in Rancher v2.7.2 and later.
+     * Cluster V2 machine selector files
      * 
      */
     @Import(name="machineSelectorFiles")
     private @Nullable Output<List<ClusterV2RkeConfigMachineSelectorFileArgs>> machineSelectorFiles;
 
     /**
-     * @return Machine selector files provide a means to deliver files to nodes so that the files can be in place before initiating RKE2/K3s server or agent processes. Please refer to Rancher documentation for [RKE2 Cluster Configuration Reference](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration#machineselectorfiles) and [K3s Cluster Configuration Reference](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/k3s-cluster-configuration#machineselectorfiles). This argument is available in Rancher v2.7.2 and later.
+     * @return Cluster V2 machine selector files
      * 
      */
     public Optional<Output<List<ClusterV2RkeConfigMachineSelectorFileArgs>>> machineSelectorFiles() {
@@ -201,14 +201,14 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Docker registries from which the cluster pulls images.
+     * Cluster V2 registries
      * 
      */
     @Import(name="registries")
     private @Nullable Output<ClusterV2RkeConfigRegistriesArgs> registries;
 
     /**
-     * @return Docker registries from which the cluster pulls images.
+     * @return Cluster V2 registries
      * 
      */
     public Optional<Output<ClusterV2RkeConfigRegistriesArgs>> registries() {
@@ -216,14 +216,14 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Cluster V2 certificate rotation.
+     * Cluster V2 certificate rotation
      * 
      */
     @Import(name="rotateCertificates")
     private @Nullable Output<ClusterV2RkeConfigRotateCertificatesArgs> rotateCertificates;
 
     /**
-     * @return Cluster V2 certificate rotation.
+     * @return Cluster V2 certificate rotation
      * 
      */
     public Optional<Output<ClusterV2RkeConfigRotateCertificatesArgs>> rotateCertificates() {
@@ -231,14 +231,14 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Cluster upgrade strategy.
+     * Cluster V2 upgrade strategy
      * 
      */
     @Import(name="upgradeStrategy")
     private @Nullable Output<ClusterV2RkeConfigUpgradeStrategyArgs> upgradeStrategy;
 
     /**
-     * @return Cluster upgrade strategy.
+     * @return Cluster V2 upgrade strategy
      * 
      */
     public Optional<Output<ClusterV2RkeConfigUpgradeStrategyArgs>> upgradeStrategy() {
@@ -283,7 +283,7 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param additionalManifest The value of the additional manifest is delivered to the path `/var/lib/rancher/rke2/server/manifests/rancher/addons.yaml` or `/var/lib/rancher/k3s/server/manifests/rancher/addons.yaml` on the control plane nodes.
+         * @param additionalManifest Cluster V2 additional manifest
          * 
          * @return builder
          * 
@@ -294,7 +294,7 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param additionalManifest The value of the additional manifest is delivered to the path `/var/lib/rancher/rke2/server/manifests/rancher/addons.yaml` or `/var/lib/rancher/k3s/server/manifests/rancher/addons.yaml` on the control plane nodes.
+         * @param additionalManifest Cluster V2 additional manifest
          * 
          * @return builder
          * 
@@ -304,7 +304,7 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param chartValues The value for the system charts installed by the distribution. For more information about how RKE2 or K3s manage packaged components, please refer to [RKE2 documentation](https://docs.rke2.io/helm) or [K3s documentation](https://docs.k3s.io/installation/packaged-components).
+         * @param chartValues Cluster V2 chart values. It should be in YAML format
          * 
          * @return builder
          * 
@@ -315,7 +315,7 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param chartValues The value for the system charts installed by the distribution. For more information about how RKE2 or K3s manage packaged components, please refer to [RKE2 documentation](https://docs.rke2.io/helm) or [K3s documentation](https://docs.k3s.io/installation/packaged-components).
+         * @param chartValues Cluster V2 chart values. It should be in YAML format
          * 
          * @return builder
          * 
@@ -325,7 +325,7 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param etcd Etcd configures the behavior of the automatic etcd snapshot feature.
+         * @param etcd Cluster V2 etcd
          * 
          * @return builder
          * 
@@ -336,7 +336,7 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param etcd Etcd configures the behavior of the automatic etcd snapshot feature.
+         * @param etcd Cluster V2 etcd
          * 
          * @return builder
          * 
@@ -346,7 +346,7 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param etcdSnapshotCreate Cluster V2 etcd snapshot create.
+         * @param etcdSnapshotCreate Cluster V2 etcd snapshot create
          * 
          * @return builder
          * 
@@ -357,7 +357,7 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param etcdSnapshotCreate Cluster V2 etcd snapshot create.
+         * @param etcdSnapshotCreate Cluster V2 etcd snapshot create
          * 
          * @return builder
          * 
@@ -367,7 +367,7 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param etcdSnapshotRestore Cluster V2 etcd snapshot restore.
+         * @param etcdSnapshotRestore Cluster V2 etcd snapshot restore
          * 
          * @return builder
          * 
@@ -378,7 +378,7 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param etcdSnapshotRestore Cluster V2 etcd snapshot restore.
+         * @param etcdSnapshotRestore Cluster V2 etcd snapshot restore
          * 
          * @return builder
          * 
@@ -417,7 +417,7 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param machineGlobalConfig Machine global config specifies the distribution-specified server configuration applied to all nodes. For the full list of server configurations, please refer to [RKE2 server configuration](https://docs.rke2.io/reference/server_config) or [K3s server configuration](https://docs.k3s.io/cli/server).
+         * @param machineGlobalConfig Cluster V2 machine global config
          * 
          * @return builder
          * 
@@ -428,7 +428,7 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param machineGlobalConfig Machine global config specifies the distribution-specified server configuration applied to all nodes. For the full list of server configurations, please refer to [RKE2 server configuration](https://docs.rke2.io/reference/server_config) or [K3s server configuration](https://docs.k3s.io/cli/server).
+         * @param machineGlobalConfig Cluster V2 machine global config
          * 
          * @return builder
          * 
@@ -469,7 +469,7 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param machinePools Cluster V2 machine pools.
+         * @param machinePools Cluster V2 machine pools
          * 
          * @return builder
          * 
@@ -480,7 +480,7 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param machinePools Cluster V2 machine pools.
+         * @param machinePools Cluster V2 machine pools
          * 
          * @return builder
          * 
@@ -490,7 +490,7 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param machinePools Cluster V2 machine pools.
+         * @param machinePools Cluster V2 machine pools
          * 
          * @return builder
          * 
@@ -500,7 +500,7 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param machineSelectorConfigs Machine selector config is the same as machine_global_config except that a label selector can be specified with the configuration. The configuration will only be applied to nodes that match the provided label selector. The configuration from machine_selector_config takes precedence over the one from machine_global_config. This argument is available in Rancher v2.7.2 and later.
+         * @param machineSelectorConfigs Cluster V2 machine selector config
          * 
          * @return builder
          * 
@@ -511,7 +511,7 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param machineSelectorConfigs Machine selector config is the same as machine_global_config except that a label selector can be specified with the configuration. The configuration will only be applied to nodes that match the provided label selector. The configuration from machine_selector_config takes precedence over the one from machine_global_config. This argument is available in Rancher v2.7.2 and later.
+         * @param machineSelectorConfigs Cluster V2 machine selector config
          * 
          * @return builder
          * 
@@ -521,7 +521,7 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param machineSelectorConfigs Machine selector config is the same as machine_global_config except that a label selector can be specified with the configuration. The configuration will only be applied to nodes that match the provided label selector. The configuration from machine_selector_config takes precedence over the one from machine_global_config. This argument is available in Rancher v2.7.2 and later.
+         * @param machineSelectorConfigs Cluster V2 machine selector config
          * 
          * @return builder
          * 
@@ -531,7 +531,7 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param machineSelectorFiles Machine selector files provide a means to deliver files to nodes so that the files can be in place before initiating RKE2/K3s server or agent processes. Please refer to Rancher documentation for [RKE2 Cluster Configuration Reference](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration#machineselectorfiles) and [K3s Cluster Configuration Reference](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/k3s-cluster-configuration#machineselectorfiles). This argument is available in Rancher v2.7.2 and later.
+         * @param machineSelectorFiles Cluster V2 machine selector files
          * 
          * @return builder
          * 
@@ -542,7 +542,7 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param machineSelectorFiles Machine selector files provide a means to deliver files to nodes so that the files can be in place before initiating RKE2/K3s server or agent processes. Please refer to Rancher documentation for [RKE2 Cluster Configuration Reference](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration#machineselectorfiles) and [K3s Cluster Configuration Reference](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/k3s-cluster-configuration#machineselectorfiles). This argument is available in Rancher v2.7.2 and later.
+         * @param machineSelectorFiles Cluster V2 machine selector files
          * 
          * @return builder
          * 
@@ -552,7 +552,7 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param machineSelectorFiles Machine selector files provide a means to deliver files to nodes so that the files can be in place before initiating RKE2/K3s server or agent processes. Please refer to Rancher documentation for [RKE2 Cluster Configuration Reference](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration#machineselectorfiles) and [K3s Cluster Configuration Reference](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/k3s-cluster-configuration#machineselectorfiles). This argument is available in Rancher v2.7.2 and later.
+         * @param machineSelectorFiles Cluster V2 machine selector files
          * 
          * @return builder
          * 
@@ -562,7 +562,7 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param registries Docker registries from which the cluster pulls images.
+         * @param registries Cluster V2 registries
          * 
          * @return builder
          * 
@@ -573,7 +573,7 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param registries Docker registries from which the cluster pulls images.
+         * @param registries Cluster V2 registries
          * 
          * @return builder
          * 
@@ -583,7 +583,7 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param rotateCertificates Cluster V2 certificate rotation.
+         * @param rotateCertificates Cluster V2 certificate rotation
          * 
          * @return builder
          * 
@@ -594,7 +594,7 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param rotateCertificates Cluster V2 certificate rotation.
+         * @param rotateCertificates Cluster V2 certificate rotation
          * 
          * @return builder
          * 
@@ -604,7 +604,7 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param upgradeStrategy Cluster upgrade strategy.
+         * @param upgradeStrategy Cluster V2 upgrade strategy
          * 
          * @return builder
          * 
@@ -615,7 +615,7 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param upgradeStrategy Cluster upgrade strategy.
+         * @param upgradeStrategy Cluster V2 upgrade strategy
          * 
          * @return builder
          * 

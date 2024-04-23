@@ -143,7 +143,6 @@ def get_etcd_backup(cluster_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
@@ -151,7 +150,6 @@ def get_etcd_backup(cluster_id: Optional[str] = None,
     foo = rancher2.get_etcd_backup(cluster_id="<CLUSTER_ID>",
         name="foo")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: Cluster ID to config Etcd Backup (string)
@@ -184,7 +182,6 @@ def get_etcd_backup_output(cluster_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
@@ -192,7 +189,6 @@ def get_etcd_backup_output(cluster_id: Optional[pulumi.Input[str]] = None,
     foo = rancher2.get_etcd_backup(cluster_id="<CLUSTER_ID>",
         name="foo")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: Cluster ID to config Etcd Backup (string)

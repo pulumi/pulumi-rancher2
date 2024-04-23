@@ -12,7 +12,6 @@ namespace Pulumi.Rancher2
     /// <summary>
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -35,7 +34,6 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [Rancher2ResourceType("rancher2:index/authConfigAzureAd:AuthConfigAzureAd")]
     public partial class AuthConfigAzureAd : global::Pulumi.CustomResource

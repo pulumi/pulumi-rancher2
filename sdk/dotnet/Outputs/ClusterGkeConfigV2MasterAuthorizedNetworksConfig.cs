@@ -14,11 +14,11 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterGkeConfigV2MasterAuthorizedNetworksConfig
     {
         /// <summary>
-        /// The GKE master authorized network config cidr blocks (List)
+        /// The GKE master authorized network config cidr blocks
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock> CidrBlocks;
         /// <summary>
-        /// Enable the authorized cluster endpoint. Default `true` (bool)
+        /// Enable GKE master authorized network config
         /// </summary>
         public readonly bool? Enabled;
 

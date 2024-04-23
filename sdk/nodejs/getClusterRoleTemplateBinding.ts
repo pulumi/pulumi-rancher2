@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -19,7 +18,6 @@ import * as utilities from "./utilities";
  *     clusterId: "foo_id",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getClusterRoleTemplateBinding(args: GetClusterRoleTemplateBindingArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterRoleTemplateBindingResult> {
 
@@ -90,7 +88,6 @@ export interface GetClusterRoleTemplateBindingResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -100,7 +97,6 @@ export interface GetClusterRoleTemplateBindingResult {
  *     clusterId: "foo_id",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getClusterRoleTemplateBindingOutput(args: GetClusterRoleTemplateBindingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterRoleTemplateBindingResult> {
     return pulumi.output(args).apply((a: any) => getClusterRoleTemplateBinding(a, opts))

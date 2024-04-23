@@ -16,14 +16,14 @@ public final class ClusterGkeConfigV2ClusterAddonsArgs extends com.pulumi.resour
     public static final ClusterGkeConfigV2ClusterAddonsArgs Empty = new ClusterGkeConfigV2ClusterAddonsArgs();
 
     /**
-     * Enable GKE horizontal pod autoscaling. Default: `false` (bool)
+     * Enable GKE horizontal pod autoscaling
      * 
      */
     @Import(name="horizontalPodAutoscaling")
     private @Nullable Output<Boolean> horizontalPodAutoscaling;
 
     /**
-     * @return Enable GKE horizontal pod autoscaling. Default: `false` (bool)
+     * @return Enable GKE horizontal pod autoscaling
      * 
      */
     public Optional<Output<Boolean>> horizontalPodAutoscaling() {
@@ -31,14 +31,14 @@ public final class ClusterGkeConfigV2ClusterAddonsArgs extends com.pulumi.resour
     }
 
     /**
-     * Enable GKE HTTP load balancing. Default: `false` (bool)
+     * Enable GKE HTTP load balancing
      * 
      */
     @Import(name="httpLoadBalancing")
     private @Nullable Output<Boolean> httpLoadBalancing;
 
     /**
-     * @return Enable GKE HTTP load balancing. Default: `false` (bool)
+     * @return Enable GKE HTTP load balancing
      * 
      */
     public Optional<Output<Boolean>> httpLoadBalancing() {
@@ -46,14 +46,14 @@ public final class ClusterGkeConfigV2ClusterAddonsArgs extends com.pulumi.resour
     }
 
     /**
-     * Enable GKE network policy config. Default: `false` (bool)
+     * Enable GKE network policy config
      * 
      */
     @Import(name="networkPolicyConfig")
     private @Nullable Output<Boolean> networkPolicyConfig;
 
     /**
-     * @return Enable GKE network policy config. Default: `false` (bool)
+     * @return Enable GKE network policy config
      * 
      */
     public Optional<Output<Boolean>> networkPolicyConfig() {
@@ -87,7 +87,7 @@ public final class ClusterGkeConfigV2ClusterAddonsArgs extends com.pulumi.resour
         }
 
         /**
-         * @param horizontalPodAutoscaling Enable GKE horizontal pod autoscaling. Default: `false` (bool)
+         * @param horizontalPodAutoscaling Enable GKE horizontal pod autoscaling
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class ClusterGkeConfigV2ClusterAddonsArgs extends com.pulumi.resour
         }
 
         /**
-         * @param horizontalPodAutoscaling Enable GKE horizontal pod autoscaling. Default: `false` (bool)
+         * @param horizontalPodAutoscaling Enable GKE horizontal pod autoscaling
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class ClusterGkeConfigV2ClusterAddonsArgs extends com.pulumi.resour
         }
 
         /**
-         * @param httpLoadBalancing Enable GKE HTTP load balancing. Default: `false` (bool)
+         * @param httpLoadBalancing Enable GKE HTTP load balancing
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class ClusterGkeConfigV2ClusterAddonsArgs extends com.pulumi.resour
         }
 
         /**
-         * @param httpLoadBalancing Enable GKE HTTP load balancing. Default: `false` (bool)
+         * @param httpLoadBalancing Enable GKE HTTP load balancing
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class ClusterGkeConfigV2ClusterAddonsArgs extends com.pulumi.resour
         }
 
         /**
-         * @param networkPolicyConfig Enable GKE network policy config. Default: `false` (bool)
+         * @param networkPolicyConfig Enable GKE network policy config
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class ClusterGkeConfigV2ClusterAddonsArgs extends com.pulumi.resour
         }
 
         /**
-         * @param networkPolicyConfig Enable GKE network policy config. Default: `false` (bool)
+         * @param networkPolicyConfig Enable GKE network policy config
          * 
          * @return builder
          * 

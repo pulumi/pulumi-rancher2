@@ -18,7 +18,6 @@ namespace Pulumi.Rancher2
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,7 +33,6 @@ namespace Pulumi.Rancher2
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetClusterTemplateResult> InvokeAsync(GetClusterTemplateArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClusterTemplateResult>("rancher2:index/getClusterTemplate:getClusterTemplate", args ?? new GetClusterTemplateArgs(), options.WithDefaults());
@@ -46,7 +44,6 @@ namespace Pulumi.Rancher2
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -62,7 +59,6 @@ namespace Pulumi.Rancher2
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetClusterTemplateResult> Invoke(GetClusterTemplateInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClusterTemplateResult>("rancher2:index/getClusterTemplate:getClusterTemplate", args ?? new GetClusterTemplateInvokeArgs(), options.WithDefaults());

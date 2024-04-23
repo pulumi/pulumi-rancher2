@@ -13,41 +13,17 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterRkeConfigNetwork
     {
-        /// <summary>
-        /// ACI provider config for RKE network (list maxitems:63)
-        /// </summary>
         public readonly Outputs.ClusterRkeConfigNetworkAciNetworkProvider? AciNetworkProvider;
-        /// <summary>
-        /// Calico provider config for RKE network (list maxitems:1)
-        /// </summary>
         public readonly Outputs.ClusterRkeConfigNetworkCalicoNetworkProvider? CalicoNetworkProvider;
-        /// <summary>
-        /// Canal provider config for RKE network (list maxitems:1)
-        /// </summary>
         public readonly Outputs.ClusterRkeConfigNetworkCanalNetworkProvider? CanalNetworkProvider;
-        /// <summary>
-        /// Flannel provider config for RKE network (list maxitems:1)
-        /// </summary>
         public readonly Outputs.ClusterRkeConfigNetworkFlannelNetworkProvider? FlannelNetworkProvider;
-        /// <summary>
-        /// Network provider MTU. Default `0` (int)
-        /// </summary>
         public readonly int? Mtu;
-        /// <summary>
-        /// RKE options for network (map)
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? Options;
-        /// <summary>
-        /// Plugin for RKE network. `canal` (default), `flannel`, `calico`, `none` and `weave` are supported. (string)
-        /// </summary>
         public readonly string? Plugin;
         /// <summary>
-        /// Network add-on tolerations (list)
+        /// Network add-on tolerations
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterRkeConfigNetworkToleration> Tolerations;
-        /// <summary>
-        /// Weave provider config for RKE network (list maxitems:1)
-        /// </summary>
         public readonly Outputs.ClusterRkeConfigNetworkWeaveNetworkProvider? WeaveNetworkProvider;
 
         [OutputConstructor]

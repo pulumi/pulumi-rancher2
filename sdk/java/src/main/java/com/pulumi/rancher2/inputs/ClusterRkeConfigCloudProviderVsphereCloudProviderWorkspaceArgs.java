@@ -16,77 +16,37 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArg
 
     public static final ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs Empty = new ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs();
 
-    /**
-     * (string)
-     * 
-     */
     @Import(name="datacenter", required=true)
     private Output<String> datacenter;
 
-    /**
-     * @return (string)
-     * 
-     */
     public Output<String> datacenter() {
         return this.datacenter;
     }
 
-    /**
-     * (string)
-     * 
-     */
     @Import(name="defaultDatastore")
     private @Nullable Output<String> defaultDatastore;
 
-    /**
-     * @return (string)
-     * 
-     */
     public Optional<Output<String>> defaultDatastore() {
         return Optional.ofNullable(this.defaultDatastore);
     }
 
-    /**
-     * Folder for S3 service. Available from Rancher v2.2.7 (string)
-     * 
-     */
     @Import(name="folder", required=true)
     private Output<String> folder;
 
-    /**
-     * @return Folder for S3 service. Available from Rancher v2.2.7 (string)
-     * 
-     */
     public Output<String> folder() {
         return this.folder;
     }
 
-    /**
-     * (string)
-     * 
-     */
     @Import(name="resourcepoolPath")
     private @Nullable Output<String> resourcepoolPath;
 
-    /**
-     * @return (string)
-     * 
-     */
     public Optional<Output<String>> resourcepoolPath() {
         return Optional.ofNullable(this.resourcepoolPath);
     }
 
-    /**
-     * (string)
-     * 
-     */
     @Import(name="server", required=true)
     private Output<String> server;
 
-    /**
-     * @return (string)
-     * 
-     */
     public Output<String> server() {
         return this.server;
     }
@@ -119,107 +79,47 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArg
             $ = new ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param datacenter (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder datacenter(Output<String> datacenter) {
             $.datacenter = datacenter;
             return this;
         }
 
-        /**
-         * @param datacenter (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder datacenter(String datacenter) {
             return datacenter(Output.of(datacenter));
         }
 
-        /**
-         * @param defaultDatastore (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder defaultDatastore(@Nullable Output<String> defaultDatastore) {
             $.defaultDatastore = defaultDatastore;
             return this;
         }
 
-        /**
-         * @param defaultDatastore (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder defaultDatastore(String defaultDatastore) {
             return defaultDatastore(Output.of(defaultDatastore));
         }
 
-        /**
-         * @param folder Folder for S3 service. Available from Rancher v2.2.7 (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder folder(Output<String> folder) {
             $.folder = folder;
             return this;
         }
 
-        /**
-         * @param folder Folder for S3 service. Available from Rancher v2.2.7 (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder folder(String folder) {
             return folder(Output.of(folder));
         }
 
-        /**
-         * @param resourcepoolPath (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder resourcepoolPath(@Nullable Output<String> resourcepoolPath) {
             $.resourcepoolPath = resourcepoolPath;
             return this;
         }
 
-        /**
-         * @param resourcepoolPath (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder resourcepoolPath(String resourcepoolPath) {
             return resourcepoolPath(Output.of(resourcepoolPath));
         }
 
-        /**
-         * @param server (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder server(Output<String> server) {
             $.server = server;
             return this;
         }
 
-        /**
-         * @param server (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder server(String server) {
             return server(Output.of(server));
         }

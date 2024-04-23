@@ -22,7 +22,6 @@ namespace Pulumi.Rancher2
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -57,13 +56,12 @@ namespace Pulumi.Rancher2
     ///     {
     ///         DependsOn =
     ///         {
-    ///             foo_login, 
+    ///             foo_login,
     ///         },
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [Rancher2ResourceType("rancher2:index/customUserToken:CustomUserToken")]
     public partial class CustomUserToken : global::Pulumi.CustomResource

@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -20,7 +19,6 @@ import * as utilities from "./utilities";
  *     name: "foo",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRoleTemplate(args: GetRoleTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleTemplateResult> {
 
@@ -105,7 +103,6 @@ export interface GetRoleTemplateResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -114,7 +111,6 @@ export interface GetRoleTemplateResult {
  *     name: "foo",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRoleTemplateOutput(args: GetRoleTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoleTemplateResult> {
     return pulumi.output(args).apply((a: any) => getRoleTemplate(a, opts))

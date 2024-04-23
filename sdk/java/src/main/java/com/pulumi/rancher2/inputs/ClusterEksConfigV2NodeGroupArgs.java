@@ -23,14 +23,14 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
     public static final ClusterEksConfigV2NodeGroupArgs Empty = new ClusterEksConfigV2NodeGroupArgs();
 
     /**
-     * The EKS node group desired size. Default: `2` (int)
+     * The EKS node group desired size
      * 
      */
     @Import(name="desiredSize")
     private @Nullable Output<Integer> desiredSize;
 
     /**
-     * @return The EKS node group desired size. Default: `2` (int)
+     * @return The EKS node group desired size
      * 
      */
     public Optional<Output<Integer>> desiredSize() {
@@ -38,14 +38,14 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
     }
 
     /**
-     * The EKS node group disk size (Gb). Default: `20` (int)
+     * The EKS node group disk size
      * 
      */
     @Import(name="diskSize")
     private @Nullable Output<Integer> diskSize;
 
     /**
-     * @return The EKS node group disk size (Gb). Default: `20` (int)
+     * @return The EKS node group disk size
      * 
      */
     public Optional<Output<Integer>> diskSize() {
@@ -53,14 +53,14 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
     }
 
     /**
-     * The EKS node group ssh key (string)
+     * The EKS node group ssh key
      * 
      */
     @Import(name="ec2SshKey")
     private @Nullable Output<String> ec2SshKey;
 
     /**
-     * @return The EKS node group ssh key (string)
+     * @return The EKS node group ssh key
      * 
      */
     public Optional<Output<String>> ec2SshKey() {
@@ -68,14 +68,14 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
     }
 
     /**
-     * Set true to EKS use gpu. Default: `false` (bool)
+     * Is EKS cluster using gpu?
      * 
      */
     @Import(name="gpu")
     private @Nullable Output<Boolean> gpu;
 
     /**
-     * @return Set true to EKS use gpu. Default: `false` (bool)
+     * @return Is EKS cluster using gpu?
      * 
      */
     public Optional<Output<Boolean>> gpu() {
@@ -83,14 +83,14 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
     }
 
     /**
-     * The EKS node group image ID (string)
+     * The EKS node group image ID
      * 
      */
     @Import(name="imageId")
     private @Nullable Output<String> imageId;
 
     /**
-     * @return The EKS node group image ID (string)
+     * @return The EKS node group image ID
      * 
      */
     public Optional<Output<String>> imageId() {
@@ -98,14 +98,14 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
     }
 
     /**
-     * The EKS node group instance type. Default: `t3.medium` (string)
+     * The EKS node group instance type
      * 
      */
     @Import(name="instanceType")
     private @Nullable Output<String> instanceType;
 
     /**
-     * @return The EKS node group instance type. Default: `t3.medium` (string)
+     * @return The EKS node group instance type
      * 
      */
     public Optional<Output<String>> instanceType() {
@@ -128,14 +128,14 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
     }
 
     /**
-     * The EKS node groups launch template (list Maxitem: 1)
+     * The EKS node groups launch template
      * 
      */
     @Import(name="launchTemplates")
     private @Nullable Output<List<ClusterEksConfigV2NodeGroupLaunchTemplateArgs>> launchTemplates;
 
     /**
-     * @return The EKS node groups launch template (list Maxitem: 1)
+     * @return The EKS node groups launch template
      * 
      */
     public Optional<Output<List<ClusterEksConfigV2NodeGroupLaunchTemplateArgs>>> launchTemplates() {
@@ -143,14 +143,14 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
     }
 
     /**
-     * The EKS node group maximum size. Default `2` (int)
+     * The EKS node group maximum size
      * 
      */
     @Import(name="maxSize")
     private @Nullable Output<Integer> maxSize;
 
     /**
-     * @return The EKS node group maximum size. Default `2` (int)
+     * @return The EKS node group maximum size
      * 
      */
     public Optional<Output<Integer>> maxSize() {
@@ -158,14 +158,14 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
     }
 
     /**
-     * The EKS node group maximum size. Default `2` (int)
+     * The EKS node group minimum size
      * 
      */
     @Import(name="minSize")
     private @Nullable Output<Integer> minSize;
 
     /**
-     * @return The EKS node group maximum size. Default `2` (int)
+     * @return The EKS node group minimum size
      * 
      */
     public Optional<Output<Integer>> minSize() {
@@ -188,14 +188,14 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
     }
 
     /**
-     * The EKS node group node role ARN. Default `&#34;&#34;` (string)
+     * The EKS node group node role ARN
      * 
      */
     @Import(name="nodeRole")
     private @Nullable Output<String> nodeRole;
 
     /**
-     * @return The EKS node group node role ARN. Default `&#34;&#34;` (string)
+     * @return The EKS node group node role ARN
      * 
      */
     public Optional<Output<String>> nodeRole() {
@@ -203,14 +203,14 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
     }
 
     /**
-     * Enable EKS node group request spot instances (bool)
+     * Enable EKS node group request spot instances
      * 
      */
     @Import(name="requestSpotInstances")
     private @Nullable Output<Boolean> requestSpotInstances;
 
     /**
-     * @return Enable EKS node group request spot instances (bool)
+     * @return Enable EKS node group request spot instances
      * 
      */
     public Optional<Output<Boolean>> requestSpotInstances() {
@@ -218,14 +218,14 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
     }
 
     /**
-     * The EKS node group resource tags (map)
+     * The EKS node group resource tags
      * 
      */
     @Import(name="resourceTags")
     private @Nullable Output<Map<String,Object>> resourceTags;
 
     /**
-     * @return The EKS node group resource tags (map)
+     * @return The EKS node group resource tags
      * 
      */
     public Optional<Output<Map<String,Object>>> resourceTags() {
@@ -233,14 +233,14 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
     }
 
     /**
-     * The EKS node group sport instace types (list string)
+     * The EKS node group spot instance types
      * 
      */
     @Import(name="spotInstanceTypes")
     private @Nullable Output<List<String>> spotInstanceTypes;
 
     /**
-     * @return The EKS node group sport instace types (list string)
+     * @return The EKS node group spot instance types
      * 
      */
     public Optional<Output<List<String>>> spotInstanceTypes() {
@@ -248,14 +248,14 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
     }
 
     /**
-     * The EKS node group subnets (list string)
+     * The EKS node group subnets
      * 
      */
     @Import(name="subnets")
     private @Nullable Output<List<String>> subnets;
 
     /**
-     * @return The EKS node group subnets (list string)
+     * @return The EKS node group subnets
      * 
      */
     public Optional<Output<List<String>>> subnets() {
@@ -263,14 +263,14 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
     }
 
     /**
-     * The GKE node config tags (List)
+     * The EKS node group tags
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
-     * @return The GKE node config tags (List)
+     * @return The EKS node group tags
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -278,14 +278,14 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
     }
 
     /**
-     * The EKS node group user data (string)
+     * The EKS node group user data
      * 
      */
     @Import(name="userData")
     private @Nullable Output<String> userData;
 
     /**
-     * @return The EKS node group user data (string)
+     * @return The EKS node group user data
      * 
      */
     public Optional<Output<String>> userData() {
@@ -293,14 +293,14 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
     }
 
     /**
-     * rancher-monitoring chart version (string)
+     * The EKS node group k8s version
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return rancher-monitoring chart version (string)
+     * @return The EKS node group k8s version
      * 
      */
     public Optional<Output<String>> version() {
@@ -350,7 +350,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param desiredSize The EKS node group desired size. Default: `2` (int)
+         * @param desiredSize The EKS node group desired size
          * 
          * @return builder
          * 
@@ -361,7 +361,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param desiredSize The EKS node group desired size. Default: `2` (int)
+         * @param desiredSize The EKS node group desired size
          * 
          * @return builder
          * 
@@ -371,7 +371,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param diskSize The EKS node group disk size (Gb). Default: `20` (int)
+         * @param diskSize The EKS node group disk size
          * 
          * @return builder
          * 
@@ -382,7 +382,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param diskSize The EKS node group disk size (Gb). Default: `20` (int)
+         * @param diskSize The EKS node group disk size
          * 
          * @return builder
          * 
@@ -392,7 +392,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param ec2SshKey The EKS node group ssh key (string)
+         * @param ec2SshKey The EKS node group ssh key
          * 
          * @return builder
          * 
@@ -403,7 +403,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param ec2SshKey The EKS node group ssh key (string)
+         * @param ec2SshKey The EKS node group ssh key
          * 
          * @return builder
          * 
@@ -413,7 +413,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param gpu Set true to EKS use gpu. Default: `false` (bool)
+         * @param gpu Is EKS cluster using gpu?
          * 
          * @return builder
          * 
@@ -424,7 +424,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param gpu Set true to EKS use gpu. Default: `false` (bool)
+         * @param gpu Is EKS cluster using gpu?
          * 
          * @return builder
          * 
@@ -434,7 +434,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param imageId The EKS node group image ID (string)
+         * @param imageId The EKS node group image ID
          * 
          * @return builder
          * 
@@ -445,7 +445,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param imageId The EKS node group image ID (string)
+         * @param imageId The EKS node group image ID
          * 
          * @return builder
          * 
@@ -455,7 +455,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param instanceType The EKS node group instance type. Default: `t3.medium` (string)
+         * @param instanceType The EKS node group instance type
          * 
          * @return builder
          * 
@@ -466,7 +466,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param instanceType The EKS node group instance type. Default: `t3.medium` (string)
+         * @param instanceType The EKS node group instance type
          * 
          * @return builder
          * 
@@ -497,7 +497,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param launchTemplates The EKS node groups launch template (list Maxitem: 1)
+         * @param launchTemplates The EKS node groups launch template
          * 
          * @return builder
          * 
@@ -508,7 +508,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param launchTemplates The EKS node groups launch template (list Maxitem: 1)
+         * @param launchTemplates The EKS node groups launch template
          * 
          * @return builder
          * 
@@ -518,7 +518,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param launchTemplates The EKS node groups launch template (list Maxitem: 1)
+         * @param launchTemplates The EKS node groups launch template
          * 
          * @return builder
          * 
@@ -528,7 +528,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param maxSize The EKS node group maximum size. Default `2` (int)
+         * @param maxSize The EKS node group maximum size
          * 
          * @return builder
          * 
@@ -539,7 +539,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param maxSize The EKS node group maximum size. Default `2` (int)
+         * @param maxSize The EKS node group maximum size
          * 
          * @return builder
          * 
@@ -549,7 +549,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param minSize The EKS node group maximum size. Default `2` (int)
+         * @param minSize The EKS node group minimum size
          * 
          * @return builder
          * 
@@ -560,7 +560,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param minSize The EKS node group maximum size. Default `2` (int)
+         * @param minSize The EKS node group minimum size
          * 
          * @return builder
          * 
@@ -591,7 +591,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param nodeRole The EKS node group node role ARN. Default `&#34;&#34;` (string)
+         * @param nodeRole The EKS node group node role ARN
          * 
          * @return builder
          * 
@@ -602,7 +602,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param nodeRole The EKS node group node role ARN. Default `&#34;&#34;` (string)
+         * @param nodeRole The EKS node group node role ARN
          * 
          * @return builder
          * 
@@ -612,7 +612,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param requestSpotInstances Enable EKS node group request spot instances (bool)
+         * @param requestSpotInstances Enable EKS node group request spot instances
          * 
          * @return builder
          * 
@@ -623,7 +623,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param requestSpotInstances Enable EKS node group request spot instances (bool)
+         * @param requestSpotInstances Enable EKS node group request spot instances
          * 
          * @return builder
          * 
@@ -633,7 +633,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param resourceTags The EKS node group resource tags (map)
+         * @param resourceTags The EKS node group resource tags
          * 
          * @return builder
          * 
@@ -644,7 +644,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param resourceTags The EKS node group resource tags (map)
+         * @param resourceTags The EKS node group resource tags
          * 
          * @return builder
          * 
@@ -654,7 +654,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param spotInstanceTypes The EKS node group sport instace types (list string)
+         * @param spotInstanceTypes The EKS node group spot instance types
          * 
          * @return builder
          * 
@@ -665,7 +665,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param spotInstanceTypes The EKS node group sport instace types (list string)
+         * @param spotInstanceTypes The EKS node group spot instance types
          * 
          * @return builder
          * 
@@ -675,7 +675,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param spotInstanceTypes The EKS node group sport instace types (list string)
+         * @param spotInstanceTypes The EKS node group spot instance types
          * 
          * @return builder
          * 
@@ -685,7 +685,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param subnets The EKS node group subnets (list string)
+         * @param subnets The EKS node group subnets
          * 
          * @return builder
          * 
@@ -696,7 +696,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param subnets The EKS node group subnets (list string)
+         * @param subnets The EKS node group subnets
          * 
          * @return builder
          * 
@@ -706,7 +706,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param subnets The EKS node group subnets (list string)
+         * @param subnets The EKS node group subnets
          * 
          * @return builder
          * 
@@ -716,7 +716,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param tags The GKE node config tags (List)
+         * @param tags The EKS node group tags
          * 
          * @return builder
          * 
@@ -727,7 +727,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param tags The GKE node config tags (List)
+         * @param tags The EKS node group tags
          * 
          * @return builder
          * 
@@ -737,7 +737,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param userData The EKS node group user data (string)
+         * @param userData The EKS node group user data
          * 
          * @return builder
          * 
@@ -748,7 +748,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param userData The EKS node group user data (string)
+         * @param userData The EKS node group user data
          * 
          * @return builder
          * 
@@ -758,7 +758,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param version rancher-monitoring chart version (string)
+         * @param version The EKS node group k8s version
          * 
          * @return builder
          * 
@@ -769,7 +769,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param version rancher-monitoring chart version (string)
+         * @param version The EKS node group k8s version
          * 
          * @return builder
          * 

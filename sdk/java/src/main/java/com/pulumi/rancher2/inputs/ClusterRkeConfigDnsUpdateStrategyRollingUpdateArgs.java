@@ -16,14 +16,14 @@ public final class ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs extends co
     public static final ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs Empty = new ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs();
 
     /**
-     * The AKS node pool max surge (string), example value: `25%`
+     * Rolling update max surge
      * 
      */
     @Import(name="maxSurge")
     private @Nullable Output<Integer> maxSurge;
 
     /**
-     * @return The AKS node pool max surge (string), example value: `25%`
+     * @return Rolling update max surge
      * 
      */
     public Optional<Output<Integer>> maxSurge() {
@@ -31,14 +31,14 @@ public final class ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs extends co
     }
 
     /**
-     * Monitoring deployment rolling update max unavailable. Default: `1` (int)
+     * Rolling update max unavailable
      * 
      */
     @Import(name="maxUnavailable")
     private @Nullable Output<Integer> maxUnavailable;
 
     /**
-     * @return Monitoring deployment rolling update max unavailable. Default: `1` (int)
+     * @return Rolling update max unavailable
      * 
      */
     public Optional<Output<Integer>> maxUnavailable() {
@@ -71,7 +71,7 @@ public final class ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs extends co
         }
 
         /**
-         * @param maxSurge The AKS node pool max surge (string), example value: `25%`
+         * @param maxSurge Rolling update max surge
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs extends co
         }
 
         /**
-         * @param maxSurge The AKS node pool max surge (string), example value: `25%`
+         * @param maxSurge Rolling update max surge
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs extends co
         }
 
         /**
-         * @param maxUnavailable Monitoring deployment rolling update max unavailable. Default: `1` (int)
+         * @param maxUnavailable Rolling update max unavailable
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs extends co
         }
 
         /**
-         * @param maxUnavailable Monitoring deployment rolling update max unavailable. Default: `1` (int)
+         * @param maxUnavailable Rolling update max unavailable
          * 
          * @return builder
          * 

@@ -13,13 +13,13 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class NotifierPagerdutyConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Wechat proxy url (string)
+        /// Pagerduty proxy URL
         /// </summary>
         [Input("proxyUrl")]
         public Input<string>? ProxyUrl { get; set; }
 
         /// <summary>
-        /// Pagerduty service key (string)
+        /// Pagerduty service key
         /// </summary>
         [Input("serviceKey", required: true)]
         public Input<string> ServiceKey { get; set; } = null!;

@@ -17,14 +17,14 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     public static final NodeTemplateVsphereConfigArgs Empty = new NodeTemplateVsphereConfigArgs();
 
     /**
-     * vSphere URL for boot2docker iso image. Default `https://releases.rancher.com/os/latest/rancheros-vmware.iso` (string)
+     * vSphere URL for boot2docker image
      * 
      */
     @Import(name="boot2dockerUrl")
     private @Nullable Output<String> boot2dockerUrl;
 
     /**
-     * @return vSphere URL for boot2docker iso image. Default `https://releases.rancher.com/os/latest/rancheros-vmware.iso` (string)
+     * @return vSphere URL for boot2docker image
      * 
      */
     public Optional<Output<String>> boot2dockerUrl() {
@@ -32,14 +32,14 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * vSphere vm configuration parameters (used for guestinfo) (list)
+     * vSphere vm configuration parameters (used for guestinfo)
      * 
      */
     @Import(name="cfgparams")
     private @Nullable Output<List<String>> cfgparams;
 
     /**
-     * @return vSphere vm configuration parameters (used for guestinfo) (list)
+     * @return vSphere vm configuration parameters (used for guestinfo)
      * 
      */
     public Optional<Output<List<String>>> cfgparams() {
@@ -47,14 +47,14 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * If you choose creation type vm (clone vm) a name of what vm you want to clone is required. From Rancher v2.3.3 (string)
+     * If you choose creation type clone a name of what you want to clone is required
      * 
      */
     @Import(name="cloneFrom")
     private @Nullable Output<String> cloneFrom;
 
     /**
-     * @return If you choose creation type vm (clone vm) a name of what vm you want to clone is required. From Rancher v2.3.3 (string)
+     * @return If you choose creation type clone a name of what you want to clone is required
      * 
      */
     public Optional<Output<String>> cloneFrom() {
@@ -62,14 +62,14 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Cloud Config YAML content to inject as user-data. From Rancher v2.3.3 (string)
+     * Filepath to a cloud-config yaml file to put into the ISO user-data
      * 
      */
     @Import(name="cloudConfig")
     private @Nullable Output<String> cloudConfig;
 
     /**
-     * @return Cloud Config YAML content to inject as user-data. From Rancher v2.3.3 (string)
+     * @return Filepath to a cloud-config yaml file to put into the ISO user-data
      * 
      */
     public Optional<Output<String>> cloudConfig() {
@@ -77,14 +77,14 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * vSphere cloud-init file or url to set in the guestinfo (string)
+     * vSphere cloud-init filepath or url to add to guestinfo
      * 
      */
     @Import(name="cloudinit")
     private @Nullable Output<String> cloudinit;
 
     /**
-     * @return vSphere cloud-init file or url to set in the guestinfo (string)
+     * @return vSphere cloud-init filepath or url to add to guestinfo
      * 
      */
     public Optional<Output<String>> cloudinit() {
@@ -92,14 +92,14 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * If you choose to clone from a content library template specify the name of the library. From Rancher v2.3.3 (string)
+     * If you choose to clone from a content library template specify the name of the library
      * 
      */
     @Import(name="contentLibrary")
     private @Nullable Output<String> contentLibrary;
 
     /**
-     * @return If you choose to clone from a content library template specify the name of the library. From Rancher v2.3.3 (string)
+     * @return If you choose to clone from a content library template specify the name of the library
      * 
      */
     public Optional<Output<String>> contentLibrary() {
@@ -107,14 +107,14 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * vSphere CPU number for docker VM. Default `2` (string)
+     * vSphere CPU number for docker VM
      * 
      */
     @Import(name="cpuCount")
     private @Nullable Output<String> cpuCount;
 
     /**
-     * @return vSphere CPU number for docker VM. Default `2` (string)
+     * @return vSphere CPU number for docker VM
      * 
      */
     public Optional<Output<String>> cpuCount() {
@@ -122,14 +122,14 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Creation type when creating a new virtual machine. Supported values: vm, template, library, legacy. Default `legacy`. From Rancher v2.3.3 (string)
+     * Creation type when creating a new virtual machine. Supported values: vm, template, library, legacy
      * 
      */
     @Import(name="creationType")
     private @Nullable Output<String> creationType;
 
     /**
-     * @return Creation type when creating a new virtual machine. Supported values: vm, template, library, legacy. Default `legacy`. From Rancher v2.3.3 (string)
+     * @return Creation type when creating a new virtual machine. Supported values: vm, template, library, legacy
      * 
      */
     public Optional<Output<String>> creationType() {
@@ -137,14 +137,14 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * vSphere custom attributes, format key/value e.g. `200=my custom value`. From Rancher v2.3.3 (List)
+     * vSphere custom attributes, format key/value e.g. &#39;200=my custom value&#39;
      * 
      */
     @Import(name="customAttributes")
     private @Nullable Output<List<String>> customAttributes;
 
     /**
-     * @return vSphere custom attributes, format key/value e.g. `200=my custom value`. From Rancher v2.3.3 (List)
+     * @return vSphere custom attributes, format key/value e.g. &#39;200=my custom value&#39;
      * 
      */
     public Optional<Output<List<String>>> customAttributes() {
@@ -152,14 +152,14 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * vSphere datacenter for docker VM (string)
+     * vSphere datacenter for virtual machine
      * 
      */
     @Import(name="datacenter")
     private @Nullable Output<String> datacenter;
 
     /**
-     * @return vSphere datacenter for docker VM (string)
+     * @return vSphere datacenter for virtual machine
      * 
      */
     public Optional<Output<String>> datacenter() {
@@ -167,14 +167,14 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * vSphere datastore for docker VM (string)
+     * vSphere datastore for virtual machine
      * 
      */
     @Import(name="datastore")
     private @Nullable Output<String> datastore;
 
     /**
-     * @return vSphere datastore for docker VM (string)
+     * @return vSphere datastore for virtual machine
      * 
      */
     public Optional<Output<String>> datastore() {
@@ -182,14 +182,14 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * vSphere datastore cluster for virtual machine. From Rancher v2.3.3 (string)
+     * vSphere datastore cluster for virtual machine
      * 
      */
     @Import(name="datastoreCluster")
     private @Nullable Output<String> datastoreCluster;
 
     /**
-     * @return vSphere datastore cluster for virtual machine. From Rancher v2.3.3 (string)
+     * @return vSphere datastore cluster for virtual machine
      * 
      */
     public Optional<Output<String>> datastoreCluster() {
@@ -197,14 +197,14 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * vSphere size of disk for docker VM (in MB). Default `20480` (string)
+     * vSphere size of disk for docker VM (in MB)
      * 
      */
     @Import(name="diskSize")
     private @Nullable Output<String> diskSize;
 
     /**
-     * @return vSphere size of disk for docker VM (in MB). Default `20480` (string)
+     * @return vSphere size of disk for docker VM (in MB)
      * 
      */
     public Optional<Output<String>> diskSize() {
@@ -212,14 +212,14 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * vSphere folder for the docker VM. This folder must already exist in the datacenter (string)
+     * vSphere folder for the docker VM. This folder must already exist in the datacenter
      * 
      */
     @Import(name="folder")
     private @Nullable Output<String> folder;
 
     /**
-     * @return vSphere folder for the docker VM. This folder must already exist in the datacenter (string)
+     * @return vSphere folder for the docker VM. This folder must already exist in the datacenter
      * 
      */
     public Optional<Output<String>> folder() {
@@ -242,14 +242,14 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * vSphere compute resource where the docker VM will be instantiated. This can be omitted if using a cluster with DRS (string)
+     * vSphere compute resource where the docker VM will be instantiated. This can be omitted if using a cluster with DRS
      * 
      */
     @Import(name="hostsystem")
     private @Nullable Output<String> hostsystem;
 
     /**
-     * @return vSphere compute resource where the docker VM will be instantiated. This can be omitted if using a cluster with DRS (string)
+     * @return vSphere compute resource where the docker VM will be instantiated. This can be omitted if using a cluster with DRS
      * 
      */
     public Optional<Output<String>> hostsystem() {
@@ -257,14 +257,14 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * vSphere size of memory for docker VM (in MB). Default `2048` (string)
+     * vSphere size of memory for docker VM (in MB)
      * 
      */
     @Import(name="memorySize")
     private @Nullable Output<String> memorySize;
 
     /**
-     * @return vSphere size of memory for docker VM (in MB). Default `2048` (string)
+     * @return vSphere size of memory for docker VM (in MB)
      * 
      */
     public Optional<Output<String>> memorySize() {
@@ -272,14 +272,14 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * vSphere network where the docker VM will be attached (list)
+     * vSphere network where the virtual machine will be attached
      * 
      */
     @Import(name="networks")
     private @Nullable Output<List<String>> networks;
 
     /**
-     * @return vSphere network where the docker VM will be attached (list)
+     * @return vSphere network where the virtual machine will be attached
      * 
      */
     public Optional<Output<List<String>>> networks() {
@@ -287,14 +287,14 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * vSphere password
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return vSphere password
      * 
      */
     public Optional<Output<String>> password() {
@@ -302,14 +302,14 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * vSphere resource pool for docker VM (string)
+     * vSphere resource pool for docker VM
      * 
      */
     @Import(name="pool")
     private @Nullable Output<String> pool;
 
     /**
-     * @return vSphere resource pool for docker VM (string)
+     * @return vSphere resource pool for docker VM
      * 
      */
     public Optional<Output<String>> pool() {
@@ -317,14 +317,14 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * If using a non-B2D image you can specify the ssh password. Default `tcuser`. From Rancher v2.3.3 (string)
+     * If using a non-B2D image you can specify the ssh password
      * 
      */
     @Import(name="sshPassword")
     private @Nullable Output<String> sshPassword;
 
     /**
-     * @return If using a non-B2D image you can specify the ssh password. Default `tcuser`. From Rancher v2.3.3 (string)
+     * @return If using a non-B2D image you can specify the ssh password
      * 
      */
     public Optional<Output<String>> sshPassword() {
@@ -332,14 +332,14 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+     * If using a non-B2D image you can specify the ssh port
      * 
      */
     @Import(name="sshPort")
     private @Nullable Output<String> sshPort;
 
     /**
-     * @return If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+     * @return If using a non-B2D image you can specify the ssh port
      * 
      */
     public Optional<Output<String>> sshPort() {
@@ -347,14 +347,14 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+     * If using a non-B2D image you can specify the ssh user
      * 
      */
     @Import(name="sshUser")
     private @Nullable Output<String> sshUser;
 
     /**
-     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+     * @return If using a non-B2D image you can specify the ssh user
      * 
      */
     public Optional<Output<String>> sshUser() {
@@ -362,14 +362,14 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * If using a non-B2D image the uploaded keys will need chown&#39;ed. Default `staff`. From Rancher v2.3.3 (string)
+     * If using a non-B2D image the uploaded keys will need chown&#39;ed, defaults to staff e.g. docker:staff
      * 
      */
     @Import(name="sshUserGroup")
     private @Nullable Output<String> sshUserGroup;
 
     /**
-     * @return If using a non-B2D image the uploaded keys will need chown&#39;ed. Default `staff`. From Rancher v2.3.3 (string)
+     * @return If using a non-B2D image the uploaded keys will need chown&#39;ed, defaults to staff e.g. docker:staff
      * 
      */
     public Optional<Output<String>> sshUserGroup() {
@@ -377,14 +377,14 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+     * vSphere tags id e.g. urn:xxx
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+     * @return vSphere tags id e.g. urn:xxx
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -392,14 +392,14 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * vSphere username
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return vSphere username
      * 
      */
     public Optional<Output<String>> username() {
@@ -407,14 +407,14 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * vSphere vApp IP allocation policy. Supported values are: `dhcp`, `fixed`, `transient` and `fixedAllocated` (string)
+     * vSphere vApp IP allocation policy. Supported values are: dhcp, fixed, transient and fixedAllocated
      * 
      */
     @Import(name="vappIpAllocationPolicy")
     private @Nullable Output<String> vappIpAllocationPolicy;
 
     /**
-     * @return vSphere vApp IP allocation policy. Supported values are: `dhcp`, `fixed`, `transient` and `fixedAllocated` (string)
+     * @return vSphere vApp IP allocation policy. Supported values are: dhcp, fixed, transient and fixedAllocated
      * 
      */
     public Optional<Output<String>> vappIpAllocationPolicy() {
@@ -422,14 +422,14 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * vSphere vApp IP protocol for this deployment. Supported values are: `IPv4` and `IPv6` (string)
+     * vSphere vApp IP protocol for this deployment. Supported values are: IPv4 and IPv6
      * 
      */
     @Import(name="vappIpProtocol")
     private @Nullable Output<String> vappIpProtocol;
 
     /**
-     * @return vSphere vApp IP protocol for this deployment. Supported values are: `IPv4` and `IPv6` (string)
+     * @return vSphere vApp IP protocol for this deployment. Supported values are: IPv4 and IPv6
      * 
      */
     public Optional<Output<String>> vappIpProtocol() {
@@ -437,14 +437,14 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * vSphere vApp properties (list)
+     * vSphere vApp properties
      * 
      */
     @Import(name="vappProperties")
     private @Nullable Output<List<String>> vappProperties;
 
     /**
-     * @return vSphere vApp properties (list)
+     * @return vSphere vApp properties
      * 
      */
     public Optional<Output<List<String>>> vappProperties() {
@@ -452,14 +452,14 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * vSphere OVF environment transports to use for properties. Supported values are: `iso` and `com.vmware.guestInfo` (string)
+     * vSphere OVF environment transports to use for properties. Supported values are: iso and com.vmware.guestInfo
      * 
      */
     @Import(name="vappTransport")
     private @Nullable Output<String> vappTransport;
 
     /**
-     * @return vSphere OVF environment transports to use for properties. Supported values are: `iso` and `com.vmware.guestInfo` (string)
+     * @return vSphere OVF environment transports to use for properties. Supported values are: iso and com.vmware.guestInfo
      * 
      */
     public Optional<Output<String>> vappTransport() {
@@ -467,14 +467,14 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * vSphere IP/hostname for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * vSphere IP/hostname for vCenter
      * 
      */
     @Import(name="vcenter")
     private @Nullable Output<String> vcenter;
 
     /**
-     * @return vSphere IP/hostname for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return vSphere IP/hostname for vCenter
      * 
      */
     public Optional<Output<String>> vcenter() {
@@ -482,14 +482,14 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * vSphere Port for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x. Default `443` (string)
+     * vSphere Port for vCenter
      * 
      */
     @Import(name="vcenterPort")
     private @Nullable Output<String> vcenterPort;
 
     /**
-     * @return vSphere Port for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x. Default `443` (string)
+     * @return vSphere Port for vCenter
      * 
      */
     public Optional<Output<String>> vcenterPort() {
@@ -552,7 +552,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param boot2dockerUrl vSphere URL for boot2docker iso image. Default `https://releases.rancher.com/os/latest/rancheros-vmware.iso` (string)
+         * @param boot2dockerUrl vSphere URL for boot2docker image
          * 
          * @return builder
          * 
@@ -563,7 +563,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param boot2dockerUrl vSphere URL for boot2docker iso image. Default `https://releases.rancher.com/os/latest/rancheros-vmware.iso` (string)
+         * @param boot2dockerUrl vSphere URL for boot2docker image
          * 
          * @return builder
          * 
@@ -573,7 +573,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param cfgparams vSphere vm configuration parameters (used for guestinfo) (list)
+         * @param cfgparams vSphere vm configuration parameters (used for guestinfo)
          * 
          * @return builder
          * 
@@ -584,7 +584,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param cfgparams vSphere vm configuration parameters (used for guestinfo) (list)
+         * @param cfgparams vSphere vm configuration parameters (used for guestinfo)
          * 
          * @return builder
          * 
@@ -594,7 +594,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param cfgparams vSphere vm configuration parameters (used for guestinfo) (list)
+         * @param cfgparams vSphere vm configuration parameters (used for guestinfo)
          * 
          * @return builder
          * 
@@ -604,7 +604,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param cloneFrom If you choose creation type vm (clone vm) a name of what vm you want to clone is required. From Rancher v2.3.3 (string)
+         * @param cloneFrom If you choose creation type clone a name of what you want to clone is required
          * 
          * @return builder
          * 
@@ -615,7 +615,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param cloneFrom If you choose creation type vm (clone vm) a name of what vm you want to clone is required. From Rancher v2.3.3 (string)
+         * @param cloneFrom If you choose creation type clone a name of what you want to clone is required
          * 
          * @return builder
          * 
@@ -625,7 +625,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param cloudConfig Cloud Config YAML content to inject as user-data. From Rancher v2.3.3 (string)
+         * @param cloudConfig Filepath to a cloud-config yaml file to put into the ISO user-data
          * 
          * @return builder
          * 
@@ -636,7 +636,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param cloudConfig Cloud Config YAML content to inject as user-data. From Rancher v2.3.3 (string)
+         * @param cloudConfig Filepath to a cloud-config yaml file to put into the ISO user-data
          * 
          * @return builder
          * 
@@ -646,7 +646,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param cloudinit vSphere cloud-init file or url to set in the guestinfo (string)
+         * @param cloudinit vSphere cloud-init filepath or url to add to guestinfo
          * 
          * @return builder
          * 
@@ -657,7 +657,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param cloudinit vSphere cloud-init file or url to set in the guestinfo (string)
+         * @param cloudinit vSphere cloud-init filepath or url to add to guestinfo
          * 
          * @return builder
          * 
@@ -667,7 +667,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param contentLibrary If you choose to clone from a content library template specify the name of the library. From Rancher v2.3.3 (string)
+         * @param contentLibrary If you choose to clone from a content library template specify the name of the library
          * 
          * @return builder
          * 
@@ -678,7 +678,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param contentLibrary If you choose to clone from a content library template specify the name of the library. From Rancher v2.3.3 (string)
+         * @param contentLibrary If you choose to clone from a content library template specify the name of the library
          * 
          * @return builder
          * 
@@ -688,7 +688,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param cpuCount vSphere CPU number for docker VM. Default `2` (string)
+         * @param cpuCount vSphere CPU number for docker VM
          * 
          * @return builder
          * 
@@ -699,7 +699,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param cpuCount vSphere CPU number for docker VM. Default `2` (string)
+         * @param cpuCount vSphere CPU number for docker VM
          * 
          * @return builder
          * 
@@ -709,7 +709,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param creationType Creation type when creating a new virtual machine. Supported values: vm, template, library, legacy. Default `legacy`. From Rancher v2.3.3 (string)
+         * @param creationType Creation type when creating a new virtual machine. Supported values: vm, template, library, legacy
          * 
          * @return builder
          * 
@@ -720,7 +720,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param creationType Creation type when creating a new virtual machine. Supported values: vm, template, library, legacy. Default `legacy`. From Rancher v2.3.3 (string)
+         * @param creationType Creation type when creating a new virtual machine. Supported values: vm, template, library, legacy
          * 
          * @return builder
          * 
@@ -730,7 +730,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param customAttributes vSphere custom attributes, format key/value e.g. `200=my custom value`. From Rancher v2.3.3 (List)
+         * @param customAttributes vSphere custom attributes, format key/value e.g. &#39;200=my custom value&#39;
          * 
          * @return builder
          * 
@@ -741,7 +741,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param customAttributes vSphere custom attributes, format key/value e.g. `200=my custom value`. From Rancher v2.3.3 (List)
+         * @param customAttributes vSphere custom attributes, format key/value e.g. &#39;200=my custom value&#39;
          * 
          * @return builder
          * 
@@ -751,7 +751,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param customAttributes vSphere custom attributes, format key/value e.g. `200=my custom value`. From Rancher v2.3.3 (List)
+         * @param customAttributes vSphere custom attributes, format key/value e.g. &#39;200=my custom value&#39;
          * 
          * @return builder
          * 
@@ -761,7 +761,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param datacenter vSphere datacenter for docker VM (string)
+         * @param datacenter vSphere datacenter for virtual machine
          * 
          * @return builder
          * 
@@ -772,7 +772,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param datacenter vSphere datacenter for docker VM (string)
+         * @param datacenter vSphere datacenter for virtual machine
          * 
          * @return builder
          * 
@@ -782,7 +782,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param datastore vSphere datastore for docker VM (string)
+         * @param datastore vSphere datastore for virtual machine
          * 
          * @return builder
          * 
@@ -793,7 +793,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param datastore vSphere datastore for docker VM (string)
+         * @param datastore vSphere datastore for virtual machine
          * 
          * @return builder
          * 
@@ -803,7 +803,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param datastoreCluster vSphere datastore cluster for virtual machine. From Rancher v2.3.3 (string)
+         * @param datastoreCluster vSphere datastore cluster for virtual machine
          * 
          * @return builder
          * 
@@ -814,7 +814,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param datastoreCluster vSphere datastore cluster for virtual machine. From Rancher v2.3.3 (string)
+         * @param datastoreCluster vSphere datastore cluster for virtual machine
          * 
          * @return builder
          * 
@@ -824,7 +824,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param diskSize vSphere size of disk for docker VM (in MB). Default `20480` (string)
+         * @param diskSize vSphere size of disk for docker VM (in MB)
          * 
          * @return builder
          * 
@@ -835,7 +835,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param diskSize vSphere size of disk for docker VM (in MB). Default `20480` (string)
+         * @param diskSize vSphere size of disk for docker VM (in MB)
          * 
          * @return builder
          * 
@@ -845,7 +845,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param folder vSphere folder for the docker VM. This folder must already exist in the datacenter (string)
+         * @param folder vSphere folder for the docker VM. This folder must already exist in the datacenter
          * 
          * @return builder
          * 
@@ -856,7 +856,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param folder vSphere folder for the docker VM. This folder must already exist in the datacenter (string)
+         * @param folder vSphere folder for the docker VM. This folder must already exist in the datacenter
          * 
          * @return builder
          * 
@@ -887,7 +887,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param hostsystem vSphere compute resource where the docker VM will be instantiated. This can be omitted if using a cluster with DRS (string)
+         * @param hostsystem vSphere compute resource where the docker VM will be instantiated. This can be omitted if using a cluster with DRS
          * 
          * @return builder
          * 
@@ -898,7 +898,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param hostsystem vSphere compute resource where the docker VM will be instantiated. This can be omitted if using a cluster with DRS (string)
+         * @param hostsystem vSphere compute resource where the docker VM will be instantiated. This can be omitted if using a cluster with DRS
          * 
          * @return builder
          * 
@@ -908,7 +908,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param memorySize vSphere size of memory for docker VM (in MB). Default `2048` (string)
+         * @param memorySize vSphere size of memory for docker VM (in MB)
          * 
          * @return builder
          * 
@@ -919,7 +919,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param memorySize vSphere size of memory for docker VM (in MB). Default `2048` (string)
+         * @param memorySize vSphere size of memory for docker VM (in MB)
          * 
          * @return builder
          * 
@@ -929,7 +929,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param networks vSphere network where the docker VM will be attached (list)
+         * @param networks vSphere network where the virtual machine will be attached
          * 
          * @return builder
          * 
@@ -940,7 +940,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param networks vSphere network where the docker VM will be attached (list)
+         * @param networks vSphere network where the virtual machine will be attached
          * 
          * @return builder
          * 
@@ -950,7 +950,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param networks vSphere network where the docker VM will be attached (list)
+         * @param networks vSphere network where the virtual machine will be attached
          * 
          * @return builder
          * 
@@ -960,7 +960,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param password vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+         * @param password vSphere password
          * 
          * @return builder
          * 
@@ -971,7 +971,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param password vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+         * @param password vSphere password
          * 
          * @return builder
          * 
@@ -981,7 +981,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param pool vSphere resource pool for docker VM (string)
+         * @param pool vSphere resource pool for docker VM
          * 
          * @return builder
          * 
@@ -992,7 +992,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param pool vSphere resource pool for docker VM (string)
+         * @param pool vSphere resource pool for docker VM
          * 
          * @return builder
          * 
@@ -1002,7 +1002,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param sshPassword If using a non-B2D image you can specify the ssh password. Default `tcuser`. From Rancher v2.3.3 (string)
+         * @param sshPassword If using a non-B2D image you can specify the ssh password
          * 
          * @return builder
          * 
@@ -1013,7 +1013,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param sshPassword If using a non-B2D image you can specify the ssh password. Default `tcuser`. From Rancher v2.3.3 (string)
+         * @param sshPassword If using a non-B2D image you can specify the ssh password
          * 
          * @return builder
          * 
@@ -1023,7 +1023,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param sshPort If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+         * @param sshPort If using a non-B2D image you can specify the ssh port
          * 
          * @return builder
          * 
@@ -1034,7 +1034,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param sshPort If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+         * @param sshPort If using a non-B2D image you can specify the ssh port
          * 
          * @return builder
          * 
@@ -1044,7 +1044,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+         * @param sshUser If using a non-B2D image you can specify the ssh user
          * 
          * @return builder
          * 
@@ -1055,7 +1055,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+         * @param sshUser If using a non-B2D image you can specify the ssh user
          * 
          * @return builder
          * 
@@ -1065,7 +1065,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param sshUserGroup If using a non-B2D image the uploaded keys will need chown&#39;ed. Default `staff`. From Rancher v2.3.3 (string)
+         * @param sshUserGroup If using a non-B2D image the uploaded keys will need chown&#39;ed, defaults to staff e.g. docker:staff
          * 
          * @return builder
          * 
@@ -1076,7 +1076,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param sshUserGroup If using a non-B2D image the uploaded keys will need chown&#39;ed. Default `staff`. From Rancher v2.3.3 (string)
+         * @param sshUserGroup If using a non-B2D image the uploaded keys will need chown&#39;ed, defaults to staff e.g. docker:staff
          * 
          * @return builder
          * 
@@ -1086,7 +1086,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param tags vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+         * @param tags vSphere tags id e.g. urn:xxx
          * 
          * @return builder
          * 
@@ -1097,7 +1097,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param tags vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+         * @param tags vSphere tags id e.g. urn:xxx
          * 
          * @return builder
          * 
@@ -1107,7 +1107,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param tags vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+         * @param tags vSphere tags id e.g. urn:xxx
          * 
          * @return builder
          * 
@@ -1117,7 +1117,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param username vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+         * @param username vSphere username
          * 
          * @return builder
          * 
@@ -1128,7 +1128,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param username vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+         * @param username vSphere username
          * 
          * @return builder
          * 
@@ -1138,7 +1138,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param vappIpAllocationPolicy vSphere vApp IP allocation policy. Supported values are: `dhcp`, `fixed`, `transient` and `fixedAllocated` (string)
+         * @param vappIpAllocationPolicy vSphere vApp IP allocation policy. Supported values are: dhcp, fixed, transient and fixedAllocated
          * 
          * @return builder
          * 
@@ -1149,7 +1149,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param vappIpAllocationPolicy vSphere vApp IP allocation policy. Supported values are: `dhcp`, `fixed`, `transient` and `fixedAllocated` (string)
+         * @param vappIpAllocationPolicy vSphere vApp IP allocation policy. Supported values are: dhcp, fixed, transient and fixedAllocated
          * 
          * @return builder
          * 
@@ -1159,7 +1159,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param vappIpProtocol vSphere vApp IP protocol for this deployment. Supported values are: `IPv4` and `IPv6` (string)
+         * @param vappIpProtocol vSphere vApp IP protocol for this deployment. Supported values are: IPv4 and IPv6
          * 
          * @return builder
          * 
@@ -1170,7 +1170,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param vappIpProtocol vSphere vApp IP protocol for this deployment. Supported values are: `IPv4` and `IPv6` (string)
+         * @param vappIpProtocol vSphere vApp IP protocol for this deployment. Supported values are: IPv4 and IPv6
          * 
          * @return builder
          * 
@@ -1180,7 +1180,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param vappProperties vSphere vApp properties (list)
+         * @param vappProperties vSphere vApp properties
          * 
          * @return builder
          * 
@@ -1191,7 +1191,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param vappProperties vSphere vApp properties (list)
+         * @param vappProperties vSphere vApp properties
          * 
          * @return builder
          * 
@@ -1201,7 +1201,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param vappProperties vSphere vApp properties (list)
+         * @param vappProperties vSphere vApp properties
          * 
          * @return builder
          * 
@@ -1211,7 +1211,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param vappTransport vSphere OVF environment transports to use for properties. Supported values are: `iso` and `com.vmware.guestInfo` (string)
+         * @param vappTransport vSphere OVF environment transports to use for properties. Supported values are: iso and com.vmware.guestInfo
          * 
          * @return builder
          * 
@@ -1222,7 +1222,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param vappTransport vSphere OVF environment transports to use for properties. Supported values are: `iso` and `com.vmware.guestInfo` (string)
+         * @param vappTransport vSphere OVF environment transports to use for properties. Supported values are: iso and com.vmware.guestInfo
          * 
          * @return builder
          * 
@@ -1232,7 +1232,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param vcenter vSphere IP/hostname for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+         * @param vcenter vSphere IP/hostname for vCenter
          * 
          * @return builder
          * 
@@ -1243,7 +1243,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param vcenter vSphere IP/hostname for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+         * @param vcenter vSphere IP/hostname for vCenter
          * 
          * @return builder
          * 
@@ -1253,7 +1253,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param vcenterPort vSphere Port for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x. Default `443` (string)
+         * @param vcenterPort vSphere Port for vCenter
          * 
          * @return builder
          * 
@@ -1264,7 +1264,7 @@ public final class NodeTemplateVsphereConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param vcenterPort vSphere Port for vCenter. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x. Default `443` (string)
+         * @param vcenterPort vSphere Port for vCenter
          * 
          * @return builder
          * 

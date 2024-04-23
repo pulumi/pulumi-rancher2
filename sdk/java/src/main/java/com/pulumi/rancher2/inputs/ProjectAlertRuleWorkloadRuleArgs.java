@@ -19,14 +19,14 @@ public final class ProjectAlertRuleWorkloadRuleArgs extends com.pulumi.resources
     public static final ProjectAlertRuleWorkloadRuleArgs Empty = new ProjectAlertRuleWorkloadRuleArgs();
 
     /**
-     * Workload rule available percentage. Default: `70` (int)
+     * Workload rule available percentage
      * 
      */
     @Import(name="availablePercentage")
     private @Nullable Output<Integer> availablePercentage;
 
     /**
-     * @return Workload rule available percentage. Default: `70` (int)
+     * @return Workload rule available percentage
      * 
      */
     public Optional<Output<Integer>> availablePercentage() {
@@ -34,14 +34,14 @@ public final class ProjectAlertRuleWorkloadRuleArgs extends com.pulumi.resources
     }
 
     /**
-     * Workload rule selector (map)
+     * Workload rule selector
      * 
      */
     @Import(name="selector")
     private @Nullable Output<Map<String,Object>> selector;
 
     /**
-     * @return Workload rule selector (map)
+     * @return Workload rule selector
      * 
      */
     public Optional<Output<Map<String,Object>>> selector() {
@@ -49,14 +49,14 @@ public final class ProjectAlertRuleWorkloadRuleArgs extends com.pulumi.resources
     }
 
     /**
-     * Workload ID (string)
+     * Workload ID
      * 
      */
     @Import(name="workloadId")
     private @Nullable Output<String> workloadId;
 
     /**
-     * @return Workload ID (string)
+     * @return Workload ID
      * 
      */
     public Optional<Output<String>> workloadId() {
@@ -90,7 +90,7 @@ public final class ProjectAlertRuleWorkloadRuleArgs extends com.pulumi.resources
         }
 
         /**
-         * @param availablePercentage Workload rule available percentage. Default: `70` (int)
+         * @param availablePercentage Workload rule available percentage
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class ProjectAlertRuleWorkloadRuleArgs extends com.pulumi.resources
         }
 
         /**
-         * @param availablePercentage Workload rule available percentage. Default: `70` (int)
+         * @param availablePercentage Workload rule available percentage
          * 
          * @return builder
          * 
@@ -111,7 +111,7 @@ public final class ProjectAlertRuleWorkloadRuleArgs extends com.pulumi.resources
         }
 
         /**
-         * @param selector Workload rule selector (map)
+         * @param selector Workload rule selector
          * 
          * @return builder
          * 
@@ -122,7 +122,7 @@ public final class ProjectAlertRuleWorkloadRuleArgs extends com.pulumi.resources
         }
 
         /**
-         * @param selector Workload rule selector (map)
+         * @param selector Workload rule selector
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class ProjectAlertRuleWorkloadRuleArgs extends com.pulumi.resources
         }
 
         /**
-         * @param workloadId Workload ID (string)
+         * @param workloadId Workload ID
          * 
          * @return builder
          * 
@@ -143,7 +143,7 @@ public final class ProjectAlertRuleWorkloadRuleArgs extends com.pulumi.resources
         }
 
         /**
-         * @param workloadId Workload ID (string)
+         * @param workloadId Workload ID
          * 
          * @return builder
          * 

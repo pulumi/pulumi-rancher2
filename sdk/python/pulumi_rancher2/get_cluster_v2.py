@@ -233,7 +233,6 @@ def get_cluster_v2(fleet_namespace: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
@@ -241,7 +240,6 @@ def get_cluster_v2(fleet_namespace: Optional[str] = None,
     foo = rancher2.get_cluster_v2(name="foo",
         fleet_namespace="fleet-ns")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str fleet_namespace: The fleet namespace of the Cluster v2. Default: `\\"fleet-default\\"` (string)
@@ -282,7 +280,6 @@ def get_cluster_v2_output(fleet_namespace: Optional[pulumi.Input[Optional[str]]]
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
@@ -290,7 +287,6 @@ def get_cluster_v2_output(fleet_namespace: Optional[pulumi.Input[Optional[str]]]
     foo = rancher2.get_cluster_v2(name="foo",
         fleet_namespace="fleet-ns")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str fleet_namespace: The fleet namespace of the Cluster v2. Default: `\\"fleet-default\\"` (string)

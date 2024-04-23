@@ -14,11 +14,11 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate
     {
         /// <summary>
-        /// The AKS node pool max surge (string), example value: `25%`
+        /// Rolling update max surge
         /// </summary>
         public readonly int? MaxSurge;
         /// <summary>
-        /// Monitoring deployment rolling update max unavailable. Default: `1` (int)
+        /// Rolling update max unavailable
         /// </summary>
         public readonly int? MaxUnavailable;
 

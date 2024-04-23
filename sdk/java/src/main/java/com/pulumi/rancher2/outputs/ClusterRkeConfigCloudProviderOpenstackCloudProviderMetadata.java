@@ -12,29 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata {
-    /**
-     * @return (int)
-     * 
-     */
     private @Nullable Integer requestTimeout;
-    /**
-     * @return (string)
-     * 
-     */
     private @Nullable String searchOrder;
 
     private ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata() {}
-    /**
-     * @return (int)
-     * 
-     */
     public Optional<Integer> requestTimeout() {
         return Optional.ofNullable(this.requestTimeout);
     }
-    /**
-     * @return (string)
-     * 
-     */
     public Optional<String> searchOrder() {
         return Optional.ofNullable(this.searchOrder);
     }

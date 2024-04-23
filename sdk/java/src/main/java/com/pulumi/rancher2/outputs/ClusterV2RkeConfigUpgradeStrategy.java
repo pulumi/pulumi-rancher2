@@ -14,50 +14,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterV2RkeConfigUpgradeStrategy {
     /**
-     * @return How many control plane nodes should be upgraded at a time, 0 is infinite. Percentages are also accepted.
+     * @return How many controlplane nodes should be upgrade at time, 0 is infinite. Percentages are also accepted
      * 
      */
     private @Nullable String controlPlaneConcurrency;
     /**
-     * @return Controlplane nodes drain options.
+     * @return Controlplane nodes drain options
      * 
      */
     private @Nullable ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions controlPlaneDrainOptions;
     /**
-     * @return How many worker nodes should be upgraded at a time. Percentages are also accepted.
+     * @return How many worker nodes should be upgrade at time
      * 
      */
     private @Nullable String workerConcurrency;
     /**
-     * @return Worker nodes drain options.
+     * @return Worker nodes drain options
      * 
      */
     private @Nullable ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions workerDrainOptions;
 
     private ClusterV2RkeConfigUpgradeStrategy() {}
     /**
-     * @return How many control plane nodes should be upgraded at a time, 0 is infinite. Percentages are also accepted.
+     * @return How many controlplane nodes should be upgrade at time, 0 is infinite. Percentages are also accepted
      * 
      */
     public Optional<String> controlPlaneConcurrency() {
         return Optional.ofNullable(this.controlPlaneConcurrency);
     }
     /**
-     * @return Controlplane nodes drain options.
+     * @return Controlplane nodes drain options
      * 
      */
     public Optional<ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptions> controlPlaneDrainOptions() {
         return Optional.ofNullable(this.controlPlaneDrainOptions);
     }
     /**
-     * @return How many worker nodes should be upgraded at a time. Percentages are also accepted.
+     * @return How many worker nodes should be upgrade at time
      * 
      */
     public Optional<String> workerConcurrency() {
         return Optional.ofNullable(this.workerConcurrency);
     }
     /**
-     * @return Worker nodes drain options.
+     * @return Worker nodes drain options
      * 
      */
     public Optional<ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions> workerDrainOptions() {

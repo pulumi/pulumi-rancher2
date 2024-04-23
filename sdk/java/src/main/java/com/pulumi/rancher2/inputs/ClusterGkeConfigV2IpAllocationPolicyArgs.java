@@ -17,14 +17,14 @@ public final class ClusterGkeConfigV2IpAllocationPolicyArgs extends com.pulumi.r
     public static final ClusterGkeConfigV2IpAllocationPolicyArgs Empty = new ClusterGkeConfigV2IpAllocationPolicyArgs();
 
     /**
-     * The GKE cluster ip v4 allocation cidr block (string)
+     * The GKE cluster ip v4 allocation cidr block
      * 
      */
     @Import(name="clusterIpv4CidrBlock")
     private @Nullable Output<String> clusterIpv4CidrBlock;
 
     /**
-     * @return The GKE cluster ip v4 allocation cidr block (string)
+     * @return The GKE cluster ip v4 allocation cidr block
      * 
      */
     public Optional<Output<String>> clusterIpv4CidrBlock() {
@@ -32,14 +32,14 @@ public final class ClusterGkeConfigV2IpAllocationPolicyArgs extends com.pulumi.r
     }
 
     /**
-     * The GKE cluster ip v4 allocation secondary range name(string)
+     * The GKE cluster ip v4 allocation secondary range name
      * 
      */
     @Import(name="clusterSecondaryRangeName")
     private @Nullable Output<String> clusterSecondaryRangeName;
 
     /**
-     * @return The GKE cluster ip v4 allocation secondary range name(string)
+     * @return The GKE cluster ip v4 allocation secondary range name
      * 
      */
     public Optional<Output<String>> clusterSecondaryRangeName() {
@@ -47,14 +47,14 @@ public final class ClusterGkeConfigV2IpAllocationPolicyArgs extends com.pulumi.r
     }
 
     /**
-     * Create GKE subnetwork? Default: `false` (bool)
+     * Create GKE subnetwork?
      * 
      */
     @Import(name="createSubnetwork")
     private @Nullable Output<Boolean> createSubnetwork;
 
     /**
-     * @return Create GKE subnetwork? Default: `false` (bool)
+     * @return Create GKE subnetwork?
      * 
      */
     public Optional<Output<Boolean>> createSubnetwork() {
@@ -62,14 +62,14 @@ public final class ClusterGkeConfigV2IpAllocationPolicyArgs extends com.pulumi.r
     }
 
     /**
-     * The GKE node ip v4 allocation cidr block (string)
+     * The GKE node ip v4 allocation cidr block
      * 
      */
     @Import(name="nodeIpv4CidrBlock")
     private @Nullable Output<String> nodeIpv4CidrBlock;
 
     /**
-     * @return The GKE node ip v4 allocation cidr block (string)
+     * @return The GKE node ip v4 allocation cidr block
      * 
      */
     public Optional<Output<String>> nodeIpv4CidrBlock() {
@@ -77,14 +77,14 @@ public final class ClusterGkeConfigV2IpAllocationPolicyArgs extends com.pulumi.r
     }
 
     /**
-     * The GKE services ip v4 allocation cidr block (string)
+     * The GKE services ip v4 allocation cidr block
      * 
      */
     @Import(name="servicesIpv4CidrBlock")
     private @Nullable Output<String> servicesIpv4CidrBlock;
 
     /**
-     * @return The GKE services ip v4 allocation cidr block (string)
+     * @return The GKE services ip v4 allocation cidr block
      * 
      */
     public Optional<Output<String>> servicesIpv4CidrBlock() {
@@ -92,14 +92,14 @@ public final class ClusterGkeConfigV2IpAllocationPolicyArgs extends com.pulumi.r
     }
 
     /**
-     * The GKE services ip v4 allocation secondary range name (string)
+     * The GKE services ip v4 allocation secondary range name
      * 
      */
     @Import(name="servicesSecondaryRangeName")
     private @Nullable Output<String> servicesSecondaryRangeName;
 
     /**
-     * @return The GKE services ip v4 allocation secondary range name (string)
+     * @return The GKE services ip v4 allocation secondary range name
      * 
      */
     public Optional<Output<String>> servicesSecondaryRangeName() {
@@ -107,14 +107,14 @@ public final class ClusterGkeConfigV2IpAllocationPolicyArgs extends com.pulumi.r
     }
 
     /**
-     * The GKE cluster subnetwork name (string)
+     * The GKE cluster subnetwork name
      * 
      */
     @Import(name="subnetworkName")
     private @Nullable Output<String> subnetworkName;
 
     /**
-     * @return The GKE cluster subnetwork name (string)
+     * @return The GKE cluster subnetwork name
      * 
      */
     public Optional<Output<String>> subnetworkName() {
@@ -122,14 +122,14 @@ public final class ClusterGkeConfigV2IpAllocationPolicyArgs extends com.pulumi.r
     }
 
     /**
-     * Use GKE ip aliases? Default: `true` (bool)
+     * Use GKE ip aliases?
      * 
      */
     @Import(name="useIpAliases")
     private @Nullable Output<Boolean> useIpAliases;
 
     /**
-     * @return Use GKE ip aliases? Default: `true` (bool)
+     * @return Use GKE ip aliases?
      * 
      */
     public Optional<Output<Boolean>> useIpAliases() {
@@ -168,7 +168,7 @@ public final class ClusterGkeConfigV2IpAllocationPolicyArgs extends com.pulumi.r
         }
 
         /**
-         * @param clusterIpv4CidrBlock The GKE cluster ip v4 allocation cidr block (string)
+         * @param clusterIpv4CidrBlock The GKE cluster ip v4 allocation cidr block
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class ClusterGkeConfigV2IpAllocationPolicyArgs extends com.pulumi.r
         }
 
         /**
-         * @param clusterIpv4CidrBlock The GKE cluster ip v4 allocation cidr block (string)
+         * @param clusterIpv4CidrBlock The GKE cluster ip v4 allocation cidr block
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class ClusterGkeConfigV2IpAllocationPolicyArgs extends com.pulumi.r
         }
 
         /**
-         * @param clusterSecondaryRangeName The GKE cluster ip v4 allocation secondary range name(string)
+         * @param clusterSecondaryRangeName The GKE cluster ip v4 allocation secondary range name
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class ClusterGkeConfigV2IpAllocationPolicyArgs extends com.pulumi.r
         }
 
         /**
-         * @param clusterSecondaryRangeName The GKE cluster ip v4 allocation secondary range name(string)
+         * @param clusterSecondaryRangeName The GKE cluster ip v4 allocation secondary range name
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class ClusterGkeConfigV2IpAllocationPolicyArgs extends com.pulumi.r
         }
 
         /**
-         * @param createSubnetwork Create GKE subnetwork? Default: `false` (bool)
+         * @param createSubnetwork Create GKE subnetwork?
          * 
          * @return builder
          * 
@@ -221,7 +221,7 @@ public final class ClusterGkeConfigV2IpAllocationPolicyArgs extends com.pulumi.r
         }
 
         /**
-         * @param createSubnetwork Create GKE subnetwork? Default: `false` (bool)
+         * @param createSubnetwork Create GKE subnetwork?
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class ClusterGkeConfigV2IpAllocationPolicyArgs extends com.pulumi.r
         }
 
         /**
-         * @param nodeIpv4CidrBlock The GKE node ip v4 allocation cidr block (string)
+         * @param nodeIpv4CidrBlock The GKE node ip v4 allocation cidr block
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class ClusterGkeConfigV2IpAllocationPolicyArgs extends com.pulumi.r
         }
 
         /**
-         * @param nodeIpv4CidrBlock The GKE node ip v4 allocation cidr block (string)
+         * @param nodeIpv4CidrBlock The GKE node ip v4 allocation cidr block
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class ClusterGkeConfigV2IpAllocationPolicyArgs extends com.pulumi.r
         }
 
         /**
-         * @param servicesIpv4CidrBlock The GKE services ip v4 allocation cidr block (string)
+         * @param servicesIpv4CidrBlock The GKE services ip v4 allocation cidr block
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class ClusterGkeConfigV2IpAllocationPolicyArgs extends com.pulumi.r
         }
 
         /**
-         * @param servicesIpv4CidrBlock The GKE services ip v4 allocation cidr block (string)
+         * @param servicesIpv4CidrBlock The GKE services ip v4 allocation cidr block
          * 
          * @return builder
          * 
@@ -273,7 +273,7 @@ public final class ClusterGkeConfigV2IpAllocationPolicyArgs extends com.pulumi.r
         }
 
         /**
-         * @param servicesSecondaryRangeName The GKE services ip v4 allocation secondary range name (string)
+         * @param servicesSecondaryRangeName The GKE services ip v4 allocation secondary range name
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class ClusterGkeConfigV2IpAllocationPolicyArgs extends com.pulumi.r
         }
 
         /**
-         * @param servicesSecondaryRangeName The GKE services ip v4 allocation secondary range name (string)
+         * @param servicesSecondaryRangeName The GKE services ip v4 allocation secondary range name
          * 
          * @return builder
          * 
@@ -294,7 +294,7 @@ public final class ClusterGkeConfigV2IpAllocationPolicyArgs extends com.pulumi.r
         }
 
         /**
-         * @param subnetworkName The GKE cluster subnetwork name (string)
+         * @param subnetworkName The GKE cluster subnetwork name
          * 
          * @return builder
          * 
@@ -305,7 +305,7 @@ public final class ClusterGkeConfigV2IpAllocationPolicyArgs extends com.pulumi.r
         }
 
         /**
-         * @param subnetworkName The GKE cluster subnetwork name (string)
+         * @param subnetworkName The GKE cluster subnetwork name
          * 
          * @return builder
          * 
@@ -315,7 +315,7 @@ public final class ClusterGkeConfigV2IpAllocationPolicyArgs extends com.pulumi.r
         }
 
         /**
-         * @param useIpAliases Use GKE ip aliases? Default: `true` (bool)
+         * @param useIpAliases Use GKE ip aliases?
          * 
          * @return builder
          * 
@@ -326,7 +326,7 @@ public final class ClusterGkeConfigV2IpAllocationPolicyArgs extends com.pulumi.r
         }
 
         /**
-         * @param useIpAliases Use GKE ip aliases? Default: `true` (bool)
+         * @param useIpAliases Use GKE ip aliases?
          * 
          * @return builder
          * 

@@ -13,13 +13,13 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterV2RkeConfigMachineSelectorFileFileSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Configmap represents a K8s configmap which is the source of files. It is mutually exclusive with secret.
+        /// The configmap which is the source of files
         /// </summary>
         [Input("configmap")]
         public Input<Inputs.ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapArgs>? Configmap { get; set; }
 
         /// <summary>
-        /// Secret represents a K8s secret which is the source of files. It is mutually exclusive with configmap.
+        /// The secret which is the source of files
         /// </summary>
         [Input("secret")]
         public Input<Inputs.ClusterV2RkeConfigMachineSelectorFileFileSourceSecretArgs>? Secret { get; set; }

@@ -13,31 +13,31 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ProjectAlertRuleMetricRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Metric rule comparison. Supported values : `"equal" | "greater-or-equal" | "greater-than" | "less-or-equal" | "less-than" | "not-equal" | "has-value"`. Default: `equal`  (string)
+        /// Metric rule comparison
         /// </summary>
         [Input("comparison")]
         public Input<string>? Comparison { get; set; }
 
         /// <summary>
-        /// Metric rule description (string)
+        /// Metric rule description
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Metric rule duration (string)
+        /// Metric rule duration
         /// </summary>
         [Input("duration", required: true)]
         public Input<string> Duration { get; set; } = null!;
 
         /// <summary>
-        /// Metric rule expression (string)
+        /// Metric rule expression
         /// </summary>
         [Input("expression", required: true)]
         public Input<string> Expression { get; set; } = null!;
 
         /// <summary>
-        /// Metric rule threshold value (float64)
+        /// Metric rule threshold value
         /// </summary>
         [Input("thresholdValue", required: true)]
         public Input<double> ThresholdValue { get; set; } = null!;

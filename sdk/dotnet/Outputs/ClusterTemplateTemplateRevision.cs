@@ -18,23 +18,23 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Annotations;
         /// <summary>
-        /// Cluster configuration (list maxitem: 1)
+        /// Cluster configuration
         /// </summary>
         public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfig ClusterConfig;
         /// <summary>
-        /// Cluster template ID (string)
+        /// Cluster template ID
         /// </summary>
         public readonly string? ClusterTemplateId;
         /// <summary>
-        /// Default variable value (string)
+        /// Default cluster template revision
         /// </summary>
         public readonly bool? Default;
         /// <summary>
-        /// Enable cluster template revision. Default `true` (bool)
+        /// Enable cluster template revision
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// The cluster template revision ID (string)
+        /// (Computed) The ID of the resource (string)
         /// </summary>
         public readonly string? Id;
         /// <summary>
@@ -46,7 +46,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Cluster template questions (list)
+        /// Cluster template questions
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterTemplateTemplateRevisionQuestion> Questions;
 

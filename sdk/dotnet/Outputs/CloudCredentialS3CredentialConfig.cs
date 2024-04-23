@@ -14,35 +14,35 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class CloudCredentialS3CredentialConfig
     {
         /// <summary>
-        /// AWS access key (string)
+        /// AWS Access Key
         /// </summary>
         public readonly string AccessKey;
         /// <summary>
-        /// AWS default bucket (string)
+        /// AWS default bucket
         /// </summary>
         public readonly string? DefaultBucket;
         /// <summary>
-        /// AWS default endpoint (string)
+        /// AWS default endpoint
         /// </summary>
         public readonly string? DefaultEndpoint;
         /// <summary>
-        /// AWS default endpoint CA (string)
+        /// AWS default endpoint CA
         /// </summary>
         public readonly string? DefaultEndpointCa;
         /// <summary>
-        /// AWS default folder (string)
+        /// AWS default folder
         /// </summary>
         public readonly string? DefaultFolder;
         /// <summary>
-        /// AWS default region (string)
+        /// AWS default region
         /// </summary>
         public readonly string? DefaultRegion;
         /// <summary>
-        /// AWS default skip ssl verify. Default: `false` (bool)
+        /// AWS default skip ssl verify
         /// </summary>
         public readonly bool? DefaultSkipSslVerify;
         /// <summary>
-        /// AWS secret key (string)
+        /// AWS Secret Key
         /// </summary>
         public readonly string SecretKey;
 

@@ -14,15 +14,15 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterClusterTemplateAnswers
     {
         /// <summary>
-        /// Cluster ID to apply answer (string)
+        /// Cluster ID for answer
         /// </summary>
         public readonly string? ClusterId;
         /// <summary>
-        /// Project ID to apply answer (string)
+        /// Project ID for answer
         /// </summary>
         public readonly string? ProjectId;
         /// <summary>
-        /// Key/values for answer (map)
+        /// Key/values for answer
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Values;
 

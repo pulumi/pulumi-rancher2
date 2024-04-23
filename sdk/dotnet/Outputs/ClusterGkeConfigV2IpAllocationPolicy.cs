@@ -14,35 +14,35 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterGkeConfigV2IpAllocationPolicy
     {
         /// <summary>
-        /// The GKE cluster ip v4 allocation cidr block (string)
+        /// The GKE cluster ip v4 allocation cidr block
         /// </summary>
         public readonly string? ClusterIpv4CidrBlock;
         /// <summary>
-        /// The GKE cluster ip v4 allocation secondary range name(string)
+        /// The GKE cluster ip v4 allocation secondary range name
         /// </summary>
         public readonly string? ClusterSecondaryRangeName;
         /// <summary>
-        /// Create GKE subnetwork? Default: `false` (bool)
+        /// Create GKE subnetwork?
         /// </summary>
         public readonly bool? CreateSubnetwork;
         /// <summary>
-        /// The GKE node ip v4 allocation cidr block (string)
+        /// The GKE node ip v4 allocation cidr block
         /// </summary>
         public readonly string? NodeIpv4CidrBlock;
         /// <summary>
-        /// The GKE services ip v4 allocation cidr block (string)
+        /// The GKE services ip v4 allocation cidr block
         /// </summary>
         public readonly string? ServicesIpv4CidrBlock;
         /// <summary>
-        /// The GKE services ip v4 allocation secondary range name (string)
+        /// The GKE services ip v4 allocation secondary range name
         /// </summary>
         public readonly string? ServicesSecondaryRangeName;
         /// <summary>
-        /// The GKE cluster subnetwork name (string)
+        /// The GKE cluster subnetwork name
         /// </summary>
         public readonly string? SubnetworkName;
         /// <summary>
-        /// Use GKE ip aliases? Default: `true` (bool)
+        /// Use GKE ip aliases?
         /// </summary>
         public readonly bool? UseIpAliases;
 

@@ -18,177 +18,177 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterAksConfig {
     /**
-     * @return The secret of an Azure Active Directory server application (string)
+     * @return The secret of an Azure Active Directory server application
      * 
      */
     private @Nullable String aadServerAppSecret;
     /**
-     * @return The ID of an Azure Active Directory tenant (string)
+     * @return The ID of an Azure Active Directory tenant
      * 
      */
     private @Nullable String aadTenantId;
     /**
-     * @return The ID of an Azure Active Directory client application of type \&#34;Native\&#34;. This application is for user login via kubectl (string)
+     * @return The ID of an Azure Active Directory client application of type &#34;Native&#34;. This application is for user login via kubectl
      * 
      */
     private @Nullable String addClientAppId;
     /**
-     * @return The ID of an Azure Active Directory server application of type \&#34;Web app/API\&#34;. This application represents the managed cluster&#39;s apiserver (Server application) (string)
+     * @return The ID of an Azure Active Directory server application of type &#34;Web app/API&#34;. This application represents the managed cluster&#39;s apiserver (Server application)
      * 
      */
     private @Nullable String addServerAppId;
     /**
-     * @return The administrator username to use for Linux hosts. Default `azureuser` (string)
+     * @return The administrator username to use for Linux hosts
      * 
      */
     private @Nullable String adminUsername;
     /**
-     * @return DNS prefix to be used to create the FQDN for the agent pool (string)
+     * @return DNS prefix to be used to create the FQDN for the agent pool
      * 
      */
     private String agentDnsPrefix;
     /**
-     * @return GB size to be used to specify the disk for every machine in the agent pool. If you specify 0, it will apply the default according to the \&#34;agent vm size\&#34; specified. Default `0` (int)
+     * @return GB size to be used to specify the disk for every machine in the agent pool. If you specify 0, it will apply the default according to the &#34;agent vm size&#34; specified
      * 
      */
     private @Nullable Integer agentOsDiskSize;
     /**
-     * @return Name for the agent pool, upto 12 alphanumeric characters. Default `agentpool0` (string)
+     * @return Name for the agent pool, upto 12 alphanumeric characters
      * 
      */
     private @Nullable String agentPoolName;
     /**
-     * @return Storage profile specifies what kind of storage used on machine in the agent pool. Chooses from [ManagedDisks StorageAccount]. Default `ManagedDisks` (string)
+     * @return Storage profile specifies what kind of storage used on machine in the agent pool. Chooses from [ManagedDisks StorageAccount]
      * 
      */
     private @Nullable String agentStorageProfile;
     /**
-     * @return Size of machine in the agent pool. Default `Standard_D1_v2` (string)
+     * @return Size of machine in the agent pool
      * 
      */
     private @Nullable String agentVmSize;
     /**
-     * @return The AKS auth base url (string)
+     * @return Different authentication API url to use
      * 
      */
     private @Nullable String authBaseUrl;
     /**
-     * @return The AKS base url (string)
+     * @return Different resource management API url to use
      * 
      */
     private @Nullable String baseUrl;
     /**
-     * @return Azure client ID to use (string)
+     * @return Azure client ID to use
      * 
      */
     private String clientId;
     /**
-     * @return Azure client secret associated with the \&#34;client id\&#34; (string)
+     * @return Azure client secret associated with the &#34;client id&#34;
      * 
      */
     private String clientSecret;
     /**
-     * @return The AKS node pool count. Default: `1` (int)
+     * @return Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive)
      * 
      */
     private @Nullable Integer count;
     /**
-     * @return An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes Service address range specified in \&#34;service cidr\&#34;. Default `10.0.0.10` (string)
+     * @return An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes Service address range specified in &#34;service cidr&#34;
      * 
      */
     private @Nullable String dnsServiceIp;
     /**
-     * @return A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes Service address range specified in \&#34;service cidr\&#34;. Default `172.17.0.1/16` (string)
+     * @return A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes Service address range specified in &#34;service cidr&#34;
      * 
      */
     private @Nullable String dockerBridgeCidr;
     /**
-     * @return Enable the Kubernetes ingress with automatic public DNS name creation. Default `false` (bool)
+     * @return Enable the Kubernetes ingress with automatic public DNS name creation
      * 
      */
     private @Nullable Boolean enableHttpApplicationRouting;
     /**
-     * @return Turn on Azure Log Analytics monitoring. Uses the Log Analytics \&#34;Default\&#34; workspace if it exists, else creates one. if using an existing workspace, specifies \&#34;log analytics workspace resource id\&#34;. Default `true` (bool)
+     * @return Turn on Azure Log Analytics monitoring. Uses the Log Analytics &#34;Default&#34; workspace if it exists, else creates one. if using an existing workspace, specifies &#34;log analytics workspace resource id&#34;
      * 
      */
     private @Nullable Boolean enableMonitoring;
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return Specify the version of Kubernetes
      * 
      */
     private String kubernetesVersion;
     /**
-     * @return The AKS load balancer sku (string)
+     * @return Load balancer type (basic | standard). Must be standard for auto-scaling
      * 
      */
     private @Nullable String loadBalancerSku;
     /**
-     * @return Azure Kubernetes cluster location. Default `eastus` (string)
+     * @return Azure Kubernetes cluster location
      * 
      */
     private @Nullable String location;
     /**
-     * @return The name of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses &#39;{resource group}-{subscription id}-{location code}&#39; (string)
+     * @return The name of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses &#39;{resource group}-{subscription id}-{location code}&#39;
      * 
      */
     private @Nullable String logAnalyticsWorkspace;
     /**
-     * @return The resource group of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses the &#39;Cluster&#39; resource group (string)
+     * @return The resource group of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses the &#39;Cluster&#39; resource group
      * 
      */
     private @Nullable String logAnalyticsWorkspaceResourceGroup;
     /**
-     * @return DNS prefix to use the Kubernetes cluster control pane (string)
+     * @return DNS prefix to use the Kubernetes cluster control pane
      * 
      */
     private String masterDnsPrefix;
     /**
-     * @return The AKS node pool max pods. Default: `110` (int)
+     * @return Maximum number of pods that can run on a node
      * 
      */
     private @Nullable Integer maxPods;
     /**
-     * @return The AKS network plugin. Required if `imported=false` (string)
+     * @return Network plugin used for building Kubernetes network. Chooses from [azure kubenet]
      * 
      */
     private @Nullable String networkPlugin;
     /**
-     * @return The AKS network policy (string)
+     * @return Network policy used for building Kubernetes network. Chooses from [calico]
      * 
      */
     private @Nullable String networkPolicy;
     /**
-     * @return A CIDR IP range from which to assign Kubernetes Pod IPs (string)
+     * @return A CIDR notation IP range from which to assign Kubernetes Pod IPs when &#34;network plugin&#34; is specified in &#34;kubenet&#34;.
      * 
      */
     private @Nullable String podCidr;
     /**
-     * @return The AKS resource group (string)
+     * @return The name of the Cluster resource group
      * 
      */
     private String resourceGroup;
     /**
-     * @return A CIDR IP range from which to assign Kubernetes Service IPs (string)
+     * @return A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges
      * 
      */
     private @Nullable String serviceCidr;
     /**
-     * @return Contents of the SSH public key used to authenticate with Linux hosts (string)
+     * @return Contents of the SSH public key used to authenticate with Linux hosts
      * 
      */
     private String sshPublicKeyContents;
     /**
-     * @return The AKS subnet (string)
+     * @return The name of an existing Azure Virtual Subnet. Composite of agent virtual network subnet ID
      * 
      */
     private String subnet;
     /**
-     * @return Subscription credentials which uniquely identify Microsoft Azure subscription (string)
+     * @return Subscription credentials which uniquely identify Microsoft Azure subscription
      * 
      */
     private String subscriptionId;
     /**
-     * @return Use `tags` argument instead as []string
+     * @return Tags for Kubernetes cluster. For example, foo=bar
      * 
      * @deprecated
      * Use tags argument instead as []string
@@ -197,267 +197,267 @@ public final class ClusterAksConfig {
     @Deprecated /* Use tags argument instead as []string */
     private @Nullable Map<String,Object> tag;
     /**
-     * @return The GKE node config tags (List)
+     * @return Tags for Kubernetes cluster. For example, `[&#34;foo=bar&#34;,&#34;bar=foo&#34;]`
      * 
      */
     private @Nullable List<String> tags;
     /**
-     * @return Azure tenant ID to use (string)
+     * @return Azure tenant ID to use
      * 
      */
     private String tenantId;
     /**
-     * @return The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
+     * @return The name of an existing Azure Virtual Network. Composite of agent virtual network subnet ID
      * 
      */
     private String virtualNetwork;
     /**
-     * @return The AKS virtual network resource group (string)
+     * @return The resource group of an existing Azure Virtual Network. Composite of agent virtual network subnet ID
      * 
      */
     private String virtualNetworkResourceGroup;
 
     private ClusterAksConfig() {}
     /**
-     * @return The secret of an Azure Active Directory server application (string)
+     * @return The secret of an Azure Active Directory server application
      * 
      */
     public Optional<String> aadServerAppSecret() {
         return Optional.ofNullable(this.aadServerAppSecret);
     }
     /**
-     * @return The ID of an Azure Active Directory tenant (string)
+     * @return The ID of an Azure Active Directory tenant
      * 
      */
     public Optional<String> aadTenantId() {
         return Optional.ofNullable(this.aadTenantId);
     }
     /**
-     * @return The ID of an Azure Active Directory client application of type \&#34;Native\&#34;. This application is for user login via kubectl (string)
+     * @return The ID of an Azure Active Directory client application of type &#34;Native&#34;. This application is for user login via kubectl
      * 
      */
     public Optional<String> addClientAppId() {
         return Optional.ofNullable(this.addClientAppId);
     }
     /**
-     * @return The ID of an Azure Active Directory server application of type \&#34;Web app/API\&#34;. This application represents the managed cluster&#39;s apiserver (Server application) (string)
+     * @return The ID of an Azure Active Directory server application of type &#34;Web app/API&#34;. This application represents the managed cluster&#39;s apiserver (Server application)
      * 
      */
     public Optional<String> addServerAppId() {
         return Optional.ofNullable(this.addServerAppId);
     }
     /**
-     * @return The administrator username to use for Linux hosts. Default `azureuser` (string)
+     * @return The administrator username to use for Linux hosts
      * 
      */
     public Optional<String> adminUsername() {
         return Optional.ofNullable(this.adminUsername);
     }
     /**
-     * @return DNS prefix to be used to create the FQDN for the agent pool (string)
+     * @return DNS prefix to be used to create the FQDN for the agent pool
      * 
      */
     public String agentDnsPrefix() {
         return this.agentDnsPrefix;
     }
     /**
-     * @return GB size to be used to specify the disk for every machine in the agent pool. If you specify 0, it will apply the default according to the \&#34;agent vm size\&#34; specified. Default `0` (int)
+     * @return GB size to be used to specify the disk for every machine in the agent pool. If you specify 0, it will apply the default according to the &#34;agent vm size&#34; specified
      * 
      */
     public Optional<Integer> agentOsDiskSize() {
         return Optional.ofNullable(this.agentOsDiskSize);
     }
     /**
-     * @return Name for the agent pool, upto 12 alphanumeric characters. Default `agentpool0` (string)
+     * @return Name for the agent pool, upto 12 alphanumeric characters
      * 
      */
     public Optional<String> agentPoolName() {
         return Optional.ofNullable(this.agentPoolName);
     }
     /**
-     * @return Storage profile specifies what kind of storage used on machine in the agent pool. Chooses from [ManagedDisks StorageAccount]. Default `ManagedDisks` (string)
+     * @return Storage profile specifies what kind of storage used on machine in the agent pool. Chooses from [ManagedDisks StorageAccount]
      * 
      */
     public Optional<String> agentStorageProfile() {
         return Optional.ofNullable(this.agentStorageProfile);
     }
     /**
-     * @return Size of machine in the agent pool. Default `Standard_D1_v2` (string)
+     * @return Size of machine in the agent pool
      * 
      */
     public Optional<String> agentVmSize() {
         return Optional.ofNullable(this.agentVmSize);
     }
     /**
-     * @return The AKS auth base url (string)
+     * @return Different authentication API url to use
      * 
      */
     public Optional<String> authBaseUrl() {
         return Optional.ofNullable(this.authBaseUrl);
     }
     /**
-     * @return The AKS base url (string)
+     * @return Different resource management API url to use
      * 
      */
     public Optional<String> baseUrl() {
         return Optional.ofNullable(this.baseUrl);
     }
     /**
-     * @return Azure client ID to use (string)
+     * @return Azure client ID to use
      * 
      */
     public String clientId() {
         return this.clientId;
     }
     /**
-     * @return Azure client secret associated with the \&#34;client id\&#34; (string)
+     * @return Azure client secret associated with the &#34;client id&#34;
      * 
      */
     public String clientSecret() {
         return this.clientSecret;
     }
     /**
-     * @return The AKS node pool count. Default: `1` (int)
+     * @return Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive)
      * 
      */
     public Optional<Integer> count() {
         return Optional.ofNullable(this.count);
     }
     /**
-     * @return An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes Service address range specified in \&#34;service cidr\&#34;. Default `10.0.0.10` (string)
+     * @return An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes Service address range specified in &#34;service cidr&#34;
      * 
      */
     public Optional<String> dnsServiceIp() {
         return Optional.ofNullable(this.dnsServiceIp);
     }
     /**
-     * @return A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes Service address range specified in \&#34;service cidr\&#34;. Default `172.17.0.1/16` (string)
+     * @return A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes Service address range specified in &#34;service cidr&#34;
      * 
      */
     public Optional<String> dockerBridgeCidr() {
         return Optional.ofNullable(this.dockerBridgeCidr);
     }
     /**
-     * @return Enable the Kubernetes ingress with automatic public DNS name creation. Default `false` (bool)
+     * @return Enable the Kubernetes ingress with automatic public DNS name creation
      * 
      */
     public Optional<Boolean> enableHttpApplicationRouting() {
         return Optional.ofNullable(this.enableHttpApplicationRouting);
     }
     /**
-     * @return Turn on Azure Log Analytics monitoring. Uses the Log Analytics \&#34;Default\&#34; workspace if it exists, else creates one. if using an existing workspace, specifies \&#34;log analytics workspace resource id\&#34;. Default `true` (bool)
+     * @return Turn on Azure Log Analytics monitoring. Uses the Log Analytics &#34;Default&#34; workspace if it exists, else creates one. if using an existing workspace, specifies &#34;log analytics workspace resource id&#34;
      * 
      */
     public Optional<Boolean> enableMonitoring() {
         return Optional.ofNullable(this.enableMonitoring);
     }
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return Specify the version of Kubernetes
      * 
      */
     public String kubernetesVersion() {
         return this.kubernetesVersion;
     }
     /**
-     * @return The AKS load balancer sku (string)
+     * @return Load balancer type (basic | standard). Must be standard for auto-scaling
      * 
      */
     public Optional<String> loadBalancerSku() {
         return Optional.ofNullable(this.loadBalancerSku);
     }
     /**
-     * @return Azure Kubernetes cluster location. Default `eastus` (string)
+     * @return Azure Kubernetes cluster location
      * 
      */
     public Optional<String> location() {
         return Optional.ofNullable(this.location);
     }
     /**
-     * @return The name of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses &#39;{resource group}-{subscription id}-{location code}&#39; (string)
+     * @return The name of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses &#39;{resource group}-{subscription id}-{location code}&#39;
      * 
      */
     public Optional<String> logAnalyticsWorkspace() {
         return Optional.ofNullable(this.logAnalyticsWorkspace);
     }
     /**
-     * @return The resource group of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses the &#39;Cluster&#39; resource group (string)
+     * @return The resource group of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses the &#39;Cluster&#39; resource group
      * 
      */
     public Optional<String> logAnalyticsWorkspaceResourceGroup() {
         return Optional.ofNullable(this.logAnalyticsWorkspaceResourceGroup);
     }
     /**
-     * @return DNS prefix to use the Kubernetes cluster control pane (string)
+     * @return DNS prefix to use the Kubernetes cluster control pane
      * 
      */
     public String masterDnsPrefix() {
         return this.masterDnsPrefix;
     }
     /**
-     * @return The AKS node pool max pods. Default: `110` (int)
+     * @return Maximum number of pods that can run on a node
      * 
      */
     public Optional<Integer> maxPods() {
         return Optional.ofNullable(this.maxPods);
     }
     /**
-     * @return The AKS network plugin. Required if `imported=false` (string)
+     * @return Network plugin used for building Kubernetes network. Chooses from [azure kubenet]
      * 
      */
     public Optional<String> networkPlugin() {
         return Optional.ofNullable(this.networkPlugin);
     }
     /**
-     * @return The AKS network policy (string)
+     * @return Network policy used for building Kubernetes network. Chooses from [calico]
      * 
      */
     public Optional<String> networkPolicy() {
         return Optional.ofNullable(this.networkPolicy);
     }
     /**
-     * @return A CIDR IP range from which to assign Kubernetes Pod IPs (string)
+     * @return A CIDR notation IP range from which to assign Kubernetes Pod IPs when &#34;network plugin&#34; is specified in &#34;kubenet&#34;.
      * 
      */
     public Optional<String> podCidr() {
         return Optional.ofNullable(this.podCidr);
     }
     /**
-     * @return The AKS resource group (string)
+     * @return The name of the Cluster resource group
      * 
      */
     public String resourceGroup() {
         return this.resourceGroup;
     }
     /**
-     * @return A CIDR IP range from which to assign Kubernetes Service IPs (string)
+     * @return A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges
      * 
      */
     public Optional<String> serviceCidr() {
         return Optional.ofNullable(this.serviceCidr);
     }
     /**
-     * @return Contents of the SSH public key used to authenticate with Linux hosts (string)
+     * @return Contents of the SSH public key used to authenticate with Linux hosts
      * 
      */
     public String sshPublicKeyContents() {
         return this.sshPublicKeyContents;
     }
     /**
-     * @return The AKS subnet (string)
+     * @return The name of an existing Azure Virtual Subnet. Composite of agent virtual network subnet ID
      * 
      */
     public String subnet() {
         return this.subnet;
     }
     /**
-     * @return Subscription credentials which uniquely identify Microsoft Azure subscription (string)
+     * @return Subscription credentials which uniquely identify Microsoft Azure subscription
      * 
      */
     public String subscriptionId() {
         return this.subscriptionId;
     }
     /**
-     * @return Use `tags` argument instead as []string
+     * @return Tags for Kubernetes cluster. For example, foo=bar
      * 
      * @deprecated
      * Use tags argument instead as []string
@@ -468,28 +468,28 @@ public final class ClusterAksConfig {
         return this.tag == null ? Map.of() : this.tag;
     }
     /**
-     * @return The GKE node config tags (List)
+     * @return Tags for Kubernetes cluster. For example, `[&#34;foo=bar&#34;,&#34;bar=foo&#34;]`
      * 
      */
     public List<String> tags() {
         return this.tags == null ? List.of() : this.tags;
     }
     /**
-     * @return Azure tenant ID to use (string)
+     * @return Azure tenant ID to use
      * 
      */
     public String tenantId() {
         return this.tenantId;
     }
     /**
-     * @return The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
+     * @return The name of an existing Azure Virtual Network. Composite of agent virtual network subnet ID
      * 
      */
     public String virtualNetwork() {
         return this.virtualNetwork;
     }
     /**
-     * @return The AKS virtual network resource group (string)
+     * @return The resource group of an existing Azure Virtual Network. Composite of agent virtual network subnet ID
      * 
      */
     public String virtualNetworkResourceGroup() {

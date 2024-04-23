@@ -15,122 +15,122 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NodeTemplateAmazonec2Config {
     /**
-     * @return Outscale Access Key (string)
+     * @return AWS Access Key
      * 
      */
     private @Nullable String accessKey;
     /**
-     * @return AWS machine image (string)
+     * @return AWS machine image
      * 
      */
     private String ami;
     /**
-     * @return AWS spot instance duration in minutes (60, 120, 180, 240, 300, or 360). Default `0` (string)
+     * @return AWS spot instance duration in minutes (60, 120, 180, 240, 300, or 360)
      * 
      */
     private @Nullable String blockDurationMinutes;
     /**
-     * @return AWS root device name. Default `/dev/sda1` (string)
+     * @return AWS root device name
      * 
      */
     private @Nullable String deviceName;
     /**
-     * @return Encrypt EBS volume. Default `false` (bool)
+     * @return Encrypt EBS volume
      * 
      */
     private @Nullable Boolean encryptEbsVolume;
     /**
-     * @return Optional endpoint URL (hostname only or fully qualified URI) (string)
+     * @return Optional endpoint URL (hostname only or fully qualified URI)
      * 
      */
     private @Nullable String endpoint;
     /**
-     * @return Enables or disables the HTTP metadata endpoint on your instances (string)
+     * @return Enables or disables the HTTP metadata endpoint on your instances
      * 
      */
     private @Nullable String httpEndpoint;
     /**
-     * @return The state of token usage for your instance metadata requests (string)
+     * @return The state of token usage for your instance metadata requests
      * 
      */
     private @Nullable String httpTokens;
     /**
-     * @return AWS IAM Instance Profile (string)
+     * @return AWS IAM Instance Profile
      * 
      */
     private @Nullable String iamInstanceProfile;
     /**
-     * @return Disable SSL when sending requests (bool)
+     * @return Disable SSL when sending requests
      * 
      */
     private @Nullable Boolean insecureTransport;
     /**
-     * @return Outscale VM type. Default `tinav2.c1r2p3` (string)
+     * @return AWS instance type
      * 
      */
     private @Nullable String instanceType;
     /**
-     * @return Custom KMS key ID using the AWS Managed CMK (string)
+     * @return Custom KMS key ID using the AWS Managed CMK
      * 
      */
     private @Nullable String kmsKey;
     /**
-     * @return Enable monitoring for droplet. Default `false` (bool)
+     * @return Set this flag to enable CloudWatch monitoring
      * 
      */
     private @Nullable Boolean monitoring;
     /**
-     * @return Make the specified port number accessible from the Internet. (list)
+     * @return Make the specified port number accessible from the Internet
      * 
      */
     private @Nullable List<String> openPorts;
     /**
-     * @return Only use a private IP address. Default `false` (bool)
+     * @return Only use a private IP address
      * 
      */
     private @Nullable Boolean privateAddressOnly;
     /**
-     * @return AWS region. Default `eu-west-2` (string)
+     * @return AWS Region
      * 
      */
     private String region;
     /**
-     * @return Set this flag to request spot instance. Default `false` (bool)
+     * @return Set this flag to request spot instance
      * 
      */
     private @Nullable Boolean requestSpotInstance;
     /**
-     * @return Set retry count for recoverable failures (use -1 to disable). Default `5` (string)
+     * @return Set retry count for recoverable failures (use -1 to disable)
      * 
      */
     private @Nullable String retries;
     /**
-     * @return AWS root disk size (in GB). Default `16` (string)
+     * @return AWS root disk size (in GB)
      * 
      */
     private @Nullable String rootSize;
     /**
-     * @return Outscale Secret Key (string)
+     * @return AWS Secret Key
      * 
      */
     private @Nullable String secretKey;
     /**
-     * @return Skip adding default rules to security groups (bool)
+     * @return Skip adding default rules to security groups
      * 
      */
     private @Nullable Boolean securityGroupReadonly;
     /**
-     * @return AWS VPC security group. (list)
+     * @return AWS VPC security group
      * 
      */
     private List<String> securityGroups;
     /**
-     * @return AWS Session Token (string)
+     * @return AWS Session Token
      * 
      */
     private @Nullable String sessionToken;
     /**
-     * @return AWS spot instance bid price (in dollar). Default `0.50` (string)
+     * @return AWS spot instance bid price (in dollar)
      * 
      */
     private @Nullable String spotPrice;
@@ -140,217 +140,215 @@ public final class NodeTemplateAmazonec2Config {
      */
     private @Nullable String sshKeypath;
     /**
-     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+     * @return Set the name of the ssh user
      * 
      */
     private @Nullable String sshUser;
     /**
-     * @return AWS VPC subnet id (string)
+     * @return AWS VPC subnet id
      * 
      */
     private String subnetId;
     /**
-     * @return vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+     * @return AWS Tags (e.g. key1,value1,key2,value2)
      * 
      */
     private @Nullable String tags;
     /**
-     * @return Create an EBS optimized instance. Default `false` (bool)
+     * @return Create an EBS optimized instance
      * 
      */
     private @Nullable Boolean useEbsOptimizedInstance;
     /**
-     * @return Force the usage of private IP address. Default `false` (bool)
+     * @return Force the usage of private IP address
      * 
      */
     private @Nullable Boolean usePrivateAddress;
     /**
-     * @return Path to file with cloud-init user-data (string)
-     * 
-     * &gt; **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+     * @return Path to file with cloud-init user data
      * 
      */
     private @Nullable String userdata;
     /**
-     * @return OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+     * @return Amazon EBS volume type
      * 
      */
     private @Nullable String volumeType;
     /**
-     * @return AWS VPC id. (string)
+     * @return AWS VPC id
      * 
      */
     private String vpcId;
     /**
-     * @return AWS zone for instance (i.e. a,b,c,d,e) (string)
+     * @return AWS zone for instance (i.e. a,b,c,d,e)
      * 
      */
     private String zone;
 
     private NodeTemplateAmazonec2Config() {}
     /**
-     * @return Outscale Access Key (string)
+     * @return AWS Access Key
      * 
      */
     public Optional<String> accessKey() {
         return Optional.ofNullable(this.accessKey);
     }
     /**
-     * @return AWS machine image (string)
+     * @return AWS machine image
      * 
      */
     public String ami() {
         return this.ami;
     }
     /**
-     * @return AWS spot instance duration in minutes (60, 120, 180, 240, 300, or 360). Default `0` (string)
+     * @return AWS spot instance duration in minutes (60, 120, 180, 240, 300, or 360)
      * 
      */
     public Optional<String> blockDurationMinutes() {
         return Optional.ofNullable(this.blockDurationMinutes);
     }
     /**
-     * @return AWS root device name. Default `/dev/sda1` (string)
+     * @return AWS root device name
      * 
      */
     public Optional<String> deviceName() {
         return Optional.ofNullable(this.deviceName);
     }
     /**
-     * @return Encrypt EBS volume. Default `false` (bool)
+     * @return Encrypt EBS volume
      * 
      */
     public Optional<Boolean> encryptEbsVolume() {
         return Optional.ofNullable(this.encryptEbsVolume);
     }
     /**
-     * @return Optional endpoint URL (hostname only or fully qualified URI) (string)
+     * @return Optional endpoint URL (hostname only or fully qualified URI)
      * 
      */
     public Optional<String> endpoint() {
         return Optional.ofNullable(this.endpoint);
     }
     /**
-     * @return Enables or disables the HTTP metadata endpoint on your instances (string)
+     * @return Enables or disables the HTTP metadata endpoint on your instances
      * 
      */
     public Optional<String> httpEndpoint() {
         return Optional.ofNullable(this.httpEndpoint);
     }
     /**
-     * @return The state of token usage for your instance metadata requests (string)
+     * @return The state of token usage for your instance metadata requests
      * 
      */
     public Optional<String> httpTokens() {
         return Optional.ofNullable(this.httpTokens);
     }
     /**
-     * @return AWS IAM Instance Profile (string)
+     * @return AWS IAM Instance Profile
      * 
      */
     public Optional<String> iamInstanceProfile() {
         return Optional.ofNullable(this.iamInstanceProfile);
     }
     /**
-     * @return Disable SSL when sending requests (bool)
+     * @return Disable SSL when sending requests
      * 
      */
     public Optional<Boolean> insecureTransport() {
         return Optional.ofNullable(this.insecureTransport);
     }
     /**
-     * @return Outscale VM type. Default `tinav2.c1r2p3` (string)
+     * @return AWS instance type
      * 
      */
     public Optional<String> instanceType() {
         return Optional.ofNullable(this.instanceType);
     }
     /**
-     * @return Custom KMS key ID using the AWS Managed CMK (string)
+     * @return Custom KMS key ID using the AWS Managed CMK
      * 
      */
     public Optional<String> kmsKey() {
         return Optional.ofNullable(this.kmsKey);
     }
     /**
-     * @return Enable monitoring for droplet. Default `false` (bool)
+     * @return Set this flag to enable CloudWatch monitoring
      * 
      */
     public Optional<Boolean> monitoring() {
         return Optional.ofNullable(this.monitoring);
     }
     /**
-     * @return Make the specified port number accessible from the Internet. (list)
+     * @return Make the specified port number accessible from the Internet
      * 
      */
     public List<String> openPorts() {
         return this.openPorts == null ? List.of() : this.openPorts;
     }
     /**
-     * @return Only use a private IP address. Default `false` (bool)
+     * @return Only use a private IP address
      * 
      */
     public Optional<Boolean> privateAddressOnly() {
         return Optional.ofNullable(this.privateAddressOnly);
     }
     /**
-     * @return AWS region. Default `eu-west-2` (string)
+     * @return AWS Region
      * 
      */
     public String region() {
         return this.region;
     }
     /**
-     * @return Set this flag to request spot instance. Default `false` (bool)
+     * @return Set this flag to request spot instance
      * 
      */
     public Optional<Boolean> requestSpotInstance() {
         return Optional.ofNullable(this.requestSpotInstance);
     }
     /**
-     * @return Set retry count for recoverable failures (use -1 to disable). Default `5` (string)
+     * @return Set retry count for recoverable failures (use -1 to disable)
      * 
      */
     public Optional<String> retries() {
         return Optional.ofNullable(this.retries);
     }
     /**
-     * @return AWS root disk size (in GB). Default `16` (string)
+     * @return AWS root disk size (in GB)
      * 
      */
     public Optional<String> rootSize() {
         return Optional.ofNullable(this.rootSize);
     }
     /**
-     * @return Outscale Secret Key (string)
+     * @return AWS Secret Key
      * 
      */
     public Optional<String> secretKey() {
         return Optional.ofNullable(this.secretKey);
     }
     /**
-     * @return Skip adding default rules to security groups (bool)
+     * @return Skip adding default rules to security groups
      * 
      */
     public Optional<Boolean> securityGroupReadonly() {
         return Optional.ofNullable(this.securityGroupReadonly);
     }
     /**
-     * @return AWS VPC security group. (list)
+     * @return AWS VPC security group
      * 
      */
     public List<String> securityGroups() {
         return this.securityGroups;
     }
     /**
-     * @return AWS Session Token (string)
+     * @return AWS Session Token
      * 
      */
     public Optional<String> sessionToken() {
         return Optional.ofNullable(this.sessionToken);
     }
     /**
-     * @return AWS spot instance bid price (in dollar). Default `0.50` (string)
+     * @return AWS spot instance bid price (in dollar)
      * 
      */
     public Optional<String> spotPrice() {
@@ -364,65 +362,63 @@ public final class NodeTemplateAmazonec2Config {
         return Optional.ofNullable(this.sshKeypath);
     }
     /**
-     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+     * @return Set the name of the ssh user
      * 
      */
     public Optional<String> sshUser() {
         return Optional.ofNullable(this.sshUser);
     }
     /**
-     * @return AWS VPC subnet id (string)
+     * @return AWS VPC subnet id
      * 
      */
     public String subnetId() {
         return this.subnetId;
     }
     /**
-     * @return vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+     * @return AWS Tags (e.g. key1,value1,key2,value2)
      * 
      */
     public Optional<String> tags() {
         return Optional.ofNullable(this.tags);
     }
     /**
-     * @return Create an EBS optimized instance. Default `false` (bool)
+     * @return Create an EBS optimized instance
      * 
      */
     public Optional<Boolean> useEbsOptimizedInstance() {
         return Optional.ofNullable(this.useEbsOptimizedInstance);
     }
     /**
-     * @return Force the usage of private IP address. Default `false` (bool)
+     * @return Force the usage of private IP address
      * 
      */
     public Optional<Boolean> usePrivateAddress() {
         return Optional.ofNullable(this.usePrivateAddress);
     }
     /**
-     * @return Path to file with cloud-init user-data (string)
-     * 
-     * &gt; **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+     * @return Path to file with cloud-init user data
      * 
      */
     public Optional<String> userdata() {
         return Optional.ofNullable(this.userdata);
     }
     /**
-     * @return OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+     * @return Amazon EBS volume type
      * 
      */
     public Optional<String> volumeType() {
         return Optional.ofNullable(this.volumeType);
     }
     /**
-     * @return AWS VPC id. (string)
+     * @return AWS VPC id
      * 
      */
     public String vpcId() {
         return this.vpcId;
     }
     /**
-     * @return AWS zone for instance (i.e. a,b,c,d,e) (string)
+     * @return AWS zone for instance (i.e. a,b,c,d,e)
      * 
      */
     public String zone() {

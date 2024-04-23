@@ -12,41 +12,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RegistryRegistry {
-    /**
-     * @return Address for registry.
-     * 
-     */
     private String address;
-    /**
-     * @return Password for the registry (string)
-     * 
-     */
     private @Nullable String password;
-    /**
-     * @return Username for the registry (string)
-     * 
-     */
     private @Nullable String username;
 
     private RegistryRegistry() {}
-    /**
-     * @return Address for registry.
-     * 
-     */
     public String address() {
         return this.address;
     }
-    /**
-     * @return Password for the registry (string)
-     * 
-     */
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
     }
-    /**
-     * @return Username for the registry (string)
-     * 
-     */
     public Optional<String> username() {
         return Optional.ofNullable(this.username);
     }

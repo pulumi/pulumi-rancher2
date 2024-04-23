@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class CloudCredentialLinodeCredentialConfig
     {
         /// <summary>
-        /// Linode API token (string)
+        /// Linode API token
         /// </summary>
         public readonly string Token;
 

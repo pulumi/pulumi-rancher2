@@ -22,14 +22,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     public static final ClusterAksConfigV2Args Empty = new ClusterAksConfigV2Args();
 
     /**
-     * The AKS auth base url (string)
+     * The AKS auth base url
      * 
      */
     @Import(name="authBaseUrl")
     private @Nullable Output<String> authBaseUrl;
 
     /**
-     * @return The AKS auth base url (string)
+     * @return The AKS auth base url
      * 
      */
     public Optional<Output<String>> authBaseUrl() {
@@ -37,14 +37,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The AKS authorized ip ranges (list)
+     * The AKS authorized ip ranges
      * 
      */
     @Import(name="authorizedIpRanges")
     private @Nullable Output<List<String>> authorizedIpRanges;
 
     /**
-     * @return The AKS authorized ip ranges (list)
+     * @return The AKS authorized ip ranges
      * 
      */
     public Optional<Output<List<String>>> authorizedIpRanges() {
@@ -52,14 +52,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The AKS base url (string)
+     * The AKS base url
      * 
      */
     @Import(name="baseUrl")
     private @Nullable Output<String> baseUrl;
 
     /**
-     * @return The AKS base url (string)
+     * @return The AKS base url
      * 
      */
     public Optional<Output<String>> baseUrl() {
@@ -67,14 +67,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The EKS cloud_credential id (string)
+     * The AKS Cloud Credential ID to use
      * 
      */
     @Import(name="cloudCredentialId", required=true)
     private Output<String> cloudCredentialId;
 
     /**
-     * @return The EKS cloud_credential id (string)
+     * @return The AKS Cloud Credential ID to use
      * 
      */
     public Output<String> cloudCredentialId() {
@@ -82,14 +82,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The AKS dns prefix. Required if `imported=false` (string)
+     * The AKS dns prefix. Required if `import=false`
      * 
      */
     @Import(name="dnsPrefix")
     private @Nullable Output<String> dnsPrefix;
 
     /**
-     * @return The AKS dns prefix. Required if `imported=false` (string)
+     * @return The AKS dns prefix. Required if `import=false`
      * 
      */
     public Optional<Output<String>> dnsPrefix() {
@@ -97,14 +97,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Enable AKS http application routing? (bool)
+     * Enable AKS http application routing?
      * 
      */
     @Import(name="httpApplicationRouting")
     private @Nullable Output<Boolean> httpApplicationRouting;
 
     /**
-     * @return Enable AKS http application routing? (bool)
+     * @return Enable AKS http application routing?
      * 
      */
     public Optional<Output<Boolean>> httpApplicationRouting() {
@@ -112,14 +112,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Is GKE cluster imported? Default: `false` (bool)
+     * Is AKS cluster imported?
      * 
      */
     @Import(name="imported")
     private @Nullable Output<Boolean> imported;
 
     /**
-     * @return Is GKE cluster imported? Default: `false` (bool)
+     * @return Is AKS cluster imported?
      * 
      */
     public Optional<Output<Boolean>> imported() {
@@ -127,14 +127,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * The kubernetes master version. Required if `import=false`
      * 
      */
     @Import(name="kubernetesVersion")
     private @Nullable Output<String> kubernetesVersion;
 
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return The kubernetes master version. Required if `import=false`
      * 
      */
     public Optional<Output<String>> kubernetesVersion() {
@@ -142,14 +142,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The AKS linux admin username (string)
+     * The AKS linux admin username
      * 
      */
     @Import(name="linuxAdminUsername")
     private @Nullable Output<String> linuxAdminUsername;
 
     /**
-     * @return The AKS linux admin username (string)
+     * @return The AKS linux admin username
      * 
      */
     public Optional<Output<String>> linuxAdminUsername() {
@@ -157,14 +157,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The AKS linux ssh public key (string)
+     * The AKS linux ssh public key
      * 
      */
     @Import(name="linuxSshPublicKey")
     private @Nullable Output<String> linuxSshPublicKey;
 
     /**
-     * @return The AKS linux ssh public key (string)
+     * @return The AKS linux ssh public key
      * 
      */
     public Optional<Output<String>> linuxSshPublicKey() {
@@ -172,14 +172,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The AKS load balancer sku (string)
+     * The AKS load balancer sku
      * 
      */
     @Import(name="loadBalancerSku")
     private @Nullable Output<String> loadBalancerSku;
 
     /**
-     * @return The AKS load balancer sku (string)
+     * @return The AKS load balancer sku
      * 
      */
     public Optional<Output<String>> loadBalancerSku() {
@@ -187,14 +187,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The AKS log analytics workspace group (string)
+     * The AKS log analytics workspace group
      * 
      */
     @Import(name="logAnalyticsWorkspaceGroup")
     private @Nullable Output<String> logAnalyticsWorkspaceGroup;
 
     /**
-     * @return The AKS log analytics workspace group (string)
+     * @return The AKS log analytics workspace group
      * 
      */
     public Optional<Output<String>> logAnalyticsWorkspaceGroup() {
@@ -202,14 +202,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The AKS log analytics workspace name (string)
+     * The AKS log analytics workspace name
      * 
      */
     @Import(name="logAnalyticsWorkspaceName")
     private @Nullable Output<String> logAnalyticsWorkspaceName;
 
     /**
-     * @return The AKS log analytics workspace name (string)
+     * @return The AKS log analytics workspace name
      * 
      */
     public Optional<Output<String>> logAnalyticsWorkspaceName() {
@@ -217,14 +217,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Is AKS cluster monitoring enabled? (bool)
+     * Is AKS cluster monitoring enabled?
      * 
      */
     @Import(name="monitoring")
     private @Nullable Output<Boolean> monitoring;
 
     /**
-     * @return Is AKS cluster monitoring enabled? (bool)
+     * @return Is AKS cluster monitoring enabled?
      * 
      */
     public Optional<Output<Boolean>> monitoring() {
@@ -247,14 +247,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The AKS network dns service ip (string)
+     * The AKS network dns service ip
      * 
      */
     @Import(name="networkDnsServiceIp")
     private @Nullable Output<String> networkDnsServiceIp;
 
     /**
-     * @return The AKS network dns service ip (string)
+     * @return The AKS network dns service ip
      * 
      */
     public Optional<Output<String>> networkDnsServiceIp() {
@@ -262,14 +262,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The AKS network docker bridge cidr (string)
+     * The AKS network docker bridge cidr
      * 
      */
     @Import(name="networkDockerBridgeCidr")
     private @Nullable Output<String> networkDockerBridgeCidr;
 
     /**
-     * @return The AKS network docker bridge cidr (string)
+     * @return The AKS network docker bridge cidr
      * 
      */
     public Optional<Output<String>> networkDockerBridgeCidr() {
@@ -277,14 +277,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The AKS network plugin. Required if `imported=false` (string)
+     * The AKS network plugin. Required if `import=false`
      * 
      */
     @Import(name="networkPlugin")
     private @Nullable Output<String> networkPlugin;
 
     /**
-     * @return The AKS network plugin. Required if `imported=false` (string)
+     * @return The AKS network plugin. Required if `import=false`
      * 
      */
     public Optional<Output<String>> networkPlugin() {
@@ -292,14 +292,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The AKS network pod cidr (string)
+     * The AKS network pod cidr
      * 
      */
     @Import(name="networkPodCidr")
     private @Nullable Output<String> networkPodCidr;
 
     /**
-     * @return The AKS network pod cidr (string)
+     * @return The AKS network pod cidr
      * 
      */
     public Optional<Output<String>> networkPodCidr() {
@@ -307,14 +307,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The AKS network policy (string)
+     * The AKS network policy
      * 
      */
     @Import(name="networkPolicy")
     private @Nullable Output<String> networkPolicy;
 
     /**
-     * @return The AKS network policy (string)
+     * @return The AKS network policy
      * 
      */
     public Optional<Output<String>> networkPolicy() {
@@ -322,14 +322,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The AKS network service cidr (string)
+     * The AKS network service cidr
      * 
      */
     @Import(name="networkServiceCidr")
     private @Nullable Output<String> networkServiceCidr;
 
     /**
-     * @return The AKS network service cidr (string)
+     * @return The AKS network service cidr
      * 
      */
     public Optional<Output<String>> networkServiceCidr() {
@@ -337,14 +337,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The GKE cluster node pools. Required for create new cluster (List)
+     * The AKS node pools to use. Required if `import=false`
      * 
      */
     @Import(name="nodePools")
     private @Nullable Output<List<ClusterAksConfigV2NodePoolArgs>> nodePools;
 
     /**
-     * @return The GKE cluster node pools. Required for create new cluster (List)
+     * @return The AKS node pools to use. Required if `import=false`
      * 
      */
     public Optional<Output<List<ClusterAksConfigV2NodePoolArgs>>> nodePools() {
@@ -352,14 +352,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Is AKS cluster private? (bool)
+     * Is AKS cluster private?
      * 
      */
     @Import(name="privateCluster")
     private @Nullable Output<Boolean> privateCluster;
 
     /**
-     * @return Is AKS cluster private? (bool)
+     * @return Is AKS cluster private?
      * 
      */
     public Optional<Output<Boolean>> privateCluster() {
@@ -367,14 +367,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The AKS resource group (string)
+     * The AKS resource group
      * 
      */
     @Import(name="resourceGroup", required=true)
     private Output<String> resourceGroup;
 
     /**
-     * @return The AKS resource group (string)
+     * @return The AKS resource group
      * 
      */
     public Output<String> resourceGroup() {
@@ -382,14 +382,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The AKS resource location (string)
+     * The AKS resource location
      * 
      */
     @Import(name="resourceLocation", required=true)
     private Output<String> resourceLocation;
 
     /**
-     * @return The AKS resource location (string)
+     * @return The AKS resource location
      * 
      */
     public Output<String> resourceLocation() {
@@ -397,14 +397,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The AKS subnet (string)
+     * The AKS subnet
      * 
      */
     @Import(name="subnet")
     private @Nullable Output<String> subnet;
 
     /**
-     * @return The AKS subnet (string)
+     * @return The AKS subnet
      * 
      */
     public Optional<Output<String>> subnet() {
@@ -412,14 +412,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The GKE node config tags (List)
+     * The AKS cluster tags
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
-     * @return The GKE node config tags (List)
+     * @return The AKS cluster tags
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -427,14 +427,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
+     * The AKS virtual network
      * 
      */
     @Import(name="virtualNetwork")
     private @Nullable Output<String> virtualNetwork;
 
     /**
-     * @return The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
+     * @return The AKS virtual network
      * 
      */
     public Optional<Output<String>> virtualNetwork() {
@@ -442,14 +442,14 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The AKS virtual network resource group (string)
+     * The AKS virtual network resource group
      * 
      */
     @Import(name="virtualNetworkResourceGroup")
     private @Nullable Output<String> virtualNetworkResourceGroup;
 
     /**
-     * @return The AKS virtual network resource group (string)
+     * @return The AKS virtual network resource group
      * 
      */
     public Optional<Output<String>> virtualNetworkResourceGroup() {
@@ -509,7 +509,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param authBaseUrl The AKS auth base url (string)
+         * @param authBaseUrl The AKS auth base url
          * 
          * @return builder
          * 
@@ -520,7 +520,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param authBaseUrl The AKS auth base url (string)
+         * @param authBaseUrl The AKS auth base url
          * 
          * @return builder
          * 
@@ -530,7 +530,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param authorizedIpRanges The AKS authorized ip ranges (list)
+         * @param authorizedIpRanges The AKS authorized ip ranges
          * 
          * @return builder
          * 
@@ -541,7 +541,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param authorizedIpRanges The AKS authorized ip ranges (list)
+         * @param authorizedIpRanges The AKS authorized ip ranges
          * 
          * @return builder
          * 
@@ -551,7 +551,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param authorizedIpRanges The AKS authorized ip ranges (list)
+         * @param authorizedIpRanges The AKS authorized ip ranges
          * 
          * @return builder
          * 
@@ -561,7 +561,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param baseUrl The AKS base url (string)
+         * @param baseUrl The AKS base url
          * 
          * @return builder
          * 
@@ -572,7 +572,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param baseUrl The AKS base url (string)
+         * @param baseUrl The AKS base url
          * 
          * @return builder
          * 
@@ -582,7 +582,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param cloudCredentialId The EKS cloud_credential id (string)
+         * @param cloudCredentialId The AKS Cloud Credential ID to use
          * 
          * @return builder
          * 
@@ -593,7 +593,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param cloudCredentialId The EKS cloud_credential id (string)
+         * @param cloudCredentialId The AKS Cloud Credential ID to use
          * 
          * @return builder
          * 
@@ -603,7 +603,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param dnsPrefix The AKS dns prefix. Required if `imported=false` (string)
+         * @param dnsPrefix The AKS dns prefix. Required if `import=false`
          * 
          * @return builder
          * 
@@ -614,7 +614,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param dnsPrefix The AKS dns prefix. Required if `imported=false` (string)
+         * @param dnsPrefix The AKS dns prefix. Required if `import=false`
          * 
          * @return builder
          * 
@@ -624,7 +624,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param httpApplicationRouting Enable AKS http application routing? (bool)
+         * @param httpApplicationRouting Enable AKS http application routing?
          * 
          * @return builder
          * 
@@ -635,7 +635,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param httpApplicationRouting Enable AKS http application routing? (bool)
+         * @param httpApplicationRouting Enable AKS http application routing?
          * 
          * @return builder
          * 
@@ -645,7 +645,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param imported Is GKE cluster imported? Default: `false` (bool)
+         * @param imported Is AKS cluster imported?
          * 
          * @return builder
          * 
@@ -656,7 +656,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param imported Is GKE cluster imported? Default: `false` (bool)
+         * @param imported Is AKS cluster imported?
          * 
          * @return builder
          * 
@@ -666,7 +666,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param kubernetesVersion The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+         * @param kubernetesVersion The kubernetes master version. Required if `import=false`
          * 
          * @return builder
          * 
@@ -677,7 +677,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param kubernetesVersion The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+         * @param kubernetesVersion The kubernetes master version. Required if `import=false`
          * 
          * @return builder
          * 
@@ -687,7 +687,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param linuxAdminUsername The AKS linux admin username (string)
+         * @param linuxAdminUsername The AKS linux admin username
          * 
          * @return builder
          * 
@@ -698,7 +698,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param linuxAdminUsername The AKS linux admin username (string)
+         * @param linuxAdminUsername The AKS linux admin username
          * 
          * @return builder
          * 
@@ -708,7 +708,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param linuxSshPublicKey The AKS linux ssh public key (string)
+         * @param linuxSshPublicKey The AKS linux ssh public key
          * 
          * @return builder
          * 
@@ -719,7 +719,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param linuxSshPublicKey The AKS linux ssh public key (string)
+         * @param linuxSshPublicKey The AKS linux ssh public key
          * 
          * @return builder
          * 
@@ -729,7 +729,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param loadBalancerSku The AKS load balancer sku (string)
+         * @param loadBalancerSku The AKS load balancer sku
          * 
          * @return builder
          * 
@@ -740,7 +740,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param loadBalancerSku The AKS load balancer sku (string)
+         * @param loadBalancerSku The AKS load balancer sku
          * 
          * @return builder
          * 
@@ -750,7 +750,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param logAnalyticsWorkspaceGroup The AKS log analytics workspace group (string)
+         * @param logAnalyticsWorkspaceGroup The AKS log analytics workspace group
          * 
          * @return builder
          * 
@@ -761,7 +761,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param logAnalyticsWorkspaceGroup The AKS log analytics workspace group (string)
+         * @param logAnalyticsWorkspaceGroup The AKS log analytics workspace group
          * 
          * @return builder
          * 
@@ -771,7 +771,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param logAnalyticsWorkspaceName The AKS log analytics workspace name (string)
+         * @param logAnalyticsWorkspaceName The AKS log analytics workspace name
          * 
          * @return builder
          * 
@@ -782,7 +782,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param logAnalyticsWorkspaceName The AKS log analytics workspace name (string)
+         * @param logAnalyticsWorkspaceName The AKS log analytics workspace name
          * 
          * @return builder
          * 
@@ -792,7 +792,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param monitoring Is AKS cluster monitoring enabled? (bool)
+         * @param monitoring Is AKS cluster monitoring enabled?
          * 
          * @return builder
          * 
@@ -803,7 +803,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param monitoring Is AKS cluster monitoring enabled? (bool)
+         * @param monitoring Is AKS cluster monitoring enabled?
          * 
          * @return builder
          * 
@@ -834,7 +834,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param networkDnsServiceIp The AKS network dns service ip (string)
+         * @param networkDnsServiceIp The AKS network dns service ip
          * 
          * @return builder
          * 
@@ -845,7 +845,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param networkDnsServiceIp The AKS network dns service ip (string)
+         * @param networkDnsServiceIp The AKS network dns service ip
          * 
          * @return builder
          * 
@@ -855,7 +855,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param networkDockerBridgeCidr The AKS network docker bridge cidr (string)
+         * @param networkDockerBridgeCidr The AKS network docker bridge cidr
          * 
          * @return builder
          * 
@@ -866,7 +866,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param networkDockerBridgeCidr The AKS network docker bridge cidr (string)
+         * @param networkDockerBridgeCidr The AKS network docker bridge cidr
          * 
          * @return builder
          * 
@@ -876,7 +876,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param networkPlugin The AKS network plugin. Required if `imported=false` (string)
+         * @param networkPlugin The AKS network plugin. Required if `import=false`
          * 
          * @return builder
          * 
@@ -887,7 +887,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param networkPlugin The AKS network plugin. Required if `imported=false` (string)
+         * @param networkPlugin The AKS network plugin. Required if `import=false`
          * 
          * @return builder
          * 
@@ -897,7 +897,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param networkPodCidr The AKS network pod cidr (string)
+         * @param networkPodCidr The AKS network pod cidr
          * 
          * @return builder
          * 
@@ -908,7 +908,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param networkPodCidr The AKS network pod cidr (string)
+         * @param networkPodCidr The AKS network pod cidr
          * 
          * @return builder
          * 
@@ -918,7 +918,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param networkPolicy The AKS network policy (string)
+         * @param networkPolicy The AKS network policy
          * 
          * @return builder
          * 
@@ -929,7 +929,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param networkPolicy The AKS network policy (string)
+         * @param networkPolicy The AKS network policy
          * 
          * @return builder
          * 
@@ -939,7 +939,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param networkServiceCidr The AKS network service cidr (string)
+         * @param networkServiceCidr The AKS network service cidr
          * 
          * @return builder
          * 
@@ -950,7 +950,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param networkServiceCidr The AKS network service cidr (string)
+         * @param networkServiceCidr The AKS network service cidr
          * 
          * @return builder
          * 
@@ -960,7 +960,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param nodePools The GKE cluster node pools. Required for create new cluster (List)
+         * @param nodePools The AKS node pools to use. Required if `import=false`
          * 
          * @return builder
          * 
@@ -971,7 +971,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param nodePools The GKE cluster node pools. Required for create new cluster (List)
+         * @param nodePools The AKS node pools to use. Required if `import=false`
          * 
          * @return builder
          * 
@@ -981,7 +981,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param nodePools The GKE cluster node pools. Required for create new cluster (List)
+         * @param nodePools The AKS node pools to use. Required if `import=false`
          * 
          * @return builder
          * 
@@ -991,7 +991,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param privateCluster Is AKS cluster private? (bool)
+         * @param privateCluster Is AKS cluster private?
          * 
          * @return builder
          * 
@@ -1002,7 +1002,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param privateCluster Is AKS cluster private? (bool)
+         * @param privateCluster Is AKS cluster private?
          * 
          * @return builder
          * 
@@ -1012,7 +1012,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param resourceGroup The AKS resource group (string)
+         * @param resourceGroup The AKS resource group
          * 
          * @return builder
          * 
@@ -1023,7 +1023,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param resourceGroup The AKS resource group (string)
+         * @param resourceGroup The AKS resource group
          * 
          * @return builder
          * 
@@ -1033,7 +1033,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param resourceLocation The AKS resource location (string)
+         * @param resourceLocation The AKS resource location
          * 
          * @return builder
          * 
@@ -1044,7 +1044,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param resourceLocation The AKS resource location (string)
+         * @param resourceLocation The AKS resource location
          * 
          * @return builder
          * 
@@ -1054,7 +1054,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param subnet The AKS subnet (string)
+         * @param subnet The AKS subnet
          * 
          * @return builder
          * 
@@ -1065,7 +1065,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param subnet The AKS subnet (string)
+         * @param subnet The AKS subnet
          * 
          * @return builder
          * 
@@ -1075,7 +1075,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param tags The GKE node config tags (List)
+         * @param tags The AKS cluster tags
          * 
          * @return builder
          * 
@@ -1086,7 +1086,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param tags The GKE node config tags (List)
+         * @param tags The AKS cluster tags
          * 
          * @return builder
          * 
@@ -1096,7 +1096,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param virtualNetwork The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
+         * @param virtualNetwork The AKS virtual network
          * 
          * @return builder
          * 
@@ -1107,7 +1107,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param virtualNetwork The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
+         * @param virtualNetwork The AKS virtual network
          * 
          * @return builder
          * 
@@ -1117,7 +1117,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param virtualNetworkResourceGroup The AKS virtual network resource group (string)
+         * @param virtualNetworkResourceGroup The AKS virtual network resource group
          * 
          * @return builder
          * 
@@ -1128,7 +1128,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param virtualNetworkResourceGroup The AKS virtual network resource group (string)
+         * @param virtualNetworkResourceGroup The AKS virtual network resource group
          * 
          * @return builder
          * 

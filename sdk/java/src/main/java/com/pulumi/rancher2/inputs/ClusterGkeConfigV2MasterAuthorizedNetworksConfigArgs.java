@@ -19,14 +19,14 @@ public final class ClusterGkeConfigV2MasterAuthorizedNetworksConfigArgs extends 
     public static final ClusterGkeConfigV2MasterAuthorizedNetworksConfigArgs Empty = new ClusterGkeConfigV2MasterAuthorizedNetworksConfigArgs();
 
     /**
-     * The GKE master authorized network config cidr blocks (List)
+     * The GKE master authorized network config cidr blocks
      * 
      */
     @Import(name="cidrBlocks", required=true)
     private Output<List<ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlockArgs>> cidrBlocks;
 
     /**
-     * @return The GKE master authorized network config cidr blocks (List)
+     * @return The GKE master authorized network config cidr blocks
      * 
      */
     public Output<List<ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlockArgs>> cidrBlocks() {
@@ -34,14 +34,14 @@ public final class ClusterGkeConfigV2MasterAuthorizedNetworksConfigArgs extends 
     }
 
     /**
-     * Enable the authorized cluster endpoint. Default `true` (bool)
+     * Enable GKE master authorized network config
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable the authorized cluster endpoint. Default `true` (bool)
+     * @return Enable GKE master authorized network config
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -74,7 +74,7 @@ public final class ClusterGkeConfigV2MasterAuthorizedNetworksConfigArgs extends 
         }
 
         /**
-         * @param cidrBlocks The GKE master authorized network config cidr blocks (List)
+         * @param cidrBlocks The GKE master authorized network config cidr blocks
          * 
          * @return builder
          * 
@@ -85,7 +85,7 @@ public final class ClusterGkeConfigV2MasterAuthorizedNetworksConfigArgs extends 
         }
 
         /**
-         * @param cidrBlocks The GKE master authorized network config cidr blocks (List)
+         * @param cidrBlocks The GKE master authorized network config cidr blocks
          * 
          * @return builder
          * 
@@ -95,7 +95,7 @@ public final class ClusterGkeConfigV2MasterAuthorizedNetworksConfigArgs extends 
         }
 
         /**
-         * @param cidrBlocks The GKE master authorized network config cidr blocks (List)
+         * @param cidrBlocks The GKE master authorized network config cidr blocks
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class ClusterGkeConfigV2MasterAuthorizedNetworksConfigArgs extends 
         }
 
         /**
-         * @param enabled Enable the authorized cluster endpoint. Default `true` (bool)
+         * @param enabled Enable GKE master authorized network config
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class ClusterGkeConfigV2MasterAuthorizedNetworksConfigArgs extends 
         }
 
         /**
-         * @param enabled Enable the authorized cluster endpoint. Default `true` (bool)
+         * @param enabled Enable GKE master authorized network config
          * 
          * @return builder
          * 

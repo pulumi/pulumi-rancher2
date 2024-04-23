@@ -13,19 +13,19 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterGkeConfigV2NodePoolAutoscalingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable the authorized cluster endpoint. Default `true` (bool)
+        /// Enable GKE node pool config autoscaling
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The GKE node pool config max node count (int)
+        /// The GKE node pool config max node count
         /// </summary>
         [Input("maxNodeCount")]
         public Input<int>? MaxNodeCount { get; set; }
 
         /// <summary>
-        /// The GKE node pool config min node count (int)
+        /// The GKE node pool config min node count
         /// </summary>
         [Input("minNodeCount")]
         public Input<int>? MinNodeCount { get; set; }

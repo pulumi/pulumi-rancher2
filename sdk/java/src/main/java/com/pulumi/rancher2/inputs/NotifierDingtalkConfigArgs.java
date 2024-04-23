@@ -17,14 +17,14 @@ public final class NotifierDingtalkConfigArgs extends com.pulumi.resources.Resou
     public static final NotifierDingtalkConfigArgs Empty = new NotifierDingtalkConfigArgs();
 
     /**
-     * Wechat proxy url (string)
+     * Dingtalk proxy URL
      * 
      */
     @Import(name="proxyUrl")
     private @Nullable Output<String> proxyUrl;
 
     /**
-     * @return Wechat proxy url (string)
+     * @return Dingtalk proxy URL
      * 
      */
     public Optional<Output<String>> proxyUrl() {
@@ -32,14 +32,14 @@ public final class NotifierDingtalkConfigArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Wechat agent ID (string)
+     * Required for webhook with sign enabled
      * 
      */
     @Import(name="secret")
     private @Nullable Output<String> secret;
 
     /**
-     * @return Wechat agent ID (string)
+     * @return Required for webhook with sign enabled
      * 
      */
     public Optional<Output<String>> secret() {
@@ -47,14 +47,14 @@ public final class NotifierDingtalkConfigArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Slack url (string)
+     * Webhook URL
      * 
      */
     @Import(name="url", required=true)
     private Output<String> url;
 
     /**
-     * @return Slack url (string)
+     * @return Webhook URL
      * 
      */
     public Output<String> url() {
@@ -88,7 +88,7 @@ public final class NotifierDingtalkConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param proxyUrl Wechat proxy url (string)
+         * @param proxyUrl Dingtalk proxy URL
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class NotifierDingtalkConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param proxyUrl Wechat proxy url (string)
+         * @param proxyUrl Dingtalk proxy URL
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class NotifierDingtalkConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param secret Wechat agent ID (string)
+         * @param secret Required for webhook with sign enabled
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class NotifierDingtalkConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param secret Wechat agent ID (string)
+         * @param secret Required for webhook with sign enabled
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class NotifierDingtalkConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param url Slack url (string)
+         * @param url Webhook URL
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class NotifierDingtalkConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param url Slack url (string)
+         * @param url Webhook URL
          * 
          * @return builder
          * 

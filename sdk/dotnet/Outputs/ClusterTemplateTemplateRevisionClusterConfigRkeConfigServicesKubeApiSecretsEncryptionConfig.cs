@@ -14,9 +14,6 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig
     {
         public readonly string? CustomConfig;
-        /// <summary>
-        /// Enable cluster template revision. Default `true` (bool)
-        /// </summary>
         public readonly bool? Enabled;
 
         [OutputConstructor]

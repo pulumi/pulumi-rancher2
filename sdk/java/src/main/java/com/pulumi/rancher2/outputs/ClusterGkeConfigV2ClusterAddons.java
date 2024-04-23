@@ -12,38 +12,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterGkeConfigV2ClusterAddons {
     /**
-     * @return Enable GKE horizontal pod autoscaling. Default: `false` (bool)
+     * @return Enable GKE horizontal pod autoscaling
      * 
      */
     private @Nullable Boolean horizontalPodAutoscaling;
     /**
-     * @return Enable GKE HTTP load balancing. Default: `false` (bool)
+     * @return Enable GKE HTTP load balancing
      * 
      */
     private @Nullable Boolean httpLoadBalancing;
     /**
-     * @return Enable GKE network policy config. Default: `false` (bool)
+     * @return Enable GKE network policy config
      * 
      */
     private @Nullable Boolean networkPolicyConfig;
 
     private ClusterGkeConfigV2ClusterAddons() {}
     /**
-     * @return Enable GKE horizontal pod autoscaling. Default: `false` (bool)
+     * @return Enable GKE horizontal pod autoscaling
      * 
      */
     public Optional<Boolean> horizontalPodAutoscaling() {
         return Optional.ofNullable(this.horizontalPodAutoscaling);
     }
     /**
-     * @return Enable GKE HTTP load balancing. Default: `false` (bool)
+     * @return Enable GKE HTTP load balancing
      * 
      */
     public Optional<Boolean> httpLoadBalancing() {
         return Optional.ofNullable(this.httpLoadBalancing);
     }
     /**
-     * @return Enable GKE network policy config. Default: `false` (bool)
+     * @return Enable GKE network policy config
      * 
      */
     public Optional<Boolean> networkPolicyConfig() {

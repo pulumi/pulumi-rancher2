@@ -27,278 +27,262 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterRkeConfig {
     /**
-     * @return Duration in seconds of addon job (int)
+     * @return Optional duration in seconds of addon job.
      * 
      */
     private @Nullable Integer addonJobTimeout;
     /**
-     * @return Addons descripton to deploy on RKE cluster.
+     * @return Optional addons descripton to deploy on rke cluster.
      * 
      */
     private @Nullable String addons;
     /**
-     * @return Addons yaml manifests to deploy on RKE cluster (list)
+     * @return Optional addons yaml manisfest to deploy on rke cluster.
      * 
      */
     private @Nullable List<String> addonsIncludes;
     /**
-     * @return Kubernetes cluster authentication (list maxitems:1)
+     * @return Kubernetes cluster authentication
      * 
      */
     private @Nullable ClusterRkeConfigAuthentication authentication;
     /**
-     * @return Kubernetes cluster authorization (list maxitems:1)
+     * @return Kubernetes cluster authorization
      * 
      */
     private @Nullable ClusterRkeConfigAuthorization authorization;
     /**
-     * @return RKE bastion host (list maxitems:1)
+     * @return RKE bastion host
      * 
      */
     private @Nullable ClusterRkeConfigBastionHost bastionHost;
-    /**
-     * @return RKE options for Calico network provider (string)
-     * 
-     */
     private @Nullable ClusterRkeConfigCloudProvider cloudProvider;
-    /**
-     * @return RKE dns add-on. For Rancher v2.2.x (list maxitems:1)
-     * 
-     */
     private @Nullable ClusterRkeConfigDns dns;
     /**
-     * @return Enable/disable using cri-dockerd. Deafult: `false` [enable_cri_dockerd](https://rancher.com/docs/rke/latest/en/config-options/#cri-dockerd) (bool)
+     * @return Enable/disable using cri-dockerd
      * 
      */
     private @Nullable Boolean enableCriDockerd;
     /**
-     * @return Ignore docker version. Default `true` (bool)
+     * @return Optional ignore docker version on nodes
      * 
      */
     private @Nullable Boolean ignoreDockerVersion;
     /**
-     * @return Kubernetes ingress configuration (list maxitems:1)
+     * @return Kubernetes ingress configuration
      * 
      */
     private @Nullable ClusterRkeConfigIngress ingress;
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return Optional kubernetes version to deploy
      * 
      */
     private @Nullable String kubernetesVersion;
     /**
-     * @return Is AKS cluster monitoring enabled? (bool)
+     * @return Kubernetes cluster monitoring
      * 
      */
     private @Nullable ClusterRkeConfigMonitoring monitoring;
     /**
-     * @return The GKE cluster network. Required for create new cluster (string)
+     * @return Kubernetes cluster networking
      * 
      */
     private @Nullable ClusterRkeConfigNetwork network;
     /**
-     * @return RKE cluster nodes (list)
+     * @return Optional RKE cluster nodes
      * 
      */
     private @Nullable List<ClusterRkeConfigNode> nodes;
     /**
-     * @return Prefix to customize Kubernetes path (string)
+     * @return Optional prefix to customize kubernetes path
      * 
      */
     private @Nullable String prefixPath;
     /**
-     * @return private registries for docker images (list)
+     * @return Optional private registries for docker images
      * 
      */
     private @Nullable List<ClusterRkeConfigPrivateRegistry> privateRegistries;
     /**
-     * @return Kubernetes cluster services (list maxitems:1)
+     * @return Kubernetes cluster services
      * 
      */
     private @Nullable ClusterRkeConfigServices services;
     /**
-     * @return Use ssh agent auth. Default `false` (bool)
+     * @return Optional use ssh agent auth
      * 
      */
     private @Nullable Boolean sshAgentAuth;
     /**
-     * @return Cluster level SSH certificate path (string)
+     * @return Optional cluster level SSH certificate path
      * 
      */
     private @Nullable String sshCertPath;
     /**
-     * @return Node SSH private key path (string)
+     * @return Optional cluster level SSH private key path
      * 
      */
     private @Nullable String sshKeyPath;
     /**
-     * @return K3S upgrade strategy (List maxitems: 1)
+     * @return RKE upgrade strategy
      * 
      */
     private @Nullable ClusterRkeConfigUpgradeStrategy upgradeStrategy;
     /**
-     * @return Prefix to customize Kubernetes path for windows (string)
+     * @return Optional prefix to customize kubernetes path for windows
      * 
      */
     private @Nullable String winPrefixPath;
 
     private ClusterRkeConfig() {}
     /**
-     * @return Duration in seconds of addon job (int)
+     * @return Optional duration in seconds of addon job.
      * 
      */
     public Optional<Integer> addonJobTimeout() {
         return Optional.ofNullable(this.addonJobTimeout);
     }
     /**
-     * @return Addons descripton to deploy on RKE cluster.
+     * @return Optional addons descripton to deploy on rke cluster.
      * 
      */
     public Optional<String> addons() {
         return Optional.ofNullable(this.addons);
     }
     /**
-     * @return Addons yaml manifests to deploy on RKE cluster (list)
+     * @return Optional addons yaml manisfest to deploy on rke cluster.
      * 
      */
     public List<String> addonsIncludes() {
         return this.addonsIncludes == null ? List.of() : this.addonsIncludes;
     }
     /**
-     * @return Kubernetes cluster authentication (list maxitems:1)
+     * @return Kubernetes cluster authentication
      * 
      */
     public Optional<ClusterRkeConfigAuthentication> authentication() {
         return Optional.ofNullable(this.authentication);
     }
     /**
-     * @return Kubernetes cluster authorization (list maxitems:1)
+     * @return Kubernetes cluster authorization
      * 
      */
     public Optional<ClusterRkeConfigAuthorization> authorization() {
         return Optional.ofNullable(this.authorization);
     }
     /**
-     * @return RKE bastion host (list maxitems:1)
+     * @return RKE bastion host
      * 
      */
     public Optional<ClusterRkeConfigBastionHost> bastionHost() {
         return Optional.ofNullable(this.bastionHost);
     }
-    /**
-     * @return RKE options for Calico network provider (string)
-     * 
-     */
     public Optional<ClusterRkeConfigCloudProvider> cloudProvider() {
         return Optional.ofNullable(this.cloudProvider);
     }
-    /**
-     * @return RKE dns add-on. For Rancher v2.2.x (list maxitems:1)
-     * 
-     */
     public Optional<ClusterRkeConfigDns> dns() {
         return Optional.ofNullable(this.dns);
     }
     /**
-     * @return Enable/disable using cri-dockerd. Deafult: `false` [enable_cri_dockerd](https://rancher.com/docs/rke/latest/en/config-options/#cri-dockerd) (bool)
+     * @return Enable/disable using cri-dockerd
      * 
      */
     public Optional<Boolean> enableCriDockerd() {
         return Optional.ofNullable(this.enableCriDockerd);
     }
     /**
-     * @return Ignore docker version. Default `true` (bool)
+     * @return Optional ignore docker version on nodes
      * 
      */
     public Optional<Boolean> ignoreDockerVersion() {
         return Optional.ofNullable(this.ignoreDockerVersion);
     }
     /**
-     * @return Kubernetes ingress configuration (list maxitems:1)
+     * @return Kubernetes ingress configuration
      * 
      */
     public Optional<ClusterRkeConfigIngress> ingress() {
         return Optional.ofNullable(this.ingress);
     }
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return Optional kubernetes version to deploy
      * 
      */
     public Optional<String> kubernetesVersion() {
         return Optional.ofNullable(this.kubernetesVersion);
     }
     /**
-     * @return Is AKS cluster monitoring enabled? (bool)
+     * @return Kubernetes cluster monitoring
      * 
      */
     public Optional<ClusterRkeConfigMonitoring> monitoring() {
         return Optional.ofNullable(this.monitoring);
     }
     /**
-     * @return The GKE cluster network. Required for create new cluster (string)
+     * @return Kubernetes cluster networking
      * 
      */
     public Optional<ClusterRkeConfigNetwork> network() {
         return Optional.ofNullable(this.network);
     }
     /**
-     * @return RKE cluster nodes (list)
+     * @return Optional RKE cluster nodes
      * 
      */
     public List<ClusterRkeConfigNode> nodes() {
         return this.nodes == null ? List.of() : this.nodes;
     }
     /**
-     * @return Prefix to customize Kubernetes path (string)
+     * @return Optional prefix to customize kubernetes path
      * 
      */
     public Optional<String> prefixPath() {
         return Optional.ofNullable(this.prefixPath);
     }
     /**
-     * @return private registries for docker images (list)
+     * @return Optional private registries for docker images
      * 
      */
     public List<ClusterRkeConfigPrivateRegistry> privateRegistries() {
         return this.privateRegistries == null ? List.of() : this.privateRegistries;
     }
     /**
-     * @return Kubernetes cluster services (list maxitems:1)
+     * @return Kubernetes cluster services
      * 
      */
     public Optional<ClusterRkeConfigServices> services() {
         return Optional.ofNullable(this.services);
     }
     /**
-     * @return Use ssh agent auth. Default `false` (bool)
+     * @return Optional use ssh agent auth
      * 
      */
     public Optional<Boolean> sshAgentAuth() {
         return Optional.ofNullable(this.sshAgentAuth);
     }
     /**
-     * @return Cluster level SSH certificate path (string)
+     * @return Optional cluster level SSH certificate path
      * 
      */
     public Optional<String> sshCertPath() {
         return Optional.ofNullable(this.sshCertPath);
     }
     /**
-     * @return Node SSH private key path (string)
+     * @return Optional cluster level SSH private key path
      * 
      */
     public Optional<String> sshKeyPath() {
         return Optional.ofNullable(this.sshKeyPath);
     }
     /**
-     * @return K3S upgrade strategy (List maxitems: 1)
+     * @return RKE upgrade strategy
      * 
      */
     public Optional<ClusterRkeConfigUpgradeStrategy> upgradeStrategy() {
         return Optional.ofNullable(this.upgradeStrategy);
     }
     /**
-     * @return Prefix to customize Kubernetes path for windows (string)
+     * @return Optional prefix to customize kubernetes path for windows
      * 
      */
     public Optional<String> winPrefixPath() {

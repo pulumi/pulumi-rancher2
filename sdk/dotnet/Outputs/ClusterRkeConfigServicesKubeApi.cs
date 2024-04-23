@@ -14,52 +14,19 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterRkeConfigServicesKubeApi
     {
         /// <summary>
-        /// Admission configuration (map)
+        /// Cluster admission configuration
         /// </summary>
         public readonly Outputs.ClusterRkeConfigServicesKubeApiAdmissionConfiguration? AdmissionConfiguration;
-        /// <summary>
-        /// Enable [AlwaysPullImages](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#alwayspullimages) Admission controller plugin. [Rancher docs](https://rancher.com/docs/rke/latest/en/config-options/services/#kubernetes-api-server-options) Default: `false` (bool)
-        /// </summary>
         public readonly bool? AlwaysPullImages;
-        /// <summary>
-        /// K8s audit log configuration. (list maxitems: 1)
-        /// </summary>
         public readonly Outputs.ClusterRkeConfigServicesKubeApiAuditLog? AuditLog;
-        /// <summary>
-        /// K8s event rate limit configuration. (list maxitems: 1)
-        /// </summary>
         public readonly Outputs.ClusterRkeConfigServicesKubeApiEventRateLimit? EventRateLimit;
-        /// <summary>
-        /// Extra arguments for scheduler service (map)
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? ExtraArgs;
-        /// <summary>
-        /// Extra binds for scheduler service (list)
-        /// </summary>
         public readonly ImmutableArray<string> ExtraBinds;
-        /// <summary>
-        /// Extra environment for scheduler service (list)
-        /// </summary>
         public readonly ImmutableArray<string> ExtraEnvs;
-        /// <summary>
-        /// Docker image for scheduler service (string)
-        /// </summary>
         public readonly string? Image;
-        /// <summary>
-        /// Pod Security Policy option for kube API service. Default `false` (bool)
-        /// </summary>
         public readonly bool? PodSecurityPolicy;
-        /// <summary>
-        /// [Encrypt k8s secret data configration](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/). (list maxitem: 1)
-        /// </summary>
         public readonly Outputs.ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig? SecretsEncryptionConfig;
-        /// <summary>
-        /// Service Cluster ip Range option for kube controller service (string)
-        /// </summary>
         public readonly string? ServiceClusterIpRange;
-        /// <summary>
-        /// Service Node Port Range option for kube API service (string)
-        /// </summary>
         public readonly string? ServiceNodePortRange;
 
         [OutputConstructor]

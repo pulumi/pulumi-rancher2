@@ -16,7 +16,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _password;
 
         /// <summary>
-        /// vSphere password (string)
+        /// vSphere password
         /// </summary>
         public Input<string>? Password
         {
@@ -29,19 +29,19 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// vSphere username (string)
+        /// vSphere username
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
 
         /// <summary>
-        /// vSphere IP/hostname for vCenter (string)
+        /// vSphere IP/hostname for vCenter
         /// </summary>
         [Input("vcenter", required: true)]
         public Input<string> Vcenter { get; set; } = null!;
 
         /// <summary>
-        /// vSphere Port for vCenter. Default `443` (string)
+        /// vSphere Port for vCenter
         /// </summary>
         [Input("vcenterPort")]
         public Input<string>? VcenterPort { get; set; }

@@ -12,51 +12,29 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterRkeConfigNetworkGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// ACI provider config for RKE network (list maxitems:63)
-        /// </summary>
         [Input("aciNetworkProvider")]
         public Input<Inputs.ClusterRkeConfigNetworkAciNetworkProviderGetArgs>? AciNetworkProvider { get; set; }
 
-        /// <summary>
-        /// Calico provider config for RKE network (list maxitems:1)
-        /// </summary>
         [Input("calicoNetworkProvider")]
         public Input<Inputs.ClusterRkeConfigNetworkCalicoNetworkProviderGetArgs>? CalicoNetworkProvider { get; set; }
 
-        /// <summary>
-        /// Canal provider config for RKE network (list maxitems:1)
-        /// </summary>
         [Input("canalNetworkProvider")]
         public Input<Inputs.ClusterRkeConfigNetworkCanalNetworkProviderGetArgs>? CanalNetworkProvider { get; set; }
 
-        /// <summary>
-        /// Flannel provider config for RKE network (list maxitems:1)
-        /// </summary>
         [Input("flannelNetworkProvider")]
         public Input<Inputs.ClusterRkeConfigNetworkFlannelNetworkProviderGetArgs>? FlannelNetworkProvider { get; set; }
 
-        /// <summary>
-        /// Network provider MTU. Default `0` (int)
-        /// </summary>
         [Input("mtu")]
         public Input<int>? Mtu { get; set; }
 
         [Input("options")]
         private InputMap<object>? _options;
-
-        /// <summary>
-        /// RKE options for network (map)
-        /// </summary>
         public InputMap<object> Options
         {
             get => _options ?? (_options = new InputMap<object>());
             set => _options = value;
         }
 
-        /// <summary>
-        /// Plugin for RKE network. `canal` (default), `flannel`, `calico`, `none` and `weave` are supported. (string)
-        /// </summary>
         [Input("plugin")]
         public Input<string>? Plugin { get; set; }
 
@@ -64,7 +42,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<Inputs.ClusterRkeConfigNetworkTolerationGetArgs>? _tolerations;
 
         /// <summary>
-        /// Network add-on tolerations (list)
+        /// Network add-on tolerations
         /// </summary>
         public InputList<Inputs.ClusterRkeConfigNetworkTolerationGetArgs> Tolerations
         {
@@ -72,9 +50,6 @@ namespace Pulumi.Rancher2.Inputs
             set => _tolerations = value;
         }
 
-        /// <summary>
-        /// Weave provider config for RKE network (list maxitems:1)
-        /// </summary>
         [Input("weaveNetworkProvider")]
         public Input<Inputs.ClusterRkeConfigNetworkWeaveNetworkProviderGetArgs>? WeaveNetworkProvider { get; set; }
 

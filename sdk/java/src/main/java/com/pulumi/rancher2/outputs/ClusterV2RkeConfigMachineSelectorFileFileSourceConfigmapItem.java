@@ -14,62 +14,62 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapItem {
     /**
-     * @return If true, the file is ignored when determining whether the node should be drained before updating the node plan.
+     * @return If ture, the file is ignored when determining whether the node should be drained before updating the node plan (default: true).
      * 
      */
     private @Nullable Boolean dynamic;
     /**
-     * @return Hash is the base64 encoded value of the SHA256 checksum of the file&#39;s content. If specified, it is used to validate the integrity of the file content.
+     * @return The base64 encoded value of the SHA256 checksum of the file&#39;s content
      * 
      */
     private @Nullable String hash;
     /**
-     * @return Key is the name of the key of the item to retrieve.
+     * @return The key of the item(file) to retrieve
      * 
      */
     private String key;
     /**
-     * @return Path is the absolute path to put the file in the target node.
+     * @return The path to put the file in the target node
      * 
      */
     private String path;
     /**
-     * @return Permissions is the numeric representation of the file permission. It takes precedence over the default permissions at the outer level.
+     * @return The numeric representation of the file permissions
      * 
      */
     private @Nullable String permissions;
 
     private ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapItem() {}
     /**
-     * @return If true, the file is ignored when determining whether the node should be drained before updating the node plan.
+     * @return If ture, the file is ignored when determining whether the node should be drained before updating the node plan (default: true).
      * 
      */
     public Optional<Boolean> dynamic() {
         return Optional.ofNullable(this.dynamic);
     }
     /**
-     * @return Hash is the base64 encoded value of the SHA256 checksum of the file&#39;s content. If specified, it is used to validate the integrity of the file content.
+     * @return The base64 encoded value of the SHA256 checksum of the file&#39;s content
      * 
      */
     public Optional<String> hash() {
         return Optional.ofNullable(this.hash);
     }
     /**
-     * @return Key is the name of the key of the item to retrieve.
+     * @return The key of the item(file) to retrieve
      * 
      */
     public String key() {
         return this.key;
     }
     /**
-     * @return Path is the absolute path to put the file in the target node.
+     * @return The path to put the file in the target node
      * 
      */
     public String path() {
         return this.path;
     }
     /**
-     * @return Permissions is the numeric representation of the file permission. It takes precedence over the default permissions at the outer level.
+     * @return The numeric representation of the file permissions
      * 
      */
     public Optional<String> permissions() {

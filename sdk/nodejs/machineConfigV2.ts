@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * ### Using the Harvester Node Driver
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -66,7 +65,6 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class MachineConfigV2 extends pulumi.CustomResource {
     /**

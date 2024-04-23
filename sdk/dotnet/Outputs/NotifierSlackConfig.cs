@@ -14,15 +14,15 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class NotifierSlackConfig
     {
         /// <summary>
-        /// Wechat default recipient (string)
+        /// Slack default channel
         /// </summary>
         public readonly string DefaultRecipient;
         /// <summary>
-        /// Wechat proxy url (string)
+        /// Slack proxy URL
         /// </summary>
         public readonly string? ProxyUrl;
         /// <summary>
-        /// Slack url (string)
+        /// Slack URL
         /// </summary>
         public readonly string Url;
 

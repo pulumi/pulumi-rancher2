@@ -12,27 +12,17 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// (string)
-        /// </summary>
         [Input("datacenters")]
         public Input<string>? Datacenters { get; set; }
 
         [Input("gracefulShutdownTimeout")]
         public Input<string>? GracefulShutdownTimeout { get; set; }
 
-        /// <summary>
-        /// (bool)
-        /// </summary>
         [Input("insecureFlag")]
         public Input<bool>? InsecureFlag { get; set; }
 
         [Input("password")]
         private Input<string>? _password;
-
-        /// <summary>
-        /// Registry password (string)
-        /// </summary>
         public Input<string>? Password
         {
             get => _password;
@@ -43,24 +33,14 @@ namespace Pulumi.Rancher2.Inputs
             }
         }
 
-        /// <summary>
-        /// Port for node. Default `22` (string)
-        /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
 
-        /// <summary>
-        /// (int)
-        /// </summary>
         [Input("soapRoundtripCount")]
         public Input<int>? SoapRoundtripCount { get; set; }
 
         [Input("user")]
         private Input<string>? _user;
-
-        /// <summary>
-        /// Registry user (string)
-        /// </summary>
         public Input<string>? User
         {
             get => _user;

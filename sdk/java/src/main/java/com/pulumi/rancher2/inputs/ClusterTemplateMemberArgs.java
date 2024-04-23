@@ -16,14 +16,14 @@ public final class ClusterTemplateMemberArgs extends com.pulumi.resources.Resour
     public static final ClusterTemplateMemberArgs Empty = new ClusterTemplateMemberArgs();
 
     /**
-     * Member access type. Valid values: `[&#34;read-only&#34; | &#34;owner&#34;]` (string)
+     * Member access type: member, owner, read-only
      * 
      */
     @Import(name="accessType")
     private @Nullable Output<String> accessType;
 
     /**
-     * @return Member access type. Valid values: `[&#34;read-only&#34; | &#34;owner&#34;]` (string)
+     * @return Member access type: member, owner, read-only
      * 
      */
     public Optional<Output<String>> accessType() {
@@ -31,14 +31,14 @@ public final class ClusterTemplateMemberArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Member group principal id (string)
+     * Member group principal id
      * 
      */
     @Import(name="groupPrincipalId")
     private @Nullable Output<String> groupPrincipalId;
 
     /**
-     * @return Member group principal id (string)
+     * @return Member group principal id
      * 
      */
     public Optional<Output<String>> groupPrincipalId() {
@@ -46,14 +46,14 @@ public final class ClusterTemplateMemberArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Member user principal id (string)
+     * Member user principal id
      * 
      */
     @Import(name="userPrincipalId")
     private @Nullable Output<String> userPrincipalId;
 
     /**
-     * @return Member user principal id (string)
+     * @return Member user principal id
      * 
      */
     public Optional<Output<String>> userPrincipalId() {
@@ -87,7 +87,7 @@ public final class ClusterTemplateMemberArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param accessType Member access type. Valid values: `[&#34;read-only&#34; | &#34;owner&#34;]` (string)
+         * @param accessType Member access type: member, owner, read-only
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class ClusterTemplateMemberArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param accessType Member access type. Valid values: `[&#34;read-only&#34; | &#34;owner&#34;]` (string)
+         * @param accessType Member access type: member, owner, read-only
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class ClusterTemplateMemberArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param groupPrincipalId Member group principal id (string)
+         * @param groupPrincipalId Member group principal id
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class ClusterTemplateMemberArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param groupPrincipalId Member group principal id (string)
+         * @param groupPrincipalId Member group principal id
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class ClusterTemplateMemberArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param userPrincipalId Member user principal id (string)
+         * @param userPrincipalId Member user principal id
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class ClusterTemplateMemberArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param userPrincipalId Member user principal id (string)
+         * @param userPrincipalId Member user principal id
          * 
          * @return builder
          * 

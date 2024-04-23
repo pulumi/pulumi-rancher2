@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterV2RkeConfigEtcdSnapshotCreate
     {
         /// <summary>
-        /// ETCD snapshot desired generation.
+        /// ETCD generation to initiate a snapshot
         /// </summary>
         public readonly int Generation;
 

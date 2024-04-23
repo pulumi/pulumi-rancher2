@@ -14,11 +14,11 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class PodSecurityPolicyTemplateFsGroupRange
     {
         /// <summary>
-        /// (int)
+        /// max is the end of the range, inclusive.
         /// </summary>
         public readonly int Max;
         /// <summary>
-        /// (int)
+        /// min is the start of the range, inclusive.
         /// </summary>
         public readonly int Min;
 

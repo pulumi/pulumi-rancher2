@@ -13,13 +13,13 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterTemplateTemplateRevisionClusterConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Local cluster auth endpoint (list maxitems: 1)
+        /// Local cluster auth endpoint
         /// </summary>
         [Input("clusterAuthEndpoint")]
         public Input<Inputs.ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointArgs>? ClusterAuthEndpoint { get; set; }
 
         /// <summary>
-        /// Default cluster role for project members (string)
+        /// Default cluster role for project members
         /// </summary>
         [Input("defaultClusterRoleForProjectMembers")]
         public Input<string>? DefaultClusterRoleForProjectMembers { get; set; }
@@ -31,55 +31,55 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? DefaultPodSecurityAdmissionConfigurationTemplateName { get; set; }
 
         /// <summary>
-        /// Default pod security policy template ID (string)
+        /// Default pod security policy template ID
         /// </summary>
         [Input("defaultPodSecurityPolicyTemplateId")]
         public Input<string>? DefaultPodSecurityPolicyTemplateId { get; set; }
 
         /// <summary>
-        /// Desired agent image (string)
+        /// Desired agent image
         /// </summary>
         [Input("desiredAgentImage")]
         public Input<string>? DesiredAgentImage { get; set; }
 
         /// <summary>
-        /// Desired auth image (string)
+        /// Desired auth image
         /// </summary>
         [Input("desiredAuthImage")]
         public Input<string>? DesiredAuthImage { get; set; }
 
         /// <summary>
-        /// Desired auth image (string)
+        /// Docker Root Dir
         /// </summary>
         [Input("dockerRootDir")]
         public Input<string>? DockerRootDir { get; set; }
 
         /// <summary>
-        /// Enable built-in cluster alerting. Default: `false` (bool)
+        /// Enable built-in cluster alerting
         /// </summary>
         [Input("enableClusterAlerting")]
         public Input<bool>? EnableClusterAlerting { get; set; }
 
         /// <summary>
-        /// Enable built-in cluster monitoring. Default: `false` (bool)
+        /// Enable built-in cluster monitoring
         /// </summary>
         [Input("enableClusterMonitoring")]
         public Input<bool>? EnableClusterMonitoring { get; set; }
 
         /// <summary>
-        /// Enable project network isolation. Default: `false` (bool)
+        /// Enable project network isolation
         /// </summary>
         [Input("enableNetworkPolicy")]
         public Input<bool>? EnableNetworkPolicy { get; set; }
 
         /// <summary>
-        /// Rancher Kubernetes Engine Config (list maxitems: 1)
+        /// Rancher Kubernetes Engine Config
         /// </summary>
         [Input("rkeConfig", required: true)]
         public Input<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs> RkeConfig { get; set; } = null!;
 
         /// <summary>
-        /// Windows prefered cluster. Default: `false` (bool)
+        /// Windows prefered cluster
         /// </summary>
         [Input("windowsPreferedCluster")]
         public Input<bool>? WindowsPreferedCluster { get; set; }

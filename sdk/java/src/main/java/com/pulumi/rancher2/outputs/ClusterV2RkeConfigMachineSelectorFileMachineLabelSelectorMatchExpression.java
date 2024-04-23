@@ -13,38 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpression {
     /**
-     * @return Key is the name of the key of the item to retrieve.
+     * @return Label selector requirement key
      * 
      */
     private @Nullable String key;
     /**
-     * @return Operator represents a key&#39;s relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+     * @return Label selector operator
      * 
      */
     private @Nullable String operator;
     /**
-     * @return Values is a list of string values.
+     * @return Label selector requirement values
      * 
      */
     private @Nullable List<String> values;
 
     private ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpression() {}
     /**
-     * @return Key is the name of the key of the item to retrieve.
+     * @return Label selector requirement key
      * 
      */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
     /**
-     * @return Operator represents a key&#39;s relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+     * @return Label selector operator
      * 
      */
     public Optional<String> operator() {
         return Optional.ofNullable(this.operator);
     }
     /**
-     * @return Values is a list of string values.
+     * @return Label selector requirement values
      * 
      */
     public List<String> values() {

@@ -16,22 +16,22 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterEksConfig {
     /**
-     * @return The AWS Client ID to use (string)
+     * @return The AWS Client ID to use
      * 
      */
     private String accessKey;
     /**
-     * @return AMI ID to use for the worker nodes instead of the default (string)
+     * @return A custom AMI ID to use for the worker nodes instead of the default
      * 
      */
     private @Nullable String ami;
     /**
-     * @return Associate public ip EKS worker nodes. Default `true` (bool)
+     * @return Associate public ip EKS worker nodes
      * 
      */
     private @Nullable Boolean associateWorkerNodePublicIp;
     /**
-     * @return The desired number of worker nodes. For Rancher v2.3.x and above. Default `3` (int)
+     * @return The desired number of worker nodes
      * 
      */
     private @Nullable Integer desiredNodes;
@@ -41,100 +41,100 @@ public final class ClusterEksConfig {
      */
     private @Nullable Boolean ebsEncryption;
     /**
-     * @return The EKS node group instance type. Default: `t3.medium` (string)
+     * @return The type of machine to use for worker nodes
      * 
      */
     private @Nullable String instanceType;
     /**
-     * @return Allow user to specify key name to use. For Rancher v2.2.7 and above (string)
+     * @return Allow user to specify key name to use
      * 
      */
     private @Nullable String keyPairName;
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return The kubernetes master version
      * 
      */
     private String kubernetesVersion;
     /**
-     * @return The maximum number of worker nodes. Default `3` (int)
+     * @return The maximum number of worker nodes
      * 
      */
     private @Nullable Integer maximumNodes;
     /**
-     * @return The minimum number of worker nodes. Default `1` (int)
+     * @return The minimum number of worker nodes
      * 
      */
     private @Nullable Integer minimumNodes;
     /**
-     * @return The volume size for each node. Default `20` (int)
+     * @return The volume size for each node
      * 
      */
     private @Nullable Integer nodeVolumeSize;
     /**
-     * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     * @return The AWS Region to create the EKS cluster in
      * 
      */
     private @Nullable String region;
     /**
-     * @return The AWS Client Secret associated with the Client ID (string)
+     * @return The AWS Client Secret associated with the Client ID
      * 
      */
     private String secretKey;
     /**
-     * @return List of security groups to use for the cluster (list)
+     * @return List of security groups to use for the cluster
      * 
      */
     private @Nullable List<String> securityGroups;
     /**
-     * @return The AWS service role to use (string)
+     * @return The service role to use to perform the cluster operations in AWS
      * 
      */
     private @Nullable String serviceRole;
     /**
-     * @return A session token to use with the client key and secret if applicable (string)
+     * @return A session token to use with the client key and secret if applicable
      * 
      */
     private @Nullable String sessionToken;
     /**
-     * @return The EKS node group subnets (list string)
+     * @return List of subnets in the virtual network to use
      * 
      */
     private @Nullable List<String> subnets;
     /**
-     * @return The EKS node group user data (string)
+     * @return Pass user-data to the nodes to perform automated configuration tasks
      * 
      */
     private @Nullable String userData;
     /**
-     * @return The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
+     * @return The name of the virtual network to use
      * 
      */
     private @Nullable String virtualNetwork;
 
     private ClusterEksConfig() {}
     /**
-     * @return The AWS Client ID to use (string)
+     * @return The AWS Client ID to use
      * 
      */
     public String accessKey() {
         return this.accessKey;
     }
     /**
-     * @return AMI ID to use for the worker nodes instead of the default (string)
+     * @return A custom AMI ID to use for the worker nodes instead of the default
      * 
      */
     public Optional<String> ami() {
         return Optional.ofNullable(this.ami);
     }
     /**
-     * @return Associate public ip EKS worker nodes. Default `true` (bool)
+     * @return Associate public ip EKS worker nodes
      * 
      */
     public Optional<Boolean> associateWorkerNodePublicIp() {
         return Optional.ofNullable(this.associateWorkerNodePublicIp);
     }
     /**
-     * @return The desired number of worker nodes. For Rancher v2.3.x and above. Default `3` (int)
+     * @return The desired number of worker nodes
      * 
      */
     public Optional<Integer> desiredNodes() {
@@ -148,98 +148,98 @@ public final class ClusterEksConfig {
         return Optional.ofNullable(this.ebsEncryption);
     }
     /**
-     * @return The EKS node group instance type. Default: `t3.medium` (string)
+     * @return The type of machine to use for worker nodes
      * 
      */
     public Optional<String> instanceType() {
         return Optional.ofNullable(this.instanceType);
     }
     /**
-     * @return Allow user to specify key name to use. For Rancher v2.2.7 and above (string)
+     * @return Allow user to specify key name to use
      * 
      */
     public Optional<String> keyPairName() {
         return Optional.ofNullable(this.keyPairName);
     }
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return The kubernetes master version
      * 
      */
     public String kubernetesVersion() {
         return this.kubernetesVersion;
     }
     /**
-     * @return The maximum number of worker nodes. Default `3` (int)
+     * @return The maximum number of worker nodes
      * 
      */
     public Optional<Integer> maximumNodes() {
         return Optional.ofNullable(this.maximumNodes);
     }
     /**
-     * @return The minimum number of worker nodes. Default `1` (int)
+     * @return The minimum number of worker nodes
      * 
      */
     public Optional<Integer> minimumNodes() {
         return Optional.ofNullable(this.minimumNodes);
     }
     /**
-     * @return The volume size for each node. Default `20` (int)
+     * @return The volume size for each node
      * 
      */
     public Optional<Integer> nodeVolumeSize() {
         return Optional.ofNullable(this.nodeVolumeSize);
     }
     /**
-     * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     * @return The AWS Region to create the EKS cluster in
      * 
      */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
     /**
-     * @return The AWS Client Secret associated with the Client ID (string)
+     * @return The AWS Client Secret associated with the Client ID
      * 
      */
     public String secretKey() {
         return this.secretKey;
     }
     /**
-     * @return List of security groups to use for the cluster (list)
+     * @return List of security groups to use for the cluster
      * 
      */
     public List<String> securityGroups() {
         return this.securityGroups == null ? List.of() : this.securityGroups;
     }
     /**
-     * @return The AWS service role to use (string)
+     * @return The service role to use to perform the cluster operations in AWS
      * 
      */
     public Optional<String> serviceRole() {
         return Optional.ofNullable(this.serviceRole);
     }
     /**
-     * @return A session token to use with the client key and secret if applicable (string)
+     * @return A session token to use with the client key and secret if applicable
      * 
      */
     public Optional<String> sessionToken() {
         return Optional.ofNullable(this.sessionToken);
     }
     /**
-     * @return The EKS node group subnets (list string)
+     * @return List of subnets in the virtual network to use
      * 
      */
     public List<String> subnets() {
         return this.subnets == null ? List.of() : this.subnets;
     }
     /**
-     * @return The EKS node group user data (string)
+     * @return Pass user-data to the nodes to perform automated configuration tasks
      * 
      */
     public Optional<String> userData() {
         return Optional.ofNullable(this.userData);
     }
     /**
-     * @return The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
+     * @return The name of the virtual network to use
      * 
      */
     public Optional<String> virtualNetwork() {

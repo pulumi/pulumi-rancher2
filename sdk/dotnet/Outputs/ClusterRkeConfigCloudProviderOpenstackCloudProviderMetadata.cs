@@ -13,13 +13,7 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata
     {
-        /// <summary>
-        /// (int)
-        /// </summary>
         public readonly int? RequestTimeout;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string? SearchOrder;
 
         [OutputConstructor]

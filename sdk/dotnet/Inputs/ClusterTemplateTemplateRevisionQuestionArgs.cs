@@ -13,25 +13,25 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterTemplateTemplateRevisionQuestionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Default variable value (string)
+        /// Default variable value
         /// </summary>
         [Input("default", required: true)]
         public Input<string> Default { get; set; } = null!;
 
         /// <summary>
-        /// Required variable. Default `false` (bool)
+        /// Required variable
         /// </summary>
         [Input("required")]
         public Input<bool>? Required { get; set; }
 
         /// <summary>
-        /// Variable type. `boolean`, `int` and `string` are allowed. Default `string` (string)
+        /// Variable type
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// Variable name (string)
+        /// Variable name
         /// </summary>
         [Input("variable", required: true)]
         public Input<string> Variable { get; set; } = null!;

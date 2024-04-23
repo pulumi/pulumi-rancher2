@@ -13,7 +13,7 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterRkeConfigIngressUpdateStrategyRollingUpdateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Monitoring deployment rolling update max unavailable. Default: `1` (int)
+        /// Rolling update max unavailable
         /// </summary>
         [Input("maxUnavailable")]
         public Input<int>? MaxUnavailable { get; set; }

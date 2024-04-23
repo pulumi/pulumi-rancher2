@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterAlertRuleEventRule {
     /**
-     * @return Event type. Supported values : `&#34;Warning&#34; | &#34;Normal&#34;`. Default: `Warning` (string)
+     * @return Event type
      * 
      */
     private @Nullable String eventType;
     /**
-     * @return Resource kind. Supported values : `&#34;DaemonSet&#34; | &#34;Deployment&#34; | &#34;Node&#34; | &#34;Pod&#34; | &#34;StatefulSet&#34;` (string)
+     * @return Resource kind
      * 
      */
     private String resourceKind;
 
     private ClusterAlertRuleEventRule() {}
     /**
-     * @return Event type. Supported values : `&#34;Warning&#34; | &#34;Normal&#34;`. Default: `Warning` (string)
+     * @return Event type
      * 
      */
     public Optional<String> eventType() {
         return Optional.ofNullable(this.eventType);
     }
     /**
-     * @return Resource kind. Supported values : `&#34;DaemonSet&#34; | &#34;Deployment&#34; | &#34;Node&#34; | &#34;Pod&#34; | &#34;StatefulSet&#34;` (string)
+     * @return Resource kind
      * 
      */
     public String resourceKind() {

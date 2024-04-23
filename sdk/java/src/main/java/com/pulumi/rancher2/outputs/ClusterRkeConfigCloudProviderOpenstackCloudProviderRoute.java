@@ -11,17 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderRoute {
-    /**
-     * @return (string)
-     * 
-     */
     private @Nullable String routerId;
 
     private ClusterRkeConfigCloudProviderOpenstackCloudProviderRoute() {}
-    /**
-     * @return (string)
-     * 
-     */
     public Optional<String> routerId() {
         return Optional.ofNullable(this.routerId);
     }

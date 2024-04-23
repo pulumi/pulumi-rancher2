@@ -13,13 +13,13 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class PodSecurityPolicyTemplateSupplementalGroupRangeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (int)
+        /// max is the end of the range, inclusive.
         /// </summary>
         [Input("max", required: true)]
         public Input<int> Max { get; set; } = null!;
 
         /// <summary>
-        /// (int)
+        /// min is the start of the range, inclusive.
         /// </summary>
         [Input("min", required: true)]
         public Input<int> Min { get; set; } = null!;

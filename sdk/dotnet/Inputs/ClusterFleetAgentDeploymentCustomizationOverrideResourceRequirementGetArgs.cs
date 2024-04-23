@@ -13,25 +13,25 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirementGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The maximum CPU limit for agent (string)
+        /// The maximum CPU limit for agent
         /// </summary>
         [Input("cpuLimit")]
         public Input<string>? CpuLimit { get; set; }
 
         /// <summary>
-        /// The minimum CPU required for agent (string)
+        /// The minimum CPU required for agent
         /// </summary>
         [Input("cpuRequest")]
         public Input<string>? CpuRequest { get; set; }
 
         /// <summary>
-        /// The maximum memory limit for agent (string)
+        /// The maximum memory limit for agent
         /// </summary>
         [Input("memoryLimit")]
         public Input<string>? MemoryLimit { get; set; }
 
         /// <summary>
-        /// The minimum memory required for agent (string)
+        /// The minimum memory required for agent
         /// </summary>
         [Input("memoryRequest")]
         public Input<string>? MemoryRequest { get; set; }

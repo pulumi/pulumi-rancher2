@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterV2RkeConfigRotateCertificates {
     /**
-     * @return ETCD snapshot desired generation.
+     * @return Desired certificate rotation generation.
      * 
      */
     private Integer generation;
@@ -26,7 +26,7 @@ public final class ClusterV2RkeConfigRotateCertificates {
 
     private ClusterV2RkeConfigRotateCertificates() {}
     /**
-     * @return ETCD snapshot desired generation.
+     * @return Desired certificate rotation generation.
      * 
      */
     public Integer generation() {

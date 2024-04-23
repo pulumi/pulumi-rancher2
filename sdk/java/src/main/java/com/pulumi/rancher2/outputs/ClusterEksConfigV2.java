@@ -18,27 +18,27 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterEksConfigV2 {
     /**
-     * @return The EKS cloud_credential id (string)
+     * @return The AWS Cloud Credential ID to use
      * 
      */
     private String cloudCredentialId;
     /**
-     * @return Is GKE cluster imported? Default: `false` (bool)
+     * @return Is EKS cluster imported?
      * 
      */
     private @Nullable Boolean imported;
     /**
-     * @return The AWS kms label ARN to use (string, e.g. arn:aws:kms:&lt;ZONE&gt;:&lt;123456789100&gt;:alias/&lt;NAME&gt;)
+     * @return The AWS kms key to use
      * 
      */
     private @Nullable String kmsKey;
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return The kubernetes master version
      * 
      */
     private @Nullable String kubernetesVersion;
     /**
-     * @return The AWS cloudwatch logging types. `audit`, `api`, `scheduler`, `controllerManager` and `authenticator` values are allowed (list)
+     * @return The AWS logging types
      * 
      */
     private @Nullable List<String> loggingTypes;
@@ -48,87 +48,87 @@ public final class ClusterEksConfigV2 {
      */
     private @Nullable String name;
     /**
-     * @return The EKS cluster name to import. Required to create a new cluster (list)
+     * @return The AWS node groups to use
      * 
      */
     private @Nullable List<ClusterEksConfigV2NodeGroup> nodeGroups;
     /**
-     * @return The EKS cluster has private access (bool)
+     * @return The EKS cluster has private access
      * 
      */
     private @Nullable Boolean privateAccess;
     /**
-     * @return The EKS cluster has public access (bool)
+     * @return The EKS cluster has public access
      * 
      */
     private @Nullable Boolean publicAccess;
     /**
-     * @return The EKS cluster public access sources (map)
+     * @return The EKS cluster public access sources
      * 
      */
     private @Nullable List<String> publicAccessSources;
     /**
-     * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     * @return The AWS Region to create the EKS cluster in
      * 
      */
     private @Nullable String region;
     /**
-     * @return Enable EKS cluster secret encryption (bool)
+     * @return Enable EKS cluster secret encryption
      * 
      */
     private @Nullable Boolean secretsEncryption;
     /**
-     * @return List of security groups to use for the cluster (list)
+     * @return List of security groups to use for the cluster
      * 
      */
     private @Nullable List<String> securityGroups;
     /**
-     * @return The AWS service role to use (string)
+     * @return The AWS service role to use
      * 
      */
     private @Nullable String serviceRole;
     /**
-     * @return The EKS node group subnets (list string)
+     * @return List of subnets in the virtual network to use
      * 
      */
     private @Nullable List<String> subnets;
     /**
-     * @return The GKE node config tags (List)
+     * @return The EKS cluster tags
      * 
      */
     private @Nullable Map<String,Object> tags;
 
     private ClusterEksConfigV2() {}
     /**
-     * @return The EKS cloud_credential id (string)
+     * @return The AWS Cloud Credential ID to use
      * 
      */
     public String cloudCredentialId() {
         return this.cloudCredentialId;
     }
     /**
-     * @return Is GKE cluster imported? Default: `false` (bool)
+     * @return Is EKS cluster imported?
      * 
      */
     public Optional<Boolean> imported() {
         return Optional.ofNullable(this.imported);
     }
     /**
-     * @return The AWS kms label ARN to use (string, e.g. arn:aws:kms:&lt;ZONE&gt;:&lt;123456789100&gt;:alias/&lt;NAME&gt;)
+     * @return The AWS kms key to use
      * 
      */
     public Optional<String> kmsKey() {
         return Optional.ofNullable(this.kmsKey);
     }
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return The kubernetes master version
      * 
      */
     public Optional<String> kubernetesVersion() {
         return Optional.ofNullable(this.kubernetesVersion);
     }
     /**
-     * @return The AWS cloudwatch logging types. `audit`, `api`, `scheduler`, `controllerManager` and `authenticator` values are allowed (list)
+     * @return The AWS logging types
      * 
      */
     public List<String> loggingTypes() {
@@ -142,70 +142,70 @@ public final class ClusterEksConfigV2 {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return The EKS cluster name to import. Required to create a new cluster (list)
+     * @return The AWS node groups to use
      * 
      */
     public List<ClusterEksConfigV2NodeGroup> nodeGroups() {
         return this.nodeGroups == null ? List.of() : this.nodeGroups;
     }
     /**
-     * @return The EKS cluster has private access (bool)
+     * @return The EKS cluster has private access
      * 
      */
     public Optional<Boolean> privateAccess() {
         return Optional.ofNullable(this.privateAccess);
     }
     /**
-     * @return The EKS cluster has public access (bool)
+     * @return The EKS cluster has public access
      * 
      */
     public Optional<Boolean> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
     /**
-     * @return The EKS cluster public access sources (map)
+     * @return The EKS cluster public access sources
      * 
      */
     public List<String> publicAccessSources() {
         return this.publicAccessSources == null ? List.of() : this.publicAccessSources;
     }
     /**
-     * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     * @return The AWS Region to create the EKS cluster in
      * 
      */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
     /**
-     * @return Enable EKS cluster secret encryption (bool)
+     * @return Enable EKS cluster secret encryption
      * 
      */
     public Optional<Boolean> secretsEncryption() {
         return Optional.ofNullable(this.secretsEncryption);
     }
     /**
-     * @return List of security groups to use for the cluster (list)
+     * @return List of security groups to use for the cluster
      * 
      */
     public List<String> securityGroups() {
         return this.securityGroups == null ? List.of() : this.securityGroups;
     }
     /**
-     * @return The AWS service role to use (string)
+     * @return The AWS service role to use
      * 
      */
     public Optional<String> serviceRole() {
         return Optional.ofNullable(this.serviceRole);
     }
     /**
-     * @return The EKS node group subnets (list string)
+     * @return List of subnets in the virtual network to use
      * 
      */
     public List<String> subnets() {
         return this.subnets == null ? List.of() : this.subnets;
     }
     /**
-     * @return The GKE node config tags (List)
+     * @return The EKS cluster tags
      * 
      */
     public Map<String,Object> tags() {

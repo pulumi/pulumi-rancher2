@@ -13,77 +13,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterRkeConfigServicesEtcdBackupConfig {
-    /**
-     * @return Enable the authorized cluster endpoint. Default `true` (bool)
-     * 
-     */
     private @Nullable Boolean enabled;
-    /**
-     * @return Interval hours for etcd backup. Default `12` (int)
-     * 
-     */
     private @Nullable Integer intervalHours;
-    /**
-     * @return Retention for etcd backup. Default `6` (int)
-     * 
-     */
     private @Nullable Integer retention;
-    /**
-     * @return S3 config options for etcd backup (list maxitems:1)
-     * 
-     */
     private @Nullable ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig s3BackupConfig;
-    /**
-     * @return Safe timestamp for etcd backup. Default: `false` (bool)
-     * 
-     */
     private @Nullable Boolean safeTimestamp;
-    /**
-     * @return RKE node drain timeout. Default: `60` (int)
-     * 
-     */
     private @Nullable Integer timeout;
 
     private ClusterRkeConfigServicesEtcdBackupConfig() {}
-    /**
-     * @return Enable the authorized cluster endpoint. Default `true` (bool)
-     * 
-     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
-    /**
-     * @return Interval hours for etcd backup. Default `12` (int)
-     * 
-     */
     public Optional<Integer> intervalHours() {
         return Optional.ofNullable(this.intervalHours);
     }
-    /**
-     * @return Retention for etcd backup. Default `6` (int)
-     * 
-     */
     public Optional<Integer> retention() {
         return Optional.ofNullable(this.retention);
     }
-    /**
-     * @return S3 config options for etcd backup (list maxitems:1)
-     * 
-     */
     public Optional<ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig> s3BackupConfig() {
         return Optional.ofNullable(this.s3BackupConfig);
     }
-    /**
-     * @return Safe timestamp for etcd backup. Default: `false` (bool)
-     * 
-     */
     public Optional<Boolean> safeTimestamp() {
         return Optional.ofNullable(this.safeTimestamp);
     }
-    /**
-     * @return RKE node drain timeout. Default: `60` (int)
-     * 
-     */
     public Optional<Integer> timeout() {
         return Optional.ofNullable(this.timeout);
     }

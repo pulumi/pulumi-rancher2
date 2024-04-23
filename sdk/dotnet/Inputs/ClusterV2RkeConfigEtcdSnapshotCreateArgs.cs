@@ -13,7 +13,7 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterV2RkeConfigEtcdSnapshotCreateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ETCD snapshot desired generation.
+        /// ETCD generation to initiate a snapshot
         /// </summary>
         [Input("generation", required: true)]
         public Input<int> Generation { get; set; } = null!;

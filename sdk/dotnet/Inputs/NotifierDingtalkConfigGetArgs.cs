@@ -13,7 +13,7 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class NotifierDingtalkConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Wechat proxy url (string)
+        /// Dingtalk proxy URL
         /// </summary>
         [Input("proxyUrl")]
         public Input<string>? ProxyUrl { get; set; }
@@ -22,7 +22,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _secret;
 
         /// <summary>
-        /// Wechat agent ID (string)
+        /// Required for webhook with sign enabled
         /// </summary>
         public Input<string>? Secret
         {
@@ -35,7 +35,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Slack url (string)
+        /// Webhook URL
         /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;

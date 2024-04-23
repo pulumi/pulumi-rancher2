@@ -16,7 +16,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _token;
 
         /// <summary>
-        /// Linode API token (string)
+        /// Linode API token
         /// </summary>
         public Input<string>? Token
         {

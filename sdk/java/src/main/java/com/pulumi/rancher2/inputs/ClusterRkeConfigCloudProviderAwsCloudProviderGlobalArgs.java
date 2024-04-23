@@ -16,152 +16,72 @@ public final class ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs exten
 
     public static final ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs Empty = new ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs();
 
-    /**
-     * Default `false` (bool)
-     * 
-     */
     @Import(name="disableSecurityGroupIngress")
     private @Nullable Output<Boolean> disableSecurityGroupIngress;
 
-    /**
-     * @return Default `false` (bool)
-     * 
-     */
     public Optional<Output<Boolean>> disableSecurityGroupIngress() {
         return Optional.ofNullable(this.disableSecurityGroupIngress);
     }
 
-    /**
-     * Default `false` (bool)
-     * 
-     */
     @Import(name="disableStrictZoneCheck")
     private @Nullable Output<Boolean> disableStrictZoneCheck;
 
-    /**
-     * @return Default `false` (bool)
-     * 
-     */
     public Optional<Output<Boolean>> disableStrictZoneCheck() {
         return Optional.ofNullable(this.disableStrictZoneCheck);
     }
 
-    /**
-     * (string)
-     * 
-     */
     @Import(name="elbSecurityGroup")
     private @Nullable Output<String> elbSecurityGroup;
 
-    /**
-     * @return (string)
-     * 
-     */
     public Optional<Output<String>> elbSecurityGroup() {
         return Optional.ofNullable(this.elbSecurityGroup);
     }
 
-    /**
-     * (string)
-     * 
-     */
     @Import(name="kubernetesClusterId")
     private @Nullable Output<String> kubernetesClusterId;
 
-    /**
-     * @return (string)
-     * 
-     */
     public Optional<Output<String>> kubernetesClusterId() {
         return Optional.ofNullable(this.kubernetesClusterId);
     }
 
-    /**
-     * (string)
-     * 
-     */
     @Import(name="kubernetesClusterTag")
     private @Nullable Output<String> kubernetesClusterTag;
 
-    /**
-     * @return (string)
-     * 
-     */
     public Optional<Output<String>> kubernetesClusterTag() {
         return Optional.ofNullable(this.kubernetesClusterTag);
     }
 
-    /**
-     * (string)
-     * 
-     */
     @Import(name="roleArn")
     private @Nullable Output<String> roleArn;
 
-    /**
-     * @return (string)
-     * 
-     */
     public Optional<Output<String>> roleArn() {
         return Optional.ofNullable(this.roleArn);
     }
 
-    /**
-     * (string)
-     * 
-     */
     @Import(name="routeTableId")
     private @Nullable Output<String> routeTableId;
 
-    /**
-     * @return (string)
-     * 
-     */
     public Optional<Output<String>> routeTableId() {
         return Optional.ofNullable(this.routeTableId);
     }
 
-    /**
-     * (string)
-     * 
-     */
     @Import(name="subnetId")
     private @Nullable Output<String> subnetId;
 
-    /**
-     * @return (string)
-     * 
-     */
     public Optional<Output<String>> subnetId() {
         return Optional.ofNullable(this.subnetId);
     }
 
-    /**
-     * (string)
-     * 
-     */
     @Import(name="vpc")
     private @Nullable Output<String> vpc;
 
-    /**
-     * @return (string)
-     * 
-     */
     public Optional<Output<String>> vpc() {
         return Optional.ofNullable(this.vpc);
     }
 
-    /**
-     * The GKE cluster zone. Required if `region` not set (string)
-     * 
-     */
     @Import(name="zone")
     private @Nullable Output<String> zone;
 
-    /**
-     * @return The GKE cluster zone. Required if `region` not set (string)
-     * 
-     */
     public Optional<Output<String>> zone() {
         return Optional.ofNullable(this.zone);
     }
@@ -199,212 +119,92 @@ public final class ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs exten
             $ = new ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param disableSecurityGroupIngress Default `false` (bool)
-         * 
-         * @return builder
-         * 
-         */
         public Builder disableSecurityGroupIngress(@Nullable Output<Boolean> disableSecurityGroupIngress) {
             $.disableSecurityGroupIngress = disableSecurityGroupIngress;
             return this;
         }
 
-        /**
-         * @param disableSecurityGroupIngress Default `false` (bool)
-         * 
-         * @return builder
-         * 
-         */
         public Builder disableSecurityGroupIngress(Boolean disableSecurityGroupIngress) {
             return disableSecurityGroupIngress(Output.of(disableSecurityGroupIngress));
         }
 
-        /**
-         * @param disableStrictZoneCheck Default `false` (bool)
-         * 
-         * @return builder
-         * 
-         */
         public Builder disableStrictZoneCheck(@Nullable Output<Boolean> disableStrictZoneCheck) {
             $.disableStrictZoneCheck = disableStrictZoneCheck;
             return this;
         }
 
-        /**
-         * @param disableStrictZoneCheck Default `false` (bool)
-         * 
-         * @return builder
-         * 
-         */
         public Builder disableStrictZoneCheck(Boolean disableStrictZoneCheck) {
             return disableStrictZoneCheck(Output.of(disableStrictZoneCheck));
         }
 
-        /**
-         * @param elbSecurityGroup (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder elbSecurityGroup(@Nullable Output<String> elbSecurityGroup) {
             $.elbSecurityGroup = elbSecurityGroup;
             return this;
         }
 
-        /**
-         * @param elbSecurityGroup (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder elbSecurityGroup(String elbSecurityGroup) {
             return elbSecurityGroup(Output.of(elbSecurityGroup));
         }
 
-        /**
-         * @param kubernetesClusterId (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder kubernetesClusterId(@Nullable Output<String> kubernetesClusterId) {
             $.kubernetesClusterId = kubernetesClusterId;
             return this;
         }
 
-        /**
-         * @param kubernetesClusterId (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder kubernetesClusterId(String kubernetesClusterId) {
             return kubernetesClusterId(Output.of(kubernetesClusterId));
         }
 
-        /**
-         * @param kubernetesClusterTag (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder kubernetesClusterTag(@Nullable Output<String> kubernetesClusterTag) {
             $.kubernetesClusterTag = kubernetesClusterTag;
             return this;
         }
 
-        /**
-         * @param kubernetesClusterTag (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder kubernetesClusterTag(String kubernetesClusterTag) {
             return kubernetesClusterTag(Output.of(kubernetesClusterTag));
         }
 
-        /**
-         * @param roleArn (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder roleArn(@Nullable Output<String> roleArn) {
             $.roleArn = roleArn;
             return this;
         }
 
-        /**
-         * @param roleArn (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder roleArn(String roleArn) {
             return roleArn(Output.of(roleArn));
         }
 
-        /**
-         * @param routeTableId (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder routeTableId(@Nullable Output<String> routeTableId) {
             $.routeTableId = routeTableId;
             return this;
         }
 
-        /**
-         * @param routeTableId (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder routeTableId(String routeTableId) {
             return routeTableId(Output.of(routeTableId));
         }
 
-        /**
-         * @param subnetId (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder subnetId(@Nullable Output<String> subnetId) {
             $.subnetId = subnetId;
             return this;
         }
 
-        /**
-         * @param subnetId (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder subnetId(String subnetId) {
             return subnetId(Output.of(subnetId));
         }
 
-        /**
-         * @param vpc (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder vpc(@Nullable Output<String> vpc) {
             $.vpc = vpc;
             return this;
         }
 
-        /**
-         * @param vpc (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder vpc(String vpc) {
             return vpc(Output.of(vpc));
         }
 
-        /**
-         * @param zone The GKE cluster zone. Required if `region` not set (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder zone(@Nullable Output<String> zone) {
             $.zone = zone;
             return this;
         }
 
-        /**
-         * @param zone The GKE cluster zone. Required if `region` not set (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder zone(String zone) {
             return zone(Output.of(zone));
         }

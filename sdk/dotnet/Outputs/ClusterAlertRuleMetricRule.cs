@@ -14,23 +14,23 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterAlertRuleMetricRule
     {
         /// <summary>
-        /// Metric rule comparison. Supported values : `"equal" | "greater-or-equal" | "greater-than" | "less-or-equal" | "less-than" | "not-equal" | "has-value"`. Default: `equal`  (string)
+        /// Metric rule comparison
         /// </summary>
         public readonly string? Comparison;
         /// <summary>
-        /// Metric rule description (string)
+        /// Metric rule description
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// Metric rule duration (string)
+        /// Metric rule duration
         /// </summary>
         public readonly string Duration;
         /// <summary>
-        /// Metric rule expression (string)
+        /// Metric rule expression
         /// </summary>
         public readonly string Expression;
         /// <summary>
-        /// Metric rule threshold value (float64)
+        /// Metric rule threshold value
         /// </summary>
         public readonly double ThresholdValue;
 

@@ -31,14 +31,14 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
     public static final ClusterRkeConfigArgs Empty = new ClusterRkeConfigArgs();
 
     /**
-     * Duration in seconds of addon job (int)
+     * Optional duration in seconds of addon job.
      * 
      */
     @Import(name="addonJobTimeout")
     private @Nullable Output<Integer> addonJobTimeout;
 
     /**
-     * @return Duration in seconds of addon job (int)
+     * @return Optional duration in seconds of addon job.
      * 
      */
     public Optional<Output<Integer>> addonJobTimeout() {
@@ -46,14 +46,14 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Addons descripton to deploy on RKE cluster.
+     * Optional addons descripton to deploy on rke cluster.
      * 
      */
     @Import(name="addons")
     private @Nullable Output<String> addons;
 
     /**
-     * @return Addons descripton to deploy on RKE cluster.
+     * @return Optional addons descripton to deploy on rke cluster.
      * 
      */
     public Optional<Output<String>> addons() {
@@ -61,14 +61,14 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Addons yaml manifests to deploy on RKE cluster (list)
+     * Optional addons yaml manisfest to deploy on rke cluster.
      * 
      */
     @Import(name="addonsIncludes")
     private @Nullable Output<List<String>> addonsIncludes;
 
     /**
-     * @return Addons yaml manifests to deploy on RKE cluster (list)
+     * @return Optional addons yaml manisfest to deploy on rke cluster.
      * 
      */
     public Optional<Output<List<String>>> addonsIncludes() {
@@ -76,14 +76,14 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Kubernetes cluster authentication (list maxitems:1)
+     * Kubernetes cluster authentication
      * 
      */
     @Import(name="authentication")
     private @Nullable Output<ClusterRkeConfigAuthenticationArgs> authentication;
 
     /**
-     * @return Kubernetes cluster authentication (list maxitems:1)
+     * @return Kubernetes cluster authentication
      * 
      */
     public Optional<Output<ClusterRkeConfigAuthenticationArgs>> authentication() {
@@ -91,14 +91,14 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Kubernetes cluster authorization (list maxitems:1)
+     * Kubernetes cluster authorization
      * 
      */
     @Import(name="authorization")
     private @Nullable Output<ClusterRkeConfigAuthorizationArgs> authorization;
 
     /**
-     * @return Kubernetes cluster authorization (list maxitems:1)
+     * @return Kubernetes cluster authorization
      * 
      */
     public Optional<Output<ClusterRkeConfigAuthorizationArgs>> authorization() {
@@ -106,59 +106,43 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * RKE bastion host (list maxitems:1)
+     * RKE bastion host
      * 
      */
     @Import(name="bastionHost")
     private @Nullable Output<ClusterRkeConfigBastionHostArgs> bastionHost;
 
     /**
-     * @return RKE bastion host (list maxitems:1)
+     * @return RKE bastion host
      * 
      */
     public Optional<Output<ClusterRkeConfigBastionHostArgs>> bastionHost() {
         return Optional.ofNullable(this.bastionHost);
     }
 
-    /**
-     * RKE options for Calico network provider (string)
-     * 
-     */
     @Import(name="cloudProvider")
     private @Nullable Output<ClusterRkeConfigCloudProviderArgs> cloudProvider;
 
-    /**
-     * @return RKE options for Calico network provider (string)
-     * 
-     */
     public Optional<Output<ClusterRkeConfigCloudProviderArgs>> cloudProvider() {
         return Optional.ofNullable(this.cloudProvider);
     }
 
-    /**
-     * RKE dns add-on. For Rancher v2.2.x (list maxitems:1)
-     * 
-     */
     @Import(name="dns")
     private @Nullable Output<ClusterRkeConfigDnsArgs> dns;
 
-    /**
-     * @return RKE dns add-on. For Rancher v2.2.x (list maxitems:1)
-     * 
-     */
     public Optional<Output<ClusterRkeConfigDnsArgs>> dns() {
         return Optional.ofNullable(this.dns);
     }
 
     /**
-     * Enable/disable using cri-dockerd. Deafult: `false` [enable_cri_dockerd](https://rancher.com/docs/rke/latest/en/config-options/#cri-dockerd) (bool)
+     * Enable/disable using cri-dockerd
      * 
      */
     @Import(name="enableCriDockerd")
     private @Nullable Output<Boolean> enableCriDockerd;
 
     /**
-     * @return Enable/disable using cri-dockerd. Deafult: `false` [enable_cri_dockerd](https://rancher.com/docs/rke/latest/en/config-options/#cri-dockerd) (bool)
+     * @return Enable/disable using cri-dockerd
      * 
      */
     public Optional<Output<Boolean>> enableCriDockerd() {
@@ -166,14 +150,14 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Ignore docker version. Default `true` (bool)
+     * Optional ignore docker version on nodes
      * 
      */
     @Import(name="ignoreDockerVersion")
     private @Nullable Output<Boolean> ignoreDockerVersion;
 
     /**
-     * @return Ignore docker version. Default `true` (bool)
+     * @return Optional ignore docker version on nodes
      * 
      */
     public Optional<Output<Boolean>> ignoreDockerVersion() {
@@ -181,14 +165,14 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Kubernetes ingress configuration (list maxitems:1)
+     * Kubernetes ingress configuration
      * 
      */
     @Import(name="ingress")
     private @Nullable Output<ClusterRkeConfigIngressArgs> ingress;
 
     /**
-     * @return Kubernetes ingress configuration (list maxitems:1)
+     * @return Kubernetes ingress configuration
      * 
      */
     public Optional<Output<ClusterRkeConfigIngressArgs>> ingress() {
@@ -196,14 +180,14 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * Optional kubernetes version to deploy
      * 
      */
     @Import(name="kubernetesVersion")
     private @Nullable Output<String> kubernetesVersion;
 
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return Optional kubernetes version to deploy
      * 
      */
     public Optional<Output<String>> kubernetesVersion() {
@@ -211,14 +195,14 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Is AKS cluster monitoring enabled? (bool)
+     * Kubernetes cluster monitoring
      * 
      */
     @Import(name="monitoring")
     private @Nullable Output<ClusterRkeConfigMonitoringArgs> monitoring;
 
     /**
-     * @return Is AKS cluster monitoring enabled? (bool)
+     * @return Kubernetes cluster monitoring
      * 
      */
     public Optional<Output<ClusterRkeConfigMonitoringArgs>> monitoring() {
@@ -226,14 +210,14 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The GKE cluster network. Required for create new cluster (string)
+     * Kubernetes cluster networking
      * 
      */
     @Import(name="network")
     private @Nullable Output<ClusterRkeConfigNetworkArgs> network;
 
     /**
-     * @return The GKE cluster network. Required for create new cluster (string)
+     * @return Kubernetes cluster networking
      * 
      */
     public Optional<Output<ClusterRkeConfigNetworkArgs>> network() {
@@ -241,14 +225,14 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * RKE cluster nodes (list)
+     * Optional RKE cluster nodes
      * 
      */
     @Import(name="nodes")
     private @Nullable Output<List<ClusterRkeConfigNodeArgs>> nodes;
 
     /**
-     * @return RKE cluster nodes (list)
+     * @return Optional RKE cluster nodes
      * 
      */
     public Optional<Output<List<ClusterRkeConfigNodeArgs>>> nodes() {
@@ -256,14 +240,14 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Prefix to customize Kubernetes path (string)
+     * Optional prefix to customize kubernetes path
      * 
      */
     @Import(name="prefixPath")
     private @Nullable Output<String> prefixPath;
 
     /**
-     * @return Prefix to customize Kubernetes path (string)
+     * @return Optional prefix to customize kubernetes path
      * 
      */
     public Optional<Output<String>> prefixPath() {
@@ -271,14 +255,14 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * private registries for docker images (list)
+     * Optional private registries for docker images
      * 
      */
     @Import(name="privateRegistries")
     private @Nullable Output<List<ClusterRkeConfigPrivateRegistryArgs>> privateRegistries;
 
     /**
-     * @return private registries for docker images (list)
+     * @return Optional private registries for docker images
      * 
      */
     public Optional<Output<List<ClusterRkeConfigPrivateRegistryArgs>>> privateRegistries() {
@@ -286,14 +270,14 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Kubernetes cluster services (list maxitems:1)
+     * Kubernetes cluster services
      * 
      */
     @Import(name="services")
     private @Nullable Output<ClusterRkeConfigServicesArgs> services;
 
     /**
-     * @return Kubernetes cluster services (list maxitems:1)
+     * @return Kubernetes cluster services
      * 
      */
     public Optional<Output<ClusterRkeConfigServicesArgs>> services() {
@@ -301,14 +285,14 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Use ssh agent auth. Default `false` (bool)
+     * Optional use ssh agent auth
      * 
      */
     @Import(name="sshAgentAuth")
     private @Nullable Output<Boolean> sshAgentAuth;
 
     /**
-     * @return Use ssh agent auth. Default `false` (bool)
+     * @return Optional use ssh agent auth
      * 
      */
     public Optional<Output<Boolean>> sshAgentAuth() {
@@ -316,14 +300,14 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Cluster level SSH certificate path (string)
+     * Optional cluster level SSH certificate path
      * 
      */
     @Import(name="sshCertPath")
     private @Nullable Output<String> sshCertPath;
 
     /**
-     * @return Cluster level SSH certificate path (string)
+     * @return Optional cluster level SSH certificate path
      * 
      */
     public Optional<Output<String>> sshCertPath() {
@@ -331,14 +315,14 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Node SSH private key path (string)
+     * Optional cluster level SSH private key path
      * 
      */
     @Import(name="sshKeyPath")
     private @Nullable Output<String> sshKeyPath;
 
     /**
-     * @return Node SSH private key path (string)
+     * @return Optional cluster level SSH private key path
      * 
      */
     public Optional<Output<String>> sshKeyPath() {
@@ -346,14 +330,14 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * K3S upgrade strategy (List maxitems: 1)
+     * RKE upgrade strategy
      * 
      */
     @Import(name="upgradeStrategy")
     private @Nullable Output<ClusterRkeConfigUpgradeStrategyArgs> upgradeStrategy;
 
     /**
-     * @return K3S upgrade strategy (List maxitems: 1)
+     * @return RKE upgrade strategy
      * 
      */
     public Optional<Output<ClusterRkeConfigUpgradeStrategyArgs>> upgradeStrategy() {
@@ -361,14 +345,14 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Prefix to customize Kubernetes path for windows (string)
+     * Optional prefix to customize kubernetes path for windows
      * 
      */
     @Import(name="winPrefixPath")
     private @Nullable Output<String> winPrefixPath;
 
     /**
-     * @return Prefix to customize Kubernetes path for windows (string)
+     * @return Optional prefix to customize kubernetes path for windows
      * 
      */
     public Optional<Output<String>> winPrefixPath() {
@@ -422,7 +406,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param addonJobTimeout Duration in seconds of addon job (int)
+         * @param addonJobTimeout Optional duration in seconds of addon job.
          * 
          * @return builder
          * 
@@ -433,7 +417,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param addonJobTimeout Duration in seconds of addon job (int)
+         * @param addonJobTimeout Optional duration in seconds of addon job.
          * 
          * @return builder
          * 
@@ -443,7 +427,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param addons Addons descripton to deploy on RKE cluster.
+         * @param addons Optional addons descripton to deploy on rke cluster.
          * 
          * @return builder
          * 
@@ -454,7 +438,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param addons Addons descripton to deploy on RKE cluster.
+         * @param addons Optional addons descripton to deploy on rke cluster.
          * 
          * @return builder
          * 
@@ -464,7 +448,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param addonsIncludes Addons yaml manifests to deploy on RKE cluster (list)
+         * @param addonsIncludes Optional addons yaml manisfest to deploy on rke cluster.
          * 
          * @return builder
          * 
@@ -475,7 +459,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param addonsIncludes Addons yaml manifests to deploy on RKE cluster (list)
+         * @param addonsIncludes Optional addons yaml manisfest to deploy on rke cluster.
          * 
          * @return builder
          * 
@@ -485,7 +469,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param addonsIncludes Addons yaml manifests to deploy on RKE cluster (list)
+         * @param addonsIncludes Optional addons yaml manisfest to deploy on rke cluster.
          * 
          * @return builder
          * 
@@ -495,7 +479,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param authentication Kubernetes cluster authentication (list maxitems:1)
+         * @param authentication Kubernetes cluster authentication
          * 
          * @return builder
          * 
@@ -506,7 +490,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param authentication Kubernetes cluster authentication (list maxitems:1)
+         * @param authentication Kubernetes cluster authentication
          * 
          * @return builder
          * 
@@ -516,7 +500,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param authorization Kubernetes cluster authorization (list maxitems:1)
+         * @param authorization Kubernetes cluster authorization
          * 
          * @return builder
          * 
@@ -527,7 +511,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param authorization Kubernetes cluster authorization (list maxitems:1)
+         * @param authorization Kubernetes cluster authorization
          * 
          * @return builder
          * 
@@ -537,7 +521,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param bastionHost RKE bastion host (list maxitems:1)
+         * @param bastionHost RKE bastion host
          * 
          * @return builder
          * 
@@ -548,7 +532,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param bastionHost RKE bastion host (list maxitems:1)
+         * @param bastionHost RKE bastion host
          * 
          * @return builder
          * 
@@ -557,50 +541,26 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
             return bastionHost(Output.of(bastionHost));
         }
 
-        /**
-         * @param cloudProvider RKE options for Calico network provider (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder cloudProvider(@Nullable Output<ClusterRkeConfigCloudProviderArgs> cloudProvider) {
             $.cloudProvider = cloudProvider;
             return this;
         }
 
-        /**
-         * @param cloudProvider RKE options for Calico network provider (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder cloudProvider(ClusterRkeConfigCloudProviderArgs cloudProvider) {
             return cloudProvider(Output.of(cloudProvider));
         }
 
-        /**
-         * @param dns RKE dns add-on. For Rancher v2.2.x (list maxitems:1)
-         * 
-         * @return builder
-         * 
-         */
         public Builder dns(@Nullable Output<ClusterRkeConfigDnsArgs> dns) {
             $.dns = dns;
             return this;
         }
 
-        /**
-         * @param dns RKE dns add-on. For Rancher v2.2.x (list maxitems:1)
-         * 
-         * @return builder
-         * 
-         */
         public Builder dns(ClusterRkeConfigDnsArgs dns) {
             return dns(Output.of(dns));
         }
 
         /**
-         * @param enableCriDockerd Enable/disable using cri-dockerd. Deafult: `false` [enable_cri_dockerd](https://rancher.com/docs/rke/latest/en/config-options/#cri-dockerd) (bool)
+         * @param enableCriDockerd Enable/disable using cri-dockerd
          * 
          * @return builder
          * 
@@ -611,7 +571,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enableCriDockerd Enable/disable using cri-dockerd. Deafult: `false` [enable_cri_dockerd](https://rancher.com/docs/rke/latest/en/config-options/#cri-dockerd) (bool)
+         * @param enableCriDockerd Enable/disable using cri-dockerd
          * 
          * @return builder
          * 
@@ -621,7 +581,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ignoreDockerVersion Ignore docker version. Default `true` (bool)
+         * @param ignoreDockerVersion Optional ignore docker version on nodes
          * 
          * @return builder
          * 
@@ -632,7 +592,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ignoreDockerVersion Ignore docker version. Default `true` (bool)
+         * @param ignoreDockerVersion Optional ignore docker version on nodes
          * 
          * @return builder
          * 
@@ -642,7 +602,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ingress Kubernetes ingress configuration (list maxitems:1)
+         * @param ingress Kubernetes ingress configuration
          * 
          * @return builder
          * 
@@ -653,7 +613,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ingress Kubernetes ingress configuration (list maxitems:1)
+         * @param ingress Kubernetes ingress configuration
          * 
          * @return builder
          * 
@@ -663,7 +623,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param kubernetesVersion The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+         * @param kubernetesVersion Optional kubernetes version to deploy
          * 
          * @return builder
          * 
@@ -674,7 +634,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param kubernetesVersion The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+         * @param kubernetesVersion Optional kubernetes version to deploy
          * 
          * @return builder
          * 
@@ -684,7 +644,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param monitoring Is AKS cluster monitoring enabled? (bool)
+         * @param monitoring Kubernetes cluster monitoring
          * 
          * @return builder
          * 
@@ -695,7 +655,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param monitoring Is AKS cluster monitoring enabled? (bool)
+         * @param monitoring Kubernetes cluster monitoring
          * 
          * @return builder
          * 
@@ -705,7 +665,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param network The GKE cluster network. Required for create new cluster (string)
+         * @param network Kubernetes cluster networking
          * 
          * @return builder
          * 
@@ -716,7 +676,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param network The GKE cluster network. Required for create new cluster (string)
+         * @param network Kubernetes cluster networking
          * 
          * @return builder
          * 
@@ -726,7 +686,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param nodes RKE cluster nodes (list)
+         * @param nodes Optional RKE cluster nodes
          * 
          * @return builder
          * 
@@ -737,7 +697,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param nodes RKE cluster nodes (list)
+         * @param nodes Optional RKE cluster nodes
          * 
          * @return builder
          * 
@@ -747,7 +707,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param nodes RKE cluster nodes (list)
+         * @param nodes Optional RKE cluster nodes
          * 
          * @return builder
          * 
@@ -757,7 +717,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param prefixPath Prefix to customize Kubernetes path (string)
+         * @param prefixPath Optional prefix to customize kubernetes path
          * 
          * @return builder
          * 
@@ -768,7 +728,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param prefixPath Prefix to customize Kubernetes path (string)
+         * @param prefixPath Optional prefix to customize kubernetes path
          * 
          * @return builder
          * 
@@ -778,7 +738,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param privateRegistries private registries for docker images (list)
+         * @param privateRegistries Optional private registries for docker images
          * 
          * @return builder
          * 
@@ -789,7 +749,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param privateRegistries private registries for docker images (list)
+         * @param privateRegistries Optional private registries for docker images
          * 
          * @return builder
          * 
@@ -799,7 +759,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param privateRegistries private registries for docker images (list)
+         * @param privateRegistries Optional private registries for docker images
          * 
          * @return builder
          * 
@@ -809,7 +769,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param services Kubernetes cluster services (list maxitems:1)
+         * @param services Kubernetes cluster services
          * 
          * @return builder
          * 
@@ -820,7 +780,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param services Kubernetes cluster services (list maxitems:1)
+         * @param services Kubernetes cluster services
          * 
          * @return builder
          * 
@@ -830,7 +790,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param sshAgentAuth Use ssh agent auth. Default `false` (bool)
+         * @param sshAgentAuth Optional use ssh agent auth
          * 
          * @return builder
          * 
@@ -841,7 +801,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param sshAgentAuth Use ssh agent auth. Default `false` (bool)
+         * @param sshAgentAuth Optional use ssh agent auth
          * 
          * @return builder
          * 
@@ -851,7 +811,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param sshCertPath Cluster level SSH certificate path (string)
+         * @param sshCertPath Optional cluster level SSH certificate path
          * 
          * @return builder
          * 
@@ -862,7 +822,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param sshCertPath Cluster level SSH certificate path (string)
+         * @param sshCertPath Optional cluster level SSH certificate path
          * 
          * @return builder
          * 
@@ -872,7 +832,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param sshKeyPath Node SSH private key path (string)
+         * @param sshKeyPath Optional cluster level SSH private key path
          * 
          * @return builder
          * 
@@ -883,7 +843,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param sshKeyPath Node SSH private key path (string)
+         * @param sshKeyPath Optional cluster level SSH private key path
          * 
          * @return builder
          * 
@@ -893,7 +853,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param upgradeStrategy K3S upgrade strategy (List maxitems: 1)
+         * @param upgradeStrategy RKE upgrade strategy
          * 
          * @return builder
          * 
@@ -904,7 +864,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param upgradeStrategy K3S upgrade strategy (List maxitems: 1)
+         * @param upgradeStrategy RKE upgrade strategy
          * 
          * @return builder
          * 
@@ -914,7 +874,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param winPrefixPath Prefix to customize Kubernetes path for windows (string)
+         * @param winPrefixPath Optional prefix to customize kubernetes path for windows
          * 
          * @return builder
          * 
@@ -925,7 +885,7 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param winPrefixPath Prefix to customize Kubernetes path for windows (string)
+         * @param winPrefixPath Optional prefix to customize kubernetes path for windows
          * 
          * @return builder
          * 

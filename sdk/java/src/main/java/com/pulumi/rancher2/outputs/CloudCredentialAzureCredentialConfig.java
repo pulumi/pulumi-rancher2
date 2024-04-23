@@ -13,62 +13,62 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CloudCredentialAzureCredentialConfig {
     /**
-     * @return Azure Service Principal Account ID (string)
+     * @return Azure Service Principal Account ID
      * 
      */
     private String clientId;
     /**
-     * @return Azure Service Principal Account password (string)
+     * @return Azure Service Principal Account password
      * 
      */
     private String clientSecret;
     /**
-     * @return Azure environment (e.g. AzurePublicCloud, AzureChinaCloud) (string)
+     * @return Azure environment (e.g. AzurePublicCloud, AzureChinaCloud)
      * 
      */
     private @Nullable String environment;
     /**
-     * @return Azure Subscription ID (string)
+     * @return Azure Subscription ID
      * 
      */
     private String subscriptionId;
     /**
-     * @return Azure Tenant ID (string)
+     * @return Azure Tenant ID
      * 
      */
     private @Nullable String tenantId;
 
     private CloudCredentialAzureCredentialConfig() {}
     /**
-     * @return Azure Service Principal Account ID (string)
+     * @return Azure Service Principal Account ID
      * 
      */
     public String clientId() {
         return this.clientId;
     }
     /**
-     * @return Azure Service Principal Account password (string)
+     * @return Azure Service Principal Account password
      * 
      */
     public String clientSecret() {
         return this.clientSecret;
     }
     /**
-     * @return Azure environment (e.g. AzurePublicCloud, AzureChinaCloud) (string)
+     * @return Azure environment (e.g. AzurePublicCloud, AzureChinaCloud)
      * 
      */
     public Optional<String> environment() {
         return Optional.ofNullable(this.environment);
     }
     /**
-     * @return Azure Subscription ID (string)
+     * @return Azure Subscription ID
      * 
      */
     public String subscriptionId() {
         return this.subscriptionId;
     }
     /**
-     * @return Azure Tenant ID (string)
+     * @return Azure Tenant ID
      * 
      */
     public Optional<String> tenantId() {

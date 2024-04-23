@@ -17,17 +17,9 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs e
 
     public static final ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs Empty = new ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs();
 
-    /**
-     * (string)
-     * 
-     */
     @Import(name="datacenters")
     private @Nullable Output<String> datacenters;
 
-    /**
-     * @return (string)
-     * 
-     */
     public Optional<Output<String>> datacenters() {
         return Optional.ofNullable(this.datacenters);
     }
@@ -39,77 +31,37 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs e
         return Optional.ofNullable(this.gracefulShutdownTimeout);
     }
 
-    /**
-     * (bool)
-     * 
-     */
     @Import(name="insecureFlag")
     private @Nullable Output<Boolean> insecureFlag;
 
-    /**
-     * @return (bool)
-     * 
-     */
     public Optional<Output<Boolean>> insecureFlag() {
         return Optional.ofNullable(this.insecureFlag);
     }
 
-    /**
-     * Registry password (string)
-     * 
-     */
     @Import(name="password")
     private @Nullable Output<String> password;
 
-    /**
-     * @return Registry password (string)
-     * 
-     */
     public Optional<Output<String>> password() {
         return Optional.ofNullable(this.password);
     }
 
-    /**
-     * Port for node. Default `22` (string)
-     * 
-     */
     @Import(name="port")
     private @Nullable Output<String> port;
 
-    /**
-     * @return Port for node. Default `22` (string)
-     * 
-     */
     public Optional<Output<String>> port() {
         return Optional.ofNullable(this.port);
     }
 
-    /**
-     * (int)
-     * 
-     */
     @Import(name="soapRoundtripCount")
     private @Nullable Output<Integer> soapRoundtripCount;
 
-    /**
-     * @return (int)
-     * 
-     */
     public Optional<Output<Integer>> soapRoundtripCount() {
         return Optional.ofNullable(this.soapRoundtripCount);
     }
 
-    /**
-     * Registry user (string)
-     * 
-     */
     @Import(name="user")
     private @Nullable Output<String> user;
 
-    /**
-     * @return Registry user (string)
-     * 
-     */
     public Optional<Output<String>> user() {
         return Optional.ofNullable(this.user);
     }
@@ -144,23 +96,11 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs e
             $ = new ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param datacenters (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder datacenters(@Nullable Output<String> datacenters) {
             $.datacenters = datacenters;
             return this;
         }
 
-        /**
-         * @param datacenters (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder datacenters(String datacenters) {
             return datacenters(Output.of(datacenters));
         }
@@ -174,107 +114,47 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs e
             return gracefulShutdownTimeout(Output.of(gracefulShutdownTimeout));
         }
 
-        /**
-         * @param insecureFlag (bool)
-         * 
-         * @return builder
-         * 
-         */
         public Builder insecureFlag(@Nullable Output<Boolean> insecureFlag) {
             $.insecureFlag = insecureFlag;
             return this;
         }
 
-        /**
-         * @param insecureFlag (bool)
-         * 
-         * @return builder
-         * 
-         */
         public Builder insecureFlag(Boolean insecureFlag) {
             return insecureFlag(Output.of(insecureFlag));
         }
 
-        /**
-         * @param password Registry password (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder password(@Nullable Output<String> password) {
             $.password = password;
             return this;
         }
 
-        /**
-         * @param password Registry password (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder password(String password) {
             return password(Output.of(password));
         }
 
-        /**
-         * @param port Port for node. Default `22` (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder port(@Nullable Output<String> port) {
             $.port = port;
             return this;
         }
 
-        /**
-         * @param port Port for node. Default `22` (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder port(String port) {
             return port(Output.of(port));
         }
 
-        /**
-         * @param soapRoundtripCount (int)
-         * 
-         * @return builder
-         * 
-         */
         public Builder soapRoundtripCount(@Nullable Output<Integer> soapRoundtripCount) {
             $.soapRoundtripCount = soapRoundtripCount;
             return this;
         }
 
-        /**
-         * @param soapRoundtripCount (int)
-         * 
-         * @return builder
-         * 
-         */
         public Builder soapRoundtripCount(Integer soapRoundtripCount) {
             return soapRoundtripCount(Output.of(soapRoundtripCount));
         }
 
-        /**
-         * @param user Registry user (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder user(@Nullable Output<String> user) {
             $.user = user;
             return this;
         }
 
-        /**
-         * @param user Registry user (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder user(String user) {
             return user(Output.of(user));
         }

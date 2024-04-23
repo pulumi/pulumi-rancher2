@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class MultiClusterAppUpgradeStrategy {
     /**
-     * @return Upgrade strategy rolling update (list MaxItems:1)
+     * @return Rolling update for upgrade strategy
      * 
      */
     private @Nullable MultiClusterAppUpgradeStrategyRollingUpdate rollingUpdate;
 
     private MultiClusterAppUpgradeStrategy() {}
     /**
-     * @return Upgrade strategy rolling update (list MaxItems:1)
+     * @return Rolling update for upgrade strategy
      * 
      */
     public Optional<MultiClusterAppUpgradeStrategyRollingUpdate> rollingUpdate() {

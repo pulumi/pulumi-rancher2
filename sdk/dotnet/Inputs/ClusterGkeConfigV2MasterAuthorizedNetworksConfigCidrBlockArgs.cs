@@ -13,13 +13,13 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlockArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The GKE master authorized network config cidr block (string)
+        /// The GKE master authorized network config cidr block
         /// </summary>
         [Input("cidrBlock", required: true)]
         public Input<string> CidrBlock { get; set; } = null!;
 
         /// <summary>
-        /// The GKE master authorized network config cidr block dispaly name (string)
+        /// The GKE master authorized network config cidr block dispaly name
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }

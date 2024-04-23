@@ -12,30 +12,17 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterRkeConfigBastionHostGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Address ip for node (string)
-        /// </summary>
         [Input("address", required: true)]
         public Input<string> Address { get; set; } = null!;
 
-        /// <summary>
-        /// Port for node. Default `22` (string)
-        /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
 
-        /// <summary>
-        /// Use ssh agent auth. Default `false` (bool)
-        /// </summary>
         [Input("sshAgentAuth")]
         public Input<bool>? SshAgentAuth { get; set; }
 
         [Input("sshKey")]
         private Input<string>? _sshKey;
-
-        /// <summary>
-        /// Node SSH private key (string)
-        /// </summary>
         public Input<string>? SshKey
         {
             get => _sshKey;
@@ -46,15 +33,9 @@ namespace Pulumi.Rancher2.Inputs
             }
         }
 
-        /// <summary>
-        /// Node SSH private key path (string)
-        /// </summary>
         [Input("sshKeyPath")]
         public Input<string>? SshKeyPath { get; set; }
 
-        /// <summary>
-        /// Registry user (string)
-        /// </summary>
         [Input("user", required: true)]
         public Input<string> User { get; set; } = null!;
 

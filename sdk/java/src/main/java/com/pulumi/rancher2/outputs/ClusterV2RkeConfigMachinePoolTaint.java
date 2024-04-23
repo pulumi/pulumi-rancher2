@@ -12,41 +12,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterV2RkeConfigMachinePoolTaint {
-    /**
-     * @return The taint effect. Default: `\&#34;NoExecute\&#34;`.
-     * 
-     */
     private @Nullable String effect;
-    /**
-     * @return Key is the name of the key of the item to retrieve.
-     * 
-     */
     private String key;
-    /**
-     * @return The taint value.
-     * 
-     */
     private String value;
 
     private ClusterV2RkeConfigMachinePoolTaint() {}
-    /**
-     * @return The taint effect. Default: `\&#34;NoExecute\&#34;`.
-     * 
-     */
     public Optional<String> effect() {
         return Optional.ofNullable(this.effect);
     }
-    /**
-     * @return Key is the name of the key of the item to retrieve.
-     * 
-     */
     public String key() {
         return this.key;
     }
-    /**
-     * @return The taint value.
-     * 
-     */
     public String value() {
         return this.value;
     }

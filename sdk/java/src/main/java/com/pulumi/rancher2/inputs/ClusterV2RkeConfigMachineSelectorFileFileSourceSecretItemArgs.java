@@ -18,14 +18,14 @@ public final class ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemArgs
     public static final ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemArgs Empty = new ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemArgs();
 
     /**
-     * If true, the file is ignored when determining whether the node should be drained before updating the node plan.
+     * If ture, the file is ignored when determining whether the node should be drained before updating the node plan (default: true).
      * 
      */
     @Import(name="dynamic")
     private @Nullable Output<Boolean> dynamic;
 
     /**
-     * @return If true, the file is ignored when determining whether the node should be drained before updating the node plan.
+     * @return If ture, the file is ignored when determining whether the node should be drained before updating the node plan (default: true).
      * 
      */
     public Optional<Output<Boolean>> dynamic() {
@@ -33,14 +33,14 @@ public final class ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemArgs
     }
 
     /**
-     * Hash is the base64 encoded value of the SHA256 checksum of the file&#39;s content. If specified, it is used to validate the integrity of the file content.
+     * The base64 encoded value of the SHA256 checksum of the file&#39;s content
      * 
      */
     @Import(name="hash")
     private @Nullable Output<String> hash;
 
     /**
-     * @return Hash is the base64 encoded value of the SHA256 checksum of the file&#39;s content. If specified, it is used to validate the integrity of the file content.
+     * @return The base64 encoded value of the SHA256 checksum of the file&#39;s content
      * 
      */
     public Optional<Output<String>> hash() {
@@ -48,14 +48,14 @@ public final class ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemArgs
     }
 
     /**
-     * Key is the name of the key of the item to retrieve.
+     * The key of the item(file) to retrieve
      * 
      */
     @Import(name="key", required=true)
     private Output<String> key;
 
     /**
-     * @return Key is the name of the key of the item to retrieve.
+     * @return The key of the item(file) to retrieve
      * 
      */
     public Output<String> key() {
@@ -63,14 +63,14 @@ public final class ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemArgs
     }
 
     /**
-     * Path is the absolute path to put the file in the target node.
+     * The path to put the file in the target node
      * 
      */
     @Import(name="path", required=true)
     private Output<String> path;
 
     /**
-     * @return Path is the absolute path to put the file in the target node.
+     * @return The path to put the file in the target node
      * 
      */
     public Output<String> path() {
@@ -78,14 +78,14 @@ public final class ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemArgs
     }
 
     /**
-     * Permissions is the numeric representation of the file permission. It takes precedence over the default permissions at the outer level.
+     * The numeric representation of the file permissions
      * 
      */
     @Import(name="permissions")
     private @Nullable Output<String> permissions;
 
     /**
-     * @return Permissions is the numeric representation of the file permission. It takes precedence over the default permissions at the outer level.
+     * @return The numeric representation of the file permissions
      * 
      */
     public Optional<Output<String>> permissions() {
@@ -121,7 +121,7 @@ public final class ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemArgs
         }
 
         /**
-         * @param dynamic If true, the file is ignored when determining whether the node should be drained before updating the node plan.
+         * @param dynamic If ture, the file is ignored when determining whether the node should be drained before updating the node plan (default: true).
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemArgs
         }
 
         /**
-         * @param dynamic If true, the file is ignored when determining whether the node should be drained before updating the node plan.
+         * @param dynamic If ture, the file is ignored when determining whether the node should be drained before updating the node plan (default: true).
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemArgs
         }
 
         /**
-         * @param hash Hash is the base64 encoded value of the SHA256 checksum of the file&#39;s content. If specified, it is used to validate the integrity of the file content.
+         * @param hash The base64 encoded value of the SHA256 checksum of the file&#39;s content
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemArgs
         }
 
         /**
-         * @param hash Hash is the base64 encoded value of the SHA256 checksum of the file&#39;s content. If specified, it is used to validate the integrity of the file content.
+         * @param hash The base64 encoded value of the SHA256 checksum of the file&#39;s content
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemArgs
         }
 
         /**
-         * @param key Key is the name of the key of the item to retrieve.
+         * @param key The key of the item(file) to retrieve
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemArgs
         }
 
         /**
-         * @param key Key is the name of the key of the item to retrieve.
+         * @param key The key of the item(file) to retrieve
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemArgs
         }
 
         /**
-         * @param path Path is the absolute path to put the file in the target node.
+         * @param path The path to put the file in the target node
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemArgs
         }
 
         /**
-         * @param path Path is the absolute path to put the file in the target node.
+         * @param path The path to put the file in the target node
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemArgs
         }
 
         /**
-         * @param permissions Permissions is the numeric representation of the file permission. It takes precedence over the default permissions at the outer level.
+         * @param permissions The numeric representation of the file permissions
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemArgs
         }
 
         /**
-         * @param permissions Permissions is the numeric representation of the file permission. It takes precedence over the default permissions at the outer level.
+         * @param permissions The numeric representation of the file permissions
          * 
          * @return builder
          * 

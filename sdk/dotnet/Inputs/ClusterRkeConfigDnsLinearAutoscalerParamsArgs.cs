@@ -12,33 +12,18 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterRkeConfigDnsLinearAutoscalerParamsArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// number of replicas per cluster cores (float64)
-        /// </summary>
         [Input("coresPerReplica")]
         public Input<double>? CoresPerReplica { get; set; }
 
-        /// <summary>
-        /// maximum number of replicas (int64)
-        /// </summary>
         [Input("max")]
         public Input<int>? Max { get; set; }
 
-        /// <summary>
-        /// minimum number of replicas (int64)
-        /// </summary>
         [Input("min")]
         public Input<int>? Min { get; set; }
 
-        /// <summary>
-        /// number of replica per cluster nodes (float64)
-        /// </summary>
         [Input("nodesPerReplica")]
         public Input<double>? NodesPerReplica { get; set; }
 
-        /// <summary>
-        /// prevent single point of failure
-        /// </summary>
         [Input("preventSinglePointFailure")]
         public Input<bool>? PreventSinglePointFailure { get; set; }
 

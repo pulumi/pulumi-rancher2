@@ -14,23 +14,23 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterV2RkeConfig
     {
         /// <summary>
-        /// The value of the additional manifest is delivered to the path `/var/lib/rancher/rke2/server/manifests/rancher/addons.yaml` or `/var/lib/rancher/k3s/server/manifests/rancher/addons.yaml` on the control plane nodes.
+        /// Cluster V2 additional manifest
         /// </summary>
         public readonly string? AdditionalManifest;
         /// <summary>
-        /// The value for the system charts installed by the distribution. For more information about how RKE2 or K3s manage packaged components, please refer to [RKE2 documentation](https://docs.rke2.io/helm) or [K3s documentation](https://docs.k3s.io/installation/packaged-components).
+        /// Cluster V2 chart values. It should be in YAML format
         /// </summary>
         public readonly string? ChartValues;
         /// <summary>
-        /// Etcd configures the behavior of the automatic etcd snapshot feature.
+        /// Cluster V2 etcd
         /// </summary>
         public readonly Outputs.ClusterV2RkeConfigEtcd? Etcd;
         /// <summary>
-        /// Cluster V2 etcd snapshot create.
+        /// Cluster V2 etcd snapshot create
         /// </summary>
         public readonly Outputs.ClusterV2RkeConfigEtcdSnapshotCreate? EtcdSnapshotCreate;
         /// <summary>
-        /// Cluster V2 etcd snapshot restore.
+        /// Cluster V2 etcd snapshot restore
         /// </summary>
         public readonly Outputs.ClusterV2RkeConfigEtcdSnapshotRestore? EtcdSnapshotRestore;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly Outputs.ClusterV2RkeConfigLocalAuthEndpoint? LocalAuthEndpoint;
         /// <summary>
-        /// Machine global config specifies the distribution-specified server configuration applied to all nodes. For the full list of server configurations, please refer to [RKE2 server configuration](https://docs.rke2.io/reference/server_config) or [K3s server configuration](https://docs.k3s.io/cli/server).
+        /// Cluster V2 machine global config
         /// </summary>
         public readonly string? MachineGlobalConfig;
         /// <summary>
@@ -46,27 +46,27 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterV2RkeConfigMachinePoolDefault> MachinePoolDefaults;
         /// <summary>
-        /// Cluster V2 machine pools.
+        /// Cluster V2 machine pools
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterV2RkeConfigMachinePool> MachinePools;
         /// <summary>
-        /// Machine selector config is the same as machine_global_config except that a label selector can be specified with the configuration. The configuration will only be applied to nodes that match the provided label selector. The configuration from machine_selector_config takes precedence over the one from machine_global_config. This argument is available in Rancher v2.7.2 and later.
+        /// Cluster V2 machine selector config
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterV2RkeConfigMachineSelectorConfig> MachineSelectorConfigs;
         /// <summary>
-        /// Machine selector files provide a means to deliver files to nodes so that the files can be in place before initiating RKE2/K3s server or agent processes. Please refer to Rancher documentation for [RKE2 Cluster Configuration Reference](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration#machineselectorfiles) and [K3s Cluster Configuration Reference](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/k3s-cluster-configuration#machineselectorfiles). This argument is available in Rancher v2.7.2 and later.
+        /// Cluster V2 machine selector files
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterV2RkeConfigMachineSelectorFile> MachineSelectorFiles;
         /// <summary>
-        /// Docker registries from which the cluster pulls images.
+        /// Cluster V2 registries
         /// </summary>
         public readonly Outputs.ClusterV2RkeConfigRegistries? Registries;
         /// <summary>
-        /// Cluster V2 certificate rotation.
+        /// Cluster V2 certificate rotation
         /// </summary>
         public readonly Outputs.ClusterV2RkeConfigRotateCertificates? RotateCertificates;
         /// <summary>
-        /// Cluster upgrade strategy.
+        /// Cluster V2 upgrade strategy
         /// </summary>
         public readonly Outputs.ClusterV2RkeConfigUpgradeStrategy? UpgradeStrategy;
 

@@ -29,17 +29,9 @@ public final class ClusterAgentEnvVarArgs extends com.pulumi.resources.ResourceA
         return this.name;
     }
 
-    /**
-     * The GKE taint value (string)
-     * 
-     */
     @Import(name="value", required=true)
     private Output<String> value;
 
-    /**
-     * @return The GKE taint value (string)
-     * 
-     */
     public Output<String> value() {
         return this.value;
     }
@@ -90,23 +82,11 @@ public final class ClusterAgentEnvVarArgs extends com.pulumi.resources.ResourceA
             return name(Output.of(name));
         }
 
-        /**
-         * @param value The GKE taint value (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(Output<String> value) {
             $.value = value;
             return this;
         }
 
-        /**
-         * @param value The GKE taint value (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

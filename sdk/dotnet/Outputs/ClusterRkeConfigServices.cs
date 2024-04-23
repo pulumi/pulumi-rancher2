@@ -13,29 +13,11 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterRkeConfigServices
     {
-        /// <summary>
-        /// Etcd options for RKE services (list maxitems:1)
-        /// </summary>
         public readonly Outputs.ClusterRkeConfigServicesEtcd? Etcd;
-        /// <summary>
-        /// Kube API options for RKE services (list maxitems:1)
-        /// </summary>
         public readonly Outputs.ClusterRkeConfigServicesKubeApi? KubeApi;
-        /// <summary>
-        /// Kube Controller options for RKE services (list maxitems:1)
-        /// </summary>
         public readonly Outputs.ClusterRkeConfigServicesKubeController? KubeController;
-        /// <summary>
-        /// Kubelet options for RKE services (list maxitems:1)
-        /// </summary>
         public readonly Outputs.ClusterRkeConfigServicesKubelet? Kubelet;
-        /// <summary>
-        /// Kubeproxy options for RKE services (list maxitems:1)
-        /// </summary>
         public readonly Outputs.ClusterRkeConfigServicesKubeproxy? Kubeproxy;
-        /// <summary>
-        /// Scheduler options for RKE services (list maxitems:1)
-        /// </summary>
         public readonly Outputs.ClusterRkeConfigServicesScheduler? Scheduler;
 
         [OutputConstructor]

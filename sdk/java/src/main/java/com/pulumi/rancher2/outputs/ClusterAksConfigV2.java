@@ -18,72 +18,72 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterAksConfigV2 {
     /**
-     * @return The AKS auth base url (string)
+     * @return The AKS auth base url
      * 
      */
     private @Nullable String authBaseUrl;
     /**
-     * @return The AKS authorized ip ranges (list)
+     * @return The AKS authorized ip ranges
      * 
      */
     private @Nullable List<String> authorizedIpRanges;
     /**
-     * @return The AKS base url (string)
+     * @return The AKS base url
      * 
      */
     private @Nullable String baseUrl;
     /**
-     * @return The EKS cloud_credential id (string)
+     * @return The AKS Cloud Credential ID to use
      * 
      */
     private String cloudCredentialId;
     /**
-     * @return The AKS dns prefix. Required if `imported=false` (string)
+     * @return The AKS dns prefix. Required if `import=false`
      * 
      */
     private @Nullable String dnsPrefix;
     /**
-     * @return Enable AKS http application routing? (bool)
+     * @return Enable AKS http application routing?
      * 
      */
     private @Nullable Boolean httpApplicationRouting;
     /**
-     * @return Is GKE cluster imported? Default: `false` (bool)
+     * @return Is AKS cluster imported?
      * 
      */
     private @Nullable Boolean imported;
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return The kubernetes master version. Required if `import=false`
      * 
      */
     private @Nullable String kubernetesVersion;
     /**
-     * @return The AKS linux admin username (string)
+     * @return The AKS linux admin username
      * 
      */
     private @Nullable String linuxAdminUsername;
     /**
-     * @return The AKS linux ssh public key (string)
+     * @return The AKS linux ssh public key
      * 
      */
     private @Nullable String linuxSshPublicKey;
     /**
-     * @return The AKS load balancer sku (string)
+     * @return The AKS load balancer sku
      * 
      */
     private @Nullable String loadBalancerSku;
     /**
-     * @return The AKS log analytics workspace group (string)
+     * @return The AKS log analytics workspace group
      * 
      */
     private @Nullable String logAnalyticsWorkspaceGroup;
     /**
-     * @return The AKS log analytics workspace name (string)
+     * @return The AKS log analytics workspace name
      * 
      */
     private @Nullable String logAnalyticsWorkspaceName;
     /**
-     * @return Is AKS cluster monitoring enabled? (bool)
+     * @return Is AKS cluster monitoring enabled?
      * 
      */
     private @Nullable Boolean monitoring;
@@ -93,170 +93,170 @@ public final class ClusterAksConfigV2 {
      */
     private @Nullable String name;
     /**
-     * @return The AKS network dns service ip (string)
+     * @return The AKS network dns service ip
      * 
      */
     private @Nullable String networkDnsServiceIp;
     /**
-     * @return The AKS network docker bridge cidr (string)
+     * @return The AKS network docker bridge cidr
      * 
      */
     private @Nullable String networkDockerBridgeCidr;
     /**
-     * @return The AKS network plugin. Required if `imported=false` (string)
+     * @return The AKS network plugin. Required if `import=false`
      * 
      */
     private @Nullable String networkPlugin;
     /**
-     * @return The AKS network pod cidr (string)
+     * @return The AKS network pod cidr
      * 
      */
     private @Nullable String networkPodCidr;
     /**
-     * @return The AKS network policy (string)
+     * @return The AKS network policy
      * 
      */
     private @Nullable String networkPolicy;
     /**
-     * @return The AKS network service cidr (string)
+     * @return The AKS network service cidr
      * 
      */
     private @Nullable String networkServiceCidr;
     /**
-     * @return The GKE cluster node pools. Required for create new cluster (List)
+     * @return The AKS node pools to use. Required if `import=false`
      * 
      */
     private @Nullable List<ClusterAksConfigV2NodePool> nodePools;
     /**
-     * @return Is AKS cluster private? (bool)
+     * @return Is AKS cluster private?
      * 
      */
     private @Nullable Boolean privateCluster;
     /**
-     * @return The AKS resource group (string)
+     * @return The AKS resource group
      * 
      */
     private String resourceGroup;
     /**
-     * @return The AKS resource location (string)
+     * @return The AKS resource location
      * 
      */
     private String resourceLocation;
     /**
-     * @return The AKS subnet (string)
+     * @return The AKS subnet
      * 
      */
     private @Nullable String subnet;
     /**
-     * @return The GKE node config tags (List)
+     * @return The AKS cluster tags
      * 
      */
     private @Nullable Map<String,Object> tags;
     /**
-     * @return The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
+     * @return The AKS virtual network
      * 
      */
     private @Nullable String virtualNetwork;
     /**
-     * @return The AKS virtual network resource group (string)
+     * @return The AKS virtual network resource group
      * 
      */
     private @Nullable String virtualNetworkResourceGroup;
 
     private ClusterAksConfigV2() {}
     /**
-     * @return The AKS auth base url (string)
+     * @return The AKS auth base url
      * 
      */
     public Optional<String> authBaseUrl() {
         return Optional.ofNullable(this.authBaseUrl);
     }
     /**
-     * @return The AKS authorized ip ranges (list)
+     * @return The AKS authorized ip ranges
      * 
      */
     public List<String> authorizedIpRanges() {
         return this.authorizedIpRanges == null ? List.of() : this.authorizedIpRanges;
     }
     /**
-     * @return The AKS base url (string)
+     * @return The AKS base url
      * 
      */
     public Optional<String> baseUrl() {
         return Optional.ofNullable(this.baseUrl);
     }
     /**
-     * @return The EKS cloud_credential id (string)
+     * @return The AKS Cloud Credential ID to use
      * 
      */
     public String cloudCredentialId() {
         return this.cloudCredentialId;
     }
     /**
-     * @return The AKS dns prefix. Required if `imported=false` (string)
+     * @return The AKS dns prefix. Required if `import=false`
      * 
      */
     public Optional<String> dnsPrefix() {
         return Optional.ofNullable(this.dnsPrefix);
     }
     /**
-     * @return Enable AKS http application routing? (bool)
+     * @return Enable AKS http application routing?
      * 
      */
     public Optional<Boolean> httpApplicationRouting() {
         return Optional.ofNullable(this.httpApplicationRouting);
     }
     /**
-     * @return Is GKE cluster imported? Default: `false` (bool)
+     * @return Is AKS cluster imported?
      * 
      */
     public Optional<Boolean> imported() {
         return Optional.ofNullable(this.imported);
     }
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return The kubernetes master version. Required if `import=false`
      * 
      */
     public Optional<String> kubernetesVersion() {
         return Optional.ofNullable(this.kubernetesVersion);
     }
     /**
-     * @return The AKS linux admin username (string)
+     * @return The AKS linux admin username
      * 
      */
     public Optional<String> linuxAdminUsername() {
         return Optional.ofNullable(this.linuxAdminUsername);
     }
     /**
-     * @return The AKS linux ssh public key (string)
+     * @return The AKS linux ssh public key
      * 
      */
     public Optional<String> linuxSshPublicKey() {
         return Optional.ofNullable(this.linuxSshPublicKey);
     }
     /**
-     * @return The AKS load balancer sku (string)
+     * @return The AKS load balancer sku
      * 
      */
     public Optional<String> loadBalancerSku() {
         return Optional.ofNullable(this.loadBalancerSku);
     }
     /**
-     * @return The AKS log analytics workspace group (string)
+     * @return The AKS log analytics workspace group
      * 
      */
     public Optional<String> logAnalyticsWorkspaceGroup() {
         return Optional.ofNullable(this.logAnalyticsWorkspaceGroup);
     }
     /**
-     * @return The AKS log analytics workspace name (string)
+     * @return The AKS log analytics workspace name
      * 
      */
     public Optional<String> logAnalyticsWorkspaceName() {
         return Optional.ofNullable(this.logAnalyticsWorkspaceName);
     }
     /**
-     * @return Is AKS cluster monitoring enabled? (bool)
+     * @return Is AKS cluster monitoring enabled?
      * 
      */
     public Optional<Boolean> monitoring() {
@@ -270,98 +270,98 @@ public final class ClusterAksConfigV2 {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return The AKS network dns service ip (string)
+     * @return The AKS network dns service ip
      * 
      */
     public Optional<String> networkDnsServiceIp() {
         return Optional.ofNullable(this.networkDnsServiceIp);
     }
     /**
-     * @return The AKS network docker bridge cidr (string)
+     * @return The AKS network docker bridge cidr
      * 
      */
     public Optional<String> networkDockerBridgeCidr() {
         return Optional.ofNullable(this.networkDockerBridgeCidr);
     }
     /**
-     * @return The AKS network plugin. Required if `imported=false` (string)
+     * @return The AKS network plugin. Required if `import=false`
      * 
      */
     public Optional<String> networkPlugin() {
         return Optional.ofNullable(this.networkPlugin);
     }
     /**
-     * @return The AKS network pod cidr (string)
+     * @return The AKS network pod cidr
      * 
      */
     public Optional<String> networkPodCidr() {
         return Optional.ofNullable(this.networkPodCidr);
     }
     /**
-     * @return The AKS network policy (string)
+     * @return The AKS network policy
      * 
      */
     public Optional<String> networkPolicy() {
         return Optional.ofNullable(this.networkPolicy);
     }
     /**
-     * @return The AKS network service cidr (string)
+     * @return The AKS network service cidr
      * 
      */
     public Optional<String> networkServiceCidr() {
         return Optional.ofNullable(this.networkServiceCidr);
     }
     /**
-     * @return The GKE cluster node pools. Required for create new cluster (List)
+     * @return The AKS node pools to use. Required if `import=false`
      * 
      */
     public List<ClusterAksConfigV2NodePool> nodePools() {
         return this.nodePools == null ? List.of() : this.nodePools;
     }
     /**
-     * @return Is AKS cluster private? (bool)
+     * @return Is AKS cluster private?
      * 
      */
     public Optional<Boolean> privateCluster() {
         return Optional.ofNullable(this.privateCluster);
     }
     /**
-     * @return The AKS resource group (string)
+     * @return The AKS resource group
      * 
      */
     public String resourceGroup() {
         return this.resourceGroup;
     }
     /**
-     * @return The AKS resource location (string)
+     * @return The AKS resource location
      * 
      */
     public String resourceLocation() {
         return this.resourceLocation;
     }
     /**
-     * @return The AKS subnet (string)
+     * @return The AKS subnet
      * 
      */
     public Optional<String> subnet() {
         return Optional.ofNullable(this.subnet);
     }
     /**
-     * @return The GKE node config tags (List)
+     * @return The AKS cluster tags
      * 
      */
     public Map<String,Object> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
     /**
-     * @return The name of the virtual network to use. If it&#39;s not specified Rancher will create a new VPC (string)
+     * @return The AKS virtual network
      * 
      */
     public Optional<String> virtualNetwork() {
         return Optional.ofNullable(this.virtualNetwork);
     }
     /**
-     * @return The AKS virtual network resource group (string)
+     * @return The AKS virtual network resource group
      * 
      */
     public Optional<String> virtualNetworkResourceGroup() {

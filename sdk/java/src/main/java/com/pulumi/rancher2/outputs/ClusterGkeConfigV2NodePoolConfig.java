@@ -18,17 +18,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterGkeConfigV2NodePoolConfig {
     /**
-     * @return The GKE node config disk size Gb (int)
+     * @return The GKE node config disk size (Gb)
      * 
      */
     private @Nullable Integer diskSizeGb;
     /**
-     * @return The GKE node config disk type (string)
+     * @return The GKE node config disk type
      * 
      */
     private @Nullable String diskType;
     /**
-     * @return The GKE node config image type (string)
+     * @return The GKE node config image type
      * 
      */
     private @Nullable String imageType;
@@ -38,53 +38,53 @@ public final class ClusterGkeConfigV2NodePoolConfig {
      */
     private @Nullable Map<String,Object> labels;
     /**
-     * @return The GKE node config local ssd count (int)
+     * @return The GKE node config local ssd count
      * 
      */
     private @Nullable Integer localSsdCount;
     /**
-     * @return The GKE node config machine type (string)
+     * @return The GKE node config machine type
      * 
      */
     private @Nullable String machineType;
     /**
-     * @return The GKE node config oauth scopes (List)
+     * @return The GKE node config oauth scopes
      * 
      */
     private @Nullable List<String> oauthScopes;
     /**
-     * @return Enable GKE node config preemptible. Default: `false` (bool)
+     * @return Enable GKE node config preemptible
      * 
      */
     private @Nullable Boolean preemptible;
     /**
-     * @return The GKE node config tags (List)
+     * @return The GKE node config tags
      * 
      */
     private @Nullable List<String> tags;
     /**
-     * @return The GKE node config taints (List)
+     * @return The GKE node config taints
      * 
      */
     private @Nullable List<ClusterGkeConfigV2NodePoolConfigTaint> taints;
 
     private ClusterGkeConfigV2NodePoolConfig() {}
     /**
-     * @return The GKE node config disk size Gb (int)
+     * @return The GKE node config disk size (Gb)
      * 
      */
     public Optional<Integer> diskSizeGb() {
         return Optional.ofNullable(this.diskSizeGb);
     }
     /**
-     * @return The GKE node config disk type (string)
+     * @return The GKE node config disk type
      * 
      */
     public Optional<String> diskType() {
         return Optional.ofNullable(this.diskType);
     }
     /**
-     * @return The GKE node config image type (string)
+     * @return The GKE node config image type
      * 
      */
     public Optional<String> imageType() {
@@ -98,42 +98,42 @@ public final class ClusterGkeConfigV2NodePoolConfig {
         return this.labels == null ? Map.of() : this.labels;
     }
     /**
-     * @return The GKE node config local ssd count (int)
+     * @return The GKE node config local ssd count
      * 
      */
     public Optional<Integer> localSsdCount() {
         return Optional.ofNullable(this.localSsdCount);
     }
     /**
-     * @return The GKE node config machine type (string)
+     * @return The GKE node config machine type
      * 
      */
     public Optional<String> machineType() {
         return Optional.ofNullable(this.machineType);
     }
     /**
-     * @return The GKE node config oauth scopes (List)
+     * @return The GKE node config oauth scopes
      * 
      */
     public List<String> oauthScopes() {
         return this.oauthScopes == null ? List.of() : this.oauthScopes;
     }
     /**
-     * @return Enable GKE node config preemptible. Default: `false` (bool)
+     * @return Enable GKE node config preemptible
      * 
      */
     public Optional<Boolean> preemptible() {
         return Optional.ofNullable(this.preemptible);
     }
     /**
-     * @return The GKE node config tags (List)
+     * @return The GKE node config tags
      * 
      */
     public List<String> tags() {
         return this.tags == null ? List.of() : this.tags;
     }
     /**
-     * @return The GKE node config taints (List)
+     * @return The GKE node config taints
      * 
      */
     public List<ClusterGkeConfigV2NodePoolConfigTaint> taints() {

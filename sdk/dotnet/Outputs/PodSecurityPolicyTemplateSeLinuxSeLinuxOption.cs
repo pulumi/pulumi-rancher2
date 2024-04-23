@@ -14,19 +14,19 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class PodSecurityPolicyTemplateSeLinuxSeLinuxOption
     {
         /// <summary>
-        /// (string)
+        /// Level is SELinux level label that applies to the container.
         /// </summary>
         public readonly string? Level;
         /// <summary>
-        /// (string)
+        /// Role is a SELinux role label that applies to the container.
         /// </summary>
         public readonly string? Role;
         /// <summary>
-        /// (string)
+        /// Type is a SELinux type label that applies to the container.
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// (string)
+        /// User is a SELinux user label that applies to the container.
         /// </summary>
         public readonly string? User;
 

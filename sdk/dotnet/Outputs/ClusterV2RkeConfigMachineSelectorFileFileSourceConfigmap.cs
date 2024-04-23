@@ -14,11 +14,11 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmap
     {
         /// <summary>
-        /// The numeric representation of the default file permissions for all files defined under the items.
+        /// The default permissions to be applied when they are not set at the item level
         /// </summary>
         public readonly string? DefaultPermissions;
         /// <summary>
-        /// Items is a list of configurations for files, such as where to retrieve the content from the source, where to put the file on nodes, etc.
+        /// Items(files) to retrieve from the K8s object
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapItem> Items;
         /// <summary>

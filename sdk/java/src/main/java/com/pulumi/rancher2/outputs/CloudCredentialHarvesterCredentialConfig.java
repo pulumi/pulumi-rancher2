@@ -13,38 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CloudCredentialHarvesterCredentialConfig {
     /**
-     * @return Imported Harvester Cluster ID (string)
+     * @return The cluster id of imported Harvester cluster
      * 
      */
     private @Nullable String clusterId;
     /**
-     * @return Harvester Cluster Type. Supported values : `&#34;imported&#34; | &#34;external&#34;` (string)
+     * @return Harvester cluster type. must be imported or external
      * 
      */
     private String clusterType;
     /**
-     * @return Harvester Cluster KubeConfig Content (string)
+     * @return Harvester cluster kubeconfig content
      * 
      */
     private String kubeconfigContent;
 
     private CloudCredentialHarvesterCredentialConfig() {}
     /**
-     * @return Imported Harvester Cluster ID (string)
+     * @return The cluster id of imported Harvester cluster
      * 
      */
     public Optional<String> clusterId() {
         return Optional.ofNullable(this.clusterId);
     }
     /**
-     * @return Harvester Cluster Type. Supported values : `&#34;imported&#34; | &#34;external&#34;` (string)
+     * @return Harvester cluster type. must be imported or external
      * 
      */
     public String clusterType() {
         return this.clusterType;
     }
     /**
-     * @return Harvester Cluster KubeConfig Content (string)
+     * @return Harvester cluster kubeconfig content
      * 
      */
     public String kubeconfigContent() {

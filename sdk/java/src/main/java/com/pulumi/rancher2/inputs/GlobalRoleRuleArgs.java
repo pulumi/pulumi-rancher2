@@ -17,14 +17,14 @@ public final class GlobalRoleRuleArgs extends com.pulumi.resources.ResourceArgs 
     public static final GlobalRoleRuleArgs Empty = new GlobalRoleRuleArgs();
 
     /**
-     * Policy rule api groups (list)
+     * Policy rule api groups
      * 
      */
     @Import(name="apiGroups")
     private @Nullable Output<List<String>> apiGroups;
 
     /**
-     * @return Policy rule api groups (list)
+     * @return Policy rule api groups
      * 
      */
     public Optional<Output<List<String>>> apiGroups() {
@@ -32,14 +32,14 @@ public final class GlobalRoleRuleArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Policy rule non resource urls (list)
+     * Policy rule non resource urls
      * 
      */
     @Import(name="nonResourceUrls")
     private @Nullable Output<List<String>> nonResourceUrls;
 
     /**
-     * @return Policy rule non resource urls (list)
+     * @return Policy rule non resource urls
      * 
      */
     public Optional<Output<List<String>>> nonResourceUrls() {
@@ -47,14 +47,14 @@ public final class GlobalRoleRuleArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Policy rule resource names (list)
+     * Policy rule resource names
      * 
      */
     @Import(name="resourceNames")
     private @Nullable Output<List<String>> resourceNames;
 
     /**
-     * @return Policy rule resource names (list)
+     * @return Policy rule resource names
      * 
      */
     public Optional<Output<List<String>>> resourceNames() {
@@ -62,14 +62,14 @@ public final class GlobalRoleRuleArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Policy rule resources (list)
+     * Policy rule resources
      * 
      */
     @Import(name="resources")
     private @Nullable Output<List<String>> resources;
 
     /**
-     * @return Policy rule resources (list)
+     * @return Policy rule resources
      * 
      */
     public Optional<Output<List<String>>> resources() {
@@ -77,14 +77,14 @@ public final class GlobalRoleRuleArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Policy rule verbs. `bind`, `create`, `delete`, `deletecollection`, `escalate`, `get`, `impersonate`, `list`, `patch`, `update`, `use`, `view`, `watch`, `own` and `*` values are supported (list)
+     * Policy rule verbs
      * 
      */
     @Import(name="verbs")
     private @Nullable Output<List<String>> verbs;
 
     /**
-     * @return Policy rule verbs. `bind`, `create`, `delete`, `deletecollection`, `escalate`, `get`, `impersonate`, `list`, `patch`, `update`, `use`, `view`, `watch`, `own` and `*` values are supported (list)
+     * @return Policy rule verbs
      * 
      */
     public Optional<Output<List<String>>> verbs() {
@@ -120,7 +120,7 @@ public final class GlobalRoleRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param apiGroups Policy rule api groups (list)
+         * @param apiGroups Policy rule api groups
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class GlobalRoleRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param apiGroups Policy rule api groups (list)
+         * @param apiGroups Policy rule api groups
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class GlobalRoleRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param apiGroups Policy rule api groups (list)
+         * @param apiGroups Policy rule api groups
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class GlobalRoleRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param nonResourceUrls Policy rule non resource urls (list)
+         * @param nonResourceUrls Policy rule non resource urls
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class GlobalRoleRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param nonResourceUrls Policy rule non resource urls (list)
+         * @param nonResourceUrls Policy rule non resource urls
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class GlobalRoleRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param nonResourceUrls Policy rule non resource urls (list)
+         * @param nonResourceUrls Policy rule non resource urls
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class GlobalRoleRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resourceNames Policy rule resource names (list)
+         * @param resourceNames Policy rule resource names
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class GlobalRoleRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resourceNames Policy rule resource names (list)
+         * @param resourceNames Policy rule resource names
          * 
          * @return builder
          * 
@@ -203,7 +203,7 @@ public final class GlobalRoleRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resourceNames Policy rule resource names (list)
+         * @param resourceNames Policy rule resource names
          * 
          * @return builder
          * 
@@ -213,7 +213,7 @@ public final class GlobalRoleRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resources Policy rule resources (list)
+         * @param resources Policy rule resources
          * 
          * @return builder
          * 
@@ -224,7 +224,7 @@ public final class GlobalRoleRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resources Policy rule resources (list)
+         * @param resources Policy rule resources
          * 
          * @return builder
          * 
@@ -234,7 +234,7 @@ public final class GlobalRoleRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resources Policy rule resources (list)
+         * @param resources Policy rule resources
          * 
          * @return builder
          * 
@@ -244,7 +244,7 @@ public final class GlobalRoleRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param verbs Policy rule verbs. `bind`, `create`, `delete`, `deletecollection`, `escalate`, `get`, `impersonate`, `list`, `patch`, `update`, `use`, `view`, `watch`, `own` and `*` values are supported (list)
+         * @param verbs Policy rule verbs
          * 
          * @return builder
          * 
@@ -255,7 +255,7 @@ public final class GlobalRoleRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param verbs Policy rule verbs. `bind`, `create`, `delete`, `deletecollection`, `escalate`, `get`, `impersonate`, `list`, `patch`, `update`, `use`, `view`, `watch`, `own` and `*` values are supported (list)
+         * @param verbs Policy rule verbs
          * 
          * @return builder
          * 
@@ -265,7 +265,7 @@ public final class GlobalRoleRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param verbs Policy rule verbs. `bind`, `create`, `delete`, `deletecollection`, `escalate`, `get`, `impersonate`, `list`, `patch`, `update`, `use`, `view`, `watch`, `own` and `*` values are supported (list)
+         * @param verbs Policy rule verbs
          * 
          * @return builder
          * 

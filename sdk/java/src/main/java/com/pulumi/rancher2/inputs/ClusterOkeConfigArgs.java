@@ -19,14 +19,14 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     public static final ClusterOkeConfigArgs Empty = new ClusterOkeConfigArgs();
 
     /**
-     * The OCID of the compartment in which to create resources OKE cluster and related resources (string)
+     * The OCID of the compartment in which to create resources (VCN, worker nodes, etc.)
      * 
      */
     @Import(name="compartmentId", required=true)
     private Output<String> compartmentId;
 
     /**
-     * @return The OCID of the compartment in which to create resources OKE cluster and related resources (string)
+     * @return The OCID of the compartment in which to create resources (VCN, worker nodes, etc.)
      * 
      */
     public Output<String> compartmentId() {
@@ -34,14 +34,14 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Optional custom boot volume size (GB) for all nodes. If you specify 0, it will apply the default according to the `node_image` specified. Default `0` (int)
+     * An optional custom boot volume size (in GB) for the nodes
      * 
      */
     @Import(name="customBootVolumeSize")
     private @Nullable Output<Integer> customBootVolumeSize;
 
     /**
-     * @return Optional custom boot volume size (GB) for all nodes. If you specify 0, it will apply the default according to the `node_image` specified. Default `0` (int)
+     * @return An optional custom boot volume size (in GB) for the nodes
      * 
      */
     public Optional<Output<Integer>> customBootVolumeSize() {
@@ -64,14 +64,14 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
+     * Enable the kubernetes dashboard
      * 
      */
     @Import(name="enableKubernetesDashboard")
     private @Nullable Output<Boolean> enableKubernetesDashboard;
 
     /**
-     * @return Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
+     * @return Enable the kubernetes dashboard
      * 
      */
     public Optional<Output<Boolean>> enableKubernetesDashboard() {
@@ -79,14 +79,14 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Specifies whether Kubernetes API endpoint is a private IP only accessible from within the VCN. Default `false` for Rancher v2.5.10 and above (bool)
+     * Whether Kubernetes API endpoint is a private IP only accessible from within the VCN
      * 
      */
     @Import(name="enablePrivateControlPlane")
     private @Nullable Output<Boolean> enablePrivateControlPlane;
 
     /**
-     * @return Specifies whether Kubernetes API endpoint is a private IP only accessible from within the VCN. Default `false` for Rancher v2.5.10 and above (bool)
+     * @return Whether Kubernetes API endpoint is a private IP only accessible from within the VCN
      * 
      */
     public Optional<Output<Boolean>> enablePrivateControlPlane() {
@@ -94,14 +94,14 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+     * Whether worker nodes are deployed into a new private subnet
      * 
      */
     @Import(name="enablePrivateNodes")
     private @Nullable Output<Boolean> enablePrivateNodes;
 
     /**
-     * @return Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+     * @return Whether worker nodes are deployed into a new private subnet
      * 
      */
     public Optional<Output<Boolean>> enablePrivateNodes() {
@@ -109,14 +109,14 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The fingerprint corresponding to the specified user&#39;s private API Key (string)
+     * The fingerprint corresponding to the specified user&#39;s private API Key
      * 
      */
     @Import(name="fingerprint", required=true)
     private Output<String> fingerprint;
 
     /**
-     * @return The fingerprint corresponding to the specified user&#39;s private API Key (string)
+     * @return The fingerprint corresponding to the specified user&#39;s private API Key
      * 
      */
     public Output<String> fingerprint() {
@@ -124,14 +124,14 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Specifies number of OCPUs for nodes (requires flexible shape specified with `node_shape`) (int)
+     * Optional number of OCPUs for nodes (requires flexible node_shape)
      * 
      */
     @Import(name="flexOcpus")
     private @Nullable Output<Integer> flexOcpus;
 
     /**
-     * @return Specifies number of OCPUs for nodes (requires flexible shape specified with `node_shape`) (int)
+     * @return Optional number of OCPUs for nodes (requires flexible node_shape)
      * 
      */
     public Optional<Output<Integer>> flexOcpus() {
@@ -139,14 +139,14 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The OCID of a KMS vault master key used to encrypt secrets at rest. See [here](https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengencryptingdata.htm) for help creating a vault and master encryption key. For Rancher v2.5.9 and above (string)
+     * Optional specify the OCID of the KMS Vault master key
      * 
      */
     @Import(name="kmsKeyId")
     private @Nullable Output<String> kmsKeyId;
 
     /**
-     * @return The OCID of a KMS vault master key used to encrypt secrets at rest. See [here](https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengencryptingdata.htm) for help creating a vault and master encryption key. For Rancher v2.5.9 and above (string)
+     * @return Optional specify the OCID of the KMS Vault master key
      * 
      */
     public Optional<Output<String>> kmsKeyId() {
@@ -154,14 +154,14 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * The Kubernetes version that will be used for your master *and* worker nodes e.g. v1.19.7
      * 
      */
     @Import(name="kubernetesVersion", required=true)
     private Output<String> kubernetesVersion;
 
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return The Kubernetes version that will be used for your master *and* worker nodes e.g. v1.19.7
      * 
      */
     public Output<String> kubernetesVersion() {
@@ -169,14 +169,14 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The maximum number of worker nodes. Can limit `quantity_per_subnet`. Default `0` (no limit) (int)
+     * Optional limit on the total number of nodes in the pool
      * 
      */
     @Import(name="limitNodeCount")
     private @Nullable Output<Integer> limitNodeCount;
 
     /**
-     * @return The maximum number of worker nodes. Can limit `quantity_per_subnet`. Default `0` (no limit) (int)
+     * @return Optional limit on the total number of nodes in the pool
      * 
      */
     public Optional<Output<Integer>> limitNodeCount() {
@@ -184,14 +184,14 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The name of the first existing subnet to use for Kubernetes services / LB. `vcn_name` is also required when specifying an existing subnet. (string)
+     * The name of the first existing subnet to use for Kubernetes services / LB
      * 
      */
     @Import(name="loadBalancerSubnetName1")
     private @Nullable Output<String> loadBalancerSubnetName1;
 
     /**
-     * @return The name of the first existing subnet to use for Kubernetes services / LB. `vcn_name` is also required when specifying an existing subnet. (string)
+     * @return The name of the first existing subnet to use for Kubernetes services / LB
      * 
      */
     public Optional<Output<String>> loadBalancerSubnetName1() {
@@ -199,14 +199,14 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The name of a second existing subnet to use for Kubernetes services / LB. A second subnet is only required when it is AD-specific (non-regional) (string)
+     * The (optional) name of a second existing subnet to use for Kubernetes services / LB
      * 
      */
     @Import(name="loadBalancerSubnetName2")
     private @Nullable Output<String> loadBalancerSubnetName2;
 
     /**
-     * @return The name of a second existing subnet to use for Kubernetes services / LB. A second subnet is only required when it is AD-specific (non-regional) (string)
+     * @return The (optional) name of a second existing subnet to use for Kubernetes services / LB
      * 
      */
     public Optional<Output<String>> loadBalancerSubnetName2() {
@@ -214,14 +214,14 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The Oracle Linux OS image name to use for the OKE node(s). See [here](https://docs.cloud.oracle.com/en-us/iaas/images/) for a list of images. (string)
+     * The OS for the node image
      * 
      */
     @Import(name="nodeImage", required=true)
     private Output<String> nodeImage;
 
     /**
-     * @return The Oracle Linux OS image name to use for the OKE node(s). See [here](https://docs.cloud.oracle.com/en-us/iaas/images/) for a list of images. (string)
+     * @return The OS for the node image
      * 
      */
     public Output<String> nodeImage() {
@@ -229,14 +229,14 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Name for DNS domain of node pool subnet. Default `nodedns` (string)
+     * Optional name for DNS domain of node pool subnet
      * 
      */
     @Import(name="nodePoolDnsDomainName")
     private @Nullable Output<String> nodePoolDnsDomainName;
 
     /**
-     * @return Name for DNS domain of node pool subnet. Default `nodedns` (string)
+     * @return Optional name for DNS domain of node pool subnet
      * 
      */
     public Optional<Output<String>> nodePoolDnsDomainName() {
@@ -244,14 +244,14 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Name for node pool subnet. Default `nodedns` (string)
+     * Optional name for node pool subnet
      * 
      */
     @Import(name="nodePoolSubnetName")
     private @Nullable Output<String> nodePoolSubnetName;
 
     /**
-     * @return Name for node pool subnet. Default `nodedns` (string)
+     * @return Optional name for node pool subnet
      * 
      */
     public Optional<Output<String>> nodePoolSubnetName() {
@@ -259,14 +259,14 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The contents of the SSH public key file to use for the nodes (string)
+     * The contents of the SSH public key file to use for the nodes
      * 
      */
     @Import(name="nodePublicKeyContents")
     private @Nullable Output<String> nodePublicKeyContents;
 
     /**
-     * @return The contents of the SSH public key file to use for the nodes (string)
+     * @return The contents of the SSH public key file to use for the nodes
      * 
      */
     public Optional<Output<String>> nodePublicKeyContents() {
@@ -274,14 +274,14 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The shape of the node (determines number of CPUs and  amount of memory on each OKE node) (string)
+     * The shape of the node (determines number of CPUs and  amount of memory on each node)
      * 
      */
     @Import(name="nodeShape", required=true)
     private Output<String> nodeShape;
 
     /**
-     * @return The shape of the node (determines number of CPUs and  amount of memory on each OKE node) (string)
+     * @return The shape of the node (determines number of CPUs and  amount of memory on each node)
      * 
      */
     public Output<String> nodeShape() {
@@ -289,14 +289,14 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * A CIDR IP range from which to assign Kubernetes Pod IPs (string)
+     * Optional specify the pod CIDR, defaults to 10.244.0.0/16
      * 
      */
     @Import(name="podCidr")
     private @Nullable Output<String> podCidr;
 
     /**
-     * @return A CIDR IP range from which to assign Kubernetes Pod IPs (string)
+     * @return Optional specify the pod CIDR, defaults to 10.244.0.0/16
      * 
      */
     public Optional<Output<String>> podCidr() {
@@ -304,14 +304,14 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The private API key file contents for the specified user, in PEM format (string)
+     * The private API key file contents for the specified user, in PEM format
      * 
      */
     @Import(name="privateKeyContents", required=true)
     private Output<String> privateKeyContents;
 
     /**
-     * @return The private API key file contents for the specified user, in PEM format (string)
+     * @return The private API key file contents for the specified user, in PEM format
      * 
      */
     public Output<String> privateKeyContents() {
@@ -319,14 +319,14 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The passphrase (if any) of the private key for the OKE cluster (string)
+     * The passphrase of the private key for the OKE cluster
      * 
      */
     @Import(name="privateKeyPassphrase")
     private @Nullable Output<String> privateKeyPassphrase;
 
     /**
-     * @return The passphrase (if any) of the private key for the OKE cluster (string)
+     * @return The passphrase of the private key for the OKE cluster
      * 
      */
     public Optional<Output<String>> privateKeyPassphrase() {
@@ -334,14 +334,14 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Number of node subnets. Default `1` (int)
+     * Number of node subnets (defaults to creating 1 regional subnet)
      * 
      */
     @Import(name="quantityOfNodeSubnets")
     private @Nullable Output<Integer> quantityOfNodeSubnets;
 
     /**
-     * @return Number of node subnets. Default `1` (int)
+     * @return Number of node subnets (defaults to creating 1 regional subnet)
      * 
      */
     public Optional<Output<Integer>> quantityOfNodeSubnets() {
@@ -349,14 +349,14 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Number of OKE worker nodes in each subnet / availability domain. Default `1` (int)
+     * Number of worker nodes in each subnet / availability domain
      * 
      */
     @Import(name="quantityPerSubnet")
     private @Nullable Output<Integer> quantityPerSubnet;
 
     /**
-     * @return Number of OKE worker nodes in each subnet / availability domain. Default `1` (int)
+     * @return Number of worker nodes in each subnet / availability domain
      * 
      */
     public Optional<Output<Integer>> quantityPerSubnet() {
@@ -364,14 +364,14 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     * The availability domain within the region to host the OKE cluster
      * 
      */
     @Import(name="region", required=true)
     private Output<String> region;
 
     /**
-     * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     * @return The availability domain within the region to host the OKE cluster
      * 
      */
     public Output<String> region() {
@@ -379,14 +379,14 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * A CIDR IP range from which to assign Kubernetes Service IPs (string)
+     * Optional specify the service CIDR, defaults to 10.96.0.0/16
      * 
      */
     @Import(name="serviceCidr")
     private @Nullable Output<String> serviceCidr;
 
     /**
-     * @return A CIDR IP range from which to assign Kubernetes Service IPs (string)
+     * @return Optional specify the service CIDR, defaults to 10.96.0.0/16
      * 
      */
     public Optional<Output<String>> serviceCidr() {
@@ -394,14 +394,14 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Name for DNS domain of service subnet. Default `svcdns` (string)
+     * Optional name for DNS domain of service subnet
      * 
      */
     @Import(name="serviceDnsDomainName")
     private @Nullable Output<String> serviceDnsDomainName;
 
     /**
-     * @return Name for DNS domain of service subnet. Default `svcdns` (string)
+     * @return Optional name for DNS domain of service subnet
      * 
      */
     public Optional<Output<String>> serviceDnsDomainName() {
@@ -409,14 +409,14 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Specifies whether to skip deleting the virtual cloud network (VCN) on destroy. Default `false` (bool)
+     * Whether to skip deleting VCN
      * 
      */
     @Import(name="skipVcnDelete")
     private @Nullable Output<Boolean> skipVcnDelete;
 
     /**
-     * @return Specifies whether to skip deleting the virtual cloud network (VCN) on destroy. Default `false` (bool)
+     * @return Whether to skip deleting VCN
      * 
      */
     public Optional<Output<Boolean>> skipVcnDelete() {
@@ -424,14 +424,14 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The OCID of the tenancy in which to create resources (string)
+     * The OCID of the tenancy in which to create resources
      * 
      */
     @Import(name="tenancyId", required=true)
     private Output<String> tenancyId;
 
     /**
-     * @return The OCID of the tenancy in which to create resources (string)
+     * @return The OCID of the tenancy in which to create resources
      * 
      */
     public Output<String> tenancyId() {
@@ -439,14 +439,14 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The OCID of a user who has access to the tenancy/compartment (string)
+     * The OCID of a user who has access to the tenancy/compartment
      * 
      */
     @Import(name="userOcid", required=true)
     private Output<String> userOcid;
 
     /**
-     * @return The OCID of a user who has access to the tenancy/compartment (string)
+     * @return The OCID of a user who has access to the tenancy/compartment
      * 
      */
     public Output<String> userOcid() {
@@ -454,14 +454,14 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The OCID of the compartment (if different from `compartment_id`) in which to find the pre-existing virtual network set with `vcn_name`. (string)
+     * The OCID of the compartment (if different from compartment_id) in which to find the pre-existing virtual network set with vcn_name.
      * 
      */
     @Import(name="vcnCompartmentId")
     private @Nullable Output<String> vcnCompartmentId;
 
     /**
-     * @return The OCID of the compartment (if different from `compartment_id`) in which to find the pre-existing virtual network set with `vcn_name`. (string)
+     * @return The OCID of the compartment (if different from compartment_id) in which to find the pre-existing virtual network set with vcn_name.
      * 
      */
     public Optional<Output<String>> vcnCompartmentId() {
@@ -469,14 +469,14 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The name of an existing virtual network to use for the cluster creation. If set, you must also set `load_balancer_subnet_name_1`. A VCN and subnets will be created if none are specified. (string)
+     * The optional name of an existing virtual network to use for the cluster creation. A new VCN will be created if not specified.
      * 
      */
     @Import(name="vcnName")
     private @Nullable Output<String> vcnName;
 
     /**
-     * @return The name of an existing virtual network to use for the cluster creation. If set, you must also set `load_balancer_subnet_name_1`. A VCN and subnets will be created if none are specified. (string)
+     * @return The optional name of an existing virtual network to use for the cluster creation. A new VCN will be created if not specified.
      * 
      */
     public Optional<Output<String>> vcnName() {
@@ -484,14 +484,14 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Additional CIDR from which to allow ingress to worker nodes (string)
+     * Additional CIDR from which to allow ingress to worker nodes
      * 
      */
     @Import(name="workerNodeIngressCidr")
     private @Nullable Output<String> workerNodeIngressCidr;
 
     /**
-     * @return Additional CIDR from which to allow ingress to worker nodes (string)
+     * @return Additional CIDR from which to allow ingress to worker nodes
      * 
      */
     public Optional<Output<String>> workerNodeIngressCidr() {
@@ -554,7 +554,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param compartmentId The OCID of the compartment in which to create resources OKE cluster and related resources (string)
+         * @param compartmentId The OCID of the compartment in which to create resources (VCN, worker nodes, etc.)
          * 
          * @return builder
          * 
@@ -565,7 +565,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param compartmentId The OCID of the compartment in which to create resources OKE cluster and related resources (string)
+         * @param compartmentId The OCID of the compartment in which to create resources (VCN, worker nodes, etc.)
          * 
          * @return builder
          * 
@@ -575,7 +575,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param customBootVolumeSize Optional custom boot volume size (GB) for all nodes. If you specify 0, it will apply the default according to the `node_image` specified. Default `0` (int)
+         * @param customBootVolumeSize An optional custom boot volume size (in GB) for the nodes
          * 
          * @return builder
          * 
@@ -586,7 +586,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param customBootVolumeSize Optional custom boot volume size (GB) for all nodes. If you specify 0, it will apply the default according to the `node_image` specified. Default `0` (int)
+         * @param customBootVolumeSize An optional custom boot volume size (in GB) for the nodes
          * 
          * @return builder
          * 
@@ -617,7 +617,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enableKubernetesDashboard Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
+         * @param enableKubernetesDashboard Enable the kubernetes dashboard
          * 
          * @return builder
          * 
@@ -628,7 +628,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enableKubernetesDashboard Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
+         * @param enableKubernetesDashboard Enable the kubernetes dashboard
          * 
          * @return builder
          * 
@@ -638,7 +638,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enablePrivateControlPlane Specifies whether Kubernetes API endpoint is a private IP only accessible from within the VCN. Default `false` for Rancher v2.5.10 and above (bool)
+         * @param enablePrivateControlPlane Whether Kubernetes API endpoint is a private IP only accessible from within the VCN
          * 
          * @return builder
          * 
@@ -649,7 +649,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enablePrivateControlPlane Specifies whether Kubernetes API endpoint is a private IP only accessible from within the VCN. Default `false` for Rancher v2.5.10 and above (bool)
+         * @param enablePrivateControlPlane Whether Kubernetes API endpoint is a private IP only accessible from within the VCN
          * 
          * @return builder
          * 
@@ -659,7 +659,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enablePrivateNodes Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+         * @param enablePrivateNodes Whether worker nodes are deployed into a new private subnet
          * 
          * @return builder
          * 
@@ -670,7 +670,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enablePrivateNodes Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+         * @param enablePrivateNodes Whether worker nodes are deployed into a new private subnet
          * 
          * @return builder
          * 
@@ -680,7 +680,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param fingerprint The fingerprint corresponding to the specified user&#39;s private API Key (string)
+         * @param fingerprint The fingerprint corresponding to the specified user&#39;s private API Key
          * 
          * @return builder
          * 
@@ -691,7 +691,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param fingerprint The fingerprint corresponding to the specified user&#39;s private API Key (string)
+         * @param fingerprint The fingerprint corresponding to the specified user&#39;s private API Key
          * 
          * @return builder
          * 
@@ -701,7 +701,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param flexOcpus Specifies number of OCPUs for nodes (requires flexible shape specified with `node_shape`) (int)
+         * @param flexOcpus Optional number of OCPUs for nodes (requires flexible node_shape)
          * 
          * @return builder
          * 
@@ -712,7 +712,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param flexOcpus Specifies number of OCPUs for nodes (requires flexible shape specified with `node_shape`) (int)
+         * @param flexOcpus Optional number of OCPUs for nodes (requires flexible node_shape)
          * 
          * @return builder
          * 
@@ -722,7 +722,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param kmsKeyId The OCID of a KMS vault master key used to encrypt secrets at rest. See [here](https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengencryptingdata.htm) for help creating a vault and master encryption key. For Rancher v2.5.9 and above (string)
+         * @param kmsKeyId Optional specify the OCID of the KMS Vault master key
          * 
          * @return builder
          * 
@@ -733,7 +733,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param kmsKeyId The OCID of a KMS vault master key used to encrypt secrets at rest. See [here](https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengencryptingdata.htm) for help creating a vault and master encryption key. For Rancher v2.5.9 and above (string)
+         * @param kmsKeyId Optional specify the OCID of the KMS Vault master key
          * 
          * @return builder
          * 
@@ -743,7 +743,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param kubernetesVersion The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+         * @param kubernetesVersion The Kubernetes version that will be used for your master *and* worker nodes e.g. v1.19.7
          * 
          * @return builder
          * 
@@ -754,7 +754,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param kubernetesVersion The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+         * @param kubernetesVersion The Kubernetes version that will be used for your master *and* worker nodes e.g. v1.19.7
          * 
          * @return builder
          * 
@@ -764,7 +764,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param limitNodeCount The maximum number of worker nodes. Can limit `quantity_per_subnet`. Default `0` (no limit) (int)
+         * @param limitNodeCount Optional limit on the total number of nodes in the pool
          * 
          * @return builder
          * 
@@ -775,7 +775,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param limitNodeCount The maximum number of worker nodes. Can limit `quantity_per_subnet`. Default `0` (no limit) (int)
+         * @param limitNodeCount Optional limit on the total number of nodes in the pool
          * 
          * @return builder
          * 
@@ -785,7 +785,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param loadBalancerSubnetName1 The name of the first existing subnet to use for Kubernetes services / LB. `vcn_name` is also required when specifying an existing subnet. (string)
+         * @param loadBalancerSubnetName1 The name of the first existing subnet to use for Kubernetes services / LB
          * 
          * @return builder
          * 
@@ -796,7 +796,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param loadBalancerSubnetName1 The name of the first existing subnet to use for Kubernetes services / LB. `vcn_name` is also required when specifying an existing subnet. (string)
+         * @param loadBalancerSubnetName1 The name of the first existing subnet to use for Kubernetes services / LB
          * 
          * @return builder
          * 
@@ -806,7 +806,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param loadBalancerSubnetName2 The name of a second existing subnet to use for Kubernetes services / LB. A second subnet is only required when it is AD-specific (non-regional) (string)
+         * @param loadBalancerSubnetName2 The (optional) name of a second existing subnet to use for Kubernetes services / LB
          * 
          * @return builder
          * 
@@ -817,7 +817,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param loadBalancerSubnetName2 The name of a second existing subnet to use for Kubernetes services / LB. A second subnet is only required when it is AD-specific (non-regional) (string)
+         * @param loadBalancerSubnetName2 The (optional) name of a second existing subnet to use for Kubernetes services / LB
          * 
          * @return builder
          * 
@@ -827,7 +827,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param nodeImage The Oracle Linux OS image name to use for the OKE node(s). See [here](https://docs.cloud.oracle.com/en-us/iaas/images/) for a list of images. (string)
+         * @param nodeImage The OS for the node image
          * 
          * @return builder
          * 
@@ -838,7 +838,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param nodeImage The Oracle Linux OS image name to use for the OKE node(s). See [here](https://docs.cloud.oracle.com/en-us/iaas/images/) for a list of images. (string)
+         * @param nodeImage The OS for the node image
          * 
          * @return builder
          * 
@@ -848,7 +848,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param nodePoolDnsDomainName Name for DNS domain of node pool subnet. Default `nodedns` (string)
+         * @param nodePoolDnsDomainName Optional name for DNS domain of node pool subnet
          * 
          * @return builder
          * 
@@ -859,7 +859,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param nodePoolDnsDomainName Name for DNS domain of node pool subnet. Default `nodedns` (string)
+         * @param nodePoolDnsDomainName Optional name for DNS domain of node pool subnet
          * 
          * @return builder
          * 
@@ -869,7 +869,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param nodePoolSubnetName Name for node pool subnet. Default `nodedns` (string)
+         * @param nodePoolSubnetName Optional name for node pool subnet
          * 
          * @return builder
          * 
@@ -880,7 +880,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param nodePoolSubnetName Name for node pool subnet. Default `nodedns` (string)
+         * @param nodePoolSubnetName Optional name for node pool subnet
          * 
          * @return builder
          * 
@@ -890,7 +890,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param nodePublicKeyContents The contents of the SSH public key file to use for the nodes (string)
+         * @param nodePublicKeyContents The contents of the SSH public key file to use for the nodes
          * 
          * @return builder
          * 
@@ -901,7 +901,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param nodePublicKeyContents The contents of the SSH public key file to use for the nodes (string)
+         * @param nodePublicKeyContents The contents of the SSH public key file to use for the nodes
          * 
          * @return builder
          * 
@@ -911,7 +911,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param nodeShape The shape of the node (determines number of CPUs and  amount of memory on each OKE node) (string)
+         * @param nodeShape The shape of the node (determines number of CPUs and  amount of memory on each node)
          * 
          * @return builder
          * 
@@ -922,7 +922,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param nodeShape The shape of the node (determines number of CPUs and  amount of memory on each OKE node) (string)
+         * @param nodeShape The shape of the node (determines number of CPUs and  amount of memory on each node)
          * 
          * @return builder
          * 
@@ -932,7 +932,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param podCidr A CIDR IP range from which to assign Kubernetes Pod IPs (string)
+         * @param podCidr Optional specify the pod CIDR, defaults to 10.244.0.0/16
          * 
          * @return builder
          * 
@@ -943,7 +943,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param podCidr A CIDR IP range from which to assign Kubernetes Pod IPs (string)
+         * @param podCidr Optional specify the pod CIDR, defaults to 10.244.0.0/16
          * 
          * @return builder
          * 
@@ -953,7 +953,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param privateKeyContents The private API key file contents for the specified user, in PEM format (string)
+         * @param privateKeyContents The private API key file contents for the specified user, in PEM format
          * 
          * @return builder
          * 
@@ -964,7 +964,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param privateKeyContents The private API key file contents for the specified user, in PEM format (string)
+         * @param privateKeyContents The private API key file contents for the specified user, in PEM format
          * 
          * @return builder
          * 
@@ -974,7 +974,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param privateKeyPassphrase The passphrase (if any) of the private key for the OKE cluster (string)
+         * @param privateKeyPassphrase The passphrase of the private key for the OKE cluster
          * 
          * @return builder
          * 
@@ -985,7 +985,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param privateKeyPassphrase The passphrase (if any) of the private key for the OKE cluster (string)
+         * @param privateKeyPassphrase The passphrase of the private key for the OKE cluster
          * 
          * @return builder
          * 
@@ -995,7 +995,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param quantityOfNodeSubnets Number of node subnets. Default `1` (int)
+         * @param quantityOfNodeSubnets Number of node subnets (defaults to creating 1 regional subnet)
          * 
          * @return builder
          * 
@@ -1006,7 +1006,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param quantityOfNodeSubnets Number of node subnets. Default `1` (int)
+         * @param quantityOfNodeSubnets Number of node subnets (defaults to creating 1 regional subnet)
          * 
          * @return builder
          * 
@@ -1016,7 +1016,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param quantityPerSubnet Number of OKE worker nodes in each subnet / availability domain. Default `1` (int)
+         * @param quantityPerSubnet Number of worker nodes in each subnet / availability domain
          * 
          * @return builder
          * 
@@ -1027,7 +1027,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param quantityPerSubnet Number of OKE worker nodes in each subnet / availability domain. Default `1` (int)
+         * @param quantityPerSubnet Number of worker nodes in each subnet / availability domain
          * 
          * @return builder
          * 
@@ -1037,7 +1037,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param region The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+         * @param region The availability domain within the region to host the OKE cluster
          * 
          * @return builder
          * 
@@ -1048,7 +1048,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param region The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+         * @param region The availability domain within the region to host the OKE cluster
          * 
          * @return builder
          * 
@@ -1058,7 +1058,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param serviceCidr A CIDR IP range from which to assign Kubernetes Service IPs (string)
+         * @param serviceCidr Optional specify the service CIDR, defaults to 10.96.0.0/16
          * 
          * @return builder
          * 
@@ -1069,7 +1069,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param serviceCidr A CIDR IP range from which to assign Kubernetes Service IPs (string)
+         * @param serviceCidr Optional specify the service CIDR, defaults to 10.96.0.0/16
          * 
          * @return builder
          * 
@@ -1079,7 +1079,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param serviceDnsDomainName Name for DNS domain of service subnet. Default `svcdns` (string)
+         * @param serviceDnsDomainName Optional name for DNS domain of service subnet
          * 
          * @return builder
          * 
@@ -1090,7 +1090,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param serviceDnsDomainName Name for DNS domain of service subnet. Default `svcdns` (string)
+         * @param serviceDnsDomainName Optional name for DNS domain of service subnet
          * 
          * @return builder
          * 
@@ -1100,7 +1100,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param skipVcnDelete Specifies whether to skip deleting the virtual cloud network (VCN) on destroy. Default `false` (bool)
+         * @param skipVcnDelete Whether to skip deleting VCN
          * 
          * @return builder
          * 
@@ -1111,7 +1111,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param skipVcnDelete Specifies whether to skip deleting the virtual cloud network (VCN) on destroy. Default `false` (bool)
+         * @param skipVcnDelete Whether to skip deleting VCN
          * 
          * @return builder
          * 
@@ -1121,7 +1121,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param tenancyId The OCID of the tenancy in which to create resources (string)
+         * @param tenancyId The OCID of the tenancy in which to create resources
          * 
          * @return builder
          * 
@@ -1132,7 +1132,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param tenancyId The OCID of the tenancy in which to create resources (string)
+         * @param tenancyId The OCID of the tenancy in which to create resources
          * 
          * @return builder
          * 
@@ -1142,7 +1142,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param userOcid The OCID of a user who has access to the tenancy/compartment (string)
+         * @param userOcid The OCID of a user who has access to the tenancy/compartment
          * 
          * @return builder
          * 
@@ -1153,7 +1153,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param userOcid The OCID of a user who has access to the tenancy/compartment (string)
+         * @param userOcid The OCID of a user who has access to the tenancy/compartment
          * 
          * @return builder
          * 
@@ -1163,7 +1163,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param vcnCompartmentId The OCID of the compartment (if different from `compartment_id`) in which to find the pre-existing virtual network set with `vcn_name`. (string)
+         * @param vcnCompartmentId The OCID of the compartment (if different from compartment_id) in which to find the pre-existing virtual network set with vcn_name.
          * 
          * @return builder
          * 
@@ -1174,7 +1174,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param vcnCompartmentId The OCID of the compartment (if different from `compartment_id`) in which to find the pre-existing virtual network set with `vcn_name`. (string)
+         * @param vcnCompartmentId The OCID of the compartment (if different from compartment_id) in which to find the pre-existing virtual network set with vcn_name.
          * 
          * @return builder
          * 
@@ -1184,7 +1184,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param vcnName The name of an existing virtual network to use for the cluster creation. If set, you must also set `load_balancer_subnet_name_1`. A VCN and subnets will be created if none are specified. (string)
+         * @param vcnName The optional name of an existing virtual network to use for the cluster creation. A new VCN will be created if not specified.
          * 
          * @return builder
          * 
@@ -1195,7 +1195,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param vcnName The name of an existing virtual network to use for the cluster creation. If set, you must also set `load_balancer_subnet_name_1`. A VCN and subnets will be created if none are specified. (string)
+         * @param vcnName The optional name of an existing virtual network to use for the cluster creation. A new VCN will be created if not specified.
          * 
          * @return builder
          * 
@@ -1205,7 +1205,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param workerNodeIngressCidr Additional CIDR from which to allow ingress to worker nodes (string)
+         * @param workerNodeIngressCidr Additional CIDR from which to allow ingress to worker nodes
          * 
          * @return builder
          * 
@@ -1216,7 +1216,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param workerNodeIngressCidr Additional CIDR from which to allow ingress to worker nodes (string)
+         * @param workerNodeIngressCidr Additional CIDR from which to allow ingress to worker nodes
          * 
          * @return builder
          * 

@@ -341,7 +341,6 @@ class ClusterRoleTemplateBinding(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -353,7 +352,6 @@ class ClusterRoleTemplateBinding(pulumi.CustomResource):
             role_template_id="<role_template_id>",
             user_id="<user_id>")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -388,7 +386,6 @@ class ClusterRoleTemplateBinding(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -400,7 +397,6 @@ class ClusterRoleTemplateBinding(pulumi.CustomResource):
             role_template_id="<role_template_id>",
             user_id="<user_id>")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

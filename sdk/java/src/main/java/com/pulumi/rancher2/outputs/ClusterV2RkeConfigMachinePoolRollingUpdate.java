@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterV2RkeConfigMachinePoolRollingUpdate {
     /**
-     * @return Rolling update max surge.
+     * @return Rolling update max surge
      * 
      */
     private @Nullable String maxSurge;
     /**
-     * @return Rolling update max unavailable.
+     * @return Rolling update max unavailable
      * 
      */
     private @Nullable String maxUnavailable;
 
     private ClusterV2RkeConfigMachinePoolRollingUpdate() {}
     /**
-     * @return Rolling update max surge.
+     * @return Rolling update max surge
      * 
      */
     public Optional<String> maxSurge() {
         return Optional.ofNullable(this.maxSurge);
     }
     /**
-     * @return Rolling update max unavailable.
+     * @return Rolling update max unavailable
      * 
      */
     public Optional<String> maxUnavailable() {

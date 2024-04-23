@@ -20,14 +20,14 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
     public static final NodeTemplateHetznerConfigArgs Empty = new NodeTemplateHetznerConfigArgs();
 
     /**
-     * Hetzner Cloud project API token (string)
+     * Hetzner Cloud project API token
      * 
      */
     @Import(name="apiToken", required=true)
     private Output<String> apiToken;
 
     /**
-     * @return Hetzner Cloud project API token (string)
+     * @return Hetzner Cloud project API token
      * 
      */
     public Output<String> apiToken() {
@@ -35,14 +35,14 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+     * Hetzner Cloud server image
      * 
      */
     @Import(name="image")
     private @Nullable Output<String> image;
 
     /**
-     * @return Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+     * @return Hetzner Cloud server image
      * 
      */
     public Optional<Output<String>> image() {
@@ -50,14 +50,14 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Comma-separated list of network IDs or names which should be attached to the server private network interface (string)
+     * Comma-separated list of network IDs or names which should be attached to the server private network interface
      * 
      */
     @Import(name="networks")
     private @Nullable Output<String> networks;
 
     /**
-     * @return Comma-separated list of network IDs or names which should be attached to the server private network interface (string)
+     * @return Comma-separated list of network IDs or names which should be attached to the server private network interface
      * 
      */
     public Optional<Output<String>> networks() {
@@ -65,14 +65,14 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Map of the labels which will be assigned to the server. This argument is only available on [Hetzner Docker Node Driver:v3.6.0](https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/tag/3.6.0) and above (map)
+     * Map of the labels which will be assigned to the server
      * 
      */
     @Import(name="serverLabels")
     private @Nullable Output<Map<String,Object>> serverLabels;
 
     /**
-     * @return Map of the labels which will be assigned to the server. This argument is only available on [Hetzner Docker Node Driver:v3.6.0](https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/tag/3.6.0) and above (map)
+     * @return Map of the labels which will be assigned to the server
      * 
      */
     public Optional<Output<Map<String,Object>>> serverLabels() {
@@ -80,14 +80,14 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Hetzner Cloud datacenter. Default `nbg1` (string)
+     * Hetzner Cloud datacenter
      * 
      */
     @Import(name="serverLocation")
     private @Nullable Output<String> serverLocation;
 
     /**
-     * @return Hetzner Cloud datacenter. Default `nbg1` (string)
+     * @return Hetzner Cloud datacenter
      * 
      */
     public Optional<Output<String>> serverLocation() {
@@ -95,14 +95,14 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Hetzner Cloud server type. Default `cx11` (string)
+     * Hetzner Cloud server type
      * 
      */
     @Import(name="serverType")
     private @Nullable Output<String> serverType;
 
     /**
-     * @return Hetzner Cloud server type. Default `cx11` (string)
+     * @return Hetzner Cloud server type
      * 
      */
     public Optional<Output<String>> serverType() {
@@ -110,14 +110,14 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Use private network. Default `false` (bool)
+     * Use private network
      * 
      */
     @Import(name="usePrivateNetwork")
     private @Nullable Output<Boolean> usePrivateNetwork;
 
     /**
-     * @return Use private network. Default `false` (bool)
+     * @return Use private network
      * 
      */
     public Optional<Output<Boolean>> usePrivateNetwork() {
@@ -125,18 +125,14 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Path to file with cloud-init user-data (string)
-     * 
-     * &gt; **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+     * Path to file with cloud-init user-data
      * 
      */
     @Import(name="userdata")
     private @Nullable Output<String> userdata;
 
     /**
-     * @return Path to file with cloud-init user-data (string)
-     * 
-     * &gt; **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+     * @return Path to file with cloud-init user-data
      * 
      */
     public Optional<Output<String>> userdata() {
@@ -144,14 +140,14 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Comma-separated list of volume IDs or names which should be attached to the server (string)
+     * Comma-separated list of volume IDs or names which should be attached to the server
      * 
      */
     @Import(name="volumes")
     private @Nullable Output<String> volumes;
 
     /**
-     * @return Comma-separated list of volume IDs or names which should be attached to the server (string)
+     * @return Comma-separated list of volume IDs or names which should be attached to the server
      * 
      */
     public Optional<Output<String>> volumes() {
@@ -191,7 +187,7 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param apiToken Hetzner Cloud project API token (string)
+         * @param apiToken Hetzner Cloud project API token
          * 
          * @return builder
          * 
@@ -202,7 +198,7 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param apiToken Hetzner Cloud project API token (string)
+         * @param apiToken Hetzner Cloud project API token
          * 
          * @return builder
          * 
@@ -212,7 +208,7 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param image Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+         * @param image Hetzner Cloud server image
          * 
          * @return builder
          * 
@@ -223,7 +219,7 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param image Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+         * @param image Hetzner Cloud server image
          * 
          * @return builder
          * 
@@ -233,7 +229,7 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param networks Comma-separated list of network IDs or names which should be attached to the server private network interface (string)
+         * @param networks Comma-separated list of network IDs or names which should be attached to the server private network interface
          * 
          * @return builder
          * 
@@ -244,7 +240,7 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param networks Comma-separated list of network IDs or names which should be attached to the server private network interface (string)
+         * @param networks Comma-separated list of network IDs or names which should be attached to the server private network interface
          * 
          * @return builder
          * 
@@ -254,7 +250,7 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param serverLabels Map of the labels which will be assigned to the server. This argument is only available on [Hetzner Docker Node Driver:v3.6.0](https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/tag/3.6.0) and above (map)
+         * @param serverLabels Map of the labels which will be assigned to the server
          * 
          * @return builder
          * 
@@ -265,7 +261,7 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param serverLabels Map of the labels which will be assigned to the server. This argument is only available on [Hetzner Docker Node Driver:v3.6.0](https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/tag/3.6.0) and above (map)
+         * @param serverLabels Map of the labels which will be assigned to the server
          * 
          * @return builder
          * 
@@ -275,7 +271,7 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param serverLocation Hetzner Cloud datacenter. Default `nbg1` (string)
+         * @param serverLocation Hetzner Cloud datacenter
          * 
          * @return builder
          * 
@@ -286,7 +282,7 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param serverLocation Hetzner Cloud datacenter. Default `nbg1` (string)
+         * @param serverLocation Hetzner Cloud datacenter
          * 
          * @return builder
          * 
@@ -296,7 +292,7 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param serverType Hetzner Cloud server type. Default `cx11` (string)
+         * @param serverType Hetzner Cloud server type
          * 
          * @return builder
          * 
@@ -307,7 +303,7 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param serverType Hetzner Cloud server type. Default `cx11` (string)
+         * @param serverType Hetzner Cloud server type
          * 
          * @return builder
          * 
@@ -317,7 +313,7 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param usePrivateNetwork Use private network. Default `false` (bool)
+         * @param usePrivateNetwork Use private network
          * 
          * @return builder
          * 
@@ -328,7 +324,7 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param usePrivateNetwork Use private network. Default `false` (bool)
+         * @param usePrivateNetwork Use private network
          * 
          * @return builder
          * 
@@ -338,9 +334,7 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param userdata Path to file with cloud-init user-data (string)
-         * 
-         * &gt; **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+         * @param userdata Path to file with cloud-init user-data
          * 
          * @return builder
          * 
@@ -351,9 +345,7 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param userdata Path to file with cloud-init user-data (string)
-         * 
-         * &gt; **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+         * @param userdata Path to file with cloud-init user-data
          * 
          * @return builder
          * 
@@ -363,7 +355,7 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param volumes Comma-separated list of volume IDs or names which should be attached to the server (string)
+         * @param volumes Comma-separated list of volume IDs or names which should be attached to the server
          * 
          * @return builder
          * 
@@ -374,7 +366,7 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param volumes Comma-separated list of volume IDs or names which should be attached to the server (string)
+         * @param volumes Comma-separated list of volume IDs or names which should be attached to the server
          * 
          * @return builder
          * 

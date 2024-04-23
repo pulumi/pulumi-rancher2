@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class CloudCredentialGoogleCredentialConfig
     {
         /// <summary>
-        /// Google auth encoded json (string)
+        /// Google auth encoded json
         /// </summary>
         public readonly string AuthEncodedJson;
 

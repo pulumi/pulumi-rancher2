@@ -17,14 +17,14 @@ public final class ClusterRke2ConfigArgs extends com.pulumi.resources.ResourceAr
     public static final ClusterRke2ConfigArgs Empty = new ClusterRke2ConfigArgs();
 
     /**
-     * K3S upgrade strategy (List maxitems: 1)
+     * The RKE2 upgrade strategy
      * 
      */
     @Import(name="upgradeStrategy")
     private @Nullable Output<ClusterRke2ConfigUpgradeStrategyArgs> upgradeStrategy;
 
     /**
-     * @return K3S upgrade strategy (List maxitems: 1)
+     * @return The RKE2 upgrade strategy
      * 
      */
     public Optional<Output<ClusterRke2ConfigUpgradeStrategyArgs>> upgradeStrategy() {
@@ -32,14 +32,14 @@ public final class ClusterRke2ConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * rancher-monitoring chart version (string)
+     * The RKE2 kubernetes version
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return rancher-monitoring chart version (string)
+     * @return The RKE2 kubernetes version
      * 
      */
     public Optional<Output<String>> version() {
@@ -72,7 +72,7 @@ public final class ClusterRke2ConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param upgradeStrategy K3S upgrade strategy (List maxitems: 1)
+         * @param upgradeStrategy The RKE2 upgrade strategy
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ClusterRke2ConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param upgradeStrategy K3S upgrade strategy (List maxitems: 1)
+         * @param upgradeStrategy The RKE2 upgrade strategy
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class ClusterRke2ConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param version rancher-monitoring chart version (string)
+         * @param version The RKE2 kubernetes version
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ClusterRke2ConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param version rancher-monitoring chart version (string)
+         * @param version The RKE2 kubernetes version
          * 
          * @return builder
          * 

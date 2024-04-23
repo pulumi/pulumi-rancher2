@@ -17,14 +17,14 @@ public final class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgs
     public static final ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgs Empty = new ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgs();
 
     /**
-     * if `delete_empty_dir_data` is set to true, continue draining even if there are pods using emptyDir (local storage).
+     * Drain options delete empty dir data
      * 
      */
     @Import(name="deleteEmptyDirData")
     private @Nullable Output<Boolean> deleteEmptyDirData;
 
     /**
-     * @return if `delete_empty_dir_data` is set to true, continue draining even if there are pods using emptyDir (local storage).
+     * @return Drain options delete empty dir data
      * 
      */
     public Optional<Output<Boolean>> deleteEmptyDirData() {
@@ -32,14 +32,14 @@ public final class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgs
     }
 
     /**
-     * If `disable_eviction` is set to true, force drain to use delete rather than evict.
+     * Drain options disable eviction
      * 
      */
     @Import(name="disableEviction")
     private @Nullable Output<Boolean> disableEviction;
 
     /**
-     * @return If `disable_eviction` is set to true, force drain to use delete rather than evict.
+     * @return Drain options disable eviction
      * 
      */
     public Optional<Output<Boolean>> disableEviction() {
@@ -47,14 +47,14 @@ public final class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgs
     }
 
     /**
-     * If `enabled` is set to true, nodes will be drained before upgrade.
+     * Drain options enabled?
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return If `enabled` is set to true, nodes will be drained before upgrade.
+     * @return Drain options enabled?
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -62,14 +62,14 @@ public final class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgs
     }
 
     /**
-     * If `force` is set to true, drain nodes even if there are standalone pods that are not managed by a ReplicationController, Job, or DaemonSet. Drain will not proceed without `force` set to true if there are such pods.
+     * Drain options force
      * 
      */
     @Import(name="force")
     private @Nullable Output<Boolean> force;
 
     /**
-     * @return If `force` is set to true, drain nodes even if there are standalone pods that are not managed by a ReplicationController, Job, or DaemonSet. Drain will not proceed without `force` set to true if there are such pods.
+     * @return Drain options force
      * 
      */
     public Optional<Output<Boolean>> force() {
@@ -77,14 +77,14 @@ public final class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgs
     }
 
     /**
-     * Time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used.
+     * Drain options grace period
      * 
      */
     @Import(name="gracePeriod")
     private @Nullable Output<Integer> gracePeriod;
 
     /**
-     * @return Time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used.
+     * @return Drain options grace period
      * 
      */
     public Optional<Output<Integer>> gracePeriod() {
@@ -92,14 +92,14 @@ public final class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgs
     }
 
     /**
-     * If `ignore_daemon_sets` is set to false, drain will not proceed if there are DaemonSet-managed pods.
+     * Drain options ignore daemon sets
      * 
      */
     @Import(name="ignoreDaemonSets")
     private @Nullable Output<Boolean> ignoreDaemonSets;
 
     /**
-     * @return If `ignore_daemon_sets` is set to false, drain will not proceed if there are DaemonSet-managed pods.
+     * @return Drain options ignore daemon sets
      * 
      */
     public Optional<Output<Boolean>> ignoreDaemonSets() {
@@ -107,14 +107,14 @@ public final class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgs
     }
 
     /**
-     * If `ignore_errors` is set to true,  errors that occurred between drain nodes in group are ignored.
+     * Drain options ignore errors
      * 
      */
     @Import(name="ignoreErrors")
     private @Nullable Output<Boolean> ignoreErrors;
 
     /**
-     * @return If `ignore_errors` is set to true,  errors that occurred between drain nodes in group are ignored.
+     * @return Drain options ignore errors
      * 
      */
     public Optional<Output<Boolean>> ignoreErrors() {
@@ -122,14 +122,14 @@ public final class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgs
     }
 
     /**
-     * Skip waiting for the pods that have a DeletionTimeStamp &gt; N seconds to be deleted. Seconds must be greater than 0 to skip. Such pods will be force deleted.
+     * Drain options skip wait for delete timeout seconds
      * 
      */
     @Import(name="skipWaitForDeleteTimeoutSeconds")
     private @Nullable Output<Integer> skipWaitForDeleteTimeoutSeconds;
 
     /**
-     * @return Skip waiting for the pods that have a DeletionTimeStamp &gt; N seconds to be deleted. Seconds must be greater than 0 to skip. Such pods will be force deleted.
+     * @return Drain options skip wait for delete timeout seconds
      * 
      */
     public Optional<Output<Integer>> skipWaitForDeleteTimeoutSeconds() {
@@ -137,14 +137,14 @@ public final class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgs
     }
 
     /**
-     * Time to wait (in seconds) before giving up for one try.
+     * Drain options timeout
      * 
      */
     @Import(name="timeout")
     private @Nullable Output<Integer> timeout;
 
     /**
-     * @return Time to wait (in seconds) before giving up for one try.
+     * @return Drain options timeout
      * 
      */
     public Optional<Output<Integer>> timeout() {
@@ -184,7 +184,7 @@ public final class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgs
         }
 
         /**
-         * @param deleteEmptyDirData if `delete_empty_dir_data` is set to true, continue draining even if there are pods using emptyDir (local storage).
+         * @param deleteEmptyDirData Drain options delete empty dir data
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgs
         }
 
         /**
-         * @param deleteEmptyDirData if `delete_empty_dir_data` is set to true, continue draining even if there are pods using emptyDir (local storage).
+         * @param deleteEmptyDirData Drain options delete empty dir data
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgs
         }
 
         /**
-         * @param disableEviction If `disable_eviction` is set to true, force drain to use delete rather than evict.
+         * @param disableEviction Drain options disable eviction
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgs
         }
 
         /**
-         * @param disableEviction If `disable_eviction` is set to true, force drain to use delete rather than evict.
+         * @param disableEviction Drain options disable eviction
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgs
         }
 
         /**
-         * @param enabled If `enabled` is set to true, nodes will be drained before upgrade.
+         * @param enabled Drain options enabled?
          * 
          * @return builder
          * 
@@ -237,7 +237,7 @@ public final class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgs
         }
 
         /**
-         * @param enabled If `enabled` is set to true, nodes will be drained before upgrade.
+         * @param enabled Drain options enabled?
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgs
         }
 
         /**
-         * @param force If `force` is set to true, drain nodes even if there are standalone pods that are not managed by a ReplicationController, Job, or DaemonSet. Drain will not proceed without `force` set to true if there are such pods.
+         * @param force Drain options force
          * 
          * @return builder
          * 
@@ -258,7 +258,7 @@ public final class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgs
         }
 
         /**
-         * @param force If `force` is set to true, drain nodes even if there are standalone pods that are not managed by a ReplicationController, Job, or DaemonSet. Drain will not proceed without `force` set to true if there are such pods.
+         * @param force Drain options force
          * 
          * @return builder
          * 
@@ -268,7 +268,7 @@ public final class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgs
         }
 
         /**
-         * @param gracePeriod Time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used.
+         * @param gracePeriod Drain options grace period
          * 
          * @return builder
          * 
@@ -279,7 +279,7 @@ public final class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgs
         }
 
         /**
-         * @param gracePeriod Time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used.
+         * @param gracePeriod Drain options grace period
          * 
          * @return builder
          * 
@@ -289,7 +289,7 @@ public final class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgs
         }
 
         /**
-         * @param ignoreDaemonSets If `ignore_daemon_sets` is set to false, drain will not proceed if there are DaemonSet-managed pods.
+         * @param ignoreDaemonSets Drain options ignore daemon sets
          * 
          * @return builder
          * 
@@ -300,7 +300,7 @@ public final class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgs
         }
 
         /**
-         * @param ignoreDaemonSets If `ignore_daemon_sets` is set to false, drain will not proceed if there are DaemonSet-managed pods.
+         * @param ignoreDaemonSets Drain options ignore daemon sets
          * 
          * @return builder
          * 
@@ -310,7 +310,7 @@ public final class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgs
         }
 
         /**
-         * @param ignoreErrors If `ignore_errors` is set to true,  errors that occurred between drain nodes in group are ignored.
+         * @param ignoreErrors Drain options ignore errors
          * 
          * @return builder
          * 
@@ -321,7 +321,7 @@ public final class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgs
         }
 
         /**
-         * @param ignoreErrors If `ignore_errors` is set to true,  errors that occurred between drain nodes in group are ignored.
+         * @param ignoreErrors Drain options ignore errors
          * 
          * @return builder
          * 
@@ -331,7 +331,7 @@ public final class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgs
         }
 
         /**
-         * @param skipWaitForDeleteTimeoutSeconds Skip waiting for the pods that have a DeletionTimeStamp &gt; N seconds to be deleted. Seconds must be greater than 0 to skip. Such pods will be force deleted.
+         * @param skipWaitForDeleteTimeoutSeconds Drain options skip wait for delete timeout seconds
          * 
          * @return builder
          * 
@@ -342,7 +342,7 @@ public final class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgs
         }
 
         /**
-         * @param skipWaitForDeleteTimeoutSeconds Skip waiting for the pods that have a DeletionTimeStamp &gt; N seconds to be deleted. Seconds must be greater than 0 to skip. Such pods will be force deleted.
+         * @param skipWaitForDeleteTimeoutSeconds Drain options skip wait for delete timeout seconds
          * 
          * @return builder
          * 
@@ -352,7 +352,7 @@ public final class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgs
         }
 
         /**
-         * @param timeout Time to wait (in seconds) before giving up for one try.
+         * @param timeout Drain options timeout
          * 
          * @return builder
          * 
@@ -363,7 +363,7 @@ public final class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgs
         }
 
         /**
-         * @param timeout Time to wait (in seconds) before giving up for one try.
+         * @param timeout Drain options timeout
          * 
          * @return builder
          * 

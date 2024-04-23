@@ -14,11 +14,11 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class NotifierMsteamsConfig
     {
         /// <summary>
-        /// Wechat proxy url (string)
+        /// MS teams proxy URL
         /// </summary>
         public readonly string? ProxyUrl;
         /// <summary>
-        /// Slack url (string)
+        /// Webhook URL
         /// </summary>
         public readonly string Url;
 

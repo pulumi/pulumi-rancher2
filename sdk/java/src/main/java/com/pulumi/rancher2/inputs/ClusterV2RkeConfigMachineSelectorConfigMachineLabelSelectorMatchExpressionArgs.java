@@ -17,14 +17,14 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMa
     public static final ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionArgs Empty = new ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionArgs();
 
     /**
-     * Key is the name of the key of the item to retrieve.
+     * Label selector requirement key
      * 
      */
     @Import(name="key")
     private @Nullable Output<String> key;
 
     /**
-     * @return Key is the name of the key of the item to retrieve.
+     * @return Label selector requirement key
      * 
      */
     public Optional<Output<String>> key() {
@@ -32,14 +32,14 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMa
     }
 
     /**
-     * Operator represents a key&#39;s relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+     * Label selector operator
      * 
      */
     @Import(name="operator")
     private @Nullable Output<String> operator;
 
     /**
-     * @return Operator represents a key&#39;s relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+     * @return Label selector operator
      * 
      */
     public Optional<Output<String>> operator() {
@@ -47,14 +47,14 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMa
     }
 
     /**
-     * Values is a list of string values.
+     * Label selector requirement values
      * 
      */
     @Import(name="values")
     private @Nullable Output<List<String>> values;
 
     /**
-     * @return Values is a list of string values.
+     * @return Label selector requirement values
      * 
      */
     public Optional<Output<List<String>>> values() {
@@ -88,7 +88,7 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMa
         }
 
         /**
-         * @param key Key is the name of the key of the item to retrieve.
+         * @param key Label selector requirement key
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMa
         }
 
         /**
-         * @param key Key is the name of the key of the item to retrieve.
+         * @param key Label selector requirement key
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMa
         }
 
         /**
-         * @param operator Operator represents a key&#39;s relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+         * @param operator Label selector operator
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMa
         }
 
         /**
-         * @param operator Operator represents a key&#39;s relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+         * @param operator Label selector operator
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMa
         }
 
         /**
-         * @param values Values is a list of string values.
+         * @param values Label selector requirement values
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMa
         }
 
         /**
-         * @param values Values is a list of string values.
+         * @param values Label selector requirement values
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMa
         }
 
         /**
-         * @param values Values is a list of string values.
+         * @param values Label selector requirement values
          * 
          * @return builder
          * 

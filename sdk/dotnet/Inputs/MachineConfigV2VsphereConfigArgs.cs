@@ -13,7 +13,7 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class MachineConfigV2VsphereConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// vSphere URL for boot2docker iso image. Default `https://releases.rancher.com/os/latest/rancheros-vmware.iso` (string)
+        /// vSphere URL for boot2docker image
         /// </summary>
         [Input("boot2dockerUrl")]
         public Input<string>? Boot2dockerUrl { get; set; }
@@ -22,7 +22,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _cfgparams;
 
         /// <summary>
-        /// vSphere vm configuration parameters (used for guestinfo) (list)
+        /// vSphere vm configuration parameters (used for guestinfo)
         /// </summary>
         public InputList<string> Cfgparams
         {
@@ -31,37 +31,37 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// If you choose creation type vm (clone vm) a name of what vm you want to clone is required (string)
+        /// If you choose creation type clone a name of what you want to clone is required
         /// </summary>
         [Input("cloneFrom")]
         public Input<string>? CloneFrom { get; set; }
 
         /// <summary>
-        /// Filepath to a cloud-config yaml file to put into the ISO user-data (string)
+        /// Filepath to a cloud-config yaml file to put into the ISO user-data
         /// </summary>
         [Input("cloudConfig")]
         public Input<string>? CloudConfig { get; set; }
 
         /// <summary>
-        /// vSphere cloud-init file or url to set in the guestinfo (string)
+        /// vSphere cloud-init filepath or url to add to guestinfo
         /// </summary>
         [Input("cloudinit")]
         public Input<string>? Cloudinit { get; set; }
 
         /// <summary>
-        /// If you choose to clone from a content library template specify the name of the library (string)
+        /// If you choose to clone from a content library template specify the name of the library
         /// </summary>
         [Input("contentLibrary")]
         public Input<string>? ContentLibrary { get; set; }
 
         /// <summary>
-        /// vSphere CPU number for docker VM. Default `2` (string)
+        /// vSphere CPU number for docker VM
         /// </summary>
         [Input("cpuCount")]
         public Input<string>? CpuCount { get; set; }
 
         /// <summary>
-        /// Creation type when creating a new virtual machine. Supported values: vm, template, library, legacy. Default `legacy` (string)
+        /// Creation type when creating a new virtual machine. Supported values: vm, template, library, legacy
         /// </summary>
         [Input("creationType")]
         public Input<string>? CreationType { get; set; }
@@ -70,7 +70,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _customAttributes;
 
         /// <summary>
-        /// vSphere custom attributes, format key/value e.g. `200=my custom value` (List)
+        /// vSphere custom attributes, format key/value e.g. '200=my custom value'
         /// </summary>
         public InputList<string> CustomAttributes
         {
@@ -79,49 +79,49 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// vSphere datacenter for docker VM (string)
+        /// vSphere datacenter for virtual machine
         /// </summary>
         [Input("datacenter")]
         public Input<string>? Datacenter { get; set; }
 
         /// <summary>
-        /// vSphere datastore for docker VM (string)
+        /// vSphere datastore for virtual machine
         /// </summary>
         [Input("datastore")]
         public Input<string>? Datastore { get; set; }
 
         /// <summary>
-        /// vSphere datastore cluster for virtual machine (string)
+        /// vSphere datastore cluster for virtual machine
         /// </summary>
         [Input("datastoreCluster")]
         public Input<string>? DatastoreCluster { get; set; }
 
         /// <summary>
-        /// vSphere size of disk for docker VM (in MB). Default `20480` (string)
+        /// vSphere size of disk for docker VM (in MB)
         /// </summary>
         [Input("diskSize")]
         public Input<string>? DiskSize { get; set; }
 
         /// <summary>
-        /// vSphere folder for the docker VM. This folder must already exist in the datacenter (string)
+        /// vSphere folder for the docker VM. This folder must already exist in the datacenter
         /// </summary>
         [Input("folder")]
         public Input<string>? Folder { get; set; }
 
         /// <summary>
-        /// Duration in seconds before the graceful shutdown of the VM times out and the VM is destroyed. A force destroy will be performed when the value is zero (string)
+        /// Duration in seconds before the graceful shutdown of the VM times out and the VM is destroyed. A force destroy will be performed when the value is zero
         /// </summary>
         [Input("gracefulShutdownTimeout")]
         public Input<string>? GracefulShutdownTimeout { get; set; }
 
         /// <summary>
-        /// vSphere compute resource where the docker VM will be instantiated. This can be omitted if using a cluster with DRS (string)
+        /// vSphere compute resource where the docker VM will be instantiated. This can be omitted if using a cluster with DRS
         /// </summary>
         [Input("hostsystem")]
         public Input<string>? Hostsystem { get; set; }
 
         /// <summary>
-        /// vSphere size of memory for docker VM (in MB). Default `2048` (string)
+        /// vSphere size of memory for docker VM (in MB)
         /// </summary>
         [Input("memorySize")]
         public Input<string>? MemorySize { get; set; }
@@ -130,7 +130,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _networks;
 
         /// <summary>
-        /// vSphere network where the docker VM will be attached (list)
+        /// vSphere network where the virtual machine will be attached
         /// </summary>
         public InputList<string> Networks
         {
@@ -142,7 +142,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _password;
 
         /// <summary>
-        /// OpenStack password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+        /// vSphere password
         /// </summary>
         public Input<string>? Password
         {
@@ -155,7 +155,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// vSphere resource pool for docker VM (string)
+        /// vSphere resource pool for docker VM
         /// </summary>
         [Input("pool")]
         public Input<string>? Pool { get; set; }
@@ -164,7 +164,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _sshPassword;
 
         /// <summary>
-        /// If using a non-B2D image you can specify the ssh password. Default `tcuser` (string)
+        /// If using a non-B2D image you can specify the ssh password
         /// </summary>
         public Input<string>? SshPassword
         {
@@ -177,19 +177,19 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// If using a non-B2D image you can specify the ssh port. Default `22` (string)
+        /// If using a non-B2D image you can specify the ssh port
         /// </summary>
         [Input("sshPort")]
         public Input<string>? SshPort { get; set; }
 
         /// <summary>
-        /// If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+        /// If using a non-B2D image you can specify the ssh user
         /// </summary>
         [Input("sshUser")]
         public Input<string>? SshUser { get; set; }
 
         /// <summary>
-        /// If using a non-B2D image the uploaded keys will need chown'ed. Default `staff` (string)
+        /// If using a non-B2D image the uploaded keys will need chown'ed, defaults to staff e.g. docker:staff
         /// </summary>
         [Input("sshUserGroup")]
         public Input<string>? SshUserGroup { get; set; }
@@ -198,7 +198,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _tags;
 
         /// <summary>
-        /// vSphere tags id e.g. `urn:xxx` (list)
+        /// vSphere tags id e.g. urn:xxx
         /// </summary>
         public InputList<string> Tags
         {
@@ -207,19 +207,19 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// OpenStack username (string)
+        /// vSphere username
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
 
         /// <summary>
-        /// vSphere vApp IP allocation policy. Supported values are: `dhcp`, `fixed`, `transient` and `fixedAllocated` (string)
+        /// vSphere vApp IP allocation policy. Supported values are: dhcp, fixed, transient and fixedAllocated
         /// </summary>
         [Input("vappIpAllocationPolicy")]
         public Input<string>? VappIpAllocationPolicy { get; set; }
 
         /// <summary>
-        /// vSphere vApp IP protocol for this deployment. Supported values are: `IPv4` and `IPv6` (string)
+        /// vSphere vApp IP protocol for this deployment. Supported values are: IPv4 and IPv6
         /// </summary>
         [Input("vappIpProtocol")]
         public Input<string>? VappIpProtocol { get; set; }
@@ -228,7 +228,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _vappProperties;
 
         /// <summary>
-        /// vSphere vApp properties (list)
+        /// vSphere vApp properties
         /// </summary>
         public InputList<string> VappProperties
         {
@@ -237,19 +237,19 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// vSphere OVF environment transports to use for properties. Supported values are: `iso` and `com.vmware.guestInfo` (string)
+        /// vSphere OVF environment transports to use for properties. Supported values are: iso and com.vmware.guestInfo
         /// </summary>
         [Input("vappTransport")]
         public Input<string>? VappTransport { get; set; }
 
         /// <summary>
-        /// vSphere IP/hostname for vCenter (string)
+        /// vSphere IP/hostname for vCenter
         /// </summary>
         [Input("vcenter")]
         public Input<string>? Vcenter { get; set; }
 
         /// <summary>
-        /// vSphere Port for vCenter Default `443` (string)
+        /// vSphere Port for vCenter
         /// </summary>
         [Input("vcenterPort")]
         public Input<string>? VcenterPort { get; set; }

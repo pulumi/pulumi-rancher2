@@ -16,7 +16,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<Inputs.ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionArgs>? _matchExpressions;
 
         /// <summary>
-        /// Match expressions is a list of label selector requirements. The requirements are ANDed.
+        /// Label selector match expressions
         /// </summary>
         public InputList<Inputs.ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionArgs> MatchExpressions
         {
@@ -28,7 +28,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _matchLabels;
 
         /// <summary>
-        /// Machine selector label is a map of {key,value} pairs, the requirements are ANDed.
+        /// Label selector match labels
         /// </summary>
         public InputMap<object> MatchLabels
         {

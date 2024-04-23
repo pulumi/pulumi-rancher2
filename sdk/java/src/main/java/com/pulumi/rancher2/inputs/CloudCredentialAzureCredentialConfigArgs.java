@@ -17,14 +17,14 @@ public final class CloudCredentialAzureCredentialConfigArgs extends com.pulumi.r
     public static final CloudCredentialAzureCredentialConfigArgs Empty = new CloudCredentialAzureCredentialConfigArgs();
 
     /**
-     * Azure Service Principal Account ID (string)
+     * Azure Service Principal Account ID
      * 
      */
     @Import(name="clientId", required=true)
     private Output<String> clientId;
 
     /**
-     * @return Azure Service Principal Account ID (string)
+     * @return Azure Service Principal Account ID
      * 
      */
     public Output<String> clientId() {
@@ -32,14 +32,14 @@ public final class CloudCredentialAzureCredentialConfigArgs extends com.pulumi.r
     }
 
     /**
-     * Azure Service Principal Account password (string)
+     * Azure Service Principal Account password
      * 
      */
     @Import(name="clientSecret", required=true)
     private Output<String> clientSecret;
 
     /**
-     * @return Azure Service Principal Account password (string)
+     * @return Azure Service Principal Account password
      * 
      */
     public Output<String> clientSecret() {
@@ -47,14 +47,14 @@ public final class CloudCredentialAzureCredentialConfigArgs extends com.pulumi.r
     }
 
     /**
-     * Azure environment (e.g. AzurePublicCloud, AzureChinaCloud) (string)
+     * Azure environment (e.g. AzurePublicCloud, AzureChinaCloud)
      * 
      */
     @Import(name="environment")
     private @Nullable Output<String> environment;
 
     /**
-     * @return Azure environment (e.g. AzurePublicCloud, AzureChinaCloud) (string)
+     * @return Azure environment (e.g. AzurePublicCloud, AzureChinaCloud)
      * 
      */
     public Optional<Output<String>> environment() {
@@ -62,14 +62,14 @@ public final class CloudCredentialAzureCredentialConfigArgs extends com.pulumi.r
     }
 
     /**
-     * Azure Subscription ID (string)
+     * Azure Subscription ID
      * 
      */
     @Import(name="subscriptionId", required=true)
     private Output<String> subscriptionId;
 
     /**
-     * @return Azure Subscription ID (string)
+     * @return Azure Subscription ID
      * 
      */
     public Output<String> subscriptionId() {
@@ -77,14 +77,14 @@ public final class CloudCredentialAzureCredentialConfigArgs extends com.pulumi.r
     }
 
     /**
-     * Azure Tenant ID (string)
+     * Azure Tenant ID
      * 
      */
     @Import(name="tenantId")
     private @Nullable Output<String> tenantId;
 
     /**
-     * @return Azure Tenant ID (string)
+     * @return Azure Tenant ID
      * 
      */
     public Optional<Output<String>> tenantId() {
@@ -120,7 +120,7 @@ public final class CloudCredentialAzureCredentialConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param clientId Azure Service Principal Account ID (string)
+         * @param clientId Azure Service Principal Account ID
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class CloudCredentialAzureCredentialConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param clientId Azure Service Principal Account ID (string)
+         * @param clientId Azure Service Principal Account ID
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class CloudCredentialAzureCredentialConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param clientSecret Azure Service Principal Account password (string)
+         * @param clientSecret Azure Service Principal Account password
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class CloudCredentialAzureCredentialConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param clientSecret Azure Service Principal Account password (string)
+         * @param clientSecret Azure Service Principal Account password
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class CloudCredentialAzureCredentialConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param environment Azure environment (e.g. AzurePublicCloud, AzureChinaCloud) (string)
+         * @param environment Azure environment (e.g. AzurePublicCloud, AzureChinaCloud)
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class CloudCredentialAzureCredentialConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param environment Azure environment (e.g. AzurePublicCloud, AzureChinaCloud) (string)
+         * @param environment Azure environment (e.g. AzurePublicCloud, AzureChinaCloud)
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class CloudCredentialAzureCredentialConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param subscriptionId Azure Subscription ID (string)
+         * @param subscriptionId Azure Subscription ID
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class CloudCredentialAzureCredentialConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param subscriptionId Azure Subscription ID (string)
+         * @param subscriptionId Azure Subscription ID
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class CloudCredentialAzureCredentialConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param tenantId Azure Tenant ID (string)
+         * @param tenantId Azure Tenant ID
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class CloudCredentialAzureCredentialConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param tenantId Azure Tenant ID (string)
+         * @param tenantId Azure Tenant ID
          * 
          * @return builder
          * 
