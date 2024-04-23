@@ -17,14 +17,14 @@ public final class ClusterV2RkeConfigMachineSelectorConfigArgs extends com.pulum
     public static final ClusterV2RkeConfigMachineSelectorConfigArgs Empty = new ClusterV2RkeConfigMachineSelectorConfigArgs();
 
     /**
-     * Config is the distribution-specify configuration to be applied to nodes that match the provided label selector. For more information, please refer to Rancher&#39;s documentation for [RKE2 Cluster Configuration](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration#machineselectorconfig) or [K3s Cluster Configuration](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/k3s-cluster-configuration#machineselectorconfig)
+     * Machine selector config
      * 
      */
     @Import(name="config")
     private @Nullable Output<String> config;
 
     /**
-     * @return Config is the distribution-specify configuration to be applied to nodes that match the provided label selector. For more information, please refer to Rancher&#39;s documentation for [RKE2 Cluster Configuration](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration#machineselectorconfig) or [K3s Cluster Configuration](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/k3s-cluster-configuration#machineselectorconfig)
+     * @return Machine selector config
      * 
      */
     public Optional<Output<String>> config() {
@@ -32,14 +32,14 @@ public final class ClusterV2RkeConfigMachineSelectorConfigArgs extends com.pulum
     }
 
     /**
-     * Machine selector label is a label query over a set of resources. The result of match_labels and match_expressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
+     * Machine label selector
      * 
      */
     @Import(name="machineLabelSelector")
     private @Nullable Output<ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorArgs> machineLabelSelector;
 
     /**
-     * @return Machine selector label is a label query over a set of resources. The result of match_labels and match_expressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
+     * @return Machine label selector
      * 
      */
     public Optional<Output<ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorArgs>> machineLabelSelector() {
@@ -72,7 +72,7 @@ public final class ClusterV2RkeConfigMachineSelectorConfigArgs extends com.pulum
         }
 
         /**
-         * @param config Config is the distribution-specify configuration to be applied to nodes that match the provided label selector. For more information, please refer to Rancher&#39;s documentation for [RKE2 Cluster Configuration](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration#machineselectorconfig) or [K3s Cluster Configuration](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/k3s-cluster-configuration#machineselectorconfig)
+         * @param config Machine selector config
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ClusterV2RkeConfigMachineSelectorConfigArgs extends com.pulum
         }
 
         /**
-         * @param config Config is the distribution-specify configuration to be applied to nodes that match the provided label selector. For more information, please refer to Rancher&#39;s documentation for [RKE2 Cluster Configuration](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration#machineselectorconfig) or [K3s Cluster Configuration](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/k3s-cluster-configuration#machineselectorconfig)
+         * @param config Machine selector config
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class ClusterV2RkeConfigMachineSelectorConfigArgs extends com.pulum
         }
 
         /**
-         * @param machineLabelSelector Machine selector label is a label query over a set of resources. The result of match_labels and match_expressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
+         * @param machineLabelSelector Machine label selector
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ClusterV2RkeConfigMachineSelectorConfigArgs extends com.pulum
         }
 
         /**
-         * @param machineLabelSelector Machine selector label is a label query over a set of resources. The result of match_labels and match_expressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
+         * @param machineLabelSelector Machine label selector
          * 
          * @return builder
          * 

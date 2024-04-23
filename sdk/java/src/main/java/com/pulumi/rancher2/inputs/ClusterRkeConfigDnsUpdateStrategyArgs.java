@@ -17,14 +17,14 @@ public final class ClusterRkeConfigDnsUpdateStrategyArgs extends com.pulumi.reso
     public static final ClusterRkeConfigDnsUpdateStrategyArgs Empty = new ClusterRkeConfigDnsUpdateStrategyArgs();
 
     /**
-     * Monitoring deployment rolling update (list Maxitems: 1)
+     * Rolling update for update strategy
      * 
      */
     @Import(name="rollingUpdate")
     private @Nullable Output<ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs> rollingUpdate;
 
     /**
-     * @return Monitoring deployment rolling update (list Maxitems: 1)
+     * @return Rolling update for update strategy
      * 
      */
     public Optional<Output<ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs>> rollingUpdate() {
@@ -32,14 +32,14 @@ public final class ClusterRkeConfigDnsUpdateStrategyArgs extends com.pulumi.reso
     }
 
     /**
-     * Monitoring deployment update strategy (string)
+     * Strategy
      * 
      */
     @Import(name="strategy")
     private @Nullable Output<String> strategy;
 
     /**
-     * @return Monitoring deployment update strategy (string)
+     * @return Strategy
      * 
      */
     public Optional<Output<String>> strategy() {
@@ -72,7 +72,7 @@ public final class ClusterRkeConfigDnsUpdateStrategyArgs extends com.pulumi.reso
         }
 
         /**
-         * @param rollingUpdate Monitoring deployment rolling update (list Maxitems: 1)
+         * @param rollingUpdate Rolling update for update strategy
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ClusterRkeConfigDnsUpdateStrategyArgs extends com.pulumi.reso
         }
 
         /**
-         * @param rollingUpdate Monitoring deployment rolling update (list Maxitems: 1)
+         * @param rollingUpdate Rolling update for update strategy
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class ClusterRkeConfigDnsUpdateStrategyArgs extends com.pulumi.reso
         }
 
         /**
-         * @param strategy Monitoring deployment update strategy (string)
+         * @param strategy Strategy
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ClusterRkeConfigDnsUpdateStrategyArgs extends com.pulumi.reso
         }
 
         /**
-         * @param strategy Monitoring deployment update strategy (string)
+         * @param strategy Strategy
          * 
          * @return builder
          * 

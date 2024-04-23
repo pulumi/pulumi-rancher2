@@ -14,15 +14,15 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class CloudCredentialHarvesterCredentialConfig
     {
         /// <summary>
-        /// Imported Harvester Cluster ID (string)
+        /// The cluster id of imported Harvester cluster
         /// </summary>
         public readonly string? ClusterId;
         /// <summary>
-        /// Harvester Cluster Type. Supported values : `"imported" | "external"` (string)
+        /// Harvester cluster type. must be imported or external
         /// </summary>
         public readonly string ClusterType;
         /// <summary>
-        /// Harvester Cluster KubeConfig Content (string)
+        /// Harvester cluster kubeconfig content
         /// </summary>
         public readonly string KubeconfigContent;
 

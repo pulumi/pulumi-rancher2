@@ -13,13 +13,13 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterRkeConfigMonitoringUpdateStrategyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Monitoring deployment rolling update (list Maxitems: 1)
+        /// Rolling update for update strategy
         /// </summary>
         [Input("rollingUpdate")]
         public Input<Inputs.ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateGetArgs>? RollingUpdate { get; set; }
 
         /// <summary>
-        /// Monitoring deployment update strategy (string)
+        /// Strategy
         /// </summary>
         [Input("strategy")]
         public Input<string>? Strategy { get; set; }

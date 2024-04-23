@@ -13,13 +13,13 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class NotifierMsteamsConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Wechat proxy url (string)
+        /// MS teams proxy URL
         /// </summary>
         [Input("proxyUrl")]
         public Input<string>? ProxyUrl { get; set; }
 
         /// <summary>
-        /// Slack url (string)
+        /// Webhook URL
         /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;

@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -21,7 +20,6 @@ import * as utilities from "./utilities";
  *     name: "<project_alert_group_name>",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getProjectAlertGroup(args: GetProjectAlertGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectAlertGroupResult> {
 
@@ -90,7 +88,6 @@ export interface GetProjectAlertGroupResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -100,7 +97,6 @@ export interface GetProjectAlertGroupResult {
  *     name: "<project_alert_group_name>",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getProjectAlertGroupOutput(args: GetProjectAlertGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectAlertGroupResult> {
     return pulumi.output(args).apply((a: any) => getProjectAlertGroup(a, opts))

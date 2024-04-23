@@ -13,12 +13,9 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterRkeConfigDnsNodelocal
     {
-        /// <summary>
-        /// Nodelocal dns ip address (string)
-        /// </summary>
         public readonly string? IpAddress;
         /// <summary>
-        /// RKE monitoring node selector (map)
+        /// Node selector key pair
         /// </summary>
         public readonly ImmutableDictionary<string, object>? NodeSelector;
 

@@ -14,11 +14,11 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class PodSecurityPolicyTemplateRunAsUser
     {
         /// <summary>
-        /// (list)
+        /// ranges are the allowed ranges of uids that may be used. If you would like to force a single uid then supply a single range with the same start and end. Required for MustRunAs.
         /// </summary>
         public readonly ImmutableArray<Outputs.PodSecurityPolicyTemplateRunAsUserRange> Ranges;
         /// <summary>
-        /// (string)
+        /// rule is the strategy that will dictate the allowable RunAsUser values that may be set.
         /// </summary>
         public readonly string Rule;
 

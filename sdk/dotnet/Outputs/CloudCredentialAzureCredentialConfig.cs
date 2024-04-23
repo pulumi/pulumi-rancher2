@@ -14,23 +14,23 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class CloudCredentialAzureCredentialConfig
     {
         /// <summary>
-        /// Azure Service Principal Account ID (string)
+        /// Azure Service Principal Account ID
         /// </summary>
         public readonly string ClientId;
         /// <summary>
-        /// Azure Service Principal Account password (string)
+        /// Azure Service Principal Account password
         /// </summary>
         public readonly string ClientSecret;
         /// <summary>
-        /// Azure environment (e.g. AzurePublicCloud, AzureChinaCloud) (string)
+        /// Azure environment (e.g. AzurePublicCloud, AzureChinaCloud)
         /// </summary>
         public readonly string? Environment;
         /// <summary>
-        /// Azure Subscription ID (string)
+        /// Azure Subscription ID
         /// </summary>
         public readonly string SubscriptionId;
         /// <summary>
-        /// Azure Tenant ID (string)
+        /// Azure Tenant ID
         /// </summary>
         public readonly string? TenantId;
 

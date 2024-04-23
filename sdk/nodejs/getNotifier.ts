@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -21,7 +20,6 @@ import * as utilities from "./utilities";
  *     clusterId: "<cluster_id>",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getNotifier(args: GetNotifierArgs, opts?: pulumi.InvokeOptions): Promise<GetNotifierResult> {
 
@@ -112,7 +110,6 @@ export interface GetNotifierResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -122,7 +119,6 @@ export interface GetNotifierResult {
  *     clusterId: "<cluster_id>",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getNotifierOutput(args: GetNotifierOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNotifierResult> {
     return pulumi.output(args).apply((a: any) => getNotifier(a, opts))

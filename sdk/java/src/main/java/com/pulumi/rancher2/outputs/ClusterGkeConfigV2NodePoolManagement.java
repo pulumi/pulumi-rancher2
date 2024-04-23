@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterGkeConfigV2NodePoolManagement {
     /**
-     * @return Enable GKE node pool config management auto repair. Default: `false` (bool)
+     * @return Enable GKE node pool config management auto repair
      * 
      */
     private @Nullable Boolean autoRepair;
     /**
-     * @return Enable GKE node pool config management auto upgrade. Default: `false` (bool)
+     * @return Enable GKE node pool config management auto upgrade
      * 
      */
     private @Nullable Boolean autoUpgrade;
 
     private ClusterGkeConfigV2NodePoolManagement() {}
     /**
-     * @return Enable GKE node pool config management auto repair. Default: `false` (bool)
+     * @return Enable GKE node pool config management auto repair
      * 
      */
     public Optional<Boolean> autoRepair() {
         return Optional.ofNullable(this.autoRepair);
     }
     /**
-     * @return Enable GKE node pool config management auto upgrade. Default: `false` (bool)
+     * @return Enable GKE node pool config management auto upgrade
      * 
      */
     public Optional<Boolean> autoUpgrade() {

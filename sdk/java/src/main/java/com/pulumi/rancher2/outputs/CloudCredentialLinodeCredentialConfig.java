@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class CloudCredentialLinodeCredentialConfig {
     /**
-     * @return Linode API token (string)
+     * @return Linode API token
      * 
      */
     private String token;
 
     private CloudCredentialLinodeCredentialConfig() {}
     /**
-     * @return Linode API token (string)
+     * @return Linode API token
      * 
      */
     public String token() {

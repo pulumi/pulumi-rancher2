@@ -19,17 +19,17 @@ public final class ProjectAlertGroupRecipient {
      */
     private @Nullable Boolean defaultRecipient;
     /**
-     * @return Recipient notifier ID (string)
+     * @return Recipient notifier ID
      * 
      */
     private String notifierId;
     /**
-     * @return Recipient notifier ID. Supported values : `&#34;pagerduty&#34; | &#34;slack&#34; | &#34;email&#34; | &#34;webhook&#34; | &#34;wechat&#34;` (string)
+     * @return Recipient notifier type
      * 
      */
     private @Nullable String notifierType;
     /**
-     * @return Recipient (string)
+     * @return Recipient
      * 
      */
     private @Nullable String recipient;
@@ -43,21 +43,21 @@ public final class ProjectAlertGroupRecipient {
         return Optional.ofNullable(this.defaultRecipient);
     }
     /**
-     * @return Recipient notifier ID (string)
+     * @return Recipient notifier ID
      * 
      */
     public String notifierId() {
         return this.notifierId;
     }
     /**
-     * @return Recipient notifier ID. Supported values : `&#34;pagerduty&#34; | &#34;slack&#34; | &#34;email&#34; | &#34;webhook&#34; | &#34;wechat&#34;` (string)
+     * @return Recipient notifier type
      * 
      */
     public Optional<String> notifierType() {
         return Optional.ofNullable(this.notifierType);
     }
     /**
-     * @return Recipient (string)
+     * @return Recipient
      * 
      */
     public Optional<String> recipient() {

@@ -13,13 +13,13 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class CloudCredentialHarvesterCredentialConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Imported Harvester Cluster ID (string)
+        /// The cluster id of imported Harvester cluster
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// Harvester Cluster Type. Supported values : `"imported" | "external"` (string)
+        /// Harvester cluster type. must be imported or external
         /// </summary>
         [Input("clusterType", required: true)]
         public Input<string> ClusterType { get; set; } = null!;
@@ -28,7 +28,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _kubeconfigContent;
 
         /// <summary>
-        /// Harvester Cluster KubeConfig Content (string)
+        /// Harvester cluster kubeconfig content
         /// </summary>
         public Input<string>? KubeconfigContent
         {

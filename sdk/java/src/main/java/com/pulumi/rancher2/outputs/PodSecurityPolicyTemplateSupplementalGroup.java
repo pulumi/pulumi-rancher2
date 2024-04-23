@@ -14,26 +14,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PodSecurityPolicyTemplateSupplementalGroup {
     /**
-     * @return (list)
+     * @return ranges are the allowed ranges of supplemental groups.  If you would like to force a single supplemental group then supply a single range with the same start and end. Required for MustRunAs.
      * 
      */
     private @Nullable List<PodSecurityPolicyTemplateSupplementalGroupRange> ranges;
     /**
-     * @return (string)
+     * @return rule is the strategy that will dictate what supplemental groups is used in the SecurityContext.
      * 
      */
     private @Nullable String rule;
 
     private PodSecurityPolicyTemplateSupplementalGroup() {}
     /**
-     * @return (list)
+     * @return ranges are the allowed ranges of supplemental groups.  If you would like to force a single supplemental group then supply a single range with the same start and end. Required for MustRunAs.
      * 
      */
     public List<PodSecurityPolicyTemplateSupplementalGroupRange> ranges() {
         return this.ranges == null ? List.of() : this.ranges;
     }
     /**
-     * @return (string)
+     * @return rule is the strategy that will dictate what supplemental groups is used in the SecurityContext.
      * 
      */
     public Optional<String> rule() {

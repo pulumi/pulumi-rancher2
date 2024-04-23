@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate {
     /**
-     * @return The AKS node pool max surge (string), example value: `25%`
+     * @return Rolling update max surge
      * 
      */
     private @Nullable Integer maxSurge;
     /**
-     * @return Monitoring deployment rolling update max unavailable. Default: `1` (int)
+     * @return Rolling update max unavailable
      * 
      */
     private @Nullable Integer maxUnavailable;
 
     private ClusterRkeConfigMonitoringUpdateStrategyRollingUpdate() {}
     /**
-     * @return The AKS node pool max surge (string), example value: `25%`
+     * @return Rolling update max surge
      * 
      */
     public Optional<Integer> maxSurge() {
         return Optional.ofNullable(this.maxSurge);
     }
     /**
-     * @return Monitoring deployment rolling update max unavailable. Default: `1` (int)
+     * @return Rolling update max unavailable
      * 
      */
     public Optional<Integer> maxUnavailable() {

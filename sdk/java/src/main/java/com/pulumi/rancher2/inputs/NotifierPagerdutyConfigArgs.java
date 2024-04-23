@@ -17,14 +17,14 @@ public final class NotifierPagerdutyConfigArgs extends com.pulumi.resources.Reso
     public static final NotifierPagerdutyConfigArgs Empty = new NotifierPagerdutyConfigArgs();
 
     /**
-     * Wechat proxy url (string)
+     * Pagerduty proxy URL
      * 
      */
     @Import(name="proxyUrl")
     private @Nullable Output<String> proxyUrl;
 
     /**
-     * @return Wechat proxy url (string)
+     * @return Pagerduty proxy URL
      * 
      */
     public Optional<Output<String>> proxyUrl() {
@@ -32,14 +32,14 @@ public final class NotifierPagerdutyConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Pagerduty service key (string)
+     * Pagerduty service key
      * 
      */
     @Import(name="serviceKey", required=true)
     private Output<String> serviceKey;
 
     /**
-     * @return Pagerduty service key (string)
+     * @return Pagerduty service key
      * 
      */
     public Output<String> serviceKey() {
@@ -72,7 +72,7 @@ public final class NotifierPagerdutyConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param proxyUrl Wechat proxy url (string)
+         * @param proxyUrl Pagerduty proxy URL
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class NotifierPagerdutyConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param proxyUrl Wechat proxy url (string)
+         * @param proxyUrl Pagerduty proxy URL
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class NotifierPagerdutyConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param serviceKey Pagerduty service key (string)
+         * @param serviceKey Pagerduty service key
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class NotifierPagerdutyConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param serviceKey Pagerduty service key (string)
+         * @param serviceKey Pagerduty service key
          * 
          * @return builder
          * 

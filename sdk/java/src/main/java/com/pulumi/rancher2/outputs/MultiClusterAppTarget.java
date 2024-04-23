@@ -13,50 +13,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class MultiClusterAppTarget {
     /**
-     * @return App ID for target (string)
+     * @return App ID for target
      * 
      */
     private @Nullable String appId;
     /**
-     * @return App health state for target (string)
+     * @return App health state for target
      * 
      */
     private @Nullable String healthState;
     /**
-     * @return Project ID for target (string)
+     * @return Project ID for target
      * 
      */
     private String projectId;
     /**
-     * @return App state for target (string)
+     * @return App state for target
      * 
      */
     private @Nullable String state;
 
     private MultiClusterAppTarget() {}
     /**
-     * @return App ID for target (string)
+     * @return App ID for target
      * 
      */
     public Optional<String> appId() {
         return Optional.ofNullable(this.appId);
     }
     /**
-     * @return App health state for target (string)
+     * @return App health state for target
      * 
      */
     public Optional<String> healthState() {
         return Optional.ofNullable(this.healthState);
     }
     /**
-     * @return Project ID for target (string)
+     * @return Project ID for target
      * 
      */
     public String projectId() {
         return this.projectId;
     }
     /**
-     * @return App state for target (string)
+     * @return App state for target
      * 
      */
     public Optional<String> state() {

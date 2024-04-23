@@ -12,62 +12,62 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RoleTemplateRule {
     /**
-     * @return Policy rule api groups (list)
+     * @return Policy rule api groups
      * 
      */
     private @Nullable List<String> apiGroups;
     /**
-     * @return Policy rule non resource urls (list)
+     * @return Policy rule non resource urls
      * 
      */
     private @Nullable List<String> nonResourceUrls;
     /**
-     * @return Policy rule resource names (list)
+     * @return Policy rule resource names
      * 
      */
     private @Nullable List<String> resourceNames;
     /**
-     * @return Policy rule resources (list)
+     * @return Policy rule resources
      * 
      */
     private @Nullable List<String> resources;
     /**
-     * @return Policy rule verbs. `bind`, `create`, `delete`, `deletecollection`, `escalate`, `get`, `impersonate`, `list`, `patch`, `update`, `use`, `view`, `watch`, `own` and `*` values are supported (list)
+     * @return Policy rule verbs
      * 
      */
     private @Nullable List<String> verbs;
 
     private RoleTemplateRule() {}
     /**
-     * @return Policy rule api groups (list)
+     * @return Policy rule api groups
      * 
      */
     public List<String> apiGroups() {
         return this.apiGroups == null ? List.of() : this.apiGroups;
     }
     /**
-     * @return Policy rule non resource urls (list)
+     * @return Policy rule non resource urls
      * 
      */
     public List<String> nonResourceUrls() {
         return this.nonResourceUrls == null ? List.of() : this.nonResourceUrls;
     }
     /**
-     * @return Policy rule resource names (list)
+     * @return Policy rule resource names
      * 
      */
     public List<String> resourceNames() {
         return this.resourceNames == null ? List.of() : this.resourceNames;
     }
     /**
-     * @return Policy rule resources (list)
+     * @return Policy rule resources
      * 
      */
     public List<String> resources() {
         return this.resources == null ? List.of() : this.resources;
     }
     /**
-     * @return Policy rule verbs. `bind`, `create`, `delete`, `deletecollection`, `escalate`, `get`, `impersonate`, `list`, `patch`, `update`, `use`, `view`, `watch`, `own` and `*` values are supported (list)
+     * @return Policy rule verbs
      * 
      */
     public List<String> verbs() {

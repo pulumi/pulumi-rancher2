@@ -18,14 +18,14 @@ public final class ClusterRkeConfigServicesKubeApiAdmissionConfigurationArgs ext
     public static final ClusterRkeConfigServicesKubeApiAdmissionConfigurationArgs Empty = new ClusterRkeConfigServicesKubeApiAdmissionConfigurationArgs();
 
     /**
-     * Admission configuration ApiVersion. Default: `apiserver.config.k8s.io/v1` (string)
+     * Admission configuration ApiVersion
      * 
      */
     @Import(name="apiVersion")
     private @Nullable Output<String> apiVersion;
 
     /**
-     * @return Admission configuration ApiVersion. Default: `apiserver.config.k8s.io/v1` (string)
+     * @return Admission configuration ApiVersion
      * 
      */
     public Optional<Output<String>> apiVersion() {
@@ -33,14 +33,14 @@ public final class ClusterRkeConfigServicesKubeApiAdmissionConfigurationArgs ext
     }
 
     /**
-     * Admission configuration Kind. Default: `AdmissionConfiguration` (string)
+     * Admission configuration Kind
      * 
      */
     @Import(name="kind")
     private @Nullable Output<String> kind;
 
     /**
-     * @return Admission configuration Kind. Default: `AdmissionConfiguration` (string)
+     * @return Admission configuration Kind
      * 
      */
     public Optional<Output<String>> kind() {
@@ -48,14 +48,14 @@ public final class ClusterRkeConfigServicesKubeApiAdmissionConfigurationArgs ext
     }
 
     /**
-     * Admission configuration plugins. (list `plugin`)
+     * Admission configuration plugins
      * 
      */
     @Import(name="plugins")
     private @Nullable Output<List<ClusterRkeConfigServicesKubeApiAdmissionConfigurationPluginArgs>> plugins;
 
     /**
-     * @return Admission configuration plugins. (list `plugin`)
+     * @return Admission configuration plugins
      * 
      */
     public Optional<Output<List<ClusterRkeConfigServicesKubeApiAdmissionConfigurationPluginArgs>>> plugins() {
@@ -89,7 +89,7 @@ public final class ClusterRkeConfigServicesKubeApiAdmissionConfigurationArgs ext
         }
 
         /**
-         * @param apiVersion Admission configuration ApiVersion. Default: `apiserver.config.k8s.io/v1` (string)
+         * @param apiVersion Admission configuration ApiVersion
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class ClusterRkeConfigServicesKubeApiAdmissionConfigurationArgs ext
         }
 
         /**
-         * @param apiVersion Admission configuration ApiVersion. Default: `apiserver.config.k8s.io/v1` (string)
+         * @param apiVersion Admission configuration ApiVersion
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class ClusterRkeConfigServicesKubeApiAdmissionConfigurationArgs ext
         }
 
         /**
-         * @param kind Admission configuration Kind. Default: `AdmissionConfiguration` (string)
+         * @param kind Admission configuration Kind
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class ClusterRkeConfigServicesKubeApiAdmissionConfigurationArgs ext
         }
 
         /**
-         * @param kind Admission configuration Kind. Default: `AdmissionConfiguration` (string)
+         * @param kind Admission configuration Kind
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class ClusterRkeConfigServicesKubeApiAdmissionConfigurationArgs ext
         }
 
         /**
-         * @param plugins Admission configuration plugins. (list `plugin`)
+         * @param plugins Admission configuration plugins
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class ClusterRkeConfigServicesKubeApiAdmissionConfigurationArgs ext
         }
 
         /**
-         * @param plugins Admission configuration plugins. (list `plugin`)
+         * @param plugins Admission configuration plugins
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class ClusterRkeConfigServicesKubeApiAdmissionConfigurationArgs ext
         }
 
         /**
-         * @param plugins Admission configuration plugins. (list `plugin`)
+         * @param plugins Admission configuration plugins
          * 
          * @return builder
          * 

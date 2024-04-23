@@ -14,95 +14,89 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterRkeConfig
     {
         /// <summary>
-        /// Duration in seconds of addon job (int)
+        /// Optional duration in seconds of addon job.
         /// </summary>
         public readonly int? AddonJobTimeout;
         /// <summary>
-        /// Addons descripton to deploy on RKE cluster.
+        /// Optional addons descripton to deploy on rke cluster.
         /// </summary>
         public readonly string? Addons;
         /// <summary>
-        /// Addons yaml manifests to deploy on RKE cluster (list)
+        /// Optional addons yaml manisfest to deploy on rke cluster.
         /// </summary>
         public readonly ImmutableArray<string> AddonsIncludes;
         /// <summary>
-        /// Kubernetes cluster authentication (list maxitems:1)
+        /// Kubernetes cluster authentication
         /// </summary>
         public readonly Outputs.ClusterRkeConfigAuthentication? Authentication;
         /// <summary>
-        /// Kubernetes cluster authorization (list maxitems:1)
+        /// Kubernetes cluster authorization
         /// </summary>
         public readonly Outputs.ClusterRkeConfigAuthorization? Authorization;
         /// <summary>
-        /// RKE bastion host (list maxitems:1)
+        /// RKE bastion host
         /// </summary>
         public readonly Outputs.ClusterRkeConfigBastionHost? BastionHost;
-        /// <summary>
-        /// RKE options for Calico network provider (string)
-        /// </summary>
         public readonly Outputs.ClusterRkeConfigCloudProvider? CloudProvider;
-        /// <summary>
-        /// RKE dns add-on. For Rancher v2.2.x (list maxitems:1)
-        /// </summary>
         public readonly Outputs.ClusterRkeConfigDns? Dns;
         /// <summary>
-        /// Enable/disable using cri-dockerd. Deafult: `false` [enable_cri_dockerd](https://rancher.com/docs/rke/latest/en/config-options/#cri-dockerd) (bool)
+        /// Enable/disable using cri-dockerd
         /// </summary>
         public readonly bool? EnableCriDockerd;
         /// <summary>
-        /// Ignore docker version. Default `true` (bool)
+        /// Optional ignore docker version on nodes
         /// </summary>
         public readonly bool? IgnoreDockerVersion;
         /// <summary>
-        /// Kubernetes ingress configuration (list maxitems:1)
+        /// Kubernetes ingress configuration
         /// </summary>
         public readonly Outputs.ClusterRkeConfigIngress? Ingress;
         /// <summary>
-        /// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        /// Optional kubernetes version to deploy
         /// </summary>
         public readonly string? KubernetesVersion;
         /// <summary>
-        /// Is AKS cluster monitoring enabled? (bool)
+        /// Kubernetes cluster monitoring
         /// </summary>
         public readonly Outputs.ClusterRkeConfigMonitoring? Monitoring;
         /// <summary>
-        /// The GKE cluster network. Required for create new cluster (string)
+        /// Kubernetes cluster networking
         /// </summary>
         public readonly Outputs.ClusterRkeConfigNetwork? Network;
         /// <summary>
-        /// RKE cluster nodes (list)
+        /// Optional RKE cluster nodes
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterRkeConfigNode> Nodes;
         /// <summary>
-        /// Prefix to customize Kubernetes path (string)
+        /// Optional prefix to customize kubernetes path
         /// </summary>
         public readonly string? PrefixPath;
         /// <summary>
-        /// private registries for docker images (list)
+        /// Optional private registries for docker images
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterRkeConfigPrivateRegistry> PrivateRegistries;
         /// <summary>
-        /// Kubernetes cluster services (list maxitems:1)
+        /// Kubernetes cluster services
         /// </summary>
         public readonly Outputs.ClusterRkeConfigServices? Services;
         /// <summary>
-        /// Use ssh agent auth. Default `false` (bool)
+        /// Optional use ssh agent auth
         /// </summary>
         public readonly bool? SshAgentAuth;
         /// <summary>
-        /// Cluster level SSH certificate path (string)
+        /// Optional cluster level SSH certificate path
         /// </summary>
         public readonly string? SshCertPath;
         /// <summary>
-        /// Node SSH private key path (string)
+        /// Optional cluster level SSH private key path
         /// </summary>
         public readonly string? SshKeyPath;
         /// <summary>
-        /// K3S upgrade strategy (List maxitems: 1)
+        /// RKE upgrade strategy
         /// </summary>
         public readonly Outputs.ClusterRkeConfigUpgradeStrategy? UpgradeStrategy;
         /// <summary>
-        /// Prefix to customize Kubernetes path for windows (string)
+        /// Optional prefix to customize kubernetes path for windows
         /// </summary>
         public readonly string? WinPrefixPath;
 

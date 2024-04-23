@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock {
     /**
-     * @return The GKE master authorized network config cidr block (string)
+     * @return The GKE master authorized network config cidr block
      * 
      */
     private String cidrBlock;
     /**
-     * @return The GKE master authorized network config cidr block dispaly name (string)
+     * @return The GKE master authorized network config cidr block dispaly name
      * 
      */
     private @Nullable String displayName;
 
     private ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock() {}
     /**
-     * @return The GKE master authorized network config cidr block (string)
+     * @return The GKE master authorized network config cidr block
      * 
      */
     public String cidrBlock() {
         return this.cidrBlock;
     }
     /**
-     * @return The GKE master authorized network config cidr block dispaly name (string)
+     * @return The GKE master authorized network config cidr block dispaly name
      * 
      */
     public Optional<String> displayName() {

@@ -15,14 +15,14 @@ public final class PodSecurityPolicyTemplateHostPortArgs extends com.pulumi.reso
     public static final PodSecurityPolicyTemplateHostPortArgs Empty = new PodSecurityPolicyTemplateHostPortArgs();
 
     /**
-     * (int)
+     * max is the end of the range, inclusive.
      * 
      */
     @Import(name="max", required=true)
     private Output<Integer> max;
 
     /**
-     * @return (int)
+     * @return max is the end of the range, inclusive.
      * 
      */
     public Output<Integer> max() {
@@ -30,14 +30,14 @@ public final class PodSecurityPolicyTemplateHostPortArgs extends com.pulumi.reso
     }
 
     /**
-     * (int)
+     * min is the start of the range, inclusive.
      * 
      */
     @Import(name="min", required=true)
     private Output<Integer> min;
 
     /**
-     * @return (int)
+     * @return min is the start of the range, inclusive.
      * 
      */
     public Output<Integer> min() {
@@ -70,7 +70,7 @@ public final class PodSecurityPolicyTemplateHostPortArgs extends com.pulumi.reso
         }
 
         /**
-         * @param max (int)
+         * @param max max is the end of the range, inclusive.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class PodSecurityPolicyTemplateHostPortArgs extends com.pulumi.reso
         }
 
         /**
-         * @param max (int)
+         * @param max max is the end of the range, inclusive.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class PodSecurityPolicyTemplateHostPortArgs extends com.pulumi.reso
         }
 
         /**
-         * @param min (int)
+         * @param min min is the start of the range, inclusive.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class PodSecurityPolicyTemplateHostPortArgs extends com.pulumi.reso
         }
 
         /**
-         * @param min (int)
+         * @param min min is the start of the range, inclusive.
          * 
          * @return builder
          * 

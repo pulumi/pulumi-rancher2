@@ -17,14 +17,14 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
     public static final MachineConfigV2HarvesterConfigArgs Empty = new MachineConfigV2HarvesterConfigArgs();
 
     /**
-     * vSphere CPU number for docker VM. Default `2` (string)
+     * CPU count
      * 
      */
     @Import(name="cpuCount")
     private @Nullable Output<String> cpuCount;
 
     /**
-     * @return vSphere CPU number for docker VM. Default `2` (string)
+     * @return CPU count
      * 
      */
     public Optional<Output<String>> cpuCount() {
@@ -32,7 +32,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Use `disk_info` instead
+     * Disk bus
      * 
      * @deprecated
      * Use disk_info instead
@@ -43,7 +43,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
     private @Nullable Output<String> diskBus;
 
     /**
-     * @return Use `disk_info` instead
+     * @return Disk bus
      * 
      * @deprecated
      * Use disk_info instead
@@ -55,14 +55,14 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * A JSON string specifying info for the disks e.g. `{\&#34;disks\&#34;:[{\&#34;imageName\&#34;:\&#34;harvester-public/image-57hzg\&#34;,\&#34;bootOrder\&#34;:1,\&#34;size\&#34;:40},{\&#34;storageClassName\&#34;:\&#34;node-driver-test\&#34;,\&#34;bootOrder\&#34;:2,\&#34;size\&#34;:1}]}` (string)
+     * A JSON string specifying info for the disks e.g. `{&#34;disks&#34;:[{&#34;imageName&#34;:&#34;harvester-public/image-57hzg&#34;,&#34;bootOrder&#34;:1,&#34;size&#34;:40},{&#34;storageClassName&#34;:&#34;node-driver-test&#34;,&#34;bootOrder&#34;:2,&#34;size&#34;:1}]}`
      * 
      */
     @Import(name="diskInfo")
     private @Nullable Output<String> diskInfo;
 
     /**
-     * @return A JSON string specifying info for the disks e.g. `{\&#34;disks\&#34;:[{\&#34;imageName\&#34;:\&#34;harvester-public/image-57hzg\&#34;,\&#34;bootOrder\&#34;:1,\&#34;size\&#34;:40},{\&#34;storageClassName\&#34;:\&#34;node-driver-test\&#34;,\&#34;bootOrder\&#34;:2,\&#34;size\&#34;:1}]}` (string)
+     * @return A JSON string specifying info for the disks e.g. `{&#34;disks&#34;:[{&#34;imageName&#34;:&#34;harvester-public/image-57hzg&#34;,&#34;bootOrder&#34;:1,&#34;size&#34;:40},{&#34;storageClassName&#34;:&#34;node-driver-test&#34;,&#34;bootOrder&#34;:2,&#34;size&#34;:1}]}`
      * 
      */
     public Optional<Output<String>> diskInfo() {
@@ -70,7 +70,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * vSphere size of disk for docker VM (in MB). Default `20480` (string)
+     * Disk size (in GiB)
      * 
      * @deprecated
      * Use disk_info instead
@@ -81,7 +81,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
     private @Nullable Output<String> diskSize;
 
     /**
-     * @return vSphere size of disk for docker VM (in MB). Default `20480` (string)
+     * @return Disk size (in GiB)
      * 
      * @deprecated
      * Use disk_info instead
@@ -93,7 +93,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+     * Image name
      * 
      * @deprecated
      * Use disk_info instead
@@ -104,7 +104,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
     private @Nullable Output<String> imageName;
 
     /**
-     * @return OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+     * @return Image name
      * 
      * @deprecated
      * Use disk_info instead
@@ -116,14 +116,14 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * vSphere size of memory for docker VM (in MB). Default `2048` (string)
+     * Memory size (in GiB)
      * 
      */
     @Import(name="memorySize")
     private @Nullable Output<String> memorySize;
 
     /**
-     * @return vSphere size of memory for docker VM (in MB). Default `2048` (string)
+     * @return Memory size (in GiB)
      * 
      */
     public Optional<Output<String>> memorySize() {
@@ -131,14 +131,14 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * NetworkData content of cloud-init, base64 is supported (string)
+     * NetworkData content of cloud-init, base64 is supported
      * 
      */
     @Import(name="networkData")
     private @Nullable Output<String> networkData;
 
     /**
-     * @return NetworkData content of cloud-init, base64 is supported (string)
+     * @return NetworkData content of cloud-init, base64 is supported
      * 
      */
     public Optional<Output<String>> networkData() {
@@ -146,14 +146,14 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * A JSON string specifying info for the networks e.g. `{\&#34;interfaces\&#34;:[{\&#34;networkName\&#34;:\&#34;harvester-public/vlan1\&#34;},{\&#34;networkName\&#34;:\&#34;harvester-public/vlan2\&#34;}]}` (string)
+     * A JSON string specifying info for the networks e.g. `{&#34;interfaces&#34;:[{&#34;networkName&#34;:&#34;harvester-public/vlan1&#34;},{&#34;networkName&#34;:&#34;harvester-public/vlan2&#34;}]}`
      * 
      */
     @Import(name="networkInfo")
     private @Nullable Output<String> networkInfo;
 
     /**
-     * @return A JSON string specifying info for the networks e.g. `{\&#34;interfaces\&#34;:[{\&#34;networkName\&#34;:\&#34;harvester-public/vlan1\&#34;},{\&#34;networkName\&#34;:\&#34;harvester-public/vlan2\&#34;}]}` (string)
+     * @return A JSON string specifying info for the networks e.g. `{&#34;interfaces&#34;:[{&#34;networkName&#34;:&#34;harvester-public/vlan1&#34;},{&#34;networkName&#34;:&#34;harvester-public/vlan2&#34;}]}`
      * 
      */
     public Optional<Output<String>> networkInfo() {
@@ -161,7 +161,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Use `network_info` instead
+     * Network model
      * 
      * @deprecated
      * Use network_info instead
@@ -172,7 +172,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
     private @Nullable Output<String> networkModel;
 
     /**
-     * @return Use `network_info` instead
+     * @return Network model
      * 
      * @deprecated
      * Use network_info instead
@@ -184,7 +184,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Use `network_info` instead
+     * Network name
      * 
      * @deprecated
      * Use network_info instead
@@ -195,7 +195,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
     private @Nullable Output<String> networkName;
 
     /**
-     * @return Use `network_info` instead
+     * @return Network name
      * 
      * @deprecated
      * Use network_info instead
@@ -207,14 +207,14 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * If using a non-B2D image you can specify the ssh password. Default `tcuser` (string)
+     * SSH password
      * 
      */
     @Import(name="sshPassword")
     private @Nullable Output<String> sshPassword;
 
     /**
-     * @return If using a non-B2D image you can specify the ssh password. Default `tcuser` (string)
+     * @return SSH password
      * 
      */
     public Optional<Output<String>> sshPassword() {
@@ -222,14 +222,14 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+     * SSH username
      * 
      */
     @Import(name="sshUser", required=true)
     private Output<String> sshUser;
 
     /**
-     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+     * @return SSH username
      * 
      */
     public Output<String> sshUser() {
@@ -237,14 +237,14 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata (string)
+     * UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata
      * 
      */
     @Import(name="userData")
     private @Nullable Output<String> userData;
 
     /**
-     * @return UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata (string)
+     * @return UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata
      * 
      */
     public Optional<Output<String>> userData() {
@@ -252,14 +252,14 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 and above (string)
+     * VM affinity, base64 is supported
      * 
      */
     @Import(name="vmAffinity")
     private @Nullable Output<String> vmAffinity;
 
     /**
-     * @return Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 and above (string)
+     * @return VM affinity, base64 is supported
      * 
      */
     public Optional<Output<String>> vmAffinity() {
@@ -267,14 +267,14 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Virtual machine namespace e.g. `default` (string)
+     * Virtual machine namespace
      * 
      */
     @Import(name="vmNamespace", required=true)
     private Output<String> vmNamespace;
 
     /**
-     * @return Virtual machine namespace e.g. `default` (string)
+     * @return Virtual machine namespace
      * 
      */
     public Output<String> vmNamespace() {
@@ -320,7 +320,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param cpuCount vSphere CPU number for docker VM. Default `2` (string)
+         * @param cpuCount CPU count
          * 
          * @return builder
          * 
@@ -331,7 +331,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param cpuCount vSphere CPU number for docker VM. Default `2` (string)
+         * @param cpuCount CPU count
          * 
          * @return builder
          * 
@@ -341,7 +341,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param diskBus Use `disk_info` instead
+         * @param diskBus Disk bus
          * 
          * @return builder
          * 
@@ -356,7 +356,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param diskBus Use `disk_info` instead
+         * @param diskBus Disk bus
          * 
          * @return builder
          * 
@@ -370,7 +370,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param diskInfo A JSON string specifying info for the disks e.g. `{\&#34;disks\&#34;:[{\&#34;imageName\&#34;:\&#34;harvester-public/image-57hzg\&#34;,\&#34;bootOrder\&#34;:1,\&#34;size\&#34;:40},{\&#34;storageClassName\&#34;:\&#34;node-driver-test\&#34;,\&#34;bootOrder\&#34;:2,\&#34;size\&#34;:1}]}` (string)
+         * @param diskInfo A JSON string specifying info for the disks e.g. `{&#34;disks&#34;:[{&#34;imageName&#34;:&#34;harvester-public/image-57hzg&#34;,&#34;bootOrder&#34;:1,&#34;size&#34;:40},{&#34;storageClassName&#34;:&#34;node-driver-test&#34;,&#34;bootOrder&#34;:2,&#34;size&#34;:1}]}`
          * 
          * @return builder
          * 
@@ -381,7 +381,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param diskInfo A JSON string specifying info for the disks e.g. `{\&#34;disks\&#34;:[{\&#34;imageName\&#34;:\&#34;harvester-public/image-57hzg\&#34;,\&#34;bootOrder\&#34;:1,\&#34;size\&#34;:40},{\&#34;storageClassName\&#34;:\&#34;node-driver-test\&#34;,\&#34;bootOrder\&#34;:2,\&#34;size\&#34;:1}]}` (string)
+         * @param diskInfo A JSON string specifying info for the disks e.g. `{&#34;disks&#34;:[{&#34;imageName&#34;:&#34;harvester-public/image-57hzg&#34;,&#34;bootOrder&#34;:1,&#34;size&#34;:40},{&#34;storageClassName&#34;:&#34;node-driver-test&#34;,&#34;bootOrder&#34;:2,&#34;size&#34;:1}]}`
          * 
          * @return builder
          * 
@@ -391,7 +391,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param diskSize vSphere size of disk for docker VM (in MB). Default `20480` (string)
+         * @param diskSize Disk size (in GiB)
          * 
          * @return builder
          * 
@@ -406,7 +406,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param diskSize vSphere size of disk for docker VM (in MB). Default `20480` (string)
+         * @param diskSize Disk size (in GiB)
          * 
          * @return builder
          * 
@@ -420,7 +420,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param imageName OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+         * @param imageName Image name
          * 
          * @return builder
          * 
@@ -435,7 +435,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param imageName OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+         * @param imageName Image name
          * 
          * @return builder
          * 
@@ -449,7 +449,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param memorySize vSphere size of memory for docker VM (in MB). Default `2048` (string)
+         * @param memorySize Memory size (in GiB)
          * 
          * @return builder
          * 
@@ -460,7 +460,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param memorySize vSphere size of memory for docker VM (in MB). Default `2048` (string)
+         * @param memorySize Memory size (in GiB)
          * 
          * @return builder
          * 
@@ -470,7 +470,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param networkData NetworkData content of cloud-init, base64 is supported (string)
+         * @param networkData NetworkData content of cloud-init, base64 is supported
          * 
          * @return builder
          * 
@@ -481,7 +481,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param networkData NetworkData content of cloud-init, base64 is supported (string)
+         * @param networkData NetworkData content of cloud-init, base64 is supported
          * 
          * @return builder
          * 
@@ -491,7 +491,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param networkInfo A JSON string specifying info for the networks e.g. `{\&#34;interfaces\&#34;:[{\&#34;networkName\&#34;:\&#34;harvester-public/vlan1\&#34;},{\&#34;networkName\&#34;:\&#34;harvester-public/vlan2\&#34;}]}` (string)
+         * @param networkInfo A JSON string specifying info for the networks e.g. `{&#34;interfaces&#34;:[{&#34;networkName&#34;:&#34;harvester-public/vlan1&#34;},{&#34;networkName&#34;:&#34;harvester-public/vlan2&#34;}]}`
          * 
          * @return builder
          * 
@@ -502,7 +502,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param networkInfo A JSON string specifying info for the networks e.g. `{\&#34;interfaces\&#34;:[{\&#34;networkName\&#34;:\&#34;harvester-public/vlan1\&#34;},{\&#34;networkName\&#34;:\&#34;harvester-public/vlan2\&#34;}]}` (string)
+         * @param networkInfo A JSON string specifying info for the networks e.g. `{&#34;interfaces&#34;:[{&#34;networkName&#34;:&#34;harvester-public/vlan1&#34;},{&#34;networkName&#34;:&#34;harvester-public/vlan2&#34;}]}`
          * 
          * @return builder
          * 
@@ -512,7 +512,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param networkModel Use `network_info` instead
+         * @param networkModel Network model
          * 
          * @return builder
          * 
@@ -527,7 +527,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param networkModel Use `network_info` instead
+         * @param networkModel Network model
          * 
          * @return builder
          * 
@@ -541,7 +541,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param networkName Use `network_info` instead
+         * @param networkName Network name
          * 
          * @return builder
          * 
@@ -556,7 +556,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param networkName Use `network_info` instead
+         * @param networkName Network name
          * 
          * @return builder
          * 
@@ -570,7 +570,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param sshPassword If using a non-B2D image you can specify the ssh password. Default `tcuser` (string)
+         * @param sshPassword SSH password
          * 
          * @return builder
          * 
@@ -581,7 +581,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param sshPassword If using a non-B2D image you can specify the ssh password. Default `tcuser` (string)
+         * @param sshPassword SSH password
          * 
          * @return builder
          * 
@@ -591,7 +591,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+         * @param sshUser SSH username
          * 
          * @return builder
          * 
@@ -602,7 +602,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+         * @param sshUser SSH username
          * 
          * @return builder
          * 
@@ -612,7 +612,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param userData UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata (string)
+         * @param userData UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata
          * 
          * @return builder
          * 
@@ -623,7 +623,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param userData UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata (string)
+         * @param userData UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata
          * 
          * @return builder
          * 
@@ -633,7 +633,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param vmAffinity Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 and above (string)
+         * @param vmAffinity VM affinity, base64 is supported
          * 
          * @return builder
          * 
@@ -644,7 +644,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param vmAffinity Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 and above (string)
+         * @param vmAffinity VM affinity, base64 is supported
          * 
          * @return builder
          * 
@@ -654,7 +654,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param vmNamespace Virtual machine namespace e.g. `default` (string)
+         * @param vmNamespace Virtual machine namespace
          * 
          * @return builder
          * 
@@ -665,7 +665,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param vmNamespace Virtual machine namespace e.g. `default` (string)
+         * @param vmNamespace Virtual machine namespace
          * 
          * @return builder
          * 

@@ -14,23 +14,23 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterGkeConfigV2NodePool
     {
         /// <summary>
-        /// The GKE node pool config autoscaling (List maxitems:1)
+        /// The GKE node pool config autoscaling
         /// </summary>
         public readonly Outputs.ClusterGkeConfigV2NodePoolAutoscaling? Autoscaling;
         /// <summary>
-        /// The GKE node pool node config (List maxitems:1)
+        /// The GKE node pool node config
         /// </summary>
         public readonly Outputs.ClusterGkeConfigV2NodePoolConfig? Config;
         /// <summary>
-        /// The GKE node pool config initial node count (int)
+        /// The GKE node pool config initial node count
         /// </summary>
         public readonly int InitialNodeCount;
         /// <summary>
-        /// The GKE node pool config management (List maxitems:1)
+        /// The GKE node pool config management
         /// </summary>
         public readonly Outputs.ClusterGkeConfigV2NodePoolManagement? Management;
         /// <summary>
-        /// The GKE node pool config max pods constraint. Required for create new cluster if `ip_allocation_policy.use_ip_aliases = true` (int)
+        /// The GKE node pool config max pods constraint
         /// </summary>
         public readonly int? MaxPodsConstraint;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// rancher-monitoring chart version (string)
+        /// The GKE node pool config version
         /// </summary>
         public readonly string Version;
 

@@ -12,21 +12,12 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// (string)
-        /// </summary>
         [Input("bsVersion")]
         public Input<string>? BsVersion { get; set; }
 
-        /// <summary>
-        /// (string)
-        /// </summary>
         [Input("ignoreVolumeAz")]
         public Input<bool>? IgnoreVolumeAz { get; set; }
 
-        /// <summary>
-        /// (string)
-        /// </summary>
         [Input("trustDevicePath")]
         public Input<bool>? TrustDevicePath { get; set; }
 

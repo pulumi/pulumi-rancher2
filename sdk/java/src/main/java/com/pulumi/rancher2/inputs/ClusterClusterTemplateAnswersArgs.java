@@ -18,14 +18,14 @@ public final class ClusterClusterTemplateAnswersArgs extends com.pulumi.resource
     public static final ClusterClusterTemplateAnswersArgs Empty = new ClusterClusterTemplateAnswersArgs();
 
     /**
-     * Cluster ID to apply answer (string)
+     * Cluster ID for answer
      * 
      */
     @Import(name="clusterId")
     private @Nullable Output<String> clusterId;
 
     /**
-     * @return Cluster ID to apply answer (string)
+     * @return Cluster ID for answer
      * 
      */
     public Optional<Output<String>> clusterId() {
@@ -33,14 +33,14 @@ public final class ClusterClusterTemplateAnswersArgs extends com.pulumi.resource
     }
 
     /**
-     * Project ID to apply answer (string)
+     * Project ID for answer
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return Project ID to apply answer (string)
+     * @return Project ID for answer
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -48,14 +48,14 @@ public final class ClusterClusterTemplateAnswersArgs extends com.pulumi.resource
     }
 
     /**
-     * Key/values for answer (map)
+     * Key/values for answer
      * 
      */
     @Import(name="values")
     private @Nullable Output<Map<String,Object>> values;
 
     /**
-     * @return Key/values for answer (map)
+     * @return Key/values for answer
      * 
      */
     public Optional<Output<Map<String,Object>>> values() {
@@ -89,7 +89,7 @@ public final class ClusterClusterTemplateAnswersArgs extends com.pulumi.resource
         }
 
         /**
-         * @param clusterId Cluster ID to apply answer (string)
+         * @param clusterId Cluster ID for answer
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class ClusterClusterTemplateAnswersArgs extends com.pulumi.resource
         }
 
         /**
-         * @param clusterId Cluster ID to apply answer (string)
+         * @param clusterId Cluster ID for answer
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class ClusterClusterTemplateAnswersArgs extends com.pulumi.resource
         }
 
         /**
-         * @param projectId Project ID to apply answer (string)
+         * @param projectId Project ID for answer
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class ClusterClusterTemplateAnswersArgs extends com.pulumi.resource
         }
 
         /**
-         * @param projectId Project ID to apply answer (string)
+         * @param projectId Project ID for answer
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class ClusterClusterTemplateAnswersArgs extends com.pulumi.resource
         }
 
         /**
-         * @param values Key/values for answer (map)
+         * @param values Key/values for answer
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class ClusterClusterTemplateAnswersArgs extends com.pulumi.resource
         }
 
         /**
-         * @param values Key/values for answer (map)
+         * @param values Key/values for answer
          * 
          * @return builder
          * 

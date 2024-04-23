@@ -12,54 +12,31 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterRkeConfigIngressGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Enable ingress default backend. Default: `true` (bool)
-        /// </summary>
         [Input("defaultBackend")]
         public Input<bool>? DefaultBackend { get; set; }
 
-        /// <summary>
-        /// Ingress controller DNS policy. `ClusterFirstWithHostNet`, `ClusterFirst`, `Default`, and `None` are supported. [K8S dns Policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) (string)
-        /// </summary>
         [Input("dnsPolicy")]
         public Input<string>? DnsPolicy { get; set; }
 
         [Input("extraArgs")]
         private InputMap<object>? _extraArgs;
-
-        /// <summary>
-        /// Extra arguments for scheduler service (map)
-        /// </summary>
         public InputMap<object> ExtraArgs
         {
             get => _extraArgs ?? (_extraArgs = new InputMap<object>());
             set => _extraArgs = value;
         }
 
-        /// <summary>
-        /// HTTP port for RKE Ingress (int)
-        /// </summary>
         [Input("httpPort")]
         public Input<int>? HttpPort { get; set; }
 
-        /// <summary>
-        /// HTTPS port for RKE Ingress (int)
-        /// </summary>
         [Input("httpsPort")]
         public Input<int>? HttpsPort { get; set; }
 
-        /// <summary>
-        /// Network mode for RKE Ingress (string)
-        /// </summary>
         [Input("networkMode")]
         public Input<string>? NetworkMode { get; set; }
 
         [Input("nodeSelector")]
         private InputMap<object>? _nodeSelector;
-
-        /// <summary>
-        /// RKE monitoring node selector (map)
-        /// </summary>
         public InputMap<object> NodeSelector
         {
             get => _nodeSelector ?? (_nodeSelector = new InputMap<object>());
@@ -68,19 +45,12 @@ namespace Pulumi.Rancher2.Inputs
 
         [Input("options")]
         private InputMap<object>? _options;
-
-        /// <summary>
-        /// RKE options for network (map)
-        /// </summary>
         public InputMap<object> Options
         {
             get => _options ?? (_options = new InputMap<object>());
             set => _options = value;
         }
 
-        /// <summary>
-        /// RKE monitoring provider (string)
-        /// </summary>
         [Input("provider")]
         public Input<string>? Provider { get; set; }
 
@@ -88,7 +58,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<Inputs.ClusterRkeConfigIngressTolerationGetArgs>? _tolerations;
 
         /// <summary>
-        /// Network add-on tolerations (list)
+        /// Ingress add-on tolerations
         /// </summary>
         public InputList<Inputs.ClusterRkeConfigIngressTolerationGetArgs> Tolerations
         {
@@ -97,7 +67,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// RKE monitoring update strategy (list Maxitems: 1)
+        /// Update daemon set strategy
         /// </summary>
         [Input("updateStrategy")]
         public Input<Inputs.ClusterRkeConfigIngressUpdateStrategyGetArgs>? UpdateStrategy { get; set; }

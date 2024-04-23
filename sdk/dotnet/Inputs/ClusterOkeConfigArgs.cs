@@ -13,13 +13,13 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterOkeConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The OCID of the compartment in which to create resources OKE cluster and related resources (string)
+        /// The OCID of the compartment in which to create resources (VCN, worker nodes, etc.)
         /// </summary>
         [Input("compartmentId", required: true)]
         public Input<string> CompartmentId { get; set; } = null!;
 
         /// <summary>
-        /// Optional custom boot volume size (GB) for all nodes. If you specify 0, it will apply the default according to the `node_image` specified. Default `0` (int)
+        /// An optional custom boot volume size (in GB) for the nodes
         /// </summary>
         [Input("customBootVolumeSize")]
         public Input<int>? CustomBootVolumeSize { get; set; }
@@ -31,31 +31,31 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
+        /// Enable the kubernetes dashboard
         /// </summary>
         [Input("enableKubernetesDashboard")]
         public Input<bool>? EnableKubernetesDashboard { get; set; }
 
         /// <summary>
-        /// Specifies whether Kubernetes API endpoint is a private IP only accessible from within the VCN. Default `false` for Rancher v2.5.10 and above (bool)
+        /// Whether Kubernetes API endpoint is a private IP only accessible from within the VCN
         /// </summary>
         [Input("enablePrivateControlPlane")]
         public Input<bool>? EnablePrivateControlPlane { get; set; }
 
         /// <summary>
-        /// Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+        /// Whether worker nodes are deployed into a new private subnet
         /// </summary>
         [Input("enablePrivateNodes")]
         public Input<bool>? EnablePrivateNodes { get; set; }
 
         /// <summary>
-        /// The fingerprint corresponding to the specified user's private API Key (string)
+        /// The fingerprint corresponding to the specified user's private API Key
         /// </summary>
         [Input("fingerprint", required: true)]
         public Input<string> Fingerprint { get; set; } = null!;
 
         /// <summary>
-        /// Specifies number of OCPUs for nodes (requires flexible shape specified with `node_shape`) (int)
+        /// Optional number of OCPUs for nodes (requires flexible node_shape)
         /// </summary>
         [Input("flexOcpus")]
         public Input<int>? FlexOcpus { get; set; }
@@ -64,7 +64,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _kmsKeyId;
 
         /// <summary>
-        /// The OCID of a KMS vault master key used to encrypt secrets at rest. See [here](https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengencryptingdata.htm) for help creating a vault and master encryption key. For Rancher v2.5.9 and above (string)
+        /// Optional specify the OCID of the KMS Vault master key
         /// </summary>
         public Input<string>? KmsKeyId
         {
@@ -77,61 +77,61 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        /// The Kubernetes version that will be used for your master *and* worker nodes e.g. v1.19.7
         /// </summary>
         [Input("kubernetesVersion", required: true)]
         public Input<string> KubernetesVersion { get; set; } = null!;
 
         /// <summary>
-        /// The maximum number of worker nodes. Can limit `quantity_per_subnet`. Default `0` (no limit) (int)
+        /// Optional limit on the total number of nodes in the pool
         /// </summary>
         [Input("limitNodeCount")]
         public Input<int>? LimitNodeCount { get; set; }
 
         /// <summary>
-        /// The name of the first existing subnet to use for Kubernetes services / LB. `vcn_name` is also required when specifying an existing subnet. (string)
+        /// The name of the first existing subnet to use for Kubernetes services / LB
         /// </summary>
         [Input("loadBalancerSubnetName1")]
         public Input<string>? LoadBalancerSubnetName1 { get; set; }
 
         /// <summary>
-        /// The name of a second existing subnet to use for Kubernetes services / LB. A second subnet is only required when it is AD-specific (non-regional) (string)
+        /// The (optional) name of a second existing subnet to use for Kubernetes services / LB
         /// </summary>
         [Input("loadBalancerSubnetName2")]
         public Input<string>? LoadBalancerSubnetName2 { get; set; }
 
         /// <summary>
-        /// The Oracle Linux OS image name to use for the OKE node(s). See [here](https://docs.cloud.oracle.com/en-us/iaas/images/) for a list of images. (string)
+        /// The OS for the node image
         /// </summary>
         [Input("nodeImage", required: true)]
         public Input<string> NodeImage { get; set; } = null!;
 
         /// <summary>
-        /// Name for DNS domain of node pool subnet. Default `nodedns` (string)
+        /// Optional name for DNS domain of node pool subnet
         /// </summary>
         [Input("nodePoolDnsDomainName")]
         public Input<string>? NodePoolDnsDomainName { get; set; }
 
         /// <summary>
-        /// Name for node pool subnet. Default `nodedns` (string)
+        /// Optional name for node pool subnet
         /// </summary>
         [Input("nodePoolSubnetName")]
         public Input<string>? NodePoolSubnetName { get; set; }
 
         /// <summary>
-        /// The contents of the SSH public key file to use for the nodes (string)
+        /// The contents of the SSH public key file to use for the nodes
         /// </summary>
         [Input("nodePublicKeyContents")]
         public Input<string>? NodePublicKeyContents { get; set; }
 
         /// <summary>
-        /// The shape of the node (determines number of CPUs and  amount of memory on each OKE node) (string)
+        /// The shape of the node (determines number of CPUs and  amount of memory on each node)
         /// </summary>
         [Input("nodeShape", required: true)]
         public Input<string> NodeShape { get; set; } = null!;
 
         /// <summary>
-        /// A CIDR IP range from which to assign Kubernetes Pod IPs (string)
+        /// Optional specify the pod CIDR, defaults to 10.244.0.0/16
         /// </summary>
         [Input("podCidr")]
         public Input<string>? PodCidr { get; set; }
@@ -140,7 +140,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _privateKeyContents;
 
         /// <summary>
-        /// The private API key file contents for the specified user, in PEM format (string)
+        /// The private API key file contents for the specified user, in PEM format
         /// </summary>
         public Input<string>? PrivateKeyContents
         {
@@ -156,7 +156,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _privateKeyPassphrase;
 
         /// <summary>
-        /// The passphrase (if any) of the private key for the OKE cluster (string)
+        /// The passphrase of the private key for the OKE cluster
         /// </summary>
         public Input<string>? PrivateKeyPassphrase
         {
@@ -169,67 +169,67 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Number of node subnets. Default `1` (int)
+        /// Number of node subnets (defaults to creating 1 regional subnet)
         /// </summary>
         [Input("quantityOfNodeSubnets")]
         public Input<int>? QuantityOfNodeSubnets { get; set; }
 
         /// <summary>
-        /// Number of OKE worker nodes in each subnet / availability domain. Default `1` (int)
+        /// Number of worker nodes in each subnet / availability domain
         /// </summary>
         [Input("quantityPerSubnet")]
         public Input<int>? QuantityPerSubnet { get; set; }
 
         /// <summary>
-        /// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+        /// The availability domain within the region to host the OKE cluster
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
         /// <summary>
-        /// A CIDR IP range from which to assign Kubernetes Service IPs (string)
+        /// Optional specify the service CIDR, defaults to 10.96.0.0/16
         /// </summary>
         [Input("serviceCidr")]
         public Input<string>? ServiceCidr { get; set; }
 
         /// <summary>
-        /// Name for DNS domain of service subnet. Default `svcdns` (string)
+        /// Optional name for DNS domain of service subnet
         /// </summary>
         [Input("serviceDnsDomainName")]
         public Input<string>? ServiceDnsDomainName { get; set; }
 
         /// <summary>
-        /// Specifies whether to skip deleting the virtual cloud network (VCN) on destroy. Default `false` (bool)
+        /// Whether to skip deleting VCN
         /// </summary>
         [Input("skipVcnDelete")]
         public Input<bool>? SkipVcnDelete { get; set; }
 
         /// <summary>
-        /// The OCID of the tenancy in which to create resources (string)
+        /// The OCID of the tenancy in which to create resources
         /// </summary>
         [Input("tenancyId", required: true)]
         public Input<string> TenancyId { get; set; } = null!;
 
         /// <summary>
-        /// The OCID of a user who has access to the tenancy/compartment (string)
+        /// The OCID of a user who has access to the tenancy/compartment
         /// </summary>
         [Input("userOcid", required: true)]
         public Input<string> UserOcid { get; set; } = null!;
 
         /// <summary>
-        /// The OCID of the compartment (if different from `compartment_id`) in which to find the pre-existing virtual network set with `vcn_name`. (string)
+        /// The OCID of the compartment (if different from compartment_id) in which to find the pre-existing virtual network set with vcn_name.
         /// </summary>
         [Input("vcnCompartmentId")]
         public Input<string>? VcnCompartmentId { get; set; }
 
         /// <summary>
-        /// The name of an existing virtual network to use for the cluster creation. If set, you must also set `load_balancer_subnet_name_1`. A VCN and subnets will be created if none are specified. (string)
+        /// The optional name of an existing virtual network to use for the cluster creation. A new VCN will be created if not specified.
         /// </summary>
         [Input("vcnName")]
         public Input<string>? VcnName { get; set; }
 
         /// <summary>
-        /// Additional CIDR from which to allow ingress to worker nodes (string)
+        /// Additional CIDR from which to allow ingress to worker nodes
         /// </summary>
         [Input("workerNodeIngressCidr")]
         public Input<string>? WorkerNodeIngressCidr { get; set; }

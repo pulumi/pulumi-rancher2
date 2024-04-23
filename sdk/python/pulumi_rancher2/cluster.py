@@ -615,7 +615,7 @@ class _ClusterState:
         :param pulumi.Input['ClusterAksConfigArgs'] aks_config: The Azure AKS configuration for `aks` Clusters. Conflicts with `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input['ClusterAksConfigV2Args'] aks_config_v2: The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the Cluster (map)
-        :param pulumi.Input[str] ca_cert: TLS CA certificate for etcd service (string)
+        :param pulumi.Input[str] ca_cert: (Computed/Sensitive) K8s cluster ca cert (string)
         :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationArgs']]] cluster_agent_deployment_customizations: Optional customization for cluster agent. For Rancher v2.7.5 and above (list)
         :param pulumi.Input['ClusterClusterAuthEndpointArgs'] cluster_auth_endpoint: Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
         :param pulumi.Input['ClusterClusterMonitoringInputArgs'] cluster_monitoring_input: Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
@@ -791,7 +791,7 @@ class _ClusterState:
     @pulumi.getter(name="caCert")
     def ca_cert(self) -> Optional[pulumi.Input[str]]:
         """
-        TLS CA certificate for etcd service (string)
+        (Computed/Sensitive) K8s cluster ca cert (string)
         """
         return pulumi.get(self, "ca_cert")
 
@@ -1284,7 +1284,6 @@ class Cluster(pulumi.CustomResource):
 
         ### Creating Rancher v2 imported cluster
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -1294,7 +1293,6 @@ class Cluster(pulumi.CustomResource):
             name="foo-imported",
             description="Foo rancher2 imported cluster")
         ```
-        <!--End PulumiCodeChooser -->
 
         Creating Rancher v2 RKE cluster
 
@@ -1302,7 +1300,6 @@ class Cluster(pulumi.CustomResource):
 
         **Note** Cluster monitoring version `0.2.0` and above, can't be enabled until cluster is fully deployed as [`kubeVersion`](https://github.com/rancher/system-charts/blob/52be656700468904b9bf15c3f39cd7112e1f8c9b/charts/rancher-monitoring/v0.2.0/Chart.yaml#L12) requirement has been introduced to helm chart
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -1341,11 +1338,9 @@ class Cluster(pulumi.CustomResource):
                 version="0.1.0",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Creating Rancher v2 RKE cluster enabling/customizing monitoring and istio
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -1443,11 +1438,9 @@ class Cluster(pulumi.CustomResource):
                 "tracing.jaeger.resources.requests.memory": "100Mi",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Creating Rancher v2 RKE cluster assigning a node pool (overlapped planes)
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -1486,11 +1479,9 @@ class Cluster(pulumi.CustomResource):
             etcd=True,
             worker=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Creating Rancher v2 RKE cluster from template. For Rancher v2.3.x and above.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -1526,11 +1517,9 @@ class Cluster(pulumi.CustomResource):
             cluster_template_id=foo.id,
             cluster_template_revision_id=foo.template_revisions[0].id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Creating Rancher v2 RKE cluster with upgrade strategy. For Rancher v2.4.x and above.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -1578,11 +1567,9 @@ class Cluster(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Creating Rancher v2 RKE cluster with cluster agent customization. For Rancher v2.7.5 and above.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -1625,11 +1612,9 @@ class Cluster(pulumi.CustomResource):
                 )],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Creating Rancher v2 RKE cluster with Pod Security Admission Configuration Template (PSACT). For Rancher v2.7.2 and above.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -1664,11 +1649,9 @@ class Cluster(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Importing EKS cluster to Rancher v2, using `eks_config_v2`. For Rancher v2.5.x and above.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -1690,11 +1673,9 @@ class Cluster(pulumi.CustomResource):
                 imported=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Creating EKS cluster from Rancher v2, using `eks_config_v2`. For Rancher v2.5.x and above.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -1736,13 +1717,11 @@ class Cluster(pulumi.CustomResource):
                 public_access=False,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Creating EKS cluster from Rancher v2, using `eks_config_v2` and launch template. For Rancher v2.5.6 and above.
 
         Note: To use `launch_template` you must provide the ID (seen as `<EC2_LAUNCH_TEMPLATE_ID>`) to the template either as a static value. Or fetched via AWS data-source using one of: aws_ami first and provide the ID to that.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -1778,11 +1757,9 @@ class Cluster(pulumi.CustomResource):
                 public_access=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Creating AKS cluster from Rancher v2, using `aks_config_v2`. For Rancher v2.6.0 and above.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -1840,7 +1817,6 @@ class Cluster(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1902,7 +1878,6 @@ class Cluster(pulumi.CustomResource):
 
         ### Creating Rancher v2 imported cluster
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -1912,7 +1887,6 @@ class Cluster(pulumi.CustomResource):
             name="foo-imported",
             description="Foo rancher2 imported cluster")
         ```
-        <!--End PulumiCodeChooser -->
 
         Creating Rancher v2 RKE cluster
 
@@ -1920,7 +1894,6 @@ class Cluster(pulumi.CustomResource):
 
         **Note** Cluster monitoring version `0.2.0` and above, can't be enabled until cluster is fully deployed as [`kubeVersion`](https://github.com/rancher/system-charts/blob/52be656700468904b9bf15c3f39cd7112e1f8c9b/charts/rancher-monitoring/v0.2.0/Chart.yaml#L12) requirement has been introduced to helm chart
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -1959,11 +1932,9 @@ class Cluster(pulumi.CustomResource):
                 version="0.1.0",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Creating Rancher v2 RKE cluster enabling/customizing monitoring and istio
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -2061,11 +2032,9 @@ class Cluster(pulumi.CustomResource):
                 "tracing.jaeger.resources.requests.memory": "100Mi",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Creating Rancher v2 RKE cluster assigning a node pool (overlapped planes)
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -2104,11 +2073,9 @@ class Cluster(pulumi.CustomResource):
             etcd=True,
             worker=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Creating Rancher v2 RKE cluster from template. For Rancher v2.3.x and above.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -2144,11 +2111,9 @@ class Cluster(pulumi.CustomResource):
             cluster_template_id=foo.id,
             cluster_template_revision_id=foo.template_revisions[0].id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Creating Rancher v2 RKE cluster with upgrade strategy. For Rancher v2.4.x and above.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -2196,11 +2161,9 @@ class Cluster(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Creating Rancher v2 RKE cluster with cluster agent customization. For Rancher v2.7.5 and above.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -2243,11 +2206,9 @@ class Cluster(pulumi.CustomResource):
                 )],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Creating Rancher v2 RKE cluster with Pod Security Admission Configuration Template (PSACT). For Rancher v2.7.2 and above.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -2282,11 +2243,9 @@ class Cluster(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Importing EKS cluster to Rancher v2, using `eks_config_v2`. For Rancher v2.5.x and above.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -2308,11 +2267,9 @@ class Cluster(pulumi.CustomResource):
                 imported=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Creating EKS cluster from Rancher v2, using `eks_config_v2`. For Rancher v2.5.x and above.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -2354,13 +2311,11 @@ class Cluster(pulumi.CustomResource):
                 public_access=False,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Creating EKS cluster from Rancher v2, using `eks_config_v2` and launch template. For Rancher v2.5.6 and above.
 
         Note: To use `launch_template` you must provide the ID (seen as `<EC2_LAUNCH_TEMPLATE_ID>`) to the template either as a static value. Or fetched via AWS data-source using one of: aws_ami first and provide the ID to that.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -2396,11 +2351,9 @@ class Cluster(pulumi.CustomResource):
                 public_access=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Creating AKS cluster from Rancher v2, using `aks_config_v2`. For Rancher v2.6.0 and above.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -2458,7 +2411,6 @@ class Cluster(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -2631,7 +2583,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClusterAksConfigArgs']] aks_config: The Azure AKS configuration for `aks` Clusters. Conflicts with `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[pulumi.InputType['ClusterAksConfigV2Args']] aks_config_v2: The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the Cluster (map)
-        :param pulumi.Input[str] ca_cert: TLS CA certificate for etcd service (string)
+        :param pulumi.Input[str] ca_cert: (Computed/Sensitive) K8s cluster ca cert (string)
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterClusterAgentDeploymentCustomizationArgs']]]] cluster_agent_deployment_customizations: Optional customization for cluster agent. For Rancher v2.7.5 and above (list)
         :param pulumi.Input[pulumi.InputType['ClusterClusterAuthEndpointArgs']] cluster_auth_endpoint: Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
         :param pulumi.Input[pulumi.InputType['ClusterClusterMonitoringInputArgs']] cluster_monitoring_input: Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
@@ -2752,7 +2704,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="caCert")
     def ca_cert(self) -> pulumi.Output[str]:
         """
-        TLS CA certificate for etcd service (string)
+        (Computed/Sensitive) K8s cluster ca cert (string)
         """
         return pulumi.get(self, "ca_cert")
 

@@ -13,174 +13,170 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NodeTemplateDigitaloceanConfig {
     /**
-     * @return Digital Ocean access token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return Digital Ocean access token
      * 
      */
     private @Nullable String accessToken;
     /**
-     * @return Enable backups for droplet. Default `false` (bool)
+     * @return Enable backups for droplet
      * 
      */
     private @Nullable Boolean backups;
     /**
-     * @return Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+     * @return Digital Ocean Image
      * 
      */
     private @Nullable String image;
     /**
-     * @return Enable ipv6 for droplet. Default `false` (bool)
+     * @return Enable ipv6 for droplet
      * 
      */
     private @Nullable Boolean ipv6;
     /**
-     * @return Enable monitoring for droplet. Default `false` (bool)
+     * @return Enable monitoring for droplet
      * 
      */
     private @Nullable Boolean monitoring;
     /**
-     * @return Enable private networking for droplet. Default `false` (bool)
+     * @return Enable private networking for droplet
      * 
      */
     private @Nullable Boolean privateNetworking;
     /**
-     * @return AWS region. Default `eu-west-2` (string)
+     * @return Digital Ocean region
      * 
      */
     private @Nullable String region;
     /**
-     * @return Digital Ocean size. Default `s-1vcpu-1gb` (string)
+     * @return Digital Ocean size
      * 
      */
     private @Nullable String size;
     /**
-     * @return SSH key fingerprint (string)
+     * @return SSH key fingerprint
      * 
      */
     private @Nullable String sshKeyFingerprint;
     /**
-     * @return SSH private key path (string)
+     * @return SSH private key path
      * 
      */
     private @Nullable String sshKeyPath;
     /**
-     * @return If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+     * @return SSH port
      * 
      */
     private @Nullable String sshPort;
     /**
-     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+     * @return SSH username
      * 
      */
     private @Nullable String sshUser;
     /**
-     * @return vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+     * @return Comma-separated list of tags to apply to the Droplet
      * 
      */
     private @Nullable String tags;
     /**
-     * @return Path to file with cloud-init user-data (string)
-     * 
-     * &gt; **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+     * @return Path to file with cloud-init user-data
      * 
      */
     private @Nullable String userdata;
 
     private NodeTemplateDigitaloceanConfig() {}
     /**
-     * @return Digital Ocean access token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return Digital Ocean access token
      * 
      */
     public Optional<String> accessToken() {
         return Optional.ofNullable(this.accessToken);
     }
     /**
-     * @return Enable backups for droplet. Default `false` (bool)
+     * @return Enable backups for droplet
      * 
      */
     public Optional<Boolean> backups() {
         return Optional.ofNullable(this.backups);
     }
     /**
-     * @return Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+     * @return Digital Ocean Image
      * 
      */
     public Optional<String> image() {
         return Optional.ofNullable(this.image);
     }
     /**
-     * @return Enable ipv6 for droplet. Default `false` (bool)
+     * @return Enable ipv6 for droplet
      * 
      */
     public Optional<Boolean> ipv6() {
         return Optional.ofNullable(this.ipv6);
     }
     /**
-     * @return Enable monitoring for droplet. Default `false` (bool)
+     * @return Enable monitoring for droplet
      * 
      */
     public Optional<Boolean> monitoring() {
         return Optional.ofNullable(this.monitoring);
     }
     /**
-     * @return Enable private networking for droplet. Default `false` (bool)
+     * @return Enable private networking for droplet
      * 
      */
     public Optional<Boolean> privateNetworking() {
         return Optional.ofNullable(this.privateNetworking);
     }
     /**
-     * @return AWS region. Default `eu-west-2` (string)
+     * @return Digital Ocean region
      * 
      */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
     /**
-     * @return Digital Ocean size. Default `s-1vcpu-1gb` (string)
+     * @return Digital Ocean size
      * 
      */
     public Optional<String> size() {
         return Optional.ofNullable(this.size);
     }
     /**
-     * @return SSH key fingerprint (string)
+     * @return SSH key fingerprint
      * 
      */
     public Optional<String> sshKeyFingerprint() {
         return Optional.ofNullable(this.sshKeyFingerprint);
     }
     /**
-     * @return SSH private key path (string)
+     * @return SSH private key path
      * 
      */
     public Optional<String> sshKeyPath() {
         return Optional.ofNullable(this.sshKeyPath);
     }
     /**
-     * @return If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+     * @return SSH port
      * 
      */
     public Optional<String> sshPort() {
         return Optional.ofNullable(this.sshPort);
     }
     /**
-     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+     * @return SSH username
      * 
      */
     public Optional<String> sshUser() {
         return Optional.ofNullable(this.sshUser);
     }
     /**
-     * @return vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+     * @return Comma-separated list of tags to apply to the Droplet
      * 
      */
     public Optional<String> tags() {
         return Optional.ofNullable(this.tags);
     }
     /**
-     * @return Path to file with cloud-init user-data (string)
-     * 
-     * &gt; **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+     * @return Path to file with cloud-init user-data
      * 
      */
     public Optional<String> userdata() {

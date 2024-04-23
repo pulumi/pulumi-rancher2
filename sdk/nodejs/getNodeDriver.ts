@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -18,7 +17,6 @@ import * as utilities from "./utilities";
  *     name: "foo",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getNodeDriver(args: GetNodeDriverArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeDriverResult> {
 
@@ -95,7 +93,6 @@ export interface GetNodeDriverResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -104,7 +101,6 @@ export interface GetNodeDriverResult {
  *     name: "foo",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getNodeDriverOutput(args: GetNodeDriverOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeDriverResult> {
     return pulumi.output(args).apply((a: any) => getNodeDriver(a, opts))

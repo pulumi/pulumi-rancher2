@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -21,7 +20,6 @@ import * as utilities from "./utilities";
  *     name: "<cluster_alert_rule_name>",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getClusterAlertRule(args: GetClusterAlertRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterAlertRuleResult> {
 
@@ -115,7 +113,6 @@ export interface GetClusterAlertRuleResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -125,7 +122,6 @@ export interface GetClusterAlertRuleResult {
  *     name: "<cluster_alert_rule_name>",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getClusterAlertRuleOutput(args: GetClusterAlertRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterAlertRuleResult> {
     return pulumi.output(args).apply((a: any) => getClusterAlertRule(a, opts))

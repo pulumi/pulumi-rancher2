@@ -13,98 +13,98 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterGkeConfigV2IpAllocationPolicy {
     /**
-     * @return The GKE cluster ip v4 allocation cidr block (string)
+     * @return The GKE cluster ip v4 allocation cidr block
      * 
      */
     private @Nullable String clusterIpv4CidrBlock;
     /**
-     * @return The GKE cluster ip v4 allocation secondary range name(string)
+     * @return The GKE cluster ip v4 allocation secondary range name
      * 
      */
     private @Nullable String clusterSecondaryRangeName;
     /**
-     * @return Create GKE subnetwork? Default: `false` (bool)
+     * @return Create GKE subnetwork?
      * 
      */
     private @Nullable Boolean createSubnetwork;
     /**
-     * @return The GKE node ip v4 allocation cidr block (string)
+     * @return The GKE node ip v4 allocation cidr block
      * 
      */
     private @Nullable String nodeIpv4CidrBlock;
     /**
-     * @return The GKE services ip v4 allocation cidr block (string)
+     * @return The GKE services ip v4 allocation cidr block
      * 
      */
     private @Nullable String servicesIpv4CidrBlock;
     /**
-     * @return The GKE services ip v4 allocation secondary range name (string)
+     * @return The GKE services ip v4 allocation secondary range name
      * 
      */
     private @Nullable String servicesSecondaryRangeName;
     /**
-     * @return The GKE cluster subnetwork name (string)
+     * @return The GKE cluster subnetwork name
      * 
      */
     private @Nullable String subnetworkName;
     /**
-     * @return Use GKE ip aliases? Default: `true` (bool)
+     * @return Use GKE ip aliases?
      * 
      */
     private @Nullable Boolean useIpAliases;
 
     private ClusterGkeConfigV2IpAllocationPolicy() {}
     /**
-     * @return The GKE cluster ip v4 allocation cidr block (string)
+     * @return The GKE cluster ip v4 allocation cidr block
      * 
      */
     public Optional<String> clusterIpv4CidrBlock() {
         return Optional.ofNullable(this.clusterIpv4CidrBlock);
     }
     /**
-     * @return The GKE cluster ip v4 allocation secondary range name(string)
+     * @return The GKE cluster ip v4 allocation secondary range name
      * 
      */
     public Optional<String> clusterSecondaryRangeName() {
         return Optional.ofNullable(this.clusterSecondaryRangeName);
     }
     /**
-     * @return Create GKE subnetwork? Default: `false` (bool)
+     * @return Create GKE subnetwork?
      * 
      */
     public Optional<Boolean> createSubnetwork() {
         return Optional.ofNullable(this.createSubnetwork);
     }
     /**
-     * @return The GKE node ip v4 allocation cidr block (string)
+     * @return The GKE node ip v4 allocation cidr block
      * 
      */
     public Optional<String> nodeIpv4CidrBlock() {
         return Optional.ofNullable(this.nodeIpv4CidrBlock);
     }
     /**
-     * @return The GKE services ip v4 allocation cidr block (string)
+     * @return The GKE services ip v4 allocation cidr block
      * 
      */
     public Optional<String> servicesIpv4CidrBlock() {
         return Optional.ofNullable(this.servicesIpv4CidrBlock);
     }
     /**
-     * @return The GKE services ip v4 allocation secondary range name (string)
+     * @return The GKE services ip v4 allocation secondary range name
      * 
      */
     public Optional<String> servicesSecondaryRangeName() {
         return Optional.ofNullable(this.servicesSecondaryRangeName);
     }
     /**
-     * @return The GKE cluster subnetwork name (string)
+     * @return The GKE cluster subnetwork name
      * 
      */
     public Optional<String> subnetworkName() {
         return Optional.ofNullable(this.subnetworkName);
     }
     /**
-     * @return Use GKE ip aliases? Default: `true` (bool)
+     * @return Use GKE ip aliases?
      * 
      */
     public Optional<Boolean> useIpAliases() {

@@ -17,17 +17,9 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
 
     public static final ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigArgs Empty = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigArgs();
 
-    /**
-     * Enable cluster template revision. Default `true` (bool)
-     * 
-     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
-    /**
-     * @return Enable cluster template revision. Default `true` (bool)
-     * 
-     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -96,23 +88,11 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
             $ = new ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param enabled Enable cluster template revision. Default `true` (bool)
-         * 
-         * @return builder
-         * 
-         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
-        /**
-         * @param enabled Enable cluster template revision. Default `true` (bool)
-         * 
-         * @return builder
-         * 
-         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

@@ -10,17 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class ClusterRkeConfigNetworkWeaveNetworkProvider {
-    /**
-     * @return Registry password (string)
-     * 
-     */
     private String password;
 
     private ClusterRkeConfigNetworkWeaveNetworkProvider() {}
-    /**
-     * @return Registry password (string)
-     * 
-     */
     public String password() {
         return this.password;
     }

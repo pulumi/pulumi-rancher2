@@ -173,7 +173,6 @@ class Setting(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -183,7 +182,6 @@ class Setting(pulumi.CustomResource):
             name="foo",
             value="<VALUE>")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -215,7 +213,6 @@ class Setting(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -225,7 +222,6 @@ class Setting(pulumi.CustomResource):
             name="foo",
             value="<VALUE>")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

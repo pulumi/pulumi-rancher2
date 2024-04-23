@@ -22,15 +22,15 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? CloudCredentialSecretName;
         /// <summary>
-        /// Machine pool control plane role?
+        /// Machine pool control plane role
         /// </summary>
         public readonly bool? ControlPlaneRole;
         /// <summary>
-        /// Machine Pool Drain Before Delete?
+        /// Machine pool drain before delete
         /// </summary>
         public readonly bool? DrainBeforeDelete;
         /// <summary>
-        /// Machine pool etcd role?
+        /// Machine pool etcd role
         /// </summary>
         public readonly bool? EtcdRole;
         /// <summary>
@@ -42,15 +42,15 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Labels;
         /// <summary>
-        /// Machine pool node config.
+        /// Machine config data
         /// </summary>
         public readonly Outputs.ClusterV2RkeConfigMachinePoolMachineConfig MachineConfig;
         /// <summary>
-        /// Labels for Machine pool nodes.
+        /// Labels of the machine
         /// </summary>
         public readonly ImmutableDictionary<string, object>? MachineLabels;
         /// <summary>
-        /// Max unhealthy nodes for automated replacement to be allowed.
+        /// max unhealthy nodes for automated replacement to be allowed
         /// </summary>
         public readonly string? MaxUnhealthy;
         /// <summary>
@@ -58,39 +58,39 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Seconds a machine has to drain before deletion.
+        /// seconds to wait for machine pool drain to complete before machine deletion
         /// </summary>
         public readonly int? NodeDrainTimeout;
         /// <summary>
-        /// Seconds a new node has to become active before it is replaced.
+        /// seconds a new node has to become active before it is replaced
         /// </summary>
         public readonly int? NodeStartupTimeoutSeconds;
         /// <summary>
-        /// Machine pool paused?
+        /// Machine pool paused
         /// </summary>
         public readonly bool? Paused;
         /// <summary>
-        /// Machine pool quantity.
+        /// Machine pool quantity
         /// </summary>
         public readonly int? Quantity;
         /// <summary>
-        /// Machine pool rolling update.
+        /// Machine pool rolling update
         /// </summary>
         public readonly Outputs.ClusterV2RkeConfigMachinePoolRollingUpdate? RollingUpdate;
         /// <summary>
-        /// Machine pool taints.
+        /// Machine pool taints
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterV2RkeConfigMachinePoolTaint> Taints;
         /// <summary>
-        /// Seconds an unhealthy node has to become active before it is replaced.
+        /// seconds an unhealthy node has to become active before it is replaced
         /// </summary>
         public readonly int? UnhealthyNodeTimeoutSeconds;
         /// <summary>
-        /// Range of unhealthy nodes for automated replacement to be allowed.
+        /// range of unhealthy nodes for automated replacement to be allowed
         /// </summary>
         public readonly string? UnhealthyRange;
         /// <summary>
-        /// Machine pool worker role?
+        /// Machine pool worker role
         /// </summary>
         public readonly bool? WorkerRole;
 

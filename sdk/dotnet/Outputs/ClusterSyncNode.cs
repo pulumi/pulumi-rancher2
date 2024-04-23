@@ -14,68 +14,32 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterSyncNode
     {
         /// <summary>
-        /// Annotations of the node (map).
+        /// Annotations of the resource
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Annotations;
-        /// <summary>
-        /// The total resources of a node (map).
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? Capacity;
         /// <summary>
         /// The cluster ID that is syncing (string)
         /// </summary>
         public readonly string? ClusterId;
-        /// <summary>
-        /// The external IP address of the node (string).
-        /// </summary>
         public readonly string? ExternalIpAddress;
-        /// <summary>
-        /// The hostname of the node (string).
-        /// </summary>
         public readonly string? Hostname;
         /// <summary>
-        /// The ID of the node (string)
+        /// (Computed) The ID of the resource. Same as `cluster_id` (string)
         /// </summary>
         public readonly string? Id;
-        /// <summary>
-        /// The private IP address of the node (string).
-        /// </summary>
         public readonly string? IpAddress;
         /// <summary>
-        /// Labels of the node (map).
+        /// Labels of the resource
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Labels;
-        /// <summary>
-        /// The name of the node (string).
-        /// </summary>
         public readonly string? Name;
-        /// <summary>
-        /// The Node Pool ID of the node (string).
-        /// </summary>
         public readonly string? NodePoolId;
-        /// <summary>
-        /// The Node Template ID of the node (string).
-        /// </summary>
         public readonly string? NodeTemplateId;
-        /// <summary>
-        /// The Provider ID of the node (string).
-        /// </summary>
         public readonly string? ProviderId;
-        /// <summary>
-        /// The requested hostname (string).
-        /// </summary>
         public readonly string? RequestedHostname;
-        /// <summary>
-        /// Roles of the node. `controlplane`, `etcd` and `worker`. (list)
-        /// </summary>
         public readonly ImmutableArray<string> Roles;
-        /// <summary>
-        /// The user to connect to the node (string).
-        /// </summary>
         public readonly string? SshUser;
-        /// <summary>
-        /// General information about the node, such as kernel version, kubelet and kube-proxy version, Docker version (if used), and OS name.
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? SystemInfo;
 
         [OutputConstructor]

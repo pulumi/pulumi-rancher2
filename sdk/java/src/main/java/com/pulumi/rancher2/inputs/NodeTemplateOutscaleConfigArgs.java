@@ -19,14 +19,14 @@ public final class NodeTemplateOutscaleConfigArgs extends com.pulumi.resources.R
     public static final NodeTemplateOutscaleConfigArgs Empty = new NodeTemplateOutscaleConfigArgs();
 
     /**
-     * Outscale Access Key (string)
+     * Outscale Access Key
      * 
      */
     @Import(name="accessKey", required=true)
     private Output<String> accessKey;
 
     /**
-     * @return Outscale Access Key (string)
+     * @return Outscale Access Key
      * 
      */
     public Output<String> accessKey() {
@@ -34,14 +34,14 @@ public final class NodeTemplateOutscaleConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Extra tags for all created resources (e.g. key1=value1,key2=value2) (list)
+     * Extra tags for all created resources (e.g. key1=value1,key2=value2)
      * 
      */
     @Import(name="extraTagsAlls")
     private @Nullable Output<List<String>> extraTagsAlls;
 
     /**
-     * @return Extra tags for all created resources (e.g. key1=value1,key2=value2) (list)
+     * @return Extra tags for all created resources (e.g. key1=value1,key2=value2)
      * 
      */
     public Optional<Output<List<String>>> extraTagsAlls() {
@@ -49,14 +49,14 @@ public final class NodeTemplateOutscaleConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Extra tags only for instances (e.g. key1=value1,key2=value2) (list)
+     * Extra tags only for instances (e.g. key1=value1,key2=value2)
      * 
      */
     @Import(name="extraTagsInstances")
     private @Nullable Output<List<String>> extraTagsInstances;
 
     /**
-     * @return Extra tags only for instances (e.g. key1=value1,key2=value2) (list)
+     * @return Extra tags only for instances (e.g. key1=value1,key2=value2)
      * 
      */
     public Optional<Output<List<String>>> extraTagsInstances() {
@@ -64,14 +64,14 @@ public final class NodeTemplateOutscaleConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Outscale VM type. Default `tinav2.c1r2p3` (string)
+     * Outscale VM type
      * 
      */
     @Import(name="instanceType")
     private @Nullable Output<String> instanceType;
 
     /**
-     * @return Outscale VM type. Default `tinav2.c1r2p3` (string)
+     * @return Outscale VM type
      * 
      */
     public Optional<Output<String>> instanceType() {
@@ -79,14 +79,14 @@ public final class NodeTemplateOutscaleConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * AWS region. Default `eu-west-2` (string)
+     * Outscale Region
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return AWS region. Default `eu-west-2` (string)
+     * @return Outscale Region
      * 
      */
     public Optional<Output<String>> region() {
@@ -139,14 +139,14 @@ public final class NodeTemplateOutscaleConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Outscale Secret Key (string)
+     * Outscale Secret Key
      * 
      */
     @Import(name="secretKey", required=true)
     private Output<String> secretKey;
 
     /**
-     * @return Outscale Secret Key (string)
+     * @return Outscale Secret Key
      * 
      */
     public Output<String> secretKey() {
@@ -154,14 +154,14 @@ public final class NodeTemplateOutscaleConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Ids of user defined Security Groups to add to the machine. (list)
+     * Ids of user defined Security Groups to add to the machine
      * 
      */
     @Import(name="securityGroupIds")
     private @Nullable Output<List<String>> securityGroupIds;
 
     /**
-     * @return Ids of user defined Security Groups to add to the machine. (list)
+     * @return Ids of user defined Security Groups to add to the machine
      * 
      */
     public Optional<Output<List<String>>> securityGroupIds() {
@@ -169,14 +169,14 @@ public final class NodeTemplateOutscaleConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Outscale Machine Image to use as bootstrap for the VM. Default `ami-2cf1fa3e` (string)
+     * Outscale Machine Image to use as bootstrap for the VM
      * 
      */
     @Import(name="sourceOmi")
     private @Nullable Output<String> sourceOmi;
 
     /**
-     * @return Outscale Machine Image to use as bootstrap for the VM. Default `ami-2cf1fa3e` (string)
+     * @return Outscale Machine Image to use as bootstrap for the VM
      * 
      */
     public Optional<Output<String>> sourceOmi() {
@@ -218,7 +218,7 @@ public final class NodeTemplateOutscaleConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param accessKey Outscale Access Key (string)
+         * @param accessKey Outscale Access Key
          * 
          * @return builder
          * 
@@ -229,7 +229,7 @@ public final class NodeTemplateOutscaleConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param accessKey Outscale Access Key (string)
+         * @param accessKey Outscale Access Key
          * 
          * @return builder
          * 
@@ -239,7 +239,7 @@ public final class NodeTemplateOutscaleConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param extraTagsAlls Extra tags for all created resources (e.g. key1=value1,key2=value2) (list)
+         * @param extraTagsAlls Extra tags for all created resources (e.g. key1=value1,key2=value2)
          * 
          * @return builder
          * 
@@ -250,7 +250,7 @@ public final class NodeTemplateOutscaleConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param extraTagsAlls Extra tags for all created resources (e.g. key1=value1,key2=value2) (list)
+         * @param extraTagsAlls Extra tags for all created resources (e.g. key1=value1,key2=value2)
          * 
          * @return builder
          * 
@@ -260,7 +260,7 @@ public final class NodeTemplateOutscaleConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param extraTagsAlls Extra tags for all created resources (e.g. key1=value1,key2=value2) (list)
+         * @param extraTagsAlls Extra tags for all created resources (e.g. key1=value1,key2=value2)
          * 
          * @return builder
          * 
@@ -270,7 +270,7 @@ public final class NodeTemplateOutscaleConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param extraTagsInstances Extra tags only for instances (e.g. key1=value1,key2=value2) (list)
+         * @param extraTagsInstances Extra tags only for instances (e.g. key1=value1,key2=value2)
          * 
          * @return builder
          * 
@@ -281,7 +281,7 @@ public final class NodeTemplateOutscaleConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param extraTagsInstances Extra tags only for instances (e.g. key1=value1,key2=value2) (list)
+         * @param extraTagsInstances Extra tags only for instances (e.g. key1=value1,key2=value2)
          * 
          * @return builder
          * 
@@ -291,7 +291,7 @@ public final class NodeTemplateOutscaleConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param extraTagsInstances Extra tags only for instances (e.g. key1=value1,key2=value2) (list)
+         * @param extraTagsInstances Extra tags only for instances (e.g. key1=value1,key2=value2)
          * 
          * @return builder
          * 
@@ -301,7 +301,7 @@ public final class NodeTemplateOutscaleConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param instanceType Outscale VM type. Default `tinav2.c1r2p3` (string)
+         * @param instanceType Outscale VM type
          * 
          * @return builder
          * 
@@ -312,7 +312,7 @@ public final class NodeTemplateOutscaleConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param instanceType Outscale VM type. Default `tinav2.c1r2p3` (string)
+         * @param instanceType Outscale VM type
          * 
          * @return builder
          * 
@@ -322,7 +322,7 @@ public final class NodeTemplateOutscaleConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param region AWS region. Default `eu-west-2` (string)
+         * @param region Outscale Region
          * 
          * @return builder
          * 
@@ -333,7 +333,7 @@ public final class NodeTemplateOutscaleConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param region AWS region. Default `eu-west-2` (string)
+         * @param region Outscale Region
          * 
          * @return builder
          * 
@@ -406,7 +406,7 @@ public final class NodeTemplateOutscaleConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param secretKey Outscale Secret Key (string)
+         * @param secretKey Outscale Secret Key
          * 
          * @return builder
          * 
@@ -417,7 +417,7 @@ public final class NodeTemplateOutscaleConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param secretKey Outscale Secret Key (string)
+         * @param secretKey Outscale Secret Key
          * 
          * @return builder
          * 
@@ -427,7 +427,7 @@ public final class NodeTemplateOutscaleConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param securityGroupIds Ids of user defined Security Groups to add to the machine. (list)
+         * @param securityGroupIds Ids of user defined Security Groups to add to the machine
          * 
          * @return builder
          * 
@@ -438,7 +438,7 @@ public final class NodeTemplateOutscaleConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param securityGroupIds Ids of user defined Security Groups to add to the machine. (list)
+         * @param securityGroupIds Ids of user defined Security Groups to add to the machine
          * 
          * @return builder
          * 
@@ -448,7 +448,7 @@ public final class NodeTemplateOutscaleConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param securityGroupIds Ids of user defined Security Groups to add to the machine. (list)
+         * @param securityGroupIds Ids of user defined Security Groups to add to the machine
          * 
          * @return builder
          * 
@@ -458,7 +458,7 @@ public final class NodeTemplateOutscaleConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param sourceOmi Outscale Machine Image to use as bootstrap for the VM. Default `ami-2cf1fa3e` (string)
+         * @param sourceOmi Outscale Machine Image to use as bootstrap for the VM
          * 
          * @return builder
          * 
@@ -469,7 +469,7 @@ public final class NodeTemplateOutscaleConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param sourceOmi Outscale Machine Image to use as bootstrap for the VM. Default `ami-2cf1fa3e` (string)
+         * @param sourceOmi Outscale Machine Image to use as bootstrap for the VM
          * 
          * @return builder
          * 

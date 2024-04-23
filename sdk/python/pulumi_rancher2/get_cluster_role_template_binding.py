@@ -152,7 +152,6 @@ def get_cluster_role_template_binding(cluster_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
@@ -160,7 +159,6 @@ def get_cluster_role_template_binding(cluster_id: Optional[str] = None,
     foo = rancher2.get_cluster_role_template_binding(name="foo",
         cluster_id="foo_id")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: The cluster id where bind cluster role template (string)
@@ -197,7 +195,6 @@ def get_cluster_role_template_binding_output(cluster_id: Optional[pulumi.Input[s
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
@@ -205,7 +202,6 @@ def get_cluster_role_template_binding_output(cluster_id: Optional[pulumi.Input[s
     foo = rancher2.get_cluster_role_template_binding(name="foo",
         cluster_id="foo_id")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: The cluster id where bind cluster role template (string)

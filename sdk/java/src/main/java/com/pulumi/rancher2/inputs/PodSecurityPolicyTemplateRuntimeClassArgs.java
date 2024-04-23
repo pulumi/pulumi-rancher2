@@ -18,14 +18,14 @@ public final class PodSecurityPolicyTemplateRuntimeClassArgs extends com.pulumi.
     public static final PodSecurityPolicyTemplateRuntimeClassArgs Empty = new PodSecurityPolicyTemplateRuntimeClassArgs();
 
     /**
-     * (list)
+     * allowedRuntimeClassNames is a whitelist of RuntimeClass names that may be specified on a pod. A value of &#34;*&#34; means that any RuntimeClass name is allowed, and must be the only item in the list. An empty list requires the RuntimeClassName field to be unset.
      * 
      */
     @Import(name="allowedRuntimeClassNames", required=true)
     private Output<List<String>> allowedRuntimeClassNames;
 
     /**
-     * @return (list)
+     * @return allowedRuntimeClassNames is a whitelist of RuntimeClass names that may be specified on a pod. A value of &#34;*&#34; means that any RuntimeClass name is allowed, and must be the only item in the list. An empty list requires the RuntimeClassName field to be unset.
      * 
      */
     public Output<List<String>> allowedRuntimeClassNames() {
@@ -33,14 +33,14 @@ public final class PodSecurityPolicyTemplateRuntimeClassArgs extends com.pulumi.
     }
 
     /**
-     * (string)
+     * defaultRuntimeClassName is the default RuntimeClassName to set on the pod. The default MUST be allowed by the allowedRuntimeClassNames list. A value of nil does not mutate the Pod.
      * 
      */
     @Import(name="defaultRuntimeClassName")
     private @Nullable Output<String> defaultRuntimeClassName;
 
     /**
-     * @return (string)
+     * @return defaultRuntimeClassName is the default RuntimeClassName to set on the pod. The default MUST be allowed by the allowedRuntimeClassNames list. A value of nil does not mutate the Pod.
      * 
      */
     public Optional<Output<String>> defaultRuntimeClassName() {
@@ -73,7 +73,7 @@ public final class PodSecurityPolicyTemplateRuntimeClassArgs extends com.pulumi.
         }
 
         /**
-         * @param allowedRuntimeClassNames (list)
+         * @param allowedRuntimeClassNames allowedRuntimeClassNames is a whitelist of RuntimeClass names that may be specified on a pod. A value of &#34;*&#34; means that any RuntimeClass name is allowed, and must be the only item in the list. An empty list requires the RuntimeClassName field to be unset.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class PodSecurityPolicyTemplateRuntimeClassArgs extends com.pulumi.
         }
 
         /**
-         * @param allowedRuntimeClassNames (list)
+         * @param allowedRuntimeClassNames allowedRuntimeClassNames is a whitelist of RuntimeClass names that may be specified on a pod. A value of &#34;*&#34; means that any RuntimeClass name is allowed, and must be the only item in the list. An empty list requires the RuntimeClassName field to be unset.
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class PodSecurityPolicyTemplateRuntimeClassArgs extends com.pulumi.
         }
 
         /**
-         * @param allowedRuntimeClassNames (list)
+         * @param allowedRuntimeClassNames allowedRuntimeClassNames is a whitelist of RuntimeClass names that may be specified on a pod. A value of &#34;*&#34; means that any RuntimeClass name is allowed, and must be the only item in the list. An empty list requires the RuntimeClassName field to be unset.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class PodSecurityPolicyTemplateRuntimeClassArgs extends com.pulumi.
         }
 
         /**
-         * @param defaultRuntimeClassName (string)
+         * @param defaultRuntimeClassName defaultRuntimeClassName is the default RuntimeClassName to set on the pod. The default MUST be allowed by the allowedRuntimeClassNames list. A value of nil does not mutate the Pod.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class PodSecurityPolicyTemplateRuntimeClassArgs extends com.pulumi.
         }
 
         /**
-         * @param defaultRuntimeClassName (string)
+         * @param defaultRuntimeClassName defaultRuntimeClassName is the default RuntimeClassName to set on the pod. The default MUST be allowed by the allowedRuntimeClassNames list. A value of nil does not mutate the Pod.
          * 
          * @return builder
          * 

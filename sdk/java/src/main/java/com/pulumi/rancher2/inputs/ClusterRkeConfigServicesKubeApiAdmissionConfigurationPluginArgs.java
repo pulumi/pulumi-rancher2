@@ -16,14 +16,14 @@ public final class ClusterRkeConfigServicesKubeApiAdmissionConfigurationPluginAr
     public static final ClusterRkeConfigServicesKubeApiAdmissionConfigurationPluginArgs Empty = new ClusterRkeConfigServicesKubeApiAdmissionConfigurationPluginArgs();
 
     /**
-     * Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration&#34;` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
+     * Plugin configuration
      * 
      */
     @Import(name="configuration")
     private @Nullable Output<String> configuration;
 
     /**
-     * @return Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration&#34;` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
+     * @return Plugin configuration
      * 
      */
     public Optional<Output<String>> configuration() {
@@ -46,14 +46,14 @@ public final class ClusterRkeConfigServicesKubeApiAdmissionConfigurationPluginAr
     }
 
     /**
-     * (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+     * Plugin path
      * 
      */
     @Import(name="path")
     private @Nullable Output<String> path;
 
     /**
-     * @return (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+     * @return Plugin path
      * 
      */
     public Optional<Output<String>> path() {
@@ -87,7 +87,7 @@ public final class ClusterRkeConfigServicesKubeApiAdmissionConfigurationPluginAr
         }
 
         /**
-         * @param configuration Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration&#34;` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
+         * @param configuration Plugin configuration
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class ClusterRkeConfigServicesKubeApiAdmissionConfigurationPluginAr
         }
 
         /**
-         * @param configuration Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration&#34;` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
+         * @param configuration Plugin configuration
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class ClusterRkeConfigServicesKubeApiAdmissionConfigurationPluginAr
         }
 
         /**
-         * @param path (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+         * @param path Plugin path
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class ClusterRkeConfigServicesKubeApiAdmissionConfigurationPluginAr
         }
 
         /**
-         * @param path (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+         * @param path Plugin path
          * 
          * @return builder
          * 

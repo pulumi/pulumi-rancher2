@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterRkeConfigIngressUpdateStrategyRollingUpdate
     {
         /// <summary>
-        /// Monitoring deployment rolling update max unavailable. Default: `1` (int)
+        /// Rolling update max unavailable
         /// </summary>
         public readonly int? MaxUnavailable;
 

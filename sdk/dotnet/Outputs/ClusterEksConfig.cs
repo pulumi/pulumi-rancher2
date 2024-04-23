@@ -14,19 +14,19 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterEksConfig
     {
         /// <summary>
-        /// The AWS Client ID to use (string)
+        /// The AWS Client ID to use
         /// </summary>
         public readonly string AccessKey;
         /// <summary>
-        /// AMI ID to use for the worker nodes instead of the default (string)
+        /// A custom AMI ID to use for the worker nodes instead of the default
         /// </summary>
         public readonly string? Ami;
         /// <summary>
-        /// Associate public ip EKS worker nodes. Default `true` (bool)
+        /// Associate public ip EKS worker nodes
         /// </summary>
         public readonly bool? AssociateWorkerNodePublicIp;
         /// <summary>
-        /// The desired number of worker nodes. For Rancher v2.3.x and above. Default `3` (int)
+        /// The desired number of worker nodes
         /// </summary>
         public readonly int? DesiredNodes;
         /// <summary>
@@ -34,59 +34,59 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? EbsEncryption;
         /// <summary>
-        /// The EKS node group instance type. Default: `t3.medium` (string)
+        /// The type of machine to use for worker nodes
         /// </summary>
         public readonly string? InstanceType;
         /// <summary>
-        /// Allow user to specify key name to use. For Rancher v2.2.7 and above (string)
+        /// Allow user to specify key name to use
         /// </summary>
         public readonly string? KeyPairName;
         /// <summary>
-        /// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        /// The kubernetes master version
         /// </summary>
         public readonly string KubernetesVersion;
         /// <summary>
-        /// The maximum number of worker nodes. Default `3` (int)
+        /// The maximum number of worker nodes
         /// </summary>
         public readonly int? MaximumNodes;
         /// <summary>
-        /// The minimum number of worker nodes. Default `1` (int)
+        /// The minimum number of worker nodes
         /// </summary>
         public readonly int? MinimumNodes;
         /// <summary>
-        /// The volume size for each node. Default `20` (int)
+        /// The volume size for each node
         /// </summary>
         public readonly int? NodeVolumeSize;
         /// <summary>
-        /// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+        /// The AWS Region to create the EKS cluster in
         /// </summary>
         public readonly string? Region;
         /// <summary>
-        /// The AWS Client Secret associated with the Client ID (string)
+        /// The AWS Client Secret associated with the Client ID
         /// </summary>
         public readonly string SecretKey;
         /// <summary>
-        /// List of security groups to use for the cluster (list)
+        /// List of security groups to use for the cluster
         /// </summary>
         public readonly ImmutableArray<string> SecurityGroups;
         /// <summary>
-        /// The AWS service role to use (string)
+        /// The service role to use to perform the cluster operations in AWS
         /// </summary>
         public readonly string? ServiceRole;
         /// <summary>
-        /// A session token to use with the client key and secret if applicable (string)
+        /// A session token to use with the client key and secret if applicable
         /// </summary>
         public readonly string? SessionToken;
         /// <summary>
-        /// The EKS node group subnets (list string)
+        /// List of subnets in the virtual network to use
         /// </summary>
         public readonly ImmutableArray<string> Subnets;
         /// <summary>
-        /// The EKS node group user data (string)
+        /// Pass user-data to the nodes to perform automated configuration tasks
         /// </summary>
         public readonly string? UserData;
         /// <summary>
-        /// The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
+        /// The name of the virtual network to use
         /// </summary>
         public readonly string? VirtualNetwork;
 

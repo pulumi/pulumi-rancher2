@@ -13,7 +13,7 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterEksConfigV2NodeGroupLaunchTemplateGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The EKS node group launch template ID (string)
+        /// (Computed) The ID of the resource (string)
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
@@ -25,7 +25,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// rancher-monitoring chart version (string)
+        /// The EKS node group launch template version
         /// </summary>
         [Input("version")]
         public Input<int>? Version { get; set; }

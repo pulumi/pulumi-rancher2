@@ -19,112 +19,72 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterRkeConfigDns {
     /**
-     * @return LinearAutoScalerParams dns config (list Maxitem: 1)
+     * @return Linear Autoscaler Params
      * 
      */
     private @Nullable ClusterRkeConfigDnsLinearAutoscalerParams linearAutoscalerParams;
-    /**
-     * @return RKE monitoring node selector (map)
-     * 
-     */
     private @Nullable Map<String,Object> nodeSelector;
     /**
-     * @return Nodelocal dns config  (list Maxitem: 1)
+     * @return Nodelocal dns
      * 
      */
     private @Nullable ClusterRkeConfigDnsNodelocal nodelocal;
-    /**
-     * @return RKE options for network (map)
-     * 
-     */
     private @Nullable Map<String,Object> options;
-    /**
-     * @return RKE monitoring provider (string)
-     * 
-     */
     private @Nullable String provider;
-    /**
-     * @return DNS add-on reverse cidr  (list)
-     * 
-     */
     private @Nullable List<String> reverseCidrs;
     /**
-     * @return Network add-on tolerations (list)
+     * @return DNS service tolerations
      * 
      */
     private @Nullable List<ClusterRkeConfigDnsToleration> tolerations;
     /**
-     * @return RKE monitoring update strategy (list Maxitems: 1)
+     * @return Update deployment strategy
      * 
      */
     private @Nullable ClusterRkeConfigDnsUpdateStrategy updateStrategy;
-    /**
-     * @return DNS add-on upstream nameservers  (list)
-     * 
-     */
     private @Nullable List<String> upstreamNameservers;
 
     private ClusterRkeConfigDns() {}
     /**
-     * @return LinearAutoScalerParams dns config (list Maxitem: 1)
+     * @return Linear Autoscaler Params
      * 
      */
     public Optional<ClusterRkeConfigDnsLinearAutoscalerParams> linearAutoscalerParams() {
         return Optional.ofNullable(this.linearAutoscalerParams);
     }
-    /**
-     * @return RKE monitoring node selector (map)
-     * 
-     */
     public Map<String,Object> nodeSelector() {
         return this.nodeSelector == null ? Map.of() : this.nodeSelector;
     }
     /**
-     * @return Nodelocal dns config  (list Maxitem: 1)
+     * @return Nodelocal dns
      * 
      */
     public Optional<ClusterRkeConfigDnsNodelocal> nodelocal() {
         return Optional.ofNullable(this.nodelocal);
     }
-    /**
-     * @return RKE options for network (map)
-     * 
-     */
     public Map<String,Object> options() {
         return this.options == null ? Map.of() : this.options;
     }
-    /**
-     * @return RKE monitoring provider (string)
-     * 
-     */
     public Optional<String> provider() {
         return Optional.ofNullable(this.provider);
     }
-    /**
-     * @return DNS add-on reverse cidr  (list)
-     * 
-     */
     public List<String> reverseCidrs() {
         return this.reverseCidrs == null ? List.of() : this.reverseCidrs;
     }
     /**
-     * @return Network add-on tolerations (list)
+     * @return DNS service tolerations
      * 
      */
     public List<ClusterRkeConfigDnsToleration> tolerations() {
         return this.tolerations == null ? List.of() : this.tolerations;
     }
     /**
-     * @return RKE monitoring update strategy (list Maxitems: 1)
+     * @return Update deployment strategy
      * 
      */
     public Optional<ClusterRkeConfigDnsUpdateStrategy> updateStrategy() {
         return Optional.ofNullable(this.updateStrategy);
     }
-    /**
-     * @return DNS add-on upstream nameservers  (list)
-     * 
-     */
     public List<String> upstreamNameservers() {
         return this.upstreamNameservers == null ? List.of() : this.upstreamNameservers;
     }

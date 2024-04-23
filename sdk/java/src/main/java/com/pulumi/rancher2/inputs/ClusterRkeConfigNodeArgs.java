@@ -20,62 +20,30 @@ public final class ClusterRkeConfigNodeArgs extends com.pulumi.resources.Resourc
 
     public static final ClusterRkeConfigNodeArgs Empty = new ClusterRkeConfigNodeArgs();
 
-    /**
-     * Address ip for node (string)
-     * 
-     */
     @Import(name="address", required=true)
     private Output<String> address;
 
-    /**
-     * @return Address ip for node (string)
-     * 
-     */
     public Output<String> address() {
         return this.address;
     }
 
-    /**
-     * Docker socket for node (string)
-     * 
-     */
     @Import(name="dockerSocket")
     private @Nullable Output<String> dockerSocket;
 
-    /**
-     * @return Docker socket for node (string)
-     * 
-     */
     public Optional<Output<String>> dockerSocket() {
         return Optional.ofNullable(this.dockerSocket);
     }
 
-    /**
-     * Hostname override for node (string)
-     * 
-     */
     @Import(name="hostnameOverride")
     private @Nullable Output<String> hostnameOverride;
 
-    /**
-     * @return Hostname override for node (string)
-     * 
-     */
     public Optional<Output<String>> hostnameOverride() {
         return Optional.ofNullable(this.hostnameOverride);
     }
 
-    /**
-     * Internal ip for node (string)
-     * 
-     */
     @Import(name="internalAddress")
     private @Nullable Output<String> internalAddress;
 
-    /**
-     * @return Internal ip for node (string)
-     * 
-     */
     public Optional<Output<String>> internalAddress() {
         return Optional.ofNullable(this.internalAddress);
     }
@@ -95,107 +63,51 @@ public final class ClusterRkeConfigNodeArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.labels);
     }
 
-    /**
-     * Id for the node (string)
-     * 
-     */
     @Import(name="nodeId")
     private @Nullable Output<String> nodeId;
 
-    /**
-     * @return Id for the node (string)
-     * 
-     */
     public Optional<Output<String>> nodeId() {
         return Optional.ofNullable(this.nodeId);
     }
 
-    /**
-     * Port for node. Default `22` (string)
-     * 
-     */
     @Import(name="port")
     private @Nullable Output<String> port;
 
-    /**
-     * @return Port for node. Default `22` (string)
-     * 
-     */
     public Optional<Output<String>> port() {
         return Optional.ofNullable(this.port);
     }
 
-    /**
-     * Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
-     * 
-     */
     @Import(name="roles", required=true)
     private Output<List<String>> roles;
 
-    /**
-     * @return Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
-     * 
-     */
     public Output<List<String>> roles() {
         return this.roles;
     }
 
-    /**
-     * Use ssh agent auth. Default `false` (bool)
-     * 
-     */
     @Import(name="sshAgentAuth")
     private @Nullable Output<Boolean> sshAgentAuth;
 
-    /**
-     * @return Use ssh agent auth. Default `false` (bool)
-     * 
-     */
     public Optional<Output<Boolean>> sshAgentAuth() {
         return Optional.ofNullable(this.sshAgentAuth);
     }
 
-    /**
-     * Node SSH private key (string)
-     * 
-     */
     @Import(name="sshKey")
     private @Nullable Output<String> sshKey;
 
-    /**
-     * @return Node SSH private key (string)
-     * 
-     */
     public Optional<Output<String>> sshKey() {
         return Optional.ofNullable(this.sshKey);
     }
 
-    /**
-     * Node SSH private key path (string)
-     * 
-     */
     @Import(name="sshKeyPath")
     private @Nullable Output<String> sshKeyPath;
 
-    /**
-     * @return Node SSH private key path (string)
-     * 
-     */
     public Optional<Output<String>> sshKeyPath() {
         return Optional.ofNullable(this.sshKeyPath);
     }
 
-    /**
-     * Registry user (string)
-     * 
-     */
     @Import(name="user", required=true)
     private Output<String> user;
 
-    /**
-     * @return Registry user (string)
-     * 
-     */
     public Output<String> user() {
         return this.user;
     }
@@ -235,86 +147,38 @@ public final class ClusterRkeConfigNodeArgs extends com.pulumi.resources.Resourc
             $ = new ClusterRkeConfigNodeArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param address Address ip for node (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder address(Output<String> address) {
             $.address = address;
             return this;
         }
 
-        /**
-         * @param address Address ip for node (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder address(String address) {
             return address(Output.of(address));
         }
 
-        /**
-         * @param dockerSocket Docker socket for node (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder dockerSocket(@Nullable Output<String> dockerSocket) {
             $.dockerSocket = dockerSocket;
             return this;
         }
 
-        /**
-         * @param dockerSocket Docker socket for node (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder dockerSocket(String dockerSocket) {
             return dockerSocket(Output.of(dockerSocket));
         }
 
-        /**
-         * @param hostnameOverride Hostname override for node (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder hostnameOverride(@Nullable Output<String> hostnameOverride) {
             $.hostnameOverride = hostnameOverride;
             return this;
         }
 
-        /**
-         * @param hostnameOverride Hostname override for node (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder hostnameOverride(String hostnameOverride) {
             return hostnameOverride(Output.of(hostnameOverride));
         }
 
-        /**
-         * @param internalAddress Internal ip for node (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder internalAddress(@Nullable Output<String> internalAddress) {
             $.internalAddress = internalAddress;
             return this;
         }
 
-        /**
-         * @param internalAddress Internal ip for node (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder internalAddress(String internalAddress) {
             return internalAddress(Output.of(internalAddress));
         }
@@ -340,159 +204,69 @@ public final class ClusterRkeConfigNodeArgs extends com.pulumi.resources.Resourc
             return labels(Output.of(labels));
         }
 
-        /**
-         * @param nodeId Id for the node (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder nodeId(@Nullable Output<String> nodeId) {
             $.nodeId = nodeId;
             return this;
         }
 
-        /**
-         * @param nodeId Id for the node (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder nodeId(String nodeId) {
             return nodeId(Output.of(nodeId));
         }
 
-        /**
-         * @param port Port for node. Default `22` (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder port(@Nullable Output<String> port) {
             $.port = port;
             return this;
         }
 
-        /**
-         * @param port Port for node. Default `22` (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder port(String port) {
             return port(Output.of(port));
         }
 
-        /**
-         * @param roles Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
-         * 
-         * @return builder
-         * 
-         */
         public Builder roles(Output<List<String>> roles) {
             $.roles = roles;
             return this;
         }
 
-        /**
-         * @param roles Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
-         * 
-         * @return builder
-         * 
-         */
         public Builder roles(List<String> roles) {
             return roles(Output.of(roles));
         }
 
-        /**
-         * @param roles Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
-         * 
-         * @return builder
-         * 
-         */
         public Builder roles(String... roles) {
             return roles(List.of(roles));
         }
 
-        /**
-         * @param sshAgentAuth Use ssh agent auth. Default `false` (bool)
-         * 
-         * @return builder
-         * 
-         */
         public Builder sshAgentAuth(@Nullable Output<Boolean> sshAgentAuth) {
             $.sshAgentAuth = sshAgentAuth;
             return this;
         }
 
-        /**
-         * @param sshAgentAuth Use ssh agent auth. Default `false` (bool)
-         * 
-         * @return builder
-         * 
-         */
         public Builder sshAgentAuth(Boolean sshAgentAuth) {
             return sshAgentAuth(Output.of(sshAgentAuth));
         }
 
-        /**
-         * @param sshKey Node SSH private key (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder sshKey(@Nullable Output<String> sshKey) {
             $.sshKey = sshKey;
             return this;
         }
 
-        /**
-         * @param sshKey Node SSH private key (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder sshKey(String sshKey) {
             return sshKey(Output.of(sshKey));
         }
 
-        /**
-         * @param sshKeyPath Node SSH private key path (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder sshKeyPath(@Nullable Output<String> sshKeyPath) {
             $.sshKeyPath = sshKeyPath;
             return this;
         }
 
-        /**
-         * @param sshKeyPath Node SSH private key path (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder sshKeyPath(String sshKeyPath) {
             return sshKeyPath(Output.of(sshKeyPath));
         }
 
-        /**
-         * @param user Registry user (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder user(Output<String> user) {
             $.user = user;
             return this;
         }
 
-        /**
-         * @param user Registry user (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder user(String user) {
             return user(Output.of(user));
         }

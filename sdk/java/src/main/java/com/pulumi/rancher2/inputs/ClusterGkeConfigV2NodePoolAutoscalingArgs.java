@@ -17,14 +17,14 @@ public final class ClusterGkeConfigV2NodePoolAutoscalingArgs extends com.pulumi.
     public static final ClusterGkeConfigV2NodePoolAutoscalingArgs Empty = new ClusterGkeConfigV2NodePoolAutoscalingArgs();
 
     /**
-     * Enable the authorized cluster endpoint. Default `true` (bool)
+     * Enable GKE node pool config autoscaling
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable the authorized cluster endpoint. Default `true` (bool)
+     * @return Enable GKE node pool config autoscaling
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -32,14 +32,14 @@ public final class ClusterGkeConfigV2NodePoolAutoscalingArgs extends com.pulumi.
     }
 
     /**
-     * The GKE node pool config max node count (int)
+     * The GKE node pool config max node count
      * 
      */
     @Import(name="maxNodeCount")
     private @Nullable Output<Integer> maxNodeCount;
 
     /**
-     * @return The GKE node pool config max node count (int)
+     * @return The GKE node pool config max node count
      * 
      */
     public Optional<Output<Integer>> maxNodeCount() {
@@ -47,14 +47,14 @@ public final class ClusterGkeConfigV2NodePoolAutoscalingArgs extends com.pulumi.
     }
 
     /**
-     * The GKE node pool config min node count (int)
+     * The GKE node pool config min node count
      * 
      */
     @Import(name="minNodeCount")
     private @Nullable Output<Integer> minNodeCount;
 
     /**
-     * @return The GKE node pool config min node count (int)
+     * @return The GKE node pool config min node count
      * 
      */
     public Optional<Output<Integer>> minNodeCount() {
@@ -88,7 +88,7 @@ public final class ClusterGkeConfigV2NodePoolAutoscalingArgs extends com.pulumi.
         }
 
         /**
-         * @param enabled Enable the authorized cluster endpoint. Default `true` (bool)
+         * @param enabled Enable GKE node pool config autoscaling
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class ClusterGkeConfigV2NodePoolAutoscalingArgs extends com.pulumi.
         }
 
         /**
-         * @param enabled Enable the authorized cluster endpoint. Default `true` (bool)
+         * @param enabled Enable GKE node pool config autoscaling
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class ClusterGkeConfigV2NodePoolAutoscalingArgs extends com.pulumi.
         }
 
         /**
-         * @param maxNodeCount The GKE node pool config max node count (int)
+         * @param maxNodeCount The GKE node pool config max node count
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class ClusterGkeConfigV2NodePoolAutoscalingArgs extends com.pulumi.
         }
 
         /**
-         * @param maxNodeCount The GKE node pool config max node count (int)
+         * @param maxNodeCount The GKE node pool config max node count
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class ClusterGkeConfigV2NodePoolAutoscalingArgs extends com.pulumi.
         }
 
         /**
-         * @param minNodeCount The GKE node pool config min node count (int)
+         * @param minNodeCount The GKE node pool config min node count
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class ClusterGkeConfigV2NodePoolAutoscalingArgs extends com.pulumi.
         }
 
         /**
-         * @param minNodeCount The GKE node pool config min node count (int)
+         * @param minNodeCount The GKE node pool config min node count
          * 
          * @return builder
          * 

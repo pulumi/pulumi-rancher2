@@ -14,15 +14,15 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class NotifierDingtalkConfig
     {
         /// <summary>
-        /// Wechat proxy url (string)
+        /// Dingtalk proxy URL
         /// </summary>
         public readonly string? ProxyUrl;
         /// <summary>
-        /// Wechat agent ID (string)
+        /// Required for webhook with sign enabled
         /// </summary>
         public readonly string? Secret;
         /// <summary>
-        /// Slack url (string)
+        /// Webhook URL
         /// </summary>
         public readonly string Url;
 

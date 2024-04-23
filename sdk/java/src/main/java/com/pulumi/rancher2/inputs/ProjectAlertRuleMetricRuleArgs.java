@@ -18,14 +18,14 @@ public final class ProjectAlertRuleMetricRuleArgs extends com.pulumi.resources.R
     public static final ProjectAlertRuleMetricRuleArgs Empty = new ProjectAlertRuleMetricRuleArgs();
 
     /**
-     * Metric rule comparison. Supported values : `&#34;equal&#34; | &#34;greater-or-equal&#34; | &#34;greater-than&#34; | &#34;less-or-equal&#34; | &#34;less-than&#34; | &#34;not-equal&#34; | &#34;has-value&#34;`. Default: `equal`  (string)
+     * Metric rule comparison
      * 
      */
     @Import(name="comparison")
     private @Nullable Output<String> comparison;
 
     /**
-     * @return Metric rule comparison. Supported values : `&#34;equal&#34; | &#34;greater-or-equal&#34; | &#34;greater-than&#34; | &#34;less-or-equal&#34; | &#34;less-than&#34; | &#34;not-equal&#34; | &#34;has-value&#34;`. Default: `equal`  (string)
+     * @return Metric rule comparison
      * 
      */
     public Optional<Output<String>> comparison() {
@@ -33,14 +33,14 @@ public final class ProjectAlertRuleMetricRuleArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Metric rule description (string)
+     * Metric rule description
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Metric rule description (string)
+     * @return Metric rule description
      * 
      */
     public Optional<Output<String>> description() {
@@ -48,14 +48,14 @@ public final class ProjectAlertRuleMetricRuleArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Metric rule duration (string)
+     * Metric rule duration
      * 
      */
     @Import(name="duration", required=true)
     private Output<String> duration;
 
     /**
-     * @return Metric rule duration (string)
+     * @return Metric rule duration
      * 
      */
     public Output<String> duration() {
@@ -63,14 +63,14 @@ public final class ProjectAlertRuleMetricRuleArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Metric rule expression (string)
+     * Metric rule expression
      * 
      */
     @Import(name="expression", required=true)
     private Output<String> expression;
 
     /**
-     * @return Metric rule expression (string)
+     * @return Metric rule expression
      * 
      */
     public Output<String> expression() {
@@ -78,14 +78,14 @@ public final class ProjectAlertRuleMetricRuleArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Metric rule threshold value (float64)
+     * Metric rule threshold value
      * 
      */
     @Import(name="thresholdValue", required=true)
     private Output<Double> thresholdValue;
 
     /**
-     * @return Metric rule threshold value (float64)
+     * @return Metric rule threshold value
      * 
      */
     public Output<Double> thresholdValue() {
@@ -121,7 +121,7 @@ public final class ProjectAlertRuleMetricRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param comparison Metric rule comparison. Supported values : `&#34;equal&#34; | &#34;greater-or-equal&#34; | &#34;greater-than&#34; | &#34;less-or-equal&#34; | &#34;less-than&#34; | &#34;not-equal&#34; | &#34;has-value&#34;`. Default: `equal`  (string)
+         * @param comparison Metric rule comparison
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class ProjectAlertRuleMetricRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param comparison Metric rule comparison. Supported values : `&#34;equal&#34; | &#34;greater-or-equal&#34; | &#34;greater-than&#34; | &#34;less-or-equal&#34; | &#34;less-than&#34; | &#34;not-equal&#34; | &#34;has-value&#34;`. Default: `equal`  (string)
+         * @param comparison Metric rule comparison
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class ProjectAlertRuleMetricRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param description Metric rule description (string)
+         * @param description Metric rule description
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class ProjectAlertRuleMetricRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param description Metric rule description (string)
+         * @param description Metric rule description
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class ProjectAlertRuleMetricRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param duration Metric rule duration (string)
+         * @param duration Metric rule duration
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class ProjectAlertRuleMetricRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param duration Metric rule duration (string)
+         * @param duration Metric rule duration
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class ProjectAlertRuleMetricRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param expression Metric rule expression (string)
+         * @param expression Metric rule expression
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class ProjectAlertRuleMetricRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param expression Metric rule expression (string)
+         * @param expression Metric rule expression
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class ProjectAlertRuleMetricRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param thresholdValue Metric rule threshold value (float64)
+         * @param thresholdValue Metric rule threshold value
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class ProjectAlertRuleMetricRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param thresholdValue Metric rule threshold value (float64)
+         * @param thresholdValue Metric rule threshold value
          * 
          * @return builder
          * 

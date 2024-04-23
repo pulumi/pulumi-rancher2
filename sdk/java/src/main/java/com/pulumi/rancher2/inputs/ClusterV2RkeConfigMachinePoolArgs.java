@@ -55,14 +55,14 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
     }
 
     /**
-     * Machine pool control plane role?
+     * Machine pool control plane role
      * 
      */
     @Import(name="controlPlaneRole")
     private @Nullable Output<Boolean> controlPlaneRole;
 
     /**
-     * @return Machine pool control plane role?
+     * @return Machine pool control plane role
      * 
      */
     public Optional<Output<Boolean>> controlPlaneRole() {
@@ -70,14 +70,14 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
     }
 
     /**
-     * Machine Pool Drain Before Delete?
+     * Machine pool drain before delete
      * 
      */
     @Import(name="drainBeforeDelete")
     private @Nullable Output<Boolean> drainBeforeDelete;
 
     /**
-     * @return Machine Pool Drain Before Delete?
+     * @return Machine pool drain before delete
      * 
      */
     public Optional<Output<Boolean>> drainBeforeDelete() {
@@ -85,14 +85,14 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
     }
 
     /**
-     * Machine pool etcd role?
+     * Machine pool etcd role
      * 
      */
     @Import(name="etcdRole")
     private @Nullable Output<Boolean> etcdRole;
 
     /**
-     * @return Machine pool etcd role?
+     * @return Machine pool etcd role
      * 
      */
     public Optional<Output<Boolean>> etcdRole() {
@@ -130,14 +130,14 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
     }
 
     /**
-     * Machine pool node config.
+     * Machine config data
      * 
      */
     @Import(name="machineConfig", required=true)
     private Output<ClusterV2RkeConfigMachinePoolMachineConfigArgs> machineConfig;
 
     /**
-     * @return Machine pool node config.
+     * @return Machine config data
      * 
      */
     public Output<ClusterV2RkeConfigMachinePoolMachineConfigArgs> machineConfig() {
@@ -145,14 +145,14 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
     }
 
     /**
-     * Labels for Machine pool nodes.
+     * Labels of the machine
      * 
      */
     @Import(name="machineLabels")
     private @Nullable Output<Map<String,Object>> machineLabels;
 
     /**
-     * @return Labels for Machine pool nodes.
+     * @return Labels of the machine
      * 
      */
     public Optional<Output<Map<String,Object>>> machineLabels() {
@@ -160,14 +160,14 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
     }
 
     /**
-     * Max unhealthy nodes for automated replacement to be allowed.
+     * max unhealthy nodes for automated replacement to be allowed
      * 
      */
     @Import(name="maxUnhealthy")
     private @Nullable Output<String> maxUnhealthy;
 
     /**
-     * @return Max unhealthy nodes for automated replacement to be allowed.
+     * @return max unhealthy nodes for automated replacement to be allowed
      * 
      */
     public Optional<Output<String>> maxUnhealthy() {
@@ -190,14 +190,14 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
     }
 
     /**
-     * Seconds a machine has to drain before deletion.
+     * seconds to wait for machine pool drain to complete before machine deletion
      * 
      */
     @Import(name="nodeDrainTimeout")
     private @Nullable Output<Integer> nodeDrainTimeout;
 
     /**
-     * @return Seconds a machine has to drain before deletion.
+     * @return seconds to wait for machine pool drain to complete before machine deletion
      * 
      */
     public Optional<Output<Integer>> nodeDrainTimeout() {
@@ -205,14 +205,14 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
     }
 
     /**
-     * Seconds a new node has to become active before it is replaced.
+     * seconds a new node has to become active before it is replaced
      * 
      */
     @Import(name="nodeStartupTimeoutSeconds")
     private @Nullable Output<Integer> nodeStartupTimeoutSeconds;
 
     /**
-     * @return Seconds a new node has to become active before it is replaced.
+     * @return seconds a new node has to become active before it is replaced
      * 
      */
     public Optional<Output<Integer>> nodeStartupTimeoutSeconds() {
@@ -220,14 +220,14 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
     }
 
     /**
-     * Machine pool paused?
+     * Machine pool paused
      * 
      */
     @Import(name="paused")
     private @Nullable Output<Boolean> paused;
 
     /**
-     * @return Machine pool paused?
+     * @return Machine pool paused
      * 
      */
     public Optional<Output<Boolean>> paused() {
@@ -235,14 +235,14 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
     }
 
     /**
-     * Machine pool quantity.
+     * Machine pool quantity
      * 
      */
     @Import(name="quantity")
     private @Nullable Output<Integer> quantity;
 
     /**
-     * @return Machine pool quantity.
+     * @return Machine pool quantity
      * 
      */
     public Optional<Output<Integer>> quantity() {
@@ -250,14 +250,14 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
     }
 
     /**
-     * Machine pool rolling update.
+     * Machine pool rolling update
      * 
      */
     @Import(name="rollingUpdate")
     private @Nullable Output<ClusterV2RkeConfigMachinePoolRollingUpdateArgs> rollingUpdate;
 
     /**
-     * @return Machine pool rolling update.
+     * @return Machine pool rolling update
      * 
      */
     public Optional<Output<ClusterV2RkeConfigMachinePoolRollingUpdateArgs>> rollingUpdate() {
@@ -265,14 +265,14 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
     }
 
     /**
-     * Machine pool taints.
+     * Machine pool taints
      * 
      */
     @Import(name="taints")
     private @Nullable Output<List<ClusterV2RkeConfigMachinePoolTaintArgs>> taints;
 
     /**
-     * @return Machine pool taints.
+     * @return Machine pool taints
      * 
      */
     public Optional<Output<List<ClusterV2RkeConfigMachinePoolTaintArgs>>> taints() {
@@ -280,14 +280,14 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
     }
 
     /**
-     * Seconds an unhealthy node has to become active before it is replaced.
+     * seconds an unhealthy node has to become active before it is replaced
      * 
      */
     @Import(name="unhealthyNodeTimeoutSeconds")
     private @Nullable Output<Integer> unhealthyNodeTimeoutSeconds;
 
     /**
-     * @return Seconds an unhealthy node has to become active before it is replaced.
+     * @return seconds an unhealthy node has to become active before it is replaced
      * 
      */
     public Optional<Output<Integer>> unhealthyNodeTimeoutSeconds() {
@@ -295,14 +295,14 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
     }
 
     /**
-     * Range of unhealthy nodes for automated replacement to be allowed.
+     * range of unhealthy nodes for automated replacement to be allowed
      * 
      */
     @Import(name="unhealthyRange")
     private @Nullable Output<String> unhealthyRange;
 
     /**
-     * @return Range of unhealthy nodes for automated replacement to be allowed.
+     * @return range of unhealthy nodes for automated replacement to be allowed
      * 
      */
     public Optional<Output<String>> unhealthyRange() {
@@ -310,14 +310,14 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
     }
 
     /**
-     * Machine pool worker role?
+     * Machine pool worker role
      * 
      */
     @Import(name="workerRole")
     private @Nullable Output<Boolean> workerRole;
 
     /**
-     * @return Machine pool worker role?
+     * @return Machine pool worker role
      * 
      */
     public Optional<Output<Boolean>> workerRole() {
@@ -410,7 +410,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         /**
-         * @param controlPlaneRole Machine pool control plane role?
+         * @param controlPlaneRole Machine pool control plane role
          * 
          * @return builder
          * 
@@ -421,7 +421,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         /**
-         * @param controlPlaneRole Machine pool control plane role?
+         * @param controlPlaneRole Machine pool control plane role
          * 
          * @return builder
          * 
@@ -431,7 +431,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         /**
-         * @param drainBeforeDelete Machine Pool Drain Before Delete?
+         * @param drainBeforeDelete Machine pool drain before delete
          * 
          * @return builder
          * 
@@ -442,7 +442,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         /**
-         * @param drainBeforeDelete Machine Pool Drain Before Delete?
+         * @param drainBeforeDelete Machine pool drain before delete
          * 
          * @return builder
          * 
@@ -452,7 +452,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         /**
-         * @param etcdRole Machine pool etcd role?
+         * @param etcdRole Machine pool etcd role
          * 
          * @return builder
          * 
@@ -463,7 +463,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         /**
-         * @param etcdRole Machine pool etcd role?
+         * @param etcdRole Machine pool etcd role
          * 
          * @return builder
          * 
@@ -515,7 +515,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         /**
-         * @param machineConfig Machine pool node config.
+         * @param machineConfig Machine config data
          * 
          * @return builder
          * 
@@ -526,7 +526,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         /**
-         * @param machineConfig Machine pool node config.
+         * @param machineConfig Machine config data
          * 
          * @return builder
          * 
@@ -536,7 +536,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         /**
-         * @param machineLabels Labels for Machine pool nodes.
+         * @param machineLabels Labels of the machine
          * 
          * @return builder
          * 
@@ -547,7 +547,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         /**
-         * @param machineLabels Labels for Machine pool nodes.
+         * @param machineLabels Labels of the machine
          * 
          * @return builder
          * 
@@ -557,7 +557,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         /**
-         * @param maxUnhealthy Max unhealthy nodes for automated replacement to be allowed.
+         * @param maxUnhealthy max unhealthy nodes for automated replacement to be allowed
          * 
          * @return builder
          * 
@@ -568,7 +568,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         /**
-         * @param maxUnhealthy Max unhealthy nodes for automated replacement to be allowed.
+         * @param maxUnhealthy max unhealthy nodes for automated replacement to be allowed
          * 
          * @return builder
          * 
@@ -599,7 +599,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         /**
-         * @param nodeDrainTimeout Seconds a machine has to drain before deletion.
+         * @param nodeDrainTimeout seconds to wait for machine pool drain to complete before machine deletion
          * 
          * @return builder
          * 
@@ -610,7 +610,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         /**
-         * @param nodeDrainTimeout Seconds a machine has to drain before deletion.
+         * @param nodeDrainTimeout seconds to wait for machine pool drain to complete before machine deletion
          * 
          * @return builder
          * 
@@ -620,7 +620,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         /**
-         * @param nodeStartupTimeoutSeconds Seconds a new node has to become active before it is replaced.
+         * @param nodeStartupTimeoutSeconds seconds a new node has to become active before it is replaced
          * 
          * @return builder
          * 
@@ -631,7 +631,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         /**
-         * @param nodeStartupTimeoutSeconds Seconds a new node has to become active before it is replaced.
+         * @param nodeStartupTimeoutSeconds seconds a new node has to become active before it is replaced
          * 
          * @return builder
          * 
@@ -641,7 +641,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         /**
-         * @param paused Machine pool paused?
+         * @param paused Machine pool paused
          * 
          * @return builder
          * 
@@ -652,7 +652,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         /**
-         * @param paused Machine pool paused?
+         * @param paused Machine pool paused
          * 
          * @return builder
          * 
@@ -662,7 +662,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         /**
-         * @param quantity Machine pool quantity.
+         * @param quantity Machine pool quantity
          * 
          * @return builder
          * 
@@ -673,7 +673,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         /**
-         * @param quantity Machine pool quantity.
+         * @param quantity Machine pool quantity
          * 
          * @return builder
          * 
@@ -683,7 +683,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         /**
-         * @param rollingUpdate Machine pool rolling update.
+         * @param rollingUpdate Machine pool rolling update
          * 
          * @return builder
          * 
@@ -694,7 +694,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         /**
-         * @param rollingUpdate Machine pool rolling update.
+         * @param rollingUpdate Machine pool rolling update
          * 
          * @return builder
          * 
@@ -704,7 +704,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         /**
-         * @param taints Machine pool taints.
+         * @param taints Machine pool taints
          * 
          * @return builder
          * 
@@ -715,7 +715,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         /**
-         * @param taints Machine pool taints.
+         * @param taints Machine pool taints
          * 
          * @return builder
          * 
@@ -725,7 +725,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         /**
-         * @param taints Machine pool taints.
+         * @param taints Machine pool taints
          * 
          * @return builder
          * 
@@ -735,7 +735,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         /**
-         * @param unhealthyNodeTimeoutSeconds Seconds an unhealthy node has to become active before it is replaced.
+         * @param unhealthyNodeTimeoutSeconds seconds an unhealthy node has to become active before it is replaced
          * 
          * @return builder
          * 
@@ -746,7 +746,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         /**
-         * @param unhealthyNodeTimeoutSeconds Seconds an unhealthy node has to become active before it is replaced.
+         * @param unhealthyNodeTimeoutSeconds seconds an unhealthy node has to become active before it is replaced
          * 
          * @return builder
          * 
@@ -756,7 +756,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         /**
-         * @param unhealthyRange Range of unhealthy nodes for automated replacement to be allowed.
+         * @param unhealthyRange range of unhealthy nodes for automated replacement to be allowed
          * 
          * @return builder
          * 
@@ -767,7 +767,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         /**
-         * @param unhealthyRange Range of unhealthy nodes for automated replacement to be allowed.
+         * @param unhealthyRange range of unhealthy nodes for automated replacement to be allowed
          * 
          * @return builder
          * 
@@ -777,7 +777,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         /**
-         * @param workerRole Machine pool worker role?
+         * @param workerRole Machine pool worker role
          * 
          * @return builder
          * 
@@ -788,7 +788,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         /**
-         * @param workerRole Machine pool worker role?
+         * @param workerRole Machine pool worker role
          * 
          * @return builder
          * 

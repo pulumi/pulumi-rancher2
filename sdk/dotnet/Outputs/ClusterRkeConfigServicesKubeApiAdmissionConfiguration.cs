@@ -14,15 +14,15 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterRkeConfigServicesKubeApiAdmissionConfiguration
     {
         /// <summary>
-        /// Admission configuration ApiVersion. Default: `apiserver.config.k8s.io/v1` (string)
+        /// Admission configuration ApiVersion
         /// </summary>
         public readonly string? ApiVersion;
         /// <summary>
-        /// Admission configuration Kind. Default: `AdmissionConfiguration` (string)
+        /// Admission configuration Kind
         /// </summary>
         public readonly string? Kind;
         /// <summary>
-        /// Admission configuration plugins. (list `plugin`)
+        /// Admission configuration plugins
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin> Plugins;
 

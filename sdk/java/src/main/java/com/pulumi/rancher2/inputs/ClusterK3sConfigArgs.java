@@ -17,14 +17,14 @@ public final class ClusterK3sConfigArgs extends com.pulumi.resources.ResourceArg
     public static final ClusterK3sConfigArgs Empty = new ClusterK3sConfigArgs();
 
     /**
-     * K3S upgrade strategy (List maxitems: 1)
+     * The K3S upgrade strategy
      * 
      */
     @Import(name="upgradeStrategy")
     private @Nullable Output<ClusterK3sConfigUpgradeStrategyArgs> upgradeStrategy;
 
     /**
-     * @return K3S upgrade strategy (List maxitems: 1)
+     * @return The K3S upgrade strategy
      * 
      */
     public Optional<Output<ClusterK3sConfigUpgradeStrategyArgs>> upgradeStrategy() {
@@ -32,14 +32,14 @@ public final class ClusterK3sConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * rancher-monitoring chart version (string)
+     * The K3S kubernetes version
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return rancher-monitoring chart version (string)
+     * @return The K3S kubernetes version
      * 
      */
     public Optional<Output<String>> version() {
@@ -72,7 +72,7 @@ public final class ClusterK3sConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param upgradeStrategy K3S upgrade strategy (List maxitems: 1)
+         * @param upgradeStrategy The K3S upgrade strategy
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ClusterK3sConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param upgradeStrategy K3S upgrade strategy (List maxitems: 1)
+         * @param upgradeStrategy The K3S upgrade strategy
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class ClusterK3sConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param version rancher-monitoring chart version (string)
+         * @param version The K3S kubernetes version
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ClusterK3sConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param version rancher-monitoring chart version (string)
+         * @param version The K3S kubernetes version
          * 
          * @return builder
          * 

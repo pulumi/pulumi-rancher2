@@ -17,14 +17,14 @@ public final class CloudCredentialHarvesterCredentialConfigArgs extends com.pulu
     public static final CloudCredentialHarvesterCredentialConfigArgs Empty = new CloudCredentialHarvesterCredentialConfigArgs();
 
     /**
-     * Imported Harvester Cluster ID (string)
+     * The cluster id of imported Harvester cluster
      * 
      */
     @Import(name="clusterId")
     private @Nullable Output<String> clusterId;
 
     /**
-     * @return Imported Harvester Cluster ID (string)
+     * @return The cluster id of imported Harvester cluster
      * 
      */
     public Optional<Output<String>> clusterId() {
@@ -32,14 +32,14 @@ public final class CloudCredentialHarvesterCredentialConfigArgs extends com.pulu
     }
 
     /**
-     * Harvester Cluster Type. Supported values : `&#34;imported&#34; | &#34;external&#34;` (string)
+     * Harvester cluster type. must be imported or external
      * 
      */
     @Import(name="clusterType", required=true)
     private Output<String> clusterType;
 
     /**
-     * @return Harvester Cluster Type. Supported values : `&#34;imported&#34; | &#34;external&#34;` (string)
+     * @return Harvester cluster type. must be imported or external
      * 
      */
     public Output<String> clusterType() {
@@ -47,14 +47,14 @@ public final class CloudCredentialHarvesterCredentialConfigArgs extends com.pulu
     }
 
     /**
-     * Harvester Cluster KubeConfig Content (string)
+     * Harvester cluster kubeconfig content
      * 
      */
     @Import(name="kubeconfigContent", required=true)
     private Output<String> kubeconfigContent;
 
     /**
-     * @return Harvester Cluster KubeConfig Content (string)
+     * @return Harvester cluster kubeconfig content
      * 
      */
     public Output<String> kubeconfigContent() {
@@ -88,7 +88,7 @@ public final class CloudCredentialHarvesterCredentialConfigArgs extends com.pulu
         }
 
         /**
-         * @param clusterId Imported Harvester Cluster ID (string)
+         * @param clusterId The cluster id of imported Harvester cluster
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class CloudCredentialHarvesterCredentialConfigArgs extends com.pulu
         }
 
         /**
-         * @param clusterId Imported Harvester Cluster ID (string)
+         * @param clusterId The cluster id of imported Harvester cluster
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class CloudCredentialHarvesterCredentialConfigArgs extends com.pulu
         }
 
         /**
-         * @param clusterType Harvester Cluster Type. Supported values : `&#34;imported&#34; | &#34;external&#34;` (string)
+         * @param clusterType Harvester cluster type. must be imported or external
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class CloudCredentialHarvesterCredentialConfigArgs extends com.pulu
         }
 
         /**
-         * @param clusterType Harvester Cluster Type. Supported values : `&#34;imported&#34; | &#34;external&#34;` (string)
+         * @param clusterType Harvester cluster type. must be imported or external
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class CloudCredentialHarvesterCredentialConfigArgs extends com.pulu
         }
 
         /**
-         * @param kubeconfigContent Harvester Cluster KubeConfig Content (string)
+         * @param kubeconfigContent Harvester cluster kubeconfig content
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class CloudCredentialHarvesterCredentialConfigArgs extends com.pulu
         }
 
         /**
-         * @param kubeconfigContent Harvester Cluster KubeConfig Content (string)
+         * @param kubeconfigContent Harvester cluster kubeconfig content
          * 
          * @return builder
          * 

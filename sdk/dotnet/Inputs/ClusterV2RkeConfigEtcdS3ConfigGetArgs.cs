@@ -13,43 +13,43 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterV2RkeConfigEtcdS3ConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Bucket name for S3 service.
+        /// ETCD snapshot S3 bucket
         /// </summary>
         [Input("bucket", required: true)]
         public Input<string> Bucket { get; set; } = null!;
 
         /// <summary>
-        /// ETCD snapshot S3 cloud credential name.
+        /// ETCD snapshot S3 cloud credential name
         /// </summary>
         [Input("cloudCredentialName")]
         public Input<string>? CloudCredentialName { get; set; }
 
         /// <summary>
-        /// ETCD snapshot S3 endpoint.
+        /// ETCD snapshot S3 endpoint
         /// </summary>
         [Input("endpoint", required: true)]
         public Input<string> Endpoint { get; set; } = null!;
 
         /// <summary>
-        /// ETCD snapshot S3 endpoint CA.
+        /// ETCD snapshot S3 endpoint CA
         /// </summary>
         [Input("endpointCa")]
         public Input<string>? EndpointCa { get; set; }
 
         /// <summary>
-        /// ETCD snapshot S3 folder.
+        /// ETCD snapshot S3 folder
         /// </summary>
         [Input("folder")]
         public Input<string>? Folder { get; set; }
 
         /// <summary>
-        /// ETCD snapshot S3 region.
+        /// ETCD snapshot S3 region
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Disable ETCD skip ssl verify.
+        /// Disable ETCD skip ssl verify
         /// </summary>
         [Input("skipSslVerify")]
         public Input<bool>? SkipSslVerify { get; set; }

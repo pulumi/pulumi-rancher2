@@ -300,7 +300,6 @@ class GlobalDns(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -325,9 +324,7 @@ class GlobalDns(pulumi.CustomResource):
                 "project2",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -349,7 +346,6 @@ class GlobalDns(pulumi.CustomResource):
             provider_id=foo.id,
             multi_cluster_app_id="<MCA_ID>")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -381,7 +377,6 @@ class GlobalDns(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -406,9 +401,7 @@ class GlobalDns(pulumi.CustomResource):
                 "project2",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -430,7 +423,6 @@ class GlobalDns(pulumi.CustomResource):
             provider_id=foo.id,
             multi_cluster_app_id="<MCA_ID>")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

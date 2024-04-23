@@ -15,113 +15,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterRkeConfigServicesKubelet {
-    /**
-     * @return Cluster DNS Server option for kubelet service (string)
-     * 
-     */
     private @Nullable String clusterDnsServer;
-    /**
-     * @return Cluster Domain option for kubelet service (string)
-     * 
-     */
     private @Nullable String clusterDomain;
-    /**
-     * @return Extra arguments for scheduler service (map)
-     * 
-     */
     private @Nullable Map<String,Object> extraArgs;
-    /**
-     * @return Extra binds for scheduler service (list)
-     * 
-     */
     private @Nullable List<String> extraBinds;
-    /**
-     * @return Extra environment for scheduler service (list)
-     * 
-     */
     private @Nullable List<String> extraEnvs;
-    /**
-     * @return Enable or disable failing when swap on is not supported (bool)
-     * 
-     */
     private @Nullable Boolean failSwapOn;
-    /**
-     * @return [Generate a certificate signed by the kube-ca](https://rancher.com/docs/rke/latest/en/config-options/services/#kubelet-serving-certificate-requirements). Default `false` (bool)
-     * 
-     */
     private @Nullable Boolean generateServingCertificate;
-    /**
-     * @return Docker image for scheduler service (string)
-     * 
-     */
     private @Nullable String image;
-    /**
-     * @return Infra container image for kubelet service (string)
-     * 
-     */
     private @Nullable String infraContainerImage;
 
     private ClusterRkeConfigServicesKubelet() {}
-    /**
-     * @return Cluster DNS Server option for kubelet service (string)
-     * 
-     */
     public Optional<String> clusterDnsServer() {
         return Optional.ofNullable(this.clusterDnsServer);
     }
-    /**
-     * @return Cluster Domain option for kubelet service (string)
-     * 
-     */
     public Optional<String> clusterDomain() {
         return Optional.ofNullable(this.clusterDomain);
     }
-    /**
-     * @return Extra arguments for scheduler service (map)
-     * 
-     */
     public Map<String,Object> extraArgs() {
         return this.extraArgs == null ? Map.of() : this.extraArgs;
     }
-    /**
-     * @return Extra binds for scheduler service (list)
-     * 
-     */
     public List<String> extraBinds() {
         return this.extraBinds == null ? List.of() : this.extraBinds;
     }
-    /**
-     * @return Extra environment for scheduler service (list)
-     * 
-     */
     public List<String> extraEnvs() {
         return this.extraEnvs == null ? List.of() : this.extraEnvs;
     }
-    /**
-     * @return Enable or disable failing when swap on is not supported (bool)
-     * 
-     */
     public Optional<Boolean> failSwapOn() {
         return Optional.ofNullable(this.failSwapOn);
     }
-    /**
-     * @return [Generate a certificate signed by the kube-ca](https://rancher.com/docs/rke/latest/en/config-options/services/#kubelet-serving-certificate-requirements). Default `false` (bool)
-     * 
-     */
     public Optional<Boolean> generateServingCertificate() {
         return Optional.ofNullable(this.generateServingCertificate);
     }
-    /**
-     * @return Docker image for scheduler service (string)
-     * 
-     */
     public Optional<String> image() {
         return Optional.ofNullable(this.image);
     }
-    /**
-     * @return Infra container image for kubelet service (string)
-     * 
-     */
     public Optional<String> infraContainerImage() {
         return Optional.ofNullable(this.infraContainerImage);
     }

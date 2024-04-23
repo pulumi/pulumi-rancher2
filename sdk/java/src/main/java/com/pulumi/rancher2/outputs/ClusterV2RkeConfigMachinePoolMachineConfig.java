@@ -13,12 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterV2RkeConfigMachinePoolMachineConfig {
     /**
-     * @return Api version of the machine_config.
+     * @return Machine config API version
      * 
      */
     private @Nullable String apiVersion;
     /**
-     * @return Machine config kind.
+     * @return Machine config kind
      * 
      */
     private String kind;
@@ -30,14 +30,14 @@ public final class ClusterV2RkeConfigMachinePoolMachineConfig {
 
     private ClusterV2RkeConfigMachinePoolMachineConfig() {}
     /**
-     * @return Api version of the machine_config.
+     * @return Machine config API version
      * 
      */
     public Optional<String> apiVersion() {
         return Optional.ofNullable(this.apiVersion);
     }
     /**
-     * @return Machine config kind.
+     * @return Machine config kind
      * 
      */
     public String kind() {

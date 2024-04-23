@@ -16,7 +16,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<Inputs.ClusterFleetAgentDeploymentCustomizationAppendTolerationArgs>? _appendTolerations;
 
         /// <summary>
-        /// User defined tolerations to append to agent (list)
+        /// User defined tolerations to append to agent
         /// </summary>
         public InputList<Inputs.ClusterFleetAgentDeploymentCustomizationAppendTolerationArgs> AppendTolerations
         {
@@ -25,7 +25,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// User defined affinity to override default agent affinity (string)
+        /// User defined affinity to override default agent affinity
         /// </summary>
         [Input("overrideAffinity")]
         public Input<string>? OverrideAffinity { get; set; }
@@ -34,7 +34,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<Inputs.ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirementArgs>? _overrideResourceRequirements;
 
         /// <summary>
-        /// User defined resource requirements to set on the agent (list)
+        /// User defined resource requirements to set on the agent
         /// </summary>
         public InputList<Inputs.ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirementArgs> OverrideResourceRequirements
         {

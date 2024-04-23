@@ -12,9 +12,6 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterRkeConfigNetworkWeaveNetworkProviderArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Registry password (string)
-        /// </summary>
         [Input("password", required: true)]
         public Input<string> Password { get; set; } = null!;
 

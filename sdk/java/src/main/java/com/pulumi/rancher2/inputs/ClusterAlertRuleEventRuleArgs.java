@@ -17,14 +17,14 @@ public final class ClusterAlertRuleEventRuleArgs extends com.pulumi.resources.Re
     public static final ClusterAlertRuleEventRuleArgs Empty = new ClusterAlertRuleEventRuleArgs();
 
     /**
-     * Event type. Supported values : `&#34;Warning&#34; | &#34;Normal&#34;`. Default: `Warning` (string)
+     * Event type
      * 
      */
     @Import(name="eventType")
     private @Nullable Output<String> eventType;
 
     /**
-     * @return Event type. Supported values : `&#34;Warning&#34; | &#34;Normal&#34;`. Default: `Warning` (string)
+     * @return Event type
      * 
      */
     public Optional<Output<String>> eventType() {
@@ -32,14 +32,14 @@ public final class ClusterAlertRuleEventRuleArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Resource kind. Supported values : `&#34;DaemonSet&#34; | &#34;Deployment&#34; | &#34;Node&#34; | &#34;Pod&#34; | &#34;StatefulSet&#34;` (string)
+     * Resource kind
      * 
      */
     @Import(name="resourceKind", required=true)
     private Output<String> resourceKind;
 
     /**
-     * @return Resource kind. Supported values : `&#34;DaemonSet&#34; | &#34;Deployment&#34; | &#34;Node&#34; | &#34;Pod&#34; | &#34;StatefulSet&#34;` (string)
+     * @return Resource kind
      * 
      */
     public Output<String> resourceKind() {
@@ -72,7 +72,7 @@ public final class ClusterAlertRuleEventRuleArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param eventType Event type. Supported values : `&#34;Warning&#34; | &#34;Normal&#34;`. Default: `Warning` (string)
+         * @param eventType Event type
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ClusterAlertRuleEventRuleArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param eventType Event type. Supported values : `&#34;Warning&#34; | &#34;Normal&#34;`. Default: `Warning` (string)
+         * @param eventType Event type
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class ClusterAlertRuleEventRuleArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param resourceKind Resource kind. Supported values : `&#34;DaemonSet&#34; | &#34;Deployment&#34; | &#34;Node&#34; | &#34;Pod&#34; | &#34;StatefulSet&#34;` (string)
+         * @param resourceKind Resource kind
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ClusterAlertRuleEventRuleArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param resourceKind Resource kind. Supported values : `&#34;DaemonSet&#34; | &#34;Deployment&#34; | &#34;Node&#34; | &#34;Pod&#34; | &#34;StatefulSet&#34;` (string)
+         * @param resourceKind Resource kind
          * 
          * @return builder
          * 

@@ -18,7 +18,6 @@ namespace Pulumi.Rancher2
     /// 
     /// ### Creating Rancher v2 imported cluster
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -36,7 +35,6 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Creating Rancher v2 RKE cluster
     /// 
@@ -44,7 +42,6 @@ namespace Pulumi.Rancher2
     /// 
     /// **Note** Cluster monitoring version `0.2.0` and above, can't be enabled until cluster is fully deployed as [`kubeVersion`](https://github.com/rancher/system-charts/blob/52be656700468904b9bf15c3f39cd7112e1f8c9b/charts/rancher-monitoring/v0.2.0/Chart.yaml#L12) requirement has been introduced to helm chart
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -95,11 +92,9 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Creating Rancher v2 RKE cluster enabling/customizing monitoring and istio
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -219,11 +214,9 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Creating Rancher v2 RKE cluster assigning a node pool (overlapped planes)
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -282,11 +275,9 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Creating Rancher v2 RKE cluster from template. For Rancher v2.3.x and above.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -346,11 +337,9 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Creating Rancher v2 RKE cluster with upgrade strategy. For Rancher v2.4.x and above.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -414,11 +403,9 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Creating Rancher v2 RKE cluster with cluster agent customization. For Rancher v2.7.5 and above.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -483,11 +470,9 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Creating Rancher v2 RKE cluster with Pod Security Admission Configuration Template (PSACT). For Rancher v2.7.2 and above.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -544,11 +529,9 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Importing EKS cluster to Rancher v2, using `eks_config_v2`. For Rancher v2.5.x and above.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -583,11 +566,9 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Creating EKS cluster from Rancher v2, using `eks_config_v2`. For Rancher v2.5.x and above.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -646,13 +627,11 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Creating EKS cluster from Rancher v2, using `eks_config_v2` and launch template. For Rancher v2.5.6 and above.
     /// 
     /// Note: To use `launch_template` you must provide the ID (seen as `&lt;EC2_LAUNCH_TEMPLATE_ID&gt;`) to the template either as a static value. Or fetched via AWS data-source using one of: aws_ami first and provide the ID to that.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -710,11 +689,9 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Creating AKS cluster from Rancher v2, using `aks_config_v2`. For Rancher v2.6.0 and above.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -794,7 +771,6 @@ namespace Pulumi.Rancher2
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -832,7 +808,7 @@ namespace Pulumi.Rancher2
         public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
 
         /// <summary>
-        /// TLS CA certificate for etcd service (string)
+        /// (Computed/Sensitive) K8s cluster ca cert (string)
         /// </summary>
         [Output("caCert")]
         public Output<string> CaCert { get; private set; } = null!;
@@ -1392,7 +1368,7 @@ namespace Pulumi.Rancher2
         private Input<string>? _caCert;
 
         /// <summary>
-        /// TLS CA certificate for etcd service (string)
+        /// (Computed/Sensitive) K8s cluster ca cert (string)
         /// </summary>
         public Input<string>? CaCert
         {

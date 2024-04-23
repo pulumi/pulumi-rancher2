@@ -98,14 +98,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * TLS CA certificate for etcd service (string)
+     * (Computed/Sensitive) K8s cluster ca cert (string)
      * 
      */
     @Import(name="caCert")
     private @Nullable Output<String> caCert;
 
     /**
-     * @return TLS CA certificate for etcd service (string)
+     * @return (Computed/Sensitive) K8s cluster ca cert (string)
      * 
      */
     public Optional<Output<String>> caCert() {
@@ -819,7 +819,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param caCert TLS CA certificate for etcd service (string)
+         * @param caCert (Computed/Sensitive) K8s cluster ca cert (string)
          * 
          * @return builder
          * 
@@ -830,7 +830,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param caCert TLS CA certificate for etcd service (string)
+         * @param caCert (Computed/Sensitive) K8s cluster ca cert (string)
          * 
          * @return builder
          * 

@@ -14,26 +14,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ProjectProjectMonitoringInput {
     /**
-     * @return Key/value answers for monitor input (map)
+     * @return Answers for monitor input
      * 
      */
     private @Nullable Map<String,Object> answers;
     /**
-     * @return rancher-monitoring chart version (string)
+     * @return Monitoring version
      * 
      */
     private @Nullable String version;
 
     private ProjectProjectMonitoringInput() {}
     /**
-     * @return Key/value answers for monitor input (map)
+     * @return Answers for monitor input
      * 
      */
     public Map<String,Object> answers() {
         return this.answers == null ? Map.of() : this.answers;
     }
     /**
-     * @return rancher-monitoring chart version (string)
+     * @return Monitoring version
      * 
      */
     public Optional<String> version() {

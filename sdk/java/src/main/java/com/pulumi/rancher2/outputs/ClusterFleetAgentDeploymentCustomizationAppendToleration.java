@@ -13,65 +13,25 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterFleetAgentDeploymentCustomizationAppendToleration {
-    /**
-     * @return The GKE taint effect (string)
-     * 
-     */
     private @Nullable String effect;
-    /**
-     * @return The GKE taint key (string)
-     * 
-     */
     private String key;
-    /**
-     * @return The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
-     * 
-     */
     private @Nullable String operator;
-    /**
-     * @return The toleration seconds (int)
-     * 
-     */
     private @Nullable Integer seconds;
-    /**
-     * @return The GKE taint value (string)
-     * 
-     */
     private @Nullable String value;
 
     private ClusterFleetAgentDeploymentCustomizationAppendToleration() {}
-    /**
-     * @return The GKE taint effect (string)
-     * 
-     */
     public Optional<String> effect() {
         return Optional.ofNullable(this.effect);
     }
-    /**
-     * @return The GKE taint key (string)
-     * 
-     */
     public String key() {
         return this.key;
     }
-    /**
-     * @return The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
-     * 
-     */
     public Optional<String> operator() {
         return Optional.ofNullable(this.operator);
     }
-    /**
-     * @return The toleration seconds (int)
-     * 
-     */
     public Optional<Integer> seconds() {
         return Optional.ofNullable(this.seconds);
     }
-    /**
-     * @return The GKE taint value (string)
-     * 
-     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

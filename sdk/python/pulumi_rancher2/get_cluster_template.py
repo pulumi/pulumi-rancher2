@@ -135,14 +135,12 @@ def get_cluster_template(annotations: Optional[Mapping[str, Any]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
 
     foo = rancher2.get_cluster_template(name="foo")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Mapping[str, Any] annotations: (Computed) Annotations for the cluster template (map)
@@ -181,14 +179,12 @@ def get_cluster_template_output(annotations: Optional[pulumi.Input[Optional[Mapp
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
 
     foo = rancher2.get_cluster_template(name="foo")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Mapping[str, Any] annotations: (Computed) Annotations for the cluster template (map)

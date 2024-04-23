@@ -14,10 +14,6 @@ namespace Pulumi.Rancher2.Inputs
     {
         [Input("nodeSelector")]
         private InputMap<object>? _nodeSelector;
-
-        /// <summary>
-        /// RKE monitoring node selector (map)
-        /// </summary>
         public InputMap<object> NodeSelector
         {
             get => _nodeSelector ?? (_nodeSelector = new InputMap<object>());
@@ -26,25 +22,15 @@ namespace Pulumi.Rancher2.Inputs
 
         [Input("options")]
         private InputMap<object>? _options;
-
-        /// <summary>
-        /// RKE options for network (map)
-        /// </summary>
         public InputMap<object> Options
         {
             get => _options ?? (_options = new InputMap<object>());
             set => _options = value;
         }
 
-        /// <summary>
-        /// RKE monitoring provider (string)
-        /// </summary>
         [Input("provider")]
         public Input<string>? Provider { get; set; }
 
-        /// <summary>
-        /// RKE monitoring replicas (int)
-        /// </summary>
         [Input("replicas")]
         public Input<int>? Replicas { get; set; }
 
@@ -52,7 +38,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<Inputs.ClusterRkeConfigMonitoringTolerationGetArgs>? _tolerations;
 
         /// <summary>
-        /// Network add-on tolerations (list)
+        /// Monitoring add-on tolerations
         /// </summary>
         public InputList<Inputs.ClusterRkeConfigMonitoringTolerationGetArgs> Tolerations
         {
@@ -61,7 +47,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// RKE monitoring update strategy (list Maxitems: 1)
+        /// Update deployment strategy
         /// </summary>
         [Input("updateStrategy")]
         public Input<Inputs.ClusterRkeConfigMonitoringUpdateStrategyGetArgs>? UpdateStrategy { get; set; }

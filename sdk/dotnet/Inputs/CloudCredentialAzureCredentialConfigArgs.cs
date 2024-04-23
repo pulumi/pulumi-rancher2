@@ -16,7 +16,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _clientId;
 
         /// <summary>
-        /// Azure Service Principal Account ID (string)
+        /// Azure Service Principal Account ID
         /// </summary>
         public Input<string>? ClientId
         {
@@ -32,7 +32,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _clientSecret;
 
         /// <summary>
-        /// Azure Service Principal Account password (string)
+        /// Azure Service Principal Account password
         /// </summary>
         public Input<string>? ClientSecret
         {
@@ -45,7 +45,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Azure environment (e.g. AzurePublicCloud, AzureChinaCloud) (string)
+        /// Azure environment (e.g. AzurePublicCloud, AzureChinaCloud)
         /// </summary>
         [Input("environment")]
         public Input<string>? Environment { get; set; }
@@ -54,7 +54,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _subscriptionId;
 
         /// <summary>
-        /// Azure Subscription ID (string)
+        /// Azure Subscription ID
         /// </summary>
         public Input<string>? SubscriptionId
         {
@@ -67,7 +67,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Azure Tenant ID (string)
+        /// Azure Tenant ID
         /// </summary>
         [Input("tenantId")]
         public Input<string>? TenantId { get; set; }

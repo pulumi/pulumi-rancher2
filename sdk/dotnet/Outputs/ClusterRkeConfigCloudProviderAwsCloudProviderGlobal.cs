@@ -13,45 +13,15 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterRkeConfigCloudProviderAwsCloudProviderGlobal
     {
-        /// <summary>
-        /// Default `false` (bool)
-        /// </summary>
         public readonly bool? DisableSecurityGroupIngress;
-        /// <summary>
-        /// Default `false` (bool)
-        /// </summary>
         public readonly bool? DisableStrictZoneCheck;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string? ElbSecurityGroup;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string? KubernetesClusterId;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string? KubernetesClusterTag;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string? RoleArn;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string? RouteTableId;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string? SubnetId;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string? Vpc;
-        /// <summary>
-        /// The GKE cluster zone. Required if `region` not set (string)
-        /// </summary>
         public readonly string? Zone;
 
         [OutputConstructor]

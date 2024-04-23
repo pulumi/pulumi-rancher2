@@ -152,7 +152,6 @@ def get_project_role_template_binding(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
@@ -160,7 +159,6 @@ def get_project_role_template_binding(name: Optional[str] = None,
     foo = rancher2.get_project_role_template_binding(name="foo",
         project_id="foo_id")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the project role template binding (string)
@@ -197,7 +195,6 @@ def get_project_role_template_binding_output(name: Optional[pulumi.Input[str]] =
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
@@ -205,7 +202,6 @@ def get_project_role_template_binding_output(name: Optional[pulumi.Input[str]] =
     foo = rancher2.get_project_role_template_binding(name="foo",
         project_id="foo_id")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the project role template binding (string)

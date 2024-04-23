@@ -14,11 +14,11 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterGkeConfigV2
     {
         /// <summary>
-        /// The GKE cluster addons (List maxitems:1)
+        /// The GKE cluster addons
         /// </summary>
         public readonly Outputs.ClusterGkeConfigV2ClusterAddons? ClusterAddons;
         /// <summary>
-        /// The GKE cluster ip v4 allocation cidr block (string)
+        /// The GKE ip v4 cidr block
         /// </summary>
         public readonly string? ClusterIpv4CidrBlock;
         /// <summary>
@@ -26,23 +26,23 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// Enable Kubernetes alpha. Default: `false` (bool)
+        /// Enable Kubernetes alpha
         /// </summary>
         public readonly bool? EnableKubernetesAlpha;
         /// <summary>
-        /// Google credential secret (string)
+        /// Google credential secret
         /// </summary>
         public readonly string GoogleCredentialSecret;
         /// <summary>
-        /// Is GKE cluster imported? Default: `false` (bool)
+        /// Is GKE cluster imported?
         /// </summary>
         public readonly bool? Imported;
         /// <summary>
-        /// The GKE ip allocation policy (List maxitems:1)
+        /// The GKE ip allocation policy
         /// </summary>
         public readonly Outputs.ClusterGkeConfigV2IpAllocationPolicy? IpAllocationPolicy;
         /// <summary>
-        /// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        /// The kubernetes master version
         /// </summary>
         public readonly string? KubernetesVersion;
         /// <summary>
@@ -50,23 +50,23 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Labels;
         /// <summary>
-        /// The GKE cluster locations (List)
+        /// The GKE cluster locations
         /// </summary>
         public readonly ImmutableArray<string> Locations;
         /// <summary>
-        /// The GKE cluster logging service (string)
+        /// The GKE cluster logging service
         /// </summary>
         public readonly string? LoggingService;
         /// <summary>
-        /// The GKE cluster maintenance window (string)
+        /// The GKE cluster maintenance window
         /// </summary>
         public readonly string? MaintenanceWindow;
         /// <summary>
-        /// The GKE cluster master authorized networks config (List maxitems:1)
+        /// The GKE cluster master authorized networks config
         /// </summary>
         public readonly Outputs.ClusterGkeConfigV2MasterAuthorizedNetworksConfig? MasterAuthorizedNetworksConfig;
         /// <summary>
-        /// The GKE cluster monitoring service (string)
+        /// The GKE cluster monitoring service
         /// </summary>
         public readonly string? MonitoringService;
         /// <summary>
@@ -74,35 +74,35 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The GKE cluster network. Required for create new cluster (string)
+        /// The GKE cluster network
         /// </summary>
         public readonly string? Network;
         /// <summary>
-        /// Is GKE cluster network policy enabled? Default: `false` (bool)
+        /// Is GKE cluster network policy enabled?
         /// </summary>
         public readonly bool? NetworkPolicyEnabled;
         /// <summary>
-        /// The GKE cluster node pools. Required for create new cluster (List)
+        /// The GKE cluster node pools
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterGkeConfigV2NodePool> NodePools;
         /// <summary>
-        /// The GKE private cluster config (List maxitems:1)
+        /// The GKE private cluster config
         /// </summary>
         public readonly Outputs.ClusterGkeConfigV2PrivateClusterConfig? PrivateClusterConfig;
         /// <summary>
-        /// Project ID to apply answer (string)
+        /// The GKE project id
         /// </summary>
         public readonly string ProjectId;
         /// <summary>
-        /// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+        /// The GKE cluster region. Required if `zone` is empty
         /// </summary>
         public readonly string? Region;
         /// <summary>
-        /// The GKE cluster subnetwork. Required for create new cluster (string)
+        /// The GKE cluster subnetwork
         /// </summary>
         public readonly string? Subnetwork;
         /// <summary>
-        /// The GKE cluster zone. Required if `region` not set (string)
+        /// The GKE cluster zone. Required if `region` is empty
         /// </summary>
         public readonly string? Zone;
 

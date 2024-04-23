@@ -12,89 +12,33 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EtcdBackupBackupConfigS3BackupConfig {
-    /**
-     * @return Access key for S3 service (string)
-     * 
-     */
     private @Nullable String accessKey;
-    /**
-     * @return Bucket name for S3 service (string)
-     * 
-     */
     private String bucketName;
-    /**
-     * @return Base64 encoded custom CA for S3 service. Use filebase64(&lt;FILE&gt;) for encoding file. Available from Rancher v2.2.5 (string)
-     * 
-     */
     private @Nullable String customCa;
-    /**
-     * @return Endpoint for S3 service (string)
-     * 
-     */
     private String endpoint;
-    /**
-     * @return Folder for S3 service. Available from Rancher v2.2.7 (string)
-     * 
-     */
     private @Nullable String folder;
-    /**
-     * @return Region for S3 service (string)
-     * 
-     */
     private @Nullable String region;
-    /**
-     * @return Secret key for S3 service (string)
-     * 
-     */
     private @Nullable String secretKey;
 
     private EtcdBackupBackupConfigS3BackupConfig() {}
-    /**
-     * @return Access key for S3 service (string)
-     * 
-     */
     public Optional<String> accessKey() {
         return Optional.ofNullable(this.accessKey);
     }
-    /**
-     * @return Bucket name for S3 service (string)
-     * 
-     */
     public String bucketName() {
         return this.bucketName;
     }
-    /**
-     * @return Base64 encoded custom CA for S3 service. Use filebase64(&lt;FILE&gt;) for encoding file. Available from Rancher v2.2.5 (string)
-     * 
-     */
     public Optional<String> customCa() {
         return Optional.ofNullable(this.customCa);
     }
-    /**
-     * @return Endpoint for S3 service (string)
-     * 
-     */
     public String endpoint() {
         return this.endpoint;
     }
-    /**
-     * @return Folder for S3 service. Available from Rancher v2.2.7 (string)
-     * 
-     */
     public Optional<String> folder() {
         return Optional.ofNullable(this.folder);
     }
-    /**
-     * @return Region for S3 service (string)
-     * 
-     */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
-    /**
-     * @return Secret key for S3 service (string)
-     * 
-     */
     public Optional<String> secretKey() {
         return Optional.ofNullable(this.secretKey);
     }

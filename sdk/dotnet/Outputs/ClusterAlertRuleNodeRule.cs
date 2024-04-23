@@ -14,23 +14,23 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterAlertRuleNodeRule
     {
         /// <summary>
-        /// System service rule condition. Supported values : `"controller-manager" | "etcd" | "scheduler"`. Default: `scheduler` (string)
+        /// Node rule condition
         /// </summary>
         public readonly string? Condition;
         /// <summary>
-        /// Node rule cpu threshold. Default: `70` (int)
+        /// Node rule cpu threshold
         /// </summary>
         public readonly int? CpuThreshold;
         /// <summary>
-        /// Node rule mem threshold. Default: `70` (int)
+        /// Node rule mem threshold
         /// </summary>
         public readonly int? MemThreshold;
         /// <summary>
-        /// Node ID (string)
+        /// Node ID
         /// </summary>
         public readonly string? NodeId;
         /// <summary>
-        /// Node rule selector (map)
+        /// Node rule selector
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Selector;
 

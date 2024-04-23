@@ -14,23 +14,23 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterEksConfigV2
     {
         /// <summary>
-        /// The EKS cloud_credential id (string)
+        /// The AWS Cloud Credential ID to use
         /// </summary>
         public readonly string CloudCredentialId;
         /// <summary>
-        /// Is GKE cluster imported? Default: `false` (bool)
+        /// Is EKS cluster imported?
         /// </summary>
         public readonly bool? Imported;
         /// <summary>
-        /// The AWS kms label ARN to use (string, e.g. arn:aws:kms:&lt;ZONE&gt;:&lt;123456789100&gt;:alias/&lt;NAME&gt;)
+        /// The AWS kms key to use
         /// </summary>
         public readonly string? KmsKey;
         /// <summary>
-        /// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        /// The kubernetes master version
         /// </summary>
         public readonly string? KubernetesVersion;
         /// <summary>
-        /// The AWS cloudwatch logging types. `audit`, `api`, `scheduler`, `controllerManager` and `authenticator` values are allowed (list)
+        /// The AWS logging types
         /// </summary>
         public readonly ImmutableArray<string> LoggingTypes;
         /// <summary>
@@ -38,43 +38,43 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// The EKS cluster name to import. Required to create a new cluster (list)
+        /// The AWS node groups to use
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterEksConfigV2NodeGroup> NodeGroups;
         /// <summary>
-        /// The EKS cluster has private access (bool)
+        /// The EKS cluster has private access
         /// </summary>
         public readonly bool? PrivateAccess;
         /// <summary>
-        /// The EKS cluster has public access (bool)
+        /// The EKS cluster has public access
         /// </summary>
         public readonly bool? PublicAccess;
         /// <summary>
-        /// The EKS cluster public access sources (map)
+        /// The EKS cluster public access sources
         /// </summary>
         public readonly ImmutableArray<string> PublicAccessSources;
         /// <summary>
-        /// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+        /// The AWS Region to create the EKS cluster in
         /// </summary>
         public readonly string? Region;
         /// <summary>
-        /// Enable EKS cluster secret encryption (bool)
+        /// Enable EKS cluster secret encryption
         /// </summary>
         public readonly bool? SecretsEncryption;
         /// <summary>
-        /// List of security groups to use for the cluster (list)
+        /// List of security groups to use for the cluster
         /// </summary>
         public readonly ImmutableArray<string> SecurityGroups;
         /// <summary>
-        /// The AWS service role to use (string)
+        /// The AWS service role to use
         /// </summary>
         public readonly string? ServiceRole;
         /// <summary>
-        /// The EKS node group subnets (list string)
+        /// List of subnets in the virtual network to use
         /// </summary>
         public readonly ImmutableArray<string> Subnets;
         /// <summary>
-        /// The GKE node config tags (List)
+        /// The EKS cluster tags
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Tags;
 

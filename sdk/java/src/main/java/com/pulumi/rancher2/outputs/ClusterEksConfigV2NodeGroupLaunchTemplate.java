@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterEksConfigV2NodeGroupLaunchTemplate {
     /**
-     * @return The EKS node group launch template ID (string)
+     * @return (Computed) The ID of the resource (string)
      * 
      */
     private String id;
@@ -24,14 +24,14 @@ public final class ClusterEksConfigV2NodeGroupLaunchTemplate {
      */
     private @Nullable String name;
     /**
-     * @return rancher-monitoring chart version (string)
+     * @return The EKS node group launch template version
      * 
      */
     private @Nullable Integer version;
 
     private ClusterEksConfigV2NodeGroupLaunchTemplate() {}
     /**
-     * @return The EKS node group launch template ID (string)
+     * @return (Computed) The ID of the resource (string)
      * 
      */
     public String id() {
@@ -45,7 +45,7 @@ public final class ClusterEksConfigV2NodeGroupLaunchTemplate {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return rancher-monitoring chart version (string)
+     * @return The EKS node group launch template version
      * 
      */
     public Optional<Integer> version() {

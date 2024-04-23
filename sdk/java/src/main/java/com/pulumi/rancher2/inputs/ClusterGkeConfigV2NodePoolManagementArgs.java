@@ -16,14 +16,14 @@ public final class ClusterGkeConfigV2NodePoolManagementArgs extends com.pulumi.r
     public static final ClusterGkeConfigV2NodePoolManagementArgs Empty = new ClusterGkeConfigV2NodePoolManagementArgs();
 
     /**
-     * Enable GKE node pool config management auto repair. Default: `false` (bool)
+     * Enable GKE node pool config management auto repair
      * 
      */
     @Import(name="autoRepair")
     private @Nullable Output<Boolean> autoRepair;
 
     /**
-     * @return Enable GKE node pool config management auto repair. Default: `false` (bool)
+     * @return Enable GKE node pool config management auto repair
      * 
      */
     public Optional<Output<Boolean>> autoRepair() {
@@ -31,14 +31,14 @@ public final class ClusterGkeConfigV2NodePoolManagementArgs extends com.pulumi.r
     }
 
     /**
-     * Enable GKE node pool config management auto upgrade. Default: `false` (bool)
+     * Enable GKE node pool config management auto upgrade
      * 
      */
     @Import(name="autoUpgrade")
     private @Nullable Output<Boolean> autoUpgrade;
 
     /**
-     * @return Enable GKE node pool config management auto upgrade. Default: `false` (bool)
+     * @return Enable GKE node pool config management auto upgrade
      * 
      */
     public Optional<Output<Boolean>> autoUpgrade() {
@@ -71,7 +71,7 @@ public final class ClusterGkeConfigV2NodePoolManagementArgs extends com.pulumi.r
         }
 
         /**
-         * @param autoRepair Enable GKE node pool config management auto repair. Default: `false` (bool)
+         * @param autoRepair Enable GKE node pool config management auto repair
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class ClusterGkeConfigV2NodePoolManagementArgs extends com.pulumi.r
         }
 
         /**
-         * @param autoRepair Enable GKE node pool config management auto repair. Default: `false` (bool)
+         * @param autoRepair Enable GKE node pool config management auto repair
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class ClusterGkeConfigV2NodePoolManagementArgs extends com.pulumi.r
         }
 
         /**
-         * @param autoUpgrade Enable GKE node pool config management auto upgrade. Default: `false` (bool)
+         * @param autoUpgrade Enable GKE node pool config management auto upgrade
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class ClusterGkeConfigV2NodePoolManagementArgs extends com.pulumi.r
         }
 
         /**
-         * @param autoUpgrade Enable GKE node pool config management auto upgrade. Default: `false` (bool)
+         * @param autoUpgrade Enable GKE node pool config management auto upgrade
          * 
          * @return builder
          * 

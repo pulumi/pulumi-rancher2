@@ -12,125 +12,45 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal {
-    /**
-     * @return (string)
-     * 
-     */
     private String authUrl;
-    /**
-     * @return (string)
-     * 
-     */
     private @Nullable String caFile;
-    /**
-     * @return Required if `domain_name` not provided. (string)
-     * 
-     */
     private @Nullable String domainId;
-    /**
-     * @return Required if `domain_id` not provided. (string)
-     * 
-     */
     private @Nullable String domainName;
-    /**
-     * @return Registry password (string)
-     * 
-     */
     private String password;
-    /**
-     * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
-     * 
-     */
     private @Nullable String region;
-    /**
-     * @return Azure tenant ID to use (string)
-     * 
-     */
     private @Nullable String tenantId;
-    /**
-     * @return Required if `tenant_id` not provided. (string)
-     * 
-     */
     private @Nullable String tenantName;
-    /**
-     * @return (string)
-     * 
-     */
     private @Nullable String trustId;
-    /**
-     * @return (string)
-     * 
-     */
     private String username;
 
     private ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal() {}
-    /**
-     * @return (string)
-     * 
-     */
     public String authUrl() {
         return this.authUrl;
     }
-    /**
-     * @return (string)
-     * 
-     */
     public Optional<String> caFile() {
         return Optional.ofNullable(this.caFile);
     }
-    /**
-     * @return Required if `domain_name` not provided. (string)
-     * 
-     */
     public Optional<String> domainId() {
         return Optional.ofNullable(this.domainId);
     }
-    /**
-     * @return Required if `domain_id` not provided. (string)
-     * 
-     */
     public Optional<String> domainName() {
         return Optional.ofNullable(this.domainName);
     }
-    /**
-     * @return Registry password (string)
-     * 
-     */
     public String password() {
         return this.password;
     }
-    /**
-     * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
-     * 
-     */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
-    /**
-     * @return Azure tenant ID to use (string)
-     * 
-     */
     public Optional<String> tenantId() {
         return Optional.ofNullable(this.tenantId);
     }
-    /**
-     * @return Required if `tenant_id` not provided. (string)
-     * 
-     */
     public Optional<String> tenantName() {
         return Optional.ofNullable(this.tenantName);
     }
-    /**
-     * @return (string)
-     * 
-     */
     public Optional<String> trustId() {
         return Optional.ofNullable(this.trustId);
     }
-    /**
-     * @return (string)
-     * 
-     */
     public String username() {
         return this.username;
     }

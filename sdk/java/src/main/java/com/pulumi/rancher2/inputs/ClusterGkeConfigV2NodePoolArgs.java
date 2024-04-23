@@ -21,14 +21,14 @@ public final class ClusterGkeConfigV2NodePoolArgs extends com.pulumi.resources.R
     public static final ClusterGkeConfigV2NodePoolArgs Empty = new ClusterGkeConfigV2NodePoolArgs();
 
     /**
-     * The GKE node pool config autoscaling (List maxitems:1)
+     * The GKE node pool config autoscaling
      * 
      */
     @Import(name="autoscaling")
     private @Nullable Output<ClusterGkeConfigV2NodePoolAutoscalingArgs> autoscaling;
 
     /**
-     * @return The GKE node pool config autoscaling (List maxitems:1)
+     * @return The GKE node pool config autoscaling
      * 
      */
     public Optional<Output<ClusterGkeConfigV2NodePoolAutoscalingArgs>> autoscaling() {
@@ -36,14 +36,14 @@ public final class ClusterGkeConfigV2NodePoolArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The GKE node pool node config (List maxitems:1)
+     * The GKE node pool node config
      * 
      */
     @Import(name="config")
     private @Nullable Output<ClusterGkeConfigV2NodePoolConfigArgs> config;
 
     /**
-     * @return The GKE node pool node config (List maxitems:1)
+     * @return The GKE node pool node config
      * 
      */
     public Optional<Output<ClusterGkeConfigV2NodePoolConfigArgs>> config() {
@@ -51,14 +51,14 @@ public final class ClusterGkeConfigV2NodePoolArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The GKE node pool config initial node count (int)
+     * The GKE node pool config initial node count
      * 
      */
     @Import(name="initialNodeCount", required=true)
     private Output<Integer> initialNodeCount;
 
     /**
-     * @return The GKE node pool config initial node count (int)
+     * @return The GKE node pool config initial node count
      * 
      */
     public Output<Integer> initialNodeCount() {
@@ -66,14 +66,14 @@ public final class ClusterGkeConfigV2NodePoolArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The GKE node pool config management (List maxitems:1)
+     * The GKE node pool config management
      * 
      */
     @Import(name="management")
     private @Nullable Output<ClusterGkeConfigV2NodePoolManagementArgs> management;
 
     /**
-     * @return The GKE node pool config management (List maxitems:1)
+     * @return The GKE node pool config management
      * 
      */
     public Optional<Output<ClusterGkeConfigV2NodePoolManagementArgs>> management() {
@@ -81,14 +81,14 @@ public final class ClusterGkeConfigV2NodePoolArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The GKE node pool config max pods constraint. Required for create new cluster if `ip_allocation_policy.use_ip_aliases = true` (int)
+     * The GKE node pool config max pods constraint
      * 
      */
     @Import(name="maxPodsConstraint")
     private @Nullable Output<Integer> maxPodsConstraint;
 
     /**
-     * @return The GKE node pool config max pods constraint. Required for create new cluster if `ip_allocation_policy.use_ip_aliases = true` (int)
+     * @return The GKE node pool config max pods constraint
      * 
      */
     public Optional<Output<Integer>> maxPodsConstraint() {
@@ -111,14 +111,14 @@ public final class ClusterGkeConfigV2NodePoolArgs extends com.pulumi.resources.R
     }
 
     /**
-     * rancher-monitoring chart version (string)
+     * The GKE node pool config version
      * 
      */
     @Import(name="version", required=true)
     private Output<String> version;
 
     /**
-     * @return rancher-monitoring chart version (string)
+     * @return The GKE node pool config version
      * 
      */
     public Output<String> version() {
@@ -156,7 +156,7 @@ public final class ClusterGkeConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param autoscaling The GKE node pool config autoscaling (List maxitems:1)
+         * @param autoscaling The GKE node pool config autoscaling
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class ClusterGkeConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param autoscaling The GKE node pool config autoscaling (List maxitems:1)
+         * @param autoscaling The GKE node pool config autoscaling
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class ClusterGkeConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param config The GKE node pool node config (List maxitems:1)
+         * @param config The GKE node pool node config
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class ClusterGkeConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param config The GKE node pool node config (List maxitems:1)
+         * @param config The GKE node pool node config
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class ClusterGkeConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param initialNodeCount The GKE node pool config initial node count (int)
+         * @param initialNodeCount The GKE node pool config initial node count
          * 
          * @return builder
          * 
@@ -209,7 +209,7 @@ public final class ClusterGkeConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param initialNodeCount The GKE node pool config initial node count (int)
+         * @param initialNodeCount The GKE node pool config initial node count
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class ClusterGkeConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param management The GKE node pool config management (List maxitems:1)
+         * @param management The GKE node pool config management
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class ClusterGkeConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param management The GKE node pool config management (List maxitems:1)
+         * @param management The GKE node pool config management
          * 
          * @return builder
          * 
@@ -240,7 +240,7 @@ public final class ClusterGkeConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param maxPodsConstraint The GKE node pool config max pods constraint. Required for create new cluster if `ip_allocation_policy.use_ip_aliases = true` (int)
+         * @param maxPodsConstraint The GKE node pool config max pods constraint
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class ClusterGkeConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param maxPodsConstraint The GKE node pool config max pods constraint. Required for create new cluster if `ip_allocation_policy.use_ip_aliases = true` (int)
+         * @param maxPodsConstraint The GKE node pool config max pods constraint
          * 
          * @return builder
          * 
@@ -282,7 +282,7 @@ public final class ClusterGkeConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param version rancher-monitoring chart version (string)
+         * @param version The GKE node pool config version
          * 
          * @return builder
          * 
@@ -293,7 +293,7 @@ public final class ClusterGkeConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param version rancher-monitoring chart version (string)
+         * @param version The GKE node pool config version
          * 
          * @return builder
          * 

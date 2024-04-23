@@ -14,15 +14,15 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class CloudCredentialAmazonec2CredentialConfig
     {
         /// <summary>
-        /// AWS access key (string)
+        /// AWS Access Key
         /// </summary>
         public readonly string AccessKey;
         /// <summary>
-        /// AWS default region (string)
+        /// AWS default region
         /// </summary>
         public readonly string? DefaultRegion;
         /// <summary>
-        /// AWS secret key (string)
+        /// AWS Secret Key
         /// </summary>
         public readonly string SecretKey;
 

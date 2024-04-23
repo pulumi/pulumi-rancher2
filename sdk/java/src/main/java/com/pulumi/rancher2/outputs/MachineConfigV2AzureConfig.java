@@ -19,152 +19,152 @@ public final class MachineConfigV2AzureConfig {
      */
     private @Nullable Boolean acceleratedNetworking;
     /**
-     * @return Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
+     * @return Azure Availability Set to place the virtual machine into
      * 
      */
     private @Nullable String availabilitySet;
     /**
-     * @return OpenStack availability zone (string)
+     * @return The Availability Zone that the Azure VM should be created in
      * 
      */
     private @Nullable String availabilityZone;
     /**
-     * @return Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return Azure Service Principal Account ID (optional, browser auth is used if not specified)
      * 
      */
     private @Nullable String clientId;
     /**
-     * @return Azure Service Principal Account password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return Azure Service Principal Account password (optional, browser auth is used if not specified)
      * 
      */
     private @Nullable String clientSecret;
     /**
-     * @return Path to file with custom-data (string)
+     * @return Path to file with custom-data
      * 
      */
     private @Nullable String customData;
     /**
-     * @return vSphere size of disk for docker VM (in MB). Default `20480` (string)
+     * @return Disk size if using managed disk
      * 
      */
     private @Nullable String diskSize;
     /**
-     * @return A unique DNS label for the public IP adddress (string)
+     * @return A unique DNS label for the public IP adddress
      * 
      */
     private @Nullable String dns;
     /**
-     * @return Docker Port. Default `2376` (string)
+     * @return Port number for Docker engine
      * 
      */
     private @Nullable String dockerPort;
     /**
-     * @return Azure environment (e.g. AzurePublicCloud, AzureChinaCloud). Default `AzurePublicCloud` (string)
+     * @return Azure environment (e.g. AzurePublicCloud, AzureChinaCloud)
      * 
      */
     private @Nullable String environment;
     /**
-     * @return Fault domain count to use for availability set. Default `3` (string)
+     * @return Fault domain count to use for availability set
      * 
      */
     private @Nullable String faultDomainCount;
     /**
-     * @return Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+     * @return Azure virtual machine OS image
      * 
      */
     private @Nullable String image;
     /**
-     * @return Azure region to create the virtual machine. Default `westus` (string)
+     * @return Azure region to create the virtual machine
      * 
      */
     private @Nullable String location;
     /**
-     * @return Configures VM and availability set for managed disks. For Rancher v2.3.x and above. Default `false` (bool)
+     * @return Configures VM and availability set for managed disks
      * 
      */
     private @Nullable Boolean managedDisks;
     /**
-     * @return Do not create a public IP address for the machine. Default `false` (bool)
+     * @return Do not create a public IP address for the machine
      * 
      */
     private @Nullable Boolean noPublicIp;
     /**
-     * @return Azure Network Security Group to assign this node to (accepts either a name or resource ID, default is to create a new NSG for each machine). Default `docker-machine-nsg` (string)
+     * @return Azure Network Security Group to assign this node to (accepts either a name or resource ID, default is to create a new NSG for each machine)
      * 
      */
     private @Nullable String nsg;
     /**
-     * @return Make the specified port number accessible from the Internet. (list)
+     * @return Make the specified port number accessible from the Internet
      * 
      */
     private @Nullable List<String> openPorts;
     /**
-     * @return Only use a private IP address. Default `false` (bool)
+     * @return Only use a private IP address
      * 
      */
     private @Nullable Boolean privateAddressOnly;
     /**
-     * @return Specify a static private IP address for the machine. (string)
+     * @return Specify a static private IP address for the machine
      * 
      */
     private @Nullable String privateIpAddress;
     /**
-     * @return Azure Resource Group name (will be created if missing). Default `docker-machine` (string)
+     * @return Azure Resource Group name (will be created if missing)
      * 
      */
     private @Nullable String resourceGroup;
     /**
-     * @return Digital Ocean size. Default `s-1vcpu-1gb` (string)
+     * @return Size for Azure Virtual Machine
      * 
      */
     private @Nullable String size;
     /**
-     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+     * @return Username for SSH login
      * 
      */
     private @Nullable String sshUser;
     /**
-     * @return Assign a static public IP address to the machine. Default `false` (bool)
+     * @return Assign a static public IP address to the machine
      * 
      */
     private @Nullable Boolean staticPublicIp;
     /**
-     * @return Type of Storage Account to host the OS Disk for the machine. Default `Standard_LRS` (string)
+     * @return Type of Storage Account to host the OS Disk for the machine
      * 
      */
     private @Nullable String storageType;
     /**
-     * @return Azure Subnet Name to be used within the Virtual Network. Default `docker-machine` (string)
+     * @return Azure Subnet Name to be used within the Virtual Network
      * 
      */
     private @Nullable String subnet;
     /**
-     * @return Private CIDR block to be used for the new subnet, should comply RFC 1918. Default `192.168.0.0/16` (string)
+     * @return Private CIDR block to be used for the new subnet, should comply RFC 1918
      * 
      */
     private @Nullable String subnetPrefix;
     /**
-     * @return Azure Subscription ID (string)
+     * @return Azure Subscription ID
      * 
      */
     private @Nullable String subscriptionId;
     /**
-     * @return vSphere tags id e.g. `urn:xxx` (list)
+     * @return Tags to be applied to the Azure VM instance (e.g. key1,value1,key2,value2)
      * 
      */
     private @Nullable String tags;
     /**
-     * @return OpenStack tenant id. Conflicts with `tenant_name` (string)
+     * @return Azure Tenant ID
      * 
      */
     private @Nullable String tenantId;
     /**
-     * @return Update domain count to use for availability set. Default `5` (string)
+     * @return Update domain count to use for availability set
      * 
      */
     private @Nullable String updateDomainCount;
     /**
-     * @return Use private IP address of the machine to connect. Default `false` (bool)
+     * @return Use private IP address of the machine to connect
      * 
      */
     private @Nullable Boolean usePrivateIp;
@@ -174,7 +174,7 @@ public final class MachineConfigV2AzureConfig {
      */
     private @Nullable Boolean usePublicIpStandardSku;
     /**
-     * @return Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format). Default `docker-machine-vnet` (string)
+     * @return Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format)
      * 
      */
     private @Nullable String vnet;
@@ -188,210 +188,210 @@ public final class MachineConfigV2AzureConfig {
         return Optional.ofNullable(this.acceleratedNetworking);
     }
     /**
-     * @return Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
+     * @return Azure Availability Set to place the virtual machine into
      * 
      */
     public Optional<String> availabilitySet() {
         return Optional.ofNullable(this.availabilitySet);
     }
     /**
-     * @return OpenStack availability zone (string)
+     * @return The Availability Zone that the Azure VM should be created in
      * 
      */
     public Optional<String> availabilityZone() {
         return Optional.ofNullable(this.availabilityZone);
     }
     /**
-     * @return Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return Azure Service Principal Account ID (optional, browser auth is used if not specified)
      * 
      */
     public Optional<String> clientId() {
         return Optional.ofNullable(this.clientId);
     }
     /**
-     * @return Azure Service Principal Account password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return Azure Service Principal Account password (optional, browser auth is used if not specified)
      * 
      */
     public Optional<String> clientSecret() {
         return Optional.ofNullable(this.clientSecret);
     }
     /**
-     * @return Path to file with custom-data (string)
+     * @return Path to file with custom-data
      * 
      */
     public Optional<String> customData() {
         return Optional.ofNullable(this.customData);
     }
     /**
-     * @return vSphere size of disk for docker VM (in MB). Default `20480` (string)
+     * @return Disk size if using managed disk
      * 
      */
     public Optional<String> diskSize() {
         return Optional.ofNullable(this.diskSize);
     }
     /**
-     * @return A unique DNS label for the public IP adddress (string)
+     * @return A unique DNS label for the public IP adddress
      * 
      */
     public Optional<String> dns() {
         return Optional.ofNullable(this.dns);
     }
     /**
-     * @return Docker Port. Default `2376` (string)
+     * @return Port number for Docker engine
      * 
      */
     public Optional<String> dockerPort() {
         return Optional.ofNullable(this.dockerPort);
     }
     /**
-     * @return Azure environment (e.g. AzurePublicCloud, AzureChinaCloud). Default `AzurePublicCloud` (string)
+     * @return Azure environment (e.g. AzurePublicCloud, AzureChinaCloud)
      * 
      */
     public Optional<String> environment() {
         return Optional.ofNullable(this.environment);
     }
     /**
-     * @return Fault domain count to use for availability set. Default `3` (string)
+     * @return Fault domain count to use for availability set
      * 
      */
     public Optional<String> faultDomainCount() {
         return Optional.ofNullable(this.faultDomainCount);
     }
     /**
-     * @return Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+     * @return Azure virtual machine OS image
      * 
      */
     public Optional<String> image() {
         return Optional.ofNullable(this.image);
     }
     /**
-     * @return Azure region to create the virtual machine. Default `westus` (string)
+     * @return Azure region to create the virtual machine
      * 
      */
     public Optional<String> location() {
         return Optional.ofNullable(this.location);
     }
     /**
-     * @return Configures VM and availability set for managed disks. For Rancher v2.3.x and above. Default `false` (bool)
+     * @return Configures VM and availability set for managed disks
      * 
      */
     public Optional<Boolean> managedDisks() {
         return Optional.ofNullable(this.managedDisks);
     }
     /**
-     * @return Do not create a public IP address for the machine. Default `false` (bool)
+     * @return Do not create a public IP address for the machine
      * 
      */
     public Optional<Boolean> noPublicIp() {
         return Optional.ofNullable(this.noPublicIp);
     }
     /**
-     * @return Azure Network Security Group to assign this node to (accepts either a name or resource ID, default is to create a new NSG for each machine). Default `docker-machine-nsg` (string)
+     * @return Azure Network Security Group to assign this node to (accepts either a name or resource ID, default is to create a new NSG for each machine)
      * 
      */
     public Optional<String> nsg() {
         return Optional.ofNullable(this.nsg);
     }
     /**
-     * @return Make the specified port number accessible from the Internet. (list)
+     * @return Make the specified port number accessible from the Internet
      * 
      */
     public List<String> openPorts() {
         return this.openPorts == null ? List.of() : this.openPorts;
     }
     /**
-     * @return Only use a private IP address. Default `false` (bool)
+     * @return Only use a private IP address
      * 
      */
     public Optional<Boolean> privateAddressOnly() {
         return Optional.ofNullable(this.privateAddressOnly);
     }
     /**
-     * @return Specify a static private IP address for the machine. (string)
+     * @return Specify a static private IP address for the machine
      * 
      */
     public Optional<String> privateIpAddress() {
         return Optional.ofNullable(this.privateIpAddress);
     }
     /**
-     * @return Azure Resource Group name (will be created if missing). Default `docker-machine` (string)
+     * @return Azure Resource Group name (will be created if missing)
      * 
      */
     public Optional<String> resourceGroup() {
         return Optional.ofNullable(this.resourceGroup);
     }
     /**
-     * @return Digital Ocean size. Default `s-1vcpu-1gb` (string)
+     * @return Size for Azure Virtual Machine
      * 
      */
     public Optional<String> size() {
         return Optional.ofNullable(this.size);
     }
     /**
-     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+     * @return Username for SSH login
      * 
      */
     public Optional<String> sshUser() {
         return Optional.ofNullable(this.sshUser);
     }
     /**
-     * @return Assign a static public IP address to the machine. Default `false` (bool)
+     * @return Assign a static public IP address to the machine
      * 
      */
     public Optional<Boolean> staticPublicIp() {
         return Optional.ofNullable(this.staticPublicIp);
     }
     /**
-     * @return Type of Storage Account to host the OS Disk for the machine. Default `Standard_LRS` (string)
+     * @return Type of Storage Account to host the OS Disk for the machine
      * 
      */
     public Optional<String> storageType() {
         return Optional.ofNullable(this.storageType);
     }
     /**
-     * @return Azure Subnet Name to be used within the Virtual Network. Default `docker-machine` (string)
+     * @return Azure Subnet Name to be used within the Virtual Network
      * 
      */
     public Optional<String> subnet() {
         return Optional.ofNullable(this.subnet);
     }
     /**
-     * @return Private CIDR block to be used for the new subnet, should comply RFC 1918. Default `192.168.0.0/16` (string)
+     * @return Private CIDR block to be used for the new subnet, should comply RFC 1918
      * 
      */
     public Optional<String> subnetPrefix() {
         return Optional.ofNullable(this.subnetPrefix);
     }
     /**
-     * @return Azure Subscription ID (string)
+     * @return Azure Subscription ID
      * 
      */
     public Optional<String> subscriptionId() {
         return Optional.ofNullable(this.subscriptionId);
     }
     /**
-     * @return vSphere tags id e.g. `urn:xxx` (list)
+     * @return Tags to be applied to the Azure VM instance (e.g. key1,value1,key2,value2)
      * 
      */
     public Optional<String> tags() {
         return Optional.ofNullable(this.tags);
     }
     /**
-     * @return OpenStack tenant id. Conflicts with `tenant_name` (string)
+     * @return Azure Tenant ID
      * 
      */
     public Optional<String> tenantId() {
         return Optional.ofNullable(this.tenantId);
     }
     /**
-     * @return Update domain count to use for availability set. Default `5` (string)
+     * @return Update domain count to use for availability set
      * 
      */
     public Optional<String> updateDomainCount() {
         return Optional.ofNullable(this.updateDomainCount);
     }
     /**
-     * @return Use private IP address of the machine to connect. Default `false` (bool)
+     * @return Use private IP address of the machine to connect
      * 
      */
     public Optional<Boolean> usePrivateIp() {
@@ -405,7 +405,7 @@ public final class MachineConfigV2AzureConfig {
         return Optional.ofNullable(this.usePublicIpStandardSku);
     }
     /**
-     * @return Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format). Default `docker-machine-vnet` (string)
+     * @return Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format)
      * 
      */
     public Optional<String> vnet() {

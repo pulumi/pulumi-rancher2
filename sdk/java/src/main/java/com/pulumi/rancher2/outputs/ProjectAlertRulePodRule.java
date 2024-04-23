@@ -14,50 +14,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ProjectAlertRulePodRule {
     /**
-     * @return Pod rule condition. Supported values : `&#34;notrunning&#34; | &#34;notscheduled&#34; | &#34;restarts&#34;`. Default: `notrunning` (string)
+     * @return Pod rule condition
      * 
      */
     private @Nullable String condition;
     /**
-     * @return Pod ID (string)
+     * @return Pod ID
      * 
      */
     private String podId;
     /**
-     * @return Pod rule restart interval seconds. Default: `300` (int)
+     * @return Pod rule restart interval seconds
      * 
      */
     private @Nullable Integer restartIntervalSeconds;
     /**
-     * @return Pod rule restart times. Default: `3`  (int)
+     * @return Pod rule restart times
      * 
      */
     private @Nullable Integer restartTimes;
 
     private ProjectAlertRulePodRule() {}
     /**
-     * @return Pod rule condition. Supported values : `&#34;notrunning&#34; | &#34;notscheduled&#34; | &#34;restarts&#34;`. Default: `notrunning` (string)
+     * @return Pod rule condition
      * 
      */
     public Optional<String> condition() {
         return Optional.ofNullable(this.condition);
     }
     /**
-     * @return Pod ID (string)
+     * @return Pod ID
      * 
      */
     public String podId() {
         return this.podId;
     }
     /**
-     * @return Pod rule restart interval seconds. Default: `300` (int)
+     * @return Pod rule restart interval seconds
      * 
      */
     public Optional<Integer> restartIntervalSeconds() {
         return Optional.ofNullable(this.restartIntervalSeconds);
     }
     /**
-     * @return Pod rule restart times. Default: `3`  (int)
+     * @return Pod rule restart times
      * 
      */
     public Optional<Integer> restartTimes() {

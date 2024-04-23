@@ -15,10 +15,6 @@ public final class ClusterAgentEnvVar {
      * 
      */
     private String name;
-    /**
-     * @return The GKE taint value (string)
-     * 
-     */
     private String value;
 
     private ClusterAgentEnvVar() {}
@@ -29,10 +25,6 @@ public final class ClusterAgentEnvVar {
     public String name() {
         return this.name;
     }
-    /**
-     * @return The GKE taint value (string)
-     * 
-     */
     public String value() {
         return this.value;
     }

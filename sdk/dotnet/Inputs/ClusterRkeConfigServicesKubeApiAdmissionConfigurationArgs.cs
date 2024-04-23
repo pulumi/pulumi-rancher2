@@ -13,13 +13,13 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterRkeConfigServicesKubeApiAdmissionConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Admission configuration ApiVersion. Default: `apiserver.config.k8s.io/v1` (string)
+        /// Admission configuration ApiVersion
         /// </summary>
         [Input("apiVersion")]
         public Input<string>? ApiVersion { get; set; }
 
         /// <summary>
-        /// Admission configuration Kind. Default: `AdmissionConfiguration` (string)
+        /// Admission configuration Kind
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
@@ -28,7 +28,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<Inputs.ClusterRkeConfigServicesKubeApiAdmissionConfigurationPluginArgs>? _plugins;
 
         /// <summary>
-        /// Admission configuration plugins. (list `plugin`)
+        /// Admission configuration plugins
         /// </summary>
         public InputList<Inputs.ClusterRkeConfigServicesKubeApiAdmissionConfigurationPluginArgs> Plugins
         {

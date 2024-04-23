@@ -15,14 +15,14 @@ public final class CloudCredentialLinodeCredentialConfigArgs extends com.pulumi.
     public static final CloudCredentialLinodeCredentialConfigArgs Empty = new CloudCredentialLinodeCredentialConfigArgs();
 
     /**
-     * Linode API token (string)
+     * Linode API token
      * 
      */
     @Import(name="token", required=true)
     private Output<String> token;
 
     /**
-     * @return Linode API token (string)
+     * @return Linode API token
      * 
      */
     public Output<String> token() {
@@ -54,7 +54,7 @@ public final class CloudCredentialLinodeCredentialConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param token Linode API token (string)
+         * @param token Linode API token
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class CloudCredentialLinodeCredentialConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param token Linode API token (string)
+         * @param token Linode API token
          * 
          * @return builder
          * 

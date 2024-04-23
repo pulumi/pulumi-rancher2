@@ -16,14 +16,14 @@ public final class MultiClusterAppUpgradeStrategyArgs extends com.pulumi.resourc
     public static final MultiClusterAppUpgradeStrategyArgs Empty = new MultiClusterAppUpgradeStrategyArgs();
 
     /**
-     * Upgrade strategy rolling update (list MaxItems:1)
+     * Rolling update for upgrade strategy
      * 
      */
     @Import(name="rollingUpdate")
     private @Nullable Output<MultiClusterAppUpgradeStrategyRollingUpdateArgs> rollingUpdate;
 
     /**
-     * @return Upgrade strategy rolling update (list MaxItems:1)
+     * @return Rolling update for upgrade strategy
      * 
      */
     public Optional<Output<MultiClusterAppUpgradeStrategyRollingUpdateArgs>> rollingUpdate() {
@@ -55,7 +55,7 @@ public final class MultiClusterAppUpgradeStrategyArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param rollingUpdate Upgrade strategy rolling update (list MaxItems:1)
+         * @param rollingUpdate Rolling update for upgrade strategy
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class MultiClusterAppUpgradeStrategyArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param rollingUpdate Upgrade strategy rolling update (list MaxItems:1)
+         * @param rollingUpdate Rolling update for upgrade strategy
          * 
          * @return builder
          * 

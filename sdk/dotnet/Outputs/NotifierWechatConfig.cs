@@ -14,27 +14,27 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class NotifierWechatConfig
     {
         /// <summary>
-        /// Wechat agent ID (string)
+        /// Wechat application agent ID
         /// </summary>
         public readonly string Agent;
         /// <summary>
-        /// Wechat corporation ID (string)
+        /// Wechat corporation ID
         /// </summary>
         public readonly string Corp;
         /// <summary>
-        /// Wechat default recipient (string)
+        /// Wechat default channel
         /// </summary>
         public readonly string DefaultRecipient;
         /// <summary>
-        /// Wechat proxy url (string)
+        /// Wechat proxy URL
         /// </summary>
         public readonly string? ProxyUrl;
         /// <summary>
-        /// Wechat recipient type. Allowed values: `party` | `tag` | `user` (string)
+        /// Wechat recipient type
         /// </summary>
         public readonly string? RecipientType;
         /// <summary>
-        /// Wechat agent ID (string)
+        /// Wechat application secret
         /// </summary>
         public readonly string Secret;
 

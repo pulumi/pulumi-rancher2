@@ -13,10 +13,6 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint {
     private @Nullable String caCerts;
-    /**
-     * @return Enable cluster template revision. Default `true` (bool)
-     * 
-     */
     private @Nullable Boolean enabled;
     private @Nullable String fqdn;
 
@@ -24,10 +20,6 @@ public final class ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoi
     public Optional<String> caCerts() {
         return Optional.ofNullable(this.caCerts);
     }
-    /**
-     * @return Enable cluster template revision. Default `true` (bool)
-     * 
-     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }

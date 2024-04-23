@@ -13,37 +13,37 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterEksConfigV2NodeGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The EKS node group desired size. Default: `2` (int)
+        /// The EKS node group desired size
         /// </summary>
         [Input("desiredSize")]
         public Input<int>? DesiredSize { get; set; }
 
         /// <summary>
-        /// The EKS node group disk size (Gb). Default: `20` (int)
+        /// The EKS node group disk size
         /// </summary>
         [Input("diskSize")]
         public Input<int>? DiskSize { get; set; }
 
         /// <summary>
-        /// The EKS node group ssh key (string)
+        /// The EKS node group ssh key
         /// </summary>
         [Input("ec2SshKey")]
         public Input<string>? Ec2SshKey { get; set; }
 
         /// <summary>
-        /// Set true to EKS use gpu. Default: `false` (bool)
+        /// Is EKS cluster using gpu?
         /// </summary>
         [Input("gpu")]
         public Input<bool>? Gpu { get; set; }
 
         /// <summary>
-        /// The EKS node group image ID (string)
+        /// The EKS node group image ID
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// The EKS node group instance type. Default: `t3.medium` (string)
+        /// The EKS node group instance type
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -64,7 +64,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<Inputs.ClusterEksConfigV2NodeGroupLaunchTemplateArgs>? _launchTemplates;
 
         /// <summary>
-        /// The EKS node groups launch template (list Maxitem: 1)
+        /// The EKS node groups launch template
         /// </summary>
         public InputList<Inputs.ClusterEksConfigV2NodeGroupLaunchTemplateArgs> LaunchTemplates
         {
@@ -73,13 +73,13 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// The EKS node group maximum size. Default `2` (int)
+        /// The EKS node group maximum size
         /// </summary>
         [Input("maxSize")]
         public Input<int>? MaxSize { get; set; }
 
         /// <summary>
-        /// The EKS node group maximum size. Default `2` (int)
+        /// The EKS node group minimum size
         /// </summary>
         [Input("minSize")]
         public Input<int>? MinSize { get; set; }
@@ -91,13 +91,13 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The EKS node group node role ARN. Default `""` (string)
+        /// The EKS node group node role ARN
         /// </summary>
         [Input("nodeRole")]
         public Input<string>? NodeRole { get; set; }
 
         /// <summary>
-        /// Enable EKS node group request spot instances (bool)
+        /// Enable EKS node group request spot instances
         /// </summary>
         [Input("requestSpotInstances")]
         public Input<bool>? RequestSpotInstances { get; set; }
@@ -106,7 +106,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _resourceTags;
 
         /// <summary>
-        /// The EKS node group resource tags (map)
+        /// The EKS node group resource tags
         /// </summary>
         public InputMap<object> ResourceTags
         {
@@ -118,7 +118,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _spotInstanceTypes;
 
         /// <summary>
-        /// The EKS node group sport instace types (list string)
+        /// The EKS node group spot instance types
         /// </summary>
         public InputList<string> SpotInstanceTypes
         {
@@ -130,7 +130,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _subnets;
 
         /// <summary>
-        /// The EKS node group subnets (list string)
+        /// The EKS node group subnets
         /// </summary>
         public InputList<string> Subnets
         {
@@ -142,7 +142,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// The GKE node config tags (List)
+        /// The EKS node group tags
         /// </summary>
         public InputMap<object> Tags
         {
@@ -151,13 +151,13 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// The EKS node group user data (string)
+        /// The EKS node group user data
         /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }
 
         /// <summary>
-        /// rancher-monitoring chart version (string)
+        /// The EKS node group k8s version
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

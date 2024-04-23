@@ -11,26 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class PodSecurityPolicyTemplateRunAsGroupRange {
     /**
-     * @return (int)
+     * @return max is the end of the range, inclusive.
      * 
      */
     private Integer max;
     /**
-     * @return (int)
+     * @return min is the start of the range, inclusive.
      * 
      */
     private Integer min;
 
     private PodSecurityPolicyTemplateRunAsGroupRange() {}
     /**
-     * @return (int)
+     * @return max is the end of the range, inclusive.
      * 
      */
     public Integer max() {
         return this.max;
     }
     /**
-     * @return (int)
+     * @return min is the start of the range, inclusive.
      * 
      */
     public Integer min() {

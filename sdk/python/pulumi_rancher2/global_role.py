@@ -287,7 +287,6 @@ class GlobalRole(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -303,7 +302,6 @@ class GlobalRole(pulumi.CustomResource):
                 verbs=["create"],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -334,7 +332,6 @@ class GlobalRole(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -350,7 +347,6 @@ class GlobalRole(pulumi.CustomResource):
                 verbs=["create"],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -17,27 +17,27 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterGkeConfigV2NodePool {
     /**
-     * @return The GKE node pool config autoscaling (List maxitems:1)
+     * @return The GKE node pool config autoscaling
      * 
      */
     private @Nullable ClusterGkeConfigV2NodePoolAutoscaling autoscaling;
     /**
-     * @return The GKE node pool node config (List maxitems:1)
+     * @return The GKE node pool node config
      * 
      */
     private @Nullable ClusterGkeConfigV2NodePoolConfig config;
     /**
-     * @return The GKE node pool config initial node count (int)
+     * @return The GKE node pool config initial node count
      * 
      */
     private Integer initialNodeCount;
     /**
-     * @return The GKE node pool config management (List maxitems:1)
+     * @return The GKE node pool config management
      * 
      */
     private @Nullable ClusterGkeConfigV2NodePoolManagement management;
     /**
-     * @return The GKE node pool config max pods constraint. Required for create new cluster if `ip_allocation_policy.use_ip_aliases = true` (int)
+     * @return The GKE node pool config max pods constraint
      * 
      */
     private @Nullable Integer maxPodsConstraint;
@@ -47,42 +47,42 @@ public final class ClusterGkeConfigV2NodePool {
      */
     private String name;
     /**
-     * @return rancher-monitoring chart version (string)
+     * @return The GKE node pool config version
      * 
      */
     private String version;
 
     private ClusterGkeConfigV2NodePool() {}
     /**
-     * @return The GKE node pool config autoscaling (List maxitems:1)
+     * @return The GKE node pool config autoscaling
      * 
      */
     public Optional<ClusterGkeConfigV2NodePoolAutoscaling> autoscaling() {
         return Optional.ofNullable(this.autoscaling);
     }
     /**
-     * @return The GKE node pool node config (List maxitems:1)
+     * @return The GKE node pool node config
      * 
      */
     public Optional<ClusterGkeConfigV2NodePoolConfig> config() {
         return Optional.ofNullable(this.config);
     }
     /**
-     * @return The GKE node pool config initial node count (int)
+     * @return The GKE node pool config initial node count
      * 
      */
     public Integer initialNodeCount() {
         return this.initialNodeCount;
     }
     /**
-     * @return The GKE node pool config management (List maxitems:1)
+     * @return The GKE node pool config management
      * 
      */
     public Optional<ClusterGkeConfigV2NodePoolManagement> management() {
         return Optional.ofNullable(this.management);
     }
     /**
-     * @return The GKE node pool config max pods constraint. Required for create new cluster if `ip_allocation_policy.use_ip_aliases = true` (int)
+     * @return The GKE node pool config max pods constraint
      * 
      */
     public Optional<Integer> maxPodsConstraint() {
@@ -96,7 +96,7 @@ public final class ClusterGkeConfigV2NodePool {
         return this.name;
     }
     /**
-     * @return rancher-monitoring chart version (string)
+     * @return The GKE node pool config version
      * 
      */
     public String version() {

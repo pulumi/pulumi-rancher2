@@ -16,14 +16,14 @@ public final class PodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs extends com
     public static final PodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs Empty = new PodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs();
 
     /**
-     * (string)
+     * Level is SELinux level label that applies to the container.
      * 
      */
     @Import(name="level")
     private @Nullable Output<String> level;
 
     /**
-     * @return (string)
+     * @return Level is SELinux level label that applies to the container.
      * 
      */
     public Optional<Output<String>> level() {
@@ -31,14 +31,14 @@ public final class PodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs extends com
     }
 
     /**
-     * (string)
+     * Role is a SELinux role label that applies to the container.
      * 
      */
     @Import(name="role")
     private @Nullable Output<String> role;
 
     /**
-     * @return (string)
+     * @return Role is a SELinux role label that applies to the container.
      * 
      */
     public Optional<Output<String>> role() {
@@ -46,14 +46,14 @@ public final class PodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs extends com
     }
 
     /**
-     * (string)
+     * Type is a SELinux type label that applies to the container.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return (string)
+     * @return Type is a SELinux type label that applies to the container.
      * 
      */
     public Optional<Output<String>> type() {
@@ -61,14 +61,14 @@ public final class PodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs extends com
     }
 
     /**
-     * (string)
+     * User is a SELinux user label that applies to the container.
      * 
      */
     @Import(name="user")
     private @Nullable Output<String> user;
 
     /**
-     * @return (string)
+     * @return User is a SELinux user label that applies to the container.
      * 
      */
     public Optional<Output<String>> user() {
@@ -103,7 +103,7 @@ public final class PodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs extends com
         }
 
         /**
-         * @param level (string)
+         * @param level Level is SELinux level label that applies to the container.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class PodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs extends com
         }
 
         /**
-         * @param level (string)
+         * @param level Level is SELinux level label that applies to the container.
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class PodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs extends com
         }
 
         /**
-         * @param role (string)
+         * @param role Role is a SELinux role label that applies to the container.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class PodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs extends com
         }
 
         /**
-         * @param role (string)
+         * @param role Role is a SELinux role label that applies to the container.
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class PodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs extends com
         }
 
         /**
-         * @param type (string)
+         * @param type Type is a SELinux type label that applies to the container.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class PodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs extends com
         }
 
         /**
-         * @param type (string)
+         * @param type Type is a SELinux type label that applies to the container.
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class PodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs extends com
         }
 
         /**
-         * @param user (string)
+         * @param user User is a SELinux user label that applies to the container.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class PodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs extends com
         }
 
         /**
-         * @param user (string)
+         * @param user User is a SELinux user label that applies to the container.
          * 
          * @return builder
          * 

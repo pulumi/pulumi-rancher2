@@ -12,39 +12,23 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterRkeConfigCloudProviderVsphereCloudProviderGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// (list maxitems:1)
-        /// </summary>
         [Input("disk")]
         public Input<Inputs.ClusterRkeConfigCloudProviderVsphereCloudProviderDiskGetArgs>? Disk { get; set; }
 
-        /// <summary>
-        /// (list maxitems:1)
-        /// </summary>
         [Input("global")]
         public Input<Inputs.ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalGetArgs>? Global { get; set; }
 
-        /// <summary>
-        /// The GKE cluster network. Required for create new cluster (string)
-        /// </summary>
         [Input("network")]
         public Input<Inputs.ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkGetArgs>? Network { get; set; }
 
         [Input("virtualCenters", required: true)]
         private InputList<Inputs.ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterGetArgs>? _virtualCenters;
-
-        /// <summary>
-        /// (List)
-        /// </summary>
         public InputList<Inputs.ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterGetArgs> VirtualCenters
         {
             get => _virtualCenters ?? (_virtualCenters = new InputList<Inputs.ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterGetArgs>());
             set => _virtualCenters = value;
         }
 
-        /// <summary>
-        /// (list maxitems:1)
-        /// </summary>
         [Input("workspace", required: true)]
         public Input<Inputs.ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceGetArgs> Workspace { get; set; } = null!;
 

@@ -14,19 +14,19 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ProjectAlertRulePodRule
     {
         /// <summary>
-        /// Pod rule condition. Supported values : `"notrunning" | "notscheduled" | "restarts"`. Default: `notrunning` (string)
+        /// Pod rule condition
         /// </summary>
         public readonly string? Condition;
         /// <summary>
-        /// Pod ID (string)
+        /// Pod ID
         /// </summary>
         public readonly string PodId;
         /// <summary>
-        /// Pod rule restart interval seconds. Default: `300` (int)
+        /// Pod rule restart interval seconds
         /// </summary>
         public readonly int? RestartIntervalSeconds;
         /// <summary>
-        /// Pod rule restart times. Default: `3`  (int)
+        /// Pod rule restart times
         /// </summary>
         public readonly int? RestartTimes;
 

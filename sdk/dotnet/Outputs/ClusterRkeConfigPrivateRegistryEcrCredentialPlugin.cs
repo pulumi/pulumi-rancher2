@@ -13,17 +13,8 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterRkeConfigPrivateRegistryEcrCredentialPlugin
     {
-        /// <summary>
-        /// AWS access key ID (string)
-        /// </summary>
         public readonly string? AwsAccessKeyId;
-        /// <summary>
-        /// AWS secret access key (string)
-        /// </summary>
         public readonly string? AwsSecretAccessKey;
-        /// <summary>
-        /// AWS session token (string)
-        /// </summary>
         public readonly string? AwsSessionToken;
 
         [OutputConstructor]

@@ -14,11 +14,11 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterK3sConfig
     {
         /// <summary>
-        /// K3S upgrade strategy (List maxitems: 1)
+        /// The K3S upgrade strategy
         /// </summary>
         public readonly Outputs.ClusterK3sConfigUpgradeStrategy? UpgradeStrategy;
         /// <summary>
-        /// rancher-monitoring chart version (string)
+        /// The K3S kubernetes version
         /// </summary>
         public readonly string? Version;
 

@@ -17,14 +17,14 @@ public final class MultiClusterAppTargetArgs extends com.pulumi.resources.Resour
     public static final MultiClusterAppTargetArgs Empty = new MultiClusterAppTargetArgs();
 
     /**
-     * App ID for target (string)
+     * App ID for target
      * 
      */
     @Import(name="appId")
     private @Nullable Output<String> appId;
 
     /**
-     * @return App ID for target (string)
+     * @return App ID for target
      * 
      */
     public Optional<Output<String>> appId() {
@@ -32,14 +32,14 @@ public final class MultiClusterAppTargetArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * App health state for target (string)
+     * App health state for target
      * 
      */
     @Import(name="healthState")
     private @Nullable Output<String> healthState;
 
     /**
-     * @return App health state for target (string)
+     * @return App health state for target
      * 
      */
     public Optional<Output<String>> healthState() {
@@ -47,14 +47,14 @@ public final class MultiClusterAppTargetArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Project ID for target (string)
+     * Project ID for target
      * 
      */
     @Import(name="projectId", required=true)
     private Output<String> projectId;
 
     /**
-     * @return Project ID for target (string)
+     * @return Project ID for target
      * 
      */
     public Output<String> projectId() {
@@ -62,14 +62,14 @@ public final class MultiClusterAppTargetArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * App state for target (string)
+     * App state for target
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return App state for target (string)
+     * @return App state for target
      * 
      */
     public Optional<Output<String>> state() {
@@ -104,7 +104,7 @@ public final class MultiClusterAppTargetArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param appId App ID for target (string)
+         * @param appId App ID for target
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class MultiClusterAppTargetArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param appId App ID for target (string)
+         * @param appId App ID for target
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class MultiClusterAppTargetArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param healthState App health state for target (string)
+         * @param healthState App health state for target
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class MultiClusterAppTargetArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param healthState App health state for target (string)
+         * @param healthState App health state for target
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class MultiClusterAppTargetArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param projectId Project ID for target (string)
+         * @param projectId Project ID for target
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class MultiClusterAppTargetArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param projectId Project ID for target (string)
+         * @param projectId Project ID for target
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class MultiClusterAppTargetArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param state App state for target (string)
+         * @param state App state for target
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class MultiClusterAppTargetArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param state App state for target (string)
+         * @param state App state for target
          * 
          * @return builder
          * 

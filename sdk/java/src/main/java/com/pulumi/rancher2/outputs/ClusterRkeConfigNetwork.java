@@ -21,113 +21,49 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterRkeConfigNetwork {
-    /**
-     * @return ACI provider config for RKE network (list maxitems:63)
-     * 
-     */
     private @Nullable ClusterRkeConfigNetworkAciNetworkProvider aciNetworkProvider;
-    /**
-     * @return Calico provider config for RKE network (list maxitems:1)
-     * 
-     */
     private @Nullable ClusterRkeConfigNetworkCalicoNetworkProvider calicoNetworkProvider;
-    /**
-     * @return Canal provider config for RKE network (list maxitems:1)
-     * 
-     */
     private @Nullable ClusterRkeConfigNetworkCanalNetworkProvider canalNetworkProvider;
-    /**
-     * @return Flannel provider config for RKE network (list maxitems:1)
-     * 
-     */
     private @Nullable ClusterRkeConfigNetworkFlannelNetworkProvider flannelNetworkProvider;
-    /**
-     * @return Network provider MTU. Default `0` (int)
-     * 
-     */
     private @Nullable Integer mtu;
-    /**
-     * @return RKE options for network (map)
-     * 
-     */
     private @Nullable Map<String,Object> options;
-    /**
-     * @return Plugin for RKE network. `canal` (default), `flannel`, `calico`, `none` and `weave` are supported. (string)
-     * 
-     */
     private @Nullable String plugin;
     /**
-     * @return Network add-on tolerations (list)
+     * @return Network add-on tolerations
      * 
      */
     private @Nullable List<ClusterRkeConfigNetworkToleration> tolerations;
-    /**
-     * @return Weave provider config for RKE network (list maxitems:1)
-     * 
-     */
     private @Nullable ClusterRkeConfigNetworkWeaveNetworkProvider weaveNetworkProvider;
 
     private ClusterRkeConfigNetwork() {}
-    /**
-     * @return ACI provider config for RKE network (list maxitems:63)
-     * 
-     */
     public Optional<ClusterRkeConfigNetworkAciNetworkProvider> aciNetworkProvider() {
         return Optional.ofNullable(this.aciNetworkProvider);
     }
-    /**
-     * @return Calico provider config for RKE network (list maxitems:1)
-     * 
-     */
     public Optional<ClusterRkeConfigNetworkCalicoNetworkProvider> calicoNetworkProvider() {
         return Optional.ofNullable(this.calicoNetworkProvider);
     }
-    /**
-     * @return Canal provider config for RKE network (list maxitems:1)
-     * 
-     */
     public Optional<ClusterRkeConfigNetworkCanalNetworkProvider> canalNetworkProvider() {
         return Optional.ofNullable(this.canalNetworkProvider);
     }
-    /**
-     * @return Flannel provider config for RKE network (list maxitems:1)
-     * 
-     */
     public Optional<ClusterRkeConfigNetworkFlannelNetworkProvider> flannelNetworkProvider() {
         return Optional.ofNullable(this.flannelNetworkProvider);
     }
-    /**
-     * @return Network provider MTU. Default `0` (int)
-     * 
-     */
     public Optional<Integer> mtu() {
         return Optional.ofNullable(this.mtu);
     }
-    /**
-     * @return RKE options for network (map)
-     * 
-     */
     public Map<String,Object> options() {
         return this.options == null ? Map.of() : this.options;
     }
-    /**
-     * @return Plugin for RKE network. `canal` (default), `flannel`, `calico`, `none` and `weave` are supported. (string)
-     * 
-     */
     public Optional<String> plugin() {
         return Optional.ofNullable(this.plugin);
     }
     /**
-     * @return Network add-on tolerations (list)
+     * @return Network add-on tolerations
      * 
      */
     public List<ClusterRkeConfigNetworkToleration> tolerations() {
         return this.tolerations == null ? List.of() : this.tolerations;
     }
-    /**
-     * @return Weave provider config for RKE network (list maxitems:1)
-     * 
-     */
     public Optional<ClusterRkeConfigNetworkWeaveNetworkProvider> weaveNetworkProvider() {
         return Optional.ofNullable(this.weaveNetworkProvider);
     }

@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -20,7 +19,6 @@ import * as utilities from "./utilities";
  *     name: "foo",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getNodeTemplate(args: GetNodeTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeTemplateResult> {
 
@@ -116,7 +114,6 @@ export interface GetNodeTemplateResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -125,7 +122,6 @@ export interface GetNodeTemplateResult {
  *     name: "foo",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getNodeTemplateOutput(args: GetNodeTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeTemplateResult> {
     return pulumi.output(args).apply((a: any) => getNodeTemplate(a, opts))

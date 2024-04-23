@@ -16,7 +16,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<Inputs.ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlockGetArgs>? _cidrBlocks;
 
         /// <summary>
-        /// The GKE master authorized network config cidr blocks (List)
+        /// The GKE master authorized network config cidr blocks
         /// </summary>
         public InputList<Inputs.ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlockGetArgs> CidrBlocks
         {
@@ -25,7 +25,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Enable the authorized cluster endpoint. Default `true` (bool)
+        /// Enable GKE master authorized network config
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

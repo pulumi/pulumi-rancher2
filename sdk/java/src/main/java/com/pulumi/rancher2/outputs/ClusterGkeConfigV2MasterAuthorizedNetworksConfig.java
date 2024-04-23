@@ -15,26 +15,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterGkeConfigV2MasterAuthorizedNetworksConfig {
     /**
-     * @return The GKE master authorized network config cidr blocks (List)
+     * @return The GKE master authorized network config cidr blocks
      * 
      */
     private List<ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock> cidrBlocks;
     /**
-     * @return Enable the authorized cluster endpoint. Default `true` (bool)
+     * @return Enable GKE master authorized network config
      * 
      */
     private @Nullable Boolean enabled;
 
     private ClusterGkeConfigV2MasterAuthorizedNetworksConfig() {}
     /**
-     * @return The GKE master authorized network config cidr blocks (List)
+     * @return The GKE master authorized network config cidr blocks
      * 
      */
     public List<ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock> cidrBlocks() {
         return this.cidrBlocks;
     }
     /**
-     * @return Enable the authorized cluster endpoint. Default `true` (bool)
+     * @return Enable GKE master authorized network config
      * 
      */
     public Optional<Boolean> enabled() {

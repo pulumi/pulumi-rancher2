@@ -12,27 +12,15 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class NodePoolNodeTaintArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Taint effect. Supported values : `"NoExecute" | "NoSchedule" | "PreferNoSchedule"` (string)
-        /// </summary>
         [Input("effect")]
         public Input<string>? Effect { get; set; }
 
-        /// <summary>
-        /// Taint key (string)
-        /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
-        /// <summary>
-        /// Taint time added (string)
-        /// </summary>
         [Input("timeAdded")]
         public Input<string>? TimeAdded { get; set; }
 
-        /// <summary>
-        /// Taint value (string)
-        /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 

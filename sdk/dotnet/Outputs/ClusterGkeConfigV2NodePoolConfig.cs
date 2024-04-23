@@ -14,15 +14,15 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterGkeConfigV2NodePoolConfig
     {
         /// <summary>
-        /// The GKE node config disk size Gb (int)
+        /// The GKE node config disk size (Gb)
         /// </summary>
         public readonly int? DiskSizeGb;
         /// <summary>
-        /// The GKE node config disk type (string)
+        /// The GKE node config disk type
         /// </summary>
         public readonly string? DiskType;
         /// <summary>
-        /// The GKE node config image type (string)
+        /// The GKE node config image type
         /// </summary>
         public readonly string? ImageType;
         /// <summary>
@@ -30,27 +30,27 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Labels;
         /// <summary>
-        /// The GKE node config local ssd count (int)
+        /// The GKE node config local ssd count
         /// </summary>
         public readonly int? LocalSsdCount;
         /// <summary>
-        /// The GKE node config machine type (string)
+        /// The GKE node config machine type
         /// </summary>
         public readonly string? MachineType;
         /// <summary>
-        /// The GKE node config oauth scopes (List)
+        /// The GKE node config oauth scopes
         /// </summary>
         public readonly ImmutableArray<string> OauthScopes;
         /// <summary>
-        /// Enable GKE node config preemptible. Default: `false` (bool)
+        /// Enable GKE node config preemptible
         /// </summary>
         public readonly bool? Preemptible;
         /// <summary>
-        /// The GKE node config tags (List)
+        /// The GKE node config tags
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
-        /// The GKE node config taints (List)
+        /// The GKE node config taints
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterGkeConfigV2NodePoolConfigTaint> Taints;
 

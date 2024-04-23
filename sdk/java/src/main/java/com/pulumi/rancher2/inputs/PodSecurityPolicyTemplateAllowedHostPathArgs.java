@@ -18,14 +18,14 @@ public final class PodSecurityPolicyTemplateAllowedHostPathArgs extends com.pulu
     public static final PodSecurityPolicyTemplateAllowedHostPathArgs Empty = new PodSecurityPolicyTemplateAllowedHostPathArgs();
 
     /**
-     * (string)
+     * pathPrefix is the path prefix that the host volume must match. It does not support `*`. Trailing slashes are trimmed when validating the path prefix with a host path.
      * 
      */
     @Import(name="pathPrefix", required=true)
     private Output<String> pathPrefix;
 
     /**
-     * @return (string)
+     * @return pathPrefix is the path prefix that the host volume must match. It does not support `*`. Trailing slashes are trimmed when validating the path prefix with a host path.
      * 
      */
     public Output<String> pathPrefix() {
@@ -33,14 +33,14 @@ public final class PodSecurityPolicyTemplateAllowedHostPathArgs extends com.pulu
     }
 
     /**
-     * (string)
+     * when set to true, will allow host volumes matching the pathPrefix only if all volume mounts are readOnly.
      * 
      */
     @Import(name="readOnly")
     private @Nullable Output<Boolean> readOnly;
 
     /**
-     * @return (string)
+     * @return when set to true, will allow host volumes matching the pathPrefix only if all volume mounts are readOnly.
      * 
      */
     public Optional<Output<Boolean>> readOnly() {
@@ -73,7 +73,7 @@ public final class PodSecurityPolicyTemplateAllowedHostPathArgs extends com.pulu
         }
 
         /**
-         * @param pathPrefix (string)
+         * @param pathPrefix pathPrefix is the path prefix that the host volume must match. It does not support `*`. Trailing slashes are trimmed when validating the path prefix with a host path.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class PodSecurityPolicyTemplateAllowedHostPathArgs extends com.pulu
         }
 
         /**
-         * @param pathPrefix (string)
+         * @param pathPrefix pathPrefix is the path prefix that the host volume must match. It does not support `*`. Trailing slashes are trimmed when validating the path prefix with a host path.
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class PodSecurityPolicyTemplateAllowedHostPathArgs extends com.pulu
         }
 
         /**
-         * @param readOnly (string)
+         * @param readOnly when set to true, will allow host volumes matching the pathPrefix only if all volume mounts are readOnly.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class PodSecurityPolicyTemplateAllowedHostPathArgs extends com.pulu
         }
 
         /**
-         * @param readOnly (string)
+         * @param readOnly when set to true, will allow host volumes matching the pathPrefix only if all volume mounts are readOnly.
          * 
          * @return builder
          * 

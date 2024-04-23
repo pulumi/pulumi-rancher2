@@ -16,7 +16,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _accessKey;
 
         /// <summary>
-        /// Outscale Access Key (string)
+        /// AWS Access Key
         /// </summary>
         public Input<string>? AccessKey
         {
@@ -29,73 +29,73 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// AWS machine image (string)
+        /// AWS machine image
         /// </summary>
         [Input("ami", required: true)]
         public Input<string> Ami { get; set; } = null!;
 
         /// <summary>
-        /// AWS spot instance duration in minutes (60, 120, 180, 240, 300, or 360). Default `0` (string)
+        /// AWS spot instance duration in minutes (60, 120, 180, 240, 300, or 360)
         /// </summary>
         [Input("blockDurationMinutes")]
         public Input<string>? BlockDurationMinutes { get; set; }
 
         /// <summary>
-        /// AWS root device name. Default `/dev/sda1` (string)
+        /// AWS root device name
         /// </summary>
         [Input("deviceName")]
         public Input<string>? DeviceName { get; set; }
 
         /// <summary>
-        /// Encrypt EBS volume. Default `false` (bool)
+        /// Encrypt EBS volume
         /// </summary>
         [Input("encryptEbsVolume")]
         public Input<bool>? EncryptEbsVolume { get; set; }
 
         /// <summary>
-        /// Optional endpoint URL (hostname only or fully qualified URI) (string)
+        /// Optional endpoint URL (hostname only or fully qualified URI)
         /// </summary>
         [Input("endpoint")]
         public Input<string>? Endpoint { get; set; }
 
         /// <summary>
-        /// Enables or disables the HTTP metadata endpoint on your instances (string)
+        /// Enables or disables the HTTP metadata endpoint on your instances
         /// </summary>
         [Input("httpEndpoint")]
         public Input<string>? HttpEndpoint { get; set; }
 
         /// <summary>
-        /// The state of token usage for your instance metadata requests (string)
+        /// The state of token usage for your instance metadata requests
         /// </summary>
         [Input("httpTokens")]
         public Input<string>? HttpTokens { get; set; }
 
         /// <summary>
-        /// AWS IAM Instance Profile (string)
+        /// AWS IAM Instance Profile
         /// </summary>
         [Input("iamInstanceProfile")]
         public Input<string>? IamInstanceProfile { get; set; }
 
         /// <summary>
-        /// Disable SSL when sending requests (bool)
+        /// Disable SSL when sending requests
         /// </summary>
         [Input("insecureTransport")]
         public Input<bool>? InsecureTransport { get; set; }
 
         /// <summary>
-        /// Outscale VM type. Default `tinav2.c1r2p3` (string)
+        /// AWS instance type
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
 
         /// <summary>
-        /// Custom KMS key ID using the AWS Managed CMK (string)
+        /// Custom KMS key ID using the AWS Managed CMK
         /// </summary>
         [Input("kmsKey")]
         public Input<string>? KmsKey { get; set; }
 
         /// <summary>
-        /// Enable monitoring for droplet. Default `false` (bool)
+        /// Set this flag to enable CloudWatch monitoring
         /// </summary>
         [Input("monitoring")]
         public Input<bool>? Monitoring { get; set; }
@@ -104,7 +104,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _openPorts;
 
         /// <summary>
-        /// Make the specified port number accessible from the Internet. (list)
+        /// Make the specified port number accessible from the Internet
         /// </summary>
         public InputList<string> OpenPorts
         {
@@ -113,31 +113,31 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Only use a private IP address. Default `false` (bool)
+        /// Only use a private IP address
         /// </summary>
         [Input("privateAddressOnly")]
         public Input<bool>? PrivateAddressOnly { get; set; }
 
         /// <summary>
-        /// AWS region. Default `eu-west-2` (string)
+        /// AWS Region
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
         /// <summary>
-        /// Set this flag to request spot instance. Default `false` (bool)
+        /// Set this flag to request spot instance
         /// </summary>
         [Input("requestSpotInstance")]
         public Input<bool>? RequestSpotInstance { get; set; }
 
         /// <summary>
-        /// Set retry count for recoverable failures (use -1 to disable). Default `5` (string)
+        /// Set retry count for recoverable failures (use -1 to disable)
         /// </summary>
         [Input("retries")]
         public Input<string>? Retries { get; set; }
 
         /// <summary>
-        /// AWS root disk size (in GB). Default `16` (string)
+        /// AWS root disk size (in GB)
         /// </summary>
         [Input("rootSize")]
         public Input<string>? RootSize { get; set; }
@@ -146,7 +146,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _secretKey;
 
         /// <summary>
-        /// Outscale Secret Key (string)
+        /// AWS Secret Key
         /// </summary>
         public Input<string>? SecretKey
         {
@@ -159,7 +159,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Skip adding default rules to security groups (bool)
+        /// Skip adding default rules to security groups
         /// </summary>
         [Input("securityGroupReadonly")]
         public Input<bool>? SecurityGroupReadonly { get; set; }
@@ -168,7 +168,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _securityGroups;
 
         /// <summary>
-        /// AWS VPC security group. (list)
+        /// AWS VPC security group
         /// </summary>
         public InputList<string> SecurityGroups
         {
@@ -180,7 +180,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _sessionToken;
 
         /// <summary>
-        /// AWS Session Token (string)
+        /// AWS Session Token
         /// </summary>
         public Input<string>? SessionToken
         {
@@ -193,7 +193,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// AWS spot instance bid price (in dollar). Default `0.50` (string)
+        /// AWS spot instance bid price (in dollar)
         /// </summary>
         [Input("spotPrice")]
         public Input<string>? SpotPrice { get; set; }
@@ -205,57 +205,55 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? SshKeypath { get; set; }
 
         /// <summary>
-        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        /// Set the name of the ssh user
         /// </summary>
         [Input("sshUser")]
         public Input<string>? SshUser { get; set; }
 
         /// <summary>
-        /// AWS VPC subnet id (string)
+        /// AWS VPC subnet id
         /// </summary>
         [Input("subnetId", required: true)]
         public Input<string> SubnetId { get; set; } = null!;
 
         /// <summary>
-        /// vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+        /// AWS Tags (e.g. key1,value1,key2,value2)
         /// </summary>
         [Input("tags")]
         public Input<string>? Tags { get; set; }
 
         /// <summary>
-        /// Create an EBS optimized instance. Default `false` (bool)
+        /// Create an EBS optimized instance
         /// </summary>
         [Input("useEbsOptimizedInstance")]
         public Input<bool>? UseEbsOptimizedInstance { get; set; }
 
         /// <summary>
-        /// Force the usage of private IP address. Default `false` (bool)
+        /// Force the usage of private IP address
         /// </summary>
         [Input("usePrivateAddress")]
         public Input<bool>? UsePrivateAddress { get; set; }
 
         /// <summary>
-        /// Path to file with cloud-init user-data (string)
-        /// 
-        /// &gt; **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+        /// Path to file with cloud-init user data
         /// </summary>
         [Input("userdata")]
         public Input<string>? Userdata { get; set; }
 
         /// <summary>
-        /// OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+        /// Amazon EBS volume type
         /// </summary>
         [Input("volumeType")]
         public Input<string>? VolumeType { get; set; }
 
         /// <summary>
-        /// AWS VPC id. (string)
+        /// AWS VPC id
         /// </summary>
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
 
         /// <summary>
-        /// AWS zone for instance (i.e. a,b,c,d,e) (string)
+        /// AWS zone for instance (i.e. a,b,c,d,e)
         /// </summary>
         [Input("zone", required: true)]
         public Input<string> Zone { get; set; } = null!;

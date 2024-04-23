@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class MultiClusterAppUpgradeStrategy
     {
         /// <summary>
-        /// Upgrade strategy rolling update (list MaxItems:1)
+        /// Rolling update for upgrade strategy
         /// </summary>
         public readonly Outputs.MultiClusterAppUpgradeStrategyRollingUpdate? RollingUpdate;
 

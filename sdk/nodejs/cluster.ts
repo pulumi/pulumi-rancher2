@@ -15,7 +15,6 @@ import * as utilities from "./utilities";
  *
  * ### Creating Rancher v2 imported cluster
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -26,7 +25,6 @@ import * as utilities from "./utilities";
  *     description: "Foo rancher2 imported cluster",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Creating Rancher v2 RKE cluster
  *
@@ -34,7 +32,6 @@ import * as utilities from "./utilities";
  *
  * **Note** Cluster monitoring version `0.2.0` and above, can't be enabled until cluster is fully deployed as [`kubeVersion`](https://github.com/rancher/system-charts/blob/52be656700468904b9bf15c3f39cd7112e1f8c9b/charts/rancher-monitoring/v0.2.0/Chart.yaml#L12) requirement has been introduced to helm chart
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -74,11 +71,9 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Creating Rancher v2 RKE cluster enabling/customizing monitoring and istio
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -180,11 +175,9 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Creating Rancher v2 RKE cluster assigning a node pool (overlapped planes)
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -226,11 +219,9 @@ import * as utilities from "./utilities";
  *     worker: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Creating Rancher v2 RKE cluster from template. For Rancher v2.3.x and above.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -268,11 +259,9 @@ import * as utilities from "./utilities";
  *     clusterTemplateRevisionId: foo.templateRevisions.apply(templateRevisions => templateRevisions[0].id),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Creating Rancher v2 RKE cluster with upgrade strategy. For Rancher v2.4.x and above.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -321,11 +310,9 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Creating Rancher v2 RKE cluster with cluster agent customization. For Rancher v2.7.5 and above.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -369,11 +356,9 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Creating Rancher v2 RKE cluster with Pod Security Admission Configuration Template (PSACT). For Rancher v2.7.2 and above.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -410,11 +395,9 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Importing EKS cluster to Rancher v2, using `eksConfigV2`. For Rancher v2.5.x and above.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -438,11 +421,9 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Creating EKS cluster from Rancher v2, using `eksConfigV2`. For Rancher v2.5.x and above.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -486,13 +467,11 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Creating EKS cluster from Rancher v2, using `eksConfigV2` and launch template. For Rancher v2.5.6 and above.
  *
  * Note: To use `launchTemplate` you must provide the ID (seen as `<EC2_LAUNCH_TEMPLATE_ID>`) to the template either as a static value. Or fetched via AWS data-source using one of: awsAmi first and provide the ID to that.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -530,11 +509,9 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Creating AKS cluster from Rancher v2, using `aksConfigV2`. For Rancher v2.6.0 and above.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -594,7 +571,6 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -649,7 +625,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly annotations!: pulumi.Output<{[key: string]: any}>;
     /**
-     * TLS CA certificate for etcd service (string)
+     * (Computed/Sensitive) K8s cluster ca cert (string)
      */
     public /*out*/ readonly caCert!: pulumi.Output<string>;
     /**
@@ -925,7 +901,7 @@ export interface ClusterState {
      */
     annotations?: pulumi.Input<{[key: string]: any}>;
     /**
-     * TLS CA certificate for etcd service (string)
+     * (Computed/Sensitive) K8s cluster ca cert (string)
      */
     caCert?: pulumi.Input<string>;
     /**

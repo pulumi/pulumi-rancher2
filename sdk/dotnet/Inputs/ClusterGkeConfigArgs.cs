@@ -13,7 +13,7 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterGkeConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The IP address range of the container pods (string)
+        /// The IP address range of the container pods
         /// </summary>
         [Input("clusterIpv4Cidr", required: true)]
         public Input<string> ClusterIpv4Cidr { get; set; } = null!;
@@ -22,7 +22,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _credential;
 
         /// <summary>
-        /// The contents of the GC credential file (string)
+        /// The contents of the GC credential file
         /// </summary>
         public Input<string>? Credential
         {
@@ -41,157 +41,157 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The GKE node config disk size Gb (int)
+        /// Size of the disk attached to each node
         /// </summary>
         [Input("diskSizeGb")]
         public Input<int>? DiskSizeGb { get; set; }
 
         /// <summary>
-        /// The GKE node config disk type (string)
+        /// Type of the disk attached to each node
         /// </summary>
         [Input("diskType", required: true)]
         public Input<string> DiskType { get; set; } = null!;
 
         /// <summary>
-        /// To enable Kubernetes alpha feature. Default `true` (bool)
+        /// To enable kubernetes alpha feature
         /// </summary>
         [Input("enableAlphaFeature")]
         public Input<bool>? EnableAlphaFeature { get; set; }
 
         /// <summary>
-        /// Specifies whether the node auto-repair is enabled for the node pool. Default `false` (bool)
+        /// Specifies whether the node auto-repair is enabled for the node pool
         /// </summary>
         [Input("enableAutoRepair")]
         public Input<bool>? EnableAutoRepair { get; set; }
 
         /// <summary>
-        /// Specifies whether node auto-upgrade is enabled for the node pool. Default `false` (bool)
+        /// Specifies whether node auto-upgrade is enabled for the node pool
         /// </summary>
         [Input("enableAutoUpgrade")]
         public Input<bool>? EnableAutoUpgrade { get; set; }
 
         /// <summary>
-        /// Enable horizontal pod autoscaling for the cluster. Default `true` (bool)
+        /// Enable horizontal pod autoscaling for the cluster
         /// </summary>
         [Input("enableHorizontalPodAutoscaling")]
         public Input<bool>? EnableHorizontalPodAutoscaling { get; set; }
 
         /// <summary>
-        /// Enable HTTP load balancing on GKE cluster. Default `true` (bool)
+        /// Enable http load balancing for the cluster
         /// </summary>
         [Input("enableHttpLoadBalancing")]
         public Input<bool>? EnableHttpLoadBalancing { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
+        /// Whether to enable the kubernetes dashboard
         /// </summary>
         [Input("enableKubernetesDashboard")]
         public Input<bool>? EnableKubernetesDashboard { get; set; }
 
         /// <summary>
-        /// Whether to enable legacy abac on the cluster. Default `false` (bool)
+        /// Whether to enable legacy abac on the cluster
         /// </summary>
         [Input("enableLegacyAbac")]
         public Input<bool>? EnableLegacyAbac { get; set; }
 
         /// <summary>
-        /// Enable master authorized network. Set to `true` if `master_authorized_network_cidr_blocks` is set. Default `false` (bool)
+        /// Whether or not master authorized network is enabled
         /// </summary>
         [Input("enableMasterAuthorizedNetwork")]
         public Input<bool>? EnableMasterAuthorizedNetwork { get; set; }
 
         /// <summary>
-        /// Enable network policy config for the cluster. Default `true` (bool)
+        /// Enable network policy config for the cluster
         /// </summary>
         [Input("enableNetworkPolicyConfig")]
         public Input<bool>? EnableNetworkPolicyConfig { get; set; }
 
         /// <summary>
-        /// Enable nodepool autoscaling. Default `false` (bool)
+        /// Enable nodepool autoscaling
         /// </summary>
         [Input("enableNodepoolAutoscaling")]
         public Input<bool>? EnableNodepoolAutoscaling { get; set; }
 
         /// <summary>
-        /// Enable GKE cluster private endpoint. Default: `false` (bool)
+        /// Whether the master's internal IP address is used as the cluster endpoint
         /// </summary>
         [Input("enablePrivateEndpoint")]
         public Input<bool>? EnablePrivateEndpoint { get; set; }
 
         /// <summary>
-        /// Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+        /// Whether nodes have internal IP address only
         /// </summary>
         [Input("enablePrivateNodes")]
         public Input<bool>? EnablePrivateNodes { get; set; }
 
         /// <summary>
-        /// Enable stackdriver monitoring. Default `true` (bool)
+        /// Enable stackdriver logging
         /// </summary>
         [Input("enableStackdriverLogging")]
         public Input<bool>? EnableStackdriverLogging { get; set; }
 
         /// <summary>
-        /// Enable stackdriver monitoring on GKE cluster (bool)
+        /// Enable stackdriver monitoring
         /// </summary>
         [Input("enableStackdriverMonitoring")]
         public Input<bool>? EnableStackdriverMonitoring { get; set; }
 
         /// <summary>
-        /// The GKE node config image type (string)
+        /// The image to use for the worker nodes
         /// </summary>
         [Input("imageType", required: true)]
         public Input<string> ImageType { get; set; } = null!;
 
         /// <summary>
-        /// The IP address range for the cluster pod IPs (string)
+        /// The IP address range for the cluster pod IPs
         /// </summary>
         [Input("ipPolicyClusterIpv4CidrBlock", required: true)]
         public Input<string> IpPolicyClusterIpv4CidrBlock { get; set; } = null!;
 
         /// <summary>
-        /// The name of the secondary range to be used for the cluster CIDR block (string)
+        /// The name of the secondary range to be used for the cluster CIDR block
         /// </summary>
         [Input("ipPolicyClusterSecondaryRangeName", required: true)]
         public Input<string> IpPolicyClusterSecondaryRangeName { get; set; } = null!;
 
         /// <summary>
-        /// Whether a new subnetwork will be created automatically for the cluster. Default `false` (bool)
+        /// Whether a new subnetwork will be created automatically for the cluster
         /// </summary>
         [Input("ipPolicyCreateSubnetwork")]
         public Input<bool>? IpPolicyCreateSubnetwork { get; set; }
 
         /// <summary>
-        /// The IP address range of the instance IPs in this cluster (string)
+        /// The IP address range of the instance IPs in this cluster
         /// </summary>
         [Input("ipPolicyNodeIpv4CidrBlock", required: true)]
         public Input<string> IpPolicyNodeIpv4CidrBlock { get; set; } = null!;
 
         /// <summary>
-        /// The IP address range of the services IPs in this cluster (string)
+        /// The IP address range of the services IPs in this cluster
         /// </summary>
         [Input("ipPolicyServicesIpv4CidrBlock", required: true)]
         public Input<string> IpPolicyServicesIpv4CidrBlock { get; set; } = null!;
 
         /// <summary>
-        /// The name of the secondary range to be used for the services CIDR block (string)
+        /// The name of the secondary range to be used for the services CIDR block
         /// </summary>
         [Input("ipPolicyServicesSecondaryRangeName", required: true)]
         public Input<string> IpPolicyServicesSecondaryRangeName { get; set; } = null!;
 
         /// <summary>
-        /// A custom subnetwork name to be used if createSubnetwork is true (string)
+        /// A custom subnetwork name to be used if createSubnetwork is true
         /// </summary>
         [Input("ipPolicySubnetworkName", required: true)]
         public Input<string> IpPolicySubnetworkName { get; set; } = null!;
 
         /// <summary>
-        /// Issue a client certificate. Default `false` (bool)
+        /// Issue a client certificate
         /// </summary>
         [Input("issueClientCertificate")]
         public Input<bool>? IssueClientCertificate { get; set; }
 
         /// <summary>
-        /// Enable the Kubernetes dashboard. Default `false` (bool)
+        /// Enable the kubernetes dashboard
         /// </summary>
         [Input("kubernetesDashboard")]
         public Input<bool>? KubernetesDashboard { get; set; }
@@ -209,7 +209,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// The GKE node config local ssd count (int)
+        /// The number of local SSD disks to be attached to the node
         /// </summary>
         [Input("localSsdCount")]
         public Input<int>? LocalSsdCount { get; set; }
@@ -218,7 +218,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _locations;
 
         /// <summary>
-        /// The GKE cluster locations (List)
+        /// Locations to use for the cluster
         /// </summary>
         public InputList<string> Locations
         {
@@ -227,13 +227,13 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// The GKE node config machine type (string)
+        /// The machine type to use for the worker nodes
         /// </summary>
         [Input("machineType", required: true)]
         public Input<string> MachineType { get; set; } = null!;
 
         /// <summary>
-        /// The GKE cluster maintenance window (string)
+        /// When to performance updates on the nodes, in 24-hour time
         /// </summary>
         [Input("maintenanceWindow", required: true)]
         public Input<string> MaintenanceWindow { get; set; } = null!;
@@ -242,7 +242,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _masterAuthorizedNetworkCidrBlocks;
 
         /// <summary>
-        /// Define up to 10 external networks that could access Kubernetes master through HTTPS (list)
+        /// Define up to 10 external networks that could access Kubernetes master through HTTPS
         /// </summary>
         public InputList<string> MasterAuthorizedNetworkCidrBlocks
         {
@@ -251,49 +251,49 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// The GKE cluster private master ip v4 cidr block (string)
+        /// The IP range in CIDR notation to use for the hosted master network
         /// </summary>
         [Input("masterIpv4CidrBlock", required: true)]
         public Input<string> MasterIpv4CidrBlock { get; set; } = null!;
 
         /// <summary>
-        /// Master version for GKE cluster (string)
+        /// The kubernetes master version
         /// </summary>
         [Input("masterVersion", required: true)]
         public Input<string> MasterVersion { get; set; } = null!;
 
         /// <summary>
-        /// The GKE node pool config max node count (int)
+        /// Maximum number of nodes in the NodePool. Must be &gt;= minNodeCount. There has to enough quota to scale up the cluster
         /// </summary>
         [Input("maxNodeCount")]
         public Input<int>? MaxNodeCount { get; set; }
 
         /// <summary>
-        /// The GKE node pool config min node count (int)
+        /// Minimmum number of nodes in the NodePool. Must be &gt;= 1 and &lt;= maxNodeCount
         /// </summary>
         [Input("minNodeCount")]
         public Input<int>? MinNodeCount { get; set; }
 
         /// <summary>
-        /// The GKE cluster network. Required for create new cluster (string)
+        /// The network to use for the cluster
         /// </summary>
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;
 
         /// <summary>
-        /// Node count for GKE cluster. Default `3` (int)
+        /// The number of nodes to create in this cluster
         /// </summary>
         [Input("nodeCount")]
         public Input<int>? NodeCount { get; set; }
 
         /// <summary>
-        /// The ID of the cluster node pool (string)
+        /// The ID of the cluster node pool
         /// </summary>
         [Input("nodePool", required: true)]
         public Input<string> NodePool { get; set; } = null!;
 
         /// <summary>
-        /// Node version for GKE cluster (string)
+        /// The version of kubernetes to use on the nodes
         /// </summary>
         [Input("nodeVersion", required: true)]
         public Input<string> NodeVersion { get; set; } = null!;
@@ -302,7 +302,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _oauthScopes;
 
         /// <summary>
-        /// The GKE node config oauth scopes (List)
+        /// The set of Google API scopes to be made available on all of the node VMs under the default service account
         /// </summary>
         public InputList<string> OauthScopes
         {
@@ -311,19 +311,19 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Enable GKE node config preemptible. Default: `false` (bool)
+        /// Whether the nodes are created as preemptible VM instances
         /// </summary>
         [Input("preemptible")]
         public Input<bool>? Preemptible { get; set; }
 
         /// <summary>
-        /// Project ID to apply answer (string)
+        /// The ID of your project to use when creating a cluster
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
         /// <summary>
-        /// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+        /// The region to launch the cluster. Region or zone should be used
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -332,7 +332,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _resourceLabels;
 
         /// <summary>
-        /// The map of Kubernetes labels to be applied to each cluster (map)
+        /// The map of Kubernetes labels (key/value pairs) to be applied to each cluster
         /// </summary>
         public InputMap<object> ResourceLabels
         {
@@ -341,13 +341,13 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// The Google Cloud Platform Service Account to be used by the node VMs (string)
+        /// The Google Cloud Platform Service Account to be used by the node VMs
         /// </summary>
         [Input("serviceAccount", required: true)]
         public Input<string> ServiceAccount { get; set; } = null!;
 
         /// <summary>
-        /// Subnetwork for GKE cluster (string)
+        /// The sub-network to use for the cluster
         /// </summary>
         [Input("subNetwork", required: true)]
         public Input<string> SubNetwork { get; set; } = null!;
@@ -356,7 +356,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _taints;
 
         /// <summary>
-        /// The GKE node config taints (List)
+        /// List of kubernetes taints to be applied to each node
         /// </summary>
         public InputList<string> Taints
         {
@@ -365,13 +365,13 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Use GKE ip aliases? Default: `true` (bool)
+        /// Whether alias IPs will be used for pod IPs in the cluster
         /// </summary>
         [Input("useIpAliases")]
         public Input<bool>? UseIpAliases { get; set; }
 
         /// <summary>
-        /// The GKE cluster zone. Required if `region` not set (string)
+        /// The zone to launch the cluster. Zone or region should be used
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

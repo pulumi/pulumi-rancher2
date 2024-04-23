@@ -26,14 +26,14 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
     public static final ClusterGkeConfigV2Args Empty = new ClusterGkeConfigV2Args();
 
     /**
-     * The GKE cluster addons (List maxitems:1)
+     * The GKE cluster addons
      * 
      */
     @Import(name="clusterAddons")
     private @Nullable Output<ClusterGkeConfigV2ClusterAddonsArgs> clusterAddons;
 
     /**
-     * @return The GKE cluster addons (List maxitems:1)
+     * @return The GKE cluster addons
      * 
      */
     public Optional<Output<ClusterGkeConfigV2ClusterAddonsArgs>> clusterAddons() {
@@ -41,14 +41,14 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The GKE cluster ip v4 allocation cidr block (string)
+     * The GKE ip v4 cidr block
      * 
      */
     @Import(name="clusterIpv4CidrBlock")
     private @Nullable Output<String> clusterIpv4CidrBlock;
 
     /**
-     * @return The GKE cluster ip v4 allocation cidr block (string)
+     * @return The GKE ip v4 cidr block
      * 
      */
     public Optional<Output<String>> clusterIpv4CidrBlock() {
@@ -71,14 +71,14 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Enable Kubernetes alpha. Default: `false` (bool)
+     * Enable Kubernetes alpha
      * 
      */
     @Import(name="enableKubernetesAlpha")
     private @Nullable Output<Boolean> enableKubernetesAlpha;
 
     /**
-     * @return Enable Kubernetes alpha. Default: `false` (bool)
+     * @return Enable Kubernetes alpha
      * 
      */
     public Optional<Output<Boolean>> enableKubernetesAlpha() {
@@ -86,14 +86,14 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Google credential secret (string)
+     * Google credential secret
      * 
      */
     @Import(name="googleCredentialSecret", required=true)
     private Output<String> googleCredentialSecret;
 
     /**
-     * @return Google credential secret (string)
+     * @return Google credential secret
      * 
      */
     public Output<String> googleCredentialSecret() {
@@ -101,14 +101,14 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Is GKE cluster imported? Default: `false` (bool)
+     * Is GKE cluster imported?
      * 
      */
     @Import(name="imported")
     private @Nullable Output<Boolean> imported;
 
     /**
-     * @return Is GKE cluster imported? Default: `false` (bool)
+     * @return Is GKE cluster imported?
      * 
      */
     public Optional<Output<Boolean>> imported() {
@@ -116,14 +116,14 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The GKE ip allocation policy (List maxitems:1)
+     * The GKE ip allocation policy
      * 
      */
     @Import(name="ipAllocationPolicy")
     private @Nullable Output<ClusterGkeConfigV2IpAllocationPolicyArgs> ipAllocationPolicy;
 
     /**
-     * @return The GKE ip allocation policy (List maxitems:1)
+     * @return The GKE ip allocation policy
      * 
      */
     public Optional<Output<ClusterGkeConfigV2IpAllocationPolicyArgs>> ipAllocationPolicy() {
@@ -131,14 +131,14 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * The kubernetes master version
      * 
      */
     @Import(name="kubernetesVersion")
     private @Nullable Output<String> kubernetesVersion;
 
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return The kubernetes master version
      * 
      */
     public Optional<Output<String>> kubernetesVersion() {
@@ -161,14 +161,14 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The GKE cluster locations (List)
+     * The GKE cluster locations
      * 
      */
     @Import(name="locations")
     private @Nullable Output<List<String>> locations;
 
     /**
-     * @return The GKE cluster locations (List)
+     * @return The GKE cluster locations
      * 
      */
     public Optional<Output<List<String>>> locations() {
@@ -176,14 +176,14 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The GKE cluster logging service (string)
+     * The GKE cluster logging service
      * 
      */
     @Import(name="loggingService")
     private @Nullable Output<String> loggingService;
 
     /**
-     * @return The GKE cluster logging service (string)
+     * @return The GKE cluster logging service
      * 
      */
     public Optional<Output<String>> loggingService() {
@@ -191,14 +191,14 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The GKE cluster maintenance window (string)
+     * The GKE cluster maintenance window
      * 
      */
     @Import(name="maintenanceWindow")
     private @Nullable Output<String> maintenanceWindow;
 
     /**
-     * @return The GKE cluster maintenance window (string)
+     * @return The GKE cluster maintenance window
      * 
      */
     public Optional<Output<String>> maintenanceWindow() {
@@ -206,14 +206,14 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The GKE cluster master authorized networks config (List maxitems:1)
+     * The GKE cluster master authorized networks config
      * 
      */
     @Import(name="masterAuthorizedNetworksConfig")
     private @Nullable Output<ClusterGkeConfigV2MasterAuthorizedNetworksConfigArgs> masterAuthorizedNetworksConfig;
 
     /**
-     * @return The GKE cluster master authorized networks config (List maxitems:1)
+     * @return The GKE cluster master authorized networks config
      * 
      */
     public Optional<Output<ClusterGkeConfigV2MasterAuthorizedNetworksConfigArgs>> masterAuthorizedNetworksConfig() {
@@ -221,14 +221,14 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The GKE cluster monitoring service (string)
+     * The GKE cluster monitoring service
      * 
      */
     @Import(name="monitoringService")
     private @Nullable Output<String> monitoringService;
 
     /**
-     * @return The GKE cluster monitoring service (string)
+     * @return The GKE cluster monitoring service
      * 
      */
     public Optional<Output<String>> monitoringService() {
@@ -251,14 +251,14 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The GKE cluster network. Required for create new cluster (string)
+     * The GKE cluster network
      * 
      */
     @Import(name="network")
     private @Nullable Output<String> network;
 
     /**
-     * @return The GKE cluster network. Required for create new cluster (string)
+     * @return The GKE cluster network
      * 
      */
     public Optional<Output<String>> network() {
@@ -266,14 +266,14 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Is GKE cluster network policy enabled? Default: `false` (bool)
+     * Is GKE cluster network policy enabled?
      * 
      */
     @Import(name="networkPolicyEnabled")
     private @Nullable Output<Boolean> networkPolicyEnabled;
 
     /**
-     * @return Is GKE cluster network policy enabled? Default: `false` (bool)
+     * @return Is GKE cluster network policy enabled?
      * 
      */
     public Optional<Output<Boolean>> networkPolicyEnabled() {
@@ -281,14 +281,14 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The GKE cluster node pools. Required for create new cluster (List)
+     * The GKE cluster node pools
      * 
      */
     @Import(name="nodePools")
     private @Nullable Output<List<ClusterGkeConfigV2NodePoolArgs>> nodePools;
 
     /**
-     * @return The GKE cluster node pools. Required for create new cluster (List)
+     * @return The GKE cluster node pools
      * 
      */
     public Optional<Output<List<ClusterGkeConfigV2NodePoolArgs>>> nodePools() {
@@ -296,14 +296,14 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The GKE private cluster config (List maxitems:1)
+     * The GKE private cluster config
      * 
      */
     @Import(name="privateClusterConfig")
     private @Nullable Output<ClusterGkeConfigV2PrivateClusterConfigArgs> privateClusterConfig;
 
     /**
-     * @return The GKE private cluster config (List maxitems:1)
+     * @return The GKE private cluster config
      * 
      */
     public Optional<Output<ClusterGkeConfigV2PrivateClusterConfigArgs>> privateClusterConfig() {
@@ -311,14 +311,14 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Project ID to apply answer (string)
+     * The GKE project id
      * 
      */
     @Import(name="projectId", required=true)
     private Output<String> projectId;
 
     /**
-     * @return Project ID to apply answer (string)
+     * @return The GKE project id
      * 
      */
     public Output<String> projectId() {
@@ -326,14 +326,14 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     * The GKE cluster region. Required if `zone` is empty
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     * @return The GKE cluster region. Required if `zone` is empty
      * 
      */
     public Optional<Output<String>> region() {
@@ -341,14 +341,14 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The GKE cluster subnetwork. Required for create new cluster (string)
+     * The GKE cluster subnetwork
      * 
      */
     @Import(name="subnetwork")
     private @Nullable Output<String> subnetwork;
 
     /**
-     * @return The GKE cluster subnetwork. Required for create new cluster (string)
+     * @return The GKE cluster subnetwork
      * 
      */
     public Optional<Output<String>> subnetwork() {
@@ -356,14 +356,14 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The GKE cluster zone. Required if `region` not set (string)
+     * The GKE cluster zone. Required if `region` is empty
      * 
      */
     @Import(name="zone")
     private @Nullable Output<String> zone;
 
     /**
-     * @return The GKE cluster zone. Required if `region` not set (string)
+     * @return The GKE cluster zone. Required if `region` is empty
      * 
      */
     public Optional<Output<String>> zone() {
@@ -417,7 +417,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param clusterAddons The GKE cluster addons (List maxitems:1)
+         * @param clusterAddons The GKE cluster addons
          * 
          * @return builder
          * 
@@ -428,7 +428,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param clusterAddons The GKE cluster addons (List maxitems:1)
+         * @param clusterAddons The GKE cluster addons
          * 
          * @return builder
          * 
@@ -438,7 +438,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param clusterIpv4CidrBlock The GKE cluster ip v4 allocation cidr block (string)
+         * @param clusterIpv4CidrBlock The GKE ip v4 cidr block
          * 
          * @return builder
          * 
@@ -449,7 +449,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param clusterIpv4CidrBlock The GKE cluster ip v4 allocation cidr block (string)
+         * @param clusterIpv4CidrBlock The GKE ip v4 cidr block
          * 
          * @return builder
          * 
@@ -480,7 +480,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param enableKubernetesAlpha Enable Kubernetes alpha. Default: `false` (bool)
+         * @param enableKubernetesAlpha Enable Kubernetes alpha
          * 
          * @return builder
          * 
@@ -491,7 +491,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param enableKubernetesAlpha Enable Kubernetes alpha. Default: `false` (bool)
+         * @param enableKubernetesAlpha Enable Kubernetes alpha
          * 
          * @return builder
          * 
@@ -501,7 +501,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param googleCredentialSecret Google credential secret (string)
+         * @param googleCredentialSecret Google credential secret
          * 
          * @return builder
          * 
@@ -512,7 +512,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param googleCredentialSecret Google credential secret (string)
+         * @param googleCredentialSecret Google credential secret
          * 
          * @return builder
          * 
@@ -522,7 +522,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param imported Is GKE cluster imported? Default: `false` (bool)
+         * @param imported Is GKE cluster imported?
          * 
          * @return builder
          * 
@@ -533,7 +533,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param imported Is GKE cluster imported? Default: `false` (bool)
+         * @param imported Is GKE cluster imported?
          * 
          * @return builder
          * 
@@ -543,7 +543,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param ipAllocationPolicy The GKE ip allocation policy (List maxitems:1)
+         * @param ipAllocationPolicy The GKE ip allocation policy
          * 
          * @return builder
          * 
@@ -554,7 +554,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param ipAllocationPolicy The GKE ip allocation policy (List maxitems:1)
+         * @param ipAllocationPolicy The GKE ip allocation policy
          * 
          * @return builder
          * 
@@ -564,7 +564,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param kubernetesVersion The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+         * @param kubernetesVersion The kubernetes master version
          * 
          * @return builder
          * 
@@ -575,7 +575,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param kubernetesVersion The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+         * @param kubernetesVersion The kubernetes master version
          * 
          * @return builder
          * 
@@ -606,7 +606,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param locations The GKE cluster locations (List)
+         * @param locations The GKE cluster locations
          * 
          * @return builder
          * 
@@ -617,7 +617,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param locations The GKE cluster locations (List)
+         * @param locations The GKE cluster locations
          * 
          * @return builder
          * 
@@ -627,7 +627,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param locations The GKE cluster locations (List)
+         * @param locations The GKE cluster locations
          * 
          * @return builder
          * 
@@ -637,7 +637,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param loggingService The GKE cluster logging service (string)
+         * @param loggingService The GKE cluster logging service
          * 
          * @return builder
          * 
@@ -648,7 +648,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param loggingService The GKE cluster logging service (string)
+         * @param loggingService The GKE cluster logging service
          * 
          * @return builder
          * 
@@ -658,7 +658,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param maintenanceWindow The GKE cluster maintenance window (string)
+         * @param maintenanceWindow The GKE cluster maintenance window
          * 
          * @return builder
          * 
@@ -669,7 +669,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param maintenanceWindow The GKE cluster maintenance window (string)
+         * @param maintenanceWindow The GKE cluster maintenance window
          * 
          * @return builder
          * 
@@ -679,7 +679,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param masterAuthorizedNetworksConfig The GKE cluster master authorized networks config (List maxitems:1)
+         * @param masterAuthorizedNetworksConfig The GKE cluster master authorized networks config
          * 
          * @return builder
          * 
@@ -690,7 +690,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param masterAuthorizedNetworksConfig The GKE cluster master authorized networks config (List maxitems:1)
+         * @param masterAuthorizedNetworksConfig The GKE cluster master authorized networks config
          * 
          * @return builder
          * 
@@ -700,7 +700,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param monitoringService The GKE cluster monitoring service (string)
+         * @param monitoringService The GKE cluster monitoring service
          * 
          * @return builder
          * 
@@ -711,7 +711,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param monitoringService The GKE cluster monitoring service (string)
+         * @param monitoringService The GKE cluster monitoring service
          * 
          * @return builder
          * 
@@ -742,7 +742,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param network The GKE cluster network. Required for create new cluster (string)
+         * @param network The GKE cluster network
          * 
          * @return builder
          * 
@@ -753,7 +753,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param network The GKE cluster network. Required for create new cluster (string)
+         * @param network The GKE cluster network
          * 
          * @return builder
          * 
@@ -763,7 +763,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param networkPolicyEnabled Is GKE cluster network policy enabled? Default: `false` (bool)
+         * @param networkPolicyEnabled Is GKE cluster network policy enabled?
          * 
          * @return builder
          * 
@@ -774,7 +774,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param networkPolicyEnabled Is GKE cluster network policy enabled? Default: `false` (bool)
+         * @param networkPolicyEnabled Is GKE cluster network policy enabled?
          * 
          * @return builder
          * 
@@ -784,7 +784,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param nodePools The GKE cluster node pools. Required for create new cluster (List)
+         * @param nodePools The GKE cluster node pools
          * 
          * @return builder
          * 
@@ -795,7 +795,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param nodePools The GKE cluster node pools. Required for create new cluster (List)
+         * @param nodePools The GKE cluster node pools
          * 
          * @return builder
          * 
@@ -805,7 +805,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param nodePools The GKE cluster node pools. Required for create new cluster (List)
+         * @param nodePools The GKE cluster node pools
          * 
          * @return builder
          * 
@@ -815,7 +815,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param privateClusterConfig The GKE private cluster config (List maxitems:1)
+         * @param privateClusterConfig The GKE private cluster config
          * 
          * @return builder
          * 
@@ -826,7 +826,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param privateClusterConfig The GKE private cluster config (List maxitems:1)
+         * @param privateClusterConfig The GKE private cluster config
          * 
          * @return builder
          * 
@@ -836,7 +836,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param projectId Project ID to apply answer (string)
+         * @param projectId The GKE project id
          * 
          * @return builder
          * 
@@ -847,7 +847,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param projectId Project ID to apply answer (string)
+         * @param projectId The GKE project id
          * 
          * @return builder
          * 
@@ -857,7 +857,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param region The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+         * @param region The GKE cluster region. Required if `zone` is empty
          * 
          * @return builder
          * 
@@ -868,7 +868,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param region The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+         * @param region The GKE cluster region. Required if `zone` is empty
          * 
          * @return builder
          * 
@@ -878,7 +878,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param subnetwork The GKE cluster subnetwork. Required for create new cluster (string)
+         * @param subnetwork The GKE cluster subnetwork
          * 
          * @return builder
          * 
@@ -889,7 +889,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param subnetwork The GKE cluster subnetwork. Required for create new cluster (string)
+         * @param subnetwork The GKE cluster subnetwork
          * 
          * @return builder
          * 
@@ -899,7 +899,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param zone The GKE cluster zone. Required if `region` not set (string)
+         * @param zone The GKE cluster zone. Required if `region` is empty
          * 
          * @return builder
          * 
@@ -910,7 +910,7 @@ public final class ClusterGkeConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param zone The GKE cluster zone. Required if `region` not set (string)
+         * @param zone The GKE cluster zone. Required if `region` is empty
          * 
          * @return builder
          * 

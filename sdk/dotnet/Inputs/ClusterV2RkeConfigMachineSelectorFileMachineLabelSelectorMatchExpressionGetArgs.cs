@@ -13,13 +13,13 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpressionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Key is the name of the key of the item to retrieve.
+        /// Label selector requirement key
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
 
         /// <summary>
-        /// Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+        /// Label selector operator
         /// </summary>
         [Input("operator")]
         public Input<string>? Operator { get; set; }
@@ -28,7 +28,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _values;
 
         /// <summary>
-        /// Values is a list of string values.
+        /// Label selector requirement values
         /// </summary>
         public InputList<string> Values
         {

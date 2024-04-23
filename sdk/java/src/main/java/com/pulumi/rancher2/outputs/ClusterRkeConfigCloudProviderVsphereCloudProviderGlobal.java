@@ -13,81 +13,33 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal {
-    /**
-     * @return (string)
-     * 
-     */
     private @Nullable String datacenters;
     private @Nullable String gracefulShutdownTimeout;
-    /**
-     * @return (bool)
-     * 
-     */
     private @Nullable Boolean insecureFlag;
-    /**
-     * @return Registry password (string)
-     * 
-     */
     private @Nullable String password;
-    /**
-     * @return Port for node. Default `22` (string)
-     * 
-     */
     private @Nullable String port;
-    /**
-     * @return (int)
-     * 
-     */
     private @Nullable Integer soapRoundtripCount;
-    /**
-     * @return Registry user (string)
-     * 
-     */
     private @Nullable String user;
 
     private ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal() {}
-    /**
-     * @return (string)
-     * 
-     */
     public Optional<String> datacenters() {
         return Optional.ofNullable(this.datacenters);
     }
     public Optional<String> gracefulShutdownTimeout() {
         return Optional.ofNullable(this.gracefulShutdownTimeout);
     }
-    /**
-     * @return (bool)
-     * 
-     */
     public Optional<Boolean> insecureFlag() {
         return Optional.ofNullable(this.insecureFlag);
     }
-    /**
-     * @return Registry password (string)
-     * 
-     */
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
     }
-    /**
-     * @return Port for node. Default `22` (string)
-     * 
-     */
     public Optional<String> port() {
         return Optional.ofNullable(this.port);
     }
-    /**
-     * @return (int)
-     * 
-     */
     public Optional<Integer> soapRoundtripCount() {
         return Optional.ofNullable(this.soapRoundtripCount);
     }
-    /**
-     * @return Registry user (string)
-     * 
-     */
     public Optional<String> user() {
         return Optional.ofNullable(this.user);
     }

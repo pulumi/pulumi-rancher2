@@ -271,7 +271,6 @@ class Secret(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -288,9 +287,7 @@ class Secret(pulumi.CustomResource):
                 "password": std.base64encode(input="pass").result,
             })
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -308,7 +305,6 @@ class Secret(pulumi.CustomResource):
                 "password": std.base64encode(input="pass").result,
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -344,7 +340,6 @@ class Secret(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -361,9 +356,7 @@ class Secret(pulumi.CustomResource):
                 "password": std.base64encode(input="pass").result,
             })
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -381,7 +374,6 @@ class Secret(pulumi.CustomResource):
                 "password": std.base64encode(input="pass").result,
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

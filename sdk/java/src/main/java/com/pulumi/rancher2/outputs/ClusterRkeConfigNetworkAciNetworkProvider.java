@@ -13,893 +13,301 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterRkeConfigNetworkAciNetworkProvider {
-    /**
-     * @return Attachable entity profile (string)
-     * 
-     */
     private String aep;
-    /**
-     * @return List of APIC hosts to connect for APIC API (list)
-     * 
-     */
     private List<String> apicHosts;
-    /**
-     * @return APIC refresh ticker adjust amount (string)
-     * 
-     */
     private @Nullable String apicRefreshTickerAdjust;
-    /**
-     * @return APIC refresh time in seconds (string)
-     * 
-     */
     private @Nullable String apicRefreshTime;
-    /**
-     * @return APIC subscription delay amount (string)
-     * 
-     */
     private @Nullable String apicSubscriptionDelay;
-    /**
-     * @return APIC user certificate (string)
-     * 
-     */
     private String apicUserCrt;
-    /**
-     * @return APIC user key (string)
-     * 
-     */
     private String apicUserKey;
-    /**
-     * @return APIC user name (string)
-     * 
-     */
     private String apicUserName;
-    /**
-     * @return cAPIC cloud (string)
-     * 
-     */
     private @Nullable String capic;
-    /**
-     * @return Log level for ACI controller (string)
-     * 
-     */
     private @Nullable String controllerLogLevel;
-    /**
-     * @return Whether to disable periodic SNAT global info sync (string)
-     * 
-     */
     private @Nullable String disablePeriodicSnatGlobalInfoSync;
-    /**
-     * @return Whether to disable waiting for network (string)
-     * 
-     */
     private @Nullable String disableWaitForNetwork;
-    /**
-     * @return Whether to enable drop log (string)
-     * 
-     */
     private @Nullable String dropLogEnable;
-    /**
-     * @return The duration to wait for network (string)
-     * 
-     */
     private @Nullable String durationWaitForNetwork;
-    /**
-     * @return Whether to enable endpoint slices (string)
-     * 
-     */
     private @Nullable String enableEndpointSlice;
-    /**
-     * @return Encap type: vxlan or vlan (string)
-     * 
-     */
     private String encapType;
-    /**
-     * @return EP registry (string)
-     * 
-     */
     private @Nullable String epRegistry;
-    /**
-     * @return Subnet to use for dynamic external IPs (string)
-     * 
-     */
     private String externDynamic;
-    /**
-     * @return Subnet to use for static external IPs (string)
-     * 
-     */
     private String externStatic;
-    /**
-     * @return GBH pod subnet (string)
-     * 
-     */
     private @Nullable String gbpPodSubnet;
-    /**
-     * @return Log level for ACI host agent (string)
-     * 
-     */
     private @Nullable String hostAgentLogLevel;
-    /**
-     * @return Image pull policy (string)
-     * 
-     */
     private @Nullable String imagePullPolicy;
-    /**
-     * @return Image pull policy (string)
-     * 
-     */
     private @Nullable String imagePullSecret;
-    /**
-     * @return The VLAN used by ACI infra (string)
-     * 
-     */
     private @Nullable String infraVlan;
-    /**
-     * @return Whether to install Istio (string)
-     * 
-     */
     private @Nullable String installIstio;
-    /**
-     * @return Istio profile name (string)
-     * 
-     */
     private @Nullable String istioProfile;
-    /**
-     * @return List of Kafka broker hosts (list)
-     * 
-     */
     private @Nullable List<String> kafkaBrokers;
-    /**
-     * @return Kafka client certificate (string)
-     * 
-     */
     private @Nullable String kafkaClientCrt;
-    /**
-     * @return Kafka client key (string)
-     * 
-     */
     private @Nullable String kafkaClientKey;
-    /**
-     * @return The VLAN used by the physdom for nodes (string)
-     * 
-     */
     private String kubeApiVlan;
-    /**
-     * @return L3out (string)
-     * 
-     */
     private String l3out;
-    /**
-     * @return L3out external networks (list)
-     * 
-     */
     private List<String> l3outExternalNetworks;
-    /**
-     * @return Max nodes in service graph (string)
-     * 
-     */
     private @Nullable String maxNodesSvcGraph;
-    /**
-     * @return End of mcast range (string)
-     * 
-     */
     private String mcastRangeEnd;
-    /**
-     * @return Start of mcast range (string)
-     * 
-     */
     private String mcastRangeStart;
-    /**
-     * @return MTU head room amount (string)
-     * 
-     */
     private @Nullable String mtuHeadRoom;
-    /**
-     * @return Whether to disable Multus (string)
-     * 
-     */
     private @Nullable String multusDisable;
-    /**
-     * @return Whether to use priority class (string)
-     * 
-     */
     private @Nullable String noPriorityClass;
-    /**
-     * @return Whether to enable node pod interface (string)
-     * 
-     */
     private @Nullable String nodePodIfEnable;
-    /**
-     * @return Subnet to use for nodes (string)
-     * 
-     */
     private String nodeSubnet;
-    /**
-     * @return Subnet to use for service graph (string)
-     * 
-     */
     private String nodeSvcSubnet;
-    /**
-     * @return Whether to use client SSL for Opflex (string)
-     * 
-     */
     private @Nullable String opflexClientSsl;
-    /**
-     * @return Opflex device delete timeout (string)
-     * 
-     */
     private @Nullable String opflexDeviceDeleteTimeout;
-    /**
-     * @return Log level for ACI opflex (string)
-     * 
-     */
     private @Nullable String opflexLogLevel;
-    /**
-     * @return Opflex mode (string)
-     * 
-     */
     private @Nullable String opflexMode;
-    /**
-     * @return Opflex server port (string)
-     * 
-     */
     private @Nullable String opflexServerPort;
-    /**
-     * @return Overlay VRF name (string)
-     * 
-     */
     private @Nullable String overlayVrfName;
-    /**
-     * @return OVS memory limit (string)
-     * 
-     */
     private @Nullable String ovsMemoryLimit;
-    /**
-     * @return Policy-based routing tracking non snat (string)
-     * 
-     */
     private @Nullable String pbrTrackingNonSnat;
-    /**
-     * @return Pod subnet chunk size (string)
-     * 
-     */
     private @Nullable String podSubnetChunkSize;
-    /**
-     * @return Whether to run GBP container (string)
-     * 
-     */
     private @Nullable String runGbpContainer;
-    /**
-     * @return Whether to run Opflex server container (string)
-     * 
-     */
     private @Nullable String runOpflexServerContainer;
-    /**
-     * @return Service monitor interval (string)
-     * 
-     */
     private @Nullable String serviceMonitorInterval;
-    /**
-     * @return The VLAN used by LoadBalancer services (string)
-     * 
-     */
     private String serviceVlan;
-    /**
-     * @return Snat contract scope (string)
-     * 
-     */
     private @Nullable String snatContractScope;
-    /**
-     * @return Snat namespace (string)
-     * 
-     */
     private @Nullable String snatNamespace;
-    /**
-     * @return End of snat port range (string)
-     * 
-     */
     private @Nullable String snatPortRangeEnd;
-    /**
-     * @return End of snat port range (string)
-     * 
-     */
     private @Nullable String snatPortRangeStart;
-    /**
-     * @return Snat ports per node (string)
-     * 
-     */
     private @Nullable String snatPortsPerNode;
-    /**
-     * @return Whether to enable SR-IOV (string)
-     * 
-     */
     private @Nullable String sriovEnable;
-    /**
-     * @return Subnet domain name (string)
-     * 
-     */
     private @Nullable String subnetDomainName;
-    /**
-     * @return ACI system ID (string)
-     * 
-     */
     private String systemId;
-    /**
-     * @return ACI tenant (string)
-     * 
-     */
     private @Nullable String tenant;
-    /**
-     * @return ACI token (string)
-     * 
-     */
     private String token;
-    /**
-     * @return Whether to use ACI anywhere CRD (string)
-     * 
-     */
     private @Nullable String useAciAnywhereCrd;
-    /**
-     * @return Whether to use ACI CNI priority class (string)
-     * 
-     */
     private @Nullable String useAciCniPriorityClass;
-    /**
-     * @return Whether to use cluster role (string)
-     * 
-     */
     private @Nullable String useClusterRole;
-    /**
-     * @return Whether to use host netns volume (string)
-     * 
-     */
     private @Nullable String useHostNetnsVolume;
-    /**
-     * @return Whether use Opflex server volume (string)
-     * 
-     */
     private @Nullable String useOpflexServerVolume;
-    /**
-     * @return Whether ACI containers should run as privileged (string)
-     * 
-     */
     private @Nullable String usePrivilegedContainer;
-    /**
-     * @return VMM controller configuration (string)
-     * 
-     */
     private @Nullable String vmmController;
-    /**
-     * @return VMM domain configuration (string)
-     * 
-     */
     private @Nullable String vmmDomain;
-    /**
-     * @return VRF name (string)
-     * 
-     */
     private String vrfName;
-    /**
-     * @return VRF tenant (string)
-     * 
-     */
     private String vrfTenant;
 
     private ClusterRkeConfigNetworkAciNetworkProvider() {}
-    /**
-     * @return Attachable entity profile (string)
-     * 
-     */
     public String aep() {
         return this.aep;
     }
-    /**
-     * @return List of APIC hosts to connect for APIC API (list)
-     * 
-     */
     public List<String> apicHosts() {
         return this.apicHosts;
     }
-    /**
-     * @return APIC refresh ticker adjust amount (string)
-     * 
-     */
     public Optional<String> apicRefreshTickerAdjust() {
         return Optional.ofNullable(this.apicRefreshTickerAdjust);
     }
-    /**
-     * @return APIC refresh time in seconds (string)
-     * 
-     */
     public Optional<String> apicRefreshTime() {
         return Optional.ofNullable(this.apicRefreshTime);
     }
-    /**
-     * @return APIC subscription delay amount (string)
-     * 
-     */
     public Optional<String> apicSubscriptionDelay() {
         return Optional.ofNullable(this.apicSubscriptionDelay);
     }
-    /**
-     * @return APIC user certificate (string)
-     * 
-     */
     public String apicUserCrt() {
         return this.apicUserCrt;
     }
-    /**
-     * @return APIC user key (string)
-     * 
-     */
     public String apicUserKey() {
         return this.apicUserKey;
     }
-    /**
-     * @return APIC user name (string)
-     * 
-     */
     public String apicUserName() {
         return this.apicUserName;
     }
-    /**
-     * @return cAPIC cloud (string)
-     * 
-     */
     public Optional<String> capic() {
         return Optional.ofNullable(this.capic);
     }
-    /**
-     * @return Log level for ACI controller (string)
-     * 
-     */
     public Optional<String> controllerLogLevel() {
         return Optional.ofNullable(this.controllerLogLevel);
     }
-    /**
-     * @return Whether to disable periodic SNAT global info sync (string)
-     * 
-     */
     public Optional<String> disablePeriodicSnatGlobalInfoSync() {
         return Optional.ofNullable(this.disablePeriodicSnatGlobalInfoSync);
     }
-    /**
-     * @return Whether to disable waiting for network (string)
-     * 
-     */
     public Optional<String> disableWaitForNetwork() {
         return Optional.ofNullable(this.disableWaitForNetwork);
     }
-    /**
-     * @return Whether to enable drop log (string)
-     * 
-     */
     public Optional<String> dropLogEnable() {
         return Optional.ofNullable(this.dropLogEnable);
     }
-    /**
-     * @return The duration to wait for network (string)
-     * 
-     */
     public Optional<String> durationWaitForNetwork() {
         return Optional.ofNullable(this.durationWaitForNetwork);
     }
-    /**
-     * @return Whether to enable endpoint slices (string)
-     * 
-     */
     public Optional<String> enableEndpointSlice() {
         return Optional.ofNullable(this.enableEndpointSlice);
     }
-    /**
-     * @return Encap type: vxlan or vlan (string)
-     * 
-     */
     public String encapType() {
         return this.encapType;
     }
-    /**
-     * @return EP registry (string)
-     * 
-     */
     public Optional<String> epRegistry() {
         return Optional.ofNullable(this.epRegistry);
     }
-    /**
-     * @return Subnet to use for dynamic external IPs (string)
-     * 
-     */
     public String externDynamic() {
         return this.externDynamic;
     }
-    /**
-     * @return Subnet to use for static external IPs (string)
-     * 
-     */
     public String externStatic() {
         return this.externStatic;
     }
-    /**
-     * @return GBH pod subnet (string)
-     * 
-     */
     public Optional<String> gbpPodSubnet() {
         return Optional.ofNullable(this.gbpPodSubnet);
     }
-    /**
-     * @return Log level for ACI host agent (string)
-     * 
-     */
     public Optional<String> hostAgentLogLevel() {
         return Optional.ofNullable(this.hostAgentLogLevel);
     }
-    /**
-     * @return Image pull policy (string)
-     * 
-     */
     public Optional<String> imagePullPolicy() {
         return Optional.ofNullable(this.imagePullPolicy);
     }
-    /**
-     * @return Image pull policy (string)
-     * 
-     */
     public Optional<String> imagePullSecret() {
         return Optional.ofNullable(this.imagePullSecret);
     }
-    /**
-     * @return The VLAN used by ACI infra (string)
-     * 
-     */
     public Optional<String> infraVlan() {
         return Optional.ofNullable(this.infraVlan);
     }
-    /**
-     * @return Whether to install Istio (string)
-     * 
-     */
     public Optional<String> installIstio() {
         return Optional.ofNullable(this.installIstio);
     }
-    /**
-     * @return Istio profile name (string)
-     * 
-     */
     public Optional<String> istioProfile() {
         return Optional.ofNullable(this.istioProfile);
     }
-    /**
-     * @return List of Kafka broker hosts (list)
-     * 
-     */
     public List<String> kafkaBrokers() {
         return this.kafkaBrokers == null ? List.of() : this.kafkaBrokers;
     }
-    /**
-     * @return Kafka client certificate (string)
-     * 
-     */
     public Optional<String> kafkaClientCrt() {
         return Optional.ofNullable(this.kafkaClientCrt);
     }
-    /**
-     * @return Kafka client key (string)
-     * 
-     */
     public Optional<String> kafkaClientKey() {
         return Optional.ofNullable(this.kafkaClientKey);
     }
-    /**
-     * @return The VLAN used by the physdom for nodes (string)
-     * 
-     */
     public String kubeApiVlan() {
         return this.kubeApiVlan;
     }
-    /**
-     * @return L3out (string)
-     * 
-     */
     public String l3out() {
         return this.l3out;
     }
-    /**
-     * @return L3out external networks (list)
-     * 
-     */
     public List<String> l3outExternalNetworks() {
         return this.l3outExternalNetworks;
     }
-    /**
-     * @return Max nodes in service graph (string)
-     * 
-     */
     public Optional<String> maxNodesSvcGraph() {
         return Optional.ofNullable(this.maxNodesSvcGraph);
     }
-    /**
-     * @return End of mcast range (string)
-     * 
-     */
     public String mcastRangeEnd() {
         return this.mcastRangeEnd;
     }
-    /**
-     * @return Start of mcast range (string)
-     * 
-     */
     public String mcastRangeStart() {
         return this.mcastRangeStart;
     }
-    /**
-     * @return MTU head room amount (string)
-     * 
-     */
     public Optional<String> mtuHeadRoom() {
         return Optional.ofNullable(this.mtuHeadRoom);
     }
-    /**
-     * @return Whether to disable Multus (string)
-     * 
-     */
     public Optional<String> multusDisable() {
         return Optional.ofNullable(this.multusDisable);
     }
-    /**
-     * @return Whether to use priority class (string)
-     * 
-     */
     public Optional<String> noPriorityClass() {
         return Optional.ofNullable(this.noPriorityClass);
     }
-    /**
-     * @return Whether to enable node pod interface (string)
-     * 
-     */
     public Optional<String> nodePodIfEnable() {
         return Optional.ofNullable(this.nodePodIfEnable);
     }
-    /**
-     * @return Subnet to use for nodes (string)
-     * 
-     */
     public String nodeSubnet() {
         return this.nodeSubnet;
     }
-    /**
-     * @return Subnet to use for service graph (string)
-     * 
-     */
     public String nodeSvcSubnet() {
         return this.nodeSvcSubnet;
     }
-    /**
-     * @return Whether to use client SSL for Opflex (string)
-     * 
-     */
     public Optional<String> opflexClientSsl() {
         return Optional.ofNullable(this.opflexClientSsl);
     }
-    /**
-     * @return Opflex device delete timeout (string)
-     * 
-     */
     public Optional<String> opflexDeviceDeleteTimeout() {
         return Optional.ofNullable(this.opflexDeviceDeleteTimeout);
     }
-    /**
-     * @return Log level for ACI opflex (string)
-     * 
-     */
     public Optional<String> opflexLogLevel() {
         return Optional.ofNullable(this.opflexLogLevel);
     }
-    /**
-     * @return Opflex mode (string)
-     * 
-     */
     public Optional<String> opflexMode() {
         return Optional.ofNullable(this.opflexMode);
     }
-    /**
-     * @return Opflex server port (string)
-     * 
-     */
     public Optional<String> opflexServerPort() {
         return Optional.ofNullable(this.opflexServerPort);
     }
-    /**
-     * @return Overlay VRF name (string)
-     * 
-     */
     public Optional<String> overlayVrfName() {
         return Optional.ofNullable(this.overlayVrfName);
     }
-    /**
-     * @return OVS memory limit (string)
-     * 
-     */
     public Optional<String> ovsMemoryLimit() {
         return Optional.ofNullable(this.ovsMemoryLimit);
     }
-    /**
-     * @return Policy-based routing tracking non snat (string)
-     * 
-     */
     public Optional<String> pbrTrackingNonSnat() {
         return Optional.ofNullable(this.pbrTrackingNonSnat);
     }
-    /**
-     * @return Pod subnet chunk size (string)
-     * 
-     */
     public Optional<String> podSubnetChunkSize() {
         return Optional.ofNullable(this.podSubnetChunkSize);
     }
-    /**
-     * @return Whether to run GBP container (string)
-     * 
-     */
     public Optional<String> runGbpContainer() {
         return Optional.ofNullable(this.runGbpContainer);
     }
-    /**
-     * @return Whether to run Opflex server container (string)
-     * 
-     */
     public Optional<String> runOpflexServerContainer() {
         return Optional.ofNullable(this.runOpflexServerContainer);
     }
-    /**
-     * @return Service monitor interval (string)
-     * 
-     */
     public Optional<String> serviceMonitorInterval() {
         return Optional.ofNullable(this.serviceMonitorInterval);
     }
-    /**
-     * @return The VLAN used by LoadBalancer services (string)
-     * 
-     */
     public String serviceVlan() {
         return this.serviceVlan;
     }
-    /**
-     * @return Snat contract scope (string)
-     * 
-     */
     public Optional<String> snatContractScope() {
         return Optional.ofNullable(this.snatContractScope);
     }
-    /**
-     * @return Snat namespace (string)
-     * 
-     */
     public Optional<String> snatNamespace() {
         return Optional.ofNullable(this.snatNamespace);
     }
-    /**
-     * @return End of snat port range (string)
-     * 
-     */
     public Optional<String> snatPortRangeEnd() {
         return Optional.ofNullable(this.snatPortRangeEnd);
     }
-    /**
-     * @return End of snat port range (string)
-     * 
-     */
     public Optional<String> snatPortRangeStart() {
         return Optional.ofNullable(this.snatPortRangeStart);
     }
-    /**
-     * @return Snat ports per node (string)
-     * 
-     */
     public Optional<String> snatPortsPerNode() {
         return Optional.ofNullable(this.snatPortsPerNode);
     }
-    /**
-     * @return Whether to enable SR-IOV (string)
-     * 
-     */
     public Optional<String> sriovEnable() {
         return Optional.ofNullable(this.sriovEnable);
     }
-    /**
-     * @return Subnet domain name (string)
-     * 
-     */
     public Optional<String> subnetDomainName() {
         return Optional.ofNullable(this.subnetDomainName);
     }
-    /**
-     * @return ACI system ID (string)
-     * 
-     */
     public String systemId() {
         return this.systemId;
     }
-    /**
-     * @return ACI tenant (string)
-     * 
-     */
     public Optional<String> tenant() {
         return Optional.ofNullable(this.tenant);
     }
-    /**
-     * @return ACI token (string)
-     * 
-     */
     public String token() {
         return this.token;
     }
-    /**
-     * @return Whether to use ACI anywhere CRD (string)
-     * 
-     */
     public Optional<String> useAciAnywhereCrd() {
         return Optional.ofNullable(this.useAciAnywhereCrd);
     }
-    /**
-     * @return Whether to use ACI CNI priority class (string)
-     * 
-     */
     public Optional<String> useAciCniPriorityClass() {
         return Optional.ofNullable(this.useAciCniPriorityClass);
     }
-    /**
-     * @return Whether to use cluster role (string)
-     * 
-     */
     public Optional<String> useClusterRole() {
         return Optional.ofNullable(this.useClusterRole);
     }
-    /**
-     * @return Whether to use host netns volume (string)
-     * 
-     */
     public Optional<String> useHostNetnsVolume() {
         return Optional.ofNullable(this.useHostNetnsVolume);
     }
-    /**
-     * @return Whether use Opflex server volume (string)
-     * 
-     */
     public Optional<String> useOpflexServerVolume() {
         return Optional.ofNullable(this.useOpflexServerVolume);
     }
-    /**
-     * @return Whether ACI containers should run as privileged (string)
-     * 
-     */
     public Optional<String> usePrivilegedContainer() {
         return Optional.ofNullable(this.usePrivilegedContainer);
     }
-    /**
-     * @return VMM controller configuration (string)
-     * 
-     */
     public Optional<String> vmmController() {
         return Optional.ofNullable(this.vmmController);
     }
-    /**
-     * @return VMM domain configuration (string)
-     * 
-     */
     public Optional<String> vmmDomain() {
         return Optional.ofNullable(this.vmmDomain);
     }
-    /**
-     * @return VRF name (string)
-     * 
-     */
     public String vrfName() {
         return this.vrfName;
     }
-    /**
-     * @return VRF tenant (string)
-     * 
-     */
     public String vrfTenant() {
         return this.vrfTenant;
     }

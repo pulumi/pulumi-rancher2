@@ -217,14 +217,12 @@ def get_multi_cluster_app(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
 
     foo = rancher2.get_multi_cluster_app(name="foo")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The multi cluster app name (string)
@@ -260,14 +258,12 @@ def get_multi_cluster_app_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
 
     foo = rancher2.get_multi_cluster_app(name="foo")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The multi cluster app name (string)

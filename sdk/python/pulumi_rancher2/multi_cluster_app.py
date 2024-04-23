@@ -521,7 +521,6 @@ class MultiClusterApp(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -542,9 +541,7 @@ class MultiClusterApp(pulumi.CustomResource):
             )],
             roles=["project-member"])
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -578,7 +575,6 @@ class MultiClusterApp(pulumi.CustomResource):
             ],
             roles=["project-member"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -623,7 +619,6 @@ class MultiClusterApp(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -644,9 +639,7 @@ class MultiClusterApp(pulumi.CustomResource):
             )],
             roles=["project-member"])
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -680,7 +673,6 @@ class MultiClusterApp(pulumi.CustomResource):
             ],
             roles=["project-member"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

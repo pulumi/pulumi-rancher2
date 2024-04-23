@@ -15,9 +15,6 @@ namespace Pulumi.Rancher2.Inputs
         [Input("customConfig")]
         public Input<string>? CustomConfig { get; set; }
 
-        /// <summary>
-        /// Enable cluster template revision. Default `true` (bool)
-        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

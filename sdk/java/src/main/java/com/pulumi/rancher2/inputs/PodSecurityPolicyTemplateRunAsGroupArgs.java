@@ -19,14 +19,14 @@ public final class PodSecurityPolicyTemplateRunAsGroupArgs extends com.pulumi.re
     public static final PodSecurityPolicyTemplateRunAsGroupArgs Empty = new PodSecurityPolicyTemplateRunAsGroupArgs();
 
     /**
-     * (list)
+     * ranges are the allowed ranges of gids that may be used. If you would like to force a single gid then supply a single range with the same start and end. Required for MustRunAs.
      * 
      */
     @Import(name="ranges")
     private @Nullable Output<List<PodSecurityPolicyTemplateRunAsGroupRangeArgs>> ranges;
 
     /**
-     * @return (list)
+     * @return ranges are the allowed ranges of gids that may be used. If you would like to force a single gid then supply a single range with the same start and end. Required for MustRunAs.
      * 
      */
     public Optional<Output<List<PodSecurityPolicyTemplateRunAsGroupRangeArgs>>> ranges() {
@@ -34,14 +34,14 @@ public final class PodSecurityPolicyTemplateRunAsGroupArgs extends com.pulumi.re
     }
 
     /**
-     * (string)
+     * rule is the strategy that will dictate the allowable RunAsGroup values that may be set.
      * 
      */
     @Import(name="rule", required=true)
     private Output<String> rule;
 
     /**
-     * @return (string)
+     * @return rule is the strategy that will dictate the allowable RunAsGroup values that may be set.
      * 
      */
     public Output<String> rule() {
@@ -74,7 +74,7 @@ public final class PodSecurityPolicyTemplateRunAsGroupArgs extends com.pulumi.re
         }
 
         /**
-         * @param ranges (list)
+         * @param ranges ranges are the allowed ranges of gids that may be used. If you would like to force a single gid then supply a single range with the same start and end. Required for MustRunAs.
          * 
          * @return builder
          * 
@@ -85,7 +85,7 @@ public final class PodSecurityPolicyTemplateRunAsGroupArgs extends com.pulumi.re
         }
 
         /**
-         * @param ranges (list)
+         * @param ranges ranges are the allowed ranges of gids that may be used. If you would like to force a single gid then supply a single range with the same start and end. Required for MustRunAs.
          * 
          * @return builder
          * 
@@ -95,7 +95,7 @@ public final class PodSecurityPolicyTemplateRunAsGroupArgs extends com.pulumi.re
         }
 
         /**
-         * @param ranges (list)
+         * @param ranges ranges are the allowed ranges of gids that may be used. If you would like to force a single gid then supply a single range with the same start and end. Required for MustRunAs.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class PodSecurityPolicyTemplateRunAsGroupArgs extends com.pulumi.re
         }
 
         /**
-         * @param rule (string)
+         * @param rule rule is the strategy that will dictate the allowable RunAsGroup values that may be set.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class PodSecurityPolicyTemplateRunAsGroupArgs extends com.pulumi.re
         }
 
         /**
-         * @param rule (string)
+         * @param rule rule is the strategy that will dictate the allowable RunAsGroup values that may be set.
          * 
          * @return builder
          * 

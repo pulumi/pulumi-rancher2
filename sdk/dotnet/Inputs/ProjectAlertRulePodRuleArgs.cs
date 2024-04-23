@@ -13,25 +13,25 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ProjectAlertRulePodRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Pod rule condition. Supported values : `"notrunning" | "notscheduled" | "restarts"`. Default: `notrunning` (string)
+        /// Pod rule condition
         /// </summary>
         [Input("condition")]
         public Input<string>? Condition { get; set; }
 
         /// <summary>
-        /// Pod ID (string)
+        /// Pod ID
         /// </summary>
         [Input("podId", required: true)]
         public Input<string> PodId { get; set; } = null!;
 
         /// <summary>
-        /// Pod rule restart interval seconds. Default: `300` (int)
+        /// Pod rule restart interval seconds
         /// </summary>
         [Input("restartIntervalSeconds")]
         public Input<int>? RestartIntervalSeconds { get; set; }
 
         /// <summary>
-        /// Pod rule restart times. Default: `3`  (int)
+        /// Pod rule restart times
         /// </summary>
         [Input("restartTimes")]
         public Input<int>? RestartTimes { get; set; }

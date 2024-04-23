@@ -15,38 +15,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterFleetAgentDeploymentCustomization {
     /**
-     * @return User defined tolerations to append to agent (list)
+     * @return User defined tolerations to append to agent
      * 
      */
     private @Nullable List<ClusterFleetAgentDeploymentCustomizationAppendToleration> appendTolerations;
     /**
-     * @return User defined affinity to override default agent affinity (string)
+     * @return User defined affinity to override default agent affinity
      * 
      */
     private @Nullable String overrideAffinity;
     /**
-     * @return User defined resource requirements to set on the agent (list)
+     * @return User defined resource requirements to set on the agent
      * 
      */
     private @Nullable List<ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement> overrideResourceRequirements;
 
     private ClusterFleetAgentDeploymentCustomization() {}
     /**
-     * @return User defined tolerations to append to agent (list)
+     * @return User defined tolerations to append to agent
      * 
      */
     public List<ClusterFleetAgentDeploymentCustomizationAppendToleration> appendTolerations() {
         return this.appendTolerations == null ? List.of() : this.appendTolerations;
     }
     /**
-     * @return User defined affinity to override default agent affinity (string)
+     * @return User defined affinity to override default agent affinity
      * 
      */
     public Optional<String> overrideAffinity() {
         return Optional.ofNullable(this.overrideAffinity);
     }
     /**
-     * @return User defined resource requirements to set on the agent (list)
+     * @return User defined resource requirements to set on the agent
      * 
      */
     public List<ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement> overrideResourceRequirements() {

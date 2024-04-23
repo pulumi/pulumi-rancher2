@@ -16,7 +16,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _accessToken;
 
         /// <summary>
-        /// DigitalOcean access token (string)
+        /// Digital Ocean access token
         /// </summary>
         public Input<string>? AccessToken
         {

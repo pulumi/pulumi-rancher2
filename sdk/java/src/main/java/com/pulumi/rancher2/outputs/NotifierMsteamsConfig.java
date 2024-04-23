@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NotifierMsteamsConfig {
     /**
-     * @return Wechat proxy url (string)
+     * @return MS teams proxy URL
      * 
      */
     private @Nullable String proxyUrl;
     /**
-     * @return Slack url (string)
+     * @return Webhook URL
      * 
      */
     private String url;
 
     private NotifierMsteamsConfig() {}
     /**
-     * @return Wechat proxy url (string)
+     * @return MS teams proxy URL
      * 
      */
     public Optional<String> proxyUrl() {
         return Optional.ofNullable(this.proxyUrl);
     }
     /**
-     * @return Slack url (string)
+     * @return Webhook URL
      * 
      */
     public String url() {

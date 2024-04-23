@@ -14,9 +14,6 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint
     {
         public readonly string? CaCerts;
-        /// <summary>
-        /// Enable cluster template revision. Default `true` (bool)
-        /// </summary>
         public readonly bool? Enabled;
         public readonly string? Fqdn;
 

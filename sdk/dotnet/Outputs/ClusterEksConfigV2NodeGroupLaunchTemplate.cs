@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterEksConfigV2NodeGroupLaunchTemplate
     {
         /// <summary>
-        /// The EKS node group launch template ID (string)
+        /// (Computed) The ID of the resource (string)
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// rancher-monitoring chart version (string)
+        /// The EKS node group launch template version
         /// </summary>
         public readonly int? Version;
 

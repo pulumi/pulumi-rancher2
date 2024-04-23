@@ -14,59 +14,59 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterAksConfigV2
     {
         /// <summary>
-        /// The AKS auth base url (string)
+        /// The AKS auth base url
         /// </summary>
         public readonly string? AuthBaseUrl;
         /// <summary>
-        /// The AKS authorized ip ranges (list)
+        /// The AKS authorized ip ranges
         /// </summary>
         public readonly ImmutableArray<string> AuthorizedIpRanges;
         /// <summary>
-        /// The AKS base url (string)
+        /// The AKS base url
         /// </summary>
         public readonly string? BaseUrl;
         /// <summary>
-        /// The EKS cloud_credential id (string)
+        /// The AKS Cloud Credential ID to use
         /// </summary>
         public readonly string CloudCredentialId;
         /// <summary>
-        /// The AKS dns prefix. Required if `imported=false` (string)
+        /// The AKS dns prefix. Required if `import=false`
         /// </summary>
         public readonly string? DnsPrefix;
         /// <summary>
-        /// Enable AKS http application routing? (bool)
+        /// Enable AKS http application routing?
         /// </summary>
         public readonly bool? HttpApplicationRouting;
         /// <summary>
-        /// Is GKE cluster imported? Default: `false` (bool)
+        /// Is AKS cluster imported?
         /// </summary>
         public readonly bool? Imported;
         /// <summary>
-        /// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        /// The kubernetes master version. Required if `import=false`
         /// </summary>
         public readonly string? KubernetesVersion;
         /// <summary>
-        /// The AKS linux admin username (string)
+        /// The AKS linux admin username
         /// </summary>
         public readonly string? LinuxAdminUsername;
         /// <summary>
-        /// The AKS linux ssh public key (string)
+        /// The AKS linux ssh public key
         /// </summary>
         public readonly string? LinuxSshPublicKey;
         /// <summary>
-        /// The AKS load balancer sku (string)
+        /// The AKS load balancer sku
         /// </summary>
         public readonly string? LoadBalancerSku;
         /// <summary>
-        /// The AKS log analytics workspace group (string)
+        /// The AKS log analytics workspace group
         /// </summary>
         public readonly string? LogAnalyticsWorkspaceGroup;
         /// <summary>
-        /// The AKS log analytics workspace name (string)
+        /// The AKS log analytics workspace name
         /// </summary>
         public readonly string? LogAnalyticsWorkspaceName;
         /// <summary>
-        /// Is AKS cluster monitoring enabled? (bool)
+        /// Is AKS cluster monitoring enabled?
         /// </summary>
         public readonly bool? Monitoring;
         /// <summary>
@@ -74,59 +74,59 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// The AKS network dns service ip (string)
+        /// The AKS network dns service ip
         /// </summary>
         public readonly string? NetworkDnsServiceIp;
         /// <summary>
-        /// The AKS network docker bridge cidr (string)
+        /// The AKS network docker bridge cidr
         /// </summary>
         public readonly string? NetworkDockerBridgeCidr;
         /// <summary>
-        /// The AKS network plugin. Required if `imported=false` (string)
+        /// The AKS network plugin. Required if `import=false`
         /// </summary>
         public readonly string? NetworkPlugin;
         /// <summary>
-        /// The AKS network pod cidr (string)
+        /// The AKS network pod cidr
         /// </summary>
         public readonly string? NetworkPodCidr;
         /// <summary>
-        /// The AKS network policy (string)
+        /// The AKS network policy
         /// </summary>
         public readonly string? NetworkPolicy;
         /// <summary>
-        /// The AKS network service cidr (string)
+        /// The AKS network service cidr
         /// </summary>
         public readonly string? NetworkServiceCidr;
         /// <summary>
-        /// The GKE cluster node pools. Required for create new cluster (List)
+        /// The AKS node pools to use. Required if `import=false`
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterAksConfigV2NodePool> NodePools;
         /// <summary>
-        /// Is AKS cluster private? (bool)
+        /// Is AKS cluster private?
         /// </summary>
         public readonly bool? PrivateCluster;
         /// <summary>
-        /// The AKS resource group (string)
+        /// The AKS resource group
         /// </summary>
         public readonly string ResourceGroup;
         /// <summary>
-        /// The AKS resource location (string)
+        /// The AKS resource location
         /// </summary>
         public readonly string ResourceLocation;
         /// <summary>
-        /// The AKS subnet (string)
+        /// The AKS subnet
         /// </summary>
         public readonly string? Subnet;
         /// <summary>
-        /// The GKE node config tags (List)
+        /// The AKS cluster tags
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Tags;
         /// <summary>
-        /// The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
+        /// The AKS virtual network
         /// </summary>
         public readonly string? VirtualNetwork;
         /// <summary>
-        /// The AKS virtual network resource group (string)
+        /// The AKS virtual network resource group
         /// </summary>
         public readonly string? VirtualNetworkResourceGroup;
 

@@ -33,14 +33,14 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
+     * Azure Availability Set to place the virtual machine into
      * 
      */
     @Import(name="availabilitySet")
     private @Nullable Output<String> availabilitySet;
 
     /**
-     * @return Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
+     * @return Azure Availability Set to place the virtual machine into
      * 
      */
     public Optional<Output<String>> availabilitySet() {
@@ -48,14 +48,14 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * OpenStack availability zone (string)
+     * The Availability Zone that the Azure VM should be created in
      * 
      */
     @Import(name="availabilityZone")
     private @Nullable Output<String> availabilityZone;
 
     /**
-     * @return OpenStack availability zone (string)
+     * @return The Availability Zone that the Azure VM should be created in
      * 
      */
     public Optional<Output<String>> availabilityZone() {
@@ -63,14 +63,14 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * Azure Service Principal Account ID (optional, browser auth is used if not specified)
      * 
      */
     @Import(name="clientId")
     private @Nullable Output<String> clientId;
 
     /**
-     * @return Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return Azure Service Principal Account ID (optional, browser auth is used if not specified)
      * 
      */
     public Optional<Output<String>> clientId() {
@@ -78,14 +78,14 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Azure Service Principal Account password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * Azure Service Principal Account password (optional, browser auth is used if not specified)
      * 
      */
     @Import(name="clientSecret")
     private @Nullable Output<String> clientSecret;
 
     /**
-     * @return Azure Service Principal Account password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return Azure Service Principal Account password (optional, browser auth is used if not specified)
      * 
      */
     public Optional<Output<String>> clientSecret() {
@@ -93,14 +93,14 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Path to file with custom-data (string)
+     * Path to file with custom-data
      * 
      */
     @Import(name="customData")
     private @Nullable Output<String> customData;
 
     /**
-     * @return Path to file with custom-data (string)
+     * @return Path to file with custom-data
      * 
      */
     public Optional<Output<String>> customData() {
@@ -108,14 +108,14 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * vSphere size of disk for docker VM (in MB). Default `20480` (string)
+     * Disk size if using managed disk
      * 
      */
     @Import(name="diskSize")
     private @Nullable Output<String> diskSize;
 
     /**
-     * @return vSphere size of disk for docker VM (in MB). Default `20480` (string)
+     * @return Disk size if using managed disk
      * 
      */
     public Optional<Output<String>> diskSize() {
@@ -123,14 +123,14 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * A unique DNS label for the public IP adddress (string)
+     * A unique DNS label for the public IP adddress
      * 
      */
     @Import(name="dns")
     private @Nullable Output<String> dns;
 
     /**
-     * @return A unique DNS label for the public IP adddress (string)
+     * @return A unique DNS label for the public IP adddress
      * 
      */
     public Optional<Output<String>> dns() {
@@ -138,14 +138,14 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Docker Port. Default `2376` (string)
+     * Port number for Docker engine
      * 
      */
     @Import(name="dockerPort")
     private @Nullable Output<String> dockerPort;
 
     /**
-     * @return Docker Port. Default `2376` (string)
+     * @return Port number for Docker engine
      * 
      */
     public Optional<Output<String>> dockerPort() {
@@ -153,14 +153,14 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Azure environment (e.g. AzurePublicCloud, AzureChinaCloud). Default `AzurePublicCloud` (string)
+     * Azure environment (e.g. AzurePublicCloud, AzureChinaCloud)
      * 
      */
     @Import(name="environment")
     private @Nullable Output<String> environment;
 
     /**
-     * @return Azure environment (e.g. AzurePublicCloud, AzureChinaCloud). Default `AzurePublicCloud` (string)
+     * @return Azure environment (e.g. AzurePublicCloud, AzureChinaCloud)
      * 
      */
     public Optional<Output<String>> environment() {
@@ -168,14 +168,14 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Fault domain count to use for availability set. Default `3` (string)
+     * Fault domain count to use for availability set
      * 
      */
     @Import(name="faultDomainCount")
     private @Nullable Output<String> faultDomainCount;
 
     /**
-     * @return Fault domain count to use for availability set. Default `3` (string)
+     * @return Fault domain count to use for availability set
      * 
      */
     public Optional<Output<String>> faultDomainCount() {
@@ -183,14 +183,14 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+     * Azure virtual machine OS image
      * 
      */
     @Import(name="image")
     private @Nullable Output<String> image;
 
     /**
-     * @return Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+     * @return Azure virtual machine OS image
      * 
      */
     public Optional<Output<String>> image() {
@@ -198,14 +198,14 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Azure region to create the virtual machine. Default `westus` (string)
+     * Azure region to create the virtual machine
      * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
-     * @return Azure region to create the virtual machine. Default `westus` (string)
+     * @return Azure region to create the virtual machine
      * 
      */
     public Optional<Output<String>> location() {
@@ -213,14 +213,14 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Configures VM and availability set for managed disks. For Rancher v2.3.x and above. Default `false` (bool)
+     * Configures VM and availability set for managed disks
      * 
      */
     @Import(name="managedDisks")
     private @Nullable Output<Boolean> managedDisks;
 
     /**
-     * @return Configures VM and availability set for managed disks. For Rancher v2.3.x and above. Default `false` (bool)
+     * @return Configures VM and availability set for managed disks
      * 
      */
     public Optional<Output<Boolean>> managedDisks() {
@@ -228,14 +228,14 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Do not create a public IP address for the machine. Default `false` (bool)
+     * Do not create a public IP address for the machine
      * 
      */
     @Import(name="noPublicIp")
     private @Nullable Output<Boolean> noPublicIp;
 
     /**
-     * @return Do not create a public IP address for the machine. Default `false` (bool)
+     * @return Do not create a public IP address for the machine
      * 
      */
     public Optional<Output<Boolean>> noPublicIp() {
@@ -243,14 +243,14 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Azure Network Security Group to assign this node to (accepts either a name or resource ID, default is to create a new NSG for each machine). Default `docker-machine-nsg` (string)
+     * Azure Network Security Group to assign this node to (accepts either a name or resource ID, default is to create a new NSG for each machine)
      * 
      */
     @Import(name="nsg")
     private @Nullable Output<String> nsg;
 
     /**
-     * @return Azure Network Security Group to assign this node to (accepts either a name or resource ID, default is to create a new NSG for each machine). Default `docker-machine-nsg` (string)
+     * @return Azure Network Security Group to assign this node to (accepts either a name or resource ID, default is to create a new NSG for each machine)
      * 
      */
     public Optional<Output<String>> nsg() {
@@ -258,14 +258,14 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Make the specified port number accessible from the Internet. (list)
+     * Make the specified port number accessible from the Internet
      * 
      */
     @Import(name="openPorts")
     private @Nullable Output<List<String>> openPorts;
 
     /**
-     * @return Make the specified port number accessible from the Internet. (list)
+     * @return Make the specified port number accessible from the Internet
      * 
      */
     public Optional<Output<List<String>>> openPorts() {
@@ -273,14 +273,14 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Only use a private IP address. Default `false` (bool)
+     * Only use a private IP address
      * 
      */
     @Import(name="privateAddressOnly")
     private @Nullable Output<Boolean> privateAddressOnly;
 
     /**
-     * @return Only use a private IP address. Default `false` (bool)
+     * @return Only use a private IP address
      * 
      */
     public Optional<Output<Boolean>> privateAddressOnly() {
@@ -288,14 +288,14 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Specify a static private IP address for the machine. (string)
+     * Specify a static private IP address for the machine
      * 
      */
     @Import(name="privateIpAddress")
     private @Nullable Output<String> privateIpAddress;
 
     /**
-     * @return Specify a static private IP address for the machine. (string)
+     * @return Specify a static private IP address for the machine
      * 
      */
     public Optional<Output<String>> privateIpAddress() {
@@ -303,14 +303,14 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Azure Resource Group name (will be created if missing). Default `docker-machine` (string)
+     * Azure Resource Group name (will be created if missing)
      * 
      */
     @Import(name="resourceGroup")
     private @Nullable Output<String> resourceGroup;
 
     /**
-     * @return Azure Resource Group name (will be created if missing). Default `docker-machine` (string)
+     * @return Azure Resource Group name (will be created if missing)
      * 
      */
     public Optional<Output<String>> resourceGroup() {
@@ -318,14 +318,14 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Digital Ocean size. Default `s-1vcpu-1gb` (string)
+     * Size for Azure Virtual Machine
      * 
      */
     @Import(name="size")
     private @Nullable Output<String> size;
 
     /**
-     * @return Digital Ocean size. Default `s-1vcpu-1gb` (string)
+     * @return Size for Azure Virtual Machine
      * 
      */
     public Optional<Output<String>> size() {
@@ -333,14 +333,14 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+     * Username for SSH login
      * 
      */
     @Import(name="sshUser")
     private @Nullable Output<String> sshUser;
 
     /**
-     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+     * @return Username for SSH login
      * 
      */
     public Optional<Output<String>> sshUser() {
@@ -348,14 +348,14 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Assign a static public IP address to the machine. Default `false` (bool)
+     * Assign a static public IP address to the machine
      * 
      */
     @Import(name="staticPublicIp")
     private @Nullable Output<Boolean> staticPublicIp;
 
     /**
-     * @return Assign a static public IP address to the machine. Default `false` (bool)
+     * @return Assign a static public IP address to the machine
      * 
      */
     public Optional<Output<Boolean>> staticPublicIp() {
@@ -363,14 +363,14 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Type of Storage Account to host the OS Disk for the machine. Default `Standard_LRS` (string)
+     * Type of Storage Account to host the OS Disk for the machine
      * 
      */
     @Import(name="storageType")
     private @Nullable Output<String> storageType;
 
     /**
-     * @return Type of Storage Account to host the OS Disk for the machine. Default `Standard_LRS` (string)
+     * @return Type of Storage Account to host the OS Disk for the machine
      * 
      */
     public Optional<Output<String>> storageType() {
@@ -378,14 +378,14 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Azure Subnet Name to be used within the Virtual Network. Default `docker-machine` (string)
+     * Azure Subnet Name to be used within the Virtual Network
      * 
      */
     @Import(name="subnet")
     private @Nullable Output<String> subnet;
 
     /**
-     * @return Azure Subnet Name to be used within the Virtual Network. Default `docker-machine` (string)
+     * @return Azure Subnet Name to be used within the Virtual Network
      * 
      */
     public Optional<Output<String>> subnet() {
@@ -393,14 +393,14 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Private CIDR block to be used for the new subnet, should comply RFC 1918. Default `192.168.0.0/16` (string)
+     * Private CIDR block to be used for the new subnet, should comply RFC 1918
      * 
      */
     @Import(name="subnetPrefix")
     private @Nullable Output<String> subnetPrefix;
 
     /**
-     * @return Private CIDR block to be used for the new subnet, should comply RFC 1918. Default `192.168.0.0/16` (string)
+     * @return Private CIDR block to be used for the new subnet, should comply RFC 1918
      * 
      */
     public Optional<Output<String>> subnetPrefix() {
@@ -408,14 +408,14 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Azure Subscription ID (string)
+     * Azure Subscription ID
      * 
      */
     @Import(name="subscriptionId")
     private @Nullable Output<String> subscriptionId;
 
     /**
-     * @return Azure Subscription ID (string)
+     * @return Azure Subscription ID
      * 
      */
     public Optional<Output<String>> subscriptionId() {
@@ -423,14 +423,14 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * vSphere tags id e.g. `urn:xxx` (list)
+     * Tags to be applied to the Azure VM instance (e.g. key1,value1,key2,value2)
      * 
      */
     @Import(name="tags")
     private @Nullable Output<String> tags;
 
     /**
-     * @return vSphere tags id e.g. `urn:xxx` (list)
+     * @return Tags to be applied to the Azure VM instance (e.g. key1,value1,key2,value2)
      * 
      */
     public Optional<Output<String>> tags() {
@@ -438,14 +438,14 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * OpenStack tenant id. Conflicts with `tenant_name` (string)
+     * Azure Tenant ID
      * 
      */
     @Import(name="tenantId")
     private @Nullable Output<String> tenantId;
 
     /**
-     * @return OpenStack tenant id. Conflicts with `tenant_name` (string)
+     * @return Azure Tenant ID
      * 
      */
     public Optional<Output<String>> tenantId() {
@@ -453,14 +453,14 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Update domain count to use for availability set. Default `5` (string)
+     * Update domain count to use for availability set
      * 
      */
     @Import(name="updateDomainCount")
     private @Nullable Output<String> updateDomainCount;
 
     /**
-     * @return Update domain count to use for availability set. Default `5` (string)
+     * @return Update domain count to use for availability set
      * 
      */
     public Optional<Output<String>> updateDomainCount() {
@@ -468,14 +468,14 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Use private IP address of the machine to connect. Default `false` (bool)
+     * Use private IP address of the machine to connect
      * 
      */
     @Import(name="usePrivateIp")
     private @Nullable Output<Boolean> usePrivateIp;
 
     /**
-     * @return Use private IP address of the machine to connect. Default `false` (bool)
+     * @return Use private IP address of the machine to connect
      * 
      */
     public Optional<Output<Boolean>> usePrivateIp() {
@@ -498,14 +498,14 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format). Default `docker-machine-vnet` (string)
+     * Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format)
      * 
      */
     @Import(name="vnet")
     private @Nullable Output<String> vnet;
 
     /**
-     * @return Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format). Default `docker-machine-vnet` (string)
+     * @return Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format)
      * 
      */
     public Optional<Output<String>> vnet() {
@@ -590,7 +590,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param availabilitySet Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
+         * @param availabilitySet Azure Availability Set to place the virtual machine into
          * 
          * @return builder
          * 
@@ -601,7 +601,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param availabilitySet Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
+         * @param availabilitySet Azure Availability Set to place the virtual machine into
          * 
          * @return builder
          * 
@@ -611,7 +611,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param availabilityZone OpenStack availability zone (string)
+         * @param availabilityZone The Availability Zone that the Azure VM should be created in
          * 
          * @return builder
          * 
@@ -622,7 +622,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param availabilityZone OpenStack availability zone (string)
+         * @param availabilityZone The Availability Zone that the Azure VM should be created in
          * 
          * @return builder
          * 
@@ -632,7 +632,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param clientId Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+         * @param clientId Azure Service Principal Account ID (optional, browser auth is used if not specified)
          * 
          * @return builder
          * 
@@ -643,7 +643,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param clientId Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+         * @param clientId Azure Service Principal Account ID (optional, browser auth is used if not specified)
          * 
          * @return builder
          * 
@@ -653,7 +653,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param clientSecret Azure Service Principal Account password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+         * @param clientSecret Azure Service Principal Account password (optional, browser auth is used if not specified)
          * 
          * @return builder
          * 
@@ -664,7 +664,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param clientSecret Azure Service Principal Account password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+         * @param clientSecret Azure Service Principal Account password (optional, browser auth is used if not specified)
          * 
          * @return builder
          * 
@@ -674,7 +674,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param customData Path to file with custom-data (string)
+         * @param customData Path to file with custom-data
          * 
          * @return builder
          * 
@@ -685,7 +685,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param customData Path to file with custom-data (string)
+         * @param customData Path to file with custom-data
          * 
          * @return builder
          * 
@@ -695,7 +695,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param diskSize vSphere size of disk for docker VM (in MB). Default `20480` (string)
+         * @param diskSize Disk size if using managed disk
          * 
          * @return builder
          * 
@@ -706,7 +706,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param diskSize vSphere size of disk for docker VM (in MB). Default `20480` (string)
+         * @param diskSize Disk size if using managed disk
          * 
          * @return builder
          * 
@@ -716,7 +716,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param dns A unique DNS label for the public IP adddress (string)
+         * @param dns A unique DNS label for the public IP adddress
          * 
          * @return builder
          * 
@@ -727,7 +727,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param dns A unique DNS label for the public IP adddress (string)
+         * @param dns A unique DNS label for the public IP adddress
          * 
          * @return builder
          * 
@@ -737,7 +737,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param dockerPort Docker Port. Default `2376` (string)
+         * @param dockerPort Port number for Docker engine
          * 
          * @return builder
          * 
@@ -748,7 +748,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param dockerPort Docker Port. Default `2376` (string)
+         * @param dockerPort Port number for Docker engine
          * 
          * @return builder
          * 
@@ -758,7 +758,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param environment Azure environment (e.g. AzurePublicCloud, AzureChinaCloud). Default `AzurePublicCloud` (string)
+         * @param environment Azure environment (e.g. AzurePublicCloud, AzureChinaCloud)
          * 
          * @return builder
          * 
@@ -769,7 +769,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param environment Azure environment (e.g. AzurePublicCloud, AzureChinaCloud). Default `AzurePublicCloud` (string)
+         * @param environment Azure environment (e.g. AzurePublicCloud, AzureChinaCloud)
          * 
          * @return builder
          * 
@@ -779,7 +779,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param faultDomainCount Fault domain count to use for availability set. Default `3` (string)
+         * @param faultDomainCount Fault domain count to use for availability set
          * 
          * @return builder
          * 
@@ -790,7 +790,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param faultDomainCount Fault domain count to use for availability set. Default `3` (string)
+         * @param faultDomainCount Fault domain count to use for availability set
          * 
          * @return builder
          * 
@@ -800,7 +800,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param image Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+         * @param image Azure virtual machine OS image
          * 
          * @return builder
          * 
@@ -811,7 +811,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param image Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+         * @param image Azure virtual machine OS image
          * 
          * @return builder
          * 
@@ -821,7 +821,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param location Azure region to create the virtual machine. Default `westus` (string)
+         * @param location Azure region to create the virtual machine
          * 
          * @return builder
          * 
@@ -832,7 +832,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param location Azure region to create the virtual machine. Default `westus` (string)
+         * @param location Azure region to create the virtual machine
          * 
          * @return builder
          * 
@@ -842,7 +842,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param managedDisks Configures VM and availability set for managed disks. For Rancher v2.3.x and above. Default `false` (bool)
+         * @param managedDisks Configures VM and availability set for managed disks
          * 
          * @return builder
          * 
@@ -853,7 +853,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param managedDisks Configures VM and availability set for managed disks. For Rancher v2.3.x and above. Default `false` (bool)
+         * @param managedDisks Configures VM and availability set for managed disks
          * 
          * @return builder
          * 
@@ -863,7 +863,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param noPublicIp Do not create a public IP address for the machine. Default `false` (bool)
+         * @param noPublicIp Do not create a public IP address for the machine
          * 
          * @return builder
          * 
@@ -874,7 +874,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param noPublicIp Do not create a public IP address for the machine. Default `false` (bool)
+         * @param noPublicIp Do not create a public IP address for the machine
          * 
          * @return builder
          * 
@@ -884,7 +884,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param nsg Azure Network Security Group to assign this node to (accepts either a name or resource ID, default is to create a new NSG for each machine). Default `docker-machine-nsg` (string)
+         * @param nsg Azure Network Security Group to assign this node to (accepts either a name or resource ID, default is to create a new NSG for each machine)
          * 
          * @return builder
          * 
@@ -895,7 +895,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param nsg Azure Network Security Group to assign this node to (accepts either a name or resource ID, default is to create a new NSG for each machine). Default `docker-machine-nsg` (string)
+         * @param nsg Azure Network Security Group to assign this node to (accepts either a name or resource ID, default is to create a new NSG for each machine)
          * 
          * @return builder
          * 
@@ -905,7 +905,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param openPorts Make the specified port number accessible from the Internet. (list)
+         * @param openPorts Make the specified port number accessible from the Internet
          * 
          * @return builder
          * 
@@ -916,7 +916,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param openPorts Make the specified port number accessible from the Internet. (list)
+         * @param openPorts Make the specified port number accessible from the Internet
          * 
          * @return builder
          * 
@@ -926,7 +926,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param openPorts Make the specified port number accessible from the Internet. (list)
+         * @param openPorts Make the specified port number accessible from the Internet
          * 
          * @return builder
          * 
@@ -936,7 +936,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param privateAddressOnly Only use a private IP address. Default `false` (bool)
+         * @param privateAddressOnly Only use a private IP address
          * 
          * @return builder
          * 
@@ -947,7 +947,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param privateAddressOnly Only use a private IP address. Default `false` (bool)
+         * @param privateAddressOnly Only use a private IP address
          * 
          * @return builder
          * 
@@ -957,7 +957,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param privateIpAddress Specify a static private IP address for the machine. (string)
+         * @param privateIpAddress Specify a static private IP address for the machine
          * 
          * @return builder
          * 
@@ -968,7 +968,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param privateIpAddress Specify a static private IP address for the machine. (string)
+         * @param privateIpAddress Specify a static private IP address for the machine
          * 
          * @return builder
          * 
@@ -978,7 +978,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param resourceGroup Azure Resource Group name (will be created if missing). Default `docker-machine` (string)
+         * @param resourceGroup Azure Resource Group name (will be created if missing)
          * 
          * @return builder
          * 
@@ -989,7 +989,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param resourceGroup Azure Resource Group name (will be created if missing). Default `docker-machine` (string)
+         * @param resourceGroup Azure Resource Group name (will be created if missing)
          * 
          * @return builder
          * 
@@ -999,7 +999,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param size Digital Ocean size. Default `s-1vcpu-1gb` (string)
+         * @param size Size for Azure Virtual Machine
          * 
          * @return builder
          * 
@@ -1010,7 +1010,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param size Digital Ocean size. Default `s-1vcpu-1gb` (string)
+         * @param size Size for Azure Virtual Machine
          * 
          * @return builder
          * 
@@ -1020,7 +1020,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+         * @param sshUser Username for SSH login
          * 
          * @return builder
          * 
@@ -1031,7 +1031,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+         * @param sshUser Username for SSH login
          * 
          * @return builder
          * 
@@ -1041,7 +1041,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param staticPublicIp Assign a static public IP address to the machine. Default `false` (bool)
+         * @param staticPublicIp Assign a static public IP address to the machine
          * 
          * @return builder
          * 
@@ -1052,7 +1052,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param staticPublicIp Assign a static public IP address to the machine. Default `false` (bool)
+         * @param staticPublicIp Assign a static public IP address to the machine
          * 
          * @return builder
          * 
@@ -1062,7 +1062,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param storageType Type of Storage Account to host the OS Disk for the machine. Default `Standard_LRS` (string)
+         * @param storageType Type of Storage Account to host the OS Disk for the machine
          * 
          * @return builder
          * 
@@ -1073,7 +1073,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param storageType Type of Storage Account to host the OS Disk for the machine. Default `Standard_LRS` (string)
+         * @param storageType Type of Storage Account to host the OS Disk for the machine
          * 
          * @return builder
          * 
@@ -1083,7 +1083,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param subnet Azure Subnet Name to be used within the Virtual Network. Default `docker-machine` (string)
+         * @param subnet Azure Subnet Name to be used within the Virtual Network
          * 
          * @return builder
          * 
@@ -1094,7 +1094,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param subnet Azure Subnet Name to be used within the Virtual Network. Default `docker-machine` (string)
+         * @param subnet Azure Subnet Name to be used within the Virtual Network
          * 
          * @return builder
          * 
@@ -1104,7 +1104,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param subnetPrefix Private CIDR block to be used for the new subnet, should comply RFC 1918. Default `192.168.0.0/16` (string)
+         * @param subnetPrefix Private CIDR block to be used for the new subnet, should comply RFC 1918
          * 
          * @return builder
          * 
@@ -1115,7 +1115,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param subnetPrefix Private CIDR block to be used for the new subnet, should comply RFC 1918. Default `192.168.0.0/16` (string)
+         * @param subnetPrefix Private CIDR block to be used for the new subnet, should comply RFC 1918
          * 
          * @return builder
          * 
@@ -1125,7 +1125,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param subscriptionId Azure Subscription ID (string)
+         * @param subscriptionId Azure Subscription ID
          * 
          * @return builder
          * 
@@ -1136,7 +1136,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param subscriptionId Azure Subscription ID (string)
+         * @param subscriptionId Azure Subscription ID
          * 
          * @return builder
          * 
@@ -1146,7 +1146,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param tags vSphere tags id e.g. `urn:xxx` (list)
+         * @param tags Tags to be applied to the Azure VM instance (e.g. key1,value1,key2,value2)
          * 
          * @return builder
          * 
@@ -1157,7 +1157,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param tags vSphere tags id e.g. `urn:xxx` (list)
+         * @param tags Tags to be applied to the Azure VM instance (e.g. key1,value1,key2,value2)
          * 
          * @return builder
          * 
@@ -1167,7 +1167,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param tenantId OpenStack tenant id. Conflicts with `tenant_name` (string)
+         * @param tenantId Azure Tenant ID
          * 
          * @return builder
          * 
@@ -1178,7 +1178,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param tenantId OpenStack tenant id. Conflicts with `tenant_name` (string)
+         * @param tenantId Azure Tenant ID
          * 
          * @return builder
          * 
@@ -1188,7 +1188,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param updateDomainCount Update domain count to use for availability set. Default `5` (string)
+         * @param updateDomainCount Update domain count to use for availability set
          * 
          * @return builder
          * 
@@ -1199,7 +1199,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param updateDomainCount Update domain count to use for availability set. Default `5` (string)
+         * @param updateDomainCount Update domain count to use for availability set
          * 
          * @return builder
          * 
@@ -1209,7 +1209,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param usePrivateIp Use private IP address of the machine to connect. Default `false` (bool)
+         * @param usePrivateIp Use private IP address of the machine to connect
          * 
          * @return builder
          * 
@@ -1220,7 +1220,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param usePrivateIp Use private IP address of the machine to connect. Default `false` (bool)
+         * @param usePrivateIp Use private IP address of the machine to connect
          * 
          * @return builder
          * 
@@ -1251,7 +1251,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param vnet Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format). Default `docker-machine-vnet` (string)
+         * @param vnet Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format)
          * 
          * @return builder
          * 
@@ -1262,7 +1262,7 @@ public final class MachineConfigV2AzureConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param vnet Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format). Default `docker-machine-vnet` (string)
+         * @param vnet Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format)
          * 
          * @return builder
          * 

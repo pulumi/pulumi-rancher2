@@ -13,55 +13,23 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EtcdBackupBackupConfig {
-    /**
-     * @return Enable etcd backup (bool)
-     * 
-     */
     private @Nullable Boolean enabled;
-    /**
-     * @return Interval hours for etcd backup. Default `12` (int)
-     * 
-     */
     private @Nullable Integer intervalHours;
-    /**
-     * @return Retention for etcd backup. Default `6` (int)
-     * 
-     */
     private @Nullable Integer retention;
-    /**
-     * @return S3 config options for etcd backup. Valid for `imported` and `rke` clusters. (list maxitems:1)
-     * 
-     */
     private @Nullable EtcdBackupBackupConfigS3BackupConfig s3BackupConfig;
     private @Nullable Boolean safeTimestamp;
     private @Nullable Integer timeout;
 
     private EtcdBackupBackupConfig() {}
-    /**
-     * @return Enable etcd backup (bool)
-     * 
-     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
-    /**
-     * @return Interval hours for etcd backup. Default `12` (int)
-     * 
-     */
     public Optional<Integer> intervalHours() {
         return Optional.ofNullable(this.intervalHours);
     }
-    /**
-     * @return Retention for etcd backup. Default `6` (int)
-     * 
-     */
     public Optional<Integer> retention() {
         return Optional.ofNullable(this.retention);
     }
-    /**
-     * @return S3 config options for etcd backup. Valid for `imported` and `rke` clusters. (list maxitems:1)
-     * 
-     */
     public Optional<EtcdBackupBackupConfigS3BackupConfig> s3BackupConfig() {
         return Optional.ofNullable(this.s3BackupConfig);
     }

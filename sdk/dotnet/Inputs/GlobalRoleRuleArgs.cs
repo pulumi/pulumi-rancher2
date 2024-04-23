@@ -16,7 +16,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _apiGroups;
 
         /// <summary>
-        /// Policy rule api groups (list)
+        /// Policy rule api groups
         /// </summary>
         public InputList<string> ApiGroups
         {
@@ -28,7 +28,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _nonResourceUrls;
 
         /// <summary>
-        /// Policy rule non resource urls (list)
+        /// Policy rule non resource urls
         /// </summary>
         public InputList<string> NonResourceUrls
         {
@@ -40,7 +40,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _resourceNames;
 
         /// <summary>
-        /// Policy rule resource names (list)
+        /// Policy rule resource names
         /// </summary>
         public InputList<string> ResourceNames
         {
@@ -52,7 +52,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _resources;
 
         /// <summary>
-        /// Policy rule resources (list)
+        /// Policy rule resources
         /// </summary>
         public InputList<string> Resources
         {
@@ -64,7 +64,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _verbs;
 
         /// <summary>
-        /// Policy rule verbs. `bind`, `create`, `delete`, `deletecollection`, `escalate`, `get`, `impersonate`, `list`, `patch`, `update`, `use`, `view`, `watch`, `own` and `*` values are supported (list)
+        /// Policy rule verbs
         /// </summary>
         public InputList<string> Verbs
         {

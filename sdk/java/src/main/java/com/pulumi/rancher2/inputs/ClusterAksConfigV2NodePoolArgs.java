@@ -22,14 +22,14 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
     public static final ClusterAksConfigV2NodePoolArgs Empty = new ClusterAksConfigV2NodePoolArgs();
 
     /**
-     * The AKS node pool availability zones (list)
+     * The AKS node pool availability zones
      * 
      */
     @Import(name="availabilityZones")
     private @Nullable Output<List<String>> availabilityZones;
 
     /**
-     * @return The AKS node pool availability zones (list)
+     * @return The AKS node pool availability zones
      * 
      */
     public Optional<Output<List<String>>> availabilityZones() {
@@ -37,14 +37,14 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The AKS node pool count. Default: `1` (int)
+     * The AKS node pool count
      * 
      */
     @Import(name="count")
     private @Nullable Output<Integer> count;
 
     /**
-     * @return The AKS node pool count. Default: `1` (int)
+     * @return The AKS node pool count
      * 
      */
     public Optional<Output<Integer>> count() {
@@ -52,14 +52,14 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Is AKS node pool auto scaling enabled? Default: `false` (bool)
+     * Is AKS node pool auto scaling enabled?
      * 
      */
     @Import(name="enableAutoScaling")
     private @Nullable Output<Boolean> enableAutoScaling;
 
     /**
-     * @return Is AKS node pool auto scaling enabled? Default: `false` (bool)
+     * @return Is AKS node pool auto scaling enabled?
      * 
      */
     public Optional<Output<Boolean>> enableAutoScaling() {
@@ -82,14 +82,14 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The AKS node pool max count. Required if `enable_auto_scaling=true` (int)
+     * The AKS node pool max count
      * 
      */
     @Import(name="maxCount")
     private @Nullable Output<Integer> maxCount;
 
     /**
-     * @return The AKS node pool max count. Required if `enable_auto_scaling=true` (int)
+     * @return The AKS node pool max count
      * 
      */
     public Optional<Output<Integer>> maxCount() {
@@ -97,14 +97,14 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The AKS node pool max pods. Default: `110` (int)
+     * The AKS node pool max pods
      * 
      */
     @Import(name="maxPods")
     private @Nullable Output<Integer> maxPods;
 
     /**
-     * @return The AKS node pool max pods. Default: `110` (int)
+     * @return The AKS node pool max pods
      * 
      */
     public Optional<Output<Integer>> maxPods() {
@@ -112,14 +112,14 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The AKS node pool max surge (string), example value: `25%`
+     * The AKS node pool max surge
      * 
      */
     @Import(name="maxSurge")
     private @Nullable Output<String> maxSurge;
 
     /**
-     * @return The AKS node pool max surge (string), example value: `25%`
+     * @return The AKS node pool max surge
      * 
      */
     public Optional<Output<String>> maxSurge() {
@@ -127,14 +127,14 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The AKS node pool min count. Required if `enable_auto_scaling=true` (int)
+     * The AKS node pool min count
      * 
      */
     @Import(name="minCount")
     private @Nullable Output<Integer> minCount;
 
     /**
-     * @return The AKS node pool min count. Required if `enable_auto_scaling=true` (int)
+     * @return The AKS node pool min count
      * 
      */
     public Optional<Output<Integer>> minCount() {
@@ -142,14 +142,14 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The AKS node group mode. Default: `System` (string)
+     * The AKS node pool mode
      * 
      */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
     /**
-     * @return The AKS node group mode. Default: `System` (string)
+     * @return The AKS node pool mode
      * 
      */
     public Optional<Output<String>> mode() {
@@ -172,14 +172,14 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The AKS node pool orchestrator version (string)
+     * The AKS node pool orchestrator version
      * 
      */
     @Import(name="orchestratorVersion")
     private @Nullable Output<String> orchestratorVersion;
 
     /**
-     * @return The AKS node pool orchestrator version (string)
+     * @return The AKS node pool orchestrator version
      * 
      */
     public Optional<Output<String>> orchestratorVersion() {
@@ -187,14 +187,14 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The AKS node pool os disk size gb. Default: `128` (int)
+     * The AKS node pool os disk size gb
      * 
      */
     @Import(name="osDiskSizeGb")
     private @Nullable Output<Integer> osDiskSizeGb;
 
     /**
-     * @return The AKS node pool os disk size gb. Default: `128` (int)
+     * @return The AKS node pool os disk size gb
      * 
      */
     public Optional<Output<Integer>> osDiskSizeGb() {
@@ -202,14 +202,14 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The AKS node pool os disk type. Default: `Managed` (string)
+     * The AKS node pool os disk type
      * 
      */
     @Import(name="osDiskType")
     private @Nullable Output<String> osDiskType;
 
     /**
-     * @return The AKS node pool os disk type. Default: `Managed` (string)
+     * @return The AKS node pool os disk type
      * 
      */
     public Optional<Output<String>> osDiskType() {
@@ -217,14 +217,14 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The AKS node pool os type. Default: `Linux` (string)
+     * Enable AKS node pool os type
      * 
      */
     @Import(name="osType")
     private @Nullable Output<String> osType;
 
     /**
-     * @return The AKS node pool os type. Default: `Linux` (string)
+     * @return Enable AKS node pool os type
      * 
      */
     public Optional<Output<String>> osType() {
@@ -232,14 +232,14 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The GKE node config taints (List)
+     * The AKS node pool taints
      * 
      */
     @Import(name="taints")
     private @Nullable Output<List<String>> taints;
 
     /**
-     * @return The GKE node config taints (List)
+     * @return The AKS node pool taints
      * 
      */
     public Optional<Output<List<String>>> taints() {
@@ -247,14 +247,14 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The AKS node pool orchestrator version (string)
+     * The AKS node pool vm size
      * 
      */
     @Import(name="vmSize")
     private @Nullable Output<String> vmSize;
 
     /**
-     * @return The AKS node pool orchestrator version (string)
+     * @return The AKS node pool vm size
      * 
      */
     public Optional<Output<String>> vmSize() {
@@ -301,7 +301,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param availabilityZones The AKS node pool availability zones (list)
+         * @param availabilityZones The AKS node pool availability zones
          * 
          * @return builder
          * 
@@ -312,7 +312,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param availabilityZones The AKS node pool availability zones (list)
+         * @param availabilityZones The AKS node pool availability zones
          * 
          * @return builder
          * 
@@ -322,7 +322,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param availabilityZones The AKS node pool availability zones (list)
+         * @param availabilityZones The AKS node pool availability zones
          * 
          * @return builder
          * 
@@ -332,7 +332,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param count The AKS node pool count. Default: `1` (int)
+         * @param count The AKS node pool count
          * 
          * @return builder
          * 
@@ -343,7 +343,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param count The AKS node pool count. Default: `1` (int)
+         * @param count The AKS node pool count
          * 
          * @return builder
          * 
@@ -353,7 +353,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param enableAutoScaling Is AKS node pool auto scaling enabled? Default: `false` (bool)
+         * @param enableAutoScaling Is AKS node pool auto scaling enabled?
          * 
          * @return builder
          * 
@@ -364,7 +364,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param enableAutoScaling Is AKS node pool auto scaling enabled? Default: `false` (bool)
+         * @param enableAutoScaling Is AKS node pool auto scaling enabled?
          * 
          * @return builder
          * 
@@ -395,7 +395,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param maxCount The AKS node pool max count. Required if `enable_auto_scaling=true` (int)
+         * @param maxCount The AKS node pool max count
          * 
          * @return builder
          * 
@@ -406,7 +406,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param maxCount The AKS node pool max count. Required if `enable_auto_scaling=true` (int)
+         * @param maxCount The AKS node pool max count
          * 
          * @return builder
          * 
@@ -416,7 +416,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param maxPods The AKS node pool max pods. Default: `110` (int)
+         * @param maxPods The AKS node pool max pods
          * 
          * @return builder
          * 
@@ -427,7 +427,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param maxPods The AKS node pool max pods. Default: `110` (int)
+         * @param maxPods The AKS node pool max pods
          * 
          * @return builder
          * 
@@ -437,7 +437,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param maxSurge The AKS node pool max surge (string), example value: `25%`
+         * @param maxSurge The AKS node pool max surge
          * 
          * @return builder
          * 
@@ -448,7 +448,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param maxSurge The AKS node pool max surge (string), example value: `25%`
+         * @param maxSurge The AKS node pool max surge
          * 
          * @return builder
          * 
@@ -458,7 +458,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param minCount The AKS node pool min count. Required if `enable_auto_scaling=true` (int)
+         * @param minCount The AKS node pool min count
          * 
          * @return builder
          * 
@@ -469,7 +469,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param minCount The AKS node pool min count. Required if `enable_auto_scaling=true` (int)
+         * @param minCount The AKS node pool min count
          * 
          * @return builder
          * 
@@ -479,7 +479,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param mode The AKS node group mode. Default: `System` (string)
+         * @param mode The AKS node pool mode
          * 
          * @return builder
          * 
@@ -490,7 +490,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param mode The AKS node group mode. Default: `System` (string)
+         * @param mode The AKS node pool mode
          * 
          * @return builder
          * 
@@ -521,7 +521,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param orchestratorVersion The AKS node pool orchestrator version (string)
+         * @param orchestratorVersion The AKS node pool orchestrator version
          * 
          * @return builder
          * 
@@ -532,7 +532,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param orchestratorVersion The AKS node pool orchestrator version (string)
+         * @param orchestratorVersion The AKS node pool orchestrator version
          * 
          * @return builder
          * 
@@ -542,7 +542,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param osDiskSizeGb The AKS node pool os disk size gb. Default: `128` (int)
+         * @param osDiskSizeGb The AKS node pool os disk size gb
          * 
          * @return builder
          * 
@@ -553,7 +553,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param osDiskSizeGb The AKS node pool os disk size gb. Default: `128` (int)
+         * @param osDiskSizeGb The AKS node pool os disk size gb
          * 
          * @return builder
          * 
@@ -563,7 +563,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param osDiskType The AKS node pool os disk type. Default: `Managed` (string)
+         * @param osDiskType The AKS node pool os disk type
          * 
          * @return builder
          * 
@@ -574,7 +574,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param osDiskType The AKS node pool os disk type. Default: `Managed` (string)
+         * @param osDiskType The AKS node pool os disk type
          * 
          * @return builder
          * 
@@ -584,7 +584,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param osType The AKS node pool os type. Default: `Linux` (string)
+         * @param osType Enable AKS node pool os type
          * 
          * @return builder
          * 
@@ -595,7 +595,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param osType The AKS node pool os type. Default: `Linux` (string)
+         * @param osType Enable AKS node pool os type
          * 
          * @return builder
          * 
@@ -605,7 +605,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param taints The GKE node config taints (List)
+         * @param taints The AKS node pool taints
          * 
          * @return builder
          * 
@@ -616,7 +616,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param taints The GKE node config taints (List)
+         * @param taints The AKS node pool taints
          * 
          * @return builder
          * 
@@ -626,7 +626,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param taints The GKE node config taints (List)
+         * @param taints The AKS node pool taints
          * 
          * @return builder
          * 
@@ -636,7 +636,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param vmSize The AKS node pool orchestrator version (string)
+         * @param vmSize The AKS node pool vm size
          * 
          * @return builder
          * 
@@ -647,7 +647,7 @@ public final class ClusterAksConfigV2NodePoolArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param vmSize The AKS node pool orchestrator version (string)
+         * @param vmSize The AKS node pool vm size
          * 
          * @return builder
          * 

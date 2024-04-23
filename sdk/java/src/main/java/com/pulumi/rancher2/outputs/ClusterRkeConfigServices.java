@@ -16,77 +16,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterRkeConfigServices {
-    /**
-     * @return Etcd options for RKE services (list maxitems:1)
-     * 
-     */
     private @Nullable ClusterRkeConfigServicesEtcd etcd;
-    /**
-     * @return Kube API options for RKE services (list maxitems:1)
-     * 
-     */
     private @Nullable ClusterRkeConfigServicesKubeApi kubeApi;
-    /**
-     * @return Kube Controller options for RKE services (list maxitems:1)
-     * 
-     */
     private @Nullable ClusterRkeConfigServicesKubeController kubeController;
-    /**
-     * @return Kubelet options for RKE services (list maxitems:1)
-     * 
-     */
     private @Nullable ClusterRkeConfigServicesKubelet kubelet;
-    /**
-     * @return Kubeproxy options for RKE services (list maxitems:1)
-     * 
-     */
     private @Nullable ClusterRkeConfigServicesKubeproxy kubeproxy;
-    /**
-     * @return Scheduler options for RKE services (list maxitems:1)
-     * 
-     */
     private @Nullable ClusterRkeConfigServicesScheduler scheduler;
 
     private ClusterRkeConfigServices() {}
-    /**
-     * @return Etcd options for RKE services (list maxitems:1)
-     * 
-     */
     public Optional<ClusterRkeConfigServicesEtcd> etcd() {
         return Optional.ofNullable(this.etcd);
     }
-    /**
-     * @return Kube API options for RKE services (list maxitems:1)
-     * 
-     */
     public Optional<ClusterRkeConfigServicesKubeApi> kubeApi() {
         return Optional.ofNullable(this.kubeApi);
     }
-    /**
-     * @return Kube Controller options for RKE services (list maxitems:1)
-     * 
-     */
     public Optional<ClusterRkeConfigServicesKubeController> kubeController() {
         return Optional.ofNullable(this.kubeController);
     }
-    /**
-     * @return Kubelet options for RKE services (list maxitems:1)
-     * 
-     */
     public Optional<ClusterRkeConfigServicesKubelet> kubelet() {
         return Optional.ofNullable(this.kubelet);
     }
-    /**
-     * @return Kubeproxy options for RKE services (list maxitems:1)
-     * 
-     */
     public Optional<ClusterRkeConfigServicesKubeproxy> kubeproxy() {
         return Optional.ofNullable(this.kubeproxy);
     }
-    /**
-     * @return Scheduler options for RKE services (list maxitems:1)
-     * 
-     */
     public Optional<ClusterRkeConfigServicesScheduler> scheduler() {
         return Optional.ofNullable(this.scheduler);
     }

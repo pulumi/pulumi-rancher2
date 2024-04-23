@@ -16,7 +16,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _authEncodedJson;
 
         /// <summary>
-        /// Google auth encoded json (string)
+        /// Google auth encoded json
         /// </summary>
         public Input<string>? AuthEncodedJson
         {

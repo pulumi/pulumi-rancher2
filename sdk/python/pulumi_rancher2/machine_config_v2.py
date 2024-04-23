@@ -460,7 +460,6 @@ class MachineConfigV2(pulumi.CustomResource):
 
         ### Using the Harvester Node Driver
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -509,7 +508,6 @@ class MachineConfigV2(pulumi.CustomResource):
         \"\"\",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -540,7 +538,6 @@ class MachineConfigV2(pulumi.CustomResource):
 
         ### Using the Harvester Node Driver
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -589,7 +586,6 @@ class MachineConfigV2(pulumi.CustomResource):
         \"\"\",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param MachineConfigV2Args args: The arguments to use to populate this resource's properties.

@@ -14,19 +14,19 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement
     {
         /// <summary>
-        /// The maximum CPU limit for agent.
+        /// The maximum CPU limit for agent
         /// </summary>
         public readonly string? CpuLimit;
         /// <summary>
-        /// The minimum CPU required for agent.
+        /// The minimum CPU required for agent
         /// </summary>
         public readonly string? CpuRequest;
         /// <summary>
-        /// The maximum memory limit for agent.
+        /// The maximum memory limit for agent
         /// </summary>
         public readonly string? MemoryLimit;
         /// <summary>
-        /// The minimum memory required for agent.
+        /// The minimum memory required for agent
         /// </summary>
         public readonly string? MemoryRequest;
 

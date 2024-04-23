@@ -15,12 +15,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterOkeConfig {
     /**
-     * @return The OCID of the compartment in which to create resources OKE cluster and related resources (string)
+     * @return The OCID of the compartment in which to create resources (VCN, worker nodes, etc.)
      * 
      */
     private String compartmentId;
     /**
-     * @return Optional custom boot volume size (GB) for all nodes. If you specify 0, it will apply the default according to the `node_image` specified. Default `0` (int)
+     * @return An optional custom boot volume size (in GB) for the nodes
      * 
      */
     private @Nullable Integer customBootVolumeSize;
@@ -30,161 +30,161 @@ public final class ClusterOkeConfig {
      */
     private @Nullable String description;
     /**
-     * @return Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
+     * @return Enable the kubernetes dashboard
      * 
      */
     private @Nullable Boolean enableKubernetesDashboard;
     /**
-     * @return Specifies whether Kubernetes API endpoint is a private IP only accessible from within the VCN. Default `false` for Rancher v2.5.10 and above (bool)
+     * @return Whether Kubernetes API endpoint is a private IP only accessible from within the VCN
      * 
      */
     private @Nullable Boolean enablePrivateControlPlane;
     /**
-     * @return Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+     * @return Whether worker nodes are deployed into a new private subnet
      * 
      */
     private @Nullable Boolean enablePrivateNodes;
     /**
-     * @return The fingerprint corresponding to the specified user&#39;s private API Key (string)
+     * @return The fingerprint corresponding to the specified user&#39;s private API Key
      * 
      */
     private String fingerprint;
     /**
-     * @return Specifies number of OCPUs for nodes (requires flexible shape specified with `node_shape`) (int)
+     * @return Optional number of OCPUs for nodes (requires flexible node_shape)
      * 
      */
     private @Nullable Integer flexOcpus;
     /**
-     * @return The OCID of a KMS vault master key used to encrypt secrets at rest. See [here](https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengencryptingdata.htm) for help creating a vault and master encryption key. For Rancher v2.5.9 and above (string)
+     * @return Optional specify the OCID of the KMS Vault master key
      * 
      */
     private @Nullable String kmsKeyId;
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return The Kubernetes version that will be used for your master *and* worker nodes e.g. v1.19.7
      * 
      */
     private String kubernetesVersion;
     /**
-     * @return The maximum number of worker nodes. Can limit `quantity_per_subnet`. Default `0` (no limit) (int)
+     * @return Optional limit on the total number of nodes in the pool
      * 
      */
     private @Nullable Integer limitNodeCount;
     /**
-     * @return The name of the first existing subnet to use for Kubernetes services / LB. `vcn_name` is also required when specifying an existing subnet. (string)
+     * @return The name of the first existing subnet to use for Kubernetes services / LB
      * 
      */
     private @Nullable String loadBalancerSubnetName1;
     /**
-     * @return The name of a second existing subnet to use for Kubernetes services / LB. A second subnet is only required when it is AD-specific (non-regional) (string)
+     * @return The (optional) name of a second existing subnet to use for Kubernetes services / LB
      * 
      */
     private @Nullable String loadBalancerSubnetName2;
     /**
-     * @return The Oracle Linux OS image name to use for the OKE node(s). See [here](https://docs.cloud.oracle.com/en-us/iaas/images/) for a list of images. (string)
+     * @return The OS for the node image
      * 
      */
     private String nodeImage;
     /**
-     * @return Name for DNS domain of node pool subnet. Default `nodedns` (string)
+     * @return Optional name for DNS domain of node pool subnet
      * 
      */
     private @Nullable String nodePoolDnsDomainName;
     /**
-     * @return Name for node pool subnet. Default `nodedns` (string)
+     * @return Optional name for node pool subnet
      * 
      */
     private @Nullable String nodePoolSubnetName;
     /**
-     * @return The contents of the SSH public key file to use for the nodes (string)
+     * @return The contents of the SSH public key file to use for the nodes
      * 
      */
     private @Nullable String nodePublicKeyContents;
     /**
-     * @return The shape of the node (determines number of CPUs and  amount of memory on each OKE node) (string)
+     * @return The shape of the node (determines number of CPUs and  amount of memory on each node)
      * 
      */
     private String nodeShape;
     /**
-     * @return A CIDR IP range from which to assign Kubernetes Pod IPs (string)
+     * @return Optional specify the pod CIDR, defaults to 10.244.0.0/16
      * 
      */
     private @Nullable String podCidr;
     /**
-     * @return The private API key file contents for the specified user, in PEM format (string)
+     * @return The private API key file contents for the specified user, in PEM format
      * 
      */
     private String privateKeyContents;
     /**
-     * @return The passphrase (if any) of the private key for the OKE cluster (string)
+     * @return The passphrase of the private key for the OKE cluster
      * 
      */
     private @Nullable String privateKeyPassphrase;
     /**
-     * @return Number of node subnets. Default `1` (int)
+     * @return Number of node subnets (defaults to creating 1 regional subnet)
      * 
      */
     private @Nullable Integer quantityOfNodeSubnets;
     /**
-     * @return Number of OKE worker nodes in each subnet / availability domain. Default `1` (int)
+     * @return Number of worker nodes in each subnet / availability domain
      * 
      */
     private @Nullable Integer quantityPerSubnet;
     /**
-     * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     * @return The availability domain within the region to host the OKE cluster
      * 
      */
     private String region;
     /**
-     * @return A CIDR IP range from which to assign Kubernetes Service IPs (string)
+     * @return Optional specify the service CIDR, defaults to 10.96.0.0/16
      * 
      */
     private @Nullable String serviceCidr;
     /**
-     * @return Name for DNS domain of service subnet. Default `svcdns` (string)
+     * @return Optional name for DNS domain of service subnet
      * 
      */
     private @Nullable String serviceDnsDomainName;
     /**
-     * @return Specifies whether to skip deleting the virtual cloud network (VCN) on destroy. Default `false` (bool)
+     * @return Whether to skip deleting VCN
      * 
      */
     private @Nullable Boolean skipVcnDelete;
     /**
-     * @return The OCID of the tenancy in which to create resources (string)
+     * @return The OCID of the tenancy in which to create resources
      * 
      */
     private String tenancyId;
     /**
-     * @return The OCID of a user who has access to the tenancy/compartment (string)
+     * @return The OCID of a user who has access to the tenancy/compartment
      * 
      */
     private String userOcid;
     /**
-     * @return The OCID of the compartment (if different from `compartment_id`) in which to find the pre-existing virtual network set with `vcn_name`. (string)
+     * @return The OCID of the compartment (if different from compartment_id) in which to find the pre-existing virtual network set with vcn_name.
      * 
      */
     private @Nullable String vcnCompartmentId;
     /**
-     * @return The name of an existing virtual network to use for the cluster creation. If set, you must also set `load_balancer_subnet_name_1`. A VCN and subnets will be created if none are specified. (string)
+     * @return The optional name of an existing virtual network to use for the cluster creation. A new VCN will be created if not specified.
      * 
      */
     private @Nullable String vcnName;
     /**
-     * @return Additional CIDR from which to allow ingress to worker nodes (string)
+     * @return Additional CIDR from which to allow ingress to worker nodes
      * 
      */
     private @Nullable String workerNodeIngressCidr;
 
     private ClusterOkeConfig() {}
     /**
-     * @return The OCID of the compartment in which to create resources OKE cluster and related resources (string)
+     * @return The OCID of the compartment in which to create resources (VCN, worker nodes, etc.)
      * 
      */
     public String compartmentId() {
         return this.compartmentId;
     }
     /**
-     * @return Optional custom boot volume size (GB) for all nodes. If you specify 0, it will apply the default according to the `node_image` specified. Default `0` (int)
+     * @return An optional custom boot volume size (in GB) for the nodes
      * 
      */
     public Optional<Integer> customBootVolumeSize() {
@@ -198,203 +198,203 @@ public final class ClusterOkeConfig {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return Specifies whether to enable the Kubernetes dashboard. Default `false` (bool)
+     * @return Enable the kubernetes dashboard
      * 
      */
     public Optional<Boolean> enableKubernetesDashboard() {
         return Optional.ofNullable(this.enableKubernetesDashboard);
     }
     /**
-     * @return Specifies whether Kubernetes API endpoint is a private IP only accessible from within the VCN. Default `false` for Rancher v2.5.10 and above (bool)
+     * @return Whether Kubernetes API endpoint is a private IP only accessible from within the VCN
      * 
      */
     public Optional<Boolean> enablePrivateControlPlane() {
         return Optional.ofNullable(this.enablePrivateControlPlane);
     }
     /**
-     * @return Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+     * @return Whether worker nodes are deployed into a new private subnet
      * 
      */
     public Optional<Boolean> enablePrivateNodes() {
         return Optional.ofNullable(this.enablePrivateNodes);
     }
     /**
-     * @return The fingerprint corresponding to the specified user&#39;s private API Key (string)
+     * @return The fingerprint corresponding to the specified user&#39;s private API Key
      * 
      */
     public String fingerprint() {
         return this.fingerprint;
     }
     /**
-     * @return Specifies number of OCPUs for nodes (requires flexible shape specified with `node_shape`) (int)
+     * @return Optional number of OCPUs for nodes (requires flexible node_shape)
      * 
      */
     public Optional<Integer> flexOcpus() {
         return Optional.ofNullable(this.flexOcpus);
     }
     /**
-     * @return The OCID of a KMS vault master key used to encrypt secrets at rest. See [here](https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengencryptingdata.htm) for help creating a vault and master encryption key. For Rancher v2.5.9 and above (string)
+     * @return Optional specify the OCID of the KMS Vault master key
      * 
      */
     public Optional<String> kmsKeyId() {
         return Optional.ofNullable(this.kmsKeyId);
     }
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return The Kubernetes version that will be used for your master *and* worker nodes e.g. v1.19.7
      * 
      */
     public String kubernetesVersion() {
         return this.kubernetesVersion;
     }
     /**
-     * @return The maximum number of worker nodes. Can limit `quantity_per_subnet`. Default `0` (no limit) (int)
+     * @return Optional limit on the total number of nodes in the pool
      * 
      */
     public Optional<Integer> limitNodeCount() {
         return Optional.ofNullable(this.limitNodeCount);
     }
     /**
-     * @return The name of the first existing subnet to use for Kubernetes services / LB. `vcn_name` is also required when specifying an existing subnet. (string)
+     * @return The name of the first existing subnet to use for Kubernetes services / LB
      * 
      */
     public Optional<String> loadBalancerSubnetName1() {
         return Optional.ofNullable(this.loadBalancerSubnetName1);
     }
     /**
-     * @return The name of a second existing subnet to use for Kubernetes services / LB. A second subnet is only required when it is AD-specific (non-regional) (string)
+     * @return The (optional) name of a second existing subnet to use for Kubernetes services / LB
      * 
      */
     public Optional<String> loadBalancerSubnetName2() {
         return Optional.ofNullable(this.loadBalancerSubnetName2);
     }
     /**
-     * @return The Oracle Linux OS image name to use for the OKE node(s). See [here](https://docs.cloud.oracle.com/en-us/iaas/images/) for a list of images. (string)
+     * @return The OS for the node image
      * 
      */
     public String nodeImage() {
         return this.nodeImage;
     }
     /**
-     * @return Name for DNS domain of node pool subnet. Default `nodedns` (string)
+     * @return Optional name for DNS domain of node pool subnet
      * 
      */
     public Optional<String> nodePoolDnsDomainName() {
         return Optional.ofNullable(this.nodePoolDnsDomainName);
     }
     /**
-     * @return Name for node pool subnet. Default `nodedns` (string)
+     * @return Optional name for node pool subnet
      * 
      */
     public Optional<String> nodePoolSubnetName() {
         return Optional.ofNullable(this.nodePoolSubnetName);
     }
     /**
-     * @return The contents of the SSH public key file to use for the nodes (string)
+     * @return The contents of the SSH public key file to use for the nodes
      * 
      */
     public Optional<String> nodePublicKeyContents() {
         return Optional.ofNullable(this.nodePublicKeyContents);
     }
     /**
-     * @return The shape of the node (determines number of CPUs and  amount of memory on each OKE node) (string)
+     * @return The shape of the node (determines number of CPUs and  amount of memory on each node)
      * 
      */
     public String nodeShape() {
         return this.nodeShape;
     }
     /**
-     * @return A CIDR IP range from which to assign Kubernetes Pod IPs (string)
+     * @return Optional specify the pod CIDR, defaults to 10.244.0.0/16
      * 
      */
     public Optional<String> podCidr() {
         return Optional.ofNullable(this.podCidr);
     }
     /**
-     * @return The private API key file contents for the specified user, in PEM format (string)
+     * @return The private API key file contents for the specified user, in PEM format
      * 
      */
     public String privateKeyContents() {
         return this.privateKeyContents;
     }
     /**
-     * @return The passphrase (if any) of the private key for the OKE cluster (string)
+     * @return The passphrase of the private key for the OKE cluster
      * 
      */
     public Optional<String> privateKeyPassphrase() {
         return Optional.ofNullable(this.privateKeyPassphrase);
     }
     /**
-     * @return Number of node subnets. Default `1` (int)
+     * @return Number of node subnets (defaults to creating 1 regional subnet)
      * 
      */
     public Optional<Integer> quantityOfNodeSubnets() {
         return Optional.ofNullable(this.quantityOfNodeSubnets);
     }
     /**
-     * @return Number of OKE worker nodes in each subnet / availability domain. Default `1` (int)
+     * @return Number of worker nodes in each subnet / availability domain
      * 
      */
     public Optional<Integer> quantityPerSubnet() {
         return Optional.ofNullable(this.quantityPerSubnet);
     }
     /**
-     * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     * @return The availability domain within the region to host the OKE cluster
      * 
      */
     public String region() {
         return this.region;
     }
     /**
-     * @return A CIDR IP range from which to assign Kubernetes Service IPs (string)
+     * @return Optional specify the service CIDR, defaults to 10.96.0.0/16
      * 
      */
     public Optional<String> serviceCidr() {
         return Optional.ofNullable(this.serviceCidr);
     }
     /**
-     * @return Name for DNS domain of service subnet. Default `svcdns` (string)
+     * @return Optional name for DNS domain of service subnet
      * 
      */
     public Optional<String> serviceDnsDomainName() {
         return Optional.ofNullable(this.serviceDnsDomainName);
     }
     /**
-     * @return Specifies whether to skip deleting the virtual cloud network (VCN) on destroy. Default `false` (bool)
+     * @return Whether to skip deleting VCN
      * 
      */
     public Optional<Boolean> skipVcnDelete() {
         return Optional.ofNullable(this.skipVcnDelete);
     }
     /**
-     * @return The OCID of the tenancy in which to create resources (string)
+     * @return The OCID of the tenancy in which to create resources
      * 
      */
     public String tenancyId() {
         return this.tenancyId;
     }
     /**
-     * @return The OCID of a user who has access to the tenancy/compartment (string)
+     * @return The OCID of a user who has access to the tenancy/compartment
      * 
      */
     public String userOcid() {
         return this.userOcid;
     }
     /**
-     * @return The OCID of the compartment (if different from `compartment_id`) in which to find the pre-existing virtual network set with `vcn_name`. (string)
+     * @return The OCID of the compartment (if different from compartment_id) in which to find the pre-existing virtual network set with vcn_name.
      * 
      */
     public Optional<String> vcnCompartmentId() {
         return Optional.ofNullable(this.vcnCompartmentId);
     }
     /**
-     * @return The name of an existing virtual network to use for the cluster creation. If set, you must also set `load_balancer_subnet_name_1`. A VCN and subnets will be created if none are specified. (string)
+     * @return The optional name of an existing virtual network to use for the cluster creation. A new VCN will be created if not specified.
      * 
      */
     public Optional<String> vcnName() {
         return Optional.ofNullable(this.vcnName);
     }
     /**
-     * @return Additional CIDR from which to allow ingress to worker nodes (string)
+     * @return Additional CIDR from which to allow ingress to worker nodes
      * 
      */
     public Optional<String> workerNodeIngressCidr() {

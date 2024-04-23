@@ -16,32 +16,16 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataAr
 
     public static final ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs Empty = new ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs();
 
-    /**
-     * (int)
-     * 
-     */
     @Import(name="requestTimeout")
     private @Nullable Output<Integer> requestTimeout;
 
-    /**
-     * @return (int)
-     * 
-     */
     public Optional<Output<Integer>> requestTimeout() {
         return Optional.ofNullable(this.requestTimeout);
     }
 
-    /**
-     * (string)
-     * 
-     */
     @Import(name="searchOrder")
     private @Nullable Output<String> searchOrder;
 
-    /**
-     * @return (string)
-     * 
-     */
     public Optional<Output<String>> searchOrder() {
         return Optional.ofNullable(this.searchOrder);
     }
@@ -71,44 +55,20 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataAr
             $ = new ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param requestTimeout (int)
-         * 
-         * @return builder
-         * 
-         */
         public Builder requestTimeout(@Nullable Output<Integer> requestTimeout) {
             $.requestTimeout = requestTimeout;
             return this;
         }
 
-        /**
-         * @param requestTimeout (int)
-         * 
-         * @return builder
-         * 
-         */
         public Builder requestTimeout(Integer requestTimeout) {
             return requestTimeout(Output.of(requestTimeout));
         }
 
-        /**
-         * @param searchOrder (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder searchOrder(@Nullable Output<String> searchOrder) {
             $.searchOrder = searchOrder;
             return this;
         }
 
-        /**
-         * @param searchOrder (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder searchOrder(String searchOrder) {
             return searchOrder(Output.of(searchOrder));
         }

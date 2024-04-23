@@ -19,14 +19,14 @@ public final class ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapArgs 
     public static final ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapArgs Empty = new ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapArgs();
 
     /**
-     * The numeric representation of the default file permissions for all files defined under the items.
+     * The default permissions to be applied when they are not set at the item level
      * 
      */
     @Import(name="defaultPermissions")
     private @Nullable Output<String> defaultPermissions;
 
     /**
-     * @return The numeric representation of the default file permissions for all files defined under the items.
+     * @return The default permissions to be applied when they are not set at the item level
      * 
      */
     public Optional<Output<String>> defaultPermissions() {
@@ -34,14 +34,14 @@ public final class ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapArgs 
     }
 
     /**
-     * Items is a list of configurations for files, such as where to retrieve the content from the source, where to put the file on nodes, etc.
+     * Items(files) to retrieve from the K8s object
      * 
      */
     @Import(name="items")
     private @Nullable Output<List<ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapItemArgs>> items;
 
     /**
-     * @return Items is a list of configurations for files, such as where to retrieve the content from the source, where to put the file on nodes, etc.
+     * @return Items(files) to retrieve from the K8s object
      * 
      */
     public Optional<Output<List<ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapItemArgs>>> items() {
@@ -90,7 +90,7 @@ public final class ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapArgs 
         }
 
         /**
-         * @param defaultPermissions The numeric representation of the default file permissions for all files defined under the items.
+         * @param defaultPermissions The default permissions to be applied when they are not set at the item level
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapArgs 
         }
 
         /**
-         * @param defaultPermissions The numeric representation of the default file permissions for all files defined under the items.
+         * @param defaultPermissions The default permissions to be applied when they are not set at the item level
          * 
          * @return builder
          * 
@@ -111,7 +111,7 @@ public final class ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapArgs 
         }
 
         /**
-         * @param items Items is a list of configurations for files, such as where to retrieve the content from the source, where to put the file on nodes, etc.
+         * @param items Items(files) to retrieve from the K8s object
          * 
          * @return builder
          * 
@@ -122,7 +122,7 @@ public final class ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapArgs 
         }
 
         /**
-         * @param items Items is a list of configurations for files, such as where to retrieve the content from the source, where to put the file on nodes, etc.
+         * @param items Items(files) to retrieve from the K8s object
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapArgs 
         }
 
         /**
-         * @param items Items is a list of configurations for files, such as where to retrieve the content from the source, where to put the file on nodes, etc.
+         * @param items Items(files) to retrieve from the K8s object
          * 
          * @return builder
          * 

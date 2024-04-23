@@ -14,67 +14,67 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class NodeTemplateLinodeConfig
     {
         /// <summary>
-        /// Linode user accounts (seperated by commas) whose Linode SSH keys will be permitted root access to the created node. (string)
+        /// Linode user accounts (seperated by commas) whose Linode SSH keys will be permitted root access to the created node
         /// </summary>
         public readonly string? AuthorizedUsers;
         /// <summary>
-        /// Create private IP for the instance. Default `false` (bool)
+        /// Create private IP for the instance
         /// </summary>
         public readonly bool? CreatePrivateIp;
         /// <summary>
-        /// Docker Port. Default `2376` (string)
+        /// Docker Port
         /// </summary>
         public readonly string? DockerPort;
         /// <summary>
-        /// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        /// Specifies the Linode Instance image which determines the OS distribution and base files
         /// </summary>
         public readonly string? Image;
         /// <summary>
-        /// Outscale VM type. Default `tinav2.c1r2p3` (string)
+        /// Specifies the Linode Instance type which determines CPU, memory, disk size, etc.
         /// </summary>
         public readonly string? InstanceType;
         /// <summary>
-        /// Linode Instance Label. (string)
+        /// Linode Instance Label
         /// </summary>
         public readonly string? Label;
         /// <summary>
-        /// AWS region. Default `eu-west-2` (string)
+        /// Specifies the region (location) of the Linode instance
         /// </summary>
         public readonly string? Region;
         /// <summary>
-        /// Root Password (string)
+        /// Root Password
         /// </summary>
         public readonly string? RootPass;
         /// <summary>
-        /// If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+        /// Linode Instance SSH Port
         /// </summary>
         public readonly string? SshPort;
         /// <summary>
-        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        /// Specifies the user as which docker-machine should log in to the Linode instance to install Docker.
         /// </summary>
         public readonly string? SshUser;
         /// <summary>
-        /// Specifies the Linode StackScript to use to create the instance. (string)
+        /// Specifies the Linode StackScript to use to create the instance
         /// </summary>
         public readonly string? Stackscript;
         /// <summary>
-        /// A JSON string specifying data for the selected StackScript. (string)
+        /// A JSON string specifying data for the selected StackScript
         /// </summary>
         public readonly string? StackscriptData;
         /// <summary>
-        /// Linode Instance Swap Size (MB). Default `512` (string)
+        /// Linode Instance Swap Size (MB)
         /// </summary>
         public readonly string? SwapSize;
         /// <summary>
-        /// vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+        /// A comma separated list of tags to apply to the the Linode resource
         /// </summary>
         public readonly string? Tags;
         /// <summary>
-        /// Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+        /// Linode API Token
         /// </summary>
         public readonly string? Token;
         /// <summary>
-        /// Prefix the User-Agent in Linode API calls with some 'product/version' (string)
+        /// Prefix the User-Agent in Linode API calls with some 'product/version'
         /// </summary>
         public readonly string? UaPrefix;
 

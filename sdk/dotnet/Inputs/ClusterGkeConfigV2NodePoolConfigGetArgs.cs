@@ -13,19 +13,19 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterGkeConfigV2NodePoolConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The GKE node config disk size Gb (int)
+        /// The GKE node config disk size (Gb)
         /// </summary>
         [Input("diskSizeGb")]
         public Input<int>? DiskSizeGb { get; set; }
 
         /// <summary>
-        /// The GKE node config disk type (string)
+        /// The GKE node config disk type
         /// </summary>
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }
 
         /// <summary>
-        /// The GKE node config image type (string)
+        /// The GKE node config image type
         /// </summary>
         [Input("imageType")]
         public Input<string>? ImageType { get; set; }
@@ -43,13 +43,13 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// The GKE node config local ssd count (int)
+        /// The GKE node config local ssd count
         /// </summary>
         [Input("localSsdCount")]
         public Input<int>? LocalSsdCount { get; set; }
 
         /// <summary>
-        /// The GKE node config machine type (string)
+        /// The GKE node config machine type
         /// </summary>
         [Input("machineType")]
         public Input<string>? MachineType { get; set; }
@@ -58,7 +58,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _oauthScopes;
 
         /// <summary>
-        /// The GKE node config oauth scopes (List)
+        /// The GKE node config oauth scopes
         /// </summary>
         public InputList<string> OauthScopes
         {
@@ -67,7 +67,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Enable GKE node config preemptible. Default: `false` (bool)
+        /// Enable GKE node config preemptible
         /// </summary>
         [Input("preemptible")]
         public Input<bool>? Preemptible { get; set; }
@@ -76,7 +76,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The GKE node config tags (List)
+        /// The GKE node config tags
         /// </summary>
         public InputList<string> Tags
         {
@@ -88,7 +88,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<Inputs.ClusterGkeConfigV2NodePoolConfigTaintGetArgs>? _taints;
 
         /// <summary>
-        /// The GKE node config taints (List)
+        /// The GKE node config taints
         /// </summary>
         public InputList<Inputs.ClusterGkeConfigV2NodePoolConfigTaintGetArgs> Taints
         {

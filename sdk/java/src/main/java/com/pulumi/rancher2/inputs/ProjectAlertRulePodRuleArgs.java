@@ -18,14 +18,14 @@ public final class ProjectAlertRulePodRuleArgs extends com.pulumi.resources.Reso
     public static final ProjectAlertRulePodRuleArgs Empty = new ProjectAlertRulePodRuleArgs();
 
     /**
-     * Pod rule condition. Supported values : `&#34;notrunning&#34; | &#34;notscheduled&#34; | &#34;restarts&#34;`. Default: `notrunning` (string)
+     * Pod rule condition
      * 
      */
     @Import(name="condition")
     private @Nullable Output<String> condition;
 
     /**
-     * @return Pod rule condition. Supported values : `&#34;notrunning&#34; | &#34;notscheduled&#34; | &#34;restarts&#34;`. Default: `notrunning` (string)
+     * @return Pod rule condition
      * 
      */
     public Optional<Output<String>> condition() {
@@ -33,14 +33,14 @@ public final class ProjectAlertRulePodRuleArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Pod ID (string)
+     * Pod ID
      * 
      */
     @Import(name="podId", required=true)
     private Output<String> podId;
 
     /**
-     * @return Pod ID (string)
+     * @return Pod ID
      * 
      */
     public Output<String> podId() {
@@ -48,14 +48,14 @@ public final class ProjectAlertRulePodRuleArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Pod rule restart interval seconds. Default: `300` (int)
+     * Pod rule restart interval seconds
      * 
      */
     @Import(name="restartIntervalSeconds")
     private @Nullable Output<Integer> restartIntervalSeconds;
 
     /**
-     * @return Pod rule restart interval seconds. Default: `300` (int)
+     * @return Pod rule restart interval seconds
      * 
      */
     public Optional<Output<Integer>> restartIntervalSeconds() {
@@ -63,14 +63,14 @@ public final class ProjectAlertRulePodRuleArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Pod rule restart times. Default: `3`  (int)
+     * Pod rule restart times
      * 
      */
     @Import(name="restartTimes")
     private @Nullable Output<Integer> restartTimes;
 
     /**
-     * @return Pod rule restart times. Default: `3`  (int)
+     * @return Pod rule restart times
      * 
      */
     public Optional<Output<Integer>> restartTimes() {
@@ -105,7 +105,7 @@ public final class ProjectAlertRulePodRuleArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param condition Pod rule condition. Supported values : `&#34;notrunning&#34; | &#34;notscheduled&#34; | &#34;restarts&#34;`. Default: `notrunning` (string)
+         * @param condition Pod rule condition
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class ProjectAlertRulePodRuleArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param condition Pod rule condition. Supported values : `&#34;notrunning&#34; | &#34;notscheduled&#34; | &#34;restarts&#34;`. Default: `notrunning` (string)
+         * @param condition Pod rule condition
          * 
          * @return builder
          * 
@@ -126,7 +126,7 @@ public final class ProjectAlertRulePodRuleArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param podId Pod ID (string)
+         * @param podId Pod ID
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class ProjectAlertRulePodRuleArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param podId Pod ID (string)
+         * @param podId Pod ID
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class ProjectAlertRulePodRuleArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param restartIntervalSeconds Pod rule restart interval seconds. Default: `300` (int)
+         * @param restartIntervalSeconds Pod rule restart interval seconds
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class ProjectAlertRulePodRuleArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param restartIntervalSeconds Pod rule restart interval seconds. Default: `300` (int)
+         * @param restartIntervalSeconds Pod rule restart interval seconds
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class ProjectAlertRulePodRuleArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param restartTimes Pod rule restart times. Default: `3`  (int)
+         * @param restartTimes Pod rule restart times
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class ProjectAlertRulePodRuleArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param restartTimes Pod rule restart times. Default: `3`  (int)
+         * @param restartTimes Pod rule restart times
          * 
          * @return builder
          * 

@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterRke2Config {
     /**
-     * @return K3S upgrade strategy (List maxitems: 1)
+     * @return The RKE2 upgrade strategy
      * 
      */
     private @Nullable ClusterRke2ConfigUpgradeStrategy upgradeStrategy;
     /**
-     * @return rancher-monitoring chart version (string)
+     * @return The RKE2 kubernetes version
      * 
      */
     private @Nullable String version;
 
     private ClusterRke2Config() {}
     /**
-     * @return K3S upgrade strategy (List maxitems: 1)
+     * @return The RKE2 upgrade strategy
      * 
      */
     public Optional<ClusterRke2ConfigUpgradeStrategy> upgradeStrategy() {
         return Optional.ofNullable(this.upgradeStrategy);
     }
     /**
-     * @return rancher-monitoring chart version (string)
+     * @return The RKE2 kubernetes version
      * 
      */
     public Optional<String> version() {

@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class CloudCredentialDigitaloceanCredentialConfig {
     /**
-     * @return DigitalOcean access token (string)
+     * @return Digital Ocean access token
      * 
      */
     private String accessToken;
 
     private CloudCredentialDigitaloceanCredentialConfig() {}
     /**
-     * @return DigitalOcean access token (string)
+     * @return Digital Ocean access token
      * 
      */
     public String accessToken() {

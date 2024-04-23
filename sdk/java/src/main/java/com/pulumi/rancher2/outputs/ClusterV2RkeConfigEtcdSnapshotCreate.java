@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class ClusterV2RkeConfigEtcdSnapshotCreate {
     /**
-     * @return ETCD snapshot desired generation.
+     * @return ETCD generation to initiate a snapshot
      * 
      */
     private Integer generation;
 
     private ClusterV2RkeConfigEtcdSnapshotCreate() {}
     /**
-     * @return ETCD snapshot desired generation.
+     * @return ETCD generation to initiate a snapshot
      * 
      */
     public Integer generation() {

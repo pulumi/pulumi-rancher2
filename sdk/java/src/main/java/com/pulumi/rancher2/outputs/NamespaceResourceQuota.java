@@ -10,17 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class NamespaceResourceQuota {
-    /**
-     * @return Resource quota limit for namespace (list maxitems:1)
-     * 
-     */
     private NamespaceResourceQuotaLimit limit;
 
     private NamespaceResourceQuota() {}
-    /**
-     * @return Resource quota limit for namespace (list maxitems:1)
-     * 
-     */
     public NamespaceResourceQuotaLimit limit() {
         return this.limit;
     }

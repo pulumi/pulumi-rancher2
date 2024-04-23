@@ -18,7 +18,6 @@ import (
 //
 // ### Using the Harvester Node Driver
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -98,7 +97,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 type MachineConfigV2 struct {
 	pulumi.CustomResourceState
 

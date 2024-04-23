@@ -13,9 +13,6 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterRkeConfigNetworkCanalNetworkProvider
     {
-        /// <summary>
-        /// Iface config Flannel network provider (string)
-        /// </summary>
         public readonly string? Iface;
 
         [OutputConstructor]

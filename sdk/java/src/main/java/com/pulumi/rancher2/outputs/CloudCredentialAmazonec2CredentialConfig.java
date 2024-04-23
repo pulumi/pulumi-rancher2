@@ -13,38 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CloudCredentialAmazonec2CredentialConfig {
     /**
-     * @return AWS access key (string)
+     * @return AWS Access Key
      * 
      */
     private String accessKey;
     /**
-     * @return AWS default region (string)
+     * @return AWS default region
      * 
      */
     private @Nullable String defaultRegion;
     /**
-     * @return AWS secret key (string)
+     * @return AWS Secret Key
      * 
      */
     private String secretKey;
 
     private CloudCredentialAmazonec2CredentialConfig() {}
     /**
-     * @return AWS access key (string)
+     * @return AWS Access Key
      * 
      */
     public String accessKey() {
         return this.accessKey;
     }
     /**
-     * @return AWS default region (string)
+     * @return AWS default region
      * 
      */
     public Optional<String> defaultRegion() {
         return Optional.ofNullable(this.defaultRegion);
     }
     /**
-     * @return AWS secret key (string)
+     * @return AWS Secret Key
      * 
      */
     public String secretKey() {

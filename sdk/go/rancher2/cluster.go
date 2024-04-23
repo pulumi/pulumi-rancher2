@@ -19,7 +19,6 @@ import (
 //
 // ### Creating Rancher v2 imported cluster
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -45,7 +44,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // # Creating Rancher v2 RKE cluster
 //
@@ -53,7 +51,6 @@ import (
 //
 // **Note** Cluster monitoring version `0.2.0` and above, can't be enabled until cluster is fully deployed as [`kubeVersion`](https://github.com/rancher/system-charts/blob/52be656700468904b9bf15c3f39cd7112e1f8c9b/charts/rancher-monitoring/v0.2.0/Chart.yaml#L12) requirement has been introduced to helm chart
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -108,11 +105,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Creating Rancher v2 RKE cluster enabling/customizing monitoring and istio
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -238,11 +233,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Creating Rancher v2 RKE cluster assigning a node pool (overlapped planes)
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -307,11 +300,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Creating Rancher v2 RKE cluster from template. For Rancher v2.3.x and above.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -373,11 +364,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Creating Rancher v2 RKE cluster with upgrade strategy. For Rancher v2.4.x and above.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -446,11 +435,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Creating Rancher v2 RKE cluster with cluster agent customization. For Rancher v2.7.5 and above.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -517,11 +504,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Creating Rancher v2 RKE cluster with Pod Security Admission Configuration Template (PSACT). For Rancher v2.7.2 and above.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -580,11 +565,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Importing EKS cluster to Rancher v2, using `eksConfigV2`. For Rancher v2.5.x and above.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -626,11 +609,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Creating EKS cluster from Rancher v2, using `eksConfigV2`. For Rancher v2.5.x and above.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -692,13 +673,11 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Creating EKS cluster from Rancher v2, using `eksConfigV2` and launch template. For Rancher v2.5.6 and above.
 //
 // Note: To use `launchTemplate` you must provide the ID (seen as `<EC2_LAUNCH_TEMPLATE_ID>`) to the template either as a static value. Or fetched via AWS data-source using one of: awsAmi first and provide the ID to that.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -758,11 +737,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Creating AKS cluster from Rancher v2, using `aksConfigV2`. For Rancher v2.6.0 and above.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -842,7 +819,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -862,7 +838,7 @@ type Cluster struct {
 	AksConfigV2 ClusterAksConfigV2PtrOutput `pulumi:"aksConfigV2"`
 	// Annotations for the Cluster (map)
 	Annotations pulumi.MapOutput `pulumi:"annotations"`
-	// TLS CA certificate for etcd service (string)
+	// (Computed/Sensitive) K8s cluster ca cert (string)
 	CaCert pulumi.StringOutput `pulumi:"caCert"`
 	// Optional customization for cluster agent. For Rancher v2.7.5 and above (list)
 	ClusterAgentDeploymentCustomizations ClusterClusterAgentDeploymentCustomizationArrayOutput `pulumi:"clusterAgentDeploymentCustomizations"`
@@ -983,7 +959,7 @@ type clusterState struct {
 	AksConfigV2 *ClusterAksConfigV2 `pulumi:"aksConfigV2"`
 	// Annotations for the Cluster (map)
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	// TLS CA certificate for etcd service (string)
+	// (Computed/Sensitive) K8s cluster ca cert (string)
 	CaCert *string `pulumi:"caCert"`
 	// Optional customization for cluster agent. For Rancher v2.7.5 and above (list)
 	ClusterAgentDeploymentCustomizations []ClusterClusterAgentDeploymentCustomization `pulumi:"clusterAgentDeploymentCustomizations"`
@@ -1070,7 +1046,7 @@ type ClusterState struct {
 	AksConfigV2 ClusterAksConfigV2PtrInput
 	// Annotations for the Cluster (map)
 	Annotations pulumi.MapInput
-	// TLS CA certificate for etcd service (string)
+	// (Computed/Sensitive) K8s cluster ca cert (string)
 	CaCert pulumi.StringPtrInput
 	// Optional customization for cluster agent. For Rancher v2.7.5 and above (list)
 	ClusterAgentDeploymentCustomizations ClusterClusterAgentDeploymentCustomizationArrayInput
@@ -1402,7 +1378,7 @@ func (o ClusterOutput) Annotations() pulumi.MapOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
 }
 
-// TLS CA certificate for etcd service (string)
+// (Computed/Sensitive) K8s cluster ca cert (string)
 func (o ClusterOutput) CaCert() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.CaCert }).(pulumi.StringOutput)
 }
