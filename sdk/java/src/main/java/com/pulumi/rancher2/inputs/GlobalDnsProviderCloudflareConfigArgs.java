@@ -17,47 +17,23 @@ public final class GlobalDnsProviderCloudflareConfigArgs extends com.pulumi.reso
 
     public static final GlobalDnsProviderCloudflareConfigArgs Empty = new GlobalDnsProviderCloudflareConfigArgs();
 
-    /**
-     * The CloudFlare API Email (string)
-     * 
-     */
     @Import(name="apiEmail", required=true)
     private Output<String> apiEmail;
 
-    /**
-     * @return The CloudFlare API Email (string)
-     * 
-     */
     public Output<String> apiEmail() {
         return this.apiEmail;
     }
 
-    /**
-     * The CloudFlare API Key (string)
-     * 
-     */
     @Import(name="apiKey", required=true)
     private Output<String> apiKey;
 
-    /**
-     * @return The CloudFlare API Key (string)
-     * 
-     */
     public Output<String> apiKey() {
         return this.apiKey;
     }
 
-    /**
-     * CloudFlare Proxy Setting. Default: `false` (bool)
-     * 
-     */
     @Import(name="proxySetting")
     private @Nullable Output<Boolean> proxySetting;
 
-    /**
-     * @return CloudFlare Proxy Setting. Default: `false` (bool)
-     * 
-     */
     public Optional<Output<Boolean>> proxySetting() {
         return Optional.ofNullable(this.proxySetting);
     }
@@ -88,65 +64,29 @@ public final class GlobalDnsProviderCloudflareConfigArgs extends com.pulumi.reso
             $ = new GlobalDnsProviderCloudflareConfigArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param apiEmail The CloudFlare API Email (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder apiEmail(Output<String> apiEmail) {
             $.apiEmail = apiEmail;
             return this;
         }
 
-        /**
-         * @param apiEmail The CloudFlare API Email (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder apiEmail(String apiEmail) {
             return apiEmail(Output.of(apiEmail));
         }
 
-        /**
-         * @param apiKey The CloudFlare API Key (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder apiKey(Output<String> apiKey) {
             $.apiKey = apiKey;
             return this;
         }
 
-        /**
-         * @param apiKey The CloudFlare API Key (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder apiKey(String apiKey) {
             return apiKey(Output.of(apiKey));
         }
 
-        /**
-         * @param proxySetting CloudFlare Proxy Setting. Default: `false` (bool)
-         * 
-         * @return builder
-         * 
-         */
         public Builder proxySetting(@Nullable Output<Boolean> proxySetting) {
             $.proxySetting = proxySetting;
             return this;
         }
 
-        /**
-         * @param proxySetting CloudFlare Proxy Setting. Default: `false` (bool)
-         * 
-         * @return builder
-         * 
-         */
         public Builder proxySetting(Boolean proxySetting) {
             return proxySetting(Output.of(proxySetting));
         }

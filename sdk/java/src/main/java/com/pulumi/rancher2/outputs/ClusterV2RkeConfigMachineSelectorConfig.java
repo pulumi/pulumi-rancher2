@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterV2RkeConfigMachineSelectorConfig {
     /**
-     * @return Config is the distribution-specify configuration to be applied to nodes that match the provided label selector. For more information, please refer to Rancher&#39;s documentation for [RKE2 Cluster Configuration](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration#machineselectorconfig) or [K3s Cluster Configuration](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/k3s-cluster-configuration#machineselectorconfig)
+     * @return Machine selector config
      * 
      */
     private @Nullable String config;
     /**
-     * @return Machine selector label is a label query over a set of resources. The result of match_labels and match_expressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
+     * @return Machine label selector
      * 
      */
     private @Nullable ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector machineLabelSelector;
 
     private ClusterV2RkeConfigMachineSelectorConfig() {}
     /**
-     * @return Config is the distribution-specify configuration to be applied to nodes that match the provided label selector. For more information, please refer to Rancher&#39;s documentation for [RKE2 Cluster Configuration](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration#machineselectorconfig) or [K3s Cluster Configuration](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/k3s-cluster-configuration#machineselectorconfig)
+     * @return Machine selector config
      * 
      */
     public Optional<String> config() {
         return Optional.ofNullable(this.config);
     }
     /**
-     * @return Machine selector label is a label query over a set of resources. The result of match_labels and match_expressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
+     * @return Machine label selector
      * 
      */
     public Optional<ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector> machineLabelSelector() {

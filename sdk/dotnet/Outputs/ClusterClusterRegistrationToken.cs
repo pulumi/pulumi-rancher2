@@ -17,53 +17,26 @@ namespace Pulumi.Rancher2.Outputs
         /// Annotations for the Cluster (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Annotations;
-        /// <summary>
-        /// Cluster ID to apply answer (string)
-        /// </summary>
         public readonly string? ClusterId;
-        /// <summary>
-        /// Command to execute in a imported k8s cluster (string)
-        /// </summary>
         public readonly string? Command;
         /// <summary>
-        /// The EKS node group launch template ID (string)
+        /// (Computed) The ID of the resource (string)
         /// </summary>
         public readonly string? Id;
-        /// <summary>
-        /// Insecure command to execute in a imported k8s cluster (string)
-        /// </summary>
         public readonly string? InsecureCommand;
-        /// <summary>
-        /// Insecure node command to execute in a imported k8s cluster (string)
-        /// </summary>
         public readonly string? InsecureNodeCommand;
-        /// <summary>
-        /// Insecure windows command to execute in a imported k8s cluster (string)
-        /// </summary>
         public readonly string? InsecureWindowsNodeCommand;
         /// <summary>
         /// Labels for the Cluster (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Labels;
-        /// <summary>
-        /// K8s manifest url to execute with `kubectl` to import an existing k8s cluster (string)
-        /// </summary>
         public readonly string? ManifestUrl;
         /// <summary>
         /// The name of the Cluster (string)
         /// </summary>
         public readonly string? Name;
-        /// <summary>
-        /// Node command to execute in linux nodes for custom k8s cluster (string)
-        /// </summary>
         public readonly string? NodeCommand;
-        /// <summary>
-        /// ACI token (string)
-        /// </summary>
         public readonly string? Token;
-        /// <summary>
-        /// Node command to execute in windows nodes for custom k8s cluster (string)
-        /// </summary>
         public readonly string? WindowsNodeCommand;
 
         [OutputConstructor]

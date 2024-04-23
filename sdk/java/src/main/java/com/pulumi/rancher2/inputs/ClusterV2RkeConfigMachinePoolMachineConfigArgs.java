@@ -17,14 +17,14 @@ public final class ClusterV2RkeConfigMachinePoolMachineConfigArgs extends com.pu
     public static final ClusterV2RkeConfigMachinePoolMachineConfigArgs Empty = new ClusterV2RkeConfigMachinePoolMachineConfigArgs();
 
     /**
-     * Api version of the machine_config.
+     * Machine config API version
      * 
      */
     @Import(name="apiVersion")
     private @Nullable Output<String> apiVersion;
 
     /**
-     * @return Api version of the machine_config.
+     * @return Machine config API version
      * 
      */
     public Optional<Output<String>> apiVersion() {
@@ -32,14 +32,14 @@ public final class ClusterV2RkeConfigMachinePoolMachineConfigArgs extends com.pu
     }
 
     /**
-     * Machine config kind.
+     * Machine config kind
      * 
      */
     @Import(name="kind", required=true)
     private Output<String> kind;
 
     /**
-     * @return Machine config kind.
+     * @return Machine config kind
      * 
      */
     public Output<String> kind() {
@@ -88,7 +88,7 @@ public final class ClusterV2RkeConfigMachinePoolMachineConfigArgs extends com.pu
         }
 
         /**
-         * @param apiVersion Api version of the machine_config.
+         * @param apiVersion Machine config API version
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class ClusterV2RkeConfigMachinePoolMachineConfigArgs extends com.pu
         }
 
         /**
-         * @param apiVersion Api version of the machine_config.
+         * @param apiVersion Machine config API version
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class ClusterV2RkeConfigMachinePoolMachineConfigArgs extends com.pu
         }
 
         /**
-         * @param kind Machine config kind.
+         * @param kind Machine config kind
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class ClusterV2RkeConfigMachinePoolMachineConfigArgs extends com.pu
         }
 
         /**
-         * @param kind Machine config kind.
+         * @param kind Machine config kind
          * 
          * @return builder
          * 

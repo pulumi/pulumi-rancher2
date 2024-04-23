@@ -24,27 +24,27 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterV2RkeConfig {
     /**
-     * @return The value of the additional manifest is delivered to the path `/var/lib/rancher/rke2/server/manifests/rancher/addons.yaml` or `/var/lib/rancher/k3s/server/manifests/rancher/addons.yaml` on the control plane nodes.
+     * @return Cluster V2 additional manifest
      * 
      */
     private @Nullable String additionalManifest;
     /**
-     * @return The value for the system charts installed by the distribution. For more information about how RKE2 or K3s manage packaged components, please refer to [RKE2 documentation](https://docs.rke2.io/helm) or [K3s documentation](https://docs.k3s.io/installation/packaged-components).
+     * @return Cluster V2 chart values. It should be in YAML format
      * 
      */
     private @Nullable String chartValues;
     /**
-     * @return Etcd configures the behavior of the automatic etcd snapshot feature.
+     * @return Cluster V2 etcd
      * 
      */
     private @Nullable ClusterV2RkeConfigEtcd etcd;
     /**
-     * @return Cluster V2 etcd snapshot create.
+     * @return Cluster V2 etcd snapshot create
      * 
      */
     private @Nullable ClusterV2RkeConfigEtcdSnapshotCreate etcdSnapshotCreate;
     /**
-     * @return Cluster V2 etcd snapshot restore.
+     * @return Cluster V2 etcd snapshot restore
      * 
      */
     private @Nullable ClusterV2RkeConfigEtcdSnapshotRestore etcdSnapshotRestore;
@@ -58,7 +58,7 @@ public final class ClusterV2RkeConfig {
     @Deprecated /* Use rancher2_cluster_v2.local_auth_endpoint instead */
     private @Nullable ClusterV2RkeConfigLocalAuthEndpoint localAuthEndpoint;
     /**
-     * @return Machine global config specifies the distribution-specified server configuration applied to all nodes. For the full list of server configurations, please refer to [RKE2 server configuration](https://docs.rke2.io/reference/server_config) or [K3s server configuration](https://docs.k3s.io/cli/server).
+     * @return Cluster V2 machine global config
      * 
      */
     private @Nullable String machineGlobalConfig;
@@ -68,67 +68,67 @@ public final class ClusterV2RkeConfig {
      */
     private @Nullable List<ClusterV2RkeConfigMachinePoolDefault> machinePoolDefaults;
     /**
-     * @return Cluster V2 machine pools.
+     * @return Cluster V2 machine pools
      * 
      */
     private @Nullable List<ClusterV2RkeConfigMachinePool> machinePools;
     /**
-     * @return Machine selector config is the same as machine_global_config except that a label selector can be specified with the configuration. The configuration will only be applied to nodes that match the provided label selector. The configuration from machine_selector_config takes precedence over the one from machine_global_config. This argument is available in Rancher v2.7.2 and later.
+     * @return Cluster V2 machine selector config
      * 
      */
     private @Nullable List<ClusterV2RkeConfigMachineSelectorConfig> machineSelectorConfigs;
     /**
-     * @return Machine selector files provide a means to deliver files to nodes so that the files can be in place before initiating RKE2/K3s server or agent processes. Please refer to Rancher documentation for [RKE2 Cluster Configuration Reference](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration#machineselectorfiles) and [K3s Cluster Configuration Reference](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/k3s-cluster-configuration#machineselectorfiles). This argument is available in Rancher v2.7.2 and later.
+     * @return Cluster V2 machine selector files
      * 
      */
     private @Nullable List<ClusterV2RkeConfigMachineSelectorFile> machineSelectorFiles;
     /**
-     * @return Docker registries from which the cluster pulls images.
+     * @return Cluster V2 registries
      * 
      */
     private @Nullable ClusterV2RkeConfigRegistries registries;
     /**
-     * @return Cluster V2 certificate rotation.
+     * @return Cluster V2 certificate rotation
      * 
      */
     private @Nullable ClusterV2RkeConfigRotateCertificates rotateCertificates;
     /**
-     * @return Cluster upgrade strategy.
+     * @return Cluster V2 upgrade strategy
      * 
      */
     private @Nullable ClusterV2RkeConfigUpgradeStrategy upgradeStrategy;
 
     private ClusterV2RkeConfig() {}
     /**
-     * @return The value of the additional manifest is delivered to the path `/var/lib/rancher/rke2/server/manifests/rancher/addons.yaml` or `/var/lib/rancher/k3s/server/manifests/rancher/addons.yaml` on the control plane nodes.
+     * @return Cluster V2 additional manifest
      * 
      */
     public Optional<String> additionalManifest() {
         return Optional.ofNullable(this.additionalManifest);
     }
     /**
-     * @return The value for the system charts installed by the distribution. For more information about how RKE2 or K3s manage packaged components, please refer to [RKE2 documentation](https://docs.rke2.io/helm) or [K3s documentation](https://docs.k3s.io/installation/packaged-components).
+     * @return Cluster V2 chart values. It should be in YAML format
      * 
      */
     public Optional<String> chartValues() {
         return Optional.ofNullable(this.chartValues);
     }
     /**
-     * @return Etcd configures the behavior of the automatic etcd snapshot feature.
+     * @return Cluster V2 etcd
      * 
      */
     public Optional<ClusterV2RkeConfigEtcd> etcd() {
         return Optional.ofNullable(this.etcd);
     }
     /**
-     * @return Cluster V2 etcd snapshot create.
+     * @return Cluster V2 etcd snapshot create
      * 
      */
     public Optional<ClusterV2RkeConfigEtcdSnapshotCreate> etcdSnapshotCreate() {
         return Optional.ofNullable(this.etcdSnapshotCreate);
     }
     /**
-     * @return Cluster V2 etcd snapshot restore.
+     * @return Cluster V2 etcd snapshot restore
      * 
      */
     public Optional<ClusterV2RkeConfigEtcdSnapshotRestore> etcdSnapshotRestore() {
@@ -146,7 +146,7 @@ public final class ClusterV2RkeConfig {
         return Optional.ofNullable(this.localAuthEndpoint);
     }
     /**
-     * @return Machine global config specifies the distribution-specified server configuration applied to all nodes. For the full list of server configurations, please refer to [RKE2 server configuration](https://docs.rke2.io/reference/server_config) or [K3s server configuration](https://docs.k3s.io/cli/server).
+     * @return Cluster V2 machine global config
      * 
      */
     public Optional<String> machineGlobalConfig() {
@@ -160,42 +160,42 @@ public final class ClusterV2RkeConfig {
         return this.machinePoolDefaults == null ? List.of() : this.machinePoolDefaults;
     }
     /**
-     * @return Cluster V2 machine pools.
+     * @return Cluster V2 machine pools
      * 
      */
     public List<ClusterV2RkeConfigMachinePool> machinePools() {
         return this.machinePools == null ? List.of() : this.machinePools;
     }
     /**
-     * @return Machine selector config is the same as machine_global_config except that a label selector can be specified with the configuration. The configuration will only be applied to nodes that match the provided label selector. The configuration from machine_selector_config takes precedence over the one from machine_global_config. This argument is available in Rancher v2.7.2 and later.
+     * @return Cluster V2 machine selector config
      * 
      */
     public List<ClusterV2RkeConfigMachineSelectorConfig> machineSelectorConfigs() {
         return this.machineSelectorConfigs == null ? List.of() : this.machineSelectorConfigs;
     }
     /**
-     * @return Machine selector files provide a means to deliver files to nodes so that the files can be in place before initiating RKE2/K3s server or agent processes. Please refer to Rancher documentation for [RKE2 Cluster Configuration Reference](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration#machineselectorfiles) and [K3s Cluster Configuration Reference](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/k3s-cluster-configuration#machineselectorfiles). This argument is available in Rancher v2.7.2 and later.
+     * @return Cluster V2 machine selector files
      * 
      */
     public List<ClusterV2RkeConfigMachineSelectorFile> machineSelectorFiles() {
         return this.machineSelectorFiles == null ? List.of() : this.machineSelectorFiles;
     }
     /**
-     * @return Docker registries from which the cluster pulls images.
+     * @return Cluster V2 registries
      * 
      */
     public Optional<ClusterV2RkeConfigRegistries> registries() {
         return Optional.ofNullable(this.registries);
     }
     /**
-     * @return Cluster V2 certificate rotation.
+     * @return Cluster V2 certificate rotation
      * 
      */
     public Optional<ClusterV2RkeConfigRotateCertificates> rotateCertificates() {
         return Optional.ofNullable(this.rotateCertificates);
     }
     /**
-     * @return Cluster upgrade strategy.
+     * @return Cluster V2 upgrade strategy
      * 
      */
     public Optional<ClusterV2RkeConfigUpgradeStrategy> upgradeStrategy() {

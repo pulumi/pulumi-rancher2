@@ -16,7 +16,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _allowedRuntimeClassNames;
 
         /// <summary>
-        /// (list)
+        /// allowedRuntimeClassNames is a whitelist of RuntimeClass names that may be specified on a pod. A value of "*" means that any RuntimeClass name is allowed, and must be the only item in the list. An empty list requires the RuntimeClassName field to be unset.
         /// </summary>
         public InputList<string> AllowedRuntimeClassNames
         {
@@ -25,7 +25,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// (string)
+        /// defaultRuntimeClassName is the default RuntimeClassName to set on the pod. The default MUST be allowed by the allowedRuntimeClassNames list. A value of nil does not mutate the Pod.
         /// </summary>
         [Input("defaultRuntimeClassName")]
         public Input<string>? DefaultRuntimeClassName { get; set; }

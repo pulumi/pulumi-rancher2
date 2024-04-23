@@ -13,49 +13,16 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer
     {
-        /// <summary>
-        /// (bool)
-        /// </summary>
         public readonly bool? CreateMonitor;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string? FloatingNetworkId;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string? LbMethod;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string? LbProvider;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string? LbVersion;
-        /// <summary>
-        /// (bool)
-        /// </summary>
         public readonly bool? ManageSecurityGroups;
-        /// <summary>
-        /// Default `60s` (string)
-        /// </summary>
         public readonly string? MonitorDelay;
-        /// <summary>
-        /// Default 5 (int)
-        /// </summary>
         public readonly int? MonitorMaxRetries;
-        /// <summary>
-        /// Default `30s` (string)
-        /// </summary>
         public readonly string? MonitorTimeout;
-        /// <summary>
-        /// (string)
-        /// </summary>
         public readonly string? SubnetId;
-        /// <summary>
-        /// (bool)
-        /// </summary>
         public readonly bool? UseOctavia;
 
         [OutputConstructor]

@@ -18,14 +18,14 @@ public final class ClusterAlertGroupRecipientArgs extends com.pulumi.resources.R
     public static final ClusterAlertGroupRecipientArgs Empty = new ClusterAlertGroupRecipientArgs();
 
     /**
-     * Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
+     * Use notifier default recipient
      * 
      */
     @Import(name="defaultRecipient")
     private @Nullable Output<Boolean> defaultRecipient;
 
     /**
-     * @return Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
+     * @return Use notifier default recipient
      * 
      */
     public Optional<Output<Boolean>> defaultRecipient() {
@@ -33,14 +33,14 @@ public final class ClusterAlertGroupRecipientArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Recipient notifier ID (string)
+     * Recipient notifier ID
      * 
      */
     @Import(name="notifierId", required=true)
     private Output<String> notifierId;
 
     /**
-     * @return Recipient notifier ID (string)
+     * @return Recipient notifier ID
      * 
      */
     public Output<String> notifierId() {
@@ -48,14 +48,14 @@ public final class ClusterAlertGroupRecipientArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Recipient notifier ID. Supported values : `&#34;dingtalk&#34; | &#34;msteams&#34; | &#34;pagerduty&#34; | &#34;slack&#34; | &#34;email&#34; | &#34;webhook&#34; | &#34;wechat&#34;` (string)
+     * Recipient notifier type
      * 
      */
     @Import(name="notifierType")
     private @Nullable Output<String> notifierType;
 
     /**
-     * @return Recipient notifier ID. Supported values : `&#34;dingtalk&#34; | &#34;msteams&#34; | &#34;pagerduty&#34; | &#34;slack&#34; | &#34;email&#34; | &#34;webhook&#34; | &#34;wechat&#34;` (string)
+     * @return Recipient notifier type
      * 
      */
     public Optional<Output<String>> notifierType() {
@@ -63,14 +63,14 @@ public final class ClusterAlertGroupRecipientArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Recipient (string)
+     * Recipient
      * 
      */
     @Import(name="recipient")
     private @Nullable Output<String> recipient;
 
     /**
-     * @return Recipient (string)
+     * @return Recipient
      * 
      */
     public Optional<Output<String>> recipient() {
@@ -105,7 +105,7 @@ public final class ClusterAlertGroupRecipientArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param defaultRecipient Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
+         * @param defaultRecipient Use notifier default recipient
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class ClusterAlertGroupRecipientArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param defaultRecipient Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
+         * @param defaultRecipient Use notifier default recipient
          * 
          * @return builder
          * 
@@ -126,7 +126,7 @@ public final class ClusterAlertGroupRecipientArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param notifierId Recipient notifier ID (string)
+         * @param notifierId Recipient notifier ID
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class ClusterAlertGroupRecipientArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param notifierId Recipient notifier ID (string)
+         * @param notifierId Recipient notifier ID
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class ClusterAlertGroupRecipientArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param notifierType Recipient notifier ID. Supported values : `&#34;dingtalk&#34; | &#34;msteams&#34; | &#34;pagerduty&#34; | &#34;slack&#34; | &#34;email&#34; | &#34;webhook&#34; | &#34;wechat&#34;` (string)
+         * @param notifierType Recipient notifier type
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class ClusterAlertGroupRecipientArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param notifierType Recipient notifier ID. Supported values : `&#34;dingtalk&#34; | &#34;msteams&#34; | &#34;pagerduty&#34; | &#34;slack&#34; | &#34;email&#34; | &#34;webhook&#34; | &#34;wechat&#34;` (string)
+         * @param notifierType Recipient notifier type
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class ClusterAlertGroupRecipientArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param recipient Recipient (string)
+         * @param recipient Recipient
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class ClusterAlertGroupRecipientArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param recipient Recipient (string)
+         * @param recipient Recipient
          * 
          * @return builder
          * 

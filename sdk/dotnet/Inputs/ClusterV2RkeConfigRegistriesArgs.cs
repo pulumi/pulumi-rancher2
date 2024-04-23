@@ -16,7 +16,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<Inputs.ClusterV2RkeConfigRegistriesConfigArgs>? _configs;
 
         /// <summary>
-        /// Cluster V2 docker registries config.
+        /// Registry config
         /// </summary>
         public InputList<Inputs.ClusterV2RkeConfigRegistriesConfigArgs> Configs
         {
@@ -28,7 +28,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<Inputs.ClusterV2RkeConfigRegistriesMirrorArgs>? _mirrors;
 
         /// <summary>
-        /// Cluster V2 docker registries mirror.
+        /// Registry mirrors
         /// </summary>
         public InputList<Inputs.ClusterV2RkeConfigRegistriesMirrorArgs> Mirrors
         {

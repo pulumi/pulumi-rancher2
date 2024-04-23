@@ -14,11 +14,11 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterV2RkeConfigMachineSelectorFileFileSource
     {
         /// <summary>
-        /// Configmap represents a K8s configmap which is the source of files. It is mutually exclusive with secret.
+        /// The configmap which is the source of files
         /// </summary>
         public readonly Outputs.ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmap? Configmap;
         /// <summary>
-        /// Secret represents a K8s secret which is the source of files. It is mutually exclusive with configmap.
+        /// The secret which is the source of files
         /// </summary>
         public readonly Outputs.ClusterV2RkeConfigMachineSelectorFileFileSourceSecret? Secret;
 

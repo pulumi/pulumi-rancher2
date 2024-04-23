@@ -13,13 +13,13 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class MultiClusterAppAnswerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cluster ID for answer (string)
+        /// Cluster ID for answer
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// Project ID for target (string)
+        /// Project ID for answer
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -28,7 +28,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _values;
 
         /// <summary>
-        /// Key/values for answer (map)
+        /// Key/values for answer
         /// </summary>
         public InputMap<object> Values
         {

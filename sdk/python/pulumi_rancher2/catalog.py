@@ -499,7 +499,6 @@ class Catalog(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -519,7 +518,6 @@ class Catalog(pulumi.CustomResource):
             url="https://<CATALOG_URL>",
             scope="project")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -557,7 +555,6 @@ class Catalog(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -577,7 +574,6 @@ class Catalog(pulumi.CustomResource):
             url="https://<CATALOG_URL>",
             scope="project")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

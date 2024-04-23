@@ -13,29 +13,11 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterRkeConfigBastionHost
     {
-        /// <summary>
-        /// Address ip for node (string)
-        /// </summary>
         public readonly string Address;
-        /// <summary>
-        /// Port for node. Default `22` (string)
-        /// </summary>
         public readonly string? Port;
-        /// <summary>
-        /// Use ssh agent auth. Default `false` (bool)
-        /// </summary>
         public readonly bool? SshAgentAuth;
-        /// <summary>
-        /// Node SSH private key (string)
-        /// </summary>
         public readonly string? SshKey;
-        /// <summary>
-        /// Node SSH private key path (string)
-        /// </summary>
         public readonly string? SshKeyPath;
-        /// <summary>
-        /// Registry user (string)
-        /// </summary>
         public readonly string User;
 
         [OutputConstructor]

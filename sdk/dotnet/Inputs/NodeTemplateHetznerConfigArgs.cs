@@ -16,7 +16,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _apiToken;
 
         /// <summary>
-        /// Hetzner Cloud project API token (string)
+        /// Hetzner Cloud project API token
         /// </summary>
         public Input<string>? ApiToken
         {
@@ -29,13 +29,13 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        /// Hetzner Cloud server image
         /// </summary>
         [Input("image")]
         public Input<string>? Image { get; set; }
 
         /// <summary>
-        /// Comma-separated list of network IDs or names which should be attached to the server private network interface (string)
+        /// Comma-separated list of network IDs or names which should be attached to the server private network interface
         /// </summary>
         [Input("networks")]
         public Input<string>? Networks { get; set; }
@@ -44,7 +44,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _serverLabels;
 
         /// <summary>
-        /// Map of the labels which will be assigned to the server. This argument is only available on [Hetzner Docker Node Driver:v3.6.0](https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/tag/3.6.0) and above (map)
+        /// Map of the labels which will be assigned to the server
         /// </summary>
         public InputMap<object> ServerLabels
         {
@@ -53,33 +53,31 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Hetzner Cloud datacenter. Default `nbg1` (string)
+        /// Hetzner Cloud datacenter
         /// </summary>
         [Input("serverLocation")]
         public Input<string>? ServerLocation { get; set; }
 
         /// <summary>
-        /// Hetzner Cloud server type. Default `cx11` (string)
+        /// Hetzner Cloud server type
         /// </summary>
         [Input("serverType")]
         public Input<string>? ServerType { get; set; }
 
         /// <summary>
-        /// Use private network. Default `false` (bool)
+        /// Use private network
         /// </summary>
         [Input("usePrivateNetwork")]
         public Input<bool>? UsePrivateNetwork { get; set; }
 
         /// <summary>
-        /// Path to file with cloud-init user-data (string)
-        /// 
-        /// &gt; **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+        /// Path to file with cloud-init user-data
         /// </summary>
         [Input("userdata")]
         public Input<string>? Userdata { get; set; }
 
         /// <summary>
-        /// Comma-separated list of volume IDs or names which should be attached to the server (string)
+        /// Comma-separated list of volume IDs or names which should be attached to the server
         /// </summary>
         [Input("volumes")]
         public Input<string>? Volumes { get; set; }

@@ -25,31 +25,31 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Cluster configuration (list maxitem: 1)
+        /// Cluster configuration
         /// </summary>
         [Input("clusterConfig", required: true)]
         public Input<Inputs.ClusterTemplateTemplateRevisionClusterConfigArgs> ClusterConfig { get; set; } = null!;
 
         /// <summary>
-        /// Cluster template ID (string)
+        /// Cluster template ID
         /// </summary>
         [Input("clusterTemplateId")]
         public Input<string>? ClusterTemplateId { get; set; }
 
         /// <summary>
-        /// Default variable value (string)
+        /// Default cluster template revision
         /// </summary>
         [Input("default")]
         public Input<bool>? Default { get; set; }
 
         /// <summary>
-        /// Enable cluster template revision. Default `true` (bool)
+        /// Enable cluster template revision
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The cluster template revision ID (string)
+        /// (Computed) The ID of the resource (string)
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
@@ -76,7 +76,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<Inputs.ClusterTemplateTemplateRevisionQuestionArgs>? _questions;
 
         /// <summary>
-        /// Cluster template questions (list)
+        /// Cluster template questions
         /// </summary>
         public InputList<Inputs.ClusterTemplateTemplateRevisionQuestionArgs> Questions
         {

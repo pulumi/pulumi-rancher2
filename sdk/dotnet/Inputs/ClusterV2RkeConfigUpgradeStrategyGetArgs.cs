@@ -13,25 +13,25 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterV2RkeConfigUpgradeStrategyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// How many control plane nodes should be upgraded at a time, 0 is infinite. Percentages are also accepted.
+        /// How many controlplane nodes should be upgrade at time, 0 is infinite. Percentages are also accepted
         /// </summary>
         [Input("controlPlaneConcurrency")]
         public Input<string>? ControlPlaneConcurrency { get; set; }
 
         /// <summary>
-        /// Controlplane nodes drain options.
+        /// Controlplane nodes drain options
         /// </summary>
         [Input("controlPlaneDrainOptions")]
         public Input<Inputs.ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsGetArgs>? ControlPlaneDrainOptions { get; set; }
 
         /// <summary>
-        /// How many worker nodes should be upgraded at a time. Percentages are also accepted.
+        /// How many worker nodes should be upgrade at time
         /// </summary>
         [Input("workerConcurrency")]
         public Input<string>? WorkerConcurrency { get; set; }
 
         /// <summary>
-        /// Worker nodes drain options.
+        /// Worker nodes drain options
         /// </summary>
         [Input("workerDrainOptions")]
         public Input<Inputs.ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptionsGetArgs>? WorkerDrainOptions { get; set; }

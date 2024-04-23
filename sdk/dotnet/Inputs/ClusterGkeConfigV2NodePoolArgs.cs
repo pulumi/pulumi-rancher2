@@ -13,31 +13,31 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterGkeConfigV2NodePoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The GKE node pool config autoscaling (List maxitems:1)
+        /// The GKE node pool config autoscaling
         /// </summary>
         [Input("autoscaling")]
         public Input<Inputs.ClusterGkeConfigV2NodePoolAutoscalingArgs>? Autoscaling { get; set; }
 
         /// <summary>
-        /// The GKE node pool node config (List maxitems:1)
+        /// The GKE node pool node config
         /// </summary>
         [Input("config")]
         public Input<Inputs.ClusterGkeConfigV2NodePoolConfigArgs>? Config { get; set; }
 
         /// <summary>
-        /// The GKE node pool config initial node count (int)
+        /// The GKE node pool config initial node count
         /// </summary>
         [Input("initialNodeCount", required: true)]
         public Input<int> InitialNodeCount { get; set; } = null!;
 
         /// <summary>
-        /// The GKE node pool config management (List maxitems:1)
+        /// The GKE node pool config management
         /// </summary>
         [Input("management")]
         public Input<Inputs.ClusterGkeConfigV2NodePoolManagementArgs>? Management { get; set; }
 
         /// <summary>
-        /// The GKE node pool config max pods constraint. Required for create new cluster if `ip_allocation_policy.use_ip_aliases = true` (int)
+        /// The GKE node pool config max pods constraint
         /// </summary>
         [Input("maxPodsConstraint")]
         public Input<int>? MaxPodsConstraint { get; set; }
@@ -49,7 +49,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// rancher-monitoring chart version (string)
+        /// The GKE node pool config version
         /// </summary>
         [Input("version", required: true)]
         public Input<string> Version { get; set; } = null!;

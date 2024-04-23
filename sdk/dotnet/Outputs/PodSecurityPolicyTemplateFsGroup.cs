@@ -14,11 +14,11 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class PodSecurityPolicyTemplateFsGroup
     {
         /// <summary>
-        /// (list)
+        /// ranges are the allowed ranges of fs groups.  If you would like to force a single fs group then supply a single range with the same start and end. Required for MustRunAs.
         /// </summary>
         public readonly ImmutableArray<Outputs.PodSecurityPolicyTemplateFsGroupRange> Ranges;
         /// <summary>
-        /// (string)
+        /// rule is the strategy that will dictate what FSGroup is used in the SecurityContext.
         /// </summary>
         public readonly string? Rule;
 

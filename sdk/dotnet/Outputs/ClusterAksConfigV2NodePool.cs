@@ -14,15 +14,15 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterAksConfigV2NodePool
     {
         /// <summary>
-        /// The AKS node pool availability zones (list)
+        /// The AKS node pool availability zones
         /// </summary>
         public readonly ImmutableArray<string> AvailabilityZones;
         /// <summary>
-        /// The AKS node pool count. Default: `1` (int)
+        /// The AKS node pool count
         /// </summary>
         public readonly int? Count;
         /// <summary>
-        /// Is AKS node pool auto scaling enabled? Default: `false` (bool)
+        /// Is AKS node pool auto scaling enabled?
         /// </summary>
         public readonly bool? EnableAutoScaling;
         /// <summary>
@@ -30,23 +30,23 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Labels;
         /// <summary>
-        /// The AKS node pool max count. Required if `enable_auto_scaling=true` (int)
+        /// The AKS node pool max count
         /// </summary>
         public readonly int? MaxCount;
         /// <summary>
-        /// The AKS node pool max pods. Default: `110` (int)
+        /// The AKS node pool max pods
         /// </summary>
         public readonly int? MaxPods;
         /// <summary>
-        /// The AKS node pool max surge (string), example value: `25%`
+        /// The AKS node pool max surge
         /// </summary>
         public readonly string? MaxSurge;
         /// <summary>
-        /// The AKS node pool min count. Required if `enable_auto_scaling=true` (int)
+        /// The AKS node pool min count
         /// </summary>
         public readonly int? MinCount;
         /// <summary>
-        /// The AKS node group mode. Default: `System` (string)
+        /// The AKS node pool mode
         /// </summary>
         public readonly string? Mode;
         /// <summary>
@@ -54,27 +54,27 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The AKS node pool orchestrator version (string)
+        /// The AKS node pool orchestrator version
         /// </summary>
         public readonly string? OrchestratorVersion;
         /// <summary>
-        /// The AKS node pool os disk size gb. Default: `128` (int)
+        /// The AKS node pool os disk size gb
         /// </summary>
         public readonly int? OsDiskSizeGb;
         /// <summary>
-        /// The AKS node pool os disk type. Default: `Managed` (string)
+        /// The AKS node pool os disk type
         /// </summary>
         public readonly string? OsDiskType;
         /// <summary>
-        /// The AKS node pool os type. Default: `Linux` (string)
+        /// Enable AKS node pool os type
         /// </summary>
         public readonly string? OsType;
         /// <summary>
-        /// The GKE node config taints (List)
+        /// The AKS node pool taints
         /// </summary>
         public readonly ImmutableArray<string> Taints;
         /// <summary>
-        /// The AKS node pool orchestrator version (string)
+        /// The AKS node pool vm size
         /// </summary>
         public readonly string? VmSize;
 

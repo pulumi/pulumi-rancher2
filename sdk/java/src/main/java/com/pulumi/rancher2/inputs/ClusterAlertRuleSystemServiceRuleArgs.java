@@ -16,14 +16,14 @@ public final class ClusterAlertRuleSystemServiceRuleArgs extends com.pulumi.reso
     public static final ClusterAlertRuleSystemServiceRuleArgs Empty = new ClusterAlertRuleSystemServiceRuleArgs();
 
     /**
-     * System service rule condition. Supported values : `&#34;controller-manager&#34; | &#34;etcd&#34; | &#34;scheduler&#34;`. Default: `scheduler` (string)
+     * System service rule condition
      * 
      */
     @Import(name="condition")
     private @Nullable Output<String> condition;
 
     /**
-     * @return System service rule condition. Supported values : `&#34;controller-manager&#34; | &#34;etcd&#34; | &#34;scheduler&#34;`. Default: `scheduler` (string)
+     * @return System service rule condition
      * 
      */
     public Optional<Output<String>> condition() {
@@ -55,7 +55,7 @@ public final class ClusterAlertRuleSystemServiceRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param condition System service rule condition. Supported values : `&#34;controller-manager&#34; | &#34;etcd&#34; | &#34;scheduler&#34;`. Default: `scheduler` (string)
+         * @param condition System service rule condition
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class ClusterAlertRuleSystemServiceRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param condition System service rule condition. Supported values : `&#34;controller-manager&#34; | &#34;etcd&#34; | &#34;scheduler&#34;`. Default: `scheduler` (string)
+         * @param condition System service rule condition
          * 
          * @return builder
          * 

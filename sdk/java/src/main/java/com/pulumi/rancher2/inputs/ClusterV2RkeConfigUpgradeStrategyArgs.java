@@ -18,14 +18,14 @@ public final class ClusterV2RkeConfigUpgradeStrategyArgs extends com.pulumi.reso
     public static final ClusterV2RkeConfigUpgradeStrategyArgs Empty = new ClusterV2RkeConfigUpgradeStrategyArgs();
 
     /**
-     * How many control plane nodes should be upgraded at a time, 0 is infinite. Percentages are also accepted.
+     * How many controlplane nodes should be upgrade at time, 0 is infinite. Percentages are also accepted
      * 
      */
     @Import(name="controlPlaneConcurrency")
     private @Nullable Output<String> controlPlaneConcurrency;
 
     /**
-     * @return How many control plane nodes should be upgraded at a time, 0 is infinite. Percentages are also accepted.
+     * @return How many controlplane nodes should be upgrade at time, 0 is infinite. Percentages are also accepted
      * 
      */
     public Optional<Output<String>> controlPlaneConcurrency() {
@@ -33,14 +33,14 @@ public final class ClusterV2RkeConfigUpgradeStrategyArgs extends com.pulumi.reso
     }
 
     /**
-     * Controlplane nodes drain options.
+     * Controlplane nodes drain options
      * 
      */
     @Import(name="controlPlaneDrainOptions")
     private @Nullable Output<ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgs> controlPlaneDrainOptions;
 
     /**
-     * @return Controlplane nodes drain options.
+     * @return Controlplane nodes drain options
      * 
      */
     public Optional<Output<ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgs>> controlPlaneDrainOptions() {
@@ -48,14 +48,14 @@ public final class ClusterV2RkeConfigUpgradeStrategyArgs extends com.pulumi.reso
     }
 
     /**
-     * How many worker nodes should be upgraded at a time. Percentages are also accepted.
+     * How many worker nodes should be upgrade at time
      * 
      */
     @Import(name="workerConcurrency")
     private @Nullable Output<String> workerConcurrency;
 
     /**
-     * @return How many worker nodes should be upgraded at a time. Percentages are also accepted.
+     * @return How many worker nodes should be upgrade at time
      * 
      */
     public Optional<Output<String>> workerConcurrency() {
@@ -63,14 +63,14 @@ public final class ClusterV2RkeConfigUpgradeStrategyArgs extends com.pulumi.reso
     }
 
     /**
-     * Worker nodes drain options.
+     * Worker nodes drain options
      * 
      */
     @Import(name="workerDrainOptions")
     private @Nullable Output<ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptionsArgs> workerDrainOptions;
 
     /**
-     * @return Worker nodes drain options.
+     * @return Worker nodes drain options
      * 
      */
     public Optional<Output<ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptionsArgs>> workerDrainOptions() {
@@ -105,7 +105,7 @@ public final class ClusterV2RkeConfigUpgradeStrategyArgs extends com.pulumi.reso
         }
 
         /**
-         * @param controlPlaneConcurrency How many control plane nodes should be upgraded at a time, 0 is infinite. Percentages are also accepted.
+         * @param controlPlaneConcurrency How many controlplane nodes should be upgrade at time, 0 is infinite. Percentages are also accepted
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class ClusterV2RkeConfigUpgradeStrategyArgs extends com.pulumi.reso
         }
 
         /**
-         * @param controlPlaneConcurrency How many control plane nodes should be upgraded at a time, 0 is infinite. Percentages are also accepted.
+         * @param controlPlaneConcurrency How many controlplane nodes should be upgrade at time, 0 is infinite. Percentages are also accepted
          * 
          * @return builder
          * 
@@ -126,7 +126,7 @@ public final class ClusterV2RkeConfigUpgradeStrategyArgs extends com.pulumi.reso
         }
 
         /**
-         * @param controlPlaneDrainOptions Controlplane nodes drain options.
+         * @param controlPlaneDrainOptions Controlplane nodes drain options
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class ClusterV2RkeConfigUpgradeStrategyArgs extends com.pulumi.reso
         }
 
         /**
-         * @param controlPlaneDrainOptions Controlplane nodes drain options.
+         * @param controlPlaneDrainOptions Controlplane nodes drain options
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class ClusterV2RkeConfigUpgradeStrategyArgs extends com.pulumi.reso
         }
 
         /**
-         * @param workerConcurrency How many worker nodes should be upgraded at a time. Percentages are also accepted.
+         * @param workerConcurrency How many worker nodes should be upgrade at time
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class ClusterV2RkeConfigUpgradeStrategyArgs extends com.pulumi.reso
         }
 
         /**
-         * @param workerConcurrency How many worker nodes should be upgraded at a time. Percentages are also accepted.
+         * @param workerConcurrency How many worker nodes should be upgrade at time
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class ClusterV2RkeConfigUpgradeStrategyArgs extends com.pulumi.reso
         }
 
         /**
-         * @param workerDrainOptions Worker nodes drain options.
+         * @param workerDrainOptions Worker nodes drain options
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class ClusterV2RkeConfigUpgradeStrategyArgs extends com.pulumi.reso
         }
 
         /**
-         * @param workerDrainOptions Worker nodes drain options.
+         * @param workerDrainOptions Worker nodes drain options
          * 
          * @return builder
          * 

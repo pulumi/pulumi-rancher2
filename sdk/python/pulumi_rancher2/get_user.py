@@ -131,14 +131,12 @@ def get_user(is_external: Optional[bool] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
 
     foo = rancher2.get_user(username="foo")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool is_external: Set is the user if the user is external. Default: `false` (bool)
@@ -173,14 +171,12 @@ def get_user_output(is_external: Optional[pulumi.Input[Optional[bool]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
 
     foo = rancher2.get_user(username="foo")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool is_external: Set is the user if the user is external. Default: `false` (bool)

@@ -14,26 +14,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PodSecurityPolicyTemplateFsGroup {
     /**
-     * @return (list)
+     * @return ranges are the allowed ranges of fs groups.  If you would like to force a single fs group then supply a single range with the same start and end. Required for MustRunAs.
      * 
      */
     private @Nullable List<PodSecurityPolicyTemplateFsGroupRange> ranges;
     /**
-     * @return (string)
+     * @return rule is the strategy that will dictate what FSGroup is used in the SecurityContext.
      * 
      */
     private @Nullable String rule;
 
     private PodSecurityPolicyTemplateFsGroup() {}
     /**
-     * @return (list)
+     * @return ranges are the allowed ranges of fs groups.  If you would like to force a single fs group then supply a single range with the same start and end. Required for MustRunAs.
      * 
      */
     public List<PodSecurityPolicyTemplateFsGroupRange> ranges() {
         return this.ranges == null ? List.of() : this.ranges;
     }
     /**
-     * @return (string)
+     * @return rule is the strategy that will dictate what FSGroup is used in the SecurityContext.
      * 
      */
     public Optional<String> rule() {

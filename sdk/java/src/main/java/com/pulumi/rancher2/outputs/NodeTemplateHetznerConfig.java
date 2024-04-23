@@ -16,114 +16,110 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NodeTemplateHetznerConfig {
     /**
-     * @return Hetzner Cloud project API token (string)
+     * @return Hetzner Cloud project API token
      * 
      */
     private String apiToken;
     /**
-     * @return Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+     * @return Hetzner Cloud server image
      * 
      */
     private @Nullable String image;
     /**
-     * @return Comma-separated list of network IDs or names which should be attached to the server private network interface (string)
+     * @return Comma-separated list of network IDs or names which should be attached to the server private network interface
      * 
      */
     private @Nullable String networks;
     /**
-     * @return Map of the labels which will be assigned to the server. This argument is only available on [Hetzner Docker Node Driver:v3.6.0](https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/tag/3.6.0) and above (map)
+     * @return Map of the labels which will be assigned to the server
      * 
      */
     private @Nullable Map<String,Object> serverLabels;
     /**
-     * @return Hetzner Cloud datacenter. Default `nbg1` (string)
+     * @return Hetzner Cloud datacenter
      * 
      */
     private @Nullable String serverLocation;
     /**
-     * @return Hetzner Cloud server type. Default `cx11` (string)
+     * @return Hetzner Cloud server type
      * 
      */
     private @Nullable String serverType;
     /**
-     * @return Use private network. Default `false` (bool)
+     * @return Use private network
      * 
      */
     private @Nullable Boolean usePrivateNetwork;
     /**
-     * @return Path to file with cloud-init user-data (string)
-     * 
-     * &gt; **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+     * @return Path to file with cloud-init user-data
      * 
      */
     private @Nullable String userdata;
     /**
-     * @return Comma-separated list of volume IDs or names which should be attached to the server (string)
+     * @return Comma-separated list of volume IDs or names which should be attached to the server
      * 
      */
     private @Nullable String volumes;
 
     private NodeTemplateHetznerConfig() {}
     /**
-     * @return Hetzner Cloud project API token (string)
+     * @return Hetzner Cloud project API token
      * 
      */
     public String apiToken() {
         return this.apiToken;
     }
     /**
-     * @return Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+     * @return Hetzner Cloud server image
      * 
      */
     public Optional<String> image() {
         return Optional.ofNullable(this.image);
     }
     /**
-     * @return Comma-separated list of network IDs or names which should be attached to the server private network interface (string)
+     * @return Comma-separated list of network IDs or names which should be attached to the server private network interface
      * 
      */
     public Optional<String> networks() {
         return Optional.ofNullable(this.networks);
     }
     /**
-     * @return Map of the labels which will be assigned to the server. This argument is only available on [Hetzner Docker Node Driver:v3.6.0](https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/tag/3.6.0) and above (map)
+     * @return Map of the labels which will be assigned to the server
      * 
      */
     public Map<String,Object> serverLabels() {
         return this.serverLabels == null ? Map.of() : this.serverLabels;
     }
     /**
-     * @return Hetzner Cloud datacenter. Default `nbg1` (string)
+     * @return Hetzner Cloud datacenter
      * 
      */
     public Optional<String> serverLocation() {
         return Optional.ofNullable(this.serverLocation);
     }
     /**
-     * @return Hetzner Cloud server type. Default `cx11` (string)
+     * @return Hetzner Cloud server type
      * 
      */
     public Optional<String> serverType() {
         return Optional.ofNullable(this.serverType);
     }
     /**
-     * @return Use private network. Default `false` (bool)
+     * @return Use private network
      * 
      */
     public Optional<Boolean> usePrivateNetwork() {
         return Optional.ofNullable(this.usePrivateNetwork);
     }
     /**
-     * @return Path to file with cloud-init user-data (string)
-     * 
-     * &gt; **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+     * @return Path to file with cloud-init user-data
      * 
      */
     public Optional<String> userdata() {
         return Optional.ofNullable(this.userdata);
     }
     /**
-     * @return Comma-separated list of volume IDs or names which should be attached to the server (string)
+     * @return Comma-separated list of volume IDs or names which should be attached to the server
      * 
      */
     public Optional<String> volumes() {

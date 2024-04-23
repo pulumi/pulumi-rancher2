@@ -14,98 +14,98 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CloudCredentialS3CredentialConfig {
     /**
-     * @return AWS access key (string)
+     * @return AWS Access Key
      * 
      */
     private String accessKey;
     /**
-     * @return AWS default bucket (string)
+     * @return AWS default bucket
      * 
      */
     private @Nullable String defaultBucket;
     /**
-     * @return AWS default endpoint (string)
+     * @return AWS default endpoint
      * 
      */
     private @Nullable String defaultEndpoint;
     /**
-     * @return AWS default endpoint CA (string)
+     * @return AWS default endpoint CA
      * 
      */
     private @Nullable String defaultEndpointCa;
     /**
-     * @return AWS default folder (string)
+     * @return AWS default folder
      * 
      */
     private @Nullable String defaultFolder;
     /**
-     * @return AWS default region (string)
+     * @return AWS default region
      * 
      */
     private @Nullable String defaultRegion;
     /**
-     * @return AWS default skip ssl verify. Default: `false` (bool)
+     * @return AWS default skip ssl verify
      * 
      */
     private @Nullable Boolean defaultSkipSslVerify;
     /**
-     * @return AWS secret key (string)
+     * @return AWS Secret Key
      * 
      */
     private String secretKey;
 
     private CloudCredentialS3CredentialConfig() {}
     /**
-     * @return AWS access key (string)
+     * @return AWS Access Key
      * 
      */
     public String accessKey() {
         return this.accessKey;
     }
     /**
-     * @return AWS default bucket (string)
+     * @return AWS default bucket
      * 
      */
     public Optional<String> defaultBucket() {
         return Optional.ofNullable(this.defaultBucket);
     }
     /**
-     * @return AWS default endpoint (string)
+     * @return AWS default endpoint
      * 
      */
     public Optional<String> defaultEndpoint() {
         return Optional.ofNullable(this.defaultEndpoint);
     }
     /**
-     * @return AWS default endpoint CA (string)
+     * @return AWS default endpoint CA
      * 
      */
     public Optional<String> defaultEndpointCa() {
         return Optional.ofNullable(this.defaultEndpointCa);
     }
     /**
-     * @return AWS default folder (string)
+     * @return AWS default folder
      * 
      */
     public Optional<String> defaultFolder() {
         return Optional.ofNullable(this.defaultFolder);
     }
     /**
-     * @return AWS default region (string)
+     * @return AWS default region
      * 
      */
     public Optional<String> defaultRegion() {
         return Optional.ofNullable(this.defaultRegion);
     }
     /**
-     * @return AWS default skip ssl verify. Default: `false` (bool)
+     * @return AWS default skip ssl verify
      * 
      */
     public Optional<Boolean> defaultSkipSslVerify() {
         return Optional.ofNullable(this.defaultSkipSslVerify);
     }
     /**
-     * @return AWS secret key (string)
+     * @return AWS Secret Key
      * 
      */
     public String secretKey() {

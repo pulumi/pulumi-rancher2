@@ -14,26 +14,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterV2RkeConfigMachineSelectorFile {
     /**
-     * @return File sources represents the source of the files. Multiple files can be delivered to nodes that match the provided label selector.
+     * @return File sources
      * 
      */
     private @Nullable List<ClusterV2RkeConfigMachineSelectorFileFileSource> fileSources;
     /**
-     * @return Machine selector label is a label query over a set of resources. The result of match_labels and match_expressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
+     * @return Machine label selector
      * 
      */
     private @Nullable ClusterV2RkeConfigMachineSelectorFileMachineLabelSelector machineLabelSelector;
 
     private ClusterV2RkeConfigMachineSelectorFile() {}
     /**
-     * @return File sources represents the source of the files. Multiple files can be delivered to nodes that match the provided label selector.
+     * @return File sources
      * 
      */
     public List<ClusterV2RkeConfigMachineSelectorFileFileSource> fileSources() {
         return this.fileSources == null ? List.of() : this.fileSources;
     }
     /**
-     * @return Machine selector label is a label query over a set of resources. The result of match_labels and match_expressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
+     * @return Machine label selector
      * 
      */
     public Optional<ClusterV2RkeConfigMachineSelectorFileMachineLabelSelector> machineLabelSelector() {

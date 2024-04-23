@@ -16,7 +16,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _password;
 
         /// <summary>
-        /// vSphere password (string)
+        /// OpenStack password
         /// </summary>
         public Input<string>? Password
         {

@@ -13,19 +13,19 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterGkeConfigV2PrivateClusterConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable GKE cluster private endpoint. Default: `false` (bool)
+        /// Enable GKE cluster private endpoint
         /// </summary>
         [Input("enablePrivateEndpoint")]
         public Input<bool>? EnablePrivateEndpoint { get; set; }
 
         /// <summary>
-        /// Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+        /// Enable GKE cluster private nodes
         /// </summary>
         [Input("enablePrivateNodes")]
         public Input<bool>? EnablePrivateNodes { get; set; }
 
         /// <summary>
-        /// The GKE cluster private master ip v4 cidr block (string)
+        /// The GKE cluster private master ip v4 cidr block
         /// </summary>
         [Input("masterIpv4CidrBlock", required: true)]
         public Input<string> MasterIpv4CidrBlock { get; set; } = null!;

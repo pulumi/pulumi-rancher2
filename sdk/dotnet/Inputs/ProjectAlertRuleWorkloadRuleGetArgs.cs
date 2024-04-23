@@ -13,7 +13,7 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ProjectAlertRuleWorkloadRuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Workload rule available percentage. Default: `70` (int)
+        /// Workload rule available percentage
         /// </summary>
         [Input("availablePercentage")]
         public Input<int>? AvailablePercentage { get; set; }
@@ -22,7 +22,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _selector;
 
         /// <summary>
-        /// Workload rule selector (map)
+        /// Workload rule selector
         /// </summary>
         public InputMap<object> Selector
         {
@@ -31,7 +31,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Workload ID (string)
+        /// Workload ID
         /// </summary>
         [Input("workloadId")]
         public Input<string>? WorkloadId { get; set; }

@@ -13,83 +13,24 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class NodeTemplateOpennebulaConfig
     {
-        /// <summary>
-        /// Size of the Volatile disk in MB - only for b2d (string)
-        /// </summary>
         public readonly string? B2dSize;
-        /// <summary>
-        /// CPU value for the VM (string)
-        /// </summary>
         public readonly string? Cpu;
-        /// <summary>
-        /// Dev prefix to use for the images. E.g.: 'vd', 'sd', 'hd' (string)
-        /// </summary>
         public readonly string? DevPrefix;
-        /// <summary>
-        /// VNC is enabled by default. Disable it with this flag (bool)
-        /// </summary>
         public readonly bool? DisableVnc;
-        /// <summary>
-        /// Size of the disk for the VM in MB (string)
-        /// </summary>
         public readonly string? DiskResize;
-        /// <summary>
-        /// OpenStack image id to use for the instance. Conflicts with `image_name` (string)
-        /// </summary>
         public readonly string? ImageId;
-        /// <summary>
-        /// OpenStack image name to use for the instance. Conflicts with `image_id` (string)
-        /// </summary>
         public readonly string? ImageName;
-        /// <summary>
-        /// Owner of the image to use as the VM OS (string)
-        /// </summary>
         public readonly string? ImageOwner;
-        /// <summary>
-        /// Size of the memory for the VM in MB (string)
-        /// </summary>
         public readonly string? Memory;
-        /// <summary>
-        /// Opennebula network ID to connect the machine to. Conflicts with `network_name` (string)
-        /// </summary>
         public readonly string? NetworkId;
-        /// <summary>
-        /// Opennebula network to connect the machine to. Conflicts with `network_id` (string)
-        /// </summary>
         public readonly string? NetworkName;
-        /// <summary>
-        /// Opennebula user ID of the Network to connect the machine to (string)
-        /// </summary>
         public readonly string? NetworkOwner;
-        /// <summary>
-        /// vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
-        /// </summary>
         public readonly string Password;
-        /// <summary>
-        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
-        /// </summary>
         public readonly string? SshUser;
-        /// <summary>
-        /// Opennebula template ID to use. Conflicts with `template_name` (string)
-        /// </summary>
         public readonly string? TemplateId;
-        /// <summary>
-        /// Name of the Opennbula template to use. Conflicts with `template_id` (string)
-        /// </summary>
         public readonly string? TemplateName;
-        /// <summary>
-        /// Set the user for the XML-RPC API authentication (string)
-        /// </summary>
         public readonly string User;
-        /// <summary>
-        /// VCPUs for the VM (string)
-        /// 
-        /// &gt; **Note:**: `Required*` denotes that one of image_name / image_id or template_name / template_id is required but you cannot combine them.
-        /// </summary>
         public readonly string? Vcpu;
-        /// <summary>
-        /// Set the url for the Opennebula XML-RPC API (string)
-        /// </summary>
         public readonly string XmlRpcUrl;
 
         [OutputConstructor]

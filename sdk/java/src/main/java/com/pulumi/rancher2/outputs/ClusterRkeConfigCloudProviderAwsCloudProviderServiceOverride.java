@@ -12,77 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride {
-    /**
-     * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
-     * 
-     */
     private @Nullable String region;
-    /**
-     * @return (string)
-     * 
-     */
     private String service;
-    /**
-     * @return (string)
-     * 
-     */
     private @Nullable String signingMethod;
-    /**
-     * @return (string)
-     * 
-     */
     private @Nullable String signingName;
-    /**
-     * @return (string)
-     * 
-     */
     private @Nullable String signingRegion;
-    /**
-     * @return Registry URL (string)
-     * 
-     */
     private @Nullable String url;
 
     private ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride() {}
-    /**
-     * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
-     * 
-     */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
-    /**
-     * @return (string)
-     * 
-     */
     public String service() {
         return this.service;
     }
-    /**
-     * @return (string)
-     * 
-     */
     public Optional<String> signingMethod() {
         return Optional.ofNullable(this.signingMethod);
     }
-    /**
-     * @return (string)
-     * 
-     */
     public Optional<String> signingName() {
         return Optional.ofNullable(this.signingName);
     }
-    /**
-     * @return (string)
-     * 
-     */
     public Optional<String> signingRegion() {
         return Optional.ofNullable(this.signingRegion);
     }
-    /**
-     * @return Registry URL (string)
-     * 
-     */
     public Optional<String> url() {
         return Optional.ofNullable(this.url);
     }

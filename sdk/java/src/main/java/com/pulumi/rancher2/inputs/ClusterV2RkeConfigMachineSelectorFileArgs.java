@@ -18,14 +18,14 @@ public final class ClusterV2RkeConfigMachineSelectorFileArgs extends com.pulumi.
     public static final ClusterV2RkeConfigMachineSelectorFileArgs Empty = new ClusterV2RkeConfigMachineSelectorFileArgs();
 
     /**
-     * File sources represents the source of the files. Multiple files can be delivered to nodes that match the provided label selector.
+     * File sources
      * 
      */
     @Import(name="fileSources")
     private @Nullable Output<List<ClusterV2RkeConfigMachineSelectorFileFileSourceArgs>> fileSources;
 
     /**
-     * @return File sources represents the source of the files. Multiple files can be delivered to nodes that match the provided label selector.
+     * @return File sources
      * 
      */
     public Optional<Output<List<ClusterV2RkeConfigMachineSelectorFileFileSourceArgs>>> fileSources() {
@@ -33,14 +33,14 @@ public final class ClusterV2RkeConfigMachineSelectorFileArgs extends com.pulumi.
     }
 
     /**
-     * Machine selector label is a label query over a set of resources. The result of match_labels and match_expressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
+     * Machine label selector
      * 
      */
     @Import(name="machineLabelSelector")
     private @Nullable Output<ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorArgs> machineLabelSelector;
 
     /**
-     * @return Machine selector label is a label query over a set of resources. The result of match_labels and match_expressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
+     * @return Machine label selector
      * 
      */
     public Optional<Output<ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorArgs>> machineLabelSelector() {
@@ -73,7 +73,7 @@ public final class ClusterV2RkeConfigMachineSelectorFileArgs extends com.pulumi.
         }
 
         /**
-         * @param fileSources File sources represents the source of the files. Multiple files can be delivered to nodes that match the provided label selector.
+         * @param fileSources File sources
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class ClusterV2RkeConfigMachineSelectorFileArgs extends com.pulumi.
         }
 
         /**
-         * @param fileSources File sources represents the source of the files. Multiple files can be delivered to nodes that match the provided label selector.
+         * @param fileSources File sources
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class ClusterV2RkeConfigMachineSelectorFileArgs extends com.pulumi.
         }
 
         /**
-         * @param fileSources File sources represents the source of the files. Multiple files can be delivered to nodes that match the provided label selector.
+         * @param fileSources File sources
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ClusterV2RkeConfigMachineSelectorFileArgs extends com.pulumi.
         }
 
         /**
-         * @param machineLabelSelector Machine selector label is a label query over a set of resources. The result of match_labels and match_expressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
+         * @param machineLabelSelector Machine label selector
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class ClusterV2RkeConfigMachineSelectorFileArgs extends com.pulumi.
         }
 
         /**
-         * @param machineLabelSelector Machine selector label is a label query over a set of resources. The result of match_labels and match_expressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
+         * @param machineLabelSelector Machine label selector
          * 
          * @return builder
          * 

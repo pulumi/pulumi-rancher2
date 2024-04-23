@@ -468,7 +468,6 @@ class Notifier(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -484,7 +483,6 @@ class Notifier(pulumi.CustomResource):
                 proxy_url="http://proxy.test.io",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -521,7 +519,6 @@ class Notifier(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -537,7 +534,6 @@ class Notifier(pulumi.CustomResource):
                 proxy_url="http://proxy.test.io",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

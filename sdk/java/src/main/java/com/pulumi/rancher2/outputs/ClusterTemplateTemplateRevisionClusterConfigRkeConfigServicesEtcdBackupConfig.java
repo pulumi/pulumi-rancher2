@@ -13,10 +13,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfig {
-    /**
-     * @return Enable cluster template revision. Default `true` (bool)
-     * 
-     */
     private @Nullable Boolean enabled;
     private @Nullable Integer intervalHours;
     private @Nullable Integer retention;
@@ -25,10 +21,6 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
     private @Nullable Integer timeout;
 
     private ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfig() {}
-    /**
-     * @return Enable cluster template revision. Default `true` (bool)
-     * 
-     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }

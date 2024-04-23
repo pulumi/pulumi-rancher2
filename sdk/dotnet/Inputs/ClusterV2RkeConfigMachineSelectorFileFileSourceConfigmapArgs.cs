@@ -13,7 +13,7 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The numeric representation of the default file permissions for all files defined under the items.
+        /// The default permissions to be applied when they are not set at the item level
         /// </summary>
         [Input("defaultPermissions")]
         public Input<string>? DefaultPermissions { get; set; }
@@ -22,7 +22,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<Inputs.ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapItemArgs>? _items;
 
         /// <summary>
-        /// Items is a list of configurations for files, such as where to retrieve the content from the source, where to put the file on nodes, etc.
+        /// Items(files) to retrieve from the K8s object
         /// </summary>
         public InputList<Inputs.ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapItemArgs> Items
         {

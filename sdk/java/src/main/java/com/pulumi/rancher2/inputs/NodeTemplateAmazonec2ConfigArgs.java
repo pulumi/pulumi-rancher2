@@ -19,14 +19,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     public static final NodeTemplateAmazonec2ConfigArgs Empty = new NodeTemplateAmazonec2ConfigArgs();
 
     /**
-     * Outscale Access Key (string)
+     * AWS Access Key
      * 
      */
     @Import(name="accessKey")
     private @Nullable Output<String> accessKey;
 
     /**
-     * @return Outscale Access Key (string)
+     * @return AWS Access Key
      * 
      */
     public Optional<Output<String>> accessKey() {
@@ -34,14 +34,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * AWS machine image (string)
+     * AWS machine image
      * 
      */
     @Import(name="ami", required=true)
     private Output<String> ami;
 
     /**
-     * @return AWS machine image (string)
+     * @return AWS machine image
      * 
      */
     public Output<String> ami() {
@@ -49,14 +49,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * AWS spot instance duration in minutes (60, 120, 180, 240, 300, or 360). Default `0` (string)
+     * AWS spot instance duration in minutes (60, 120, 180, 240, 300, or 360)
      * 
      */
     @Import(name="blockDurationMinutes")
     private @Nullable Output<String> blockDurationMinutes;
 
     /**
-     * @return AWS spot instance duration in minutes (60, 120, 180, 240, 300, or 360). Default `0` (string)
+     * @return AWS spot instance duration in minutes (60, 120, 180, 240, 300, or 360)
      * 
      */
     public Optional<Output<String>> blockDurationMinutes() {
@@ -64,14 +64,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * AWS root device name. Default `/dev/sda1` (string)
+     * AWS root device name
      * 
      */
     @Import(name="deviceName")
     private @Nullable Output<String> deviceName;
 
     /**
-     * @return AWS root device name. Default `/dev/sda1` (string)
+     * @return AWS root device name
      * 
      */
     public Optional<Output<String>> deviceName() {
@@ -79,14 +79,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Encrypt EBS volume. Default `false` (bool)
+     * Encrypt EBS volume
      * 
      */
     @Import(name="encryptEbsVolume")
     private @Nullable Output<Boolean> encryptEbsVolume;
 
     /**
-     * @return Encrypt EBS volume. Default `false` (bool)
+     * @return Encrypt EBS volume
      * 
      */
     public Optional<Output<Boolean>> encryptEbsVolume() {
@@ -94,14 +94,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Optional endpoint URL (hostname only or fully qualified URI) (string)
+     * Optional endpoint URL (hostname only or fully qualified URI)
      * 
      */
     @Import(name="endpoint")
     private @Nullable Output<String> endpoint;
 
     /**
-     * @return Optional endpoint URL (hostname only or fully qualified URI) (string)
+     * @return Optional endpoint URL (hostname only or fully qualified URI)
      * 
      */
     public Optional<Output<String>> endpoint() {
@@ -109,14 +109,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Enables or disables the HTTP metadata endpoint on your instances (string)
+     * Enables or disables the HTTP metadata endpoint on your instances
      * 
      */
     @Import(name="httpEndpoint")
     private @Nullable Output<String> httpEndpoint;
 
     /**
-     * @return Enables or disables the HTTP metadata endpoint on your instances (string)
+     * @return Enables or disables the HTTP metadata endpoint on your instances
      * 
      */
     public Optional<Output<String>> httpEndpoint() {
@@ -124,14 +124,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * The state of token usage for your instance metadata requests (string)
+     * The state of token usage for your instance metadata requests
      * 
      */
     @Import(name="httpTokens")
     private @Nullable Output<String> httpTokens;
 
     /**
-     * @return The state of token usage for your instance metadata requests (string)
+     * @return The state of token usage for your instance metadata requests
      * 
      */
     public Optional<Output<String>> httpTokens() {
@@ -139,14 +139,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * AWS IAM Instance Profile (string)
+     * AWS IAM Instance Profile
      * 
      */
     @Import(name="iamInstanceProfile")
     private @Nullable Output<String> iamInstanceProfile;
 
     /**
-     * @return AWS IAM Instance Profile (string)
+     * @return AWS IAM Instance Profile
      * 
      */
     public Optional<Output<String>> iamInstanceProfile() {
@@ -154,14 +154,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Disable SSL when sending requests (bool)
+     * Disable SSL when sending requests
      * 
      */
     @Import(name="insecureTransport")
     private @Nullable Output<Boolean> insecureTransport;
 
     /**
-     * @return Disable SSL when sending requests (bool)
+     * @return Disable SSL when sending requests
      * 
      */
     public Optional<Output<Boolean>> insecureTransport() {
@@ -169,14 +169,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Outscale VM type. Default `tinav2.c1r2p3` (string)
+     * AWS instance type
      * 
      */
     @Import(name="instanceType")
     private @Nullable Output<String> instanceType;
 
     /**
-     * @return Outscale VM type. Default `tinav2.c1r2p3` (string)
+     * @return AWS instance type
      * 
      */
     public Optional<Output<String>> instanceType() {
@@ -184,14 +184,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Custom KMS key ID using the AWS Managed CMK (string)
+     * Custom KMS key ID using the AWS Managed CMK
      * 
      */
     @Import(name="kmsKey")
     private @Nullable Output<String> kmsKey;
 
     /**
-     * @return Custom KMS key ID using the AWS Managed CMK (string)
+     * @return Custom KMS key ID using the AWS Managed CMK
      * 
      */
     public Optional<Output<String>> kmsKey() {
@@ -199,14 +199,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Enable monitoring for droplet. Default `false` (bool)
+     * Set this flag to enable CloudWatch monitoring
      * 
      */
     @Import(name="monitoring")
     private @Nullable Output<Boolean> monitoring;
 
     /**
-     * @return Enable monitoring for droplet. Default `false` (bool)
+     * @return Set this flag to enable CloudWatch monitoring
      * 
      */
     public Optional<Output<Boolean>> monitoring() {
@@ -214,14 +214,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Make the specified port number accessible from the Internet. (list)
+     * Make the specified port number accessible from the Internet
      * 
      */
     @Import(name="openPorts")
     private @Nullable Output<List<String>> openPorts;
 
     /**
-     * @return Make the specified port number accessible from the Internet. (list)
+     * @return Make the specified port number accessible from the Internet
      * 
      */
     public Optional<Output<List<String>>> openPorts() {
@@ -229,14 +229,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Only use a private IP address. Default `false` (bool)
+     * Only use a private IP address
      * 
      */
     @Import(name="privateAddressOnly")
     private @Nullable Output<Boolean> privateAddressOnly;
 
     /**
-     * @return Only use a private IP address. Default `false` (bool)
+     * @return Only use a private IP address
      * 
      */
     public Optional<Output<Boolean>> privateAddressOnly() {
@@ -244,14 +244,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * AWS region. Default `eu-west-2` (string)
+     * AWS Region
      * 
      */
     @Import(name="region", required=true)
     private Output<String> region;
 
     /**
-     * @return AWS region. Default `eu-west-2` (string)
+     * @return AWS Region
      * 
      */
     public Output<String> region() {
@@ -259,14 +259,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Set this flag to request spot instance. Default `false` (bool)
+     * Set this flag to request spot instance
      * 
      */
     @Import(name="requestSpotInstance")
     private @Nullable Output<Boolean> requestSpotInstance;
 
     /**
-     * @return Set this flag to request spot instance. Default `false` (bool)
+     * @return Set this flag to request spot instance
      * 
      */
     public Optional<Output<Boolean>> requestSpotInstance() {
@@ -274,14 +274,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Set retry count for recoverable failures (use -1 to disable). Default `5` (string)
+     * Set retry count for recoverable failures (use -1 to disable)
      * 
      */
     @Import(name="retries")
     private @Nullable Output<String> retries;
 
     /**
-     * @return Set retry count for recoverable failures (use -1 to disable). Default `5` (string)
+     * @return Set retry count for recoverable failures (use -1 to disable)
      * 
      */
     public Optional<Output<String>> retries() {
@@ -289,14 +289,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * AWS root disk size (in GB). Default `16` (string)
+     * AWS root disk size (in GB)
      * 
      */
     @Import(name="rootSize")
     private @Nullable Output<String> rootSize;
 
     /**
-     * @return AWS root disk size (in GB). Default `16` (string)
+     * @return AWS root disk size (in GB)
      * 
      */
     public Optional<Output<String>> rootSize() {
@@ -304,14 +304,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Outscale Secret Key (string)
+     * AWS Secret Key
      * 
      */
     @Import(name="secretKey")
     private @Nullable Output<String> secretKey;
 
     /**
-     * @return Outscale Secret Key (string)
+     * @return AWS Secret Key
      * 
      */
     public Optional<Output<String>> secretKey() {
@@ -319,14 +319,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Skip adding default rules to security groups (bool)
+     * Skip adding default rules to security groups
      * 
      */
     @Import(name="securityGroupReadonly")
     private @Nullable Output<Boolean> securityGroupReadonly;
 
     /**
-     * @return Skip adding default rules to security groups (bool)
+     * @return Skip adding default rules to security groups
      * 
      */
     public Optional<Output<Boolean>> securityGroupReadonly() {
@@ -334,14 +334,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * AWS VPC security group. (list)
+     * AWS VPC security group
      * 
      */
     @Import(name="securityGroups", required=true)
     private Output<List<String>> securityGroups;
 
     /**
-     * @return AWS VPC security group. (list)
+     * @return AWS VPC security group
      * 
      */
     public Output<List<String>> securityGroups() {
@@ -349,14 +349,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * AWS Session Token (string)
+     * AWS Session Token
      * 
      */
     @Import(name="sessionToken")
     private @Nullable Output<String> sessionToken;
 
     /**
-     * @return AWS Session Token (string)
+     * @return AWS Session Token
      * 
      */
     public Optional<Output<String>> sessionToken() {
@@ -364,14 +364,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * AWS spot instance bid price (in dollar). Default `0.50` (string)
+     * AWS spot instance bid price (in dollar)
      * 
      */
     @Import(name="spotPrice")
     private @Nullable Output<String> spotPrice;
 
     /**
-     * @return AWS spot instance bid price (in dollar). Default `0.50` (string)
+     * @return AWS spot instance bid price (in dollar)
      * 
      */
     public Optional<Output<String>> spotPrice() {
@@ -394,14 +394,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+     * Set the name of the ssh user
      * 
      */
     @Import(name="sshUser")
     private @Nullable Output<String> sshUser;
 
     /**
-     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+     * @return Set the name of the ssh user
      * 
      */
     public Optional<Output<String>> sshUser() {
@@ -409,14 +409,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * AWS VPC subnet id (string)
+     * AWS VPC subnet id
      * 
      */
     @Import(name="subnetId", required=true)
     private Output<String> subnetId;
 
     /**
-     * @return AWS VPC subnet id (string)
+     * @return AWS VPC subnet id
      * 
      */
     public Output<String> subnetId() {
@@ -424,14 +424,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+     * AWS Tags (e.g. key1,value1,key2,value2)
      * 
      */
     @Import(name="tags")
     private @Nullable Output<String> tags;
 
     /**
-     * @return vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+     * @return AWS Tags (e.g. key1,value1,key2,value2)
      * 
      */
     public Optional<Output<String>> tags() {
@@ -439,14 +439,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Create an EBS optimized instance. Default `false` (bool)
+     * Create an EBS optimized instance
      * 
      */
     @Import(name="useEbsOptimizedInstance")
     private @Nullable Output<Boolean> useEbsOptimizedInstance;
 
     /**
-     * @return Create an EBS optimized instance. Default `false` (bool)
+     * @return Create an EBS optimized instance
      * 
      */
     public Optional<Output<Boolean>> useEbsOptimizedInstance() {
@@ -454,14 +454,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Force the usage of private IP address. Default `false` (bool)
+     * Force the usage of private IP address
      * 
      */
     @Import(name="usePrivateAddress")
     private @Nullable Output<Boolean> usePrivateAddress;
 
     /**
-     * @return Force the usage of private IP address. Default `false` (bool)
+     * @return Force the usage of private IP address
      * 
      */
     public Optional<Output<Boolean>> usePrivateAddress() {
@@ -469,18 +469,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Path to file with cloud-init user-data (string)
-     * 
-     * &gt; **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+     * Path to file with cloud-init user data
      * 
      */
     @Import(name="userdata")
     private @Nullable Output<String> userdata;
 
     /**
-     * @return Path to file with cloud-init user-data (string)
-     * 
-     * &gt; **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+     * @return Path to file with cloud-init user data
      * 
      */
     public Optional<Output<String>> userdata() {
@@ -488,14 +484,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+     * Amazon EBS volume type
      * 
      */
     @Import(name="volumeType")
     private @Nullable Output<String> volumeType;
 
     /**
-     * @return OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+     * @return Amazon EBS volume type
      * 
      */
     public Optional<Output<String>> volumeType() {
@@ -503,14 +499,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * AWS VPC id. (string)
+     * AWS VPC id
      * 
      */
     @Import(name="vpcId", required=true)
     private Output<String> vpcId;
 
     /**
-     * @return AWS VPC id. (string)
+     * @return AWS VPC id
      * 
      */
     public Output<String> vpcId() {
@@ -518,14 +514,14 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * AWS zone for instance (i.e. a,b,c,d,e) (string)
+     * AWS zone for instance (i.e. a,b,c,d,e)
      * 
      */
     @Import(name="zone", required=true)
     private Output<String> zone;
 
     /**
-     * @return AWS zone for instance (i.e. a,b,c,d,e) (string)
+     * @return AWS zone for instance (i.e. a,b,c,d,e)
      * 
      */
     public Output<String> zone() {
@@ -590,7 +586,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param accessKey Outscale Access Key (string)
+         * @param accessKey AWS Access Key
          * 
          * @return builder
          * 
@@ -601,7 +597,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param accessKey Outscale Access Key (string)
+         * @param accessKey AWS Access Key
          * 
          * @return builder
          * 
@@ -611,7 +607,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param ami AWS machine image (string)
+         * @param ami AWS machine image
          * 
          * @return builder
          * 
@@ -622,7 +618,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param ami AWS machine image (string)
+         * @param ami AWS machine image
          * 
          * @return builder
          * 
@@ -632,7 +628,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param blockDurationMinutes AWS spot instance duration in minutes (60, 120, 180, 240, 300, or 360). Default `0` (string)
+         * @param blockDurationMinutes AWS spot instance duration in minutes (60, 120, 180, 240, 300, or 360)
          * 
          * @return builder
          * 
@@ -643,7 +639,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param blockDurationMinutes AWS spot instance duration in minutes (60, 120, 180, 240, 300, or 360). Default `0` (string)
+         * @param blockDurationMinutes AWS spot instance duration in minutes (60, 120, 180, 240, 300, or 360)
          * 
          * @return builder
          * 
@@ -653,7 +649,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param deviceName AWS root device name. Default `/dev/sda1` (string)
+         * @param deviceName AWS root device name
          * 
          * @return builder
          * 
@@ -664,7 +660,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param deviceName AWS root device name. Default `/dev/sda1` (string)
+         * @param deviceName AWS root device name
          * 
          * @return builder
          * 
@@ -674,7 +670,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param encryptEbsVolume Encrypt EBS volume. Default `false` (bool)
+         * @param encryptEbsVolume Encrypt EBS volume
          * 
          * @return builder
          * 
@@ -685,7 +681,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param encryptEbsVolume Encrypt EBS volume. Default `false` (bool)
+         * @param encryptEbsVolume Encrypt EBS volume
          * 
          * @return builder
          * 
@@ -695,7 +691,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param endpoint Optional endpoint URL (hostname only or fully qualified URI) (string)
+         * @param endpoint Optional endpoint URL (hostname only or fully qualified URI)
          * 
          * @return builder
          * 
@@ -706,7 +702,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param endpoint Optional endpoint URL (hostname only or fully qualified URI) (string)
+         * @param endpoint Optional endpoint URL (hostname only or fully qualified URI)
          * 
          * @return builder
          * 
@@ -716,7 +712,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param httpEndpoint Enables or disables the HTTP metadata endpoint on your instances (string)
+         * @param httpEndpoint Enables or disables the HTTP metadata endpoint on your instances
          * 
          * @return builder
          * 
@@ -727,7 +723,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param httpEndpoint Enables or disables the HTTP metadata endpoint on your instances (string)
+         * @param httpEndpoint Enables or disables the HTTP metadata endpoint on your instances
          * 
          * @return builder
          * 
@@ -737,7 +733,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param httpTokens The state of token usage for your instance metadata requests (string)
+         * @param httpTokens The state of token usage for your instance metadata requests
          * 
          * @return builder
          * 
@@ -748,7 +744,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param httpTokens The state of token usage for your instance metadata requests (string)
+         * @param httpTokens The state of token usage for your instance metadata requests
          * 
          * @return builder
          * 
@@ -758,7 +754,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param iamInstanceProfile AWS IAM Instance Profile (string)
+         * @param iamInstanceProfile AWS IAM Instance Profile
          * 
          * @return builder
          * 
@@ -769,7 +765,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param iamInstanceProfile AWS IAM Instance Profile (string)
+         * @param iamInstanceProfile AWS IAM Instance Profile
          * 
          * @return builder
          * 
@@ -779,7 +775,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param insecureTransport Disable SSL when sending requests (bool)
+         * @param insecureTransport Disable SSL when sending requests
          * 
          * @return builder
          * 
@@ -790,7 +786,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param insecureTransport Disable SSL when sending requests (bool)
+         * @param insecureTransport Disable SSL when sending requests
          * 
          * @return builder
          * 
@@ -800,7 +796,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param instanceType Outscale VM type. Default `tinav2.c1r2p3` (string)
+         * @param instanceType AWS instance type
          * 
          * @return builder
          * 
@@ -811,7 +807,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param instanceType Outscale VM type. Default `tinav2.c1r2p3` (string)
+         * @param instanceType AWS instance type
          * 
          * @return builder
          * 
@@ -821,7 +817,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param kmsKey Custom KMS key ID using the AWS Managed CMK (string)
+         * @param kmsKey Custom KMS key ID using the AWS Managed CMK
          * 
          * @return builder
          * 
@@ -832,7 +828,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param kmsKey Custom KMS key ID using the AWS Managed CMK (string)
+         * @param kmsKey Custom KMS key ID using the AWS Managed CMK
          * 
          * @return builder
          * 
@@ -842,7 +838,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param monitoring Enable monitoring for droplet. Default `false` (bool)
+         * @param monitoring Set this flag to enable CloudWatch monitoring
          * 
          * @return builder
          * 
@@ -853,7 +849,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param monitoring Enable monitoring for droplet. Default `false` (bool)
+         * @param monitoring Set this flag to enable CloudWatch monitoring
          * 
          * @return builder
          * 
@@ -863,7 +859,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param openPorts Make the specified port number accessible from the Internet. (list)
+         * @param openPorts Make the specified port number accessible from the Internet
          * 
          * @return builder
          * 
@@ -874,7 +870,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param openPorts Make the specified port number accessible from the Internet. (list)
+         * @param openPorts Make the specified port number accessible from the Internet
          * 
          * @return builder
          * 
@@ -884,7 +880,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param openPorts Make the specified port number accessible from the Internet. (list)
+         * @param openPorts Make the specified port number accessible from the Internet
          * 
          * @return builder
          * 
@@ -894,7 +890,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param privateAddressOnly Only use a private IP address. Default `false` (bool)
+         * @param privateAddressOnly Only use a private IP address
          * 
          * @return builder
          * 
@@ -905,7 +901,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param privateAddressOnly Only use a private IP address. Default `false` (bool)
+         * @param privateAddressOnly Only use a private IP address
          * 
          * @return builder
          * 
@@ -915,7 +911,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param region AWS region. Default `eu-west-2` (string)
+         * @param region AWS Region
          * 
          * @return builder
          * 
@@ -926,7 +922,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param region AWS region. Default `eu-west-2` (string)
+         * @param region AWS Region
          * 
          * @return builder
          * 
@@ -936,7 +932,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param requestSpotInstance Set this flag to request spot instance. Default `false` (bool)
+         * @param requestSpotInstance Set this flag to request spot instance
          * 
          * @return builder
          * 
@@ -947,7 +943,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param requestSpotInstance Set this flag to request spot instance. Default `false` (bool)
+         * @param requestSpotInstance Set this flag to request spot instance
          * 
          * @return builder
          * 
@@ -957,7 +953,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param retries Set retry count for recoverable failures (use -1 to disable). Default `5` (string)
+         * @param retries Set retry count for recoverable failures (use -1 to disable)
          * 
          * @return builder
          * 
@@ -968,7 +964,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param retries Set retry count for recoverable failures (use -1 to disable). Default `5` (string)
+         * @param retries Set retry count for recoverable failures (use -1 to disable)
          * 
          * @return builder
          * 
@@ -978,7 +974,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param rootSize AWS root disk size (in GB). Default `16` (string)
+         * @param rootSize AWS root disk size (in GB)
          * 
          * @return builder
          * 
@@ -989,7 +985,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param rootSize AWS root disk size (in GB). Default `16` (string)
+         * @param rootSize AWS root disk size (in GB)
          * 
          * @return builder
          * 
@@ -999,7 +995,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param secretKey Outscale Secret Key (string)
+         * @param secretKey AWS Secret Key
          * 
          * @return builder
          * 
@@ -1010,7 +1006,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param secretKey Outscale Secret Key (string)
+         * @param secretKey AWS Secret Key
          * 
          * @return builder
          * 
@@ -1020,7 +1016,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param securityGroupReadonly Skip adding default rules to security groups (bool)
+         * @param securityGroupReadonly Skip adding default rules to security groups
          * 
          * @return builder
          * 
@@ -1031,7 +1027,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param securityGroupReadonly Skip adding default rules to security groups (bool)
+         * @param securityGroupReadonly Skip adding default rules to security groups
          * 
          * @return builder
          * 
@@ -1041,7 +1037,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param securityGroups AWS VPC security group. (list)
+         * @param securityGroups AWS VPC security group
          * 
          * @return builder
          * 
@@ -1052,7 +1048,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param securityGroups AWS VPC security group. (list)
+         * @param securityGroups AWS VPC security group
          * 
          * @return builder
          * 
@@ -1062,7 +1058,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param securityGroups AWS VPC security group. (list)
+         * @param securityGroups AWS VPC security group
          * 
          * @return builder
          * 
@@ -1072,7 +1068,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param sessionToken AWS Session Token (string)
+         * @param sessionToken AWS Session Token
          * 
          * @return builder
          * 
@@ -1083,7 +1079,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param sessionToken AWS Session Token (string)
+         * @param sessionToken AWS Session Token
          * 
          * @return builder
          * 
@@ -1093,7 +1089,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param spotPrice AWS spot instance bid price (in dollar). Default `0.50` (string)
+         * @param spotPrice AWS spot instance bid price (in dollar)
          * 
          * @return builder
          * 
@@ -1104,7 +1100,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param spotPrice AWS spot instance bid price (in dollar). Default `0.50` (string)
+         * @param spotPrice AWS spot instance bid price (in dollar)
          * 
          * @return builder
          * 
@@ -1135,7 +1131,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+         * @param sshUser Set the name of the ssh user
          * 
          * @return builder
          * 
@@ -1146,7 +1142,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+         * @param sshUser Set the name of the ssh user
          * 
          * @return builder
          * 
@@ -1156,7 +1152,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param subnetId AWS VPC subnet id (string)
+         * @param subnetId AWS VPC subnet id
          * 
          * @return builder
          * 
@@ -1167,7 +1163,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param subnetId AWS VPC subnet id (string)
+         * @param subnetId AWS VPC subnet id
          * 
          * @return builder
          * 
@@ -1177,7 +1173,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param tags vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+         * @param tags AWS Tags (e.g. key1,value1,key2,value2)
          * 
          * @return builder
          * 
@@ -1188,7 +1184,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param tags vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+         * @param tags AWS Tags (e.g. key1,value1,key2,value2)
          * 
          * @return builder
          * 
@@ -1198,7 +1194,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param useEbsOptimizedInstance Create an EBS optimized instance. Default `false` (bool)
+         * @param useEbsOptimizedInstance Create an EBS optimized instance
          * 
          * @return builder
          * 
@@ -1209,7 +1205,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param useEbsOptimizedInstance Create an EBS optimized instance. Default `false` (bool)
+         * @param useEbsOptimizedInstance Create an EBS optimized instance
          * 
          * @return builder
          * 
@@ -1219,7 +1215,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param usePrivateAddress Force the usage of private IP address. Default `false` (bool)
+         * @param usePrivateAddress Force the usage of private IP address
          * 
          * @return builder
          * 
@@ -1230,7 +1226,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param usePrivateAddress Force the usage of private IP address. Default `false` (bool)
+         * @param usePrivateAddress Force the usage of private IP address
          * 
          * @return builder
          * 
@@ -1240,9 +1236,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param userdata Path to file with cloud-init user-data (string)
-         * 
-         * &gt; **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+         * @param userdata Path to file with cloud-init user data
          * 
          * @return builder
          * 
@@ -1253,9 +1247,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param userdata Path to file with cloud-init user-data (string)
-         * 
-         * &gt; **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+         * @param userdata Path to file with cloud-init user data
          * 
          * @return builder
          * 
@@ -1265,7 +1257,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param volumeType OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+         * @param volumeType Amazon EBS volume type
          * 
          * @return builder
          * 
@@ -1276,7 +1268,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param volumeType OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+         * @param volumeType Amazon EBS volume type
          * 
          * @return builder
          * 
@@ -1286,7 +1278,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param vpcId AWS VPC id. (string)
+         * @param vpcId AWS VPC id
          * 
          * @return builder
          * 
@@ -1297,7 +1289,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param vpcId AWS VPC id. (string)
+         * @param vpcId AWS VPC id
          * 
          * @return builder
          * 
@@ -1307,7 +1299,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param zone AWS zone for instance (i.e. a,b,c,d,e) (string)
+         * @param zone AWS zone for instance (i.e. a,b,c,d,e)
          * 
          * @return builder
          * 
@@ -1318,7 +1310,7 @@ public final class NodeTemplateAmazonec2ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param zone AWS zone for instance (i.e. a,b,c,d,e) (string)
+         * @param zone AWS zone for instance (i.e. a,b,c,d,e)
          * 
          * @return builder
          * 

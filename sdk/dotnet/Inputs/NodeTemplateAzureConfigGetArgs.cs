@@ -19,13 +19,13 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? AcceleratedNetworking { get; set; }
 
         /// <summary>
-        /// Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
+        /// Azure Availability Set to place the virtual machine into
         /// </summary>
         [Input("availabilitySet")]
         public Input<string>? AvailabilitySet { get; set; }
 
         /// <summary>
-        /// OpenStack availability zone (string)
+        /// The Azure Availability Zone the VM should be created in
         /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
@@ -34,7 +34,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _clientId;
 
         /// <summary>
-        /// Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+        /// Azure Service Principal Account ID (optional, browser auth is used if not specified)
         /// </summary>
         public Input<string>? ClientId
         {
@@ -50,7 +50,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _clientSecret;
 
         /// <summary>
-        /// Azure Service Principal Account password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+        /// Azure Service Principal Account password (optional, browser auth is used if not specified)
         /// </summary>
         public Input<string>? ClientSecret
         {
@@ -63,67 +63,67 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Path to file with custom-data (string)
+        /// Path to file with custom-data
         /// </summary>
         [Input("customData")]
         public Input<string>? CustomData { get; set; }
 
         /// <summary>
-        /// vSphere size of disk for docker VM (in MB). Default `20480` (string)
+        /// Disk size if using managed disk
         /// </summary>
         [Input("diskSize")]
         public Input<string>? DiskSize { get; set; }
 
         /// <summary>
-        /// A unique DNS label for the public IP adddress (string)
+        /// A unique DNS label for the public IP adddress
         /// </summary>
         [Input("dns")]
         public Input<string>? Dns { get; set; }
 
         /// <summary>
-        /// Docker Port. Default `2376` (string)
+        /// Port number for Docker engine
         /// </summary>
         [Input("dockerPort")]
         public Input<string>? DockerPort { get; set; }
 
         /// <summary>
-        /// Azure environment (e.g. AzurePublicCloud, AzureChinaCloud). Default `AzurePublicCloud` (string)
+        /// Azure environment (e.g. AzurePublicCloud, AzureChinaCloud)
         /// </summary>
         [Input("environment")]
         public Input<string>? Environment { get; set; }
 
         /// <summary>
-        /// Fault domain count to use for availability set. Default `3` (string)
+        /// Fault domain count to use for availability set
         /// </summary>
         [Input("faultDomainCount")]
         public Input<string>? FaultDomainCount { get; set; }
 
         /// <summary>
-        /// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        /// Azure virtual machine OS image
         /// </summary>
         [Input("image")]
         public Input<string>? Image { get; set; }
 
         /// <summary>
-        /// Azure region to create the virtual machine. Default `westus` (string)
+        /// Azure region to create the virtual machine
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Configures VM and availability set for managed disks. For Rancher v2.3.x and above. Default `false` (bool)
+        /// Configures VM and availability set for managed disks
         /// </summary>
         [Input("managedDisks")]
         public Input<bool>? ManagedDisks { get; set; }
 
         /// <summary>
-        /// Do not create a public IP address for the machine. Default `false` (bool)
+        /// Do not create a public IP address for the machine
         /// </summary>
         [Input("noPublicIp")]
         public Input<bool>? NoPublicIp { get; set; }
 
         /// <summary>
-        /// Azure Network Security Group to assign this node to (accepts either a name or resource ID, default is to create a new NSG for each machine). Default `docker-machine-nsg` (string)
+        /// Azure Network Security Group to assign this node to (accepts either a name or resource ID, default is to create a new NSG for each machine)
         /// </summary>
         [Input("nsg")]
         public Input<string>? Nsg { get; set; }
@@ -132,7 +132,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _openPorts;
 
         /// <summary>
-        /// Make the specified port number accessible from the Internet. (list)
+        /// Make the specified port number accessible from the Internet
         /// </summary>
         public InputList<string> OpenPorts
         {
@@ -141,55 +141,55 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Azure marketplace purchase plan for Azure Virtual Machine. Format is `&lt;publisher&gt;:&lt;product&gt;:&lt;plan&gt;`. For Rancher v2.6.3 and above. (string)
+        /// Purchase plan for Azure Virtual Machine (in &lt;publisher&gt;:&lt;product&gt;:&lt;plan&gt; format)
         /// </summary>
         [Input("plan")]
         public Input<string>? Plan { get; set; }
 
         /// <summary>
-        /// Specify a static private IP address for the machine. (string)
+        /// Specify a static private IP address for the machine
         /// </summary>
         [Input("privateIpAddress")]
         public Input<string>? PrivateIpAddress { get; set; }
 
         /// <summary>
-        /// Azure Resource Group name (will be created if missing). Default `docker-machine` (string)
+        /// Azure Resource Group name (will be created if missing)
         /// </summary>
         [Input("resourceGroup")]
         public Input<string>? ResourceGroup { get; set; }
 
         /// <summary>
-        /// Digital Ocean size. Default `s-1vcpu-1gb` (string)
+        /// Size for Azure Virtual Machine
         /// </summary>
         [Input("size")]
         public Input<string>? Size { get; set; }
 
         /// <summary>
-        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        /// Username for SSH login
         /// </summary>
         [Input("sshUser")]
         public Input<string>? SshUser { get; set; }
 
         /// <summary>
-        /// Assign a static public IP address to the machine. Default `false` (bool)
+        /// Assign a static public IP address to the machine
         /// </summary>
         [Input("staticPublicIp")]
         public Input<bool>? StaticPublicIp { get; set; }
 
         /// <summary>
-        /// Type of Storage Account to host the OS Disk for the machine. Default `Standard_LRS` (string)
+        /// Type of Storage Account to host the OS Disk for the machine
         /// </summary>
         [Input("storageType")]
         public Input<string>? StorageType { get; set; }
 
         /// <summary>
-        /// Azure Subnet Name to be used within the Virtual Network. Default `docker-machine` (string)
+        /// Azure Subnet Name to be used within the Virtual Network
         /// </summary>
         [Input("subnet")]
         public Input<string>? Subnet { get; set; }
 
         /// <summary>
-        /// Private CIDR block to be used for the new subnet, should comply RFC 1918. Default `192.168.0.0/16` (string)
+        /// Private CIDR block to be used for the new subnet, should comply RFC 1918
         /// </summary>
         [Input("subnetPrefix")]
         public Input<string>? SubnetPrefix { get; set; }
@@ -198,7 +198,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _subscriptionId;
 
         /// <summary>
-        /// Azure Subscription ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+        /// Azure Subscription ID
         /// </summary>
         public Input<string>? SubscriptionId
         {
@@ -211,19 +211,19 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+        /// Tags to be applied to the Azure VM instance (e.g. key1,value1,key2,value2)
         /// </summary>
         [Input("tags")]
         public Input<string>? Tags { get; set; }
 
         /// <summary>
-        /// Update domain count to use for availability set. Default `5` (string)
+        /// Update domain count to use for availability set
         /// </summary>
         [Input("updateDomainCount")]
         public Input<string>? UpdateDomainCount { get; set; }
 
         /// <summary>
-        /// Use private IP address of the machine to connect. Default `false` (bool)
+        /// Use private IP address of the machine to connect
         /// </summary>
         [Input("usePrivateIp")]
         public Input<bool>? UsePrivateIp { get; set; }
@@ -235,7 +235,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? UsePublicIpStandardSku { get; set; }
 
         /// <summary>
-        /// Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format). Default `docker-machine-vnet` (string)
+        /// Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format)
         /// </summary>
         [Input("vnet")]
         public Input<string>? Vnet { get; set; }

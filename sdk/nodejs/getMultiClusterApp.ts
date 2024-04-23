@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -20,7 +19,6 @@ import * as utilities from "./utilities";
  *     name: "foo",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getMultiClusterApp(args: GetMultiClusterAppArgs, opts?: pulumi.InvokeOptions): Promise<GetMultiClusterAppResult> {
 
@@ -107,7 +105,6 @@ export interface GetMultiClusterAppResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -116,7 +113,6 @@ export interface GetMultiClusterAppResult {
  *     name: "foo",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getMultiClusterAppOutput(args: GetMultiClusterAppOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMultiClusterAppResult> {
     return pulumi.output(args).apply((a: any) => getMultiClusterApp(a, opts))

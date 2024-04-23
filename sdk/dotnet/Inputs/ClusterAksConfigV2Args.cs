@@ -13,7 +13,7 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterAksConfigV2Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The AKS auth base url (string)
+        /// The AKS auth base url
         /// </summary>
         [Input("authBaseUrl")]
         public Input<string>? AuthBaseUrl { get; set; }
@@ -22,7 +22,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _authorizedIpRanges;
 
         /// <summary>
-        /// The AKS authorized ip ranges (list)
+        /// The AKS authorized ip ranges
         /// </summary>
         public InputList<string> AuthorizedIpRanges
         {
@@ -31,73 +31,73 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// The AKS base url (string)
+        /// The AKS base url
         /// </summary>
         [Input("baseUrl")]
         public Input<string>? BaseUrl { get; set; }
 
         /// <summary>
-        /// The EKS cloud_credential id (string)
+        /// The AKS Cloud Credential ID to use
         /// </summary>
         [Input("cloudCredentialId", required: true)]
         public Input<string> CloudCredentialId { get; set; } = null!;
 
         /// <summary>
-        /// The AKS dns prefix. Required if `imported=false` (string)
+        /// The AKS dns prefix. Required if `import=false`
         /// </summary>
         [Input("dnsPrefix")]
         public Input<string>? DnsPrefix { get; set; }
 
         /// <summary>
-        /// Enable AKS http application routing? (bool)
+        /// Enable AKS http application routing?
         /// </summary>
         [Input("httpApplicationRouting")]
         public Input<bool>? HttpApplicationRouting { get; set; }
 
         /// <summary>
-        /// Is GKE cluster imported? Default: `false` (bool)
+        /// Is AKS cluster imported?
         /// </summary>
         [Input("imported")]
         public Input<bool>? Imported { get; set; }
 
         /// <summary>
-        /// The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+        /// The kubernetes master version. Required if `import=false`
         /// </summary>
         [Input("kubernetesVersion")]
         public Input<string>? KubernetesVersion { get; set; }
 
         /// <summary>
-        /// The AKS linux admin username (string)
+        /// The AKS linux admin username
         /// </summary>
         [Input("linuxAdminUsername")]
         public Input<string>? LinuxAdminUsername { get; set; }
 
         /// <summary>
-        /// The AKS linux ssh public key (string)
+        /// The AKS linux ssh public key
         /// </summary>
         [Input("linuxSshPublicKey")]
         public Input<string>? LinuxSshPublicKey { get; set; }
 
         /// <summary>
-        /// The AKS load balancer sku (string)
+        /// The AKS load balancer sku
         /// </summary>
         [Input("loadBalancerSku")]
         public Input<string>? LoadBalancerSku { get; set; }
 
         /// <summary>
-        /// The AKS log analytics workspace group (string)
+        /// The AKS log analytics workspace group
         /// </summary>
         [Input("logAnalyticsWorkspaceGroup")]
         public Input<string>? LogAnalyticsWorkspaceGroup { get; set; }
 
         /// <summary>
-        /// The AKS log analytics workspace name (string)
+        /// The AKS log analytics workspace name
         /// </summary>
         [Input("logAnalyticsWorkspaceName")]
         public Input<string>? LogAnalyticsWorkspaceName { get; set; }
 
         /// <summary>
-        /// Is AKS cluster monitoring enabled? (bool)
+        /// Is AKS cluster monitoring enabled?
         /// </summary>
         [Input("monitoring")]
         public Input<bool>? Monitoring { get; set; }
@@ -109,37 +109,37 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The AKS network dns service ip (string)
+        /// The AKS network dns service ip
         /// </summary>
         [Input("networkDnsServiceIp")]
         public Input<string>? NetworkDnsServiceIp { get; set; }
 
         /// <summary>
-        /// The AKS network docker bridge cidr (string)
+        /// The AKS network docker bridge cidr
         /// </summary>
         [Input("networkDockerBridgeCidr")]
         public Input<string>? NetworkDockerBridgeCidr { get; set; }
 
         /// <summary>
-        /// The AKS network plugin. Required if `imported=false` (string)
+        /// The AKS network plugin. Required if `import=false`
         /// </summary>
         [Input("networkPlugin")]
         public Input<string>? NetworkPlugin { get; set; }
 
         /// <summary>
-        /// The AKS network pod cidr (string)
+        /// The AKS network pod cidr
         /// </summary>
         [Input("networkPodCidr")]
         public Input<string>? NetworkPodCidr { get; set; }
 
         /// <summary>
-        /// The AKS network policy (string)
+        /// The AKS network policy
         /// </summary>
         [Input("networkPolicy")]
         public Input<string>? NetworkPolicy { get; set; }
 
         /// <summary>
-        /// The AKS network service cidr (string)
+        /// The AKS network service cidr
         /// </summary>
         [Input("networkServiceCidr")]
         public Input<string>? NetworkServiceCidr { get; set; }
@@ -148,7 +148,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<Inputs.ClusterAksConfigV2NodePoolArgs>? _nodePools;
 
         /// <summary>
-        /// The GKE cluster node pools. Required for create new cluster (List)
+        /// The AKS node pools to use. Required if `import=false`
         /// </summary>
         public InputList<Inputs.ClusterAksConfigV2NodePoolArgs> NodePools
         {
@@ -157,25 +157,25 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Is AKS cluster private? (bool)
+        /// Is AKS cluster private?
         /// </summary>
         [Input("privateCluster")]
         public Input<bool>? PrivateCluster { get; set; }
 
         /// <summary>
-        /// The AKS resource group (string)
+        /// The AKS resource group
         /// </summary>
         [Input("resourceGroup", required: true)]
         public Input<string> ResourceGroup { get; set; } = null!;
 
         /// <summary>
-        /// The AKS resource location (string)
+        /// The AKS resource location
         /// </summary>
         [Input("resourceLocation", required: true)]
         public Input<string> ResourceLocation { get; set; } = null!;
 
         /// <summary>
-        /// The AKS subnet (string)
+        /// The AKS subnet
         /// </summary>
         [Input("subnet")]
         public Input<string>? Subnet { get; set; }
@@ -184,7 +184,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// The GKE node config tags (List)
+        /// The AKS cluster tags
         /// </summary>
         public InputMap<object> Tags
         {
@@ -193,13 +193,13 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// The name of the virtual network to use. If it's not specified Rancher will create a new VPC (string)
+        /// The AKS virtual network
         /// </summary>
         [Input("virtualNetwork")]
         public Input<string>? VirtualNetwork { get; set; }
 
         /// <summary>
-        /// The AKS virtual network resource group (string)
+        /// The AKS virtual network resource group
         /// </summary>
         [Input("virtualNetworkResourceGroup")]
         public Input<string>? VirtualNetworkResourceGroup { get; set; }

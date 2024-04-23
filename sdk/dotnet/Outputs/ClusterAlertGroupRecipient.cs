@@ -14,19 +14,19 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterAlertGroupRecipient
     {
         /// <summary>
-        /// Use notifier default recipient, overriding `recipient` argument if set.  Default: `false` (bool)
+        /// Use notifier default recipient
         /// </summary>
         public readonly bool? DefaultRecipient;
         /// <summary>
-        /// Recipient notifier ID (string)
+        /// Recipient notifier ID
         /// </summary>
         public readonly string NotifierId;
         /// <summary>
-        /// Recipient notifier ID. Supported values : `"dingtalk" | "msteams" | "pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
+        /// Recipient notifier type
         /// </summary>
         public readonly string? NotifierType;
         /// <summary>
-        /// Recipient (string)
+        /// Recipient
         /// </summary>
         public readonly string? Recipient;
 

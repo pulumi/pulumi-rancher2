@@ -11,29 +11,13 @@ import java.util.Objects;
 
 @CustomType
 public final class ProjectResourceQuota {
-    /**
-     * @return Default resource quota limit for  namespaces in project (list maxitems:1)
-     * 
-     */
     private ProjectResourceQuotaNamespaceDefaultLimit namespaceDefaultLimit;
-    /**
-     * @return Resource quota limit for project (list maxitems:1)
-     * 
-     */
     private ProjectResourceQuotaProjectLimit projectLimit;
 
     private ProjectResourceQuota() {}
-    /**
-     * @return Default resource quota limit for  namespaces in project (list maxitems:1)
-     * 
-     */
     public ProjectResourceQuotaNamespaceDefaultLimit namespaceDefaultLimit() {
         return this.namespaceDefaultLimit;
     }
-    /**
-     * @return Resource quota limit for project (list maxitems:1)
-     * 
-     */
     public ProjectResourceQuotaProjectLimit projectLimit() {
         return this.projectLimit;
     }

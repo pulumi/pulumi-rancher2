@@ -332,7 +332,6 @@ class ClusterSync(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -398,7 +397,6 @@ class ClusterSync(pulumi.CustomResource):
                 requests_memory="1Mi",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -420,7 +418,6 @@ class ClusterSync(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -486,7 +483,6 @@ class ClusterSync(pulumi.CustomResource):
                 requests_memory="1Mi",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param ClusterSyncArgs args: The arguments to use to populate this resource's properties.

@@ -14,26 +14,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PodSecurityPolicyTemplateRunAsGroup {
     /**
-     * @return (list)
+     * @return ranges are the allowed ranges of gids that may be used. If you would like to force a single gid then supply a single range with the same start and end. Required for MustRunAs.
      * 
      */
     private @Nullable List<PodSecurityPolicyTemplateRunAsGroupRange> ranges;
     /**
-     * @return (string)
+     * @return rule is the strategy that will dictate the allowable RunAsGroup values that may be set.
      * 
      */
     private String rule;
 
     private PodSecurityPolicyTemplateRunAsGroup() {}
     /**
-     * @return (list)
+     * @return ranges are the allowed ranges of gids that may be used. If you would like to force a single gid then supply a single range with the same start and end. Required for MustRunAs.
      * 
      */
     public List<PodSecurityPolicyTemplateRunAsGroupRange> ranges() {
         return this.ranges == null ? List.of() : this.ranges;
     }
     /**
-     * @return (string)
+     * @return rule is the strategy that will dictate the allowable RunAsGroup values that may be set.
      * 
      */
     public String rule() {

@@ -13,49 +13,49 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterGkeConfigV2IpAllocationPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The GKE cluster ip v4 allocation cidr block (string)
+        /// The GKE cluster ip v4 allocation cidr block
         /// </summary>
         [Input("clusterIpv4CidrBlock")]
         public Input<string>? ClusterIpv4CidrBlock { get; set; }
 
         /// <summary>
-        /// The GKE cluster ip v4 allocation secondary range name(string)
+        /// The GKE cluster ip v4 allocation secondary range name
         /// </summary>
         [Input("clusterSecondaryRangeName")]
         public Input<string>? ClusterSecondaryRangeName { get; set; }
 
         /// <summary>
-        /// Create GKE subnetwork? Default: `false` (bool)
+        /// Create GKE subnetwork?
         /// </summary>
         [Input("createSubnetwork")]
         public Input<bool>? CreateSubnetwork { get; set; }
 
         /// <summary>
-        /// The GKE node ip v4 allocation cidr block (string)
+        /// The GKE node ip v4 allocation cidr block
         /// </summary>
         [Input("nodeIpv4CidrBlock")]
         public Input<string>? NodeIpv4CidrBlock { get; set; }
 
         /// <summary>
-        /// The GKE services ip v4 allocation cidr block (string)
+        /// The GKE services ip v4 allocation cidr block
         /// </summary>
         [Input("servicesIpv4CidrBlock")]
         public Input<string>? ServicesIpv4CidrBlock { get; set; }
 
         /// <summary>
-        /// The GKE services ip v4 allocation secondary range name (string)
+        /// The GKE services ip v4 allocation secondary range name
         /// </summary>
         [Input("servicesSecondaryRangeName")]
         public Input<string>? ServicesSecondaryRangeName { get; set; }
 
         /// <summary>
-        /// The GKE cluster subnetwork name (string)
+        /// The GKE cluster subnetwork name
         /// </summary>
         [Input("subnetworkName")]
         public Input<string>? SubnetworkName { get; set; }
 
         /// <summary>
-        /// Use GKE ip aliases? Default: `true` (bool)
+        /// Use GKE ip aliases?
         /// </summary>
         [Input("useIpAliases")]
         public Input<bool>? UseIpAliases { get; set; }

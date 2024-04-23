@@ -15,27 +15,27 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NodeTemplateOutscaleConfig {
     /**
-     * @return Outscale Access Key (string)
+     * @return Outscale Access Key
      * 
      */
     private String accessKey;
     /**
-     * @return Extra tags for all created resources (e.g. key1=value1,key2=value2) (list)
+     * @return Extra tags for all created resources (e.g. key1=value1,key2=value2)
      * 
      */
     private @Nullable List<String> extraTagsAlls;
     /**
-     * @return Extra tags only for instances (e.g. key1=value1,key2=value2) (list)
+     * @return Extra tags only for instances (e.g. key1=value1,key2=value2)
      * 
      */
     private @Nullable List<String> extraTagsInstances;
     /**
-     * @return Outscale VM type. Default `tinav2.c1r2p3` (string)
+     * @return Outscale VM type
      * 
      */
     private @Nullable String instanceType;
     /**
-     * @return AWS region. Default `eu-west-2` (string)
+     * @return Outscale Region
      * 
      */
     private @Nullable String region;
@@ -55,52 +55,52 @@ public final class NodeTemplateOutscaleConfig {
      */
     private @Nullable String rootDiskType;
     /**
-     * @return Outscale Secret Key (string)
+     * @return Outscale Secret Key
      * 
      */
     private String secretKey;
     /**
-     * @return Ids of user defined Security Groups to add to the machine. (list)
+     * @return Ids of user defined Security Groups to add to the machine
      * 
      */
     private @Nullable List<String> securityGroupIds;
     /**
-     * @return Outscale Machine Image to use as bootstrap for the VM. Default `ami-2cf1fa3e` (string)
+     * @return Outscale Machine Image to use as bootstrap for the VM
      * 
      */
     private @Nullable String sourceOmi;
 
     private NodeTemplateOutscaleConfig() {}
     /**
-     * @return Outscale Access Key (string)
+     * @return Outscale Access Key
      * 
      */
     public String accessKey() {
         return this.accessKey;
     }
     /**
-     * @return Extra tags for all created resources (e.g. key1=value1,key2=value2) (list)
+     * @return Extra tags for all created resources (e.g. key1=value1,key2=value2)
      * 
      */
     public List<String> extraTagsAlls() {
         return this.extraTagsAlls == null ? List.of() : this.extraTagsAlls;
     }
     /**
-     * @return Extra tags only for instances (e.g. key1=value1,key2=value2) (list)
+     * @return Extra tags only for instances (e.g. key1=value1,key2=value2)
      * 
      */
     public List<String> extraTagsInstances() {
         return this.extraTagsInstances == null ? List.of() : this.extraTagsInstances;
     }
     /**
-     * @return Outscale VM type. Default `tinav2.c1r2p3` (string)
+     * @return Outscale VM type
      * 
      */
     public Optional<String> instanceType() {
         return Optional.ofNullable(this.instanceType);
     }
     /**
-     * @return AWS region. Default `eu-west-2` (string)
+     * @return Outscale Region
      * 
      */
     public Optional<String> region() {
@@ -128,21 +128,21 @@ public final class NodeTemplateOutscaleConfig {
         return Optional.ofNullable(this.rootDiskType);
     }
     /**
-     * @return Outscale Secret Key (string)
+     * @return Outscale Secret Key
      * 
      */
     public String secretKey() {
         return this.secretKey;
     }
     /**
-     * @return Ids of user defined Security Groups to add to the machine. (list)
+     * @return Ids of user defined Security Groups to add to the machine
      * 
      */
     public List<String> securityGroupIds() {
         return this.securityGroupIds == null ? List.of() : this.securityGroupIds;
     }
     /**
-     * @return Outscale Machine Image to use as bootstrap for the VM. Default `ami-2cf1fa3e` (string)
+     * @return Outscale Machine Image to use as bootstrap for the VM
      * 
      */
     public Optional<String> sourceOmi() {

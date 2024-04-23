@@ -16,7 +16,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _accessKey;
 
         /// <summary>
-        /// AWS access key (string)
+        /// AWS Access Key
         /// </summary>
         public Input<string>? AccessKey
         {
@@ -29,13 +29,13 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// AWS default bucket (string)
+        /// AWS default bucket
         /// </summary>
         [Input("defaultBucket")]
         public Input<string>? DefaultBucket { get; set; }
 
         /// <summary>
-        /// AWS default endpoint (string)
+        /// AWS default endpoint
         /// </summary>
         [Input("defaultEndpoint")]
         public Input<string>? DefaultEndpoint { get; set; }
@@ -44,7 +44,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _defaultEndpointCa;
 
         /// <summary>
-        /// AWS default endpoint CA (string)
+        /// AWS default endpoint CA
         /// </summary>
         public Input<string>? DefaultEndpointCa
         {
@@ -57,19 +57,19 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// AWS default folder (string)
+        /// AWS default folder
         /// </summary>
         [Input("defaultFolder")]
         public Input<string>? DefaultFolder { get; set; }
 
         /// <summary>
-        /// AWS default region (string)
+        /// AWS default region
         /// </summary>
         [Input("defaultRegion")]
         public Input<string>? DefaultRegion { get; set; }
 
         /// <summary>
-        /// AWS default skip ssl verify. Default: `false` (bool)
+        /// AWS default skip ssl verify
         /// </summary>
         [Input("defaultSkipSslVerify")]
         public Input<bool>? DefaultSkipSslVerify { get; set; }
@@ -78,7 +78,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _secretKey;
 
         /// <summary>
-        /// AWS secret key (string)
+        /// AWS Secret Key
         /// </summary>
         public Input<string>? SecretKey
         {

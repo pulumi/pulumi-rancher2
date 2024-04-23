@@ -13,17 +13,8 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterGkeConfigV2NodePoolConfigTaint
     {
-        /// <summary>
-        /// The GKE taint effect (string)
-        /// </summary>
         public readonly string Effect;
-        /// <summary>
-        /// The GKE taint key (string)
-        /// </summary>
         public readonly string Key;
-        /// <summary>
-        /// The GKE taint value (string)
-        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

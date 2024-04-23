@@ -17,77 +17,37 @@ public final class ClusterFleetAgentDeploymentCustomizationAppendTolerationArgs 
 
     public static final ClusterFleetAgentDeploymentCustomizationAppendTolerationArgs Empty = new ClusterFleetAgentDeploymentCustomizationAppendTolerationArgs();
 
-    /**
-     * The GKE taint effect (string)
-     * 
-     */
     @Import(name="effect")
     private @Nullable Output<String> effect;
 
-    /**
-     * @return The GKE taint effect (string)
-     * 
-     */
     public Optional<Output<String>> effect() {
         return Optional.ofNullable(this.effect);
     }
 
-    /**
-     * The GKE taint key (string)
-     * 
-     */
     @Import(name="key", required=true)
     private Output<String> key;
 
-    /**
-     * @return The GKE taint key (string)
-     * 
-     */
     public Output<String> key() {
         return this.key;
     }
 
-    /**
-     * The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
-     * 
-     */
     @Import(name="operator")
     private @Nullable Output<String> operator;
 
-    /**
-     * @return The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
-     * 
-     */
     public Optional<Output<String>> operator() {
         return Optional.ofNullable(this.operator);
     }
 
-    /**
-     * The toleration seconds (int)
-     * 
-     */
     @Import(name="seconds")
     private @Nullable Output<Integer> seconds;
 
-    /**
-     * @return The toleration seconds (int)
-     * 
-     */
     public Optional<Output<Integer>> seconds() {
         return Optional.ofNullable(this.seconds);
     }
 
-    /**
-     * The GKE taint value (string)
-     * 
-     */
     @Import(name="value")
     private @Nullable Output<String> value;
 
-    /**
-     * @return The GKE taint value (string)
-     * 
-     */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
     }
@@ -120,107 +80,47 @@ public final class ClusterFleetAgentDeploymentCustomizationAppendTolerationArgs 
             $ = new ClusterFleetAgentDeploymentCustomizationAppendTolerationArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param effect The GKE taint effect (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder effect(@Nullable Output<String> effect) {
             $.effect = effect;
             return this;
         }
 
-        /**
-         * @param effect The GKE taint effect (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder effect(String effect) {
             return effect(Output.of(effect));
         }
 
-        /**
-         * @param key The GKE taint key (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder key(Output<String> key) {
             $.key = key;
             return this;
         }
 
-        /**
-         * @param key The GKE taint key (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder key(String key) {
             return key(Output.of(key));
         }
 
-        /**
-         * @param operator The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder operator(@Nullable Output<String> operator) {
             $.operator = operator;
             return this;
         }
 
-        /**
-         * @param operator The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder operator(String operator) {
             return operator(Output.of(operator));
         }
 
-        /**
-         * @param seconds The toleration seconds (int)
-         * 
-         * @return builder
-         * 
-         */
         public Builder seconds(@Nullable Output<Integer> seconds) {
             $.seconds = seconds;
             return this;
         }
 
-        /**
-         * @param seconds The toleration seconds (int)
-         * 
-         * @return builder
-         * 
-         */
         public Builder seconds(Integer seconds) {
             return seconds(Output.of(seconds));
         }
 
-        /**
-         * @param value The GKE taint value (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
 
-        /**
-         * @param value The GKE taint value (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

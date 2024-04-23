@@ -12,18 +12,11 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterRkeConfigAuthorizationArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The AKS node group mode. Default: `System` (string)
-        /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
 
         [Input("options")]
         private InputMap<object>? _options;
-
-        /// <summary>
-        /// RKE options for network (map)
-        /// </summary>
         public InputMap<object> Options
         {
             get => _options ?? (_options = new InputMap<object>());

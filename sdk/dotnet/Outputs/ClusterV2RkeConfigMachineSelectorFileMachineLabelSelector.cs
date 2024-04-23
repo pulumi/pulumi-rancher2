@@ -14,11 +14,11 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterV2RkeConfigMachineSelectorFileMachineLabelSelector
     {
         /// <summary>
-        /// Match expressions is a list of label selector requirements. The requirements are ANDed.
+        /// Label selector match expressions
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpression> MatchExpressions;
         /// <summary>
-        /// Machine selector label is a map of {key,value} pairs, the requirements are ANDed.
+        /// Label selector match labels
         /// </summary>
         public readonly ImmutableDictionary<string, object>? MatchLabels;
 

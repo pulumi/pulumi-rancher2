@@ -16,7 +16,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _availabilityZones;
 
         /// <summary>
-        /// The AKS node pool availability zones (list)
+        /// The AKS node pool availability zones
         /// </summary>
         public InputList<string> AvailabilityZones
         {
@@ -25,13 +25,13 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// The AKS node pool count. Default: `1` (int)
+        /// The AKS node pool count
         /// </summary>
         [Input("count")]
         public Input<int>? Count { get; set; }
 
         /// <summary>
-        /// Is AKS node pool auto scaling enabled? Default: `false` (bool)
+        /// Is AKS node pool auto scaling enabled?
         /// </summary>
         [Input("enableAutoScaling")]
         public Input<bool>? EnableAutoScaling { get; set; }
@@ -49,31 +49,31 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// The AKS node pool max count. Required if `enable_auto_scaling=true` (int)
+        /// The AKS node pool max count
         /// </summary>
         [Input("maxCount")]
         public Input<int>? MaxCount { get; set; }
 
         /// <summary>
-        /// The AKS node pool max pods. Default: `110` (int)
+        /// The AKS node pool max pods
         /// </summary>
         [Input("maxPods")]
         public Input<int>? MaxPods { get; set; }
 
         /// <summary>
-        /// The AKS node pool max surge (string), example value: `25%`
+        /// The AKS node pool max surge
         /// </summary>
         [Input("maxSurge")]
         public Input<string>? MaxSurge { get; set; }
 
         /// <summary>
-        /// The AKS node pool min count. Required if `enable_auto_scaling=true` (int)
+        /// The AKS node pool min count
         /// </summary>
         [Input("minCount")]
         public Input<int>? MinCount { get; set; }
 
         /// <summary>
-        /// The AKS node group mode. Default: `System` (string)
+        /// The AKS node pool mode
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -85,25 +85,25 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The AKS node pool orchestrator version (string)
+        /// The AKS node pool orchestrator version
         /// </summary>
         [Input("orchestratorVersion")]
         public Input<string>? OrchestratorVersion { get; set; }
 
         /// <summary>
-        /// The AKS node pool os disk size gb. Default: `128` (int)
+        /// The AKS node pool os disk size gb
         /// </summary>
         [Input("osDiskSizeGb")]
         public Input<int>? OsDiskSizeGb { get; set; }
 
         /// <summary>
-        /// The AKS node pool os disk type. Default: `Managed` (string)
+        /// The AKS node pool os disk type
         /// </summary>
         [Input("osDiskType")]
         public Input<string>? OsDiskType { get; set; }
 
         /// <summary>
-        /// The AKS node pool os type. Default: `Linux` (string)
+        /// Enable AKS node pool os type
         /// </summary>
         [Input("osType")]
         public Input<string>? OsType { get; set; }
@@ -112,7 +112,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _taints;
 
         /// <summary>
-        /// The GKE node config taints (List)
+        /// The AKS node pool taints
         /// </summary>
         public InputList<string> Taints
         {
@@ -121,7 +121,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// The AKS node pool orchestrator version (string)
+        /// The AKS node pool vm size
         /// </summary>
         [Input("vmSize")]
         public Input<string>? VmSize { get; set; }

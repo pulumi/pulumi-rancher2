@@ -18,14 +18,14 @@ public final class PodSecurityPolicyTemplateSeLinuxArgs extends com.pulumi.resou
     public static final PodSecurityPolicyTemplateSeLinuxArgs Empty = new PodSecurityPolicyTemplateSeLinuxArgs();
 
     /**
-     * (string)
+     * rule is the strategy that will dictate the allowable labels that may be set.
      * 
      */
     @Import(name="rule", required=true)
     private Output<String> rule;
 
     /**
-     * @return (string)
+     * @return rule is the strategy that will dictate the allowable labels that may be set.
      * 
      */
     public Output<String> rule() {
@@ -33,14 +33,14 @@ public final class PodSecurityPolicyTemplateSeLinuxArgs extends com.pulumi.resou
     }
 
     /**
-     * (list maxitems:1)
+     * seLinuxOptions required to run as; required for MustRunAs. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
      * 
      */
     @Import(name="seLinuxOption")
     private @Nullable Output<PodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs> seLinuxOption;
 
     /**
-     * @return (list maxitems:1)
+     * @return seLinuxOptions required to run as; required for MustRunAs. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
      * 
      */
     public Optional<Output<PodSecurityPolicyTemplateSeLinuxSeLinuxOptionArgs>> seLinuxOption() {
@@ -73,7 +73,7 @@ public final class PodSecurityPolicyTemplateSeLinuxArgs extends com.pulumi.resou
         }
 
         /**
-         * @param rule (string)
+         * @param rule rule is the strategy that will dictate the allowable labels that may be set.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class PodSecurityPolicyTemplateSeLinuxArgs extends com.pulumi.resou
         }
 
         /**
-         * @param rule (string)
+         * @param rule rule is the strategy that will dictate the allowable labels that may be set.
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class PodSecurityPolicyTemplateSeLinuxArgs extends com.pulumi.resou
         }
 
         /**
-         * @param seLinuxOption (list maxitems:1)
+         * @param seLinuxOption seLinuxOptions required to run as; required for MustRunAs. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class PodSecurityPolicyTemplateSeLinuxArgs extends com.pulumi.resou
         }
 
         /**
-         * @param seLinuxOption (list maxitems:1)
+         * @param seLinuxOption seLinuxOptions required to run as; required for MustRunAs. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
          * 
          * @return builder
          * 

@@ -17,14 +17,14 @@ public final class NotifierSlackConfigArgs extends com.pulumi.resources.Resource
     public static final NotifierSlackConfigArgs Empty = new NotifierSlackConfigArgs();
 
     /**
-     * Wechat default recipient (string)
+     * Slack default channel
      * 
      */
     @Import(name="defaultRecipient", required=true)
     private Output<String> defaultRecipient;
 
     /**
-     * @return Wechat default recipient (string)
+     * @return Slack default channel
      * 
      */
     public Output<String> defaultRecipient() {
@@ -32,14 +32,14 @@ public final class NotifierSlackConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Wechat proxy url (string)
+     * Slack proxy URL
      * 
      */
     @Import(name="proxyUrl")
     private @Nullable Output<String> proxyUrl;
 
     /**
-     * @return Wechat proxy url (string)
+     * @return Slack proxy URL
      * 
      */
     public Optional<Output<String>> proxyUrl() {
@@ -47,14 +47,14 @@ public final class NotifierSlackConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Slack url (string)
+     * Slack URL
      * 
      */
     @Import(name="url", required=true)
     private Output<String> url;
 
     /**
-     * @return Slack url (string)
+     * @return Slack URL
      * 
      */
     public Output<String> url() {
@@ -88,7 +88,7 @@ public final class NotifierSlackConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param defaultRecipient Wechat default recipient (string)
+         * @param defaultRecipient Slack default channel
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class NotifierSlackConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param defaultRecipient Wechat default recipient (string)
+         * @param defaultRecipient Slack default channel
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class NotifierSlackConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param proxyUrl Wechat proxy url (string)
+         * @param proxyUrl Slack proxy URL
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class NotifierSlackConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param proxyUrl Wechat proxy url (string)
+         * @param proxyUrl Slack proxy URL
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class NotifierSlackConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param url Slack url (string)
+         * @param url Slack URL
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class NotifierSlackConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param url Slack url (string)
+         * @param url Slack URL
          * 
          * @return builder
          * 

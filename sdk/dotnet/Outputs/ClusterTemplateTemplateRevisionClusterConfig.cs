@@ -14,11 +14,11 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterTemplateTemplateRevisionClusterConfig
     {
         /// <summary>
-        /// Local cluster auth endpoint (list maxitems: 1)
+        /// Local cluster auth endpoint
         /// </summary>
         public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint? ClusterAuthEndpoint;
         /// <summary>
-        /// Default cluster role for project members (string)
+        /// Default cluster role for project members
         /// </summary>
         public readonly string? DefaultClusterRoleForProjectMembers;
         /// <summary>
@@ -26,39 +26,39 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? DefaultPodSecurityAdmissionConfigurationTemplateName;
         /// <summary>
-        /// Default pod security policy template ID (string)
+        /// Default pod security policy template ID
         /// </summary>
         public readonly string? DefaultPodSecurityPolicyTemplateId;
         /// <summary>
-        /// Desired agent image (string)
+        /// Desired agent image
         /// </summary>
         public readonly string? DesiredAgentImage;
         /// <summary>
-        /// Desired auth image (string)
+        /// Desired auth image
         /// </summary>
         public readonly string? DesiredAuthImage;
         /// <summary>
-        /// Desired auth image (string)
+        /// Docker Root Dir
         /// </summary>
         public readonly string? DockerRootDir;
         /// <summary>
-        /// Enable built-in cluster alerting. Default: `false` (bool)
+        /// Enable built-in cluster alerting
         /// </summary>
         public readonly bool? EnableClusterAlerting;
         /// <summary>
-        /// Enable built-in cluster monitoring. Default: `false` (bool)
+        /// Enable built-in cluster monitoring
         /// </summary>
         public readonly bool? EnableClusterMonitoring;
         /// <summary>
-        /// Enable project network isolation. Default: `false` (bool)
+        /// Enable project network isolation
         /// </summary>
         public readonly bool? EnableNetworkPolicy;
         /// <summary>
-        /// Rancher Kubernetes Engine Config (list maxitems: 1)
+        /// Rancher Kubernetes Engine Config
         /// </summary>
         public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfig RkeConfig;
         /// <summary>
-        /// Windows prefered cluster. Default: `false` (bool)
+        /// Windows prefered cluster
         /// </summary>
         public readonly bool? WindowsPreferedCluster;
 

@@ -18,14 +18,14 @@ public final class ClusterClusterTemplateQuestionArgs extends com.pulumi.resourc
     public static final ClusterClusterTemplateQuestionArgs Empty = new ClusterClusterTemplateQuestionArgs();
 
     /**
-     * Default variable value (string)
+     * Default variable value
      * 
      */
     @Import(name="default", required=true)
     private Output<String> default_;
 
     /**
-     * @return Default variable value (string)
+     * @return Default variable value
      * 
      */
     public Output<String> default_() {
@@ -33,14 +33,14 @@ public final class ClusterClusterTemplateQuestionArgs extends com.pulumi.resourc
     }
 
     /**
-     * Required variable. Default `false` (bool)
+     * Required variable
      * 
      */
     @Import(name="required")
     private @Nullable Output<Boolean> required;
 
     /**
-     * @return Required variable. Default `false` (bool)
+     * @return Required variable
      * 
      */
     public Optional<Output<Boolean>> required() {
@@ -48,14 +48,14 @@ public final class ClusterClusterTemplateQuestionArgs extends com.pulumi.resourc
     }
 
     /**
-     * Variable type. `boolean`, `int`, `password`, and `string` are allowed. Default `string` (string)
+     * Variable type
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Variable type. `boolean`, `int`, `password`, and `string` are allowed. Default `string` (string)
+     * @return Variable type
      * 
      */
     public Optional<Output<String>> type() {
@@ -63,14 +63,14 @@ public final class ClusterClusterTemplateQuestionArgs extends com.pulumi.resourc
     }
 
     /**
-     * Variable name (string)
+     * Variable name
      * 
      */
     @Import(name="variable", required=true)
     private Output<String> variable;
 
     /**
-     * @return Variable name (string)
+     * @return Variable name
      * 
      */
     public Output<String> variable() {
@@ -105,7 +105,7 @@ public final class ClusterClusterTemplateQuestionArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param default_ Default variable value (string)
+         * @param default_ Default variable value
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class ClusterClusterTemplateQuestionArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param default_ Default variable value (string)
+         * @param default_ Default variable value
          * 
          * @return builder
          * 
@@ -126,7 +126,7 @@ public final class ClusterClusterTemplateQuestionArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param required Required variable. Default `false` (bool)
+         * @param required Required variable
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class ClusterClusterTemplateQuestionArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param required Required variable. Default `false` (bool)
+         * @param required Required variable
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class ClusterClusterTemplateQuestionArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param type Variable type. `boolean`, `int`, `password`, and `string` are allowed. Default `string` (string)
+         * @param type Variable type
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class ClusterClusterTemplateQuestionArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param type Variable type. `boolean`, `int`, `password`, and `string` are allowed. Default `string` (string)
+         * @param type Variable type
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class ClusterClusterTemplateQuestionArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param variable Variable name (string)
+         * @param variable Variable name
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class ClusterClusterTemplateQuestionArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param variable Variable name (string)
+         * @param variable Variable name
          * 
          * @return builder
          * 

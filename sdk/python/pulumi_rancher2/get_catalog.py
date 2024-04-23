@@ -202,14 +202,12 @@ def get_catalog(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
 
     library = rancher2.get_catalog(name="catalog")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The catalog name.
@@ -247,14 +245,12 @@ def get_catalog_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_rancher2 as rancher2
 
     library = rancher2.get_catalog(name="catalog")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The catalog name.

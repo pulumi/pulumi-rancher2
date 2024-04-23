@@ -13,41 +13,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GlobalDnsProviderCloudflareConfig {
-    /**
-     * @return The CloudFlare API Email (string)
-     * 
-     */
     private String apiEmail;
-    /**
-     * @return The CloudFlare API Key (string)
-     * 
-     */
     private String apiKey;
-    /**
-     * @return CloudFlare Proxy Setting. Default: `false` (bool)
-     * 
-     */
     private @Nullable Boolean proxySetting;
 
     private GlobalDnsProviderCloudflareConfig() {}
-    /**
-     * @return The CloudFlare API Email (string)
-     * 
-     */
     public String apiEmail() {
         return this.apiEmail;
     }
-    /**
-     * @return The CloudFlare API Key (string)
-     * 
-     */
     public String apiKey() {
         return this.apiKey;
     }
-    /**
-     * @return CloudFlare Proxy Setting. Default: `false` (bool)
-     * 
-     */
     public Optional<Boolean> proxySetting() {
         return Optional.ofNullable(this.proxySetting);
     }

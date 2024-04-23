@@ -13,13 +13,13 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class MultiClusterAppUpgradeStrategyRollingUpdateGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Rolling update batch size. Default `1` (int)
+        /// Rolling update batch size
         /// </summary>
         [Input("batchSize")]
         public Input<int>? BatchSize { get; set; }
 
         /// <summary>
-        /// Rolling update interval. Default `1` (int)
+        /// Rolling update interval
         /// </summary>
         [Input("interval")]
         public Input<int>? Interval { get; set; }

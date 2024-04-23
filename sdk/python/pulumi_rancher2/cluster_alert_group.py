@@ -336,7 +336,6 @@ class ClusterAlertGroup(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -349,7 +348,6 @@ class ClusterAlertGroup(pulumi.CustomResource):
             group_interval_seconds=300,
             repeat_interval_seconds=3600)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -382,7 +380,6 @@ class ClusterAlertGroup(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_rancher2 as rancher2
@@ -395,7 +392,6 @@ class ClusterAlertGroup(pulumi.CustomResource):
             group_interval_seconds=300,
             repeat_interval_seconds=3600)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

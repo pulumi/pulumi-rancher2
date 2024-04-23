@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterV2RkeConfigMachineSelectorFileFileSource {
     /**
-     * @return Configmap represents a K8s configmap which is the source of files. It is mutually exclusive with secret.
+     * @return The configmap which is the source of files
      * 
      */
     private @Nullable ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmap configmap;
     /**
-     * @return Secret represents a K8s secret which is the source of files. It is mutually exclusive with configmap.
+     * @return The secret which is the source of files
      * 
      */
     private @Nullable ClusterV2RkeConfigMachineSelectorFileFileSourceSecret secret;
 
     private ClusterV2RkeConfigMachineSelectorFileFileSource() {}
     /**
-     * @return Configmap represents a K8s configmap which is the source of files. It is mutually exclusive with secret.
+     * @return The configmap which is the source of files
      * 
      */
     public Optional<ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmap> configmap() {
         return Optional.ofNullable(this.configmap);
     }
     /**
-     * @return Secret represents a K8s secret which is the source of files. It is mutually exclusive with configmap.
+     * @return The secret which is the source of files
      * 
      */
     public Optional<ClusterV2RkeConfigMachineSelectorFileFileSourceSecret> secret() {

@@ -15,56 +15,24 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterRkeConfigCloudProvider {
-    /**
-     * @return RKE AWS Cloud Provider config for Cloud Provider [rke-aws-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/aws/) (list maxitems:1)
-     * 
-     */
     private @Nullable ClusterRkeConfigCloudProviderAwsCloudProvider awsCloudProvider;
-    /**
-     * @return RKE Azure Cloud Provider config for Cloud Provider [rke-azure-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/azure/) (list maxitems:1)
-     * 
-     */
     private @Nullable ClusterRkeConfigCloudProviderAzureCloudProvider azureCloudProvider;
-    /**
-     * @return RKE Custom Cloud Provider config for Cloud Provider (string)
-     * 
-     */
     private @Nullable String customCloudProvider;
     /**
      * @return The name of the Cluster (string)
      * 
      */
     private @Nullable String name;
-    /**
-     * @return RKE Openstack Cloud Provider config for Cloud Provider [rke-openstack-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/openstack/) (list maxitems:1)
-     * 
-     */
     private @Nullable ClusterRkeConfigCloudProviderOpenstackCloudProvider openstackCloudProvider;
-    /**
-     * @return RKE Vsphere Cloud Provider config for Cloud Provider [rke-vsphere-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/vsphere/) Extra argument `name` is required on `virtual_center` configuration. (list maxitems:1)
-     * 
-     */
     private @Nullable ClusterRkeConfigCloudProviderVsphereCloudProvider vsphereCloudProvider;
 
     private ClusterRkeConfigCloudProvider() {}
-    /**
-     * @return RKE AWS Cloud Provider config for Cloud Provider [rke-aws-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/aws/) (list maxitems:1)
-     * 
-     */
     public Optional<ClusterRkeConfigCloudProviderAwsCloudProvider> awsCloudProvider() {
         return Optional.ofNullable(this.awsCloudProvider);
     }
-    /**
-     * @return RKE Azure Cloud Provider config for Cloud Provider [rke-azure-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/azure/) (list maxitems:1)
-     * 
-     */
     public Optional<ClusterRkeConfigCloudProviderAzureCloudProvider> azureCloudProvider() {
         return Optional.ofNullable(this.azureCloudProvider);
     }
-    /**
-     * @return RKE Custom Cloud Provider config for Cloud Provider (string)
-     * 
-     */
     public Optional<String> customCloudProvider() {
         return Optional.ofNullable(this.customCloudProvider);
     }
@@ -75,17 +43,9 @@ public final class ClusterRkeConfigCloudProvider {
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
-    /**
-     * @return RKE Openstack Cloud Provider config for Cloud Provider [rke-openstack-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/openstack/) (list maxitems:1)
-     * 
-     */
     public Optional<ClusterRkeConfigCloudProviderOpenstackCloudProvider> openstackCloudProvider() {
         return Optional.ofNullable(this.openstackCloudProvider);
     }
-    /**
-     * @return RKE Vsphere Cloud Provider config for Cloud Provider [rke-vsphere-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/vsphere/) Extra argument `name` is required on `virtual_center` configuration. (list maxitems:1)
-     * 
-     */
     public Optional<ClusterRkeConfigCloudProviderVsphereCloudProvider> vsphereCloudProvider() {
         return Optional.ofNullable(this.vsphereCloudProvider);
     }

@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -28,13 +27,11 @@ import * as utilities from "./utilities";
  *     }).then(invoke => invoke.result),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Create an App from a Helm Chart using a different registry
  *
  * The `systemDefaultRegistry` argument can override the global value at App installation. If argument is not provided, the global value for System Default Registry will be used instead.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
@@ -48,7 +45,6 @@ import * as utilities from "./utilities";
  *     systemDefaultRegistry: "<some.dns.here>:<PORT>",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

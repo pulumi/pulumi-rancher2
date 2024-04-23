@@ -16,32 +16,16 @@ public final class ClusterRkeConfigAuthenticationArgs extends com.pulumi.resourc
 
     public static final ClusterRkeConfigAuthenticationArgs Empty = new ClusterRkeConfigAuthenticationArgs();
 
-    /**
-     * RKE sans for authentication ([]string)
-     * 
-     */
     @Import(name="sans")
     private @Nullable Output<List<String>> sans;
 
-    /**
-     * @return RKE sans for authentication ([]string)
-     * 
-     */
     public Optional<Output<List<String>>> sans() {
         return Optional.ofNullable(this.sans);
     }
 
-    /**
-     * Monitoring deployment update strategy (string)
-     * 
-     */
     @Import(name="strategy")
     private @Nullable Output<String> strategy;
 
-    /**
-     * @return Monitoring deployment update strategy (string)
-     * 
-     */
     public Optional<Output<String>> strategy() {
         return Optional.ofNullable(this.strategy);
     }
@@ -71,54 +55,24 @@ public final class ClusterRkeConfigAuthenticationArgs extends com.pulumi.resourc
             $ = new ClusterRkeConfigAuthenticationArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param sans RKE sans for authentication ([]string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder sans(@Nullable Output<List<String>> sans) {
             $.sans = sans;
             return this;
         }
 
-        /**
-         * @param sans RKE sans for authentication ([]string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder sans(List<String> sans) {
             return sans(Output.of(sans));
         }
 
-        /**
-         * @param sans RKE sans for authentication ([]string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder sans(String... sans) {
             return sans(List.of(sans));
         }
 
-        /**
-         * @param strategy Monitoring deployment update strategy (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder strategy(@Nullable Output<String> strategy) {
             $.strategy = strategy;
             return this;
         }
 
-        /**
-         * @param strategy Monitoring deployment update strategy (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder strategy(String strategy) {
             return strategy(Output.of(strategy));
         }

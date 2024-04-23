@@ -14,11 +14,11 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterV2RkeConfigRegistries
     {
         /// <summary>
-        /// Cluster V2 docker registries config.
+        /// Registry config
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterV2RkeConfigRegistriesConfig> Configs;
         /// <summary>
-        /// Cluster V2 docker registries mirror.
+        /// Registry mirrors
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterV2RkeConfigRegistriesMirror> Mirrors;
 

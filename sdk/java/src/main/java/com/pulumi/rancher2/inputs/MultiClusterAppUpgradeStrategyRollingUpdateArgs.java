@@ -16,14 +16,14 @@ public final class MultiClusterAppUpgradeStrategyRollingUpdateArgs extends com.p
     public static final MultiClusterAppUpgradeStrategyRollingUpdateArgs Empty = new MultiClusterAppUpgradeStrategyRollingUpdateArgs();
 
     /**
-     * Rolling update batch size. Default `1` (int)
+     * Rolling update batch size
      * 
      */
     @Import(name="batchSize")
     private @Nullable Output<Integer> batchSize;
 
     /**
-     * @return Rolling update batch size. Default `1` (int)
+     * @return Rolling update batch size
      * 
      */
     public Optional<Output<Integer>> batchSize() {
@@ -31,14 +31,14 @@ public final class MultiClusterAppUpgradeStrategyRollingUpdateArgs extends com.p
     }
 
     /**
-     * Rolling update interval. Default `1` (int)
+     * Rolling update interval
      * 
      */
     @Import(name="interval")
     private @Nullable Output<Integer> interval;
 
     /**
-     * @return Rolling update interval. Default `1` (int)
+     * @return Rolling update interval
      * 
      */
     public Optional<Output<Integer>> interval() {
@@ -71,7 +71,7 @@ public final class MultiClusterAppUpgradeStrategyRollingUpdateArgs extends com.p
         }
 
         /**
-         * @param batchSize Rolling update batch size. Default `1` (int)
+         * @param batchSize Rolling update batch size
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class MultiClusterAppUpgradeStrategyRollingUpdateArgs extends com.p
         }
 
         /**
-         * @param batchSize Rolling update batch size. Default `1` (int)
+         * @param batchSize Rolling update batch size
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class MultiClusterAppUpgradeStrategyRollingUpdateArgs extends com.p
         }
 
         /**
-         * @param interval Rolling update interval. Default `1` (int)
+         * @param interval Rolling update interval
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class MultiClusterAppUpgradeStrategyRollingUpdateArgs extends com.p
         }
 
         /**
-         * @param interval Rolling update interval. Default `1` (int)
+         * @param interval Rolling update interval
          * 
          * @return builder
          * 

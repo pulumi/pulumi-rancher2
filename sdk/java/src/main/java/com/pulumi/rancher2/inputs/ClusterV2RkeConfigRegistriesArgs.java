@@ -18,14 +18,14 @@ public final class ClusterV2RkeConfigRegistriesArgs extends com.pulumi.resources
     public static final ClusterV2RkeConfigRegistriesArgs Empty = new ClusterV2RkeConfigRegistriesArgs();
 
     /**
-     * Cluster V2 docker registries config.
+     * Registry config
      * 
      */
     @Import(name="configs")
     private @Nullable Output<List<ClusterV2RkeConfigRegistriesConfigArgs>> configs;
 
     /**
-     * @return Cluster V2 docker registries config.
+     * @return Registry config
      * 
      */
     public Optional<Output<List<ClusterV2RkeConfigRegistriesConfigArgs>>> configs() {
@@ -33,14 +33,14 @@ public final class ClusterV2RkeConfigRegistriesArgs extends com.pulumi.resources
     }
 
     /**
-     * Cluster V2 docker registries mirror.
+     * Registry mirrors
      * 
      */
     @Import(name="mirrors")
     private @Nullable Output<List<ClusterV2RkeConfigRegistriesMirrorArgs>> mirrors;
 
     /**
-     * @return Cluster V2 docker registries mirror.
+     * @return Registry mirrors
      * 
      */
     public Optional<Output<List<ClusterV2RkeConfigRegistriesMirrorArgs>>> mirrors() {
@@ -73,7 +73,7 @@ public final class ClusterV2RkeConfigRegistriesArgs extends com.pulumi.resources
         }
 
         /**
-         * @param configs Cluster V2 docker registries config.
+         * @param configs Registry config
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class ClusterV2RkeConfigRegistriesArgs extends com.pulumi.resources
         }
 
         /**
-         * @param configs Cluster V2 docker registries config.
+         * @param configs Registry config
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class ClusterV2RkeConfigRegistriesArgs extends com.pulumi.resources
         }
 
         /**
-         * @param configs Cluster V2 docker registries config.
+         * @param configs Registry config
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ClusterV2RkeConfigRegistriesArgs extends com.pulumi.resources
         }
 
         /**
-         * @param mirrors Cluster V2 docker registries mirror.
+         * @param mirrors Registry mirrors
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class ClusterV2RkeConfigRegistriesArgs extends com.pulumi.resources
         }
 
         /**
-         * @param mirrors Cluster V2 docker registries mirror.
+         * @param mirrors Registry mirrors
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class ClusterV2RkeConfigRegistriesArgs extends com.pulumi.resources
         }
 
         /**
-         * @param mirrors Cluster V2 docker registries mirror.
+         * @param mirrors Registry mirrors
          * 
          * @return builder
          * 

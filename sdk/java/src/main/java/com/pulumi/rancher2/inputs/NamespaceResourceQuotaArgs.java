@@ -14,17 +14,9 @@ public final class NamespaceResourceQuotaArgs extends com.pulumi.resources.Resou
 
     public static final NamespaceResourceQuotaArgs Empty = new NamespaceResourceQuotaArgs();
 
-    /**
-     * Resource quota limit for namespace (list maxitems:1)
-     * 
-     */
     @Import(name="limit", required=true)
     private Output<NamespaceResourceQuotaLimitArgs> limit;
 
-    /**
-     * @return Resource quota limit for namespace (list maxitems:1)
-     * 
-     */
     public Output<NamespaceResourceQuotaLimitArgs> limit() {
         return this.limit;
     }
@@ -53,23 +45,11 @@ public final class NamespaceResourceQuotaArgs extends com.pulumi.resources.Resou
             $ = new NamespaceResourceQuotaArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param limit Resource quota limit for namespace (list maxitems:1)
-         * 
-         * @return builder
-         * 
-         */
         public Builder limit(Output<NamespaceResourceQuotaLimitArgs> limit) {
             $.limit = limit;
             return this;
         }
 
-        /**
-         * @param limit Resource quota limit for namespace (list maxitems:1)
-         * 
-         * @return builder
-         * 
-         */
         public Builder limit(NamespaceResourceQuotaLimitArgs limit) {
             return limit(Output.of(limit));
         }

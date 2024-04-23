@@ -14,11 +14,11 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class PodSecurityPolicyTemplateAllowedHostPath
     {
         /// <summary>
-        /// (string)
+        /// pathPrefix is the path prefix that the host volume must match. It does not support `*`. Trailing slashes are trimmed when validating the path prefix with a host path.
         /// </summary>
         public readonly string PathPrefix;
         /// <summary>
-        /// (string)
+        /// when set to true, will allow host volumes matching the pathPrefix only if all volume mounts are readOnly.
         /// </summary>
         public readonly bool? ReadOnly;
 

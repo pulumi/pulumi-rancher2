@@ -13,29 +13,11 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterRkeConfigServicesKubeController
     {
-        /// <summary>
-        /// Cluster CIDR option for kube controller service (string)
-        /// </summary>
         public readonly string? ClusterCidr;
-        /// <summary>
-        /// Extra arguments for scheduler service (map)
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? ExtraArgs;
-        /// <summary>
-        /// Extra binds for scheduler service (list)
-        /// </summary>
         public readonly ImmutableArray<string> ExtraBinds;
-        /// <summary>
-        /// Extra environment for scheduler service (list)
-        /// </summary>
         public readonly ImmutableArray<string> ExtraEnvs;
-        /// <summary>
-        /// Docker image for scheduler service (string)
-        /// </summary>
         public readonly string? Image;
-        /// <summary>
-        /// Service Cluster ip Range option for kube controller service (string)
-        /// </summary>
         public readonly string? ServiceClusterIpRange;
 
         [OutputConstructor]

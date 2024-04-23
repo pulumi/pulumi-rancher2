@@ -22,14 +22,14 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
     public static final ClusterEksConfigV2Args Empty = new ClusterEksConfigV2Args();
 
     /**
-     * The EKS cloud_credential id (string)
+     * The AWS Cloud Credential ID to use
      * 
      */
     @Import(name="cloudCredentialId", required=true)
     private Output<String> cloudCredentialId;
 
     /**
-     * @return The EKS cloud_credential id (string)
+     * @return The AWS Cloud Credential ID to use
      * 
      */
     public Output<String> cloudCredentialId() {
@@ -37,14 +37,14 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Is GKE cluster imported? Default: `false` (bool)
+     * Is EKS cluster imported?
      * 
      */
     @Import(name="imported")
     private @Nullable Output<Boolean> imported;
 
     /**
-     * @return Is GKE cluster imported? Default: `false` (bool)
+     * @return Is EKS cluster imported?
      * 
      */
     public Optional<Output<Boolean>> imported() {
@@ -52,14 +52,14 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The AWS kms label ARN to use (string, e.g. arn:aws:kms:&lt;ZONE&gt;:&lt;123456789100&gt;:alias/&lt;NAME&gt;)
+     * The AWS kms key to use
      * 
      */
     @Import(name="kmsKey")
     private @Nullable Output<String> kmsKey;
 
     /**
-     * @return The AWS kms label ARN to use (string, e.g. arn:aws:kms:&lt;ZONE&gt;:&lt;123456789100&gt;:alias/&lt;NAME&gt;)
+     * @return The AWS kms key to use
      * 
      */
     public Optional<Output<String>> kmsKey() {
@@ -67,14 +67,14 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * The kubernetes master version
      * 
      */
     @Import(name="kubernetesVersion")
     private @Nullable Output<String> kubernetesVersion;
 
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return The kubernetes master version
      * 
      */
     public Optional<Output<String>> kubernetesVersion() {
@@ -82,14 +82,14 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The AWS cloudwatch logging types. `audit`, `api`, `scheduler`, `controllerManager` and `authenticator` values are allowed (list)
+     * The AWS logging types
      * 
      */
     @Import(name="loggingTypes")
     private @Nullable Output<List<String>> loggingTypes;
 
     /**
-     * @return The AWS cloudwatch logging types. `audit`, `api`, `scheduler`, `controllerManager` and `authenticator` values are allowed (list)
+     * @return The AWS logging types
      * 
      */
     public Optional<Output<List<String>>> loggingTypes() {
@@ -112,14 +112,14 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The EKS cluster name to import. Required to create a new cluster (list)
+     * The AWS node groups to use
      * 
      */
     @Import(name="nodeGroups")
     private @Nullable Output<List<ClusterEksConfigV2NodeGroupArgs>> nodeGroups;
 
     /**
-     * @return The EKS cluster name to import. Required to create a new cluster (list)
+     * @return The AWS node groups to use
      * 
      */
     public Optional<Output<List<ClusterEksConfigV2NodeGroupArgs>>> nodeGroups() {
@@ -127,14 +127,14 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The EKS cluster has private access (bool)
+     * The EKS cluster has private access
      * 
      */
     @Import(name="privateAccess")
     private @Nullable Output<Boolean> privateAccess;
 
     /**
-     * @return The EKS cluster has private access (bool)
+     * @return The EKS cluster has private access
      * 
      */
     public Optional<Output<Boolean>> privateAccess() {
@@ -142,14 +142,14 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The EKS cluster has public access (bool)
+     * The EKS cluster has public access
      * 
      */
     @Import(name="publicAccess")
     private @Nullable Output<Boolean> publicAccess;
 
     /**
-     * @return The EKS cluster has public access (bool)
+     * @return The EKS cluster has public access
      * 
      */
     public Optional<Output<Boolean>> publicAccess() {
@@ -157,14 +157,14 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The EKS cluster public access sources (map)
+     * The EKS cluster public access sources
      * 
      */
     @Import(name="publicAccessSources")
     private @Nullable Output<List<String>> publicAccessSources;
 
     /**
-     * @return The EKS cluster public access sources (map)
+     * @return The EKS cluster public access sources
      * 
      */
     public Optional<Output<List<String>>> publicAccessSources() {
@@ -172,14 +172,14 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     * The AWS Region to create the EKS cluster in
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     * @return The AWS Region to create the EKS cluster in
      * 
      */
     public Optional<Output<String>> region() {
@@ -187,14 +187,14 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Enable EKS cluster secret encryption (bool)
+     * Enable EKS cluster secret encryption
      * 
      */
     @Import(name="secretsEncryption")
     private @Nullable Output<Boolean> secretsEncryption;
 
     /**
-     * @return Enable EKS cluster secret encryption (bool)
+     * @return Enable EKS cluster secret encryption
      * 
      */
     public Optional<Output<Boolean>> secretsEncryption() {
@@ -202,14 +202,14 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * List of security groups to use for the cluster (list)
+     * List of security groups to use for the cluster
      * 
      */
     @Import(name="securityGroups")
     private @Nullable Output<List<String>> securityGroups;
 
     /**
-     * @return List of security groups to use for the cluster (list)
+     * @return List of security groups to use for the cluster
      * 
      */
     public Optional<Output<List<String>>> securityGroups() {
@@ -217,14 +217,14 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The AWS service role to use (string)
+     * The AWS service role to use
      * 
      */
     @Import(name="serviceRole")
     private @Nullable Output<String> serviceRole;
 
     /**
-     * @return The AWS service role to use (string)
+     * @return The AWS service role to use
      * 
      */
     public Optional<Output<String>> serviceRole() {
@@ -232,14 +232,14 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The EKS node group subnets (list string)
+     * List of subnets in the virtual network to use
      * 
      */
     @Import(name="subnets")
     private @Nullable Output<List<String>> subnets;
 
     /**
-     * @return The EKS node group subnets (list string)
+     * @return List of subnets in the virtual network to use
      * 
      */
     public Optional<Output<List<String>>> subnets() {
@@ -247,14 +247,14 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The GKE node config tags (List)
+     * The EKS cluster tags
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
-     * @return The GKE node config tags (List)
+     * @return The EKS cluster tags
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -301,7 +301,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param cloudCredentialId The EKS cloud_credential id (string)
+         * @param cloudCredentialId The AWS Cloud Credential ID to use
          * 
          * @return builder
          * 
@@ -312,7 +312,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param cloudCredentialId The EKS cloud_credential id (string)
+         * @param cloudCredentialId The AWS Cloud Credential ID to use
          * 
          * @return builder
          * 
@@ -322,7 +322,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param imported Is GKE cluster imported? Default: `false` (bool)
+         * @param imported Is EKS cluster imported?
          * 
          * @return builder
          * 
@@ -333,7 +333,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param imported Is GKE cluster imported? Default: `false` (bool)
+         * @param imported Is EKS cluster imported?
          * 
          * @return builder
          * 
@@ -343,7 +343,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param kmsKey The AWS kms label ARN to use (string, e.g. arn:aws:kms:&lt;ZONE&gt;:&lt;123456789100&gt;:alias/&lt;NAME&gt;)
+         * @param kmsKey The AWS kms key to use
          * 
          * @return builder
          * 
@@ -354,7 +354,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param kmsKey The AWS kms label ARN to use (string, e.g. arn:aws:kms:&lt;ZONE&gt;:&lt;123456789100&gt;:alias/&lt;NAME&gt;)
+         * @param kmsKey The AWS kms key to use
          * 
          * @return builder
          * 
@@ -364,7 +364,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param kubernetesVersion The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+         * @param kubernetesVersion The kubernetes master version
          * 
          * @return builder
          * 
@@ -375,7 +375,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param kubernetesVersion The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+         * @param kubernetesVersion The kubernetes master version
          * 
          * @return builder
          * 
@@ -385,7 +385,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param loggingTypes The AWS cloudwatch logging types. `audit`, `api`, `scheduler`, `controllerManager` and `authenticator` values are allowed (list)
+         * @param loggingTypes The AWS logging types
          * 
          * @return builder
          * 
@@ -396,7 +396,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param loggingTypes The AWS cloudwatch logging types. `audit`, `api`, `scheduler`, `controllerManager` and `authenticator` values are allowed (list)
+         * @param loggingTypes The AWS logging types
          * 
          * @return builder
          * 
@@ -406,7 +406,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param loggingTypes The AWS cloudwatch logging types. `audit`, `api`, `scheduler`, `controllerManager` and `authenticator` values are allowed (list)
+         * @param loggingTypes The AWS logging types
          * 
          * @return builder
          * 
@@ -437,7 +437,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param nodeGroups The EKS cluster name to import. Required to create a new cluster (list)
+         * @param nodeGroups The AWS node groups to use
          * 
          * @return builder
          * 
@@ -448,7 +448,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param nodeGroups The EKS cluster name to import. Required to create a new cluster (list)
+         * @param nodeGroups The AWS node groups to use
          * 
          * @return builder
          * 
@@ -458,7 +458,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param nodeGroups The EKS cluster name to import. Required to create a new cluster (list)
+         * @param nodeGroups The AWS node groups to use
          * 
          * @return builder
          * 
@@ -468,7 +468,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param privateAccess The EKS cluster has private access (bool)
+         * @param privateAccess The EKS cluster has private access
          * 
          * @return builder
          * 
@@ -479,7 +479,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param privateAccess The EKS cluster has private access (bool)
+         * @param privateAccess The EKS cluster has private access
          * 
          * @return builder
          * 
@@ -489,7 +489,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param publicAccess The EKS cluster has public access (bool)
+         * @param publicAccess The EKS cluster has public access
          * 
          * @return builder
          * 
@@ -500,7 +500,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param publicAccess The EKS cluster has public access (bool)
+         * @param publicAccess The EKS cluster has public access
          * 
          * @return builder
          * 
@@ -510,7 +510,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param publicAccessSources The EKS cluster public access sources (map)
+         * @param publicAccessSources The EKS cluster public access sources
          * 
          * @return builder
          * 
@@ -521,7 +521,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param publicAccessSources The EKS cluster public access sources (map)
+         * @param publicAccessSources The EKS cluster public access sources
          * 
          * @return builder
          * 
@@ -531,7 +531,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param publicAccessSources The EKS cluster public access sources (map)
+         * @param publicAccessSources The EKS cluster public access sources
          * 
          * @return builder
          * 
@@ -541,7 +541,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param region The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+         * @param region The AWS Region to create the EKS cluster in
          * 
          * @return builder
          * 
@@ -552,7 +552,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param region The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+         * @param region The AWS Region to create the EKS cluster in
          * 
          * @return builder
          * 
@@ -562,7 +562,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param secretsEncryption Enable EKS cluster secret encryption (bool)
+         * @param secretsEncryption Enable EKS cluster secret encryption
          * 
          * @return builder
          * 
@@ -573,7 +573,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param secretsEncryption Enable EKS cluster secret encryption (bool)
+         * @param secretsEncryption Enable EKS cluster secret encryption
          * 
          * @return builder
          * 
@@ -583,7 +583,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param securityGroups List of security groups to use for the cluster (list)
+         * @param securityGroups List of security groups to use for the cluster
          * 
          * @return builder
          * 
@@ -594,7 +594,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param securityGroups List of security groups to use for the cluster (list)
+         * @param securityGroups List of security groups to use for the cluster
          * 
          * @return builder
          * 
@@ -604,7 +604,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param securityGroups List of security groups to use for the cluster (list)
+         * @param securityGroups List of security groups to use for the cluster
          * 
          * @return builder
          * 
@@ -614,7 +614,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param serviceRole The AWS service role to use (string)
+         * @param serviceRole The AWS service role to use
          * 
          * @return builder
          * 
@@ -625,7 +625,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param serviceRole The AWS service role to use (string)
+         * @param serviceRole The AWS service role to use
          * 
          * @return builder
          * 
@@ -635,7 +635,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param subnets The EKS node group subnets (list string)
+         * @param subnets List of subnets in the virtual network to use
          * 
          * @return builder
          * 
@@ -646,7 +646,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param subnets The EKS node group subnets (list string)
+         * @param subnets List of subnets in the virtual network to use
          * 
          * @return builder
          * 
@@ -656,7 +656,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param subnets The EKS node group subnets (list string)
+         * @param subnets List of subnets in the virtual network to use
          * 
          * @return builder
          * 
@@ -666,7 +666,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param tags The GKE node config tags (List)
+         * @param tags The EKS cluster tags
          * 
          * @return builder
          * 
@@ -677,7 +677,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param tags The GKE node config tags (List)
+         * @param tags The EKS cluster tags
          * 
          * @return builder
          * 

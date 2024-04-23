@@ -20,14 +20,14 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
     public static final ClusterTemplateTemplateRevisionClusterConfigArgs Empty = new ClusterTemplateTemplateRevisionClusterConfigArgs();
 
     /**
-     * Local cluster auth endpoint (list maxitems: 1)
+     * Local cluster auth endpoint
      * 
      */
     @Import(name="clusterAuthEndpoint")
     private @Nullable Output<ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointArgs> clusterAuthEndpoint;
 
     /**
-     * @return Local cluster auth endpoint (list maxitems: 1)
+     * @return Local cluster auth endpoint
      * 
      */
     public Optional<Output<ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointArgs>> clusterAuthEndpoint() {
@@ -35,14 +35,14 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
     }
 
     /**
-     * Default cluster role for project members (string)
+     * Default cluster role for project members
      * 
      */
     @Import(name="defaultClusterRoleForProjectMembers")
     private @Nullable Output<String> defaultClusterRoleForProjectMembers;
 
     /**
-     * @return Default cluster role for project members (string)
+     * @return Default cluster role for project members
      * 
      */
     public Optional<Output<String>> defaultClusterRoleForProjectMembers() {
@@ -65,14 +65,14 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
     }
 
     /**
-     * Default pod security policy template ID (string)
+     * Default pod security policy template ID
      * 
      */
     @Import(name="defaultPodSecurityPolicyTemplateId")
     private @Nullable Output<String> defaultPodSecurityPolicyTemplateId;
 
     /**
-     * @return Default pod security policy template ID (string)
+     * @return Default pod security policy template ID
      * 
      */
     public Optional<Output<String>> defaultPodSecurityPolicyTemplateId() {
@@ -80,14 +80,14 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
     }
 
     /**
-     * Desired agent image (string)
+     * Desired agent image
      * 
      */
     @Import(name="desiredAgentImage")
     private @Nullable Output<String> desiredAgentImage;
 
     /**
-     * @return Desired agent image (string)
+     * @return Desired agent image
      * 
      */
     public Optional<Output<String>> desiredAgentImage() {
@@ -95,14 +95,14 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
     }
 
     /**
-     * Desired auth image (string)
+     * Desired auth image
      * 
      */
     @Import(name="desiredAuthImage")
     private @Nullable Output<String> desiredAuthImage;
 
     /**
-     * @return Desired auth image (string)
+     * @return Desired auth image
      * 
      */
     public Optional<Output<String>> desiredAuthImage() {
@@ -110,14 +110,14 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
     }
 
     /**
-     * Desired auth image (string)
+     * Docker Root Dir
      * 
      */
     @Import(name="dockerRootDir")
     private @Nullable Output<String> dockerRootDir;
 
     /**
-     * @return Desired auth image (string)
+     * @return Docker Root Dir
      * 
      */
     public Optional<Output<String>> dockerRootDir() {
@@ -125,14 +125,14 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
     }
 
     /**
-     * Enable built-in cluster alerting. Default: `false` (bool)
+     * Enable built-in cluster alerting
      * 
      */
     @Import(name="enableClusterAlerting")
     private @Nullable Output<Boolean> enableClusterAlerting;
 
     /**
-     * @return Enable built-in cluster alerting. Default: `false` (bool)
+     * @return Enable built-in cluster alerting
      * 
      */
     public Optional<Output<Boolean>> enableClusterAlerting() {
@@ -140,14 +140,14 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
     }
 
     /**
-     * Enable built-in cluster monitoring. Default: `false` (bool)
+     * Enable built-in cluster monitoring
      * 
      */
     @Import(name="enableClusterMonitoring")
     private @Nullable Output<Boolean> enableClusterMonitoring;
 
     /**
-     * @return Enable built-in cluster monitoring. Default: `false` (bool)
+     * @return Enable built-in cluster monitoring
      * 
      */
     public Optional<Output<Boolean>> enableClusterMonitoring() {
@@ -155,14 +155,14 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
     }
 
     /**
-     * Enable project network isolation. Default: `false` (bool)
+     * Enable project network isolation
      * 
      */
     @Import(name="enableNetworkPolicy")
     private @Nullable Output<Boolean> enableNetworkPolicy;
 
     /**
-     * @return Enable project network isolation. Default: `false` (bool)
+     * @return Enable project network isolation
      * 
      */
     public Optional<Output<Boolean>> enableNetworkPolicy() {
@@ -170,14 +170,14 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
     }
 
     /**
-     * Rancher Kubernetes Engine Config (list maxitems: 1)
+     * Rancher Kubernetes Engine Config
      * 
      */
     @Import(name="rkeConfig", required=true)
     private Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs> rkeConfig;
 
     /**
-     * @return Rancher Kubernetes Engine Config (list maxitems: 1)
+     * @return Rancher Kubernetes Engine Config
      * 
      */
     public Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs> rkeConfig() {
@@ -185,14 +185,14 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
     }
 
     /**
-     * Windows prefered cluster. Default: `false` (bool)
+     * Windows prefered cluster
      * 
      */
     @Import(name="windowsPreferedCluster")
     private @Nullable Output<Boolean> windowsPreferedCluster;
 
     /**
-     * @return Windows prefered cluster. Default: `false` (bool)
+     * @return Windows prefered cluster
      * 
      */
     public Optional<Output<Boolean>> windowsPreferedCluster() {
@@ -235,7 +235,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
         }
 
         /**
-         * @param clusterAuthEndpoint Local cluster auth endpoint (list maxitems: 1)
+         * @param clusterAuthEndpoint Local cluster auth endpoint
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
         }
 
         /**
-         * @param clusterAuthEndpoint Local cluster auth endpoint (list maxitems: 1)
+         * @param clusterAuthEndpoint Local cluster auth endpoint
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
         }
 
         /**
-         * @param defaultClusterRoleForProjectMembers Default cluster role for project members (string)
+         * @param defaultClusterRoleForProjectMembers Default cluster role for project members
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
         }
 
         /**
-         * @param defaultClusterRoleForProjectMembers Default cluster role for project members (string)
+         * @param defaultClusterRoleForProjectMembers Default cluster role for project members
          * 
          * @return builder
          * 
@@ -298,7 +298,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
         }
 
         /**
-         * @param defaultPodSecurityPolicyTemplateId Default pod security policy template ID (string)
+         * @param defaultPodSecurityPolicyTemplateId Default pod security policy template ID
          * 
          * @return builder
          * 
@@ -309,7 +309,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
         }
 
         /**
-         * @param defaultPodSecurityPolicyTemplateId Default pod security policy template ID (string)
+         * @param defaultPodSecurityPolicyTemplateId Default pod security policy template ID
          * 
          * @return builder
          * 
@@ -319,7 +319,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
         }
 
         /**
-         * @param desiredAgentImage Desired agent image (string)
+         * @param desiredAgentImage Desired agent image
          * 
          * @return builder
          * 
@@ -330,7 +330,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
         }
 
         /**
-         * @param desiredAgentImage Desired agent image (string)
+         * @param desiredAgentImage Desired agent image
          * 
          * @return builder
          * 
@@ -340,7 +340,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
         }
 
         /**
-         * @param desiredAuthImage Desired auth image (string)
+         * @param desiredAuthImage Desired auth image
          * 
          * @return builder
          * 
@@ -351,7 +351,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
         }
 
         /**
-         * @param desiredAuthImage Desired auth image (string)
+         * @param desiredAuthImage Desired auth image
          * 
          * @return builder
          * 
@@ -361,7 +361,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
         }
 
         /**
-         * @param dockerRootDir Desired auth image (string)
+         * @param dockerRootDir Docker Root Dir
          * 
          * @return builder
          * 
@@ -372,7 +372,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
         }
 
         /**
-         * @param dockerRootDir Desired auth image (string)
+         * @param dockerRootDir Docker Root Dir
          * 
          * @return builder
          * 
@@ -382,7 +382,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
         }
 
         /**
-         * @param enableClusterAlerting Enable built-in cluster alerting. Default: `false` (bool)
+         * @param enableClusterAlerting Enable built-in cluster alerting
          * 
          * @return builder
          * 
@@ -393,7 +393,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
         }
 
         /**
-         * @param enableClusterAlerting Enable built-in cluster alerting. Default: `false` (bool)
+         * @param enableClusterAlerting Enable built-in cluster alerting
          * 
          * @return builder
          * 
@@ -403,7 +403,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
         }
 
         /**
-         * @param enableClusterMonitoring Enable built-in cluster monitoring. Default: `false` (bool)
+         * @param enableClusterMonitoring Enable built-in cluster monitoring
          * 
          * @return builder
          * 
@@ -414,7 +414,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
         }
 
         /**
-         * @param enableClusterMonitoring Enable built-in cluster monitoring. Default: `false` (bool)
+         * @param enableClusterMonitoring Enable built-in cluster monitoring
          * 
          * @return builder
          * 
@@ -424,7 +424,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
         }
 
         /**
-         * @param enableNetworkPolicy Enable project network isolation. Default: `false` (bool)
+         * @param enableNetworkPolicy Enable project network isolation
          * 
          * @return builder
          * 
@@ -435,7 +435,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
         }
 
         /**
-         * @param enableNetworkPolicy Enable project network isolation. Default: `false` (bool)
+         * @param enableNetworkPolicy Enable project network isolation
          * 
          * @return builder
          * 
@@ -445,7 +445,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
         }
 
         /**
-         * @param rkeConfig Rancher Kubernetes Engine Config (list maxitems: 1)
+         * @param rkeConfig Rancher Kubernetes Engine Config
          * 
          * @return builder
          * 
@@ -456,7 +456,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
         }
 
         /**
-         * @param rkeConfig Rancher Kubernetes Engine Config (list maxitems: 1)
+         * @param rkeConfig Rancher Kubernetes Engine Config
          * 
          * @return builder
          * 
@@ -466,7 +466,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
         }
 
         /**
-         * @param windowsPreferedCluster Windows prefered cluster. Default: `false` (bool)
+         * @param windowsPreferedCluster Windows prefered cluster
          * 
          * @return builder
          * 
@@ -477,7 +477,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
         }
 
         /**
-         * @param windowsPreferedCluster Windows prefered cluster. Default: `false` (bool)
+         * @param windowsPreferedCluster Windows prefered cluster
          * 
          * @return builder
          * 

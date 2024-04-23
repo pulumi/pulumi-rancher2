@@ -14,38 +14,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterRkeConfigServicesKubeApiAdmissionConfiguration {
     /**
-     * @return Admission configuration ApiVersion. Default: `apiserver.config.k8s.io/v1` (string)
+     * @return Admission configuration ApiVersion
      * 
      */
     private @Nullable String apiVersion;
     /**
-     * @return Admission configuration Kind. Default: `AdmissionConfiguration` (string)
+     * @return Admission configuration Kind
      * 
      */
     private @Nullable String kind;
     /**
-     * @return Admission configuration plugins. (list `plugin`)
+     * @return Admission configuration plugins
      * 
      */
     private @Nullable List<ClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin> plugins;
 
     private ClusterRkeConfigServicesKubeApiAdmissionConfiguration() {}
     /**
-     * @return Admission configuration ApiVersion. Default: `apiserver.config.k8s.io/v1` (string)
+     * @return Admission configuration ApiVersion
      * 
      */
     public Optional<String> apiVersion() {
         return Optional.ofNullable(this.apiVersion);
     }
     /**
-     * @return Admission configuration Kind. Default: `AdmissionConfiguration` (string)
+     * @return Admission configuration Kind
      * 
      */
     public Optional<String> kind() {
         return Optional.ofNullable(this.kind);
     }
     /**
-     * @return Admission configuration plugins. (list `plugin`)
+     * @return Admission configuration plugins
      * 
      */
     public List<ClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin> plugins() {

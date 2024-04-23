@@ -13,50 +13,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterRke2ConfigUpgradeStrategy {
     /**
-     * @return Drain server nodes. Default: `false` (bool)
+     * @return Drain server nodes
      * 
      */
     private @Nullable Boolean drainServerNodes;
     /**
-     * @return Drain worker nodes. Default: `false` (bool)
+     * @return Drain worker nodes
      * 
      */
     private @Nullable Boolean drainWorkerNodes;
     /**
-     * @return Server concurrency. Default: `1` (int)
+     * @return Server concurrency
      * 
      */
     private @Nullable Integer serverConcurrency;
     /**
-     * @return Worker concurrency. Default: `1` (int)
+     * @return Worker concurrency
      * 
      */
     private @Nullable Integer workerConcurrency;
 
     private ClusterRke2ConfigUpgradeStrategy() {}
     /**
-     * @return Drain server nodes. Default: `false` (bool)
+     * @return Drain server nodes
      * 
      */
     public Optional<Boolean> drainServerNodes() {
         return Optional.ofNullable(this.drainServerNodes);
     }
     /**
-     * @return Drain worker nodes. Default: `false` (bool)
+     * @return Drain worker nodes
      * 
      */
     public Optional<Boolean> drainWorkerNodes() {
         return Optional.ofNullable(this.drainWorkerNodes);
     }
     /**
-     * @return Server concurrency. Default: `1` (int)
+     * @return Server concurrency
      * 
      */
     public Optional<Integer> serverConcurrency() {
         return Optional.ofNullable(this.serverConcurrency);
     }
     /**
-     * @return Worker concurrency. Default: `1` (int)
+     * @return Worker concurrency
      * 
      */
     public Optional<Integer> workerConcurrency() {

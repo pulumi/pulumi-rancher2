@@ -18,14 +18,14 @@ public final class ClusterGkeConfigV2PrivateClusterConfigArgs extends com.pulumi
     public static final ClusterGkeConfigV2PrivateClusterConfigArgs Empty = new ClusterGkeConfigV2PrivateClusterConfigArgs();
 
     /**
-     * Enable GKE cluster private endpoint. Default: `false` (bool)
+     * Enable GKE cluster private endpoint
      * 
      */
     @Import(name="enablePrivateEndpoint")
     private @Nullable Output<Boolean> enablePrivateEndpoint;
 
     /**
-     * @return Enable GKE cluster private endpoint. Default: `false` (bool)
+     * @return Enable GKE cluster private endpoint
      * 
      */
     public Optional<Output<Boolean>> enablePrivateEndpoint() {
@@ -33,14 +33,14 @@ public final class ClusterGkeConfigV2PrivateClusterConfigArgs extends com.pulumi
     }
 
     /**
-     * Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+     * Enable GKE cluster private nodes
      * 
      */
     @Import(name="enablePrivateNodes")
     private @Nullable Output<Boolean> enablePrivateNodes;
 
     /**
-     * @return Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+     * @return Enable GKE cluster private nodes
      * 
      */
     public Optional<Output<Boolean>> enablePrivateNodes() {
@@ -48,14 +48,14 @@ public final class ClusterGkeConfigV2PrivateClusterConfigArgs extends com.pulumi
     }
 
     /**
-     * The GKE cluster private master ip v4 cidr block (string)
+     * The GKE cluster private master ip v4 cidr block
      * 
      */
     @Import(name="masterIpv4CidrBlock", required=true)
     private Output<String> masterIpv4CidrBlock;
 
     /**
-     * @return The GKE cluster private master ip v4 cidr block (string)
+     * @return The GKE cluster private master ip v4 cidr block
      * 
      */
     public Output<String> masterIpv4CidrBlock() {
@@ -89,7 +89,7 @@ public final class ClusterGkeConfigV2PrivateClusterConfigArgs extends com.pulumi
         }
 
         /**
-         * @param enablePrivateEndpoint Enable GKE cluster private endpoint. Default: `false` (bool)
+         * @param enablePrivateEndpoint Enable GKE cluster private endpoint
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class ClusterGkeConfigV2PrivateClusterConfigArgs extends com.pulumi
         }
 
         /**
-         * @param enablePrivateEndpoint Enable GKE cluster private endpoint. Default: `false` (bool)
+         * @param enablePrivateEndpoint Enable GKE cluster private endpoint
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class ClusterGkeConfigV2PrivateClusterConfigArgs extends com.pulumi
         }
 
         /**
-         * @param enablePrivateNodes Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+         * @param enablePrivateNodes Enable GKE cluster private nodes
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class ClusterGkeConfigV2PrivateClusterConfigArgs extends com.pulumi
         }
 
         /**
-         * @param enablePrivateNodes Specifies whether worker nodes will be deployed into a new, private, subnet. Default `false` (bool)
+         * @param enablePrivateNodes Enable GKE cluster private nodes
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class ClusterGkeConfigV2PrivateClusterConfigArgs extends com.pulumi
         }
 
         /**
-         * @param masterIpv4CidrBlock The GKE cluster private master ip v4 cidr block (string)
+         * @param masterIpv4CidrBlock The GKE cluster private master ip v4 cidr block
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class ClusterGkeConfigV2PrivateClusterConfigArgs extends com.pulumi
         }
 
         /**
-         * @param masterIpv4CidrBlock The GKE cluster private master ip v4 cidr block (string)
+         * @param masterIpv4CidrBlock The GKE cluster private master ip v4 cidr block
          * 
          * @return builder
          * 

@@ -13,13 +13,13 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterV2RkeConfigMachineSelectorConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Config is the distribution-specify configuration to be applied to nodes that match the provided label selector. For more information, please refer to Rancher's documentation for [RKE2 Cluster Configuration](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration#machineselectorconfig) or [K3s Cluster Configuration](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/k3s-cluster-configuration#machineselectorconfig)
+        /// Machine selector config
         /// </summary>
         [Input("config")]
         public Input<string>? Config { get; set; }
 
         /// <summary>
-        /// Machine selector label is a label query over a set of resources. The result of match_labels and match_expressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
+        /// Machine label selector
         /// </summary>
         [Input("machineLabelSelector")]
         public Input<Inputs.ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorArgs>? MachineLabelSelector { get; set; }

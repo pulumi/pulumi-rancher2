@@ -17,14 +17,14 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
     public static final MachineConfigV2DigitaloceanConfigArgs Empty = new MachineConfigV2DigitaloceanConfigArgs();
 
     /**
-     * Digital Ocean access token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * Digital Ocean access token
      * 
      */
     @Import(name="accessToken")
     private @Nullable Output<String> accessToken;
 
     /**
-     * @return Digital Ocean access token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return Digital Ocean access token
      * 
      */
     public Optional<Output<String>> accessToken() {
@@ -32,14 +32,14 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * Enable backups for droplet. Default `false` (bool)
+     * Enable backups for droplet
      * 
      */
     @Import(name="backups")
     private @Nullable Output<Boolean> backups;
 
     /**
-     * @return Enable backups for droplet. Default `false` (bool)
+     * @return Enable backups for droplet
      * 
      */
     public Optional<Output<Boolean>> backups() {
@@ -47,14 +47,14 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+     * Digital Ocean Image
      * 
      */
     @Import(name="image")
     private @Nullable Output<String> image;
 
     /**
-     * @return Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+     * @return Digital Ocean Image
      * 
      */
     public Optional<Output<String>> image() {
@@ -62,14 +62,14 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * Enable ipv6 for droplet. Default `false` (bool)
+     * Enable ipv6 for droplet
      * 
      */
     @Import(name="ipv6")
     private @Nullable Output<Boolean> ipv6;
 
     /**
-     * @return Enable ipv6 for droplet. Default `false` (bool)
+     * @return Enable ipv6 for droplet
      * 
      */
     public Optional<Output<Boolean>> ipv6() {
@@ -77,14 +77,14 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * Enable monitoring for droplet. Default `false` (bool)
+     * Enable monitoring for droplet
      * 
      */
     @Import(name="monitoring")
     private @Nullable Output<Boolean> monitoring;
 
     /**
-     * @return Enable monitoring for droplet. Default `false` (bool)
+     * @return Enable monitoring for droplet
      * 
      */
     public Optional<Output<Boolean>> monitoring() {
@@ -92,14 +92,14 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * Enable private networking for droplet. Default `false` (bool)
+     * Enable private networking for droplet
      * 
      */
     @Import(name="privateNetworking")
     private @Nullable Output<Boolean> privateNetworking;
 
     /**
-     * @return Enable private networking for droplet. Default `false` (bool)
+     * @return Enable private networking for droplet
      * 
      */
     public Optional<Output<Boolean>> privateNetworking() {
@@ -107,14 +107,14 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * OpenStack region name (string)
+     * Digital Ocean region
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return OpenStack region name (string)
+     * @return Digital Ocean region
      * 
      */
     public Optional<Output<String>> region() {
@@ -122,14 +122,14 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * Digital Ocean size. Default `s-1vcpu-1gb` (string)
+     * Digital Ocean size
      * 
      */
     @Import(name="size")
     private @Nullable Output<String> size;
 
     /**
-     * @return Digital Ocean size. Default `s-1vcpu-1gb` (string)
+     * @return Digital Ocean size
      * 
      */
     public Optional<Output<String>> size() {
@@ -137,14 +137,14 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * SSH private key contents (string)
+     * SSH private key contents
      * 
      */
     @Import(name="sshKeyContents")
     private @Nullable Output<String> sshKeyContents;
 
     /**
-     * @return SSH private key contents (string)
+     * @return SSH private key contents
      * 
      */
     public Optional<Output<String>> sshKeyContents() {
@@ -152,14 +152,14 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * SSH key fingerprint (string)
+     * SSH key fingerprint
      * 
      */
     @Import(name="sshKeyFingerprint")
     private @Nullable Output<String> sshKeyFingerprint;
 
     /**
-     * @return SSH key fingerprint (string)
+     * @return SSH key fingerprint
      * 
      */
     public Optional<Output<String>> sshKeyFingerprint() {
@@ -167,14 +167,14 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * If using a non-B2D image you can specify the ssh port. Default `22` (string)
+     * SSH port
      * 
      */
     @Import(name="sshPort")
     private @Nullable Output<String> sshPort;
 
     /**
-     * @return If using a non-B2D image you can specify the ssh port. Default `22` (string)
+     * @return SSH port
      * 
      */
     public Optional<Output<String>> sshPort() {
@@ -182,14 +182,14 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+     * SSH username
      * 
      */
     @Import(name="sshUser")
     private @Nullable Output<String> sshUser;
 
     /**
-     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+     * @return SSH username
      * 
      */
     public Optional<Output<String>> sshUser() {
@@ -197,14 +197,14 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * vSphere tags id e.g. `urn:xxx` (list)
+     * Comma-separated list of tags to apply to the Droplet
      * 
      */
     @Import(name="tags")
     private @Nullable Output<String> tags;
 
     /**
-     * @return vSphere tags id e.g. `urn:xxx` (list)
+     * @return Comma-separated list of tags to apply to the Droplet
      * 
      */
     public Optional<Output<String>> tags() {
@@ -212,14 +212,14 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * Path to file with cloud-init user-data (string)
+     * Path to file with cloud-init user-data
      * 
      */
     @Import(name="userdata")
     private @Nullable Output<String> userdata;
 
     /**
-     * @return Path to file with cloud-init user-data (string)
+     * @return Path to file with cloud-init user-data
      * 
      */
     public Optional<Output<String>> userdata() {
@@ -264,7 +264,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param accessToken Digital Ocean access token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+         * @param accessToken Digital Ocean access token
          * 
          * @return builder
          * 
@@ -275,7 +275,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param accessToken Digital Ocean access token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+         * @param accessToken Digital Ocean access token
          * 
          * @return builder
          * 
@@ -285,7 +285,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param backups Enable backups for droplet. Default `false` (bool)
+         * @param backups Enable backups for droplet
          * 
          * @return builder
          * 
@@ -296,7 +296,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param backups Enable backups for droplet. Default `false` (bool)
+         * @param backups Enable backups for droplet
          * 
          * @return builder
          * 
@@ -306,7 +306,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param image Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+         * @param image Digital Ocean Image
          * 
          * @return builder
          * 
@@ -317,7 +317,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param image Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+         * @param image Digital Ocean Image
          * 
          * @return builder
          * 
@@ -327,7 +327,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param ipv6 Enable ipv6 for droplet. Default `false` (bool)
+         * @param ipv6 Enable ipv6 for droplet
          * 
          * @return builder
          * 
@@ -338,7 +338,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param ipv6 Enable ipv6 for droplet. Default `false` (bool)
+         * @param ipv6 Enable ipv6 for droplet
          * 
          * @return builder
          * 
@@ -348,7 +348,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param monitoring Enable monitoring for droplet. Default `false` (bool)
+         * @param monitoring Enable monitoring for droplet
          * 
          * @return builder
          * 
@@ -359,7 +359,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param monitoring Enable monitoring for droplet. Default `false` (bool)
+         * @param monitoring Enable monitoring for droplet
          * 
          * @return builder
          * 
@@ -369,7 +369,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param privateNetworking Enable private networking for droplet. Default `false` (bool)
+         * @param privateNetworking Enable private networking for droplet
          * 
          * @return builder
          * 
@@ -380,7 +380,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param privateNetworking Enable private networking for droplet. Default `false` (bool)
+         * @param privateNetworking Enable private networking for droplet
          * 
          * @return builder
          * 
@@ -390,7 +390,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param region OpenStack region name (string)
+         * @param region Digital Ocean region
          * 
          * @return builder
          * 
@@ -401,7 +401,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param region OpenStack region name (string)
+         * @param region Digital Ocean region
          * 
          * @return builder
          * 
@@ -411,7 +411,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param size Digital Ocean size. Default `s-1vcpu-1gb` (string)
+         * @param size Digital Ocean size
          * 
          * @return builder
          * 
@@ -422,7 +422,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param size Digital Ocean size. Default `s-1vcpu-1gb` (string)
+         * @param size Digital Ocean size
          * 
          * @return builder
          * 
@@ -432,7 +432,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param sshKeyContents SSH private key contents (string)
+         * @param sshKeyContents SSH private key contents
          * 
          * @return builder
          * 
@@ -443,7 +443,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param sshKeyContents SSH private key contents (string)
+         * @param sshKeyContents SSH private key contents
          * 
          * @return builder
          * 
@@ -453,7 +453,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param sshKeyFingerprint SSH key fingerprint (string)
+         * @param sshKeyFingerprint SSH key fingerprint
          * 
          * @return builder
          * 
@@ -464,7 +464,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param sshKeyFingerprint SSH key fingerprint (string)
+         * @param sshKeyFingerprint SSH key fingerprint
          * 
          * @return builder
          * 
@@ -474,7 +474,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param sshPort If using a non-B2D image you can specify the ssh port. Default `22` (string)
+         * @param sshPort SSH port
          * 
          * @return builder
          * 
@@ -485,7 +485,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param sshPort If using a non-B2D image you can specify the ssh port. Default `22` (string)
+         * @param sshPort SSH port
          * 
          * @return builder
          * 
@@ -495,7 +495,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+         * @param sshUser SSH username
          * 
          * @return builder
          * 
@@ -506,7 +506,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+         * @param sshUser SSH username
          * 
          * @return builder
          * 
@@ -516,7 +516,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param tags vSphere tags id e.g. `urn:xxx` (list)
+         * @param tags Comma-separated list of tags to apply to the Droplet
          * 
          * @return builder
          * 
@@ -527,7 +527,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param tags vSphere tags id e.g. `urn:xxx` (list)
+         * @param tags Comma-separated list of tags to apply to the Droplet
          * 
          * @return builder
          * 
@@ -537,7 +537,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param userdata Path to file with cloud-init user-data (string)
+         * @param userdata Path to file with cloud-init user-data
          * 
          * @return builder
          * 
@@ -548,7 +548,7 @@ public final class MachineConfigV2DigitaloceanConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param userdata Path to file with cloud-init user-data (string)
+         * @param userdata Path to file with cloud-init user-data
          * 
          * @return builder
          * 

@@ -17,14 +17,14 @@ public final class NotifierMsteamsConfigArgs extends com.pulumi.resources.Resour
     public static final NotifierMsteamsConfigArgs Empty = new NotifierMsteamsConfigArgs();
 
     /**
-     * Wechat proxy url (string)
+     * MS teams proxy URL
      * 
      */
     @Import(name="proxyUrl")
     private @Nullable Output<String> proxyUrl;
 
     /**
-     * @return Wechat proxy url (string)
+     * @return MS teams proxy URL
      * 
      */
     public Optional<Output<String>> proxyUrl() {
@@ -32,14 +32,14 @@ public final class NotifierMsteamsConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Slack url (string)
+     * Webhook URL
      * 
      */
     @Import(name="url", required=true)
     private Output<String> url;
 
     /**
-     * @return Slack url (string)
+     * @return Webhook URL
      * 
      */
     public Output<String> url() {
@@ -72,7 +72,7 @@ public final class NotifierMsteamsConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param proxyUrl Wechat proxy url (string)
+         * @param proxyUrl MS teams proxy URL
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class NotifierMsteamsConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param proxyUrl Wechat proxy url (string)
+         * @param proxyUrl MS teams proxy URL
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class NotifierMsteamsConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param url Slack url (string)
+         * @param url Webhook URL
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class NotifierMsteamsConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param url Slack url (string)
+         * @param url Webhook URL
          * 
          * @return builder
          * 

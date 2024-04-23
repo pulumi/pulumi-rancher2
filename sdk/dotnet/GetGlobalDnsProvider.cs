@@ -16,7 +16,6 @@ namespace Pulumi.Rancher2
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -32,7 +31,6 @@ namespace Pulumi.Rancher2
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetGlobalDnsProviderResult> InvokeAsync(GetGlobalDnsProviderArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGlobalDnsProviderResult>("rancher2:index/getGlobalDnsProvider:getGlobalDnsProvider", args ?? new GetGlobalDnsProviderArgs(), options.WithDefaults());
@@ -42,7 +40,6 @@ namespace Pulumi.Rancher2
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -58,7 +55,6 @@ namespace Pulumi.Rancher2
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetGlobalDnsProviderResult> Invoke(GetGlobalDnsProviderInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGlobalDnsProviderResult>("rancher2:index/getGlobalDnsProvider:getGlobalDnsProvider", args ?? new GetGlobalDnsProviderInvokeArgs(), options.WithDefaults());

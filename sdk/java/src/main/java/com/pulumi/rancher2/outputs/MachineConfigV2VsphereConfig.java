@@ -13,386 +13,386 @@ import javax.annotation.Nullable;
 @CustomType
 public final class MachineConfigV2VsphereConfig {
     /**
-     * @return vSphere URL for boot2docker iso image. Default `https://releases.rancher.com/os/latest/rancheros-vmware.iso` (string)
+     * @return vSphere URL for boot2docker image
      * 
      */
     private @Nullable String boot2dockerUrl;
     /**
-     * @return vSphere vm configuration parameters (used for guestinfo) (list)
+     * @return vSphere vm configuration parameters (used for guestinfo)
      * 
      */
     private @Nullable List<String> cfgparams;
     /**
-     * @return If you choose creation type vm (clone vm) a name of what vm you want to clone is required (string)
+     * @return If you choose creation type clone a name of what you want to clone is required
      * 
      */
     private @Nullable String cloneFrom;
     /**
-     * @return Filepath to a cloud-config yaml file to put into the ISO user-data (string)
+     * @return Filepath to a cloud-config yaml file to put into the ISO user-data
      * 
      */
     private @Nullable String cloudConfig;
     /**
-     * @return vSphere cloud-init file or url to set in the guestinfo (string)
+     * @return vSphere cloud-init filepath or url to add to guestinfo
      * 
      */
     private @Nullable String cloudinit;
     /**
-     * @return If you choose to clone from a content library template specify the name of the library (string)
+     * @return If you choose to clone from a content library template specify the name of the library
      * 
      */
     private @Nullable String contentLibrary;
     /**
-     * @return vSphere CPU number for docker VM. Default `2` (string)
+     * @return vSphere CPU number for docker VM
      * 
      */
     private @Nullable String cpuCount;
     /**
-     * @return Creation type when creating a new virtual machine. Supported values: vm, template, library, legacy. Default `legacy` (string)
+     * @return Creation type when creating a new virtual machine. Supported values: vm, template, library, legacy
      * 
      */
     private @Nullable String creationType;
     /**
-     * @return vSphere custom attributes, format key/value e.g. `200=my custom value` (List)
+     * @return vSphere custom attributes, format key/value e.g. &#39;200=my custom value&#39;
      * 
      */
     private @Nullable List<String> customAttributes;
     /**
-     * @return vSphere datacenter for docker VM (string)
+     * @return vSphere datacenter for virtual machine
      * 
      */
     private @Nullable String datacenter;
     /**
-     * @return vSphere datastore for docker VM (string)
+     * @return vSphere datastore for virtual machine
      * 
      */
     private @Nullable String datastore;
     /**
-     * @return vSphere datastore cluster for virtual machine (string)
+     * @return vSphere datastore cluster for virtual machine
      * 
      */
     private @Nullable String datastoreCluster;
     /**
-     * @return vSphere size of disk for docker VM (in MB). Default `20480` (string)
+     * @return vSphere size of disk for docker VM (in MB)
      * 
      */
     private @Nullable String diskSize;
     /**
-     * @return vSphere folder for the docker VM. This folder must already exist in the datacenter (string)
+     * @return vSphere folder for the docker VM. This folder must already exist in the datacenter
      * 
      */
     private @Nullable String folder;
     /**
-     * @return Duration in seconds before the graceful shutdown of the VM times out and the VM is destroyed. A force destroy will be performed when the value is zero (string)
+     * @return Duration in seconds before the graceful shutdown of the VM times out and the VM is destroyed. A force destroy will be performed when the value is zero
      * 
      */
     private @Nullable String gracefulShutdownTimeout;
     /**
-     * @return vSphere compute resource where the docker VM will be instantiated. This can be omitted if using a cluster with DRS (string)
+     * @return vSphere compute resource where the docker VM will be instantiated. This can be omitted if using a cluster with DRS
      * 
      */
     private @Nullable String hostsystem;
     /**
-     * @return vSphere size of memory for docker VM (in MB). Default `2048` (string)
+     * @return vSphere size of memory for docker VM (in MB)
      * 
      */
     private @Nullable String memorySize;
     /**
-     * @return vSphere network where the docker VM will be attached (list)
+     * @return vSphere network where the virtual machine will be attached
      * 
      */
     private @Nullable List<String> networks;
     /**
-     * @return OpenStack password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return vSphere password
      * 
      */
     private @Nullable String password;
     /**
-     * @return vSphere resource pool for docker VM (string)
+     * @return vSphere resource pool for docker VM
      * 
      */
     private @Nullable String pool;
     /**
-     * @return If using a non-B2D image you can specify the ssh password. Default `tcuser` (string)
+     * @return If using a non-B2D image you can specify the ssh password
      * 
      */
     private @Nullable String sshPassword;
     /**
-     * @return If using a non-B2D image you can specify the ssh port. Default `22` (string)
+     * @return If using a non-B2D image you can specify the ssh port
      * 
      */
     private @Nullable String sshPort;
     /**
-     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+     * @return If using a non-B2D image you can specify the ssh user
      * 
      */
     private @Nullable String sshUser;
     /**
-     * @return If using a non-B2D image the uploaded keys will need chown&#39;ed. Default `staff` (string)
+     * @return If using a non-B2D image the uploaded keys will need chown&#39;ed, defaults to staff e.g. docker:staff
      * 
      */
     private @Nullable String sshUserGroup;
     /**
-     * @return vSphere tags id e.g. `urn:xxx` (list)
+     * @return vSphere tags id e.g. urn:xxx
      * 
      */
     private @Nullable List<String> tags;
     /**
-     * @return OpenStack username (string)
+     * @return vSphere username
      * 
      */
     private @Nullable String username;
     /**
-     * @return vSphere vApp IP allocation policy. Supported values are: `dhcp`, `fixed`, `transient` and `fixedAllocated` (string)
+     * @return vSphere vApp IP allocation policy. Supported values are: dhcp, fixed, transient and fixedAllocated
      * 
      */
     private @Nullable String vappIpAllocationPolicy;
     /**
-     * @return vSphere vApp IP protocol for this deployment. Supported values are: `IPv4` and `IPv6` (string)
+     * @return vSphere vApp IP protocol for this deployment. Supported values are: IPv4 and IPv6
      * 
      */
     private @Nullable String vappIpProtocol;
     /**
-     * @return vSphere vApp properties (list)
+     * @return vSphere vApp properties
      * 
      */
     private @Nullable List<String> vappProperties;
     /**
-     * @return vSphere OVF environment transports to use for properties. Supported values are: `iso` and `com.vmware.guestInfo` (string)
+     * @return vSphere OVF environment transports to use for properties. Supported values are: iso and com.vmware.guestInfo
      * 
      */
     private @Nullable String vappTransport;
     /**
-     * @return vSphere IP/hostname for vCenter (string)
+     * @return vSphere IP/hostname for vCenter
      * 
      */
     private @Nullable String vcenter;
     /**
-     * @return vSphere Port for vCenter Default `443` (string)
+     * @return vSphere Port for vCenter
      * 
      */
     private @Nullable String vcenterPort;
 
     private MachineConfigV2VsphereConfig() {}
     /**
-     * @return vSphere URL for boot2docker iso image. Default `https://releases.rancher.com/os/latest/rancheros-vmware.iso` (string)
+     * @return vSphere URL for boot2docker image
      * 
      */
     public Optional<String> boot2dockerUrl() {
         return Optional.ofNullable(this.boot2dockerUrl);
     }
     /**
-     * @return vSphere vm configuration parameters (used for guestinfo) (list)
+     * @return vSphere vm configuration parameters (used for guestinfo)
      * 
      */
     public List<String> cfgparams() {
         return this.cfgparams == null ? List.of() : this.cfgparams;
     }
     /**
-     * @return If you choose creation type vm (clone vm) a name of what vm you want to clone is required (string)
+     * @return If you choose creation type clone a name of what you want to clone is required
      * 
      */
     public Optional<String> cloneFrom() {
         return Optional.ofNullable(this.cloneFrom);
     }
     /**
-     * @return Filepath to a cloud-config yaml file to put into the ISO user-data (string)
+     * @return Filepath to a cloud-config yaml file to put into the ISO user-data
      * 
      */
     public Optional<String> cloudConfig() {
         return Optional.ofNullable(this.cloudConfig);
     }
     /**
-     * @return vSphere cloud-init file or url to set in the guestinfo (string)
+     * @return vSphere cloud-init filepath or url to add to guestinfo
      * 
      */
     public Optional<String> cloudinit() {
         return Optional.ofNullable(this.cloudinit);
     }
     /**
-     * @return If you choose to clone from a content library template specify the name of the library (string)
+     * @return If you choose to clone from a content library template specify the name of the library
      * 
      */
     public Optional<String> contentLibrary() {
         return Optional.ofNullable(this.contentLibrary);
     }
     /**
-     * @return vSphere CPU number for docker VM. Default `2` (string)
+     * @return vSphere CPU number for docker VM
      * 
      */
     public Optional<String> cpuCount() {
         return Optional.ofNullable(this.cpuCount);
     }
     /**
-     * @return Creation type when creating a new virtual machine. Supported values: vm, template, library, legacy. Default `legacy` (string)
+     * @return Creation type when creating a new virtual machine. Supported values: vm, template, library, legacy
      * 
      */
     public Optional<String> creationType() {
         return Optional.ofNullable(this.creationType);
     }
     /**
-     * @return vSphere custom attributes, format key/value e.g. `200=my custom value` (List)
+     * @return vSphere custom attributes, format key/value e.g. &#39;200=my custom value&#39;
      * 
      */
     public List<String> customAttributes() {
         return this.customAttributes == null ? List.of() : this.customAttributes;
     }
     /**
-     * @return vSphere datacenter for docker VM (string)
+     * @return vSphere datacenter for virtual machine
      * 
      */
     public Optional<String> datacenter() {
         return Optional.ofNullable(this.datacenter);
     }
     /**
-     * @return vSphere datastore for docker VM (string)
+     * @return vSphere datastore for virtual machine
      * 
      */
     public Optional<String> datastore() {
         return Optional.ofNullable(this.datastore);
     }
     /**
-     * @return vSphere datastore cluster for virtual machine (string)
+     * @return vSphere datastore cluster for virtual machine
      * 
      */
     public Optional<String> datastoreCluster() {
         return Optional.ofNullable(this.datastoreCluster);
     }
     /**
-     * @return vSphere size of disk for docker VM (in MB). Default `20480` (string)
+     * @return vSphere size of disk for docker VM (in MB)
      * 
      */
     public Optional<String> diskSize() {
         return Optional.ofNullable(this.diskSize);
     }
     /**
-     * @return vSphere folder for the docker VM. This folder must already exist in the datacenter (string)
+     * @return vSphere folder for the docker VM. This folder must already exist in the datacenter
      * 
      */
     public Optional<String> folder() {
         return Optional.ofNullable(this.folder);
     }
     /**
-     * @return Duration in seconds before the graceful shutdown of the VM times out and the VM is destroyed. A force destroy will be performed when the value is zero (string)
+     * @return Duration in seconds before the graceful shutdown of the VM times out and the VM is destroyed. A force destroy will be performed when the value is zero
      * 
      */
     public Optional<String> gracefulShutdownTimeout() {
         return Optional.ofNullable(this.gracefulShutdownTimeout);
     }
     /**
-     * @return vSphere compute resource where the docker VM will be instantiated. This can be omitted if using a cluster with DRS (string)
+     * @return vSphere compute resource where the docker VM will be instantiated. This can be omitted if using a cluster with DRS
      * 
      */
     public Optional<String> hostsystem() {
         return Optional.ofNullable(this.hostsystem);
     }
     /**
-     * @return vSphere size of memory for docker VM (in MB). Default `2048` (string)
+     * @return vSphere size of memory for docker VM (in MB)
      * 
      */
     public Optional<String> memorySize() {
         return Optional.ofNullable(this.memorySize);
     }
     /**
-     * @return vSphere network where the docker VM will be attached (list)
+     * @return vSphere network where the virtual machine will be attached
      * 
      */
     public List<String> networks() {
         return this.networks == null ? List.of() : this.networks;
     }
     /**
-     * @return OpenStack password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return vSphere password
      * 
      */
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
     }
     /**
-     * @return vSphere resource pool for docker VM (string)
+     * @return vSphere resource pool for docker VM
      * 
      */
     public Optional<String> pool() {
         return Optional.ofNullable(this.pool);
     }
     /**
-     * @return If using a non-B2D image you can specify the ssh password. Default `tcuser` (string)
+     * @return If using a non-B2D image you can specify the ssh password
      * 
      */
     public Optional<String> sshPassword() {
         return Optional.ofNullable(this.sshPassword);
     }
     /**
-     * @return If using a non-B2D image you can specify the ssh port. Default `22` (string)
+     * @return If using a non-B2D image you can specify the ssh port
      * 
      */
     public Optional<String> sshPort() {
         return Optional.ofNullable(this.sshPort);
     }
     /**
-     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+     * @return If using a non-B2D image you can specify the ssh user
      * 
      */
     public Optional<String> sshUser() {
         return Optional.ofNullable(this.sshUser);
     }
     /**
-     * @return If using a non-B2D image the uploaded keys will need chown&#39;ed. Default `staff` (string)
+     * @return If using a non-B2D image the uploaded keys will need chown&#39;ed, defaults to staff e.g. docker:staff
      * 
      */
     public Optional<String> sshUserGroup() {
         return Optional.ofNullable(this.sshUserGroup);
     }
     /**
-     * @return vSphere tags id e.g. `urn:xxx` (list)
+     * @return vSphere tags id e.g. urn:xxx
      * 
      */
     public List<String> tags() {
         return this.tags == null ? List.of() : this.tags;
     }
     /**
-     * @return OpenStack username (string)
+     * @return vSphere username
      * 
      */
     public Optional<String> username() {
         return Optional.ofNullable(this.username);
     }
     /**
-     * @return vSphere vApp IP allocation policy. Supported values are: `dhcp`, `fixed`, `transient` and `fixedAllocated` (string)
+     * @return vSphere vApp IP allocation policy. Supported values are: dhcp, fixed, transient and fixedAllocated
      * 
      */
     public Optional<String> vappIpAllocationPolicy() {
         return Optional.ofNullable(this.vappIpAllocationPolicy);
     }
     /**
-     * @return vSphere vApp IP protocol for this deployment. Supported values are: `IPv4` and `IPv6` (string)
+     * @return vSphere vApp IP protocol for this deployment. Supported values are: IPv4 and IPv6
      * 
      */
     public Optional<String> vappIpProtocol() {
         return Optional.ofNullable(this.vappIpProtocol);
     }
     /**
-     * @return vSphere vApp properties (list)
+     * @return vSphere vApp properties
      * 
      */
     public List<String> vappProperties() {
         return this.vappProperties == null ? List.of() : this.vappProperties;
     }
     /**
-     * @return vSphere OVF environment transports to use for properties. Supported values are: `iso` and `com.vmware.guestInfo` (string)
+     * @return vSphere OVF environment transports to use for properties. Supported values are: iso and com.vmware.guestInfo
      * 
      */
     public Optional<String> vappTransport() {
         return Optional.ofNullable(this.vappTransport);
     }
     /**
-     * @return vSphere IP/hostname for vCenter (string)
+     * @return vSphere IP/hostname for vCenter
      * 
      */
     public Optional<String> vcenter() {
         return Optional.ofNullable(this.vcenter);
     }
     /**
-     * @return vSphere Port for vCenter Default `443` (string)
+     * @return vSphere Port for vCenter
      * 
      */
     public Optional<String> vcenterPort() {

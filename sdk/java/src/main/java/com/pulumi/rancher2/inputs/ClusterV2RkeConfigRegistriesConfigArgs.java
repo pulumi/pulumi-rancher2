@@ -18,14 +18,14 @@ public final class ClusterV2RkeConfigRegistriesConfigArgs extends com.pulumi.res
     public static final ClusterV2RkeConfigRegistriesConfigArgs Empty = new ClusterV2RkeConfigRegistriesConfigArgs();
 
     /**
-     * Name of the secret that contains two keys with base64 encoded values: the username and password for the specified custom registry. No secret is required if the system-default-registry is not authenticated.
+     * Registry auth config secret name
      * 
      */
     @Import(name="authConfigSecretName")
     private @Nullable Output<String> authConfigSecretName;
 
     /**
-     * @return Name of the secret that contains two keys with base64 encoded values: the username and password for the specified custom registry. No secret is required if the system-default-registry is not authenticated.
+     * @return Registry auth config secret name
      * 
      */
     public Optional<Output<String>> authConfigSecretName() {
@@ -33,14 +33,14 @@ public final class ClusterV2RkeConfigRegistriesConfigArgs extends com.pulumi.res
     }
 
     /**
-     * Registry CA bundle.
+     * Registry CA bundle
      * 
      */
     @Import(name="caBundle")
     private @Nullable Output<String> caBundle;
 
     /**
-     * @return Registry CA bundle.
+     * @return Registry CA bundle
      * 
      */
     public Optional<Output<String>> caBundle() {
@@ -48,14 +48,14 @@ public final class ClusterV2RkeConfigRegistriesConfigArgs extends com.pulumi.res
     }
 
     /**
-     * Registry hostname.
+     * Registry hostname
      * 
      */
     @Import(name="hostname", required=true)
     private Output<String> hostname;
 
     /**
-     * @return Registry hostname.
+     * @return Registry hostname
      * 
      */
     public Output<String> hostname() {
@@ -63,14 +63,14 @@ public final class ClusterV2RkeConfigRegistriesConfigArgs extends com.pulumi.res
     }
 
     /**
-     * Registry insecure connectivity.
+     * Registry insecure connectivity
      * 
      */
     @Import(name="insecure")
     private @Nullable Output<Boolean> insecure;
 
     /**
-     * @return Registry insecure connectivity.
+     * @return Registry insecure connectivity
      * 
      */
     public Optional<Output<Boolean>> insecure() {
@@ -78,14 +78,14 @@ public final class ClusterV2RkeConfigRegistriesConfigArgs extends com.pulumi.res
     }
 
     /**
-     * Registry TLS secret name. TLS is a pair of Cert/Key.
+     * Registry TLS secret name. TLS is a pair of Cert/Key
      * 
      */
     @Import(name="tlsSecretName")
     private @Nullable Output<String> tlsSecretName;
 
     /**
-     * @return Registry TLS secret name. TLS is a pair of Cert/Key.
+     * @return Registry TLS secret name. TLS is a pair of Cert/Key
      * 
      */
     public Optional<Output<String>> tlsSecretName() {
@@ -121,7 +121,7 @@ public final class ClusterV2RkeConfigRegistriesConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param authConfigSecretName Name of the secret that contains two keys with base64 encoded values: the username and password for the specified custom registry. No secret is required if the system-default-registry is not authenticated.
+         * @param authConfigSecretName Registry auth config secret name
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class ClusterV2RkeConfigRegistriesConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param authConfigSecretName Name of the secret that contains two keys with base64 encoded values: the username and password for the specified custom registry. No secret is required if the system-default-registry is not authenticated.
+         * @param authConfigSecretName Registry auth config secret name
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class ClusterV2RkeConfigRegistriesConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param caBundle Registry CA bundle.
+         * @param caBundle Registry CA bundle
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class ClusterV2RkeConfigRegistriesConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param caBundle Registry CA bundle.
+         * @param caBundle Registry CA bundle
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class ClusterV2RkeConfigRegistriesConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param hostname Registry hostname.
+         * @param hostname Registry hostname
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class ClusterV2RkeConfigRegistriesConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param hostname Registry hostname.
+         * @param hostname Registry hostname
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class ClusterV2RkeConfigRegistriesConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param insecure Registry insecure connectivity.
+         * @param insecure Registry insecure connectivity
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class ClusterV2RkeConfigRegistriesConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param insecure Registry insecure connectivity.
+         * @param insecure Registry insecure connectivity
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class ClusterV2RkeConfigRegistriesConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param tlsSecretName Registry TLS secret name. TLS is a pair of Cert/Key.
+         * @param tlsSecretName Registry TLS secret name. TLS is a pair of Cert/Key
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class ClusterV2RkeConfigRegistriesConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param tlsSecretName Registry TLS secret name. TLS is a pair of Cert/Key.
+         * @param tlsSecretName Registry TLS secret name. TLS is a pair of Cert/Key
          * 
          * @return builder
          * 

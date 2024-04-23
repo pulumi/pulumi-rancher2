@@ -13,25 +13,25 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterRke2ConfigUpgradeStrategyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Drain server nodes. Default: `false` (bool)
+        /// Drain server nodes
         /// </summary>
         [Input("drainServerNodes")]
         public Input<bool>? DrainServerNodes { get; set; }
 
         /// <summary>
-        /// Drain worker nodes. Default: `false` (bool)
+        /// Drain worker nodes
         /// </summary>
         [Input("drainWorkerNodes")]
         public Input<bool>? DrainWorkerNodes { get; set; }
 
         /// <summary>
-        /// Server concurrency. Default: `1` (int)
+        /// Server concurrency
         /// </summary>
         [Input("serverConcurrency")]
         public Input<int>? ServerConcurrency { get; set; }
 
         /// <summary>
-        /// Worker concurrency. Default: `1` (int)
+        /// Worker concurrency
         /// </summary>
         [Input("workerConcurrency")]
         public Input<int>? WorkerConcurrency { get; set; }

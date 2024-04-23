@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin {
     /**
-     * @return Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration&#34;` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
+     * @return Plugin configuration
      * 
      */
     private @Nullable String configuration;
@@ -22,14 +22,14 @@ public final class ClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin {
      */
     private @Nullable String name;
     /**
-     * @return (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+     * @return Plugin path
      * 
      */
     private @Nullable String path;
 
     private ClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin() {}
     /**
-     * @return Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration&#34;` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
+     * @return Plugin configuration
      * 
      */
     public Optional<String> configuration() {
@@ -43,7 +43,7 @@ public final class ClusterRkeConfigServicesKubeApiAdmissionConfigurationPlugin {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+     * @return Plugin path
      * 
      */
     public Optional<String> path() {

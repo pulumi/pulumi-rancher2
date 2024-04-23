@@ -14,62 +14,62 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterV2RkeConfigRegistriesConfig {
     /**
-     * @return Name of the secret that contains two keys with base64 encoded values: the username and password for the specified custom registry. No secret is required if the system-default-registry is not authenticated.
+     * @return Registry auth config secret name
      * 
      */
     private @Nullable String authConfigSecretName;
     /**
-     * @return Registry CA bundle.
+     * @return Registry CA bundle
      * 
      */
     private @Nullable String caBundle;
     /**
-     * @return Registry hostname.
+     * @return Registry hostname
      * 
      */
     private String hostname;
     /**
-     * @return Registry insecure connectivity.
+     * @return Registry insecure connectivity
      * 
      */
     private @Nullable Boolean insecure;
     /**
-     * @return Registry TLS secret name. TLS is a pair of Cert/Key.
+     * @return Registry TLS secret name. TLS is a pair of Cert/Key
      * 
      */
     private @Nullable String tlsSecretName;
 
     private ClusterV2RkeConfigRegistriesConfig() {}
     /**
-     * @return Name of the secret that contains two keys with base64 encoded values: the username and password for the specified custom registry. No secret is required if the system-default-registry is not authenticated.
+     * @return Registry auth config secret name
      * 
      */
     public Optional<String> authConfigSecretName() {
         return Optional.ofNullable(this.authConfigSecretName);
     }
     /**
-     * @return Registry CA bundle.
+     * @return Registry CA bundle
      * 
      */
     public Optional<String> caBundle() {
         return Optional.ofNullable(this.caBundle);
     }
     /**
-     * @return Registry hostname.
+     * @return Registry hostname
      * 
      */
     public String hostname() {
         return this.hostname;
     }
     /**
-     * @return Registry insecure connectivity.
+     * @return Registry insecure connectivity
      * 
      */
     public Optional<Boolean> insecure() {
         return Optional.ofNullable(this.insecure);
     }
     /**
-     * @return Registry TLS secret name. TLS is a pair of Cert/Key.
+     * @return Registry TLS secret name. TLS is a pair of Cert/Key
      * 
      */
     public Optional<String> tlsSecretName() {

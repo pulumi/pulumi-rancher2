@@ -19,14 +19,14 @@ public final class PodSecurityPolicyTemplateRunAsUserArgs extends com.pulumi.res
     public static final PodSecurityPolicyTemplateRunAsUserArgs Empty = new PodSecurityPolicyTemplateRunAsUserArgs();
 
     /**
-     * (list)
+     * ranges are the allowed ranges of uids that may be used. If you would like to force a single uid then supply a single range with the same start and end. Required for MustRunAs.
      * 
      */
     @Import(name="ranges")
     private @Nullable Output<List<PodSecurityPolicyTemplateRunAsUserRangeArgs>> ranges;
 
     /**
-     * @return (list)
+     * @return ranges are the allowed ranges of uids that may be used. If you would like to force a single uid then supply a single range with the same start and end. Required for MustRunAs.
      * 
      */
     public Optional<Output<List<PodSecurityPolicyTemplateRunAsUserRangeArgs>>> ranges() {
@@ -34,14 +34,14 @@ public final class PodSecurityPolicyTemplateRunAsUserArgs extends com.pulumi.res
     }
 
     /**
-     * (string)
+     * rule is the strategy that will dictate the allowable RunAsUser values that may be set.
      * 
      */
     @Import(name="rule", required=true)
     private Output<String> rule;
 
     /**
-     * @return (string)
+     * @return rule is the strategy that will dictate the allowable RunAsUser values that may be set.
      * 
      */
     public Output<String> rule() {
@@ -74,7 +74,7 @@ public final class PodSecurityPolicyTemplateRunAsUserArgs extends com.pulumi.res
         }
 
         /**
-         * @param ranges (list)
+         * @param ranges ranges are the allowed ranges of uids that may be used. If you would like to force a single uid then supply a single range with the same start and end. Required for MustRunAs.
          * 
          * @return builder
          * 
@@ -85,7 +85,7 @@ public final class PodSecurityPolicyTemplateRunAsUserArgs extends com.pulumi.res
         }
 
         /**
-         * @param ranges (list)
+         * @param ranges ranges are the allowed ranges of uids that may be used. If you would like to force a single uid then supply a single range with the same start and end. Required for MustRunAs.
          * 
          * @return builder
          * 
@@ -95,7 +95,7 @@ public final class PodSecurityPolicyTemplateRunAsUserArgs extends com.pulumi.res
         }
 
         /**
-         * @param ranges (list)
+         * @param ranges ranges are the allowed ranges of uids that may be used. If you would like to force a single uid then supply a single range with the same start and end. Required for MustRunAs.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class PodSecurityPolicyTemplateRunAsUserArgs extends com.pulumi.res
         }
 
         /**
-         * @param rule (string)
+         * @param rule rule is the strategy that will dictate the allowable RunAsUser values that may be set.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class PodSecurityPolicyTemplateRunAsUserArgs extends com.pulumi.res
         }
 
         /**
-         * @param rule (string)
+         * @param rule rule is the strategy that will dictate the allowable RunAsUser values that may be set.
          * 
          * @return builder
          * 

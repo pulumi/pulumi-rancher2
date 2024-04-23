@@ -16,12 +16,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterTemplateTemplateRevisionClusterConfig {
     /**
-     * @return Local cluster auth endpoint (list maxitems: 1)
+     * @return Local cluster auth endpoint
      * 
      */
     private @Nullable ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint clusterAuthEndpoint;
     /**
-     * @return Default cluster role for project members (string)
+     * @return Default cluster role for project members
      * 
      */
     private @Nullable String defaultClusterRoleForProjectMembers;
@@ -31,61 +31,61 @@ public final class ClusterTemplateTemplateRevisionClusterConfig {
      */
     private @Nullable String defaultPodSecurityAdmissionConfigurationTemplateName;
     /**
-     * @return Default pod security policy template ID (string)
+     * @return Default pod security policy template ID
      * 
      */
     private @Nullable String defaultPodSecurityPolicyTemplateId;
     /**
-     * @return Desired agent image (string)
+     * @return Desired agent image
      * 
      */
     private @Nullable String desiredAgentImage;
     /**
-     * @return Desired auth image (string)
+     * @return Desired auth image
      * 
      */
     private @Nullable String desiredAuthImage;
     /**
-     * @return Desired auth image (string)
+     * @return Docker Root Dir
      * 
      */
     private @Nullable String dockerRootDir;
     /**
-     * @return Enable built-in cluster alerting. Default: `false` (bool)
+     * @return Enable built-in cluster alerting
      * 
      */
     private @Nullable Boolean enableClusterAlerting;
     /**
-     * @return Enable built-in cluster monitoring. Default: `false` (bool)
+     * @return Enable built-in cluster monitoring
      * 
      */
     private @Nullable Boolean enableClusterMonitoring;
     /**
-     * @return Enable project network isolation. Default: `false` (bool)
+     * @return Enable project network isolation
      * 
      */
     private @Nullable Boolean enableNetworkPolicy;
     /**
-     * @return Rancher Kubernetes Engine Config (list maxitems: 1)
+     * @return Rancher Kubernetes Engine Config
      * 
      */
     private ClusterTemplateTemplateRevisionClusterConfigRkeConfig rkeConfig;
     /**
-     * @return Windows prefered cluster. Default: `false` (bool)
+     * @return Windows prefered cluster
      * 
      */
     private @Nullable Boolean windowsPreferedCluster;
 
     private ClusterTemplateTemplateRevisionClusterConfig() {}
     /**
-     * @return Local cluster auth endpoint (list maxitems: 1)
+     * @return Local cluster auth endpoint
      * 
      */
     public Optional<ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint> clusterAuthEndpoint() {
         return Optional.ofNullable(this.clusterAuthEndpoint);
     }
     /**
-     * @return Default cluster role for project members (string)
+     * @return Default cluster role for project members
      * 
      */
     public Optional<String> defaultClusterRoleForProjectMembers() {
@@ -99,63 +99,63 @@ public final class ClusterTemplateTemplateRevisionClusterConfig {
         return Optional.ofNullable(this.defaultPodSecurityAdmissionConfigurationTemplateName);
     }
     /**
-     * @return Default pod security policy template ID (string)
+     * @return Default pod security policy template ID
      * 
      */
     public Optional<String> defaultPodSecurityPolicyTemplateId() {
         return Optional.ofNullable(this.defaultPodSecurityPolicyTemplateId);
     }
     /**
-     * @return Desired agent image (string)
+     * @return Desired agent image
      * 
      */
     public Optional<String> desiredAgentImage() {
         return Optional.ofNullable(this.desiredAgentImage);
     }
     /**
-     * @return Desired auth image (string)
+     * @return Desired auth image
      * 
      */
     public Optional<String> desiredAuthImage() {
         return Optional.ofNullable(this.desiredAuthImage);
     }
     /**
-     * @return Desired auth image (string)
+     * @return Docker Root Dir
      * 
      */
     public Optional<String> dockerRootDir() {
         return Optional.ofNullable(this.dockerRootDir);
     }
     /**
-     * @return Enable built-in cluster alerting. Default: `false` (bool)
+     * @return Enable built-in cluster alerting
      * 
      */
     public Optional<Boolean> enableClusterAlerting() {
         return Optional.ofNullable(this.enableClusterAlerting);
     }
     /**
-     * @return Enable built-in cluster monitoring. Default: `false` (bool)
+     * @return Enable built-in cluster monitoring
      * 
      */
     public Optional<Boolean> enableClusterMonitoring() {
         return Optional.ofNullable(this.enableClusterMonitoring);
     }
     /**
-     * @return Enable project network isolation. Default: `false` (bool)
+     * @return Enable project network isolation
      * 
      */
     public Optional<Boolean> enableNetworkPolicy() {
         return Optional.ofNullable(this.enableNetworkPolicy);
     }
     /**
-     * @return Rancher Kubernetes Engine Config (list maxitems: 1)
+     * @return Rancher Kubernetes Engine Config
      * 
      */
     public ClusterTemplateTemplateRevisionClusterConfigRkeConfig rkeConfig() {
         return this.rkeConfig;
     }
     /**
-     * @return Windows prefered cluster. Default: `false` (bool)
+     * @return Windows prefered cluster
      * 
      */
     public Optional<Boolean> windowsPreferedCluster() {

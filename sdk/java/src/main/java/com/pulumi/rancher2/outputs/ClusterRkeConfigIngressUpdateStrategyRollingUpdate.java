@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterRkeConfigIngressUpdateStrategyRollingUpdate {
     /**
-     * @return Monitoring deployment rolling update max unavailable. Default: `1` (int)
+     * @return Rolling update max unavailable
      * 
      */
     private @Nullable Integer maxUnavailable;
 
     private ClusterRkeConfigIngressUpdateStrategyRollingUpdate() {}
     /**
-     * @return Monitoring deployment rolling update max unavailable. Default: `1` (int)
+     * @return Rolling update max unavailable
      * 
      */
     public Optional<Integer> maxUnavailable() {

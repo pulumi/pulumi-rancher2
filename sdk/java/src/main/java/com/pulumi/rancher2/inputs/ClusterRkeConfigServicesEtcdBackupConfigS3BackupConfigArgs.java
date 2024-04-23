@@ -16,107 +16,51 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs ex
 
     public static final ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs Empty = new ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs();
 
-    /**
-     * The AWS Client ID to use (string)
-     * 
-     */
     @Import(name="accessKey")
     private @Nullable Output<String> accessKey;
 
-    /**
-     * @return The AWS Client ID to use (string)
-     * 
-     */
     public Optional<Output<String>> accessKey() {
         return Optional.ofNullable(this.accessKey);
     }
 
-    /**
-     * Bucket name for S3 service (string)
-     * 
-     */
     @Import(name="bucketName", required=true)
     private Output<String> bucketName;
 
-    /**
-     * @return Bucket name for S3 service (string)
-     * 
-     */
     public Output<String> bucketName() {
         return this.bucketName;
     }
 
-    /**
-     * Base64 encoded custom CA for S3 service. Use filebase64(&lt;FILE&gt;) for encoding file. Available from Rancher v2.2.5 (string)
-     * 
-     */
     @Import(name="customCa")
     private @Nullable Output<String> customCa;
 
-    /**
-     * @return Base64 encoded custom CA for S3 service. Use filebase64(&lt;FILE&gt;) for encoding file. Available from Rancher v2.2.5 (string)
-     * 
-     */
     public Optional<Output<String>> customCa() {
         return Optional.ofNullable(this.customCa);
     }
 
-    /**
-     * Endpoint for S3 service (string)
-     * 
-     */
     @Import(name="endpoint", required=true)
     private Output<String> endpoint;
 
-    /**
-     * @return Endpoint for S3 service (string)
-     * 
-     */
     public Output<String> endpoint() {
         return this.endpoint;
     }
 
-    /**
-     * Folder for S3 service. Available from Rancher v2.2.7 (string)
-     * 
-     */
     @Import(name="folder")
     private @Nullable Output<String> folder;
 
-    /**
-     * @return Folder for S3 service. Available from Rancher v2.2.7 (string)
-     * 
-     */
     public Optional<Output<String>> folder() {
         return Optional.ofNullable(this.folder);
     }
 
-    /**
-     * The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
-     * 
-     */
     @Import(name="region")
     private @Nullable Output<String> region;
 
-    /**
-     * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
-     * 
-     */
     public Optional<Output<String>> region() {
         return Optional.ofNullable(this.region);
     }
 
-    /**
-     * The AWS Client Secret associated with the Client ID (string)
-     * 
-     */
     @Import(name="secretKey")
     private @Nullable Output<String> secretKey;
 
-    /**
-     * @return The AWS Client Secret associated with the Client ID (string)
-     * 
-     */
     public Optional<Output<String>> secretKey() {
         return Optional.ofNullable(this.secretKey);
     }
@@ -151,149 +95,65 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs ex
             $ = new ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accessKey The AWS Client ID to use (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder accessKey(@Nullable Output<String> accessKey) {
             $.accessKey = accessKey;
             return this;
         }
 
-        /**
-         * @param accessKey The AWS Client ID to use (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder accessKey(String accessKey) {
             return accessKey(Output.of(accessKey));
         }
 
-        /**
-         * @param bucketName Bucket name for S3 service (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder bucketName(Output<String> bucketName) {
             $.bucketName = bucketName;
             return this;
         }
 
-        /**
-         * @param bucketName Bucket name for S3 service (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder bucketName(String bucketName) {
             return bucketName(Output.of(bucketName));
         }
 
-        /**
-         * @param customCa Base64 encoded custom CA for S3 service. Use filebase64(&lt;FILE&gt;) for encoding file. Available from Rancher v2.2.5 (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder customCa(@Nullable Output<String> customCa) {
             $.customCa = customCa;
             return this;
         }
 
-        /**
-         * @param customCa Base64 encoded custom CA for S3 service. Use filebase64(&lt;FILE&gt;) for encoding file. Available from Rancher v2.2.5 (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder customCa(String customCa) {
             return customCa(Output.of(customCa));
         }
 
-        /**
-         * @param endpoint Endpoint for S3 service (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder endpoint(Output<String> endpoint) {
             $.endpoint = endpoint;
             return this;
         }
 
-        /**
-         * @param endpoint Endpoint for S3 service (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder endpoint(String endpoint) {
             return endpoint(Output.of(endpoint));
         }
 
-        /**
-         * @param folder Folder for S3 service. Available from Rancher v2.2.7 (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder folder(@Nullable Output<String> folder) {
             $.folder = folder;
             return this;
         }
 
-        /**
-         * @param folder Folder for S3 service. Available from Rancher v2.2.7 (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder folder(String folder) {
             return folder(Output.of(folder));
         }
 
-        /**
-         * @param region The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder region(@Nullable Output<String> region) {
             $.region = region;
             return this;
         }
 
-        /**
-         * @param region The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder region(String region) {
             return region(Output.of(region));
         }
 
-        /**
-         * @param secretKey The AWS Client Secret associated with the Client ID (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder secretKey(@Nullable Output<String> secretKey) {
             $.secretKey = secretKey;
             return this;
         }
 
-        /**
-         * @param secretKey The AWS Client Secret associated with the Client ID (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder secretKey(String secretKey) {
             return secretKey(Output.of(secretKey));
         }

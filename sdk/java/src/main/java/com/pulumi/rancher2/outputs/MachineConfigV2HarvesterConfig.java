@@ -13,12 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class MachineConfigV2HarvesterConfig {
     /**
-     * @return vSphere CPU number for docker VM. Default `2` (string)
+     * @return CPU count
      * 
      */
     private @Nullable String cpuCount;
     /**
-     * @return Use `disk_info` instead
+     * @return Disk bus
      * 
      * @deprecated
      * Use disk_info instead
@@ -27,12 +27,12 @@ public final class MachineConfigV2HarvesterConfig {
     @Deprecated /* Use disk_info instead */
     private @Nullable String diskBus;
     /**
-     * @return A JSON string specifying info for the disks e.g. `{\&#34;disks\&#34;:[{\&#34;imageName\&#34;:\&#34;harvester-public/image-57hzg\&#34;,\&#34;bootOrder\&#34;:1,\&#34;size\&#34;:40},{\&#34;storageClassName\&#34;:\&#34;node-driver-test\&#34;,\&#34;bootOrder\&#34;:2,\&#34;size\&#34;:1}]}` (string)
+     * @return A JSON string specifying info for the disks e.g. `{&#34;disks&#34;:[{&#34;imageName&#34;:&#34;harvester-public/image-57hzg&#34;,&#34;bootOrder&#34;:1,&#34;size&#34;:40},{&#34;storageClassName&#34;:&#34;node-driver-test&#34;,&#34;bootOrder&#34;:2,&#34;size&#34;:1}]}`
      * 
      */
     private @Nullable String diskInfo;
     /**
-     * @return vSphere size of disk for docker VM (in MB). Default `20480` (string)
+     * @return Disk size (in GiB)
      * 
      * @deprecated
      * Use disk_info instead
@@ -41,7 +41,7 @@ public final class MachineConfigV2HarvesterConfig {
     @Deprecated /* Use disk_info instead */
     private @Nullable String diskSize;
     /**
-     * @return OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+     * @return Image name
      * 
      * @deprecated
      * Use disk_info instead
@@ -50,22 +50,22 @@ public final class MachineConfigV2HarvesterConfig {
     @Deprecated /* Use disk_info instead */
     private @Nullable String imageName;
     /**
-     * @return vSphere size of memory for docker VM (in MB). Default `2048` (string)
+     * @return Memory size (in GiB)
      * 
      */
     private @Nullable String memorySize;
     /**
-     * @return NetworkData content of cloud-init, base64 is supported (string)
+     * @return NetworkData content of cloud-init, base64 is supported
      * 
      */
     private @Nullable String networkData;
     /**
-     * @return A JSON string specifying info for the networks e.g. `{\&#34;interfaces\&#34;:[{\&#34;networkName\&#34;:\&#34;harvester-public/vlan1\&#34;},{\&#34;networkName\&#34;:\&#34;harvester-public/vlan2\&#34;}]}` (string)
+     * @return A JSON string specifying info for the networks e.g. `{&#34;interfaces&#34;:[{&#34;networkName&#34;:&#34;harvester-public/vlan1&#34;},{&#34;networkName&#34;:&#34;harvester-public/vlan2&#34;}]}`
      * 
      */
     private @Nullable String networkInfo;
     /**
-     * @return Use `network_info` instead
+     * @return Network model
      * 
      * @deprecated
      * Use network_info instead
@@ -74,7 +74,7 @@ public final class MachineConfigV2HarvesterConfig {
     @Deprecated /* Use network_info instead */
     private @Nullable String networkModel;
     /**
-     * @return Use `network_info` instead
+     * @return Network name
      * 
      * @deprecated
      * Use network_info instead
@@ -83,41 +83,41 @@ public final class MachineConfigV2HarvesterConfig {
     @Deprecated /* Use network_info instead */
     private @Nullable String networkName;
     /**
-     * @return If using a non-B2D image you can specify the ssh password. Default `tcuser` (string)
+     * @return SSH password
      * 
      */
     private @Nullable String sshPassword;
     /**
-     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+     * @return SSH username
      * 
      */
     private String sshUser;
     /**
-     * @return UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata (string)
+     * @return UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata
      * 
      */
     private @Nullable String userData;
     /**
-     * @return Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 and above (string)
+     * @return VM affinity, base64 is supported
      * 
      */
     private @Nullable String vmAffinity;
     /**
-     * @return Virtual machine namespace e.g. `default` (string)
+     * @return Virtual machine namespace
      * 
      */
     private String vmNamespace;
 
     private MachineConfigV2HarvesterConfig() {}
     /**
-     * @return vSphere CPU number for docker VM. Default `2` (string)
+     * @return CPU count
      * 
      */
     public Optional<String> cpuCount() {
         return Optional.ofNullable(this.cpuCount);
     }
     /**
-     * @return Use `disk_info` instead
+     * @return Disk bus
      * 
      * @deprecated
      * Use disk_info instead
@@ -128,14 +128,14 @@ public final class MachineConfigV2HarvesterConfig {
         return Optional.ofNullable(this.diskBus);
     }
     /**
-     * @return A JSON string specifying info for the disks e.g. `{\&#34;disks\&#34;:[{\&#34;imageName\&#34;:\&#34;harvester-public/image-57hzg\&#34;,\&#34;bootOrder\&#34;:1,\&#34;size\&#34;:40},{\&#34;storageClassName\&#34;:\&#34;node-driver-test\&#34;,\&#34;bootOrder\&#34;:2,\&#34;size\&#34;:1}]}` (string)
+     * @return A JSON string specifying info for the disks e.g. `{&#34;disks&#34;:[{&#34;imageName&#34;:&#34;harvester-public/image-57hzg&#34;,&#34;bootOrder&#34;:1,&#34;size&#34;:40},{&#34;storageClassName&#34;:&#34;node-driver-test&#34;,&#34;bootOrder&#34;:2,&#34;size&#34;:1}]}`
      * 
      */
     public Optional<String> diskInfo() {
         return Optional.ofNullable(this.diskInfo);
     }
     /**
-     * @return vSphere size of disk for docker VM (in MB). Default `20480` (string)
+     * @return Disk size (in GiB)
      * 
      * @deprecated
      * Use disk_info instead
@@ -146,7 +146,7 @@ public final class MachineConfigV2HarvesterConfig {
         return Optional.ofNullable(this.diskSize);
     }
     /**
-     * @return OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+     * @return Image name
      * 
      * @deprecated
      * Use disk_info instead
@@ -157,28 +157,28 @@ public final class MachineConfigV2HarvesterConfig {
         return Optional.ofNullable(this.imageName);
     }
     /**
-     * @return vSphere size of memory for docker VM (in MB). Default `2048` (string)
+     * @return Memory size (in GiB)
      * 
      */
     public Optional<String> memorySize() {
         return Optional.ofNullable(this.memorySize);
     }
     /**
-     * @return NetworkData content of cloud-init, base64 is supported (string)
+     * @return NetworkData content of cloud-init, base64 is supported
      * 
      */
     public Optional<String> networkData() {
         return Optional.ofNullable(this.networkData);
     }
     /**
-     * @return A JSON string specifying info for the networks e.g. `{\&#34;interfaces\&#34;:[{\&#34;networkName\&#34;:\&#34;harvester-public/vlan1\&#34;},{\&#34;networkName\&#34;:\&#34;harvester-public/vlan2\&#34;}]}` (string)
+     * @return A JSON string specifying info for the networks e.g. `{&#34;interfaces&#34;:[{&#34;networkName&#34;:&#34;harvester-public/vlan1&#34;},{&#34;networkName&#34;:&#34;harvester-public/vlan2&#34;}]}`
      * 
      */
     public Optional<String> networkInfo() {
         return Optional.ofNullable(this.networkInfo);
     }
     /**
-     * @return Use `network_info` instead
+     * @return Network model
      * 
      * @deprecated
      * Use network_info instead
@@ -189,7 +189,7 @@ public final class MachineConfigV2HarvesterConfig {
         return Optional.ofNullable(this.networkModel);
     }
     /**
-     * @return Use `network_info` instead
+     * @return Network name
      * 
      * @deprecated
      * Use network_info instead
@@ -200,35 +200,35 @@ public final class MachineConfigV2HarvesterConfig {
         return Optional.ofNullable(this.networkName);
     }
     /**
-     * @return If using a non-B2D image you can specify the ssh password. Default `tcuser` (string)
+     * @return SSH password
      * 
      */
     public Optional<String> sshPassword() {
         return Optional.ofNullable(this.sshPassword);
     }
     /**
-     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+     * @return SSH username
      * 
      */
     public String sshUser() {
         return this.sshUser;
     }
     /**
-     * @return UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata (string)
+     * @return UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata
      * 
      */
     public Optional<String> userData() {
         return Optional.ofNullable(this.userData);
     }
     /**
-     * @return Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 and above (string)
+     * @return VM affinity, base64 is supported
      * 
      */
     public Optional<String> vmAffinity() {
         return Optional.ofNullable(this.vmAffinity);
     }
     /**
-     * @return Virtual machine namespace e.g. `default` (string)
+     * @return Virtual machine namespace
      * 
      */
     public String vmNamespace() {

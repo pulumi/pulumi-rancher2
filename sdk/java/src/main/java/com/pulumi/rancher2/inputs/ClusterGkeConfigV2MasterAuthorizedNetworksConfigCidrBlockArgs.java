@@ -17,14 +17,14 @@ public final class ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlockArgs
     public static final ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlockArgs Empty = new ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlockArgs();
 
     /**
-     * The GKE master authorized network config cidr block (string)
+     * The GKE master authorized network config cidr block
      * 
      */
     @Import(name="cidrBlock", required=true)
     private Output<String> cidrBlock;
 
     /**
-     * @return The GKE master authorized network config cidr block (string)
+     * @return The GKE master authorized network config cidr block
      * 
      */
     public Output<String> cidrBlock() {
@@ -32,14 +32,14 @@ public final class ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlockArgs
     }
 
     /**
-     * The GKE master authorized network config cidr block dispaly name (string)
+     * The GKE master authorized network config cidr block dispaly name
      * 
      */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
     /**
-     * @return The GKE master authorized network config cidr block dispaly name (string)
+     * @return The GKE master authorized network config cidr block dispaly name
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -72,7 +72,7 @@ public final class ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlockArgs
         }
 
         /**
-         * @param cidrBlock The GKE master authorized network config cidr block (string)
+         * @param cidrBlock The GKE master authorized network config cidr block
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlockArgs
         }
 
         /**
-         * @param cidrBlock The GKE master authorized network config cidr block (string)
+         * @param cidrBlock The GKE master authorized network config cidr block
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlockArgs
         }
 
         /**
-         * @param displayName The GKE master authorized network config cidr block dispaly name (string)
+         * @param displayName The GKE master authorized network config cidr block dispaly name
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlockArgs
         }
 
         /**
-         * @param displayName The GKE master authorized network config cidr block dispaly name (string)
+         * @param displayName The GKE master authorized network config cidr block dispaly name
          * 
          * @return builder
          * 

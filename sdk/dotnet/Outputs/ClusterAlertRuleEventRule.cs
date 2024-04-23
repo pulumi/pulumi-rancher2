@@ -14,11 +14,11 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterAlertRuleEventRule
     {
         /// <summary>
-        /// Event type. Supported values : `"Warning" | "Normal"`. Default: `Warning` (string)
+        /// Event type
         /// </summary>
         public readonly string? EventType;
         /// <summary>
-        /// Resource kind. Supported values : `"DaemonSet" | "Deployment" | "Node" | "Pod" | "StatefulSet"` (string)
+        /// Resource kind
         /// </summary>
         public readonly string ResourceKind;
 

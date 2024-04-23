@@ -11,17 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterRkeConfigNetworkCalicoNetworkProvider {
-    /**
-     * @return RKE options for Calico network provider (string)
-     * 
-     */
     private @Nullable String cloudProvider;
 
     private ClusterRkeConfigNetworkCalicoNetworkProvider() {}
-    /**
-     * @return RKE options for Calico network provider (string)
-     * 
-     */
     public Optional<String> cloudProvider() {
         return Optional.ofNullable(this.cloudProvider);
     }

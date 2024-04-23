@@ -11,17 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterRkeConfigCloudProviderVsphereCloudProviderDisk {
-    /**
-     * @return (string)
-     * 
-     */
     private @Nullable String scsiControllerType;
 
     private ClusterRkeConfigCloudProviderVsphereCloudProviderDisk() {}
-    /**
-     * @return (string)
-     * 
-     */
     public Optional<String> scsiControllerType() {
         return Optional.ofNullable(this.scsiControllerType);
     }

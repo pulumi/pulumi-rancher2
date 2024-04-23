@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterV2RkeConfigRegistries {
     /**
-     * @return Cluster V2 docker registries config.
+     * @return Registry config
      * 
      */
     private @Nullable List<ClusterV2RkeConfigRegistriesConfig> configs;
     /**
-     * @return Cluster V2 docker registries mirror.
+     * @return Registry mirrors
      * 
      */
     private @Nullable List<ClusterV2RkeConfigRegistriesMirror> mirrors;
 
     private ClusterV2RkeConfigRegistries() {}
     /**
-     * @return Cluster V2 docker registries config.
+     * @return Registry config
      * 
      */
     public List<ClusterV2RkeConfigRegistriesConfig> configs() {
         return this.configs == null ? List.of() : this.configs;
     }
     /**
-     * @return Cluster V2 docker registries mirror.
+     * @return Registry mirrors
      * 
      */
     public List<ClusterV2RkeConfigRegistriesMirror> mirrors() {

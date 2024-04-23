@@ -13,74 +13,74 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NotifierWechatConfig {
     /**
-     * @return Wechat agent ID (string)
+     * @return Wechat application agent ID
      * 
      */
     private String agent;
     /**
-     * @return Wechat corporation ID (string)
+     * @return Wechat corporation ID
      * 
      */
     private String corp;
     /**
-     * @return Wechat default recipient (string)
+     * @return Wechat default channel
      * 
      */
     private String defaultRecipient;
     /**
-     * @return Wechat proxy url (string)
+     * @return Wechat proxy URL
      * 
      */
     private @Nullable String proxyUrl;
     /**
-     * @return Wechat recipient type. Allowed values: `party` | `tag` | `user` (string)
+     * @return Wechat recipient type
      * 
      */
     private @Nullable String recipientType;
     /**
-     * @return Wechat agent ID (string)
+     * @return Wechat application secret
      * 
      */
     private String secret;
 
     private NotifierWechatConfig() {}
     /**
-     * @return Wechat agent ID (string)
+     * @return Wechat application agent ID
      * 
      */
     public String agent() {
         return this.agent;
     }
     /**
-     * @return Wechat corporation ID (string)
+     * @return Wechat corporation ID
      * 
      */
     public String corp() {
         return this.corp;
     }
     /**
-     * @return Wechat default recipient (string)
+     * @return Wechat default channel
      * 
      */
     public String defaultRecipient() {
         return this.defaultRecipient;
     }
     /**
-     * @return Wechat proxy url (string)
+     * @return Wechat proxy URL
      * 
      */
     public Optional<String> proxyUrl() {
         return Optional.ofNullable(this.proxyUrl);
     }
     /**
-     * @return Wechat recipient type. Allowed values: `party` | `tag` | `user` (string)
+     * @return Wechat recipient type
      * 
      */
     public Optional<String> recipientType() {
         return Optional.ofNullable(this.recipientType);
     }
     /**
-     * @return Wechat agent ID (string)
+     * @return Wechat application secret
      * 
      */
     public String secret() {

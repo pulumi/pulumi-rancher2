@@ -18,135 +18,63 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterRkeConfigIngress {
-    /**
-     * @return Enable ingress default backend. Default: `true` (bool)
-     * 
-     */
     private @Nullable Boolean defaultBackend;
-    /**
-     * @return Ingress controller DNS policy. `ClusterFirstWithHostNet`, `ClusterFirst`, `Default`, and `None` are supported. [K8S dns Policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) (string)
-     * 
-     */
     private @Nullable String dnsPolicy;
-    /**
-     * @return Extra arguments for scheduler service (map)
-     * 
-     */
     private @Nullable Map<String,Object> extraArgs;
-    /**
-     * @return HTTP port for RKE Ingress (int)
-     * 
-     */
     private @Nullable Integer httpPort;
-    /**
-     * @return HTTPS port for RKE Ingress (int)
-     * 
-     */
     private @Nullable Integer httpsPort;
-    /**
-     * @return Network mode for RKE Ingress (string)
-     * 
-     */
     private @Nullable String networkMode;
-    /**
-     * @return RKE monitoring node selector (map)
-     * 
-     */
     private @Nullable Map<String,Object> nodeSelector;
-    /**
-     * @return RKE options for network (map)
-     * 
-     */
     private @Nullable Map<String,Object> options;
-    /**
-     * @return RKE monitoring provider (string)
-     * 
-     */
     private @Nullable String provider;
     /**
-     * @return Network add-on tolerations (list)
+     * @return Ingress add-on tolerations
      * 
      */
     private @Nullable List<ClusterRkeConfigIngressToleration> tolerations;
     /**
-     * @return RKE monitoring update strategy (list Maxitems: 1)
+     * @return Update daemon set strategy
      * 
      */
     private @Nullable ClusterRkeConfigIngressUpdateStrategy updateStrategy;
 
     private ClusterRkeConfigIngress() {}
-    /**
-     * @return Enable ingress default backend. Default: `true` (bool)
-     * 
-     */
     public Optional<Boolean> defaultBackend() {
         return Optional.ofNullable(this.defaultBackend);
     }
-    /**
-     * @return Ingress controller DNS policy. `ClusterFirstWithHostNet`, `ClusterFirst`, `Default`, and `None` are supported. [K8S dns Policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) (string)
-     * 
-     */
     public Optional<String> dnsPolicy() {
         return Optional.ofNullable(this.dnsPolicy);
     }
-    /**
-     * @return Extra arguments for scheduler service (map)
-     * 
-     */
     public Map<String,Object> extraArgs() {
         return this.extraArgs == null ? Map.of() : this.extraArgs;
     }
-    /**
-     * @return HTTP port for RKE Ingress (int)
-     * 
-     */
     public Optional<Integer> httpPort() {
         return Optional.ofNullable(this.httpPort);
     }
-    /**
-     * @return HTTPS port for RKE Ingress (int)
-     * 
-     */
     public Optional<Integer> httpsPort() {
         return Optional.ofNullable(this.httpsPort);
     }
-    /**
-     * @return Network mode for RKE Ingress (string)
-     * 
-     */
     public Optional<String> networkMode() {
         return Optional.ofNullable(this.networkMode);
     }
-    /**
-     * @return RKE monitoring node selector (map)
-     * 
-     */
     public Map<String,Object> nodeSelector() {
         return this.nodeSelector == null ? Map.of() : this.nodeSelector;
     }
-    /**
-     * @return RKE options for network (map)
-     * 
-     */
     public Map<String,Object> options() {
         return this.options == null ? Map.of() : this.options;
     }
-    /**
-     * @return RKE monitoring provider (string)
-     * 
-     */
     public Optional<String> provider() {
         return Optional.ofNullable(this.provider);
     }
     /**
-     * @return Network add-on tolerations (list)
+     * @return Ingress add-on tolerations
      * 
      */
     public List<ClusterRkeConfigIngressToleration> tolerations() {
         return this.tolerations == null ? List.of() : this.tolerations;
     }
     /**
-     * @return RKE monitoring update strategy (list Maxitems: 1)
+     * @return Update daemon set strategy
      * 
      */
     public Optional<ClusterRkeConfigIngressUpdateStrategy> updateStrategy() {

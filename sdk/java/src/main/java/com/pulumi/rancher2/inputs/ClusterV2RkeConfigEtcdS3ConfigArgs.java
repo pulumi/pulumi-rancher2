@@ -18,14 +18,14 @@ public final class ClusterV2RkeConfigEtcdS3ConfigArgs extends com.pulumi.resourc
     public static final ClusterV2RkeConfigEtcdS3ConfigArgs Empty = new ClusterV2RkeConfigEtcdS3ConfigArgs();
 
     /**
-     * Bucket name for S3 service.
+     * ETCD snapshot S3 bucket
      * 
      */
     @Import(name="bucket", required=true)
     private Output<String> bucket;
 
     /**
-     * @return Bucket name for S3 service.
+     * @return ETCD snapshot S3 bucket
      * 
      */
     public Output<String> bucket() {
@@ -33,14 +33,14 @@ public final class ClusterV2RkeConfigEtcdS3ConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * ETCD snapshot S3 cloud credential name.
+     * ETCD snapshot S3 cloud credential name
      * 
      */
     @Import(name="cloudCredentialName")
     private @Nullable Output<String> cloudCredentialName;
 
     /**
-     * @return ETCD snapshot S3 cloud credential name.
+     * @return ETCD snapshot S3 cloud credential name
      * 
      */
     public Optional<Output<String>> cloudCredentialName() {
@@ -48,14 +48,14 @@ public final class ClusterV2RkeConfigEtcdS3ConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * ETCD snapshot S3 endpoint.
+     * ETCD snapshot S3 endpoint
      * 
      */
     @Import(name="endpoint", required=true)
     private Output<String> endpoint;
 
     /**
-     * @return ETCD snapshot S3 endpoint.
+     * @return ETCD snapshot S3 endpoint
      * 
      */
     public Output<String> endpoint() {
@@ -63,14 +63,14 @@ public final class ClusterV2RkeConfigEtcdS3ConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * ETCD snapshot S3 endpoint CA.
+     * ETCD snapshot S3 endpoint CA
      * 
      */
     @Import(name="endpointCa")
     private @Nullable Output<String> endpointCa;
 
     /**
-     * @return ETCD snapshot S3 endpoint CA.
+     * @return ETCD snapshot S3 endpoint CA
      * 
      */
     public Optional<Output<String>> endpointCa() {
@@ -78,14 +78,14 @@ public final class ClusterV2RkeConfigEtcdS3ConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * ETCD snapshot S3 folder.
+     * ETCD snapshot S3 folder
      * 
      */
     @Import(name="folder")
     private @Nullable Output<String> folder;
 
     /**
-     * @return ETCD snapshot S3 folder.
+     * @return ETCD snapshot S3 folder
      * 
      */
     public Optional<Output<String>> folder() {
@@ -93,14 +93,14 @@ public final class ClusterV2RkeConfigEtcdS3ConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * ETCD snapshot S3 region.
+     * ETCD snapshot S3 region
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return ETCD snapshot S3 region.
+     * @return ETCD snapshot S3 region
      * 
      */
     public Optional<Output<String>> region() {
@@ -108,14 +108,14 @@ public final class ClusterV2RkeConfigEtcdS3ConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Disable ETCD skip ssl verify.
+     * Disable ETCD skip ssl verify
      * 
      */
     @Import(name="skipSslVerify")
     private @Nullable Output<Boolean> skipSslVerify;
 
     /**
-     * @return Disable ETCD skip ssl verify.
+     * @return Disable ETCD skip ssl verify
      * 
      */
     public Optional<Output<Boolean>> skipSslVerify() {
@@ -153,7 +153,7 @@ public final class ClusterV2RkeConfigEtcdS3ConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param bucket Bucket name for S3 service.
+         * @param bucket ETCD snapshot S3 bucket
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class ClusterV2RkeConfigEtcdS3ConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param bucket Bucket name for S3 service.
+         * @param bucket ETCD snapshot S3 bucket
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class ClusterV2RkeConfigEtcdS3ConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param cloudCredentialName ETCD snapshot S3 cloud credential name.
+         * @param cloudCredentialName ETCD snapshot S3 cloud credential name
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class ClusterV2RkeConfigEtcdS3ConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param cloudCredentialName ETCD snapshot S3 cloud credential name.
+         * @param cloudCredentialName ETCD snapshot S3 cloud credential name
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class ClusterV2RkeConfigEtcdS3ConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param endpoint ETCD snapshot S3 endpoint.
+         * @param endpoint ETCD snapshot S3 endpoint
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class ClusterV2RkeConfigEtcdS3ConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param endpoint ETCD snapshot S3 endpoint.
+         * @param endpoint ETCD snapshot S3 endpoint
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class ClusterV2RkeConfigEtcdS3ConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param endpointCa ETCD snapshot S3 endpoint CA.
+         * @param endpointCa ETCD snapshot S3 endpoint CA
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class ClusterV2RkeConfigEtcdS3ConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param endpointCa ETCD snapshot S3 endpoint CA.
+         * @param endpointCa ETCD snapshot S3 endpoint CA
          * 
          * @return builder
          * 
@@ -237,7 +237,7 @@ public final class ClusterV2RkeConfigEtcdS3ConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param folder ETCD snapshot S3 folder.
+         * @param folder ETCD snapshot S3 folder
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class ClusterV2RkeConfigEtcdS3ConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param folder ETCD snapshot S3 folder.
+         * @param folder ETCD snapshot S3 folder
          * 
          * @return builder
          * 
@@ -258,7 +258,7 @@ public final class ClusterV2RkeConfigEtcdS3ConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param region ETCD snapshot S3 region.
+         * @param region ETCD snapshot S3 region
          * 
          * @return builder
          * 
@@ -269,7 +269,7 @@ public final class ClusterV2RkeConfigEtcdS3ConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param region ETCD snapshot S3 region.
+         * @param region ETCD snapshot S3 region
          * 
          * @return builder
          * 
@@ -279,7 +279,7 @@ public final class ClusterV2RkeConfigEtcdS3ConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param skipSslVerify Disable ETCD skip ssl verify.
+         * @param skipSslVerify Disable ETCD skip ssl verify
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class ClusterV2RkeConfigEtcdS3ConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param skipSslVerify Disable ETCD skip ssl verify.
+         * @param skipSslVerify Disable ETCD skip ssl verify
          * 
          * @return builder
          * 

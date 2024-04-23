@@ -12,77 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterRkeConfigServicesKubeApiAuditLogConfiguration {
-    /**
-     * @return Audit log format. Default: &#39;json&#39; (string)
-     * 
-     */
     private @Nullable String format;
-    /**
-     * @return Audit log max age. Default: `30` (int)
-     * 
-     */
     private @Nullable Integer maxAge;
-    /**
-     * @return Audit log max backup. Default: `10` (int)
-     * 
-     */
     private @Nullable Integer maxBackup;
-    /**
-     * @return The EKS node group maximum size. Default `2` (int)
-     * 
-     */
     private @Nullable Integer maxSize;
-    /**
-     * @return (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
-     * 
-     */
     private @Nullable String path;
-    /**
-     * @return Audit policy yaml encoded definition. `apiVersion` and `kind: Policy\nrules:&#34;` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/audit-log/) (string) Ex:
-     * 
-     */
     private @Nullable String policy;
 
     private ClusterRkeConfigServicesKubeApiAuditLogConfiguration() {}
-    /**
-     * @return Audit log format. Default: &#39;json&#39; (string)
-     * 
-     */
     public Optional<String> format() {
         return Optional.ofNullable(this.format);
     }
-    /**
-     * @return Audit log max age. Default: `30` (int)
-     * 
-     */
     public Optional<Integer> maxAge() {
         return Optional.ofNullable(this.maxAge);
     }
-    /**
-     * @return Audit log max backup. Default: `10` (int)
-     * 
-     */
     public Optional<Integer> maxBackup() {
         return Optional.ofNullable(this.maxBackup);
     }
-    /**
-     * @return The EKS node group maximum size. Default `2` (int)
-     * 
-     */
     public Optional<Integer> maxSize() {
         return Optional.ofNullable(this.maxSize);
     }
-    /**
-     * @return (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
-     * 
-     */
     public Optional<String> path() {
         return Optional.ofNullable(this.path);
     }
-    /**
-     * @return Audit policy yaml encoded definition. `apiVersion` and `kind: Policy\nrules:&#34;` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/audit-log/) (string) Ex:
-     * 
-     */
     public Optional<String> policy() {
         return Optional.ofNullable(this.policy);
     }

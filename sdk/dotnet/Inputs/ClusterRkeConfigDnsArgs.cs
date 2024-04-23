@@ -13,17 +13,13 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterRkeConfigDnsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// LinearAutoScalerParams dns config (list Maxitem: 1)
+        /// Linear Autoscaler Params
         /// </summary>
         [Input("linearAutoscalerParams")]
         public Input<Inputs.ClusterRkeConfigDnsLinearAutoscalerParamsArgs>? LinearAutoscalerParams { get; set; }
 
         [Input("nodeSelector")]
         private InputMap<object>? _nodeSelector;
-
-        /// <summary>
-        /// RKE monitoring node selector (map)
-        /// </summary>
         public InputMap<object> NodeSelector
         {
             get => _nodeSelector ?? (_nodeSelector = new InputMap<object>());
@@ -31,35 +27,24 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Nodelocal dns config  (list Maxitem: 1)
+        /// Nodelocal dns
         /// </summary>
         [Input("nodelocal")]
         public Input<Inputs.ClusterRkeConfigDnsNodelocalArgs>? Nodelocal { get; set; }
 
         [Input("options")]
         private InputMap<object>? _options;
-
-        /// <summary>
-        /// RKE options for network (map)
-        /// </summary>
         public InputMap<object> Options
         {
             get => _options ?? (_options = new InputMap<object>());
             set => _options = value;
         }
 
-        /// <summary>
-        /// RKE monitoring provider (string)
-        /// </summary>
         [Input("provider")]
         public Input<string>? Provider { get; set; }
 
         [Input("reverseCidrs")]
         private InputList<string>? _reverseCidrs;
-
-        /// <summary>
-        /// DNS add-on reverse cidr  (list)
-        /// </summary>
         public InputList<string> ReverseCidrs
         {
             get => _reverseCidrs ?? (_reverseCidrs = new InputList<string>());
@@ -70,7 +55,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<Inputs.ClusterRkeConfigDnsTolerationArgs>? _tolerations;
 
         /// <summary>
-        /// Network add-on tolerations (list)
+        /// DNS service tolerations
         /// </summary>
         public InputList<Inputs.ClusterRkeConfigDnsTolerationArgs> Tolerations
         {
@@ -79,17 +64,13 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// RKE monitoring update strategy (list Maxitems: 1)
+        /// Update deployment strategy
         /// </summary>
         [Input("updateStrategy")]
         public Input<Inputs.ClusterRkeConfigDnsUpdateStrategyArgs>? UpdateStrategy { get; set; }
 
         [Input("upstreamNameservers")]
         private InputList<string>? _upstreamNameservers;
-
-        /// <summary>
-        /// DNS add-on upstream nameservers  (list)
-        /// </summary>
         public InputList<string> UpstreamNameservers
         {
             get => _upstreamNameservers ?? (_upstreamNameservers = new InputList<string>());

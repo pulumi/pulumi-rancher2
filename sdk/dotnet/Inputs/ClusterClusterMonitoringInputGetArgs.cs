@@ -16,7 +16,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<object>? _answers;
 
         /// <summary>
-        /// Key/value answers for monitor input (map)
+        /// Answers for monitor input
         /// </summary>
         public InputMap<object> Answers
         {
@@ -25,7 +25,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// rancher-monitoring chart version (string)
+        /// Monitoring version
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

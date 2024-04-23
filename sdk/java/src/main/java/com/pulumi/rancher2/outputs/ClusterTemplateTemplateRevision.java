@@ -24,27 +24,27 @@ public final class ClusterTemplateTemplateRevision {
      */
     private @Nullable Map<String,Object> annotations;
     /**
-     * @return Cluster configuration (list maxitem: 1)
+     * @return Cluster configuration
      * 
      */
     private ClusterTemplateTemplateRevisionClusterConfig clusterConfig;
     /**
-     * @return Cluster template ID (string)
+     * @return Cluster template ID
      * 
      */
     private @Nullable String clusterTemplateId;
     /**
-     * @return Default variable value (string)
+     * @return Default cluster template revision
      * 
      */
     private @Nullable Boolean default_;
     /**
-     * @return Enable cluster template revision. Default `true` (bool)
+     * @return Enable cluster template revision
      * 
      */
     private @Nullable Boolean enabled;
     /**
-     * @return The cluster template revision ID (string)
+     * @return (Computed) The ID of the resource (string)
      * 
      */
     private @Nullable String id;
@@ -59,7 +59,7 @@ public final class ClusterTemplateTemplateRevision {
      */
     private String name;
     /**
-     * @return Cluster template questions (list)
+     * @return Cluster template questions
      * 
      */
     private @Nullable List<ClusterTemplateTemplateRevisionQuestion> questions;
@@ -73,35 +73,35 @@ public final class ClusterTemplateTemplateRevision {
         return this.annotations == null ? Map.of() : this.annotations;
     }
     /**
-     * @return Cluster configuration (list maxitem: 1)
+     * @return Cluster configuration
      * 
      */
     public ClusterTemplateTemplateRevisionClusterConfig clusterConfig() {
         return this.clusterConfig;
     }
     /**
-     * @return Cluster template ID (string)
+     * @return Cluster template ID
      * 
      */
     public Optional<String> clusterTemplateId() {
         return Optional.ofNullable(this.clusterTemplateId);
     }
     /**
-     * @return Default variable value (string)
+     * @return Default cluster template revision
      * 
      */
     public Optional<Boolean> default_() {
         return Optional.ofNullable(this.default_);
     }
     /**
-     * @return Enable cluster template revision. Default `true` (bool)
+     * @return Enable cluster template revision
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return The cluster template revision ID (string)
+     * @return (Computed) The ID of the resource (string)
      * 
      */
     public Optional<String> id() {
@@ -122,7 +122,7 @@ public final class ClusterTemplateTemplateRevision {
         return this.name;
     }
     /**
-     * @return Cluster template questions (list)
+     * @return Cluster template questions
      * 
      */
     public List<ClusterTemplateTemplateRevisionQuestion> questions() {

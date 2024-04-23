@@ -13,48 +13,21 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterRkeConfigIngress
     {
-        /// <summary>
-        /// Enable ingress default backend. Default: `true` (bool)
-        /// </summary>
         public readonly bool? DefaultBackend;
-        /// <summary>
-        /// Ingress controller DNS policy. `ClusterFirstWithHostNet`, `ClusterFirst`, `Default`, and `None` are supported. [K8S dns Policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) (string)
-        /// </summary>
         public readonly string? DnsPolicy;
-        /// <summary>
-        /// Extra arguments for scheduler service (map)
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? ExtraArgs;
-        /// <summary>
-        /// HTTP port for RKE Ingress (int)
-        /// </summary>
         public readonly int? HttpPort;
-        /// <summary>
-        /// HTTPS port for RKE Ingress (int)
-        /// </summary>
         public readonly int? HttpsPort;
-        /// <summary>
-        /// Network mode for RKE Ingress (string)
-        /// </summary>
         public readonly string? NetworkMode;
-        /// <summary>
-        /// RKE monitoring node selector (map)
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? NodeSelector;
-        /// <summary>
-        /// RKE options for network (map)
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? Options;
-        /// <summary>
-        /// RKE monitoring provider (string)
-        /// </summary>
         public readonly string? Provider;
         /// <summary>
-        /// Network add-on tolerations (list)
+        /// Ingress add-on tolerations
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterRkeConfigIngressToleration> Tolerations;
         /// <summary>
-        /// RKE monitoring update strategy (list Maxitems: 1)
+        /// Update daemon set strategy
         /// </summary>
         public readonly Outputs.ClusterRkeConfigIngressUpdateStrategy? UpdateStrategy;
 

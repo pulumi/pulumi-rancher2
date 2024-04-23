@@ -17,14 +17,14 @@ public final class ClusterRke2ConfigUpgradeStrategyArgs extends com.pulumi.resou
     public static final ClusterRke2ConfigUpgradeStrategyArgs Empty = new ClusterRke2ConfigUpgradeStrategyArgs();
 
     /**
-     * Drain server nodes. Default: `false` (bool)
+     * Drain server nodes
      * 
      */
     @Import(name="drainServerNodes")
     private @Nullable Output<Boolean> drainServerNodes;
 
     /**
-     * @return Drain server nodes. Default: `false` (bool)
+     * @return Drain server nodes
      * 
      */
     public Optional<Output<Boolean>> drainServerNodes() {
@@ -32,14 +32,14 @@ public final class ClusterRke2ConfigUpgradeStrategyArgs extends com.pulumi.resou
     }
 
     /**
-     * Drain worker nodes. Default: `false` (bool)
+     * Drain worker nodes
      * 
      */
     @Import(name="drainWorkerNodes")
     private @Nullable Output<Boolean> drainWorkerNodes;
 
     /**
-     * @return Drain worker nodes. Default: `false` (bool)
+     * @return Drain worker nodes
      * 
      */
     public Optional<Output<Boolean>> drainWorkerNodes() {
@@ -47,14 +47,14 @@ public final class ClusterRke2ConfigUpgradeStrategyArgs extends com.pulumi.resou
     }
 
     /**
-     * Server concurrency. Default: `1` (int)
+     * Server concurrency
      * 
      */
     @Import(name="serverConcurrency")
     private @Nullable Output<Integer> serverConcurrency;
 
     /**
-     * @return Server concurrency. Default: `1` (int)
+     * @return Server concurrency
      * 
      */
     public Optional<Output<Integer>> serverConcurrency() {
@@ -62,14 +62,14 @@ public final class ClusterRke2ConfigUpgradeStrategyArgs extends com.pulumi.resou
     }
 
     /**
-     * Worker concurrency. Default: `1` (int)
+     * Worker concurrency
      * 
      */
     @Import(name="workerConcurrency")
     private @Nullable Output<Integer> workerConcurrency;
 
     /**
-     * @return Worker concurrency. Default: `1` (int)
+     * @return Worker concurrency
      * 
      */
     public Optional<Output<Integer>> workerConcurrency() {
@@ -104,7 +104,7 @@ public final class ClusterRke2ConfigUpgradeStrategyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param drainServerNodes Drain server nodes. Default: `false` (bool)
+         * @param drainServerNodes Drain server nodes
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class ClusterRke2ConfigUpgradeStrategyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param drainServerNodes Drain server nodes. Default: `false` (bool)
+         * @param drainServerNodes Drain server nodes
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class ClusterRke2ConfigUpgradeStrategyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param drainWorkerNodes Drain worker nodes. Default: `false` (bool)
+         * @param drainWorkerNodes Drain worker nodes
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class ClusterRke2ConfigUpgradeStrategyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param drainWorkerNodes Drain worker nodes. Default: `false` (bool)
+         * @param drainWorkerNodes Drain worker nodes
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class ClusterRke2ConfigUpgradeStrategyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param serverConcurrency Server concurrency. Default: `1` (int)
+         * @param serverConcurrency Server concurrency
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class ClusterRke2ConfigUpgradeStrategyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param serverConcurrency Server concurrency. Default: `1` (int)
+         * @param serverConcurrency Server concurrency
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class ClusterRke2ConfigUpgradeStrategyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param workerConcurrency Worker concurrency. Default: `1` (int)
+         * @param workerConcurrency Worker concurrency
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class ClusterRke2ConfigUpgradeStrategyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param workerConcurrency Worker concurrency. Default: `1` (int)
+         * @param workerConcurrency Worker concurrency
          * 
          * @return builder
          * 

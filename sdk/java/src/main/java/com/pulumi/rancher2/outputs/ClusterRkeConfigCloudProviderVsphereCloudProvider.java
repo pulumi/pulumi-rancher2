@@ -17,65 +17,25 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterRkeConfigCloudProviderVsphereCloudProvider {
-    /**
-     * @return (list maxitems:1)
-     * 
-     */
     private @Nullable ClusterRkeConfigCloudProviderVsphereCloudProviderDisk disk;
-    /**
-     * @return (list maxitems:1)
-     * 
-     */
     private @Nullable ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal global;
-    /**
-     * @return The GKE cluster network. Required for create new cluster (string)
-     * 
-     */
     private @Nullable ClusterRkeConfigCloudProviderVsphereCloudProviderNetwork network;
-    /**
-     * @return (List)
-     * 
-     */
     private List<ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter> virtualCenters;
-    /**
-     * @return (list maxitems:1)
-     * 
-     */
     private ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace workspace;
 
     private ClusterRkeConfigCloudProviderVsphereCloudProvider() {}
-    /**
-     * @return (list maxitems:1)
-     * 
-     */
     public Optional<ClusterRkeConfigCloudProviderVsphereCloudProviderDisk> disk() {
         return Optional.ofNullable(this.disk);
     }
-    /**
-     * @return (list maxitems:1)
-     * 
-     */
     public Optional<ClusterRkeConfigCloudProviderVsphereCloudProviderGlobal> global() {
         return Optional.ofNullable(this.global);
     }
-    /**
-     * @return The GKE cluster network. Required for create new cluster (string)
-     * 
-     */
     public Optional<ClusterRkeConfigCloudProviderVsphereCloudProviderNetwork> network() {
         return Optional.ofNullable(this.network);
     }
-    /**
-     * @return (List)
-     * 
-     */
     public List<ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter> virtualCenters() {
         return this.virtualCenters;
     }
-    /**
-     * @return (list maxitems:1)
-     * 
-     */
     public ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspace workspace() {
         return this.workspace;
     }

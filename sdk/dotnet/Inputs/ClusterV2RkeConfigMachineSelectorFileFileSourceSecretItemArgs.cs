@@ -13,31 +13,31 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If true, the file is ignored when determining whether the node should be drained before updating the node plan.
+        /// If ture, the file is ignored when determining whether the node should be drained before updating the node plan (default: true).
         /// </summary>
         [Input("dynamic")]
         public Input<bool>? Dynamic { get; set; }
 
         /// <summary>
-        /// Hash is the base64 encoded value of the SHA256 checksum of the file's content. If specified, it is used to validate the integrity of the file content.
+        /// The base64 encoded value of the SHA256 checksum of the file's content
         /// </summary>
         [Input("hash")]
         public Input<string>? Hash { get; set; }
 
         /// <summary>
-        /// Key is the name of the key of the item to retrieve.
+        /// The key of the item(file) to retrieve
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// Path is the absolute path to put the file in the target node.
+        /// The path to put the file in the target node
         /// </summary>
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
 
         /// <summary>
-        /// Permissions is the numeric representation of the file permission. It takes precedence over the default permissions at the outer level.
+        /// The numeric representation of the file permissions
         /// </summary>
         [Input("permissions")]
         public Input<string>? Permissions { get; set; }

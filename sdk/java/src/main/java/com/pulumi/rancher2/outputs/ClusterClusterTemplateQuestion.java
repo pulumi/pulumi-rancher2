@@ -14,50 +14,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterClusterTemplateQuestion {
     /**
-     * @return Default variable value (string)
+     * @return Default variable value
      * 
      */
     private String default_;
     /**
-     * @return Required variable. Default `false` (bool)
+     * @return Required variable
      * 
      */
     private @Nullable Boolean required;
     /**
-     * @return Variable type. `boolean`, `int`, `password`, and `string` are allowed. Default `string` (string)
+     * @return Variable type
      * 
      */
     private @Nullable String type;
     /**
-     * @return Variable name (string)
+     * @return Variable name
      * 
      */
     private String variable;
 
     private ClusterClusterTemplateQuestion() {}
     /**
-     * @return Default variable value (string)
+     * @return Default variable value
      * 
      */
     public String default_() {
         return this.default_;
     }
     /**
-     * @return Required variable. Default `false` (bool)
+     * @return Required variable
      * 
      */
     public Optional<Boolean> required() {
         return Optional.ofNullable(this.required);
     }
     /**
-     * @return Variable type. `boolean`, `int`, `password`, and `string` are allowed. Default `string` (string)
+     * @return Variable type
      * 
      */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return Variable name (string)
+     * @return Variable name
      * 
      */
     public String variable() {

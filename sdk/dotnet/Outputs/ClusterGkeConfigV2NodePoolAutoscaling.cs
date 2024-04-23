@@ -14,15 +14,15 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterGkeConfigV2NodePoolAutoscaling
     {
         /// <summary>
-        /// Enable the authorized cluster endpoint. Default `true` (bool)
+        /// Enable GKE node pool config autoscaling
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// The GKE node pool config max node count (int)
+        /// The GKE node pool config max node count
         /// </summary>
         public readonly int? MaxNodeCount;
         /// <summary>
-        /// The GKE node pool config min node count (int)
+        /// The GKE node pool config min node count
         /// </summary>
         public readonly int? MinNodeCount;
 

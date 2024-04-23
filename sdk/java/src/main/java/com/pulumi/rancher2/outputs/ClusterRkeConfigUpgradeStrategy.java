@@ -13,53 +13,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterRkeConfigUpgradeStrategy {
-    /**
-     * @return RKE drain nodes. Default: `false` (bool)
-     * 
-     */
     private @Nullable Boolean drain;
-    /**
-     * @return RKE drain node input (list Maxitems: 1)
-     * 
-     */
     private @Nullable ClusterRkeConfigUpgradeStrategyDrainInput drainInput;
-    /**
-     * @return RKE max unavailable controlplane nodes. Default: `1` (string)
-     * 
-     */
     private @Nullable String maxUnavailableControlplane;
-    /**
-     * @return RKE max unavailable worker nodes. Default: `10%` (string)
-     * 
-     */
     private @Nullable String maxUnavailableWorker;
 
     private ClusterRkeConfigUpgradeStrategy() {}
-    /**
-     * @return RKE drain nodes. Default: `false` (bool)
-     * 
-     */
     public Optional<Boolean> drain() {
         return Optional.ofNullable(this.drain);
     }
-    /**
-     * @return RKE drain node input (list Maxitems: 1)
-     * 
-     */
     public Optional<ClusterRkeConfigUpgradeStrategyDrainInput> drainInput() {
         return Optional.ofNullable(this.drainInput);
     }
-    /**
-     * @return RKE max unavailable controlplane nodes. Default: `1` (string)
-     * 
-     */
     public Optional<String> maxUnavailableControlplane() {
         return Optional.ofNullable(this.maxUnavailableControlplane);
     }
-    /**
-     * @return RKE max unavailable worker nodes. Default: `10%` (string)
-     * 
-     */
     public Optional<String> maxUnavailableWorker() {
         return Optional.ofNullable(this.maxUnavailableWorker);
     }

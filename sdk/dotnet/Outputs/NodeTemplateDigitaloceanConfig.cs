@@ -14,61 +14,59 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class NodeTemplateDigitaloceanConfig
     {
         /// <summary>
-        /// Digital Ocean access token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+        /// Digital Ocean access token
         /// </summary>
         public readonly string? AccessToken;
         /// <summary>
-        /// Enable backups for droplet. Default `false` (bool)
+        /// Enable backups for droplet
         /// </summary>
         public readonly bool? Backups;
         /// <summary>
-        /// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        /// Digital Ocean Image
         /// </summary>
         public readonly string? Image;
         /// <summary>
-        /// Enable ipv6 for droplet. Default `false` (bool)
+        /// Enable ipv6 for droplet
         /// </summary>
         public readonly bool? Ipv6;
         /// <summary>
-        /// Enable monitoring for droplet. Default `false` (bool)
+        /// Enable monitoring for droplet
         /// </summary>
         public readonly bool? Monitoring;
         /// <summary>
-        /// Enable private networking for droplet. Default `false` (bool)
+        /// Enable private networking for droplet
         /// </summary>
         public readonly bool? PrivateNetworking;
         /// <summary>
-        /// AWS region. Default `eu-west-2` (string)
+        /// Digital Ocean region
         /// </summary>
         public readonly string? Region;
         /// <summary>
-        /// Digital Ocean size. Default `s-1vcpu-1gb` (string)
+        /// Digital Ocean size
         /// </summary>
         public readonly string? Size;
         /// <summary>
-        /// SSH key fingerprint (string)
+        /// SSH key fingerprint
         /// </summary>
         public readonly string? SshKeyFingerprint;
         /// <summary>
-        /// SSH private key path (string)
+        /// SSH private key path
         /// </summary>
         public readonly string? SshKeyPath;
         /// <summary>
-        /// If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+        /// SSH port
         /// </summary>
         public readonly string? SshPort;
         /// <summary>
-        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        /// SSH username
         /// </summary>
         public readonly string? SshUser;
         /// <summary>
-        /// vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+        /// Comma-separated list of tags to apply to the Droplet
         /// </summary>
         public readonly string? Tags;
         /// <summary>
-        /// Path to file with cloud-init user-data (string)
-        /// 
-        /// &gt; **Note:**: You need to install the Hetzner Docker Machine Driver first as shown as in the examples section.
+        /// Path to file with cloud-init user-data
         /// </summary>
         public readonly string? Userdata;
 

@@ -13,61 +13,61 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class MachineConfigV2HarvesterConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// vSphere CPU number for docker VM. Default `2` (string)
+        /// CPU count
         /// </summary>
         [Input("cpuCount")]
         public Input<string>? CpuCount { get; set; }
 
         /// <summary>
-        /// Use `disk_info` instead
+        /// Disk bus
         /// </summary>
         [Input("diskBus")]
         public Input<string>? DiskBus { get; set; }
 
         /// <summary>
-        /// A JSON string specifying info for the disks e.g. `{\"disks\":[{\"imageName\":\"harvester-public/image-57hzg\",\"bootOrder\":1,\"size\":40},{\"storageClassName\":\"node-driver-test\",\"bootOrder\":2,\"size\":1}]}` (string)
+        /// A JSON string specifying info for the disks e.g. `{"disks":[{"imageName":"harvester-public/image-57hzg","bootOrder":1,"size":40},{"storageClassName":"node-driver-test","bootOrder":2,"size":1}]}`
         /// </summary>
         [Input("diskInfo")]
         public Input<string>? DiskInfo { get; set; }
 
         /// <summary>
-        /// vSphere size of disk for docker VM (in MB). Default `20480` (string)
+        /// Disk size (in GiB)
         /// </summary>
         [Input("diskSize")]
         public Input<string>? DiskSize { get; set; }
 
         /// <summary>
-        /// OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+        /// Image name
         /// </summary>
         [Input("imageName")]
         public Input<string>? ImageName { get; set; }
 
         /// <summary>
-        /// vSphere size of memory for docker VM (in MB). Default `2048` (string)
+        /// Memory size (in GiB)
         /// </summary>
         [Input("memorySize")]
         public Input<string>? MemorySize { get; set; }
 
         /// <summary>
-        /// NetworkData content of cloud-init, base64 is supported (string)
+        /// NetworkData content of cloud-init, base64 is supported
         /// </summary>
         [Input("networkData")]
         public Input<string>? NetworkData { get; set; }
 
         /// <summary>
-        /// A JSON string specifying info for the networks e.g. `{\"interfaces\":[{\"networkName\":\"harvester-public/vlan1\"},{\"networkName\":\"harvester-public/vlan2\"}]}` (string)
+        /// A JSON string specifying info for the networks e.g. `{"interfaces":[{"networkName":"harvester-public/vlan1"},{"networkName":"harvester-public/vlan2"}]}`
         /// </summary>
         [Input("networkInfo")]
         public Input<string>? NetworkInfo { get; set; }
 
         /// <summary>
-        /// Use `network_info` instead
+        /// Network model
         /// </summary>
         [Input("networkModel")]
         public Input<string>? NetworkModel { get; set; }
 
         /// <summary>
-        /// Use `network_info` instead
+        /// Network name
         /// </summary>
         [Input("networkName")]
         public Input<string>? NetworkName { get; set; }
@@ -76,7 +76,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _sshPassword;
 
         /// <summary>
-        /// If using a non-B2D image you can specify the ssh password. Default `tcuser` (string)
+        /// SSH password
         /// </summary>
         public Input<string>? SshPassword
         {
@@ -89,25 +89,25 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+        /// SSH username
         /// </summary>
         [Input("sshUser", required: true)]
         public Input<string> SshUser { get; set; } = null!;
 
         /// <summary>
-        /// UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata (string)
+        /// UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata
         /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }
 
         /// <summary>
-        /// Virtual machine affinity, only base64 format is supported. For Rancher v2.6.7 and above (string)
+        /// VM affinity, base64 is supported
         /// </summary>
         [Input("vmAffinity")]
         public Input<string>? VmAffinity { get; set; }
 
         /// <summary>
-        /// Virtual machine namespace e.g. `default` (string)
+        /// Virtual machine namespace
         /// </summary>
         [Input("vmNamespace", required: true)]
         public Input<string> VmNamespace { get; set; } = null!;

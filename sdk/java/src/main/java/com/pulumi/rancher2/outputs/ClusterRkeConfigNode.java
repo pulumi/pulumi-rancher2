@@ -16,93 +16,33 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterRkeConfigNode {
-    /**
-     * @return Address ip for node (string)
-     * 
-     */
     private String address;
-    /**
-     * @return Docker socket for node (string)
-     * 
-     */
     private @Nullable String dockerSocket;
-    /**
-     * @return Hostname override for node (string)
-     * 
-     */
     private @Nullable String hostnameOverride;
-    /**
-     * @return Internal ip for node (string)
-     * 
-     */
     private @Nullable String internalAddress;
     /**
      * @return Labels for the Cluster (map)
      * 
      */
     private @Nullable Map<String,Object> labels;
-    /**
-     * @return Id for the node (string)
-     * 
-     */
     private @Nullable String nodeId;
-    /**
-     * @return Port for node. Default `22` (string)
-     * 
-     */
     private @Nullable String port;
-    /**
-     * @return Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
-     * 
-     */
     private List<String> roles;
-    /**
-     * @return Use ssh agent auth. Default `false` (bool)
-     * 
-     */
     private @Nullable Boolean sshAgentAuth;
-    /**
-     * @return Node SSH private key (string)
-     * 
-     */
     private @Nullable String sshKey;
-    /**
-     * @return Node SSH private key path (string)
-     * 
-     */
     private @Nullable String sshKeyPath;
-    /**
-     * @return Registry user (string)
-     * 
-     */
     private String user;
 
     private ClusterRkeConfigNode() {}
-    /**
-     * @return Address ip for node (string)
-     * 
-     */
     public String address() {
         return this.address;
     }
-    /**
-     * @return Docker socket for node (string)
-     * 
-     */
     public Optional<String> dockerSocket() {
         return Optional.ofNullable(this.dockerSocket);
     }
-    /**
-     * @return Hostname override for node (string)
-     * 
-     */
     public Optional<String> hostnameOverride() {
         return Optional.ofNullable(this.hostnameOverride);
     }
-    /**
-     * @return Internal ip for node (string)
-     * 
-     */
     public Optional<String> internalAddress() {
         return Optional.ofNullable(this.internalAddress);
     }
@@ -113,52 +53,24 @@ public final class ClusterRkeConfigNode {
     public Map<String,Object> labels() {
         return this.labels == null ? Map.of() : this.labels;
     }
-    /**
-     * @return Id for the node (string)
-     * 
-     */
     public Optional<String> nodeId() {
         return Optional.ofNullable(this.nodeId);
     }
-    /**
-     * @return Port for node. Default `22` (string)
-     * 
-     */
     public Optional<String> port() {
         return Optional.ofNullable(this.port);
     }
-    /**
-     * @return Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
-     * 
-     */
     public List<String> roles() {
         return this.roles;
     }
-    /**
-     * @return Use ssh agent auth. Default `false` (bool)
-     * 
-     */
     public Optional<Boolean> sshAgentAuth() {
         return Optional.ofNullable(this.sshAgentAuth);
     }
-    /**
-     * @return Node SSH private key (string)
-     * 
-     */
     public Optional<String> sshKey() {
         return Optional.ofNullable(this.sshKey);
     }
-    /**
-     * @return Node SSH private key path (string)
-     * 
-     */
     public Optional<String> sshKeyPath() {
         return Optional.ofNullable(this.sshKeyPath);
     }
-    /**
-     * @return Registry user (string)
-     * 
-     */
     public String user() {
         return this.user;
     }

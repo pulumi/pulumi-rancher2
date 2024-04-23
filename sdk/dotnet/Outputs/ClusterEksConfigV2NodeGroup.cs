@@ -14,27 +14,27 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterEksConfigV2NodeGroup
     {
         /// <summary>
-        /// The EKS node group desired size. Default: `2` (int)
+        /// The EKS node group desired size
         /// </summary>
         public readonly int? DesiredSize;
         /// <summary>
-        /// The EKS node group disk size (Gb). Default: `20` (int)
+        /// The EKS node group disk size
         /// </summary>
         public readonly int? DiskSize;
         /// <summary>
-        /// The EKS node group ssh key (string)
+        /// The EKS node group ssh key
         /// </summary>
         public readonly string? Ec2SshKey;
         /// <summary>
-        /// Set true to EKS use gpu. Default: `false` (bool)
+        /// Is EKS cluster using gpu?
         /// </summary>
         public readonly bool? Gpu;
         /// <summary>
-        /// The EKS node group image ID (string)
+        /// The EKS node group image ID
         /// </summary>
         public readonly string? ImageId;
         /// <summary>
-        /// The EKS node group instance type. Default: `t3.medium` (string)
+        /// The EKS node group instance type
         /// </summary>
         public readonly string? InstanceType;
         /// <summary>
@@ -42,15 +42,15 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Labels;
         /// <summary>
-        /// The EKS node groups launch template (list Maxitem: 1)
+        /// The EKS node groups launch template
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterEksConfigV2NodeGroupLaunchTemplate> LaunchTemplates;
         /// <summary>
-        /// The EKS node group maximum size. Default `2` (int)
+        /// The EKS node group maximum size
         /// </summary>
         public readonly int? MaxSize;
         /// <summary>
-        /// The EKS node group maximum size. Default `2` (int)
+        /// The EKS node group minimum size
         /// </summary>
         public readonly int? MinSize;
         /// <summary>
@@ -58,35 +58,35 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The EKS node group node role ARN. Default `""` (string)
+        /// The EKS node group node role ARN
         /// </summary>
         public readonly string? NodeRole;
         /// <summary>
-        /// Enable EKS node group request spot instances (bool)
+        /// Enable EKS node group request spot instances
         /// </summary>
         public readonly bool? RequestSpotInstances;
         /// <summary>
-        /// The EKS node group resource tags (map)
+        /// The EKS node group resource tags
         /// </summary>
         public readonly ImmutableDictionary<string, object>? ResourceTags;
         /// <summary>
-        /// The EKS node group sport instace types (list string)
+        /// The EKS node group spot instance types
         /// </summary>
         public readonly ImmutableArray<string> SpotInstanceTypes;
         /// <summary>
-        /// The EKS node group subnets (list string)
+        /// The EKS node group subnets
         /// </summary>
         public readonly ImmutableArray<string> Subnets;
         /// <summary>
-        /// The GKE node config tags (List)
+        /// The EKS node group tags
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Tags;
         /// <summary>
-        /// The EKS node group user data (string)
+        /// The EKS node group user data
         /// </summary>
         public readonly string? UserData;
         /// <summary>
-        /// rancher-monitoring chart version (string)
+        /// The EKS node group k8s version
         /// </summary>
         public readonly string? Version;
 

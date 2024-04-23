@@ -18,123 +18,123 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? AcceleratedNetworking;
         /// <summary>
-        /// Azure Availability Set to place the virtual machine into. Default `docker-machine` (string)
+        /// Azure Availability Set to place the virtual machine into
         /// </summary>
         public readonly string? AvailabilitySet;
         /// <summary>
-        /// OpenStack availability zone (string)
+        /// The Availability Zone that the Azure VM should be created in
         /// </summary>
         public readonly string? AvailabilityZone;
         /// <summary>
-        /// Azure Service Principal Account ID. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+        /// Azure Service Principal Account ID (optional, browser auth is used if not specified)
         /// </summary>
         public readonly string? ClientId;
         /// <summary>
-        /// Azure Service Principal Account password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+        /// Azure Service Principal Account password (optional, browser auth is used if not specified)
         /// </summary>
         public readonly string? ClientSecret;
         /// <summary>
-        /// Path to file with custom-data (string)
+        /// Path to file with custom-data
         /// </summary>
         public readonly string? CustomData;
         /// <summary>
-        /// vSphere size of disk for docker VM (in MB). Default `20480` (string)
+        /// Disk size if using managed disk
         /// </summary>
         public readonly string? DiskSize;
         /// <summary>
-        /// A unique DNS label for the public IP adddress (string)
+        /// A unique DNS label for the public IP adddress
         /// </summary>
         public readonly string? Dns;
         /// <summary>
-        /// Docker Port. Default `2376` (string)
+        /// Port number for Docker engine
         /// </summary>
         public readonly string? DockerPort;
         /// <summary>
-        /// Azure environment (e.g. AzurePublicCloud, AzureChinaCloud). Default `AzurePublicCloud` (string)
+        /// Azure environment (e.g. AzurePublicCloud, AzureChinaCloud)
         /// </summary>
         public readonly string? Environment;
         /// <summary>
-        /// Fault domain count to use for availability set. Default `3` (string)
+        /// Fault domain count to use for availability set
         /// </summary>
         public readonly string? FaultDomainCount;
         /// <summary>
-        /// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        /// Azure virtual machine OS image
         /// </summary>
         public readonly string? Image;
         /// <summary>
-        /// Azure region to create the virtual machine. Default `westus` (string)
+        /// Azure region to create the virtual machine
         /// </summary>
         public readonly string? Location;
         /// <summary>
-        /// Configures VM and availability set for managed disks. For Rancher v2.3.x and above. Default `false` (bool)
+        /// Configures VM and availability set for managed disks
         /// </summary>
         public readonly bool? ManagedDisks;
         /// <summary>
-        /// Do not create a public IP address for the machine. Default `false` (bool)
+        /// Do not create a public IP address for the machine
         /// </summary>
         public readonly bool? NoPublicIp;
         /// <summary>
-        /// Azure Network Security Group to assign this node to (accepts either a name or resource ID, default is to create a new NSG for each machine). Default `docker-machine-nsg` (string)
+        /// Azure Network Security Group to assign this node to (accepts either a name or resource ID, default is to create a new NSG for each machine)
         /// </summary>
         public readonly string? Nsg;
         /// <summary>
-        /// Make the specified port number accessible from the Internet. (list)
+        /// Make the specified port number accessible from the Internet
         /// </summary>
         public readonly ImmutableArray<string> OpenPorts;
         /// <summary>
-        /// Only use a private IP address. Default `false` (bool)
+        /// Only use a private IP address
         /// </summary>
         public readonly bool? PrivateAddressOnly;
         /// <summary>
-        /// Specify a static private IP address for the machine. (string)
+        /// Specify a static private IP address for the machine
         /// </summary>
         public readonly string? PrivateIpAddress;
         /// <summary>
-        /// Azure Resource Group name (will be created if missing). Default `docker-machine` (string)
+        /// Azure Resource Group name (will be created if missing)
         /// </summary>
         public readonly string? ResourceGroup;
         /// <summary>
-        /// Digital Ocean size. Default `s-1vcpu-1gb` (string)
+        /// Size for Azure Virtual Machine
         /// </summary>
         public readonly string? Size;
         /// <summary>
-        /// If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+        /// Username for SSH login
         /// </summary>
         public readonly string? SshUser;
         /// <summary>
-        /// Assign a static public IP address to the machine. Default `false` (bool)
+        /// Assign a static public IP address to the machine
         /// </summary>
         public readonly bool? StaticPublicIp;
         /// <summary>
-        /// Type of Storage Account to host the OS Disk for the machine. Default `Standard_LRS` (string)
+        /// Type of Storage Account to host the OS Disk for the machine
         /// </summary>
         public readonly string? StorageType;
         /// <summary>
-        /// Azure Subnet Name to be used within the Virtual Network. Default `docker-machine` (string)
+        /// Azure Subnet Name to be used within the Virtual Network
         /// </summary>
         public readonly string? Subnet;
         /// <summary>
-        /// Private CIDR block to be used for the new subnet, should comply RFC 1918. Default `192.168.0.0/16` (string)
+        /// Private CIDR block to be used for the new subnet, should comply RFC 1918
         /// </summary>
         public readonly string? SubnetPrefix;
         /// <summary>
-        /// Azure Subscription ID (string)
+        /// Azure Subscription ID
         /// </summary>
         public readonly string? SubscriptionId;
         /// <summary>
-        /// vSphere tags id e.g. `urn:xxx` (list)
+        /// Tags to be applied to the Azure VM instance (e.g. key1,value1,key2,value2)
         /// </summary>
         public readonly string? Tags;
         /// <summary>
-        /// OpenStack tenant id. Conflicts with `tenant_name` (string)
+        /// Azure Tenant ID
         /// </summary>
         public readonly string? TenantId;
         /// <summary>
-        /// Update domain count to use for availability set. Default `5` (string)
+        /// Update domain count to use for availability set
         /// </summary>
         public readonly string? UpdateDomainCount;
         /// <summary>
-        /// Use private IP address of the machine to connect. Default `false` (bool)
+        /// Use private IP address of the machine to connect
         /// </summary>
         public readonly bool? UsePrivateIp;
         /// <summary>
@@ -142,7 +142,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? UsePublicIpStandardSku;
         /// <summary>
-        /// Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format). Default `docker-machine-vnet` (string)
+        /// Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format)
         /// </summary>
         public readonly string? Vnet;
 

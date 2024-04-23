@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterAlertRuleSystemServiceRule {
     /**
-     * @return System service rule condition. Supported values : `&#34;controller-manager&#34; | &#34;etcd&#34; | &#34;scheduler&#34;`. Default: `scheduler` (string)
+     * @return System service rule condition
      * 
      */
     private @Nullable String condition;
 
     private ClusterAlertRuleSystemServiceRule() {}
     /**
-     * @return System service rule condition. Supported values : `&#34;controller-manager&#34; | &#34;etcd&#34; | &#34;scheduler&#34;`. Default: `scheduler` (string)
+     * @return System service rule condition
      * 
      */
     public Optional<String> condition() {

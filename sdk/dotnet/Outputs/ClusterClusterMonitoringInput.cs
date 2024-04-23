@@ -14,11 +14,11 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterClusterMonitoringInput
     {
         /// <summary>
-        /// Key/value answers for monitor input (map)
+        /// Answers for monitor input
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Answers;
         /// <summary>
-        /// rancher-monitoring chart version (string)
+        /// Monitoring version
         /// </summary>
         public readonly string? Version;
 

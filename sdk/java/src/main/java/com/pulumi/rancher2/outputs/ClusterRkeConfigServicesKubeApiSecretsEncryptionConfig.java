@@ -12,29 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig {
-    /**
-     * @return Secrets encryption yaml encoded custom configuration. `&#34;apiVersion&#34;` and `&#34;kind&#34;:&#34;EncryptionConfiguration&#34;` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/) (string) Ex:
-     * 
-     */
     private @Nullable String customConfig;
-    /**
-     * @return Enable the authorized cluster endpoint. Default `true` (bool)
-     * 
-     */
     private @Nullable Boolean enabled;
 
     private ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig() {}
-    /**
-     * @return Secrets encryption yaml encoded custom configuration. `&#34;apiVersion&#34;` and `&#34;kind&#34;:&#34;EncryptionConfiguration&#34;` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/) (string) Ex:
-     * 
-     */
     public Optional<String> customConfig() {
         return Optional.ofNullable(this.customConfig);
     }
-    /**
-     * @return Enable the authorized cluster endpoint. Default `true` (bool)
-     * 
-     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }

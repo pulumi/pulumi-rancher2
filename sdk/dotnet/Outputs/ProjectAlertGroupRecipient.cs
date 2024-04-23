@@ -18,15 +18,15 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? DefaultRecipient;
         /// <summary>
-        /// Recipient notifier ID (string)
+        /// Recipient notifier ID
         /// </summary>
         public readonly string NotifierId;
         /// <summary>
-        /// Recipient notifier ID. Supported values : `"pagerduty" | "slack" | "email" | "webhook" | "wechat"` (string)
+        /// Recipient notifier type
         /// </summary>
         public readonly string? NotifierType;
         /// <summary>
-        /// Recipient (string)
+        /// Recipient
         /// </summary>
         public readonly string? Recipient;
 

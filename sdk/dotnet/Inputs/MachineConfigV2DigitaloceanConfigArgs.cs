@@ -16,7 +16,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _accessToken;
 
         /// <summary>
-        /// Digital Ocean access token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+        /// Digital Ocean access token
         /// </summary>
         public Input<string>? AccessToken
         {
@@ -29,43 +29,43 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Enable backups for droplet. Default `false` (bool)
+        /// Enable backups for droplet
         /// </summary>
         [Input("backups")]
         public Input<bool>? Backups { get; set; }
 
         /// <summary>
-        /// Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+        /// Digital Ocean Image
         /// </summary>
         [Input("image")]
         public Input<string>? Image { get; set; }
 
         /// <summary>
-        /// Enable ipv6 for droplet. Default `false` (bool)
+        /// Enable ipv6 for droplet
         /// </summary>
         [Input("ipv6")]
         public Input<bool>? Ipv6 { get; set; }
 
         /// <summary>
-        /// Enable monitoring for droplet. Default `false` (bool)
+        /// Enable monitoring for droplet
         /// </summary>
         [Input("monitoring")]
         public Input<bool>? Monitoring { get; set; }
 
         /// <summary>
-        /// Enable private networking for droplet. Default `false` (bool)
+        /// Enable private networking for droplet
         /// </summary>
         [Input("privateNetworking")]
         public Input<bool>? PrivateNetworking { get; set; }
 
         /// <summary>
-        /// OpenStack region name (string)
+        /// Digital Ocean region
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Digital Ocean size. Default `s-1vcpu-1gb` (string)
+        /// Digital Ocean size
         /// </summary>
         [Input("size")]
         public Input<string>? Size { get; set; }
@@ -74,7 +74,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _sshKeyContents;
 
         /// <summary>
-        /// SSH private key contents (string)
+        /// SSH private key contents
         /// </summary>
         public Input<string>? SshKeyContents
         {
@@ -90,7 +90,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _sshKeyFingerprint;
 
         /// <summary>
-        /// SSH key fingerprint (string)
+        /// SSH key fingerprint
         /// </summary>
         public Input<string>? SshKeyFingerprint
         {
@@ -103,25 +103,25 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// If using a non-B2D image you can specify the ssh port. Default `22` (string)
+        /// SSH port
         /// </summary>
         [Input("sshPort")]
         public Input<string>? SshPort { get; set; }
 
         /// <summary>
-        /// If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+        /// SSH username
         /// </summary>
         [Input("sshUser")]
         public Input<string>? SshUser { get; set; }
 
         /// <summary>
-        /// vSphere tags id e.g. `urn:xxx` (list)
+        /// Comma-separated list of tags to apply to the Droplet
         /// </summary>
         [Input("tags")]
         public Input<string>? Tags { get; set; }
 
         /// <summary>
-        /// Path to file with cloud-init user-data (string)
+        /// Path to file with cloud-init user-data
         /// </summary>
         [Input("userdata")]
         public Input<string>? Userdata { get; set; }

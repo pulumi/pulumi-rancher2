@@ -14,11 +14,11 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlock
     {
         /// <summary>
-        /// The GKE master authorized network config cidr block (string)
+        /// The GKE master authorized network config cidr block
         /// </summary>
         public readonly string CidrBlock;
         /// <summary>
-        /// The GKE master authorized network config cidr block dispaly name (string)
+        /// The GKE master authorized network config cidr block dispaly name
         /// </summary>
         public readonly string? DisplayName;
 

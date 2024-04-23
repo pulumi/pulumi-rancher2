@@ -13,19 +13,19 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterGkeConfigV2ClusterAddonsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable GKE horizontal pod autoscaling. Default: `false` (bool)
+        /// Enable GKE horizontal pod autoscaling
         /// </summary>
         [Input("horizontalPodAutoscaling")]
         public Input<bool>? HorizontalPodAutoscaling { get; set; }
 
         /// <summary>
-        /// Enable GKE HTTP load balancing. Default: `false` (bool)
+        /// Enable GKE HTTP load balancing
         /// </summary>
         [Input("httpLoadBalancing")]
         public Input<bool>? HttpLoadBalancing { get; set; }
 
         /// <summary>
-        /// Enable GKE network policy config. Default: `false` (bool)
+        /// Enable GKE network policy config
         /// </summary>
         [Input("networkPolicyConfig")]
         public Input<bool>? NetworkPolicyConfig { get; set; }

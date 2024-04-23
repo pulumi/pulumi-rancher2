@@ -16,14 +16,14 @@ public final class ClusterRkeConfigIngressUpdateStrategyRollingUpdateArgs extend
     public static final ClusterRkeConfigIngressUpdateStrategyRollingUpdateArgs Empty = new ClusterRkeConfigIngressUpdateStrategyRollingUpdateArgs();
 
     /**
-     * Monitoring deployment rolling update max unavailable. Default: `1` (int)
+     * Rolling update max unavailable
      * 
      */
     @Import(name="maxUnavailable")
     private @Nullable Output<Integer> maxUnavailable;
 
     /**
-     * @return Monitoring deployment rolling update max unavailable. Default: `1` (int)
+     * @return Rolling update max unavailable
      * 
      */
     public Optional<Output<Integer>> maxUnavailable() {
@@ -55,7 +55,7 @@ public final class ClusterRkeConfigIngressUpdateStrategyRollingUpdateArgs extend
         }
 
         /**
-         * @param maxUnavailable Monitoring deployment rolling update max unavailable. Default: `1` (int)
+         * @param maxUnavailable Rolling update max unavailable
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class ClusterRkeConfigIngressUpdateStrategyRollingUpdateArgs extend
         }
 
         /**
-         * @param maxUnavailable Monitoring deployment rolling update max unavailable. Default: `1` (int)
+         * @param maxUnavailable Rolling update max unavailable
          * 
          * @return builder
          * 

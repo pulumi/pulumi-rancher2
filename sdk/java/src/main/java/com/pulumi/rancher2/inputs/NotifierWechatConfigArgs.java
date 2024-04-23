@@ -17,14 +17,14 @@ public final class NotifierWechatConfigArgs extends com.pulumi.resources.Resourc
     public static final NotifierWechatConfigArgs Empty = new NotifierWechatConfigArgs();
 
     /**
-     * Wechat agent ID (string)
+     * Wechat application agent ID
      * 
      */
     @Import(name="agent", required=true)
     private Output<String> agent;
 
     /**
-     * @return Wechat agent ID (string)
+     * @return Wechat application agent ID
      * 
      */
     public Output<String> agent() {
@@ -32,14 +32,14 @@ public final class NotifierWechatConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Wechat corporation ID (string)
+     * Wechat corporation ID
      * 
      */
     @Import(name="corp", required=true)
     private Output<String> corp;
 
     /**
-     * @return Wechat corporation ID (string)
+     * @return Wechat corporation ID
      * 
      */
     public Output<String> corp() {
@@ -47,14 +47,14 @@ public final class NotifierWechatConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Wechat default recipient (string)
+     * Wechat default channel
      * 
      */
     @Import(name="defaultRecipient", required=true)
     private Output<String> defaultRecipient;
 
     /**
-     * @return Wechat default recipient (string)
+     * @return Wechat default channel
      * 
      */
     public Output<String> defaultRecipient() {
@@ -62,14 +62,14 @@ public final class NotifierWechatConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Wechat proxy url (string)
+     * Wechat proxy URL
      * 
      */
     @Import(name="proxyUrl")
     private @Nullable Output<String> proxyUrl;
 
     /**
-     * @return Wechat proxy url (string)
+     * @return Wechat proxy URL
      * 
      */
     public Optional<Output<String>> proxyUrl() {
@@ -77,14 +77,14 @@ public final class NotifierWechatConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Wechat recipient type. Allowed values: `party` | `tag` | `user` (string)
+     * Wechat recipient type
      * 
      */
     @Import(name="recipientType")
     private @Nullable Output<String> recipientType;
 
     /**
-     * @return Wechat recipient type. Allowed values: `party` | `tag` | `user` (string)
+     * @return Wechat recipient type
      * 
      */
     public Optional<Output<String>> recipientType() {
@@ -92,14 +92,14 @@ public final class NotifierWechatConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Wechat agent ID (string)
+     * Wechat application secret
      * 
      */
     @Import(name="secret", required=true)
     private Output<String> secret;
 
     /**
-     * @return Wechat agent ID (string)
+     * @return Wechat application secret
      * 
      */
     public Output<String> secret() {
@@ -136,7 +136,7 @@ public final class NotifierWechatConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param agent Wechat agent ID (string)
+         * @param agent Wechat application agent ID
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class NotifierWechatConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param agent Wechat agent ID (string)
+         * @param agent Wechat application agent ID
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class NotifierWechatConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param corp Wechat corporation ID (string)
+         * @param corp Wechat corporation ID
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class NotifierWechatConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param corp Wechat corporation ID (string)
+         * @param corp Wechat corporation ID
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class NotifierWechatConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param defaultRecipient Wechat default recipient (string)
+         * @param defaultRecipient Wechat default channel
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class NotifierWechatConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param defaultRecipient Wechat default recipient (string)
+         * @param defaultRecipient Wechat default channel
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class NotifierWechatConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param proxyUrl Wechat proxy url (string)
+         * @param proxyUrl Wechat proxy URL
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class NotifierWechatConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param proxyUrl Wechat proxy url (string)
+         * @param proxyUrl Wechat proxy URL
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class NotifierWechatConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param recipientType Wechat recipient type. Allowed values: `party` | `tag` | `user` (string)
+         * @param recipientType Wechat recipient type
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class NotifierWechatConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param recipientType Wechat recipient type. Allowed values: `party` | `tag` | `user` (string)
+         * @param recipientType Wechat recipient type
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class NotifierWechatConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param secret Wechat agent ID (string)
+         * @param secret Wechat application secret
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class NotifierWechatConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param secret Wechat agent ID (string)
+         * @param secret Wechat application secret
          * 
          * @return builder
          * 

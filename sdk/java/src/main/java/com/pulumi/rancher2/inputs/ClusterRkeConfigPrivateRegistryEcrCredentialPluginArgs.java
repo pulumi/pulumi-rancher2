@@ -15,47 +15,23 @@ public final class ClusterRkeConfigPrivateRegistryEcrCredentialPluginArgs extend
 
     public static final ClusterRkeConfigPrivateRegistryEcrCredentialPluginArgs Empty = new ClusterRkeConfigPrivateRegistryEcrCredentialPluginArgs();
 
-    /**
-     * AWS access key ID (string)
-     * 
-     */
     @Import(name="awsAccessKeyId")
     private @Nullable Output<String> awsAccessKeyId;
 
-    /**
-     * @return AWS access key ID (string)
-     * 
-     */
     public Optional<Output<String>> awsAccessKeyId() {
         return Optional.ofNullable(this.awsAccessKeyId);
     }
 
-    /**
-     * AWS secret access key (string)
-     * 
-     */
     @Import(name="awsSecretAccessKey")
     private @Nullable Output<String> awsSecretAccessKey;
 
-    /**
-     * @return AWS secret access key (string)
-     * 
-     */
     public Optional<Output<String>> awsSecretAccessKey() {
         return Optional.ofNullable(this.awsSecretAccessKey);
     }
 
-    /**
-     * AWS session token (string)
-     * 
-     */
     @Import(name="awsSessionToken")
     private @Nullable Output<String> awsSessionToken;
 
-    /**
-     * @return AWS session token (string)
-     * 
-     */
     public Optional<Output<String>> awsSessionToken() {
         return Optional.ofNullable(this.awsSessionToken);
     }
@@ -86,65 +62,29 @@ public final class ClusterRkeConfigPrivateRegistryEcrCredentialPluginArgs extend
             $ = new ClusterRkeConfigPrivateRegistryEcrCredentialPluginArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param awsAccessKeyId AWS access key ID (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder awsAccessKeyId(@Nullable Output<String> awsAccessKeyId) {
             $.awsAccessKeyId = awsAccessKeyId;
             return this;
         }
 
-        /**
-         * @param awsAccessKeyId AWS access key ID (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder awsAccessKeyId(String awsAccessKeyId) {
             return awsAccessKeyId(Output.of(awsAccessKeyId));
         }
 
-        /**
-         * @param awsSecretAccessKey AWS secret access key (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder awsSecretAccessKey(@Nullable Output<String> awsSecretAccessKey) {
             $.awsSecretAccessKey = awsSecretAccessKey;
             return this;
         }
 
-        /**
-         * @param awsSecretAccessKey AWS secret access key (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder awsSecretAccessKey(String awsSecretAccessKey) {
             return awsSecretAccessKey(Output.of(awsSecretAccessKey));
         }
 
-        /**
-         * @param awsSessionToken AWS session token (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder awsSessionToken(@Nullable Output<String> awsSessionToken) {
             $.awsSessionToken = awsSessionToken;
             return this;
         }
 
-        /**
-         * @param awsSessionToken AWS session token (string)
-         * 
-         * @return builder
-         * 
-         */
         public Builder awsSessionToken(String awsSessionToken) {
             return awsSessionToken(Output.of(awsSessionToken));
         }

@@ -16,7 +16,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<Inputs.PodSecurityPolicyTemplateRunAsGroupRangeGetArgs>? _ranges;
 
         /// <summary>
-        /// (list)
+        /// ranges are the allowed ranges of gids that may be used. If you would like to force a single gid then supply a single range with the same start and end. Required for MustRunAs.
         /// </summary>
         public InputList<Inputs.PodSecurityPolicyTemplateRunAsGroupRangeGetArgs> Ranges
         {
@@ -25,7 +25,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// (string)
+        /// rule is the strategy that will dictate the allowable RunAsGroup values that may be set.
         /// </summary>
         [Input("rule", required: true)]
         public Input<string> Rule { get; set; } = null!;

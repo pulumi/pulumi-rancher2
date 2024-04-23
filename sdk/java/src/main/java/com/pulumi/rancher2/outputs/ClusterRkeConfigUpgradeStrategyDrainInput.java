@@ -12,65 +12,25 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterRkeConfigUpgradeStrategyDrainInput {
-    /**
-     * @return Delete RKE node local data. Default: `false` (bool)
-     * 
-     */
     private @Nullable Boolean deleteLocalData;
-    /**
-     * @return Force RKE node drain. Default: `false` (bool)
-     * 
-     */
     private @Nullable Boolean force;
-    /**
-     * @return RKE node drain grace period. Default: `-1` (int)
-     * 
-     */
     private @Nullable Integer gracePeriod;
-    /**
-     * @return Ignore RKE daemon sets. Default: `true` (bool)
-     * 
-     */
     private @Nullable Boolean ignoreDaemonSets;
-    /**
-     * @return RKE node drain timeout. Default: `60` (int)
-     * 
-     */
     private @Nullable Integer timeout;
 
     private ClusterRkeConfigUpgradeStrategyDrainInput() {}
-    /**
-     * @return Delete RKE node local data. Default: `false` (bool)
-     * 
-     */
     public Optional<Boolean> deleteLocalData() {
         return Optional.ofNullable(this.deleteLocalData);
     }
-    /**
-     * @return Force RKE node drain. Default: `false` (bool)
-     * 
-     */
     public Optional<Boolean> force() {
         return Optional.ofNullable(this.force);
     }
-    /**
-     * @return RKE node drain grace period. Default: `-1` (int)
-     * 
-     */
     public Optional<Integer> gracePeriod() {
         return Optional.ofNullable(this.gracePeriod);
     }
-    /**
-     * @return Ignore RKE daemon sets. Default: `true` (bool)
-     * 
-     */
     public Optional<Boolean> ignoreDaemonSets() {
         return Optional.ofNullable(this.ignoreDaemonSets);
     }
-    /**
-     * @return RKE node drain timeout. Default: `60` (int)
-     * 
-     */
     public Optional<Integer> timeout() {
         return Optional.ofNullable(this.timeout);
     }

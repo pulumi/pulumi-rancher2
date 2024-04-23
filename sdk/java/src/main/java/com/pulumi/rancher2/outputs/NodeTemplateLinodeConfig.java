@@ -13,194 +13,194 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NodeTemplateLinodeConfig {
     /**
-     * @return Linode user accounts (seperated by commas) whose Linode SSH keys will be permitted root access to the created node. (string)
+     * @return Linode user accounts (seperated by commas) whose Linode SSH keys will be permitted root access to the created node
      * 
      */
     private @Nullable String authorizedUsers;
     /**
-     * @return Create private IP for the instance. Default `false` (bool)
+     * @return Create private IP for the instance
      * 
      */
     private @Nullable Boolean createPrivateIp;
     /**
-     * @return Docker Port. Default `2376` (string)
+     * @return Docker Port
      * 
      */
     private @Nullable String dockerPort;
     /**
-     * @return Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+     * @return Specifies the Linode Instance image which determines the OS distribution and base files
      * 
      */
     private @Nullable String image;
     /**
-     * @return Outscale VM type. Default `tinav2.c1r2p3` (string)
+     * @return Specifies the Linode Instance type which determines CPU, memory, disk size, etc.
      * 
      */
     private @Nullable String instanceType;
     /**
-     * @return Linode Instance Label. (string)
+     * @return Linode Instance Label
      * 
      */
     private @Nullable String label;
     /**
-     * @return AWS region. Default `eu-west-2` (string)
+     * @return Specifies the region (location) of the Linode instance
      * 
      */
     private @Nullable String region;
     /**
-     * @return Root Password (string)
+     * @return Root Password
      * 
      */
     private @Nullable String rootPass;
     /**
-     * @return If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+     * @return Linode Instance SSH Port
      * 
      */
     private @Nullable String sshPort;
     /**
-     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+     * @return Specifies the user as which docker-machine should log in to the Linode instance to install Docker.
      * 
      */
     private @Nullable String sshUser;
     /**
-     * @return Specifies the Linode StackScript to use to create the instance. (string)
+     * @return Specifies the Linode StackScript to use to create the instance
      * 
      */
     private @Nullable String stackscript;
     /**
-     * @return A JSON string specifying data for the selected StackScript. (string)
+     * @return A JSON string specifying data for the selected StackScript
      * 
      */
     private @Nullable String stackscriptData;
     /**
-     * @return Linode Instance Swap Size (MB). Default `512` (string)
+     * @return Linode Instance Swap Size (MB)
      * 
      */
     private @Nullable String swapSize;
     /**
-     * @return vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+     * @return A comma separated list of tags to apply to the the Linode resource
      * 
      */
     private @Nullable String tags;
     /**
-     * @return Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return Linode API Token
      * 
      */
     private @Nullable String token;
     /**
-     * @return Prefix the User-Agent in Linode API calls with some &#39;product/version&#39; (string)
+     * @return Prefix the User-Agent in Linode API calls with some &#39;product/version&#39;
      * 
      */
     private @Nullable String uaPrefix;
 
     private NodeTemplateLinodeConfig() {}
     /**
-     * @return Linode user accounts (seperated by commas) whose Linode SSH keys will be permitted root access to the created node. (string)
+     * @return Linode user accounts (seperated by commas) whose Linode SSH keys will be permitted root access to the created node
      * 
      */
     public Optional<String> authorizedUsers() {
         return Optional.ofNullable(this.authorizedUsers);
     }
     /**
-     * @return Create private IP for the instance. Default `false` (bool)
+     * @return Create private IP for the instance
      * 
      */
     public Optional<Boolean> createPrivateIp() {
         return Optional.ofNullable(this.createPrivateIp);
     }
     /**
-     * @return Docker Port. Default `2376` (string)
+     * @return Docker Port
      * 
      */
     public Optional<String> dockerPort() {
         return Optional.ofNullable(this.dockerPort);
     }
     /**
-     * @return Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+     * @return Specifies the Linode Instance image which determines the OS distribution and base files
      * 
      */
     public Optional<String> image() {
         return Optional.ofNullable(this.image);
     }
     /**
-     * @return Outscale VM type. Default `tinav2.c1r2p3` (string)
+     * @return Specifies the Linode Instance type which determines CPU, memory, disk size, etc.
      * 
      */
     public Optional<String> instanceType() {
         return Optional.ofNullable(this.instanceType);
     }
     /**
-     * @return Linode Instance Label. (string)
+     * @return Linode Instance Label
      * 
      */
     public Optional<String> label() {
         return Optional.ofNullable(this.label);
     }
     /**
-     * @return AWS region. Default `eu-west-2` (string)
+     * @return Specifies the region (location) of the Linode instance
      * 
      */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
     /**
-     * @return Root Password (string)
+     * @return Root Password
      * 
      */
     public Optional<String> rootPass() {
         return Optional.ofNullable(this.rootPass);
     }
     /**
-     * @return If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+     * @return Linode Instance SSH Port
      * 
      */
     public Optional<String> sshPort() {
         return Optional.ofNullable(this.sshPort);
     }
     /**
-     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+     * @return Specifies the user as which docker-machine should log in to the Linode instance to install Docker.
      * 
      */
     public Optional<String> sshUser() {
         return Optional.ofNullable(this.sshUser);
     }
     /**
-     * @return Specifies the Linode StackScript to use to create the instance. (string)
+     * @return Specifies the Linode StackScript to use to create the instance
      * 
      */
     public Optional<String> stackscript() {
         return Optional.ofNullable(this.stackscript);
     }
     /**
-     * @return A JSON string specifying data for the selected StackScript. (string)
+     * @return A JSON string specifying data for the selected StackScript
      * 
      */
     public Optional<String> stackscriptData() {
         return Optional.ofNullable(this.stackscriptData);
     }
     /**
-     * @return Linode Instance Swap Size (MB). Default `512` (string)
+     * @return Linode Instance Swap Size (MB)
      * 
      */
     public Optional<String> swapSize() {
         return Optional.ofNullable(this.swapSize);
     }
     /**
-     * @return vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+     * @return A comma separated list of tags to apply to the the Linode resource
      * 
      */
     public Optional<String> tags() {
         return Optional.ofNullable(this.tags);
     }
     /**
-     * @return Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return Linode API Token
      * 
      */
     public Optional<String> token() {
         return Optional.ofNullable(this.token);
     }
     /**
-     * @return Prefix the User-Agent in Linode API calls with some &#39;product/version&#39; (string)
+     * @return Prefix the User-Agent in Linode API calls with some &#39;product/version&#39;
      * 
      */
     public Optional<String> uaPrefix() {

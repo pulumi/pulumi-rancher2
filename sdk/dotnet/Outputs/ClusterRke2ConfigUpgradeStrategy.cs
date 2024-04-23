@@ -14,19 +14,19 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterRke2ConfigUpgradeStrategy
     {
         /// <summary>
-        /// Drain server nodes. Default: `false` (bool)
+        /// Drain server nodes
         /// </summary>
         public readonly bool? DrainServerNodes;
         /// <summary>
-        /// Drain worker nodes. Default: `false` (bool)
+        /// Drain worker nodes
         /// </summary>
         public readonly bool? DrainWorkerNodes;
         /// <summary>
-        /// Server concurrency. Default: `1` (int)
+        /// Server concurrency
         /// </summary>
         public readonly int? ServerConcurrency;
         /// <summary>
-        /// Worker concurrency. Default: `1` (int)
+        /// Worker concurrency
         /// </summary>
         public readonly int? WorkerConcurrency;
 

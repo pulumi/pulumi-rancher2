@@ -17,14 +17,14 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
     public static final NodeTemplateLinodeConfigArgs Empty = new NodeTemplateLinodeConfigArgs();
 
     /**
-     * Linode user accounts (seperated by commas) whose Linode SSH keys will be permitted root access to the created node. (string)
+     * Linode user accounts (seperated by commas) whose Linode SSH keys will be permitted root access to the created node
      * 
      */
     @Import(name="authorizedUsers")
     private @Nullable Output<String> authorizedUsers;
 
     /**
-     * @return Linode user accounts (seperated by commas) whose Linode SSH keys will be permitted root access to the created node. (string)
+     * @return Linode user accounts (seperated by commas) whose Linode SSH keys will be permitted root access to the created node
      * 
      */
     public Optional<Output<String>> authorizedUsers() {
@@ -32,14 +32,14 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Create private IP for the instance. Default `false` (bool)
+     * Create private IP for the instance
      * 
      */
     @Import(name="createPrivateIp")
     private @Nullable Output<Boolean> createPrivateIp;
 
     /**
-     * @return Create private IP for the instance. Default `false` (bool)
+     * @return Create private IP for the instance
      * 
      */
     public Optional<Output<Boolean>> createPrivateIp() {
@@ -47,14 +47,14 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Docker Port. Default `2376` (string)
+     * Docker Port
      * 
      */
     @Import(name="dockerPort")
     private @Nullable Output<String> dockerPort;
 
     /**
-     * @return Docker Port. Default `2376` (string)
+     * @return Docker Port
      * 
      */
     public Optional<Output<String>> dockerPort() {
@@ -62,14 +62,14 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+     * Specifies the Linode Instance image which determines the OS distribution and base files
      * 
      */
     @Import(name="image")
     private @Nullable Output<String> image;
 
     /**
-     * @return Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+     * @return Specifies the Linode Instance image which determines the OS distribution and base files
      * 
      */
     public Optional<Output<String>> image() {
@@ -77,14 +77,14 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Outscale VM type. Default `tinav2.c1r2p3` (string)
+     * Specifies the Linode Instance type which determines CPU, memory, disk size, etc.
      * 
      */
     @Import(name="instanceType")
     private @Nullable Output<String> instanceType;
 
     /**
-     * @return Outscale VM type. Default `tinav2.c1r2p3` (string)
+     * @return Specifies the Linode Instance type which determines CPU, memory, disk size, etc.
      * 
      */
     public Optional<Output<String>> instanceType() {
@@ -92,14 +92,14 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Linode Instance Label. (string)
+     * Linode Instance Label
      * 
      */
     @Import(name="label")
     private @Nullable Output<String> label;
 
     /**
-     * @return Linode Instance Label. (string)
+     * @return Linode Instance Label
      * 
      */
     public Optional<Output<String>> label() {
@@ -107,14 +107,14 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * AWS region. Default `eu-west-2` (string)
+     * Specifies the region (location) of the Linode instance
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return AWS region. Default `eu-west-2` (string)
+     * @return Specifies the region (location) of the Linode instance
      * 
      */
     public Optional<Output<String>> region() {
@@ -122,14 +122,14 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Root Password (string)
+     * Root Password
      * 
      */
     @Import(name="rootPass")
     private @Nullable Output<String> rootPass;
 
     /**
-     * @return Root Password (string)
+     * @return Root Password
      * 
      */
     public Optional<Output<String>> rootPass() {
@@ -137,14 +137,14 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+     * Linode Instance SSH Port
      * 
      */
     @Import(name="sshPort")
     private @Nullable Output<String> sshPort;
 
     /**
-     * @return If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+     * @return Linode Instance SSH Port
      * 
      */
     public Optional<Output<String>> sshPort() {
@@ -152,14 +152,14 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+     * Specifies the user as which docker-machine should log in to the Linode instance to install Docker.
      * 
      */
     @Import(name="sshUser")
     private @Nullable Output<String> sshUser;
 
     /**
-     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+     * @return Specifies the user as which docker-machine should log in to the Linode instance to install Docker.
      * 
      */
     public Optional<Output<String>> sshUser() {
@@ -167,14 +167,14 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Specifies the Linode StackScript to use to create the instance. (string)
+     * Specifies the Linode StackScript to use to create the instance
      * 
      */
     @Import(name="stackscript")
     private @Nullable Output<String> stackscript;
 
     /**
-     * @return Specifies the Linode StackScript to use to create the instance. (string)
+     * @return Specifies the Linode StackScript to use to create the instance
      * 
      */
     public Optional<Output<String>> stackscript() {
@@ -182,14 +182,14 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * A JSON string specifying data for the selected StackScript. (string)
+     * A JSON string specifying data for the selected StackScript
      * 
      */
     @Import(name="stackscriptData")
     private @Nullable Output<String> stackscriptData;
 
     /**
-     * @return A JSON string specifying data for the selected StackScript. (string)
+     * @return A JSON string specifying data for the selected StackScript
      * 
      */
     public Optional<Output<String>> stackscriptData() {
@@ -197,14 +197,14 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Linode Instance Swap Size (MB). Default `512` (string)
+     * Linode Instance Swap Size (MB)
      * 
      */
     @Import(name="swapSize")
     private @Nullable Output<String> swapSize;
 
     /**
-     * @return Linode Instance Swap Size (MB). Default `512` (string)
+     * @return Linode Instance Swap Size (MB)
      * 
      */
     public Optional<Output<String>> swapSize() {
@@ -212,14 +212,14 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+     * A comma separated list of tags to apply to the the Linode resource
      * 
      */
     @Import(name="tags")
     private @Nullable Output<String> tags;
 
     /**
-     * @return vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+     * @return A comma separated list of tags to apply to the the Linode resource
      * 
      */
     public Optional<Output<String>> tags() {
@@ -227,14 +227,14 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * Linode API Token
      * 
      */
     @Import(name="token")
     private @Nullable Output<String> token;
 
     /**
-     * @return Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return Linode API Token
      * 
      */
     public Optional<Output<String>> token() {
@@ -242,14 +242,14 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Prefix the User-Agent in Linode API calls with some &#39;product/version&#39; (string)
+     * Prefix the User-Agent in Linode API calls with some &#39;product/version&#39;
      * 
      */
     @Import(name="uaPrefix")
     private @Nullable Output<String> uaPrefix;
 
     /**
-     * @return Prefix the User-Agent in Linode API calls with some &#39;product/version&#39; (string)
+     * @return Prefix the User-Agent in Linode API calls with some &#39;product/version&#39;
      * 
      */
     public Optional<Output<String>> uaPrefix() {
@@ -296,7 +296,7 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param authorizedUsers Linode user accounts (seperated by commas) whose Linode SSH keys will be permitted root access to the created node. (string)
+         * @param authorizedUsers Linode user accounts (seperated by commas) whose Linode SSH keys will be permitted root access to the created node
          * 
          * @return builder
          * 
@@ -307,7 +307,7 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param authorizedUsers Linode user accounts (seperated by commas) whose Linode SSH keys will be permitted root access to the created node. (string)
+         * @param authorizedUsers Linode user accounts (seperated by commas) whose Linode SSH keys will be permitted root access to the created node
          * 
          * @return builder
          * 
@@ -317,7 +317,7 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param createPrivateIp Create private IP for the instance. Default `false` (bool)
+         * @param createPrivateIp Create private IP for the instance
          * 
          * @return builder
          * 
@@ -328,7 +328,7 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param createPrivateIp Create private IP for the instance. Default `false` (bool)
+         * @param createPrivateIp Create private IP for the instance
          * 
          * @return builder
          * 
@@ -338,7 +338,7 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param dockerPort Docker Port. Default `2376` (string)
+         * @param dockerPort Docker Port
          * 
          * @return builder
          * 
@@ -349,7 +349,7 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param dockerPort Docker Port. Default `2376` (string)
+         * @param dockerPort Docker Port
          * 
          * @return builder
          * 
@@ -359,7 +359,7 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param image Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+         * @param image Specifies the Linode Instance image which determines the OS distribution and base files
          * 
          * @return builder
          * 
@@ -370,7 +370,7 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param image Specifies the Linode Instance image which determines the OS distribution and base files. Default `linode/ubuntu18.04` (string)
+         * @param image Specifies the Linode Instance image which determines the OS distribution and base files
          * 
          * @return builder
          * 
@@ -380,7 +380,7 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param instanceType Outscale VM type. Default `tinav2.c1r2p3` (string)
+         * @param instanceType Specifies the Linode Instance type which determines CPU, memory, disk size, etc.
          * 
          * @return builder
          * 
@@ -391,7 +391,7 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param instanceType Outscale VM type. Default `tinav2.c1r2p3` (string)
+         * @param instanceType Specifies the Linode Instance type which determines CPU, memory, disk size, etc.
          * 
          * @return builder
          * 
@@ -401,7 +401,7 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param label Linode Instance Label. (string)
+         * @param label Linode Instance Label
          * 
          * @return builder
          * 
@@ -412,7 +412,7 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param label Linode Instance Label. (string)
+         * @param label Linode Instance Label
          * 
          * @return builder
          * 
@@ -422,7 +422,7 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param region AWS region. Default `eu-west-2` (string)
+         * @param region Specifies the region (location) of the Linode instance
          * 
          * @return builder
          * 
@@ -433,7 +433,7 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param region AWS region. Default `eu-west-2` (string)
+         * @param region Specifies the region (location) of the Linode instance
          * 
          * @return builder
          * 
@@ -443,7 +443,7 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param rootPass Root Password (string)
+         * @param rootPass Root Password
          * 
          * @return builder
          * 
@@ -454,7 +454,7 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param rootPass Root Password (string)
+         * @param rootPass Root Password
          * 
          * @return builder
          * 
@@ -464,7 +464,7 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param sshPort If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+         * @param sshPort Linode Instance SSH Port
          * 
          * @return builder
          * 
@@ -475,7 +475,7 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param sshPort If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+         * @param sshPort Linode Instance SSH Port
          * 
          * @return builder
          * 
@@ -485,7 +485,7 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+         * @param sshUser Specifies the user as which docker-machine should log in to the Linode instance to install Docker.
          * 
          * @return builder
          * 
@@ -496,7 +496,7 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+         * @param sshUser Specifies the user as which docker-machine should log in to the Linode instance to install Docker.
          * 
          * @return builder
          * 
@@ -506,7 +506,7 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param stackscript Specifies the Linode StackScript to use to create the instance. (string)
+         * @param stackscript Specifies the Linode StackScript to use to create the instance
          * 
          * @return builder
          * 
@@ -517,7 +517,7 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param stackscript Specifies the Linode StackScript to use to create the instance. (string)
+         * @param stackscript Specifies the Linode StackScript to use to create the instance
          * 
          * @return builder
          * 
@@ -527,7 +527,7 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param stackscriptData A JSON string specifying data for the selected StackScript. (string)
+         * @param stackscriptData A JSON string specifying data for the selected StackScript
          * 
          * @return builder
          * 
@@ -538,7 +538,7 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param stackscriptData A JSON string specifying data for the selected StackScript. (string)
+         * @param stackscriptData A JSON string specifying data for the selected StackScript
          * 
          * @return builder
          * 
@@ -548,7 +548,7 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param swapSize Linode Instance Swap Size (MB). Default `512` (string)
+         * @param swapSize Linode Instance Swap Size (MB)
          * 
          * @return builder
          * 
@@ -559,7 +559,7 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param swapSize Linode Instance Swap Size (MB). Default `512` (string)
+         * @param swapSize Linode Instance Swap Size (MB)
          * 
          * @return builder
          * 
@@ -569,7 +569,7 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param tags vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+         * @param tags A comma separated list of tags to apply to the the Linode resource
          * 
          * @return builder
          * 
@@ -580,7 +580,7 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param tags vSphere tags id e.g. `urn:xxx`. From Rancher v2.3.3 (list)
+         * @param tags A comma separated list of tags to apply to the the Linode resource
          * 
          * @return builder
          * 
@@ -590,7 +590,7 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param token Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+         * @param token Linode API Token
          * 
          * @return builder
          * 
@@ -601,7 +601,7 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param token Linode API token. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+         * @param token Linode API Token
          * 
          * @return builder
          * 
@@ -611,7 +611,7 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param uaPrefix Prefix the User-Agent in Linode API calls with some &#39;product/version&#39; (string)
+         * @param uaPrefix Prefix the User-Agent in Linode API calls with some &#39;product/version&#39;
          * 
          * @return builder
          * 
@@ -622,7 +622,7 @@ public final class NodeTemplateLinodeConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param uaPrefix Prefix the User-Agent in Linode API calls with some &#39;product/version&#39; (string)
+         * @param uaPrefix Prefix the User-Agent in Linode API calls with some &#39;product/version&#39;
          * 
          * @return builder
          * 

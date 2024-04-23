@@ -15,14 +15,14 @@ public final class CloudCredentialDigitaloceanCredentialConfigArgs extends com.p
     public static final CloudCredentialDigitaloceanCredentialConfigArgs Empty = new CloudCredentialDigitaloceanCredentialConfigArgs();
 
     /**
-     * DigitalOcean access token (string)
+     * Digital Ocean access token
      * 
      */
     @Import(name="accessToken", required=true)
     private Output<String> accessToken;
 
     /**
-     * @return DigitalOcean access token (string)
+     * @return Digital Ocean access token
      * 
      */
     public Output<String> accessToken() {
@@ -54,7 +54,7 @@ public final class CloudCredentialDigitaloceanCredentialConfigArgs extends com.p
         }
 
         /**
-         * @param accessToken DigitalOcean access token (string)
+         * @param accessToken Digital Ocean access token
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class CloudCredentialDigitaloceanCredentialConfigArgs extends com.p
         }
 
         /**
-         * @param accessToken DigitalOcean access token (string)
+         * @param accessToken Digital Ocean access token
          * 
          * @return builder
          * 

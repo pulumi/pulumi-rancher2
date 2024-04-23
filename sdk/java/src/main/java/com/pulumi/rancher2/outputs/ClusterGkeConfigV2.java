@@ -22,12 +22,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterGkeConfigV2 {
     /**
-     * @return The GKE cluster addons (List maxitems:1)
+     * @return The GKE cluster addons
      * 
      */
     private @Nullable ClusterGkeConfigV2ClusterAddons clusterAddons;
     /**
-     * @return The GKE cluster ip v4 allocation cidr block (string)
+     * @return The GKE ip v4 cidr block
      * 
      */
     private @Nullable String clusterIpv4CidrBlock;
@@ -37,27 +37,27 @@ public final class ClusterGkeConfigV2 {
      */
     private @Nullable String description;
     /**
-     * @return Enable Kubernetes alpha. Default: `false` (bool)
+     * @return Enable Kubernetes alpha
      * 
      */
     private @Nullable Boolean enableKubernetesAlpha;
     /**
-     * @return Google credential secret (string)
+     * @return Google credential secret
      * 
      */
     private String googleCredentialSecret;
     /**
-     * @return Is GKE cluster imported? Default: `false` (bool)
+     * @return Is GKE cluster imported?
      * 
      */
     private @Nullable Boolean imported;
     /**
-     * @return The GKE ip allocation policy (List maxitems:1)
+     * @return The GKE ip allocation policy
      * 
      */
     private @Nullable ClusterGkeConfigV2IpAllocationPolicy ipAllocationPolicy;
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return The kubernetes master version
      * 
      */
     private @Nullable String kubernetesVersion;
@@ -67,27 +67,27 @@ public final class ClusterGkeConfigV2 {
      */
     private @Nullable Map<String,Object> labels;
     /**
-     * @return The GKE cluster locations (List)
+     * @return The GKE cluster locations
      * 
      */
     private @Nullable List<String> locations;
     /**
-     * @return The GKE cluster logging service (string)
+     * @return The GKE cluster logging service
      * 
      */
     private @Nullable String loggingService;
     /**
-     * @return The GKE cluster maintenance window (string)
+     * @return The GKE cluster maintenance window
      * 
      */
     private @Nullable String maintenanceWindow;
     /**
-     * @return The GKE cluster master authorized networks config (List maxitems:1)
+     * @return The GKE cluster master authorized networks config
      * 
      */
     private @Nullable ClusterGkeConfigV2MasterAuthorizedNetworksConfig masterAuthorizedNetworksConfig;
     /**
-     * @return The GKE cluster monitoring service (string)
+     * @return The GKE cluster monitoring service
      * 
      */
     private @Nullable String monitoringService;
@@ -97,56 +97,56 @@ public final class ClusterGkeConfigV2 {
      */
     private String name;
     /**
-     * @return The GKE cluster network. Required for create new cluster (string)
+     * @return The GKE cluster network
      * 
      */
     private @Nullable String network;
     /**
-     * @return Is GKE cluster network policy enabled? Default: `false` (bool)
+     * @return Is GKE cluster network policy enabled?
      * 
      */
     private @Nullable Boolean networkPolicyEnabled;
     /**
-     * @return The GKE cluster node pools. Required for create new cluster (List)
+     * @return The GKE cluster node pools
      * 
      */
     private @Nullable List<ClusterGkeConfigV2NodePool> nodePools;
     /**
-     * @return The GKE private cluster config (List maxitems:1)
+     * @return The GKE private cluster config
      * 
      */
     private @Nullable ClusterGkeConfigV2PrivateClusterConfig privateClusterConfig;
     /**
-     * @return Project ID to apply answer (string)
+     * @return The GKE project id
      * 
      */
     private String projectId;
     /**
-     * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     * @return The GKE cluster region. Required if `zone` is empty
      * 
      */
     private @Nullable String region;
     /**
-     * @return The GKE cluster subnetwork. Required for create new cluster (string)
+     * @return The GKE cluster subnetwork
      * 
      */
     private @Nullable String subnetwork;
     /**
-     * @return The GKE cluster zone. Required if `region` not set (string)
+     * @return The GKE cluster zone. Required if `region` is empty
      * 
      */
     private @Nullable String zone;
 
     private ClusterGkeConfigV2() {}
     /**
-     * @return The GKE cluster addons (List maxitems:1)
+     * @return The GKE cluster addons
      * 
      */
     public Optional<ClusterGkeConfigV2ClusterAddons> clusterAddons() {
         return Optional.ofNullable(this.clusterAddons);
     }
     /**
-     * @return The GKE cluster ip v4 allocation cidr block (string)
+     * @return The GKE ip v4 cidr block
      * 
      */
     public Optional<String> clusterIpv4CidrBlock() {
@@ -160,35 +160,35 @@ public final class ClusterGkeConfigV2 {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return Enable Kubernetes alpha. Default: `false` (bool)
+     * @return Enable Kubernetes alpha
      * 
      */
     public Optional<Boolean> enableKubernetesAlpha() {
         return Optional.ofNullable(this.enableKubernetesAlpha);
     }
     /**
-     * @return Google credential secret (string)
+     * @return Google credential secret
      * 
      */
     public String googleCredentialSecret() {
         return this.googleCredentialSecret;
     }
     /**
-     * @return Is GKE cluster imported? Default: `false` (bool)
+     * @return Is GKE cluster imported?
      * 
      */
     public Optional<Boolean> imported() {
         return Optional.ofNullable(this.imported);
     }
     /**
-     * @return The GKE ip allocation policy (List maxitems:1)
+     * @return The GKE ip allocation policy
      * 
      */
     public Optional<ClusterGkeConfigV2IpAllocationPolicy> ipAllocationPolicy() {
         return Optional.ofNullable(this.ipAllocationPolicy);
     }
     /**
-     * @return The Kubernetes version that will be used for your master *and* OKE worker nodes (string)
+     * @return The kubernetes master version
      * 
      */
     public Optional<String> kubernetesVersion() {
@@ -202,35 +202,35 @@ public final class ClusterGkeConfigV2 {
         return this.labels == null ? Map.of() : this.labels;
     }
     /**
-     * @return The GKE cluster locations (List)
+     * @return The GKE cluster locations
      * 
      */
     public List<String> locations() {
         return this.locations == null ? List.of() : this.locations;
     }
     /**
-     * @return The GKE cluster logging service (string)
+     * @return The GKE cluster logging service
      * 
      */
     public Optional<String> loggingService() {
         return Optional.ofNullable(this.loggingService);
     }
     /**
-     * @return The GKE cluster maintenance window (string)
+     * @return The GKE cluster maintenance window
      * 
      */
     public Optional<String> maintenanceWindow() {
         return Optional.ofNullable(this.maintenanceWindow);
     }
     /**
-     * @return The GKE cluster master authorized networks config (List maxitems:1)
+     * @return The GKE cluster master authorized networks config
      * 
      */
     public Optional<ClusterGkeConfigV2MasterAuthorizedNetworksConfig> masterAuthorizedNetworksConfig() {
         return Optional.ofNullable(this.masterAuthorizedNetworksConfig);
     }
     /**
-     * @return The GKE cluster monitoring service (string)
+     * @return The GKE cluster monitoring service
      * 
      */
     public Optional<String> monitoringService() {
@@ -244,56 +244,56 @@ public final class ClusterGkeConfigV2 {
         return this.name;
     }
     /**
-     * @return The GKE cluster network. Required for create new cluster (string)
+     * @return The GKE cluster network
      * 
      */
     public Optional<String> network() {
         return Optional.ofNullable(this.network);
     }
     /**
-     * @return Is GKE cluster network policy enabled? Default: `false` (bool)
+     * @return Is GKE cluster network policy enabled?
      * 
      */
     public Optional<Boolean> networkPolicyEnabled() {
         return Optional.ofNullable(this.networkPolicyEnabled);
     }
     /**
-     * @return The GKE cluster node pools. Required for create new cluster (List)
+     * @return The GKE cluster node pools
      * 
      */
     public List<ClusterGkeConfigV2NodePool> nodePools() {
         return this.nodePools == null ? List.of() : this.nodePools;
     }
     /**
-     * @return The GKE private cluster config (List maxitems:1)
+     * @return The GKE private cluster config
      * 
      */
     public Optional<ClusterGkeConfigV2PrivateClusterConfig> privateClusterConfig() {
         return Optional.ofNullable(this.privateClusterConfig);
     }
     /**
-     * @return Project ID to apply answer (string)
+     * @return The GKE project id
      * 
      */
     public String projectId() {
         return this.projectId;
     }
     /**
-     * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     * @return The GKE cluster region. Required if `zone` is empty
      * 
      */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
     /**
-     * @return The GKE cluster subnetwork. Required for create new cluster (string)
+     * @return The GKE cluster subnetwork
      * 
      */
     public Optional<String> subnetwork() {
         return Optional.ofNullable(this.subnetwork);
     }
     /**
-     * @return The GKE cluster zone. Required if `region` not set (string)
+     * @return The GKE cluster zone. Required if `region` is empty
      * 
      */
     public Optional<String> zone() {
