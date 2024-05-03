@@ -108,21 +108,9 @@ public final class AppV2State extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.clusterName);
     }
 
-    /**
-     * Values YAML file including computed values. This field prevents incorrect discrepancies from showing in the terraform
-     * plan output when files change but values stay the same, due to additional computed values included by the provider
-     * itself.
-     * 
-     */
     @Import(name="deploymentValues")
     private @Nullable Output<String> deploymentValues;
 
-    /**
-     * @return Values YAML file including computed values. This field prevents incorrect discrepancies from showing in the terraform
-     * plan output when files change but values stay the same, due to additional computed values included by the provider
-     * itself.
-     * 
-     */
     public Optional<Output<String>> deploymentValues() {
         return Optional.ofNullable(this.deploymentValues);
     }
@@ -459,27 +447,11 @@ public final class AppV2State extends com.pulumi.resources.ResourceArgs {
             return clusterName(Output.of(clusterName));
         }
 
-        /**
-         * @param deploymentValues Values YAML file including computed values. This field prevents incorrect discrepancies from showing in the terraform
-         * plan output when files change but values stay the same, due to additional computed values included by the provider
-         * itself.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deploymentValues(@Nullable Output<String> deploymentValues) {
             $.deploymentValues = deploymentValues;
             return this;
         }
 
-        /**
-         * @param deploymentValues Values YAML file including computed values. This field prevents incorrect discrepancies from showing in the terraform
-         * plan output when files change but values stay the same, due to additional computed values included by the provider
-         * itself.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deploymentValues(String deploymentValues) {
             return deploymentValues(Output.of(deploymentValues));
         }

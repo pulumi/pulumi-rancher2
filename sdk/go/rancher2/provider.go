@@ -86,7 +86,7 @@ type providerArgs struct {
 	Bootstrap *bool `pulumi:"bootstrap"`
 	// CA certificates used to sign rancher server tls certificates. Mandatory if self signed tls and insecure option false
 	CaCerts *string `pulumi:"caCerts"`
-	// Allow insecure connections to Rancher. Mandatory if self signed tls and not ca_certs provided
+	// Allow insecure connections to Rancher. Mandatory if self signed tls and not caCerts provided
 	Insecure *bool `pulumi:"insecure"`
 	// Rancher connection retries
 	//
@@ -110,7 +110,7 @@ type ProviderArgs struct {
 	Bootstrap pulumi.BoolPtrInput
 	// CA certificates used to sign rancher server tls certificates. Mandatory if self signed tls and insecure option false
 	CaCerts pulumi.StringPtrInput
-	// Allow insecure connections to Rancher. Mandatory if self signed tls and not ca_certs provided
+	// Allow insecure connections to Rancher. Mandatory if self signed tls and not caCerts provided
 	Insecure pulumi.BoolPtrInput
 	// Rancher connection retries
 	//

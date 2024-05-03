@@ -197,21 +197,9 @@ public class AppV2 extends com.pulumi.resources.CustomResource {
     public Output<String> clusterName() {
         return this.clusterName;
     }
-    /**
-     * Values YAML file including computed values. This field prevents incorrect discrepancies from showing in the terraform
-     * plan output when files change but values stay the same, due to additional computed values included by the provider
-     * itself.
-     * 
-     */
     @Export(name="deploymentValues", refs={String.class}, tree="[0]")
     private Output<String> deploymentValues;
 
-    /**
-     * @return Values YAML file including computed values. This field prevents incorrect discrepancies from showing in the terraform
-     * plan output when files change but values stay the same, due to additional computed values included by the provider
-     * itself.
-     * 
-     */
     public Output<String> deploymentValues() {
         return this.deploymentValues;
     }
