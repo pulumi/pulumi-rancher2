@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,36 +53,38 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Project
- *         var foo = new Project(&#34;foo&#34;, ProjectArgs.builder()        
- *             .name(&#34;foo&#34;)
- *             .clusterId(&#34;&lt;CLUSTER_ID&gt;&#34;)
+ *         var foo = new Project("foo", ProjectArgs.builder()        
+ *             .name("foo")
+ *             .clusterId("<CLUSTER_ID>")
  *             .resourceQuota(ProjectResourceQuotaArgs.builder()
  *                 .projectLimit(ProjectResourceQuotaProjectLimitArgs.builder()
- *                     .limitsCpu(&#34;2000m&#34;)
- *                     .limitsMemory(&#34;2000Mi&#34;)
- *                     .requestsStorage(&#34;2Gi&#34;)
+ *                     .limitsCpu("2000m")
+ *                     .limitsMemory("2000Mi")
+ *                     .requestsStorage("2Gi")
  *                     .build())
  *                 .namespaceDefaultLimit(ProjectResourceQuotaNamespaceDefaultLimitArgs.builder()
- *                     .limitsCpu(&#34;2000m&#34;)
- *                     .limitsMemory(&#34;500Mi&#34;)
- *                     .requestsStorage(&#34;1Gi&#34;)
+ *                     .limitsCpu("2000m")
+ *                     .limitsMemory("500Mi")
+ *                     .requestsStorage("1Gi")
  *                     .build())
  *                 .build())
  *             .containerResourceLimit(ProjectContainerResourceLimitArgs.builder()
- *                 .limitsCpu(&#34;20m&#34;)
- *                 .limitsMemory(&#34;20Mi&#34;)
- *                 .requestsCpu(&#34;1m&#34;)
- *                 .requestsMemory(&#34;1Mi&#34;)
+ *                 .limitsCpu("20m")
+ *                 .limitsMemory("20Mi")
+ *                 .requestsCpu("1m")
+ *                 .requestsMemory("1Mi")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -108,55 +111,56 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Project enabling and customizing monitoring
- *         var foo = new Project(&#34;foo&#34;, ProjectArgs.builder()        
- *             .name(&#34;foo&#34;)
- *             .clusterId(&#34;&lt;CLUSTER_ID&gt;&#34;)
+ *         var foo = new Project("foo", ProjectArgs.builder()        
+ *             .name("foo")
+ *             .clusterId("<CLUSTER_ID>")
  *             .resourceQuota(ProjectResourceQuotaArgs.builder()
  *                 .projectLimit(ProjectResourceQuotaProjectLimitArgs.builder()
- *                     .limitsCpu(&#34;2000m&#34;)
- *                     .limitsMemory(&#34;2000Mi&#34;)
- *                     .requestsStorage(&#34;2Gi&#34;)
+ *                     .limitsCpu("2000m")
+ *                     .limitsMemory("2000Mi")
+ *                     .requestsStorage("2Gi")
  *                     .build())
  *                 .namespaceDefaultLimit(ProjectResourceQuotaNamespaceDefaultLimitArgs.builder()
- *                     .limitsCpu(&#34;2000m&#34;)
- *                     .limitsMemory(&#34;500Mi&#34;)
- *                     .requestsStorage(&#34;1Gi&#34;)
+ *                     .limitsCpu("2000m")
+ *                     .limitsMemory("500Mi")
+ *                     .requestsStorage("1Gi")
  *                     .build())
  *                 .build())
  *             .containerResourceLimit(ProjectContainerResourceLimitArgs.builder()
- *                 .limitsCpu(&#34;20m&#34;)
- *                 .limitsMemory(&#34;20Mi&#34;)
- *                 .requestsCpu(&#34;1m&#34;)
- *                 .requestsMemory(&#34;1Mi&#34;)
+ *                 .limitsCpu("20m")
+ *                 .limitsMemory("20Mi")
+ *                 .requestsCpu("1m")
+ *                 .requestsMemory("1Mi")
  *                 .build())
  *             .enableProjectMonitoring(true)
  *             .projectMonitoringInput(ProjectProjectMonitoringInputArgs.builder()
  *                 .answers(Map.ofEntries(
- *                     Map.entry(&#34;exporter-kubelets.https&#34;, true),
- *                     Map.entry(&#34;exporter-node.enabled&#34;, true),
- *                     Map.entry(&#34;exporter-node.ports.metrics.port&#34;, 9796),
- *                     Map.entry(&#34;exporter-node.resources.limits.cpu&#34;, &#34;200m&#34;),
- *                     Map.entry(&#34;exporter-node.resources.limits.memory&#34;, &#34;200Mi&#34;),
- *                     Map.entry(&#34;grafana.persistence.enabled&#34;, false),
- *                     Map.entry(&#34;grafana.persistence.size&#34;, &#34;10Gi&#34;),
- *                     Map.entry(&#34;grafana.persistence.storageClass&#34;, &#34;default&#34;),
- *                     Map.entry(&#34;operator.resources.limits.memory&#34;, &#34;500Mi&#34;),
- *                     Map.entry(&#34;prometheus.persistence.enabled&#34;, &#34;false&#34;),
- *                     Map.entry(&#34;prometheus.persistence.size&#34;, &#34;50Gi&#34;),
- *                     Map.entry(&#34;prometheus.persistence.storageClass&#34;, &#34;default&#34;),
- *                     Map.entry(&#34;prometheus.persistent.useReleaseName&#34;, &#34;true&#34;),
- *                     Map.entry(&#34;prometheus.resources.core.limits.cpu&#34;, &#34;1000m&#34;),
- *                     Map.entry(&#34;prometheus.resources.core.limits.memory&#34;, &#34;1500Mi&#34;),
- *                     Map.entry(&#34;prometheus.resources.core.requests.cpu&#34;, &#34;750m&#34;),
- *                     Map.entry(&#34;prometheus.resources.core.requests.memory&#34;, &#34;750Mi&#34;),
- *                     Map.entry(&#34;prometheus.retention&#34;, &#34;12h&#34;)
+ *                     Map.entry("exporter-kubelets.https", true),
+ *                     Map.entry("exporter-node.enabled", true),
+ *                     Map.entry("exporter-node.ports.metrics.port", 9796),
+ *                     Map.entry("exporter-node.resources.limits.cpu", "200m"),
+ *                     Map.entry("exporter-node.resources.limits.memory", "200Mi"),
+ *                     Map.entry("grafana.persistence.enabled", false),
+ *                     Map.entry("grafana.persistence.size", "10Gi"),
+ *                     Map.entry("grafana.persistence.storageClass", "default"),
+ *                     Map.entry("operator.resources.limits.memory", "500Mi"),
+ *                     Map.entry("prometheus.persistence.enabled", "false"),
+ *                     Map.entry("prometheus.persistence.size", "50Gi"),
+ *                     Map.entry("prometheus.persistence.storageClass", "default"),
+ *                     Map.entry("prometheus.persistent.useReleaseName", "true"),
+ *                     Map.entry("prometheus.resources.core.limits.cpu", "1000m"),
+ *                     Map.entry("prometheus.resources.core.limits.memory", "1500Mi"),
+ *                     Map.entry("prometheus.resources.core.requests.cpu", "750m"),
+ *                     Map.entry("prometheus.resources.core.requests.memory", "750Mi"),
+ *                     Map.entry("prometheus.retention", "12h")
  *                 ))
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

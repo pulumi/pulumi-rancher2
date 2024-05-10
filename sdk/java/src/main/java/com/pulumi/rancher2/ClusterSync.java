@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,37 +60,37 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 rke Cluster 
- *         var foo_custom = new Cluster(&#34;foo-custom&#34;, ClusterArgs.builder()        
- *             .name(&#34;foo-custom&#34;)
- *             .description(&#34;Foo rancher2 custom cluster&#34;)
+ *         var foo_custom = new Cluster("foo-custom", ClusterArgs.builder()        
+ *             .name("foo-custom")
+ *             .description("Foo rancher2 custom cluster")
  *             .rkeConfig(ClusterRkeConfigArgs.builder()
  *                 .network(ClusterRkeConfigNetworkArgs.builder()
- *                     .plugin(&#34;canal&#34;)
+ *                     .plugin("canal")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *         // Create a new rancher2 Node Template
- *         var foo = new NodeTemplate(&#34;foo&#34;, NodeTemplateArgs.builder()        
- *             .name(&#34;foo&#34;)
- *             .description(&#34;foo test&#34;)
+ *         var foo = new NodeTemplate("foo", NodeTemplateArgs.builder()        
+ *             .name("foo")
+ *             .description("foo test")
  *             .amazonec2Config(NodeTemplateAmazonec2ConfigArgs.builder()
- *                 .accessKey(&#34;&lt;AWS_ACCESS_KEY&gt;&#34;)
- *                 .secretKey(&#34;&lt;AWS_SECRET_KEY&gt;&#34;)
- *                 .ami(&#34;&lt;AMI_ID&gt;&#34;)
- *                 .region(&#34;&lt;REGION&gt;&#34;)
- *                 .securityGroups(&#34;&lt;AWS_SECURITY_GROUP&gt;&#34;)
- *                 .subnetId(&#34;&lt;SUBNET_ID&gt;&#34;)
- *                 .vpcId(&#34;&lt;VPC_ID&gt;&#34;)
- *                 .zone(&#34;&lt;ZONE&gt;&#34;)
+ *                 .accessKey("<AWS_ACCESS_KEY>")
+ *                 .secretKey("<AWS_SECRET_KEY>")
+ *                 .ami("<AMI_ID>")
+ *                 .region("<REGION>")
+ *                 .securityGroups("<AWS_SECURITY_GROUP>")
+ *                 .subnetId("<SUBNET_ID>")
+ *                 .vpcId("<VPC_ID>")
+ *                 .zone("<ZONE>")
  *                 .build())
  *             .build());
  * 
  *         // Create a new rancher2 Node Pool
- *         var fooNodePool = new NodePool(&#34;fooNodePool&#34;, NodePoolArgs.builder()        
+ *         var fooNodePool = new NodePool("fooNodePool", NodePoolArgs.builder()        
  *             .clusterId(foo_custom.id())
- *             .name(&#34;foo&#34;)
- *             .hostnamePrefix(&#34;foo-cluster-0&#34;)
+ *             .name("foo")
+ *             .hostnamePrefix("foo-cluster-0")
  *             .nodeTemplateId(foo.id())
  *             .quantity(3)
  *             .controlPlane(true)
@@ -98,39 +99,40 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // Create a new rancher2 Cluster Sync
- *         var foo_customClusterSync = new ClusterSync(&#34;foo-customClusterSync&#34;, ClusterSyncArgs.builder()        
+ *         var foo_customClusterSync = new ClusterSync("foo-customClusterSync", ClusterSyncArgs.builder()        
  *             .clusterId(foo_custom.id())
  *             .nodePoolIds(fooNodePool.id())
  *             .build());
  * 
  *         // Create a new rancher2 Project
- *         var fooProject = new Project(&#34;fooProject&#34;, ProjectArgs.builder()        
- *             .name(&#34;foo&#34;)
+ *         var fooProject = new Project("fooProject", ProjectArgs.builder()        
+ *             .name("foo")
  *             .clusterId(foo_customClusterSync.id())
- *             .description(&#34;Terraform namespace acceptance test&#34;)
+ *             .description("Terraform namespace acceptance test")
  *             .resourceQuota(ProjectResourceQuotaArgs.builder()
  *                 .projectLimit(ProjectResourceQuotaProjectLimitArgs.builder()
- *                     .limitsCpu(&#34;2000m&#34;)
- *                     .limitsMemory(&#34;2000Mi&#34;)
- *                     .requestsStorage(&#34;2Gi&#34;)
+ *                     .limitsCpu("2000m")
+ *                     .limitsMemory("2000Mi")
+ *                     .requestsStorage("2Gi")
  *                     .build())
  *                 .namespaceDefaultLimit(ProjectResourceQuotaNamespaceDefaultLimitArgs.builder()
- *                     .limitsCpu(&#34;500m&#34;)
- *                     .limitsMemory(&#34;500Mi&#34;)
- *                     .requestsStorage(&#34;1Gi&#34;)
+ *                     .limitsCpu("500m")
+ *                     .limitsMemory("500Mi")
+ *                     .requestsStorage("1Gi")
  *                     .build())
  *                 .build())
  *             .containerResourceLimit(ProjectContainerResourceLimitArgs.builder()
- *                 .limitsCpu(&#34;20m&#34;)
- *                 .limitsMemory(&#34;20Mi&#34;)
- *                 .requestsCpu(&#34;1m&#34;)
- *                 .requestsMemory(&#34;1Mi&#34;)
+ *                 .limitsCpu("20m")
+ *                 .limitsMemory("20Mi")
+ *                 .requestsCpu("1m")
+ *                 .requestsMemory("1Mi")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

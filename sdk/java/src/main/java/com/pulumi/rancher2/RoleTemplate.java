@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,25 +51,27 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 cluster Role Template
- *         var foo = new RoleTemplate(&#34;foo&#34;, RoleTemplateArgs.builder()        
- *             .name(&#34;foo&#34;)
- *             .context(&#34;cluster&#34;)
+ *         var foo = new RoleTemplate("foo", RoleTemplateArgs.builder()        
+ *             .name("foo")
+ *             .context("cluster")
  *             .defaultRole(true)
- *             .description(&#34;Terraform role template acceptance test&#34;)
+ *             .description("Terraform role template acceptance test")
  *             .rules(RoleTemplateRuleArgs.builder()
- *                 .apiGroups(&#34;*&#34;)
- *                 .resources(&#34;secrets&#34;)
- *                 .verbs(&#34;create&#34;)
+ *                 .apiGroups("*")
+ *                 .resources("secrets")
+ *                 .verbs("create")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -91,21 +94,22 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 project Role Template
- *         var foo = new RoleTemplate(&#34;foo&#34;, RoleTemplateArgs.builder()        
- *             .name(&#34;foo&#34;)
- *             .context(&#34;project&#34;)
+ *         var foo = new RoleTemplate("foo", RoleTemplateArgs.builder()        
+ *             .name("foo")
+ *             .context("project")
  *             .defaultRole(true)
- *             .description(&#34;Terraform role template acceptance test&#34;)
+ *             .description("Terraform role template acceptance test")
  *             .rules(RoleTemplateRuleArgs.builder()
- *                 .apiGroups(&#34;*&#34;)
- *                 .resources(&#34;secrets&#34;)
- *                 .verbs(&#34;create&#34;)
+ *                 .apiGroups("*")
+ *                 .resources("secrets")
+ *                 .verbs("create")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

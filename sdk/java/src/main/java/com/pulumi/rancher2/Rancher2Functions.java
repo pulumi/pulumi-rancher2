@@ -128,7 +128,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -150,14 +151,15 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var rancher2 = Rancher2Functions.getApp(GetAppArgs.builder()
-     *             .name(&#34;foo&#34;)
-     *             .projectId(&#34;&lt;project_id&gt;&#34;)
-     *             .targetNamespace(&#34;&lt;namespace_name&gt;&#34;)
+     *             .name("foo")
+     *             .projectId("<project_id>")
+     *             .targetNamespace("<namespace_name>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -170,7 +172,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -192,14 +195,15 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var rancher2 = Rancher2Functions.getApp(GetAppArgs.builder()
-     *             .name(&#34;foo&#34;)
-     *             .projectId(&#34;&lt;project_id&gt;&#34;)
-     *             .targetNamespace(&#34;&lt;namespace_name&gt;&#34;)
+     *             .name("foo")
+     *             .projectId("<project_id>")
+     *             .targetNamespace("<namespace_name>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -212,7 +216,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -234,14 +239,15 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var rancher2 = Rancher2Functions.getApp(GetAppArgs.builder()
-     *             .name(&#34;foo&#34;)
-     *             .projectId(&#34;&lt;project_id&gt;&#34;)
-     *             .targetNamespace(&#34;&lt;namespace_name&gt;&#34;)
+     *             .name("foo")
+     *             .projectId("<project_id>")
+     *             .targetNamespace("<namespace_name>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -254,7 +260,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -276,14 +283,15 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var rancher2 = Rancher2Functions.getApp(GetAppArgs.builder()
-     *             .name(&#34;foo&#34;)
-     *             .projectId(&#34;&lt;project_id&gt;&#34;)
-     *             .targetNamespace(&#34;&lt;namespace_name&gt;&#34;)
+     *             .name("foo")
+     *             .projectId("<project_id>")
+     *             .targetNamespace("<namespace_name>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -296,7 +304,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -318,12 +327,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var library = Rancher2Functions.getCatalog(GetCatalogArgs.builder()
-     *             .name(&#34;catalog&#34;)
+     *             .name("catalog")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -336,7 +346,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -358,12 +369,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var library = Rancher2Functions.getCatalog(GetCatalogArgs.builder()
-     *             .name(&#34;catalog&#34;)
+     *             .name("catalog")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -376,7 +388,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -398,12 +411,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var library = Rancher2Functions.getCatalog(GetCatalogArgs.builder()
-     *             .name(&#34;catalog&#34;)
+     *             .name("catalog")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -416,7 +430,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -438,12 +453,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var library = Rancher2Functions.getCatalog(GetCatalogArgs.builder()
-     *             .name(&#34;catalog&#34;)
+     *             .name("catalog")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -488,7 +504,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -511,17 +528,19 @@ public final class Rancher2Functions {
      *     public static void stack(Context ctx) {
      *         // Retrieve a rancher2 Project Certificate
      *         final var foo = Rancher2Functions.getCertificate(GetCertificateArgs.builder()
-     *             .name(&#34;&lt;name&gt;&#34;)
-     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .name("<name>")
+     *             .projectId("<project_id>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -544,14 +563,15 @@ public final class Rancher2Functions {
      *     public static void stack(Context ctx) {
      *         // Retrieve a rancher2 Namespaced Certificate
      *         final var foo = Rancher2Functions.getCertificate(GetCertificateArgs.builder()
-     *             .name(&#34;&lt;name&gt;&#34;)
-     *             .projectId(&#34;&lt;project_id&gt;&#34;)
-     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
+     *             .name("<name>")
+     *             .projectId("<project_id>")
+     *             .namespaceId("<namespace_id>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -568,7 +588,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -591,17 +612,19 @@ public final class Rancher2Functions {
      *     public static void stack(Context ctx) {
      *         // Retrieve a rancher2 Project Certificate
      *         final var foo = Rancher2Functions.getCertificate(GetCertificateArgs.builder()
-     *             .name(&#34;&lt;name&gt;&#34;)
-     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .name("<name>")
+     *             .projectId("<project_id>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -624,14 +647,15 @@ public final class Rancher2Functions {
      *     public static void stack(Context ctx) {
      *         // Retrieve a rancher2 Namespaced Certificate
      *         final var foo = Rancher2Functions.getCertificate(GetCertificateArgs.builder()
-     *             .name(&#34;&lt;name&gt;&#34;)
-     *             .projectId(&#34;&lt;project_id&gt;&#34;)
-     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
+     *             .name("<name>")
+     *             .projectId("<project_id>")
+     *             .namespaceId("<namespace_id>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -648,7 +672,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -671,17 +696,19 @@ public final class Rancher2Functions {
      *     public static void stack(Context ctx) {
      *         // Retrieve a rancher2 Project Certificate
      *         final var foo = Rancher2Functions.getCertificate(GetCertificateArgs.builder()
-     *             .name(&#34;&lt;name&gt;&#34;)
-     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .name("<name>")
+     *             .projectId("<project_id>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -704,14 +731,15 @@ public final class Rancher2Functions {
      *     public static void stack(Context ctx) {
      *         // Retrieve a rancher2 Namespaced Certificate
      *         final var foo = Rancher2Functions.getCertificate(GetCertificateArgs.builder()
-     *             .name(&#34;&lt;name&gt;&#34;)
-     *             .projectId(&#34;&lt;project_id&gt;&#34;)
-     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
+     *             .name("<name>")
+     *             .projectId("<project_id>")
+     *             .namespaceId("<namespace_id>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -728,7 +756,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -751,17 +780,19 @@ public final class Rancher2Functions {
      *     public static void stack(Context ctx) {
      *         // Retrieve a rancher2 Project Certificate
      *         final var foo = Rancher2Functions.getCertificate(GetCertificateArgs.builder()
-     *             .name(&#34;&lt;name&gt;&#34;)
-     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .name("<name>")
+     *             .projectId("<project_id>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -784,14 +815,15 @@ public final class Rancher2Functions {
      *     public static void stack(Context ctx) {
      *         // Retrieve a rancher2 Namespaced Certificate
      *         final var foo = Rancher2Functions.getCertificate(GetCertificateArgs.builder()
-     *             .name(&#34;&lt;name&gt;&#34;)
-     *             .projectId(&#34;&lt;project_id&gt;&#34;)
-     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
+     *             .name("<name>")
+     *             .projectId("<project_id>")
+     *             .namespaceId("<namespace_id>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -804,7 +836,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -826,12 +859,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = Rancher2Functions.getCloudCredential(GetCloudCredentialArgs.builder()
-     *             .name(&#34;test&#34;)
+     *             .name("test")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -844,7 +878,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -866,12 +901,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = Rancher2Functions.getCloudCredential(GetCloudCredentialArgs.builder()
-     *             .name(&#34;test&#34;)
+     *             .name("test")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -884,7 +920,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -906,12 +943,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = Rancher2Functions.getCloudCredential(GetCloudCredentialArgs.builder()
-     *             .name(&#34;test&#34;)
+     *             .name("test")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -924,7 +962,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -946,12 +985,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = Rancher2Functions.getCloudCredential(GetCloudCredentialArgs.builder()
-     *             .name(&#34;test&#34;)
+     *             .name("test")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -964,7 +1004,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -986,12 +1027,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo-custom = Rancher2Functions.getCluster(GetClusterArgs.builder()
-     *             .name(&#34;foo-custom&#34;)
+     *             .name("foo-custom")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1004,7 +1046,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1026,12 +1069,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo-custom = Rancher2Functions.getCluster(GetClusterArgs.builder()
-     *             .name(&#34;foo-custom&#34;)
+     *             .name("foo-custom")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1044,7 +1088,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1066,12 +1111,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo-custom = Rancher2Functions.getCluster(GetClusterArgs.builder()
-     *             .name(&#34;foo-custom&#34;)
+     *             .name("foo-custom")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1084,7 +1130,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1106,12 +1153,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo-custom = Rancher2Functions.getCluster(GetClusterArgs.builder()
-     *             .name(&#34;foo-custom&#34;)
+     *             .name("foo-custom")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1124,7 +1172,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1146,13 +1195,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getClusterAlertGroup(GetClusterAlertGroupArgs.builder()
-     *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
-     *             .name(&#34;&lt;cluster_alert_group_name&gt;&#34;)
+     *             .clusterId("<cluster_id>")
+     *             .name("<cluster_alert_group_name>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1165,7 +1215,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1187,13 +1238,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getClusterAlertGroup(GetClusterAlertGroupArgs.builder()
-     *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
-     *             .name(&#34;&lt;cluster_alert_group_name&gt;&#34;)
+     *             .clusterId("<cluster_id>")
+     *             .name("<cluster_alert_group_name>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1206,7 +1258,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1228,13 +1281,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getClusterAlertGroup(GetClusterAlertGroupArgs.builder()
-     *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
-     *             .name(&#34;&lt;cluster_alert_group_name&gt;&#34;)
+     *             .clusterId("<cluster_id>")
+     *             .name("<cluster_alert_group_name>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1247,7 +1301,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1269,13 +1324,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getClusterAlertGroup(GetClusterAlertGroupArgs.builder()
-     *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
-     *             .name(&#34;&lt;cluster_alert_group_name&gt;&#34;)
+     *             .clusterId("<cluster_id>")
+     *             .name("<cluster_alert_group_name>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1288,7 +1344,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1310,13 +1367,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getClusterAlertRule(GetClusterAlertRuleArgs.builder()
-     *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
-     *             .name(&#34;&lt;cluster_alert_rule_name&gt;&#34;)
+     *             .clusterId("<cluster_id>")
+     *             .name("<cluster_alert_rule_name>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1329,7 +1387,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1351,13 +1410,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getClusterAlertRule(GetClusterAlertRuleArgs.builder()
-     *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
-     *             .name(&#34;&lt;cluster_alert_rule_name&gt;&#34;)
+     *             .clusterId("<cluster_id>")
+     *             .name("<cluster_alert_rule_name>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1370,7 +1430,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1392,13 +1453,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getClusterAlertRule(GetClusterAlertRuleArgs.builder()
-     *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
-     *             .name(&#34;&lt;cluster_alert_rule_name&gt;&#34;)
+     *             .clusterId("<cluster_id>")
+     *             .name("<cluster_alert_rule_name>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1411,7 +1473,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1433,13 +1496,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getClusterAlertRule(GetClusterAlertRuleArgs.builder()
-     *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
-     *             .name(&#34;&lt;cluster_alert_rule_name&gt;&#34;)
+     *             .clusterId("<cluster_id>")
+     *             .name("<cluster_alert_rule_name>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1452,7 +1516,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1474,12 +1539,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getClusterDriver(GetClusterDriverArgs.builder()
-     *             .name(&#34;foo&#34;)
+     *             .name("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1492,7 +1558,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1514,12 +1581,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getClusterDriver(GetClusterDriverArgs.builder()
-     *             .name(&#34;foo&#34;)
+     *             .name("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1532,7 +1600,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1554,12 +1623,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getClusterDriver(GetClusterDriverArgs.builder()
-     *             .name(&#34;foo&#34;)
+     *             .name("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1572,7 +1642,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1594,12 +1665,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getClusterDriver(GetClusterDriverArgs.builder()
-     *             .name(&#34;foo&#34;)
+     *             .name("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1612,7 +1684,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1634,13 +1707,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getClusterRoleTemplateBinding(GetClusterRoleTemplateBindingArgs.builder()
-     *             .name(&#34;foo&#34;)
-     *             .clusterId(&#34;foo_id&#34;)
+     *             .name("foo")
+     *             .clusterId("foo_id")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1653,7 +1727,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1675,13 +1750,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getClusterRoleTemplateBinding(GetClusterRoleTemplateBindingArgs.builder()
-     *             .name(&#34;foo&#34;)
-     *             .clusterId(&#34;foo_id&#34;)
+     *             .name("foo")
+     *             .clusterId("foo_id")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1694,7 +1770,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1716,13 +1793,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getClusterRoleTemplateBinding(GetClusterRoleTemplateBindingArgs.builder()
-     *             .name(&#34;foo&#34;)
-     *             .clusterId(&#34;foo_id&#34;)
+     *             .name("foo")
+     *             .clusterId("foo_id")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1735,7 +1813,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1757,13 +1836,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getClusterRoleTemplateBinding(GetClusterRoleTemplateBindingArgs.builder()
-     *             .name(&#34;foo&#34;)
-     *             .clusterId(&#34;foo_id&#34;)
+     *             .name("foo")
+     *             .clusterId("foo_id")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1778,7 +1858,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1800,12 +1881,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getClusterTemplate(GetClusterTemplateArgs.builder()
-     *             .name(&#34;foo&#34;)
+     *             .name("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1820,7 +1902,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1842,12 +1925,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getClusterTemplate(GetClusterTemplateArgs.builder()
-     *             .name(&#34;foo&#34;)
+     *             .name("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1862,7 +1946,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1884,12 +1969,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getClusterTemplate(GetClusterTemplateArgs.builder()
-     *             .name(&#34;foo&#34;)
+     *             .name("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1904,7 +1990,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1926,12 +2013,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getClusterTemplate(GetClusterTemplateArgs.builder()
-     *             .name(&#34;foo&#34;)
+     *             .name("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1944,7 +2032,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1966,13 +2055,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getClusterV2(GetClusterV2Args.builder()
-     *             .name(&#34;foo&#34;)
-     *             .fleetNamespace(&#34;fleet-ns&#34;)
+     *             .name("foo")
+     *             .fleetNamespace("fleet-ns")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1985,7 +2075,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2007,13 +2098,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getClusterV2(GetClusterV2Args.builder()
-     *             .name(&#34;foo&#34;)
-     *             .fleetNamespace(&#34;fleet-ns&#34;)
+     *             .name("foo")
+     *             .fleetNamespace("fleet-ns")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2026,7 +2118,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2048,13 +2141,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getClusterV2(GetClusterV2Args.builder()
-     *             .name(&#34;foo&#34;)
-     *             .fleetNamespace(&#34;fleet-ns&#34;)
+     *             .name("foo")
+     *             .fleetNamespace("fleet-ns")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2067,7 +2161,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2089,13 +2184,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getClusterV2(GetClusterV2Args.builder()
-     *             .name(&#34;foo&#34;)
-     *             .fleetNamespace(&#34;fleet-ns&#34;)
+     *             .name("foo")
+     *             .fleetNamespace("fleet-ns")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2136,7 +2232,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2158,13 +2255,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getEtcdBackup(GetEtcdBackupArgs.builder()
-     *             .clusterId(&#34;&lt;CLUSTER_ID&gt;&#34;)
-     *             .name(&#34;foo&#34;)
+     *             .clusterId("<CLUSTER_ID>")
+     *             .name("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2177,7 +2275,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2199,13 +2298,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getEtcdBackup(GetEtcdBackupArgs.builder()
-     *             .clusterId(&#34;&lt;CLUSTER_ID&gt;&#34;)
-     *             .name(&#34;foo&#34;)
+     *             .clusterId("<CLUSTER_ID>")
+     *             .name("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2218,7 +2318,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2240,13 +2341,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getEtcdBackup(GetEtcdBackupArgs.builder()
-     *             .clusterId(&#34;&lt;CLUSTER_ID&gt;&#34;)
-     *             .name(&#34;foo&#34;)
+     *             .clusterId("<CLUSTER_ID>")
+     *             .name("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2259,7 +2361,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2281,13 +2384,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getEtcdBackup(GetEtcdBackupArgs.builder()
-     *             .clusterId(&#34;&lt;CLUSTER_ID&gt;&#34;)
-     *             .name(&#34;foo&#34;)
+     *             .clusterId("<CLUSTER_ID>")
+     *             .name("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2300,7 +2404,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2322,12 +2427,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getGlobalDnsProvider(GetGlobalDnsProviderArgs.builder()
-     *             .name(&#34;foo&#34;)
+     *             .name("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2340,7 +2446,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2362,12 +2469,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getGlobalDnsProvider(GetGlobalDnsProviderArgs.builder()
-     *             .name(&#34;foo&#34;)
+     *             .name("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2380,7 +2488,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2402,12 +2511,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getGlobalDnsProvider(GetGlobalDnsProviderArgs.builder()
-     *             .name(&#34;foo&#34;)
+     *             .name("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2420,7 +2530,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2442,12 +2553,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getGlobalDnsProvider(GetGlobalDnsProviderArgs.builder()
-     *             .name(&#34;foo&#34;)
+     *             .name("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2460,7 +2572,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2482,12 +2595,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getGlobalRole(GetGlobalRoleArgs.builder()
-     *             .name(&#34;foo&#34;)
+     *             .name("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2500,7 +2614,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2522,12 +2637,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getGlobalRole(GetGlobalRoleArgs.builder()
-     *             .name(&#34;foo&#34;)
+     *             .name("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2540,7 +2656,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2562,12 +2679,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getGlobalRole(GetGlobalRoleArgs.builder()
-     *             .name(&#34;foo&#34;)
+     *             .name("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2580,7 +2698,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2602,12 +2721,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getGlobalRole(GetGlobalRoleArgs.builder()
-     *             .name(&#34;foo&#34;)
+     *             .name("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2620,7 +2740,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2642,13 +2763,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getGlobalRoleBinding(GetGlobalRoleBindingArgs.builder()
-     *             .name(&#34;foo&#34;)
-     *             .globalRoleId(&#34;foo_id&#34;)
+     *             .name("foo")
+     *             .globalRoleId("foo_id")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2661,7 +2783,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2683,13 +2806,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getGlobalRoleBinding(GetGlobalRoleBindingArgs.builder()
-     *             .name(&#34;foo&#34;)
-     *             .globalRoleId(&#34;foo_id&#34;)
+     *             .name("foo")
+     *             .globalRoleId("foo_id")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2702,7 +2826,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2724,13 +2849,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getGlobalRoleBinding(GetGlobalRoleBindingArgs.builder()
-     *             .name(&#34;foo&#34;)
-     *             .globalRoleId(&#34;foo_id&#34;)
+     *             .name("foo")
+     *             .globalRoleId("foo_id")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2743,7 +2869,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2765,13 +2892,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getGlobalRoleBinding(GetGlobalRoleBindingArgs.builder()
-     *             .name(&#34;foo&#34;)
-     *             .globalRoleId(&#34;foo_id&#34;)
+     *             .name("foo")
+     *             .globalRoleId("foo_id")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2784,7 +2912,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2806,12 +2935,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getMultiClusterApp(GetMultiClusterAppArgs.builder()
-     *             .name(&#34;foo&#34;)
+     *             .name("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2824,7 +2954,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2846,12 +2977,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getMultiClusterApp(GetMultiClusterAppArgs.builder()
-     *             .name(&#34;foo&#34;)
+     *             .name("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2864,7 +2996,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2886,12 +3019,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getMultiClusterApp(GetMultiClusterAppArgs.builder()
-     *             .name(&#34;foo&#34;)
+     *             .name("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2904,7 +3038,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2926,12 +3061,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getMultiClusterApp(GetMultiClusterAppArgs.builder()
-     *             .name(&#34;foo&#34;)
+     *             .name("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2944,7 +3080,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2966,13 +3103,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getNamespace(GetNamespaceArgs.builder()
-     *             .name(&#34;foo&#34;)
+     *             .name("foo")
      *             .projectId(foo_custom.defaultProjectId())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2985,7 +3123,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3007,13 +3146,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getNamespace(GetNamespaceArgs.builder()
-     *             .name(&#34;foo&#34;)
+     *             .name("foo")
      *             .projectId(foo_custom.defaultProjectId())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3026,7 +3166,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3048,13 +3189,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getNamespace(GetNamespaceArgs.builder()
-     *             .name(&#34;foo&#34;)
+     *             .name("foo")
      *             .projectId(foo_custom.defaultProjectId())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3067,7 +3209,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3089,13 +3232,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getNamespace(GetNamespaceArgs.builder()
-     *             .name(&#34;foo&#34;)
+     *             .name("foo")
      *             .projectId(foo_custom.defaultProjectId())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3108,7 +3252,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3130,12 +3275,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getNodeDriver(GetNodeDriverArgs.builder()
-     *             .name(&#34;foo&#34;)
+     *             .name("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3148,7 +3294,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3170,12 +3317,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getNodeDriver(GetNodeDriverArgs.builder()
-     *             .name(&#34;foo&#34;)
+     *             .name("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3188,7 +3336,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3210,12 +3359,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getNodeDriver(GetNodeDriverArgs.builder()
-     *             .name(&#34;foo&#34;)
+     *             .name("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3228,7 +3378,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3250,12 +3401,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getNodeDriver(GetNodeDriverArgs.builder()
-     *             .name(&#34;foo&#34;)
+     *             .name("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3268,7 +3420,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3291,12 +3444,13 @@ public final class Rancher2Functions {
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getNodePool(GetNodePoolArgs.builder()
      *             .clusterId(foo_custom.id())
-     *             .name(&#34;foo&#34;)
+     *             .name("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3309,7 +3463,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3332,12 +3487,13 @@ public final class Rancher2Functions {
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getNodePool(GetNodePoolArgs.builder()
      *             .clusterId(foo_custom.id())
-     *             .name(&#34;foo&#34;)
+     *             .name("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3350,7 +3506,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3373,12 +3530,13 @@ public final class Rancher2Functions {
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getNodePool(GetNodePoolArgs.builder()
      *             .clusterId(foo_custom.id())
-     *             .name(&#34;foo&#34;)
+     *             .name("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3391,7 +3549,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3414,12 +3573,13 @@ public final class Rancher2Functions {
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getNodePool(GetNodePoolArgs.builder()
      *             .clusterId(foo_custom.id())
-     *             .name(&#34;foo&#34;)
+     *             .name("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3432,7 +3592,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3454,12 +3615,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getNodeTemplate(GetNodeTemplateArgs.builder()
-     *             .name(&#34;foo&#34;)
+     *             .name("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3472,7 +3634,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3494,12 +3657,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getNodeTemplate(GetNodeTemplateArgs.builder()
-     *             .name(&#34;foo&#34;)
+     *             .name("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3512,7 +3676,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3534,12 +3699,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getNodeTemplate(GetNodeTemplateArgs.builder()
-     *             .name(&#34;foo&#34;)
+     *             .name("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3552,7 +3718,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3574,12 +3741,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getNodeTemplate(GetNodeTemplateArgs.builder()
-     *             .name(&#34;foo&#34;)
+     *             .name("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3592,7 +3760,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3614,13 +3783,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getNotifier(GetNotifierArgs.builder()
-     *             .name(&#34;foo&#34;)
-     *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
+     *             .name("foo")
+     *             .clusterId("<cluster_id>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3633,7 +3803,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3655,13 +3826,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getNotifier(GetNotifierArgs.builder()
-     *             .name(&#34;foo&#34;)
-     *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
+     *             .name("foo")
+     *             .clusterId("<cluster_id>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3674,7 +3846,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3696,13 +3869,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getNotifier(GetNotifierArgs.builder()
-     *             .name(&#34;foo&#34;)
-     *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
+     *             .name("foo")
+     *             .clusterId("<cluster_id>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3715,7 +3889,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3737,13 +3912,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getNotifier(GetNotifierArgs.builder()
-     *             .name(&#34;foo&#34;)
-     *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
+     *             .name("foo")
+     *             .clusterId("<cluster_id>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3804,7 +3980,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3826,12 +4003,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getPrincipal(GetPrincipalArgs.builder()
-     *             .name(&#34;user@example.com&#34;)
+     *             .name("user{@literal @}example.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3844,7 +4022,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3866,12 +4045,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getPrincipal(GetPrincipalArgs.builder()
-     *             .name(&#34;user@example.com&#34;)
+     *             .name("user{@literal @}example.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3884,7 +4064,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3906,12 +4087,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getPrincipal(GetPrincipalArgs.builder()
-     *             .name(&#34;user@example.com&#34;)
+     *             .name("user{@literal @}example.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3924,7 +4106,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3946,12 +4129,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getPrincipal(GetPrincipalArgs.builder()
-     *             .name(&#34;user@example.com&#34;)
+     *             .name("user{@literal @}example.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3992,7 +4176,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4014,13 +4199,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getProjectAlertGroup(GetProjectAlertGroupArgs.builder()
-     *             .projectId(&#34;&lt;project_id&gt;&#34;)
-     *             .name(&#34;&lt;project_alert_group_name&gt;&#34;)
+     *             .projectId("<project_id>")
+     *             .name("<project_alert_group_name>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4033,7 +4219,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4055,13 +4242,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getProjectAlertGroup(GetProjectAlertGroupArgs.builder()
-     *             .projectId(&#34;&lt;project_id&gt;&#34;)
-     *             .name(&#34;&lt;project_alert_group_name&gt;&#34;)
+     *             .projectId("<project_id>")
+     *             .name("<project_alert_group_name>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4074,7 +4262,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4096,13 +4285,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getProjectAlertGroup(GetProjectAlertGroupArgs.builder()
-     *             .projectId(&#34;&lt;project_id&gt;&#34;)
-     *             .name(&#34;&lt;project_alert_group_name&gt;&#34;)
+     *             .projectId("<project_id>")
+     *             .name("<project_alert_group_name>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4115,7 +4305,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4137,13 +4328,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getProjectAlertGroup(GetProjectAlertGroupArgs.builder()
-     *             .projectId(&#34;&lt;project_id&gt;&#34;)
-     *             .name(&#34;&lt;project_alert_group_name&gt;&#34;)
+     *             .projectId("<project_id>")
+     *             .name("<project_alert_group_name>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4156,7 +4348,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4178,13 +4371,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getProjectAlertRule(GetProjectAlertRuleArgs.builder()
-     *             .projectId(&#34;&lt;project_id&gt;&#34;)
-     *             .name(&#34;&lt;project_alert_rule_name&gt;&#34;)
+     *             .projectId("<project_id>")
+     *             .name("<project_alert_rule_name>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4197,7 +4391,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4219,13 +4414,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getProjectAlertRule(GetProjectAlertRuleArgs.builder()
-     *             .projectId(&#34;&lt;project_id&gt;&#34;)
-     *             .name(&#34;&lt;project_alert_rule_name&gt;&#34;)
+     *             .projectId("<project_id>")
+     *             .name("<project_alert_rule_name>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4238,7 +4434,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4260,13 +4457,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getProjectAlertRule(GetProjectAlertRuleArgs.builder()
-     *             .projectId(&#34;&lt;project_id&gt;&#34;)
-     *             .name(&#34;&lt;project_alert_rule_name&gt;&#34;)
+     *             .projectId("<project_id>")
+     *             .name("<project_alert_rule_name>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4279,7 +4477,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4301,13 +4500,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getProjectAlertRule(GetProjectAlertRuleArgs.builder()
-     *             .projectId(&#34;&lt;project_id&gt;&#34;)
-     *             .name(&#34;&lt;project_alert_rule_name&gt;&#34;)
+     *             .projectId("<project_id>")
+     *             .name("<project_alert_rule_name>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4320,7 +4520,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4342,13 +4543,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getProjectRoleTemplateBinding(GetProjectRoleTemplateBindingArgs.builder()
-     *             .name(&#34;foo&#34;)
-     *             .projectId(&#34;foo_id&#34;)
+     *             .name("foo")
+     *             .projectId("foo_id")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4361,7 +4563,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4383,13 +4586,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getProjectRoleTemplateBinding(GetProjectRoleTemplateBindingArgs.builder()
-     *             .name(&#34;foo&#34;)
-     *             .projectId(&#34;foo_id&#34;)
+     *             .name("foo")
+     *             .projectId("foo_id")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4402,7 +4606,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4424,13 +4629,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getProjectRoleTemplateBinding(GetProjectRoleTemplateBindingArgs.builder()
-     *             .name(&#34;foo&#34;)
-     *             .projectId(&#34;foo_id&#34;)
+     *             .name("foo")
+     *             .projectId("foo_id")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4443,7 +4649,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4465,13 +4672,14 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getProjectRoleTemplateBinding(GetProjectRoleTemplateBindingArgs.builder()
-     *             .name(&#34;foo&#34;)
-     *             .projectId(&#34;foo_id&#34;)
+     *             .name("foo")
+     *             .projectId("foo_id")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4488,7 +4696,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4511,17 +4720,19 @@ public final class Rancher2Functions {
      *     public static void stack(Context ctx) {
      *         // Retrieve a rancher2 Project Registry
      *         final var foo = Rancher2Functions.getRegistry(GetRegistryArgs.builder()
-     *             .name(&#34;&lt;name&gt;&#34;)
-     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .name("<name>")
+     *             .projectId("<project_id>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4544,14 +4755,15 @@ public final class Rancher2Functions {
      *     public static void stack(Context ctx) {
      *         // Retrieve a rancher2 Namespaced Registry
      *         final var foo = Rancher2Functions.getRegistry(GetRegistryArgs.builder()
-     *             .name(&#34;&lt;name&gt;&#34;)
-     *             .projectId(&#34;&lt;project_id&gt;&#34;)
-     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
+     *             .name("<name>")
+     *             .projectId("<project_id>")
+     *             .namespaceId("<namespace_id>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4568,7 +4780,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4591,17 +4804,19 @@ public final class Rancher2Functions {
      *     public static void stack(Context ctx) {
      *         // Retrieve a rancher2 Project Registry
      *         final var foo = Rancher2Functions.getRegistry(GetRegistryArgs.builder()
-     *             .name(&#34;&lt;name&gt;&#34;)
-     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .name("<name>")
+     *             .projectId("<project_id>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4624,14 +4839,15 @@ public final class Rancher2Functions {
      *     public static void stack(Context ctx) {
      *         // Retrieve a rancher2 Namespaced Registry
      *         final var foo = Rancher2Functions.getRegistry(GetRegistryArgs.builder()
-     *             .name(&#34;&lt;name&gt;&#34;)
-     *             .projectId(&#34;&lt;project_id&gt;&#34;)
-     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
+     *             .name("<name>")
+     *             .projectId("<project_id>")
+     *             .namespaceId("<namespace_id>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4648,7 +4864,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4671,17 +4888,19 @@ public final class Rancher2Functions {
      *     public static void stack(Context ctx) {
      *         // Retrieve a rancher2 Project Registry
      *         final var foo = Rancher2Functions.getRegistry(GetRegistryArgs.builder()
-     *             .name(&#34;&lt;name&gt;&#34;)
-     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .name("<name>")
+     *             .projectId("<project_id>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4704,14 +4923,15 @@ public final class Rancher2Functions {
      *     public static void stack(Context ctx) {
      *         // Retrieve a rancher2 Namespaced Registry
      *         final var foo = Rancher2Functions.getRegistry(GetRegistryArgs.builder()
-     *             .name(&#34;&lt;name&gt;&#34;)
-     *             .projectId(&#34;&lt;project_id&gt;&#34;)
-     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
+     *             .name("<name>")
+     *             .projectId("<project_id>")
+     *             .namespaceId("<namespace_id>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4728,7 +4948,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4751,17 +4972,19 @@ public final class Rancher2Functions {
      *     public static void stack(Context ctx) {
      *         // Retrieve a rancher2 Project Registry
      *         final var foo = Rancher2Functions.getRegistry(GetRegistryArgs.builder()
-     *             .name(&#34;&lt;name&gt;&#34;)
-     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .name("<name>")
+     *             .projectId("<project_id>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4784,14 +5007,15 @@ public final class Rancher2Functions {
      *     public static void stack(Context ctx) {
      *         // Retrieve a rancher2 Namespaced Registry
      *         final var foo = Rancher2Functions.getRegistry(GetRegistryArgs.builder()
-     *             .name(&#34;&lt;name&gt;&#34;)
-     *             .projectId(&#34;&lt;project_id&gt;&#34;)
-     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
+     *             .name("<name>")
+     *             .projectId("<project_id>")
+     *             .namespaceId("<namespace_id>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4804,7 +5028,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4826,12 +5051,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getRoleTemplate(GetRoleTemplateArgs.builder()
-     *             .name(&#34;foo&#34;)
+     *             .name("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4844,7 +5070,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4866,12 +5093,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getRoleTemplate(GetRoleTemplateArgs.builder()
-     *             .name(&#34;foo&#34;)
+     *             .name("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4884,7 +5112,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4906,12 +5135,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getRoleTemplate(GetRoleTemplateArgs.builder()
-     *             .name(&#34;foo&#34;)
+     *             .name("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4924,7 +5154,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4946,12 +5177,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getRoleTemplate(GetRoleTemplateArgs.builder()
-     *             .name(&#34;foo&#34;)
+     *             .name("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4968,7 +5200,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4991,17 +5224,19 @@ public final class Rancher2Functions {
      *     public static void stack(Context ctx) {
      *         // Retrieve a rancher2 Project Secret
      *         final var foo = Rancher2Functions.getSecret(GetSecretArgs.builder()
-     *             .name(&#34;&lt;name&gt;&#34;)
-     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .name("<name>")
+     *             .projectId("<project_id>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5024,14 +5259,15 @@ public final class Rancher2Functions {
      *     public static void stack(Context ctx) {
      *         // Retrieve a rancher2 Namespaced Secret
      *         final var foo = Rancher2Functions.getSecret(GetSecretArgs.builder()
-     *             .name(&#34;&lt;name&gt;&#34;)
-     *             .projectId(&#34;&lt;project_id&gt;&#34;)
-     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
+     *             .name("<name>")
+     *             .projectId("<project_id>")
+     *             .namespaceId("<namespace_id>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5048,7 +5284,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5071,17 +5308,19 @@ public final class Rancher2Functions {
      *     public static void stack(Context ctx) {
      *         // Retrieve a rancher2 Project Secret
      *         final var foo = Rancher2Functions.getSecret(GetSecretArgs.builder()
-     *             .name(&#34;&lt;name&gt;&#34;)
-     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .name("<name>")
+     *             .projectId("<project_id>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5104,14 +5343,15 @@ public final class Rancher2Functions {
      *     public static void stack(Context ctx) {
      *         // Retrieve a rancher2 Namespaced Secret
      *         final var foo = Rancher2Functions.getSecret(GetSecretArgs.builder()
-     *             .name(&#34;&lt;name&gt;&#34;)
-     *             .projectId(&#34;&lt;project_id&gt;&#34;)
-     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
+     *             .name("<name>")
+     *             .projectId("<project_id>")
+     *             .namespaceId("<namespace_id>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5128,7 +5368,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5151,17 +5392,19 @@ public final class Rancher2Functions {
      *     public static void stack(Context ctx) {
      *         // Retrieve a rancher2 Project Secret
      *         final var foo = Rancher2Functions.getSecret(GetSecretArgs.builder()
-     *             .name(&#34;&lt;name&gt;&#34;)
-     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .name("<name>")
+     *             .projectId("<project_id>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5184,14 +5427,15 @@ public final class Rancher2Functions {
      *     public static void stack(Context ctx) {
      *         // Retrieve a rancher2 Namespaced Secret
      *         final var foo = Rancher2Functions.getSecret(GetSecretArgs.builder()
-     *             .name(&#34;&lt;name&gt;&#34;)
-     *             .projectId(&#34;&lt;project_id&gt;&#34;)
-     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
+     *             .name("<name>")
+     *             .projectId("<project_id>")
+     *             .namespaceId("<namespace_id>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5208,7 +5452,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5231,17 +5476,19 @@ public final class Rancher2Functions {
      *     public static void stack(Context ctx) {
      *         // Retrieve a rancher2 Project Secret
      *         final var foo = Rancher2Functions.getSecret(GetSecretArgs.builder()
-     *             .name(&#34;&lt;name&gt;&#34;)
-     *             .projectId(&#34;&lt;project_id&gt;&#34;)
+     *             .name("<name>")
+     *             .projectId("<project_id>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5264,14 +5511,15 @@ public final class Rancher2Functions {
      *     public static void stack(Context ctx) {
      *         // Retrieve a rancher2 Namespaced Secret
      *         final var foo = Rancher2Functions.getSecret(GetSecretArgs.builder()
-     *             .name(&#34;&lt;name&gt;&#34;)
-     *             .projectId(&#34;&lt;project_id&gt;&#34;)
-     *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
+     *             .name("<name>")
+     *             .projectId("<project_id>")
+     *             .namespaceId("<namespace_id>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5312,7 +5560,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5334,12 +5583,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var server-image = Rancher2Functions.getSetting(GetSettingArgs.builder()
-     *             .name(&#34;server-image&#34;)
+     *             .name("server-image")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5352,7 +5602,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5374,12 +5625,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var server-image = Rancher2Functions.getSetting(GetSettingArgs.builder()
-     *             .name(&#34;server-image&#34;)
+     *             .name("server-image")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5392,7 +5644,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5414,12 +5667,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var server-image = Rancher2Functions.getSetting(GetSettingArgs.builder()
-     *             .name(&#34;server-image&#34;)
+     *             .name("server-image")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5432,7 +5686,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5454,12 +5709,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var server-image = Rancher2Functions.getSetting(GetSettingArgs.builder()
-     *             .name(&#34;server-image&#34;)
+     *             .name("server-image")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5500,7 +5756,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5522,12 +5779,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getUser(GetUserArgs.builder()
-     *             .username(&#34;foo&#34;)
+     *             .username("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5540,7 +5798,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5562,12 +5821,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getUser(GetUserArgs.builder()
-     *             .username(&#34;foo&#34;)
+     *             .username("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5580,7 +5840,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5602,12 +5863,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getUser(GetUserArgs.builder()
-     *             .username(&#34;foo&#34;)
+     *             .username("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5620,7 +5882,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5642,12 +5905,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getUser(GetUserArgs.builder()
-     *             .username(&#34;foo&#34;)
+     *             .username("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5660,7 +5924,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5682,12 +5947,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getUser(GetUserArgs.builder()
-     *             .username(&#34;foo&#34;)
+     *             .username("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5700,7 +5966,8 @@ public final class Rancher2Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5722,12 +5989,13 @@ public final class Rancher2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getUser(GetUserArgs.builder()
-     *             .username(&#34;foo&#34;)
+     *             .username("foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,22 +57,24 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Cloud Credential
- *         var foo = new CloudCredential(&#34;foo&#34;, CloudCredentialArgs.builder()        
- *             .name(&#34;foo&#34;)
- *             .description(&#34;foo test&#34;)
+ *         var foo = new CloudCredential("foo", CloudCredentialArgs.builder()        
+ *             .name("foo")
+ *             .description("foo test")
  *             .amazonec2CredentialConfig(CloudCredentialAmazonec2CredentialConfigArgs.builder()
- *                 .accessKey(&#34;&lt;AWS_ACCESS_KEY&gt;&#34;)
- *                 .secretKey(&#34;&lt;AWS_SECRET_KEY&gt;&#34;)
+ *                 .accessKey("<AWS_ACCESS_KEY>")
+ *                 .secretKey("<AWS_SECRET_KEY>")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -97,22 +100,23 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Get imported harvester cluster info
  *         final var foo-harvester = Rancher2Functions.getClusterV2(GetClusterV2Args.builder()
- *             .name(&#34;foo-harvester&#34;)
+ *             .name("foo-harvester")
  *             .build());
  * 
  *         // Create a new Cloud Credential for an imported Harvester cluster
- *         var foo_harvesterCloudCredential = new CloudCredential(&#34;foo-harvesterCloudCredential&#34;, CloudCredentialArgs.builder()        
- *             .name(&#34;foo-harvester&#34;)
+ *         var foo_harvesterCloudCredential = new CloudCredential("foo-harvesterCloudCredential", CloudCredentialArgs.builder()        
+ *             .name("foo-harvester")
  *             .harvesterCredentialConfig(CloudCredentialHarvesterCredentialConfigArgs.builder()
  *                 .clusterId(foo_harvester.clusterV1Id())
- *                 .clusterType(&#34;imported&#34;)
+ *                 .clusterType("imported")
  *                 .kubeconfigContent(foo_harvester.kubeConfig())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

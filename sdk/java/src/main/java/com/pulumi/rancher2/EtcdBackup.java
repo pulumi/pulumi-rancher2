@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,28 +51,29 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Etcd Backup
- *         var foo = new EtcdBackup(&#34;foo&#34;, EtcdBackupArgs.builder()        
+ *         var foo = new EtcdBackup("foo", EtcdBackupArgs.builder()        
  *             .backupConfig(EtcdBackupBackupConfigArgs.builder()
  *                 .enabled(true)
  *                 .intervalHours(20)
  *                 .retention(10)
  *                 .s3BackupConfig(EtcdBackupBackupConfigS3BackupConfigArgs.builder()
- *                     .accessKey(&#34;access_key&#34;)
- *                     .bucketName(&#34;bucket_name&#34;)
- *                     .endpoint(&#34;endpoint&#34;)
- *                     .folder(&#34;/folder&#34;)
- *                     .region(&#34;region&#34;)
- *                     .secretKey(&#34;secret_key&#34;)
+ *                     .accessKey("access_key")
+ *                     .bucketName("bucket_name")
+ *                     .endpoint("endpoint")
+ *                     .folder("/folder")
+ *                     .region("region")
+ *                     .secretKey("secret_key")
  *                     .build())
  *                 .build())
- *             .clusterId(&#34;&lt;CLUSTER_ID&gt;&#34;)
- *             .name(&#34;foo&#34;)
- *             .filename(&#34;&lt;FILENAME&gt;&#34;)
+ *             .clusterId("<CLUSTER_ID>")
+ *             .name("foo")
+ *             .filename("<FILENAME>")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

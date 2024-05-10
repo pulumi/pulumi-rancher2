@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,20 +49,21 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Global Role
- *         var foo = new GlobalRole(&#34;foo&#34;, GlobalRoleArgs.builder()        
- *             .name(&#34;foo&#34;)
+ *         var foo = new GlobalRole("foo", GlobalRoleArgs.builder()        
+ *             .name("foo")
  *             .newUserDefault(true)
- *             .description(&#34;Terraform global role acceptance test&#34;)
+ *             .description("Terraform global role acceptance test")
  *             .rules(GlobalRoleRuleArgs.builder()
- *                 .apiGroups(&#34;*&#34;)
- *                 .resources(&#34;secrets&#34;)
- *                 .verbs(&#34;create&#34;)
+ *                 .apiGroups("*")
+ *                 .resources("secrets")
+ *                 .verbs("create")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

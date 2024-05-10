@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,16 +44,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new Rancher2 Cluster Role Template Binding
- *         var foo = new ClusterRoleTemplateBinding(&#34;foo&#34;, ClusterRoleTemplateBindingArgs.builder()        
- *             .name(&#34;foo&#34;)
- *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
- *             .roleTemplateId(&#34;&lt;role_template_id&gt;&#34;)
- *             .userId(&#34;&lt;user_id&gt;&#34;)
+ *         var foo = new ClusterRoleTemplateBinding("foo", ClusterRoleTemplateBindingArgs.builder()        
+ *             .name("foo")
+ *             .clusterId("<cluster_id>")
+ *             .roleTemplateId("<role_template_id>")
+ *             .userId("<user_id>")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

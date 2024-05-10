@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -60,23 +61,23 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a rancher2 Token
- *         var foo = new User(&#34;foo&#34;, UserArgs.builder()        
- *             .name(&#34;foo&#34;)
- *             .username(&#34;foo&#34;)
- *             .password(&#34;changeme&#34;)
+ *         var foo = new User("foo", UserArgs.builder()        
+ *             .name("foo")
+ *             .username("foo")
+ *             .password("changeme")
  *             .enabled(true)
  *             .build());
  * 
- *         var foo_login = new GlobalRoleBinding(&#34;foo-login&#34;, GlobalRoleBindingArgs.builder()        
- *             .name(&#34;foo-login-binding&#34;)
- *             .globalRoleId(&#34;user-base&#34;)
+ *         var foo_login = new GlobalRoleBinding("foo-login", GlobalRoleBindingArgs.builder()        
+ *             .name("foo-login-binding")
+ *             .globalRoleId("user-base")
  *             .userId(foo.id())
  *             .build());
  * 
- *         var fooCustomUserToken = new CustomUserToken(&#34;fooCustomUserToken&#34;, CustomUserTokenArgs.builder()        
+ *         var fooCustomUserToken = new CustomUserToken("fooCustomUserToken", CustomUserTokenArgs.builder()        
  *             .username(foo.username())
  *             .password(foo.password())
- *             .description(&#34;foo token&#34;)
+ *             .description("foo token")
  *             .ttl(0)
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(foo_login)
@@ -84,7 +85,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

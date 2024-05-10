@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,23 +51,24 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 User
- *         var foo = new User(&#34;foo&#34;, UserArgs.builder()        
- *             .name(&#34;Foo user&#34;)
- *             .username(&#34;foo&#34;)
- *             .password(&#34;changeme&#34;)
+ *         var foo = new User("foo", UserArgs.builder()        
+ *             .name("Foo user")
+ *             .username("foo")
+ *             .password("changeme")
  *             .enabled(true)
  *             .build());
  * 
  *         // Create a new rancher2 global_role_binding for User
- *         var fooGlobalRoleBinding = new GlobalRoleBinding(&#34;fooGlobalRoleBinding&#34;, GlobalRoleBindingArgs.builder()        
- *             .name(&#34;foo&#34;)
- *             .globalRoleId(&#34;user-base&#34;)
+ *         var fooGlobalRoleBinding = new GlobalRoleBinding("fooGlobalRoleBinding", GlobalRoleBindingArgs.builder()        
+ *             .name("foo")
+ *             .globalRoleId("user-base")
  *             .userId(foo.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

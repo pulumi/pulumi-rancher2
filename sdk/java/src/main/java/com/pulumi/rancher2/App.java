@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,28 +53,30 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 App
- *         var foo = new App(&#34;foo&#34;, AppArgs.builder()        
- *             .catalogName(&#34;&lt;catalog_name&gt;&#34;)
- *             .name(&#34;foo&#34;)
- *             .description(&#34;Foo app&#34;)
- *             .projectId(&#34;&lt;project_id&gt;&#34;)
- *             .templateName(&#34;&lt;template_name&gt;&#34;)
- *             .templateVersion(&#34;&lt;template_version&gt;&#34;)
- *             .targetNamespace(&#34;&lt;namespace_name&gt;&#34;)
+ *         var foo = new App("foo", AppArgs.builder()        
+ *             .catalogName("<catalog_name>")
+ *             .name("foo")
+ *             .description("Foo app")
+ *             .projectId("<project_id>")
+ *             .templateName("<template_name>")
+ *             .templateVersion("<template_version>")
+ *             .targetNamespace("<namespace_name>")
  *             .answers(Map.ofEntries(
- *                 Map.entry(&#34;ingress_host&#34;, &#34;test.xip.io&#34;),
- *                 Map.entry(&#34;foo&#34;, &#34;bar&#34;),
- *                 Map.entry(&#34;ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect&#34;, true)
+ *                 Map.entry("ingress_host", "test.xip.io"),
+ *                 Map.entry("foo", "bar"),
+ *                 Map.entry("ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect", true)
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -99,37 +102,38 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 App in a new namespace
- *         var foo = new Namespace(&#34;foo&#34;, NamespaceArgs.builder()        
- *             .name(&#34;foo&#34;)
- *             .description(&#34;Foo namespace&#34;)
- *             .projectId(&#34;&lt;project_id&gt;&#34;)
+ *         var foo = new Namespace("foo", NamespaceArgs.builder()        
+ *             .name("foo")
+ *             .description("Foo namespace")
+ *             .projectId("<project_id>")
  *             .resourceQuota(NamespaceResourceQuotaArgs.builder()
  *                 .limit(NamespaceResourceQuotaLimitArgs.builder()
- *                     .limitsCpu(&#34;100m&#34;)
- *                     .limitsMemory(&#34;100Mi&#34;)
- *                     .requestsStorage(&#34;1Gi&#34;)
+ *                     .limitsCpu("100m")
+ *                     .limitsMemory("100Mi")
+ *                     .requestsStorage("1Gi")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var fooApp = new App(&#34;fooApp&#34;, AppArgs.builder()        
- *             .catalogName(&#34;&lt;catalog_name&gt;&#34;)
- *             .name(&#34;foo&#34;)
- *             .description(&#34;Foo app&#34;)
- *             .projectId(&#34;&lt;project_id&gt;&#34;)
- *             .templateName(&#34;&lt;template_name&gt;&#34;)
- *             .templateVersion(&#34;&lt;template_version&gt;&#34;)
+ *         var fooApp = new App("fooApp", AppArgs.builder()        
+ *             .catalogName("<catalog_name>")
+ *             .name("foo")
+ *             .description("Foo app")
+ *             .projectId("<project_id>")
+ *             .templateName("<template_name>")
+ *             .templateVersion("<template_version>")
  *             .targetNamespace(foo.id())
  *             .answers(Map.ofEntries(
- *                 Map.entry(&#34;ingress_host&#34;, &#34;test.xip.io&#34;),
- *                 Map.entry(&#34;foo&#34;, &#34;bar&#34;),
- *                 Map.entry(&#34;ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect&#34;, true)
+ *                 Map.entry("ingress_host", "test.xip.io"),
+ *                 Map.entry("foo", "bar"),
+ *                 Map.entry("ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect", true)
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

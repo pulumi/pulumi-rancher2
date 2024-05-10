@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,14 +49,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Auth Config Github
- *         var github = new AuthConfigGithub(&#34;github&#34;, AuthConfigGithubArgs.builder()        
- *             .clientId(&#34;&lt;GITHUB_CLIENT_ID&gt;&#34;)
- *             .clientSecret(&#34;&lt;GITHUB_CLIENT_SECRET&gt;&#34;)
+ *         var github = new AuthConfigGithub("github", AuthConfigGithubArgs.builder()        
+ *             .clientId("<GITHUB_CLIENT_ID>")
+ *             .clientSecret("<GITHUB_CLIENT_SECRET>")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

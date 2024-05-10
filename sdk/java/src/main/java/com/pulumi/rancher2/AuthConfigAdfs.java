@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,20 +49,21 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Auth Config ADFS
- *         var adfs = new AuthConfigAdfs(&#34;adfs&#34;, AuthConfigAdfsArgs.builder()        
- *             .displayNameField(&#34;&lt;DISPLAY_NAME_FIELD&gt;&#34;)
- *             .groupsField(&#34;&lt;GROUPS_FIELD&gt;&#34;)
- *             .idpMetadataContent(&#34;&lt;IDP_METADATA_CONTENT&gt;&#34;)
- *             .rancherApiHost(&#34;https://&lt;RANCHER_API_HOST&gt;&#34;)
- *             .spCert(&#34;&lt;SP_CERT&gt;&#34;)
- *             .spKey(&#34;&lt;SP_KEY&gt;&#34;)
- *             .uidField(&#34;&lt;UID_FIELD&gt;&#34;)
- *             .userNameField(&#34;&lt;USER_NAME_FIELD&gt;&#34;)
+ *         var adfs = new AuthConfigAdfs("adfs", AuthConfigAdfsArgs.builder()        
+ *             .displayNameField("<DISPLAY_NAME_FIELD>")
+ *             .groupsField("<GROUPS_FIELD>")
+ *             .idpMetadataContent("<IDP_METADATA_CONTENT>")
+ *             .rancherApiHost("https://<RANCHER_API_HOST>")
+ *             .spCert("<SP_CERT>")
+ *             .spKey("<SP_KEY>")
+ *             .uidField("<UID_FIELD>")
+ *             .userNameField("<USER_NAME_FIELD>")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

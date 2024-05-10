@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,21 +47,22 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Node Driver
- *         var foo = new NodeDriver(&#34;foo&#34;, NodeDriverArgs.builder()        
+ *         var foo = new NodeDriver("foo", NodeDriverArgs.builder()        
  *             .active(true)
  *             .builtin(false)
- *             .checksum(&#34;0x0&#34;)
- *             .description(&#34;Foo description&#34;)
- *             .externalId(&#34;foo_external&#34;)
- *             .name(&#34;foo&#34;)
- *             .uiUrl(&#34;local://ui&#34;)
- *             .url(&#34;local://&#34;)
- *             .whitelistDomains(&#34;*.foo.com&#34;)
+ *             .checksum("0x0")
+ *             .description("Foo description")
+ *             .externalId("foo_external")
+ *             .name("foo")
+ *             .uiUrl("local://ui")
+ *             .url("local://")
+ *             .whitelistDomains("*.foo.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

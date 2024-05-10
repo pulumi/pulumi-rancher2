@@ -46,7 +46,8 @@ import javax.annotation.Nullable;
  * ### Creating Rancher v2 imported cluster
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -68,14 +69,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 imported Cluster
- *         var foo_imported = new Cluster(&#34;foo-imported&#34;, ClusterArgs.builder()        
- *             .name(&#34;foo-imported&#34;)
- *             .description(&#34;Foo rancher2 imported cluster&#34;)
+ *         var foo_imported = new Cluster("foo-imported", ClusterArgs.builder()        
+ *             .name("foo-imported")
+ *             .description("Foo rancher2 imported cluster")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Creating Rancher v2 RKE cluster
@@ -85,7 +87,8 @@ import javax.annotation.Nullable;
  * **Note** Cluster monitoring version `0.2.0` and above, can&#39;t be enabled until cluster is fully deployed as [`kubeVersion`](https://github.com/rancher/system-charts/blob/52be656700468904b9bf15c3f39cd7112e1f8c9b/charts/rancher-monitoring/v0.2.0/Chart.yaml#L12) requirement has been introduced to helm chart
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -110,49 +113,51 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 RKE Cluster
- *         var foo_custom = new Cluster(&#34;foo-custom&#34;, ClusterArgs.builder()        
- *             .name(&#34;foo-custom&#34;)
- *             .description(&#34;Foo rancher2 custom cluster&#34;)
+ *         var foo_custom = new Cluster("foo-custom", ClusterArgs.builder()        
+ *             .name("foo-custom")
+ *             .description("Foo rancher2 custom cluster")
  *             .rkeConfig(ClusterRkeConfigArgs.builder()
  *                 .network(ClusterRkeConfigNetworkArgs.builder()
- *                     .plugin(&#34;canal&#34;)
+ *                     .plugin("canal")
  *                     .build())
  *                 .build())
  *             .enableClusterMonitoring(true)
  *             .clusterMonitoringInput(ClusterClusterMonitoringInputArgs.builder()
  *                 .answers(Map.ofEntries(
- *                     Map.entry(&#34;exporter-kubelets.https&#34;, true),
- *                     Map.entry(&#34;exporter-node.enabled&#34;, true),
- *                     Map.entry(&#34;exporter-node.ports.metrics.port&#34;, 9796),
- *                     Map.entry(&#34;exporter-node.resources.limits.cpu&#34;, &#34;200m&#34;),
- *                     Map.entry(&#34;exporter-node.resources.limits.memory&#34;, &#34;200Mi&#34;),
- *                     Map.entry(&#34;grafana.persistence.enabled&#34;, false),
- *                     Map.entry(&#34;grafana.persistence.size&#34;, &#34;10Gi&#34;),
- *                     Map.entry(&#34;grafana.persistence.storageClass&#34;, &#34;default&#34;),
- *                     Map.entry(&#34;operator.resources.limits.memory&#34;, &#34;500Mi&#34;),
- *                     Map.entry(&#34;prometheus.persistence.enabled&#34;, &#34;false&#34;),
- *                     Map.entry(&#34;prometheus.persistence.size&#34;, &#34;50Gi&#34;),
- *                     Map.entry(&#34;prometheus.persistence.storageClass&#34;, &#34;default&#34;),
- *                     Map.entry(&#34;prometheus.persistent.useReleaseName&#34;, &#34;true&#34;),
- *                     Map.entry(&#34;prometheus.resources.core.limits.cpu&#34;, &#34;1000m&#34;),
- *                     Map.entry(&#34;prometheus.resources.core.limits.memory&#34;, &#34;1500Mi&#34;),
- *                     Map.entry(&#34;prometheus.resources.core.requests.cpu&#34;, &#34;750m&#34;),
- *                     Map.entry(&#34;prometheus.resources.core.requests.memory&#34;, &#34;750Mi&#34;),
- *                     Map.entry(&#34;prometheus.retention&#34;, &#34;12h&#34;)
+ *                     Map.entry("exporter-kubelets.https", true),
+ *                     Map.entry("exporter-node.enabled", true),
+ *                     Map.entry("exporter-node.ports.metrics.port", 9796),
+ *                     Map.entry("exporter-node.resources.limits.cpu", "200m"),
+ *                     Map.entry("exporter-node.resources.limits.memory", "200Mi"),
+ *                     Map.entry("grafana.persistence.enabled", false),
+ *                     Map.entry("grafana.persistence.size", "10Gi"),
+ *                     Map.entry("grafana.persistence.storageClass", "default"),
+ *                     Map.entry("operator.resources.limits.memory", "500Mi"),
+ *                     Map.entry("prometheus.persistence.enabled", "false"),
+ *                     Map.entry("prometheus.persistence.size", "50Gi"),
+ *                     Map.entry("prometheus.persistence.storageClass", "default"),
+ *                     Map.entry("prometheus.persistent.useReleaseName", "true"),
+ *                     Map.entry("prometheus.resources.core.limits.cpu", "1000m"),
+ *                     Map.entry("prometheus.resources.core.limits.memory", "1500Mi"),
+ *                     Map.entry("prometheus.resources.core.requests.cpu", "750m"),
+ *                     Map.entry("prometheus.resources.core.requests.memory", "750Mi"),
+ *                     Map.entry("prometheus.retention", "12h")
  *                 ))
- *                 .version(&#34;0.1.0&#34;)
+ *                 .version("0.1.0")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Creating Rancher v2 RKE cluster enabling/customizing monitoring and istio
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -183,114 +188,116 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 RKE Cluster
- *         var foo_custom = new Cluster(&#34;foo-custom&#34;, ClusterArgs.builder()        
- *             .name(&#34;foo-custom&#34;)
- *             .description(&#34;Foo rancher2 custom cluster&#34;)
+ *         var foo_custom = new Cluster("foo-custom", ClusterArgs.builder()        
+ *             .name("foo-custom")
+ *             .description("Foo rancher2 custom cluster")
  *             .rkeConfig(ClusterRkeConfigArgs.builder()
  *                 .network(ClusterRkeConfigNetworkArgs.builder()
- *                     .plugin(&#34;canal&#34;)
+ *                     .plugin("canal")
  *                     .build())
  *                 .build())
  *             .enableClusterMonitoring(true)
  *             .clusterMonitoringInput(ClusterClusterMonitoringInputArgs.builder()
  *                 .answers(Map.ofEntries(
- *                     Map.entry(&#34;exporter-kubelets.https&#34;, true),
- *                     Map.entry(&#34;exporter-node.enabled&#34;, true),
- *                     Map.entry(&#34;exporter-node.ports.metrics.port&#34;, 9796),
- *                     Map.entry(&#34;exporter-node.resources.limits.cpu&#34;, &#34;200m&#34;),
- *                     Map.entry(&#34;exporter-node.resources.limits.memory&#34;, &#34;200Mi&#34;),
- *                     Map.entry(&#34;grafana.persistence.enabled&#34;, false),
- *                     Map.entry(&#34;grafana.persistence.size&#34;, &#34;10Gi&#34;),
- *                     Map.entry(&#34;grafana.persistence.storageClass&#34;, &#34;default&#34;),
- *                     Map.entry(&#34;operator.resources.limits.memory&#34;, &#34;500Mi&#34;),
- *                     Map.entry(&#34;prometheus.persistence.enabled&#34;, &#34;false&#34;),
- *                     Map.entry(&#34;prometheus.persistence.size&#34;, &#34;50Gi&#34;),
- *                     Map.entry(&#34;prometheus.persistence.storageClass&#34;, &#34;default&#34;),
- *                     Map.entry(&#34;prometheus.persistent.useReleaseName&#34;, &#34;true&#34;),
- *                     Map.entry(&#34;prometheus.resources.core.limits.cpu&#34;, &#34;1000m&#34;),
- *                     Map.entry(&#34;prometheus.resources.core.limits.memory&#34;, &#34;1500Mi&#34;),
- *                     Map.entry(&#34;prometheus.resources.core.requests.cpu&#34;, &#34;750m&#34;),
- *                     Map.entry(&#34;prometheus.resources.core.requests.memory&#34;, &#34;750Mi&#34;),
- *                     Map.entry(&#34;prometheus.retention&#34;, &#34;12h&#34;)
+ *                     Map.entry("exporter-kubelets.https", true),
+ *                     Map.entry("exporter-node.enabled", true),
+ *                     Map.entry("exporter-node.ports.metrics.port", 9796),
+ *                     Map.entry("exporter-node.resources.limits.cpu", "200m"),
+ *                     Map.entry("exporter-node.resources.limits.memory", "200Mi"),
+ *                     Map.entry("grafana.persistence.enabled", false),
+ *                     Map.entry("grafana.persistence.size", "10Gi"),
+ *                     Map.entry("grafana.persistence.storageClass", "default"),
+ *                     Map.entry("operator.resources.limits.memory", "500Mi"),
+ *                     Map.entry("prometheus.persistence.enabled", "false"),
+ *                     Map.entry("prometheus.persistence.size", "50Gi"),
+ *                     Map.entry("prometheus.persistence.storageClass", "default"),
+ *                     Map.entry("prometheus.persistent.useReleaseName", "true"),
+ *                     Map.entry("prometheus.resources.core.limits.cpu", "1000m"),
+ *                     Map.entry("prometheus.resources.core.limits.memory", "1500Mi"),
+ *                     Map.entry("prometheus.resources.core.requests.cpu", "750m"),
+ *                     Map.entry("prometheus.resources.core.requests.memory", "750Mi"),
+ *                     Map.entry("prometheus.retention", "12h")
  *                 ))
- *                 .version(&#34;0.1.0&#34;)
+ *                 .version("0.1.0")
  *                 .build())
  *             .build());
  * 
  *         // Create a new rancher2 Cluster Sync for foo-custom cluster
- *         var foo_customClusterSync = new ClusterSync(&#34;foo-customClusterSync&#34;, ClusterSyncArgs.builder()        
+ *         var foo_customClusterSync = new ClusterSync("foo-customClusterSync", ClusterSyncArgs.builder()        
  *             .clusterId(foo_custom.id())
  *             .waitMonitoring(foo_custom.enableClusterMonitoring())
  *             .build());
  * 
  *         // Create a new rancher2 Namespace
- *         var foo_istio = new Namespace(&#34;foo-istio&#34;, NamespaceArgs.builder()        
- *             .name(&#34;istio-system&#34;)
+ *         var foo_istio = new Namespace("foo-istio", NamespaceArgs.builder()        
+ *             .name("istio-system")
  *             .projectId(foo_customClusterSync.systemProjectId())
- *             .description(&#34;istio namespace&#34;)
+ *             .description("istio namespace")
  *             .build());
  * 
  *         // Create a new rancher2 App deploying istio (should wait until monitoring is up and running)
- *         var istio = new App(&#34;istio&#34;, AppArgs.builder()        
- *             .catalogName(&#34;system-library&#34;)
- *             .name(&#34;cluster-istio&#34;)
- *             .description(&#34;Terraform app acceptance test&#34;)
+ *         var istio = new App("istio", AppArgs.builder()        
+ *             .catalogName("system-library")
+ *             .name("cluster-istio")
+ *             .description("Terraform app acceptance test")
  *             .projectId(foo_istio.projectId())
- *             .templateName(&#34;rancher-istio&#34;)
- *             .templateVersion(&#34;0.1.1&#34;)
+ *             .templateName("rancher-istio")
+ *             .templateVersion("0.1.1")
  *             .targetNamespace(foo_istio.id())
  *             .answers(Map.ofEntries(
- *                 Map.entry(&#34;certmanager.enabled&#34;, false),
- *                 Map.entry(&#34;enableCRDs&#34;, true),
- *                 Map.entry(&#34;galley.enabled&#34;, true),
- *                 Map.entry(&#34;gateways.enabled&#34;, false),
- *                 Map.entry(&#34;gateways.istio-ingressgateway.resources.limits.cpu&#34;, &#34;2000m&#34;),
- *                 Map.entry(&#34;gateways.istio-ingressgateway.resources.limits.memory&#34;, &#34;1024Mi&#34;),
- *                 Map.entry(&#34;gateways.istio-ingressgateway.resources.requests.cpu&#34;, &#34;100m&#34;),
- *                 Map.entry(&#34;gateways.istio-ingressgateway.resources.requests.memory&#34;, &#34;128Mi&#34;),
- *                 Map.entry(&#34;gateways.istio-ingressgateway.type&#34;, &#34;NodePort&#34;),
- *                 Map.entry(&#34;global.monitoring.type&#34;, &#34;cluster-monitoring&#34;),
- *                 Map.entry(&#34;global.rancher.clusterId&#34;, foo_customClusterSync.clusterId()),
- *                 Map.entry(&#34;istio_cni.enabled&#34;, &#34;false&#34;),
- *                 Map.entry(&#34;istiocoredns.enabled&#34;, &#34;false&#34;),
- *                 Map.entry(&#34;kiali.enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;mixer.enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;mixer.policy.enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;mixer.policy.resources.limits.cpu&#34;, &#34;4800m&#34;),
- *                 Map.entry(&#34;mixer.policy.resources.limits.memory&#34;, &#34;4096Mi&#34;),
- *                 Map.entry(&#34;mixer.policy.resources.requests.cpu&#34;, &#34;1000m&#34;),
- *                 Map.entry(&#34;mixer.policy.resources.requests.memory&#34;, &#34;1024Mi&#34;),
- *                 Map.entry(&#34;mixer.telemetry.resources.limits.cpu&#34;, &#34;4800m&#34;),
- *                 Map.entry(&#34;mixer.telemetry.resources.limits.memory&#34;, &#34;4096Mi&#34;),
- *                 Map.entry(&#34;mixer.telemetry.resources.requests.cpu&#34;, &#34;1000m&#34;),
- *                 Map.entry(&#34;mixer.telemetry.resources.requests.memory&#34;, &#34;1024Mi&#34;),
- *                 Map.entry(&#34;mtls.enabled&#34;, false),
- *                 Map.entry(&#34;nodeagent.enabled&#34;, false),
- *                 Map.entry(&#34;pilot.enabled&#34;, true),
- *                 Map.entry(&#34;pilot.resources.limits.cpu&#34;, &#34;1000m&#34;),
- *                 Map.entry(&#34;pilot.resources.limits.memory&#34;, &#34;4096Mi&#34;),
- *                 Map.entry(&#34;pilot.resources.requests.cpu&#34;, &#34;500m&#34;),
- *                 Map.entry(&#34;pilot.resources.requests.memory&#34;, &#34;2048Mi&#34;),
- *                 Map.entry(&#34;pilot.traceSampling&#34;, &#34;1&#34;),
- *                 Map.entry(&#34;security.enabled&#34;, true),
- *                 Map.entry(&#34;sidecarInjectorWebhook.enabled&#34;, true),
- *                 Map.entry(&#34;tracing.enabled&#34;, true),
- *                 Map.entry(&#34;tracing.jaeger.resources.limits.cpu&#34;, &#34;500m&#34;),
- *                 Map.entry(&#34;tracing.jaeger.resources.limits.memory&#34;, &#34;1024Mi&#34;),
- *                 Map.entry(&#34;tracing.jaeger.resources.requests.cpu&#34;, &#34;100m&#34;),
- *                 Map.entry(&#34;tracing.jaeger.resources.requests.memory&#34;, &#34;100Mi&#34;)
+ *                 Map.entry("certmanager.enabled", false),
+ *                 Map.entry("enableCRDs", true),
+ *                 Map.entry("galley.enabled", true),
+ *                 Map.entry("gateways.enabled", false),
+ *                 Map.entry("gateways.istio-ingressgateway.resources.limits.cpu", "2000m"),
+ *                 Map.entry("gateways.istio-ingressgateway.resources.limits.memory", "1024Mi"),
+ *                 Map.entry("gateways.istio-ingressgateway.resources.requests.cpu", "100m"),
+ *                 Map.entry("gateways.istio-ingressgateway.resources.requests.memory", "128Mi"),
+ *                 Map.entry("gateways.istio-ingressgateway.type", "NodePort"),
+ *                 Map.entry("global.monitoring.type", "cluster-monitoring"),
+ *                 Map.entry("global.rancher.clusterId", foo_customClusterSync.clusterId()),
+ *                 Map.entry("istio_cni.enabled", "false"),
+ *                 Map.entry("istiocoredns.enabled", "false"),
+ *                 Map.entry("kiali.enabled", "true"),
+ *                 Map.entry("mixer.enabled", "true"),
+ *                 Map.entry("mixer.policy.enabled", "true"),
+ *                 Map.entry("mixer.policy.resources.limits.cpu", "4800m"),
+ *                 Map.entry("mixer.policy.resources.limits.memory", "4096Mi"),
+ *                 Map.entry("mixer.policy.resources.requests.cpu", "1000m"),
+ *                 Map.entry("mixer.policy.resources.requests.memory", "1024Mi"),
+ *                 Map.entry("mixer.telemetry.resources.limits.cpu", "4800m"),
+ *                 Map.entry("mixer.telemetry.resources.limits.memory", "4096Mi"),
+ *                 Map.entry("mixer.telemetry.resources.requests.cpu", "1000m"),
+ *                 Map.entry("mixer.telemetry.resources.requests.memory", "1024Mi"),
+ *                 Map.entry("mtls.enabled", false),
+ *                 Map.entry("nodeagent.enabled", false),
+ *                 Map.entry("pilot.enabled", true),
+ *                 Map.entry("pilot.resources.limits.cpu", "1000m"),
+ *                 Map.entry("pilot.resources.limits.memory", "4096Mi"),
+ *                 Map.entry("pilot.resources.requests.cpu", "500m"),
+ *                 Map.entry("pilot.resources.requests.memory", "2048Mi"),
+ *                 Map.entry("pilot.traceSampling", "1"),
+ *                 Map.entry("security.enabled", true),
+ *                 Map.entry("sidecarInjectorWebhook.enabled", true),
+ *                 Map.entry("tracing.enabled", true),
+ *                 Map.entry("tracing.jaeger.resources.limits.cpu", "500m"),
+ *                 Map.entry("tracing.jaeger.resources.limits.memory", "1024Mi"),
+ *                 Map.entry("tracing.jaeger.resources.requests.cpu", "100m"),
+ *                 Map.entry("tracing.jaeger.resources.requests.memory", "100Mi")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Creating Rancher v2 RKE cluster assigning a node pool (overlapped planes)
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -319,37 +326,37 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 RKE Cluster
- *         var foo_custom = new Cluster(&#34;foo-custom&#34;, ClusterArgs.builder()        
- *             .name(&#34;foo-custom&#34;)
- *             .description(&#34;Foo rancher2 custom cluster&#34;)
+ *         var foo_custom = new Cluster("foo-custom", ClusterArgs.builder()        
+ *             .name("foo-custom")
+ *             .description("Foo rancher2 custom cluster")
  *             .rkeConfig(ClusterRkeConfigArgs.builder()
  *                 .network(ClusterRkeConfigNetworkArgs.builder()
- *                     .plugin(&#34;canal&#34;)
+ *                     .plugin("canal")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *         // Create a new rancher2 Node Template
- *         var foo = new NodeTemplate(&#34;foo&#34;, NodeTemplateArgs.builder()        
- *             .name(&#34;foo&#34;)
- *             .description(&#34;foo test&#34;)
+ *         var foo = new NodeTemplate("foo", NodeTemplateArgs.builder()        
+ *             .name("foo")
+ *             .description("foo test")
  *             .amazonec2Config(NodeTemplateAmazonec2ConfigArgs.builder()
- *                 .accessKey(&#34;&lt;AWS_ACCESS_KEY&gt;&#34;)
- *                 .secretKey(&#34;&lt;AWS_SECRET_KEY&gt;&#34;)
- *                 .ami(&#34;&lt;AMI_ID&gt;&#34;)
- *                 .region(&#34;&lt;REGION&gt;&#34;)
- *                 .securityGroups(&#34;&lt;AWS_SECURITY_GROUP&gt;&#34;)
- *                 .subnetId(&#34;&lt;SUBNET_ID&gt;&#34;)
- *                 .vpcId(&#34;&lt;VPC_ID&gt;&#34;)
- *                 .zone(&#34;&lt;ZONE&gt;&#34;)
+ *                 .accessKey("<AWS_ACCESS_KEY>")
+ *                 .secretKey("<AWS_SECRET_KEY>")
+ *                 .ami("<AMI_ID>")
+ *                 .region("<REGION>")
+ *                 .securityGroups("<AWS_SECURITY_GROUP>")
+ *                 .subnetId("<SUBNET_ID>")
+ *                 .vpcId("<VPC_ID>")
+ *                 .zone("<ZONE>")
  *                 .build())
  *             .build());
  * 
  *         // Create a new rancher2 Node Pool
- *         var fooNodePool = new NodePool(&#34;fooNodePool&#34;, NodePoolArgs.builder()        
+ *         var fooNodePool = new NodePool("fooNodePool", NodePoolArgs.builder()        
  *             .clusterId(foo_custom.id())
- *             .name(&#34;foo&#34;)
- *             .hostnamePrefix(&#34;foo-cluster-0&#34;)
+ *             .name("foo")
+ *             .hostnamePrefix("foo-cluster-0")
  *             .nodeTemplateId(foo.id())
  *             .quantity(3)
  *             .controlPlane(true)
@@ -359,13 +366,15 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Creating Rancher v2 RKE cluster from template. For Rancher v2.3.x and above.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -396,48 +405,50 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 cluster template
- *         var foo = new ClusterTemplate(&#34;foo&#34;, ClusterTemplateArgs.builder()        
- *             .name(&#34;foo&#34;)
+ *         var foo = new ClusterTemplate("foo", ClusterTemplateArgs.builder()        
+ *             .name("foo")
  *             .members(ClusterTemplateMemberArgs.builder()
- *                 .accessType(&#34;owner&#34;)
- *                 .userPrincipalId(&#34;local://user-XXXXX&#34;)
+ *                 .accessType("owner")
+ *                 .userPrincipalId("local://user-XXXXX")
  *                 .build())
  *             .templateRevisions(ClusterTemplateTemplateRevisionArgs.builder()
- *                 .name(&#34;V1&#34;)
+ *                 .name("V1")
  *                 .clusterConfig(ClusterTemplateTemplateRevisionClusterConfigArgs.builder()
  *                     .rkeConfig(ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs.builder()
  *                         .network(ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs.builder()
- *                             .plugin(&#34;canal&#34;)
+ *                             .plugin("canal")
  *                             .build())
  *                         .services(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs.builder()
  *                             .etcd(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs.builder()
- *                                 .creation(&#34;6h&#34;)
- *                                 .retention(&#34;24h&#34;)
+ *                                 .creation("6h")
+ *                                 .retention("24h")
  *                                 .build())
  *                             .build())
  *                         .build())
  *                     .build())
  *                 .default_(true)
  *                 .build())
- *             .description(&#34;Test cluster template v2&#34;)
+ *             .description("Test cluster template v2")
  *             .build());
  * 
  *         // Create a new rancher2 RKE Cluster from template
- *         var fooCluster = new Cluster(&#34;fooCluster&#34;, ClusterArgs.builder()        
- *             .name(&#34;foo&#34;)
+ *         var fooCluster = new Cluster("fooCluster", ClusterArgs.builder()        
+ *             .name("foo")
  *             .clusterTemplateId(foo.id())
- *             .clusterTemplateRevisionId(foo.templateRevisions().applyValue(templateRevisions -&gt; templateRevisions[0].id()))
+ *             .clusterTemplateRevisionId(foo.templateRevisions().applyValue(templateRevisions -> templateRevisions[0].id()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Creating Rancher v2 RKE cluster with upgrade strategy. For Rancher v2.4.x and above.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -466,17 +477,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new Cluster(&#34;foo&#34;, ClusterArgs.builder()        
- *             .name(&#34;foo&#34;)
- *             .description(&#34;Terraform custom cluster&#34;)
+ *         var foo = new Cluster("foo", ClusterArgs.builder()        
+ *             .name("foo")
+ *             .description("Terraform custom cluster")
  *             .rkeConfig(ClusterRkeConfigArgs.builder()
  *                 .network(ClusterRkeConfigNetworkArgs.builder()
- *                     .plugin(&#34;canal&#34;)
+ *                     .plugin("canal")
  *                     .build())
  *                 .services(ClusterRkeConfigServicesArgs.builder()
  *                     .etcd(ClusterRkeConfigServicesEtcdArgs.builder()
- *                         .creation(&#34;6h&#34;)
- *                         .retention(&#34;24h&#34;)
+ *                         .creation("6h")
+ *                         .retention("24h")
  *                         .build())
  *                     .kubeApi(ClusterRkeConfigServicesKubeApiArgs.builder()
  *                         .auditLog(ClusterRkeConfigServicesKubeApiAuditLogArgs.builder()
@@ -485,9 +496,9 @@ import javax.annotation.Nullable;
  *                                 .maxAge(5)
  *                                 .maxBackup(5)
  *                                 .maxSize(100)
- *                                 .path(&#34;-&#34;)
- *                                 .format(&#34;json&#34;)
- *                                 .policy(&#34;&#34;&#34;
+ *                                 .path("-")
+ *                                 .format("json")
+ *                                 .policy("""
  * apiVersion: audit.k8s.io/v1
  * kind: Policy
  * metadata:
@@ -499,27 +510,29 @@ import javax.annotation.Nullable;
  *   resources:
  *   - resources:
  *     - pods
- *                                 &#34;&#34;&#34;)
+ *                                 """)
  *                                 .build())
  *                             .build())
  *                         .build())
  *                     .build())
  *                 .upgradeStrategy(ClusterRkeConfigUpgradeStrategyArgs.builder()
  *                     .drain(true)
- *                     .maxUnavailableWorker(&#34;20%&#34;)
+ *                     .maxUnavailableWorker("20%")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Creating Rancher v2 RKE cluster with cluster agent customization. For Rancher v2.7.5 and above.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -543,55 +556,57 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new Cluster(&#34;foo&#34;, ClusterArgs.builder()        
- *             .name(&#34;foo&#34;)
- *             .description(&#34;Terraform cluster with agent customization&#34;)
+ *         var foo = new Cluster("foo", ClusterArgs.builder()        
+ *             .name("foo")
+ *             .description("Terraform cluster with agent customization")
  *             .rkeConfig(ClusterRkeConfigArgs.builder()
  *                 .network(ClusterRkeConfigNetworkArgs.builder()
- *                     .plugin(&#34;canal&#34;)
+ *                     .plugin("canal")
  *                     .build())
  *                 .build())
  *             .clusterAgentDeploymentCustomizations(ClusterClusterAgentDeploymentCustomizationArgs.builder()
  *                 .appendTolerations(ClusterClusterAgentDeploymentCustomizationAppendTolerationArgs.builder()
- *                     .effect(&#34;NoSchedule&#34;)
- *                     .key(&#34;tolerate/control-plane&#34;)
- *                     .value(&#34;true&#34;)
+ *                     .effect("NoSchedule")
+ *                     .key("tolerate/control-plane")
+ *                     .value("true")
  *                     .build())
- *                 .overrideAffinity(&#34;&#34;&#34;
+ *                 .overrideAffinity("""
  * {
- *   &#34;nodeAffinity&#34;: {
- *     &#34;requiredDuringSchedulingIgnoredDuringExecution&#34;: {
- *       &#34;nodeSelectorTerms&#34;: [{
- *         &#34;matchExpressions&#34;: [{
- *           &#34;key&#34;: &#34;not.this/nodepool&#34;,
- *           &#34;operator&#34;: &#34;In&#34;,
- *           &#34;values&#34;: [
- *             &#34;true&#34;
+ *   "nodeAffinity": {
+ *     "requiredDuringSchedulingIgnoredDuringExecution": {
+ *       "nodeSelectorTerms": [{
+ *         "matchExpressions": [{
+ *           "key": "not.this/nodepool",
+ *           "operator": "In",
+ *           "values": [
+ *             "true"
  *           ]
  *         }]
  *       }]
  *     }
  *   }
  * }
- *                 &#34;&#34;&#34;)
+ *                 """)
  *                 .overrideResourceRequirements(ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs.builder()
- *                     .cpuLimit(&#34;800&#34;)
- *                     .cpuRequest(&#34;500&#34;)
- *                     .memoryLimit(&#34;800&#34;)
- *                     .memoryRequest(&#34;500&#34;)
+ *                     .cpuLimit("800")
+ *                     .cpuRequest("500")
+ *                     .memoryLimit("800")
+ *                     .memoryRequest("500")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Creating Rancher v2 RKE cluster with Pod Security Admission Configuration Template (PSACT). For Rancher v2.7.2 and above.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -619,46 +634,48 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Custom PSACT (if you wish to use your own)
- *         var foo = new PodSecurityAdmissionConfigurationTemplate(&#34;foo&#34;, PodSecurityAdmissionConfigurationTemplateArgs.builder()        
- *             .name(&#34;custom-psact&#34;)
- *             .description(&#34;This is my custom Pod Security Admission Configuration Template&#34;)
+ *         var foo = new PodSecurityAdmissionConfigurationTemplate("foo", PodSecurityAdmissionConfigurationTemplateArgs.builder()        
+ *             .name("custom-psact")
+ *             .description("This is my custom Pod Security Admission Configuration Template")
  *             .defaults(PodSecurityAdmissionConfigurationTemplateDefaultsArgs.builder()
- *                 .audit(&#34;restricted&#34;)
- *                 .auditVersion(&#34;latest&#34;)
- *                 .enforce(&#34;restricted&#34;)
- *                 .enforceVersion(&#34;latest&#34;)
- *                 .warn(&#34;restricted&#34;)
- *                 .warnVersion(&#34;latest&#34;)
+ *                 .audit("restricted")
+ *                 .auditVersion("latest")
+ *                 .enforce("restricted")
+ *                 .enforceVersion("latest")
+ *                 .warn("restricted")
+ *                 .warnVersion("latest")
  *                 .build())
  *             .exemptions(PodSecurityAdmissionConfigurationTemplateExemptionsArgs.builder()
- *                 .usernames(&#34;testuser&#34;)
- *                 .runtimeClasses(&#34;testclass&#34;)
+ *                 .usernames("testuser")
+ *                 .runtimeClasses("testclass")
  *                 .namespaces(                
- *                     &#34;ingress-nginx&#34;,
- *                     &#34;kube-system&#34;)
+ *                     "ingress-nginx",
+ *                     "kube-system")
  *                 .build())
  *             .build());
  * 
- *         var fooCluster = new Cluster(&#34;fooCluster&#34;, ClusterArgs.builder()        
- *             .name(&#34;foo&#34;)
- *             .description(&#34;Terraform cluster with PSACT&#34;)
- *             .defaultPodSecurityAdmissionConfigurationTemplateName(&#34;&lt;name&gt;&#34;)
+ *         var fooCluster = new Cluster("fooCluster", ClusterArgs.builder()        
+ *             .name("foo")
+ *             .description("Terraform cluster with PSACT")
+ *             .defaultPodSecurityAdmissionConfigurationTemplateName("<name>")
  *             .rkeConfig(ClusterRkeConfigArgs.builder()
  *                 .network(ClusterRkeConfigNetworkArgs.builder()
- *                     .plugin(&#34;canal&#34;)
+ *                     .plugin("canal")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Importing EKS cluster to Rancher v2, using `eks_config_v2`. For Rancher v2.5.x and above.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -683,35 +700,37 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new CloudCredential(&#34;foo&#34;, CloudCredentialArgs.builder()        
- *             .name(&#34;foo&#34;)
- *             .description(&#34;foo test&#34;)
+ *         var foo = new CloudCredential("foo", CloudCredentialArgs.builder()        
+ *             .name("foo")
+ *             .description("foo test")
  *             .amazonec2CredentialConfig(CloudCredentialAmazonec2CredentialConfigArgs.builder()
- *                 .accessKey(&#34;&lt;aws-access-key&gt;&#34;)
- *                 .secretKey(&#34;&lt;aws-secret-key&gt;&#34;)
+ *                 .accessKey("<aws-access-key>")
+ *                 .secretKey("<aws-secret-key>")
  *                 .build())
  *             .build());
  * 
- *         var fooCluster = new Cluster(&#34;fooCluster&#34;, ClusterArgs.builder()        
- *             .name(&#34;foo&#34;)
- *             .description(&#34;Terraform EKS cluster&#34;)
+ *         var fooCluster = new Cluster("fooCluster", ClusterArgs.builder()        
+ *             .name("foo")
+ *             .description("Terraform EKS cluster")
  *             .eksConfigV2(ClusterEksConfigV2Args.builder()
  *                 .cloudCredentialId(foo.id())
- *                 .name(&#34;&lt;cluster-name&gt;&#34;)
- *                 .region(&#34;&lt;eks-region&gt;&#34;)
+ *                 .name("<cluster-name>")
+ *                 .region("<eks-region>")
  *                 .imported(true)
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Creating EKS cluster from Rancher v2, using `eks_config_v2`. For Rancher v2.5.x and above.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -736,38 +755,38 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new CloudCredential(&#34;foo&#34;, CloudCredentialArgs.builder()        
- *             .name(&#34;foo&#34;)
- *             .description(&#34;foo test&#34;)
+ *         var foo = new CloudCredential("foo", CloudCredentialArgs.builder()        
+ *             .name("foo")
+ *             .description("foo test")
  *             .amazonec2CredentialConfig(CloudCredentialAmazonec2CredentialConfigArgs.builder()
- *                 .accessKey(&#34;&lt;aws-access-key&gt;&#34;)
- *                 .secretKey(&#34;&lt;aws-secret-key&gt;&#34;)
+ *                 .accessKey("<aws-access-key>")
+ *                 .secretKey("<aws-secret-key>")
  *                 .build())
  *             .build());
  * 
- *         var fooCluster = new Cluster(&#34;fooCluster&#34;, ClusterArgs.builder()        
- *             .name(&#34;foo&#34;)
- *             .description(&#34;Terraform EKS cluster&#34;)
+ *         var fooCluster = new Cluster("fooCluster", ClusterArgs.builder()        
+ *             .name("foo")
+ *             .description("Terraform EKS cluster")
  *             .eksConfigV2(ClusterEksConfigV2Args.builder()
  *                 .cloudCredentialId(foo.id())
- *                 .region(&#34;&lt;EKS_REGION&gt;&#34;)
- *                 .kubernetesVersion(&#34;1.24&#34;)
+ *                 .region("<EKS_REGION>")
+ *                 .kubernetesVersion("1.24")
  *                 .loggingTypes(                
- *                     &#34;audit&#34;,
- *                     &#34;api&#34;)
+ *                     "audit",
+ *                     "api")
  *                 .nodeGroups(                
  *                     ClusterEksConfigV2NodeGroupArgs.builder()
- *                         .name(&#34;node_group1&#34;)
- *                         .instanceType(&#34;t3.medium&#34;)
+ *                         .name("node_group1")
+ *                         .instanceType("t3.medium")
  *                         .desiredSize(3)
  *                         .maxSize(5)
  *                         .build(),
  *                     ClusterEksConfigV2NodeGroupArgs.builder()
- *                         .name(&#34;node_group2&#34;)
- *                         .instanceType(&#34;m5.xlarge&#34;)
+ *                         .name("node_group2")
+ *                         .instanceType("m5.xlarge")
  *                         .desiredSize(2)
  *                         .maxSize(3)
- *                         .nodeRole(&#34;arn:aws:iam::role/test-NodeInstanceRole&#34;)
+ *                         .nodeRole("arn:aws:iam::role/test-NodeInstanceRole")
  *                         .build())
  *                 .privateAccess(true)
  *                 .publicAccess(false)
@@ -776,7 +795,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Creating EKS cluster from Rancher v2, using `eks_config_v2` and launch template. For Rancher v2.5.6 and above.
@@ -784,7 +804,8 @@ import javax.annotation.Nullable;
  * Note: To use `launch_template` you must provide the ID (seen as `&lt;EC2_LAUNCH_TEMPLATE_ID&gt;`) to the template either as a static value. Or fetched via AWS data-source using one of: aws_ami first and provide the ID to that.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -809,31 +830,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new CloudCredential(&#34;foo&#34;, CloudCredentialArgs.builder()        
- *             .name(&#34;foo&#34;)
- *             .description(&#34;foo test&#34;)
+ *         var foo = new CloudCredential("foo", CloudCredentialArgs.builder()        
+ *             .name("foo")
+ *             .description("foo test")
  *             .amazonec2CredentialConfig(CloudCredentialAmazonec2CredentialConfigArgs.builder()
- *                 .accessKey(&#34;&lt;aws-access-key&gt;&#34;)
- *                 .secretKey(&#34;&lt;aws-secret-key&gt;&#34;)
+ *                 .accessKey("<aws-access-key>")
+ *                 .secretKey("<aws-secret-key>")
  *                 .build())
  *             .build());
  * 
- *         var fooCluster = new Cluster(&#34;fooCluster&#34;, ClusterArgs.builder()        
- *             .name(&#34;foo&#34;)
- *             .description(&#34;Terraform EKS cluster&#34;)
+ *         var fooCluster = new Cluster("fooCluster", ClusterArgs.builder()        
+ *             .name("foo")
+ *             .description("Terraform EKS cluster")
  *             .eksConfigV2(ClusterEksConfigV2Args.builder()
  *                 .cloudCredentialId(foo.id())
- *                 .region(&#34;&lt;EKS_REGION&gt;&#34;)
- *                 .kubernetesVersion(&#34;1.24&#34;)
+ *                 .region("<EKS_REGION>")
+ *                 .kubernetesVersion("1.24")
  *                 .loggingTypes(                
- *                     &#34;audit&#34;,
- *                     &#34;api&#34;)
+ *                     "audit",
+ *                     "api")
  *                 .nodeGroups(ClusterEksConfigV2NodeGroupArgs.builder()
  *                     .desiredSize(3)
  *                     .maxSize(5)
- *                     .name(&#34;node_group1&#34;)
+ *                     .name("node_group1")
  *                     .launchTemplates(ClusterEksConfigV2NodeGroupLaunchTemplateArgs.builder()
- *                         .id(&#34;&lt;ec2-launch-template-id&gt;&#34;)
+ *                         .id("<ec2-launch-template-id>")
  *                         .version(1)
  *                         .build())
  *                     .build())
@@ -844,13 +865,15 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Creating AKS cluster from Rancher v2, using `aks_config_v2`. For Rancher v2.6.0 and above.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -875,62 +898,63 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo_aks = new CloudCredential(&#34;foo-aks&#34;, CloudCredentialArgs.builder()        
- *             .name(&#34;foo-aks&#34;)
+ *         var foo_aks = new CloudCredential("foo-aks", CloudCredentialArgs.builder()        
+ *             .name("foo-aks")
  *             .azureCredentialConfig(CloudCredentialAzureCredentialConfigArgs.builder()
- *                 .clientId(&#34;&lt;client-id&gt;&#34;)
- *                 .clientSecret(&#34;&lt;client-secret&gt;&#34;)
- *                 .subscriptionId(&#34;&lt;subscription-id&gt;&#34;)
+ *                 .clientId("<client-id>")
+ *                 .clientSecret("<client-secret>")
+ *                 .subscriptionId("<subscription-id>")
  *                 .build())
  *             .build());
  * 
- *         var foo = new Cluster(&#34;foo&#34;, ClusterArgs.builder()        
- *             .name(&#34;foo&#34;)
- *             .description(&#34;Terraform AKS cluster&#34;)
+ *         var foo = new Cluster("foo", ClusterArgs.builder()        
+ *             .name("foo")
+ *             .description("Terraform AKS cluster")
  *             .aksConfigV2(ClusterAksConfigV2Args.builder()
  *                 .cloudCredentialId(foo_aks.id())
- *                 .resourceGroup(&#34;&lt;resource-group&gt;&#34;)
- *                 .resourceLocation(&#34;&lt;resource-location&gt;&#34;)
- *                 .dnsPrefix(&#34;&lt;dns-prefix&gt;&#34;)
- *                 .kubernetesVersion(&#34;1.24.6&#34;)
- *                 .networkPlugin(&#34;&lt;network-plugin&gt;&#34;)
+ *                 .resourceGroup("<resource-group>")
+ *                 .resourceLocation("<resource-location>")
+ *                 .dnsPrefix("<dns-prefix>")
+ *                 .kubernetesVersion("1.24.6")
+ *                 .networkPlugin("<network-plugin>")
  *                 .nodePools(                
  *                     ClusterAksConfigV2NodePoolArgs.builder()
  *                         .availabilityZones(                        
- *                             &#34;1&#34;,
- *                             &#34;2&#34;,
- *                             &#34;3&#34;)
- *                         .name(&#34;&lt;nodepool-name-1&gt;&#34;)
- *                         .mode(&#34;System&#34;)
+ *                             "1",
+ *                             "2",
+ *                             "3")
+ *                         .name("<nodepool-name-1>")
+ *                         .mode("System")
  *                         .count(1)
- *                         .orchestratorVersion(&#34;1.21.2&#34;)
+ *                         .orchestratorVersion("1.21.2")
  *                         .osDiskSizeGb(128)
- *                         .vmSize(&#34;Standard_DS2_v2&#34;)
+ *                         .vmSize("Standard_DS2_v2")
  *                         .build(),
  *                     ClusterAksConfigV2NodePoolArgs.builder()
  *                         .availabilityZones(                        
- *                             &#34;1&#34;,
- *                             &#34;2&#34;,
- *                             &#34;3&#34;)
- *                         .name(&#34;&lt;nodepool-name-2&gt;&#34;)
+ *                             "1",
+ *                             "2",
+ *                             "3")
+ *                         .name("<nodepool-name-2>")
  *                         .count(1)
- *                         .mode(&#34;User&#34;)
- *                         .orchestratorVersion(&#34;1.21.2&#34;)
+ *                         .mode("User")
+ *                         .orchestratorVersion("1.21.2")
  *                         .osDiskSizeGb(128)
- *                         .vmSize(&#34;Standard_DS2_v2&#34;)
- *                         .maxSurge(&#34;25%&#34;)
+ *                         .vmSize("Standard_DS2_v2")
+ *                         .maxSurge("25%")
  *                         .labels(Map.ofEntries(
- *                             Map.entry(&#34;test1&#34;, &#34;data1&#34;),
- *                             Map.entry(&#34;test2&#34;, &#34;data2&#34;)
+ *                             Map.entry("test1", "data1"),
+ *                             Map.entry("test2", "data2")
  *                         ))
- *                         .taints(&#34;none:PreferNoSchedule&#34;)
+ *                         .taints("none:PreferNoSchedule")
  *                         .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

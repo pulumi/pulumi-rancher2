@@ -102,7 +102,7 @@ export interface ProviderArgs {
      */
     caCerts?: pulumi.Input<string>;
     /**
-     * Allow insecure connections to Rancher. Mandatory if self signed tls and not ca_certs provided
+     * Allow insecure connections to Rancher. Mandatory if self signed tls and not caCerts provided
      */
     insecure?: pulumi.Input<boolean>;
     /**

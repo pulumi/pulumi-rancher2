@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,26 +53,27 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new Rancher2 Cluster Alert Group
- *         var foo = new ClusterAlertGroup(&#34;foo&#34;, ClusterAlertGroupArgs.builder()        
- *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
- *             .name(&#34;foo&#34;)
- *             .description(&#34;Terraform cluster alert group&#34;)
+ *         var foo = new ClusterAlertGroup("foo", ClusterAlertGroupArgs.builder()        
+ *             .clusterId("<cluster_id>")
+ *             .name("foo")
+ *             .description("Terraform cluster alert group")
  *             .groupIntervalSeconds(300)
  *             .repeatIntervalSeconds(3600)
  *             .build());
  * 
  *         // Create a new Rancher2 Cluster Alert Rule
- *         var fooClusterAlertRule = new ClusterAlertRule(&#34;fooClusterAlertRule&#34;, ClusterAlertRuleArgs.builder()        
+ *         var fooClusterAlertRule = new ClusterAlertRule("fooClusterAlertRule", ClusterAlertRuleArgs.builder()        
  *             .clusterId(foo.clusterId())
  *             .groupId(foo.id())
- *             .name(&#34;foo&#34;)
+ *             .name("foo")
  *             .groupIntervalSeconds(600)
  *             .repeatIntervalSeconds(6000)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

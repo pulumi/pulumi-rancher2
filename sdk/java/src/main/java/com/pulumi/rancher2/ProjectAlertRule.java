@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,51 +58,52 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new Rancher2 Project
- *         var foo = new Project(&#34;foo&#34;, ProjectArgs.builder()        
- *             .name(&#34;foo&#34;)
- *             .clusterId(&#34;&lt;cluster_id&gt;&#34;)
- *             .description(&#34;Terraform project &#34;)
+ *         var foo = new Project("foo", ProjectArgs.builder()        
+ *             .name("foo")
+ *             .clusterId("<cluster_id>")
+ *             .description("Terraform project ")
  *             .resourceQuota(ProjectResourceQuotaArgs.builder()
  *                 .projectLimit(ProjectResourceQuotaProjectLimitArgs.builder()
- *                     .limitsCpu(&#34;2000m&#34;)
- *                     .limitsMemory(&#34;2000Mi&#34;)
- *                     .requestsStorage(&#34;2Gi&#34;)
+ *                     .limitsCpu("2000m")
+ *                     .limitsMemory("2000Mi")
+ *                     .requestsStorage("2Gi")
  *                     .build())
  *                 .namespaceDefaultLimit(ProjectResourceQuotaNamespaceDefaultLimitArgs.builder()
- *                     .limitsCpu(&#34;500m&#34;)
- *                     .limitsMemory(&#34;500Mi&#34;)
- *                     .requestsStorage(&#34;1Gi&#34;)
+ *                     .limitsCpu("500m")
+ *                     .limitsMemory("500Mi")
+ *                     .requestsStorage("1Gi")
  *                     .build())
  *                 .build())
  *             .containerResourceLimit(ProjectContainerResourceLimitArgs.builder()
- *                 .limitsCpu(&#34;20m&#34;)
- *                 .limitsMemory(&#34;20Mi&#34;)
- *                 .requestsCpu(&#34;1m&#34;)
- *                 .requestsMemory(&#34;1Mi&#34;)
+ *                 .limitsCpu("20m")
+ *                 .limitsMemory("20Mi")
+ *                 .requestsCpu("1m")
+ *                 .requestsMemory("1Mi")
  *                 .build())
  *             .build());
  * 
  *         // Create a new Rancher2 Project Alert Group
- *         var fooProjectAlertGroup = new ProjectAlertGroup(&#34;fooProjectAlertGroup&#34;, ProjectAlertGroupArgs.builder()        
- *             .name(&#34;foo&#34;)
- *             .description(&#34;Terraform project alert group&#34;)
+ *         var fooProjectAlertGroup = new ProjectAlertGroup("fooProjectAlertGroup", ProjectAlertGroupArgs.builder()        
+ *             .name("foo")
+ *             .description("Terraform project alert group")
  *             .projectId(foo.id())
  *             .groupIntervalSeconds(300)
  *             .repeatIntervalSeconds(3600)
  *             .build());
  * 
  *         // Create a new Rancher2 Project Alert Rule
- *         var fooProjectAlertRule = new ProjectAlertRule(&#34;fooProjectAlertRule&#34;, ProjectAlertRuleArgs.builder()        
+ *         var fooProjectAlertRule = new ProjectAlertRule("fooProjectAlertRule", ProjectAlertRuleArgs.builder()        
  *             .projectId(fooProjectAlertGroup.projectId())
  *             .groupId(fooProjectAlertGroup.id())
- *             .name(&#34;foo&#34;)
+ *             .name("foo")
  *             .groupIntervalSeconds(600)
  *             .repeatIntervalSeconds(6000)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
