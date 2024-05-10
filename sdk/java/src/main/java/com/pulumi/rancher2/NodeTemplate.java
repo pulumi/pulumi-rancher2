@@ -39,7 +39,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -62,28 +63,30 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Node Template up to Rancher 2.1.x
- *         var foo = new NodeTemplate(&#34;foo&#34;, NodeTemplateArgs.builder()        
- *             .name(&#34;foo&#34;)
- *             .description(&#34;foo test&#34;)
+ *         var foo = new NodeTemplate("foo", NodeTemplateArgs.builder()        
+ *             .name("foo")
+ *             .description("foo test")
  *             .amazonec2Config(NodeTemplateAmazonec2ConfigArgs.builder()
- *                 .accessKey(&#34;AWS_ACCESS_KEY&#34;)
- *                 .secretKey(&#34;&lt;AWS_SECRET_KEY&gt;&#34;)
- *                 .ami(&#34;&lt;AMI_ID&gt;&#34;)
- *                 .region(&#34;&lt;REGION&gt;&#34;)
- *                 .securityGroups(&#34;&lt;AWS_SECURITY_GROUP&gt;&#34;)
- *                 .subnetId(&#34;&lt;SUBNET_ID&gt;&#34;)
- *                 .vpcId(&#34;&lt;VPC_ID&gt;&#34;)
- *                 .zone(&#34;&lt;ZONE&gt;&#34;)
+ *                 .accessKey("AWS_ACCESS_KEY")
+ *                 .secretKey("<AWS_SECRET_KEY>")
+ *                 .ami("<AMI_ID>")
+ *                 .region("<REGION>")
+ *                 .securityGroups("<AWS_SECURITY_GROUP>")
+ *                 .subnetId("<SUBNET_ID>")
+ *                 .vpcId("<VPC_ID>")
+ *                 .zone("<ZONE>")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -109,38 +112,40 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Node Template from Rancher 2.2.x
- *         var foo = new CloudCredential(&#34;foo&#34;, CloudCredentialArgs.builder()        
- *             .name(&#34;foo&#34;)
- *             .description(&#34;foo test&#34;)
+ *         var foo = new CloudCredential("foo", CloudCredentialArgs.builder()        
+ *             .name("foo")
+ *             .description("foo test")
  *             .amazonec2CredentialConfig(CloudCredentialAmazonec2CredentialConfigArgs.builder()
- *                 .accessKey(&#34;&lt;AWS_ACCESS_KEY&gt;&#34;)
- *                 .secretKey(&#34;&lt;AWS_SECRET_KEY&gt;&#34;)
+ *                 .accessKey("<AWS_ACCESS_KEY>")
+ *                 .secretKey("<AWS_SECRET_KEY>")
  *                 .build())
  *             .build());
  * 
- *         var fooNodeTemplate = new NodeTemplate(&#34;fooNodeTemplate&#34;, NodeTemplateArgs.builder()        
- *             .name(&#34;foo&#34;)
- *             .description(&#34;foo test&#34;)
+ *         var fooNodeTemplate = new NodeTemplate("fooNodeTemplate", NodeTemplateArgs.builder()        
+ *             .name("foo")
+ *             .description("foo test")
  *             .cloudCredentialId(foo.id())
  *             .amazonec2Config(NodeTemplateAmazonec2ConfigArgs.builder()
- *                 .ami(&#34;&lt;AMI_ID&gt;&#34;)
- *                 .region(&#34;&lt;REGION&gt;&#34;)
- *                 .securityGroups(&#34;&lt;AWS_SECURITY_GROUP&gt;&#34;)
- *                 .subnetId(&#34;&lt;SUBNET_ID&gt;&#34;)
- *                 .vpcId(&#34;&lt;VPC_ID&gt;&#34;)
- *                 .zone(&#34;&lt;ZONE&gt;&#34;)
+ *                 .ami("<AMI_ID>")
+ *                 .region("<REGION>")
+ *                 .securityGroups("<AWS_SECURITY_GROUP>")
+ *                 .subnetId("<SUBNET_ID>")
+ *                 .vpcId("<VPC_ID>")
+ *                 .zone("<ZONE>")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Using the Harvester Node Driver
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -169,46 +174,46 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Get imported harvester cluster info
  *         final var foo-harvester = Rancher2Functions.getClusterV2(GetClusterV2Args.builder()
- *             .name(&#34;foo-harvester&#34;)
+ *             .name("foo-harvester")
  *             .build());
  * 
  *         // Create a new Cloud Credential for an imported Harvester cluster
- *         var foo_harvesterCloudCredential = new CloudCredential(&#34;foo-harvesterCloudCredential&#34;, CloudCredentialArgs.builder()        
- *             .name(&#34;foo-harvester&#34;)
+ *         var foo_harvesterCloudCredential = new CloudCredential("foo-harvesterCloudCredential", CloudCredentialArgs.builder()        
+ *             .name("foo-harvester")
  *             .harvesterCredentialConfig(CloudCredentialHarvesterCredentialConfigArgs.builder()
  *                 .clusterId(foo_harvester.clusterV1Id())
- *                 .clusterType(&#34;imported&#34;)
+ *                 .clusterType("imported")
  *                 .kubeconfigContent(foo_harvester.kubeConfig())
  *                 .build())
  *             .build());
  * 
  *         // Create a new rancher2 Node Template using harvester node_driver
- *         var foo_harvesterNodeTemplate = new NodeTemplate(&#34;foo-harvesterNodeTemplate&#34;, NodeTemplateArgs.builder()        
- *             .name(&#34;foo-harvester&#34;)
+ *         var foo_harvesterNodeTemplate = new NodeTemplate("foo-harvesterNodeTemplate", NodeTemplateArgs.builder()        
+ *             .name("foo-harvester")
  *             .cloudCredentialId(foo_harvesterCloudCredential.id())
- *             .engineInstallUrl(&#34;https://releases.rancher.com/install-docker/20.10.sh&#34;)
+ *             .engineInstallUrl("https://releases.rancher.com/install-docker/20.10.sh")
  *             .harvesterConfig(NodeTemplateHarvesterConfigArgs.builder()
- *                 .vmNamespace(&#34;default&#34;)
- *                 .cpuCount(&#34;2&#34;)
- *                 .memorySize(&#34;4&#34;)
- *                 .diskInfo(&#34;&#34;&#34;
+ *                 .vmNamespace("default")
+ *                 .cpuCount("2")
+ *                 .memorySize("4")
+ *                 .diskInfo("""
  *     {
- *         &#34;disks&#34;: [{
- *             &#34;imageName&#34;: &#34;harvester-public/image-57hzg&#34;,
- *             &#34;size&#34;: 40,
- *             &#34;bootOrder&#34;: 1
+ *         "disks": [{
+ *             "imageName": "harvester-public/image-57hzg",
+ *             "size": 40,
+ *             "bootOrder": 1
  *         }]
  *     }
- *                 &#34;&#34;&#34;)
- *                 .networkInfo(&#34;&#34;&#34;
+ *                 """)
+ *                 .networkInfo("""
  *     {
- *         &#34;interfaces&#34;: [{
- *             &#34;networkName&#34;: &#34;harvester-public/vlan1&#34;
+ *         "interfaces": [{
+ *             "networkName": "harvester-public/vlan1"
  *         }]
  *     }
- *                 &#34;&#34;&#34;)
- *                 .sshUser(&#34;ubuntu&#34;)
- *                 .userData(&#34;&#34;&#34;
+ *                 """)
+ *                 .sshUser("ubuntu")
+ *                 .userData("""
  *     package_update: true
  *     packages:
  *       - qemu-guest-agent
@@ -216,21 +221,23 @@ import javax.annotation.Nullable;
  *     runcmd:
  *       - - systemctl
  *         - enable
- *         - &#39;--now&#39;
+ *         - '--now'
  *         - qemu-guest-agent.service
- *                 &#34;&#34;&#34;)
+ *                 """)
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Using the Hetzner Node Driver
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -255,29 +262,30 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Node Template using hetzner node_driver
- *         var hetznerNodeDriver = new NodeDriver(&#34;hetznerNodeDriver&#34;, NodeDriverArgs.builder()        
+ *         var hetznerNodeDriver = new NodeDriver("hetznerNodeDriver", NodeDriverArgs.builder()        
  *             .active(true)
  *             .builtin(false)
- *             .name(&#34;Hetzner&#34;)
- *             .uiUrl(&#34;https://storage.googleapis.com/hcloud-rancher-v2-ui-driver/component.js&#34;)
- *             .url(&#34;https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/download/3.6.0/docker-machine-driver-hetzner_3.6.0_linux_amd64.tar.gz&#34;)
- *             .whitelistDomains(&#34;storage.googleapis.com&#34;)
+ *             .name("Hetzner")
+ *             .uiUrl("https://storage.googleapis.com/hcloud-rancher-v2-ui-driver/component.js")
+ *             .url("https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/download/3.6.0/docker-machine-driver-hetzner_3.6.0_linux_amd64.tar.gz")
+ *             .whitelistDomains("storage.googleapis.com")
  *             .build());
  * 
- *         var myHetznerNodeTemplate = new NodeTemplate(&#34;myHetznerNodeTemplate&#34;, NodeTemplateArgs.builder()        
- *             .name(&#34;my-hetzner-node-template&#34;)
+ *         var myHetznerNodeTemplate = new NodeTemplate("myHetznerNodeTemplate", NodeTemplateArgs.builder()        
+ *             .name("my-hetzner-node-template")
  *             .driverId(hetznerNodeDriver.id())
  *             .hetznerConfig(NodeTemplateHetznerConfigArgs.builder()
- *                 .apiToken(&#34;XXXXXXXXXX&#34;)
- *                 .image(&#34;ubuntu-18.04&#34;)
- *                 .serverLocation(&#34;nbg1&#34;)
- *                 .serverType(&#34;cx11&#34;)
+ *                 .apiToken("XXXXXXXXXX")
+ *                 .image("ubuntu-18.04")
+ *                 .serverLocation("nbg1")
+ *                 .serverType("cx11")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Upgrading to Rancher v2.3.3

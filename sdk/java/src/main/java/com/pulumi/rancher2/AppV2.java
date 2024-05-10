@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,21 +46,22 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new Rancher2 App V2 using
- *         var foo = new AppV2(&#34;foo&#34;, AppV2Args.builder()        
- *             .clusterId(&#34;&lt;CLUSTER_ID&gt;&#34;)
- *             .name(&#34;rancher-monitoring&#34;)
- *             .namespace(&#34;cattle-monitoring-system&#34;)
- *             .repoName(&#34;rancher-charts&#34;)
- *             .chartName(&#34;rancher-monitoring&#34;)
- *             .chartVersion(&#34;9.4.200&#34;)
+ *         var foo = new AppV2("foo", AppV2Args.builder()        
+ *             .clusterId("<CLUSTER_ID>")
+ *             .name("rancher-monitoring")
+ *             .namespace("cattle-monitoring-system")
+ *             .repoName("rancher-charts")
+ *             .chartName("rancher-monitoring")
+ *             .chartVersion("9.4.200")
  *             .values(StdFunctions.file(FileArgs.builder()
- *                 .input(&#34;values.yaml&#34;)
+ *                 .input("values.yaml")
  *                 .build()).result())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Create an App from a Helm Chart using a different registry
@@ -67,7 +69,8 @@ import javax.annotation.Nullable;
  * The `system_default_registry` argument can override the global value at App installation. If argument is not provided, the global value for System Default Registry will be used instead.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -88,18 +91,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cisBenchmark = new AppV2(&#34;cisBenchmark&#34;, AppV2Args.builder()        
- *             .clusterId(&#34;&lt;CLUSTER_ID&gt;&#34;)
- *             .name(&#34;rancher-cis-benchmark&#34;)
- *             .namespace(&#34;cis-operator-system&#34;)
- *             .repoName(&#34;rancher-charts&#34;)
- *             .chartName(&#34;rancher-cis-benchmark&#34;)
- *             .systemDefaultRegistry(&#34;&lt;some.dns.here&gt;:&lt;PORT&gt;&#34;)
+ *         var cisBenchmark = new AppV2("cisBenchmark", AppV2Args.builder()        
+ *             .clusterId("<CLUSTER_ID>")
+ *             .name("rancher-cis-benchmark")
+ *             .namespace("cis-operator-system")
+ *             .repoName("rancher-charts")
+ *             .chartName("rancher-cis-benchmark")
+ *             .systemDefaultRegistry("<some.dns.here>:<PORT>")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -197,21 +201,9 @@ public class AppV2 extends com.pulumi.resources.CustomResource {
     public Output<String> clusterName() {
         return this.clusterName;
     }
-    /**
-     * Values YAML file including computed values. This field prevents incorrect discrepancies from showing in the terraform
-     * plan output when files change but values stay the same, due to additional computed values included by the provider
-     * itself.
-     * 
-     */
     @Export(name="deploymentValues", refs={String.class}, tree="[0]")
     private Output<String> deploymentValues;
 
-    /**
-     * @return Values YAML file including computed values. This field prevents incorrect discrepancies from showing in the terraform
-     * plan output when files change but values stay the same, due to additional computed values included by the provider
-     * itself.
-     * 
-     */
     public Output<String> deploymentValues() {
         return this.deploymentValues;
     }

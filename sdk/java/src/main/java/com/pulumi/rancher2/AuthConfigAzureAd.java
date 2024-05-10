@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,19 +45,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Auth Config AzureAD
- *         var azuread = new AuthConfigAzureAd(&#34;azuread&#34;, AuthConfigAzureAdArgs.builder()        
- *             .applicationId(&#34;&lt;AZUREAD_APP_ID&gt;&#34;)
- *             .applicationSecret(&#34;&lt;AZUREAD_APP_SECRET&gt;&#34;)
- *             .authEndpoint(&#34;&lt;AZUREAD_AUTH_ENDPOINT&gt;&#34;)
- *             .graphEndpoint(&#34;&lt;AZUREAD_GRAPH_ENDPOINT&gt;&#34;)
- *             .rancherUrl(&#34;&lt;RANCHER_URL&gt;&#34;)
- *             .tenantId(&#34;&lt;AZUREAD_TENANT_ID&gt;&#34;)
- *             .tokenEndpoint(&#34;&lt;AZUREAD_TOKEN_ENDPOINT&gt;&#34;)
+ *         var azuread = new AuthConfigAzureAd("azuread", AuthConfigAzureAdArgs.builder()        
+ *             .applicationId("<AZUREAD_APP_ID>")
+ *             .applicationSecret("<AZUREAD_APP_SECRET>")
+ *             .authEndpoint("<AZUREAD_AUTH_ENDPOINT>")
+ *             .graphEndpoint("<AZUREAD_GRAPH_ENDPOINT>")
+ *             .rancherUrl("<RANCHER_URL>")
+ *             .tenantId("<AZUREAD_TENANT_ID>")
+ *             .tokenEndpoint("<AZUREAD_TOKEN_ENDPOINT>")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

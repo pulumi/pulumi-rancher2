@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,18 +44,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2_bootstrap
- *         var admin = new Bootstrap(&#34;admin&#34;, BootstrapArgs.builder()        
- *             .password(&#34;blahblah&#34;)
+ *         var admin = new Bootstrap("admin", BootstrapArgs.builder()        
+ *             .password("blahblah")
  *             .telemetry(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -76,19 +79,21 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2_bootstrap for Rancher v2.6.0 and above
- *         var admin = new Bootstrap(&#34;admin&#34;, BootstrapArgs.builder()        
- *             .initialPassword(&#34;&lt;INSTALL_PASSWORD&gt;&#34;)
- *             .password(&#34;blahblah&#34;)
+ *         var admin = new Bootstrap("admin", BootstrapArgs.builder()        
+ *             .initialPassword("<INSTALL_PASSWORD>")
+ *             .password("blahblah")
  *             .telemetry(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -110,14 +115,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2_bootstrap using bootstrap provider config
- *         var admin = new Bootstrap(&#34;admin&#34;, BootstrapArgs.builder()        
- *             .password(&#34;blahblah&#34;)
+ *         var admin = new Bootstrap("admin", BootstrapArgs.builder()        
+ *             .password("blahblah")
  *             .telemetry(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,22 +44,23 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Global Role Binding using user_id
- *         var foo = new GlobalRoleBinding(&#34;foo&#34;, GlobalRoleBindingArgs.builder()        
- *             .name(&#34;foo&#34;)
- *             .globalRoleId(&#34;admin&#34;)
- *             .userId(&#34;user-XXXXX&#34;)
+ *         var foo = new GlobalRoleBinding("foo", GlobalRoleBindingArgs.builder()        
+ *             .name("foo")
+ *             .globalRoleId("admin")
+ *             .userId("user-XXXXX")
  *             .build());
  * 
  *         // Create a new rancher2 Global Role Binding using group_principal_id
- *         var foo2 = new GlobalRoleBinding(&#34;foo2&#34;, GlobalRoleBindingArgs.builder()        
- *             .name(&#34;foo2&#34;)
- *             .globalRoleId(&#34;admin&#34;)
- *             .groupPrincipalId(&#34;local://g-XXXXX&#34;)
+ *         var foo2 = new GlobalRoleBinding("foo2", GlobalRoleBindingArgs.builder()        
+ *             .name("foo2")
+ *             .globalRoleId("admin")
+ *             .groupPrincipalId("local://g-XXXXX")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

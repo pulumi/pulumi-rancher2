@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,32 +51,34 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Namespace
- *         var foo = new Namespace(&#34;foo&#34;, NamespaceArgs.builder()        
- *             .name(&#34;foo&#34;)
- *             .projectId(&#34;&lt;PROJECT_ID&gt;&#34;)
- *             .description(&#34;foo namespace&#34;)
+ *         var foo = new Namespace("foo", NamespaceArgs.builder()        
+ *             .name("foo")
+ *             .projectId("<PROJECT_ID>")
+ *             .description("foo namespace")
  *             .resourceQuota(NamespaceResourceQuotaArgs.builder()
  *                 .limit(NamespaceResourceQuotaLimitArgs.builder()
- *                     .limitsCpu(&#34;100m&#34;)
- *                     .limitsMemory(&#34;100Mi&#34;)
- *                     .requestsStorage(&#34;1Gi&#34;)
+ *                     .limitsCpu("100m")
+ *                     .limitsMemory("100Mi")
+ *                     .requestsStorage("1Gi")
  *                     .build())
  *                 .build())
  *             .containerResourceLimit(NamespaceContainerResourceLimitArgs.builder()
- *                 .limitsCpu(&#34;20m&#34;)
- *                 .limitsMemory(&#34;20Mi&#34;)
- *                 .requestsCpu(&#34;1m&#34;)
- *                 .requestsMemory(&#34;1Mi&#34;)
+ *                 .limitsCpu("20m")
+ *                 .limitsMemory("20Mi")
+ *                 .requestsCpu("1m")
+ *                 .requestsMemory("1Mi")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -104,39 +107,40 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Cluster 
- *         var foo_custom = new Cluster(&#34;foo-custom&#34;, ClusterArgs.builder()        
- *             .name(&#34;foo-custom&#34;)
- *             .description(&#34;Foo rancher2 custom cluster&#34;)
+ *         var foo_custom = new Cluster("foo-custom", ClusterArgs.builder()        
+ *             .name("foo-custom")
+ *             .description("Foo rancher2 custom cluster")
  *             .rkeConfig(ClusterRkeConfigArgs.builder()
  *                 .network(ClusterRkeConfigNetworkArgs.builder()
- *                     .plugin(&#34;canal&#34;)
+ *                     .plugin("canal")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *         // Create a new rancher2 Namespace assigned to default cluster project
- *         var foo = new Namespace(&#34;foo&#34;, NamespaceArgs.builder()        
- *             .name(&#34;foo&#34;)
+ *         var foo = new Namespace("foo", NamespaceArgs.builder()        
+ *             .name("foo")
  *             .projectId(foo_custom.defaultProjectId())
- *             .description(&#34;foo namespace&#34;)
+ *             .description("foo namespace")
  *             .resourceQuota(NamespaceResourceQuotaArgs.builder()
  *                 .limit(NamespaceResourceQuotaLimitArgs.builder()
- *                     .limitsCpu(&#34;100m&#34;)
- *                     .limitsMemory(&#34;100Mi&#34;)
- *                     .requestsStorage(&#34;1Gi&#34;)
+ *                     .limitsCpu("100m")
+ *                     .limitsMemory("100Mi")
+ *                     .requestsStorage("1Gi")
  *                     .build())
  *                 .build())
  *             .containerResourceLimit(NamespaceContainerResourceLimitArgs.builder()
- *                 .limitsCpu(&#34;20m&#34;)
- *                 .limitsMemory(&#34;20Mi&#34;)
- *                 .requestsCpu(&#34;1m&#34;)
- *                 .requestsMemory(&#34;1Mi&#34;)
+ *                 .limitsCpu("20m")
+ *                 .limitsMemory("20Mi")
+ *                 .requestsCpu("1m")
+ *                 .requestsMemory("1Mi")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

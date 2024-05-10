@@ -21006,8 +21006,7 @@
                     "description": "(Computed) The cluster name of the app (string)\n"
                 },
                 "deploymentValues": {
-                    "type": "string",
-                    "description": "Values YAML file including computed values. This field prevents incorrect discrepancies from showing in the terraform\nplan output when files change but values stay the same, due to additional computed values included by the provider\nitself.\n"
+                    "type": "string"
                 },
                 "disableHooks": {
                     "type": "boolean",
@@ -21183,8 +21182,7 @@
                         "description": "(Computed) The cluster name of the app (string)\n"
                     },
                     "deploymentValues": {
-                        "type": "string",
-                        "description": "Values YAML file including computed values. This field prevents incorrect discrepancies from showing in the terraform\nplan output when files change but values stay the same, due to additional computed values included by the provider\nitself.\n"
+                        "type": "string"
                     },
                     "disableHooks": {
                         "type": "boolean",

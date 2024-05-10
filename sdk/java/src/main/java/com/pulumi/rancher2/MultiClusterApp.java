@@ -36,7 +36,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -60,27 +61,29 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Multi Cluster App
- *         var foo = new MultiClusterApp(&#34;foo&#34;, MultiClusterAppArgs.builder()        
- *             .catalogName(&#34;&lt;catalog_name&gt;&#34;)
- *             .name(&#34;foo&#34;)
+ *         var foo = new MultiClusterApp("foo", MultiClusterAppArgs.builder()        
+ *             .catalogName("<catalog_name>")
+ *             .name("foo")
  *             .targets(MultiClusterAppTargetArgs.builder()
- *                 .projectId(&#34;&lt;project_id&gt;&#34;)
+ *                 .projectId("<project_id>")
  *                 .build())
- *             .templateName(&#34;&lt;template_name&gt;&#34;)
- *             .templateVersion(&#34;&lt;template_version&gt;&#34;)
+ *             .templateName("<template_name>")
+ *             .templateVersion("<template_version>")
  *             .answers(MultiClusterAppAnswerArgs.builder()
- *                 .values(Map.of(&#34;ingress_host&#34;, &#34;test.xip.io&#34;))
+ *                 .values(Map.of("ingress_host", "test.xip.io"))
  *                 .build())
- *             .roles(&#34;project-member&#34;)
+ *             .roles("project-member")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -104,32 +107,33 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Multi Cluster App overriding answers
- *         var foo = new MultiClusterApp(&#34;foo&#34;, MultiClusterAppArgs.builder()        
- *             .catalogName(&#34;&lt;catalog_name&gt;&#34;)
- *             .name(&#34;foo&#34;)
+ *         var foo = new MultiClusterApp("foo", MultiClusterAppArgs.builder()        
+ *             .catalogName("<catalog_name>")
+ *             .name("foo")
  *             .targets(            
  *                 MultiClusterAppTargetArgs.builder()
- *                     .projectId(&#34;&lt;project_id1&gt;&#34;)
+ *                     .projectId("<project_id1>")
  *                     .build(),
  *                 MultiClusterAppTargetArgs.builder()
- *                     .projectId(&#34;&lt;project_id2&gt;&#34;)
+ *                     .projectId("<project_id2>")
  *                     .build())
- *             .templateName(&#34;&lt;template_name&gt;&#34;)
- *             .templateVersion(&#34;&lt;template_version&gt;&#34;)
+ *             .templateName("<template_name>")
+ *             .templateVersion("<template_version>")
  *             .answers(            
  *                 MultiClusterAppAnswerArgs.builder()
- *                     .values(Map.of(&#34;ingress_host&#34;, &#34;test.xip.io&#34;))
+ *                     .values(Map.of("ingress_host", "test.xip.io"))
  *                     .build(),
  *                 MultiClusterAppAnswerArgs.builder()
- *                     .projectId(&#34;&lt;project_id2&gt;&#34;)
- *                     .values(Map.of(&#34;ingress_host&#34;, &#34;test2.xip.io&#34;))
+ *                     .projectId("<project_id2>")
+ *                     .values(Map.of("ingress_host", "test2.xip.io"))
  *                     .build())
- *             .roles(&#34;project-member&#34;)
+ *             .roles("project-member")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

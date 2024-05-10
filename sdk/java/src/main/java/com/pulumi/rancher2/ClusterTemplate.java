@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,41 +57,43 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Cluster Template
- *         var foo = new ClusterTemplate(&#34;foo&#34;, ClusterTemplateArgs.builder()        
- *             .name(&#34;foo&#34;)
+ *         var foo = new ClusterTemplate("foo", ClusterTemplateArgs.builder()        
+ *             .name("foo")
  *             .members(ClusterTemplateMemberArgs.builder()
- *                 .accessType(&#34;owner&#34;)
- *                 .userPrincipalId(&#34;local://user-XXXXX&#34;)
+ *                 .accessType("owner")
+ *                 .userPrincipalId("local://user-XXXXX")
  *                 .build())
  *             .templateRevisions(ClusterTemplateTemplateRevisionArgs.builder()
- *                 .name(&#34;V1&#34;)
+ *                 .name("V1")
  *                 .clusterConfig(ClusterTemplateTemplateRevisionClusterConfigArgs.builder()
  *                     .rkeConfig(ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs.builder()
  *                         .network(ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs.builder()
- *                             .plugin(&#34;canal&#34;)
+ *                             .plugin("canal")
  *                             .build())
  *                         .services(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs.builder()
  *                             .etcd(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs.builder()
- *                                 .creation(&#34;6h&#34;)
- *                                 .retention(&#34;24h&#34;)
+ *                                 .creation("6h")
+ *                                 .retention("24h")
  *                                 .build())
  *                             .build())
  *                         .build())
  *                     .build())
  *                 .default_(true)
  *                 .build())
- *             .description(&#34;Terraform cluster template foo&#34;)
+ *             .description("Terraform cluster template foo")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Creating Rancher v2 RKE cluster template with upgrade strategy. For Rancher v2.4.x and above.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -120,39 +123,40 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Cluster Template
- *         var foo = new ClusterTemplate(&#34;foo&#34;, ClusterTemplateArgs.builder()        
- *             .name(&#34;foo&#34;)
+ *         var foo = new ClusterTemplate("foo", ClusterTemplateArgs.builder()        
+ *             .name("foo")
  *             .members(ClusterTemplateMemberArgs.builder()
- *                 .accessType(&#34;owner&#34;)
- *                 .userPrincipalId(&#34;local://user-XXXXX&#34;)
+ *                 .accessType("owner")
+ *                 .userPrincipalId("local://user-XXXXX")
  *                 .build())
  *             .templateRevisions(ClusterTemplateTemplateRevisionArgs.builder()
- *                 .name(&#34;V1&#34;)
+ *                 .name("V1")
  *                 .clusterConfig(ClusterTemplateTemplateRevisionClusterConfigArgs.builder()
  *                     .rkeConfig(ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs.builder()
  *                         .network(ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs.builder()
- *                             .plugin(&#34;canal&#34;)
+ *                             .plugin("canal")
  *                             .build())
  *                         .services(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs.builder()
  *                             .etcd(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs.builder()
- *                                 .creation(&#34;6h&#34;)
- *                                 .retention(&#34;24h&#34;)
+ *                                 .creation("6h")
+ *                                 .retention("24h")
  *                                 .build())
  *                             .build())
  *                         .upgradeStrategy(ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs.builder()
  *                             .drain(true)
- *                             .maxUnavailableWorker(&#34;20%&#34;)
+ *                             .maxUnavailableWorker("20%")
  *                             .build())
  *                         .build())
  *                     .build())
  *                 .default_(true)
  *                 .build())
- *             .description(&#34;Terraform cluster template foo&#34;)
+ *             .description("Terraform cluster template foo")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

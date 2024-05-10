@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,47 +59,47 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 RKE Cluster 
- *         var foo_custom = new Cluster(&#34;foo-custom&#34;, ClusterArgs.builder()        
- *             .name(&#34;foo-custom&#34;)
- *             .description(&#34;Foo rancher2 custom cluster&#34;)
- *             .kind(&#34;rke&#34;)
+ *         var foo_custom = new Cluster("foo-custom", ClusterArgs.builder()        
+ *             .name("foo-custom")
+ *             .description("Foo rancher2 custom cluster")
+ *             .kind("rke")
  *             .rkeConfig(ClusterRkeConfigArgs.builder()
  *                 .network(ClusterRkeConfigNetworkArgs.builder()
- *                     .plugin(&#34;canal&#34;)
+ *                     .plugin("canal")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *         // Create a new rancher2 Cloud Credential
- *         var foo = new CloudCredential(&#34;foo&#34;, CloudCredentialArgs.builder()        
- *             .name(&#34;foo&#34;)
- *             .description(&#34;Terraform cloudCredential acceptance test&#34;)
+ *         var foo = new CloudCredential("foo", CloudCredentialArgs.builder()        
+ *             .name("foo")
+ *             .description("Terraform cloudCredential acceptance test")
  *             .amazonec2CredentialConfig(CloudCredentialAmazonec2CredentialConfigArgs.builder()
- *                 .accessKey(&#34;XXXXXXXXXXXXXXXXXXXX&#34;)
- *                 .secretKey(&#34;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&#34;)
+ *                 .accessKey("XXXXXXXXXXXXXXXXXXXX")
+ *                 .secretKey("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
  *                 .build())
  *             .build());
  * 
  *         // Create a new rancher2 Node Template
- *         var fooNodeTemplate = new NodeTemplate(&#34;fooNodeTemplate&#34;, NodeTemplateArgs.builder()        
- *             .name(&#34;foo&#34;)
- *             .description(&#34;foo test&#34;)
+ *         var fooNodeTemplate = new NodeTemplate("fooNodeTemplate", NodeTemplateArgs.builder()        
+ *             .name("foo")
+ *             .description("foo test")
  *             .cloudCredentialId(foo.id())
  *             .amazonec2Config(NodeTemplateAmazonec2ConfigArgs.builder()
- *                 .ami(&#34;&lt;AMI_ID&gt;&#34;)
- *                 .region(&#34;&lt;REGION&gt;&#34;)
- *                 .securityGroups(&#34;&lt;AWS_SECURITY_GROUP&gt;&#34;)
- *                 .subnetId(&#34;&lt;SUBNET_ID&gt;&#34;)
- *                 .vpcId(&#34;&lt;VPC_ID&gt;&#34;)
- *                 .zone(&#34;&lt;ZONE&gt;&#34;)
+ *                 .ami("<AMI_ID>")
+ *                 .region("<REGION>")
+ *                 .securityGroups("<AWS_SECURITY_GROUP>")
+ *                 .subnetId("<SUBNET_ID>")
+ *                 .vpcId("<VPC_ID>")
+ *                 .zone("<ZONE>")
  *                 .build())
  *             .build());
  * 
  *         // Create a new rancher2 Node Pool
- *         var fooNodePool = new NodePool(&#34;fooNodePool&#34;, NodePoolArgs.builder()        
+ *         var fooNodePool = new NodePool("fooNodePool", NodePoolArgs.builder()        
  *             .clusterId(foo_custom.id())
- *             .name(&#34;foo&#34;)
- *             .hostnamePrefix(&#34;foo-cluster-0&#34;)
+ *             .name("foo")
+ *             .hostnamePrefix("foo-cluster-0")
  *             .nodeTemplateId(fooNodeTemplate.id())
  *             .quantity(1)
  *             .controlPlane(true)
@@ -108,7 +109,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

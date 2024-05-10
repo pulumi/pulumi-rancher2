@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Using the Harvester Node Driver
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -60,44 +61,44 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Get imported harvester cluster info
  *         final var foo-harvester = Rancher2Functions.getClusterV2(GetClusterV2Args.builder()
- *             .name(&#34;foo-harvester&#34;)
+ *             .name("foo-harvester")
  *             .build());
  * 
  *         // Create a new Cloud Credential for an imported Harvester cluster
- *         var foo_harvesterCloudCredential = new CloudCredential(&#34;foo-harvesterCloudCredential&#34;, CloudCredentialArgs.builder()        
- *             .name(&#34;foo-harvester&#34;)
+ *         var foo_harvesterCloudCredential = new CloudCredential("foo-harvesterCloudCredential", CloudCredentialArgs.builder()        
+ *             .name("foo-harvester")
  *             .harvesterCredentialConfig(CloudCredentialHarvesterCredentialConfigArgs.builder()
  *                 .clusterId(foo_harvester.clusterV1Id())
- *                 .clusterType(&#34;imported&#34;)
+ *                 .clusterType("imported")
  *                 .kubeconfigContent(foo_harvester.kubeConfig())
  *                 .build())
  *             .build());
  * 
  *         // Create a new rancher2 machine config v2 using harvester node_driver
- *         var foo_harvester_v2 = new MachineConfigV2(&#34;foo-harvester-v2&#34;, MachineConfigV2Args.builder()        
- *             .generateName(&#34;foo-harvester-v2&#34;)
+ *         var foo_harvester_v2 = new MachineConfigV2("foo-harvester-v2", MachineConfigV2Args.builder()        
+ *             .generateName("foo-harvester-v2")
  *             .harvesterConfig(MachineConfigV2HarvesterConfigArgs.builder()
- *                 .vmNamespace(&#34;default&#34;)
- *                 .cpuCount(&#34;2&#34;)
- *                 .memorySize(&#34;4&#34;)
- *                 .diskInfo(&#34;&#34;&#34;
+ *                 .vmNamespace("default")
+ *                 .cpuCount("2")
+ *                 .memorySize("4")
+ *                 .diskInfo("""
  *     {
- *         &#34;disks&#34;: [{
- *             &#34;imageName&#34;: &#34;harvester-public/image-57hzg&#34;,
- *             &#34;size&#34;: 40,
- *             &#34;bootOrder&#34;: 1
+ *         "disks": [{
+ *             "imageName": "harvester-public/image-57hzg",
+ *             "size": 40,
+ *             "bootOrder": 1
  *         }]
  *     }
- *                 &#34;&#34;&#34;)
- *                 .networkInfo(&#34;&#34;&#34;
+ *                 """)
+ *                 .networkInfo("""
  *     {
- *         &#34;interfaces&#34;: [{
- *             &#34;networkName&#34;: &#34;harvester-public/vlan1&#34;
+ *         "interfaces": [{
+ *             "networkName": "harvester-public/vlan1"
  *         }]
  *     }
- *                 &#34;&#34;&#34;)
- *                 .sshUser(&#34;ubuntu&#34;)
- *                 .userData(&#34;&#34;&#34;
+ *                 """)
+ *                 .sshUser("ubuntu")
+ *                 .userData("""
  *     package_update: true
  *     packages:
  *       - qemu-guest-agent
@@ -105,15 +106,16 @@ import javax.annotation.Nullable;
  *     runcmd:
  *       - - systemctl
  *         - enable
- *         - &#39;--now&#39;
+ *         - '--now'
  *         - qemu-guest-agent.service
- *                 &#34;&#34;&#34;)
+ *                 """)
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

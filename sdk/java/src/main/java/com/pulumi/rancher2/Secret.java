@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,30 +50,32 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Project Secret
- *         var foo = new Secret(&#34;foo&#34;, SecretArgs.builder()        
- *             .name(&#34;foo&#34;)
- *             .description(&#34;Terraform secret foo&#34;)
- *             .projectId(&#34;&lt;project_id&gt;&#34;)
+ *         var foo = new Secret("foo", SecretArgs.builder()        
+ *             .name("foo")
+ *             .description("Terraform secret foo")
+ *             .projectId("<project_id>")
  *             .data(Map.ofEntries(
- *                 Map.entry(&#34;address&#34;, StdFunctions.base64encode(Base64encodeArgs.builder()
- *                     .input(&#34;test.io&#34;)
+ *                 Map.entry("address", StdFunctions.base64encode(Base64encodeArgs.builder()
+ *                     .input("test.io")
  *                     .build()).result()),
- *                 Map.entry(&#34;username&#34;, StdFunctions.base64encode(Base64encodeArgs.builder()
- *                     .input(&#34;user2&#34;)
+ *                 Map.entry("username", StdFunctions.base64encode(Base64encodeArgs.builder()
+ *                     .input("user2")
  *                     .build()).result()),
- *                 Map.entry(&#34;password&#34;, StdFunctions.base64encode(Base64encodeArgs.builder()
- *                     .input(&#34;pass&#34;)
+ *                 Map.entry("password", StdFunctions.base64encode(Base64encodeArgs.builder()
+ *                     .input("pass")
  *                     .build()).result())
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -94,27 +97,28 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Namespaced Secret
- *         var foo = new Secret(&#34;foo&#34;, SecretArgs.builder()        
- *             .name(&#34;foo&#34;)
- *             .description(&#34;Terraform secret foo&#34;)
- *             .projectId(&#34;&lt;project_id&gt;&#34;)
- *             .namespaceId(&#34;&lt;namespace_id&gt;&#34;)
+ *         var foo = new Secret("foo", SecretArgs.builder()        
+ *             .name("foo")
+ *             .description("Terraform secret foo")
+ *             .projectId("<project_id>")
+ *             .namespaceId("<namespace_id>")
  *             .data(Map.ofEntries(
- *                 Map.entry(&#34;address&#34;, StdFunctions.base64encode(Base64encodeArgs.builder()
- *                     .input(&#34;test.io&#34;)
+ *                 Map.entry("address", StdFunctions.base64encode(Base64encodeArgs.builder()
+ *                     .input("test.io")
  *                     .build()).result()),
- *                 Map.entry(&#34;username&#34;, StdFunctions.base64encode(Base64encodeArgs.builder()
- *                     .input(&#34;user2&#34;)
+ *                 Map.entry("username", StdFunctions.base64encode(Base64encodeArgs.builder()
+ *                     .input("user2")
  *                     .build()).result()),
- *                 Map.entry(&#34;password&#34;, StdFunctions.base64encode(Base64encodeArgs.builder()
- *                     .input(&#34;pass&#34;)
+ *                 Map.entry("password", StdFunctions.base64encode(Base64encodeArgs.builder()
+ *                     .input("pass")
  *                     .build()).result())
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

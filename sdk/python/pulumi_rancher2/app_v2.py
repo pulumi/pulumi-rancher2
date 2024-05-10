@@ -300,9 +300,6 @@ class _AppV2State:
         :param pulumi.Input[bool] cleanup_on_fail: Cleanup app v2 on failed chart upgrade. Default: `false` (bool)
         :param pulumi.Input[str] cluster_id: The cluster id of the app (string)
         :param pulumi.Input[str] cluster_name: (Computed) The cluster name of the app (string)
-        :param pulumi.Input[str] deployment_values: Values YAML file including computed values. This field prevents incorrect discrepancies from showing in the terraform
-               plan output when files change but values stay the same, due to additional computed values included by the provider
-               itself.
         :param pulumi.Input[bool] disable_hooks: Disable app v2 chart hooks. Default: `false` (bool)
         :param pulumi.Input[bool] disable_open_api_validation: Disable app V2 Open API Validation. Default: `false` (bool)
         :param pulumi.Input[bool] force_upgrade: Force app V2 chart upgrade. Default: `false` (bool)
@@ -427,11 +424,6 @@ class _AppV2State:
     @property
     @pulumi.getter(name="deploymentValues")
     def deployment_values(self) -> Optional[pulumi.Input[str]]:
-        """
-        Values YAML file including computed values. This field prevents incorrect discrepancies from showing in the terraform
-        plan output when files change but values stay the same, due to additional computed values included by the provider
-        itself.
-        """
         return pulumi.get(self, "deployment_values")
 
     @deployment_values.setter
@@ -817,9 +809,6 @@ class AppV2(pulumi.CustomResource):
         :param pulumi.Input[bool] cleanup_on_fail: Cleanup app v2 on failed chart upgrade. Default: `false` (bool)
         :param pulumi.Input[str] cluster_id: The cluster id of the app (string)
         :param pulumi.Input[str] cluster_name: (Computed) The cluster name of the app (string)
-        :param pulumi.Input[str] deployment_values: Values YAML file including computed values. This field prevents incorrect discrepancies from showing in the terraform
-               plan output when files change but values stay the same, due to additional computed values included by the provider
-               itself.
         :param pulumi.Input[bool] disable_hooks: Disable app v2 chart hooks. Default: `false` (bool)
         :param pulumi.Input[bool] disable_open_api_validation: Disable app V2 Open API Validation. Default: `false` (bool)
         :param pulumi.Input[bool] force_upgrade: Force app V2 chart upgrade. Default: `false` (bool)
@@ -907,11 +896,6 @@ class AppV2(pulumi.CustomResource):
     @property
     @pulumi.getter(name="deploymentValues")
     def deployment_values(self) -> pulumi.Output[str]:
-        """
-        Values YAML file including computed values. This field prevents incorrect discrepancies from showing in the terraform
-        plan output when files change but values stay the same, due to additional computed values included by the provider
-        itself.
-        """
         return pulumi.get(self, "deployment_values")
 
     @property

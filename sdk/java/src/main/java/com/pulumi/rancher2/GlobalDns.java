@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,34 +50,36 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Global DNS Provider
- *         var foo = new GlobalDnsProvider(&#34;foo&#34;, GlobalDnsProviderArgs.builder()        
- *             .name(&#34;foo&#34;)
- *             .rootDomain(&#34;example.com&#34;)
+ *         var foo = new GlobalDnsProvider("foo", GlobalDnsProviderArgs.builder()        
+ *             .name("foo")
+ *             .rootDomain("example.com")
  *             .route53Config(GlobalDnsProviderRoute53ConfigArgs.builder()
- *                 .accessKey(&#34;YYYYYYYYYYYYYYYYYYYY&#34;)
- *                 .secretKey(&#34;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&#34;)
- *                 .zoneType(&#34;private&#34;)
- *                 .region(&#34;us-east-1&#34;)
+ *                 .accessKey("YYYYYYYYYYYYYYYYYYYY")
+ *                 .secretKey("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+ *                 .zoneType("private")
+ *                 .region("us-east-1")
  *                 .build())
  *             .build());
  * 
  *         // Create a new rancher2 Global DNS using project IDs
- *         var fooGlobalDns = new GlobalDns(&#34;fooGlobalDns&#34;, GlobalDnsArgs.builder()        
- *             .name(&#34;foo&#34;)
- *             .fqdn(&#34;foo.example.com&#34;)
+ *         var fooGlobalDns = new GlobalDns("fooGlobalDns", GlobalDnsArgs.builder()        
+ *             .name("foo")
+ *             .fqdn("foo.example.com")
  *             .providerId(foo.id())
  *             .projectIds(            
- *                 &#34;project1&#34;,
- *                 &#34;project2&#34;)
+ *                 "project1",
+ *                 "project2")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -101,28 +104,29 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Global DNS Provider
- *         var foo = new GlobalDnsProvider(&#34;foo&#34;, GlobalDnsProviderArgs.builder()        
- *             .name(&#34;foo&#34;)
- *             .rootDomain(&#34;example.com&#34;)
+ *         var foo = new GlobalDnsProvider("foo", GlobalDnsProviderArgs.builder()        
+ *             .name("foo")
+ *             .rootDomain("example.com")
  *             .route53Config(GlobalDnsProviderRoute53ConfigArgs.builder()
- *                 .accessKey(&#34;YYYYYYYYYYYYYYYYYYYY&#34;)
- *                 .secretKey(&#34;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&#34;)
- *                 .zoneType(&#34;private&#34;)
- *                 .region(&#34;us-east-1&#34;)
+ *                 .accessKey("YYYYYYYYYYYYYYYYYYYY")
+ *                 .secretKey("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+ *                 .zoneType("private")
+ *                 .region("us-east-1")
  *                 .build())
  *             .build());
  * 
  *         // Create a new rancher2 Global DNS using MultiClusterApp ID
- *         var fooGlobalDns = new GlobalDns(&#34;fooGlobalDns&#34;, GlobalDnsArgs.builder()        
- *             .name(&#34;foo&#34;)
- *             .fqdn(&#34;foo.example.com&#34;)
+ *         var fooGlobalDns = new GlobalDns("fooGlobalDns", GlobalDnsArgs.builder()        
+ *             .name("foo")
+ *             .fqdn("foo.example.com")
  *             .providerId(foo.id())
- *             .multiClusterAppId(&#34;&lt;MCA_ID&gt;&#34;)
+ *             .multiClusterAppId("<MCA_ID>")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

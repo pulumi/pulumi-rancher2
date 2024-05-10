@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,17 +48,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new Rancher2 Project Alert Group
- *         var foo = new ProjectAlertGroup(&#34;foo&#34;, ProjectAlertGroupArgs.builder()        
- *             .name(&#34;foo&#34;)
- *             .description(&#34;Terraform project alert group&#34;)
- *             .projectId(&#34;&lt;project_id&gt;&#34;)
+ *         var foo = new ProjectAlertGroup("foo", ProjectAlertGroupArgs.builder()        
+ *             .name("foo")
+ *             .description("Terraform project alert group")
+ *             .projectId("<project_id>")
  *             .groupIntervalSeconds(300)
  *             .repeatIntervalSeconds(3600)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
