@@ -91,11 +91,13 @@ func Provider() tfbridge.ProviderInfo {
 			"rancher2_auth_config_activedirectory": {Tok: makeResource("AuthConfigActiveDirectory")},
 
 			"rancher2_pod_security_admission_configuration_template": {
-				Docs: &tfbridge.DocInfo{AllowMissing: true}},
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"rancher2_pod_security_admission_configuration_template": {
-				Docs: &tfbridge.DocInfo{AllowMissing: true}},
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
+			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions
@@ -106,8 +108,10 @@ func Provider() tfbridge.ProviderInfo {
 				"@types/node": "^10.0.0", // so we can access strongly typed node definitions.
 				"@types/mime": "^2.0.0",
 			},
+			RespectSchemaVersion: true,
 		},
 		Python: &tfbridge.PythonInfo{
+			RespectSchemaVersion: true,
 			Requires: map[string]string{
 				"pulumi": ">=3.0.0,<4.0.0",
 			},
@@ -122,8 +126,10 @@ func Provider() tfbridge.ProviderInfo {
 				mainPkg,
 			),
 			GenerateResourceContainerTypes: true,
+			RespectSchemaVersion:           true,
 		},
 		CSharp: &tfbridge.CSharpInfo{
+			RespectSchemaVersion: true,
 			PackageReferences: map[string]string{
 				"Pulumi": "3.*",
 			},
