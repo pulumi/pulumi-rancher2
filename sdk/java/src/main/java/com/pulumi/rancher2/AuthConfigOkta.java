@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Auth Config OKTA
- *         var okta = new AuthConfigOkta("okta", AuthConfigOktaArgs.builder()        
+ *         var okta = new AuthConfigOkta("okta", AuthConfigOktaArgs.builder()
  *             .displayNameField("<DISPLAY_NAME_FIELD>")
  *             .groupsField("<GROUPS_FIELD>")
  *             .idpMetadataContent("<IDP_METADATA_CONTENT>")

@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Project Registry
- *         var foo = new Registry("foo", RegistryArgs.builder()        
+ *         var foo = new Registry("foo", RegistryArgs.builder()
  *             .name("foo")
  *             .description("Terraform registry foo")
  *             .projectId("<project_id>")
@@ -94,7 +94,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Namespaced Registry
- *         var foo = new Registry("foo", RegistryArgs.builder()        
+ *         var foo = new Registry("foo", RegistryArgs.builder()
  *             .name("foo")
  *             .description("Terraform registry foo")
  *             .projectId("<project_id>")

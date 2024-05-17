@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 rke Cluster 
- *         var foo_custom = new Cluster("foo-custom", ClusterArgs.builder()        
+ *         var foo_custom = new Cluster("foo-custom", ClusterArgs.builder()
  *             .name("foo-custom")
  *             .description("Foo rancher2 custom cluster")
  *             .rkeConfig(ClusterRkeConfigArgs.builder()
@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // Create a new rancher2 Node Template
- *         var foo = new NodeTemplate("foo", NodeTemplateArgs.builder()        
+ *         var foo = new NodeTemplate("foo", NodeTemplateArgs.builder()
  *             .name("foo")
  *             .description("foo test")
  *             .amazonec2Config(NodeTemplateAmazonec2ConfigArgs.builder()
@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // Create a new rancher2 Node Pool
- *         var fooNodePool = new NodePool("fooNodePool", NodePoolArgs.builder()        
+ *         var fooNodePool = new NodePool("fooNodePool", NodePoolArgs.builder()
  *             .clusterId(foo_custom.id())
  *             .name("foo")
  *             .hostnamePrefix("foo-cluster-0")
@@ -99,13 +99,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // Create a new rancher2 Cluster Sync
- *         var foo_customClusterSync = new ClusterSync("foo-customClusterSync", ClusterSyncArgs.builder()        
+ *         var foo_customClusterSync = new ClusterSync("foo-customClusterSync", ClusterSyncArgs.builder()
  *             .clusterId(foo_custom.id())
  *             .nodePoolIds(fooNodePool.id())
  *             .build());
  * 
  *         // Create a new rancher2 Project
- *         var fooProject = new Project("fooProject", ProjectArgs.builder()        
+ *         var fooProject = new Project("fooProject", ProjectArgs.builder()
  *             .name("foo")
  *             .clusterId(foo_customClusterSync.id())
  *             .description("Terraform namespace acceptance test")
