@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Etcd Backup
- *         var foo = new EtcdBackup("foo", EtcdBackupArgs.builder()        
+ *         var foo = new EtcdBackup("foo", EtcdBackupArgs.builder()
  *             .backupConfig(EtcdBackupBackupConfigArgs.builder()
  *                 .enabled(true)
  *                 .intervalHours(20)

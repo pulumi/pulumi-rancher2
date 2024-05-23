@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Global DNS Provider - alidns
- *         var foo = new GlobalDnsProvider("foo", GlobalDnsProviderArgs.builder()        
+ *         var foo = new GlobalDnsProvider("foo", GlobalDnsProviderArgs.builder()
  *             .name("foo")
  *             .rootDomain("example.com")
  *             .alidnsConfig(GlobalDnsProviderAlidnsConfigArgs.builder()
@@ -89,7 +89,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Global DNS Provider - cloudflare
- *         var foo = new GlobalDnsProvider("foo", GlobalDnsProviderArgs.builder()        
+ *         var foo = new GlobalDnsProvider("foo", GlobalDnsProviderArgs.builder()
  *             .name("foo")
  *             .rootDomain("example.com")
  *             .cloudflareConfig(GlobalDnsProviderCloudflareConfigArgs.builder()
@@ -130,7 +130,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Global DNS Provider - route53
- *         var foo = new GlobalDnsProvider("foo", GlobalDnsProviderArgs.builder()        
+ *         var foo = new GlobalDnsProvider("foo", GlobalDnsProviderArgs.builder()
  *             .name("foo")
  *             .rootDomain("example.com")
  *             .route53Config(GlobalDnsProviderRoute53ConfigArgs.builder()

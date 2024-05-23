@@ -47,20 +47,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new Rancher2 Global Catalog
- *         var foo_global = new Catalog("foo-global", CatalogArgs.builder()        
+ *         var foo_global = new Catalog("foo-global", CatalogArgs.builder()
  *             .name("foo-global")
  *             .url("https://<CATALOG_URL>")
  *             .build());
  * 
  *         // Create a new Rancher2 Cluster Catalog
- *         var foo_cluster = new Catalog("foo-cluster", CatalogArgs.builder()        
+ *         var foo_cluster = new Catalog("foo-cluster", CatalogArgs.builder()
  *             .name("foo-cluster")
  *             .url("https://<CATALOG_URL>")
  *             .scope("cluster")
  *             .build());
  * 
  *         // Create a new Rancher2 Project Catalog
- *         var foo_project = new Catalog("foo-project", CatalogArgs.builder()        
+ *         var foo_project = new Catalog("foo-project", CatalogArgs.builder()
  *             .name("foo-project")
  *             .url("https://<CATALOG_URL>")
  *             .scope("project")

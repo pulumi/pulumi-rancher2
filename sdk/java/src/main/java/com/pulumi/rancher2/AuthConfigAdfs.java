@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Auth Config ADFS
- *         var adfs = new AuthConfigAdfs("adfs", AuthConfigAdfsArgs.builder()        
+ *         var adfs = new AuthConfigAdfs("adfs", AuthConfigAdfsArgs.builder()
  *             .displayNameField("<DISPLAY_NAME_FIELD>")
  *             .groupsField("<GROUPS_FIELD>")
  *             .idpMetadataContent("<IDP_METADATA_CONTENT>")

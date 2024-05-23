@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new Rancher2 Project
- *         var foo = new Project("foo", ProjectArgs.builder()        
+ *         var foo = new Project("foo", ProjectArgs.builder()
  *             .name("foo")
  *             .clusterId("<cluster_id>")
  *             .description("Terraform project ")
@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // Create a new Rancher2 Project Alert Group
- *         var fooProjectAlertGroup = new ProjectAlertGroup("fooProjectAlertGroup", ProjectAlertGroupArgs.builder()        
+ *         var fooProjectAlertGroup = new ProjectAlertGroup("fooProjectAlertGroup", ProjectAlertGroupArgs.builder()
  *             .name("foo")
  *             .description("Terraform project alert group")
  *             .projectId(foo.id())
@@ -92,7 +92,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // Create a new Rancher2 Project Alert Rule
- *         var fooProjectAlertRule = new ProjectAlertRule("fooProjectAlertRule", ProjectAlertRuleArgs.builder()        
+ *         var fooProjectAlertRule = new ProjectAlertRule("fooProjectAlertRule", ProjectAlertRuleArgs.builder()
  *             .projectId(fooProjectAlertGroup.projectId())
  *             .groupId(fooProjectAlertGroup.id())
  *             .name("foo")
