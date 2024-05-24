@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Project
- *         var foo = new Project("foo", ProjectArgs.builder()        
+ *         var foo = new Project("foo", ProjectArgs.builder()
  *             .name("foo")
  *             .clusterId("<CLUSTER_ID>")
  *             .resourceQuota(ProjectResourceQuotaArgs.builder()
@@ -111,7 +111,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Project enabling and customizing monitoring
- *         var foo = new Project("foo", ProjectArgs.builder()        
+ *         var foo = new Project("foo", ProjectArgs.builder()
  *             .name("foo")
  *             .clusterId("<CLUSTER_ID>")
  *             .resourceQuota(ProjectResourceQuotaArgs.builder()

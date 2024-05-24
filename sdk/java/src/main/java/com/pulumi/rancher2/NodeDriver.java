@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Node Driver
- *         var foo = new NodeDriver("foo", NodeDriverArgs.builder()        
+ *         var foo = new NodeDriver("foo", NodeDriverArgs.builder()
  *             .active(true)
  *             .builtin(false)
  *             .checksum("0x0")

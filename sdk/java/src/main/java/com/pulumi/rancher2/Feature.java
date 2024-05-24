@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Feature
- *         var fleet = new Feature("fleet", FeatureArgs.builder()        
+ *         var fleet = new Feature("fleet", FeatureArgs.builder()
  *             .name("fleet")
  *             .value("<VALUE>")
  *             .build());

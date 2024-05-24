@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2_bootstrap
- *         var admin = new Bootstrap("admin", BootstrapArgs.builder()        
+ *         var admin = new Bootstrap("admin", BootstrapArgs.builder()
  *             .password("blahblah")
  *             .telemetry(true)
  *             .build());
@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2_bootstrap for Rancher v2.6.0 and above
- *         var admin = new Bootstrap("admin", BootstrapArgs.builder()        
+ *         var admin = new Bootstrap("admin", BootstrapArgs.builder()
  *             .initialPassword("<INSTALL_PASSWORD>")
  *             .password("blahblah")
  *             .telemetry(true)
@@ -115,7 +115,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2_bootstrap using bootstrap provider config
- *         var admin = new Bootstrap("admin", BootstrapArgs.builder()        
+ *         var admin = new Bootstrap("admin", BootstrapArgs.builder()
  *             .password("blahblah")
  *             .telemetry(true)
  *             .build());

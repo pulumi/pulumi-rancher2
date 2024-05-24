@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Project Secret
- *         var foo = new Secret("foo", SecretArgs.builder()        
+ *         var foo = new Secret("foo", SecretArgs.builder()
  *             .name("foo")
  *             .description("Terraform secret foo")
  *             .projectId("<project_id>")
@@ -97,7 +97,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Namespaced Secret
- *         var foo = new Secret("foo", SecretArgs.builder()        
+ *         var foo = new Secret("foo", SecretArgs.builder()
  *             .name("foo")
  *             .description("Terraform secret foo")
  *             .projectId("<project_id>")

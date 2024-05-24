@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Cluster Template
- *         var foo = new ClusterTemplate("foo", ClusterTemplateArgs.builder()        
+ *         var foo = new ClusterTemplate("foo", ClusterTemplateArgs.builder()
  *             .name("foo")
  *             .members(ClusterTemplateMemberArgs.builder()
  *                 .accessType("owner")
@@ -123,7 +123,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Cluster Template
- *         var foo = new ClusterTemplate("foo", ClusterTemplateArgs.builder()        
+ *         var foo = new ClusterTemplate("foo", ClusterTemplateArgs.builder()
  *             .name("foo")
  *             .members(ClusterTemplateMemberArgs.builder()
  *                 .accessType("owner")

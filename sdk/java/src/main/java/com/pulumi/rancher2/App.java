@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 App
- *         var foo = new App("foo", AppArgs.builder()        
+ *         var foo = new App("foo", AppArgs.builder()
  *             .catalogName("<catalog_name>")
  *             .name("foo")
  *             .description("Foo app")
@@ -102,7 +102,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 App in a new namespace
- *         var foo = new Namespace("foo", NamespaceArgs.builder()        
+ *         var foo = new Namespace("foo", NamespaceArgs.builder()
  *             .name("foo")
  *             .description("Foo namespace")
  *             .projectId("<project_id>")
@@ -115,7 +115,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var fooApp = new App("fooApp", AppArgs.builder()        
+ *         var fooApp = new App("fooApp", AppArgs.builder()
  *             .catalogName("<catalog_name>")
  *             .name("foo")
  *             .description("Foo app")
