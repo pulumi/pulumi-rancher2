@@ -14,7 +14,7 @@ replace (
 	//	        github.com/hashicorp/terraform-plugin-test/v2 imports
 	//	        github.com/hashicorp/terraform-exec/tfinstall: module github.com/hashicorp/terraform-exec@latest found (v0.20.0), but does not contain package github.com/hashicorp/terraform-exec/tfinstall
 	github.com/hashicorp/terraform-exec => github.com/hashicorp/terraform-exec v0.15.0
-	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240229143312-4f60ee4e2975
+	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240520223432-0c0bf0d65f10
 )
 
 // Replace block copied from upstream
@@ -57,8 +57,8 @@ replace (
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk v1.17.2
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.82.0
-	github.com/pulumi/pulumi/sdk/v3 v3.114.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.83.0
+	github.com/pulumi/pulumi/sdk/v3 v3.116.1
 	github.com/rancher/terraform-provider-rancher2 v1.25.1-0.20240306215549-383a664a3660
 )
 
@@ -253,10 +253,10 @@ require (
 	github.com/prometheus/procfs v0.8.0 // indirect
 	github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 // indirect
 	github.com/pulumi/esc v0.6.2 // indirect
-	github.com/pulumi/pulumi-java/pkg v0.10.0 // indirect
+	github.com/pulumi/pulumi-java/pkg v0.11.0 // indirect
 	github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.8 // indirect
-	github.com/pulumi/pulumi-yaml v1.6.0 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.114.0 // indirect
+	github.com/pulumi/pulumi-yaml v1.7.0 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.116.1 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rancher/aks-operator v1.2.0-rc2 // indirect
