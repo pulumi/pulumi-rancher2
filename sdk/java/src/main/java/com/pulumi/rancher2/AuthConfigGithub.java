@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Auth Config Github
- *         var github = new AuthConfigGithub("github", AuthConfigGithubArgs.builder()        
+ *         var github = new AuthConfigGithub("github", AuthConfigGithubArgs.builder()
  *             .clientId("<GITHUB_CLIENT_ID>")
  *             .clientSecret("<GITHUB_CLIENT_SECRET>")
  *             .build());

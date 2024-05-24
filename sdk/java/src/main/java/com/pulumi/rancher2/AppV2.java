@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new Rancher2 App V2 using
- *         var foo = new AppV2("foo", AppV2Args.builder()        
+ *         var foo = new AppV2("foo", AppV2Args.builder()
  *             .clusterId("<CLUSTER_ID>")
  *             .name("rancher-monitoring")
  *             .namespace("cattle-monitoring-system")
@@ -91,7 +91,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cisBenchmark = new AppV2("cisBenchmark", AppV2Args.builder()        
+ *         var cisBenchmark = new AppV2("cisBenchmark", AppV2Args.builder()
  *             .clusterId("<CLUSTER_ID>")
  *             .name("rancher-cis-benchmark")
  *             .namespace("cis-operator-system")

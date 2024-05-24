@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Notifier
- *         var foo = new Notifier("foo", NotifierArgs.builder()        
+ *         var foo = new Notifier("foo", NotifierArgs.builder()
  *             .name("foo")
  *             .clusterId("<cluster_id>")
  *             .description("Terraform notifier acceptance test")

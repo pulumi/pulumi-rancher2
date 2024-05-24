@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Auth Config Ping
- *         var ping = new AuthConfigPing("ping", AuthConfigPingArgs.builder()        
+ *         var ping = new AuthConfigPing("ping", AuthConfigPingArgs.builder()
  *             .displayNameField("<DISPLAY_NAME_FIELD>")
  *             .groupsField("<GROUPS_FIELD>")
  *             .idpMetadataContent("<IDP_METADATA_CONTENT>")

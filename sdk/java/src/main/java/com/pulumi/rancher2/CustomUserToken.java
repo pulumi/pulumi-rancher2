@@ -61,20 +61,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a rancher2 Token
- *         var foo = new User("foo", UserArgs.builder()        
+ *         var foo = new User("foo", UserArgs.builder()
  *             .name("foo")
  *             .username("foo")
  *             .password("changeme")
  *             .enabled(true)
  *             .build());
  * 
- *         var foo_login = new GlobalRoleBinding("foo-login", GlobalRoleBindingArgs.builder()        
+ *         var foo_login = new GlobalRoleBinding("foo-login", GlobalRoleBindingArgs.builder()
  *             .name("foo-login-binding")
  *             .globalRoleId("user-base")
  *             .userId(foo.id())
  *             .build());
  * 
- *         var fooCustomUserToken = new CustomUserToken("fooCustomUserToken", CustomUserTokenArgs.builder()        
+ *         var fooCustomUserToken = new CustomUserToken("fooCustomUserToken", CustomUserTokenArgs.builder()
  *             .username(foo.username())
  *             .password(foo.password())
  *             .description("foo token")

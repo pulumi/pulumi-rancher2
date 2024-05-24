@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Node Template up to Rancher 2.1.x
- *         var foo = new NodeTemplate("foo", NodeTemplateArgs.builder()        
+ *         var foo = new NodeTemplate("foo", NodeTemplateArgs.builder()
  *             .name("foo")
  *             .description("foo test")
  *             .amazonec2Config(NodeTemplateAmazonec2ConfigArgs.builder()
@@ -112,7 +112,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Node Template from Rancher 2.2.x
- *         var foo = new CloudCredential("foo", CloudCredentialArgs.builder()        
+ *         var foo = new CloudCredential("foo", CloudCredentialArgs.builder()
  *             .name("foo")
  *             .description("foo test")
  *             .amazonec2CredentialConfig(CloudCredentialAmazonec2CredentialConfigArgs.builder()
@@ -121,7 +121,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var fooNodeTemplate = new NodeTemplate("fooNodeTemplate", NodeTemplateArgs.builder()        
+ *         var fooNodeTemplate = new NodeTemplate("fooNodeTemplate", NodeTemplateArgs.builder()
  *             .name("foo")
  *             .description("foo test")
  *             .cloudCredentialId(foo.id())
@@ -178,7 +178,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // Create a new Cloud Credential for an imported Harvester cluster
- *         var foo_harvesterCloudCredential = new CloudCredential("foo-harvesterCloudCredential", CloudCredentialArgs.builder()        
+ *         var foo_harvesterCloudCredential = new CloudCredential("foo-harvesterCloudCredential", CloudCredentialArgs.builder()
  *             .name("foo-harvester")
  *             .harvesterCredentialConfig(CloudCredentialHarvesterCredentialConfigArgs.builder()
  *                 .clusterId(foo_harvester.clusterV1Id())
@@ -188,7 +188,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // Create a new rancher2 Node Template using harvester node_driver
- *         var foo_harvesterNodeTemplate = new NodeTemplate("foo-harvesterNodeTemplate", NodeTemplateArgs.builder()        
+ *         var foo_harvesterNodeTemplate = new NodeTemplate("foo-harvesterNodeTemplate", NodeTemplateArgs.builder()
  *             .name("foo-harvester")
  *             .cloudCredentialId(foo_harvesterCloudCredential.id())
  *             .engineInstallUrl("https://releases.rancher.com/install-docker/20.10.sh")
@@ -262,7 +262,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Node Template using hetzner node_driver
- *         var hetznerNodeDriver = new NodeDriver("hetznerNodeDriver", NodeDriverArgs.builder()        
+ *         var hetznerNodeDriver = new NodeDriver("hetznerNodeDriver", NodeDriverArgs.builder()
  *             .active(true)
  *             .builtin(false)
  *             .name("Hetzner")
@@ -271,7 +271,7 @@ import javax.annotation.Nullable;
  *             .whitelistDomains("storage.googleapis.com")
  *             .build());
  * 
- *         var myHetznerNodeTemplate = new NodeTemplate("myHetznerNodeTemplate", NodeTemplateArgs.builder()        
+ *         var myHetznerNodeTemplate = new NodeTemplate("myHetznerNodeTemplate", NodeTemplateArgs.builder()
  *             .name("my-hetzner-node-template")
  *             .driverId(hetznerNodeDriver.id())
  *             .hetznerConfig(NodeTemplateHetznerConfigArgs.builder()

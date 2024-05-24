@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Multi Cluster App
- *         var foo = new MultiClusterApp("foo", MultiClusterAppArgs.builder()        
+ *         var foo = new MultiClusterApp("foo", MultiClusterAppArgs.builder()
  *             .catalogName("<catalog_name>")
  *             .name("foo")
  *             .targets(MultiClusterAppTargetArgs.builder()
@@ -107,7 +107,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Multi Cluster App overriding answers
- *         var foo = new MultiClusterApp("foo", MultiClusterAppArgs.builder()        
+ *         var foo = new MultiClusterApp("foo", MultiClusterAppArgs.builder()
  *             .catalogName("<catalog_name>")
  *             .name("foo")
  *             .targets(            

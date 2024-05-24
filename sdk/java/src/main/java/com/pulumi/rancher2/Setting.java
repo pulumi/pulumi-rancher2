@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Setting
- *         var foo = new Setting("foo", SettingArgs.builder()        
+ *         var foo = new Setting("foo", SettingArgs.builder()
  *             .name("foo")
  *             .value("<VALUE>")
  *             .build());
