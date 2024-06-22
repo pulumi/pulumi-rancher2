@@ -479,7 +479,7 @@ class CustomUserToken(pulumi.CustomResource):
             password=foo.password,
             description="foo token",
             ttl=0,
-            opts=pulumi.ResourceOptions(depends_on=[foo_login]))
+            opts = pulumi.ResourceOptions(depends_on=[foo_login]))
         ```
 
         :param str resource_name: The name of the resource.
@@ -533,7 +533,7 @@ class CustomUserToken(pulumi.CustomResource):
             password=foo.password,
             description="foo token",
             ttl=0,
-            opts=pulumi.ResourceOptions(depends_on=[foo_login]))
+            opts = pulumi.ResourceOptions(depends_on=[foo_login]))
         ```
 
         :param str resource_name: The name of the resource.
