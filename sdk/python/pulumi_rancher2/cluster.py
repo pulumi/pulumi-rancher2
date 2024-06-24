@@ -1029,13 +1029,11 @@ class _ClusterState:
 
     @property
     @pulumi.getter(name="enableClusterIstio")
+    @_utilities.deprecated("""Deploy istio using App resource instead""")
     def enable_cluster_istio(self) -> Optional[pulumi.Input[bool]]:
         """
         Deploy istio on `system` project and `istio-system` namespace, using App resource instead. See above example.
         """
-        warnings.warn("""Deploy istio using App resource instead""", DeprecationWarning)
-        pulumi.log.warn("""enable_cluster_istio is deprecated: Deploy istio using App resource instead""")
-
         return pulumi.get(self, "enable_cluster_istio")
 
     @enable_cluster_istio.setter
@@ -2862,13 +2860,11 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableClusterIstio")
+    @_utilities.deprecated("""Deploy istio using App resource instead""")
     def enable_cluster_istio(self) -> pulumi.Output[bool]:
         """
         Deploy istio on `system` project and `istio-system` namespace, using App resource instead. See above example.
         """
-        warnings.warn("""Deploy istio using App resource instead""", DeprecationWarning)
-        pulumi.log.warn("""enable_cluster_istio is deprecated: Deploy istio using App resource instead""")
-
         return pulumi.get(self, "enable_cluster_istio")
 
     @property

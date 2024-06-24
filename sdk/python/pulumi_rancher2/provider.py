@@ -122,13 +122,11 @@ class ProviderArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Use timeout instead""")
     def retries(self) -> Optional[pulumi.Input[int]]:
         """
         Rancher connection retries
         """
-        warnings.warn("""Use timeout instead""", DeprecationWarning)
-        pulumi.log.warn("""retries is deprecated: Use timeout instead""")
-
         return pulumi.get(self, "retries")
 
     @retries.setter
