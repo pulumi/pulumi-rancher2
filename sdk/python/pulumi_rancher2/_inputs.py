@@ -1426,13 +1426,11 @@ class ClusterAksConfigArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Use tags argument instead as []string""")
     def tag(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         Tags for Kubernetes cluster. For example, foo=bar
         """
-        warnings.warn("""Use tags argument instead as []string""", DeprecationWarning)
-        pulumi.log.warn("""tag is deprecated: Use tags argument instead as []string""")
-
         return pulumi.get(self, "tag")
 
     @tag.setter
@@ -19214,13 +19212,11 @@ class ClusterV2RkeConfigArgs:
 
     @property
     @pulumi.getter(name="localAuthEndpoint")
+    @_utilities.deprecated("""Use rancher2_cluster_v2.local_auth_endpoint instead""")
     def local_auth_endpoint(self) -> Optional[pulumi.Input['ClusterV2RkeConfigLocalAuthEndpointArgs']]:
         """
         Local auth endpoint configures the Authorized Cluster Endpoint (ACE) which can be used to directly access the Kubernetes API server, without requiring communication through Rancher. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters).
         """
-        warnings.warn("""Use rancher2_cluster_v2.local_auth_endpoint instead""", DeprecationWarning)
-        pulumi.log.warn("""local_auth_endpoint is deprecated: Use rancher2_cluster_v2.local_auth_endpoint instead""")
-
         return pulumi.get(self, "local_auth_endpoint")
 
     @local_auth_endpoint.setter
@@ -23100,13 +23096,11 @@ class MachineConfigV2HarvesterConfigArgs:
 
     @property
     @pulumi.getter(name="diskBus")
+    @_utilities.deprecated("""Use disk_info instead""")
     def disk_bus(self) -> Optional[pulumi.Input[str]]:
         """
         Disk bus
         """
-        warnings.warn("""Use disk_info instead""", DeprecationWarning)
-        pulumi.log.warn("""disk_bus is deprecated: Use disk_info instead""")
-
         return pulumi.get(self, "disk_bus")
 
     @disk_bus.setter
@@ -23127,13 +23121,11 @@ class MachineConfigV2HarvesterConfigArgs:
 
     @property
     @pulumi.getter(name="diskSize")
+    @_utilities.deprecated("""Use disk_info instead""")
     def disk_size(self) -> Optional[pulumi.Input[str]]:
         """
         Disk size (in GiB)
         """
-        warnings.warn("""Use disk_info instead""", DeprecationWarning)
-        pulumi.log.warn("""disk_size is deprecated: Use disk_info instead""")
-
         return pulumi.get(self, "disk_size")
 
     @disk_size.setter
@@ -23142,13 +23134,11 @@ class MachineConfigV2HarvesterConfigArgs:
 
     @property
     @pulumi.getter(name="imageName")
+    @_utilities.deprecated("""Use disk_info instead""")
     def image_name(self) -> Optional[pulumi.Input[str]]:
         """
         Image name
         """
-        warnings.warn("""Use disk_info instead""", DeprecationWarning)
-        pulumi.log.warn("""image_name is deprecated: Use disk_info instead""")
-
         return pulumi.get(self, "image_name")
 
     @image_name.setter
@@ -23193,13 +23183,11 @@ class MachineConfigV2HarvesterConfigArgs:
 
     @property
     @pulumi.getter(name="networkModel")
+    @_utilities.deprecated("""Use network_info instead""")
     def network_model(self) -> Optional[pulumi.Input[str]]:
         """
         Network model
         """
-        warnings.warn("""Use network_info instead""", DeprecationWarning)
-        pulumi.log.warn("""network_model is deprecated: Use network_info instead""")
-
         return pulumi.get(self, "network_model")
 
     @network_model.setter
@@ -23208,13 +23196,11 @@ class MachineConfigV2HarvesterConfigArgs:
 
     @property
     @pulumi.getter(name="networkName")
+    @_utilities.deprecated("""Use network_info instead""")
     def network_name(self) -> Optional[pulumi.Input[str]]:
         """
         Network name
         """
-        warnings.warn("""Use network_info instead""", DeprecationWarning)
-        pulumi.log.warn("""network_name is deprecated: Use network_info instead""")
-
         return pulumi.get(self, "network_name")
 
     @network_name.setter
@@ -26481,13 +26467,11 @@ class NodeTemplateHarvesterConfigArgs:
 
     @property
     @pulumi.getter(name="diskBus")
+    @_utilities.deprecated("""Use disk_info instead""")
     def disk_bus(self) -> Optional[pulumi.Input[str]]:
         """
         Disk bus
         """
-        warnings.warn("""Use disk_info instead""", DeprecationWarning)
-        pulumi.log.warn("""disk_bus is deprecated: Use disk_info instead""")
-
         return pulumi.get(self, "disk_bus")
 
     @disk_bus.setter
@@ -26508,13 +26492,11 @@ class NodeTemplateHarvesterConfigArgs:
 
     @property
     @pulumi.getter(name="diskSize")
+    @_utilities.deprecated("""Use disk_info instead""")
     def disk_size(self) -> Optional[pulumi.Input[str]]:
         """
         Disk size (in GiB)
         """
-        warnings.warn("""Use disk_info instead""", DeprecationWarning)
-        pulumi.log.warn("""disk_size is deprecated: Use disk_info instead""")
-
         return pulumi.get(self, "disk_size")
 
     @disk_size.setter
@@ -26523,13 +26505,11 @@ class NodeTemplateHarvesterConfigArgs:
 
     @property
     @pulumi.getter(name="imageName")
+    @_utilities.deprecated("""Use disk_info instead""")
     def image_name(self) -> Optional[pulumi.Input[str]]:
         """
         Image name
         """
-        warnings.warn("""Use disk_info instead""", DeprecationWarning)
-        pulumi.log.warn("""image_name is deprecated: Use disk_info instead""")
-
         return pulumi.get(self, "image_name")
 
     @image_name.setter
@@ -26574,13 +26554,11 @@ class NodeTemplateHarvesterConfigArgs:
 
     @property
     @pulumi.getter(name="networkModel")
+    @_utilities.deprecated("""Use network_info instead""")
     def network_model(self) -> Optional[pulumi.Input[str]]:
         """
         Network model
         """
-        warnings.warn("""Use network_info instead""", DeprecationWarning)
-        pulumi.log.warn("""network_model is deprecated: Use network_info instead""")
-
         return pulumi.get(self, "network_model")
 
     @network_model.setter
@@ -26589,13 +26567,11 @@ class NodeTemplateHarvesterConfigArgs:
 
     @property
     @pulumi.getter(name="networkName")
+    @_utilities.deprecated("""Use network_info instead""")
     def network_name(self) -> Optional[pulumi.Input[str]]:
         """
         Network name
         """
-        warnings.warn("""Use network_info instead""", DeprecationWarning)
-        pulumi.log.warn("""network_name is deprecated: Use network_info instead""")
-
         return pulumi.get(self, "network_name")
 
     @network_name.setter
