@@ -1911,6 +1911,28 @@
                 "current": "rancher2:index/roleTemplate:RoleTemplate",
                 "majorVersion": 6,
                 "fields": {
+                    "external_rules": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "api_groups": {
+                                    "maxItemsOne": false
+                                },
+                                "non_resource_urls": {
+                                    "maxItemsOne": false
+                                },
+                                "resource_names": {
+                                    "maxItemsOne": false
+                                },
+                                "resources": {
+                                    "maxItemsOne": false
+                                },
+                                "verbs": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "role_template_ids": {
                         "maxItemsOne": false
                     },
@@ -3532,6 +3554,28 @@
                 "current": "rancher2:index/getRoleTemplate:getRoleTemplate",
                 "majorVersion": 6,
                 "fields": {
+                    "external_rules": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "api_groups": {
+                                    "maxItemsOne": false
+                                },
+                                "non_resource_urls": {
+                                    "maxItemsOne": false
+                                },
+                                "resource_names": {
+                                    "maxItemsOne": false
+                                },
+                                "resources": {
+                                    "maxItemsOne": false
+                                },
+                                "verbs": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "role_template_ids": {
                         "maxItemsOne": false
                     },
