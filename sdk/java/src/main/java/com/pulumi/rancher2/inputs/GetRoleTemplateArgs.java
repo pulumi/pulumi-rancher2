@@ -6,7 +6,9 @@ package com.pulumi.rancher2.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.rancher2.inputs.GetRoleTemplateExternalRuleArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -32,6 +34,21 @@ public final class GetRoleTemplateArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * (Computed) External rules used for authorization. (list)
+     * 
+     */
+    @Import(name="externalRules")
+    private @Nullable Output<List<GetRoleTemplateExternalRuleArgs>> externalRules;
+
+    /**
+     * @return (Computed) External rules used for authorization. (list)
+     * 
+     */
+    public Optional<Output<List<GetRoleTemplateExternalRuleArgs>>> externalRules() {
+        return Optional.ofNullable(this.externalRules);
+    }
+
+    /**
      * The name of the Role Template (string)
      * 
      */
@@ -50,6 +67,7 @@ public final class GetRoleTemplateArgs extends com.pulumi.resources.InvokeArgs {
 
     private GetRoleTemplateArgs(GetRoleTemplateArgs $) {
         this.context = $.context;
+        this.externalRules = $.externalRules;
         this.name = $.name;
     }
 
@@ -90,6 +108,37 @@ public final class GetRoleTemplateArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder context(String context) {
             return context(Output.of(context));
+        }
+
+        /**
+         * @param externalRules (Computed) External rules used for authorization. (list)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalRules(@Nullable Output<List<GetRoleTemplateExternalRuleArgs>> externalRules) {
+            $.externalRules = externalRules;
+            return this;
+        }
+
+        /**
+         * @param externalRules (Computed) External rules used for authorization. (list)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalRules(List<GetRoleTemplateExternalRuleArgs> externalRules) {
+            return externalRules(Output.of(externalRules));
+        }
+
+        /**
+         * @param externalRules (Computed) External rules used for authorization. (list)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalRules(GetRoleTemplateExternalRuleArgs... externalRules) {
+            return externalRules(List.of(externalRules));
         }
 
         /**

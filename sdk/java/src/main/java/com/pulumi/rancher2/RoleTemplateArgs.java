@@ -5,6 +5,7 @@ package com.pulumi.rancher2;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.rancher2.inputs.RoleTemplateExternalRuleArgs;
 import com.pulumi.rancher2.inputs.RoleTemplateRuleArgs;
 import java.lang.Boolean;
 import java.lang.Object;
@@ -111,6 +112,21 @@ public final class RoleTemplateArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * External rules used for authorization. This field is required when `external=true` and no underlying ClusterRole exists. (list)
+     * 
+     */
+    @Import(name="externalRules")
+    private @Nullable Output<List<RoleTemplateExternalRuleArgs>> externalRules;
+
+    /**
+     * @return External rules used for authorization. This field is required when `external=true` and no underlying ClusterRole exists. (list)
+     * 
+     */
+    public Optional<Output<List<RoleTemplateExternalRuleArgs>>> externalRules() {
+        return Optional.ofNullable(this.externalRules);
+    }
+
+    /**
      * Hidden role template. Default `false` (bool)
      * 
      */
@@ -209,6 +225,7 @@ public final class RoleTemplateArgs extends com.pulumi.resources.ResourceArgs {
         this.defaultRole = $.defaultRole;
         this.description = $.description;
         this.external = $.external;
+        this.externalRules = $.externalRules;
         this.hidden = $.hidden;
         this.labels = $.labels;
         this.locked = $.locked;
@@ -359,6 +376,37 @@ public final class RoleTemplateArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder external(Boolean external) {
             return external(Output.of(external));
+        }
+
+        /**
+         * @param externalRules External rules used for authorization. This field is required when `external=true` and no underlying ClusterRole exists. (list)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalRules(@Nullable Output<List<RoleTemplateExternalRuleArgs>> externalRules) {
+            $.externalRules = externalRules;
+            return this;
+        }
+
+        /**
+         * @param externalRules External rules used for authorization. This field is required when `external=true` and no underlying ClusterRole exists. (list)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalRules(List<RoleTemplateExternalRuleArgs> externalRules) {
+            return externalRules(Output.of(externalRules));
+        }
+
+        /**
+         * @param externalRules External rules used for authorization. This field is required when `external=true` and no underlying ClusterRole exists. (list)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalRules(RoleTemplateExternalRuleArgs... externalRules) {
+            return externalRules(List.of(externalRules));
         }
 
         /**

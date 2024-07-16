@@ -81,7 +81,7 @@ namespace Pulumi.Rancher2
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster
+        /// Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
         /// </summary>
         [Output("inheritedClusterRoles")]
         public Output<ImmutableArray<string>> InheritedClusterRoles { get; private set; } = null!;
@@ -178,7 +178,7 @@ namespace Pulumi.Rancher2
         private InputList<string>? _inheritedClusterRoles;
 
         /// <summary>
-        /// Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster
+        /// Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
         /// </summary>
         public InputList<string> InheritedClusterRoles
         {
@@ -258,7 +258,7 @@ namespace Pulumi.Rancher2
         private InputList<string>? _inheritedClusterRoles;
 
         /// <summary>
-        /// Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster
+        /// Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
         /// </summary>
         public InputList<string> InheritedClusterRoles
         {

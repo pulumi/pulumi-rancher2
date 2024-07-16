@@ -296,6 +296,7 @@ __all__ = [
     'ProjectResourceQuotaNamespaceDefaultLimit',
     'ProjectResourceQuotaProjectLimit',
     'RegistryRegistry',
+    'RoleTemplateExternalRule',
     'RoleTemplateRule',
     'GetClusterAksConfigResult',
     'GetClusterAksConfigV2Result',
@@ -540,6 +541,7 @@ __all__ = [
     'GetProjectResourceQuotaNamespaceDefaultLimitResult',
     'GetProjectResourceQuotaProjectLimitResult',
     'GetRegistryRegistryResult',
+    'GetRoleTemplateExternalRuleResult',
     'GetRoleTemplateRuleResult',
 ]
 
@@ -1680,6 +1682,8 @@ class ClusterAksConfigV2(dict):
             suggest = "network_service_cidr"
         elif key == "nodePools":
             suggest = "node_pools"
+        elif key == "nodeResourceGroup":
+            suggest = "node_resource_group"
         elif key == "privateCluster":
             suggest = "private_cluster"
         elif key == "virtualNetwork":
@@ -1723,6 +1727,7 @@ class ClusterAksConfigV2(dict):
                  network_policy: Optional[str] = None,
                  network_service_cidr: Optional[str] = None,
                  node_pools: Optional[Sequence['outputs.ClusterAksConfigV2NodePool']] = None,
+                 node_resource_group: Optional[str] = None,
                  private_cluster: Optional[bool] = None,
                  subnet: Optional[str] = None,
                  tags: Optional[Mapping[str, Any]] = None,
@@ -1753,6 +1758,7 @@ class ClusterAksConfigV2(dict):
         :param str network_policy: The AKS network policy
         :param str network_service_cidr: The AKS network service cidr
         :param Sequence['ClusterAksConfigV2NodePoolArgs'] node_pools: The AKS node pools to use. Required if `import=false`
+        :param str node_resource_group: The AKS node resource group name
         :param bool private_cluster: Is AKS cluster private?
         :param str subnet: The AKS subnet
         :param Mapping[str, Any] tags: The AKS cluster tags
@@ -1804,6 +1810,8 @@ class ClusterAksConfigV2(dict):
             pulumi.set(__self__, "network_service_cidr", network_service_cidr)
         if node_pools is not None:
             pulumi.set(__self__, "node_pools", node_pools)
+        if node_resource_group is not None:
+            pulumi.set(__self__, "node_resource_group", node_resource_group)
         if private_cluster is not None:
             pulumi.set(__self__, "private_cluster", private_cluster)
         if subnet is not None:
@@ -2006,6 +2014,14 @@ class ClusterAksConfigV2(dict):
         The AKS node pools to use. Required if `import=false`
         """
         return pulumi.get(self, "node_pools")
+
+    @property
+    @pulumi.getter(name="nodeResourceGroup")
+    def node_resource_group(self) -> Optional[str]:
+        """
+        The AKS node resource group name
+        """
+        return pulumi.get(self, "node_resource_group")
 
     @property
     @pulumi.getter(name="privateCluster")
@@ -28497,6 +28513,94 @@ class RegistryRegistry(dict):
 
 
 @pulumi.output_type
+class RoleTemplateExternalRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiGroups":
+            suggest = "api_groups"
+        elif key == "nonResourceUrls":
+            suggest = "non_resource_urls"
+        elif key == "resourceNames":
+            suggest = "resource_names"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RoleTemplateExternalRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RoleTemplateExternalRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RoleTemplateExternalRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 api_groups: Optional[Sequence[str]] = None,
+                 non_resource_urls: Optional[Sequence[str]] = None,
+                 resource_names: Optional[Sequence[str]] = None,
+                 resources: Optional[Sequence[str]] = None,
+                 verbs: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] api_groups: Policy rule api groups
+        :param Sequence[str] non_resource_urls: Policy rule non resource urls
+        :param Sequence[str] resource_names: Policy rule resource names
+        :param Sequence[str] resources: Policy rule resources
+        :param Sequence[str] verbs: Policy rule verbs
+        """
+        if api_groups is not None:
+            pulumi.set(__self__, "api_groups", api_groups)
+        if non_resource_urls is not None:
+            pulumi.set(__self__, "non_resource_urls", non_resource_urls)
+        if resource_names is not None:
+            pulumi.set(__self__, "resource_names", resource_names)
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
+        if verbs is not None:
+            pulumi.set(__self__, "verbs", verbs)
+
+    @property
+    @pulumi.getter(name="apiGroups")
+    def api_groups(self) -> Optional[Sequence[str]]:
+        """
+        Policy rule api groups
+        """
+        return pulumi.get(self, "api_groups")
+
+    @property
+    @pulumi.getter(name="nonResourceUrls")
+    def non_resource_urls(self) -> Optional[Sequence[str]]:
+        """
+        Policy rule non resource urls
+        """
+        return pulumi.get(self, "non_resource_urls")
+
+    @property
+    @pulumi.getter(name="resourceNames")
+    def resource_names(self) -> Optional[Sequence[str]]:
+        """
+        Policy rule resource names
+        """
+        return pulumi.get(self, "resource_names")
+
+    @property
+    @pulumi.getter
+    def resources(self) -> Optional[Sequence[str]]:
+        """
+        Policy rule resources
+        """
+        return pulumi.get(self, "resources")
+
+    @property
+    @pulumi.getter
+    def verbs(self) -> Optional[Sequence[str]]:
+        """
+        Policy rule verbs
+        """
+        return pulumi.get(self, "verbs")
+
+
+@pulumi.output_type
 class RoleTemplateRule(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -29062,6 +29166,7 @@ class GetClusterAksConfigV2Result(dict):
                  network_pod_cidr: str,
                  network_policy: str,
                  network_service_cidr: str,
+                 node_resource_group: str,
                  private_cluster: bool,
                  resource_group: str,
                  resource_location: str,
@@ -29092,6 +29197,7 @@ class GetClusterAksConfigV2Result(dict):
         :param str network_pod_cidr: The AKS network pod cidr
         :param str network_policy: The AKS network policy
         :param str network_service_cidr: The AKS network service cidr
+        :param str node_resource_group: The AKS node resource group name
         :param bool private_cluster: Is AKS cluster private?
         :param str resource_group: The AKS resource group
         :param str resource_location: The AKS resource location
@@ -29122,6 +29228,7 @@ class GetClusterAksConfigV2Result(dict):
         pulumi.set(__self__, "network_pod_cidr", network_pod_cidr)
         pulumi.set(__self__, "network_policy", network_policy)
         pulumi.set(__self__, "network_service_cidr", network_service_cidr)
+        pulumi.set(__self__, "node_resource_group", node_resource_group)
         pulumi.set(__self__, "private_cluster", private_cluster)
         pulumi.set(__self__, "resource_group", resource_group)
         pulumi.set(__self__, "resource_location", resource_location)
@@ -29257,6 +29364,14 @@ class GetClusterAksConfigV2Result(dict):
         The AKS network service cidr
         """
         return pulumi.get(self, "network_service_cidr")
+
+    @property
+    @pulumi.getter(name="nodeResourceGroup")
+    def node_resource_group(self) -> str:
+        """
+        The AKS node resource group name
+        """
+        return pulumi.get(self, "node_resource_group")
 
     @property
     @pulumi.getter(name="privateCluster")
@@ -44277,6 +44392,73 @@ class GetRegistryRegistryResult(dict):
     @pulumi.getter
     def username(self) -> Optional[str]:
         return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class GetRoleTemplateExternalRuleResult(dict):
+    def __init__(__self__, *,
+                 api_groups: Optional[Sequence[str]] = None,
+                 non_resource_urls: Optional[Sequence[str]] = None,
+                 resource_names: Optional[Sequence[str]] = None,
+                 resources: Optional[Sequence[str]] = None,
+                 verbs: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] api_groups: Policy rule api groups
+        :param Sequence[str] non_resource_urls: Policy rule non resource urls
+        :param Sequence[str] resource_names: Policy rule resource names
+        :param Sequence[str] resources: Policy rule resources
+        :param Sequence[str] verbs: Policy rule verbs
+        """
+        if api_groups is not None:
+            pulumi.set(__self__, "api_groups", api_groups)
+        if non_resource_urls is not None:
+            pulumi.set(__self__, "non_resource_urls", non_resource_urls)
+        if resource_names is not None:
+            pulumi.set(__self__, "resource_names", resource_names)
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
+        if verbs is not None:
+            pulumi.set(__self__, "verbs", verbs)
+
+    @property
+    @pulumi.getter(name="apiGroups")
+    def api_groups(self) -> Optional[Sequence[str]]:
+        """
+        Policy rule api groups
+        """
+        return pulumi.get(self, "api_groups")
+
+    @property
+    @pulumi.getter(name="nonResourceUrls")
+    def non_resource_urls(self) -> Optional[Sequence[str]]:
+        """
+        Policy rule non resource urls
+        """
+        return pulumi.get(self, "non_resource_urls")
+
+    @property
+    @pulumi.getter(name="resourceNames")
+    def resource_names(self) -> Optional[Sequence[str]]:
+        """
+        Policy rule resource names
+        """
+        return pulumi.get(self, "resource_names")
+
+    @property
+    @pulumi.getter
+    def resources(self) -> Optional[Sequence[str]]:
+        """
+        Policy rule resources
+        """
+        return pulumi.get(self, "resources")
+
+    @property
+    @pulumi.getter
+    def verbs(self) -> Optional[Sequence[str]]:
+        """
+        Policy rule verbs
+        """
+        return pulumi.get(self, "verbs")
 
 
 @pulumi.output_type

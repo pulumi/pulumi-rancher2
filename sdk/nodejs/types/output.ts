@@ -399,6 +399,10 @@ export interface ClusterAksConfigV2 {
      */
     nodePools?: outputs.ClusterAksConfigV2NodePool[];
     /**
+     * The AKS node resource group name
+     */
+    nodeResourceGroup: string;
+    /**
      * Is AKS cluster private?
      */
     privateCluster: boolean;
@@ -4329,6 +4333,10 @@ export interface GetClusterAksConfigV2 {
      * The AKS node pools to use. Required if `import=false`
      */
     nodePools?: outputs.GetClusterAksConfigV2NodePool[];
+    /**
+     * The AKS node resource group name
+     */
+    nodeResourceGroup: string;
     /**
      * Is AKS cluster private?
      */
@@ -8410,6 +8418,29 @@ export interface GetRegistryRegistry {
     username?: string;
 }
 
+export interface GetRoleTemplateExternalRule {
+    /**
+     * Policy rule api groups
+     */
+    apiGroups?: string[];
+    /**
+     * Policy rule non resource urls
+     */
+    nonResourceUrls?: string[];
+    /**
+     * Policy rule resource names
+     */
+    resourceNames?: string[];
+    /**
+     * Policy rule resources
+     */
+    resources?: string[];
+    /**
+     * Policy rule verbs
+     */
+    verbs?: string[];
+}
+
 export interface GetRoleTemplateRule {
     /**
      * Policy rule api groups
@@ -10445,6 +10476,29 @@ export interface RegistryRegistry {
     address: string;
     password?: string;
     username?: string;
+}
+
+export interface RoleTemplateExternalRule {
+    /**
+     * Policy rule api groups
+     */
+    apiGroups?: string[];
+    /**
+     * Policy rule non resource urls
+     */
+    nonResourceUrls?: string[];
+    /**
+     * Policy rule resource names
+     */
+    resourceNames?: string[];
+    /**
+     * Policy rule resources
+     */
+    resources?: string[];
+    /**
+     * Policy rule verbs
+     */
+    verbs?: string[];
 }
 
 export interface RoleTemplateRule {

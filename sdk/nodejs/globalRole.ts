@@ -77,7 +77,7 @@ export class GlobalRole extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster
+     * Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
      */
     public readonly inheritedClusterRoles!: pulumi.Output<string[] | undefined>;
     /**
@@ -151,7 +151,7 @@ export interface GlobalRoleState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster
+     * Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
      */
     inheritedClusterRoles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -185,7 +185,7 @@ export interface GlobalRoleArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster
+     * Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
      */
     inheritedClusterRoles?: pulumi.Input<pulumi.Input<string>[]>;
     /**

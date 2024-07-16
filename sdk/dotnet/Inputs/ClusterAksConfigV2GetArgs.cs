@@ -157,6 +157,12 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
+        /// The AKS node resource group name
+        /// </summary>
+        [Input("nodeResourceGroup")]
+        public Input<string>? NodeResourceGroup { get; set; }
+
+        /// <summary>
         /// Is AKS cluster private?
         /// </summary>
         [Input("privateCluster")]

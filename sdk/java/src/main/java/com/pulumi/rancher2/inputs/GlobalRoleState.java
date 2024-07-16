@@ -66,14 +66,14 @@ public final class GlobalRoleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster
+     * Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
      * 
      */
     @Import(name="inheritedClusterRoles")
     private @Nullable Output<List<String>> inheritedClusterRoles;
 
     /**
-     * @return Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster
+     * @return Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
      * 
      */
     public Optional<Output<List<String>>> inheritedClusterRoles() {
@@ -235,7 +235,7 @@ public final class GlobalRoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param inheritedClusterRoles Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster
+         * @param inheritedClusterRoles Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class GlobalRoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param inheritedClusterRoles Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster
+         * @param inheritedClusterRoles Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class GlobalRoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param inheritedClusterRoles Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster
+         * @param inheritedClusterRoles Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
          * 
          * @return builder
          * 

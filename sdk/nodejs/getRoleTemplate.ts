@@ -25,6 +25,7 @@ export function getRoleTemplate(args: GetRoleTemplateArgs, opts?: pulumi.InvokeO
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getRoleTemplate:getRoleTemplate", {
         "context": args.context,
+        "externalRules": args.externalRules,
         "name": args.name,
     }, opts);
 }
@@ -37,6 +38,10 @@ export interface GetRoleTemplateArgs {
      * Role template context. `cluster` and `project` values are supported (string)
      */
     context?: string;
+    /**
+     * (Computed) External rules used for authorization. (list)
+     */
+    externalRules?: inputs.GetRoleTemplateExternalRule[];
     /**
      * The name of the Role Template (string)
      */
@@ -72,6 +77,10 @@ export interface GetRoleTemplateResult {
      * (Computed) External role template (bool)
      */
     readonly external: boolean;
+    /**
+     * (Computed) External rules used for authorization. (list)
+     */
+    readonly externalRules: outputs.GetRoleTemplateExternalRule[];
     /**
      * (Computed) Hidden role template (bool)
      */
@@ -124,6 +133,10 @@ export interface GetRoleTemplateOutputArgs {
      * Role template context. `cluster` and `project` values are supported (string)
      */
     context?: pulumi.Input<string>;
+    /**
+     * (Computed) External rules used for authorization. (list)
+     */
+    externalRules?: pulumi.Input<pulumi.Input<inputs.GetRoleTemplateExternalRuleArgs>[]>;
     /**
      * The name of the Role Template (string)
      */

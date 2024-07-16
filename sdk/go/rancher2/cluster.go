@@ -767,12 +767,16 @@ import (
 //				Name:        pulumi.String("foo"),
 //				Description: pulumi.String("Terraform AKS cluster"),
 //				AksConfigV2: &rancher2.ClusterAksConfigV2Args{
-//					CloudCredentialId: foo_aks.ID(),
-//					ResourceGroup:     pulumi.String("<resource-group>"),
-//					ResourceLocation:  pulumi.String("<resource-location>"),
-//					DnsPrefix:         pulumi.String("<dns-prefix>"),
-//					KubernetesVersion: pulumi.String("1.24.6"),
-//					NetworkPlugin:     pulumi.String("<network-plugin>"),
+//					CloudCredentialId:           foo_aks.ID(),
+//					ResourceGroup:               pulumi.String("<resource-group>"),
+//					ResourceLocation:            pulumi.String("<resource-location>"),
+//					DnsPrefix:                   pulumi.String("<dns-prefix>"),
+//					KubernetesVersion:           pulumi.String("1.24.6"),
+//					NetworkPlugin:               pulumi.String("<network-plugin>"),
+//					VirtualNetwork:              pulumi.String("<virtual-network>"),
+//					VirtualNetworkResourceGroup: pulumi.String("<virtual-network-resource-group>"),
+//					Subnet:                      pulumi.String("<subnet>"),
+//					NodeResourceGroup:           pulumi.String("<node-resource-group>"),
 //					NodePools: rancher2.ClusterAksConfigV2NodePoolArray{
 //						&rancher2.ClusterAksConfigV2NodePoolArgs{
 //							AvailabilityZones: pulumi.StringArray{

@@ -917,6 +917,10 @@ import javax.annotation.Nullable;
  *                 .dnsPrefix("<dns-prefix>")
  *                 .kubernetesVersion("1.24.6")
  *                 .networkPlugin("<network-plugin>")
+ *                 .virtualNetwork("<virtual-network>")
+ *                 .virtualNetworkResourceGroup("<virtual-network-resource-group>")
+ *                 .subnet("<subnet>")
+ *                 .nodeResourceGroup("<node-resource-group>")
  *                 .nodePools(                
  *                     ClusterAksConfigV2NodePoolArgs.builder()
  *                         .availabilityZones(                        

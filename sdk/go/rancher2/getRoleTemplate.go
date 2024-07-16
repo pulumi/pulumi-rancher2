@@ -52,6 +52,8 @@ func LookupRoleTemplate(ctx *pulumi.Context, args *LookupRoleTemplateArgs, opts 
 type LookupRoleTemplateArgs struct {
 	// Role template context. `cluster` and `project` values are supported (string)
 	Context *string `pulumi:"context"`
+	// (Computed) External rules used for authorization. (list)
+	ExternalRules []GetRoleTemplateExternalRule `pulumi:"externalRules"`
 	// The name of the Role Template (string)
 	Name string `pulumi:"name"`
 }
@@ -71,6 +73,8 @@ type LookupRoleTemplateResult struct {
 	Description string `pulumi:"description"`
 	// (Computed) External role template (bool)
 	External bool `pulumi:"external"`
+	// (Computed) External rules used for authorization. (list)
+	ExternalRules []GetRoleTemplateExternalRule `pulumi:"externalRules"`
 	// (Computed) Hidden role template (bool)
 	Hidden bool `pulumi:"hidden"`
 	// The provider-assigned unique ID for this managed resource.
@@ -103,6 +107,8 @@ func LookupRoleTemplateOutput(ctx *pulumi.Context, args LookupRoleTemplateOutput
 type LookupRoleTemplateOutputArgs struct {
 	// Role template context. `cluster` and `project` values are supported (string)
 	Context pulumi.StringPtrInput `pulumi:"context"`
+	// (Computed) External rules used for authorization. (list)
+	ExternalRules GetRoleTemplateExternalRuleArrayInput `pulumi:"externalRules"`
 	// The name of the Role Template (string)
 	Name pulumi.StringInput `pulumi:"name"`
 }
@@ -158,6 +164,11 @@ func (o LookupRoleTemplateResultOutput) Description() pulumi.StringOutput {
 // (Computed) External role template (bool)
 func (o LookupRoleTemplateResultOutput) External() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupRoleTemplateResult) bool { return v.External }).(pulumi.BoolOutput)
+}
+
+// (Computed) External rules used for authorization. (list)
+func (o LookupRoleTemplateResultOutput) ExternalRules() GetRoleTemplateExternalRuleArrayOutput {
+	return o.ApplyT(func(v LookupRoleTemplateResult) []GetRoleTemplateExternalRule { return v.ExternalRules }).(GetRoleTemplateExternalRuleArrayOutput)
 }
 
 // (Computed) Hidden role template (bool)

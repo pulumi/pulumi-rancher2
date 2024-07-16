@@ -146,6 +146,12 @@ namespace Pulumi.Rancher2
         public Output<bool?> External { get; private set; } = null!;
 
         /// <summary>
+        /// External rules used for authorization. This field is required when `external=true` and no underlying ClusterRole exists. (list)
+        /// </summary>
+        [Output("externalRules")]
+        public Output<ImmutableArray<Outputs.RoleTemplateExternalRule>> ExternalRules { get; private set; } = null!;
+
+        /// <summary>
         /// Hidden role template. Default `false` (bool)
         /// </summary>
         [Output("hidden")]
@@ -269,6 +275,18 @@ namespace Pulumi.Rancher2
         [Input("external")]
         public Input<bool>? External { get; set; }
 
+        [Input("externalRules")]
+        private InputList<Inputs.RoleTemplateExternalRuleArgs>? _externalRules;
+
+        /// <summary>
+        /// External rules used for authorization. This field is required when `external=true` and no underlying ClusterRole exists. (list)
+        /// </summary>
+        public InputList<Inputs.RoleTemplateExternalRuleArgs> ExternalRules
+        {
+            get => _externalRules ?? (_externalRules = new InputList<Inputs.RoleTemplateExternalRuleArgs>());
+            set => _externalRules = value;
+        }
+
         /// <summary>
         /// Hidden role template. Default `false` (bool)
         /// </summary>
@@ -378,6 +396,18 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("external")]
         public Input<bool>? External { get; set; }
+
+        [Input("externalRules")]
+        private InputList<Inputs.RoleTemplateExternalRuleGetArgs>? _externalRules;
+
+        /// <summary>
+        /// External rules used for authorization. This field is required when `external=true` and no underlying ClusterRole exists. (list)
+        /// </summary>
+        public InputList<Inputs.RoleTemplateExternalRuleGetArgs> ExternalRules
+        {
+            get => _externalRules ?? (_externalRules = new InputList<Inputs.RoleTemplateExternalRuleGetArgs>());
+            set => _externalRules = value;
+        }
 
         /// <summary>
         /// Hidden role template. Default `false` (bool)

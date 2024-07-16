@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.rancher2.RoleTemplateArgs;
 import com.pulumi.rancher2.Utilities;
 import com.pulumi.rancher2.inputs.RoleTemplateState;
+import com.pulumi.rancher2.outputs.RoleTemplateExternalRule;
 import com.pulumi.rancher2.outputs.RoleTemplateRule;
 import java.lang.Boolean;
 import java.lang.Object;
@@ -220,6 +221,20 @@ public class RoleTemplate extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> external() {
         return Codegen.optional(this.external);
+    }
+    /**
+     * External rules used for authorization. This field is required when `external=true` and no underlying ClusterRole exists. (list)
+     * 
+     */
+    @Export(name="externalRules", refs={List.class,RoleTemplateExternalRule.class}, tree="[0,1]")
+    private Output<List<RoleTemplateExternalRule>> externalRules;
+
+    /**
+     * @return External rules used for authorization. This field is required when `external=true` and no underlying ClusterRole exists. (list)
+     * 
+     */
+    public Output<List<RoleTemplateExternalRule>> externalRules() {
+        return this.externalRules;
     }
     /**
      * Hidden role template. Default `false` (bool)

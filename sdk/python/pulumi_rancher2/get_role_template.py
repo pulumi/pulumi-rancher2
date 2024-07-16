@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetRoleTemplateResult',
@@ -22,7 +23,7 @@ class GetRoleTemplateResult:
     """
     A collection of values returned by getRoleTemplate.
     """
-    def __init__(__self__, administrative=None, annotations=None, builtin=None, context=None, default_role=None, description=None, external=None, hidden=None, id=None, labels=None, locked=None, name=None, role_template_ids=None, rules=None):
+    def __init__(__self__, administrative=None, annotations=None, builtin=None, context=None, default_role=None, description=None, external=None, external_rules=None, hidden=None, id=None, labels=None, locked=None, name=None, role_template_ids=None, rules=None):
         if administrative and not isinstance(administrative, bool):
             raise TypeError("Expected argument 'administrative' to be a bool")
         pulumi.set(__self__, "administrative", administrative)
@@ -44,6 +45,9 @@ class GetRoleTemplateResult:
         if external and not isinstance(external, bool):
             raise TypeError("Expected argument 'external' to be a bool")
         pulumi.set(__self__, "external", external)
+        if external_rules and not isinstance(external_rules, list):
+            raise TypeError("Expected argument 'external_rules' to be a list")
+        pulumi.set(__self__, "external_rules", external_rules)
         if hidden and not isinstance(hidden, bool):
             raise TypeError("Expected argument 'hidden' to be a bool")
         pulumi.set(__self__, "hidden", hidden)
@@ -120,6 +124,14 @@ class GetRoleTemplateResult:
         return pulumi.get(self, "external")
 
     @property
+    @pulumi.getter(name="externalRules")
+    def external_rules(self) -> Sequence['outputs.GetRoleTemplateExternalRuleResult']:
+        """
+        (Computed) External rules used for authorization. (list)
+        """
+        return pulumi.get(self, "external_rules")
+
+    @property
     @pulumi.getter
     def hidden(self) -> bool:
         """
@@ -186,6 +198,7 @@ class AwaitableGetRoleTemplateResult(GetRoleTemplateResult):
             default_role=self.default_role,
             description=self.description,
             external=self.external,
+            external_rules=self.external_rules,
             hidden=self.hidden,
             id=self.id,
             labels=self.labels,
@@ -196,6 +209,7 @@ class AwaitableGetRoleTemplateResult(GetRoleTemplateResult):
 
 
 def get_role_template(context: Optional[str] = None,
+                      external_rules: Optional[Sequence[pulumi.InputType['GetRoleTemplateExternalRuleArgs']]] = None,
                       name: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRoleTemplateResult:
     """
@@ -212,10 +226,12 @@ def get_role_template(context: Optional[str] = None,
 
 
     :param str context: Role template context. `cluster` and `project` values are supported (string)
+    :param Sequence[pulumi.InputType['GetRoleTemplateExternalRuleArgs']] external_rules: (Computed) External rules used for authorization. (list)
     :param str name: The name of the Role Template (string)
     """
     __args__ = dict()
     __args__['context'] = context
+    __args__['externalRules'] = external_rules
     __args__['name'] = name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('rancher2:index/getRoleTemplate:getRoleTemplate', __args__, opts=opts, typ=GetRoleTemplateResult).value
@@ -228,6 +244,7 @@ def get_role_template(context: Optional[str] = None,
         default_role=pulumi.get(__ret__, 'default_role'),
         description=pulumi.get(__ret__, 'description'),
         external=pulumi.get(__ret__, 'external'),
+        external_rules=pulumi.get(__ret__, 'external_rules'),
         hidden=pulumi.get(__ret__, 'hidden'),
         id=pulumi.get(__ret__, 'id'),
         labels=pulumi.get(__ret__, 'labels'),
@@ -239,6 +256,7 @@ def get_role_template(context: Optional[str] = None,
 
 @_utilities.lift_output_func(get_role_template)
 def get_role_template_output(context: Optional[pulumi.Input[Optional[str]]] = None,
+                             external_rules: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetRoleTemplateExternalRuleArgs']]]]] = None,
                              name: Optional[pulumi.Input[str]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRoleTemplateResult]:
     """
@@ -255,6 +273,7 @@ def get_role_template_output(context: Optional[pulumi.Input[Optional[str]]] = No
 
 
     :param str context: Role template context. `cluster` and `project` values are supported (string)
+    :param Sequence[pulumi.InputType['GetRoleTemplateExternalRuleArgs']] external_rules: (Computed) External rules used for authorization. (list)
     :param str name: The name of the Role Template (string)
     """
     ...

@@ -1779,6 +1779,10 @@ class Cluster(pulumi.CustomResource):
                 dns_prefix="<dns-prefix>",
                 kubernetes_version="1.24.6",
                 network_plugin="<network-plugin>",
+                virtual_network="<virtual-network>",
+                virtual_network_resource_group="<virtual-network-resource-group>",
+                subnet="<subnet>",
+                node_resource_group="<node-resource-group>",
                 node_pools=[
                     rancher2.ClusterAksConfigV2NodePoolArgs(
                         availability_zones=[
@@ -2373,6 +2377,10 @@ class Cluster(pulumi.CustomResource):
                 dns_prefix="<dns-prefix>",
                 kubernetes_version="1.24.6",
                 network_plugin="<network-plugin>",
+                virtual_network="<virtual-network>",
+                virtual_network_resource_group="<virtual-network-resource-group>",
+                subnet="<subnet>",
+                node_resource_group="<node-resource-group>",
                 node_pools=[
                     rancher2.ClusterAksConfigV2NodePoolArgs(
                         availability_zones=[

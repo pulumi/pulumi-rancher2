@@ -102,6 +102,10 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterAksConfigV2NodePoolResult> NodePools;
         /// <summary>
+        /// The AKS node resource group name
+        /// </summary>
+        public readonly string NodeResourceGroup;
+        /// <summary>
         /// Is AKS cluster private?
         /// </summary>
         public readonly bool PrivateCluster;
@@ -176,6 +180,8 @@ namespace Pulumi.Rancher2.Outputs
 
             ImmutableArray<Outputs.GetClusterAksConfigV2NodePoolResult> nodePools,
 
+            string nodeResourceGroup,
+
             bool privateCluster,
 
             string resourceGroup,
@@ -212,6 +218,7 @@ namespace Pulumi.Rancher2.Outputs
             NetworkPolicy = networkPolicy;
             NetworkServiceCidr = networkServiceCidr;
             NodePools = nodePools;
+            NodeResourceGroup = nodeResourceGroup;
             PrivateCluster = privateCluster;
             ResourceGroup = resourceGroup;
             ResourceLocation = resourceLocation;

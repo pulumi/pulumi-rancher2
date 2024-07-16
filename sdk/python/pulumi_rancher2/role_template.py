@@ -22,6 +22,7 @@ class RoleTemplateArgs:
                  default_role: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  external: Optional[pulumi.Input[bool]] = None,
+                 external_rules: Optional[pulumi.Input[Sequence[pulumi.Input['RoleTemplateExternalRuleArgs']]]] = None,
                  hidden: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
@@ -36,6 +37,7 @@ class RoleTemplateArgs:
         :param pulumi.Input[bool] default_role: Default role template for new created cluster or project. Default `false` (bool)
         :param pulumi.Input[str] description: Role template description (string)
         :param pulumi.Input[bool] external: External role template. Default `false` (bool)
+        :param pulumi.Input[Sequence[pulumi.Input['RoleTemplateExternalRuleArgs']]] external_rules: External rules used for authorization. This field is required when `external=true` and no underlying ClusterRole exists. (list)
         :param pulumi.Input[bool] hidden: Hidden role template. Default `false` (bool)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for role template object (map)
         :param pulumi.Input[bool] locked: Locked role template. Default `false` (bool)
@@ -55,6 +57,8 @@ class RoleTemplateArgs:
             pulumi.set(__self__, "description", description)
         if external is not None:
             pulumi.set(__self__, "external", external)
+        if external_rules is not None:
+            pulumi.set(__self__, "external_rules", external_rules)
         if hidden is not None:
             pulumi.set(__self__, "hidden", hidden)
         if labels is not None:
@@ -141,6 +145,18 @@ class RoleTemplateArgs:
         pulumi.set(self, "external", value)
 
     @property
+    @pulumi.getter(name="externalRules")
+    def external_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RoleTemplateExternalRuleArgs']]]]:
+        """
+        External rules used for authorization. This field is required when `external=true` and no underlying ClusterRole exists. (list)
+        """
+        return pulumi.get(self, "external_rules")
+
+    @external_rules.setter
+    def external_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RoleTemplateExternalRuleArgs']]]]):
+        pulumi.set(self, "external_rules", value)
+
+    @property
     @pulumi.getter
     def hidden(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -223,6 +239,7 @@ class _RoleTemplateState:
                  default_role: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  external: Optional[pulumi.Input[bool]] = None,
+                 external_rules: Optional[pulumi.Input[Sequence[pulumi.Input['RoleTemplateExternalRuleArgs']]]] = None,
                  hidden: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
@@ -238,6 +255,7 @@ class _RoleTemplateState:
         :param pulumi.Input[bool] default_role: Default role template for new created cluster or project. Default `false` (bool)
         :param pulumi.Input[str] description: Role template description (string)
         :param pulumi.Input[bool] external: External role template. Default `false` (bool)
+        :param pulumi.Input[Sequence[pulumi.Input['RoleTemplateExternalRuleArgs']]] external_rules: External rules used for authorization. This field is required when `external=true` and no underlying ClusterRole exists. (list)
         :param pulumi.Input[bool] hidden: Hidden role template. Default `false` (bool)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for role template object (map)
         :param pulumi.Input[bool] locked: Locked role template. Default `false` (bool)
@@ -259,6 +277,8 @@ class _RoleTemplateState:
             pulumi.set(__self__, "description", description)
         if external is not None:
             pulumi.set(__self__, "external", external)
+        if external_rules is not None:
+            pulumi.set(__self__, "external_rules", external_rules)
         if hidden is not None:
             pulumi.set(__self__, "hidden", hidden)
         if labels is not None:
@@ -357,6 +377,18 @@ class _RoleTemplateState:
         pulumi.set(self, "external", value)
 
     @property
+    @pulumi.getter(name="externalRules")
+    def external_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RoleTemplateExternalRuleArgs']]]]:
+        """
+        External rules used for authorization. This field is required when `external=true` and no underlying ClusterRole exists. (list)
+        """
+        return pulumi.get(self, "external_rules")
+
+    @external_rules.setter
+    def external_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RoleTemplateExternalRuleArgs']]]]):
+        pulumi.set(self, "external_rules", value)
+
+    @property
     @pulumi.getter
     def hidden(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -440,6 +472,7 @@ class RoleTemplate(pulumi.CustomResource):
                  default_role: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  external: Optional[pulumi.Input[bool]] = None,
+                 external_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoleTemplateExternalRuleArgs']]]]] = None,
                  hidden: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
@@ -504,6 +537,7 @@ class RoleTemplate(pulumi.CustomResource):
         :param pulumi.Input[bool] default_role: Default role template for new created cluster or project. Default `false` (bool)
         :param pulumi.Input[str] description: Role template description (string)
         :param pulumi.Input[bool] external: External role template. Default `false` (bool)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoleTemplateExternalRuleArgs']]]] external_rules: External rules used for authorization. This field is required when `external=true` and no underlying ClusterRole exists. (list)
         :param pulumi.Input[bool] hidden: Hidden role template. Default `false` (bool)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for role template object (map)
         :param pulumi.Input[bool] locked: Locked role template. Default `false` (bool)
@@ -587,6 +621,7 @@ class RoleTemplate(pulumi.CustomResource):
                  default_role: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  external: Optional[pulumi.Input[bool]] = None,
+                 external_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoleTemplateExternalRuleArgs']]]]] = None,
                  hidden: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
@@ -608,6 +643,7 @@ class RoleTemplate(pulumi.CustomResource):
             __props__.__dict__["default_role"] = default_role
             __props__.__dict__["description"] = description
             __props__.__dict__["external"] = external
+            __props__.__dict__["external_rules"] = external_rules
             __props__.__dict__["hidden"] = hidden
             __props__.__dict__["labels"] = labels
             __props__.__dict__["locked"] = locked
@@ -632,6 +668,7 @@ class RoleTemplate(pulumi.CustomResource):
             default_role: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             external: Optional[pulumi.Input[bool]] = None,
+            external_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoleTemplateExternalRuleArgs']]]]] = None,
             hidden: Optional[pulumi.Input[bool]] = None,
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             locked: Optional[pulumi.Input[bool]] = None,
@@ -652,6 +689,7 @@ class RoleTemplate(pulumi.CustomResource):
         :param pulumi.Input[bool] default_role: Default role template for new created cluster or project. Default `false` (bool)
         :param pulumi.Input[str] description: Role template description (string)
         :param pulumi.Input[bool] external: External role template. Default `false` (bool)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoleTemplateExternalRuleArgs']]]] external_rules: External rules used for authorization. This field is required when `external=true` and no underlying ClusterRole exists. (list)
         :param pulumi.Input[bool] hidden: Hidden role template. Default `false` (bool)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for role template object (map)
         :param pulumi.Input[bool] locked: Locked role template. Default `false` (bool)
@@ -670,6 +708,7 @@ class RoleTemplate(pulumi.CustomResource):
         __props__.__dict__["default_role"] = default_role
         __props__.__dict__["description"] = description
         __props__.__dict__["external"] = external
+        __props__.__dict__["external_rules"] = external_rules
         __props__.__dict__["hidden"] = hidden
         __props__.__dict__["labels"] = labels
         __props__.__dict__["locked"] = locked
@@ -733,6 +772,14 @@ class RoleTemplate(pulumi.CustomResource):
         External role template. Default `false` (bool)
         """
         return pulumi.get(self, "external")
+
+    @property
+    @pulumi.getter(name="externalRules")
+    def external_rules(self) -> pulumi.Output[Sequence['outputs.RoleTemplateExternalRule']]:
+        """
+        External rules used for authorization. This field is required when `external=true` and no underlying ClusterRole exists. (list)
+        """
+        return pulumi.get(self, "external_rules")
 
     @property
     @pulumi.getter
