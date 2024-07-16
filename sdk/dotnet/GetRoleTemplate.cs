@@ -69,6 +69,18 @@ namespace Pulumi.Rancher2
         [Input("context")]
         public string? Context { get; set; }
 
+        [Input("externalRules")]
+        private List<Inputs.GetRoleTemplateExternalRuleArgs>? _externalRules;
+
+        /// <summary>
+        /// (Computed) External rules used for authorization. (list)
+        /// </summary>
+        public List<Inputs.GetRoleTemplateExternalRuleArgs> ExternalRules
+        {
+            get => _externalRules ?? (_externalRules = new List<Inputs.GetRoleTemplateExternalRuleArgs>());
+            set => _externalRules = value;
+        }
+
         /// <summary>
         /// The name of the Role Template (string)
         /// </summary>
@@ -88,6 +100,18 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("context")]
         public Input<string>? Context { get; set; }
+
+        [Input("externalRules")]
+        private InputList<Inputs.GetRoleTemplateExternalRuleInputArgs>? _externalRules;
+
+        /// <summary>
+        /// (Computed) External rules used for authorization. (list)
+        /// </summary>
+        public InputList<Inputs.GetRoleTemplateExternalRuleInputArgs> ExternalRules
+        {
+            get => _externalRules ?? (_externalRules = new InputList<Inputs.GetRoleTemplateExternalRuleInputArgs>());
+            set => _externalRules = value;
+        }
 
         /// <summary>
         /// The name of the Role Template (string)
@@ -131,6 +155,10 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly bool External;
         /// <summary>
+        /// (Computed) External rules used for authorization. (list)
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetRoleTemplateExternalRuleResult> ExternalRules;
+        /// <summary>
         /// (Computed) Hidden role template (bool)
         /// </summary>
         public readonly bool Hidden;
@@ -172,6 +200,8 @@ namespace Pulumi.Rancher2
 
             bool external,
 
+            ImmutableArray<Outputs.GetRoleTemplateExternalRuleResult> externalRules,
+
             bool hidden,
 
             string id,
@@ -193,6 +223,7 @@ namespace Pulumi.Rancher2
             DefaultRole = defaultRole;
             Description = description;
             External = external;
+            ExternalRules = externalRules;
             Hidden = hidden;
             Id = id;
             Labels = labels;

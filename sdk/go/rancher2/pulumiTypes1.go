@@ -13,6 +13,76 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetNotifierSlackConfig struct {
+	// Slack default channel
+	DefaultRecipient string `pulumi:"defaultRecipient"`
+	// Slack proxy URL
+	ProxyUrl *string `pulumi:"proxyUrl"`
+	// Slack URL
+	Url string `pulumi:"url"`
+}
+
+// GetNotifierSlackConfigInput is an input type that accepts GetNotifierSlackConfigArgs and GetNotifierSlackConfigOutput values.
+// You can construct a concrete instance of `GetNotifierSlackConfigInput` via:
+//
+//	GetNotifierSlackConfigArgs{...}
+type GetNotifierSlackConfigInput interface {
+	pulumi.Input
+
+	ToGetNotifierSlackConfigOutput() GetNotifierSlackConfigOutput
+	ToGetNotifierSlackConfigOutputWithContext(context.Context) GetNotifierSlackConfigOutput
+}
+
+type GetNotifierSlackConfigArgs struct {
+	// Slack default channel
+	DefaultRecipient pulumi.StringInput `pulumi:"defaultRecipient"`
+	// Slack proxy URL
+	ProxyUrl pulumi.StringPtrInput `pulumi:"proxyUrl"`
+	// Slack URL
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (GetNotifierSlackConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotifierSlackConfig)(nil)).Elem()
+}
+
+func (i GetNotifierSlackConfigArgs) ToGetNotifierSlackConfigOutput() GetNotifierSlackConfigOutput {
+	return i.ToGetNotifierSlackConfigOutputWithContext(context.Background())
+}
+
+func (i GetNotifierSlackConfigArgs) ToGetNotifierSlackConfigOutputWithContext(ctx context.Context) GetNotifierSlackConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNotifierSlackConfigOutput)
+}
+
+type GetNotifierSlackConfigOutput struct{ *pulumi.OutputState }
+
+func (GetNotifierSlackConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotifierSlackConfig)(nil)).Elem()
+}
+
+func (o GetNotifierSlackConfigOutput) ToGetNotifierSlackConfigOutput() GetNotifierSlackConfigOutput {
+	return o
+}
+
+func (o GetNotifierSlackConfigOutput) ToGetNotifierSlackConfigOutputWithContext(ctx context.Context) GetNotifierSlackConfigOutput {
+	return o
+}
+
+// Slack default channel
+func (o GetNotifierSlackConfigOutput) DefaultRecipient() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotifierSlackConfig) string { return v.DefaultRecipient }).(pulumi.StringOutput)
+}
+
+// Slack proxy URL
+func (o GetNotifierSlackConfigOutput) ProxyUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNotifierSlackConfig) *string { return v.ProxyUrl }).(pulumi.StringPtrOutput)
+}
+
+// Slack URL
+func (o GetNotifierSlackConfigOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotifierSlackConfig) string { return v.Url }).(pulumi.StringOutput)
+}
+
 type GetNotifierSmtpConfig struct {
 	// SMTP default recipient address
 	DefaultRecipient string `pulumi:"defaultRecipient"`
@@ -3247,6 +3317,139 @@ func (o GetRegistryRegistryArrayOutput) Index(i pulumi.IntInput) GetRegistryRegi
 	}).(GetRegistryRegistryOutput)
 }
 
+type GetRoleTemplateExternalRule struct {
+	// Policy rule api groups
+	ApiGroups []string `pulumi:"apiGroups"`
+	// Policy rule non resource urls
+	NonResourceUrls []string `pulumi:"nonResourceUrls"`
+	// Policy rule resource names
+	ResourceNames []string `pulumi:"resourceNames"`
+	// Policy rule resources
+	Resources []string `pulumi:"resources"`
+	// Policy rule verbs
+	Verbs []string `pulumi:"verbs"`
+}
+
+// GetRoleTemplateExternalRuleInput is an input type that accepts GetRoleTemplateExternalRuleArgs and GetRoleTemplateExternalRuleOutput values.
+// You can construct a concrete instance of `GetRoleTemplateExternalRuleInput` via:
+//
+//	GetRoleTemplateExternalRuleArgs{...}
+type GetRoleTemplateExternalRuleInput interface {
+	pulumi.Input
+
+	ToGetRoleTemplateExternalRuleOutput() GetRoleTemplateExternalRuleOutput
+	ToGetRoleTemplateExternalRuleOutputWithContext(context.Context) GetRoleTemplateExternalRuleOutput
+}
+
+type GetRoleTemplateExternalRuleArgs struct {
+	// Policy rule api groups
+	ApiGroups pulumi.StringArrayInput `pulumi:"apiGroups"`
+	// Policy rule non resource urls
+	NonResourceUrls pulumi.StringArrayInput `pulumi:"nonResourceUrls"`
+	// Policy rule resource names
+	ResourceNames pulumi.StringArrayInput `pulumi:"resourceNames"`
+	// Policy rule resources
+	Resources pulumi.StringArrayInput `pulumi:"resources"`
+	// Policy rule verbs
+	Verbs pulumi.StringArrayInput `pulumi:"verbs"`
+}
+
+func (GetRoleTemplateExternalRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoleTemplateExternalRule)(nil)).Elem()
+}
+
+func (i GetRoleTemplateExternalRuleArgs) ToGetRoleTemplateExternalRuleOutput() GetRoleTemplateExternalRuleOutput {
+	return i.ToGetRoleTemplateExternalRuleOutputWithContext(context.Background())
+}
+
+func (i GetRoleTemplateExternalRuleArgs) ToGetRoleTemplateExternalRuleOutputWithContext(ctx context.Context) GetRoleTemplateExternalRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoleTemplateExternalRuleOutput)
+}
+
+// GetRoleTemplateExternalRuleArrayInput is an input type that accepts GetRoleTemplateExternalRuleArray and GetRoleTemplateExternalRuleArrayOutput values.
+// You can construct a concrete instance of `GetRoleTemplateExternalRuleArrayInput` via:
+//
+//	GetRoleTemplateExternalRuleArray{ GetRoleTemplateExternalRuleArgs{...} }
+type GetRoleTemplateExternalRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetRoleTemplateExternalRuleArrayOutput() GetRoleTemplateExternalRuleArrayOutput
+	ToGetRoleTemplateExternalRuleArrayOutputWithContext(context.Context) GetRoleTemplateExternalRuleArrayOutput
+}
+
+type GetRoleTemplateExternalRuleArray []GetRoleTemplateExternalRuleInput
+
+func (GetRoleTemplateExternalRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoleTemplateExternalRule)(nil)).Elem()
+}
+
+func (i GetRoleTemplateExternalRuleArray) ToGetRoleTemplateExternalRuleArrayOutput() GetRoleTemplateExternalRuleArrayOutput {
+	return i.ToGetRoleTemplateExternalRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetRoleTemplateExternalRuleArray) ToGetRoleTemplateExternalRuleArrayOutputWithContext(ctx context.Context) GetRoleTemplateExternalRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoleTemplateExternalRuleArrayOutput)
+}
+
+type GetRoleTemplateExternalRuleOutput struct{ *pulumi.OutputState }
+
+func (GetRoleTemplateExternalRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoleTemplateExternalRule)(nil)).Elem()
+}
+
+func (o GetRoleTemplateExternalRuleOutput) ToGetRoleTemplateExternalRuleOutput() GetRoleTemplateExternalRuleOutput {
+	return o
+}
+
+func (o GetRoleTemplateExternalRuleOutput) ToGetRoleTemplateExternalRuleOutputWithContext(ctx context.Context) GetRoleTemplateExternalRuleOutput {
+	return o
+}
+
+// Policy rule api groups
+func (o GetRoleTemplateExternalRuleOutput) ApiGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRoleTemplateExternalRule) []string { return v.ApiGroups }).(pulumi.StringArrayOutput)
+}
+
+// Policy rule non resource urls
+func (o GetRoleTemplateExternalRuleOutput) NonResourceUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRoleTemplateExternalRule) []string { return v.NonResourceUrls }).(pulumi.StringArrayOutput)
+}
+
+// Policy rule resource names
+func (o GetRoleTemplateExternalRuleOutput) ResourceNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRoleTemplateExternalRule) []string { return v.ResourceNames }).(pulumi.StringArrayOutput)
+}
+
+// Policy rule resources
+func (o GetRoleTemplateExternalRuleOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRoleTemplateExternalRule) []string { return v.Resources }).(pulumi.StringArrayOutput)
+}
+
+// Policy rule verbs
+func (o GetRoleTemplateExternalRuleOutput) Verbs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRoleTemplateExternalRule) []string { return v.Verbs }).(pulumi.StringArrayOutput)
+}
+
+type GetRoleTemplateExternalRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRoleTemplateExternalRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoleTemplateExternalRule)(nil)).Elem()
+}
+
+func (o GetRoleTemplateExternalRuleArrayOutput) ToGetRoleTemplateExternalRuleArrayOutput() GetRoleTemplateExternalRuleArrayOutput {
+	return o
+}
+
+func (o GetRoleTemplateExternalRuleArrayOutput) ToGetRoleTemplateExternalRuleArrayOutputWithContext(ctx context.Context) GetRoleTemplateExternalRuleArrayOutput {
+	return o
+}
+
+func (o GetRoleTemplateExternalRuleArrayOutput) Index(i pulumi.IntInput) GetRoleTemplateExternalRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRoleTemplateExternalRule {
+		return vs[0].([]GetRoleTemplateExternalRule)[vs[1].(int)]
+	}).(GetRoleTemplateExternalRuleOutput)
+}
+
 type GetRoleTemplateRule struct {
 	// Policy rule api groups
 	ApiGroups []string `pulumi:"apiGroups"`
@@ -3381,6 +3584,7 @@ func (o GetRoleTemplateRuleArrayOutput) Index(i pulumi.IntInput) GetRoleTemplate
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNotifierSlackConfigInput)(nil)).Elem(), GetNotifierSlackConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNotifierSmtpConfigInput)(nil)).Elem(), GetNotifierSmtpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNotifierWebhookConfigInput)(nil)).Elem(), GetNotifierWebhookConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNotifierWechatConfigInput)(nil)).Elem(), GetNotifierWechatConfigArgs{})
@@ -3427,8 +3631,11 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectResourceQuotaProjectLimitInput)(nil)).Elem(), GetProjectResourceQuotaProjectLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegistryRegistryInput)(nil)).Elem(), GetRegistryRegistryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegistryRegistryArrayInput)(nil)).Elem(), GetRegistryRegistryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoleTemplateExternalRuleInput)(nil)).Elem(), GetRoleTemplateExternalRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoleTemplateExternalRuleArrayInput)(nil)).Elem(), GetRoleTemplateExternalRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRoleTemplateRuleInput)(nil)).Elem(), GetRoleTemplateRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRoleTemplateRuleArrayInput)(nil)).Elem(), GetRoleTemplateRuleArray{})
+	pulumi.RegisterOutputType(GetNotifierSlackConfigOutput{})
 	pulumi.RegisterOutputType(GetNotifierSmtpConfigOutput{})
 	pulumi.RegisterOutputType(GetNotifierWebhookConfigOutput{})
 	pulumi.RegisterOutputType(GetNotifierWechatConfigOutput{})
@@ -3475,6 +3682,8 @@ func init() {
 	pulumi.RegisterOutputType(GetProjectResourceQuotaProjectLimitOutput{})
 	pulumi.RegisterOutputType(GetRegistryRegistryOutput{})
 	pulumi.RegisterOutputType(GetRegistryRegistryArrayOutput{})
+	pulumi.RegisterOutputType(GetRoleTemplateExternalRuleOutput{})
+	pulumi.RegisterOutputType(GetRoleTemplateExternalRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetRoleTemplateRuleOutput{})
 	pulumi.RegisterOutputType(GetRoleTemplateRuleArrayOutput{})
 }

@@ -128,6 +128,11 @@ public final class GetClusterAksConfigV2 {
      */
     private @Nullable List<GetClusterAksConfigV2NodePool> nodePools;
     /**
+     * @return The AKS node resource group name
+     * 
+     */
+    private String nodeResourceGroup;
+    /**
      * @return Is AKS cluster private?
      * 
      */
@@ -319,6 +324,13 @@ public final class GetClusterAksConfigV2 {
         return this.nodePools == null ? List.of() : this.nodePools;
     }
     /**
+     * @return The AKS node resource group name
+     * 
+     */
+    public String nodeResourceGroup() {
+        return this.nodeResourceGroup;
+    }
+    /**
      * @return Is AKS cluster private?
      * 
      */
@@ -399,6 +411,7 @@ public final class GetClusterAksConfigV2 {
         private String networkPolicy;
         private String networkServiceCidr;
         private @Nullable List<GetClusterAksConfigV2NodePool> nodePools;
+        private String nodeResourceGroup;
         private Boolean privateCluster;
         private String resourceGroup;
         private String resourceLocation;
@@ -431,6 +444,7 @@ public final class GetClusterAksConfigV2 {
     	      this.networkPolicy = defaults.networkPolicy;
     	      this.networkServiceCidr = defaults.networkServiceCidr;
     	      this.nodePools = defaults.nodePools;
+    	      this.nodeResourceGroup = defaults.nodeResourceGroup;
     	      this.privateCluster = defaults.privateCluster;
     	      this.resourceGroup = defaults.resourceGroup;
     	      this.resourceLocation = defaults.resourceLocation;
@@ -607,6 +621,14 @@ public final class GetClusterAksConfigV2 {
             return nodePools(List.of(nodePools));
         }
         @CustomType.Setter
+        public Builder nodeResourceGroup(String nodeResourceGroup) {
+            if (nodeResourceGroup == null) {
+              throw new MissingRequiredPropertyException("GetClusterAksConfigV2", "nodeResourceGroup");
+            }
+            this.nodeResourceGroup = nodeResourceGroup;
+            return this;
+        }
+        @CustomType.Setter
         public Builder privateCluster(Boolean privateCluster) {
             if (privateCluster == null) {
               throw new MissingRequiredPropertyException("GetClusterAksConfigV2", "privateCluster");
@@ -686,6 +708,7 @@ public final class GetClusterAksConfigV2 {
             _resultValue.networkPolicy = networkPolicy;
             _resultValue.networkServiceCidr = networkServiceCidr;
             _resultValue.nodePools = nodePools;
+            _resultValue.nodeResourceGroup = nodeResourceGroup;
             _resultValue.privateCluster = privateCluster;
             _resultValue.resourceGroup = resourceGroup;
             _resultValue.resourceLocation = resourceLocation;

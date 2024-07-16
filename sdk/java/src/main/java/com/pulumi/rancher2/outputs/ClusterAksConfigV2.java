@@ -128,6 +128,11 @@ public final class ClusterAksConfigV2 {
      */
     private @Nullable List<ClusterAksConfigV2NodePool> nodePools;
     /**
+     * @return The AKS node resource group name
+     * 
+     */
+    private @Nullable String nodeResourceGroup;
+    /**
      * @return Is AKS cluster private?
      * 
      */
@@ -319,6 +324,13 @@ public final class ClusterAksConfigV2 {
         return this.nodePools == null ? List.of() : this.nodePools;
     }
     /**
+     * @return The AKS node resource group name
+     * 
+     */
+    public Optional<String> nodeResourceGroup() {
+        return Optional.ofNullable(this.nodeResourceGroup);
+    }
+    /**
      * @return Is AKS cluster private?
      * 
      */
@@ -399,6 +411,7 @@ public final class ClusterAksConfigV2 {
         private @Nullable String networkPolicy;
         private @Nullable String networkServiceCidr;
         private @Nullable List<ClusterAksConfigV2NodePool> nodePools;
+        private @Nullable String nodeResourceGroup;
         private @Nullable Boolean privateCluster;
         private String resourceGroup;
         private String resourceLocation;
@@ -431,6 +444,7 @@ public final class ClusterAksConfigV2 {
     	      this.networkPolicy = defaults.networkPolicy;
     	      this.networkServiceCidr = defaults.networkServiceCidr;
     	      this.nodePools = defaults.nodePools;
+    	      this.nodeResourceGroup = defaults.nodeResourceGroup;
     	      this.privateCluster = defaults.privateCluster;
     	      this.resourceGroup = defaults.resourceGroup;
     	      this.resourceLocation = defaults.resourceLocation;
@@ -581,6 +595,12 @@ public final class ClusterAksConfigV2 {
             return nodePools(List.of(nodePools));
         }
         @CustomType.Setter
+        public Builder nodeResourceGroup(@Nullable String nodeResourceGroup) {
+
+            this.nodeResourceGroup = nodeResourceGroup;
+            return this;
+        }
+        @CustomType.Setter
         public Builder privateCluster(@Nullable Boolean privateCluster) {
 
             this.privateCluster = privateCluster;
@@ -650,6 +670,7 @@ public final class ClusterAksConfigV2 {
             _resultValue.networkPolicy = networkPolicy;
             _resultValue.networkServiceCidr = networkServiceCidr;
             _resultValue.nodePools = nodePools;
+            _resultValue.nodeResourceGroup = nodeResourceGroup;
             _resultValue.privateCluster = privateCluster;
             _resultValue.resourceGroup = resourceGroup;
             _resultValue.resourceLocation = resourceLocation;

@@ -399,6 +399,10 @@ export interface ClusterAksConfigV2 {
      */
     nodePools?: pulumi.Input<pulumi.Input<inputs.ClusterAksConfigV2NodePool>[]>;
     /**
+     * The AKS node resource group name
+     */
+    nodeResourceGroup?: pulumi.Input<string>;
+    /**
      * Is AKS cluster private?
      */
     privateCluster?: pulumi.Input<boolean>;
@@ -4461,6 +4465,52 @@ export interface GetPodSecurityPolicyTemplateSupplementalGroupRangeArgs {
     min: pulumi.Input<number>;
 }
 
+export interface GetRoleTemplateExternalRule {
+    /**
+     * Policy rule api groups
+     */
+    apiGroups?: string[];
+    /**
+     * Policy rule non resource urls
+     */
+    nonResourceUrls?: string[];
+    /**
+     * Policy rule resource names
+     */
+    resourceNames?: string[];
+    /**
+     * Policy rule resources
+     */
+    resources?: string[];
+    /**
+     * Policy rule verbs
+     */
+    verbs?: string[];
+}
+
+export interface GetRoleTemplateExternalRuleArgs {
+    /**
+     * Policy rule api groups
+     */
+    apiGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Policy rule non resource urls
+     */
+    nonResourceUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Policy rule resource names
+     */
+    resourceNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Policy rule resources
+     */
+    resources?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Policy rule verbs
+     */
+    verbs?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface GlobalDnsProviderAlidnsConfig {
     accessKey: pulumi.Input<string>;
     secretKey: pulumi.Input<string>;
@@ -6473,6 +6523,29 @@ export interface RegistryRegistry {
     address: pulumi.Input<string>;
     password?: pulumi.Input<string>;
     username?: pulumi.Input<string>;
+}
+
+export interface RoleTemplateExternalRule {
+    /**
+     * Policy rule api groups
+     */
+    apiGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Policy rule non resource urls
+     */
+    nonResourceUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Policy rule resource names
+     */
+    resourceNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Policy rule resources
+     */
+    resources?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Policy rule verbs
+     */
+    verbs?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface RoleTemplateRule {

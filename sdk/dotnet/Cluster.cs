@@ -723,6 +723,10 @@ namespace Pulumi.Rancher2
     ///             DnsPrefix = "&lt;dns-prefix&gt;",
     ///             KubernetesVersion = "1.24.6",
     ///             NetworkPlugin = "&lt;network-plugin&gt;",
+    ///             VirtualNetwork = "&lt;virtual-network&gt;",
+    ///             VirtualNetworkResourceGroup = "&lt;virtual-network-resource-group&gt;",
+    ///             Subnet = "&lt;subnet&gt;",
+    ///             NodeResourceGroup = "&lt;node-resource-group&gt;",
     ///             NodePools = new[]
     ///             {
     ///                 new Rancher2.Inputs.ClusterAksConfigV2NodePoolArgs

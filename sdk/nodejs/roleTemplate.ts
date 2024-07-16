@@ -114,6 +114,10 @@ export class RoleTemplate extends pulumi.CustomResource {
      */
     public readonly external!: pulumi.Output<boolean | undefined>;
     /**
+     * External rules used for authorization. This field is required when `external=true` and no underlying ClusterRole exists. (list)
+     */
+    public readonly externalRules!: pulumi.Output<outputs.RoleTemplateExternalRule[]>;
+    /**
      * Hidden role template. Default `false` (bool)
      */
     public readonly hidden!: pulumi.Output<boolean | undefined>;
@@ -158,6 +162,7 @@ export class RoleTemplate extends pulumi.CustomResource {
             resourceInputs["defaultRole"] = state ? state.defaultRole : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["external"] = state ? state.external : undefined;
+            resourceInputs["externalRules"] = state ? state.externalRules : undefined;
             resourceInputs["hidden"] = state ? state.hidden : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["locked"] = state ? state.locked : undefined;
@@ -172,6 +177,7 @@ export class RoleTemplate extends pulumi.CustomResource {
             resourceInputs["defaultRole"] = args ? args.defaultRole : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["external"] = args ? args.external : undefined;
+            resourceInputs["externalRules"] = args ? args.externalRules : undefined;
             resourceInputs["hidden"] = args ? args.hidden : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["locked"] = args ? args.locked : undefined;
@@ -217,6 +223,10 @@ export interface RoleTemplateState {
      * External role template. Default `false` (bool)
      */
     external?: pulumi.Input<boolean>;
+    /**
+     * External rules used for authorization. This field is required when `external=true` and no underlying ClusterRole exists. (list)
+     */
+    externalRules?: pulumi.Input<pulumi.Input<inputs.RoleTemplateExternalRule>[]>;
     /**
      * Hidden role template. Default `false` (bool)
      */
@@ -271,6 +281,10 @@ export interface RoleTemplateArgs {
      * External role template. Default `false` (bool)
      */
     external?: pulumi.Input<boolean>;
+    /**
+     * External rules used for authorization. This field is required when `external=true` and no underlying ClusterRole exists. (list)
+     */
+    externalRules?: pulumi.Input<pulumi.Input<inputs.RoleTemplateExternalRule>[]>;
     /**
      * Hidden role template. Default `false` (bool)
      */

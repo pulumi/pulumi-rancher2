@@ -27,7 +27,7 @@ class GlobalRoleArgs:
         The set of arguments for constructing a GlobalRole resource.
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for global role object (map)
         :param pulumi.Input[str] description: Global role description (string)
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] inherited_cluster_roles: Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] inherited_cluster_roles: Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for global role object (map)
         :param pulumi.Input[str] name: Global role name (string)
         :param pulumi.Input[bool] new_user_default: Whether or not this role should be added to new users. Default `false` (bool)
@@ -76,7 +76,7 @@ class GlobalRoleArgs:
     @pulumi.getter(name="inheritedClusterRoles")
     def inherited_cluster_roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster
+        Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
         """
         return pulumi.get(self, "inherited_cluster_roles")
 
@@ -149,7 +149,7 @@ class _GlobalRoleState:
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for global role object (map)
         :param pulumi.Input[bool] builtin: (Computed) Builtin global role (bool)
         :param pulumi.Input[str] description: Global role description (string)
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] inherited_cluster_roles: Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] inherited_cluster_roles: Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for global role object (map)
         :param pulumi.Input[str] name: Global role name (string)
         :param pulumi.Input[bool] new_user_default: Whether or not this role should be added to new users. Default `false` (bool)
@@ -212,7 +212,7 @@ class _GlobalRoleState:
     @pulumi.getter(name="inheritedClusterRoles")
     def inherited_cluster_roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster
+        Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
         """
         return pulumi.get(self, "inherited_cluster_roles")
 
@@ -315,7 +315,7 @@ class GlobalRole(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for global role object (map)
         :param pulumi.Input[str] description: Global role description (string)
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] inherited_cluster_roles: Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] inherited_cluster_roles: Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for global role object (map)
         :param pulumi.Input[str] name: Global role name (string)
         :param pulumi.Input[bool] new_user_default: Whether or not this role should be added to new users. Default `false` (bool)
@@ -423,7 +423,7 @@ class GlobalRole(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for global role object (map)
         :param pulumi.Input[bool] builtin: (Computed) Builtin global role (bool)
         :param pulumi.Input[str] description: Global role description (string)
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] inherited_cluster_roles: Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] inherited_cluster_roles: Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for global role object (map)
         :param pulumi.Input[str] name: Global role name (string)
         :param pulumi.Input[bool] new_user_default: Whether or not this role should be added to new users. Default `false` (bool)
@@ -471,7 +471,7 @@ class GlobalRole(pulumi.CustomResource):
     @pulumi.getter(name="inheritedClusterRoles")
     def inherited_cluster_roles(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster
+        Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
         """
         return pulumi.get(self, "inherited_cluster_roles")
 

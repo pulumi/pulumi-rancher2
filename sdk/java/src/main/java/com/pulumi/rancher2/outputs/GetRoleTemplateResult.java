@@ -5,6 +5,7 @@ package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.rancher2.outputs.GetRoleTemplateExternalRule;
 import com.pulumi.rancher2.outputs.GetRoleTemplateRule;
 import java.lang.Boolean;
 import java.lang.Object;
@@ -46,6 +47,11 @@ public final class GetRoleTemplateResult {
      * 
      */
     private Boolean external;
+    /**
+     * @return (Computed) External rules used for authorization. (list)
+     * 
+     */
+    private List<GetRoleTemplateExternalRule> externalRules;
     /**
      * @return (Computed) Hidden role template (bool)
      * 
@@ -125,6 +131,13 @@ public final class GetRoleTemplateResult {
         return this.external;
     }
     /**
+     * @return (Computed) External rules used for authorization. (list)
+     * 
+     */
+    public List<GetRoleTemplateExternalRule> externalRules() {
+        return this.externalRules;
+    }
+    /**
      * @return (Computed) Hidden role template (bool)
      * 
      */
@@ -186,6 +199,7 @@ public final class GetRoleTemplateResult {
         private Boolean defaultRole;
         private String description;
         private Boolean external;
+        private List<GetRoleTemplateExternalRule> externalRules;
         private Boolean hidden;
         private String id;
         private Map<String,Object> labels;
@@ -203,6 +217,7 @@ public final class GetRoleTemplateResult {
     	      this.defaultRole = defaults.defaultRole;
     	      this.description = defaults.description;
     	      this.external = defaults.external;
+    	      this.externalRules = defaults.externalRules;
     	      this.hidden = defaults.hidden;
     	      this.id = defaults.id;
     	      this.labels = defaults.labels;
@@ -267,6 +282,17 @@ public final class GetRoleTemplateResult {
             }
             this.external = external;
             return this;
+        }
+        @CustomType.Setter
+        public Builder externalRules(List<GetRoleTemplateExternalRule> externalRules) {
+            if (externalRules == null) {
+              throw new MissingRequiredPropertyException("GetRoleTemplateResult", "externalRules");
+            }
+            this.externalRules = externalRules;
+            return this;
+        }
+        public Builder externalRules(GetRoleTemplateExternalRule... externalRules) {
+            return externalRules(List.of(externalRules));
         }
         @CustomType.Setter
         public Builder hidden(Boolean hidden) {
@@ -339,6 +365,7 @@ public final class GetRoleTemplateResult {
             _resultValue.defaultRole = defaultRole;
             _resultValue.description = description;
             _resultValue.external = external;
+            _resultValue.externalRules = externalRules;
             _resultValue.hidden = hidden;
             _resultValue.id = id;
             _resultValue.labels = labels;

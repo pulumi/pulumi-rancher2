@@ -352,6 +352,21 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * The AKS node resource group name
+     * 
+     */
+    @Import(name="nodeResourceGroup")
+    private @Nullable Output<String> nodeResourceGroup;
+
+    /**
+     * @return The AKS node resource group name
+     * 
+     */
+    public Optional<Output<String>> nodeResourceGroup() {
+        return Optional.ofNullable(this.nodeResourceGroup);
+    }
+
+    /**
      * Is AKS cluster private?
      * 
      */
@@ -481,6 +496,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         this.networkPolicy = $.networkPolicy;
         this.networkServiceCidr = $.networkServiceCidr;
         this.nodePools = $.nodePools;
+        this.nodeResourceGroup = $.nodeResourceGroup;
         this.privateCluster = $.privateCluster;
         this.resourceGroup = $.resourceGroup;
         this.resourceLocation = $.resourceLocation;
@@ -988,6 +1004,27 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
          */
         public Builder nodePools(ClusterAksConfigV2NodePoolArgs... nodePools) {
             return nodePools(List.of(nodePools));
+        }
+
+        /**
+         * @param nodeResourceGroup The AKS node resource group name
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeResourceGroup(@Nullable Output<String> nodeResourceGroup) {
+            $.nodeResourceGroup = nodeResourceGroup;
+            return this;
+        }
+
+        /**
+         * @param nodeResourceGroup The AKS node resource group name
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeResourceGroup(String nodeResourceGroup) {
+            return nodeResourceGroup(Output.of(nodeResourceGroup));
         }
 
         /**

@@ -123,6 +123,8 @@ type RoleTemplate struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// External role template. Default `false` (bool)
 	External pulumi.BoolPtrOutput `pulumi:"external"`
+	// External rules used for authorization. This field is required when `external=true` and no underlying ClusterRole exists. (list)
+	ExternalRules RoleTemplateExternalRuleArrayOutput `pulumi:"externalRules"`
 	// Hidden role template. Default `false` (bool)
 	Hidden pulumi.BoolPtrOutput `pulumi:"hidden"`
 	// Labels for role template object (map)
@@ -181,6 +183,8 @@ type roleTemplateState struct {
 	Description *string `pulumi:"description"`
 	// External role template. Default `false` (bool)
 	External *bool `pulumi:"external"`
+	// External rules used for authorization. This field is required when `external=true` and no underlying ClusterRole exists. (list)
+	ExternalRules []RoleTemplateExternalRule `pulumi:"externalRules"`
 	// Hidden role template. Default `false` (bool)
 	Hidden *bool `pulumi:"hidden"`
 	// Labels for role template object (map)
@@ -210,6 +214,8 @@ type RoleTemplateState struct {
 	Description pulumi.StringPtrInput
 	// External role template. Default `false` (bool)
 	External pulumi.BoolPtrInput
+	// External rules used for authorization. This field is required when `external=true` and no underlying ClusterRole exists. (list)
+	ExternalRules RoleTemplateExternalRuleArrayInput
 	// Hidden role template. Default `false` (bool)
 	Hidden pulumi.BoolPtrInput
 	// Labels for role template object (map)
@@ -241,6 +247,8 @@ type roleTemplateArgs struct {
 	Description *string `pulumi:"description"`
 	// External role template. Default `false` (bool)
 	External *bool `pulumi:"external"`
+	// External rules used for authorization. This field is required when `external=true` and no underlying ClusterRole exists. (list)
+	ExternalRules []RoleTemplateExternalRule `pulumi:"externalRules"`
 	// Hidden role template. Default `false` (bool)
 	Hidden *bool `pulumi:"hidden"`
 	// Labels for role template object (map)
@@ -269,6 +277,8 @@ type RoleTemplateArgs struct {
 	Description pulumi.StringPtrInput
 	// External role template. Default `false` (bool)
 	External pulumi.BoolPtrInput
+	// External rules used for authorization. This field is required when `external=true` and no underlying ClusterRole exists. (list)
+	ExternalRules RoleTemplateExternalRuleArrayInput
 	// Hidden role template. Default `false` (bool)
 	Hidden pulumi.BoolPtrInput
 	// Labels for role template object (map)
@@ -403,6 +413,11 @@ func (o RoleTemplateOutput) Description() pulumi.StringOutput {
 // External role template. Default `false` (bool)
 func (o RoleTemplateOutput) External() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RoleTemplate) pulumi.BoolPtrOutput { return v.External }).(pulumi.BoolPtrOutput)
+}
+
+// External rules used for authorization. This field is required when `external=true` and no underlying ClusterRole exists. (list)
+func (o RoleTemplateOutput) ExternalRules() RoleTemplateExternalRuleArrayOutput {
+	return o.ApplyT(func(v *RoleTemplate) RoleTemplateExternalRuleArrayOutput { return v.ExternalRules }).(RoleTemplateExternalRuleArrayOutput)
 }
 
 // Hidden role template. Default `false` (bool)
