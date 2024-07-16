@@ -12,29 +12,77 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GlobalDnsProviderRoute53Config {
+    /**
+     * @return The AWS Access key (string)
+     * 
+     */
     private String accessKey;
+    /**
+     * @return The AWS credentials path. Default: `&#34;/.aws&#34;` (string)
+     * 
+     */
     private @Nullable String credentialsPath;
+    /**
+     * @return The AWS Region. Default: `&#34;us-west-2&#34;` (string)
+     * 
+     */
     private @Nullable String region;
+    /**
+     * @return The AWS Role ARN (string)
+     * 
+     */
     private @Nullable String roleArn;
+    /**
+     * @return The AWS Secret key (string)
+     * 
+     */
     private String secretKey;
+    /**
+     * @return The Route53 zone type `public, private`. Default: `&#34;public&#34;` (string)
+     * 
+     */
     private @Nullable String zoneType;
 
     private GlobalDnsProviderRoute53Config() {}
+    /**
+     * @return The AWS Access key (string)
+     * 
+     */
     public String accessKey() {
         return this.accessKey;
     }
+    /**
+     * @return The AWS credentials path. Default: `&#34;/.aws&#34;` (string)
+     * 
+     */
     public Optional<String> credentialsPath() {
         return Optional.ofNullable(this.credentialsPath);
     }
+    /**
+     * @return The AWS Region. Default: `&#34;us-west-2&#34;` (string)
+     * 
+     */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
+    /**
+     * @return The AWS Role ARN (string)
+     * 
+     */
     public Optional<String> roleArn() {
         return Optional.ofNullable(this.roleArn);
     }
+    /**
+     * @return The AWS Secret key (string)
+     * 
+     */
     public String secretKey() {
         return this.secretKey;
     }
+    /**
+     * @return The Route53 zone type `public, private`. Default: `&#34;public&#34;` (string)
+     * 
+     */
     public Optional<String> zoneType() {
         return Optional.ofNullable(this.zoneType);
     }

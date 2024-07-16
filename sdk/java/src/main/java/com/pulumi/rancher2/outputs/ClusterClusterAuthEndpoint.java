@@ -12,17 +12,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterClusterAuthEndpoint {
+    /**
+     * @return CA certs for the authorized cluster endpoint (string)
+     * 
+     */
     private @Nullable String caCerts;
+    /**
+     * @return Enable the authorized cluster endpoint. Default `true` (bool)
+     * 
+     */
     private @Nullable Boolean enabled;
+    /**
+     * @return FQDN for the authorized cluster endpoint (string)
+     * 
+     */
     private @Nullable String fqdn;
 
     private ClusterClusterAuthEndpoint() {}
+    /**
+     * @return CA certs for the authorized cluster endpoint (string)
+     * 
+     */
     public Optional<String> caCerts() {
         return Optional.ofNullable(this.caCerts);
     }
+    /**
+     * @return Enable the authorized cluster endpoint. Default `true` (bool)
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return FQDN for the authorized cluster endpoint (string)
+     * 
+     */
     public Optional<String> fqdn() {
         return Optional.ofNullable(this.fqdn);
     }

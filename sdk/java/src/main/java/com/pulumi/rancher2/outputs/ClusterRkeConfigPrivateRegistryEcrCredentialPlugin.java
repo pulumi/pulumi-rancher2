@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterRkeConfigPrivateRegistryEcrCredentialPlugin {
+    /**
+     * @return AWS access key ID (string)
+     * 
+     */
     private @Nullable String awsAccessKeyId;
+    /**
+     * @return AWS secret access key (string)
+     * 
+     */
     private @Nullable String awsSecretAccessKey;
+    /**
+     * @return AWS session token (string)
+     * 
+     */
     private @Nullable String awsSessionToken;
 
     private ClusterRkeConfigPrivateRegistryEcrCredentialPlugin() {}
+    /**
+     * @return AWS access key ID (string)
+     * 
+     */
     public Optional<String> awsAccessKeyId() {
         return Optional.ofNullable(this.awsAccessKeyId);
     }
+    /**
+     * @return AWS secret access key (string)
+     * 
+     */
     public Optional<String> awsSecretAccessKey() {
         return Optional.ofNullable(this.awsSecretAccessKey);
     }
+    /**
+     * @return AWS session token (string)
+     * 
+     */
     public Optional<String> awsSessionToken() {
         return Optional.ofNullable(this.awsSessionToken);
     }

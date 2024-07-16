@@ -15,6 +15,10 @@ public final class ClusterV2AgentEnvVar {
      * 
      */
     private String name;
+    /**
+     * @return The taint value.
+     * 
+     */
     private String value;
 
     private ClusterV2AgentEnvVar() {}
@@ -25,6 +29,10 @@ public final class ClusterV2AgentEnvVar {
     public String name() {
         return this.name;
     }
+    /**
+     * @return The taint value.
+     * 
+     */
     public String value() {
         return this.value;
     }

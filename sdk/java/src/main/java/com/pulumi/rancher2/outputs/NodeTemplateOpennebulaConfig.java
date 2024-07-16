@@ -13,81 +13,237 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NodeTemplateOpennebulaConfig {
+    /**
+     * @return Size of the Volatile disk in MB - only for b2d (string)
+     * 
+     */
     private @Nullable String b2dSize;
+    /**
+     * @return CPU value for the VM (string)
+     * 
+     */
     private @Nullable String cpu;
+    /**
+     * @return Dev prefix to use for the images. E.g.: &#39;vd&#39;, &#39;sd&#39;, &#39;hd&#39; (string)
+     * 
+     */
     private @Nullable String devPrefix;
+    /**
+     * @return VNC is enabled by default. Disable it with this flag (bool)
+     * 
+     */
     private @Nullable Boolean disableVnc;
+    /**
+     * @return Size of the disk for the VM in MB (string)
+     * 
+     */
     private @Nullable String diskResize;
+    /**
+     * @return OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+     * 
+     */
     private @Nullable String imageId;
+    /**
+     * @return OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+     * 
+     */
     private @Nullable String imageName;
+    /**
+     * @return Owner of the image to use as the VM OS (string)
+     * 
+     */
     private @Nullable String imageOwner;
+    /**
+     * @return Size of the memory for the VM in MB (string)
+     * 
+     */
     private @Nullable String memory;
+    /**
+     * @return Opennebula network ID to connect the machine to. Conflicts with `network_name` (string)
+     * 
+     */
     private @Nullable String networkId;
+    /**
+     * @return Opennebula network to connect the machine to. Conflicts with `network_id` (string)
+     * 
+     */
     private @Nullable String networkName;
+    /**
+     * @return Opennebula user ID of the Network to connect the machine to (string)
+     * 
+     */
     private @Nullable String networkOwner;
+    /**
+     * @return vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * 
+     */
     private String password;
+    /**
+     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+     * 
+     */
     private @Nullable String sshUser;
+    /**
+     * @return Opennebula template ID to use. Conflicts with `template_name` (string)
+     * 
+     */
     private @Nullable String templateId;
+    /**
+     * @return Name of the Opennbula template to use. Conflicts with `template_id` (string)
+     * 
+     */
     private @Nullable String templateName;
+    /**
+     * @return Set the user for the XML-RPC API authentication (string)
+     * 
+     */
     private String user;
+    /**
+     * @return VCPUs for the VM (string)
+     * 
+     * &gt; **Note:**: `Required*` denotes that one of image_name / image_id or template_name / template_id is required but you cannot combine them.
+     * 
+     */
     private @Nullable String vcpu;
+    /**
+     * @return Set the url for the Opennebula XML-RPC API (string)
+     * 
+     */
     private String xmlRpcUrl;
 
     private NodeTemplateOpennebulaConfig() {}
+    /**
+     * @return Size of the Volatile disk in MB - only for b2d (string)
+     * 
+     */
     public Optional<String> b2dSize() {
         return Optional.ofNullable(this.b2dSize);
     }
+    /**
+     * @return CPU value for the VM (string)
+     * 
+     */
     public Optional<String> cpu() {
         return Optional.ofNullable(this.cpu);
     }
+    /**
+     * @return Dev prefix to use for the images. E.g.: &#39;vd&#39;, &#39;sd&#39;, &#39;hd&#39; (string)
+     * 
+     */
     public Optional<String> devPrefix() {
         return Optional.ofNullable(this.devPrefix);
     }
+    /**
+     * @return VNC is enabled by default. Disable it with this flag (bool)
+     * 
+     */
     public Optional<Boolean> disableVnc() {
         return Optional.ofNullable(this.disableVnc);
     }
+    /**
+     * @return Size of the disk for the VM in MB (string)
+     * 
+     */
     public Optional<String> diskResize() {
         return Optional.ofNullable(this.diskResize);
     }
+    /**
+     * @return OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+     * 
+     */
     public Optional<String> imageId() {
         return Optional.ofNullable(this.imageId);
     }
+    /**
+     * @return OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+     * 
+     */
     public Optional<String> imageName() {
         return Optional.ofNullable(this.imageName);
     }
+    /**
+     * @return Owner of the image to use as the VM OS (string)
+     * 
+     */
     public Optional<String> imageOwner() {
         return Optional.ofNullable(this.imageOwner);
     }
+    /**
+     * @return Size of the memory for the VM in MB (string)
+     * 
+     */
     public Optional<String> memory() {
         return Optional.ofNullable(this.memory);
     }
+    /**
+     * @return Opennebula network ID to connect the machine to. Conflicts with `network_name` (string)
+     * 
+     */
     public Optional<String> networkId() {
         return Optional.ofNullable(this.networkId);
     }
+    /**
+     * @return Opennebula network to connect the machine to. Conflicts with `network_id` (string)
+     * 
+     */
     public Optional<String> networkName() {
         return Optional.ofNullable(this.networkName);
     }
+    /**
+     * @return Opennebula user ID of the Network to connect the machine to (string)
+     * 
+     */
     public Optional<String> networkOwner() {
         return Optional.ofNullable(this.networkOwner);
     }
+    /**
+     * @return vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * 
+     */
     public String password() {
         return this.password;
     }
+    /**
+     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+     * 
+     */
     public Optional<String> sshUser() {
         return Optional.ofNullable(this.sshUser);
     }
+    /**
+     * @return Opennebula template ID to use. Conflicts with `template_name` (string)
+     * 
+     */
     public Optional<String> templateId() {
         return Optional.ofNullable(this.templateId);
     }
+    /**
+     * @return Name of the Opennbula template to use. Conflicts with `template_id` (string)
+     * 
+     */
     public Optional<String> templateName() {
         return Optional.ofNullable(this.templateName);
     }
+    /**
+     * @return Set the user for the XML-RPC API authentication (string)
+     * 
+     */
     public String user() {
         return this.user;
     }
+    /**
+     * @return VCPUs for the VM (string)
+     * 
+     * &gt; **Note:**: `Required*` denotes that one of image_name / image_id or template_name / template_id is required but you cannot combine them.
+     * 
+     */
     public Optional<String> vcpu() {
         return Optional.ofNullable(this.vcpu);
     }
+    /**
+     * @return Set the url for the Opennebula XML-RPC API (string)
+     * 
+     */
     public String xmlRpcUrl() {
         return this.xmlRpcUrl;
     }

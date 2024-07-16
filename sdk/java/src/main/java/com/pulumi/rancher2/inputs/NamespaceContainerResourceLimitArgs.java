@@ -15,30 +15,62 @@ public final class NamespaceContainerResourceLimitArgs extends com.pulumi.resour
 
     public static final NamespaceContainerResourceLimitArgs Empty = new NamespaceContainerResourceLimitArgs();
 
+    /**
+     * Limit for limits cpu in namespace (string)
+     * 
+     */
     @Import(name="limitsCpu")
     private @Nullable Output<String> limitsCpu;
 
+    /**
+     * @return Limit for limits cpu in namespace (string)
+     * 
+     */
     public Optional<Output<String>> limitsCpu() {
         return Optional.ofNullable(this.limitsCpu);
     }
 
+    /**
+     * Limit for limits memory in namespace (string)
+     * 
+     */
     @Import(name="limitsMemory")
     private @Nullable Output<String> limitsMemory;
 
+    /**
+     * @return Limit for limits memory in namespace (string)
+     * 
+     */
     public Optional<Output<String>> limitsMemory() {
         return Optional.ofNullable(this.limitsMemory);
     }
 
+    /**
+     * Limit for requests cpu in namespace (string)
+     * 
+     */
     @Import(name="requestsCpu")
     private @Nullable Output<String> requestsCpu;
 
+    /**
+     * @return Limit for requests cpu in namespace (string)
+     * 
+     */
     public Optional<Output<String>> requestsCpu() {
         return Optional.ofNullable(this.requestsCpu);
     }
 
+    /**
+     * Limit for requests memory in namespace (string)
+     * 
+     */
     @Import(name="requestsMemory")
     private @Nullable Output<String> requestsMemory;
 
+    /**
+     * @return Limit for requests memory in namespace (string)
+     * 
+     */
     public Optional<Output<String>> requestsMemory() {
         return Optional.ofNullable(this.requestsMemory);
     }
@@ -70,38 +102,86 @@ public final class NamespaceContainerResourceLimitArgs extends com.pulumi.resour
             $ = new NamespaceContainerResourceLimitArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param limitsCpu Limit for limits cpu in namespace (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder limitsCpu(@Nullable Output<String> limitsCpu) {
             $.limitsCpu = limitsCpu;
             return this;
         }
 
+        /**
+         * @param limitsCpu Limit for limits cpu in namespace (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder limitsCpu(String limitsCpu) {
             return limitsCpu(Output.of(limitsCpu));
         }
 
+        /**
+         * @param limitsMemory Limit for limits memory in namespace (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder limitsMemory(@Nullable Output<String> limitsMemory) {
             $.limitsMemory = limitsMemory;
             return this;
         }
 
+        /**
+         * @param limitsMemory Limit for limits memory in namespace (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder limitsMemory(String limitsMemory) {
             return limitsMemory(Output.of(limitsMemory));
         }
 
+        /**
+         * @param requestsCpu Limit for requests cpu in namespace (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder requestsCpu(@Nullable Output<String> requestsCpu) {
             $.requestsCpu = requestsCpu;
             return this;
         }
 
+        /**
+         * @param requestsCpu Limit for requests cpu in namespace (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder requestsCpu(String requestsCpu) {
             return requestsCpu(Output.of(requestsCpu));
         }
 
+        /**
+         * @param requestsMemory Limit for requests memory in namespace (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder requestsMemory(@Nullable Output<String> requestsMemory) {
             $.requestsMemory = requestsMemory;
             return this;
         }
 
+        /**
+         * @param requestsMemory Limit for requests memory in namespace (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder requestsMemory(String requestsMemory) {
             return requestsMemory(Output.of(requestsMemory));
         }

@@ -13,20 +13,53 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterRkeConfigNode
     {
+        /// <summary>
+        /// Address ip for node (string)
+        /// </summary>
         public readonly string Address;
+        /// <summary>
+        /// Docker socket for node (string)
+        /// </summary>
         public readonly string? DockerSocket;
+        /// <summary>
+        /// Hostname override for node (string)
+        /// </summary>
         public readonly string? HostnameOverride;
+        /// <summary>
+        /// Internal ip for node (string)
+        /// </summary>
         public readonly string? InternalAddress;
         /// <summary>
         /// Labels for the Cluster (map)
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Labels;
+        /// <summary>
+        /// Id for the node (string)
+        /// </summary>
         public readonly string? NodeId;
+        /// <summary>
+        /// Port for node. Default `22` (string)
+        /// </summary>
         public readonly string? Port;
+        /// <summary>
+        /// Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
+        /// </summary>
         public readonly ImmutableArray<string> Roles;
+        /// <summary>
+        /// Use ssh agent auth. Default `false` (bool)
+        /// </summary>
         public readonly bool? SshAgentAuth;
+        /// <summary>
+        /// Node SSH private key (string)
+        /// </summary>
         public readonly string? SshKey;
+        /// <summary>
+        /// Node SSH private key path (string)
+        /// </summary>
         public readonly string? SshKeyPath;
+        /// <summary>
+        /// Registry user (string)
+        /// </summary>
         public readonly string User;
 
         [OutputConstructor]

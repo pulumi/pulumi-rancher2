@@ -13,13 +13,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterRkeConfigCloudProviderAwsCloudProvider {
+    /**
+     * @return (list maxitems:1)
+     * 
+     */
     private @Nullable ClusterRkeConfigCloudProviderAwsCloudProviderGlobal global;
+    /**
+     * @return (list)
+     * 
+     */
     private @Nullable List<ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride> serviceOverrides;
 
     private ClusterRkeConfigCloudProviderAwsCloudProvider() {}
+    /**
+     * @return (list maxitems:1)
+     * 
+     */
     public Optional<ClusterRkeConfigCloudProviderAwsCloudProviderGlobal> global() {
         return Optional.ofNullable(this.global);
     }
+    /**
+     * @return (list)
+     * 
+     */
     public List<ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverride> serviceOverrides() {
         return this.serviceOverrides == null ? List.of() : this.serviceOverrides;
     }

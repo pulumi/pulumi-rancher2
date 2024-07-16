@@ -17,9 +17,17 @@ public final class ClusterRkeConfigDnsNodelocalArgs extends com.pulumi.resources
 
     public static final ClusterRkeConfigDnsNodelocalArgs Empty = new ClusterRkeConfigDnsNodelocalArgs();
 
+    /**
+     * Nodelocal dns ip address (string)
+     * 
+     */
     @Import(name="ipAddress")
     private @Nullable Output<String> ipAddress;
 
+    /**
+     * @return Nodelocal dns ip address (string)
+     * 
+     */
     public Optional<Output<String>> ipAddress() {
         return Optional.ofNullable(this.ipAddress);
     }
@@ -64,11 +72,23 @@ public final class ClusterRkeConfigDnsNodelocalArgs extends com.pulumi.resources
             $ = new ClusterRkeConfigDnsNodelocalArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ipAddress Nodelocal dns ip address (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipAddress(@Nullable Output<String> ipAddress) {
             $.ipAddress = ipAddress;
             return this;
         }
 
+        /**
+         * @param ipAddress Nodelocal dns ip address (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipAddress(String ipAddress) {
             return ipAddress(Output.of(ipAddress));
         }

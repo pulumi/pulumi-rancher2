@@ -13,173 +13,515 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MachineConfigV2OpenstackConfig {
+    /**
+     * @return OpenStack active timeout Default `200` (string)
+     * 
+     */
     private @Nullable String activeTimeout;
+    /**
+     * @return OpenStack application credential id. Conflicts with `application_credential_name` (string)
+     * 
+     */
     private @Nullable String applicationCredentialId;
+    /**
+     * @return OpenStack application credential name. Conflicts with `application_credential_id` (string)
+     * 
+     */
     private @Nullable String applicationCredentialName;
+    /**
+     * @return OpenStack application credential secret (string)
+     * 
+     */
     private @Nullable String applicationCredentialSecret;
+    /**
+     * @return OpenStack authentication URL (string)
+     * 
+     */
     private String authUrl;
+    /**
+     * @return OpenStack availability zone (string)
+     * 
+     */
     private String availabilityZone;
+    /**
+     * @return Enable booting from volume. Default is `false` (bool)
+     * 
+     */
     private @Nullable Boolean bootFromVolume;
+    /**
+     * @return CA certificate bundle to verify against (string)
+     * 
+     */
     private @Nullable String cacert;
+    /**
+     * @return Enables the OpenStack config drive for the instance. Default `false` (bool)
+     * 
+     */
     private @Nullable Boolean configDrive;
+    /**
+     * @return OpenStack domain ID. Identity v3 only. Conflicts with `domain_name` (string)
+     * 
+     */
     private @Nullable String domainId;
+    /**
+     * @return OpenStack domain name. Identity v3 only. Conflicts with `domain_id` (string)
+     * 
+     */
     private @Nullable String domainName;
+    /**
+     * @return OpenStack endpoint type. adminURL, internalURL or publicURL (string)
+     * 
+     */
     private @Nullable String endpointType;
+    /**
+     * @return OpenStack flavor id to use for the instance. Conflicts with `flavor_name` (string)
+     * 
+     */
     private @Nullable String flavorId;
+    /**
+     * @return OpenStack flavor name to use for the instance. Conflicts with `flavor_id` (string)
+     * 
+     */
     private @Nullable String flavorName;
+    /**
+     * @return OpenStack floating IP pool to get an IP from to assign to the instance (string)
+     * 
+     */
     private @Nullable String floatingIpPool;
+    /**
+     * @return OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+     * 
+     */
     private @Nullable String imageId;
+    /**
+     * @return OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+     * 
+     */
     private @Nullable String imageName;
+    /**
+     * @return Disable TLS credential checking. Default `false` (bool)
+     * 
+     */
     private @Nullable Boolean insecure;
+    /**
+     * @return OpenStack version of IP address assigned for the machine Default `4` (string)
+     * 
+     */
     private @Nullable String ipVersion;
+    /**
+     * @return OpenStack keypair to use to SSH to the instance (string)
+     * 
+     */
     private @Nullable String keypairName;
+    /**
+     * @return OpenStack network id the machine will be connected on. Conflicts with `net_name` (string)
+     * 
+     */
     private @Nullable String netId;
+    /**
+     * @return OpenStack network name the machine will be connected on. Conflicts with `net_id` (string)
+     * 
+     */
     private @Nullable String netName;
+    /**
+     * @return Use the nova networking services instead of neutron (string)
+     * 
+     */
     private @Nullable Boolean novaNetwork;
+    /**
+     * @return OpenStack password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * 
+     */
     private @Nullable String password;
+    /**
+     * @return Private key content to use for SSH (string)
+     * 
+     */
     private @Nullable String privateKeyFile;
+    /**
+     * @return OpenStack region name (string)
+     * 
+     */
     private String region;
+    /**
+     * @return OpenStack comma separated security groups for the machine (string)
+     * 
+     */
     private @Nullable String secGroups;
+    /**
+     * @return If using a non-B2D image you can specify the ssh port. Default `22` (string)
+     * 
+     */
     private @Nullable String sshPort;
+    /**
+     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+     * 
+     */
     private @Nullable String sshUser;
+    /**
+     * @return OpenStack tenant domain id. Conflicts with `tenant_domain_name` (string)
+     * 
+     */
     private @Nullable String tenantDomainId;
+    /**
+     * @return OpenStack tenant domain name. Conflicts with `tenant_domain_id` (string)
+     * 
+     */
     private @Nullable String tenantDomainName;
+    /**
+     * @return OpenStack tenant id. Conflicts with `tenant_name` (string)
+     * 
+     */
     private @Nullable String tenantId;
+    /**
+     * @return OpenStack tenant name. Conflicts with `tenant_id` (string)
+     * 
+     */
     private @Nullable String tenantName;
+    /**
+     * @return File containing an openstack userdata script (string)
+     * 
+     */
     private @Nullable String userDataFile;
+    /**
+     * @return OpenStack user domain id. Conflicts with `user_domain_name` (string)
+     * 
+     */
     private @Nullable String userDomainId;
+    /**
+     * @return OpenStack user domain name. Conflicts with `user_domain_id` (string)
+     * 
+     */
     private @Nullable String userDomainName;
+    /**
+     * @return OpenStack username (string)
+     * 
+     */
     private @Nullable String username;
+    /**
+     * @return OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
+     * &gt; **Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.
+     * **Note:**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
+     * **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
+     * 
+     */
     private @Nullable String volumeDevicePath;
+    /**
+     * @return OpenStack volume id of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+     * 
+     */
     private @Nullable String volumeId;
+    /**
+     * @return OpenStack volume name of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+     * 
+     */
     private @Nullable String volumeName;
+    /**
+     * @return OpenStack volume size (GiB). Required when `boot_from_volume` is `true` (string)
+     * 
+     */
     private @Nullable String volumeSize;
+    /**
+     * @return OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+     * 
+     */
     private @Nullable String volumeType;
 
     private MachineConfigV2OpenstackConfig() {}
+    /**
+     * @return OpenStack active timeout Default `200` (string)
+     * 
+     */
     public Optional<String> activeTimeout() {
         return Optional.ofNullable(this.activeTimeout);
     }
+    /**
+     * @return OpenStack application credential id. Conflicts with `application_credential_name` (string)
+     * 
+     */
     public Optional<String> applicationCredentialId() {
         return Optional.ofNullable(this.applicationCredentialId);
     }
+    /**
+     * @return OpenStack application credential name. Conflicts with `application_credential_id` (string)
+     * 
+     */
     public Optional<String> applicationCredentialName() {
         return Optional.ofNullable(this.applicationCredentialName);
     }
+    /**
+     * @return OpenStack application credential secret (string)
+     * 
+     */
     public Optional<String> applicationCredentialSecret() {
         return Optional.ofNullable(this.applicationCredentialSecret);
     }
+    /**
+     * @return OpenStack authentication URL (string)
+     * 
+     */
     public String authUrl() {
         return this.authUrl;
     }
+    /**
+     * @return OpenStack availability zone (string)
+     * 
+     */
     public String availabilityZone() {
         return this.availabilityZone;
     }
+    /**
+     * @return Enable booting from volume. Default is `false` (bool)
+     * 
+     */
     public Optional<Boolean> bootFromVolume() {
         return Optional.ofNullable(this.bootFromVolume);
     }
+    /**
+     * @return CA certificate bundle to verify against (string)
+     * 
+     */
     public Optional<String> cacert() {
         return Optional.ofNullable(this.cacert);
     }
+    /**
+     * @return Enables the OpenStack config drive for the instance. Default `false` (bool)
+     * 
+     */
     public Optional<Boolean> configDrive() {
         return Optional.ofNullable(this.configDrive);
     }
+    /**
+     * @return OpenStack domain ID. Identity v3 only. Conflicts with `domain_name` (string)
+     * 
+     */
     public Optional<String> domainId() {
         return Optional.ofNullable(this.domainId);
     }
+    /**
+     * @return OpenStack domain name. Identity v3 only. Conflicts with `domain_id` (string)
+     * 
+     */
     public Optional<String> domainName() {
         return Optional.ofNullable(this.domainName);
     }
+    /**
+     * @return OpenStack endpoint type. adminURL, internalURL or publicURL (string)
+     * 
+     */
     public Optional<String> endpointType() {
         return Optional.ofNullable(this.endpointType);
     }
+    /**
+     * @return OpenStack flavor id to use for the instance. Conflicts with `flavor_name` (string)
+     * 
+     */
     public Optional<String> flavorId() {
         return Optional.ofNullable(this.flavorId);
     }
+    /**
+     * @return OpenStack flavor name to use for the instance. Conflicts with `flavor_id` (string)
+     * 
+     */
     public Optional<String> flavorName() {
         return Optional.ofNullable(this.flavorName);
     }
+    /**
+     * @return OpenStack floating IP pool to get an IP from to assign to the instance (string)
+     * 
+     */
     public Optional<String> floatingIpPool() {
         return Optional.ofNullable(this.floatingIpPool);
     }
+    /**
+     * @return OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+     * 
+     */
     public Optional<String> imageId() {
         return Optional.ofNullable(this.imageId);
     }
+    /**
+     * @return OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+     * 
+     */
     public Optional<String> imageName() {
         return Optional.ofNullable(this.imageName);
     }
+    /**
+     * @return Disable TLS credential checking. Default `false` (bool)
+     * 
+     */
     public Optional<Boolean> insecure() {
         return Optional.ofNullable(this.insecure);
     }
+    /**
+     * @return OpenStack version of IP address assigned for the machine Default `4` (string)
+     * 
+     */
     public Optional<String> ipVersion() {
         return Optional.ofNullable(this.ipVersion);
     }
+    /**
+     * @return OpenStack keypair to use to SSH to the instance (string)
+     * 
+     */
     public Optional<String> keypairName() {
         return Optional.ofNullable(this.keypairName);
     }
+    /**
+     * @return OpenStack network id the machine will be connected on. Conflicts with `net_name` (string)
+     * 
+     */
     public Optional<String> netId() {
         return Optional.ofNullable(this.netId);
     }
+    /**
+     * @return OpenStack network name the machine will be connected on. Conflicts with `net_id` (string)
+     * 
+     */
     public Optional<String> netName() {
         return Optional.ofNullable(this.netName);
     }
+    /**
+     * @return Use the nova networking services instead of neutron (string)
+     * 
+     */
     public Optional<Boolean> novaNetwork() {
         return Optional.ofNullable(this.novaNetwork);
     }
+    /**
+     * @return OpenStack password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * 
+     */
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
     }
+    /**
+     * @return Private key content to use for SSH (string)
+     * 
+     */
     public Optional<String> privateKeyFile() {
         return Optional.ofNullable(this.privateKeyFile);
     }
+    /**
+     * @return OpenStack region name (string)
+     * 
+     */
     public String region() {
         return this.region;
     }
+    /**
+     * @return OpenStack comma separated security groups for the machine (string)
+     * 
+     */
     public Optional<String> secGroups() {
         return Optional.ofNullable(this.secGroups);
     }
+    /**
+     * @return If using a non-B2D image you can specify the ssh port. Default `22` (string)
+     * 
+     */
     public Optional<String> sshPort() {
         return Optional.ofNullable(this.sshPort);
     }
+    /**
+     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+     * 
+     */
     public Optional<String> sshUser() {
         return Optional.ofNullable(this.sshUser);
     }
+    /**
+     * @return OpenStack tenant domain id. Conflicts with `tenant_domain_name` (string)
+     * 
+     */
     public Optional<String> tenantDomainId() {
         return Optional.ofNullable(this.tenantDomainId);
     }
+    /**
+     * @return OpenStack tenant domain name. Conflicts with `tenant_domain_id` (string)
+     * 
+     */
     public Optional<String> tenantDomainName() {
         return Optional.ofNullable(this.tenantDomainName);
     }
+    /**
+     * @return OpenStack tenant id. Conflicts with `tenant_name` (string)
+     * 
+     */
     public Optional<String> tenantId() {
         return Optional.ofNullable(this.tenantId);
     }
+    /**
+     * @return OpenStack tenant name. Conflicts with `tenant_id` (string)
+     * 
+     */
     public Optional<String> tenantName() {
         return Optional.ofNullable(this.tenantName);
     }
+    /**
+     * @return File containing an openstack userdata script (string)
+     * 
+     */
     public Optional<String> userDataFile() {
         return Optional.ofNullable(this.userDataFile);
     }
+    /**
+     * @return OpenStack user domain id. Conflicts with `user_domain_name` (string)
+     * 
+     */
     public Optional<String> userDomainId() {
         return Optional.ofNullable(this.userDomainId);
     }
+    /**
+     * @return OpenStack user domain name. Conflicts with `user_domain_id` (string)
+     * 
+     */
     public Optional<String> userDomainName() {
         return Optional.ofNullable(this.userDomainName);
     }
+    /**
+     * @return OpenStack username (string)
+     * 
+     */
     public Optional<String> username() {
         return Optional.ofNullable(this.username);
     }
+    /**
+     * @return OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
+     * &gt; **Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.
+     * **Note:**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
+     * **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
+     * 
+     */
     public Optional<String> volumeDevicePath() {
         return Optional.ofNullable(this.volumeDevicePath);
     }
+    /**
+     * @return OpenStack volume id of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+     * 
+     */
     public Optional<String> volumeId() {
         return Optional.ofNullable(this.volumeId);
     }
+    /**
+     * @return OpenStack volume name of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+     * 
+     */
     public Optional<String> volumeName() {
         return Optional.ofNullable(this.volumeName);
     }
+    /**
+     * @return OpenStack volume size (GiB). Required when `boot_from_volume` is `true` (string)
+     * 
+     */
     public Optional<String> volumeSize() {
         return Optional.ofNullable(this.volumeSize);
     }
+    /**
+     * @return OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+     * 
+     */
     public Optional<String> volumeType() {
         return Optional.ofNullable(this.volumeType);
     }

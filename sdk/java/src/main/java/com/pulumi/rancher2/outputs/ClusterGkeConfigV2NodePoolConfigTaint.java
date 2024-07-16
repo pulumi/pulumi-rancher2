@@ -10,17 +10,41 @@ import java.util.Objects;
 
 @CustomType
 public final class ClusterGkeConfigV2NodePoolConfigTaint {
+    /**
+     * @return The GKE taint effect (string)
+     * 
+     */
     private String effect;
+    /**
+     * @return The GKE taint key (string)
+     * 
+     */
     private String key;
+    /**
+     * @return The GKE taint value (string)
+     * 
+     */
     private String value;
 
     private ClusterGkeConfigV2NodePoolConfigTaint() {}
+    /**
+     * @return The GKE taint effect (string)
+     * 
+     */
     public String effect() {
         return this.effect;
     }
+    /**
+     * @return The GKE taint key (string)
+     * 
+     */
     public String key() {
         return this.key;
     }
+    /**
+     * @return The GKE taint value (string)
+     * 
+     */
     public String value() {
         return this.value;
     }

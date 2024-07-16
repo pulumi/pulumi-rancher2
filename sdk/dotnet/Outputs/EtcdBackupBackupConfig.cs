@@ -13,9 +13,21 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class EtcdBackupBackupConfig
     {
+        /// <summary>
+        /// Enable etcd backup (bool)
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// Interval hours for etcd backup. Default `12` (int)
+        /// </summary>
         public readonly int? IntervalHours;
+        /// <summary>
+        /// Retention for etcd backup. Default `6` (int)
+        /// </summary>
         public readonly int? Retention;
+        /// <summary>
+        /// S3 config options for etcd backup. Valid for `imported` and `rke` clusters. (list maxitems:1)
+        /// </summary>
         public readonly Outputs.EtcdBackupBackupConfigS3BackupConfig? S3BackupConfig;
         public readonly bool? SafeTimestamp;
         public readonly int? Timeout;

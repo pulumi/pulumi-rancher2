@@ -21,37 +21,77 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderArgs extends
 
     public static final ClusterRkeConfigCloudProviderVsphereCloudProviderArgs Empty = new ClusterRkeConfigCloudProviderVsphereCloudProviderArgs();
 
+    /**
+     * (list maxitems:1)
+     * 
+     */
     @Import(name="disk")
     private @Nullable Output<ClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgs> disk;
 
+    /**
+     * @return (list maxitems:1)
+     * 
+     */
     public Optional<Output<ClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgs>> disk() {
         return Optional.ofNullable(this.disk);
     }
 
+    /**
+     * (list maxitems:1)
+     * 
+     */
     @Import(name="global")
     private @Nullable Output<ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs> global;
 
+    /**
+     * @return (list maxitems:1)
+     * 
+     */
     public Optional<Output<ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs>> global() {
         return Optional.ofNullable(this.global);
     }
 
+    /**
+     * The GKE cluster network. Required for create new cluster (string)
+     * 
+     */
     @Import(name="network")
     private @Nullable Output<ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs> network;
 
+    /**
+     * @return The GKE cluster network. Required for create new cluster (string)
+     * 
+     */
     public Optional<Output<ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs>> network() {
         return Optional.ofNullable(this.network);
     }
 
+    /**
+     * (List)
+     * 
+     */
     @Import(name="virtualCenters", required=true)
     private Output<List<ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs>> virtualCenters;
 
+    /**
+     * @return (List)
+     * 
+     */
     public Output<List<ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs>> virtualCenters() {
         return this.virtualCenters;
     }
 
+    /**
+     * (list maxitems:1)
+     * 
+     */
     @Import(name="workspace", required=true)
     private Output<ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs> workspace;
 
+    /**
+     * @return (list maxitems:1)
+     * 
+     */
     public Output<ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs> workspace() {
         return this.workspace;
     }
@@ -84,51 +124,117 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderArgs extends
             $ = new ClusterRkeConfigCloudProviderVsphereCloudProviderArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param disk (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder disk(@Nullable Output<ClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgs> disk) {
             $.disk = disk;
             return this;
         }
 
+        /**
+         * @param disk (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder disk(ClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgs disk) {
             return disk(Output.of(disk));
         }
 
+        /**
+         * @param global (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder global(@Nullable Output<ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs> global) {
             $.global = global;
             return this;
         }
 
+        /**
+         * @param global (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder global(ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs global) {
             return global(Output.of(global));
         }
 
+        /**
+         * @param network The GKE cluster network. Required for create new cluster (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder network(@Nullable Output<ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs> network) {
             $.network = network;
             return this;
         }
 
+        /**
+         * @param network The GKE cluster network. Required for create new cluster (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder network(ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs network) {
             return network(Output.of(network));
         }
 
+        /**
+         * @param virtualCenters (List)
+         * 
+         * @return builder
+         * 
+         */
         public Builder virtualCenters(Output<List<ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs>> virtualCenters) {
             $.virtualCenters = virtualCenters;
             return this;
         }
 
+        /**
+         * @param virtualCenters (List)
+         * 
+         * @return builder
+         * 
+         */
         public Builder virtualCenters(List<ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs> virtualCenters) {
             return virtualCenters(Output.of(virtualCenters));
         }
 
+        /**
+         * @param virtualCenters (List)
+         * 
+         * @return builder
+         * 
+         */
         public Builder virtualCenters(ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs... virtualCenters) {
             return virtualCenters(List.of(virtualCenters));
         }
 
+        /**
+         * @param workspace (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder workspace(Output<ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs> workspace) {
             $.workspace = workspace;
             return this;
         }
 
+        /**
+         * @param workspace (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder workspace(ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs workspace) {
             return workspace(Output.of(workspace));
         }

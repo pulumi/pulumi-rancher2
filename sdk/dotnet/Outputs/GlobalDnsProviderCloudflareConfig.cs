@@ -13,8 +13,17 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GlobalDnsProviderCloudflareConfig
     {
+        /// <summary>
+        /// The CloudFlare API Email (string)
+        /// </summary>
         public readonly string ApiEmail;
+        /// <summary>
+        /// The CloudFlare API Key (string)
+        /// </summary>
         public readonly string ApiKey;
+        /// <summary>
+        /// CloudFlare Proxy Setting. Default: `false` (bool)
+        /// </summary>
         public readonly bool? ProxySetting;
 
         [OutputConstructor]

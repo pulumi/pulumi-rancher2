@@ -12,21 +12,39 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterRkeConfigServicesEtcdBackupConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Enable the authorized cluster endpoint. Default `true` (bool)
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// Interval hours for etcd backup. Default `12` (int)
+        /// </summary>
         [Input("intervalHours")]
         public Input<int>? IntervalHours { get; set; }
 
+        /// <summary>
+        /// Retention for etcd backup. Default `6` (int)
+        /// </summary>
         [Input("retention")]
         public Input<int>? Retention { get; set; }
 
+        /// <summary>
+        /// S3 config options for etcd backup (list maxitems:1)
+        /// </summary>
         [Input("s3BackupConfig")]
         public Input<Inputs.ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs>? S3BackupConfig { get; set; }
 
+        /// <summary>
+        /// Safe timestamp for etcd backup. Default: `false` (bool)
+        /// </summary>
         [Input("safeTimestamp")]
         public Input<bool>? SafeTimestamp { get; set; }
 
+        /// <summary>
+        /// RKE node drain timeout. Default: `60` (int)
+        /// </summary>
         [Input("timeout")]
         public Input<int>? Timeout { get; set; }
 

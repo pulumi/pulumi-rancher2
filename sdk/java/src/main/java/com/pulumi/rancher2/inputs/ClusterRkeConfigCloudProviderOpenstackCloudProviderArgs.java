@@ -20,37 +20,77 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderArgs exten
 
     public static final ClusterRkeConfigCloudProviderOpenstackCloudProviderArgs Empty = new ClusterRkeConfigCloudProviderOpenstackCloudProviderArgs();
 
+    /**
+     * (list maxitems:1)
+     * 
+     */
     @Import(name="blockStorage")
     private @Nullable Output<ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs> blockStorage;
 
+    /**
+     * @return (list maxitems:1)
+     * 
+     */
     public Optional<Output<ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs>> blockStorage() {
         return Optional.ofNullable(this.blockStorage);
     }
 
+    /**
+     * (list maxitems:1)
+     * 
+     */
     @Import(name="global", required=true)
     private Output<ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs> global;
 
+    /**
+     * @return (list maxitems:1)
+     * 
+     */
     public Output<ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs> global() {
         return this.global;
     }
 
+    /**
+     * (list maxitems:1)
+     * 
+     */
     @Import(name="loadBalancer")
     private @Nullable Output<ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs> loadBalancer;
 
+    /**
+     * @return (list maxitems:1)
+     * 
+     */
     public Optional<Output<ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs>> loadBalancer() {
         return Optional.ofNullable(this.loadBalancer);
     }
 
+    /**
+     * (list maxitems:1)
+     * 
+     */
     @Import(name="metadata")
     private @Nullable Output<ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs> metadata;
 
+    /**
+     * @return (list maxitems:1)
+     * 
+     */
     public Optional<Output<ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs>> metadata() {
         return Optional.ofNullable(this.metadata);
     }
 
+    /**
+     * (list maxitems:1)
+     * 
+     */
     @Import(name="route")
     private @Nullable Output<ClusterRkeConfigCloudProviderOpenstackCloudProviderRouteArgs> route;
 
+    /**
+     * @return (list maxitems:1)
+     * 
+     */
     public Optional<Output<ClusterRkeConfigCloudProviderOpenstackCloudProviderRouteArgs>> route() {
         return Optional.ofNullable(this.route);
     }
@@ -83,47 +123,107 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderArgs exten
             $ = new ClusterRkeConfigCloudProviderOpenstackCloudProviderArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param blockStorage (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder blockStorage(@Nullable Output<ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs> blockStorage) {
             $.blockStorage = blockStorage;
             return this;
         }
 
+        /**
+         * @param blockStorage (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder blockStorage(ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs blockStorage) {
             return blockStorage(Output.of(blockStorage));
         }
 
+        /**
+         * @param global (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder global(Output<ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs> global) {
             $.global = global;
             return this;
         }
 
+        /**
+         * @param global (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder global(ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs global) {
             return global(Output.of(global));
         }
 
+        /**
+         * @param loadBalancer (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder loadBalancer(@Nullable Output<ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs> loadBalancer) {
             $.loadBalancer = loadBalancer;
             return this;
         }
 
+        /**
+         * @param loadBalancer (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder loadBalancer(ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs loadBalancer) {
             return loadBalancer(Output.of(loadBalancer));
         }
 
+        /**
+         * @param metadata (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder metadata(@Nullable Output<ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs> metadata) {
             $.metadata = metadata;
             return this;
         }
 
+        /**
+         * @param metadata (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder metadata(ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs metadata) {
             return metadata(Output.of(metadata));
         }
 
+        /**
+         * @param route (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder route(@Nullable Output<ClusterRkeConfigCloudProviderOpenstackCloudProviderRouteArgs> route) {
             $.route = route;
             return this;
         }
 
+        /**
+         * @param route (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder route(ClusterRkeConfigCloudProviderOpenstackCloudProviderRouteArgs route) {
             return route(Output.of(route));
         }

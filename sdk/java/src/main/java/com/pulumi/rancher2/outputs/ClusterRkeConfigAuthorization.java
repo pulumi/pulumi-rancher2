@@ -13,13 +13,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterRkeConfigAuthorization {
+    /**
+     * @return The AKS node group mode. Default: `System` (string)
+     * 
+     */
     private @Nullable String mode;
+    /**
+     * @return RKE options for network (map)
+     * 
+     */
     private @Nullable Map<String,Object> options;
 
     private ClusterRkeConfigAuthorization() {}
+    /**
+     * @return The AKS node group mode. Default: `System` (string)
+     * 
+     */
     public Optional<String> mode() {
         return Optional.ofNullable(this.mode);
     }
+    /**
+     * @return RKE options for network (map)
+     * 
+     */
     public Map<String,Object> options() {
         return this.options == null ? Map.of() : this.options;
     }

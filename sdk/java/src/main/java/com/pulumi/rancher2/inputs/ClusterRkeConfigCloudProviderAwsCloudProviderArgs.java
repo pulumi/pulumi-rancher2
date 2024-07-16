@@ -17,16 +17,32 @@ public final class ClusterRkeConfigCloudProviderAwsCloudProviderArgs extends com
 
     public static final ClusterRkeConfigCloudProviderAwsCloudProviderArgs Empty = new ClusterRkeConfigCloudProviderAwsCloudProviderArgs();
 
+    /**
+     * (list maxitems:1)
+     * 
+     */
     @Import(name="global")
     private @Nullable Output<ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs> global;
 
+    /**
+     * @return (list maxitems:1)
+     * 
+     */
     public Optional<Output<ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs>> global() {
         return Optional.ofNullable(this.global);
     }
 
+    /**
+     * (list)
+     * 
+     */
     @Import(name="serviceOverrides")
     private @Nullable Output<List<ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs>> serviceOverrides;
 
+    /**
+     * @return (list)
+     * 
+     */
     public Optional<Output<List<ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs>>> serviceOverrides() {
         return Optional.ofNullable(this.serviceOverrides);
     }
@@ -56,24 +72,54 @@ public final class ClusterRkeConfigCloudProviderAwsCloudProviderArgs extends com
             $ = new ClusterRkeConfigCloudProviderAwsCloudProviderArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param global (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder global(@Nullable Output<ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs> global) {
             $.global = global;
             return this;
         }
 
+        /**
+         * @param global (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder global(ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs global) {
             return global(Output.of(global));
         }
 
+        /**
+         * @param serviceOverrides (list)
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceOverrides(@Nullable Output<List<ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs>> serviceOverrides) {
             $.serviceOverrides = serviceOverrides;
             return this;
         }
 
+        /**
+         * @param serviceOverrides (list)
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceOverrides(List<ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs> serviceOverrides) {
             return serviceOverrides(Output.of(serviceOverrides));
         }
 
+        /**
+         * @param serviceOverrides (list)
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceOverrides(ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs... serviceOverrides) {
             return serviceOverrides(List.of(serviceOverrides));
         }

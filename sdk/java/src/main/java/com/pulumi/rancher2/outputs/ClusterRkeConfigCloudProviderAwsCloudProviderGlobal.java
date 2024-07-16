@@ -12,45 +12,125 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterRkeConfigCloudProviderAwsCloudProviderGlobal {
+    /**
+     * @return Default `false` (bool)
+     * 
+     */
     private @Nullable Boolean disableSecurityGroupIngress;
+    /**
+     * @return Default `false` (bool)
+     * 
+     */
     private @Nullable Boolean disableStrictZoneCheck;
+    /**
+     * @return (string)
+     * 
+     */
     private @Nullable String elbSecurityGroup;
+    /**
+     * @return (string)
+     * 
+     */
     private @Nullable String kubernetesClusterId;
+    /**
+     * @return (string)
+     * 
+     */
     private @Nullable String kubernetesClusterTag;
+    /**
+     * @return (string)
+     * 
+     */
     private @Nullable String roleArn;
+    /**
+     * @return (string)
+     * 
+     */
     private @Nullable String routeTableId;
+    /**
+     * @return (string)
+     * 
+     */
     private @Nullable String subnetId;
+    /**
+     * @return (string)
+     * 
+     */
     private @Nullable String vpc;
+    /**
+     * @return The GKE cluster zone. Required if `region` not set (string)
+     * 
+     */
     private @Nullable String zone;
 
     private ClusterRkeConfigCloudProviderAwsCloudProviderGlobal() {}
+    /**
+     * @return Default `false` (bool)
+     * 
+     */
     public Optional<Boolean> disableSecurityGroupIngress() {
         return Optional.ofNullable(this.disableSecurityGroupIngress);
     }
+    /**
+     * @return Default `false` (bool)
+     * 
+     */
     public Optional<Boolean> disableStrictZoneCheck() {
         return Optional.ofNullable(this.disableStrictZoneCheck);
     }
+    /**
+     * @return (string)
+     * 
+     */
     public Optional<String> elbSecurityGroup() {
         return Optional.ofNullable(this.elbSecurityGroup);
     }
+    /**
+     * @return (string)
+     * 
+     */
     public Optional<String> kubernetesClusterId() {
         return Optional.ofNullable(this.kubernetesClusterId);
     }
+    /**
+     * @return (string)
+     * 
+     */
     public Optional<String> kubernetesClusterTag() {
         return Optional.ofNullable(this.kubernetesClusterTag);
     }
+    /**
+     * @return (string)
+     * 
+     */
     public Optional<String> roleArn() {
         return Optional.ofNullable(this.roleArn);
     }
+    /**
+     * @return (string)
+     * 
+     */
     public Optional<String> routeTableId() {
         return Optional.ofNullable(this.routeTableId);
     }
+    /**
+     * @return (string)
+     * 
+     */
     public Optional<String> subnetId() {
         return Optional.ofNullable(this.subnetId);
     }
+    /**
+     * @return (string)
+     * 
+     */
     public Optional<String> vpc() {
         return Optional.ofNullable(this.vpc);
     }
+    /**
+     * @return The GKE cluster zone. Required if `region` not set (string)
+     * 
+     */
     public Optional<String> zone() {
         return Optional.ofNullable(this.zone);
     }

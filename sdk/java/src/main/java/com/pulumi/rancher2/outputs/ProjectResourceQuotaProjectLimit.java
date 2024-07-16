@@ -11,57 +11,157 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ProjectResourceQuotaProjectLimit {
+    /**
+     * @return Limit for config maps in project (string)
+     * 
+     */
     private @Nullable String configMaps;
+    /**
+     * @return Limit for limits cpu in project (string)
+     * 
+     */
     private @Nullable String limitsCpu;
+    /**
+     * @return Limit for limits memory in project (string)
+     * 
+     */
     private @Nullable String limitsMemory;
+    /**
+     * @return Limit for persistent volume claims in project (string)
+     * 
+     */
     private @Nullable String persistentVolumeClaims;
+    /**
+     * @return Limit for pods in project (string)
+     * 
+     */
     private @Nullable String pods;
+    /**
+     * @return Limit for replication controllers in project (string)
+     * 
+     */
     private @Nullable String replicationControllers;
+    /**
+     * @return Limit for requests cpu in project (string)
+     * 
+     */
     private @Nullable String requestsCpu;
+    /**
+     * @return Limit for requests memory in project (string)
+     * 
+     */
     private @Nullable String requestsMemory;
+    /**
+     * @return Limit for requests storage in project (string)
+     * 
+     */
     private @Nullable String requestsStorage;
+    /**
+     * @return Limit for secrets in project (string)
+     * 
+     */
     private @Nullable String secrets;
     private @Nullable String services;
+    /**
+     * @return Limit for services load balancers in project (string)
+     * 
+     */
     private @Nullable String servicesLoadBalancers;
+    /**
+     * @return Limit for services node ports in project (string)
+     * 
+     * More info at [resource-quotas](https://rancher.com/docs/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/)
+     * 
+     */
     private @Nullable String servicesNodePorts;
 
     private ProjectResourceQuotaProjectLimit() {}
+    /**
+     * @return Limit for config maps in project (string)
+     * 
+     */
     public Optional<String> configMaps() {
         return Optional.ofNullable(this.configMaps);
     }
+    /**
+     * @return Limit for limits cpu in project (string)
+     * 
+     */
     public Optional<String> limitsCpu() {
         return Optional.ofNullable(this.limitsCpu);
     }
+    /**
+     * @return Limit for limits memory in project (string)
+     * 
+     */
     public Optional<String> limitsMemory() {
         return Optional.ofNullable(this.limitsMemory);
     }
+    /**
+     * @return Limit for persistent volume claims in project (string)
+     * 
+     */
     public Optional<String> persistentVolumeClaims() {
         return Optional.ofNullable(this.persistentVolumeClaims);
     }
+    /**
+     * @return Limit for pods in project (string)
+     * 
+     */
     public Optional<String> pods() {
         return Optional.ofNullable(this.pods);
     }
+    /**
+     * @return Limit for replication controllers in project (string)
+     * 
+     */
     public Optional<String> replicationControllers() {
         return Optional.ofNullable(this.replicationControllers);
     }
+    /**
+     * @return Limit for requests cpu in project (string)
+     * 
+     */
     public Optional<String> requestsCpu() {
         return Optional.ofNullable(this.requestsCpu);
     }
+    /**
+     * @return Limit for requests memory in project (string)
+     * 
+     */
     public Optional<String> requestsMemory() {
         return Optional.ofNullable(this.requestsMemory);
     }
+    /**
+     * @return Limit for requests storage in project (string)
+     * 
+     */
     public Optional<String> requestsStorage() {
         return Optional.ofNullable(this.requestsStorage);
     }
+    /**
+     * @return Limit for secrets in project (string)
+     * 
+     */
     public Optional<String> secrets() {
         return Optional.ofNullable(this.secrets);
     }
     public Optional<String> services() {
         return Optional.ofNullable(this.services);
     }
+    /**
+     * @return Limit for services load balancers in project (string)
+     * 
+     */
     public Optional<String> servicesLoadBalancers() {
         return Optional.ofNullable(this.servicesLoadBalancers);
     }
+    /**
+     * @return Limit for services node ports in project (string)
+     * 
+     * More info at [resource-quotas](https://rancher.com/docs/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/)
+     * 
+     */
     public Optional<String> servicesNodePorts() {
         return Optional.ofNullable(this.servicesNodePorts);
     }

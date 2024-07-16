@@ -17,30 +17,62 @@ public final class EtcdBackupBackupConfigArgs extends com.pulumi.resources.Resou
 
     public static final EtcdBackupBackupConfigArgs Empty = new EtcdBackupBackupConfigArgs();
 
+    /**
+     * Enable etcd backup (bool)
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Enable etcd backup (bool)
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * Interval hours for etcd backup. Default `12` (int)
+     * 
+     */
     @Import(name="intervalHours")
     private @Nullable Output<Integer> intervalHours;
 
+    /**
+     * @return Interval hours for etcd backup. Default `12` (int)
+     * 
+     */
     public Optional<Output<Integer>> intervalHours() {
         return Optional.ofNullable(this.intervalHours);
     }
 
+    /**
+     * Retention for etcd backup. Default `6` (int)
+     * 
+     */
     @Import(name="retention")
     private @Nullable Output<Integer> retention;
 
+    /**
+     * @return Retention for etcd backup. Default `6` (int)
+     * 
+     */
     public Optional<Output<Integer>> retention() {
         return Optional.ofNullable(this.retention);
     }
 
+    /**
+     * S3 config options for etcd backup. Valid for `imported` and `rke` clusters. (list maxitems:1)
+     * 
+     */
     @Import(name="s3BackupConfig")
     private @Nullable Output<EtcdBackupBackupConfigS3BackupConfigArgs> s3BackupConfig;
 
+    /**
+     * @return S3 config options for etcd backup. Valid for `imported` and `rke` clusters. (list maxitems:1)
+     * 
+     */
     public Optional<Output<EtcdBackupBackupConfigS3BackupConfigArgs>> s3BackupConfig() {
         return Optional.ofNullable(this.s3BackupConfig);
     }
@@ -88,38 +120,86 @@ public final class EtcdBackupBackupConfigArgs extends com.pulumi.resources.Resou
             $ = new EtcdBackupBackupConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Enable etcd backup (bool)
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Enable etcd backup (bool)
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param intervalHours Interval hours for etcd backup. Default `12` (int)
+         * 
+         * @return builder
+         * 
+         */
         public Builder intervalHours(@Nullable Output<Integer> intervalHours) {
             $.intervalHours = intervalHours;
             return this;
         }
 
+        /**
+         * @param intervalHours Interval hours for etcd backup. Default `12` (int)
+         * 
+         * @return builder
+         * 
+         */
         public Builder intervalHours(Integer intervalHours) {
             return intervalHours(Output.of(intervalHours));
         }
 
+        /**
+         * @param retention Retention for etcd backup. Default `6` (int)
+         * 
+         * @return builder
+         * 
+         */
         public Builder retention(@Nullable Output<Integer> retention) {
             $.retention = retention;
             return this;
         }
 
+        /**
+         * @param retention Retention for etcd backup. Default `6` (int)
+         * 
+         * @return builder
+         * 
+         */
         public Builder retention(Integer retention) {
             return retention(Output.of(retention));
         }
 
+        /**
+         * @param s3BackupConfig S3 config options for etcd backup. Valid for `imported` and `rke` clusters. (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder s3BackupConfig(@Nullable Output<EtcdBackupBackupConfigS3BackupConfigArgs> s3BackupConfig) {
             $.s3BackupConfig = s3BackupConfig;
             return this;
         }
 
+        /**
+         * @param s3BackupConfig S3 config options for etcd backup. Valid for `imported` and `rke` clusters. (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder s3BackupConfig(EtcdBackupBackupConfigS3BackupConfigArgs s3BackupConfig) {
             return s3BackupConfig(Output.of(s3BackupConfig));
         }

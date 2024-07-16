@@ -13,9 +13,21 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ProjectContainerResourceLimit
     {
+        /// <summary>
+        /// Limit for limits cpu in project (string)
+        /// </summary>
         public readonly string? LimitsCpu;
+        /// <summary>
+        /// Limit for limits memory in project (string)
+        /// </summary>
         public readonly string? LimitsMemory;
+        /// <summary>
+        /// Limit for requests cpu in project (string)
+        /// </summary>
         public readonly string? RequestsCpu;
+        /// <summary>
+        /// Limit for requests memory in project (string)
+        /// </summary>
         public readonly string? RequestsMemory;
 
         [OutputConstructor]

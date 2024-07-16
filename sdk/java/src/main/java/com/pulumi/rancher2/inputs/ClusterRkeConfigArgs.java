@@ -120,16 +120,32 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.bastionHost);
     }
 
+    /**
+     * RKE options for Calico network provider (string)
+     * 
+     */
     @Import(name="cloudProvider")
     private @Nullable Output<ClusterRkeConfigCloudProviderArgs> cloudProvider;
 
+    /**
+     * @return RKE options for Calico network provider (string)
+     * 
+     */
     public Optional<Output<ClusterRkeConfigCloudProviderArgs>> cloudProvider() {
         return Optional.ofNullable(this.cloudProvider);
     }
 
+    /**
+     * RKE dns add-on. For Rancher v2.2.x (list maxitems:1)
+     * 
+     */
     @Import(name="dns")
     private @Nullable Output<ClusterRkeConfigDnsArgs> dns;
 
+    /**
+     * @return RKE dns add-on. For Rancher v2.2.x (list maxitems:1)
+     * 
+     */
     public Optional<Output<ClusterRkeConfigDnsArgs>> dns() {
         return Optional.ofNullable(this.dns);
     }
@@ -541,20 +557,44 @@ public final class ClusterRkeConfigArgs extends com.pulumi.resources.ResourceArg
             return bastionHost(Output.of(bastionHost));
         }
 
+        /**
+         * @param cloudProvider RKE options for Calico network provider (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder cloudProvider(@Nullable Output<ClusterRkeConfigCloudProviderArgs> cloudProvider) {
             $.cloudProvider = cloudProvider;
             return this;
         }
 
+        /**
+         * @param cloudProvider RKE options for Calico network provider (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder cloudProvider(ClusterRkeConfigCloudProviderArgs cloudProvider) {
             return cloudProvider(Output.of(cloudProvider));
         }
 
+        /**
+         * @param dns RKE dns add-on. For Rancher v2.2.x (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder dns(@Nullable Output<ClusterRkeConfigDnsArgs> dns) {
             $.dns = dns;
             return this;
         }
 
+        /**
+         * @param dns RKE dns add-on. For Rancher v2.2.x (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder dns(ClusterRkeConfigDnsArgs dns) {
             return dns(Output.of(dns));
         }

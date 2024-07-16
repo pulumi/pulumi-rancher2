@@ -12,6 +12,9 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterRkeConfigServicesEtcdArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Backup options for etcd service. For Rancher v2.2.x (list maxitems:1)
+        /// </summary>
         [Input("backupConfig")]
         public Input<Inputs.ClusterRkeConfigServicesEtcdBackupConfigArgs>? BackupConfig { get; set; }
 
@@ -23,6 +26,10 @@ namespace Pulumi.Rancher2.Inputs
 
         [Input("cert")]
         private Input<string>? _cert;
+
+        /// <summary>
+        /// TLS certificate for etcd service (string)
+        /// </summary>
         public Input<string>? Cert
         {
             get => _cert;
@@ -33,11 +40,18 @@ namespace Pulumi.Rancher2.Inputs
             }
         }
 
+        /// <summary>
+        /// Creation option for etcd service (string)
+        /// </summary>
         [Input("creation")]
         public Input<string>? Creation { get; set; }
 
         [Input("externalUrls")]
         private InputList<string>? _externalUrls;
+
+        /// <summary>
+        /// External urls for etcd service (list)
+        /// </summary>
         public InputList<string> ExternalUrls
         {
             get => _externalUrls ?? (_externalUrls = new InputList<string>());
@@ -46,6 +60,10 @@ namespace Pulumi.Rancher2.Inputs
 
         [Input("extraArgs")]
         private InputMap<object>? _extraArgs;
+
+        /// <summary>
+        /// Extra arguments for scheduler service (map)
+        /// </summary>
         public InputMap<object> ExtraArgs
         {
             get => _extraArgs ?? (_extraArgs = new InputMap<object>());
@@ -54,6 +72,10 @@ namespace Pulumi.Rancher2.Inputs
 
         [Input("extraBinds")]
         private InputList<string>? _extraBinds;
+
+        /// <summary>
+        /// Extra binds for scheduler service (list)
+        /// </summary>
         public InputList<string> ExtraBinds
         {
             get => _extraBinds ?? (_extraBinds = new InputList<string>());
@@ -62,20 +84,34 @@ namespace Pulumi.Rancher2.Inputs
 
         [Input("extraEnvs")]
         private InputList<string>? _extraEnvs;
+
+        /// <summary>
+        /// Extra environment for scheduler service (list)
+        /// </summary>
         public InputList<string> ExtraEnvs
         {
             get => _extraEnvs ?? (_extraEnvs = new InputList<string>());
             set => _extraEnvs = value;
         }
 
+        /// <summary>
+        /// Etcd service GID. Default: `0`. For Rancher v2.3.x and above (int)
+        /// </summary>
         [Input("gid")]
         public Input<int>? Gid { get; set; }
 
+        /// <summary>
+        /// Docker image for scheduler service (string)
+        /// </summary>
         [Input("image")]
         public Input<string>? Image { get; set; }
 
         [Input("key")]
         private Input<string>? _key;
+
+        /// <summary>
+        /// The GKE taint key (string)
+        /// </summary>
         public Input<string>? Key
         {
             get => _key;
@@ -86,15 +122,27 @@ namespace Pulumi.Rancher2.Inputs
             }
         }
 
+        /// <summary>
+        /// (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+        /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
 
+        /// <summary>
+        /// Retention for etcd backup. Default `6` (int)
+        /// </summary>
         [Input("retention")]
         public Input<string>? Retention { get; set; }
 
+        /// <summary>
+        /// Snapshot option for etcd service (bool)
+        /// </summary>
         [Input("snapshot")]
         public Input<bool>? Snapshot { get; set; }
 
+        /// <summary>
+        /// Etcd service UID. Default: `0`. For Rancher v2.3.x and above (int)
+        /// </summary>
         [Input("uid")]
         public Input<int>? Uid { get; set; }
 

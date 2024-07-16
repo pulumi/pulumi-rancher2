@@ -12,12 +12,21 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class GlobalDnsProviderCloudflareConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The CloudFlare API Email (string)
+        /// </summary>
         [Input("apiEmail", required: true)]
         public Input<string> ApiEmail { get; set; } = null!;
 
+        /// <summary>
+        /// The CloudFlare API Key (string)
+        /// </summary>
         [Input("apiKey", required: true)]
         public Input<string> ApiKey { get; set; } = null!;
 
+        /// <summary>
+        /// CloudFlare Proxy Setting. Default: `false` (bool)
+        /// </summary>
         [Input("proxySetting")]
         public Input<bool>? ProxySetting { get; set; }
 

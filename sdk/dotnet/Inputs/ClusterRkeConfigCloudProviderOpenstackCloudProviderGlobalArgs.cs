@@ -12,14 +12,24 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// (string)
+        /// </summary>
         [Input("authUrl", required: true)]
         public Input<string> AuthUrl { get; set; } = null!;
 
+        /// <summary>
+        /// (string)
+        /// </summary>
         [Input("caFile")]
         public Input<string>? CaFile { get; set; }
 
         [Input("domainId")]
         private Input<string>? _domainId;
+
+        /// <summary>
+        /// Required if `domain_name` not provided. (string)
+        /// </summary>
         public Input<string>? DomainId
         {
             get => _domainId;
@@ -30,11 +40,18 @@ namespace Pulumi.Rancher2.Inputs
             }
         }
 
+        /// <summary>
+        /// Required if `domain_id` not provided. (string)
+        /// </summary>
         [Input("domainName")]
         public Input<string>? DomainName { get; set; }
 
         [Input("password", required: true)]
         private Input<string>? _password;
+
+        /// <summary>
+        /// Registry password (string)
+        /// </summary>
         public Input<string>? Password
         {
             get => _password;
@@ -45,11 +62,18 @@ namespace Pulumi.Rancher2.Inputs
             }
         }
 
+        /// <summary>
+        /// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         [Input("tenantId")]
         private Input<string>? _tenantId;
+
+        /// <summary>
+        /// Azure tenant ID to use (string)
+        /// </summary>
         public Input<string>? TenantId
         {
             get => _tenantId;
@@ -60,11 +84,18 @@ namespace Pulumi.Rancher2.Inputs
             }
         }
 
+        /// <summary>
+        /// Required if `tenant_id` not provided. (string)
+        /// </summary>
         [Input("tenantName")]
         public Input<string>? TenantName { get; set; }
 
         [Input("trustId")]
         private Input<string>? _trustId;
+
+        /// <summary>
+        /// (string)
+        /// </summary>
         public Input<string>? TrustId
         {
             get => _trustId;
@@ -77,6 +108,10 @@ namespace Pulumi.Rancher2.Inputs
 
         [Input("username", required: true)]
         private Input<string>? _username;
+
+        /// <summary>
+        /// (string)
+        /// </summary>
         public Input<string>? Username
         {
             get => _username;

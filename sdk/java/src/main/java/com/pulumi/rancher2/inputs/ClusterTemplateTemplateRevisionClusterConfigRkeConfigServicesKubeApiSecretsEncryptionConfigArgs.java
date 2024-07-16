@@ -23,9 +23,17 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
         return Optional.ofNullable(this.customConfig);
     }
 
+    /**
+     * Enable cluster template revision. Default `true` (bool)
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Enable cluster template revision. Default `true` (bool)
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -64,11 +72,23 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
             return customConfig(Output.of(customConfig));
         }
 
+        /**
+         * @param enabled Enable cluster template revision. Default `true` (bool)
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Enable cluster template revision. Default `true` (bool)
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

@@ -16,16 +16,32 @@ public final class ClusterRkeConfigServicesKubeApiAuditLogArgs extends com.pulum
 
     public static final ClusterRkeConfigServicesKubeApiAuditLogArgs Empty = new ClusterRkeConfigServicesKubeApiAuditLogArgs();
 
+    /**
+     * Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration&#34;` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
+     * 
+     */
     @Import(name="configuration")
     private @Nullable Output<ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs> configuration;
 
+    /**
+     * @return Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration&#34;` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
+     * 
+     */
     public Optional<Output<ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs>> configuration() {
         return Optional.ofNullable(this.configuration);
     }
 
+    /**
+     * Enable the authorized cluster endpoint. Default `true` (bool)
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Enable the authorized cluster endpoint. Default `true` (bool)
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -55,20 +71,44 @@ public final class ClusterRkeConfigServicesKubeApiAuditLogArgs extends com.pulum
             $ = new ClusterRkeConfigServicesKubeApiAuditLogArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param configuration Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration&#34;` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
+         * 
+         * @return builder
+         * 
+         */
         public Builder configuration(@Nullable Output<ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs> configuration) {
             $.configuration = configuration;
             return this;
         }
 
+        /**
+         * @param configuration Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration&#34;` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
+         * 
+         * @return builder
+         * 
+         */
         public Builder configuration(ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs configuration) {
             return configuration(Output.of(configuration));
         }
 
+        /**
+         * @param enabled Enable the authorized cluster endpoint. Default `true` (bool)
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Enable the authorized cluster endpoint. Default `true` (bool)
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

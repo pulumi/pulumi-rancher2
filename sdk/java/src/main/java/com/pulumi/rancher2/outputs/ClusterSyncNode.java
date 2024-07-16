@@ -19,32 +19,80 @@ public final class ClusterSyncNode {
      * 
      */
     private @Nullable Map<String,Object> annotations;
+    /**
+     * @return The total resources of a node (map).
+     * 
+     */
     private @Nullable Map<String,Object> capacity;
     /**
      * @return The cluster ID that is syncing (string)
      * 
      */
     private @Nullable String clusterId;
+    /**
+     * @return The external IP address of the node (string).
+     * 
+     */
     private @Nullable String externalIpAddress;
+    /**
+     * @return The hostname of the node (string).
+     * 
+     */
     private @Nullable String hostname;
     /**
      * @return (Computed) The ID of the resource. Same as `cluster_id` (string)
      * 
      */
     private @Nullable String id;
+    /**
+     * @return The private IP address of the node (string).
+     * 
+     */
     private @Nullable String ipAddress;
     /**
      * @return Labels of the resource
      * 
      */
     private @Nullable Map<String,Object> labels;
+    /**
+     * @return The name of the node (string).
+     * 
+     */
     private @Nullable String name;
+    /**
+     * @return The Node Pool ID of the node (string).
+     * 
+     */
     private @Nullable String nodePoolId;
+    /**
+     * @return The Node Template ID of the node (string).
+     * 
+     */
     private @Nullable String nodeTemplateId;
+    /**
+     * @return The Provider ID of the node (string).
+     * 
+     */
     private @Nullable String providerId;
+    /**
+     * @return The requested hostname (string).
+     * 
+     */
     private @Nullable String requestedHostname;
+    /**
+     * @return Roles of the node. `controlplane`, `etcd` and `worker`. (list)
+     * 
+     */
     private @Nullable List<String> roles;
+    /**
+     * @return The user to connect to the node (string).
+     * 
+     */
     private @Nullable String sshUser;
+    /**
+     * @return General information about the node, such as kernel version, kubelet and kube-proxy version, Docker version (if used), and OS name.
+     * 
+     */
     private @Nullable Map<String,Object> systemInfo;
 
     private ClusterSyncNode() {}
@@ -55,6 +103,10 @@ public final class ClusterSyncNode {
     public Map<String,Object> annotations() {
         return this.annotations == null ? Map.of() : this.annotations;
     }
+    /**
+     * @return The total resources of a node (map).
+     * 
+     */
     public Map<String,Object> capacity() {
         return this.capacity == null ? Map.of() : this.capacity;
     }
@@ -65,9 +117,17 @@ public final class ClusterSyncNode {
     public Optional<String> clusterId() {
         return Optional.ofNullable(this.clusterId);
     }
+    /**
+     * @return The external IP address of the node (string).
+     * 
+     */
     public Optional<String> externalIpAddress() {
         return Optional.ofNullable(this.externalIpAddress);
     }
+    /**
+     * @return The hostname of the node (string).
+     * 
+     */
     public Optional<String> hostname() {
         return Optional.ofNullable(this.hostname);
     }
@@ -78,6 +138,10 @@ public final class ClusterSyncNode {
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
+    /**
+     * @return The private IP address of the node (string).
+     * 
+     */
     public Optional<String> ipAddress() {
         return Optional.ofNullable(this.ipAddress);
     }
@@ -88,27 +152,59 @@ public final class ClusterSyncNode {
     public Map<String,Object> labels() {
         return this.labels == null ? Map.of() : this.labels;
     }
+    /**
+     * @return The name of the node (string).
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return The Node Pool ID of the node (string).
+     * 
+     */
     public Optional<String> nodePoolId() {
         return Optional.ofNullable(this.nodePoolId);
     }
+    /**
+     * @return The Node Template ID of the node (string).
+     * 
+     */
     public Optional<String> nodeTemplateId() {
         return Optional.ofNullable(this.nodeTemplateId);
     }
+    /**
+     * @return The Provider ID of the node (string).
+     * 
+     */
     public Optional<String> providerId() {
         return Optional.ofNullable(this.providerId);
     }
+    /**
+     * @return The requested hostname (string).
+     * 
+     */
     public Optional<String> requestedHostname() {
         return Optional.ofNullable(this.requestedHostname);
     }
+    /**
+     * @return Roles of the node. `controlplane`, `etcd` and `worker`. (list)
+     * 
+     */
     public List<String> roles() {
         return this.roles == null ? List.of() : this.roles;
     }
+    /**
+     * @return The user to connect to the node (string).
+     * 
+     */
     public Optional<String> sshUser() {
         return Optional.ofNullable(this.sshUser);
     }
+    /**
+     * @return General information about the node, such as kernel version, kubelet and kube-proxy version, Docker version (if used), and OS name.
+     * 
+     */
     public Map<String,Object> systemInfo() {
         return this.systemInfo == null ? Map.of() : this.systemInfo;
     }

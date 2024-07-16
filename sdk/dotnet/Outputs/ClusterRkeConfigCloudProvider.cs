@@ -13,14 +13,29 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterRkeConfigCloudProvider
     {
+        /// <summary>
+        /// RKE AWS Cloud Provider config for Cloud Provider [rke-aws-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/aws/) (list maxitems:1)
+        /// </summary>
         public readonly Outputs.ClusterRkeConfigCloudProviderAwsCloudProvider? AwsCloudProvider;
+        /// <summary>
+        /// RKE Azure Cloud Provider config for Cloud Provider [rke-azure-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/azure/) (list maxitems:1)
+        /// </summary>
         public readonly Outputs.ClusterRkeConfigCloudProviderAzureCloudProvider? AzureCloudProvider;
+        /// <summary>
+        /// RKE Custom Cloud Provider config for Cloud Provider (string)
+        /// </summary>
         public readonly string? CustomCloudProvider;
         /// <summary>
         /// The name of the Cluster (string)
         /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// RKE Openstack Cloud Provider config for Cloud Provider [rke-openstack-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/openstack/) (list maxitems:1)
+        /// </summary>
         public readonly Outputs.ClusterRkeConfigCloudProviderOpenstackCloudProvider? OpenstackCloudProvider;
+        /// <summary>
+        /// RKE Vsphere Cloud Provider config for Cloud Provider [rke-vsphere-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/vsphere/) Extra argument `name` is required on `virtual_center` configuration. (list maxitems:1)
+        /// </summary>
         public readonly Outputs.ClusterRkeConfigCloudProviderVsphereCloudProvider? VsphereCloudProvider;
 
         [OutputConstructor]

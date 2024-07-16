@@ -13,10 +13,25 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterRkeConfigDnsLinearAutoscalerParams
     {
+        /// <summary>
+        /// number of replicas per cluster cores (float64)
+        /// </summary>
         public readonly double? CoresPerReplica;
+        /// <summary>
+        /// maximum number of replicas (int64)
+        /// </summary>
         public readonly int? Max;
+        /// <summary>
+        /// minimum number of replicas (int64)
+        /// </summary>
         public readonly int? Min;
+        /// <summary>
+        /// number of replica per cluster nodes (float64)
+        /// </summary>
         public readonly double? NodesPerReplica;
+        /// <summary>
+        /// prevent single point of failure
+        /// </summary>
         public readonly bool? PreventSinglePointFailure;
 
         [OutputConstructor]

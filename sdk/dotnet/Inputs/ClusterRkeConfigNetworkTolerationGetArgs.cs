@@ -12,18 +12,33 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterRkeConfigNetworkTolerationGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The GKE taint effect (string)
+        /// </summary>
         [Input("effect")]
         public Input<string>? Effect { get; set; }
 
+        /// <summary>
+        /// The GKE taint key (string)
+        /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
+        /// <summary>
+        /// The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+        /// </summary>
         [Input("operator")]
         public Input<string>? Operator { get; set; }
 
+        /// <summary>
+        /// The toleration seconds (int)
+        /// </summary>
         [Input("seconds")]
         public Input<int>? Seconds { get; set; }
 
+        /// <summary>
+        /// The GKE taint value (string)
+        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

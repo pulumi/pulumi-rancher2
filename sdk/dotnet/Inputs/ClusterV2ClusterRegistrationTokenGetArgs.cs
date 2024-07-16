@@ -24,9 +24,15 @@ namespace Pulumi.Rancher2.Inputs
             set => _annotations = value;
         }
 
+        /// <summary>
+        /// Cluster ID.
+        /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
+        /// <summary>
+        /// Command to execute in an imported k8s cluster.
+        /// </summary>
         [Input("command")]
         public Input<string>? Command { get; set; }
 
@@ -36,12 +42,21 @@ namespace Pulumi.Rancher2.Inputs
         [Input("id")]
         public Input<string>? Id { get; set; }
 
+        /// <summary>
+        /// Insecure command to execute in an imported k8s cluster.
+        /// </summary>
         [Input("insecureCommand")]
         public Input<string>? InsecureCommand { get; set; }
 
+        /// <summary>
+        /// Insecure node command to execute in an imported k8s cluster.
+        /// </summary>
         [Input("insecureNodeCommand")]
         public Input<string>? InsecureNodeCommand { get; set; }
 
+        /// <summary>
+        /// Insecure windows command to execute in an imported k8s cluster.
+        /// </summary>
         [Input("insecureWindowsNodeCommand")]
         public Input<string>? InsecureWindowsNodeCommand { get; set; }
 
@@ -57,6 +72,9 @@ namespace Pulumi.Rancher2.Inputs
             set => _labels = value;
         }
 
+        /// <summary>
+        /// K8s manifest url to execute with `kubectl` to import an existing k8s cluster.
+        /// </summary>
         [Input("manifestUrl")]
         public Input<string>? ManifestUrl { get; set; }
 
@@ -66,11 +84,18 @@ namespace Pulumi.Rancher2.Inputs
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Node command to execute in Linux nodes for custom k8s cluster.
+        /// </summary>
         [Input("nodeCommand")]
         public Input<string>? NodeCommand { get; set; }
 
         [Input("token")]
         private Input<string>? _token;
+
+        /// <summary>
+        /// Token for cluster registration token object.
+        /// </summary>
         public Input<string>? Token
         {
             get => _token;
@@ -81,6 +106,9 @@ namespace Pulumi.Rancher2.Inputs
             }
         }
 
+        /// <summary>
+        /// Node command to execute in Windows nodes for custom k8s cluster.
+        /// </summary>
         [Input("windowsNodeCommand")]
         public Input<string>? WindowsNodeCommand { get; set; }
 

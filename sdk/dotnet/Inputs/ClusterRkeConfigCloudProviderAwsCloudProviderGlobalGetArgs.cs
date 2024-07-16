@@ -12,33 +12,63 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterRkeConfigCloudProviderAwsCloudProviderGlobalGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Default `false` (bool)
+        /// </summary>
         [Input("disableSecurityGroupIngress")]
         public Input<bool>? DisableSecurityGroupIngress { get; set; }
 
+        /// <summary>
+        /// Default `false` (bool)
+        /// </summary>
         [Input("disableStrictZoneCheck")]
         public Input<bool>? DisableStrictZoneCheck { get; set; }
 
+        /// <summary>
+        /// (string)
+        /// </summary>
         [Input("elbSecurityGroup")]
         public Input<string>? ElbSecurityGroup { get; set; }
 
+        /// <summary>
+        /// (string)
+        /// </summary>
         [Input("kubernetesClusterId")]
         public Input<string>? KubernetesClusterId { get; set; }
 
+        /// <summary>
+        /// (string)
+        /// </summary>
         [Input("kubernetesClusterTag")]
         public Input<string>? KubernetesClusterTag { get; set; }
 
+        /// <summary>
+        /// (string)
+        /// </summary>
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }
 
+        /// <summary>
+        /// (string)
+        /// </summary>
         [Input("routeTableId")]
         public Input<string>? RouteTableId { get; set; }
 
+        /// <summary>
+        /// (string)
+        /// </summary>
         [Input("subnetId")]
         public Input<string>? SubnetId { get; set; }
 
+        /// <summary>
+        /// (string)
+        /// </summary>
         [Input("vpc")]
         public Input<string>? Vpc { get; set; }
 
+        /// <summary>
+        /// The GKE cluster zone. Required if `region` not set (string)
+        /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
 

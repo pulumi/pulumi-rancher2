@@ -17,6 +17,9 @@ namespace Pulumi.Rancher2.Outputs
         /// The name of the cluster.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The taint value.
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

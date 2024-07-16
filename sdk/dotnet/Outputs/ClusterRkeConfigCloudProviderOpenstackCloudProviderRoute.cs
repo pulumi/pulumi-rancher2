@@ -13,6 +13,9 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterRkeConfigCloudProviderOpenstackCloudProviderRoute
     {
+        /// <summary>
+        /// (string)
+        /// </summary>
         public readonly string? RouterId;
 
         [OutputConstructor]

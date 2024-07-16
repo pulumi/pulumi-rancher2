@@ -16,30 +16,62 @@ public final class NodePoolNodeTaintArgs extends com.pulumi.resources.ResourceAr
 
     public static final NodePoolNodeTaintArgs Empty = new NodePoolNodeTaintArgs();
 
+    /**
+     * Taint effect. Supported values : `&#34;NoExecute&#34; | &#34;NoSchedule&#34; | &#34;PreferNoSchedule&#34;` (string)
+     * 
+     */
     @Import(name="effect")
     private @Nullable Output<String> effect;
 
+    /**
+     * @return Taint effect. Supported values : `&#34;NoExecute&#34; | &#34;NoSchedule&#34; | &#34;PreferNoSchedule&#34;` (string)
+     * 
+     */
     public Optional<Output<String>> effect() {
         return Optional.ofNullable(this.effect);
     }
 
+    /**
+     * Taint key (string)
+     * 
+     */
     @Import(name="key", required=true)
     private Output<String> key;
 
+    /**
+     * @return Taint key (string)
+     * 
+     */
     public Output<String> key() {
         return this.key;
     }
 
+    /**
+     * Taint time added (string)
+     * 
+     */
     @Import(name="timeAdded")
     private @Nullable Output<String> timeAdded;
 
+    /**
+     * @return Taint time added (string)
+     * 
+     */
     public Optional<Output<String>> timeAdded() {
         return Optional.ofNullable(this.timeAdded);
     }
 
+    /**
+     * Taint value (string)
+     * 
+     */
     @Import(name="value", required=true)
     private Output<String> value;
 
+    /**
+     * @return Taint value (string)
+     * 
+     */
     public Output<String> value() {
         return this.value;
     }
@@ -71,38 +103,86 @@ public final class NodePoolNodeTaintArgs extends com.pulumi.resources.ResourceAr
             $ = new NodePoolNodeTaintArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param effect Taint effect. Supported values : `&#34;NoExecute&#34; | &#34;NoSchedule&#34; | &#34;PreferNoSchedule&#34;` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder effect(@Nullable Output<String> effect) {
             $.effect = effect;
             return this;
         }
 
+        /**
+         * @param effect Taint effect. Supported values : `&#34;NoExecute&#34; | &#34;NoSchedule&#34; | &#34;PreferNoSchedule&#34;` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder effect(String effect) {
             return effect(Output.of(effect));
         }
 
+        /**
+         * @param key Taint key (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(Output<String> key) {
             $.key = key;
             return this;
         }
 
+        /**
+         * @param key Taint key (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(String key) {
             return key(Output.of(key));
         }
 
+        /**
+         * @param timeAdded Taint time added (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeAdded(@Nullable Output<String> timeAdded) {
             $.timeAdded = timeAdded;
             return this;
         }
 
+        /**
+         * @param timeAdded Taint time added (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeAdded(String timeAdded) {
             return timeAdded(Output.of(timeAdded));
         }
 
+        /**
+         * @param value Taint value (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(Output<String> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value Taint value (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

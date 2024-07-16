@@ -14,6 +14,9 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog
     {
         public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfiguration? Configuration;
+        /// <summary>
+        /// Enable cluster template revision. Default `true` (bool)
+        /// </summary>
         public readonly bool? Enabled;
 
         [OutputConstructor]

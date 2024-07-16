@@ -15,9 +15,17 @@ public final class ClusterRkeConfigNetworkCalicoNetworkProviderArgs extends com.
 
     public static final ClusterRkeConfigNetworkCalicoNetworkProviderArgs Empty = new ClusterRkeConfigNetworkCalicoNetworkProviderArgs();
 
+    /**
+     * RKE options for Calico network provider (string)
+     * 
+     */
     @Import(name="cloudProvider")
     private @Nullable Output<String> cloudProvider;
 
+    /**
+     * @return RKE options for Calico network provider (string)
+     * 
+     */
     public Optional<Output<String>> cloudProvider() {
         return Optional.ofNullable(this.cloudProvider);
     }
@@ -46,11 +54,23 @@ public final class ClusterRkeConfigNetworkCalicoNetworkProviderArgs extends com.
             $ = new ClusterRkeConfigNetworkCalicoNetworkProviderArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param cloudProvider RKE options for Calico network provider (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder cloudProvider(@Nullable Output<String> cloudProvider) {
             $.cloudProvider = cloudProvider;
             return this;
         }
 
+        /**
+         * @param cloudProvider RKE options for Calico network provider (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder cloudProvider(String cloudProvider) {
             return cloudProvider(Output.of(cloudProvider));
         }

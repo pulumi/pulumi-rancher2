@@ -18,11 +18,18 @@ namespace Pulumi.Rancher2.Inputs
         [Input("ecrCredentialPlugin")]
         public Input<Inputs.ClusterRkeConfigPrivateRegistryEcrCredentialPluginGetArgs>? EcrCredentialPlugin { get; set; }
 
+        /// <summary>
+        /// Set as default registry. Default `false` (bool)
+        /// </summary>
         [Input("isDefault")]
         public Input<bool>? IsDefault { get; set; }
 
         [Input("password")]
         private Input<string>? _password;
+
+        /// <summary>
+        /// Registry password (string)
+        /// </summary>
         public Input<string>? Password
         {
             get => _password;
@@ -33,11 +40,18 @@ namespace Pulumi.Rancher2.Inputs
             }
         }
 
+        /// <summary>
+        /// Registry URL (string)
+        /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
 
         [Input("user")]
         private Input<string>? _user;
+
+        /// <summary>
+        /// Registry user (string)
+        /// </summary>
         public Input<string>? User
         {
             get => _user;

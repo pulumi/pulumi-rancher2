@@ -14,6 +14,10 @@ namespace Pulumi.Rancher2.Inputs
     {
         [Input("nodeSelector")]
         private InputMap<object>? _nodeSelector;
+
+        /// <summary>
+        /// RKE monitoring node selector (map)
+        /// </summary>
         public InputMap<object> NodeSelector
         {
             get => _nodeSelector ?? (_nodeSelector = new InputMap<object>());
@@ -22,15 +26,25 @@ namespace Pulumi.Rancher2.Inputs
 
         [Input("options")]
         private InputMap<object>? _options;
+
+        /// <summary>
+        /// RKE options for network (map)
+        /// </summary>
         public InputMap<object> Options
         {
             get => _options ?? (_options = new InputMap<object>());
             set => _options = value;
         }
 
+        /// <summary>
+        /// RKE monitoring provider (string)
+        /// </summary>
         [Input("provider")]
         public Input<string>? Provider { get; set; }
 
+        /// <summary>
+        /// RKE monitoring replicas (int)
+        /// </summary>
         [Input("replicas")]
         public Input<int>? Replicas { get; set; }
 

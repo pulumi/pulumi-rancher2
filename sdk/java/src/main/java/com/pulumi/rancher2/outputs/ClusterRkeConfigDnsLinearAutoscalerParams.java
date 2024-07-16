@@ -13,25 +13,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterRkeConfigDnsLinearAutoscalerParams {
+    /**
+     * @return number of replicas per cluster cores (float64)
+     * 
+     */
     private @Nullable Double coresPerReplica;
+    /**
+     * @return maximum number of replicas (int64)
+     * 
+     */
     private @Nullable Integer max;
+    /**
+     * @return minimum number of replicas (int64)
+     * 
+     */
     private @Nullable Integer min;
+    /**
+     * @return number of replica per cluster nodes (float64)
+     * 
+     */
     private @Nullable Double nodesPerReplica;
+    /**
+     * @return prevent single point of failure
+     * 
+     */
     private @Nullable Boolean preventSinglePointFailure;
 
     private ClusterRkeConfigDnsLinearAutoscalerParams() {}
+    /**
+     * @return number of replicas per cluster cores (float64)
+     * 
+     */
     public Optional<Double> coresPerReplica() {
         return Optional.ofNullable(this.coresPerReplica);
     }
+    /**
+     * @return maximum number of replicas (int64)
+     * 
+     */
     public Optional<Integer> max() {
         return Optional.ofNullable(this.max);
     }
+    /**
+     * @return minimum number of replicas (int64)
+     * 
+     */
     public Optional<Integer> min() {
         return Optional.ofNullable(this.min);
     }
+    /**
+     * @return number of replica per cluster nodes (float64)
+     * 
+     */
     public Optional<Double> nodesPerReplica() {
         return Optional.ofNullable(this.nodesPerReplica);
     }
+    /**
+     * @return prevent single point of failure
+     * 
+     */
     public Optional<Boolean> preventSinglePointFailure() {
         return Optional.ofNullable(this.preventSinglePointFailure);
     }

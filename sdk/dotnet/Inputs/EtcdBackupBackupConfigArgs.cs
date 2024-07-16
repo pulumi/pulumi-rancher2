@@ -12,15 +12,27 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class EtcdBackupBackupConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Enable etcd backup (bool)
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// Interval hours for etcd backup. Default `12` (int)
+        /// </summary>
         [Input("intervalHours")]
         public Input<int>? IntervalHours { get; set; }
 
+        /// <summary>
+        /// Retention for etcd backup. Default `6` (int)
+        /// </summary>
         [Input("retention")]
         public Input<int>? Retention { get; set; }
 
+        /// <summary>
+        /// S3 config options for etcd backup. Valid for `imported` and `rke` clusters. (list maxitems:1)
+        /// </summary>
         [Input("s3BackupConfig")]
         public Input<Inputs.EtcdBackupBackupConfigS3BackupConfigArgs>? S3BackupConfig { get; set; }
 
