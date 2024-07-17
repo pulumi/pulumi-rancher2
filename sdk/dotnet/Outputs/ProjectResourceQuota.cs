@@ -13,7 +13,13 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ProjectResourceQuota
     {
+        /// <summary>
+        /// Default resource quota limit for  namespaces in project (list maxitems:1)
+        /// </summary>
         public readonly Outputs.ProjectResourceQuotaNamespaceDefaultLimit NamespaceDefaultLimit;
+        /// <summary>
+        /// Resource quota limit for project (list maxitems:1)
+        /// </summary>
         public readonly Outputs.ProjectResourceQuotaProjectLimit ProjectLimit;
 
         [OutputConstructor]

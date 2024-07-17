@@ -16,25 +16,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterRkeConfigCloudProviderOpenstackCloudProvider {
+    /**
+     * @return (list maxitems:1)
+     * 
+     */
     private @Nullable ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage blockStorage;
+    /**
+     * @return (list maxitems:1)
+     * 
+     */
     private ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal global;
+    /**
+     * @return (list maxitems:1)
+     * 
+     */
     private @Nullable ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer loadBalancer;
+    /**
+     * @return (list maxitems:1)
+     * 
+     */
     private @Nullable ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata metadata;
+    /**
+     * @return (list maxitems:1)
+     * 
+     */
     private @Nullable ClusterRkeConfigCloudProviderOpenstackCloudProviderRoute route;
 
     private ClusterRkeConfigCloudProviderOpenstackCloudProvider() {}
+    /**
+     * @return (list maxitems:1)
+     * 
+     */
     public Optional<ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage> blockStorage() {
         return Optional.ofNullable(this.blockStorage);
     }
+    /**
+     * @return (list maxitems:1)
+     * 
+     */
     public ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal global() {
         return this.global;
     }
+    /**
+     * @return (list maxitems:1)
+     * 
+     */
     public Optional<ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer> loadBalancer() {
         return Optional.ofNullable(this.loadBalancer);
     }
+    /**
+     * @return (list maxitems:1)
+     * 
+     */
     public Optional<ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata> metadata() {
         return Optional.ofNullable(this.metadata);
     }
+    /**
+     * @return (list maxitems:1)
+     * 
+     */
     public Optional<ClusterRkeConfigCloudProviderOpenstackCloudProviderRoute> route() {
         return Optional.ofNullable(this.route);
     }

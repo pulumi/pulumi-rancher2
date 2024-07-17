@@ -12,9 +12,15 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// (int)
+        /// </summary>
         [Input("requestTimeout")]
         public Input<int>? RequestTimeout { get; set; }
 
+        /// <summary>
+        /// (string)
+        /// </summary>
         [Input("searchOrder")]
         public Input<string>? SearchOrder { get; set; }
 

@@ -17,443 +17,947 @@ public final class ClusterRkeConfigNetworkAciNetworkProviderArgs extends com.pul
 
     public static final ClusterRkeConfigNetworkAciNetworkProviderArgs Empty = new ClusterRkeConfigNetworkAciNetworkProviderArgs();
 
+    /**
+     * Attachable entity profile (string)
+     * 
+     */
     @Import(name="aep", required=true)
     private Output<String> aep;
 
+    /**
+     * @return Attachable entity profile (string)
+     * 
+     */
     public Output<String> aep() {
         return this.aep;
     }
 
+    /**
+     * List of APIC hosts to connect for APIC API (list)
+     * 
+     */
     @Import(name="apicHosts", required=true)
     private Output<List<String>> apicHosts;
 
+    /**
+     * @return List of APIC hosts to connect for APIC API (list)
+     * 
+     */
     public Output<List<String>> apicHosts() {
         return this.apicHosts;
     }
 
+    /**
+     * APIC refresh ticker adjust amount (string)
+     * 
+     */
     @Import(name="apicRefreshTickerAdjust")
     private @Nullable Output<String> apicRefreshTickerAdjust;
 
+    /**
+     * @return APIC refresh ticker adjust amount (string)
+     * 
+     */
     public Optional<Output<String>> apicRefreshTickerAdjust() {
         return Optional.ofNullable(this.apicRefreshTickerAdjust);
     }
 
+    /**
+     * APIC refresh time in seconds (string)
+     * 
+     */
     @Import(name="apicRefreshTime")
     private @Nullable Output<String> apicRefreshTime;
 
+    /**
+     * @return APIC refresh time in seconds (string)
+     * 
+     */
     public Optional<Output<String>> apicRefreshTime() {
         return Optional.ofNullable(this.apicRefreshTime);
     }
 
+    /**
+     * APIC subscription delay amount (string)
+     * 
+     */
     @Import(name="apicSubscriptionDelay")
     private @Nullable Output<String> apicSubscriptionDelay;
 
+    /**
+     * @return APIC subscription delay amount (string)
+     * 
+     */
     public Optional<Output<String>> apicSubscriptionDelay() {
         return Optional.ofNullable(this.apicSubscriptionDelay);
     }
 
+    /**
+     * APIC user certificate (string)
+     * 
+     */
     @Import(name="apicUserCrt", required=true)
     private Output<String> apicUserCrt;
 
+    /**
+     * @return APIC user certificate (string)
+     * 
+     */
     public Output<String> apicUserCrt() {
         return this.apicUserCrt;
     }
 
+    /**
+     * APIC user key (string)
+     * 
+     */
     @Import(name="apicUserKey", required=true)
     private Output<String> apicUserKey;
 
+    /**
+     * @return APIC user key (string)
+     * 
+     */
     public Output<String> apicUserKey() {
         return this.apicUserKey;
     }
 
+    /**
+     * APIC user name (string)
+     * 
+     */
     @Import(name="apicUserName", required=true)
     private Output<String> apicUserName;
 
+    /**
+     * @return APIC user name (string)
+     * 
+     */
     public Output<String> apicUserName() {
         return this.apicUserName;
     }
 
+    /**
+     * cAPIC cloud (string)
+     * 
+     */
     @Import(name="capic")
     private @Nullable Output<String> capic;
 
+    /**
+     * @return cAPIC cloud (string)
+     * 
+     */
     public Optional<Output<String>> capic() {
         return Optional.ofNullable(this.capic);
     }
 
+    /**
+     * Log level for ACI controller (string)
+     * 
+     */
     @Import(name="controllerLogLevel")
     private @Nullable Output<String> controllerLogLevel;
 
+    /**
+     * @return Log level for ACI controller (string)
+     * 
+     */
     public Optional<Output<String>> controllerLogLevel() {
         return Optional.ofNullable(this.controllerLogLevel);
     }
 
+    /**
+     * Whether to disable periodic SNAT global info sync (string)
+     * 
+     */
     @Import(name="disablePeriodicSnatGlobalInfoSync")
     private @Nullable Output<String> disablePeriodicSnatGlobalInfoSync;
 
+    /**
+     * @return Whether to disable periodic SNAT global info sync (string)
+     * 
+     */
     public Optional<Output<String>> disablePeriodicSnatGlobalInfoSync() {
         return Optional.ofNullable(this.disablePeriodicSnatGlobalInfoSync);
     }
 
+    /**
+     * Whether to disable waiting for network (string)
+     * 
+     */
     @Import(name="disableWaitForNetwork")
     private @Nullable Output<String> disableWaitForNetwork;
 
+    /**
+     * @return Whether to disable waiting for network (string)
+     * 
+     */
     public Optional<Output<String>> disableWaitForNetwork() {
         return Optional.ofNullable(this.disableWaitForNetwork);
     }
 
+    /**
+     * Whether to enable drop log (string)
+     * 
+     */
     @Import(name="dropLogEnable")
     private @Nullable Output<String> dropLogEnable;
 
+    /**
+     * @return Whether to enable drop log (string)
+     * 
+     */
     public Optional<Output<String>> dropLogEnable() {
         return Optional.ofNullable(this.dropLogEnable);
     }
 
+    /**
+     * The duration to wait for network (string)
+     * 
+     */
     @Import(name="durationWaitForNetwork")
     private @Nullable Output<String> durationWaitForNetwork;
 
+    /**
+     * @return The duration to wait for network (string)
+     * 
+     */
     public Optional<Output<String>> durationWaitForNetwork() {
         return Optional.ofNullable(this.durationWaitForNetwork);
     }
 
+    /**
+     * Whether to enable endpoint slices (string)
+     * 
+     */
     @Import(name="enableEndpointSlice")
     private @Nullable Output<String> enableEndpointSlice;
 
+    /**
+     * @return Whether to enable endpoint slices (string)
+     * 
+     */
     public Optional<Output<String>> enableEndpointSlice() {
         return Optional.ofNullable(this.enableEndpointSlice);
     }
 
+    /**
+     * Encap type: vxlan or vlan (string)
+     * 
+     */
     @Import(name="encapType", required=true)
     private Output<String> encapType;
 
+    /**
+     * @return Encap type: vxlan or vlan (string)
+     * 
+     */
     public Output<String> encapType() {
         return this.encapType;
     }
 
+    /**
+     * EP registry (string)
+     * 
+     */
     @Import(name="epRegistry")
     private @Nullable Output<String> epRegistry;
 
+    /**
+     * @return EP registry (string)
+     * 
+     */
     public Optional<Output<String>> epRegistry() {
         return Optional.ofNullable(this.epRegistry);
     }
 
+    /**
+     * Subnet to use for dynamic external IPs (string)
+     * 
+     */
     @Import(name="externDynamic", required=true)
     private Output<String> externDynamic;
 
+    /**
+     * @return Subnet to use for dynamic external IPs (string)
+     * 
+     */
     public Output<String> externDynamic() {
         return this.externDynamic;
     }
 
+    /**
+     * Subnet to use for static external IPs (string)
+     * 
+     */
     @Import(name="externStatic", required=true)
     private Output<String> externStatic;
 
+    /**
+     * @return Subnet to use for static external IPs (string)
+     * 
+     */
     public Output<String> externStatic() {
         return this.externStatic;
     }
 
+    /**
+     * GBH pod subnet (string)
+     * 
+     */
     @Import(name="gbpPodSubnet")
     private @Nullable Output<String> gbpPodSubnet;
 
+    /**
+     * @return GBH pod subnet (string)
+     * 
+     */
     public Optional<Output<String>> gbpPodSubnet() {
         return Optional.ofNullable(this.gbpPodSubnet);
     }
 
+    /**
+     * Log level for ACI host agent (string)
+     * 
+     */
     @Import(name="hostAgentLogLevel")
     private @Nullable Output<String> hostAgentLogLevel;
 
+    /**
+     * @return Log level for ACI host agent (string)
+     * 
+     */
     public Optional<Output<String>> hostAgentLogLevel() {
         return Optional.ofNullable(this.hostAgentLogLevel);
     }
 
+    /**
+     * Image pull policy (string)
+     * 
+     */
     @Import(name="imagePullPolicy")
     private @Nullable Output<String> imagePullPolicy;
 
+    /**
+     * @return Image pull policy (string)
+     * 
+     */
     public Optional<Output<String>> imagePullPolicy() {
         return Optional.ofNullable(this.imagePullPolicy);
     }
 
+    /**
+     * Image pull policy (string)
+     * 
+     */
     @Import(name="imagePullSecret")
     private @Nullable Output<String> imagePullSecret;
 
+    /**
+     * @return Image pull policy (string)
+     * 
+     */
     public Optional<Output<String>> imagePullSecret() {
         return Optional.ofNullable(this.imagePullSecret);
     }
 
+    /**
+     * The VLAN used by ACI infra (string)
+     * 
+     */
     @Import(name="infraVlan")
     private @Nullable Output<String> infraVlan;
 
+    /**
+     * @return The VLAN used by ACI infra (string)
+     * 
+     */
     public Optional<Output<String>> infraVlan() {
         return Optional.ofNullable(this.infraVlan);
     }
 
+    /**
+     * Whether to install Istio (string)
+     * 
+     */
     @Import(name="installIstio")
     private @Nullable Output<String> installIstio;
 
+    /**
+     * @return Whether to install Istio (string)
+     * 
+     */
     public Optional<Output<String>> installIstio() {
         return Optional.ofNullable(this.installIstio);
     }
 
+    /**
+     * Istio profile name (string)
+     * 
+     */
     @Import(name="istioProfile")
     private @Nullable Output<String> istioProfile;
 
+    /**
+     * @return Istio profile name (string)
+     * 
+     */
     public Optional<Output<String>> istioProfile() {
         return Optional.ofNullable(this.istioProfile);
     }
 
+    /**
+     * List of Kafka broker hosts (list)
+     * 
+     */
     @Import(name="kafkaBrokers")
     private @Nullable Output<List<String>> kafkaBrokers;
 
+    /**
+     * @return List of Kafka broker hosts (list)
+     * 
+     */
     public Optional<Output<List<String>>> kafkaBrokers() {
         return Optional.ofNullable(this.kafkaBrokers);
     }
 
+    /**
+     * Kafka client certificate (string)
+     * 
+     */
     @Import(name="kafkaClientCrt")
     private @Nullable Output<String> kafkaClientCrt;
 
+    /**
+     * @return Kafka client certificate (string)
+     * 
+     */
     public Optional<Output<String>> kafkaClientCrt() {
         return Optional.ofNullable(this.kafkaClientCrt);
     }
 
+    /**
+     * Kafka client key (string)
+     * 
+     */
     @Import(name="kafkaClientKey")
     private @Nullable Output<String> kafkaClientKey;
 
+    /**
+     * @return Kafka client key (string)
+     * 
+     */
     public Optional<Output<String>> kafkaClientKey() {
         return Optional.ofNullable(this.kafkaClientKey);
     }
 
+    /**
+     * The VLAN used by the physdom for nodes (string)
+     * 
+     */
     @Import(name="kubeApiVlan", required=true)
     private Output<String> kubeApiVlan;
 
+    /**
+     * @return The VLAN used by the physdom for nodes (string)
+     * 
+     */
     public Output<String> kubeApiVlan() {
         return this.kubeApiVlan;
     }
 
+    /**
+     * L3out (string)
+     * 
+     */
     @Import(name="l3out", required=true)
     private Output<String> l3out;
 
+    /**
+     * @return L3out (string)
+     * 
+     */
     public Output<String> l3out() {
         return this.l3out;
     }
 
+    /**
+     * L3out external networks (list)
+     * 
+     */
     @Import(name="l3outExternalNetworks", required=true)
     private Output<List<String>> l3outExternalNetworks;
 
+    /**
+     * @return L3out external networks (list)
+     * 
+     */
     public Output<List<String>> l3outExternalNetworks() {
         return this.l3outExternalNetworks;
     }
 
+    /**
+     * Max nodes in service graph (string)
+     * 
+     */
     @Import(name="maxNodesSvcGraph")
     private @Nullable Output<String> maxNodesSvcGraph;
 
+    /**
+     * @return Max nodes in service graph (string)
+     * 
+     */
     public Optional<Output<String>> maxNodesSvcGraph() {
         return Optional.ofNullable(this.maxNodesSvcGraph);
     }
 
+    /**
+     * End of mcast range (string)
+     * 
+     */
     @Import(name="mcastRangeEnd", required=true)
     private Output<String> mcastRangeEnd;
 
+    /**
+     * @return End of mcast range (string)
+     * 
+     */
     public Output<String> mcastRangeEnd() {
         return this.mcastRangeEnd;
     }
 
+    /**
+     * Start of mcast range (string)
+     * 
+     */
     @Import(name="mcastRangeStart", required=true)
     private Output<String> mcastRangeStart;
 
+    /**
+     * @return Start of mcast range (string)
+     * 
+     */
     public Output<String> mcastRangeStart() {
         return this.mcastRangeStart;
     }
 
+    /**
+     * MTU head room amount (string)
+     * 
+     */
     @Import(name="mtuHeadRoom")
     private @Nullable Output<String> mtuHeadRoom;
 
+    /**
+     * @return MTU head room amount (string)
+     * 
+     */
     public Optional<Output<String>> mtuHeadRoom() {
         return Optional.ofNullable(this.mtuHeadRoom);
     }
 
+    /**
+     * Whether to disable Multus (string)
+     * 
+     */
     @Import(name="multusDisable")
     private @Nullable Output<String> multusDisable;
 
+    /**
+     * @return Whether to disable Multus (string)
+     * 
+     */
     public Optional<Output<String>> multusDisable() {
         return Optional.ofNullable(this.multusDisable);
     }
 
+    /**
+     * Whether to use priority class (string)
+     * 
+     */
     @Import(name="noPriorityClass")
     private @Nullable Output<String> noPriorityClass;
 
+    /**
+     * @return Whether to use priority class (string)
+     * 
+     */
     public Optional<Output<String>> noPriorityClass() {
         return Optional.ofNullable(this.noPriorityClass);
     }
 
+    /**
+     * Whether to enable node pod interface (string)
+     * 
+     */
     @Import(name="nodePodIfEnable")
     private @Nullable Output<String> nodePodIfEnable;
 
+    /**
+     * @return Whether to enable node pod interface (string)
+     * 
+     */
     public Optional<Output<String>> nodePodIfEnable() {
         return Optional.ofNullable(this.nodePodIfEnable);
     }
 
+    /**
+     * Subnet to use for nodes (string)
+     * 
+     */
     @Import(name="nodeSubnet", required=true)
     private Output<String> nodeSubnet;
 
+    /**
+     * @return Subnet to use for nodes (string)
+     * 
+     */
     public Output<String> nodeSubnet() {
         return this.nodeSubnet;
     }
 
+    /**
+     * Subnet to use for service graph (string)
+     * 
+     */
     @Import(name="nodeSvcSubnet", required=true)
     private Output<String> nodeSvcSubnet;
 
+    /**
+     * @return Subnet to use for service graph (string)
+     * 
+     */
     public Output<String> nodeSvcSubnet() {
         return this.nodeSvcSubnet;
     }
 
+    /**
+     * Whether to use client SSL for Opflex (string)
+     * 
+     */
     @Import(name="opflexClientSsl")
     private @Nullable Output<String> opflexClientSsl;
 
+    /**
+     * @return Whether to use client SSL for Opflex (string)
+     * 
+     */
     public Optional<Output<String>> opflexClientSsl() {
         return Optional.ofNullable(this.opflexClientSsl);
     }
 
+    /**
+     * Opflex device delete timeout (string)
+     * 
+     */
     @Import(name="opflexDeviceDeleteTimeout")
     private @Nullable Output<String> opflexDeviceDeleteTimeout;
 
+    /**
+     * @return Opflex device delete timeout (string)
+     * 
+     */
     public Optional<Output<String>> opflexDeviceDeleteTimeout() {
         return Optional.ofNullable(this.opflexDeviceDeleteTimeout);
     }
 
+    /**
+     * Log level for ACI opflex (string)
+     * 
+     */
     @Import(name="opflexLogLevel")
     private @Nullable Output<String> opflexLogLevel;
 
+    /**
+     * @return Log level for ACI opflex (string)
+     * 
+     */
     public Optional<Output<String>> opflexLogLevel() {
         return Optional.ofNullable(this.opflexLogLevel);
     }
 
+    /**
+     * Opflex mode (string)
+     * 
+     */
     @Import(name="opflexMode")
     private @Nullable Output<String> opflexMode;
 
+    /**
+     * @return Opflex mode (string)
+     * 
+     */
     public Optional<Output<String>> opflexMode() {
         return Optional.ofNullable(this.opflexMode);
     }
 
+    /**
+     * Opflex server port (string)
+     * 
+     */
     @Import(name="opflexServerPort")
     private @Nullable Output<String> opflexServerPort;
 
+    /**
+     * @return Opflex server port (string)
+     * 
+     */
     public Optional<Output<String>> opflexServerPort() {
         return Optional.ofNullable(this.opflexServerPort);
     }
 
+    /**
+     * Overlay VRF name (string)
+     * 
+     */
     @Import(name="overlayVrfName")
     private @Nullable Output<String> overlayVrfName;
 
+    /**
+     * @return Overlay VRF name (string)
+     * 
+     */
     public Optional<Output<String>> overlayVrfName() {
         return Optional.ofNullable(this.overlayVrfName);
     }
 
+    /**
+     * OVS memory limit (string)
+     * 
+     */
     @Import(name="ovsMemoryLimit")
     private @Nullable Output<String> ovsMemoryLimit;
 
+    /**
+     * @return OVS memory limit (string)
+     * 
+     */
     public Optional<Output<String>> ovsMemoryLimit() {
         return Optional.ofNullable(this.ovsMemoryLimit);
     }
 
+    /**
+     * Policy-based routing tracking non snat (string)
+     * 
+     */
     @Import(name="pbrTrackingNonSnat")
     private @Nullable Output<String> pbrTrackingNonSnat;
 
+    /**
+     * @return Policy-based routing tracking non snat (string)
+     * 
+     */
     public Optional<Output<String>> pbrTrackingNonSnat() {
         return Optional.ofNullable(this.pbrTrackingNonSnat);
     }
 
+    /**
+     * Pod subnet chunk size (string)
+     * 
+     */
     @Import(name="podSubnetChunkSize")
     private @Nullable Output<String> podSubnetChunkSize;
 
+    /**
+     * @return Pod subnet chunk size (string)
+     * 
+     */
     public Optional<Output<String>> podSubnetChunkSize() {
         return Optional.ofNullable(this.podSubnetChunkSize);
     }
 
+    /**
+     * Whether to run GBP container (string)
+     * 
+     */
     @Import(name="runGbpContainer")
     private @Nullable Output<String> runGbpContainer;
 
+    /**
+     * @return Whether to run GBP container (string)
+     * 
+     */
     public Optional<Output<String>> runGbpContainer() {
         return Optional.ofNullable(this.runGbpContainer);
     }
 
+    /**
+     * Whether to run Opflex server container (string)
+     * 
+     */
     @Import(name="runOpflexServerContainer")
     private @Nullable Output<String> runOpflexServerContainer;
 
+    /**
+     * @return Whether to run Opflex server container (string)
+     * 
+     */
     public Optional<Output<String>> runOpflexServerContainer() {
         return Optional.ofNullable(this.runOpflexServerContainer);
     }
 
+    /**
+     * Service monitor interval (string)
+     * 
+     */
     @Import(name="serviceMonitorInterval")
     private @Nullable Output<String> serviceMonitorInterval;
 
+    /**
+     * @return Service monitor interval (string)
+     * 
+     */
     public Optional<Output<String>> serviceMonitorInterval() {
         return Optional.ofNullable(this.serviceMonitorInterval);
     }
 
+    /**
+     * The VLAN used by LoadBalancer services (string)
+     * 
+     */
     @Import(name="serviceVlan", required=true)
     private Output<String> serviceVlan;
 
+    /**
+     * @return The VLAN used by LoadBalancer services (string)
+     * 
+     */
     public Output<String> serviceVlan() {
         return this.serviceVlan;
     }
 
+    /**
+     * Snat contract scope (string)
+     * 
+     */
     @Import(name="snatContractScope")
     private @Nullable Output<String> snatContractScope;
 
+    /**
+     * @return Snat contract scope (string)
+     * 
+     */
     public Optional<Output<String>> snatContractScope() {
         return Optional.ofNullable(this.snatContractScope);
     }
 
+    /**
+     * Snat namespace (string)
+     * 
+     */
     @Import(name="snatNamespace")
     private @Nullable Output<String> snatNamespace;
 
+    /**
+     * @return Snat namespace (string)
+     * 
+     */
     public Optional<Output<String>> snatNamespace() {
         return Optional.ofNullable(this.snatNamespace);
     }
 
+    /**
+     * End of snat port range (string)
+     * 
+     */
     @Import(name="snatPortRangeEnd")
     private @Nullable Output<String> snatPortRangeEnd;
 
+    /**
+     * @return End of snat port range (string)
+     * 
+     */
     public Optional<Output<String>> snatPortRangeEnd() {
         return Optional.ofNullable(this.snatPortRangeEnd);
     }
 
+    /**
+     * End of snat port range (string)
+     * 
+     */
     @Import(name="snatPortRangeStart")
     private @Nullable Output<String> snatPortRangeStart;
 
+    /**
+     * @return End of snat port range (string)
+     * 
+     */
     public Optional<Output<String>> snatPortRangeStart() {
         return Optional.ofNullable(this.snatPortRangeStart);
     }
 
+    /**
+     * Snat ports per node (string)
+     * 
+     */
     @Import(name="snatPortsPerNode")
     private @Nullable Output<String> snatPortsPerNode;
 
+    /**
+     * @return Snat ports per node (string)
+     * 
+     */
     public Optional<Output<String>> snatPortsPerNode() {
         return Optional.ofNullable(this.snatPortsPerNode);
     }
 
+    /**
+     * Whether to enable SR-IOV (string)
+     * 
+     */
     @Import(name="sriovEnable")
     private @Nullable Output<String> sriovEnable;
 
+    /**
+     * @return Whether to enable SR-IOV (string)
+     * 
+     */
     public Optional<Output<String>> sriovEnable() {
         return Optional.ofNullable(this.sriovEnable);
     }
 
+    /**
+     * Subnet domain name (string)
+     * 
+     */
     @Import(name="subnetDomainName")
     private @Nullable Output<String> subnetDomainName;
 
+    /**
+     * @return Subnet domain name (string)
+     * 
+     */
     public Optional<Output<String>> subnetDomainName() {
         return Optional.ofNullable(this.subnetDomainName);
     }
 
+    /**
+     * ACI system ID (string)
+     * 
+     */
     @Import(name="systemId", required=true)
     private Output<String> systemId;
 
+    /**
+     * @return ACI system ID (string)
+     * 
+     */
     public Output<String> systemId() {
         return this.systemId;
     }
 
+    /**
+     * ACI tenant (string)
+     * 
+     */
     @Import(name="tenant")
     private @Nullable Output<String> tenant;
 
+    /**
+     * @return ACI tenant (string)
+     * 
+     */
     public Optional<Output<String>> tenant() {
         return Optional.ofNullable(this.tenant);
     }
@@ -465,72 +969,152 @@ public final class ClusterRkeConfigNetworkAciNetworkProviderArgs extends com.pul
         return this.token;
     }
 
+    /**
+     * Whether to use ACI anywhere CRD (string)
+     * 
+     */
     @Import(name="useAciAnywhereCrd")
     private @Nullable Output<String> useAciAnywhereCrd;
 
+    /**
+     * @return Whether to use ACI anywhere CRD (string)
+     * 
+     */
     public Optional<Output<String>> useAciAnywhereCrd() {
         return Optional.ofNullable(this.useAciAnywhereCrd);
     }
 
+    /**
+     * Whether to use ACI CNI priority class (string)
+     * 
+     */
     @Import(name="useAciCniPriorityClass")
     private @Nullable Output<String> useAciCniPriorityClass;
 
+    /**
+     * @return Whether to use ACI CNI priority class (string)
+     * 
+     */
     public Optional<Output<String>> useAciCniPriorityClass() {
         return Optional.ofNullable(this.useAciCniPriorityClass);
     }
 
+    /**
+     * Whether to use cluster role (string)
+     * 
+     */
     @Import(name="useClusterRole")
     private @Nullable Output<String> useClusterRole;
 
+    /**
+     * @return Whether to use cluster role (string)
+     * 
+     */
     public Optional<Output<String>> useClusterRole() {
         return Optional.ofNullable(this.useClusterRole);
     }
 
+    /**
+     * Whether to use host netns volume (string)
+     * 
+     */
     @Import(name="useHostNetnsVolume")
     private @Nullable Output<String> useHostNetnsVolume;
 
+    /**
+     * @return Whether to use host netns volume (string)
+     * 
+     */
     public Optional<Output<String>> useHostNetnsVolume() {
         return Optional.ofNullable(this.useHostNetnsVolume);
     }
 
+    /**
+     * Whether use Opflex server volume (string)
+     * 
+     */
     @Import(name="useOpflexServerVolume")
     private @Nullable Output<String> useOpflexServerVolume;
 
+    /**
+     * @return Whether use Opflex server volume (string)
+     * 
+     */
     public Optional<Output<String>> useOpflexServerVolume() {
         return Optional.ofNullable(this.useOpflexServerVolume);
     }
 
+    /**
+     * Whether ACI containers should run as privileged (string)
+     * 
+     */
     @Import(name="usePrivilegedContainer")
     private @Nullable Output<String> usePrivilegedContainer;
 
+    /**
+     * @return Whether ACI containers should run as privileged (string)
+     * 
+     */
     public Optional<Output<String>> usePrivilegedContainer() {
         return Optional.ofNullable(this.usePrivilegedContainer);
     }
 
+    /**
+     * VMM controller configuration (string)
+     * 
+     */
     @Import(name="vmmController")
     private @Nullable Output<String> vmmController;
 
+    /**
+     * @return VMM controller configuration (string)
+     * 
+     */
     public Optional<Output<String>> vmmController() {
         return Optional.ofNullable(this.vmmController);
     }
 
+    /**
+     * VMM domain configuration (string)
+     * 
+     */
     @Import(name="vmmDomain")
     private @Nullable Output<String> vmmDomain;
 
+    /**
+     * @return VMM domain configuration (string)
+     * 
+     */
     public Optional<Output<String>> vmmDomain() {
         return Optional.ofNullable(this.vmmDomain);
     }
 
+    /**
+     * VRF name (string)
+     * 
+     */
     @Import(name="vrfName", required=true)
     private Output<String> vrfName;
 
+    /**
+     * @return VRF name (string)
+     * 
+     */
     public Output<String> vrfName() {
         return this.vrfName;
     }
 
+    /**
+     * VRF tenant (string)
+     * 
+     */
     @Import(name="vrfTenant", required=true)
     private Output<String> vrfTenant;
 
+    /**
+     * @return VRF tenant (string)
+     * 
+     */
     public Output<String> vrfTenant() {
         return this.vrfTenant;
     }
@@ -632,581 +1216,1355 @@ public final class ClusterRkeConfigNetworkAciNetworkProviderArgs extends com.pul
             $ = new ClusterRkeConfigNetworkAciNetworkProviderArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param aep Attachable entity profile (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder aep(Output<String> aep) {
             $.aep = aep;
             return this;
         }
 
+        /**
+         * @param aep Attachable entity profile (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder aep(String aep) {
             return aep(Output.of(aep));
         }
 
+        /**
+         * @param apicHosts List of APIC hosts to connect for APIC API (list)
+         * 
+         * @return builder
+         * 
+         */
         public Builder apicHosts(Output<List<String>> apicHosts) {
             $.apicHosts = apicHosts;
             return this;
         }
 
+        /**
+         * @param apicHosts List of APIC hosts to connect for APIC API (list)
+         * 
+         * @return builder
+         * 
+         */
         public Builder apicHosts(List<String> apicHosts) {
             return apicHosts(Output.of(apicHosts));
         }
 
+        /**
+         * @param apicHosts List of APIC hosts to connect for APIC API (list)
+         * 
+         * @return builder
+         * 
+         */
         public Builder apicHosts(String... apicHosts) {
             return apicHosts(List.of(apicHosts));
         }
 
+        /**
+         * @param apicRefreshTickerAdjust APIC refresh ticker adjust amount (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder apicRefreshTickerAdjust(@Nullable Output<String> apicRefreshTickerAdjust) {
             $.apicRefreshTickerAdjust = apicRefreshTickerAdjust;
             return this;
         }
 
+        /**
+         * @param apicRefreshTickerAdjust APIC refresh ticker adjust amount (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder apicRefreshTickerAdjust(String apicRefreshTickerAdjust) {
             return apicRefreshTickerAdjust(Output.of(apicRefreshTickerAdjust));
         }
 
+        /**
+         * @param apicRefreshTime APIC refresh time in seconds (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder apicRefreshTime(@Nullable Output<String> apicRefreshTime) {
             $.apicRefreshTime = apicRefreshTime;
             return this;
         }
 
+        /**
+         * @param apicRefreshTime APIC refresh time in seconds (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder apicRefreshTime(String apicRefreshTime) {
             return apicRefreshTime(Output.of(apicRefreshTime));
         }
 
+        /**
+         * @param apicSubscriptionDelay APIC subscription delay amount (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder apicSubscriptionDelay(@Nullable Output<String> apicSubscriptionDelay) {
             $.apicSubscriptionDelay = apicSubscriptionDelay;
             return this;
         }
 
+        /**
+         * @param apicSubscriptionDelay APIC subscription delay amount (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder apicSubscriptionDelay(String apicSubscriptionDelay) {
             return apicSubscriptionDelay(Output.of(apicSubscriptionDelay));
         }
 
+        /**
+         * @param apicUserCrt APIC user certificate (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder apicUserCrt(Output<String> apicUserCrt) {
             $.apicUserCrt = apicUserCrt;
             return this;
         }
 
+        /**
+         * @param apicUserCrt APIC user certificate (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder apicUserCrt(String apicUserCrt) {
             return apicUserCrt(Output.of(apicUserCrt));
         }
 
+        /**
+         * @param apicUserKey APIC user key (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder apicUserKey(Output<String> apicUserKey) {
             $.apicUserKey = apicUserKey;
             return this;
         }
 
+        /**
+         * @param apicUserKey APIC user key (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder apicUserKey(String apicUserKey) {
             return apicUserKey(Output.of(apicUserKey));
         }
 
+        /**
+         * @param apicUserName APIC user name (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder apicUserName(Output<String> apicUserName) {
             $.apicUserName = apicUserName;
             return this;
         }
 
+        /**
+         * @param apicUserName APIC user name (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder apicUserName(String apicUserName) {
             return apicUserName(Output.of(apicUserName));
         }
 
+        /**
+         * @param capic cAPIC cloud (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder capic(@Nullable Output<String> capic) {
             $.capic = capic;
             return this;
         }
 
+        /**
+         * @param capic cAPIC cloud (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder capic(String capic) {
             return capic(Output.of(capic));
         }
 
+        /**
+         * @param controllerLogLevel Log level for ACI controller (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder controllerLogLevel(@Nullable Output<String> controllerLogLevel) {
             $.controllerLogLevel = controllerLogLevel;
             return this;
         }
 
+        /**
+         * @param controllerLogLevel Log level for ACI controller (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder controllerLogLevel(String controllerLogLevel) {
             return controllerLogLevel(Output.of(controllerLogLevel));
         }
 
+        /**
+         * @param disablePeriodicSnatGlobalInfoSync Whether to disable periodic SNAT global info sync (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder disablePeriodicSnatGlobalInfoSync(@Nullable Output<String> disablePeriodicSnatGlobalInfoSync) {
             $.disablePeriodicSnatGlobalInfoSync = disablePeriodicSnatGlobalInfoSync;
             return this;
         }
 
+        /**
+         * @param disablePeriodicSnatGlobalInfoSync Whether to disable periodic SNAT global info sync (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder disablePeriodicSnatGlobalInfoSync(String disablePeriodicSnatGlobalInfoSync) {
             return disablePeriodicSnatGlobalInfoSync(Output.of(disablePeriodicSnatGlobalInfoSync));
         }
 
+        /**
+         * @param disableWaitForNetwork Whether to disable waiting for network (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableWaitForNetwork(@Nullable Output<String> disableWaitForNetwork) {
             $.disableWaitForNetwork = disableWaitForNetwork;
             return this;
         }
 
+        /**
+         * @param disableWaitForNetwork Whether to disable waiting for network (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableWaitForNetwork(String disableWaitForNetwork) {
             return disableWaitForNetwork(Output.of(disableWaitForNetwork));
         }
 
+        /**
+         * @param dropLogEnable Whether to enable drop log (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder dropLogEnable(@Nullable Output<String> dropLogEnable) {
             $.dropLogEnable = dropLogEnable;
             return this;
         }
 
+        /**
+         * @param dropLogEnable Whether to enable drop log (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder dropLogEnable(String dropLogEnable) {
             return dropLogEnable(Output.of(dropLogEnable));
         }
 
+        /**
+         * @param durationWaitForNetwork The duration to wait for network (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder durationWaitForNetwork(@Nullable Output<String> durationWaitForNetwork) {
             $.durationWaitForNetwork = durationWaitForNetwork;
             return this;
         }
 
+        /**
+         * @param durationWaitForNetwork The duration to wait for network (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder durationWaitForNetwork(String durationWaitForNetwork) {
             return durationWaitForNetwork(Output.of(durationWaitForNetwork));
         }
 
+        /**
+         * @param enableEndpointSlice Whether to enable endpoint slices (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableEndpointSlice(@Nullable Output<String> enableEndpointSlice) {
             $.enableEndpointSlice = enableEndpointSlice;
             return this;
         }
 
+        /**
+         * @param enableEndpointSlice Whether to enable endpoint slices (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableEndpointSlice(String enableEndpointSlice) {
             return enableEndpointSlice(Output.of(enableEndpointSlice));
         }
 
+        /**
+         * @param encapType Encap type: vxlan or vlan (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder encapType(Output<String> encapType) {
             $.encapType = encapType;
             return this;
         }
 
+        /**
+         * @param encapType Encap type: vxlan or vlan (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder encapType(String encapType) {
             return encapType(Output.of(encapType));
         }
 
+        /**
+         * @param epRegistry EP registry (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder epRegistry(@Nullable Output<String> epRegistry) {
             $.epRegistry = epRegistry;
             return this;
         }
 
+        /**
+         * @param epRegistry EP registry (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder epRegistry(String epRegistry) {
             return epRegistry(Output.of(epRegistry));
         }
 
+        /**
+         * @param externDynamic Subnet to use for dynamic external IPs (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder externDynamic(Output<String> externDynamic) {
             $.externDynamic = externDynamic;
             return this;
         }
 
+        /**
+         * @param externDynamic Subnet to use for dynamic external IPs (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder externDynamic(String externDynamic) {
             return externDynamic(Output.of(externDynamic));
         }
 
+        /**
+         * @param externStatic Subnet to use for static external IPs (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder externStatic(Output<String> externStatic) {
             $.externStatic = externStatic;
             return this;
         }
 
+        /**
+         * @param externStatic Subnet to use for static external IPs (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder externStatic(String externStatic) {
             return externStatic(Output.of(externStatic));
         }
 
+        /**
+         * @param gbpPodSubnet GBH pod subnet (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder gbpPodSubnet(@Nullable Output<String> gbpPodSubnet) {
             $.gbpPodSubnet = gbpPodSubnet;
             return this;
         }
 
+        /**
+         * @param gbpPodSubnet GBH pod subnet (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder gbpPodSubnet(String gbpPodSubnet) {
             return gbpPodSubnet(Output.of(gbpPodSubnet));
         }
 
+        /**
+         * @param hostAgentLogLevel Log level for ACI host agent (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder hostAgentLogLevel(@Nullable Output<String> hostAgentLogLevel) {
             $.hostAgentLogLevel = hostAgentLogLevel;
             return this;
         }
 
+        /**
+         * @param hostAgentLogLevel Log level for ACI host agent (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder hostAgentLogLevel(String hostAgentLogLevel) {
             return hostAgentLogLevel(Output.of(hostAgentLogLevel));
         }
 
+        /**
+         * @param imagePullPolicy Image pull policy (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder imagePullPolicy(@Nullable Output<String> imagePullPolicy) {
             $.imagePullPolicy = imagePullPolicy;
             return this;
         }
 
+        /**
+         * @param imagePullPolicy Image pull policy (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder imagePullPolicy(String imagePullPolicy) {
             return imagePullPolicy(Output.of(imagePullPolicy));
         }
 
+        /**
+         * @param imagePullSecret Image pull policy (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder imagePullSecret(@Nullable Output<String> imagePullSecret) {
             $.imagePullSecret = imagePullSecret;
             return this;
         }
 
+        /**
+         * @param imagePullSecret Image pull policy (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder imagePullSecret(String imagePullSecret) {
             return imagePullSecret(Output.of(imagePullSecret));
         }
 
+        /**
+         * @param infraVlan The VLAN used by ACI infra (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder infraVlan(@Nullable Output<String> infraVlan) {
             $.infraVlan = infraVlan;
             return this;
         }
 
+        /**
+         * @param infraVlan The VLAN used by ACI infra (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder infraVlan(String infraVlan) {
             return infraVlan(Output.of(infraVlan));
         }
 
+        /**
+         * @param installIstio Whether to install Istio (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder installIstio(@Nullable Output<String> installIstio) {
             $.installIstio = installIstio;
             return this;
         }
 
+        /**
+         * @param installIstio Whether to install Istio (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder installIstio(String installIstio) {
             return installIstio(Output.of(installIstio));
         }
 
+        /**
+         * @param istioProfile Istio profile name (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder istioProfile(@Nullable Output<String> istioProfile) {
             $.istioProfile = istioProfile;
             return this;
         }
 
+        /**
+         * @param istioProfile Istio profile name (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder istioProfile(String istioProfile) {
             return istioProfile(Output.of(istioProfile));
         }
 
+        /**
+         * @param kafkaBrokers List of Kafka broker hosts (list)
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafkaBrokers(@Nullable Output<List<String>> kafkaBrokers) {
             $.kafkaBrokers = kafkaBrokers;
             return this;
         }
 
+        /**
+         * @param kafkaBrokers List of Kafka broker hosts (list)
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafkaBrokers(List<String> kafkaBrokers) {
             return kafkaBrokers(Output.of(kafkaBrokers));
         }
 
+        /**
+         * @param kafkaBrokers List of Kafka broker hosts (list)
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafkaBrokers(String... kafkaBrokers) {
             return kafkaBrokers(List.of(kafkaBrokers));
         }
 
+        /**
+         * @param kafkaClientCrt Kafka client certificate (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafkaClientCrt(@Nullable Output<String> kafkaClientCrt) {
             $.kafkaClientCrt = kafkaClientCrt;
             return this;
         }
 
+        /**
+         * @param kafkaClientCrt Kafka client certificate (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafkaClientCrt(String kafkaClientCrt) {
             return kafkaClientCrt(Output.of(kafkaClientCrt));
         }
 
+        /**
+         * @param kafkaClientKey Kafka client key (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafkaClientKey(@Nullable Output<String> kafkaClientKey) {
             $.kafkaClientKey = kafkaClientKey;
             return this;
         }
 
+        /**
+         * @param kafkaClientKey Kafka client key (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafkaClientKey(String kafkaClientKey) {
             return kafkaClientKey(Output.of(kafkaClientKey));
         }
 
+        /**
+         * @param kubeApiVlan The VLAN used by the physdom for nodes (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder kubeApiVlan(Output<String> kubeApiVlan) {
             $.kubeApiVlan = kubeApiVlan;
             return this;
         }
 
+        /**
+         * @param kubeApiVlan The VLAN used by the physdom for nodes (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder kubeApiVlan(String kubeApiVlan) {
             return kubeApiVlan(Output.of(kubeApiVlan));
         }
 
+        /**
+         * @param l3out L3out (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder l3out(Output<String> l3out) {
             $.l3out = l3out;
             return this;
         }
 
+        /**
+         * @param l3out L3out (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder l3out(String l3out) {
             return l3out(Output.of(l3out));
         }
 
+        /**
+         * @param l3outExternalNetworks L3out external networks (list)
+         * 
+         * @return builder
+         * 
+         */
         public Builder l3outExternalNetworks(Output<List<String>> l3outExternalNetworks) {
             $.l3outExternalNetworks = l3outExternalNetworks;
             return this;
         }
 
+        /**
+         * @param l3outExternalNetworks L3out external networks (list)
+         * 
+         * @return builder
+         * 
+         */
         public Builder l3outExternalNetworks(List<String> l3outExternalNetworks) {
             return l3outExternalNetworks(Output.of(l3outExternalNetworks));
         }
 
+        /**
+         * @param l3outExternalNetworks L3out external networks (list)
+         * 
+         * @return builder
+         * 
+         */
         public Builder l3outExternalNetworks(String... l3outExternalNetworks) {
             return l3outExternalNetworks(List.of(l3outExternalNetworks));
         }
 
+        /**
+         * @param maxNodesSvcGraph Max nodes in service graph (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxNodesSvcGraph(@Nullable Output<String> maxNodesSvcGraph) {
             $.maxNodesSvcGraph = maxNodesSvcGraph;
             return this;
         }
 
+        /**
+         * @param maxNodesSvcGraph Max nodes in service graph (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxNodesSvcGraph(String maxNodesSvcGraph) {
             return maxNodesSvcGraph(Output.of(maxNodesSvcGraph));
         }
 
+        /**
+         * @param mcastRangeEnd End of mcast range (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder mcastRangeEnd(Output<String> mcastRangeEnd) {
             $.mcastRangeEnd = mcastRangeEnd;
             return this;
         }
 
+        /**
+         * @param mcastRangeEnd End of mcast range (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder mcastRangeEnd(String mcastRangeEnd) {
             return mcastRangeEnd(Output.of(mcastRangeEnd));
         }
 
+        /**
+         * @param mcastRangeStart Start of mcast range (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder mcastRangeStart(Output<String> mcastRangeStart) {
             $.mcastRangeStart = mcastRangeStart;
             return this;
         }
 
+        /**
+         * @param mcastRangeStart Start of mcast range (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder mcastRangeStart(String mcastRangeStart) {
             return mcastRangeStart(Output.of(mcastRangeStart));
         }
 
+        /**
+         * @param mtuHeadRoom MTU head room amount (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder mtuHeadRoom(@Nullable Output<String> mtuHeadRoom) {
             $.mtuHeadRoom = mtuHeadRoom;
             return this;
         }
 
+        /**
+         * @param mtuHeadRoom MTU head room amount (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder mtuHeadRoom(String mtuHeadRoom) {
             return mtuHeadRoom(Output.of(mtuHeadRoom));
         }
 
+        /**
+         * @param multusDisable Whether to disable Multus (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder multusDisable(@Nullable Output<String> multusDisable) {
             $.multusDisable = multusDisable;
             return this;
         }
 
+        /**
+         * @param multusDisable Whether to disable Multus (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder multusDisable(String multusDisable) {
             return multusDisable(Output.of(multusDisable));
         }
 
+        /**
+         * @param noPriorityClass Whether to use priority class (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder noPriorityClass(@Nullable Output<String> noPriorityClass) {
             $.noPriorityClass = noPriorityClass;
             return this;
         }
 
+        /**
+         * @param noPriorityClass Whether to use priority class (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder noPriorityClass(String noPriorityClass) {
             return noPriorityClass(Output.of(noPriorityClass));
         }
 
+        /**
+         * @param nodePodIfEnable Whether to enable node pod interface (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodePodIfEnable(@Nullable Output<String> nodePodIfEnable) {
             $.nodePodIfEnable = nodePodIfEnable;
             return this;
         }
 
+        /**
+         * @param nodePodIfEnable Whether to enable node pod interface (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodePodIfEnable(String nodePodIfEnable) {
             return nodePodIfEnable(Output.of(nodePodIfEnable));
         }
 
+        /**
+         * @param nodeSubnet Subnet to use for nodes (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeSubnet(Output<String> nodeSubnet) {
             $.nodeSubnet = nodeSubnet;
             return this;
         }
 
+        /**
+         * @param nodeSubnet Subnet to use for nodes (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeSubnet(String nodeSubnet) {
             return nodeSubnet(Output.of(nodeSubnet));
         }
 
+        /**
+         * @param nodeSvcSubnet Subnet to use for service graph (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeSvcSubnet(Output<String> nodeSvcSubnet) {
             $.nodeSvcSubnet = nodeSvcSubnet;
             return this;
         }
 
+        /**
+         * @param nodeSvcSubnet Subnet to use for service graph (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeSvcSubnet(String nodeSvcSubnet) {
             return nodeSvcSubnet(Output.of(nodeSvcSubnet));
         }
 
+        /**
+         * @param opflexClientSsl Whether to use client SSL for Opflex (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder opflexClientSsl(@Nullable Output<String> opflexClientSsl) {
             $.opflexClientSsl = opflexClientSsl;
             return this;
         }
 
+        /**
+         * @param opflexClientSsl Whether to use client SSL for Opflex (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder opflexClientSsl(String opflexClientSsl) {
             return opflexClientSsl(Output.of(opflexClientSsl));
         }
 
+        /**
+         * @param opflexDeviceDeleteTimeout Opflex device delete timeout (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder opflexDeviceDeleteTimeout(@Nullable Output<String> opflexDeviceDeleteTimeout) {
             $.opflexDeviceDeleteTimeout = opflexDeviceDeleteTimeout;
             return this;
         }
 
+        /**
+         * @param opflexDeviceDeleteTimeout Opflex device delete timeout (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder opflexDeviceDeleteTimeout(String opflexDeviceDeleteTimeout) {
             return opflexDeviceDeleteTimeout(Output.of(opflexDeviceDeleteTimeout));
         }
 
+        /**
+         * @param opflexLogLevel Log level for ACI opflex (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder opflexLogLevel(@Nullable Output<String> opflexLogLevel) {
             $.opflexLogLevel = opflexLogLevel;
             return this;
         }
 
+        /**
+         * @param opflexLogLevel Log level for ACI opflex (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder opflexLogLevel(String opflexLogLevel) {
             return opflexLogLevel(Output.of(opflexLogLevel));
         }
 
+        /**
+         * @param opflexMode Opflex mode (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder opflexMode(@Nullable Output<String> opflexMode) {
             $.opflexMode = opflexMode;
             return this;
         }
 
+        /**
+         * @param opflexMode Opflex mode (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder opflexMode(String opflexMode) {
             return opflexMode(Output.of(opflexMode));
         }
 
+        /**
+         * @param opflexServerPort Opflex server port (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder opflexServerPort(@Nullable Output<String> opflexServerPort) {
             $.opflexServerPort = opflexServerPort;
             return this;
         }
 
+        /**
+         * @param opflexServerPort Opflex server port (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder opflexServerPort(String opflexServerPort) {
             return opflexServerPort(Output.of(opflexServerPort));
         }
 
+        /**
+         * @param overlayVrfName Overlay VRF name (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder overlayVrfName(@Nullable Output<String> overlayVrfName) {
             $.overlayVrfName = overlayVrfName;
             return this;
         }
 
+        /**
+         * @param overlayVrfName Overlay VRF name (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder overlayVrfName(String overlayVrfName) {
             return overlayVrfName(Output.of(overlayVrfName));
         }
 
+        /**
+         * @param ovsMemoryLimit OVS memory limit (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder ovsMemoryLimit(@Nullable Output<String> ovsMemoryLimit) {
             $.ovsMemoryLimit = ovsMemoryLimit;
             return this;
         }
 
+        /**
+         * @param ovsMemoryLimit OVS memory limit (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder ovsMemoryLimit(String ovsMemoryLimit) {
             return ovsMemoryLimit(Output.of(ovsMemoryLimit));
         }
 
+        /**
+         * @param pbrTrackingNonSnat Policy-based routing tracking non snat (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder pbrTrackingNonSnat(@Nullable Output<String> pbrTrackingNonSnat) {
             $.pbrTrackingNonSnat = pbrTrackingNonSnat;
             return this;
         }
 
+        /**
+         * @param pbrTrackingNonSnat Policy-based routing tracking non snat (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder pbrTrackingNonSnat(String pbrTrackingNonSnat) {
             return pbrTrackingNonSnat(Output.of(pbrTrackingNonSnat));
         }
 
+        /**
+         * @param podSubnetChunkSize Pod subnet chunk size (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder podSubnetChunkSize(@Nullable Output<String> podSubnetChunkSize) {
             $.podSubnetChunkSize = podSubnetChunkSize;
             return this;
         }
 
+        /**
+         * @param podSubnetChunkSize Pod subnet chunk size (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder podSubnetChunkSize(String podSubnetChunkSize) {
             return podSubnetChunkSize(Output.of(podSubnetChunkSize));
         }
 
+        /**
+         * @param runGbpContainer Whether to run GBP container (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder runGbpContainer(@Nullable Output<String> runGbpContainer) {
             $.runGbpContainer = runGbpContainer;
             return this;
         }
 
+        /**
+         * @param runGbpContainer Whether to run GBP container (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder runGbpContainer(String runGbpContainer) {
             return runGbpContainer(Output.of(runGbpContainer));
         }
 
+        /**
+         * @param runOpflexServerContainer Whether to run Opflex server container (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder runOpflexServerContainer(@Nullable Output<String> runOpflexServerContainer) {
             $.runOpflexServerContainer = runOpflexServerContainer;
             return this;
         }
 
+        /**
+         * @param runOpflexServerContainer Whether to run Opflex server container (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder runOpflexServerContainer(String runOpflexServerContainer) {
             return runOpflexServerContainer(Output.of(runOpflexServerContainer));
         }
 
+        /**
+         * @param serviceMonitorInterval Service monitor interval (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceMonitorInterval(@Nullable Output<String> serviceMonitorInterval) {
             $.serviceMonitorInterval = serviceMonitorInterval;
             return this;
         }
 
+        /**
+         * @param serviceMonitorInterval Service monitor interval (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceMonitorInterval(String serviceMonitorInterval) {
             return serviceMonitorInterval(Output.of(serviceMonitorInterval));
         }
 
+        /**
+         * @param serviceVlan The VLAN used by LoadBalancer services (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceVlan(Output<String> serviceVlan) {
             $.serviceVlan = serviceVlan;
             return this;
         }
 
+        /**
+         * @param serviceVlan The VLAN used by LoadBalancer services (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceVlan(String serviceVlan) {
             return serviceVlan(Output.of(serviceVlan));
         }
 
+        /**
+         * @param snatContractScope Snat contract scope (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder snatContractScope(@Nullable Output<String> snatContractScope) {
             $.snatContractScope = snatContractScope;
             return this;
         }
 
+        /**
+         * @param snatContractScope Snat contract scope (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder snatContractScope(String snatContractScope) {
             return snatContractScope(Output.of(snatContractScope));
         }
 
+        /**
+         * @param snatNamespace Snat namespace (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder snatNamespace(@Nullable Output<String> snatNamespace) {
             $.snatNamespace = snatNamespace;
             return this;
         }
 
+        /**
+         * @param snatNamespace Snat namespace (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder snatNamespace(String snatNamespace) {
             return snatNamespace(Output.of(snatNamespace));
         }
 
+        /**
+         * @param snatPortRangeEnd End of snat port range (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder snatPortRangeEnd(@Nullable Output<String> snatPortRangeEnd) {
             $.snatPortRangeEnd = snatPortRangeEnd;
             return this;
         }
 
+        /**
+         * @param snatPortRangeEnd End of snat port range (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder snatPortRangeEnd(String snatPortRangeEnd) {
             return snatPortRangeEnd(Output.of(snatPortRangeEnd));
         }
 
+        /**
+         * @param snatPortRangeStart End of snat port range (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder snatPortRangeStart(@Nullable Output<String> snatPortRangeStart) {
             $.snatPortRangeStart = snatPortRangeStart;
             return this;
         }
 
+        /**
+         * @param snatPortRangeStart End of snat port range (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder snatPortRangeStart(String snatPortRangeStart) {
             return snatPortRangeStart(Output.of(snatPortRangeStart));
         }
 
+        /**
+         * @param snatPortsPerNode Snat ports per node (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder snatPortsPerNode(@Nullable Output<String> snatPortsPerNode) {
             $.snatPortsPerNode = snatPortsPerNode;
             return this;
         }
 
+        /**
+         * @param snatPortsPerNode Snat ports per node (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder snatPortsPerNode(String snatPortsPerNode) {
             return snatPortsPerNode(Output.of(snatPortsPerNode));
         }
 
+        /**
+         * @param sriovEnable Whether to enable SR-IOV (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder sriovEnable(@Nullable Output<String> sriovEnable) {
             $.sriovEnable = sriovEnable;
             return this;
         }
 
+        /**
+         * @param sriovEnable Whether to enable SR-IOV (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder sriovEnable(String sriovEnable) {
             return sriovEnable(Output.of(sriovEnable));
         }
 
+        /**
+         * @param subnetDomainName Subnet domain name (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder subnetDomainName(@Nullable Output<String> subnetDomainName) {
             $.subnetDomainName = subnetDomainName;
             return this;
         }
 
+        /**
+         * @param subnetDomainName Subnet domain name (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder subnetDomainName(String subnetDomainName) {
             return subnetDomainName(Output.of(subnetDomainName));
         }
 
+        /**
+         * @param systemId ACI system ID (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder systemId(Output<String> systemId) {
             $.systemId = systemId;
             return this;
         }
 
+        /**
+         * @param systemId ACI system ID (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder systemId(String systemId) {
             return systemId(Output.of(systemId));
         }
 
+        /**
+         * @param tenant ACI tenant (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder tenant(@Nullable Output<String> tenant) {
             $.tenant = tenant;
             return this;
         }
 
+        /**
+         * @param tenant ACI tenant (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder tenant(String tenant) {
             return tenant(Output.of(tenant));
         }
@@ -1220,92 +2578,212 @@ public final class ClusterRkeConfigNetworkAciNetworkProviderArgs extends com.pul
             return token(Output.of(token));
         }
 
+        /**
+         * @param useAciAnywhereCrd Whether to use ACI anywhere CRD (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder useAciAnywhereCrd(@Nullable Output<String> useAciAnywhereCrd) {
             $.useAciAnywhereCrd = useAciAnywhereCrd;
             return this;
         }
 
+        /**
+         * @param useAciAnywhereCrd Whether to use ACI anywhere CRD (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder useAciAnywhereCrd(String useAciAnywhereCrd) {
             return useAciAnywhereCrd(Output.of(useAciAnywhereCrd));
         }
 
+        /**
+         * @param useAciCniPriorityClass Whether to use ACI CNI priority class (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder useAciCniPriorityClass(@Nullable Output<String> useAciCniPriorityClass) {
             $.useAciCniPriorityClass = useAciCniPriorityClass;
             return this;
         }
 
+        /**
+         * @param useAciCniPriorityClass Whether to use ACI CNI priority class (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder useAciCniPriorityClass(String useAciCniPriorityClass) {
             return useAciCniPriorityClass(Output.of(useAciCniPriorityClass));
         }
 
+        /**
+         * @param useClusterRole Whether to use cluster role (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder useClusterRole(@Nullable Output<String> useClusterRole) {
             $.useClusterRole = useClusterRole;
             return this;
         }
 
+        /**
+         * @param useClusterRole Whether to use cluster role (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder useClusterRole(String useClusterRole) {
             return useClusterRole(Output.of(useClusterRole));
         }
 
+        /**
+         * @param useHostNetnsVolume Whether to use host netns volume (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder useHostNetnsVolume(@Nullable Output<String> useHostNetnsVolume) {
             $.useHostNetnsVolume = useHostNetnsVolume;
             return this;
         }
 
+        /**
+         * @param useHostNetnsVolume Whether to use host netns volume (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder useHostNetnsVolume(String useHostNetnsVolume) {
             return useHostNetnsVolume(Output.of(useHostNetnsVolume));
         }
 
+        /**
+         * @param useOpflexServerVolume Whether use Opflex server volume (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder useOpflexServerVolume(@Nullable Output<String> useOpflexServerVolume) {
             $.useOpflexServerVolume = useOpflexServerVolume;
             return this;
         }
 
+        /**
+         * @param useOpflexServerVolume Whether use Opflex server volume (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder useOpflexServerVolume(String useOpflexServerVolume) {
             return useOpflexServerVolume(Output.of(useOpflexServerVolume));
         }
 
+        /**
+         * @param usePrivilegedContainer Whether ACI containers should run as privileged (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder usePrivilegedContainer(@Nullable Output<String> usePrivilegedContainer) {
             $.usePrivilegedContainer = usePrivilegedContainer;
             return this;
         }
 
+        /**
+         * @param usePrivilegedContainer Whether ACI containers should run as privileged (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder usePrivilegedContainer(String usePrivilegedContainer) {
             return usePrivilegedContainer(Output.of(usePrivilegedContainer));
         }
 
+        /**
+         * @param vmmController VMM controller configuration (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder vmmController(@Nullable Output<String> vmmController) {
             $.vmmController = vmmController;
             return this;
         }
 
+        /**
+         * @param vmmController VMM controller configuration (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder vmmController(String vmmController) {
             return vmmController(Output.of(vmmController));
         }
 
+        /**
+         * @param vmmDomain VMM domain configuration (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder vmmDomain(@Nullable Output<String> vmmDomain) {
             $.vmmDomain = vmmDomain;
             return this;
         }
 
+        /**
+         * @param vmmDomain VMM domain configuration (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder vmmDomain(String vmmDomain) {
             return vmmDomain(Output.of(vmmDomain));
         }
 
+        /**
+         * @param vrfName VRF name (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder vrfName(Output<String> vrfName) {
             $.vrfName = vrfName;
             return this;
         }
 
+        /**
+         * @param vrfName VRF name (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder vrfName(String vrfName) {
             return vrfName(Output.of(vrfName));
         }
 
+        /**
+         * @param vrfTenant VRF tenant (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder vrfTenant(Output<String> vrfTenant) {
             $.vrfTenant = vrfTenant;
             return this;
         }
 
+        /**
+         * @param vrfTenant VRF tenant (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder vrfTenant(String vrfTenant) {
             return vrfTenant(Output.of(vrfTenant));
         }

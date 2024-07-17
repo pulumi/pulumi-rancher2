@@ -12,21 +12,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NodeTemplateNodeTaint {
+    /**
+     * @return Taint effect. Supported values : `&#34;NoExecute&#34; | &#34;NoSchedule&#34; | &#34;PreferNoSchedule&#34;` (string)
+     * 
+     */
     private @Nullable String effect;
+    /**
+     * @return Taint key (string)
+     * 
+     */
     private String key;
+    /**
+     * @return Taint time added (string)
+     * 
+     */
     private @Nullable String timeAdded;
+    /**
+     * @return Taint value (string)
+     * 
+     */
     private String value;
 
     private NodeTemplateNodeTaint() {}
+    /**
+     * @return Taint effect. Supported values : `&#34;NoExecute&#34; | &#34;NoSchedule&#34; | &#34;PreferNoSchedule&#34;` (string)
+     * 
+     */
     public Optional<String> effect() {
         return Optional.ofNullable(this.effect);
     }
+    /**
+     * @return Taint key (string)
+     * 
+     */
     public String key() {
         return this.key;
     }
+    /**
+     * @return Taint time added (string)
+     * 
+     */
     public Optional<String> timeAdded() {
         return Optional.ofNullable(this.timeAdded);
     }
+    /**
+     * @return Taint value (string)
+     * 
+     */
     public String value() {
         return this.value;
     }

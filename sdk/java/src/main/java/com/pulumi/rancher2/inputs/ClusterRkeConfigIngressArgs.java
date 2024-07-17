@@ -22,65 +22,137 @@ public final class ClusterRkeConfigIngressArgs extends com.pulumi.resources.Reso
 
     public static final ClusterRkeConfigIngressArgs Empty = new ClusterRkeConfigIngressArgs();
 
+    /**
+     * Enable ingress default backend. Default: `true` (bool)
+     * 
+     */
     @Import(name="defaultBackend")
     private @Nullable Output<Boolean> defaultBackend;
 
+    /**
+     * @return Enable ingress default backend. Default: `true` (bool)
+     * 
+     */
     public Optional<Output<Boolean>> defaultBackend() {
         return Optional.ofNullable(this.defaultBackend);
     }
 
+    /**
+     * Ingress controller DNS policy. `ClusterFirstWithHostNet`, `ClusterFirst`, `Default`, and `None` are supported. [K8S dns Policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) (string)
+     * 
+     */
     @Import(name="dnsPolicy")
     private @Nullable Output<String> dnsPolicy;
 
+    /**
+     * @return Ingress controller DNS policy. `ClusterFirstWithHostNet`, `ClusterFirst`, `Default`, and `None` are supported. [K8S dns Policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) (string)
+     * 
+     */
     public Optional<Output<String>> dnsPolicy() {
         return Optional.ofNullable(this.dnsPolicy);
     }
 
+    /**
+     * Extra arguments for scheduler service (map)
+     * 
+     */
     @Import(name="extraArgs")
     private @Nullable Output<Map<String,Object>> extraArgs;
 
+    /**
+     * @return Extra arguments for scheduler service (map)
+     * 
+     */
     public Optional<Output<Map<String,Object>>> extraArgs() {
         return Optional.ofNullable(this.extraArgs);
     }
 
+    /**
+     * HTTP port for RKE Ingress (int)
+     * 
+     */
     @Import(name="httpPort")
     private @Nullable Output<Integer> httpPort;
 
+    /**
+     * @return HTTP port for RKE Ingress (int)
+     * 
+     */
     public Optional<Output<Integer>> httpPort() {
         return Optional.ofNullable(this.httpPort);
     }
 
+    /**
+     * HTTPS port for RKE Ingress (int)
+     * 
+     */
     @Import(name="httpsPort")
     private @Nullable Output<Integer> httpsPort;
 
+    /**
+     * @return HTTPS port for RKE Ingress (int)
+     * 
+     */
     public Optional<Output<Integer>> httpsPort() {
         return Optional.ofNullable(this.httpsPort);
     }
 
+    /**
+     * Network mode for RKE Ingress (string)
+     * 
+     */
     @Import(name="networkMode")
     private @Nullable Output<String> networkMode;
 
+    /**
+     * @return Network mode for RKE Ingress (string)
+     * 
+     */
     public Optional<Output<String>> networkMode() {
         return Optional.ofNullable(this.networkMode);
     }
 
+    /**
+     * RKE monitoring node selector (map)
+     * 
+     */
     @Import(name="nodeSelector")
     private @Nullable Output<Map<String,Object>> nodeSelector;
 
+    /**
+     * @return RKE monitoring node selector (map)
+     * 
+     */
     public Optional<Output<Map<String,Object>>> nodeSelector() {
         return Optional.ofNullable(this.nodeSelector);
     }
 
+    /**
+     * RKE options for network (map)
+     * 
+     */
     @Import(name="options")
     private @Nullable Output<Map<String,Object>> options;
 
+    /**
+     * @return RKE options for network (map)
+     * 
+     */
     public Optional<Output<Map<String,Object>>> options() {
         return Optional.ofNullable(this.options);
     }
 
+    /**
+     * RKE monitoring provider (string)
+     * 
+     */
     @Import(name="provider")
     private @Nullable Output<String> provider;
 
+    /**
+     * @return RKE monitoring provider (string)
+     * 
+     */
     public Optional<Output<String>> provider() {
         return Optional.ofNullable(this.provider);
     }
@@ -149,83 +221,191 @@ public final class ClusterRkeConfigIngressArgs extends com.pulumi.resources.Reso
             $ = new ClusterRkeConfigIngressArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param defaultBackend Enable ingress default backend. Default: `true` (bool)
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultBackend(@Nullable Output<Boolean> defaultBackend) {
             $.defaultBackend = defaultBackend;
             return this;
         }
 
+        /**
+         * @param defaultBackend Enable ingress default backend. Default: `true` (bool)
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultBackend(Boolean defaultBackend) {
             return defaultBackend(Output.of(defaultBackend));
         }
 
+        /**
+         * @param dnsPolicy Ingress controller DNS policy. `ClusterFirstWithHostNet`, `ClusterFirst`, `Default`, and `None` are supported. [K8S dns Policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder dnsPolicy(@Nullable Output<String> dnsPolicy) {
             $.dnsPolicy = dnsPolicy;
             return this;
         }
 
+        /**
+         * @param dnsPolicy Ingress controller DNS policy. `ClusterFirstWithHostNet`, `ClusterFirst`, `Default`, and `None` are supported. [K8S dns Policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder dnsPolicy(String dnsPolicy) {
             return dnsPolicy(Output.of(dnsPolicy));
         }
 
+        /**
+         * @param extraArgs Extra arguments for scheduler service (map)
+         * 
+         * @return builder
+         * 
+         */
         public Builder extraArgs(@Nullable Output<Map<String,Object>> extraArgs) {
             $.extraArgs = extraArgs;
             return this;
         }
 
+        /**
+         * @param extraArgs Extra arguments for scheduler service (map)
+         * 
+         * @return builder
+         * 
+         */
         public Builder extraArgs(Map<String,Object> extraArgs) {
             return extraArgs(Output.of(extraArgs));
         }
 
+        /**
+         * @param httpPort HTTP port for RKE Ingress (int)
+         * 
+         * @return builder
+         * 
+         */
         public Builder httpPort(@Nullable Output<Integer> httpPort) {
             $.httpPort = httpPort;
             return this;
         }
 
+        /**
+         * @param httpPort HTTP port for RKE Ingress (int)
+         * 
+         * @return builder
+         * 
+         */
         public Builder httpPort(Integer httpPort) {
             return httpPort(Output.of(httpPort));
         }
 
+        /**
+         * @param httpsPort HTTPS port for RKE Ingress (int)
+         * 
+         * @return builder
+         * 
+         */
         public Builder httpsPort(@Nullable Output<Integer> httpsPort) {
             $.httpsPort = httpsPort;
             return this;
         }
 
+        /**
+         * @param httpsPort HTTPS port for RKE Ingress (int)
+         * 
+         * @return builder
+         * 
+         */
         public Builder httpsPort(Integer httpsPort) {
             return httpsPort(Output.of(httpsPort));
         }
 
+        /**
+         * @param networkMode Network mode for RKE Ingress (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder networkMode(@Nullable Output<String> networkMode) {
             $.networkMode = networkMode;
             return this;
         }
 
+        /**
+         * @param networkMode Network mode for RKE Ingress (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder networkMode(String networkMode) {
             return networkMode(Output.of(networkMode));
         }
 
+        /**
+         * @param nodeSelector RKE monitoring node selector (map)
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeSelector(@Nullable Output<Map<String,Object>> nodeSelector) {
             $.nodeSelector = nodeSelector;
             return this;
         }
 
+        /**
+         * @param nodeSelector RKE monitoring node selector (map)
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeSelector(Map<String,Object> nodeSelector) {
             return nodeSelector(Output.of(nodeSelector));
         }
 
+        /**
+         * @param options RKE options for network (map)
+         * 
+         * @return builder
+         * 
+         */
         public Builder options(@Nullable Output<Map<String,Object>> options) {
             $.options = options;
             return this;
         }
 
+        /**
+         * @param options RKE options for network (map)
+         * 
+         * @return builder
+         * 
+         */
         public Builder options(Map<String,Object> options) {
             return options(Output.of(options));
         }
 
+        /**
+         * @param provider RKE monitoring provider (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder provider(@Nullable Output<String> provider) {
             $.provider = provider;
             return this;
         }
 
+        /**
+         * @param provider RKE monitoring provider (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder provider(String provider) {
             return provider(Output.of(provider));
         }

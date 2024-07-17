@@ -23,14 +23,30 @@ public final class ClusterRkeConfigDns {
      * 
      */
     private @Nullable ClusterRkeConfigDnsLinearAutoscalerParams linearAutoscalerParams;
+    /**
+     * @return RKE monitoring node selector (map)
+     * 
+     */
     private @Nullable Map<String,Object> nodeSelector;
     /**
      * @return Nodelocal dns
      * 
      */
     private @Nullable ClusterRkeConfigDnsNodelocal nodelocal;
+    /**
+     * @return RKE options for network (map)
+     * 
+     */
     private @Nullable Map<String,Object> options;
+    /**
+     * @return RKE monitoring provider (string)
+     * 
+     */
     private @Nullable String provider;
+    /**
+     * @return DNS add-on reverse cidr  (list)
+     * 
+     */
     private @Nullable List<String> reverseCidrs;
     /**
      * @return DNS service tolerations
@@ -42,6 +58,10 @@ public final class ClusterRkeConfigDns {
      * 
      */
     private @Nullable ClusterRkeConfigDnsUpdateStrategy updateStrategy;
+    /**
+     * @return DNS add-on upstream nameservers  (list)
+     * 
+     */
     private @Nullable List<String> upstreamNameservers;
 
     private ClusterRkeConfigDns() {}
@@ -52,6 +72,10 @@ public final class ClusterRkeConfigDns {
     public Optional<ClusterRkeConfigDnsLinearAutoscalerParams> linearAutoscalerParams() {
         return Optional.ofNullable(this.linearAutoscalerParams);
     }
+    /**
+     * @return RKE monitoring node selector (map)
+     * 
+     */
     public Map<String,Object> nodeSelector() {
         return this.nodeSelector == null ? Map.of() : this.nodeSelector;
     }
@@ -62,12 +86,24 @@ public final class ClusterRkeConfigDns {
     public Optional<ClusterRkeConfigDnsNodelocal> nodelocal() {
         return Optional.ofNullable(this.nodelocal);
     }
+    /**
+     * @return RKE options for network (map)
+     * 
+     */
     public Map<String,Object> options() {
         return this.options == null ? Map.of() : this.options;
     }
+    /**
+     * @return RKE monitoring provider (string)
+     * 
+     */
     public Optional<String> provider() {
         return Optional.ofNullable(this.provider);
     }
+    /**
+     * @return DNS add-on reverse cidr  (list)
+     * 
+     */
     public List<String> reverseCidrs() {
         return this.reverseCidrs == null ? List.of() : this.reverseCidrs;
     }
@@ -85,6 +121,10 @@ public final class ClusterRkeConfigDns {
     public Optional<ClusterRkeConfigDnsUpdateStrategy> updateStrategy() {
         return Optional.ofNullable(this.updateStrategy);
     }
+    /**
+     * @return DNS add-on upstream nameservers  (list)
+     * 
+     */
     public List<String> upstreamNameservers() {
         return this.upstreamNameservers == null ? List.of() : this.upstreamNameservers;
     }

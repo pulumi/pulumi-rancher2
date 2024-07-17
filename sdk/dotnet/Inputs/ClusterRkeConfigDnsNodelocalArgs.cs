@@ -12,6 +12,9 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterRkeConfigDnsNodelocalArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Nodelocal dns ip address (string)
+        /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
 

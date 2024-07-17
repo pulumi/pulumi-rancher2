@@ -15,9 +15,17 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgs ext
 
     public static final ClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgs Empty = new ClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgs();
 
+    /**
+     * (string)
+     * 
+     */
     @Import(name="scsiControllerType")
     private @Nullable Output<String> scsiControllerType;
 
+    /**
+     * @return (string)
+     * 
+     */
     public Optional<Output<String>> scsiControllerType() {
         return Optional.ofNullable(this.scsiControllerType);
     }
@@ -46,11 +54,23 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgs ext
             $ = new ClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param scsiControllerType (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder scsiControllerType(@Nullable Output<String> scsiControllerType) {
             $.scsiControllerType = scsiControllerType;
             return this;
         }
 
+        /**
+         * @param scsiControllerType (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder scsiControllerType(String scsiControllerType) {
             return scsiControllerType(Output.of(scsiControllerType));
         }

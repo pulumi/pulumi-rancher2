@@ -21,30 +21,62 @@ public final class ClusterRkeConfigMonitoringArgs extends com.pulumi.resources.R
 
     public static final ClusterRkeConfigMonitoringArgs Empty = new ClusterRkeConfigMonitoringArgs();
 
+    /**
+     * RKE monitoring node selector (map)
+     * 
+     */
     @Import(name="nodeSelector")
     private @Nullable Output<Map<String,Object>> nodeSelector;
 
+    /**
+     * @return RKE monitoring node selector (map)
+     * 
+     */
     public Optional<Output<Map<String,Object>>> nodeSelector() {
         return Optional.ofNullable(this.nodeSelector);
     }
 
+    /**
+     * RKE options for network (map)
+     * 
+     */
     @Import(name="options")
     private @Nullable Output<Map<String,Object>> options;
 
+    /**
+     * @return RKE options for network (map)
+     * 
+     */
     public Optional<Output<Map<String,Object>>> options() {
         return Optional.ofNullable(this.options);
     }
 
+    /**
+     * RKE monitoring provider (string)
+     * 
+     */
     @Import(name="provider")
     private @Nullable Output<String> provider;
 
+    /**
+     * @return RKE monitoring provider (string)
+     * 
+     */
     public Optional<Output<String>> provider() {
         return Optional.ofNullable(this.provider);
     }
 
+    /**
+     * RKE monitoring replicas (int)
+     * 
+     */
     @Import(name="replicas")
     private @Nullable Output<Integer> replicas;
 
+    /**
+     * @return RKE monitoring replicas (int)
+     * 
+     */
     public Optional<Output<Integer>> replicas() {
         return Optional.ofNullable(this.replicas);
     }
@@ -108,38 +140,86 @@ public final class ClusterRkeConfigMonitoringArgs extends com.pulumi.resources.R
             $ = new ClusterRkeConfigMonitoringArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param nodeSelector RKE monitoring node selector (map)
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeSelector(@Nullable Output<Map<String,Object>> nodeSelector) {
             $.nodeSelector = nodeSelector;
             return this;
         }
 
+        /**
+         * @param nodeSelector RKE monitoring node selector (map)
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeSelector(Map<String,Object> nodeSelector) {
             return nodeSelector(Output.of(nodeSelector));
         }
 
+        /**
+         * @param options RKE options for network (map)
+         * 
+         * @return builder
+         * 
+         */
         public Builder options(@Nullable Output<Map<String,Object>> options) {
             $.options = options;
             return this;
         }
 
+        /**
+         * @param options RKE options for network (map)
+         * 
+         * @return builder
+         * 
+         */
         public Builder options(Map<String,Object> options) {
             return options(Output.of(options));
         }
 
+        /**
+         * @param provider RKE monitoring provider (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder provider(@Nullable Output<String> provider) {
             $.provider = provider;
             return this;
         }
 
+        /**
+         * @param provider RKE monitoring provider (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder provider(String provider) {
             return provider(Output.of(provider));
         }
 
+        /**
+         * @param replicas RKE monitoring replicas (int)
+         * 
+         * @return builder
+         * 
+         */
         public Builder replicas(@Nullable Output<Integer> replicas) {
             $.replicas = replicas;
             return this;
         }
 
+        /**
+         * @param replicas RKE monitoring replicas (int)
+         * 
+         * @return builder
+         * 
+         */
         public Builder replicas(Integer replicas) {
             return replicas(Output.of(replicas));
         }

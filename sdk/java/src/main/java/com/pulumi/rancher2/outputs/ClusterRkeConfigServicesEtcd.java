@@ -17,27 +17,87 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterRkeConfigServicesEtcd {
+    /**
+     * @return Backup options for etcd service. For Rancher v2.2.x (list maxitems:1)
+     * 
+     */
     private @Nullable ClusterRkeConfigServicesEtcdBackupConfig backupConfig;
     /**
      * @return (Computed/Sensitive) K8s cluster ca cert (string)
      * 
      */
     private @Nullable String caCert;
+    /**
+     * @return TLS certificate for etcd service (string)
+     * 
+     */
     private @Nullable String cert;
+    /**
+     * @return Creation option for etcd service (string)
+     * 
+     */
     private @Nullable String creation;
+    /**
+     * @return External urls for etcd service (list)
+     * 
+     */
     private @Nullable List<String> externalUrls;
+    /**
+     * @return Extra arguments for scheduler service (map)
+     * 
+     */
     private @Nullable Map<String,Object> extraArgs;
+    /**
+     * @return Extra binds for scheduler service (list)
+     * 
+     */
     private @Nullable List<String> extraBinds;
+    /**
+     * @return Extra environment for scheduler service (list)
+     * 
+     */
     private @Nullable List<String> extraEnvs;
+    /**
+     * @return Etcd service GID. Default: `0`. For Rancher v2.3.x and above (int)
+     * 
+     */
     private @Nullable Integer gid;
+    /**
+     * @return Docker image for scheduler service (string)
+     * 
+     */
     private @Nullable String image;
+    /**
+     * @return The GKE taint key (string)
+     * 
+     */
     private @Nullable String key;
+    /**
+     * @return (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+     * 
+     */
     private @Nullable String path;
+    /**
+     * @return Retention for etcd backup. Default `6` (int)
+     * 
+     */
     private @Nullable String retention;
+    /**
+     * @return Snapshot option for etcd service (bool)
+     * 
+     */
     private @Nullable Boolean snapshot;
+    /**
+     * @return Etcd service UID. Default: `0`. For Rancher v2.3.x and above (int)
+     * 
+     */
     private @Nullable Integer uid;
 
     private ClusterRkeConfigServicesEtcd() {}
+    /**
+     * @return Backup options for etcd service. For Rancher v2.2.x (list maxitems:1)
+     * 
+     */
     public Optional<ClusterRkeConfigServicesEtcdBackupConfig> backupConfig() {
         return Optional.ofNullable(this.backupConfig);
     }
@@ -48,42 +108,94 @@ public final class ClusterRkeConfigServicesEtcd {
     public Optional<String> caCert() {
         return Optional.ofNullable(this.caCert);
     }
+    /**
+     * @return TLS certificate for etcd service (string)
+     * 
+     */
     public Optional<String> cert() {
         return Optional.ofNullable(this.cert);
     }
+    /**
+     * @return Creation option for etcd service (string)
+     * 
+     */
     public Optional<String> creation() {
         return Optional.ofNullable(this.creation);
     }
+    /**
+     * @return External urls for etcd service (list)
+     * 
+     */
     public List<String> externalUrls() {
         return this.externalUrls == null ? List.of() : this.externalUrls;
     }
+    /**
+     * @return Extra arguments for scheduler service (map)
+     * 
+     */
     public Map<String,Object> extraArgs() {
         return this.extraArgs == null ? Map.of() : this.extraArgs;
     }
+    /**
+     * @return Extra binds for scheduler service (list)
+     * 
+     */
     public List<String> extraBinds() {
         return this.extraBinds == null ? List.of() : this.extraBinds;
     }
+    /**
+     * @return Extra environment for scheduler service (list)
+     * 
+     */
     public List<String> extraEnvs() {
         return this.extraEnvs == null ? List.of() : this.extraEnvs;
     }
+    /**
+     * @return Etcd service GID. Default: `0`. For Rancher v2.3.x and above (int)
+     * 
+     */
     public Optional<Integer> gid() {
         return Optional.ofNullable(this.gid);
     }
+    /**
+     * @return Docker image for scheduler service (string)
+     * 
+     */
     public Optional<String> image() {
         return Optional.ofNullable(this.image);
     }
+    /**
+     * @return The GKE taint key (string)
+     * 
+     */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
+    /**
+     * @return (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+     * 
+     */
     public Optional<String> path() {
         return Optional.ofNullable(this.path);
     }
+    /**
+     * @return Retention for etcd backup. Default `6` (int)
+     * 
+     */
     public Optional<String> retention() {
         return Optional.ofNullable(this.retention);
     }
+    /**
+     * @return Snapshot option for etcd service (bool)
+     * 
+     */
     public Optional<Boolean> snapshot() {
         return Optional.ofNullable(this.snapshot);
     }
+    /**
+     * @return Etcd service UID. Default: `0`. For Rancher v2.3.x and above (int)
+     * 
+     */
     public Optional<Integer> uid() {
         return Optional.ofNullable(this.uid);
     }

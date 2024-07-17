@@ -29,9 +29,17 @@ public final class ClusterV2AgentEnvVarArgs extends com.pulumi.resources.Resourc
         return this.name;
     }
 
+    /**
+     * The taint value.
+     * 
+     */
     @Import(name="value", required=true)
     private Output<String> value;
 
+    /**
+     * @return The taint value.
+     * 
+     */
     public Output<String> value() {
         return this.value;
     }
@@ -82,11 +90,23 @@ public final class ClusterV2AgentEnvVarArgs extends com.pulumi.resources.Resourc
             return name(Output.of(name));
         }
 
+        /**
+         * @param value The taint value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(Output<String> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value The taint value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

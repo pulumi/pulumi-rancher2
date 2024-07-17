@@ -16,23 +16,47 @@ public final class ClusterV2RkeConfigLocalAuthEndpointArgs extends com.pulumi.re
 
     public static final ClusterV2RkeConfigLocalAuthEndpointArgs Empty = new ClusterV2RkeConfigLocalAuthEndpointArgs();
 
+    /**
+     * CA certs for the authorized cluster endpoint. It is only needed if there is a load balancer in front of the downstream cluster that is using an untrusted certificate. If you have a valid certificate, then nothing needs to be added to the CA Certificates field.
+     * 
+     */
     @Import(name="caCerts")
     private @Nullable Output<String> caCerts;
 
+    /**
+     * @return CA certs for the authorized cluster endpoint. It is only needed if there is a load balancer in front of the downstream cluster that is using an untrusted certificate. If you have a valid certificate, then nothing needs to be added to the CA Certificates field.
+     * 
+     */
     public Optional<Output<String>> caCerts() {
         return Optional.ofNullable(this.caCerts);
     }
 
+    /**
+     * If `enabled` is set to true, nodes will be drained before upgrade.
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return If `enabled` is set to true, nodes will be drained before upgrade.
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * FQDN for the authorized cluster endpoint. If one is entered, it should point to the downstream cluster.
+     * 
+     */
     @Import(name="fqdn")
     private @Nullable Output<String> fqdn;
 
+    /**
+     * @return FQDN for the authorized cluster endpoint. If one is entered, it should point to the downstream cluster.
+     * 
+     */
     public Optional<Output<String>> fqdn() {
         return Optional.ofNullable(this.fqdn);
     }
@@ -63,29 +87,65 @@ public final class ClusterV2RkeConfigLocalAuthEndpointArgs extends com.pulumi.re
             $ = new ClusterV2RkeConfigLocalAuthEndpointArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param caCerts CA certs for the authorized cluster endpoint. It is only needed if there is a load balancer in front of the downstream cluster that is using an untrusted certificate. If you have a valid certificate, then nothing needs to be added to the CA Certificates field.
+         * 
+         * @return builder
+         * 
+         */
         public Builder caCerts(@Nullable Output<String> caCerts) {
             $.caCerts = caCerts;
             return this;
         }
 
+        /**
+         * @param caCerts CA certs for the authorized cluster endpoint. It is only needed if there is a load balancer in front of the downstream cluster that is using an untrusted certificate. If you have a valid certificate, then nothing needs to be added to the CA Certificates field.
+         * 
+         * @return builder
+         * 
+         */
         public Builder caCerts(String caCerts) {
             return caCerts(Output.of(caCerts));
         }
 
+        /**
+         * @param enabled If `enabled` is set to true, nodes will be drained before upgrade.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled If `enabled` is set to true, nodes will be drained before upgrade.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param fqdn FQDN for the authorized cluster endpoint. If one is entered, it should point to the downstream cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fqdn(@Nullable Output<String> fqdn) {
             $.fqdn = fqdn;
             return this;
         }
 
+        /**
+         * @param fqdn FQDN for the authorized cluster endpoint. If one is entered, it should point to the downstream cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fqdn(String fqdn) {
             return fqdn(Output.of(fqdn));
         }

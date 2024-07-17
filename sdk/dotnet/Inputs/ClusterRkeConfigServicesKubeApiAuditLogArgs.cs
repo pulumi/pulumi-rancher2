@@ -12,9 +12,26 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterRkeConfigServicesKubeApiAuditLogArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
+        /// 
+        /// ```
+        /// configuration = &lt;&lt;EOF
+        /// apiVersion: eventratelimit.admission.k8s.io/v1alpha1
+        /// kind: Configuration
+        /// limits:
+        /// - type: Server
+        /// burst: 35000
+        /// qps: 6000
+        /// EOF
+        /// ```
+        /// </summary>
         [Input("configuration")]
         public Input<Inputs.ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs>? Configuration { get; set; }
 
+        /// <summary>
+        /// Enable the authorized cluster endpoint. Default `true` (bool)
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterRkeConfigAuthentication {
+    /**
+     * @return RKE sans for authentication ([]string)
+     * 
+     */
     private @Nullable List<String> sans;
+    /**
+     * @return Monitoring deployment update strategy (string)
+     * 
+     */
     private @Nullable String strategy;
 
     private ClusterRkeConfigAuthentication() {}
+    /**
+     * @return RKE sans for authentication ([]string)
+     * 
+     */
     public List<String> sans() {
         return this.sans == null ? List.of() : this.sans;
     }
+    /**
+     * @return Monitoring deployment update strategy (string)
+     * 
+     */
     public Optional<String> strategy() {
         return Optional.ofNullable(this.strategy);
     }

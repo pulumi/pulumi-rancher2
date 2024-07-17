@@ -14,16 +14,32 @@ public final class GlobalDnsProviderAlidnsConfigArgs extends com.pulumi.resource
 
     public static final GlobalDnsProviderAlidnsConfigArgs Empty = new GlobalDnsProviderAlidnsConfigArgs();
 
+    /**
+     * The AWS Access key (string)
+     * 
+     */
     @Import(name="accessKey", required=true)
     private Output<String> accessKey;
 
+    /**
+     * @return The AWS Access key (string)
+     * 
+     */
     public Output<String> accessKey() {
         return this.accessKey;
     }
 
+    /**
+     * The AWS Secret key (string)
+     * 
+     */
     @Import(name="secretKey", required=true)
     private Output<String> secretKey;
 
+    /**
+     * @return The AWS Secret key (string)
+     * 
+     */
     public Output<String> secretKey() {
         return this.secretKey;
     }
@@ -53,20 +69,44 @@ public final class GlobalDnsProviderAlidnsConfigArgs extends com.pulumi.resource
             $ = new GlobalDnsProviderAlidnsConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accessKey The AWS Access key (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessKey(Output<String> accessKey) {
             $.accessKey = accessKey;
             return this;
         }
 
+        /**
+         * @param accessKey The AWS Access key (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessKey(String accessKey) {
             return accessKey(Output.of(accessKey));
         }
 
+        /**
+         * @param secretKey The AWS Secret key (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder secretKey(Output<String> secretKey) {
             $.secretKey = secretKey;
             return this;
         }
 
+        /**
+         * @param secretKey The AWS Secret key (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder secretKey(String secretKey) {
             return secretKey(Output.of(secretKey));
         }

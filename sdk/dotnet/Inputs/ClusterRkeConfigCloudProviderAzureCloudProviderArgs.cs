@@ -14,6 +14,10 @@ namespace Pulumi.Rancher2.Inputs
     {
         [Input("aadClientCertPassword")]
         private Input<string>? _aadClientCertPassword;
+
+        /// <summary>
+        /// (string)
+        /// </summary>
         public Input<string>? AadClientCertPassword
         {
             get => _aadClientCertPassword;
@@ -24,11 +28,18 @@ namespace Pulumi.Rancher2.Inputs
             }
         }
 
+        /// <summary>
+        /// (string)
+        /// </summary>
         [Input("aadClientCertPath")]
         public Input<string>? AadClientCertPath { get; set; }
 
         [Input("aadClientId", required: true)]
         private Input<string>? _aadClientId;
+
+        /// <summary>
+        /// (string)
+        /// </summary>
         public Input<string>? AadClientId
         {
             get => _aadClientId;
@@ -41,6 +52,10 @@ namespace Pulumi.Rancher2.Inputs
 
         [Input("aadClientSecret", required: true)]
         private Input<string>? _aadClientSecret;
+
+        /// <summary>
+        /// (string)
+        /// </summary>
         public Input<string>? AadClientSecret
         {
             get => _aadClientSecret;
@@ -51,30 +66,57 @@ namespace Pulumi.Rancher2.Inputs
             }
         }
 
+        /// <summary>
+        /// (string)
+        /// </summary>
         [Input("cloud")]
         public Input<string>? Cloud { get; set; }
 
+        /// <summary>
+        /// (bool)
+        /// </summary>
         [Input("cloudProviderBackoff")]
         public Input<bool>? CloudProviderBackoff { get; set; }
 
+        /// <summary>
+        /// (int)
+        /// </summary>
         [Input("cloudProviderBackoffDuration")]
         public Input<int>? CloudProviderBackoffDuration { get; set; }
 
+        /// <summary>
+        /// (int)
+        /// </summary>
         [Input("cloudProviderBackoffExponent")]
         public Input<int>? CloudProviderBackoffExponent { get; set; }
 
+        /// <summary>
+        /// (int)
+        /// </summary>
         [Input("cloudProviderBackoffJitter")]
         public Input<int>? CloudProviderBackoffJitter { get; set; }
 
+        /// <summary>
+        /// (int)
+        /// </summary>
         [Input("cloudProviderBackoffRetries")]
         public Input<int>? CloudProviderBackoffRetries { get; set; }
 
+        /// <summary>
+        /// (bool)
+        /// </summary>
         [Input("cloudProviderRateLimit")]
         public Input<bool>? CloudProviderRateLimit { get; set; }
 
+        /// <summary>
+        /// (int)
+        /// </summary>
         [Input("cloudProviderRateLimitBucket")]
         public Input<int>? CloudProviderRateLimitBucket { get; set; }
 
+        /// <summary>
+        /// (int)
+        /// </summary>
         [Input("cloudProviderRateLimitQps")]
         public Input<int>? CloudProviderRateLimitQps { get; set; }
 
@@ -84,32 +126,60 @@ namespace Pulumi.Rancher2.Inputs
         [Input("loadBalancerSku")]
         public Input<string>? LoadBalancerSku { get; set; }
 
+        /// <summary>
+        /// Azure Kubernetes cluster location. Default `eastus` (string)
+        /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
+        /// <summary>
+        /// (int)
+        /// </summary>
         [Input("maximumLoadBalancerRuleCount")]
         public Input<int>? MaximumLoadBalancerRuleCount { get; set; }
 
+        /// <summary>
+        /// (string)
+        /// </summary>
         [Input("primaryAvailabilitySetName")]
         public Input<string>? PrimaryAvailabilitySetName { get; set; }
 
+        /// <summary>
+        /// (string)
+        /// </summary>
         [Input("primaryScaleSetName")]
         public Input<string>? PrimaryScaleSetName { get; set; }
 
+        /// <summary>
+        /// The AKS resource group (string)
+        /// </summary>
         [Input("resourceGroup")]
         public Input<string>? ResourceGroup { get; set; }
 
+        /// <summary>
+        /// (string)
+        /// </summary>
         [Input("routeTableName")]
         public Input<string>? RouteTableName { get; set; }
 
+        /// <summary>
+        /// (string)
+        /// </summary>
         [Input("securityGroupName")]
         public Input<string>? SecurityGroupName { get; set; }
 
+        /// <summary>
+        /// (string)
+        /// </summary>
         [Input("subnetName")]
         public Input<string>? SubnetName { get; set; }
 
         [Input("subscriptionId", required: true)]
         private Input<string>? _subscriptionId;
+
+        /// <summary>
+        /// Subscription credentials which uniquely identify Microsoft Azure subscription (string)
+        /// </summary>
         public Input<string>? SubscriptionId
         {
             get => _subscriptionId;
@@ -122,6 +192,10 @@ namespace Pulumi.Rancher2.Inputs
 
         [Input("tenantId", required: true)]
         private Input<string>? _tenantId;
+
+        /// <summary>
+        /// Azure tenant ID to use (string)
+        /// </summary>
         public Input<string>? TenantId
         {
             get => _tenantId;
@@ -132,18 +206,33 @@ namespace Pulumi.Rancher2.Inputs
             }
         }
 
+        /// <summary>
+        /// (bool)
+        /// </summary>
         [Input("useInstanceMetadata")]
         public Input<bool>? UseInstanceMetadata { get; set; }
 
+        /// <summary>
+        /// (bool)
+        /// </summary>
         [Input("useManagedIdentityExtension")]
         public Input<bool>? UseManagedIdentityExtension { get; set; }
 
+        /// <summary>
+        /// (string)
+        /// </summary>
         [Input("vmType")]
         public Input<string>? VmType { get; set; }
 
+        /// <summary>
+        /// (string)
+        /// </summary>
         [Input("vnetName")]
         public Input<string>? VnetName { get; set; }
 
+        /// <summary>
+        /// (string)
+        /// </summary>
         [Input("vnetResourceGroup")]
         public Input<string>? VnetResourceGroup { get; set; }
 

@@ -12,11 +12,18 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterRkeConfigPrivateRegistryEcrCredentialPluginArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// AWS access key ID (string)
+        /// </summary>
         [Input("awsAccessKeyId")]
         public Input<string>? AwsAccessKeyId { get; set; }
 
         [Input("awsSecretAccessKey")]
         private Input<string>? _awsSecretAccessKey;
+
+        /// <summary>
+        /// AWS secret access key (string)
+        /// </summary>
         public Input<string>? AwsSecretAccessKey
         {
             get => _awsSecretAccessKey;
@@ -29,6 +36,10 @@ namespace Pulumi.Rancher2.Inputs
 
         [Input("awsSessionToken")]
         private Input<string>? _awsSessionToken;
+
+        /// <summary>
+        /// AWS session token (string)
+        /// </summary>
         public Input<string>? AwsSessionToken
         {
             get => _awsSessionToken;

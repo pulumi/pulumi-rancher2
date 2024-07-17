@@ -33,30 +33,62 @@ public final class ClusterRkeConfigPrivateRegistryArgs extends com.pulumi.resour
         return Optional.ofNullable(this.ecrCredentialPlugin);
     }
 
+    /**
+     * Set as default registry. Default `false` (bool)
+     * 
+     */
     @Import(name="isDefault")
     private @Nullable Output<Boolean> isDefault;
 
+    /**
+     * @return Set as default registry. Default `false` (bool)
+     * 
+     */
     public Optional<Output<Boolean>> isDefault() {
         return Optional.ofNullable(this.isDefault);
     }
 
+    /**
+     * Registry password (string)
+     * 
+     */
     @Import(name="password")
     private @Nullable Output<String> password;
 
+    /**
+     * @return Registry password (string)
+     * 
+     */
     public Optional<Output<String>> password() {
         return Optional.ofNullable(this.password);
     }
 
+    /**
+     * Registry URL (string)
+     * 
+     */
     @Import(name="url", required=true)
     private Output<String> url;
 
+    /**
+     * @return Registry URL (string)
+     * 
+     */
     public Output<String> url() {
         return this.url;
     }
 
+    /**
+     * Registry user (string)
+     * 
+     */
     @Import(name="user")
     private @Nullable Output<String> user;
 
+    /**
+     * @return Registry user (string)
+     * 
+     */
     public Optional<Output<String>> user() {
         return Optional.ofNullable(this.user);
     }
@@ -110,38 +142,86 @@ public final class ClusterRkeConfigPrivateRegistryArgs extends com.pulumi.resour
             return ecrCredentialPlugin(Output.of(ecrCredentialPlugin));
         }
 
+        /**
+         * @param isDefault Set as default registry. Default `false` (bool)
+         * 
+         * @return builder
+         * 
+         */
         public Builder isDefault(@Nullable Output<Boolean> isDefault) {
             $.isDefault = isDefault;
             return this;
         }
 
+        /**
+         * @param isDefault Set as default registry. Default `false` (bool)
+         * 
+         * @return builder
+         * 
+         */
         public Builder isDefault(Boolean isDefault) {
             return isDefault(Output.of(isDefault));
         }
 
+        /**
+         * @param password Registry password (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder password(@Nullable Output<String> password) {
             $.password = password;
             return this;
         }
 
+        /**
+         * @param password Registry password (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder password(String password) {
             return password(Output.of(password));
         }
 
+        /**
+         * @param url Registry URL (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(Output<String> url) {
             $.url = url;
             return this;
         }
 
+        /**
+         * @param url Registry URL (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(String url) {
             return url(Output.of(url));
         }
 
+        /**
+         * @param user Registry user (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder user(@Nullable Output<String> user) {
             $.user = user;
             return this;
         }
 
+        /**
+         * @param user Registry user (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder user(String user) {
             return user(Output.of(user));
         }

@@ -13,10 +13,25 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterRkeConfigCloudProviderOpenstackCloudProvider
     {
+        /// <summary>
+        /// (list maxitems:1)
+        /// </summary>
         public readonly Outputs.ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorage? BlockStorage;
+        /// <summary>
+        /// (list maxitems:1)
+        /// </summary>
         public readonly Outputs.ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal Global;
+        /// <summary>
+        /// (list maxitems:1)
+        /// </summary>
         public readonly Outputs.ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancer? LoadBalancer;
+        /// <summary>
+        /// (list maxitems:1)
+        /// </summary>
         public readonly Outputs.ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadata? Metadata;
+        /// <summary>
+        /// (list maxitems:1)
+        /// </summary>
         public readonly Outputs.ClusterRkeConfigCloudProviderOpenstackCloudProviderRoute? Route;
 
         [OutputConstructor]

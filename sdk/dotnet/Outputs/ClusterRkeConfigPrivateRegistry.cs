@@ -17,9 +17,21 @@ namespace Pulumi.Rancher2.Outputs
         /// ECR credential plugin config
         /// </summary>
         public readonly Outputs.ClusterRkeConfigPrivateRegistryEcrCredentialPlugin? EcrCredentialPlugin;
+        /// <summary>
+        /// Set as default registry. Default `false` (bool)
+        /// </summary>
         public readonly bool? IsDefault;
+        /// <summary>
+        /// Registry password (string)
+        /// </summary>
         public readonly string? Password;
+        /// <summary>
+        /// Registry URL (string)
+        /// </summary>
         public readonly string Url;
+        /// <summary>
+        /// Registry user (string)
+        /// </summary>
         public readonly string? User;
 
         [OutputConstructor]

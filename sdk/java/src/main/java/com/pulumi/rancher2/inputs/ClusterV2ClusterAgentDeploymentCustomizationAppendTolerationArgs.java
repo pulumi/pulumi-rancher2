@@ -17,37 +17,77 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationA
 
     public static final ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArgs Empty = new ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArgs();
 
+    /**
+     * The taint effect. Default: `\&#34;NoExecute\&#34;`.
+     * 
+     */
     @Import(name="effect")
     private @Nullable Output<String> effect;
 
+    /**
+     * @return The taint effect. Default: `\&#34;NoExecute\&#34;`.
+     * 
+     */
     public Optional<Output<String>> effect() {
         return Optional.ofNullable(this.effect);
     }
 
+    /**
+     * Key is the name of the key of the item to retrieve.
+     * 
+     */
     @Import(name="key", required=true)
     private Output<String> key;
 
+    /**
+     * @return Key is the name of the key of the item to retrieve.
+     * 
+     */
     public Output<String> key() {
         return this.key;
     }
 
+    /**
+     * Operator represents a key&#39;s relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+     * 
+     */
     @Import(name="operator")
     private @Nullable Output<String> operator;
 
+    /**
+     * @return Operator represents a key&#39;s relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+     * 
+     */
     public Optional<Output<String>> operator() {
         return Optional.ofNullable(this.operator);
     }
 
+    /**
+     * The number of seconds a pod will stay bound to a node with a matching taint.
+     * 
+     */
     @Import(name="seconds")
     private @Nullable Output<Integer> seconds;
 
+    /**
+     * @return The number of seconds a pod will stay bound to a node with a matching taint.
+     * 
+     */
     public Optional<Output<Integer>> seconds() {
         return Optional.ofNullable(this.seconds);
     }
 
+    /**
+     * The taint value.
+     * 
+     */
     @Import(name="value")
     private @Nullable Output<String> value;
 
+    /**
+     * @return The taint value.
+     * 
+     */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
     }
@@ -80,47 +120,107 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationA
             $ = new ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param effect The taint effect. Default: `\&#34;NoExecute\&#34;`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effect(@Nullable Output<String> effect) {
             $.effect = effect;
             return this;
         }
 
+        /**
+         * @param effect The taint effect. Default: `\&#34;NoExecute\&#34;`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effect(String effect) {
             return effect(Output.of(effect));
         }
 
+        /**
+         * @param key Key is the name of the key of the item to retrieve.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(Output<String> key) {
             $.key = key;
             return this;
         }
 
+        /**
+         * @param key Key is the name of the key of the item to retrieve.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(String key) {
             return key(Output.of(key));
         }
 
+        /**
+         * @param operator Operator represents a key&#39;s relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+         * 
+         * @return builder
+         * 
+         */
         public Builder operator(@Nullable Output<String> operator) {
             $.operator = operator;
             return this;
         }
 
+        /**
+         * @param operator Operator represents a key&#39;s relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+         * 
+         * @return builder
+         * 
+         */
         public Builder operator(String operator) {
             return operator(Output.of(operator));
         }
 
+        /**
+         * @param seconds The number of seconds a pod will stay bound to a node with a matching taint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder seconds(@Nullable Output<Integer> seconds) {
             $.seconds = seconds;
             return this;
         }
 
+        /**
+         * @param seconds The number of seconds a pod will stay bound to a node with a matching taint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder seconds(Integer seconds) {
             return seconds(Output.of(seconds));
         }
 
+        /**
+         * @param value The taint value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value The taint value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

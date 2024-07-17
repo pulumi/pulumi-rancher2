@@ -16,23 +16,47 @@ public final class RegistryRegistryArgs extends com.pulumi.resources.ResourceArg
 
     public static final RegistryRegistryArgs Empty = new RegistryRegistryArgs();
 
+    /**
+     * Address for registry.
+     * 
+     */
     @Import(name="address", required=true)
     private Output<String> address;
 
+    /**
+     * @return Address for registry.
+     * 
+     */
     public Output<String> address() {
         return this.address;
     }
 
+    /**
+     * Password for the registry (string)
+     * 
+     */
     @Import(name="password")
     private @Nullable Output<String> password;
 
+    /**
+     * @return Password for the registry (string)
+     * 
+     */
     public Optional<Output<String>> password() {
         return Optional.ofNullable(this.password);
     }
 
+    /**
+     * Username for the registry (string)
+     * 
+     */
     @Import(name="username")
     private @Nullable Output<String> username;
 
+    /**
+     * @return Username for the registry (string)
+     * 
+     */
     public Optional<Output<String>> username() {
         return Optional.ofNullable(this.username);
     }
@@ -63,29 +87,65 @@ public final class RegistryRegistryArgs extends com.pulumi.resources.ResourceArg
             $ = new RegistryRegistryArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param address Address for registry.
+         * 
+         * @return builder
+         * 
+         */
         public Builder address(Output<String> address) {
             $.address = address;
             return this;
         }
 
+        /**
+         * @param address Address for registry.
+         * 
+         * @return builder
+         * 
+         */
         public Builder address(String address) {
             return address(Output.of(address));
         }
 
+        /**
+         * @param password Password for the registry (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder password(@Nullable Output<String> password) {
             $.password = password;
             return this;
         }
 
+        /**
+         * @param password Password for the registry (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder password(String password) {
             return password(Output.of(password));
         }
 
+        /**
+         * @param username Username for the registry (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder username(@Nullable Output<String> username) {
             $.username = username;
             return this;
         }
 
+        /**
+         * @param username Username for the registry (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder username(String username) {
             return username(Output.of(username));
         }

@@ -12,33 +12,89 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig {
+    /**
+     * @return The AWS Client ID to use (string)
+     * 
+     */
     private @Nullable String accessKey;
+    /**
+     * @return Bucket name for S3 service (string)
+     * 
+     */
     private String bucketName;
+    /**
+     * @return Base64 encoded custom CA for S3 service. Use filebase64(&lt;FILE&gt;) for encoding file. Available from Rancher v2.2.5 (string)
+     * 
+     */
     private @Nullable String customCa;
+    /**
+     * @return Endpoint for S3 service (string)
+     * 
+     */
     private String endpoint;
+    /**
+     * @return Folder for S3 service. Available from Rancher v2.2.7 (string)
+     * 
+     */
     private @Nullable String folder;
+    /**
+     * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     * 
+     */
     private @Nullable String region;
+    /**
+     * @return The AWS Client Secret associated with the Client ID (string)
+     * 
+     */
     private @Nullable String secretKey;
 
     private ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig() {}
+    /**
+     * @return The AWS Client ID to use (string)
+     * 
+     */
     public Optional<String> accessKey() {
         return Optional.ofNullable(this.accessKey);
     }
+    /**
+     * @return Bucket name for S3 service (string)
+     * 
+     */
     public String bucketName() {
         return this.bucketName;
     }
+    /**
+     * @return Base64 encoded custom CA for S3 service. Use filebase64(&lt;FILE&gt;) for encoding file. Available from Rancher v2.2.5 (string)
+     * 
+     */
     public Optional<String> customCa() {
         return Optional.ofNullable(this.customCa);
     }
+    /**
+     * @return Endpoint for S3 service (string)
+     * 
+     */
     public String endpoint() {
         return this.endpoint;
     }
+    /**
+     * @return Folder for S3 service. Available from Rancher v2.2.7 (string)
+     * 
+     */
     public Optional<String> folder() {
         return Optional.ofNullable(this.folder);
     }
+    /**
+     * @return The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+     * 
+     */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
+    /**
+     * @return The AWS Client Secret associated with the Client ID (string)
+     * 
+     */
     public Optional<String> secretKey() {
         return Optional.ofNullable(this.secretKey);
     }

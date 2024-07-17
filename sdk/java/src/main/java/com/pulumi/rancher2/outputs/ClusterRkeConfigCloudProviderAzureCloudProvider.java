@@ -14,77 +14,241 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterRkeConfigCloudProviderAzureCloudProvider {
+    /**
+     * @return (string)
+     * 
+     */
     private @Nullable String aadClientCertPassword;
+    /**
+     * @return (string)
+     * 
+     */
     private @Nullable String aadClientCertPath;
+    /**
+     * @return (string)
+     * 
+     */
     private String aadClientId;
+    /**
+     * @return (string)
+     * 
+     */
     private String aadClientSecret;
+    /**
+     * @return (string)
+     * 
+     */
     private @Nullable String cloud;
+    /**
+     * @return (bool)
+     * 
+     */
     private @Nullable Boolean cloudProviderBackoff;
+    /**
+     * @return (int)
+     * 
+     */
     private @Nullable Integer cloudProviderBackoffDuration;
+    /**
+     * @return (int)
+     * 
+     */
     private @Nullable Integer cloudProviderBackoffExponent;
+    /**
+     * @return (int)
+     * 
+     */
     private @Nullable Integer cloudProviderBackoffJitter;
+    /**
+     * @return (int)
+     * 
+     */
     private @Nullable Integer cloudProviderBackoffRetries;
+    /**
+     * @return (bool)
+     * 
+     */
     private @Nullable Boolean cloudProviderRateLimit;
+    /**
+     * @return (int)
+     * 
+     */
     private @Nullable Integer cloudProviderRateLimitBucket;
+    /**
+     * @return (int)
+     * 
+     */
     private @Nullable Integer cloudProviderRateLimitQps;
     /**
      * @return Load balancer type (basic | standard). Must be standard for auto-scaling
      * 
      */
     private @Nullable String loadBalancerSku;
+    /**
+     * @return Azure Kubernetes cluster location. Default `eastus` (string)
+     * 
+     */
     private @Nullable String location;
+    /**
+     * @return (int)
+     * 
+     */
     private @Nullable Integer maximumLoadBalancerRuleCount;
+    /**
+     * @return (string)
+     * 
+     */
     private @Nullable String primaryAvailabilitySetName;
+    /**
+     * @return (string)
+     * 
+     */
     private @Nullable String primaryScaleSetName;
+    /**
+     * @return The AKS resource group (string)
+     * 
+     */
     private @Nullable String resourceGroup;
+    /**
+     * @return (string)
+     * 
+     */
     private @Nullable String routeTableName;
+    /**
+     * @return (string)
+     * 
+     */
     private @Nullable String securityGroupName;
+    /**
+     * @return (string)
+     * 
+     */
     private @Nullable String subnetName;
+    /**
+     * @return Subscription credentials which uniquely identify Microsoft Azure subscription (string)
+     * 
+     */
     private String subscriptionId;
+    /**
+     * @return Azure tenant ID to use (string)
+     * 
+     */
     private String tenantId;
+    /**
+     * @return (bool)
+     * 
+     */
     private @Nullable Boolean useInstanceMetadata;
+    /**
+     * @return (bool)
+     * 
+     */
     private @Nullable Boolean useManagedIdentityExtension;
+    /**
+     * @return (string)
+     * 
+     */
     private @Nullable String vmType;
+    /**
+     * @return (string)
+     * 
+     */
     private @Nullable String vnetName;
+    /**
+     * @return (string)
+     * 
+     */
     private @Nullable String vnetResourceGroup;
 
     private ClusterRkeConfigCloudProviderAzureCloudProvider() {}
+    /**
+     * @return (string)
+     * 
+     */
     public Optional<String> aadClientCertPassword() {
         return Optional.ofNullable(this.aadClientCertPassword);
     }
+    /**
+     * @return (string)
+     * 
+     */
     public Optional<String> aadClientCertPath() {
         return Optional.ofNullable(this.aadClientCertPath);
     }
+    /**
+     * @return (string)
+     * 
+     */
     public String aadClientId() {
         return this.aadClientId;
     }
+    /**
+     * @return (string)
+     * 
+     */
     public String aadClientSecret() {
         return this.aadClientSecret;
     }
+    /**
+     * @return (string)
+     * 
+     */
     public Optional<String> cloud() {
         return Optional.ofNullable(this.cloud);
     }
+    /**
+     * @return (bool)
+     * 
+     */
     public Optional<Boolean> cloudProviderBackoff() {
         return Optional.ofNullable(this.cloudProviderBackoff);
     }
+    /**
+     * @return (int)
+     * 
+     */
     public Optional<Integer> cloudProviderBackoffDuration() {
         return Optional.ofNullable(this.cloudProviderBackoffDuration);
     }
+    /**
+     * @return (int)
+     * 
+     */
     public Optional<Integer> cloudProviderBackoffExponent() {
         return Optional.ofNullable(this.cloudProviderBackoffExponent);
     }
+    /**
+     * @return (int)
+     * 
+     */
     public Optional<Integer> cloudProviderBackoffJitter() {
         return Optional.ofNullable(this.cloudProviderBackoffJitter);
     }
+    /**
+     * @return (int)
+     * 
+     */
     public Optional<Integer> cloudProviderBackoffRetries() {
         return Optional.ofNullable(this.cloudProviderBackoffRetries);
     }
+    /**
+     * @return (bool)
+     * 
+     */
     public Optional<Boolean> cloudProviderRateLimit() {
         return Optional.ofNullable(this.cloudProviderRateLimit);
     }
+    /**
+     * @return (int)
+     * 
+     */
     public Optional<Integer> cloudProviderRateLimitBucket() {
         return Optional.ofNullable(this.cloudProviderRateLimitBucket);
     }
+    /**
+     * @return (int)
+     * 
+     */
     public Optional<Integer> cloudProviderRateLimitQps() {
         return Optional.ofNullable(this.cloudProviderRateLimitQps);
     }
@@ -95,48 +259,108 @@ public final class ClusterRkeConfigCloudProviderAzureCloudProvider {
     public Optional<String> loadBalancerSku() {
         return Optional.ofNullable(this.loadBalancerSku);
     }
+    /**
+     * @return Azure Kubernetes cluster location. Default `eastus` (string)
+     * 
+     */
     public Optional<String> location() {
         return Optional.ofNullable(this.location);
     }
+    /**
+     * @return (int)
+     * 
+     */
     public Optional<Integer> maximumLoadBalancerRuleCount() {
         return Optional.ofNullable(this.maximumLoadBalancerRuleCount);
     }
+    /**
+     * @return (string)
+     * 
+     */
     public Optional<String> primaryAvailabilitySetName() {
         return Optional.ofNullable(this.primaryAvailabilitySetName);
     }
+    /**
+     * @return (string)
+     * 
+     */
     public Optional<String> primaryScaleSetName() {
         return Optional.ofNullable(this.primaryScaleSetName);
     }
+    /**
+     * @return The AKS resource group (string)
+     * 
+     */
     public Optional<String> resourceGroup() {
         return Optional.ofNullable(this.resourceGroup);
     }
+    /**
+     * @return (string)
+     * 
+     */
     public Optional<String> routeTableName() {
         return Optional.ofNullable(this.routeTableName);
     }
+    /**
+     * @return (string)
+     * 
+     */
     public Optional<String> securityGroupName() {
         return Optional.ofNullable(this.securityGroupName);
     }
+    /**
+     * @return (string)
+     * 
+     */
     public Optional<String> subnetName() {
         return Optional.ofNullable(this.subnetName);
     }
+    /**
+     * @return Subscription credentials which uniquely identify Microsoft Azure subscription (string)
+     * 
+     */
     public String subscriptionId() {
         return this.subscriptionId;
     }
+    /**
+     * @return Azure tenant ID to use (string)
+     * 
+     */
     public String tenantId() {
         return this.tenantId;
     }
+    /**
+     * @return (bool)
+     * 
+     */
     public Optional<Boolean> useInstanceMetadata() {
         return Optional.ofNullable(this.useInstanceMetadata);
     }
+    /**
+     * @return (bool)
+     * 
+     */
     public Optional<Boolean> useManagedIdentityExtension() {
         return Optional.ofNullable(this.useManagedIdentityExtension);
     }
+    /**
+     * @return (string)
+     * 
+     */
     public Optional<String> vmType() {
         return Optional.ofNullable(this.vmType);
     }
+    /**
+     * @return (string)
+     * 
+     */
     public Optional<String> vnetName() {
         return Optional.ofNullable(this.vnetName);
     }
+    /**
+     * @return (string)
+     * 
+     */
     public Optional<String> vnetResourceGroup() {
         return Optional.ofNullable(this.vnetResourceGroup);
     }

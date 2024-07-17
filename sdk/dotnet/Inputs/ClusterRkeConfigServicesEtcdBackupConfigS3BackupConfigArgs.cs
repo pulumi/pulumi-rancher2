@@ -14,6 +14,10 @@ namespace Pulumi.Rancher2.Inputs
     {
         [Input("accessKey")]
         private Input<string>? _accessKey;
+
+        /// <summary>
+        /// The AWS Client ID to use (string)
+        /// </summary>
         public Input<string>? AccessKey
         {
             get => _accessKey;
@@ -24,23 +28,42 @@ namespace Pulumi.Rancher2.Inputs
             }
         }
 
+        /// <summary>
+        /// Bucket name for S3 service (string)
+        /// </summary>
         [Input("bucketName", required: true)]
         public Input<string> BucketName { get; set; } = null!;
 
+        /// <summary>
+        /// Base64 encoded custom CA for S3 service. Use filebase64(&lt;FILE&gt;) for encoding file. Available from Rancher v2.2.5 (string)
+        /// </summary>
         [Input("customCa")]
         public Input<string>? CustomCa { get; set; }
 
+        /// <summary>
+        /// Endpoint for S3 service (string)
+        /// </summary>
         [Input("endpoint", required: true)]
         public Input<string> Endpoint { get; set; } = null!;
 
+        /// <summary>
+        /// Folder for S3 service. Available from Rancher v2.2.7 (string)
+        /// </summary>
         [Input("folder")]
         public Input<string>? Folder { get; set; }
 
+        /// <summary>
+        /// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         [Input("secretKey")]
         private Input<string>? _secretKey;
+
+        /// <summary>
+        /// The AWS Client Secret associated with the Client ID (string)
+        /// </summary>
         public Input<string>? SecretKey
         {
             get => _secretKey;

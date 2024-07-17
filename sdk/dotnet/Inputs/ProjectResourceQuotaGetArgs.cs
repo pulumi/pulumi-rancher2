@@ -12,9 +12,15 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ProjectResourceQuotaGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Default resource quota limit for  namespaces in project (list maxitems:1)
+        /// </summary>
         [Input("namespaceDefaultLimit", required: true)]
         public Input<Inputs.ProjectResourceQuotaNamespaceDefaultLimitGetArgs> NamespaceDefaultLimit { get; set; } = null!;
 
+        /// <summary>
+        /// Resource quota limit for project (list maxitems:1)
+        /// </summary>
         [Input("projectLimit", required: true)]
         public Input<Inputs.ProjectResourceQuotaProjectLimitGetArgs> ProjectLimit { get; set; } = null!;
 
