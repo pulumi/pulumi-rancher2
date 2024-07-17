@@ -13,12 +13,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit {
     private @Nullable String configuration;
+    /**
+     * @return Enable cluster template revision. Default `true` (bool)
+     * 
+     */
     private @Nullable Boolean enabled;
 
     private ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit() {}
     public Optional<String> configuration() {
         return Optional.ofNullable(this.configuration);
     }
+    /**
+     * @return Enable cluster template revision. Default `true` (bool)
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }

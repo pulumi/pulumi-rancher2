@@ -803,6 +803,7 @@ class ClusterAgentEnvVarArgs:
                  value: pulumi.Input[str]):
         """
         :param pulumi.Input[str] name: The name of the Cluster (string)
+        :param pulumi.Input[str] value: The GKE taint value (string)
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -822,6 +823,9 @@ class ClusterAgentEnvVarArgs:
     @property
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
+        """
+        The GKE taint value (string)
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -2563,6 +2567,13 @@ class ClusterClusterAgentDeploymentCustomizationAppendTolerationArgs:
                  operator: Optional[pulumi.Input[str]] = None,
                  seconds: Optional[pulumi.Input[int]] = None,
                  value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The GKE taint key (string)
+        :param pulumi.Input[str] effect: The GKE taint effect (string)
+        :param pulumi.Input[str] operator: The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+        :param pulumi.Input[int] seconds: The toleration seconds (int)
+        :param pulumi.Input[str] value: The GKE taint value (string)
+        """
         pulumi.set(__self__, "key", key)
         if effect is not None:
             pulumi.set(__self__, "effect", effect)
@@ -2576,6 +2587,9 @@ class ClusterClusterAgentDeploymentCustomizationAppendTolerationArgs:
     @property
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
+        """
+        The GKE taint key (string)
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -2585,6 +2599,9 @@ class ClusterClusterAgentDeploymentCustomizationAppendTolerationArgs:
     @property
     @pulumi.getter
     def effect(self) -> Optional[pulumi.Input[str]]:
+        """
+        The GKE taint effect (string)
+        """
         return pulumi.get(self, "effect")
 
     @effect.setter
@@ -2594,6 +2611,9 @@ class ClusterClusterAgentDeploymentCustomizationAppendTolerationArgs:
     @property
     @pulumi.getter
     def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+        """
         return pulumi.get(self, "operator")
 
     @operator.setter
@@ -2603,6 +2623,9 @@ class ClusterClusterAgentDeploymentCustomizationAppendTolerationArgs:
     @property
     @pulumi.getter
     def seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        The toleration seconds (int)
+        """
         return pulumi.get(self, "seconds")
 
     @seconds.setter
@@ -2612,6 +2635,9 @@ class ClusterClusterAgentDeploymentCustomizationAppendTolerationArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The GKE taint value (string)
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -2696,6 +2722,11 @@ class ClusterClusterAuthEndpointArgs:
                  ca_certs: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  fqdn: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] ca_certs: CA certs for the authorized cluster endpoint (string)
+        :param pulumi.Input[bool] enabled: Enable the authorized cluster endpoint. Default `true` (bool)
+        :param pulumi.Input[str] fqdn: FQDN for the authorized cluster endpoint (string)
+        """
         if ca_certs is not None:
             pulumi.set(__self__, "ca_certs", ca_certs)
         if enabled is not None:
@@ -2706,6 +2737,9 @@ class ClusterClusterAuthEndpointArgs:
     @property
     @pulumi.getter(name="caCerts")
     def ca_certs(self) -> Optional[pulumi.Input[str]]:
+        """
+        CA certs for the authorized cluster endpoint (string)
+        """
         return pulumi.get(self, "ca_certs")
 
     @ca_certs.setter
@@ -2715,6 +2749,9 @@ class ClusterClusterAuthEndpointArgs:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable the authorized cluster endpoint. Default `true` (bool)
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -2724,6 +2761,9 @@ class ClusterClusterAuthEndpointArgs:
     @property
     @pulumi.getter
     def fqdn(self) -> Optional[pulumi.Input[str]]:
+        """
+        FQDN for the authorized cluster endpoint (string)
+        """
         return pulumi.get(self, "fqdn")
 
     @fqdn.setter
@@ -2788,9 +2828,16 @@ class ClusterClusterRegistrationTokenArgs:
                  windows_node_command: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the Cluster (map)
+        :param pulumi.Input[str] command: Command to execute in a imported k8s cluster (string)
         :param pulumi.Input[str] id: (Computed) The ID of the resource (string)
+        :param pulumi.Input[str] insecure_command: Insecure command to execute in a imported k8s cluster (string)
+        :param pulumi.Input[str] insecure_node_command: Insecure node command to execute in a imported k8s cluster (string)
+        :param pulumi.Input[str] insecure_windows_node_command: Insecure windows command to execute in a imported k8s cluster (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for the Cluster (map)
+        :param pulumi.Input[str] manifest_url: K8s manifest url to execute with `kubectl` to import an existing k8s cluster (string)
         :param pulumi.Input[str] name: The name of the Cluster (string)
+        :param pulumi.Input[str] node_command: Node command to execute in linux nodes for custom k8s cluster (string)
+        :param pulumi.Input[str] windows_node_command: Node command to execute in windows nodes for custom k8s cluster (string)
         """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
@@ -2843,6 +2890,9 @@ class ClusterClusterRegistrationTokenArgs:
     @property
     @pulumi.getter
     def command(self) -> Optional[pulumi.Input[str]]:
+        """
+        Command to execute in a imported k8s cluster (string)
+        """
         return pulumi.get(self, "command")
 
     @command.setter
@@ -2864,6 +2914,9 @@ class ClusterClusterRegistrationTokenArgs:
     @property
     @pulumi.getter(name="insecureCommand")
     def insecure_command(self) -> Optional[pulumi.Input[str]]:
+        """
+        Insecure command to execute in a imported k8s cluster (string)
+        """
         return pulumi.get(self, "insecure_command")
 
     @insecure_command.setter
@@ -2873,6 +2926,9 @@ class ClusterClusterRegistrationTokenArgs:
     @property
     @pulumi.getter(name="insecureNodeCommand")
     def insecure_node_command(self) -> Optional[pulumi.Input[str]]:
+        """
+        Insecure node command to execute in a imported k8s cluster (string)
+        """
         return pulumi.get(self, "insecure_node_command")
 
     @insecure_node_command.setter
@@ -2882,6 +2938,9 @@ class ClusterClusterRegistrationTokenArgs:
     @property
     @pulumi.getter(name="insecureWindowsNodeCommand")
     def insecure_windows_node_command(self) -> Optional[pulumi.Input[str]]:
+        """
+        Insecure windows command to execute in a imported k8s cluster (string)
+        """
         return pulumi.get(self, "insecure_windows_node_command")
 
     @insecure_windows_node_command.setter
@@ -2903,6 +2962,9 @@ class ClusterClusterRegistrationTokenArgs:
     @property
     @pulumi.getter(name="manifestUrl")
     def manifest_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        K8s manifest url to execute with `kubectl` to import an existing k8s cluster (string)
+        """
         return pulumi.get(self, "manifest_url")
 
     @manifest_url.setter
@@ -2924,6 +2986,9 @@ class ClusterClusterRegistrationTokenArgs:
     @property
     @pulumi.getter(name="nodeCommand")
     def node_command(self) -> Optional[pulumi.Input[str]]:
+        """
+        Node command to execute in linux nodes for custom k8s cluster (string)
+        """
         return pulumi.get(self, "node_command")
 
     @node_command.setter
@@ -2942,6 +3007,9 @@ class ClusterClusterRegistrationTokenArgs:
     @property
     @pulumi.getter(name="windowsNodeCommand")
     def windows_node_command(self) -> Optional[pulumi.Input[str]]:
+        """
+        Node command to execute in windows nodes for custom k8s cluster (string)
+        """
         return pulumi.get(self, "windows_node_command")
 
     @windows_node_command.setter
@@ -4070,6 +4138,13 @@ class ClusterFleetAgentDeploymentCustomizationAppendTolerationArgs:
                  operator: Optional[pulumi.Input[str]] = None,
                  seconds: Optional[pulumi.Input[int]] = None,
                  value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The GKE taint key (string)
+        :param pulumi.Input[str] effect: The GKE taint effect (string)
+        :param pulumi.Input[str] operator: The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+        :param pulumi.Input[int] seconds: The toleration seconds (int)
+        :param pulumi.Input[str] value: The GKE taint value (string)
+        """
         pulumi.set(__self__, "key", key)
         if effect is not None:
             pulumi.set(__self__, "effect", effect)
@@ -4083,6 +4158,9 @@ class ClusterFleetAgentDeploymentCustomizationAppendTolerationArgs:
     @property
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
+        """
+        The GKE taint key (string)
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -4092,6 +4170,9 @@ class ClusterFleetAgentDeploymentCustomizationAppendTolerationArgs:
     @property
     @pulumi.getter
     def effect(self) -> Optional[pulumi.Input[str]]:
+        """
+        The GKE taint effect (string)
+        """
         return pulumi.get(self, "effect")
 
     @effect.setter
@@ -4101,6 +4182,9 @@ class ClusterFleetAgentDeploymentCustomizationAppendTolerationArgs:
     @property
     @pulumi.getter
     def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+        """
         return pulumi.get(self, "operator")
 
     @operator.setter
@@ -4110,6 +4194,9 @@ class ClusterFleetAgentDeploymentCustomizationAppendTolerationArgs:
     @property
     @pulumi.getter
     def seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        The toleration seconds (int)
+        """
         return pulumi.get(self, "seconds")
 
     @seconds.setter
@@ -4119,6 +4206,9 @@ class ClusterFleetAgentDeploymentCustomizationAppendTolerationArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The GKE taint value (string)
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -6012,6 +6102,11 @@ class ClusterGkeConfigV2NodePoolConfigTaintArgs:
                  effect: pulumi.Input[str],
                  key: pulumi.Input[str],
                  value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] effect: The GKE taint effect (string)
+        :param pulumi.Input[str] key: The GKE taint key (string)
+        :param pulumi.Input[str] value: The GKE taint value (string)
+        """
         pulumi.set(__self__, "effect", effect)
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
@@ -6019,6 +6114,9 @@ class ClusterGkeConfigV2NodePoolConfigTaintArgs:
     @property
     @pulumi.getter
     def effect(self) -> pulumi.Input[str]:
+        """
+        The GKE taint effect (string)
+        """
         return pulumi.get(self, "effect")
 
     @effect.setter
@@ -6028,6 +6126,9 @@ class ClusterGkeConfigV2NodePoolConfigTaintArgs:
     @property
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
+        """
+        The GKE taint key (string)
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -6037,6 +6138,9 @@ class ClusterGkeConfigV2NodePoolConfigTaintArgs:
     @property
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
+        """
+        The GKE taint value (string)
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -6900,6 +7004,8 @@ class ClusterRkeConfigArgs:
         :param pulumi.Input['ClusterRkeConfigAuthenticationArgs'] authentication: Kubernetes cluster authentication
         :param pulumi.Input['ClusterRkeConfigAuthorizationArgs'] authorization: Kubernetes cluster authorization
         :param pulumi.Input['ClusterRkeConfigBastionHostArgs'] bastion_host: RKE bastion host
+        :param pulumi.Input['ClusterRkeConfigCloudProviderArgs'] cloud_provider: RKE options for Calico network provider (string)
+        :param pulumi.Input['ClusterRkeConfigDnsArgs'] dns: RKE dns add-on. For Rancher v2.2.x (list maxitems:1)
         :param pulumi.Input[bool] enable_cri_dockerd: Enable/disable using cri-dockerd
         :param pulumi.Input[bool] ignore_docker_version: Optional ignore docker version on nodes
         :param pulumi.Input['ClusterRkeConfigIngressArgs'] ingress: Kubernetes ingress configuration
@@ -7038,6 +7144,9 @@ class ClusterRkeConfigArgs:
     @property
     @pulumi.getter(name="cloudProvider")
     def cloud_provider(self) -> Optional[pulumi.Input['ClusterRkeConfigCloudProviderArgs']]:
+        """
+        RKE options for Calico network provider (string)
+        """
         return pulumi.get(self, "cloud_provider")
 
     @cloud_provider.setter
@@ -7047,6 +7156,9 @@ class ClusterRkeConfigArgs:
     @property
     @pulumi.getter
     def dns(self) -> Optional[pulumi.Input['ClusterRkeConfigDnsArgs']]:
+        """
+        RKE dns add-on. For Rancher v2.2.x (list maxitems:1)
+        """
         return pulumi.get(self, "dns")
 
     @dns.setter
@@ -7239,6 +7351,10 @@ class ClusterRkeConfigAuthenticationArgs:
     def __init__(__self__, *,
                  sans: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  strategy: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] sans: RKE sans for authentication ([]string)
+        :param pulumi.Input[str] strategy: Monitoring deployment update strategy (string)
+        """
         if sans is not None:
             pulumi.set(__self__, "sans", sans)
         if strategy is not None:
@@ -7247,6 +7363,9 @@ class ClusterRkeConfigAuthenticationArgs:
     @property
     @pulumi.getter
     def sans(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        RKE sans for authentication ([]string)
+        """
         return pulumi.get(self, "sans")
 
     @sans.setter
@@ -7256,6 +7375,9 @@ class ClusterRkeConfigAuthenticationArgs:
     @property
     @pulumi.getter
     def strategy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Monitoring deployment update strategy (string)
+        """
         return pulumi.get(self, "strategy")
 
     @strategy.setter
@@ -7268,6 +7390,10 @@ class ClusterRkeConfigAuthorizationArgs:
     def __init__(__self__, *,
                  mode: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        :param pulumi.Input[str] mode: The AKS node group mode. Default: `System` (string)
+        :param pulumi.Input[Mapping[str, Any]] options: RKE options for network (map)
+        """
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
         if options is not None:
@@ -7276,6 +7402,9 @@ class ClusterRkeConfigAuthorizationArgs:
     @property
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The AKS node group mode. Default: `System` (string)
+        """
         return pulumi.get(self, "mode")
 
     @mode.setter
@@ -7285,6 +7414,9 @@ class ClusterRkeConfigAuthorizationArgs:
     @property
     @pulumi.getter
     def options(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        RKE options for network (map)
+        """
         return pulumi.get(self, "options")
 
     @options.setter
@@ -7301,6 +7433,14 @@ class ClusterRkeConfigBastionHostArgs:
                  ssh_agent_auth: Optional[pulumi.Input[bool]] = None,
                  ssh_key: Optional[pulumi.Input[str]] = None,
                  ssh_key_path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] address: Address ip for node (string)
+        :param pulumi.Input[str] user: Registry user (string)
+        :param pulumi.Input[str] port: Port for node. Default `22` (string)
+        :param pulumi.Input[bool] ssh_agent_auth: Use ssh agent auth. Default `false` (bool)
+        :param pulumi.Input[str] ssh_key: Node SSH private key (string)
+        :param pulumi.Input[str] ssh_key_path: Node SSH private key path (string)
+        """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "user", user)
         if port is not None:
@@ -7315,6 +7455,9 @@ class ClusterRkeConfigBastionHostArgs:
     @property
     @pulumi.getter
     def address(self) -> pulumi.Input[str]:
+        """
+        Address ip for node (string)
+        """
         return pulumi.get(self, "address")
 
     @address.setter
@@ -7324,6 +7467,9 @@ class ClusterRkeConfigBastionHostArgs:
     @property
     @pulumi.getter
     def user(self) -> pulumi.Input[str]:
+        """
+        Registry user (string)
+        """
         return pulumi.get(self, "user")
 
     @user.setter
@@ -7333,6 +7479,9 @@ class ClusterRkeConfigBastionHostArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[str]]:
+        """
+        Port for node. Default `22` (string)
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -7342,6 +7491,9 @@ class ClusterRkeConfigBastionHostArgs:
     @property
     @pulumi.getter(name="sshAgentAuth")
     def ssh_agent_auth(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Use ssh agent auth. Default `false` (bool)
+        """
         return pulumi.get(self, "ssh_agent_auth")
 
     @ssh_agent_auth.setter
@@ -7351,6 +7503,9 @@ class ClusterRkeConfigBastionHostArgs:
     @property
     @pulumi.getter(name="sshKey")
     def ssh_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Node SSH private key (string)
+        """
         return pulumi.get(self, "ssh_key")
 
     @ssh_key.setter
@@ -7360,6 +7515,9 @@ class ClusterRkeConfigBastionHostArgs:
     @property
     @pulumi.getter(name="sshKeyPath")
     def ssh_key_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Node SSH private key path (string)
+        """
         return pulumi.get(self, "ssh_key_path")
 
     @ssh_key_path.setter
@@ -7377,7 +7535,12 @@ class ClusterRkeConfigCloudProviderArgs:
                  openstack_cloud_provider: Optional[pulumi.Input['ClusterRkeConfigCloudProviderOpenstackCloudProviderArgs']] = None,
                  vsphere_cloud_provider: Optional[pulumi.Input['ClusterRkeConfigCloudProviderVsphereCloudProviderArgs']] = None):
         """
+        :param pulumi.Input['ClusterRkeConfigCloudProviderAwsCloudProviderArgs'] aws_cloud_provider: RKE AWS Cloud Provider config for Cloud Provider [rke-aws-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/aws/) (list maxitems:1)
+        :param pulumi.Input['ClusterRkeConfigCloudProviderAzureCloudProviderArgs'] azure_cloud_provider: RKE Azure Cloud Provider config for Cloud Provider [rke-azure-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/azure/) (list maxitems:1)
+        :param pulumi.Input[str] custom_cloud_provider: RKE Custom Cloud Provider config for Cloud Provider (string)
         :param pulumi.Input[str] name: The name of the Cluster (string)
+        :param pulumi.Input['ClusterRkeConfigCloudProviderOpenstackCloudProviderArgs'] openstack_cloud_provider: RKE Openstack Cloud Provider config for Cloud Provider [rke-openstack-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/openstack/) (list maxitems:1)
+        :param pulumi.Input['ClusterRkeConfigCloudProviderVsphereCloudProviderArgs'] vsphere_cloud_provider: RKE Vsphere Cloud Provider config for Cloud Provider [rke-vsphere-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/vsphere/) Extra argument `name` is required on `virtual_center` configuration. (list maxitems:1)
         """
         if aws_cloud_provider is not None:
             pulumi.set(__self__, "aws_cloud_provider", aws_cloud_provider)
@@ -7395,6 +7558,9 @@ class ClusterRkeConfigCloudProviderArgs:
     @property
     @pulumi.getter(name="awsCloudProvider")
     def aws_cloud_provider(self) -> Optional[pulumi.Input['ClusterRkeConfigCloudProviderAwsCloudProviderArgs']]:
+        """
+        RKE AWS Cloud Provider config for Cloud Provider [rke-aws-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/aws/) (list maxitems:1)
+        """
         return pulumi.get(self, "aws_cloud_provider")
 
     @aws_cloud_provider.setter
@@ -7404,6 +7570,9 @@ class ClusterRkeConfigCloudProviderArgs:
     @property
     @pulumi.getter(name="azureCloudProvider")
     def azure_cloud_provider(self) -> Optional[pulumi.Input['ClusterRkeConfigCloudProviderAzureCloudProviderArgs']]:
+        """
+        RKE Azure Cloud Provider config for Cloud Provider [rke-azure-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/azure/) (list maxitems:1)
+        """
         return pulumi.get(self, "azure_cloud_provider")
 
     @azure_cloud_provider.setter
@@ -7413,6 +7582,9 @@ class ClusterRkeConfigCloudProviderArgs:
     @property
     @pulumi.getter(name="customCloudProvider")
     def custom_cloud_provider(self) -> Optional[pulumi.Input[str]]:
+        """
+        RKE Custom Cloud Provider config for Cloud Provider (string)
+        """
         return pulumi.get(self, "custom_cloud_provider")
 
     @custom_cloud_provider.setter
@@ -7434,6 +7606,9 @@ class ClusterRkeConfigCloudProviderArgs:
     @property
     @pulumi.getter(name="openstackCloudProvider")
     def openstack_cloud_provider(self) -> Optional[pulumi.Input['ClusterRkeConfigCloudProviderOpenstackCloudProviderArgs']]:
+        """
+        RKE Openstack Cloud Provider config for Cloud Provider [rke-openstack-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/openstack/) (list maxitems:1)
+        """
         return pulumi.get(self, "openstack_cloud_provider")
 
     @openstack_cloud_provider.setter
@@ -7443,6 +7618,9 @@ class ClusterRkeConfigCloudProviderArgs:
     @property
     @pulumi.getter(name="vsphereCloudProvider")
     def vsphere_cloud_provider(self) -> Optional[pulumi.Input['ClusterRkeConfigCloudProviderVsphereCloudProviderArgs']]:
+        """
+        RKE Vsphere Cloud Provider config for Cloud Provider [rke-vsphere-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/vsphere/) Extra argument `name` is required on `virtual_center` configuration. (list maxitems:1)
+        """
         return pulumi.get(self, "vsphere_cloud_provider")
 
     @vsphere_cloud_provider.setter
@@ -7455,6 +7633,10 @@ class ClusterRkeConfigCloudProviderAwsCloudProviderArgs:
     def __init__(__self__, *,
                  global_: Optional[pulumi.Input['ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs']] = None,
                  service_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs']]]] = None):
+        """
+        :param pulumi.Input['ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs'] global_: (list maxitems:1)
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs']]] service_overrides: (list)
+        """
         if global_ is not None:
             pulumi.set(__self__, "global_", global_)
         if service_overrides is not None:
@@ -7463,6 +7645,9 @@ class ClusterRkeConfigCloudProviderAwsCloudProviderArgs:
     @property
     @pulumi.getter(name="global")
     def global_(self) -> Optional[pulumi.Input['ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs']]:
+        """
+        (list maxitems:1)
+        """
         return pulumi.get(self, "global_")
 
     @global_.setter
@@ -7472,6 +7657,9 @@ class ClusterRkeConfigCloudProviderAwsCloudProviderArgs:
     @property
     @pulumi.getter(name="serviceOverrides")
     def service_overrides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs']]]]:
+        """
+        (list)
+        """
         return pulumi.get(self, "service_overrides")
 
     @service_overrides.setter
@@ -7492,6 +7680,18 @@ class ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs:
                  subnet_id: Optional[pulumi.Input[str]] = None,
                  vpc: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] disable_security_group_ingress: Default `false` (bool)
+        :param pulumi.Input[bool] disable_strict_zone_check: Default `false` (bool)
+        :param pulumi.Input[str] elb_security_group: (string)
+        :param pulumi.Input[str] kubernetes_cluster_id: (string)
+        :param pulumi.Input[str] kubernetes_cluster_tag: (string)
+        :param pulumi.Input[str] role_arn: (string)
+        :param pulumi.Input[str] route_table_id: (string)
+        :param pulumi.Input[str] subnet_id: (string)
+        :param pulumi.Input[str] vpc: (string)
+        :param pulumi.Input[str] zone: The GKE cluster zone. Required if `region` not set (string)
+        """
         if disable_security_group_ingress is not None:
             pulumi.set(__self__, "disable_security_group_ingress", disable_security_group_ingress)
         if disable_strict_zone_check is not None:
@@ -7516,6 +7716,9 @@ class ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs:
     @property
     @pulumi.getter(name="disableSecurityGroupIngress")
     def disable_security_group_ingress(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Default `false` (bool)
+        """
         return pulumi.get(self, "disable_security_group_ingress")
 
     @disable_security_group_ingress.setter
@@ -7525,6 +7728,9 @@ class ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs:
     @property
     @pulumi.getter(name="disableStrictZoneCheck")
     def disable_strict_zone_check(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Default `false` (bool)
+        """
         return pulumi.get(self, "disable_strict_zone_check")
 
     @disable_strict_zone_check.setter
@@ -7534,6 +7740,9 @@ class ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs:
     @property
     @pulumi.getter(name="elbSecurityGroup")
     def elb_security_group(self) -> Optional[pulumi.Input[str]]:
+        """
+        (string)
+        """
         return pulumi.get(self, "elb_security_group")
 
     @elb_security_group.setter
@@ -7543,6 +7752,9 @@ class ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs:
     @property
     @pulumi.getter(name="kubernetesClusterId")
     def kubernetes_cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (string)
+        """
         return pulumi.get(self, "kubernetes_cluster_id")
 
     @kubernetes_cluster_id.setter
@@ -7552,6 +7764,9 @@ class ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs:
     @property
     @pulumi.getter(name="kubernetesClusterTag")
     def kubernetes_cluster_tag(self) -> Optional[pulumi.Input[str]]:
+        """
+        (string)
+        """
         return pulumi.get(self, "kubernetes_cluster_tag")
 
     @kubernetes_cluster_tag.setter
@@ -7561,6 +7776,9 @@ class ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        (string)
+        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -7570,6 +7788,9 @@ class ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs:
     @property
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (string)
+        """
         return pulumi.get(self, "route_table_id")
 
     @route_table_id.setter
@@ -7579,6 +7800,9 @@ class ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs:
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (string)
+        """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
@@ -7588,6 +7812,9 @@ class ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs:
     @property
     @pulumi.getter
     def vpc(self) -> Optional[pulumi.Input[str]]:
+        """
+        (string)
+        """
         return pulumi.get(self, "vpc")
 
     @vpc.setter
@@ -7597,6 +7824,9 @@ class ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs:
     @property
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The GKE cluster zone. Required if `region` not set (string)
+        """
         return pulumi.get(self, "zone")
 
     @zone.setter
@@ -7613,6 +7843,14 @@ class ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs:
                  signing_name: Optional[pulumi.Input[str]] = None,
                  signing_region: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] service: (string)
+        :param pulumi.Input[str] region: The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+        :param pulumi.Input[str] signing_method: (string)
+        :param pulumi.Input[str] signing_name: (string)
+        :param pulumi.Input[str] signing_region: (string)
+        :param pulumi.Input[str] url: Registry URL (string)
+        """
         pulumi.set(__self__, "service", service)
         if region is not None:
             pulumi.set(__self__, "region", region)
@@ -7628,6 +7866,9 @@ class ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs:
     @property
     @pulumi.getter
     def service(self) -> pulumi.Input[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "service")
 
     @service.setter
@@ -7637,6 +7878,9 @@ class ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -7646,6 +7890,9 @@ class ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs:
     @property
     @pulumi.getter(name="signingMethod")
     def signing_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        (string)
+        """
         return pulumi.get(self, "signing_method")
 
     @signing_method.setter
@@ -7655,6 +7902,9 @@ class ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs:
     @property
     @pulumi.getter(name="signingName")
     def signing_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        (string)
+        """
         return pulumi.get(self, "signing_name")
 
     @signing_name.setter
@@ -7664,6 +7914,9 @@ class ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs:
     @property
     @pulumi.getter(name="signingRegion")
     def signing_region(self) -> Optional[pulumi.Input[str]]:
+        """
+        (string)
+        """
         return pulumi.get(self, "signing_region")
 
     @signing_region.setter
@@ -7673,6 +7926,9 @@ class ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs:
     @property
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        Registry URL (string)
+        """
         return pulumi.get(self, "url")
 
     @url.setter
@@ -7713,7 +7969,35 @@ class ClusterRkeConfigCloudProviderAzureCloudProviderArgs:
                  vnet_name: Optional[pulumi.Input[str]] = None,
                  vnet_resource_group: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] aad_client_id: (string)
+        :param pulumi.Input[str] aad_client_secret: (string)
+        :param pulumi.Input[str] subscription_id: Subscription credentials which uniquely identify Microsoft Azure subscription (string)
+        :param pulumi.Input[str] tenant_id: Azure tenant ID to use (string)
+        :param pulumi.Input[str] aad_client_cert_password: (string)
+        :param pulumi.Input[str] aad_client_cert_path: (string)
+        :param pulumi.Input[str] cloud: (string)
+        :param pulumi.Input[bool] cloud_provider_backoff: (bool)
+        :param pulumi.Input[int] cloud_provider_backoff_duration: (int)
+        :param pulumi.Input[int] cloud_provider_backoff_exponent: (int)
+        :param pulumi.Input[int] cloud_provider_backoff_jitter: (int)
+        :param pulumi.Input[int] cloud_provider_backoff_retries: (int)
+        :param pulumi.Input[bool] cloud_provider_rate_limit: (bool)
+        :param pulumi.Input[int] cloud_provider_rate_limit_bucket: (int)
+        :param pulumi.Input[int] cloud_provider_rate_limit_qps: (int)
         :param pulumi.Input[str] load_balancer_sku: Load balancer type (basic | standard). Must be standard for auto-scaling
+        :param pulumi.Input[str] location: Azure Kubernetes cluster location. Default `eastus` (string)
+        :param pulumi.Input[int] maximum_load_balancer_rule_count: (int)
+        :param pulumi.Input[str] primary_availability_set_name: (string)
+        :param pulumi.Input[str] primary_scale_set_name: (string)
+        :param pulumi.Input[str] resource_group: The AKS resource group (string)
+        :param pulumi.Input[str] route_table_name: (string)
+        :param pulumi.Input[str] security_group_name: (string)
+        :param pulumi.Input[str] subnet_name: (string)
+        :param pulumi.Input[bool] use_instance_metadata: (bool)
+        :param pulumi.Input[bool] use_managed_identity_extension: (bool)
+        :param pulumi.Input[str] vm_type: (string)
+        :param pulumi.Input[str] vnet_name: (string)
+        :param pulumi.Input[str] vnet_resource_group: (string)
         """
         pulumi.set(__self__, "aad_client_id", aad_client_id)
         pulumi.set(__self__, "aad_client_secret", aad_client_secret)
@@ -7773,6 +8057,9 @@ class ClusterRkeConfigCloudProviderAzureCloudProviderArgs:
     @property
     @pulumi.getter(name="aadClientId")
     def aad_client_id(self) -> pulumi.Input[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "aad_client_id")
 
     @aad_client_id.setter
@@ -7782,6 +8069,9 @@ class ClusterRkeConfigCloudProviderAzureCloudProviderArgs:
     @property
     @pulumi.getter(name="aadClientSecret")
     def aad_client_secret(self) -> pulumi.Input[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "aad_client_secret")
 
     @aad_client_secret.setter
@@ -7791,6 +8081,9 @@ class ClusterRkeConfigCloudProviderAzureCloudProviderArgs:
     @property
     @pulumi.getter(name="subscriptionId")
     def subscription_id(self) -> pulumi.Input[str]:
+        """
+        Subscription credentials which uniquely identify Microsoft Azure subscription (string)
+        """
         return pulumi.get(self, "subscription_id")
 
     @subscription_id.setter
@@ -7800,6 +8093,9 @@ class ClusterRkeConfigCloudProviderAzureCloudProviderArgs:
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> pulumi.Input[str]:
+        """
+        Azure tenant ID to use (string)
+        """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
@@ -7809,6 +8105,9 @@ class ClusterRkeConfigCloudProviderAzureCloudProviderArgs:
     @property
     @pulumi.getter(name="aadClientCertPassword")
     def aad_client_cert_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        (string)
+        """
         return pulumi.get(self, "aad_client_cert_password")
 
     @aad_client_cert_password.setter
@@ -7818,6 +8117,9 @@ class ClusterRkeConfigCloudProviderAzureCloudProviderArgs:
     @property
     @pulumi.getter(name="aadClientCertPath")
     def aad_client_cert_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        (string)
+        """
         return pulumi.get(self, "aad_client_cert_path")
 
     @aad_client_cert_path.setter
@@ -7827,6 +8129,9 @@ class ClusterRkeConfigCloudProviderAzureCloudProviderArgs:
     @property
     @pulumi.getter
     def cloud(self) -> Optional[pulumi.Input[str]]:
+        """
+        (string)
+        """
         return pulumi.get(self, "cloud")
 
     @cloud.setter
@@ -7836,6 +8141,9 @@ class ClusterRkeConfigCloudProviderAzureCloudProviderArgs:
     @property
     @pulumi.getter(name="cloudProviderBackoff")
     def cloud_provider_backoff(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (bool)
+        """
         return pulumi.get(self, "cloud_provider_backoff")
 
     @cloud_provider_backoff.setter
@@ -7845,6 +8153,9 @@ class ClusterRkeConfigCloudProviderAzureCloudProviderArgs:
     @property
     @pulumi.getter(name="cloudProviderBackoffDuration")
     def cloud_provider_backoff_duration(self) -> Optional[pulumi.Input[int]]:
+        """
+        (int)
+        """
         return pulumi.get(self, "cloud_provider_backoff_duration")
 
     @cloud_provider_backoff_duration.setter
@@ -7854,6 +8165,9 @@ class ClusterRkeConfigCloudProviderAzureCloudProviderArgs:
     @property
     @pulumi.getter(name="cloudProviderBackoffExponent")
     def cloud_provider_backoff_exponent(self) -> Optional[pulumi.Input[int]]:
+        """
+        (int)
+        """
         return pulumi.get(self, "cloud_provider_backoff_exponent")
 
     @cloud_provider_backoff_exponent.setter
@@ -7863,6 +8177,9 @@ class ClusterRkeConfigCloudProviderAzureCloudProviderArgs:
     @property
     @pulumi.getter(name="cloudProviderBackoffJitter")
     def cloud_provider_backoff_jitter(self) -> Optional[pulumi.Input[int]]:
+        """
+        (int)
+        """
         return pulumi.get(self, "cloud_provider_backoff_jitter")
 
     @cloud_provider_backoff_jitter.setter
@@ -7872,6 +8189,9 @@ class ClusterRkeConfigCloudProviderAzureCloudProviderArgs:
     @property
     @pulumi.getter(name="cloudProviderBackoffRetries")
     def cloud_provider_backoff_retries(self) -> Optional[pulumi.Input[int]]:
+        """
+        (int)
+        """
         return pulumi.get(self, "cloud_provider_backoff_retries")
 
     @cloud_provider_backoff_retries.setter
@@ -7881,6 +8201,9 @@ class ClusterRkeConfigCloudProviderAzureCloudProviderArgs:
     @property
     @pulumi.getter(name="cloudProviderRateLimit")
     def cloud_provider_rate_limit(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (bool)
+        """
         return pulumi.get(self, "cloud_provider_rate_limit")
 
     @cloud_provider_rate_limit.setter
@@ -7890,6 +8213,9 @@ class ClusterRkeConfigCloudProviderAzureCloudProviderArgs:
     @property
     @pulumi.getter(name="cloudProviderRateLimitBucket")
     def cloud_provider_rate_limit_bucket(self) -> Optional[pulumi.Input[int]]:
+        """
+        (int)
+        """
         return pulumi.get(self, "cloud_provider_rate_limit_bucket")
 
     @cloud_provider_rate_limit_bucket.setter
@@ -7899,6 +8225,9 @@ class ClusterRkeConfigCloudProviderAzureCloudProviderArgs:
     @property
     @pulumi.getter(name="cloudProviderRateLimitQps")
     def cloud_provider_rate_limit_qps(self) -> Optional[pulumi.Input[int]]:
+        """
+        (int)
+        """
         return pulumi.get(self, "cloud_provider_rate_limit_qps")
 
     @cloud_provider_rate_limit_qps.setter
@@ -7920,6 +8249,9 @@ class ClusterRkeConfigCloudProviderAzureCloudProviderArgs:
     @property
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Azure Kubernetes cluster location. Default `eastus` (string)
+        """
         return pulumi.get(self, "location")
 
     @location.setter
@@ -7929,6 +8261,9 @@ class ClusterRkeConfigCloudProviderAzureCloudProviderArgs:
     @property
     @pulumi.getter(name="maximumLoadBalancerRuleCount")
     def maximum_load_balancer_rule_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        (int)
+        """
         return pulumi.get(self, "maximum_load_balancer_rule_count")
 
     @maximum_load_balancer_rule_count.setter
@@ -7938,6 +8273,9 @@ class ClusterRkeConfigCloudProviderAzureCloudProviderArgs:
     @property
     @pulumi.getter(name="primaryAvailabilitySetName")
     def primary_availability_set_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        (string)
+        """
         return pulumi.get(self, "primary_availability_set_name")
 
     @primary_availability_set_name.setter
@@ -7947,6 +8285,9 @@ class ClusterRkeConfigCloudProviderAzureCloudProviderArgs:
     @property
     @pulumi.getter(name="primaryScaleSetName")
     def primary_scale_set_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        (string)
+        """
         return pulumi.get(self, "primary_scale_set_name")
 
     @primary_scale_set_name.setter
@@ -7956,6 +8297,9 @@ class ClusterRkeConfigCloudProviderAzureCloudProviderArgs:
     @property
     @pulumi.getter(name="resourceGroup")
     def resource_group(self) -> Optional[pulumi.Input[str]]:
+        """
+        The AKS resource group (string)
+        """
         return pulumi.get(self, "resource_group")
 
     @resource_group.setter
@@ -7965,6 +8309,9 @@ class ClusterRkeConfigCloudProviderAzureCloudProviderArgs:
     @property
     @pulumi.getter(name="routeTableName")
     def route_table_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        (string)
+        """
         return pulumi.get(self, "route_table_name")
 
     @route_table_name.setter
@@ -7974,6 +8321,9 @@ class ClusterRkeConfigCloudProviderAzureCloudProviderArgs:
     @property
     @pulumi.getter(name="securityGroupName")
     def security_group_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        (string)
+        """
         return pulumi.get(self, "security_group_name")
 
     @security_group_name.setter
@@ -7983,6 +8333,9 @@ class ClusterRkeConfigCloudProviderAzureCloudProviderArgs:
     @property
     @pulumi.getter(name="subnetName")
     def subnet_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        (string)
+        """
         return pulumi.get(self, "subnet_name")
 
     @subnet_name.setter
@@ -7992,6 +8345,9 @@ class ClusterRkeConfigCloudProviderAzureCloudProviderArgs:
     @property
     @pulumi.getter(name="useInstanceMetadata")
     def use_instance_metadata(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (bool)
+        """
         return pulumi.get(self, "use_instance_metadata")
 
     @use_instance_metadata.setter
@@ -8001,6 +8357,9 @@ class ClusterRkeConfigCloudProviderAzureCloudProviderArgs:
     @property
     @pulumi.getter(name="useManagedIdentityExtension")
     def use_managed_identity_extension(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (bool)
+        """
         return pulumi.get(self, "use_managed_identity_extension")
 
     @use_managed_identity_extension.setter
@@ -8010,6 +8369,9 @@ class ClusterRkeConfigCloudProviderAzureCloudProviderArgs:
     @property
     @pulumi.getter(name="vmType")
     def vm_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        (string)
+        """
         return pulumi.get(self, "vm_type")
 
     @vm_type.setter
@@ -8019,6 +8381,9 @@ class ClusterRkeConfigCloudProviderAzureCloudProviderArgs:
     @property
     @pulumi.getter(name="vnetName")
     def vnet_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        (string)
+        """
         return pulumi.get(self, "vnet_name")
 
     @vnet_name.setter
@@ -8028,6 +8393,9 @@ class ClusterRkeConfigCloudProviderAzureCloudProviderArgs:
     @property
     @pulumi.getter(name="vnetResourceGroup")
     def vnet_resource_group(self) -> Optional[pulumi.Input[str]]:
+        """
+        (string)
+        """
         return pulumi.get(self, "vnet_resource_group")
 
     @vnet_resource_group.setter
@@ -8043,6 +8411,13 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderArgs:
                  load_balancer: Optional[pulumi.Input['ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs']] = None,
                  metadata: Optional[pulumi.Input['ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs']] = None,
                  route: Optional[pulumi.Input['ClusterRkeConfigCloudProviderOpenstackCloudProviderRouteArgs']] = None):
+        """
+        :param pulumi.Input['ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs'] global_: (list maxitems:1)
+        :param pulumi.Input['ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs'] block_storage: (list maxitems:1)
+        :param pulumi.Input['ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs'] load_balancer: (list maxitems:1)
+        :param pulumi.Input['ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs'] metadata: (list maxitems:1)
+        :param pulumi.Input['ClusterRkeConfigCloudProviderOpenstackCloudProviderRouteArgs'] route: (list maxitems:1)
+        """
         pulumi.set(__self__, "global_", global_)
         if block_storage is not None:
             pulumi.set(__self__, "block_storage", block_storage)
@@ -8056,6 +8431,9 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderArgs:
     @property
     @pulumi.getter(name="global")
     def global_(self) -> pulumi.Input['ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs']:
+        """
+        (list maxitems:1)
+        """
         return pulumi.get(self, "global_")
 
     @global_.setter
@@ -8065,6 +8443,9 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderArgs:
     @property
     @pulumi.getter(name="blockStorage")
     def block_storage(self) -> Optional[pulumi.Input['ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs']]:
+        """
+        (list maxitems:1)
+        """
         return pulumi.get(self, "block_storage")
 
     @block_storage.setter
@@ -8074,6 +8455,9 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderArgs:
     @property
     @pulumi.getter(name="loadBalancer")
     def load_balancer(self) -> Optional[pulumi.Input['ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs']]:
+        """
+        (list maxitems:1)
+        """
         return pulumi.get(self, "load_balancer")
 
     @load_balancer.setter
@@ -8083,6 +8467,9 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderArgs:
     @property
     @pulumi.getter
     def metadata(self) -> Optional[pulumi.Input['ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs']]:
+        """
+        (list maxitems:1)
+        """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
@@ -8092,6 +8479,9 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderArgs:
     @property
     @pulumi.getter
     def route(self) -> Optional[pulumi.Input['ClusterRkeConfigCloudProviderOpenstackCloudProviderRouteArgs']]:
+        """
+        (list maxitems:1)
+        """
         return pulumi.get(self, "route")
 
     @route.setter
@@ -8105,6 +8495,11 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs:
                  bs_version: Optional[pulumi.Input[str]] = None,
                  ignore_volume_az: Optional[pulumi.Input[bool]] = None,
                  trust_device_path: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] bs_version: (string)
+        :param pulumi.Input[bool] ignore_volume_az: (string)
+        :param pulumi.Input[bool] trust_device_path: (string)
+        """
         if bs_version is not None:
             pulumi.set(__self__, "bs_version", bs_version)
         if ignore_volume_az is not None:
@@ -8115,6 +8510,9 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs:
     @property
     @pulumi.getter(name="bsVersion")
     def bs_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        (string)
+        """
         return pulumi.get(self, "bs_version")
 
     @bs_version.setter
@@ -8124,6 +8522,9 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs:
     @property
     @pulumi.getter(name="ignoreVolumeAz")
     def ignore_volume_az(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (string)
+        """
         return pulumi.get(self, "ignore_volume_az")
 
     @ignore_volume_az.setter
@@ -8133,6 +8534,9 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs:
     @property
     @pulumi.getter(name="trustDevicePath")
     def trust_device_path(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (string)
+        """
         return pulumi.get(self, "trust_device_path")
 
     @trust_device_path.setter
@@ -8153,6 +8557,18 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs:
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  tenant_name: Optional[pulumi.Input[str]] = None,
                  trust_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] auth_url: (string)
+        :param pulumi.Input[str] password: Registry password (string)
+        :param pulumi.Input[str] username: (string)
+        :param pulumi.Input[str] ca_file: (string)
+        :param pulumi.Input[str] domain_id: Required if `domain_name` not provided. (string)
+        :param pulumi.Input[str] domain_name: Required if `domain_id` not provided. (string)
+        :param pulumi.Input[str] region: The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+        :param pulumi.Input[str] tenant_id: Azure tenant ID to use (string)
+        :param pulumi.Input[str] tenant_name: Required if `tenant_id` not provided. (string)
+        :param pulumi.Input[str] trust_id: (string)
+        """
         pulumi.set(__self__, "auth_url", auth_url)
         pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "username", username)
@@ -8174,6 +8590,9 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs:
     @property
     @pulumi.getter(name="authUrl")
     def auth_url(self) -> pulumi.Input[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "auth_url")
 
     @auth_url.setter
@@ -8183,6 +8602,9 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs:
     @property
     @pulumi.getter
     def password(self) -> pulumi.Input[str]:
+        """
+        Registry password (string)
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -8192,6 +8614,9 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs:
     @property
     @pulumi.getter
     def username(self) -> pulumi.Input[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -8201,6 +8626,9 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs:
     @property
     @pulumi.getter(name="caFile")
     def ca_file(self) -> Optional[pulumi.Input[str]]:
+        """
+        (string)
+        """
         return pulumi.get(self, "ca_file")
 
     @ca_file.setter
@@ -8210,6 +8638,9 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs:
     @property
     @pulumi.getter(name="domainId")
     def domain_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required if `domain_name` not provided. (string)
+        """
         return pulumi.get(self, "domain_id")
 
     @domain_id.setter
@@ -8219,6 +8650,9 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs:
     @property
     @pulumi.getter(name="domainName")
     def domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required if `domain_id` not provided. (string)
+        """
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
@@ -8228,6 +8662,9 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -8237,6 +8674,9 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs:
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Azure tenant ID to use (string)
+        """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
@@ -8246,6 +8686,9 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs:
     @property
     @pulumi.getter(name="tenantName")
     def tenant_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required if `tenant_id` not provided. (string)
+        """
         return pulumi.get(self, "tenant_name")
 
     @tenant_name.setter
@@ -8255,6 +8698,9 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs:
     @property
     @pulumi.getter(name="trustId")
     def trust_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (string)
+        """
         return pulumi.get(self, "trust_id")
 
     @trust_id.setter
@@ -8276,6 +8722,19 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs:
                  monitor_timeout: Optional[pulumi.Input[str]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None,
                  use_octavia: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] create_monitor: (bool)
+        :param pulumi.Input[str] floating_network_id: (string)
+        :param pulumi.Input[str] lb_method: (string)
+        :param pulumi.Input[str] lb_provider: (string)
+        :param pulumi.Input[str] lb_version: (string)
+        :param pulumi.Input[bool] manage_security_groups: (bool)
+        :param pulumi.Input[str] monitor_delay: Default `60s` (string)
+        :param pulumi.Input[int] monitor_max_retries: Default 5 (int)
+        :param pulumi.Input[str] monitor_timeout: Default `30s` (string)
+        :param pulumi.Input[str] subnet_id: (string)
+        :param pulumi.Input[bool] use_octavia: (bool)
+        """
         if create_monitor is not None:
             pulumi.set(__self__, "create_monitor", create_monitor)
         if floating_network_id is not None:
@@ -8302,6 +8761,9 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs:
     @property
     @pulumi.getter(name="createMonitor")
     def create_monitor(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (bool)
+        """
         return pulumi.get(self, "create_monitor")
 
     @create_monitor.setter
@@ -8311,6 +8773,9 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs:
     @property
     @pulumi.getter(name="floatingNetworkId")
     def floating_network_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (string)
+        """
         return pulumi.get(self, "floating_network_id")
 
     @floating_network_id.setter
@@ -8320,6 +8785,9 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs:
     @property
     @pulumi.getter(name="lbMethod")
     def lb_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        (string)
+        """
         return pulumi.get(self, "lb_method")
 
     @lb_method.setter
@@ -8329,6 +8797,9 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs:
     @property
     @pulumi.getter(name="lbProvider")
     def lb_provider(self) -> Optional[pulumi.Input[str]]:
+        """
+        (string)
+        """
         return pulumi.get(self, "lb_provider")
 
     @lb_provider.setter
@@ -8338,6 +8809,9 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs:
     @property
     @pulumi.getter(name="lbVersion")
     def lb_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        (string)
+        """
         return pulumi.get(self, "lb_version")
 
     @lb_version.setter
@@ -8347,6 +8821,9 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs:
     @property
     @pulumi.getter(name="manageSecurityGroups")
     def manage_security_groups(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (bool)
+        """
         return pulumi.get(self, "manage_security_groups")
 
     @manage_security_groups.setter
@@ -8356,6 +8833,9 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs:
     @property
     @pulumi.getter(name="monitorDelay")
     def monitor_delay(self) -> Optional[pulumi.Input[str]]:
+        """
+        Default `60s` (string)
+        """
         return pulumi.get(self, "monitor_delay")
 
     @monitor_delay.setter
@@ -8365,6 +8845,9 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs:
     @property
     @pulumi.getter(name="monitorMaxRetries")
     def monitor_max_retries(self) -> Optional[pulumi.Input[int]]:
+        """
+        Default 5 (int)
+        """
         return pulumi.get(self, "monitor_max_retries")
 
     @monitor_max_retries.setter
@@ -8374,6 +8857,9 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs:
     @property
     @pulumi.getter(name="monitorTimeout")
     def monitor_timeout(self) -> Optional[pulumi.Input[str]]:
+        """
+        Default `30s` (string)
+        """
         return pulumi.get(self, "monitor_timeout")
 
     @monitor_timeout.setter
@@ -8383,6 +8869,9 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs:
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (string)
+        """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
@@ -8392,6 +8881,9 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs:
     @property
     @pulumi.getter(name="useOctavia")
     def use_octavia(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (bool)
+        """
         return pulumi.get(self, "use_octavia")
 
     @use_octavia.setter
@@ -8404,6 +8896,10 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs:
     def __init__(__self__, *,
                  request_timeout: Optional[pulumi.Input[int]] = None,
                  search_order: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] request_timeout: (int)
+        :param pulumi.Input[str] search_order: (string)
+        """
         if request_timeout is not None:
             pulumi.set(__self__, "request_timeout", request_timeout)
         if search_order is not None:
@@ -8412,6 +8908,9 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs:
     @property
     @pulumi.getter(name="requestTimeout")
     def request_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        (int)
+        """
         return pulumi.get(self, "request_timeout")
 
     @request_timeout.setter
@@ -8421,6 +8920,9 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs:
     @property
     @pulumi.getter(name="searchOrder")
     def search_order(self) -> Optional[pulumi.Input[str]]:
+        """
+        (string)
+        """
         return pulumi.get(self, "search_order")
 
     @search_order.setter
@@ -8432,12 +8934,18 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs:
 class ClusterRkeConfigCloudProviderOpenstackCloudProviderRouteArgs:
     def __init__(__self__, *,
                  router_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] router_id: (string)
+        """
         if router_id is not None:
             pulumi.set(__self__, "router_id", router_id)
 
     @property
     @pulumi.getter(name="routerId")
     def router_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (string)
+        """
         return pulumi.get(self, "router_id")
 
     @router_id.setter
@@ -8453,6 +8961,13 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderArgs:
                  disk: Optional[pulumi.Input['ClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgs']] = None,
                  global_: Optional[pulumi.Input['ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs']] = None,
                  network: Optional[pulumi.Input['ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs']] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs']]] virtual_centers: (List)
+        :param pulumi.Input['ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs'] workspace: (list maxitems:1)
+        :param pulumi.Input['ClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgs'] disk: (list maxitems:1)
+        :param pulumi.Input['ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs'] global_: (list maxitems:1)
+        :param pulumi.Input['ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs'] network: The GKE cluster network. Required for create new cluster (string)
+        """
         pulumi.set(__self__, "virtual_centers", virtual_centers)
         pulumi.set(__self__, "workspace", workspace)
         if disk is not None:
@@ -8465,6 +8980,9 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderArgs:
     @property
     @pulumi.getter(name="virtualCenters")
     def virtual_centers(self) -> pulumi.Input[Sequence[pulumi.Input['ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs']]]:
+        """
+        (List)
+        """
         return pulumi.get(self, "virtual_centers")
 
     @virtual_centers.setter
@@ -8474,6 +8992,9 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderArgs:
     @property
     @pulumi.getter
     def workspace(self) -> pulumi.Input['ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs']:
+        """
+        (list maxitems:1)
+        """
         return pulumi.get(self, "workspace")
 
     @workspace.setter
@@ -8483,6 +9004,9 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderArgs:
     @property
     @pulumi.getter
     def disk(self) -> Optional[pulumi.Input['ClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgs']]:
+        """
+        (list maxitems:1)
+        """
         return pulumi.get(self, "disk")
 
     @disk.setter
@@ -8492,6 +9016,9 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderArgs:
     @property
     @pulumi.getter(name="global")
     def global_(self) -> Optional[pulumi.Input['ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs']]:
+        """
+        (list maxitems:1)
+        """
         return pulumi.get(self, "global_")
 
     @global_.setter
@@ -8501,6 +9028,9 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderArgs:
     @property
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input['ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs']]:
+        """
+        The GKE cluster network. Required for create new cluster (string)
+        """
         return pulumi.get(self, "network")
 
     @network.setter
@@ -8512,12 +9042,18 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderArgs:
 class ClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgs:
     def __init__(__self__, *,
                  scsi_controller_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] scsi_controller_type: (string)
+        """
         if scsi_controller_type is not None:
             pulumi.set(__self__, "scsi_controller_type", scsi_controller_type)
 
     @property
     @pulumi.getter(name="scsiControllerType")
     def scsi_controller_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        (string)
+        """
         return pulumi.get(self, "scsi_controller_type")
 
     @scsi_controller_type.setter
@@ -8535,6 +9071,14 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs:
                  port: Optional[pulumi.Input[str]] = None,
                  soap_roundtrip_count: Optional[pulumi.Input[int]] = None,
                  user: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] datacenters: (string)
+        :param pulumi.Input[bool] insecure_flag: (bool)
+        :param pulumi.Input[str] password: Registry password (string)
+        :param pulumi.Input[str] port: Port for node. Default `22` (string)
+        :param pulumi.Input[int] soap_roundtrip_count: (int)
+        :param pulumi.Input[str] user: Registry user (string)
+        """
         if datacenters is not None:
             pulumi.set(__self__, "datacenters", datacenters)
         if graceful_shutdown_timeout is not None:
@@ -8553,6 +9097,9 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs:
     @property
     @pulumi.getter
     def datacenters(self) -> Optional[pulumi.Input[str]]:
+        """
+        (string)
+        """
         return pulumi.get(self, "datacenters")
 
     @datacenters.setter
@@ -8571,6 +9118,9 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs:
     @property
     @pulumi.getter(name="insecureFlag")
     def insecure_flag(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (bool)
+        """
         return pulumi.get(self, "insecure_flag")
 
     @insecure_flag.setter
@@ -8580,6 +9130,9 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Registry password (string)
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -8589,6 +9142,9 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[str]]:
+        """
+        Port for node. Default `22` (string)
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -8598,6 +9154,9 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs:
     @property
     @pulumi.getter(name="soapRoundtripCount")
     def soap_roundtrip_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        (int)
+        """
         return pulumi.get(self, "soap_roundtrip_count")
 
     @soap_roundtrip_count.setter
@@ -8607,6 +9166,9 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs:
     @property
     @pulumi.getter
     def user(self) -> Optional[pulumi.Input[str]]:
+        """
+        Registry user (string)
+        """
         return pulumi.get(self, "user")
 
     @user.setter
@@ -8618,12 +9180,18 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs:
 class ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs:
     def __init__(__self__, *,
                  public_network: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] public_network: (string)
+        """
         if public_network is not None:
             pulumi.set(__self__, "public_network", public_network)
 
     @property
     @pulumi.getter(name="publicNetwork")
     def public_network(self) -> Optional[pulumi.Input[str]]:
+        """
+        (string)
+        """
         return pulumi.get(self, "public_network")
 
     @public_network.setter
@@ -8641,7 +9209,12 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs:
                  port: Optional[pulumi.Input[str]] = None,
                  soap_roundtrip_count: Optional[pulumi.Input[int]] = None):
         """
+        :param pulumi.Input[str] datacenters: (string)
         :param pulumi.Input[str] name: The name of the Cluster (string)
+        :param pulumi.Input[str] password: Registry password (string)
+        :param pulumi.Input[str] user: Registry user (string)
+        :param pulumi.Input[str] port: Port for node. Default `22` (string)
+        :param pulumi.Input[int] soap_roundtrip_count: (int)
         """
         pulumi.set(__self__, "datacenters", datacenters)
         pulumi.set(__self__, "name", name)
@@ -8655,6 +9228,9 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs:
     @property
     @pulumi.getter
     def datacenters(self) -> pulumi.Input[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "datacenters")
 
     @datacenters.setter
@@ -8676,6 +9252,9 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs:
     @property
     @pulumi.getter
     def password(self) -> pulumi.Input[str]:
+        """
+        Registry password (string)
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -8685,6 +9264,9 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs:
     @property
     @pulumi.getter
     def user(self) -> pulumi.Input[str]:
+        """
+        Registry user (string)
+        """
         return pulumi.get(self, "user")
 
     @user.setter
@@ -8694,6 +9276,9 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[str]]:
+        """
+        Port for node. Default `22` (string)
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -8703,6 +9288,9 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs:
     @property
     @pulumi.getter(name="soapRoundtripCount")
     def soap_roundtrip_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        (int)
+        """
         return pulumi.get(self, "soap_roundtrip_count")
 
     @soap_roundtrip_count.setter
@@ -8718,6 +9306,13 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs:
                  server: pulumi.Input[str],
                  default_datastore: Optional[pulumi.Input[str]] = None,
                  resourcepool_path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] datacenter: (string)
+        :param pulumi.Input[str] folder: Folder for S3 service. Available from Rancher v2.2.7 (string)
+        :param pulumi.Input[str] server: (string)
+        :param pulumi.Input[str] default_datastore: (string)
+        :param pulumi.Input[str] resourcepool_path: (string)
+        """
         pulumi.set(__self__, "datacenter", datacenter)
         pulumi.set(__self__, "folder", folder)
         pulumi.set(__self__, "server", server)
@@ -8729,6 +9324,9 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs:
     @property
     @pulumi.getter
     def datacenter(self) -> pulumi.Input[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "datacenter")
 
     @datacenter.setter
@@ -8738,6 +9336,9 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs:
     @property
     @pulumi.getter
     def folder(self) -> pulumi.Input[str]:
+        """
+        Folder for S3 service. Available from Rancher v2.2.7 (string)
+        """
         return pulumi.get(self, "folder")
 
     @folder.setter
@@ -8747,6 +9348,9 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs:
     @property
     @pulumi.getter
     def server(self) -> pulumi.Input[str]:
+        """
+        (string)
+        """
         return pulumi.get(self, "server")
 
     @server.setter
@@ -8756,6 +9360,9 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs:
     @property
     @pulumi.getter(name="defaultDatastore")
     def default_datastore(self) -> Optional[pulumi.Input[str]]:
+        """
+        (string)
+        """
         return pulumi.get(self, "default_datastore")
 
     @default_datastore.setter
@@ -8765,6 +9372,9 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs:
     @property
     @pulumi.getter(name="resourcepoolPath")
     def resourcepool_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        (string)
+        """
         return pulumi.get(self, "resourcepool_path")
 
     @resourcepool_path.setter
@@ -8786,9 +9396,14 @@ class ClusterRkeConfigDnsArgs:
                  upstream_nameservers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input['ClusterRkeConfigDnsLinearAutoscalerParamsArgs'] linear_autoscaler_params: Linear Autoscaler Params
+        :param pulumi.Input[Mapping[str, Any]] node_selector: RKE monitoring node selector (map)
         :param pulumi.Input['ClusterRkeConfigDnsNodelocalArgs'] nodelocal: Nodelocal dns
+        :param pulumi.Input[Mapping[str, Any]] options: RKE options for network (map)
+        :param pulumi.Input[str] provider: RKE monitoring provider (string)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] reverse_cidrs: DNS add-on reverse cidr  (list)
         :param pulumi.Input[Sequence[pulumi.Input['ClusterRkeConfigDnsTolerationArgs']]] tolerations: DNS service tolerations
         :param pulumi.Input['ClusterRkeConfigDnsUpdateStrategyArgs'] update_strategy: Update deployment strategy
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] upstream_nameservers: DNS add-on upstream nameservers  (list)
         """
         if linear_autoscaler_params is not None:
             pulumi.set(__self__, "linear_autoscaler_params", linear_autoscaler_params)
@@ -8824,6 +9439,9 @@ class ClusterRkeConfigDnsArgs:
     @property
     @pulumi.getter(name="nodeSelector")
     def node_selector(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        RKE monitoring node selector (map)
+        """
         return pulumi.get(self, "node_selector")
 
     @node_selector.setter
@@ -8845,6 +9463,9 @@ class ClusterRkeConfigDnsArgs:
     @property
     @pulumi.getter
     def options(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        RKE options for network (map)
+        """
         return pulumi.get(self, "options")
 
     @options.setter
@@ -8854,6 +9475,9 @@ class ClusterRkeConfigDnsArgs:
     @property
     @pulumi.getter
     def provider(self) -> Optional[pulumi.Input[str]]:
+        """
+        RKE monitoring provider (string)
+        """
         return pulumi.get(self, "provider")
 
     @provider.setter
@@ -8863,6 +9487,9 @@ class ClusterRkeConfigDnsArgs:
     @property
     @pulumi.getter(name="reverseCidrs")
     def reverse_cidrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        DNS add-on reverse cidr  (list)
+        """
         return pulumi.get(self, "reverse_cidrs")
 
     @reverse_cidrs.setter
@@ -8896,6 +9523,9 @@ class ClusterRkeConfigDnsArgs:
     @property
     @pulumi.getter(name="upstreamNameservers")
     def upstream_nameservers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        DNS add-on upstream nameservers  (list)
+        """
         return pulumi.get(self, "upstream_nameservers")
 
     @upstream_nameservers.setter
@@ -8911,6 +9541,13 @@ class ClusterRkeConfigDnsLinearAutoscalerParamsArgs:
                  min: Optional[pulumi.Input[int]] = None,
                  nodes_per_replica: Optional[pulumi.Input[float]] = None,
                  prevent_single_point_failure: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[float] cores_per_replica: number of replicas per cluster cores (float64)
+        :param pulumi.Input[int] max: maximum number of replicas (int64)
+        :param pulumi.Input[int] min: minimum number of replicas (int64)
+        :param pulumi.Input[float] nodes_per_replica: number of replica per cluster nodes (float64)
+        :param pulumi.Input[bool] prevent_single_point_failure: prevent single point of failure
+        """
         if cores_per_replica is not None:
             pulumi.set(__self__, "cores_per_replica", cores_per_replica)
         if max is not None:
@@ -8925,6 +9562,9 @@ class ClusterRkeConfigDnsLinearAutoscalerParamsArgs:
     @property
     @pulumi.getter(name="coresPerReplica")
     def cores_per_replica(self) -> Optional[pulumi.Input[float]]:
+        """
+        number of replicas per cluster cores (float64)
+        """
         return pulumi.get(self, "cores_per_replica")
 
     @cores_per_replica.setter
@@ -8934,6 +9574,9 @@ class ClusterRkeConfigDnsLinearAutoscalerParamsArgs:
     @property
     @pulumi.getter
     def max(self) -> Optional[pulumi.Input[int]]:
+        """
+        maximum number of replicas (int64)
+        """
         return pulumi.get(self, "max")
 
     @max.setter
@@ -8943,6 +9586,9 @@ class ClusterRkeConfigDnsLinearAutoscalerParamsArgs:
     @property
     @pulumi.getter
     def min(self) -> Optional[pulumi.Input[int]]:
+        """
+        minimum number of replicas (int64)
+        """
         return pulumi.get(self, "min")
 
     @min.setter
@@ -8952,6 +9598,9 @@ class ClusterRkeConfigDnsLinearAutoscalerParamsArgs:
     @property
     @pulumi.getter(name="nodesPerReplica")
     def nodes_per_replica(self) -> Optional[pulumi.Input[float]]:
+        """
+        number of replica per cluster nodes (float64)
+        """
         return pulumi.get(self, "nodes_per_replica")
 
     @nodes_per_replica.setter
@@ -8961,6 +9610,9 @@ class ClusterRkeConfigDnsLinearAutoscalerParamsArgs:
     @property
     @pulumi.getter(name="preventSinglePointFailure")
     def prevent_single_point_failure(self) -> Optional[pulumi.Input[bool]]:
+        """
+        prevent single point of failure
+        """
         return pulumi.get(self, "prevent_single_point_failure")
 
     @prevent_single_point_failure.setter
@@ -8974,6 +9626,7 @@ class ClusterRkeConfigDnsNodelocalArgs:
                  ip_address: Optional[pulumi.Input[str]] = None,
                  node_selector: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
+        :param pulumi.Input[str] ip_address: Nodelocal dns ip address (string)
         :param pulumi.Input[Mapping[str, Any]] node_selector: Node selector key pair
         """
         if ip_address is not None:
@@ -8984,6 +9637,9 @@ class ClusterRkeConfigDnsNodelocalArgs:
     @property
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        Nodelocal dns ip address (string)
+        """
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
@@ -9011,6 +9667,13 @@ class ClusterRkeConfigDnsTolerationArgs:
                  operator: Optional[pulumi.Input[str]] = None,
                  seconds: Optional[pulumi.Input[int]] = None,
                  value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The GKE taint key (string)
+        :param pulumi.Input[str] effect: The GKE taint effect (string)
+        :param pulumi.Input[str] operator: The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+        :param pulumi.Input[int] seconds: The toleration seconds (int)
+        :param pulumi.Input[str] value: The GKE taint value (string)
+        """
         pulumi.set(__self__, "key", key)
         if effect is not None:
             pulumi.set(__self__, "effect", effect)
@@ -9024,6 +9687,9 @@ class ClusterRkeConfigDnsTolerationArgs:
     @property
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
+        """
+        The GKE taint key (string)
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -9033,6 +9699,9 @@ class ClusterRkeConfigDnsTolerationArgs:
     @property
     @pulumi.getter
     def effect(self) -> Optional[pulumi.Input[str]]:
+        """
+        The GKE taint effect (string)
+        """
         return pulumi.get(self, "effect")
 
     @effect.setter
@@ -9042,6 +9711,9 @@ class ClusterRkeConfigDnsTolerationArgs:
     @property
     @pulumi.getter
     def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+        """
         return pulumi.get(self, "operator")
 
     @operator.setter
@@ -9051,6 +9723,9 @@ class ClusterRkeConfigDnsTolerationArgs:
     @property
     @pulumi.getter
     def seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        The toleration seconds (int)
+        """
         return pulumi.get(self, "seconds")
 
     @seconds.setter
@@ -9060,6 +9735,9 @@ class ClusterRkeConfigDnsTolerationArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The GKE taint value (string)
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -9160,6 +9838,15 @@ class ClusterRkeConfigIngressArgs:
                  tolerations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterRkeConfigIngressTolerationArgs']]]] = None,
                  update_strategy: Optional[pulumi.Input['ClusterRkeConfigIngressUpdateStrategyArgs']] = None):
         """
+        :param pulumi.Input[bool] default_backend: Enable ingress default backend. Default: `true` (bool)
+        :param pulumi.Input[str] dns_policy: Ingress controller DNS policy. `ClusterFirstWithHostNet`, `ClusterFirst`, `Default`, and `None` are supported. [K8S dns Policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) (string)
+        :param pulumi.Input[Mapping[str, Any]] extra_args: Extra arguments for scheduler service (map)
+        :param pulumi.Input[int] http_port: HTTP port for RKE Ingress (int)
+        :param pulumi.Input[int] https_port: HTTPS port for RKE Ingress (int)
+        :param pulumi.Input[str] network_mode: Network mode for RKE Ingress (string)
+        :param pulumi.Input[Mapping[str, Any]] node_selector: RKE monitoring node selector (map)
+        :param pulumi.Input[Mapping[str, Any]] options: RKE options for network (map)
+        :param pulumi.Input[str] provider: RKE monitoring provider (string)
         :param pulumi.Input[Sequence[pulumi.Input['ClusterRkeConfigIngressTolerationArgs']]] tolerations: Ingress add-on tolerations
         :param pulumi.Input['ClusterRkeConfigIngressUpdateStrategyArgs'] update_strategy: Update daemon set strategy
         """
@@ -9189,6 +9876,9 @@ class ClusterRkeConfigIngressArgs:
     @property
     @pulumi.getter(name="defaultBackend")
     def default_backend(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable ingress default backend. Default: `true` (bool)
+        """
         return pulumi.get(self, "default_backend")
 
     @default_backend.setter
@@ -9198,6 +9888,9 @@ class ClusterRkeConfigIngressArgs:
     @property
     @pulumi.getter(name="dnsPolicy")
     def dns_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Ingress controller DNS policy. `ClusterFirstWithHostNet`, `ClusterFirst`, `Default`, and `None` are supported. [K8S dns Policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) (string)
+        """
         return pulumi.get(self, "dns_policy")
 
     @dns_policy.setter
@@ -9207,6 +9900,9 @@ class ClusterRkeConfigIngressArgs:
     @property
     @pulumi.getter(name="extraArgs")
     def extra_args(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Extra arguments for scheduler service (map)
+        """
         return pulumi.get(self, "extra_args")
 
     @extra_args.setter
@@ -9216,6 +9912,9 @@ class ClusterRkeConfigIngressArgs:
     @property
     @pulumi.getter(name="httpPort")
     def http_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        HTTP port for RKE Ingress (int)
+        """
         return pulumi.get(self, "http_port")
 
     @http_port.setter
@@ -9225,6 +9924,9 @@ class ClusterRkeConfigIngressArgs:
     @property
     @pulumi.getter(name="httpsPort")
     def https_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        HTTPS port for RKE Ingress (int)
+        """
         return pulumi.get(self, "https_port")
 
     @https_port.setter
@@ -9234,6 +9936,9 @@ class ClusterRkeConfigIngressArgs:
     @property
     @pulumi.getter(name="networkMode")
     def network_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Network mode for RKE Ingress (string)
+        """
         return pulumi.get(self, "network_mode")
 
     @network_mode.setter
@@ -9243,6 +9948,9 @@ class ClusterRkeConfigIngressArgs:
     @property
     @pulumi.getter(name="nodeSelector")
     def node_selector(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        RKE monitoring node selector (map)
+        """
         return pulumi.get(self, "node_selector")
 
     @node_selector.setter
@@ -9252,6 +9960,9 @@ class ClusterRkeConfigIngressArgs:
     @property
     @pulumi.getter
     def options(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        RKE options for network (map)
+        """
         return pulumi.get(self, "options")
 
     @options.setter
@@ -9261,6 +9972,9 @@ class ClusterRkeConfigIngressArgs:
     @property
     @pulumi.getter
     def provider(self) -> Optional[pulumi.Input[str]]:
+        """
+        RKE monitoring provider (string)
+        """
         return pulumi.get(self, "provider")
 
     @provider.setter
@@ -9300,6 +10014,13 @@ class ClusterRkeConfigIngressTolerationArgs:
                  operator: Optional[pulumi.Input[str]] = None,
                  seconds: Optional[pulumi.Input[int]] = None,
                  value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The GKE taint key (string)
+        :param pulumi.Input[str] effect: The GKE taint effect (string)
+        :param pulumi.Input[str] operator: The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+        :param pulumi.Input[int] seconds: The toleration seconds (int)
+        :param pulumi.Input[str] value: The GKE taint value (string)
+        """
         pulumi.set(__self__, "key", key)
         if effect is not None:
             pulumi.set(__self__, "effect", effect)
@@ -9313,6 +10034,9 @@ class ClusterRkeConfigIngressTolerationArgs:
     @property
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
+        """
+        The GKE taint key (string)
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -9322,6 +10046,9 @@ class ClusterRkeConfigIngressTolerationArgs:
     @property
     @pulumi.getter
     def effect(self) -> Optional[pulumi.Input[str]]:
+        """
+        The GKE taint effect (string)
+        """
         return pulumi.get(self, "effect")
 
     @effect.setter
@@ -9331,6 +10058,9 @@ class ClusterRkeConfigIngressTolerationArgs:
     @property
     @pulumi.getter
     def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+        """
         return pulumi.get(self, "operator")
 
     @operator.setter
@@ -9340,6 +10070,9 @@ class ClusterRkeConfigIngressTolerationArgs:
     @property
     @pulumi.getter
     def seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        The toleration seconds (int)
+        """
         return pulumi.get(self, "seconds")
 
     @seconds.setter
@@ -9349,6 +10082,9 @@ class ClusterRkeConfigIngressTolerationArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The GKE taint value (string)
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -9428,6 +10164,10 @@ class ClusterRkeConfigMonitoringArgs:
                  tolerations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterRkeConfigMonitoringTolerationArgs']]]] = None,
                  update_strategy: Optional[pulumi.Input['ClusterRkeConfigMonitoringUpdateStrategyArgs']] = None):
         """
+        :param pulumi.Input[Mapping[str, Any]] node_selector: RKE monitoring node selector (map)
+        :param pulumi.Input[Mapping[str, Any]] options: RKE options for network (map)
+        :param pulumi.Input[str] provider: RKE monitoring provider (string)
+        :param pulumi.Input[int] replicas: RKE monitoring replicas (int)
         :param pulumi.Input[Sequence[pulumi.Input['ClusterRkeConfigMonitoringTolerationArgs']]] tolerations: Monitoring add-on tolerations
         :param pulumi.Input['ClusterRkeConfigMonitoringUpdateStrategyArgs'] update_strategy: Update deployment strategy
         """
@@ -9447,6 +10187,9 @@ class ClusterRkeConfigMonitoringArgs:
     @property
     @pulumi.getter(name="nodeSelector")
     def node_selector(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        RKE monitoring node selector (map)
+        """
         return pulumi.get(self, "node_selector")
 
     @node_selector.setter
@@ -9456,6 +10199,9 @@ class ClusterRkeConfigMonitoringArgs:
     @property
     @pulumi.getter
     def options(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        RKE options for network (map)
+        """
         return pulumi.get(self, "options")
 
     @options.setter
@@ -9465,6 +10211,9 @@ class ClusterRkeConfigMonitoringArgs:
     @property
     @pulumi.getter
     def provider(self) -> Optional[pulumi.Input[str]]:
+        """
+        RKE monitoring provider (string)
+        """
         return pulumi.get(self, "provider")
 
     @provider.setter
@@ -9474,6 +10223,9 @@ class ClusterRkeConfigMonitoringArgs:
     @property
     @pulumi.getter
     def replicas(self) -> Optional[pulumi.Input[int]]:
+        """
+        RKE monitoring replicas (int)
+        """
         return pulumi.get(self, "replicas")
 
     @replicas.setter
@@ -9513,6 +10265,13 @@ class ClusterRkeConfigMonitoringTolerationArgs:
                  operator: Optional[pulumi.Input[str]] = None,
                  seconds: Optional[pulumi.Input[int]] = None,
                  value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The GKE taint key (string)
+        :param pulumi.Input[str] effect: The GKE taint effect (string)
+        :param pulumi.Input[str] operator: The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+        :param pulumi.Input[int] seconds: The toleration seconds (int)
+        :param pulumi.Input[str] value: The GKE taint value (string)
+        """
         pulumi.set(__self__, "key", key)
         if effect is not None:
             pulumi.set(__self__, "effect", effect)
@@ -9526,6 +10285,9 @@ class ClusterRkeConfigMonitoringTolerationArgs:
     @property
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
+        """
+        The GKE taint key (string)
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -9535,6 +10297,9 @@ class ClusterRkeConfigMonitoringTolerationArgs:
     @property
     @pulumi.getter
     def effect(self) -> Optional[pulumi.Input[str]]:
+        """
+        The GKE taint effect (string)
+        """
         return pulumi.get(self, "effect")
 
     @effect.setter
@@ -9544,6 +10309,9 @@ class ClusterRkeConfigMonitoringTolerationArgs:
     @property
     @pulumi.getter
     def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+        """
         return pulumi.get(self, "operator")
 
     @operator.setter
@@ -9553,6 +10321,9 @@ class ClusterRkeConfigMonitoringTolerationArgs:
     @property
     @pulumi.getter
     def seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        The toleration seconds (int)
+        """
         return pulumi.get(self, "seconds")
 
     @seconds.setter
@@ -9562,6 +10333,9 @@ class ClusterRkeConfigMonitoringTolerationArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The GKE taint value (string)
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -9660,7 +10434,15 @@ class ClusterRkeConfigNetworkArgs:
                  tolerations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterRkeConfigNetworkTolerationArgs']]]] = None,
                  weave_network_provider: Optional[pulumi.Input['ClusterRkeConfigNetworkWeaveNetworkProviderArgs']] = None):
         """
+        :param pulumi.Input['ClusterRkeConfigNetworkAciNetworkProviderArgs'] aci_network_provider: ACI provider config for RKE network (list maxitems:63)
+        :param pulumi.Input['ClusterRkeConfigNetworkCalicoNetworkProviderArgs'] calico_network_provider: Calico provider config for RKE network (list maxitems:1)
+        :param pulumi.Input['ClusterRkeConfigNetworkCanalNetworkProviderArgs'] canal_network_provider: Canal provider config for RKE network (list maxitems:1)
+        :param pulumi.Input['ClusterRkeConfigNetworkFlannelNetworkProviderArgs'] flannel_network_provider: Flannel provider config for RKE network (list maxitems:1)
+        :param pulumi.Input[int] mtu: Network provider MTU. Default `0` (int)
+        :param pulumi.Input[Mapping[str, Any]] options: RKE options for network (map)
+        :param pulumi.Input[str] plugin: Plugin for RKE network. `canal` (default), `flannel`, `calico`, `none` and `weave` are supported. (string)
         :param pulumi.Input[Sequence[pulumi.Input['ClusterRkeConfigNetworkTolerationArgs']]] tolerations: Network add-on tolerations
+        :param pulumi.Input['ClusterRkeConfigNetworkWeaveNetworkProviderArgs'] weave_network_provider: Weave provider config for RKE network (list maxitems:1)
         """
         if aci_network_provider is not None:
             pulumi.set(__self__, "aci_network_provider", aci_network_provider)
@@ -9684,6 +10466,9 @@ class ClusterRkeConfigNetworkArgs:
     @property
     @pulumi.getter(name="aciNetworkProvider")
     def aci_network_provider(self) -> Optional[pulumi.Input['ClusterRkeConfigNetworkAciNetworkProviderArgs']]:
+        """
+        ACI provider config for RKE network (list maxitems:63)
+        """
         return pulumi.get(self, "aci_network_provider")
 
     @aci_network_provider.setter
@@ -9693,6 +10478,9 @@ class ClusterRkeConfigNetworkArgs:
     @property
     @pulumi.getter(name="calicoNetworkProvider")
     def calico_network_provider(self) -> Optional[pulumi.Input['ClusterRkeConfigNetworkCalicoNetworkProviderArgs']]:
+        """
+        Calico provider config for RKE network (list maxitems:1)
+        """
         return pulumi.get(self, "calico_network_provider")
 
     @calico_network_provider.setter
@@ -9702,6 +10490,9 @@ class ClusterRkeConfigNetworkArgs:
     @property
     @pulumi.getter(name="canalNetworkProvider")
     def canal_network_provider(self) -> Optional[pulumi.Input['ClusterRkeConfigNetworkCanalNetworkProviderArgs']]:
+        """
+        Canal provider config for RKE network (list maxitems:1)
+        """
         return pulumi.get(self, "canal_network_provider")
 
     @canal_network_provider.setter
@@ -9711,6 +10502,9 @@ class ClusterRkeConfigNetworkArgs:
     @property
     @pulumi.getter(name="flannelNetworkProvider")
     def flannel_network_provider(self) -> Optional[pulumi.Input['ClusterRkeConfigNetworkFlannelNetworkProviderArgs']]:
+        """
+        Flannel provider config for RKE network (list maxitems:1)
+        """
         return pulumi.get(self, "flannel_network_provider")
 
     @flannel_network_provider.setter
@@ -9720,6 +10514,9 @@ class ClusterRkeConfigNetworkArgs:
     @property
     @pulumi.getter
     def mtu(self) -> Optional[pulumi.Input[int]]:
+        """
+        Network provider MTU. Default `0` (int)
+        """
         return pulumi.get(self, "mtu")
 
     @mtu.setter
@@ -9729,6 +10526,9 @@ class ClusterRkeConfigNetworkArgs:
     @property
     @pulumi.getter
     def options(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        RKE options for network (map)
+        """
         return pulumi.get(self, "options")
 
     @options.setter
@@ -9738,6 +10538,9 @@ class ClusterRkeConfigNetworkArgs:
     @property
     @pulumi.getter
     def plugin(self) -> Optional[pulumi.Input[str]]:
+        """
+        Plugin for RKE network. `canal` (default), `flannel`, `calico`, `none` and `weave` are supported. (string)
+        """
         return pulumi.get(self, "plugin")
 
     @plugin.setter
@@ -9759,6 +10562,9 @@ class ClusterRkeConfigNetworkArgs:
     @property
     @pulumi.getter(name="weaveNetworkProvider")
     def weave_network_provider(self) -> Optional[pulumi.Input['ClusterRkeConfigNetworkWeaveNetworkProviderArgs']]:
+        """
+        Weave provider config for RKE network (list maxitems:1)
+        """
         return pulumi.get(self, "weave_network_provider")
 
     @weave_network_provider.setter
@@ -9843,6 +10649,81 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
                  use_privileged_container: Optional[pulumi.Input[str]] = None,
                  vmm_controller: Optional[pulumi.Input[str]] = None,
                  vmm_domain: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] aep: Attachable entity profile (string)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] apic_hosts: List of APIC hosts to connect for APIC API (list)
+        :param pulumi.Input[str] apic_user_crt: APIC user certificate (string)
+        :param pulumi.Input[str] apic_user_key: APIC user key (string)
+        :param pulumi.Input[str] apic_user_name: APIC user name (string)
+        :param pulumi.Input[str] encap_type: Encap type: vxlan or vlan (string)
+        :param pulumi.Input[str] extern_dynamic: Subnet to use for dynamic external IPs (string)
+        :param pulumi.Input[str] extern_static: Subnet to use for static external IPs (string)
+        :param pulumi.Input[str] kube_api_vlan: The VLAN used by the physdom for nodes (string)
+        :param pulumi.Input[str] l3out: L3out (string)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] l3out_external_networks: L3out external networks (list)
+        :param pulumi.Input[str] mcast_range_end: End of mcast range (string)
+        :param pulumi.Input[str] mcast_range_start: Start of mcast range (string)
+        :param pulumi.Input[str] node_subnet: Subnet to use for nodes (string)
+        :param pulumi.Input[str] node_svc_subnet: Subnet to use for service graph (string)
+        :param pulumi.Input[str] service_vlan: The VLAN used by LoadBalancer services (string)
+        :param pulumi.Input[str] system_id: ACI system ID (string)
+        :param pulumi.Input[str] vrf_name: VRF name (string)
+        :param pulumi.Input[str] vrf_tenant: VRF tenant (string)
+        :param pulumi.Input[str] apic_refresh_ticker_adjust: APIC refresh ticker adjust amount (string)
+        :param pulumi.Input[str] apic_refresh_time: APIC refresh time in seconds (string)
+        :param pulumi.Input[str] apic_subscription_delay: APIC subscription delay amount (string)
+        :param pulumi.Input[str] capic: cAPIC cloud (string)
+        :param pulumi.Input[str] controller_log_level: Log level for ACI controller (string)
+        :param pulumi.Input[str] disable_periodic_snat_global_info_sync: Whether to disable periodic SNAT global info sync (string)
+        :param pulumi.Input[str] disable_wait_for_network: Whether to disable waiting for network (string)
+        :param pulumi.Input[str] drop_log_enable: Whether to enable drop log (string)
+        :param pulumi.Input[str] duration_wait_for_network: The duration to wait for network (string)
+        :param pulumi.Input[str] enable_endpoint_slice: Whether to enable endpoint slices (string)
+        :param pulumi.Input[str] ep_registry: EP registry (string)
+        :param pulumi.Input[str] gbp_pod_subnet: GBH pod subnet (string)
+        :param pulumi.Input[str] host_agent_log_level: Log level for ACI host agent (string)
+        :param pulumi.Input[str] image_pull_policy: Image pull policy (string)
+        :param pulumi.Input[str] image_pull_secret: Image pull policy (string)
+        :param pulumi.Input[str] infra_vlan: The VLAN used by ACI infra (string)
+        :param pulumi.Input[str] install_istio: Whether to install Istio (string)
+        :param pulumi.Input[str] istio_profile: Istio profile name (string)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] kafka_brokers: List of Kafka broker hosts (list)
+        :param pulumi.Input[str] kafka_client_crt: Kafka client certificate (string)
+        :param pulumi.Input[str] kafka_client_key: Kafka client key (string)
+        :param pulumi.Input[str] max_nodes_svc_graph: Max nodes in service graph (string)
+        :param pulumi.Input[str] mtu_head_room: MTU head room amount (string)
+        :param pulumi.Input[str] multus_disable: Whether to disable Multus (string)
+        :param pulumi.Input[str] no_priority_class: Whether to use priority class (string)
+        :param pulumi.Input[str] node_pod_if_enable: Whether to enable node pod interface (string)
+        :param pulumi.Input[str] opflex_client_ssl: Whether to use client SSL for Opflex (string)
+        :param pulumi.Input[str] opflex_device_delete_timeout: Opflex device delete timeout (string)
+        :param pulumi.Input[str] opflex_log_level: Log level for ACI opflex (string)
+        :param pulumi.Input[str] opflex_mode: Opflex mode (string)
+        :param pulumi.Input[str] opflex_server_port: Opflex server port (string)
+        :param pulumi.Input[str] overlay_vrf_name: Overlay VRF name (string)
+        :param pulumi.Input[str] ovs_memory_limit: OVS memory limit (string)
+        :param pulumi.Input[str] pbr_tracking_non_snat: Policy-based routing tracking non snat (string)
+        :param pulumi.Input[str] pod_subnet_chunk_size: Pod subnet chunk size (string)
+        :param pulumi.Input[str] run_gbp_container: Whether to run GBP container (string)
+        :param pulumi.Input[str] run_opflex_server_container: Whether to run Opflex server container (string)
+        :param pulumi.Input[str] service_monitor_interval: Service monitor interval (string)
+        :param pulumi.Input[str] snat_contract_scope: Snat contract scope (string)
+        :param pulumi.Input[str] snat_namespace: Snat namespace (string)
+        :param pulumi.Input[str] snat_port_range_end: End of snat port range (string)
+        :param pulumi.Input[str] snat_port_range_start: End of snat port range (string)
+        :param pulumi.Input[str] snat_ports_per_node: Snat ports per node (string)
+        :param pulumi.Input[str] sriov_enable: Whether to enable SR-IOV (string)
+        :param pulumi.Input[str] subnet_domain_name: Subnet domain name (string)
+        :param pulumi.Input[str] tenant: ACI tenant (string)
+        :param pulumi.Input[str] use_aci_anywhere_crd: Whether to use ACI anywhere CRD (string)
+        :param pulumi.Input[str] use_aci_cni_priority_class: Whether to use ACI CNI priority class (string)
+        :param pulumi.Input[str] use_cluster_role: Whether to use cluster role (string)
+        :param pulumi.Input[str] use_host_netns_volume: Whether to use host netns volume (string)
+        :param pulumi.Input[str] use_opflex_server_volume: Whether use Opflex server volume (string)
+        :param pulumi.Input[str] use_privileged_container: Whether ACI containers should run as privileged (string)
+        :param pulumi.Input[str] vmm_controller: VMM controller configuration (string)
+        :param pulumi.Input[str] vmm_domain: VMM domain configuration (string)
+        """
         pulumi.set(__self__, "aep", aep)
         pulumi.set(__self__, "apic_hosts", apic_hosts)
         pulumi.set(__self__, "apic_user_crt", apic_user_crt)
@@ -9975,6 +10856,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter
     def aep(self) -> pulumi.Input[str]:
+        """
+        Attachable entity profile (string)
+        """
         return pulumi.get(self, "aep")
 
     @aep.setter
@@ -9984,6 +10868,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="apicHosts")
     def apic_hosts(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of APIC hosts to connect for APIC API (list)
+        """
         return pulumi.get(self, "apic_hosts")
 
     @apic_hosts.setter
@@ -9993,6 +10880,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="apicUserCrt")
     def apic_user_crt(self) -> pulumi.Input[str]:
+        """
+        APIC user certificate (string)
+        """
         return pulumi.get(self, "apic_user_crt")
 
     @apic_user_crt.setter
@@ -10002,6 +10892,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="apicUserKey")
     def apic_user_key(self) -> pulumi.Input[str]:
+        """
+        APIC user key (string)
+        """
         return pulumi.get(self, "apic_user_key")
 
     @apic_user_key.setter
@@ -10011,6 +10904,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="apicUserName")
     def apic_user_name(self) -> pulumi.Input[str]:
+        """
+        APIC user name (string)
+        """
         return pulumi.get(self, "apic_user_name")
 
     @apic_user_name.setter
@@ -10020,6 +10916,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="encapType")
     def encap_type(self) -> pulumi.Input[str]:
+        """
+        Encap type: vxlan or vlan (string)
+        """
         return pulumi.get(self, "encap_type")
 
     @encap_type.setter
@@ -10029,6 +10928,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="externDynamic")
     def extern_dynamic(self) -> pulumi.Input[str]:
+        """
+        Subnet to use for dynamic external IPs (string)
+        """
         return pulumi.get(self, "extern_dynamic")
 
     @extern_dynamic.setter
@@ -10038,6 +10940,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="externStatic")
     def extern_static(self) -> pulumi.Input[str]:
+        """
+        Subnet to use for static external IPs (string)
+        """
         return pulumi.get(self, "extern_static")
 
     @extern_static.setter
@@ -10047,6 +10952,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="kubeApiVlan")
     def kube_api_vlan(self) -> pulumi.Input[str]:
+        """
+        The VLAN used by the physdom for nodes (string)
+        """
         return pulumi.get(self, "kube_api_vlan")
 
     @kube_api_vlan.setter
@@ -10056,6 +10964,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter
     def l3out(self) -> pulumi.Input[str]:
+        """
+        L3out (string)
+        """
         return pulumi.get(self, "l3out")
 
     @l3out.setter
@@ -10065,6 +10976,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="l3outExternalNetworks")
     def l3out_external_networks(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        L3out external networks (list)
+        """
         return pulumi.get(self, "l3out_external_networks")
 
     @l3out_external_networks.setter
@@ -10074,6 +10988,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="mcastRangeEnd")
     def mcast_range_end(self) -> pulumi.Input[str]:
+        """
+        End of mcast range (string)
+        """
         return pulumi.get(self, "mcast_range_end")
 
     @mcast_range_end.setter
@@ -10083,6 +11000,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="mcastRangeStart")
     def mcast_range_start(self) -> pulumi.Input[str]:
+        """
+        Start of mcast range (string)
+        """
         return pulumi.get(self, "mcast_range_start")
 
     @mcast_range_start.setter
@@ -10092,6 +11012,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="nodeSubnet")
     def node_subnet(self) -> pulumi.Input[str]:
+        """
+        Subnet to use for nodes (string)
+        """
         return pulumi.get(self, "node_subnet")
 
     @node_subnet.setter
@@ -10101,6 +11024,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="nodeSvcSubnet")
     def node_svc_subnet(self) -> pulumi.Input[str]:
+        """
+        Subnet to use for service graph (string)
+        """
         return pulumi.get(self, "node_svc_subnet")
 
     @node_svc_subnet.setter
@@ -10110,6 +11036,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="serviceVlan")
     def service_vlan(self) -> pulumi.Input[str]:
+        """
+        The VLAN used by LoadBalancer services (string)
+        """
         return pulumi.get(self, "service_vlan")
 
     @service_vlan.setter
@@ -10119,6 +11048,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="systemId")
     def system_id(self) -> pulumi.Input[str]:
+        """
+        ACI system ID (string)
+        """
         return pulumi.get(self, "system_id")
 
     @system_id.setter
@@ -10137,6 +11069,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="vrfName")
     def vrf_name(self) -> pulumi.Input[str]:
+        """
+        VRF name (string)
+        """
         return pulumi.get(self, "vrf_name")
 
     @vrf_name.setter
@@ -10146,6 +11081,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="vrfTenant")
     def vrf_tenant(self) -> pulumi.Input[str]:
+        """
+        VRF tenant (string)
+        """
         return pulumi.get(self, "vrf_tenant")
 
     @vrf_tenant.setter
@@ -10155,6 +11093,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="apicRefreshTickerAdjust")
     def apic_refresh_ticker_adjust(self) -> Optional[pulumi.Input[str]]:
+        """
+        APIC refresh ticker adjust amount (string)
+        """
         return pulumi.get(self, "apic_refresh_ticker_adjust")
 
     @apic_refresh_ticker_adjust.setter
@@ -10164,6 +11105,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="apicRefreshTime")
     def apic_refresh_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        APIC refresh time in seconds (string)
+        """
         return pulumi.get(self, "apic_refresh_time")
 
     @apic_refresh_time.setter
@@ -10173,6 +11117,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="apicSubscriptionDelay")
     def apic_subscription_delay(self) -> Optional[pulumi.Input[str]]:
+        """
+        APIC subscription delay amount (string)
+        """
         return pulumi.get(self, "apic_subscription_delay")
 
     @apic_subscription_delay.setter
@@ -10182,6 +11129,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter
     def capic(self) -> Optional[pulumi.Input[str]]:
+        """
+        cAPIC cloud (string)
+        """
         return pulumi.get(self, "capic")
 
     @capic.setter
@@ -10191,6 +11141,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="controllerLogLevel")
     def controller_log_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Log level for ACI controller (string)
+        """
         return pulumi.get(self, "controller_log_level")
 
     @controller_log_level.setter
@@ -10200,6 +11153,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="disablePeriodicSnatGlobalInfoSync")
     def disable_periodic_snat_global_info_sync(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to disable periodic SNAT global info sync (string)
+        """
         return pulumi.get(self, "disable_periodic_snat_global_info_sync")
 
     @disable_periodic_snat_global_info_sync.setter
@@ -10209,6 +11165,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="disableWaitForNetwork")
     def disable_wait_for_network(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to disable waiting for network (string)
+        """
         return pulumi.get(self, "disable_wait_for_network")
 
     @disable_wait_for_network.setter
@@ -10218,6 +11177,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="dropLogEnable")
     def drop_log_enable(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to enable drop log (string)
+        """
         return pulumi.get(self, "drop_log_enable")
 
     @drop_log_enable.setter
@@ -10227,6 +11189,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="durationWaitForNetwork")
     def duration_wait_for_network(self) -> Optional[pulumi.Input[str]]:
+        """
+        The duration to wait for network (string)
+        """
         return pulumi.get(self, "duration_wait_for_network")
 
     @duration_wait_for_network.setter
@@ -10236,6 +11201,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="enableEndpointSlice")
     def enable_endpoint_slice(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to enable endpoint slices (string)
+        """
         return pulumi.get(self, "enable_endpoint_slice")
 
     @enable_endpoint_slice.setter
@@ -10245,6 +11213,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="epRegistry")
     def ep_registry(self) -> Optional[pulumi.Input[str]]:
+        """
+        EP registry (string)
+        """
         return pulumi.get(self, "ep_registry")
 
     @ep_registry.setter
@@ -10254,6 +11225,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="gbpPodSubnet")
     def gbp_pod_subnet(self) -> Optional[pulumi.Input[str]]:
+        """
+        GBH pod subnet (string)
+        """
         return pulumi.get(self, "gbp_pod_subnet")
 
     @gbp_pod_subnet.setter
@@ -10263,6 +11237,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="hostAgentLogLevel")
     def host_agent_log_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Log level for ACI host agent (string)
+        """
         return pulumi.get(self, "host_agent_log_level")
 
     @host_agent_log_level.setter
@@ -10272,6 +11249,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="imagePullPolicy")
     def image_pull_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Image pull policy (string)
+        """
         return pulumi.get(self, "image_pull_policy")
 
     @image_pull_policy.setter
@@ -10281,6 +11261,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="imagePullSecret")
     def image_pull_secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        Image pull policy (string)
+        """
         return pulumi.get(self, "image_pull_secret")
 
     @image_pull_secret.setter
@@ -10290,6 +11273,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="infraVlan")
     def infra_vlan(self) -> Optional[pulumi.Input[str]]:
+        """
+        The VLAN used by ACI infra (string)
+        """
         return pulumi.get(self, "infra_vlan")
 
     @infra_vlan.setter
@@ -10299,6 +11285,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="installIstio")
     def install_istio(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to install Istio (string)
+        """
         return pulumi.get(self, "install_istio")
 
     @install_istio.setter
@@ -10308,6 +11297,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="istioProfile")
     def istio_profile(self) -> Optional[pulumi.Input[str]]:
+        """
+        Istio profile name (string)
+        """
         return pulumi.get(self, "istio_profile")
 
     @istio_profile.setter
@@ -10317,6 +11309,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="kafkaBrokers")
     def kafka_brokers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of Kafka broker hosts (list)
+        """
         return pulumi.get(self, "kafka_brokers")
 
     @kafka_brokers.setter
@@ -10326,6 +11321,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="kafkaClientCrt")
     def kafka_client_crt(self) -> Optional[pulumi.Input[str]]:
+        """
+        Kafka client certificate (string)
+        """
         return pulumi.get(self, "kafka_client_crt")
 
     @kafka_client_crt.setter
@@ -10335,6 +11333,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="kafkaClientKey")
     def kafka_client_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Kafka client key (string)
+        """
         return pulumi.get(self, "kafka_client_key")
 
     @kafka_client_key.setter
@@ -10344,6 +11345,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="maxNodesSvcGraph")
     def max_nodes_svc_graph(self) -> Optional[pulumi.Input[str]]:
+        """
+        Max nodes in service graph (string)
+        """
         return pulumi.get(self, "max_nodes_svc_graph")
 
     @max_nodes_svc_graph.setter
@@ -10353,6 +11357,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="mtuHeadRoom")
     def mtu_head_room(self) -> Optional[pulumi.Input[str]]:
+        """
+        MTU head room amount (string)
+        """
         return pulumi.get(self, "mtu_head_room")
 
     @mtu_head_room.setter
@@ -10362,6 +11369,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="multusDisable")
     def multus_disable(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to disable Multus (string)
+        """
         return pulumi.get(self, "multus_disable")
 
     @multus_disable.setter
@@ -10371,6 +11381,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="noPriorityClass")
     def no_priority_class(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to use priority class (string)
+        """
         return pulumi.get(self, "no_priority_class")
 
     @no_priority_class.setter
@@ -10380,6 +11393,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="nodePodIfEnable")
     def node_pod_if_enable(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to enable node pod interface (string)
+        """
         return pulumi.get(self, "node_pod_if_enable")
 
     @node_pod_if_enable.setter
@@ -10389,6 +11405,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="opflexClientSsl")
     def opflex_client_ssl(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to use client SSL for Opflex (string)
+        """
         return pulumi.get(self, "opflex_client_ssl")
 
     @opflex_client_ssl.setter
@@ -10398,6 +11417,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="opflexDeviceDeleteTimeout")
     def opflex_device_delete_timeout(self) -> Optional[pulumi.Input[str]]:
+        """
+        Opflex device delete timeout (string)
+        """
         return pulumi.get(self, "opflex_device_delete_timeout")
 
     @opflex_device_delete_timeout.setter
@@ -10407,6 +11429,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="opflexLogLevel")
     def opflex_log_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Log level for ACI opflex (string)
+        """
         return pulumi.get(self, "opflex_log_level")
 
     @opflex_log_level.setter
@@ -10416,6 +11441,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="opflexMode")
     def opflex_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Opflex mode (string)
+        """
         return pulumi.get(self, "opflex_mode")
 
     @opflex_mode.setter
@@ -10425,6 +11453,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="opflexServerPort")
     def opflex_server_port(self) -> Optional[pulumi.Input[str]]:
+        """
+        Opflex server port (string)
+        """
         return pulumi.get(self, "opflex_server_port")
 
     @opflex_server_port.setter
@@ -10434,6 +11465,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="overlayVrfName")
     def overlay_vrf_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Overlay VRF name (string)
+        """
         return pulumi.get(self, "overlay_vrf_name")
 
     @overlay_vrf_name.setter
@@ -10443,6 +11477,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="ovsMemoryLimit")
     def ovs_memory_limit(self) -> Optional[pulumi.Input[str]]:
+        """
+        OVS memory limit (string)
+        """
         return pulumi.get(self, "ovs_memory_limit")
 
     @ovs_memory_limit.setter
@@ -10452,6 +11489,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="pbrTrackingNonSnat")
     def pbr_tracking_non_snat(self) -> Optional[pulumi.Input[str]]:
+        """
+        Policy-based routing tracking non snat (string)
+        """
         return pulumi.get(self, "pbr_tracking_non_snat")
 
     @pbr_tracking_non_snat.setter
@@ -10461,6 +11501,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="podSubnetChunkSize")
     def pod_subnet_chunk_size(self) -> Optional[pulumi.Input[str]]:
+        """
+        Pod subnet chunk size (string)
+        """
         return pulumi.get(self, "pod_subnet_chunk_size")
 
     @pod_subnet_chunk_size.setter
@@ -10470,6 +11513,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="runGbpContainer")
     def run_gbp_container(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to run GBP container (string)
+        """
         return pulumi.get(self, "run_gbp_container")
 
     @run_gbp_container.setter
@@ -10479,6 +11525,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="runOpflexServerContainer")
     def run_opflex_server_container(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to run Opflex server container (string)
+        """
         return pulumi.get(self, "run_opflex_server_container")
 
     @run_opflex_server_container.setter
@@ -10488,6 +11537,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="serviceMonitorInterval")
     def service_monitor_interval(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service monitor interval (string)
+        """
         return pulumi.get(self, "service_monitor_interval")
 
     @service_monitor_interval.setter
@@ -10497,6 +11549,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="snatContractScope")
     def snat_contract_scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        Snat contract scope (string)
+        """
         return pulumi.get(self, "snat_contract_scope")
 
     @snat_contract_scope.setter
@@ -10506,6 +11561,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="snatNamespace")
     def snat_namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        Snat namespace (string)
+        """
         return pulumi.get(self, "snat_namespace")
 
     @snat_namespace.setter
@@ -10515,6 +11573,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="snatPortRangeEnd")
     def snat_port_range_end(self) -> Optional[pulumi.Input[str]]:
+        """
+        End of snat port range (string)
+        """
         return pulumi.get(self, "snat_port_range_end")
 
     @snat_port_range_end.setter
@@ -10524,6 +11585,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="snatPortRangeStart")
     def snat_port_range_start(self) -> Optional[pulumi.Input[str]]:
+        """
+        End of snat port range (string)
+        """
         return pulumi.get(self, "snat_port_range_start")
 
     @snat_port_range_start.setter
@@ -10533,6 +11597,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="snatPortsPerNode")
     def snat_ports_per_node(self) -> Optional[pulumi.Input[str]]:
+        """
+        Snat ports per node (string)
+        """
         return pulumi.get(self, "snat_ports_per_node")
 
     @snat_ports_per_node.setter
@@ -10542,6 +11609,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="sriovEnable")
     def sriov_enable(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to enable SR-IOV (string)
+        """
         return pulumi.get(self, "sriov_enable")
 
     @sriov_enable.setter
@@ -10551,6 +11621,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="subnetDomainName")
     def subnet_domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Subnet domain name (string)
+        """
         return pulumi.get(self, "subnet_domain_name")
 
     @subnet_domain_name.setter
@@ -10560,6 +11633,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter
     def tenant(self) -> Optional[pulumi.Input[str]]:
+        """
+        ACI tenant (string)
+        """
         return pulumi.get(self, "tenant")
 
     @tenant.setter
@@ -10569,6 +11645,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="useAciAnywhereCrd")
     def use_aci_anywhere_crd(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to use ACI anywhere CRD (string)
+        """
         return pulumi.get(self, "use_aci_anywhere_crd")
 
     @use_aci_anywhere_crd.setter
@@ -10578,6 +11657,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="useAciCniPriorityClass")
     def use_aci_cni_priority_class(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to use ACI CNI priority class (string)
+        """
         return pulumi.get(self, "use_aci_cni_priority_class")
 
     @use_aci_cni_priority_class.setter
@@ -10587,6 +11669,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="useClusterRole")
     def use_cluster_role(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to use cluster role (string)
+        """
         return pulumi.get(self, "use_cluster_role")
 
     @use_cluster_role.setter
@@ -10596,6 +11681,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="useHostNetnsVolume")
     def use_host_netns_volume(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to use host netns volume (string)
+        """
         return pulumi.get(self, "use_host_netns_volume")
 
     @use_host_netns_volume.setter
@@ -10605,6 +11693,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="useOpflexServerVolume")
     def use_opflex_server_volume(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether use Opflex server volume (string)
+        """
         return pulumi.get(self, "use_opflex_server_volume")
 
     @use_opflex_server_volume.setter
@@ -10614,6 +11705,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="usePrivilegedContainer")
     def use_privileged_container(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether ACI containers should run as privileged (string)
+        """
         return pulumi.get(self, "use_privileged_container")
 
     @use_privileged_container.setter
@@ -10623,6 +11717,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="vmmController")
     def vmm_controller(self) -> Optional[pulumi.Input[str]]:
+        """
+        VMM controller configuration (string)
+        """
         return pulumi.get(self, "vmm_controller")
 
     @vmm_controller.setter
@@ -10632,6 +11729,9 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
     @property
     @pulumi.getter(name="vmmDomain")
     def vmm_domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        VMM domain configuration (string)
+        """
         return pulumi.get(self, "vmm_domain")
 
     @vmm_domain.setter
@@ -10643,12 +11743,18 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
 class ClusterRkeConfigNetworkCalicoNetworkProviderArgs:
     def __init__(__self__, *,
                  cloud_provider: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] cloud_provider: RKE options for Calico network provider (string)
+        """
         if cloud_provider is not None:
             pulumi.set(__self__, "cloud_provider", cloud_provider)
 
     @property
     @pulumi.getter(name="cloudProvider")
     def cloud_provider(self) -> Optional[pulumi.Input[str]]:
+        """
+        RKE options for Calico network provider (string)
+        """
         return pulumi.get(self, "cloud_provider")
 
     @cloud_provider.setter
@@ -10660,12 +11766,18 @@ class ClusterRkeConfigNetworkCalicoNetworkProviderArgs:
 class ClusterRkeConfigNetworkCanalNetworkProviderArgs:
     def __init__(__self__, *,
                  iface: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] iface: Iface config Flannel network provider (string)
+        """
         if iface is not None:
             pulumi.set(__self__, "iface", iface)
 
     @property
     @pulumi.getter
     def iface(self) -> Optional[pulumi.Input[str]]:
+        """
+        Iface config Flannel network provider (string)
+        """
         return pulumi.get(self, "iface")
 
     @iface.setter
@@ -10677,12 +11789,18 @@ class ClusterRkeConfigNetworkCanalNetworkProviderArgs:
 class ClusterRkeConfigNetworkFlannelNetworkProviderArgs:
     def __init__(__self__, *,
                  iface: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] iface: Iface config Flannel network provider (string)
+        """
         if iface is not None:
             pulumi.set(__self__, "iface", iface)
 
     @property
     @pulumi.getter
     def iface(self) -> Optional[pulumi.Input[str]]:
+        """
+        Iface config Flannel network provider (string)
+        """
         return pulumi.get(self, "iface")
 
     @iface.setter
@@ -10698,6 +11816,13 @@ class ClusterRkeConfigNetworkTolerationArgs:
                  operator: Optional[pulumi.Input[str]] = None,
                  seconds: Optional[pulumi.Input[int]] = None,
                  value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The GKE taint key (string)
+        :param pulumi.Input[str] effect: The GKE taint effect (string)
+        :param pulumi.Input[str] operator: The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+        :param pulumi.Input[int] seconds: The toleration seconds (int)
+        :param pulumi.Input[str] value: The GKE taint value (string)
+        """
         pulumi.set(__self__, "key", key)
         if effect is not None:
             pulumi.set(__self__, "effect", effect)
@@ -10711,6 +11836,9 @@ class ClusterRkeConfigNetworkTolerationArgs:
     @property
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
+        """
+        The GKE taint key (string)
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -10720,6 +11848,9 @@ class ClusterRkeConfigNetworkTolerationArgs:
     @property
     @pulumi.getter
     def effect(self) -> Optional[pulumi.Input[str]]:
+        """
+        The GKE taint effect (string)
+        """
         return pulumi.get(self, "effect")
 
     @effect.setter
@@ -10729,6 +11860,9 @@ class ClusterRkeConfigNetworkTolerationArgs:
     @property
     @pulumi.getter
     def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+        """
         return pulumi.get(self, "operator")
 
     @operator.setter
@@ -10738,6 +11872,9 @@ class ClusterRkeConfigNetworkTolerationArgs:
     @property
     @pulumi.getter
     def seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        The toleration seconds (int)
+        """
         return pulumi.get(self, "seconds")
 
     @seconds.setter
@@ -10747,6 +11884,9 @@ class ClusterRkeConfigNetworkTolerationArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The GKE taint value (string)
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -10758,11 +11898,17 @@ class ClusterRkeConfigNetworkTolerationArgs:
 class ClusterRkeConfigNetworkWeaveNetworkProviderArgs:
     def __init__(__self__, *,
                  password: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] password: Registry password (string)
+        """
         pulumi.set(__self__, "password", password)
 
     @property
     @pulumi.getter
     def password(self) -> pulumi.Input[str]:
+        """
+        Registry password (string)
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -10786,7 +11932,18 @@ class ClusterRkeConfigNodeArgs:
                  ssh_key: Optional[pulumi.Input[str]] = None,
                  ssh_key_path: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] address: Address ip for node (string)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
+        :param pulumi.Input[str] user: Registry user (string)
+        :param pulumi.Input[str] docker_socket: Docker socket for node (string)
+        :param pulumi.Input[str] hostname_override: Hostname override for node (string)
+        :param pulumi.Input[str] internal_address: Internal ip for node (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for the Cluster (map)
+        :param pulumi.Input[str] node_id: Id for the node (string)
+        :param pulumi.Input[str] port: Port for node. Default `22` (string)
+        :param pulumi.Input[bool] ssh_agent_auth: Use ssh agent auth. Default `false` (bool)
+        :param pulumi.Input[str] ssh_key: Node SSH private key (string)
+        :param pulumi.Input[str] ssh_key_path: Node SSH private key path (string)
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "roles", roles)
@@ -10813,6 +11970,9 @@ class ClusterRkeConfigNodeArgs:
     @property
     @pulumi.getter
     def address(self) -> pulumi.Input[str]:
+        """
+        Address ip for node (string)
+        """
         return pulumi.get(self, "address")
 
     @address.setter
@@ -10822,6 +11982,9 @@ class ClusterRkeConfigNodeArgs:
     @property
     @pulumi.getter
     def roles(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
+        """
         return pulumi.get(self, "roles")
 
     @roles.setter
@@ -10831,6 +11994,9 @@ class ClusterRkeConfigNodeArgs:
     @property
     @pulumi.getter
     def user(self) -> pulumi.Input[str]:
+        """
+        Registry user (string)
+        """
         return pulumi.get(self, "user")
 
     @user.setter
@@ -10840,6 +12006,9 @@ class ClusterRkeConfigNodeArgs:
     @property
     @pulumi.getter(name="dockerSocket")
     def docker_socket(self) -> Optional[pulumi.Input[str]]:
+        """
+        Docker socket for node (string)
+        """
         return pulumi.get(self, "docker_socket")
 
     @docker_socket.setter
@@ -10849,6 +12018,9 @@ class ClusterRkeConfigNodeArgs:
     @property
     @pulumi.getter(name="hostnameOverride")
     def hostname_override(self) -> Optional[pulumi.Input[str]]:
+        """
+        Hostname override for node (string)
+        """
         return pulumi.get(self, "hostname_override")
 
     @hostname_override.setter
@@ -10858,6 +12030,9 @@ class ClusterRkeConfigNodeArgs:
     @property
     @pulumi.getter(name="internalAddress")
     def internal_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        Internal ip for node (string)
+        """
         return pulumi.get(self, "internal_address")
 
     @internal_address.setter
@@ -10879,6 +12054,9 @@ class ClusterRkeConfigNodeArgs:
     @property
     @pulumi.getter(name="nodeId")
     def node_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Id for the node (string)
+        """
         return pulumi.get(self, "node_id")
 
     @node_id.setter
@@ -10888,6 +12066,9 @@ class ClusterRkeConfigNodeArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[str]]:
+        """
+        Port for node. Default `22` (string)
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -10897,6 +12078,9 @@ class ClusterRkeConfigNodeArgs:
     @property
     @pulumi.getter(name="sshAgentAuth")
     def ssh_agent_auth(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Use ssh agent auth. Default `false` (bool)
+        """
         return pulumi.get(self, "ssh_agent_auth")
 
     @ssh_agent_auth.setter
@@ -10906,6 +12090,9 @@ class ClusterRkeConfigNodeArgs:
     @property
     @pulumi.getter(name="sshKey")
     def ssh_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Node SSH private key (string)
+        """
         return pulumi.get(self, "ssh_key")
 
     @ssh_key.setter
@@ -10915,6 +12102,9 @@ class ClusterRkeConfigNodeArgs:
     @property
     @pulumi.getter(name="sshKeyPath")
     def ssh_key_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Node SSH private key path (string)
+        """
         return pulumi.get(self, "ssh_key_path")
 
     @ssh_key_path.setter
@@ -10931,7 +12121,11 @@ class ClusterRkeConfigPrivateRegistryArgs:
                  password: Optional[pulumi.Input[str]] = None,
                  user: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] url: Registry URL (string)
         :param pulumi.Input['ClusterRkeConfigPrivateRegistryEcrCredentialPluginArgs'] ecr_credential_plugin: ECR credential plugin config
+        :param pulumi.Input[bool] is_default: Set as default registry. Default `false` (bool)
+        :param pulumi.Input[str] password: Registry password (string)
+        :param pulumi.Input[str] user: Registry user (string)
         """
         pulumi.set(__self__, "url", url)
         if ecr_credential_plugin is not None:
@@ -10946,6 +12140,9 @@ class ClusterRkeConfigPrivateRegistryArgs:
     @property
     @pulumi.getter
     def url(self) -> pulumi.Input[str]:
+        """
+        Registry URL (string)
+        """
         return pulumi.get(self, "url")
 
     @url.setter
@@ -10967,6 +12164,9 @@ class ClusterRkeConfigPrivateRegistryArgs:
     @property
     @pulumi.getter(name="isDefault")
     def is_default(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set as default registry. Default `false` (bool)
+        """
         return pulumi.get(self, "is_default")
 
     @is_default.setter
@@ -10976,6 +12176,9 @@ class ClusterRkeConfigPrivateRegistryArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Registry password (string)
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -10985,6 +12188,9 @@ class ClusterRkeConfigPrivateRegistryArgs:
     @property
     @pulumi.getter
     def user(self) -> Optional[pulumi.Input[str]]:
+        """
+        Registry user (string)
+        """
         return pulumi.get(self, "user")
 
     @user.setter
@@ -10998,6 +12204,11 @@ class ClusterRkeConfigPrivateRegistryEcrCredentialPluginArgs:
                  aws_access_key_id: Optional[pulumi.Input[str]] = None,
                  aws_secret_access_key: Optional[pulumi.Input[str]] = None,
                  aws_session_token: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] aws_access_key_id: AWS access key ID (string)
+        :param pulumi.Input[str] aws_secret_access_key: AWS secret access key (string)
+        :param pulumi.Input[str] aws_session_token: AWS session token (string)
+        """
         if aws_access_key_id is not None:
             pulumi.set(__self__, "aws_access_key_id", aws_access_key_id)
         if aws_secret_access_key is not None:
@@ -11008,6 +12219,9 @@ class ClusterRkeConfigPrivateRegistryEcrCredentialPluginArgs:
     @property
     @pulumi.getter(name="awsAccessKeyId")
     def aws_access_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        AWS access key ID (string)
+        """
         return pulumi.get(self, "aws_access_key_id")
 
     @aws_access_key_id.setter
@@ -11017,6 +12231,9 @@ class ClusterRkeConfigPrivateRegistryEcrCredentialPluginArgs:
     @property
     @pulumi.getter(name="awsSecretAccessKey")
     def aws_secret_access_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        AWS secret access key (string)
+        """
         return pulumi.get(self, "aws_secret_access_key")
 
     @aws_secret_access_key.setter
@@ -11026,6 +12243,9 @@ class ClusterRkeConfigPrivateRegistryEcrCredentialPluginArgs:
     @property
     @pulumi.getter(name="awsSessionToken")
     def aws_session_token(self) -> Optional[pulumi.Input[str]]:
+        """
+        AWS session token (string)
+        """
         return pulumi.get(self, "aws_session_token")
 
     @aws_session_token.setter
@@ -11042,6 +12262,14 @@ class ClusterRkeConfigServicesArgs:
                  kubelet: Optional[pulumi.Input['ClusterRkeConfigServicesKubeletArgs']] = None,
                  kubeproxy: Optional[pulumi.Input['ClusterRkeConfigServicesKubeproxyArgs']] = None,
                  scheduler: Optional[pulumi.Input['ClusterRkeConfigServicesSchedulerArgs']] = None):
+        """
+        :param pulumi.Input['ClusterRkeConfigServicesEtcdArgs'] etcd: Etcd options for RKE services (list maxitems:1)
+        :param pulumi.Input['ClusterRkeConfigServicesKubeApiArgs'] kube_api: Kube API options for RKE services (list maxitems:1)
+        :param pulumi.Input['ClusterRkeConfigServicesKubeControllerArgs'] kube_controller: Kube Controller options for RKE services (list maxitems:1)
+        :param pulumi.Input['ClusterRkeConfigServicesKubeletArgs'] kubelet: Kubelet options for RKE services (list maxitems:1)
+        :param pulumi.Input['ClusterRkeConfigServicesKubeproxyArgs'] kubeproxy: Kubeproxy options for RKE services (list maxitems:1)
+        :param pulumi.Input['ClusterRkeConfigServicesSchedulerArgs'] scheduler: Scheduler options for RKE services (list maxitems:1)
+        """
         if etcd is not None:
             pulumi.set(__self__, "etcd", etcd)
         if kube_api is not None:
@@ -11058,6 +12286,9 @@ class ClusterRkeConfigServicesArgs:
     @property
     @pulumi.getter
     def etcd(self) -> Optional[pulumi.Input['ClusterRkeConfigServicesEtcdArgs']]:
+        """
+        Etcd options for RKE services (list maxitems:1)
+        """
         return pulumi.get(self, "etcd")
 
     @etcd.setter
@@ -11067,6 +12298,9 @@ class ClusterRkeConfigServicesArgs:
     @property
     @pulumi.getter(name="kubeApi")
     def kube_api(self) -> Optional[pulumi.Input['ClusterRkeConfigServicesKubeApiArgs']]:
+        """
+        Kube API options for RKE services (list maxitems:1)
+        """
         return pulumi.get(self, "kube_api")
 
     @kube_api.setter
@@ -11076,6 +12310,9 @@ class ClusterRkeConfigServicesArgs:
     @property
     @pulumi.getter(name="kubeController")
     def kube_controller(self) -> Optional[pulumi.Input['ClusterRkeConfigServicesKubeControllerArgs']]:
+        """
+        Kube Controller options for RKE services (list maxitems:1)
+        """
         return pulumi.get(self, "kube_controller")
 
     @kube_controller.setter
@@ -11085,6 +12322,9 @@ class ClusterRkeConfigServicesArgs:
     @property
     @pulumi.getter
     def kubelet(self) -> Optional[pulumi.Input['ClusterRkeConfigServicesKubeletArgs']]:
+        """
+        Kubelet options for RKE services (list maxitems:1)
+        """
         return pulumi.get(self, "kubelet")
 
     @kubelet.setter
@@ -11094,6 +12334,9 @@ class ClusterRkeConfigServicesArgs:
     @property
     @pulumi.getter
     def kubeproxy(self) -> Optional[pulumi.Input['ClusterRkeConfigServicesKubeproxyArgs']]:
+        """
+        Kubeproxy options for RKE services (list maxitems:1)
+        """
         return pulumi.get(self, "kubeproxy")
 
     @kubeproxy.setter
@@ -11103,6 +12346,9 @@ class ClusterRkeConfigServicesArgs:
     @property
     @pulumi.getter
     def scheduler(self) -> Optional[pulumi.Input['ClusterRkeConfigServicesSchedulerArgs']]:
+        """
+        Scheduler options for RKE services (list maxitems:1)
+        """
         return pulumi.get(self, "scheduler")
 
     @scheduler.setter
@@ -11129,7 +12375,21 @@ class ClusterRkeConfigServicesEtcdArgs:
                  snapshot: Optional[pulumi.Input[bool]] = None,
                  uid: Optional[pulumi.Input[int]] = None):
         """
+        :param pulumi.Input['ClusterRkeConfigServicesEtcdBackupConfigArgs'] backup_config: Backup options for etcd service. For Rancher v2.2.x (list maxitems:1)
         :param pulumi.Input[str] ca_cert: (Computed/Sensitive) K8s cluster ca cert (string)
+        :param pulumi.Input[str] cert: TLS certificate for etcd service (string)
+        :param pulumi.Input[str] creation: Creation option for etcd service (string)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] external_urls: External urls for etcd service (list)
+        :param pulumi.Input[Mapping[str, Any]] extra_args: Extra arguments for scheduler service (map)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] extra_binds: Extra binds for scheduler service (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] extra_envs: Extra environment for scheduler service (list)
+        :param pulumi.Input[int] gid: Etcd service GID. Default: `0`. For Rancher v2.3.x and above (int)
+        :param pulumi.Input[str] image: Docker image for scheduler service (string)
+        :param pulumi.Input[str] key: The GKE taint key (string)
+        :param pulumi.Input[str] path: (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+        :param pulumi.Input[str] retention: Retention for etcd backup. Default `6` (int)
+        :param pulumi.Input[bool] snapshot: Snapshot option for etcd service (bool)
+        :param pulumi.Input[int] uid: Etcd service UID. Default: `0`. For Rancher v2.3.x and above (int)
         """
         if backup_config is not None:
             pulumi.set(__self__, "backup_config", backup_config)
@@ -11165,6 +12425,9 @@ class ClusterRkeConfigServicesEtcdArgs:
     @property
     @pulumi.getter(name="backupConfig")
     def backup_config(self) -> Optional[pulumi.Input['ClusterRkeConfigServicesEtcdBackupConfigArgs']]:
+        """
+        Backup options for etcd service. For Rancher v2.2.x (list maxitems:1)
+        """
         return pulumi.get(self, "backup_config")
 
     @backup_config.setter
@@ -11186,6 +12449,9 @@ class ClusterRkeConfigServicesEtcdArgs:
     @property
     @pulumi.getter
     def cert(self) -> Optional[pulumi.Input[str]]:
+        """
+        TLS certificate for etcd service (string)
+        """
         return pulumi.get(self, "cert")
 
     @cert.setter
@@ -11195,6 +12461,9 @@ class ClusterRkeConfigServicesEtcdArgs:
     @property
     @pulumi.getter
     def creation(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creation option for etcd service (string)
+        """
         return pulumi.get(self, "creation")
 
     @creation.setter
@@ -11204,6 +12473,9 @@ class ClusterRkeConfigServicesEtcdArgs:
     @property
     @pulumi.getter(name="externalUrls")
     def external_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        External urls for etcd service (list)
+        """
         return pulumi.get(self, "external_urls")
 
     @external_urls.setter
@@ -11213,6 +12485,9 @@ class ClusterRkeConfigServicesEtcdArgs:
     @property
     @pulumi.getter(name="extraArgs")
     def extra_args(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Extra arguments for scheduler service (map)
+        """
         return pulumi.get(self, "extra_args")
 
     @extra_args.setter
@@ -11222,6 +12497,9 @@ class ClusterRkeConfigServicesEtcdArgs:
     @property
     @pulumi.getter(name="extraBinds")
     def extra_binds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Extra binds for scheduler service (list)
+        """
         return pulumi.get(self, "extra_binds")
 
     @extra_binds.setter
@@ -11231,6 +12509,9 @@ class ClusterRkeConfigServicesEtcdArgs:
     @property
     @pulumi.getter(name="extraEnvs")
     def extra_envs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Extra environment for scheduler service (list)
+        """
         return pulumi.get(self, "extra_envs")
 
     @extra_envs.setter
@@ -11240,6 +12521,9 @@ class ClusterRkeConfigServicesEtcdArgs:
     @property
     @pulumi.getter
     def gid(self) -> Optional[pulumi.Input[int]]:
+        """
+        Etcd service GID. Default: `0`. For Rancher v2.3.x and above (int)
+        """
         return pulumi.get(self, "gid")
 
     @gid.setter
@@ -11249,6 +12533,9 @@ class ClusterRkeConfigServicesEtcdArgs:
     @property
     @pulumi.getter
     def image(self) -> Optional[pulumi.Input[str]]:
+        """
+        Docker image for scheduler service (string)
+        """
         return pulumi.get(self, "image")
 
     @image.setter
@@ -11258,6 +12545,9 @@ class ClusterRkeConfigServicesEtcdArgs:
     @property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The GKE taint key (string)
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -11267,6 +12557,9 @@ class ClusterRkeConfigServicesEtcdArgs:
     @property
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+        """
         return pulumi.get(self, "path")
 
     @path.setter
@@ -11276,6 +12569,9 @@ class ClusterRkeConfigServicesEtcdArgs:
     @property
     @pulumi.getter
     def retention(self) -> Optional[pulumi.Input[str]]:
+        """
+        Retention for etcd backup. Default `6` (int)
+        """
         return pulumi.get(self, "retention")
 
     @retention.setter
@@ -11285,6 +12581,9 @@ class ClusterRkeConfigServicesEtcdArgs:
     @property
     @pulumi.getter
     def snapshot(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Snapshot option for etcd service (bool)
+        """
         return pulumi.get(self, "snapshot")
 
     @snapshot.setter
@@ -11294,6 +12593,9 @@ class ClusterRkeConfigServicesEtcdArgs:
     @property
     @pulumi.getter
     def uid(self) -> Optional[pulumi.Input[int]]:
+        """
+        Etcd service UID. Default: `0`. For Rancher v2.3.x and above (int)
+        """
         return pulumi.get(self, "uid")
 
     @uid.setter
@@ -11310,6 +12612,14 @@ class ClusterRkeConfigServicesEtcdBackupConfigArgs:
                  s3_backup_config: Optional[pulumi.Input['ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs']] = None,
                  safe_timestamp: Optional[pulumi.Input[bool]] = None,
                  timeout: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Enable the authorized cluster endpoint. Default `true` (bool)
+        :param pulumi.Input[int] interval_hours: Interval hours for etcd backup. Default `12` (int)
+        :param pulumi.Input[int] retention: Retention for etcd backup. Default `6` (int)
+        :param pulumi.Input['ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs'] s3_backup_config: S3 config options for etcd backup (list maxitems:1)
+        :param pulumi.Input[bool] safe_timestamp: Safe timestamp for etcd backup. Default: `false` (bool)
+        :param pulumi.Input[int] timeout: RKE node drain timeout. Default: `60` (int)
+        """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if interval_hours is not None:
@@ -11326,6 +12636,9 @@ class ClusterRkeConfigServicesEtcdBackupConfigArgs:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable the authorized cluster endpoint. Default `true` (bool)
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -11335,6 +12648,9 @@ class ClusterRkeConfigServicesEtcdBackupConfigArgs:
     @property
     @pulumi.getter(name="intervalHours")
     def interval_hours(self) -> Optional[pulumi.Input[int]]:
+        """
+        Interval hours for etcd backup. Default `12` (int)
+        """
         return pulumi.get(self, "interval_hours")
 
     @interval_hours.setter
@@ -11344,6 +12660,9 @@ class ClusterRkeConfigServicesEtcdBackupConfigArgs:
     @property
     @pulumi.getter
     def retention(self) -> Optional[pulumi.Input[int]]:
+        """
+        Retention for etcd backup. Default `6` (int)
+        """
         return pulumi.get(self, "retention")
 
     @retention.setter
@@ -11353,6 +12672,9 @@ class ClusterRkeConfigServicesEtcdBackupConfigArgs:
     @property
     @pulumi.getter(name="s3BackupConfig")
     def s3_backup_config(self) -> Optional[pulumi.Input['ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs']]:
+        """
+        S3 config options for etcd backup (list maxitems:1)
+        """
         return pulumi.get(self, "s3_backup_config")
 
     @s3_backup_config.setter
@@ -11362,6 +12684,9 @@ class ClusterRkeConfigServicesEtcdBackupConfigArgs:
     @property
     @pulumi.getter(name="safeTimestamp")
     def safe_timestamp(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Safe timestamp for etcd backup. Default: `false` (bool)
+        """
         return pulumi.get(self, "safe_timestamp")
 
     @safe_timestamp.setter
@@ -11371,6 +12696,9 @@ class ClusterRkeConfigServicesEtcdBackupConfigArgs:
     @property
     @pulumi.getter
     def timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        RKE node drain timeout. Default: `60` (int)
+        """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
@@ -11388,6 +12716,15 @@ class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs:
                  folder: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] bucket_name: Bucket name for S3 service (string)
+        :param pulumi.Input[str] endpoint: Endpoint for S3 service (string)
+        :param pulumi.Input[str] access_key: The AWS Client ID to use (string)
+        :param pulumi.Input[str] custom_ca: Base64 encoded custom CA for S3 service. Use filebase64(<FILE>) for encoding file. Available from Rancher v2.2.5 (string)
+        :param pulumi.Input[str] folder: Folder for S3 service. Available from Rancher v2.2.7 (string)
+        :param pulumi.Input[str] region: The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+        :param pulumi.Input[str] secret_key: The AWS Client Secret associated with the Client ID (string)
+        """
         pulumi.set(__self__, "bucket_name", bucket_name)
         pulumi.set(__self__, "endpoint", endpoint)
         if access_key is not None:
@@ -11404,6 +12741,9 @@ class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs:
     @property
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> pulumi.Input[str]:
+        """
+        Bucket name for S3 service (string)
+        """
         return pulumi.get(self, "bucket_name")
 
     @bucket_name.setter
@@ -11413,6 +12753,9 @@ class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs:
     @property
     @pulumi.getter
     def endpoint(self) -> pulumi.Input[str]:
+        """
+        Endpoint for S3 service (string)
+        """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
@@ -11422,6 +12765,9 @@ class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs:
     @property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The AWS Client ID to use (string)
+        """
         return pulumi.get(self, "access_key")
 
     @access_key.setter
@@ -11431,6 +12777,9 @@ class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs:
     @property
     @pulumi.getter(name="customCa")
     def custom_ca(self) -> Optional[pulumi.Input[str]]:
+        """
+        Base64 encoded custom CA for S3 service. Use filebase64(<FILE>) for encoding file. Available from Rancher v2.2.5 (string)
+        """
         return pulumi.get(self, "custom_ca")
 
     @custom_ca.setter
@@ -11440,6 +12789,9 @@ class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs:
     @property
     @pulumi.getter
     def folder(self) -> Optional[pulumi.Input[str]]:
+        """
+        Folder for S3 service. Available from Rancher v2.2.7 (string)
+        """
         return pulumi.get(self, "folder")
 
     @folder.setter
@@ -11449,6 +12801,9 @@ class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -11458,6 +12813,9 @@ class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs:
     @property
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The AWS Client Secret associated with the Client ID (string)
+        """
         return pulumi.get(self, "secret_key")
 
     @secret_key.setter
@@ -11482,6 +12840,17 @@ class ClusterRkeConfigServicesKubeApiArgs:
                  service_node_port_range: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input['ClusterRkeConfigServicesKubeApiAdmissionConfigurationArgs'] admission_configuration: Cluster admission configuration
+        :param pulumi.Input[bool] always_pull_images: Enable [AlwaysPullImages](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#alwayspullimages) Admission controller plugin. [Rancher docs](https://rancher.com/docs/rke/latest/en/config-options/services/#kubernetes-api-server-options) Default: `false` (bool)
+        :param pulumi.Input['ClusterRkeConfigServicesKubeApiAuditLogArgs'] audit_log: K8s audit log configuration. (list maxitems: 1)
+        :param pulumi.Input['ClusterRkeConfigServicesKubeApiEventRateLimitArgs'] event_rate_limit: K8s event rate limit configuration. (list maxitems: 1)
+        :param pulumi.Input[Mapping[str, Any]] extra_args: Extra arguments for scheduler service (map)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] extra_binds: Extra binds for scheduler service (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] extra_envs: Extra environment for scheduler service (list)
+        :param pulumi.Input[str] image: Docker image for scheduler service (string)
+        :param pulumi.Input[bool] pod_security_policy: Pod Security Policy option for kube API service. Default `false` (bool)
+        :param pulumi.Input['ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs'] secrets_encryption_config: [Encrypt k8s secret data configration](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/). (list maxitem: 1)
+        :param pulumi.Input[str] service_cluster_ip_range: Service Cluster ip Range option for kube controller service (string)
+        :param pulumi.Input[str] service_node_port_range: Service Node Port Range option for kube API service (string)
         """
         if admission_configuration is not None:
             pulumi.set(__self__, "admission_configuration", admission_configuration)
@@ -11523,6 +12892,9 @@ class ClusterRkeConfigServicesKubeApiArgs:
     @property
     @pulumi.getter(name="alwaysPullImages")
     def always_pull_images(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable [AlwaysPullImages](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#alwayspullimages) Admission controller plugin. [Rancher docs](https://rancher.com/docs/rke/latest/en/config-options/services/#kubernetes-api-server-options) Default: `false` (bool)
+        """
         return pulumi.get(self, "always_pull_images")
 
     @always_pull_images.setter
@@ -11532,6 +12904,9 @@ class ClusterRkeConfigServicesKubeApiArgs:
     @property
     @pulumi.getter(name="auditLog")
     def audit_log(self) -> Optional[pulumi.Input['ClusterRkeConfigServicesKubeApiAuditLogArgs']]:
+        """
+        K8s audit log configuration. (list maxitems: 1)
+        """
         return pulumi.get(self, "audit_log")
 
     @audit_log.setter
@@ -11541,6 +12916,9 @@ class ClusterRkeConfigServicesKubeApiArgs:
     @property
     @pulumi.getter(name="eventRateLimit")
     def event_rate_limit(self) -> Optional[pulumi.Input['ClusterRkeConfigServicesKubeApiEventRateLimitArgs']]:
+        """
+        K8s event rate limit configuration. (list maxitems: 1)
+        """
         return pulumi.get(self, "event_rate_limit")
 
     @event_rate_limit.setter
@@ -11550,6 +12928,9 @@ class ClusterRkeConfigServicesKubeApiArgs:
     @property
     @pulumi.getter(name="extraArgs")
     def extra_args(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Extra arguments for scheduler service (map)
+        """
         return pulumi.get(self, "extra_args")
 
     @extra_args.setter
@@ -11559,6 +12940,9 @@ class ClusterRkeConfigServicesKubeApiArgs:
     @property
     @pulumi.getter(name="extraBinds")
     def extra_binds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Extra binds for scheduler service (list)
+        """
         return pulumi.get(self, "extra_binds")
 
     @extra_binds.setter
@@ -11568,6 +12952,9 @@ class ClusterRkeConfigServicesKubeApiArgs:
     @property
     @pulumi.getter(name="extraEnvs")
     def extra_envs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Extra environment for scheduler service (list)
+        """
         return pulumi.get(self, "extra_envs")
 
     @extra_envs.setter
@@ -11577,6 +12964,9 @@ class ClusterRkeConfigServicesKubeApiArgs:
     @property
     @pulumi.getter
     def image(self) -> Optional[pulumi.Input[str]]:
+        """
+        Docker image for scheduler service (string)
+        """
         return pulumi.get(self, "image")
 
     @image.setter
@@ -11586,6 +12976,9 @@ class ClusterRkeConfigServicesKubeApiArgs:
     @property
     @pulumi.getter(name="podSecurityPolicy")
     def pod_security_policy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Pod Security Policy option for kube API service. Default `false` (bool)
+        """
         return pulumi.get(self, "pod_security_policy")
 
     @pod_security_policy.setter
@@ -11595,6 +12988,9 @@ class ClusterRkeConfigServicesKubeApiArgs:
     @property
     @pulumi.getter(name="secretsEncryptionConfig")
     def secrets_encryption_config(self) -> Optional[pulumi.Input['ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs']]:
+        """
+        [Encrypt k8s secret data configration](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/). (list maxitem: 1)
+        """
         return pulumi.get(self, "secrets_encryption_config")
 
     @secrets_encryption_config.setter
@@ -11604,6 +13000,9 @@ class ClusterRkeConfigServicesKubeApiArgs:
     @property
     @pulumi.getter(name="serviceClusterIpRange")
     def service_cluster_ip_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service Cluster ip Range option for kube controller service (string)
+        """
         return pulumi.get(self, "service_cluster_ip_range")
 
     @service_cluster_ip_range.setter
@@ -11613,6 +13012,9 @@ class ClusterRkeConfigServicesKubeApiArgs:
     @property
     @pulumi.getter(name="serviceNodePortRange")
     def service_node_port_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service Node Port Range option for kube API service (string)
+        """
         return pulumi.get(self, "service_node_port_range")
 
     @service_node_port_range.setter
@@ -11735,6 +13137,21 @@ class ClusterRkeConfigServicesKubeApiAuditLogArgs:
     def __init__(__self__, *,
                  configuration: Optional[pulumi.Input['ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs']] = None,
                  enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input['ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs'] configuration: Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
+               
+               ```
+               configuration = <<EOF
+               apiVersion: eventratelimit.admission.k8s.io/v1alpha1
+               kind: Configuration
+               limits:
+               - type: Server
+               burst: 35000
+               qps: 6000
+               EOF
+               ```
+        :param pulumi.Input[bool] enabled: Enable the authorized cluster endpoint. Default `true` (bool)
+        """
         if configuration is not None:
             pulumi.set(__self__, "configuration", configuration)
         if enabled is not None:
@@ -11743,6 +13160,20 @@ class ClusterRkeConfigServicesKubeApiAuditLogArgs:
     @property
     @pulumi.getter
     def configuration(self) -> Optional[pulumi.Input['ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs']]:
+        """
+        Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
+
+        ```
+        configuration = <<EOF
+        apiVersion: eventratelimit.admission.k8s.io/v1alpha1
+        kind: Configuration
+        limits:
+        - type: Server
+        burst: 35000
+        qps: 6000
+        EOF
+        ```
+        """
         return pulumi.get(self, "configuration")
 
     @configuration.setter
@@ -11752,6 +13183,9 @@ class ClusterRkeConfigServicesKubeApiAuditLogArgs:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable the authorized cluster endpoint. Default `true` (bool)
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -11768,6 +13202,26 @@ class ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs:
                  max_size: Optional[pulumi.Input[int]] = None,
                  path: Optional[pulumi.Input[str]] = None,
                  policy: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] format: Audit log format. Default: 'json' (string)
+        :param pulumi.Input[int] max_age: Audit log max age. Default: `30` (int)
+        :param pulumi.Input[int] max_backup: Audit log max backup. Default: `10` (int)
+        :param pulumi.Input[int] max_size: The EKS node group maximum size. Default `2` (int)
+        :param pulumi.Input[str] path: (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+        :param pulumi.Input[str] policy: Audit policy yaml encoded definition. `apiVersion` and `kind: Policy\\nrules:"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/audit-log/) (string) Ex:
+               
+               ```
+               policy = <<EOF
+               apiVersion: audit.k8s.io/v1
+               kind: Policy
+               rules:
+               - level: RequestResponse
+               resources:
+               - resources:
+               - pods
+               EOF
+               ```
+        """
         if format is not None:
             pulumi.set(__self__, "format", format)
         if max_age is not None:
@@ -11784,6 +13238,9 @@ class ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs:
     @property
     @pulumi.getter
     def format(self) -> Optional[pulumi.Input[str]]:
+        """
+        Audit log format. Default: 'json' (string)
+        """
         return pulumi.get(self, "format")
 
     @format.setter
@@ -11793,6 +13250,9 @@ class ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs:
     @property
     @pulumi.getter(name="maxAge")
     def max_age(self) -> Optional[pulumi.Input[int]]:
+        """
+        Audit log max age. Default: `30` (int)
+        """
         return pulumi.get(self, "max_age")
 
     @max_age.setter
@@ -11802,6 +13262,9 @@ class ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs:
     @property
     @pulumi.getter(name="maxBackup")
     def max_backup(self) -> Optional[pulumi.Input[int]]:
+        """
+        Audit log max backup. Default: `10` (int)
+        """
         return pulumi.get(self, "max_backup")
 
     @max_backup.setter
@@ -11811,6 +13274,9 @@ class ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs:
     @property
     @pulumi.getter(name="maxSize")
     def max_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The EKS node group maximum size. Default `2` (int)
+        """
         return pulumi.get(self, "max_size")
 
     @max_size.setter
@@ -11820,6 +13286,9 @@ class ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs:
     @property
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+        """
         return pulumi.get(self, "path")
 
     @path.setter
@@ -11829,6 +13298,21 @@ class ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs:
     @property
     @pulumi.getter
     def policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Audit policy yaml encoded definition. `apiVersion` and `kind: Policy\\nrules:"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/audit-log/) (string) Ex:
+
+        ```
+        policy = <<EOF
+        apiVersion: audit.k8s.io/v1
+        kind: Policy
+        rules:
+        - level: RequestResponse
+        resources:
+        - resources:
+        - pods
+        EOF
+        ```
+        """
         return pulumi.get(self, "policy")
 
     @policy.setter
@@ -11841,6 +13325,21 @@ class ClusterRkeConfigServicesKubeApiEventRateLimitArgs:
     def __init__(__self__, *,
                  configuration: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] configuration: Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
+               
+               ```
+               configuration = <<EOF
+               apiVersion: eventratelimit.admission.k8s.io/v1alpha1
+               kind: Configuration
+               limits:
+               - type: Server
+               burst: 35000
+               qps: 6000
+               EOF
+               ```
+        :param pulumi.Input[bool] enabled: Enable the authorized cluster endpoint. Default `true` (bool)
+        """
         if configuration is not None:
             pulumi.set(__self__, "configuration", configuration)
         if enabled is not None:
@@ -11849,6 +13348,20 @@ class ClusterRkeConfigServicesKubeApiEventRateLimitArgs:
     @property
     @pulumi.getter
     def configuration(self) -> Optional[pulumi.Input[str]]:
+        """
+        Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
+
+        ```
+        configuration = <<EOF
+        apiVersion: eventratelimit.admission.k8s.io/v1alpha1
+        kind: Configuration
+        limits:
+        - type: Server
+        burst: 35000
+        qps: 6000
+        EOF
+        ```
+        """
         return pulumi.get(self, "configuration")
 
     @configuration.setter
@@ -11858,6 +13371,9 @@ class ClusterRkeConfigServicesKubeApiEventRateLimitArgs:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable the authorized cluster endpoint. Default `true` (bool)
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -11870,6 +13386,27 @@ class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs:
     def __init__(__self__, *,
                  custom_config: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] custom_config: Secrets encryption yaml encoded custom configuration. `"apiVersion"` and `"kind":"EncryptionConfiguration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/) (string) Ex:
+               
+               ```
+               custom_config = <<EOF
+               apiVersion: apiserver.config.k8s.io/v1
+               kind: EncryptionConfiguration
+               resources:
+               - resources:
+               - secrets
+               providers:
+               - aescbc:
+               keys:
+               - name: k-fw5hn
+               secret: RTczRjFDODMwQzAyMDVBREU4NDJBMUZFNDhCNzM5N0I=
+               identity: {}
+               EOF
+               
+               ```
+        :param pulumi.Input[bool] enabled: Enable the authorized cluster endpoint. Default `true` (bool)
+        """
         if custom_config is not None:
             pulumi.set(__self__, "custom_config", custom_config)
         if enabled is not None:
@@ -11878,6 +13415,26 @@ class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs:
     @property
     @pulumi.getter(name="customConfig")
     def custom_config(self) -> Optional[pulumi.Input[str]]:
+        """
+        Secrets encryption yaml encoded custom configuration. `"apiVersion"` and `"kind":"EncryptionConfiguration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/) (string) Ex:
+
+        ```
+        custom_config = <<EOF
+        apiVersion: apiserver.config.k8s.io/v1
+        kind: EncryptionConfiguration
+        resources:
+        - resources:
+        - secrets
+        providers:
+        - aescbc:
+        keys:
+        - name: k-fw5hn
+        secret: RTczRjFDODMwQzAyMDVBREU4NDJBMUZFNDhCNzM5N0I=
+        identity: {}
+        EOF
+
+        ```
+        """
         return pulumi.get(self, "custom_config")
 
     @custom_config.setter
@@ -11887,6 +13444,9 @@ class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable the authorized cluster endpoint. Default `true` (bool)
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -11903,6 +13463,14 @@ class ClusterRkeConfigServicesKubeControllerArgs:
                  extra_envs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  service_cluster_ip_range: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] cluster_cidr: Cluster CIDR option for kube controller service (string)
+        :param pulumi.Input[Mapping[str, Any]] extra_args: Extra arguments for scheduler service (map)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] extra_binds: Extra binds for scheduler service (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] extra_envs: Extra environment for scheduler service (list)
+        :param pulumi.Input[str] image: Docker image for scheduler service (string)
+        :param pulumi.Input[str] service_cluster_ip_range: Service Cluster ip Range option for kube controller service (string)
+        """
         if cluster_cidr is not None:
             pulumi.set(__self__, "cluster_cidr", cluster_cidr)
         if extra_args is not None:
@@ -11919,6 +13487,9 @@ class ClusterRkeConfigServicesKubeControllerArgs:
     @property
     @pulumi.getter(name="clusterCidr")
     def cluster_cidr(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cluster CIDR option for kube controller service (string)
+        """
         return pulumi.get(self, "cluster_cidr")
 
     @cluster_cidr.setter
@@ -11928,6 +13499,9 @@ class ClusterRkeConfigServicesKubeControllerArgs:
     @property
     @pulumi.getter(name="extraArgs")
     def extra_args(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Extra arguments for scheduler service (map)
+        """
         return pulumi.get(self, "extra_args")
 
     @extra_args.setter
@@ -11937,6 +13511,9 @@ class ClusterRkeConfigServicesKubeControllerArgs:
     @property
     @pulumi.getter(name="extraBinds")
     def extra_binds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Extra binds for scheduler service (list)
+        """
         return pulumi.get(self, "extra_binds")
 
     @extra_binds.setter
@@ -11946,6 +13523,9 @@ class ClusterRkeConfigServicesKubeControllerArgs:
     @property
     @pulumi.getter(name="extraEnvs")
     def extra_envs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Extra environment for scheduler service (list)
+        """
         return pulumi.get(self, "extra_envs")
 
     @extra_envs.setter
@@ -11955,6 +13535,9 @@ class ClusterRkeConfigServicesKubeControllerArgs:
     @property
     @pulumi.getter
     def image(self) -> Optional[pulumi.Input[str]]:
+        """
+        Docker image for scheduler service (string)
+        """
         return pulumi.get(self, "image")
 
     @image.setter
@@ -11964,6 +13547,9 @@ class ClusterRkeConfigServicesKubeControllerArgs:
     @property
     @pulumi.getter(name="serviceClusterIpRange")
     def service_cluster_ip_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service Cluster ip Range option for kube controller service (string)
+        """
         return pulumi.get(self, "service_cluster_ip_range")
 
     @service_cluster_ip_range.setter
@@ -11983,6 +13569,17 @@ class ClusterRkeConfigServicesKubeletArgs:
                  generate_serving_certificate: Optional[pulumi.Input[bool]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  infra_container_image: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] cluster_dns_server: Cluster DNS Server option for kubelet service (string)
+        :param pulumi.Input[str] cluster_domain: Cluster Domain option for kubelet service (string)
+        :param pulumi.Input[Mapping[str, Any]] extra_args: Extra arguments for scheduler service (map)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] extra_binds: Extra binds for scheduler service (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] extra_envs: Extra environment for scheduler service (list)
+        :param pulumi.Input[bool] fail_swap_on: Enable or disable failing when swap on is not supported (bool)
+        :param pulumi.Input[bool] generate_serving_certificate: [Generate a certificate signed by the kube-ca](https://rancher.com/docs/rke/latest/en/config-options/services/#kubelet-serving-certificate-requirements). Default `false` (bool)
+        :param pulumi.Input[str] image: Docker image for scheduler service (string)
+        :param pulumi.Input[str] infra_container_image: Infra container image for kubelet service (string)
+        """
         if cluster_dns_server is not None:
             pulumi.set(__self__, "cluster_dns_server", cluster_dns_server)
         if cluster_domain is not None:
@@ -12005,6 +13602,9 @@ class ClusterRkeConfigServicesKubeletArgs:
     @property
     @pulumi.getter(name="clusterDnsServer")
     def cluster_dns_server(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cluster DNS Server option for kubelet service (string)
+        """
         return pulumi.get(self, "cluster_dns_server")
 
     @cluster_dns_server.setter
@@ -12014,6 +13614,9 @@ class ClusterRkeConfigServicesKubeletArgs:
     @property
     @pulumi.getter(name="clusterDomain")
     def cluster_domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cluster Domain option for kubelet service (string)
+        """
         return pulumi.get(self, "cluster_domain")
 
     @cluster_domain.setter
@@ -12023,6 +13626,9 @@ class ClusterRkeConfigServicesKubeletArgs:
     @property
     @pulumi.getter(name="extraArgs")
     def extra_args(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Extra arguments for scheduler service (map)
+        """
         return pulumi.get(self, "extra_args")
 
     @extra_args.setter
@@ -12032,6 +13638,9 @@ class ClusterRkeConfigServicesKubeletArgs:
     @property
     @pulumi.getter(name="extraBinds")
     def extra_binds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Extra binds for scheduler service (list)
+        """
         return pulumi.get(self, "extra_binds")
 
     @extra_binds.setter
@@ -12041,6 +13650,9 @@ class ClusterRkeConfigServicesKubeletArgs:
     @property
     @pulumi.getter(name="extraEnvs")
     def extra_envs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Extra environment for scheduler service (list)
+        """
         return pulumi.get(self, "extra_envs")
 
     @extra_envs.setter
@@ -12050,6 +13662,9 @@ class ClusterRkeConfigServicesKubeletArgs:
     @property
     @pulumi.getter(name="failSwapOn")
     def fail_swap_on(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable or disable failing when swap on is not supported (bool)
+        """
         return pulumi.get(self, "fail_swap_on")
 
     @fail_swap_on.setter
@@ -12059,6 +13674,9 @@ class ClusterRkeConfigServicesKubeletArgs:
     @property
     @pulumi.getter(name="generateServingCertificate")
     def generate_serving_certificate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        [Generate a certificate signed by the kube-ca](https://rancher.com/docs/rke/latest/en/config-options/services/#kubelet-serving-certificate-requirements). Default `false` (bool)
+        """
         return pulumi.get(self, "generate_serving_certificate")
 
     @generate_serving_certificate.setter
@@ -12068,6 +13686,9 @@ class ClusterRkeConfigServicesKubeletArgs:
     @property
     @pulumi.getter
     def image(self) -> Optional[pulumi.Input[str]]:
+        """
+        Docker image for scheduler service (string)
+        """
         return pulumi.get(self, "image")
 
     @image.setter
@@ -12077,6 +13698,9 @@ class ClusterRkeConfigServicesKubeletArgs:
     @property
     @pulumi.getter(name="infraContainerImage")
     def infra_container_image(self) -> Optional[pulumi.Input[str]]:
+        """
+        Infra container image for kubelet service (string)
+        """
         return pulumi.get(self, "infra_container_image")
 
     @infra_container_image.setter
@@ -12091,6 +13715,12 @@ class ClusterRkeConfigServicesKubeproxyArgs:
                  extra_binds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  extra_envs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  image: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Mapping[str, Any]] extra_args: Extra arguments for scheduler service (map)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] extra_binds: Extra binds for scheduler service (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] extra_envs: Extra environment for scheduler service (list)
+        :param pulumi.Input[str] image: Docker image for scheduler service (string)
+        """
         if extra_args is not None:
             pulumi.set(__self__, "extra_args", extra_args)
         if extra_binds is not None:
@@ -12103,6 +13733,9 @@ class ClusterRkeConfigServicesKubeproxyArgs:
     @property
     @pulumi.getter(name="extraArgs")
     def extra_args(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Extra arguments for scheduler service (map)
+        """
         return pulumi.get(self, "extra_args")
 
     @extra_args.setter
@@ -12112,6 +13745,9 @@ class ClusterRkeConfigServicesKubeproxyArgs:
     @property
     @pulumi.getter(name="extraBinds")
     def extra_binds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Extra binds for scheduler service (list)
+        """
         return pulumi.get(self, "extra_binds")
 
     @extra_binds.setter
@@ -12121,6 +13757,9 @@ class ClusterRkeConfigServicesKubeproxyArgs:
     @property
     @pulumi.getter(name="extraEnvs")
     def extra_envs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Extra environment for scheduler service (list)
+        """
         return pulumi.get(self, "extra_envs")
 
     @extra_envs.setter
@@ -12130,6 +13769,9 @@ class ClusterRkeConfigServicesKubeproxyArgs:
     @property
     @pulumi.getter
     def image(self) -> Optional[pulumi.Input[str]]:
+        """
+        Docker image for scheduler service (string)
+        """
         return pulumi.get(self, "image")
 
     @image.setter
@@ -12144,6 +13786,12 @@ class ClusterRkeConfigServicesSchedulerArgs:
                  extra_binds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  extra_envs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  image: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Mapping[str, Any]] extra_args: Extra arguments for scheduler service (map)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] extra_binds: Extra binds for scheduler service (list)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] extra_envs: Extra environment for scheduler service (list)
+        :param pulumi.Input[str] image: Docker image for scheduler service (string)
+        """
         if extra_args is not None:
             pulumi.set(__self__, "extra_args", extra_args)
         if extra_binds is not None:
@@ -12156,6 +13804,9 @@ class ClusterRkeConfigServicesSchedulerArgs:
     @property
     @pulumi.getter(name="extraArgs")
     def extra_args(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Extra arguments for scheduler service (map)
+        """
         return pulumi.get(self, "extra_args")
 
     @extra_args.setter
@@ -12165,6 +13816,9 @@ class ClusterRkeConfigServicesSchedulerArgs:
     @property
     @pulumi.getter(name="extraBinds")
     def extra_binds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Extra binds for scheduler service (list)
+        """
         return pulumi.get(self, "extra_binds")
 
     @extra_binds.setter
@@ -12174,6 +13828,9 @@ class ClusterRkeConfigServicesSchedulerArgs:
     @property
     @pulumi.getter(name="extraEnvs")
     def extra_envs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Extra environment for scheduler service (list)
+        """
         return pulumi.get(self, "extra_envs")
 
     @extra_envs.setter
@@ -12183,6 +13840,9 @@ class ClusterRkeConfigServicesSchedulerArgs:
     @property
     @pulumi.getter
     def image(self) -> Optional[pulumi.Input[str]]:
+        """
+        Docker image for scheduler service (string)
+        """
         return pulumi.get(self, "image")
 
     @image.setter
@@ -12197,6 +13857,12 @@ class ClusterRkeConfigUpgradeStrategyArgs:
                  drain_input: Optional[pulumi.Input['ClusterRkeConfigUpgradeStrategyDrainInputArgs']] = None,
                  max_unavailable_controlplane: Optional[pulumi.Input[str]] = None,
                  max_unavailable_worker: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] drain: RKE drain nodes. Default: `false` (bool)
+        :param pulumi.Input['ClusterRkeConfigUpgradeStrategyDrainInputArgs'] drain_input: RKE drain node input (list Maxitems: 1)
+        :param pulumi.Input[str] max_unavailable_controlplane: RKE max unavailable controlplane nodes. Default: `1` (string)
+        :param pulumi.Input[str] max_unavailable_worker: RKE max unavailable worker nodes. Default: `10%` (string)
+        """
         if drain is not None:
             pulumi.set(__self__, "drain", drain)
         if drain_input is not None:
@@ -12209,6 +13875,9 @@ class ClusterRkeConfigUpgradeStrategyArgs:
     @property
     @pulumi.getter
     def drain(self) -> Optional[pulumi.Input[bool]]:
+        """
+        RKE drain nodes. Default: `false` (bool)
+        """
         return pulumi.get(self, "drain")
 
     @drain.setter
@@ -12218,6 +13887,9 @@ class ClusterRkeConfigUpgradeStrategyArgs:
     @property
     @pulumi.getter(name="drainInput")
     def drain_input(self) -> Optional[pulumi.Input['ClusterRkeConfigUpgradeStrategyDrainInputArgs']]:
+        """
+        RKE drain node input (list Maxitems: 1)
+        """
         return pulumi.get(self, "drain_input")
 
     @drain_input.setter
@@ -12227,6 +13899,9 @@ class ClusterRkeConfigUpgradeStrategyArgs:
     @property
     @pulumi.getter(name="maxUnavailableControlplane")
     def max_unavailable_controlplane(self) -> Optional[pulumi.Input[str]]:
+        """
+        RKE max unavailable controlplane nodes. Default: `1` (string)
+        """
         return pulumi.get(self, "max_unavailable_controlplane")
 
     @max_unavailable_controlplane.setter
@@ -12236,6 +13911,9 @@ class ClusterRkeConfigUpgradeStrategyArgs:
     @property
     @pulumi.getter(name="maxUnavailableWorker")
     def max_unavailable_worker(self) -> Optional[pulumi.Input[str]]:
+        """
+        RKE max unavailable worker nodes. Default: `10%` (string)
+        """
         return pulumi.get(self, "max_unavailable_worker")
 
     @max_unavailable_worker.setter
@@ -12251,6 +13929,13 @@ class ClusterRkeConfigUpgradeStrategyDrainInputArgs:
                  grace_period: Optional[pulumi.Input[int]] = None,
                  ignore_daemon_sets: Optional[pulumi.Input[bool]] = None,
                  timeout: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[bool] delete_local_data: Delete RKE node local data. Default: `false` (bool)
+        :param pulumi.Input[bool] force: Force RKE node drain. Default: `false` (bool)
+        :param pulumi.Input[int] grace_period: RKE node drain grace period. Default: `-1` (int)
+        :param pulumi.Input[bool] ignore_daemon_sets: Ignore RKE daemon sets. Default: `true` (bool)
+        :param pulumi.Input[int] timeout: RKE node drain timeout. Default: `60` (int)
+        """
         if delete_local_data is not None:
             pulumi.set(__self__, "delete_local_data", delete_local_data)
         if force is not None:
@@ -12265,6 +13950,9 @@ class ClusterRkeConfigUpgradeStrategyDrainInputArgs:
     @property
     @pulumi.getter(name="deleteLocalData")
     def delete_local_data(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Delete RKE node local data. Default: `false` (bool)
+        """
         return pulumi.get(self, "delete_local_data")
 
     @delete_local_data.setter
@@ -12274,6 +13962,9 @@ class ClusterRkeConfigUpgradeStrategyDrainInputArgs:
     @property
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Force RKE node drain. Default: `false` (bool)
+        """
         return pulumi.get(self, "force")
 
     @force.setter
@@ -12283,6 +13974,9 @@ class ClusterRkeConfigUpgradeStrategyDrainInputArgs:
     @property
     @pulumi.getter(name="gracePeriod")
     def grace_period(self) -> Optional[pulumi.Input[int]]:
+        """
+        RKE node drain grace period. Default: `-1` (int)
+        """
         return pulumi.get(self, "grace_period")
 
     @grace_period.setter
@@ -12292,6 +13986,9 @@ class ClusterRkeConfigUpgradeStrategyDrainInputArgs:
     @property
     @pulumi.getter(name="ignoreDaemonSets")
     def ignore_daemon_sets(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Ignore RKE daemon sets. Default: `true` (bool)
+        """
         return pulumi.get(self, "ignore_daemon_sets")
 
     @ignore_daemon_sets.setter
@@ -12301,6 +13998,9 @@ class ClusterRkeConfigUpgradeStrategyDrainInputArgs:
     @property
     @pulumi.getter
     def timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        RKE node drain timeout. Default: `60` (int)
+        """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
@@ -12329,9 +14029,21 @@ class ClusterSyncNodeArgs:
                  system_info: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
+        :param pulumi.Input[Mapping[str, Any]] capacity: The total resources of a node (map).
         :param pulumi.Input[str] cluster_id: The cluster ID that is syncing (string)
+        :param pulumi.Input[str] external_ip_address: The external IP address of the node (string).
+        :param pulumi.Input[str] hostname: The hostname of the node (string).
         :param pulumi.Input[str] id: (Computed) The ID of the resource. Same as `cluster_id` (string)
+        :param pulumi.Input[str] ip_address: The private IP address of the node (string).
         :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
+        :param pulumi.Input[str] name: The name of the node (string).
+        :param pulumi.Input[str] node_pool_id: The Node Pool ID of the node (string).
+        :param pulumi.Input[str] node_template_id: The Node Template ID of the node (string).
+        :param pulumi.Input[str] provider_id: The Provider ID of the node (string).
+        :param pulumi.Input[str] requested_hostname: The requested hostname (string).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles of the node. `controlplane`, `etcd` and `worker`. (list)
+        :param pulumi.Input[str] ssh_user: The user to connect to the node (string).
+        :param pulumi.Input[Mapping[str, Any]] system_info: General information about the node, such as kernel version, kubelet and kube-proxy version, Docker version (if used), and OS name.
         """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
@@ -12381,6 +14093,9 @@ class ClusterSyncNodeArgs:
     @property
     @pulumi.getter
     def capacity(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The total resources of a node (map).
+        """
         return pulumi.get(self, "capacity")
 
     @capacity.setter
@@ -12402,6 +14117,9 @@ class ClusterSyncNodeArgs:
     @property
     @pulumi.getter(name="externalIpAddress")
     def external_ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The external IP address of the node (string).
+        """
         return pulumi.get(self, "external_ip_address")
 
     @external_ip_address.setter
@@ -12411,6 +14129,9 @@ class ClusterSyncNodeArgs:
     @property
     @pulumi.getter
     def hostname(self) -> Optional[pulumi.Input[str]]:
+        """
+        The hostname of the node (string).
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -12432,6 +14153,9 @@ class ClusterSyncNodeArgs:
     @property
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The private IP address of the node (string).
+        """
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
@@ -12453,6 +14177,9 @@ class ClusterSyncNodeArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the node (string).
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -12462,6 +14189,9 @@ class ClusterSyncNodeArgs:
     @property
     @pulumi.getter(name="nodePoolId")
     def node_pool_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Node Pool ID of the node (string).
+        """
         return pulumi.get(self, "node_pool_id")
 
     @node_pool_id.setter
@@ -12471,6 +14201,9 @@ class ClusterSyncNodeArgs:
     @property
     @pulumi.getter(name="nodeTemplateId")
     def node_template_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Node Template ID of the node (string).
+        """
         return pulumi.get(self, "node_template_id")
 
     @node_template_id.setter
@@ -12480,6 +14213,9 @@ class ClusterSyncNodeArgs:
     @property
     @pulumi.getter(name="providerId")
     def provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Provider ID of the node (string).
+        """
         return pulumi.get(self, "provider_id")
 
     @provider_id.setter
@@ -12489,6 +14225,9 @@ class ClusterSyncNodeArgs:
     @property
     @pulumi.getter(name="requestedHostname")
     def requested_hostname(self) -> Optional[pulumi.Input[str]]:
+        """
+        The requested hostname (string).
+        """
         return pulumi.get(self, "requested_hostname")
 
     @requested_hostname.setter
@@ -12498,6 +14237,9 @@ class ClusterSyncNodeArgs:
     @property
     @pulumi.getter
     def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Roles of the node. `controlplane`, `etcd` and `worker`. (list)
+        """
         return pulumi.get(self, "roles")
 
     @roles.setter
@@ -12507,6 +14249,9 @@ class ClusterSyncNodeArgs:
     @property
     @pulumi.getter(name="sshUser")
     def ssh_user(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user to connect to the node (string).
+        """
         return pulumi.get(self, "ssh_user")
 
     @ssh_user.setter
@@ -12516,6 +14261,9 @@ class ClusterSyncNodeArgs:
     @property
     @pulumi.getter(name="systemInfo")
     def system_info(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        General information about the node, such as kernel version, kubelet and kube-proxy version, Docker version (if used), and OS name.
+        """
         return pulumi.get(self, "system_info")
 
     @system_info.setter
@@ -12931,6 +14679,9 @@ class ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointArgs:
                  ca_certs: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  fqdn: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Enable cluster template revision. Default `true` (bool)
+        """
         if ca_certs is not None:
             pulumi.set(__self__, "ca_certs", ca_certs)
         if enabled is not None:
@@ -12950,6 +14701,9 @@ class ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointArgs:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable cluster template revision. Default `true` (bool)
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -17403,6 +19157,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupCon
                  s3_backup_config: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs']] = None,
                  safe_timestamp: Optional[pulumi.Input[bool]] = None,
                  timeout: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Enable cluster template revision. Default `true` (bool)
+        """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if interval_hours is not None:
@@ -17419,6 +19176,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupCon
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable cluster template revision. Default `true` (bool)
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -17828,6 +19588,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditL
     def __init__(__self__, *,
                  configuration: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgs']] = None,
                  enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Enable cluster template revision. Default `true` (bool)
+        """
         if configuration is not None:
             pulumi.set(__self__, "configuration", configuration)
         if enabled is not None:
@@ -17845,6 +19608,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditL
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable cluster template revision. Default `true` (bool)
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -17934,6 +19700,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventR
     def __init__(__self__, *,
                  configuration: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Enable cluster template revision. Default `true` (bool)
+        """
         if configuration is not None:
             pulumi.set(__self__, "configuration", configuration)
         if enabled is not None:
@@ -17951,6 +19720,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventR
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable cluster template revision. Default `true` (bool)
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -17963,6 +19735,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecret
     def __init__(__self__, *,
                  custom_config: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Enable cluster template revision. Default `true` (bool)
+        """
         if custom_config is not None:
             pulumi.set(__self__, "custom_config", custom_config)
         if enabled is not None:
@@ -17980,6 +19755,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecret
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable cluster template revision. Default `true` (bool)
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -18477,6 +20255,7 @@ class ClusterV2AgentEnvVarArgs:
                  value: pulumi.Input[str]):
         """
         :param pulumi.Input[str] name: The name of the cluster.
+        :param pulumi.Input[str] value: The taint value.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -18496,6 +20275,9 @@ class ClusterV2AgentEnvVarArgs:
     @property
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
+        """
+        The taint value.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -18566,6 +20348,13 @@ class ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArgs:
                  operator: Optional[pulumi.Input[str]] = None,
                  seconds: Optional[pulumi.Input[int]] = None,
                  value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: Key is the name of the key of the item to retrieve.
+        :param pulumi.Input[str] effect: The taint effect. Default: `\\"NoExecute\\"`.
+        :param pulumi.Input[str] operator: Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+        :param pulumi.Input[int] seconds: The number of seconds a pod will stay bound to a node with a matching taint.
+        :param pulumi.Input[str] value: The taint value.
+        """
         pulumi.set(__self__, "key", key)
         if effect is not None:
             pulumi.set(__self__, "effect", effect)
@@ -18579,6 +20368,9 @@ class ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArgs:
     @property
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
+        """
+        Key is the name of the key of the item to retrieve.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -18588,6 +20380,9 @@ class ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArgs:
     @property
     @pulumi.getter
     def effect(self) -> Optional[pulumi.Input[str]]:
+        """
+        The taint effect. Default: `\\"NoExecute\\"`.
+        """
         return pulumi.get(self, "effect")
 
     @effect.setter
@@ -18597,6 +20392,9 @@ class ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArgs:
     @property
     @pulumi.getter
     def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+        """
         return pulumi.get(self, "operator")
 
     @operator.setter
@@ -18606,6 +20404,9 @@ class ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArgs:
     @property
     @pulumi.getter
     def seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of seconds a pod will stay bound to a node with a matching taint.
+        """
         return pulumi.get(self, "seconds")
 
     @seconds.setter
@@ -18615,6 +20416,9 @@ class ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The taint value.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -18711,9 +20515,18 @@ class ClusterV2ClusterRegistrationTokenArgs:
                  windows_node_command: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the Cluster.
+        :param pulumi.Input[str] cluster_id: Cluster ID.
+        :param pulumi.Input[str] command: Command to execute in an imported k8s cluster.
         :param pulumi.Input[str] id: (Computed, string) The ID of the resource.
+        :param pulumi.Input[str] insecure_command: Insecure command to execute in an imported k8s cluster.
+        :param pulumi.Input[str] insecure_node_command: Insecure node command to execute in an imported k8s cluster.
+        :param pulumi.Input[str] insecure_windows_node_command: Insecure windows command to execute in an imported k8s cluster.
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for the Cluster.
+        :param pulumi.Input[str] manifest_url: K8s manifest url to execute with `kubectl` to import an existing k8s cluster.
         :param pulumi.Input[str] name: The name of the cluster.
+        :param pulumi.Input[str] node_command: Node command to execute in Linux nodes for custom k8s cluster.
+        :param pulumi.Input[str] token: Token for cluster registration token object.
+        :param pulumi.Input[str] windows_node_command: Node command to execute in Windows nodes for custom k8s cluster.
         """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
@@ -18757,6 +20570,9 @@ class ClusterV2ClusterRegistrationTokenArgs:
     @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cluster ID.
+        """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
@@ -18766,6 +20582,9 @@ class ClusterV2ClusterRegistrationTokenArgs:
     @property
     @pulumi.getter
     def command(self) -> Optional[pulumi.Input[str]]:
+        """
+        Command to execute in an imported k8s cluster.
+        """
         return pulumi.get(self, "command")
 
     @command.setter
@@ -18787,6 +20606,9 @@ class ClusterV2ClusterRegistrationTokenArgs:
     @property
     @pulumi.getter(name="insecureCommand")
     def insecure_command(self) -> Optional[pulumi.Input[str]]:
+        """
+        Insecure command to execute in an imported k8s cluster.
+        """
         return pulumi.get(self, "insecure_command")
 
     @insecure_command.setter
@@ -18796,6 +20618,9 @@ class ClusterV2ClusterRegistrationTokenArgs:
     @property
     @pulumi.getter(name="insecureNodeCommand")
     def insecure_node_command(self) -> Optional[pulumi.Input[str]]:
+        """
+        Insecure node command to execute in an imported k8s cluster.
+        """
         return pulumi.get(self, "insecure_node_command")
 
     @insecure_node_command.setter
@@ -18805,6 +20630,9 @@ class ClusterV2ClusterRegistrationTokenArgs:
     @property
     @pulumi.getter(name="insecureWindowsNodeCommand")
     def insecure_windows_node_command(self) -> Optional[pulumi.Input[str]]:
+        """
+        Insecure windows command to execute in an imported k8s cluster.
+        """
         return pulumi.get(self, "insecure_windows_node_command")
 
     @insecure_windows_node_command.setter
@@ -18826,6 +20654,9 @@ class ClusterV2ClusterRegistrationTokenArgs:
     @property
     @pulumi.getter(name="manifestUrl")
     def manifest_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        K8s manifest url to execute with `kubectl` to import an existing k8s cluster.
+        """
         return pulumi.get(self, "manifest_url")
 
     @manifest_url.setter
@@ -18847,6 +20678,9 @@ class ClusterV2ClusterRegistrationTokenArgs:
     @property
     @pulumi.getter(name="nodeCommand")
     def node_command(self) -> Optional[pulumi.Input[str]]:
+        """
+        Node command to execute in Linux nodes for custom k8s cluster.
+        """
         return pulumi.get(self, "node_command")
 
     @node_command.setter
@@ -18856,6 +20690,9 @@ class ClusterV2ClusterRegistrationTokenArgs:
     @property
     @pulumi.getter
     def token(self) -> Optional[pulumi.Input[str]]:
+        """
+        Token for cluster registration token object.
+        """
         return pulumi.get(self, "token")
 
     @token.setter
@@ -18865,6 +20702,9 @@ class ClusterV2ClusterRegistrationTokenArgs:
     @property
     @pulumi.getter(name="windowsNodeCommand")
     def windows_node_command(self) -> Optional[pulumi.Input[str]]:
+        """
+        Node command to execute in Windows nodes for custom k8s cluster.
+        """
         return pulumi.get(self, "windows_node_command")
 
     @windows_node_command.setter
@@ -18935,6 +20775,13 @@ class ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArgs:
                  operator: Optional[pulumi.Input[str]] = None,
                  seconds: Optional[pulumi.Input[int]] = None,
                  value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: Key is the name of the key of the item to retrieve.
+        :param pulumi.Input[str] effect: The taint effect. Default: `\\"NoExecute\\"`.
+        :param pulumi.Input[str] operator: Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+        :param pulumi.Input[int] seconds: The number of seconds a pod will stay bound to a node with a matching taint.
+        :param pulumi.Input[str] value: The taint value.
+        """
         pulumi.set(__self__, "key", key)
         if effect is not None:
             pulumi.set(__self__, "effect", effect)
@@ -18948,6 +20795,9 @@ class ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArgs:
     @property
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
+        """
+        Key is the name of the key of the item to retrieve.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -18957,6 +20807,9 @@ class ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArgs:
     @property
     @pulumi.getter
     def effect(self) -> Optional[pulumi.Input[str]]:
+        """
+        The taint effect. Default: `\\"NoExecute\\"`.
+        """
         return pulumi.get(self, "effect")
 
     @effect.setter
@@ -18966,6 +20819,9 @@ class ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArgs:
     @property
     @pulumi.getter
     def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+        """
         return pulumi.get(self, "operator")
 
     @operator.setter
@@ -18975,6 +20831,9 @@ class ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArgs:
     @property
     @pulumi.getter
     def seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of seconds a pod will stay bound to a node with a matching taint.
+        """
         return pulumi.get(self, "seconds")
 
     @seconds.setter
@@ -18984,6 +20843,9 @@ class ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The taint value.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -19068,6 +20930,11 @@ class ClusterV2LocalAuthEndpointArgs:
                  ca_certs: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  fqdn: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] ca_certs: CA certs for the authorized cluster endpoint. It is only needed if there is a load balancer in front of the downstream cluster that is using an untrusted certificate. If you have a valid certificate, then nothing needs to be added to the CA Certificates field.
+        :param pulumi.Input[bool] enabled: If `enabled` is set to true, nodes will be drained before upgrade.
+        :param pulumi.Input[str] fqdn: FQDN for the authorized cluster endpoint. If one is entered, it should point to the downstream cluster.
+        """
         if ca_certs is not None:
             pulumi.set(__self__, "ca_certs", ca_certs)
         if enabled is not None:
@@ -19078,6 +20945,9 @@ class ClusterV2LocalAuthEndpointArgs:
     @property
     @pulumi.getter(name="caCerts")
     def ca_certs(self) -> Optional[pulumi.Input[str]]:
+        """
+        CA certs for the authorized cluster endpoint. It is only needed if there is a load balancer in front of the downstream cluster that is using an untrusted certificate. If you have a valid certificate, then nothing needs to be added to the CA Certificates field.
+        """
         return pulumi.get(self, "ca_certs")
 
     @ca_certs.setter
@@ -19087,6 +20957,9 @@ class ClusterV2LocalAuthEndpointArgs:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If `enabled` is set to true, nodes will be drained before upgrade.
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -19096,6 +20969,9 @@ class ClusterV2LocalAuthEndpointArgs:
     @property
     @pulumi.getter
     def fqdn(self) -> Optional[pulumi.Input[str]]:
+        """
+        FQDN for the authorized cluster endpoint. If one is entered, it should point to the downstream cluster.
+        """
         return pulumi.get(self, "fqdn")
 
     @fqdn.setter
@@ -19607,6 +21483,11 @@ class ClusterV2RkeConfigLocalAuthEndpointArgs:
                  ca_certs: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  fqdn: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] ca_certs: CA certs for the authorized cluster endpoint. It is only needed if there is a load balancer in front of the downstream cluster that is using an untrusted certificate. If you have a valid certificate, then nothing needs to be added to the CA Certificates field.
+        :param pulumi.Input[bool] enabled: If `enabled` is set to true, nodes will be drained before upgrade.
+        :param pulumi.Input[str] fqdn: FQDN for the authorized cluster endpoint. If one is entered, it should point to the downstream cluster.
+        """
         if ca_certs is not None:
             pulumi.set(__self__, "ca_certs", ca_certs)
         if enabled is not None:
@@ -19617,6 +21498,9 @@ class ClusterV2RkeConfigLocalAuthEndpointArgs:
     @property
     @pulumi.getter(name="caCerts")
     def ca_certs(self) -> Optional[pulumi.Input[str]]:
+        """
+        CA certs for the authorized cluster endpoint. It is only needed if there is a load balancer in front of the downstream cluster that is using an untrusted certificate. If you have a valid certificate, then nothing needs to be added to the CA Certificates field.
+        """
         return pulumi.get(self, "ca_certs")
 
     @ca_certs.setter
@@ -19626,6 +21510,9 @@ class ClusterV2RkeConfigLocalAuthEndpointArgs:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If `enabled` is set to true, nodes will be drained before upgrade.
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -19635,6 +21522,9 @@ class ClusterV2RkeConfigLocalAuthEndpointArgs:
     @property
     @pulumi.getter
     def fqdn(self) -> Optional[pulumi.Input[str]]:
+        """
+        FQDN for the authorized cluster endpoint. If one is entered, it should point to the downstream cluster.
+        """
         return pulumi.get(self, "fqdn")
 
     @fqdn.setter
@@ -20088,6 +21978,11 @@ class ClusterV2RkeConfigMachinePoolTaintArgs:
                  key: pulumi.Input[str],
                  value: pulumi.Input[str],
                  effect: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: Key is the name of the key of the item to retrieve.
+        :param pulumi.Input[str] value: The taint value.
+        :param pulumi.Input[str] effect: The taint effect. Default: `\\"NoExecute\\"`.
+        """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
         if effect is not None:
@@ -20096,6 +21991,9 @@ class ClusterV2RkeConfigMachinePoolTaintArgs:
     @property
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
+        """
+        Key is the name of the key of the item to retrieve.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -20105,6 +22003,9 @@ class ClusterV2RkeConfigMachinePoolTaintArgs:
     @property
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
+        """
+        The taint value.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -20114,6 +22015,9 @@ class ClusterV2RkeConfigMachinePoolTaintArgs:
     @property
     @pulumi.getter
     def effect(self) -> Optional[pulumi.Input[str]]:
+        """
+        The taint effect. Default: `\\"NoExecute\\"`.
+        """
         return pulumi.get(self, "effect")
 
     @effect.setter
@@ -21303,6 +23207,12 @@ class EtcdBackupBackupConfigArgs:
                  s3_backup_config: Optional[pulumi.Input['EtcdBackupBackupConfigS3BackupConfigArgs']] = None,
                  safe_timestamp: Optional[pulumi.Input[bool]] = None,
                  timeout: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Enable etcd backup (bool)
+        :param pulumi.Input[int] interval_hours: Interval hours for etcd backup. Default `12` (int)
+        :param pulumi.Input[int] retention: Retention for etcd backup. Default `6` (int)
+        :param pulumi.Input['EtcdBackupBackupConfigS3BackupConfigArgs'] s3_backup_config: S3 config options for etcd backup. Valid for `imported` and `rke` clusters. (list maxitems:1)
+        """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if interval_hours is not None:
@@ -21319,6 +23229,9 @@ class EtcdBackupBackupConfigArgs:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable etcd backup (bool)
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -21328,6 +23241,9 @@ class EtcdBackupBackupConfigArgs:
     @property
     @pulumi.getter(name="intervalHours")
     def interval_hours(self) -> Optional[pulumi.Input[int]]:
+        """
+        Interval hours for etcd backup. Default `12` (int)
+        """
         return pulumi.get(self, "interval_hours")
 
     @interval_hours.setter
@@ -21337,6 +23253,9 @@ class EtcdBackupBackupConfigArgs:
     @property
     @pulumi.getter
     def retention(self) -> Optional[pulumi.Input[int]]:
+        """
+        Retention for etcd backup. Default `6` (int)
+        """
         return pulumi.get(self, "retention")
 
     @retention.setter
@@ -21346,6 +23265,9 @@ class EtcdBackupBackupConfigArgs:
     @property
     @pulumi.getter(name="s3BackupConfig")
     def s3_backup_config(self) -> Optional[pulumi.Input['EtcdBackupBackupConfigS3BackupConfigArgs']]:
+        """
+        S3 config options for etcd backup. Valid for `imported` and `rke` clusters. (list maxitems:1)
+        """
         return pulumi.get(self, "s3_backup_config")
 
     @s3_backup_config.setter
@@ -21381,6 +23303,15 @@ class EtcdBackupBackupConfigS3BackupConfigArgs:
                  folder: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] bucket_name: Bucket name for S3 service (string)
+        :param pulumi.Input[str] endpoint: Endpoint for S3 service (string)
+        :param pulumi.Input[str] access_key: Access key for S3 service (string)
+        :param pulumi.Input[str] custom_ca: Base64 encoded custom CA for S3 service. Use filebase64(<FILE>) for encoding file. Available from Rancher v2.2.5 (string)
+        :param pulumi.Input[str] folder: Folder for S3 service. Available from Rancher v2.2.7 (string)
+        :param pulumi.Input[str] region: Region for S3 service (string)
+        :param pulumi.Input[str] secret_key: Secret key for S3 service (string)
+        """
         pulumi.set(__self__, "bucket_name", bucket_name)
         pulumi.set(__self__, "endpoint", endpoint)
         if access_key is not None:
@@ -21397,6 +23328,9 @@ class EtcdBackupBackupConfigS3BackupConfigArgs:
     @property
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> pulumi.Input[str]:
+        """
+        Bucket name for S3 service (string)
+        """
         return pulumi.get(self, "bucket_name")
 
     @bucket_name.setter
@@ -21406,6 +23340,9 @@ class EtcdBackupBackupConfigS3BackupConfigArgs:
     @property
     @pulumi.getter
     def endpoint(self) -> pulumi.Input[str]:
+        """
+        Endpoint for S3 service (string)
+        """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
@@ -21415,6 +23352,9 @@ class EtcdBackupBackupConfigS3BackupConfigArgs:
     @property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Access key for S3 service (string)
+        """
         return pulumi.get(self, "access_key")
 
     @access_key.setter
@@ -21424,6 +23364,9 @@ class EtcdBackupBackupConfigS3BackupConfigArgs:
     @property
     @pulumi.getter(name="customCa")
     def custom_ca(self) -> Optional[pulumi.Input[str]]:
+        """
+        Base64 encoded custom CA for S3 service. Use filebase64(<FILE>) for encoding file. Available from Rancher v2.2.5 (string)
+        """
         return pulumi.get(self, "custom_ca")
 
     @custom_ca.setter
@@ -21433,6 +23376,9 @@ class EtcdBackupBackupConfigS3BackupConfigArgs:
     @property
     @pulumi.getter
     def folder(self) -> Optional[pulumi.Input[str]]:
+        """
+        Folder for S3 service. Available from Rancher v2.2.7 (string)
+        """
         return pulumi.get(self, "folder")
 
     @folder.setter
@@ -21442,6 +23388,9 @@ class EtcdBackupBackupConfigS3BackupConfigArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        Region for S3 service (string)
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -21451,6 +23400,9 @@ class EtcdBackupBackupConfigS3BackupConfigArgs:
     @property
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Secret key for S3 service (string)
+        """
         return pulumi.get(self, "secret_key")
 
     @secret_key.setter
@@ -21463,12 +23415,19 @@ class GlobalDnsProviderAlidnsConfigArgs:
     def __init__(__self__, *,
                  access_key: pulumi.Input[str],
                  secret_key: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] access_key: The AWS Access key (string)
+        :param pulumi.Input[str] secret_key: The AWS Secret key (string)
+        """
         pulumi.set(__self__, "access_key", access_key)
         pulumi.set(__self__, "secret_key", secret_key)
 
     @property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> pulumi.Input[str]:
+        """
+        The AWS Access key (string)
+        """
         return pulumi.get(self, "access_key")
 
     @access_key.setter
@@ -21478,6 +23437,9 @@ class GlobalDnsProviderAlidnsConfigArgs:
     @property
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> pulumi.Input[str]:
+        """
+        The AWS Secret key (string)
+        """
         return pulumi.get(self, "secret_key")
 
     @secret_key.setter
@@ -21491,6 +23453,11 @@ class GlobalDnsProviderCloudflareConfigArgs:
                  api_email: pulumi.Input[str],
                  api_key: pulumi.Input[str],
                  proxy_setting: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] api_email: The CloudFlare API Email (string)
+        :param pulumi.Input[str] api_key: The CloudFlare API Key (string)
+        :param pulumi.Input[bool] proxy_setting: CloudFlare Proxy Setting. Default: `false` (bool)
+        """
         pulumi.set(__self__, "api_email", api_email)
         pulumi.set(__self__, "api_key", api_key)
         if proxy_setting is not None:
@@ -21499,6 +23466,9 @@ class GlobalDnsProviderCloudflareConfigArgs:
     @property
     @pulumi.getter(name="apiEmail")
     def api_email(self) -> pulumi.Input[str]:
+        """
+        The CloudFlare API Email (string)
+        """
         return pulumi.get(self, "api_email")
 
     @api_email.setter
@@ -21508,6 +23478,9 @@ class GlobalDnsProviderCloudflareConfigArgs:
     @property
     @pulumi.getter(name="apiKey")
     def api_key(self) -> pulumi.Input[str]:
+        """
+        The CloudFlare API Key (string)
+        """
         return pulumi.get(self, "api_key")
 
     @api_key.setter
@@ -21517,6 +23490,9 @@ class GlobalDnsProviderCloudflareConfigArgs:
     @property
     @pulumi.getter(name="proxySetting")
     def proxy_setting(self) -> Optional[pulumi.Input[bool]]:
+        """
+        CloudFlare Proxy Setting. Default: `false` (bool)
+        """
         return pulumi.get(self, "proxy_setting")
 
     @proxy_setting.setter
@@ -21533,6 +23509,14 @@ class GlobalDnsProviderRoute53ConfigArgs:
                  region: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
                  zone_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] access_key: The AWS Access key (string)
+        :param pulumi.Input[str] secret_key: The AWS Secret key (string)
+        :param pulumi.Input[str] credentials_path: The AWS credentials path. Default: `"/.aws"` (string)
+        :param pulumi.Input[str] region: The AWS Region. Default: `"us-west-2"` (string)
+        :param pulumi.Input[str] role_arn: The AWS Role ARN (string)
+        :param pulumi.Input[str] zone_type: The Route53 zone type `public, private`. Default: `"public"` (string)
+        """
         pulumi.set(__self__, "access_key", access_key)
         pulumi.set(__self__, "secret_key", secret_key)
         if credentials_path is not None:
@@ -21547,6 +23531,9 @@ class GlobalDnsProviderRoute53ConfigArgs:
     @property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> pulumi.Input[str]:
+        """
+        The AWS Access key (string)
+        """
         return pulumi.get(self, "access_key")
 
     @access_key.setter
@@ -21556,6 +23543,9 @@ class GlobalDnsProviderRoute53ConfigArgs:
     @property
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> pulumi.Input[str]:
+        """
+        The AWS Secret key (string)
+        """
         return pulumi.get(self, "secret_key")
 
     @secret_key.setter
@@ -21565,6 +23555,9 @@ class GlobalDnsProviderRoute53ConfigArgs:
     @property
     @pulumi.getter(name="credentialsPath")
     def credentials_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The AWS credentials path. Default: `"/.aws"` (string)
+        """
         return pulumi.get(self, "credentials_path")
 
     @credentials_path.setter
@@ -21574,6 +23567,9 @@ class GlobalDnsProviderRoute53ConfigArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The AWS Region. Default: `"us-west-2"` (string)
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -21583,6 +23579,9 @@ class GlobalDnsProviderRoute53ConfigArgs:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The AWS Role ARN (string)
+        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -21592,6 +23591,9 @@ class GlobalDnsProviderRoute53ConfigArgs:
     @property
     @pulumi.getter(name="zoneType")
     def zone_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Route53 zone type `public, private`. Default: `"public"` (string)
+        """
         return pulumi.get(self, "zone_type")
 
     @zone_type.setter
@@ -23570,6 +25572,53 @@ class MachineConfigV2OpenstackConfigArgs:
                  volume_name: Optional[pulumi.Input[str]] = None,
                  volume_size: Optional[pulumi.Input[str]] = None,
                  volume_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] auth_url: OpenStack authentication URL (string)
+        :param pulumi.Input[str] availability_zone: OpenStack availability zone (string)
+        :param pulumi.Input[str] region: OpenStack region name (string)
+        :param pulumi.Input[str] active_timeout: OpenStack active timeout Default `200` (string)
+        :param pulumi.Input[str] application_credential_id: OpenStack application credential id. Conflicts with `application_credential_name` (string)
+        :param pulumi.Input[str] application_credential_name: OpenStack application credential name. Conflicts with `application_credential_id` (string)
+        :param pulumi.Input[str] application_credential_secret: OpenStack application credential secret (string)
+        :param pulumi.Input[bool] boot_from_volume: Enable booting from volume. Default is `false` (bool)
+        :param pulumi.Input[str] cacert: CA certificate bundle to verify against (string)
+        :param pulumi.Input[bool] config_drive: Enables the OpenStack config drive for the instance. Default `false` (bool)
+        :param pulumi.Input[str] domain_id: OpenStack domain ID. Identity v3 only. Conflicts with `domain_name` (string)
+        :param pulumi.Input[str] domain_name: OpenStack domain name. Identity v3 only. Conflicts with `domain_id` (string)
+        :param pulumi.Input[str] endpoint_type: OpenStack endpoint type. adminURL, internalURL or publicURL (string)
+        :param pulumi.Input[str] flavor_id: OpenStack flavor id to use for the instance. Conflicts with `flavor_name` (string)
+        :param pulumi.Input[str] flavor_name: OpenStack flavor name to use for the instance. Conflicts with `flavor_id` (string)
+        :param pulumi.Input[str] floating_ip_pool: OpenStack floating IP pool to get an IP from to assign to the instance (string)
+        :param pulumi.Input[str] image_id: OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+        :param pulumi.Input[str] image_name: OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+        :param pulumi.Input[bool] insecure: Disable TLS credential checking. Default `false` (bool)
+        :param pulumi.Input[str] ip_version: OpenStack version of IP address assigned for the machine Default `4` (string)
+        :param pulumi.Input[str] keypair_name: OpenStack keypair to use to SSH to the instance (string)
+        :param pulumi.Input[str] net_id: OpenStack network id the machine will be connected on. Conflicts with `net_name` (string)
+        :param pulumi.Input[str] net_name: OpenStack network name the machine will be connected on. Conflicts with `net_id` (string)
+        :param pulumi.Input[bool] nova_network: Use the nova networking services instead of neutron (string)
+        :param pulumi.Input[str] password: OpenStack password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        :param pulumi.Input[str] private_key_file: Private key content to use for SSH (string)
+        :param pulumi.Input[str] sec_groups: OpenStack comma separated security groups for the machine (string)
+        :param pulumi.Input[str] ssh_port: If using a non-B2D image you can specify the ssh port. Default `22` (string)
+        :param pulumi.Input[str] ssh_user: If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+        :param pulumi.Input[str] tenant_domain_id: OpenStack tenant domain id. Conflicts with `tenant_domain_name` (string)
+        :param pulumi.Input[str] tenant_domain_name: OpenStack tenant domain name. Conflicts with `tenant_domain_id` (string)
+        :param pulumi.Input[str] tenant_id: OpenStack tenant id. Conflicts with `tenant_name` (string)
+        :param pulumi.Input[str] tenant_name: OpenStack tenant name. Conflicts with `tenant_id` (string)
+        :param pulumi.Input[str] user_data_file: File containing an openstack userdata script (string)
+        :param pulumi.Input[str] user_domain_id: OpenStack user domain id. Conflicts with `user_domain_name` (string)
+        :param pulumi.Input[str] user_domain_name: OpenStack user domain name. Conflicts with `user_domain_id` (string)
+        :param pulumi.Input[str] username: OpenStack username (string)
+        :param pulumi.Input[str] volume_device_path: OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
+               > **Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.
+               > **Note:**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
+               > **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
+        :param pulumi.Input[str] volume_id: OpenStack volume id of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+        :param pulumi.Input[str] volume_name: OpenStack volume name of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+        :param pulumi.Input[str] volume_size: OpenStack volume size (GiB). Required when `boot_from_volume` is `true` (string)
+        :param pulumi.Input[str] volume_type: OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+        """
         pulumi.set(__self__, "auth_url", auth_url)
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "region", region)
@@ -23655,6 +25704,9 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter(name="authUrl")
     def auth_url(self) -> pulumi.Input[str]:
+        """
+        OpenStack authentication URL (string)
+        """
         return pulumi.get(self, "auth_url")
 
     @auth_url.setter
@@ -23664,6 +25716,9 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> pulumi.Input[str]:
+        """
+        OpenStack availability zone (string)
+        """
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -23673,6 +25728,9 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter
     def region(self) -> pulumi.Input[str]:
+        """
+        OpenStack region name (string)
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -23682,6 +25740,9 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter(name="activeTimeout")
     def active_timeout(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack active timeout Default `200` (string)
+        """
         return pulumi.get(self, "active_timeout")
 
     @active_timeout.setter
@@ -23691,6 +25752,9 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter(name="applicationCredentialId")
     def application_credential_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack application credential id. Conflicts with `application_credential_name` (string)
+        """
         return pulumi.get(self, "application_credential_id")
 
     @application_credential_id.setter
@@ -23700,6 +25764,9 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter(name="applicationCredentialName")
     def application_credential_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack application credential name. Conflicts with `application_credential_id` (string)
+        """
         return pulumi.get(self, "application_credential_name")
 
     @application_credential_name.setter
@@ -23709,6 +25776,9 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter(name="applicationCredentialSecret")
     def application_credential_secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack application credential secret (string)
+        """
         return pulumi.get(self, "application_credential_secret")
 
     @application_credential_secret.setter
@@ -23718,6 +25788,9 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter(name="bootFromVolume")
     def boot_from_volume(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable booting from volume. Default is `false` (bool)
+        """
         return pulumi.get(self, "boot_from_volume")
 
     @boot_from_volume.setter
@@ -23727,6 +25800,9 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter
     def cacert(self) -> Optional[pulumi.Input[str]]:
+        """
+        CA certificate bundle to verify against (string)
+        """
         return pulumi.get(self, "cacert")
 
     @cacert.setter
@@ -23736,6 +25812,9 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter(name="configDrive")
     def config_drive(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables the OpenStack config drive for the instance. Default `false` (bool)
+        """
         return pulumi.get(self, "config_drive")
 
     @config_drive.setter
@@ -23745,6 +25824,9 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter(name="domainId")
     def domain_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack domain ID. Identity v3 only. Conflicts with `domain_name` (string)
+        """
         return pulumi.get(self, "domain_id")
 
     @domain_id.setter
@@ -23754,6 +25836,9 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter(name="domainName")
     def domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack domain name. Identity v3 only. Conflicts with `domain_id` (string)
+        """
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
@@ -23763,6 +25848,9 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack endpoint type. adminURL, internalURL or publicURL (string)
+        """
         return pulumi.get(self, "endpoint_type")
 
     @endpoint_type.setter
@@ -23772,6 +25860,9 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack flavor id to use for the instance. Conflicts with `flavor_name` (string)
+        """
         return pulumi.get(self, "flavor_id")
 
     @flavor_id.setter
@@ -23781,6 +25872,9 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter(name="flavorName")
     def flavor_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack flavor name to use for the instance. Conflicts with `flavor_id` (string)
+        """
         return pulumi.get(self, "flavor_name")
 
     @flavor_name.setter
@@ -23790,6 +25884,9 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter(name="floatingIpPool")
     def floating_ip_pool(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack floating IP pool to get an IP from to assign to the instance (string)
+        """
         return pulumi.get(self, "floating_ip_pool")
 
     @floating_ip_pool.setter
@@ -23799,6 +25896,9 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+        """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
@@ -23808,6 +25908,9 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter(name="imageName")
     def image_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+        """
         return pulumi.get(self, "image_name")
 
     @image_name.setter
@@ -23817,6 +25920,9 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter
     def insecure(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disable TLS credential checking. Default `false` (bool)
+        """
         return pulumi.get(self, "insecure")
 
     @insecure.setter
@@ -23826,6 +25932,9 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack version of IP address assigned for the machine Default `4` (string)
+        """
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
@@ -23835,6 +25944,9 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter(name="keypairName")
     def keypair_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack keypair to use to SSH to the instance (string)
+        """
         return pulumi.get(self, "keypair_name")
 
     @keypair_name.setter
@@ -23844,6 +25956,9 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack network id the machine will be connected on. Conflicts with `net_name` (string)
+        """
         return pulumi.get(self, "net_id")
 
     @net_id.setter
@@ -23853,6 +25968,9 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter(name="netName")
     def net_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack network name the machine will be connected on. Conflicts with `net_id` (string)
+        """
         return pulumi.get(self, "net_name")
 
     @net_name.setter
@@ -23862,6 +25980,9 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter(name="novaNetwork")
     def nova_network(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Use the nova networking services instead of neutron (string)
+        """
         return pulumi.get(self, "nova_network")
 
     @nova_network.setter
@@ -23871,6 +25992,9 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -23880,6 +26004,9 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter(name="privateKeyFile")
     def private_key_file(self) -> Optional[pulumi.Input[str]]:
+        """
+        Private key content to use for SSH (string)
+        """
         return pulumi.get(self, "private_key_file")
 
     @private_key_file.setter
@@ -23889,6 +26016,9 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter(name="secGroups")
     def sec_groups(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack comma separated security groups for the machine (string)
+        """
         return pulumi.get(self, "sec_groups")
 
     @sec_groups.setter
@@ -23898,6 +26028,9 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter(name="sshPort")
     def ssh_port(self) -> Optional[pulumi.Input[str]]:
+        """
+        If using a non-B2D image you can specify the ssh port. Default `22` (string)
+        """
         return pulumi.get(self, "ssh_port")
 
     @ssh_port.setter
@@ -23907,6 +26040,9 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter(name="sshUser")
     def ssh_user(self) -> Optional[pulumi.Input[str]]:
+        """
+        If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+        """
         return pulumi.get(self, "ssh_user")
 
     @ssh_user.setter
@@ -23916,6 +26052,9 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter(name="tenantDomainId")
     def tenant_domain_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack tenant domain id. Conflicts with `tenant_domain_name` (string)
+        """
         return pulumi.get(self, "tenant_domain_id")
 
     @tenant_domain_id.setter
@@ -23925,6 +26064,9 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter(name="tenantDomainName")
     def tenant_domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack tenant domain name. Conflicts with `tenant_domain_id` (string)
+        """
         return pulumi.get(self, "tenant_domain_name")
 
     @tenant_domain_name.setter
@@ -23934,6 +26076,9 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack tenant id. Conflicts with `tenant_name` (string)
+        """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
@@ -23943,6 +26088,9 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter(name="tenantName")
     def tenant_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack tenant name. Conflicts with `tenant_id` (string)
+        """
         return pulumi.get(self, "tenant_name")
 
     @tenant_name.setter
@@ -23952,6 +26100,9 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter(name="userDataFile")
     def user_data_file(self) -> Optional[pulumi.Input[str]]:
+        """
+        File containing an openstack userdata script (string)
+        """
         return pulumi.get(self, "user_data_file")
 
     @user_data_file.setter
@@ -23961,6 +26112,9 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter(name="userDomainId")
     def user_domain_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack user domain id. Conflicts with `user_domain_name` (string)
+        """
         return pulumi.get(self, "user_domain_id")
 
     @user_domain_id.setter
@@ -23970,6 +26124,9 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter(name="userDomainName")
     def user_domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack user domain name. Conflicts with `user_domain_id` (string)
+        """
         return pulumi.get(self, "user_domain_name")
 
     @user_domain_name.setter
@@ -23979,6 +26136,9 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack username (string)
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -23988,6 +26148,12 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter(name="volumeDevicePath")
     def volume_device_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
+        > **Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.
+        > **Note:**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
+        > **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
+        """
         return pulumi.get(self, "volume_device_path")
 
     @volume_device_path.setter
@@ -23997,6 +26163,9 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack volume id of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+        """
         return pulumi.get(self, "volume_id")
 
     @volume_id.setter
@@ -24006,6 +26175,9 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter(name="volumeName")
     def volume_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack volume name of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+        """
         return pulumi.get(self, "volume_name")
 
     @volume_name.setter
@@ -24015,6 +26187,9 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter(name="volumeSize")
     def volume_size(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack volume size (GiB). Required when `boot_from_volume` is `true` (string)
+        """
         return pulumi.get(self, "volume_size")
 
     @volume_size.setter
@@ -24024,6 +26199,9 @@ class MachineConfigV2OpenstackConfigArgs:
     @property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+        """
         return pulumi.get(self, "volume_type")
 
     @volume_type.setter
@@ -24799,6 +26977,12 @@ class NamespaceContainerResourceLimitArgs:
                  limits_memory: Optional[pulumi.Input[str]] = None,
                  requests_cpu: Optional[pulumi.Input[str]] = None,
                  requests_memory: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] limits_cpu: Limit for limits cpu in namespace (string)
+        :param pulumi.Input[str] limits_memory: Limit for limits memory in namespace (string)
+        :param pulumi.Input[str] requests_cpu: Limit for requests cpu in namespace (string)
+        :param pulumi.Input[str] requests_memory: Limit for requests memory in namespace (string)
+        """
         if limits_cpu is not None:
             pulumi.set(__self__, "limits_cpu", limits_cpu)
         if limits_memory is not None:
@@ -24811,6 +26995,9 @@ class NamespaceContainerResourceLimitArgs:
     @property
     @pulumi.getter(name="limitsCpu")
     def limits_cpu(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for limits cpu in namespace (string)
+        """
         return pulumi.get(self, "limits_cpu")
 
     @limits_cpu.setter
@@ -24820,6 +27007,9 @@ class NamespaceContainerResourceLimitArgs:
     @property
     @pulumi.getter(name="limitsMemory")
     def limits_memory(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for limits memory in namespace (string)
+        """
         return pulumi.get(self, "limits_memory")
 
     @limits_memory.setter
@@ -24829,6 +27019,9 @@ class NamespaceContainerResourceLimitArgs:
     @property
     @pulumi.getter(name="requestsCpu")
     def requests_cpu(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for requests cpu in namespace (string)
+        """
         return pulumi.get(self, "requests_cpu")
 
     @requests_cpu.setter
@@ -24838,6 +27031,9 @@ class NamespaceContainerResourceLimitArgs:
     @property
     @pulumi.getter(name="requestsMemory")
     def requests_memory(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for requests memory in namespace (string)
+        """
         return pulumi.get(self, "requests_memory")
 
     @requests_memory.setter
@@ -24849,11 +27045,17 @@ class NamespaceContainerResourceLimitArgs:
 class NamespaceResourceQuotaArgs:
     def __init__(__self__, *,
                  limit: pulumi.Input['NamespaceResourceQuotaLimitArgs']):
+        """
+        :param pulumi.Input['NamespaceResourceQuotaLimitArgs'] limit: Resource quota limit for namespace (list maxitems:1)
+        """
         pulumi.set(__self__, "limit", limit)
 
     @property
     @pulumi.getter
     def limit(self) -> pulumi.Input['NamespaceResourceQuotaLimitArgs']:
+        """
+        Resource quota limit for namespace (list maxitems:1)
+        """
         return pulumi.get(self, "limit")
 
     @limit.setter
@@ -24877,6 +27079,22 @@ class NamespaceResourceQuotaLimitArgs:
                  services: Optional[pulumi.Input[str]] = None,
                  services_load_balancers: Optional[pulumi.Input[str]] = None,
                  services_node_ports: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] config_maps: Limit for config maps in namespace (string)
+        :param pulumi.Input[str] limits_cpu: Limit for limits cpu in namespace (string)
+        :param pulumi.Input[str] limits_memory: Limit for limits memory in namespace (string)
+        :param pulumi.Input[str] persistent_volume_claims: Limit for persistent volume claims in namespace (string)
+        :param pulumi.Input[str] pods: Limit for pods in namespace (string)
+        :param pulumi.Input[str] replication_controllers: Limit for replication controllers in namespace (string)
+        :param pulumi.Input[str] requests_cpu: Limit for requests cpu in namespace (string)
+        :param pulumi.Input[str] requests_memory: Limit for requests memory in namespace (string)
+        :param pulumi.Input[str] requests_storage: Limit for requests storage in namespace (string)
+        :param pulumi.Input[str] secrets: Limit for secrets in namespace (string)
+        :param pulumi.Input[str] services_load_balancers: Limit for services load balancers in namespace (string)
+        :param pulumi.Input[str] services_node_ports: Limit for services node ports in namespace (string)
+               
+               More info at [resource-quotas](https://rancher.com/docs/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/)
+        """
         if config_maps is not None:
             pulumi.set(__self__, "config_maps", config_maps)
         if limits_cpu is not None:
@@ -24907,6 +27125,9 @@ class NamespaceResourceQuotaLimitArgs:
     @property
     @pulumi.getter(name="configMaps")
     def config_maps(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for config maps in namespace (string)
+        """
         return pulumi.get(self, "config_maps")
 
     @config_maps.setter
@@ -24916,6 +27137,9 @@ class NamespaceResourceQuotaLimitArgs:
     @property
     @pulumi.getter(name="limitsCpu")
     def limits_cpu(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for limits cpu in namespace (string)
+        """
         return pulumi.get(self, "limits_cpu")
 
     @limits_cpu.setter
@@ -24925,6 +27149,9 @@ class NamespaceResourceQuotaLimitArgs:
     @property
     @pulumi.getter(name="limitsMemory")
     def limits_memory(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for limits memory in namespace (string)
+        """
         return pulumi.get(self, "limits_memory")
 
     @limits_memory.setter
@@ -24934,6 +27161,9 @@ class NamespaceResourceQuotaLimitArgs:
     @property
     @pulumi.getter(name="persistentVolumeClaims")
     def persistent_volume_claims(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for persistent volume claims in namespace (string)
+        """
         return pulumi.get(self, "persistent_volume_claims")
 
     @persistent_volume_claims.setter
@@ -24943,6 +27173,9 @@ class NamespaceResourceQuotaLimitArgs:
     @property
     @pulumi.getter
     def pods(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for pods in namespace (string)
+        """
         return pulumi.get(self, "pods")
 
     @pods.setter
@@ -24952,6 +27185,9 @@ class NamespaceResourceQuotaLimitArgs:
     @property
     @pulumi.getter(name="replicationControllers")
     def replication_controllers(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for replication controllers in namespace (string)
+        """
         return pulumi.get(self, "replication_controllers")
 
     @replication_controllers.setter
@@ -24961,6 +27197,9 @@ class NamespaceResourceQuotaLimitArgs:
     @property
     @pulumi.getter(name="requestsCpu")
     def requests_cpu(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for requests cpu in namespace (string)
+        """
         return pulumi.get(self, "requests_cpu")
 
     @requests_cpu.setter
@@ -24970,6 +27209,9 @@ class NamespaceResourceQuotaLimitArgs:
     @property
     @pulumi.getter(name="requestsMemory")
     def requests_memory(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for requests memory in namespace (string)
+        """
         return pulumi.get(self, "requests_memory")
 
     @requests_memory.setter
@@ -24979,6 +27221,9 @@ class NamespaceResourceQuotaLimitArgs:
     @property
     @pulumi.getter(name="requestsStorage")
     def requests_storage(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for requests storage in namespace (string)
+        """
         return pulumi.get(self, "requests_storage")
 
     @requests_storage.setter
@@ -24988,6 +27233,9 @@ class NamespaceResourceQuotaLimitArgs:
     @property
     @pulumi.getter
     def secrets(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for secrets in namespace (string)
+        """
         return pulumi.get(self, "secrets")
 
     @secrets.setter
@@ -25006,6 +27254,9 @@ class NamespaceResourceQuotaLimitArgs:
     @property
     @pulumi.getter(name="servicesLoadBalancers")
     def services_load_balancers(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for services load balancers in namespace (string)
+        """
         return pulumi.get(self, "services_load_balancers")
 
     @services_load_balancers.setter
@@ -25015,6 +27266,11 @@ class NamespaceResourceQuotaLimitArgs:
     @property
     @pulumi.getter(name="servicesNodePorts")
     def services_node_ports(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for services node ports in namespace (string)
+
+        More info at [resource-quotas](https://rancher.com/docs/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/)
+        """
         return pulumi.get(self, "services_node_ports")
 
     @services_node_ports.setter
@@ -25029,6 +27285,12 @@ class NodePoolNodeTaintArgs:
                  value: pulumi.Input[str],
                  effect: Optional[pulumi.Input[str]] = None,
                  time_added: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: Taint key (string)
+        :param pulumi.Input[str] value: Taint value (string)
+        :param pulumi.Input[str] effect: Taint effect. Supported values : `"NoExecute" | "NoSchedule" | "PreferNoSchedule"` (string)
+        :param pulumi.Input[str] time_added: Taint time added (string)
+        """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
         if effect is not None:
@@ -25039,6 +27301,9 @@ class NodePoolNodeTaintArgs:
     @property
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
+        """
+        Taint key (string)
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -25048,6 +27313,9 @@ class NodePoolNodeTaintArgs:
     @property
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
+        """
+        Taint value (string)
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -25057,6 +27325,9 @@ class NodePoolNodeTaintArgs:
     @property
     @pulumi.getter
     def effect(self) -> Optional[pulumi.Input[str]]:
+        """
+        Taint effect. Supported values : `"NoExecute" | "NoSchedule" | "PreferNoSchedule"` (string)
+        """
         return pulumi.get(self, "effect")
 
     @effect.setter
@@ -25066,6 +27337,9 @@ class NodePoolNodeTaintArgs:
     @property
     @pulumi.getter(name="timeAdded")
     def time_added(self) -> Optional[pulumi.Input[str]]:
+        """
+        Taint time added (string)
+        """
         return pulumi.get(self, "time_added")
 
     @time_added.setter
@@ -27053,6 +29327,12 @@ class NodeTemplateNodeTaintArgs:
                  value: pulumi.Input[str],
                  effect: Optional[pulumi.Input[str]] = None,
                  time_added: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: Taint key (string)
+        :param pulumi.Input[str] value: Taint value (string)
+        :param pulumi.Input[str] effect: Taint effect. Supported values : `"NoExecute" | "NoSchedule" | "PreferNoSchedule"` (string)
+        :param pulumi.Input[str] time_added: Taint time added (string)
+        """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
         if effect is not None:
@@ -27063,6 +29343,9 @@ class NodeTemplateNodeTaintArgs:
     @property
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
+        """
+        Taint key (string)
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -27072,6 +29355,9 @@ class NodeTemplateNodeTaintArgs:
     @property
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
+        """
+        Taint value (string)
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -27081,6 +29367,9 @@ class NodeTemplateNodeTaintArgs:
     @property
     @pulumi.getter
     def effect(self) -> Optional[pulumi.Input[str]]:
+        """
+        Taint effect. Supported values : `"NoExecute" | "NoSchedule" | "PreferNoSchedule"` (string)
+        """
         return pulumi.get(self, "effect")
 
     @effect.setter
@@ -27090,6 +29379,9 @@ class NodeTemplateNodeTaintArgs:
     @property
     @pulumi.getter(name="timeAdded")
     def time_added(self) -> Optional[pulumi.Input[str]]:
+        """
+        Taint time added (string)
+        """
         return pulumi.get(self, "time_added")
 
     @time_added.setter
@@ -27119,6 +29411,29 @@ class NodeTemplateOpennebulaConfigArgs:
                  template_id: Optional[pulumi.Input[str]] = None,
                  template_name: Optional[pulumi.Input[str]] = None,
                  vcpu: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] password: vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        :param pulumi.Input[str] user: Set the user for the XML-RPC API authentication (string)
+        :param pulumi.Input[str] xml_rpc_url: Set the url for the Opennebula XML-RPC API (string)
+        :param pulumi.Input[str] b2d_size: Size of the Volatile disk in MB - only for b2d (string)
+        :param pulumi.Input[str] cpu: CPU value for the VM (string)
+        :param pulumi.Input[str] dev_prefix: Dev prefix to use for the images. E.g.: 'vd', 'sd', 'hd' (string)
+        :param pulumi.Input[bool] disable_vnc: VNC is enabled by default. Disable it with this flag (bool)
+        :param pulumi.Input[str] disk_resize: Size of the disk for the VM in MB (string)
+        :param pulumi.Input[str] image_id: OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+        :param pulumi.Input[str] image_name: OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+        :param pulumi.Input[str] image_owner: Owner of the image to use as the VM OS (string)
+        :param pulumi.Input[str] memory: Size of the memory for the VM in MB (string)
+        :param pulumi.Input[str] network_id: Opennebula network ID to connect the machine to. Conflicts with `network_name` (string)
+        :param pulumi.Input[str] network_name: Opennebula network to connect the machine to. Conflicts with `network_id` (string)
+        :param pulumi.Input[str] network_owner: Opennebula user ID of the Network to connect the machine to (string)
+        :param pulumi.Input[str] ssh_user: If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        :param pulumi.Input[str] template_id: Opennebula template ID to use. Conflicts with `template_name` (string)
+        :param pulumi.Input[str] template_name: Name of the Opennbula template to use. Conflicts with `template_id` (string)
+        :param pulumi.Input[str] vcpu: VCPUs for the VM (string)
+               
+               > **Note:**: `Required*` denotes that one of image_name / image_id or template_name / template_id is required but you cannot combine them.
+        """
         pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "user", user)
         pulumi.set(__self__, "xml_rpc_url", xml_rpc_url)
@@ -27158,6 +29473,9 @@ class NodeTemplateOpennebulaConfigArgs:
     @property
     @pulumi.getter
     def password(self) -> pulumi.Input[str]:
+        """
+        vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -27167,6 +29485,9 @@ class NodeTemplateOpennebulaConfigArgs:
     @property
     @pulumi.getter
     def user(self) -> pulumi.Input[str]:
+        """
+        Set the user for the XML-RPC API authentication (string)
+        """
         return pulumi.get(self, "user")
 
     @user.setter
@@ -27176,6 +29497,9 @@ class NodeTemplateOpennebulaConfigArgs:
     @property
     @pulumi.getter(name="xmlRpcUrl")
     def xml_rpc_url(self) -> pulumi.Input[str]:
+        """
+        Set the url for the Opennebula XML-RPC API (string)
+        """
         return pulumi.get(self, "xml_rpc_url")
 
     @xml_rpc_url.setter
@@ -27185,6 +29509,9 @@ class NodeTemplateOpennebulaConfigArgs:
     @property
     @pulumi.getter(name="b2dSize")
     def b2d_size(self) -> Optional[pulumi.Input[str]]:
+        """
+        Size of the Volatile disk in MB - only for b2d (string)
+        """
         return pulumi.get(self, "b2d_size")
 
     @b2d_size.setter
@@ -27194,6 +29521,9 @@ class NodeTemplateOpennebulaConfigArgs:
     @property
     @pulumi.getter
     def cpu(self) -> Optional[pulumi.Input[str]]:
+        """
+        CPU value for the VM (string)
+        """
         return pulumi.get(self, "cpu")
 
     @cpu.setter
@@ -27203,6 +29533,9 @@ class NodeTemplateOpennebulaConfigArgs:
     @property
     @pulumi.getter(name="devPrefix")
     def dev_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Dev prefix to use for the images. E.g.: 'vd', 'sd', 'hd' (string)
+        """
         return pulumi.get(self, "dev_prefix")
 
     @dev_prefix.setter
@@ -27212,6 +29545,9 @@ class NodeTemplateOpennebulaConfigArgs:
     @property
     @pulumi.getter(name="disableVnc")
     def disable_vnc(self) -> Optional[pulumi.Input[bool]]:
+        """
+        VNC is enabled by default. Disable it with this flag (bool)
+        """
         return pulumi.get(self, "disable_vnc")
 
     @disable_vnc.setter
@@ -27221,6 +29557,9 @@ class NodeTemplateOpennebulaConfigArgs:
     @property
     @pulumi.getter(name="diskResize")
     def disk_resize(self) -> Optional[pulumi.Input[str]]:
+        """
+        Size of the disk for the VM in MB (string)
+        """
         return pulumi.get(self, "disk_resize")
 
     @disk_resize.setter
@@ -27230,6 +29569,9 @@ class NodeTemplateOpennebulaConfigArgs:
     @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+        """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
@@ -27239,6 +29581,9 @@ class NodeTemplateOpennebulaConfigArgs:
     @property
     @pulumi.getter(name="imageName")
     def image_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+        """
         return pulumi.get(self, "image_name")
 
     @image_name.setter
@@ -27248,6 +29593,9 @@ class NodeTemplateOpennebulaConfigArgs:
     @property
     @pulumi.getter(name="imageOwner")
     def image_owner(self) -> Optional[pulumi.Input[str]]:
+        """
+        Owner of the image to use as the VM OS (string)
+        """
         return pulumi.get(self, "image_owner")
 
     @image_owner.setter
@@ -27257,6 +29605,9 @@ class NodeTemplateOpennebulaConfigArgs:
     @property
     @pulumi.getter
     def memory(self) -> Optional[pulumi.Input[str]]:
+        """
+        Size of the memory for the VM in MB (string)
+        """
         return pulumi.get(self, "memory")
 
     @memory.setter
@@ -27266,6 +29617,9 @@ class NodeTemplateOpennebulaConfigArgs:
     @property
     @pulumi.getter(name="networkId")
     def network_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Opennebula network ID to connect the machine to. Conflicts with `network_name` (string)
+        """
         return pulumi.get(self, "network_id")
 
     @network_id.setter
@@ -27275,6 +29629,9 @@ class NodeTemplateOpennebulaConfigArgs:
     @property
     @pulumi.getter(name="networkName")
     def network_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Opennebula network to connect the machine to. Conflicts with `network_id` (string)
+        """
         return pulumi.get(self, "network_name")
 
     @network_name.setter
@@ -27284,6 +29641,9 @@ class NodeTemplateOpennebulaConfigArgs:
     @property
     @pulumi.getter(name="networkOwner")
     def network_owner(self) -> Optional[pulumi.Input[str]]:
+        """
+        Opennebula user ID of the Network to connect the machine to (string)
+        """
         return pulumi.get(self, "network_owner")
 
     @network_owner.setter
@@ -27293,6 +29653,9 @@ class NodeTemplateOpennebulaConfigArgs:
     @property
     @pulumi.getter(name="sshUser")
     def ssh_user(self) -> Optional[pulumi.Input[str]]:
+        """
+        If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        """
         return pulumi.get(self, "ssh_user")
 
     @ssh_user.setter
@@ -27302,6 +29665,9 @@ class NodeTemplateOpennebulaConfigArgs:
     @property
     @pulumi.getter(name="templateId")
     def template_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Opennebula template ID to use. Conflicts with `template_name` (string)
+        """
         return pulumi.get(self, "template_id")
 
     @template_id.setter
@@ -27311,6 +29677,9 @@ class NodeTemplateOpennebulaConfigArgs:
     @property
     @pulumi.getter(name="templateName")
     def template_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the Opennbula template to use. Conflicts with `template_id` (string)
+        """
         return pulumi.get(self, "template_name")
 
     @template_name.setter
@@ -27320,6 +29689,11 @@ class NodeTemplateOpennebulaConfigArgs:
     @property
     @pulumi.getter
     def vcpu(self) -> Optional[pulumi.Input[str]]:
+        """
+        VCPUs for the VM (string)
+
+        > **Note:**: `Required*` denotes that one of image_name / image_id or template_name / template_id is required but you cannot combine them.
+        """
         return pulumi.get(self, "vcpu")
 
     @vcpu.setter
@@ -27368,6 +29742,52 @@ class NodeTemplateOpenstackConfigArgs:
                  volume_name: Optional[pulumi.Input[str]] = None,
                  volume_size: Optional[pulumi.Input[str]] = None,
                  volume_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] auth_url: OpenStack authentication URL (string)
+        :param pulumi.Input[str] availability_zone: OpenStack availability zone (string)
+        :param pulumi.Input[str] region: AWS region. Default `eu-west-2` (string)
+        :param pulumi.Input[str] active_timeout: OpenStack active timeout Default `200` (string)
+        :param pulumi.Input[str] application_credential_id: OpenStack application credential id. Conflicts with `application_credential_name` (string)
+        :param pulumi.Input[str] application_credential_name: OpenStack application credential name. Conflicts with `application_credential_id` (string)
+        :param pulumi.Input[str] application_credential_secret: OpenStack application credential secret (string)
+        :param pulumi.Input[bool] boot_from_volume: Enable booting from volume. Default is `false` (bool)
+        :param pulumi.Input[str] cacert: CA certificate bundle to verify against (string)
+        :param pulumi.Input[bool] config_drive: Enables the OpenStack config drive for the instance. Default `false` (bool)
+        :param pulumi.Input[str] domain_id: OpenStack domain ID. Identity v3 only. Conflicts with `domain_name` (string)
+        :param pulumi.Input[str] domain_name: OpenStack domain name. Identity v3 only. Conflicts with `domain_id` (string)
+        :param pulumi.Input[str] endpoint_type: OpenStack endpoint type. adminURL, internalURL or publicURL (string)
+        :param pulumi.Input[str] flavor_id: OpenStack flavor id to use for the instance. Conflicts with `flavor_name` (string)
+        :param pulumi.Input[str] flavor_name: OpenStack flavor name to use for the instance. Conflicts with `flavor_id` (string)
+        :param pulumi.Input[str] floating_ip_pool: OpenStack floating IP pool to get an IP from to assign to the instance (string)
+        :param pulumi.Input[str] image_id: OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+        :param pulumi.Input[str] image_name: OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+        :param pulumi.Input[bool] insecure: Disable TLS credential checking. Default `false` (bool)
+        :param pulumi.Input[str] ip_version: OpenStack version of IP address assigned for the machine Default `4` (string)
+        :param pulumi.Input[str] keypair_name: OpenStack keypair to use to SSH to the instance (string)
+        :param pulumi.Input[str] net_id: OpenStack network id the machine will be connected on. Conflicts with `net_name` (string)
+        :param pulumi.Input[str] net_name: OpenStack network name the machine will be connected on. Conflicts with `net_id` (string)
+        :param pulumi.Input[bool] nova_network: Use the nova networking services instead of neutron (string)
+        :param pulumi.Input[str] password: vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        :param pulumi.Input[str] private_key_file: Private key content to use for SSH (string)
+        :param pulumi.Input[str] sec_groups: OpenStack comma separated security groups for the machine (string)
+        :param pulumi.Input[str] ssh_port: If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+        :param pulumi.Input[str] ssh_user: If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        :param pulumi.Input[str] tenant_id: OpenStack tenant id. Conflicts with `tenant_name` (string)
+        :param pulumi.Input[str] tenant_name: OpenStack tenant name. Conflicts with `tenant_id` (string)
+        :param pulumi.Input[str] user_data_file: File containing an openstack userdata script (string)
+        :param pulumi.Input[str] username: vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        :param pulumi.Input[str] volume_device_path: OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
+               
+               > **Note:**: `Required*` denotes that either the _name or _id is required but you cannot use both.
+               
+               > **Note:**: `Required**` denotes that either the _name or _id is required unless `application_credential_id` is defined.
+               
+               > **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
+        :param pulumi.Input[str] volume_id: OpenStack volume id of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+        :param pulumi.Input[str] volume_name: OpenStack volume name of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+        :param pulumi.Input[str] volume_size: OpenStack volume size (GiB). Required when `boot_from_volume` is `true` (string)
+        :param pulumi.Input[str] volume_type: OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+        """
         pulumi.set(__self__, "auth_url", auth_url)
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "region", region)
@@ -27445,6 +29865,9 @@ class NodeTemplateOpenstackConfigArgs:
     @property
     @pulumi.getter(name="authUrl")
     def auth_url(self) -> pulumi.Input[str]:
+        """
+        OpenStack authentication URL (string)
+        """
         return pulumi.get(self, "auth_url")
 
     @auth_url.setter
@@ -27454,6 +29877,9 @@ class NodeTemplateOpenstackConfigArgs:
     @property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> pulumi.Input[str]:
+        """
+        OpenStack availability zone (string)
+        """
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -27463,6 +29889,9 @@ class NodeTemplateOpenstackConfigArgs:
     @property
     @pulumi.getter
     def region(self) -> pulumi.Input[str]:
+        """
+        AWS region. Default `eu-west-2` (string)
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -27472,6 +29901,9 @@ class NodeTemplateOpenstackConfigArgs:
     @property
     @pulumi.getter(name="activeTimeout")
     def active_timeout(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack active timeout Default `200` (string)
+        """
         return pulumi.get(self, "active_timeout")
 
     @active_timeout.setter
@@ -27481,6 +29913,9 @@ class NodeTemplateOpenstackConfigArgs:
     @property
     @pulumi.getter(name="applicationCredentialId")
     def application_credential_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack application credential id. Conflicts with `application_credential_name` (string)
+        """
         return pulumi.get(self, "application_credential_id")
 
     @application_credential_id.setter
@@ -27490,6 +29925,9 @@ class NodeTemplateOpenstackConfigArgs:
     @property
     @pulumi.getter(name="applicationCredentialName")
     def application_credential_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack application credential name. Conflicts with `application_credential_id` (string)
+        """
         return pulumi.get(self, "application_credential_name")
 
     @application_credential_name.setter
@@ -27499,6 +29937,9 @@ class NodeTemplateOpenstackConfigArgs:
     @property
     @pulumi.getter(name="applicationCredentialSecret")
     def application_credential_secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack application credential secret (string)
+        """
         return pulumi.get(self, "application_credential_secret")
 
     @application_credential_secret.setter
@@ -27508,6 +29949,9 @@ class NodeTemplateOpenstackConfigArgs:
     @property
     @pulumi.getter(name="bootFromVolume")
     def boot_from_volume(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable booting from volume. Default is `false` (bool)
+        """
         return pulumi.get(self, "boot_from_volume")
 
     @boot_from_volume.setter
@@ -27517,6 +29961,9 @@ class NodeTemplateOpenstackConfigArgs:
     @property
     @pulumi.getter
     def cacert(self) -> Optional[pulumi.Input[str]]:
+        """
+        CA certificate bundle to verify against (string)
+        """
         return pulumi.get(self, "cacert")
 
     @cacert.setter
@@ -27526,6 +29973,9 @@ class NodeTemplateOpenstackConfigArgs:
     @property
     @pulumi.getter(name="configDrive")
     def config_drive(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables the OpenStack config drive for the instance. Default `false` (bool)
+        """
         return pulumi.get(self, "config_drive")
 
     @config_drive.setter
@@ -27535,6 +29985,9 @@ class NodeTemplateOpenstackConfigArgs:
     @property
     @pulumi.getter(name="domainId")
     def domain_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack domain ID. Identity v3 only. Conflicts with `domain_name` (string)
+        """
         return pulumi.get(self, "domain_id")
 
     @domain_id.setter
@@ -27544,6 +29997,9 @@ class NodeTemplateOpenstackConfigArgs:
     @property
     @pulumi.getter(name="domainName")
     def domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack domain name. Identity v3 only. Conflicts with `domain_id` (string)
+        """
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
@@ -27553,6 +30009,9 @@ class NodeTemplateOpenstackConfigArgs:
     @property
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack endpoint type. adminURL, internalURL or publicURL (string)
+        """
         return pulumi.get(self, "endpoint_type")
 
     @endpoint_type.setter
@@ -27562,6 +30021,9 @@ class NodeTemplateOpenstackConfigArgs:
     @property
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack flavor id to use for the instance. Conflicts with `flavor_name` (string)
+        """
         return pulumi.get(self, "flavor_id")
 
     @flavor_id.setter
@@ -27571,6 +30033,9 @@ class NodeTemplateOpenstackConfigArgs:
     @property
     @pulumi.getter(name="flavorName")
     def flavor_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack flavor name to use for the instance. Conflicts with `flavor_id` (string)
+        """
         return pulumi.get(self, "flavor_name")
 
     @flavor_name.setter
@@ -27580,6 +30045,9 @@ class NodeTemplateOpenstackConfigArgs:
     @property
     @pulumi.getter(name="floatingIpPool")
     def floating_ip_pool(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack floating IP pool to get an IP from to assign to the instance (string)
+        """
         return pulumi.get(self, "floating_ip_pool")
 
     @floating_ip_pool.setter
@@ -27589,6 +30057,9 @@ class NodeTemplateOpenstackConfigArgs:
     @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+        """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
@@ -27598,6 +30069,9 @@ class NodeTemplateOpenstackConfigArgs:
     @property
     @pulumi.getter(name="imageName")
     def image_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+        """
         return pulumi.get(self, "image_name")
 
     @image_name.setter
@@ -27607,6 +30081,9 @@ class NodeTemplateOpenstackConfigArgs:
     @property
     @pulumi.getter
     def insecure(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disable TLS credential checking. Default `false` (bool)
+        """
         return pulumi.get(self, "insecure")
 
     @insecure.setter
@@ -27616,6 +30093,9 @@ class NodeTemplateOpenstackConfigArgs:
     @property
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack version of IP address assigned for the machine Default `4` (string)
+        """
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
@@ -27625,6 +30105,9 @@ class NodeTemplateOpenstackConfigArgs:
     @property
     @pulumi.getter(name="keypairName")
     def keypair_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack keypair to use to SSH to the instance (string)
+        """
         return pulumi.get(self, "keypair_name")
 
     @keypair_name.setter
@@ -27634,6 +30117,9 @@ class NodeTemplateOpenstackConfigArgs:
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack network id the machine will be connected on. Conflicts with `net_name` (string)
+        """
         return pulumi.get(self, "net_id")
 
     @net_id.setter
@@ -27643,6 +30129,9 @@ class NodeTemplateOpenstackConfigArgs:
     @property
     @pulumi.getter(name="netName")
     def net_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack network name the machine will be connected on. Conflicts with `net_id` (string)
+        """
         return pulumi.get(self, "net_name")
 
     @net_name.setter
@@ -27652,6 +30141,9 @@ class NodeTemplateOpenstackConfigArgs:
     @property
     @pulumi.getter(name="novaNetwork")
     def nova_network(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Use the nova networking services instead of neutron (string)
+        """
         return pulumi.get(self, "nova_network")
 
     @nova_network.setter
@@ -27661,6 +30153,9 @@ class NodeTemplateOpenstackConfigArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -27670,6 +30165,9 @@ class NodeTemplateOpenstackConfigArgs:
     @property
     @pulumi.getter(name="privateKeyFile")
     def private_key_file(self) -> Optional[pulumi.Input[str]]:
+        """
+        Private key content to use for SSH (string)
+        """
         return pulumi.get(self, "private_key_file")
 
     @private_key_file.setter
@@ -27679,6 +30177,9 @@ class NodeTemplateOpenstackConfigArgs:
     @property
     @pulumi.getter(name="secGroups")
     def sec_groups(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack comma separated security groups for the machine (string)
+        """
         return pulumi.get(self, "sec_groups")
 
     @sec_groups.setter
@@ -27688,6 +30189,9 @@ class NodeTemplateOpenstackConfigArgs:
     @property
     @pulumi.getter(name="sshPort")
     def ssh_port(self) -> Optional[pulumi.Input[str]]:
+        """
+        If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+        """
         return pulumi.get(self, "ssh_port")
 
     @ssh_port.setter
@@ -27697,6 +30201,9 @@ class NodeTemplateOpenstackConfigArgs:
     @property
     @pulumi.getter(name="sshUser")
     def ssh_user(self) -> Optional[pulumi.Input[str]]:
+        """
+        If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        """
         return pulumi.get(self, "ssh_user")
 
     @ssh_user.setter
@@ -27706,6 +30213,9 @@ class NodeTemplateOpenstackConfigArgs:
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack tenant id. Conflicts with `tenant_name` (string)
+        """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
@@ -27715,6 +30225,9 @@ class NodeTemplateOpenstackConfigArgs:
     @property
     @pulumi.getter(name="tenantName")
     def tenant_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack tenant name. Conflicts with `tenant_id` (string)
+        """
         return pulumi.get(self, "tenant_name")
 
     @tenant_name.setter
@@ -27724,6 +30237,9 @@ class NodeTemplateOpenstackConfigArgs:
     @property
     @pulumi.getter(name="userDataFile")
     def user_data_file(self) -> Optional[pulumi.Input[str]]:
+        """
+        File containing an openstack userdata script (string)
+        """
         return pulumi.get(self, "user_data_file")
 
     @user_data_file.setter
@@ -27733,6 +30249,9 @@ class NodeTemplateOpenstackConfigArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -27742,6 +30261,15 @@ class NodeTemplateOpenstackConfigArgs:
     @property
     @pulumi.getter(name="volumeDevicePath")
     def volume_device_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
+
+        > **Note:**: `Required*` denotes that either the _name or _id is required but you cannot use both.
+
+        > **Note:**: `Required**` denotes that either the _name or _id is required unless `application_credential_id` is defined.
+
+        > **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
+        """
         return pulumi.get(self, "volume_device_path")
 
     @volume_device_path.setter
@@ -27751,6 +30279,9 @@ class NodeTemplateOpenstackConfigArgs:
     @property
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack volume id of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+        """
         return pulumi.get(self, "volume_id")
 
     @volume_id.setter
@@ -27760,6 +30291,9 @@ class NodeTemplateOpenstackConfigArgs:
     @property
     @pulumi.getter(name="volumeName")
     def volume_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack volume name of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+        """
         return pulumi.get(self, "volume_name")
 
     @volume_name.setter
@@ -27769,6 +30303,9 @@ class NodeTemplateOpenstackConfigArgs:
     @property
     @pulumi.getter(name="volumeSize")
     def volume_size(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack volume size (GiB). Required when `boot_from_volume` is `true` (string)
+        """
         return pulumi.get(self, "volume_size")
 
     @volume_size.setter
@@ -27778,6 +30315,9 @@ class NodeTemplateOpenstackConfigArgs:
     @property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+        """
         return pulumi.get(self, "volume_type")
 
     @volume_type.setter
@@ -29932,6 +32472,12 @@ class ProjectContainerResourceLimitArgs:
                  limits_memory: Optional[pulumi.Input[str]] = None,
                  requests_cpu: Optional[pulumi.Input[str]] = None,
                  requests_memory: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] limits_cpu: Limit for limits cpu in project (string)
+        :param pulumi.Input[str] limits_memory: Limit for limits memory in project (string)
+        :param pulumi.Input[str] requests_cpu: Limit for requests cpu in project (string)
+        :param pulumi.Input[str] requests_memory: Limit for requests memory in project (string)
+        """
         if limits_cpu is not None:
             pulumi.set(__self__, "limits_cpu", limits_cpu)
         if limits_memory is not None:
@@ -29944,6 +32490,9 @@ class ProjectContainerResourceLimitArgs:
     @property
     @pulumi.getter(name="limitsCpu")
     def limits_cpu(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for limits cpu in project (string)
+        """
         return pulumi.get(self, "limits_cpu")
 
     @limits_cpu.setter
@@ -29953,6 +32502,9 @@ class ProjectContainerResourceLimitArgs:
     @property
     @pulumi.getter(name="limitsMemory")
     def limits_memory(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for limits memory in project (string)
+        """
         return pulumi.get(self, "limits_memory")
 
     @limits_memory.setter
@@ -29962,6 +32514,9 @@ class ProjectContainerResourceLimitArgs:
     @property
     @pulumi.getter(name="requestsCpu")
     def requests_cpu(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for requests cpu in project (string)
+        """
         return pulumi.get(self, "requests_cpu")
 
     @requests_cpu.setter
@@ -29971,6 +32526,9 @@ class ProjectContainerResourceLimitArgs:
     @property
     @pulumi.getter(name="requestsMemory")
     def requests_memory(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for requests memory in project (string)
+        """
         return pulumi.get(self, "requests_memory")
 
     @requests_memory.setter
@@ -30022,12 +32580,19 @@ class ProjectResourceQuotaArgs:
     def __init__(__self__, *,
                  namespace_default_limit: pulumi.Input['ProjectResourceQuotaNamespaceDefaultLimitArgs'],
                  project_limit: pulumi.Input['ProjectResourceQuotaProjectLimitArgs']):
+        """
+        :param pulumi.Input['ProjectResourceQuotaNamespaceDefaultLimitArgs'] namespace_default_limit: Default resource quota limit for  namespaces in project (list maxitems:1)
+        :param pulumi.Input['ProjectResourceQuotaProjectLimitArgs'] project_limit: Resource quota limit for project (list maxitems:1)
+        """
         pulumi.set(__self__, "namespace_default_limit", namespace_default_limit)
         pulumi.set(__self__, "project_limit", project_limit)
 
     @property
     @pulumi.getter(name="namespaceDefaultLimit")
     def namespace_default_limit(self) -> pulumi.Input['ProjectResourceQuotaNamespaceDefaultLimitArgs']:
+        """
+        Default resource quota limit for  namespaces in project (list maxitems:1)
+        """
         return pulumi.get(self, "namespace_default_limit")
 
     @namespace_default_limit.setter
@@ -30037,6 +32602,9 @@ class ProjectResourceQuotaArgs:
     @property
     @pulumi.getter(name="projectLimit")
     def project_limit(self) -> pulumi.Input['ProjectResourceQuotaProjectLimitArgs']:
+        """
+        Resource quota limit for project (list maxitems:1)
+        """
         return pulumi.get(self, "project_limit")
 
     @project_limit.setter
@@ -30060,6 +32628,22 @@ class ProjectResourceQuotaNamespaceDefaultLimitArgs:
                  services: Optional[pulumi.Input[str]] = None,
                  services_load_balancers: Optional[pulumi.Input[str]] = None,
                  services_node_ports: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] config_maps: Limit for config maps in project (string)
+        :param pulumi.Input[str] limits_cpu: Limit for limits cpu in project (string)
+        :param pulumi.Input[str] limits_memory: Limit for limits memory in project (string)
+        :param pulumi.Input[str] persistent_volume_claims: Limit for persistent volume claims in project (string)
+        :param pulumi.Input[str] pods: Limit for pods in project (string)
+        :param pulumi.Input[str] replication_controllers: Limit for replication controllers in project (string)
+        :param pulumi.Input[str] requests_cpu: Limit for requests cpu in project (string)
+        :param pulumi.Input[str] requests_memory: Limit for requests memory in project (string)
+        :param pulumi.Input[str] requests_storage: Limit for requests storage in project (string)
+        :param pulumi.Input[str] secrets: Limit for secrets in project (string)
+        :param pulumi.Input[str] services_load_balancers: Limit for services load balancers in project (string)
+        :param pulumi.Input[str] services_node_ports: Limit for services node ports in project (string)
+               
+               More info at [resource-quotas](https://rancher.com/docs/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/)
+        """
         if config_maps is not None:
             pulumi.set(__self__, "config_maps", config_maps)
         if limits_cpu is not None:
@@ -30090,6 +32674,9 @@ class ProjectResourceQuotaNamespaceDefaultLimitArgs:
     @property
     @pulumi.getter(name="configMaps")
     def config_maps(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for config maps in project (string)
+        """
         return pulumi.get(self, "config_maps")
 
     @config_maps.setter
@@ -30099,6 +32686,9 @@ class ProjectResourceQuotaNamespaceDefaultLimitArgs:
     @property
     @pulumi.getter(name="limitsCpu")
     def limits_cpu(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for limits cpu in project (string)
+        """
         return pulumi.get(self, "limits_cpu")
 
     @limits_cpu.setter
@@ -30108,6 +32698,9 @@ class ProjectResourceQuotaNamespaceDefaultLimitArgs:
     @property
     @pulumi.getter(name="limitsMemory")
     def limits_memory(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for limits memory in project (string)
+        """
         return pulumi.get(self, "limits_memory")
 
     @limits_memory.setter
@@ -30117,6 +32710,9 @@ class ProjectResourceQuotaNamespaceDefaultLimitArgs:
     @property
     @pulumi.getter(name="persistentVolumeClaims")
     def persistent_volume_claims(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for persistent volume claims in project (string)
+        """
         return pulumi.get(self, "persistent_volume_claims")
 
     @persistent_volume_claims.setter
@@ -30126,6 +32722,9 @@ class ProjectResourceQuotaNamespaceDefaultLimitArgs:
     @property
     @pulumi.getter
     def pods(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for pods in project (string)
+        """
         return pulumi.get(self, "pods")
 
     @pods.setter
@@ -30135,6 +32734,9 @@ class ProjectResourceQuotaNamespaceDefaultLimitArgs:
     @property
     @pulumi.getter(name="replicationControllers")
     def replication_controllers(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for replication controllers in project (string)
+        """
         return pulumi.get(self, "replication_controllers")
 
     @replication_controllers.setter
@@ -30144,6 +32746,9 @@ class ProjectResourceQuotaNamespaceDefaultLimitArgs:
     @property
     @pulumi.getter(name="requestsCpu")
     def requests_cpu(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for requests cpu in project (string)
+        """
         return pulumi.get(self, "requests_cpu")
 
     @requests_cpu.setter
@@ -30153,6 +32758,9 @@ class ProjectResourceQuotaNamespaceDefaultLimitArgs:
     @property
     @pulumi.getter(name="requestsMemory")
     def requests_memory(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for requests memory in project (string)
+        """
         return pulumi.get(self, "requests_memory")
 
     @requests_memory.setter
@@ -30162,6 +32770,9 @@ class ProjectResourceQuotaNamespaceDefaultLimitArgs:
     @property
     @pulumi.getter(name="requestsStorage")
     def requests_storage(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for requests storage in project (string)
+        """
         return pulumi.get(self, "requests_storage")
 
     @requests_storage.setter
@@ -30171,6 +32782,9 @@ class ProjectResourceQuotaNamespaceDefaultLimitArgs:
     @property
     @pulumi.getter
     def secrets(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for secrets in project (string)
+        """
         return pulumi.get(self, "secrets")
 
     @secrets.setter
@@ -30189,6 +32803,9 @@ class ProjectResourceQuotaNamespaceDefaultLimitArgs:
     @property
     @pulumi.getter(name="servicesLoadBalancers")
     def services_load_balancers(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for services load balancers in project (string)
+        """
         return pulumi.get(self, "services_load_balancers")
 
     @services_load_balancers.setter
@@ -30198,6 +32815,11 @@ class ProjectResourceQuotaNamespaceDefaultLimitArgs:
     @property
     @pulumi.getter(name="servicesNodePorts")
     def services_node_ports(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for services node ports in project (string)
+
+        More info at [resource-quotas](https://rancher.com/docs/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/)
+        """
         return pulumi.get(self, "services_node_ports")
 
     @services_node_ports.setter
@@ -30221,6 +32843,22 @@ class ProjectResourceQuotaProjectLimitArgs:
                  services: Optional[pulumi.Input[str]] = None,
                  services_load_balancers: Optional[pulumi.Input[str]] = None,
                  services_node_ports: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] config_maps: Limit for config maps in project (string)
+        :param pulumi.Input[str] limits_cpu: Limit for limits cpu in project (string)
+        :param pulumi.Input[str] limits_memory: Limit for limits memory in project (string)
+        :param pulumi.Input[str] persistent_volume_claims: Limit for persistent volume claims in project (string)
+        :param pulumi.Input[str] pods: Limit for pods in project (string)
+        :param pulumi.Input[str] replication_controllers: Limit for replication controllers in project (string)
+        :param pulumi.Input[str] requests_cpu: Limit for requests cpu in project (string)
+        :param pulumi.Input[str] requests_memory: Limit for requests memory in project (string)
+        :param pulumi.Input[str] requests_storage: Limit for requests storage in project (string)
+        :param pulumi.Input[str] secrets: Limit for secrets in project (string)
+        :param pulumi.Input[str] services_load_balancers: Limit for services load balancers in project (string)
+        :param pulumi.Input[str] services_node_ports: Limit for services node ports in project (string)
+               
+               More info at [resource-quotas](https://rancher.com/docs/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/)
+        """
         if config_maps is not None:
             pulumi.set(__self__, "config_maps", config_maps)
         if limits_cpu is not None:
@@ -30251,6 +32889,9 @@ class ProjectResourceQuotaProjectLimitArgs:
     @property
     @pulumi.getter(name="configMaps")
     def config_maps(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for config maps in project (string)
+        """
         return pulumi.get(self, "config_maps")
 
     @config_maps.setter
@@ -30260,6 +32901,9 @@ class ProjectResourceQuotaProjectLimitArgs:
     @property
     @pulumi.getter(name="limitsCpu")
     def limits_cpu(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for limits cpu in project (string)
+        """
         return pulumi.get(self, "limits_cpu")
 
     @limits_cpu.setter
@@ -30269,6 +32913,9 @@ class ProjectResourceQuotaProjectLimitArgs:
     @property
     @pulumi.getter(name="limitsMemory")
     def limits_memory(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for limits memory in project (string)
+        """
         return pulumi.get(self, "limits_memory")
 
     @limits_memory.setter
@@ -30278,6 +32925,9 @@ class ProjectResourceQuotaProjectLimitArgs:
     @property
     @pulumi.getter(name="persistentVolumeClaims")
     def persistent_volume_claims(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for persistent volume claims in project (string)
+        """
         return pulumi.get(self, "persistent_volume_claims")
 
     @persistent_volume_claims.setter
@@ -30287,6 +32937,9 @@ class ProjectResourceQuotaProjectLimitArgs:
     @property
     @pulumi.getter
     def pods(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for pods in project (string)
+        """
         return pulumi.get(self, "pods")
 
     @pods.setter
@@ -30296,6 +32949,9 @@ class ProjectResourceQuotaProjectLimitArgs:
     @property
     @pulumi.getter(name="replicationControllers")
     def replication_controllers(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for replication controllers in project (string)
+        """
         return pulumi.get(self, "replication_controllers")
 
     @replication_controllers.setter
@@ -30305,6 +32961,9 @@ class ProjectResourceQuotaProjectLimitArgs:
     @property
     @pulumi.getter(name="requestsCpu")
     def requests_cpu(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for requests cpu in project (string)
+        """
         return pulumi.get(self, "requests_cpu")
 
     @requests_cpu.setter
@@ -30314,6 +32973,9 @@ class ProjectResourceQuotaProjectLimitArgs:
     @property
     @pulumi.getter(name="requestsMemory")
     def requests_memory(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for requests memory in project (string)
+        """
         return pulumi.get(self, "requests_memory")
 
     @requests_memory.setter
@@ -30323,6 +32985,9 @@ class ProjectResourceQuotaProjectLimitArgs:
     @property
     @pulumi.getter(name="requestsStorage")
     def requests_storage(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for requests storage in project (string)
+        """
         return pulumi.get(self, "requests_storage")
 
     @requests_storage.setter
@@ -30332,6 +32997,9 @@ class ProjectResourceQuotaProjectLimitArgs:
     @property
     @pulumi.getter
     def secrets(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for secrets in project (string)
+        """
         return pulumi.get(self, "secrets")
 
     @secrets.setter
@@ -30350,6 +33018,9 @@ class ProjectResourceQuotaProjectLimitArgs:
     @property
     @pulumi.getter(name="servicesLoadBalancers")
     def services_load_balancers(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for services load balancers in project (string)
+        """
         return pulumi.get(self, "services_load_balancers")
 
     @services_load_balancers.setter
@@ -30359,6 +33030,11 @@ class ProjectResourceQuotaProjectLimitArgs:
     @property
     @pulumi.getter(name="servicesNodePorts")
     def services_node_ports(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit for services node ports in project (string)
+
+        More info at [resource-quotas](https://rancher.com/docs/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/)
+        """
         return pulumi.get(self, "services_node_ports")
 
     @services_node_ports.setter
@@ -30372,6 +33048,11 @@ class RegistryRegistryArgs:
                  address: pulumi.Input[str],
                  password: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] address: Address for registry.
+        :param pulumi.Input[str] password: Password for the registry (string)
+        :param pulumi.Input[str] username: Username for the registry (string)
+        """
         pulumi.set(__self__, "address", address)
         if password is not None:
             pulumi.set(__self__, "password", password)
@@ -30381,6 +33062,9 @@ class RegistryRegistryArgs:
     @property
     @pulumi.getter
     def address(self) -> pulumi.Input[str]:
+        """
+        Address for registry.
+        """
         return pulumi.get(self, "address")
 
     @address.setter
@@ -30390,6 +33074,9 @@ class RegistryRegistryArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Password for the registry (string)
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -30399,6 +33086,9 @@ class RegistryRegistryArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        Username for the registry (string)
+        """
         return pulumi.get(self, "username")
 
     @username.setter

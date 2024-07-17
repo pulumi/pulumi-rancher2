@@ -13,11 +13,29 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GlobalDnsProviderRoute53Config
     {
+        /// <summary>
+        /// The AWS Access key (string)
+        /// </summary>
         public readonly string AccessKey;
+        /// <summary>
+        /// The AWS credentials path. Default: `"/.aws"` (string)
+        /// </summary>
         public readonly string? CredentialsPath;
+        /// <summary>
+        /// The AWS Region. Default: `"us-west-2"` (string)
+        /// </summary>
         public readonly string? Region;
+        /// <summary>
+        /// The AWS Role ARN (string)
+        /// </summary>
         public readonly string? RoleArn;
+        /// <summary>
+        /// The AWS Secret key (string)
+        /// </summary>
         public readonly string SecretKey;
+        /// <summary>
+        /// The Route53 zone type `public, private`. Default: `"public"` (string)
+        /// </summary>
         public readonly string? ZoneType;
 
         [OutputConstructor]

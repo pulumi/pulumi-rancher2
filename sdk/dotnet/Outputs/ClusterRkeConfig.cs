@@ -37,7 +37,13 @@ namespace Pulumi.Rancher2.Outputs
         /// RKE bastion host
         /// </summary>
         public readonly Outputs.ClusterRkeConfigBastionHost? BastionHost;
+        /// <summary>
+        /// RKE options for Calico network provider (string)
+        /// </summary>
         public readonly Outputs.ClusterRkeConfigCloudProvider? CloudProvider;
+        /// <summary>
+        /// RKE dns add-on. For Rancher v2.2.x (list maxitems:1)
+        /// </summary>
         public readonly Outputs.ClusterRkeConfigDns? Dns;
         /// <summary>
         /// Enable/disable using cri-dockerd

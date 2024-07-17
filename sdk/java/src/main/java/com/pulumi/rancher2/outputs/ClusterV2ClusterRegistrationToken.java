@@ -18,29 +18,65 @@ public final class ClusterV2ClusterRegistrationToken {
      * 
      */
     private @Nullable Map<String,Object> annotations;
+    /**
+     * @return Cluster ID.
+     * 
+     */
     private @Nullable String clusterId;
+    /**
+     * @return Command to execute in an imported k8s cluster.
+     * 
+     */
     private @Nullable String command;
     /**
      * @return (Computed, string) The ID of the resource.
      * 
      */
     private @Nullable String id;
+    /**
+     * @return Insecure command to execute in an imported k8s cluster.
+     * 
+     */
     private @Nullable String insecureCommand;
+    /**
+     * @return Insecure node command to execute in an imported k8s cluster.
+     * 
+     */
     private @Nullable String insecureNodeCommand;
+    /**
+     * @return Insecure windows command to execute in an imported k8s cluster.
+     * 
+     */
     private @Nullable String insecureWindowsNodeCommand;
     /**
      * @return Labels for the Cluster.
      * 
      */
     private @Nullable Map<String,Object> labels;
+    /**
+     * @return K8s manifest url to execute with `kubectl` to import an existing k8s cluster.
+     * 
+     */
     private @Nullable String manifestUrl;
     /**
      * @return The name of the cluster.
      * 
      */
     private @Nullable String name;
+    /**
+     * @return Node command to execute in Linux nodes for custom k8s cluster.
+     * 
+     */
     private @Nullable String nodeCommand;
+    /**
+     * @return Token for cluster registration token object.
+     * 
+     */
     private @Nullable String token;
+    /**
+     * @return Node command to execute in Windows nodes for custom k8s cluster.
+     * 
+     */
     private @Nullable String windowsNodeCommand;
 
     private ClusterV2ClusterRegistrationToken() {}
@@ -51,9 +87,17 @@ public final class ClusterV2ClusterRegistrationToken {
     public Map<String,Object> annotations() {
         return this.annotations == null ? Map.of() : this.annotations;
     }
+    /**
+     * @return Cluster ID.
+     * 
+     */
     public Optional<String> clusterId() {
         return Optional.ofNullable(this.clusterId);
     }
+    /**
+     * @return Command to execute in an imported k8s cluster.
+     * 
+     */
     public Optional<String> command() {
         return Optional.ofNullable(this.command);
     }
@@ -64,12 +108,24 @@ public final class ClusterV2ClusterRegistrationToken {
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
+    /**
+     * @return Insecure command to execute in an imported k8s cluster.
+     * 
+     */
     public Optional<String> insecureCommand() {
         return Optional.ofNullable(this.insecureCommand);
     }
+    /**
+     * @return Insecure node command to execute in an imported k8s cluster.
+     * 
+     */
     public Optional<String> insecureNodeCommand() {
         return Optional.ofNullable(this.insecureNodeCommand);
     }
+    /**
+     * @return Insecure windows command to execute in an imported k8s cluster.
+     * 
+     */
     public Optional<String> insecureWindowsNodeCommand() {
         return Optional.ofNullable(this.insecureWindowsNodeCommand);
     }
@@ -80,6 +136,10 @@ public final class ClusterV2ClusterRegistrationToken {
     public Map<String,Object> labels() {
         return this.labels == null ? Map.of() : this.labels;
     }
+    /**
+     * @return K8s manifest url to execute with `kubectl` to import an existing k8s cluster.
+     * 
+     */
     public Optional<String> manifestUrl() {
         return Optional.ofNullable(this.manifestUrl);
     }
@@ -90,12 +150,24 @@ public final class ClusterV2ClusterRegistrationToken {
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return Node command to execute in Linux nodes for custom k8s cluster.
+     * 
+     */
     public Optional<String> nodeCommand() {
         return Optional.ofNullable(this.nodeCommand);
     }
+    /**
+     * @return Token for cluster registration token object.
+     * 
+     */
     public Optional<String> token() {
         return Optional.ofNullable(this.token);
     }
+    /**
+     * @return Node command to execute in Windows nodes for custom k8s cluster.
+     * 
+     */
     public Optional<String> windowsNodeCommand() {
         return Optional.ofNullable(this.windowsNodeCommand);
     }

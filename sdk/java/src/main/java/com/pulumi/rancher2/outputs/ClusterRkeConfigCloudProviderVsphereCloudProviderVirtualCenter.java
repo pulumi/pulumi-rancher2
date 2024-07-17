@@ -13,18 +13,42 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter {
+    /**
+     * @return (string)
+     * 
+     */
     private String datacenters;
     /**
      * @return The name of the Cluster (string)
      * 
      */
     private String name;
+    /**
+     * @return Registry password (string)
+     * 
+     */
     private String password;
+    /**
+     * @return Port for node. Default `22` (string)
+     * 
+     */
     private @Nullable String port;
+    /**
+     * @return (int)
+     * 
+     */
     private @Nullable Integer soapRoundtripCount;
+    /**
+     * @return Registry user (string)
+     * 
+     */
     private String user;
 
     private ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenter() {}
+    /**
+     * @return (string)
+     * 
+     */
     public String datacenters() {
         return this.datacenters;
     }
@@ -35,15 +59,31 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCente
     public String name() {
         return this.name;
     }
+    /**
+     * @return Registry password (string)
+     * 
+     */
     public String password() {
         return this.password;
     }
+    /**
+     * @return Port for node. Default `22` (string)
+     * 
+     */
     public Optional<String> port() {
         return Optional.ofNullable(this.port);
     }
+    /**
+     * @return (int)
+     * 
+     */
     public Optional<Integer> soapRoundtripCount() {
         return Optional.ofNullable(this.soapRoundtripCount);
     }
+    /**
+     * @return Registry user (string)
+     * 
+     */
     public String user() {
         return this.user;
     }

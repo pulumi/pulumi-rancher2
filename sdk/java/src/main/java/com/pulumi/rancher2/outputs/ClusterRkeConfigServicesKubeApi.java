@@ -24,16 +24,60 @@ public final class ClusterRkeConfigServicesKubeApi {
      * 
      */
     private @Nullable ClusterRkeConfigServicesKubeApiAdmissionConfiguration admissionConfiguration;
+    /**
+     * @return Enable [AlwaysPullImages](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#alwayspullimages) Admission controller plugin. [Rancher docs](https://rancher.com/docs/rke/latest/en/config-options/services/#kubernetes-api-server-options) Default: `false` (bool)
+     * 
+     */
     private @Nullable Boolean alwaysPullImages;
+    /**
+     * @return K8s audit log configuration. (list maxitems: 1)
+     * 
+     */
     private @Nullable ClusterRkeConfigServicesKubeApiAuditLog auditLog;
+    /**
+     * @return K8s event rate limit configuration. (list maxitems: 1)
+     * 
+     */
     private @Nullable ClusterRkeConfigServicesKubeApiEventRateLimit eventRateLimit;
+    /**
+     * @return Extra arguments for scheduler service (map)
+     * 
+     */
     private @Nullable Map<String,Object> extraArgs;
+    /**
+     * @return Extra binds for scheduler service (list)
+     * 
+     */
     private @Nullable List<String> extraBinds;
+    /**
+     * @return Extra environment for scheduler service (list)
+     * 
+     */
     private @Nullable List<String> extraEnvs;
+    /**
+     * @return Docker image for scheduler service (string)
+     * 
+     */
     private @Nullable String image;
+    /**
+     * @return Pod Security Policy option for kube API service. Default `false` (bool)
+     * 
+     */
     private @Nullable Boolean podSecurityPolicy;
+    /**
+     * @return [Encrypt k8s secret data configration](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/). (list maxitem: 1)
+     * 
+     */
     private @Nullable ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig secretsEncryptionConfig;
+    /**
+     * @return Service Cluster ip Range option for kube controller service (string)
+     * 
+     */
     private @Nullable String serviceClusterIpRange;
+    /**
+     * @return Service Node Port Range option for kube API service (string)
+     * 
+     */
     private @Nullable String serviceNodePortRange;
 
     private ClusterRkeConfigServicesKubeApi() {}
@@ -44,36 +88,80 @@ public final class ClusterRkeConfigServicesKubeApi {
     public Optional<ClusterRkeConfigServicesKubeApiAdmissionConfiguration> admissionConfiguration() {
         return Optional.ofNullable(this.admissionConfiguration);
     }
+    /**
+     * @return Enable [AlwaysPullImages](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#alwayspullimages) Admission controller plugin. [Rancher docs](https://rancher.com/docs/rke/latest/en/config-options/services/#kubernetes-api-server-options) Default: `false` (bool)
+     * 
+     */
     public Optional<Boolean> alwaysPullImages() {
         return Optional.ofNullable(this.alwaysPullImages);
     }
+    /**
+     * @return K8s audit log configuration. (list maxitems: 1)
+     * 
+     */
     public Optional<ClusterRkeConfigServicesKubeApiAuditLog> auditLog() {
         return Optional.ofNullable(this.auditLog);
     }
+    /**
+     * @return K8s event rate limit configuration. (list maxitems: 1)
+     * 
+     */
     public Optional<ClusterRkeConfigServicesKubeApiEventRateLimit> eventRateLimit() {
         return Optional.ofNullable(this.eventRateLimit);
     }
+    /**
+     * @return Extra arguments for scheduler service (map)
+     * 
+     */
     public Map<String,Object> extraArgs() {
         return this.extraArgs == null ? Map.of() : this.extraArgs;
     }
+    /**
+     * @return Extra binds for scheduler service (list)
+     * 
+     */
     public List<String> extraBinds() {
         return this.extraBinds == null ? List.of() : this.extraBinds;
     }
+    /**
+     * @return Extra environment for scheduler service (list)
+     * 
+     */
     public List<String> extraEnvs() {
         return this.extraEnvs == null ? List.of() : this.extraEnvs;
     }
+    /**
+     * @return Docker image for scheduler service (string)
+     * 
+     */
     public Optional<String> image() {
         return Optional.ofNullable(this.image);
     }
+    /**
+     * @return Pod Security Policy option for kube API service. Default `false` (bool)
+     * 
+     */
     public Optional<Boolean> podSecurityPolicy() {
         return Optional.ofNullable(this.podSecurityPolicy);
     }
+    /**
+     * @return [Encrypt k8s secret data configration](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/). (list maxitem: 1)
+     * 
+     */
     public Optional<ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig> secretsEncryptionConfig() {
         return Optional.ofNullable(this.secretsEncryptionConfig);
     }
+    /**
+     * @return Service Cluster ip Range option for kube controller service (string)
+     * 
+     */
     public Optional<String> serviceClusterIpRange() {
         return Optional.ofNullable(this.serviceClusterIpRange);
     }
+    /**
+     * @return Service Node Port Range option for kube API service (string)
+     * 
+     */
     public Optional<String> serviceNodePortRange() {
         return Optional.ofNullable(this.serviceNodePortRange);
     }

@@ -21,9 +21,17 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
 
     public static final ClusterRkeConfigServicesEtcdArgs Empty = new ClusterRkeConfigServicesEtcdArgs();
 
+    /**
+     * Backup options for etcd service. For Rancher v2.2.x (list maxitems:1)
+     * 
+     */
     @Import(name="backupConfig")
     private @Nullable Output<ClusterRkeConfigServicesEtcdBackupConfigArgs> backupConfig;
 
+    /**
+     * @return Backup options for etcd service. For Rancher v2.2.x (list maxitems:1)
+     * 
+     */
     public Optional<Output<ClusterRkeConfigServicesEtcdBackupConfigArgs>> backupConfig() {
         return Optional.ofNullable(this.backupConfig);
     }
@@ -43,93 +51,197 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
         return Optional.ofNullable(this.caCert);
     }
 
+    /**
+     * TLS certificate for etcd service (string)
+     * 
+     */
     @Import(name="cert")
     private @Nullable Output<String> cert;
 
+    /**
+     * @return TLS certificate for etcd service (string)
+     * 
+     */
     public Optional<Output<String>> cert() {
         return Optional.ofNullable(this.cert);
     }
 
+    /**
+     * Creation option for etcd service (string)
+     * 
+     */
     @Import(name="creation")
     private @Nullable Output<String> creation;
 
+    /**
+     * @return Creation option for etcd service (string)
+     * 
+     */
     public Optional<Output<String>> creation() {
         return Optional.ofNullable(this.creation);
     }
 
+    /**
+     * External urls for etcd service (list)
+     * 
+     */
     @Import(name="externalUrls")
     private @Nullable Output<List<String>> externalUrls;
 
+    /**
+     * @return External urls for etcd service (list)
+     * 
+     */
     public Optional<Output<List<String>>> externalUrls() {
         return Optional.ofNullable(this.externalUrls);
     }
 
+    /**
+     * Extra arguments for scheduler service (map)
+     * 
+     */
     @Import(name="extraArgs")
     private @Nullable Output<Map<String,Object>> extraArgs;
 
+    /**
+     * @return Extra arguments for scheduler service (map)
+     * 
+     */
     public Optional<Output<Map<String,Object>>> extraArgs() {
         return Optional.ofNullable(this.extraArgs);
     }
 
+    /**
+     * Extra binds for scheduler service (list)
+     * 
+     */
     @Import(name="extraBinds")
     private @Nullable Output<List<String>> extraBinds;
 
+    /**
+     * @return Extra binds for scheduler service (list)
+     * 
+     */
     public Optional<Output<List<String>>> extraBinds() {
         return Optional.ofNullable(this.extraBinds);
     }
 
+    /**
+     * Extra environment for scheduler service (list)
+     * 
+     */
     @Import(name="extraEnvs")
     private @Nullable Output<List<String>> extraEnvs;
 
+    /**
+     * @return Extra environment for scheduler service (list)
+     * 
+     */
     public Optional<Output<List<String>>> extraEnvs() {
         return Optional.ofNullable(this.extraEnvs);
     }
 
+    /**
+     * Etcd service GID. Default: `0`. For Rancher v2.3.x and above (int)
+     * 
+     */
     @Import(name="gid")
     private @Nullable Output<Integer> gid;
 
+    /**
+     * @return Etcd service GID. Default: `0`. For Rancher v2.3.x and above (int)
+     * 
+     */
     public Optional<Output<Integer>> gid() {
         return Optional.ofNullable(this.gid);
     }
 
+    /**
+     * Docker image for scheduler service (string)
+     * 
+     */
     @Import(name="image")
     private @Nullable Output<String> image;
 
+    /**
+     * @return Docker image for scheduler service (string)
+     * 
+     */
     public Optional<Output<String>> image() {
         return Optional.ofNullable(this.image);
     }
 
+    /**
+     * The GKE taint key (string)
+     * 
+     */
     @Import(name="key")
     private @Nullable Output<String> key;
 
+    /**
+     * @return The GKE taint key (string)
+     * 
+     */
     public Optional<Output<String>> key() {
         return Optional.ofNullable(this.key);
     }
 
+    /**
+     * (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+     * 
+     */
     @Import(name="path")
     private @Nullable Output<String> path;
 
+    /**
+     * @return (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+     * 
+     */
     public Optional<Output<String>> path() {
         return Optional.ofNullable(this.path);
     }
 
+    /**
+     * Retention for etcd backup. Default `6` (int)
+     * 
+     */
     @Import(name="retention")
     private @Nullable Output<String> retention;
 
+    /**
+     * @return Retention for etcd backup. Default `6` (int)
+     * 
+     */
     public Optional<Output<String>> retention() {
         return Optional.ofNullable(this.retention);
     }
 
+    /**
+     * Snapshot option for etcd service (bool)
+     * 
+     */
     @Import(name="snapshot")
     private @Nullable Output<Boolean> snapshot;
 
+    /**
+     * @return Snapshot option for etcd service (bool)
+     * 
+     */
     public Optional<Output<Boolean>> snapshot() {
         return Optional.ofNullable(this.snapshot);
     }
 
+    /**
+     * Etcd service UID. Default: `0`. For Rancher v2.3.x and above (int)
+     * 
+     */
     @Import(name="uid")
     private @Nullable Output<Integer> uid;
 
+    /**
+     * @return Etcd service UID. Default: `0`. For Rancher v2.3.x and above (int)
+     * 
+     */
     public Optional<Output<Integer>> uid() {
         return Optional.ofNullable(this.uid);
     }
@@ -172,11 +284,23 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
             $ = new ClusterRkeConfigServicesEtcdArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param backupConfig Backup options for etcd service. For Rancher v2.2.x (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder backupConfig(@Nullable Output<ClusterRkeConfigServicesEtcdBackupConfigArgs> backupConfig) {
             $.backupConfig = backupConfig;
             return this;
         }
 
+        /**
+         * @param backupConfig Backup options for etcd service. For Rancher v2.2.x (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder backupConfig(ClusterRkeConfigServicesEtcdBackupConfigArgs backupConfig) {
             return backupConfig(Output.of(backupConfig));
         }
@@ -202,131 +326,305 @@ public final class ClusterRkeConfigServicesEtcdArgs extends com.pulumi.resources
             return caCert(Output.of(caCert));
         }
 
+        /**
+         * @param cert TLS certificate for etcd service (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder cert(@Nullable Output<String> cert) {
             $.cert = cert;
             return this;
         }
 
+        /**
+         * @param cert TLS certificate for etcd service (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder cert(String cert) {
             return cert(Output.of(cert));
         }
 
+        /**
+         * @param creation Creation option for etcd service (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder creation(@Nullable Output<String> creation) {
             $.creation = creation;
             return this;
         }
 
+        /**
+         * @param creation Creation option for etcd service (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder creation(String creation) {
             return creation(Output.of(creation));
         }
 
+        /**
+         * @param externalUrls External urls for etcd service (list)
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalUrls(@Nullable Output<List<String>> externalUrls) {
             $.externalUrls = externalUrls;
             return this;
         }
 
+        /**
+         * @param externalUrls External urls for etcd service (list)
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalUrls(List<String> externalUrls) {
             return externalUrls(Output.of(externalUrls));
         }
 
+        /**
+         * @param externalUrls External urls for etcd service (list)
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalUrls(String... externalUrls) {
             return externalUrls(List.of(externalUrls));
         }
 
+        /**
+         * @param extraArgs Extra arguments for scheduler service (map)
+         * 
+         * @return builder
+         * 
+         */
         public Builder extraArgs(@Nullable Output<Map<String,Object>> extraArgs) {
             $.extraArgs = extraArgs;
             return this;
         }
 
+        /**
+         * @param extraArgs Extra arguments for scheduler service (map)
+         * 
+         * @return builder
+         * 
+         */
         public Builder extraArgs(Map<String,Object> extraArgs) {
             return extraArgs(Output.of(extraArgs));
         }
 
+        /**
+         * @param extraBinds Extra binds for scheduler service (list)
+         * 
+         * @return builder
+         * 
+         */
         public Builder extraBinds(@Nullable Output<List<String>> extraBinds) {
             $.extraBinds = extraBinds;
             return this;
         }
 
+        /**
+         * @param extraBinds Extra binds for scheduler service (list)
+         * 
+         * @return builder
+         * 
+         */
         public Builder extraBinds(List<String> extraBinds) {
             return extraBinds(Output.of(extraBinds));
         }
 
+        /**
+         * @param extraBinds Extra binds for scheduler service (list)
+         * 
+         * @return builder
+         * 
+         */
         public Builder extraBinds(String... extraBinds) {
             return extraBinds(List.of(extraBinds));
         }
 
+        /**
+         * @param extraEnvs Extra environment for scheduler service (list)
+         * 
+         * @return builder
+         * 
+         */
         public Builder extraEnvs(@Nullable Output<List<String>> extraEnvs) {
             $.extraEnvs = extraEnvs;
             return this;
         }
 
+        /**
+         * @param extraEnvs Extra environment for scheduler service (list)
+         * 
+         * @return builder
+         * 
+         */
         public Builder extraEnvs(List<String> extraEnvs) {
             return extraEnvs(Output.of(extraEnvs));
         }
 
+        /**
+         * @param extraEnvs Extra environment for scheduler service (list)
+         * 
+         * @return builder
+         * 
+         */
         public Builder extraEnvs(String... extraEnvs) {
             return extraEnvs(List.of(extraEnvs));
         }
 
+        /**
+         * @param gid Etcd service GID. Default: `0`. For Rancher v2.3.x and above (int)
+         * 
+         * @return builder
+         * 
+         */
         public Builder gid(@Nullable Output<Integer> gid) {
             $.gid = gid;
             return this;
         }
 
+        /**
+         * @param gid Etcd service GID. Default: `0`. For Rancher v2.3.x and above (int)
+         * 
+         * @return builder
+         * 
+         */
         public Builder gid(Integer gid) {
             return gid(Output.of(gid));
         }
 
+        /**
+         * @param image Docker image for scheduler service (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder image(@Nullable Output<String> image) {
             $.image = image;
             return this;
         }
 
+        /**
+         * @param image Docker image for scheduler service (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder image(String image) {
             return image(Output.of(image));
         }
 
+        /**
+         * @param key The GKE taint key (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(@Nullable Output<String> key) {
             $.key = key;
             return this;
         }
 
+        /**
+         * @param key The GKE taint key (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(String key) {
             return key(Output.of(key));
         }
 
+        /**
+         * @param path (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder path(@Nullable Output<String> path) {
             $.path = path;
             return this;
         }
 
+        /**
+         * @param path (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder path(String path) {
             return path(Output.of(path));
         }
 
+        /**
+         * @param retention Retention for etcd backup. Default `6` (int)
+         * 
+         * @return builder
+         * 
+         */
         public Builder retention(@Nullable Output<String> retention) {
             $.retention = retention;
             return this;
         }
 
+        /**
+         * @param retention Retention for etcd backup. Default `6` (int)
+         * 
+         * @return builder
+         * 
+         */
         public Builder retention(String retention) {
             return retention(Output.of(retention));
         }
 
+        /**
+         * @param snapshot Snapshot option for etcd service (bool)
+         * 
+         * @return builder
+         * 
+         */
         public Builder snapshot(@Nullable Output<Boolean> snapshot) {
             $.snapshot = snapshot;
             return this;
         }
 
+        /**
+         * @param snapshot Snapshot option for etcd service (bool)
+         * 
+         * @return builder
+         * 
+         */
         public Builder snapshot(Boolean snapshot) {
             return snapshot(Output.of(snapshot));
         }
 
+        /**
+         * @param uid Etcd service UID. Default: `0`. For Rancher v2.3.x and above (int)
+         * 
+         * @return builder
+         * 
+         */
         public Builder uid(@Nullable Output<Integer> uid) {
             $.uid = uid;
             return this;
         }
 
+        /**
+         * @param uid Etcd service UID. Default: `0`. For Rancher v2.3.x and above (int)
+         * 
+         * @return builder
+         * 
+         */
         public Builder uid(Integer uid) {
             return uid(Output.of(uid));
         }

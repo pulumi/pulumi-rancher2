@@ -19,23 +19,47 @@ public final class ClusterRkeConfigCloudProviderArgs extends com.pulumi.resource
 
     public static final ClusterRkeConfigCloudProviderArgs Empty = new ClusterRkeConfigCloudProviderArgs();
 
+    /**
+     * RKE AWS Cloud Provider config for Cloud Provider [rke-aws-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/aws/) (list maxitems:1)
+     * 
+     */
     @Import(name="awsCloudProvider")
     private @Nullable Output<ClusterRkeConfigCloudProviderAwsCloudProviderArgs> awsCloudProvider;
 
+    /**
+     * @return RKE AWS Cloud Provider config for Cloud Provider [rke-aws-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/aws/) (list maxitems:1)
+     * 
+     */
     public Optional<Output<ClusterRkeConfigCloudProviderAwsCloudProviderArgs>> awsCloudProvider() {
         return Optional.ofNullable(this.awsCloudProvider);
     }
 
+    /**
+     * RKE Azure Cloud Provider config for Cloud Provider [rke-azure-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/azure/) (list maxitems:1)
+     * 
+     */
     @Import(name="azureCloudProvider")
     private @Nullable Output<ClusterRkeConfigCloudProviderAzureCloudProviderArgs> azureCloudProvider;
 
+    /**
+     * @return RKE Azure Cloud Provider config for Cloud Provider [rke-azure-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/azure/) (list maxitems:1)
+     * 
+     */
     public Optional<Output<ClusterRkeConfigCloudProviderAzureCloudProviderArgs>> azureCloudProvider() {
         return Optional.ofNullable(this.azureCloudProvider);
     }
 
+    /**
+     * RKE Custom Cloud Provider config for Cloud Provider (string)
+     * 
+     */
     @Import(name="customCloudProvider")
     private @Nullable Output<String> customCloudProvider;
 
+    /**
+     * @return RKE Custom Cloud Provider config for Cloud Provider (string)
+     * 
+     */
     public Optional<Output<String>> customCloudProvider() {
         return Optional.ofNullable(this.customCloudProvider);
     }
@@ -55,16 +79,32 @@ public final class ClusterRkeConfigCloudProviderArgs extends com.pulumi.resource
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * RKE Openstack Cloud Provider config for Cloud Provider [rke-openstack-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/openstack/) (list maxitems:1)
+     * 
+     */
     @Import(name="openstackCloudProvider")
     private @Nullable Output<ClusterRkeConfigCloudProviderOpenstackCloudProviderArgs> openstackCloudProvider;
 
+    /**
+     * @return RKE Openstack Cloud Provider config for Cloud Provider [rke-openstack-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/openstack/) (list maxitems:1)
+     * 
+     */
     public Optional<Output<ClusterRkeConfigCloudProviderOpenstackCloudProviderArgs>> openstackCloudProvider() {
         return Optional.ofNullable(this.openstackCloudProvider);
     }
 
+    /**
+     * RKE Vsphere Cloud Provider config for Cloud Provider [rke-vsphere-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/vsphere/) Extra argument `name` is required on `virtual_center` configuration. (list maxitems:1)
+     * 
+     */
     @Import(name="vsphereCloudProvider")
     private @Nullable Output<ClusterRkeConfigCloudProviderVsphereCloudProviderArgs> vsphereCloudProvider;
 
+    /**
+     * @return RKE Vsphere Cloud Provider config for Cloud Provider [rke-vsphere-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/vsphere/) Extra argument `name` is required on `virtual_center` configuration. (list maxitems:1)
+     * 
+     */
     public Optional<Output<ClusterRkeConfigCloudProviderVsphereCloudProviderArgs>> vsphereCloudProvider() {
         return Optional.ofNullable(this.vsphereCloudProvider);
     }
@@ -98,29 +138,65 @@ public final class ClusterRkeConfigCloudProviderArgs extends com.pulumi.resource
             $ = new ClusterRkeConfigCloudProviderArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param awsCloudProvider RKE AWS Cloud Provider config for Cloud Provider [rke-aws-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/aws/) (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder awsCloudProvider(@Nullable Output<ClusterRkeConfigCloudProviderAwsCloudProviderArgs> awsCloudProvider) {
             $.awsCloudProvider = awsCloudProvider;
             return this;
         }
 
+        /**
+         * @param awsCloudProvider RKE AWS Cloud Provider config for Cloud Provider [rke-aws-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/aws/) (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder awsCloudProvider(ClusterRkeConfigCloudProviderAwsCloudProviderArgs awsCloudProvider) {
             return awsCloudProvider(Output.of(awsCloudProvider));
         }
 
+        /**
+         * @param azureCloudProvider RKE Azure Cloud Provider config for Cloud Provider [rke-azure-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/azure/) (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder azureCloudProvider(@Nullable Output<ClusterRkeConfigCloudProviderAzureCloudProviderArgs> azureCloudProvider) {
             $.azureCloudProvider = azureCloudProvider;
             return this;
         }
 
+        /**
+         * @param azureCloudProvider RKE Azure Cloud Provider config for Cloud Provider [rke-azure-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/azure/) (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder azureCloudProvider(ClusterRkeConfigCloudProviderAzureCloudProviderArgs azureCloudProvider) {
             return azureCloudProvider(Output.of(azureCloudProvider));
         }
 
+        /**
+         * @param customCloudProvider RKE Custom Cloud Provider config for Cloud Provider (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder customCloudProvider(@Nullable Output<String> customCloudProvider) {
             $.customCloudProvider = customCloudProvider;
             return this;
         }
 
+        /**
+         * @param customCloudProvider RKE Custom Cloud Provider config for Cloud Provider (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder customCloudProvider(String customCloudProvider) {
             return customCloudProvider(Output.of(customCloudProvider));
         }
@@ -146,20 +222,44 @@ public final class ClusterRkeConfigCloudProviderArgs extends com.pulumi.resource
             return name(Output.of(name));
         }
 
+        /**
+         * @param openstackCloudProvider RKE Openstack Cloud Provider config for Cloud Provider [rke-openstack-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/openstack/) (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder openstackCloudProvider(@Nullable Output<ClusterRkeConfigCloudProviderOpenstackCloudProviderArgs> openstackCloudProvider) {
             $.openstackCloudProvider = openstackCloudProvider;
             return this;
         }
 
+        /**
+         * @param openstackCloudProvider RKE Openstack Cloud Provider config for Cloud Provider [rke-openstack-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/openstack/) (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder openstackCloudProvider(ClusterRkeConfigCloudProviderOpenstackCloudProviderArgs openstackCloudProvider) {
             return openstackCloudProvider(Output.of(openstackCloudProvider));
         }
 
+        /**
+         * @param vsphereCloudProvider RKE Vsphere Cloud Provider config for Cloud Provider [rke-vsphere-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/vsphere/) Extra argument `name` is required on `virtual_center` configuration. (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder vsphereCloudProvider(@Nullable Output<ClusterRkeConfigCloudProviderVsphereCloudProviderArgs> vsphereCloudProvider) {
             $.vsphereCloudProvider = vsphereCloudProvider;
             return this;
         }
 
+        /**
+         * @param vsphereCloudProvider RKE Vsphere Cloud Provider config for Cloud Provider [rke-vsphere-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/vsphere/) Extra argument `name` is required on `virtual_center` configuration. (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder vsphereCloudProvider(ClusterRkeConfigCloudProviderVsphereCloudProviderArgs vsphereCloudProvider) {
             return vsphereCloudProvider(Output.of(vsphereCloudProvider));
         }

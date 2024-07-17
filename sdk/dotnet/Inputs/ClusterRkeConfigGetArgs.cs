@@ -54,9 +54,15 @@ namespace Pulumi.Rancher2.Inputs
         [Input("bastionHost")]
         public Input<Inputs.ClusterRkeConfigBastionHostGetArgs>? BastionHost { get; set; }
 
+        /// <summary>
+        /// RKE options for Calico network provider (string)
+        /// </summary>
         [Input("cloudProvider")]
         public Input<Inputs.ClusterRkeConfigCloudProviderGetArgs>? CloudProvider { get; set; }
 
+        /// <summary>
+        /// RKE dns add-on. For Rancher v2.2.x (list maxitems:1)
+        /// </summary>
         [Input("dns")]
         public Input<Inputs.ClusterRkeConfigDnsGetArgs>? Dns { get; set; }
 

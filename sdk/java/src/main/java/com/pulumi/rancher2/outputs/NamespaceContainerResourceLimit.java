@@ -11,21 +11,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NamespaceContainerResourceLimit {
+    /**
+     * @return Limit for limits cpu in namespace (string)
+     * 
+     */
     private @Nullable String limitsCpu;
+    /**
+     * @return Limit for limits memory in namespace (string)
+     * 
+     */
     private @Nullable String limitsMemory;
+    /**
+     * @return Limit for requests cpu in namespace (string)
+     * 
+     */
     private @Nullable String requestsCpu;
+    /**
+     * @return Limit for requests memory in namespace (string)
+     * 
+     */
     private @Nullable String requestsMemory;
 
     private NamespaceContainerResourceLimit() {}
+    /**
+     * @return Limit for limits cpu in namespace (string)
+     * 
+     */
     public Optional<String> limitsCpu() {
         return Optional.ofNullable(this.limitsCpu);
     }
+    /**
+     * @return Limit for limits memory in namespace (string)
+     * 
+     */
     public Optional<String> limitsMemory() {
         return Optional.ofNullable(this.limitsMemory);
     }
+    /**
+     * @return Limit for requests cpu in namespace (string)
+     * 
+     */
     public Optional<String> requestsCpu() {
         return Optional.ofNullable(this.requestsCpu);
     }
+    /**
+     * @return Limit for requests memory in namespace (string)
+     * 
+     */
     public Optional<String> requestsMemory() {
         return Optional.ofNullable(this.requestsMemory);
     }

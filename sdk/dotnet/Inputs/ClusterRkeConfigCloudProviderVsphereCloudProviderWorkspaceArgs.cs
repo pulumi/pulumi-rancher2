@@ -12,18 +12,33 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// (string)
+        /// </summary>
         [Input("datacenter", required: true)]
         public Input<string> Datacenter { get; set; } = null!;
 
+        /// <summary>
+        /// (string)
+        /// </summary>
         [Input("defaultDatastore")]
         public Input<string>? DefaultDatastore { get; set; }
 
+        /// <summary>
+        /// Folder for S3 service. Available from Rancher v2.2.7 (string)
+        /// </summary>
         [Input("folder", required: true)]
         public Input<string> Folder { get; set; } = null!;
 
+        /// <summary>
+        /// (string)
+        /// </summary>
         [Input("resourcepoolPath")]
         public Input<string>? ResourcepoolPath { get; set; }
 
+        /// <summary>
+        /// (string)
+        /// </summary>
         [Input("server", required: true)]
         public Input<string> Server { get; set; } = null!;
 

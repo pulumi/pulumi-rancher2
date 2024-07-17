@@ -13,11 +13,41 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterRkeConfigServicesKubeApiAuditLogConfiguration
     {
+        /// <summary>
+        /// Audit log format. Default: 'json' (string)
+        /// </summary>
         public readonly string? Format;
+        /// <summary>
+        /// Audit log max age. Default: `30` (int)
+        /// </summary>
         public readonly int? MaxAge;
+        /// <summary>
+        /// Audit log max backup. Default: `10` (int)
+        /// </summary>
         public readonly int? MaxBackup;
+        /// <summary>
+        /// The EKS node group maximum size. Default `2` (int)
+        /// </summary>
         public readonly int? MaxSize;
+        /// <summary>
+        /// (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+        /// </summary>
         public readonly string? Path;
+        /// <summary>
+        /// Audit policy yaml encoded definition. `apiVersion` and `kind: Policy\nrules:"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/audit-log/) (string) Ex:
+        /// 
+        /// ```
+        /// policy = &lt;&lt;EOF
+        /// apiVersion: audit.k8s.io/v1
+        /// kind: Policy
+        /// rules:
+        /// - level: RequestResponse
+        /// resources:
+        /// - resources:
+        /// - pods
+        /// EOF
+        /// ```
+        /// </summary>
         public readonly string? Policy;
 
         [OutputConstructor]

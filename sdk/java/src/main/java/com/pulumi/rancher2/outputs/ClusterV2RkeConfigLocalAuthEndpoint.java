@@ -12,17 +12,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterV2RkeConfigLocalAuthEndpoint {
+    /**
+     * @return CA certs for the authorized cluster endpoint. It is only needed if there is a load balancer in front of the downstream cluster that is using an untrusted certificate. If you have a valid certificate, then nothing needs to be added to the CA Certificates field.
+     * 
+     */
     private @Nullable String caCerts;
+    /**
+     * @return If `enabled` is set to true, nodes will be drained before upgrade.
+     * 
+     */
     private @Nullable Boolean enabled;
+    /**
+     * @return FQDN for the authorized cluster endpoint. If one is entered, it should point to the downstream cluster.
+     * 
+     */
     private @Nullable String fqdn;
 
     private ClusterV2RkeConfigLocalAuthEndpoint() {}
+    /**
+     * @return CA certs for the authorized cluster endpoint. It is only needed if there is a load balancer in front of the downstream cluster that is using an untrusted certificate. If you have a valid certificate, then nothing needs to be added to the CA Certificates field.
+     * 
+     */
     public Optional<String> caCerts() {
         return Optional.ofNullable(this.caCerts);
     }
+    /**
+     * @return If `enabled` is set to true, nodes will be drained before upgrade.
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return FQDN for the authorized cluster endpoint. If one is entered, it should point to the downstream cluster.
+     * 
+     */
     public Optional<String> fqdn() {
         return Optional.ofNullable(this.fqdn);
     }

@@ -17,296 +17,638 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
 
     public static final MachineConfigV2OpenstackConfigArgs Empty = new MachineConfigV2OpenstackConfigArgs();
 
+    /**
+     * OpenStack active timeout Default `200` (string)
+     * 
+     */
     @Import(name="activeTimeout")
     private @Nullable Output<String> activeTimeout;
 
+    /**
+     * @return OpenStack active timeout Default `200` (string)
+     * 
+     */
     public Optional<Output<String>> activeTimeout() {
         return Optional.ofNullable(this.activeTimeout);
     }
 
+    /**
+     * OpenStack application credential id. Conflicts with `application_credential_name` (string)
+     * 
+     */
     @Import(name="applicationCredentialId")
     private @Nullable Output<String> applicationCredentialId;
 
+    /**
+     * @return OpenStack application credential id. Conflicts with `application_credential_name` (string)
+     * 
+     */
     public Optional<Output<String>> applicationCredentialId() {
         return Optional.ofNullable(this.applicationCredentialId);
     }
 
+    /**
+     * OpenStack application credential name. Conflicts with `application_credential_id` (string)
+     * 
+     */
     @Import(name="applicationCredentialName")
     private @Nullable Output<String> applicationCredentialName;
 
+    /**
+     * @return OpenStack application credential name. Conflicts with `application_credential_id` (string)
+     * 
+     */
     public Optional<Output<String>> applicationCredentialName() {
         return Optional.ofNullable(this.applicationCredentialName);
     }
 
+    /**
+     * OpenStack application credential secret (string)
+     * 
+     */
     @Import(name="applicationCredentialSecret")
     private @Nullable Output<String> applicationCredentialSecret;
 
+    /**
+     * @return OpenStack application credential secret (string)
+     * 
+     */
     public Optional<Output<String>> applicationCredentialSecret() {
         return Optional.ofNullable(this.applicationCredentialSecret);
     }
 
+    /**
+     * OpenStack authentication URL (string)
+     * 
+     */
     @Import(name="authUrl", required=true)
     private Output<String> authUrl;
 
+    /**
+     * @return OpenStack authentication URL (string)
+     * 
+     */
     public Output<String> authUrl() {
         return this.authUrl;
     }
 
+    /**
+     * OpenStack availability zone (string)
+     * 
+     */
     @Import(name="availabilityZone", required=true)
     private Output<String> availabilityZone;
 
+    /**
+     * @return OpenStack availability zone (string)
+     * 
+     */
     public Output<String> availabilityZone() {
         return this.availabilityZone;
     }
 
+    /**
+     * Enable booting from volume. Default is `false` (bool)
+     * 
+     */
     @Import(name="bootFromVolume")
     private @Nullable Output<Boolean> bootFromVolume;
 
+    /**
+     * @return Enable booting from volume. Default is `false` (bool)
+     * 
+     */
     public Optional<Output<Boolean>> bootFromVolume() {
         return Optional.ofNullable(this.bootFromVolume);
     }
 
+    /**
+     * CA certificate bundle to verify against (string)
+     * 
+     */
     @Import(name="cacert")
     private @Nullable Output<String> cacert;
 
+    /**
+     * @return CA certificate bundle to verify against (string)
+     * 
+     */
     public Optional<Output<String>> cacert() {
         return Optional.ofNullable(this.cacert);
     }
 
+    /**
+     * Enables the OpenStack config drive for the instance. Default `false` (bool)
+     * 
+     */
     @Import(name="configDrive")
     private @Nullable Output<Boolean> configDrive;
 
+    /**
+     * @return Enables the OpenStack config drive for the instance. Default `false` (bool)
+     * 
+     */
     public Optional<Output<Boolean>> configDrive() {
         return Optional.ofNullable(this.configDrive);
     }
 
+    /**
+     * OpenStack domain ID. Identity v3 only. Conflicts with `domain_name` (string)
+     * 
+     */
     @Import(name="domainId")
     private @Nullable Output<String> domainId;
 
+    /**
+     * @return OpenStack domain ID. Identity v3 only. Conflicts with `domain_name` (string)
+     * 
+     */
     public Optional<Output<String>> domainId() {
         return Optional.ofNullable(this.domainId);
     }
 
+    /**
+     * OpenStack domain name. Identity v3 only. Conflicts with `domain_id` (string)
+     * 
+     */
     @Import(name="domainName")
     private @Nullable Output<String> domainName;
 
+    /**
+     * @return OpenStack domain name. Identity v3 only. Conflicts with `domain_id` (string)
+     * 
+     */
     public Optional<Output<String>> domainName() {
         return Optional.ofNullable(this.domainName);
     }
 
+    /**
+     * OpenStack endpoint type. adminURL, internalURL or publicURL (string)
+     * 
+     */
     @Import(name="endpointType")
     private @Nullable Output<String> endpointType;
 
+    /**
+     * @return OpenStack endpoint type. adminURL, internalURL or publicURL (string)
+     * 
+     */
     public Optional<Output<String>> endpointType() {
         return Optional.ofNullable(this.endpointType);
     }
 
+    /**
+     * OpenStack flavor id to use for the instance. Conflicts with `flavor_name` (string)
+     * 
+     */
     @Import(name="flavorId")
     private @Nullable Output<String> flavorId;
 
+    /**
+     * @return OpenStack flavor id to use for the instance. Conflicts with `flavor_name` (string)
+     * 
+     */
     public Optional<Output<String>> flavorId() {
         return Optional.ofNullable(this.flavorId);
     }
 
+    /**
+     * OpenStack flavor name to use for the instance. Conflicts with `flavor_id` (string)
+     * 
+     */
     @Import(name="flavorName")
     private @Nullable Output<String> flavorName;
 
+    /**
+     * @return OpenStack flavor name to use for the instance. Conflicts with `flavor_id` (string)
+     * 
+     */
     public Optional<Output<String>> flavorName() {
         return Optional.ofNullable(this.flavorName);
     }
 
+    /**
+     * OpenStack floating IP pool to get an IP from to assign to the instance (string)
+     * 
+     */
     @Import(name="floatingIpPool")
     private @Nullable Output<String> floatingIpPool;
 
+    /**
+     * @return OpenStack floating IP pool to get an IP from to assign to the instance (string)
+     * 
+     */
     public Optional<Output<String>> floatingIpPool() {
         return Optional.ofNullable(this.floatingIpPool);
     }
 
+    /**
+     * OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+     * 
+     */
     @Import(name="imageId")
     private @Nullable Output<String> imageId;
 
+    /**
+     * @return OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+     * 
+     */
     public Optional<Output<String>> imageId() {
         return Optional.ofNullable(this.imageId);
     }
 
+    /**
+     * OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+     * 
+     */
     @Import(name="imageName")
     private @Nullable Output<String> imageName;
 
+    /**
+     * @return OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+     * 
+     */
     public Optional<Output<String>> imageName() {
         return Optional.ofNullable(this.imageName);
     }
 
+    /**
+     * Disable TLS credential checking. Default `false` (bool)
+     * 
+     */
     @Import(name="insecure")
     private @Nullable Output<Boolean> insecure;
 
+    /**
+     * @return Disable TLS credential checking. Default `false` (bool)
+     * 
+     */
     public Optional<Output<Boolean>> insecure() {
         return Optional.ofNullable(this.insecure);
     }
 
+    /**
+     * OpenStack version of IP address assigned for the machine Default `4` (string)
+     * 
+     */
     @Import(name="ipVersion")
     private @Nullable Output<String> ipVersion;
 
+    /**
+     * @return OpenStack version of IP address assigned for the machine Default `4` (string)
+     * 
+     */
     public Optional<Output<String>> ipVersion() {
         return Optional.ofNullable(this.ipVersion);
     }
 
+    /**
+     * OpenStack keypair to use to SSH to the instance (string)
+     * 
+     */
     @Import(name="keypairName")
     private @Nullable Output<String> keypairName;
 
+    /**
+     * @return OpenStack keypair to use to SSH to the instance (string)
+     * 
+     */
     public Optional<Output<String>> keypairName() {
         return Optional.ofNullable(this.keypairName);
     }
 
+    /**
+     * OpenStack network id the machine will be connected on. Conflicts with `net_name` (string)
+     * 
+     */
     @Import(name="netId")
     private @Nullable Output<String> netId;
 
+    /**
+     * @return OpenStack network id the machine will be connected on. Conflicts with `net_name` (string)
+     * 
+     */
     public Optional<Output<String>> netId() {
         return Optional.ofNullable(this.netId);
     }
 
+    /**
+     * OpenStack network name the machine will be connected on. Conflicts with `net_id` (string)
+     * 
+     */
     @Import(name="netName")
     private @Nullable Output<String> netName;
 
+    /**
+     * @return OpenStack network name the machine will be connected on. Conflicts with `net_id` (string)
+     * 
+     */
     public Optional<Output<String>> netName() {
         return Optional.ofNullable(this.netName);
     }
 
+    /**
+     * Use the nova networking services instead of neutron (string)
+     * 
+     */
     @Import(name="novaNetwork")
     private @Nullable Output<Boolean> novaNetwork;
 
+    /**
+     * @return Use the nova networking services instead of neutron (string)
+     * 
+     */
     public Optional<Output<Boolean>> novaNetwork() {
         return Optional.ofNullable(this.novaNetwork);
     }
 
+    /**
+     * OpenStack password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * 
+     */
     @Import(name="password")
     private @Nullable Output<String> password;
 
+    /**
+     * @return OpenStack password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * 
+     */
     public Optional<Output<String>> password() {
         return Optional.ofNullable(this.password);
     }
 
+    /**
+     * Private key content to use for SSH (string)
+     * 
+     */
     @Import(name="privateKeyFile")
     private @Nullable Output<String> privateKeyFile;
 
+    /**
+     * @return Private key content to use for SSH (string)
+     * 
+     */
     public Optional<Output<String>> privateKeyFile() {
         return Optional.ofNullable(this.privateKeyFile);
     }
 
+    /**
+     * OpenStack region name (string)
+     * 
+     */
     @Import(name="region", required=true)
     private Output<String> region;
 
+    /**
+     * @return OpenStack region name (string)
+     * 
+     */
     public Output<String> region() {
         return this.region;
     }
 
+    /**
+     * OpenStack comma separated security groups for the machine (string)
+     * 
+     */
     @Import(name="secGroups")
     private @Nullable Output<String> secGroups;
 
+    /**
+     * @return OpenStack comma separated security groups for the machine (string)
+     * 
+     */
     public Optional<Output<String>> secGroups() {
         return Optional.ofNullable(this.secGroups);
     }
 
+    /**
+     * If using a non-B2D image you can specify the ssh port. Default `22` (string)
+     * 
+     */
     @Import(name="sshPort")
     private @Nullable Output<String> sshPort;
 
+    /**
+     * @return If using a non-B2D image you can specify the ssh port. Default `22` (string)
+     * 
+     */
     public Optional<Output<String>> sshPort() {
         return Optional.ofNullable(this.sshPort);
     }
 
+    /**
+     * If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+     * 
+     */
     @Import(name="sshUser")
     private @Nullable Output<String> sshUser;
 
+    /**
+     * @return If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+     * 
+     */
     public Optional<Output<String>> sshUser() {
         return Optional.ofNullable(this.sshUser);
     }
 
+    /**
+     * OpenStack tenant domain id. Conflicts with `tenant_domain_name` (string)
+     * 
+     */
     @Import(name="tenantDomainId")
     private @Nullable Output<String> tenantDomainId;
 
+    /**
+     * @return OpenStack tenant domain id. Conflicts with `tenant_domain_name` (string)
+     * 
+     */
     public Optional<Output<String>> tenantDomainId() {
         return Optional.ofNullable(this.tenantDomainId);
     }
 
+    /**
+     * OpenStack tenant domain name. Conflicts with `tenant_domain_id` (string)
+     * 
+     */
     @Import(name="tenantDomainName")
     private @Nullable Output<String> tenantDomainName;
 
+    /**
+     * @return OpenStack tenant domain name. Conflicts with `tenant_domain_id` (string)
+     * 
+     */
     public Optional<Output<String>> tenantDomainName() {
         return Optional.ofNullable(this.tenantDomainName);
     }
 
+    /**
+     * OpenStack tenant id. Conflicts with `tenant_name` (string)
+     * 
+     */
     @Import(name="tenantId")
     private @Nullable Output<String> tenantId;
 
+    /**
+     * @return OpenStack tenant id. Conflicts with `tenant_name` (string)
+     * 
+     */
     public Optional<Output<String>> tenantId() {
         return Optional.ofNullable(this.tenantId);
     }
 
+    /**
+     * OpenStack tenant name. Conflicts with `tenant_id` (string)
+     * 
+     */
     @Import(name="tenantName")
     private @Nullable Output<String> tenantName;
 
+    /**
+     * @return OpenStack tenant name. Conflicts with `tenant_id` (string)
+     * 
+     */
     public Optional<Output<String>> tenantName() {
         return Optional.ofNullable(this.tenantName);
     }
 
+    /**
+     * File containing an openstack userdata script (string)
+     * 
+     */
     @Import(name="userDataFile")
     private @Nullable Output<String> userDataFile;
 
+    /**
+     * @return File containing an openstack userdata script (string)
+     * 
+     */
     public Optional<Output<String>> userDataFile() {
         return Optional.ofNullable(this.userDataFile);
     }
 
+    /**
+     * OpenStack user domain id. Conflicts with `user_domain_name` (string)
+     * 
+     */
     @Import(name="userDomainId")
     private @Nullable Output<String> userDomainId;
 
+    /**
+     * @return OpenStack user domain id. Conflicts with `user_domain_name` (string)
+     * 
+     */
     public Optional<Output<String>> userDomainId() {
         return Optional.ofNullable(this.userDomainId);
     }
 
+    /**
+     * OpenStack user domain name. Conflicts with `user_domain_id` (string)
+     * 
+     */
     @Import(name="userDomainName")
     private @Nullable Output<String> userDomainName;
 
+    /**
+     * @return OpenStack user domain name. Conflicts with `user_domain_id` (string)
+     * 
+     */
     public Optional<Output<String>> userDomainName() {
         return Optional.ofNullable(this.userDomainName);
     }
 
+    /**
+     * OpenStack username (string)
+     * 
+     */
     @Import(name="username")
     private @Nullable Output<String> username;
 
+    /**
+     * @return OpenStack username (string)
+     * 
+     */
     public Optional<Output<String>> username() {
         return Optional.ofNullable(this.username);
     }
 
+    /**
+     * OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
+     * &gt; **Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.
+     * **Note:**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
+     * **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
+     * 
+     */
     @Import(name="volumeDevicePath")
     private @Nullable Output<String> volumeDevicePath;
 
+    /**
+     * @return OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
+     * &gt; **Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.
+     * **Note:**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
+     * **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
+     * 
+     */
     public Optional<Output<String>> volumeDevicePath() {
         return Optional.ofNullable(this.volumeDevicePath);
     }
 
+    /**
+     * OpenStack volume id of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+     * 
+     */
     @Import(name="volumeId")
     private @Nullable Output<String> volumeId;
 
+    /**
+     * @return OpenStack volume id of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+     * 
+     */
     public Optional<Output<String>> volumeId() {
         return Optional.ofNullable(this.volumeId);
     }
 
+    /**
+     * OpenStack volume name of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+     * 
+     */
     @Import(name="volumeName")
     private @Nullable Output<String> volumeName;
 
+    /**
+     * @return OpenStack volume name of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+     * 
+     */
     public Optional<Output<String>> volumeName() {
         return Optional.ofNullable(this.volumeName);
     }
 
+    /**
+     * OpenStack volume size (GiB). Required when `boot_from_volume` is `true` (string)
+     * 
+     */
     @Import(name="volumeSize")
     private @Nullable Output<String> volumeSize;
 
+    /**
+     * @return OpenStack volume size (GiB). Required when `boot_from_volume` is `true` (string)
+     * 
+     */
     public Optional<Output<String>> volumeSize() {
         return Optional.ofNullable(this.volumeSize);
     }
 
+    /**
+     * OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+     * 
+     */
     @Import(name="volumeType")
     private @Nullable Output<String> volumeType;
 
+    /**
+     * @return OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+     * 
+     */
     public Optional<Output<String>> volumeType() {
         return Optional.ofNullable(this.volumeType);
     }
@@ -376,380 +718,890 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
             $ = new MachineConfigV2OpenstackConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param activeTimeout OpenStack active timeout Default `200` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder activeTimeout(@Nullable Output<String> activeTimeout) {
             $.activeTimeout = activeTimeout;
             return this;
         }
 
+        /**
+         * @param activeTimeout OpenStack active timeout Default `200` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder activeTimeout(String activeTimeout) {
             return activeTimeout(Output.of(activeTimeout));
         }
 
+        /**
+         * @param applicationCredentialId OpenStack application credential id. Conflicts with `application_credential_name` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder applicationCredentialId(@Nullable Output<String> applicationCredentialId) {
             $.applicationCredentialId = applicationCredentialId;
             return this;
         }
 
+        /**
+         * @param applicationCredentialId OpenStack application credential id. Conflicts with `application_credential_name` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder applicationCredentialId(String applicationCredentialId) {
             return applicationCredentialId(Output.of(applicationCredentialId));
         }
 
+        /**
+         * @param applicationCredentialName OpenStack application credential name. Conflicts with `application_credential_id` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder applicationCredentialName(@Nullable Output<String> applicationCredentialName) {
             $.applicationCredentialName = applicationCredentialName;
             return this;
         }
 
+        /**
+         * @param applicationCredentialName OpenStack application credential name. Conflicts with `application_credential_id` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder applicationCredentialName(String applicationCredentialName) {
             return applicationCredentialName(Output.of(applicationCredentialName));
         }
 
+        /**
+         * @param applicationCredentialSecret OpenStack application credential secret (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder applicationCredentialSecret(@Nullable Output<String> applicationCredentialSecret) {
             $.applicationCredentialSecret = applicationCredentialSecret;
             return this;
         }
 
+        /**
+         * @param applicationCredentialSecret OpenStack application credential secret (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder applicationCredentialSecret(String applicationCredentialSecret) {
             return applicationCredentialSecret(Output.of(applicationCredentialSecret));
         }
 
+        /**
+         * @param authUrl OpenStack authentication URL (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder authUrl(Output<String> authUrl) {
             $.authUrl = authUrl;
             return this;
         }
 
+        /**
+         * @param authUrl OpenStack authentication URL (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder authUrl(String authUrl) {
             return authUrl(Output.of(authUrl));
         }
 
+        /**
+         * @param availabilityZone OpenStack availability zone (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder availabilityZone(Output<String> availabilityZone) {
             $.availabilityZone = availabilityZone;
             return this;
         }
 
+        /**
+         * @param availabilityZone OpenStack availability zone (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder availabilityZone(String availabilityZone) {
             return availabilityZone(Output.of(availabilityZone));
         }
 
+        /**
+         * @param bootFromVolume Enable booting from volume. Default is `false` (bool)
+         * 
+         * @return builder
+         * 
+         */
         public Builder bootFromVolume(@Nullable Output<Boolean> bootFromVolume) {
             $.bootFromVolume = bootFromVolume;
             return this;
         }
 
+        /**
+         * @param bootFromVolume Enable booting from volume. Default is `false` (bool)
+         * 
+         * @return builder
+         * 
+         */
         public Builder bootFromVolume(Boolean bootFromVolume) {
             return bootFromVolume(Output.of(bootFromVolume));
         }
 
+        /**
+         * @param cacert CA certificate bundle to verify against (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder cacert(@Nullable Output<String> cacert) {
             $.cacert = cacert;
             return this;
         }
 
+        /**
+         * @param cacert CA certificate bundle to verify against (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder cacert(String cacert) {
             return cacert(Output.of(cacert));
         }
 
+        /**
+         * @param configDrive Enables the OpenStack config drive for the instance. Default `false` (bool)
+         * 
+         * @return builder
+         * 
+         */
         public Builder configDrive(@Nullable Output<Boolean> configDrive) {
             $.configDrive = configDrive;
             return this;
         }
 
+        /**
+         * @param configDrive Enables the OpenStack config drive for the instance. Default `false` (bool)
+         * 
+         * @return builder
+         * 
+         */
         public Builder configDrive(Boolean configDrive) {
             return configDrive(Output.of(configDrive));
         }
 
+        /**
+         * @param domainId OpenStack domain ID. Identity v3 only. Conflicts with `domain_name` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder domainId(@Nullable Output<String> domainId) {
             $.domainId = domainId;
             return this;
         }
 
+        /**
+         * @param domainId OpenStack domain ID. Identity v3 only. Conflicts with `domain_name` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder domainId(String domainId) {
             return domainId(Output.of(domainId));
         }
 
+        /**
+         * @param domainName OpenStack domain name. Identity v3 only. Conflicts with `domain_id` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder domainName(@Nullable Output<String> domainName) {
             $.domainName = domainName;
             return this;
         }
 
+        /**
+         * @param domainName OpenStack domain name. Identity v3 only. Conflicts with `domain_id` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder domainName(String domainName) {
             return domainName(Output.of(domainName));
         }
 
+        /**
+         * @param endpointType OpenStack endpoint type. adminURL, internalURL or publicURL (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder endpointType(@Nullable Output<String> endpointType) {
             $.endpointType = endpointType;
             return this;
         }
 
+        /**
+         * @param endpointType OpenStack endpoint type. adminURL, internalURL or publicURL (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder endpointType(String endpointType) {
             return endpointType(Output.of(endpointType));
         }
 
+        /**
+         * @param flavorId OpenStack flavor id to use for the instance. Conflicts with `flavor_name` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder flavorId(@Nullable Output<String> flavorId) {
             $.flavorId = flavorId;
             return this;
         }
 
+        /**
+         * @param flavorId OpenStack flavor id to use for the instance. Conflicts with `flavor_name` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder flavorId(String flavorId) {
             return flavorId(Output.of(flavorId));
         }
 
+        /**
+         * @param flavorName OpenStack flavor name to use for the instance. Conflicts with `flavor_id` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder flavorName(@Nullable Output<String> flavorName) {
             $.flavorName = flavorName;
             return this;
         }
 
+        /**
+         * @param flavorName OpenStack flavor name to use for the instance. Conflicts with `flavor_id` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder flavorName(String flavorName) {
             return flavorName(Output.of(flavorName));
         }
 
+        /**
+         * @param floatingIpPool OpenStack floating IP pool to get an IP from to assign to the instance (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder floatingIpPool(@Nullable Output<String> floatingIpPool) {
             $.floatingIpPool = floatingIpPool;
             return this;
         }
 
+        /**
+         * @param floatingIpPool OpenStack floating IP pool to get an IP from to assign to the instance (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder floatingIpPool(String floatingIpPool) {
             return floatingIpPool(Output.of(floatingIpPool));
         }
 
+        /**
+         * @param imageId OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageId(@Nullable Output<String> imageId) {
             $.imageId = imageId;
             return this;
         }
 
+        /**
+         * @param imageId OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageId(String imageId) {
             return imageId(Output.of(imageId));
         }
 
+        /**
+         * @param imageName OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageName(@Nullable Output<String> imageName) {
             $.imageName = imageName;
             return this;
         }
 
+        /**
+         * @param imageName OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageName(String imageName) {
             return imageName(Output.of(imageName));
         }
 
+        /**
+         * @param insecure Disable TLS credential checking. Default `false` (bool)
+         * 
+         * @return builder
+         * 
+         */
         public Builder insecure(@Nullable Output<Boolean> insecure) {
             $.insecure = insecure;
             return this;
         }
 
+        /**
+         * @param insecure Disable TLS credential checking. Default `false` (bool)
+         * 
+         * @return builder
+         * 
+         */
         public Builder insecure(Boolean insecure) {
             return insecure(Output.of(insecure));
         }
 
+        /**
+         * @param ipVersion OpenStack version of IP address assigned for the machine Default `4` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipVersion(@Nullable Output<String> ipVersion) {
             $.ipVersion = ipVersion;
             return this;
         }
 
+        /**
+         * @param ipVersion OpenStack version of IP address assigned for the machine Default `4` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipVersion(String ipVersion) {
             return ipVersion(Output.of(ipVersion));
         }
 
+        /**
+         * @param keypairName OpenStack keypair to use to SSH to the instance (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder keypairName(@Nullable Output<String> keypairName) {
             $.keypairName = keypairName;
             return this;
         }
 
+        /**
+         * @param keypairName OpenStack keypair to use to SSH to the instance (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder keypairName(String keypairName) {
             return keypairName(Output.of(keypairName));
         }
 
+        /**
+         * @param netId OpenStack network id the machine will be connected on. Conflicts with `net_name` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder netId(@Nullable Output<String> netId) {
             $.netId = netId;
             return this;
         }
 
+        /**
+         * @param netId OpenStack network id the machine will be connected on. Conflicts with `net_name` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder netId(String netId) {
             return netId(Output.of(netId));
         }
 
+        /**
+         * @param netName OpenStack network name the machine will be connected on. Conflicts with `net_id` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder netName(@Nullable Output<String> netName) {
             $.netName = netName;
             return this;
         }
 
+        /**
+         * @param netName OpenStack network name the machine will be connected on. Conflicts with `net_id` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder netName(String netName) {
             return netName(Output.of(netName));
         }
 
+        /**
+         * @param novaNetwork Use the nova networking services instead of neutron (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder novaNetwork(@Nullable Output<Boolean> novaNetwork) {
             $.novaNetwork = novaNetwork;
             return this;
         }
 
+        /**
+         * @param novaNetwork Use the nova networking services instead of neutron (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder novaNetwork(Boolean novaNetwork) {
             return novaNetwork(Output.of(novaNetwork));
         }
 
+        /**
+         * @param password OpenStack password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder password(@Nullable Output<String> password) {
             $.password = password;
             return this;
         }
 
+        /**
+         * @param password OpenStack password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder password(String password) {
             return password(Output.of(password));
         }
 
+        /**
+         * @param privateKeyFile Private key content to use for SSH (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder privateKeyFile(@Nullable Output<String> privateKeyFile) {
             $.privateKeyFile = privateKeyFile;
             return this;
         }
 
+        /**
+         * @param privateKeyFile Private key content to use for SSH (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder privateKeyFile(String privateKeyFile) {
             return privateKeyFile(Output.of(privateKeyFile));
         }
 
+        /**
+         * @param region OpenStack region name (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(Output<String> region) {
             $.region = region;
             return this;
         }
 
+        /**
+         * @param region OpenStack region name (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(String region) {
             return region(Output.of(region));
         }
 
+        /**
+         * @param secGroups OpenStack comma separated security groups for the machine (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder secGroups(@Nullable Output<String> secGroups) {
             $.secGroups = secGroups;
             return this;
         }
 
+        /**
+         * @param secGroups OpenStack comma separated security groups for the machine (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder secGroups(String secGroups) {
             return secGroups(Output.of(secGroups));
         }
 
+        /**
+         * @param sshPort If using a non-B2D image you can specify the ssh port. Default `22` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder sshPort(@Nullable Output<String> sshPort) {
             $.sshPort = sshPort;
             return this;
         }
 
+        /**
+         * @param sshPort If using a non-B2D image you can specify the ssh port. Default `22` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder sshPort(String sshPort) {
             return sshPort(Output.of(sshPort));
         }
 
+        /**
+         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder sshUser(@Nullable Output<String> sshUser) {
             $.sshUser = sshUser;
             return this;
         }
 
+        /**
+         * @param sshUser If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder sshUser(String sshUser) {
             return sshUser(Output.of(sshUser));
         }
 
+        /**
+         * @param tenantDomainId OpenStack tenant domain id. Conflicts with `tenant_domain_name` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder tenantDomainId(@Nullable Output<String> tenantDomainId) {
             $.tenantDomainId = tenantDomainId;
             return this;
         }
 
+        /**
+         * @param tenantDomainId OpenStack tenant domain id. Conflicts with `tenant_domain_name` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder tenantDomainId(String tenantDomainId) {
             return tenantDomainId(Output.of(tenantDomainId));
         }
 
+        /**
+         * @param tenantDomainName OpenStack tenant domain name. Conflicts with `tenant_domain_id` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder tenantDomainName(@Nullable Output<String> tenantDomainName) {
             $.tenantDomainName = tenantDomainName;
             return this;
         }
 
+        /**
+         * @param tenantDomainName OpenStack tenant domain name. Conflicts with `tenant_domain_id` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder tenantDomainName(String tenantDomainName) {
             return tenantDomainName(Output.of(tenantDomainName));
         }
 
+        /**
+         * @param tenantId OpenStack tenant id. Conflicts with `tenant_name` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder tenantId(@Nullable Output<String> tenantId) {
             $.tenantId = tenantId;
             return this;
         }
 
+        /**
+         * @param tenantId OpenStack tenant id. Conflicts with `tenant_name` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder tenantId(String tenantId) {
             return tenantId(Output.of(tenantId));
         }
 
+        /**
+         * @param tenantName OpenStack tenant name. Conflicts with `tenant_id` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder tenantName(@Nullable Output<String> tenantName) {
             $.tenantName = tenantName;
             return this;
         }
 
+        /**
+         * @param tenantName OpenStack tenant name. Conflicts with `tenant_id` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder tenantName(String tenantName) {
             return tenantName(Output.of(tenantName));
         }
 
+        /**
+         * @param userDataFile File containing an openstack userdata script (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder userDataFile(@Nullable Output<String> userDataFile) {
             $.userDataFile = userDataFile;
             return this;
         }
 
+        /**
+         * @param userDataFile File containing an openstack userdata script (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder userDataFile(String userDataFile) {
             return userDataFile(Output.of(userDataFile));
         }
 
+        /**
+         * @param userDomainId OpenStack user domain id. Conflicts with `user_domain_name` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder userDomainId(@Nullable Output<String> userDomainId) {
             $.userDomainId = userDomainId;
             return this;
         }
 
+        /**
+         * @param userDomainId OpenStack user domain id. Conflicts with `user_domain_name` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder userDomainId(String userDomainId) {
             return userDomainId(Output.of(userDomainId));
         }
 
+        /**
+         * @param userDomainName OpenStack user domain name. Conflicts with `user_domain_id` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder userDomainName(@Nullable Output<String> userDomainName) {
             $.userDomainName = userDomainName;
             return this;
         }
 
+        /**
+         * @param userDomainName OpenStack user domain name. Conflicts with `user_domain_id` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder userDomainName(String userDomainName) {
             return userDomainName(Output.of(userDomainName));
         }
 
+        /**
+         * @param username OpenStack username (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder username(@Nullable Output<String> username) {
             $.username = username;
             return this;
         }
 
+        /**
+         * @param username OpenStack username (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder username(String username) {
             return username(Output.of(username));
         }
 
+        /**
+         * @param volumeDevicePath OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
+         * &gt; **Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.
+         * **Note:**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
+         * **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
+         * 
+         * @return builder
+         * 
+         */
         public Builder volumeDevicePath(@Nullable Output<String> volumeDevicePath) {
             $.volumeDevicePath = volumeDevicePath;
             return this;
         }
 
+        /**
+         * @param volumeDevicePath OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
+         * &gt; **Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.
+         * **Note:**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
+         * **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
+         * 
+         * @return builder
+         * 
+         */
         public Builder volumeDevicePath(String volumeDevicePath) {
             return volumeDevicePath(Output.of(volumeDevicePath));
         }
 
+        /**
+         * @param volumeId OpenStack volume id of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder volumeId(@Nullable Output<String> volumeId) {
             $.volumeId = volumeId;
             return this;
         }
 
+        /**
+         * @param volumeId OpenStack volume id of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder volumeId(String volumeId) {
             return volumeId(Output.of(volumeId));
         }
 
+        /**
+         * @param volumeName OpenStack volume name of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder volumeName(@Nullable Output<String> volumeName) {
             $.volumeName = volumeName;
             return this;
         }
 
+        /**
+         * @param volumeName OpenStack volume name of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder volumeName(String volumeName) {
             return volumeName(Output.of(volumeName));
         }
 
+        /**
+         * @param volumeSize OpenStack volume size (GiB). Required when `boot_from_volume` is `true` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder volumeSize(@Nullable Output<String> volumeSize) {
             $.volumeSize = volumeSize;
             return this;
         }
 
+        /**
+         * @param volumeSize OpenStack volume size (GiB). Required when `boot_from_volume` is `true` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder volumeSize(String volumeSize) {
             return volumeSize(Output.of(volumeSize));
         }
 
+        /**
+         * @param volumeType OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder volumeType(@Nullable Output<String> volumeType) {
             $.volumeType = volumeType;
             return this;
         }
 
+        /**
+         * @param volumeType OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder volumeType(String volumeType) {
             return volumeType(Output.of(volumeType));
         }

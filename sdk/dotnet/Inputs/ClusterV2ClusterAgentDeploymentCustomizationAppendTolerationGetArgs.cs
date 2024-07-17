@@ -12,18 +12,33 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The taint effect. Default: `\"NoExecute\"`.
+        /// </summary>
         [Input("effect")]
         public Input<string>? Effect { get; set; }
 
+        /// <summary>
+        /// Key is the name of the key of the item to retrieve.
+        /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
+        /// <summary>
+        /// Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+        /// </summary>
         [Input("operator")]
         public Input<string>? Operator { get; set; }
 
+        /// <summary>
+        /// The number of seconds a pod will stay bound to a node with a matching taint.
+        /// </summary>
         [Input("seconds")]
         public Input<int>? Seconds { get; set; }
 
+        /// <summary>
+        /// The taint value.
+        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

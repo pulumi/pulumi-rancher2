@@ -56,7 +56,15 @@ public final class ClusterRkeConfig {
      * 
      */
     private @Nullable ClusterRkeConfigBastionHost bastionHost;
+    /**
+     * @return RKE options for Calico network provider (string)
+     * 
+     */
     private @Nullable ClusterRkeConfigCloudProvider cloudProvider;
+    /**
+     * @return RKE dns add-on. For Rancher v2.2.x (list maxitems:1)
+     * 
+     */
     private @Nullable ClusterRkeConfigDns dns;
     /**
      * @return Enable/disable using cri-dockerd
@@ -177,9 +185,17 @@ public final class ClusterRkeConfig {
     public Optional<ClusterRkeConfigBastionHost> bastionHost() {
         return Optional.ofNullable(this.bastionHost);
     }
+    /**
+     * @return RKE options for Calico network provider (string)
+     * 
+     */
     public Optional<ClusterRkeConfigCloudProvider> cloudProvider() {
         return Optional.ofNullable(this.cloudProvider);
     }
+    /**
+     * @return RKE dns add-on. For Rancher v2.2.x (list maxitems:1)
+     * 
+     */
     public Optional<ClusterRkeConfigDns> dns() {
         return Optional.ofNullable(this.dns);
     }

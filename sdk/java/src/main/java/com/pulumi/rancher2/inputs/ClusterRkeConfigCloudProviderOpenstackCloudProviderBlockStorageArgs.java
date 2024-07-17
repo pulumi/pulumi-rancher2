@@ -16,23 +16,47 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStora
 
     public static final ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs Empty = new ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs();
 
+    /**
+     * (string)
+     * 
+     */
     @Import(name="bsVersion")
     private @Nullable Output<String> bsVersion;
 
+    /**
+     * @return (string)
+     * 
+     */
     public Optional<Output<String>> bsVersion() {
         return Optional.ofNullable(this.bsVersion);
     }
 
+    /**
+     * (string)
+     * 
+     */
     @Import(name="ignoreVolumeAz")
     private @Nullable Output<Boolean> ignoreVolumeAz;
 
+    /**
+     * @return (string)
+     * 
+     */
     public Optional<Output<Boolean>> ignoreVolumeAz() {
         return Optional.ofNullable(this.ignoreVolumeAz);
     }
 
+    /**
+     * (string)
+     * 
+     */
     @Import(name="trustDevicePath")
     private @Nullable Output<Boolean> trustDevicePath;
 
+    /**
+     * @return (string)
+     * 
+     */
     public Optional<Output<Boolean>> trustDevicePath() {
         return Optional.ofNullable(this.trustDevicePath);
     }
@@ -63,29 +87,65 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStora
             $ = new ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param bsVersion (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder bsVersion(@Nullable Output<String> bsVersion) {
             $.bsVersion = bsVersion;
             return this;
         }
 
+        /**
+         * @param bsVersion (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder bsVersion(String bsVersion) {
             return bsVersion(Output.of(bsVersion));
         }
 
+        /**
+         * @param ignoreVolumeAz (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder ignoreVolumeAz(@Nullable Output<Boolean> ignoreVolumeAz) {
             $.ignoreVolumeAz = ignoreVolumeAz;
             return this;
         }
 
+        /**
+         * @param ignoreVolumeAz (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder ignoreVolumeAz(Boolean ignoreVolumeAz) {
             return ignoreVolumeAz(Output.of(ignoreVolumeAz));
         }
 
+        /**
+         * @param trustDevicePath (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder trustDevicePath(@Nullable Output<Boolean> trustDevicePath) {
             $.trustDevicePath = trustDevicePath;
             return this;
         }
 
+        /**
+         * @param trustDevicePath (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder trustDevicePath(Boolean trustDevicePath) {
             return trustDevicePath(Output.of(trustDevicePath));
         }

@@ -16,23 +16,47 @@ public final class ClusterV2RkeConfigMachinePoolTaintArgs extends com.pulumi.res
 
     public static final ClusterV2RkeConfigMachinePoolTaintArgs Empty = new ClusterV2RkeConfigMachinePoolTaintArgs();
 
+    /**
+     * The taint effect. Default: `\&#34;NoExecute\&#34;`.
+     * 
+     */
     @Import(name="effect")
     private @Nullable Output<String> effect;
 
+    /**
+     * @return The taint effect. Default: `\&#34;NoExecute\&#34;`.
+     * 
+     */
     public Optional<Output<String>> effect() {
         return Optional.ofNullable(this.effect);
     }
 
+    /**
+     * Key is the name of the key of the item to retrieve.
+     * 
+     */
     @Import(name="key", required=true)
     private Output<String> key;
 
+    /**
+     * @return Key is the name of the key of the item to retrieve.
+     * 
+     */
     public Output<String> key() {
         return this.key;
     }
 
+    /**
+     * The taint value.
+     * 
+     */
     @Import(name="value", required=true)
     private Output<String> value;
 
+    /**
+     * @return The taint value.
+     * 
+     */
     public Output<String> value() {
         return this.value;
     }
@@ -63,29 +87,65 @@ public final class ClusterV2RkeConfigMachinePoolTaintArgs extends com.pulumi.res
             $ = new ClusterV2RkeConfigMachinePoolTaintArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param effect The taint effect. Default: `\&#34;NoExecute\&#34;`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effect(@Nullable Output<String> effect) {
             $.effect = effect;
             return this;
         }
 
+        /**
+         * @param effect The taint effect. Default: `\&#34;NoExecute\&#34;`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effect(String effect) {
             return effect(Output.of(effect));
         }
 
+        /**
+         * @param key Key is the name of the key of the item to retrieve.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(Output<String> key) {
             $.key = key;
             return this;
         }
 
+        /**
+         * @param key Key is the name of the key of the item to retrieve.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(String key) {
             return key(Output.of(key));
         }
 
+        /**
+         * @param value The taint value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(Output<String> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value The taint value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

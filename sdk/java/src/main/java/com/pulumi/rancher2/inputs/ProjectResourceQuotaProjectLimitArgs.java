@@ -15,72 +15,152 @@ public final class ProjectResourceQuotaProjectLimitArgs extends com.pulumi.resou
 
     public static final ProjectResourceQuotaProjectLimitArgs Empty = new ProjectResourceQuotaProjectLimitArgs();
 
+    /**
+     * Limit for config maps in project (string)
+     * 
+     */
     @Import(name="configMaps")
     private @Nullable Output<String> configMaps;
 
+    /**
+     * @return Limit for config maps in project (string)
+     * 
+     */
     public Optional<Output<String>> configMaps() {
         return Optional.ofNullable(this.configMaps);
     }
 
+    /**
+     * Limit for limits cpu in project (string)
+     * 
+     */
     @Import(name="limitsCpu")
     private @Nullable Output<String> limitsCpu;
 
+    /**
+     * @return Limit for limits cpu in project (string)
+     * 
+     */
     public Optional<Output<String>> limitsCpu() {
         return Optional.ofNullable(this.limitsCpu);
     }
 
+    /**
+     * Limit for limits memory in project (string)
+     * 
+     */
     @Import(name="limitsMemory")
     private @Nullable Output<String> limitsMemory;
 
+    /**
+     * @return Limit for limits memory in project (string)
+     * 
+     */
     public Optional<Output<String>> limitsMemory() {
         return Optional.ofNullable(this.limitsMemory);
     }
 
+    /**
+     * Limit for persistent volume claims in project (string)
+     * 
+     */
     @Import(name="persistentVolumeClaims")
     private @Nullable Output<String> persistentVolumeClaims;
 
+    /**
+     * @return Limit for persistent volume claims in project (string)
+     * 
+     */
     public Optional<Output<String>> persistentVolumeClaims() {
         return Optional.ofNullable(this.persistentVolumeClaims);
     }
 
+    /**
+     * Limit for pods in project (string)
+     * 
+     */
     @Import(name="pods")
     private @Nullable Output<String> pods;
 
+    /**
+     * @return Limit for pods in project (string)
+     * 
+     */
     public Optional<Output<String>> pods() {
         return Optional.ofNullable(this.pods);
     }
 
+    /**
+     * Limit for replication controllers in project (string)
+     * 
+     */
     @Import(name="replicationControllers")
     private @Nullable Output<String> replicationControllers;
 
+    /**
+     * @return Limit for replication controllers in project (string)
+     * 
+     */
     public Optional<Output<String>> replicationControllers() {
         return Optional.ofNullable(this.replicationControllers);
     }
 
+    /**
+     * Limit for requests cpu in project (string)
+     * 
+     */
     @Import(name="requestsCpu")
     private @Nullable Output<String> requestsCpu;
 
+    /**
+     * @return Limit for requests cpu in project (string)
+     * 
+     */
     public Optional<Output<String>> requestsCpu() {
         return Optional.ofNullable(this.requestsCpu);
     }
 
+    /**
+     * Limit for requests memory in project (string)
+     * 
+     */
     @Import(name="requestsMemory")
     private @Nullable Output<String> requestsMemory;
 
+    /**
+     * @return Limit for requests memory in project (string)
+     * 
+     */
     public Optional<Output<String>> requestsMemory() {
         return Optional.ofNullable(this.requestsMemory);
     }
 
+    /**
+     * Limit for requests storage in project (string)
+     * 
+     */
     @Import(name="requestsStorage")
     private @Nullable Output<String> requestsStorage;
 
+    /**
+     * @return Limit for requests storage in project (string)
+     * 
+     */
     public Optional<Output<String>> requestsStorage() {
         return Optional.ofNullable(this.requestsStorage);
     }
 
+    /**
+     * Limit for secrets in project (string)
+     * 
+     */
     @Import(name="secrets")
     private @Nullable Output<String> secrets;
 
+    /**
+     * @return Limit for secrets in project (string)
+     * 
+     */
     public Optional<Output<String>> secrets() {
         return Optional.ofNullable(this.secrets);
     }
@@ -92,16 +172,36 @@ public final class ProjectResourceQuotaProjectLimitArgs extends com.pulumi.resou
         return Optional.ofNullable(this.services);
     }
 
+    /**
+     * Limit for services load balancers in project (string)
+     * 
+     */
     @Import(name="servicesLoadBalancers")
     private @Nullable Output<String> servicesLoadBalancers;
 
+    /**
+     * @return Limit for services load balancers in project (string)
+     * 
+     */
     public Optional<Output<String>> servicesLoadBalancers() {
         return Optional.ofNullable(this.servicesLoadBalancers);
     }
 
+    /**
+     * Limit for services node ports in project (string)
+     * 
+     * More info at [resource-quotas](https://rancher.com/docs/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/)
+     * 
+     */
     @Import(name="servicesNodePorts")
     private @Nullable Output<String> servicesNodePorts;
 
+    /**
+     * @return Limit for services node ports in project (string)
+     * 
+     * More info at [resource-quotas](https://rancher.com/docs/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/)
+     * 
+     */
     public Optional<Output<String>> servicesNodePorts() {
         return Optional.ofNullable(this.servicesNodePorts);
     }
@@ -142,92 +242,212 @@ public final class ProjectResourceQuotaProjectLimitArgs extends com.pulumi.resou
             $ = new ProjectResourceQuotaProjectLimitArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param configMaps Limit for config maps in project (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder configMaps(@Nullable Output<String> configMaps) {
             $.configMaps = configMaps;
             return this;
         }
 
+        /**
+         * @param configMaps Limit for config maps in project (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder configMaps(String configMaps) {
             return configMaps(Output.of(configMaps));
         }
 
+        /**
+         * @param limitsCpu Limit for limits cpu in project (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder limitsCpu(@Nullable Output<String> limitsCpu) {
             $.limitsCpu = limitsCpu;
             return this;
         }
 
+        /**
+         * @param limitsCpu Limit for limits cpu in project (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder limitsCpu(String limitsCpu) {
             return limitsCpu(Output.of(limitsCpu));
         }
 
+        /**
+         * @param limitsMemory Limit for limits memory in project (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder limitsMemory(@Nullable Output<String> limitsMemory) {
             $.limitsMemory = limitsMemory;
             return this;
         }
 
+        /**
+         * @param limitsMemory Limit for limits memory in project (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder limitsMemory(String limitsMemory) {
             return limitsMemory(Output.of(limitsMemory));
         }
 
+        /**
+         * @param persistentVolumeClaims Limit for persistent volume claims in project (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder persistentVolumeClaims(@Nullable Output<String> persistentVolumeClaims) {
             $.persistentVolumeClaims = persistentVolumeClaims;
             return this;
         }
 
+        /**
+         * @param persistentVolumeClaims Limit for persistent volume claims in project (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder persistentVolumeClaims(String persistentVolumeClaims) {
             return persistentVolumeClaims(Output.of(persistentVolumeClaims));
         }
 
+        /**
+         * @param pods Limit for pods in project (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder pods(@Nullable Output<String> pods) {
             $.pods = pods;
             return this;
         }
 
+        /**
+         * @param pods Limit for pods in project (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder pods(String pods) {
             return pods(Output.of(pods));
         }
 
+        /**
+         * @param replicationControllers Limit for replication controllers in project (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder replicationControllers(@Nullable Output<String> replicationControllers) {
             $.replicationControllers = replicationControllers;
             return this;
         }
 
+        /**
+         * @param replicationControllers Limit for replication controllers in project (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder replicationControllers(String replicationControllers) {
             return replicationControllers(Output.of(replicationControllers));
         }
 
+        /**
+         * @param requestsCpu Limit for requests cpu in project (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder requestsCpu(@Nullable Output<String> requestsCpu) {
             $.requestsCpu = requestsCpu;
             return this;
         }
 
+        /**
+         * @param requestsCpu Limit for requests cpu in project (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder requestsCpu(String requestsCpu) {
             return requestsCpu(Output.of(requestsCpu));
         }
 
+        /**
+         * @param requestsMemory Limit for requests memory in project (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder requestsMemory(@Nullable Output<String> requestsMemory) {
             $.requestsMemory = requestsMemory;
             return this;
         }
 
+        /**
+         * @param requestsMemory Limit for requests memory in project (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder requestsMemory(String requestsMemory) {
             return requestsMemory(Output.of(requestsMemory));
         }
 
+        /**
+         * @param requestsStorage Limit for requests storage in project (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder requestsStorage(@Nullable Output<String> requestsStorage) {
             $.requestsStorage = requestsStorage;
             return this;
         }
 
+        /**
+         * @param requestsStorage Limit for requests storage in project (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder requestsStorage(String requestsStorage) {
             return requestsStorage(Output.of(requestsStorage));
         }
 
+        /**
+         * @param secrets Limit for secrets in project (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder secrets(@Nullable Output<String> secrets) {
             $.secrets = secrets;
             return this;
         }
 
+        /**
+         * @param secrets Limit for secrets in project (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder secrets(String secrets) {
             return secrets(Output.of(secrets));
         }
@@ -241,20 +461,48 @@ public final class ProjectResourceQuotaProjectLimitArgs extends com.pulumi.resou
             return services(Output.of(services));
         }
 
+        /**
+         * @param servicesLoadBalancers Limit for services load balancers in project (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder servicesLoadBalancers(@Nullable Output<String> servicesLoadBalancers) {
             $.servicesLoadBalancers = servicesLoadBalancers;
             return this;
         }
 
+        /**
+         * @param servicesLoadBalancers Limit for services load balancers in project (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder servicesLoadBalancers(String servicesLoadBalancers) {
             return servicesLoadBalancers(Output.of(servicesLoadBalancers));
         }
 
+        /**
+         * @param servicesNodePorts Limit for services node ports in project (string)
+         * 
+         * More info at [resource-quotas](https://rancher.com/docs/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/)
+         * 
+         * @return builder
+         * 
+         */
         public Builder servicesNodePorts(@Nullable Output<String> servicesNodePorts) {
             $.servicesNodePorts = servicesNodePorts;
             return this;
         }
 
+        /**
+         * @param servicesNodePorts Limit for services node ports in project (string)
+         * 
+         * More info at [resource-quotas](https://rancher.com/docs/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/)
+         * 
+         * @return builder
+         * 
+         */
         public Builder servicesNodePorts(String servicesNodePorts) {
             return servicesNodePorts(Output.of(servicesNodePorts));
         }

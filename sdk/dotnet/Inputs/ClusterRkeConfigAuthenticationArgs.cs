@@ -14,12 +14,19 @@ namespace Pulumi.Rancher2.Inputs
     {
         [Input("sans")]
         private InputList<string>? _sans;
+
+        /// <summary>
+        /// RKE sans for authentication ([]string)
+        /// </summary>
         public InputList<string> Sans
         {
             get => _sans ?? (_sans = new InputList<string>());
             set => _sans = value;
         }
 
+        /// <summary>
+        /// Monitoring deployment update strategy (string)
+        /// </summary>
         [Input("strategy")]
         public Input<string>? Strategy { get; set; }
 

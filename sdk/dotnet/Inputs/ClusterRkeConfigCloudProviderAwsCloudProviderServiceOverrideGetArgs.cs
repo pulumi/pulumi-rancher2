@@ -12,21 +12,39 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// (string)
+        /// </summary>
         [Input("service", required: true)]
         public Input<string> Service { get; set; } = null!;
 
+        /// <summary>
+        /// (string)
+        /// </summary>
         [Input("signingMethod")]
         public Input<string>? SigningMethod { get; set; }
 
+        /// <summary>
+        /// (string)
+        /// </summary>
         [Input("signingName")]
         public Input<string>? SigningName { get; set; }
 
+        /// <summary>
+        /// (string)
+        /// </summary>
         [Input("signingRegion")]
         public Input<string>? SigningRegion { get; set; }
 
+        /// <summary>
+        /// Registry URL (string)
+        /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
 

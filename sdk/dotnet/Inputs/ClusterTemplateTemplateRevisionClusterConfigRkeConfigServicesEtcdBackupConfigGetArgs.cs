@@ -12,6 +12,9 @@ namespace Pulumi.Rancher2.Inputs
 
     public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Enable cluster template revision. Default `true` (bool)
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

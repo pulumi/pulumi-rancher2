@@ -17,37 +17,77 @@ public final class ClusterRkeConfigDnsLinearAutoscalerParamsArgs extends com.pul
 
     public static final ClusterRkeConfigDnsLinearAutoscalerParamsArgs Empty = new ClusterRkeConfigDnsLinearAutoscalerParamsArgs();
 
+    /**
+     * number of replicas per cluster cores (float64)
+     * 
+     */
     @Import(name="coresPerReplica")
     private @Nullable Output<Double> coresPerReplica;
 
+    /**
+     * @return number of replicas per cluster cores (float64)
+     * 
+     */
     public Optional<Output<Double>> coresPerReplica() {
         return Optional.ofNullable(this.coresPerReplica);
     }
 
+    /**
+     * maximum number of replicas (int64)
+     * 
+     */
     @Import(name="max")
     private @Nullable Output<Integer> max;
 
+    /**
+     * @return maximum number of replicas (int64)
+     * 
+     */
     public Optional<Output<Integer>> max() {
         return Optional.ofNullable(this.max);
     }
 
+    /**
+     * minimum number of replicas (int64)
+     * 
+     */
     @Import(name="min")
     private @Nullable Output<Integer> min;
 
+    /**
+     * @return minimum number of replicas (int64)
+     * 
+     */
     public Optional<Output<Integer>> min() {
         return Optional.ofNullable(this.min);
     }
 
+    /**
+     * number of replica per cluster nodes (float64)
+     * 
+     */
     @Import(name="nodesPerReplica")
     private @Nullable Output<Double> nodesPerReplica;
 
+    /**
+     * @return number of replica per cluster nodes (float64)
+     * 
+     */
     public Optional<Output<Double>> nodesPerReplica() {
         return Optional.ofNullable(this.nodesPerReplica);
     }
 
+    /**
+     * prevent single point of failure
+     * 
+     */
     @Import(name="preventSinglePointFailure")
     private @Nullable Output<Boolean> preventSinglePointFailure;
 
+    /**
+     * @return prevent single point of failure
+     * 
+     */
     public Optional<Output<Boolean>> preventSinglePointFailure() {
         return Optional.ofNullable(this.preventSinglePointFailure);
     }
@@ -80,47 +120,107 @@ public final class ClusterRkeConfigDnsLinearAutoscalerParamsArgs extends com.pul
             $ = new ClusterRkeConfigDnsLinearAutoscalerParamsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param coresPerReplica number of replicas per cluster cores (float64)
+         * 
+         * @return builder
+         * 
+         */
         public Builder coresPerReplica(@Nullable Output<Double> coresPerReplica) {
             $.coresPerReplica = coresPerReplica;
             return this;
         }
 
+        /**
+         * @param coresPerReplica number of replicas per cluster cores (float64)
+         * 
+         * @return builder
+         * 
+         */
         public Builder coresPerReplica(Double coresPerReplica) {
             return coresPerReplica(Output.of(coresPerReplica));
         }
 
+        /**
+         * @param max maximum number of replicas (int64)
+         * 
+         * @return builder
+         * 
+         */
         public Builder max(@Nullable Output<Integer> max) {
             $.max = max;
             return this;
         }
 
+        /**
+         * @param max maximum number of replicas (int64)
+         * 
+         * @return builder
+         * 
+         */
         public Builder max(Integer max) {
             return max(Output.of(max));
         }
 
+        /**
+         * @param min minimum number of replicas (int64)
+         * 
+         * @return builder
+         * 
+         */
         public Builder min(@Nullable Output<Integer> min) {
             $.min = min;
             return this;
         }
 
+        /**
+         * @param min minimum number of replicas (int64)
+         * 
+         * @return builder
+         * 
+         */
         public Builder min(Integer min) {
             return min(Output.of(min));
         }
 
+        /**
+         * @param nodesPerReplica number of replica per cluster nodes (float64)
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodesPerReplica(@Nullable Output<Double> nodesPerReplica) {
             $.nodesPerReplica = nodesPerReplica;
             return this;
         }
 
+        /**
+         * @param nodesPerReplica number of replica per cluster nodes (float64)
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodesPerReplica(Double nodesPerReplica) {
             return nodesPerReplica(Output.of(nodesPerReplica));
         }
 
+        /**
+         * @param preventSinglePointFailure prevent single point of failure
+         * 
+         * @return builder
+         * 
+         */
         public Builder preventSinglePointFailure(@Nullable Output<Boolean> preventSinglePointFailure) {
             $.preventSinglePointFailure = preventSinglePointFailure;
             return this;
         }
 
+        /**
+         * @param preventSinglePointFailure prevent single point of failure
+         * 
+         * @return builder
+         * 
+         */
         public Builder preventSinglePointFailure(Boolean preventSinglePointFailure) {
             return preventSinglePointFailure(Output.of(preventSinglePointFailure));
         }

@@ -18,30 +18,62 @@ public final class ClusterRkeConfigServicesKubeproxyArgs extends com.pulumi.reso
 
     public static final ClusterRkeConfigServicesKubeproxyArgs Empty = new ClusterRkeConfigServicesKubeproxyArgs();
 
+    /**
+     * Extra arguments for scheduler service (map)
+     * 
+     */
     @Import(name="extraArgs")
     private @Nullable Output<Map<String,Object>> extraArgs;
 
+    /**
+     * @return Extra arguments for scheduler service (map)
+     * 
+     */
     public Optional<Output<Map<String,Object>>> extraArgs() {
         return Optional.ofNullable(this.extraArgs);
     }
 
+    /**
+     * Extra binds for scheduler service (list)
+     * 
+     */
     @Import(name="extraBinds")
     private @Nullable Output<List<String>> extraBinds;
 
+    /**
+     * @return Extra binds for scheduler service (list)
+     * 
+     */
     public Optional<Output<List<String>>> extraBinds() {
         return Optional.ofNullable(this.extraBinds);
     }
 
+    /**
+     * Extra environment for scheduler service (list)
+     * 
+     */
     @Import(name="extraEnvs")
     private @Nullable Output<List<String>> extraEnvs;
 
+    /**
+     * @return Extra environment for scheduler service (list)
+     * 
+     */
     public Optional<Output<List<String>>> extraEnvs() {
         return Optional.ofNullable(this.extraEnvs);
     }
 
+    /**
+     * Docker image for scheduler service (string)
+     * 
+     */
     @Import(name="image")
     private @Nullable Output<String> image;
 
+    /**
+     * @return Docker image for scheduler service (string)
+     * 
+     */
     public Optional<Output<String>> image() {
         return Optional.ofNullable(this.image);
     }
@@ -73,46 +105,106 @@ public final class ClusterRkeConfigServicesKubeproxyArgs extends com.pulumi.reso
             $ = new ClusterRkeConfigServicesKubeproxyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param extraArgs Extra arguments for scheduler service (map)
+         * 
+         * @return builder
+         * 
+         */
         public Builder extraArgs(@Nullable Output<Map<String,Object>> extraArgs) {
             $.extraArgs = extraArgs;
             return this;
         }
 
+        /**
+         * @param extraArgs Extra arguments for scheduler service (map)
+         * 
+         * @return builder
+         * 
+         */
         public Builder extraArgs(Map<String,Object> extraArgs) {
             return extraArgs(Output.of(extraArgs));
         }
 
+        /**
+         * @param extraBinds Extra binds for scheduler service (list)
+         * 
+         * @return builder
+         * 
+         */
         public Builder extraBinds(@Nullable Output<List<String>> extraBinds) {
             $.extraBinds = extraBinds;
             return this;
         }
 
+        /**
+         * @param extraBinds Extra binds for scheduler service (list)
+         * 
+         * @return builder
+         * 
+         */
         public Builder extraBinds(List<String> extraBinds) {
             return extraBinds(Output.of(extraBinds));
         }
 
+        /**
+         * @param extraBinds Extra binds for scheduler service (list)
+         * 
+         * @return builder
+         * 
+         */
         public Builder extraBinds(String... extraBinds) {
             return extraBinds(List.of(extraBinds));
         }
 
+        /**
+         * @param extraEnvs Extra environment for scheduler service (list)
+         * 
+         * @return builder
+         * 
+         */
         public Builder extraEnvs(@Nullable Output<List<String>> extraEnvs) {
             $.extraEnvs = extraEnvs;
             return this;
         }
 
+        /**
+         * @param extraEnvs Extra environment for scheduler service (list)
+         * 
+         * @return builder
+         * 
+         */
         public Builder extraEnvs(List<String> extraEnvs) {
             return extraEnvs(Output.of(extraEnvs));
         }
 
+        /**
+         * @param extraEnvs Extra environment for scheduler service (list)
+         * 
+         * @return builder
+         * 
+         */
         public Builder extraEnvs(String... extraEnvs) {
             return extraEnvs(List.of(extraEnvs));
         }
 
+        /**
+         * @param image Docker image for scheduler service (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder image(@Nullable Output<String> image) {
             $.image = image;
             return this;
         }
 
+        /**
+         * @param image Docker image for scheduler service (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder image(String image) {
             return image(Output.of(image));
         }

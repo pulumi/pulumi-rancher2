@@ -13,12 +13,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig {
     private @Nullable String customConfig;
+    /**
+     * @return Enable cluster template revision. Default `true` (bool)
+     * 
+     */
     private @Nullable Boolean enabled;
 
     private ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig() {}
     public Optional<String> customConfig() {
         return Optional.ofNullable(this.customConfig);
     }
+    /**
+     * @return Enable cluster template revision. Default `true` (bool)
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }

@@ -37,9 +37,17 @@ public final class ClusterRkeConfigDnsArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.linearAutoscalerParams);
     }
 
+    /**
+     * RKE monitoring node selector (map)
+     * 
+     */
     @Import(name="nodeSelector")
     private @Nullable Output<Map<String,Object>> nodeSelector;
 
+    /**
+     * @return RKE monitoring node selector (map)
+     * 
+     */
     public Optional<Output<Map<String,Object>>> nodeSelector() {
         return Optional.ofNullable(this.nodeSelector);
     }
@@ -59,23 +67,47 @@ public final class ClusterRkeConfigDnsArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.nodelocal);
     }
 
+    /**
+     * RKE options for network (map)
+     * 
+     */
     @Import(name="options")
     private @Nullable Output<Map<String,Object>> options;
 
+    /**
+     * @return RKE options for network (map)
+     * 
+     */
     public Optional<Output<Map<String,Object>>> options() {
         return Optional.ofNullable(this.options);
     }
 
+    /**
+     * RKE monitoring provider (string)
+     * 
+     */
     @Import(name="provider")
     private @Nullable Output<String> provider;
 
+    /**
+     * @return RKE monitoring provider (string)
+     * 
+     */
     public Optional<Output<String>> provider() {
         return Optional.ofNullable(this.provider);
     }
 
+    /**
+     * DNS add-on reverse cidr  (list)
+     * 
+     */
     @Import(name="reverseCidrs")
     private @Nullable Output<List<String>> reverseCidrs;
 
+    /**
+     * @return DNS add-on reverse cidr  (list)
+     * 
+     */
     public Optional<Output<List<String>>> reverseCidrs() {
         return Optional.ofNullable(this.reverseCidrs);
     }
@@ -110,9 +142,17 @@ public final class ClusterRkeConfigDnsArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.updateStrategy);
     }
 
+    /**
+     * DNS add-on upstream nameservers  (list)
+     * 
+     */
     @Import(name="upstreamNameservers")
     private @Nullable Output<List<String>> upstreamNameservers;
 
+    /**
+     * @return DNS add-on upstream nameservers  (list)
+     * 
+     */
     public Optional<Output<List<String>>> upstreamNameservers() {
         return Optional.ofNullable(this.upstreamNameservers);
     }
@@ -170,11 +210,23 @@ public final class ClusterRkeConfigDnsArgs extends com.pulumi.resources.Resource
             return linearAutoscalerParams(Output.of(linearAutoscalerParams));
         }
 
+        /**
+         * @param nodeSelector RKE monitoring node selector (map)
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeSelector(@Nullable Output<Map<String,Object>> nodeSelector) {
             $.nodeSelector = nodeSelector;
             return this;
         }
 
+        /**
+         * @param nodeSelector RKE monitoring node selector (map)
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeSelector(Map<String,Object> nodeSelector) {
             return nodeSelector(Output.of(nodeSelector));
         }
@@ -200,33 +252,75 @@ public final class ClusterRkeConfigDnsArgs extends com.pulumi.resources.Resource
             return nodelocal(Output.of(nodelocal));
         }
 
+        /**
+         * @param options RKE options for network (map)
+         * 
+         * @return builder
+         * 
+         */
         public Builder options(@Nullable Output<Map<String,Object>> options) {
             $.options = options;
             return this;
         }
 
+        /**
+         * @param options RKE options for network (map)
+         * 
+         * @return builder
+         * 
+         */
         public Builder options(Map<String,Object> options) {
             return options(Output.of(options));
         }
 
+        /**
+         * @param provider RKE monitoring provider (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder provider(@Nullable Output<String> provider) {
             $.provider = provider;
             return this;
         }
 
+        /**
+         * @param provider RKE monitoring provider (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder provider(String provider) {
             return provider(Output.of(provider));
         }
 
+        /**
+         * @param reverseCidrs DNS add-on reverse cidr  (list)
+         * 
+         * @return builder
+         * 
+         */
         public Builder reverseCidrs(@Nullable Output<List<String>> reverseCidrs) {
             $.reverseCidrs = reverseCidrs;
             return this;
         }
 
+        /**
+         * @param reverseCidrs DNS add-on reverse cidr  (list)
+         * 
+         * @return builder
+         * 
+         */
         public Builder reverseCidrs(List<String> reverseCidrs) {
             return reverseCidrs(Output.of(reverseCidrs));
         }
 
+        /**
+         * @param reverseCidrs DNS add-on reverse cidr  (list)
+         * 
+         * @return builder
+         * 
+         */
         public Builder reverseCidrs(String... reverseCidrs) {
             return reverseCidrs(List.of(reverseCidrs));
         }
@@ -283,15 +377,33 @@ public final class ClusterRkeConfigDnsArgs extends com.pulumi.resources.Resource
             return updateStrategy(Output.of(updateStrategy));
         }
 
+        /**
+         * @param upstreamNameservers DNS add-on upstream nameservers  (list)
+         * 
+         * @return builder
+         * 
+         */
         public Builder upstreamNameservers(@Nullable Output<List<String>> upstreamNameservers) {
             $.upstreamNameservers = upstreamNameservers;
             return this;
         }
 
+        /**
+         * @param upstreamNameservers DNS add-on upstream nameservers  (list)
+         * 
+         * @return builder
+         * 
+         */
         public Builder upstreamNameservers(List<String> upstreamNameservers) {
             return upstreamNameservers(Output.of(upstreamNameservers));
         }
 
+        /**
+         * @param upstreamNameservers DNS add-on upstream nameservers  (list)
+         * 
+         * @return builder
+         * 
+         */
         public Builder upstreamNameservers(String... upstreamNameservers) {
             return upstreamNameservers(List.of(upstreamNameservers));
         }

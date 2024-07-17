@@ -15,16 +15,32 @@ public final class ProjectResourceQuotaArgs extends com.pulumi.resources.Resourc
 
     public static final ProjectResourceQuotaArgs Empty = new ProjectResourceQuotaArgs();
 
+    /**
+     * Default resource quota limit for  namespaces in project (list maxitems:1)
+     * 
+     */
     @Import(name="namespaceDefaultLimit", required=true)
     private Output<ProjectResourceQuotaNamespaceDefaultLimitArgs> namespaceDefaultLimit;
 
+    /**
+     * @return Default resource quota limit for  namespaces in project (list maxitems:1)
+     * 
+     */
     public Output<ProjectResourceQuotaNamespaceDefaultLimitArgs> namespaceDefaultLimit() {
         return this.namespaceDefaultLimit;
     }
 
+    /**
+     * Resource quota limit for project (list maxitems:1)
+     * 
+     */
     @Import(name="projectLimit", required=true)
     private Output<ProjectResourceQuotaProjectLimitArgs> projectLimit;
 
+    /**
+     * @return Resource quota limit for project (list maxitems:1)
+     * 
+     */
     public Output<ProjectResourceQuotaProjectLimitArgs> projectLimit() {
         return this.projectLimit;
     }
@@ -54,20 +70,44 @@ public final class ProjectResourceQuotaArgs extends com.pulumi.resources.Resourc
             $ = new ProjectResourceQuotaArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param namespaceDefaultLimit Default resource quota limit for  namespaces in project (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespaceDefaultLimit(Output<ProjectResourceQuotaNamespaceDefaultLimitArgs> namespaceDefaultLimit) {
             $.namespaceDefaultLimit = namespaceDefaultLimit;
             return this;
         }
 
+        /**
+         * @param namespaceDefaultLimit Default resource quota limit for  namespaces in project (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespaceDefaultLimit(ProjectResourceQuotaNamespaceDefaultLimitArgs namespaceDefaultLimit) {
             return namespaceDefaultLimit(Output.of(namespaceDefaultLimit));
         }
 
+        /**
+         * @param projectLimit Resource quota limit for project (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectLimit(Output<ProjectResourceQuotaProjectLimitArgs> projectLimit) {
             $.projectLimit = projectLimit;
             return this;
         }
 
+        /**
+         * @param projectLimit Resource quota limit for project (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectLimit(ProjectResourceQuotaProjectLimitArgs projectLimit) {
             return projectLimit(Output.of(projectLimit));
         }

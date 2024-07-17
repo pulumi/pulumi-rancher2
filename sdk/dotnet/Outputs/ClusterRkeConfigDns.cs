@@ -17,13 +17,25 @@ namespace Pulumi.Rancher2.Outputs
         /// Linear Autoscaler Params
         /// </summary>
         public readonly Outputs.ClusterRkeConfigDnsLinearAutoscalerParams? LinearAutoscalerParams;
+        /// <summary>
+        /// RKE monitoring node selector (map)
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? NodeSelector;
         /// <summary>
         /// Nodelocal dns
         /// </summary>
         public readonly Outputs.ClusterRkeConfigDnsNodelocal? Nodelocal;
+        /// <summary>
+        /// RKE options for network (map)
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? Options;
+        /// <summary>
+        /// RKE monitoring provider (string)
+        /// </summary>
         public readonly string? Provider;
+        /// <summary>
+        /// DNS add-on reverse cidr  (list)
+        /// </summary>
         public readonly ImmutableArray<string> ReverseCidrs;
         /// <summary>
         /// DNS service tolerations
@@ -33,6 +45,9 @@ namespace Pulumi.Rancher2.Outputs
         /// Update deployment strategy
         /// </summary>
         public readonly Outputs.ClusterRkeConfigDnsUpdateStrategy? UpdateStrategy;
+        /// <summary>
+        /// DNS add-on upstream nameservers  (list)
+        /// </summary>
         public readonly ImmutableArray<string> UpstreamNameservers;
 
         [OutputConstructor]

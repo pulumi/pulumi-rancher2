@@ -17,9 +17,17 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCente
 
     public static final ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs Empty = new ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs();
 
+    /**
+     * (string)
+     * 
+     */
     @Import(name="datacenters", required=true)
     private Output<String> datacenters;
 
+    /**
+     * @return (string)
+     * 
+     */
     public Output<String> datacenters() {
         return this.datacenters;
     }
@@ -39,30 +47,62 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCente
         return this.name;
     }
 
+    /**
+     * Registry password (string)
+     * 
+     */
     @Import(name="password", required=true)
     private Output<String> password;
 
+    /**
+     * @return Registry password (string)
+     * 
+     */
     public Output<String> password() {
         return this.password;
     }
 
+    /**
+     * Port for node. Default `22` (string)
+     * 
+     */
     @Import(name="port")
     private @Nullable Output<String> port;
 
+    /**
+     * @return Port for node. Default `22` (string)
+     * 
+     */
     public Optional<Output<String>> port() {
         return Optional.ofNullable(this.port);
     }
 
+    /**
+     * (int)
+     * 
+     */
     @Import(name="soapRoundtripCount")
     private @Nullable Output<Integer> soapRoundtripCount;
 
+    /**
+     * @return (int)
+     * 
+     */
     public Optional<Output<Integer>> soapRoundtripCount() {
         return Optional.ofNullable(this.soapRoundtripCount);
     }
 
+    /**
+     * Registry user (string)
+     * 
+     */
     @Import(name="user", required=true)
     private Output<String> user;
 
+    /**
+     * @return Registry user (string)
+     * 
+     */
     public Output<String> user() {
         return this.user;
     }
@@ -96,11 +136,23 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCente
             $ = new ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param datacenters (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder datacenters(Output<String> datacenters) {
             $.datacenters = datacenters;
             return this;
         }
 
+        /**
+         * @param datacenters (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder datacenters(String datacenters) {
             return datacenters(Output.of(datacenters));
         }
@@ -126,38 +178,86 @@ public final class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCente
             return name(Output.of(name));
         }
 
+        /**
+         * @param password Registry password (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder password(Output<String> password) {
             $.password = password;
             return this;
         }
 
+        /**
+         * @param password Registry password (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder password(String password) {
             return password(Output.of(password));
         }
 
+        /**
+         * @param port Port for node. Default `22` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(@Nullable Output<String> port) {
             $.port = port;
             return this;
         }
 
+        /**
+         * @param port Port for node. Default `22` (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(String port) {
             return port(Output.of(port));
         }
 
+        /**
+         * @param soapRoundtripCount (int)
+         * 
+         * @return builder
+         * 
+         */
         public Builder soapRoundtripCount(@Nullable Output<Integer> soapRoundtripCount) {
             $.soapRoundtripCount = soapRoundtripCount;
             return this;
         }
 
+        /**
+         * @param soapRoundtripCount (int)
+         * 
+         * @return builder
+         * 
+         */
         public Builder soapRoundtripCount(Integer soapRoundtripCount) {
             return soapRoundtripCount(Output.of(soapRoundtripCount));
         }
 
+        /**
+         * @param user Registry user (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder user(Output<String> user) {
             $.user = user;
             return this;
         }
 
+        /**
+         * @param user Registry user (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder user(String user) {
             return user(Output.of(user));
         }

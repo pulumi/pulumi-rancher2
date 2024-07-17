@@ -25,51 +25,107 @@ public final class ClusterRkeConfigNetworkArgs extends com.pulumi.resources.Reso
 
     public static final ClusterRkeConfigNetworkArgs Empty = new ClusterRkeConfigNetworkArgs();
 
+    /**
+     * ACI provider config for RKE network (list maxitems:63)
+     * 
+     */
     @Import(name="aciNetworkProvider")
     private @Nullable Output<ClusterRkeConfigNetworkAciNetworkProviderArgs> aciNetworkProvider;
 
+    /**
+     * @return ACI provider config for RKE network (list maxitems:63)
+     * 
+     */
     public Optional<Output<ClusterRkeConfigNetworkAciNetworkProviderArgs>> aciNetworkProvider() {
         return Optional.ofNullable(this.aciNetworkProvider);
     }
 
+    /**
+     * Calico provider config for RKE network (list maxitems:1)
+     * 
+     */
     @Import(name="calicoNetworkProvider")
     private @Nullable Output<ClusterRkeConfigNetworkCalicoNetworkProviderArgs> calicoNetworkProvider;
 
+    /**
+     * @return Calico provider config for RKE network (list maxitems:1)
+     * 
+     */
     public Optional<Output<ClusterRkeConfigNetworkCalicoNetworkProviderArgs>> calicoNetworkProvider() {
         return Optional.ofNullable(this.calicoNetworkProvider);
     }
 
+    /**
+     * Canal provider config for RKE network (list maxitems:1)
+     * 
+     */
     @Import(name="canalNetworkProvider")
     private @Nullable Output<ClusterRkeConfigNetworkCanalNetworkProviderArgs> canalNetworkProvider;
 
+    /**
+     * @return Canal provider config for RKE network (list maxitems:1)
+     * 
+     */
     public Optional<Output<ClusterRkeConfigNetworkCanalNetworkProviderArgs>> canalNetworkProvider() {
         return Optional.ofNullable(this.canalNetworkProvider);
     }
 
+    /**
+     * Flannel provider config for RKE network (list maxitems:1)
+     * 
+     */
     @Import(name="flannelNetworkProvider")
     private @Nullable Output<ClusterRkeConfigNetworkFlannelNetworkProviderArgs> flannelNetworkProvider;
 
+    /**
+     * @return Flannel provider config for RKE network (list maxitems:1)
+     * 
+     */
     public Optional<Output<ClusterRkeConfigNetworkFlannelNetworkProviderArgs>> flannelNetworkProvider() {
         return Optional.ofNullable(this.flannelNetworkProvider);
     }
 
+    /**
+     * Network provider MTU. Default `0` (int)
+     * 
+     */
     @Import(name="mtu")
     private @Nullable Output<Integer> mtu;
 
+    /**
+     * @return Network provider MTU. Default `0` (int)
+     * 
+     */
     public Optional<Output<Integer>> mtu() {
         return Optional.ofNullable(this.mtu);
     }
 
+    /**
+     * RKE options for network (map)
+     * 
+     */
     @Import(name="options")
     private @Nullable Output<Map<String,Object>> options;
 
+    /**
+     * @return RKE options for network (map)
+     * 
+     */
     public Optional<Output<Map<String,Object>>> options() {
         return Optional.ofNullable(this.options);
     }
 
+    /**
+     * Plugin for RKE network. `canal` (default), `flannel`, `calico`, `none` and `weave` are supported. (string)
+     * 
+     */
     @Import(name="plugin")
     private @Nullable Output<String> plugin;
 
+    /**
+     * @return Plugin for RKE network. `canal` (default), `flannel`, `calico`, `none` and `weave` are supported. (string)
+     * 
+     */
     public Optional<Output<String>> plugin() {
         return Optional.ofNullable(this.plugin);
     }
@@ -89,9 +145,17 @@ public final class ClusterRkeConfigNetworkArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.tolerations);
     }
 
+    /**
+     * Weave provider config for RKE network (list maxitems:1)
+     * 
+     */
     @Import(name="weaveNetworkProvider")
     private @Nullable Output<ClusterRkeConfigNetworkWeaveNetworkProviderArgs> weaveNetworkProvider;
 
+    /**
+     * @return Weave provider config for RKE network (list maxitems:1)
+     * 
+     */
     public Optional<Output<ClusterRkeConfigNetworkWeaveNetworkProviderArgs>> weaveNetworkProvider() {
         return Optional.ofNullable(this.weaveNetworkProvider);
     }
@@ -128,65 +192,149 @@ public final class ClusterRkeConfigNetworkArgs extends com.pulumi.resources.Reso
             $ = new ClusterRkeConfigNetworkArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param aciNetworkProvider ACI provider config for RKE network (list maxitems:63)
+         * 
+         * @return builder
+         * 
+         */
         public Builder aciNetworkProvider(@Nullable Output<ClusterRkeConfigNetworkAciNetworkProviderArgs> aciNetworkProvider) {
             $.aciNetworkProvider = aciNetworkProvider;
             return this;
         }
 
+        /**
+         * @param aciNetworkProvider ACI provider config for RKE network (list maxitems:63)
+         * 
+         * @return builder
+         * 
+         */
         public Builder aciNetworkProvider(ClusterRkeConfigNetworkAciNetworkProviderArgs aciNetworkProvider) {
             return aciNetworkProvider(Output.of(aciNetworkProvider));
         }
 
+        /**
+         * @param calicoNetworkProvider Calico provider config for RKE network (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder calicoNetworkProvider(@Nullable Output<ClusterRkeConfigNetworkCalicoNetworkProviderArgs> calicoNetworkProvider) {
             $.calicoNetworkProvider = calicoNetworkProvider;
             return this;
         }
 
+        /**
+         * @param calicoNetworkProvider Calico provider config for RKE network (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder calicoNetworkProvider(ClusterRkeConfigNetworkCalicoNetworkProviderArgs calicoNetworkProvider) {
             return calicoNetworkProvider(Output.of(calicoNetworkProvider));
         }
 
+        /**
+         * @param canalNetworkProvider Canal provider config for RKE network (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder canalNetworkProvider(@Nullable Output<ClusterRkeConfigNetworkCanalNetworkProviderArgs> canalNetworkProvider) {
             $.canalNetworkProvider = canalNetworkProvider;
             return this;
         }
 
+        /**
+         * @param canalNetworkProvider Canal provider config for RKE network (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder canalNetworkProvider(ClusterRkeConfigNetworkCanalNetworkProviderArgs canalNetworkProvider) {
             return canalNetworkProvider(Output.of(canalNetworkProvider));
         }
 
+        /**
+         * @param flannelNetworkProvider Flannel provider config for RKE network (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder flannelNetworkProvider(@Nullable Output<ClusterRkeConfigNetworkFlannelNetworkProviderArgs> flannelNetworkProvider) {
             $.flannelNetworkProvider = flannelNetworkProvider;
             return this;
         }
 
+        /**
+         * @param flannelNetworkProvider Flannel provider config for RKE network (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder flannelNetworkProvider(ClusterRkeConfigNetworkFlannelNetworkProviderArgs flannelNetworkProvider) {
             return flannelNetworkProvider(Output.of(flannelNetworkProvider));
         }
 
+        /**
+         * @param mtu Network provider MTU. Default `0` (int)
+         * 
+         * @return builder
+         * 
+         */
         public Builder mtu(@Nullable Output<Integer> mtu) {
             $.mtu = mtu;
             return this;
         }
 
+        /**
+         * @param mtu Network provider MTU. Default `0` (int)
+         * 
+         * @return builder
+         * 
+         */
         public Builder mtu(Integer mtu) {
             return mtu(Output.of(mtu));
         }
 
+        /**
+         * @param options RKE options for network (map)
+         * 
+         * @return builder
+         * 
+         */
         public Builder options(@Nullable Output<Map<String,Object>> options) {
             $.options = options;
             return this;
         }
 
+        /**
+         * @param options RKE options for network (map)
+         * 
+         * @return builder
+         * 
+         */
         public Builder options(Map<String,Object> options) {
             return options(Output.of(options));
         }
 
+        /**
+         * @param plugin Plugin for RKE network. `canal` (default), `flannel`, `calico`, `none` and `weave` are supported. (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder plugin(@Nullable Output<String> plugin) {
             $.plugin = plugin;
             return this;
         }
 
+        /**
+         * @param plugin Plugin for RKE network. `canal` (default), `flannel`, `calico`, `none` and `weave` are supported. (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder plugin(String plugin) {
             return plugin(Output.of(plugin));
         }
@@ -222,11 +370,23 @@ public final class ClusterRkeConfigNetworkArgs extends com.pulumi.resources.Reso
             return tolerations(List.of(tolerations));
         }
 
+        /**
+         * @param weaveNetworkProvider Weave provider config for RKE network (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder weaveNetworkProvider(@Nullable Output<ClusterRkeConfigNetworkWeaveNetworkProviderArgs> weaveNetworkProvider) {
             $.weaveNetworkProvider = weaveNetworkProvider;
             return this;
         }
 
+        /**
+         * @param weaveNetworkProvider Weave provider config for RKE network (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder weaveNetworkProvider(ClusterRkeConfigNetworkWeaveNetworkProviderArgs weaveNetworkProvider) {
             return weaveNetworkProvider(Output.of(weaveNetworkProvider));
         }
