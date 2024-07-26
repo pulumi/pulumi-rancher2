@@ -43,7 +43,7 @@ import (
 //				RepoName:     pulumi.String("rancher-charts"),
 //				ChartName:    pulumi.String("rancher-monitoring"),
 //				ChartVersion: pulumi.String("9.4.200"),
-//				Values:       invokeFile.Result,
+//				Values:       pulumi.String(invokeFile.Result),
 //			})
 //			if err != nil {
 //				return err

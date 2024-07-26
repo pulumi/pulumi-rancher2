@@ -352,9 +352,9 @@ import (
 //			_, err = rancher2.NewCluster(ctx, "foo", &rancher2.ClusterArgs{
 //				Name:              pulumi.String("foo"),
 //				ClusterTemplateId: foo.ID(),
-//				ClusterTemplateRevisionId: foo.TemplateRevisions.ApplyT(func(templateRevisions []rancher2.ClusterTemplateTemplateRevision) (*string, error) {
+//				ClusterTemplateRevisionId: pulumi.String(foo.TemplateRevisions.ApplyT(func(templateRevisions []rancher2.ClusterTemplateTemplateRevision) (*string, error) {
 //					return &templateRevisions[0].Id, nil
-//				}).(pulumi.StringPtrOutput),
+//				}).(pulumi.StringPtrOutput)),
 //			})
 //			if err != nil {
 //				return err
