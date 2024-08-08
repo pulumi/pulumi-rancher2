@@ -30,7 +30,7 @@ public final class GetClusterV2RkeConfigEtcd {
      */
     private @Nullable Integer snapshotRetention;
     /**
-     * @return ETCD snapshot schedule cron (e.g `&#34;0 *{@literal /}5 * * *&#34;`)
+     * @return ETCD snapshot schedule cron (e.g `&#34;0 *&#47;5 * * *&#34;`)
      * 
      */
     private @Nullable String snapshotScheduleCron;
@@ -58,7 +58,7 @@ public final class GetClusterV2RkeConfigEtcd {
         return Optional.ofNullable(this.snapshotRetention);
     }
     /**
-     * @return ETCD snapshot schedule cron (e.g `&#34;0 *{@literal /}5 * * *&#34;`)
+     * @return ETCD snapshot schedule cron (e.g `&#34;0 *&#47;5 * * *&#34;`)
      * 
      */
     public Optional<String> snapshotScheduleCron() {

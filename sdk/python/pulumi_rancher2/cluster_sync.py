@@ -340,25 +340,25 @@ class ClusterSync(pulumi.CustomResource):
         foo_custom = rancher2.Cluster("foo-custom",
             name="foo-custom",
             description="Foo rancher2 custom cluster",
-            rke_config=rancher2.ClusterRkeConfigArgs(
-                network=rancher2.ClusterRkeConfigNetworkArgs(
-                    plugin="canal",
-                ),
-            ))
+            rke_config={
+                "network": {
+                    "plugin": "canal",
+                },
+            })
         # Create a new rancher2 Node Template
         foo = rancher2.NodeTemplate("foo",
             name="foo",
             description="foo test",
-            amazonec2_config=rancher2.NodeTemplateAmazonec2ConfigArgs(
-                access_key="<AWS_ACCESS_KEY>",
-                secret_key="<AWS_SECRET_KEY>",
-                ami="<AMI_ID>",
-                region="<REGION>",
-                security_groups=["<AWS_SECURITY_GROUP>"],
-                subnet_id="<SUBNET_ID>",
-                vpc_id="<VPC_ID>",
-                zone="<ZONE>",
-            ))
+            amazonec2_config={
+                "access_key": "<AWS_ACCESS_KEY>",
+                "secret_key": "<AWS_SECRET_KEY>",
+                "ami": "<AMI_ID>",
+                "region": "<REGION>",
+                "security_groups": ["<AWS_SECURITY_GROUP>"],
+                "subnet_id": "<SUBNET_ID>",
+                "vpc_id": "<VPC_ID>",
+                "zone": "<ZONE>",
+            })
         # Create a new rancher2 Node Pool
         foo_node_pool = rancher2.NodePool("foo",
             cluster_id=foo_custom.id,
@@ -378,24 +378,24 @@ class ClusterSync(pulumi.CustomResource):
             name="foo",
             cluster_id=foo_custom_cluster_sync.id,
             description="Terraform namespace acceptance test",
-            resource_quota=rancher2.ProjectResourceQuotaArgs(
-                project_limit=rancher2.ProjectResourceQuotaProjectLimitArgs(
-                    limits_cpu="2000m",
-                    limits_memory="2000Mi",
-                    requests_storage="2Gi",
-                ),
-                namespace_default_limit=rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs(
-                    limits_cpu="500m",
-                    limits_memory="500Mi",
-                    requests_storage="1Gi",
-                ),
-            ),
-            container_resource_limit=rancher2.ProjectContainerResourceLimitArgs(
-                limits_cpu="20m",
-                limits_memory="20Mi",
-                requests_cpu="1m",
-                requests_memory="1Mi",
-            ))
+            resource_quota={
+                "project_limit": {
+                    "limits_cpu": "2000m",
+                    "limits_memory": "2000Mi",
+                    "requests_storage": "2Gi",
+                },
+                "namespace_default_limit": {
+                    "limits_cpu": "500m",
+                    "limits_memory": "500Mi",
+                    "requests_storage": "1Gi",
+                },
+            },
+            container_resource_limit={
+                "limits_cpu": "20m",
+                "limits_memory": "20Mi",
+                "requests_cpu": "1m",
+                "requests_memory": "1Mi",
+            })
         ```
 
         :param str resource_name: The name of the resource.
@@ -426,25 +426,25 @@ class ClusterSync(pulumi.CustomResource):
         foo_custom = rancher2.Cluster("foo-custom",
             name="foo-custom",
             description="Foo rancher2 custom cluster",
-            rke_config=rancher2.ClusterRkeConfigArgs(
-                network=rancher2.ClusterRkeConfigNetworkArgs(
-                    plugin="canal",
-                ),
-            ))
+            rke_config={
+                "network": {
+                    "plugin": "canal",
+                },
+            })
         # Create a new rancher2 Node Template
         foo = rancher2.NodeTemplate("foo",
             name="foo",
             description="foo test",
-            amazonec2_config=rancher2.NodeTemplateAmazonec2ConfigArgs(
-                access_key="<AWS_ACCESS_KEY>",
-                secret_key="<AWS_SECRET_KEY>",
-                ami="<AMI_ID>",
-                region="<REGION>",
-                security_groups=["<AWS_SECURITY_GROUP>"],
-                subnet_id="<SUBNET_ID>",
-                vpc_id="<VPC_ID>",
-                zone="<ZONE>",
-            ))
+            amazonec2_config={
+                "access_key": "<AWS_ACCESS_KEY>",
+                "secret_key": "<AWS_SECRET_KEY>",
+                "ami": "<AMI_ID>",
+                "region": "<REGION>",
+                "security_groups": ["<AWS_SECURITY_GROUP>"],
+                "subnet_id": "<SUBNET_ID>",
+                "vpc_id": "<VPC_ID>",
+                "zone": "<ZONE>",
+            })
         # Create a new rancher2 Node Pool
         foo_node_pool = rancher2.NodePool("foo",
             cluster_id=foo_custom.id,
@@ -464,24 +464,24 @@ class ClusterSync(pulumi.CustomResource):
             name="foo",
             cluster_id=foo_custom_cluster_sync.id,
             description="Terraform namespace acceptance test",
-            resource_quota=rancher2.ProjectResourceQuotaArgs(
-                project_limit=rancher2.ProjectResourceQuotaProjectLimitArgs(
-                    limits_cpu="2000m",
-                    limits_memory="2000Mi",
-                    requests_storage="2Gi",
-                ),
-                namespace_default_limit=rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs(
-                    limits_cpu="500m",
-                    limits_memory="500Mi",
-                    requests_storage="1Gi",
-                ),
-            ),
-            container_resource_limit=rancher2.ProjectContainerResourceLimitArgs(
-                limits_cpu="20m",
-                limits_memory="20Mi",
-                requests_cpu="1m",
-                requests_memory="1Mi",
-            ))
+            resource_quota={
+                "project_limit": {
+                    "limits_cpu": "2000m",
+                    "limits_memory": "2000Mi",
+                    "requests_storage": "2Gi",
+                },
+                "namespace_default_limit": {
+                    "limits_cpu": "500m",
+                    "limits_memory": "500Mi",
+                    "requests_storage": "1Gi",
+                },
+            },
+            container_resource_limit={
+                "limits_cpu": "20m",
+                "limits_memory": "20Mi",
+                "requests_cpu": "1m",
+                "requests_memory": "1Mi",
+            })
         ```
 
         :param str resource_name: The name of the resource.
@@ -544,7 +544,7 @@ class ClusterSync(pulumi.CustomResource):
             default_project_id: Optional[pulumi.Input[str]] = None,
             kube_config: Optional[pulumi.Input[str]] = None,
             node_pool_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            nodes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterSyncNodeArgs']]]]] = None,
+            nodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterSyncNodeArgs', 'ClusterSyncNodeArgsDict']]]]] = None,
             state_confirm: Optional[pulumi.Input[int]] = None,
             synced: Optional[pulumi.Input[bool]] = None,
             system_project_id: Optional[pulumi.Input[str]] = None,
@@ -562,7 +562,7 @@ class ClusterSync(pulumi.CustomResource):
         :param pulumi.Input[str] default_project_id: (Computed) Default project ID for the cluster sync (string)
         :param pulumi.Input[str] kube_config: (Computed/Sensitive) Kube Config generated for the cluster sync (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] node_pool_ids: The node pool IDs used by the cluster id (list)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterSyncNodeArgs']]]] nodes: (Computed) The cluster nodes (list).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterSyncNodeArgs', 'ClusterSyncNodeArgsDict']]]] nodes: (Computed) The cluster nodes (list).
         :param pulumi.Input[int] state_confirm: Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
                
                **Note:** `state_confirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `active` state before they are fully installed. For example: setting `state_confirm = 2` will assure that the cluster has been in `active` state for at least 5 seconds, `state_confirm = 3` assure at least 10 seconds, etc
