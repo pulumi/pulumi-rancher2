@@ -316,7 +316,7 @@ public class Bootstrap extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Bootstrap(String name) {
+    public Bootstrap(java.lang.String name) {
         this(name, BootstrapArgs.Empty);
     }
     /**
@@ -324,7 +324,7 @@ public class Bootstrap extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Bootstrap(String name, @Nullable BootstrapArgs args) {
+    public Bootstrap(java.lang.String name, @Nullable BootstrapArgs args) {
         this(name, args, null);
     }
     /**
@@ -333,15 +333,22 @@ public class Bootstrap extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Bootstrap(String name, @Nullable BootstrapArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/bootstrap:Bootstrap", name, args == null ? BootstrapArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Bootstrap(java.lang.String name, @Nullable BootstrapArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/bootstrap:Bootstrap", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Bootstrap(String name, Output<String> id, @Nullable BootstrapState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/bootstrap:Bootstrap", name, state, makeResourceOptions(options, id));
+    private Bootstrap(java.lang.String name, Output<java.lang.String> id, @Nullable BootstrapState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/bootstrap:Bootstrap", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static BootstrapArgs makeArgs(@Nullable BootstrapArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BootstrapArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -364,7 +371,7 @@ public class Bootstrap extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Bootstrap get(String name, Output<String> id, @Nullable BootstrapState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Bootstrap get(java.lang.String name, Output<java.lang.String> id, @Nullable BootstrapState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Bootstrap(name, id, state, options);
     }
 }

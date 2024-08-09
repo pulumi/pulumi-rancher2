@@ -339,7 +339,7 @@ public class CustomUserToken extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public CustomUserToken(String name) {
+    public CustomUserToken(java.lang.String name) {
         this(name, CustomUserTokenArgs.Empty);
     }
     /**
@@ -347,7 +347,7 @@ public class CustomUserToken extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CustomUserToken(String name, CustomUserTokenArgs args) {
+    public CustomUserToken(java.lang.String name, CustomUserTokenArgs args) {
         this(name, args, null);
     }
     /**
@@ -356,15 +356,22 @@ public class CustomUserToken extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CustomUserToken(String name, CustomUserTokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/customUserToken:CustomUserToken", name, args == null ? CustomUserTokenArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public CustomUserToken(java.lang.String name, CustomUserTokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/customUserToken:CustomUserToken", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private CustomUserToken(String name, Output<String> id, @Nullable CustomUserTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/customUserToken:CustomUserToken", name, state, makeResourceOptions(options, id));
+    private CustomUserToken(java.lang.String name, Output<java.lang.String> id, @Nullable CustomUserTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/customUserToken:CustomUserToken", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static CustomUserTokenArgs makeArgs(CustomUserTokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CustomUserTokenArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -386,7 +393,7 @@ public class CustomUserToken extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static CustomUserToken get(String name, Output<String> id, @Nullable CustomUserTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static CustomUserToken get(java.lang.String name, Output<java.lang.String> id, @Nullable CustomUserTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new CustomUserToken(name, id, state, options);
     }
 }

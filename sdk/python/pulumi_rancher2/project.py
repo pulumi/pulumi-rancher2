@@ -387,14 +387,14 @@ class Project(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
-                 container_resource_limit: Optional[pulumi.Input[pulumi.InputType['ProjectContainerResourceLimitArgs']]] = None,
+                 container_resource_limit: Optional[pulumi.Input[Union['ProjectContainerResourceLimitArgs', 'ProjectContainerResourceLimitArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_project_monitoring: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pod_security_policy_template_id: Optional[pulumi.Input[str]] = None,
-                 project_monitoring_input: Optional[pulumi.Input[pulumi.InputType['ProjectProjectMonitoringInputArgs']]] = None,
-                 resource_quota: Optional[pulumi.Input[pulumi.InputType['ProjectResourceQuotaArgs']]] = None,
+                 project_monitoring_input: Optional[pulumi.Input[Union['ProjectProjectMonitoringInputArgs', 'ProjectProjectMonitoringInputArgsDict']]] = None,
+                 resource_quota: Optional[pulumi.Input[Union['ProjectResourceQuotaArgs', 'ProjectResourceQuotaArgsDict']]] = None,
                  wait_for_cluster: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
@@ -410,24 +410,24 @@ class Project(pulumi.CustomResource):
         foo = rancher2.Project("foo",
             name="foo",
             cluster_id="<CLUSTER_ID>",
-            resource_quota=rancher2.ProjectResourceQuotaArgs(
-                project_limit=rancher2.ProjectResourceQuotaProjectLimitArgs(
-                    limits_cpu="2000m",
-                    limits_memory="2000Mi",
-                    requests_storage="2Gi",
-                ),
-                namespace_default_limit=rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs(
-                    limits_cpu="2000m",
-                    limits_memory="500Mi",
-                    requests_storage="1Gi",
-                ),
-            ),
-            container_resource_limit=rancher2.ProjectContainerResourceLimitArgs(
-                limits_cpu="20m",
-                limits_memory="20Mi",
-                requests_cpu="1m",
-                requests_memory="1Mi",
-            ))
+            resource_quota={
+                "project_limit": {
+                    "limits_cpu": "2000m",
+                    "limits_memory": "2000Mi",
+                    "requests_storage": "2Gi",
+                },
+                "namespace_default_limit": {
+                    "limits_cpu": "2000m",
+                    "limits_memory": "500Mi",
+                    "requests_storage": "1Gi",
+                },
+            },
+            container_resource_limit={
+                "limits_cpu": "20m",
+                "limits_memory": "20Mi",
+                "requests_cpu": "1m",
+                "requests_memory": "1Mi",
+            })
         ```
 
         ```python
@@ -438,47 +438,47 @@ class Project(pulumi.CustomResource):
         foo = rancher2.Project("foo",
             name="foo",
             cluster_id="<CLUSTER_ID>",
-            resource_quota=rancher2.ProjectResourceQuotaArgs(
-                project_limit=rancher2.ProjectResourceQuotaProjectLimitArgs(
-                    limits_cpu="2000m",
-                    limits_memory="2000Mi",
-                    requests_storage="2Gi",
-                ),
-                namespace_default_limit=rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs(
-                    limits_cpu="2000m",
-                    limits_memory="500Mi",
-                    requests_storage="1Gi",
-                ),
-            ),
-            container_resource_limit=rancher2.ProjectContainerResourceLimitArgs(
-                limits_cpu="20m",
-                limits_memory="20Mi",
-                requests_cpu="1m",
-                requests_memory="1Mi",
-            ),
-            enable_project_monitoring=True,
-            project_monitoring_input=rancher2.ProjectProjectMonitoringInputArgs(
-                answers={
-                    "exporter-kubelets.https": True,
-                    "exporter-node.enabled": True,
-                    "exporter-node.ports.metrics.port": 9796,
-                    "exporter-node.resources.limits.cpu": "200m",
-                    "exporter-node.resources.limits.memory": "200Mi",
-                    "grafana.persistence.enabled": False,
-                    "grafana.persistence.size": "10Gi",
-                    "grafana.persistence.storageClass": "default",
-                    "operator.resources.limits.memory": "500Mi",
-                    "prometheus.persistence.enabled": "false",
-                    "prometheus.persistence.size": "50Gi",
-                    "prometheus.persistence.storageClass": "default",
-                    "prometheus.persistent.useReleaseName": "true",
-                    "prometheus.resources.core.limits.cpu": "1000m",
-                    "prometheus.resources.core.limits.memory": "1500Mi",
-                    "prometheus.resources.core.requests.cpu": "750m",
-                    "prometheus.resources.core.requests.memory": "750Mi",
-                    "prometheus.retention": "12h",
+            resource_quota={
+                "project_limit": {
+                    "limits_cpu": "2000m",
+                    "limits_memory": "2000Mi",
+                    "requests_storage": "2Gi",
                 },
-            ))
+                "namespace_default_limit": {
+                    "limits_cpu": "2000m",
+                    "limits_memory": "500Mi",
+                    "requests_storage": "1Gi",
+                },
+            },
+            container_resource_limit={
+                "limits_cpu": "20m",
+                "limits_memory": "20Mi",
+                "requests_cpu": "1m",
+                "requests_memory": "1Mi",
+            },
+            enable_project_monitoring=True,
+            project_monitoring_input={
+                "answers": {
+                    "exporter_kubelets_https": True,
+                    "exporter_node_enabled": True,
+                    "exporter_node_ports_metrics_port": 9796,
+                    "exporter_node_resources_limits_cpu": "200m",
+                    "exporter_node_resources_limits_memory": "200Mi",
+                    "grafana_persistence_enabled": False,
+                    "grafana_persistence_size": "10Gi",
+                    "grafana_persistence_storage_class": "default",
+                    "operator_resources_limits_memory": "500Mi",
+                    "prometheus_persistence_enabled": "false",
+                    "prometheus_persistence_size": "50Gi",
+                    "prometheus_persistence_storage_class": "default",
+                    "prometheus_persistent_use_release_name": "true",
+                    "prometheus_resources_core_limits_cpu": "1000m",
+                    "prometheus_resources_core_limits_memory": "1500Mi",
+                    "prometheus_resources_core_requests_cpu": "750m",
+                    "prometheus_resources_core_requests_memory": "750Mi",
+                    "prometheus_retention": "12h",
+                },
+            })
         ```
 
         ## Import
@@ -493,14 +493,14 @@ class Project(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Node Pool object (map)
         :param pulumi.Input[str] cluster_id: The cluster id where create project (string)
-        :param pulumi.Input[pulumi.InputType['ProjectContainerResourceLimitArgs']] container_resource_limit: Default containers resource limits on project (List maxitem:1)
+        :param pulumi.Input[Union['ProjectContainerResourceLimitArgs', 'ProjectContainerResourceLimitArgsDict']] container_resource_limit: Default containers resource limits on project (List maxitem:1)
         :param pulumi.Input[str] description: A project description (string)
         :param pulumi.Input[bool] enable_project_monitoring: Enable built-in project monitoring. Default `false` (bool)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Pool object (map)
         :param pulumi.Input[str] name: The name of the project (string)
         :param pulumi.Input[str] pod_security_policy_template_id: Default Pod Security Policy ID for the project (string)
-        :param pulumi.Input[pulumi.InputType['ProjectProjectMonitoringInputArgs']] project_monitoring_input: Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['ProjectResourceQuotaArgs']] resource_quota: Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
+        :param pulumi.Input[Union['ProjectProjectMonitoringInputArgs', 'ProjectProjectMonitoringInputArgsDict']] project_monitoring_input: Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
+        :param pulumi.Input[Union['ProjectResourceQuotaArgs', 'ProjectResourceQuotaArgsDict']] resource_quota: Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
         :param pulumi.Input[bool] wait_for_cluster: Wait for cluster becomes active. Default `false` (bool)
         """
         ...
@@ -522,24 +522,24 @@ class Project(pulumi.CustomResource):
         foo = rancher2.Project("foo",
             name="foo",
             cluster_id="<CLUSTER_ID>",
-            resource_quota=rancher2.ProjectResourceQuotaArgs(
-                project_limit=rancher2.ProjectResourceQuotaProjectLimitArgs(
-                    limits_cpu="2000m",
-                    limits_memory="2000Mi",
-                    requests_storage="2Gi",
-                ),
-                namespace_default_limit=rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs(
-                    limits_cpu="2000m",
-                    limits_memory="500Mi",
-                    requests_storage="1Gi",
-                ),
-            ),
-            container_resource_limit=rancher2.ProjectContainerResourceLimitArgs(
-                limits_cpu="20m",
-                limits_memory="20Mi",
-                requests_cpu="1m",
-                requests_memory="1Mi",
-            ))
+            resource_quota={
+                "project_limit": {
+                    "limits_cpu": "2000m",
+                    "limits_memory": "2000Mi",
+                    "requests_storage": "2Gi",
+                },
+                "namespace_default_limit": {
+                    "limits_cpu": "2000m",
+                    "limits_memory": "500Mi",
+                    "requests_storage": "1Gi",
+                },
+            },
+            container_resource_limit={
+                "limits_cpu": "20m",
+                "limits_memory": "20Mi",
+                "requests_cpu": "1m",
+                "requests_memory": "1Mi",
+            })
         ```
 
         ```python
@@ -550,47 +550,47 @@ class Project(pulumi.CustomResource):
         foo = rancher2.Project("foo",
             name="foo",
             cluster_id="<CLUSTER_ID>",
-            resource_quota=rancher2.ProjectResourceQuotaArgs(
-                project_limit=rancher2.ProjectResourceQuotaProjectLimitArgs(
-                    limits_cpu="2000m",
-                    limits_memory="2000Mi",
-                    requests_storage="2Gi",
-                ),
-                namespace_default_limit=rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs(
-                    limits_cpu="2000m",
-                    limits_memory="500Mi",
-                    requests_storage="1Gi",
-                ),
-            ),
-            container_resource_limit=rancher2.ProjectContainerResourceLimitArgs(
-                limits_cpu="20m",
-                limits_memory="20Mi",
-                requests_cpu="1m",
-                requests_memory="1Mi",
-            ),
-            enable_project_monitoring=True,
-            project_monitoring_input=rancher2.ProjectProjectMonitoringInputArgs(
-                answers={
-                    "exporter-kubelets.https": True,
-                    "exporter-node.enabled": True,
-                    "exporter-node.ports.metrics.port": 9796,
-                    "exporter-node.resources.limits.cpu": "200m",
-                    "exporter-node.resources.limits.memory": "200Mi",
-                    "grafana.persistence.enabled": False,
-                    "grafana.persistence.size": "10Gi",
-                    "grafana.persistence.storageClass": "default",
-                    "operator.resources.limits.memory": "500Mi",
-                    "prometheus.persistence.enabled": "false",
-                    "prometheus.persistence.size": "50Gi",
-                    "prometheus.persistence.storageClass": "default",
-                    "prometheus.persistent.useReleaseName": "true",
-                    "prometheus.resources.core.limits.cpu": "1000m",
-                    "prometheus.resources.core.limits.memory": "1500Mi",
-                    "prometheus.resources.core.requests.cpu": "750m",
-                    "prometheus.resources.core.requests.memory": "750Mi",
-                    "prometheus.retention": "12h",
+            resource_quota={
+                "project_limit": {
+                    "limits_cpu": "2000m",
+                    "limits_memory": "2000Mi",
+                    "requests_storage": "2Gi",
                 },
-            ))
+                "namespace_default_limit": {
+                    "limits_cpu": "2000m",
+                    "limits_memory": "500Mi",
+                    "requests_storage": "1Gi",
+                },
+            },
+            container_resource_limit={
+                "limits_cpu": "20m",
+                "limits_memory": "20Mi",
+                "requests_cpu": "1m",
+                "requests_memory": "1Mi",
+            },
+            enable_project_monitoring=True,
+            project_monitoring_input={
+                "answers": {
+                    "exporter_kubelets_https": True,
+                    "exporter_node_enabled": True,
+                    "exporter_node_ports_metrics_port": 9796,
+                    "exporter_node_resources_limits_cpu": "200m",
+                    "exporter_node_resources_limits_memory": "200Mi",
+                    "grafana_persistence_enabled": False,
+                    "grafana_persistence_size": "10Gi",
+                    "grafana_persistence_storage_class": "default",
+                    "operator_resources_limits_memory": "500Mi",
+                    "prometheus_persistence_enabled": "false",
+                    "prometheus_persistence_size": "50Gi",
+                    "prometheus_persistence_storage_class": "default",
+                    "prometheus_persistent_use_release_name": "true",
+                    "prometheus_resources_core_limits_cpu": "1000m",
+                    "prometheus_resources_core_limits_memory": "1500Mi",
+                    "prometheus_resources_core_requests_cpu": "750m",
+                    "prometheus_resources_core_requests_memory": "750Mi",
+                    "prometheus_retention": "12h",
+                },
+            })
         ```
 
         ## Import
@@ -618,14 +618,14 @@ class Project(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
-                 container_resource_limit: Optional[pulumi.Input[pulumi.InputType['ProjectContainerResourceLimitArgs']]] = None,
+                 container_resource_limit: Optional[pulumi.Input[Union['ProjectContainerResourceLimitArgs', 'ProjectContainerResourceLimitArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_project_monitoring: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pod_security_policy_template_id: Optional[pulumi.Input[str]] = None,
-                 project_monitoring_input: Optional[pulumi.Input[pulumi.InputType['ProjectProjectMonitoringInputArgs']]] = None,
-                 resource_quota: Optional[pulumi.Input[pulumi.InputType['ProjectResourceQuotaArgs']]] = None,
+                 project_monitoring_input: Optional[pulumi.Input[Union['ProjectProjectMonitoringInputArgs', 'ProjectProjectMonitoringInputArgsDict']]] = None,
+                 resource_quota: Optional[pulumi.Input[Union['ProjectResourceQuotaArgs', 'ProjectResourceQuotaArgsDict']]] = None,
                  wait_for_cluster: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -661,14 +661,14 @@ class Project(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
-            container_resource_limit: Optional[pulumi.Input[pulumi.InputType['ProjectContainerResourceLimitArgs']]] = None,
+            container_resource_limit: Optional[pulumi.Input[Union['ProjectContainerResourceLimitArgs', 'ProjectContainerResourceLimitArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             enable_project_monitoring: Optional[pulumi.Input[bool]] = None,
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             pod_security_policy_template_id: Optional[pulumi.Input[str]] = None,
-            project_monitoring_input: Optional[pulumi.Input[pulumi.InputType['ProjectProjectMonitoringInputArgs']]] = None,
-            resource_quota: Optional[pulumi.Input[pulumi.InputType['ProjectResourceQuotaArgs']]] = None,
+            project_monitoring_input: Optional[pulumi.Input[Union['ProjectProjectMonitoringInputArgs', 'ProjectProjectMonitoringInputArgsDict']]] = None,
+            resource_quota: Optional[pulumi.Input[Union['ProjectResourceQuotaArgs', 'ProjectResourceQuotaArgsDict']]] = None,
             wait_for_cluster: Optional[pulumi.Input[bool]] = None) -> 'Project':
         """
         Get an existing Project resource's state with the given name, id, and optional extra
@@ -679,14 +679,14 @@ class Project(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Node Pool object (map)
         :param pulumi.Input[str] cluster_id: The cluster id where create project (string)
-        :param pulumi.Input[pulumi.InputType['ProjectContainerResourceLimitArgs']] container_resource_limit: Default containers resource limits on project (List maxitem:1)
+        :param pulumi.Input[Union['ProjectContainerResourceLimitArgs', 'ProjectContainerResourceLimitArgsDict']] container_resource_limit: Default containers resource limits on project (List maxitem:1)
         :param pulumi.Input[str] description: A project description (string)
         :param pulumi.Input[bool] enable_project_monitoring: Enable built-in project monitoring. Default `false` (bool)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Pool object (map)
         :param pulumi.Input[str] name: The name of the project (string)
         :param pulumi.Input[str] pod_security_policy_template_id: Default Pod Security Policy ID for the project (string)
-        :param pulumi.Input[pulumi.InputType['ProjectProjectMonitoringInputArgs']] project_monitoring_input: Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['ProjectResourceQuotaArgs']] resource_quota: Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
+        :param pulumi.Input[Union['ProjectProjectMonitoringInputArgs', 'ProjectProjectMonitoringInputArgsDict']] project_monitoring_input: Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
+        :param pulumi.Input[Union['ProjectResourceQuotaArgs', 'ProjectResourceQuotaArgsDict']] resource_quota: Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
         :param pulumi.Input[bool] wait_for_cluster: Wait for cluster becomes active. Default `false` (bool)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -328,7 +328,7 @@ class ClusterAlertGroup(pulumi.CustomResource):
                  group_wait_seconds: Optional[pulumi.Input[int]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 recipients: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterAlertGroupRecipientArgs']]]]] = None,
+                 recipients: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterAlertGroupRecipientArgs', 'ClusterAlertGroupRecipientArgsDict']]]]] = None,
                  repeat_interval_seconds: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -366,7 +366,7 @@ class ClusterAlertGroup(pulumi.CustomResource):
         :param pulumi.Input[int] group_wait_seconds: The cluster alert group wait seconds. Default: `180` (int)
         :param pulumi.Input[Mapping[str, Any]] labels: The cluster alert group labels (map)
         :param pulumi.Input[str] name: The cluster alert group name (string)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterAlertGroupRecipientArgs']]]] recipients: The cluster alert group recipients (list)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterAlertGroupRecipientArgs', 'ClusterAlertGroupRecipientArgsDict']]]] recipients: The cluster alert group recipients (list)
         :param pulumi.Input[int] repeat_interval_seconds: The cluster alert group wait seconds. Default: `3600` (int)
         """
         ...
@@ -423,7 +423,7 @@ class ClusterAlertGroup(pulumi.CustomResource):
                  group_wait_seconds: Optional[pulumi.Input[int]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 recipients: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterAlertGroupRecipientArgs']]]]] = None,
+                 recipients: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterAlertGroupRecipientArgs', 'ClusterAlertGroupRecipientArgsDict']]]]] = None,
                  repeat_interval_seconds: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -462,7 +462,7 @@ class ClusterAlertGroup(pulumi.CustomResource):
             group_wait_seconds: Optional[pulumi.Input[int]] = None,
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            recipients: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterAlertGroupRecipientArgs']]]]] = None,
+            recipients: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterAlertGroupRecipientArgs', 'ClusterAlertGroupRecipientArgsDict']]]]] = None,
             repeat_interval_seconds: Optional[pulumi.Input[int]] = None) -> 'ClusterAlertGroup':
         """
         Get an existing ClusterAlertGroup resource's state with the given name, id, and optional extra
@@ -478,7 +478,7 @@ class ClusterAlertGroup(pulumi.CustomResource):
         :param pulumi.Input[int] group_wait_seconds: The cluster alert group wait seconds. Default: `180` (int)
         :param pulumi.Input[Mapping[str, Any]] labels: The cluster alert group labels (map)
         :param pulumi.Input[str] name: The cluster alert group name (string)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterAlertGroupRecipientArgs']]]] recipients: The cluster alert group recipients (list)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterAlertGroupRecipientArgs', 'ClusterAlertGroupRecipientArgsDict']]]] recipients: The cluster alert group recipients (list)
         :param pulumi.Input[int] repeat_interval_seconds: The cluster alert group wait seconds. Default: `3600` (int)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

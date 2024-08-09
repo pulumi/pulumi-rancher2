@@ -328,7 +328,7 @@ class ProjectAlertGroup(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 recipients: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectAlertGroupRecipientArgs']]]]] = None,
+                 recipients: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectAlertGroupRecipientArgs', 'ProjectAlertGroupRecipientArgsDict']]]]] = None,
                  repeat_interval_seconds: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -366,7 +366,7 @@ class ProjectAlertGroup(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] labels: The project alert group labels (map)
         :param pulumi.Input[str] name: The project alert group name (string)
         :param pulumi.Input[str] project_id: The project id where create project alert group (string)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectAlertGroupRecipientArgs']]]] recipients: The project alert group recipients (list)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectAlertGroupRecipientArgs', 'ProjectAlertGroupRecipientArgsDict']]]] recipients: The project alert group recipients (list)
         :param pulumi.Input[int] repeat_interval_seconds: The project alert group wait seconds. Default: `3600` (int)
         """
         ...
@@ -423,7 +423,7 @@ class ProjectAlertGroup(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 recipients: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectAlertGroupRecipientArgs']]]]] = None,
+                 recipients: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectAlertGroupRecipientArgs', 'ProjectAlertGroupRecipientArgsDict']]]]] = None,
                  repeat_interval_seconds: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -462,7 +462,7 @@ class ProjectAlertGroup(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
-            recipients: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectAlertGroupRecipientArgs']]]]] = None,
+            recipients: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectAlertGroupRecipientArgs', 'ProjectAlertGroupRecipientArgsDict']]]]] = None,
             repeat_interval_seconds: Optional[pulumi.Input[int]] = None) -> 'ProjectAlertGroup':
         """
         Get an existing ProjectAlertGroup resource's state with the given name, id, and optional extra
@@ -478,7 +478,7 @@ class ProjectAlertGroup(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] labels: The project alert group labels (map)
         :param pulumi.Input[str] name: The project alert group name (string)
         :param pulumi.Input[str] project_id: The project id where create project alert group (string)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectAlertGroupRecipientArgs']]]] recipients: The project alert group recipients (list)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectAlertGroupRecipientArgs', 'ProjectAlertGroupRecipientArgsDict']]]] recipients: The project alert group recipients (list)
         :param pulumi.Input[int] repeat_interval_seconds: The project alert group wait seconds. Default: `3600` (int)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

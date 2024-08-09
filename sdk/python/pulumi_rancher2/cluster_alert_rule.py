@@ -482,18 +482,18 @@ class ClusterAlertRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
-                 event_rule: Optional[pulumi.Input[pulumi.InputType['ClusterAlertRuleEventRuleArgs']]] = None,
+                 event_rule: Optional[pulumi.Input[Union['ClusterAlertRuleEventRuleArgs', 'ClusterAlertRuleEventRuleArgsDict']]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  group_interval_seconds: Optional[pulumi.Input[int]] = None,
                  group_wait_seconds: Optional[pulumi.Input[int]] = None,
                  inherited: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 metric_rule: Optional[pulumi.Input[pulumi.InputType['ClusterAlertRuleMetricRuleArgs']]] = None,
+                 metric_rule: Optional[pulumi.Input[Union['ClusterAlertRuleMetricRuleArgs', 'ClusterAlertRuleMetricRuleArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_rule: Optional[pulumi.Input[pulumi.InputType['ClusterAlertRuleNodeRuleArgs']]] = None,
+                 node_rule: Optional[pulumi.Input[Union['ClusterAlertRuleNodeRuleArgs', 'ClusterAlertRuleNodeRuleArgsDict']]] = None,
                  repeat_interval_seconds: Optional[pulumi.Input[int]] = None,
                  severity: Optional[pulumi.Input[str]] = None,
-                 system_service_rule: Optional[pulumi.Input[pulumi.InputType['ClusterAlertRuleSystemServiceRuleArgs']]] = None,
+                 system_service_rule: Optional[pulumi.Input[Union['ClusterAlertRuleSystemServiceRuleArgs', 'ClusterAlertRuleSystemServiceRuleArgsDict']]] = None,
                  __props__=None):
         """
         Provides a Rancher v2 Cluster Alert Rule resource. This can be used to create Cluster Alert Rule for Rancher v2 environments and retrieve their information.
@@ -532,18 +532,18 @@ class ClusterAlertRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] annotations: The cluster alert rule annotations (map)
         :param pulumi.Input[str] cluster_id: The cluster id where create cluster alert rule (string)
-        :param pulumi.Input[pulumi.InputType['ClusterAlertRuleEventRuleArgs']] event_rule: The cluster alert rule event rule. ConflictsWith: `"metric_rule", "node_rule", "system_service_rule"`` (list Maxitems:1)
+        :param pulumi.Input[Union['ClusterAlertRuleEventRuleArgs', 'ClusterAlertRuleEventRuleArgsDict']] event_rule: The cluster alert rule event rule. ConflictsWith: `"metric_rule", "node_rule", "system_service_rule"`` (list Maxitems:1)
         :param pulumi.Input[str] group_id: The cluster alert rule alert group ID (string)
         :param pulumi.Input[int] group_interval_seconds: The cluster alert rule group interval seconds. Default: `180` (int)
         :param pulumi.Input[int] group_wait_seconds: The cluster alert rule group wait seconds. Default: `180` (int)
         :param pulumi.Input[bool] inherited: The cluster alert rule inherited. Default: `true` (bool)
         :param pulumi.Input[Mapping[str, Any]] labels: The cluster alert rule labels (map)
-        :param pulumi.Input[pulumi.InputType['ClusterAlertRuleMetricRuleArgs']] metric_rule: The cluster alert rule metric rule. ConflictsWith: `"event_rule", "node_rule", "system_service_rule"`` (list Maxitems:1)
+        :param pulumi.Input[Union['ClusterAlertRuleMetricRuleArgs', 'ClusterAlertRuleMetricRuleArgsDict']] metric_rule: The cluster alert rule metric rule. ConflictsWith: `"event_rule", "node_rule", "system_service_rule"`` (list Maxitems:1)
         :param pulumi.Input[str] name: The cluster alert rule name (string)
-        :param pulumi.Input[pulumi.InputType['ClusterAlertRuleNodeRuleArgs']] node_rule: The cluster alert rule node rule. ConflictsWith: `"event_rule", "metric_rule", "system_service_rule"`` (list Maxitems:1)
+        :param pulumi.Input[Union['ClusterAlertRuleNodeRuleArgs', 'ClusterAlertRuleNodeRuleArgsDict']] node_rule: The cluster alert rule node rule. ConflictsWith: `"event_rule", "metric_rule", "system_service_rule"`` (list Maxitems:1)
         :param pulumi.Input[int] repeat_interval_seconds: The cluster alert rule wait seconds. Default: `3600` (int)
         :param pulumi.Input[str] severity: The cluster alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
-        :param pulumi.Input[pulumi.InputType['ClusterAlertRuleSystemServiceRuleArgs']] system_service_rule: The cluster alert rule system service rule. ConflictsWith: `"event_rule", "metric_rule", "node_rule"` (list Maxitems:1)
+        :param pulumi.Input[Union['ClusterAlertRuleSystemServiceRuleArgs', 'ClusterAlertRuleSystemServiceRuleArgsDict']] system_service_rule: The cluster alert rule system service rule. ConflictsWith: `"event_rule", "metric_rule", "node_rule"` (list Maxitems:1)
         """
         ...
     @overload
@@ -601,18 +601,18 @@ class ClusterAlertRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
-                 event_rule: Optional[pulumi.Input[pulumi.InputType['ClusterAlertRuleEventRuleArgs']]] = None,
+                 event_rule: Optional[pulumi.Input[Union['ClusterAlertRuleEventRuleArgs', 'ClusterAlertRuleEventRuleArgsDict']]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  group_interval_seconds: Optional[pulumi.Input[int]] = None,
                  group_wait_seconds: Optional[pulumi.Input[int]] = None,
                  inherited: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 metric_rule: Optional[pulumi.Input[pulumi.InputType['ClusterAlertRuleMetricRuleArgs']]] = None,
+                 metric_rule: Optional[pulumi.Input[Union['ClusterAlertRuleMetricRuleArgs', 'ClusterAlertRuleMetricRuleArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_rule: Optional[pulumi.Input[pulumi.InputType['ClusterAlertRuleNodeRuleArgs']]] = None,
+                 node_rule: Optional[pulumi.Input[Union['ClusterAlertRuleNodeRuleArgs', 'ClusterAlertRuleNodeRuleArgsDict']]] = None,
                  repeat_interval_seconds: Optional[pulumi.Input[int]] = None,
                  severity: Optional[pulumi.Input[str]] = None,
-                 system_service_rule: Optional[pulumi.Input[pulumi.InputType['ClusterAlertRuleSystemServiceRuleArgs']]] = None,
+                 system_service_rule: Optional[pulumi.Input[Union['ClusterAlertRuleSystemServiceRuleArgs', 'ClusterAlertRuleSystemServiceRuleArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -652,18 +652,18 @@ class ClusterAlertRule(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
-            event_rule: Optional[pulumi.Input[pulumi.InputType['ClusterAlertRuleEventRuleArgs']]] = None,
+            event_rule: Optional[pulumi.Input[Union['ClusterAlertRuleEventRuleArgs', 'ClusterAlertRuleEventRuleArgsDict']]] = None,
             group_id: Optional[pulumi.Input[str]] = None,
             group_interval_seconds: Optional[pulumi.Input[int]] = None,
             group_wait_seconds: Optional[pulumi.Input[int]] = None,
             inherited: Optional[pulumi.Input[bool]] = None,
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            metric_rule: Optional[pulumi.Input[pulumi.InputType['ClusterAlertRuleMetricRuleArgs']]] = None,
+            metric_rule: Optional[pulumi.Input[Union['ClusterAlertRuleMetricRuleArgs', 'ClusterAlertRuleMetricRuleArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            node_rule: Optional[pulumi.Input[pulumi.InputType['ClusterAlertRuleNodeRuleArgs']]] = None,
+            node_rule: Optional[pulumi.Input[Union['ClusterAlertRuleNodeRuleArgs', 'ClusterAlertRuleNodeRuleArgsDict']]] = None,
             repeat_interval_seconds: Optional[pulumi.Input[int]] = None,
             severity: Optional[pulumi.Input[str]] = None,
-            system_service_rule: Optional[pulumi.Input[pulumi.InputType['ClusterAlertRuleSystemServiceRuleArgs']]] = None) -> 'ClusterAlertRule':
+            system_service_rule: Optional[pulumi.Input[Union['ClusterAlertRuleSystemServiceRuleArgs', 'ClusterAlertRuleSystemServiceRuleArgsDict']]] = None) -> 'ClusterAlertRule':
         """
         Get an existing ClusterAlertRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -673,18 +673,18 @@ class ClusterAlertRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] annotations: The cluster alert rule annotations (map)
         :param pulumi.Input[str] cluster_id: The cluster id where create cluster alert rule (string)
-        :param pulumi.Input[pulumi.InputType['ClusterAlertRuleEventRuleArgs']] event_rule: The cluster alert rule event rule. ConflictsWith: `"metric_rule", "node_rule", "system_service_rule"`` (list Maxitems:1)
+        :param pulumi.Input[Union['ClusterAlertRuleEventRuleArgs', 'ClusterAlertRuleEventRuleArgsDict']] event_rule: The cluster alert rule event rule. ConflictsWith: `"metric_rule", "node_rule", "system_service_rule"`` (list Maxitems:1)
         :param pulumi.Input[str] group_id: The cluster alert rule alert group ID (string)
         :param pulumi.Input[int] group_interval_seconds: The cluster alert rule group interval seconds. Default: `180` (int)
         :param pulumi.Input[int] group_wait_seconds: The cluster alert rule group wait seconds. Default: `180` (int)
         :param pulumi.Input[bool] inherited: The cluster alert rule inherited. Default: `true` (bool)
         :param pulumi.Input[Mapping[str, Any]] labels: The cluster alert rule labels (map)
-        :param pulumi.Input[pulumi.InputType['ClusterAlertRuleMetricRuleArgs']] metric_rule: The cluster alert rule metric rule. ConflictsWith: `"event_rule", "node_rule", "system_service_rule"`` (list Maxitems:1)
+        :param pulumi.Input[Union['ClusterAlertRuleMetricRuleArgs', 'ClusterAlertRuleMetricRuleArgsDict']] metric_rule: The cluster alert rule metric rule. ConflictsWith: `"event_rule", "node_rule", "system_service_rule"`` (list Maxitems:1)
         :param pulumi.Input[str] name: The cluster alert rule name (string)
-        :param pulumi.Input[pulumi.InputType['ClusterAlertRuleNodeRuleArgs']] node_rule: The cluster alert rule node rule. ConflictsWith: `"event_rule", "metric_rule", "system_service_rule"`` (list Maxitems:1)
+        :param pulumi.Input[Union['ClusterAlertRuleNodeRuleArgs', 'ClusterAlertRuleNodeRuleArgsDict']] node_rule: The cluster alert rule node rule. ConflictsWith: `"event_rule", "metric_rule", "system_service_rule"`` (list Maxitems:1)
         :param pulumi.Input[int] repeat_interval_seconds: The cluster alert rule wait seconds. Default: `3600` (int)
         :param pulumi.Input[str] severity: The cluster alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
-        :param pulumi.Input[pulumi.InputType['ClusterAlertRuleSystemServiceRuleArgs']] system_service_rule: The cluster alert rule system service rule. ConflictsWith: `"event_rule", "metric_rule", "node_rule"` (list Maxitems:1)
+        :param pulumi.Input[Union['ClusterAlertRuleSystemServiceRuleArgs', 'ClusterAlertRuleSystemServiceRuleArgsDict']] system_service_rule: The cluster alert rule system service rule. ConflictsWith: `"event_rule", "metric_rule", "node_rule"` (list Maxitems:1)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -472,13 +472,13 @@ class RoleTemplate(pulumi.CustomResource):
                  default_role: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  external: Optional[pulumi.Input[bool]] = None,
-                 external_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoleTemplateExternalRuleArgs']]]]] = None,
+                 external_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RoleTemplateExternalRuleArgs', 'RoleTemplateExternalRuleArgsDict']]]]] = None,
                  hidden: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  role_template_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoleTemplateRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RoleTemplateRuleArgs', 'RoleTemplateRuleArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Rancher v2 Role Template resource. This can be used to create Role Template for Rancher v2 and retrieve their information.
@@ -497,11 +497,11 @@ class RoleTemplate(pulumi.CustomResource):
             context="cluster",
             default_role=True,
             description="Terraform role template acceptance test",
-            rules=[rancher2.RoleTemplateRuleArgs(
-                api_groups=["*"],
-                resources=["secrets"],
-                verbs=["create"],
-            )])
+            rules=[{
+                "api_groups": ["*"],
+                "resources": ["secrets"],
+                "verbs": ["create"],
+            }])
         ```
 
         ```python
@@ -514,11 +514,11 @@ class RoleTemplate(pulumi.CustomResource):
             context="project",
             default_role=True,
             description="Terraform role template acceptance test",
-            rules=[rancher2.RoleTemplateRuleArgs(
-                api_groups=["*"],
-                resources=["secrets"],
-                verbs=["create"],
-            )])
+            rules=[{
+                "api_groups": ["*"],
+                "resources": ["secrets"],
+                "verbs": ["create"],
+            }])
         ```
 
         ## Import
@@ -537,13 +537,13 @@ class RoleTemplate(pulumi.CustomResource):
         :param pulumi.Input[bool] default_role: Default role template for new created cluster or project. Default `false` (bool)
         :param pulumi.Input[str] description: Role template description (string)
         :param pulumi.Input[bool] external: External role template. Default `false` (bool)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoleTemplateExternalRuleArgs']]]] external_rules: External rules used for authorization. This field is required when `external=true` and no underlying ClusterRole exists. (list)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RoleTemplateExternalRuleArgs', 'RoleTemplateExternalRuleArgsDict']]]] external_rules: External rules used for authorization. This field is required when `external=true` and no underlying ClusterRole exists. (list)
         :param pulumi.Input[bool] hidden: Hidden role template. Default `false` (bool)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for role template object (map)
         :param pulumi.Input[bool] locked: Locked role template. Default `false` (bool)
         :param pulumi.Input[str] name: Role template name (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] role_template_ids: Inherit role template IDs (list)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoleTemplateRuleArgs']]]] rules: Role template policy rules (list)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RoleTemplateRuleArgs', 'RoleTemplateRuleArgsDict']]]] rules: Role template policy rules (list)
         """
         ...
     @overload
@@ -568,11 +568,11 @@ class RoleTemplate(pulumi.CustomResource):
             context="cluster",
             default_role=True,
             description="Terraform role template acceptance test",
-            rules=[rancher2.RoleTemplateRuleArgs(
-                api_groups=["*"],
-                resources=["secrets"],
-                verbs=["create"],
-            )])
+            rules=[{
+                "api_groups": ["*"],
+                "resources": ["secrets"],
+                "verbs": ["create"],
+            }])
         ```
 
         ```python
@@ -585,11 +585,11 @@ class RoleTemplate(pulumi.CustomResource):
             context="project",
             default_role=True,
             description="Terraform role template acceptance test",
-            rules=[rancher2.RoleTemplateRuleArgs(
-                api_groups=["*"],
-                resources=["secrets"],
-                verbs=["create"],
-            )])
+            rules=[{
+                "api_groups": ["*"],
+                "resources": ["secrets"],
+                "verbs": ["create"],
+            }])
         ```
 
         ## Import
@@ -621,13 +621,13 @@ class RoleTemplate(pulumi.CustomResource):
                  default_role: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  external: Optional[pulumi.Input[bool]] = None,
-                 external_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoleTemplateExternalRuleArgs']]]]] = None,
+                 external_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RoleTemplateExternalRuleArgs', 'RoleTemplateExternalRuleArgsDict']]]]] = None,
                  hidden: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  role_template_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoleTemplateRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RoleTemplateRuleArgs', 'RoleTemplateRuleArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -668,13 +668,13 @@ class RoleTemplate(pulumi.CustomResource):
             default_role: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             external: Optional[pulumi.Input[bool]] = None,
-            external_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoleTemplateExternalRuleArgs']]]]] = None,
+            external_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RoleTemplateExternalRuleArgs', 'RoleTemplateExternalRuleArgsDict']]]]] = None,
             hidden: Optional[pulumi.Input[bool]] = None,
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             locked: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             role_template_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoleTemplateRuleArgs']]]]] = None) -> 'RoleTemplate':
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RoleTemplateRuleArgs', 'RoleTemplateRuleArgsDict']]]]] = None) -> 'RoleTemplate':
         """
         Get an existing RoleTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -689,13 +689,13 @@ class RoleTemplate(pulumi.CustomResource):
         :param pulumi.Input[bool] default_role: Default role template for new created cluster or project. Default `false` (bool)
         :param pulumi.Input[str] description: Role template description (string)
         :param pulumi.Input[bool] external: External role template. Default `false` (bool)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoleTemplateExternalRuleArgs']]]] external_rules: External rules used for authorization. This field is required when `external=true` and no underlying ClusterRole exists. (list)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RoleTemplateExternalRuleArgs', 'RoleTemplateExternalRuleArgsDict']]]] external_rules: External rules used for authorization. This field is required when `external=true` and no underlying ClusterRole exists. (list)
         :param pulumi.Input[bool] hidden: Hidden role template. Default `false` (bool)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for role template object (map)
         :param pulumi.Input[bool] locked: Locked role template. Default `false` (bool)
         :param pulumi.Input[str] name: Role template name (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] role_template_ids: Inherit role template IDs (list)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoleTemplateRuleArgs']]]] rules: Role template policy rules (list)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RoleTemplateRuleArgs', 'RoleTemplateRuleArgsDict']]]] rules: Role template policy rules (list)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

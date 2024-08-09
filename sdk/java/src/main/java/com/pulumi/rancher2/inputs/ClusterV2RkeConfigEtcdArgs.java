@@ -64,14 +64,14 @@ public final class ClusterV2RkeConfigEtcdArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * ETCD snapshot schedule cron (e.g `&#34;0 *{@literal /}5 * * *&#34;`)
+     * ETCD snapshot schedule cron (e.g `&#34;0 *&#47;5 * * *&#34;`)
      * 
      */
     @Import(name="snapshotScheduleCron")
     private @Nullable Output<String> snapshotScheduleCron;
 
     /**
-     * @return ETCD snapshot schedule cron (e.g `&#34;0 *{@literal /}5 * * *&#34;`)
+     * @return ETCD snapshot schedule cron (e.g `&#34;0 *&#47;5 * * *&#34;`)
      * 
      */
     public Optional<Output<String>> snapshotScheduleCron() {
@@ -169,7 +169,7 @@ public final class ClusterV2RkeConfigEtcdArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param snapshotScheduleCron ETCD snapshot schedule cron (e.g `&#34;0 *{@literal /}5 * * *&#34;`)
+         * @param snapshotScheduleCron ETCD snapshot schedule cron (e.g `&#34;0 *&#47;5 * * *&#34;`)
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class ClusterV2RkeConfigEtcdArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param snapshotScheduleCron ETCD snapshot schedule cron (e.g `&#34;0 *{@literal /}5 * * *&#34;`)
+         * @param snapshotScheduleCron ETCD snapshot schedule cron (e.g `&#34;0 *&#47;5 * * *&#34;`)
          * 
          * @return builder
          * 

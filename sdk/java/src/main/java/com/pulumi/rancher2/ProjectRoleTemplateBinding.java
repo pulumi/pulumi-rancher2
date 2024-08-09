@@ -203,7 +203,7 @@ public class ProjectRoleTemplateBinding extends com.pulumi.resources.CustomResou
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ProjectRoleTemplateBinding(String name) {
+    public ProjectRoleTemplateBinding(java.lang.String name) {
         this(name, ProjectRoleTemplateBindingArgs.Empty);
     }
     /**
@@ -211,7 +211,7 @@ public class ProjectRoleTemplateBinding extends com.pulumi.resources.CustomResou
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ProjectRoleTemplateBinding(String name, ProjectRoleTemplateBindingArgs args) {
+    public ProjectRoleTemplateBinding(java.lang.String name, ProjectRoleTemplateBindingArgs args) {
         this(name, args, null);
     }
     /**
@@ -220,15 +220,22 @@ public class ProjectRoleTemplateBinding extends com.pulumi.resources.CustomResou
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ProjectRoleTemplateBinding(String name, ProjectRoleTemplateBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/projectRoleTemplateBinding:ProjectRoleTemplateBinding", name, args == null ? ProjectRoleTemplateBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ProjectRoleTemplateBinding(java.lang.String name, ProjectRoleTemplateBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/projectRoleTemplateBinding:ProjectRoleTemplateBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ProjectRoleTemplateBinding(String name, Output<String> id, @Nullable ProjectRoleTemplateBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/projectRoleTemplateBinding:ProjectRoleTemplateBinding", name, state, makeResourceOptions(options, id));
+    private ProjectRoleTemplateBinding(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectRoleTemplateBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/projectRoleTemplateBinding:ProjectRoleTemplateBinding", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ProjectRoleTemplateBindingArgs makeArgs(ProjectRoleTemplateBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ProjectRoleTemplateBindingArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -244,7 +251,7 @@ public class ProjectRoleTemplateBinding extends com.pulumi.resources.CustomResou
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ProjectRoleTemplateBinding get(String name, Output<String> id, @Nullable ProjectRoleTemplateBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ProjectRoleTemplateBinding get(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectRoleTemplateBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ProjectRoleTemplateBinding(name, id, state, options);
     }
 }
