@@ -182,7 +182,7 @@ public class ClusterDriver extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ClusterDriver(String name) {
+    public ClusterDriver(java.lang.String name) {
         this(name, ClusterDriverArgs.Empty);
     }
     /**
@@ -190,7 +190,7 @@ public class ClusterDriver extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ClusterDriver(String name, ClusterDriverArgs args) {
+    public ClusterDriver(java.lang.String name, ClusterDriverArgs args) {
         this(name, args, null);
     }
     /**
@@ -199,15 +199,22 @@ public class ClusterDriver extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ClusterDriver(String name, ClusterDriverArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/clusterDriver:ClusterDriver", name, args == null ? ClusterDriverArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ClusterDriver(java.lang.String name, ClusterDriverArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/clusterDriver:ClusterDriver", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ClusterDriver(String name, Output<String> id, @Nullable ClusterDriverState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/clusterDriver:ClusterDriver", name, state, makeResourceOptions(options, id));
+    private ClusterDriver(java.lang.String name, Output<java.lang.String> id, @Nullable ClusterDriverState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/clusterDriver:ClusterDriver", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ClusterDriverArgs makeArgs(ClusterDriverArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ClusterDriverArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -223,7 +230,7 @@ public class ClusterDriver extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ClusterDriver get(String name, Output<String> id, @Nullable ClusterDriverState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ClusterDriver get(java.lang.String name, Output<java.lang.String> id, @Nullable ClusterDriverState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ClusterDriver(name, id, state, options);
     }
 }

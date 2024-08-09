@@ -452,16 +452,16 @@ class Notifier(pulumi.CustomResource):
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 dingtalk_config: Optional[pulumi.Input[pulumi.InputType['NotifierDingtalkConfigArgs']]] = None,
+                 dingtalk_config: Optional[pulumi.Input[Union['NotifierDingtalkConfigArgs', 'NotifierDingtalkConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 msteams_config: Optional[pulumi.Input[pulumi.InputType['NotifierMsteamsConfigArgs']]] = None,
+                 msteams_config: Optional[pulumi.Input[Union['NotifierMsteamsConfigArgs', 'NotifierMsteamsConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 pagerduty_config: Optional[pulumi.Input[pulumi.InputType['NotifierPagerdutyConfigArgs']]] = None,
+                 pagerduty_config: Optional[pulumi.Input[Union['NotifierPagerdutyConfigArgs', 'NotifierPagerdutyConfigArgsDict']]] = None,
                  send_resolved: Optional[pulumi.Input[bool]] = None,
-                 slack_config: Optional[pulumi.Input[pulumi.InputType['NotifierSlackConfigArgs']]] = None,
-                 smtp_config: Optional[pulumi.Input[pulumi.InputType['NotifierSmtpConfigArgs']]] = None,
-                 webhook_config: Optional[pulumi.Input[pulumi.InputType['NotifierWebhookConfigArgs']]] = None,
-                 wechat_config: Optional[pulumi.Input[pulumi.InputType['NotifierWechatConfigArgs']]] = None,
+                 slack_config: Optional[pulumi.Input[Union['NotifierSlackConfigArgs', 'NotifierSlackConfigArgsDict']]] = None,
+                 smtp_config: Optional[pulumi.Input[Union['NotifierSmtpConfigArgs', 'NotifierSmtpConfigArgsDict']]] = None,
+                 webhook_config: Optional[pulumi.Input[Union['NotifierWebhookConfigArgs', 'NotifierWebhookConfigArgsDict']]] = None,
+                 wechat_config: Optional[pulumi.Input[Union['NotifierWechatConfigArgs', 'NotifierWechatConfigArgsDict']]] = None,
                  __props__=None):
         """
         Provides a Rancher v2 Notifier resource. This can be used to create notifiers for Rancher v2 environments and retrieve their information.
@@ -478,10 +478,10 @@ class Notifier(pulumi.CustomResource):
             cluster_id="<cluster_id>",
             description="Terraform notifier acceptance test",
             send_resolved=True,
-            pagerduty_config=rancher2.NotifierPagerdutyConfigArgs(
-                service_key="XXXXXXXX",
-                proxy_url="http://proxy.test.io",
-            ))
+            pagerduty_config={
+                "service_key": "XXXXXXXX",
+                "proxy_url": "http://proxy.test.io",
+            })
         ```
 
         ## Import
@@ -497,16 +497,16 @@ class Notifier(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for notifier object (map)
         :param pulumi.Input[str] cluster_id: The cluster id where create notifier (string)
         :param pulumi.Input[str] description: The notifier description (string)
-        :param pulumi.Input[pulumi.InputType['NotifierDingtalkConfigArgs']] dingtalk_config: Dingtalk config for notifier (list maxitems:1)
+        :param pulumi.Input[Union['NotifierDingtalkConfigArgs', 'NotifierDingtalkConfigArgsDict']] dingtalk_config: Dingtalk config for notifier (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for notifier object (map)
-        :param pulumi.Input[pulumi.InputType['NotifierMsteamsConfigArgs']] msteams_config: MSTeams config for notifier (list maxitems:1)
+        :param pulumi.Input[Union['NotifierMsteamsConfigArgs', 'NotifierMsteamsConfigArgsDict']] msteams_config: MSTeams config for notifier (list maxitems:1)
         :param pulumi.Input[str] name: The name of the notifier (string)
-        :param pulumi.Input[pulumi.InputType['NotifierPagerdutyConfigArgs']] pagerduty_config: Pagerduty config for notifier (list maxitems:1)
+        :param pulumi.Input[Union['NotifierPagerdutyConfigArgs', 'NotifierPagerdutyConfigArgsDict']] pagerduty_config: Pagerduty config for notifier (list maxitems:1)
         :param pulumi.Input[bool] send_resolved: = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
-        :param pulumi.Input[pulumi.InputType['NotifierSlackConfigArgs']] slack_config: Slack config for notifier (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['NotifierSmtpConfigArgs']] smtp_config: SMTP config for notifier (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['NotifierWebhookConfigArgs']] webhook_config: Webhook config for notifier (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['NotifierWechatConfigArgs']] wechat_config: Wechat config for notifier (list maxitems:1)
+        :param pulumi.Input[Union['NotifierSlackConfigArgs', 'NotifierSlackConfigArgsDict']] slack_config: Slack config for notifier (list maxitems:1)
+        :param pulumi.Input[Union['NotifierSmtpConfigArgs', 'NotifierSmtpConfigArgsDict']] smtp_config: SMTP config for notifier (list maxitems:1)
+        :param pulumi.Input[Union['NotifierWebhookConfigArgs', 'NotifierWebhookConfigArgsDict']] webhook_config: Webhook config for notifier (list maxitems:1)
+        :param pulumi.Input[Union['NotifierWechatConfigArgs', 'NotifierWechatConfigArgsDict']] wechat_config: Wechat config for notifier (list maxitems:1)
         """
         ...
     @overload
@@ -529,10 +529,10 @@ class Notifier(pulumi.CustomResource):
             cluster_id="<cluster_id>",
             description="Terraform notifier acceptance test",
             send_resolved=True,
-            pagerduty_config=rancher2.NotifierPagerdutyConfigArgs(
-                service_key="XXXXXXXX",
-                proxy_url="http://proxy.test.io",
-            ))
+            pagerduty_config={
+                "service_key": "XXXXXXXX",
+                "proxy_url": "http://proxy.test.io",
+            })
         ```
 
         ## Import
@@ -561,16 +561,16 @@ class Notifier(pulumi.CustomResource):
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 dingtalk_config: Optional[pulumi.Input[pulumi.InputType['NotifierDingtalkConfigArgs']]] = None,
+                 dingtalk_config: Optional[pulumi.Input[Union['NotifierDingtalkConfigArgs', 'NotifierDingtalkConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 msteams_config: Optional[pulumi.Input[pulumi.InputType['NotifierMsteamsConfigArgs']]] = None,
+                 msteams_config: Optional[pulumi.Input[Union['NotifierMsteamsConfigArgs', 'NotifierMsteamsConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 pagerduty_config: Optional[pulumi.Input[pulumi.InputType['NotifierPagerdutyConfigArgs']]] = None,
+                 pagerduty_config: Optional[pulumi.Input[Union['NotifierPagerdutyConfigArgs', 'NotifierPagerdutyConfigArgsDict']]] = None,
                  send_resolved: Optional[pulumi.Input[bool]] = None,
-                 slack_config: Optional[pulumi.Input[pulumi.InputType['NotifierSlackConfigArgs']]] = None,
-                 smtp_config: Optional[pulumi.Input[pulumi.InputType['NotifierSmtpConfigArgs']]] = None,
-                 webhook_config: Optional[pulumi.Input[pulumi.InputType['NotifierWebhookConfigArgs']]] = None,
-                 wechat_config: Optional[pulumi.Input[pulumi.InputType['NotifierWechatConfigArgs']]] = None,
+                 slack_config: Optional[pulumi.Input[Union['NotifierSlackConfigArgs', 'NotifierSlackConfigArgsDict']]] = None,
+                 smtp_config: Optional[pulumi.Input[Union['NotifierSmtpConfigArgs', 'NotifierSmtpConfigArgsDict']]] = None,
+                 webhook_config: Optional[pulumi.Input[Union['NotifierWebhookConfigArgs', 'NotifierWebhookConfigArgsDict']]] = None,
+                 wechat_config: Optional[pulumi.Input[Union['NotifierWechatConfigArgs', 'NotifierWechatConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -608,16 +608,16 @@ class Notifier(pulumi.CustomResource):
             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            dingtalk_config: Optional[pulumi.Input[pulumi.InputType['NotifierDingtalkConfigArgs']]] = None,
+            dingtalk_config: Optional[pulumi.Input[Union['NotifierDingtalkConfigArgs', 'NotifierDingtalkConfigArgsDict']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            msteams_config: Optional[pulumi.Input[pulumi.InputType['NotifierMsteamsConfigArgs']]] = None,
+            msteams_config: Optional[pulumi.Input[Union['NotifierMsteamsConfigArgs', 'NotifierMsteamsConfigArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            pagerduty_config: Optional[pulumi.Input[pulumi.InputType['NotifierPagerdutyConfigArgs']]] = None,
+            pagerduty_config: Optional[pulumi.Input[Union['NotifierPagerdutyConfigArgs', 'NotifierPagerdutyConfigArgsDict']]] = None,
             send_resolved: Optional[pulumi.Input[bool]] = None,
-            slack_config: Optional[pulumi.Input[pulumi.InputType['NotifierSlackConfigArgs']]] = None,
-            smtp_config: Optional[pulumi.Input[pulumi.InputType['NotifierSmtpConfigArgs']]] = None,
-            webhook_config: Optional[pulumi.Input[pulumi.InputType['NotifierWebhookConfigArgs']]] = None,
-            wechat_config: Optional[pulumi.Input[pulumi.InputType['NotifierWechatConfigArgs']]] = None) -> 'Notifier':
+            slack_config: Optional[pulumi.Input[Union['NotifierSlackConfigArgs', 'NotifierSlackConfigArgsDict']]] = None,
+            smtp_config: Optional[pulumi.Input[Union['NotifierSmtpConfigArgs', 'NotifierSmtpConfigArgsDict']]] = None,
+            webhook_config: Optional[pulumi.Input[Union['NotifierWebhookConfigArgs', 'NotifierWebhookConfigArgsDict']]] = None,
+            wechat_config: Optional[pulumi.Input[Union['NotifierWechatConfigArgs', 'NotifierWechatConfigArgsDict']]] = None) -> 'Notifier':
         """
         Get an existing Notifier resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -628,16 +628,16 @@ class Notifier(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for notifier object (map)
         :param pulumi.Input[str] cluster_id: The cluster id where create notifier (string)
         :param pulumi.Input[str] description: The notifier description (string)
-        :param pulumi.Input[pulumi.InputType['NotifierDingtalkConfigArgs']] dingtalk_config: Dingtalk config for notifier (list maxitems:1)
+        :param pulumi.Input[Union['NotifierDingtalkConfigArgs', 'NotifierDingtalkConfigArgsDict']] dingtalk_config: Dingtalk config for notifier (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for notifier object (map)
-        :param pulumi.Input[pulumi.InputType['NotifierMsteamsConfigArgs']] msteams_config: MSTeams config for notifier (list maxitems:1)
+        :param pulumi.Input[Union['NotifierMsteamsConfigArgs', 'NotifierMsteamsConfigArgsDict']] msteams_config: MSTeams config for notifier (list maxitems:1)
         :param pulumi.Input[str] name: The name of the notifier (string)
-        :param pulumi.Input[pulumi.InputType['NotifierPagerdutyConfigArgs']] pagerduty_config: Pagerduty config for notifier (list maxitems:1)
+        :param pulumi.Input[Union['NotifierPagerdutyConfigArgs', 'NotifierPagerdutyConfigArgsDict']] pagerduty_config: Pagerduty config for notifier (list maxitems:1)
         :param pulumi.Input[bool] send_resolved: = (Optional) Enable the notifier to send resolved notifications. Default `false` (bool)
-        :param pulumi.Input[pulumi.InputType['NotifierSlackConfigArgs']] slack_config: Slack config for notifier (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['NotifierSmtpConfigArgs']] smtp_config: SMTP config for notifier (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['NotifierWebhookConfigArgs']] webhook_config: Webhook config for notifier (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['NotifierWechatConfigArgs']] wechat_config: Wechat config for notifier (list maxitems:1)
+        :param pulumi.Input[Union['NotifierSlackConfigArgs', 'NotifierSlackConfigArgsDict']] slack_config: Slack config for notifier (list maxitems:1)
+        :param pulumi.Input[Union['NotifierSmtpConfigArgs', 'NotifierSmtpConfigArgsDict']] smtp_config: SMTP config for notifier (list maxitems:1)
+        :param pulumi.Input[Union['NotifierWebhookConfigArgs', 'NotifierWebhookConfigArgsDict']] webhook_config: Webhook config for notifier (list maxitems:1)
+        :param pulumi.Input[Union['NotifierWechatConfigArgs', 'NotifierWechatConfigArgsDict']] wechat_config: Wechat config for notifier (list maxitems:1)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

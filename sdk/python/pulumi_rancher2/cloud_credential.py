@@ -466,19 +466,19 @@ class CloudCredential(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 amazonec2_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialAmazonec2CredentialConfigArgs']]] = None,
+                 amazonec2_credential_config: Optional[pulumi.Input[Union['CloudCredentialAmazonec2CredentialConfigArgs', 'CloudCredentialAmazonec2CredentialConfigArgsDict']]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 azure_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialAzureCredentialConfigArgs']]] = None,
+                 azure_credential_config: Optional[pulumi.Input[Union['CloudCredentialAzureCredentialConfigArgs', 'CloudCredentialAzureCredentialConfigArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 digitalocean_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialDigitaloceanCredentialConfigArgs']]] = None,
-                 google_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialGoogleCredentialConfigArgs']]] = None,
-                 harvester_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialHarvesterCredentialConfigArgs']]] = None,
+                 digitalocean_credential_config: Optional[pulumi.Input[Union['CloudCredentialDigitaloceanCredentialConfigArgs', 'CloudCredentialDigitaloceanCredentialConfigArgsDict']]] = None,
+                 google_credential_config: Optional[pulumi.Input[Union['CloudCredentialGoogleCredentialConfigArgs', 'CloudCredentialGoogleCredentialConfigArgsDict']]] = None,
+                 harvester_credential_config: Optional[pulumi.Input[Union['CloudCredentialHarvesterCredentialConfigArgs', 'CloudCredentialHarvesterCredentialConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 linode_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialLinodeCredentialConfigArgs']]] = None,
+                 linode_credential_config: Optional[pulumi.Input[Union['CloudCredentialLinodeCredentialConfigArgs', 'CloudCredentialLinodeCredentialConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 openstack_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialOpenstackCredentialConfigArgs']]] = None,
-                 s3_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialS3CredentialConfigArgs']]] = None,
-                 vsphere_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialVsphereCredentialConfigArgs']]] = None,
+                 openstack_credential_config: Optional[pulumi.Input[Union['CloudCredentialOpenstackCredentialConfigArgs', 'CloudCredentialOpenstackCredentialConfigArgsDict']]] = None,
+                 s3_credential_config: Optional[pulumi.Input[Union['CloudCredentialS3CredentialConfigArgs', 'CloudCredentialS3CredentialConfigArgsDict']]] = None,
+                 vsphere_credential_config: Optional[pulumi.Input[Union['CloudCredentialVsphereCredentialConfigArgs', 'CloudCredentialVsphereCredentialConfigArgsDict']]] = None,
                  __props__=None):
         """
         Provides a Rancher v2 Cloud Credential resource. This can be used to create Cloud Credential for Rancher v2.2.x and retrieve their information.
@@ -495,10 +495,10 @@ class CloudCredential(pulumi.CustomResource):
         foo = rancher2.CloudCredential("foo",
             name="foo",
             description="foo test",
-            amazonec2_credential_config=rancher2.CloudCredentialAmazonec2CredentialConfigArgs(
-                access_key="<AWS_ACCESS_KEY>",
-                secret_key="<AWS_SECRET_KEY>",
-            ))
+            amazonec2_credential_config={
+                "access_key": "<AWS_ACCESS_KEY>",
+                "secret_key": "<AWS_SECRET_KEY>",
+            })
         ```
 
         ```python
@@ -510,11 +510,11 @@ class CloudCredential(pulumi.CustomResource):
         # Create a new Cloud Credential for an imported Harvester cluster
         foo_harvester_cloud_credential = rancher2.CloudCredential("foo-harvester",
             name="foo-harvester",
-            harvester_credential_config=rancher2.CloudCredentialHarvesterCredentialConfigArgs(
-                cluster_id=foo_harvester.cluster_v1_id,
-                cluster_type="imported",
-                kubeconfig_content=foo_harvester.kube_config,
-            ))
+            harvester_credential_config={
+                "cluster_id": foo_harvester.cluster_v1_id,
+                "cluster_type": "imported",
+                "kubeconfig_content": foo_harvester.kube_config,
+            })
         ```
 
         ## Import
@@ -547,19 +547,19 @@ class CloudCredential(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['CloudCredentialAmazonec2CredentialConfigArgs']] amazonec2_credential_config: AWS config for the Cloud Credential (list maxitems:1)
+        :param pulumi.Input[Union['CloudCredentialAmazonec2CredentialConfigArgs', 'CloudCredentialAmazonec2CredentialConfigArgsDict']] amazonec2_credential_config: AWS config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Cloud Credential object (map)
-        :param pulumi.Input[pulumi.InputType['CloudCredentialAzureCredentialConfigArgs']] azure_credential_config: Azure config for the Cloud Credential (list maxitems:1)
+        :param pulumi.Input[Union['CloudCredentialAzureCredentialConfigArgs', 'CloudCredentialAzureCredentialConfigArgsDict']] azure_credential_config: Azure config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[str] description: Description for the Cloud Credential (string)
-        :param pulumi.Input[pulumi.InputType['CloudCredentialDigitaloceanCredentialConfigArgs']] digitalocean_credential_config: DigitalOcean config for the Cloud Credential (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['CloudCredentialGoogleCredentialConfigArgs']] google_credential_config: Google config for the Cloud Credential (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['CloudCredentialHarvesterCredentialConfigArgs']] harvester_credential_config: Harvester config for the Cloud Credential (list maxitems:1)
+        :param pulumi.Input[Union['CloudCredentialDigitaloceanCredentialConfigArgs', 'CloudCredentialDigitaloceanCredentialConfigArgsDict']] digitalocean_credential_config: DigitalOcean config for the Cloud Credential (list maxitems:1)
+        :param pulumi.Input[Union['CloudCredentialGoogleCredentialConfigArgs', 'CloudCredentialGoogleCredentialConfigArgsDict']] google_credential_config: Google config for the Cloud Credential (list maxitems:1)
+        :param pulumi.Input[Union['CloudCredentialHarvesterCredentialConfigArgs', 'CloudCredentialHarvesterCredentialConfigArgsDict']] harvester_credential_config: Harvester config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for Cloud Credential object (map)
-        :param pulumi.Input[pulumi.InputType['CloudCredentialLinodeCredentialConfigArgs']] linode_credential_config: Linode config for the Cloud Credential (list maxitems:1)
+        :param pulumi.Input[Union['CloudCredentialLinodeCredentialConfigArgs', 'CloudCredentialLinodeCredentialConfigArgsDict']] linode_credential_config: Linode config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[str] name: The name of the Cloud Credential (string)
-        :param pulumi.Input[pulumi.InputType['CloudCredentialOpenstackCredentialConfigArgs']] openstack_credential_config: OpenStack config for the Cloud Credential (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['CloudCredentialS3CredentialConfigArgs']] s3_credential_config: S3 config for the Cloud Credential. For Rancher 2.6.0 and above (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['CloudCredentialVsphereCredentialConfigArgs']] vsphere_credential_config: vSphere config for the Cloud Credential (list maxitems:1)
+        :param pulumi.Input[Union['CloudCredentialOpenstackCredentialConfigArgs', 'CloudCredentialOpenstackCredentialConfigArgsDict']] openstack_credential_config: OpenStack config for the Cloud Credential (list maxitems:1)
+        :param pulumi.Input[Union['CloudCredentialS3CredentialConfigArgs', 'CloudCredentialS3CredentialConfigArgsDict']] s3_credential_config: S3 config for the Cloud Credential. For Rancher 2.6.0 and above (list maxitems:1)
+        :param pulumi.Input[Union['CloudCredentialVsphereCredentialConfigArgs', 'CloudCredentialVsphereCredentialConfigArgsDict']] vsphere_credential_config: vSphere config for the Cloud Credential (list maxitems:1)
         """
         ...
     @overload
@@ -582,10 +582,10 @@ class CloudCredential(pulumi.CustomResource):
         foo = rancher2.CloudCredential("foo",
             name="foo",
             description="foo test",
-            amazonec2_credential_config=rancher2.CloudCredentialAmazonec2CredentialConfigArgs(
-                access_key="<AWS_ACCESS_KEY>",
-                secret_key="<AWS_SECRET_KEY>",
-            ))
+            amazonec2_credential_config={
+                "access_key": "<AWS_ACCESS_KEY>",
+                "secret_key": "<AWS_SECRET_KEY>",
+            })
         ```
 
         ```python
@@ -597,11 +597,11 @@ class CloudCredential(pulumi.CustomResource):
         # Create a new Cloud Credential for an imported Harvester cluster
         foo_harvester_cloud_credential = rancher2.CloudCredential("foo-harvester",
             name="foo-harvester",
-            harvester_credential_config=rancher2.CloudCredentialHarvesterCredentialConfigArgs(
-                cluster_id=foo_harvester.cluster_v1_id,
-                cluster_type="imported",
-                kubeconfig_content=foo_harvester.kube_config,
-            ))
+            harvester_credential_config={
+                "cluster_id": foo_harvester.cluster_v1_id,
+                "cluster_type": "imported",
+                "kubeconfig_content": foo_harvester.kube_config,
+            })
         ```
 
         ## Import
@@ -647,19 +647,19 @@ class CloudCredential(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 amazonec2_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialAmazonec2CredentialConfigArgs']]] = None,
+                 amazonec2_credential_config: Optional[pulumi.Input[Union['CloudCredentialAmazonec2CredentialConfigArgs', 'CloudCredentialAmazonec2CredentialConfigArgsDict']]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 azure_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialAzureCredentialConfigArgs']]] = None,
+                 azure_credential_config: Optional[pulumi.Input[Union['CloudCredentialAzureCredentialConfigArgs', 'CloudCredentialAzureCredentialConfigArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 digitalocean_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialDigitaloceanCredentialConfigArgs']]] = None,
-                 google_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialGoogleCredentialConfigArgs']]] = None,
-                 harvester_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialHarvesterCredentialConfigArgs']]] = None,
+                 digitalocean_credential_config: Optional[pulumi.Input[Union['CloudCredentialDigitaloceanCredentialConfigArgs', 'CloudCredentialDigitaloceanCredentialConfigArgsDict']]] = None,
+                 google_credential_config: Optional[pulumi.Input[Union['CloudCredentialGoogleCredentialConfigArgs', 'CloudCredentialGoogleCredentialConfigArgsDict']]] = None,
+                 harvester_credential_config: Optional[pulumi.Input[Union['CloudCredentialHarvesterCredentialConfigArgs', 'CloudCredentialHarvesterCredentialConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 linode_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialLinodeCredentialConfigArgs']]] = None,
+                 linode_credential_config: Optional[pulumi.Input[Union['CloudCredentialLinodeCredentialConfigArgs', 'CloudCredentialLinodeCredentialConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 openstack_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialOpenstackCredentialConfigArgs']]] = None,
-                 s3_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialS3CredentialConfigArgs']]] = None,
-                 vsphere_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialVsphereCredentialConfigArgs']]] = None,
+                 openstack_credential_config: Optional[pulumi.Input[Union['CloudCredentialOpenstackCredentialConfigArgs', 'CloudCredentialOpenstackCredentialConfigArgsDict']]] = None,
+                 s3_credential_config: Optional[pulumi.Input[Union['CloudCredentialS3CredentialConfigArgs', 'CloudCredentialS3CredentialConfigArgsDict']]] = None,
+                 vsphere_credential_config: Optional[pulumi.Input[Union['CloudCredentialVsphereCredentialConfigArgs', 'CloudCredentialVsphereCredentialConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -693,20 +693,20 @@ class CloudCredential(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            amazonec2_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialAmazonec2CredentialConfigArgs']]] = None,
+            amazonec2_credential_config: Optional[pulumi.Input[Union['CloudCredentialAmazonec2CredentialConfigArgs', 'CloudCredentialAmazonec2CredentialConfigArgsDict']]] = None,
             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            azure_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialAzureCredentialConfigArgs']]] = None,
+            azure_credential_config: Optional[pulumi.Input[Union['CloudCredentialAzureCredentialConfigArgs', 'CloudCredentialAzureCredentialConfigArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            digitalocean_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialDigitaloceanCredentialConfigArgs']]] = None,
+            digitalocean_credential_config: Optional[pulumi.Input[Union['CloudCredentialDigitaloceanCredentialConfigArgs', 'CloudCredentialDigitaloceanCredentialConfigArgsDict']]] = None,
             driver: Optional[pulumi.Input[str]] = None,
-            google_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialGoogleCredentialConfigArgs']]] = None,
-            harvester_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialHarvesterCredentialConfigArgs']]] = None,
+            google_credential_config: Optional[pulumi.Input[Union['CloudCredentialGoogleCredentialConfigArgs', 'CloudCredentialGoogleCredentialConfigArgsDict']]] = None,
+            harvester_credential_config: Optional[pulumi.Input[Union['CloudCredentialHarvesterCredentialConfigArgs', 'CloudCredentialHarvesterCredentialConfigArgsDict']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            linode_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialLinodeCredentialConfigArgs']]] = None,
+            linode_credential_config: Optional[pulumi.Input[Union['CloudCredentialLinodeCredentialConfigArgs', 'CloudCredentialLinodeCredentialConfigArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            openstack_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialOpenstackCredentialConfigArgs']]] = None,
-            s3_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialS3CredentialConfigArgs']]] = None,
-            vsphere_credential_config: Optional[pulumi.Input[pulumi.InputType['CloudCredentialVsphereCredentialConfigArgs']]] = None) -> 'CloudCredential':
+            openstack_credential_config: Optional[pulumi.Input[Union['CloudCredentialOpenstackCredentialConfigArgs', 'CloudCredentialOpenstackCredentialConfigArgsDict']]] = None,
+            s3_credential_config: Optional[pulumi.Input[Union['CloudCredentialS3CredentialConfigArgs', 'CloudCredentialS3CredentialConfigArgsDict']]] = None,
+            vsphere_credential_config: Optional[pulumi.Input[Union['CloudCredentialVsphereCredentialConfigArgs', 'CloudCredentialVsphereCredentialConfigArgsDict']]] = None) -> 'CloudCredential':
         """
         Get an existing CloudCredential resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -714,20 +714,20 @@ class CloudCredential(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['CloudCredentialAmazonec2CredentialConfigArgs']] amazonec2_credential_config: AWS config for the Cloud Credential (list maxitems:1)
+        :param pulumi.Input[Union['CloudCredentialAmazonec2CredentialConfigArgs', 'CloudCredentialAmazonec2CredentialConfigArgsDict']] amazonec2_credential_config: AWS config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Cloud Credential object (map)
-        :param pulumi.Input[pulumi.InputType['CloudCredentialAzureCredentialConfigArgs']] azure_credential_config: Azure config for the Cloud Credential (list maxitems:1)
+        :param pulumi.Input[Union['CloudCredentialAzureCredentialConfigArgs', 'CloudCredentialAzureCredentialConfigArgsDict']] azure_credential_config: Azure config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[str] description: Description for the Cloud Credential (string)
-        :param pulumi.Input[pulumi.InputType['CloudCredentialDigitaloceanCredentialConfigArgs']] digitalocean_credential_config: DigitalOcean config for the Cloud Credential (list maxitems:1)
+        :param pulumi.Input[Union['CloudCredentialDigitaloceanCredentialConfigArgs', 'CloudCredentialDigitaloceanCredentialConfigArgsDict']] digitalocean_credential_config: DigitalOcean config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[str] driver: (Computed) The driver of the Cloud Credential (string)
-        :param pulumi.Input[pulumi.InputType['CloudCredentialGoogleCredentialConfigArgs']] google_credential_config: Google config for the Cloud Credential (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['CloudCredentialHarvesterCredentialConfigArgs']] harvester_credential_config: Harvester config for the Cloud Credential (list maxitems:1)
+        :param pulumi.Input[Union['CloudCredentialGoogleCredentialConfigArgs', 'CloudCredentialGoogleCredentialConfigArgsDict']] google_credential_config: Google config for the Cloud Credential (list maxitems:1)
+        :param pulumi.Input[Union['CloudCredentialHarvesterCredentialConfigArgs', 'CloudCredentialHarvesterCredentialConfigArgsDict']] harvester_credential_config: Harvester config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for Cloud Credential object (map)
-        :param pulumi.Input[pulumi.InputType['CloudCredentialLinodeCredentialConfigArgs']] linode_credential_config: Linode config for the Cloud Credential (list maxitems:1)
+        :param pulumi.Input[Union['CloudCredentialLinodeCredentialConfigArgs', 'CloudCredentialLinodeCredentialConfigArgsDict']] linode_credential_config: Linode config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[str] name: The name of the Cloud Credential (string)
-        :param pulumi.Input[pulumi.InputType['CloudCredentialOpenstackCredentialConfigArgs']] openstack_credential_config: OpenStack config for the Cloud Credential (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['CloudCredentialS3CredentialConfigArgs']] s3_credential_config: S3 config for the Cloud Credential. For Rancher 2.6.0 and above (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['CloudCredentialVsphereCredentialConfigArgs']] vsphere_credential_config: vSphere config for the Cloud Credential (list maxitems:1)
+        :param pulumi.Input[Union['CloudCredentialOpenstackCredentialConfigArgs', 'CloudCredentialOpenstackCredentialConfigArgsDict']] openstack_credential_config: OpenStack config for the Cloud Credential (list maxitems:1)
+        :param pulumi.Input[Union['CloudCredentialS3CredentialConfigArgs', 'CloudCredentialS3CredentialConfigArgsDict']] s3_credential_config: S3 config for the Cloud Credential. For Rancher 2.6.0 and above (list maxitems:1)
+        :param pulumi.Input[Union['CloudCredentialVsphereCredentialConfigArgs', 'CloudCredentialVsphereCredentialConfigArgsDict']] vsphere_credential_config: vSphere config for the Cloud Credential (list maxitems:1)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

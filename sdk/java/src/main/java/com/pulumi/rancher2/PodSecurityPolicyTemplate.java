@@ -441,7 +441,7 @@ public class PodSecurityPolicyTemplate extends com.pulumi.resources.CustomResour
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public PodSecurityPolicyTemplate(String name) {
+    public PodSecurityPolicyTemplate(java.lang.String name) {
         this(name, PodSecurityPolicyTemplateArgs.Empty);
     }
     /**
@@ -449,7 +449,7 @@ public class PodSecurityPolicyTemplate extends com.pulumi.resources.CustomResour
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public PodSecurityPolicyTemplate(String name, @Nullable PodSecurityPolicyTemplateArgs args) {
+    public PodSecurityPolicyTemplate(java.lang.String name, @Nullable PodSecurityPolicyTemplateArgs args) {
         this(name, args, null);
     }
     /**
@@ -458,15 +458,22 @@ public class PodSecurityPolicyTemplate extends com.pulumi.resources.CustomResour
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public PodSecurityPolicyTemplate(String name, @Nullable PodSecurityPolicyTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/podSecurityPolicyTemplate:PodSecurityPolicyTemplate", name, args == null ? PodSecurityPolicyTemplateArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public PodSecurityPolicyTemplate(java.lang.String name, @Nullable PodSecurityPolicyTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/podSecurityPolicyTemplate:PodSecurityPolicyTemplate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private PodSecurityPolicyTemplate(String name, Output<String> id, @Nullable PodSecurityPolicyTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/podSecurityPolicyTemplate:PodSecurityPolicyTemplate", name, state, makeResourceOptions(options, id));
+    private PodSecurityPolicyTemplate(java.lang.String name, Output<java.lang.String> id, @Nullable PodSecurityPolicyTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/podSecurityPolicyTemplate:PodSecurityPolicyTemplate", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static PodSecurityPolicyTemplateArgs makeArgs(@Nullable PodSecurityPolicyTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PodSecurityPolicyTemplateArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -482,7 +489,7 @@ public class PodSecurityPolicyTemplate extends com.pulumi.resources.CustomResour
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static PodSecurityPolicyTemplate get(String name, Output<String> id, @Nullable PodSecurityPolicyTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static PodSecurityPolicyTemplate get(java.lang.String name, Output<java.lang.String> id, @Nullable PodSecurityPolicyTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new PodSecurityPolicyTemplate(name, id, state, options);
     }
 }

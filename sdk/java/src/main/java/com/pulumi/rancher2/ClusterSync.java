@@ -293,7 +293,7 @@ public class ClusterSync extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ClusterSync(String name) {
+    public ClusterSync(java.lang.String name) {
         this(name, ClusterSyncArgs.Empty);
     }
     /**
@@ -301,7 +301,7 @@ public class ClusterSync extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ClusterSync(String name, ClusterSyncArgs args) {
+    public ClusterSync(java.lang.String name, ClusterSyncArgs args) {
         this(name, args, null);
     }
     /**
@@ -310,15 +310,22 @@ public class ClusterSync extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ClusterSync(String name, ClusterSyncArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/clusterSync:ClusterSync", name, args == null ? ClusterSyncArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ClusterSync(java.lang.String name, ClusterSyncArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/clusterSync:ClusterSync", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ClusterSync(String name, Output<String> id, @Nullable ClusterSyncState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/clusterSync:ClusterSync", name, state, makeResourceOptions(options, id));
+    private ClusterSync(java.lang.String name, Output<java.lang.String> id, @Nullable ClusterSyncState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/clusterSync:ClusterSync", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ClusterSyncArgs makeArgs(ClusterSyncArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ClusterSyncArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -337,7 +344,7 @@ public class ClusterSync extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ClusterSync get(String name, Output<String> id, @Nullable ClusterSyncState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ClusterSync get(java.lang.String name, Output<java.lang.String> id, @Nullable ClusterSyncState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ClusterSync(name, id, state, options);
     }
 }

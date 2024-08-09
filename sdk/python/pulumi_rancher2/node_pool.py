@@ -456,7 +456,7 @@ class NodePool(pulumi.CustomResource):
                  hostname_prefix: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolNodeTaintArgs']]]]] = None,
+                 node_taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodePoolNodeTaintArgs', 'NodePoolNodeTaintArgsDict']]]]] = None,
                  node_template_id: Optional[pulumi.Input[str]] = None,
                  quantity: Optional[pulumi.Input[int]] = None,
                  worker: Optional[pulumi.Input[bool]] = None,
@@ -483,7 +483,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] hostname_prefix: The prefix for created nodes of the Node Pool (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Pool object (map)
         :param pulumi.Input[str] name: The name of the Node Pool (string)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolNodeTaintArgs']]]] node_taints: Node taints. For Rancher v2.3.3 and above (List)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolNodeTaintArgs', 'NodePoolNodeTaintArgsDict']]]] node_taints: Node taints. For Rancher v2.3.3 and above (List)
         :param pulumi.Input[str] node_template_id: The Node Template ID to use for node creation (string)
         :param pulumi.Input[int] quantity: The number of nodes to create on Node Pool. Default `1`. Only values >= 1 allowed (int)
         :param pulumi.Input[bool] worker: RKE role role for created nodes (bool)
@@ -529,7 +529,7 @@ class NodePool(pulumi.CustomResource):
                  hostname_prefix: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolNodeTaintArgs']]]]] = None,
+                 node_taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodePoolNodeTaintArgs', 'NodePoolNodeTaintArgsDict']]]]] = None,
                  node_template_id: Optional[pulumi.Input[str]] = None,
                  quantity: Optional[pulumi.Input[int]] = None,
                  worker: Optional[pulumi.Input[bool]] = None,
@@ -580,7 +580,7 @@ class NodePool(pulumi.CustomResource):
             hostname_prefix: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            node_taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolNodeTaintArgs']]]]] = None,
+            node_taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodePoolNodeTaintArgs', 'NodePoolNodeTaintArgsDict']]]]] = None,
             node_template_id: Optional[pulumi.Input[str]] = None,
             quantity: Optional[pulumi.Input[int]] = None,
             worker: Optional[pulumi.Input[bool]] = None) -> 'NodePool':
@@ -600,7 +600,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] hostname_prefix: The prefix for created nodes of the Node Pool (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Pool object (map)
         :param pulumi.Input[str] name: The name of the Node Pool (string)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolNodeTaintArgs']]]] node_taints: Node taints. For Rancher v2.3.3 and above (List)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolNodeTaintArgs', 'NodePoolNodeTaintArgsDict']]]] node_taints: Node taints. For Rancher v2.3.3 and above (List)
         :param pulumi.Input[str] node_template_id: The Node Template ID to use for node creation (string)
         :param pulumi.Input[int] quantity: The number of nodes to create on Node Pool. Default `1`. Only values >= 1 allowed (int)
         :param pulumi.Input[bool] worker: RKE role role for created nodes (bool)

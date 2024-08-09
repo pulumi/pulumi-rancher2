@@ -522,7 +522,7 @@ public class AuthConfigActiveDirectory extends com.pulumi.resources.CustomResour
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AuthConfigActiveDirectory(String name) {
+    public AuthConfigActiveDirectory(java.lang.String name) {
         this(name, AuthConfigActiveDirectoryArgs.Empty);
     }
     /**
@@ -530,7 +530,7 @@ public class AuthConfigActiveDirectory extends com.pulumi.resources.CustomResour
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AuthConfigActiveDirectory(String name, AuthConfigActiveDirectoryArgs args) {
+    public AuthConfigActiveDirectory(java.lang.String name, AuthConfigActiveDirectoryArgs args) {
         this(name, args, null);
     }
     /**
@@ -539,15 +539,22 @@ public class AuthConfigActiveDirectory extends com.pulumi.resources.CustomResour
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AuthConfigActiveDirectory(String name, AuthConfigActiveDirectoryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/authConfigActiveDirectory:AuthConfigActiveDirectory", name, args == null ? AuthConfigActiveDirectoryArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AuthConfigActiveDirectory(java.lang.String name, AuthConfigActiveDirectoryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/authConfigActiveDirectory:AuthConfigActiveDirectory", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AuthConfigActiveDirectory(String name, Output<String> id, @Nullable AuthConfigActiveDirectoryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/authConfigActiveDirectory:AuthConfigActiveDirectory", name, state, makeResourceOptions(options, id));
+    private AuthConfigActiveDirectory(java.lang.String name, Output<java.lang.String> id, @Nullable AuthConfigActiveDirectoryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/authConfigActiveDirectory:AuthConfigActiveDirectory", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AuthConfigActiveDirectoryArgs makeArgs(AuthConfigActiveDirectoryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AuthConfigActiveDirectoryArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -569,7 +576,7 @@ public class AuthConfigActiveDirectory extends com.pulumi.resources.CustomResour
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AuthConfigActiveDirectory get(String name, Output<String> id, @Nullable AuthConfigActiveDirectoryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AuthConfigActiveDirectory get(java.lang.String name, Output<java.lang.String> id, @Nullable AuthConfigActiveDirectoryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AuthConfigActiveDirectory(name, id, state, options);
     }
 }

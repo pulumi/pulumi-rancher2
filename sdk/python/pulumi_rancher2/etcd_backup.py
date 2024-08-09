@@ -290,7 +290,7 @@ class EtcdBackup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 backup_config: Optional[pulumi.Input[pulumi.InputType['EtcdBackupBackupConfigArgs']]] = None,
+                 backup_config: Optional[pulumi.Input[Union['EtcdBackupBackupConfigArgs', 'EtcdBackupBackupConfigArgsDict']]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  filename: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -311,19 +311,19 @@ class EtcdBackup(pulumi.CustomResource):
 
         # Create a new rancher2 Etcd Backup
         foo = rancher2.EtcdBackup("foo",
-            backup_config=rancher2.EtcdBackupBackupConfigArgs(
-                enabled=True,
-                interval_hours=20,
-                retention=10,
-                s3_backup_config=rancher2.EtcdBackupBackupConfigS3BackupConfigArgs(
-                    access_key="access_key",
-                    bucket_name="bucket_name",
-                    endpoint="endpoint",
-                    folder="/folder",
-                    region="region",
-                    secret_key="secret_key",
-                ),
-            ),
+            backup_config={
+                "enabled": True,
+                "interval_hours": 20,
+                "retention": 10,
+                "s3_backup_config": {
+                    "access_key": "access_key",
+                    "bucket_name": "bucket_name",
+                    "endpoint": "endpoint",
+                    "folder": "/folder",
+                    "region": "region",
+                    "secret_key": "secret_key",
+                },
+            },
             cluster_id="<CLUSTER_ID>",
             name="foo",
             filename="<FILENAME>")
@@ -340,7 +340,7 @@ class EtcdBackup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Etcd Backup object (map)
-        :param pulumi.Input[pulumi.InputType['EtcdBackupBackupConfigArgs']] backup_config: Backup config for etcd backup (list maxitems:1)
+        :param pulumi.Input[Union['EtcdBackupBackupConfigArgs', 'EtcdBackupBackupConfigArgsDict']] backup_config: Backup config for etcd backup (list maxitems:1)
         :param pulumi.Input[str] cluster_id: Cluster ID to config Etcd Backup (string)
         :param pulumi.Input[str] filename: Filename of the Etcd Backup (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for Etcd Backup object (map)
@@ -367,19 +367,19 @@ class EtcdBackup(pulumi.CustomResource):
 
         # Create a new rancher2 Etcd Backup
         foo = rancher2.EtcdBackup("foo",
-            backup_config=rancher2.EtcdBackupBackupConfigArgs(
-                enabled=True,
-                interval_hours=20,
-                retention=10,
-                s3_backup_config=rancher2.EtcdBackupBackupConfigS3BackupConfigArgs(
-                    access_key="access_key",
-                    bucket_name="bucket_name",
-                    endpoint="endpoint",
-                    folder="/folder",
-                    region="region",
-                    secret_key="secret_key",
-                ),
-            ),
+            backup_config={
+                "enabled": True,
+                "interval_hours": 20,
+                "retention": 10,
+                "s3_backup_config": {
+                    "access_key": "access_key",
+                    "bucket_name": "bucket_name",
+                    "endpoint": "endpoint",
+                    "folder": "/folder",
+                    "region": "region",
+                    "secret_key": "secret_key",
+                },
+            },
             cluster_id="<CLUSTER_ID>",
             name="foo",
             filename="<FILENAME>")
@@ -409,7 +409,7 @@ class EtcdBackup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 backup_config: Optional[pulumi.Input[pulumi.InputType['EtcdBackupBackupConfigArgs']]] = None,
+                 backup_config: Optional[pulumi.Input[Union['EtcdBackupBackupConfigArgs', 'EtcdBackupBackupConfigArgsDict']]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  filename: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -446,7 +446,7 @@ class EtcdBackup(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            backup_config: Optional[pulumi.Input[pulumi.InputType['EtcdBackupBackupConfigArgs']]] = None,
+            backup_config: Optional[pulumi.Input[Union['EtcdBackupBackupConfigArgs', 'EtcdBackupBackupConfigArgsDict']]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
             filename: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -461,7 +461,7 @@ class EtcdBackup(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Etcd Backup object (map)
-        :param pulumi.Input[pulumi.InputType['EtcdBackupBackupConfigArgs']] backup_config: Backup config for etcd backup (list maxitems:1)
+        :param pulumi.Input[Union['EtcdBackupBackupConfigArgs', 'EtcdBackupBackupConfigArgsDict']] backup_config: Backup config for etcd backup (list maxitems:1)
         :param pulumi.Input[str] cluster_id: Cluster ID to config Etcd Backup (string)
         :param pulumi.Input[str] filename: Filename of the Etcd Backup (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for Etcd Backup object (map)

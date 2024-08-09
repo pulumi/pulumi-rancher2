@@ -284,7 +284,7 @@ public class AuthConfigAdfs extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AuthConfigAdfs(String name) {
+    public AuthConfigAdfs(java.lang.String name) {
         this(name, AuthConfigAdfsArgs.Empty);
     }
     /**
@@ -292,7 +292,7 @@ public class AuthConfigAdfs extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AuthConfigAdfs(String name, AuthConfigAdfsArgs args) {
+    public AuthConfigAdfs(java.lang.String name, AuthConfigAdfsArgs args) {
         this(name, args, null);
     }
     /**
@@ -301,15 +301,22 @@ public class AuthConfigAdfs extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AuthConfigAdfs(String name, AuthConfigAdfsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/authConfigAdfs:AuthConfigAdfs", name, args == null ? AuthConfigAdfsArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AuthConfigAdfs(java.lang.String name, AuthConfigAdfsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/authConfigAdfs:AuthConfigAdfs", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AuthConfigAdfs(String name, Output<String> id, @Nullable AuthConfigAdfsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/authConfigAdfs:AuthConfigAdfs", name, state, makeResourceOptions(options, id));
+    private AuthConfigAdfs(java.lang.String name, Output<java.lang.String> id, @Nullable AuthConfigAdfsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/authConfigAdfs:AuthConfigAdfs", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AuthConfigAdfsArgs makeArgs(AuthConfigAdfsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AuthConfigAdfsArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -330,7 +337,7 @@ public class AuthConfigAdfs extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AuthConfigAdfs get(String name, Output<String> id, @Nullable AuthConfigAdfsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AuthConfigAdfs get(java.lang.String name, Output<java.lang.String> id, @Nullable AuthConfigAdfsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AuthConfigAdfs(name, id, state, options);
     }
 }

@@ -163,7 +163,7 @@ public class SecretV2 extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SecretV2(String name) {
+    public SecretV2(java.lang.String name) {
         this(name, SecretV2Args.Empty);
     }
     /**
@@ -171,7 +171,7 @@ public class SecretV2 extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SecretV2(String name, SecretV2Args args) {
+    public SecretV2(java.lang.String name, SecretV2Args args) {
         this(name, args, null);
     }
     /**
@@ -180,15 +180,22 @@ public class SecretV2 extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SecretV2(String name, SecretV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/secretV2:SecretV2", name, args == null ? SecretV2Args.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public SecretV2(java.lang.String name, SecretV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/secretV2:SecretV2", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SecretV2(String name, Output<String> id, @Nullable SecretV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/secretV2:SecretV2", name, state, makeResourceOptions(options, id));
+    private SecretV2(java.lang.String name, Output<java.lang.String> id, @Nullable SecretV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/secretV2:SecretV2", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static SecretV2Args makeArgs(SecretV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SecretV2Args.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -207,7 +214,7 @@ public class SecretV2 extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SecretV2 get(String name, Output<String> id, @Nullable SecretV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SecretV2 get(java.lang.String name, Output<java.lang.String> id, @Nullable SecretV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SecretV2(name, id, state, options);
     }
 }

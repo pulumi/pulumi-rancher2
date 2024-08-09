@@ -204,7 +204,7 @@ public class ProjectAlertGroup extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ProjectAlertGroup(String name) {
+    public ProjectAlertGroup(java.lang.String name) {
         this(name, ProjectAlertGroupArgs.Empty);
     }
     /**
@@ -212,7 +212,7 @@ public class ProjectAlertGroup extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ProjectAlertGroup(String name, ProjectAlertGroupArgs args) {
+    public ProjectAlertGroup(java.lang.String name, ProjectAlertGroupArgs args) {
         this(name, args, null);
     }
     /**
@@ -221,15 +221,22 @@ public class ProjectAlertGroup extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ProjectAlertGroup(String name, ProjectAlertGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/projectAlertGroup:ProjectAlertGroup", name, args == null ? ProjectAlertGroupArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ProjectAlertGroup(java.lang.String name, ProjectAlertGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/projectAlertGroup:ProjectAlertGroup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ProjectAlertGroup(String name, Output<String> id, @Nullable ProjectAlertGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/projectAlertGroup:ProjectAlertGroup", name, state, makeResourceOptions(options, id));
+    private ProjectAlertGroup(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectAlertGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/projectAlertGroup:ProjectAlertGroup", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ProjectAlertGroupArgs makeArgs(ProjectAlertGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ProjectAlertGroupArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -245,7 +252,7 @@ public class ProjectAlertGroup extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ProjectAlertGroup get(String name, Output<String> id, @Nullable ProjectAlertGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ProjectAlertGroup get(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectAlertGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ProjectAlertGroup(name, id, state, options);
     }
 }

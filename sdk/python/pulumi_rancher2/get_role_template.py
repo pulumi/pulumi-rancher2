@@ -209,7 +209,7 @@ class AwaitableGetRoleTemplateResult(GetRoleTemplateResult):
 
 
 def get_role_template(context: Optional[str] = None,
-                      external_rules: Optional[Sequence[pulumi.InputType['GetRoleTemplateExternalRuleArgs']]] = None,
+                      external_rules: Optional[Sequence[Union['GetRoleTemplateExternalRuleArgs', 'GetRoleTemplateExternalRuleArgsDict']]] = None,
                       name: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRoleTemplateResult:
     """
@@ -226,7 +226,7 @@ def get_role_template(context: Optional[str] = None,
 
 
     :param str context: Role template context. `cluster` and `project` values are supported (string)
-    :param Sequence[pulumi.InputType['GetRoleTemplateExternalRuleArgs']] external_rules: (Computed) External rules used for authorization. (list)
+    :param Sequence[Union['GetRoleTemplateExternalRuleArgs', 'GetRoleTemplateExternalRuleArgsDict']] external_rules: (Computed) External rules used for authorization. (list)
     :param str name: The name of the Role Template (string)
     """
     __args__ = dict()
@@ -256,7 +256,7 @@ def get_role_template(context: Optional[str] = None,
 
 @_utilities.lift_output_func(get_role_template)
 def get_role_template_output(context: Optional[pulumi.Input[Optional[str]]] = None,
-                             external_rules: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetRoleTemplateExternalRuleArgs']]]]] = None,
+                             external_rules: Optional[pulumi.Input[Optional[Sequence[Union['GetRoleTemplateExternalRuleArgs', 'GetRoleTemplateExternalRuleArgsDict']]]]] = None,
                              name: Optional[pulumi.Input[str]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRoleTemplateResult]:
     """
@@ -273,7 +273,7 @@ def get_role_template_output(context: Optional[pulumi.Input[Optional[str]]] = No
 
 
     :param str context: Role template context. `cluster` and `project` values are supported (string)
-    :param Sequence[pulumi.InputType['GetRoleTemplateExternalRuleArgs']] external_rules: (Computed) External rules used for authorization. (list)
+    :param Sequence[Union['GetRoleTemplateExternalRuleArgs', 'GetRoleTemplateExternalRuleArgsDict']] external_rules: (Computed) External rules used for authorization. (list)
     :param str name: The name of the Role Template (string)
     """
     ...

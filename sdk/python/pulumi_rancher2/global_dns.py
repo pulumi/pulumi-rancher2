@@ -308,12 +308,12 @@ class GlobalDns(pulumi.CustomResource):
         foo = rancher2.GlobalDnsProvider("foo",
             name="foo",
             root_domain="example.com",
-            route53_config=rancher2.GlobalDnsProviderRoute53ConfigArgs(
-                access_key="YYYYYYYYYYYYYYYYYYYY",
-                secret_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-                zone_type="private",
-                region="us-east-1",
-            ))
+            route53_config={
+                "access_key": "YYYYYYYYYYYYYYYYYYYY",
+                "secret_key": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                "zone_type": "private",
+                "region": "us-east-1",
+            })
         # Create a new rancher2 Global DNS using project IDs
         foo_global_dns = rancher2.GlobalDns("foo",
             name="foo",
@@ -333,12 +333,12 @@ class GlobalDns(pulumi.CustomResource):
         foo = rancher2.GlobalDnsProvider("foo",
             name="foo",
             root_domain="example.com",
-            route53_config=rancher2.GlobalDnsProviderRoute53ConfigArgs(
-                access_key="YYYYYYYYYYYYYYYYYYYY",
-                secret_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-                zone_type="private",
-                region="us-east-1",
-            ))
+            route53_config={
+                "access_key": "YYYYYYYYYYYYYYYYYYYY",
+                "secret_key": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                "zone_type": "private",
+                "region": "us-east-1",
+            })
         # Create a new rancher2 Global DNS using MultiClusterApp ID
         foo_global_dns = rancher2.GlobalDns("foo",
             name="foo",
@@ -385,12 +385,12 @@ class GlobalDns(pulumi.CustomResource):
         foo = rancher2.GlobalDnsProvider("foo",
             name="foo",
             root_domain="example.com",
-            route53_config=rancher2.GlobalDnsProviderRoute53ConfigArgs(
-                access_key="YYYYYYYYYYYYYYYYYYYY",
-                secret_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-                zone_type="private",
-                region="us-east-1",
-            ))
+            route53_config={
+                "access_key": "YYYYYYYYYYYYYYYYYYYY",
+                "secret_key": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                "zone_type": "private",
+                "region": "us-east-1",
+            })
         # Create a new rancher2 Global DNS using project IDs
         foo_global_dns = rancher2.GlobalDns("foo",
             name="foo",
@@ -410,12 +410,12 @@ class GlobalDns(pulumi.CustomResource):
         foo = rancher2.GlobalDnsProvider("foo",
             name="foo",
             root_domain="example.com",
-            route53_config=rancher2.GlobalDnsProviderRoute53ConfigArgs(
-                access_key="YYYYYYYYYYYYYYYYYYYY",
-                secret_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-                zone_type="private",
-                region="us-east-1",
-            ))
+            route53_config={
+                "access_key": "YYYYYYYYYYYYYYYYYYYY",
+                "secret_key": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                "zone_type": "private",
+                "region": "us-east-1",
+            })
         # Create a new rancher2 Global DNS using MultiClusterApp ID
         foo_global_dns = rancher2.GlobalDns("foo",
             name="foo",

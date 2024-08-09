@@ -203,7 +203,7 @@ public class ClusterRoleTemplateBinding extends com.pulumi.resources.CustomResou
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ClusterRoleTemplateBinding(String name) {
+    public ClusterRoleTemplateBinding(java.lang.String name) {
         this(name, ClusterRoleTemplateBindingArgs.Empty);
     }
     /**
@@ -211,7 +211,7 @@ public class ClusterRoleTemplateBinding extends com.pulumi.resources.CustomResou
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ClusterRoleTemplateBinding(String name, ClusterRoleTemplateBindingArgs args) {
+    public ClusterRoleTemplateBinding(java.lang.String name, ClusterRoleTemplateBindingArgs args) {
         this(name, args, null);
     }
     /**
@@ -220,15 +220,22 @@ public class ClusterRoleTemplateBinding extends com.pulumi.resources.CustomResou
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ClusterRoleTemplateBinding(String name, ClusterRoleTemplateBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding", name, args == null ? ClusterRoleTemplateBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ClusterRoleTemplateBinding(java.lang.String name, ClusterRoleTemplateBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ClusterRoleTemplateBinding(String name, Output<String> id, @Nullable ClusterRoleTemplateBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding", name, state, makeResourceOptions(options, id));
+    private ClusterRoleTemplateBinding(java.lang.String name, Output<java.lang.String> id, @Nullable ClusterRoleTemplateBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ClusterRoleTemplateBindingArgs makeArgs(ClusterRoleTemplateBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ClusterRoleTemplateBindingArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -244,7 +251,7 @@ public class ClusterRoleTemplateBinding extends com.pulumi.resources.CustomResou
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ClusterRoleTemplateBinding get(String name, Output<String> id, @Nullable ClusterRoleTemplateBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ClusterRoleTemplateBinding get(java.lang.String name, Output<java.lang.String> id, @Nullable ClusterRoleTemplateBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ClusterRoleTemplateBinding(name, id, state, options);
     }
 }

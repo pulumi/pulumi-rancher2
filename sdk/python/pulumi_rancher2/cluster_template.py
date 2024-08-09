@@ -245,9 +245,9 @@ class ClusterTemplate(pulumi.CustomResource):
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterTemplateMemberArgs']]]]] = None,
+                 members: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterTemplateMemberArgs', 'ClusterTemplateMemberArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 template_revisions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterTemplateTemplateRevisionArgs']]]]] = None,
+                 template_revisions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterTemplateTemplateRevisionArgs', 'ClusterTemplateTemplateRevisionArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Rancher v2 Cluster Template resource. This can be used to create Cluster Templates for Rancher v2 RKE clusters and retrieve their information.
@@ -263,27 +263,27 @@ class ClusterTemplate(pulumi.CustomResource):
         # Create a new rancher2 Cluster Template
         foo = rancher2.ClusterTemplate("foo",
             name="foo",
-            members=[rancher2.ClusterTemplateMemberArgs(
-                access_type="owner",
-                user_principal_id="local://user-XXXXX",
-            )],
-            template_revisions=[rancher2.ClusterTemplateTemplateRevisionArgs(
-                name="V1",
-                cluster_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs(
-                    rke_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs(
-                        network=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs(
-                            plugin="canal",
-                        ),
-                        services=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs(
-                            etcd=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs(
-                                creation="6h",
-                                retention="24h",
-                            ),
-                        ),
-                    ),
-                ),
-                default=True,
-            )],
+            members=[{
+                "access_type": "owner",
+                "user_principal_id": "local://user-XXXXX",
+            }],
+            template_revisions=[{
+                "name": "V1",
+                "cluster_config": {
+                    "rke_config": {
+                        "network": {
+                            "plugin": "canal",
+                        },
+                        "services": {
+                            "etcd": {
+                                "creation": "6h",
+                                "retention": "24h",
+                            },
+                        },
+                    },
+                },
+                "default": True,
+            }],
             description="Terraform cluster template foo")
         ```
 
@@ -296,31 +296,31 @@ class ClusterTemplate(pulumi.CustomResource):
         # Create a new rancher2 Cluster Template
         foo = rancher2.ClusterTemplate("foo",
             name="foo",
-            members=[rancher2.ClusterTemplateMemberArgs(
-                access_type="owner",
-                user_principal_id="local://user-XXXXX",
-            )],
-            template_revisions=[rancher2.ClusterTemplateTemplateRevisionArgs(
-                name="V1",
-                cluster_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs(
-                    rke_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs(
-                        network=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs(
-                            plugin="canal",
-                        ),
-                        services=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs(
-                            etcd=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs(
-                                creation="6h",
-                                retention="24h",
-                            ),
-                        ),
-                        upgrade_strategy=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs(
-                            drain=True,
-                            max_unavailable_worker="20%",
-                        ),
-                    ),
-                ),
-                default=True,
-            )],
+            members=[{
+                "access_type": "owner",
+                "user_principal_id": "local://user-XXXXX",
+            }],
+            template_revisions=[{
+                "name": "V1",
+                "cluster_config": {
+                    "rke_config": {
+                        "network": {
+                            "plugin": "canal",
+                        },
+                        "services": {
+                            "etcd": {
+                                "creation": "6h",
+                                "retention": "24h",
+                            },
+                        },
+                        "upgrade_strategy": {
+                            "drain": True,
+                            "max_unavailable_worker": "20%",
+                        },
+                    },
+                },
+                "default": True,
+            }],
             description="Terraform cluster template foo")
         ```
 
@@ -337,9 +337,9 @@ class ClusterTemplate(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the cluster template (map)
         :param pulumi.Input[str] description: Cluster template description
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for the cluster template (map)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterTemplateMemberArgs']]]] members: Cluster template members (list)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterTemplateMemberArgs', 'ClusterTemplateMemberArgsDict']]]] members: Cluster template members (list)
         :param pulumi.Input[str] name: The cluster template name (string)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterTemplateTemplateRevisionArgs']]]] template_revisions: Cluster template revisions (list)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterTemplateTemplateRevisionArgs', 'ClusterTemplateTemplateRevisionArgsDict']]]] template_revisions: Cluster template revisions (list)
         """
         ...
     @overload
@@ -361,27 +361,27 @@ class ClusterTemplate(pulumi.CustomResource):
         # Create a new rancher2 Cluster Template
         foo = rancher2.ClusterTemplate("foo",
             name="foo",
-            members=[rancher2.ClusterTemplateMemberArgs(
-                access_type="owner",
-                user_principal_id="local://user-XXXXX",
-            )],
-            template_revisions=[rancher2.ClusterTemplateTemplateRevisionArgs(
-                name="V1",
-                cluster_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs(
-                    rke_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs(
-                        network=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs(
-                            plugin="canal",
-                        ),
-                        services=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs(
-                            etcd=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs(
-                                creation="6h",
-                                retention="24h",
-                            ),
-                        ),
-                    ),
-                ),
-                default=True,
-            )],
+            members=[{
+                "access_type": "owner",
+                "user_principal_id": "local://user-XXXXX",
+            }],
+            template_revisions=[{
+                "name": "V1",
+                "cluster_config": {
+                    "rke_config": {
+                        "network": {
+                            "plugin": "canal",
+                        },
+                        "services": {
+                            "etcd": {
+                                "creation": "6h",
+                                "retention": "24h",
+                            },
+                        },
+                    },
+                },
+                "default": True,
+            }],
             description="Terraform cluster template foo")
         ```
 
@@ -394,31 +394,31 @@ class ClusterTemplate(pulumi.CustomResource):
         # Create a new rancher2 Cluster Template
         foo = rancher2.ClusterTemplate("foo",
             name="foo",
-            members=[rancher2.ClusterTemplateMemberArgs(
-                access_type="owner",
-                user_principal_id="local://user-XXXXX",
-            )],
-            template_revisions=[rancher2.ClusterTemplateTemplateRevisionArgs(
-                name="V1",
-                cluster_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs(
-                    rke_config=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs(
-                        network=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs(
-                            plugin="canal",
-                        ),
-                        services=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs(
-                            etcd=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs(
-                                creation="6h",
-                                retention="24h",
-                            ),
-                        ),
-                        upgrade_strategy=rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs(
-                            drain=True,
-                            max_unavailable_worker="20%",
-                        ),
-                    ),
-                ),
-                default=True,
-            )],
+            members=[{
+                "access_type": "owner",
+                "user_principal_id": "local://user-XXXXX",
+            }],
+            template_revisions=[{
+                "name": "V1",
+                "cluster_config": {
+                    "rke_config": {
+                        "network": {
+                            "plugin": "canal",
+                        },
+                        "services": {
+                            "etcd": {
+                                "creation": "6h",
+                                "retention": "24h",
+                            },
+                        },
+                        "upgrade_strategy": {
+                            "drain": True,
+                            "max_unavailable_worker": "20%",
+                        },
+                    },
+                },
+                "default": True,
+            }],
             description="Terraform cluster template foo")
         ```
 
@@ -448,9 +448,9 @@ class ClusterTemplate(pulumi.CustomResource):
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterTemplateMemberArgs']]]]] = None,
+                 members: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterTemplateMemberArgs', 'ClusterTemplateMemberArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 template_revisions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterTemplateTemplateRevisionArgs']]]]] = None,
+                 template_revisions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterTemplateTemplateRevisionArgs', 'ClusterTemplateTemplateRevisionArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -481,9 +481,9 @@ class ClusterTemplate(pulumi.CustomResource):
             default_revision_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            members: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterTemplateMemberArgs']]]]] = None,
+            members: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterTemplateMemberArgs', 'ClusterTemplateMemberArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            template_revisions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterTemplateTemplateRevisionArgs']]]]] = None) -> 'ClusterTemplate':
+            template_revisions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterTemplateTemplateRevisionArgs', 'ClusterTemplateTemplateRevisionArgsDict']]]]] = None) -> 'ClusterTemplate':
         """
         Get an existing ClusterTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -495,9 +495,9 @@ class ClusterTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] default_revision_id: (Computed) Default cluster template revision ID (string)
         :param pulumi.Input[str] description: Cluster template description
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for the cluster template (map)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterTemplateMemberArgs']]]] members: Cluster template members (list)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterTemplateMemberArgs', 'ClusterTemplateMemberArgsDict']]]] members: Cluster template members (list)
         :param pulumi.Input[str] name: The cluster template name (string)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterTemplateTemplateRevisionArgs']]]] template_revisions: Cluster template revisions (list)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterTemplateTemplateRevisionArgs', 'ClusterTemplateTemplateRevisionArgsDict']]]] template_revisions: Cluster template revisions (list)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

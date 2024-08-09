@@ -498,7 +498,7 @@ public class AuthConfigFreeIpa extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AuthConfigFreeIpa(String name) {
+    public AuthConfigFreeIpa(java.lang.String name) {
         this(name, AuthConfigFreeIpaArgs.Empty);
     }
     /**
@@ -506,7 +506,7 @@ public class AuthConfigFreeIpa extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AuthConfigFreeIpa(String name, AuthConfigFreeIpaArgs args) {
+    public AuthConfigFreeIpa(java.lang.String name, AuthConfigFreeIpaArgs args) {
         this(name, args, null);
     }
     /**
@@ -515,15 +515,22 @@ public class AuthConfigFreeIpa extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AuthConfigFreeIpa(String name, AuthConfigFreeIpaArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/authConfigFreeIpa:AuthConfigFreeIpa", name, args == null ? AuthConfigFreeIpaArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AuthConfigFreeIpa(java.lang.String name, AuthConfigFreeIpaArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/authConfigFreeIpa:AuthConfigFreeIpa", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AuthConfigFreeIpa(String name, Output<String> id, @Nullable AuthConfigFreeIpaState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/authConfigFreeIpa:AuthConfigFreeIpa", name, state, makeResourceOptions(options, id));
+    private AuthConfigFreeIpa(java.lang.String name, Output<java.lang.String> id, @Nullable AuthConfigFreeIpaState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/authConfigFreeIpa:AuthConfigFreeIpa", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AuthConfigFreeIpaArgs makeArgs(AuthConfigFreeIpaArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AuthConfigFreeIpaArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -545,7 +552,7 @@ public class AuthConfigFreeIpa extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AuthConfigFreeIpa get(String name, Output<String> id, @Nullable AuthConfigFreeIpaState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AuthConfigFreeIpa get(java.lang.String name, Output<java.lang.String> id, @Nullable AuthConfigFreeIpaState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AuthConfigFreeIpa(name, id, state, options);
     }
 }

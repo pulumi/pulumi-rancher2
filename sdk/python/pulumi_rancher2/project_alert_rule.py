@@ -454,13 +454,13 @@ class ProjectAlertRule(pulumi.CustomResource):
                  group_wait_seconds: Optional[pulumi.Input[int]] = None,
                  inherited: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 metric_rule: Optional[pulumi.Input[pulumi.InputType['ProjectAlertRuleMetricRuleArgs']]] = None,
+                 metric_rule: Optional[pulumi.Input[Union['ProjectAlertRuleMetricRuleArgs', 'ProjectAlertRuleMetricRuleArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 pod_rule: Optional[pulumi.Input[pulumi.InputType['ProjectAlertRulePodRuleArgs']]] = None,
+                 pod_rule: Optional[pulumi.Input[Union['ProjectAlertRulePodRuleArgs', 'ProjectAlertRulePodRuleArgsDict']]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  repeat_interval_seconds: Optional[pulumi.Input[int]] = None,
                  severity: Optional[pulumi.Input[str]] = None,
-                 workload_rule: Optional[pulumi.Input[pulumi.InputType['ProjectAlertRuleWorkloadRuleArgs']]] = None,
+                 workload_rule: Optional[pulumi.Input[Union['ProjectAlertRuleWorkloadRuleArgs', 'ProjectAlertRuleWorkloadRuleArgsDict']]] = None,
                  __props__=None):
         """
         Provides a Rancher v2 Project Alert Rule resource. This can be used to create Project Alert Rule for Rancher v2 environments and retrieve their information.
@@ -476,24 +476,24 @@ class ProjectAlertRule(pulumi.CustomResource):
             name="foo",
             cluster_id="<cluster_id>",
             description="Terraform project ",
-            resource_quota=rancher2.ProjectResourceQuotaArgs(
-                project_limit=rancher2.ProjectResourceQuotaProjectLimitArgs(
-                    limits_cpu="2000m",
-                    limits_memory="2000Mi",
-                    requests_storage="2Gi",
-                ),
-                namespace_default_limit=rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs(
-                    limits_cpu="500m",
-                    limits_memory="500Mi",
-                    requests_storage="1Gi",
-                ),
-            ),
-            container_resource_limit=rancher2.ProjectContainerResourceLimitArgs(
-                limits_cpu="20m",
-                limits_memory="20Mi",
-                requests_cpu="1m",
-                requests_memory="1Mi",
-            ))
+            resource_quota={
+                "project_limit": {
+                    "limits_cpu": "2000m",
+                    "limits_memory": "2000Mi",
+                    "requests_storage": "2Gi",
+                },
+                "namespace_default_limit": {
+                    "limits_cpu": "500m",
+                    "limits_memory": "500Mi",
+                    "requests_storage": "1Gi",
+                },
+            },
+            container_resource_limit={
+                "limits_cpu": "20m",
+                "limits_memory": "20Mi",
+                "requests_cpu": "1m",
+                "requests_memory": "1Mi",
+            })
         # Create a new Rancher2 Project Alert Group
         foo_project_alert_group = rancher2.ProjectAlertGroup("foo",
             name="foo",
@@ -526,13 +526,13 @@ class ProjectAlertRule(pulumi.CustomResource):
         :param pulumi.Input[int] group_wait_seconds: The project alert rule group wait seconds. Default: `180` (int)
         :param pulumi.Input[bool] inherited: The project alert rule inherited. Default: `true` (bool)
         :param pulumi.Input[Mapping[str, Any]] labels: The project alert rule labels (map)
-        :param pulumi.Input[pulumi.InputType['ProjectAlertRuleMetricRuleArgs']] metric_rule: The project alert rule metric rule. ConflictsWith: `"pod_rule", "workload_rule"`` (list Maxitems:1)
+        :param pulumi.Input[Union['ProjectAlertRuleMetricRuleArgs', 'ProjectAlertRuleMetricRuleArgsDict']] metric_rule: The project alert rule metric rule. ConflictsWith: `"pod_rule", "workload_rule"`` (list Maxitems:1)
         :param pulumi.Input[str] name: The project alert rule name (string)
-        :param pulumi.Input[pulumi.InputType['ProjectAlertRulePodRuleArgs']] pod_rule: The project alert rule pod rule. ConflictsWith: `"metric_rule", "workload_rule"`` (list Maxitems:1)
+        :param pulumi.Input[Union['ProjectAlertRulePodRuleArgs', 'ProjectAlertRulePodRuleArgsDict']] pod_rule: The project alert rule pod rule. ConflictsWith: `"metric_rule", "workload_rule"`` (list Maxitems:1)
         :param pulumi.Input[str] project_id: The project id where create project alert rule (string)
         :param pulumi.Input[int] repeat_interval_seconds: The project alert rule wait seconds. Default: `3600` (int)
         :param pulumi.Input[str] severity: The project alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
-        :param pulumi.Input[pulumi.InputType['ProjectAlertRuleWorkloadRuleArgs']] workload_rule: The project alert rule workload rule. ConflictsWith: `"metric_rule", "pod_rule"`` (list Maxitems:1)
+        :param pulumi.Input[Union['ProjectAlertRuleWorkloadRuleArgs', 'ProjectAlertRuleWorkloadRuleArgsDict']] workload_rule: The project alert rule workload rule. ConflictsWith: `"metric_rule", "pod_rule"`` (list Maxitems:1)
         """
         ...
     @overload
@@ -554,24 +554,24 @@ class ProjectAlertRule(pulumi.CustomResource):
             name="foo",
             cluster_id="<cluster_id>",
             description="Terraform project ",
-            resource_quota=rancher2.ProjectResourceQuotaArgs(
-                project_limit=rancher2.ProjectResourceQuotaProjectLimitArgs(
-                    limits_cpu="2000m",
-                    limits_memory="2000Mi",
-                    requests_storage="2Gi",
-                ),
-                namespace_default_limit=rancher2.ProjectResourceQuotaNamespaceDefaultLimitArgs(
-                    limits_cpu="500m",
-                    limits_memory="500Mi",
-                    requests_storage="1Gi",
-                ),
-            ),
-            container_resource_limit=rancher2.ProjectContainerResourceLimitArgs(
-                limits_cpu="20m",
-                limits_memory="20Mi",
-                requests_cpu="1m",
-                requests_memory="1Mi",
-            ))
+            resource_quota={
+                "project_limit": {
+                    "limits_cpu": "2000m",
+                    "limits_memory": "2000Mi",
+                    "requests_storage": "2Gi",
+                },
+                "namespace_default_limit": {
+                    "limits_cpu": "500m",
+                    "limits_memory": "500Mi",
+                    "requests_storage": "1Gi",
+                },
+            },
+            container_resource_limit={
+                "limits_cpu": "20m",
+                "limits_memory": "20Mi",
+                "requests_cpu": "1m",
+                "requests_memory": "1Mi",
+            })
         # Create a new Rancher2 Project Alert Group
         foo_project_alert_group = rancher2.ProjectAlertGroup("foo",
             name="foo",
@@ -617,13 +617,13 @@ class ProjectAlertRule(pulumi.CustomResource):
                  group_wait_seconds: Optional[pulumi.Input[int]] = None,
                  inherited: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 metric_rule: Optional[pulumi.Input[pulumi.InputType['ProjectAlertRuleMetricRuleArgs']]] = None,
+                 metric_rule: Optional[pulumi.Input[Union['ProjectAlertRuleMetricRuleArgs', 'ProjectAlertRuleMetricRuleArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 pod_rule: Optional[pulumi.Input[pulumi.InputType['ProjectAlertRulePodRuleArgs']]] = None,
+                 pod_rule: Optional[pulumi.Input[Union['ProjectAlertRulePodRuleArgs', 'ProjectAlertRulePodRuleArgsDict']]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  repeat_interval_seconds: Optional[pulumi.Input[int]] = None,
                  severity: Optional[pulumi.Input[str]] = None,
-                 workload_rule: Optional[pulumi.Input[pulumi.InputType['ProjectAlertRuleWorkloadRuleArgs']]] = None,
+                 workload_rule: Optional[pulumi.Input[Union['ProjectAlertRuleWorkloadRuleArgs', 'ProjectAlertRuleWorkloadRuleArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -666,13 +666,13 @@ class ProjectAlertRule(pulumi.CustomResource):
             group_wait_seconds: Optional[pulumi.Input[int]] = None,
             inherited: Optional[pulumi.Input[bool]] = None,
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            metric_rule: Optional[pulumi.Input[pulumi.InputType['ProjectAlertRuleMetricRuleArgs']]] = None,
+            metric_rule: Optional[pulumi.Input[Union['ProjectAlertRuleMetricRuleArgs', 'ProjectAlertRuleMetricRuleArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            pod_rule: Optional[pulumi.Input[pulumi.InputType['ProjectAlertRulePodRuleArgs']]] = None,
+            pod_rule: Optional[pulumi.Input[Union['ProjectAlertRulePodRuleArgs', 'ProjectAlertRulePodRuleArgsDict']]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
             repeat_interval_seconds: Optional[pulumi.Input[int]] = None,
             severity: Optional[pulumi.Input[str]] = None,
-            workload_rule: Optional[pulumi.Input[pulumi.InputType['ProjectAlertRuleWorkloadRuleArgs']]] = None) -> 'ProjectAlertRule':
+            workload_rule: Optional[pulumi.Input[Union['ProjectAlertRuleWorkloadRuleArgs', 'ProjectAlertRuleWorkloadRuleArgsDict']]] = None) -> 'ProjectAlertRule':
         """
         Get an existing ProjectAlertRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -686,13 +686,13 @@ class ProjectAlertRule(pulumi.CustomResource):
         :param pulumi.Input[int] group_wait_seconds: The project alert rule group wait seconds. Default: `180` (int)
         :param pulumi.Input[bool] inherited: The project alert rule inherited. Default: `true` (bool)
         :param pulumi.Input[Mapping[str, Any]] labels: The project alert rule labels (map)
-        :param pulumi.Input[pulumi.InputType['ProjectAlertRuleMetricRuleArgs']] metric_rule: The project alert rule metric rule. ConflictsWith: `"pod_rule", "workload_rule"`` (list Maxitems:1)
+        :param pulumi.Input[Union['ProjectAlertRuleMetricRuleArgs', 'ProjectAlertRuleMetricRuleArgsDict']] metric_rule: The project alert rule metric rule. ConflictsWith: `"pod_rule", "workload_rule"`` (list Maxitems:1)
         :param pulumi.Input[str] name: The project alert rule name (string)
-        :param pulumi.Input[pulumi.InputType['ProjectAlertRulePodRuleArgs']] pod_rule: The project alert rule pod rule. ConflictsWith: `"metric_rule", "workload_rule"`` (list Maxitems:1)
+        :param pulumi.Input[Union['ProjectAlertRulePodRuleArgs', 'ProjectAlertRulePodRuleArgsDict']] pod_rule: The project alert rule pod rule. ConflictsWith: `"metric_rule", "workload_rule"`` (list Maxitems:1)
         :param pulumi.Input[str] project_id: The project id where create project alert rule (string)
         :param pulumi.Input[int] repeat_interval_seconds: The project alert rule wait seconds. Default: `3600` (int)
         :param pulumi.Input[str] severity: The project alert rule severity. Supported values : `"critical" | "info" | "warning"`. Default: `critical` (string)
-        :param pulumi.Input[pulumi.InputType['ProjectAlertRuleWorkloadRuleArgs']] workload_rule: The project alert rule workload rule. ConflictsWith: `"metric_rule", "pod_rule"`` (list Maxitems:1)
+        :param pulumi.Input[Union['ProjectAlertRuleWorkloadRuleArgs', 'ProjectAlertRuleWorkloadRuleArgsDict']] workload_rule: The project alert rule workload rule. ConflictsWith: `"metric_rule", "pod_rule"`` (list Maxitems:1)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

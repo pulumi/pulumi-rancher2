@@ -235,7 +235,7 @@ public class NodeDriver extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public NodeDriver(String name) {
+    public NodeDriver(java.lang.String name) {
         this(name, NodeDriverArgs.Empty);
     }
     /**
@@ -243,7 +243,7 @@ public class NodeDriver extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public NodeDriver(String name, NodeDriverArgs args) {
+    public NodeDriver(java.lang.String name, NodeDriverArgs args) {
         this(name, args, null);
     }
     /**
@@ -252,15 +252,22 @@ public class NodeDriver extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public NodeDriver(String name, NodeDriverArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/nodeDriver:NodeDriver", name, args == null ? NodeDriverArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public NodeDriver(java.lang.String name, NodeDriverArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/nodeDriver:NodeDriver", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private NodeDriver(String name, Output<String> id, @Nullable NodeDriverState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/nodeDriver:NodeDriver", name, state, makeResourceOptions(options, id));
+    private NodeDriver(java.lang.String name, Output<java.lang.String> id, @Nullable NodeDriverState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/nodeDriver:NodeDriver", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static NodeDriverArgs makeArgs(NodeDriverArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? NodeDriverArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -276,7 +283,7 @@ public class NodeDriver extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static NodeDriver get(String name, Output<String> id, @Nullable NodeDriverState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static NodeDriver get(java.lang.String name, Output<java.lang.String> id, @Nullable NodeDriverState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new NodeDriver(name, id, state, options);
     }
 }

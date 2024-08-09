@@ -185,8 +185,8 @@ class AwaitableGetNotifierResult(GetNotifierResult):
 
 
 def get_notifier(cluster_id: Optional[str] = None,
-                 dingtalk_config: Optional[pulumi.InputType['GetNotifierDingtalkConfigArgs']] = None,
-                 msteams_config: Optional[pulumi.InputType['GetNotifierMsteamsConfigArgs']] = None,
+                 dingtalk_config: Optional[Union['GetNotifierDingtalkConfigArgs', 'GetNotifierDingtalkConfigArgsDict']] = None,
+                 msteams_config: Optional[Union['GetNotifierMsteamsConfigArgs', 'GetNotifierMsteamsConfigArgsDict']] = None,
                  name: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNotifierResult:
     """
@@ -204,8 +204,8 @@ def get_notifier(cluster_id: Optional[str] = None,
 
 
     :param str cluster_id: The cluster id where create notifier (string)
-    :param pulumi.InputType['GetNotifierDingtalkConfigArgs'] dingtalk_config: (Computed) Dingtalk config for notifier (list maxitems:1)
-    :param pulumi.InputType['GetNotifierMsteamsConfigArgs'] msteams_config: (Computed) MSTeams config for notifier (list maxitems:1)
+    :param Union['GetNotifierDingtalkConfigArgs', 'GetNotifierDingtalkConfigArgsDict'] dingtalk_config: (Computed) Dingtalk config for notifier (list maxitems:1)
+    :param Union['GetNotifierMsteamsConfigArgs', 'GetNotifierMsteamsConfigArgsDict'] msteams_config: (Computed) MSTeams config for notifier (list maxitems:1)
     :param str name: The name of the notifier (string)
     """
     __args__ = dict()
@@ -234,8 +234,8 @@ def get_notifier(cluster_id: Optional[str] = None,
 
 @_utilities.lift_output_func(get_notifier)
 def get_notifier_output(cluster_id: Optional[pulumi.Input[str]] = None,
-                        dingtalk_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetNotifierDingtalkConfigArgs']]]] = None,
-                        msteams_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetNotifierMsteamsConfigArgs']]]] = None,
+                        dingtalk_config: Optional[pulumi.Input[Optional[Union['GetNotifierDingtalkConfigArgs', 'GetNotifierDingtalkConfigArgsDict']]]] = None,
+                        msteams_config: Optional[pulumi.Input[Optional[Union['GetNotifierMsteamsConfigArgs', 'GetNotifierMsteamsConfigArgsDict']]]] = None,
                         name: Optional[pulumi.Input[str]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNotifierResult]:
     """
@@ -253,8 +253,8 @@ def get_notifier_output(cluster_id: Optional[pulumi.Input[str]] = None,
 
 
     :param str cluster_id: The cluster id where create notifier (string)
-    :param pulumi.InputType['GetNotifierDingtalkConfigArgs'] dingtalk_config: (Computed) Dingtalk config for notifier (list maxitems:1)
-    :param pulumi.InputType['GetNotifierMsteamsConfigArgs'] msteams_config: (Computed) MSTeams config for notifier (list maxitems:1)
+    :param Union['GetNotifierDingtalkConfigArgs', 'GetNotifierDingtalkConfigArgsDict'] dingtalk_config: (Computed) Dingtalk config for notifier (list maxitems:1)
+    :param Union['GetNotifierMsteamsConfigArgs', 'GetNotifierMsteamsConfigArgsDict'] msteams_config: (Computed) MSTeams config for notifier (list maxitems:1)
     :param str name: The name of the notifier (string)
     """
     ...

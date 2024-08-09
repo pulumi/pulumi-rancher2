@@ -194,7 +194,7 @@ public class GlobalRole extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GlobalRole(String name) {
+    public GlobalRole(java.lang.String name) {
         this(name, GlobalRoleArgs.Empty);
     }
     /**
@@ -202,7 +202,7 @@ public class GlobalRole extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GlobalRole(String name, @Nullable GlobalRoleArgs args) {
+    public GlobalRole(java.lang.String name, @Nullable GlobalRoleArgs args) {
         this(name, args, null);
     }
     /**
@@ -211,15 +211,22 @@ public class GlobalRole extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GlobalRole(String name, @Nullable GlobalRoleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/globalRole:GlobalRole", name, args == null ? GlobalRoleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public GlobalRole(java.lang.String name, @Nullable GlobalRoleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/globalRole:GlobalRole", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private GlobalRole(String name, Output<String> id, @Nullable GlobalRoleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/globalRole:GlobalRole", name, state, makeResourceOptions(options, id));
+    private GlobalRole(java.lang.String name, Output<java.lang.String> id, @Nullable GlobalRoleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/globalRole:GlobalRole", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static GlobalRoleArgs makeArgs(@Nullable GlobalRoleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GlobalRoleArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -235,7 +242,7 @@ public class GlobalRole extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GlobalRole get(String name, Output<String> id, @Nullable GlobalRoleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GlobalRole get(java.lang.String name, Output<java.lang.String> id, @Nullable GlobalRoleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GlobalRole(name, id, state, options);
     }
 }

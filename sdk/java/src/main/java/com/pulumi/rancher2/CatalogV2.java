@@ -246,7 +246,7 @@ public class CatalogV2 extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public CatalogV2(String name) {
+    public CatalogV2(java.lang.String name) {
         this(name, CatalogV2Args.Empty);
     }
     /**
@@ -254,7 +254,7 @@ public class CatalogV2 extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CatalogV2(String name, CatalogV2Args args) {
+    public CatalogV2(java.lang.String name, CatalogV2Args args) {
         this(name, args, null);
     }
     /**
@@ -263,15 +263,22 @@ public class CatalogV2 extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CatalogV2(String name, CatalogV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/catalogV2:CatalogV2", name, args == null ? CatalogV2Args.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public CatalogV2(java.lang.String name, CatalogV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/catalogV2:CatalogV2", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private CatalogV2(String name, Output<String> id, @Nullable CatalogV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/catalogV2:CatalogV2", name, state, makeResourceOptions(options, id));
+    private CatalogV2(java.lang.String name, Output<java.lang.String> id, @Nullable CatalogV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/catalogV2:CatalogV2", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static CatalogV2Args makeArgs(CatalogV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CatalogV2Args.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -287,7 +294,7 @@ public class CatalogV2 extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static CatalogV2 get(String name, Output<String> id, @Nullable CatalogV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static CatalogV2 get(java.lang.String name, Output<java.lang.String> id, @Nullable CatalogV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new CatalogV2(name, id, state, options);
     }
 }
