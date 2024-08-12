@@ -82,25 +82,25 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         // Create a new rancher2 Global DNS Provider - cloudflare
  *         var foo = new GlobalDnsProvider("foo", GlobalDnsProviderArgs.builder()
  *             .name("foo")
  *             .rootDomain("example.com")
  *             .cloudflareConfig(GlobalDnsProviderCloudflareConfigArgs.builder()
- *                 .apiEmail("test{@literal @}test.local")
+ *                 .apiEmail("test}{@literal @}{@code test.local")
  *                 .apiKey("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
  *                 .proxySetting(true)
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -251,7 +251,7 @@ public class GlobalDnsProvider extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GlobalDnsProvider(String name) {
+    public GlobalDnsProvider(java.lang.String name) {
         this(name, GlobalDnsProviderArgs.Empty);
     }
     /**
@@ -259,7 +259,7 @@ public class GlobalDnsProvider extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GlobalDnsProvider(String name, GlobalDnsProviderArgs args) {
+    public GlobalDnsProvider(java.lang.String name, GlobalDnsProviderArgs args) {
         this(name, args, null);
     }
     /**
@@ -268,15 +268,22 @@ public class GlobalDnsProvider extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GlobalDnsProvider(String name, GlobalDnsProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/globalDnsProvider:GlobalDnsProvider", name, args == null ? GlobalDnsProviderArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public GlobalDnsProvider(java.lang.String name, GlobalDnsProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/globalDnsProvider:GlobalDnsProvider", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private GlobalDnsProvider(String name, Output<String> id, @Nullable GlobalDnsProviderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/globalDnsProvider:GlobalDnsProvider", name, state, makeResourceOptions(options, id));
+    private GlobalDnsProvider(java.lang.String name, Output<java.lang.String> id, @Nullable GlobalDnsProviderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/globalDnsProvider:GlobalDnsProvider", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static GlobalDnsProviderArgs makeArgs(GlobalDnsProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GlobalDnsProviderArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -292,7 +299,7 @@ public class GlobalDnsProvider extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GlobalDnsProvider get(String name, Output<String> id, @Nullable GlobalDnsProviderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GlobalDnsProvider get(java.lang.String name, Output<java.lang.String> id, @Nullable GlobalDnsProviderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GlobalDnsProvider(name, id, state, options);
     }
 }

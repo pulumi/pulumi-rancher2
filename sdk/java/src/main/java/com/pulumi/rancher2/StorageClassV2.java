@@ -191,7 +191,7 @@ public class StorageClassV2 extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public StorageClassV2(String name) {
+    public StorageClassV2(java.lang.String name) {
         this(name, StorageClassV2Args.Empty);
     }
     /**
@@ -199,7 +199,7 @@ public class StorageClassV2 extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public StorageClassV2(String name, StorageClassV2Args args) {
+    public StorageClassV2(java.lang.String name, StorageClassV2Args args) {
         this(name, args, null);
     }
     /**
@@ -208,15 +208,22 @@ public class StorageClassV2 extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public StorageClassV2(String name, StorageClassV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/storageClassV2:StorageClassV2", name, args == null ? StorageClassV2Args.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public StorageClassV2(java.lang.String name, StorageClassV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/storageClassV2:StorageClassV2", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private StorageClassV2(String name, Output<String> id, @Nullable StorageClassV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/storageClassV2:StorageClassV2", name, state, makeResourceOptions(options, id));
+    private StorageClassV2(java.lang.String name, Output<java.lang.String> id, @Nullable StorageClassV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/storageClassV2:StorageClassV2", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static StorageClassV2Args makeArgs(StorageClassV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? StorageClassV2Args.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -232,7 +239,7 @@ public class StorageClassV2 extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static StorageClassV2 get(String name, Output<String> id, @Nullable StorageClassV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static StorageClassV2 get(java.lang.String name, Output<java.lang.String> id, @Nullable StorageClassV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new StorageClassV2(name, id, state, options);
     }
 }

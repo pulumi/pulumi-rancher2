@@ -148,7 +148,7 @@ public class ConfigMapV2 extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ConfigMapV2(String name) {
+    public ConfigMapV2(java.lang.String name) {
         this(name, ConfigMapV2Args.Empty);
     }
     /**
@@ -156,7 +156,7 @@ public class ConfigMapV2 extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ConfigMapV2(String name, ConfigMapV2Args args) {
+    public ConfigMapV2(java.lang.String name, ConfigMapV2Args args) {
         this(name, args, null);
     }
     /**
@@ -165,15 +165,22 @@ public class ConfigMapV2 extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ConfigMapV2(String name, ConfigMapV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/configMapV2:ConfigMapV2", name, args == null ? ConfigMapV2Args.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ConfigMapV2(java.lang.String name, ConfigMapV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/configMapV2:ConfigMapV2", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ConfigMapV2(String name, Output<String> id, @Nullable ConfigMapV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/configMapV2:ConfigMapV2", name, state, makeResourceOptions(options, id));
+    private ConfigMapV2(java.lang.String name, Output<java.lang.String> id, @Nullable ConfigMapV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/configMapV2:ConfigMapV2", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ConfigMapV2Args makeArgs(ConfigMapV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ConfigMapV2Args.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -189,7 +196,7 @@ public class ConfigMapV2 extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ConfigMapV2 get(String name, Output<String> id, @Nullable ConfigMapV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ConfigMapV2 get(java.lang.String name, Output<java.lang.String> id, @Nullable ConfigMapV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ConfigMapV2(name, id, state, options);
     }
 }
