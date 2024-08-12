@@ -127,7 +127,7 @@ public class Feature extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Feature(String name) {
+    public Feature(java.lang.String name) {
         this(name, FeatureArgs.Empty);
     }
     /**
@@ -135,7 +135,7 @@ public class Feature extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Feature(String name, @Nullable FeatureArgs args) {
+    public Feature(java.lang.String name, @Nullable FeatureArgs args) {
         this(name, args, null);
     }
     /**
@@ -144,15 +144,22 @@ public class Feature extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Feature(String name, @Nullable FeatureArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/feature:Feature", name, args == null ? FeatureArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Feature(java.lang.String name, @Nullable FeatureArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/feature:Feature", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Feature(String name, Output<String> id, @Nullable FeatureState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/feature:Feature", name, state, makeResourceOptions(options, id));
+    private Feature(java.lang.String name, Output<java.lang.String> id, @Nullable FeatureState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/feature:Feature", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static FeatureArgs makeArgs(@Nullable FeatureArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? FeatureArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -168,7 +175,7 @@ public class Feature extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Feature get(String name, Output<String> id, @Nullable FeatureState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Feature get(java.lang.String name, Output<java.lang.String> id, @Nullable FeatureState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Feature(name, id, state, options);
     }
 }

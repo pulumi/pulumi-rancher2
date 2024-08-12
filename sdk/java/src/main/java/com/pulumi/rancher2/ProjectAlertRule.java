@@ -304,7 +304,7 @@ public class ProjectAlertRule extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ProjectAlertRule(String name) {
+    public ProjectAlertRule(java.lang.String name) {
         this(name, ProjectAlertRuleArgs.Empty);
     }
     /**
@@ -312,7 +312,7 @@ public class ProjectAlertRule extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ProjectAlertRule(String name, ProjectAlertRuleArgs args) {
+    public ProjectAlertRule(java.lang.String name, ProjectAlertRuleArgs args) {
         this(name, args, null);
     }
     /**
@@ -321,15 +321,22 @@ public class ProjectAlertRule extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ProjectAlertRule(String name, ProjectAlertRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/projectAlertRule:ProjectAlertRule", name, args == null ? ProjectAlertRuleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ProjectAlertRule(java.lang.String name, ProjectAlertRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/projectAlertRule:ProjectAlertRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ProjectAlertRule(String name, Output<String> id, @Nullable ProjectAlertRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/projectAlertRule:ProjectAlertRule", name, state, makeResourceOptions(options, id));
+    private ProjectAlertRule(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectAlertRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/projectAlertRule:ProjectAlertRule", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ProjectAlertRuleArgs makeArgs(ProjectAlertRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ProjectAlertRuleArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -345,7 +352,7 @@ public class ProjectAlertRule extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ProjectAlertRule get(String name, Output<String> id, @Nullable ProjectAlertRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ProjectAlertRule get(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectAlertRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ProjectAlertRule(name, id, state, options);
     }
 }

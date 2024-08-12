@@ -922,14 +922,14 @@ class NodeTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 amazonec2_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateAmazonec2ConfigArgs']]] = None,
+                 amazonec2_config: Optional[pulumi.Input[Union['NodeTemplateAmazonec2ConfigArgs', 'NodeTemplateAmazonec2ConfigArgsDict']]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  auth_certificate_authority: Optional[pulumi.Input[str]] = None,
                  auth_key: Optional[pulumi.Input[str]] = None,
-                 azure_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateAzureConfigArgs']]] = None,
+                 azure_config: Optional[pulumi.Input[Union['NodeTemplateAzureConfigArgs', 'NodeTemplateAzureConfigArgsDict']]] = None,
                  cloud_credential_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 digitalocean_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateDigitaloceanConfigArgs']]] = None,
+                 digitalocean_config: Optional[pulumi.Input[Union['NodeTemplateDigitaloceanConfigArgs', 'NodeTemplateDigitaloceanConfigArgsDict']]] = None,
                  driver_id: Optional[pulumi.Input[str]] = None,
                  engine_env: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  engine_insecure_registries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -938,17 +938,17 @@ class NodeTemplate(pulumi.CustomResource):
                  engine_opt: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  engine_registry_mirrors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  engine_storage_driver: Optional[pulumi.Input[str]] = None,
-                 harvester_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateHarvesterConfigArgs']]] = None,
-                 hetzner_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateHetznerConfigArgs']]] = None,
+                 harvester_config: Optional[pulumi.Input[Union['NodeTemplateHarvesterConfigArgs', 'NodeTemplateHarvesterConfigArgsDict']]] = None,
+                 hetzner_config: Optional[pulumi.Input[Union['NodeTemplateHetznerConfigArgs', 'NodeTemplateHetznerConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 linode_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateLinodeConfigArgs']]] = None,
+                 linode_config: Optional[pulumi.Input[Union['NodeTemplateLinodeConfigArgs', 'NodeTemplateLinodeConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodeTemplateNodeTaintArgs']]]]] = None,
-                 opennebula_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateOpennebulaConfigArgs']]] = None,
-                 openstack_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateOpenstackConfigArgs']]] = None,
-                 outscale_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateOutscaleConfigArgs']]] = None,
+                 node_taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeTemplateNodeTaintArgs', 'NodeTemplateNodeTaintArgsDict']]]]] = None,
+                 opennebula_config: Optional[pulumi.Input[Union['NodeTemplateOpennebulaConfigArgs', 'NodeTemplateOpennebulaConfigArgsDict']]] = None,
+                 openstack_config: Optional[pulumi.Input[Union['NodeTemplateOpenstackConfigArgs', 'NodeTemplateOpenstackConfigArgsDict']]] = None,
+                 outscale_config: Optional[pulumi.Input[Union['NodeTemplateOutscaleConfigArgs', 'NodeTemplateOutscaleConfigArgsDict']]] = None,
                  use_internal_ip_address: Optional[pulumi.Input[bool]] = None,
-                 vsphere_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateVsphereConfigArgs']]] = None,
+                 vsphere_config: Optional[pulumi.Input[Union['NodeTemplateVsphereConfigArgs', 'NodeTemplateVsphereConfigArgsDict']]] = None,
                  __props__=None):
         """
         Provides a Rancher v2 Node Template resource. This can be used to create Node Template for Rancher v2 and retrieve their information.
@@ -967,16 +967,16 @@ class NodeTemplate(pulumi.CustomResource):
         foo = rancher2.NodeTemplate("foo",
             name="foo",
             description="foo test",
-            amazonec2_config=rancher2.NodeTemplateAmazonec2ConfigArgs(
-                access_key="AWS_ACCESS_KEY",
-                secret_key="<AWS_SECRET_KEY>",
-                ami="<AMI_ID>",
-                region="<REGION>",
-                security_groups=["<AWS_SECURITY_GROUP>"],
-                subnet_id="<SUBNET_ID>",
-                vpc_id="<VPC_ID>",
-                zone="<ZONE>",
-            ))
+            amazonec2_config={
+                "access_key": "AWS_ACCESS_KEY",
+                "secret_key": "<AWS_SECRET_KEY>",
+                "ami": "<AMI_ID>",
+                "region": "<REGION>",
+                "security_groups": ["<AWS_SECURITY_GROUP>"],
+                "subnet_id": "<SUBNET_ID>",
+                "vpc_id": "<VPC_ID>",
+                "zone": "<ZONE>",
+            })
         ```
 
         ```python
@@ -987,22 +987,22 @@ class NodeTemplate(pulumi.CustomResource):
         foo = rancher2.CloudCredential("foo",
             name="foo",
             description="foo test",
-            amazonec2_credential_config=rancher2.CloudCredentialAmazonec2CredentialConfigArgs(
-                access_key="<AWS_ACCESS_KEY>",
-                secret_key="<AWS_SECRET_KEY>",
-            ))
+            amazonec2_credential_config={
+                "access_key": "<AWS_ACCESS_KEY>",
+                "secret_key": "<AWS_SECRET_KEY>",
+            })
         foo_node_template = rancher2.NodeTemplate("foo",
             name="foo",
             description="foo test",
             cloud_credential_id=foo.id,
-            amazonec2_config=rancher2.NodeTemplateAmazonec2ConfigArgs(
-                ami="<AMI_ID>",
-                region="<REGION>",
-                security_groups=["<AWS_SECURITY_GROUP>"],
-                subnet_id="<SUBNET_ID>",
-                vpc_id="<VPC_ID>",
-                zone="<ZONE>",
-            ))
+            amazonec2_config={
+                "ami": "<AMI_ID>",
+                "region": "<REGION>",
+                "security_groups": ["<AWS_SECURITY_GROUP>"],
+                "subnet_id": "<SUBNET_ID>",
+                "vpc_id": "<VPC_ID>",
+                "zone": "<ZONE>",
+            })
         ```
 
         ### Using the Harvester Node Driver
@@ -1016,21 +1016,21 @@ class NodeTemplate(pulumi.CustomResource):
         # Create a new Cloud Credential for an imported Harvester cluster
         foo_harvester_cloud_credential = rancher2.CloudCredential("foo-harvester",
             name="foo-harvester",
-            harvester_credential_config=rancher2.CloudCredentialHarvesterCredentialConfigArgs(
-                cluster_id=foo_harvester.cluster_v1_id,
-                cluster_type="imported",
-                kubeconfig_content=foo_harvester.kube_config,
-            ))
+            harvester_credential_config={
+                "cluster_id": foo_harvester.cluster_v1_id,
+                "cluster_type": "imported",
+                "kubeconfig_content": foo_harvester.kube_config,
+            })
         # Create a new rancher2 Node Template using harvester node_driver
         foo_harvester_node_template = rancher2.NodeTemplate("foo-harvester",
             name="foo-harvester",
             cloud_credential_id=foo_harvester_cloud_credential.id,
             engine_install_url="https://releases.rancher.com/install-docker/20.10.sh",
-            harvester_config=rancher2.NodeTemplateHarvesterConfigArgs(
-                vm_namespace="default",
-                cpu_count="2",
-                memory_size="4",
-                disk_info=\"\"\"    {
+            harvester_config={
+                "vm_namespace": "default",
+                "cpu_count": "2",
+                "memory_size": "4",
+                "disk_info": \"\"\"    {
                 "disks": [{
                     "imageName": "harvester-public/image-57hzg",
                     "size": 40,
@@ -1038,14 +1038,14 @@ class NodeTemplate(pulumi.CustomResource):
                 }]
             }
         \"\"\",
-                network_info=\"\"\"    {
+                "network_info": \"\"\"    {
                 "interfaces": [{
                     "networkName": "harvester-public/vlan1"
                 }]
             }
         \"\"\",
-                ssh_user="ubuntu",
-                user_data=\"\"\"    package_update: true
+                "ssh_user": "ubuntu",
+                "user_data": \"\"\"    package_update: true
             packages:
               - qemu-guest-agent
               - iptables
@@ -1055,7 +1055,7 @@ class NodeTemplate(pulumi.CustomResource):
                 - '--now'
                 - qemu-guest-agent.service
         \"\"\",
-            ))
+            })
         ```
 
         ### Using the Hetzner Node Driver
@@ -1075,12 +1075,12 @@ class NodeTemplate(pulumi.CustomResource):
         my_hetzner_node_template = rancher2.NodeTemplate("my_hetzner_node_template",
             name="my-hetzner-node-template",
             driver_id=hetzner_node_driver.id,
-            hetzner_config=rancher2.NodeTemplateHetznerConfigArgs(
-                api_token="XXXXXXXXXX",
-                image="ubuntu-18.04",
-                server_location="nbg1",
-                server_type="cx11",
-            ))
+            hetzner_config={
+                "api_token": "XXXXXXXXXX",
+                "image": "ubuntu-18.04",
+                "server_location": "nbg1",
+                "server_type": "cx11",
+            })
         ```
 
         ## Upgrading to Rancher v2.3.3
@@ -1091,14 +1091,14 @@ class NodeTemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['NodeTemplateAmazonec2ConfigArgs']] amazonec2_config: AWS config for the Node Template (list maxitems:1)
+        :param pulumi.Input[Union['NodeTemplateAmazonec2ConfigArgs', 'NodeTemplateAmazonec2ConfigArgsDict']] amazonec2_config: AWS config for the Node Template (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Node Template object (map)
         :param pulumi.Input[str] auth_certificate_authority: Auth certificate authority for the Node Template (string)
         :param pulumi.Input[str] auth_key: Auth key for the Node Template (string)
-        :param pulumi.Input[pulumi.InputType['NodeTemplateAzureConfigArgs']] azure_config: Azure config for the Node Template (list maxitems:1)
+        :param pulumi.Input[Union['NodeTemplateAzureConfigArgs', 'NodeTemplateAzureConfigArgsDict']] azure_config: Azure config for the Node Template (list maxitems:1)
         :param pulumi.Input[str] cloud_credential_id: Cloud credential ID for the Node Template. Required from Rancher v2.2.x (string)
         :param pulumi.Input[str] description: Description for the Node Template (string)
-        :param pulumi.Input[pulumi.InputType['NodeTemplateDigitaloceanConfigArgs']] digitalocean_config: Digitalocean config for the Node Template (list maxitems:1)
+        :param pulumi.Input[Union['NodeTemplateDigitaloceanConfigArgs', 'NodeTemplateDigitaloceanConfigArgsDict']] digitalocean_config: Digitalocean config for the Node Template (list maxitems:1)
         :param pulumi.Input[str] driver_id: The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
         :param pulumi.Input[Mapping[str, Any]] engine_env: Engine environment for the node template (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] engine_insecure_registries: Insecure registry for the node template (list)
@@ -1107,19 +1107,19 @@ class NodeTemplate(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] engine_opt: Engine options for the node template (map)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] engine_registry_mirrors: Engine registry mirror for the node template (list)
         :param pulumi.Input[str] engine_storage_driver: Engine storage driver for the node template (string)
-        :param pulumi.Input[pulumi.InputType['NodeTemplateHarvesterConfigArgs']] harvester_config: Harvester config for the Node Template (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['NodeTemplateHetznerConfigArgs']] hetzner_config: Hetzner config for the Node Template (list maxitems:1)
+        :param pulumi.Input[Union['NodeTemplateHarvesterConfigArgs', 'NodeTemplateHarvesterConfigArgsDict']] harvester_config: Harvester config for the Node Template (list maxitems:1)
+        :param pulumi.Input[Union['NodeTemplateHetznerConfigArgs', 'NodeTemplateHetznerConfigArgsDict']] hetzner_config: Hetzner config for the Node Template (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Template object (map)
                
                **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
-        :param pulumi.Input[pulumi.InputType['NodeTemplateLinodeConfigArgs']] linode_config: Linode config for the Node Template (list maxitems:1)
+        :param pulumi.Input[Union['NodeTemplateLinodeConfigArgs', 'NodeTemplateLinodeConfigArgsDict']] linode_config: Linode config for the Node Template (list maxitems:1)
         :param pulumi.Input[str] name: The name of the Node Template (string)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodeTemplateNodeTaintArgs']]]] node_taints: Node taints. For Rancher v2.3.3 and above (List)
-        :param pulumi.Input[pulumi.InputType['NodeTemplateOpennebulaConfigArgs']] opennebula_config: Opennebula config for the Node Template (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['NodeTemplateOpenstackConfigArgs']] openstack_config: Openstack config for the Node Template (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['NodeTemplateOutscaleConfigArgs']] outscale_config: Outscale config for the Node Template (list maxitems:1)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeTemplateNodeTaintArgs', 'NodeTemplateNodeTaintArgsDict']]]] node_taints: Node taints. For Rancher v2.3.3 and above (List)
+        :param pulumi.Input[Union['NodeTemplateOpennebulaConfigArgs', 'NodeTemplateOpennebulaConfigArgsDict']] opennebula_config: Opennebula config for the Node Template (list maxitems:1)
+        :param pulumi.Input[Union['NodeTemplateOpenstackConfigArgs', 'NodeTemplateOpenstackConfigArgsDict']] openstack_config: Openstack config for the Node Template (list maxitems:1)
+        :param pulumi.Input[Union['NodeTemplateOutscaleConfigArgs', 'NodeTemplateOutscaleConfigArgsDict']] outscale_config: Outscale config for the Node Template (list maxitems:1)
         :param pulumi.Input[bool] use_internal_ip_address: Engine storage driver for the node template (bool)
-        :param pulumi.Input[pulumi.InputType['NodeTemplateVsphereConfigArgs']] vsphere_config: vSphere config for the Node Template (list maxitems:1)
+        :param pulumi.Input[Union['NodeTemplateVsphereConfigArgs', 'NodeTemplateVsphereConfigArgsDict']] vsphere_config: vSphere config for the Node Template (list maxitems:1)
         """
         ...
     @overload
@@ -1144,16 +1144,16 @@ class NodeTemplate(pulumi.CustomResource):
         foo = rancher2.NodeTemplate("foo",
             name="foo",
             description="foo test",
-            amazonec2_config=rancher2.NodeTemplateAmazonec2ConfigArgs(
-                access_key="AWS_ACCESS_KEY",
-                secret_key="<AWS_SECRET_KEY>",
-                ami="<AMI_ID>",
-                region="<REGION>",
-                security_groups=["<AWS_SECURITY_GROUP>"],
-                subnet_id="<SUBNET_ID>",
-                vpc_id="<VPC_ID>",
-                zone="<ZONE>",
-            ))
+            amazonec2_config={
+                "access_key": "AWS_ACCESS_KEY",
+                "secret_key": "<AWS_SECRET_KEY>",
+                "ami": "<AMI_ID>",
+                "region": "<REGION>",
+                "security_groups": ["<AWS_SECURITY_GROUP>"],
+                "subnet_id": "<SUBNET_ID>",
+                "vpc_id": "<VPC_ID>",
+                "zone": "<ZONE>",
+            })
         ```
 
         ```python
@@ -1164,22 +1164,22 @@ class NodeTemplate(pulumi.CustomResource):
         foo = rancher2.CloudCredential("foo",
             name="foo",
             description="foo test",
-            amazonec2_credential_config=rancher2.CloudCredentialAmazonec2CredentialConfigArgs(
-                access_key="<AWS_ACCESS_KEY>",
-                secret_key="<AWS_SECRET_KEY>",
-            ))
+            amazonec2_credential_config={
+                "access_key": "<AWS_ACCESS_KEY>",
+                "secret_key": "<AWS_SECRET_KEY>",
+            })
         foo_node_template = rancher2.NodeTemplate("foo",
             name="foo",
             description="foo test",
             cloud_credential_id=foo.id,
-            amazonec2_config=rancher2.NodeTemplateAmazonec2ConfigArgs(
-                ami="<AMI_ID>",
-                region="<REGION>",
-                security_groups=["<AWS_SECURITY_GROUP>"],
-                subnet_id="<SUBNET_ID>",
-                vpc_id="<VPC_ID>",
-                zone="<ZONE>",
-            ))
+            amazonec2_config={
+                "ami": "<AMI_ID>",
+                "region": "<REGION>",
+                "security_groups": ["<AWS_SECURITY_GROUP>"],
+                "subnet_id": "<SUBNET_ID>",
+                "vpc_id": "<VPC_ID>",
+                "zone": "<ZONE>",
+            })
         ```
 
         ### Using the Harvester Node Driver
@@ -1193,21 +1193,21 @@ class NodeTemplate(pulumi.CustomResource):
         # Create a new Cloud Credential for an imported Harvester cluster
         foo_harvester_cloud_credential = rancher2.CloudCredential("foo-harvester",
             name="foo-harvester",
-            harvester_credential_config=rancher2.CloudCredentialHarvesterCredentialConfigArgs(
-                cluster_id=foo_harvester.cluster_v1_id,
-                cluster_type="imported",
-                kubeconfig_content=foo_harvester.kube_config,
-            ))
+            harvester_credential_config={
+                "cluster_id": foo_harvester.cluster_v1_id,
+                "cluster_type": "imported",
+                "kubeconfig_content": foo_harvester.kube_config,
+            })
         # Create a new rancher2 Node Template using harvester node_driver
         foo_harvester_node_template = rancher2.NodeTemplate("foo-harvester",
             name="foo-harvester",
             cloud_credential_id=foo_harvester_cloud_credential.id,
             engine_install_url="https://releases.rancher.com/install-docker/20.10.sh",
-            harvester_config=rancher2.NodeTemplateHarvesterConfigArgs(
-                vm_namespace="default",
-                cpu_count="2",
-                memory_size="4",
-                disk_info=\"\"\"    {
+            harvester_config={
+                "vm_namespace": "default",
+                "cpu_count": "2",
+                "memory_size": "4",
+                "disk_info": \"\"\"    {
                 "disks": [{
                     "imageName": "harvester-public/image-57hzg",
                     "size": 40,
@@ -1215,14 +1215,14 @@ class NodeTemplate(pulumi.CustomResource):
                 }]
             }
         \"\"\",
-                network_info=\"\"\"    {
+                "network_info": \"\"\"    {
                 "interfaces": [{
                     "networkName": "harvester-public/vlan1"
                 }]
             }
         \"\"\",
-                ssh_user="ubuntu",
-                user_data=\"\"\"    package_update: true
+                "ssh_user": "ubuntu",
+                "user_data": \"\"\"    package_update: true
             packages:
               - qemu-guest-agent
               - iptables
@@ -1232,7 +1232,7 @@ class NodeTemplate(pulumi.CustomResource):
                 - '--now'
                 - qemu-guest-agent.service
         \"\"\",
-            ))
+            })
         ```
 
         ### Using the Hetzner Node Driver
@@ -1252,12 +1252,12 @@ class NodeTemplate(pulumi.CustomResource):
         my_hetzner_node_template = rancher2.NodeTemplate("my_hetzner_node_template",
             name="my-hetzner-node-template",
             driver_id=hetzner_node_driver.id,
-            hetzner_config=rancher2.NodeTemplateHetznerConfigArgs(
-                api_token="XXXXXXXXXX",
-                image="ubuntu-18.04",
-                server_location="nbg1",
-                server_type="cx11",
-            ))
+            hetzner_config={
+                "api_token": "XXXXXXXXXX",
+                "image": "ubuntu-18.04",
+                "server_location": "nbg1",
+                "server_type": "cx11",
+            })
         ```
 
         ## Upgrading to Rancher v2.3.3
@@ -1281,14 +1281,14 @@ class NodeTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 amazonec2_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateAmazonec2ConfigArgs']]] = None,
+                 amazonec2_config: Optional[pulumi.Input[Union['NodeTemplateAmazonec2ConfigArgs', 'NodeTemplateAmazonec2ConfigArgsDict']]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  auth_certificate_authority: Optional[pulumi.Input[str]] = None,
                  auth_key: Optional[pulumi.Input[str]] = None,
-                 azure_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateAzureConfigArgs']]] = None,
+                 azure_config: Optional[pulumi.Input[Union['NodeTemplateAzureConfigArgs', 'NodeTemplateAzureConfigArgsDict']]] = None,
                  cloud_credential_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 digitalocean_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateDigitaloceanConfigArgs']]] = None,
+                 digitalocean_config: Optional[pulumi.Input[Union['NodeTemplateDigitaloceanConfigArgs', 'NodeTemplateDigitaloceanConfigArgsDict']]] = None,
                  driver_id: Optional[pulumi.Input[str]] = None,
                  engine_env: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  engine_insecure_registries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1297,17 +1297,17 @@ class NodeTemplate(pulumi.CustomResource):
                  engine_opt: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  engine_registry_mirrors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  engine_storage_driver: Optional[pulumi.Input[str]] = None,
-                 harvester_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateHarvesterConfigArgs']]] = None,
-                 hetzner_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateHetznerConfigArgs']]] = None,
+                 harvester_config: Optional[pulumi.Input[Union['NodeTemplateHarvesterConfigArgs', 'NodeTemplateHarvesterConfigArgsDict']]] = None,
+                 hetzner_config: Optional[pulumi.Input[Union['NodeTemplateHetznerConfigArgs', 'NodeTemplateHetznerConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 linode_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateLinodeConfigArgs']]] = None,
+                 linode_config: Optional[pulumi.Input[Union['NodeTemplateLinodeConfigArgs', 'NodeTemplateLinodeConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodeTemplateNodeTaintArgs']]]]] = None,
-                 opennebula_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateOpennebulaConfigArgs']]] = None,
-                 openstack_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateOpenstackConfigArgs']]] = None,
-                 outscale_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateOutscaleConfigArgs']]] = None,
+                 node_taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeTemplateNodeTaintArgs', 'NodeTemplateNodeTaintArgsDict']]]]] = None,
+                 opennebula_config: Optional[pulumi.Input[Union['NodeTemplateOpennebulaConfigArgs', 'NodeTemplateOpennebulaConfigArgsDict']]] = None,
+                 openstack_config: Optional[pulumi.Input[Union['NodeTemplateOpenstackConfigArgs', 'NodeTemplateOpenstackConfigArgsDict']]] = None,
+                 outscale_config: Optional[pulumi.Input[Union['NodeTemplateOutscaleConfigArgs', 'NodeTemplateOutscaleConfigArgsDict']]] = None,
                  use_internal_ip_address: Optional[pulumi.Input[bool]] = None,
-                 vsphere_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateVsphereConfigArgs']]] = None,
+                 vsphere_config: Optional[pulumi.Input[Union['NodeTemplateVsphereConfigArgs', 'NodeTemplateVsphereConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1357,14 +1357,14 @@ class NodeTemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            amazonec2_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateAmazonec2ConfigArgs']]] = None,
+            amazonec2_config: Optional[pulumi.Input[Union['NodeTemplateAmazonec2ConfigArgs', 'NodeTemplateAmazonec2ConfigArgsDict']]] = None,
             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             auth_certificate_authority: Optional[pulumi.Input[str]] = None,
             auth_key: Optional[pulumi.Input[str]] = None,
-            azure_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateAzureConfigArgs']]] = None,
+            azure_config: Optional[pulumi.Input[Union['NodeTemplateAzureConfigArgs', 'NodeTemplateAzureConfigArgsDict']]] = None,
             cloud_credential_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            digitalocean_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateDigitaloceanConfigArgs']]] = None,
+            digitalocean_config: Optional[pulumi.Input[Union['NodeTemplateDigitaloceanConfigArgs', 'NodeTemplateDigitaloceanConfigArgsDict']]] = None,
             driver: Optional[pulumi.Input[str]] = None,
             driver_id: Optional[pulumi.Input[str]] = None,
             engine_env: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -1374,17 +1374,17 @@ class NodeTemplate(pulumi.CustomResource):
             engine_opt: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             engine_registry_mirrors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             engine_storage_driver: Optional[pulumi.Input[str]] = None,
-            harvester_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateHarvesterConfigArgs']]] = None,
-            hetzner_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateHetznerConfigArgs']]] = None,
+            harvester_config: Optional[pulumi.Input[Union['NodeTemplateHarvesterConfigArgs', 'NodeTemplateHarvesterConfigArgsDict']]] = None,
+            hetzner_config: Optional[pulumi.Input[Union['NodeTemplateHetznerConfigArgs', 'NodeTemplateHetznerConfigArgsDict']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            linode_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateLinodeConfigArgs']]] = None,
+            linode_config: Optional[pulumi.Input[Union['NodeTemplateLinodeConfigArgs', 'NodeTemplateLinodeConfigArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            node_taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodeTemplateNodeTaintArgs']]]]] = None,
-            opennebula_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateOpennebulaConfigArgs']]] = None,
-            openstack_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateOpenstackConfigArgs']]] = None,
-            outscale_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateOutscaleConfigArgs']]] = None,
+            node_taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeTemplateNodeTaintArgs', 'NodeTemplateNodeTaintArgsDict']]]]] = None,
+            opennebula_config: Optional[pulumi.Input[Union['NodeTemplateOpennebulaConfigArgs', 'NodeTemplateOpennebulaConfigArgsDict']]] = None,
+            openstack_config: Optional[pulumi.Input[Union['NodeTemplateOpenstackConfigArgs', 'NodeTemplateOpenstackConfigArgsDict']]] = None,
+            outscale_config: Optional[pulumi.Input[Union['NodeTemplateOutscaleConfigArgs', 'NodeTemplateOutscaleConfigArgsDict']]] = None,
             use_internal_ip_address: Optional[pulumi.Input[bool]] = None,
-            vsphere_config: Optional[pulumi.Input[pulumi.InputType['NodeTemplateVsphereConfigArgs']]] = None) -> 'NodeTemplate':
+            vsphere_config: Optional[pulumi.Input[Union['NodeTemplateVsphereConfigArgs', 'NodeTemplateVsphereConfigArgsDict']]] = None) -> 'NodeTemplate':
         """
         Get an existing NodeTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1392,14 +1392,14 @@ class NodeTemplate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['NodeTemplateAmazonec2ConfigArgs']] amazonec2_config: AWS config for the Node Template (list maxitems:1)
+        :param pulumi.Input[Union['NodeTemplateAmazonec2ConfigArgs', 'NodeTemplateAmazonec2ConfigArgsDict']] amazonec2_config: AWS config for the Node Template (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Node Template object (map)
         :param pulumi.Input[str] auth_certificate_authority: Auth certificate authority for the Node Template (string)
         :param pulumi.Input[str] auth_key: Auth key for the Node Template (string)
-        :param pulumi.Input[pulumi.InputType['NodeTemplateAzureConfigArgs']] azure_config: Azure config for the Node Template (list maxitems:1)
+        :param pulumi.Input[Union['NodeTemplateAzureConfigArgs', 'NodeTemplateAzureConfigArgsDict']] azure_config: Azure config for the Node Template (list maxitems:1)
         :param pulumi.Input[str] cloud_credential_id: Cloud credential ID for the Node Template. Required from Rancher v2.2.x (string)
         :param pulumi.Input[str] description: Description for the Node Template (string)
-        :param pulumi.Input[pulumi.InputType['NodeTemplateDigitaloceanConfigArgs']] digitalocean_config: Digitalocean config for the Node Template (list maxitems:1)
+        :param pulumi.Input[Union['NodeTemplateDigitaloceanConfigArgs', 'NodeTemplateDigitaloceanConfigArgsDict']] digitalocean_config: Digitalocean config for the Node Template (list maxitems:1)
         :param pulumi.Input[str] driver: (Computed) The driver of the node template (string)
         :param pulumi.Input[str] driver_id: The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
         :param pulumi.Input[Mapping[str, Any]] engine_env: Engine environment for the node template (string)
@@ -1409,19 +1409,19 @@ class NodeTemplate(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] engine_opt: Engine options for the node template (map)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] engine_registry_mirrors: Engine registry mirror for the node template (list)
         :param pulumi.Input[str] engine_storage_driver: Engine storage driver for the node template (string)
-        :param pulumi.Input[pulumi.InputType['NodeTemplateHarvesterConfigArgs']] harvester_config: Harvester config for the Node Template (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['NodeTemplateHetznerConfigArgs']] hetzner_config: Hetzner config for the Node Template (list maxitems:1)
+        :param pulumi.Input[Union['NodeTemplateHarvesterConfigArgs', 'NodeTemplateHarvesterConfigArgsDict']] harvester_config: Harvester config for the Node Template (list maxitems:1)
+        :param pulumi.Input[Union['NodeTemplateHetznerConfigArgs', 'NodeTemplateHetznerConfigArgsDict']] hetzner_config: Hetzner config for the Node Template (list maxitems:1)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Template object (map)
                
                **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
-        :param pulumi.Input[pulumi.InputType['NodeTemplateLinodeConfigArgs']] linode_config: Linode config for the Node Template (list maxitems:1)
+        :param pulumi.Input[Union['NodeTemplateLinodeConfigArgs', 'NodeTemplateLinodeConfigArgsDict']] linode_config: Linode config for the Node Template (list maxitems:1)
         :param pulumi.Input[str] name: The name of the Node Template (string)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodeTemplateNodeTaintArgs']]]] node_taints: Node taints. For Rancher v2.3.3 and above (List)
-        :param pulumi.Input[pulumi.InputType['NodeTemplateOpennebulaConfigArgs']] opennebula_config: Opennebula config for the Node Template (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['NodeTemplateOpenstackConfigArgs']] openstack_config: Openstack config for the Node Template (list maxitems:1)
-        :param pulumi.Input[pulumi.InputType['NodeTemplateOutscaleConfigArgs']] outscale_config: Outscale config for the Node Template (list maxitems:1)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeTemplateNodeTaintArgs', 'NodeTemplateNodeTaintArgsDict']]]] node_taints: Node taints. For Rancher v2.3.3 and above (List)
+        :param pulumi.Input[Union['NodeTemplateOpennebulaConfigArgs', 'NodeTemplateOpennebulaConfigArgsDict']] opennebula_config: Opennebula config for the Node Template (list maxitems:1)
+        :param pulumi.Input[Union['NodeTemplateOpenstackConfigArgs', 'NodeTemplateOpenstackConfigArgsDict']] openstack_config: Openstack config for the Node Template (list maxitems:1)
+        :param pulumi.Input[Union['NodeTemplateOutscaleConfigArgs', 'NodeTemplateOutscaleConfigArgsDict']] outscale_config: Outscale config for the Node Template (list maxitems:1)
         :param pulumi.Input[bool] use_internal_ip_address: Engine storage driver for the node template (bool)
-        :param pulumi.Input[pulumi.InputType['NodeTemplateVsphereConfigArgs']] vsphere_config: vSphere config for the Node Template (list maxitems:1)
+        :param pulumi.Input[Union['NodeTemplateVsphereConfigArgs', 'NodeTemplateVsphereConfigArgsDict']] vsphere_config: vSphere config for the Node Template (list maxitems:1)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

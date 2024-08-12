@@ -288,7 +288,7 @@ public class ClusterAlertRule extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ClusterAlertRule(String name) {
+    public ClusterAlertRule(java.lang.String name) {
         this(name, ClusterAlertRuleArgs.Empty);
     }
     /**
@@ -296,7 +296,7 @@ public class ClusterAlertRule extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ClusterAlertRule(String name, ClusterAlertRuleArgs args) {
+    public ClusterAlertRule(java.lang.String name, ClusterAlertRuleArgs args) {
         this(name, args, null);
     }
     /**
@@ -305,15 +305,22 @@ public class ClusterAlertRule extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ClusterAlertRule(String name, ClusterAlertRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/clusterAlertRule:ClusterAlertRule", name, args == null ? ClusterAlertRuleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ClusterAlertRule(java.lang.String name, ClusterAlertRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/clusterAlertRule:ClusterAlertRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ClusterAlertRule(String name, Output<String> id, @Nullable ClusterAlertRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/clusterAlertRule:ClusterAlertRule", name, state, makeResourceOptions(options, id));
+    private ClusterAlertRule(java.lang.String name, Output<java.lang.String> id, @Nullable ClusterAlertRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/clusterAlertRule:ClusterAlertRule", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ClusterAlertRuleArgs makeArgs(ClusterAlertRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ClusterAlertRuleArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -329,7 +336,7 @@ public class ClusterAlertRule extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ClusterAlertRule get(String name, Output<String> id, @Nullable ClusterAlertRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ClusterAlertRule get(java.lang.String name, Output<java.lang.String> id, @Nullable ClusterAlertRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ClusterAlertRule(name, id, state, options);
     }
 }

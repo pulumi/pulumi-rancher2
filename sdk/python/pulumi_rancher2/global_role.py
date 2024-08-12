@@ -280,7 +280,7 @@ class GlobalRole(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  new_user_default: Optional[pulumi.Input[bool]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GlobalRoleRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GlobalRoleRuleArgs', 'GlobalRoleRuleArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Rancher v2 Global Role resource. This can be used to create Global Role for Rancher v2 and retrieve their information.
@@ -296,11 +296,11 @@ class GlobalRole(pulumi.CustomResource):
             name="foo",
             new_user_default=True,
             description="Terraform global role acceptance test",
-            rules=[rancher2.GlobalRoleRuleArgs(
-                api_groups=["*"],
-                resources=["secrets"],
-                verbs=["create"],
-            )])
+            rules=[{
+                "api_groups": ["*"],
+                "resources": ["secrets"],
+                "verbs": ["create"],
+            }])
         ```
 
         ## Import
@@ -319,7 +319,7 @@ class GlobalRole(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for global role object (map)
         :param pulumi.Input[str] name: Global role name (string)
         :param pulumi.Input[bool] new_user_default: Whether or not this role should be added to new users. Default `false` (bool)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GlobalRoleRuleArgs']]]] rules: Global role policy rules (list)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GlobalRoleRuleArgs', 'GlobalRoleRuleArgsDict']]]] rules: Global role policy rules (list)
         """
         ...
     @overload
@@ -341,11 +341,11 @@ class GlobalRole(pulumi.CustomResource):
             name="foo",
             new_user_default=True,
             description="Terraform global role acceptance test",
-            rules=[rancher2.GlobalRoleRuleArgs(
-                api_groups=["*"],
-                resources=["secrets"],
-                verbs=["create"],
-            )])
+            rules=[{
+                "api_groups": ["*"],
+                "resources": ["secrets"],
+                "verbs": ["create"],
+            }])
         ```
 
         ## Import
@@ -377,7 +377,7 @@ class GlobalRole(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  new_user_default: Optional[pulumi.Input[bool]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GlobalRoleRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GlobalRoleRuleArgs', 'GlobalRoleRuleArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -412,7 +412,7 @@ class GlobalRole(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             new_user_default: Optional[pulumi.Input[bool]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GlobalRoleRuleArgs']]]]] = None) -> 'GlobalRole':
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GlobalRoleRuleArgs', 'GlobalRoleRuleArgsDict']]]]] = None) -> 'GlobalRole':
         """
         Get an existing GlobalRole resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -427,7 +427,7 @@ class GlobalRole(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for global role object (map)
         :param pulumi.Input[str] name: Global role name (string)
         :param pulumi.Input[bool] new_user_default: Whether or not this role should be added to new users. Default `false` (bool)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GlobalRoleRuleArgs']]]] rules: Global role policy rules (list)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GlobalRoleRuleArgs', 'GlobalRoleRuleArgsDict']]]] rules: Global role policy rules (list)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

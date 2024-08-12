@@ -167,7 +167,7 @@ public class GlobalRoleBinding extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GlobalRoleBinding(String name) {
+    public GlobalRoleBinding(java.lang.String name) {
         this(name, GlobalRoleBindingArgs.Empty);
     }
     /**
@@ -175,7 +175,7 @@ public class GlobalRoleBinding extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GlobalRoleBinding(String name, GlobalRoleBindingArgs args) {
+    public GlobalRoleBinding(java.lang.String name, GlobalRoleBindingArgs args) {
         this(name, args, null);
     }
     /**
@@ -184,15 +184,22 @@ public class GlobalRoleBinding extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GlobalRoleBinding(String name, GlobalRoleBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/globalRoleBinding:GlobalRoleBinding", name, args == null ? GlobalRoleBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public GlobalRoleBinding(java.lang.String name, GlobalRoleBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/globalRoleBinding:GlobalRoleBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private GlobalRoleBinding(String name, Output<String> id, @Nullable GlobalRoleBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/globalRoleBinding:GlobalRoleBinding", name, state, makeResourceOptions(options, id));
+    private GlobalRoleBinding(java.lang.String name, Output<java.lang.String> id, @Nullable GlobalRoleBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/globalRoleBinding:GlobalRoleBinding", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static GlobalRoleBindingArgs makeArgs(GlobalRoleBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GlobalRoleBindingArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -208,7 +215,7 @@ public class GlobalRoleBinding extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GlobalRoleBinding get(String name, Output<String> id, @Nullable GlobalRoleBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GlobalRoleBinding get(java.lang.String name, Output<java.lang.String> id, @Nullable GlobalRoleBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GlobalRoleBinding(name, id, state, options);
     }
 }

@@ -262,7 +262,7 @@ class Registry(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  namespace_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 registries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegistryRegistryArgs']]]]] = None,
+                 registries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegistryRegistryArgs', 'RegistryRegistryArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Rancher v2 Registry resource. This resource creates Kubernetes secrets with the type `kubernetes.io/dockerconfigjson` for authenticating against Docker registries for Rancher v2 environments and retrieving their information.
@@ -282,11 +282,11 @@ class Registry(pulumi.CustomResource):
             name="foo",
             description="Terraform registry foo",
             project_id="<project_id>",
-            registries=[rancher2.RegistryRegistryArgs(
-                address="test.io",
-                username="user",
-                password="pass",
-            )])
+            registries=[{
+                "address": "test.io",
+                "username": "user",
+                "password": "pass",
+            }])
         ```
 
         ```python
@@ -299,11 +299,11 @@ class Registry(pulumi.CustomResource):
             description="Terraform registry foo",
             project_id="<project_id>",
             namespace_id="<namespace_id>",
-            registries=[rancher2.RegistryRegistryArgs(
-                address="test.io",
-                username="user2",
-                password="pass",
-            )])
+            registries=[{
+                "address": "test.io",
+                "username": "user2",
+                "password": "pass",
+            }])
         ```
 
         ## Import
@@ -323,7 +323,7 @@ class Registry(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the registry (string)
         :param pulumi.Input[str] namespace_id: The namespace id where to assign the namespaced registry (string)
         :param pulumi.Input[str] project_id: The project id where to assign the registry (string)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegistryRegistryArgs']]]] registries: Registries data for registry (list)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegistryRegistryArgs', 'RegistryRegistryArgsDict']]]] registries: Registries data for registry (list)
         """
         ...
     @overload
@@ -349,11 +349,11 @@ class Registry(pulumi.CustomResource):
             name="foo",
             description="Terraform registry foo",
             project_id="<project_id>",
-            registries=[rancher2.RegistryRegistryArgs(
-                address="test.io",
-                username="user",
-                password="pass",
-            )])
+            registries=[{
+                "address": "test.io",
+                "username": "user",
+                "password": "pass",
+            }])
         ```
 
         ```python
@@ -366,11 +366,11 @@ class Registry(pulumi.CustomResource):
             description="Terraform registry foo",
             project_id="<project_id>",
             namespace_id="<namespace_id>",
-            registries=[rancher2.RegistryRegistryArgs(
-                address="test.io",
-                username="user2",
-                password="pass",
-            )])
+            registries=[{
+                "address": "test.io",
+                "username": "user2",
+                "password": "pass",
+            }])
         ```
 
         ## Import
@@ -403,7 +403,7 @@ class Registry(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  namespace_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 registries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegistryRegistryArgs']]]]] = None,
+                 registries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegistryRegistryArgs', 'RegistryRegistryArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -440,7 +440,7 @@ class Registry(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             namespace_id: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
-            registries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegistryRegistryArgs']]]]] = None) -> 'Registry':
+            registries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegistryRegistryArgs', 'RegistryRegistryArgsDict']]]]] = None) -> 'Registry':
         """
         Get an existing Registry resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -454,7 +454,7 @@ class Registry(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the registry (string)
         :param pulumi.Input[str] namespace_id: The namespace id where to assign the namespaced registry (string)
         :param pulumi.Input[str] project_id: The project id where to assign the registry (string)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegistryRegistryArgs']]]] registries: Registries data for registry (list)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegistryRegistryArgs', 'RegistryRegistryArgsDict']]]] registries: Registries data for registry (list)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

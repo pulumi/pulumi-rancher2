@@ -325,7 +325,7 @@ public class RoleTemplate extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RoleTemplate(String name) {
+    public RoleTemplate(java.lang.String name) {
         this(name, RoleTemplateArgs.Empty);
     }
     /**
@@ -333,7 +333,7 @@ public class RoleTemplate extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RoleTemplate(String name, @Nullable RoleTemplateArgs args) {
+    public RoleTemplate(java.lang.String name, @Nullable RoleTemplateArgs args) {
         this(name, args, null);
     }
     /**
@@ -342,15 +342,22 @@ public class RoleTemplate extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RoleTemplate(String name, @Nullable RoleTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/roleTemplate:RoleTemplate", name, args == null ? RoleTemplateArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public RoleTemplate(java.lang.String name, @Nullable RoleTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/roleTemplate:RoleTemplate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RoleTemplate(String name, Output<String> id, @Nullable RoleTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/roleTemplate:RoleTemplate", name, state, makeResourceOptions(options, id));
+    private RoleTemplate(java.lang.String name, Output<java.lang.String> id, @Nullable RoleTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/roleTemplate:RoleTemplate", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RoleTemplateArgs makeArgs(@Nullable RoleTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RoleTemplateArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -366,7 +373,7 @@ public class RoleTemplate extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RoleTemplate get(String name, Output<String> id, @Nullable RoleTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RoleTemplate get(java.lang.String name, Output<java.lang.String> id, @Nullable RoleTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RoleTemplate(name, id, state, options);
     }
 }

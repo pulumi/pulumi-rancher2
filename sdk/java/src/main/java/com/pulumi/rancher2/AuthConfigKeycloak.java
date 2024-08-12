@@ -298,7 +298,7 @@ public class AuthConfigKeycloak extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AuthConfigKeycloak(String name) {
+    public AuthConfigKeycloak(java.lang.String name) {
         this(name, AuthConfigKeycloakArgs.Empty);
     }
     /**
@@ -306,7 +306,7 @@ public class AuthConfigKeycloak extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AuthConfigKeycloak(String name, AuthConfigKeycloakArgs args) {
+    public AuthConfigKeycloak(java.lang.String name, AuthConfigKeycloakArgs args) {
         this(name, args, null);
     }
     /**
@@ -315,15 +315,22 @@ public class AuthConfigKeycloak extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AuthConfigKeycloak(String name, AuthConfigKeycloakArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/authConfigKeycloak:AuthConfigKeycloak", name, args == null ? AuthConfigKeycloakArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AuthConfigKeycloak(java.lang.String name, AuthConfigKeycloakArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/authConfigKeycloak:AuthConfigKeycloak", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AuthConfigKeycloak(String name, Output<String> id, @Nullable AuthConfigKeycloakState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/authConfigKeycloak:AuthConfigKeycloak", name, state, makeResourceOptions(options, id));
+    private AuthConfigKeycloak(java.lang.String name, Output<java.lang.String> id, @Nullable AuthConfigKeycloakState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/authConfigKeycloak:AuthConfigKeycloak", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AuthConfigKeycloakArgs makeArgs(AuthConfigKeycloakArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AuthConfigKeycloakArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -344,7 +351,7 @@ public class AuthConfigKeycloak extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AuthConfigKeycloak get(String name, Output<String> id, @Nullable AuthConfigKeycloakState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AuthConfigKeycloak get(java.lang.String name, Output<java.lang.String> id, @Nullable AuthConfigKeycloakState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AuthConfigKeycloak(name, id, state, options);
     }
 }

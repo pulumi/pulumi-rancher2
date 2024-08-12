@@ -351,7 +351,7 @@ public class CloudCredential extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public CloudCredential(String name) {
+    public CloudCredential(java.lang.String name) {
         this(name, CloudCredentialArgs.Empty);
     }
     /**
@@ -359,7 +359,7 @@ public class CloudCredential extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CloudCredential(String name, @Nullable CloudCredentialArgs args) {
+    public CloudCredential(java.lang.String name, @Nullable CloudCredentialArgs args) {
         this(name, args, null);
     }
     /**
@@ -368,15 +368,22 @@ public class CloudCredential extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CloudCredential(String name, @Nullable CloudCredentialArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/cloudCredential:CloudCredential", name, args == null ? CloudCredentialArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public CloudCredential(java.lang.String name, @Nullable CloudCredentialArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/cloudCredential:CloudCredential", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private CloudCredential(String name, Output<String> id, @Nullable CloudCredentialState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("rancher2:index/cloudCredential:CloudCredential", name, state, makeResourceOptions(options, id));
+    private CloudCredential(java.lang.String name, Output<java.lang.String> id, @Nullable CloudCredentialState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("rancher2:index/cloudCredential:CloudCredential", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static CloudCredentialArgs makeArgs(@Nullable CloudCredentialArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CloudCredentialArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -392,7 +399,7 @@ public class CloudCredential extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static CloudCredential get(String name, Output<String> id, @Nullable CloudCredentialState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static CloudCredential get(java.lang.String name, Output<java.lang.String> id, @Nullable CloudCredentialState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new CloudCredential(name, id, state, options);
     }
 }

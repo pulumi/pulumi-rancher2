@@ -495,18 +495,18 @@ class MultiClusterApp(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 answers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MultiClusterAppAnswerArgs']]]]] = None,
+                 answers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MultiClusterAppAnswerArgs', 'MultiClusterAppAnswerArgsDict']]]]] = None,
                  catalog_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MultiClusterAppMemberArgs']]]]] = None,
+                 members: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MultiClusterAppMemberArgs', 'MultiClusterAppMemberArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  revision_history_limit: Optional[pulumi.Input[int]] = None,
                  revision_id: Optional[pulumi.Input[str]] = None,
                  roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 targets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MultiClusterAppTargetArgs']]]]] = None,
+                 targets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MultiClusterAppTargetArgs', 'MultiClusterAppTargetArgsDict']]]]] = None,
                  template_name: Optional[pulumi.Input[str]] = None,
                  template_version: Optional[pulumi.Input[str]] = None,
-                 upgrade_strategy: Optional[pulumi.Input[pulumi.InputType['MultiClusterAppUpgradeStrategyArgs']]] = None,
+                 upgrade_strategy: Optional[pulumi.Input[Union['MultiClusterAppUpgradeStrategyArgs', 'MultiClusterAppUpgradeStrategyArgsDict']]] = None,
                  wait: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
@@ -529,16 +529,16 @@ class MultiClusterApp(pulumi.CustomResource):
         foo = rancher2.MultiClusterApp("foo",
             catalog_name="<catalog_name>",
             name="foo",
-            targets=[rancher2.MultiClusterAppTargetArgs(
-                project_id="<project_id>",
-            )],
+            targets=[{
+                "project_id": "<project_id>",
+            }],
             template_name="<template_name>",
             template_version="<template_version>",
-            answers=[rancher2.MultiClusterAppAnswerArgs(
-                values={
+            answers=[{
+                "values": {
                     "ingress_host": "test.xip.io",
                 },
-            )],
+            }],
             roles=["project-member"])
         ```
 
@@ -551,27 +551,27 @@ class MultiClusterApp(pulumi.CustomResource):
             catalog_name="<catalog_name>",
             name="foo",
             targets=[
-                rancher2.MultiClusterAppTargetArgs(
-                    project_id="<project_id1>",
-                ),
-                rancher2.MultiClusterAppTargetArgs(
-                    project_id="<project_id2>",
-                ),
+                {
+                    "project_id": "<project_id1>",
+                },
+                {
+                    "project_id": "<project_id2>",
+                },
             ],
             template_name="<template_name>",
             template_version="<template_version>",
             answers=[
-                rancher2.MultiClusterAppAnswerArgs(
-                    values={
+                {
+                    "values": {
                         "ingress_host": "test.xip.io",
                     },
-                ),
-                rancher2.MultiClusterAppAnswerArgs(
-                    project_id="<project_id2>",
-                    values={
+                },
+                {
+                    "project_id": "<project_id2>",
+                    "values": {
                         "ingress_host": "test2.xip.io",
                     },
-                ),
+                },
             ],
             roles=["project-member"])
         ```
@@ -587,18 +587,18 @@ class MultiClusterApp(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for multi cluster app object (map)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MultiClusterAppAnswerArgs']]]] answers: The multi cluster app answers (list)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MultiClusterAppAnswerArgs', 'MultiClusterAppAnswerArgsDict']]]] answers: The multi cluster app answers (list)
         :param pulumi.Input[str] catalog_name: The multi cluster app catalog name (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for multi cluster app object (map)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MultiClusterAppMemberArgs']]]] members: The multi cluster app answers (list)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MultiClusterAppMemberArgs', 'MultiClusterAppMemberArgsDict']]]] members: The multi cluster app answers (list)
         :param pulumi.Input[str] name: The multi cluster app name (string)
         :param pulumi.Input[int] revision_history_limit: The multi cluster app revision history limit. Default `10` (int)
         :param pulumi.Input[str] revision_id: Current revision id for the multi cluster app (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The multi cluster app roles (list)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MultiClusterAppTargetArgs']]]] targets: The multi cluster app target projects (list)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MultiClusterAppTargetArgs', 'MultiClusterAppTargetArgsDict']]]] targets: The multi cluster app target projects (list)
         :param pulumi.Input[str] template_name: The multi cluster app template name (string)
         :param pulumi.Input[str] template_version: The multi cluster app template version. Default: `latest` (string)
-        :param pulumi.Input[pulumi.InputType['MultiClusterAppUpgradeStrategyArgs']] upgrade_strategy: The multi cluster app upgrade strategy (list MaxItems:1)
+        :param pulumi.Input[Union['MultiClusterAppUpgradeStrategyArgs', 'MultiClusterAppUpgradeStrategyArgsDict']] upgrade_strategy: The multi cluster app upgrade strategy (list MaxItems:1)
         :param pulumi.Input[bool] wait: Wait until the multi cluster app is active. Default `true` (bool)
         """
         ...
@@ -627,16 +627,16 @@ class MultiClusterApp(pulumi.CustomResource):
         foo = rancher2.MultiClusterApp("foo",
             catalog_name="<catalog_name>",
             name="foo",
-            targets=[rancher2.MultiClusterAppTargetArgs(
-                project_id="<project_id>",
-            )],
+            targets=[{
+                "project_id": "<project_id>",
+            }],
             template_name="<template_name>",
             template_version="<template_version>",
-            answers=[rancher2.MultiClusterAppAnswerArgs(
-                values={
+            answers=[{
+                "values": {
                     "ingress_host": "test.xip.io",
                 },
-            )],
+            }],
             roles=["project-member"])
         ```
 
@@ -649,27 +649,27 @@ class MultiClusterApp(pulumi.CustomResource):
             catalog_name="<catalog_name>",
             name="foo",
             targets=[
-                rancher2.MultiClusterAppTargetArgs(
-                    project_id="<project_id1>",
-                ),
-                rancher2.MultiClusterAppTargetArgs(
-                    project_id="<project_id2>",
-                ),
+                {
+                    "project_id": "<project_id1>",
+                },
+                {
+                    "project_id": "<project_id2>",
+                },
             ],
             template_name="<template_name>",
             template_version="<template_version>",
             answers=[
-                rancher2.MultiClusterAppAnswerArgs(
-                    values={
+                {
+                    "values": {
                         "ingress_host": "test.xip.io",
                     },
-                ),
-                rancher2.MultiClusterAppAnswerArgs(
-                    project_id="<project_id2>",
-                    values={
+                },
+                {
+                    "project_id": "<project_id2>",
+                    "values": {
                         "ingress_host": "test2.xip.io",
                     },
-                ),
+                },
             ],
             roles=["project-member"])
         ```
@@ -698,18 +698,18 @@ class MultiClusterApp(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 answers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MultiClusterAppAnswerArgs']]]]] = None,
+                 answers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MultiClusterAppAnswerArgs', 'MultiClusterAppAnswerArgsDict']]]]] = None,
                  catalog_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MultiClusterAppMemberArgs']]]]] = None,
+                 members: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MultiClusterAppMemberArgs', 'MultiClusterAppMemberArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  revision_history_limit: Optional[pulumi.Input[int]] = None,
                  revision_id: Optional[pulumi.Input[str]] = None,
                  roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 targets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MultiClusterAppTargetArgs']]]]] = None,
+                 targets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MultiClusterAppTargetArgs', 'MultiClusterAppTargetArgsDict']]]]] = None,
                  template_name: Optional[pulumi.Input[str]] = None,
                  template_version: Optional[pulumi.Input[str]] = None,
-                 upgrade_strategy: Optional[pulumi.Input[pulumi.InputType['MultiClusterAppUpgradeStrategyArgs']]] = None,
+                 upgrade_strategy: Optional[pulumi.Input[Union['MultiClusterAppUpgradeStrategyArgs', 'MultiClusterAppUpgradeStrategyArgsDict']]] = None,
                  wait: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -754,19 +754,19 @@ class MultiClusterApp(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            answers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MultiClusterAppAnswerArgs']]]]] = None,
+            answers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MultiClusterAppAnswerArgs', 'MultiClusterAppAnswerArgsDict']]]]] = None,
             catalog_name: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            members: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MultiClusterAppMemberArgs']]]]] = None,
+            members: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MultiClusterAppMemberArgs', 'MultiClusterAppMemberArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             revision_history_limit: Optional[pulumi.Input[int]] = None,
             revision_id: Optional[pulumi.Input[str]] = None,
             roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            targets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MultiClusterAppTargetArgs']]]]] = None,
+            targets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MultiClusterAppTargetArgs', 'MultiClusterAppTargetArgsDict']]]]] = None,
             template_name: Optional[pulumi.Input[str]] = None,
             template_version: Optional[pulumi.Input[str]] = None,
             template_version_id: Optional[pulumi.Input[str]] = None,
-            upgrade_strategy: Optional[pulumi.Input[pulumi.InputType['MultiClusterAppUpgradeStrategyArgs']]] = None,
+            upgrade_strategy: Optional[pulumi.Input[Union['MultiClusterAppUpgradeStrategyArgs', 'MultiClusterAppUpgradeStrategyArgsDict']]] = None,
             wait: Optional[pulumi.Input[bool]] = None) -> 'MultiClusterApp':
         """
         Get an existing MultiClusterApp resource's state with the given name, id, and optional extra
@@ -776,19 +776,19 @@ class MultiClusterApp(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for multi cluster app object (map)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MultiClusterAppAnswerArgs']]]] answers: The multi cluster app answers (list)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MultiClusterAppAnswerArgs', 'MultiClusterAppAnswerArgsDict']]]] answers: The multi cluster app answers (list)
         :param pulumi.Input[str] catalog_name: The multi cluster app catalog name (string)
         :param pulumi.Input[Mapping[str, Any]] labels: Labels for multi cluster app object (map)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MultiClusterAppMemberArgs']]]] members: The multi cluster app answers (list)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MultiClusterAppMemberArgs', 'MultiClusterAppMemberArgsDict']]]] members: The multi cluster app answers (list)
         :param pulumi.Input[str] name: The multi cluster app name (string)
         :param pulumi.Input[int] revision_history_limit: The multi cluster app revision history limit. Default `10` (int)
         :param pulumi.Input[str] revision_id: Current revision id for the multi cluster app (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The multi cluster app roles (list)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MultiClusterAppTargetArgs']]]] targets: The multi cluster app target projects (list)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MultiClusterAppTargetArgs', 'MultiClusterAppTargetArgsDict']]]] targets: The multi cluster app target projects (list)
         :param pulumi.Input[str] template_name: The multi cluster app template name (string)
         :param pulumi.Input[str] template_version: The multi cluster app template version. Default: `latest` (string)
         :param pulumi.Input[str] template_version_id: (Computed) The multi cluster app template version ID (string)
-        :param pulumi.Input[pulumi.InputType['MultiClusterAppUpgradeStrategyArgs']] upgrade_strategy: The multi cluster app upgrade strategy (list MaxItems:1)
+        :param pulumi.Input[Union['MultiClusterAppUpgradeStrategyArgs', 'MultiClusterAppUpgradeStrategyArgsDict']] upgrade_strategy: The multi cluster app upgrade strategy (list MaxItems:1)
         :param pulumi.Input[bool] wait: Wait until the multi cluster app is active. Default `true` (bool)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
