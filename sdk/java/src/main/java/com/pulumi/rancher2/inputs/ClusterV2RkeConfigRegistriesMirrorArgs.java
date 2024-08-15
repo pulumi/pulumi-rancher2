@@ -6,7 +6,6 @@ package com.pulumi.rancher2.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -54,13 +53,13 @@ public final class ClusterV2RkeConfigRegistriesMirrorArgs extends com.pulumi.res
      * 
      */
     @Import(name="rewrites")
-    private @Nullable Output<Map<String,Object>> rewrites;
+    private @Nullable Output<Map<String,String>> rewrites;
 
     /**
      * @return Registry mirror rewrites
      * 
      */
-    public Optional<Output<Map<String,Object>>> rewrites() {
+    public Optional<Output<Map<String,String>>> rewrites() {
         return Optional.ofNullable(this.rewrites);
     }
 
@@ -148,7 +147,7 @@ public final class ClusterV2RkeConfigRegistriesMirrorArgs extends com.pulumi.res
          * @return builder
          * 
          */
-        public Builder rewrites(@Nullable Output<Map<String,Object>> rewrites) {
+        public Builder rewrites(@Nullable Output<Map<String,String>> rewrites) {
             $.rewrites = rewrites;
             return this;
         }
@@ -159,7 +158,7 @@ public final class ClusterV2RkeConfigRegistriesMirrorArgs extends com.pulumi.res
          * @return builder
          * 
          */
-        public Builder rewrites(Map<String,Object> rewrites) {
+        public Builder rewrites(Map<String,String> rewrites) {
             return rewrites(Output.of(rewrites));
         }
 

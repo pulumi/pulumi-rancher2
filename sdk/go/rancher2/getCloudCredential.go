@@ -57,12 +57,12 @@ type LookupCloudCredentialArgs struct {
 // A collection of values returned by getCloudCredential.
 type LookupCloudCredentialResult struct {
 	// (Computed) Annotations for the Cloud Credential (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels for the Cloud Credential (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	Name   string                 `pulumi:"name"`
+	Labels map[string]string `pulumi:"labels"`
+	Name   string            `pulumi:"name"`
 }
 
 func LookupCloudCredentialOutput(ctx *pulumi.Context, args LookupCloudCredentialOutputArgs, opts ...pulumi.InvokeOption) LookupCloudCredentialResultOutput {
@@ -104,8 +104,8 @@ func (o LookupCloudCredentialResultOutput) ToLookupCloudCredentialResultOutputWi
 }
 
 // (Computed) Annotations for the Cloud Credential (map)
-func (o LookupCloudCredentialResultOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupCloudCredentialResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+func (o LookupCloudCredentialResultOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupCloudCredentialResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -114,8 +114,8 @@ func (o LookupCloudCredentialResultOutput) Id() pulumi.StringOutput {
 }
 
 // (Computed) Labels for the Cloud Credential (map)
-func (o LookupCloudCredentialResultOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupCloudCredentialResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+func (o LookupCloudCredentialResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupCloudCredentialResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupCloudCredentialResultOutput) Name() pulumi.StringOutput {

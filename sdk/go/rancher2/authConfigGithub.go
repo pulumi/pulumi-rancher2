@@ -51,7 +51,7 @@ type AuthConfigGithub struct {
 	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `github_user://<USER_ID>`  `github_team://<GROUP_ID>` `github_org://<ORG_ID>` (list)
 	AllowedPrincipalIds pulumi.StringArrayOutput `pulumi:"allowedPrincipalIds"`
 	// Annotations of the resource (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Github auth Client ID (string)
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
 	// Github auth Client secret (string)
@@ -61,7 +61,7 @@ type AuthConfigGithub struct {
 	// Github hostname to connect. Default `github.com` (string)
 	Hostname pulumi.StringPtrOutput `pulumi:"hostname"`
 	// Labels of the resource (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// (Computed) The name of the resource (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Enable TLS connection. Default `true` (bool)
@@ -122,7 +122,7 @@ type authConfigGithubState struct {
 	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `github_user://<USER_ID>`  `github_team://<GROUP_ID>` `github_org://<ORG_ID>` (list)
 	AllowedPrincipalIds []string `pulumi:"allowedPrincipalIds"`
 	// Annotations of the resource (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// Github auth Client ID (string)
 	ClientId *string `pulumi:"clientId"`
 	// Github auth Client secret (string)
@@ -132,7 +132,7 @@ type authConfigGithubState struct {
 	// Github hostname to connect. Default `github.com` (string)
 	Hostname *string `pulumi:"hostname"`
 	// Labels of the resource (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// (Computed) The name of the resource (string)
 	Name *string `pulumi:"name"`
 	// Enable TLS connection. Default `true` (bool)
@@ -147,7 +147,7 @@ type AuthConfigGithubState struct {
 	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `github_user://<USER_ID>`  `github_team://<GROUP_ID>` `github_org://<ORG_ID>` (list)
 	AllowedPrincipalIds pulumi.StringArrayInput
 	// Annotations of the resource (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// Github auth Client ID (string)
 	ClientId pulumi.StringPtrInput
 	// Github auth Client secret (string)
@@ -157,7 +157,7 @@ type AuthConfigGithubState struct {
 	// Github hostname to connect. Default `github.com` (string)
 	Hostname pulumi.StringPtrInput
 	// Labels of the resource (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// (Computed) The name of the resource (string)
 	Name pulumi.StringPtrInput
 	// Enable TLS connection. Default `true` (bool)
@@ -176,7 +176,7 @@ type authConfigGithubArgs struct {
 	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `github_user://<USER_ID>`  `github_team://<GROUP_ID>` `github_org://<ORG_ID>` (list)
 	AllowedPrincipalIds []string `pulumi:"allowedPrincipalIds"`
 	// Annotations of the resource (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// Github auth Client ID (string)
 	ClientId string `pulumi:"clientId"`
 	// Github auth Client secret (string)
@@ -186,7 +186,7 @@ type authConfigGithubArgs struct {
 	// Github hostname to connect. Default `github.com` (string)
 	Hostname *string `pulumi:"hostname"`
 	// Labels of the resource (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// Enable TLS connection. Default `true` (bool)
 	Tls *bool `pulumi:"tls"`
 }
@@ -198,7 +198,7 @@ type AuthConfigGithubArgs struct {
 	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `github_user://<USER_ID>`  `github_team://<GROUP_ID>` `github_org://<ORG_ID>` (list)
 	AllowedPrincipalIds pulumi.StringArrayInput
 	// Annotations of the resource (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// Github auth Client ID (string)
 	ClientId pulumi.StringInput
 	// Github auth Client secret (string)
@@ -208,7 +208,7 @@ type AuthConfigGithubArgs struct {
 	// Github hostname to connect. Default `github.com` (string)
 	Hostname pulumi.StringPtrInput
 	// Labels of the resource (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// Enable TLS connection. Default `true` (bool)
 	Tls pulumi.BoolPtrInput
 }
@@ -311,8 +311,8 @@ func (o AuthConfigGithubOutput) AllowedPrincipalIds() pulumi.StringArrayOutput {
 }
 
 // Annotations of the resource (map)
-func (o AuthConfigGithubOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *AuthConfigGithub) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o AuthConfigGithubOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AuthConfigGithub) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // Github auth Client ID (string)
@@ -336,8 +336,8 @@ func (o AuthConfigGithubOutput) Hostname() pulumi.StringPtrOutput {
 }
 
 // Labels of the resource (map)
-func (o AuthConfigGithubOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *AuthConfigGithub) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o AuthConfigGithubOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AuthConfigGithub) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // (Computed) The name of the resource (string)

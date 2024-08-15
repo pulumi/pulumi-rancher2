@@ -111,7 +111,7 @@ namespace Pulumi.Rancher2
         /// (Computed) Optional Agent Env Vars for Rancher agent (list)
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterV2AgentEnvVarResult> AgentEnvVars;
-        public readonly ImmutableDictionary<string, object> Annotations;
+        public readonly ImmutableDictionary<string, string> Annotations;
         /// <summary>
         /// (Computed) Cluster V2 cloud credential secret name (string)
         /// </summary>
@@ -153,7 +153,7 @@ namespace Pulumi.Rancher2
         /// (Computed) The kubernetes version of the Cluster v2 (list maxitems:1)
         /// </summary>
         public readonly string KubernetesVersion;
-        public readonly ImmutableDictionary<string, object> Labels;
+        public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
         /// <summary>
         /// (Computed) Cluster v2 k8s resource version (string)
@@ -168,7 +168,7 @@ namespace Pulumi.Rancher2
         private GetClusterV2Result(
             ImmutableArray<Outputs.GetClusterV2AgentEnvVarResult> agentEnvVars,
 
-            ImmutableDictionary<string, object> annotations,
+            ImmutableDictionary<string, string> annotations,
 
             string cloudCredentialSecretName,
 
@@ -192,7 +192,7 @@ namespace Pulumi.Rancher2
 
             string kubernetesVersion,
 
-            ImmutableDictionary<string, object> labels,
+            ImmutableDictionary<string, string> labels,
 
             string name,
 

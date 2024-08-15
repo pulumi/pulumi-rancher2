@@ -136,13 +136,13 @@ type ClusterTemplate struct {
 	pulumi.CustomResourceState
 
 	// Annotations for the cluster template (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// (Computed) Default cluster template revision ID (string)
 	DefaultRevisionId pulumi.StringOutput `pulumi:"defaultRevisionId"`
 	// Cluster template description
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Labels for the cluster template (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Cluster template members (list)
 	Members ClusterTemplateMemberArrayOutput `pulumi:"members"`
 	// The cluster template name (string)
@@ -182,13 +182,13 @@ func GetClusterTemplate(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ClusterTemplate resources.
 type clusterTemplateState struct {
 	// Annotations for the cluster template (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// (Computed) Default cluster template revision ID (string)
 	DefaultRevisionId *string `pulumi:"defaultRevisionId"`
 	// Cluster template description
 	Description *string `pulumi:"description"`
 	// Labels for the cluster template (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// Cluster template members (list)
 	Members []ClusterTemplateMember `pulumi:"members"`
 	// The cluster template name (string)
@@ -199,13 +199,13 @@ type clusterTemplateState struct {
 
 type ClusterTemplateState struct {
 	// Annotations for the cluster template (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// (Computed) Default cluster template revision ID (string)
 	DefaultRevisionId pulumi.StringPtrInput
 	// Cluster template description
 	Description pulumi.StringPtrInput
 	// Labels for the cluster template (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// Cluster template members (list)
 	Members ClusterTemplateMemberArrayInput
 	// The cluster template name (string)
@@ -220,11 +220,11 @@ func (ClusterTemplateState) ElementType() reflect.Type {
 
 type clusterTemplateArgs struct {
 	// Annotations for the cluster template (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// Cluster template description
 	Description *string `pulumi:"description"`
 	// Labels for the cluster template (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// Cluster template members (list)
 	Members []ClusterTemplateMember `pulumi:"members"`
 	// The cluster template name (string)
@@ -236,11 +236,11 @@ type clusterTemplateArgs struct {
 // The set of arguments for constructing a ClusterTemplate resource.
 type ClusterTemplateArgs struct {
 	// Annotations for the cluster template (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// Cluster template description
 	Description pulumi.StringPtrInput
 	// Labels for the cluster template (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// Cluster template members (list)
 	Members ClusterTemplateMemberArrayInput
 	// The cluster template name (string)
@@ -337,8 +337,8 @@ func (o ClusterTemplateOutput) ToClusterTemplateOutputWithContext(ctx context.Co
 }
 
 // Annotations for the cluster template (map)
-func (o ClusterTemplateOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClusterTemplate) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o ClusterTemplateOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // (Computed) Default cluster template revision ID (string)
@@ -352,8 +352,8 @@ func (o ClusterTemplateOutput) Description() pulumi.StringPtrOutput {
 }
 
 // Labels for the cluster template (map)
-func (o ClusterTemplateOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClusterTemplate) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o ClusterTemplateOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // Cluster template members (list)

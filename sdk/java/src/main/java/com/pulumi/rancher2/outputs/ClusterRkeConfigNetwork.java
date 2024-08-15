@@ -11,7 +11,6 @@ import com.pulumi.rancher2.outputs.ClusterRkeConfigNetworkFlannelNetworkProvider
 import com.pulumi.rancher2.outputs.ClusterRkeConfigNetworkToleration;
 import com.pulumi.rancher2.outputs.ClusterRkeConfigNetworkWeaveNetworkProvider;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -50,7 +49,7 @@ public final class ClusterRkeConfigNetwork {
      * @return RKE options for network (map)
      * 
      */
-    private @Nullable Map<String,Object> options;
+    private @Nullable Map<String,String> options;
     /**
      * @return Plugin for RKE network. `canal` (default), `flannel`, `calico`, `none` and `weave` are supported. (string)
      * 
@@ -107,7 +106,7 @@ public final class ClusterRkeConfigNetwork {
      * @return RKE options for network (map)
      * 
      */
-    public Map<String,Object> options() {
+    public Map<String,String> options() {
         return this.options == null ? Map.of() : this.options;
     }
     /**
@@ -146,7 +145,7 @@ public final class ClusterRkeConfigNetwork {
         private @Nullable ClusterRkeConfigNetworkCanalNetworkProvider canalNetworkProvider;
         private @Nullable ClusterRkeConfigNetworkFlannelNetworkProvider flannelNetworkProvider;
         private @Nullable Integer mtu;
-        private @Nullable Map<String,Object> options;
+        private @Nullable Map<String,String> options;
         private @Nullable String plugin;
         private @Nullable List<ClusterRkeConfigNetworkToleration> tolerations;
         private @Nullable ClusterRkeConfigNetworkWeaveNetworkProvider weaveNetworkProvider;
@@ -195,7 +194,7 @@ public final class ClusterRkeConfigNetwork {
             return this;
         }
         @CustomType.Setter
-        public Builder options(@Nullable Map<String,Object> options) {
+        public Builder options(@Nullable Map<String,String> options) {
 
             this.options = options;
             return this;

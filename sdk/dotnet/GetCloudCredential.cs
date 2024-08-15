@@ -96,7 +96,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Annotations for the Cloud Credential (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Annotations;
+        public readonly ImmutableDictionary<string, string> Annotations;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -104,16 +104,16 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Labels for the Cloud Credential (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Labels;
+        public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
 
         [OutputConstructor]
         private GetCloudCredentialResult(
-            ImmutableDictionary<string, object> annotations,
+            ImmutableDictionary<string, string> annotations,
 
             string id,
 
-            ImmutableDictionary<string, object> labels,
+            ImmutableDictionary<string, string> labels,
 
             string name)
         {

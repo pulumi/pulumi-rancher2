@@ -27,19 +27,19 @@ type StorageClassV2 struct {
 	// Is the provisioner of the storageClass v2 allowing volume expansion? (bool)
 	AllowVolumeExpansion pulumi.BoolOutput `pulumi:"allowVolumeExpansion"`
 	// Annotations for the storageClass v2 (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// The cluster id of the storageClass V2 (string)
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// The provisioner of the storageClass v2 (string)
 	K8sProvisioner pulumi.StringOutput `pulumi:"k8sProvisioner"`
 	// Labels for the storageClass v2 (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The mount options for storageClass v2 (list)
 	MountOptions pulumi.StringArrayOutput `pulumi:"mountOptions"`
 	// The name of the storageClass v2 (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The parameters for storageClass v2 (string)
-	Parameters pulumi.MapOutput `pulumi:"parameters"`
+	Parameters pulumi.StringMapOutput `pulumi:"parameters"`
 	// The reclaim policy for storageClass v2. `Delete`, `Recycle` and `Retain` values are allowed. Default: `Delete` (string)
 	ReclaimPolicy pulumi.StringPtrOutput `pulumi:"reclaimPolicy"`
 	// (Computed) The k8s resource version (string)
@@ -87,19 +87,19 @@ type storageClassV2State struct {
 	// Is the provisioner of the storageClass v2 allowing volume expansion? (bool)
 	AllowVolumeExpansion *bool `pulumi:"allowVolumeExpansion"`
 	// Annotations for the storageClass v2 (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// The cluster id of the storageClass V2 (string)
 	ClusterId *string `pulumi:"clusterId"`
 	// The provisioner of the storageClass v2 (string)
 	K8sProvisioner *string `pulumi:"k8sProvisioner"`
 	// Labels for the storageClass v2 (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The mount options for storageClass v2 (list)
 	MountOptions []string `pulumi:"mountOptions"`
 	// The name of the storageClass v2 (string)
 	Name *string `pulumi:"name"`
 	// The parameters for storageClass v2 (string)
-	Parameters map[string]interface{} `pulumi:"parameters"`
+	Parameters map[string]string `pulumi:"parameters"`
 	// The reclaim policy for storageClass v2. `Delete`, `Recycle` and `Retain` values are allowed. Default: `Delete` (string)
 	ReclaimPolicy *string `pulumi:"reclaimPolicy"`
 	// (Computed) The k8s resource version (string)
@@ -112,19 +112,19 @@ type StorageClassV2State struct {
 	// Is the provisioner of the storageClass v2 allowing volume expansion? (bool)
 	AllowVolumeExpansion pulumi.BoolPtrInput
 	// Annotations for the storageClass v2 (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// The cluster id of the storageClass V2 (string)
 	ClusterId pulumi.StringPtrInput
 	// The provisioner of the storageClass v2 (string)
 	K8sProvisioner pulumi.StringPtrInput
 	// Labels for the storageClass v2 (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The mount options for storageClass v2 (list)
 	MountOptions pulumi.StringArrayInput
 	// The name of the storageClass v2 (string)
 	Name pulumi.StringPtrInput
 	// The parameters for storageClass v2 (string)
-	Parameters pulumi.MapInput
+	Parameters pulumi.StringMapInput
 	// The reclaim policy for storageClass v2. `Delete`, `Recycle` and `Retain` values are allowed. Default: `Delete` (string)
 	ReclaimPolicy pulumi.StringPtrInput
 	// (Computed) The k8s resource version (string)
@@ -141,19 +141,19 @@ type storageClassV2Args struct {
 	// Is the provisioner of the storageClass v2 allowing volume expansion? (bool)
 	AllowVolumeExpansion *bool `pulumi:"allowVolumeExpansion"`
 	// Annotations for the storageClass v2 (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// The cluster id of the storageClass V2 (string)
 	ClusterId string `pulumi:"clusterId"`
 	// The provisioner of the storageClass v2 (string)
 	K8sProvisioner string `pulumi:"k8sProvisioner"`
 	// Labels for the storageClass v2 (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The mount options for storageClass v2 (list)
 	MountOptions []string `pulumi:"mountOptions"`
 	// The name of the storageClass v2 (string)
 	Name *string `pulumi:"name"`
 	// The parameters for storageClass v2 (string)
-	Parameters map[string]interface{} `pulumi:"parameters"`
+	Parameters map[string]string `pulumi:"parameters"`
 	// The reclaim policy for storageClass v2. `Delete`, `Recycle` and `Retain` values are allowed. Default: `Delete` (string)
 	ReclaimPolicy *string `pulumi:"reclaimPolicy"`
 	// The volume binding mode for storageClass v2. `Immediate` and `WaitForFirstConsumer` values are allowed. Default: `Immediate` (string)
@@ -165,19 +165,19 @@ type StorageClassV2Args struct {
 	// Is the provisioner of the storageClass v2 allowing volume expansion? (bool)
 	AllowVolumeExpansion pulumi.BoolPtrInput
 	// Annotations for the storageClass v2 (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// The cluster id of the storageClass V2 (string)
 	ClusterId pulumi.StringInput
 	// The provisioner of the storageClass v2 (string)
 	K8sProvisioner pulumi.StringInput
 	// Labels for the storageClass v2 (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The mount options for storageClass v2 (list)
 	MountOptions pulumi.StringArrayInput
 	// The name of the storageClass v2 (string)
 	Name pulumi.StringPtrInput
 	// The parameters for storageClass v2 (string)
-	Parameters pulumi.MapInput
+	Parameters pulumi.StringMapInput
 	// The reclaim policy for storageClass v2. `Delete`, `Recycle` and `Retain` values are allowed. Default: `Delete` (string)
 	ReclaimPolicy pulumi.StringPtrInput
 	// The volume binding mode for storageClass v2. `Immediate` and `WaitForFirstConsumer` values are allowed. Default: `Immediate` (string)
@@ -277,8 +277,8 @@ func (o StorageClassV2Output) AllowVolumeExpansion() pulumi.BoolOutput {
 }
 
 // Annotations for the storageClass v2 (map)
-func (o StorageClassV2Output) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *StorageClassV2) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o StorageClassV2Output) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *StorageClassV2) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // The cluster id of the storageClass V2 (string)
@@ -292,8 +292,8 @@ func (o StorageClassV2Output) K8sProvisioner() pulumi.StringOutput {
 }
 
 // Labels for the storageClass v2 (map)
-func (o StorageClassV2Output) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *StorageClassV2) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o StorageClassV2Output) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *StorageClassV2) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The mount options for storageClass v2 (list)
@@ -307,8 +307,8 @@ func (o StorageClassV2Output) Name() pulumi.StringOutput {
 }
 
 // The parameters for storageClass v2 (string)
-func (o StorageClassV2Output) Parameters() pulumi.MapOutput {
-	return o.ApplyT(func(v *StorageClassV2) pulumi.MapOutput { return v.Parameters }).(pulumi.MapOutput)
+func (o StorageClassV2Output) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *StorageClassV2) pulumi.StringMapOutput { return v.Parameters }).(pulumi.StringMapOutput)
 }
 
 // The reclaim policy for storageClass v2. `Delete`, `Recycle` and `Retain` values are allowed. Default: `Delete` (string)

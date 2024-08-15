@@ -16,7 +16,7 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// Annotations for the cluster template (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Annotations;
+        public readonly ImmutableDictionary<string, string>? Annotations;
         /// <summary>
         /// Cluster configuration
         /// </summary>
@@ -40,7 +40,7 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// Labels for the cluster template (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Labels;
+        public readonly ImmutableDictionary<string, string>? Labels;
         /// <summary>
         /// The cluster template name (string)
         /// </summary>
@@ -52,7 +52,7 @@ namespace Pulumi.Rancher2.Outputs
 
         [OutputConstructor]
         private ClusterTemplateTemplateRevision(
-            ImmutableDictionary<string, object>? annotations,
+            ImmutableDictionary<string, string>? annotations,
 
             Outputs.ClusterTemplateTemplateRevisionClusterConfig clusterConfig,
 
@@ -64,7 +64,7 @@ namespace Pulumi.Rancher2.Outputs
 
             string? id,
 
-            ImmutableDictionary<string, object>? labels,
+            ImmutableDictionary<string, string>? labels,
 
             string name,
 

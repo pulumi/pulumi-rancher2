@@ -108,7 +108,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Annotations for Node Template object (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Annotations;
+        public readonly ImmutableDictionary<string, string> Annotations;
         /// <summary>
         /// (Computed) Cloud credential ID for the Node Template. Required from Rancher v2.2.x (string)
         /// </summary>
@@ -124,7 +124,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Engine environment for the node template (string)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> EngineEnv;
+        public readonly ImmutableDictionary<string, string> EngineEnv;
         /// <summary>
         /// (Computed) Insecure registry for the node template (list)
         /// </summary>
@@ -136,11 +136,11 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Engine label for the node template (string)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> EngineLabel;
+        public readonly ImmutableDictionary<string, string> EngineLabel;
         /// <summary>
         /// (Computed) Engine options for the node template (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> EngineOpt;
+        public readonly ImmutableDictionary<string, string> EngineOpt;
         /// <summary>
         /// (Computed) Engine registry mirror for the node template (list)
         /// </summary>
@@ -156,7 +156,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Labels for Node Template object (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Labels;
+        public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
         /// <summary>
         /// (Computed) Node taints (List)
@@ -169,7 +169,7 @@ namespace Pulumi.Rancher2
 
         [OutputConstructor]
         private GetNodeTemplateResult(
-            ImmutableDictionary<string, object> annotations,
+            ImmutableDictionary<string, string> annotations,
 
             string cloudCredentialId,
 
@@ -177,15 +177,15 @@ namespace Pulumi.Rancher2
 
             string driver,
 
-            ImmutableDictionary<string, object> engineEnv,
+            ImmutableDictionary<string, string> engineEnv,
 
             ImmutableArray<string> engineInsecureRegistries,
 
             string engineInstallUrl,
 
-            ImmutableDictionary<string, object> engineLabel,
+            ImmutableDictionary<string, string> engineLabel,
 
-            ImmutableDictionary<string, object> engineOpt,
+            ImmutableDictionary<string, string> engineOpt,
 
             ImmutableArray<string> engineRegistryMirrors,
 
@@ -193,7 +193,7 @@ namespace Pulumi.Rancher2
 
             string id,
 
-            ImmutableDictionary<string, object> labels,
+            ImmutableDictionary<string, string> labels,
 
             string name,
 

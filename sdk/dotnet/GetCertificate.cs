@@ -170,7 +170,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Annotations for certificate object (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Annotations;
+        public readonly ImmutableDictionary<string, string> Annotations;
         /// <summary>
         /// (Computed) Base64 encoded certs (string)
         /// </summary>
@@ -186,14 +186,14 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Labels for certificate object (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Labels;
+        public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
         public readonly string? NamespaceId;
         public readonly string ProjectId;
 
         [OutputConstructor]
         private GetCertificateResult(
-            ImmutableDictionary<string, object> annotations,
+            ImmutableDictionary<string, string> annotations,
 
             string certs,
 
@@ -201,7 +201,7 @@ namespace Pulumi.Rancher2
 
             string id,
 
-            ImmutableDictionary<string, object> labels,
+            ImmutableDictionary<string, string> labels,
 
             string name,
 

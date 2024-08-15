@@ -132,7 +132,7 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// (Computed) Labels for Node Pool object (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Labels;
+        public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
         /// The number of local SSD disks to be attached to the node
         /// </summary>
@@ -204,7 +204,7 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// The map of Kubernetes labels (key/value pairs) to be applied to each cluster
         /// </summary>
-        public readonly ImmutableDictionary<string, object> ResourceLabels;
+        public readonly ImmutableDictionary<string, string> ResourceLabels;
         /// <summary>
         /// The Google Cloud Platform Service Account to be used by the node VMs
         /// </summary>
@@ -286,7 +286,7 @@ namespace Pulumi.Rancher2.Outputs
 
             bool? kubernetesDashboard,
 
-            ImmutableDictionary<string, object> labels,
+            ImmutableDictionary<string, string> labels,
 
             int? localSsdCount,
 
@@ -322,7 +322,7 @@ namespace Pulumi.Rancher2.Outputs
 
             string? region,
 
-            ImmutableDictionary<string, object> resourceLabels,
+            ImmutableDictionary<string, string> resourceLabels,
 
             string serviceAccount,
 

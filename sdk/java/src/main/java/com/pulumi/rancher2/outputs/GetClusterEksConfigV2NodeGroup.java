@@ -8,7 +8,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterEksConfigV2NodeGroupLaunchTemplate;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -52,7 +51,7 @@ public final class GetClusterEksConfigV2NodeGroup {
      * @return (Computed) Labels for Node Pool object (map)
      * 
      */
-    private @Nullable Map<String,Object> labels;
+    private @Nullable Map<String,String> labels;
     /**
      * @return The EKS node groups launch template
      * 
@@ -87,7 +86,7 @@ public final class GetClusterEksConfigV2NodeGroup {
      * @return The EKS node group resource tags
      * 
      */
-    private @Nullable Map<String,Object> resourceTags;
+    private @Nullable Map<String,String> resourceTags;
     /**
      * @return The EKS node group spot instance types
      * 
@@ -102,7 +101,7 @@ public final class GetClusterEksConfigV2NodeGroup {
      * @return The EKS node group tags
      * 
      */
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
     /**
      * @return The EKS node group user data
      * 
@@ -161,7 +160,7 @@ public final class GetClusterEksConfigV2NodeGroup {
      * @return (Computed) Labels for Node Pool object (map)
      * 
      */
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels == null ? Map.of() : this.labels;
     }
     /**
@@ -210,7 +209,7 @@ public final class GetClusterEksConfigV2NodeGroup {
      * @return The EKS node group resource tags
      * 
      */
-    public Map<String,Object> resourceTags() {
+    public Map<String,String> resourceTags() {
         return this.resourceTags == null ? Map.of() : this.resourceTags;
     }
     /**
@@ -231,7 +230,7 @@ public final class GetClusterEksConfigV2NodeGroup {
      * @return The EKS node group tags
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
     /**
@@ -264,17 +263,17 @@ public final class GetClusterEksConfigV2NodeGroup {
         private @Nullable Boolean gpu;
         private @Nullable String imageId;
         private @Nullable String instanceType;
-        private @Nullable Map<String,Object> labels;
+        private @Nullable Map<String,String> labels;
         private @Nullable List<GetClusterEksConfigV2NodeGroupLaunchTemplate> launchTemplates;
         private @Nullable Integer maxSize;
         private @Nullable Integer minSize;
         private String name;
         private @Nullable String nodeRole;
         private @Nullable Boolean requestSpotInstances;
-        private @Nullable Map<String,Object> resourceTags;
+        private @Nullable Map<String,String> resourceTags;
         private @Nullable List<String> spotInstanceTypes;
         private List<String> subnets;
-        private @Nullable Map<String,Object> tags;
+        private @Nullable Map<String,String> tags;
         private String userData;
         private String version;
         public Builder() {}
@@ -338,7 +337,7 @@ public final class GetClusterEksConfigV2NodeGroup {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(@Nullable Map<String,Object> labels) {
+        public Builder labels(@Nullable Map<String,String> labels) {
 
             this.labels = labels;
             return this;
@@ -385,7 +384,7 @@ public final class GetClusterEksConfigV2NodeGroup {
             return this;
         }
         @CustomType.Setter
-        public Builder resourceTags(@Nullable Map<String,Object> resourceTags) {
+        public Builder resourceTags(@Nullable Map<String,String> resourceTags) {
 
             this.resourceTags = resourceTags;
             return this;
@@ -411,7 +410,7 @@ public final class GetClusterEksConfigV2NodeGroup {
             return subnets(List.of(subnets));
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
             return this;

@@ -46,7 +46,7 @@ export class SecretV2 extends pulumi.CustomResource {
     /**
      * Annotations for the secret v2 (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: any}>;
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * The cluster id of the secret V2 (string)
      */
@@ -54,7 +54,7 @@ export class SecretV2 extends pulumi.CustomResource {
     /**
      * The data of the secret v2 (map)
      */
-    public readonly data!: pulumi.Output<{[key: string]: any}>;
+    public readonly data!: pulumi.Output<{[key: string]: string}>;
     /**
      * If set to true, any secret update will remove and recreate the secret. This is a beta field enabled by k8s `ImmutableEphemeralVolumes` feature gate. Default: `false` (bool)
      */
@@ -62,7 +62,7 @@ export class SecretV2 extends pulumi.CustomResource {
     /**
      * Labels for the secret v2 (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the secret v2 (string)
      */
@@ -134,7 +134,7 @@ export interface SecretV2State {
     /**
      * Annotations for the secret v2 (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The cluster id of the secret V2 (string)
      */
@@ -142,7 +142,7 @@ export interface SecretV2State {
     /**
      * The data of the secret v2 (map)
      */
-    data?: pulumi.Input<{[key: string]: any}>;
+    data?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * If set to true, any secret update will remove and recreate the secret. This is a beta field enabled by k8s `ImmutableEphemeralVolumes` feature gate. Default: `false` (bool)
      */
@@ -150,7 +150,7 @@ export interface SecretV2State {
     /**
      * Labels for the secret v2 (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the secret v2 (string)
      */
@@ -176,7 +176,7 @@ export interface SecretV2Args {
     /**
      * Annotations for the secret v2 (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The cluster id of the secret V2 (string)
      */
@@ -184,7 +184,7 @@ export interface SecretV2Args {
     /**
      * The data of the secret v2 (map)
      */
-    data: pulumi.Input<{[key: string]: any}>;
+    data: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * If set to true, any secret update will remove and recreate the secret. This is a beta field enabled by k8s `ImmutableEphemeralVolumes` feature gate. Default: `false` (bool)
      */
@@ -192,7 +192,7 @@ export interface SecretV2Args {
     /**
      * Labels for the secret v2 (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the secret v2 (string)
      */

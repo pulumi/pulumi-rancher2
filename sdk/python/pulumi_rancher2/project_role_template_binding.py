@@ -16,10 +16,10 @@ class ProjectRoleTemplateBindingArgs:
     def __init__(__self__, *,
                  project_id: pulumi.Input[str],
                  role_template_id: pulumi.Input[str],
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  group_principal_id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,
                  user_principal_id: Optional[pulumi.Input[str]] = None):
@@ -27,10 +27,10 @@ class ProjectRoleTemplateBindingArgs:
         The set of arguments for constructing a ProjectRoleTemplateBinding resource.
         :param pulumi.Input[str] project_id: The project id where bind project role template, in format `cluster_id:project_id`, e.g. `c-abc12:p-def34` (string)
         :param pulumi.Input[str] role_template_id: The role template id from create project role template binding (string)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations of the resource (map)
         :param pulumi.Input[str] group_id: The group ID to assign project role template binding (string)
         :param pulumi.Input[str] group_principal_id: The group_principal ID to assign project role template binding (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels of the resource (map)
                
                **Note:** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
         :param pulumi.Input[str] name: The name of the project role template binding (string)
@@ -80,14 +80,14 @@ class ProjectRoleTemplateBindingArgs:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations of the resource (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -116,7 +116,7 @@ class ProjectRoleTemplateBindingArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels of the resource (map)
 
@@ -125,7 +125,7 @@ class ProjectRoleTemplateBindingArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -168,10 +168,10 @@ class ProjectRoleTemplateBindingArgs:
 @pulumi.input_type
 class _ProjectRoleTemplateBindingState:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  group_principal_id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  role_template_id: Optional[pulumi.Input[str]] = None,
@@ -179,10 +179,10 @@ class _ProjectRoleTemplateBindingState:
                  user_principal_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ProjectRoleTemplateBinding resources.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations of the resource (map)
         :param pulumi.Input[str] group_id: The group ID to assign project role template binding (string)
         :param pulumi.Input[str] group_principal_id: The group_principal ID to assign project role template binding (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels of the resource (map)
                
                **Note:** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
         :param pulumi.Input[str] name: The name of the project role template binding (string)
@@ -212,14 +212,14 @@ class _ProjectRoleTemplateBindingState:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations of the resource (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -248,7 +248,7 @@ class _ProjectRoleTemplateBindingState:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels of the resource (map)
 
@@ -257,7 +257,7 @@ class _ProjectRoleTemplateBindingState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -326,10 +326,10 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  group_principal_id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  role_template_id: Optional[pulumi.Input[str]] = None,
@@ -363,10 +363,10 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations of the resource (map)
         :param pulumi.Input[str] group_id: The group ID to assign project role template binding (string)
         :param pulumi.Input[str] group_principal_id: The group_principal ID to assign project role template binding (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels of the resource (map)
                
                **Note:** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
         :param pulumi.Input[str] name: The name of the project role template binding (string)
@@ -421,10 +421,10 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  group_principal_id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  role_template_id: Optional[pulumi.Input[str]] = None,
@@ -462,10 +462,10 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             group_id: Optional[pulumi.Input[str]] = None,
             group_principal_id: Optional[pulumi.Input[str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
             role_template_id: Optional[pulumi.Input[str]] = None,
@@ -478,10 +478,10 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations of the resource (map)
         :param pulumi.Input[str] group_id: The group ID to assign project role template binding (string)
         :param pulumi.Input[str] group_principal_id: The group_principal ID to assign project role template binding (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels of the resource (map)
                
                **Note:** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
         :param pulumi.Input[str] name: The name of the project role template binding (string)
@@ -507,7 +507,7 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
+    def annotations(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Annotations of the resource (map)
         """
@@ -531,7 +531,7 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Labels of the resource (map)
 

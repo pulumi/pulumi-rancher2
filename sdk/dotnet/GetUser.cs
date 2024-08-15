@@ -120,7 +120,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Annotations of the resource (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Annotations;
+        public readonly ImmutableDictionary<string, string> Annotations;
         /// <summary>
         /// (Computed) The user is enabled (bool)
         /// </summary>
@@ -133,7 +133,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Labels of the resource (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Labels;
+        public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
         /// (Computed) The user common name (string)
         /// </summary>
@@ -146,7 +146,7 @@ namespace Pulumi.Rancher2
 
         [OutputConstructor]
         private GetUserResult(
-            ImmutableDictionary<string, object> annotations,
+            ImmutableDictionary<string, string> annotations,
 
             bool enabled,
 
@@ -154,7 +154,7 @@ namespace Pulumi.Rancher2
 
             bool? isExternal,
 
-            ImmutableDictionary<string, object> labels,
+            ImmutableDictionary<string, string> labels,
 
             string name,
 

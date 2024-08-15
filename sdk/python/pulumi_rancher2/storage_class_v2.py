@@ -17,11 +17,11 @@ class StorageClassV2Args:
                  cluster_id: pulumi.Input[str],
                  k8s_provisioner: pulumi.Input[str],
                  allow_volume_expansion: Optional[pulumi.Input[bool]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  mount_options: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  reclaim_policy: Optional[pulumi.Input[str]] = None,
                  volume_binding_mode: Optional[pulumi.Input[str]] = None):
         """
@@ -29,11 +29,11 @@ class StorageClassV2Args:
         :param pulumi.Input[str] cluster_id: The cluster id of the storageClass V2 (string)
         :param pulumi.Input[str] k8s_provisioner: The provisioner of the storageClass v2 (string)
         :param pulumi.Input[bool] allow_volume_expansion: Is the provisioner of the storageClass v2 allowing volume expansion? (bool)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the storageClass v2 (map)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for the storageClass v2 (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for the storageClass v2 (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the storageClass v2 (map)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] mount_options: The mount options for storageClass v2 (list)
         :param pulumi.Input[str] name: The name of the storageClass v2 (string)
-        :param pulumi.Input[Mapping[str, Any]] parameters: The parameters for storageClass v2 (string)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: The parameters for storageClass v2 (string)
         :param pulumi.Input[str] reclaim_policy: The reclaim policy for storageClass v2. `Delete`, `Recycle` and `Retain` values are allowed. Default: `Delete` (string)
         :param pulumi.Input[str] volume_binding_mode: The volume binding mode for storageClass v2. `Immediate` and `WaitForFirstConsumer` values are allowed. Default: `Immediate` (string)
         """
@@ -94,26 +94,26 @@ class StorageClassV2Args:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations for the storageClass v2 (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for the storageClass v2 (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -142,14 +142,14 @@ class StorageClassV2Args:
 
     @property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The parameters for storageClass v2 (string)
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "parameters", value)
 
     @property
@@ -181,26 +181,26 @@ class StorageClassV2Args:
 class _StorageClassV2State:
     def __init__(__self__, *,
                  allow_volume_expansion: Optional[pulumi.Input[bool]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  k8s_provisioner: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  mount_options: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  reclaim_policy: Optional[pulumi.Input[str]] = None,
                  resource_version: Optional[pulumi.Input[str]] = None,
                  volume_binding_mode: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering StorageClassV2 resources.
         :param pulumi.Input[bool] allow_volume_expansion: Is the provisioner of the storageClass v2 allowing volume expansion? (bool)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the storageClass v2 (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for the storageClass v2 (map)
         :param pulumi.Input[str] cluster_id: The cluster id of the storageClass V2 (string)
         :param pulumi.Input[str] k8s_provisioner: The provisioner of the storageClass v2 (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for the storageClass v2 (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the storageClass v2 (map)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] mount_options: The mount options for storageClass v2 (list)
         :param pulumi.Input[str] name: The name of the storageClass v2 (string)
-        :param pulumi.Input[Mapping[str, Any]] parameters: The parameters for storageClass v2 (string)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: The parameters for storageClass v2 (string)
         :param pulumi.Input[str] reclaim_policy: The reclaim policy for storageClass v2. `Delete`, `Recycle` and `Retain` values are allowed. Default: `Delete` (string)
         :param pulumi.Input[str] resource_version: (Computed) The k8s resource version (string)
         :param pulumi.Input[str] volume_binding_mode: The volume binding mode for storageClass v2. `Immediate` and `WaitForFirstConsumer` values are allowed. Default: `Immediate` (string)
@@ -242,14 +242,14 @@ class _StorageClassV2State:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations for the storageClass v2 (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -278,14 +278,14 @@ class _StorageClassV2State:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for the storageClass v2 (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -314,14 +314,14 @@ class _StorageClassV2State:
 
     @property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The parameters for storageClass v2 (string)
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "parameters", value)
 
     @property
@@ -367,13 +367,13 @@ class StorageClassV2(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_volume_expansion: Optional[pulumi.Input[bool]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  k8s_provisioner: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  mount_options: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  reclaim_policy: Optional[pulumi.Input[str]] = None,
                  volume_binding_mode: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -391,13 +391,13 @@ class StorageClassV2(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_volume_expansion: Is the provisioner of the storageClass v2 allowing volume expansion? (bool)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the storageClass v2 (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for the storageClass v2 (map)
         :param pulumi.Input[str] cluster_id: The cluster id of the storageClass V2 (string)
         :param pulumi.Input[str] k8s_provisioner: The provisioner of the storageClass v2 (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for the storageClass v2 (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the storageClass v2 (map)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] mount_options: The mount options for storageClass v2 (list)
         :param pulumi.Input[str] name: The name of the storageClass v2 (string)
-        :param pulumi.Input[Mapping[str, Any]] parameters: The parameters for storageClass v2 (string)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: The parameters for storageClass v2 (string)
         :param pulumi.Input[str] reclaim_policy: The reclaim policy for storageClass v2. `Delete`, `Recycle` and `Retain` values are allowed. Default: `Delete` (string)
         :param pulumi.Input[str] volume_binding_mode: The volume binding mode for storageClass v2. `Immediate` and `WaitForFirstConsumer` values are allowed. Default: `Immediate` (string)
         """
@@ -434,13 +434,13 @@ class StorageClassV2(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_volume_expansion: Optional[pulumi.Input[bool]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  k8s_provisioner: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  mount_options: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  reclaim_policy: Optional[pulumi.Input[str]] = None,
                  volume_binding_mode: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -478,13 +478,13 @@ class StorageClassV2(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             allow_volume_expansion: Optional[pulumi.Input[bool]] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
             k8s_provisioner: Optional[pulumi.Input[str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             mount_options: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             reclaim_policy: Optional[pulumi.Input[str]] = None,
             resource_version: Optional[pulumi.Input[str]] = None,
             volume_binding_mode: Optional[pulumi.Input[str]] = None) -> 'StorageClassV2':
@@ -496,13 +496,13 @@ class StorageClassV2(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_volume_expansion: Is the provisioner of the storageClass v2 allowing volume expansion? (bool)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the storageClass v2 (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for the storageClass v2 (map)
         :param pulumi.Input[str] cluster_id: The cluster id of the storageClass V2 (string)
         :param pulumi.Input[str] k8s_provisioner: The provisioner of the storageClass v2 (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for the storageClass v2 (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the storageClass v2 (map)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] mount_options: The mount options for storageClass v2 (list)
         :param pulumi.Input[str] name: The name of the storageClass v2 (string)
-        :param pulumi.Input[Mapping[str, Any]] parameters: The parameters for storageClass v2 (string)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: The parameters for storageClass v2 (string)
         :param pulumi.Input[str] reclaim_policy: The reclaim policy for storageClass v2. `Delete`, `Recycle` and `Retain` values are allowed. Default: `Delete` (string)
         :param pulumi.Input[str] resource_version: (Computed) The k8s resource version (string)
         :param pulumi.Input[str] volume_binding_mode: The volume binding mode for storageClass v2. `Immediate` and `WaitForFirstConsumer` values are allowed. Default: `Immediate` (string)
@@ -534,7 +534,7 @@ class StorageClassV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
+    def annotations(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Annotations for the storageClass v2 (map)
         """
@@ -558,7 +558,7 @@ class StorageClassV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Labels for the storageClass v2 (map)
         """
@@ -582,7 +582,7 @@ class StorageClassV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def parameters(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def parameters(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The parameters for storageClass v2 (string)
         """

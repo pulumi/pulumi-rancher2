@@ -67,7 +67,7 @@ type ClusterAlertRule struct {
 	pulumi.CustomResourceState
 
 	// The cluster alert rule annotations (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// The cluster id where create cluster alert rule (string)
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// The cluster alert rule event rule. ConflictsWith: `"metricRule", "nodeRule", "systemServiceRule"`` (list Maxitems:1)
@@ -81,7 +81,7 @@ type ClusterAlertRule struct {
 	// The cluster alert rule inherited. Default: `true` (bool)
 	Inherited pulumi.BoolPtrOutput `pulumi:"inherited"`
 	// The cluster alert rule labels (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The cluster alert rule metric rule. ConflictsWith: `"eventRule", "nodeRule", "systemServiceRule"`` (list Maxitems:1)
 	MetricRule ClusterAlertRuleMetricRulePtrOutput `pulumi:"metricRule"`
 	// The cluster alert rule name (string)
@@ -133,7 +133,7 @@ func GetClusterAlertRule(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ClusterAlertRule resources.
 type clusterAlertRuleState struct {
 	// The cluster alert rule annotations (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// The cluster id where create cluster alert rule (string)
 	ClusterId *string `pulumi:"clusterId"`
 	// The cluster alert rule event rule. ConflictsWith: `"metricRule", "nodeRule", "systemServiceRule"`` (list Maxitems:1)
@@ -147,7 +147,7 @@ type clusterAlertRuleState struct {
 	// The cluster alert rule inherited. Default: `true` (bool)
 	Inherited *bool `pulumi:"inherited"`
 	// The cluster alert rule labels (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The cluster alert rule metric rule. ConflictsWith: `"eventRule", "nodeRule", "systemServiceRule"`` (list Maxitems:1)
 	MetricRule *ClusterAlertRuleMetricRule `pulumi:"metricRule"`
 	// The cluster alert rule name (string)
@@ -164,7 +164,7 @@ type clusterAlertRuleState struct {
 
 type ClusterAlertRuleState struct {
 	// The cluster alert rule annotations (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// The cluster id where create cluster alert rule (string)
 	ClusterId pulumi.StringPtrInput
 	// The cluster alert rule event rule. ConflictsWith: `"metricRule", "nodeRule", "systemServiceRule"`` (list Maxitems:1)
@@ -178,7 +178,7 @@ type ClusterAlertRuleState struct {
 	// The cluster alert rule inherited. Default: `true` (bool)
 	Inherited pulumi.BoolPtrInput
 	// The cluster alert rule labels (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The cluster alert rule metric rule. ConflictsWith: `"eventRule", "nodeRule", "systemServiceRule"`` (list Maxitems:1)
 	MetricRule ClusterAlertRuleMetricRulePtrInput
 	// The cluster alert rule name (string)
@@ -199,7 +199,7 @@ func (ClusterAlertRuleState) ElementType() reflect.Type {
 
 type clusterAlertRuleArgs struct {
 	// The cluster alert rule annotations (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// The cluster id where create cluster alert rule (string)
 	ClusterId string `pulumi:"clusterId"`
 	// The cluster alert rule event rule. ConflictsWith: `"metricRule", "nodeRule", "systemServiceRule"`` (list Maxitems:1)
@@ -213,7 +213,7 @@ type clusterAlertRuleArgs struct {
 	// The cluster alert rule inherited. Default: `true` (bool)
 	Inherited *bool `pulumi:"inherited"`
 	// The cluster alert rule labels (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The cluster alert rule metric rule. ConflictsWith: `"eventRule", "nodeRule", "systemServiceRule"`` (list Maxitems:1)
 	MetricRule *ClusterAlertRuleMetricRule `pulumi:"metricRule"`
 	// The cluster alert rule name (string)
@@ -231,7 +231,7 @@ type clusterAlertRuleArgs struct {
 // The set of arguments for constructing a ClusterAlertRule resource.
 type ClusterAlertRuleArgs struct {
 	// The cluster alert rule annotations (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// The cluster id where create cluster alert rule (string)
 	ClusterId pulumi.StringInput
 	// The cluster alert rule event rule. ConflictsWith: `"metricRule", "nodeRule", "systemServiceRule"`` (list Maxitems:1)
@@ -245,7 +245,7 @@ type ClusterAlertRuleArgs struct {
 	// The cluster alert rule inherited. Default: `true` (bool)
 	Inherited pulumi.BoolPtrInput
 	// The cluster alert rule labels (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The cluster alert rule metric rule. ConflictsWith: `"eventRule", "nodeRule", "systemServiceRule"`` (list Maxitems:1)
 	MetricRule ClusterAlertRuleMetricRulePtrInput
 	// The cluster alert rule name (string)
@@ -348,8 +348,8 @@ func (o ClusterAlertRuleOutput) ToClusterAlertRuleOutputWithContext(ctx context.
 }
 
 // The cluster alert rule annotations (map)
-func (o ClusterAlertRuleOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClusterAlertRule) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o ClusterAlertRuleOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ClusterAlertRule) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // The cluster id where create cluster alert rule (string)
@@ -383,8 +383,8 @@ func (o ClusterAlertRuleOutput) Inherited() pulumi.BoolPtrOutput {
 }
 
 // The cluster alert rule labels (map)
-func (o ClusterAlertRuleOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClusterAlertRule) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o ClusterAlertRuleOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ClusterAlertRule) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The cluster alert rule metric rule. ConflictsWith: `"eventRule", "nodeRule", "systemServiceRule"“ (list Maxitems:1)

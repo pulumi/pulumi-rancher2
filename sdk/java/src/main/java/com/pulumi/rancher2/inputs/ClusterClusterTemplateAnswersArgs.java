@@ -5,7 +5,6 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -52,13 +51,13 @@ public final class ClusterClusterTemplateAnswersArgs extends com.pulumi.resource
      * 
      */
     @Import(name="values")
-    private @Nullable Output<Map<String,Object>> values;
+    private @Nullable Output<Map<String,String>> values;
 
     /**
      * @return Key/values for answer
      * 
      */
-    public Optional<Output<Map<String,Object>>> values() {
+    public Optional<Output<Map<String,String>>> values() {
         return Optional.ofNullable(this.values);
     }
 
@@ -136,7 +135,7 @@ public final class ClusterClusterTemplateAnswersArgs extends com.pulumi.resource
          * @return builder
          * 
          */
-        public Builder values(@Nullable Output<Map<String,Object>> values) {
+        public Builder values(@Nullable Output<Map<String,String>> values) {
             $.values = values;
             return this;
         }
@@ -147,7 +146,7 @@ public final class ClusterClusterTemplateAnswersArgs extends com.pulumi.resource
          * @return builder
          * 
          */
-        public Builder values(Map<String,Object> values) {
+        public Builder values(Map<String,String> values) {
             return values(Output.of(values));
         }
 

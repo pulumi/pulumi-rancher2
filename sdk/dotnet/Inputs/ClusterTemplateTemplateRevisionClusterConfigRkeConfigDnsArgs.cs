@@ -19,10 +19,10 @@ namespace Pulumi.Rancher2.Inputs
         public Input<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsArgs>? LinearAutoscalerParams { get; set; }
 
         [Input("nodeSelector")]
-        private InputMap<object>? _nodeSelector;
-        public InputMap<object> NodeSelector
+        private InputMap<string>? _nodeSelector;
+        public InputMap<string> NodeSelector
         {
-            get => _nodeSelector ?? (_nodeSelector = new InputMap<object>());
+            get => _nodeSelector ?? (_nodeSelector = new InputMap<string>());
             set => _nodeSelector = value;
         }
 
@@ -33,10 +33,10 @@ namespace Pulumi.Rancher2.Inputs
         public Input<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs>? Nodelocal { get; set; }
 
         [Input("options")]
-        private InputMap<object>? _options;
-        public InputMap<object> Options
+        private InputMap<string>? _options;
+        public InputMap<string> Options
         {
-            get => _options ?? (_options = new InputMap<object>());
+            get => _options ?? (_options = new InputMap<string>());
             set => _options = value;
         }
 

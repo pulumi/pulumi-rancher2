@@ -72,7 +72,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Annotations of the rancher2 project (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Annotations;
+        public readonly ImmutableDictionary<string, string> Annotations;
         public readonly string ClusterId;
         /// <summary>
         /// (Computed) Default containers resource limits on project (List maxitem:1)
@@ -93,7 +93,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Labels of the rancher2 project (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Labels;
+        public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
         /// <summary>
         /// (Computed) Default Pod Security Policy ID for the project (string)
@@ -110,7 +110,7 @@ namespace Pulumi.Rancher2
 
         [OutputConstructor]
         private GetProjectResult(
-            ImmutableDictionary<string, object> annotations,
+            ImmutableDictionary<string, string> annotations,
 
             string clusterId,
 
@@ -122,7 +122,7 @@ namespace Pulumi.Rancher2
 
             string id,
 
-            ImmutableDictionary<string, object> labels,
+            ImmutableDictionary<string, string> labels,
 
             string name,
 

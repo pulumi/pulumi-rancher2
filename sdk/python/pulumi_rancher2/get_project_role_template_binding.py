@@ -55,7 +55,7 @@ class GetProjectRoleTemplateBindingResult:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> Mapping[str, str]:
         """
         (Computed) Annotations of the resource (map)
         """
@@ -87,7 +87,7 @@ class GetProjectRoleTemplateBindingResult:
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> Mapping[str, str]:
         """
         (Computed) Labels of the resource (map)
         """

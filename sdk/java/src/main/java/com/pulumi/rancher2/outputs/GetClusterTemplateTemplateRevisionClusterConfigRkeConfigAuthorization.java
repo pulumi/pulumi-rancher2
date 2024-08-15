@@ -5,7 +5,6 @@ package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -15,13 +14,13 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorization {
     private @Nullable String mode;
-    private Map<String,Object> options;
+    private Map<String,String> options;
 
     private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorization() {}
     public Optional<String> mode() {
         return Optional.ofNullable(this.mode);
     }
-    public Map<String,Object> options() {
+    public Map<String,String> options() {
         return this.options;
     }
 
@@ -35,7 +34,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAutho
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String mode;
-        private Map<String,Object> options;
+        private Map<String,String> options;
         public Builder() {}
         public Builder(GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorization defaults) {
     	      Objects.requireNonNull(defaults);
@@ -50,7 +49,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAutho
             return this;
         }
         @CustomType.Setter
-        public Builder options(Map<String,Object> options) {
+        public Builder options(Map<String,String> options) {
             if (options == null) {
               throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorization", "options");
             }

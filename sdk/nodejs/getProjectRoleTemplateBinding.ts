@@ -54,7 +54,7 @@ export interface GetProjectRoleTemplateBindingResult {
     /**
      * (Computed) Annotations of the resource (map)
      */
-    readonly annotations: {[key: string]: any};
+    readonly annotations: {[key: string]: string};
     /**
      * (Computed) The group ID to assign project role template binding (string)
      */
@@ -70,7 +70,7 @@ export interface GetProjectRoleTemplateBindingResult {
     /**
      * (Computed) Labels of the resource (map)
      */
-    readonly labels: {[key: string]: any};
+    readonly labels: {[key: string]: string};
     readonly name: string;
     readonly projectId: string;
     readonly roleTemplateId: string;

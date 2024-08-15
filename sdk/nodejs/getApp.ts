@@ -38,7 +38,7 @@ export interface GetAppArgs {
     /**
      * (Computed) Annotations for the catalog (map)
      */
-    annotations?: {[key: string]: any};
+    annotations?: {[key: string]: string};
     /**
      * The app name (string)
      */
@@ -60,11 +60,11 @@ export interface GetAppResult {
     /**
      * (Computed) Annotations for the catalog (map)
      */
-    readonly annotations: {[key: string]: any};
+    readonly annotations: {[key: string]: string};
     /**
      * (Computed) Answers for the app (map)
      */
-    readonly answers: {[key: string]: any};
+    readonly answers: {[key: string]: string};
     /**
      * (Computed) Catalog name of the app (string)
      */
@@ -84,7 +84,7 @@ export interface GetAppResult {
     /**
      * (Computed) Labels for the catalog (map)
      */
-    readonly labels: {[key: string]: any};
+    readonly labels: {[key: string]: string};
     readonly name: string;
     readonly projectId: string;
     /**
@@ -132,7 +132,7 @@ export interface GetAppOutputArgs {
     /**
      * (Computed) Annotations for the catalog (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The app name (string)
      */

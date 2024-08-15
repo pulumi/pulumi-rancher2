@@ -117,7 +117,7 @@ type CloudCredential struct {
 	// AWS config for the Cloud Credential (list maxitems:1)
 	Amazonec2CredentialConfig CloudCredentialAmazonec2CredentialConfigPtrOutput `pulumi:"amazonec2CredentialConfig"`
 	// Annotations for Cloud Credential object (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Azure config for the Cloud Credential (list maxitems:1)
 	AzureCredentialConfig CloudCredentialAzureCredentialConfigPtrOutput `pulumi:"azureCredentialConfig"`
 	// Description for the Cloud Credential (string)
@@ -131,7 +131,7 @@ type CloudCredential struct {
 	// Harvester config for the Cloud Credential (list maxitems:1)
 	HarvesterCredentialConfig CloudCredentialHarvesterCredentialConfigPtrOutput `pulumi:"harvesterCredentialConfig"`
 	// Labels for Cloud Credential object (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Linode config for the Cloud Credential (list maxitems:1)
 	LinodeCredentialConfig CloudCredentialLinodeCredentialConfigPtrOutput `pulumi:"linodeCredentialConfig"`
 	// The name of the Cloud Credential (string)
@@ -177,7 +177,7 @@ type cloudCredentialState struct {
 	// AWS config for the Cloud Credential (list maxitems:1)
 	Amazonec2CredentialConfig *CloudCredentialAmazonec2CredentialConfig `pulumi:"amazonec2CredentialConfig"`
 	// Annotations for Cloud Credential object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// Azure config for the Cloud Credential (list maxitems:1)
 	AzureCredentialConfig *CloudCredentialAzureCredentialConfig `pulumi:"azureCredentialConfig"`
 	// Description for the Cloud Credential (string)
@@ -191,7 +191,7 @@ type cloudCredentialState struct {
 	// Harvester config for the Cloud Credential (list maxitems:1)
 	HarvesterCredentialConfig *CloudCredentialHarvesterCredentialConfig `pulumi:"harvesterCredentialConfig"`
 	// Labels for Cloud Credential object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// Linode config for the Cloud Credential (list maxitems:1)
 	LinodeCredentialConfig *CloudCredentialLinodeCredentialConfig `pulumi:"linodeCredentialConfig"`
 	// The name of the Cloud Credential (string)
@@ -208,7 +208,7 @@ type CloudCredentialState struct {
 	// AWS config for the Cloud Credential (list maxitems:1)
 	Amazonec2CredentialConfig CloudCredentialAmazonec2CredentialConfigPtrInput
 	// Annotations for Cloud Credential object (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// Azure config for the Cloud Credential (list maxitems:1)
 	AzureCredentialConfig CloudCredentialAzureCredentialConfigPtrInput
 	// Description for the Cloud Credential (string)
@@ -222,7 +222,7 @@ type CloudCredentialState struct {
 	// Harvester config for the Cloud Credential (list maxitems:1)
 	HarvesterCredentialConfig CloudCredentialHarvesterCredentialConfigPtrInput
 	// Labels for Cloud Credential object (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// Linode config for the Cloud Credential (list maxitems:1)
 	LinodeCredentialConfig CloudCredentialLinodeCredentialConfigPtrInput
 	// The name of the Cloud Credential (string)
@@ -243,7 +243,7 @@ type cloudCredentialArgs struct {
 	// AWS config for the Cloud Credential (list maxitems:1)
 	Amazonec2CredentialConfig *CloudCredentialAmazonec2CredentialConfig `pulumi:"amazonec2CredentialConfig"`
 	// Annotations for Cloud Credential object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// Azure config for the Cloud Credential (list maxitems:1)
 	AzureCredentialConfig *CloudCredentialAzureCredentialConfig `pulumi:"azureCredentialConfig"`
 	// Description for the Cloud Credential (string)
@@ -255,7 +255,7 @@ type cloudCredentialArgs struct {
 	// Harvester config for the Cloud Credential (list maxitems:1)
 	HarvesterCredentialConfig *CloudCredentialHarvesterCredentialConfig `pulumi:"harvesterCredentialConfig"`
 	// Labels for Cloud Credential object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// Linode config for the Cloud Credential (list maxitems:1)
 	LinodeCredentialConfig *CloudCredentialLinodeCredentialConfig `pulumi:"linodeCredentialConfig"`
 	// The name of the Cloud Credential (string)
@@ -273,7 +273,7 @@ type CloudCredentialArgs struct {
 	// AWS config for the Cloud Credential (list maxitems:1)
 	Amazonec2CredentialConfig CloudCredentialAmazonec2CredentialConfigPtrInput
 	// Annotations for Cloud Credential object (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// Azure config for the Cloud Credential (list maxitems:1)
 	AzureCredentialConfig CloudCredentialAzureCredentialConfigPtrInput
 	// Description for the Cloud Credential (string)
@@ -285,7 +285,7 @@ type CloudCredentialArgs struct {
 	// Harvester config for the Cloud Credential (list maxitems:1)
 	HarvesterCredentialConfig CloudCredentialHarvesterCredentialConfigPtrInput
 	// Labels for Cloud Credential object (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// Linode config for the Cloud Credential (list maxitems:1)
 	LinodeCredentialConfig CloudCredentialLinodeCredentialConfigPtrInput
 	// The name of the Cloud Credential (string)
@@ -393,8 +393,8 @@ func (o CloudCredentialOutput) Amazonec2CredentialConfig() CloudCredentialAmazon
 }
 
 // Annotations for Cloud Credential object (map)
-func (o CloudCredentialOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *CloudCredential) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o CloudCredentialOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CloudCredential) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // Azure config for the Cloud Credential (list maxitems:1)
@@ -434,8 +434,8 @@ func (o CloudCredentialOutput) HarvesterCredentialConfig() CloudCredentialHarves
 }
 
 // Labels for Cloud Credential object (map)
-func (o CloudCredentialOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *CloudCredential) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o CloudCredentialOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CloudCredential) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // Linode config for the Cloud Credential (list maxitems:1)

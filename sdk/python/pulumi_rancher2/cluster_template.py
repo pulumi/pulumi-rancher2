@@ -16,17 +16,17 @@ __all__ = ['ClusterTemplateArgs', 'ClusterTemplate']
 @pulumi.input_type
 class ClusterTemplateArgs:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateMemberArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  template_revisions: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionArgs']]]] = None):
         """
         The set of arguments for constructing a ClusterTemplate resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the cluster template (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for the cluster template (map)
         :param pulumi.Input[str] description: Cluster template description
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for the cluster template (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the cluster template (map)
         :param pulumi.Input[Sequence[pulumi.Input['ClusterTemplateMemberArgs']]] members: Cluster template members (list)
         :param pulumi.Input[str] name: The cluster template name (string)
         :param pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionArgs']]] template_revisions: Cluster template revisions (list)
@@ -46,14 +46,14 @@ class ClusterTemplateArgs:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations for the cluster template (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -70,14 +70,14 @@ class ClusterTemplateArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for the cluster template (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -120,19 +120,19 @@ class ClusterTemplateArgs:
 @pulumi.input_type
 class _ClusterTemplateState:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  default_revision_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateMemberArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  template_revisions: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionArgs']]]] = None):
         """
         Input properties used for looking up and filtering ClusterTemplate resources.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the cluster template (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for the cluster template (map)
         :param pulumi.Input[str] default_revision_id: (Computed) Default cluster template revision ID (string)
         :param pulumi.Input[str] description: Cluster template description
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for the cluster template (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the cluster template (map)
         :param pulumi.Input[Sequence[pulumi.Input['ClusterTemplateMemberArgs']]] members: Cluster template members (list)
         :param pulumi.Input[str] name: The cluster template name (string)
         :param pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionArgs']]] template_revisions: Cluster template revisions (list)
@@ -154,14 +154,14 @@ class _ClusterTemplateState:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations for the cluster template (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -190,14 +190,14 @@ class _ClusterTemplateState:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for the cluster template (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -242,9 +242,9 @@ class ClusterTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterTemplateMemberArgs', 'ClusterTemplateMemberArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  template_revisions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterTemplateTemplateRevisionArgs', 'ClusterTemplateTemplateRevisionArgsDict']]]]] = None,
@@ -334,9 +334,9 @@ class ClusterTemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the cluster template (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for the cluster template (map)
         :param pulumi.Input[str] description: Cluster template description
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for the cluster template (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the cluster template (map)
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterTemplateMemberArgs', 'ClusterTemplateMemberArgsDict']]]] members: Cluster template members (list)
         :param pulumi.Input[str] name: The cluster template name (string)
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterTemplateTemplateRevisionArgs', 'ClusterTemplateTemplateRevisionArgsDict']]]] template_revisions: Cluster template revisions (list)
@@ -445,9 +445,9 @@ class ClusterTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterTemplateMemberArgs', 'ClusterTemplateMemberArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  template_revisions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterTemplateTemplateRevisionArgs', 'ClusterTemplateTemplateRevisionArgsDict']]]]] = None,
@@ -477,10 +477,10 @@ class ClusterTemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             default_revision_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterTemplateMemberArgs', 'ClusterTemplateMemberArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             template_revisions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterTemplateTemplateRevisionArgs', 'ClusterTemplateTemplateRevisionArgsDict']]]]] = None) -> 'ClusterTemplate':
@@ -491,10 +491,10 @@ class ClusterTemplate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the cluster template (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for the cluster template (map)
         :param pulumi.Input[str] default_revision_id: (Computed) Default cluster template revision ID (string)
         :param pulumi.Input[str] description: Cluster template description
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for the cluster template (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the cluster template (map)
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterTemplateMemberArgs', 'ClusterTemplateMemberArgsDict']]]] members: Cluster template members (list)
         :param pulumi.Input[str] name: The cluster template name (string)
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterTemplateTemplateRevisionArgs', 'ClusterTemplateTemplateRevisionArgsDict']]]] template_revisions: Cluster template revisions (list)
@@ -514,7 +514,7 @@ class ClusterTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
+    def annotations(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Annotations for the cluster template (map)
         """
@@ -538,7 +538,7 @@ class ClusterTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Labels for the cluster template (map)
         """

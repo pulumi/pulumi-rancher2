@@ -46,7 +46,7 @@ export class CatalogV2 extends pulumi.CustomResource {
     /**
      * Annotations for the catalog v2 (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: any}>;
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * CA certificate in base64-encoded DER format which will be used to validate the repo's certificate (string)
      */
@@ -74,7 +74,7 @@ export class CatalogV2 extends pulumi.CustomResource {
     /**
      * Labels for the catalog v2 (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the catalog v2 (string)
      */
@@ -165,7 +165,7 @@ export interface CatalogV2State {
     /**
      * Annotations for the catalog v2 (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * CA certificate in base64-encoded DER format which will be used to validate the repo's certificate (string)
      */
@@ -193,7 +193,7 @@ export interface CatalogV2State {
     /**
      * Labels for the catalog v2 (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the catalog v2 (string)
      */
@@ -231,7 +231,7 @@ export interface CatalogV2Args {
     /**
      * Annotations for the catalog v2 (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * CA certificate in base64-encoded DER format which will be used to validate the repo's certificate (string)
      */
@@ -259,7 +259,7 @@ export interface CatalogV2Args {
     /**
      * Labels for the catalog v2 (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the catalog v2 (string)
      */

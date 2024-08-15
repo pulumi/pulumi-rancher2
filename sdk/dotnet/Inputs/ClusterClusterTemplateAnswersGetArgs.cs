@@ -25,14 +25,14 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? ProjectId { get; set; }
 
         [Input("values")]
-        private InputMap<object>? _values;
+        private InputMap<string>? _values;
 
         /// <summary>
         /// Key/values for answer
         /// </summary>
-        public InputMap<object> Values
+        public InputMap<string> Values
         {
-            get => _values ?? (_values = new InputMap<object>());
+            get => _values ?? (_values = new InputMap<string>());
             set => _values = value;
         }
 

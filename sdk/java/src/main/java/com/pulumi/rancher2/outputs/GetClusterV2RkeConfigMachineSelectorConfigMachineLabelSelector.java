@@ -5,7 +5,6 @@ package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.rancher2.outputs.GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +22,7 @@ public final class GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelecto
      * @return Label selector match labels
      * 
      */
-    private @Nullable Map<String,Object> matchLabels;
+    private @Nullable Map<String,String> matchLabels;
 
     private GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector() {}
     /**
@@ -37,7 +36,7 @@ public final class GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelecto
      * @return Label selector match labels
      * 
      */
-    public Map<String,Object> matchLabels() {
+    public Map<String,String> matchLabels() {
         return this.matchLabels == null ? Map.of() : this.matchLabels;
     }
 
@@ -51,7 +50,7 @@ public final class GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelecto
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression> matchExpressions;
-        private @Nullable Map<String,Object> matchLabels;
+        private @Nullable Map<String,String> matchLabels;
         public Builder() {}
         public Builder(GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector defaults) {
     	      Objects.requireNonNull(defaults);
@@ -69,7 +68,7 @@ public final class GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelecto
             return matchExpressions(List.of(matchExpressions));
         }
         @CustomType.Setter
-        public Builder matchLabels(@Nullable Map<String,Object> matchLabels) {
+        public Builder matchLabels(@Nullable Map<String,String> matchLabels) {
 
             this.matchLabels = matchLabels;
             return this;

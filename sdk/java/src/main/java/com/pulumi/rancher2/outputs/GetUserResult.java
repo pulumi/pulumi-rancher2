@@ -6,7 +6,6 @@ package com.pulumi.rancher2.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +19,7 @@ public final class GetUserResult {
      * @return (Computed) Annotations of the resource (map)
      * 
      */
-    private Map<String,Object> annotations;
+    private Map<String,String> annotations;
     /**
      * @return (Computed) The user is enabled (bool)
      * 
@@ -36,7 +35,7 @@ public final class GetUserResult {
      * @return (Computed) Labels of the resource (map)
      * 
      */
-    private Map<String,Object> labels;
+    private Map<String,String> labels;
     /**
      * @return (Computed) The user common name (string)
      * 
@@ -54,7 +53,7 @@ public final class GetUserResult {
      * @return (Computed) Annotations of the resource (map)
      * 
      */
-    public Map<String,Object> annotations() {
+    public Map<String,String> annotations() {
         return this.annotations;
     }
     /**
@@ -78,7 +77,7 @@ public final class GetUserResult {
      * @return (Computed) Labels of the resource (map)
      * 
      */
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels;
     }
     /**
@@ -108,11 +107,11 @@ public final class GetUserResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Map<String,Object> annotations;
+        private Map<String,String> annotations;
         private Boolean enabled;
         private String id;
         private @Nullable Boolean isExternal;
-        private Map<String,Object> labels;
+        private Map<String,String> labels;
         private String name;
         private List<String> principalIds;
         private String username;
@@ -130,7 +129,7 @@ public final class GetUserResult {
         }
 
         @CustomType.Setter
-        public Builder annotations(Map<String,Object> annotations) {
+        public Builder annotations(Map<String,String> annotations) {
             if (annotations == null) {
               throw new MissingRequiredPropertyException("GetUserResult", "annotations");
             }
@@ -160,7 +159,7 @@ public final class GetUserResult {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(Map<String,Object> labels) {
+        public Builder labels(Map<String,String> labels) {
             if (labels == null) {
               throw new MissingRequiredPropertyException("GetUserResult", "labels");
             }

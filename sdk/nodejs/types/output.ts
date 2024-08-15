@@ -293,7 +293,7 @@ export interface ClusterAksConfig {
      *
      * @deprecated Use tags argument instead as []string
      */
-    tag: {[key: string]: any};
+    tag: {[key: string]: string};
     /**
      * Tags for Kubernetes cluster. For example, `["foo=bar","bar=foo"]`
      */
@@ -424,7 +424,7 @@ export interface ClusterAksConfigV2 {
     /**
      * The AKS cluster tags
      */
-    tags: {[key: string]: any};
+    tags: {[key: string]: string};
     /**
      * The AKS virtual network
      */
@@ -451,7 +451,7 @@ export interface ClusterAksConfigV2NodePool {
     /**
      * Labels for the Cluster (map)
      */
-    labels: {[key: string]: any};
+    labels: {[key: string]: string};
     /**
      * The AKS node pool max count
      */
@@ -575,7 +575,7 @@ export interface ClusterAlertRuleNodeRule {
     /**
      * Node rule selector
      */
-    selector?: {[key: string]: any};
+    selector?: {[key: string]: string};
 }
 
 export interface ClusterAlertRuleSystemServiceRule {
@@ -661,7 +661,7 @@ export interface ClusterClusterMonitoringInput {
     /**
      * Answers for monitor input
      */
-    answers?: {[key: string]: any};
+    answers?: {[key: string]: string};
     /**
      * Monitoring version
      */
@@ -672,7 +672,7 @@ export interface ClusterClusterRegistrationToken {
     /**
      * Annotations for the Cluster (map)
      */
-    annotations: {[key: string]: any};
+    annotations: {[key: string]: string};
     clusterId: string;
     /**
      * Command to execute in a imported k8s cluster (string)
@@ -697,7 +697,7 @@ export interface ClusterClusterRegistrationToken {
     /**
      * Labels for the Cluster (map)
      */
-    labels: {[key: string]: any};
+    labels: {[key: string]: string};
     /**
      * K8s manifest url to execute with `kubectl` to import an existing k8s cluster (string)
      */
@@ -729,7 +729,7 @@ export interface ClusterClusterTemplateAnswers {
     /**
      * Key/values for answer
      */
-    values: {[key: string]: any};
+    values: {[key: string]: string};
 }
 
 export interface ClusterClusterTemplateQuestion {
@@ -894,7 +894,7 @@ export interface ClusterEksConfigV2 {
     /**
      * The EKS cluster tags
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
 }
 
 export interface ClusterEksConfigV2NodeGroup {
@@ -925,7 +925,7 @@ export interface ClusterEksConfigV2NodeGroup {
     /**
      * Labels for the Cluster (map)
      */
-    labels?: {[key: string]: any};
+    labels?: {[key: string]: string};
     /**
      * The EKS node groups launch template
      */
@@ -953,7 +953,7 @@ export interface ClusterEksConfigV2NodeGroup {
     /**
      * The EKS node group resource tags
      */
-    resourceTags?: {[key: string]: any};
+    resourceTags?: {[key: string]: string};
     /**
      * The EKS node group spot instance types
      */
@@ -965,7 +965,7 @@ export interface ClusterEksConfigV2NodeGroup {
     /**
      * The EKS node group tags
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
     /**
      * The EKS node group user data
      */
@@ -1168,7 +1168,7 @@ export interface ClusterGkeConfig {
     /**
      * Labels for the Cluster (map)
      */
-    labels: {[key: string]: any};
+    labels: {[key: string]: string};
     /**
      * The number of local SSD disks to be attached to the node
      */
@@ -1240,7 +1240,7 @@ export interface ClusterGkeConfig {
     /**
      * The map of Kubernetes labels (key/value pairs) to be applied to each cluster
      */
-    resourceLabels: {[key: string]: any};
+    resourceLabels: {[key: string]: string};
     /**
      * The Google Cloud Platform Service Account to be used by the node VMs
      */
@@ -1299,7 +1299,7 @@ export interface ClusterGkeConfigV2 {
     /**
      * Labels for the Cluster (map)
      */
-    labels: {[key: string]: any};
+    labels: {[key: string]: string};
     /**
      * The GKE cluster locations
      */
@@ -1492,7 +1492,7 @@ export interface ClusterGkeConfigV2NodePoolConfig {
     /**
      * Labels for the Cluster (map)
      */
-    labels: {[key: string]: any};
+    labels: {[key: string]: string};
     /**
      * The GKE node config local ssd count
      */
@@ -1865,7 +1865,7 @@ export interface ClusterRkeConfigAuthorization {
     /**
      * RKE options for network (map)
      */
-    options: {[key: string]: any};
+    options: {[key: string]: string};
 }
 
 export interface ClusterRkeConfigBastionHost {
@@ -2391,7 +2391,7 @@ export interface ClusterRkeConfigDns {
     /**
      * RKE monitoring node selector (map)
      */
-    nodeSelector: {[key: string]: any};
+    nodeSelector: {[key: string]: string};
     /**
      * Nodelocal dns
      */
@@ -2399,7 +2399,7 @@ export interface ClusterRkeConfigDns {
     /**
      * RKE options for network (map)
      */
-    options: {[key: string]: any};
+    options: {[key: string]: string};
     /**
      * RKE monitoring provider (string)
      */
@@ -2453,7 +2453,7 @@ export interface ClusterRkeConfigDnsNodelocal {
     /**
      * Node selector key pair
      */
-    nodeSelector?: {[key: string]: any};
+    nodeSelector?: {[key: string]: string};
 }
 
 export interface ClusterRkeConfigDnsToleration {
@@ -2513,7 +2513,7 @@ export interface ClusterRkeConfigIngress {
     /**
      * Extra arguments for scheduler service (map)
      */
-    extraArgs: {[key: string]: any};
+    extraArgs: {[key: string]: string};
     /**
      * HTTP port for RKE Ingress (int)
      */
@@ -2529,11 +2529,11 @@ export interface ClusterRkeConfigIngress {
     /**
      * RKE monitoring node selector (map)
      */
-    nodeSelector: {[key: string]: any};
+    nodeSelector: {[key: string]: string};
     /**
      * RKE options for network (map)
      */
-    options: {[key: string]: any};
+    options: {[key: string]: string};
     /**
      * RKE monitoring provider (string)
      */
@@ -2593,11 +2593,11 @@ export interface ClusterRkeConfigMonitoring {
     /**
      * RKE monitoring node selector (map)
      */
-    nodeSelector?: {[key: string]: any};
+    nodeSelector?: {[key: string]: string};
     /**
      * RKE options for network (map)
      */
-    options: {[key: string]: any};
+    options: {[key: string]: string};
     /**
      * RKE monitoring provider (string)
      */
@@ -2685,7 +2685,7 @@ export interface ClusterRkeConfigNetwork {
     /**
      * RKE options for network (map)
      */
-    options: {[key: string]: any};
+    options: {[key: string]: string};
     /**
      * Plugin for RKE network. `canal` (default), `flannel`, `calico`, `none` and `weave` are supported. (string)
      */
@@ -3067,7 +3067,7 @@ export interface ClusterRkeConfigNode {
     /**
      * Labels for the Cluster (map)
      */
-    labels?: {[key: string]: any};
+    labels?: {[key: string]: string};
     /**
      * Id for the node (string)
      */
@@ -3187,7 +3187,7 @@ export interface ClusterRkeConfigServicesEtcd {
     /**
      * Extra arguments for scheduler service (map)
      */
-    extraArgs: {[key: string]: any};
+    extraArgs: {[key: string]: string};
     /**
      * Extra binds for scheduler service (list)
      */
@@ -3304,7 +3304,7 @@ export interface ClusterRkeConfigServicesKubeApi {
     /**
      * Extra arguments for scheduler service (map)
      */
-    extraArgs: {[key: string]: any};
+    extraArgs: {[key: string]: string};
     /**
      * Extra binds for scheduler service (list)
      */
@@ -3484,7 +3484,7 @@ export interface ClusterRkeConfigServicesKubeController {
     /**
      * Extra arguments for scheduler service (map)
      */
-    extraArgs: {[key: string]: any};
+    extraArgs: {[key: string]: string};
     /**
      * Extra binds for scheduler service (list)
      */
@@ -3515,7 +3515,7 @@ export interface ClusterRkeConfigServicesKubelet {
     /**
      * Extra arguments for scheduler service (map)
      */
-    extraArgs: {[key: string]: any};
+    extraArgs: {[key: string]: string};
     /**
      * Extra binds for scheduler service (list)
      */
@@ -3546,7 +3546,7 @@ export interface ClusterRkeConfigServicesKubeproxy {
     /**
      * Extra arguments for scheduler service (map)
      */
-    extraArgs: {[key: string]: any};
+    extraArgs: {[key: string]: string};
     /**
      * Extra binds for scheduler service (list)
      */
@@ -3565,7 +3565,7 @@ export interface ClusterRkeConfigServicesScheduler {
     /**
      * Extra arguments for scheduler service (map)
      */
-    extraArgs: {[key: string]: any};
+    extraArgs: {[key: string]: string};
     /**
      * Extra binds for scheduler service (list)
      */
@@ -3626,11 +3626,11 @@ export interface ClusterSyncNode {
     /**
      * Annotations of the resource
      */
-    annotations: {[key: string]: any};
+    annotations: {[key: string]: string};
     /**
      * The total resources of a node (map).
      */
-    capacity: {[key: string]: any};
+    capacity: {[key: string]: string};
     /**
      * The cluster ID that is syncing (string)
      */
@@ -3654,7 +3654,7 @@ export interface ClusterSyncNode {
     /**
      * Labels of the resource
      */
-    labels: {[key: string]: any};
+    labels: {[key: string]: string};
     /**
      * The name of the node (string).
      */
@@ -3686,7 +3686,7 @@ export interface ClusterSyncNode {
     /**
      * General information about the node, such as kernel version, kubelet and kube-proxy version, Docker version (if used), and OS name.
      */
-    systemInfo: {[key: string]: any};
+    systemInfo: {[key: string]: string};
 }
 
 export interface ClusterTemplateMember {
@@ -3708,7 +3708,7 @@ export interface ClusterTemplateTemplateRevision {
     /**
      * Annotations for the cluster template (map)
      */
-    annotations: {[key: string]: any};
+    annotations: {[key: string]: string};
     /**
      * Cluster configuration
      */
@@ -3732,7 +3732,7 @@ export interface ClusterTemplateTemplateRevision {
     /**
      * Labels for the cluster template (map)
      */
-    labels: {[key: string]: any};
+    labels: {[key: string]: string};
     /**
      * The cluster template name (string)
      */
@@ -3899,7 +3899,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentica
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorization {
     mode?: string;
-    options: {[key: string]: any};
+    options: {[key: string]: string};
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHost {
@@ -4086,12 +4086,12 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns {
      * Linear Autoscaler Params
      */
     linearAutoscalerParams?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams;
-    nodeSelector: {[key: string]: any};
+    nodeSelector: {[key: string]: string};
     /**
      * Nodelocal dns
      */
     nodelocal?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal;
-    options: {[key: string]: any};
+    options: {[key: string]: string};
     provider?: string;
     reverseCidrs: string[];
     /**
@@ -4118,7 +4118,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodeloc
     /**
      * Node selector key pair
      */
-    nodeSelector?: {[key: string]: any};
+    nodeSelector?: {[key: string]: string};
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsToleration {
@@ -4154,12 +4154,12 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateS
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress {
     defaultBackend?: boolean;
     dnsPolicy: string;
-    extraArgs: {[key: string]: any};
+    extraArgs: {[key: string]: string};
     httpPort: number;
     httpsPort: number;
     networkMode: string;
-    nodeSelector: {[key: string]: any};
-    options: {[key: string]: any};
+    nodeSelector: {[key: string]: string};
+    options: {[key: string]: string};
     provider: string;
     /**
      * Ingress add-on tolerations
@@ -4198,8 +4198,8 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpd
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring {
-    nodeSelector?: {[key: string]: any};
-    options: {[key: string]: any};
+    nodeSelector?: {[key: string]: string};
+    options: {[key: string]: string};
     provider: string;
     replicas: number;
     /**
@@ -4248,7 +4248,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork {
     canalNetworkProvider?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider;
     flannelNetworkProvider?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider;
     mtu?: number;
-    options: {[key: string]: any};
+    options: {[key: string]: string};
     plugin: string;
     /**
      * Network add-on tolerations
@@ -4366,7 +4366,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigNode {
     /**
      * Labels for the cluster template (map)
      */
-    labels?: {[key: string]: any};
+    labels?: {[key: string]: string};
     nodeId?: string;
     port?: string;
     roles: string[];
@@ -4408,7 +4408,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEt
     cert: string;
     creation: string;
     externalUrls?: string[];
-    extraArgs: {[key: string]: any};
+    extraArgs: {[key: string]: string};
     extraBinds?: string[];
     extraEnvs?: string[];
     gid?: number;
@@ -4450,7 +4450,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKu
     alwaysPullImages?: boolean;
     auditLog?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog;
     eventRateLimit?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit;
-    extraArgs: {[key: string]: any};
+    extraArgs: {[key: string]: string};
     extraBinds?: string[];
     extraEnvs?: string[];
     image: string;
@@ -4525,7 +4525,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKu
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeController {
     clusterCidr: string;
-    extraArgs: {[key: string]: any};
+    extraArgs: {[key: string]: string};
     extraBinds?: string[];
     extraEnvs?: string[];
     image: string;
@@ -4535,7 +4535,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKu
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet {
     clusterDnsServer: string;
     clusterDomain: string;
-    extraArgs: {[key: string]: any};
+    extraArgs: {[key: string]: string};
     extraBinds?: string[];
     extraEnvs?: string[];
     failSwapOn: boolean;
@@ -4545,14 +4545,14 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKu
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxy {
-    extraArgs: {[key: string]: any};
+    extraArgs: {[key: string]: string};
     extraBinds?: string[];
     extraEnvs?: string[];
     image: string;
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesScheduler {
-    extraArgs: {[key: string]: any};
+    extraArgs: {[key: string]: string};
     extraBinds?: string[];
     extraEnvs?: string[];
     image: string;
@@ -4664,7 +4664,7 @@ export interface ClusterV2ClusterRegistrationToken {
     /**
      * Annotations for the Cluster.
      */
-    annotations: {[key: string]: any};
+    annotations: {[key: string]: string};
     /**
      * Cluster ID.
      */
@@ -4692,7 +4692,7 @@ export interface ClusterV2ClusterRegistrationToken {
     /**
      * Labels for the Cluster.
      */
-    labels: {[key: string]: any};
+    labels: {[key: string]: string};
     /**
      * K8s manifest url to execute with `kubectl` to import an existing k8s cluster.
      */
@@ -4939,7 +4939,7 @@ export interface ClusterV2RkeConfigMachinePool {
     /**
      * Annotations for the Cluster.
      */
-    annotations: {[key: string]: any};
+    annotations: {[key: string]: string};
     /**
      * Cloud credential secret name is the secret to be used when a cloud credential secret name is not specified at the machine pool level.
      */
@@ -4963,7 +4963,7 @@ export interface ClusterV2RkeConfigMachinePool {
     /**
      * Labels for the Cluster.
      */
-    labels: {[key: string]: any};
+    labels: {[key: string]: string};
     /**
      * Machine config data
      */
@@ -4971,7 +4971,7 @@ export interface ClusterV2RkeConfigMachinePool {
     /**
      * Labels of the machine
      */
-    machineLabels: {[key: string]: any};
+    machineLabels: {[key: string]: string};
     /**
      * max unhealthy nodes for automated replacement to be allowed
      */
@@ -5085,7 +5085,7 @@ export interface ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector {
     /**
      * Label selector match labels
      */
-    matchLabels?: {[key: string]: any};
+    matchLabels?: {[key: string]: string};
 }
 
 export interface ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression {
@@ -5209,7 +5209,7 @@ export interface ClusterV2RkeConfigMachineSelectorFileMachineLabelSelector {
     /**
      * Label selector match labels
      */
-    matchLabels?: {[key: string]: any};
+    matchLabels?: {[key: string]: string};
 }
 
 export interface ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpression {
@@ -5273,7 +5273,7 @@ export interface ClusterV2RkeConfigRegistriesMirror {
     /**
      * Registry mirror rewrites
      */
-    rewrites?: {[key: string]: any};
+    rewrites?: {[key: string]: string};
 }
 
 export interface ClusterV2RkeConfigRotateCertificates {
@@ -5578,7 +5578,7 @@ export interface GetClusterAksConfig {
      *
      * @deprecated Use tags argument instead as []string
      */
-    tag: {[key: string]: any};
+    tag: {[key: string]: string};
     /**
      * Tags for Kubernetes cluster. For example, `["foo=bar","bar=foo"]`
      */
@@ -5709,7 +5709,7 @@ export interface GetClusterAksConfigV2 {
     /**
      * The AKS cluster tags
      */
-    tags: {[key: string]: any};
+    tags: {[key: string]: string};
     /**
      * The AKS virtual network
      */
@@ -5736,7 +5736,7 @@ export interface GetClusterAksConfigV2NodePool {
     /**
      * (Computed) Labels for Node Pool object (map)
      */
-    labels: {[key: string]: any};
+    labels: {[key: string]: string};
     /**
      * The AKS node pool max count
      */
@@ -5860,7 +5860,7 @@ export interface GetClusterAlertRuleNodeRule {
     /**
      * Node rule selector
      */
-    selector?: {[key: string]: any};
+    selector?: {[key: string]: string};
 }
 
 export interface GetClusterAlertRuleSystemServiceRule {
@@ -5880,7 +5880,7 @@ export interface GetClusterClusterMonitoringInput {
     /**
      * Answers for monitor input
      */
-    answers?: {[key: string]: any};
+    answers?: {[key: string]: string};
     /**
      * Monitoring version
      */
@@ -5891,7 +5891,7 @@ export interface GetClusterClusterRegistrationToken {
     /**
      * (Computed) Annotations for Node Pool object (map)
      */
-    annotations: {[key: string]: any};
+    annotations: {[key: string]: string};
     clusterId: string;
     command: string;
     /**
@@ -5904,7 +5904,7 @@ export interface GetClusterClusterRegistrationToken {
     /**
      * (Computed) Labels for Node Pool object (map)
      */
-    labels: {[key: string]: any};
+    labels: {[key: string]: string};
     manifestUrl: string;
     /**
      * The name of the Cluster (string)
@@ -5927,7 +5927,7 @@ export interface GetClusterClusterTemplateAnswers {
     /**
      * Key/values for answer
      */
-    values: {[key: string]: any};
+    values: {[key: string]: string};
 }
 
 export interface GetClusterClusterTemplateQuestion {
@@ -6092,7 +6092,7 @@ export interface GetClusterEksConfigV2 {
     /**
      * The EKS cluster tags
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
 }
 
 export interface GetClusterEksConfigV2NodeGroup {
@@ -6123,7 +6123,7 @@ export interface GetClusterEksConfigV2NodeGroup {
     /**
      * (Computed) Labels for Node Pool object (map)
      */
-    labels?: {[key: string]: any};
+    labels?: {[key: string]: string};
     /**
      * The EKS node groups launch template
      */
@@ -6151,7 +6151,7 @@ export interface GetClusterEksConfigV2NodeGroup {
     /**
      * The EKS node group resource tags
      */
-    resourceTags?: {[key: string]: any};
+    resourceTags?: {[key: string]: string};
     /**
      * The EKS node group spot instance types
      */
@@ -6163,7 +6163,7 @@ export interface GetClusterEksConfigV2NodeGroup {
     /**
      * The EKS node group tags
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
     /**
      * The EKS node group user data
      */
@@ -6309,7 +6309,7 @@ export interface GetClusterGkeConfig {
     /**
      * (Computed) Labels for Node Pool object (map)
      */
-    labels: {[key: string]: any};
+    labels: {[key: string]: string};
     /**
      * The number of local SSD disks to be attached to the node
      */
@@ -6381,7 +6381,7 @@ export interface GetClusterGkeConfig {
     /**
      * The map of Kubernetes labels (key/value pairs) to be applied to each cluster
      */
-    resourceLabels: {[key: string]: any};
+    resourceLabels: {[key: string]: string};
     /**
      * The Google Cloud Platform Service Account to be used by the node VMs
      */
@@ -6440,7 +6440,7 @@ export interface GetClusterGkeConfigV2 {
     /**
      * (Computed) Labels for Node Pool object (map)
      */
-    labels: {[key: string]: any};
+    labels: {[key: string]: string};
     /**
      * The GKE cluster locations
      */
@@ -6633,7 +6633,7 @@ export interface GetClusterGkeConfigV2NodePoolConfig {
     /**
      * (Computed) Labels for Node Pool object (map)
      */
-    labels: {[key: string]: any};
+    labels: {[key: string]: string};
     /**
      * The GKE node config local ssd count
      */
@@ -6979,7 +6979,7 @@ export interface GetClusterRkeConfigAuthentication {
 
 export interface GetClusterRkeConfigAuthorization {
     mode?: string;
-    options: {[key: string]: any};
+    options: {[key: string]: string};
 }
 
 export interface GetClusterRkeConfigBastionHost {
@@ -7166,12 +7166,12 @@ export interface GetClusterRkeConfigDns {
      * Linear Autoscaler Params
      */
     linearAutoscalerParams?: outputs.GetClusterRkeConfigDnsLinearAutoscalerParams;
-    nodeSelector: {[key: string]: any};
+    nodeSelector: {[key: string]: string};
     /**
      * Nodelocal dns
      */
     nodelocal?: outputs.GetClusterRkeConfigDnsNodelocal;
-    options: {[key: string]: any};
+    options: {[key: string]: string};
     provider?: string;
     reverseCidrs: string[];
     /**
@@ -7198,7 +7198,7 @@ export interface GetClusterRkeConfigDnsNodelocal {
     /**
      * Node selector key pair
      */
-    nodeSelector?: {[key: string]: any};
+    nodeSelector?: {[key: string]: string};
 }
 
 export interface GetClusterRkeConfigDnsToleration {
@@ -7234,12 +7234,12 @@ export interface GetClusterRkeConfigDnsUpdateStrategyRollingUpdate {
 export interface GetClusterRkeConfigIngress {
     defaultBackend?: boolean;
     dnsPolicy: string;
-    extraArgs: {[key: string]: any};
+    extraArgs: {[key: string]: string};
     httpPort: number;
     httpsPort: number;
     networkMode: string;
-    nodeSelector: {[key: string]: any};
-    options: {[key: string]: any};
+    nodeSelector: {[key: string]: string};
+    options: {[key: string]: string};
     provider: string;
     /**
      * Ingress add-on tolerations
@@ -7278,8 +7278,8 @@ export interface GetClusterRkeConfigIngressUpdateStrategyRollingUpdate {
 }
 
 export interface GetClusterRkeConfigMonitoring {
-    nodeSelector?: {[key: string]: any};
-    options: {[key: string]: any};
+    nodeSelector?: {[key: string]: string};
+    options: {[key: string]: string};
     provider: string;
     replicas: number;
     /**
@@ -7328,7 +7328,7 @@ export interface GetClusterRkeConfigNetwork {
     canalNetworkProvider?: outputs.GetClusterRkeConfigNetworkCanalNetworkProvider;
     flannelNetworkProvider?: outputs.GetClusterRkeConfigNetworkFlannelNetworkProvider;
     mtu?: number;
-    options: {[key: string]: any};
+    options: {[key: string]: string};
     plugin: string;
     /**
      * Network add-on tolerations
@@ -7446,7 +7446,7 @@ export interface GetClusterRkeConfigNode {
     /**
      * (Computed) Labels for Node Pool object (map)
      */
-    labels?: {[key: string]: any};
+    labels?: {[key: string]: string};
     nodeId?: string;
     port?: string;
     roles: string[];
@@ -7491,7 +7491,7 @@ export interface GetClusterRkeConfigServicesEtcd {
     cert: string;
     creation: string;
     externalUrls?: string[];
-    extraArgs: {[key: string]: any};
+    extraArgs: {[key: string]: string};
     extraBinds?: string[];
     extraEnvs?: string[];
     gid?: number;
@@ -7530,7 +7530,7 @@ export interface GetClusterRkeConfigServicesKubeApi {
     alwaysPullImages?: boolean;
     auditLog?: outputs.GetClusterRkeConfigServicesKubeApiAuditLog;
     eventRateLimit?: outputs.GetClusterRkeConfigServicesKubeApiEventRateLimit;
-    extraArgs: {[key: string]: any};
+    extraArgs: {[key: string]: string};
     extraBinds?: string[];
     extraEnvs?: string[];
     image: string;
@@ -7596,7 +7596,7 @@ export interface GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig {
 
 export interface GetClusterRkeConfigServicesKubeController {
     clusterCidr: string;
-    extraArgs: {[key: string]: any};
+    extraArgs: {[key: string]: string};
     extraBinds?: string[];
     extraEnvs?: string[];
     image: string;
@@ -7606,7 +7606,7 @@ export interface GetClusterRkeConfigServicesKubeController {
 export interface GetClusterRkeConfigServicesKubelet {
     clusterDnsServer: string;
     clusterDomain: string;
-    extraArgs: {[key: string]: any};
+    extraArgs: {[key: string]: string};
     extraBinds?: string[];
     extraEnvs?: string[];
     failSwapOn: boolean;
@@ -7616,14 +7616,14 @@ export interface GetClusterRkeConfigServicesKubelet {
 }
 
 export interface GetClusterRkeConfigServicesKubeproxy {
-    extraArgs: {[key: string]: any};
+    extraArgs: {[key: string]: string};
     extraBinds?: string[];
     extraEnvs?: string[];
     image: string;
 }
 
 export interface GetClusterRkeConfigServicesScheduler {
-    extraArgs: {[key: string]: any};
+    extraArgs: {[key: string]: string};
     extraBinds?: string[];
     extraEnvs?: string[];
     image: string;
@@ -7663,7 +7663,7 @@ export interface GetClusterTemplateTemplateRevision {
     /**
      * (Computed) Annotations for the cluster template (map)
      */
-    annotations: {[key: string]: any};
+    annotations: {[key: string]: string};
     /**
      * Cluster configuration
      */
@@ -7687,7 +7687,7 @@ export interface GetClusterTemplateTemplateRevision {
     /**
      * (Computed) Labels for the cluster template (map)
      */
-    labels: {[key: string]: any};
+    labels: {[key: string]: string};
     /**
      * The cluster template name (string)
      */
@@ -7851,7 +7851,7 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthent
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorization {
     mode?: string;
-    options: {[key: string]: any};
+    options: {[key: string]: string};
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHost {
@@ -8038,12 +8038,12 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDns {
      * Linear Autoscaler Params
      */
     linearAutoscalerParams?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams;
-    nodeSelector: {[key: string]: any};
+    nodeSelector: {[key: string]: string};
     /**
      * Nodelocal dns
      */
     nodelocal?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal;
-    options: {[key: string]: any};
+    options: {[key: string]: string};
     provider?: string;
     reverseCidrs: string[];
     /**
@@ -8070,7 +8070,7 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNode
     /**
      * Node selector key pair
      */
-    nodeSelector?: {[key: string]: any};
+    nodeSelector?: {[key: string]: string};
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsToleration {
@@ -8106,12 +8106,12 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpda
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress {
     defaultBackend?: boolean;
     dnsPolicy: string;
-    extraArgs: {[key: string]: any};
+    extraArgs: {[key: string]: string};
     httpPort: number;
     httpsPort: number;
     networkMode: string;
-    nodeSelector: {[key: string]: any};
-    options: {[key: string]: any};
+    nodeSelector: {[key: string]: string};
+    options: {[key: string]: string};
     provider: string;
     /**
      * Ingress add-on tolerations
@@ -8150,8 +8150,8 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring {
-    nodeSelector?: {[key: string]: any};
-    options: {[key: string]: any};
+    nodeSelector?: {[key: string]: string};
+    options: {[key: string]: string};
     provider: string;
     replicas: number;
     /**
@@ -8200,7 +8200,7 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork
     canalNetworkProvider?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider;
     flannelNetworkProvider?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider;
     mtu?: number;
-    options: {[key: string]: any};
+    options: {[key: string]: string};
     plugin: string;
     /**
      * Network add-on tolerations
@@ -8318,7 +8318,7 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNode {
     /**
      * (Computed) Labels for the cluster template (map)
      */
-    labels?: {[key: string]: any};
+    labels?: {[key: string]: string};
     nodeId?: string;
     port?: string;
     roles: string[];
@@ -8360,7 +8360,7 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigService
     cert: string;
     creation: string;
     externalUrls?: string[];
-    extraArgs: {[key: string]: any};
+    extraArgs: {[key: string]: string};
     extraBinds?: string[];
     extraEnvs?: string[];
     gid?: number;
@@ -8399,7 +8399,7 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigService
     alwaysPullImages?: boolean;
     auditLog?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog;
     eventRateLimit?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit;
-    extraArgs: {[key: string]: any};
+    extraArgs: {[key: string]: string};
     extraBinds?: string[];
     extraEnvs?: string[];
     image: string;
@@ -8465,7 +8465,7 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigService
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeController {
     clusterCidr: string;
-    extraArgs: {[key: string]: any};
+    extraArgs: {[key: string]: string};
     extraBinds?: string[];
     extraEnvs?: string[];
     image: string;
@@ -8475,7 +8475,7 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigService
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet {
     clusterDnsServer: string;
     clusterDomain: string;
-    extraArgs: {[key: string]: any};
+    extraArgs: {[key: string]: string};
     extraBinds?: string[];
     extraEnvs?: string[];
     failSwapOn: boolean;
@@ -8485,14 +8485,14 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigService
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxy {
-    extraArgs: {[key: string]: any};
+    extraArgs: {[key: string]: string};
     extraBinds?: string[];
     extraEnvs?: string[];
     image: string;
 }
 
 export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesScheduler {
-    extraArgs: {[key: string]: any};
+    extraArgs: {[key: string]: string};
     extraBinds?: string[];
     extraEnvs?: string[];
     image: string;
@@ -8544,7 +8544,7 @@ export interface GetClusterV2ClusterRegistrationToken {
     /**
      * Annotations of the resource
      */
-    annotations: {[key: string]: any};
+    annotations: {[key: string]: string};
     clusterId: string;
     command: string;
     /**
@@ -8557,7 +8557,7 @@ export interface GetClusterV2ClusterRegistrationToken {
     /**
      * Labels of the resource
      */
-    labels: {[key: string]: any};
+    labels: {[key: string]: string};
     manifestUrl: string;
     /**
      * The name of the Cluster v2 (string)
@@ -8711,7 +8711,7 @@ export interface GetClusterV2RkeConfigMachinePool {
     /**
      * Annotations of the resource
      */
-    annotations: {[key: string]: any};
+    annotations: {[key: string]: string};
     /**
      * (Computed) Cluster V2 cloud credential secret name (string)
      */
@@ -8735,7 +8735,7 @@ export interface GetClusterV2RkeConfigMachinePool {
     /**
      * Labels of the resource
      */
-    labels: {[key: string]: any};
+    labels: {[key: string]: string};
     /**
      * Machine config data
      */
@@ -8743,7 +8743,7 @@ export interface GetClusterV2RkeConfigMachinePool {
     /**
      * Labels of the machine
      */
-    machineLabels: {[key: string]: any};
+    machineLabels: {[key: string]: string};
     /**
      * max unhealthy nodes for automated replacement to be allowed
      */
@@ -8848,7 +8848,7 @@ export interface GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector 
     /**
      * Label selector match labels
      */
-    matchLabels?: {[key: string]: any};
+    matchLabels?: {[key: string]: string};
 }
 
 export interface GetClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression {
@@ -8972,7 +8972,7 @@ export interface GetClusterV2RkeConfigMachineSelectorFileMachineLabelSelector {
     /**
      * Label selector match labels
      */
-    matchLabels?: {[key: string]: any};
+    matchLabels?: {[key: string]: string};
 }
 
 export interface GetClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpression {
@@ -9036,7 +9036,7 @@ export interface GetClusterV2RkeConfigRegistriesMirror {
     /**
      * Registry mirror rewrites
      */
-    rewrites?: {[key: string]: any};
+    rewrites?: {[key: string]: string};
 }
 
 export interface GetClusterV2RkeConfigRotateCertificates {
@@ -9221,7 +9221,7 @@ export interface GetMultiClusterAppAnswer {
     /**
      * Key/values for answer
      */
-    values: {[key: string]: any};
+    values: {[key: string]: string};
 }
 
 export interface GetMultiClusterAppMember {
@@ -9714,7 +9714,7 @@ export interface GetProjectAlertRuleWorkloadRule {
     /**
      * Workload rule selector
      */
-    selector?: {[key: string]: any};
+    selector?: {[key: string]: string};
     /**
      * Workload ID
      */
@@ -10683,7 +10683,7 @@ export interface MultiClusterAppAnswer {
     /**
      * Key/values for answer
      */
-    values: {[key: string]: any};
+    values: {[key: string]: string};
 }
 
 export interface MultiClusterAppMember {
@@ -11255,7 +11255,7 @@ export interface NodeTemplateHetznerConfig {
     /**
      * Map of the labels which will be assigned to the server
      */
-    serverLabels?: {[key: string]: any};
+    serverLabels?: {[key: string]: string};
     /**
      * Hetzner Cloud datacenter
      */
@@ -12181,7 +12181,7 @@ export interface ProjectAlertRuleWorkloadRule {
     /**
      * Workload rule selector
      */
-    selector?: {[key: string]: any};
+    selector?: {[key: string]: string};
     /**
      * Workload ID
      */
@@ -12211,7 +12211,7 @@ export interface ProjectProjectMonitoringInput {
     /**
      * Answers for monitor input
      */
-    answers?: {[key: string]: any};
+    answers?: {[key: string]: string};
     /**
      * Monitoring version
      */

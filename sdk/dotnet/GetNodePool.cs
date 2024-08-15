@@ -122,7 +122,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Annotations for Node Pool object (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Annotations;
+        public readonly ImmutableDictionary<string, string> Annotations;
         public readonly string ClusterId;
         /// <summary>
         /// (Computed) RKE control plane role for created nodes (bool)
@@ -147,7 +147,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Labels for Node Pool object (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Labels;
+        public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
         /// <summary>
         /// (Computed) Node taints (List)
@@ -165,7 +165,7 @@ namespace Pulumi.Rancher2
 
         [OutputConstructor]
         private GetNodePoolResult(
-            ImmutableDictionary<string, object> annotations,
+            ImmutableDictionary<string, string> annotations,
 
             string clusterId,
 
@@ -179,7 +179,7 @@ namespace Pulumi.Rancher2
 
             string id,
 
-            ImmutableDictionary<string, object> labels,
+            ImmutableDictionary<string, string> labels,
 
             string name,
 

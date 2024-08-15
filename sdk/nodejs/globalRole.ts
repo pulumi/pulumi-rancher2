@@ -67,7 +67,7 @@ export class GlobalRole extends pulumi.CustomResource {
     /**
      * Annotations for global role object (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: any}>;
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * (Computed) Builtin global role (bool)
      */
@@ -83,7 +83,7 @@ export class GlobalRole extends pulumi.CustomResource {
     /**
      * Labels for global role object (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Global role name (string)
      */
@@ -141,7 +141,7 @@ export interface GlobalRoleState {
     /**
      * Annotations for global role object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * (Computed) Builtin global role (bool)
      */
@@ -157,7 +157,7 @@ export interface GlobalRoleState {
     /**
      * Labels for global role object (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Global role name (string)
      */
@@ -179,7 +179,7 @@ export interface GlobalRoleArgs {
     /**
      * Annotations for global role object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Global role description (string)
      */
@@ -191,7 +191,7 @@ export interface GlobalRoleArgs {
     /**
      * Labels for global role object (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Global role name (string)
      */

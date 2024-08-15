@@ -16,10 +16,10 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? ClusterCidr { get; set; }
 
         [Input("extraArgs")]
-        private InputMap<object>? _extraArgs;
-        public InputMap<object> ExtraArgs
+        private InputMap<string>? _extraArgs;
+        public InputMap<string> ExtraArgs
         {
-            get => _extraArgs ?? (_extraArgs = new InputMap<object>());
+            get => _extraArgs ?? (_extraArgs = new InputMap<string>());
             set => _extraArgs = value;
         }
 

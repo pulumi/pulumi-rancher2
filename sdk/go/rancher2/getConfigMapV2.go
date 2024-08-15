@@ -35,18 +35,18 @@ type LookupConfigMapV2Args struct {
 // A collection of values returned by getConfigMapV2.
 type LookupConfigMapV2Result struct {
 	// (Computed) Annotations for the configMap v2 (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
-	ClusterId   string                 `pulumi:"clusterId"`
+	Annotations map[string]string `pulumi:"annotations"`
+	ClusterId   string            `pulumi:"clusterId"`
 	// (Computed) The data of the configMap v2 (map)
-	Data map[string]interface{} `pulumi:"data"`
+	Data map[string]string `pulumi:"data"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) If set to true, any configMap update will remove and recreate the configMap. This is a beta field enabled by k8s `ImmutableEphemeralVolumes` feature gate (bool)
 	Immutable bool `pulumi:"immutable"`
 	// (Computed) Labels for the configMap v2 (map)
-	Labels    map[string]interface{} `pulumi:"labels"`
-	Name      string                 `pulumi:"name"`
-	Namespace *string                `pulumi:"namespace"`
+	Labels    map[string]string `pulumi:"labels"`
+	Name      string            `pulumi:"name"`
+	Namespace *string           `pulumi:"namespace"`
 	// (Computed) The k8s resource version (string)
 	ResourceVersion string `pulumi:"resourceVersion"`
 }
@@ -94,8 +94,8 @@ func (o LookupConfigMapV2ResultOutput) ToLookupConfigMapV2ResultOutputWithContex
 }
 
 // (Computed) Annotations for the configMap v2 (map)
-func (o LookupConfigMapV2ResultOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupConfigMapV2Result) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+func (o LookupConfigMapV2ResultOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupConfigMapV2Result) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 func (o LookupConfigMapV2ResultOutput) ClusterId() pulumi.StringOutput {
@@ -103,8 +103,8 @@ func (o LookupConfigMapV2ResultOutput) ClusterId() pulumi.StringOutput {
 }
 
 // (Computed) The data of the configMap v2 (map)
-func (o LookupConfigMapV2ResultOutput) Data() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupConfigMapV2Result) map[string]interface{} { return v.Data }).(pulumi.MapOutput)
+func (o LookupConfigMapV2ResultOutput) Data() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupConfigMapV2Result) map[string]string { return v.Data }).(pulumi.StringMapOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -118,8 +118,8 @@ func (o LookupConfigMapV2ResultOutput) Immutable() pulumi.BoolOutput {
 }
 
 // (Computed) Labels for the configMap v2 (map)
-func (o LookupConfigMapV2ResultOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupConfigMapV2Result) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+func (o LookupConfigMapV2ResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupConfigMapV2Result) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupConfigMapV2ResultOutput) Name() pulumi.StringOutput {

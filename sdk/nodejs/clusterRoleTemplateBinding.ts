@@ -61,7 +61,7 @@ export class ClusterRoleTemplateBinding extends pulumi.CustomResource {
     /**
      * Annotations for cluster role template binding (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: any}>;
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * The cluster id where bind cluster role template binding (string)
      */
@@ -79,7 +79,7 @@ export class ClusterRoleTemplateBinding extends pulumi.CustomResource {
      *
      * **Note:** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the cluster role template binding (string)
      */
@@ -149,7 +149,7 @@ export interface ClusterRoleTemplateBindingState {
     /**
      * Annotations for cluster role template binding (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The cluster id where bind cluster role template binding (string)
      */
@@ -167,7 +167,7 @@ export interface ClusterRoleTemplateBindingState {
      *
      * **Note:** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the cluster role template binding (string)
      */
@@ -193,7 +193,7 @@ export interface ClusterRoleTemplateBindingArgs {
     /**
      * Annotations for cluster role template binding (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The cluster id where bind cluster role template binding (string)
      */
@@ -211,7 +211,7 @@ export interface ClusterRoleTemplateBindingArgs {
      *
      * **Note:** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the cluster role template binding (string)
      */

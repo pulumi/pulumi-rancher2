@@ -11,7 +11,6 @@ import com.pulumi.rancher2.SecretV2Args;
 import com.pulumi.rancher2.Utilities;
 import com.pulumi.rancher2.inputs.SecretV2State;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -36,14 +35,14 @@ public class SecretV2 extends com.pulumi.resources.CustomResource {
      * Annotations for the secret v2 (map)
      * 
      */
-    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> annotations;
+    @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> annotations;
 
     /**
      * @return Annotations for the secret v2 (map)
      * 
      */
-    public Output<Map<String,Object>> annotations() {
+    public Output<Map<String,String>> annotations() {
         return this.annotations;
     }
     /**
@@ -64,14 +63,14 @@ public class SecretV2 extends com.pulumi.resources.CustomResource {
      * The data of the secret v2 (map)
      * 
      */
-    @Export(name="data", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> data;
+    @Export(name="data", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> data;
 
     /**
      * @return The data of the secret v2 (map)
      * 
      */
-    public Output<Map<String,Object>> data() {
+    public Output<Map<String,String>> data() {
         return this.data;
     }
     /**
@@ -92,14 +91,14 @@ public class SecretV2 extends com.pulumi.resources.CustomResource {
      * Labels for the secret v2 (map)
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> labels;
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> labels;
 
     /**
      * @return Labels for the secret v2 (map)
      * 
      */
-    public Output<Map<String,Object>> labels() {
+    public Output<Map<String,String>> labels() {
         return this.labels;
     }
     /**

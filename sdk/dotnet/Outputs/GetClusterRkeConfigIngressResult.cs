@@ -15,12 +15,12 @@ namespace Pulumi.Rancher2.Outputs
     {
         public readonly bool? DefaultBackend;
         public readonly string DnsPolicy;
-        public readonly ImmutableDictionary<string, object> ExtraArgs;
+        public readonly ImmutableDictionary<string, string> ExtraArgs;
         public readonly int HttpPort;
         public readonly int HttpsPort;
         public readonly string NetworkMode;
-        public readonly ImmutableDictionary<string, object> NodeSelector;
-        public readonly ImmutableDictionary<string, object> Options;
+        public readonly ImmutableDictionary<string, string> NodeSelector;
+        public readonly ImmutableDictionary<string, string> Options;
         public readonly string Provider;
         /// <summary>
         /// Ingress add-on tolerations
@@ -37,7 +37,7 @@ namespace Pulumi.Rancher2.Outputs
 
             string dnsPolicy,
 
-            ImmutableDictionary<string, object> extraArgs,
+            ImmutableDictionary<string, string> extraArgs,
 
             int httpPort,
 
@@ -45,9 +45,9 @@ namespace Pulumi.Rancher2.Outputs
 
             string networkMode,
 
-            ImmutableDictionary<string, object> nodeSelector,
+            ImmutableDictionary<string, string> nodeSelector,
 
-            ImmutableDictionary<string, object> options,
+            ImmutableDictionary<string, string> options,
 
             string provider,
 

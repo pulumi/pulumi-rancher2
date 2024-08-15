@@ -8,7 +8,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterRkeConfigServicesEtcdBackupConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -27,7 +26,7 @@ public final class GetClusterRkeConfigServicesEtcd {
     private String cert;
     private String creation;
     private @Nullable List<String> externalUrls;
-    private Map<String,Object> extraArgs;
+    private Map<String,String> extraArgs;
     private @Nullable List<String> extraBinds;
     private @Nullable List<String> extraEnvs;
     private @Nullable Integer gid;
@@ -58,7 +57,7 @@ public final class GetClusterRkeConfigServicesEtcd {
     public List<String> externalUrls() {
         return this.externalUrls == null ? List.of() : this.externalUrls;
     }
-    public Map<String,Object> extraArgs() {
+    public Map<String,String> extraArgs() {
         return this.extraArgs;
     }
     public List<String> extraBinds() {
@@ -103,7 +102,7 @@ public final class GetClusterRkeConfigServicesEtcd {
         private String cert;
         private String creation;
         private @Nullable List<String> externalUrls;
-        private Map<String,Object> extraArgs;
+        private Map<String,String> extraArgs;
         private @Nullable List<String> extraBinds;
         private @Nullable List<String> extraEnvs;
         private @Nullable Integer gid;
@@ -175,7 +174,7 @@ public final class GetClusterRkeConfigServicesEtcd {
             return externalUrls(List.of(externalUrls));
         }
         @CustomType.Setter
-        public Builder extraArgs(Map<String,Object> extraArgs) {
+        public Builder extraArgs(Map<String,String> extraArgs) {
             if (extraArgs == null) {
               throw new MissingRequiredPropertyException("GetClusterRkeConfigServicesEtcd", "extraArgs");
             }

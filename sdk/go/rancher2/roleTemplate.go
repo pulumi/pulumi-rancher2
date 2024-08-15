@@ -112,7 +112,7 @@ type RoleTemplate struct {
 	// Administrative role template. Default `false` (bool)
 	Administrative pulumi.BoolPtrOutput `pulumi:"administrative"`
 	// Annotations for role template object (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// (Computed) Builtin role template (string)
 	Builtin pulumi.BoolOutput `pulumi:"builtin"`
 	// Role template context. `cluster` and `project` values are supported. Default: `cluster` (string)
@@ -128,7 +128,7 @@ type RoleTemplate struct {
 	// Hidden role template. Default `false` (bool)
 	Hidden pulumi.BoolPtrOutput `pulumi:"hidden"`
 	// Labels for role template object (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Locked role template. Default `false` (bool)
 	Locked pulumi.BoolPtrOutput `pulumi:"locked"`
 	// Role template name (string)
@@ -172,7 +172,7 @@ type roleTemplateState struct {
 	// Administrative role template. Default `false` (bool)
 	Administrative *bool `pulumi:"administrative"`
 	// Annotations for role template object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// (Computed) Builtin role template (string)
 	Builtin *bool `pulumi:"builtin"`
 	// Role template context. `cluster` and `project` values are supported. Default: `cluster` (string)
@@ -188,7 +188,7 @@ type roleTemplateState struct {
 	// Hidden role template. Default `false` (bool)
 	Hidden *bool `pulumi:"hidden"`
 	// Labels for role template object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// Locked role template. Default `false` (bool)
 	Locked *bool `pulumi:"locked"`
 	// Role template name (string)
@@ -203,7 +203,7 @@ type RoleTemplateState struct {
 	// Administrative role template. Default `false` (bool)
 	Administrative pulumi.BoolPtrInput
 	// Annotations for role template object (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// (Computed) Builtin role template (string)
 	Builtin pulumi.BoolPtrInput
 	// Role template context. `cluster` and `project` values are supported. Default: `cluster` (string)
@@ -219,7 +219,7 @@ type RoleTemplateState struct {
 	// Hidden role template. Default `false` (bool)
 	Hidden pulumi.BoolPtrInput
 	// Labels for role template object (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// Locked role template. Default `false` (bool)
 	Locked pulumi.BoolPtrInput
 	// Role template name (string)
@@ -238,7 +238,7 @@ type roleTemplateArgs struct {
 	// Administrative role template. Default `false` (bool)
 	Administrative *bool `pulumi:"administrative"`
 	// Annotations for role template object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// Role template context. `cluster` and `project` values are supported. Default: `cluster` (string)
 	Context *string `pulumi:"context"`
 	// Default role template for new created cluster or project. Default `false` (bool)
@@ -252,7 +252,7 @@ type roleTemplateArgs struct {
 	// Hidden role template. Default `false` (bool)
 	Hidden *bool `pulumi:"hidden"`
 	// Labels for role template object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// Locked role template. Default `false` (bool)
 	Locked *bool `pulumi:"locked"`
 	// Role template name (string)
@@ -268,7 +268,7 @@ type RoleTemplateArgs struct {
 	// Administrative role template. Default `false` (bool)
 	Administrative pulumi.BoolPtrInput
 	// Annotations for role template object (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// Role template context. `cluster` and `project` values are supported. Default: `cluster` (string)
 	Context pulumi.StringPtrInput
 	// Default role template for new created cluster or project. Default `false` (bool)
@@ -282,7 +282,7 @@ type RoleTemplateArgs struct {
 	// Hidden role template. Default `false` (bool)
 	Hidden pulumi.BoolPtrInput
 	// Labels for role template object (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// Locked role template. Default `false` (bool)
 	Locked pulumi.BoolPtrInput
 	// Role template name (string)
@@ -386,8 +386,8 @@ func (o RoleTemplateOutput) Administrative() pulumi.BoolPtrOutput {
 }
 
 // Annotations for role template object (map)
-func (o RoleTemplateOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *RoleTemplate) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o RoleTemplateOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RoleTemplate) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // (Computed) Builtin role template (string)
@@ -426,8 +426,8 @@ func (o RoleTemplateOutput) Hidden() pulumi.BoolPtrOutput {
 }
 
 // Labels for role template object (map)
-func (o RoleTemplateOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *RoleTemplate) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o RoleTemplateOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RoleTemplate) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // Locked role template. Default `false` (bool)

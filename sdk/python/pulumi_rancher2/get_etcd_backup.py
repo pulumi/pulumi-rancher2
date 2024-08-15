@@ -53,7 +53,7 @@ class GetEtcdBackupResult:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> Mapping[str, str]:
         """
         (Computed) Annotations for Etcd Backup object (map)
         """
@@ -90,7 +90,7 @@ class GetEtcdBackupResult:
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> Mapping[str, str]:
         """
         (Computed) Labels for Etcd Backup object (map)
         """

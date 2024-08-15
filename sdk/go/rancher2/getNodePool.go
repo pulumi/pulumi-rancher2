@@ -62,8 +62,8 @@ type LookupNodePoolArgs struct {
 // A collection of values returned by getNodePool.
 type LookupNodePoolResult struct {
 	// (Computed) Annotations for Node Pool object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
-	ClusterId   string                 `pulumi:"clusterId"`
+	Annotations map[string]string `pulumi:"annotations"`
+	ClusterId   string            `pulumi:"clusterId"`
 	// (Computed) RKE control plane role for created nodes (bool)
 	ControlPlane bool `pulumi:"controlPlane"`
 	// (Computed) Delete not ready node after secs. Default `0` (int)
@@ -75,8 +75,8 @@ type LookupNodePoolResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels for Node Pool object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	Name   string                 `pulumi:"name"`
+	Labels map[string]string `pulumi:"labels"`
+	Name   string            `pulumi:"name"`
 	// (Computed) Node taints (List)
 	NodeTaints     []GetNodePoolNodeTaint `pulumi:"nodeTaints"`
 	NodeTemplateId string                 `pulumi:"nodeTemplateId"`
@@ -129,8 +129,8 @@ func (o LookupNodePoolResultOutput) ToLookupNodePoolResultOutputWithContext(ctx 
 }
 
 // (Computed) Annotations for Node Pool object (map)
-func (o LookupNodePoolResultOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupNodePoolResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+func (o LookupNodePoolResultOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupNodePoolResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 func (o LookupNodePoolResultOutput) ClusterId() pulumi.StringOutput {
@@ -163,8 +163,8 @@ func (o LookupNodePoolResultOutput) Id() pulumi.StringOutput {
 }
 
 // (Computed) Labels for Node Pool object (map)
-func (o LookupNodePoolResultOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupNodePoolResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+func (o LookupNodePoolResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupNodePoolResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupNodePoolResultOutput) Name() pulumi.StringOutput {

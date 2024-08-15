@@ -40,12 +40,12 @@ export interface GetClusterTemplateArgs {
     /**
      * (Computed) Annotations for the cluster template (map)
      */
-    annotations?: {[key: string]: any};
+    annotations?: {[key: string]: string};
     description?: string;
     /**
      * (Computed) Labels for the cluster template (map)
      */
-    labels?: {[key: string]: any};
+    labels?: {[key: string]: string};
     /**
      * The cluster template name (string)
      */
@@ -59,7 +59,7 @@ export interface GetClusterTemplateResult {
     /**
      * (Computed) Annotations for the cluster template (map)
      */
-    readonly annotations: {[key: string]: any};
+    readonly annotations: {[key: string]: string};
     /**
      * (Computed) Default cluster template revision ID (string)
      */
@@ -72,7 +72,7 @@ export interface GetClusterTemplateResult {
     /**
      * (Computed) Labels for the cluster template (map)
      */
-    readonly labels: {[key: string]: any};
+    readonly labels: {[key: string]: string};
     /**
      * (Computed) Cluster template members (list)
      */
@@ -110,12 +110,12 @@ export interface GetClusterTemplateOutputArgs {
     /**
      * (Computed) Annotations for the cluster template (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     description?: pulumi.Input<string>;
     /**
      * (Computed) Labels for the cluster template (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The cluster template name (string)
      */

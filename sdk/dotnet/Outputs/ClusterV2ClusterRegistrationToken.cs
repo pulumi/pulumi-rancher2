@@ -16,7 +16,7 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// Annotations for the Cluster.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Annotations;
+        public readonly ImmutableDictionary<string, string>? Annotations;
         /// <summary>
         /// Cluster ID.
         /// </summary>
@@ -44,7 +44,7 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// Labels for the Cluster.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Labels;
+        public readonly ImmutableDictionary<string, string>? Labels;
         /// <summary>
         /// K8s manifest url to execute with `kubectl` to import an existing k8s cluster.
         /// </summary>
@@ -68,7 +68,7 @@ namespace Pulumi.Rancher2.Outputs
 
         [OutputConstructor]
         private ClusterV2ClusterRegistrationToken(
-            ImmutableDictionary<string, object>? annotations,
+            ImmutableDictionary<string, string>? annotations,
 
             string? clusterId,
 
@@ -82,7 +82,7 @@ namespace Pulumi.Rancher2.Outputs
 
             string? insecureWindowsNodeCommand,
 
-            ImmutableDictionary<string, object>? labels,
+            ImmutableDictionary<string, string>? labels,
 
             string? manifestUrl,
 

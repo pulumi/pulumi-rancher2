@@ -11,7 +11,6 @@ import com.pulumi.rancher2.outputs.ClusterTemplateTemplateRevisionClusterConfigR
 import com.pulumi.rancher2.outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkToleration;
 import com.pulumi.rancher2.outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -26,7 +25,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork 
     private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider canalNetworkProvider;
     private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider flannelNetworkProvider;
     private @Nullable Integer mtu;
-    private @Nullable Map<String,Object> options;
+    private @Nullable Map<String,String> options;
     private @Nullable String plugin;
     /**
      * @return Network add-on tolerations
@@ -51,7 +50,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork 
     public Optional<Integer> mtu() {
         return Optional.ofNullable(this.mtu);
     }
-    public Map<String,Object> options() {
+    public Map<String,String> options() {
         return this.options == null ? Map.of() : this.options;
     }
     public Optional<String> plugin() {
@@ -82,7 +81,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork 
         private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider canalNetworkProvider;
         private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider flannelNetworkProvider;
         private @Nullable Integer mtu;
-        private @Nullable Map<String,Object> options;
+        private @Nullable Map<String,String> options;
         private @Nullable String plugin;
         private @Nullable List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkToleration> tolerations;
         private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider weaveNetworkProvider;
@@ -131,7 +130,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork 
             return this;
         }
         @CustomType.Setter
-        public Builder options(@Nullable Map<String,Object> options) {
+        public Builder options(@Nullable Map<String,String> options) {
 
             this.options = options;
             return this;

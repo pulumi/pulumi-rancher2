@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterAlertGroupRecipient;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +18,7 @@ public final class GetClusterAlertGroupResult {
      * @return (Computed) The cluster alert group annotations (map)
      * 
      */
-    private Map<String,Object> annotations;
+    private Map<String,String> annotations;
     private String clusterId;
     /**
      * @return (Computed) The cluster alert group description (string)
@@ -45,7 +44,7 @@ public final class GetClusterAlertGroupResult {
      * @return (Computed) The cluster alert group labels (map)
      * 
      */
-    private Map<String,Object> labels;
+    private Map<String,String> labels;
     private String name;
     /**
      * @return (Computed) The cluster alert group recipients (list)
@@ -63,7 +62,7 @@ public final class GetClusterAlertGroupResult {
      * @return (Computed) The cluster alert group annotations (map)
      * 
      */
-    public Map<String,Object> annotations() {
+    public Map<String,String> annotations() {
         return this.annotations;
     }
     public String clusterId() {
@@ -101,7 +100,7 @@ public final class GetClusterAlertGroupResult {
      * @return (Computed) The cluster alert group labels (map)
      * 
      */
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels;
     }
     public String name() {
@@ -131,13 +130,13 @@ public final class GetClusterAlertGroupResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Map<String,Object> annotations;
+        private Map<String,String> annotations;
         private String clusterId;
         private String description;
         private Integer groupIntervalSeconds;
         private Integer groupWaitSeconds;
         private String id;
-        private Map<String,Object> labels;
+        private Map<String,String> labels;
         private String name;
         private List<GetClusterAlertGroupRecipient> recipients;
         private Integer repeatIntervalSeconds;
@@ -157,7 +156,7 @@ public final class GetClusterAlertGroupResult {
         }
 
         @CustomType.Setter
-        public Builder annotations(Map<String,Object> annotations) {
+        public Builder annotations(Map<String,String> annotations) {
             if (annotations == null) {
               throw new MissingRequiredPropertyException("GetClusterAlertGroupResult", "annotations");
             }
@@ -205,7 +204,7 @@ public final class GetClusterAlertGroupResult {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(Map<String,Object> labels) {
+        public Builder labels(Map<String,String> labels) {
             if (labels == null) {
               throw new MissingRequiredPropertyException("GetClusterAlertGroupResult", "labels");
             }

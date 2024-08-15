@@ -8,7 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -461,13 +460,13 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
      * 
      */
     @Import(name="labels")
-    private @Nullable Output<Map<String,Object>> labels;
+    private @Nullable Output<Map<String,String>> labels;
 
     /**
      * @return Labels for the Cluster (map)
      * 
      */
-    public Optional<Output<Map<String,Object>>> labels() {
+    public Optional<Output<Map<String,String>>> labels() {
         return Optional.ofNullable(this.labels);
     }
 
@@ -731,13 +730,13 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
      * 
      */
     @Import(name="resourceLabels")
-    private @Nullable Output<Map<String,Object>> resourceLabels;
+    private @Nullable Output<Map<String,String>> resourceLabels;
 
     /**
      * @return The map of Kubernetes labels (key/value pairs) to be applied to each cluster
      * 
      */
-    public Optional<Output<Map<String,Object>>> resourceLabels() {
+    public Optional<Output<Map<String,String>>> resourceLabels() {
         return Optional.ofNullable(this.resourceLabels);
     }
 
@@ -1507,7 +1506,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder labels(@Nullable Output<Map<String,Object>> labels) {
+        public Builder labels(@Nullable Output<Map<String,String>> labels) {
             $.labels = labels;
             return this;
         }
@@ -1518,7 +1517,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder labels(Map<String,Object> labels) {
+        public Builder labels(Map<String,String> labels) {
             return labels(Output.of(labels));
         }
 
@@ -1915,7 +1914,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder resourceLabels(@Nullable Output<Map<String,Object>> resourceLabels) {
+        public Builder resourceLabels(@Nullable Output<Map<String,String>> resourceLabels) {
             $.resourceLabels = resourceLabels;
             return this;
         }
@@ -1926,7 +1925,7 @@ public final class ClusterGkeConfigArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder resourceLabels(Map<String,Object> resourceLabels) {
+        public Builder resourceLabels(Map<String,String> resourceLabels) {
             return resourceLabels(Output.of(resourceLabels));
         }
 

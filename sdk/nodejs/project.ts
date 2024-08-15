@@ -69,12 +69,12 @@ import * as utilities from "./utilities";
  *     enableProjectMonitoring: true,
  *     projectMonitoringInput: {
  *         answers: {
- *             "exporter-kubelets.https": true,
- *             "exporter-node.enabled": true,
- *             "exporter-node.ports.metrics.port": 9796,
+ *             "exporter-kubelets.https": "true",
+ *             "exporter-node.enabled": "true",
+ *             "exporter-node.ports.metrics.port": "9796",
  *             "exporter-node.resources.limits.cpu": "200m",
  *             "exporter-node.resources.limits.memory": "200Mi",
- *             "grafana.persistence.enabled": false,
+ *             "grafana.persistence.enabled": "false",
  *             "grafana.persistence.size": "10Gi",
  *             "grafana.persistence.storageClass": "default",
  *             "operator.resources.limits.memory": "500Mi",
@@ -131,7 +131,7 @@ export class Project extends pulumi.CustomResource {
     /**
      * Annotations for Node Pool object (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: any}>;
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * The cluster id where create project (string)
      */
@@ -151,7 +151,7 @@ export class Project extends pulumi.CustomResource {
     /**
      * Labels for Node Pool object (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the project (string)
      */
@@ -226,7 +226,7 @@ export interface ProjectState {
     /**
      * Annotations for Node Pool object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The cluster id where create project (string)
      */
@@ -246,7 +246,7 @@ export interface ProjectState {
     /**
      * Labels for Node Pool object (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the project (string)
      */
@@ -276,7 +276,7 @@ export interface ProjectArgs {
     /**
      * Annotations for Node Pool object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The cluster id where create project (string)
      */
@@ -296,7 +296,7 @@ export interface ProjectArgs {
     /**
      * Labels for Node Pool object (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the project (string)
      */

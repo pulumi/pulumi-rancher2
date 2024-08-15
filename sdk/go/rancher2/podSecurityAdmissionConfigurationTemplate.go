@@ -16,7 +16,7 @@ type PodSecurityAdmissionConfigurationTemplate struct {
 	pulumi.CustomResourceState
 
 	// Annotations of the resource
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// defaults allows the user to define admission control mode for Pod Security
 	Defaults PodSecurityAdmissionConfigurationTemplateDefaultsOutput `pulumi:"defaults"`
 	// Pod Security Admission Configuration template description
@@ -25,7 +25,7 @@ type PodSecurityAdmissionConfigurationTemplate struct {
 	// prohibited
 	Exemptions PodSecurityAdmissionConfigurationTemplateExemptionsPtrOutput `pulumi:"exemptions"`
 	// Labels of the resource
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Pod Security Admission Configuration template name
 	Name pulumi.StringOutput `pulumi:"name"`
 }
@@ -64,7 +64,7 @@ func GetPodSecurityAdmissionConfigurationTemplate(ctx *pulumi.Context,
 // Input properties used for looking up and filtering PodSecurityAdmissionConfigurationTemplate resources.
 type podSecurityAdmissionConfigurationTemplateState struct {
 	// Annotations of the resource
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// defaults allows the user to define admission control mode for Pod Security
 	Defaults *PodSecurityAdmissionConfigurationTemplateDefaults `pulumi:"defaults"`
 	// Pod Security Admission Configuration template description
@@ -73,14 +73,14 @@ type podSecurityAdmissionConfigurationTemplateState struct {
 	// prohibited
 	Exemptions *PodSecurityAdmissionConfigurationTemplateExemptions `pulumi:"exemptions"`
 	// Labels of the resource
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// Pod Security Admission Configuration template name
 	Name *string `pulumi:"name"`
 }
 
 type PodSecurityAdmissionConfigurationTemplateState struct {
 	// Annotations of the resource
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// defaults allows the user to define admission control mode for Pod Security
 	Defaults PodSecurityAdmissionConfigurationTemplateDefaultsPtrInput
 	// Pod Security Admission Configuration template description
@@ -89,7 +89,7 @@ type PodSecurityAdmissionConfigurationTemplateState struct {
 	// prohibited
 	Exemptions PodSecurityAdmissionConfigurationTemplateExemptionsPtrInput
 	// Labels of the resource
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// Pod Security Admission Configuration template name
 	Name pulumi.StringPtrInput
 }
@@ -100,7 +100,7 @@ func (PodSecurityAdmissionConfigurationTemplateState) ElementType() reflect.Type
 
 type podSecurityAdmissionConfigurationTemplateArgs struct {
 	// Annotations of the resource
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// defaults allows the user to define admission control mode for Pod Security
 	Defaults PodSecurityAdmissionConfigurationTemplateDefaults `pulumi:"defaults"`
 	// Pod Security Admission Configuration template description
@@ -109,7 +109,7 @@ type podSecurityAdmissionConfigurationTemplateArgs struct {
 	// prohibited
 	Exemptions *PodSecurityAdmissionConfigurationTemplateExemptions `pulumi:"exemptions"`
 	// Labels of the resource
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// Pod Security Admission Configuration template name
 	Name *string `pulumi:"name"`
 }
@@ -117,7 +117,7 @@ type podSecurityAdmissionConfigurationTemplateArgs struct {
 // The set of arguments for constructing a PodSecurityAdmissionConfigurationTemplate resource.
 type PodSecurityAdmissionConfigurationTemplateArgs struct {
 	// Annotations of the resource
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// defaults allows the user to define admission control mode for Pod Security
 	Defaults PodSecurityAdmissionConfigurationTemplateDefaultsInput
 	// Pod Security Admission Configuration template description
@@ -126,7 +126,7 @@ type PodSecurityAdmissionConfigurationTemplateArgs struct {
 	// prohibited
 	Exemptions PodSecurityAdmissionConfigurationTemplateExemptionsPtrInput
 	// Labels of the resource
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// Pod Security Admission Configuration template name
 	Name pulumi.StringPtrInput
 }
@@ -219,8 +219,8 @@ func (o PodSecurityAdmissionConfigurationTemplateOutput) ToPodSecurityAdmissionC
 }
 
 // Annotations of the resource
-func (o PodSecurityAdmissionConfigurationTemplateOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *PodSecurityAdmissionConfigurationTemplate) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o PodSecurityAdmissionConfigurationTemplateOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PodSecurityAdmissionConfigurationTemplate) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // defaults allows the user to define admission control mode for Pod Security
@@ -244,8 +244,8 @@ func (o PodSecurityAdmissionConfigurationTemplateOutput) Exemptions() PodSecurit
 }
 
 // Labels of the resource
-func (o PodSecurityAdmissionConfigurationTemplateOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *PodSecurityAdmissionConfigurationTemplate) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o PodSecurityAdmissionConfigurationTemplateOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PodSecurityAdmissionConfigurationTemplate) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // Pod Security Admission Configuration template name

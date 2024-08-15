@@ -122,7 +122,7 @@ export class ClusterTemplate extends pulumi.CustomResource {
     /**
      * Annotations for the cluster template (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: any}>;
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * (Computed) Default cluster template revision ID (string)
      */
@@ -134,7 +134,7 @@ export class ClusterTemplate extends pulumi.CustomResource {
     /**
      * Labels for the cluster template (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Cluster template members (list)
      */
@@ -190,7 +190,7 @@ export interface ClusterTemplateState {
     /**
      * Annotations for the cluster template (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * (Computed) Default cluster template revision ID (string)
      */
@@ -202,7 +202,7 @@ export interface ClusterTemplateState {
     /**
      * Labels for the cluster template (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Cluster template members (list)
      */
@@ -224,7 +224,7 @@ export interface ClusterTemplateArgs {
     /**
      * Annotations for the cluster template (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Cluster template description
      */
@@ -232,7 +232,7 @@ export interface ClusterTemplateArgs {
     /**
      * Labels for the cluster template (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Cluster template members (list)
      */

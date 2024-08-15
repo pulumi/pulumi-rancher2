@@ -71,11 +71,11 @@ export interface GetSecretResult {
     /**
      * (Computed) Annotations for secret object (map)
      */
-    readonly annotations: {[key: string]: any};
+    readonly annotations: {[key: string]: string};
     /**
      * (Computed) Secret key/value data. Base64 encoding required for values (map)
      */
-    readonly data: {[key: string]: any};
+    readonly data: {[key: string]: string};
     /**
      * (Computed) A secret description (string)
      */
@@ -87,7 +87,7 @@ export interface GetSecretResult {
     /**
      * (Computed) Labels for secret object (map)
      */
-    readonly labels: {[key: string]: any};
+    readonly labels: {[key: string]: string};
     readonly name: string;
     readonly namespaceId?: string;
     readonly projectId: string;

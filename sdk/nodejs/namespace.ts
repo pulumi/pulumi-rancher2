@@ -116,7 +116,7 @@ export class Namespace extends pulumi.CustomResource {
     /**
      * Annotations for Node Pool object (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: any}>;
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * Default containers resource limits on namespace (List maxitem:1)
      */
@@ -128,7 +128,7 @@ export class Namespace extends pulumi.CustomResource {
     /**
      * Labels for Node Pool object (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the namespace (string)
      */
@@ -193,7 +193,7 @@ export interface NamespaceState {
     /**
      * Annotations for Node Pool object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Default containers resource limits on namespace (List maxitem:1)
      */
@@ -205,7 +205,7 @@ export interface NamespaceState {
     /**
      * Labels for Node Pool object (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the namespace (string)
      */
@@ -231,7 +231,7 @@ export interface NamespaceArgs {
     /**
      * Annotations for Node Pool object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Default containers resource limits on namespace (List maxitem:1)
      */
@@ -243,7 +243,7 @@ export interface NamespaceArgs {
     /**
      * Labels for Node Pool object (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the namespace (string)
      */

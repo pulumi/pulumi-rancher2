@@ -50,7 +50,7 @@ export class StorageClassV2 extends pulumi.CustomResource {
     /**
      * Annotations for the storageClass v2 (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: any}>;
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * The cluster id of the storageClass V2 (string)
      */
@@ -62,7 +62,7 @@ export class StorageClassV2 extends pulumi.CustomResource {
     /**
      * Labels for the storageClass v2 (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The mount options for storageClass v2 (list)
      */
@@ -74,7 +74,7 @@ export class StorageClassV2 extends pulumi.CustomResource {
     /**
      * The parameters for storageClass v2 (string)
      */
-    public readonly parameters!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly parameters!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The reclaim policy for storageClass v2. `Delete`, `Recycle` and `Retain` values are allowed. Default: `Delete` (string)
      */
@@ -148,7 +148,7 @@ export interface StorageClassV2State {
     /**
      * Annotations for the storageClass v2 (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The cluster id of the storageClass V2 (string)
      */
@@ -160,7 +160,7 @@ export interface StorageClassV2State {
     /**
      * Labels for the storageClass v2 (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The mount options for storageClass v2 (list)
      */
@@ -172,7 +172,7 @@ export interface StorageClassV2State {
     /**
      * The parameters for storageClass v2 (string)
      */
-    parameters?: pulumi.Input<{[key: string]: any}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The reclaim policy for storageClass v2. `Delete`, `Recycle` and `Retain` values are allowed. Default: `Delete` (string)
      */
@@ -198,7 +198,7 @@ export interface StorageClassV2Args {
     /**
      * Annotations for the storageClass v2 (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The cluster id of the storageClass V2 (string)
      */
@@ -210,7 +210,7 @@ export interface StorageClassV2Args {
     /**
      * Labels for the storageClass v2 (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The mount options for storageClass v2 (list)
      */
@@ -222,7 +222,7 @@ export interface StorageClassV2Args {
     /**
      * The parameters for storageClass v2 (string)
      */
-    parameters?: pulumi.Input<{[key: string]: any}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The reclaim policy for storageClass v2. `Delete`, `Recycle` and `Retain` values are allowed. Default: `Delete` (string)
      */

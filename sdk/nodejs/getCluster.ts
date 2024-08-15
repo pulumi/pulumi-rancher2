@@ -59,7 +59,7 @@ export interface GetClusterResult {
     /**
      * (Computed) Annotations for Node Pool object (map)
      */
-    readonly annotations: {[key: string]: any};
+    readonly annotations: {[key: string]: string};
     /**
      * (Computed) K8s cluster ca cert (string)
      */
@@ -153,7 +153,7 @@ export interface GetClusterResult {
     /**
      * (Computed) Labels for Node Pool object (map)
      */
-    readonly labels: {[key: string]: any};
+    readonly labels: {[key: string]: string};
     readonly name: string;
     /**
      * (Computed) The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)

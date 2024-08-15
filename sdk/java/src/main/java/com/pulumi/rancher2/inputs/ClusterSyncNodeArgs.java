@@ -5,7 +5,6 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -23,13 +22,13 @@ public final class ClusterSyncNodeArgs extends com.pulumi.resources.ResourceArgs
      * 
      */
     @Import(name="annotations")
-    private @Nullable Output<Map<String,Object>> annotations;
+    private @Nullable Output<Map<String,String>> annotations;
 
     /**
      * @return Annotations of the resource
      * 
      */
-    public Optional<Output<Map<String,Object>>> annotations() {
+    public Optional<Output<Map<String,String>>> annotations() {
         return Optional.ofNullable(this.annotations);
     }
 
@@ -38,13 +37,13 @@ public final class ClusterSyncNodeArgs extends com.pulumi.resources.ResourceArgs
      * 
      */
     @Import(name="capacity")
-    private @Nullable Output<Map<String,Object>> capacity;
+    private @Nullable Output<Map<String,String>> capacity;
 
     /**
      * @return The total resources of a node (map).
      * 
      */
-    public Optional<Output<Map<String,Object>>> capacity() {
+    public Optional<Output<Map<String,String>>> capacity() {
         return Optional.ofNullable(this.capacity);
     }
 
@@ -128,13 +127,13 @@ public final class ClusterSyncNodeArgs extends com.pulumi.resources.ResourceArgs
      * 
      */
     @Import(name="labels")
-    private @Nullable Output<Map<String,Object>> labels;
+    private @Nullable Output<Map<String,String>> labels;
 
     /**
      * @return Labels of the resource
      * 
      */
-    public Optional<Output<Map<String,Object>>> labels() {
+    public Optional<Output<Map<String,String>>> labels() {
         return Optional.ofNullable(this.labels);
     }
 
@@ -248,13 +247,13 @@ public final class ClusterSyncNodeArgs extends com.pulumi.resources.ResourceArgs
      * 
      */
     @Import(name="systemInfo")
-    private @Nullable Output<Map<String,Object>> systemInfo;
+    private @Nullable Output<Map<String,String>> systemInfo;
 
     /**
      * @return General information about the node, such as kernel version, kubelet and kube-proxy version, Docker version (if used), and OS name.
      * 
      */
-    public Optional<Output<Map<String,Object>>> systemInfo() {
+    public Optional<Output<Map<String,String>>> systemInfo() {
         return Optional.ofNullable(this.systemInfo);
     }
 
@@ -303,7 +302,7 @@ public final class ClusterSyncNodeArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder annotations(@Nullable Output<Map<String,Object>> annotations) {
+        public Builder annotations(@Nullable Output<Map<String,String>> annotations) {
             $.annotations = annotations;
             return this;
         }
@@ -314,7 +313,7 @@ public final class ClusterSyncNodeArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder annotations(Map<String,Object> annotations) {
+        public Builder annotations(Map<String,String> annotations) {
             return annotations(Output.of(annotations));
         }
 
@@ -324,7 +323,7 @@ public final class ClusterSyncNodeArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder capacity(@Nullable Output<Map<String,Object>> capacity) {
+        public Builder capacity(@Nullable Output<Map<String,String>> capacity) {
             $.capacity = capacity;
             return this;
         }
@@ -335,7 +334,7 @@ public final class ClusterSyncNodeArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder capacity(Map<String,Object> capacity) {
+        public Builder capacity(Map<String,String> capacity) {
             return capacity(Output.of(capacity));
         }
 
@@ -450,7 +449,7 @@ public final class ClusterSyncNodeArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder labels(@Nullable Output<Map<String,Object>> labels) {
+        public Builder labels(@Nullable Output<Map<String,String>> labels) {
             $.labels = labels;
             return this;
         }
@@ -461,7 +460,7 @@ public final class ClusterSyncNodeArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder labels(Map<String,Object> labels) {
+        public Builder labels(Map<String,String> labels) {
             return labels(Output.of(labels));
         }
 
@@ -628,7 +627,7 @@ public final class ClusterSyncNodeArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder systemInfo(@Nullable Output<Map<String,Object>> systemInfo) {
+        public Builder systemInfo(@Nullable Output<Map<String,String>> systemInfo) {
             $.systemInfo = systemInfo;
             return this;
         }
@@ -639,7 +638,7 @@ public final class ClusterSyncNodeArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder systemInfo(Map<String,Object> systemInfo) {
+        public Builder systemInfo(Map<String,String> systemInfo) {
             return systemInfo(Output.of(systemInfo));
         }
 

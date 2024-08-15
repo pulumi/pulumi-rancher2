@@ -6,7 +6,6 @@ package com.pulumi.rancher2.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -40,7 +39,7 @@ public final class ClusterRkeConfigNode {
      * @return Labels for the Cluster (map)
      * 
      */
-    private @Nullable Map<String,Object> labels;
+    private @Nullable Map<String,String> labels;
     /**
      * @return Id for the node (string)
      * 
@@ -110,7 +109,7 @@ public final class ClusterRkeConfigNode {
      * @return Labels for the Cluster (map)
      * 
      */
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels == null ? Map.of() : this.labels;
     }
     /**
@@ -176,7 +175,7 @@ public final class ClusterRkeConfigNode {
         private @Nullable String dockerSocket;
         private @Nullable String hostnameOverride;
         private @Nullable String internalAddress;
-        private @Nullable Map<String,Object> labels;
+        private @Nullable Map<String,String> labels;
         private @Nullable String nodeId;
         private @Nullable String port;
         private List<String> roles;
@@ -228,7 +227,7 @@ public final class ClusterRkeConfigNode {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(@Nullable Map<String,Object> labels) {
+        public Builder labels(@Nullable Map<String,String> labels) {
 
             this.labels = labels;
             return this;

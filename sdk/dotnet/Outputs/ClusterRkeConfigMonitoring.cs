@@ -16,11 +16,11 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// RKE monitoring node selector (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? NodeSelector;
+        public readonly ImmutableDictionary<string, string>? NodeSelector;
         /// <summary>
         /// RKE options for network (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Options;
+        public readonly ImmutableDictionary<string, string>? Options;
         /// <summary>
         /// RKE monitoring provider (string)
         /// </summary>
@@ -40,9 +40,9 @@ namespace Pulumi.Rancher2.Outputs
 
         [OutputConstructor]
         private ClusterRkeConfigMonitoring(
-            ImmutableDictionary<string, object>? nodeSelector,
+            ImmutableDictionary<string, string>? nodeSelector,
 
-            ImmutableDictionary<string, object>? options,
+            ImmutableDictionary<string, string>? options,
 
             string? provider,
 

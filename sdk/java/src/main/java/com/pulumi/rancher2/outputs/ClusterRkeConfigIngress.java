@@ -8,7 +8,6 @@ import com.pulumi.rancher2.outputs.ClusterRkeConfigIngressToleration;
 import com.pulumi.rancher2.outputs.ClusterRkeConfigIngressUpdateStrategy;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -32,7 +31,7 @@ public final class ClusterRkeConfigIngress {
      * @return Extra arguments for scheduler service (map)
      * 
      */
-    private @Nullable Map<String,Object> extraArgs;
+    private @Nullable Map<String,String> extraArgs;
     /**
      * @return HTTP port for RKE Ingress (int)
      * 
@@ -52,12 +51,12 @@ public final class ClusterRkeConfigIngress {
      * @return RKE monitoring node selector (map)
      * 
      */
-    private @Nullable Map<String,Object> nodeSelector;
+    private @Nullable Map<String,String> nodeSelector;
     /**
      * @return RKE options for network (map)
      * 
      */
-    private @Nullable Map<String,Object> options;
+    private @Nullable Map<String,String> options;
     /**
      * @return RKE monitoring provider (string)
      * 
@@ -93,7 +92,7 @@ public final class ClusterRkeConfigIngress {
      * @return Extra arguments for scheduler service (map)
      * 
      */
-    public Map<String,Object> extraArgs() {
+    public Map<String,String> extraArgs() {
         return this.extraArgs == null ? Map.of() : this.extraArgs;
     }
     /**
@@ -121,14 +120,14 @@ public final class ClusterRkeConfigIngress {
      * @return RKE monitoring node selector (map)
      * 
      */
-    public Map<String,Object> nodeSelector() {
+    public Map<String,String> nodeSelector() {
         return this.nodeSelector == null ? Map.of() : this.nodeSelector;
     }
     /**
      * @return RKE options for network (map)
      * 
      */
-    public Map<String,Object> options() {
+    public Map<String,String> options() {
         return this.options == null ? Map.of() : this.options;
     }
     /**
@@ -164,12 +163,12 @@ public final class ClusterRkeConfigIngress {
     public static final class Builder {
         private @Nullable Boolean defaultBackend;
         private @Nullable String dnsPolicy;
-        private @Nullable Map<String,Object> extraArgs;
+        private @Nullable Map<String,String> extraArgs;
         private @Nullable Integer httpPort;
         private @Nullable Integer httpsPort;
         private @Nullable String networkMode;
-        private @Nullable Map<String,Object> nodeSelector;
-        private @Nullable Map<String,Object> options;
+        private @Nullable Map<String,String> nodeSelector;
+        private @Nullable Map<String,String> options;
         private @Nullable String provider;
         private @Nullable List<ClusterRkeConfigIngressToleration> tolerations;
         private @Nullable ClusterRkeConfigIngressUpdateStrategy updateStrategy;
@@ -202,7 +201,7 @@ public final class ClusterRkeConfigIngress {
             return this;
         }
         @CustomType.Setter
-        public Builder extraArgs(@Nullable Map<String,Object> extraArgs) {
+        public Builder extraArgs(@Nullable Map<String,String> extraArgs) {
 
             this.extraArgs = extraArgs;
             return this;
@@ -226,13 +225,13 @@ public final class ClusterRkeConfigIngress {
             return this;
         }
         @CustomType.Setter
-        public Builder nodeSelector(@Nullable Map<String,Object> nodeSelector) {
+        public Builder nodeSelector(@Nullable Map<String,String> nodeSelector) {
 
             this.nodeSelector = nodeSelector;
             return this;
         }
         @CustomType.Setter
-        public Builder options(@Nullable Map<String,Object> options) {
+        public Builder options(@Nullable Map<String,String> options) {
 
             this.options = options;
             return this;

@@ -12,7 +12,6 @@ import com.pulumi.rancher2.outputs.GetClusterRkeConfigNetworkFlannelNetworkProvi
 import com.pulumi.rancher2.outputs.GetClusterRkeConfigNetworkToleration;
 import com.pulumi.rancher2.outputs.GetClusterRkeConfigNetworkWeaveNetworkProvider;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -27,7 +26,7 @@ public final class GetClusterRkeConfigNetwork {
     private @Nullable GetClusterRkeConfigNetworkCanalNetworkProvider canalNetworkProvider;
     private @Nullable GetClusterRkeConfigNetworkFlannelNetworkProvider flannelNetworkProvider;
     private @Nullable Integer mtu;
-    private Map<String,Object> options;
+    private Map<String,String> options;
     private String plugin;
     /**
      * @return Network add-on tolerations
@@ -52,7 +51,7 @@ public final class GetClusterRkeConfigNetwork {
     public Optional<Integer> mtu() {
         return Optional.ofNullable(this.mtu);
     }
-    public Map<String,Object> options() {
+    public Map<String,String> options() {
         return this.options;
     }
     public String plugin() {
@@ -83,7 +82,7 @@ public final class GetClusterRkeConfigNetwork {
         private @Nullable GetClusterRkeConfigNetworkCanalNetworkProvider canalNetworkProvider;
         private @Nullable GetClusterRkeConfigNetworkFlannelNetworkProvider flannelNetworkProvider;
         private @Nullable Integer mtu;
-        private Map<String,Object> options;
+        private Map<String,String> options;
         private String plugin;
         private @Nullable List<GetClusterRkeConfigNetworkToleration> tolerations;
         private @Nullable GetClusterRkeConfigNetworkWeaveNetworkProvider weaveNetworkProvider;
@@ -132,7 +131,7 @@ public final class GetClusterRkeConfigNetwork {
             return this;
         }
         @CustomType.Setter
-        public Builder options(Map<String,Object> options) {
+        public Builder options(Map<String,String> options) {
             if (options == null) {
               throw new MissingRequiredPropertyException("GetClusterRkeConfigNetwork", "options");
             }

@@ -13,14 +13,14 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterRkeConfigServicesSchedulerArgs : global::Pulumi.ResourceArgs
     {
         [Input("extraArgs")]
-        private InputMap<object>? _extraArgs;
+        private InputMap<string>? _extraArgs;
 
         /// <summary>
         /// Extra arguments for scheduler service (map)
         /// </summary>
-        public InputMap<object> ExtraArgs
+        public InputMap<string> ExtraArgs
         {
-            get => _extraArgs ?? (_extraArgs = new InputMap<object>());
+            get => _extraArgs ?? (_extraArgs = new InputMap<string>());
             set => _extraArgs = value;
         }
 

@@ -17,12 +17,12 @@ namespace Pulumi.Rancher2.Outputs
         /// Linear Autoscaler Params
         /// </summary>
         public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams? LinearAutoscalerParams;
-        public readonly ImmutableDictionary<string, object>? NodeSelector;
+        public readonly ImmutableDictionary<string, string>? NodeSelector;
         /// <summary>
         /// Nodelocal dns
         /// </summary>
         public readonly Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal? Nodelocal;
-        public readonly ImmutableDictionary<string, object>? Options;
+        public readonly ImmutableDictionary<string, string>? Options;
         public readonly string? Provider;
         public readonly ImmutableArray<string> ReverseCidrs;
         /// <summary>
@@ -39,11 +39,11 @@ namespace Pulumi.Rancher2.Outputs
         private ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns(
             Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams? linearAutoscalerParams,
 
-            ImmutableDictionary<string, object>? nodeSelector,
+            ImmutableDictionary<string, string>? nodeSelector,
 
             Outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal? nodelocal,
 
-            ImmutableDictionary<string, object>? options,
+            ImmutableDictionary<string, string>? options,
 
             string? provider,
 

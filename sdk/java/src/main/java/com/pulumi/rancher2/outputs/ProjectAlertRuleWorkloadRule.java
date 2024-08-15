@@ -5,7 +5,6 @@ package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -23,7 +22,7 @@ public final class ProjectAlertRuleWorkloadRule {
      * @return Workload rule selector
      * 
      */
-    private @Nullable Map<String,Object> selector;
+    private @Nullable Map<String,String> selector;
     /**
      * @return Workload ID
      * 
@@ -42,7 +41,7 @@ public final class ProjectAlertRuleWorkloadRule {
      * @return Workload rule selector
      * 
      */
-    public Map<String,Object> selector() {
+    public Map<String,String> selector() {
         return this.selector == null ? Map.of() : this.selector;
     }
     /**
@@ -63,7 +62,7 @@ public final class ProjectAlertRuleWorkloadRule {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer availablePercentage;
-        private @Nullable Map<String,Object> selector;
+        private @Nullable Map<String,String> selector;
         private @Nullable String workloadId;
         public Builder() {}
         public Builder(ProjectAlertRuleWorkloadRule defaults) {
@@ -80,7 +79,7 @@ public final class ProjectAlertRuleWorkloadRule {
             return this;
         }
         @CustomType.Setter
-        public Builder selector(@Nullable Map<String,Object> selector) {
+        public Builder selector(@Nullable Map<String,String> selector) {
 
             this.selector = selector;
             return this;

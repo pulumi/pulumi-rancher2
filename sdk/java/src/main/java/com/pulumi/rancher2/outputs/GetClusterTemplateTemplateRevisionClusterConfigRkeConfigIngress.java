@@ -9,7 +9,6 @@ import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConf
 import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -21,12 +20,12 @@ import javax.annotation.Nullable;
 public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress {
     private @Nullable Boolean defaultBackend;
     private String dnsPolicy;
-    private Map<String,Object> extraArgs;
+    private Map<String,String> extraArgs;
     private Integer httpPort;
     private Integer httpsPort;
     private String networkMode;
-    private Map<String,Object> nodeSelector;
-    private Map<String,Object> options;
+    private Map<String,String> nodeSelector;
+    private Map<String,String> options;
     private String provider;
     /**
      * @return Ingress add-on tolerations
@@ -46,7 +45,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngre
     public String dnsPolicy() {
         return this.dnsPolicy;
     }
-    public Map<String,Object> extraArgs() {
+    public Map<String,String> extraArgs() {
         return this.extraArgs;
     }
     public Integer httpPort() {
@@ -58,10 +57,10 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngre
     public String networkMode() {
         return this.networkMode;
     }
-    public Map<String,Object> nodeSelector() {
+    public Map<String,String> nodeSelector() {
         return this.nodeSelector;
     }
-    public Map<String,Object> options() {
+    public Map<String,String> options() {
         return this.options;
     }
     public String provider() {
@@ -93,12 +92,12 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngre
     public static final class Builder {
         private @Nullable Boolean defaultBackend;
         private String dnsPolicy;
-        private Map<String,Object> extraArgs;
+        private Map<String,String> extraArgs;
         private Integer httpPort;
         private Integer httpsPort;
         private String networkMode;
-        private Map<String,Object> nodeSelector;
-        private Map<String,Object> options;
+        private Map<String,String> nodeSelector;
+        private Map<String,String> options;
         private String provider;
         private @Nullable List<GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressToleration> tolerations;
         private @Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy updateStrategy;
@@ -133,7 +132,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngre
             return this;
         }
         @CustomType.Setter
-        public Builder extraArgs(Map<String,Object> extraArgs) {
+        public Builder extraArgs(Map<String,String> extraArgs) {
             if (extraArgs == null) {
               throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress", "extraArgs");
             }
@@ -165,7 +164,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngre
             return this;
         }
         @CustomType.Setter
-        public Builder nodeSelector(Map<String,Object> nodeSelector) {
+        public Builder nodeSelector(Map<String,String> nodeSelector) {
             if (nodeSelector == null) {
               throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress", "nodeSelector");
             }
@@ -173,7 +172,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngre
             return this;
         }
         @CustomType.Setter
-        public Builder options(Map<String,Object> options) {
+        public Builder options(Map<String,String> options) {
             if (options == null) {
               throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress", "options");
             }

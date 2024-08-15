@@ -24,7 +24,7 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// Key/values for answer
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Values;
+        public readonly ImmutableDictionary<string, string>? Values;
 
         [OutputConstructor]
         private MultiClusterAppAnswer(
@@ -32,7 +32,7 @@ namespace Pulumi.Rancher2.Outputs
 
             string? projectId,
 
-            ImmutableDictionary<string, object>? values)
+            ImmutableDictionary<string, string>? values)
         {
             ClusterId = clusterId;
             ProjectId = projectId;

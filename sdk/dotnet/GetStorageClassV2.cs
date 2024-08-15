@@ -76,7 +76,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Annotations for the storageClass v2 (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Annotations;
+        public readonly ImmutableDictionary<string, string> Annotations;
         public readonly string ClusterId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -89,7 +89,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Labels for the storageClass v2 (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Labels;
+        public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
         /// (Computed) The mount options for storageClass v2 (list)
         /// </summary>
@@ -98,7 +98,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) The parameters for storageClass v2 (string)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Parameters;
+        public readonly ImmutableDictionary<string, string> Parameters;
         /// <summary>
         /// (Computed) The reclaim policy for storageClass v2 (string)
         /// </summary>
@@ -116,7 +116,7 @@ namespace Pulumi.Rancher2
         private GetStorageClassV2Result(
             bool allowVolumeExpansion,
 
-            ImmutableDictionary<string, object> annotations,
+            ImmutableDictionary<string, string> annotations,
 
             string clusterId,
 
@@ -124,13 +124,13 @@ namespace Pulumi.Rancher2
 
             string k8sProvisioner,
 
-            ImmutableDictionary<string, object> labels,
+            ImmutableDictionary<string, string> labels,
 
             ImmutableArray<string> mountOptions,
 
             string name,
 
-            ImmutableDictionary<string, object> parameters,
+            ImmutableDictionary<string, string> parameters,
 
             string reclaimPolicy,
 

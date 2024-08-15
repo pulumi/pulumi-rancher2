@@ -45,7 +45,7 @@ export interface GetMultiClusterAppResult {
     /**
      * (Computed) Annotations for multi cluster app object (map)
      */
-    readonly annotations: {[key: string]: any};
+    readonly annotations: {[key: string]: string};
     /**
      * (Computed) The multi cluster app answers (list)
      */
@@ -61,7 +61,7 @@ export interface GetMultiClusterAppResult {
     /**
      * (Computed) Labels for multi cluster app object (map)
      */
-    readonly labels: {[key: string]: any};
+    readonly labels: {[key: string]: string};
     /**
      * (Computed) The multi cluster app members (list)
      */

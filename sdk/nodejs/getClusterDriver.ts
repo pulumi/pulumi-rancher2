@@ -56,7 +56,7 @@ export interface GetClusterDriverResult {
     /**
      * (Computed) Annotations of the resource (map)
      */
-    readonly annotations: {[key: string]: any};
+    readonly annotations: {[key: string]: string};
     /**
      * (Computed) Specify whether the cluster driver is an internal cluster driver or not (bool)
      */
@@ -72,7 +72,7 @@ export interface GetClusterDriverResult {
     /**
      * (Computed) Labels of the resource (map)
      */
-    readonly labels: {[key: string]: any};
+    readonly labels: {[key: string]: string};
     readonly name: string;
     /**
      * (Computed) The URL to load for customized Add Clusters screen for this driver (string)

@@ -120,7 +120,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Annotations for global role object (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Annotations;
+        public readonly ImmutableDictionary<string, string> Annotations;
         /// <summary>
         /// (Computed) Builtin global role (bool)
         /// </summary>
@@ -140,7 +140,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Labels for global role object (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Labels;
+        public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
         /// <summary>
         /// (Computed) Whether or not this role should be added to new users (bool)
@@ -153,7 +153,7 @@ namespace Pulumi.Rancher2
 
         [OutputConstructor]
         private GetGlobalRoleResult(
-            ImmutableDictionary<string, object> annotations,
+            ImmutableDictionary<string, string> annotations,
 
             bool builtin,
 
@@ -163,7 +163,7 @@ namespace Pulumi.Rancher2
 
             ImmutableArray<string> inheritedClusterRoles,
 
-            ImmutableDictionary<string, object> labels,
+            ImmutableDictionary<string, string> labels,
 
             string name,
 

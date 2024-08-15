@@ -8,7 +8,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +22,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServi
     private String cert;
     private String creation;
     private @Nullable List<String> externalUrls;
-    private Map<String,Object> extraArgs;
+    private Map<String,String> extraArgs;
     private @Nullable List<String> extraBinds;
     private @Nullable List<String> extraEnvs;
     private @Nullable Integer gid;
@@ -50,7 +49,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServi
     public List<String> externalUrls() {
         return this.externalUrls == null ? List.of() : this.externalUrls;
     }
-    public Map<String,Object> extraArgs() {
+    public Map<String,String> extraArgs() {
         return this.extraArgs;
     }
     public List<String> extraBinds() {
@@ -95,7 +94,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServi
         private String cert;
         private String creation;
         private @Nullable List<String> externalUrls;
-        private Map<String,Object> extraArgs;
+        private Map<String,String> extraArgs;
         private @Nullable List<String> extraBinds;
         private @Nullable List<String> extraEnvs;
         private @Nullable Integer gid;
@@ -167,7 +166,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServi
             return externalUrls(List.of(externalUrls));
         }
         @CustomType.Setter
-        public Builder extraArgs(Map<String,Object> extraArgs) {
+        public Builder extraArgs(Map<String,String> extraArgs) {
             if (extraArgs == null) {
               throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcd", "extraArgs");
             }

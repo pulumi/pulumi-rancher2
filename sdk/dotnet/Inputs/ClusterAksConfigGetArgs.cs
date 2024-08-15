@@ -277,15 +277,15 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string> SubscriptionId { get; set; } = null!;
 
         [Input("tag")]
-        private InputMap<object>? _tag;
+        private InputMap<string>? _tag;
 
         /// <summary>
         /// Tags for Kubernetes cluster. For example, foo=bar
         /// </summary>
         [Obsolete(@"Use tags argument instead as []string")]
-        public InputMap<object> Tag
+        public InputMap<string> Tag
         {
-            get => _tag ?? (_tag = new InputMap<object>());
+            get => _tag ?? (_tag = new InputMap<string>());
             set => _tag = value;
         }
 

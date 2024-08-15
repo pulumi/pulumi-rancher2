@@ -13,14 +13,14 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterV2RkeConfigMachinePoolArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
-        private InputMap<object>? _annotations;
+        private InputMap<string>? _annotations;
 
         /// <summary>
         /// Annotations for the Cluster.
         /// </summary>
-        public InputMap<object> Annotations
+        public InputMap<string> Annotations
         {
-            get => _annotations ?? (_annotations = new InputMap<object>());
+            get => _annotations ?? (_annotations = new InputMap<string>());
             set => _annotations = value;
         }
 
@@ -55,14 +55,14 @@ namespace Pulumi.Rancher2.Inputs
         public Input<int>? HostnameLengthLimit { get; set; }
 
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// Labels for the Cluster.
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
@@ -73,14 +73,14 @@ namespace Pulumi.Rancher2.Inputs
         public Input<Inputs.ClusterV2RkeConfigMachinePoolMachineConfigArgs> MachineConfig { get; set; } = null!;
 
         [Input("machineLabels")]
-        private InputMap<object>? _machineLabels;
+        private InputMap<string>? _machineLabels;
 
         /// <summary>
         /// Labels of the machine
         /// </summary>
-        public InputMap<object> MachineLabels
+        public InputMap<string> MachineLabels
         {
-            get => _machineLabels ?? (_machineLabels = new InputMap<object>());
+            get => _machineLabels ?? (_machineLabels = new InputMap<string>());
             set => _machineLabels = value;
         }
 

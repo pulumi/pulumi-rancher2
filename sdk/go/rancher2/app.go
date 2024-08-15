@@ -44,10 +44,10 @@ import (
 //				TemplateName:    pulumi.String("<template_name>"),
 //				TemplateVersion: pulumi.String("<template_version>"),
 //				TargetNamespace: pulumi.String("<namespace_name>"),
-//				Answers: pulumi.Map{
-//					"ingress_host": pulumi.Any("test.xip.io"),
-//					"foo":          pulumi.Any("bar"),
-//					"ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect": pulumi.Any(true),
+//				Answers: pulumi.StringMap{
+//					"ingress_host": pulumi.String("test.xip.io"),
+//					"foo":          pulumi.String("bar"),
+//					"ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect": pulumi.String("true"),
 //				},
 //			})
 //			if err != nil {
@@ -95,10 +95,10 @@ import (
 //				TemplateName:    pulumi.String("<template_name>"),
 //				TemplateVersion: pulumi.String("<template_version>"),
 //				TargetNamespace: foo.ID(),
-//				Answers: pulumi.Map{
-//					"ingress_host": pulumi.Any("test.xip.io"),
-//					"foo":          pulumi.Any("bar"),
-//					"ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect": pulumi.Any(true),
+//				Answers: pulumi.StringMap{
+//					"ingress_host": pulumi.String("test.xip.io"),
+//					"foo":          pulumi.String("bar"),
+//					"ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect": pulumi.String("true"),
 //				},
 //			})
 //			if err != nil {
@@ -121,9 +121,9 @@ type App struct {
 	pulumi.CustomResourceState
 
 	// Annotations for App object (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Answers for the app template. If modified, app will be upgraded (map)
-	Answers pulumi.MapOutput `pulumi:"answers"`
+	Answers pulumi.StringMapOutput `pulumi:"answers"`
 	// Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:
 	// * add cluster ID before name, `local:<name>` or `c-XXXXX:<name>`
 	// * add project ID before name, `p-XXXXX:<name>`
@@ -135,7 +135,7 @@ type App struct {
 	// Force app upgrade (string)
 	ForceUpgrade pulumi.BoolPtrOutput `pulumi:"forceUpgrade"`
 	// Labels for App object (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the app (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project id where the app will be installed (string)
@@ -197,9 +197,9 @@ func GetApp(ctx *pulumi.Context,
 // Input properties used for looking up and filtering App resources.
 type appState struct {
 	// Annotations for App object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// Answers for the app template. If modified, app will be upgraded (map)
-	Answers map[string]interface{} `pulumi:"answers"`
+	Answers map[string]string `pulumi:"answers"`
 	// Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:
 	// * add cluster ID before name, `local:<name>` or `c-XXXXX:<name>`
 	// * add project ID before name, `p-XXXXX:<name>`
@@ -211,7 +211,7 @@ type appState struct {
 	// Force app upgrade (string)
 	ForceUpgrade *bool `pulumi:"forceUpgrade"`
 	// Labels for App object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The name of the app (string)
 	Name *string `pulumi:"name"`
 	// The project id where the app will be installed (string)
@@ -232,9 +232,9 @@ type appState struct {
 
 type AppState struct {
 	// Annotations for App object (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// Answers for the app template. If modified, app will be upgraded (map)
-	Answers pulumi.MapInput
+	Answers pulumi.StringMapInput
 	// Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:
 	// * add cluster ID before name, `local:<name>` or `c-XXXXX:<name>`
 	// * add project ID before name, `p-XXXXX:<name>`
@@ -246,7 +246,7 @@ type AppState struct {
 	// Force app upgrade (string)
 	ForceUpgrade pulumi.BoolPtrInput
 	// Labels for App object (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The name of the app (string)
 	Name pulumi.StringPtrInput
 	// The project id where the app will be installed (string)
@@ -271,9 +271,9 @@ func (AppState) ElementType() reflect.Type {
 
 type appArgs struct {
 	// Annotations for App object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// Answers for the app template. If modified, app will be upgraded (map)
-	Answers map[string]interface{} `pulumi:"answers"`
+	Answers map[string]string `pulumi:"answers"`
 	// Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:
 	// * add cluster ID before name, `local:<name>` or `c-XXXXX:<name>`
 	// * add project ID before name, `p-XXXXX:<name>`
@@ -283,7 +283,7 @@ type appArgs struct {
 	// Force app upgrade (string)
 	ForceUpgrade *bool `pulumi:"forceUpgrade"`
 	// Labels for App object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The name of the app (string)
 	Name *string `pulumi:"name"`
 	// The project id where the app will be installed (string)
@@ -305,9 +305,9 @@ type appArgs struct {
 // The set of arguments for constructing a App resource.
 type AppArgs struct {
 	// Annotations for App object (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// Answers for the app template. If modified, app will be upgraded (map)
-	Answers pulumi.MapInput
+	Answers pulumi.StringMapInput
 	// Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:
 	// * add cluster ID before name, `local:<name>` or `c-XXXXX:<name>`
 	// * add project ID before name, `p-XXXXX:<name>`
@@ -317,7 +317,7 @@ type AppArgs struct {
 	// Force app upgrade (string)
 	ForceUpgrade pulumi.BoolPtrInput
 	// Labels for App object (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The name of the app (string)
 	Name pulumi.StringPtrInput
 	// The project id where the app will be installed (string)
@@ -424,13 +424,13 @@ func (o AppOutput) ToAppOutputWithContext(ctx context.Context) AppOutput {
 }
 
 // Annotations for App object (map)
-func (o AppOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *App) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o AppOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *App) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // Answers for the app template. If modified, app will be upgraded (map)
-func (o AppOutput) Answers() pulumi.MapOutput {
-	return o.ApplyT(func(v *App) pulumi.MapOutput { return v.Answers }).(pulumi.MapOutput)
+func (o AppOutput) Answers() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *App) pulumi.StringMapOutput { return v.Answers }).(pulumi.StringMapOutput)
 }
 
 // Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:
@@ -456,8 +456,8 @@ func (o AppOutput) ForceUpgrade() pulumi.BoolPtrOutput {
 }
 
 // Labels for App object (map)
-func (o AppOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *App) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o AppOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *App) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The name of the app (string)

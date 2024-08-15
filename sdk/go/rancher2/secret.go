@@ -56,10 +56,10 @@ import (
 //				Name:        pulumi.String("foo"),
 //				Description: pulumi.String("Terraform secret foo"),
 //				ProjectId:   pulumi.String("<project_id>"),
-//				Data: pulumi.Map{
-//					"address":  invokeBase64encode.Result,
-//					"username": invokeBase64encode1.Result,
-//					"password": invokeBase64encode2.Result,
+//				Data: pulumi.StringMap{
+//					"address":  pulumi.String(invokeBase64encode.Result),
+//					"username": pulumi.String(invokeBase64encode1.Result),
+//					"password": pulumi.String(invokeBase64encode2.Result),
 //				},
 //			})
 //			if err != nil {
@@ -108,10 +108,10 @@ import (
 //				Description: pulumi.String("Terraform secret foo"),
 //				ProjectId:   pulumi.String("<project_id>"),
 //				NamespaceId: pulumi.String("<namespace_id>"),
-//				Data: pulumi.Map{
-//					"address":  invokeBase64encode.Result,
-//					"username": invokeBase64encode1.Result,
-//					"password": invokeBase64encode2.Result,
+//				Data: pulumi.StringMap{
+//					"address":  pulumi.String(invokeBase64encode.Result),
+//					"username": pulumi.String(invokeBase64encode1.Result),
+//					"password": pulumi.String(invokeBase64encode2.Result),
 //				},
 //			})
 //			if err != nil {
@@ -135,13 +135,13 @@ type Secret struct {
 	pulumi.CustomResourceState
 
 	// Annotations for secret object (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Secret key/value data. Base64 encoding required for values (map)
-	Data pulumi.MapOutput `pulumi:"data"`
+	Data pulumi.StringMapOutput `pulumi:"data"`
 	// A secret description (string)
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Labels for secret object (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the secret (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The namespace id where to assign the namespaced secret (string)
@@ -164,7 +164,7 @@ func NewSecret(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
 	if args.Data != nil {
-		args.Data = pulumi.ToSecret(args.Data).(pulumi.MapInput)
+		args.Data = pulumi.ToSecret(args.Data).(pulumi.StringMapInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"data",
@@ -194,13 +194,13 @@ func GetSecret(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Secret resources.
 type secretState struct {
 	// Annotations for secret object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// Secret key/value data. Base64 encoding required for values (map)
-	Data map[string]interface{} `pulumi:"data"`
+	Data map[string]string `pulumi:"data"`
 	// A secret description (string)
 	Description *string `pulumi:"description"`
 	// Labels for secret object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The name of the secret (string)
 	Name *string `pulumi:"name"`
 	// The namespace id where to assign the namespaced secret (string)
@@ -211,13 +211,13 @@ type secretState struct {
 
 type SecretState struct {
 	// Annotations for secret object (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// Secret key/value data. Base64 encoding required for values (map)
-	Data pulumi.MapInput
+	Data pulumi.StringMapInput
 	// A secret description (string)
 	Description pulumi.StringPtrInput
 	// Labels for secret object (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The name of the secret (string)
 	Name pulumi.StringPtrInput
 	// The namespace id where to assign the namespaced secret (string)
@@ -232,13 +232,13 @@ func (SecretState) ElementType() reflect.Type {
 
 type secretArgs struct {
 	// Annotations for secret object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// Secret key/value data. Base64 encoding required for values (map)
-	Data map[string]interface{} `pulumi:"data"`
+	Data map[string]string `pulumi:"data"`
 	// A secret description (string)
 	Description *string `pulumi:"description"`
 	// Labels for secret object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The name of the secret (string)
 	Name *string `pulumi:"name"`
 	// The namespace id where to assign the namespaced secret (string)
@@ -250,13 +250,13 @@ type secretArgs struct {
 // The set of arguments for constructing a Secret resource.
 type SecretArgs struct {
 	// Annotations for secret object (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// Secret key/value data. Base64 encoding required for values (map)
-	Data pulumi.MapInput
+	Data pulumi.StringMapInput
 	// A secret description (string)
 	Description pulumi.StringPtrInput
 	// Labels for secret object (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The name of the secret (string)
 	Name pulumi.StringPtrInput
 	// The namespace id where to assign the namespaced secret (string)
@@ -353,13 +353,13 @@ func (o SecretOutput) ToSecretOutputWithContext(ctx context.Context) SecretOutpu
 }
 
 // Annotations for secret object (map)
-func (o SecretOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *Secret) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o SecretOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Secret) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // Secret key/value data. Base64 encoding required for values (map)
-func (o SecretOutput) Data() pulumi.MapOutput {
-	return o.ApplyT(func(v *Secret) pulumi.MapOutput { return v.Data }).(pulumi.MapOutput)
+func (o SecretOutput) Data() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Secret) pulumi.StringMapOutput { return v.Data }).(pulumi.StringMapOutput)
 }
 
 // A secret description (string)
@@ -368,8 +368,8 @@ func (o SecretOutput) Description() pulumi.StringPtrOutput {
 }
 
 // Labels for secret object (map)
-func (o SecretOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *Secret) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o SecretOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Secret) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The name of the secret (string)

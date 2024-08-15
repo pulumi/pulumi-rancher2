@@ -67,12 +67,12 @@ namespace Pulumi.Rancher2
     ///         {
     ///             Answers = 
     ///             {
-    ///                 { "exporter-kubelets.https", true },
-    ///                 { "exporter-node.enabled", true },
-    ///                 { "exporter-node.ports.metrics.port", 9796 },
+    ///                 { "exporter-kubelets.https", "true" },
+    ///                 { "exporter-node.enabled", "true" },
+    ///                 { "exporter-node.ports.metrics.port", "9796" },
     ///                 { "exporter-node.resources.limits.cpu", "200m" },
     ///                 { "exporter-node.resources.limits.memory", "200Mi" },
-    ///                 { "grafana.persistence.enabled", false },
+    ///                 { "grafana.persistence.enabled", "false" },
     ///                 { "grafana.persistence.size", "10Gi" },
     ///                 { "grafana.persistence.storageClass", "default" },
     ///                 { "operator.resources.limits.memory", "500Mi" },
@@ -120,12 +120,12 @@ namespace Pulumi.Rancher2
     ///         {
     ///             Answers = 
     ///             {
-    ///                 { "exporter-kubelets.https", true },
-    ///                 { "exporter-node.enabled", true },
-    ///                 { "exporter-node.ports.metrics.port", 9796 },
+    ///                 { "exporter-kubelets.https", "true" },
+    ///                 { "exporter-node.enabled", "true" },
+    ///                 { "exporter-node.ports.metrics.port", "9796" },
     ///                 { "exporter-node.resources.limits.cpu", "200m" },
     ///                 { "exporter-node.resources.limits.memory", "200Mi" },
-    ///                 { "grafana.persistence.enabled", false },
+    ///                 { "grafana.persistence.enabled", "false" },
     ///                 { "grafana.persistence.size", "10Gi" },
     ///                 { "grafana.persistence.storageClass", "default" },
     ///                 { "operator.resources.limits.memory", "500Mi" },
@@ -170,10 +170,10 @@ namespace Pulumi.Rancher2
     ///         TargetNamespace = foo_istio.Id,
     ///         Answers = 
     ///         {
-    ///             { "certmanager.enabled", false },
-    ///             { "enableCRDs", true },
-    ///             { "galley.enabled", true },
-    ///             { "gateways.enabled", false },
+    ///             { "certmanager.enabled", "false" },
+    ///             { "enableCRDs", "true" },
+    ///             { "galley.enabled", "true" },
+    ///             { "gateways.enabled", "false" },
     ///             { "gateways.istio-ingressgateway.resources.limits.cpu", "2000m" },
     ///             { "gateways.istio-ingressgateway.resources.limits.memory", "1024Mi" },
     ///             { "gateways.istio-ingressgateway.resources.requests.cpu", "100m" },
@@ -194,17 +194,17 @@ namespace Pulumi.Rancher2
     ///             { "mixer.telemetry.resources.limits.memory", "4096Mi" },
     ///             { "mixer.telemetry.resources.requests.cpu", "1000m" },
     ///             { "mixer.telemetry.resources.requests.memory", "1024Mi" },
-    ///             { "mtls.enabled", false },
-    ///             { "nodeagent.enabled", false },
-    ///             { "pilot.enabled", true },
+    ///             { "mtls.enabled", "false" },
+    ///             { "nodeagent.enabled", "false" },
+    ///             { "pilot.enabled", "true" },
     ///             { "pilot.resources.limits.cpu", "1000m" },
     ///             { "pilot.resources.limits.memory", "4096Mi" },
     ///             { "pilot.resources.requests.cpu", "500m" },
     ///             { "pilot.resources.requests.memory", "2048Mi" },
     ///             { "pilot.traceSampling", "1" },
-    ///             { "security.enabled", true },
-    ///             { "sidecarInjectorWebhook.enabled", true },
-    ///             { "tracing.enabled", true },
+    ///             { "security.enabled", "true" },
+    ///             { "sidecarInjectorWebhook.enabled", "true" },
+    ///             { "tracing.enabled", "true" },
     ///             { "tracing.jaeger.resources.limits.cpu", "500m" },
     ///             { "tracing.jaeger.resources.limits.memory", "1024Mi" },
     ///             { "tracing.jaeger.resources.requests.cpu", "100m" },
@@ -809,7 +809,7 @@ namespace Pulumi.Rancher2
         /// Annotations for the Cluster (map)
         /// </summary>
         [Output("annotations")]
-        public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Annotations { get; private set; } = null!;
 
         /// <summary>
         /// (Computed/Sensitive) K8s cluster ca cert (string)
@@ -995,7 +995,7 @@ namespace Pulumi.Rancher2
         /// Labels for the Cluster (map)
         /// </summary>
         [Output("labels")]
-        public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
         /// The name of the Cluster (string)
@@ -1109,14 +1109,14 @@ namespace Pulumi.Rancher2
         public Input<Inputs.ClusterAksConfigV2Args>? AksConfigV2 { get; set; }
 
         [Input("annotations")]
-        private InputMap<object>? _annotations;
+        private InputMap<string>? _annotations;
 
         /// <summary>
         /// Annotations for the Cluster (map)
         /// </summary>
-        public InputMap<object> Annotations
+        public InputMap<string> Annotations
         {
-            get => _annotations ?? (_annotations = new InputMap<object>());
+            get => _annotations ?? (_annotations = new InputMap<string>());
             set => _annotations = value;
         }
 
@@ -1283,14 +1283,14 @@ namespace Pulumi.Rancher2
         public Input<Inputs.ClusterK3sConfigArgs>? K3sConfig { get; set; }
 
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// Labels for the Cluster (map)
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
@@ -1357,14 +1357,14 @@ namespace Pulumi.Rancher2
         public Input<Inputs.ClusterAksConfigV2GetArgs>? AksConfigV2 { get; set; }
 
         [Input("annotations")]
-        private InputMap<object>? _annotations;
+        private InputMap<string>? _annotations;
 
         /// <summary>
         /// Annotations for the Cluster (map)
         /// </summary>
-        public InputMap<object> Annotations
+        public InputMap<string> Annotations
         {
-            get => _annotations ?? (_annotations = new InputMap<object>());
+            get => _annotations ?? (_annotations = new InputMap<string>());
             set => _annotations = value;
         }
 
@@ -1587,14 +1587,14 @@ namespace Pulumi.Rancher2
         }
 
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// Labels for the Cluster (map)
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 

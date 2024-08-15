@@ -149,7 +149,7 @@ class GetPodSecurityPolicyTemplateResult:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> Mapping[str, str]:
         return pulumi.get(self, "annotations")
 
     @property
@@ -207,7 +207,7 @@ class GetPodSecurityPolicyTemplateResult:
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> Mapping[str, str]:
         return pulumi.get(self, "labels")
 
     @property
@@ -305,7 +305,7 @@ def get_pod_security_policy_template(allow_privilege_escalation: Optional[bool] 
                                      allowed_host_paths: Optional[Sequence[Union['GetPodSecurityPolicyTemplateAllowedHostPathArgs', 'GetPodSecurityPolicyTemplateAllowedHostPathArgsDict']]] = None,
                                      allowed_proc_mount_types: Optional[Sequence[str]] = None,
                                      allowed_unsafe_sysctls: Optional[Sequence[str]] = None,
-                                     annotations: Optional[Mapping[str, Any]] = None,
+                                     annotations: Optional[Mapping[str, str]] = None,
                                      default_add_capabilities: Optional[Sequence[str]] = None,
                                      default_allow_privilege_escalation: Optional[bool] = None,
                                      description: Optional[str] = None,
@@ -315,7 +315,7 @@ def get_pod_security_policy_template(allow_privilege_escalation: Optional[bool] 
                                      host_network: Optional[bool] = None,
                                      host_pid: Optional[bool] = None,
                                      host_ports: Optional[Sequence[Union['GetPodSecurityPolicyTemplateHostPortArgs', 'GetPodSecurityPolicyTemplateHostPortArgsDict']]] = None,
-                                     labels: Optional[Mapping[str, Any]] = None,
+                                     labels: Optional[Mapping[str, str]] = None,
                                      name: Optional[str] = None,
                                      privileged: Optional[bool] = None,
                                      read_only_root_filesystem: Optional[bool] = None,
@@ -340,7 +340,7 @@ def get_pod_security_policy_template(allow_privilege_escalation: Optional[bool] 
     :param Sequence[Union['GetPodSecurityPolicyTemplateAllowedHostPathArgs', 'GetPodSecurityPolicyTemplateAllowedHostPathArgsDict']] allowed_host_paths: (list)
     :param Sequence[str] allowed_proc_mount_types: (list)
     :param Sequence[str] allowed_unsafe_sysctls: (list)
-    :param Mapping[str, Any] annotations: Annotations for PodSecurityPolicyTemplate object (map)
+    :param Mapping[str, str] annotations: Annotations for PodSecurityPolicyTemplate object (map)
     :param Sequence[str] default_add_capabilities: (list)
     :param bool default_allow_privilege_escalation: (list)
     :param str description: The PodSecurityPolicyTemplate description (string)
@@ -349,7 +349,7 @@ def get_pod_security_policy_template(allow_privilege_escalation: Optional[bool] 
     :param bool host_ipc: (bool)
     :param bool host_pid: (bool)
     :param Sequence[Union['GetPodSecurityPolicyTemplateHostPortArgs', 'GetPodSecurityPolicyTemplateHostPortArgsDict']] host_ports: (list)
-    :param Mapping[str, Any] labels: Labels for PodSecurityPolicyTemplate object (map)
+    :param Mapping[str, str] labels: Labels for PodSecurityPolicyTemplate object (map)
     :param str name: The name of the PodSecurityPolicyTemplate (string)
     :param bool privileged: (bool)
     :param bool read_only_root_filesystem: (bool)
@@ -433,7 +433,7 @@ def get_pod_security_policy_template_output(allow_privilege_escalation: Optional
                                             allowed_host_paths: Optional[pulumi.Input[Optional[Sequence[Union['GetPodSecurityPolicyTemplateAllowedHostPathArgs', 'GetPodSecurityPolicyTemplateAllowedHostPathArgsDict']]]]] = None,
                                             allowed_proc_mount_types: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                             allowed_unsafe_sysctls: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                                            annotations: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                                            annotations: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                             default_add_capabilities: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                             default_allow_privilege_escalation: Optional[pulumi.Input[Optional[bool]]] = None,
                                             description: Optional[pulumi.Input[Optional[str]]] = None,
@@ -443,7 +443,7 @@ def get_pod_security_policy_template_output(allow_privilege_escalation: Optional
                                             host_network: Optional[pulumi.Input[Optional[bool]]] = None,
                                             host_pid: Optional[pulumi.Input[Optional[bool]]] = None,
                                             host_ports: Optional[pulumi.Input[Optional[Sequence[Union['GetPodSecurityPolicyTemplateHostPortArgs', 'GetPodSecurityPolicyTemplateHostPortArgsDict']]]]] = None,
-                                            labels: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                                            labels: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                             name: Optional[pulumi.Input[str]] = None,
                                             privileged: Optional[pulumi.Input[Optional[bool]]] = None,
                                             read_only_root_filesystem: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -468,7 +468,7 @@ def get_pod_security_policy_template_output(allow_privilege_escalation: Optional
     :param Sequence[Union['GetPodSecurityPolicyTemplateAllowedHostPathArgs', 'GetPodSecurityPolicyTemplateAllowedHostPathArgsDict']] allowed_host_paths: (list)
     :param Sequence[str] allowed_proc_mount_types: (list)
     :param Sequence[str] allowed_unsafe_sysctls: (list)
-    :param Mapping[str, Any] annotations: Annotations for PodSecurityPolicyTemplate object (map)
+    :param Mapping[str, str] annotations: Annotations for PodSecurityPolicyTemplate object (map)
     :param Sequence[str] default_add_capabilities: (list)
     :param bool default_allow_privilege_escalation: (list)
     :param str description: The PodSecurityPolicyTemplate description (string)
@@ -477,7 +477,7 @@ def get_pod_security_policy_template_output(allow_privilege_escalation: Optional
     :param bool host_ipc: (bool)
     :param bool host_pid: (bool)
     :param Sequence[Union['GetPodSecurityPolicyTemplateHostPortArgs', 'GetPodSecurityPolicyTemplateHostPortArgsDict']] host_ports: (list)
-    :param Mapping[str, Any] labels: Labels for PodSecurityPolicyTemplate object (map)
+    :param Mapping[str, str] labels: Labels for PodSecurityPolicyTemplate object (map)
     :param str name: The name of the PodSecurityPolicyTemplate (string)
     :param bool privileged: (bool)
     :param bool read_only_root_filesystem: (bool)

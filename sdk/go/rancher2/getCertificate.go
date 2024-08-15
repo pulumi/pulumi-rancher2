@@ -94,7 +94,7 @@ type LookupCertificateArgs struct {
 // A collection of values returned by getCertificate.
 type LookupCertificateResult struct {
 	// (Computed) Annotations for certificate object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// (Computed) Base64 encoded certs (string)
 	Certs string `pulumi:"certs"`
 	// (Computed) A certificate description (string)
@@ -102,10 +102,10 @@ type LookupCertificateResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels for certificate object (map)
-	Labels      map[string]interface{} `pulumi:"labels"`
-	Name        string                 `pulumi:"name"`
-	NamespaceId *string                `pulumi:"namespaceId"`
-	ProjectId   string                 `pulumi:"projectId"`
+	Labels      map[string]string `pulumi:"labels"`
+	Name        string            `pulumi:"name"`
+	NamespaceId *string           `pulumi:"namespaceId"`
+	ProjectId   string            `pulumi:"projectId"`
 }
 
 func LookupCertificateOutput(ctx *pulumi.Context, args LookupCertificateOutputArgs, opts ...pulumi.InvokeOption) LookupCertificateResultOutput {
@@ -151,8 +151,8 @@ func (o LookupCertificateResultOutput) ToLookupCertificateResultOutputWithContex
 }
 
 // (Computed) Annotations for certificate object (map)
-func (o LookupCertificateResultOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupCertificateResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+func (o LookupCertificateResultOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupCertificateResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // (Computed) Base64 encoded certs (string)
@@ -171,8 +171,8 @@ func (o LookupCertificateResultOutput) Id() pulumi.StringOutput {
 }
 
 // (Computed) Labels for certificate object (map)
-func (o LookupCertificateResultOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupCertificateResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+func (o LookupCertificateResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupCertificateResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupCertificateResultOutput) Name() pulumi.StringOutput {

@@ -22,7 +22,7 @@ class AuthConfigOpenLdapArgs:
                  user_search_base: pulumi.Input[str],
                  access_mode: Optional[pulumi.Input[str]] = None,
                  allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  certificate: Optional[pulumi.Input[str]] = None,
                  connection_timeout: Optional[pulumi.Input[int]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
@@ -34,7 +34,7 @@ class AuthConfigOpenLdapArgs:
                  group_search_attribute: Optional[pulumi.Input[str]] = None,
                  group_search_base: Optional[pulumi.Input[str]] = None,
                  group_search_filter: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  nested_group_membership_enabled: Optional[pulumi.Input[bool]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  start_tls: Optional[pulumi.Input[bool]] = None,
@@ -57,7 +57,7 @@ class AuthConfigOpenLdapArgs:
         :param pulumi.Input[str] user_search_base: User search base DN (string)
         :param pulumi.Input[str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `openldap_user://<DN>`  `openldap_group://<DN>` (list)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations of the resource (map)
         :param pulumi.Input[str] certificate: Base64 encoded CA certificate for TLS if self-signed. Use filebase64(<FILE>) for encoding file (string)
         :param pulumi.Input[int] connection_timeout: OpenLdap connection timeout. Default `5000` (int)
         :param pulumi.Input[bool] enabled: Enable auth config provider. Default `true` (bool)
@@ -68,7 +68,7 @@ class AuthConfigOpenLdapArgs:
         :param pulumi.Input[str] group_object_class: Group object class. Default `groupOfNames` (string)
         :param pulumi.Input[str] group_search_attribute: Group search attribute. Default `cn` (string)
         :param pulumi.Input[str] group_search_base: Group search base (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels of the resource (map)
         :param pulumi.Input[bool] nested_group_membership_enabled: Nested group membership enable. Default `false` (bool)
         :param pulumi.Input[int] port: OpenLdap port. Default `389` (int)
         :param pulumi.Input[bool] tls: Enable TLS connection (bool)
@@ -239,14 +239,14 @@ class AuthConfigOpenLdapArgs:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations of the resource (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -380,14 +380,14 @@ class AuthConfigOpenLdapArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels of the resource (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -534,7 +534,7 @@ class _AuthConfigOpenLdapState:
     def __init__(__self__, *,
                  access_mode: Optional[pulumi.Input[str]] = None,
                  allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  certificate: Optional[pulumi.Input[str]] = None,
                  connection_timeout: Optional[pulumi.Input[int]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
@@ -546,7 +546,7 @@ class _AuthConfigOpenLdapState:
                  group_search_attribute: Optional[pulumi.Input[str]] = None,
                  group_search_base: Optional[pulumi.Input[str]] = None,
                  group_search_filter: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nested_group_membership_enabled: Optional[pulumi.Input[bool]] = None,
                  port: Optional[pulumi.Input[int]] = None,
@@ -571,7 +571,7 @@ class _AuthConfigOpenLdapState:
         Input properties used for looking up and filtering AuthConfigOpenLdap resources.
         :param pulumi.Input[str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `openldap_user://<DN>`  `openldap_group://<DN>` (list)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations of the resource (map)
         :param pulumi.Input[str] certificate: Base64 encoded CA certificate for TLS if self-signed. Use filebase64(<FILE>) for encoding file (string)
         :param pulumi.Input[int] connection_timeout: OpenLdap connection timeout. Default `5000` (int)
         :param pulumi.Input[bool] enabled: Enable auth config provider. Default `true` (bool)
@@ -582,7 +582,7 @@ class _AuthConfigOpenLdapState:
         :param pulumi.Input[str] group_object_class: Group object class. Default `groupOfNames` (string)
         :param pulumi.Input[str] group_search_attribute: Group search attribute. Default `cn` (string)
         :param pulumi.Input[str] group_search_base: Group search base (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels of the resource (map)
         :param pulumi.Input[str] name: (Computed) The name of the resource (string)
         :param pulumi.Input[bool] nested_group_membership_enabled: Nested group membership enable. Default `false` (bool)
         :param pulumi.Input[int] port: OpenLdap port. Default `389` (int)
@@ -699,14 +699,14 @@ class _AuthConfigOpenLdapState:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations of the resource (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -840,14 +840,14 @@ class _AuthConfigOpenLdapState:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels of the resource (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -1092,7 +1092,7 @@ class AuthConfigOpenLdap(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_mode: Optional[pulumi.Input[str]] = None,
                  allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  certificate: Optional[pulumi.Input[str]] = None,
                  connection_timeout: Optional[pulumi.Input[int]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
@@ -1104,7 +1104,7 @@ class AuthConfigOpenLdap(pulumi.CustomResource):
                  group_search_attribute: Optional[pulumi.Input[str]] = None,
                  group_search_base: Optional[pulumi.Input[str]] = None,
                  group_search_filter: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  nested_group_membership_enabled: Optional[pulumi.Input[bool]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1133,7 +1133,7 @@ class AuthConfigOpenLdap(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `openldap_user://<DN>`  `openldap_group://<DN>` (list)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations of the resource (map)
         :param pulumi.Input[str] certificate: Base64 encoded CA certificate for TLS if self-signed. Use filebase64(<FILE>) for encoding file (string)
         :param pulumi.Input[int] connection_timeout: OpenLdap connection timeout. Default `5000` (int)
         :param pulumi.Input[bool] enabled: Enable auth config provider. Default `true` (bool)
@@ -1144,7 +1144,7 @@ class AuthConfigOpenLdap(pulumi.CustomResource):
         :param pulumi.Input[str] group_object_class: Group object class. Default `groupOfNames` (string)
         :param pulumi.Input[str] group_search_attribute: Group search attribute. Default `cn` (string)
         :param pulumi.Input[str] group_search_base: Group search base (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels of the resource (map)
         :param pulumi.Input[bool] nested_group_membership_enabled: Nested group membership enable. Default `false` (bool)
         :param pulumi.Input[int] port: OpenLdap port. Default `389` (int)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] servers: OpenLdap servers list (list)
@@ -1190,7 +1190,7 @@ class AuthConfigOpenLdap(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_mode: Optional[pulumi.Input[str]] = None,
                  allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  certificate: Optional[pulumi.Input[str]] = None,
                  connection_timeout: Optional[pulumi.Input[int]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
@@ -1202,7 +1202,7 @@ class AuthConfigOpenLdap(pulumi.CustomResource):
                  group_search_attribute: Optional[pulumi.Input[str]] = None,
                  group_search_base: Optional[pulumi.Input[str]] = None,
                  group_search_filter: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  nested_group_membership_enabled: Optional[pulumi.Input[bool]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1291,7 +1291,7 @@ class AuthConfigOpenLdap(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             access_mode: Optional[pulumi.Input[str]] = None,
             allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             certificate: Optional[pulumi.Input[str]] = None,
             connection_timeout: Optional[pulumi.Input[int]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
@@ -1303,7 +1303,7 @@ class AuthConfigOpenLdap(pulumi.CustomResource):
             group_search_attribute: Optional[pulumi.Input[str]] = None,
             group_search_base: Optional[pulumi.Input[str]] = None,
             group_search_filter: Optional[pulumi.Input[str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             nested_group_membership_enabled: Optional[pulumi.Input[bool]] = None,
             port: Optional[pulumi.Input[int]] = None,
@@ -1333,7 +1333,7 @@ class AuthConfigOpenLdap(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `openldap_user://<DN>`  `openldap_group://<DN>` (list)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations of the resource (map)
         :param pulumi.Input[str] certificate: Base64 encoded CA certificate for TLS if self-signed. Use filebase64(<FILE>) for encoding file (string)
         :param pulumi.Input[int] connection_timeout: OpenLdap connection timeout. Default `5000` (int)
         :param pulumi.Input[bool] enabled: Enable auth config provider. Default `true` (bool)
@@ -1344,7 +1344,7 @@ class AuthConfigOpenLdap(pulumi.CustomResource):
         :param pulumi.Input[str] group_object_class: Group object class. Default `groupOfNames` (string)
         :param pulumi.Input[str] group_search_attribute: Group search attribute. Default `cn` (string)
         :param pulumi.Input[str] group_search_base: Group search base (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels of the resource (map)
         :param pulumi.Input[str] name: (Computed) The name of the resource (string)
         :param pulumi.Input[bool] nested_group_membership_enabled: Nested group membership enable. Default `false` (bool)
         :param pulumi.Input[int] port: OpenLdap port. Default `389` (int)
@@ -1423,7 +1423,7 @@ class AuthConfigOpenLdap(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
+    def annotations(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Annotations of the resource (map)
         """
@@ -1516,7 +1516,7 @@ class AuthConfigOpenLdap(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Labels of the resource (map)
         """

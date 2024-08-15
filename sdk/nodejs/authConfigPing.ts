@@ -67,7 +67,7 @@ export class AuthConfigPing extends pulumi.CustomResource {
     /**
      * Annotations of the resource (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: any}>;
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * Ping display name field (string)
      */
@@ -91,7 +91,7 @@ export class AuthConfigPing extends pulumi.CustomResource {
     /**
      * Labels of the resource (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * (Computed) The name of the resource (string)
      */
@@ -215,7 +215,7 @@ export interface AuthConfigPingState {
     /**
      * Annotations of the resource (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Ping display name field (string)
      */
@@ -239,7 +239,7 @@ export interface AuthConfigPingState {
     /**
      * Labels of the resource (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * (Computed) The name of the resource (string)
      */
@@ -285,7 +285,7 @@ export interface AuthConfigPingArgs {
     /**
      * Annotations of the resource (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Ping display name field (string)
      */
@@ -309,7 +309,7 @@ export interface AuthConfigPingArgs {
     /**
      * Labels of the resource (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Rancher URL. URL scheme needs to be specified, `https://<RANCHER_API_HOST>` (string)
      */

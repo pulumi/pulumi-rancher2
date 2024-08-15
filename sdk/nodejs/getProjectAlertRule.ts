@@ -38,7 +38,7 @@ export interface GetProjectAlertRuleArgs {
     /**
      * (Computed) The project alert rule labels (map)
      */
-    labels?: {[key: string]: any};
+    labels?: {[key: string]: string};
     /**
      * The project alert rule name (string)
      */
@@ -56,7 +56,7 @@ export interface GetProjectAlertRuleResult {
     /**
      * (Computed) The project alert rule annotations (map)
      */
-    readonly annotations: {[key: string]: any};
+    readonly annotations: {[key: string]: string};
     /**
      * (Computed) The project alert rule alert group ID (string)
      */
@@ -80,7 +80,7 @@ export interface GetProjectAlertRuleResult {
     /**
      * (Computed) The project alert rule labels (map)
      */
-    readonly labels?: {[key: string]: any};
+    readonly labels?: {[key: string]: string};
     /**
      * (Computed) The project alert rule metric rule. ConflictsWith: `"podRule", "workloadRule"`` (list Maxitems:1)
      */
@@ -130,7 +130,7 @@ export interface GetProjectAlertRuleOutputArgs {
     /**
      * (Computed) The project alert rule labels (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The project alert rule name (string)
      */

@@ -12,7 +12,6 @@ import com.pulumi.rancher2.outputs.GetNotifierSlackConfig;
 import com.pulumi.rancher2.outputs.GetNotifierSmtpConfig;
 import com.pulumi.rancher2.outputs.GetNotifierWebhookConfig;
 import com.pulumi.rancher2.outputs.GetNotifierWechatConfig;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -25,7 +24,7 @@ public final class GetNotifierResult {
      * @return (Computed) Annotations for notifier object (map)
      * 
      */
-    private Map<String,Object> annotations;
+    private Map<String,String> annotations;
     private String clusterId;
     /**
      * @return (Computed) The notifier description (string)
@@ -46,7 +45,7 @@ public final class GetNotifierResult {
      * @return (Computed) Labels for notifier object (map)
      * 
      */
-    private Map<String,Object> labels;
+    private Map<String,String> labels;
     /**
      * @return (Computed) MSTeams config for notifier (list maxitems:1)
      * 
@@ -84,7 +83,7 @@ public final class GetNotifierResult {
      * @return (Computed) Annotations for notifier object (map)
      * 
      */
-    public Map<String,Object> annotations() {
+    public Map<String,String> annotations() {
         return this.annotations;
     }
     public String clusterId() {
@@ -115,7 +114,7 @@ public final class GetNotifierResult {
      * @return (Computed) Labels for notifier object (map)
      * 
      */
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels;
     }
     /**
@@ -173,12 +172,12 @@ public final class GetNotifierResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Map<String,Object> annotations;
+        private Map<String,String> annotations;
         private String clusterId;
         private String description;
         private @Nullable GetNotifierDingtalkConfig dingtalkConfig;
         private String id;
-        private Map<String,Object> labels;
+        private Map<String,String> labels;
         private @Nullable GetNotifierMsteamsConfig msteamsConfig;
         private String name;
         private GetNotifierPagerdutyConfig pagerdutyConfig;
@@ -205,7 +204,7 @@ public final class GetNotifierResult {
         }
 
         @CustomType.Setter
-        public Builder annotations(Map<String,Object> annotations) {
+        public Builder annotations(Map<String,String> annotations) {
             if (annotations == null) {
               throw new MissingRequiredPropertyException("GetNotifierResult", "annotations");
             }
@@ -243,7 +242,7 @@ public final class GetNotifierResult {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(Map<String,Object> labels) {
+        public Builder labels(Map<String,String> labels) {
             if (labels == null) {
               throw new MissingRequiredPropertyException("GetNotifierResult", "labels");
             }

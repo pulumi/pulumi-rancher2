@@ -6,7 +6,6 @@ package com.pulumi.rancher2.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetRegistryRegistry;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +19,7 @@ public final class GetRegistryResult {
      * @return (Computed) Annotations for Registry object (map)
      * 
      */
-    private Map<String,Object> annotations;
+    private Map<String,String> annotations;
     /**
      * @return (Computed) A registry description (string)
      * 
@@ -35,7 +34,7 @@ public final class GetRegistryResult {
      * @return (Computed) Labels for Registry object (map)
      * 
      */
-    private Map<String,Object> labels;
+    private Map<String,String> labels;
     private String name;
     private @Nullable String namespaceId;
     private String projectId;
@@ -50,7 +49,7 @@ public final class GetRegistryResult {
      * @return (Computed) Annotations for Registry object (map)
      * 
      */
-    public Map<String,Object> annotations() {
+    public Map<String,String> annotations() {
         return this.annotations;
     }
     /**
@@ -71,7 +70,7 @@ public final class GetRegistryResult {
      * @return (Computed) Labels for Registry object (map)
      * 
      */
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels;
     }
     public String name() {
@@ -100,10 +99,10 @@ public final class GetRegistryResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Map<String,Object> annotations;
+        private Map<String,String> annotations;
         private String description;
         private String id;
-        private Map<String,Object> labels;
+        private Map<String,String> labels;
         private String name;
         private @Nullable String namespaceId;
         private String projectId;
@@ -122,7 +121,7 @@ public final class GetRegistryResult {
         }
 
         @CustomType.Setter
-        public Builder annotations(Map<String,Object> annotations) {
+        public Builder annotations(Map<String,String> annotations) {
             if (annotations == null) {
               throw new MissingRequiredPropertyException("GetRegistryResult", "annotations");
             }
@@ -146,7 +145,7 @@ public final class GetRegistryResult {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(Map<String,Object> labels) {
+        public Builder labels(Map<String,String> labels) {
             if (labels == null) {
               throw new MissingRequiredPropertyException("GetRegistryResult", "labels");
             }

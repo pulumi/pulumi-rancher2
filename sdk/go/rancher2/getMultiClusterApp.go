@@ -57,7 +57,7 @@ type LookupMultiClusterAppArgs struct {
 // A collection of values returned by getMultiClusterApp.
 type LookupMultiClusterAppResult struct {
 	// (Computed) Annotations for multi cluster app object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// (Computed) The multi cluster app answers (list)
 	Answers []GetMultiClusterAppAnswer `pulumi:"answers"`
 	// (Computed) The multi cluster app catalog name (string)
@@ -65,7 +65,7 @@ type LookupMultiClusterAppResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels for multi cluster app object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// (Computed) The multi cluster app members (list)
 	Members []GetMultiClusterAppMember `pulumi:"members"`
 	Name    string                     `pulumi:"name"`
@@ -126,8 +126,8 @@ func (o LookupMultiClusterAppResultOutput) ToLookupMultiClusterAppResultOutputWi
 }
 
 // (Computed) Annotations for multi cluster app object (map)
-func (o LookupMultiClusterAppResultOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupMultiClusterAppResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+func (o LookupMultiClusterAppResultOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupMultiClusterAppResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // (Computed) The multi cluster app answers (list)
@@ -146,8 +146,8 @@ func (o LookupMultiClusterAppResultOutput) Id() pulumi.StringOutput {
 }
 
 // (Computed) Labels for multi cluster app object (map)
-func (o LookupMultiClusterAppResultOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupMultiClusterAppResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+func (o LookupMultiClusterAppResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupMultiClusterAppResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // (Computed) The multi cluster app members (list)

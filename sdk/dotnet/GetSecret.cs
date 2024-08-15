@@ -170,11 +170,11 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Annotations for secret object (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Annotations;
+        public readonly ImmutableDictionary<string, string> Annotations;
         /// <summary>
         /// (Computed) Secret key/value data. Base64 encoding required for values (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Data;
+        public readonly ImmutableDictionary<string, string> Data;
         /// <summary>
         /// (Computed) A secret description (string)
         /// </summary>
@@ -186,22 +186,22 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Labels for secret object (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Labels;
+        public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
         public readonly string? NamespaceId;
         public readonly string ProjectId;
 
         [OutputConstructor]
         private GetSecretResult(
-            ImmutableDictionary<string, object> annotations,
+            ImmutableDictionary<string, string> annotations,
 
-            ImmutableDictionary<string, object> data,
+            ImmutableDictionary<string, string> data,
 
             string description,
 
             string id,
 
-            ImmutableDictionary<string, object> labels,
+            ImmutableDictionary<string, string> labels,
 
             string name,
 

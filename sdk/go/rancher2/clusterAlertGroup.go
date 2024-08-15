@@ -56,7 +56,7 @@ type ClusterAlertGroup struct {
 	pulumi.CustomResourceState
 
 	// The cluster alert group annotations (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// The cluster id where create cluster alert group (string)
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// The cluster alert group description (string)
@@ -66,7 +66,7 @@ type ClusterAlertGroup struct {
 	// The cluster alert group wait seconds. Default: `180` (int)
 	GroupWaitSeconds pulumi.IntPtrOutput `pulumi:"groupWaitSeconds"`
 	// The cluster alert group labels (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The cluster alert group name (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The cluster alert group recipients (list)
@@ -109,7 +109,7 @@ func GetClusterAlertGroup(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ClusterAlertGroup resources.
 type clusterAlertGroupState struct {
 	// The cluster alert group annotations (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// The cluster id where create cluster alert group (string)
 	ClusterId *string `pulumi:"clusterId"`
 	// The cluster alert group description (string)
@@ -119,7 +119,7 @@ type clusterAlertGroupState struct {
 	// The cluster alert group wait seconds. Default: `180` (int)
 	GroupWaitSeconds *int `pulumi:"groupWaitSeconds"`
 	// The cluster alert group labels (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The cluster alert group name (string)
 	Name *string `pulumi:"name"`
 	// The cluster alert group recipients (list)
@@ -130,7 +130,7 @@ type clusterAlertGroupState struct {
 
 type ClusterAlertGroupState struct {
 	// The cluster alert group annotations (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// The cluster id where create cluster alert group (string)
 	ClusterId pulumi.StringPtrInput
 	// The cluster alert group description (string)
@@ -140,7 +140,7 @@ type ClusterAlertGroupState struct {
 	// The cluster alert group wait seconds. Default: `180` (int)
 	GroupWaitSeconds pulumi.IntPtrInput
 	// The cluster alert group labels (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The cluster alert group name (string)
 	Name pulumi.StringPtrInput
 	// The cluster alert group recipients (list)
@@ -155,7 +155,7 @@ func (ClusterAlertGroupState) ElementType() reflect.Type {
 
 type clusterAlertGroupArgs struct {
 	// The cluster alert group annotations (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// The cluster id where create cluster alert group (string)
 	ClusterId string `pulumi:"clusterId"`
 	// The cluster alert group description (string)
@@ -165,7 +165,7 @@ type clusterAlertGroupArgs struct {
 	// The cluster alert group wait seconds. Default: `180` (int)
 	GroupWaitSeconds *int `pulumi:"groupWaitSeconds"`
 	// The cluster alert group labels (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The cluster alert group name (string)
 	Name *string `pulumi:"name"`
 	// The cluster alert group recipients (list)
@@ -177,7 +177,7 @@ type clusterAlertGroupArgs struct {
 // The set of arguments for constructing a ClusterAlertGroup resource.
 type ClusterAlertGroupArgs struct {
 	// The cluster alert group annotations (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// The cluster id where create cluster alert group (string)
 	ClusterId pulumi.StringInput
 	// The cluster alert group description (string)
@@ -187,7 +187,7 @@ type ClusterAlertGroupArgs struct {
 	// The cluster alert group wait seconds. Default: `180` (int)
 	GroupWaitSeconds pulumi.IntPtrInput
 	// The cluster alert group labels (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The cluster alert group name (string)
 	Name pulumi.StringPtrInput
 	// The cluster alert group recipients (list)
@@ -284,8 +284,8 @@ func (o ClusterAlertGroupOutput) ToClusterAlertGroupOutputWithContext(ctx contex
 }
 
 // The cluster alert group annotations (map)
-func (o ClusterAlertGroupOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClusterAlertGroup) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o ClusterAlertGroupOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ClusterAlertGroup) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // The cluster id where create cluster alert group (string)
@@ -309,8 +309,8 @@ func (o ClusterAlertGroupOutput) GroupWaitSeconds() pulumi.IntPtrOutput {
 }
 
 // The cluster alert group labels (map)
-func (o ClusterAlertGroupOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClusterAlertGroup) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o ClusterAlertGroupOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ClusterAlertGroup) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The cluster alert group name (string)

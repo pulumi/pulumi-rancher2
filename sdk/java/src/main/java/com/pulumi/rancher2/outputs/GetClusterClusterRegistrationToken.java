@@ -5,7 +5,6 @@ package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -16,7 +15,7 @@ public final class GetClusterClusterRegistrationToken {
      * @return (Computed) Annotations for Node Pool object (map)
      * 
      */
-    private Map<String,Object> annotations;
+    private Map<String,String> annotations;
     private String clusterId;
     private String command;
     /**
@@ -31,7 +30,7 @@ public final class GetClusterClusterRegistrationToken {
      * @return (Computed) Labels for Node Pool object (map)
      * 
      */
-    private Map<String,Object> labels;
+    private Map<String,String> labels;
     private String manifestUrl;
     /**
      * @return The name of the Cluster (string)
@@ -47,7 +46,7 @@ public final class GetClusterClusterRegistrationToken {
      * @return (Computed) Annotations for Node Pool object (map)
      * 
      */
-    public Map<String,Object> annotations() {
+    public Map<String,String> annotations() {
         return this.annotations;
     }
     public String clusterId() {
@@ -76,7 +75,7 @@ public final class GetClusterClusterRegistrationToken {
      * @return (Computed) Labels for Node Pool object (map)
      * 
      */
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels;
     }
     public String manifestUrl() {
@@ -108,14 +107,14 @@ public final class GetClusterClusterRegistrationToken {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Map<String,Object> annotations;
+        private Map<String,String> annotations;
         private String clusterId;
         private String command;
         private String id;
         private String insecureCommand;
         private String insecureNodeCommand;
         private String insecureWindowsNodeCommand;
-        private Map<String,Object> labels;
+        private Map<String,String> labels;
         private String manifestUrl;
         private String name;
         private String nodeCommand;
@@ -140,7 +139,7 @@ public final class GetClusterClusterRegistrationToken {
         }
 
         @CustomType.Setter
-        public Builder annotations(Map<String,Object> annotations) {
+        public Builder annotations(Map<String,String> annotations) {
             if (annotations == null) {
               throw new MissingRequiredPropertyException("GetClusterClusterRegistrationToken", "annotations");
             }
@@ -196,7 +195,7 @@ public final class GetClusterClusterRegistrationToken {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(Map<String,Object> labels) {
+        public Builder labels(Map<String,String> labels) {
             if (labels == null) {
               throw new MissingRequiredPropertyException("GetClusterClusterRegistrationToken", "labels");
             }

@@ -48,7 +48,7 @@ export interface GetCatalogResult {
     /**
      * (Computed) Annotations for the catalog (map)
      */
-    readonly annotations: {[key: string]: any};
+    readonly annotations: {[key: string]: string};
     /**
      * (Computed) The branch of the catalog repo to use (string)
      */
@@ -72,7 +72,7 @@ export interface GetCatalogResult {
     /**
      * (Computed) Labels for the catalog (map)
      */
-    readonly labels: {[key: string]: any};
+    readonly labels: {[key: string]: string};
     readonly name: string;
     /**
      * (Computed/Sensitive) The password to access the catalog if needed (string)

@@ -48,8 +48,8 @@ import (
 //				TemplateVersion: pulumi.String("<template_version>"),
 //				Answers: rancher2.MultiClusterAppAnswerArray{
 //					&rancher2.MultiClusterAppAnswerArgs{
-//						Values: pulumi.Map{
-//							"ingress_host": pulumi.Any("test.xip.io"),
+//						Values: pulumi.StringMap{
+//							"ingress_host": pulumi.String("test.xip.io"),
 //						},
 //					},
 //				},
@@ -94,14 +94,14 @@ import (
 //				TemplateVersion: pulumi.String("<template_version>"),
 //				Answers: rancher2.MultiClusterAppAnswerArray{
 //					&rancher2.MultiClusterAppAnswerArgs{
-//						Values: pulumi.Map{
-//							"ingress_host": pulumi.Any("test.xip.io"),
+//						Values: pulumi.StringMap{
+//							"ingress_host": pulumi.String("test.xip.io"),
 //						},
 //					},
 //					&rancher2.MultiClusterAppAnswerArgs{
 //						ProjectId: pulumi.String("<project_id2>"),
-//						Values: pulumi.Map{
-//							"ingress_host": pulumi.Any("test2.xip.io"),
+//						Values: pulumi.StringMap{
+//							"ingress_host": pulumi.String("test2.xip.io"),
 //						},
 //					},
 //				},
@@ -129,13 +129,13 @@ type MultiClusterApp struct {
 	pulumi.CustomResourceState
 
 	// Annotations for multi cluster app object (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// The multi cluster app answers (list)
 	Answers MultiClusterAppAnswerArrayOutput `pulumi:"answers"`
 	// The multi cluster app catalog name (string)
 	CatalogName pulumi.StringOutput `pulumi:"catalogName"`
 	// Labels for multi cluster app object (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The multi cluster app answers (list)
 	Members MultiClusterAppMemberArrayOutput `pulumi:"members"`
 	// The multi cluster app name (string)
@@ -203,13 +203,13 @@ func GetMultiClusterApp(ctx *pulumi.Context,
 // Input properties used for looking up and filtering MultiClusterApp resources.
 type multiClusterAppState struct {
 	// Annotations for multi cluster app object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// The multi cluster app answers (list)
 	Answers []MultiClusterAppAnswer `pulumi:"answers"`
 	// The multi cluster app catalog name (string)
 	CatalogName *string `pulumi:"catalogName"`
 	// Labels for multi cluster app object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The multi cluster app answers (list)
 	Members []MultiClusterAppMember `pulumi:"members"`
 	// The multi cluster app name (string)
@@ -236,13 +236,13 @@ type multiClusterAppState struct {
 
 type MultiClusterAppState struct {
 	// Annotations for multi cluster app object (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// The multi cluster app answers (list)
 	Answers MultiClusterAppAnswerArrayInput
 	// The multi cluster app catalog name (string)
 	CatalogName pulumi.StringPtrInput
 	// Labels for multi cluster app object (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The multi cluster app answers (list)
 	Members MultiClusterAppMemberArrayInput
 	// The multi cluster app name (string)
@@ -273,13 +273,13 @@ func (MultiClusterAppState) ElementType() reflect.Type {
 
 type multiClusterAppArgs struct {
 	// Annotations for multi cluster app object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// The multi cluster app answers (list)
 	Answers []MultiClusterAppAnswer `pulumi:"answers"`
 	// The multi cluster app catalog name (string)
 	CatalogName string `pulumi:"catalogName"`
 	// Labels for multi cluster app object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The multi cluster app answers (list)
 	Members []MultiClusterAppMember `pulumi:"members"`
 	// The multi cluster app name (string)
@@ -305,13 +305,13 @@ type multiClusterAppArgs struct {
 // The set of arguments for constructing a MultiClusterApp resource.
 type MultiClusterAppArgs struct {
 	// Annotations for multi cluster app object (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// The multi cluster app answers (list)
 	Answers MultiClusterAppAnswerArrayInput
 	// The multi cluster app catalog name (string)
 	CatalogName pulumi.StringInput
 	// Labels for multi cluster app object (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The multi cluster app answers (list)
 	Members MultiClusterAppMemberArrayInput
 	// The multi cluster app name (string)
@@ -422,8 +422,8 @@ func (o MultiClusterAppOutput) ToMultiClusterAppOutputWithContext(ctx context.Co
 }
 
 // Annotations for multi cluster app object (map)
-func (o MultiClusterAppOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *MultiClusterApp) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o MultiClusterAppOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *MultiClusterApp) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // The multi cluster app answers (list)
@@ -437,8 +437,8 @@ func (o MultiClusterAppOutput) CatalogName() pulumi.StringOutput {
 }
 
 // Labels for multi cluster app object (map)
-func (o MultiClusterAppOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *MultiClusterApp) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o MultiClusterAppOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *MultiClusterApp) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The multi cluster app answers (list)

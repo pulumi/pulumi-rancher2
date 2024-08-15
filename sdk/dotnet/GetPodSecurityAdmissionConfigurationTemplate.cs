@@ -22,18 +22,18 @@ namespace Pulumi.Rancher2
     public sealed class GetPodSecurityAdmissionConfigurationTemplateArgs : global::Pulumi.InvokeArgs
     {
         [Input("annotations")]
-        private Dictionary<string, object>? _annotations;
-        public Dictionary<string, object> Annotations
+        private Dictionary<string, string>? _annotations;
+        public Dictionary<string, string> Annotations
         {
-            get => _annotations ?? (_annotations = new Dictionary<string, object>());
+            get => _annotations ?? (_annotations = new Dictionary<string, string>());
             set => _annotations = value;
         }
 
         [Input("labels")]
-        private Dictionary<string, object>? _labels;
-        public Dictionary<string, object> Labels
+        private Dictionary<string, string>? _labels;
+        public Dictionary<string, string> Labels
         {
-            get => _labels ?? (_labels = new Dictionary<string, object>());
+            get => _labels ?? (_labels = new Dictionary<string, string>());
             set => _labels = value;
         }
 
@@ -49,18 +49,18 @@ namespace Pulumi.Rancher2
     public sealed class GetPodSecurityAdmissionConfigurationTemplateInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("annotations")]
-        private InputMap<object>? _annotations;
-        public InputMap<object> Annotations
+        private InputMap<string>? _annotations;
+        public InputMap<string> Annotations
         {
-            get => _annotations ?? (_annotations = new InputMap<object>());
+            get => _annotations ?? (_annotations = new InputMap<string>());
             set => _annotations = value;
         }
 
         [Input("labels")]
-        private InputMap<object>? _labels;
-        public InputMap<object> Labels
+        private InputMap<string>? _labels;
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
@@ -77,7 +77,7 @@ namespace Pulumi.Rancher2
     [OutputType]
     public sealed class GetPodSecurityAdmissionConfigurationTemplateResult
     {
-        public readonly ImmutableDictionary<string, object> Annotations;
+        public readonly ImmutableDictionary<string, string> Annotations;
         public readonly Outputs.GetPodSecurityAdmissionConfigurationTemplateDefaultsResult Defaults;
         public readonly string Description;
         public readonly Outputs.GetPodSecurityAdmissionConfigurationTemplateExemptionsResult Exemptions;
@@ -85,12 +85,12 @@ namespace Pulumi.Rancher2
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        public readonly ImmutableDictionary<string, object> Labels;
+        public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
 
         [OutputConstructor]
         private GetPodSecurityAdmissionConfigurationTemplateResult(
-            ImmutableDictionary<string, object> annotations,
+            ImmutableDictionary<string, string> annotations,
 
             Outputs.GetPodSecurityAdmissionConfigurationTemplateDefaultsResult defaults,
 
@@ -100,7 +100,7 @@ namespace Pulumi.Rancher2
 
             string id,
 
-            ImmutableDictionary<string, object> labels,
+            ImmutableDictionary<string, string> labels,
 
             string name)
         {

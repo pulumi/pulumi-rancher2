@@ -20,7 +20,7 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// Labels for the cluster template (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Labels;
+        public readonly ImmutableDictionary<string, string>? Labels;
         public readonly string? NodeId;
         public readonly string? Port;
         public readonly ImmutableArray<string> Roles;
@@ -39,7 +39,7 @@ namespace Pulumi.Rancher2.Outputs
 
             string? internalAddress,
 
-            ImmutableDictionary<string, object>? labels,
+            ImmutableDictionary<string, string>? labels,
 
             string? nodeId,
 

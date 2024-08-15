@@ -247,7 +247,7 @@ type NodeTemplate struct {
 	// AWS config for the Node Template (list maxitems:1)
 	Amazonec2Config NodeTemplateAmazonec2ConfigPtrOutput `pulumi:"amazonec2Config"`
 	// Annotations for Node Template object (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Auth certificate authority for the Node Template (string)
 	AuthCertificateAuthority pulumi.StringPtrOutput `pulumi:"authCertificateAuthority"`
 	// Auth key for the Node Template (string)
@@ -265,15 +265,15 @@ type NodeTemplate struct {
 	// The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
 	DriverId pulumi.StringOutput `pulumi:"driverId"`
 	// Engine environment for the node template (string)
-	EngineEnv pulumi.MapOutput `pulumi:"engineEnv"`
+	EngineEnv pulumi.StringMapOutput `pulumi:"engineEnv"`
 	// Insecure registry for the node template (list)
 	EngineInsecureRegistries pulumi.StringArrayOutput `pulumi:"engineInsecureRegistries"`
 	// Docker engine install URL for the node template. Available install docker versions at `https://github.com/rancher/install-docker` (string)
 	EngineInstallUrl pulumi.StringOutput `pulumi:"engineInstallUrl"`
 	// Engine label for the node template (string)
-	EngineLabel pulumi.MapOutput `pulumi:"engineLabel"`
+	EngineLabel pulumi.StringMapOutput `pulumi:"engineLabel"`
 	// Engine options for the node template (map)
-	EngineOpt pulumi.MapOutput `pulumi:"engineOpt"`
+	EngineOpt pulumi.StringMapOutput `pulumi:"engineOpt"`
 	// Engine registry mirror for the node template (list)
 	EngineRegistryMirrors pulumi.StringArrayOutput `pulumi:"engineRegistryMirrors"`
 	// Engine storage driver for the node template (string)
@@ -285,7 +285,7 @@ type NodeTemplate struct {
 	// Labels for Node Template object (map)
 	//
 	// **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Linode config for the Node Template (list maxitems:1)
 	LinodeConfig NodeTemplateLinodeConfigPtrOutput `pulumi:"linodeConfig"`
 	// The name of the Node Template (string)
@@ -348,7 +348,7 @@ type nodeTemplateState struct {
 	// AWS config for the Node Template (list maxitems:1)
 	Amazonec2Config *NodeTemplateAmazonec2Config `pulumi:"amazonec2Config"`
 	// Annotations for Node Template object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// Auth certificate authority for the Node Template (string)
 	AuthCertificateAuthority *string `pulumi:"authCertificateAuthority"`
 	// Auth key for the Node Template (string)
@@ -366,15 +366,15 @@ type nodeTemplateState struct {
 	// The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
 	DriverId *string `pulumi:"driverId"`
 	// Engine environment for the node template (string)
-	EngineEnv map[string]interface{} `pulumi:"engineEnv"`
+	EngineEnv map[string]string `pulumi:"engineEnv"`
 	// Insecure registry for the node template (list)
 	EngineInsecureRegistries []string `pulumi:"engineInsecureRegistries"`
 	// Docker engine install URL for the node template. Available install docker versions at `https://github.com/rancher/install-docker` (string)
 	EngineInstallUrl *string `pulumi:"engineInstallUrl"`
 	// Engine label for the node template (string)
-	EngineLabel map[string]interface{} `pulumi:"engineLabel"`
+	EngineLabel map[string]string `pulumi:"engineLabel"`
 	// Engine options for the node template (map)
-	EngineOpt map[string]interface{} `pulumi:"engineOpt"`
+	EngineOpt map[string]string `pulumi:"engineOpt"`
 	// Engine registry mirror for the node template (list)
 	EngineRegistryMirrors []string `pulumi:"engineRegistryMirrors"`
 	// Engine storage driver for the node template (string)
@@ -386,7 +386,7 @@ type nodeTemplateState struct {
 	// Labels for Node Template object (map)
 	//
 	// **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// Linode config for the Node Template (list maxitems:1)
 	LinodeConfig *NodeTemplateLinodeConfig `pulumi:"linodeConfig"`
 	// The name of the Node Template (string)
@@ -409,7 +409,7 @@ type NodeTemplateState struct {
 	// AWS config for the Node Template (list maxitems:1)
 	Amazonec2Config NodeTemplateAmazonec2ConfigPtrInput
 	// Annotations for Node Template object (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// Auth certificate authority for the Node Template (string)
 	AuthCertificateAuthority pulumi.StringPtrInput
 	// Auth key for the Node Template (string)
@@ -427,15 +427,15 @@ type NodeTemplateState struct {
 	// The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
 	DriverId pulumi.StringPtrInput
 	// Engine environment for the node template (string)
-	EngineEnv pulumi.MapInput
+	EngineEnv pulumi.StringMapInput
 	// Insecure registry for the node template (list)
 	EngineInsecureRegistries pulumi.StringArrayInput
 	// Docker engine install URL for the node template. Available install docker versions at `https://github.com/rancher/install-docker` (string)
 	EngineInstallUrl pulumi.StringPtrInput
 	// Engine label for the node template (string)
-	EngineLabel pulumi.MapInput
+	EngineLabel pulumi.StringMapInput
 	// Engine options for the node template (map)
-	EngineOpt pulumi.MapInput
+	EngineOpt pulumi.StringMapInput
 	// Engine registry mirror for the node template (list)
 	EngineRegistryMirrors pulumi.StringArrayInput
 	// Engine storage driver for the node template (string)
@@ -447,7 +447,7 @@ type NodeTemplateState struct {
 	// Labels for Node Template object (map)
 	//
 	// **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// Linode config for the Node Template (list maxitems:1)
 	LinodeConfig NodeTemplateLinodeConfigPtrInput
 	// The name of the Node Template (string)
@@ -474,7 +474,7 @@ type nodeTemplateArgs struct {
 	// AWS config for the Node Template (list maxitems:1)
 	Amazonec2Config *NodeTemplateAmazonec2Config `pulumi:"amazonec2Config"`
 	// Annotations for Node Template object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// Auth certificate authority for the Node Template (string)
 	AuthCertificateAuthority *string `pulumi:"authCertificateAuthority"`
 	// Auth key for the Node Template (string)
@@ -490,15 +490,15 @@ type nodeTemplateArgs struct {
 	// The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
 	DriverId *string `pulumi:"driverId"`
 	// Engine environment for the node template (string)
-	EngineEnv map[string]interface{} `pulumi:"engineEnv"`
+	EngineEnv map[string]string `pulumi:"engineEnv"`
 	// Insecure registry for the node template (list)
 	EngineInsecureRegistries []string `pulumi:"engineInsecureRegistries"`
 	// Docker engine install URL for the node template. Available install docker versions at `https://github.com/rancher/install-docker` (string)
 	EngineInstallUrl *string `pulumi:"engineInstallUrl"`
 	// Engine label for the node template (string)
-	EngineLabel map[string]interface{} `pulumi:"engineLabel"`
+	EngineLabel map[string]string `pulumi:"engineLabel"`
 	// Engine options for the node template (map)
-	EngineOpt map[string]interface{} `pulumi:"engineOpt"`
+	EngineOpt map[string]string `pulumi:"engineOpt"`
 	// Engine registry mirror for the node template (list)
 	EngineRegistryMirrors []string `pulumi:"engineRegistryMirrors"`
 	// Engine storage driver for the node template (string)
@@ -510,7 +510,7 @@ type nodeTemplateArgs struct {
 	// Labels for Node Template object (map)
 	//
 	// **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// Linode config for the Node Template (list maxitems:1)
 	LinodeConfig *NodeTemplateLinodeConfig `pulumi:"linodeConfig"`
 	// The name of the Node Template (string)
@@ -534,7 +534,7 @@ type NodeTemplateArgs struct {
 	// AWS config for the Node Template (list maxitems:1)
 	Amazonec2Config NodeTemplateAmazonec2ConfigPtrInput
 	// Annotations for Node Template object (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// Auth certificate authority for the Node Template (string)
 	AuthCertificateAuthority pulumi.StringPtrInput
 	// Auth key for the Node Template (string)
@@ -550,15 +550,15 @@ type NodeTemplateArgs struct {
 	// The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
 	DriverId pulumi.StringPtrInput
 	// Engine environment for the node template (string)
-	EngineEnv pulumi.MapInput
+	EngineEnv pulumi.StringMapInput
 	// Insecure registry for the node template (list)
 	EngineInsecureRegistries pulumi.StringArrayInput
 	// Docker engine install URL for the node template. Available install docker versions at `https://github.com/rancher/install-docker` (string)
 	EngineInstallUrl pulumi.StringPtrInput
 	// Engine label for the node template (string)
-	EngineLabel pulumi.MapInput
+	EngineLabel pulumi.StringMapInput
 	// Engine options for the node template (map)
-	EngineOpt pulumi.MapInput
+	EngineOpt pulumi.StringMapInput
 	// Engine registry mirror for the node template (list)
 	EngineRegistryMirrors pulumi.StringArrayInput
 	// Engine storage driver for the node template (string)
@@ -570,7 +570,7 @@ type NodeTemplateArgs struct {
 	// Labels for Node Template object (map)
 	//
 	// **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// Linode config for the Node Template (list maxitems:1)
 	LinodeConfig NodeTemplateLinodeConfigPtrInput
 	// The name of the Node Template (string)
@@ -682,8 +682,8 @@ func (o NodeTemplateOutput) Amazonec2Config() NodeTemplateAmazonec2ConfigPtrOutp
 }
 
 // Annotations for Node Template object (map)
-func (o NodeTemplateOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *NodeTemplate) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o NodeTemplateOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *NodeTemplate) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // Auth certificate authority for the Node Template (string)
@@ -727,8 +727,8 @@ func (o NodeTemplateOutput) DriverId() pulumi.StringOutput {
 }
 
 // Engine environment for the node template (string)
-func (o NodeTemplateOutput) EngineEnv() pulumi.MapOutput {
-	return o.ApplyT(func(v *NodeTemplate) pulumi.MapOutput { return v.EngineEnv }).(pulumi.MapOutput)
+func (o NodeTemplateOutput) EngineEnv() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *NodeTemplate) pulumi.StringMapOutput { return v.EngineEnv }).(pulumi.StringMapOutput)
 }
 
 // Insecure registry for the node template (list)
@@ -742,13 +742,13 @@ func (o NodeTemplateOutput) EngineInstallUrl() pulumi.StringOutput {
 }
 
 // Engine label for the node template (string)
-func (o NodeTemplateOutput) EngineLabel() pulumi.MapOutput {
-	return o.ApplyT(func(v *NodeTemplate) pulumi.MapOutput { return v.EngineLabel }).(pulumi.MapOutput)
+func (o NodeTemplateOutput) EngineLabel() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *NodeTemplate) pulumi.StringMapOutput { return v.EngineLabel }).(pulumi.StringMapOutput)
 }
 
 // Engine options for the node template (map)
-func (o NodeTemplateOutput) EngineOpt() pulumi.MapOutput {
-	return o.ApplyT(func(v *NodeTemplate) pulumi.MapOutput { return v.EngineOpt }).(pulumi.MapOutput)
+func (o NodeTemplateOutput) EngineOpt() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *NodeTemplate) pulumi.StringMapOutput { return v.EngineOpt }).(pulumi.StringMapOutput)
 }
 
 // Engine registry mirror for the node template (list)
@@ -774,8 +774,8 @@ func (o NodeTemplateOutput) HetznerConfig() NodeTemplateHetznerConfigPtrOutput {
 // Labels for Node Template object (map)
 //
 // **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
-func (o NodeTemplateOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *NodeTemplate) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o NodeTemplateOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *NodeTemplate) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // Linode config for the Node Template (list maxitems:1)

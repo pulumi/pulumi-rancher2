@@ -16,20 +16,20 @@ class CustomUserTokenArgs:
     def __init__(__self__, *,
                  password: pulumi.Input[str],
                  username: pulumi.Input[str],
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  renew: Optional[pulumi.Input[bool]] = None,
                  ttl: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a CustomUserToken resource.
         :param pulumi.Input[str] password: The user password (string)
         :param pulumi.Input[str] username: The user username (string)
-        :param pulumi.Input[Mapping[str, Any]] annotations: (Computed) Annotations of the token (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: (Computed) Annotations of the token (map)
         :param pulumi.Input[str] cluster_id: Cluster ID for scoped token (string)
         :param pulumi.Input[str] description: Token description (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: (Computed) Labels of the token (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: (Computed) Labels of the token (map)
         :param pulumi.Input[bool] renew: Renew expired or disabled token
         :param pulumi.Input[int] ttl: Token time to live in seconds. Default `0` (int) 
                
@@ -76,14 +76,14 @@ class CustomUserTokenArgs:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         (Computed) Annotations of the token (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -112,14 +112,14 @@ class CustomUserTokenArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         (Computed) Labels of the token (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -153,12 +153,12 @@ class CustomUserTokenArgs:
 class _CustomUserTokenState:
     def __init__(__self__, *,
                  access_key: Optional[pulumi.Input[str]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  expired: Optional[pulumi.Input[bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  renew: Optional[pulumi.Input[bool]] = None,
@@ -172,12 +172,12 @@ class _CustomUserTokenState:
         """
         Input properties used for looking up and filtering CustomUserToken resources.
         :param pulumi.Input[str] access_key: (Computed) Token access key part (string)
-        :param pulumi.Input[Mapping[str, Any]] annotations: (Computed) Annotations of the token (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: (Computed) Annotations of the token (map)
         :param pulumi.Input[str] cluster_id: Cluster ID for scoped token (string)
         :param pulumi.Input[str] description: Token description (string)
         :param pulumi.Input[bool] enabled: (Computed) Token is enabled (bool)
         :param pulumi.Input[bool] expired: (Computed) Token is expired (bool)
-        :param pulumi.Input[Mapping[str, Any]] labels: (Computed) Labels of the token (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: (Computed) Labels of the token (map)
         :param pulumi.Input[str] name: (Computed) Token name (string)
         :param pulumi.Input[str] password: The user password (string)
         :param pulumi.Input[bool] renew: Renew expired or disabled token
@@ -240,14 +240,14 @@ class _CustomUserTokenState:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         (Computed) Annotations of the token (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -300,14 +300,14 @@ class _CustomUserTokenState:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         (Computed) Labels of the token (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -438,10 +438,10 @@ class CustomUserToken(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  renew: Optional[pulumi.Input[bool]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
@@ -484,10 +484,10 @@ class CustomUserToken(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: (Computed) Annotations of the token (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: (Computed) Annotations of the token (map)
         :param pulumi.Input[str] cluster_id: Cluster ID for scoped token (string)
         :param pulumi.Input[str] description: Token description (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: (Computed) Labels of the token (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: (Computed) Labels of the token (map)
         :param pulumi.Input[str] password: The user password (string)
         :param pulumi.Input[bool] renew: Renew expired or disabled token
         :param pulumi.Input[int] ttl: Token time to live in seconds. Default `0` (int) 
@@ -551,10 +551,10 @@ class CustomUserToken(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  renew: Optional[pulumi.Input[bool]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
@@ -602,12 +602,12 @@ class CustomUserToken(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             access_key: Optional[pulumi.Input[str]] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             expired: Optional[pulumi.Input[bool]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
             renew: Optional[pulumi.Input[bool]] = None,
@@ -626,12 +626,12 @@ class CustomUserToken(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_key: (Computed) Token access key part (string)
-        :param pulumi.Input[Mapping[str, Any]] annotations: (Computed) Annotations of the token (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: (Computed) Annotations of the token (map)
         :param pulumi.Input[str] cluster_id: Cluster ID for scoped token (string)
         :param pulumi.Input[str] description: Token description (string)
         :param pulumi.Input[bool] enabled: (Computed) Token is enabled (bool)
         :param pulumi.Input[bool] expired: (Computed) Token is expired (bool)
-        :param pulumi.Input[Mapping[str, Any]] labels: (Computed) Labels of the token (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: (Computed) Labels of the token (map)
         :param pulumi.Input[str] name: (Computed) Token name (string)
         :param pulumi.Input[str] password: The user password (string)
         :param pulumi.Input[bool] renew: Renew expired or disabled token
@@ -678,7 +678,7 @@ class CustomUserToken(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
+    def annotations(self) -> pulumi.Output[Mapping[str, str]]:
         """
         (Computed) Annotations of the token (map)
         """
@@ -718,7 +718,7 @@ class CustomUserToken(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         (Computed) Labels of the token (map)
         """

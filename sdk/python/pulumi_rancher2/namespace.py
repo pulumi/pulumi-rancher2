@@ -17,20 +17,20 @@ __all__ = ['NamespaceArgs', 'Namespace']
 class NamespaceArgs:
     def __init__(__self__, *,
                  project_id: pulumi.Input[str],
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  container_resource_limit: Optional[pulumi.Input['NamespaceContainerResourceLimitArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_quota: Optional[pulumi.Input['NamespaceResourceQuotaArgs']] = None,
                  wait_for_cluster: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Namespace resource.
         :param pulumi.Input[str] project_id: The project id where assign namespace. It's on the form `project_id=<cluster_id>:<id>`. Updating `<id>` part on same `<cluster_id>` namespace will be moved between projects (string)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Node Pool object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for Node Pool object (map)
         :param pulumi.Input['NamespaceContainerResourceLimitArgs'] container_resource_limit: Default containers resource limits on namespace (List maxitem:1)
         :param pulumi.Input[str] description: A namespace description (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Pool object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for Node Pool object (map)
         :param pulumi.Input[str] name: The name of the namespace (string)
         :param pulumi.Input['NamespaceResourceQuotaArgs'] resource_quota: Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
         :param pulumi.Input[bool] wait_for_cluster: Wait for cluster becomes active. Default `false` (bool)
@@ -65,14 +65,14 @@ class NamespaceArgs:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations for Node Pool object (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -101,14 +101,14 @@ class NamespaceArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for Node Pool object (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -151,20 +151,20 @@ class NamespaceArgs:
 @pulumi.input_type
 class _NamespaceState:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  container_resource_limit: Optional[pulumi.Input['NamespaceContainerResourceLimitArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  resource_quota: Optional[pulumi.Input['NamespaceResourceQuotaArgs']] = None,
                  wait_for_cluster: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Namespace resources.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Node Pool object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for Node Pool object (map)
         :param pulumi.Input['NamespaceContainerResourceLimitArgs'] container_resource_limit: Default containers resource limits on namespace (List maxitem:1)
         :param pulumi.Input[str] description: A namespace description (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Pool object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for Node Pool object (map)
         :param pulumi.Input[str] name: The name of the namespace (string)
         :param pulumi.Input[str] project_id: The project id where assign namespace. It's on the form `project_id=<cluster_id>:<id>`. Updating `<id>` part on same `<cluster_id>` namespace will be moved between projects (string)
         :param pulumi.Input['NamespaceResourceQuotaArgs'] resource_quota: Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
@@ -189,14 +189,14 @@ class _NamespaceState:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations for Node Pool object (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -225,14 +225,14 @@ class _NamespaceState:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for Node Pool object (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -289,10 +289,10 @@ class Namespace(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  container_resource_limit: Optional[pulumi.Input[Union['NamespaceContainerResourceLimitArgs', 'NamespaceContainerResourceLimitArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  resource_quota: Optional[pulumi.Input[Union['NamespaceResourceQuotaArgs', 'NamespaceResourceQuotaArgsDict']]] = None,
@@ -376,10 +376,10 @@ class Namespace(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Node Pool object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for Node Pool object (map)
         :param pulumi.Input[Union['NamespaceContainerResourceLimitArgs', 'NamespaceContainerResourceLimitArgsDict']] container_resource_limit: Default containers resource limits on namespace (List maxitem:1)
         :param pulumi.Input[str] description: A namespace description (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Pool object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for Node Pool object (map)
         :param pulumi.Input[str] name: The name of the namespace (string)
         :param pulumi.Input[str] project_id: The project id where assign namespace. It's on the form `project_id=<cluster_id>:<id>`. Updating `<id>` part on same `<cluster_id>` namespace will be moved between projects (string)
         :param pulumi.Input[Union['NamespaceResourceQuotaArgs', 'NamespaceResourceQuotaArgsDict']] resource_quota: Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
@@ -482,10 +482,10 @@ class Namespace(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  container_resource_limit: Optional[pulumi.Input[Union['NamespaceContainerResourceLimitArgs', 'NamespaceContainerResourceLimitArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  resource_quota: Optional[pulumi.Input[Union['NamespaceResourceQuotaArgs', 'NamespaceResourceQuotaArgsDict']]] = None,
@@ -519,10 +519,10 @@ class Namespace(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             container_resource_limit: Optional[pulumi.Input[Union['NamespaceContainerResourceLimitArgs', 'NamespaceContainerResourceLimitArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
             resource_quota: Optional[pulumi.Input[Union['NamespaceResourceQuotaArgs', 'NamespaceResourceQuotaArgsDict']]] = None,
@@ -534,10 +534,10 @@ class Namespace(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Node Pool object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for Node Pool object (map)
         :param pulumi.Input[Union['NamespaceContainerResourceLimitArgs', 'NamespaceContainerResourceLimitArgsDict']] container_resource_limit: Default containers resource limits on namespace (List maxitem:1)
         :param pulumi.Input[str] description: A namespace description (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Pool object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for Node Pool object (map)
         :param pulumi.Input[str] name: The name of the namespace (string)
         :param pulumi.Input[str] project_id: The project id where assign namespace. It's on the form `project_id=<cluster_id>:<id>`. Updating `<id>` part on same `<cluster_id>` namespace will be moved between projects (string)
         :param pulumi.Input[Union['NamespaceResourceQuotaArgs', 'NamespaceResourceQuotaArgsDict']] resource_quota: Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
@@ -559,7 +559,7 @@ class Namespace(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
+    def annotations(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Annotations for Node Pool object (map)
         """
@@ -583,7 +583,7 @@ class Namespace(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Labels for Node Pool object (map)
         """

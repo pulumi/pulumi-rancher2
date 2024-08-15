@@ -72,14 +72,14 @@ namespace Pulumi.Rancher2
         public string ClusterId { get; set; } = null!;
 
         [Input("labels")]
-        private Dictionary<string, object>? _labels;
+        private Dictionary<string, string>? _labels;
 
         /// <summary>
         /// (Computed) The cluster alert rule labels (map)
         /// </summary>
-        public Dictionary<string, object> Labels
+        public Dictionary<string, string> Labels
         {
-            get => _labels ?? (_labels = new Dictionary<string, object>());
+            get => _labels ?? (_labels = new Dictionary<string, string>());
             set => _labels = value;
         }
 
@@ -104,14 +104,14 @@ namespace Pulumi.Rancher2
         public Input<string> ClusterId { get; set; } = null!;
 
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// (Computed) The cluster alert rule labels (map)
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
@@ -134,7 +134,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) The cluster alert rule annotations (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Annotations;
+        public readonly ImmutableDictionary<string, string> Annotations;
         public readonly string ClusterId;
         /// <summary>
         /// (Computed) The cluster alert rule event rule. ConflictsWith: `"metric_rule", "node_rule", "system_service_rule"` (list Maxitems:1)
@@ -163,7 +163,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) The cluster alert rule labels (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Labels;
+        public readonly ImmutableDictionary<string, string>? Labels;
         /// <summary>
         /// (Computed) The cluster alert rule metric rule. ConflictsWith: `"event_rule", "node_rule", "system_service_rule"`` (list Maxitems:1)
         /// </summary>
@@ -188,7 +188,7 @@ namespace Pulumi.Rancher2
 
         [OutputConstructor]
         private GetClusterAlertRuleResult(
-            ImmutableDictionary<string, object> annotations,
+            ImmutableDictionary<string, string> annotations,
 
             string clusterId,
 
@@ -204,7 +204,7 @@ namespace Pulumi.Rancher2
 
             bool inherited,
 
-            ImmutableDictionary<string, object>? labels,
+            ImmutableDictionary<string, string>? labels,
 
             Outputs.GetClusterAlertRuleMetricRuleResult metricRule,
 

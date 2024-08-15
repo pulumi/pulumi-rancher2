@@ -13,8 +13,8 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringResult
     {
-        public readonly ImmutableDictionary<string, object>? NodeSelector;
-        public readonly ImmutableDictionary<string, object> Options;
+        public readonly ImmutableDictionary<string, string>? NodeSelector;
+        public readonly ImmutableDictionary<string, string> Options;
         public readonly string Provider;
         public readonly int Replicas;
         /// <summary>
@@ -28,9 +28,9 @@ namespace Pulumi.Rancher2.Outputs
 
         [OutputConstructor]
         private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringResult(
-            ImmutableDictionary<string, object>? nodeSelector,
+            ImmutableDictionary<string, string>? nodeSelector,
 
-            ImmutableDictionary<string, object> options,
+            ImmutableDictionary<string, string> options,
 
             string provider,
 

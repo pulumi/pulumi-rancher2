@@ -60,15 +60,15 @@ type LookupGlobalRoleBindingArgs struct {
 // A collection of values returned by getGlobalRoleBinding.
 type LookupGlobalRoleBindingResult struct {
 	// (Computed) Annotations of the resource (map)
-	Annotations  map[string]interface{} `pulumi:"annotations"`
-	GlobalRoleId string                 `pulumi:"globalRoleId"`
+	Annotations  map[string]string `pulumi:"annotations"`
+	GlobalRoleId string            `pulumi:"globalRoleId"`
 	// (Computed) The group principal ID to assign global role binding. Rancher v2.4.0 or higher is required (string)
 	GroupPrincipalId string `pulumi:"groupPrincipalId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels of the resource (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	Name   string                 `pulumi:"name"`
+	Labels map[string]string `pulumi:"labels"`
+	Name   string            `pulumi:"name"`
 	// (Computed) The user ID to assign global role binding (string)
 	UserId string `pulumi:"userId"`
 }
@@ -114,8 +114,8 @@ func (o LookupGlobalRoleBindingResultOutput) ToLookupGlobalRoleBindingResultOutp
 }
 
 // (Computed) Annotations of the resource (map)
-func (o LookupGlobalRoleBindingResultOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupGlobalRoleBindingResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+func (o LookupGlobalRoleBindingResultOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupGlobalRoleBindingResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 func (o LookupGlobalRoleBindingResultOutput) GlobalRoleId() pulumi.StringOutput {
@@ -133,8 +133,8 @@ func (o LookupGlobalRoleBindingResultOutput) Id() pulumi.StringOutput {
 }
 
 // (Computed) Labels of the resource (map)
-func (o LookupGlobalRoleBindingResultOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupGlobalRoleBindingResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+func (o LookupGlobalRoleBindingResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupGlobalRoleBindingResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupGlobalRoleBindingResultOutput) Name() pulumi.StringOutput {

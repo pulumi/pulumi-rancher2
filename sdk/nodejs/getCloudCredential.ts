@@ -43,7 +43,7 @@ export interface GetCloudCredentialResult {
     /**
      * (Computed) Annotations for the Cloud Credential (map)
      */
-    readonly annotations: {[key: string]: any};
+    readonly annotations: {[key: string]: string};
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -51,7 +51,7 @@ export interface GetCloudCredentialResult {
     /**
      * (Computed) Labels for the Cloud Credential (map)
      */
-    readonly labels: {[key: string]: any};
+    readonly labels: {[key: string]: string};
     readonly name: string;
 }
 /**

@@ -5,7 +5,6 @@ package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -15,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeController {
     private String clusterCidr;
-    private Map<String,Object> extraArgs;
+    private Map<String,String> extraArgs;
     private @Nullable List<String> extraBinds;
     private @Nullable List<String> extraEnvs;
     private String image;
@@ -25,7 +24,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServi
     public String clusterCidr() {
         return this.clusterCidr;
     }
-    public Map<String,Object> extraArgs() {
+    public Map<String,String> extraArgs() {
         return this.extraArgs;
     }
     public List<String> extraBinds() {
@@ -51,7 +50,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServi
     @CustomType.Builder
     public static final class Builder {
         private String clusterCidr;
-        private Map<String,Object> extraArgs;
+        private Map<String,String> extraArgs;
         private @Nullable List<String> extraBinds;
         private @Nullable List<String> extraEnvs;
         private String image;
@@ -76,7 +75,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServi
             return this;
         }
         @CustomType.Setter
-        public Builder extraArgs(Map<String,Object> extraArgs) {
+        public Builder extraArgs(Map<String,String> extraArgs) {
             if (extraArgs == null) {
               throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeController", "extraArgs");
             }

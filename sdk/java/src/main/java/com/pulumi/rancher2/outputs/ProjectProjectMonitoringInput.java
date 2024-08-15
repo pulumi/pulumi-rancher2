@@ -4,7 +4,6 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -17,7 +16,7 @@ public final class ProjectProjectMonitoringInput {
      * @return Answers for monitor input
      * 
      */
-    private @Nullable Map<String,Object> answers;
+    private @Nullable Map<String,String> answers;
     /**
      * @return Monitoring version
      * 
@@ -29,7 +28,7 @@ public final class ProjectProjectMonitoringInput {
      * @return Answers for monitor input
      * 
      */
-    public Map<String,Object> answers() {
+    public Map<String,String> answers() {
         return this.answers == null ? Map.of() : this.answers;
     }
     /**
@@ -49,7 +48,7 @@ public final class ProjectProjectMonitoringInput {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Map<String,Object> answers;
+        private @Nullable Map<String,String> answers;
         private @Nullable String version;
         public Builder() {}
         public Builder(ProjectProjectMonitoringInput defaults) {
@@ -59,7 +58,7 @@ public final class ProjectProjectMonitoringInput {
         }
 
         @CustomType.Setter
-        public Builder answers(@Nullable Map<String,Object> answers) {
+        public Builder answers(@Nullable Map<String,String> answers) {
 
             this.answers = answers;
             return this;

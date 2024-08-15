@@ -110,7 +110,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) The cluster alert group annotations (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Annotations;
+        public readonly ImmutableDictionary<string, string> Annotations;
         public readonly string ClusterId;
         /// <summary>
         /// (Computed) The cluster alert group description (string)
@@ -131,7 +131,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) The cluster alert group labels (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Labels;
+        public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
         /// <summary>
         /// (Computed) The cluster alert group recipients (list)
@@ -144,7 +144,7 @@ namespace Pulumi.Rancher2
 
         [OutputConstructor]
         private GetClusterAlertGroupResult(
-            ImmutableDictionary<string, object> annotations,
+            ImmutableDictionary<string, string> annotations,
 
             string clusterId,
 
@@ -156,7 +156,7 @@ namespace Pulumi.Rancher2
 
             string id,
 
-            ImmutableDictionary<string, object> labels,
+            ImmutableDictionary<string, string> labels,
 
             string name,
 

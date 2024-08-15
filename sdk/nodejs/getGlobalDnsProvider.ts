@@ -46,7 +46,7 @@ export interface GetGlobalDnsProviderResult {
     /**
      * (Computed) Annotations of the resource (map)
      */
-    readonly annotations: {[key: string]: any};
+    readonly annotations: {[key: string]: string};
     readonly cloudflareConfig: outputs.GetGlobalDnsProviderCloudflareConfig;
     readonly dnsProvider: string;
     /**
@@ -56,7 +56,7 @@ export interface GetGlobalDnsProviderResult {
     /**
      * (Computed) Labels of the resource (map)
      */
-    readonly labels: {[key: string]: any};
+    readonly labels: {[key: string]: string};
     /**
      * (Computed) The name of the global DNS provider (string)
      */

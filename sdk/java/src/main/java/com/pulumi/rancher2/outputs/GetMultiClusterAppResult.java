@@ -10,7 +10,6 @@ import com.pulumi.rancher2.outputs.GetMultiClusterAppMember;
 import com.pulumi.rancher2.outputs.GetMultiClusterAppTarget;
 import com.pulumi.rancher2.outputs.GetMultiClusterAppUpgradeStrategy;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -22,7 +21,7 @@ public final class GetMultiClusterAppResult {
      * @return (Computed) Annotations for multi cluster app object (map)
      * 
      */
-    private Map<String,Object> annotations;
+    private Map<String,String> annotations;
     /**
      * @return (Computed) The multi cluster app answers (list)
      * 
@@ -42,7 +41,7 @@ public final class GetMultiClusterAppResult {
      * @return (Computed) Labels for multi cluster app object (map)
      * 
      */
-    private Map<String,Object> labels;
+    private Map<String,String> labels;
     /**
      * @return (Computed) The multi cluster app members (list)
      * 
@@ -95,7 +94,7 @@ public final class GetMultiClusterAppResult {
      * @return (Computed) Annotations for multi cluster app object (map)
      * 
      */
-    public Map<String,Object> annotations() {
+    public Map<String,String> annotations() {
         return this.annotations;
     }
     /**
@@ -123,7 +122,7 @@ public final class GetMultiClusterAppResult {
      * @return (Computed) Labels for multi cluster app object (map)
      * 
      */
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels;
     }
     /**
@@ -202,11 +201,11 @@ public final class GetMultiClusterAppResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Map<String,Object> annotations;
+        private Map<String,String> annotations;
         private List<GetMultiClusterAppAnswer> answers;
         private String catalogName;
         private String id;
-        private Map<String,Object> labels;
+        private Map<String,String> labels;
         private List<GetMultiClusterAppMember> members;
         private String name;
         private Integer revisionHistoryLimit;
@@ -238,7 +237,7 @@ public final class GetMultiClusterAppResult {
         }
 
         @CustomType.Setter
-        public Builder annotations(Map<String,Object> annotations) {
+        public Builder annotations(Map<String,String> annotations) {
             if (annotations == null) {
               throw new MissingRequiredPropertyException("GetMultiClusterAppResult", "annotations");
             }
@@ -273,7 +272,7 @@ public final class GetMultiClusterAppResult {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(Map<String,Object> labels) {
+        public Builder labels(Map<String,String> labels) {
             if (labels == null) {
               throw new MissingRequiredPropertyException("GetMultiClusterAppResult", "labels");
             }

@@ -16,10 +16,10 @@ class ClusterRoleTemplateBindingArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[str],
                  role_template_id: pulumi.Input[str],
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  group_principal_id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,
                  user_principal_id: Optional[pulumi.Input[str]] = None):
@@ -27,10 +27,10 @@ class ClusterRoleTemplateBindingArgs:
         The set of arguments for constructing a ClusterRoleTemplateBinding resource.
         :param pulumi.Input[str] cluster_id: The cluster id where bind cluster role template binding (string)
         :param pulumi.Input[str] role_template_id: The role template id from create cluster role template binding (string)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for cluster role template binding (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for cluster role template binding (map)
         :param pulumi.Input[str] group_id: The group ID to assign cluster role template binding (string)
         :param pulumi.Input[str] group_principal_id: The group_principal ID to assign cluster role template binding (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for cluster role template binding (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for cluster role template binding (map)
                
                **Note:** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
         :param pulumi.Input[str] name: The name of the cluster role template binding (string)
@@ -80,14 +80,14 @@ class ClusterRoleTemplateBindingArgs:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations for cluster role template binding (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -116,7 +116,7 @@ class ClusterRoleTemplateBindingArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for cluster role template binding (map)
 
@@ -125,7 +125,7 @@ class ClusterRoleTemplateBindingArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -168,22 +168,22 @@ class ClusterRoleTemplateBindingArgs:
 @pulumi.input_type
 class _ClusterRoleTemplateBindingState:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  group_principal_id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  role_template_id: Optional[pulumi.Input[str]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,
                  user_principal_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ClusterRoleTemplateBinding resources.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for cluster role template binding (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for cluster role template binding (map)
         :param pulumi.Input[str] cluster_id: The cluster id where bind cluster role template binding (string)
         :param pulumi.Input[str] group_id: The group ID to assign cluster role template binding (string)
         :param pulumi.Input[str] group_principal_id: The group_principal ID to assign cluster role template binding (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for cluster role template binding (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for cluster role template binding (map)
                
                **Note:** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
         :param pulumi.Input[str] name: The name of the cluster role template binding (string)
@@ -212,14 +212,14 @@ class _ClusterRoleTemplateBindingState:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations for cluster role template binding (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -260,7 +260,7 @@ class _ClusterRoleTemplateBindingState:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for cluster role template binding (map)
 
@@ -269,7 +269,7 @@ class _ClusterRoleTemplateBindingState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -326,11 +326,11 @@ class ClusterRoleTemplateBinding(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  group_principal_id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  role_template_id: Optional[pulumi.Input[str]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,
@@ -363,11 +363,11 @@ class ClusterRoleTemplateBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for cluster role template binding (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for cluster role template binding (map)
         :param pulumi.Input[str] cluster_id: The cluster id where bind cluster role template binding (string)
         :param pulumi.Input[str] group_id: The group ID to assign cluster role template binding (string)
         :param pulumi.Input[str] group_principal_id: The group_principal ID to assign cluster role template binding (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for cluster role template binding (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for cluster role template binding (map)
                
                **Note:** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
         :param pulumi.Input[str] name: The name of the cluster role template binding (string)
@@ -421,11 +421,11 @@ class ClusterRoleTemplateBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  group_principal_id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  role_template_id: Optional[pulumi.Input[str]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,
@@ -462,11 +462,11 @@ class ClusterRoleTemplateBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
             group_id: Optional[pulumi.Input[str]] = None,
             group_principal_id: Optional[pulumi.Input[str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             role_template_id: Optional[pulumi.Input[str]] = None,
             user_id: Optional[pulumi.Input[str]] = None,
@@ -478,11 +478,11 @@ class ClusterRoleTemplateBinding(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for cluster role template binding (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for cluster role template binding (map)
         :param pulumi.Input[str] cluster_id: The cluster id where bind cluster role template binding (string)
         :param pulumi.Input[str] group_id: The group ID to assign cluster role template binding (string)
         :param pulumi.Input[str] group_principal_id: The group_principal ID to assign cluster role template binding (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for cluster role template binding (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for cluster role template binding (map)
                
                **Note:** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
         :param pulumi.Input[str] name: The name of the cluster role template binding (string)
@@ -507,7 +507,7 @@ class ClusterRoleTemplateBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
+    def annotations(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Annotations for cluster role template binding (map)
         """
@@ -539,7 +539,7 @@ class ClusterRoleTemplateBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Labels for cluster role template binding (map)
 

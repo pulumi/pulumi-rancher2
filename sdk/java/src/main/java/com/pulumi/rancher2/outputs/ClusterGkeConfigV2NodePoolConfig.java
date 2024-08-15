@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.rancher2.outputs.ClusterGkeConfigV2NodePoolConfigTaint;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -36,7 +35,7 @@ public final class ClusterGkeConfigV2NodePoolConfig {
      * @return Labels for the Cluster (map)
      * 
      */
-    private @Nullable Map<String,Object> labels;
+    private @Nullable Map<String,String> labels;
     /**
      * @return The GKE node config local ssd count
      * 
@@ -94,7 +93,7 @@ public final class ClusterGkeConfigV2NodePoolConfig {
      * @return Labels for the Cluster (map)
      * 
      */
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels == null ? Map.of() : this.labels;
     }
     /**
@@ -152,7 +151,7 @@ public final class ClusterGkeConfigV2NodePoolConfig {
         private @Nullable Integer diskSizeGb;
         private @Nullable String diskType;
         private @Nullable String imageType;
-        private @Nullable Map<String,Object> labels;
+        private @Nullable Map<String,String> labels;
         private @Nullable Integer localSsdCount;
         private @Nullable String machineType;
         private @Nullable List<String> oauthScopes;
@@ -193,7 +192,7 @@ public final class ClusterGkeConfigV2NodePoolConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(@Nullable Map<String,Object> labels) {
+        public Builder labels(@Nullable Map<String,String> labels) {
 
             this.labels = labels;
             return this;

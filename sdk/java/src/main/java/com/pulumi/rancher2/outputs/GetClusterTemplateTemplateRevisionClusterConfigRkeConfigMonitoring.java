@@ -8,7 +8,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringToleration;
 import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -18,8 +17,8 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring {
-    private @Nullable Map<String,Object> nodeSelector;
-    private Map<String,Object> options;
+    private @Nullable Map<String,String> nodeSelector;
+    private Map<String,String> options;
     private String provider;
     private Integer replicas;
     /**
@@ -34,10 +33,10 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonit
     private @Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy updateStrategy;
 
     private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring() {}
-    public Map<String,Object> nodeSelector() {
+    public Map<String,String> nodeSelector() {
         return this.nodeSelector == null ? Map.of() : this.nodeSelector;
     }
-    public Map<String,Object> options() {
+    public Map<String,String> options() {
         return this.options;
     }
     public String provider() {
@@ -70,8 +69,8 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonit
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Map<String,Object> nodeSelector;
-        private Map<String,Object> options;
+        private @Nullable Map<String,String> nodeSelector;
+        private Map<String,String> options;
         private String provider;
         private Integer replicas;
         private @Nullable List<GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringToleration> tolerations;
@@ -88,13 +87,13 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonit
         }
 
         @CustomType.Setter
-        public Builder nodeSelector(@Nullable Map<String,Object> nodeSelector) {
+        public Builder nodeSelector(@Nullable Map<String,String> nodeSelector) {
 
             this.nodeSelector = nodeSelector;
             return this;
         }
         @CustomType.Setter
-        public Builder options(Map<String,Object> options) {
+        public Builder options(Map<String,String> options) {
             if (options == null) {
               throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring", "options");
             }

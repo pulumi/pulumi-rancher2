@@ -9,7 +9,6 @@ import com.pulumi.rancher2.outputs.GetClusterRkeConfigDnsLinearAutoscalerParams;
 import com.pulumi.rancher2.outputs.GetClusterRkeConfigDnsNodelocal;
 import com.pulumi.rancher2.outputs.GetClusterRkeConfigDnsToleration;
 import com.pulumi.rancher2.outputs.GetClusterRkeConfigDnsUpdateStrategy;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -24,13 +23,13 @@ public final class GetClusterRkeConfigDns {
      * 
      */
     private @Nullable GetClusterRkeConfigDnsLinearAutoscalerParams linearAutoscalerParams;
-    private Map<String,Object> nodeSelector;
+    private Map<String,String> nodeSelector;
     /**
      * @return Nodelocal dns
      * 
      */
     private @Nullable GetClusterRkeConfigDnsNodelocal nodelocal;
-    private Map<String,Object> options;
+    private Map<String,String> options;
     private @Nullable String provider;
     private List<String> reverseCidrs;
     /**
@@ -53,7 +52,7 @@ public final class GetClusterRkeConfigDns {
     public Optional<GetClusterRkeConfigDnsLinearAutoscalerParams> linearAutoscalerParams() {
         return Optional.ofNullable(this.linearAutoscalerParams);
     }
-    public Map<String,Object> nodeSelector() {
+    public Map<String,String> nodeSelector() {
         return this.nodeSelector;
     }
     /**
@@ -63,7 +62,7 @@ public final class GetClusterRkeConfigDns {
     public Optional<GetClusterRkeConfigDnsNodelocal> nodelocal() {
         return Optional.ofNullable(this.nodelocal);
     }
-    public Map<String,Object> options() {
+    public Map<String,String> options() {
         return this.options;
     }
     public Optional<String> provider() {
@@ -100,9 +99,9 @@ public final class GetClusterRkeConfigDns {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable GetClusterRkeConfigDnsLinearAutoscalerParams linearAutoscalerParams;
-        private Map<String,Object> nodeSelector;
+        private Map<String,String> nodeSelector;
         private @Nullable GetClusterRkeConfigDnsNodelocal nodelocal;
-        private Map<String,Object> options;
+        private Map<String,String> options;
         private @Nullable String provider;
         private List<String> reverseCidrs;
         private @Nullable List<GetClusterRkeConfigDnsToleration> tolerations;
@@ -129,7 +128,7 @@ public final class GetClusterRkeConfigDns {
             return this;
         }
         @CustomType.Setter
-        public Builder nodeSelector(Map<String,Object> nodeSelector) {
+        public Builder nodeSelector(Map<String,String> nodeSelector) {
             if (nodeSelector == null) {
               throw new MissingRequiredPropertyException("GetClusterRkeConfigDns", "nodeSelector");
             }
@@ -143,7 +142,7 @@ public final class GetClusterRkeConfigDns {
             return this;
         }
         @CustomType.Setter
-        public Builder options(Map<String,Object> options) {
+        public Builder options(Map<String,String> options) {
             if (options == null) {
               throw new MissingRequiredPropertyException("GetClusterRkeConfigDns", "options");
             }

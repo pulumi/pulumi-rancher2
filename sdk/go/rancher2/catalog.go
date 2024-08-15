@@ -71,7 +71,7 @@ type Catalog struct {
 	pulumi.CustomResourceState
 
 	// Annotations for the catalog (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// The branch of the catalog repo to use. Default `master` (string)
 	Branch pulumi.StringPtrOutput `pulumi:"branch"`
 	// The cluster id of the catalog. Mandatory if `scope = cluster` (string)
@@ -81,7 +81,7 @@ type Catalog struct {
 	// The kind of the catalog. Just helm by the moment (string)
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Labels for the catalog (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the catalog (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The password to access the catalog if needed (string)
@@ -145,7 +145,7 @@ func GetCatalog(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Catalog resources.
 type catalogState struct {
 	// Annotations for the catalog (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// The branch of the catalog repo to use. Default `master` (string)
 	Branch *string `pulumi:"branch"`
 	// The cluster id of the catalog. Mandatory if `scope = cluster` (string)
@@ -155,7 +155,7 @@ type catalogState struct {
 	// The kind of the catalog. Just helm by the moment (string)
 	Kind *string `pulumi:"kind"`
 	// Labels for the catalog (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The name of the catalog (string)
 	Name *string `pulumi:"name"`
 	// The password to access the catalog if needed (string)
@@ -176,7 +176,7 @@ type catalogState struct {
 
 type CatalogState struct {
 	// Annotations for the catalog (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// The branch of the catalog repo to use. Default `master` (string)
 	Branch pulumi.StringPtrInput
 	// The cluster id of the catalog. Mandatory if `scope = cluster` (string)
@@ -186,7 +186,7 @@ type CatalogState struct {
 	// The kind of the catalog. Just helm by the moment (string)
 	Kind pulumi.StringPtrInput
 	// Labels for the catalog (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The name of the catalog (string)
 	Name pulumi.StringPtrInput
 	// The password to access the catalog if needed (string)
@@ -211,7 +211,7 @@ func (CatalogState) ElementType() reflect.Type {
 
 type catalogArgs struct {
 	// Annotations for the catalog (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// The branch of the catalog repo to use. Default `master` (string)
 	Branch *string `pulumi:"branch"`
 	// The cluster id of the catalog. Mandatory if `scope = cluster` (string)
@@ -221,7 +221,7 @@ type catalogArgs struct {
 	// The kind of the catalog. Just helm by the moment (string)
 	Kind *string `pulumi:"kind"`
 	// Labels for the catalog (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The name of the catalog (string)
 	Name *string `pulumi:"name"`
 	// The password to access the catalog if needed (string)
@@ -243,7 +243,7 @@ type catalogArgs struct {
 // The set of arguments for constructing a Catalog resource.
 type CatalogArgs struct {
 	// Annotations for the catalog (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// The branch of the catalog repo to use. Default `master` (string)
 	Branch pulumi.StringPtrInput
 	// The cluster id of the catalog. Mandatory if `scope = cluster` (string)
@@ -253,7 +253,7 @@ type CatalogArgs struct {
 	// The kind of the catalog. Just helm by the moment (string)
 	Kind pulumi.StringPtrInput
 	// Labels for the catalog (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The name of the catalog (string)
 	Name pulumi.StringPtrInput
 	// The password to access the catalog if needed (string)
@@ -360,8 +360,8 @@ func (o CatalogOutput) ToCatalogOutputWithContext(ctx context.Context) CatalogOu
 }
 
 // Annotations for the catalog (map)
-func (o CatalogOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *Catalog) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o CatalogOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Catalog) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // The branch of the catalog repo to use. Default `master` (string)
@@ -385,8 +385,8 @@ func (o CatalogOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Labels for the catalog (map)
-func (o CatalogOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *Catalog) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o CatalogOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Catalog) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The name of the catalog (string)

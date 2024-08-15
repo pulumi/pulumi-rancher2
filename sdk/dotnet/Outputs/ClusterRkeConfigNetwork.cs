@@ -36,7 +36,7 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// RKE options for network (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Options;
+        public readonly ImmutableDictionary<string, string>? Options;
         /// <summary>
         /// Plugin for RKE network. `canal` (default), `flannel`, `calico`, `none` and `weave` are supported. (string)
         /// </summary>
@@ -62,7 +62,7 @@ namespace Pulumi.Rancher2.Outputs
 
             int? mtu,
 
-            ImmutableDictionary<string, object>? options,
+            ImmutableDictionary<string, string>? options,
 
             string? plugin,
 

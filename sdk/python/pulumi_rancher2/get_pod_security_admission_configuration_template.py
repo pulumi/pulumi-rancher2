@@ -47,7 +47,7 @@ class GetPodSecurityAdmissionConfigurationTemplateResult:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> Mapping[str, str]:
         return pulumi.get(self, "annotations")
 
     @property
@@ -75,7 +75,7 @@ class GetPodSecurityAdmissionConfigurationTemplateResult:
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> Mapping[str, str]:
         return pulumi.get(self, "labels")
 
     @property
@@ -99,8 +99,8 @@ class AwaitableGetPodSecurityAdmissionConfigurationTemplateResult(GetPodSecurity
             name=self.name)
 
 
-def get_pod_security_admission_configuration_template(annotations: Optional[Mapping[str, Any]] = None,
-                                                      labels: Optional[Mapping[str, Any]] = None,
+def get_pod_security_admission_configuration_template(annotations: Optional[Mapping[str, str]] = None,
+                                                      labels: Optional[Mapping[str, str]] = None,
                                                       name: Optional[str] = None,
                                                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPodSecurityAdmissionConfigurationTemplateResult:
     """
@@ -124,8 +124,8 @@ def get_pod_security_admission_configuration_template(annotations: Optional[Mapp
 
 
 @_utilities.lift_output_func(get_pod_security_admission_configuration_template)
-def get_pod_security_admission_configuration_template_output(annotations: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
-                                                             labels: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+def get_pod_security_admission_configuration_template_output(annotations: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
+                                                             labels: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                                              name: Optional[pulumi.Input[str]] = None,
                                                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPodSecurityAdmissionConfigurationTemplateResult]:
     """

@@ -70,7 +70,7 @@ export class NodeDriver extends pulumi.CustomResource {
     /**
      * Annotations of the resource (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: any}>;
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * Specify wheter the node driver is an internal node driver or not (bool)
      */
@@ -90,7 +90,7 @@ export class NodeDriver extends pulumi.CustomResource {
     /**
      * Labels of the resource (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Name of the node driver (string)
      */
@@ -171,7 +171,7 @@ export interface NodeDriverState {
     /**
      * Annotations of the resource (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Specify wheter the node driver is an internal node driver or not (bool)
      */
@@ -191,7 +191,7 @@ export interface NodeDriverState {
     /**
      * Labels of the resource (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the node driver (string)
      */
@@ -221,7 +221,7 @@ export interface NodeDriverArgs {
     /**
      * Annotations of the resource (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Specify wheter the node driver is an internal node driver or not (bool)
      */
@@ -241,7 +241,7 @@ export interface NodeDriverArgs {
     /**
      * Labels of the resource (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the node driver (string)
      */

@@ -66,10 +66,10 @@ type User struct {
 	pulumi.CustomResourceState
 
 	// Annotations for global role binding (map)
-	Annotations pulumi.MapOutput     `pulumi:"annotations"`
-	Enabled     pulumi.BoolPtrOutput `pulumi:"enabled"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
+	Enabled     pulumi.BoolPtrOutput   `pulumi:"enabled"`
 	// Labels for global role binding (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The user full name (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The user password (string)
@@ -124,10 +124,10 @@ func GetUser(ctx *pulumi.Context,
 // Input properties used for looking up and filtering User resources.
 type userState struct {
 	// Annotations for global role binding (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
-	Enabled     *bool                  `pulumi:"enabled"`
+	Annotations map[string]string `pulumi:"annotations"`
+	Enabled     *bool             `pulumi:"enabled"`
 	// Labels for global role binding (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The user full name (string)
 	Name *string `pulumi:"name"`
 	// The user password (string)
@@ -140,10 +140,10 @@ type userState struct {
 
 type UserState struct {
 	// Annotations for global role binding (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	Enabled     pulumi.BoolPtrInput
 	// Labels for global role binding (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The user full name (string)
 	Name pulumi.StringPtrInput
 	// The user password (string)
@@ -160,10 +160,10 @@ func (UserState) ElementType() reflect.Type {
 
 type userArgs struct {
 	// Annotations for global role binding (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
-	Enabled     *bool                  `pulumi:"enabled"`
+	Annotations map[string]string `pulumi:"annotations"`
+	Enabled     *bool             `pulumi:"enabled"`
 	// Labels for global role binding (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The user full name (string)
 	Name *string `pulumi:"name"`
 	// The user password (string)
@@ -175,10 +175,10 @@ type userArgs struct {
 // The set of arguments for constructing a User resource.
 type UserArgs struct {
 	// Annotations for global role binding (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	Enabled     pulumi.BoolPtrInput
 	// Labels for global role binding (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The user full name (string)
 	Name pulumi.StringPtrInput
 	// The user password (string)
@@ -275,8 +275,8 @@ func (o UserOutput) ToUserOutputWithContext(ctx context.Context) UserOutput {
 }
 
 // Annotations for global role binding (map)
-func (o UserOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *User) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o UserOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *User) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 func (o UserOutput) Enabled() pulumi.BoolPtrOutput {
@@ -284,8 +284,8 @@ func (o UserOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 // Labels for global role binding (map)
-func (o UserOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *User) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o UserOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *User) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The user full name (string)

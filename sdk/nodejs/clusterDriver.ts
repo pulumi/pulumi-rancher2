@@ -54,7 +54,7 @@ export class ClusterDriver extends pulumi.CustomResource {
     /**
      * Annotations of the resource (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: any}>;
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * Specify whether the cluster driver is an internal cluster driver or not (bool)
      */
@@ -66,7 +66,7 @@ export class ClusterDriver extends pulumi.CustomResource {
     /**
      * Labels of the resource (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Name of the cluster driver (string)
      */
@@ -149,7 +149,7 @@ export interface ClusterDriverState {
     /**
      * Annotations of the resource (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Specify whether the cluster driver is an internal cluster driver or not (bool)
      */
@@ -161,7 +161,7 @@ export interface ClusterDriverState {
     /**
      * Labels of the resource (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the cluster driver (string)
      */
@@ -195,7 +195,7 @@ export interface ClusterDriverArgs {
     /**
      * Annotations of the resource (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Specify whether the cluster driver is an internal cluster driver or not (bool)
      */
@@ -207,7 +207,7 @@ export interface ClusterDriverArgs {
     /**
      * Labels of the resource (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the cluster driver (string)
      */

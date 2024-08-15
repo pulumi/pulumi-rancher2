@@ -28,7 +28,7 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// Map of the labels which will be assigned to the server
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? ServerLabels;
+        public readonly ImmutableDictionary<string, string>? ServerLabels;
         /// <summary>
         /// Hetzner Cloud datacenter
         /// </summary>
@@ -58,7 +58,7 @@ namespace Pulumi.Rancher2.Outputs
 
             string? networks,
 
-            ImmutableDictionary<string, object>? serverLabels,
+            ImmutableDictionary<string, string>? serverLabels,
 
             string? serverLocation,
 
