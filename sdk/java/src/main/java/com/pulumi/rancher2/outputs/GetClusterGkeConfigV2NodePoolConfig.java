@@ -8,7 +8,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterGkeConfigV2NodePoolConfigTaint;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -37,7 +36,7 @@ public final class GetClusterGkeConfigV2NodePoolConfig {
      * @return (Computed) Labels for Node Pool object (map)
      * 
      */
-    private Map<String,Object> labels;
+    private Map<String,String> labels;
     /**
      * @return The GKE node config local ssd count
      * 
@@ -95,7 +94,7 @@ public final class GetClusterGkeConfigV2NodePoolConfig {
      * @return (Computed) Labels for Node Pool object (map)
      * 
      */
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels;
     }
     /**
@@ -153,7 +152,7 @@ public final class GetClusterGkeConfigV2NodePoolConfig {
         private @Nullable Integer diskSizeGb;
         private @Nullable String diskType;
         private @Nullable String imageType;
-        private Map<String,Object> labels;
+        private Map<String,String> labels;
         private @Nullable Integer localSsdCount;
         private @Nullable String machineType;
         private List<String> oauthScopes;
@@ -194,7 +193,7 @@ public final class GetClusterGkeConfigV2NodePoolConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(Map<String,Object> labels) {
+        public Builder labels(Map<String,String> labels) {
             if (labels == null) {
               throw new MissingRequiredPropertyException("GetClusterGkeConfigV2NodePoolConfig", "labels");
             }

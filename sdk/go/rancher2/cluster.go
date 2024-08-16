@@ -74,25 +74,25 @@ import (
 //				},
 //				EnableClusterMonitoring: pulumi.Bool(true),
 //				ClusterMonitoringInput: &rancher2.ClusterClusterMonitoringInputArgs{
-//					Answers: pulumi.Map{
-//						"exporter-kubelets.https":                   pulumi.Any(true),
-//						"exporter-node.enabled":                     pulumi.Any(true),
-//						"exporter-node.ports.metrics.port":          pulumi.Any(9796),
-//						"exporter-node.resources.limits.cpu":        pulumi.Any("200m"),
-//						"exporter-node.resources.limits.memory":     pulumi.Any("200Mi"),
-//						"grafana.persistence.enabled":               pulumi.Any(false),
-//						"grafana.persistence.size":                  pulumi.Any("10Gi"),
-//						"grafana.persistence.storageClass":          pulumi.Any("default"),
-//						"operator.resources.limits.memory":          pulumi.Any("500Mi"),
-//						"prometheus.persistence.enabled":            pulumi.Any("false"),
-//						"prometheus.persistence.size":               pulumi.Any("50Gi"),
-//						"prometheus.persistence.storageClass":       pulumi.Any("default"),
-//						"prometheus.persistent.useReleaseName":      pulumi.Any("true"),
-//						"prometheus.resources.core.limits.cpu":      pulumi.Any("1000m"),
-//						"prometheus.resources.core.limits.memory":   pulumi.Any("1500Mi"),
-//						"prometheus.resources.core.requests.cpu":    pulumi.Any("750m"),
-//						"prometheus.resources.core.requests.memory": pulumi.Any("750Mi"),
-//						"prometheus.retention":                      pulumi.Any("12h"),
+//					Answers: pulumi.StringMap{
+//						"exporter-kubelets.https":                   pulumi.String("true"),
+//						"exporter-node.enabled":                     pulumi.String("true"),
+//						"exporter-node.ports.metrics.port":          pulumi.String("9796"),
+//						"exporter-node.resources.limits.cpu":        pulumi.String("200m"),
+//						"exporter-node.resources.limits.memory":     pulumi.String("200Mi"),
+//						"grafana.persistence.enabled":               pulumi.String("false"),
+//						"grafana.persistence.size":                  pulumi.String("10Gi"),
+//						"grafana.persistence.storageClass":          pulumi.String("default"),
+//						"operator.resources.limits.memory":          pulumi.String("500Mi"),
+//						"prometheus.persistence.enabled":            pulumi.String("false"),
+//						"prometheus.persistence.size":               pulumi.String("50Gi"),
+//						"prometheus.persistence.storageClass":       pulumi.String("default"),
+//						"prometheus.persistent.useReleaseName":      pulumi.String("true"),
+//						"prometheus.resources.core.limits.cpu":      pulumi.String("1000m"),
+//						"prometheus.resources.core.limits.memory":   pulumi.String("1500Mi"),
+//						"prometheus.resources.core.requests.cpu":    pulumi.String("750m"),
+//						"prometheus.resources.core.requests.memory": pulumi.String("750Mi"),
+//						"prometheus.retention":                      pulumi.String("12h"),
 //					},
 //					Version: pulumi.String("0.1.0"),
 //				},
@@ -131,25 +131,25 @@ import (
 //				},
 //				EnableClusterMonitoring: pulumi.Bool(true),
 //				ClusterMonitoringInput: &rancher2.ClusterClusterMonitoringInputArgs{
-//					Answers: pulumi.Map{
-//						"exporter-kubelets.https":                   pulumi.Any(true),
-//						"exporter-node.enabled":                     pulumi.Any(true),
-//						"exporter-node.ports.metrics.port":          pulumi.Any(9796),
-//						"exporter-node.resources.limits.cpu":        pulumi.Any("200m"),
-//						"exporter-node.resources.limits.memory":     pulumi.Any("200Mi"),
-//						"grafana.persistence.enabled":               pulumi.Any(false),
-//						"grafana.persistence.size":                  pulumi.Any("10Gi"),
-//						"grafana.persistence.storageClass":          pulumi.Any("default"),
-//						"operator.resources.limits.memory":          pulumi.Any("500Mi"),
-//						"prometheus.persistence.enabled":            pulumi.Any("false"),
-//						"prometheus.persistence.size":               pulumi.Any("50Gi"),
-//						"prometheus.persistence.storageClass":       pulumi.Any("default"),
-//						"prometheus.persistent.useReleaseName":      pulumi.Any("true"),
-//						"prometheus.resources.core.limits.cpu":      pulumi.Any("1000m"),
-//						"prometheus.resources.core.limits.memory":   pulumi.Any("1500Mi"),
-//						"prometheus.resources.core.requests.cpu":    pulumi.Any("750m"),
-//						"prometheus.resources.core.requests.memory": pulumi.Any("750Mi"),
-//						"prometheus.retention":                      pulumi.Any("12h"),
+//					Answers: pulumi.StringMap{
+//						"exporter-kubelets.https":                   pulumi.String("true"),
+//						"exporter-node.enabled":                     pulumi.String("true"),
+//						"exporter-node.ports.metrics.port":          pulumi.String("9796"),
+//						"exporter-node.resources.limits.cpu":        pulumi.String("200m"),
+//						"exporter-node.resources.limits.memory":     pulumi.String("200Mi"),
+//						"grafana.persistence.enabled":               pulumi.String("false"),
+//						"grafana.persistence.size":                  pulumi.String("10Gi"),
+//						"grafana.persistence.storageClass":          pulumi.String("default"),
+//						"operator.resources.limits.memory":          pulumi.String("500Mi"),
+//						"prometheus.persistence.enabled":            pulumi.String("false"),
+//						"prometheus.persistence.size":               pulumi.String("50Gi"),
+//						"prometheus.persistence.storageClass":       pulumi.String("default"),
+//						"prometheus.persistent.useReleaseName":      pulumi.String("true"),
+//						"prometheus.resources.core.limits.cpu":      pulumi.String("1000m"),
+//						"prometheus.resources.core.limits.memory":   pulumi.String("1500Mi"),
+//						"prometheus.resources.core.requests.cpu":    pulumi.String("750m"),
+//						"prometheus.resources.core.requests.memory": pulumi.String("750Mi"),
+//						"prometheus.retention":                      pulumi.String("12h"),
 //					},
 //					Version: pulumi.String("0.1.0"),
 //				},
@@ -183,46 +183,46 @@ import (
 //				TemplateName:    pulumi.String("rancher-istio"),
 //				TemplateVersion: pulumi.String("0.1.1"),
 //				TargetNamespace: foo_istio.ID(),
-//				Answers: pulumi.Map{
-//					"certmanager.enabled": pulumi.Any(false),
-//					"enableCRDs":          pulumi.Any(true),
-//					"galley.enabled":      pulumi.Any(true),
-//					"gateways.enabled":    pulumi.Any(false),
-//					"gateways.istio-ingressgateway.resources.limits.cpu":      pulumi.Any("2000m"),
-//					"gateways.istio-ingressgateway.resources.limits.memory":   pulumi.Any("1024Mi"),
-//					"gateways.istio-ingressgateway.resources.requests.cpu":    pulumi.Any("100m"),
-//					"gateways.istio-ingressgateway.resources.requests.memory": pulumi.Any("128Mi"),
-//					"gateways.istio-ingressgateway.type":                      pulumi.Any("NodePort"),
-//					"global.monitoring.type":                                  pulumi.Any("cluster-monitoring"),
+//				Answers: pulumi.StringMap{
+//					"certmanager.enabled": pulumi.String("false"),
+//					"enableCRDs":          pulumi.String("true"),
+//					"galley.enabled":      pulumi.String("true"),
+//					"gateways.enabled":    pulumi.String("false"),
+//					"gateways.istio-ingressgateway.resources.limits.cpu":      pulumi.String("2000m"),
+//					"gateways.istio-ingressgateway.resources.limits.memory":   pulumi.String("1024Mi"),
+//					"gateways.istio-ingressgateway.resources.requests.cpu":    pulumi.String("100m"),
+//					"gateways.istio-ingressgateway.resources.requests.memory": pulumi.String("128Mi"),
+//					"gateways.istio-ingressgateway.type":                      pulumi.String("NodePort"),
+//					"global.monitoring.type":                                  pulumi.String("cluster-monitoring"),
 //					"global.rancher.clusterId":                                foo_customClusterSync.ClusterId,
-//					"istio_cni.enabled":                                       pulumi.Any("false"),
-//					"istiocoredns.enabled":                                    pulumi.Any("false"),
-//					"kiali.enabled":                                           pulumi.Any("true"),
-//					"mixer.enabled":                                           pulumi.Any("true"),
-//					"mixer.policy.enabled":                                    pulumi.Any("true"),
-//					"mixer.policy.resources.limits.cpu":                       pulumi.Any("4800m"),
-//					"mixer.policy.resources.limits.memory":                    pulumi.Any("4096Mi"),
-//					"mixer.policy.resources.requests.cpu":                     pulumi.Any("1000m"),
-//					"mixer.policy.resources.requests.memory":                  pulumi.Any("1024Mi"),
-//					"mixer.telemetry.resources.limits.cpu":                    pulumi.Any("4800m"),
-//					"mixer.telemetry.resources.limits.memory":                 pulumi.Any("4096Mi"),
-//					"mixer.telemetry.resources.requests.cpu":                  pulumi.Any("1000m"),
-//					"mixer.telemetry.resources.requests.memory":               pulumi.Any("1024Mi"),
-//					"mtls.enabled":                                            pulumi.Any(false),
-//					"nodeagent.enabled":                                       pulumi.Any(false),
-//					"pilot.enabled":                                           pulumi.Any(true),
-//					"pilot.resources.limits.cpu":                              pulumi.Any("1000m"),
-//					"pilot.resources.limits.memory":                           pulumi.Any("4096Mi"),
-//					"pilot.resources.requests.cpu":                            pulumi.Any("500m"),
-//					"pilot.resources.requests.memory":                         pulumi.Any("2048Mi"),
-//					"pilot.traceSampling":                                     pulumi.Any("1"),
-//					"security.enabled":                                        pulumi.Any(true),
-//					"sidecarInjectorWebhook.enabled":                          pulumi.Any(true),
-//					"tracing.enabled":                                         pulumi.Any(true),
-//					"tracing.jaeger.resources.limits.cpu":                     pulumi.Any("500m"),
-//					"tracing.jaeger.resources.limits.memory":                  pulumi.Any("1024Mi"),
-//					"tracing.jaeger.resources.requests.cpu":                   pulumi.Any("100m"),
-//					"tracing.jaeger.resources.requests.memory":                pulumi.Any("100Mi"),
+//					"istio_cni.enabled":                                       pulumi.String("false"),
+//					"istiocoredns.enabled":                                    pulumi.String("false"),
+//					"kiali.enabled":                                           pulumi.String("true"),
+//					"mixer.enabled":                                           pulumi.String("true"),
+//					"mixer.policy.enabled":                                    pulumi.String("true"),
+//					"mixer.policy.resources.limits.cpu":                       pulumi.String("4800m"),
+//					"mixer.policy.resources.limits.memory":                    pulumi.String("4096Mi"),
+//					"mixer.policy.resources.requests.cpu":                     pulumi.String("1000m"),
+//					"mixer.policy.resources.requests.memory":                  pulumi.String("1024Mi"),
+//					"mixer.telemetry.resources.limits.cpu":                    pulumi.String("4800m"),
+//					"mixer.telemetry.resources.limits.memory":                 pulumi.String("4096Mi"),
+//					"mixer.telemetry.resources.requests.cpu":                  pulumi.String("1000m"),
+//					"mixer.telemetry.resources.requests.memory":               pulumi.String("1024Mi"),
+//					"mtls.enabled":                                            pulumi.String("false"),
+//					"nodeagent.enabled":                                       pulumi.String("false"),
+//					"pilot.enabled":                                           pulumi.String("true"),
+//					"pilot.resources.limits.cpu":                              pulumi.String("1000m"),
+//					"pilot.resources.limits.memory":                           pulumi.String("4096Mi"),
+//					"pilot.resources.requests.cpu":                            pulumi.String("500m"),
+//					"pilot.resources.requests.memory":                         pulumi.String("2048Mi"),
+//					"pilot.traceSampling":                                     pulumi.String("1"),
+//					"security.enabled":                                        pulumi.String("true"),
+//					"sidecarInjectorWebhook.enabled":                          pulumi.String("true"),
+//					"tracing.enabled":                                         pulumi.String("true"),
+//					"tracing.jaeger.resources.limits.cpu":                     pulumi.String("500m"),
+//					"tracing.jaeger.resources.limits.memory":                  pulumi.String("1024Mi"),
+//					"tracing.jaeger.resources.requests.cpu":                   pulumi.String("100m"),
+//					"tracing.jaeger.resources.requests.memory":                pulumi.String("100Mi"),
 //				},
 //			})
 //			if err != nil {
@@ -804,9 +804,9 @@ import (
 //							OsDiskSizeGb:        pulumi.Int(128),
 //							VmSize:              pulumi.String("Standard_DS2_v2"),
 //							MaxSurge:            pulumi.String("25%"),
-//							Labels: pulumi.Map{
-//								"test1": pulumi.Any("data1"),
-//								"test2": pulumi.Any("data2"),
+//							Labels: pulumi.StringMap{
+//								"test1": pulumi.String("data1"),
+//								"test2": pulumi.String("data2"),
 //							},
 //							Taints: pulumi.StringArray{
 //								pulumi.String("none:PreferNoSchedule"),
@@ -841,7 +841,7 @@ type Cluster struct {
 	// The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
 	AksConfigV2 ClusterAksConfigV2PtrOutput `pulumi:"aksConfigV2"`
 	// Annotations for the Cluster (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// (Computed/Sensitive) K8s cluster ca cert (string)
 	CaCert pulumi.StringOutput `pulumi:"caCert"`
 	// Optional customization for cluster agent. For Rancher v2.7.5 and above (list)
@@ -905,7 +905,7 @@ type Cluster struct {
 	// (Computed/Sensitive) Kube Config generated for the cluster. Note: For Rancher 2.6.0 and above, when the cluster has `clusterAuthEndpoint` enabled, the kubeConfig will not be available until the cluster is `connected` (string)
 	KubeConfig pulumi.StringOutput `pulumi:"kubeConfig"`
 	// Labels for the Cluster (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the Cluster (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
@@ -962,7 +962,7 @@ type clusterState struct {
 	// The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
 	AksConfigV2 *ClusterAksConfigV2 `pulumi:"aksConfigV2"`
 	// Annotations for the Cluster (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// (Computed/Sensitive) K8s cluster ca cert (string)
 	CaCert *string `pulumi:"caCert"`
 	// Optional customization for cluster agent. For Rancher v2.7.5 and above (list)
@@ -1026,7 +1026,7 @@ type clusterState struct {
 	// (Computed/Sensitive) Kube Config generated for the cluster. Note: For Rancher 2.6.0 and above, when the cluster has `clusterAuthEndpoint` enabled, the kubeConfig will not be available until the cluster is `connected` (string)
 	KubeConfig *string `pulumi:"kubeConfig"`
 	// Labels for the Cluster (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The name of the Cluster (string)
 	Name *string `pulumi:"name"`
 	// The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
@@ -1049,7 +1049,7 @@ type ClusterState struct {
 	// The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
 	AksConfigV2 ClusterAksConfigV2PtrInput
 	// Annotations for the Cluster (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// (Computed/Sensitive) K8s cluster ca cert (string)
 	CaCert pulumi.StringPtrInput
 	// Optional customization for cluster agent. For Rancher v2.7.5 and above (list)
@@ -1113,7 +1113,7 @@ type ClusterState struct {
 	// (Computed/Sensitive) Kube Config generated for the cluster. Note: For Rancher 2.6.0 and above, when the cluster has `clusterAuthEndpoint` enabled, the kubeConfig will not be available until the cluster is `connected` (string)
 	KubeConfig pulumi.StringPtrInput
 	// Labels for the Cluster (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The name of the Cluster (string)
 	Name pulumi.StringPtrInput
 	// The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
@@ -1140,7 +1140,7 @@ type clusterArgs struct {
 	// The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
 	AksConfigV2 *ClusterAksConfigV2 `pulumi:"aksConfigV2"`
 	// Annotations for the Cluster (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// Optional customization for cluster agent. For Rancher v2.7.5 and above (list)
 	ClusterAgentDeploymentCustomizations []ClusterClusterAgentDeploymentCustomization `pulumi:"clusterAgentDeploymentCustomizations"`
 	// Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
@@ -1190,7 +1190,7 @@ type clusterArgs struct {
 	// The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `rkeConfig` (list maxitems:1)
 	K3sConfig *ClusterK3sConfig `pulumi:"k3sConfig"`
 	// Labels for the Cluster (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The name of the Cluster (string)
 	Name *string `pulumi:"name"`
 	// The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
@@ -1212,7 +1212,7 @@ type ClusterArgs struct {
 	// The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
 	AksConfigV2 ClusterAksConfigV2PtrInput
 	// Annotations for the Cluster (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// Optional customization for cluster agent. For Rancher v2.7.5 and above (list)
 	ClusterAgentDeploymentCustomizations ClusterClusterAgentDeploymentCustomizationArrayInput
 	// Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
@@ -1262,7 +1262,7 @@ type ClusterArgs struct {
 	// The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `rkeConfig` (list maxitems:1)
 	K3sConfig ClusterK3sConfigPtrInput
 	// Labels for the Cluster (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The name of the Cluster (string)
 	Name pulumi.StringPtrInput
 	// The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
@@ -1378,8 +1378,8 @@ func (o ClusterOutput) AksConfigV2() ClusterAksConfigV2PtrOutput {
 }
 
 // Annotations for the Cluster (map)
-func (o ClusterOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *Cluster) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o ClusterOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // (Computed/Sensitive) K8s cluster ca cert (string)
@@ -1539,8 +1539,8 @@ func (o ClusterOutput) KubeConfig() pulumi.StringOutput {
 }
 
 // Labels for the Cluster (map)
-func (o ClusterOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *Cluster) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o ClusterOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The name of the Cluster (string)

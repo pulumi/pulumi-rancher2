@@ -51,7 +51,7 @@ export interface GetEtcdBackupResult {
     /**
      * (Computed) Annotations for Etcd Backup object (map)
      */
-    readonly annotations: {[key: string]: any};
+    readonly annotations: {[key: string]: string};
     /**
      * (Computed) Backup config for etcd backup (list maxitems:1)
      */
@@ -68,7 +68,7 @@ export interface GetEtcdBackupResult {
     /**
      * (Computed) Labels for Etcd Backup object (map)
      */
-    readonly labels: {[key: string]: any};
+    readonly labels: {[key: string]: string};
     /**
      * (Computed) Manual execution of the Etcd Backup. Default `false` (bool)
      */

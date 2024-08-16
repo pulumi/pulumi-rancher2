@@ -68,7 +68,7 @@ class GetProjectAlertRuleResult:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> Mapping[str, str]:
         """
         (Computed) The project alert rule annotations (map)
         """
@@ -116,7 +116,7 @@ class GetProjectAlertRuleResult:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, Any]]:
+    def labels(self) -> Optional[Mapping[str, str]]:
         """
         (Computed) The project alert rule labels (map)
         """
@@ -195,7 +195,7 @@ class AwaitableGetProjectAlertRuleResult(GetProjectAlertRuleResult):
             workload_rule=self.workload_rule)
 
 
-def get_project_alert_rule(labels: Optional[Mapping[str, Any]] = None,
+def get_project_alert_rule(labels: Optional[Mapping[str, str]] = None,
                            name: Optional[str] = None,
                            project_id: Optional[str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectAlertRuleResult:
@@ -213,7 +213,7 @@ def get_project_alert_rule(labels: Optional[Mapping[str, Any]] = None,
     ```
 
 
-    :param Mapping[str, Any] labels: (Computed) The project alert rule labels (map)
+    :param Mapping[str, str] labels: (Computed) The project alert rule labels (map)
     :param str name: The project alert rule name (string)
     :param str project_id: The project id where create project alert rule (string)
     """
@@ -242,7 +242,7 @@ def get_project_alert_rule(labels: Optional[Mapping[str, Any]] = None,
 
 
 @_utilities.lift_output_func(get_project_alert_rule)
-def get_project_alert_rule_output(labels: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+def get_project_alert_rule_output(labels: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                   name: Optional[pulumi.Input[str]] = None,
                                   project_id: Optional[pulumi.Input[str]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectAlertRuleResult]:
@@ -260,7 +260,7 @@ def get_project_alert_rule_output(labels: Optional[pulumi.Input[Optional[Mapping
     ```
 
 
-    :param Mapping[str, Any] labels: (Computed) The project alert rule labels (map)
+    :param Mapping[str, str] labels: (Computed) The project alert rule labels (map)
     :param str name: The project alert rule name (string)
     :param str project_id: The project id where create project alert rule (string)
     """

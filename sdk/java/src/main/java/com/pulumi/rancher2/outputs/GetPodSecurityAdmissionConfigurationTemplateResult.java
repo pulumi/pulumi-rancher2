@@ -7,14 +7,13 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetPodSecurityAdmissionConfigurationTemplateDefaults;
 import com.pulumi.rancher2.outputs.GetPodSecurityAdmissionConfigurationTemplateExemptions;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
 
 @CustomType
 public final class GetPodSecurityAdmissionConfigurationTemplateResult {
-    private Map<String,Object> annotations;
+    private Map<String,String> annotations;
     private GetPodSecurityAdmissionConfigurationTemplateDefaults defaults;
     private String description;
     private GetPodSecurityAdmissionConfigurationTemplateExemptions exemptions;
@@ -23,11 +22,11 @@ public final class GetPodSecurityAdmissionConfigurationTemplateResult {
      * 
      */
     private String id;
-    private Map<String,Object> labels;
+    private Map<String,String> labels;
     private String name;
 
     private GetPodSecurityAdmissionConfigurationTemplateResult() {}
-    public Map<String,Object> annotations() {
+    public Map<String,String> annotations() {
         return this.annotations;
     }
     public GetPodSecurityAdmissionConfigurationTemplateDefaults defaults() {
@@ -46,7 +45,7 @@ public final class GetPodSecurityAdmissionConfigurationTemplateResult {
     public String id() {
         return this.id;
     }
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels;
     }
     public String name() {
@@ -62,12 +61,12 @@ public final class GetPodSecurityAdmissionConfigurationTemplateResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Map<String,Object> annotations;
+        private Map<String,String> annotations;
         private GetPodSecurityAdmissionConfigurationTemplateDefaults defaults;
         private String description;
         private GetPodSecurityAdmissionConfigurationTemplateExemptions exemptions;
         private String id;
-        private Map<String,Object> labels;
+        private Map<String,String> labels;
         private String name;
         public Builder() {}
         public Builder(GetPodSecurityAdmissionConfigurationTemplateResult defaults) {
@@ -82,7 +81,7 @@ public final class GetPodSecurityAdmissionConfigurationTemplateResult {
         }
 
         @CustomType.Setter
-        public Builder annotations(Map<String,Object> annotations) {
+        public Builder annotations(Map<String,String> annotations) {
             if (annotations == null) {
               throw new MissingRequiredPropertyException("GetPodSecurityAdmissionConfigurationTemplateResult", "annotations");
             }
@@ -122,7 +121,7 @@ public final class GetPodSecurityAdmissionConfigurationTemplateResult {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(Map<String,Object> labels) {
+        public Builder labels(Map<String,String> labels) {
             if (labels == null) {
               throw new MissingRequiredPropertyException("GetPodSecurityAdmissionConfigurationTemplateResult", "labels");
             }

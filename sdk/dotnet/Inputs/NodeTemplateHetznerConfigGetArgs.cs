@@ -41,14 +41,14 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? Networks { get; set; }
 
         [Input("serverLabels")]
-        private InputMap<object>? _serverLabels;
+        private InputMap<string>? _serverLabels;
 
         /// <summary>
         /// Map of the labels which will be assigned to the server
         /// </summary>
-        public InputMap<object> ServerLabels
+        public InputMap<string> ServerLabels
         {
-            get => _serverLabels ?? (_serverLabels = new InputMap<object>());
+            get => _serverLabels ?? (_serverLabels = new InputMap<string>());
             set => _serverLabels = value;
         }
 

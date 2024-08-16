@@ -94,16 +94,16 @@ type LookupRegistryArgs struct {
 // A collection of values returned by getRegistry.
 type LookupRegistryResult struct {
 	// (Computed) Annotations for Registry object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// (Computed) A registry description (string)
 	Description string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels for Registry object (map)
-	Labels      map[string]interface{} `pulumi:"labels"`
-	Name        string                 `pulumi:"name"`
-	NamespaceId *string                `pulumi:"namespaceId"`
-	ProjectId   string                 `pulumi:"projectId"`
+	Labels      map[string]string `pulumi:"labels"`
+	Name        string            `pulumi:"name"`
+	NamespaceId *string           `pulumi:"namespaceId"`
+	ProjectId   string            `pulumi:"projectId"`
 	// (Computed) Registries data for registry (list)
 	Registries []GetRegistryRegistry `pulumi:"registries"`
 }
@@ -151,8 +151,8 @@ func (o LookupRegistryResultOutput) ToLookupRegistryResultOutputWithContext(ctx 
 }
 
 // (Computed) Annotations for Registry object (map)
-func (o LookupRegistryResultOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupRegistryResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+func (o LookupRegistryResultOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupRegistryResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // (Computed) A registry description (string)
@@ -166,8 +166,8 @@ func (o LookupRegistryResultOutput) Id() pulumi.StringOutput {
 }
 
 // (Computed) Labels for Registry object (map)
-func (o LookupRegistryResultOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupRegistryResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+func (o LookupRegistryResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupRegistryResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupRegistryResultOutput) Name() pulumi.StringOutput {

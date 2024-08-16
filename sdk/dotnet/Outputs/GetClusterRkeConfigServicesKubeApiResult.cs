@@ -20,7 +20,7 @@ namespace Pulumi.Rancher2.Outputs
         public readonly bool? AlwaysPullImages;
         public readonly Outputs.GetClusterRkeConfigServicesKubeApiAuditLogResult? AuditLog;
         public readonly Outputs.GetClusterRkeConfigServicesKubeApiEventRateLimitResult? EventRateLimit;
-        public readonly ImmutableDictionary<string, object> ExtraArgs;
+        public readonly ImmutableDictionary<string, string> ExtraArgs;
         public readonly ImmutableArray<string> ExtraBinds;
         public readonly ImmutableArray<string> ExtraEnvs;
         public readonly string Image;
@@ -39,7 +39,7 @@ namespace Pulumi.Rancher2.Outputs
 
             Outputs.GetClusterRkeConfigServicesKubeApiEventRateLimitResult? eventRateLimit,
 
-            ImmutableDictionary<string, object> extraArgs,
+            ImmutableDictionary<string, string> extraArgs,
 
             ImmutableArray<string> extraBinds,
 

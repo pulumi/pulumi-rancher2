@@ -39,7 +39,7 @@ export interface GetProjectResult {
     /**
      * (Computed) Annotations of the rancher2 project (map)
      */
-    readonly annotations: {[key: string]: any};
+    readonly annotations: {[key: string]: string};
     readonly clusterId: string;
     /**
      * (Computed) Default containers resource limits on project (List maxitem:1)
@@ -60,7 +60,7 @@ export interface GetProjectResult {
     /**
      * (Computed) Labels of the rancher2 project (map)
      */
-    readonly labels: {[key: string]: any};
+    readonly labels: {[key: string]: string};
     readonly name: string;
     /**
      * (Computed) Default Pod Security Policy ID for the project (string)

@@ -5,7 +5,6 @@ package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -28,7 +27,7 @@ public final class GetClusterV2RkeConfigRegistriesMirror {
      * @return Registry mirror rewrites
      * 
      */
-    private @Nullable Map<String,Object> rewrites;
+    private @Nullable Map<String,String> rewrites;
 
     private GetClusterV2RkeConfigRegistriesMirror() {}
     /**
@@ -49,7 +48,7 @@ public final class GetClusterV2RkeConfigRegistriesMirror {
      * @return Registry mirror rewrites
      * 
      */
-    public Map<String,Object> rewrites() {
+    public Map<String,String> rewrites() {
         return this.rewrites == null ? Map.of() : this.rewrites;
     }
 
@@ -64,7 +63,7 @@ public final class GetClusterV2RkeConfigRegistriesMirror {
     public static final class Builder {
         private @Nullable List<String> endpoints;
         private String hostname;
-        private @Nullable Map<String,Object> rewrites;
+        private @Nullable Map<String,String> rewrites;
         public Builder() {}
         public Builder(GetClusterV2RkeConfigRegistriesMirror defaults) {
     	      Objects.requireNonNull(defaults);
@@ -91,7 +90,7 @@ public final class GetClusterV2RkeConfigRegistriesMirror {
             return this;
         }
         @CustomType.Setter
-        public Builder rewrites(@Nullable Map<String,Object> rewrites) {
+        public Builder rewrites(@Nullable Map<String,String> rewrites) {
 
             this.rewrites = rewrites;
             return this;

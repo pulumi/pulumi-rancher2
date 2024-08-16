@@ -12,7 +12,6 @@ import com.pulumi.rancher2.inputs.ClusterAlertRuleNodeRuleArgs;
 import com.pulumi.rancher2.inputs.ClusterAlertRuleSystemServiceRuleArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -29,13 +28,13 @@ public final class ClusterAlertRuleArgs extends com.pulumi.resources.ResourceArg
      * 
      */
     @Import(name="annotations")
-    private @Nullable Output<Map<String,Object>> annotations;
+    private @Nullable Output<Map<String,String>> annotations;
 
     /**
      * @return The cluster alert rule annotations (map)
      * 
      */
-    public Optional<Output<Map<String,Object>>> annotations() {
+    public Optional<Output<Map<String,String>>> annotations() {
         return Optional.ofNullable(this.annotations);
     }
 
@@ -134,13 +133,13 @@ public final class ClusterAlertRuleArgs extends com.pulumi.resources.ResourceArg
      * 
      */
     @Import(name="labels")
-    private @Nullable Output<Map<String,Object>> labels;
+    private @Nullable Output<Map<String,String>> labels;
 
     /**
      * @return The cluster alert rule labels (map)
      * 
      */
-    public Optional<Output<Map<String,Object>>> labels() {
+    public Optional<Output<Map<String,String>>> labels() {
         return Optional.ofNullable(this.labels);
     }
 
@@ -277,7 +276,7 @@ public final class ClusterAlertRuleArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder annotations(@Nullable Output<Map<String,Object>> annotations) {
+        public Builder annotations(@Nullable Output<Map<String,String>> annotations) {
             $.annotations = annotations;
             return this;
         }
@@ -288,7 +287,7 @@ public final class ClusterAlertRuleArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder annotations(Map<String,Object> annotations) {
+        public Builder annotations(Map<String,String> annotations) {
             return annotations(Output.of(annotations));
         }
 
@@ -424,7 +423,7 @@ public final class ClusterAlertRuleArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder labels(@Nullable Output<Map<String,Object>> labels) {
+        public Builder labels(@Nullable Output<Map<String,String>> labels) {
             $.labels = labels;
             return this;
         }
@@ -435,7 +434,7 @@ public final class ClusterAlertRuleArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder labels(Map<String,Object> labels) {
+        public Builder labels(Map<String,String> labels) {
             return labels(Output.of(labels));
         }
 

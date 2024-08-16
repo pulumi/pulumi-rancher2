@@ -136,7 +136,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Annotations for role template object (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Annotations;
+        public readonly ImmutableDictionary<string, string> Annotations;
         /// <summary>
         /// (Computed) Builtin role template (string)
         /// </summary>
@@ -169,7 +169,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Labels for role template object (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Labels;
+        public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
         /// (Computed) Locked role template (bool)
         /// </summary>
@@ -188,7 +188,7 @@ namespace Pulumi.Rancher2
         private GetRoleTemplateResult(
             bool administrative,
 
-            ImmutableDictionary<string, object> annotations,
+            ImmutableDictionary<string, string> annotations,
 
             bool builtin,
 
@@ -206,7 +206,7 @@ namespace Pulumi.Rancher2
 
             string id,
 
-            ImmutableDictionary<string, object> labels,
+            ImmutableDictionary<string, string> labels,
 
             bool locked,
 

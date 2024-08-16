@@ -14,14 +14,14 @@ __all__ = ['FeatureArgs', 'Feature']
 @pulumi.input_type
 class FeatureArgs:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Feature resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for feature object (map)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for feature object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for feature object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for feature object (map)
         :param pulumi.Input[str] name: The name of the feature (string)
         :param pulumi.Input[bool] value: The value of the feature. Default: `false` (bool)
         """
@@ -36,26 +36,26 @@ class FeatureArgs:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations for feature object (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for feature object (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -86,14 +86,14 @@ class FeatureArgs:
 @pulumi.input_type
 class _FeatureState:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Feature resources.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for feature object (map)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for feature object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for feature object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for feature object (map)
         :param pulumi.Input[str] name: The name of the feature (string)
         :param pulumi.Input[bool] value: The value of the feature. Default: `false` (bool)
         """
@@ -108,26 +108,26 @@ class _FeatureState:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations for feature object (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for feature object (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -160,8 +160,8 @@ class Feature(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -188,8 +188,8 @@ class Feature(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for feature object (map)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for feature object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for feature object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for feature object (map)
         :param pulumi.Input[str] name: The name of the feature (string)
         :param pulumi.Input[bool] value: The value of the feature. Default: `false` (bool)
         """
@@ -235,8 +235,8 @@ class Feature(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -262,8 +262,8 @@ class Feature(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             value: Optional[pulumi.Input[bool]] = None) -> 'Feature':
         """
@@ -273,8 +273,8 @@ class Feature(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for feature object (map)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for feature object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for feature object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for feature object (map)
         :param pulumi.Input[str] name: The name of the feature (string)
         :param pulumi.Input[bool] value: The value of the feature. Default: `false` (bool)
         """
@@ -290,7 +290,7 @@ class Feature(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
+    def annotations(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Annotations for feature object (map)
         """
@@ -298,7 +298,7 @@ class Feature(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Labels for feature object (map)
         """

@@ -5,7 +5,6 @@ package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -38,7 +37,7 @@ public final class GetClusterAlertRuleNodeRule {
      * @return Node rule selector
      * 
      */
-    private @Nullable Map<String,Object> selector;
+    private @Nullable Map<String,String> selector;
 
     private GetClusterAlertRuleNodeRule() {}
     /**
@@ -73,7 +72,7 @@ public final class GetClusterAlertRuleNodeRule {
      * @return Node rule selector
      * 
      */
-    public Map<String,Object> selector() {
+    public Map<String,String> selector() {
         return this.selector == null ? Map.of() : this.selector;
     }
 
@@ -90,7 +89,7 @@ public final class GetClusterAlertRuleNodeRule {
         private @Nullable Integer cpuThreshold;
         private @Nullable Integer memThreshold;
         private @Nullable String nodeId;
-        private @Nullable Map<String,Object> selector;
+        private @Nullable Map<String,String> selector;
         public Builder() {}
         public Builder(GetClusterAlertRuleNodeRule defaults) {
     	      Objects.requireNonNull(defaults);
@@ -126,7 +125,7 @@ public final class GetClusterAlertRuleNodeRule {
             return this;
         }
         @CustomType.Setter
-        public Builder selector(@Nullable Map<String,Object> selector) {
+        public Builder selector(@Nullable Map<String,String> selector) {
 
             this.selector = selector;
             return this;

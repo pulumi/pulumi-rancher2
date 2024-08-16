@@ -152,7 +152,7 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// Tags for Kubernetes cluster. For example, foo=bar
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Tag;
+        public readonly ImmutableDictionary<string, string>? Tag;
         /// <summary>
         /// Tags for Kubernetes cluster. For example, `["foo=bar","bar=foo"]`
         /// </summary>
@@ -240,7 +240,7 @@ namespace Pulumi.Rancher2.Outputs
 
             string subscriptionId,
 
-            ImmutableDictionary<string, object>? tag,
+            ImmutableDictionary<string, string>? tag,
 
             ImmutableArray<string> tags,
 

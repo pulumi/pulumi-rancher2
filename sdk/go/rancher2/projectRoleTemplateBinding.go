@@ -55,7 +55,7 @@ type ProjectRoleTemplateBinding struct {
 	pulumi.CustomResourceState
 
 	// Annotations of the resource (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// The group ID to assign project role template binding (string)
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
 	// The groupPrincipal ID to assign project role template binding (string)
@@ -63,7 +63,7 @@ type ProjectRoleTemplateBinding struct {
 	// Labels of the resource (map)
 	//
 	// **Note:** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the project role template binding (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project id where bind project role template, in format `cluster_id:project_id`, e.g. `c-abc12:p-def34` (string)
@@ -113,7 +113,7 @@ func GetProjectRoleTemplateBinding(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ProjectRoleTemplateBinding resources.
 type projectRoleTemplateBindingState struct {
 	// Annotations of the resource (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// The group ID to assign project role template binding (string)
 	GroupId *string `pulumi:"groupId"`
 	// The groupPrincipal ID to assign project role template binding (string)
@@ -121,7 +121,7 @@ type projectRoleTemplateBindingState struct {
 	// Labels of the resource (map)
 	//
 	// **Note:** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The name of the project role template binding (string)
 	Name *string `pulumi:"name"`
 	// The project id where bind project role template, in format `cluster_id:project_id`, e.g. `c-abc12:p-def34` (string)
@@ -136,7 +136,7 @@ type projectRoleTemplateBindingState struct {
 
 type ProjectRoleTemplateBindingState struct {
 	// Annotations of the resource (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// The group ID to assign project role template binding (string)
 	GroupId pulumi.StringPtrInput
 	// The groupPrincipal ID to assign project role template binding (string)
@@ -144,7 +144,7 @@ type ProjectRoleTemplateBindingState struct {
 	// Labels of the resource (map)
 	//
 	// **Note:** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The name of the project role template binding (string)
 	Name pulumi.StringPtrInput
 	// The project id where bind project role template, in format `cluster_id:project_id`, e.g. `c-abc12:p-def34` (string)
@@ -163,7 +163,7 @@ func (ProjectRoleTemplateBindingState) ElementType() reflect.Type {
 
 type projectRoleTemplateBindingArgs struct {
 	// Annotations of the resource (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// The group ID to assign project role template binding (string)
 	GroupId *string `pulumi:"groupId"`
 	// The groupPrincipal ID to assign project role template binding (string)
@@ -171,7 +171,7 @@ type projectRoleTemplateBindingArgs struct {
 	// Labels of the resource (map)
 	//
 	// **Note:** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The name of the project role template binding (string)
 	Name *string `pulumi:"name"`
 	// The project id where bind project role template, in format `cluster_id:project_id`, e.g. `c-abc12:p-def34` (string)
@@ -187,7 +187,7 @@ type projectRoleTemplateBindingArgs struct {
 // The set of arguments for constructing a ProjectRoleTemplateBinding resource.
 type ProjectRoleTemplateBindingArgs struct {
 	// Annotations of the resource (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// The group ID to assign project role template binding (string)
 	GroupId pulumi.StringPtrInput
 	// The groupPrincipal ID to assign project role template binding (string)
@@ -195,7 +195,7 @@ type ProjectRoleTemplateBindingArgs struct {
 	// Labels of the resource (map)
 	//
 	// **Note:** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The name of the project role template binding (string)
 	Name pulumi.StringPtrInput
 	// The project id where bind project role template, in format `cluster_id:project_id`, e.g. `c-abc12:p-def34` (string)
@@ -296,8 +296,8 @@ func (o ProjectRoleTemplateBindingOutput) ToProjectRoleTemplateBindingOutputWith
 }
 
 // Annotations of the resource (map)
-func (o ProjectRoleTemplateBindingOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *ProjectRoleTemplateBinding) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o ProjectRoleTemplateBindingOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ProjectRoleTemplateBinding) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // The group ID to assign project role template binding (string)
@@ -313,8 +313,8 @@ func (o ProjectRoleTemplateBindingOutput) GroupPrincipalId() pulumi.StringOutput
 // Labels of the resource (map)
 //
 // **Note:** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
-func (o ProjectRoleTemplateBindingOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *ProjectRoleTemplateBinding) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o ProjectRoleTemplateBindingOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ProjectRoleTemplateBinding) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The name of the project role template binding (string)

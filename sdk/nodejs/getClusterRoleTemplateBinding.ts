@@ -54,7 +54,7 @@ export interface GetClusterRoleTemplateBindingResult {
     /**
      * (Computed) Annotations of the resource (map)
      */
-    readonly annotations: {[key: string]: any};
+    readonly annotations: {[key: string]: string};
     readonly clusterId: string;
     /**
      * (Computed) The group ID to assign cluster role template binding (string)
@@ -71,7 +71,7 @@ export interface GetClusterRoleTemplateBindingResult {
     /**
      * (Computed) Labels of the resource (map)
      */
-    readonly labels: {[key: string]: any};
+    readonly labels: {[key: string]: string};
     readonly name: string;
     readonly roleTemplateId: string;
     /**

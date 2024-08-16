@@ -99,7 +99,7 @@ export class GlobalDns extends pulumi.CustomResource {
     /**
      * Annotations for Global DNS (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: any}>;
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * The Global DNS record (string)
      */
@@ -107,7 +107,7 @@ export class GlobalDns extends pulumi.CustomResource {
     /**
      * Labels for Global DNS (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The MultiCluster App ID to assign to the Global DNS. Conflicts with `projectIds` (string)
      */
@@ -179,7 +179,7 @@ export interface GlobalDnsState {
     /**
      * Annotations for Global DNS (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The Global DNS record (string)
      */
@@ -187,7 +187,7 @@ export interface GlobalDnsState {
     /**
      * Labels for Global DNS (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The MultiCluster App ID to assign to the Global DNS. Conflicts with `projectIds` (string)
      */
@@ -217,7 +217,7 @@ export interface GlobalDnsArgs {
     /**
      * Annotations for Global DNS (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The Global DNS record (string)
      */
@@ -225,7 +225,7 @@ export interface GlobalDnsArgs {
     /**
      * Labels for Global DNS (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The MultiCluster App ID to assign to the Global DNS. Conflicts with `projectIds` (string)
      */

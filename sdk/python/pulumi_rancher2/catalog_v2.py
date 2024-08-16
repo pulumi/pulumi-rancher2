@@ -15,13 +15,13 @@ __all__ = ['CatalogV2Args', 'CatalogV2']
 class CatalogV2Args:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[str],
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  ca_bundle: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  git_branch: Optional[pulumi.Input[str]] = None,
                  git_repo: Optional[pulumi.Input[str]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  secret_name: Optional[pulumi.Input[str]] = None,
                  secret_namespace: Optional[pulumi.Input[str]] = None,
@@ -31,13 +31,13 @@ class CatalogV2Args:
         """
         The set of arguments for constructing a CatalogV2 resource.
         :param pulumi.Input[str] cluster_id: The cluster id of the catalog V2 (string)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the catalog v2 (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for the catalog v2 (map)
         :param pulumi.Input[str] ca_bundle: CA certificate in base64-encoded DER format which will be used to validate the repo's certificate (string)
         :param pulumi.Input[bool] enabled: If disabled the repo clone will not be updated or allowed to be installed from. Default: `true` (bool)
         :param pulumi.Input[str] git_branch: Git Repository branch containing Helm chart definitions. Default `master` (string)
         :param pulumi.Input[str] git_repo: The url of the catalog v2 repo. Conflicts with `url` (string)
         :param pulumi.Input[bool] insecure: Use insecure HTTPS to download the repo's index. Default: `false` (bool)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for the catalog v2 (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the catalog v2 (map)
         :param pulumi.Input[str] name: The name of the catalog v2 (string)
         :param pulumi.Input[str] secret_name: K8s secret name to be used to connect to the repo (string)
         :param pulumi.Input[str] secret_namespace: K8s secret namespace (string)
@@ -87,14 +87,14 @@ class CatalogV2Args:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations for the catalog v2 (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -159,14 +159,14 @@ class CatalogV2Args:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for the catalog v2 (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -245,14 +245,14 @@ class CatalogV2Args:
 @pulumi.input_type
 class _CatalogV2State:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  ca_bundle: Optional[pulumi.Input[str]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  git_branch: Optional[pulumi.Input[str]] = None,
                  git_repo: Optional[pulumi.Input[str]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_version: Optional[pulumi.Input[str]] = None,
                  secret_name: Optional[pulumi.Input[str]] = None,
@@ -262,14 +262,14 @@ class _CatalogV2State:
                  url: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CatalogV2 resources.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the catalog v2 (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for the catalog v2 (map)
         :param pulumi.Input[str] ca_bundle: CA certificate in base64-encoded DER format which will be used to validate the repo's certificate (string)
         :param pulumi.Input[str] cluster_id: The cluster id of the catalog V2 (string)
         :param pulumi.Input[bool] enabled: If disabled the repo clone will not be updated or allowed to be installed from. Default: `true` (bool)
         :param pulumi.Input[str] git_branch: Git Repository branch containing Helm chart definitions. Default `master` (string)
         :param pulumi.Input[str] git_repo: The url of the catalog v2 repo. Conflicts with `url` (string)
         :param pulumi.Input[bool] insecure: Use insecure HTTPS to download the repo's index. Default: `false` (bool)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for the catalog v2 (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the catalog v2 (map)
         :param pulumi.Input[str] name: The name of the catalog v2 (string)
         :param pulumi.Input[str] resource_version: (Computed) The k8s resource version (string)
         :param pulumi.Input[str] secret_name: K8s secret name to be used to connect to the repo (string)
@@ -311,14 +311,14 @@ class _CatalogV2State:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations for the catalog v2 (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -395,14 +395,14 @@ class _CatalogV2State:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for the catalog v2 (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -495,14 +495,14 @@ class CatalogV2(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  ca_bundle: Optional[pulumi.Input[str]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  git_branch: Optional[pulumi.Input[str]] = None,
                  git_repo: Optional[pulumi.Input[str]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  secret_name: Optional[pulumi.Input[str]] = None,
                  secret_namespace: Optional[pulumi.Input[str]] = None,
@@ -523,14 +523,14 @@ class CatalogV2(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the catalog v2 (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for the catalog v2 (map)
         :param pulumi.Input[str] ca_bundle: CA certificate in base64-encoded DER format which will be used to validate the repo's certificate (string)
         :param pulumi.Input[str] cluster_id: The cluster id of the catalog V2 (string)
         :param pulumi.Input[bool] enabled: If disabled the repo clone will not be updated or allowed to be installed from. Default: `true` (bool)
         :param pulumi.Input[str] git_branch: Git Repository branch containing Helm chart definitions. Default `master` (string)
         :param pulumi.Input[str] git_repo: The url of the catalog v2 repo. Conflicts with `url` (string)
         :param pulumi.Input[bool] insecure: Use insecure HTTPS to download the repo's index. Default: `false` (bool)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for the catalog v2 (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the catalog v2 (map)
         :param pulumi.Input[str] name: The name of the catalog v2 (string)
         :param pulumi.Input[str] secret_name: K8s secret name to be used to connect to the repo (string)
         :param pulumi.Input[str] secret_namespace: K8s secret namespace (string)
@@ -570,14 +570,14 @@ class CatalogV2(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  ca_bundle: Optional[pulumi.Input[str]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  git_branch: Optional[pulumi.Input[str]] = None,
                  git_repo: Optional[pulumi.Input[str]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  secret_name: Optional[pulumi.Input[str]] = None,
                  secret_namespace: Optional[pulumi.Input[str]] = None,
@@ -620,14 +620,14 @@ class CatalogV2(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             ca_bundle: Optional[pulumi.Input[str]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             git_branch: Optional[pulumi.Input[str]] = None,
             git_repo: Optional[pulumi.Input[str]] = None,
             insecure: Optional[pulumi.Input[bool]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             resource_version: Optional[pulumi.Input[str]] = None,
             secret_name: Optional[pulumi.Input[str]] = None,
@@ -642,14 +642,14 @@ class CatalogV2(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the catalog v2 (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for the catalog v2 (map)
         :param pulumi.Input[str] ca_bundle: CA certificate in base64-encoded DER format which will be used to validate the repo's certificate (string)
         :param pulumi.Input[str] cluster_id: The cluster id of the catalog V2 (string)
         :param pulumi.Input[bool] enabled: If disabled the repo clone will not be updated or allowed to be installed from. Default: `true` (bool)
         :param pulumi.Input[str] git_branch: Git Repository branch containing Helm chart definitions. Default `master` (string)
         :param pulumi.Input[str] git_repo: The url of the catalog v2 repo. Conflicts with `url` (string)
         :param pulumi.Input[bool] insecure: Use insecure HTTPS to download the repo's index. Default: `false` (bool)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for the catalog v2 (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the catalog v2 (map)
         :param pulumi.Input[str] name: The name of the catalog v2 (string)
         :param pulumi.Input[str] resource_version: (Computed) The k8s resource version (string)
         :param pulumi.Input[str] secret_name: K8s secret name to be used to connect to the repo (string)
@@ -681,7 +681,7 @@ class CatalogV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
+    def annotations(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Annotations for the catalog v2 (map)
         """
@@ -737,7 +737,7 @@ class CatalogV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Labels for the catalog v2 (map)
         """

@@ -31,14 +31,14 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string> Hostname { get; set; } = null!;
 
         [Input("rewrites")]
-        private InputMap<object>? _rewrites;
+        private InputMap<string>? _rewrites;
 
         /// <summary>
         /// Registry mirror rewrites
         /// </summary>
-        public InputMap<object> Rewrites
+        public InputMap<string> Rewrites
         {
-            get => _rewrites ?? (_rewrites = new InputMap<object>());
+            get => _rewrites ?? (_rewrites = new InputMap<string>());
             set => _rewrites = value;
         }
 

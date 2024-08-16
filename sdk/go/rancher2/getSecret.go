@@ -94,18 +94,18 @@ type LookupSecretArgs struct {
 // A collection of values returned by getSecret.
 type LookupSecretResult struct {
 	// (Computed) Annotations for secret object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// (Computed) Secret key/value data. Base64 encoding required for values (map)
-	Data map[string]interface{} `pulumi:"data"`
+	Data map[string]string `pulumi:"data"`
 	// (Computed) A secret description (string)
 	Description string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels for secret object (map)
-	Labels      map[string]interface{} `pulumi:"labels"`
-	Name        string                 `pulumi:"name"`
-	NamespaceId *string                `pulumi:"namespaceId"`
-	ProjectId   string                 `pulumi:"projectId"`
+	Labels      map[string]string `pulumi:"labels"`
+	Name        string            `pulumi:"name"`
+	NamespaceId *string           `pulumi:"namespaceId"`
+	ProjectId   string            `pulumi:"projectId"`
 }
 
 func LookupSecretOutput(ctx *pulumi.Context, args LookupSecretOutputArgs, opts ...pulumi.InvokeOption) LookupSecretResultOutput {
@@ -151,13 +151,13 @@ func (o LookupSecretResultOutput) ToLookupSecretResultOutputWithContext(ctx cont
 }
 
 // (Computed) Annotations for secret object (map)
-func (o LookupSecretResultOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupSecretResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+func (o LookupSecretResultOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupSecretResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // (Computed) Secret key/value data. Base64 encoding required for values (map)
-func (o LookupSecretResultOutput) Data() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupSecretResult) map[string]interface{} { return v.Data }).(pulumi.MapOutput)
+func (o LookupSecretResultOutput) Data() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupSecretResult) map[string]string { return v.Data }).(pulumi.StringMapOutput)
 }
 
 // (Computed) A secret description (string)
@@ -171,8 +171,8 @@ func (o LookupSecretResultOutput) Id() pulumi.StringOutput {
 }
 
 // (Computed) Labels for secret object (map)
-func (o LookupSecretResultOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupSecretResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+func (o LookupSecretResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupSecretResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupSecretResultOutput) Name() pulumi.StringOutput {

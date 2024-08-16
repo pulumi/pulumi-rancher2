@@ -18,16 +18,16 @@ class GlobalDnsProviderArgs:
     def __init__(__self__, *,
                  root_domain: pulumi.Input[str],
                  alidns_config: Optional[pulumi.Input['GlobalDnsProviderAlidnsConfigArgs']] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  cloudflare_config: Optional[pulumi.Input['GlobalDnsProviderCloudflareConfigArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  route53_config: Optional[pulumi.Input['GlobalDnsProviderRoute53ConfigArgs']] = None):
         """
         The set of arguments for constructing a GlobalDnsProvider resource.
         :param pulumi.Input[str] root_domain: The user ID to assign Global DNS Provider (string)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Global DNS Provider (map)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Global DNS Provider (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for Global DNS Provider (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for Global DNS Provider (map)
         :param pulumi.Input[str] name: The name of the Global DNS Provider (string)
         """
         pulumi.set(__self__, "root_domain", root_domain)
@@ -67,14 +67,14 @@ class GlobalDnsProviderArgs:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations for Global DNS Provider (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -88,14 +88,14 @@ class GlobalDnsProviderArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for Global DNS Provider (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -124,18 +124,18 @@ class GlobalDnsProviderArgs:
 class _GlobalDnsProviderState:
     def __init__(__self__, *,
                  alidns_config: Optional[pulumi.Input['GlobalDnsProviderAlidnsConfigArgs']] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  cloudflare_config: Optional[pulumi.Input['GlobalDnsProviderCloudflareConfigArgs']] = None,
                  dns_provider: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  root_domain: Optional[pulumi.Input[str]] = None,
                  route53_config: Optional[pulumi.Input['GlobalDnsProviderRoute53ConfigArgs']] = None):
         """
         Input properties used for looking up and filtering GlobalDnsProvider resources.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Global DNS Provider (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for Global DNS Provider (map)
         :param pulumi.Input[str] dns_provider: (Computed) The Global DNS Provider `alidns, cloudflare, route53` (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Global DNS Provider (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for Global DNS Provider (map)
         :param pulumi.Input[str] name: The name of the Global DNS Provider (string)
         :param pulumi.Input[str] root_domain: The user ID to assign Global DNS Provider (string)
         """
@@ -167,14 +167,14 @@ class _GlobalDnsProviderState:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations for Global DNS Provider (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -200,14 +200,14 @@ class _GlobalDnsProviderState:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for Global DNS Provider (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -250,9 +250,9 @@ class GlobalDnsProvider(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alidns_config: Optional[pulumi.Input[Union['GlobalDnsProviderAlidnsConfigArgs', 'GlobalDnsProviderAlidnsConfigArgsDict']]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  cloudflare_config: Optional[pulumi.Input[Union['GlobalDnsProviderCloudflareConfigArgs', 'GlobalDnsProviderCloudflareConfigArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  root_domain: Optional[pulumi.Input[str]] = None,
                  route53_config: Optional[pulumi.Input[Union['GlobalDnsProviderRoute53ConfigArgs', 'GlobalDnsProviderRoute53ConfigArgsDict']]] = None,
@@ -317,8 +317,8 @@ class GlobalDnsProvider(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Global DNS Provider (map)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Global DNS Provider (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for Global DNS Provider (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for Global DNS Provider (map)
         :param pulumi.Input[str] name: The name of the Global DNS Provider (string)
         :param pulumi.Input[str] root_domain: The user ID to assign Global DNS Provider (string)
         """
@@ -402,9 +402,9 @@ class GlobalDnsProvider(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alidns_config: Optional[pulumi.Input[Union['GlobalDnsProviderAlidnsConfigArgs', 'GlobalDnsProviderAlidnsConfigArgsDict']]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  cloudflare_config: Optional[pulumi.Input[Union['GlobalDnsProviderCloudflareConfigArgs', 'GlobalDnsProviderCloudflareConfigArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  root_domain: Optional[pulumi.Input[str]] = None,
                  route53_config: Optional[pulumi.Input[Union['GlobalDnsProviderRoute53ConfigArgs', 'GlobalDnsProviderRoute53ConfigArgsDict']]] = None,
@@ -438,10 +438,10 @@ class GlobalDnsProvider(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             alidns_config: Optional[pulumi.Input[Union['GlobalDnsProviderAlidnsConfigArgs', 'GlobalDnsProviderAlidnsConfigArgsDict']]] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             cloudflare_config: Optional[pulumi.Input[Union['GlobalDnsProviderCloudflareConfigArgs', 'GlobalDnsProviderCloudflareConfigArgsDict']]] = None,
             dns_provider: Optional[pulumi.Input[str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             root_domain: Optional[pulumi.Input[str]] = None,
             route53_config: Optional[pulumi.Input[Union['GlobalDnsProviderRoute53ConfigArgs', 'GlobalDnsProviderRoute53ConfigArgsDict']]] = None) -> 'GlobalDnsProvider':
@@ -452,9 +452,9 @@ class GlobalDnsProvider(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Global DNS Provider (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for Global DNS Provider (map)
         :param pulumi.Input[str] dns_provider: (Computed) The Global DNS Provider `alidns, cloudflare, route53` (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Global DNS Provider (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for Global DNS Provider (map)
         :param pulumi.Input[str] name: The name of the Global DNS Provider (string)
         :param pulumi.Input[str] root_domain: The user ID to assign Global DNS Provider (string)
         """
@@ -479,7 +479,7 @@ class GlobalDnsProvider(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
+    def annotations(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Annotations for Global DNS Provider (map)
         """
@@ -500,7 +500,7 @@ class GlobalDnsProvider(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Labels for Global DNS Provider (map)
         """

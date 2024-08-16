@@ -105,13 +105,13 @@ namespace Pulumi.Rancher2
         /// Annotations for secret object (map)
         /// </summary>
         [Output("annotations")]
-        public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Annotations { get; private set; } = null!;
 
         /// <summary>
         /// Secret key/value data. Base64 encoding required for values (map)
         /// </summary>
         [Output("data")]
-        public Output<ImmutableDictionary<string, object>> Data { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Data { get; private set; } = null!;
 
         /// <summary>
         /// A secret description (string)
@@ -123,7 +123,7 @@ namespace Pulumi.Rancher2
         /// Labels for secret object (map)
         /// </summary>
         [Output("labels")]
-        public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
         /// The name of the secret (string)
@@ -194,29 +194,29 @@ namespace Pulumi.Rancher2
     public sealed class SecretArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
-        private InputMap<object>? _annotations;
+        private InputMap<string>? _annotations;
 
         /// <summary>
         /// Annotations for secret object (map)
         /// </summary>
-        public InputMap<object> Annotations
+        public InputMap<string> Annotations
         {
-            get => _annotations ?? (_annotations = new InputMap<object>());
+            get => _annotations ?? (_annotations = new InputMap<string>());
             set => _annotations = value;
         }
 
         [Input("data", required: true)]
-        private InputMap<object>? _data;
+        private InputMap<string>? _data;
 
         /// <summary>
         /// Secret key/value data. Base64 encoding required for values (map)
         /// </summary>
-        public InputMap<object> Data
+        public InputMap<string> Data
         {
-            get => _data ?? (_data = new InputMap<object>());
+            get => _data ?? (_data = new InputMap<string>());
             set
             {
-                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
                 _data = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
@@ -228,14 +228,14 @@ namespace Pulumi.Rancher2
         public Input<string>? Description { get; set; }
 
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// Labels for secret object (map)
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
@@ -266,29 +266,29 @@ namespace Pulumi.Rancher2
     public sealed class SecretState : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
-        private InputMap<object>? _annotations;
+        private InputMap<string>? _annotations;
 
         /// <summary>
         /// Annotations for secret object (map)
         /// </summary>
-        public InputMap<object> Annotations
+        public InputMap<string> Annotations
         {
-            get => _annotations ?? (_annotations = new InputMap<object>());
+            get => _annotations ?? (_annotations = new InputMap<string>());
             set => _annotations = value;
         }
 
         [Input("data")]
-        private InputMap<object>? _data;
+        private InputMap<string>? _data;
 
         /// <summary>
         /// Secret key/value data. Base64 encoding required for values (map)
         /// </summary>
-        public InputMap<object> Data
+        public InputMap<string> Data
         {
-            get => _data ?? (_data = new InputMap<object>());
+            get => _data ?? (_data = new InputMap<string>());
             set
             {
-                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
                 _data = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
@@ -300,14 +300,14 @@ namespace Pulumi.Rancher2
         public Input<string>? Description { get; set; }
 
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// Labels for secret object (map)
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 

@@ -4,7 +4,6 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -18,12 +17,12 @@ public final class ClusterSyncNode {
      * @return Annotations of the resource
      * 
      */
-    private @Nullable Map<String,Object> annotations;
+    private @Nullable Map<String,String> annotations;
     /**
      * @return The total resources of a node (map).
      * 
      */
-    private @Nullable Map<String,Object> capacity;
+    private @Nullable Map<String,String> capacity;
     /**
      * @return The cluster ID that is syncing (string)
      * 
@@ -53,7 +52,7 @@ public final class ClusterSyncNode {
      * @return Labels of the resource
      * 
      */
-    private @Nullable Map<String,Object> labels;
+    private @Nullable Map<String,String> labels;
     /**
      * @return The name of the node (string).
      * 
@@ -93,21 +92,21 @@ public final class ClusterSyncNode {
      * @return General information about the node, such as kernel version, kubelet and kube-proxy version, Docker version (if used), and OS name.
      * 
      */
-    private @Nullable Map<String,Object> systemInfo;
+    private @Nullable Map<String,String> systemInfo;
 
     private ClusterSyncNode() {}
     /**
      * @return Annotations of the resource
      * 
      */
-    public Map<String,Object> annotations() {
+    public Map<String,String> annotations() {
         return this.annotations == null ? Map.of() : this.annotations;
     }
     /**
      * @return The total resources of a node (map).
      * 
      */
-    public Map<String,Object> capacity() {
+    public Map<String,String> capacity() {
         return this.capacity == null ? Map.of() : this.capacity;
     }
     /**
@@ -149,7 +148,7 @@ public final class ClusterSyncNode {
      * @return Labels of the resource
      * 
      */
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels == null ? Map.of() : this.labels;
     }
     /**
@@ -205,7 +204,7 @@ public final class ClusterSyncNode {
      * @return General information about the node, such as kernel version, kubelet and kube-proxy version, Docker version (if used), and OS name.
      * 
      */
-    public Map<String,Object> systemInfo() {
+    public Map<String,String> systemInfo() {
         return this.systemInfo == null ? Map.of() : this.systemInfo;
     }
 
@@ -218,14 +217,14 @@ public final class ClusterSyncNode {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Map<String,Object> annotations;
-        private @Nullable Map<String,Object> capacity;
+        private @Nullable Map<String,String> annotations;
+        private @Nullable Map<String,String> capacity;
         private @Nullable String clusterId;
         private @Nullable String externalIpAddress;
         private @Nullable String hostname;
         private @Nullable String id;
         private @Nullable String ipAddress;
-        private @Nullable Map<String,Object> labels;
+        private @Nullable Map<String,String> labels;
         private @Nullable String name;
         private @Nullable String nodePoolId;
         private @Nullable String nodeTemplateId;
@@ -233,7 +232,7 @@ public final class ClusterSyncNode {
         private @Nullable String requestedHostname;
         private @Nullable List<String> roles;
         private @Nullable String sshUser;
-        private @Nullable Map<String,Object> systemInfo;
+        private @Nullable Map<String,String> systemInfo;
         public Builder() {}
         public Builder(ClusterSyncNode defaults) {
     	      Objects.requireNonNull(defaults);
@@ -256,13 +255,13 @@ public final class ClusterSyncNode {
         }
 
         @CustomType.Setter
-        public Builder annotations(@Nullable Map<String,Object> annotations) {
+        public Builder annotations(@Nullable Map<String,String> annotations) {
 
             this.annotations = annotations;
             return this;
         }
         @CustomType.Setter
-        public Builder capacity(@Nullable Map<String,Object> capacity) {
+        public Builder capacity(@Nullable Map<String,String> capacity) {
 
             this.capacity = capacity;
             return this;
@@ -298,7 +297,7 @@ public final class ClusterSyncNode {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(@Nullable Map<String,Object> labels) {
+        public Builder labels(@Nullable Map<String,String> labels) {
 
             this.labels = labels;
             return this;
@@ -349,7 +348,7 @@ public final class ClusterSyncNode {
             return this;
         }
         @CustomType.Setter
-        public Builder systemInfo(@Nullable Map<String,Object> systemInfo) {
+        public Builder systemInfo(@Nullable Map<String,String> systemInfo) {
 
             this.systemInfo = systemInfo;
             return this;

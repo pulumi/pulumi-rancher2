@@ -61,14 +61,14 @@ type LookupUserArgs struct {
 // A collection of values returned by getUser.
 type LookupUserResult struct {
 	// (Computed) Annotations of the resource (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// (Computed) The user is enabled (bool)
 	Enabled bool `pulumi:"enabled"`
 	// The provider-assigned unique ID for this managed resource.
 	Id         string `pulumi:"id"`
 	IsExternal *bool  `pulumi:"isExternal"`
 	// (Computed) Labels of the resource (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// (Computed) The user common name (string)
 	Name string `pulumi:"name"`
 	// (Computed) The user principal IDs (list)
@@ -119,8 +119,8 @@ func (o LookupUserResultOutput) ToLookupUserResultOutputWithContext(ctx context.
 }
 
 // (Computed) Annotations of the resource (map)
-func (o LookupUserResultOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupUserResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+func (o LookupUserResultOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupUserResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // (Computed) The user is enabled (bool)
@@ -138,8 +138,8 @@ func (o LookupUserResultOutput) IsExternal() pulumi.BoolPtrOutput {
 }
 
 // (Computed) Labels of the resource (map)
-func (o LookupUserResultOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupUserResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+func (o LookupUserResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupUserResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // (Computed) The user common name (string)

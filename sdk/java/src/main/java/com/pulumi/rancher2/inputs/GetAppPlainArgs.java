@@ -5,7 +5,6 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -22,13 +21,13 @@ public final class GetAppPlainArgs extends com.pulumi.resources.InvokeArgs {
      * 
      */
     @Import(name="annotations")
-    private @Nullable Map<String,Object> annotations;
+    private @Nullable Map<String,String> annotations;
 
     /**
      * @return (Computed) Annotations for the catalog (map)
      * 
      */
-    public Optional<Map<String,Object>> annotations() {
+    public Optional<Map<String,String>> annotations() {
         return Optional.ofNullable(this.annotations);
     }
 
@@ -110,7 +109,7 @@ public final class GetAppPlainArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder annotations(@Nullable Map<String,Object> annotations) {
+        public Builder annotations(@Nullable Map<String,String> annotations) {
             $.annotations = annotations;
             return this;
         }

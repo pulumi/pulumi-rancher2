@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.rancher2.outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringToleration;
 import com.pulumi.rancher2.outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -17,8 +16,8 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring {
-    private @Nullable Map<String,Object> nodeSelector;
-    private @Nullable Map<String,Object> options;
+    private @Nullable Map<String,String> nodeSelector;
+    private @Nullable Map<String,String> options;
     private @Nullable String provider;
     private @Nullable Integer replicas;
     /**
@@ -33,10 +32,10 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitori
     private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategy updateStrategy;
 
     private ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring() {}
-    public Map<String,Object> nodeSelector() {
+    public Map<String,String> nodeSelector() {
         return this.nodeSelector == null ? Map.of() : this.nodeSelector;
     }
-    public Map<String,Object> options() {
+    public Map<String,String> options() {
         return this.options == null ? Map.of() : this.options;
     }
     public Optional<String> provider() {
@@ -69,8 +68,8 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitori
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Map<String,Object> nodeSelector;
-        private @Nullable Map<String,Object> options;
+        private @Nullable Map<String,String> nodeSelector;
+        private @Nullable Map<String,String> options;
         private @Nullable String provider;
         private @Nullable Integer replicas;
         private @Nullable List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringToleration> tolerations;
@@ -87,13 +86,13 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitori
         }
 
         @CustomType.Setter
-        public Builder nodeSelector(@Nullable Map<String,Object> nodeSelector) {
+        public Builder nodeSelector(@Nullable Map<String,String> nodeSelector) {
 
             this.nodeSelector = nodeSelector;
             return this;
         }
         @CustomType.Setter
-        public Builder options(@Nullable Map<String,Object> options) {
+        public Builder options(@Nullable Map<String,String> options) {
 
             this.options = options;
             return this;

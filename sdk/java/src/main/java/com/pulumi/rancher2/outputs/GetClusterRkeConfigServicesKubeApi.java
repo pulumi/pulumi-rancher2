@@ -10,7 +10,6 @@ import com.pulumi.rancher2.outputs.GetClusterRkeConfigServicesKubeApiAuditLog;
 import com.pulumi.rancher2.outputs.GetClusterRkeConfigServicesKubeApiEventRateLimit;
 import com.pulumi.rancher2.outputs.GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -28,7 +27,7 @@ public final class GetClusterRkeConfigServicesKubeApi {
     private @Nullable Boolean alwaysPullImages;
     private @Nullable GetClusterRkeConfigServicesKubeApiAuditLog auditLog;
     private @Nullable GetClusterRkeConfigServicesKubeApiEventRateLimit eventRateLimit;
-    private Map<String,Object> extraArgs;
+    private Map<String,String> extraArgs;
     private @Nullable List<String> extraBinds;
     private @Nullable List<String> extraEnvs;
     private String image;
@@ -54,7 +53,7 @@ public final class GetClusterRkeConfigServicesKubeApi {
     public Optional<GetClusterRkeConfigServicesKubeApiEventRateLimit> eventRateLimit() {
         return Optional.ofNullable(this.eventRateLimit);
     }
-    public Map<String,Object> extraArgs() {
+    public Map<String,String> extraArgs() {
         return this.extraArgs;
     }
     public List<String> extraBinds() {
@@ -92,7 +91,7 @@ public final class GetClusterRkeConfigServicesKubeApi {
         private @Nullable Boolean alwaysPullImages;
         private @Nullable GetClusterRkeConfigServicesKubeApiAuditLog auditLog;
         private @Nullable GetClusterRkeConfigServicesKubeApiEventRateLimit eventRateLimit;
-        private Map<String,Object> extraArgs;
+        private Map<String,String> extraArgs;
         private @Nullable List<String> extraBinds;
         private @Nullable List<String> extraEnvs;
         private String image;
@@ -142,7 +141,7 @@ public final class GetClusterRkeConfigServicesKubeApi {
             return this;
         }
         @CustomType.Setter
-        public Builder extraArgs(Map<String,Object> extraArgs) {
+        public Builder extraArgs(Map<String,String> extraArgs) {
             if (extraArgs == null) {
               throw new MissingRequiredPropertyException("GetClusterRkeConfigServicesKubeApi", "extraArgs");
             }

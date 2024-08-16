@@ -76,7 +76,7 @@ type CustomUserToken struct {
 	// (Computed) Token access key part (string)
 	AccessKey pulumi.StringOutput `pulumi:"accessKey"`
 	// (Computed) Annotations of the token (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Cluster ID for scoped token (string)
 	ClusterId pulumi.StringPtrOutput `pulumi:"clusterId"`
 	// Token description (string)
@@ -86,7 +86,7 @@ type CustomUserToken struct {
 	// (Computed) Token is expired (bool)
 	Expired pulumi.BoolOutput `pulumi:"expired"`
 	// (Computed) Labels of the token (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// (Computed) Token name (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The user password (string)
@@ -160,7 +160,7 @@ type customUserTokenState struct {
 	// (Computed) Token access key part (string)
 	AccessKey *string `pulumi:"accessKey"`
 	// (Computed) Annotations of the token (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// Cluster ID for scoped token (string)
 	ClusterId *string `pulumi:"clusterId"`
 	// Token description (string)
@@ -170,7 +170,7 @@ type customUserTokenState struct {
 	// (Computed) Token is expired (bool)
 	Expired *bool `pulumi:"expired"`
 	// (Computed) Labels of the token (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// (Computed) Token name (string)
 	Name *string `pulumi:"name"`
 	// The user password (string)
@@ -199,7 +199,7 @@ type CustomUserTokenState struct {
 	// (Computed) Token access key part (string)
 	AccessKey pulumi.StringPtrInput
 	// (Computed) Annotations of the token (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// Cluster ID for scoped token (string)
 	ClusterId pulumi.StringPtrInput
 	// Token description (string)
@@ -209,7 +209,7 @@ type CustomUserTokenState struct {
 	// (Computed) Token is expired (bool)
 	Expired pulumi.BoolPtrInput
 	// (Computed) Labels of the token (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// (Computed) Token name (string)
 	Name pulumi.StringPtrInput
 	// The user password (string)
@@ -240,13 +240,13 @@ func (CustomUserTokenState) ElementType() reflect.Type {
 
 type customUserTokenArgs struct {
 	// (Computed) Annotations of the token (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// Cluster ID for scoped token (string)
 	ClusterId *string `pulumi:"clusterId"`
 	// Token description (string)
 	Description *string `pulumi:"description"`
 	// (Computed) Labels of the token (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The user password (string)
 	Password string `pulumi:"password"`
 	// Renew expired or disabled token
@@ -262,13 +262,13 @@ type customUserTokenArgs struct {
 // The set of arguments for constructing a CustomUserToken resource.
 type CustomUserTokenArgs struct {
 	// (Computed) Annotations of the token (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// Cluster ID for scoped token (string)
 	ClusterId pulumi.StringPtrInput
 	// Token description (string)
 	Description pulumi.StringPtrInput
 	// (Computed) Labels of the token (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The user password (string)
 	Password pulumi.StringInput
 	// Renew expired or disabled token
@@ -374,8 +374,8 @@ func (o CustomUserTokenOutput) AccessKey() pulumi.StringOutput {
 }
 
 // (Computed) Annotations of the token (map)
-func (o CustomUserTokenOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *CustomUserToken) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o CustomUserTokenOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CustomUserToken) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // Cluster ID for scoped token (string)
@@ -399,8 +399,8 @@ func (o CustomUserTokenOutput) Expired() pulumi.BoolOutput {
 }
 
 // (Computed) Labels of the token (map)
-func (o CustomUserTokenOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *CustomUserToken) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o CustomUserTokenOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CustomUserToken) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // (Computed) Token name (string)

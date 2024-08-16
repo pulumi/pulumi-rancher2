@@ -32,7 +32,7 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// Node rule selector
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Selector;
+        public readonly ImmutableDictionary<string, string>? Selector;
 
         [OutputConstructor]
         private ClusterAlertRuleNodeRule(
@@ -44,7 +44,7 @@ namespace Pulumi.Rancher2.Outputs
 
             string? nodeId,
 
-            ImmutableDictionary<string, object>? selector)
+            ImmutableDictionary<string, string>? selector)
         {
             Condition = condition;
             CpuThreshold = cpuThreshold;

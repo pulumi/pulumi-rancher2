@@ -189,7 +189,7 @@ export class NodeTemplate extends pulumi.CustomResource {
     /**
      * Annotations for Node Template object (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: any}>;
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * Auth certificate authority for the Node Template (string)
      */
@@ -225,7 +225,7 @@ export class NodeTemplate extends pulumi.CustomResource {
     /**
      * Engine environment for the node template (string)
      */
-    public readonly engineEnv!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly engineEnv!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Insecure registry for the node template (list)
      */
@@ -237,11 +237,11 @@ export class NodeTemplate extends pulumi.CustomResource {
     /**
      * Engine label for the node template (string)
      */
-    public readonly engineLabel!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly engineLabel!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Engine options for the node template (map)
      */
-    public readonly engineOpt!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly engineOpt!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Engine registry mirror for the node template (list)
      */
@@ -263,7 +263,7 @@ export class NodeTemplate extends pulumi.CustomResource {
      *
      * **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Linode config for the Node Template (list maxitems:1)
      */
@@ -387,7 +387,7 @@ export interface NodeTemplateState {
     /**
      * Annotations for Node Template object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Auth certificate authority for the Node Template (string)
      */
@@ -423,7 +423,7 @@ export interface NodeTemplateState {
     /**
      * Engine environment for the node template (string)
      */
-    engineEnv?: pulumi.Input<{[key: string]: any}>;
+    engineEnv?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Insecure registry for the node template (list)
      */
@@ -435,11 +435,11 @@ export interface NodeTemplateState {
     /**
      * Engine label for the node template (string)
      */
-    engineLabel?: pulumi.Input<{[key: string]: any}>;
+    engineLabel?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Engine options for the node template (map)
      */
-    engineOpt?: pulumi.Input<{[key: string]: any}>;
+    engineOpt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Engine registry mirror for the node template (list)
      */
@@ -461,7 +461,7 @@ export interface NodeTemplateState {
      *
      * **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Linode config for the Node Template (list maxitems:1)
      */
@@ -507,7 +507,7 @@ export interface NodeTemplateArgs {
     /**
      * Annotations for Node Template object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Auth certificate authority for the Node Template (string)
      */
@@ -539,7 +539,7 @@ export interface NodeTemplateArgs {
     /**
      * Engine environment for the node template (string)
      */
-    engineEnv?: pulumi.Input<{[key: string]: any}>;
+    engineEnv?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Insecure registry for the node template (list)
      */
@@ -551,11 +551,11 @@ export interface NodeTemplateArgs {
     /**
      * Engine label for the node template (string)
      */
-    engineLabel?: pulumi.Input<{[key: string]: any}>;
+    engineLabel?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Engine options for the node template (map)
      */
-    engineOpt?: pulumi.Input<{[key: string]: any}>;
+    engineOpt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Engine registry mirror for the node template (list)
      */
@@ -577,7 +577,7 @@ export interface NodeTemplateArgs {
      *
      * **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Linode config for the Node Template (list maxitems:1)
      */

@@ -63,7 +63,7 @@ type LookupClusterDriverResult struct {
 	// (Computed) Actual url of the cluster driver (string)
 	ActualUrl string `pulumi:"actualUrl"`
 	// (Computed) Annotations of the resource (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// (Computed) Specify whether the cluster driver is an internal cluster driver or not (bool)
 	Builtin bool `pulumi:"builtin"`
 	// (Computed) Verify that the downloaded driver matches the expected checksum (string)
@@ -71,8 +71,8 @@ type LookupClusterDriverResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels of the resource (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	Name   string                 `pulumi:"name"`
+	Labels map[string]string `pulumi:"labels"`
+	Name   string            `pulumi:"name"`
 	// (Computed) The URL to load for customized Add Clusters screen for this driver (string)
 	UiUrl string `pulumi:"uiUrl"`
 	Url   string `pulumi:"url"`
@@ -131,8 +131,8 @@ func (o LookupClusterDriverResultOutput) ActualUrl() pulumi.StringOutput {
 }
 
 // (Computed) Annotations of the resource (map)
-func (o LookupClusterDriverResultOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupClusterDriverResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+func (o LookupClusterDriverResultOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupClusterDriverResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // (Computed) Specify whether the cluster driver is an internal cluster driver or not (bool)
@@ -151,8 +151,8 @@ func (o LookupClusterDriverResultOutput) Id() pulumi.StringOutput {
 }
 
 // (Computed) Labels of the resource (map)
-func (o LookupClusterDriverResultOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupClusterDriverResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+func (o LookupClusterDriverResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupClusterDriverResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupClusterDriverResultOutput) Name() pulumi.StringOutput {

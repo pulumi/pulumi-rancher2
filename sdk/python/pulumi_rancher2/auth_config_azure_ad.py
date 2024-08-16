@@ -23,10 +23,10 @@ class AuthConfigAzureAdArgs:
                  token_endpoint: pulumi.Input[str],
                  access_mode: Optional[pulumi.Input[str]] = None,
                  allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a AuthConfigAzureAd resource.
         :param pulumi.Input[str] application_id: AzureAD auth application ID (string)
@@ -38,10 +38,10 @@ class AuthConfigAzureAdArgs:
         :param pulumi.Input[str] token_endpoint: AzureAD token endpoint (string)
         :param pulumi.Input[str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `azuread_user://<USER_ID>`  `azuread_group://<GROUP_ID>` (list)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations of the resource (map)
         :param pulumi.Input[bool] enabled: Enable auth config provider. Default `true` (bool)
         :param pulumi.Input[str] endpoint: AzureAD endpoint. Default `https://login.microsoftonline.com/` (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels of the resource (map)
         """
         pulumi.set(__self__, "application_id", application_id)
         pulumi.set(__self__, "application_secret", application_secret)
@@ -173,14 +173,14 @@ class AuthConfigAzureAdArgs:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations of the resource (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -209,14 +209,14 @@ class AuthConfigAzureAdArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels of the resource (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
 
@@ -225,14 +225,14 @@ class _AuthConfigAzureAdState:
     def __init__(__self__, *,
                  access_mode: Optional[pulumi.Input[str]] = None,
                  allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
                  application_secret: Optional[pulumi.Input[str]] = None,
                  auth_endpoint: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
                  graph_endpoint: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  rancher_url: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
@@ -242,14 +242,14 @@ class _AuthConfigAzureAdState:
         Input properties used for looking up and filtering AuthConfigAzureAd resources.
         :param pulumi.Input[str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `azuread_user://<USER_ID>`  `azuread_group://<GROUP_ID>` (list)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations of the resource (map)
         :param pulumi.Input[str] application_id: AzureAD auth application ID (string)
         :param pulumi.Input[str] application_secret: AzureAD auth application secret (string)
         :param pulumi.Input[str] auth_endpoint: AzureAD auth endpoint (string)
         :param pulumi.Input[bool] enabled: Enable auth config provider. Default `true` (bool)
         :param pulumi.Input[str] endpoint: AzureAD endpoint. Default `https://login.microsoftonline.com/` (string)
         :param pulumi.Input[str] graph_endpoint: AzureAD graph endpoint (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels of the resource (map)
         :param pulumi.Input[str] name: (Computed) The name of the resource (string)
         :param pulumi.Input[str] rancher_url: Rancher URL (string). "<rancher_url>/verify-auth-azure"
         :param pulumi.Input[str] tenant_id: AzureAD tenant ID (string)
@@ -313,14 +313,14 @@ class _AuthConfigAzureAdState:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations of the resource (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -397,14 +397,14 @@ class _AuthConfigAzureAdState:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels of the resource (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -475,14 +475,14 @@ class AuthConfigAzureAd(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_mode: Optional[pulumi.Input[str]] = None,
                  allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
                  application_secret: Optional[pulumi.Input[str]] = None,
                  auth_endpoint: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
                  graph_endpoint: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  rancher_url: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  token_endpoint: Optional[pulumi.Input[str]] = None,
@@ -509,14 +509,14 @@ class AuthConfigAzureAd(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `azuread_user://<USER_ID>`  `azuread_group://<GROUP_ID>` (list)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations of the resource (map)
         :param pulumi.Input[str] application_id: AzureAD auth application ID (string)
         :param pulumi.Input[str] application_secret: AzureAD auth application secret (string)
         :param pulumi.Input[str] auth_endpoint: AzureAD auth endpoint (string)
         :param pulumi.Input[bool] enabled: Enable auth config provider. Default `true` (bool)
         :param pulumi.Input[str] endpoint: AzureAD endpoint. Default `https://login.microsoftonline.com/` (string)
         :param pulumi.Input[str] graph_endpoint: AzureAD graph endpoint (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels of the resource (map)
         :param pulumi.Input[str] rancher_url: Rancher URL (string). "<rancher_url>/verify-auth-azure"
         :param pulumi.Input[str] tenant_id: AzureAD tenant ID (string)
         :param pulumi.Input[str] token_endpoint: AzureAD token endpoint (string)
@@ -562,14 +562,14 @@ class AuthConfigAzureAd(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_mode: Optional[pulumi.Input[str]] = None,
                  allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
                  application_secret: Optional[pulumi.Input[str]] = None,
                  auth_endpoint: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
                  graph_endpoint: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  rancher_url: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  token_endpoint: Optional[pulumi.Input[str]] = None,
@@ -625,14 +625,14 @@ class AuthConfigAzureAd(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             access_mode: Optional[pulumi.Input[str]] = None,
             allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             application_id: Optional[pulumi.Input[str]] = None,
             application_secret: Optional[pulumi.Input[str]] = None,
             auth_endpoint: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             endpoint: Optional[pulumi.Input[str]] = None,
             graph_endpoint: Optional[pulumi.Input[str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             rancher_url: Optional[pulumi.Input[str]] = None,
             tenant_id: Optional[pulumi.Input[str]] = None,
@@ -647,14 +647,14 @@ class AuthConfigAzureAd(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `azuread_user://<USER_ID>`  `azuread_group://<GROUP_ID>` (list)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations of the resource (map)
         :param pulumi.Input[str] application_id: AzureAD auth application ID (string)
         :param pulumi.Input[str] application_secret: AzureAD auth application secret (string)
         :param pulumi.Input[str] auth_endpoint: AzureAD auth endpoint (string)
         :param pulumi.Input[bool] enabled: Enable auth config provider. Default `true` (bool)
         :param pulumi.Input[str] endpoint: AzureAD endpoint. Default `https://login.microsoftonline.com/` (string)
         :param pulumi.Input[str] graph_endpoint: AzureAD graph endpoint (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels of the resource (map)
         :param pulumi.Input[str] name: (Computed) The name of the resource (string)
         :param pulumi.Input[str] rancher_url: Rancher URL (string). "<rancher_url>/verify-auth-azure"
         :param pulumi.Input[str] tenant_id: AzureAD tenant ID (string)
@@ -700,7 +700,7 @@ class AuthConfigAzureAd(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
+    def annotations(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Annotations of the resource (map)
         """
@@ -756,7 +756,7 @@ class AuthConfigAzureAd(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Labels of the resource (map)
         """

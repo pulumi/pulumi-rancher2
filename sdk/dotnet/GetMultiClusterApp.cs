@@ -96,7 +96,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Annotations for multi cluster app object (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Annotations;
+        public readonly ImmutableDictionary<string, string> Annotations;
         /// <summary>
         /// (Computed) The multi cluster app answers (list)
         /// </summary>
@@ -112,7 +112,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Labels for multi cluster app object (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Labels;
+        public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
         /// (Computed) The multi cluster app members (list)
         /// </summary>
@@ -153,7 +153,7 @@ namespace Pulumi.Rancher2
 
         [OutputConstructor]
         private GetMultiClusterAppResult(
-            ImmutableDictionary<string, object> annotations,
+            ImmutableDictionary<string, string> annotations,
 
             ImmutableArray<Outputs.GetMultiClusterAppAnswerResult> answers,
 
@@ -161,7 +161,7 @@ namespace Pulumi.Rancher2
 
             string id,
 
-            ImmutableDictionary<string, object> labels,
+            ImmutableDictionary<string, string> labels,
 
             ImmutableArray<Outputs.GetMultiClusterAppMemberResult> members,
 

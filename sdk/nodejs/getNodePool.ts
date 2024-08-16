@@ -56,7 +56,7 @@ export interface GetNodePoolResult {
     /**
      * (Computed) Annotations for Node Pool object (map)
      */
-    readonly annotations: {[key: string]: any};
+    readonly annotations: {[key: string]: string};
     readonly clusterId: string;
     /**
      * (Computed) RKE control plane role for created nodes (bool)
@@ -81,7 +81,7 @@ export interface GetNodePoolResult {
     /**
      * (Computed) Labels for Node Pool object (map)
      */
-    readonly labels: {[key: string]: any};
+    readonly labels: {[key: string]: string};
     readonly name: string;
     /**
      * (Computed) Node taints (List)

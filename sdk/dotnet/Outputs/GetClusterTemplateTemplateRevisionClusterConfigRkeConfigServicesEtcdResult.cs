@@ -18,7 +18,7 @@ namespace Pulumi.Rancher2.Outputs
         public readonly string Cert;
         public readonly string Creation;
         public readonly ImmutableArray<string> ExternalUrls;
-        public readonly ImmutableDictionary<string, object> ExtraArgs;
+        public readonly ImmutableDictionary<string, string> ExtraArgs;
         public readonly ImmutableArray<string> ExtraBinds;
         public readonly ImmutableArray<string> ExtraEnvs;
         public readonly int? Gid;
@@ -41,7 +41,7 @@ namespace Pulumi.Rancher2.Outputs
 
             ImmutableArray<string> externalUrls,
 
-            ImmutableDictionary<string, object> extraArgs,
+            ImmutableDictionary<string, string> extraArgs,
 
             ImmutableArray<string> extraBinds,
 

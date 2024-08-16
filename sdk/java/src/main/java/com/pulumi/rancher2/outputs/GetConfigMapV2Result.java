@@ -6,7 +6,6 @@ package com.pulumi.rancher2.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -19,13 +18,13 @@ public final class GetConfigMapV2Result {
      * @return (Computed) Annotations for the configMap v2 (map)
      * 
      */
-    private Map<String,Object> annotations;
+    private Map<String,String> annotations;
     private String clusterId;
     /**
      * @return (Computed) The data of the configMap v2 (map)
      * 
      */
-    private Map<String,Object> data;
+    private Map<String,String> data;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -40,7 +39,7 @@ public final class GetConfigMapV2Result {
      * @return (Computed) Labels for the configMap v2 (map)
      * 
      */
-    private Map<String,Object> labels;
+    private Map<String,String> labels;
     private String name;
     private @Nullable String namespace;
     /**
@@ -54,7 +53,7 @@ public final class GetConfigMapV2Result {
      * @return (Computed) Annotations for the configMap v2 (map)
      * 
      */
-    public Map<String,Object> annotations() {
+    public Map<String,String> annotations() {
         return this.annotations;
     }
     public String clusterId() {
@@ -64,7 +63,7 @@ public final class GetConfigMapV2Result {
      * @return (Computed) The data of the configMap v2 (map)
      * 
      */
-    public Map<String,Object> data() {
+    public Map<String,String> data() {
         return this.data;
     }
     /**
@@ -85,7 +84,7 @@ public final class GetConfigMapV2Result {
      * @return (Computed) Labels for the configMap v2 (map)
      * 
      */
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels;
     }
     public String name() {
@@ -111,12 +110,12 @@ public final class GetConfigMapV2Result {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Map<String,Object> annotations;
+        private Map<String,String> annotations;
         private String clusterId;
-        private Map<String,Object> data;
+        private Map<String,String> data;
         private String id;
         private Boolean immutable;
-        private Map<String,Object> labels;
+        private Map<String,String> labels;
         private String name;
         private @Nullable String namespace;
         private String resourceVersion;
@@ -135,7 +134,7 @@ public final class GetConfigMapV2Result {
         }
 
         @CustomType.Setter
-        public Builder annotations(Map<String,Object> annotations) {
+        public Builder annotations(Map<String,String> annotations) {
             if (annotations == null) {
               throw new MissingRequiredPropertyException("GetConfigMapV2Result", "annotations");
             }
@@ -151,7 +150,7 @@ public final class GetConfigMapV2Result {
             return this;
         }
         @CustomType.Setter
-        public Builder data(Map<String,Object> data) {
+        public Builder data(Map<String,String> data) {
             if (data == null) {
               throw new MissingRequiredPropertyException("GetConfigMapV2Result", "data");
             }
@@ -175,7 +174,7 @@ public final class GetConfigMapV2Result {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(Map<String,Object> labels) {
+        public Builder labels(Map<String,String> labels) {
             if (labels == null) {
               throw new MissingRequiredPropertyException("GetConfigMapV2Result", "labels");
             }

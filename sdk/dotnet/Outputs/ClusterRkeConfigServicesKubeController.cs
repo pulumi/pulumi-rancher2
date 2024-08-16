@@ -20,7 +20,7 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// Extra arguments for scheduler service (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? ExtraArgs;
+        public readonly ImmutableDictionary<string, string>? ExtraArgs;
         /// <summary>
         /// Extra binds for scheduler service (list)
         /// </summary>
@@ -42,7 +42,7 @@ namespace Pulumi.Rancher2.Outputs
         private ClusterRkeConfigServicesKubeController(
             string? clusterCidr,
 
-            ImmutableDictionary<string, object>? extraArgs,
+            ImmutableDictionary<string, string>? extraArgs,
 
             ImmutableArray<string> extraBinds,
 

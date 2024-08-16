@@ -66,7 +66,7 @@ type GlobalRole struct {
 	pulumi.CustomResourceState
 
 	// Annotations for global role object (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// (Computed) Builtin global role (bool)
 	Builtin pulumi.BoolOutput `pulumi:"builtin"`
 	// Global role description (string)
@@ -74,7 +74,7 @@ type GlobalRole struct {
 	// Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
 	InheritedClusterRoles pulumi.StringArrayOutput `pulumi:"inheritedClusterRoles"`
 	// Labels for global role object (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Global role name (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Whether or not this role should be added to new users. Default `false` (bool)
@@ -114,7 +114,7 @@ func GetGlobalRole(ctx *pulumi.Context,
 // Input properties used for looking up and filtering GlobalRole resources.
 type globalRoleState struct {
 	// Annotations for global role object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// (Computed) Builtin global role (bool)
 	Builtin *bool `pulumi:"builtin"`
 	// Global role description (string)
@@ -122,7 +122,7 @@ type globalRoleState struct {
 	// Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
 	InheritedClusterRoles []string `pulumi:"inheritedClusterRoles"`
 	// Labels for global role object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// Global role name (string)
 	Name *string `pulumi:"name"`
 	// Whether or not this role should be added to new users. Default `false` (bool)
@@ -133,7 +133,7 @@ type globalRoleState struct {
 
 type GlobalRoleState struct {
 	// Annotations for global role object (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// (Computed) Builtin global role (bool)
 	Builtin pulumi.BoolPtrInput
 	// Global role description (string)
@@ -141,7 +141,7 @@ type GlobalRoleState struct {
 	// Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
 	InheritedClusterRoles pulumi.StringArrayInput
 	// Labels for global role object (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// Global role name (string)
 	Name pulumi.StringPtrInput
 	// Whether or not this role should be added to new users. Default `false` (bool)
@@ -156,13 +156,13 @@ func (GlobalRoleState) ElementType() reflect.Type {
 
 type globalRoleArgs struct {
 	// Annotations for global role object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// Global role description (string)
 	Description *string `pulumi:"description"`
 	// Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
 	InheritedClusterRoles []string `pulumi:"inheritedClusterRoles"`
 	// Labels for global role object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// Global role name (string)
 	Name *string `pulumi:"name"`
 	// Whether or not this role should be added to new users. Default `false` (bool)
@@ -174,13 +174,13 @@ type globalRoleArgs struct {
 // The set of arguments for constructing a GlobalRole resource.
 type GlobalRoleArgs struct {
 	// Annotations for global role object (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// Global role description (string)
 	Description pulumi.StringPtrInput
 	// Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
 	InheritedClusterRoles pulumi.StringArrayInput
 	// Labels for global role object (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// Global role name (string)
 	Name pulumi.StringPtrInput
 	// Whether or not this role should be added to new users. Default `false` (bool)
@@ -277,8 +277,8 @@ func (o GlobalRoleOutput) ToGlobalRoleOutputWithContext(ctx context.Context) Glo
 }
 
 // Annotations for global role object (map)
-func (o GlobalRoleOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *GlobalRole) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o GlobalRoleOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GlobalRole) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // (Computed) Builtin global role (bool)
@@ -297,8 +297,8 @@ func (o GlobalRoleOutput) InheritedClusterRoles() pulumi.StringArrayOutput {
 }
 
 // Labels for global role object (map)
-func (o GlobalRoleOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *GlobalRole) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o GlobalRoleOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GlobalRole) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // Global role name (string)

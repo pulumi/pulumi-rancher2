@@ -17,7 +17,7 @@ __all__ = ['NodeTemplateArgs', 'NodeTemplate']
 class NodeTemplateArgs:
     def __init__(__self__, *,
                  amazonec2_config: Optional[pulumi.Input['NodeTemplateAmazonec2ConfigArgs']] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  auth_certificate_authority: Optional[pulumi.Input[str]] = None,
                  auth_key: Optional[pulumi.Input[str]] = None,
                  azure_config: Optional[pulumi.Input['NodeTemplateAzureConfigArgs']] = None,
@@ -25,16 +25,16 @@ class NodeTemplateArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  digitalocean_config: Optional[pulumi.Input['NodeTemplateDigitaloceanConfigArgs']] = None,
                  driver_id: Optional[pulumi.Input[str]] = None,
-                 engine_env: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 engine_env: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  engine_insecure_registries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  engine_install_url: Optional[pulumi.Input[str]] = None,
-                 engine_label: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 engine_opt: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 engine_label: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 engine_opt: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  engine_registry_mirrors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  engine_storage_driver: Optional[pulumi.Input[str]] = None,
                  harvester_config: Optional[pulumi.Input['NodeTemplateHarvesterConfigArgs']] = None,
                  hetzner_config: Optional[pulumi.Input['NodeTemplateHetznerConfigArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  linode_config: Optional[pulumi.Input['NodeTemplateLinodeConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_taints: Optional[pulumi.Input[Sequence[pulumi.Input['NodeTemplateNodeTaintArgs']]]] = None,
@@ -46,7 +46,7 @@ class NodeTemplateArgs:
         """
         The set of arguments for constructing a NodeTemplate resource.
         :param pulumi.Input['NodeTemplateAmazonec2ConfigArgs'] amazonec2_config: AWS config for the Node Template (list maxitems:1)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Node Template object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for Node Template object (map)
         :param pulumi.Input[str] auth_certificate_authority: Auth certificate authority for the Node Template (string)
         :param pulumi.Input[str] auth_key: Auth key for the Node Template (string)
         :param pulumi.Input['NodeTemplateAzureConfigArgs'] azure_config: Azure config for the Node Template (list maxitems:1)
@@ -54,16 +54,16 @@ class NodeTemplateArgs:
         :param pulumi.Input[str] description: Description for the Node Template (string)
         :param pulumi.Input['NodeTemplateDigitaloceanConfigArgs'] digitalocean_config: Digitalocean config for the Node Template (list maxitems:1)
         :param pulumi.Input[str] driver_id: The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
-        :param pulumi.Input[Mapping[str, Any]] engine_env: Engine environment for the node template (string)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] engine_env: Engine environment for the node template (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] engine_insecure_registries: Insecure registry for the node template (list)
         :param pulumi.Input[str] engine_install_url: Docker engine install URL for the node template. Available install docker versions at `https://github.com/rancher/install-docker` (string)
-        :param pulumi.Input[Mapping[str, Any]] engine_label: Engine label for the node template (string)
-        :param pulumi.Input[Mapping[str, Any]] engine_opt: Engine options for the node template (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] engine_label: Engine label for the node template (string)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] engine_opt: Engine options for the node template (map)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] engine_registry_mirrors: Engine registry mirror for the node template (list)
         :param pulumi.Input[str] engine_storage_driver: Engine storage driver for the node template (string)
         :param pulumi.Input['NodeTemplateHarvesterConfigArgs'] harvester_config: Harvester config for the Node Template (list maxitems:1)
         :param pulumi.Input['NodeTemplateHetznerConfigArgs'] hetzner_config: Hetzner config for the Node Template (list maxitems:1)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Template object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for Node Template object (map)
                
                **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
         :param pulumi.Input['NodeTemplateLinodeConfigArgs'] linode_config: Linode config for the Node Template (list maxitems:1)
@@ -144,14 +144,14 @@ class NodeTemplateArgs:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations for Node Template object (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -240,14 +240,14 @@ class NodeTemplateArgs:
 
     @property
     @pulumi.getter(name="engineEnv")
-    def engine_env(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def engine_env(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Engine environment for the node template (string)
         """
         return pulumi.get(self, "engine_env")
 
     @engine_env.setter
-    def engine_env(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def engine_env(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "engine_env", value)
 
     @property
@@ -276,26 +276,26 @@ class NodeTemplateArgs:
 
     @property
     @pulumi.getter(name="engineLabel")
-    def engine_label(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def engine_label(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Engine label for the node template (string)
         """
         return pulumi.get(self, "engine_label")
 
     @engine_label.setter
-    def engine_label(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def engine_label(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "engine_label", value)
 
     @property
     @pulumi.getter(name="engineOpt")
-    def engine_opt(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def engine_opt(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Engine options for the node template (map)
         """
         return pulumi.get(self, "engine_opt")
 
     @engine_opt.setter
-    def engine_opt(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def engine_opt(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "engine_opt", value)
 
     @property
@@ -348,7 +348,7 @@ class NodeTemplateArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for Node Template object (map)
 
@@ -357,7 +357,7 @@ class NodeTemplateArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -461,7 +461,7 @@ class NodeTemplateArgs:
 class _NodeTemplateState:
     def __init__(__self__, *,
                  amazonec2_config: Optional[pulumi.Input['NodeTemplateAmazonec2ConfigArgs']] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  auth_certificate_authority: Optional[pulumi.Input[str]] = None,
                  auth_key: Optional[pulumi.Input[str]] = None,
                  azure_config: Optional[pulumi.Input['NodeTemplateAzureConfigArgs']] = None,
@@ -470,16 +470,16 @@ class _NodeTemplateState:
                  digitalocean_config: Optional[pulumi.Input['NodeTemplateDigitaloceanConfigArgs']] = None,
                  driver: Optional[pulumi.Input[str]] = None,
                  driver_id: Optional[pulumi.Input[str]] = None,
-                 engine_env: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 engine_env: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  engine_insecure_registries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  engine_install_url: Optional[pulumi.Input[str]] = None,
-                 engine_label: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 engine_opt: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 engine_label: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 engine_opt: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  engine_registry_mirrors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  engine_storage_driver: Optional[pulumi.Input[str]] = None,
                  harvester_config: Optional[pulumi.Input['NodeTemplateHarvesterConfigArgs']] = None,
                  hetzner_config: Optional[pulumi.Input['NodeTemplateHetznerConfigArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  linode_config: Optional[pulumi.Input['NodeTemplateLinodeConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_taints: Optional[pulumi.Input[Sequence[pulumi.Input['NodeTemplateNodeTaintArgs']]]] = None,
@@ -491,7 +491,7 @@ class _NodeTemplateState:
         """
         Input properties used for looking up and filtering NodeTemplate resources.
         :param pulumi.Input['NodeTemplateAmazonec2ConfigArgs'] amazonec2_config: AWS config for the Node Template (list maxitems:1)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Node Template object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for Node Template object (map)
         :param pulumi.Input[str] auth_certificate_authority: Auth certificate authority for the Node Template (string)
         :param pulumi.Input[str] auth_key: Auth key for the Node Template (string)
         :param pulumi.Input['NodeTemplateAzureConfigArgs'] azure_config: Azure config for the Node Template (list maxitems:1)
@@ -500,16 +500,16 @@ class _NodeTemplateState:
         :param pulumi.Input['NodeTemplateDigitaloceanConfigArgs'] digitalocean_config: Digitalocean config for the Node Template (list maxitems:1)
         :param pulumi.Input[str] driver: (Computed) The driver of the node template (string)
         :param pulumi.Input[str] driver_id: The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
-        :param pulumi.Input[Mapping[str, Any]] engine_env: Engine environment for the node template (string)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] engine_env: Engine environment for the node template (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] engine_insecure_registries: Insecure registry for the node template (list)
         :param pulumi.Input[str] engine_install_url: Docker engine install URL for the node template. Available install docker versions at `https://github.com/rancher/install-docker` (string)
-        :param pulumi.Input[Mapping[str, Any]] engine_label: Engine label for the node template (string)
-        :param pulumi.Input[Mapping[str, Any]] engine_opt: Engine options for the node template (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] engine_label: Engine label for the node template (string)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] engine_opt: Engine options for the node template (map)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] engine_registry_mirrors: Engine registry mirror for the node template (list)
         :param pulumi.Input[str] engine_storage_driver: Engine storage driver for the node template (string)
         :param pulumi.Input['NodeTemplateHarvesterConfigArgs'] harvester_config: Harvester config for the Node Template (list maxitems:1)
         :param pulumi.Input['NodeTemplateHetznerConfigArgs'] hetzner_config: Hetzner config for the Node Template (list maxitems:1)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Template object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for Node Template object (map)
                
                **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
         :param pulumi.Input['NodeTemplateLinodeConfigArgs'] linode_config: Linode config for the Node Template (list maxitems:1)
@@ -592,14 +592,14 @@ class _NodeTemplateState:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations for Node Template object (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -700,14 +700,14 @@ class _NodeTemplateState:
 
     @property
     @pulumi.getter(name="engineEnv")
-    def engine_env(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def engine_env(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Engine environment for the node template (string)
         """
         return pulumi.get(self, "engine_env")
 
     @engine_env.setter
-    def engine_env(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def engine_env(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "engine_env", value)
 
     @property
@@ -736,26 +736,26 @@ class _NodeTemplateState:
 
     @property
     @pulumi.getter(name="engineLabel")
-    def engine_label(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def engine_label(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Engine label for the node template (string)
         """
         return pulumi.get(self, "engine_label")
 
     @engine_label.setter
-    def engine_label(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def engine_label(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "engine_label", value)
 
     @property
     @pulumi.getter(name="engineOpt")
-    def engine_opt(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def engine_opt(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Engine options for the node template (map)
         """
         return pulumi.get(self, "engine_opt")
 
     @engine_opt.setter
-    def engine_opt(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def engine_opt(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "engine_opt", value)
 
     @property
@@ -808,7 +808,7 @@ class _NodeTemplateState:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for Node Template object (map)
 
@@ -817,7 +817,7 @@ class _NodeTemplateState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -923,7 +923,7 @@ class NodeTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  amazonec2_config: Optional[pulumi.Input[Union['NodeTemplateAmazonec2ConfigArgs', 'NodeTemplateAmazonec2ConfigArgsDict']]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  auth_certificate_authority: Optional[pulumi.Input[str]] = None,
                  auth_key: Optional[pulumi.Input[str]] = None,
                  azure_config: Optional[pulumi.Input[Union['NodeTemplateAzureConfigArgs', 'NodeTemplateAzureConfigArgsDict']]] = None,
@@ -931,16 +931,16 @@ class NodeTemplate(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  digitalocean_config: Optional[pulumi.Input[Union['NodeTemplateDigitaloceanConfigArgs', 'NodeTemplateDigitaloceanConfigArgsDict']]] = None,
                  driver_id: Optional[pulumi.Input[str]] = None,
-                 engine_env: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 engine_env: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  engine_insecure_registries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  engine_install_url: Optional[pulumi.Input[str]] = None,
-                 engine_label: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 engine_opt: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 engine_label: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 engine_opt: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  engine_registry_mirrors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  engine_storage_driver: Optional[pulumi.Input[str]] = None,
                  harvester_config: Optional[pulumi.Input[Union['NodeTemplateHarvesterConfigArgs', 'NodeTemplateHarvesterConfigArgsDict']]] = None,
                  hetzner_config: Optional[pulumi.Input[Union['NodeTemplateHetznerConfigArgs', 'NodeTemplateHetznerConfigArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  linode_config: Optional[pulumi.Input[Union['NodeTemplateLinodeConfigArgs', 'NodeTemplateLinodeConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeTemplateNodeTaintArgs', 'NodeTemplateNodeTaintArgsDict']]]]] = None,
@@ -1092,7 +1092,7 @@ class NodeTemplate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['NodeTemplateAmazonec2ConfigArgs', 'NodeTemplateAmazonec2ConfigArgsDict']] amazonec2_config: AWS config for the Node Template (list maxitems:1)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Node Template object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for Node Template object (map)
         :param pulumi.Input[str] auth_certificate_authority: Auth certificate authority for the Node Template (string)
         :param pulumi.Input[str] auth_key: Auth key for the Node Template (string)
         :param pulumi.Input[Union['NodeTemplateAzureConfigArgs', 'NodeTemplateAzureConfigArgsDict']] azure_config: Azure config for the Node Template (list maxitems:1)
@@ -1100,16 +1100,16 @@ class NodeTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description for the Node Template (string)
         :param pulumi.Input[Union['NodeTemplateDigitaloceanConfigArgs', 'NodeTemplateDigitaloceanConfigArgsDict']] digitalocean_config: Digitalocean config for the Node Template (list maxitems:1)
         :param pulumi.Input[str] driver_id: The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
-        :param pulumi.Input[Mapping[str, Any]] engine_env: Engine environment for the node template (string)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] engine_env: Engine environment for the node template (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] engine_insecure_registries: Insecure registry for the node template (list)
         :param pulumi.Input[str] engine_install_url: Docker engine install URL for the node template. Available install docker versions at `https://github.com/rancher/install-docker` (string)
-        :param pulumi.Input[Mapping[str, Any]] engine_label: Engine label for the node template (string)
-        :param pulumi.Input[Mapping[str, Any]] engine_opt: Engine options for the node template (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] engine_label: Engine label for the node template (string)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] engine_opt: Engine options for the node template (map)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] engine_registry_mirrors: Engine registry mirror for the node template (list)
         :param pulumi.Input[str] engine_storage_driver: Engine storage driver for the node template (string)
         :param pulumi.Input[Union['NodeTemplateHarvesterConfigArgs', 'NodeTemplateHarvesterConfigArgsDict']] harvester_config: Harvester config for the Node Template (list maxitems:1)
         :param pulumi.Input[Union['NodeTemplateHetznerConfigArgs', 'NodeTemplateHetznerConfigArgsDict']] hetzner_config: Hetzner config for the Node Template (list maxitems:1)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Template object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for Node Template object (map)
                
                **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
         :param pulumi.Input[Union['NodeTemplateLinodeConfigArgs', 'NodeTemplateLinodeConfigArgsDict']] linode_config: Linode config for the Node Template (list maxitems:1)
@@ -1282,7 +1282,7 @@ class NodeTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  amazonec2_config: Optional[pulumi.Input[Union['NodeTemplateAmazonec2ConfigArgs', 'NodeTemplateAmazonec2ConfigArgsDict']]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  auth_certificate_authority: Optional[pulumi.Input[str]] = None,
                  auth_key: Optional[pulumi.Input[str]] = None,
                  azure_config: Optional[pulumi.Input[Union['NodeTemplateAzureConfigArgs', 'NodeTemplateAzureConfigArgsDict']]] = None,
@@ -1290,16 +1290,16 @@ class NodeTemplate(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  digitalocean_config: Optional[pulumi.Input[Union['NodeTemplateDigitaloceanConfigArgs', 'NodeTemplateDigitaloceanConfigArgsDict']]] = None,
                  driver_id: Optional[pulumi.Input[str]] = None,
-                 engine_env: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 engine_env: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  engine_insecure_registries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  engine_install_url: Optional[pulumi.Input[str]] = None,
-                 engine_label: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 engine_opt: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 engine_label: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 engine_opt: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  engine_registry_mirrors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  engine_storage_driver: Optional[pulumi.Input[str]] = None,
                  harvester_config: Optional[pulumi.Input[Union['NodeTemplateHarvesterConfigArgs', 'NodeTemplateHarvesterConfigArgsDict']]] = None,
                  hetzner_config: Optional[pulumi.Input[Union['NodeTemplateHetznerConfigArgs', 'NodeTemplateHetznerConfigArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  linode_config: Optional[pulumi.Input[Union['NodeTemplateLinodeConfigArgs', 'NodeTemplateLinodeConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeTemplateNodeTaintArgs', 'NodeTemplateNodeTaintArgsDict']]]]] = None,
@@ -1358,7 +1358,7 @@ class NodeTemplate(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             amazonec2_config: Optional[pulumi.Input[Union['NodeTemplateAmazonec2ConfigArgs', 'NodeTemplateAmazonec2ConfigArgsDict']]] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             auth_certificate_authority: Optional[pulumi.Input[str]] = None,
             auth_key: Optional[pulumi.Input[str]] = None,
             azure_config: Optional[pulumi.Input[Union['NodeTemplateAzureConfigArgs', 'NodeTemplateAzureConfigArgsDict']]] = None,
@@ -1367,16 +1367,16 @@ class NodeTemplate(pulumi.CustomResource):
             digitalocean_config: Optional[pulumi.Input[Union['NodeTemplateDigitaloceanConfigArgs', 'NodeTemplateDigitaloceanConfigArgsDict']]] = None,
             driver: Optional[pulumi.Input[str]] = None,
             driver_id: Optional[pulumi.Input[str]] = None,
-            engine_env: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            engine_env: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             engine_insecure_registries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             engine_install_url: Optional[pulumi.Input[str]] = None,
-            engine_label: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            engine_opt: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            engine_label: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            engine_opt: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             engine_registry_mirrors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             engine_storage_driver: Optional[pulumi.Input[str]] = None,
             harvester_config: Optional[pulumi.Input[Union['NodeTemplateHarvesterConfigArgs', 'NodeTemplateHarvesterConfigArgsDict']]] = None,
             hetzner_config: Optional[pulumi.Input[Union['NodeTemplateHetznerConfigArgs', 'NodeTemplateHetznerConfigArgsDict']]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             linode_config: Optional[pulumi.Input[Union['NodeTemplateLinodeConfigArgs', 'NodeTemplateLinodeConfigArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             node_taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeTemplateNodeTaintArgs', 'NodeTemplateNodeTaintArgsDict']]]]] = None,
@@ -1393,7 +1393,7 @@ class NodeTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['NodeTemplateAmazonec2ConfigArgs', 'NodeTemplateAmazonec2ConfigArgsDict']] amazonec2_config: AWS config for the Node Template (list maxitems:1)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Node Template object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for Node Template object (map)
         :param pulumi.Input[str] auth_certificate_authority: Auth certificate authority for the Node Template (string)
         :param pulumi.Input[str] auth_key: Auth key for the Node Template (string)
         :param pulumi.Input[Union['NodeTemplateAzureConfigArgs', 'NodeTemplateAzureConfigArgsDict']] azure_config: Azure config for the Node Template (list maxitems:1)
@@ -1402,16 +1402,16 @@ class NodeTemplate(pulumi.CustomResource):
         :param pulumi.Input[Union['NodeTemplateDigitaloceanConfigArgs', 'NodeTemplateDigitaloceanConfigArgsDict']] digitalocean_config: Digitalocean config for the Node Template (list maxitems:1)
         :param pulumi.Input[str] driver: (Computed) The driver of the node template (string)
         :param pulumi.Input[str] driver_id: The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
-        :param pulumi.Input[Mapping[str, Any]] engine_env: Engine environment for the node template (string)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] engine_env: Engine environment for the node template (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] engine_insecure_registries: Insecure registry for the node template (list)
         :param pulumi.Input[str] engine_install_url: Docker engine install URL for the node template. Available install docker versions at `https://github.com/rancher/install-docker` (string)
-        :param pulumi.Input[Mapping[str, Any]] engine_label: Engine label for the node template (string)
-        :param pulumi.Input[Mapping[str, Any]] engine_opt: Engine options for the node template (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] engine_label: Engine label for the node template (string)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] engine_opt: Engine options for the node template (map)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] engine_registry_mirrors: Engine registry mirror for the node template (list)
         :param pulumi.Input[str] engine_storage_driver: Engine storage driver for the node template (string)
         :param pulumi.Input[Union['NodeTemplateHarvesterConfigArgs', 'NodeTemplateHarvesterConfigArgsDict']] harvester_config: Harvester config for the Node Template (list maxitems:1)
         :param pulumi.Input[Union['NodeTemplateHetznerConfigArgs', 'NodeTemplateHetznerConfigArgsDict']] hetzner_config: Hetzner config for the Node Template (list maxitems:1)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Template object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for Node Template object (map)
                
                **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
         :param pulumi.Input[Union['NodeTemplateLinodeConfigArgs', 'NodeTemplateLinodeConfigArgsDict']] linode_config: Linode config for the Node Template (list maxitems:1)
@@ -1467,7 +1467,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
+    def annotations(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Annotations for Node Template object (map)
         """
@@ -1539,7 +1539,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="engineEnv")
-    def engine_env(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def engine_env(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Engine environment for the node template (string)
         """
@@ -1563,7 +1563,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="engineLabel")
-    def engine_label(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def engine_label(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Engine label for the node template (string)
         """
@@ -1571,7 +1571,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="engineOpt")
-    def engine_opt(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def engine_opt(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Engine options for the node template (map)
         """
@@ -1611,7 +1611,7 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Labels for Node Template object (map)
 

@@ -17,11 +17,11 @@ __all__ = ['ProjectArgs', 'Project']
 class ProjectArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[str],
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  container_resource_limit: Optional[pulumi.Input['ProjectContainerResourceLimitArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_project_monitoring: Optional[pulumi.Input[bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pod_security_policy_template_id: Optional[pulumi.Input[str]] = None,
                  project_monitoring_input: Optional[pulumi.Input['ProjectProjectMonitoringInputArgs']] = None,
@@ -30,11 +30,11 @@ class ProjectArgs:
         """
         The set of arguments for constructing a Project resource.
         :param pulumi.Input[str] cluster_id: The cluster id where create project (string)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Node Pool object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for Node Pool object (map)
         :param pulumi.Input['ProjectContainerResourceLimitArgs'] container_resource_limit: Default containers resource limits on project (List maxitem:1)
         :param pulumi.Input[str] description: A project description (string)
         :param pulumi.Input[bool] enable_project_monitoring: Enable built-in project monitoring. Default `false` (bool)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Pool object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for Node Pool object (map)
         :param pulumi.Input[str] name: The name of the project (string)
         :param pulumi.Input[str] pod_security_policy_template_id: Default Pod Security Policy ID for the project (string)
         :param pulumi.Input['ProjectProjectMonitoringInputArgs'] project_monitoring_input: Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
@@ -77,14 +77,14 @@ class ProjectArgs:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations for Node Pool object (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -125,14 +125,14 @@ class ProjectArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for Node Pool object (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -199,12 +199,12 @@ class ProjectArgs:
 @pulumi.input_type
 class _ProjectState:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  container_resource_limit: Optional[pulumi.Input['ProjectContainerResourceLimitArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_project_monitoring: Optional[pulumi.Input[bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pod_security_policy_template_id: Optional[pulumi.Input[str]] = None,
                  project_monitoring_input: Optional[pulumi.Input['ProjectProjectMonitoringInputArgs']] = None,
@@ -212,12 +212,12 @@ class _ProjectState:
                  wait_for_cluster: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Project resources.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Node Pool object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for Node Pool object (map)
         :param pulumi.Input[str] cluster_id: The cluster id where create project (string)
         :param pulumi.Input['ProjectContainerResourceLimitArgs'] container_resource_limit: Default containers resource limits on project (List maxitem:1)
         :param pulumi.Input[str] description: A project description (string)
         :param pulumi.Input[bool] enable_project_monitoring: Enable built-in project monitoring. Default `false` (bool)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Pool object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for Node Pool object (map)
         :param pulumi.Input[str] name: The name of the project (string)
         :param pulumi.Input[str] pod_security_policy_template_id: Default Pod Security Policy ID for the project (string)
         :param pulumi.Input['ProjectProjectMonitoringInputArgs'] project_monitoring_input: Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
@@ -249,14 +249,14 @@ class _ProjectState:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations for Node Pool object (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -309,14 +309,14 @@ class _ProjectState:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for Node Pool object (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -385,12 +385,12 @@ class Project(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  container_resource_limit: Optional[pulumi.Input[Union['ProjectContainerResourceLimitArgs', 'ProjectContainerResourceLimitArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_project_monitoring: Optional[pulumi.Input[bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pod_security_policy_template_id: Optional[pulumi.Input[str]] = None,
                  project_monitoring_input: Optional[pulumi.Input[Union['ProjectProjectMonitoringInputArgs', 'ProjectProjectMonitoringInputArgsDict']]] = None,
@@ -459,12 +459,12 @@ class Project(pulumi.CustomResource):
             enable_project_monitoring=True,
             project_monitoring_input={
                 "answers": {
-                    "exporter_kubelets_https": True,
-                    "exporter_node_enabled": True,
-                    "exporter_node_ports_metrics_port": 9796,
+                    "exporter_kubelets_https": "true",
+                    "exporter_node_enabled": "true",
+                    "exporter_node_ports_metrics_port": "9796",
                     "exporter_node_resources_limits_cpu": "200m",
                     "exporter_node_resources_limits_memory": "200Mi",
-                    "grafana_persistence_enabled": False,
+                    "grafana_persistence_enabled": "false",
                     "grafana_persistence_size": "10Gi",
                     "grafana_persistence_storage_class": "default",
                     "operator_resources_limits_memory": "500Mi",
@@ -491,12 +491,12 @@ class Project(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Node Pool object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for Node Pool object (map)
         :param pulumi.Input[str] cluster_id: The cluster id where create project (string)
         :param pulumi.Input[Union['ProjectContainerResourceLimitArgs', 'ProjectContainerResourceLimitArgsDict']] container_resource_limit: Default containers resource limits on project (List maxitem:1)
         :param pulumi.Input[str] description: A project description (string)
         :param pulumi.Input[bool] enable_project_monitoring: Enable built-in project monitoring. Default `false` (bool)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Pool object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for Node Pool object (map)
         :param pulumi.Input[str] name: The name of the project (string)
         :param pulumi.Input[str] pod_security_policy_template_id: Default Pod Security Policy ID for the project (string)
         :param pulumi.Input[Union['ProjectProjectMonitoringInputArgs', 'ProjectProjectMonitoringInputArgsDict']] project_monitoring_input: Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
@@ -571,12 +571,12 @@ class Project(pulumi.CustomResource):
             enable_project_monitoring=True,
             project_monitoring_input={
                 "answers": {
-                    "exporter_kubelets_https": True,
-                    "exporter_node_enabled": True,
-                    "exporter_node_ports_metrics_port": 9796,
+                    "exporter_kubelets_https": "true",
+                    "exporter_node_enabled": "true",
+                    "exporter_node_ports_metrics_port": "9796",
                     "exporter_node_resources_limits_cpu": "200m",
                     "exporter_node_resources_limits_memory": "200Mi",
-                    "grafana_persistence_enabled": False,
+                    "grafana_persistence_enabled": "false",
                     "grafana_persistence_size": "10Gi",
                     "grafana_persistence_storage_class": "default",
                     "operator_resources_limits_memory": "500Mi",
@@ -616,12 +616,12 @@ class Project(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  container_resource_limit: Optional[pulumi.Input[Union['ProjectContainerResourceLimitArgs', 'ProjectContainerResourceLimitArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_project_monitoring: Optional[pulumi.Input[bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pod_security_policy_template_id: Optional[pulumi.Input[str]] = None,
                  project_monitoring_input: Optional[pulumi.Input[Union['ProjectProjectMonitoringInputArgs', 'ProjectProjectMonitoringInputArgsDict']]] = None,
@@ -659,12 +659,12 @@ class Project(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
             container_resource_limit: Optional[pulumi.Input[Union['ProjectContainerResourceLimitArgs', 'ProjectContainerResourceLimitArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             enable_project_monitoring: Optional[pulumi.Input[bool]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             pod_security_policy_template_id: Optional[pulumi.Input[str]] = None,
             project_monitoring_input: Optional[pulumi.Input[Union['ProjectProjectMonitoringInputArgs', 'ProjectProjectMonitoringInputArgsDict']]] = None,
@@ -677,12 +677,12 @@ class Project(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Node Pool object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for Node Pool object (map)
         :param pulumi.Input[str] cluster_id: The cluster id where create project (string)
         :param pulumi.Input[Union['ProjectContainerResourceLimitArgs', 'ProjectContainerResourceLimitArgsDict']] container_resource_limit: Default containers resource limits on project (List maxitem:1)
         :param pulumi.Input[str] description: A project description (string)
         :param pulumi.Input[bool] enable_project_monitoring: Enable built-in project monitoring. Default `false` (bool)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Node Pool object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for Node Pool object (map)
         :param pulumi.Input[str] name: The name of the project (string)
         :param pulumi.Input[str] pod_security_policy_template_id: Default Pod Security Policy ID for the project (string)
         :param pulumi.Input[Union['ProjectProjectMonitoringInputArgs', 'ProjectProjectMonitoringInputArgsDict']] project_monitoring_input: Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
@@ -708,7 +708,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
+    def annotations(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Annotations for Node Pool object (map)
         """
@@ -748,7 +748,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Labels for Node Pool object (map)
         """

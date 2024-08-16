@@ -5,7 +5,6 @@ package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -16,12 +15,12 @@ public final class GetAppResult {
      * @return (Computed) Annotations for the catalog (map)
      * 
      */
-    private Map<String,Object> annotations;
+    private Map<String,String> annotations;
     /**
      * @return (Computed) Answers for the app (map)
      * 
      */
-    private Map<String,Object> answers;
+    private Map<String,String> answers;
     /**
      * @return (Computed) Catalog name of the app (string)
      * 
@@ -46,7 +45,7 @@ public final class GetAppResult {
      * @return (Computed) Labels for the catalog (map)
      * 
      */
-    private Map<String,Object> labels;
+    private Map<String,String> labels;
     private String name;
     private String projectId;
     /**
@@ -76,14 +75,14 @@ public final class GetAppResult {
      * @return (Computed) Annotations for the catalog (map)
      * 
      */
-    public Map<String,Object> annotations() {
+    public Map<String,String> annotations() {
         return this.annotations;
     }
     /**
      * @return (Computed) Answers for the app (map)
      * 
      */
-    public Map<String,Object> answers() {
+    public Map<String,String> answers() {
         return this.answers;
     }
     /**
@@ -118,7 +117,7 @@ public final class GetAppResult {
      * @return (Computed) Labels for the catalog (map)
      * 
      */
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels;
     }
     public String name() {
@@ -168,13 +167,13 @@ public final class GetAppResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Map<String,Object> annotations;
-        private Map<String,Object> answers;
+        private Map<String,String> annotations;
+        private Map<String,String> answers;
         private String catalogName;
         private String description;
         private String externalId;
         private String id;
-        private Map<String,Object> labels;
+        private Map<String,String> labels;
         private String name;
         private String projectId;
         private String revisionId;
@@ -202,7 +201,7 @@ public final class GetAppResult {
         }
 
         @CustomType.Setter
-        public Builder annotations(Map<String,Object> annotations) {
+        public Builder annotations(Map<String,String> annotations) {
             if (annotations == null) {
               throw new MissingRequiredPropertyException("GetAppResult", "annotations");
             }
@@ -210,7 +209,7 @@ public final class GetAppResult {
             return this;
         }
         @CustomType.Setter
-        public Builder answers(Map<String,Object> answers) {
+        public Builder answers(Map<String,String> answers) {
             if (answers == null) {
               throw new MissingRequiredPropertyException("GetAppResult", "answers");
             }
@@ -250,7 +249,7 @@ public final class GetAppResult {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(Map<String,Object> labels) {
+        public Builder labels(Map<String,String> labels) {
             if (labels == null) {
               throw new MissingRequiredPropertyException("GetAppResult", "labels");
             }

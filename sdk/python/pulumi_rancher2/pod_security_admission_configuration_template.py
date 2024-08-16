@@ -17,19 +17,19 @@ __all__ = ['PodSecurityAdmissionConfigurationTemplateArgs', 'PodSecurityAdmissio
 class PodSecurityAdmissionConfigurationTemplateArgs:
     def __init__(__self__, *,
                  defaults: pulumi.Input['PodSecurityAdmissionConfigurationTemplateDefaultsArgs'],
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  exemptions: Optional[pulumi.Input['PodSecurityAdmissionConfigurationTemplateExemptionsArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a PodSecurityAdmissionConfigurationTemplate resource.
         :param pulumi.Input['PodSecurityAdmissionConfigurationTemplateDefaultsArgs'] defaults: defaults allows the user to define admission control mode for Pod Security
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations of the resource
         :param pulumi.Input[str] description: Pod Security Admission Configuration template description
         :param pulumi.Input['PodSecurityAdmissionConfigurationTemplateExemptionsArgs'] exemptions: exemptions allows the creation of pods for specific Usernames, RuntimeClassNames, and Namespaces that would otherwise be
                prohibited
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels of the resource
         :param pulumi.Input[str] name: Pod Security Admission Configuration template name
         """
         pulumi.set(__self__, "defaults", defaults)
@@ -58,14 +58,14 @@ class PodSecurityAdmissionConfigurationTemplateArgs:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations of the resource
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -95,14 +95,14 @@ class PodSecurityAdmissionConfigurationTemplateArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels of the resource
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -121,20 +121,20 @@ class PodSecurityAdmissionConfigurationTemplateArgs:
 @pulumi.input_type
 class _PodSecurityAdmissionConfigurationTemplateState:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  defaults: Optional[pulumi.Input['PodSecurityAdmissionConfigurationTemplateDefaultsArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  exemptions: Optional[pulumi.Input['PodSecurityAdmissionConfigurationTemplateExemptionsArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering PodSecurityAdmissionConfigurationTemplate resources.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations of the resource
         :param pulumi.Input['PodSecurityAdmissionConfigurationTemplateDefaultsArgs'] defaults: defaults allows the user to define admission control mode for Pod Security
         :param pulumi.Input[str] description: Pod Security Admission Configuration template description
         :param pulumi.Input['PodSecurityAdmissionConfigurationTemplateExemptionsArgs'] exemptions: exemptions allows the creation of pods for specific Usernames, RuntimeClassNames, and Namespaces that would otherwise be
                prohibited
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels of the resource
         :param pulumi.Input[str] name: Pod Security Admission Configuration template name
         """
         if annotations is not None:
@@ -152,14 +152,14 @@ class _PodSecurityAdmissionConfigurationTemplateState:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations of the resource
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -201,14 +201,14 @@ class _PodSecurityAdmissionConfigurationTemplateState:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels of the resource
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -229,23 +229,23 @@ class PodSecurityAdmissionConfigurationTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  defaults: Optional[pulumi.Input[Union['PodSecurityAdmissionConfigurationTemplateDefaultsArgs', 'PodSecurityAdmissionConfigurationTemplateDefaultsArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  exemptions: Optional[pulumi.Input[Union['PodSecurityAdmissionConfigurationTemplateExemptionsArgs', 'PodSecurityAdmissionConfigurationTemplateExemptionsArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Create a PodSecurityAdmissionConfigurationTemplate resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations of the resource
         :param pulumi.Input[Union['PodSecurityAdmissionConfigurationTemplateDefaultsArgs', 'PodSecurityAdmissionConfigurationTemplateDefaultsArgsDict']] defaults: defaults allows the user to define admission control mode for Pod Security
         :param pulumi.Input[str] description: Pod Security Admission Configuration template description
         :param pulumi.Input[Union['PodSecurityAdmissionConfigurationTemplateExemptionsArgs', 'PodSecurityAdmissionConfigurationTemplateExemptionsArgsDict']] exemptions: exemptions allows the creation of pods for specific Usernames, RuntimeClassNames, and Namespaces that would otherwise be
                prohibited
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels of the resource
         :param pulumi.Input[str] name: Pod Security Admission Configuration template name
         """
         ...
@@ -271,11 +271,11 @@ class PodSecurityAdmissionConfigurationTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  defaults: Optional[pulumi.Input[Union['PodSecurityAdmissionConfigurationTemplateDefaultsArgs', 'PodSecurityAdmissionConfigurationTemplateDefaultsArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  exemptions: Optional[pulumi.Input[Union['PodSecurityAdmissionConfigurationTemplateExemptionsArgs', 'PodSecurityAdmissionConfigurationTemplateExemptionsArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -304,11 +304,11 @@ class PodSecurityAdmissionConfigurationTemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             defaults: Optional[pulumi.Input[Union['PodSecurityAdmissionConfigurationTemplateDefaultsArgs', 'PodSecurityAdmissionConfigurationTemplateDefaultsArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             exemptions: Optional[pulumi.Input[Union['PodSecurityAdmissionConfigurationTemplateExemptionsArgs', 'PodSecurityAdmissionConfigurationTemplateExemptionsArgsDict']]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None) -> 'PodSecurityAdmissionConfigurationTemplate':
         """
         Get an existing PodSecurityAdmissionConfigurationTemplate resource's state with the given name, id, and optional extra
@@ -317,12 +317,12 @@ class PodSecurityAdmissionConfigurationTemplate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations of the resource
         :param pulumi.Input[Union['PodSecurityAdmissionConfigurationTemplateDefaultsArgs', 'PodSecurityAdmissionConfigurationTemplateDefaultsArgsDict']] defaults: defaults allows the user to define admission control mode for Pod Security
         :param pulumi.Input[str] description: Pod Security Admission Configuration template description
         :param pulumi.Input[Union['PodSecurityAdmissionConfigurationTemplateExemptionsArgs', 'PodSecurityAdmissionConfigurationTemplateExemptionsArgsDict']] exemptions: exemptions allows the creation of pods for specific Usernames, RuntimeClassNames, and Namespaces that would otherwise be
                prohibited
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels of the resource
         :param pulumi.Input[str] name: Pod Security Admission Configuration template name
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -339,7 +339,7 @@ class PodSecurityAdmissionConfigurationTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
+    def annotations(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Annotations of the resource
         """
@@ -372,7 +372,7 @@ class PodSecurityAdmissionConfigurationTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Labels of the resource
         """

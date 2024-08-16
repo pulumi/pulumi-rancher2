@@ -6,7 +6,6 @@ package com.pulumi.rancher2.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.rancher2.inputs.ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionArgs;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -39,13 +38,13 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorAr
      * 
      */
     @Import(name="matchLabels")
-    private @Nullable Output<Map<String,Object>> matchLabels;
+    private @Nullable Output<Map<String,String>> matchLabels;
 
     /**
      * @return Label selector match labels
      * 
      */
-    public Optional<Output<Map<String,Object>>> matchLabels() {
+    public Optional<Output<Map<String,String>>> matchLabels() {
         return Optional.ofNullable(this.matchLabels);
     }
 
@@ -111,7 +110,7 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorAr
          * @return builder
          * 
          */
-        public Builder matchLabels(@Nullable Output<Map<String,Object>> matchLabels) {
+        public Builder matchLabels(@Nullable Output<Map<String,String>> matchLabels) {
             $.matchLabels = matchLabels;
             return this;
         }
@@ -122,7 +121,7 @@ public final class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorAr
          * @return builder
          * 
          */
-        public Builder matchLabels(Map<String,Object> matchLabels) {
+        public Builder matchLabels(Map<String,String> matchLabels) {
             return matchLabels(Output.of(matchLabels));
         }
 

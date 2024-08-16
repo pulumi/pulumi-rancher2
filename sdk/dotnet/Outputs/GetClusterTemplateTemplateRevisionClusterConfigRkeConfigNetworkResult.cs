@@ -18,7 +18,7 @@ namespace Pulumi.Rancher2.Outputs
         public readonly Outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderResult? CanalNetworkProvider;
         public readonly Outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderResult? FlannelNetworkProvider;
         public readonly int? Mtu;
-        public readonly ImmutableDictionary<string, object> Options;
+        public readonly ImmutableDictionary<string, string> Options;
         public readonly string Plugin;
         /// <summary>
         /// Network add-on tolerations
@@ -38,7 +38,7 @@ namespace Pulumi.Rancher2.Outputs
 
             int? mtu,
 
-            ImmutableDictionary<string, object> options,
+            ImmutableDictionary<string, string> options,
 
             string plugin,
 

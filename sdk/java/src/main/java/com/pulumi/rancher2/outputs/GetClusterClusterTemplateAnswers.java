@@ -5,7 +5,6 @@ package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -26,7 +25,7 @@ public final class GetClusterClusterTemplateAnswers {
      * @return Key/values for answer
      * 
      */
-    private Map<String,Object> values;
+    private Map<String,String> values;
 
     private GetClusterClusterTemplateAnswers() {}
     /**
@@ -47,7 +46,7 @@ public final class GetClusterClusterTemplateAnswers {
      * @return Key/values for answer
      * 
      */
-    public Map<String,Object> values() {
+    public Map<String,String> values() {
         return this.values;
     }
 
@@ -62,7 +61,7 @@ public final class GetClusterClusterTemplateAnswers {
     public static final class Builder {
         private String clusterId;
         private String projectId;
-        private Map<String,Object> values;
+        private Map<String,String> values;
         public Builder() {}
         public Builder(GetClusterClusterTemplateAnswers defaults) {
     	      Objects.requireNonNull(defaults);
@@ -88,7 +87,7 @@ public final class GetClusterClusterTemplateAnswers {
             return this;
         }
         @CustomType.Setter
-        public Builder values(Map<String,Object> values) {
+        public Builder values(Map<String,String> values) {
             if (values == null) {
               throw new MissingRequiredPropertyException("GetClusterClusterTemplateAnswers", "values");
             }

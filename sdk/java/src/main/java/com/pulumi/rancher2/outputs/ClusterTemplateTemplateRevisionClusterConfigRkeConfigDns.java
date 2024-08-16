@@ -8,7 +8,6 @@ import com.pulumi.rancher2.outputs.ClusterTemplateTemplateRevisionClusterConfigR
 import com.pulumi.rancher2.outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal;
 import com.pulumi.rancher2.outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsToleration;
 import com.pulumi.rancher2.outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategy;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -23,13 +22,13 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns {
      * 
      */
     private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams linearAutoscalerParams;
-    private @Nullable Map<String,Object> nodeSelector;
+    private @Nullable Map<String,String> nodeSelector;
     /**
      * @return Nodelocal dns
      * 
      */
     private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal nodelocal;
-    private @Nullable Map<String,Object> options;
+    private @Nullable Map<String,String> options;
     private @Nullable String provider;
     private @Nullable List<String> reverseCidrs;
     /**
@@ -52,7 +51,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns {
     public Optional<ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams> linearAutoscalerParams() {
         return Optional.ofNullable(this.linearAutoscalerParams);
     }
-    public Map<String,Object> nodeSelector() {
+    public Map<String,String> nodeSelector() {
         return this.nodeSelector == null ? Map.of() : this.nodeSelector;
     }
     /**
@@ -62,7 +61,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns {
     public Optional<ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal> nodelocal() {
         return Optional.ofNullable(this.nodelocal);
     }
-    public Map<String,Object> options() {
+    public Map<String,String> options() {
         return this.options == null ? Map.of() : this.options;
     }
     public Optional<String> provider() {
@@ -99,9 +98,9 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams linearAutoscalerParams;
-        private @Nullable Map<String,Object> nodeSelector;
+        private @Nullable Map<String,String> nodeSelector;
         private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal nodelocal;
-        private @Nullable Map<String,Object> options;
+        private @Nullable Map<String,String> options;
         private @Nullable String provider;
         private @Nullable List<String> reverseCidrs;
         private @Nullable List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsToleration> tolerations;
@@ -128,7 +127,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns {
             return this;
         }
         @CustomType.Setter
-        public Builder nodeSelector(@Nullable Map<String,Object> nodeSelector) {
+        public Builder nodeSelector(@Nullable Map<String,String> nodeSelector) {
 
             this.nodeSelector = nodeSelector;
             return this;
@@ -140,7 +139,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns {
             return this;
         }
         @CustomType.Setter
-        public Builder options(@Nullable Map<String,Object> options) {
+        public Builder options(@Nullable Map<String,String> options) {
 
             this.options = options;
             return this;

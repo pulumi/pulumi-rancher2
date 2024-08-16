@@ -61,7 +61,7 @@ export class AuthConfigGithub extends pulumi.CustomResource {
     /**
      * Annotations of the resource (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: any}>;
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * Github auth Client ID (string)
      */
@@ -81,7 +81,7 @@ export class AuthConfigGithub extends pulumi.CustomResource {
     /**
      * Labels of the resource (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * (Computed) The name of the resource (string)
      */
@@ -161,7 +161,7 @@ export interface AuthConfigGithubState {
     /**
      * Annotations of the resource (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Github auth Client ID (string)
      */
@@ -181,7 +181,7 @@ export interface AuthConfigGithubState {
     /**
      * Labels of the resource (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * (Computed) The name of the resource (string)
      */
@@ -211,7 +211,7 @@ export interface AuthConfigGithubArgs {
     /**
      * Annotations of the resource (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Github auth Client ID (string)
      */
@@ -231,7 +231,7 @@ export interface AuthConfigGithubArgs {
     /**
      * Labels of the resource (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Enable TLS connection. Default `true` (bool)
      */

@@ -11,7 +11,6 @@ import com.pulumi.rancher2.AppArgs;
 import com.pulumi.rancher2.Utilities;
 import com.pulumi.rancher2.inputs.AppState;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -151,28 +150,28 @@ public class App extends com.pulumi.resources.CustomResource {
      * Annotations for App object (map)
      * 
      */
-    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> annotations;
+    @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> annotations;
 
     /**
      * @return Annotations for App object (map)
      * 
      */
-    public Output<Map<String,Object>> annotations() {
+    public Output<Map<String,String>> annotations() {
         return this.annotations;
     }
     /**
      * Answers for the app template. If modified, app will be upgraded (map)
      * 
      */
-    @Export(name="answers", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> answers;
+    @Export(name="answers", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> answers;
 
     /**
      * @return Answers for the app template. If modified, app will be upgraded (map)
      * 
      */
-    public Output<Optional<Map<String,Object>>> answers() {
+    public Output<Optional<Map<String,String>>> answers() {
         return Codegen.optional(this.answers);
     }
     /**
@@ -239,14 +238,14 @@ public class App extends com.pulumi.resources.CustomResource {
      * Labels for App object (map)
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> labels;
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> labels;
 
     /**
      * @return Labels for App object (map)
      * 
      */
-    public Output<Map<String,Object>> labels() {
+    public Output<Map<String,String>> labels() {
         return this.labels;
     }
     /**

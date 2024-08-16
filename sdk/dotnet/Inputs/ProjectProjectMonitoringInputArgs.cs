@@ -13,14 +13,14 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ProjectProjectMonitoringInputArgs : global::Pulumi.ResourceArgs
     {
         [Input("answers")]
-        private InputMap<object>? _answers;
+        private InputMap<string>? _answers;
 
         /// <summary>
         /// Answers for monitor input
         /// </summary>
-        public InputMap<object> Answers
+        public InputMap<string> Answers
         {
-            get => _answers ?? (_answers = new InputMap<object>());
+            get => _answers ?? (_answers = new InputMap<string>());
             set => _answers = value;
         }
 

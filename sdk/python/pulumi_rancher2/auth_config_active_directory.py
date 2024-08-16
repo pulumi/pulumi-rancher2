@@ -22,7 +22,7 @@ class AuthConfigActiveDirectoryArgs:
                  user_search_base: pulumi.Input[str],
                  access_mode: Optional[pulumi.Input[str]] = None,
                  allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  certificate: Optional[pulumi.Input[str]] = None,
                  connection_timeout: Optional[pulumi.Input[int]] = None,
                  default_login_domain: Optional[pulumi.Input[str]] = None,
@@ -35,7 +35,7 @@ class AuthConfigActiveDirectoryArgs:
                  group_search_attribute: Optional[pulumi.Input[str]] = None,
                  group_search_base: Optional[pulumi.Input[str]] = None,
                  group_search_filter: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  nested_group_membership_enabled: Optional[pulumi.Input[bool]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  start_tls: Optional[pulumi.Input[bool]] = None,
@@ -57,7 +57,7 @@ class AuthConfigActiveDirectoryArgs:
         :param pulumi.Input[str] user_search_base: User search base DN (string)
         :param pulumi.Input[str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>`. The local admin (`local://<admin id>`) and the `test_username` must be added too. (list)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations of the resource (map)
         :param pulumi.Input[str] certificate: CA certificate for TLS if selfsigned (string)
         :param pulumi.Input[int] connection_timeout: ActiveDirectory connection timeout. Default `5000` (int)
         :param pulumi.Input[str] default_login_domain: ActiveDirectory defult login domain (string)
@@ -70,7 +70,7 @@ class AuthConfigActiveDirectoryArgs:
         :param pulumi.Input[str] group_search_attribute: Group search attribute. Default `sAMAccountName` (string)
         :param pulumi.Input[str] group_search_base: Group search base (string)
         :param pulumi.Input[str] group_search_filter: Group search filter (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels of the resource (map)
         :param pulumi.Input[bool] nested_group_membership_enabled: Nested group membership enable. Default `false` (bool)
         :param pulumi.Input[int] port: ActiveDirectory port. Default `389` (int)
         :param pulumi.Input[bool] start_tls: Enable start TLS connection (bool)
@@ -242,14 +242,14 @@ class AuthConfigActiveDirectoryArgs:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations of the resource (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -398,14 +398,14 @@ class AuthConfigActiveDirectoryArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels of the resource (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -546,7 +546,7 @@ class _AuthConfigActiveDirectoryState:
     def __init__(__self__, *,
                  access_mode: Optional[pulumi.Input[str]] = None,
                  allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  certificate: Optional[pulumi.Input[str]] = None,
                  connection_timeout: Optional[pulumi.Input[int]] = None,
                  default_login_domain: Optional[pulumi.Input[str]] = None,
@@ -559,7 +559,7 @@ class _AuthConfigActiveDirectoryState:
                  group_search_attribute: Optional[pulumi.Input[str]] = None,
                  group_search_base: Optional[pulumi.Input[str]] = None,
                  group_search_filter: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nested_group_membership_enabled: Optional[pulumi.Input[bool]] = None,
                  port: Optional[pulumi.Input[int]] = None,
@@ -583,7 +583,7 @@ class _AuthConfigActiveDirectoryState:
         Input properties used for looking up and filtering AuthConfigActiveDirectory resources.
         :param pulumi.Input[str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>`. The local admin (`local://<admin id>`) and the `test_username` must be added too. (list)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations of the resource (map)
         :param pulumi.Input[str] certificate: CA certificate for TLS if selfsigned (string)
         :param pulumi.Input[int] connection_timeout: ActiveDirectory connection timeout. Default `5000` (int)
         :param pulumi.Input[str] default_login_domain: ActiveDirectory defult login domain (string)
@@ -596,7 +596,7 @@ class _AuthConfigActiveDirectoryState:
         :param pulumi.Input[str] group_search_attribute: Group search attribute. Default `sAMAccountName` (string)
         :param pulumi.Input[str] group_search_base: Group search base (string)
         :param pulumi.Input[str] group_search_filter: Group search filter (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels of the resource (map)
         :param pulumi.Input[str] name: (Computed) The name of the resource (string)
         :param pulumi.Input[bool] nested_group_membership_enabled: Nested group membership enable. Default `false` (bool)
         :param pulumi.Input[int] port: ActiveDirectory port. Default `389` (int)
@@ -714,14 +714,14 @@ class _AuthConfigActiveDirectoryState:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations of the resource (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -870,14 +870,14 @@ class _AuthConfigActiveDirectoryState:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels of the resource (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -1116,7 +1116,7 @@ class AuthConfigActiveDirectory(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_mode: Optional[pulumi.Input[str]] = None,
                  allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  certificate: Optional[pulumi.Input[str]] = None,
                  connection_timeout: Optional[pulumi.Input[int]] = None,
                  default_login_domain: Optional[pulumi.Input[str]] = None,
@@ -1129,7 +1129,7 @@ class AuthConfigActiveDirectory(pulumi.CustomResource):
                  group_search_attribute: Optional[pulumi.Input[str]] = None,
                  group_search_base: Optional[pulumi.Input[str]] = None,
                  group_search_filter: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  nested_group_membership_enabled: Optional[pulumi.Input[bool]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1157,7 +1157,7 @@ class AuthConfigActiveDirectory(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>`. The local admin (`local://<admin id>`) and the `test_username` must be added too. (list)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations of the resource (map)
         :param pulumi.Input[str] certificate: CA certificate for TLS if selfsigned (string)
         :param pulumi.Input[int] connection_timeout: ActiveDirectory connection timeout. Default `5000` (int)
         :param pulumi.Input[str] default_login_domain: ActiveDirectory defult login domain (string)
@@ -1170,7 +1170,7 @@ class AuthConfigActiveDirectory(pulumi.CustomResource):
         :param pulumi.Input[str] group_search_attribute: Group search attribute. Default `sAMAccountName` (string)
         :param pulumi.Input[str] group_search_base: Group search base (string)
         :param pulumi.Input[str] group_search_filter: Group search filter (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels of the resource (map)
         :param pulumi.Input[bool] nested_group_membership_enabled: Nested group membership enable. Default `false` (bool)
         :param pulumi.Input[int] port: ActiveDirectory port. Default `389` (int)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] servers: ActiveDirectory servers list (list)
@@ -1217,7 +1217,7 @@ class AuthConfigActiveDirectory(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_mode: Optional[pulumi.Input[str]] = None,
                  allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  certificate: Optional[pulumi.Input[str]] = None,
                  connection_timeout: Optional[pulumi.Input[int]] = None,
                  default_login_domain: Optional[pulumi.Input[str]] = None,
@@ -1230,7 +1230,7 @@ class AuthConfigActiveDirectory(pulumi.CustomResource):
                  group_search_attribute: Optional[pulumi.Input[str]] = None,
                  group_search_base: Optional[pulumi.Input[str]] = None,
                  group_search_filter: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  nested_group_membership_enabled: Optional[pulumi.Input[bool]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1318,7 +1318,7 @@ class AuthConfigActiveDirectory(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             access_mode: Optional[pulumi.Input[str]] = None,
             allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             certificate: Optional[pulumi.Input[str]] = None,
             connection_timeout: Optional[pulumi.Input[int]] = None,
             default_login_domain: Optional[pulumi.Input[str]] = None,
@@ -1331,7 +1331,7 @@ class AuthConfigActiveDirectory(pulumi.CustomResource):
             group_search_attribute: Optional[pulumi.Input[str]] = None,
             group_search_base: Optional[pulumi.Input[str]] = None,
             group_search_filter: Optional[pulumi.Input[str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             nested_group_membership_enabled: Optional[pulumi.Input[bool]] = None,
             port: Optional[pulumi.Input[int]] = None,
@@ -1360,7 +1360,7 @@ class AuthConfigActiveDirectory(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>`. The local admin (`local://<admin id>`) and the `test_username` must be added too. (list)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations of the resource (map)
         :param pulumi.Input[str] certificate: CA certificate for TLS if selfsigned (string)
         :param pulumi.Input[int] connection_timeout: ActiveDirectory connection timeout. Default `5000` (int)
         :param pulumi.Input[str] default_login_domain: ActiveDirectory defult login domain (string)
@@ -1373,7 +1373,7 @@ class AuthConfigActiveDirectory(pulumi.CustomResource):
         :param pulumi.Input[str] group_search_attribute: Group search attribute. Default `sAMAccountName` (string)
         :param pulumi.Input[str] group_search_base: Group search base (string)
         :param pulumi.Input[str] group_search_filter: Group search filter (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels of the resource (map)
         :param pulumi.Input[str] name: (Computed) The name of the resource (string)
         :param pulumi.Input[bool] nested_group_membership_enabled: Nested group membership enable. Default `false` (bool)
         :param pulumi.Input[int] port: ActiveDirectory port. Default `389` (int)
@@ -1453,7 +1453,7 @@ class AuthConfigActiveDirectory(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
+    def annotations(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Annotations of the resource (map)
         """
@@ -1557,7 +1557,7 @@ class AuthConfigActiveDirectory(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Labels of the resource (map)
         """

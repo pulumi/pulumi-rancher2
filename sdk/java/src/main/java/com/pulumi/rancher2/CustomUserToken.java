@@ -12,7 +12,6 @@ import com.pulumi.rancher2.Utilities;
 import com.pulumi.rancher2.inputs.CustomUserTokenState;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -110,14 +109,14 @@ public class CustomUserToken extends com.pulumi.resources.CustomResource {
      * (Computed) Annotations of the token (map)
      * 
      */
-    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> annotations;
+    @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> annotations;
 
     /**
      * @return (Computed) Annotations of the token (map)
      * 
      */
-    public Output<Map<String,Object>> annotations() {
+    public Output<Map<String,String>> annotations() {
         return this.annotations;
     }
     /**
@@ -180,14 +179,14 @@ public class CustomUserToken extends com.pulumi.resources.CustomResource {
      * (Computed) Labels of the token (map)
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> labels;
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> labels;
 
     /**
      * @return (Computed) Labels of the token (map)
      * 
      */
-    public Output<Map<String,Object>> labels() {
+    public Output<Map<String,String>> labels() {
         return this.labels;
     }
     /**

@@ -69,12 +69,12 @@ export class User extends pulumi.CustomResource {
     /**
      * Annotations for global role binding (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: any}>;
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
      * Labels for global role binding (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The user full name (string)
      */
@@ -142,12 +142,12 @@ export interface UserState {
     /**
      * Annotations for global role binding (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     enabled?: pulumi.Input<boolean>;
     /**
      * Labels for global role binding (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The user full name (string)
      */
@@ -173,12 +173,12 @@ export interface UserArgs {
     /**
      * Annotations for global role binding (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     enabled?: pulumi.Input<boolean>;
     /**
      * Labels for global role binding (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The user full name (string)
      */

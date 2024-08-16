@@ -57,9 +57,9 @@ type Setting struct {
 	pulumi.CustomResourceState
 
 	// Annotations for setting object (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Labels for setting object (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the setting (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The value of the setting (string)
@@ -100,9 +100,9 @@ func GetSetting(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Setting resources.
 type settingState struct {
 	// Annotations for setting object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// Labels for setting object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The name of the setting (string)
 	Name *string `pulumi:"name"`
 	// The value of the setting (string)
@@ -111,9 +111,9 @@ type settingState struct {
 
 type SettingState struct {
 	// Annotations for setting object (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// Labels for setting object (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The name of the setting (string)
 	Name pulumi.StringPtrInput
 	// The value of the setting (string)
@@ -126,9 +126,9 @@ func (SettingState) ElementType() reflect.Type {
 
 type settingArgs struct {
 	// Annotations for setting object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// Labels for setting object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The name of the setting (string)
 	Name *string `pulumi:"name"`
 	// The value of the setting (string)
@@ -138,9 +138,9 @@ type settingArgs struct {
 // The set of arguments for constructing a Setting resource.
 type SettingArgs struct {
 	// Annotations for setting object (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// Labels for setting object (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The name of the setting (string)
 	Name pulumi.StringPtrInput
 	// The value of the setting (string)
@@ -235,13 +235,13 @@ func (o SettingOutput) ToSettingOutputWithContext(ctx context.Context) SettingOu
 }
 
 // Annotations for setting object (map)
-func (o SettingOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *Setting) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o SettingOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Setting) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // Labels for setting object (map)
-func (o SettingOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *Setting) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o SettingOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Setting) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The name of the setting (string)

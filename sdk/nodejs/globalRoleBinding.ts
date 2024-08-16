@@ -66,7 +66,7 @@ export class GlobalRoleBinding extends pulumi.CustomResource {
     /**
      * Annotations for global role binding (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: any}>;
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * The role id from create global role binding (string)
      */
@@ -80,7 +80,7 @@ export class GlobalRoleBinding extends pulumi.CustomResource {
      *
      * **Note:** user `userId` OR group `groupPrincipalId` must be defined
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the global role binding (string)
      */
@@ -133,7 +133,7 @@ export interface GlobalRoleBindingState {
     /**
      * Annotations for global role binding (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The role id from create global role binding (string)
      */
@@ -147,7 +147,7 @@ export interface GlobalRoleBindingState {
      *
      * **Note:** user `userId` OR group `groupPrincipalId` must be defined
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the global role binding (string)
      */
@@ -165,7 +165,7 @@ export interface GlobalRoleBindingArgs {
     /**
      * Annotations for global role binding (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The role id from create global role binding (string)
      */
@@ -179,7 +179,7 @@ export interface GlobalRoleBindingArgs {
      *
      * **Note:** user `userId` OR group `groupPrincipalId` must be defined
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the global role binding (string)
      */

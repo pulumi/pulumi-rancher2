@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -69,13 +68,13 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
      * 
      */
     @Import(name="serverLabels")
-    private @Nullable Output<Map<String,Object>> serverLabels;
+    private @Nullable Output<Map<String,String>> serverLabels;
 
     /**
      * @return Map of the labels which will be assigned to the server
      * 
      */
-    public Optional<Output<Map<String,Object>>> serverLabels() {
+    public Optional<Output<Map<String,String>>> serverLabels() {
         return Optional.ofNullable(this.serverLabels);
     }
 
@@ -255,7 +254,7 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
          * @return builder
          * 
          */
-        public Builder serverLabels(@Nullable Output<Map<String,Object>> serverLabels) {
+        public Builder serverLabels(@Nullable Output<Map<String,String>> serverLabels) {
             $.serverLabels = serverLabels;
             return this;
         }
@@ -266,7 +265,7 @@ public final class NodeTemplateHetznerConfigArgs extends com.pulumi.resources.Re
          * @return builder
          * 
          */
-        public Builder serverLabels(Map<String,Object> serverLabels) {
+        public Builder serverLabels(Map<String,String> serverLabels) {
             return serverLabels(Output.of(serverLabels));
         }
 

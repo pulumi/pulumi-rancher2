@@ -122,14 +122,14 @@ namespace Pulumi.Rancher2
         }
 
         [Input("annotations")]
-        private Dictionary<string, object>? _annotations;
+        private Dictionary<string, string>? _annotations;
 
         /// <summary>
         /// Annotations for PodSecurityPolicyTemplate object (map)
         /// </summary>
-        public Dictionary<string, object> Annotations
+        public Dictionary<string, string> Annotations
         {
-            get => _annotations ?? (_annotations = new Dictionary<string, object>());
+            get => _annotations ?? (_annotations = new Dictionary<string, string>());
             set => _annotations = value;
         }
 
@@ -203,14 +203,14 @@ namespace Pulumi.Rancher2
         }
 
         [Input("labels")]
-        private Dictionary<string, object>? _labels;
+        private Dictionary<string, string>? _labels;
 
         /// <summary>
         /// Labels for PodSecurityPolicyTemplate object (map)
         /// </summary>
-        public Dictionary<string, object> Labels
+        public Dictionary<string, string> Labels
         {
-            get => _labels ?? (_labels = new Dictionary<string, object>());
+            get => _labels ?? (_labels = new Dictionary<string, string>());
             set => _labels = value;
         }
 
@@ -373,14 +373,14 @@ namespace Pulumi.Rancher2
         }
 
         [Input("annotations")]
-        private InputMap<object>? _annotations;
+        private InputMap<string>? _annotations;
 
         /// <summary>
         /// Annotations for PodSecurityPolicyTemplate object (map)
         /// </summary>
-        public InputMap<object> Annotations
+        public InputMap<string> Annotations
         {
-            get => _annotations ?? (_annotations = new InputMap<object>());
+            get => _annotations ?? (_annotations = new InputMap<string>());
             set => _annotations = value;
         }
 
@@ -454,14 +454,14 @@ namespace Pulumi.Rancher2
         }
 
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// Labels for PodSecurityPolicyTemplate object (map)
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
@@ -554,7 +554,7 @@ namespace Pulumi.Rancher2
         public readonly ImmutableArray<Outputs.GetPodSecurityPolicyTemplateAllowedHostPathResult> AllowedHostPaths;
         public readonly ImmutableArray<string> AllowedProcMountTypes;
         public readonly ImmutableArray<string> AllowedUnsafeSysctls;
-        public readonly ImmutableDictionary<string, object> Annotations;
+        public readonly ImmutableDictionary<string, string> Annotations;
         public readonly ImmutableArray<string> DefaultAddCapabilities;
         public readonly bool? DefaultAllowPrivilegeEscalation;
         public readonly string Description;
@@ -568,7 +568,7 @@ namespace Pulumi.Rancher2
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        public readonly ImmutableDictionary<string, object> Labels;
+        public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
         public readonly bool Privileged;
         public readonly bool ReadOnlyRootFilesystem;
@@ -596,7 +596,7 @@ namespace Pulumi.Rancher2
 
             ImmutableArray<string> allowedUnsafeSysctls,
 
-            ImmutableDictionary<string, object> annotations,
+            ImmutableDictionary<string, string> annotations,
 
             ImmutableArray<string> defaultAddCapabilities,
 
@@ -618,7 +618,7 @@ namespace Pulumi.Rancher2
 
             string id,
 
-            ImmutableDictionary<string, object> labels,
+            ImmutableDictionary<string, string> labels,
 
             string name,
 

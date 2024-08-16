@@ -16,7 +16,7 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// Annotations of the resource
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Annotations;
+        public readonly ImmutableDictionary<string, string> Annotations;
         /// <summary>
         /// (Computed) Cluster V2 cloud credential secret name (string)
         /// </summary>
@@ -40,7 +40,7 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// Labels of the resource
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Labels;
+        public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
         /// Machine config data
         /// </summary>
@@ -48,7 +48,7 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// Labels of the machine
         /// </summary>
-        public readonly ImmutableDictionary<string, object> MachineLabels;
+        public readonly ImmutableDictionary<string, string> MachineLabels;
         /// <summary>
         /// max unhealthy nodes for automated replacement to be allowed
         /// </summary>
@@ -96,7 +96,7 @@ namespace Pulumi.Rancher2.Outputs
 
         [OutputConstructor]
         private GetClusterV2RkeConfigMachinePoolResult(
-            ImmutableDictionary<string, object> annotations,
+            ImmutableDictionary<string, string> annotations,
 
             string? cloudCredentialSecretName,
 
@@ -108,11 +108,11 @@ namespace Pulumi.Rancher2.Outputs
 
             int? hostnameLengthLimit,
 
-            ImmutableDictionary<string, object> labels,
+            ImmutableDictionary<string, string> labels,
 
             Outputs.GetClusterV2RkeConfigMachinePoolMachineConfigResult machineConfig,
 
-            ImmutableDictionary<string, object> machineLabels,
+            ImmutableDictionary<string, string> machineLabels,
 
             string? maxUnhealthy,
 

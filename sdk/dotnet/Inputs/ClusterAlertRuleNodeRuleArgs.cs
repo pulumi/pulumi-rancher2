@@ -37,14 +37,14 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? NodeId { get; set; }
 
         [Input("selector")]
-        private InputMap<object>? _selector;
+        private InputMap<string>? _selector;
 
         /// <summary>
         /// Node rule selector
         /// </summary>
-        public InputMap<object> Selector
+        public InputMap<string> Selector
         {
-            get => _selector ?? (_selector = new InputMap<object>());
+            get => _selector ?? (_selector = new InputMap<string>());
             set => _selector = value;
         }
 

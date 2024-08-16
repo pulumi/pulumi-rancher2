@@ -48,7 +48,7 @@ export class Token extends pulumi.CustomResource {
     /**
      * (Computed) Annotations of the token (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: any}>;
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * Cluster ID for scoped token (string)
      */
@@ -68,7 +68,7 @@ export class Token extends pulumi.CustomResource {
     /**
      * (Computed) Labels of the token (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * (Computed) Token name (string)
      */
@@ -156,7 +156,7 @@ export interface TokenState {
     /**
      * (Computed) Annotations of the token (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Cluster ID for scoped token (string)
      */
@@ -176,7 +176,7 @@ export interface TokenState {
     /**
      * (Computed) Labels of the token (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * (Computed) Token name (string)
      */
@@ -212,7 +212,7 @@ export interface TokenArgs {
     /**
      * (Computed) Annotations of the token (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Cluster ID for scoped token (string)
      */
@@ -224,7 +224,7 @@ export interface TokenArgs {
     /**
      * (Computed) Labels of the token (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Renew expired or disabled token
      */

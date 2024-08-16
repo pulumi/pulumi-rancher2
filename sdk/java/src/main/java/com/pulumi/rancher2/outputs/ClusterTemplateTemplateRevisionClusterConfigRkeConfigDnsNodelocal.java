@@ -4,7 +4,6 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -18,7 +17,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodel
      * @return Node selector key pair
      * 
      */
-    private @Nullable Map<String,Object> nodeSelector;
+    private @Nullable Map<String,String> nodeSelector;
 
     private ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal() {}
     public Optional<String> ipAddress() {
@@ -28,7 +27,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodel
      * @return Node selector key pair
      * 
      */
-    public Map<String,Object> nodeSelector() {
+    public Map<String,String> nodeSelector() {
         return this.nodeSelector == null ? Map.of() : this.nodeSelector;
     }
 
@@ -42,7 +41,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodel
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String ipAddress;
-        private @Nullable Map<String,Object> nodeSelector;
+        private @Nullable Map<String,String> nodeSelector;
         public Builder() {}
         public Builder(ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal defaults) {
     	      Objects.requireNonNull(defaults);
@@ -57,7 +56,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodel
             return this;
         }
         @CustomType.Setter
-        public Builder nodeSelector(@Nullable Map<String,Object> nodeSelector) {
+        public Builder nodeSelector(@Nullable Map<String,String> nodeSelector) {
 
             this.nodeSelector = nodeSelector;
             return this;

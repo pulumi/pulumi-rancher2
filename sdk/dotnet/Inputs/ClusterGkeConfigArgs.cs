@@ -197,14 +197,14 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? KubernetesDashboard { get; set; }
 
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// Labels for the Cluster (map)
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
@@ -329,14 +329,14 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? Region { get; set; }
 
         [Input("resourceLabels")]
-        private InputMap<object>? _resourceLabels;
+        private InputMap<string>? _resourceLabels;
 
         /// <summary>
         /// The map of Kubernetes labels (key/value pairs) to be applied to each cluster
         /// </summary>
-        public InputMap<object> ResourceLabels
+        public InputMap<string> ResourceLabels
         {
-            get => _resourceLabels ?? (_resourceLabels = new InputMap<object>());
+            get => _resourceLabels ?? (_resourceLabels = new InputMap<string>());
             set => _resourceLabels = value;
         }
 

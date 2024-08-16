@@ -58,13 +58,13 @@ type LookupGlobalDnsProviderArgs struct {
 type LookupGlobalDnsProviderResult struct {
 	AlidnsConfig GetGlobalDnsProviderAlidnsConfig `pulumi:"alidnsConfig"`
 	// (Computed) Annotations of the resource (map)
-	Annotations      map[string]interface{}               `pulumi:"annotations"`
+	Annotations      map[string]string                    `pulumi:"annotations"`
 	CloudflareConfig GetGlobalDnsProviderCloudflareConfig `pulumi:"cloudflareConfig"`
 	DnsProvider      string                               `pulumi:"dnsProvider"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels of the resource (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// (Computed) The name of the global DNS provider (string)
 	Name          string                            `pulumi:"name"`
 	RootDomain    string                            `pulumi:"rootDomain"`
@@ -114,8 +114,8 @@ func (o LookupGlobalDnsProviderResultOutput) AlidnsConfig() GetGlobalDnsProvider
 }
 
 // (Computed) Annotations of the resource (map)
-func (o LookupGlobalDnsProviderResultOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupGlobalDnsProviderResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+func (o LookupGlobalDnsProviderResultOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupGlobalDnsProviderResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 func (o LookupGlobalDnsProviderResultOutput) CloudflareConfig() GetGlobalDnsProviderCloudflareConfigOutput {
@@ -132,8 +132,8 @@ func (o LookupGlobalDnsProviderResultOutput) Id() pulumi.StringOutput {
 }
 
 // (Computed) Labels of the resource (map)
-func (o LookupGlobalDnsProviderResultOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupGlobalDnsProviderResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+func (o LookupGlobalDnsProviderResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupGlobalDnsProviderResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // (Computed) The name of the global DNS provider (string)

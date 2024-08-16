@@ -134,7 +134,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Annotations for notifier object (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Annotations;
+        public readonly ImmutableDictionary<string, string> Annotations;
         public readonly string ClusterId;
         /// <summary>
         /// (Computed) The notifier description (string)
@@ -151,7 +151,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Labels for notifier object (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Labels;
+        public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
         /// (Computed) MSTeams config for notifier (list maxitems:1)
         /// </summary>
@@ -180,7 +180,7 @@ namespace Pulumi.Rancher2
 
         [OutputConstructor]
         private GetNotifierResult(
-            ImmutableDictionary<string, object> annotations,
+            ImmutableDictionary<string, string> annotations,
 
             string clusterId,
 
@@ -190,7 +190,7 @@ namespace Pulumi.Rancher2
 
             string id,
 
-            ImmutableDictionary<string, object> labels,
+            ImmutableDictionary<string, string> labels,
 
             Outputs.GetNotifierMsteamsConfigResult? msteamsConfig,
 

@@ -60,7 +60,7 @@ type LookupEtcdBackupArgs struct {
 // A collection of values returned by getEtcdBackup.
 type LookupEtcdBackupResult struct {
 	// (Computed) Annotations for Etcd Backup object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// (Computed) Backup config for etcd backup (list maxitems:1)
 	BackupConfig GetEtcdBackupBackupConfig `pulumi:"backupConfig"`
 	ClusterId    string                    `pulumi:"clusterId"`
@@ -69,7 +69,7 @@ type LookupEtcdBackupResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels for Etcd Backup object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// (Computed) Manual execution of the Etcd Backup. Default `false` (bool)
 	Manual bool   `pulumi:"manual"`
 	Name   string `pulumi:"name"`
@@ -118,8 +118,8 @@ func (o LookupEtcdBackupResultOutput) ToLookupEtcdBackupResultOutputWithContext(
 }
 
 // (Computed) Annotations for Etcd Backup object (map)
-func (o LookupEtcdBackupResultOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupEtcdBackupResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+func (o LookupEtcdBackupResultOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupEtcdBackupResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // (Computed) Backup config for etcd backup (list maxitems:1)
@@ -142,8 +142,8 @@ func (o LookupEtcdBackupResultOutput) Id() pulumi.StringOutput {
 }
 
 // (Computed) Labels for Etcd Backup object (map)
-func (o LookupEtcdBackupResultOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupEtcdBackupResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+func (o LookupEtcdBackupResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupEtcdBackupResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // (Computed) Manual execution of the Etcd Backup. Default `false` (bool)

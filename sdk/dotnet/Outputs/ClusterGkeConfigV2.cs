@@ -48,7 +48,7 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// Labels for the Cluster (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Labels;
+        public readonly ImmutableDictionary<string, string>? Labels;
         /// <summary>
         /// The GKE cluster locations
         /// </summary>
@@ -124,7 +124,7 @@ namespace Pulumi.Rancher2.Outputs
 
             string? kubernetesVersion,
 
-            ImmutableDictionary<string, object>? labels,
+            ImmutableDictionary<string, string>? labels,
 
             ImmutableArray<string> locations,
 

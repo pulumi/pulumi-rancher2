@@ -64,7 +64,7 @@ type LookupClusterResult struct {
 	// (Optional) The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
 	AksConfigV2 GetClusterAksConfigV2 `pulumi:"aksConfigV2"`
 	// (Computed) Annotations for Node Pool object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// (Computed) K8s cluster ca cert (string)
 	CaCert string `pulumi:"caCert"`
 	// (Computed) Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
@@ -112,8 +112,8 @@ type LookupClusterResult struct {
 	// (Computed) Kube Config generated for the cluster (string)
 	KubeConfig string `pulumi:"kubeConfig"`
 	// (Computed) Labels for Node Pool object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	Name   string                 `pulumi:"name"`
+	Labels map[string]string `pulumi:"labels"`
+	Name   string            `pulumi:"name"`
 	// (Computed) The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	OkeConfig GetClusterOkeConfig `pulumi:"okeConfig"`
 	// (Computed) The RKE2 configuration for `rke2` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
@@ -179,8 +179,8 @@ func (o LookupClusterResultOutput) AksConfigV2() GetClusterAksConfigV2Output {
 }
 
 // (Computed) Annotations for Node Pool object (map)
-func (o LookupClusterResultOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupClusterResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+func (o LookupClusterResultOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupClusterResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // (Computed) K8s cluster ca cert (string)
@@ -302,8 +302,8 @@ func (o LookupClusterResultOutput) KubeConfig() pulumi.StringOutput {
 }
 
 // (Computed) Labels for Node Pool object (map)
-func (o LookupClusterResultOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupClusterResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+func (o LookupClusterResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupClusterResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupClusterResultOutput) Name() pulumi.StringOutput {

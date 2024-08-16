@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterEksConfigV2NodeGroup;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -96,7 +95,7 @@ public final class GetClusterEksConfigV2 {
      * @return The EKS cluster tags
      * 
      */
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
 
     private GetClusterEksConfigV2() {}
     /**
@@ -208,7 +207,7 @@ public final class GetClusterEksConfigV2 {
      * @return The EKS cluster tags
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
 
@@ -236,7 +235,7 @@ public final class GetClusterEksConfigV2 {
         private @Nullable List<String> securityGroups;
         private @Nullable String serviceRole;
         private @Nullable List<String> subnets;
-        private @Nullable Map<String,Object> tags;
+        private @Nullable Map<String,String> tags;
         public Builder() {}
         public Builder(GetClusterEksConfigV2 defaults) {
     	      Objects.requireNonNull(defaults);
@@ -380,7 +379,7 @@ public final class GetClusterEksConfigV2 {
             return subnets(List.of(subnets));
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
             return this;

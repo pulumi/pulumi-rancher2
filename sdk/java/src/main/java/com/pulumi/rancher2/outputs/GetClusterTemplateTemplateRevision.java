@@ -8,7 +8,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConfig;
 import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionQuestion;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -22,7 +21,7 @@ public final class GetClusterTemplateTemplateRevision {
      * @return (Computed) Annotations for the cluster template (map)
      * 
      */
-    private Map<String,Object> annotations;
+    private Map<String,String> annotations;
     /**
      * @return Cluster configuration
      * 
@@ -52,7 +51,7 @@ public final class GetClusterTemplateTemplateRevision {
      * @return (Computed) Labels for the cluster template (map)
      * 
      */
-    private Map<String,Object> labels;
+    private Map<String,String> labels;
     /**
      * @return The cluster template name (string)
      * 
@@ -69,7 +68,7 @@ public final class GetClusterTemplateTemplateRevision {
      * @return (Computed) Annotations for the cluster template (map)
      * 
      */
-    public Map<String,Object> annotations() {
+    public Map<String,String> annotations() {
         return this.annotations;
     }
     /**
@@ -111,7 +110,7 @@ public final class GetClusterTemplateTemplateRevision {
      * @return (Computed) Labels for the cluster template (map)
      * 
      */
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels;
     }
     /**
@@ -138,13 +137,13 @@ public final class GetClusterTemplateTemplateRevision {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Map<String,Object> annotations;
+        private Map<String,String> annotations;
         private GetClusterTemplateTemplateRevisionClusterConfig clusterConfig;
         private String clusterTemplateId;
         private @Nullable Boolean default_;
         private @Nullable Boolean enabled;
         private String id;
-        private Map<String,Object> labels;
+        private Map<String,String> labels;
         private String name;
         private @Nullable List<GetClusterTemplateTemplateRevisionQuestion> questions;
         public Builder() {}
@@ -162,7 +161,7 @@ public final class GetClusterTemplateTemplateRevision {
         }
 
         @CustomType.Setter
-        public Builder annotations(Map<String,Object> annotations) {
+        public Builder annotations(Map<String,String> annotations) {
             if (annotations == null) {
               throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevision", "annotations");
             }
@@ -206,7 +205,7 @@ public final class GetClusterTemplateTemplateRevision {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(Map<String,Object> labels) {
+        public Builder labels(Map<String,String> labels) {
             if (labels == null) {
               throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevision", "labels");
             }

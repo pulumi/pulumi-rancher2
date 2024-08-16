@@ -10,7 +10,6 @@ import com.pulumi.rancher2.inputs.ClusterRkeConfigServicesKubeApiAuditLogArgs;
 import com.pulumi.rancher2.inputs.ClusterRkeConfigServicesKubeApiEventRateLimitArgs;
 import com.pulumi.rancher2.inputs.ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -88,13 +87,13 @@ public final class ClusterRkeConfigServicesKubeApiArgs extends com.pulumi.resour
      * 
      */
     @Import(name="extraArgs")
-    private @Nullable Output<Map<String,Object>> extraArgs;
+    private @Nullable Output<Map<String,String>> extraArgs;
 
     /**
      * @return Extra arguments for scheduler service (map)
      * 
      */
-    public Optional<Output<Map<String,Object>>> extraArgs() {
+    public Optional<Output<Map<String,String>>> extraArgs() {
         return Optional.ofNullable(this.extraArgs);
     }
 
@@ -328,7 +327,7 @@ public final class ClusterRkeConfigServicesKubeApiArgs extends com.pulumi.resour
          * @return builder
          * 
          */
-        public Builder extraArgs(@Nullable Output<Map<String,Object>> extraArgs) {
+        public Builder extraArgs(@Nullable Output<Map<String,String>> extraArgs) {
             $.extraArgs = extraArgs;
             return this;
         }
@@ -339,7 +338,7 @@ public final class ClusterRkeConfigServicesKubeApiArgs extends com.pulumi.resour
          * @return builder
          * 
          */
-        public Builder extraArgs(Map<String,Object> extraArgs) {
+        public Builder extraArgs(Map<String,String> extraArgs) {
             return extraArgs(Output.of(extraArgs));
         }
 

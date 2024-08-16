@@ -50,9 +50,9 @@ type Feature struct {
 	pulumi.CustomResourceState
 
 	// Annotations for feature object (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Labels for feature object (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the feature (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The value of the feature. Default: `false` (bool)
@@ -90,9 +90,9 @@ func GetFeature(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Feature resources.
 type featureState struct {
 	// Annotations for feature object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// Labels for feature object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The name of the feature (string)
 	Name *string `pulumi:"name"`
 	// The value of the feature. Default: `false` (bool)
@@ -101,9 +101,9 @@ type featureState struct {
 
 type FeatureState struct {
 	// Annotations for feature object (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// Labels for feature object (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The name of the feature (string)
 	Name pulumi.StringPtrInput
 	// The value of the feature. Default: `false` (bool)
@@ -116,9 +116,9 @@ func (FeatureState) ElementType() reflect.Type {
 
 type featureArgs struct {
 	// Annotations for feature object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// Labels for feature object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The name of the feature (string)
 	Name *string `pulumi:"name"`
 	// The value of the feature. Default: `false` (bool)
@@ -128,9 +128,9 @@ type featureArgs struct {
 // The set of arguments for constructing a Feature resource.
 type FeatureArgs struct {
 	// Annotations for feature object (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// Labels for feature object (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The name of the feature (string)
 	Name pulumi.StringPtrInput
 	// The value of the feature. Default: `false` (bool)
@@ -225,13 +225,13 @@ func (o FeatureOutput) ToFeatureOutputWithContext(ctx context.Context) FeatureOu
 }
 
 // Annotations for feature object (map)
-func (o FeatureOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *Feature) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o FeatureOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Feature) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // Labels for feature object (map)
-func (o FeatureOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *Feature) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o FeatureOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Feature) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The name of the feature (string)

@@ -62,7 +62,7 @@ type LookupProjectRoleTemplateBindingArgs struct {
 // A collection of values returned by getProjectRoleTemplateBinding.
 type LookupProjectRoleTemplateBindingResult struct {
 	// (Computed) Annotations of the resource (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// (Computed) The group ID to assign project role template binding (string)
 	GroupId string `pulumi:"groupId"`
 	// (Computed) The groupPrincipal ID to assign project role template binding (string)
@@ -70,10 +70,10 @@ type LookupProjectRoleTemplateBindingResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels of the resource (map)
-	Labels         map[string]interface{} `pulumi:"labels"`
-	Name           string                 `pulumi:"name"`
-	ProjectId      string                 `pulumi:"projectId"`
-	RoleTemplateId string                 `pulumi:"roleTemplateId"`
+	Labels         map[string]string `pulumi:"labels"`
+	Name           string            `pulumi:"name"`
+	ProjectId      string            `pulumi:"projectId"`
+	RoleTemplateId string            `pulumi:"roleTemplateId"`
 	// (Computed) The user ID to assign project role template binding (string)
 	UserId string `pulumi:"userId"`
 	// (Computed) The userPrincipal ID to assign project role template binding (string)
@@ -123,8 +123,8 @@ func (o LookupProjectRoleTemplateBindingResultOutput) ToLookupProjectRoleTemplat
 }
 
 // (Computed) Annotations of the resource (map)
-func (o LookupProjectRoleTemplateBindingResultOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupProjectRoleTemplateBindingResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+func (o LookupProjectRoleTemplateBindingResultOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupProjectRoleTemplateBindingResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // (Computed) The group ID to assign project role template binding (string)
@@ -143,8 +143,8 @@ func (o LookupProjectRoleTemplateBindingResultOutput) Id() pulumi.StringOutput {
 }
 
 // (Computed) Labels of the resource (map)
-func (o LookupProjectRoleTemplateBindingResultOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupProjectRoleTemplateBindingResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+func (o LookupProjectRoleTemplateBindingResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupProjectRoleTemplateBindingResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupProjectRoleTemplateBindingResultOutput) Name() pulumi.StringOutput {

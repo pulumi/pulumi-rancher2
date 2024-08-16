@@ -48,7 +48,7 @@ export class AuthConfigActiveDirectory extends pulumi.CustomResource {
     /**
      * Annotations of the resource (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: any}>;
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * CA certificate for TLS if selfsigned (string)
      */
@@ -100,7 +100,7 @@ export class AuthConfigActiveDirectory extends pulumi.CustomResource {
     /**
      * Labels of the resource (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * (Computed) The name of the resource (string)
      */
@@ -304,7 +304,7 @@ export interface AuthConfigActiveDirectoryState {
     /**
      * Annotations of the resource (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * CA certificate for TLS if selfsigned (string)
      */
@@ -356,7 +356,7 @@ export interface AuthConfigActiveDirectoryState {
     /**
      * Labels of the resource (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * (Computed) The name of the resource (string)
      */
@@ -450,7 +450,7 @@ export interface AuthConfigActiveDirectoryArgs {
     /**
      * Annotations of the resource (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * CA certificate for TLS if selfsigned (string)
      */
@@ -502,7 +502,7 @@ export interface AuthConfigActiveDirectoryArgs {
     /**
      * Labels of the resource (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Nested group membership enable. Default `false` (bool)
      */

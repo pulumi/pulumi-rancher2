@@ -20,13 +20,13 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// RKE options for network (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Options;
+        public readonly ImmutableDictionary<string, string>? Options;
 
         [OutputConstructor]
         private ClusterRkeConfigAuthorization(
             string? mode,
 
-            ImmutableDictionary<string, object>? options)
+            ImmutableDictionary<string, string>? options)
         {
             Mode = mode;
             Options = options;

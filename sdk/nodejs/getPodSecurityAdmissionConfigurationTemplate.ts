@@ -20,8 +20,8 @@ export function getPodSecurityAdmissionConfigurationTemplate(args: GetPodSecurit
  * A collection of arguments for invoking getPodSecurityAdmissionConfigurationTemplate.
  */
 export interface GetPodSecurityAdmissionConfigurationTemplateArgs {
-    annotations?: {[key: string]: any};
-    labels?: {[key: string]: any};
+    annotations?: {[key: string]: string};
+    labels?: {[key: string]: string};
     name: string;
 }
 
@@ -29,7 +29,7 @@ export interface GetPodSecurityAdmissionConfigurationTemplateArgs {
  * A collection of values returned by getPodSecurityAdmissionConfigurationTemplate.
  */
 export interface GetPodSecurityAdmissionConfigurationTemplateResult {
-    readonly annotations: {[key: string]: any};
+    readonly annotations: {[key: string]: string};
     readonly defaults: outputs.GetPodSecurityAdmissionConfigurationTemplateDefaults;
     readonly description: string;
     readonly exemptions: outputs.GetPodSecurityAdmissionConfigurationTemplateExemptions;
@@ -37,7 +37,7 @@ export interface GetPodSecurityAdmissionConfigurationTemplateResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    readonly labels: {[key: string]: any};
+    readonly labels: {[key: string]: string};
     readonly name: string;
 }
 export function getPodSecurityAdmissionConfigurationTemplateOutput(args: GetPodSecurityAdmissionConfigurationTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPodSecurityAdmissionConfigurationTemplateResult> {
@@ -48,7 +48,7 @@ export function getPodSecurityAdmissionConfigurationTemplateOutput(args: GetPodS
  * A collection of arguments for invoking getPodSecurityAdmissionConfigurationTemplate.
  */
 export interface GetPodSecurityAdmissionConfigurationTemplateOutputArgs {
-    annotations?: pulumi.Input<{[key: string]: any}>;
-    labels?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     name: pulumi.Input<string>;
 }

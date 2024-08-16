@@ -21,7 +21,6 @@ import com.pulumi.rancher2.outputs.GetClusterOkeConfig;
 import com.pulumi.rancher2.outputs.GetClusterRke2Config;
 import com.pulumi.rancher2.outputs.GetClusterRkeConfig;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -48,7 +47,7 @@ public final class GetClusterResult {
      * @return (Computed) Annotations for Node Pool object (map)
      * 
      */
-    private Map<String,Object> annotations;
+    private Map<String,String> annotations;
     /**
      * @return (Computed) K8s cluster ca cert (string)
      * 
@@ -165,7 +164,7 @@ public final class GetClusterResult {
      * @return (Computed) Labels for Node Pool object (map)
      * 
      */
-    private Map<String,Object> labels;
+    private Map<String,String> labels;
     private String name;
     /**
      * @return (Computed) The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
@@ -214,7 +213,7 @@ public final class GetClusterResult {
      * @return (Computed) Annotations for Node Pool object (map)
      * 
      */
-    public Map<String,Object> annotations() {
+    public Map<String,String> annotations() {
         return this.annotations;
     }
     /**
@@ -381,7 +380,7 @@ public final class GetClusterResult {
      * @return (Computed) Labels for Node Pool object (map)
      * 
      */
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels;
     }
     public String name() {
@@ -428,7 +427,7 @@ public final class GetClusterResult {
         private List<String> agentEnvVars;
         private GetClusterAksConfig aksConfig;
         private GetClusterAksConfigV2 aksConfigV2;
-        private Map<String,Object> annotations;
+        private Map<String,String> annotations;
         private String caCert;
         private GetClusterClusterAuthEndpoint clusterAuthEndpoint;
         private GetClusterClusterMonitoringInput clusterMonitoringInput;
@@ -453,7 +452,7 @@ public final class GetClusterResult {
         private String id;
         private GetClusterK3sConfig k3sConfig;
         private String kubeConfig;
-        private Map<String,Object> labels;
+        private Map<String,String> labels;
         private String name;
         private GetClusterOkeConfig okeConfig;
         private GetClusterRke2Config rke2Config;
@@ -526,7 +525,7 @@ public final class GetClusterResult {
             return this;
         }
         @CustomType.Setter
-        public Builder annotations(Map<String,Object> annotations) {
+        public Builder annotations(Map<String,String> annotations) {
             if (annotations == null) {
               throw new MissingRequiredPropertyException("GetClusterResult", "annotations");
             }
@@ -729,7 +728,7 @@ public final class GetClusterResult {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(Map<String,Object> labels) {
+        public Builder labels(Map<String,String> labels) {
             if (labels == null) {
               throw new MissingRequiredPropertyException("GetClusterResult", "labels");
             }

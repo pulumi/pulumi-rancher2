@@ -48,7 +48,7 @@ export class NodePool extends pulumi.CustomResource {
     /**
      * Annotations for Node Pool object (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: any}>;
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * The RKE cluster id to use Node Pool (string)
      */
@@ -76,7 +76,7 @@ export class NodePool extends pulumi.CustomResource {
     /**
      * Labels for Node Pool object (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the Node Pool (string)
      */
@@ -161,7 +161,7 @@ export interface NodePoolState {
     /**
      * Annotations for Node Pool object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The RKE cluster id to use Node Pool (string)
      */
@@ -189,7 +189,7 @@ export interface NodePoolState {
     /**
      * Labels for Node Pool object (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the Node Pool (string)
      */
@@ -219,7 +219,7 @@ export interface NodePoolArgs {
     /**
      * Annotations for Node Pool object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The RKE cluster id to use Node Pool (string)
      */
@@ -247,7 +247,7 @@ export interface NodePoolArgs {
     /**
      * Labels for Node Pool object (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the Node Pool (string)
      */

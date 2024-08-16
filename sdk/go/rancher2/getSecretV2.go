@@ -35,18 +35,18 @@ type LookupSecretV2Args struct {
 // A collection of values returned by getSecretV2.
 type LookupSecretV2Result struct {
 	// (Computed) Annotations for the secret v2 (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
-	ClusterId   string                 `pulumi:"clusterId"`
+	Annotations map[string]string `pulumi:"annotations"`
+	ClusterId   string            `pulumi:"clusterId"`
 	// (Computed/Sensitive) The data of the secret v2 (map)
-	Data map[string]interface{} `pulumi:"data"`
+	Data map[string]string `pulumi:"data"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) If set to true, any secret update will remove and recreate the secret. This is a beta field enabled by k8s `ImmutableEphemeralVolumes` feature gate (bool)
 	Immutable bool `pulumi:"immutable"`
 	// (Computed) Labels for the secret v2 (map)
-	Labels    map[string]interface{} `pulumi:"labels"`
-	Name      string                 `pulumi:"name"`
-	Namespace *string                `pulumi:"namespace"`
+	Labels    map[string]string `pulumi:"labels"`
+	Name      string            `pulumi:"name"`
+	Namespace *string           `pulumi:"namespace"`
 	// (Computed) The k8s resource version (string)
 	ResourceVersion string `pulumi:"resourceVersion"`
 	// (Computed) The type of the k8s secret, used to facilitate programmatic handling of secret data, [More info](https://github.com/kubernetes/api/blob/release-1.20/core/v1/types.go#L5772) about k8s secret types and expected format (string)
@@ -96,8 +96,8 @@ func (o LookupSecretV2ResultOutput) ToLookupSecretV2ResultOutputWithContext(ctx 
 }
 
 // (Computed) Annotations for the secret v2 (map)
-func (o LookupSecretV2ResultOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupSecretV2Result) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+func (o LookupSecretV2ResultOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupSecretV2Result) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 func (o LookupSecretV2ResultOutput) ClusterId() pulumi.StringOutput {
@@ -105,8 +105,8 @@ func (o LookupSecretV2ResultOutput) ClusterId() pulumi.StringOutput {
 }
 
 // (Computed/Sensitive) The data of the secret v2 (map)
-func (o LookupSecretV2ResultOutput) Data() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupSecretV2Result) map[string]interface{} { return v.Data }).(pulumi.MapOutput)
+func (o LookupSecretV2ResultOutput) Data() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupSecretV2Result) map[string]string { return v.Data }).(pulumi.StringMapOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -120,8 +120,8 @@ func (o LookupSecretV2ResultOutput) Immutable() pulumi.BoolOutput {
 }
 
 // (Computed) Labels for the secret v2 (map)
-func (o LookupSecretV2ResultOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupSecretV2Result) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+func (o LookupSecretV2ResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupSecretV2Result) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupSecretV2ResultOutput) Name() pulumi.StringOutput {

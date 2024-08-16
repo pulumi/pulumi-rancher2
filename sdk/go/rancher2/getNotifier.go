@@ -64,8 +64,8 @@ type LookupNotifierArgs struct {
 // A collection of values returned by getNotifier.
 type LookupNotifierResult struct {
 	// (Computed) Annotations for notifier object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
-	ClusterId   string                 `pulumi:"clusterId"`
+	Annotations map[string]string `pulumi:"annotations"`
+	ClusterId   string            `pulumi:"clusterId"`
 	// (Computed) The notifier description (string)
 	Description string `pulumi:"description"`
 	// (Computed) Dingtalk config for notifier (list maxitems:1)
@@ -73,7 +73,7 @@ type LookupNotifierResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels for notifier object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// (Computed) MSTeams config for notifier (list maxitems:1)
 	MsteamsConfig *GetNotifierMsteamsConfig `pulumi:"msteamsConfig"`
 	Name          string                    `pulumi:"name"`
@@ -134,8 +134,8 @@ func (o LookupNotifierResultOutput) ToLookupNotifierResultOutputWithContext(ctx 
 }
 
 // (Computed) Annotations for notifier object (map)
-func (o LookupNotifierResultOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupNotifierResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+func (o LookupNotifierResultOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupNotifierResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 func (o LookupNotifierResultOutput) ClusterId() pulumi.StringOutput {
@@ -158,8 +158,8 @@ func (o LookupNotifierResultOutput) Id() pulumi.StringOutput {
 }
 
 // (Computed) Labels for notifier object (map)
-func (o LookupNotifierResultOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupNotifierResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+func (o LookupNotifierResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupNotifierResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // (Computed) MSTeams config for notifier (list maxitems:1)

@@ -104,7 +104,7 @@ namespace Pulumi.Rancher2
         /// Annotations for Global DNS Provider (map)
         /// </summary>
         [Output("annotations")]
-        public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Annotations { get; private set; } = null!;
 
         [Output("cloudflareConfig")]
         public Output<Outputs.GlobalDnsProviderCloudflareConfig?> CloudflareConfig { get; private set; } = null!;
@@ -119,7 +119,7 @@ namespace Pulumi.Rancher2
         /// Labels for Global DNS Provider (map)
         /// </summary>
         [Output("labels")]
-        public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
         /// The name of the Global DNS Provider (string)
@@ -186,14 +186,14 @@ namespace Pulumi.Rancher2
         public Input<Inputs.GlobalDnsProviderAlidnsConfigArgs>? AlidnsConfig { get; set; }
 
         [Input("annotations")]
-        private InputMap<object>? _annotations;
+        private InputMap<string>? _annotations;
 
         /// <summary>
         /// Annotations for Global DNS Provider (map)
         /// </summary>
-        public InputMap<object> Annotations
+        public InputMap<string> Annotations
         {
-            get => _annotations ?? (_annotations = new InputMap<object>());
+            get => _annotations ?? (_annotations = new InputMap<string>());
             set => _annotations = value;
         }
 
@@ -201,14 +201,14 @@ namespace Pulumi.Rancher2
         public Input<Inputs.GlobalDnsProviderCloudflareConfigArgs>? CloudflareConfig { get; set; }
 
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// Labels for Global DNS Provider (map)
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
@@ -239,14 +239,14 @@ namespace Pulumi.Rancher2
         public Input<Inputs.GlobalDnsProviderAlidnsConfigGetArgs>? AlidnsConfig { get; set; }
 
         [Input("annotations")]
-        private InputMap<object>? _annotations;
+        private InputMap<string>? _annotations;
 
         /// <summary>
         /// Annotations for Global DNS Provider (map)
         /// </summary>
-        public InputMap<object> Annotations
+        public InputMap<string> Annotations
         {
-            get => _annotations ?? (_annotations = new InputMap<object>());
+            get => _annotations ?? (_annotations = new InputMap<string>());
             set => _annotations = value;
         }
 
@@ -260,14 +260,14 @@ namespace Pulumi.Rancher2
         public Input<string>? DnsProvider { get; set; }
 
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// Labels for Global DNS Provider (map)
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 

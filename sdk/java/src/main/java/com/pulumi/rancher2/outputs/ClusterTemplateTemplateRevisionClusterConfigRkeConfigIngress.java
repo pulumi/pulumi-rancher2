@@ -8,7 +8,6 @@ import com.pulumi.rancher2.outputs.ClusterTemplateTemplateRevisionClusterConfigR
 import com.pulumi.rancher2.outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -20,12 +19,12 @@ import javax.annotation.Nullable;
 public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress {
     private @Nullable Boolean defaultBackend;
     private @Nullable String dnsPolicy;
-    private @Nullable Map<String,Object> extraArgs;
+    private @Nullable Map<String,String> extraArgs;
     private @Nullable Integer httpPort;
     private @Nullable Integer httpsPort;
     private @Nullable String networkMode;
-    private @Nullable Map<String,Object> nodeSelector;
-    private @Nullable Map<String,Object> options;
+    private @Nullable Map<String,String> nodeSelector;
+    private @Nullable Map<String,String> options;
     private @Nullable String provider;
     /**
      * @return Ingress add-on tolerations
@@ -45,7 +44,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress 
     public Optional<String> dnsPolicy() {
         return Optional.ofNullable(this.dnsPolicy);
     }
-    public Map<String,Object> extraArgs() {
+    public Map<String,String> extraArgs() {
         return this.extraArgs == null ? Map.of() : this.extraArgs;
     }
     public Optional<Integer> httpPort() {
@@ -57,10 +56,10 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress 
     public Optional<String> networkMode() {
         return Optional.ofNullable(this.networkMode);
     }
-    public Map<String,Object> nodeSelector() {
+    public Map<String,String> nodeSelector() {
         return this.nodeSelector == null ? Map.of() : this.nodeSelector;
     }
-    public Map<String,Object> options() {
+    public Map<String,String> options() {
         return this.options == null ? Map.of() : this.options;
     }
     public Optional<String> provider() {
@@ -92,12 +91,12 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress 
     public static final class Builder {
         private @Nullable Boolean defaultBackend;
         private @Nullable String dnsPolicy;
-        private @Nullable Map<String,Object> extraArgs;
+        private @Nullable Map<String,String> extraArgs;
         private @Nullable Integer httpPort;
         private @Nullable Integer httpsPort;
         private @Nullable String networkMode;
-        private @Nullable Map<String,Object> nodeSelector;
-        private @Nullable Map<String,Object> options;
+        private @Nullable Map<String,String> nodeSelector;
+        private @Nullable Map<String,String> options;
         private @Nullable String provider;
         private @Nullable List<ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressToleration> tolerations;
         private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy updateStrategy;
@@ -130,7 +129,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress 
             return this;
         }
         @CustomType.Setter
-        public Builder extraArgs(@Nullable Map<String,Object> extraArgs) {
+        public Builder extraArgs(@Nullable Map<String,String> extraArgs) {
 
             this.extraArgs = extraArgs;
             return this;
@@ -154,13 +153,13 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress 
             return this;
         }
         @CustomType.Setter
-        public Builder nodeSelector(@Nullable Map<String,Object> nodeSelector) {
+        public Builder nodeSelector(@Nullable Map<String,String> nodeSelector) {
 
             this.nodeSelector = nodeSelector;
             return this;
         }
         @CustomType.Setter
-        public Builder options(@Nullable Map<String,Object> options) {
+        public Builder options(@Nullable Map<String,String> options) {
 
             this.options = options;
             return this;

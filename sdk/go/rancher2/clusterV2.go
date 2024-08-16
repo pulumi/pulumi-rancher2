@@ -25,7 +25,7 @@ type ClusterV2 struct {
 	// Agent env vars is a list of additional environment variables to be appended to the `cattle-cluster-agent` and `fleet-agent` deployment, and the plan for the [system upgrade controller](https://github.com/rancher/system-upgrade-controller) to upgrade nodes.
 	AgentEnvVars ClusterV2AgentEnvVarArrayOutput `pulumi:"agentEnvVars"`
 	// Annotations for the Cluster.
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Cloud credential secret name is the secret to be used when a cloud credential secret name is not specified at the machine pool level.
 	CloudCredentialSecretName pulumi.StringPtrOutput `pulumi:"cloudCredentialSecretName"`
 	// Cluster agent deployment customization specifies the additional tolerations, new affinity rules, and new resource requirements on the `cattle-cluster-agent` deployment. This argument is available in Rancher v2.7.5 and above.
@@ -51,7 +51,7 @@ type ClusterV2 struct {
 	// The RKE2 or K3s version for the cluster.
 	KubernetesVersion pulumi.StringOutput `pulumi:"kubernetesVersion"`
 	// Labels for the Cluster.
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Local auth endpoint configures the Authorized Cluster Endpoint (ACE) which can be used to directly access the Kubernetes API server, without requiring communication through Rancher. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters).
 	LocalAuthEndpoint ClusterV2LocalAuthEndpointPtrOutput `pulumi:"localAuthEndpoint"`
 	// The name of the cluster.
@@ -103,7 +103,7 @@ type clusterV2State struct {
 	// Agent env vars is a list of additional environment variables to be appended to the `cattle-cluster-agent` and `fleet-agent` deployment, and the plan for the [system upgrade controller](https://github.com/rancher/system-upgrade-controller) to upgrade nodes.
 	AgentEnvVars []ClusterV2AgentEnvVar `pulumi:"agentEnvVars"`
 	// Annotations for the Cluster.
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// Cloud credential secret name is the secret to be used when a cloud credential secret name is not specified at the machine pool level.
 	CloudCredentialSecretName *string `pulumi:"cloudCredentialSecretName"`
 	// Cluster agent deployment customization specifies the additional tolerations, new affinity rules, and new resource requirements on the `cattle-cluster-agent` deployment. This argument is available in Rancher v2.7.5 and above.
@@ -129,7 +129,7 @@ type clusterV2State struct {
 	// The RKE2 or K3s version for the cluster.
 	KubernetesVersion *string `pulumi:"kubernetesVersion"`
 	// Labels for the Cluster.
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// Local auth endpoint configures the Authorized Cluster Endpoint (ACE) which can be used to directly access the Kubernetes API server, without requiring communication through Rancher. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters).
 	LocalAuthEndpoint *ClusterV2LocalAuthEndpoint `pulumi:"localAuthEndpoint"`
 	// The name of the cluster.
@@ -144,7 +144,7 @@ type ClusterV2State struct {
 	// Agent env vars is a list of additional environment variables to be appended to the `cattle-cluster-agent` and `fleet-agent` deployment, and the plan for the [system upgrade controller](https://github.com/rancher/system-upgrade-controller) to upgrade nodes.
 	AgentEnvVars ClusterV2AgentEnvVarArrayInput
 	// Annotations for the Cluster.
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// Cloud credential secret name is the secret to be used when a cloud credential secret name is not specified at the machine pool level.
 	CloudCredentialSecretName pulumi.StringPtrInput
 	// Cluster agent deployment customization specifies the additional tolerations, new affinity rules, and new resource requirements on the `cattle-cluster-agent` deployment. This argument is available in Rancher v2.7.5 and above.
@@ -170,7 +170,7 @@ type ClusterV2State struct {
 	// The RKE2 or K3s version for the cluster.
 	KubernetesVersion pulumi.StringPtrInput
 	// Labels for the Cluster.
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// Local auth endpoint configures the Authorized Cluster Endpoint (ACE) which can be used to directly access the Kubernetes API server, without requiring communication through Rancher. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters).
 	LocalAuthEndpoint ClusterV2LocalAuthEndpointPtrInput
 	// The name of the cluster.
@@ -189,7 +189,7 @@ type clusterV2Args struct {
 	// Agent env vars is a list of additional environment variables to be appended to the `cattle-cluster-agent` and `fleet-agent` deployment, and the plan for the [system upgrade controller](https://github.com/rancher/system-upgrade-controller) to upgrade nodes.
 	AgentEnvVars []ClusterV2AgentEnvVar `pulumi:"agentEnvVars"`
 	// Annotations for the Cluster.
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// Cloud credential secret name is the secret to be used when a cloud credential secret name is not specified at the machine pool level.
 	CloudCredentialSecretName *string `pulumi:"cloudCredentialSecretName"`
 	// Cluster agent deployment customization specifies the additional tolerations, new affinity rules, and new resource requirements on the `cattle-cluster-agent` deployment. This argument is available in Rancher v2.7.5 and above.
@@ -209,7 +209,7 @@ type clusterV2Args struct {
 	// The RKE2 or K3s version for the cluster.
 	KubernetesVersion string `pulumi:"kubernetesVersion"`
 	// Labels for the Cluster.
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// Local auth endpoint configures the Authorized Cluster Endpoint (ACE) which can be used to directly access the Kubernetes API server, without requiring communication through Rancher. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters).
 	LocalAuthEndpoint *ClusterV2LocalAuthEndpoint `pulumi:"localAuthEndpoint"`
 	// The name of the cluster.
@@ -223,7 +223,7 @@ type ClusterV2Args struct {
 	// Agent env vars is a list of additional environment variables to be appended to the `cattle-cluster-agent` and `fleet-agent` deployment, and the plan for the [system upgrade controller](https://github.com/rancher/system-upgrade-controller) to upgrade nodes.
 	AgentEnvVars ClusterV2AgentEnvVarArrayInput
 	// Annotations for the Cluster.
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// Cloud credential secret name is the secret to be used when a cloud credential secret name is not specified at the machine pool level.
 	CloudCredentialSecretName pulumi.StringPtrInput
 	// Cluster agent deployment customization specifies the additional tolerations, new affinity rules, and new resource requirements on the `cattle-cluster-agent` deployment. This argument is available in Rancher v2.7.5 and above.
@@ -243,7 +243,7 @@ type ClusterV2Args struct {
 	// The RKE2 or K3s version for the cluster.
 	KubernetesVersion pulumi.StringInput
 	// Labels for the Cluster.
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// Local auth endpoint configures the Authorized Cluster Endpoint (ACE) which can be used to directly access the Kubernetes API server, without requiring communication through Rancher. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters).
 	LocalAuthEndpoint ClusterV2LocalAuthEndpointPtrInput
 	// The name of the cluster.
@@ -345,8 +345,8 @@ func (o ClusterV2Output) AgentEnvVars() ClusterV2AgentEnvVarArrayOutput {
 }
 
 // Annotations for the Cluster.
-func (o ClusterV2Output) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClusterV2) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o ClusterV2Output) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ClusterV2) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // Cloud credential secret name is the secret to be used when a cloud credential secret name is not specified at the machine pool level.
@@ -416,8 +416,8 @@ func (o ClusterV2Output) KubernetesVersion() pulumi.StringOutput {
 }
 
 // Labels for the Cluster.
-func (o ClusterV2Output) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClusterV2) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o ClusterV2Output) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ClusterV2) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // Local auth endpoint configures the Authorized Cluster Endpoint (ACE) which can be used to directly access the Kubernetes API server, without requiring communication through Rancher. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters).

@@ -873,7 +873,7 @@ class ClusterAksConfigArgs:
                  network_policy: Optional[pulumi.Input[str]] = None,
                  pod_cidr: Optional[pulumi.Input[str]] = None,
                  service_cidr: Optional[pulumi.Input[str]] = None,
-                 tag: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tag: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] agent_dns_prefix: DNS prefix to be used to create the FQDN for the agent pool
@@ -913,7 +913,7 @@ class ClusterAksConfigArgs:
         :param pulumi.Input[str] network_policy: Network policy used for building Kubernetes network. Chooses from [calico]
         :param pulumi.Input[str] pod_cidr: A CIDR notation IP range from which to assign Kubernetes Pod IPs when "network plugin" is specified in "kubenet".
         :param pulumi.Input[str] service_cidr: A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges
-        :param pulumi.Input[Mapping[str, Any]] tag: Tags for Kubernetes cluster. For example, foo=bar
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tag: Tags for Kubernetes cluster. For example, foo=bar
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for Kubernetes cluster. For example, `["foo=bar","bar=foo"]`
         """
         pulumi.set(__self__, "agent_dns_prefix", agent_dns_prefix)
@@ -1433,14 +1433,14 @@ class ClusterAksConfigArgs:
     @property
     @pulumi.getter
     @_utilities.deprecated("""Use tags argument instead as []string""")
-    def tag(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tag(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Tags for Kubernetes cluster. For example, foo=bar
         """
         return pulumi.get(self, "tag")
 
     @tag.setter
-    def tag(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tag(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tag", value)
 
     @property
@@ -1486,7 +1486,7 @@ class ClusterAksConfigV2Args:
                  node_resource_group: Optional[pulumi.Input[str]] = None,
                  private_cluster: Optional[pulumi.Input[bool]] = None,
                  subnet: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  virtual_network: Optional[pulumi.Input[str]] = None,
                  virtual_network_resource_group: Optional[pulumi.Input[str]] = None):
         """
@@ -1517,7 +1517,7 @@ class ClusterAksConfigV2Args:
         :param pulumi.Input[str] node_resource_group: The AKS node resource group name
         :param pulumi.Input[bool] private_cluster: Is AKS cluster private?
         :param pulumi.Input[str] subnet: The AKS subnet
-        :param pulumi.Input[Mapping[str, Any]] tags: The AKS cluster tags
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The AKS cluster tags
         :param pulumi.Input[str] virtual_network: The AKS virtual network
         :param pulumi.Input[str] virtual_network_resource_group: The AKS virtual network resource group
         """
@@ -1905,14 +1905,14 @@ class ClusterAksConfigV2Args:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The AKS cluster tags
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -1947,7 +1947,7 @@ class ClusterAksConfigV2NodePoolArgs:
                  availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  count: Optional[pulumi.Input[int]] = None,
                  enable_auto_scaling: Optional[pulumi.Input[bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  max_count: Optional[pulumi.Input[int]] = None,
                  max_pods: Optional[pulumi.Input[int]] = None,
                  max_surge: Optional[pulumi.Input[str]] = None,
@@ -1964,7 +1964,7 @@ class ClusterAksConfigV2NodePoolArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zones: The AKS node pool availability zones
         :param pulumi.Input[int] count: The AKS node pool count
         :param pulumi.Input[bool] enable_auto_scaling: Is AKS node pool auto scaling enabled?
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for the Cluster (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the Cluster (map)
         :param pulumi.Input[int] max_count: The AKS node pool max count
         :param pulumi.Input[int] max_pods: The AKS node pool max pods
         :param pulumi.Input[str] max_surge: The AKS node pool max surge
@@ -2059,14 +2059,14 @@ class ClusterAksConfigV2NodePoolArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for the Cluster (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -2401,13 +2401,13 @@ class ClusterAlertRuleNodeRuleArgs:
                  cpu_threshold: Optional[pulumi.Input[int]] = None,
                  mem_threshold: Optional[pulumi.Input[int]] = None,
                  node_id: Optional[pulumi.Input[str]] = None,
-                 selector: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 selector: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] condition: Node rule condition
         :param pulumi.Input[int] cpu_threshold: Node rule cpu threshold
         :param pulumi.Input[int] mem_threshold: Node rule mem threshold
         :param pulumi.Input[str] node_id: Node ID
-        :param pulumi.Input[Mapping[str, Any]] selector: Node rule selector
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] selector: Node rule selector
         """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
@@ -2470,14 +2470,14 @@ class ClusterAlertRuleNodeRuleArgs:
 
     @property
     @pulumi.getter
-    def selector(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def selector(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Node rule selector
         """
         return pulumi.get(self, "selector")
 
     @selector.setter
-    def selector(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def selector(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "selector", value)
 
 
@@ -2774,10 +2774,10 @@ class ClusterClusterAuthEndpointArgs:
 @pulumi.input_type
 class ClusterClusterMonitoringInputArgs:
     def __init__(__self__, *,
-                 answers: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 answers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Mapping[str, Any]] answers: Answers for monitor input
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] answers: Answers for monitor input
         :param pulumi.Input[str] version: Monitoring version
         """
         if answers is not None:
@@ -2787,14 +2787,14 @@ class ClusterClusterMonitoringInputArgs:
 
     @property
     @pulumi.getter
-    def answers(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def answers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Answers for monitor input
         """
         return pulumi.get(self, "answers")
 
     @answers.setter
-    def answers(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def answers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "answers", value)
 
     @property
@@ -2813,27 +2813,27 @@ class ClusterClusterMonitoringInputArgs:
 @pulumi.input_type
 class ClusterClusterRegistrationTokenArgs:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  command: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  insecure_command: Optional[pulumi.Input[str]] = None,
                  insecure_node_command: Optional[pulumi.Input[str]] = None,
                  insecure_windows_node_command: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  manifest_url: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_command: Optional[pulumi.Input[str]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  windows_node_command: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the Cluster (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for the Cluster (map)
         :param pulumi.Input[str] command: Command to execute in a imported k8s cluster (string)
         :param pulumi.Input[str] id: (Computed) The ID of the resource (string)
         :param pulumi.Input[str] insecure_command: Insecure command to execute in a imported k8s cluster (string)
         :param pulumi.Input[str] insecure_node_command: Insecure node command to execute in a imported k8s cluster (string)
         :param pulumi.Input[str] insecure_windows_node_command: Insecure windows command to execute in a imported k8s cluster (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for the Cluster (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the Cluster (map)
         :param pulumi.Input[str] manifest_url: K8s manifest url to execute with `kubectl` to import an existing k8s cluster (string)
         :param pulumi.Input[str] name: The name of the Cluster (string)
         :param pulumi.Input[str] node_command: Node command to execute in linux nodes for custom k8s cluster (string)
@@ -2868,14 +2868,14 @@ class ClusterClusterRegistrationTokenArgs:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations for the Cluster (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -2949,14 +2949,14 @@ class ClusterClusterRegistrationTokenArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for the Cluster (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -3022,11 +3022,11 @@ class ClusterClusterTemplateAnswersArgs:
     def __init__(__self__, *,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 values: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 values: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] cluster_id: Cluster ID for answer
         :param pulumi.Input[str] project_id: Project ID for answer
-        :param pulumi.Input[Mapping[str, Any]] values: Key/values for answer
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] values: Key/values for answer
         """
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
@@ -3061,14 +3061,14 @@ class ClusterClusterTemplateAnswersArgs:
 
     @property
     @pulumi.getter
-    def values(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def values(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Key/values for answer
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def values(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "values", value)
 
 
@@ -3467,7 +3467,7 @@ class ClusterEksConfigV2Args:
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_role: Optional[pulumi.Input[str]] = None,
                  subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] cloud_credential_id: The AWS Cloud Credential ID to use
         :param pulumi.Input[bool] imported: Is EKS cluster imported?
@@ -3484,7 +3484,7 @@ class ClusterEksConfigV2Args:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: List of security groups to use for the cluster
         :param pulumi.Input[str] service_role: The AWS service role to use
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnets: List of subnets in the virtual network to use
-        :param pulumi.Input[Mapping[str, Any]] tags: The EKS cluster tags
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The EKS cluster tags
         """
         pulumi.set(__self__, "cloud_credential_id", cloud_credential_id)
         if imported is not None:
@@ -3700,14 +3700,14 @@ class ClusterEksConfigV2Args:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The EKS cluster tags
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -3721,16 +3721,16 @@ class ClusterEksConfigV2NodeGroupArgs:
                  gpu: Optional[pulumi.Input[bool]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  launch_templates: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterEksConfigV2NodeGroupLaunchTemplateArgs']]]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
                  node_role: Optional[pulumi.Input[str]] = None,
                  request_spot_instances: Optional[pulumi.Input[bool]] = None,
-                 resource_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 resource_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  spot_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
@@ -3741,16 +3741,16 @@ class ClusterEksConfigV2NodeGroupArgs:
         :param pulumi.Input[bool] gpu: Is EKS cluster using gpu?
         :param pulumi.Input[str] image_id: The EKS node group image ID
         :param pulumi.Input[str] instance_type: The EKS node group instance type
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for the Cluster (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the Cluster (map)
         :param pulumi.Input[Sequence[pulumi.Input['ClusterEksConfigV2NodeGroupLaunchTemplateArgs']]] launch_templates: The EKS node groups launch template
         :param pulumi.Input[int] max_size: The EKS node group maximum size
         :param pulumi.Input[int] min_size: The EKS node group minimum size
         :param pulumi.Input[str] node_role: The EKS node group node role ARN
         :param pulumi.Input[bool] request_spot_instances: Enable EKS node group request spot instances
-        :param pulumi.Input[Mapping[str, Any]] resource_tags: The EKS node group resource tags
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_tags: The EKS node group resource tags
         :param pulumi.Input[Sequence[pulumi.Input[str]]] spot_instance_types: The EKS node group spot instance types
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnets: The EKS node group subnets
-        :param pulumi.Input[Mapping[str, Any]] tags: The EKS node group tags
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The EKS node group tags
         :param pulumi.Input[str] user_data: The EKS node group user data
         :param pulumi.Input[str] version: The EKS node group k8s version
         """
@@ -3878,14 +3878,14 @@ class ClusterEksConfigV2NodeGroupArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for the Cluster (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -3950,14 +3950,14 @@ class ClusterEksConfigV2NodeGroupArgs:
 
     @property
     @pulumi.getter(name="resourceTags")
-    def resource_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def resource_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The EKS node group resource tags
         """
         return pulumi.get(self, "resource_tags")
 
     @resource_tags.setter
-    def resource_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def resource_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "resource_tags", value)
 
     @property
@@ -3986,14 +3986,14 @@ class ClusterEksConfigV2NodeGroupArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The EKS node group tags
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -4331,7 +4331,7 @@ class ClusterGkeConfigArgs:
                  ip_policy_create_subnetwork: Optional[pulumi.Input[bool]] = None,
                  issue_client_certificate: Optional[pulumi.Input[bool]] = None,
                  kubernetes_dashboard: Optional[pulumi.Input[bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  local_ssd_count: Optional[pulumi.Input[int]] = None,
                  master_authorized_network_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  max_node_count: Optional[pulumi.Input[int]] = None,
@@ -4339,7 +4339,7 @@ class ClusterGkeConfigArgs:
                  node_count: Optional[pulumi.Input[int]] = None,
                  preemptible: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 resource_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  use_ip_aliases: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
@@ -4385,7 +4385,7 @@ class ClusterGkeConfigArgs:
         :param pulumi.Input[bool] ip_policy_create_subnetwork: Whether a new subnetwork will be created automatically for the cluster
         :param pulumi.Input[bool] issue_client_certificate: Issue a client certificate
         :param pulumi.Input[bool] kubernetes_dashboard: Enable the kubernetes dashboard
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for the Cluster (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the Cluster (map)
         :param pulumi.Input[int] local_ssd_count: The number of local SSD disks to be attached to the node
         :param pulumi.Input[Sequence[pulumi.Input[str]]] master_authorized_network_cidr_blocks: Define up to 10 external networks that could access Kubernetes master through HTTPS
         :param pulumi.Input[int] max_node_count: Maximum number of nodes in the NodePool. Must be >= minNodeCount. There has to enough quota to scale up the cluster
@@ -4393,7 +4393,7 @@ class ClusterGkeConfigArgs:
         :param pulumi.Input[int] node_count: The number of nodes to create in this cluster
         :param pulumi.Input[bool] preemptible: Whether the nodes are created as preemptible VM instances
         :param pulumi.Input[str] region: The region to launch the cluster. Region or zone should be used
-        :param pulumi.Input[Mapping[str, Any]] resource_labels: The map of Kubernetes labels (key/value pairs) to be applied to each cluster
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The map of Kubernetes labels (key/value pairs) to be applied to each cluster
         :param pulumi.Input[Sequence[pulumi.Input[str]]] taints: List of kubernetes taints to be applied to each node
         :param pulumi.Input[bool] use_ip_aliases: Whether alias IPs will be used for pod IPs in the cluster
         :param pulumi.Input[str] zone: The zone to launch the cluster. Zone or region should be used
@@ -4977,14 +4977,14 @@ class ClusterGkeConfigArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for the Cluster (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -5073,14 +5073,14 @@ class ClusterGkeConfigArgs:
 
     @property
     @pulumi.getter(name="resourceLabels")
-    def resource_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def resource_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The map of Kubernetes labels (key/value pairs) to be applied to each cluster
         """
         return pulumi.get(self, "resource_labels")
 
     @resource_labels.setter
-    def resource_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def resource_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "resource_labels", value)
 
     @property
@@ -5133,7 +5133,7 @@ class ClusterGkeConfigV2Args:
                  imported: Optional[pulumi.Input[bool]] = None,
                  ip_allocation_policy: Optional[pulumi.Input['ClusterGkeConfigV2IpAllocationPolicyArgs']] = None,
                  kubernetes_version: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  logging_service: Optional[pulumi.Input[str]] = None,
                  maintenance_window: Optional[pulumi.Input[str]] = None,
@@ -5157,7 +5157,7 @@ class ClusterGkeConfigV2Args:
         :param pulumi.Input[bool] imported: Is GKE cluster imported?
         :param pulumi.Input['ClusterGkeConfigV2IpAllocationPolicyArgs'] ip_allocation_policy: The GKE ip allocation policy
         :param pulumi.Input[str] kubernetes_version: The kubernetes master version
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for the Cluster (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the Cluster (map)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: The GKE cluster locations
         :param pulumi.Input[str] logging_service: The GKE cluster logging service
         :param pulumi.Input[str] maintenance_window: The GKE cluster maintenance window
@@ -5337,14 +5337,14 @@ class ClusterGkeConfigV2Args:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for the Cluster (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -5935,7 +5935,7 @@ class ClusterGkeConfigV2NodePoolConfigArgs:
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
                  image_type: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  local_ssd_count: Optional[pulumi.Input[int]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  oauth_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -5946,7 +5946,7 @@ class ClusterGkeConfigV2NodePoolConfigArgs:
         :param pulumi.Input[int] disk_size_gb: The GKE node config disk size (Gb)
         :param pulumi.Input[str] disk_type: The GKE node config disk type
         :param pulumi.Input[str] image_type: The GKE node config image type
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for the Cluster (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the Cluster (map)
         :param pulumi.Input[int] local_ssd_count: The GKE node config local ssd count
         :param pulumi.Input[str] machine_type: The GKE node config machine type
         :param pulumi.Input[Sequence[pulumi.Input[str]]] oauth_scopes: The GKE node config oauth scopes
@@ -6013,14 +6013,14 @@ class ClusterGkeConfigV2NodePoolConfigArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for the Cluster (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -7389,10 +7389,10 @@ class ClusterRkeConfigAuthenticationArgs:
 class ClusterRkeConfigAuthorizationArgs:
     def __init__(__self__, *,
                  mode: Optional[pulumi.Input[str]] = None,
-                 options: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] mode: The AKS node group mode. Default: `System` (string)
-        :param pulumi.Input[Mapping[str, Any]] options: RKE options for network (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: RKE options for network (map)
         """
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
@@ -7413,14 +7413,14 @@ class ClusterRkeConfigAuthorizationArgs:
 
     @property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         RKE options for network (map)
         """
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "options", value)
 
 
@@ -9386,9 +9386,9 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs:
 class ClusterRkeConfigDnsArgs:
     def __init__(__self__, *,
                  linear_autoscaler_params: Optional[pulumi.Input['ClusterRkeConfigDnsLinearAutoscalerParamsArgs']] = None,
-                 node_selector: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 node_selector: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  nodelocal: Optional[pulumi.Input['ClusterRkeConfigDnsNodelocalArgs']] = None,
-                 options: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  provider: Optional[pulumi.Input[str]] = None,
                  reverse_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tolerations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterRkeConfigDnsTolerationArgs']]]] = None,
@@ -9396,9 +9396,9 @@ class ClusterRkeConfigDnsArgs:
                  upstream_nameservers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input['ClusterRkeConfigDnsLinearAutoscalerParamsArgs'] linear_autoscaler_params: Linear Autoscaler Params
-        :param pulumi.Input[Mapping[str, Any]] node_selector: RKE monitoring node selector (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] node_selector: RKE monitoring node selector (map)
         :param pulumi.Input['ClusterRkeConfigDnsNodelocalArgs'] nodelocal: Nodelocal dns
-        :param pulumi.Input[Mapping[str, Any]] options: RKE options for network (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: RKE options for network (map)
         :param pulumi.Input[str] provider: RKE monitoring provider (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] reverse_cidrs: DNS add-on reverse cidr  (list)
         :param pulumi.Input[Sequence[pulumi.Input['ClusterRkeConfigDnsTolerationArgs']]] tolerations: DNS service tolerations
@@ -9438,14 +9438,14 @@ class ClusterRkeConfigDnsArgs:
 
     @property
     @pulumi.getter(name="nodeSelector")
-    def node_selector(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def node_selector(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         RKE monitoring node selector (map)
         """
         return pulumi.get(self, "node_selector")
 
     @node_selector.setter
-    def node_selector(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def node_selector(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "node_selector", value)
 
     @property
@@ -9462,14 +9462,14 @@ class ClusterRkeConfigDnsArgs:
 
     @property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         RKE options for network (map)
         """
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "options", value)
 
     @property
@@ -9624,10 +9624,10 @@ class ClusterRkeConfigDnsLinearAutoscalerParamsArgs:
 class ClusterRkeConfigDnsNodelocalArgs:
     def __init__(__self__, *,
                  ip_address: Optional[pulumi.Input[str]] = None,
-                 node_selector: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 node_selector: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] ip_address: Nodelocal dns ip address (string)
-        :param pulumi.Input[Mapping[str, Any]] node_selector: Node selector key pair
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] node_selector: Node selector key pair
         """
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
@@ -9648,14 +9648,14 @@ class ClusterRkeConfigDnsNodelocalArgs:
 
     @property
     @pulumi.getter(name="nodeSelector")
-    def node_selector(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def node_selector(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Node selector key pair
         """
         return pulumi.get(self, "node_selector")
 
     @node_selector.setter
-    def node_selector(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def node_selector(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "node_selector", value)
 
 
@@ -9828,24 +9828,24 @@ class ClusterRkeConfigIngressArgs:
     def __init__(__self__, *,
                  default_backend: Optional[pulumi.Input[bool]] = None,
                  dns_policy: Optional[pulumi.Input[str]] = None,
-                 extra_args: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 extra_args: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  http_port: Optional[pulumi.Input[int]] = None,
                  https_port: Optional[pulumi.Input[int]] = None,
                  network_mode: Optional[pulumi.Input[str]] = None,
-                 node_selector: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 options: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 node_selector: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  provider: Optional[pulumi.Input[str]] = None,
                  tolerations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterRkeConfigIngressTolerationArgs']]]] = None,
                  update_strategy: Optional[pulumi.Input['ClusterRkeConfigIngressUpdateStrategyArgs']] = None):
         """
         :param pulumi.Input[bool] default_backend: Enable ingress default backend. Default: `true` (bool)
         :param pulumi.Input[str] dns_policy: Ingress controller DNS policy. `ClusterFirstWithHostNet`, `ClusterFirst`, `Default`, and `None` are supported. [K8S dns Policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) (string)
-        :param pulumi.Input[Mapping[str, Any]] extra_args: Extra arguments for scheduler service (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] extra_args: Extra arguments for scheduler service (map)
         :param pulumi.Input[int] http_port: HTTP port for RKE Ingress (int)
         :param pulumi.Input[int] https_port: HTTPS port for RKE Ingress (int)
         :param pulumi.Input[str] network_mode: Network mode for RKE Ingress (string)
-        :param pulumi.Input[Mapping[str, Any]] node_selector: RKE monitoring node selector (map)
-        :param pulumi.Input[Mapping[str, Any]] options: RKE options for network (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] node_selector: RKE monitoring node selector (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: RKE options for network (map)
         :param pulumi.Input[str] provider: RKE monitoring provider (string)
         :param pulumi.Input[Sequence[pulumi.Input['ClusterRkeConfigIngressTolerationArgs']]] tolerations: Ingress add-on tolerations
         :param pulumi.Input['ClusterRkeConfigIngressUpdateStrategyArgs'] update_strategy: Update daemon set strategy
@@ -9899,14 +9899,14 @@ class ClusterRkeConfigIngressArgs:
 
     @property
     @pulumi.getter(name="extraArgs")
-    def extra_args(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def extra_args(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Extra arguments for scheduler service (map)
         """
         return pulumi.get(self, "extra_args")
 
     @extra_args.setter
-    def extra_args(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def extra_args(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "extra_args", value)
 
     @property
@@ -9947,26 +9947,26 @@ class ClusterRkeConfigIngressArgs:
 
     @property
     @pulumi.getter(name="nodeSelector")
-    def node_selector(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def node_selector(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         RKE monitoring node selector (map)
         """
         return pulumi.get(self, "node_selector")
 
     @node_selector.setter
-    def node_selector(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def node_selector(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "node_selector", value)
 
     @property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         RKE options for network (map)
         """
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "options", value)
 
     @property
@@ -10157,15 +10157,15 @@ class ClusterRkeConfigIngressUpdateStrategyRollingUpdateArgs:
 @pulumi.input_type
 class ClusterRkeConfigMonitoringArgs:
     def __init__(__self__, *,
-                 node_selector: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 options: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 node_selector: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  provider: Optional[pulumi.Input[str]] = None,
                  replicas: Optional[pulumi.Input[int]] = None,
                  tolerations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterRkeConfigMonitoringTolerationArgs']]]] = None,
                  update_strategy: Optional[pulumi.Input['ClusterRkeConfigMonitoringUpdateStrategyArgs']] = None):
         """
-        :param pulumi.Input[Mapping[str, Any]] node_selector: RKE monitoring node selector (map)
-        :param pulumi.Input[Mapping[str, Any]] options: RKE options for network (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] node_selector: RKE monitoring node selector (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: RKE options for network (map)
         :param pulumi.Input[str] provider: RKE monitoring provider (string)
         :param pulumi.Input[int] replicas: RKE monitoring replicas (int)
         :param pulumi.Input[Sequence[pulumi.Input['ClusterRkeConfigMonitoringTolerationArgs']]] tolerations: Monitoring add-on tolerations
@@ -10186,26 +10186,26 @@ class ClusterRkeConfigMonitoringArgs:
 
     @property
     @pulumi.getter(name="nodeSelector")
-    def node_selector(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def node_selector(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         RKE monitoring node selector (map)
         """
         return pulumi.get(self, "node_selector")
 
     @node_selector.setter
-    def node_selector(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def node_selector(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "node_selector", value)
 
     @property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         RKE options for network (map)
         """
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "options", value)
 
     @property
@@ -10429,7 +10429,7 @@ class ClusterRkeConfigNetworkArgs:
                  canal_network_provider: Optional[pulumi.Input['ClusterRkeConfigNetworkCanalNetworkProviderArgs']] = None,
                  flannel_network_provider: Optional[pulumi.Input['ClusterRkeConfigNetworkFlannelNetworkProviderArgs']] = None,
                  mtu: Optional[pulumi.Input[int]] = None,
-                 options: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  plugin: Optional[pulumi.Input[str]] = None,
                  tolerations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterRkeConfigNetworkTolerationArgs']]]] = None,
                  weave_network_provider: Optional[pulumi.Input['ClusterRkeConfigNetworkWeaveNetworkProviderArgs']] = None):
@@ -10439,7 +10439,7 @@ class ClusterRkeConfigNetworkArgs:
         :param pulumi.Input['ClusterRkeConfigNetworkCanalNetworkProviderArgs'] canal_network_provider: Canal provider config for RKE network (list maxitems:1)
         :param pulumi.Input['ClusterRkeConfigNetworkFlannelNetworkProviderArgs'] flannel_network_provider: Flannel provider config for RKE network (list maxitems:1)
         :param pulumi.Input[int] mtu: Network provider MTU. Default `0` (int)
-        :param pulumi.Input[Mapping[str, Any]] options: RKE options for network (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: RKE options for network (map)
         :param pulumi.Input[str] plugin: Plugin for RKE network. `canal` (default), `flannel`, `calico`, `none` and `weave` are supported. (string)
         :param pulumi.Input[Sequence[pulumi.Input['ClusterRkeConfigNetworkTolerationArgs']]] tolerations: Network add-on tolerations
         :param pulumi.Input['ClusterRkeConfigNetworkWeaveNetworkProviderArgs'] weave_network_provider: Weave provider config for RKE network (list maxitems:1)
@@ -10525,14 +10525,14 @@ class ClusterRkeConfigNetworkArgs:
 
     @property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         RKE options for network (map)
         """
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "options", value)
 
     @property
@@ -11925,7 +11925,7 @@ class ClusterRkeConfigNodeArgs:
                  docker_socket: Optional[pulumi.Input[str]] = None,
                  hostname_override: Optional[pulumi.Input[str]] = None,
                  internal_address: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  node_id: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[str]] = None,
                  ssh_agent_auth: Optional[pulumi.Input[bool]] = None,
@@ -11938,7 +11938,7 @@ class ClusterRkeConfigNodeArgs:
         :param pulumi.Input[str] docker_socket: Docker socket for node (string)
         :param pulumi.Input[str] hostname_override: Hostname override for node (string)
         :param pulumi.Input[str] internal_address: Internal ip for node (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for the Cluster (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the Cluster (map)
         :param pulumi.Input[str] node_id: Id for the node (string)
         :param pulumi.Input[str] port: Port for node. Default `22` (string)
         :param pulumi.Input[bool] ssh_agent_auth: Use ssh agent auth. Default `false` (bool)
@@ -12041,14 +12041,14 @@ class ClusterRkeConfigNodeArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for the Cluster (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -12364,7 +12364,7 @@ class ClusterRkeConfigServicesEtcdArgs:
                  cert: Optional[pulumi.Input[str]] = None,
                  creation: Optional[pulumi.Input[str]] = None,
                  external_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 extra_args: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 extra_args: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  extra_binds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  extra_envs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  gid: Optional[pulumi.Input[int]] = None,
@@ -12380,7 +12380,7 @@ class ClusterRkeConfigServicesEtcdArgs:
         :param pulumi.Input[str] cert: TLS certificate for etcd service (string)
         :param pulumi.Input[str] creation: Creation option for etcd service (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] external_urls: External urls for etcd service (list)
-        :param pulumi.Input[Mapping[str, Any]] extra_args: Extra arguments for scheduler service (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] extra_args: Extra arguments for scheduler service (map)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] extra_binds: Extra binds for scheduler service (list)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] extra_envs: Extra environment for scheduler service (list)
         :param pulumi.Input[int] gid: Etcd service GID. Default: `0`. For Rancher v2.3.x and above (int)
@@ -12484,14 +12484,14 @@ class ClusterRkeConfigServicesEtcdArgs:
 
     @property
     @pulumi.getter(name="extraArgs")
-    def extra_args(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def extra_args(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Extra arguments for scheduler service (map)
         """
         return pulumi.get(self, "extra_args")
 
     @extra_args.setter
-    def extra_args(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def extra_args(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "extra_args", value)
 
     @property
@@ -12830,7 +12830,7 @@ class ClusterRkeConfigServicesKubeApiArgs:
                  always_pull_images: Optional[pulumi.Input[bool]] = None,
                  audit_log: Optional[pulumi.Input['ClusterRkeConfigServicesKubeApiAuditLogArgs']] = None,
                  event_rate_limit: Optional[pulumi.Input['ClusterRkeConfigServicesKubeApiEventRateLimitArgs']] = None,
-                 extra_args: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 extra_args: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  extra_binds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  extra_envs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  image: Optional[pulumi.Input[str]] = None,
@@ -12843,7 +12843,7 @@ class ClusterRkeConfigServicesKubeApiArgs:
         :param pulumi.Input[bool] always_pull_images: Enable [AlwaysPullImages](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#alwayspullimages) Admission controller plugin. [Rancher docs](https://rancher.com/docs/rke/latest/en/config-options/services/#kubernetes-api-server-options) Default: `false` (bool)
         :param pulumi.Input['ClusterRkeConfigServicesKubeApiAuditLogArgs'] audit_log: K8s audit log configuration. (list maxitems: 1)
         :param pulumi.Input['ClusterRkeConfigServicesKubeApiEventRateLimitArgs'] event_rate_limit: K8s event rate limit configuration. (list maxitems: 1)
-        :param pulumi.Input[Mapping[str, Any]] extra_args: Extra arguments for scheduler service (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] extra_args: Extra arguments for scheduler service (map)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] extra_binds: Extra binds for scheduler service (list)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] extra_envs: Extra environment for scheduler service (list)
         :param pulumi.Input[str] image: Docker image for scheduler service (string)
@@ -12927,14 +12927,14 @@ class ClusterRkeConfigServicesKubeApiArgs:
 
     @property
     @pulumi.getter(name="extraArgs")
-    def extra_args(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def extra_args(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Extra arguments for scheduler service (map)
         """
         return pulumi.get(self, "extra_args")
 
     @extra_args.setter
-    def extra_args(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def extra_args(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "extra_args", value)
 
     @property
@@ -13458,14 +13458,14 @@ class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs:
 class ClusterRkeConfigServicesKubeControllerArgs:
     def __init__(__self__, *,
                  cluster_cidr: Optional[pulumi.Input[str]] = None,
-                 extra_args: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 extra_args: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  extra_binds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  extra_envs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  service_cluster_ip_range: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] cluster_cidr: Cluster CIDR option for kube controller service (string)
-        :param pulumi.Input[Mapping[str, Any]] extra_args: Extra arguments for scheduler service (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] extra_args: Extra arguments for scheduler service (map)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] extra_binds: Extra binds for scheduler service (list)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] extra_envs: Extra environment for scheduler service (list)
         :param pulumi.Input[str] image: Docker image for scheduler service (string)
@@ -13498,14 +13498,14 @@ class ClusterRkeConfigServicesKubeControllerArgs:
 
     @property
     @pulumi.getter(name="extraArgs")
-    def extra_args(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def extra_args(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Extra arguments for scheduler service (map)
         """
         return pulumi.get(self, "extra_args")
 
     @extra_args.setter
-    def extra_args(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def extra_args(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "extra_args", value)
 
     @property
@@ -13562,7 +13562,7 @@ class ClusterRkeConfigServicesKubeletArgs:
     def __init__(__self__, *,
                  cluster_dns_server: Optional[pulumi.Input[str]] = None,
                  cluster_domain: Optional[pulumi.Input[str]] = None,
-                 extra_args: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 extra_args: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  extra_binds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  extra_envs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  fail_swap_on: Optional[pulumi.Input[bool]] = None,
@@ -13572,7 +13572,7 @@ class ClusterRkeConfigServicesKubeletArgs:
         """
         :param pulumi.Input[str] cluster_dns_server: Cluster DNS Server option for kubelet service (string)
         :param pulumi.Input[str] cluster_domain: Cluster Domain option for kubelet service (string)
-        :param pulumi.Input[Mapping[str, Any]] extra_args: Extra arguments for scheduler service (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] extra_args: Extra arguments for scheduler service (map)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] extra_binds: Extra binds for scheduler service (list)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] extra_envs: Extra environment for scheduler service (list)
         :param pulumi.Input[bool] fail_swap_on: Enable or disable failing when swap on is not supported (bool)
@@ -13625,14 +13625,14 @@ class ClusterRkeConfigServicesKubeletArgs:
 
     @property
     @pulumi.getter(name="extraArgs")
-    def extra_args(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def extra_args(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Extra arguments for scheduler service (map)
         """
         return pulumi.get(self, "extra_args")
 
     @extra_args.setter
-    def extra_args(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def extra_args(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "extra_args", value)
 
     @property
@@ -13711,12 +13711,12 @@ class ClusterRkeConfigServicesKubeletArgs:
 @pulumi.input_type
 class ClusterRkeConfigServicesKubeproxyArgs:
     def __init__(__self__, *,
-                 extra_args: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 extra_args: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  extra_binds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  extra_envs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  image: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Mapping[str, Any]] extra_args: Extra arguments for scheduler service (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] extra_args: Extra arguments for scheduler service (map)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] extra_binds: Extra binds for scheduler service (list)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] extra_envs: Extra environment for scheduler service (list)
         :param pulumi.Input[str] image: Docker image for scheduler service (string)
@@ -13732,14 +13732,14 @@ class ClusterRkeConfigServicesKubeproxyArgs:
 
     @property
     @pulumi.getter(name="extraArgs")
-    def extra_args(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def extra_args(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Extra arguments for scheduler service (map)
         """
         return pulumi.get(self, "extra_args")
 
     @extra_args.setter
-    def extra_args(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def extra_args(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "extra_args", value)
 
     @property
@@ -13782,12 +13782,12 @@ class ClusterRkeConfigServicesKubeproxyArgs:
 @pulumi.input_type
 class ClusterRkeConfigServicesSchedulerArgs:
     def __init__(__self__, *,
-                 extra_args: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 extra_args: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  extra_binds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  extra_envs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  image: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Mapping[str, Any]] extra_args: Extra arguments for scheduler service (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] extra_args: Extra arguments for scheduler service (map)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] extra_binds: Extra binds for scheduler service (list)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] extra_envs: Extra environment for scheduler service (list)
         :param pulumi.Input[str] image: Docker image for scheduler service (string)
@@ -13803,14 +13803,14 @@ class ClusterRkeConfigServicesSchedulerArgs:
 
     @property
     @pulumi.getter(name="extraArgs")
-    def extra_args(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def extra_args(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Extra arguments for scheduler service (map)
         """
         return pulumi.get(self, "extra_args")
 
     @extra_args.setter
-    def extra_args(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def extra_args(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "extra_args", value)
 
     @property
@@ -14011,14 +14011,14 @@ class ClusterRkeConfigUpgradeStrategyDrainInputArgs:
 @pulumi.input_type
 class ClusterSyncNodeArgs:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 capacity: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 capacity: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  external_ip_address: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_pool_id: Optional[pulumi.Input[str]] = None,
                  node_template_id: Optional[pulumi.Input[str]] = None,
@@ -14026,16 +14026,16 @@ class ClusterSyncNodeArgs:
                  requested_hostname: Optional[pulumi.Input[str]] = None,
                  roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssh_user: Optional[pulumi.Input[str]] = None,
-                 system_info: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 system_info: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource
-        :param pulumi.Input[Mapping[str, Any]] capacity: The total resources of a node (map).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] capacity: The total resources of a node (map).
         :param pulumi.Input[str] cluster_id: The cluster ID that is syncing (string)
         :param pulumi.Input[str] external_ip_address: The external IP address of the node (string).
         :param pulumi.Input[str] hostname: The hostname of the node (string).
         :param pulumi.Input[str] id: (Computed) The ID of the resource. Same as `cluster_id` (string)
         :param pulumi.Input[str] ip_address: The private IP address of the node (string).
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels of the resource
         :param pulumi.Input[str] name: The name of the node (string).
         :param pulumi.Input[str] node_pool_id: The Node Pool ID of the node (string).
         :param pulumi.Input[str] node_template_id: The Node Template ID of the node (string).
@@ -14043,7 +14043,7 @@ class ClusterSyncNodeArgs:
         :param pulumi.Input[str] requested_hostname: The requested hostname (string).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles of the node. `controlplane`, `etcd` and `worker`. (list)
         :param pulumi.Input[str] ssh_user: The user to connect to the node (string).
-        :param pulumi.Input[Mapping[str, Any]] system_info: General information about the node, such as kernel version, kubelet and kube-proxy version, Docker version (if used), and OS name.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] system_info: General information about the node, such as kernel version, kubelet and kube-proxy version, Docker version (if used), and OS name.
         """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
@@ -14080,26 +14080,26 @@ class ClusterSyncNodeArgs:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations of the resource
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
     @pulumi.getter
-    def capacity(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def capacity(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The total resources of a node (map).
         """
         return pulumi.get(self, "capacity")
 
     @capacity.setter
-    def capacity(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def capacity(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "capacity", value)
 
     @property
@@ -14164,14 +14164,14 @@ class ClusterSyncNodeArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels of the resource
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -14260,14 +14260,14 @@ class ClusterSyncNodeArgs:
 
     @property
     @pulumi.getter(name="systemInfo")
-    def system_info(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def system_info(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         General information about the node, such as kernel version, kubelet and kube-proxy version, Docker version (if used), and OS name.
         """
         return pulumi.get(self, "system_info")
 
     @system_info.setter
-    def system_info(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def system_info(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "system_info", value)
 
 
@@ -14331,22 +14331,22 @@ class ClusterTemplateTemplateRevisionArgs:
     def __init__(__self__, *,
                  cluster_config: pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigArgs'],
                  name: pulumi.Input[str],
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  cluster_template_id: Optional[pulumi.Input[str]] = None,
                  default: Optional[pulumi.Input[bool]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  questions: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionQuestionArgs']]]] = None):
         """
         :param pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigArgs'] cluster_config: Cluster configuration
         :param pulumi.Input[str] name: The cluster template name (string)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the cluster template (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for the cluster template (map)
         :param pulumi.Input[str] cluster_template_id: Cluster template ID
         :param pulumi.Input[bool] default: Default cluster template revision
         :param pulumi.Input[bool] enabled: Enable cluster template revision
         :param pulumi.Input[str] id: (Computed) The ID of the resource (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for the cluster template (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the cluster template (map)
         :param pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionQuestionArgs']]] questions: Cluster template questions
         """
         pulumi.set(__self__, "cluster_config", cluster_config)
@@ -14392,14 +14392,14 @@ class ClusterTemplateTemplateRevisionArgs:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations for the cluster template (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -14452,14 +14452,14 @@ class ClusterTemplateTemplateRevisionArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for the cluster template (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -15120,7 +15120,7 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationArgs:
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationArgs:
     def __init__(__self__, *,
                  mode: Optional[pulumi.Input[str]] = None,
-                 options: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
         if options is not None:
@@ -15137,11 +15137,11 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationArgs:
 
     @property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "options", value)
 
 
@@ -16629,9 +16629,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereC
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs:
     def __init__(__self__, *,
                  linear_autoscaler_params: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsArgs']] = None,
-                 node_selector: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 node_selector: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  nodelocal: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs']] = None,
-                 options: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  provider: Optional[pulumi.Input[str]] = None,
                  reverse_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tolerations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsTolerationArgs']]]] = None,
@@ -16676,11 +16676,11 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs:
 
     @property
     @pulumi.getter(name="nodeSelector")
-    def node_selector(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def node_selector(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "node_selector")
 
     @node_selector.setter
-    def node_selector(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def node_selector(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "node_selector", value)
 
     @property
@@ -16697,11 +16697,11 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs:
 
     @property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "options", value)
 
     @property
@@ -16825,9 +16825,9 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerPa
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs:
     def __init__(__self__, *,
                  ip_address: Optional[pulumi.Input[str]] = None,
-                 node_selector: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 node_selector: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Mapping[str, Any]] node_selector: Node selector key pair
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] node_selector: Node selector key pair
         """
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
@@ -16845,14 +16845,14 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs:
 
     @property
     @pulumi.getter(name="nodeSelector")
-    def node_selector(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def node_selector(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Node selector key pair
         """
         return pulumi.get(self, "node_selector")
 
     @node_selector.setter
-    def node_selector(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def node_selector(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "node_selector", value)
 
 
@@ -17003,12 +17003,12 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressArgs:
     def __init__(__self__, *,
                  default_backend: Optional[pulumi.Input[bool]] = None,
                  dns_policy: Optional[pulumi.Input[str]] = None,
-                 extra_args: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 extra_args: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  http_port: Optional[pulumi.Input[int]] = None,
                  https_port: Optional[pulumi.Input[int]] = None,
                  network_mode: Optional[pulumi.Input[str]] = None,
-                 node_selector: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 options: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 node_selector: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  provider: Optional[pulumi.Input[str]] = None,
                  tolerations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressTolerationArgs']]]] = None,
                  update_strategy: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyArgs']] = None):
@@ -17059,11 +17059,11 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressArgs:
 
     @property
     @pulumi.getter(name="extraArgs")
-    def extra_args(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def extra_args(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "extra_args")
 
     @extra_args.setter
-    def extra_args(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def extra_args(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "extra_args", value)
 
     @property
@@ -17095,20 +17095,20 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressArgs:
 
     @property
     @pulumi.getter(name="nodeSelector")
-    def node_selector(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def node_selector(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "node_selector")
 
     @node_selector.setter
-    def node_selector(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def node_selector(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "node_selector", value)
 
     @property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "options", value)
 
     @property
@@ -17274,8 +17274,8 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringArgs:
     def __init__(__self__, *,
-                 node_selector: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 options: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 node_selector: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  provider: Optional[pulumi.Input[str]] = None,
                  replicas: Optional[pulumi.Input[int]] = None,
                  tolerations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringTolerationArgs']]]] = None,
@@ -17299,20 +17299,20 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringArgs:
 
     @property
     @pulumi.getter(name="nodeSelector")
-    def node_selector(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def node_selector(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "node_selector")
 
     @node_selector.setter
-    def node_selector(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def node_selector(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "node_selector", value)
 
     @property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "options", value)
 
     @property
@@ -17508,7 +17508,7 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs:
                  canal_network_provider: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderArgs']] = None,
                  flannel_network_provider: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderArgs']] = None,
                  mtu: Optional[pulumi.Input[int]] = None,
-                 options: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  plugin: Optional[pulumi.Input[str]] = None,
                  tolerations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkTolerationArgs']]]] = None,
                  weave_network_provider: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderArgs']] = None):
@@ -17581,11 +17581,11 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs:
 
     @property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "options", value)
 
     @property
@@ -18632,14 +18632,14 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArgs:
                  docker_socket: Optional[pulumi.Input[str]] = None,
                  hostname_override: Optional[pulumi.Input[str]] = None,
                  internal_address: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  node_id: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[str]] = None,
                  ssh_agent_auth: Optional[pulumi.Input[bool]] = None,
                  ssh_key: Optional[pulumi.Input[str]] = None,
                  ssh_key_path: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for the cluster template (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the cluster template (map)
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "roles", roles)
@@ -18719,14 +18719,14 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for the cluster template (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -18971,7 +18971,7 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs:
                  cert: Optional[pulumi.Input[str]] = None,
                  creation: Optional[pulumi.Input[str]] = None,
                  external_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 extra_args: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 extra_args: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  extra_binds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  extra_envs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  gid: Optional[pulumi.Input[int]] = None,
@@ -19059,11 +19059,11 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs:
 
     @property
     @pulumi.getter(name="extraArgs")
-    def extra_args(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def extra_args(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "extra_args")
 
     @extra_args.setter
-    def extra_args(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def extra_args(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "extra_args", value)
 
     @property
@@ -19325,7 +19325,7 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiArgs:
                  always_pull_images: Optional[pulumi.Input[bool]] = None,
                  audit_log: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogArgs']] = None,
                  event_rate_limit: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs']] = None,
-                 extra_args: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 extra_args: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  extra_binds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  extra_envs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  image: Optional[pulumi.Input[str]] = None,
@@ -19402,11 +19402,11 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiArgs:
 
     @property
     @pulumi.getter(name="extraArgs")
-    def extra_args(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def extra_args(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "extra_args")
 
     @extra_args.setter
-    def extra_args(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def extra_args(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "extra_args", value)
 
     @property
@@ -19769,7 +19769,7 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecret
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControllerArgs:
     def __init__(__self__, *,
                  cluster_cidr: Optional[pulumi.Input[str]] = None,
-                 extra_args: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 extra_args: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  extra_binds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  extra_envs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  image: Optional[pulumi.Input[str]] = None,
@@ -19798,11 +19798,11 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControlle
 
     @property
     @pulumi.getter(name="extraArgs")
-    def extra_args(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def extra_args(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "extra_args")
 
     @extra_args.setter
-    def extra_args(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def extra_args(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "extra_args", value)
 
     @property
@@ -19847,7 +19847,7 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletArgs:
     def __init__(__self__, *,
                  cluster_dns_server: Optional[pulumi.Input[str]] = None,
                  cluster_domain: Optional[pulumi.Input[str]] = None,
-                 extra_args: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 extra_args: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  extra_binds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  extra_envs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  fail_swap_on: Optional[pulumi.Input[bool]] = None,
@@ -19893,11 +19893,11 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletArgs:
 
     @property
     @pulumi.getter(name="extraArgs")
-    def extra_args(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def extra_args(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "extra_args")
 
     @extra_args.setter
-    def extra_args(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def extra_args(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "extra_args", value)
 
     @property
@@ -19958,7 +19958,7 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletArgs:
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyArgs:
     def __init__(__self__, *,
-                 extra_args: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 extra_args: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  extra_binds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  extra_envs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  image: Optional[pulumi.Input[str]] = None):
@@ -19973,11 +19973,11 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyArgs
 
     @property
     @pulumi.getter(name="extraArgs")
-    def extra_args(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def extra_args(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "extra_args")
 
     @extra_args.setter
-    def extra_args(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def extra_args(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "extra_args", value)
 
     @property
@@ -20011,7 +20011,7 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyArgs
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerArgs:
     def __init__(__self__, *,
-                 extra_args: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 extra_args: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  extra_binds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  extra_envs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  image: Optional[pulumi.Input[str]] = None):
@@ -20026,11 +20026,11 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerArgs
 
     @property
     @pulumi.getter(name="extraArgs")
-    def extra_args(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def extra_args(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "extra_args")
 
     @extra_args.setter
-    def extra_args(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def extra_args(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "extra_args", value)
 
     @property
@@ -20500,28 +20500,28 @@ class ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArg
 @pulumi.input_type
 class ClusterV2ClusterRegistrationTokenArgs:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  command: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  insecure_command: Optional[pulumi.Input[str]] = None,
                  insecure_node_command: Optional[pulumi.Input[str]] = None,
                  insecure_windows_node_command: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  manifest_url: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_command: Optional[pulumi.Input[str]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  windows_node_command: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the Cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for the Cluster.
         :param pulumi.Input[str] cluster_id: Cluster ID.
         :param pulumi.Input[str] command: Command to execute in an imported k8s cluster.
         :param pulumi.Input[str] id: (Computed, string) The ID of the resource.
         :param pulumi.Input[str] insecure_command: Insecure command to execute in an imported k8s cluster.
         :param pulumi.Input[str] insecure_node_command: Insecure node command to execute in an imported k8s cluster.
         :param pulumi.Input[str] insecure_windows_node_command: Insecure windows command to execute in an imported k8s cluster.
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for the Cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the Cluster.
         :param pulumi.Input[str] manifest_url: K8s manifest url to execute with `kubectl` to import an existing k8s cluster.
         :param pulumi.Input[str] name: The name of the cluster.
         :param pulumi.Input[str] node_command: Node command to execute in Linux nodes for custom k8s cluster.
@@ -20557,14 +20557,14 @@ class ClusterV2ClusterRegistrationTokenArgs:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations for the Cluster.
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -20641,14 +20641,14 @@ class ClusterV2ClusterRegistrationTokenArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for the Cluster.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -21537,14 +21537,14 @@ class ClusterV2RkeConfigMachinePoolArgs:
     def __init__(__self__, *,
                  machine_config: pulumi.Input['ClusterV2RkeConfigMachinePoolMachineConfigArgs'],
                  name: pulumi.Input[str],
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  cloud_credential_secret_name: Optional[pulumi.Input[str]] = None,
                  control_plane_role: Optional[pulumi.Input[bool]] = None,
                  drain_before_delete: Optional[pulumi.Input[bool]] = None,
                  etcd_role: Optional[pulumi.Input[bool]] = None,
                  hostname_length_limit: Optional[pulumi.Input[int]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 machine_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 machine_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  max_unhealthy: Optional[pulumi.Input[str]] = None,
                  node_drain_timeout: Optional[pulumi.Input[int]] = None,
                  node_startup_timeout_seconds: Optional[pulumi.Input[int]] = None,
@@ -21558,14 +21558,14 @@ class ClusterV2RkeConfigMachinePoolArgs:
         """
         :param pulumi.Input['ClusterV2RkeConfigMachinePoolMachineConfigArgs'] machine_config: Machine config data
         :param pulumi.Input[str] name: The name of the cluster.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the Cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for the Cluster.
         :param pulumi.Input[str] cloud_credential_secret_name: Cloud credential secret name is the secret to be used when a cloud credential secret name is not specified at the machine pool level.
         :param pulumi.Input[bool] control_plane_role: Machine pool control plane role
         :param pulumi.Input[bool] drain_before_delete: Machine pool drain before delete
         :param pulumi.Input[bool] etcd_role: Machine pool etcd role
         :param pulumi.Input[int] hostname_length_limit: maximum length for autogenerated hostname
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for the Cluster.
-        :param pulumi.Input[Mapping[str, Any]] machine_labels: Labels of the machine
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the Cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] machine_labels: Labels of the machine
         :param pulumi.Input[str] max_unhealthy: max unhealthy nodes for automated replacement to be allowed
         :param pulumi.Input[int] node_drain_timeout: seconds to wait for machine pool drain to complete before machine deletion
         :param pulumi.Input[int] node_startup_timeout_seconds: seconds a new node has to become active before it is replaced
@@ -21642,14 +21642,14 @@ class ClusterV2RkeConfigMachinePoolArgs:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations for the Cluster.
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -21714,26 +21714,26 @@ class ClusterV2RkeConfigMachinePoolArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for the Cluster.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
     @pulumi.getter(name="machineLabels")
-    def machine_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def machine_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels of the machine
         """
         return pulumi.get(self, "machine_labels")
 
     @machine_labels.setter
-    def machine_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def machine_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "machine_labels", value)
 
     @property
@@ -22068,10 +22068,10 @@ class ClusterV2RkeConfigMachineSelectorConfigArgs:
 class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorArgs:
     def __init__(__self__, *,
                  match_expressions: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionArgs']]]] = None,
-                 match_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 match_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionArgs']]] match_expressions: Label selector match expressions
-        :param pulumi.Input[Mapping[str, Any]] match_labels: Label selector match labels
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] match_labels: Label selector match labels
         """
         if match_expressions is not None:
             pulumi.set(__self__, "match_expressions", match_expressions)
@@ -22092,14 +22092,14 @@ class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorArgs:
 
     @property
     @pulumi.getter(name="matchLabels")
-    def match_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def match_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Label selector match labels
         """
         return pulumi.get(self, "match_labels")
 
     @match_labels.setter
-    def match_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def match_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "match_labels", value)
 
 
@@ -22518,10 +22518,10 @@ class ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemArgs:
 class ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorArgs:
     def __init__(__self__, *,
                  match_expressions: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpressionArgs']]]] = None,
-                 match_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 match_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpressionArgs']]] match_expressions: Label selector match expressions
-        :param pulumi.Input[Mapping[str, Any]] match_labels: Label selector match labels
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] match_labels: Label selector match labels
         """
         if match_expressions is not None:
             pulumi.set(__self__, "match_expressions", match_expressions)
@@ -22542,14 +22542,14 @@ class ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorArgs:
 
     @property
     @pulumi.getter(name="matchLabels")
-    def match_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def match_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Label selector match labels
         """
         return pulumi.get(self, "match_labels")
 
     @match_labels.setter
-    def match_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def match_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "match_labels", value)
 
 
@@ -22738,11 +22738,11 @@ class ClusterV2RkeConfigRegistriesMirrorArgs:
     def __init__(__self__, *,
                  hostname: pulumi.Input[str],
                  endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 rewrites: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 rewrites: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] hostname: Registry hostname
         :param pulumi.Input[Sequence[pulumi.Input[str]]] endpoints: Registry mirror endpoints
-        :param pulumi.Input[Mapping[str, Any]] rewrites: Registry mirror rewrites
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] rewrites: Registry mirror rewrites
         """
         pulumi.set(__self__, "hostname", hostname)
         if endpoints is not None:
@@ -22776,14 +22776,14 @@ class ClusterV2RkeConfigRegistriesMirrorArgs:
 
     @property
     @pulumi.getter
-    def rewrites(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def rewrites(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Registry mirror rewrites
         """
         return pulumi.get(self, "rewrites")
 
     @rewrites.setter
-    def rewrites(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def rewrites(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "rewrites", value)
 
 
@@ -26733,11 +26733,11 @@ class MultiClusterAppAnswerArgs:
     def __init__(__self__, *,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 values: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 values: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] cluster_id: Cluster ID for answer
         :param pulumi.Input[str] project_id: Project ID for answer
-        :param pulumi.Input[Mapping[str, Any]] values: Key/values for answer
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] values: Key/values for answer
         """
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
@@ -26772,14 +26772,14 @@ class MultiClusterAppAnswerArgs:
 
     @property
     @pulumi.getter
-    def values(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def values(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Key/values for answer
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def values(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "values", value)
 
 
@@ -28913,7 +28913,7 @@ class NodeTemplateHetznerConfigArgs:
                  api_token: pulumi.Input[str],
                  image: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[str]] = None,
-                 server_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 server_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  server_location: Optional[pulumi.Input[str]] = None,
                  server_type: Optional[pulumi.Input[str]] = None,
                  use_private_network: Optional[pulumi.Input[bool]] = None,
@@ -28923,7 +28923,7 @@ class NodeTemplateHetznerConfigArgs:
         :param pulumi.Input[str] api_token: Hetzner Cloud project API token
         :param pulumi.Input[str] image: Hetzner Cloud server image
         :param pulumi.Input[str] networks: Comma-separated list of network IDs or names which should be attached to the server private network interface
-        :param pulumi.Input[Mapping[str, Any]] server_labels: Map of the labels which will be assigned to the server
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] server_labels: Map of the labels which will be assigned to the server
         :param pulumi.Input[str] server_location: Hetzner Cloud datacenter
         :param pulumi.Input[str] server_type: Hetzner Cloud server type
         :param pulumi.Input[bool] use_private_network: Use private network
@@ -28986,14 +28986,14 @@ class NodeTemplateHetznerConfigArgs:
 
     @property
     @pulumi.getter(name="serverLabels")
-    def server_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def server_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of the labels which will be assigned to the server
         """
         return pulumi.get(self, "server_labels")
 
     @server_labels.setter
-    def server_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def server_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "server_labels", value)
 
     @property
@@ -32414,11 +32414,11 @@ class ProjectAlertRulePodRuleArgs:
 class ProjectAlertRuleWorkloadRuleArgs:
     def __init__(__self__, *,
                  available_percentage: Optional[pulumi.Input[int]] = None,
-                 selector: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 selector: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  workload_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[int] available_percentage: Workload rule available percentage
-        :param pulumi.Input[Mapping[str, Any]] selector: Workload rule selector
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] selector: Workload rule selector
         :param pulumi.Input[str] workload_id: Workload ID
         """
         if available_percentage is not None:
@@ -32442,14 +32442,14 @@ class ProjectAlertRuleWorkloadRuleArgs:
 
     @property
     @pulumi.getter
-    def selector(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def selector(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Workload rule selector
         """
         return pulumi.get(self, "selector")
 
     @selector.setter
-    def selector(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def selector(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "selector", value)
 
     @property
@@ -32539,10 +32539,10 @@ class ProjectContainerResourceLimitArgs:
 @pulumi.input_type
 class ProjectProjectMonitoringInputArgs:
     def __init__(__self__, *,
-                 answers: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 answers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Mapping[str, Any]] answers: Answers for monitor input
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] answers: Answers for monitor input
         :param pulumi.Input[str] version: Monitoring version
         """
         if answers is not None:
@@ -32552,14 +32552,14 @@ class ProjectProjectMonitoringInputArgs:
 
     @property
     @pulumi.getter
-    def answers(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def answers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Answers for monitor input
         """
         return pulumi.get(self, "answers")
 
     @answers.setter
-    def answers(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def answers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "answers", value)
 
     @property

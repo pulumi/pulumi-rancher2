@@ -25,7 +25,7 @@ type NodePool struct {
 	pulumi.CustomResourceState
 
 	// Annotations for Node Pool object (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// The RKE cluster id to use Node Pool (string)
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// RKE control plane role for created nodes (bool)
@@ -39,7 +39,7 @@ type NodePool struct {
 	// The prefix for created nodes of the Node Pool (string)
 	HostnamePrefix pulumi.StringOutput `pulumi:"hostnamePrefix"`
 	// Labels for Node Pool object (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the Node Pool (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Node taints. For Rancher v2.3.3 and above (List)
@@ -92,7 +92,7 @@ func GetNodePool(ctx *pulumi.Context,
 // Input properties used for looking up and filtering NodePool resources.
 type nodePoolState struct {
 	// Annotations for Node Pool object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// The RKE cluster id to use Node Pool (string)
 	ClusterId *string `pulumi:"clusterId"`
 	// RKE control plane role for created nodes (bool)
@@ -106,7 +106,7 @@ type nodePoolState struct {
 	// The prefix for created nodes of the Node Pool (string)
 	HostnamePrefix *string `pulumi:"hostnamePrefix"`
 	// Labels for Node Pool object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The name of the Node Pool (string)
 	Name *string `pulumi:"name"`
 	// Node taints. For Rancher v2.3.3 and above (List)
@@ -121,7 +121,7 @@ type nodePoolState struct {
 
 type NodePoolState struct {
 	// Annotations for Node Pool object (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// The RKE cluster id to use Node Pool (string)
 	ClusterId pulumi.StringPtrInput
 	// RKE control plane role for created nodes (bool)
@@ -135,7 +135,7 @@ type NodePoolState struct {
 	// The prefix for created nodes of the Node Pool (string)
 	HostnamePrefix pulumi.StringPtrInput
 	// Labels for Node Pool object (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The name of the Node Pool (string)
 	Name pulumi.StringPtrInput
 	// Node taints. For Rancher v2.3.3 and above (List)
@@ -154,7 +154,7 @@ func (NodePoolState) ElementType() reflect.Type {
 
 type nodePoolArgs struct {
 	// Annotations for Node Pool object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// The RKE cluster id to use Node Pool (string)
 	ClusterId string `pulumi:"clusterId"`
 	// RKE control plane role for created nodes (bool)
@@ -168,7 +168,7 @@ type nodePoolArgs struct {
 	// The prefix for created nodes of the Node Pool (string)
 	HostnamePrefix string `pulumi:"hostnamePrefix"`
 	// Labels for Node Pool object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The name of the Node Pool (string)
 	Name *string `pulumi:"name"`
 	// Node taints. For Rancher v2.3.3 and above (List)
@@ -184,7 +184,7 @@ type nodePoolArgs struct {
 // The set of arguments for constructing a NodePool resource.
 type NodePoolArgs struct {
 	// Annotations for Node Pool object (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// The RKE cluster id to use Node Pool (string)
 	ClusterId pulumi.StringInput
 	// RKE control plane role for created nodes (bool)
@@ -198,7 +198,7 @@ type NodePoolArgs struct {
 	// The prefix for created nodes of the Node Pool (string)
 	HostnamePrefix pulumi.StringInput
 	// Labels for Node Pool object (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The name of the Node Pool (string)
 	Name pulumi.StringPtrInput
 	// Node taints. For Rancher v2.3.3 and above (List)
@@ -299,8 +299,8 @@ func (o NodePoolOutput) ToNodePoolOutputWithContext(ctx context.Context) NodePoo
 }
 
 // Annotations for Node Pool object (map)
-func (o NodePoolOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *NodePool) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o NodePoolOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // The RKE cluster id to use Node Pool (string)
@@ -334,8 +334,8 @@ func (o NodePoolOutput) HostnamePrefix() pulumi.StringOutput {
 }
 
 // Labels for Node Pool object (map)
-func (o NodePoolOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *NodePool) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o NodePoolOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The name of the Node Pool (string)

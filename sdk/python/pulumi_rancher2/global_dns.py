@@ -16,8 +16,8 @@ class GlobalDnsArgs:
     def __init__(__self__, *,
                  fqdn: pulumi.Input[str],
                  provider_id: pulumi.Input[str],
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  multi_cluster_app_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -26,8 +26,8 @@ class GlobalDnsArgs:
         The set of arguments for constructing a GlobalDns resource.
         :param pulumi.Input[str] fqdn: The Global DNS record (string)
         :param pulumi.Input[str] provider_id: The Global DNS provider ID to use (string)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Global DNS (map)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Global DNS (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for Global DNS (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for Global DNS (map)
         :param pulumi.Input[str] multi_cluster_app_id: The MultiCluster App ID to assign to the Global DNS. Conflicts with `project_ids` (string)
         :param pulumi.Input[str] name: The name of the Global DNS (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] project_ids: A list of project_ids to assign to the Global DNS. Conflicts with `multi_cluster_app_id` (list(string))
@@ -74,26 +74,26 @@ class GlobalDnsArgs:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations for Global DNS (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for Global DNS (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -148,9 +148,9 @@ class GlobalDnsArgs:
 @pulumi.input_type
 class _GlobalDnsState:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  fqdn: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  multi_cluster_app_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -158,9 +158,9 @@ class _GlobalDnsState:
                  ttl: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering GlobalDns resources.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Global DNS (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for Global DNS (map)
         :param pulumi.Input[str] fqdn: The Global DNS record (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Global DNS (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for Global DNS (map)
         :param pulumi.Input[str] multi_cluster_app_id: The MultiCluster App ID to assign to the Global DNS. Conflicts with `project_ids` (string)
         :param pulumi.Input[str] name: The name of the Global DNS (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] project_ids: A list of project_ids to assign to the Global DNS. Conflicts with `multi_cluster_app_id` (list(string))
@@ -186,14 +186,14 @@ class _GlobalDnsState:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations for Global DNS (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -210,14 +210,14 @@ class _GlobalDnsState:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for Global DNS (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -286,9 +286,9 @@ class GlobalDns(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  fqdn: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  multi_cluster_app_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -357,9 +357,9 @@ class GlobalDns(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Global DNS (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for Global DNS (map)
         :param pulumi.Input[str] fqdn: The Global DNS record (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Global DNS (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for Global DNS (map)
         :param pulumi.Input[str] multi_cluster_app_id: The MultiCluster App ID to assign to the Global DNS. Conflicts with `project_ids` (string)
         :param pulumi.Input[str] name: The name of the Global DNS (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] project_ids: A list of project_ids to assign to the Global DNS. Conflicts with `multi_cluster_app_id` (list(string))
@@ -447,9 +447,9 @@ class GlobalDns(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  fqdn: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  multi_cluster_app_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -486,9 +486,9 @@ class GlobalDns(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             fqdn: Optional[pulumi.Input[str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             multi_cluster_app_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -501,9 +501,9 @@ class GlobalDns(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Global DNS (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for Global DNS (map)
         :param pulumi.Input[str] fqdn: The Global DNS record (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Global DNS (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for Global DNS (map)
         :param pulumi.Input[str] multi_cluster_app_id: The MultiCluster App ID to assign to the Global DNS. Conflicts with `project_ids` (string)
         :param pulumi.Input[str] name: The name of the Global DNS (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] project_ids: A list of project_ids to assign to the Global DNS. Conflicts with `multi_cluster_app_id` (list(string))
@@ -526,7 +526,7 @@ class GlobalDns(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
+    def annotations(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Annotations for Global DNS (map)
         """
@@ -542,7 +542,7 @@ class GlobalDns(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Labels for Global DNS (map)
         """

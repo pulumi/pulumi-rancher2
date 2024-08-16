@@ -61,7 +61,7 @@ export interface GetNotifierResult {
     /**
      * (Computed) Annotations for notifier object (map)
      */
-    readonly annotations: {[key: string]: any};
+    readonly annotations: {[key: string]: string};
     readonly clusterId: string;
     /**
      * (Computed) The notifier description (string)
@@ -78,7 +78,7 @@ export interface GetNotifierResult {
     /**
      * (Computed) Labels for notifier object (map)
      */
-    readonly labels: {[key: string]: any};
+    readonly labels: {[key: string]: string};
     /**
      * (Computed) MSTeams config for notifier (list maxitems:1)
      */

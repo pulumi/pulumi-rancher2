@@ -17,7 +17,6 @@ import com.pulumi.rancher2.outputs.ClusterV2FleetAgentDeploymentCustomization;
 import com.pulumi.rancher2.outputs.ClusterV2LocalAuthEndpoint;
 import com.pulumi.rancher2.outputs.ClusterV2RkeConfig;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -54,14 +53,14 @@ public class ClusterV2 extends com.pulumi.resources.CustomResource {
      * Annotations for the Cluster.
      * 
      */
-    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> annotations;
+    @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> annotations;
 
     /**
      * @return Annotations for the Cluster.
      * 
      */
-    public Output<Map<String,Object>> annotations() {
+    public Output<Map<String,String>> annotations() {
         return this.annotations;
     }
     /**
@@ -236,14 +235,14 @@ public class ClusterV2 extends com.pulumi.resources.CustomResource {
      * Labels for the Cluster.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> labels;
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> labels;
 
     /**
      * @return Labels for the Cluster.
      * 
      */
-    public Output<Map<String,Object>> labels() {
+    public Output<Map<String,String>> labels() {
         return this.labels;
     }
     /**

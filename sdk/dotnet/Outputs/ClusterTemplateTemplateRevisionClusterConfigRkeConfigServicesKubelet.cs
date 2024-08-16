@@ -15,7 +15,7 @@ namespace Pulumi.Rancher2.Outputs
     {
         public readonly string? ClusterDnsServer;
         public readonly string? ClusterDomain;
-        public readonly ImmutableDictionary<string, object>? ExtraArgs;
+        public readonly ImmutableDictionary<string, string>? ExtraArgs;
         public readonly ImmutableArray<string> ExtraBinds;
         public readonly ImmutableArray<string> ExtraEnvs;
         public readonly bool? FailSwapOn;
@@ -29,7 +29,7 @@ namespace Pulumi.Rancher2.Outputs
 
             string? clusterDomain,
 
-            ImmutableDictionary<string, object>? extraArgs,
+            ImmutableDictionary<string, string>? extraArgs,
 
             ImmutableArray<string> extraBinds,
 

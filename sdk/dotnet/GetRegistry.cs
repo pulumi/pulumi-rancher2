@@ -170,7 +170,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Annotations for Registry object (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Annotations;
+        public readonly ImmutableDictionary<string, string> Annotations;
         /// <summary>
         /// (Computed) A registry description (string)
         /// </summary>
@@ -182,7 +182,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Labels for Registry object (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Labels;
+        public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
         public readonly string? NamespaceId;
         public readonly string ProjectId;
@@ -193,13 +193,13 @@ namespace Pulumi.Rancher2
 
         [OutputConstructor]
         private GetRegistryResult(
-            ImmutableDictionary<string, object> annotations,
+            ImmutableDictionary<string, string> annotations,
 
             string description,
 
             string id,
 
-            ImmutableDictionary<string, object> labels,
+            ImmutableDictionary<string, string> labels,
 
             string name,
 

@@ -94,7 +94,7 @@ type ProjectAlertRule struct {
 	pulumi.CustomResourceState
 
 	// The project alert rule annotations (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// The project alert rule alert group ID (string)
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
 	// The project alert rule group interval seconds. Default: `180` (int)
@@ -104,7 +104,7 @@ type ProjectAlertRule struct {
 	// The project alert rule inherited. Default: `true` (bool)
 	Inherited pulumi.BoolPtrOutput `pulumi:"inherited"`
 	// The project alert rule labels (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The project alert rule metric rule. ConflictsWith: `"podRule", "workloadRule"`` (list Maxitems:1)
 	MetricRule ProjectAlertRuleMetricRulePtrOutput `pulumi:"metricRule"`
 	// The project alert rule name (string)
@@ -158,7 +158,7 @@ func GetProjectAlertRule(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ProjectAlertRule resources.
 type projectAlertRuleState struct {
 	// The project alert rule annotations (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// The project alert rule alert group ID (string)
 	GroupId *string `pulumi:"groupId"`
 	// The project alert rule group interval seconds. Default: `180` (int)
@@ -168,7 +168,7 @@ type projectAlertRuleState struct {
 	// The project alert rule inherited. Default: `true` (bool)
 	Inherited *bool `pulumi:"inherited"`
 	// The project alert rule labels (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The project alert rule metric rule. ConflictsWith: `"podRule", "workloadRule"`` (list Maxitems:1)
 	MetricRule *ProjectAlertRuleMetricRule `pulumi:"metricRule"`
 	// The project alert rule name (string)
@@ -187,7 +187,7 @@ type projectAlertRuleState struct {
 
 type ProjectAlertRuleState struct {
 	// The project alert rule annotations (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// The project alert rule alert group ID (string)
 	GroupId pulumi.StringPtrInput
 	// The project alert rule group interval seconds. Default: `180` (int)
@@ -197,7 +197,7 @@ type ProjectAlertRuleState struct {
 	// The project alert rule inherited. Default: `true` (bool)
 	Inherited pulumi.BoolPtrInput
 	// The project alert rule labels (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The project alert rule metric rule. ConflictsWith: `"podRule", "workloadRule"`` (list Maxitems:1)
 	MetricRule ProjectAlertRuleMetricRulePtrInput
 	// The project alert rule name (string)
@@ -220,7 +220,7 @@ func (ProjectAlertRuleState) ElementType() reflect.Type {
 
 type projectAlertRuleArgs struct {
 	// The project alert rule annotations (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// The project alert rule alert group ID (string)
 	GroupId string `pulumi:"groupId"`
 	// The project alert rule group interval seconds. Default: `180` (int)
@@ -230,7 +230,7 @@ type projectAlertRuleArgs struct {
 	// The project alert rule inherited. Default: `true` (bool)
 	Inherited *bool `pulumi:"inherited"`
 	// The project alert rule labels (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The project alert rule metric rule. ConflictsWith: `"podRule", "workloadRule"`` (list Maxitems:1)
 	MetricRule *ProjectAlertRuleMetricRule `pulumi:"metricRule"`
 	// The project alert rule name (string)
@@ -250,7 +250,7 @@ type projectAlertRuleArgs struct {
 // The set of arguments for constructing a ProjectAlertRule resource.
 type ProjectAlertRuleArgs struct {
 	// The project alert rule annotations (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// The project alert rule alert group ID (string)
 	GroupId pulumi.StringInput
 	// The project alert rule group interval seconds. Default: `180` (int)
@@ -260,7 +260,7 @@ type ProjectAlertRuleArgs struct {
 	// The project alert rule inherited. Default: `true` (bool)
 	Inherited pulumi.BoolPtrInput
 	// The project alert rule labels (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The project alert rule metric rule. ConflictsWith: `"podRule", "workloadRule"`` (list Maxitems:1)
 	MetricRule ProjectAlertRuleMetricRulePtrInput
 	// The project alert rule name (string)
@@ -365,8 +365,8 @@ func (o ProjectAlertRuleOutput) ToProjectAlertRuleOutputWithContext(ctx context.
 }
 
 // The project alert rule annotations (map)
-func (o ProjectAlertRuleOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *ProjectAlertRule) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o ProjectAlertRuleOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ProjectAlertRule) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // The project alert rule alert group ID (string)
@@ -390,8 +390,8 @@ func (o ProjectAlertRuleOutput) Inherited() pulumi.BoolPtrOutput {
 }
 
 // The project alert rule labels (map)
-func (o ProjectAlertRuleOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *ProjectAlertRule) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o ProjectAlertRuleOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ProjectAlertRule) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The project alert rule metric rule. ConflictsWith: `"podRule", "workloadRule"“ (list Maxitems:1)

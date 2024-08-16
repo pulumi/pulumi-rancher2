@@ -32,7 +32,7 @@ import * as utilities from "./utilities";
  *     answers: {
  *         ingress_host: "test.xip.io",
  *         foo: "bar",
- *         "ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect": true,
+ *         "ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect": "true",
  *     },
  * });
  * ```
@@ -65,7 +65,7 @@ import * as utilities from "./utilities";
  *     answers: {
  *         ingress_host: "test.xip.io",
  *         foo: "bar",
- *         "ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect": true,
+ *         "ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect": "true",
  *     },
  * });
  * ```
@@ -109,11 +109,11 @@ export class App extends pulumi.CustomResource {
     /**
      * Annotations for App object (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: any}>;
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * Answers for the app template. If modified, app will be upgraded (map)
      */
-    public readonly answers!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly answers!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:
      * * add cluster ID before name, `local:<name>` or `c-XXXXX:<name>`
@@ -135,7 +135,7 @@ export class App extends pulumi.CustomResource {
     /**
      * Labels for App object (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the app (string)
      */
@@ -239,11 +239,11 @@ export interface AppState {
     /**
      * Annotations for App object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Answers for the app template. If modified, app will be upgraded (map)
      */
-    answers?: pulumi.Input<{[key: string]: any}>;
+    answers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:
      * * add cluster ID before name, `local:<name>` or `c-XXXXX:<name>`
@@ -265,7 +265,7 @@ export interface AppState {
     /**
      * Labels for App object (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the app (string)
      */
@@ -307,11 +307,11 @@ export interface AppArgs {
     /**
      * Annotations for App object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Answers for the app template. If modified, app will be upgraded (map)
      */
-    answers?: pulumi.Input<{[key: string]: any}>;
+    answers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:
      * * add cluster ID before name, `local:<name>` or `c-XXXXX:<name>`
@@ -329,7 +329,7 @@ export interface AppArgs {
     /**
      * Labels for App object (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the app (string)
      */

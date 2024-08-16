@@ -110,7 +110,7 @@ export class CloudCredential extends pulumi.CustomResource {
     /**
      * Annotations for Cloud Credential object (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: any}>;
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * Azure config for the Cloud Credential (list maxitems:1)
      */
@@ -138,7 +138,7 @@ export class CloudCredential extends pulumi.CustomResource {
     /**
      * Labels for Cloud Credential object (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Linode config for the Cloud Credential (list maxitems:1)
      */
@@ -220,7 +220,7 @@ export interface CloudCredentialState {
     /**
      * Annotations for Cloud Credential object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Azure config for the Cloud Credential (list maxitems:1)
      */
@@ -248,7 +248,7 @@ export interface CloudCredentialState {
     /**
      * Labels for Cloud Credential object (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Linode config for the Cloud Credential (list maxitems:1)
      */
@@ -282,7 +282,7 @@ export interface CloudCredentialArgs {
     /**
      * Annotations for Cloud Credential object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Azure config for the Cloud Credential (list maxitems:1)
      */
@@ -306,7 +306,7 @@ export interface CloudCredentialArgs {
     /**
      * Labels for Cloud Credential object (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Linode config for the Cloud Credential (list maxitems:1)
      */

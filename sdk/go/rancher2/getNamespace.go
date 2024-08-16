@@ -60,7 +60,7 @@ type LookupNamespaceArgs struct {
 // A collection of values returned by getNamespace.
 type LookupNamespaceResult struct {
 	// (Computed) Annotations for Node Pool object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// (Computed) Default containers resource limits on namespace (List maxitem:1)
 	ContainerResourceLimit GetNamespaceContainerResourceLimit `pulumi:"containerResourceLimit"`
 	// (Computed) A namespace description (string)
@@ -68,9 +68,9 @@ type LookupNamespaceResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels for Node Pool object (map)
-	Labels    map[string]interface{} `pulumi:"labels"`
-	Name      string                 `pulumi:"name"`
-	ProjectId string                 `pulumi:"projectId"`
+	Labels    map[string]string `pulumi:"labels"`
+	Name      string            `pulumi:"name"`
+	ProjectId string            `pulumi:"projectId"`
 	// (Computed) Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
 	ResourceQuota GetNamespaceResourceQuota `pulumi:"resourceQuota"`
 }
@@ -116,8 +116,8 @@ func (o LookupNamespaceResultOutput) ToLookupNamespaceResultOutputWithContext(ct
 }
 
 // (Computed) Annotations for Node Pool object (map)
-func (o LookupNamespaceResultOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupNamespaceResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+func (o LookupNamespaceResultOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupNamespaceResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // (Computed) Default containers resource limits on namespace (List maxitem:1)
@@ -136,8 +136,8 @@ func (o LookupNamespaceResultOutput) Id() pulumi.StringOutput {
 }
 
 // (Computed) Labels for Node Pool object (map)
-func (o LookupNamespaceResultOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupNamespaceResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+func (o LookupNamespaceResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupNamespaceResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupNamespaceResultOutput) Name() pulumi.StringOutput {

@@ -85,7 +85,7 @@ class GetClusterV2Result:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> Mapping[str, str]:
         return pulumi.get(self, "annotations")
 
     @property
@@ -175,7 +175,7 @@ class GetClusterV2Result:
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> Mapping[str, str]:
         return pulumi.get(self, "labels")
 
     @property

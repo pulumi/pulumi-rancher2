@@ -53,10 +53,10 @@ func LookupClusterTemplate(ctx *pulumi.Context, args *LookupClusterTemplateArgs,
 // A collection of arguments for invoking getClusterTemplate.
 type LookupClusterTemplateArgs struct {
 	// (Computed) Annotations for the cluster template (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
-	Description *string                `pulumi:"description"`
+	Annotations map[string]string `pulumi:"annotations"`
+	Description *string           `pulumi:"description"`
 	// (Computed) Labels for the cluster template (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The cluster template name (string)
 	Name string `pulumi:"name"`
 }
@@ -64,14 +64,14 @@ type LookupClusterTemplateArgs struct {
 // A collection of values returned by getClusterTemplate.
 type LookupClusterTemplateResult struct {
 	// (Computed) Annotations for the cluster template (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// (Computed) Default cluster template revision ID (string)
 	DefaultRevisionId string `pulumi:"defaultRevisionId"`
 	Description       string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels for the cluster template (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// (Computed) Cluster template members (list)
 	Members []GetClusterTemplateMember `pulumi:"members"`
 	Name    string                     `pulumi:"name"`
@@ -95,10 +95,10 @@ func LookupClusterTemplateOutput(ctx *pulumi.Context, args LookupClusterTemplate
 // A collection of arguments for invoking getClusterTemplate.
 type LookupClusterTemplateOutputArgs struct {
 	// (Computed) Annotations for the cluster template (map)
-	Annotations pulumi.MapInput       `pulumi:"annotations"`
+	Annotations pulumi.StringMapInput `pulumi:"annotations"`
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// (Computed) Labels for the cluster template (map)
-	Labels pulumi.MapInput `pulumi:"labels"`
+	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The cluster template name (string)
 	Name pulumi.StringInput `pulumi:"name"`
 }
@@ -123,8 +123,8 @@ func (o LookupClusterTemplateResultOutput) ToLookupClusterTemplateResultOutputWi
 }
 
 // (Computed) Annotations for the cluster template (map)
-func (o LookupClusterTemplateResultOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupClusterTemplateResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+func (o LookupClusterTemplateResultOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // (Computed) Default cluster template revision ID (string)
@@ -142,8 +142,8 @@ func (o LookupClusterTemplateResultOutput) Id() pulumi.StringOutput {
 }
 
 // (Computed) Labels for the cluster template (map)
-func (o LookupClusterTemplateResultOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupClusterTemplateResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+func (o LookupClusterTemplateResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // (Computed) Cluster template members (list)

@@ -59,7 +59,7 @@ export interface GetRoleTemplateResult {
     /**
      * (Computed) Annotations for role template object (map)
      */
-    readonly annotations: {[key: string]: any};
+    readonly annotations: {[key: string]: string};
     /**
      * (Computed) Builtin role template (string)
      */
@@ -92,7 +92,7 @@ export interface GetRoleTemplateResult {
     /**
      * (Computed) Labels for role template object (map)
      */
-    readonly labels: {[key: string]: any};
+    readonly labels: {[key: string]: string};
     /**
      * (Computed) Locked role template (bool)
      */

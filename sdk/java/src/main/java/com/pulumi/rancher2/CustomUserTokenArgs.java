@@ -8,7 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -25,13 +24,13 @@ public final class CustomUserTokenArgs extends com.pulumi.resources.ResourceArgs
      * 
      */
     @Import(name="annotations")
-    private @Nullable Output<Map<String,Object>> annotations;
+    private @Nullable Output<Map<String,String>> annotations;
 
     /**
      * @return (Computed) Annotations of the token (map)
      * 
      */
-    public Optional<Output<Map<String,Object>>> annotations() {
+    public Optional<Output<Map<String,String>>> annotations() {
         return Optional.ofNullable(this.annotations);
     }
 
@@ -70,13 +69,13 @@ public final class CustomUserTokenArgs extends com.pulumi.resources.ResourceArgs
      * 
      */
     @Import(name="labels")
-    private @Nullable Output<Map<String,Object>> labels;
+    private @Nullable Output<Map<String,String>> labels;
 
     /**
      * @return (Computed) Labels of the token (map)
      * 
      */
-    public Optional<Output<Map<String,Object>>> labels() {
+    public Optional<Output<Map<String,String>>> labels() {
         return Optional.ofNullable(this.labels);
     }
 
@@ -181,7 +180,7 @@ public final class CustomUserTokenArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder annotations(@Nullable Output<Map<String,Object>> annotations) {
+        public Builder annotations(@Nullable Output<Map<String,String>> annotations) {
             $.annotations = annotations;
             return this;
         }
@@ -192,7 +191,7 @@ public final class CustomUserTokenArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder annotations(Map<String,Object> annotations) {
+        public Builder annotations(Map<String,String> annotations) {
             return annotations(Output.of(annotations));
         }
 
@@ -244,7 +243,7 @@ public final class CustomUserTokenArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder labels(@Nullable Output<Map<String,Object>> labels) {
+        public Builder labels(@Nullable Output<Map<String,String>> labels) {
             $.labels = labels;
             return this;
         }
@@ -255,7 +254,7 @@ public final class CustomUserTokenArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder labels(Map<String,Object> labels) {
+        public Builder labels(Map<String,String> labels) {
             return labels(Output.of(labels));
         }
 

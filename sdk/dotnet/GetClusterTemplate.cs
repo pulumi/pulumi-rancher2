@@ -68,14 +68,14 @@ namespace Pulumi.Rancher2
     public sealed class GetClusterTemplateArgs : global::Pulumi.InvokeArgs
     {
         [Input("annotations")]
-        private Dictionary<string, object>? _annotations;
+        private Dictionary<string, string>? _annotations;
 
         /// <summary>
         /// (Computed) Annotations for the cluster template (map)
         /// </summary>
-        public Dictionary<string, object> Annotations
+        public Dictionary<string, string> Annotations
         {
-            get => _annotations ?? (_annotations = new Dictionary<string, object>());
+            get => _annotations ?? (_annotations = new Dictionary<string, string>());
             set => _annotations = value;
         }
 
@@ -83,14 +83,14 @@ namespace Pulumi.Rancher2
         public string? Description { get; set; }
 
         [Input("labels")]
-        private Dictionary<string, object>? _labels;
+        private Dictionary<string, string>? _labels;
 
         /// <summary>
         /// (Computed) Labels for the cluster template (map)
         /// </summary>
-        public Dictionary<string, object> Labels
+        public Dictionary<string, string> Labels
         {
-            get => _labels ?? (_labels = new Dictionary<string, object>());
+            get => _labels ?? (_labels = new Dictionary<string, string>());
             set => _labels = value;
         }
 
@@ -109,14 +109,14 @@ namespace Pulumi.Rancher2
     public sealed class GetClusterTemplateInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("annotations")]
-        private InputMap<object>? _annotations;
+        private InputMap<string>? _annotations;
 
         /// <summary>
         /// (Computed) Annotations for the cluster template (map)
         /// </summary>
-        public InputMap<object> Annotations
+        public InputMap<string> Annotations
         {
-            get => _annotations ?? (_annotations = new InputMap<object>());
+            get => _annotations ?? (_annotations = new InputMap<string>());
             set => _annotations = value;
         }
 
@@ -124,14 +124,14 @@ namespace Pulumi.Rancher2
         public Input<string>? Description { get; set; }
 
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// (Computed) Labels for the cluster template (map)
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
@@ -154,7 +154,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Annotations for the cluster template (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Annotations;
+        public readonly ImmutableDictionary<string, string> Annotations;
         /// <summary>
         /// (Computed) Default cluster template revision ID (string)
         /// </summary>
@@ -167,7 +167,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Labels for the cluster template (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Labels;
+        public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
         /// (Computed) Cluster template members (list)
         /// </summary>
@@ -180,7 +180,7 @@ namespace Pulumi.Rancher2
 
         [OutputConstructor]
         private GetClusterTemplateResult(
-            ImmutableDictionary<string, object> annotations,
+            ImmutableDictionary<string, string> annotations,
 
             string defaultRevisionId,
 
@@ -188,7 +188,7 @@ namespace Pulumi.Rancher2
 
             string id,
 
-            ImmutableDictionary<string, object> labels,
+            ImmutableDictionary<string, string> labels,
 
             ImmutableArray<Outputs.GetClusterTemplateMemberResult> members,
 

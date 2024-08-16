@@ -43,14 +43,14 @@ namespace Pulumi.Rancher2.Inputs
         public Input<int>? Mtu { get; set; }
 
         [Input("options")]
-        private InputMap<object>? _options;
+        private InputMap<string>? _options;
 
         /// <summary>
         /// RKE options for network (map)
         /// </summary>
-        public InputMap<object> Options
+        public InputMap<string> Options
         {
-            get => _options ?? (_options = new InputMap<object>());
+            get => _options ?? (_options = new InputMap<string>());
             set => _options = value;
         }
 

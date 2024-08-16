@@ -5,7 +5,6 @@ package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -16,7 +15,7 @@ public final class GetCloudCredentialResult {
      * @return (Computed) Annotations for the Cloud Credential (map)
      * 
      */
-    private Map<String,Object> annotations;
+    private Map<String,String> annotations;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -26,7 +25,7 @@ public final class GetCloudCredentialResult {
      * @return (Computed) Labels for the Cloud Credential (map)
      * 
      */
-    private Map<String,Object> labels;
+    private Map<String,String> labels;
     private String name;
 
     private GetCloudCredentialResult() {}
@@ -34,7 +33,7 @@ public final class GetCloudCredentialResult {
      * @return (Computed) Annotations for the Cloud Credential (map)
      * 
      */
-    public Map<String,Object> annotations() {
+    public Map<String,String> annotations() {
         return this.annotations;
     }
     /**
@@ -48,7 +47,7 @@ public final class GetCloudCredentialResult {
      * @return (Computed) Labels for the Cloud Credential (map)
      * 
      */
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels;
     }
     public String name() {
@@ -64,9 +63,9 @@ public final class GetCloudCredentialResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Map<String,Object> annotations;
+        private Map<String,String> annotations;
         private String id;
-        private Map<String,Object> labels;
+        private Map<String,String> labels;
         private String name;
         public Builder() {}
         public Builder(GetCloudCredentialResult defaults) {
@@ -78,7 +77,7 @@ public final class GetCloudCredentialResult {
         }
 
         @CustomType.Setter
-        public Builder annotations(Map<String,Object> annotations) {
+        public Builder annotations(Map<String,String> annotations) {
             if (annotations == null) {
               throw new MissingRequiredPropertyException("GetCloudCredentialResult", "annotations");
             }
@@ -94,7 +93,7 @@ public final class GetCloudCredentialResult {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(Map<String,Object> labels) {
+        public Builder labels(Map<String,String> labels) {
             if (labels == null) {
               throw new MissingRequiredPropertyException("GetCloudCredentialResult", "labels");
             }

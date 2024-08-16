@@ -51,7 +51,7 @@ export interface GetClusterAlertGroupResult {
     /**
      * (Computed) The cluster alert group annotations (map)
      */
-    readonly annotations: {[key: string]: any};
+    readonly annotations: {[key: string]: string};
     readonly clusterId: string;
     /**
      * (Computed) The cluster alert group description (string)
@@ -72,7 +72,7 @@ export interface GetClusterAlertGroupResult {
     /**
      * (Computed) The cluster alert group labels (map)
      */
-    readonly labels: {[key: string]: any};
+    readonly labels: {[key: string]: string};
     readonly name: string;
     /**
      * (Computed) The cluster alert group recipients (list)

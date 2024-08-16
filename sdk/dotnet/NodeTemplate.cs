@@ -221,7 +221,7 @@ namespace Pulumi.Rancher2
         /// Annotations for Node Template object (map)
         /// </summary>
         [Output("annotations")]
-        public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Annotations { get; private set; } = null!;
 
         /// <summary>
         /// Auth certificate authority for the Node Template (string)
@@ -275,7 +275,7 @@ namespace Pulumi.Rancher2
         /// Engine environment for the node template (string)
         /// </summary>
         [Output("engineEnv")]
-        public Output<ImmutableDictionary<string, object>?> EngineEnv { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> EngineEnv { get; private set; } = null!;
 
         /// <summary>
         /// Insecure registry for the node template (list)
@@ -293,13 +293,13 @@ namespace Pulumi.Rancher2
         /// Engine label for the node template (string)
         /// </summary>
         [Output("engineLabel")]
-        public Output<ImmutableDictionary<string, object>?> EngineLabel { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> EngineLabel { get; private set; } = null!;
 
         /// <summary>
         /// Engine options for the node template (map)
         /// </summary>
         [Output("engineOpt")]
-        public Output<ImmutableDictionary<string, object>?> EngineOpt { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> EngineOpt { get; private set; } = null!;
 
         /// <summary>
         /// Engine registry mirror for the node template (list)
@@ -331,7 +331,7 @@ namespace Pulumi.Rancher2
         /// **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
         /// </summary>
         [Output("labels")]
-        public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
         /// Linode config for the Node Template (list maxitems:1)
@@ -439,14 +439,14 @@ namespace Pulumi.Rancher2
         public Input<Inputs.NodeTemplateAmazonec2ConfigArgs>? Amazonec2Config { get; set; }
 
         [Input("annotations")]
-        private InputMap<object>? _annotations;
+        private InputMap<string>? _annotations;
 
         /// <summary>
         /// Annotations for Node Template object (map)
         /// </summary>
-        public InputMap<object> Annotations
+        public InputMap<string> Annotations
         {
-            get => _annotations ?? (_annotations = new InputMap<object>());
+            get => _annotations ?? (_annotations = new InputMap<string>());
             set => _annotations = value;
         }
 
@@ -513,14 +513,14 @@ namespace Pulumi.Rancher2
         public Input<string>? DriverId { get; set; }
 
         [Input("engineEnv")]
-        private InputMap<object>? _engineEnv;
+        private InputMap<string>? _engineEnv;
 
         /// <summary>
         /// Engine environment for the node template (string)
         /// </summary>
-        public InputMap<object> EngineEnv
+        public InputMap<string> EngineEnv
         {
-            get => _engineEnv ?? (_engineEnv = new InputMap<object>());
+            get => _engineEnv ?? (_engineEnv = new InputMap<string>());
             set => _engineEnv = value;
         }
 
@@ -543,26 +543,26 @@ namespace Pulumi.Rancher2
         public Input<string>? EngineInstallUrl { get; set; }
 
         [Input("engineLabel")]
-        private InputMap<object>? _engineLabel;
+        private InputMap<string>? _engineLabel;
 
         /// <summary>
         /// Engine label for the node template (string)
         /// </summary>
-        public InputMap<object> EngineLabel
+        public InputMap<string> EngineLabel
         {
-            get => _engineLabel ?? (_engineLabel = new InputMap<object>());
+            get => _engineLabel ?? (_engineLabel = new InputMap<string>());
             set => _engineLabel = value;
         }
 
         [Input("engineOpt")]
-        private InputMap<object>? _engineOpt;
+        private InputMap<string>? _engineOpt;
 
         /// <summary>
         /// Engine options for the node template (map)
         /// </summary>
-        public InputMap<object> EngineOpt
+        public InputMap<string> EngineOpt
         {
-            get => _engineOpt ?? (_engineOpt = new InputMap<object>());
+            get => _engineOpt ?? (_engineOpt = new InputMap<string>());
             set => _engineOpt = value;
         }
 
@@ -597,16 +597,16 @@ namespace Pulumi.Rancher2
         public Input<Inputs.NodeTemplateHetznerConfigArgs>? HetznerConfig { get; set; }
 
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// Labels for Node Template object (map)
         /// 
         /// **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
@@ -679,14 +679,14 @@ namespace Pulumi.Rancher2
         public Input<Inputs.NodeTemplateAmazonec2ConfigGetArgs>? Amazonec2Config { get; set; }
 
         [Input("annotations")]
-        private InputMap<object>? _annotations;
+        private InputMap<string>? _annotations;
 
         /// <summary>
         /// Annotations for Node Template object (map)
         /// </summary>
-        public InputMap<object> Annotations
+        public InputMap<string> Annotations
         {
-            get => _annotations ?? (_annotations = new InputMap<object>());
+            get => _annotations ?? (_annotations = new InputMap<string>());
             set => _annotations = value;
         }
 
@@ -759,14 +759,14 @@ namespace Pulumi.Rancher2
         public Input<string>? DriverId { get; set; }
 
         [Input("engineEnv")]
-        private InputMap<object>? _engineEnv;
+        private InputMap<string>? _engineEnv;
 
         /// <summary>
         /// Engine environment for the node template (string)
         /// </summary>
-        public InputMap<object> EngineEnv
+        public InputMap<string> EngineEnv
         {
-            get => _engineEnv ?? (_engineEnv = new InputMap<object>());
+            get => _engineEnv ?? (_engineEnv = new InputMap<string>());
             set => _engineEnv = value;
         }
 
@@ -789,26 +789,26 @@ namespace Pulumi.Rancher2
         public Input<string>? EngineInstallUrl { get; set; }
 
         [Input("engineLabel")]
-        private InputMap<object>? _engineLabel;
+        private InputMap<string>? _engineLabel;
 
         /// <summary>
         /// Engine label for the node template (string)
         /// </summary>
-        public InputMap<object> EngineLabel
+        public InputMap<string> EngineLabel
         {
-            get => _engineLabel ?? (_engineLabel = new InputMap<object>());
+            get => _engineLabel ?? (_engineLabel = new InputMap<string>());
             set => _engineLabel = value;
         }
 
         [Input("engineOpt")]
-        private InputMap<object>? _engineOpt;
+        private InputMap<string>? _engineOpt;
 
         /// <summary>
         /// Engine options for the node template (map)
         /// </summary>
-        public InputMap<object> EngineOpt
+        public InputMap<string> EngineOpt
         {
-            get => _engineOpt ?? (_engineOpt = new InputMap<object>());
+            get => _engineOpt ?? (_engineOpt = new InputMap<string>());
             set => _engineOpt = value;
         }
 
@@ -843,16 +843,16 @@ namespace Pulumi.Rancher2
         public Input<Inputs.NodeTemplateHetznerConfigGetArgs>? HetznerConfig { get; set; }
 
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// Labels for Node Template object (map)
         /// 
         /// **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 

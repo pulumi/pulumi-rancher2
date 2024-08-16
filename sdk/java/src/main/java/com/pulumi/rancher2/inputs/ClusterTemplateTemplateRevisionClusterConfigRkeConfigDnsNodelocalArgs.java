@@ -5,7 +5,6 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -29,13 +28,13 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodel
      * 
      */
     @Import(name="nodeSelector")
-    private @Nullable Output<Map<String,Object>> nodeSelector;
+    private @Nullable Output<Map<String,String>> nodeSelector;
 
     /**
      * @return Node selector key pair
      * 
      */
-    public Optional<Output<Map<String,Object>>> nodeSelector() {
+    public Optional<Output<Map<String,String>>> nodeSelector() {
         return Optional.ofNullable(this.nodeSelector);
     }
 
@@ -79,7 +78,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodel
          * @return builder
          * 
          */
-        public Builder nodeSelector(@Nullable Output<Map<String,Object>> nodeSelector) {
+        public Builder nodeSelector(@Nullable Output<Map<String,String>> nodeSelector) {
             $.nodeSelector = nodeSelector;
             return this;
         }
@@ -90,7 +89,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodel
          * @return builder
          * 
          */
-        public Builder nodeSelector(Map<String,Object> nodeSelector) {
+        public Builder nodeSelector(Map<String,String> nodeSelector) {
             return nodeSelector(Output.of(nodeSelector));
         }
 

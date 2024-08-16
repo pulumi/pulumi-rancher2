@@ -59,7 +59,7 @@ type LookupCatalogArgs struct {
 // A collection of values returned by getCatalog.
 type LookupCatalogResult struct {
 	// (Computed) Annotations for the catalog (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// (Computed) The branch of the catalog repo to use (string)
 	Branch string `pulumi:"branch"`
 	// (Computed) The cluster id of the catalog (string)
@@ -71,8 +71,8 @@ type LookupCatalogResult struct {
 	// (Computed) The kind of the catalog. Just helm by the moment (string)
 	Kind string `pulumi:"kind"`
 	// (Computed) Labels for the catalog (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	Name   string                 `pulumi:"name"`
+	Labels map[string]string `pulumi:"labels"`
+	Name   string            `pulumi:"name"`
 	// (Computed/Sensitive) The password to access the catalog if needed (string)
 	Password string `pulumi:"password"`
 	// (Computed) The project id of the catalog (string)
@@ -127,8 +127,8 @@ func (o LookupCatalogResultOutput) ToLookupCatalogResultOutputWithContext(ctx co
 }
 
 // (Computed) Annotations for the catalog (map)
-func (o LookupCatalogResultOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupCatalogResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+func (o LookupCatalogResultOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupCatalogResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // (Computed) The branch of the catalog repo to use (string)
@@ -157,8 +157,8 @@ func (o LookupCatalogResultOutput) Kind() pulumi.StringOutput {
 }
 
 // (Computed) Labels for the catalog (map)
-func (o LookupCatalogResultOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupCatalogResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+func (o LookupCatalogResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupCatalogResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupCatalogResultOutput) Name() pulumi.StringOutput {

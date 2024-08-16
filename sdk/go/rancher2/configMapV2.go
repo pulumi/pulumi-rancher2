@@ -25,15 +25,15 @@ type ConfigMapV2 struct {
 	pulumi.CustomResourceState
 
 	// Annotations for the configMap v2 (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// The cluster id of the configMap V2 (string)
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// The data of the configMap v2 (map)
-	Data pulumi.MapOutput `pulumi:"data"`
+	Data pulumi.StringMapOutput `pulumi:"data"`
 	// If set to true, any configMap update will remove and recreate the configMap. This is a beta field enabled by k8s `ImmutableEphemeralVolumes` feature gate. Default: `false` (bool)
 	Immutable pulumi.BoolPtrOutput `pulumi:"immutable"`
 	// Labels for the configMap v2 (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the configMap v2 (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The namespaces of the configMap v2. Default: `default` (string)
@@ -79,15 +79,15 @@ func GetConfigMapV2(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ConfigMapV2 resources.
 type configMapV2State struct {
 	// Annotations for the configMap v2 (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// The cluster id of the configMap V2 (string)
 	ClusterId *string `pulumi:"clusterId"`
 	// The data of the configMap v2 (map)
-	Data map[string]interface{} `pulumi:"data"`
+	Data map[string]string `pulumi:"data"`
 	// If set to true, any configMap update will remove and recreate the configMap. This is a beta field enabled by k8s `ImmutableEphemeralVolumes` feature gate. Default: `false` (bool)
 	Immutable *bool `pulumi:"immutable"`
 	// Labels for the configMap v2 (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The name of the configMap v2 (string)
 	Name *string `pulumi:"name"`
 	// The namespaces of the configMap v2. Default: `default` (string)
@@ -98,15 +98,15 @@ type configMapV2State struct {
 
 type ConfigMapV2State struct {
 	// Annotations for the configMap v2 (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// The cluster id of the configMap V2 (string)
 	ClusterId pulumi.StringPtrInput
 	// The data of the configMap v2 (map)
-	Data pulumi.MapInput
+	Data pulumi.StringMapInput
 	// If set to true, any configMap update will remove and recreate the configMap. This is a beta field enabled by k8s `ImmutableEphemeralVolumes` feature gate. Default: `false` (bool)
 	Immutable pulumi.BoolPtrInput
 	// Labels for the configMap v2 (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The name of the configMap v2 (string)
 	Name pulumi.StringPtrInput
 	// The namespaces of the configMap v2. Default: `default` (string)
@@ -121,15 +121,15 @@ func (ConfigMapV2State) ElementType() reflect.Type {
 
 type configMapV2Args struct {
 	// Annotations for the configMap v2 (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// The cluster id of the configMap V2 (string)
 	ClusterId string `pulumi:"clusterId"`
 	// The data of the configMap v2 (map)
-	Data map[string]interface{} `pulumi:"data"`
+	Data map[string]string `pulumi:"data"`
 	// If set to true, any configMap update will remove and recreate the configMap. This is a beta field enabled by k8s `ImmutableEphemeralVolumes` feature gate. Default: `false` (bool)
 	Immutable *bool `pulumi:"immutable"`
 	// Labels for the configMap v2 (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The name of the configMap v2 (string)
 	Name *string `pulumi:"name"`
 	// The namespaces of the configMap v2. Default: `default` (string)
@@ -139,15 +139,15 @@ type configMapV2Args struct {
 // The set of arguments for constructing a ConfigMapV2 resource.
 type ConfigMapV2Args struct {
 	// Annotations for the configMap v2 (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// The cluster id of the configMap V2 (string)
 	ClusterId pulumi.StringInput
 	// The data of the configMap v2 (map)
-	Data pulumi.MapInput
+	Data pulumi.StringMapInput
 	// If set to true, any configMap update will remove and recreate the configMap. This is a beta field enabled by k8s `ImmutableEphemeralVolumes` feature gate. Default: `false` (bool)
 	Immutable pulumi.BoolPtrInput
 	// Labels for the configMap v2 (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The name of the configMap v2 (string)
 	Name pulumi.StringPtrInput
 	// The namespaces of the configMap v2. Default: `default` (string)
@@ -242,8 +242,8 @@ func (o ConfigMapV2Output) ToConfigMapV2OutputWithContext(ctx context.Context) C
 }
 
 // Annotations for the configMap v2 (map)
-func (o ConfigMapV2Output) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *ConfigMapV2) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o ConfigMapV2Output) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ConfigMapV2) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // The cluster id of the configMap V2 (string)
@@ -252,8 +252,8 @@ func (o ConfigMapV2Output) ClusterId() pulumi.StringOutput {
 }
 
 // The data of the configMap v2 (map)
-func (o ConfigMapV2Output) Data() pulumi.MapOutput {
-	return o.ApplyT(func(v *ConfigMapV2) pulumi.MapOutput { return v.Data }).(pulumi.MapOutput)
+func (o ConfigMapV2Output) Data() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ConfigMapV2) pulumi.StringMapOutput { return v.Data }).(pulumi.StringMapOutput)
 }
 
 // If set to true, any configMap update will remove and recreate the configMap. This is a beta field enabled by k8s `ImmutableEphemeralVolumes` feature gate. Default: `false` (bool)
@@ -262,8 +262,8 @@ func (o ConfigMapV2Output) Immutable() pulumi.BoolPtrOutput {
 }
 
 // Labels for the configMap v2 (map)
-func (o ConfigMapV2Output) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *ConfigMapV2) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o ConfigMapV2Output) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ConfigMapV2) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The name of the configMap v2 (string)

@@ -8,7 +8,6 @@ import com.pulumi.rancher2.outputs.ClusterRkeConfigDnsLinearAutoscalerParams;
 import com.pulumi.rancher2.outputs.ClusterRkeConfigDnsNodelocal;
 import com.pulumi.rancher2.outputs.ClusterRkeConfigDnsToleration;
 import com.pulumi.rancher2.outputs.ClusterRkeConfigDnsUpdateStrategy;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -27,7 +26,7 @@ public final class ClusterRkeConfigDns {
      * @return RKE monitoring node selector (map)
      * 
      */
-    private @Nullable Map<String,Object> nodeSelector;
+    private @Nullable Map<String,String> nodeSelector;
     /**
      * @return Nodelocal dns
      * 
@@ -37,7 +36,7 @@ public final class ClusterRkeConfigDns {
      * @return RKE options for network (map)
      * 
      */
-    private @Nullable Map<String,Object> options;
+    private @Nullable Map<String,String> options;
     /**
      * @return RKE monitoring provider (string)
      * 
@@ -76,7 +75,7 @@ public final class ClusterRkeConfigDns {
      * @return RKE monitoring node selector (map)
      * 
      */
-    public Map<String,Object> nodeSelector() {
+    public Map<String,String> nodeSelector() {
         return this.nodeSelector == null ? Map.of() : this.nodeSelector;
     }
     /**
@@ -90,7 +89,7 @@ public final class ClusterRkeConfigDns {
      * @return RKE options for network (map)
      * 
      */
-    public Map<String,Object> options() {
+    public Map<String,String> options() {
         return this.options == null ? Map.of() : this.options;
     }
     /**
@@ -139,9 +138,9 @@ public final class ClusterRkeConfigDns {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterRkeConfigDnsLinearAutoscalerParams linearAutoscalerParams;
-        private @Nullable Map<String,Object> nodeSelector;
+        private @Nullable Map<String,String> nodeSelector;
         private @Nullable ClusterRkeConfigDnsNodelocal nodelocal;
-        private @Nullable Map<String,Object> options;
+        private @Nullable Map<String,String> options;
         private @Nullable String provider;
         private @Nullable List<String> reverseCidrs;
         private @Nullable List<ClusterRkeConfigDnsToleration> tolerations;
@@ -168,7 +167,7 @@ public final class ClusterRkeConfigDns {
             return this;
         }
         @CustomType.Setter
-        public Builder nodeSelector(@Nullable Map<String,Object> nodeSelector) {
+        public Builder nodeSelector(@Nullable Map<String,String> nodeSelector) {
 
             this.nodeSelector = nodeSelector;
             return this;
@@ -180,7 +179,7 @@ public final class ClusterRkeConfigDns {
             return this;
         }
         @CustomType.Setter
-        public Builder options(@Nullable Map<String,Object> options) {
+        public Builder options(@Nullable Map<String,String> options) {
 
             this.options = options;
             return this;

@@ -64,7 +64,7 @@ type NodeDriver struct {
 	// Specify if the node driver state (bool)
 	Active pulumi.BoolOutput `pulumi:"active"`
 	// Annotations of the resource (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Specify wheter the node driver is an internal node driver or not (bool)
 	Builtin pulumi.BoolOutput `pulumi:"builtin"`
 	// Verify that the downloaded driver matches the expected checksum (string)
@@ -74,7 +74,7 @@ type NodeDriver struct {
 	// External ID (string)
 	ExternalId pulumi.StringPtrOutput `pulumi:"externalId"`
 	// Labels of the resource (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Name of the node driver (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The URL to load for customized Add Nodes screen for this driver (string)
@@ -127,7 +127,7 @@ type nodeDriverState struct {
 	// Specify if the node driver state (bool)
 	Active *bool `pulumi:"active"`
 	// Annotations of the resource (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// Specify wheter the node driver is an internal node driver or not (bool)
 	Builtin *bool `pulumi:"builtin"`
 	// Verify that the downloaded driver matches the expected checksum (string)
@@ -137,7 +137,7 @@ type nodeDriverState struct {
 	// External ID (string)
 	ExternalId *string `pulumi:"externalId"`
 	// Labels of the resource (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// Name of the node driver (string)
 	Name *string `pulumi:"name"`
 	// The URL to load for customized Add Nodes screen for this driver (string)
@@ -152,7 +152,7 @@ type NodeDriverState struct {
 	// Specify if the node driver state (bool)
 	Active pulumi.BoolPtrInput
 	// Annotations of the resource (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// Specify wheter the node driver is an internal node driver or not (bool)
 	Builtin pulumi.BoolPtrInput
 	// Verify that the downloaded driver matches the expected checksum (string)
@@ -162,7 +162,7 @@ type NodeDriverState struct {
 	// External ID (string)
 	ExternalId pulumi.StringPtrInput
 	// Labels of the resource (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// Name of the node driver (string)
 	Name pulumi.StringPtrInput
 	// The URL to load for customized Add Nodes screen for this driver (string)
@@ -181,7 +181,7 @@ type nodeDriverArgs struct {
 	// Specify if the node driver state (bool)
 	Active bool `pulumi:"active"`
 	// Annotations of the resource (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// Specify wheter the node driver is an internal node driver or not (bool)
 	Builtin bool `pulumi:"builtin"`
 	// Verify that the downloaded driver matches the expected checksum (string)
@@ -191,7 +191,7 @@ type nodeDriverArgs struct {
 	// External ID (string)
 	ExternalId *string `pulumi:"externalId"`
 	// Labels of the resource (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// Name of the node driver (string)
 	Name *string `pulumi:"name"`
 	// The URL to load for customized Add Nodes screen for this driver (string)
@@ -207,7 +207,7 @@ type NodeDriverArgs struct {
 	// Specify if the node driver state (bool)
 	Active pulumi.BoolInput
 	// Annotations of the resource (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// Specify wheter the node driver is an internal node driver or not (bool)
 	Builtin pulumi.BoolInput
 	// Verify that the downloaded driver matches the expected checksum (string)
@@ -217,7 +217,7 @@ type NodeDriverArgs struct {
 	// External ID (string)
 	ExternalId pulumi.StringPtrInput
 	// Labels of the resource (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// Name of the node driver (string)
 	Name pulumi.StringPtrInput
 	// The URL to load for customized Add Nodes screen for this driver (string)
@@ -321,8 +321,8 @@ func (o NodeDriverOutput) Active() pulumi.BoolOutput {
 }
 
 // Annotations of the resource (map)
-func (o NodeDriverOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *NodeDriver) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o NodeDriverOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *NodeDriver) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // Specify wheter the node driver is an internal node driver or not (bool)
@@ -346,8 +346,8 @@ func (o NodeDriverOutput) ExternalId() pulumi.StringPtrOutput {
 }
 
 // Labels of the resource (map)
-func (o NodeDriverOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *NodeDriver) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o NodeDriverOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *NodeDriver) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // Name of the node driver (string)

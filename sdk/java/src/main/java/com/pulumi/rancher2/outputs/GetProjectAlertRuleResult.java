@@ -10,7 +10,6 @@ import com.pulumi.rancher2.outputs.GetProjectAlertRulePodRule;
 import com.pulumi.rancher2.outputs.GetProjectAlertRuleWorkloadRule;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -22,7 +21,7 @@ public final class GetProjectAlertRuleResult {
      * @return (Computed) The project alert rule annotations (map)
      * 
      */
-    private Map<String,Object> annotations;
+    private Map<String,String> annotations;
     /**
      * @return (Computed) The project alert rule alert group ID (string)
      * 
@@ -52,7 +51,7 @@ public final class GetProjectAlertRuleResult {
      * @return (Computed) The project alert rule labels (map)
      * 
      */
-    private @Nullable Map<String,Object> labels;
+    private @Nullable Map<String,String> labels;
     /**
      * @return (Computed) The project alert rule metric rule. ConflictsWith: `&#34;pod_rule&#34;, &#34;workload_rule&#34;`` (list Maxitems:1)
      * 
@@ -86,7 +85,7 @@ public final class GetProjectAlertRuleResult {
      * @return (Computed) The project alert rule annotations (map)
      * 
      */
-    public Map<String,Object> annotations() {
+    public Map<String,String> annotations() {
         return this.annotations;
     }
     /**
@@ -128,7 +127,7 @@ public final class GetProjectAlertRuleResult {
      * @return (Computed) The project alert rule labels (map)
      * 
      */
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels == null ? Map.of() : this.labels;
     }
     /**
@@ -182,13 +181,13 @@ public final class GetProjectAlertRuleResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Map<String,Object> annotations;
+        private Map<String,String> annotations;
         private String groupId;
         private Integer groupIntervalSeconds;
         private Integer groupWaitSeconds;
         private String id;
         private Boolean inherited;
-        private @Nullable Map<String,Object> labels;
+        private @Nullable Map<String,String> labels;
         private GetProjectAlertRuleMetricRule metricRule;
         private String name;
         private GetProjectAlertRulePodRule podRule;
@@ -216,7 +215,7 @@ public final class GetProjectAlertRuleResult {
         }
 
         @CustomType.Setter
-        public Builder annotations(Map<String,Object> annotations) {
+        public Builder annotations(Map<String,String> annotations) {
             if (annotations == null) {
               throw new MissingRequiredPropertyException("GetProjectAlertRuleResult", "annotations");
             }
@@ -264,7 +263,7 @@ public final class GetProjectAlertRuleResult {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(@Nullable Map<String,Object> labels) {
+        public Builder labels(@Nullable Map<String,String> labels) {
 
             this.labels = labels;
             return this;

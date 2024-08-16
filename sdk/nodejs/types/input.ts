@@ -293,7 +293,7 @@ export interface ClusterAksConfig {
      *
      * @deprecated Use tags argument instead as []string
      */
-    tag?: pulumi.Input<{[key: string]: any}>;
+    tag?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Tags for Kubernetes cluster. For example, `["foo=bar","bar=foo"]`
      */
@@ -424,7 +424,7 @@ export interface ClusterAksConfigV2 {
     /**
      * The AKS cluster tags
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The AKS virtual network
      */
@@ -451,7 +451,7 @@ export interface ClusterAksConfigV2NodePool {
     /**
      * Labels for the Cluster (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The AKS node pool max count
      */
@@ -575,7 +575,7 @@ export interface ClusterAlertRuleNodeRule {
     /**
      * Node rule selector
      */
-    selector?: pulumi.Input<{[key: string]: any}>;
+    selector?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface ClusterAlertRuleSystemServiceRule {
@@ -661,7 +661,7 @@ export interface ClusterClusterMonitoringInput {
     /**
      * Answers for monitor input
      */
-    answers?: pulumi.Input<{[key: string]: any}>;
+    answers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Monitoring version
      */
@@ -672,7 +672,7 @@ export interface ClusterClusterRegistrationToken {
     /**
      * Annotations for the Cluster (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     clusterId?: pulumi.Input<string>;
     /**
      * Command to execute in a imported k8s cluster (string)
@@ -697,7 +697,7 @@ export interface ClusterClusterRegistrationToken {
     /**
      * Labels for the Cluster (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * K8s manifest url to execute with `kubectl` to import an existing k8s cluster (string)
      */
@@ -729,7 +729,7 @@ export interface ClusterClusterTemplateAnswers {
     /**
      * Key/values for answer
      */
-    values?: pulumi.Input<{[key: string]: any}>;
+    values?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface ClusterClusterTemplateQuestion {
@@ -894,7 +894,7 @@ export interface ClusterEksConfigV2 {
     /**
      * The EKS cluster tags
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface ClusterEksConfigV2NodeGroup {
@@ -925,7 +925,7 @@ export interface ClusterEksConfigV2NodeGroup {
     /**
      * Labels for the Cluster (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The EKS node groups launch template
      */
@@ -953,7 +953,7 @@ export interface ClusterEksConfigV2NodeGroup {
     /**
      * The EKS node group resource tags
      */
-    resourceTags?: pulumi.Input<{[key: string]: any}>;
+    resourceTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The EKS node group spot instance types
      */
@@ -965,7 +965,7 @@ export interface ClusterEksConfigV2NodeGroup {
     /**
      * The EKS node group tags
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The EKS node group user data
      */
@@ -1168,7 +1168,7 @@ export interface ClusterGkeConfig {
     /**
      * Labels for the Cluster (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The number of local SSD disks to be attached to the node
      */
@@ -1240,7 +1240,7 @@ export interface ClusterGkeConfig {
     /**
      * The map of Kubernetes labels (key/value pairs) to be applied to each cluster
      */
-    resourceLabels?: pulumi.Input<{[key: string]: any}>;
+    resourceLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The Google Cloud Platform Service Account to be used by the node VMs
      */
@@ -1299,7 +1299,7 @@ export interface ClusterGkeConfigV2 {
     /**
      * Labels for the Cluster (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The GKE cluster locations
      */
@@ -1492,7 +1492,7 @@ export interface ClusterGkeConfigV2NodePoolConfig {
     /**
      * Labels for the Cluster (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The GKE node config local ssd count
      */
@@ -1865,7 +1865,7 @@ export interface ClusterRkeConfigAuthorization {
     /**
      * RKE options for network (map)
      */
-    options?: pulumi.Input<{[key: string]: any}>;
+    options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface ClusterRkeConfigBastionHost {
@@ -2391,7 +2391,7 @@ export interface ClusterRkeConfigDns {
     /**
      * RKE monitoring node selector (map)
      */
-    nodeSelector?: pulumi.Input<{[key: string]: any}>;
+    nodeSelector?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Nodelocal dns
      */
@@ -2399,7 +2399,7 @@ export interface ClusterRkeConfigDns {
     /**
      * RKE options for network (map)
      */
-    options?: pulumi.Input<{[key: string]: any}>;
+    options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * RKE monitoring provider (string)
      */
@@ -2453,7 +2453,7 @@ export interface ClusterRkeConfigDnsNodelocal {
     /**
      * Node selector key pair
      */
-    nodeSelector?: pulumi.Input<{[key: string]: any}>;
+    nodeSelector?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface ClusterRkeConfigDnsToleration {
@@ -2513,7 +2513,7 @@ export interface ClusterRkeConfigIngress {
     /**
      * Extra arguments for scheduler service (map)
      */
-    extraArgs?: pulumi.Input<{[key: string]: any}>;
+    extraArgs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * HTTP port for RKE Ingress (int)
      */
@@ -2529,11 +2529,11 @@ export interface ClusterRkeConfigIngress {
     /**
      * RKE monitoring node selector (map)
      */
-    nodeSelector?: pulumi.Input<{[key: string]: any}>;
+    nodeSelector?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * RKE options for network (map)
      */
-    options?: pulumi.Input<{[key: string]: any}>;
+    options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * RKE monitoring provider (string)
      */
@@ -2593,11 +2593,11 @@ export interface ClusterRkeConfigMonitoring {
     /**
      * RKE monitoring node selector (map)
      */
-    nodeSelector?: pulumi.Input<{[key: string]: any}>;
+    nodeSelector?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * RKE options for network (map)
      */
-    options?: pulumi.Input<{[key: string]: any}>;
+    options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * RKE monitoring provider (string)
      */
@@ -2685,7 +2685,7 @@ export interface ClusterRkeConfigNetwork {
     /**
      * RKE options for network (map)
      */
-    options?: pulumi.Input<{[key: string]: any}>;
+    options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Plugin for RKE network. `canal` (default), `flannel`, `calico`, `none` and `weave` are supported. (string)
      */
@@ -3067,7 +3067,7 @@ export interface ClusterRkeConfigNode {
     /**
      * Labels for the Cluster (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Id for the node (string)
      */
@@ -3187,7 +3187,7 @@ export interface ClusterRkeConfigServicesEtcd {
     /**
      * Extra arguments for scheduler service (map)
      */
-    extraArgs?: pulumi.Input<{[key: string]: any}>;
+    extraArgs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Extra binds for scheduler service (list)
      */
@@ -3304,7 +3304,7 @@ export interface ClusterRkeConfigServicesKubeApi {
     /**
      * Extra arguments for scheduler service (map)
      */
-    extraArgs?: pulumi.Input<{[key: string]: any}>;
+    extraArgs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Extra binds for scheduler service (list)
      */
@@ -3484,7 +3484,7 @@ export interface ClusterRkeConfigServicesKubeController {
     /**
      * Extra arguments for scheduler service (map)
      */
-    extraArgs?: pulumi.Input<{[key: string]: any}>;
+    extraArgs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Extra binds for scheduler service (list)
      */
@@ -3515,7 +3515,7 @@ export interface ClusterRkeConfigServicesKubelet {
     /**
      * Extra arguments for scheduler service (map)
      */
-    extraArgs?: pulumi.Input<{[key: string]: any}>;
+    extraArgs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Extra binds for scheduler service (list)
      */
@@ -3546,7 +3546,7 @@ export interface ClusterRkeConfigServicesKubeproxy {
     /**
      * Extra arguments for scheduler service (map)
      */
-    extraArgs?: pulumi.Input<{[key: string]: any}>;
+    extraArgs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Extra binds for scheduler service (list)
      */
@@ -3565,7 +3565,7 @@ export interface ClusterRkeConfigServicesScheduler {
     /**
      * Extra arguments for scheduler service (map)
      */
-    extraArgs?: pulumi.Input<{[key: string]: any}>;
+    extraArgs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Extra binds for scheduler service (list)
      */
@@ -3626,11 +3626,11 @@ export interface ClusterSyncNode {
     /**
      * Annotations of the resource
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The total resources of a node (map).
      */
-    capacity?: pulumi.Input<{[key: string]: any}>;
+    capacity?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The cluster ID that is syncing (string)
      */
@@ -3654,7 +3654,7 @@ export interface ClusterSyncNode {
     /**
      * Labels of the resource
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the node (string).
      */
@@ -3686,7 +3686,7 @@ export interface ClusterSyncNode {
     /**
      * General information about the node, such as kernel version, kubelet and kube-proxy version, Docker version (if used), and OS name.
      */
-    systemInfo?: pulumi.Input<{[key: string]: any}>;
+    systemInfo?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface ClusterTemplateMember {
@@ -3708,7 +3708,7 @@ export interface ClusterTemplateTemplateRevision {
     /**
      * Annotations for the cluster template (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Cluster configuration
      */
@@ -3732,7 +3732,7 @@ export interface ClusterTemplateTemplateRevision {
     /**
      * Labels for the cluster template (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The cluster template name (string)
      */
@@ -3899,7 +3899,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthentica
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorization {
     mode?: pulumi.Input<string>;
-    options?: pulumi.Input<{[key: string]: any}>;
+    options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHost {
@@ -4086,12 +4086,12 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigDns {
      * Linear Autoscaler Params
      */
     linearAutoscalerParams?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParams>;
-    nodeSelector?: pulumi.Input<{[key: string]: any}>;
+    nodeSelector?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Nodelocal dns
      */
     nodelocal?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocal>;
-    options?: pulumi.Input<{[key: string]: any}>;
+    options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     provider?: pulumi.Input<string>;
     reverseCidrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -4118,7 +4118,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodeloc
     /**
      * Node selector key pair
      */
-    nodeSelector?: pulumi.Input<{[key: string]: any}>;
+    nodeSelector?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsToleration {
@@ -4154,12 +4154,12 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateS
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngress {
     defaultBackend?: pulumi.Input<boolean>;
     dnsPolicy?: pulumi.Input<string>;
-    extraArgs?: pulumi.Input<{[key: string]: any}>;
+    extraArgs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     httpPort?: pulumi.Input<number>;
     httpsPort?: pulumi.Input<number>;
     networkMode?: pulumi.Input<string>;
-    nodeSelector?: pulumi.Input<{[key: string]: any}>;
-    options?: pulumi.Input<{[key: string]: any}>;
+    nodeSelector?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     provider?: pulumi.Input<string>;
     /**
      * Ingress add-on tolerations
@@ -4198,8 +4198,8 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpd
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoring {
-    nodeSelector?: pulumi.Input<{[key: string]: any}>;
-    options?: pulumi.Input<{[key: string]: any}>;
+    nodeSelector?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     provider?: pulumi.Input<string>;
     replicas?: pulumi.Input<number>;
     /**
@@ -4248,7 +4248,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork {
     canalNetworkProvider?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider>;
     flannelNetworkProvider?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider>;
     mtu?: pulumi.Input<number>;
-    options?: pulumi.Input<{[key: string]: any}>;
+    options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     plugin?: pulumi.Input<string>;
     /**
      * Network add-on tolerations
@@ -4366,7 +4366,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigNode {
     /**
      * Labels for the cluster template (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     nodeId?: pulumi.Input<string>;
     port?: pulumi.Input<string>;
     roles: pulumi.Input<pulumi.Input<string>[]>;
@@ -4408,7 +4408,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEt
     cert?: pulumi.Input<string>;
     creation?: pulumi.Input<string>;
     externalUrls?: pulumi.Input<pulumi.Input<string>[]>;
-    extraArgs?: pulumi.Input<{[key: string]: any}>;
+    extraArgs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     extraBinds?: pulumi.Input<pulumi.Input<string>[]>;
     extraEnvs?: pulumi.Input<pulumi.Input<string>[]>;
     gid?: pulumi.Input<number>;
@@ -4450,7 +4450,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKu
     alwaysPullImages?: pulumi.Input<boolean>;
     auditLog?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog>;
     eventRateLimit?: pulumi.Input<inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit>;
-    extraArgs?: pulumi.Input<{[key: string]: any}>;
+    extraArgs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     extraBinds?: pulumi.Input<pulumi.Input<string>[]>;
     extraEnvs?: pulumi.Input<pulumi.Input<string>[]>;
     image?: pulumi.Input<string>;
@@ -4525,7 +4525,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKu
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeController {
     clusterCidr?: pulumi.Input<string>;
-    extraArgs?: pulumi.Input<{[key: string]: any}>;
+    extraArgs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     extraBinds?: pulumi.Input<pulumi.Input<string>[]>;
     extraEnvs?: pulumi.Input<pulumi.Input<string>[]>;
     image?: pulumi.Input<string>;
@@ -4535,7 +4535,7 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKu
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubelet {
     clusterDnsServer?: pulumi.Input<string>;
     clusterDomain?: pulumi.Input<string>;
-    extraArgs?: pulumi.Input<{[key: string]: any}>;
+    extraArgs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     extraBinds?: pulumi.Input<pulumi.Input<string>[]>;
     extraEnvs?: pulumi.Input<pulumi.Input<string>[]>;
     failSwapOn?: pulumi.Input<boolean>;
@@ -4545,14 +4545,14 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKu
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxy {
-    extraArgs?: pulumi.Input<{[key: string]: any}>;
+    extraArgs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     extraBinds?: pulumi.Input<pulumi.Input<string>[]>;
     extraEnvs?: pulumi.Input<pulumi.Input<string>[]>;
     image?: pulumi.Input<string>;
 }
 
 export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesScheduler {
-    extraArgs?: pulumi.Input<{[key: string]: any}>;
+    extraArgs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     extraBinds?: pulumi.Input<pulumi.Input<string>[]>;
     extraEnvs?: pulumi.Input<pulumi.Input<string>[]>;
     image?: pulumi.Input<string>;
@@ -4664,7 +4664,7 @@ export interface ClusterV2ClusterRegistrationToken {
     /**
      * Annotations for the Cluster.
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Cluster ID.
      */
@@ -4692,7 +4692,7 @@ export interface ClusterV2ClusterRegistrationToken {
     /**
      * Labels for the Cluster.
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * K8s manifest url to execute with `kubectl` to import an existing k8s cluster.
      */
@@ -4939,7 +4939,7 @@ export interface ClusterV2RkeConfigMachinePool {
     /**
      * Annotations for the Cluster.
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Cloud credential secret name is the secret to be used when a cloud credential secret name is not specified at the machine pool level.
      */
@@ -4963,7 +4963,7 @@ export interface ClusterV2RkeConfigMachinePool {
     /**
      * Labels for the Cluster.
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Machine config data
      */
@@ -4971,7 +4971,7 @@ export interface ClusterV2RkeConfigMachinePool {
     /**
      * Labels of the machine
      */
-    machineLabels?: pulumi.Input<{[key: string]: any}>;
+    machineLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * max unhealthy nodes for automated replacement to be allowed
      */
@@ -5085,7 +5085,7 @@ export interface ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelector {
     /**
      * Label selector match labels
      */
-    matchLabels?: pulumi.Input<{[key: string]: any}>;
+    matchLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression {
@@ -5209,7 +5209,7 @@ export interface ClusterV2RkeConfigMachineSelectorFileMachineLabelSelector {
     /**
      * Label selector match labels
      */
-    matchLabels?: pulumi.Input<{[key: string]: any}>;
+    matchLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpression {
@@ -5273,7 +5273,7 @@ export interface ClusterV2RkeConfigRegistriesMirror {
     /**
      * Registry mirror rewrites
      */
-    rewrites?: pulumi.Input<{[key: string]: any}>;
+    rewrites?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface ClusterV2RkeConfigRotateCertificates {
@@ -6730,7 +6730,7 @@ export interface MultiClusterAppAnswer {
     /**
      * Key/values for answer
      */
-    values?: pulumi.Input<{[key: string]: any}>;
+    values?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface MultiClusterAppMember {
@@ -7302,7 +7302,7 @@ export interface NodeTemplateHetznerConfig {
     /**
      * Map of the labels which will be assigned to the server
      */
-    serverLabels?: pulumi.Input<{[key: string]: any}>;
+    serverLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Hetzner Cloud datacenter
      */
@@ -8228,7 +8228,7 @@ export interface ProjectAlertRuleWorkloadRule {
     /**
      * Workload rule selector
      */
-    selector?: pulumi.Input<{[key: string]: any}>;
+    selector?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Workload ID
      */
@@ -8258,7 +8258,7 @@ export interface ProjectProjectMonitoringInput {
     /**
      * Answers for monitor input
      */
-    answers?: pulumi.Input<{[key: string]: any}>;
+    answers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Monitoring version
      */

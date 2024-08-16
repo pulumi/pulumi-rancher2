@@ -12,7 +12,6 @@ import com.pulumi.rancher2.Utilities;
 import com.pulumi.rancher2.inputs.PodSecurityAdmissionConfigurationTemplateState;
 import com.pulumi.rancher2.outputs.PodSecurityAdmissionConfigurationTemplateDefaults;
 import com.pulumi.rancher2.outputs.PodSecurityAdmissionConfigurationTemplateExemptions;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -24,14 +23,14 @@ public class PodSecurityAdmissionConfigurationTemplate extends com.pulumi.resour
      * Annotations of the resource
      * 
      */
-    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> annotations;
+    @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> annotations;
 
     /**
      * @return Annotations of the resource
      * 
      */
-    public Output<Map<String,Object>> annotations() {
+    public Output<Map<String,String>> annotations() {
         return this.annotations;
     }
     /**
@@ -82,14 +81,14 @@ public class PodSecurityAdmissionConfigurationTemplate extends com.pulumi.resour
      * Labels of the resource
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> labels;
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> labels;
 
     /**
      * @return Labels of the resource
      * 
      */
-    public Output<Map<String,Object>> labels() {
+    public Output<Map<String,String>> labels() {
         return this.labels;
     }
     /**

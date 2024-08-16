@@ -5,7 +5,6 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -22,13 +21,13 @@ public final class ClusterClusterMonitoringInputArgs extends com.pulumi.resource
      * 
      */
     @Import(name="answers")
-    private @Nullable Output<Map<String,Object>> answers;
+    private @Nullable Output<Map<String,String>> answers;
 
     /**
      * @return Answers for monitor input
      * 
      */
-    public Optional<Output<Map<String,Object>>> answers() {
+    public Optional<Output<Map<String,String>>> answers() {
         return Optional.ofNullable(this.answers);
     }
 
@@ -78,7 +77,7 @@ public final class ClusterClusterMonitoringInputArgs extends com.pulumi.resource
          * @return builder
          * 
          */
-        public Builder answers(@Nullable Output<Map<String,Object>> answers) {
+        public Builder answers(@Nullable Output<Map<String,String>> answers) {
             $.answers = answers;
             return this;
         }
@@ -89,7 +88,7 @@ public final class ClusterClusterMonitoringInputArgs extends com.pulumi.resource
          * @return builder
          * 
          */
-        public Builder answers(Map<String,Object> answers) {
+        public Builder answers(Map<String,String> answers) {
             return answers(Output.of(answers));
         }
 

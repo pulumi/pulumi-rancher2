@@ -110,7 +110,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Annotations for Node Pool object (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Annotations;
+        public readonly ImmutableDictionary<string, string> Annotations;
         /// <summary>
         /// (Computed) Default containers resource limits on namespace (List maxitem:1)
         /// </summary>
@@ -126,7 +126,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Labels for Node Pool object (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Labels;
+        public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
         public readonly string ProjectId;
         /// <summary>
@@ -136,7 +136,7 @@ namespace Pulumi.Rancher2
 
         [OutputConstructor]
         private GetNamespaceResult(
-            ImmutableDictionary<string, object> annotations,
+            ImmutableDictionary<string, string> annotations,
 
             Outputs.GetNamespaceContainerResourceLimitResult containerResourceLimit,
 
@@ -144,7 +144,7 @@ namespace Pulumi.Rancher2
 
             string id,
 
-            ImmutableDictionary<string, object> labels,
+            ImmutableDictionary<string, string> labels,
 
             string name,
 

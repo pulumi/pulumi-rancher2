@@ -15,12 +15,12 @@ __all__ = ['CatalogArgs', 'Catalog']
 class CatalogArgs:
     def __init__(__self__, *,
                  url: pulumi.Input[str],
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  branch: Optional[pulumi.Input[str]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
@@ -31,12 +31,12 @@ class CatalogArgs:
         """
         The set of arguments for constructing a Catalog resource.
         :param pulumi.Input[str] url: The url of the catalog repo (string)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the catalog (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for the catalog (map)
         :param pulumi.Input[str] branch: The branch of the catalog repo to use. Default `master` (string)
         :param pulumi.Input[str] cluster_id: The cluster id of the catalog. Mandatory if `scope = cluster` (string)
         :param pulumi.Input[str] description: A catalog description (string)
         :param pulumi.Input[str] kind: The kind of the catalog. Just helm by the moment (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for the catalog (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the catalog (map)
         :param pulumi.Input[str] name: The name of the catalog (string)
         :param pulumi.Input[str] password: The password to access the catalog if needed (string)
         :param pulumi.Input[str] project_id: The project id of the catalog. Mandatory if `scope = project` (string)
@@ -87,14 +87,14 @@ class CatalogArgs:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations for the catalog (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -147,14 +147,14 @@ class CatalogArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for the catalog (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -245,12 +245,12 @@ class CatalogArgs:
 @pulumi.input_type
 class _CatalogState:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  branch: Optional[pulumi.Input[str]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
@@ -261,12 +261,12 @@ class _CatalogState:
                  version: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Catalog resources.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the catalog (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for the catalog (map)
         :param pulumi.Input[str] branch: The branch of the catalog repo to use. Default `master` (string)
         :param pulumi.Input[str] cluster_id: The cluster id of the catalog. Mandatory if `scope = cluster` (string)
         :param pulumi.Input[str] description: A catalog description (string)
         :param pulumi.Input[str] kind: The kind of the catalog. Just helm by the moment (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for the catalog (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the catalog (map)
         :param pulumi.Input[str] name: The name of the catalog (string)
         :param pulumi.Input[str] password: The password to access the catalog if needed (string)
         :param pulumi.Input[str] project_id: The project id of the catalog. Mandatory if `scope = project` (string)
@@ -307,14 +307,14 @@ class _CatalogState:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations for the catalog (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -367,14 +367,14 @@ class _CatalogState:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for the catalog (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -479,12 +479,12 @@ class Catalog(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  branch: Optional[pulumi.Input[str]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
@@ -529,12 +529,12 @@ class Catalog(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the catalog (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for the catalog (map)
         :param pulumi.Input[str] branch: The branch of the catalog repo to use. Default `master` (string)
         :param pulumi.Input[str] cluster_id: The cluster id of the catalog. Mandatory if `scope = cluster` (string)
         :param pulumi.Input[str] description: A catalog description (string)
         :param pulumi.Input[str] kind: The kind of the catalog. Just helm by the moment (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for the catalog (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the catalog (map)
         :param pulumi.Input[str] name: The name of the catalog (string)
         :param pulumi.Input[str] password: The password to access the catalog if needed (string)
         :param pulumi.Input[str] project_id: The project id of the catalog. Mandatory if `scope = project` (string)
@@ -598,12 +598,12 @@ class Catalog(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  branch: Optional[pulumi.Input[str]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
@@ -649,12 +649,12 @@ class Catalog(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             branch: Optional[pulumi.Input[str]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             kind: Optional[pulumi.Input[str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
@@ -670,12 +670,12 @@ class Catalog(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the catalog (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for the catalog (map)
         :param pulumi.Input[str] branch: The branch of the catalog repo to use. Default `master` (string)
         :param pulumi.Input[str] cluster_id: The cluster id of the catalog. Mandatory if `scope = cluster` (string)
         :param pulumi.Input[str] description: A catalog description (string)
         :param pulumi.Input[str] kind: The kind of the catalog. Just helm by the moment (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for the catalog (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the catalog (map)
         :param pulumi.Input[str] name: The name of the catalog (string)
         :param pulumi.Input[str] password: The password to access the catalog if needed (string)
         :param pulumi.Input[str] project_id: The project id of the catalog. Mandatory if `scope = project` (string)
@@ -707,7 +707,7 @@ class Catalog(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
+    def annotations(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Annotations for the catalog (map)
         """
@@ -747,7 +747,7 @@ class Catalog(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Labels for the catalog (map)
         """

@@ -41,7 +41,7 @@ export interface GetStorageClassV2Result {
     /**
      * (Computed) Annotations for the storageClass v2 (map)
      */
-    readonly annotations: {[key: string]: any};
+    readonly annotations: {[key: string]: string};
     readonly clusterId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -54,7 +54,7 @@ export interface GetStorageClassV2Result {
     /**
      * (Computed) Labels for the storageClass v2 (map)
      */
-    readonly labels: {[key: string]: any};
+    readonly labels: {[key: string]: string};
     /**
      * (Computed) The mount options for storageClass v2 (list)
      */
@@ -63,7 +63,7 @@ export interface GetStorageClassV2Result {
     /**
      * (Computed) The parameters for storageClass v2 (string)
      */
-    readonly parameters: {[key: string]: any};
+    readonly parameters: {[key: string]: string};
     /**
      * (Computed) The reclaim policy for storageClass v2 (string)
      */

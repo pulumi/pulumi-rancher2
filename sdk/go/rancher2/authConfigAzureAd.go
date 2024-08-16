@@ -52,7 +52,7 @@ type AuthConfigAzureAd struct {
 	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `azuread_user://<USER_ID>`  `azuread_group://<GROUP_ID>` (list)
 	AllowedPrincipalIds pulumi.StringArrayOutput `pulumi:"allowedPrincipalIds"`
 	// Annotations of the resource (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// AzureAD auth application ID (string)
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
 	// AzureAD auth application secret (string)
@@ -66,7 +66,7 @@ type AuthConfigAzureAd struct {
 	// AzureAD graph endpoint (string)
 	GraphEndpoint pulumi.StringOutput `pulumi:"graphEndpoint"`
 	// Labels of the resource (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// (Computed) The name of the resource (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Rancher URL (string). "<rancher_url>/verify-auth-azure"
@@ -146,7 +146,7 @@ type authConfigAzureAdState struct {
 	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `azuread_user://<USER_ID>`  `azuread_group://<GROUP_ID>` (list)
 	AllowedPrincipalIds []string `pulumi:"allowedPrincipalIds"`
 	// Annotations of the resource (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// AzureAD auth application ID (string)
 	ApplicationId *string `pulumi:"applicationId"`
 	// AzureAD auth application secret (string)
@@ -160,7 +160,7 @@ type authConfigAzureAdState struct {
 	// AzureAD graph endpoint (string)
 	GraphEndpoint *string `pulumi:"graphEndpoint"`
 	// Labels of the resource (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// (Computed) The name of the resource (string)
 	Name *string `pulumi:"name"`
 	// Rancher URL (string). "<rancher_url>/verify-auth-azure"
@@ -179,7 +179,7 @@ type AuthConfigAzureAdState struct {
 	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `azuread_user://<USER_ID>`  `azuread_group://<GROUP_ID>` (list)
 	AllowedPrincipalIds pulumi.StringArrayInput
 	// Annotations of the resource (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// AzureAD auth application ID (string)
 	ApplicationId pulumi.StringPtrInput
 	// AzureAD auth application secret (string)
@@ -193,7 +193,7 @@ type AuthConfigAzureAdState struct {
 	// AzureAD graph endpoint (string)
 	GraphEndpoint pulumi.StringPtrInput
 	// Labels of the resource (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// (Computed) The name of the resource (string)
 	Name pulumi.StringPtrInput
 	// Rancher URL (string). "<rancher_url>/verify-auth-azure"
@@ -216,7 +216,7 @@ type authConfigAzureAdArgs struct {
 	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `azuread_user://<USER_ID>`  `azuread_group://<GROUP_ID>` (list)
 	AllowedPrincipalIds []string `pulumi:"allowedPrincipalIds"`
 	// Annotations of the resource (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// AzureAD auth application ID (string)
 	ApplicationId string `pulumi:"applicationId"`
 	// AzureAD auth application secret (string)
@@ -230,7 +230,7 @@ type authConfigAzureAdArgs struct {
 	// AzureAD graph endpoint (string)
 	GraphEndpoint string `pulumi:"graphEndpoint"`
 	// Labels of the resource (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// Rancher URL (string). "<rancher_url>/verify-auth-azure"
 	RancherUrl string `pulumi:"rancherUrl"`
 	// AzureAD tenant ID (string)
@@ -246,7 +246,7 @@ type AuthConfigAzureAdArgs struct {
 	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `azuread_user://<USER_ID>`  `azuread_group://<GROUP_ID>` (list)
 	AllowedPrincipalIds pulumi.StringArrayInput
 	// Annotations of the resource (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// AzureAD auth application ID (string)
 	ApplicationId pulumi.StringInput
 	// AzureAD auth application secret (string)
@@ -260,7 +260,7 @@ type AuthConfigAzureAdArgs struct {
 	// AzureAD graph endpoint (string)
 	GraphEndpoint pulumi.StringInput
 	// Labels of the resource (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// Rancher URL (string). "<rancher_url>/verify-auth-azure"
 	RancherUrl pulumi.StringInput
 	// AzureAD tenant ID (string)
@@ -367,8 +367,8 @@ func (o AuthConfigAzureAdOutput) AllowedPrincipalIds() pulumi.StringArrayOutput 
 }
 
 // Annotations of the resource (map)
-func (o AuthConfigAzureAdOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *AuthConfigAzureAd) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o AuthConfigAzureAdOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AuthConfigAzureAd) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // AzureAD auth application ID (string)
@@ -402,8 +402,8 @@ func (o AuthConfigAzureAdOutput) GraphEndpoint() pulumi.StringOutput {
 }
 
 // Labels of the resource (map)
-func (o AuthConfigAzureAdOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *AuthConfigAzureAd) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o AuthConfigAzureAdOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AuthConfigAzureAd) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // (Computed) The name of the resource (string)

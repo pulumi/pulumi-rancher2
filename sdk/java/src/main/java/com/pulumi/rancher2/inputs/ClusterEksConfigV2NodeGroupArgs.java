@@ -9,7 +9,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.inputs.ClusterEksConfigV2NodeGroupLaunchTemplateArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -117,13 +116,13 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
      * 
      */
     @Import(name="labels")
-    private @Nullable Output<Map<String,Object>> labels;
+    private @Nullable Output<Map<String,String>> labels;
 
     /**
      * @return Labels for the Cluster (map)
      * 
      */
-    public Optional<Output<Map<String,Object>>> labels() {
+    public Optional<Output<Map<String,String>>> labels() {
         return Optional.ofNullable(this.labels);
     }
 
@@ -222,13 +221,13 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
      * 
      */
     @Import(name="resourceTags")
-    private @Nullable Output<Map<String,Object>> resourceTags;
+    private @Nullable Output<Map<String,String>> resourceTags;
 
     /**
      * @return The EKS node group resource tags
      * 
      */
-    public Optional<Output<Map<String,Object>>> resourceTags() {
+    public Optional<Output<Map<String,String>>> resourceTags() {
         return Optional.ofNullable(this.resourceTags);
     }
 
@@ -267,13 +266,13 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
      * 
      */
     @Import(name="tags")
-    private @Nullable Output<Map<String,Object>> tags;
+    private @Nullable Output<Map<String,String>> tags;
 
     /**
      * @return The EKS node group tags
      * 
      */
-    public Optional<Output<Map<String,Object>>> tags() {
+    public Optional<Output<Map<String,String>>> tags() {
         return Optional.ofNullable(this.tags);
     }
 
@@ -481,7 +480,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder labels(@Nullable Output<Map<String,Object>> labels) {
+        public Builder labels(@Nullable Output<Map<String,String>> labels) {
             $.labels = labels;
             return this;
         }
@@ -492,7 +491,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder labels(Map<String,Object> labels) {
+        public Builder labels(Map<String,String> labels) {
             return labels(Output.of(labels));
         }
 
@@ -638,7 +637,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder resourceTags(@Nullable Output<Map<String,Object>> resourceTags) {
+        public Builder resourceTags(@Nullable Output<Map<String,String>> resourceTags) {
             $.resourceTags = resourceTags;
             return this;
         }
@@ -649,7 +648,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder resourceTags(Map<String,Object> resourceTags) {
+        public Builder resourceTags(Map<String,String> resourceTags) {
             return resourceTags(Output.of(resourceTags));
         }
 
@@ -721,7 +720,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
             $.tags = tags;
             return this;
         }
@@ -732,7 +731,7 @@ public final class ClusterEksConfigV2NodeGroupArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             return tags(Output.of(tags));
         }
 

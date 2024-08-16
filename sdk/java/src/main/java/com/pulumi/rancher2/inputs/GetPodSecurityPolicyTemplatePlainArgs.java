@@ -16,7 +16,6 @@ import com.pulumi.rancher2.inputs.GetPodSecurityPolicyTemplateRuntimeClass;
 import com.pulumi.rancher2.inputs.GetPodSecurityPolicyTemplateSeLinux;
 import com.pulumi.rancher2.inputs.GetPodSecurityPolicyTemplateSupplementalGroup;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -139,13 +138,13 @@ public final class GetPodSecurityPolicyTemplatePlainArgs extends com.pulumi.reso
      * 
      */
     @Import(name="annotations")
-    private @Nullable Map<String,Object> annotations;
+    private @Nullable Map<String,String> annotations;
 
     /**
      * @return Annotations for PodSecurityPolicyTemplate object (map)
      * 
      */
-    public Optional<Map<String,Object>> annotations() {
+    public Optional<Map<String,String>> annotations() {
         return Optional.ofNullable(this.annotations);
     }
 
@@ -281,13 +280,13 @@ public final class GetPodSecurityPolicyTemplatePlainArgs extends com.pulumi.reso
      * 
      */
     @Import(name="labels")
-    private @Nullable Map<String,Object> labels;
+    private @Nullable Map<String,String> labels;
 
     /**
      * @return Labels for PodSecurityPolicyTemplate object (map)
      * 
      */
-    public Optional<Map<String,Object>> labels() {
+    public Optional<Map<String,String>> labels() {
         return Optional.ofNullable(this.labels);
     }
 
@@ -635,7 +634,7 @@ public final class GetPodSecurityPolicyTemplatePlainArgs extends com.pulumi.reso
          * @return builder
          * 
          */
-        public Builder annotations(@Nullable Map<String,Object> annotations) {
+        public Builder annotations(@Nullable Map<String,String> annotations) {
             $.annotations = annotations;
             return this;
         }
@@ -769,7 +768,7 @@ public final class GetPodSecurityPolicyTemplatePlainArgs extends com.pulumi.reso
          * @return builder
          * 
          */
-        public Builder labels(@Nullable Map<String,Object> labels) {
+        public Builder labels(@Nullable Map<String,String> labels) {
             $.labels = labels;
             return this;
         }

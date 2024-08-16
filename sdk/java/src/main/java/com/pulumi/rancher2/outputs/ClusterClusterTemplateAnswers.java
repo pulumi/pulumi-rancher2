@@ -4,7 +4,6 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -27,7 +26,7 @@ public final class ClusterClusterTemplateAnswers {
      * @return Key/values for answer
      * 
      */
-    private @Nullable Map<String,Object> values;
+    private @Nullable Map<String,String> values;
 
     private ClusterClusterTemplateAnswers() {}
     /**
@@ -48,7 +47,7 @@ public final class ClusterClusterTemplateAnswers {
      * @return Key/values for answer
      * 
      */
-    public Map<String,Object> values() {
+    public Map<String,String> values() {
         return this.values == null ? Map.of() : this.values;
     }
 
@@ -63,7 +62,7 @@ public final class ClusterClusterTemplateAnswers {
     public static final class Builder {
         private @Nullable String clusterId;
         private @Nullable String projectId;
-        private @Nullable Map<String,Object> values;
+        private @Nullable Map<String,String> values;
         public Builder() {}
         public Builder(ClusterClusterTemplateAnswers defaults) {
     	      Objects.requireNonNull(defaults);
@@ -85,7 +84,7 @@ public final class ClusterClusterTemplateAnswers {
             return this;
         }
         @CustomType.Setter
-        public Builder values(@Nullable Map<String,Object> values) {
+        public Builder values(@Nullable Map<String,String> values) {
 
             this.values = values;
             return this;

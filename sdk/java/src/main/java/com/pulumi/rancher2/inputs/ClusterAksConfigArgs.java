@@ -8,7 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -540,7 +539,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
      */
     @Deprecated /* Use tags argument instead as []string */
     @Import(name="tag")
-    private @Nullable Output<Map<String,Object>> tag;
+    private @Nullable Output<Map<String,String>> tag;
 
     /**
      * @return Tags for Kubernetes cluster. For example, foo=bar
@@ -550,7 +549,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
      * 
      */
     @Deprecated /* Use tags argument instead as []string */
-    public Optional<Output<Map<String,Object>>> tag() {
+    public Optional<Output<Map<String,String>>> tag() {
         return Optional.ofNullable(this.tag);
     }
 
@@ -1400,7 +1399,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
          * 
          */
         @Deprecated /* Use tags argument instead as []string */
-        public Builder tag(@Nullable Output<Map<String,Object>> tag) {
+        public Builder tag(@Nullable Output<Map<String,String>> tag) {
             $.tag = tag;
             return this;
         }
@@ -1415,7 +1414,7 @@ public final class ClusterAksConfigArgs extends com.pulumi.resources.ResourceArg
          * 
          */
         @Deprecated /* Use tags argument instead as []string */
-        public Builder tag(Map<String,Object> tag) {
+        public Builder tag(Map<String,String> tag) {
             return tag(Output.of(tag));
         }
 

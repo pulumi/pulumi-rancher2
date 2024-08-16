@@ -108,7 +108,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Annotations for the catalog (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Annotations;
+        public readonly ImmutableDictionary<string, string> Annotations;
         /// <summary>
         /// (Computed) The branch of the catalog repo to use (string)
         /// </summary>
@@ -132,7 +132,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Labels for the catalog (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Labels;
+        public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
         /// <summary>
         /// (Computed/Sensitive) The password to access the catalog if needed (string)
@@ -158,7 +158,7 @@ namespace Pulumi.Rancher2
 
         [OutputConstructor]
         private GetCatalogResult(
-            ImmutableDictionary<string, object> annotations,
+            ImmutableDictionary<string, string> annotations,
 
             string branch,
 
@@ -170,7 +170,7 @@ namespace Pulumi.Rancher2
 
             string kind,
 
-            ImmutableDictionary<string, object> labels,
+            ImmutableDictionary<string, string> labels,
 
             string name,
 

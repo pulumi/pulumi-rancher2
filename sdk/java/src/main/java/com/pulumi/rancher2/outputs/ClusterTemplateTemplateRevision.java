@@ -8,7 +8,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.ClusterTemplateTemplateRevisionClusterConfig;
 import com.pulumi.rancher2.outputs.ClusterTemplateTemplateRevisionQuestion;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -22,7 +21,7 @@ public final class ClusterTemplateTemplateRevision {
      * @return Annotations for the cluster template (map)
      * 
      */
-    private @Nullable Map<String,Object> annotations;
+    private @Nullable Map<String,String> annotations;
     /**
      * @return Cluster configuration
      * 
@@ -52,7 +51,7 @@ public final class ClusterTemplateTemplateRevision {
      * @return Labels for the cluster template (map)
      * 
      */
-    private @Nullable Map<String,Object> labels;
+    private @Nullable Map<String,String> labels;
     /**
      * @return The cluster template name (string)
      * 
@@ -69,7 +68,7 @@ public final class ClusterTemplateTemplateRevision {
      * @return Annotations for the cluster template (map)
      * 
      */
-    public Map<String,Object> annotations() {
+    public Map<String,String> annotations() {
         return this.annotations == null ? Map.of() : this.annotations;
     }
     /**
@@ -111,7 +110,7 @@ public final class ClusterTemplateTemplateRevision {
      * @return Labels for the cluster template (map)
      * 
      */
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels == null ? Map.of() : this.labels;
     }
     /**
@@ -138,13 +137,13 @@ public final class ClusterTemplateTemplateRevision {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Map<String,Object> annotations;
+        private @Nullable Map<String,String> annotations;
         private ClusterTemplateTemplateRevisionClusterConfig clusterConfig;
         private @Nullable String clusterTemplateId;
         private @Nullable Boolean default_;
         private @Nullable Boolean enabled;
         private @Nullable String id;
-        private @Nullable Map<String,Object> labels;
+        private @Nullable Map<String,String> labels;
         private String name;
         private @Nullable List<ClusterTemplateTemplateRevisionQuestion> questions;
         public Builder() {}
@@ -162,7 +161,7 @@ public final class ClusterTemplateTemplateRevision {
         }
 
         @CustomType.Setter
-        public Builder annotations(@Nullable Map<String,Object> annotations) {
+        public Builder annotations(@Nullable Map<String,String> annotations) {
 
             this.annotations = annotations;
             return this;
@@ -200,7 +199,7 @@ public final class ClusterTemplateTemplateRevision {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(@Nullable Map<String,Object> labels) {
+        public Builder labels(@Nullable Map<String,String> labels) {
 
             this.labels = labels;
             return this;

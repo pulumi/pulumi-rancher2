@@ -6,7 +6,6 @@ package com.pulumi.rancher2.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -34,7 +33,7 @@ public final class NodeTemplateHetznerConfig {
      * @return Map of the labels which will be assigned to the server
      * 
      */
-    private @Nullable Map<String,Object> serverLabels;
+    private @Nullable Map<String,String> serverLabels;
     /**
      * @return Hetzner Cloud datacenter
      * 
@@ -87,7 +86,7 @@ public final class NodeTemplateHetznerConfig {
      * @return Map of the labels which will be assigned to the server
      * 
      */
-    public Map<String,Object> serverLabels() {
+    public Map<String,String> serverLabels() {
         return this.serverLabels == null ? Map.of() : this.serverLabels;
     }
     /**
@@ -138,7 +137,7 @@ public final class NodeTemplateHetznerConfig {
         private String apiToken;
         private @Nullable String image;
         private @Nullable String networks;
-        private @Nullable Map<String,Object> serverLabels;
+        private @Nullable Map<String,String> serverLabels;
         private @Nullable String serverLocation;
         private @Nullable String serverType;
         private @Nullable Boolean usePrivateNetwork;
@@ -179,7 +178,7 @@ public final class NodeTemplateHetznerConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder serverLabels(@Nullable Map<String,Object> serverLabels) {
+        public Builder serverLabels(@Nullable Map<String,String> serverLabels) {
 
             this.serverLabels = serverLabels;
             return this;

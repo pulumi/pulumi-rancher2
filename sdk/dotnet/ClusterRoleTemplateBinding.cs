@@ -49,7 +49,7 @@ namespace Pulumi.Rancher2
         /// Annotations for cluster role template binding (map)
         /// </summary>
         [Output("annotations")]
-        public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Annotations { get; private set; } = null!;
 
         /// <summary>
         /// The cluster id where bind cluster role template binding (string)
@@ -75,7 +75,7 @@ namespace Pulumi.Rancher2
         /// **Note:** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
         /// </summary>
         [Output("labels")]
-        public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
         /// The name of the cluster role template binding (string)
@@ -148,14 +148,14 @@ namespace Pulumi.Rancher2
     public sealed class ClusterRoleTemplateBindingArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
-        private InputMap<object>? _annotations;
+        private InputMap<string>? _annotations;
 
         /// <summary>
         /// Annotations for cluster role template binding (map)
         /// </summary>
-        public InputMap<object> Annotations
+        public InputMap<string> Annotations
         {
-            get => _annotations ?? (_annotations = new InputMap<object>());
+            get => _annotations ?? (_annotations = new InputMap<string>());
             set => _annotations = value;
         }
 
@@ -178,16 +178,16 @@ namespace Pulumi.Rancher2
         public Input<string>? GroupPrincipalId { get; set; }
 
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// Labels for cluster role template binding (map)
         /// 
         /// **Note:** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
@@ -224,14 +224,14 @@ namespace Pulumi.Rancher2
     public sealed class ClusterRoleTemplateBindingState : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
-        private InputMap<object>? _annotations;
+        private InputMap<string>? _annotations;
 
         /// <summary>
         /// Annotations for cluster role template binding (map)
         /// </summary>
-        public InputMap<object> Annotations
+        public InputMap<string> Annotations
         {
-            get => _annotations ?? (_annotations = new InputMap<object>());
+            get => _annotations ?? (_annotations = new InputMap<string>());
             set => _annotations = value;
         }
 
@@ -254,16 +254,16 @@ namespace Pulumi.Rancher2
         public Input<string>? GroupPrincipalId { get; set; }
 
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// Labels for cluster role template binding (map)
         /// 
         /// **Note:** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 

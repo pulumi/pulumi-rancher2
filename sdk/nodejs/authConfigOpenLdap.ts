@@ -48,7 +48,7 @@ export class AuthConfigOpenLdap extends pulumi.CustomResource {
     /**
      * Annotations of the resource (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: any}>;
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * Base64 encoded CA certificate for TLS if self-signed. Use filebase64(<FILE>) for encoding file (string)
      */
@@ -93,7 +93,7 @@ export class AuthConfigOpenLdap extends pulumi.CustomResource {
     /**
      * Labels of the resource (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * (Computed) The name of the resource (string)
      */
@@ -295,7 +295,7 @@ export interface AuthConfigOpenLdapState {
     /**
      * Annotations of the resource (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Base64 encoded CA certificate for TLS if self-signed. Use filebase64(<FILE>) for encoding file (string)
      */
@@ -340,7 +340,7 @@ export interface AuthConfigOpenLdapState {
     /**
      * Labels of the resource (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * (Computed) The name of the resource (string)
      */
@@ -432,7 +432,7 @@ export interface AuthConfigOpenLdapArgs {
     /**
      * Annotations of the resource (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Base64 encoded CA certificate for TLS if self-signed. Use filebase64(<FILE>) for encoding file (string)
      */
@@ -477,7 +477,7 @@ export interface AuthConfigOpenLdapArgs {
     /**
      * Labels of the resource (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Nested group membership enable. Default `false` (bool)
      */

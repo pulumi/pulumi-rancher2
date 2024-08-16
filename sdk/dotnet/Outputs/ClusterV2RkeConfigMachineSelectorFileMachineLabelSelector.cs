@@ -20,13 +20,13 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// Label selector match labels
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? MatchLabels;
+        public readonly ImmutableDictionary<string, string>? MatchLabels;
 
         [OutputConstructor]
         private ClusterV2RkeConfigMachineSelectorFileMachineLabelSelector(
             ImmutableArray<Outputs.ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpression> matchExpressions,
 
-            ImmutableDictionary<string, object>? matchLabels)
+            ImmutableDictionary<string, string>? matchLabels)
         {
             MatchExpressions = matchExpressions;
             MatchLabels = matchLabels;

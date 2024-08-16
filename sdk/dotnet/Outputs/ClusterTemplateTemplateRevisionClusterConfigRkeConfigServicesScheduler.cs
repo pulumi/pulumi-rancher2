@@ -13,14 +13,14 @@ namespace Pulumi.Rancher2.Outputs
     [OutputType]
     public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesScheduler
     {
-        public readonly ImmutableDictionary<string, object>? ExtraArgs;
+        public readonly ImmutableDictionary<string, string>? ExtraArgs;
         public readonly ImmutableArray<string> ExtraBinds;
         public readonly ImmutableArray<string> ExtraEnvs;
         public readonly string? Image;
 
         [OutputConstructor]
         private ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesScheduler(
-            ImmutableDictionary<string, object>? extraArgs,
+            ImmutableDictionary<string, string>? extraArgs,
 
             ImmutableArray<string> extraBinds,
 

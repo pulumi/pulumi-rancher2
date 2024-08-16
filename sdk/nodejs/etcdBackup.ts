@@ -77,7 +77,7 @@ export class EtcdBackup extends pulumi.CustomResource {
     /**
      * Annotations for Etcd Backup object (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: any}>;
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * Backup config for etcd backup (list maxitems:1)
      */
@@ -93,7 +93,7 @@ export class EtcdBackup extends pulumi.CustomResource {
     /**
      * Labels for Etcd Backup object (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Manual execution of the Etcd Backup. Default `false` (bool)
      */
@@ -154,7 +154,7 @@ export interface EtcdBackupState {
     /**
      * Annotations for Etcd Backup object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Backup config for etcd backup (list maxitems:1)
      */
@@ -170,7 +170,7 @@ export interface EtcdBackupState {
     /**
      * Labels for Etcd Backup object (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Manual execution of the Etcd Backup. Default `false` (bool)
      */
@@ -192,7 +192,7 @@ export interface EtcdBackupArgs {
     /**
      * Annotations for Etcd Backup object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Backup config for etcd backup (list maxitems:1)
      */
@@ -208,7 +208,7 @@ export interface EtcdBackupArgs {
     /**
      * Labels for Etcd Backup object (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Manual execution of the Etcd Backup. Default `false` (bool)
      */

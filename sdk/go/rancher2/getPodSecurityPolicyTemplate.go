@@ -41,7 +41,7 @@ type LookupPodSecurityPolicyTemplateArgs struct {
 	// (list)
 	AllowedUnsafeSysctls []string `pulumi:"allowedUnsafeSysctls"`
 	// Annotations for PodSecurityPolicyTemplate object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// (list)
 	DefaultAddCapabilities []string `pulumi:"defaultAddCapabilities"`
 	// (list)
@@ -60,7 +60,7 @@ type LookupPodSecurityPolicyTemplateArgs struct {
 	// (list)
 	HostPorts []GetPodSecurityPolicyTemplateHostPort `pulumi:"hostPorts"`
 	// Labels for PodSecurityPolicyTemplate object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The name of the PodSecurityPolicyTemplate (string)
 	Name string `pulumi:"name"`
 	// (bool)
@@ -92,7 +92,7 @@ type LookupPodSecurityPolicyTemplateResult struct {
 	AllowedHostPaths                []GetPodSecurityPolicyTemplateAllowedHostPath   `pulumi:"allowedHostPaths"`
 	AllowedProcMountTypes           []string                                        `pulumi:"allowedProcMountTypes"`
 	AllowedUnsafeSysctls            []string                                        `pulumi:"allowedUnsafeSysctls"`
-	Annotations                     map[string]interface{}                          `pulumi:"annotations"`
+	Annotations                     map[string]string                               `pulumi:"annotations"`
 	DefaultAddCapabilities          []string                                        `pulumi:"defaultAddCapabilities"`
 	DefaultAllowPrivilegeEscalation *bool                                           `pulumi:"defaultAllowPrivilegeEscalation"`
 	Description                     string                                          `pulumi:"description"`
@@ -104,7 +104,7 @@ type LookupPodSecurityPolicyTemplateResult struct {
 	HostPorts                       []GetPodSecurityPolicyTemplateHostPort          `pulumi:"hostPorts"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                       string                                        `pulumi:"id"`
-	Labels                   map[string]interface{}                        `pulumi:"labels"`
+	Labels                   map[string]string                             `pulumi:"labels"`
 	Name                     string                                        `pulumi:"name"`
 	Privileged               bool                                          `pulumi:"privileged"`
 	ReadOnlyRootFilesystem   bool                                          `pulumi:"readOnlyRootFilesystem"`
@@ -147,7 +147,7 @@ type LookupPodSecurityPolicyTemplateOutputArgs struct {
 	// (list)
 	AllowedUnsafeSysctls pulumi.StringArrayInput `pulumi:"allowedUnsafeSysctls"`
 	// Annotations for PodSecurityPolicyTemplate object (map)
-	Annotations pulumi.MapInput `pulumi:"annotations"`
+	Annotations pulumi.StringMapInput `pulumi:"annotations"`
 	// (list)
 	DefaultAddCapabilities pulumi.StringArrayInput `pulumi:"defaultAddCapabilities"`
 	// (list)
@@ -166,7 +166,7 @@ type LookupPodSecurityPolicyTemplateOutputArgs struct {
 	// (list)
 	HostPorts GetPodSecurityPolicyTemplateHostPortArrayInput `pulumi:"hostPorts"`
 	// Labels for PodSecurityPolicyTemplate object (map)
-	Labels pulumi.MapInput `pulumi:"labels"`
+	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The name of the PodSecurityPolicyTemplate (string)
 	Name pulumi.StringInput `pulumi:"name"`
 	// (bool)
@@ -242,8 +242,8 @@ func (o LookupPodSecurityPolicyTemplateResultOutput) AllowedUnsafeSysctls() pulu
 	return o.ApplyT(func(v LookupPodSecurityPolicyTemplateResult) []string { return v.AllowedUnsafeSysctls }).(pulumi.StringArrayOutput)
 }
 
-func (o LookupPodSecurityPolicyTemplateResultOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupPodSecurityPolicyTemplateResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+func (o LookupPodSecurityPolicyTemplateResultOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupPodSecurityPolicyTemplateResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 func (o LookupPodSecurityPolicyTemplateResultOutput) DefaultAddCapabilities() pulumi.StringArrayOutput {
@@ -289,8 +289,8 @@ func (o LookupPodSecurityPolicyTemplateResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPodSecurityPolicyTemplateResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o LookupPodSecurityPolicyTemplateResultOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupPodSecurityPolicyTemplateResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+func (o LookupPodSecurityPolicyTemplateResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupPodSecurityPolicyTemplateResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupPodSecurityPolicyTemplateResultOutput) Name() pulumi.StringOutput {

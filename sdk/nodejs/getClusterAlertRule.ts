@@ -42,7 +42,7 @@ export interface GetClusterAlertRuleArgs {
     /**
      * (Computed) The cluster alert rule labels (map)
      */
-    labels?: {[key: string]: any};
+    labels?: {[key: string]: string};
     /**
      * The cluster alert rule name (string)
      */
@@ -56,7 +56,7 @@ export interface GetClusterAlertRuleResult {
     /**
      * (Computed) The cluster alert rule annotations (map)
      */
-    readonly annotations: {[key: string]: any};
+    readonly annotations: {[key: string]: string};
     readonly clusterId: string;
     /**
      * (Computed) The cluster alert rule event rule. ConflictsWith: `"metricRule", "nodeRule", "systemServiceRule"` (list Maxitems:1)
@@ -85,7 +85,7 @@ export interface GetClusterAlertRuleResult {
     /**
      * (Computed) The cluster alert rule labels (map)
      */
-    readonly labels?: {[key: string]: any};
+    readonly labels?: {[key: string]: string};
     /**
      * (Computed) The cluster alert rule metric rule. ConflictsWith: `"eventRule", "nodeRule", "systemServiceRule"`` (list Maxitems:1)
      */
@@ -138,7 +138,7 @@ export interface GetClusterAlertRuleOutputArgs {
     /**
      * (Computed) The cluster alert rule labels (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The cluster alert rule name (string)
      */

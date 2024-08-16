@@ -8,7 +8,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetGlobalDnsProviderAlidnsConfig;
 import com.pulumi.rancher2.outputs.GetGlobalDnsProviderCloudflareConfig;
 import com.pulumi.rancher2.outputs.GetGlobalDnsProviderRoute53Config;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -20,7 +19,7 @@ public final class GetGlobalDnsProviderResult {
      * @return (Computed) Annotations of the resource (map)
      * 
      */
-    private Map<String,Object> annotations;
+    private Map<String,String> annotations;
     private GetGlobalDnsProviderCloudflareConfig cloudflareConfig;
     private String dnsProvider;
     /**
@@ -32,7 +31,7 @@ public final class GetGlobalDnsProviderResult {
      * @return (Computed) Labels of the resource (map)
      * 
      */
-    private Map<String,Object> labels;
+    private Map<String,String> labels;
     /**
      * @return (Computed) The name of the global DNS provider (string)
      * 
@@ -49,7 +48,7 @@ public final class GetGlobalDnsProviderResult {
      * @return (Computed) Annotations of the resource (map)
      * 
      */
-    public Map<String,Object> annotations() {
+    public Map<String,String> annotations() {
         return this.annotations;
     }
     public GetGlobalDnsProviderCloudflareConfig cloudflareConfig() {
@@ -69,7 +68,7 @@ public final class GetGlobalDnsProviderResult {
      * @return (Computed) Labels of the resource (map)
      * 
      */
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels;
     }
     /**
@@ -96,11 +95,11 @@ public final class GetGlobalDnsProviderResult {
     @CustomType.Builder
     public static final class Builder {
         private GetGlobalDnsProviderAlidnsConfig alidnsConfig;
-        private Map<String,Object> annotations;
+        private Map<String,String> annotations;
         private GetGlobalDnsProviderCloudflareConfig cloudflareConfig;
         private String dnsProvider;
         private String id;
-        private Map<String,Object> labels;
+        private Map<String,String> labels;
         private String name;
         private String rootDomain;
         private GetGlobalDnsProviderRoute53Config route53Config;
@@ -127,7 +126,7 @@ public final class GetGlobalDnsProviderResult {
             return this;
         }
         @CustomType.Setter
-        public Builder annotations(Map<String,Object> annotations) {
+        public Builder annotations(Map<String,String> annotations) {
             if (annotations == null) {
               throw new MissingRequiredPropertyException("GetGlobalDnsProviderResult", "annotations");
             }
@@ -159,7 +158,7 @@ public final class GetGlobalDnsProviderResult {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(Map<String,Object> labels) {
+        public Builder labels(Map<String,String> labels) {
             if (labels == null) {
               throw new MissingRequiredPropertyException("GetGlobalDnsProviderResult", "labels");
             }

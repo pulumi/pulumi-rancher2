@@ -17,10 +17,10 @@ __all__ = ['NotifierArgs', 'Notifier']
 class NotifierArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[str],
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dingtalk_config: Optional[pulumi.Input['NotifierDingtalkConfigArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  msteams_config: Optional[pulumi.Input['NotifierMsteamsConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pagerduty_config: Optional[pulumi.Input['NotifierPagerdutyConfigArgs']] = None,
@@ -32,10 +32,10 @@ class NotifierArgs:
         """
         The set of arguments for constructing a Notifier resource.
         :param pulumi.Input[str] cluster_id: The cluster id where create notifier (string)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for notifier object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for notifier object (map)
         :param pulumi.Input[str] description: The notifier description (string)
         :param pulumi.Input['NotifierDingtalkConfigArgs'] dingtalk_config: Dingtalk config for notifier (list maxitems:1)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for notifier object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for notifier object (map)
         :param pulumi.Input['NotifierMsteamsConfigArgs'] msteams_config: MSTeams config for notifier (list maxitems:1)
         :param pulumi.Input[str] name: The name of the notifier (string)
         :param pulumi.Input['NotifierPagerdutyConfigArgs'] pagerduty_config: Pagerduty config for notifier (list maxitems:1)
@@ -85,14 +85,14 @@ class NotifierArgs:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations for notifier object (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -121,14 +121,14 @@ class NotifierArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for notifier object (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -231,11 +231,11 @@ class NotifierArgs:
 @pulumi.input_type
 class _NotifierState:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dingtalk_config: Optional[pulumi.Input['NotifierDingtalkConfigArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  msteams_config: Optional[pulumi.Input['NotifierMsteamsConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pagerduty_config: Optional[pulumi.Input['NotifierPagerdutyConfigArgs']] = None,
@@ -246,11 +246,11 @@ class _NotifierState:
                  wechat_config: Optional[pulumi.Input['NotifierWechatConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Notifier resources.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for notifier object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for notifier object (map)
         :param pulumi.Input[str] cluster_id: The cluster id where create notifier (string)
         :param pulumi.Input[str] description: The notifier description (string)
         :param pulumi.Input['NotifierDingtalkConfigArgs'] dingtalk_config: Dingtalk config for notifier (list maxitems:1)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for notifier object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for notifier object (map)
         :param pulumi.Input['NotifierMsteamsConfigArgs'] msteams_config: MSTeams config for notifier (list maxitems:1)
         :param pulumi.Input[str] name: The name of the notifier (string)
         :param pulumi.Input['NotifierPagerdutyConfigArgs'] pagerduty_config: Pagerduty config for notifier (list maxitems:1)
@@ -289,14 +289,14 @@ class _NotifierState:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations for notifier object (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -337,14 +337,14 @@ class _NotifierState:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for notifier object (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -449,11 +449,11 @@ class Notifier(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dingtalk_config: Optional[pulumi.Input[Union['NotifierDingtalkConfigArgs', 'NotifierDingtalkConfigArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  msteams_config: Optional[pulumi.Input[Union['NotifierMsteamsConfigArgs', 'NotifierMsteamsConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pagerduty_config: Optional[pulumi.Input[Union['NotifierPagerdutyConfigArgs', 'NotifierPagerdutyConfigArgsDict']]] = None,
@@ -494,11 +494,11 @@ class Notifier(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for notifier object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for notifier object (map)
         :param pulumi.Input[str] cluster_id: The cluster id where create notifier (string)
         :param pulumi.Input[str] description: The notifier description (string)
         :param pulumi.Input[Union['NotifierDingtalkConfigArgs', 'NotifierDingtalkConfigArgsDict']] dingtalk_config: Dingtalk config for notifier (list maxitems:1)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for notifier object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for notifier object (map)
         :param pulumi.Input[Union['NotifierMsteamsConfigArgs', 'NotifierMsteamsConfigArgsDict']] msteams_config: MSTeams config for notifier (list maxitems:1)
         :param pulumi.Input[str] name: The name of the notifier (string)
         :param pulumi.Input[Union['NotifierPagerdutyConfigArgs', 'NotifierPagerdutyConfigArgsDict']] pagerduty_config: Pagerduty config for notifier (list maxitems:1)
@@ -558,11 +558,11 @@ class Notifier(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dingtalk_config: Optional[pulumi.Input[Union['NotifierDingtalkConfigArgs', 'NotifierDingtalkConfigArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  msteams_config: Optional[pulumi.Input[Union['NotifierMsteamsConfigArgs', 'NotifierMsteamsConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pagerduty_config: Optional[pulumi.Input[Union['NotifierPagerdutyConfigArgs', 'NotifierPagerdutyConfigArgsDict']]] = None,
@@ -605,11 +605,11 @@ class Notifier(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             dingtalk_config: Optional[pulumi.Input[Union['NotifierDingtalkConfigArgs', 'NotifierDingtalkConfigArgsDict']]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             msteams_config: Optional[pulumi.Input[Union['NotifierMsteamsConfigArgs', 'NotifierMsteamsConfigArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             pagerduty_config: Optional[pulumi.Input[Union['NotifierPagerdutyConfigArgs', 'NotifierPagerdutyConfigArgsDict']]] = None,
@@ -625,11 +625,11 @@ class Notifier(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for notifier object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for notifier object (map)
         :param pulumi.Input[str] cluster_id: The cluster id where create notifier (string)
         :param pulumi.Input[str] description: The notifier description (string)
         :param pulumi.Input[Union['NotifierDingtalkConfigArgs', 'NotifierDingtalkConfigArgsDict']] dingtalk_config: Dingtalk config for notifier (list maxitems:1)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for notifier object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for notifier object (map)
         :param pulumi.Input[Union['NotifierMsteamsConfigArgs', 'NotifierMsteamsConfigArgsDict']] msteams_config: MSTeams config for notifier (list maxitems:1)
         :param pulumi.Input[str] name: The name of the notifier (string)
         :param pulumi.Input[Union['NotifierPagerdutyConfigArgs', 'NotifierPagerdutyConfigArgsDict']] pagerduty_config: Pagerduty config for notifier (list maxitems:1)
@@ -660,7 +660,7 @@ class Notifier(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
+    def annotations(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Annotations for notifier object (map)
         """
@@ -692,7 +692,7 @@ class Notifier(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Labels for notifier object (map)
         """

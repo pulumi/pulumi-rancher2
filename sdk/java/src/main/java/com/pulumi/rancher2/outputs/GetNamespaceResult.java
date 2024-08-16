@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetNamespaceContainerResourceLimit;
 import com.pulumi.rancher2.outputs.GetNamespaceResourceQuota;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -18,7 +17,7 @@ public final class GetNamespaceResult {
      * @return (Computed) Annotations for Node Pool object (map)
      * 
      */
-    private Map<String,Object> annotations;
+    private Map<String,String> annotations;
     /**
      * @return (Computed) Default containers resource limits on namespace (List maxitem:1)
      * 
@@ -38,7 +37,7 @@ public final class GetNamespaceResult {
      * @return (Computed) Labels for Node Pool object (map)
      * 
      */
-    private Map<String,Object> labels;
+    private Map<String,String> labels;
     private String name;
     private String projectId;
     /**
@@ -52,7 +51,7 @@ public final class GetNamespaceResult {
      * @return (Computed) Annotations for Node Pool object (map)
      * 
      */
-    public Map<String,Object> annotations() {
+    public Map<String,String> annotations() {
         return this.annotations;
     }
     /**
@@ -80,7 +79,7 @@ public final class GetNamespaceResult {
      * @return (Computed) Labels for Node Pool object (map)
      * 
      */
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels;
     }
     public String name() {
@@ -106,11 +105,11 @@ public final class GetNamespaceResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Map<String,Object> annotations;
+        private Map<String,String> annotations;
         private GetNamespaceContainerResourceLimit containerResourceLimit;
         private String description;
         private String id;
-        private Map<String,Object> labels;
+        private Map<String,String> labels;
         private String name;
         private String projectId;
         private GetNamespaceResourceQuota resourceQuota;
@@ -128,7 +127,7 @@ public final class GetNamespaceResult {
         }
 
         @CustomType.Setter
-        public Builder annotations(Map<String,Object> annotations) {
+        public Builder annotations(Map<String,String> annotations) {
             if (annotations == null) {
               throw new MissingRequiredPropertyException("GetNamespaceResult", "annotations");
             }
@@ -160,7 +159,7 @@ public final class GetNamespaceResult {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(Map<String,Object> labels) {
+        public Builder labels(Map<String,String> labels) {
             if (labels == null) {
               throw new MissingRequiredPropertyException("GetNamespaceResult", "labels");
             }

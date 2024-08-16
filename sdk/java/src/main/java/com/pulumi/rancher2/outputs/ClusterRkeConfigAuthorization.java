@@ -4,7 +4,6 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -22,7 +21,7 @@ public final class ClusterRkeConfigAuthorization {
      * @return RKE options for network (map)
      * 
      */
-    private @Nullable Map<String,Object> options;
+    private @Nullable Map<String,String> options;
 
     private ClusterRkeConfigAuthorization() {}
     /**
@@ -36,7 +35,7 @@ public final class ClusterRkeConfigAuthorization {
      * @return RKE options for network (map)
      * 
      */
-    public Map<String,Object> options() {
+    public Map<String,String> options() {
         return this.options == null ? Map.of() : this.options;
     }
 
@@ -50,7 +49,7 @@ public final class ClusterRkeConfigAuthorization {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String mode;
-        private @Nullable Map<String,Object> options;
+        private @Nullable Map<String,String> options;
         public Builder() {}
         public Builder(ClusterRkeConfigAuthorization defaults) {
     	      Objects.requireNonNull(defaults);
@@ -65,7 +64,7 @@ public final class ClusterRkeConfigAuthorization {
             return this;
         }
         @CustomType.Setter
-        public Builder options(@Nullable Map<String,Object> options) {
+        public Builder options(@Nullable Map<String,String> options) {
 
             this.options = options;
             return this;

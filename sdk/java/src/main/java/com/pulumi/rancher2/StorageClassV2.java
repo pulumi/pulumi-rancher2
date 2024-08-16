@@ -11,7 +11,6 @@ import com.pulumi.rancher2.StorageClassV2Args;
 import com.pulumi.rancher2.Utilities;
 import com.pulumi.rancher2.inputs.StorageClassV2State;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -50,14 +49,14 @@ public class StorageClassV2 extends com.pulumi.resources.CustomResource {
      * Annotations for the storageClass v2 (map)
      * 
      */
-    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> annotations;
+    @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> annotations;
 
     /**
      * @return Annotations for the storageClass v2 (map)
      * 
      */
-    public Output<Map<String,Object>> annotations() {
+    public Output<Map<String,String>> annotations() {
         return this.annotations;
     }
     /**
@@ -92,14 +91,14 @@ public class StorageClassV2 extends com.pulumi.resources.CustomResource {
      * Labels for the storageClass v2 (map)
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> labels;
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> labels;
 
     /**
      * @return Labels for the storageClass v2 (map)
      * 
      */
-    public Output<Map<String,Object>> labels() {
+    public Output<Map<String,String>> labels() {
         return this.labels;
     }
     /**
@@ -134,14 +133,14 @@ public class StorageClassV2 extends com.pulumi.resources.CustomResource {
      * The parameters for storageClass v2 (string)
      * 
      */
-    @Export(name="parameters", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> parameters;
+    @Export(name="parameters", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> parameters;
 
     /**
      * @return The parameters for storageClass v2 (string)
      * 
      */
-    public Output<Optional<Map<String,Object>>> parameters() {
+    public Output<Optional<Map<String,String>>> parameters() {
         return Codegen.optional(this.parameters);
     }
     /**

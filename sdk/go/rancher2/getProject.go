@@ -33,8 +33,8 @@ type LookupProjectArgs struct {
 // A collection of values returned by getProject.
 type LookupProjectResult struct {
 	// (Computed) Annotations of the rancher2 project (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
-	ClusterId   string                 `pulumi:"clusterId"`
+	Annotations map[string]string `pulumi:"annotations"`
+	ClusterId   string            `pulumi:"clusterId"`
 	// (Computed) Default containers resource limits on project (List maxitem:1)
 	ContainerResourceLimit GetProjectContainerResourceLimit `pulumi:"containerResourceLimit"`
 	// (Computed) The project's description (string)
@@ -44,8 +44,8 @@ type LookupProjectResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels of the rancher2 project (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	Name   string                 `pulumi:"name"`
+	Labels map[string]string `pulumi:"labels"`
+	Name   string            `pulumi:"name"`
 	// (Computed) Default Pod Security Policy ID for the project (string)
 	PodSecurityPolicyTemplateId string `pulumi:"podSecurityPolicyTemplateId"`
 	// (Computed) Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
@@ -95,8 +95,8 @@ func (o LookupProjectResultOutput) ToLookupProjectResultOutputWithContext(ctx co
 }
 
 // (Computed) Annotations of the rancher2 project (map)
-func (o LookupProjectResultOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupProjectResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+func (o LookupProjectResultOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupProjectResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 func (o LookupProjectResultOutput) ClusterId() pulumi.StringOutput {
@@ -124,8 +124,8 @@ func (o LookupProjectResultOutput) Id() pulumi.StringOutput {
 }
 
 // (Computed) Labels of the rancher2 project (map)
-func (o LookupProjectResultOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupProjectResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+func (o LookupProjectResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupProjectResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupProjectResultOutput) Name() pulumi.StringOutput {

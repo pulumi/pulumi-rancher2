@@ -98,7 +98,7 @@ type AppV2 struct {
 	pulumi.CustomResourceState
 
 	// Annotations for the app v2 (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// The app v2 chart name (string)
 	ChartName pulumi.StringOutput `pulumi:"chartName"`
 	// The app v2 chart version (string)
@@ -117,7 +117,7 @@ type AppV2 struct {
 	// Force app V2 chart upgrade. Default: `false` (bool)
 	ForceUpgrade pulumi.BoolPtrOutput `pulumi:"forceUpgrade"`
 	// Labels for the app v2 (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the app v2 (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The namespace of the app v2 (string)
@@ -177,7 +177,7 @@ func GetAppV2(ctx *pulumi.Context,
 // Input properties used for looking up and filtering AppV2 resources.
 type appV2State struct {
 	// Annotations for the app v2 (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// The app v2 chart name (string)
 	ChartName *string `pulumi:"chartName"`
 	// The app v2 chart version (string)
@@ -196,7 +196,7 @@ type appV2State struct {
 	// Force app V2 chart upgrade. Default: `false` (bool)
 	ForceUpgrade *bool `pulumi:"forceUpgrade"`
 	// Labels for the app v2 (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The name of the app v2 (string)
 	Name *string `pulumi:"name"`
 	// The namespace of the app v2 (string)
@@ -215,7 +215,7 @@ type appV2State struct {
 
 type AppV2State struct {
 	// Annotations for the app v2 (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// The app v2 chart name (string)
 	ChartName pulumi.StringPtrInput
 	// The app v2 chart version (string)
@@ -234,7 +234,7 @@ type AppV2State struct {
 	// Force app V2 chart upgrade. Default: `false` (bool)
 	ForceUpgrade pulumi.BoolPtrInput
 	// Labels for the app v2 (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The name of the app v2 (string)
 	Name pulumi.StringPtrInput
 	// The namespace of the app v2 (string)
@@ -257,7 +257,7 @@ func (AppV2State) ElementType() reflect.Type {
 
 type appV2Args struct {
 	// Annotations for the app v2 (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// The app v2 chart name (string)
 	ChartName string `pulumi:"chartName"`
 	// The app v2 chart version (string)
@@ -273,7 +273,7 @@ type appV2Args struct {
 	// Force app V2 chart upgrade. Default: `false` (bool)
 	ForceUpgrade *bool `pulumi:"forceUpgrade"`
 	// Labels for the app v2 (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The name of the app v2 (string)
 	Name *string `pulumi:"name"`
 	// The namespace of the app v2 (string)
@@ -293,7 +293,7 @@ type appV2Args struct {
 // The set of arguments for constructing a AppV2 resource.
 type AppV2Args struct {
 	// Annotations for the app v2 (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// The app v2 chart name (string)
 	ChartName pulumi.StringInput
 	// The app v2 chart version (string)
@@ -309,7 +309,7 @@ type AppV2Args struct {
 	// Force app V2 chart upgrade. Default: `false` (bool)
 	ForceUpgrade pulumi.BoolPtrInput
 	// Labels for the app v2 (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The name of the app v2 (string)
 	Name pulumi.StringPtrInput
 	// The namespace of the app v2 (string)
@@ -414,8 +414,8 @@ func (o AppV2Output) ToAppV2OutputWithContext(ctx context.Context) AppV2Output {
 }
 
 // Annotations for the app v2 (map)
-func (o AppV2Output) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *AppV2) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o AppV2Output) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AppV2) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // The app v2 chart name (string)
@@ -463,8 +463,8 @@ func (o AppV2Output) ForceUpgrade() pulumi.BoolPtrOutput {
 }
 
 // Labels for the app v2 (map)
-func (o AppV2Output) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *AppV2) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o AppV2Output) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AppV2) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The name of the app v2 (string)

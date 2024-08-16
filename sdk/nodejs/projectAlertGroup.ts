@@ -64,7 +64,7 @@ export class ProjectAlertGroup extends pulumi.CustomResource {
     /**
      * The project alert group annotations (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: any}>;
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * The project alert group description (string)
      */
@@ -80,7 +80,7 @@ export class ProjectAlertGroup extends pulumi.CustomResource {
     /**
      * The project alert group labels (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The project alert group name (string)
      */
@@ -147,7 +147,7 @@ export interface ProjectAlertGroupState {
     /**
      * The project alert group annotations (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The project alert group description (string)
      */
@@ -163,7 +163,7 @@ export interface ProjectAlertGroupState {
     /**
      * The project alert group labels (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The project alert group name (string)
      */
@@ -189,7 +189,7 @@ export interface ProjectAlertGroupArgs {
     /**
      * The project alert group annotations (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The project alert group description (string)
      */
@@ -205,7 +205,7 @@ export interface ProjectAlertGroupArgs {
     /**
      * The project alert group labels (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The project alert group name (string)
      */

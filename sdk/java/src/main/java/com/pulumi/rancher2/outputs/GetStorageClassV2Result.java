@@ -6,7 +6,6 @@ package com.pulumi.rancher2.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +22,7 @@ public final class GetStorageClassV2Result {
      * @return (Computed) Annotations for the storageClass v2 (map)
      * 
      */
-    private Map<String,Object> annotations;
+    private Map<String,String> annotations;
     private String clusterId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -39,7 +38,7 @@ public final class GetStorageClassV2Result {
      * @return (Computed) Labels for the storageClass v2 (map)
      * 
      */
-    private Map<String,Object> labels;
+    private Map<String,String> labels;
     /**
      * @return (Computed) The mount options for storageClass v2 (list)
      * 
@@ -50,7 +49,7 @@ public final class GetStorageClassV2Result {
      * @return (Computed) The parameters for storageClass v2 (string)
      * 
      */
-    private Map<String,Object> parameters;
+    private Map<String,String> parameters;
     /**
      * @return (Computed) The reclaim policy for storageClass v2 (string)
      * 
@@ -79,7 +78,7 @@ public final class GetStorageClassV2Result {
      * @return (Computed) Annotations for the storageClass v2 (map)
      * 
      */
-    public Map<String,Object> annotations() {
+    public Map<String,String> annotations() {
         return this.annotations;
     }
     public String clusterId() {
@@ -103,7 +102,7 @@ public final class GetStorageClassV2Result {
      * @return (Computed) Labels for the storageClass v2 (map)
      * 
      */
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels;
     }
     /**
@@ -120,7 +119,7 @@ public final class GetStorageClassV2Result {
      * @return (Computed) The parameters for storageClass v2 (string)
      * 
      */
-    public Map<String,Object> parameters() {
+    public Map<String,String> parameters() {
         return this.parameters;
     }
     /**
@@ -155,14 +154,14 @@ public final class GetStorageClassV2Result {
     @CustomType.Builder
     public static final class Builder {
         private Boolean allowVolumeExpansion;
-        private Map<String,Object> annotations;
+        private Map<String,String> annotations;
         private String clusterId;
         private String id;
         private String k8sProvisioner;
-        private Map<String,Object> labels;
+        private Map<String,String> labels;
         private List<String> mountOptions;
         private String name;
-        private Map<String,Object> parameters;
+        private Map<String,String> parameters;
         private String reclaimPolicy;
         private String resourceVersion;
         private String volumeBindingMode;
@@ -192,7 +191,7 @@ public final class GetStorageClassV2Result {
             return this;
         }
         @CustomType.Setter
-        public Builder annotations(Map<String,Object> annotations) {
+        public Builder annotations(Map<String,String> annotations) {
             if (annotations == null) {
               throw new MissingRequiredPropertyException("GetStorageClassV2Result", "annotations");
             }
@@ -224,7 +223,7 @@ public final class GetStorageClassV2Result {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(Map<String,Object> labels) {
+        public Builder labels(Map<String,String> labels) {
             if (labels == null) {
               throw new MissingRequiredPropertyException("GetStorageClassV2Result", "labels");
             }
@@ -251,7 +250,7 @@ public final class GetStorageClassV2Result {
             return this;
         }
         @CustomType.Setter
-        public Builder parameters(Map<String,Object> parameters) {
+        public Builder parameters(Map<String,String> parameters) {
             if (parameters == null) {
               throw new MissingRequiredPropertyException("GetStorageClassV2Result", "parameters");
             }
