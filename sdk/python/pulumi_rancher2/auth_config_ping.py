@@ -24,10 +24,10 @@ class AuthConfigPingArgs:
                  user_name_field: pulumi.Input[str],
                  access_mode: Optional[pulumi.Input[str]] = None,
                  allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  entity_id_field: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a AuthConfigPing resource.
         :param pulumi.Input[str] display_name_field: Ping display name field (string)
@@ -40,10 +40,10 @@ class AuthConfigPingArgs:
         :param pulumi.Input[str] user_name_field: Ping user name field (string)
         :param pulumi.Input[str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `ping_user://<USER_ID>`  `ping_group://<GROUP_ID>` (list)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations of the resource (map)
         :param pulumi.Input[bool] enabled: Enable auth config provider. Default `true` (bool)
         :param pulumi.Input[str] entity_id_field: Ping entity ID field (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels of the resource (map)
         """
         pulumi.set(__self__, "display_name_field", display_name_field)
         pulumi.set(__self__, "groups_field", groups_field)
@@ -188,14 +188,14 @@ class AuthConfigPingArgs:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations of the resource (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -224,14 +224,14 @@ class AuthConfigPingArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels of the resource (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
 
@@ -240,13 +240,13 @@ class _AuthConfigPingState:
     def __init__(__self__, *,
                  access_mode: Optional[pulumi.Input[str]] = None,
                  allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  display_name_field: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  entity_id_field: Optional[pulumi.Input[str]] = None,
                  groups_field: Optional[pulumi.Input[str]] = None,
                  idp_metadata_content: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  rancher_api_host: Optional[pulumi.Input[str]] = None,
                  sp_cert: Optional[pulumi.Input[str]] = None,
@@ -258,13 +258,13 @@ class _AuthConfigPingState:
         Input properties used for looking up and filtering AuthConfigPing resources.
         :param pulumi.Input[str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `ping_user://<USER_ID>`  `ping_group://<GROUP_ID>` (list)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations of the resource (map)
         :param pulumi.Input[str] display_name_field: Ping display name field (string)
         :param pulumi.Input[bool] enabled: Enable auth config provider. Default `true` (bool)
         :param pulumi.Input[str] entity_id_field: Ping entity ID field (string)
         :param pulumi.Input[str] groups_field: Ping group field (string)
         :param pulumi.Input[str] idp_metadata_content: Ping IDP metadata content (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels of the resource (map)
         :param pulumi.Input[str] name: (Computed) The name of the resource (string)
         :param pulumi.Input[str] rancher_api_host: Rancher URL. URL scheme needs to be specified, `https://<RANCHER_API_HOST>` (string)
         :param pulumi.Input[str] sp_cert: Ping SP cert (string)
@@ -332,14 +332,14 @@ class _AuthConfigPingState:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations of the resource (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -404,14 +404,14 @@ class _AuthConfigPingState:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels of the resource (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -506,13 +506,13 @@ class AuthConfigPing(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_mode: Optional[pulumi.Input[str]] = None,
                  allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  display_name_field: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  entity_id_field: Optional[pulumi.Input[str]] = None,
                  groups_field: Optional[pulumi.Input[str]] = None,
                  idp_metadata_content: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  rancher_api_host: Optional[pulumi.Input[str]] = None,
                  sp_cert: Optional[pulumi.Input[str]] = None,
                  sp_key: Optional[pulumi.Input[str]] = None,
@@ -546,13 +546,13 @@ class AuthConfigPing(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `ping_user://<USER_ID>`  `ping_group://<GROUP_ID>` (list)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations of the resource (map)
         :param pulumi.Input[str] display_name_field: Ping display name field (string)
         :param pulumi.Input[bool] enabled: Enable auth config provider. Default `true` (bool)
         :param pulumi.Input[str] entity_id_field: Ping entity ID field (string)
         :param pulumi.Input[str] groups_field: Ping group field (string)
         :param pulumi.Input[str] idp_metadata_content: Ping IDP metadata content (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels of the resource (map)
         :param pulumi.Input[str] rancher_api_host: Rancher URL. URL scheme needs to be specified, `https://<RANCHER_API_HOST>` (string)
         :param pulumi.Input[str] sp_cert: Ping SP cert (string)
         :param pulumi.Input[str] sp_key: Ping SP key (string)
@@ -605,13 +605,13 @@ class AuthConfigPing(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_mode: Optional[pulumi.Input[str]] = None,
                  allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  display_name_field: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  entity_id_field: Optional[pulumi.Input[str]] = None,
                  groups_field: Optional[pulumi.Input[str]] = None,
                  idp_metadata_content: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  rancher_api_host: Optional[pulumi.Input[str]] = None,
                  sp_cert: Optional[pulumi.Input[str]] = None,
                  sp_key: Optional[pulumi.Input[str]] = None,
@@ -672,13 +672,13 @@ class AuthConfigPing(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             access_mode: Optional[pulumi.Input[str]] = None,
             allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             display_name_field: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             entity_id_field: Optional[pulumi.Input[str]] = None,
             groups_field: Optional[pulumi.Input[str]] = None,
             idp_metadata_content: Optional[pulumi.Input[str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             rancher_api_host: Optional[pulumi.Input[str]] = None,
             sp_cert: Optional[pulumi.Input[str]] = None,
@@ -695,13 +695,13 @@ class AuthConfigPing(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `ping_user://<USER_ID>`  `ping_group://<GROUP_ID>` (list)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations of the resource (map)
         :param pulumi.Input[str] display_name_field: Ping display name field (string)
         :param pulumi.Input[bool] enabled: Enable auth config provider. Default `true` (bool)
         :param pulumi.Input[str] entity_id_field: Ping entity ID field (string)
         :param pulumi.Input[str] groups_field: Ping group field (string)
         :param pulumi.Input[str] idp_metadata_content: Ping IDP metadata content (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels of the resource (map)
         :param pulumi.Input[str] name: (Computed) The name of the resource (string)
         :param pulumi.Input[str] rancher_api_host: Rancher URL. URL scheme needs to be specified, `https://<RANCHER_API_HOST>` (string)
         :param pulumi.Input[str] sp_cert: Ping SP cert (string)
@@ -750,7 +750,7 @@ class AuthConfigPing(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
+    def annotations(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Annotations of the resource (map)
         """
@@ -798,7 +798,7 @@ class AuthConfigPing(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Labels of the resource (map)
         """

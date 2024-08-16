@@ -12,7 +12,6 @@ import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConf
 import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkToleration;
 import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -27,7 +26,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwo
     private @Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider canalNetworkProvider;
     private @Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider flannelNetworkProvider;
     private @Nullable Integer mtu;
-    private Map<String,Object> options;
+    private Map<String,String> options;
     private String plugin;
     /**
      * @return Network add-on tolerations
@@ -52,7 +51,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwo
     public Optional<Integer> mtu() {
         return Optional.ofNullable(this.mtu);
     }
-    public Map<String,Object> options() {
+    public Map<String,String> options() {
         return this.options;
     }
     public String plugin() {
@@ -83,7 +82,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwo
         private @Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProvider canalNetworkProvider;
         private @Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProvider flannelNetworkProvider;
         private @Nullable Integer mtu;
-        private Map<String,Object> options;
+        private Map<String,String> options;
         private String plugin;
         private @Nullable List<GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkToleration> tolerations;
         private @Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProvider weaveNetworkProvider;
@@ -132,7 +131,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwo
             return this;
         }
         @CustomType.Setter
-        public Builder options(Map<String,Object> options) {
+        public Builder options(Map<String,String> options) {
             if (options == null) {
               throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigNetwork", "options");
             }

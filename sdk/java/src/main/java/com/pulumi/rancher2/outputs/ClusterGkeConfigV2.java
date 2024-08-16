@@ -11,7 +11,6 @@ import com.pulumi.rancher2.outputs.ClusterGkeConfigV2MasterAuthorizedNetworksCon
 import com.pulumi.rancher2.outputs.ClusterGkeConfigV2NodePool;
 import com.pulumi.rancher2.outputs.ClusterGkeConfigV2PrivateClusterConfig;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -65,7 +64,7 @@ public final class ClusterGkeConfigV2 {
      * @return Labels for the Cluster (map)
      * 
      */
-    private @Nullable Map<String,Object> labels;
+    private @Nullable Map<String,String> labels;
     /**
      * @return The GKE cluster locations
      * 
@@ -198,7 +197,7 @@ public final class ClusterGkeConfigV2 {
      * @return Labels for the Cluster (map)
      * 
      */
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels == null ? Map.of() : this.labels;
     }
     /**
@@ -317,7 +316,7 @@ public final class ClusterGkeConfigV2 {
         private @Nullable Boolean imported;
         private @Nullable ClusterGkeConfigV2IpAllocationPolicy ipAllocationPolicy;
         private @Nullable String kubernetesVersion;
-        private @Nullable Map<String,Object> labels;
+        private @Nullable Map<String,String> labels;
         private @Nullable List<String> locations;
         private @Nullable String loggingService;
         private @Nullable String maintenanceWindow;
@@ -411,7 +410,7 @@ public final class ClusterGkeConfigV2 {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(@Nullable Map<String,Object> labels) {
+        public Builder labels(@Nullable Map<String,String> labels) {
 
             this.labels = labels;
             return this;

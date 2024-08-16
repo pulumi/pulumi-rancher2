@@ -51,7 +51,7 @@ export interface GetProjectAlertGroupResult {
     /**
      * (Computed) The project alert group annotations (map)
      */
-    readonly annotations: {[key: string]: any};
+    readonly annotations: {[key: string]: string};
     /**
      * (Computed) The project alert group description (string)
      */
@@ -71,7 +71,7 @@ export interface GetProjectAlertGroupResult {
     /**
      * (Computed) The project alert group labels (map)
      */
-    readonly labels: {[key: string]: any};
+    readonly labels: {[key: string]: string};
     readonly name: string;
     readonly projectId: string;
     /**

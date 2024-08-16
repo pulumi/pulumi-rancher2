@@ -14,7 +14,6 @@ import com.pulumi.rancher2.outputs.ProjectContainerResourceLimit;
 import com.pulumi.rancher2.outputs.ProjectProjectMonitoringInput;
 import com.pulumi.rancher2.outputs.ProjectResourceQuota;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -178,14 +177,14 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Annotations for Node Pool object (map)
      * 
      */
-    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> annotations;
+    @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> annotations;
 
     /**
      * @return Annotations for Node Pool object (map)
      * 
      */
-    public Output<Map<String,Object>> annotations() {
+    public Output<Map<String,String>> annotations() {
         return this.annotations;
     }
     /**
@@ -248,14 +247,14 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Labels for Node Pool object (map)
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> labels;
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> labels;
 
     /**
      * @return Labels for Node Pool object (map)
      * 
      */
-    public Output<Map<String,Object>> labels() {
+    public Output<Map<String,String>> labels() {
         return this.labels;
     }
     /**

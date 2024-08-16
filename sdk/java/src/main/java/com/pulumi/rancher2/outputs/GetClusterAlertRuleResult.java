@@ -11,7 +11,6 @@ import com.pulumi.rancher2.outputs.GetClusterAlertRuleNodeRule;
 import com.pulumi.rancher2.outputs.GetClusterAlertRuleSystemServiceRule;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -23,7 +22,7 @@ public final class GetClusterAlertRuleResult {
      * @return (Computed) The cluster alert rule annotations (map)
      * 
      */
-    private Map<String,Object> annotations;
+    private Map<String,String> annotations;
     private String clusterId;
     /**
      * @return (Computed) The cluster alert rule event rule. ConflictsWith: `&#34;metric_rule&#34;, &#34;node_rule&#34;, &#34;system_service_rule&#34;` (list Maxitems:1)
@@ -59,7 +58,7 @@ public final class GetClusterAlertRuleResult {
      * @return (Computed) The cluster alert rule labels (map)
      * 
      */
-    private @Nullable Map<String,Object> labels;
+    private @Nullable Map<String,String> labels;
     /**
      * @return (Computed) The cluster alert rule metric rule. ConflictsWith: `&#34;event_rule&#34;, &#34;node_rule&#34;, &#34;system_service_rule&#34;`` (list Maxitems:1)
      * 
@@ -92,7 +91,7 @@ public final class GetClusterAlertRuleResult {
      * @return (Computed) The cluster alert rule annotations (map)
      * 
      */
-    public Map<String,Object> annotations() {
+    public Map<String,String> annotations() {
         return this.annotations;
     }
     public String clusterId() {
@@ -144,7 +143,7 @@ public final class GetClusterAlertRuleResult {
      * @return (Computed) The cluster alert rule labels (map)
      * 
      */
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels == null ? Map.of() : this.labels;
     }
     /**
@@ -195,7 +194,7 @@ public final class GetClusterAlertRuleResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Map<String,Object> annotations;
+        private Map<String,String> annotations;
         private String clusterId;
         private GetClusterAlertRuleEventRule eventRule;
         private String groupId;
@@ -203,7 +202,7 @@ public final class GetClusterAlertRuleResult {
         private Integer groupWaitSeconds;
         private String id;
         private Boolean inherited;
-        private @Nullable Map<String,Object> labels;
+        private @Nullable Map<String,String> labels;
         private GetClusterAlertRuleMetricRule metricRule;
         private String name;
         private GetClusterAlertRuleNodeRule nodeRule;
@@ -231,7 +230,7 @@ public final class GetClusterAlertRuleResult {
         }
 
         @CustomType.Setter
-        public Builder annotations(Map<String,Object> annotations) {
+        public Builder annotations(Map<String,String> annotations) {
             if (annotations == null) {
               throw new MissingRequiredPropertyException("GetClusterAlertRuleResult", "annotations");
             }
@@ -295,7 +294,7 @@ public final class GetClusterAlertRuleResult {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(@Nullable Map<String,Object> labels) {
+        public Builder labels(@Nullable Map<String,String> labels) {
 
             this.labels = labels;
             return this;

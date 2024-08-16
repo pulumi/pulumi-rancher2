@@ -18,7 +18,7 @@ class ClusterV2Args:
     def __init__(__self__, *,
                  kubernetes_version: pulumi.Input[str],
                  agent_env_vars: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2AgentEnvVarArgs']]]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  cloud_credential_secret_name: Optional[pulumi.Input[str]] = None,
                  cluster_agent_deployment_customizations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationArgs']]]] = None,
                  default_cluster_role_for_project_members: Optional[pulumi.Input[str]] = None,
@@ -27,7 +27,7 @@ class ClusterV2Args:
                  enable_network_policy: Optional[pulumi.Input[bool]] = None,
                  fleet_agent_deployment_customizations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2FleetAgentDeploymentCustomizationArgs']]]] = None,
                  fleet_namespace: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  local_auth_endpoint: Optional[pulumi.Input['ClusterV2LocalAuthEndpointArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  rke_config: Optional[pulumi.Input['ClusterV2RkeConfigArgs']] = None):
@@ -35,7 +35,7 @@ class ClusterV2Args:
         The set of arguments for constructing a ClusterV2 resource.
         :param pulumi.Input[str] kubernetes_version: The RKE2 or K3s version for the cluster.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterV2AgentEnvVarArgs']]] agent_env_vars: Agent env vars is a list of additional environment variables to be appended to the `cattle-cluster-agent` and `fleet-agent` deployment, and the plan for the [system upgrade controller](https://github.com/rancher/system-upgrade-controller) to upgrade nodes.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the Cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for the Cluster.
         :param pulumi.Input[str] cloud_credential_secret_name: Cloud credential secret name is the secret to be used when a cloud credential secret name is not specified at the machine pool level.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationArgs']]] cluster_agent_deployment_customizations: Cluster agent deployment customization specifies the additional tolerations, new affinity rules, and new resource requirements on the `cattle-cluster-agent` deployment. This argument is available in Rancher v2.7.5 and above.
         :param pulumi.Input[str] default_cluster_role_for_project_members: Default cluster role for project members.
@@ -44,7 +44,7 @@ class ClusterV2Args:
         :param pulumi.Input[bool] enable_network_policy: Enable k8s network policy on the cluster.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterV2FleetAgentDeploymentCustomizationArgs']]] fleet_agent_deployment_customizations: Fleet agent deployment customization specifies the additional tolerations, new affinity rules, and new resource requirements on the `fleet-agent` deployment. The argument is available in Rancher v2.7.5 and above.
         :param pulumi.Input[str] fleet_namespace: Fleet namespace is the namespace where the cluster is to create in the local cluster. It is recommended to leave it as the default value.
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for the Cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the Cluster.
         :param pulumi.Input['ClusterV2LocalAuthEndpointArgs'] local_auth_endpoint: Local auth endpoint configures the Authorized Cluster Endpoint (ACE) which can be used to directly access the Kubernetes API server, without requiring communication through Rancher. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters).
         :param pulumi.Input[str] name: The name of the cluster.
         :param pulumi.Input['ClusterV2RkeConfigArgs'] rke_config: The RKE configuration for the cluster.
@@ -105,14 +105,14 @@ class ClusterV2Args:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations for the Cluster.
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -213,14 +213,14 @@ class ClusterV2Args:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for the Cluster.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -264,7 +264,7 @@ class ClusterV2Args:
 class _ClusterV2State:
     def __init__(__self__, *,
                  agent_env_vars: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2AgentEnvVarArgs']]]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  cloud_credential_secret_name: Optional[pulumi.Input[str]] = None,
                  cluster_agent_deployment_customizations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationArgs']]]] = None,
                  cluster_registration_token: Optional[pulumi.Input['ClusterV2ClusterRegistrationTokenArgs']] = None,
@@ -277,7 +277,7 @@ class _ClusterV2State:
                  fleet_namespace: Optional[pulumi.Input[str]] = None,
                  kube_config: Optional[pulumi.Input[str]] = None,
                  kubernetes_version: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  local_auth_endpoint: Optional[pulumi.Input['ClusterV2LocalAuthEndpointArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_version: Optional[pulumi.Input[str]] = None,
@@ -285,7 +285,7 @@ class _ClusterV2State:
         """
         Input properties used for looking up and filtering ClusterV2 resources.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterV2AgentEnvVarArgs']]] agent_env_vars: Agent env vars is a list of additional environment variables to be appended to the `cattle-cluster-agent` and `fleet-agent` deployment, and the plan for the [system upgrade controller](https://github.com/rancher/system-upgrade-controller) to upgrade nodes.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the Cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for the Cluster.
         :param pulumi.Input[str] cloud_credential_secret_name: Cloud credential secret name is the secret to be used when a cloud credential secret name is not specified at the machine pool level.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationArgs']]] cluster_agent_deployment_customizations: Cluster agent deployment customization specifies the additional tolerations, new affinity rules, and new resource requirements on the `cattle-cluster-agent` deployment. This argument is available in Rancher v2.7.5 and above.
         :param pulumi.Input['ClusterV2ClusterRegistrationTokenArgs'] cluster_registration_token: (Computed, sensitive, list, max length: 1) Cluster Registration Token generated for the cluster.
@@ -298,7 +298,7 @@ class _ClusterV2State:
         :param pulumi.Input[str] fleet_namespace: Fleet namespace is the namespace where the cluster is to create in the local cluster. It is recommended to leave it as the default value.
         :param pulumi.Input[str] kube_config: (Computed/Sensitive) Kube Config generated for the cluster. Note: When the cluster has `local_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected`.
         :param pulumi.Input[str] kubernetes_version: The RKE2 or K3s version for the cluster.
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for the Cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the Cluster.
         :param pulumi.Input['ClusterV2LocalAuthEndpointArgs'] local_auth_endpoint: Local auth endpoint configures the Authorized Cluster Endpoint (ACE) which can be used to directly access the Kubernetes API server, without requiring communication through Rancher. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters).
         :param pulumi.Input[str] name: The name of the cluster.
         :param pulumi.Input[str] resource_version: (Computed, string) Cluster's k8s resource version.
@@ -357,14 +357,14 @@ class _ClusterV2State:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations for the Cluster.
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -513,14 +513,14 @@ class _ClusterV2State:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for the Cluster.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -578,7 +578,7 @@ class ClusterV2(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  agent_env_vars: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2AgentEnvVarArgs', 'ClusterV2AgentEnvVarArgsDict']]]]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  cloud_credential_secret_name: Optional[pulumi.Input[str]] = None,
                  cluster_agent_deployment_customizations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2ClusterAgentDeploymentCustomizationArgs', 'ClusterV2ClusterAgentDeploymentCustomizationArgsDict']]]]] = None,
                  default_cluster_role_for_project_members: Optional[pulumi.Input[str]] = None,
@@ -588,7 +588,7 @@ class ClusterV2(pulumi.CustomResource):
                  fleet_agent_deployment_customizations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2FleetAgentDeploymentCustomizationArgs', 'ClusterV2FleetAgentDeploymentCustomizationArgsDict']]]]] = None,
                  fleet_namespace: Optional[pulumi.Input[str]] = None,
                  kubernetes_version: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  local_auth_endpoint: Optional[pulumi.Input[Union['ClusterV2LocalAuthEndpointArgs', 'ClusterV2LocalAuthEndpointArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  rke_config: Optional[pulumi.Input[Union['ClusterV2RkeConfigArgs', 'ClusterV2RkeConfigArgsDict']]] = None,
@@ -605,7 +605,7 @@ class ClusterV2(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2AgentEnvVarArgs', 'ClusterV2AgentEnvVarArgsDict']]]] agent_env_vars: Agent env vars is a list of additional environment variables to be appended to the `cattle-cluster-agent` and `fleet-agent` deployment, and the plan for the [system upgrade controller](https://github.com/rancher/system-upgrade-controller) to upgrade nodes.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the Cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for the Cluster.
         :param pulumi.Input[str] cloud_credential_secret_name: Cloud credential secret name is the secret to be used when a cloud credential secret name is not specified at the machine pool level.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2ClusterAgentDeploymentCustomizationArgs', 'ClusterV2ClusterAgentDeploymentCustomizationArgsDict']]]] cluster_agent_deployment_customizations: Cluster agent deployment customization specifies the additional tolerations, new affinity rules, and new resource requirements on the `cattle-cluster-agent` deployment. This argument is available in Rancher v2.7.5 and above.
         :param pulumi.Input[str] default_cluster_role_for_project_members: Default cluster role for project members.
@@ -615,7 +615,7 @@ class ClusterV2(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2FleetAgentDeploymentCustomizationArgs', 'ClusterV2FleetAgentDeploymentCustomizationArgsDict']]]] fleet_agent_deployment_customizations: Fleet agent deployment customization specifies the additional tolerations, new affinity rules, and new resource requirements on the `fleet-agent` deployment. The argument is available in Rancher v2.7.5 and above.
         :param pulumi.Input[str] fleet_namespace: Fleet namespace is the namespace where the cluster is to create in the local cluster. It is recommended to leave it as the default value.
         :param pulumi.Input[str] kubernetes_version: The RKE2 or K3s version for the cluster.
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for the Cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the Cluster.
         :param pulumi.Input[Union['ClusterV2LocalAuthEndpointArgs', 'ClusterV2LocalAuthEndpointArgsDict']] local_auth_endpoint: Local auth endpoint configures the Authorized Cluster Endpoint (ACE) which can be used to directly access the Kubernetes API server, without requiring communication through Rancher. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters).
         :param pulumi.Input[str] name: The name of the cluster.
         :param pulumi.Input[Union['ClusterV2RkeConfigArgs', 'ClusterV2RkeConfigArgsDict']] rke_config: The RKE configuration for the cluster.
@@ -651,7 +651,7 @@ class ClusterV2(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  agent_env_vars: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2AgentEnvVarArgs', 'ClusterV2AgentEnvVarArgsDict']]]]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  cloud_credential_secret_name: Optional[pulumi.Input[str]] = None,
                  cluster_agent_deployment_customizations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2ClusterAgentDeploymentCustomizationArgs', 'ClusterV2ClusterAgentDeploymentCustomizationArgsDict']]]]] = None,
                  default_cluster_role_for_project_members: Optional[pulumi.Input[str]] = None,
@@ -661,7 +661,7 @@ class ClusterV2(pulumi.CustomResource):
                  fleet_agent_deployment_customizations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2FleetAgentDeploymentCustomizationArgs', 'ClusterV2FleetAgentDeploymentCustomizationArgsDict']]]]] = None,
                  fleet_namespace: Optional[pulumi.Input[str]] = None,
                  kubernetes_version: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  local_auth_endpoint: Optional[pulumi.Input[Union['ClusterV2LocalAuthEndpointArgs', 'ClusterV2LocalAuthEndpointArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  rke_config: Optional[pulumi.Input[Union['ClusterV2RkeConfigArgs', 'ClusterV2RkeConfigArgsDict']]] = None,
@@ -708,7 +708,7 @@ class ClusterV2(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             agent_env_vars: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2AgentEnvVarArgs', 'ClusterV2AgentEnvVarArgsDict']]]]] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             cloud_credential_secret_name: Optional[pulumi.Input[str]] = None,
             cluster_agent_deployment_customizations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2ClusterAgentDeploymentCustomizationArgs', 'ClusterV2ClusterAgentDeploymentCustomizationArgsDict']]]]] = None,
             cluster_registration_token: Optional[pulumi.Input[Union['ClusterV2ClusterRegistrationTokenArgs', 'ClusterV2ClusterRegistrationTokenArgsDict']]] = None,
@@ -721,7 +721,7 @@ class ClusterV2(pulumi.CustomResource):
             fleet_namespace: Optional[pulumi.Input[str]] = None,
             kube_config: Optional[pulumi.Input[str]] = None,
             kubernetes_version: Optional[pulumi.Input[str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             local_auth_endpoint: Optional[pulumi.Input[Union['ClusterV2LocalAuthEndpointArgs', 'ClusterV2LocalAuthEndpointArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             resource_version: Optional[pulumi.Input[str]] = None,
@@ -734,7 +734,7 @@ class ClusterV2(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2AgentEnvVarArgs', 'ClusterV2AgentEnvVarArgsDict']]]] agent_env_vars: Agent env vars is a list of additional environment variables to be appended to the `cattle-cluster-agent` and `fleet-agent` deployment, and the plan for the [system upgrade controller](https://github.com/rancher/system-upgrade-controller) to upgrade nodes.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for the Cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for the Cluster.
         :param pulumi.Input[str] cloud_credential_secret_name: Cloud credential secret name is the secret to be used when a cloud credential secret name is not specified at the machine pool level.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2ClusterAgentDeploymentCustomizationArgs', 'ClusterV2ClusterAgentDeploymentCustomizationArgsDict']]]] cluster_agent_deployment_customizations: Cluster agent deployment customization specifies the additional tolerations, new affinity rules, and new resource requirements on the `cattle-cluster-agent` deployment. This argument is available in Rancher v2.7.5 and above.
         :param pulumi.Input[Union['ClusterV2ClusterRegistrationTokenArgs', 'ClusterV2ClusterRegistrationTokenArgsDict']] cluster_registration_token: (Computed, sensitive, list, max length: 1) Cluster Registration Token generated for the cluster.
@@ -747,7 +747,7 @@ class ClusterV2(pulumi.CustomResource):
         :param pulumi.Input[str] fleet_namespace: Fleet namespace is the namespace where the cluster is to create in the local cluster. It is recommended to leave it as the default value.
         :param pulumi.Input[str] kube_config: (Computed/Sensitive) Kube Config generated for the cluster. Note: When the cluster has `local_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected`.
         :param pulumi.Input[str] kubernetes_version: The RKE2 or K3s version for the cluster.
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for the Cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the Cluster.
         :param pulumi.Input[Union['ClusterV2LocalAuthEndpointArgs', 'ClusterV2LocalAuthEndpointArgsDict']] local_auth_endpoint: Local auth endpoint configures the Authorized Cluster Endpoint (ACE) which can be used to directly access the Kubernetes API server, without requiring communication through Rancher. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters).
         :param pulumi.Input[str] name: The name of the cluster.
         :param pulumi.Input[str] resource_version: (Computed, string) Cluster's k8s resource version.
@@ -788,7 +788,7 @@ class ClusterV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
+    def annotations(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Annotations for the Cluster.
         """
@@ -892,7 +892,7 @@ class ClusterV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Labels for the Cluster.
         """

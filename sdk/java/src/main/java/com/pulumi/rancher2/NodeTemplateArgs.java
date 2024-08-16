@@ -17,7 +17,6 @@ import com.pulumi.rancher2.inputs.NodeTemplateOpenstackConfigArgs;
 import com.pulumi.rancher2.inputs.NodeTemplateOutscaleConfigArgs;
 import com.pulumi.rancher2.inputs.NodeTemplateVsphereConfigArgs;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -50,13 +49,13 @@ public final class NodeTemplateArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="annotations")
-    private @Nullable Output<Map<String,Object>> annotations;
+    private @Nullable Output<Map<String,String>> annotations;
 
     /**
      * @return Annotations for Node Template object (map)
      * 
      */
-    public Optional<Output<Map<String,Object>>> annotations() {
+    public Optional<Output<Map<String,String>>> annotations() {
         return Optional.ofNullable(this.annotations);
     }
 
@@ -170,13 +169,13 @@ public final class NodeTemplateArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="engineEnv")
-    private @Nullable Output<Map<String,Object>> engineEnv;
+    private @Nullable Output<Map<String,String>> engineEnv;
 
     /**
      * @return Engine environment for the node template (string)
      * 
      */
-    public Optional<Output<Map<String,Object>>> engineEnv() {
+    public Optional<Output<Map<String,String>>> engineEnv() {
         return Optional.ofNullable(this.engineEnv);
     }
 
@@ -215,13 +214,13 @@ public final class NodeTemplateArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="engineLabel")
-    private @Nullable Output<Map<String,Object>> engineLabel;
+    private @Nullable Output<Map<String,String>> engineLabel;
 
     /**
      * @return Engine label for the node template (string)
      * 
      */
-    public Optional<Output<Map<String,Object>>> engineLabel() {
+    public Optional<Output<Map<String,String>>> engineLabel() {
         return Optional.ofNullable(this.engineLabel);
     }
 
@@ -230,13 +229,13 @@ public final class NodeTemplateArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="engineOpt")
-    private @Nullable Output<Map<String,Object>> engineOpt;
+    private @Nullable Output<Map<String,String>> engineOpt;
 
     /**
      * @return Engine options for the node template (map)
      * 
      */
-    public Optional<Output<Map<String,Object>>> engineOpt() {
+    public Optional<Output<Map<String,String>>> engineOpt() {
         return Optional.ofNullable(this.engineOpt);
     }
 
@@ -307,7 +306,7 @@ public final class NodeTemplateArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="labels")
-    private @Nullable Output<Map<String,Object>> labels;
+    private @Nullable Output<Map<String,String>> labels;
 
     /**
      * @return Labels for Node Template object (map)
@@ -315,7 +314,7 @@ public final class NodeTemplateArgs extends com.pulumi.resources.ResourceArgs {
      * **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
      * 
      */
-    public Optional<Output<Map<String,Object>>> labels() {
+    public Optional<Output<Map<String,String>>> labels() {
         return Optional.ofNullable(this.labels);
     }
 
@@ -516,7 +515,7 @@ public final class NodeTemplateArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder annotations(@Nullable Output<Map<String,Object>> annotations) {
+        public Builder annotations(@Nullable Output<Map<String,String>> annotations) {
             $.annotations = annotations;
             return this;
         }
@@ -527,7 +526,7 @@ public final class NodeTemplateArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder annotations(Map<String,Object> annotations) {
+        public Builder annotations(Map<String,String> annotations) {
             return annotations(Output.of(annotations));
         }
 
@@ -684,7 +683,7 @@ public final class NodeTemplateArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder engineEnv(@Nullable Output<Map<String,Object>> engineEnv) {
+        public Builder engineEnv(@Nullable Output<Map<String,String>> engineEnv) {
             $.engineEnv = engineEnv;
             return this;
         }
@@ -695,7 +694,7 @@ public final class NodeTemplateArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder engineEnv(Map<String,Object> engineEnv) {
+        public Builder engineEnv(Map<String,String> engineEnv) {
             return engineEnv(Output.of(engineEnv));
         }
 
@@ -757,7 +756,7 @@ public final class NodeTemplateArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder engineLabel(@Nullable Output<Map<String,Object>> engineLabel) {
+        public Builder engineLabel(@Nullable Output<Map<String,String>> engineLabel) {
             $.engineLabel = engineLabel;
             return this;
         }
@@ -768,7 +767,7 @@ public final class NodeTemplateArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder engineLabel(Map<String,Object> engineLabel) {
+        public Builder engineLabel(Map<String,String> engineLabel) {
             return engineLabel(Output.of(engineLabel));
         }
 
@@ -778,7 +777,7 @@ public final class NodeTemplateArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder engineOpt(@Nullable Output<Map<String,Object>> engineOpt) {
+        public Builder engineOpt(@Nullable Output<Map<String,String>> engineOpt) {
             $.engineOpt = engineOpt;
             return this;
         }
@@ -789,7 +788,7 @@ public final class NodeTemplateArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder engineOpt(Map<String,Object> engineOpt) {
+        public Builder engineOpt(Map<String,String> engineOpt) {
             return engineOpt(Output.of(engineOpt));
         }
 
@@ -895,7 +894,7 @@ public final class NodeTemplateArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder labels(@Nullable Output<Map<String,Object>> labels) {
+        public Builder labels(@Nullable Output<Map<String,String>> labels) {
             $.labels = labels;
             return this;
         }
@@ -908,7 +907,7 @@ public final class NodeTemplateArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder labels(Map<String,Object> labels) {
+        public Builder labels(Map<String,String> labels) {
             return labels(Output.of(labels));
         }
 

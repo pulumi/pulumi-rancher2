@@ -22,7 +22,6 @@ import com.pulumi.rancher2.outputs.NodeTemplateOpenstackConfig;
 import com.pulumi.rancher2.outputs.NodeTemplateOutscaleConfig;
 import com.pulumi.rancher2.outputs.NodeTemplateVsphereConfig;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -315,14 +314,14 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * Annotations for Node Template object (map)
      * 
      */
-    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> annotations;
+    @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> annotations;
 
     /**
      * @return Annotations for Node Template object (map)
      * 
      */
-    public Output<Map<String,Object>> annotations() {
+    public Output<Map<String,String>> annotations() {
         return this.annotations;
     }
     /**
@@ -441,14 +440,14 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * Engine environment for the node template (string)
      * 
      */
-    @Export(name="engineEnv", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> engineEnv;
+    @Export(name="engineEnv", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> engineEnv;
 
     /**
      * @return Engine environment for the node template (string)
      * 
      */
-    public Output<Optional<Map<String,Object>>> engineEnv() {
+    public Output<Optional<Map<String,String>>> engineEnv() {
         return Codegen.optional(this.engineEnv);
     }
     /**
@@ -483,28 +482,28 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * Engine label for the node template (string)
      * 
      */
-    @Export(name="engineLabel", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> engineLabel;
+    @Export(name="engineLabel", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> engineLabel;
 
     /**
      * @return Engine label for the node template (string)
      * 
      */
-    public Output<Optional<Map<String,Object>>> engineLabel() {
+    public Output<Optional<Map<String,String>>> engineLabel() {
         return Codegen.optional(this.engineLabel);
     }
     /**
      * Engine options for the node template (map)
      * 
      */
-    @Export(name="engineOpt", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> engineOpt;
+    @Export(name="engineOpt", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> engineOpt;
 
     /**
      * @return Engine options for the node template (map)
      * 
      */
-    public Output<Optional<Map<String,Object>>> engineOpt() {
+    public Output<Optional<Map<String,String>>> engineOpt() {
         return Codegen.optional(this.engineOpt);
     }
     /**
@@ -569,8 +568,8 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> labels;
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> labels;
 
     /**
      * @return Labels for Node Template object (map)
@@ -578,7 +577,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
      * 
      */
-    public Output<Map<String,Object>> labels() {
+    public Output<Map<String,String>> labels() {
         return this.labels;
     }
     /**

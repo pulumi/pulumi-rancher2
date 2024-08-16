@@ -6,7 +6,6 @@ package com.pulumi.rancher2.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +22,7 @@ public final class GetNodeDriverResult {
      * @return (Computed) Annotations of the resource (map)
      * 
      */
-    private Map<String,Object> annotations;
+    private Map<String,String> annotations;
     /**
      * @return (Computed) Specify wheter the node driver is an internal cluster driver or not (bool)
      * 
@@ -53,7 +52,7 @@ public final class GetNodeDriverResult {
      * @return (Computed) Labels of the resource (map)
      * 
      */
-    private Map<String,Object> labels;
+    private Map<String,String> labels;
     private String name;
     /**
      * @return (Computed) The URL to load for customized Add Node screen for this driver (string)
@@ -79,7 +78,7 @@ public final class GetNodeDriverResult {
      * @return (Computed) Annotations of the resource (map)
      * 
      */
-    public Map<String,Object> annotations() {
+    public Map<String,String> annotations() {
         return this.annotations;
     }
     /**
@@ -121,7 +120,7 @@ public final class GetNodeDriverResult {
      * @return (Computed) Labels of the resource (map)
      * 
      */
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels;
     }
     public String name() {
@@ -155,13 +154,13 @@ public final class GetNodeDriverResult {
     @CustomType.Builder
     public static final class Builder {
         private Boolean active;
-        private Map<String,Object> annotations;
+        private Map<String,String> annotations;
         private Boolean builtin;
         private String checksum;
         private String description;
         private String externalId;
         private String id;
-        private Map<String,Object> labels;
+        private Map<String,String> labels;
         private String name;
         private String uiUrl;
         private String url;
@@ -192,7 +191,7 @@ public final class GetNodeDriverResult {
             return this;
         }
         @CustomType.Setter
-        public Builder annotations(Map<String,Object> annotations) {
+        public Builder annotations(Map<String,String> annotations) {
             if (annotations == null) {
               throw new MissingRequiredPropertyException("GetNodeDriverResult", "annotations");
             }
@@ -240,7 +239,7 @@ public final class GetNodeDriverResult {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(Map<String,Object> labels) {
+        public Builder labels(Map<String,String> labels) {
             if (labels == null) {
               throw new MissingRequiredPropertyException("GetNodeDriverResult", "labels");
             }

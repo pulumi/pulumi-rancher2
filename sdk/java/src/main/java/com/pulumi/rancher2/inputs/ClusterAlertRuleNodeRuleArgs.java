@@ -6,7 +6,6 @@ package com.pulumi.rancher2.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -83,13 +82,13 @@ public final class ClusterAlertRuleNodeRuleArgs extends com.pulumi.resources.Res
      * 
      */
     @Import(name="selector")
-    private @Nullable Output<Map<String,Object>> selector;
+    private @Nullable Output<Map<String,String>> selector;
 
     /**
      * @return Node rule selector
      * 
      */
-    public Optional<Output<Map<String,Object>>> selector() {
+    public Optional<Output<Map<String,String>>> selector() {
         return Optional.ofNullable(this.selector);
     }
 
@@ -211,7 +210,7 @@ public final class ClusterAlertRuleNodeRuleArgs extends com.pulumi.resources.Res
          * @return builder
          * 
          */
-        public Builder selector(@Nullable Output<Map<String,Object>> selector) {
+        public Builder selector(@Nullable Output<Map<String,String>> selector) {
             $.selector = selector;
             return this;
         }
@@ -222,7 +221,7 @@ public final class ClusterAlertRuleNodeRuleArgs extends com.pulumi.resources.Res
          * @return builder
          * 
          */
-        public Builder selector(Map<String,Object> selector) {
+        public Builder selector(Map<String,String> selector) {
             return selector(Output.of(selector));
         }
 

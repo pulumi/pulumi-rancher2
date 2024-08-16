@@ -17,20 +17,20 @@ __all__ = ['EtcdBackupArgs', 'EtcdBackup']
 class EtcdBackupArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[str],
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  backup_config: Optional[pulumi.Input['EtcdBackupBackupConfigArgs']] = None,
                  filename: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  manual: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespace_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a EtcdBackup resource.
         :param pulumi.Input[str] cluster_id: Cluster ID to config Etcd Backup (string)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Etcd Backup object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for Etcd Backup object (map)
         :param pulumi.Input['EtcdBackupBackupConfigArgs'] backup_config: Backup config for etcd backup (list maxitems:1)
         :param pulumi.Input[str] filename: Filename of the Etcd Backup (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Etcd Backup object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for Etcd Backup object (map)
         :param pulumi.Input[bool] manual: Manual execution of the Etcd Backup. Default `false` (bool)
         :param pulumi.Input[str] name: The name of the Etcd Backup (string)
         :param pulumi.Input[str] namespace_id: Description for the Etcd Backup (string)
@@ -65,14 +65,14 @@ class EtcdBackupArgs:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations for Etcd Backup object (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -101,14 +101,14 @@ class EtcdBackupArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for Etcd Backup object (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -151,21 +151,21 @@ class EtcdBackupArgs:
 @pulumi.input_type
 class _EtcdBackupState:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  backup_config: Optional[pulumi.Input['EtcdBackupBackupConfigArgs']] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  filename: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  manual: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespace_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering EtcdBackup resources.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Etcd Backup object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for Etcd Backup object (map)
         :param pulumi.Input['EtcdBackupBackupConfigArgs'] backup_config: Backup config for etcd backup (list maxitems:1)
         :param pulumi.Input[str] cluster_id: Cluster ID to config Etcd Backup (string)
         :param pulumi.Input[str] filename: Filename of the Etcd Backup (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Etcd Backup object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for Etcd Backup object (map)
         :param pulumi.Input[bool] manual: Manual execution of the Etcd Backup. Default `false` (bool)
         :param pulumi.Input[str] name: The name of the Etcd Backup (string)
         :param pulumi.Input[str] namespace_id: Description for the Etcd Backup (string)
@@ -189,14 +189,14 @@ class _EtcdBackupState:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations for Etcd Backup object (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -237,14 +237,14 @@ class _EtcdBackupState:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for Etcd Backup object (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -289,11 +289,11 @@ class EtcdBackup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  backup_config: Optional[pulumi.Input[Union['EtcdBackupBackupConfigArgs', 'EtcdBackupBackupConfigArgsDict']]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  filename: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  manual: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespace_id: Optional[pulumi.Input[str]] = None,
@@ -339,11 +339,11 @@ class EtcdBackup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Etcd Backup object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for Etcd Backup object (map)
         :param pulumi.Input[Union['EtcdBackupBackupConfigArgs', 'EtcdBackupBackupConfigArgsDict']] backup_config: Backup config for etcd backup (list maxitems:1)
         :param pulumi.Input[str] cluster_id: Cluster ID to config Etcd Backup (string)
         :param pulumi.Input[str] filename: Filename of the Etcd Backup (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Etcd Backup object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for Etcd Backup object (map)
         :param pulumi.Input[bool] manual: Manual execution of the Etcd Backup. Default `false` (bool)
         :param pulumi.Input[str] name: The name of the Etcd Backup (string)
         :param pulumi.Input[str] namespace_id: Description for the Etcd Backup (string)
@@ -408,11 +408,11 @@ class EtcdBackup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  backup_config: Optional[pulumi.Input[Union['EtcdBackupBackupConfigArgs', 'EtcdBackupBackupConfigArgsDict']]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  filename: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  manual: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespace_id: Optional[pulumi.Input[str]] = None,
@@ -445,11 +445,11 @@ class EtcdBackup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             backup_config: Optional[pulumi.Input[Union['EtcdBackupBackupConfigArgs', 'EtcdBackupBackupConfigArgsDict']]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
             filename: Optional[pulumi.Input[str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             manual: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             namespace_id: Optional[pulumi.Input[str]] = None) -> 'EtcdBackup':
@@ -460,11 +460,11 @@ class EtcdBackup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Etcd Backup object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for Etcd Backup object (map)
         :param pulumi.Input[Union['EtcdBackupBackupConfigArgs', 'EtcdBackupBackupConfigArgsDict']] backup_config: Backup config for etcd backup (list maxitems:1)
         :param pulumi.Input[str] cluster_id: Cluster ID to config Etcd Backup (string)
         :param pulumi.Input[str] filename: Filename of the Etcd Backup (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Etcd Backup object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for Etcd Backup object (map)
         :param pulumi.Input[bool] manual: Manual execution of the Etcd Backup. Default `false` (bool)
         :param pulumi.Input[str] name: The name of the Etcd Backup (string)
         :param pulumi.Input[str] namespace_id: Description for the Etcd Backup (string)
@@ -485,7 +485,7 @@ class EtcdBackup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
+    def annotations(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Annotations for Etcd Backup object (map)
         """
@@ -517,7 +517,7 @@ class EtcdBackup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Labels for Etcd Backup object (map)
         """

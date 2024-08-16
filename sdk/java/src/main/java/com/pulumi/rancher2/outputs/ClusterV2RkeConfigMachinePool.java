@@ -10,7 +10,6 @@ import com.pulumi.rancher2.outputs.ClusterV2RkeConfigMachinePoolRollingUpdate;
 import com.pulumi.rancher2.outputs.ClusterV2RkeConfigMachinePoolTaint;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +23,7 @@ public final class ClusterV2RkeConfigMachinePool {
      * @return Annotations for the Cluster.
      * 
      */
-    private @Nullable Map<String,Object> annotations;
+    private @Nullable Map<String,String> annotations;
     /**
      * @return Cloud credential secret name is the secret to be used when a cloud credential secret name is not specified at the machine pool level.
      * 
@@ -54,7 +53,7 @@ public final class ClusterV2RkeConfigMachinePool {
      * @return Labels for the Cluster.
      * 
      */
-    private @Nullable Map<String,Object> labels;
+    private @Nullable Map<String,String> labels;
     /**
      * @return Machine config data
      * 
@@ -64,7 +63,7 @@ public final class ClusterV2RkeConfigMachinePool {
      * @return Labels of the machine
      * 
      */
-    private @Nullable Map<String,Object> machineLabels;
+    private @Nullable Map<String,String> machineLabels;
     /**
      * @return max unhealthy nodes for automated replacement to be allowed
      * 
@@ -126,7 +125,7 @@ public final class ClusterV2RkeConfigMachinePool {
      * @return Annotations for the Cluster.
      * 
      */
-    public Map<String,Object> annotations() {
+    public Map<String,String> annotations() {
         return this.annotations == null ? Map.of() : this.annotations;
     }
     /**
@@ -168,7 +167,7 @@ public final class ClusterV2RkeConfigMachinePool {
      * @return Labels for the Cluster.
      * 
      */
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels == null ? Map.of() : this.labels;
     }
     /**
@@ -182,7 +181,7 @@ public final class ClusterV2RkeConfigMachinePool {
      * @return Labels of the machine
      * 
      */
-    public Map<String,Object> machineLabels() {
+    public Map<String,String> machineLabels() {
         return this.machineLabels == null ? Map.of() : this.machineLabels;
     }
     /**
@@ -272,15 +271,15 @@ public final class ClusterV2RkeConfigMachinePool {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Map<String,Object> annotations;
+        private @Nullable Map<String,String> annotations;
         private @Nullable String cloudCredentialSecretName;
         private @Nullable Boolean controlPlaneRole;
         private @Nullable Boolean drainBeforeDelete;
         private @Nullable Boolean etcdRole;
         private @Nullable Integer hostnameLengthLimit;
-        private @Nullable Map<String,Object> labels;
+        private @Nullable Map<String,String> labels;
         private ClusterV2RkeConfigMachinePoolMachineConfig machineConfig;
-        private @Nullable Map<String,Object> machineLabels;
+        private @Nullable Map<String,String> machineLabels;
         private @Nullable String maxUnhealthy;
         private String name;
         private @Nullable Integer nodeDrainTimeout;
@@ -318,7 +317,7 @@ public final class ClusterV2RkeConfigMachinePool {
         }
 
         @CustomType.Setter
-        public Builder annotations(@Nullable Map<String,Object> annotations) {
+        public Builder annotations(@Nullable Map<String,String> annotations) {
 
             this.annotations = annotations;
             return this;
@@ -354,7 +353,7 @@ public final class ClusterV2RkeConfigMachinePool {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(@Nullable Map<String,Object> labels) {
+        public Builder labels(@Nullable Map<String,String> labels) {
 
             this.labels = labels;
             return this;
@@ -368,7 +367,7 @@ public final class ClusterV2RkeConfigMachinePool {
             return this;
         }
         @CustomType.Setter
-        public Builder machineLabels(@Nullable Map<String,Object> machineLabels) {
+        public Builder machineLabels(@Nullable Map<String,String> machineLabels) {
 
             this.machineLabels = machineLabels;
             return this;

@@ -15,7 +15,6 @@ import com.pulumi.rancher2.outputs.ProjectAlertRulePodRule;
 import com.pulumi.rancher2.outputs.ProjectAlertRuleWorkloadRule;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -121,14 +120,14 @@ public class ProjectAlertRule extends com.pulumi.resources.CustomResource {
      * The project alert rule annotations (map)
      * 
      */
-    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> annotations;
+    @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> annotations;
 
     /**
      * @return The project alert rule annotations (map)
      * 
      */
-    public Output<Map<String,Object>> annotations() {
+    public Output<Map<String,String>> annotations() {
         return this.annotations;
     }
     /**
@@ -191,14 +190,14 @@ public class ProjectAlertRule extends com.pulumi.resources.CustomResource {
      * The project alert rule labels (map)
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> labels;
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> labels;
 
     /**
      * @return The project alert rule labels (map)
      * 
      */
-    public Output<Map<String,Object>> labels() {
+    public Output<Map<String,String>> labels() {
         return this.labels;
     }
     /**

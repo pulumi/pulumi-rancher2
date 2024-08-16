@@ -81,7 +81,7 @@ export interface GetPodSecurityPolicyTemplateArgs {
     /**
      * Annotations for PodSecurityPolicyTemplate object (map)
      */
-    annotations?: {[key: string]: any};
+    annotations?: {[key: string]: string};
     /**
      * (list)
      */
@@ -118,7 +118,7 @@ export interface GetPodSecurityPolicyTemplateArgs {
     /**
      * Labels for PodSecurityPolicyTemplate object (map)
      */
-    labels?: {[key: string]: any};
+    labels?: {[key: string]: string};
     /**
      * The name of the PodSecurityPolicyTemplate (string)
      */
@@ -172,7 +172,7 @@ export interface GetPodSecurityPolicyTemplateResult {
     readonly allowedHostPaths?: outputs.GetPodSecurityPolicyTemplateAllowedHostPath[];
     readonly allowedProcMountTypes?: string[];
     readonly allowedUnsafeSysctls?: string[];
-    readonly annotations: {[key: string]: any};
+    readonly annotations: {[key: string]: string};
     readonly defaultAddCapabilities?: string[];
     readonly defaultAllowPrivilegeEscalation?: boolean;
     readonly description: string;
@@ -186,7 +186,7 @@ export interface GetPodSecurityPolicyTemplateResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    readonly labels: {[key: string]: any};
+    readonly labels: {[key: string]: string};
     readonly name: string;
     readonly privileged: boolean;
     readonly readOnlyRootFilesystem: boolean;
@@ -242,7 +242,7 @@ export interface GetPodSecurityPolicyTemplateOutputArgs {
     /**
      * Annotations for PodSecurityPolicyTemplate object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * (list)
      */
@@ -279,7 +279,7 @@ export interface GetPodSecurityPolicyTemplateOutputArgs {
     /**
      * Labels for PodSecurityPolicyTemplate object (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the PodSecurityPolicyTemplate (string)
      */

@@ -9,7 +9,6 @@ import com.pulumi.rancher2.outputs.GetClusterV2AgentEnvVar;
 import com.pulumi.rancher2.outputs.GetClusterV2ClusterRegistrationToken;
 import com.pulumi.rancher2.outputs.GetClusterV2RkeConfig;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +23,7 @@ public final class GetClusterV2Result {
      * 
      */
     private List<GetClusterV2AgentEnvVar> agentEnvVars;
-    private Map<String,Object> annotations;
+    private Map<String,String> annotations;
     /**
      * @return (Computed) Cluster V2 cloud credential secret name (string)
      * 
@@ -76,7 +75,7 @@ public final class GetClusterV2Result {
      * 
      */
     private String kubernetesVersion;
-    private Map<String,Object> labels;
+    private Map<String,String> labels;
     private String name;
     /**
      * @return (Computed) Cluster v2 k8s resource version (string)
@@ -97,7 +96,7 @@ public final class GetClusterV2Result {
     public List<GetClusterV2AgentEnvVar> agentEnvVars() {
         return this.agentEnvVars;
     }
-    public Map<String,Object> annotations() {
+    public Map<String,String> annotations() {
         return this.annotations;
     }
     /**
@@ -173,7 +172,7 @@ public final class GetClusterV2Result {
     public String kubernetesVersion() {
         return this.kubernetesVersion;
     }
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels;
     }
     public String name() {
@@ -204,7 +203,7 @@ public final class GetClusterV2Result {
     @CustomType.Builder
     public static final class Builder {
         private List<GetClusterV2AgentEnvVar> agentEnvVars;
-        private Map<String,Object> annotations;
+        private Map<String,String> annotations;
         private String cloudCredentialSecretName;
         private GetClusterV2ClusterRegistrationToken clusterRegistrationToken;
         private String clusterV1Id;
@@ -216,7 +215,7 @@ public final class GetClusterV2Result {
         private String id;
         private String kubeConfig;
         private String kubernetesVersion;
-        private Map<String,Object> labels;
+        private Map<String,String> labels;
         private String name;
         private String resourceVersion;
         private GetClusterV2RkeConfig rkeConfig;
@@ -254,7 +253,7 @@ public final class GetClusterV2Result {
             return agentEnvVars(List.of(agentEnvVars));
         }
         @CustomType.Setter
-        public Builder annotations(Map<String,Object> annotations) {
+        public Builder annotations(Map<String,String> annotations) {
             if (annotations == null) {
               throw new MissingRequiredPropertyException("GetClusterV2Result", "annotations");
             }
@@ -348,7 +347,7 @@ public final class GetClusterV2Result {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(Map<String,Object> labels) {
+        public Builder labels(Map<String,String> labels) {
             if (labels == null) {
               throw new MissingRequiredPropertyException("GetClusterV2Result", "labels");
             }

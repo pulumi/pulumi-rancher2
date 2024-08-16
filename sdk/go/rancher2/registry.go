@@ -101,11 +101,11 @@ type Registry struct {
 	pulumi.CustomResourceState
 
 	// Annotations for Registry object (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// A registry description (string)
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Labels for Registry object (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the registry (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The namespace id where to assign the namespaced registry (string)
@@ -153,11 +153,11 @@ func GetRegistry(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Registry resources.
 type registryState struct {
 	// Annotations for Registry object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// A registry description (string)
 	Description *string `pulumi:"description"`
 	// Labels for Registry object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The name of the registry (string)
 	Name *string `pulumi:"name"`
 	// The namespace id where to assign the namespaced registry (string)
@@ -170,11 +170,11 @@ type registryState struct {
 
 type RegistryState struct {
 	// Annotations for Registry object (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// A registry description (string)
 	Description pulumi.StringPtrInput
 	// Labels for Registry object (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The name of the registry (string)
 	Name pulumi.StringPtrInput
 	// The namespace id where to assign the namespaced registry (string)
@@ -191,11 +191,11 @@ func (RegistryState) ElementType() reflect.Type {
 
 type registryArgs struct {
 	// Annotations for Registry object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// A registry description (string)
 	Description *string `pulumi:"description"`
 	// Labels for Registry object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The name of the registry (string)
 	Name *string `pulumi:"name"`
 	// The namespace id where to assign the namespaced registry (string)
@@ -209,11 +209,11 @@ type registryArgs struct {
 // The set of arguments for constructing a Registry resource.
 type RegistryArgs struct {
 	// Annotations for Registry object (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// A registry description (string)
 	Description pulumi.StringPtrInput
 	// Labels for Registry object (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The name of the registry (string)
 	Name pulumi.StringPtrInput
 	// The namespace id where to assign the namespaced registry (string)
@@ -312,8 +312,8 @@ func (o RegistryOutput) ToRegistryOutputWithContext(ctx context.Context) Registr
 }
 
 // Annotations for Registry object (map)
-func (o RegistryOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *Registry) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o RegistryOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Registry) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // A registry description (string)
@@ -322,8 +322,8 @@ func (o RegistryOutput) Description() pulumi.StringPtrOutput {
 }
 
 // Labels for Registry object (map)
-func (o RegistryOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *Registry) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o RegistryOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Registry) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The name of the registry (string)

@@ -17,9 +17,9 @@ class CertificateArgs:
                  certs: pulumi.Input[str],
                  key: pulumi.Input[str],
                  project_id: pulumi.Input[str],
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespace_id: Optional[pulumi.Input[str]] = None):
         """
@@ -27,9 +27,9 @@ class CertificateArgs:
         :param pulumi.Input[str] certs: Base64 encoded public certs (string)
         :param pulumi.Input[str] key: Base64 encoded private key (string)
         :param pulumi.Input[str] project_id: The project id where the certificate should be created  (string)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for certificate object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for certificate object (map)
         :param pulumi.Input[str] description: A certificate description (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for certificate object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for certificate object (map)
         :param pulumi.Input[str] name: The name of the certificate (string)
         :param pulumi.Input[str] namespace_id: The namespace id where the namespaced certificate should be created (string)
         """
@@ -85,14 +85,14 @@ class CertificateArgs:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations for certificate object (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -109,14 +109,14 @@ class CertificateArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for certificate object (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -147,21 +147,21 @@ class CertificateArgs:
 @pulumi.input_type
 class _CertificateState:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  certs: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespace_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Certificate resources.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for certificate object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for certificate object (map)
         :param pulumi.Input[str] certs: Base64 encoded public certs (string)
         :param pulumi.Input[str] description: A certificate description (string)
         :param pulumi.Input[str] key: Base64 encoded private key (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for certificate object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for certificate object (map)
         :param pulumi.Input[str] name: The name of the certificate (string)
         :param pulumi.Input[str] namespace_id: The namespace id where the namespaced certificate should be created (string)
         :param pulumi.Input[str] project_id: The project id where the certificate should be created  (string)
@@ -185,14 +185,14 @@ class _CertificateState:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations for certificate object (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -233,14 +233,14 @@ class _CertificateState:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for certificate object (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -285,11 +285,11 @@ class Certificate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  certs: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespace_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
@@ -303,11 +303,11 @@ class Certificate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for certificate object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for certificate object (map)
         :param pulumi.Input[str] certs: Base64 encoded public certs (string)
         :param pulumi.Input[str] description: A certificate description (string)
         :param pulumi.Input[str] key: Base64 encoded private key (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for certificate object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for certificate object (map)
         :param pulumi.Input[str] name: The name of the certificate (string)
         :param pulumi.Input[str] namespace_id: The namespace id where the namespaced certificate should be created (string)
         :param pulumi.Input[str] project_id: The project id where the certificate should be created  (string)
@@ -340,11 +340,11 @@ class Certificate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  certs: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespace_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
@@ -383,11 +383,11 @@ class Certificate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             certs: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             key: Optional[pulumi.Input[str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             namespace_id: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None) -> 'Certificate':
@@ -398,11 +398,11 @@ class Certificate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for certificate object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for certificate object (map)
         :param pulumi.Input[str] certs: Base64 encoded public certs (string)
         :param pulumi.Input[str] description: A certificate description (string)
         :param pulumi.Input[str] key: Base64 encoded private key (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for certificate object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for certificate object (map)
         :param pulumi.Input[str] name: The name of the certificate (string)
         :param pulumi.Input[str] namespace_id: The namespace id where the namespaced certificate should be created (string)
         :param pulumi.Input[str] project_id: The project id where the certificate should be created  (string)
@@ -423,7 +423,7 @@ class Certificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
+    def annotations(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Annotations for certificate object (map)
         """
@@ -455,7 +455,7 @@ class Certificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Labels for certificate object (map)
         """

@@ -23,21 +23,21 @@ func LookupPodSecurityAdmissionConfigurationTemplate(ctx *pulumi.Context, args *
 
 // A collection of arguments for invoking getPodSecurityAdmissionConfigurationTemplate.
 type LookupPodSecurityAdmissionConfigurationTemplateArgs struct {
-	Annotations map[string]interface{} `pulumi:"annotations"`
-	Labels      map[string]interface{} `pulumi:"labels"`
-	Name        string                 `pulumi:"name"`
+	Annotations map[string]string `pulumi:"annotations"`
+	Labels      map[string]string `pulumi:"labels"`
+	Name        string            `pulumi:"name"`
 }
 
 // A collection of values returned by getPodSecurityAdmissionConfigurationTemplate.
 type LookupPodSecurityAdmissionConfigurationTemplateResult struct {
-	Annotations map[string]interface{}                                 `pulumi:"annotations"`
+	Annotations map[string]string                                      `pulumi:"annotations"`
 	Defaults    GetPodSecurityAdmissionConfigurationTemplateDefaults   `pulumi:"defaults"`
 	Description string                                                 `pulumi:"description"`
 	Exemptions  GetPodSecurityAdmissionConfigurationTemplateExemptions `pulumi:"exemptions"`
 	// The provider-assigned unique ID for this managed resource.
-	Id     string                 `pulumi:"id"`
-	Labels map[string]interface{} `pulumi:"labels"`
-	Name   string                 `pulumi:"name"`
+	Id     string            `pulumi:"id"`
+	Labels map[string]string `pulumi:"labels"`
+	Name   string            `pulumi:"name"`
 }
 
 func LookupPodSecurityAdmissionConfigurationTemplateOutput(ctx *pulumi.Context, args LookupPodSecurityAdmissionConfigurationTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupPodSecurityAdmissionConfigurationTemplateResultOutput {
@@ -55,9 +55,9 @@ func LookupPodSecurityAdmissionConfigurationTemplateOutput(ctx *pulumi.Context, 
 
 // A collection of arguments for invoking getPodSecurityAdmissionConfigurationTemplate.
 type LookupPodSecurityAdmissionConfigurationTemplateOutputArgs struct {
-	Annotations pulumi.MapInput    `pulumi:"annotations"`
-	Labels      pulumi.MapInput    `pulumi:"labels"`
-	Name        pulumi.StringInput `pulumi:"name"`
+	Annotations pulumi.StringMapInput `pulumi:"annotations"`
+	Labels      pulumi.StringMapInput `pulumi:"labels"`
+	Name        pulumi.StringInput    `pulumi:"name"`
 }
 
 func (LookupPodSecurityAdmissionConfigurationTemplateOutputArgs) ElementType() reflect.Type {
@@ -79,10 +79,8 @@ func (o LookupPodSecurityAdmissionConfigurationTemplateResultOutput) ToLookupPod
 	return o
 }
 
-func (o LookupPodSecurityAdmissionConfigurationTemplateResultOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupPodSecurityAdmissionConfigurationTemplateResult) map[string]interface{} {
-		return v.Annotations
-	}).(pulumi.MapOutput)
+func (o LookupPodSecurityAdmissionConfigurationTemplateResultOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupPodSecurityAdmissionConfigurationTemplateResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 func (o LookupPodSecurityAdmissionConfigurationTemplateResultOutput) Defaults() GetPodSecurityAdmissionConfigurationTemplateDefaultsOutput {
@@ -106,8 +104,8 @@ func (o LookupPodSecurityAdmissionConfigurationTemplateResultOutput) Id() pulumi
 	return o.ApplyT(func(v LookupPodSecurityAdmissionConfigurationTemplateResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o LookupPodSecurityAdmissionConfigurationTemplateResultOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupPodSecurityAdmissionConfigurationTemplateResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+func (o LookupPodSecurityAdmissionConfigurationTemplateResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupPodSecurityAdmissionConfigurationTemplateResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupPodSecurityAdmissionConfigurationTemplateResultOutput) Name() pulumi.StringOutput {

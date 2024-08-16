@@ -52,7 +52,7 @@ class GetConfigMapV2Result:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> Mapping[str, str]:
         """
         (Computed) Annotations for the configMap v2 (map)
         """
@@ -65,7 +65,7 @@ class GetConfigMapV2Result:
 
     @property
     @pulumi.getter
-    def data(self) -> Mapping[str, Any]:
+    def data(self) -> Mapping[str, str]:
         """
         (Computed) The data of the configMap v2 (map)
         """
@@ -89,7 +89,7 @@ class GetConfigMapV2Result:
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> Mapping[str, str]:
         """
         (Computed) Labels for the configMap v2 (map)
         """

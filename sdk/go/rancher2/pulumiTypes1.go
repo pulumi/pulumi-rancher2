@@ -2779,7 +2779,7 @@ type GetProjectAlertRuleWorkloadRule struct {
 	// Workload rule available percentage
 	AvailablePercentage *int `pulumi:"availablePercentage"`
 	// Workload rule selector
-	Selector map[string]interface{} `pulumi:"selector"`
+	Selector map[string]string `pulumi:"selector"`
 	// Workload ID
 	WorkloadId *string `pulumi:"workloadId"`
 }
@@ -2799,7 +2799,7 @@ type GetProjectAlertRuleWorkloadRuleArgs struct {
 	// Workload rule available percentage
 	AvailablePercentage pulumi.IntPtrInput `pulumi:"availablePercentage"`
 	// Workload rule selector
-	Selector pulumi.MapInput `pulumi:"selector"`
+	Selector pulumi.StringMapInput `pulumi:"selector"`
 	// Workload ID
 	WorkloadId pulumi.StringPtrInput `pulumi:"workloadId"`
 }
@@ -2836,8 +2836,8 @@ func (o GetProjectAlertRuleWorkloadRuleOutput) AvailablePercentage() pulumi.IntP
 }
 
 // Workload rule selector
-func (o GetProjectAlertRuleWorkloadRuleOutput) Selector() pulumi.MapOutput {
-	return o.ApplyT(func(v GetProjectAlertRuleWorkloadRule) map[string]interface{} { return v.Selector }).(pulumi.MapOutput)
+func (o GetProjectAlertRuleWorkloadRuleOutput) Selector() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetProjectAlertRuleWorkloadRule) map[string]string { return v.Selector }).(pulumi.StringMapOutput)
 }
 
 // Workload ID

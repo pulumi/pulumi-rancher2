@@ -10,7 +10,6 @@ import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConf
 import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit;
 import com.pulumi.rancher2.outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -28,7 +27,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServi
     private @Nullable Boolean alwaysPullImages;
     private @Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog auditLog;
     private @Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit eventRateLimit;
-    private Map<String,Object> extraArgs;
+    private Map<String,String> extraArgs;
     private @Nullable List<String> extraBinds;
     private @Nullable List<String> extraEnvs;
     private String image;
@@ -54,7 +53,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServi
     public Optional<GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit> eventRateLimit() {
         return Optional.ofNullable(this.eventRateLimit);
     }
-    public Map<String,Object> extraArgs() {
+    public Map<String,String> extraArgs() {
         return this.extraArgs;
     }
     public List<String> extraBinds() {
@@ -92,7 +91,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServi
         private @Nullable Boolean alwaysPullImages;
         private @Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLog auditLog;
         private @Nullable GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimit eventRateLimit;
-        private Map<String,Object> extraArgs;
+        private Map<String,String> extraArgs;
         private @Nullable List<String> extraBinds;
         private @Nullable List<String> extraEnvs;
         private String image;
@@ -142,7 +141,7 @@ public final class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServi
             return this;
         }
         @CustomType.Setter
-        public Builder extraArgs(Map<String,Object> extraArgs) {
+        public Builder extraArgs(Map<String,String> extraArgs) {
             if (extraArgs == null) {
               throw new MissingRequiredPropertyException("GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApi", "extraArgs");
             }

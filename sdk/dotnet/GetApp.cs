@@ -68,14 +68,14 @@ namespace Pulumi.Rancher2
     public sealed class GetAppArgs : global::Pulumi.InvokeArgs
     {
         [Input("annotations")]
-        private Dictionary<string, object>? _annotations;
+        private Dictionary<string, string>? _annotations;
 
         /// <summary>
         /// (Computed) Annotations for the catalog (map)
         /// </summary>
-        public Dictionary<string, object> Annotations
+        public Dictionary<string, string> Annotations
         {
-            get => _annotations ?? (_annotations = new Dictionary<string, object>());
+            get => _annotations ?? (_annotations = new Dictionary<string, string>());
             set => _annotations = value;
         }
 
@@ -106,14 +106,14 @@ namespace Pulumi.Rancher2
     public sealed class GetAppInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("annotations")]
-        private InputMap<object>? _annotations;
+        private InputMap<string>? _annotations;
 
         /// <summary>
         /// (Computed) Annotations for the catalog (map)
         /// </summary>
-        public InputMap<object> Annotations
+        public InputMap<string> Annotations
         {
-            get => _annotations ?? (_annotations = new InputMap<object>());
+            get => _annotations ?? (_annotations = new InputMap<string>());
             set => _annotations = value;
         }
 
@@ -148,11 +148,11 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Annotations for the catalog (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Annotations;
+        public readonly ImmutableDictionary<string, string> Annotations;
         /// <summary>
         /// (Computed) Answers for the app (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Answers;
+        public readonly ImmutableDictionary<string, string> Answers;
         /// <summary>
         /// (Computed) Catalog name of the app (string)
         /// </summary>
@@ -172,7 +172,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Labels for the catalog (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Labels;
+        public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
         public readonly string ProjectId;
         /// <summary>
@@ -195,9 +195,9 @@ namespace Pulumi.Rancher2
 
         [OutputConstructor]
         private GetAppResult(
-            ImmutableDictionary<string, object> annotations,
+            ImmutableDictionary<string, string> annotations,
 
-            ImmutableDictionary<string, object> answers,
+            ImmutableDictionary<string, string> answers,
 
             string catalogName,
 
@@ -207,7 +207,7 @@ namespace Pulumi.Rancher2
 
             string id,
 
-            ImmutableDictionary<string, object> labels,
+            ImmutableDictionary<string, string> labels,
 
             string name,
 

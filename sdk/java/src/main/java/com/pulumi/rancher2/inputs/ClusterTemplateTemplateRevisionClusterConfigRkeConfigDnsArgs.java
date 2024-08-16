@@ -9,7 +9,6 @@ import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigRk
 import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs;
 import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsTolerationArgs;
 import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgs;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -38,9 +37,9 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs 
     }
 
     @Import(name="nodeSelector")
-    private @Nullable Output<Map<String,Object>> nodeSelector;
+    private @Nullable Output<Map<String,String>> nodeSelector;
 
-    public Optional<Output<Map<String,Object>>> nodeSelector() {
+    public Optional<Output<Map<String,String>>> nodeSelector() {
         return Optional.ofNullable(this.nodeSelector);
     }
 
@@ -60,9 +59,9 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs 
     }
 
     @Import(name="options")
-    private @Nullable Output<Map<String,Object>> options;
+    private @Nullable Output<Map<String,String>> options;
 
-    public Optional<Output<Map<String,Object>>> options() {
+    public Optional<Output<Map<String,String>>> options() {
         return Optional.ofNullable(this.options);
     }
 
@@ -170,12 +169,12 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs 
             return linearAutoscalerParams(Output.of(linearAutoscalerParams));
         }
 
-        public Builder nodeSelector(@Nullable Output<Map<String,Object>> nodeSelector) {
+        public Builder nodeSelector(@Nullable Output<Map<String,String>> nodeSelector) {
             $.nodeSelector = nodeSelector;
             return this;
         }
 
-        public Builder nodeSelector(Map<String,Object> nodeSelector) {
+        public Builder nodeSelector(Map<String,String> nodeSelector) {
             return nodeSelector(Output.of(nodeSelector));
         }
 
@@ -200,12 +199,12 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs 
             return nodelocal(Output.of(nodelocal));
         }
 
-        public Builder options(@Nullable Output<Map<String,Object>> options) {
+        public Builder options(@Nullable Output<Map<String,String>> options) {
             $.options = options;
             return this;
         }
 
-        public Builder options(Map<String,Object> options) {
+        public Builder options(Map<String,String> options) {
             return options(Output.of(options));
         }
 

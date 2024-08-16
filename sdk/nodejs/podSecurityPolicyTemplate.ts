@@ -78,7 +78,7 @@ export class PodSecurityPolicyTemplate extends pulumi.CustomResource {
     /**
      * Annotations for PodSecurityPolicyTemplate object (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: any}>;
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * (list)
      */
@@ -118,7 +118,7 @@ export class PodSecurityPolicyTemplate extends pulumi.CustomResource {
     /**
      * Labels for PodSecurityPolicyTemplate object (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the PodSecurityPolicyTemplate (string)
      */
@@ -272,7 +272,7 @@ export interface PodSecurityPolicyTemplateState {
     /**
      * Annotations for PodSecurityPolicyTemplate object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * (list)
      */
@@ -312,7 +312,7 @@ export interface PodSecurityPolicyTemplateState {
     /**
      * Labels for PodSecurityPolicyTemplate object (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the PodSecurityPolicyTemplate (string)
      */
@@ -390,7 +390,7 @@ export interface PodSecurityPolicyTemplateArgs {
     /**
      * Annotations for PodSecurityPolicyTemplate object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * (list)
      */
@@ -430,7 +430,7 @@ export interface PodSecurityPolicyTemplateArgs {
     /**
      * Labels for PodSecurityPolicyTemplate object (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the PodSecurityPolicyTemplate (string)
      */

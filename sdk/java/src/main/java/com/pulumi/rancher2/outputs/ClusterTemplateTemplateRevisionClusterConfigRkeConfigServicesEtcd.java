@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.rancher2.outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -22,7 +21,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
     private @Nullable String cert;
     private @Nullable String creation;
     private @Nullable List<String> externalUrls;
-    private @Nullable Map<String,Object> extraArgs;
+    private @Nullable Map<String,String> extraArgs;
     private @Nullable List<String> extraBinds;
     private @Nullable List<String> extraEnvs;
     private @Nullable Integer gid;
@@ -49,7 +48,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
     public List<String> externalUrls() {
         return this.externalUrls == null ? List.of() : this.externalUrls;
     }
-    public Map<String,Object> extraArgs() {
+    public Map<String,String> extraArgs() {
         return this.extraArgs == null ? Map.of() : this.extraArgs;
     }
     public List<String> extraBinds() {
@@ -94,7 +93,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
         private @Nullable String cert;
         private @Nullable String creation;
         private @Nullable List<String> externalUrls;
-        private @Nullable Map<String,Object> extraArgs;
+        private @Nullable Map<String,String> extraArgs;
         private @Nullable List<String> extraBinds;
         private @Nullable List<String> extraEnvs;
         private @Nullable Integer gid;
@@ -158,7 +157,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
             return externalUrls(List.of(externalUrls));
         }
         @CustomType.Setter
-        public Builder extraArgs(@Nullable Map<String,Object> extraArgs) {
+        public Builder extraArgs(@Nullable Map<String,String> extraArgs) {
 
             this.extraArgs = extraArgs;
             return this;

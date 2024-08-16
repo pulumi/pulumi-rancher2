@@ -110,7 +110,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Annotations for Etcd Backup object (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Annotations;
+        public readonly ImmutableDictionary<string, string> Annotations;
         /// <summary>
         /// (Computed) Backup config for etcd backup (list maxitems:1)
         /// </summary>
@@ -127,7 +127,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Labels for Etcd Backup object (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Labels;
+        public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
         /// (Computed) Manual execution of the Etcd Backup. Default `false` (bool)
         /// </summary>
@@ -140,7 +140,7 @@ namespace Pulumi.Rancher2
 
         [OutputConstructor]
         private GetEtcdBackupResult(
-            ImmutableDictionary<string, object> annotations,
+            ImmutableDictionary<string, string> annotations,
 
             Outputs.GetEtcdBackupBackupConfigResult backupConfig,
 
@@ -150,7 +150,7 @@ namespace Pulumi.Rancher2
 
             string id,
 
-            ImmutableDictionary<string, object> labels,
+            ImmutableDictionary<string, string> labels,
 
             bool manual,
 

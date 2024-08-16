@@ -12,7 +12,6 @@ import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigRk
 import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkTolerationArgs;
 import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderArgs;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -61,9 +60,9 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkA
     }
 
     @Import(name="options")
-    private @Nullable Output<Map<String,Object>> options;
+    private @Nullable Output<Map<String,String>> options;
 
-    public Optional<Output<Map<String,Object>>> options() {
+    public Optional<Output<Map<String,String>>> options() {
         return Optional.ofNullable(this.options);
     }
 
@@ -173,12 +172,12 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkA
             return mtu(Output.of(mtu));
         }
 
-        public Builder options(@Nullable Output<Map<String,Object>> options) {
+        public Builder options(@Nullable Output<Map<String,String>> options) {
             $.options = options;
             return this;
         }
 
-        public Builder options(Map<String,Object> options) {
+        public Builder options(Map<String,String> options) {
             return options(Output.of(options));
         }
 

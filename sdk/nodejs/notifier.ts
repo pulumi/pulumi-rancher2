@@ -67,7 +67,7 @@ export class Notifier extends pulumi.CustomResource {
     /**
      * Annotations for notifier object (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: any}>;
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * The cluster id where create notifier (string)
      */
@@ -83,7 +83,7 @@ export class Notifier extends pulumi.CustomResource {
     /**
      * Labels for notifier object (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * MSTeams config for notifier (list maxitems:1)
      */
@@ -174,7 +174,7 @@ export interface NotifierState {
     /**
      * Annotations for notifier object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The cluster id where create notifier (string)
      */
@@ -190,7 +190,7 @@ export interface NotifierState {
     /**
      * Labels for notifier object (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * MSTeams config for notifier (list maxitems:1)
      */
@@ -232,7 +232,7 @@ export interface NotifierArgs {
     /**
      * Annotations for notifier object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The cluster id where create notifier (string)
      */
@@ -248,7 +248,7 @@ export interface NotifierArgs {
     /**
      * Labels for notifier object (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * MSTeams config for notifier (list maxitems:1)
      */

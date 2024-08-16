@@ -25,7 +25,7 @@ type CatalogV2 struct {
 	pulumi.CustomResourceState
 
 	// Annotations for the catalog v2 (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// CA certificate in base64-encoded DER format which will be used to validate the repo's certificate (string)
 	CaBundle pulumi.StringPtrOutput `pulumi:"caBundle"`
 	// The cluster id of the catalog V2 (string)
@@ -39,7 +39,7 @@ type CatalogV2 struct {
 	// Use insecure HTTPS to download the repo's index. Default: `false` (bool)
 	Insecure pulumi.BoolPtrOutput `pulumi:"insecure"`
 	// Labels for the catalog v2 (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the catalog v2 (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// (Computed) The k8s resource version (string)
@@ -90,7 +90,7 @@ func GetCatalogV2(ctx *pulumi.Context,
 // Input properties used for looking up and filtering CatalogV2 resources.
 type catalogV2State struct {
 	// Annotations for the catalog v2 (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// CA certificate in base64-encoded DER format which will be used to validate the repo's certificate (string)
 	CaBundle *string `pulumi:"caBundle"`
 	// The cluster id of the catalog V2 (string)
@@ -104,7 +104,7 @@ type catalogV2State struct {
 	// Use insecure HTTPS to download the repo's index. Default: `false` (bool)
 	Insecure *bool `pulumi:"insecure"`
 	// Labels for the catalog v2 (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The name of the catalog v2 (string)
 	Name *string `pulumi:"name"`
 	// (Computed) The k8s resource version (string)
@@ -123,7 +123,7 @@ type catalogV2State struct {
 
 type CatalogV2State struct {
 	// Annotations for the catalog v2 (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// CA certificate in base64-encoded DER format which will be used to validate the repo's certificate (string)
 	CaBundle pulumi.StringPtrInput
 	// The cluster id of the catalog V2 (string)
@@ -137,7 +137,7 @@ type CatalogV2State struct {
 	// Use insecure HTTPS to download the repo's index. Default: `false` (bool)
 	Insecure pulumi.BoolPtrInput
 	// Labels for the catalog v2 (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The name of the catalog v2 (string)
 	Name pulumi.StringPtrInput
 	// (Computed) The k8s resource version (string)
@@ -160,7 +160,7 @@ func (CatalogV2State) ElementType() reflect.Type {
 
 type catalogV2Args struct {
 	// Annotations for the catalog v2 (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// CA certificate in base64-encoded DER format which will be used to validate the repo's certificate (string)
 	CaBundle *string `pulumi:"caBundle"`
 	// The cluster id of the catalog V2 (string)
@@ -174,7 +174,7 @@ type catalogV2Args struct {
 	// Use insecure HTTPS to download the repo's index. Default: `false` (bool)
 	Insecure *bool `pulumi:"insecure"`
 	// Labels for the catalog v2 (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The name of the catalog v2 (string)
 	Name *string `pulumi:"name"`
 	// K8s secret name to be used to connect to the repo (string)
@@ -192,7 +192,7 @@ type catalogV2Args struct {
 // The set of arguments for constructing a CatalogV2 resource.
 type CatalogV2Args struct {
 	// Annotations for the catalog v2 (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// CA certificate in base64-encoded DER format which will be used to validate the repo's certificate (string)
 	CaBundle pulumi.StringPtrInput
 	// The cluster id of the catalog V2 (string)
@@ -206,7 +206,7 @@ type CatalogV2Args struct {
 	// Use insecure HTTPS to download the repo's index. Default: `false` (bool)
 	Insecure pulumi.BoolPtrInput
 	// Labels for the catalog v2 (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The name of the catalog v2 (string)
 	Name pulumi.StringPtrInput
 	// K8s secret name to be used to connect to the repo (string)
@@ -309,8 +309,8 @@ func (o CatalogV2Output) ToCatalogV2OutputWithContext(ctx context.Context) Catal
 }
 
 // Annotations for the catalog v2 (map)
-func (o CatalogV2Output) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *CatalogV2) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o CatalogV2Output) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CatalogV2) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // CA certificate in base64-encoded DER format which will be used to validate the repo's certificate (string)
@@ -344,8 +344,8 @@ func (o CatalogV2Output) Insecure() pulumi.BoolPtrOutput {
 }
 
 // Labels for the catalog v2 (map)
-func (o CatalogV2Output) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *CatalogV2) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o CatalogV2Output) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CatalogV2) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The name of the catalog v2 (string)

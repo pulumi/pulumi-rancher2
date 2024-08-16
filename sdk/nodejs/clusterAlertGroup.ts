@@ -64,7 +64,7 @@ export class ClusterAlertGroup extends pulumi.CustomResource {
     /**
      * The cluster alert group annotations (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: any}>;
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * The cluster id where create cluster alert group (string)
      */
@@ -84,7 +84,7 @@ export class ClusterAlertGroup extends pulumi.CustomResource {
     /**
      * The cluster alert group labels (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The cluster alert group name (string)
      */
@@ -147,7 +147,7 @@ export interface ClusterAlertGroupState {
     /**
      * The cluster alert group annotations (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The cluster id where create cluster alert group (string)
      */
@@ -167,7 +167,7 @@ export interface ClusterAlertGroupState {
     /**
      * The cluster alert group labels (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The cluster alert group name (string)
      */
@@ -189,7 +189,7 @@ export interface ClusterAlertGroupArgs {
     /**
      * The cluster alert group annotations (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The cluster id where create cluster alert group (string)
      */
@@ -209,7 +209,7 @@ export interface ClusterAlertGroupArgs {
     /**
      * The cluster alert group labels (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The cluster alert group name (string)
      */

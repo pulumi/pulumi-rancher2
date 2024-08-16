@@ -40,7 +40,7 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// Labels for the Cluster (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Labels;
+        public readonly ImmutableDictionary<string, string>? Labels;
         /// <summary>
         /// The EKS node groups launch template
         /// </summary>
@@ -68,7 +68,7 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// The EKS node group resource tags
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? ResourceTags;
+        public readonly ImmutableDictionary<string, string>? ResourceTags;
         /// <summary>
         /// The EKS node group spot instance types
         /// </summary>
@@ -80,7 +80,7 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// The EKS node group tags
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
         /// The EKS node group user data
         /// </summary>
@@ -104,7 +104,7 @@ namespace Pulumi.Rancher2.Outputs
 
             string? instanceType,
 
-            ImmutableDictionary<string, object>? labels,
+            ImmutableDictionary<string, string>? labels,
 
             ImmutableArray<Outputs.ClusterEksConfigV2NodeGroupLaunchTemplate> launchTemplates,
 
@@ -118,13 +118,13 @@ namespace Pulumi.Rancher2.Outputs
 
             bool? requestSpotInstances,
 
-            ImmutableDictionary<string, object>? resourceTags,
+            ImmutableDictionary<string, string>? resourceTags,
 
             ImmutableArray<string> spotInstanceTypes,
 
             ImmutableArray<string> subnets,
 
-            ImmutableDictionary<string, object>? tags,
+            ImmutableDictionary<string, string>? tags,
 
             string? userData,
 

@@ -121,12 +121,12 @@ type GlobalDnsProvider struct {
 
 	AlidnsConfig GlobalDnsProviderAlidnsConfigPtrOutput `pulumi:"alidnsConfig"`
 	// Annotations for Global DNS Provider (map)
-	Annotations      pulumi.MapOutput                           `pulumi:"annotations"`
+	Annotations      pulumi.StringMapOutput                     `pulumi:"annotations"`
 	CloudflareConfig GlobalDnsProviderCloudflareConfigPtrOutput `pulumi:"cloudflareConfig"`
 	// (Computed) The Global DNS Provider `alidns, cloudflare, route53` (string)
 	DnsProvider pulumi.StringOutput `pulumi:"dnsProvider"`
 	// Labels for Global DNS Provider (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the Global DNS Provider (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The user ID to assign Global DNS Provider (string)
@@ -169,12 +169,12 @@ func GetGlobalDnsProvider(ctx *pulumi.Context,
 type globalDnsProviderState struct {
 	AlidnsConfig *GlobalDnsProviderAlidnsConfig `pulumi:"alidnsConfig"`
 	// Annotations for Global DNS Provider (map)
-	Annotations      map[string]interface{}             `pulumi:"annotations"`
+	Annotations      map[string]string                  `pulumi:"annotations"`
 	CloudflareConfig *GlobalDnsProviderCloudflareConfig `pulumi:"cloudflareConfig"`
 	// (Computed) The Global DNS Provider `alidns, cloudflare, route53` (string)
 	DnsProvider *string `pulumi:"dnsProvider"`
 	// Labels for Global DNS Provider (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The name of the Global DNS Provider (string)
 	Name *string `pulumi:"name"`
 	// The user ID to assign Global DNS Provider (string)
@@ -185,12 +185,12 @@ type globalDnsProviderState struct {
 type GlobalDnsProviderState struct {
 	AlidnsConfig GlobalDnsProviderAlidnsConfigPtrInput
 	// Annotations for Global DNS Provider (map)
-	Annotations      pulumi.MapInput
+	Annotations      pulumi.StringMapInput
 	CloudflareConfig GlobalDnsProviderCloudflareConfigPtrInput
 	// (Computed) The Global DNS Provider `alidns, cloudflare, route53` (string)
 	DnsProvider pulumi.StringPtrInput
 	// Labels for Global DNS Provider (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The name of the Global DNS Provider (string)
 	Name pulumi.StringPtrInput
 	// The user ID to assign Global DNS Provider (string)
@@ -205,10 +205,10 @@ func (GlobalDnsProviderState) ElementType() reflect.Type {
 type globalDnsProviderArgs struct {
 	AlidnsConfig *GlobalDnsProviderAlidnsConfig `pulumi:"alidnsConfig"`
 	// Annotations for Global DNS Provider (map)
-	Annotations      map[string]interface{}             `pulumi:"annotations"`
+	Annotations      map[string]string                  `pulumi:"annotations"`
 	CloudflareConfig *GlobalDnsProviderCloudflareConfig `pulumi:"cloudflareConfig"`
 	// Labels for Global DNS Provider (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The name of the Global DNS Provider (string)
 	Name *string `pulumi:"name"`
 	// The user ID to assign Global DNS Provider (string)
@@ -220,10 +220,10 @@ type globalDnsProviderArgs struct {
 type GlobalDnsProviderArgs struct {
 	AlidnsConfig GlobalDnsProviderAlidnsConfigPtrInput
 	// Annotations for Global DNS Provider (map)
-	Annotations      pulumi.MapInput
+	Annotations      pulumi.StringMapInput
 	CloudflareConfig GlobalDnsProviderCloudflareConfigPtrInput
 	// Labels for Global DNS Provider (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The name of the Global DNS Provider (string)
 	Name pulumi.StringPtrInput
 	// The user ID to assign Global DNS Provider (string)
@@ -323,8 +323,8 @@ func (o GlobalDnsProviderOutput) AlidnsConfig() GlobalDnsProviderAlidnsConfigPtr
 }
 
 // Annotations for Global DNS Provider (map)
-func (o GlobalDnsProviderOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *GlobalDnsProvider) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o GlobalDnsProviderOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GlobalDnsProvider) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 func (o GlobalDnsProviderOutput) CloudflareConfig() GlobalDnsProviderCloudflareConfigPtrOutput {
@@ -337,8 +337,8 @@ func (o GlobalDnsProviderOutput) DnsProvider() pulumi.StringOutput {
 }
 
 // Labels for Global DNS Provider (map)
-func (o GlobalDnsProviderOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *GlobalDnsProvider) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o GlobalDnsProviderOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GlobalDnsProvider) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The name of the Global DNS Provider (string)

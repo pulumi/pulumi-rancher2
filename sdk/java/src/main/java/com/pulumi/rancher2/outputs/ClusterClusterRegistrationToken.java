@@ -4,7 +4,6 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -17,7 +16,7 @@ public final class ClusterClusterRegistrationToken {
      * @return Annotations for the Cluster (map)
      * 
      */
-    private @Nullable Map<String,Object> annotations;
+    private @Nullable Map<String,String> annotations;
     private @Nullable String clusterId;
     /**
      * @return Command to execute in a imported k8s cluster (string)
@@ -48,7 +47,7 @@ public final class ClusterClusterRegistrationToken {
      * @return Labels for the Cluster (map)
      * 
      */
-    private @Nullable Map<String,Object> labels;
+    private @Nullable Map<String,String> labels;
     /**
      * @return K8s manifest url to execute with `kubectl` to import an existing k8s cluster (string)
      * 
@@ -76,7 +75,7 @@ public final class ClusterClusterRegistrationToken {
      * @return Annotations for the Cluster (map)
      * 
      */
-    public Map<String,Object> annotations() {
+    public Map<String,String> annotations() {
         return this.annotations == null ? Map.of() : this.annotations;
     }
     public Optional<String> clusterId() {
@@ -121,7 +120,7 @@ public final class ClusterClusterRegistrationToken {
      * @return Labels for the Cluster (map)
      * 
      */
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels == null ? Map.of() : this.labels;
     }
     /**
@@ -165,14 +164,14 @@ public final class ClusterClusterRegistrationToken {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Map<String,Object> annotations;
+        private @Nullable Map<String,String> annotations;
         private @Nullable String clusterId;
         private @Nullable String command;
         private @Nullable String id;
         private @Nullable String insecureCommand;
         private @Nullable String insecureNodeCommand;
         private @Nullable String insecureWindowsNodeCommand;
-        private @Nullable Map<String,Object> labels;
+        private @Nullable Map<String,String> labels;
         private @Nullable String manifestUrl;
         private @Nullable String name;
         private @Nullable String nodeCommand;
@@ -197,7 +196,7 @@ public final class ClusterClusterRegistrationToken {
         }
 
         @CustomType.Setter
-        public Builder annotations(@Nullable Map<String,Object> annotations) {
+        public Builder annotations(@Nullable Map<String,String> annotations) {
 
             this.annotations = annotations;
             return this;
@@ -239,7 +238,7 @@ public final class ClusterClusterRegistrationToken {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(@Nullable Map<String,Object> labels) {
+        public Builder labels(@Nullable Map<String,String> labels) {
 
             this.labels = labels;
             return this;

@@ -62,7 +62,7 @@ export class AuthConfigAzureAd extends pulumi.CustomResource {
     /**
      * Annotations of the resource (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: any}>;
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * AzureAD auth application ID (string)
      */
@@ -90,7 +90,7 @@ export class AuthConfigAzureAd extends pulumi.CustomResource {
     /**
      * Labels of the resource (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * (Computed) The name of the resource (string)
      */
@@ -201,7 +201,7 @@ export interface AuthConfigAzureAdState {
     /**
      * Annotations of the resource (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * AzureAD auth application ID (string)
      */
@@ -229,7 +229,7 @@ export interface AuthConfigAzureAdState {
     /**
      * Labels of the resource (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * (Computed) The name of the resource (string)
      */
@@ -267,7 +267,7 @@ export interface AuthConfigAzureAdArgs {
     /**
      * Annotations of the resource (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * AzureAD auth application ID (string)
      */
@@ -295,7 +295,7 @@ export interface AuthConfigAzureAdArgs {
     /**
      * Labels of the resource (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Rancher URL (string). "<rancher_url>/verify-auth-azure"
      */

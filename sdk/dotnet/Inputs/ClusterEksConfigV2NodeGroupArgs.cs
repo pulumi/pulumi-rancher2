@@ -49,14 +49,14 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? InstanceType { get; set; }
 
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// Labels for the Cluster (map)
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
@@ -103,14 +103,14 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? RequestSpotInstances { get; set; }
 
         [Input("resourceTags")]
-        private InputMap<object>? _resourceTags;
+        private InputMap<string>? _resourceTags;
 
         /// <summary>
         /// The EKS node group resource tags
         /// </summary>
-        public InputMap<object> ResourceTags
+        public InputMap<string> ResourceTags
         {
-            get => _resourceTags ?? (_resourceTags = new InputMap<object>());
+            get => _resourceTags ?? (_resourceTags = new InputMap<string>());
             set => _resourceTags = value;
         }
 
@@ -139,14 +139,14 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// The EKS node group tags
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 

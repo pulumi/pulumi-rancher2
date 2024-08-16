@@ -16,11 +16,11 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// Annotations of the resource
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Annotations;
+        public readonly ImmutableDictionary<string, string>? Annotations;
         /// <summary>
         /// The total resources of a node (map).
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Capacity;
+        public readonly ImmutableDictionary<string, string>? Capacity;
         /// <summary>
         /// The cluster ID that is syncing (string)
         /// </summary>
@@ -44,7 +44,7 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// Labels of the resource
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Labels;
+        public readonly ImmutableDictionary<string, string>? Labels;
         /// <summary>
         /// The name of the node (string).
         /// </summary>
@@ -76,13 +76,13 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// General information about the node, such as kernel version, kubelet and kube-proxy version, Docker version (if used), and OS name.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? SystemInfo;
+        public readonly ImmutableDictionary<string, string>? SystemInfo;
 
         [OutputConstructor]
         private ClusterSyncNode(
-            ImmutableDictionary<string, object>? annotations,
+            ImmutableDictionary<string, string>? annotations,
 
-            ImmutableDictionary<string, object>? capacity,
+            ImmutableDictionary<string, string>? capacity,
 
             string? clusterId,
 
@@ -94,7 +94,7 @@ namespace Pulumi.Rancher2.Outputs
 
             string? ipAddress,
 
-            ImmutableDictionary<string, object>? labels,
+            ImmutableDictionary<string, string>? labels,
 
             string? name,
 
@@ -110,7 +110,7 @@ namespace Pulumi.Rancher2.Outputs
 
             string? sshUser,
 
-            ImmutableDictionary<string, object>? systemInfo)
+            ImmutableDictionary<string, string>? systemInfo)
         {
             Annotations = annotations;
             Capacity = capacity;

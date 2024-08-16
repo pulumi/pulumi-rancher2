@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetNodeTemplateNodeTaint;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -21,7 +20,7 @@ public final class GetNodeTemplateResult {
      * @return (Computed) Annotations for Node Template object (map)
      * 
      */
-    private Map<String,Object> annotations;
+    private Map<String,String> annotations;
     /**
      * @return (Computed) Cloud credential ID for the Node Template. Required from Rancher v2.2.x (string)
      * 
@@ -41,7 +40,7 @@ public final class GetNodeTemplateResult {
      * @return (Computed) Engine environment for the node template (string)
      * 
      */
-    private Map<String,Object> engineEnv;
+    private Map<String,String> engineEnv;
     /**
      * @return (Computed) Insecure registry for the node template (list)
      * 
@@ -56,12 +55,12 @@ public final class GetNodeTemplateResult {
      * @return (Computed) Engine label for the node template (string)
      * 
      */
-    private Map<String,Object> engineLabel;
+    private Map<String,String> engineLabel;
     /**
      * @return (Computed) Engine options for the node template (map)
      * 
      */
-    private Map<String,Object> engineOpt;
+    private Map<String,String> engineOpt;
     /**
      * @return (Computed) Engine registry mirror for the node template (list)
      * 
@@ -81,7 +80,7 @@ public final class GetNodeTemplateResult {
      * @return (Computed) Labels for Node Template object (map)
      * 
      */
-    private Map<String,Object> labels;
+    private Map<String,String> labels;
     private String name;
     /**
      * @return (Computed) Node taints (List)
@@ -99,7 +98,7 @@ public final class GetNodeTemplateResult {
      * @return (Computed) Annotations for Node Template object (map)
      * 
      */
-    public Map<String,Object> annotations() {
+    public Map<String,String> annotations() {
         return this.annotations;
     }
     /**
@@ -127,7 +126,7 @@ public final class GetNodeTemplateResult {
      * @return (Computed) Engine environment for the node template (string)
      * 
      */
-    public Map<String,Object> engineEnv() {
+    public Map<String,String> engineEnv() {
         return this.engineEnv;
     }
     /**
@@ -148,14 +147,14 @@ public final class GetNodeTemplateResult {
      * @return (Computed) Engine label for the node template (string)
      * 
      */
-    public Map<String,Object> engineLabel() {
+    public Map<String,String> engineLabel() {
         return this.engineLabel;
     }
     /**
      * @return (Computed) Engine options for the node template (map)
      * 
      */
-    public Map<String,Object> engineOpt() {
+    public Map<String,String> engineOpt() {
         return this.engineOpt;
     }
     /**
@@ -183,7 +182,7 @@ public final class GetNodeTemplateResult {
      * @return (Computed) Labels for Node Template object (map)
      * 
      */
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels;
     }
     public String name() {
@@ -213,19 +212,19 @@ public final class GetNodeTemplateResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Map<String,Object> annotations;
+        private Map<String,String> annotations;
         private String cloudCredentialId;
         private String description;
         private String driver;
-        private Map<String,Object> engineEnv;
+        private Map<String,String> engineEnv;
         private List<String> engineInsecureRegistries;
         private String engineInstallUrl;
-        private Map<String,Object> engineLabel;
-        private Map<String,Object> engineOpt;
+        private Map<String,String> engineLabel;
+        private Map<String,String> engineOpt;
         private List<String> engineRegistryMirrors;
         private String engineStorageDriver;
         private String id;
-        private Map<String,Object> labels;
+        private Map<String,String> labels;
         private String name;
         private List<GetNodeTemplateNodeTaint> nodeTaints;
         private @Nullable Boolean useInternalIpAddress;
@@ -251,7 +250,7 @@ public final class GetNodeTemplateResult {
         }
 
         @CustomType.Setter
-        public Builder annotations(Map<String,Object> annotations) {
+        public Builder annotations(Map<String,String> annotations) {
             if (annotations == null) {
               throw new MissingRequiredPropertyException("GetNodeTemplateResult", "annotations");
             }
@@ -283,7 +282,7 @@ public final class GetNodeTemplateResult {
             return this;
         }
         @CustomType.Setter
-        public Builder engineEnv(Map<String,Object> engineEnv) {
+        public Builder engineEnv(Map<String,String> engineEnv) {
             if (engineEnv == null) {
               throw new MissingRequiredPropertyException("GetNodeTemplateResult", "engineEnv");
             }
@@ -310,7 +309,7 @@ public final class GetNodeTemplateResult {
             return this;
         }
         @CustomType.Setter
-        public Builder engineLabel(Map<String,Object> engineLabel) {
+        public Builder engineLabel(Map<String,String> engineLabel) {
             if (engineLabel == null) {
               throw new MissingRequiredPropertyException("GetNodeTemplateResult", "engineLabel");
             }
@@ -318,7 +317,7 @@ public final class GetNodeTemplateResult {
             return this;
         }
         @CustomType.Setter
-        public Builder engineOpt(Map<String,Object> engineOpt) {
+        public Builder engineOpt(Map<String,String> engineOpt) {
             if (engineOpt == null) {
               throw new MissingRequiredPropertyException("GetNodeTemplateResult", "engineOpt");
             }
@@ -353,7 +352,7 @@ public final class GetNodeTemplateResult {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(Map<String,Object> labels) {
+        public Builder labels(Map<String,String> labels) {
             if (labels == null) {
               throw new MissingRequiredPropertyException("GetNodeTemplateResult", "labels");
             }

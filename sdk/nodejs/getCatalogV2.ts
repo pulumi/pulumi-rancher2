@@ -37,7 +37,7 @@ export interface GetCatalogV2Result {
     /**
      * (Computed) Annotations for the catalog v2 (map)
      */
-    readonly annotations: {[key: string]: any};
+    readonly annotations: {[key: string]: string};
     /**
      * (Computed) PEM encoded CA bundle which will be used to validate the repo's certificate (string)
      */
@@ -66,7 +66,7 @@ export interface GetCatalogV2Result {
     /**
      * (Computed) Labels for the catalog v2 (map)
      */
-    readonly labels: {[key: string]: any};
+    readonly labels: {[key: string]: string};
     readonly name: string;
     /**
      * (Computed) The k8s resource version (string)

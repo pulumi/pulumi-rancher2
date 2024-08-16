@@ -60,7 +60,7 @@ type LookupProjectAlertGroupArgs struct {
 // A collection of values returned by getProjectAlertGroup.
 type LookupProjectAlertGroupResult struct {
 	// (Computed) The project alert group annotations (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// (Computed) The project alert group description (string)
 	Description string `pulumi:"description"`
 	// (Computed) The project alert group interval seconds. Default: `180` (int)
@@ -70,9 +70,9 @@ type LookupProjectAlertGroupResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) The project alert group labels (map)
-	Labels    map[string]interface{} `pulumi:"labels"`
-	Name      string                 `pulumi:"name"`
-	ProjectId string                 `pulumi:"projectId"`
+	Labels    map[string]string `pulumi:"labels"`
+	Name      string            `pulumi:"name"`
+	ProjectId string            `pulumi:"projectId"`
 	// (Computed) The project alert group recipients (list)
 	Recipients []GetProjectAlertGroupRecipient `pulumi:"recipients"`
 	// (Computed) The project alert group wait seconds. Default: `3600` (int)
@@ -120,8 +120,8 @@ func (o LookupProjectAlertGroupResultOutput) ToLookupProjectAlertGroupResultOutp
 }
 
 // (Computed) The project alert group annotations (map)
-func (o LookupProjectAlertGroupResultOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupProjectAlertGroupResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+func (o LookupProjectAlertGroupResultOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupProjectAlertGroupResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // (Computed) The project alert group description (string)
@@ -145,8 +145,8 @@ func (o LookupProjectAlertGroupResultOutput) Id() pulumi.StringOutput {
 }
 
 // (Computed) The project alert group labels (map)
-func (o LookupProjectAlertGroupResultOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupProjectAlertGroupResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+func (o LookupProjectAlertGroupResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupProjectAlertGroupResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupProjectAlertGroupResultOutput) Name() pulumi.StringOutput {

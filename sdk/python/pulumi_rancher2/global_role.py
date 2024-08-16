@@ -16,19 +16,19 @@ __all__ = ['GlobalRoleArgs', 'GlobalRole']
 @pulumi.input_type
 class GlobalRoleArgs:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  inherited_cluster_roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  new_user_default: Optional[pulumi.Input[bool]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['GlobalRoleRuleArgs']]]] = None):
         """
         The set of arguments for constructing a GlobalRole resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for global role object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for global role object (map)
         :param pulumi.Input[str] description: Global role description (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] inherited_cluster_roles: Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for global role object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for global role object (map)
         :param pulumi.Input[str] name: Global role name (string)
         :param pulumi.Input[bool] new_user_default: Whether or not this role should be added to new users. Default `false` (bool)
         :param pulumi.Input[Sequence[pulumi.Input['GlobalRoleRuleArgs']]] rules: Global role policy rules (list)
@@ -50,14 +50,14 @@ class GlobalRoleArgs:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations for global role object (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -86,14 +86,14 @@ class GlobalRoleArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for global role object (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -136,21 +136,21 @@ class GlobalRoleArgs:
 @pulumi.input_type
 class _GlobalRoleState:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  builtin: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  inherited_cluster_roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  new_user_default: Optional[pulumi.Input[bool]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['GlobalRoleRuleArgs']]]] = None):
         """
         Input properties used for looking up and filtering GlobalRole resources.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for global role object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for global role object (map)
         :param pulumi.Input[bool] builtin: (Computed) Builtin global role (bool)
         :param pulumi.Input[str] description: Global role description (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] inherited_cluster_roles: Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for global role object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for global role object (map)
         :param pulumi.Input[str] name: Global role name (string)
         :param pulumi.Input[bool] new_user_default: Whether or not this role should be added to new users. Default `false` (bool)
         :param pulumi.Input[Sequence[pulumi.Input['GlobalRoleRuleArgs']]] rules: Global role policy rules (list)
@@ -174,14 +174,14 @@ class _GlobalRoleState:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations for global role object (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -222,14 +222,14 @@ class _GlobalRoleState:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for global role object (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -274,10 +274,10 @@ class GlobalRole(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  inherited_cluster_roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  new_user_default: Optional[pulumi.Input[bool]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GlobalRoleRuleArgs', 'GlobalRoleRuleArgsDict']]]]] = None,
@@ -313,10 +313,10 @@ class GlobalRole(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for global role object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for global role object (map)
         :param pulumi.Input[str] description: Global role description (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] inherited_cluster_roles: Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for global role object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for global role object (map)
         :param pulumi.Input[str] name: Global role name (string)
         :param pulumi.Input[bool] new_user_default: Whether or not this role should be added to new users. Default `false` (bool)
         :param pulumi.Input[Sequence[pulumi.Input[Union['GlobalRoleRuleArgs', 'GlobalRoleRuleArgsDict']]]] rules: Global role policy rules (list)
@@ -371,10 +371,10 @@ class GlobalRole(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  inherited_cluster_roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  new_user_default: Optional[pulumi.Input[bool]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GlobalRoleRuleArgs', 'GlobalRoleRuleArgsDict']]]]] = None,
@@ -405,11 +405,11 @@ class GlobalRole(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             builtin: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             inherited_cluster_roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             new_user_default: Optional[pulumi.Input[bool]] = None,
             rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GlobalRoleRuleArgs', 'GlobalRoleRuleArgsDict']]]]] = None) -> 'GlobalRole':
@@ -420,11 +420,11 @@ class GlobalRole(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for global role object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for global role object (map)
         :param pulumi.Input[bool] builtin: (Computed) Builtin global role (bool)
         :param pulumi.Input[str] description: Global role description (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] inherited_cluster_roles: Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for global role object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for global role object (map)
         :param pulumi.Input[str] name: Global role name (string)
         :param pulumi.Input[bool] new_user_default: Whether or not this role should be added to new users. Default `false` (bool)
         :param pulumi.Input[Sequence[pulumi.Input[Union['GlobalRoleRuleArgs', 'GlobalRoleRuleArgsDict']]]] rules: Global role policy rules (list)
@@ -445,7 +445,7 @@ class GlobalRole(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
+    def annotations(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Annotations for global role object (map)
         """
@@ -477,7 +477,7 @@ class GlobalRole(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Labels for global role object (map)
         """

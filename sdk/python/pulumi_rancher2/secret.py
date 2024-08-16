@@ -14,20 +14,20 @@ __all__ = ['SecretArgs', 'Secret']
 @pulumi.input_type
 class SecretArgs:
     def __init__(__self__, *,
-                 data: pulumi.Input[Mapping[str, Any]],
+                 data: pulumi.Input[Mapping[str, pulumi.Input[str]]],
                  project_id: pulumi.Input[str],
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespace_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Secret resource.
-        :param pulumi.Input[Mapping[str, Any]] data: Secret key/value data. Base64 encoding required for values (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] data: Secret key/value data. Base64 encoding required for values (map)
         :param pulumi.Input[str] project_id: The project id where to assign the secret (string)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for secret object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for secret object (map)
         :param pulumi.Input[str] description: A secret description (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for secret object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for secret object (map)
         :param pulumi.Input[str] name: The name of the secret (string)
         :param pulumi.Input[str] namespace_id: The namespace id where to assign the namespaced secret (string)
         """
@@ -46,14 +46,14 @@ class SecretArgs:
 
     @property
     @pulumi.getter
-    def data(self) -> pulumi.Input[Mapping[str, Any]]:
+    def data(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
         """
         Secret key/value data. Base64 encoding required for values (map)
         """
         return pulumi.get(self, "data")
 
     @data.setter
-    def data(self, value: pulumi.Input[Mapping[str, Any]]):
+    def data(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
         pulumi.set(self, "data", value)
 
     @property
@@ -70,14 +70,14 @@ class SecretArgs:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations for secret object (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -94,14 +94,14 @@ class SecretArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for secret object (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -132,19 +132,19 @@ class SecretArgs:
 @pulumi.input_type
 class _SecretState:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespace_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Secret resources.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for secret object (map)
-        :param pulumi.Input[Mapping[str, Any]] data: Secret key/value data. Base64 encoding required for values (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for secret object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] data: Secret key/value data. Base64 encoding required for values (map)
         :param pulumi.Input[str] description: A secret description (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for secret object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for secret object (map)
         :param pulumi.Input[str] name: The name of the secret (string)
         :param pulumi.Input[str] namespace_id: The namespace id where to assign the namespaced secret (string)
         :param pulumi.Input[str] project_id: The project id where to assign the secret (string)
@@ -166,26 +166,26 @@ class _SecretState:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations for secret object (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
     @pulumi.getter
-    def data(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def data(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Secret key/value data. Base64 encoding required for values (map)
         """
         return pulumi.get(self, "data")
 
     @data.setter
-    def data(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def data(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "data", value)
 
     @property
@@ -202,14 +202,14 @@ class _SecretState:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for secret object (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -254,10 +254,10 @@ class Secret(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespace_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
@@ -317,10 +317,10 @@ class Secret(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for secret object (map)
-        :param pulumi.Input[Mapping[str, Any]] data: Secret key/value data. Base64 encoding required for values (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for secret object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] data: Secret key/value data. Base64 encoding required for values (map)
         :param pulumi.Input[str] description: A secret description (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for secret object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for secret object (map)
         :param pulumi.Input[str] name: The name of the secret (string)
         :param pulumi.Input[str] namespace_id: The namespace id where to assign the namespaced secret (string)
         :param pulumi.Input[str] project_id: The project id where to assign the secret (string)
@@ -399,10 +399,10 @@ class Secret(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespace_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
@@ -438,10 +438,10 @@ class Secret(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             namespace_id: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None) -> 'Secret':
@@ -452,10 +452,10 @@ class Secret(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for secret object (map)
-        :param pulumi.Input[Mapping[str, Any]] data: Secret key/value data. Base64 encoding required for values (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for secret object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] data: Secret key/value data. Base64 encoding required for values (map)
         :param pulumi.Input[str] description: A secret description (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for secret object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for secret object (map)
         :param pulumi.Input[str] name: The name of the secret (string)
         :param pulumi.Input[str] namespace_id: The namespace id where to assign the namespaced secret (string)
         :param pulumi.Input[str] project_id: The project id where to assign the secret (string)
@@ -475,7 +475,7 @@ class Secret(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
+    def annotations(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Annotations for secret object (map)
         """
@@ -483,7 +483,7 @@ class Secret(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def data(self) -> pulumi.Output[Mapping[str, Any]]:
+    def data(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Secret key/value data. Base64 encoding required for values (map)
         """
@@ -499,7 +499,7 @@ class Secret(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Labels for secret object (map)
         """

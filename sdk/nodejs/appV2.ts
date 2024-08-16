@@ -85,7 +85,7 @@ export class AppV2 extends pulumi.CustomResource {
     /**
      * Annotations for the app v2 (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: any}>;
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * The app v2 chart name (string)
      */
@@ -122,7 +122,7 @@ export class AppV2 extends pulumi.CustomResource {
     /**
      * Labels for the app v2 (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the app v2 (string)
      */
@@ -228,7 +228,7 @@ export interface AppV2State {
     /**
      * Annotations for the app v2 (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The app v2 chart name (string)
      */
@@ -265,7 +265,7 @@ export interface AppV2State {
     /**
      * Labels for the app v2 (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the app v2 (string)
      */
@@ -303,7 +303,7 @@ export interface AppV2Args {
     /**
      * Annotations for the app v2 (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The app v2 chart name (string)
      */
@@ -335,7 +335,7 @@ export interface AppV2Args {
     /**
      * Labels for the app v2 (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the app v2 (string)
      */

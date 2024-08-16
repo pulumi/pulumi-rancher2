@@ -109,7 +109,7 @@ namespace Pulumi.Rancher2
         /// Annotations for Cloud Credential object (map)
         /// </summary>
         [Output("annotations")]
-        public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Annotations { get; private set; } = null!;
 
         /// <summary>
         /// Azure config for the Cloud Credential (list maxitems:1)
@@ -151,7 +151,7 @@ namespace Pulumi.Rancher2
         /// Labels for Cloud Credential object (map)
         /// </summary>
         [Output("labels")]
-        public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
         /// Linode config for the Cloud Credential (list maxitems:1)
@@ -236,14 +236,14 @@ namespace Pulumi.Rancher2
         public Input<Inputs.CloudCredentialAmazonec2CredentialConfigArgs>? Amazonec2CredentialConfig { get; set; }
 
         [Input("annotations")]
-        private InputMap<object>? _annotations;
+        private InputMap<string>? _annotations;
 
         /// <summary>
         /// Annotations for Cloud Credential object (map)
         /// </summary>
-        public InputMap<object> Annotations
+        public InputMap<string> Annotations
         {
-            get => _annotations ?? (_annotations = new InputMap<object>());
+            get => _annotations ?? (_annotations = new InputMap<string>());
             set => _annotations = value;
         }
 
@@ -278,14 +278,14 @@ namespace Pulumi.Rancher2
         public Input<Inputs.CloudCredentialHarvesterCredentialConfigArgs>? HarvesterCredentialConfig { get; set; }
 
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// Labels for Cloud Credential object (map)
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
@@ -334,14 +334,14 @@ namespace Pulumi.Rancher2
         public Input<Inputs.CloudCredentialAmazonec2CredentialConfigGetArgs>? Amazonec2CredentialConfig { get; set; }
 
         [Input("annotations")]
-        private InputMap<object>? _annotations;
+        private InputMap<string>? _annotations;
 
         /// <summary>
         /// Annotations for Cloud Credential object (map)
         /// </summary>
-        public InputMap<object> Annotations
+        public InputMap<string> Annotations
         {
-            get => _annotations ?? (_annotations = new InputMap<object>());
+            get => _annotations ?? (_annotations = new InputMap<string>());
             set => _annotations = value;
         }
 
@@ -382,14 +382,14 @@ namespace Pulumi.Rancher2
         public Input<Inputs.CloudCredentialHarvesterCredentialConfigGetArgs>? HarvesterCredentialConfig { get; set; }
 
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// Labels for Cloud Credential object (map)
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 

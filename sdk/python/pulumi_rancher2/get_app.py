@@ -67,7 +67,7 @@ class GetAppResult:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> Mapping[str, str]:
         """
         (Computed) Annotations for the catalog (map)
         """
@@ -75,7 +75,7 @@ class GetAppResult:
 
     @property
     @pulumi.getter
-    def answers(self) -> Mapping[str, Any]:
+    def answers(self) -> Mapping[str, str]:
         """
         (Computed) Answers for the app (map)
         """
@@ -115,7 +115,7 @@ class GetAppResult:
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> Mapping[str, str]:
         """
         (Computed) Labels for the catalog (map)
         """
@@ -191,7 +191,7 @@ class AwaitableGetAppResult(GetAppResult):
             values_yaml=self.values_yaml)
 
 
-def get_app(annotations: Optional[Mapping[str, Any]] = None,
+def get_app(annotations: Optional[Mapping[str, str]] = None,
             name: Optional[str] = None,
             project_id: Optional[str] = None,
             target_namespace: Optional[str] = None,
@@ -211,7 +211,7 @@ def get_app(annotations: Optional[Mapping[str, Any]] = None,
     ```
 
 
-    :param Mapping[str, Any] annotations: (Computed) Annotations for the catalog (map)
+    :param Mapping[str, str] annotations: (Computed) Annotations for the catalog (map)
     :param str name: The app name (string)
     :param str project_id: The id of the project where the app is deployed (string)
     :param str target_namespace: The namespace name where the app is deployed (string)
@@ -242,7 +242,7 @@ def get_app(annotations: Optional[Mapping[str, Any]] = None,
 
 
 @_utilities.lift_output_func(get_app)
-def get_app_output(annotations: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+def get_app_output(annotations: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                    name: Optional[pulumi.Input[str]] = None,
                    project_id: Optional[pulumi.Input[str]] = None,
                    target_namespace: Optional[pulumi.Input[Optional[str]]] = None,
@@ -262,7 +262,7 @@ def get_app_output(annotations: Optional[pulumi.Input[Optional[Mapping[str, Any]
     ```
 
 
-    :param Mapping[str, Any] annotations: (Computed) Annotations for the catalog (map)
+    :param Mapping[str, str] annotations: (Computed) Annotations for the catalog (map)
     :param str name: The app name (string)
     :param str project_id: The id of the project where the app is deployed (string)
     :param str target_namespace: The namespace name where the app is deployed (string)

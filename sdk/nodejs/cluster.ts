@@ -48,12 +48,12 @@ import * as utilities from "./utilities";
  *     enableClusterMonitoring: true,
  *     clusterMonitoringInput: {
  *         answers: {
- *             "exporter-kubelets.https": true,
- *             "exporter-node.enabled": true,
- *             "exporter-node.ports.metrics.port": 9796,
+ *             "exporter-kubelets.https": "true",
+ *             "exporter-node.enabled": "true",
+ *             "exporter-node.ports.metrics.port": "9796",
  *             "exporter-node.resources.limits.cpu": "200m",
  *             "exporter-node.resources.limits.memory": "200Mi",
- *             "grafana.persistence.enabled": false,
+ *             "grafana.persistence.enabled": "false",
  *             "grafana.persistence.size": "10Gi",
  *             "grafana.persistence.storageClass": "default",
  *             "operator.resources.limits.memory": "500Mi",
@@ -90,12 +90,12 @@ import * as utilities from "./utilities";
  *     enableClusterMonitoring: true,
  *     clusterMonitoringInput: {
  *         answers: {
- *             "exporter-kubelets.https": true,
- *             "exporter-node.enabled": true,
- *             "exporter-node.ports.metrics.port": 9796,
+ *             "exporter-kubelets.https": "true",
+ *             "exporter-node.enabled": "true",
+ *             "exporter-node.ports.metrics.port": "9796",
  *             "exporter-node.resources.limits.cpu": "200m",
  *             "exporter-node.resources.limits.memory": "200Mi",
- *             "grafana.persistence.enabled": false,
+ *             "grafana.persistence.enabled": "false",
  *             "grafana.persistence.size": "10Gi",
  *             "grafana.persistence.storageClass": "default",
  *             "operator.resources.limits.memory": "500Mi",
@@ -133,10 +133,10 @@ import * as utilities from "./utilities";
  *     templateVersion: "0.1.1",
  *     targetNamespace: foo_istio.id,
  *     answers: {
- *         "certmanager.enabled": false,
- *         enableCRDs: true,
- *         "galley.enabled": true,
- *         "gateways.enabled": false,
+ *         "certmanager.enabled": "false",
+ *         enableCRDs: "true",
+ *         "galley.enabled": "true",
+ *         "gateways.enabled": "false",
  *         "gateways.istio-ingressgateway.resources.limits.cpu": "2000m",
  *         "gateways.istio-ingressgateway.resources.limits.memory": "1024Mi",
  *         "gateways.istio-ingressgateway.resources.requests.cpu": "100m",
@@ -157,17 +157,17 @@ import * as utilities from "./utilities";
  *         "mixer.telemetry.resources.limits.memory": "4096Mi",
  *         "mixer.telemetry.resources.requests.cpu": "1000m",
  *         "mixer.telemetry.resources.requests.memory": "1024Mi",
- *         "mtls.enabled": false,
- *         "nodeagent.enabled": false,
- *         "pilot.enabled": true,
+ *         "mtls.enabled": "false",
+ *         "nodeagent.enabled": "false",
+ *         "pilot.enabled": "true",
  *         "pilot.resources.limits.cpu": "1000m",
  *         "pilot.resources.limits.memory": "4096Mi",
  *         "pilot.resources.requests.cpu": "500m",
  *         "pilot.resources.requests.memory": "2048Mi",
  *         "pilot.traceSampling": "1",
- *         "security.enabled": true,
- *         "sidecarInjectorWebhook.enabled": true,
- *         "tracing.enabled": true,
+ *         "security.enabled": "true",
+ *         "sidecarInjectorWebhook.enabled": "true",
+ *         "tracing.enabled": "true",
  *         "tracing.jaeger.resources.limits.cpu": "500m",
  *         "tracing.jaeger.resources.limits.memory": "1024Mi",
  *         "tracing.jaeger.resources.requests.cpu": "100m",
@@ -627,7 +627,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Annotations for the Cluster (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: any}>;
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * (Computed/Sensitive) K8s cluster ca cert (string)
      */
@@ -753,7 +753,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Labels for the Cluster (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the Cluster (string)
      */
@@ -903,7 +903,7 @@ export interface ClusterState {
     /**
      * Annotations for the Cluster (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * (Computed/Sensitive) K8s cluster ca cert (string)
      */
@@ -1029,7 +1029,7 @@ export interface ClusterState {
     /**
      * Labels for the Cluster (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the Cluster (string)
      */
@@ -1075,7 +1075,7 @@ export interface ClusterArgs {
     /**
      * Annotations for the Cluster (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Optional customization for cluster agent. For Rancher v2.7.5 and above (list)
      */
@@ -1175,7 +1175,7 @@ export interface ClusterArgs {
     /**
      * Labels for the Cluster (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the Cluster (string)
      */

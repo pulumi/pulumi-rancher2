@@ -28,10 +28,10 @@ namespace Pulumi.Rancher2.Inputs
         public Input<int>? Mtu { get; set; }
 
         [Input("options")]
-        private InputMap<object>? _options;
-        public InputMap<object> Options
+        private InputMap<string>? _options;
+        public InputMap<string> Options
         {
-            get => _options ?? (_options = new InputMap<object>());
+            get => _options ?? (_options = new InputMap<string>());
             set => _options = value;
         }
 

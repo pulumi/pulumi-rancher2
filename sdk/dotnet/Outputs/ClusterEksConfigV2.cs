@@ -76,7 +76,7 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// The EKS cluster tags
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly ImmutableDictionary<string, string>? Tags;
 
         [OutputConstructor]
         private ClusterEksConfigV2(
@@ -110,7 +110,7 @@ namespace Pulumi.Rancher2.Outputs
 
             ImmutableArray<string> subnets,
 
-            ImmutableDictionary<string, object>? tags)
+            ImmutableDictionary<string, string>? tags)
         {
             CloudCredentialId = cloudCredentialId;
             Imported = imported;

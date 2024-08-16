@@ -8,7 +8,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetRoleTemplateExternalRule;
 import com.pulumi.rancher2.outputs.GetRoleTemplateRule;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -25,7 +24,7 @@ public final class GetRoleTemplateResult {
      * @return (Computed) Annotations for role template object (map)
      * 
      */
-    private Map<String,Object> annotations;
+    private Map<String,String> annotations;
     /**
      * @return (Computed) Builtin role template (string)
      * 
@@ -66,7 +65,7 @@ public final class GetRoleTemplateResult {
      * @return (Computed) Labels for role template object (map)
      * 
      */
-    private Map<String,Object> labels;
+    private Map<String,String> labels;
     /**
      * @return (Computed) Locked role template (bool)
      * 
@@ -96,7 +95,7 @@ public final class GetRoleTemplateResult {
      * @return (Computed) Annotations for role template object (map)
      * 
      */
-    public Map<String,Object> annotations() {
+    public Map<String,String> annotations() {
         return this.annotations;
     }
     /**
@@ -155,7 +154,7 @@ public final class GetRoleTemplateResult {
      * @return (Computed) Labels for role template object (map)
      * 
      */
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels;
     }
     /**
@@ -193,7 +192,7 @@ public final class GetRoleTemplateResult {
     @CustomType.Builder
     public static final class Builder {
         private Boolean administrative;
-        private Map<String,Object> annotations;
+        private Map<String,String> annotations;
         private Boolean builtin;
         private String context;
         private Boolean defaultRole;
@@ -202,7 +201,7 @@ public final class GetRoleTemplateResult {
         private List<GetRoleTemplateExternalRule> externalRules;
         private Boolean hidden;
         private String id;
-        private Map<String,Object> labels;
+        private Map<String,String> labels;
         private Boolean locked;
         private String name;
         private List<String> roleTemplateIds;
@@ -236,7 +235,7 @@ public final class GetRoleTemplateResult {
             return this;
         }
         @CustomType.Setter
-        public Builder annotations(Map<String,Object> annotations) {
+        public Builder annotations(Map<String,String> annotations) {
             if (annotations == null) {
               throw new MissingRequiredPropertyException("GetRoleTemplateResult", "annotations");
             }
@@ -311,7 +310,7 @@ public final class GetRoleTemplateResult {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(Map<String,Object> labels) {
+        public Builder labels(Map<String,String> labels) {
             if (labels == null) {
               throw new MissingRequiredPropertyException("GetRoleTemplateResult", "labels");
             }

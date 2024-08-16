@@ -67,7 +67,7 @@ class GetCatalogResult:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> Mapping[str, str]:
         """
         (Computed) Annotations for the catalog (map)
         """
@@ -115,7 +115,7 @@ class GetCatalogResult:
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> Mapping[str, str]:
         """
         (Computed) Labels for the catalog (map)
         """

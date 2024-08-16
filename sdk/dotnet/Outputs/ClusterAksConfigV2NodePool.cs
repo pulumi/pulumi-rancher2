@@ -28,7 +28,7 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// Labels for the Cluster (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Labels;
+        public readonly ImmutableDictionary<string, string>? Labels;
         /// <summary>
         /// The AKS node pool max count
         /// </summary>
@@ -86,7 +86,7 @@ namespace Pulumi.Rancher2.Outputs
 
             bool? enableAutoScaling,
 
-            ImmutableDictionary<string, object>? labels,
+            ImmutableDictionary<string, string>? labels,
 
             int? maxCount,
 

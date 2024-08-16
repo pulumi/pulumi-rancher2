@@ -18,9 +18,9 @@ class ClusterDriverArgs:
                  builtin: pulumi.Input[bool],
                  url: pulumi.Input[str],
                  actual_url: Optional[pulumi.Input[str]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  checksum: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  ui_url: Optional[pulumi.Input[str]] = None,
                  whitelist_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -30,9 +30,9 @@ class ClusterDriverArgs:
         :param pulumi.Input[bool] builtin: Specify whether the cluster driver is an internal cluster driver or not (bool)
         :param pulumi.Input[str] url: The URL to download the machine driver binary for 64-bit Linux (string)
         :param pulumi.Input[str] actual_url: Actual url of the cluster driver (string)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations of the resource (map)
         :param pulumi.Input[str] checksum: Verify that the downloaded driver matches the expected checksum (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels of the resource (map)
         :param pulumi.Input[str] name: Name of the cluster driver (string)
         :param pulumi.Input[str] ui_url: The URL to load for customized Add Clusters screen for this driver (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelist_domains: Domains to whitelist for the ui (list)
@@ -105,14 +105,14 @@ class ClusterDriverArgs:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations of the resource (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -129,14 +129,14 @@ class ClusterDriverArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels of the resource (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -181,10 +181,10 @@ class _ClusterDriverState:
     def __init__(__self__, *,
                  active: Optional[pulumi.Input[bool]] = None,
                  actual_url: Optional[pulumi.Input[str]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  builtin: Optional[pulumi.Input[bool]] = None,
                  checksum: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  ui_url: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
@@ -193,10 +193,10 @@ class _ClusterDriverState:
         Input properties used for looking up and filtering ClusterDriver resources.
         :param pulumi.Input[bool] active: Specify the cluster driver state (bool)
         :param pulumi.Input[str] actual_url: Actual url of the cluster driver (string)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations of the resource (map)
         :param pulumi.Input[bool] builtin: Specify whether the cluster driver is an internal cluster driver or not (bool)
         :param pulumi.Input[str] checksum: Verify that the downloaded driver matches the expected checksum (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels of the resource (map)
         :param pulumi.Input[str] name: Name of the cluster driver (string)
         :param pulumi.Input[str] ui_url: The URL to load for customized Add Clusters screen for this driver (string)
         :param pulumi.Input[str] url: The URL to download the machine driver binary for 64-bit Linux (string)
@@ -249,14 +249,14 @@ class _ClusterDriverState:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations of the resource (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -285,14 +285,14 @@ class _ClusterDriverState:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels of the resource (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -351,10 +351,10 @@ class ClusterDriver(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  active: Optional[pulumi.Input[bool]] = None,
                  actual_url: Optional[pulumi.Input[str]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  builtin: Optional[pulumi.Input[bool]] = None,
                  checksum: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  ui_url: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
@@ -375,10 +375,10 @@ class ClusterDriver(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] active: Specify the cluster driver state (bool)
         :param pulumi.Input[str] actual_url: Actual url of the cluster driver (string)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations of the resource (map)
         :param pulumi.Input[bool] builtin: Specify whether the cluster driver is an internal cluster driver or not (bool)
         :param pulumi.Input[str] checksum: Verify that the downloaded driver matches the expected checksum (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels of the resource (map)
         :param pulumi.Input[str] name: Name of the cluster driver (string)
         :param pulumi.Input[str] ui_url: The URL to load for customized Add Clusters screen for this driver (string)
         :param pulumi.Input[str] url: The URL to download the machine driver binary for 64-bit Linux (string)
@@ -418,10 +418,10 @@ class ClusterDriver(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  active: Optional[pulumi.Input[bool]] = None,
                  actual_url: Optional[pulumi.Input[str]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  builtin: Optional[pulumi.Input[bool]] = None,
                  checksum: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  ui_url: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
@@ -463,10 +463,10 @@ class ClusterDriver(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             active: Optional[pulumi.Input[bool]] = None,
             actual_url: Optional[pulumi.Input[str]] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             builtin: Optional[pulumi.Input[bool]] = None,
             checksum: Optional[pulumi.Input[str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             ui_url: Optional[pulumi.Input[str]] = None,
             url: Optional[pulumi.Input[str]] = None,
@@ -480,10 +480,10 @@ class ClusterDriver(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] active: Specify the cluster driver state (bool)
         :param pulumi.Input[str] actual_url: Actual url of the cluster driver (string)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations of the resource (map)
         :param pulumi.Input[bool] builtin: Specify whether the cluster driver is an internal cluster driver or not (bool)
         :param pulumi.Input[str] checksum: Verify that the downloaded driver matches the expected checksum (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels of the resource (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels of the resource (map)
         :param pulumi.Input[str] name: Name of the cluster driver (string)
         :param pulumi.Input[str] ui_url: The URL to load for customized Add Clusters screen for this driver (string)
         :param pulumi.Input[str] url: The URL to download the machine driver binary for 64-bit Linux (string)
@@ -523,7 +523,7 @@ class ClusterDriver(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
+    def annotations(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Annotations of the resource (map)
         """
@@ -547,7 +547,7 @@ class ClusterDriver(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Labels of the resource (map)
         """

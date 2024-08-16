@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControllerResult
     {
         public readonly string ClusterCidr;
-        public readonly ImmutableDictionary<string, object> ExtraArgs;
+        public readonly ImmutableDictionary<string, string> ExtraArgs;
         public readonly ImmutableArray<string> ExtraBinds;
         public readonly ImmutableArray<string> ExtraEnvs;
         public readonly string Image;
@@ -24,7 +24,7 @@ namespace Pulumi.Rancher2.Outputs
         private GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControllerResult(
             string clusterCidr,
 
-            ImmutableDictionary<string, object> extraArgs,
+            ImmutableDictionary<string, string> extraArgs,
 
             ImmutableArray<string> extraBinds,
 

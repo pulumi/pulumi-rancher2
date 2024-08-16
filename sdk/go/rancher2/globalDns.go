@@ -114,11 +114,11 @@ type GlobalDns struct {
 	pulumi.CustomResourceState
 
 	// Annotations for Global DNS (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// The Global DNS record (string)
 	Fqdn pulumi.StringOutput `pulumi:"fqdn"`
 	// Labels for Global DNS (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The MultiCluster App ID to assign to the Global DNS. Conflicts with `projectIds` (string)
 	MultiClusterAppId pulumi.StringPtrOutput `pulumi:"multiClusterAppId"`
 	// The name of the Global DNS (string)
@@ -168,11 +168,11 @@ func GetGlobalDns(ctx *pulumi.Context,
 // Input properties used for looking up and filtering GlobalDns resources.
 type globalDnsState struct {
 	// Annotations for Global DNS (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// The Global DNS record (string)
 	Fqdn *string `pulumi:"fqdn"`
 	// Labels for Global DNS (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The MultiCluster App ID to assign to the Global DNS. Conflicts with `projectIds` (string)
 	MultiClusterAppId *string `pulumi:"multiClusterAppId"`
 	// The name of the Global DNS (string)
@@ -187,11 +187,11 @@ type globalDnsState struct {
 
 type GlobalDnsState struct {
 	// Annotations for Global DNS (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// The Global DNS record (string)
 	Fqdn pulumi.StringPtrInput
 	// Labels for Global DNS (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The MultiCluster App ID to assign to the Global DNS. Conflicts with `projectIds` (string)
 	MultiClusterAppId pulumi.StringPtrInput
 	// The name of the Global DNS (string)
@@ -210,11 +210,11 @@ func (GlobalDnsState) ElementType() reflect.Type {
 
 type globalDnsArgs struct {
 	// Annotations for Global DNS (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// The Global DNS record (string)
 	Fqdn string `pulumi:"fqdn"`
 	// Labels for Global DNS (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The MultiCluster App ID to assign to the Global DNS. Conflicts with `projectIds` (string)
 	MultiClusterAppId *string `pulumi:"multiClusterAppId"`
 	// The name of the Global DNS (string)
@@ -230,11 +230,11 @@ type globalDnsArgs struct {
 // The set of arguments for constructing a GlobalDns resource.
 type GlobalDnsArgs struct {
 	// Annotations for Global DNS (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// The Global DNS record (string)
 	Fqdn pulumi.StringInput
 	// Labels for Global DNS (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The MultiCluster App ID to assign to the Global DNS. Conflicts with `projectIds` (string)
 	MultiClusterAppId pulumi.StringPtrInput
 	// The name of the Global DNS (string)
@@ -335,8 +335,8 @@ func (o GlobalDnsOutput) ToGlobalDnsOutputWithContext(ctx context.Context) Globa
 }
 
 // Annotations for Global DNS (map)
-func (o GlobalDnsOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *GlobalDns) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o GlobalDnsOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GlobalDns) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // The Global DNS record (string)
@@ -345,8 +345,8 @@ func (o GlobalDnsOutput) Fqdn() pulumi.StringOutput {
 }
 
 // Labels for Global DNS (map)
-func (o GlobalDnsOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *GlobalDns) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o GlobalDnsOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GlobalDns) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The MultiCluster App ID to assign to the Global DNS. Conflicts with `projectIds` (string)

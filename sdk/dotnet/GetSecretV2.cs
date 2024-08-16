@@ -84,12 +84,12 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Annotations for the secret v2 (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Annotations;
+        public readonly ImmutableDictionary<string, string> Annotations;
         public readonly string ClusterId;
         /// <summary>
         /// (Computed/Sensitive) The data of the secret v2 (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Data;
+        public readonly ImmutableDictionary<string, string> Data;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -101,7 +101,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Labels for the secret v2 (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Labels;
+        public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
         public readonly string? Namespace;
         /// <summary>
@@ -115,17 +115,17 @@ namespace Pulumi.Rancher2
 
         [OutputConstructor]
         private GetSecretV2Result(
-            ImmutableDictionary<string, object> annotations,
+            ImmutableDictionary<string, string> annotations,
 
             string clusterId,
 
-            ImmutableDictionary<string, object> data,
+            ImmutableDictionary<string, string> data,
 
             string id,
 
             bool immutable,
 
-            ImmutableDictionary<string, object> labels,
+            ImmutableDictionary<string, string> labels,
 
             string name,
 

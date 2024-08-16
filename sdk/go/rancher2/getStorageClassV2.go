@@ -35,19 +35,19 @@ type LookupStorageClassV2Result struct {
 	// (Computed) Is the provisioner of the storageClass v2 allowing volume expansion? (bool)
 	AllowVolumeExpansion bool `pulumi:"allowVolumeExpansion"`
 	// (Computed) Annotations for the storageClass v2 (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
-	ClusterId   string                 `pulumi:"clusterId"`
+	Annotations map[string]string `pulumi:"annotations"`
+	ClusterId   string            `pulumi:"clusterId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) The provisioner of the storageClass v2 (string)
 	K8sProvisioner string `pulumi:"k8sProvisioner"`
 	// (Computed) Labels for the storageClass v2 (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// (Computed) The mount options for storageClass v2 (list)
 	MountOptions []string `pulumi:"mountOptions"`
 	Name         string   `pulumi:"name"`
 	// (Computed) The parameters for storageClass v2 (string)
-	Parameters map[string]interface{} `pulumi:"parameters"`
+	Parameters map[string]string `pulumi:"parameters"`
 	// (Computed) The reclaim policy for storageClass v2 (string)
 	ReclaimPolicy string `pulumi:"reclaimPolicy"`
 	// (Computed) The k8s resource version (string)
@@ -102,8 +102,8 @@ func (o LookupStorageClassV2ResultOutput) AllowVolumeExpansion() pulumi.BoolOutp
 }
 
 // (Computed) Annotations for the storageClass v2 (map)
-func (o LookupStorageClassV2ResultOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupStorageClassV2Result) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+func (o LookupStorageClassV2ResultOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupStorageClassV2Result) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 func (o LookupStorageClassV2ResultOutput) ClusterId() pulumi.StringOutput {
@@ -121,8 +121,8 @@ func (o LookupStorageClassV2ResultOutput) K8sProvisioner() pulumi.StringOutput {
 }
 
 // (Computed) Labels for the storageClass v2 (map)
-func (o LookupStorageClassV2ResultOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupStorageClassV2Result) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+func (o LookupStorageClassV2ResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupStorageClassV2Result) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // (Computed) The mount options for storageClass v2 (list)
@@ -135,8 +135,8 @@ func (o LookupStorageClassV2ResultOutput) Name() pulumi.StringOutput {
 }
 
 // (Computed) The parameters for storageClass v2 (string)
-func (o LookupStorageClassV2ResultOutput) Parameters() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupStorageClassV2Result) map[string]interface{} { return v.Parameters }).(pulumi.MapOutput)
+func (o LookupStorageClassV2ResultOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupStorageClassV2Result) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
 }
 
 // (Computed) The reclaim policy for storageClass v2 (string)

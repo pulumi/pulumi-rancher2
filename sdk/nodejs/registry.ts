@@ -90,7 +90,7 @@ export class Registry extends pulumi.CustomResource {
     /**
      * Annotations for Registry object (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: any}>;
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * A registry description (string)
      */
@@ -98,7 +98,7 @@ export class Registry extends pulumi.CustomResource {
     /**
      * Labels for Registry object (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the registry (string)
      */
@@ -164,7 +164,7 @@ export interface RegistryState {
     /**
      * Annotations for Registry object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A registry description (string)
      */
@@ -172,7 +172,7 @@ export interface RegistryState {
     /**
      * Labels for Registry object (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the registry (string)
      */
@@ -198,7 +198,7 @@ export interface RegistryArgs {
     /**
      * Annotations for Registry object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A registry description (string)
      */
@@ -206,7 +206,7 @@ export interface RegistryArgs {
     /**
      * Labels for Registry object (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the registry (string)
      */

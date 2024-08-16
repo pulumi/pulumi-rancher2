@@ -42,12 +42,12 @@ export interface GetSecretV2Result {
     /**
      * (Computed) Annotations for the secret v2 (map)
      */
-    readonly annotations: {[key: string]: any};
+    readonly annotations: {[key: string]: string};
     readonly clusterId: string;
     /**
      * (Computed/Sensitive) The data of the secret v2 (map)
      */
-    readonly data: {[key: string]: any};
+    readonly data: {[key: string]: string};
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -59,7 +59,7 @@ export interface GetSecretV2Result {
     /**
      * (Computed) Labels for the secret v2 (map)
      */
-    readonly labels: {[key: string]: any};
+    readonly labels: {[key: string]: string};
     readonly name: string;
     readonly namespace?: string;
     /**

@@ -21,7 +21,7 @@ type Certificate struct {
 	pulumi.CustomResourceState
 
 	// Annotations for certificate object (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Base64 encoded public certs (string)
 	Certs pulumi.StringOutput `pulumi:"certs"`
 	// A certificate description (string)
@@ -29,7 +29,7 @@ type Certificate struct {
 	// Base64 encoded private key (string)
 	Key pulumi.StringOutput `pulumi:"key"`
 	// Labels for certificate object (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the certificate (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The namespace id where the namespaced certificate should be created (string)
@@ -85,7 +85,7 @@ func GetCertificate(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Certificate resources.
 type certificateState struct {
 	// Annotations for certificate object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// Base64 encoded public certs (string)
 	Certs *string `pulumi:"certs"`
 	// A certificate description (string)
@@ -93,7 +93,7 @@ type certificateState struct {
 	// Base64 encoded private key (string)
 	Key *string `pulumi:"key"`
 	// Labels for certificate object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The name of the certificate (string)
 	Name *string `pulumi:"name"`
 	// The namespace id where the namespaced certificate should be created (string)
@@ -104,7 +104,7 @@ type certificateState struct {
 
 type CertificateState struct {
 	// Annotations for certificate object (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// Base64 encoded public certs (string)
 	Certs pulumi.StringPtrInput
 	// A certificate description (string)
@@ -112,7 +112,7 @@ type CertificateState struct {
 	// Base64 encoded private key (string)
 	Key pulumi.StringPtrInput
 	// Labels for certificate object (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The name of the certificate (string)
 	Name pulumi.StringPtrInput
 	// The namespace id where the namespaced certificate should be created (string)
@@ -127,7 +127,7 @@ func (CertificateState) ElementType() reflect.Type {
 
 type certificateArgs struct {
 	// Annotations for certificate object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// Base64 encoded public certs (string)
 	Certs string `pulumi:"certs"`
 	// A certificate description (string)
@@ -135,7 +135,7 @@ type certificateArgs struct {
 	// Base64 encoded private key (string)
 	Key string `pulumi:"key"`
 	// Labels for certificate object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The name of the certificate (string)
 	Name *string `pulumi:"name"`
 	// The namespace id where the namespaced certificate should be created (string)
@@ -147,7 +147,7 @@ type certificateArgs struct {
 // The set of arguments for constructing a Certificate resource.
 type CertificateArgs struct {
 	// Annotations for certificate object (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// Base64 encoded public certs (string)
 	Certs pulumi.StringInput
 	// A certificate description (string)
@@ -155,7 +155,7 @@ type CertificateArgs struct {
 	// Base64 encoded private key (string)
 	Key pulumi.StringInput
 	// Labels for certificate object (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The name of the certificate (string)
 	Name pulumi.StringPtrInput
 	// The namespace id where the namespaced certificate should be created (string)
@@ -252,8 +252,8 @@ func (o CertificateOutput) ToCertificateOutputWithContext(ctx context.Context) C
 }
 
 // Annotations for certificate object (map)
-func (o CertificateOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *Certificate) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o CertificateOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // Base64 encoded public certs (string)
@@ -272,8 +272,8 @@ func (o CertificateOutput) Key() pulumi.StringOutput {
 }
 
 // Labels for certificate object (map)
-func (o CertificateOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *Certificate) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o CertificateOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The name of the certificate (string)

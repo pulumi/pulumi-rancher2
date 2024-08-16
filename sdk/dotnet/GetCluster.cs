@@ -114,7 +114,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Annotations for Node Pool object (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Annotations;
+        public readonly ImmutableDictionary<string, string> Annotations;
         /// <summary>
         /// (Computed) K8s cluster ca cert (string)
         /// </summary>
@@ -208,7 +208,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Labels for Node Pool object (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Labels;
+        public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
         /// <summary>
         /// (Computed) The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
@@ -235,7 +235,7 @@ namespace Pulumi.Rancher2
 
             Outputs.GetClusterAksConfigV2Result aksConfigV2,
 
-            ImmutableDictionary<string, object> annotations,
+            ImmutableDictionary<string, string> annotations,
 
             string caCert,
 
@@ -285,7 +285,7 @@ namespace Pulumi.Rancher2
 
             string kubeConfig,
 
-            ImmutableDictionary<string, object> labels,
+            ImmutableDictionary<string, string> labels,
 
             string name,
 

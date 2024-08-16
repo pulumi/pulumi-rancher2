@@ -60,8 +60,8 @@ type LookupClusterAlertGroupArgs struct {
 // A collection of values returned by getClusterAlertGroup.
 type LookupClusterAlertGroupResult struct {
 	// (Computed) The cluster alert group annotations (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
-	ClusterId   string                 `pulumi:"clusterId"`
+	Annotations map[string]string `pulumi:"annotations"`
+	ClusterId   string            `pulumi:"clusterId"`
 	// (Computed) The cluster alert group description (string)
 	Description string `pulumi:"description"`
 	// (Computed) The cluster alert group interval seconds. Default: `180` (int)
@@ -71,8 +71,8 @@ type LookupClusterAlertGroupResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) The cluster alert group labels (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	Name   string                 `pulumi:"name"`
+	Labels map[string]string `pulumi:"labels"`
+	Name   string            `pulumi:"name"`
 	// (Computed) The cluster alert group recipients (list)
 	Recipients []GetClusterAlertGroupRecipient `pulumi:"recipients"`
 	// (Computed) The cluster alert group wait seconds. Default: `3600` (int)
@@ -120,8 +120,8 @@ func (o LookupClusterAlertGroupResultOutput) ToLookupClusterAlertGroupResultOutp
 }
 
 // (Computed) The cluster alert group annotations (map)
-func (o LookupClusterAlertGroupResultOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupClusterAlertGroupResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+func (o LookupClusterAlertGroupResultOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupClusterAlertGroupResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 func (o LookupClusterAlertGroupResultOutput) ClusterId() pulumi.StringOutput {
@@ -149,8 +149,8 @@ func (o LookupClusterAlertGroupResultOutput) Id() pulumi.StringOutput {
 }
 
 // (Computed) The cluster alert group labels (map)
-func (o LookupClusterAlertGroupResultOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupClusterAlertGroupResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+func (o LookupClusterAlertGroupResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupClusterAlertGroupResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupClusterAlertGroupResultOutput) Name() pulumi.StringOutput {

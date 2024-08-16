@@ -103,7 +103,7 @@ type MachineConfigV2 struct {
 	// AWS config for the Machine Config V2. Conflicts with `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
 	Amazonec2Config MachineConfigV2Amazonec2ConfigPtrOutput `pulumi:"amazonec2Config"`
 	// Annotations for Machine Config V2 object (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Azure config for the Machine Config V2. Conflicts with `amazonec2Config`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
 	AzureConfig MachineConfigV2AzureConfigPtrOutput `pulumi:"azureConfig"`
 	// Digitalocean config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `harvesterConfig`, `linodeConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
@@ -119,7 +119,7 @@ type MachineConfigV2 struct {
 	// Labels for Machine Config V2 object (map)
 	//
 	// **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Machine Config V2
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Linode config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
 	LinodeConfig MachineConfigV2LinodeConfigPtrOutput `pulumi:"linodeConfig"`
 	// (Computed) The machine config name (string)
@@ -168,7 +168,7 @@ type machineConfigV2State struct {
 	// AWS config for the Machine Config V2. Conflicts with `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
 	Amazonec2Config *MachineConfigV2Amazonec2Config `pulumi:"amazonec2Config"`
 	// Annotations for Machine Config V2 object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// Azure config for the Machine Config V2. Conflicts with `amazonec2Config`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
 	AzureConfig *MachineConfigV2AzureConfig `pulumi:"azureConfig"`
 	// Digitalocean config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `harvesterConfig`, `linodeConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
@@ -184,7 +184,7 @@ type machineConfigV2State struct {
 	// Labels for Machine Config V2 object (map)
 	//
 	// **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Machine Config V2
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// Linode config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
 	LinodeConfig *MachineConfigV2LinodeConfig `pulumi:"linodeConfig"`
 	// (Computed) The machine config name (string)
@@ -201,7 +201,7 @@ type MachineConfigV2State struct {
 	// AWS config for the Machine Config V2. Conflicts with `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
 	Amazonec2Config MachineConfigV2Amazonec2ConfigPtrInput
 	// Annotations for Machine Config V2 object (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// Azure config for the Machine Config V2. Conflicts with `amazonec2Config`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
 	AzureConfig MachineConfigV2AzureConfigPtrInput
 	// Digitalocean config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `harvesterConfig`, `linodeConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
@@ -217,7 +217,7 @@ type MachineConfigV2State struct {
 	// Labels for Machine Config V2 object (map)
 	//
 	// **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Machine Config V2
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// Linode config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
 	LinodeConfig MachineConfigV2LinodeConfigPtrInput
 	// (Computed) The machine config name (string)
@@ -238,7 +238,7 @@ type machineConfigV2Args struct {
 	// AWS config for the Machine Config V2. Conflicts with `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
 	Amazonec2Config *MachineConfigV2Amazonec2Config `pulumi:"amazonec2Config"`
 	// Annotations for Machine Config V2 object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// Azure config for the Machine Config V2. Conflicts with `amazonec2Config`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
 	AzureConfig *MachineConfigV2AzureConfig `pulumi:"azureConfig"`
 	// Digitalocean config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `harvesterConfig`, `linodeConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
@@ -252,7 +252,7 @@ type machineConfigV2Args struct {
 	// Labels for Machine Config V2 object (map)
 	//
 	// **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Machine Config V2
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// Linode config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
 	LinodeConfig *MachineConfigV2LinodeConfig `pulumi:"linodeConfig"`
 	// Openstack config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig` and `vsphereConfig` (list maxitems:1)
@@ -266,7 +266,7 @@ type MachineConfigV2Args struct {
 	// AWS config for the Machine Config V2. Conflicts with `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
 	Amazonec2Config MachineConfigV2Amazonec2ConfigPtrInput
 	// Annotations for Machine Config V2 object (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// Azure config for the Machine Config V2. Conflicts with `amazonec2Config`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
 	AzureConfig MachineConfigV2AzureConfigPtrInput
 	// Digitalocean config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `harvesterConfig`, `linodeConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
@@ -280,7 +280,7 @@ type MachineConfigV2Args struct {
 	// Labels for Machine Config V2 object (map)
 	//
 	// **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Machine Config V2
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// Linode config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
 	LinodeConfig MachineConfigV2LinodeConfigPtrInput
 	// Openstack config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig` and `vsphereConfig` (list maxitems:1)
@@ -382,8 +382,8 @@ func (o MachineConfigV2Output) Amazonec2Config() MachineConfigV2Amazonec2ConfigP
 }
 
 // Annotations for Machine Config V2 object (map)
-func (o MachineConfigV2Output) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *MachineConfigV2) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o MachineConfigV2Output) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *MachineConfigV2) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // Azure config for the Machine Config V2. Conflicts with `amazonec2Config`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
@@ -419,8 +419,8 @@ func (o MachineConfigV2Output) Kind() pulumi.StringOutput {
 // Labels for Machine Config V2 object (map)
 //
 // **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Machine Config V2
-func (o MachineConfigV2Output) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *MachineConfigV2) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o MachineConfigV2Output) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *MachineConfigV2) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // Linode config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)

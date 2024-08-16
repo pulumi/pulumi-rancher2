@@ -61,7 +61,7 @@ type LookupClusterV2Args struct {
 type LookupClusterV2Result struct {
 	// (Computed) Optional Agent Env Vars for Rancher agent (list)
 	AgentEnvVars []GetClusterV2AgentEnvVar `pulumi:"agentEnvVars"`
-	Annotations  map[string]interface{}    `pulumi:"annotations"`
+	Annotations  map[string]string         `pulumi:"annotations"`
 	// (Computed) Cluster V2 cloud credential secret name (string)
 	CloudCredentialSecretName string `pulumi:"cloudCredentialSecretName"`
 	// (Computed/Sensitive) Cluster Registration Token generated for the cluster v2 (list maxitems:1)
@@ -82,9 +82,9 @@ type LookupClusterV2Result struct {
 	// (Computed/Sensitive) Kube Config generated for the cluster v2 (string)
 	KubeConfig string `pulumi:"kubeConfig"`
 	// (Computed) The kubernetes version of the Cluster v2 (list maxitems:1)
-	KubernetesVersion string                 `pulumi:"kubernetesVersion"`
-	Labels            map[string]interface{} `pulumi:"labels"`
-	Name              string                 `pulumi:"name"`
+	KubernetesVersion string            `pulumi:"kubernetesVersion"`
+	Labels            map[string]string `pulumi:"labels"`
+	Name              string            `pulumi:"name"`
 	// (Computed) Cluster v2 k8s resource version (string)
 	ResourceVersion string `pulumi:"resourceVersion"`
 	// (Computed) The RKE configuration for `k3s` and `rke2` Clusters v2. (list maxitems:1)
@@ -136,8 +136,8 @@ func (o LookupClusterV2ResultOutput) AgentEnvVars() GetClusterV2AgentEnvVarArray
 	return o.ApplyT(func(v LookupClusterV2Result) []GetClusterV2AgentEnvVar { return v.AgentEnvVars }).(GetClusterV2AgentEnvVarArrayOutput)
 }
 
-func (o LookupClusterV2ResultOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupClusterV2Result) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+func (o LookupClusterV2ResultOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupClusterV2Result) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // (Computed) Cluster V2 cloud credential secret name (string)
@@ -194,8 +194,8 @@ func (o LookupClusterV2ResultOutput) KubernetesVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterV2Result) string { return v.KubernetesVersion }).(pulumi.StringOutput)
 }
 
-func (o LookupClusterV2ResultOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupClusterV2Result) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+func (o LookupClusterV2ResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupClusterV2Result) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupClusterV2ResultOutput) Name() pulumi.StringOutput {

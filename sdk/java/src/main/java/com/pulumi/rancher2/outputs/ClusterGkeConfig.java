@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -166,7 +165,7 @@ public final class ClusterGkeConfig {
      * @return Labels for the Cluster (map)
      * 
      */
-    private @Nullable Map<String,Object> labels;
+    private @Nullable Map<String,String> labels;
     /**
      * @return The number of local SSD disks to be attached to the node
      * 
@@ -256,7 +255,7 @@ public final class ClusterGkeConfig {
      * @return The map of Kubernetes labels (key/value pairs) to be applied to each cluster
      * 
      */
-    private @Nullable Map<String,Object> resourceLabels;
+    private @Nullable Map<String,String> resourceLabels;
     /**
      * @return The Google Cloud Platform Service Account to be used by the node VMs
      * 
@@ -491,7 +490,7 @@ public final class ClusterGkeConfig {
      * @return Labels for the Cluster (map)
      * 
      */
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels == null ? Map.of() : this.labels;
     }
     /**
@@ -617,7 +616,7 @@ public final class ClusterGkeConfig {
      * @return The map of Kubernetes labels (key/value pairs) to be applied to each cluster
      * 
      */
-    public Map<String,Object> resourceLabels() {
+    public Map<String,String> resourceLabels() {
         return this.resourceLabels == null ? Map.of() : this.resourceLabels;
     }
     /**
@@ -694,7 +693,7 @@ public final class ClusterGkeConfig {
         private String ipPolicySubnetworkName;
         private @Nullable Boolean issueClientCertificate;
         private @Nullable Boolean kubernetesDashboard;
-        private @Nullable Map<String,Object> labels;
+        private @Nullable Map<String,String> labels;
         private @Nullable Integer localSsdCount;
         private List<String> locations;
         private String machineType;
@@ -712,7 +711,7 @@ public final class ClusterGkeConfig {
         private @Nullable Boolean preemptible;
         private String projectId;
         private @Nullable String region;
-        private @Nullable Map<String,Object> resourceLabels;
+        private @Nullable Map<String,String> resourceLabels;
         private String serviceAccount;
         private String subNetwork;
         private @Nullable List<String> taints;
@@ -971,7 +970,7 @@ public final class ClusterGkeConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(@Nullable Map<String,Object> labels) {
+        public Builder labels(@Nullable Map<String,String> labels) {
 
             this.labels = labels;
             return this;
@@ -1108,7 +1107,7 @@ public final class ClusterGkeConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder resourceLabels(@Nullable Map<String,Object> resourceLabels) {
+        public Builder resourceLabels(@Nullable Map<String,String> resourceLabels) {
 
             this.resourceLabels = resourceLabels;
             return this;

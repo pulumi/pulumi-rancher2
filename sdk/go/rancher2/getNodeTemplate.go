@@ -59,7 +59,7 @@ type LookupNodeTemplateArgs struct {
 // A collection of values returned by getNodeTemplate.
 type LookupNodeTemplateResult struct {
 	// (Computed) Annotations for Node Template object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// (Computed) Cloud credential ID for the Node Template. Required from Rancher v2.2.x (string)
 	CloudCredentialId string `pulumi:"cloudCredentialId"`
 	// (Computed) Description for the Node Template (string)
@@ -67,15 +67,15 @@ type LookupNodeTemplateResult struct {
 	// (Computed) The driver of the node template (string)
 	Driver string `pulumi:"driver"`
 	// (Computed) Engine environment for the node template (string)
-	EngineEnv map[string]interface{} `pulumi:"engineEnv"`
+	EngineEnv map[string]string `pulumi:"engineEnv"`
 	// (Computed) Insecure registry for the node template (list)
 	EngineInsecureRegistries []string `pulumi:"engineInsecureRegistries"`
 	// (Computed) Docker engine install URL for the node template (string)
 	EngineInstallUrl string `pulumi:"engineInstallUrl"`
 	// (Computed) Engine label for the node template (string)
-	EngineLabel map[string]interface{} `pulumi:"engineLabel"`
+	EngineLabel map[string]string `pulumi:"engineLabel"`
 	// (Computed) Engine options for the node template (map)
-	EngineOpt map[string]interface{} `pulumi:"engineOpt"`
+	EngineOpt map[string]string `pulumi:"engineOpt"`
 	// (Computed) Engine registry mirror for the node template (list)
 	EngineRegistryMirrors []string `pulumi:"engineRegistryMirrors"`
 	// (Computed) Engine storage driver for the node template (string)
@@ -83,8 +83,8 @@ type LookupNodeTemplateResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels for Node Template object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	Name   string                 `pulumi:"name"`
+	Labels map[string]string `pulumi:"labels"`
+	Name   string            `pulumi:"name"`
 	// (Computed) Node taints (List)
 	NodeTaints []GetNodeTemplateNodeTaint `pulumi:"nodeTaints"`
 	// (Computed) Engine storage driver for the node template (bool)
@@ -132,8 +132,8 @@ func (o LookupNodeTemplateResultOutput) ToLookupNodeTemplateResultOutputWithCont
 }
 
 // (Computed) Annotations for Node Template object (map)
-func (o LookupNodeTemplateResultOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupNodeTemplateResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+func (o LookupNodeTemplateResultOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupNodeTemplateResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // (Computed) Cloud credential ID for the Node Template. Required from Rancher v2.2.x (string)
@@ -152,8 +152,8 @@ func (o LookupNodeTemplateResultOutput) Driver() pulumi.StringOutput {
 }
 
 // (Computed) Engine environment for the node template (string)
-func (o LookupNodeTemplateResultOutput) EngineEnv() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupNodeTemplateResult) map[string]interface{} { return v.EngineEnv }).(pulumi.MapOutput)
+func (o LookupNodeTemplateResultOutput) EngineEnv() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupNodeTemplateResult) map[string]string { return v.EngineEnv }).(pulumi.StringMapOutput)
 }
 
 // (Computed) Insecure registry for the node template (list)
@@ -167,13 +167,13 @@ func (o LookupNodeTemplateResultOutput) EngineInstallUrl() pulumi.StringOutput {
 }
 
 // (Computed) Engine label for the node template (string)
-func (o LookupNodeTemplateResultOutput) EngineLabel() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupNodeTemplateResult) map[string]interface{} { return v.EngineLabel }).(pulumi.MapOutput)
+func (o LookupNodeTemplateResultOutput) EngineLabel() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupNodeTemplateResult) map[string]string { return v.EngineLabel }).(pulumi.StringMapOutput)
 }
 
 // (Computed) Engine options for the node template (map)
-func (o LookupNodeTemplateResultOutput) EngineOpt() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupNodeTemplateResult) map[string]interface{} { return v.EngineOpt }).(pulumi.MapOutput)
+func (o LookupNodeTemplateResultOutput) EngineOpt() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupNodeTemplateResult) map[string]string { return v.EngineOpt }).(pulumi.StringMapOutput)
 }
 
 // (Computed) Engine registry mirror for the node template (list)
@@ -192,8 +192,8 @@ func (o LookupNodeTemplateResultOutput) Id() pulumi.StringOutput {
 }
 
 // (Computed) Labels for Node Template object (map)
-func (o LookupNodeTemplateResultOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupNodeTemplateResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+func (o LookupNodeTemplateResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupNodeTemplateResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupNodeTemplateResultOutput) Name() pulumi.StringOutput {

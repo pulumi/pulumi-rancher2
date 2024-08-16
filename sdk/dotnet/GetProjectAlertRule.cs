@@ -66,14 +66,14 @@ namespace Pulumi.Rancher2
     public sealed class GetProjectAlertRuleArgs : global::Pulumi.InvokeArgs
     {
         [Input("labels")]
-        private Dictionary<string, object>? _labels;
+        private Dictionary<string, string>? _labels;
 
         /// <summary>
         /// (Computed) The project alert rule labels (map)
         /// </summary>
-        public Dictionary<string, object> Labels
+        public Dictionary<string, string> Labels
         {
-            get => _labels ?? (_labels = new Dictionary<string, object>());
+            get => _labels ?? (_labels = new Dictionary<string, string>());
             set => _labels = value;
         }
 
@@ -98,14 +98,14 @@ namespace Pulumi.Rancher2
     public sealed class GetProjectAlertRuleInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// (Computed) The project alert rule labels (map)
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
@@ -134,7 +134,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) The project alert rule annotations (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Annotations;
+        public readonly ImmutableDictionary<string, string> Annotations;
         /// <summary>
         /// (Computed) The project alert rule alert group ID (string)
         /// </summary>
@@ -158,7 +158,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) The project alert rule labels (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Labels;
+        public readonly ImmutableDictionary<string, string>? Labels;
         /// <summary>
         /// (Computed) The project alert rule metric rule. ConflictsWith: `"pod_rule", "workload_rule"`` (list Maxitems:1)
         /// </summary>
@@ -184,7 +184,7 @@ namespace Pulumi.Rancher2
 
         [OutputConstructor]
         private GetProjectAlertRuleResult(
-            ImmutableDictionary<string, object> annotations,
+            ImmutableDictionary<string, string> annotations,
 
             string groupId,
 
@@ -196,7 +196,7 @@ namespace Pulumi.Rancher2
 
             bool inherited,
 
-            ImmutableDictionary<string, object>? labels,
+            ImmutableDictionary<string, string>? labels,
 
             Outputs.GetProjectAlertRuleMetricRuleResult metricRule,
 

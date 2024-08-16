@@ -24,7 +24,7 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// Registry mirror rewrites
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Rewrites;
+        public readonly ImmutableDictionary<string, string>? Rewrites;
 
         [OutputConstructor]
         private GetClusterV2RkeConfigRegistriesMirrorResult(
@@ -32,7 +32,7 @@ namespace Pulumi.Rancher2.Outputs
 
             string hostname,
 
-            ImmutableDictionary<string, object>? rewrites)
+            ImmutableDictionary<string, string>? rewrites)
         {
             Endpoints = endpoints;
             Hostname = hostname;

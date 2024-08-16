@@ -42,7 +42,7 @@ export class Certificate extends pulumi.CustomResource {
     /**
      * Annotations for certificate object (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: any}>;
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * Base64 encoded public certs (string)
      */
@@ -58,7 +58,7 @@ export class Certificate extends pulumi.CustomResource {
     /**
      * Labels for certificate object (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the certificate (string)
      */
@@ -127,7 +127,7 @@ export interface CertificateState {
     /**
      * Annotations for certificate object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Base64 encoded public certs (string)
      */
@@ -143,7 +143,7 @@ export interface CertificateState {
     /**
      * Labels for certificate object (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the certificate (string)
      */
@@ -165,7 +165,7 @@ export interface CertificateArgs {
     /**
      * Annotations for certificate object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Base64 encoded public certs (string)
      */
@@ -181,7 +181,7 @@ export interface CertificateArgs {
     /**
      * Labels for certificate object (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the certificate (string)
      */

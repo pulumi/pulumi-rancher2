@@ -71,7 +71,7 @@ export class Catalog extends pulumi.CustomResource {
     /**
      * Annotations for the catalog (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: any}>;
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * The branch of the catalog repo to use. Default `master` (string)
      */
@@ -91,7 +91,7 @@ export class Catalog extends pulumi.CustomResource {
     /**
      * Labels for the catalog (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the catalog (string)
      */
@@ -186,7 +186,7 @@ export interface CatalogState {
     /**
      * Annotations for the catalog (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The branch of the catalog repo to use. Default `master` (string)
      */
@@ -206,7 +206,7 @@ export interface CatalogState {
     /**
      * Labels for the catalog (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the catalog (string)
      */
@@ -248,7 +248,7 @@ export interface CatalogArgs {
     /**
      * Annotations for the catalog (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The branch of the catalog repo to use. Default `master` (string)
      */
@@ -268,7 +268,7 @@ export interface CatalogArgs {
     /**
      * Labels for the catalog (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the catalog (string)
      */

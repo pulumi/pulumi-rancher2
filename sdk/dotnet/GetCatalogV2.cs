@@ -72,7 +72,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Annotations for the catalog v2 (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Annotations;
+        public readonly ImmutableDictionary<string, string> Annotations;
         /// <summary>
         /// (Computed) PEM encoded CA bundle which will be used to validate the repo's certificate (string)
         /// </summary>
@@ -101,7 +101,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Labels for the catalog v2 (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Labels;
+        public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
         /// <summary>
         /// (Computed) The k8s resource version (string)
@@ -130,7 +130,7 @@ namespace Pulumi.Rancher2
 
         [OutputConstructor]
         private GetCatalogV2Result(
-            ImmutableDictionary<string, object> annotations,
+            ImmutableDictionary<string, string> annotations,
 
             string caBundle,
 
@@ -146,7 +146,7 @@ namespace Pulumi.Rancher2
 
             bool insecure,
 
-            ImmutableDictionary<string, object> labels,
+            ImmutableDictionary<string, string> labels,
 
             string name,
 

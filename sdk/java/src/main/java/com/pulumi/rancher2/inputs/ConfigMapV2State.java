@@ -6,7 +6,6 @@ package com.pulumi.rancher2.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -23,13 +22,13 @@ public final class ConfigMapV2State extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="annotations")
-    private @Nullable Output<Map<String,Object>> annotations;
+    private @Nullable Output<Map<String,String>> annotations;
 
     /**
      * @return Annotations for the configMap v2 (map)
      * 
      */
-    public Optional<Output<Map<String,Object>>> annotations() {
+    public Optional<Output<Map<String,String>>> annotations() {
         return Optional.ofNullable(this.annotations);
     }
 
@@ -53,13 +52,13 @@ public final class ConfigMapV2State extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="data")
-    private @Nullable Output<Map<String,Object>> data;
+    private @Nullable Output<Map<String,String>> data;
 
     /**
      * @return The data of the configMap v2 (map)
      * 
      */
-    public Optional<Output<Map<String,Object>>> data() {
+    public Optional<Output<Map<String,String>>> data() {
         return Optional.ofNullable(this.data);
     }
 
@@ -83,13 +82,13 @@ public final class ConfigMapV2State extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="labels")
-    private @Nullable Output<Map<String,Object>> labels;
+    private @Nullable Output<Map<String,String>> labels;
 
     /**
      * @return Labels for the configMap v2 (map)
      * 
      */
-    public Optional<Output<Map<String,Object>>> labels() {
+    public Optional<Output<Map<String,String>>> labels() {
         return Optional.ofNullable(this.labels);
     }
 
@@ -175,7 +174,7 @@ public final class ConfigMapV2State extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder annotations(@Nullable Output<Map<String,Object>> annotations) {
+        public Builder annotations(@Nullable Output<Map<String,String>> annotations) {
             $.annotations = annotations;
             return this;
         }
@@ -186,7 +185,7 @@ public final class ConfigMapV2State extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder annotations(Map<String,Object> annotations) {
+        public Builder annotations(Map<String,String> annotations) {
             return annotations(Output.of(annotations));
         }
 
@@ -217,7 +216,7 @@ public final class ConfigMapV2State extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder data(@Nullable Output<Map<String,Object>> data) {
+        public Builder data(@Nullable Output<Map<String,String>> data) {
             $.data = data;
             return this;
         }
@@ -228,7 +227,7 @@ public final class ConfigMapV2State extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder data(Map<String,Object> data) {
+        public Builder data(Map<String,String> data) {
             return data(Output.of(data));
         }
 
@@ -259,7 +258,7 @@ public final class ConfigMapV2State extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder labels(@Nullable Output<Map<String,Object>> labels) {
+        public Builder labels(@Nullable Output<Map<String,String>> labels) {
             $.labels = labels;
             return this;
         }
@@ -270,7 +269,7 @@ public final class ConfigMapV2State extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder labels(Map<String,Object> labels) {
+        public Builder labels(Map<String,String> labels) {
             return labels(Output.of(labels));
         }
 

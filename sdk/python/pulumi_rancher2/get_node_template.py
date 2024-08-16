@@ -74,7 +74,7 @@ class GetNodeTemplateResult:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> Mapping[str, str]:
         """
         (Computed) Annotations for Node Template object (map)
         """
@@ -106,7 +106,7 @@ class GetNodeTemplateResult:
 
     @property
     @pulumi.getter(name="engineEnv")
-    def engine_env(self) -> Mapping[str, Any]:
+    def engine_env(self) -> Mapping[str, str]:
         """
         (Computed) Engine environment for the node template (string)
         """
@@ -130,7 +130,7 @@ class GetNodeTemplateResult:
 
     @property
     @pulumi.getter(name="engineLabel")
-    def engine_label(self) -> Mapping[str, Any]:
+    def engine_label(self) -> Mapping[str, str]:
         """
         (Computed) Engine label for the node template (string)
         """
@@ -138,7 +138,7 @@ class GetNodeTemplateResult:
 
     @property
     @pulumi.getter(name="engineOpt")
-    def engine_opt(self) -> Mapping[str, Any]:
+    def engine_opt(self) -> Mapping[str, str]:
         """
         (Computed) Engine options for the node template (map)
         """
@@ -170,7 +170,7 @@ class GetNodeTemplateResult:
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> Mapping[str, str]:
         """
         (Computed) Labels for Node Template object (map)
         """

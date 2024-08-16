@@ -13,7 +13,6 @@ import com.pulumi.rancher2.inputs.RoleTemplateState;
 import com.pulumi.rancher2.outputs.RoleTemplateExternalRule;
 import com.pulumi.rancher2.outputs.RoleTemplateRule;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -142,14 +141,14 @@ public class RoleTemplate extends com.pulumi.resources.CustomResource {
      * Annotations for role template object (map)
      * 
      */
-    @Export(name="annotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> annotations;
+    @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> annotations;
 
     /**
      * @return Annotations for role template object (map)
      * 
      */
-    public Output<Map<String,Object>> annotations() {
+    public Output<Map<String,String>> annotations() {
         return this.annotations;
     }
     /**
@@ -254,14 +253,14 @@ public class RoleTemplate extends com.pulumi.resources.CustomResource {
      * Labels for role template object (map)
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> labels;
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> labels;
 
     /**
      * @return Labels for role template object (map)
      * 
      */
-    public Output<Map<String,Object>> labels() {
+    public Output<Map<String,String>> labels() {
         return this.labels;
     }
     /**

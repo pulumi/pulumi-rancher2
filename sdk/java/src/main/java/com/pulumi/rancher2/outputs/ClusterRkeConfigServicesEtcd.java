@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.rancher2.outputs.ClusterRkeConfigServicesEtcdBackupConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -46,7 +45,7 @@ public final class ClusterRkeConfigServicesEtcd {
      * @return Extra arguments for scheduler service (map)
      * 
      */
-    private @Nullable Map<String,Object> extraArgs;
+    private @Nullable Map<String,String> extraArgs;
     /**
      * @return Extra binds for scheduler service (list)
      * 
@@ -133,7 +132,7 @@ public final class ClusterRkeConfigServicesEtcd {
      * @return Extra arguments for scheduler service (map)
      * 
      */
-    public Map<String,Object> extraArgs() {
+    public Map<String,String> extraArgs() {
         return this.extraArgs == null ? Map.of() : this.extraArgs;
     }
     /**
@@ -214,7 +213,7 @@ public final class ClusterRkeConfigServicesEtcd {
         private @Nullable String cert;
         private @Nullable String creation;
         private @Nullable List<String> externalUrls;
-        private @Nullable Map<String,Object> extraArgs;
+        private @Nullable Map<String,String> extraArgs;
         private @Nullable List<String> extraBinds;
         private @Nullable List<String> extraEnvs;
         private @Nullable Integer gid;
@@ -278,7 +277,7 @@ public final class ClusterRkeConfigServicesEtcd {
             return externalUrls(List.of(externalUrls));
         }
         @CustomType.Setter
-        public Builder extraArgs(@Nullable Map<String,Object> extraArgs) {
+        public Builder extraArgs(@Nullable Map<String,String> extraArgs) {
 
             this.extraArgs = extraArgs;
             return this;

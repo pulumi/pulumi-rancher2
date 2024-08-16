@@ -52,7 +52,7 @@ export interface GetClusterV2Result {
      * (Computed) Optional Agent Env Vars for Rancher agent (list)
      */
     readonly agentEnvVars: outputs.GetClusterV2AgentEnvVar[];
-    readonly annotations: {[key: string]: any};
+    readonly annotations: {[key: string]: string};
     /**
      * (Computed) Cluster V2 cloud credential secret name (string)
      */
@@ -94,7 +94,7 @@ export interface GetClusterV2Result {
      * (Computed) The kubernetes version of the Cluster v2 (list maxitems:1)
      */
     readonly kubernetesVersion: string;
-    readonly labels: {[key: string]: any};
+    readonly labels: {[key: string]: string};
     readonly name: string;
     /**
      * (Computed) Cluster v2 k8s resource version (string)

@@ -50,7 +50,7 @@ export interface GetGlobalRoleResult {
     /**
      * (Computed) Annotations for global role object (map)
      */
-    readonly annotations: {[key: string]: any};
+    readonly annotations: {[key: string]: string};
     /**
      * (Computed) Builtin global role (bool)
      */
@@ -70,7 +70,7 @@ export interface GetGlobalRoleResult {
     /**
      * (Computed) Labels for global role object (map)
      */
-    readonly labels: {[key: string]: any};
+    readonly labels: {[key: string]: string};
     readonly name: string;
     /**
      * (Computed) Whether or not this role should be added to new users (bool)

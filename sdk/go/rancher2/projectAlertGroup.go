@@ -56,7 +56,7 @@ type ProjectAlertGroup struct {
 	pulumi.CustomResourceState
 
 	// The project alert group annotations (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// The project alert group description (string)
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The project alert group interval seconds. Default: `180` (int)
@@ -64,7 +64,7 @@ type ProjectAlertGroup struct {
 	// The project alert group wait seconds. Default: `180` (int)
 	GroupWaitSeconds pulumi.IntPtrOutput `pulumi:"groupWaitSeconds"`
 	// The project alert group labels (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The project alert group name (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project id where create project alert group (string)
@@ -109,7 +109,7 @@ func GetProjectAlertGroup(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ProjectAlertGroup resources.
 type projectAlertGroupState struct {
 	// The project alert group annotations (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// The project alert group description (string)
 	Description *string `pulumi:"description"`
 	// The project alert group interval seconds. Default: `180` (int)
@@ -117,7 +117,7 @@ type projectAlertGroupState struct {
 	// The project alert group wait seconds. Default: `180` (int)
 	GroupWaitSeconds *int `pulumi:"groupWaitSeconds"`
 	// The project alert group labels (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The project alert group name (string)
 	Name *string `pulumi:"name"`
 	// The project id where create project alert group (string)
@@ -130,7 +130,7 @@ type projectAlertGroupState struct {
 
 type ProjectAlertGroupState struct {
 	// The project alert group annotations (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// The project alert group description (string)
 	Description pulumi.StringPtrInput
 	// The project alert group interval seconds. Default: `180` (int)
@@ -138,7 +138,7 @@ type ProjectAlertGroupState struct {
 	// The project alert group wait seconds. Default: `180` (int)
 	GroupWaitSeconds pulumi.IntPtrInput
 	// The project alert group labels (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The project alert group name (string)
 	Name pulumi.StringPtrInput
 	// The project id where create project alert group (string)
@@ -155,7 +155,7 @@ func (ProjectAlertGroupState) ElementType() reflect.Type {
 
 type projectAlertGroupArgs struct {
 	// The project alert group annotations (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// The project alert group description (string)
 	Description *string `pulumi:"description"`
 	// The project alert group interval seconds. Default: `180` (int)
@@ -163,7 +163,7 @@ type projectAlertGroupArgs struct {
 	// The project alert group wait seconds. Default: `180` (int)
 	GroupWaitSeconds *int `pulumi:"groupWaitSeconds"`
 	// The project alert group labels (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The project alert group name (string)
 	Name *string `pulumi:"name"`
 	// The project id where create project alert group (string)
@@ -177,7 +177,7 @@ type projectAlertGroupArgs struct {
 // The set of arguments for constructing a ProjectAlertGroup resource.
 type ProjectAlertGroupArgs struct {
 	// The project alert group annotations (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// The project alert group description (string)
 	Description pulumi.StringPtrInput
 	// The project alert group interval seconds. Default: `180` (int)
@@ -185,7 +185,7 @@ type ProjectAlertGroupArgs struct {
 	// The project alert group wait seconds. Default: `180` (int)
 	GroupWaitSeconds pulumi.IntPtrInput
 	// The project alert group labels (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The project alert group name (string)
 	Name pulumi.StringPtrInput
 	// The project id where create project alert group (string)
@@ -284,8 +284,8 @@ func (o ProjectAlertGroupOutput) ToProjectAlertGroupOutputWithContext(ctx contex
 }
 
 // The project alert group annotations (map)
-func (o ProjectAlertGroupOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *ProjectAlertGroup) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o ProjectAlertGroupOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ProjectAlertGroup) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // The project alert group description (string)
@@ -304,8 +304,8 @@ func (o ProjectAlertGroupOutput) GroupWaitSeconds() pulumi.IntPtrOutput {
 }
 
 // The project alert group labels (map)
-func (o ProjectAlertGroupOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *ProjectAlertGroup) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o ProjectAlertGroupOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ProjectAlertGroup) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The project alert group name (string)

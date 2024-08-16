@@ -25,14 +25,14 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         [Input("matchLabels")]
-        private InputMap<object>? _matchLabels;
+        private InputMap<string>? _matchLabels;
 
         /// <summary>
         /// Label selector match labels
         /// </summary>
-        public InputMap<object> MatchLabels
+        public InputMap<string> MatchLabels
         {
-            get => _matchLabels ?? (_matchLabels = new InputMap<object>());
+            get => _matchLabels ?? (_matchLabels = new InputMap<string>());
             set => _matchLabels = value;
         }
 

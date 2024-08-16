@@ -63,7 +63,7 @@ type LookupRoleTemplateResult struct {
 	// (Computed) Administrative role template (bool)
 	Administrative bool `pulumi:"administrative"`
 	// (Computed) Annotations for role template object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// (Computed) Builtin role template (string)
 	Builtin bool   `pulumi:"builtin"`
 	Context string `pulumi:"context"`
@@ -80,7 +80,7 @@ type LookupRoleTemplateResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels for role template object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// (Computed) Locked role template (bool)
 	Locked bool   `pulumi:"locked"`
 	Name   string `pulumi:"name"`
@@ -138,8 +138,8 @@ func (o LookupRoleTemplateResultOutput) Administrative() pulumi.BoolOutput {
 }
 
 // (Computed) Annotations for role template object (map)
-func (o LookupRoleTemplateResultOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupRoleTemplateResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+func (o LookupRoleTemplateResultOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupRoleTemplateResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // (Computed) Builtin role template (string)
@@ -182,8 +182,8 @@ func (o LookupRoleTemplateResultOutput) Id() pulumi.StringOutput {
 }
 
 // (Computed) Labels for role template object (map)
-func (o LookupRoleTemplateResultOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupRoleTemplateResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+func (o LookupRoleTemplateResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupRoleTemplateResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // (Computed) Locked role template (bool)

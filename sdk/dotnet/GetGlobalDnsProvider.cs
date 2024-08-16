@@ -97,7 +97,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Annotations of the resource (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Annotations;
+        public readonly ImmutableDictionary<string, string> Annotations;
         public readonly Outputs.GetGlobalDnsProviderCloudflareConfigResult CloudflareConfig;
         public readonly string DnsProvider;
         /// <summary>
@@ -107,7 +107,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Labels of the resource (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Labels;
+        public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
         /// (Computed) The name of the global DNS provider (string)
         /// </summary>
@@ -119,7 +119,7 @@ namespace Pulumi.Rancher2
         private GetGlobalDnsProviderResult(
             Outputs.GetGlobalDnsProviderAlidnsConfigResult alidnsConfig,
 
-            ImmutableDictionary<string, object> annotations,
+            ImmutableDictionary<string, string> annotations,
 
             Outputs.GetGlobalDnsProviderCloudflareConfigResult cloudflareConfig,
 
@@ -127,7 +127,7 @@ namespace Pulumi.Rancher2
 
             string id,
 
-            ImmutableDictionary<string, object> labels,
+            ImmutableDictionary<string, string> labels,
 
             string name,
 

@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetProjectAlertGroupRecipient;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +18,7 @@ public final class GetProjectAlertGroupResult {
      * @return (Computed) The project alert group annotations (map)
      * 
      */
-    private Map<String,Object> annotations;
+    private Map<String,String> annotations;
     /**
      * @return (Computed) The project alert group description (string)
      * 
@@ -44,7 +43,7 @@ public final class GetProjectAlertGroupResult {
      * @return (Computed) The project alert group labels (map)
      * 
      */
-    private Map<String,Object> labels;
+    private Map<String,String> labels;
     private String name;
     private String projectId;
     /**
@@ -63,7 +62,7 @@ public final class GetProjectAlertGroupResult {
      * @return (Computed) The project alert group annotations (map)
      * 
      */
-    public Map<String,Object> annotations() {
+    public Map<String,String> annotations() {
         return this.annotations;
     }
     /**
@@ -98,7 +97,7 @@ public final class GetProjectAlertGroupResult {
      * @return (Computed) The project alert group labels (map)
      * 
      */
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels;
     }
     public String name() {
@@ -131,12 +130,12 @@ public final class GetProjectAlertGroupResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Map<String,Object> annotations;
+        private Map<String,String> annotations;
         private String description;
         private Integer groupIntervalSeconds;
         private Integer groupWaitSeconds;
         private String id;
-        private Map<String,Object> labels;
+        private Map<String,String> labels;
         private String name;
         private String projectId;
         private List<GetProjectAlertGroupRecipient> recipients;
@@ -157,7 +156,7 @@ public final class GetProjectAlertGroupResult {
         }
 
         @CustomType.Setter
-        public Builder annotations(Map<String,Object> annotations) {
+        public Builder annotations(Map<String,String> annotations) {
             if (annotations == null) {
               throw new MissingRequiredPropertyException("GetProjectAlertGroupResult", "annotations");
             }
@@ -197,7 +196,7 @@ public final class GetProjectAlertGroupResult {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(Map<String,Object> labels) {
+        public Builder labels(Map<String,String> labels) {
             if (labels == null) {
               throw new MissingRequiredPropertyException("GetProjectAlertGroupResult", "labels");
             }

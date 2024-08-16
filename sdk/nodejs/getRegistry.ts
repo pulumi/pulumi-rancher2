@@ -73,7 +73,7 @@ export interface GetRegistryResult {
     /**
      * (Computed) Annotations for Registry object (map)
      */
-    readonly annotations: {[key: string]: any};
+    readonly annotations: {[key: string]: string};
     /**
      * (Computed) A registry description (string)
      */
@@ -85,7 +85,7 @@ export interface GetRegistryResult {
     /**
      * (Computed) Labels for Registry object (map)
      */
-    readonly labels: {[key: string]: any};
+    readonly labels: {[key: string]: string};
     readonly name: string;
     readonly namespaceId?: string;
     readonly projectId: string;

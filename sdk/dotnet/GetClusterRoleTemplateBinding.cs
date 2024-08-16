@@ -122,7 +122,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Annotations of the resource (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Annotations;
+        public readonly ImmutableDictionary<string, string> Annotations;
         public readonly string ClusterId;
         /// <summary>
         /// (Computed) The group ID to assign cluster role template binding (string)
@@ -139,7 +139,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Labels of the resource (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Labels;
+        public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
         public readonly string RoleTemplateId;
         /// <summary>
@@ -153,7 +153,7 @@ namespace Pulumi.Rancher2
 
         [OutputConstructor]
         private GetClusterRoleTemplateBindingResult(
-            ImmutableDictionary<string, object> annotations,
+            ImmutableDictionary<string, string> annotations,
 
             string clusterId,
 
@@ -163,7 +163,7 @@ namespace Pulumi.Rancher2
 
             string id,
 
-            ImmutableDictionary<string, object> labels,
+            ImmutableDictionary<string, string> labels,
 
             string name,
 

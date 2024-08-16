@@ -18,18 +18,18 @@ class RegistryArgs:
     def __init__(__self__, *,
                  project_id: pulumi.Input[str],
                  registries: pulumi.Input[Sequence[pulumi.Input['RegistryRegistryArgs']]],
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespace_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Registry resource.
         :param pulumi.Input[str] project_id: The project id where to assign the registry (string)
         :param pulumi.Input[Sequence[pulumi.Input['RegistryRegistryArgs']]] registries: Registries data for registry (list)
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Registry object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for Registry object (map)
         :param pulumi.Input[str] description: A registry description (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Registry object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for Registry object (map)
         :param pulumi.Input[str] name: The name of the registry (string)
         :param pulumi.Input[str] namespace_id: The namespace id where to assign the namespaced registry (string)
         """
@@ -72,14 +72,14 @@ class RegistryArgs:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations for Registry object (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -96,14 +96,14 @@ class RegistryArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for Registry object (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -134,18 +134,18 @@ class RegistryArgs:
 @pulumi.input_type
 class _RegistryState:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespace_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  registries: Optional[pulumi.Input[Sequence[pulumi.Input['RegistryRegistryArgs']]]] = None):
         """
         Input properties used for looking up and filtering Registry resources.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Registry object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for Registry object (map)
         :param pulumi.Input[str] description: A registry description (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Registry object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for Registry object (map)
         :param pulumi.Input[str] name: The name of the registry (string)
         :param pulumi.Input[str] namespace_id: The namespace id where to assign the namespaced registry (string)
         :param pulumi.Input[str] project_id: The project id where to assign the registry (string)
@@ -168,14 +168,14 @@ class _RegistryState:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations for Registry object (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -192,14 +192,14 @@ class _RegistryState:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for Registry object (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -256,9 +256,9 @@ class Registry(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespace_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
@@ -317,9 +317,9 @@ class Registry(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Registry object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for Registry object (map)
         :param pulumi.Input[str] description: A registry description (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Registry object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for Registry object (map)
         :param pulumi.Input[str] name: The name of the registry (string)
         :param pulumi.Input[str] namespace_id: The namespace id where to assign the namespaced registry (string)
         :param pulumi.Input[str] project_id: The project id where to assign the registry (string)
@@ -397,9 +397,9 @@ class Registry(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespace_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
@@ -434,9 +434,9 @@ class Registry(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             namespace_id: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
@@ -448,9 +448,9 @@ class Registry(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] annotations: Annotations for Registry object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for Registry object (map)
         :param pulumi.Input[str] description: A registry description (string)
-        :param pulumi.Input[Mapping[str, Any]] labels: Labels for Registry object (map)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for Registry object (map)
         :param pulumi.Input[str] name: The name of the registry (string)
         :param pulumi.Input[str] namespace_id: The namespace id where to assign the namespaced registry (string)
         :param pulumi.Input[str] project_id: The project id where to assign the registry (string)
@@ -471,7 +471,7 @@ class Registry(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> pulumi.Output[Mapping[str, Any]]:
+    def annotations(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Annotations for Registry object (map)
         """
@@ -487,7 +487,7 @@ class Registry(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Labels for Registry object (map)
         """

@@ -53,7 +53,7 @@ func LookupApp(ctx *pulumi.Context, args *LookupAppArgs, opts ...pulumi.InvokeOp
 // A collection of arguments for invoking getApp.
 type LookupAppArgs struct {
 	// (Computed) Annotations for the catalog (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// The app name (string)
 	Name string `pulumi:"name"`
 	// The id of the project where the app is deployed (string)
@@ -65,9 +65,9 @@ type LookupAppArgs struct {
 // A collection of values returned by getApp.
 type LookupAppResult struct {
 	// (Computed) Annotations for the catalog (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// (Computed) Answers for the app (map)
-	Answers map[string]interface{} `pulumi:"answers"`
+	Answers map[string]string `pulumi:"answers"`
 	// (Computed) Catalog name of the app (string)
 	CatalogName string `pulumi:"catalogName"`
 	// (Computed) Description for the app (string)
@@ -77,9 +77,9 @@ type LookupAppResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels for the catalog (map)
-	Labels    map[string]interface{} `pulumi:"labels"`
-	Name      string                 `pulumi:"name"`
-	ProjectId string                 `pulumi:"projectId"`
+	Labels    map[string]string `pulumi:"labels"`
+	Name      string            `pulumi:"name"`
+	ProjectId string            `pulumi:"projectId"`
 	// (Computed) Current revision id for the app (string)
 	RevisionId      string `pulumi:"revisionId"`
 	TargetNamespace string `pulumi:"targetNamespace"`
@@ -107,7 +107,7 @@ func LookupAppOutput(ctx *pulumi.Context, args LookupAppOutputArgs, opts ...pulu
 // A collection of arguments for invoking getApp.
 type LookupAppOutputArgs struct {
 	// (Computed) Annotations for the catalog (map)
-	Annotations pulumi.MapInput `pulumi:"annotations"`
+	Annotations pulumi.StringMapInput `pulumi:"annotations"`
 	// The app name (string)
 	Name pulumi.StringInput `pulumi:"name"`
 	// The id of the project where the app is deployed (string)
@@ -136,13 +136,13 @@ func (o LookupAppResultOutput) ToLookupAppResultOutputWithContext(ctx context.Co
 }
 
 // (Computed) Annotations for the catalog (map)
-func (o LookupAppResultOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupAppResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+func (o LookupAppResultOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupAppResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // (Computed) Answers for the app (map)
-func (o LookupAppResultOutput) Answers() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupAppResult) map[string]interface{} { return v.Answers }).(pulumi.MapOutput)
+func (o LookupAppResultOutput) Answers() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupAppResult) map[string]string { return v.Answers }).(pulumi.StringMapOutput)
 }
 
 // (Computed) Catalog name of the app (string)
@@ -166,8 +166,8 @@ func (o LookupAppResultOutput) Id() pulumi.StringOutput {
 }
 
 // (Computed) Labels for the catalog (map)
-func (o LookupAppResultOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupAppResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+func (o LookupAppResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupAppResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupAppResultOutput) Name() pulumi.StringOutput {

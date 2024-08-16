@@ -50,7 +50,7 @@ class GetClusterTemplateResult:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> Mapping[str, str]:
         """
         (Computed) Annotations for the cluster template (map)
         """
@@ -79,7 +79,7 @@ class GetClusterTemplateResult:
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> Mapping[str, str]:
         """
         (Computed) Labels for the cluster template (map)
         """
@@ -123,9 +123,9 @@ class AwaitableGetClusterTemplateResult(GetClusterTemplateResult):
             template_revisions=self.template_revisions)
 
 
-def get_cluster_template(annotations: Optional[Mapping[str, Any]] = None,
+def get_cluster_template(annotations: Optional[Mapping[str, str]] = None,
                          description: Optional[str] = None,
-                         labels: Optional[Mapping[str, Any]] = None,
+                         labels: Optional[Mapping[str, str]] = None,
                          name: Optional[str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterTemplateResult:
     """
@@ -143,8 +143,8 @@ def get_cluster_template(annotations: Optional[Mapping[str, Any]] = None,
     ```
 
 
-    :param Mapping[str, Any] annotations: (Computed) Annotations for the cluster template (map)
-    :param Mapping[str, Any] labels: (Computed) Labels for the cluster template (map)
+    :param Mapping[str, str] annotations: (Computed) Annotations for the cluster template (map)
+    :param Mapping[str, str] labels: (Computed) Labels for the cluster template (map)
     :param str name: The cluster template name (string)
     """
     __args__ = dict()
@@ -167,9 +167,9 @@ def get_cluster_template(annotations: Optional[Mapping[str, Any]] = None,
 
 
 @_utilities.lift_output_func(get_cluster_template)
-def get_cluster_template_output(annotations: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+def get_cluster_template_output(annotations: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                 description: Optional[pulumi.Input[Optional[str]]] = None,
-                                labels: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                                labels: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                 name: Optional[pulumi.Input[str]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterTemplateResult]:
     """
@@ -187,8 +187,8 @@ def get_cluster_template_output(annotations: Optional[pulumi.Input[Optional[Mapp
     ```
 
 
-    :param Mapping[str, Any] annotations: (Computed) Annotations for the cluster template (map)
-    :param Mapping[str, Any] labels: (Computed) Labels for the cluster template (map)
+    :param Mapping[str, str] annotations: (Computed) Annotations for the cluster template (map)
+    :param Mapping[str, str] labels: (Computed) Labels for the cluster template (map)
     :param str name: The cluster template name (string)
     """
     ...

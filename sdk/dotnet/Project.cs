@@ -94,12 +94,12 @@ namespace Pulumi.Rancher2
     ///         {
     ///             Answers = 
     ///             {
-    ///                 { "exporter-kubelets.https", true },
-    ///                 { "exporter-node.enabled", true },
-    ///                 { "exporter-node.ports.metrics.port", 9796 },
+    ///                 { "exporter-kubelets.https", "true" },
+    ///                 { "exporter-node.enabled", "true" },
+    ///                 { "exporter-node.ports.metrics.port", "9796" },
     ///                 { "exporter-node.resources.limits.cpu", "200m" },
     ///                 { "exporter-node.resources.limits.memory", "200Mi" },
-    ///                 { "grafana.persistence.enabled", false },
+    ///                 { "grafana.persistence.enabled", "false" },
     ///                 { "grafana.persistence.size", "10Gi" },
     ///                 { "grafana.persistence.storageClass", "default" },
     ///                 { "operator.resources.limits.memory", "500Mi" },
@@ -134,7 +134,7 @@ namespace Pulumi.Rancher2
         /// Annotations for Node Pool object (map)
         /// </summary>
         [Output("annotations")]
-        public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Annotations { get; private set; } = null!;
 
         /// <summary>
         /// The cluster id where create project (string)
@@ -164,7 +164,7 @@ namespace Pulumi.Rancher2
         /// Labels for Node Pool object (map)
         /// </summary>
         [Output("labels")]
-        public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
         /// The name of the project (string)
@@ -243,14 +243,14 @@ namespace Pulumi.Rancher2
     public sealed class ProjectArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
-        private InputMap<object>? _annotations;
+        private InputMap<string>? _annotations;
 
         /// <summary>
         /// Annotations for Node Pool object (map)
         /// </summary>
-        public InputMap<object> Annotations
+        public InputMap<string> Annotations
         {
-            get => _annotations ?? (_annotations = new InputMap<object>());
+            get => _annotations ?? (_annotations = new InputMap<string>());
             set => _annotations = value;
         }
 
@@ -279,14 +279,14 @@ namespace Pulumi.Rancher2
         public Input<bool>? EnableProjectMonitoring { get; set; }
 
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// Labels for Node Pool object (map)
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
@@ -329,14 +329,14 @@ namespace Pulumi.Rancher2
     public sealed class ProjectState : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
-        private InputMap<object>? _annotations;
+        private InputMap<string>? _annotations;
 
         /// <summary>
         /// Annotations for Node Pool object (map)
         /// </summary>
-        public InputMap<object> Annotations
+        public InputMap<string> Annotations
         {
-            get => _annotations ?? (_annotations = new InputMap<object>());
+            get => _annotations ?? (_annotations = new InputMap<string>());
             set => _annotations = value;
         }
 
@@ -365,14 +365,14 @@ namespace Pulumi.Rancher2
         public Input<bool>? EnableProjectMonitoring { get; set; }
 
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// Labels for Node Pool object (map)
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 

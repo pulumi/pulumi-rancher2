@@ -40,7 +40,7 @@ type PodSecurityPolicyTemplate struct {
 	// (list)
 	AllowedUnsafeSysctls pulumi.StringArrayOutput `pulumi:"allowedUnsafeSysctls"`
 	// Annotations for PodSecurityPolicyTemplate object (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// (list)
 	DefaultAddCapabilities pulumi.StringArrayOutput `pulumi:"defaultAddCapabilities"`
 	// (list)
@@ -60,7 +60,7 @@ type PodSecurityPolicyTemplate struct {
 	// (list)
 	HostPorts PodSecurityPolicyTemplateHostPortArrayOutput `pulumi:"hostPorts"`
 	// Labels for PodSecurityPolicyTemplate object (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the PodSecurityPolicyTemplate (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// (bool)
@@ -128,7 +128,7 @@ type podSecurityPolicyTemplateState struct {
 	// (list)
 	AllowedUnsafeSysctls []string `pulumi:"allowedUnsafeSysctls"`
 	// Annotations for PodSecurityPolicyTemplate object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// (list)
 	DefaultAddCapabilities []string `pulumi:"defaultAddCapabilities"`
 	// (list)
@@ -148,7 +148,7 @@ type podSecurityPolicyTemplateState struct {
 	// (list)
 	HostPorts []PodSecurityPolicyTemplateHostPort `pulumi:"hostPorts"`
 	// Labels for PodSecurityPolicyTemplate object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The name of the PodSecurityPolicyTemplate (string)
 	Name *string `pulumi:"name"`
 	// (bool)
@@ -187,7 +187,7 @@ type PodSecurityPolicyTemplateState struct {
 	// (list)
 	AllowedUnsafeSysctls pulumi.StringArrayInput
 	// Annotations for PodSecurityPolicyTemplate object (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// (list)
 	DefaultAddCapabilities pulumi.StringArrayInput
 	// (list)
@@ -207,7 +207,7 @@ type PodSecurityPolicyTemplateState struct {
 	// (list)
 	HostPorts PodSecurityPolicyTemplateHostPortArrayInput
 	// Labels for PodSecurityPolicyTemplate object (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The name of the PodSecurityPolicyTemplate (string)
 	Name pulumi.StringPtrInput
 	// (bool)
@@ -250,7 +250,7 @@ type podSecurityPolicyTemplateArgs struct {
 	// (list)
 	AllowedUnsafeSysctls []string `pulumi:"allowedUnsafeSysctls"`
 	// Annotations for PodSecurityPolicyTemplate object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// (list)
 	DefaultAddCapabilities []string `pulumi:"defaultAddCapabilities"`
 	// (list)
@@ -270,7 +270,7 @@ type podSecurityPolicyTemplateArgs struct {
 	// (list)
 	HostPorts []PodSecurityPolicyTemplateHostPort `pulumi:"hostPorts"`
 	// Labels for PodSecurityPolicyTemplate object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The name of the PodSecurityPolicyTemplate (string)
 	Name *string `pulumi:"name"`
 	// (bool)
@@ -310,7 +310,7 @@ type PodSecurityPolicyTemplateArgs struct {
 	// (list)
 	AllowedUnsafeSysctls pulumi.StringArrayInput
 	// Annotations for PodSecurityPolicyTemplate object (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// (list)
 	DefaultAddCapabilities pulumi.StringArrayInput
 	// (list)
@@ -330,7 +330,7 @@ type PodSecurityPolicyTemplateArgs struct {
 	// (list)
 	HostPorts PodSecurityPolicyTemplateHostPortArrayInput
 	// Labels for PodSecurityPolicyTemplate object (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The name of the PodSecurityPolicyTemplate (string)
 	Name pulumi.StringPtrInput
 	// (bool)
@@ -482,8 +482,8 @@ func (o PodSecurityPolicyTemplateOutput) AllowedUnsafeSysctls() pulumi.StringArr
 }
 
 // Annotations for PodSecurityPolicyTemplate object (map)
-func (o PodSecurityPolicyTemplateOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *PodSecurityPolicyTemplate) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o PodSecurityPolicyTemplateOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PodSecurityPolicyTemplate) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // (list)
@@ -532,8 +532,8 @@ func (o PodSecurityPolicyTemplateOutput) HostPorts() PodSecurityPolicyTemplateHo
 }
 
 // Labels for PodSecurityPolicyTemplate object (map)
-func (o PodSecurityPolicyTemplateOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *PodSecurityPolicyTemplate) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o PodSecurityPolicyTemplateOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PodSecurityPolicyTemplate) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The name of the PodSecurityPolicyTemplate (string)

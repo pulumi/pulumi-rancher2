@@ -51,7 +51,7 @@ export interface GetNamespaceResult {
     /**
      * (Computed) Annotations for Node Pool object (map)
      */
-    readonly annotations: {[key: string]: any};
+    readonly annotations: {[key: string]: string};
     /**
      * (Computed) Default containers resource limits on namespace (List maxitem:1)
      */
@@ -67,7 +67,7 @@ export interface GetNamespaceResult {
     /**
      * (Computed) Labels for Node Pool object (map)
      */
-    readonly labels: {[key: string]: any};
+    readonly labels: {[key: string]: string};
     readonly name: string;
     readonly projectId: string;
     /**

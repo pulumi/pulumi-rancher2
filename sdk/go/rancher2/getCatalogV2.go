@@ -33,7 +33,7 @@ type LookupCatalogV2Args struct {
 // A collection of values returned by getCatalogV2.
 type LookupCatalogV2Result struct {
 	// (Computed) Annotations for the catalog v2 (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// (Computed) PEM encoded CA bundle which will be used to validate the repo's certificate (string)
 	CaBundle  string `pulumi:"caBundle"`
 	ClusterId string `pulumi:"clusterId"`
@@ -48,8 +48,8 @@ type LookupCatalogV2Result struct {
 	// (Computed) Use insecure HTTPS to download the repo's index. Default: `false` (bool)
 	Insecure bool `pulumi:"insecure"`
 	// (Computed) Labels for the catalog v2 (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	Name   string                 `pulumi:"name"`
+	Labels map[string]string `pulumi:"labels"`
+	Name   string            `pulumi:"name"`
 	// (Computed) The k8s resource version (string)
 	ResourceVersion string `pulumi:"resourceVersion"`
 	// (Computed) K8s secret name to be used to connect to the repo (string)
@@ -105,8 +105,8 @@ func (o LookupCatalogV2ResultOutput) ToLookupCatalogV2ResultOutputWithContext(ct
 }
 
 // (Computed) Annotations for the catalog v2 (map)
-func (o LookupCatalogV2ResultOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupCatalogV2Result) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+func (o LookupCatalogV2ResultOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupCatalogV2Result) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // (Computed) PEM encoded CA bundle which will be used to validate the repo's certificate (string)
@@ -144,8 +144,8 @@ func (o LookupCatalogV2ResultOutput) Insecure() pulumi.BoolOutput {
 }
 
 // (Computed) Labels for the catalog v2 (map)
-func (o LookupCatalogV2ResultOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupCatalogV2Result) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+func (o LookupCatalogV2ResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupCatalogV2Result) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupCatalogV2ResultOutput) Name() pulumi.StringOutput {

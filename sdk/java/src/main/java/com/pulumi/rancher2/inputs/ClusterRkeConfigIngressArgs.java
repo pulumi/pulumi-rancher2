@@ -9,7 +9,6 @@ import com.pulumi.rancher2.inputs.ClusterRkeConfigIngressTolerationArgs;
 import com.pulumi.rancher2.inputs.ClusterRkeConfigIngressUpdateStrategyArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -57,13 +56,13 @@ public final class ClusterRkeConfigIngressArgs extends com.pulumi.resources.Reso
      * 
      */
     @Import(name="extraArgs")
-    private @Nullable Output<Map<String,Object>> extraArgs;
+    private @Nullable Output<Map<String,String>> extraArgs;
 
     /**
      * @return Extra arguments for scheduler service (map)
      * 
      */
-    public Optional<Output<Map<String,Object>>> extraArgs() {
+    public Optional<Output<Map<String,String>>> extraArgs() {
         return Optional.ofNullable(this.extraArgs);
     }
 
@@ -117,13 +116,13 @@ public final class ClusterRkeConfigIngressArgs extends com.pulumi.resources.Reso
      * 
      */
     @Import(name="nodeSelector")
-    private @Nullable Output<Map<String,Object>> nodeSelector;
+    private @Nullable Output<Map<String,String>> nodeSelector;
 
     /**
      * @return RKE monitoring node selector (map)
      * 
      */
-    public Optional<Output<Map<String,Object>>> nodeSelector() {
+    public Optional<Output<Map<String,String>>> nodeSelector() {
         return Optional.ofNullable(this.nodeSelector);
     }
 
@@ -132,13 +131,13 @@ public final class ClusterRkeConfigIngressArgs extends com.pulumi.resources.Reso
      * 
      */
     @Import(name="options")
-    private @Nullable Output<Map<String,Object>> options;
+    private @Nullable Output<Map<String,String>> options;
 
     /**
      * @return RKE options for network (map)
      * 
      */
-    public Optional<Output<Map<String,Object>>> options() {
+    public Optional<Output<Map<String,String>>> options() {
         return Optional.ofNullable(this.options);
     }
 
@@ -269,7 +268,7 @@ public final class ClusterRkeConfigIngressArgs extends com.pulumi.resources.Reso
          * @return builder
          * 
          */
-        public Builder extraArgs(@Nullable Output<Map<String,Object>> extraArgs) {
+        public Builder extraArgs(@Nullable Output<Map<String,String>> extraArgs) {
             $.extraArgs = extraArgs;
             return this;
         }
@@ -280,7 +279,7 @@ public final class ClusterRkeConfigIngressArgs extends com.pulumi.resources.Reso
          * @return builder
          * 
          */
-        public Builder extraArgs(Map<String,Object> extraArgs) {
+        public Builder extraArgs(Map<String,String> extraArgs) {
             return extraArgs(Output.of(extraArgs));
         }
 
@@ -353,7 +352,7 @@ public final class ClusterRkeConfigIngressArgs extends com.pulumi.resources.Reso
          * @return builder
          * 
          */
-        public Builder nodeSelector(@Nullable Output<Map<String,Object>> nodeSelector) {
+        public Builder nodeSelector(@Nullable Output<Map<String,String>> nodeSelector) {
             $.nodeSelector = nodeSelector;
             return this;
         }
@@ -364,7 +363,7 @@ public final class ClusterRkeConfigIngressArgs extends com.pulumi.resources.Reso
          * @return builder
          * 
          */
-        public Builder nodeSelector(Map<String,Object> nodeSelector) {
+        public Builder nodeSelector(Map<String,String> nodeSelector) {
             return nodeSelector(Output.of(nodeSelector));
         }
 
@@ -374,7 +373,7 @@ public final class ClusterRkeConfigIngressArgs extends com.pulumi.resources.Reso
          * @return builder
          * 
          */
-        public Builder options(@Nullable Output<Map<String,Object>> options) {
+        public Builder options(@Nullable Output<Map<String,String>> options) {
             $.options = options;
             return this;
         }
@@ -385,7 +384,7 @@ public final class ClusterRkeConfigIngressArgs extends com.pulumi.resources.Reso
          * @return builder
          * 
          */
-        public Builder options(Map<String,Object> options) {
+        public Builder options(Map<String,String> options) {
             return options(Output.of(options));
         }
 

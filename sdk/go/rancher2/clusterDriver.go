@@ -29,13 +29,13 @@ type ClusterDriver struct {
 	// Actual url of the cluster driver (string)
 	ActualUrl pulumi.StringPtrOutput `pulumi:"actualUrl"`
 	// Annotations of the resource (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Specify whether the cluster driver is an internal cluster driver or not (bool)
 	Builtin pulumi.BoolOutput `pulumi:"builtin"`
 	// Verify that the downloaded driver matches the expected checksum (string)
 	Checksum pulumi.StringPtrOutput `pulumi:"checksum"`
 	// Labels of the resource (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Name of the cluster driver (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The URL to load for customized Add Clusters screen for this driver (string)
@@ -90,13 +90,13 @@ type clusterDriverState struct {
 	// Actual url of the cluster driver (string)
 	ActualUrl *string `pulumi:"actualUrl"`
 	// Annotations of the resource (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// Specify whether the cluster driver is an internal cluster driver or not (bool)
 	Builtin *bool `pulumi:"builtin"`
 	// Verify that the downloaded driver matches the expected checksum (string)
 	Checksum *string `pulumi:"checksum"`
 	// Labels of the resource (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// Name of the cluster driver (string)
 	Name *string `pulumi:"name"`
 	// The URL to load for customized Add Clusters screen for this driver (string)
@@ -113,13 +113,13 @@ type ClusterDriverState struct {
 	// Actual url of the cluster driver (string)
 	ActualUrl pulumi.StringPtrInput
 	// Annotations of the resource (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// Specify whether the cluster driver is an internal cluster driver or not (bool)
 	Builtin pulumi.BoolPtrInput
 	// Verify that the downloaded driver matches the expected checksum (string)
 	Checksum pulumi.StringPtrInput
 	// Labels of the resource (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// Name of the cluster driver (string)
 	Name pulumi.StringPtrInput
 	// The URL to load for customized Add Clusters screen for this driver (string)
@@ -140,13 +140,13 @@ type clusterDriverArgs struct {
 	// Actual url of the cluster driver (string)
 	ActualUrl *string `pulumi:"actualUrl"`
 	// Annotations of the resource (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// Specify whether the cluster driver is an internal cluster driver or not (bool)
 	Builtin bool `pulumi:"builtin"`
 	// Verify that the downloaded driver matches the expected checksum (string)
 	Checksum *string `pulumi:"checksum"`
 	// Labels of the resource (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// Name of the cluster driver (string)
 	Name *string `pulumi:"name"`
 	// The URL to load for customized Add Clusters screen for this driver (string)
@@ -164,13 +164,13 @@ type ClusterDriverArgs struct {
 	// Actual url of the cluster driver (string)
 	ActualUrl pulumi.StringPtrInput
 	// Annotations of the resource (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// Specify whether the cluster driver is an internal cluster driver or not (bool)
 	Builtin pulumi.BoolInput
 	// Verify that the downloaded driver matches the expected checksum (string)
 	Checksum pulumi.StringPtrInput
 	// Labels of the resource (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// Name of the cluster driver (string)
 	Name pulumi.StringPtrInput
 	// The URL to load for customized Add Clusters screen for this driver (string)
@@ -279,8 +279,8 @@ func (o ClusterDriverOutput) ActualUrl() pulumi.StringPtrOutput {
 }
 
 // Annotations of the resource (map)
-func (o ClusterDriverOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClusterDriver) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o ClusterDriverOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ClusterDriver) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // Specify whether the cluster driver is an internal cluster driver or not (bool)
@@ -294,8 +294,8 @@ func (o ClusterDriverOutput) Checksum() pulumi.StringPtrOutput {
 }
 
 // Labels of the resource (map)
-func (o ClusterDriverOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClusterDriver) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o ClusterDriverOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ClusterDriver) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // Name of the cluster driver (string)

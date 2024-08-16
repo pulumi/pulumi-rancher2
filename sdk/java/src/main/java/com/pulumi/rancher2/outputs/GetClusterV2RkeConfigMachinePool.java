@@ -10,7 +10,6 @@ import com.pulumi.rancher2.outputs.GetClusterV2RkeConfigMachinePoolRollingUpdate
 import com.pulumi.rancher2.outputs.GetClusterV2RkeConfigMachinePoolTaint;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +23,7 @@ public final class GetClusterV2RkeConfigMachinePool {
      * @return Annotations of the resource
      * 
      */
-    private Map<String,Object> annotations;
+    private Map<String,String> annotations;
     /**
      * @return (Computed) Cluster V2 cloud credential secret name (string)
      * 
@@ -54,7 +53,7 @@ public final class GetClusterV2RkeConfigMachinePool {
      * @return Labels of the resource
      * 
      */
-    private Map<String,Object> labels;
+    private Map<String,String> labels;
     /**
      * @return Machine config data
      * 
@@ -64,7 +63,7 @@ public final class GetClusterV2RkeConfigMachinePool {
      * @return Labels of the machine
      * 
      */
-    private Map<String,Object> machineLabels;
+    private Map<String,String> machineLabels;
     /**
      * @return max unhealthy nodes for automated replacement to be allowed
      * 
@@ -126,7 +125,7 @@ public final class GetClusterV2RkeConfigMachinePool {
      * @return Annotations of the resource
      * 
      */
-    public Map<String,Object> annotations() {
+    public Map<String,String> annotations() {
         return this.annotations;
     }
     /**
@@ -168,7 +167,7 @@ public final class GetClusterV2RkeConfigMachinePool {
      * @return Labels of the resource
      * 
      */
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels;
     }
     /**
@@ -182,7 +181,7 @@ public final class GetClusterV2RkeConfigMachinePool {
      * @return Labels of the machine
      * 
      */
-    public Map<String,Object> machineLabels() {
+    public Map<String,String> machineLabels() {
         return this.machineLabels;
     }
     /**
@@ -272,15 +271,15 @@ public final class GetClusterV2RkeConfigMachinePool {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Map<String,Object> annotations;
+        private Map<String,String> annotations;
         private @Nullable String cloudCredentialSecretName;
         private @Nullable Boolean controlPlaneRole;
         private @Nullable Boolean drainBeforeDelete;
         private @Nullable Boolean etcdRole;
         private @Nullable Integer hostnameLengthLimit;
-        private Map<String,Object> labels;
+        private Map<String,String> labels;
         private GetClusterV2RkeConfigMachinePoolMachineConfig machineConfig;
-        private Map<String,Object> machineLabels;
+        private Map<String,String> machineLabels;
         private @Nullable String maxUnhealthy;
         private String name;
         private @Nullable Integer nodeDrainTimeout;
@@ -318,7 +317,7 @@ public final class GetClusterV2RkeConfigMachinePool {
         }
 
         @CustomType.Setter
-        public Builder annotations(Map<String,Object> annotations) {
+        public Builder annotations(Map<String,String> annotations) {
             if (annotations == null) {
               throw new MissingRequiredPropertyException("GetClusterV2RkeConfigMachinePool", "annotations");
             }
@@ -356,7 +355,7 @@ public final class GetClusterV2RkeConfigMachinePool {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(Map<String,Object> labels) {
+        public Builder labels(Map<String,String> labels) {
             if (labels == null) {
               throw new MissingRequiredPropertyException("GetClusterV2RkeConfigMachinePool", "labels");
             }
@@ -372,7 +371,7 @@ public final class GetClusterV2RkeConfigMachinePool {
             return this;
         }
         @CustomType.Setter
-        public Builder machineLabels(Map<String,Object> machineLabels) {
+        public Builder machineLabels(Map<String,String> machineLabels) {
             if (machineLabels == null) {
               throw new MissingRequiredPropertyException("GetClusterV2RkeConfigMachinePool", "machineLabels");
             }

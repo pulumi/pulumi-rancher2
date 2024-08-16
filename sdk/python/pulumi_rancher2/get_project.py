@@ -59,7 +59,7 @@ class GetProjectResult:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> Mapping[str, str]:
         """
         (Computed) Annotations of the rancher2 project (map)
         """
@@ -104,7 +104,7 @@ class GetProjectResult:
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> Mapping[str, str]:
         """
         (Computed) Labels of the rancher2 project (map)
         """

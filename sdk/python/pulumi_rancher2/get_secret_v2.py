@@ -55,7 +55,7 @@ class GetSecretV2Result:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> Mapping[str, str]:
         """
         (Computed) Annotations for the secret v2 (map)
         """
@@ -68,7 +68,7 @@ class GetSecretV2Result:
 
     @property
     @pulumi.getter
-    def data(self) -> Mapping[str, Any]:
+    def data(self) -> Mapping[str, str]:
         """
         (Computed/Sensitive) The data of the secret v2 (map)
         """
@@ -92,7 +92,7 @@ class GetSecretV2Result:
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> Mapping[str, str]:
         """
         (Computed) Labels for the secret v2 (map)
         """

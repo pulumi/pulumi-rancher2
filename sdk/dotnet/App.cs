@@ -43,7 +43,7 @@ namespace Pulumi.Rancher2
     ///         {
     ///             { "ingress_host", "test.xip.io" },
     ///             { "foo", "bar" },
-    ///             { "ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect", true },
+    ///             { "ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect", "true" },
     ///         },
     ///     });
     /// 
@@ -88,7 +88,7 @@ namespace Pulumi.Rancher2
     ///         {
     ///             { "ingress_host", "test.xip.io" },
     ///             { "foo", "bar" },
-    ///             { "ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect", true },
+    ///             { "ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect", "true" },
     ///         },
     ///     });
     /// 
@@ -110,13 +110,13 @@ namespace Pulumi.Rancher2
         /// Annotations for App object (map)
         /// </summary>
         [Output("annotations")]
-        public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Annotations { get; private set; } = null!;
 
         /// <summary>
         /// Answers for the app template. If modified, app will be upgraded (map)
         /// </summary>
         [Output("answers")]
-        public Output<ImmutableDictionary<string, object>?> Answers { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Answers { get; private set; } = null!;
 
         /// <summary>
         /// Catalog name of the app. If modified, app will be upgraded. For use scoped catalogs:
@@ -148,7 +148,7 @@ namespace Pulumi.Rancher2
         /// Labels for App object (map)
         /// </summary>
         [Output("labels")]
-        public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
         /// The name of the app (string)
@@ -245,26 +245,26 @@ namespace Pulumi.Rancher2
     public sealed class AppArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
-        private InputMap<object>? _annotations;
+        private InputMap<string>? _annotations;
 
         /// <summary>
         /// Annotations for App object (map)
         /// </summary>
-        public InputMap<object> Annotations
+        public InputMap<string> Annotations
         {
-            get => _annotations ?? (_annotations = new InputMap<object>());
+            get => _annotations ?? (_annotations = new InputMap<string>());
             set => _annotations = value;
         }
 
         [Input("answers")]
-        private InputMap<object>? _answers;
+        private InputMap<string>? _answers;
 
         /// <summary>
         /// Answers for the app template. If modified, app will be upgraded (map)
         /// </summary>
-        public InputMap<object> Answers
+        public InputMap<string> Answers
         {
-            get => _answers ?? (_answers = new InputMap<object>());
+            get => _answers ?? (_answers = new InputMap<string>());
             set => _answers = value;
         }
 
@@ -289,14 +289,14 @@ namespace Pulumi.Rancher2
         public Input<bool>? ForceUpgrade { get; set; }
 
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// Labels for App object (map)
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
@@ -357,26 +357,26 @@ namespace Pulumi.Rancher2
     public sealed class AppState : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
-        private InputMap<object>? _annotations;
+        private InputMap<string>? _annotations;
 
         /// <summary>
         /// Annotations for App object (map)
         /// </summary>
-        public InputMap<object> Annotations
+        public InputMap<string> Annotations
         {
-            get => _annotations ?? (_annotations = new InputMap<object>());
+            get => _annotations ?? (_annotations = new InputMap<string>());
             set => _annotations = value;
         }
 
         [Input("answers")]
-        private InputMap<object>? _answers;
+        private InputMap<string>? _answers;
 
         /// <summary>
         /// Answers for the app template. If modified, app will be upgraded (map)
         /// </summary>
-        public InputMap<object> Answers
+        public InputMap<string> Answers
         {
-            get => _answers ?? (_answers = new InputMap<object>());
+            get => _answers ?? (_answers = new InputMap<string>());
             set => _answers = value;
         }
 
@@ -407,14 +407,14 @@ namespace Pulumi.Rancher2
         public Input<bool>? ForceUpgrade { get; set; }
 
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// Labels for App object (map)
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 

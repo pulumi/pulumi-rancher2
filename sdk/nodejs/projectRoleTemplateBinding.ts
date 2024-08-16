@@ -61,7 +61,7 @@ export class ProjectRoleTemplateBinding extends pulumi.CustomResource {
     /**
      * Annotations of the resource (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: any}>;
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * The group ID to assign project role template binding (string)
      */
@@ -75,7 +75,7 @@ export class ProjectRoleTemplateBinding extends pulumi.CustomResource {
      *
      * **Note:** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the project role template binding (string)
      */
@@ -149,7 +149,7 @@ export interface ProjectRoleTemplateBindingState {
     /**
      * Annotations of the resource (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The group ID to assign project role template binding (string)
      */
@@ -163,7 +163,7 @@ export interface ProjectRoleTemplateBindingState {
      *
      * **Note:** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the project role template binding (string)
      */
@@ -193,7 +193,7 @@ export interface ProjectRoleTemplateBindingArgs {
     /**
      * Annotations of the resource (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The group ID to assign project role template binding (string)
      */
@@ -207,7 +207,7 @@ export interface ProjectRoleTemplateBindingArgs {
      *
      * **Note:** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the project role template binding (string)
      */

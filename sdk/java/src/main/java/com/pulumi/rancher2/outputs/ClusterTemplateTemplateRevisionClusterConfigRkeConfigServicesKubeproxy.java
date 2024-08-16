@@ -4,7 +4,6 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -14,13 +13,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxy {
-    private @Nullable Map<String,Object> extraArgs;
+    private @Nullable Map<String,String> extraArgs;
     private @Nullable List<String> extraBinds;
     private @Nullable List<String> extraEnvs;
     private @Nullable String image;
 
     private ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxy() {}
-    public Map<String,Object> extraArgs() {
+    public Map<String,String> extraArgs() {
         return this.extraArgs == null ? Map.of() : this.extraArgs;
     }
     public List<String> extraBinds() {
@@ -42,7 +41,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Map<String,Object> extraArgs;
+        private @Nullable Map<String,String> extraArgs;
         private @Nullable List<String> extraBinds;
         private @Nullable List<String> extraEnvs;
         private @Nullable String image;
@@ -56,7 +55,7 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
         }
 
         @CustomType.Setter
-        public Builder extraArgs(@Nullable Map<String,Object> extraArgs) {
+        public Builder extraArgs(@Nullable Map<String,String> extraArgs) {
 
             this.extraArgs = extraArgs;
             return this;

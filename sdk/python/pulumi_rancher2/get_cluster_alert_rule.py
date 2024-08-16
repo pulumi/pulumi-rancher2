@@ -71,7 +71,7 @@ class GetClusterAlertRuleResult:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> Mapping[str, str]:
         """
         (Computed) The cluster alert rule annotations (map)
         """
@@ -132,7 +132,7 @@ class GetClusterAlertRuleResult:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, Any]]:
+    def labels(self) -> Optional[Mapping[str, str]]:
         """
         (Computed) The cluster alert rule labels (map)
         """
@@ -208,7 +208,7 @@ class AwaitableGetClusterAlertRuleResult(GetClusterAlertRuleResult):
 
 
 def get_cluster_alert_rule(cluster_id: Optional[str] = None,
-                           labels: Optional[Mapping[str, Any]] = None,
+                           labels: Optional[Mapping[str, str]] = None,
                            name: Optional[str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterAlertRuleResult:
     """
@@ -226,7 +226,7 @@ def get_cluster_alert_rule(cluster_id: Optional[str] = None,
 
 
     :param str cluster_id: The cluster id where create cluster alert rule (string)
-    :param Mapping[str, Any] labels: (Computed) The cluster alert rule labels (map)
+    :param Mapping[str, str] labels: (Computed) The cluster alert rule labels (map)
     :param str name: The cluster alert rule name (string)
     """
     __args__ = dict()
@@ -256,7 +256,7 @@ def get_cluster_alert_rule(cluster_id: Optional[str] = None,
 
 @_utilities.lift_output_func(get_cluster_alert_rule)
 def get_cluster_alert_rule_output(cluster_id: Optional[pulumi.Input[str]] = None,
-                                  labels: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                                  labels: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                   name: Optional[pulumi.Input[str]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterAlertRuleResult]:
     """
@@ -274,7 +274,7 @@ def get_cluster_alert_rule_output(cluster_id: Optional[pulumi.Input[str]] = None
 
 
     :param str cluster_id: The cluster id where create cluster alert rule (string)
-    :param Mapping[str, Any] labels: (Computed) The cluster alert rule labels (map)
+    :param Mapping[str, str] labels: (Computed) The cluster alert rule labels (map)
     :param str name: The cluster alert rule name (string)
     """
     ...

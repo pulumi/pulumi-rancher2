@@ -24,7 +24,7 @@ type Token struct {
 	// (Computed) Token access key part (string)
 	AccessKey pulumi.StringOutput `pulumi:"accessKey"`
 	// (Computed) Annotations of the token (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Cluster ID for scoped token (string)
 	ClusterId pulumi.StringPtrOutput `pulumi:"clusterId"`
 	// Token description (string)
@@ -34,7 +34,7 @@ type Token struct {
 	// (Computed) Token is expired (bool)
 	Expired pulumi.BoolOutput `pulumi:"expired"`
 	// (Computed) Labels of the token (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// (Computed) Token name (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Renew expired or disabled token
@@ -89,7 +89,7 @@ type tokenState struct {
 	// (Computed) Token access key part (string)
 	AccessKey *string `pulumi:"accessKey"`
 	// (Computed) Annotations of the token (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// Cluster ID for scoped token (string)
 	ClusterId *string `pulumi:"clusterId"`
 	// Token description (string)
@@ -99,7 +99,7 @@ type tokenState struct {
 	// (Computed) Token is expired (bool)
 	Expired *bool `pulumi:"expired"`
 	// (Computed) Labels of the token (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// (Computed) Token name (string)
 	Name *string `pulumi:"name"`
 	// Renew expired or disabled token
@@ -120,7 +120,7 @@ type TokenState struct {
 	// (Computed) Token access key part (string)
 	AccessKey pulumi.StringPtrInput
 	// (Computed) Annotations of the token (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// Cluster ID for scoped token (string)
 	ClusterId pulumi.StringPtrInput
 	// Token description (string)
@@ -130,7 +130,7 @@ type TokenState struct {
 	// (Computed) Token is expired (bool)
 	Expired pulumi.BoolPtrInput
 	// (Computed) Labels of the token (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// (Computed) Token name (string)
 	Name pulumi.StringPtrInput
 	// Renew expired or disabled token
@@ -153,13 +153,13 @@ func (TokenState) ElementType() reflect.Type {
 
 type tokenArgs struct {
 	// (Computed) Annotations of the token (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// Cluster ID for scoped token (string)
 	ClusterId *string `pulumi:"clusterId"`
 	// Token description (string)
 	Description *string `pulumi:"description"`
 	// (Computed) Labels of the token (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// Renew expired or disabled token
 	Renew *bool `pulumi:"renew"`
 	// Token time to live in seconds. Default `0` (int)
@@ -171,13 +171,13 @@ type tokenArgs struct {
 // The set of arguments for constructing a Token resource.
 type TokenArgs struct {
 	// (Computed) Annotations of the token (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// Cluster ID for scoped token (string)
 	ClusterId pulumi.StringPtrInput
 	// Token description (string)
 	Description pulumi.StringPtrInput
 	// (Computed) Labels of the token (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// Renew expired or disabled token
 	Renew pulumi.BoolPtrInput
 	// Token time to live in seconds. Default `0` (int)
@@ -279,8 +279,8 @@ func (o TokenOutput) AccessKey() pulumi.StringOutput {
 }
 
 // (Computed) Annotations of the token (map)
-func (o TokenOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *Token) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o TokenOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Token) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // Cluster ID for scoped token (string)
@@ -304,8 +304,8 @@ func (o TokenOutput) Expired() pulumi.BoolOutput {
 }
 
 // (Computed) Labels of the token (map)
-func (o TokenOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *Token) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o TokenOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Token) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // (Computed) Token name (string)

@@ -96,25 +96,25 @@ import (
 //				},
 //				EnableProjectMonitoring: pulumi.Bool(true),
 //				ProjectMonitoringInput: &rancher2.ProjectProjectMonitoringInputArgs{
-//					Answers: pulumi.Map{
-//						"exporter-kubelets.https":                   pulumi.Any(true),
-//						"exporter-node.enabled":                     pulumi.Any(true),
-//						"exporter-node.ports.metrics.port":          pulumi.Any(9796),
-//						"exporter-node.resources.limits.cpu":        pulumi.Any("200m"),
-//						"exporter-node.resources.limits.memory":     pulumi.Any("200Mi"),
-//						"grafana.persistence.enabled":               pulumi.Any(false),
-//						"grafana.persistence.size":                  pulumi.Any("10Gi"),
-//						"grafana.persistence.storageClass":          pulumi.Any("default"),
-//						"operator.resources.limits.memory":          pulumi.Any("500Mi"),
-//						"prometheus.persistence.enabled":            pulumi.Any("false"),
-//						"prometheus.persistence.size":               pulumi.Any("50Gi"),
-//						"prometheus.persistence.storageClass":       pulumi.Any("default"),
-//						"prometheus.persistent.useReleaseName":      pulumi.Any("true"),
-//						"prometheus.resources.core.limits.cpu":      pulumi.Any("1000m"),
-//						"prometheus.resources.core.limits.memory":   pulumi.Any("1500Mi"),
-//						"prometheus.resources.core.requests.cpu":    pulumi.Any("750m"),
-//						"prometheus.resources.core.requests.memory": pulumi.Any("750Mi"),
-//						"prometheus.retention":                      pulumi.Any("12h"),
+//					Answers: pulumi.StringMap{
+//						"exporter-kubelets.https":                   pulumi.String("true"),
+//						"exporter-node.enabled":                     pulumi.String("true"),
+//						"exporter-node.ports.metrics.port":          pulumi.String("9796"),
+//						"exporter-node.resources.limits.cpu":        pulumi.String("200m"),
+//						"exporter-node.resources.limits.memory":     pulumi.String("200Mi"),
+//						"grafana.persistence.enabled":               pulumi.String("false"),
+//						"grafana.persistence.size":                  pulumi.String("10Gi"),
+//						"grafana.persistence.storageClass":          pulumi.String("default"),
+//						"operator.resources.limits.memory":          pulumi.String("500Mi"),
+//						"prometheus.persistence.enabled":            pulumi.String("false"),
+//						"prometheus.persistence.size":               pulumi.String("50Gi"),
+//						"prometheus.persistence.storageClass":       pulumi.String("default"),
+//						"prometheus.persistent.useReleaseName":      pulumi.String("true"),
+//						"prometheus.resources.core.limits.cpu":      pulumi.String("1000m"),
+//						"prometheus.resources.core.limits.memory":   pulumi.String("1500Mi"),
+//						"prometheus.resources.core.requests.cpu":    pulumi.String("750m"),
+//						"prometheus.resources.core.requests.memory": pulumi.String("750Mi"),
+//						"prometheus.retention":                      pulumi.String("12h"),
 //					},
 //				},
 //			})
@@ -138,7 +138,7 @@ type Project struct {
 	pulumi.CustomResourceState
 
 	// Annotations for Node Pool object (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// The cluster id where create project (string)
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// Default containers resource limits on project (List maxitem:1)
@@ -148,7 +148,7 @@ type Project struct {
 	// Enable built-in project monitoring. Default `false` (bool)
 	EnableProjectMonitoring pulumi.BoolPtrOutput `pulumi:"enableProjectMonitoring"`
 	// Labels for Node Pool object (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the project (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Default Pod Security Policy ID for the project (string)
@@ -195,7 +195,7 @@ func GetProject(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Project resources.
 type projectState struct {
 	// Annotations for Node Pool object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// The cluster id where create project (string)
 	ClusterId *string `pulumi:"clusterId"`
 	// Default containers resource limits on project (List maxitem:1)
@@ -205,7 +205,7 @@ type projectState struct {
 	// Enable built-in project monitoring. Default `false` (bool)
 	EnableProjectMonitoring *bool `pulumi:"enableProjectMonitoring"`
 	// Labels for Node Pool object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The name of the project (string)
 	Name *string `pulumi:"name"`
 	// Default Pod Security Policy ID for the project (string)
@@ -220,7 +220,7 @@ type projectState struct {
 
 type ProjectState struct {
 	// Annotations for Node Pool object (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// The cluster id where create project (string)
 	ClusterId pulumi.StringPtrInput
 	// Default containers resource limits on project (List maxitem:1)
@@ -230,7 +230,7 @@ type ProjectState struct {
 	// Enable built-in project monitoring. Default `false` (bool)
 	EnableProjectMonitoring pulumi.BoolPtrInput
 	// Labels for Node Pool object (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The name of the project (string)
 	Name pulumi.StringPtrInput
 	// Default Pod Security Policy ID for the project (string)
@@ -249,7 +249,7 @@ func (ProjectState) ElementType() reflect.Type {
 
 type projectArgs struct {
 	// Annotations for Node Pool object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// The cluster id where create project (string)
 	ClusterId string `pulumi:"clusterId"`
 	// Default containers resource limits on project (List maxitem:1)
@@ -259,7 +259,7 @@ type projectArgs struct {
 	// Enable built-in project monitoring. Default `false` (bool)
 	EnableProjectMonitoring *bool `pulumi:"enableProjectMonitoring"`
 	// Labels for Node Pool object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The name of the project (string)
 	Name *string `pulumi:"name"`
 	// Default Pod Security Policy ID for the project (string)
@@ -275,7 +275,7 @@ type projectArgs struct {
 // The set of arguments for constructing a Project resource.
 type ProjectArgs struct {
 	// Annotations for Node Pool object (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// The cluster id where create project (string)
 	ClusterId pulumi.StringInput
 	// Default containers resource limits on project (List maxitem:1)
@@ -285,7 +285,7 @@ type ProjectArgs struct {
 	// Enable built-in project monitoring. Default `false` (bool)
 	EnableProjectMonitoring pulumi.BoolPtrInput
 	// Labels for Node Pool object (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The name of the project (string)
 	Name pulumi.StringPtrInput
 	// Default Pod Security Policy ID for the project (string)
@@ -386,8 +386,8 @@ func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOu
 }
 
 // Annotations for Node Pool object (map)
-func (o ProjectOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *Project) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o ProjectOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // The cluster id where create project (string)
@@ -411,8 +411,8 @@ func (o ProjectOutput) EnableProjectMonitoring() pulumi.BoolPtrOutput {
 }
 
 // Labels for Node Pool object (map)
-func (o ProjectOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *Project) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o ProjectOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The name of the project (string)

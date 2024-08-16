@@ -57,7 +57,7 @@ type AuthConfigOkta struct {
 	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `okta_user://<USER_ID>`  `okta_group://<GROUP_ID>` (list)
 	AllowedPrincipalIds pulumi.StringArrayOutput `pulumi:"allowedPrincipalIds"`
 	// Annotations of the resource (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// OKTA display name field (string)
 	DisplayNameField pulumi.StringOutput `pulumi:"displayNameField"`
 	// Enable auth config provider. Default `true` (bool)
@@ -67,7 +67,7 @@ type AuthConfigOkta struct {
 	// OKTA IDP metadata content (string)
 	IdpMetadataContent pulumi.StringOutput `pulumi:"idpMetadataContent"`
 	// Labels of the resource (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// (Computed) The name of the resource (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Rancher URL. URL scheme needs to be specified, `https://<RANCHER_API_HOST>` (string)
@@ -158,7 +158,7 @@ type authConfigOktaState struct {
 	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `okta_user://<USER_ID>`  `okta_group://<GROUP_ID>` (list)
 	AllowedPrincipalIds []string `pulumi:"allowedPrincipalIds"`
 	// Annotations of the resource (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// OKTA display name field (string)
 	DisplayNameField *string `pulumi:"displayNameField"`
 	// Enable auth config provider. Default `true` (bool)
@@ -168,7 +168,7 @@ type authConfigOktaState struct {
 	// OKTA IDP metadata content (string)
 	IdpMetadataContent *string `pulumi:"idpMetadataContent"`
 	// Labels of the resource (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// (Computed) The name of the resource (string)
 	Name *string `pulumi:"name"`
 	// Rancher URL. URL scheme needs to be specified, `https://<RANCHER_API_HOST>` (string)
@@ -191,7 +191,7 @@ type AuthConfigOktaState struct {
 	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `okta_user://<USER_ID>`  `okta_group://<GROUP_ID>` (list)
 	AllowedPrincipalIds pulumi.StringArrayInput
 	// Annotations of the resource (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// OKTA display name field (string)
 	DisplayNameField pulumi.StringPtrInput
 	// Enable auth config provider. Default `true` (bool)
@@ -201,7 +201,7 @@ type AuthConfigOktaState struct {
 	// OKTA IDP metadata content (string)
 	IdpMetadataContent pulumi.StringPtrInput
 	// Labels of the resource (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// (Computed) The name of the resource (string)
 	Name pulumi.StringPtrInput
 	// Rancher URL. URL scheme needs to be specified, `https://<RANCHER_API_HOST>` (string)
@@ -228,7 +228,7 @@ type authConfigOktaArgs struct {
 	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `okta_user://<USER_ID>`  `okta_group://<GROUP_ID>` (list)
 	AllowedPrincipalIds []string `pulumi:"allowedPrincipalIds"`
 	// Annotations of the resource (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// OKTA display name field (string)
 	DisplayNameField string `pulumi:"displayNameField"`
 	// Enable auth config provider. Default `true` (bool)
@@ -238,7 +238,7 @@ type authConfigOktaArgs struct {
 	// OKTA IDP metadata content (string)
 	IdpMetadataContent string `pulumi:"idpMetadataContent"`
 	// Labels of the resource (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// Rancher URL. URL scheme needs to be specified, `https://<RANCHER_API_HOST>` (string)
 	RancherApiHost string `pulumi:"rancherApiHost"`
 	// OKTA SP cert (string)
@@ -258,7 +258,7 @@ type AuthConfigOktaArgs struct {
 	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `okta_user://<USER_ID>`  `okta_group://<GROUP_ID>` (list)
 	AllowedPrincipalIds pulumi.StringArrayInput
 	// Annotations of the resource (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// OKTA display name field (string)
 	DisplayNameField pulumi.StringInput
 	// Enable auth config provider. Default `true` (bool)
@@ -268,7 +268,7 @@ type AuthConfigOktaArgs struct {
 	// OKTA IDP metadata content (string)
 	IdpMetadataContent pulumi.StringInput
 	// Labels of the resource (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// Rancher URL. URL scheme needs to be specified, `https://<RANCHER_API_HOST>` (string)
 	RancherApiHost pulumi.StringInput
 	// OKTA SP cert (string)
@@ -379,8 +379,8 @@ func (o AuthConfigOktaOutput) AllowedPrincipalIds() pulumi.StringArrayOutput {
 }
 
 // Annotations of the resource (map)
-func (o AuthConfigOktaOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *AuthConfigOkta) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o AuthConfigOktaOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AuthConfigOkta) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // OKTA display name field (string)
@@ -404,8 +404,8 @@ func (o AuthConfigOktaOutput) IdpMetadataContent() pulumi.StringOutput {
 }
 
 // Labels of the resource (map)
-func (o AuthConfigOktaOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *AuthConfigOkta) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o AuthConfigOktaOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AuthConfigOkta) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // (Computed) The name of the resource (string)

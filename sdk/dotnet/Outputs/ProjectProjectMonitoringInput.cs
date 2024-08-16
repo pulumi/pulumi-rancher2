@@ -16,7 +16,7 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// Answers for monitor input
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Answers;
+        public readonly ImmutableDictionary<string, string>? Answers;
         /// <summary>
         /// Monitoring version
         /// </summary>
@@ -24,7 +24,7 @@ namespace Pulumi.Rancher2.Outputs
 
         [OutputConstructor]
         private ProjectProjectMonitoringInput(
-            ImmutableDictionary<string, object>? answers,
+            ImmutableDictionary<string, string>? answers,
 
             string? version)
         {

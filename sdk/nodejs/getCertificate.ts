@@ -71,7 +71,7 @@ export interface GetCertificateResult {
     /**
      * (Computed) Annotations for certificate object (map)
      */
-    readonly annotations: {[key: string]: any};
+    readonly annotations: {[key: string]: string};
     /**
      * (Computed) Base64 encoded certs (string)
      */
@@ -87,7 +87,7 @@ export interface GetCertificateResult {
     /**
      * (Computed) Labels for certificate object (map)
      */
-    readonly labels: {[key: string]: any};
+    readonly labels: {[key: string]: string};
     readonly name: string;
     readonly namespaceId?: string;
     readonly projectId: string;

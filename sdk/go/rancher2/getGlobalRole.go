@@ -59,7 +59,7 @@ type LookupGlobalRoleArgs struct {
 // A collection of values returned by getGlobalRole.
 type LookupGlobalRoleResult struct {
 	// (Computed) Annotations for global role object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// (Computed) Builtin global role (bool)
 	Builtin bool `pulumi:"builtin"`
 	// (Computed) Global role description (string)
@@ -69,8 +69,8 @@ type LookupGlobalRoleResult struct {
 	// (Optional) Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
 	InheritedClusterRoles []string `pulumi:"inheritedClusterRoles"`
 	// (Computed) Labels for global role object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
-	Name   string                 `pulumi:"name"`
+	Labels map[string]string `pulumi:"labels"`
+	Name   string            `pulumi:"name"`
 	// (Computed) Whether or not this role should be added to new users (bool)
 	NewUserDefault bool `pulumi:"newUserDefault"`
 	// (Computed) Global role policy rules (list)
@@ -118,8 +118,8 @@ func (o LookupGlobalRoleResultOutput) ToLookupGlobalRoleResultOutputWithContext(
 }
 
 // (Computed) Annotations for global role object (map)
-func (o LookupGlobalRoleResultOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupGlobalRoleResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+func (o LookupGlobalRoleResultOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupGlobalRoleResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // (Computed) Builtin global role (bool)
@@ -143,8 +143,8 @@ func (o LookupGlobalRoleResultOutput) InheritedClusterRoles() pulumi.StringArray
 }
 
 // (Computed) Labels for global role object (map)
-func (o LookupGlobalRoleResultOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupGlobalRoleResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+func (o LookupGlobalRoleResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupGlobalRoleResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupGlobalRoleResultOutput) Name() pulumi.StringOutput {

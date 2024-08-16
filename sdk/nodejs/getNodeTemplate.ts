@@ -50,7 +50,7 @@ export interface GetNodeTemplateResult {
     /**
      * (Computed) Annotations for Node Template object (map)
      */
-    readonly annotations: {[key: string]: any};
+    readonly annotations: {[key: string]: string};
     /**
      * (Computed) Cloud credential ID for the Node Template. Required from Rancher v2.2.x (string)
      */
@@ -66,7 +66,7 @@ export interface GetNodeTemplateResult {
     /**
      * (Computed) Engine environment for the node template (string)
      */
-    readonly engineEnv: {[key: string]: any};
+    readonly engineEnv: {[key: string]: string};
     /**
      * (Computed) Insecure registry for the node template (list)
      */
@@ -78,11 +78,11 @@ export interface GetNodeTemplateResult {
     /**
      * (Computed) Engine label for the node template (string)
      */
-    readonly engineLabel: {[key: string]: any};
+    readonly engineLabel: {[key: string]: string};
     /**
      * (Computed) Engine options for the node template (map)
      */
-    readonly engineOpt: {[key: string]: any};
+    readonly engineOpt: {[key: string]: string};
     /**
      * (Computed) Engine registry mirror for the node template (list)
      */
@@ -98,7 +98,7 @@ export interface GetNodeTemplateResult {
     /**
      * (Computed) Labels for Node Template object (map)
      */
-    readonly labels: {[key: string]: any};
+    readonly labels: {[key: string]: string};
     readonly name: string;
     /**
      * (Computed) Node taints (List)

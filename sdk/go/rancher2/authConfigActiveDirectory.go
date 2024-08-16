@@ -23,7 +23,7 @@ type AuthConfigActiveDirectory struct {
 	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>`. The local admin (`local://<admin id>`) and the `testUsername` must be added too. (list)
 	AllowedPrincipalIds pulumi.StringArrayOutput `pulumi:"allowedPrincipalIds"`
 	// Annotations of the resource (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// CA certificate for TLS if selfsigned (string)
 	Certificate pulumi.StringPtrOutput `pulumi:"certificate"`
 	// ActiveDirectory connection timeout. Default `5000` (int)
@@ -49,7 +49,7 @@ type AuthConfigActiveDirectory struct {
 	// Group search filter (string)
 	GroupSearchFilter pulumi.StringOutput `pulumi:"groupSearchFilter"`
 	// Labels of the resource (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// (Computed) The name of the resource (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Nested group membership enable. Default `false` (bool)
@@ -162,7 +162,7 @@ type authConfigActiveDirectoryState struct {
 	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>`. The local admin (`local://<admin id>`) and the `testUsername` must be added too. (list)
 	AllowedPrincipalIds []string `pulumi:"allowedPrincipalIds"`
 	// Annotations of the resource (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// CA certificate for TLS if selfsigned (string)
 	Certificate *string `pulumi:"certificate"`
 	// ActiveDirectory connection timeout. Default `5000` (int)
@@ -188,7 +188,7 @@ type authConfigActiveDirectoryState struct {
 	// Group search filter (string)
 	GroupSearchFilter *string `pulumi:"groupSearchFilter"`
 	// Labels of the resource (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// (Computed) The name of the resource (string)
 	Name *string `pulumi:"name"`
 	// Nested group membership enable. Default `false` (bool)
@@ -235,7 +235,7 @@ type AuthConfigActiveDirectoryState struct {
 	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>`. The local admin (`local://<admin id>`) and the `testUsername` must be added too. (list)
 	AllowedPrincipalIds pulumi.StringArrayInput
 	// Annotations of the resource (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// CA certificate for TLS if selfsigned (string)
 	Certificate pulumi.StringPtrInput
 	// ActiveDirectory connection timeout. Default `5000` (int)
@@ -261,7 +261,7 @@ type AuthConfigActiveDirectoryState struct {
 	// Group search filter (string)
 	GroupSearchFilter pulumi.StringPtrInput
 	// Labels of the resource (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// (Computed) The name of the resource (string)
 	Name pulumi.StringPtrInput
 	// Nested group membership enable. Default `false` (bool)
@@ -312,7 +312,7 @@ type authConfigActiveDirectoryArgs struct {
 	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>`. The local admin (`local://<admin id>`) and the `testUsername` must be added too. (list)
 	AllowedPrincipalIds []string `pulumi:"allowedPrincipalIds"`
 	// Annotations of the resource (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// CA certificate for TLS if selfsigned (string)
 	Certificate *string `pulumi:"certificate"`
 	// ActiveDirectory connection timeout. Default `5000` (int)
@@ -338,7 +338,7 @@ type authConfigActiveDirectoryArgs struct {
 	// Group search filter (string)
 	GroupSearchFilter *string `pulumi:"groupSearchFilter"`
 	// Labels of the resource (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// Nested group membership enable. Default `false` (bool)
 	NestedGroupMembershipEnabled *bool `pulumi:"nestedGroupMembershipEnabled"`
 	// ActiveDirectory port. Default `389` (int)
@@ -382,7 +382,7 @@ type AuthConfigActiveDirectoryArgs struct {
 	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>`. The local admin (`local://<admin id>`) and the `testUsername` must be added too. (list)
 	AllowedPrincipalIds pulumi.StringArrayInput
 	// Annotations of the resource (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// CA certificate for TLS if selfsigned (string)
 	Certificate pulumi.StringPtrInput
 	// ActiveDirectory connection timeout. Default `5000` (int)
@@ -408,7 +408,7 @@ type AuthConfigActiveDirectoryArgs struct {
 	// Group search filter (string)
 	GroupSearchFilter pulumi.StringPtrInput
 	// Labels of the resource (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// Nested group membership enable. Default `false` (bool)
 	NestedGroupMembershipEnabled pulumi.BoolPtrInput
 	// ActiveDirectory port. Default `389` (int)
@@ -543,8 +543,8 @@ func (o AuthConfigActiveDirectoryOutput) AllowedPrincipalIds() pulumi.StringArra
 }
 
 // Annotations of the resource (map)
-func (o AuthConfigActiveDirectoryOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *AuthConfigActiveDirectory) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o AuthConfigActiveDirectoryOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AuthConfigActiveDirectory) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // CA certificate for TLS if selfsigned (string)
@@ -608,8 +608,8 @@ func (o AuthConfigActiveDirectoryOutput) GroupSearchFilter() pulumi.StringOutput
 }
 
 // Labels of the resource (map)
-func (o AuthConfigActiveDirectoryOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *AuthConfigActiveDirectory) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o AuthConfigActiveDirectoryOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AuthConfigActiveDirectory) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // (Computed) The name of the resource (string)

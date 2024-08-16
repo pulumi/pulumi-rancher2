@@ -92,7 +92,7 @@ export class RoleTemplate extends pulumi.CustomResource {
     /**
      * Annotations for role template object (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: any}>;
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * (Computed) Builtin role template (string)
      */
@@ -124,7 +124,7 @@ export class RoleTemplate extends pulumi.CustomResource {
     /**
      * Labels for role template object (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Locked role template. Default `false` (bool)
      */
@@ -202,7 +202,7 @@ export interface RoleTemplateState {
     /**
      * Annotations for role template object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * (Computed) Builtin role template (string)
      */
@@ -234,7 +234,7 @@ export interface RoleTemplateState {
     /**
      * Labels for role template object (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Locked role template. Default `false` (bool)
      */
@@ -264,7 +264,7 @@ export interface RoleTemplateArgs {
     /**
      * Annotations for role template object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Role template context. `cluster` and `project` values are supported. Default: `cluster` (string)
      */
@@ -292,7 +292,7 @@ export interface RoleTemplateArgs {
     /**
      * Labels for role template object (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Locked role template. Default `false` (bool)
      */

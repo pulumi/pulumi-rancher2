@@ -16,7 +16,7 @@ namespace Pulumi.Rancher2
         /// Annotations of the resource
         /// </summary>
         [Output("annotations")]
-        public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Annotations { get; private set; } = null!;
 
         /// <summary>
         /// defaults allows the user to define admission control mode for Pod Security
@@ -41,7 +41,7 @@ namespace Pulumi.Rancher2
         /// Labels of the resource
         /// </summary>
         [Output("labels")]
-        public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
         /// Pod Security Admission Configuration template name
@@ -96,14 +96,14 @@ namespace Pulumi.Rancher2
     public sealed class PodSecurityAdmissionConfigurationTemplateArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
-        private InputMap<object>? _annotations;
+        private InputMap<string>? _annotations;
 
         /// <summary>
         /// Annotations of the resource
         /// </summary>
-        public InputMap<object> Annotations
+        public InputMap<string> Annotations
         {
-            get => _annotations ?? (_annotations = new InputMap<object>());
+            get => _annotations ?? (_annotations = new InputMap<string>());
             set => _annotations = value;
         }
 
@@ -127,14 +127,14 @@ namespace Pulumi.Rancher2
         public Input<Inputs.PodSecurityAdmissionConfigurationTemplateExemptionsArgs>? Exemptions { get; set; }
 
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// Labels of the resource
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
@@ -153,14 +153,14 @@ namespace Pulumi.Rancher2
     public sealed class PodSecurityAdmissionConfigurationTemplateState : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
-        private InputMap<object>? _annotations;
+        private InputMap<string>? _annotations;
 
         /// <summary>
         /// Annotations of the resource
         /// </summary>
-        public InputMap<object> Annotations
+        public InputMap<string> Annotations
         {
-            get => _annotations ?? (_annotations = new InputMap<object>());
+            get => _annotations ?? (_annotations = new InputMap<string>());
             set => _annotations = value;
         }
 
@@ -184,14 +184,14 @@ namespace Pulumi.Rancher2
         public Input<Inputs.PodSecurityAdmissionConfigurationTemplateExemptionsGetArgs>? Exemptions { get; set; }
 
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// Labels of the resource
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 

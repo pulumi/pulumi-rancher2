@@ -23,7 +23,7 @@ type AuthConfigOpenLdap struct {
 	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `openldap_user://<DN>`  `openldap_group://<DN>` (list)
 	AllowedPrincipalIds pulumi.StringArrayOutput `pulumi:"allowedPrincipalIds"`
 	// Annotations of the resource (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Base64 encoded CA certificate for TLS if self-signed. Use filebase64(<FILE>) for encoding file (string)
 	Certificate pulumi.StringPtrOutput `pulumi:"certificate"`
 	// OpenLdap connection timeout. Default `5000` (int)
@@ -46,7 +46,7 @@ type AuthConfigOpenLdap struct {
 	GroupSearchBase   pulumi.StringOutput    `pulumi:"groupSearchBase"`
 	GroupSearchFilter pulumi.StringPtrOutput `pulumi:"groupSearchFilter"`
 	// Labels of the resource (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// (Computed) The name of the resource (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Nested group membership enable. Default `false` (bool)
@@ -159,7 +159,7 @@ type authConfigOpenLdapState struct {
 	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `openldap_user://<DN>`  `openldap_group://<DN>` (list)
 	AllowedPrincipalIds []string `pulumi:"allowedPrincipalIds"`
 	// Annotations of the resource (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// Base64 encoded CA certificate for TLS if self-signed. Use filebase64(<FILE>) for encoding file (string)
 	Certificate *string `pulumi:"certificate"`
 	// OpenLdap connection timeout. Default `5000` (int)
@@ -182,7 +182,7 @@ type authConfigOpenLdapState struct {
 	GroupSearchBase   *string `pulumi:"groupSearchBase"`
 	GroupSearchFilter *string `pulumi:"groupSearchFilter"`
 	// Labels of the resource (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// (Computed) The name of the resource (string)
 	Name *string `pulumi:"name"`
 	// Nested group membership enable. Default `false` (bool)
@@ -229,7 +229,7 @@ type AuthConfigOpenLdapState struct {
 	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `openldap_user://<DN>`  `openldap_group://<DN>` (list)
 	AllowedPrincipalIds pulumi.StringArrayInput
 	// Annotations of the resource (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// Base64 encoded CA certificate for TLS if self-signed. Use filebase64(<FILE>) for encoding file (string)
 	Certificate pulumi.StringPtrInput
 	// OpenLdap connection timeout. Default `5000` (int)
@@ -252,7 +252,7 @@ type AuthConfigOpenLdapState struct {
 	GroupSearchBase   pulumi.StringPtrInput
 	GroupSearchFilter pulumi.StringPtrInput
 	// Labels of the resource (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// (Computed) The name of the resource (string)
 	Name pulumi.StringPtrInput
 	// Nested group membership enable. Default `false` (bool)
@@ -303,7 +303,7 @@ type authConfigOpenLdapArgs struct {
 	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `openldap_user://<DN>`  `openldap_group://<DN>` (list)
 	AllowedPrincipalIds []string `pulumi:"allowedPrincipalIds"`
 	// Annotations of the resource (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// Base64 encoded CA certificate for TLS if self-signed. Use filebase64(<FILE>) for encoding file (string)
 	Certificate *string `pulumi:"certificate"`
 	// OpenLdap connection timeout. Default `5000` (int)
@@ -326,7 +326,7 @@ type authConfigOpenLdapArgs struct {
 	GroupSearchBase   *string `pulumi:"groupSearchBase"`
 	GroupSearchFilter *string `pulumi:"groupSearchFilter"`
 	// Labels of the resource (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// Nested group membership enable. Default `false` (bool)
 	NestedGroupMembershipEnabled *bool `pulumi:"nestedGroupMembershipEnabled"`
 	// OpenLdap port. Default `389` (int)
@@ -370,7 +370,7 @@ type AuthConfigOpenLdapArgs struct {
 	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `openldap_user://<DN>`  `openldap_group://<DN>` (list)
 	AllowedPrincipalIds pulumi.StringArrayInput
 	// Annotations of the resource (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// Base64 encoded CA certificate for TLS if self-signed. Use filebase64(<FILE>) for encoding file (string)
 	Certificate pulumi.StringPtrInput
 	// OpenLdap connection timeout. Default `5000` (int)
@@ -393,7 +393,7 @@ type AuthConfigOpenLdapArgs struct {
 	GroupSearchBase   pulumi.StringPtrInput
 	GroupSearchFilter pulumi.StringPtrInput
 	// Labels of the resource (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// Nested group membership enable. Default `false` (bool)
 	NestedGroupMembershipEnabled pulumi.BoolPtrInput
 	// OpenLdap port. Default `389` (int)
@@ -528,8 +528,8 @@ func (o AuthConfigOpenLdapOutput) AllowedPrincipalIds() pulumi.StringArrayOutput
 }
 
 // Annotations of the resource (map)
-func (o AuthConfigOpenLdapOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o AuthConfigOpenLdapOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // Base64 encoded CA certificate for TLS if self-signed. Use filebase64(<FILE>) for encoding file (string)
@@ -587,8 +587,8 @@ func (o AuthConfigOpenLdapOutput) GroupSearchFilter() pulumi.StringPtrOutput {
 }
 
 // Labels of the resource (map)
-func (o AuthConfigOpenLdapOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o AuthConfigOpenLdapOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AuthConfigOpenLdap) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // (Computed) The name of the resource (string)

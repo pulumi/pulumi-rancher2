@@ -31,7 +31,7 @@ namespace Pulumi.Rancher2
         /// Annotations for the Cluster.
         /// </summary>
         [Output("annotations")]
-        public Output<ImmutableDictionary<string, object>> Annotations { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Annotations { get; private set; } = null!;
 
         /// <summary>
         /// Cloud credential secret name is the secret to be used when a cloud credential secret name is not specified at the machine pool level.
@@ -109,7 +109,7 @@ namespace Pulumi.Rancher2
         /// Labels for the Cluster.
         /// </summary>
         [Output("labels")]
-        public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
         /// Local auth endpoint configures the Authorized Cluster Endpoint (ACE) which can be used to directly access the Kubernetes API server, without requiring communication through Rancher. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters).
@@ -199,14 +199,14 @@ namespace Pulumi.Rancher2
         }
 
         [Input("annotations")]
-        private InputMap<object>? _annotations;
+        private InputMap<string>? _annotations;
 
         /// <summary>
         /// Annotations for the Cluster.
         /// </summary>
-        public InputMap<object> Annotations
+        public InputMap<string> Annotations
         {
-            get => _annotations ?? (_annotations = new InputMap<object>());
+            get => _annotations ?? (_annotations = new InputMap<string>());
             set => _annotations = value;
         }
 
@@ -277,14 +277,14 @@ namespace Pulumi.Rancher2
         public Input<string> KubernetesVersion { get; set; } = null!;
 
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// Labels for the Cluster.
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
@@ -327,14 +327,14 @@ namespace Pulumi.Rancher2
         }
 
         [Input("annotations")]
-        private InputMap<object>? _annotations;
+        private InputMap<string>? _annotations;
 
         /// <summary>
         /// Annotations for the Cluster.
         /// </summary>
-        public InputMap<object> Annotations
+        public InputMap<string> Annotations
         {
-            get => _annotations ?? (_annotations = new InputMap<object>());
+            get => _annotations ?? (_annotations = new InputMap<string>());
             set => _annotations = value;
         }
 
@@ -443,14 +443,14 @@ namespace Pulumi.Rancher2
         public Input<string>? KubernetesVersion { get; set; }
 
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// Labels for the Cluster.
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 

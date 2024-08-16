@@ -20,7 +20,7 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// Workload rule selector
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Selector;
+        public readonly ImmutableDictionary<string, string>? Selector;
         /// <summary>
         /// Workload ID
         /// </summary>
@@ -30,7 +30,7 @@ namespace Pulumi.Rancher2.Outputs
         private ProjectAlertRuleWorkloadRule(
             int? availablePercentage,
 
-            ImmutableDictionary<string, object>? selector,
+            ImmutableDictionary<string, string>? selector,
 
             string? workloadId)
         {

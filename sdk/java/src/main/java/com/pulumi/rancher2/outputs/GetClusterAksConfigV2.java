@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterAksConfigV2NodePool;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -156,7 +155,7 @@ public final class GetClusterAksConfigV2 {
      * @return The AKS cluster tags
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
     /**
      * @return The AKS virtual network
      * 
@@ -362,7 +361,7 @@ public final class GetClusterAksConfigV2 {
      * @return The AKS cluster tags
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
     /**
@@ -416,7 +415,7 @@ public final class GetClusterAksConfigV2 {
         private String resourceGroup;
         private String resourceLocation;
         private String subnet;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         private String virtualNetwork;
         private String virtualNetworkResourceGroup;
         public Builder() {}
@@ -661,7 +660,7 @@ public final class GetClusterAksConfigV2 {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetClusterAksConfigV2", "tags");
             }

@@ -49,7 +49,7 @@ class GetSecretResult:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> Mapping[str, str]:
         """
         (Computed) Annotations for secret object (map)
         """
@@ -57,7 +57,7 @@ class GetSecretResult:
 
     @property
     @pulumi.getter
-    def data(self) -> Mapping[str, Any]:
+    def data(self) -> Mapping[str, str]:
         """
         (Computed) Secret key/value data. Base64 encoding required for values (map)
         """
@@ -81,7 +81,7 @@ class GetSecretResult:
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> Mapping[str, str]:
         """
         (Computed) Labels for secret object (map)
         """

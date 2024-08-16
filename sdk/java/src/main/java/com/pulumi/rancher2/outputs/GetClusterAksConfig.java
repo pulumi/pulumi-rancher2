@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -195,7 +194,7 @@ public final class GetClusterAksConfig {
      * 
      */
     @Deprecated /* Use tags argument instead as []string */
-    private Map<String,Object> tag;
+    private Map<String,String> tag;
     /**
      * @return Tags for Kubernetes cluster. For example, `[&#34;foo=bar&#34;,&#34;bar=foo&#34;]`
      * 
@@ -464,7 +463,7 @@ public final class GetClusterAksConfig {
      * 
      */
     @Deprecated /* Use tags argument instead as []string */
-    public Map<String,Object> tag() {
+    public Map<String,String> tag() {
         return this.tag;
     }
     /**
@@ -539,7 +538,7 @@ public final class GetClusterAksConfig {
         private String sshPublicKeyContents;
         private String subnet;
         private String subscriptionId;
-        private Map<String,Object> tag;
+        private Map<String,String> tag;
         private List<String> tags;
         private String tenantId;
         private String virtualNetwork;
@@ -813,7 +812,7 @@ public final class GetClusterAksConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder tag(Map<String,Object> tag) {
+        public Builder tag(Map<String,String> tag) {
             if (tag == null) {
               throw new MissingRequiredPropertyException("GetClusterAksConfig", "tag");
             }

@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -36,7 +35,7 @@ public final class ClusterAksConfigV2NodePool {
      * @return Labels for the Cluster (map)
      * 
      */
-    private @Nullable Map<String,Object> labels;
+    private @Nullable Map<String,String> labels;
     /**
      * @return The AKS node pool max count
      * 
@@ -124,7 +123,7 @@ public final class ClusterAksConfigV2NodePool {
      * @return Labels for the Cluster (map)
      * 
      */
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels == null ? Map.of() : this.labels;
     }
     /**
@@ -224,7 +223,7 @@ public final class ClusterAksConfigV2NodePool {
         private @Nullable List<String> availabilityZones;
         private @Nullable Integer count;
         private @Nullable Boolean enableAutoScaling;
-        private @Nullable Map<String,Object> labels;
+        private @Nullable Map<String,String> labels;
         private @Nullable Integer maxCount;
         private @Nullable Integer maxPods;
         private @Nullable String maxSurge;
@@ -280,7 +279,7 @@ public final class ClusterAksConfigV2NodePool {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(@Nullable Map<String,Object> labels) {
+        public Builder labels(@Nullable Map<String,String> labels) {
 
             this.labels = labels;
             return this;

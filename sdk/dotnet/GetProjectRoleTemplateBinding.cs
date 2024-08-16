@@ -122,7 +122,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Annotations of the resource (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Annotations;
+        public readonly ImmutableDictionary<string, string> Annotations;
         /// <summary>
         /// (Computed) The group ID to assign project role template binding (string)
         /// </summary>
@@ -138,7 +138,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Labels of the resource (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Labels;
+        public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
         public readonly string ProjectId;
         public readonly string RoleTemplateId;
@@ -153,7 +153,7 @@ namespace Pulumi.Rancher2
 
         [OutputConstructor]
         private GetProjectRoleTemplateBindingResult(
-            ImmutableDictionary<string, object> annotations,
+            ImmutableDictionary<string, string> annotations,
 
             string groupId,
 
@@ -161,7 +161,7 @@ namespace Pulumi.Rancher2
 
             string id,
 
-            ImmutableDictionary<string, object> labels,
+            ImmutableDictionary<string, string> labels,
 
             string name,
 

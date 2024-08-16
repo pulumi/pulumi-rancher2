@@ -57,7 +57,7 @@ type AuthConfigPing struct {
 	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `ping_user://<USER_ID>`  `ping_group://<GROUP_ID>` (list)
 	AllowedPrincipalIds pulumi.StringArrayOutput `pulumi:"allowedPrincipalIds"`
 	// Annotations of the resource (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Ping display name field (string)
 	DisplayNameField pulumi.StringOutput `pulumi:"displayNameField"`
 	// Enable auth config provider. Default `true` (bool)
@@ -69,7 +69,7 @@ type AuthConfigPing struct {
 	// Ping IDP metadata content (string)
 	IdpMetadataContent pulumi.StringOutput `pulumi:"idpMetadataContent"`
 	// Labels of the resource (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// (Computed) The name of the resource (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Rancher URL. URL scheme needs to be specified, `https://<RANCHER_API_HOST>` (string)
@@ -160,7 +160,7 @@ type authConfigPingState struct {
 	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `ping_user://<USER_ID>`  `ping_group://<GROUP_ID>` (list)
 	AllowedPrincipalIds []string `pulumi:"allowedPrincipalIds"`
 	// Annotations of the resource (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// Ping display name field (string)
 	DisplayNameField *string `pulumi:"displayNameField"`
 	// Enable auth config provider. Default `true` (bool)
@@ -172,7 +172,7 @@ type authConfigPingState struct {
 	// Ping IDP metadata content (string)
 	IdpMetadataContent *string `pulumi:"idpMetadataContent"`
 	// Labels of the resource (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// (Computed) The name of the resource (string)
 	Name *string `pulumi:"name"`
 	// Rancher URL. URL scheme needs to be specified, `https://<RANCHER_API_HOST>` (string)
@@ -195,7 +195,7 @@ type AuthConfigPingState struct {
 	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `ping_user://<USER_ID>`  `ping_group://<GROUP_ID>` (list)
 	AllowedPrincipalIds pulumi.StringArrayInput
 	// Annotations of the resource (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// Ping display name field (string)
 	DisplayNameField pulumi.StringPtrInput
 	// Enable auth config provider. Default `true` (bool)
@@ -207,7 +207,7 @@ type AuthConfigPingState struct {
 	// Ping IDP metadata content (string)
 	IdpMetadataContent pulumi.StringPtrInput
 	// Labels of the resource (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// (Computed) The name of the resource (string)
 	Name pulumi.StringPtrInput
 	// Rancher URL. URL scheme needs to be specified, `https://<RANCHER_API_HOST>` (string)
@@ -234,7 +234,7 @@ type authConfigPingArgs struct {
 	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `ping_user://<USER_ID>`  `ping_group://<GROUP_ID>` (list)
 	AllowedPrincipalIds []string `pulumi:"allowedPrincipalIds"`
 	// Annotations of the resource (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// Ping display name field (string)
 	DisplayNameField string `pulumi:"displayNameField"`
 	// Enable auth config provider. Default `true` (bool)
@@ -246,7 +246,7 @@ type authConfigPingArgs struct {
 	// Ping IDP metadata content (string)
 	IdpMetadataContent string `pulumi:"idpMetadataContent"`
 	// Labels of the resource (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// Rancher URL. URL scheme needs to be specified, `https://<RANCHER_API_HOST>` (string)
 	RancherApiHost string `pulumi:"rancherApiHost"`
 	// Ping SP cert (string)
@@ -266,7 +266,7 @@ type AuthConfigPingArgs struct {
 	// Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `ping_user://<USER_ID>`  `ping_group://<GROUP_ID>` (list)
 	AllowedPrincipalIds pulumi.StringArrayInput
 	// Annotations of the resource (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// Ping display name field (string)
 	DisplayNameField pulumi.StringInput
 	// Enable auth config provider. Default `true` (bool)
@@ -278,7 +278,7 @@ type AuthConfigPingArgs struct {
 	// Ping IDP metadata content (string)
 	IdpMetadataContent pulumi.StringInput
 	// Labels of the resource (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// Rancher URL. URL scheme needs to be specified, `https://<RANCHER_API_HOST>` (string)
 	RancherApiHost pulumi.StringInput
 	// Ping SP cert (string)
@@ -389,8 +389,8 @@ func (o AuthConfigPingOutput) AllowedPrincipalIds() pulumi.StringArrayOutput {
 }
 
 // Annotations of the resource (map)
-func (o AuthConfigPingOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *AuthConfigPing) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o AuthConfigPingOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AuthConfigPing) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // Ping display name field (string)
@@ -419,8 +419,8 @@ func (o AuthConfigPingOutput) IdpMetadataContent() pulumi.StringOutput {
 }
 
 // Labels of the resource (map)
-func (o AuthConfigPingOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *AuthConfigPing) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o AuthConfigPingOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AuthConfigPing) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // (Computed) The name of the resource (string)

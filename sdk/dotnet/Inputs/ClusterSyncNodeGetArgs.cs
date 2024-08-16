@@ -13,26 +13,26 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterSyncNodeGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
-        private InputMap<object>? _annotations;
+        private InputMap<string>? _annotations;
 
         /// <summary>
         /// Annotations of the resource
         /// </summary>
-        public InputMap<object> Annotations
+        public InputMap<string> Annotations
         {
-            get => _annotations ?? (_annotations = new InputMap<object>());
+            get => _annotations ?? (_annotations = new InputMap<string>());
             set => _annotations = value;
         }
 
         [Input("capacity")]
-        private InputMap<object>? _capacity;
+        private InputMap<string>? _capacity;
 
         /// <summary>
         /// The total resources of a node (map).
         /// </summary>
-        public InputMap<object> Capacity
+        public InputMap<string> Capacity
         {
-            get => _capacity ?? (_capacity = new InputMap<object>());
+            get => _capacity ?? (_capacity = new InputMap<string>());
             set => _capacity = value;
         }
 
@@ -67,14 +67,14 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? IpAddress { get; set; }
 
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// Labels of the resource
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
@@ -137,14 +137,14 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         [Input("systemInfo")]
-        private InputMap<object>? _systemInfo;
+        private InputMap<string>? _systemInfo;
 
         /// <summary>
         /// General information about the node, such as kernel version, kubelet and kube-proxy version, Docker version (if used), and OS name.
         /// </summary>
-        public InputMap<object> SystemInfo
+        public InputMap<string> SystemInfo
         {
-            get => _systemInfo ?? (_systemInfo = new InputMap<object>());
+            get => _systemInfo ?? (_systemInfo = new InputMap<string>());
             set => _systemInfo = value;
         }
 

@@ -110,7 +110,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Annotations of the resource (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Annotations;
+        public readonly ImmutableDictionary<string, string> Annotations;
         public readonly string GlobalRoleId;
         /// <summary>
         /// (Computed) The group principal ID to assign global role binding. Rancher v2.4.0 or higher is required (string)
@@ -123,7 +123,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) Labels of the resource (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Labels;
+        public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
         /// <summary>
         /// (Computed) The user ID to assign global role binding (string)
@@ -132,7 +132,7 @@ namespace Pulumi.Rancher2
 
         [OutputConstructor]
         private GetGlobalRoleBindingResult(
-            ImmutableDictionary<string, object> annotations,
+            ImmutableDictionary<string, string> annotations,
 
             string globalRoleId,
 
@@ -140,7 +140,7 @@ namespace Pulumi.Rancher2
 
             string id,
 
-            ImmutableDictionary<string, object> labels,
+            ImmutableDictionary<string, string> labels,
 
             string name,
 

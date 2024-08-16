@@ -110,7 +110,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) The project alert group annotations (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Annotations;
+        public readonly ImmutableDictionary<string, string> Annotations;
         /// <summary>
         /// (Computed) The project alert group description (string)
         /// </summary>
@@ -130,7 +130,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// (Computed) The project alert group labels (map)
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Labels;
+        public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
         public readonly string ProjectId;
         /// <summary>
@@ -144,7 +144,7 @@ namespace Pulumi.Rancher2
 
         [OutputConstructor]
         private GetProjectAlertGroupResult(
-            ImmutableDictionary<string, object> annotations,
+            ImmutableDictionary<string, string> annotations,
 
             string description,
 
@@ -154,7 +154,7 @@ namespace Pulumi.Rancher2
 
             string id,
 
-            ImmutableDictionary<string, object> labels,
+            ImmutableDictionary<string, string> labels,
 
             string name,
 

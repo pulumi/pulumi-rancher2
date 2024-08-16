@@ -5,7 +5,6 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -18,16 +17,16 @@ public final class GetPodSecurityAdmissionConfigurationTemplatePlainArgs extends
     public static final GetPodSecurityAdmissionConfigurationTemplatePlainArgs Empty = new GetPodSecurityAdmissionConfigurationTemplatePlainArgs();
 
     @Import(name="annotations")
-    private @Nullable Map<String,Object> annotations;
+    private @Nullable Map<String,String> annotations;
 
-    public Optional<Map<String,Object>> annotations() {
+    public Optional<Map<String,String>> annotations() {
         return Optional.ofNullable(this.annotations);
     }
 
     @Import(name="labels")
-    private @Nullable Map<String,Object> labels;
+    private @Nullable Map<String,String> labels;
 
-    public Optional<Map<String,Object>> labels() {
+    public Optional<Map<String,String>> labels() {
         return Optional.ofNullable(this.labels);
     }
 
@@ -64,12 +63,12 @@ public final class GetPodSecurityAdmissionConfigurationTemplatePlainArgs extends
             $ = new GetPodSecurityAdmissionConfigurationTemplatePlainArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder annotations(@Nullable Map<String,Object> annotations) {
+        public Builder annotations(@Nullable Map<String,String> annotations) {
             $.annotations = annotations;
             return this;
         }
 
-        public Builder labels(@Nullable Map<String,Object> labels) {
+        public Builder labels(@Nullable Map<String,String> labels) {
             $.labels = labels;
             return this;
         }

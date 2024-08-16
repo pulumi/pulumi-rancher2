@@ -69,7 +69,7 @@ class GetStorageClassV2Result:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, Any]:
+    def annotations(self) -> Mapping[str, str]:
         """
         (Computed) Annotations for the storageClass v2 (map)
         """
@@ -98,7 +98,7 @@ class GetStorageClassV2Result:
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> Mapping[str, str]:
         """
         (Computed) Labels for the storageClass v2 (map)
         """
@@ -119,7 +119,7 @@ class GetStorageClassV2Result:
 
     @property
     @pulumi.getter
-    def parameters(self) -> Mapping[str, Any]:
+    def parameters(self) -> Mapping[str, str]:
         """
         (Computed) The parameters for storageClass v2 (string)
         """

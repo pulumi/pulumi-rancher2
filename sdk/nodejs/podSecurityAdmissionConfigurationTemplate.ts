@@ -37,7 +37,7 @@ export class PodSecurityAdmissionConfigurationTemplate extends pulumi.CustomReso
     /**
      * Annotations of the resource
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: any}>;
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * defaults allows the user to define admission control mode for Pod Security
      */
@@ -54,7 +54,7 @@ export class PodSecurityAdmissionConfigurationTemplate extends pulumi.CustomReso
     /**
      * Labels of the resource
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Pod Security Admission Configuration template name
      */
@@ -103,7 +103,7 @@ export interface PodSecurityAdmissionConfigurationTemplateState {
     /**
      * Annotations of the resource
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * defaults allows the user to define admission control mode for Pod Security
      */
@@ -120,7 +120,7 @@ export interface PodSecurityAdmissionConfigurationTemplateState {
     /**
      * Labels of the resource
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Pod Security Admission Configuration template name
      */
@@ -134,7 +134,7 @@ export interface PodSecurityAdmissionConfigurationTemplateArgs {
     /**
      * Annotations of the resource
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * defaults allows the user to define admission control mode for Pod Security
      */
@@ -151,7 +151,7 @@ export interface PodSecurityAdmissionConfigurationTemplateArgs {
     /**
      * Labels of the resource
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Pod Security Admission Configuration template name
      */

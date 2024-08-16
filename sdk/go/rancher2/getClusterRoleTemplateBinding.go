@@ -62,8 +62,8 @@ type LookupClusterRoleTemplateBindingArgs struct {
 // A collection of values returned by getClusterRoleTemplateBinding.
 type LookupClusterRoleTemplateBindingResult struct {
 	// (Computed) Annotations of the resource (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
-	ClusterId   string                 `pulumi:"clusterId"`
+	Annotations map[string]string `pulumi:"annotations"`
+	ClusterId   string            `pulumi:"clusterId"`
 	// (Computed) The group ID to assign cluster role template binding (string)
 	GroupId string `pulumi:"groupId"`
 	// (Computed) The groupPrincipal ID to assign cluster role template binding (string)
@@ -71,9 +71,9 @@ type LookupClusterRoleTemplateBindingResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels of the resource (map)
-	Labels         map[string]interface{} `pulumi:"labels"`
-	Name           string                 `pulumi:"name"`
-	RoleTemplateId string                 `pulumi:"roleTemplateId"`
+	Labels         map[string]string `pulumi:"labels"`
+	Name           string            `pulumi:"name"`
+	RoleTemplateId string            `pulumi:"roleTemplateId"`
 	// (Computed) The user ID to assign cluster role template binding (string)
 	UserId string `pulumi:"userId"`
 	// (Computed) The userPrincipal ID to assign cluster role template binding (string)
@@ -123,8 +123,8 @@ func (o LookupClusterRoleTemplateBindingResultOutput) ToLookupClusterRoleTemplat
 }
 
 // (Computed) Annotations of the resource (map)
-func (o LookupClusterRoleTemplateBindingResultOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupClusterRoleTemplateBindingResult) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+func (o LookupClusterRoleTemplateBindingResultOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupClusterRoleTemplateBindingResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 func (o LookupClusterRoleTemplateBindingResultOutput) ClusterId() pulumi.StringOutput {
@@ -147,8 +147,8 @@ func (o LookupClusterRoleTemplateBindingResultOutput) Id() pulumi.StringOutput {
 }
 
 // (Computed) Labels of the resource (map)
-func (o LookupClusterRoleTemplateBindingResultOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupClusterRoleTemplateBindingResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+func (o LookupClusterRoleTemplateBindingResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupClusterRoleTemplateBindingResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupClusterRoleTemplateBindingResultOutput) Name() pulumi.StringOutput {

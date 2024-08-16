@@ -16,7 +16,6 @@ import com.pulumi.rancher2.outputs.GetPodSecurityPolicyTemplateRuntimeClass;
 import com.pulumi.rancher2.outputs.GetPodSecurityPolicyTemplateSeLinux;
 import com.pulumi.rancher2.outputs.GetPodSecurityPolicyTemplateSupplementalGroup;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -33,7 +32,7 @@ public final class GetPodSecurityPolicyTemplateResult {
     private @Nullable List<GetPodSecurityPolicyTemplateAllowedHostPath> allowedHostPaths;
     private @Nullable List<String> allowedProcMountTypes;
     private @Nullable List<String> allowedUnsafeSysctls;
-    private Map<String,Object> annotations;
+    private Map<String,String> annotations;
     private @Nullable List<String> defaultAddCapabilities;
     private @Nullable Boolean defaultAllowPrivilegeEscalation;
     private String description;
@@ -48,7 +47,7 @@ public final class GetPodSecurityPolicyTemplateResult {
      * 
      */
     private String id;
-    private Map<String,Object> labels;
+    private Map<String,String> labels;
     private String name;
     private Boolean privileged;
     private Boolean readOnlyRootFilesystem;
@@ -82,7 +81,7 @@ public final class GetPodSecurityPolicyTemplateResult {
     public List<String> allowedUnsafeSysctls() {
         return this.allowedUnsafeSysctls == null ? List.of() : this.allowedUnsafeSysctls;
     }
-    public Map<String,Object> annotations() {
+    public Map<String,String> annotations() {
         return this.annotations;
     }
     public List<String> defaultAddCapabilities() {
@@ -119,7 +118,7 @@ public final class GetPodSecurityPolicyTemplateResult {
     public String id() {
         return this.id;
     }
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels;
     }
     public String name() {
@@ -169,7 +168,7 @@ public final class GetPodSecurityPolicyTemplateResult {
         private @Nullable List<GetPodSecurityPolicyTemplateAllowedHostPath> allowedHostPaths;
         private @Nullable List<String> allowedProcMountTypes;
         private @Nullable List<String> allowedUnsafeSysctls;
-        private Map<String,Object> annotations;
+        private Map<String,String> annotations;
         private @Nullable List<String> defaultAddCapabilities;
         private @Nullable Boolean defaultAllowPrivilegeEscalation;
         private String description;
@@ -180,7 +179,7 @@ public final class GetPodSecurityPolicyTemplateResult {
         private Boolean hostPid;
         private List<GetPodSecurityPolicyTemplateHostPort> hostPorts;
         private String id;
-        private Map<String,Object> labels;
+        private Map<String,String> labels;
         private String name;
         private Boolean privileged;
         private Boolean readOnlyRootFilesystem;
@@ -288,7 +287,7 @@ public final class GetPodSecurityPolicyTemplateResult {
             return allowedUnsafeSysctls(List.of(allowedUnsafeSysctls));
         }
         @CustomType.Setter
-        public Builder annotations(Map<String,Object> annotations) {
+        public Builder annotations(Map<String,String> annotations) {
             if (annotations == null) {
               throw new MissingRequiredPropertyException("GetPodSecurityPolicyTemplateResult", "annotations");
             }
@@ -379,7 +378,7 @@ public final class GetPodSecurityPolicyTemplateResult {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(Map<String,Object> labels) {
+        public Builder labels(Map<String,String> labels) {
             if (labels == null) {
               throw new MissingRequiredPropertyException("GetPodSecurityPolicyTemplateResult", "labels");
             }

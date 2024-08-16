@@ -54,7 +54,7 @@ export interface GetUserResult {
     /**
      * (Computed) Annotations of the resource (map)
      */
-    readonly annotations: {[key: string]: any};
+    readonly annotations: {[key: string]: string};
     /**
      * (Computed) The user is enabled (bool)
      */
@@ -67,7 +67,7 @@ export interface GetUserResult {
     /**
      * (Computed) Labels of the resource (map)
      */
-    readonly labels: {[key: string]: any};
+    readonly labels: {[key: string]: string};
     /**
      * (Computed) The user common name (string)
      */

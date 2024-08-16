@@ -13,10 +13,10 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("extraArgs")]
-        private InputMap<object>? _extraArgs;
-        public InputMap<object> ExtraArgs
+        private InputMap<string>? _extraArgs;
+        public InputMap<string> ExtraArgs
         {
-            get => _extraArgs ?? (_extraArgs = new InputMap<object>());
+            get => _extraArgs ?? (_extraArgs = new InputMap<string>());
             set => _extraArgs = value;
         }
 

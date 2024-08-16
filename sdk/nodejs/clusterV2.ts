@@ -50,7 +50,7 @@ export class ClusterV2 extends pulumi.CustomResource {
     /**
      * Annotations for the Cluster.
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: any}>;
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * Cloud credential secret name is the secret to be used when a cloud credential secret name is not specified at the machine pool level.
      */
@@ -102,7 +102,7 @@ export class ClusterV2 extends pulumi.CustomResource {
     /**
      * Labels for the Cluster.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Local auth endpoint configures the Authorized Cluster Endpoint (ACE) which can be used to directly access the Kubernetes API server, without requiring communication through Rancher. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters).
      */
@@ -195,7 +195,7 @@ export interface ClusterV2State {
     /**
      * Annotations for the Cluster.
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Cloud credential secret name is the secret to be used when a cloud credential secret name is not specified at the machine pool level.
      */
@@ -247,7 +247,7 @@ export interface ClusterV2State {
     /**
      * Labels for the Cluster.
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Local auth endpoint configures the Authorized Cluster Endpoint (ACE) which can be used to directly access the Kubernetes API server, without requiring communication through Rancher. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters).
      */
@@ -277,7 +277,7 @@ export interface ClusterV2Args {
     /**
      * Annotations for the Cluster.
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Cloud credential secret name is the secret to be used when a cloud credential secret name is not specified at the machine pool level.
      */
@@ -317,7 +317,7 @@ export interface ClusterV2Args {
     /**
      * Labels for the Cluster.
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Local auth endpoint configures the Authorized Cluster Endpoint (ACE) which can be used to directly access the Kubernetes API server, without requiring communication through Rancher. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters).
      */

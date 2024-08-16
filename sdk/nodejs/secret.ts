@@ -102,11 +102,11 @@ export class Secret extends pulumi.CustomResource {
     /**
      * Annotations for secret object (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: any}>;
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * Secret key/value data. Base64 encoding required for values (map)
      */
-    public readonly data!: pulumi.Output<{[key: string]: any}>;
+    public readonly data!: pulumi.Output<{[key: string]: string}>;
     /**
      * A secret description (string)
      */
@@ -114,7 +114,7 @@ export class Secret extends pulumi.CustomResource {
     /**
      * Labels for secret object (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the secret (string)
      */
@@ -178,11 +178,11 @@ export interface SecretState {
     /**
      * Annotations for secret object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Secret key/value data. Base64 encoding required for values (map)
      */
-    data?: pulumi.Input<{[key: string]: any}>;
+    data?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A secret description (string)
      */
@@ -190,7 +190,7 @@ export interface SecretState {
     /**
      * Labels for secret object (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the secret (string)
      */
@@ -212,11 +212,11 @@ export interface SecretArgs {
     /**
      * Annotations for secret object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: any}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Secret key/value data. Base64 encoding required for values (map)
      */
-    data: pulumi.Input<{[key: string]: any}>;
+    data: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A secret description (string)
      */
@@ -224,7 +224,7 @@ export interface SecretArgs {
     /**
      * Labels for secret object (map)
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the secret (string)
      */

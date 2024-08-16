@@ -59,7 +59,7 @@ type Notifier struct {
 	pulumi.CustomResourceState
 
 	// Annotations for notifier object (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// The cluster id where create notifier (string)
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// The notifier description (string)
@@ -67,7 +67,7 @@ type Notifier struct {
 	// Dingtalk config for notifier (list maxitems:1)
 	DingtalkConfig NotifierDingtalkConfigPtrOutput `pulumi:"dingtalkConfig"`
 	// Labels for notifier object (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// MSTeams config for notifier (list maxitems:1)
 	MsteamsConfig NotifierMsteamsConfigPtrOutput `pulumi:"msteamsConfig"`
 	// The name of the notifier (string)
@@ -120,7 +120,7 @@ func GetNotifier(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Notifier resources.
 type notifierState struct {
 	// Annotations for notifier object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// The cluster id where create notifier (string)
 	ClusterId *string `pulumi:"clusterId"`
 	// The notifier description (string)
@@ -128,7 +128,7 @@ type notifierState struct {
 	// Dingtalk config for notifier (list maxitems:1)
 	DingtalkConfig *NotifierDingtalkConfig `pulumi:"dingtalkConfig"`
 	// Labels for notifier object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// MSTeams config for notifier (list maxitems:1)
 	MsteamsConfig *NotifierMsteamsConfig `pulumi:"msteamsConfig"`
 	// The name of the notifier (string)
@@ -149,7 +149,7 @@ type notifierState struct {
 
 type NotifierState struct {
 	// Annotations for notifier object (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// The cluster id where create notifier (string)
 	ClusterId pulumi.StringPtrInput
 	// The notifier description (string)
@@ -157,7 +157,7 @@ type NotifierState struct {
 	// Dingtalk config for notifier (list maxitems:1)
 	DingtalkConfig NotifierDingtalkConfigPtrInput
 	// Labels for notifier object (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// MSTeams config for notifier (list maxitems:1)
 	MsteamsConfig NotifierMsteamsConfigPtrInput
 	// The name of the notifier (string)
@@ -182,7 +182,7 @@ func (NotifierState) ElementType() reflect.Type {
 
 type notifierArgs struct {
 	// Annotations for notifier object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// The cluster id where create notifier (string)
 	ClusterId string `pulumi:"clusterId"`
 	// The notifier description (string)
@@ -190,7 +190,7 @@ type notifierArgs struct {
 	// Dingtalk config for notifier (list maxitems:1)
 	DingtalkConfig *NotifierDingtalkConfig `pulumi:"dingtalkConfig"`
 	// Labels for notifier object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// MSTeams config for notifier (list maxitems:1)
 	MsteamsConfig *NotifierMsteamsConfig `pulumi:"msteamsConfig"`
 	// The name of the notifier (string)
@@ -212,7 +212,7 @@ type notifierArgs struct {
 // The set of arguments for constructing a Notifier resource.
 type NotifierArgs struct {
 	// Annotations for notifier object (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// The cluster id where create notifier (string)
 	ClusterId pulumi.StringInput
 	// The notifier description (string)
@@ -220,7 +220,7 @@ type NotifierArgs struct {
 	// Dingtalk config for notifier (list maxitems:1)
 	DingtalkConfig NotifierDingtalkConfigPtrInput
 	// Labels for notifier object (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// MSTeams config for notifier (list maxitems:1)
 	MsteamsConfig NotifierMsteamsConfigPtrInput
 	// The name of the notifier (string)
@@ -327,8 +327,8 @@ func (o NotifierOutput) ToNotifierOutputWithContext(ctx context.Context) Notifie
 }
 
 // Annotations for notifier object (map)
-func (o NotifierOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *Notifier) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o NotifierOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Notifier) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // The cluster id where create notifier (string)
@@ -347,8 +347,8 @@ func (o NotifierOutput) DingtalkConfig() NotifierDingtalkConfigPtrOutput {
 }
 
 // Labels for notifier object (map)
-func (o NotifierOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *Notifier) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o NotifierOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Notifier) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // MSTeams config for notifier (list maxitems:1)

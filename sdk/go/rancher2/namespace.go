@@ -126,13 +126,13 @@ type Namespace struct {
 	pulumi.CustomResourceState
 
 	// Annotations for Node Pool object (map)
-	Annotations pulumi.MapOutput `pulumi:"annotations"`
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Default containers resource limits on namespace (List maxitem:1)
 	ContainerResourceLimit NamespaceContainerResourceLimitPtrOutput `pulumi:"containerResourceLimit"`
 	// A namespace description (string)
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Labels for Node Pool object (map)
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the namespace (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project id where assign namespace. It's on the form `project_id=<cluster_id>:<id>`. Updating `<id>` part on same `<cluster_id>` namespace will be moved between projects (string)
@@ -177,13 +177,13 @@ func GetNamespace(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Namespace resources.
 type namespaceState struct {
 	// Annotations for Node Pool object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// Default containers resource limits on namespace (List maxitem:1)
 	ContainerResourceLimit *NamespaceContainerResourceLimit `pulumi:"containerResourceLimit"`
 	// A namespace description (string)
 	Description *string `pulumi:"description"`
 	// Labels for Node Pool object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The name of the namespace (string)
 	Name *string `pulumi:"name"`
 	// The project id where assign namespace. It's on the form `project_id=<cluster_id>:<id>`. Updating `<id>` part on same `<cluster_id>` namespace will be moved between projects (string)
@@ -196,13 +196,13 @@ type namespaceState struct {
 
 type NamespaceState struct {
 	// Annotations for Node Pool object (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// Default containers resource limits on namespace (List maxitem:1)
 	ContainerResourceLimit NamespaceContainerResourceLimitPtrInput
 	// A namespace description (string)
 	Description pulumi.StringPtrInput
 	// Labels for Node Pool object (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The name of the namespace (string)
 	Name pulumi.StringPtrInput
 	// The project id where assign namespace. It's on the form `project_id=<cluster_id>:<id>`. Updating `<id>` part on same `<cluster_id>` namespace will be moved between projects (string)
@@ -219,13 +219,13 @@ func (NamespaceState) ElementType() reflect.Type {
 
 type namespaceArgs struct {
 	// Annotations for Node Pool object (map)
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// Default containers resource limits on namespace (List maxitem:1)
 	ContainerResourceLimit *NamespaceContainerResourceLimit `pulumi:"containerResourceLimit"`
 	// A namespace description (string)
 	Description *string `pulumi:"description"`
 	// Labels for Node Pool object (map)
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The name of the namespace (string)
 	Name *string `pulumi:"name"`
 	// The project id where assign namespace. It's on the form `project_id=<cluster_id>:<id>`. Updating `<id>` part on same `<cluster_id>` namespace will be moved between projects (string)
@@ -239,13 +239,13 @@ type namespaceArgs struct {
 // The set of arguments for constructing a Namespace resource.
 type NamespaceArgs struct {
 	// Annotations for Node Pool object (map)
-	Annotations pulumi.MapInput
+	Annotations pulumi.StringMapInput
 	// Default containers resource limits on namespace (List maxitem:1)
 	ContainerResourceLimit NamespaceContainerResourceLimitPtrInput
 	// A namespace description (string)
 	Description pulumi.StringPtrInput
 	// Labels for Node Pool object (map)
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The name of the namespace (string)
 	Name pulumi.StringPtrInput
 	// The project id where assign namespace. It's on the form `project_id=<cluster_id>:<id>`. Updating `<id>` part on same `<cluster_id>` namespace will be moved between projects (string)
@@ -344,8 +344,8 @@ func (o NamespaceOutput) ToNamespaceOutputWithContext(ctx context.Context) Names
 }
 
 // Annotations for Node Pool object (map)
-func (o NamespaceOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *Namespace) pulumi.MapOutput { return v.Annotations }).(pulumi.MapOutput)
+func (o NamespaceOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // Default containers resource limits on namespace (List maxitem:1)
@@ -359,8 +359,8 @@ func (o NamespaceOutput) Description() pulumi.StringPtrOutput {
 }
 
 // Labels for Node Pool object (map)
-func (o NamespaceOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *Namespace) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o NamespaceOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The name of the namespace (string)

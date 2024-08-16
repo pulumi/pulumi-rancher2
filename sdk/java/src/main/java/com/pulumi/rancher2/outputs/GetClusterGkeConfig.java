@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -166,7 +165,7 @@ public final class GetClusterGkeConfig {
      * @return (Computed) Labels for Node Pool object (map)
      * 
      */
-    private Map<String,Object> labels;
+    private Map<String,String> labels;
     /**
      * @return The number of local SSD disks to be attached to the node
      * 
@@ -256,7 +255,7 @@ public final class GetClusterGkeConfig {
      * @return The map of Kubernetes labels (key/value pairs) to be applied to each cluster
      * 
      */
-    private Map<String,Object> resourceLabels;
+    private Map<String,String> resourceLabels;
     /**
      * @return The Google Cloud Platform Service Account to be used by the node VMs
      * 
@@ -491,7 +490,7 @@ public final class GetClusterGkeConfig {
      * @return (Computed) Labels for Node Pool object (map)
      * 
      */
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels;
     }
     /**
@@ -617,7 +616,7 @@ public final class GetClusterGkeConfig {
      * @return The map of Kubernetes labels (key/value pairs) to be applied to each cluster
      * 
      */
-    public Map<String,Object> resourceLabels() {
+    public Map<String,String> resourceLabels() {
         return this.resourceLabels;
     }
     /**
@@ -694,7 +693,7 @@ public final class GetClusterGkeConfig {
         private String ipPolicySubnetworkName;
         private @Nullable Boolean issueClientCertificate;
         private @Nullable Boolean kubernetesDashboard;
-        private Map<String,Object> labels;
+        private Map<String,String> labels;
         private @Nullable Integer localSsdCount;
         private List<String> locations;
         private String machineType;
@@ -712,7 +711,7 @@ public final class GetClusterGkeConfig {
         private @Nullable Boolean preemptible;
         private String projectId;
         private @Nullable String region;
-        private Map<String,Object> resourceLabels;
+        private Map<String,String> resourceLabels;
         private String serviceAccount;
         private String subNetwork;
         private @Nullable List<String> taints;
@@ -971,7 +970,7 @@ public final class GetClusterGkeConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(Map<String,Object> labels) {
+        public Builder labels(Map<String,String> labels) {
             if (labels == null) {
               throw new MissingRequiredPropertyException("GetClusterGkeConfig", "labels");
             }
@@ -1110,7 +1109,7 @@ public final class GetClusterGkeConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder resourceLabels(Map<String,Object> resourceLabels) {
+        public Builder resourceLabels(Map<String,String> resourceLabels) {
             if (resourceLabels == null) {
               throw new MissingRequiredPropertyException("GetClusterGkeConfig", "resourceLabels");
             }

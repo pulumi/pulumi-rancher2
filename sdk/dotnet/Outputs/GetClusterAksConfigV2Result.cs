@@ -124,7 +124,7 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// The AKS cluster tags
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// The AKS virtual network
         /// </summary>
@@ -190,7 +190,7 @@ namespace Pulumi.Rancher2.Outputs
 
             string subnet,
 
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
 
             string virtualNetwork,
 
