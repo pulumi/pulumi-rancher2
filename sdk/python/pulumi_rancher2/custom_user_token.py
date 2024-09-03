@@ -31,7 +31,7 @@ class CustomUserTokenArgs:
         :param pulumi.Input[str] description: Token description (string)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: (Computed) Labels of the token (map)
         :param pulumi.Input[bool] renew: Renew expired or disabled token
-        :param pulumi.Input[int] ttl: Token time to live in seconds. Default `0` (int) 
+        :param pulumi.Input[int] ttl: Token time to live in seconds. Default `0` (int)
                
                From Rancher v2.4.6 `ttl` is read in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
         """
@@ -138,7 +138,7 @@ class CustomUserTokenArgs:
     @pulumi.getter
     def ttl(self) -> Optional[pulumi.Input[int]]:
         """
-        Token time to live in seconds. Default `0` (int) 
+        Token time to live in seconds. Default `0` (int)
 
         From Rancher v2.4.6 `ttl` is read in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
         """
@@ -185,7 +185,7 @@ class _CustomUserTokenState:
         :param pulumi.Input[str] temp_token: (Computed) Generated API temporary token as helper. Should be empty (string)
         :param pulumi.Input[str] temp_token_id: (Computed) Generated API temporary token id as helper. Should be empty (string)
         :param pulumi.Input[str] token: (Computed/Sensitive) Token value (string)
-        :param pulumi.Input[int] ttl: Token time to live in seconds. Default `0` (int) 
+        :param pulumi.Input[int] ttl: Token time to live in seconds. Default `0` (int)
                
                From Rancher v2.4.6 `ttl` is read in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
         :param pulumi.Input[str] user_id: (Computed) Token user ID (string)
@@ -398,7 +398,7 @@ class _CustomUserTokenState:
     @pulumi.getter
     def ttl(self) -> Optional[pulumi.Input[int]]:
         """
-        Token time to live in seconds. Default `0` (int) 
+        Token time to live in seconds. Default `0` (int)
 
         From Rancher v2.4.6 `ttl` is read in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
         """
@@ -490,7 +490,7 @@ class CustomUserToken(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: (Computed) Labels of the token (map)
         :param pulumi.Input[str] password: The user password (string)
         :param pulumi.Input[bool] renew: Renew expired or disabled token
-        :param pulumi.Input[int] ttl: Token time to live in seconds. Default `0` (int) 
+        :param pulumi.Input[int] ttl: Token time to live in seconds. Default `0` (int)
                
                From Rancher v2.4.6 `ttl` is read in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
         :param pulumi.Input[str] username: The user username (string)
@@ -639,7 +639,7 @@ class CustomUserToken(pulumi.CustomResource):
         :param pulumi.Input[str] temp_token: (Computed) Generated API temporary token as helper. Should be empty (string)
         :param pulumi.Input[str] temp_token_id: (Computed) Generated API temporary token id as helper. Should be empty (string)
         :param pulumi.Input[str] token: (Computed/Sensitive) Token value (string)
-        :param pulumi.Input[int] ttl: Token time to live in seconds. Default `0` (int) 
+        :param pulumi.Input[int] ttl: Token time to live in seconds. Default `0` (int)
                
                From Rancher v2.4.6 `ttl` is read in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
         :param pulumi.Input[str] user_id: (Computed) Token user ID (string)
@@ -784,7 +784,7 @@ class CustomUserToken(pulumi.CustomResource):
     @pulumi.getter
     def ttl(self) -> pulumi.Output[Optional[int]]:
         """
-        Token time to live in seconds. Default `0` (int) 
+        Token time to live in seconds. Default `0` (int)
 
         From Rancher v2.4.6 `ttl` is read in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
         """

@@ -57,7 +57,7 @@ namespace Pulumi.Rancher2
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Create a new rancher2 Cluster 
+    ///     // Create a new rancher2 Cluster
     ///     var foo_custom = new Rancher2.Cluster("foo-custom", new()
     ///     {
     ///         Name = "foo-custom",

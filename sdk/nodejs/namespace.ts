@@ -40,7 +40,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * // Create a new rancher2 Cluster 
+ * // Create a new rancher2 Cluster
  * const foo_custom = new rancher2.Cluster("foo-custom", {
  *     name: "foo-custom",
  *     description: "Foo rancher2 custom cluster",
