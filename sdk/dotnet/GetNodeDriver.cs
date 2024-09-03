@@ -12,7 +12,7 @@ namespace Pulumi.Rancher2
     public static class GetNodeDriver
     {
         /// <summary>
-        /// Use this data source to retrieve information about a Rancher v2 Node Driver resource. 
+        /// Use this data source to retrieve information about a Rancher v2 Node Driver resource.
         /// 
         /// ## Example Usage
         /// 
@@ -36,7 +36,7 @@ namespace Pulumi.Rancher2
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNodeDriverResult>("rancher2:index/getNodeDriver:getNodeDriver", args ?? new GetNodeDriverArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to retrieve information about a Rancher v2 Node Driver resource. 
+        /// Use this data source to retrieve information about a Rancher v2 Node Driver resource.
         /// 
         /// ## Example Usage
         /// 

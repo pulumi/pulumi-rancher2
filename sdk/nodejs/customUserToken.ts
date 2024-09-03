@@ -128,7 +128,7 @@ export class CustomUserToken extends pulumi.CustomResource {
      */
     public /*out*/ readonly token!: pulumi.Output<string>;
     /**
-     * Token time to live in seconds. Default `0` (int) 
+     * Token time to live in seconds. Default `0` (int)
      *
      * From Rancher v2.4.6 `ttl` is read in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
      */
@@ -266,7 +266,7 @@ export interface CustomUserTokenState {
      */
     token?: pulumi.Input<string>;
     /**
-     * Token time to live in seconds. Default `0` (int) 
+     * Token time to live in seconds. Default `0` (int)
      *
      * From Rancher v2.4.6 `ttl` is read in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
      */
@@ -310,7 +310,7 @@ export interface CustomUserTokenArgs {
      */
     renew?: pulumi.Input<boolean>;
     /**
-     * Token time to live in seconds. Default `0` (int) 
+     * Token time to live in seconds. Default `0` (int)
      *
      * From Rancher v2.4.6 `ttl` is read in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
      */

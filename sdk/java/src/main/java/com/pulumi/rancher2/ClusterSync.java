@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         // Create a new rancher2 rke Cluster 
+ *         // Create a new rancher2 rke Cluster
  *         var foo_custom = new Cluster("foo-custom", ClusterArgs.builder()
  *             .name("foo-custom")
  *             .description("Foo rancher2 custom cluster")

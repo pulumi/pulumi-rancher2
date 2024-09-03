@@ -27,7 +27,7 @@ class TokenArgs:
         :param pulumi.Input[str] description: Token description (string)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: (Computed) Labels of the token (map)
         :param pulumi.Input[bool] renew: Renew expired or disabled token
-        :param pulumi.Input[int] ttl: Token time to live in seconds. Default `0` (int) 
+        :param pulumi.Input[int] ttl: Token time to live in seconds. Default `0` (int)
                
                From Rancher v2.4.6 `ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
         """
@@ -108,7 +108,7 @@ class TokenArgs:
     @pulumi.getter
     def ttl(self) -> Optional[pulumi.Input[int]]:
         """
-        Token time to live in seconds. Default `0` (int) 
+        Token time to live in seconds. Default `0` (int)
 
         From Rancher v2.4.6 `ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
         """
@@ -148,7 +148,7 @@ class _TokenState:
         :param pulumi.Input[bool] renew: Renew expired or disabled token
         :param pulumi.Input[str] secret_key: (Computed/Sensitive) Token secret key part (string)
         :param pulumi.Input[str] token: (Computed/Sensitive) Token value (string)
-        :param pulumi.Input[int] ttl: Token time to live in seconds. Default `0` (int) 
+        :param pulumi.Input[int] ttl: Token time to live in seconds. Default `0` (int)
                
                From Rancher v2.4.6 `ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
         :param pulumi.Input[str] user_id: (Computed) Token user ID (string)
@@ -316,7 +316,7 @@ class _TokenState:
     @pulumi.getter
     def ttl(self) -> Optional[pulumi.Input[int]]:
         """
-        Token time to live in seconds. Default `0` (int) 
+        Token time to live in seconds. Default `0` (int)
 
         From Rancher v2.4.6 `ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
         """
@@ -367,7 +367,7 @@ class Token(pulumi.CustomResource):
         :param pulumi.Input[str] description: Token description (string)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: (Computed) Labels of the token (map)
         :param pulumi.Input[bool] renew: Renew expired or disabled token
-        :param pulumi.Input[int] ttl: Token time to live in seconds. Default `0` (int) 
+        :param pulumi.Input[int] ttl: Token time to live in seconds. Default `0` (int)
                
                From Rancher v2.4.6 `ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
         """
@@ -472,7 +472,7 @@ class Token(pulumi.CustomResource):
         :param pulumi.Input[bool] renew: Renew expired or disabled token
         :param pulumi.Input[str] secret_key: (Computed/Sensitive) Token secret key part (string)
         :param pulumi.Input[str] token: (Computed/Sensitive) Token value (string)
-        :param pulumi.Input[int] ttl: Token time to live in seconds. Default `0` (int) 
+        :param pulumi.Input[int] ttl: Token time to live in seconds. Default `0` (int)
                
                From Rancher v2.4.6 `ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
         :param pulumi.Input[str] user_id: (Computed) Token user ID (string)
@@ -588,7 +588,7 @@ class Token(pulumi.CustomResource):
     @pulumi.getter
     def ttl(self) -> pulumi.Output[Optional[int]]:
         """
-        Token time to live in seconds. Default `0` (int) 
+        Token time to live in seconds. Default `0` (int)
 
         From Rancher v2.4.6 `ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
         """

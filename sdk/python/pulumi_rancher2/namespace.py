@@ -331,7 +331,7 @@ class Namespace(pulumi.CustomResource):
         import pulumi
         import pulumi_rancher2 as rancher2
 
-        # Create a new rancher2 Cluster 
+        # Create a new rancher2 Cluster
         foo_custom = rancher2.Cluster("foo-custom",
             name="foo-custom",
             description="Foo rancher2 custom cluster",
@@ -424,7 +424,7 @@ class Namespace(pulumi.CustomResource):
         import pulumi
         import pulumi_rancher2 as rancher2
 
-        # Create a new rancher2 Cluster 
+        # Create a new rancher2 Cluster
         foo_custom = rancher2.Cluster("foo-custom",
             name="foo-custom",
             description="Foo rancher2 custom cluster",
