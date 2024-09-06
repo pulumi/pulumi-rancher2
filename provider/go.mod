@@ -1,6 +1,8 @@
 module github.com/pulumi/pulumi-rancher2/provider/v6
 
-go 1.21.12
+go 1.22
+
+toolchain go1.22.7
 
 replace (
 	// tfinstall was removed from terraform-exec in v0.16.0.
@@ -57,8 +59,8 @@ replace (
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk v1.17.2
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.89.1
-	github.com/pulumi/pulumi/sdk/v3 v3.129.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.90.0
+	github.com/pulumi/pulumi/sdk/v3 v3.130.0
 	github.com/rancher/terraform-provider-rancher2 v1.25.1-0.20240709231636-9e26756e838e
 )
 
@@ -251,7 +253,7 @@ require (
 	github.com/pulumi/pulumi-java/pkg v0.14.0 // indirect
 	github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.8 // indirect
 	github.com/pulumi/pulumi-yaml v1.9.2 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.129.0 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.130.0 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rancher/aks-operator v1.2.2 // indirect
