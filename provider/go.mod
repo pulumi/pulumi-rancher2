@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-rancher2/provider/v6
+module github.com/pulumi/pulumi-rancher2/provider/v7
 
 go 1.22
 
@@ -10,7 +10,7 @@ replace (
 	// Pinning avoids this error:
 	//
 	//	go: finding module for package github.com/hashicorp/terraform-exec/tfinstall
-	//	go: github.com/pulumi/pulumi-rancher2/provider/v6 imports
+	//	go: github.com/pulumi/pulumi-rancher2/provider/v7 imports
 	//	        github.com/rancher/terraform-provider-rancher2/rancher2 imports
 	//	        github.com/hashicorp/terraform-plugin-sdk/helper/resource imports
 	//	        github.com/hashicorp/terraform-plugin-test/v2 imports
