@@ -247,20 +247,6 @@ public class ClusterSync extends com.pulumi.resources.CustomResource {
         return this.systemProjectId;
     }
     /**
-     * Wait until alerting is up and running. Default: `false` (bool)
-     * 
-     */
-    @Export(name="waitAlerting", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> waitAlerting;
-
-    /**
-     * @return Wait until alerting is up and running. Default: `false` (bool)
-     * 
-     */
-    public Output<Optional<Boolean>> waitAlerting() {
-        return Codegen.optional(this.waitAlerting);
-    }
-    /**
      * Wait until all catalogs are downloaded and active. Default: `false` (bool)
      * 
      */
@@ -273,20 +259,6 @@ public class ClusterSync extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> waitCatalogs() {
         return Codegen.optional(this.waitCatalogs);
-    }
-    /**
-     * Wait until monitoring is up and running. Default: `false` (bool)
-     * 
-     */
-    @Export(name="waitMonitoring", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> waitMonitoring;
-
-    /**
-     * @return Wait until monitoring is up and running. Default: `false` (bool)
-     * 
-     */
-    public Output<Optional<Boolean>> waitMonitoring() {
-        return Codegen.optional(this.waitMonitoring);
     }
 
     /**

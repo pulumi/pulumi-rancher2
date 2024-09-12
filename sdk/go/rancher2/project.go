@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-rancher2/sdk/v6/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v7/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v6/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v7/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -65,14 +65,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v6/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v7/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Create a new rancher2 Project enabling and customizing monitoring
+//			// Create a new rancher2 Project
 //			_, err := rancher2.NewProject(ctx, "foo", &rancher2.ProjectArgs{
 //				Name:      pulumi.String("foo"),
 //				ClusterId: pulumi.String("<CLUSTER_ID>"),
@@ -93,29 +93,6 @@ import (
 //					LimitsMemory:   pulumi.String("20Mi"),
 //					RequestsCpu:    pulumi.String("1m"),
 //					RequestsMemory: pulumi.String("1Mi"),
-//				},
-//				EnableProjectMonitoring: pulumi.Bool(true),
-//				ProjectMonitoringInput: &rancher2.ProjectProjectMonitoringInputArgs{
-//					Answers: pulumi.StringMap{
-//						"exporter-kubelets.https":                   pulumi.String("true"),
-//						"exporter-node.enabled":                     pulumi.String("true"),
-//						"exporter-node.ports.metrics.port":          pulumi.String("9796"),
-//						"exporter-node.resources.limits.cpu":        pulumi.String("200m"),
-//						"exporter-node.resources.limits.memory":     pulumi.String("200Mi"),
-//						"grafana.persistence.enabled":               pulumi.String("false"),
-//						"grafana.persistence.size":                  pulumi.String("10Gi"),
-//						"grafana.persistence.storageClass":          pulumi.String("default"),
-//						"operator.resources.limits.memory":          pulumi.String("500Mi"),
-//						"prometheus.persistence.enabled":            pulumi.String("false"),
-//						"prometheus.persistence.size":               pulumi.String("50Gi"),
-//						"prometheus.persistence.storageClass":       pulumi.String("default"),
-//						"prometheus.persistent.useReleaseName":      pulumi.String("true"),
-//						"prometheus.resources.core.limits.cpu":      pulumi.String("1000m"),
-//						"prometheus.resources.core.limits.memory":   pulumi.String("1500Mi"),
-//						"prometheus.resources.core.requests.cpu":    pulumi.String("750m"),
-//						"prometheus.resources.core.requests.memory": pulumi.String("750Mi"),
-//						"prometheus.retention":                      pulumi.String("12h"),
-//					},
 //				},
 //			})
 //			if err != nil {
@@ -145,16 +122,10 @@ type Project struct {
 	ContainerResourceLimit ProjectContainerResourceLimitPtrOutput `pulumi:"containerResourceLimit"`
 	// A project description (string)
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Enable built-in project monitoring. Default `false` (bool)
-	EnableProjectMonitoring pulumi.BoolPtrOutput `pulumi:"enableProjectMonitoring"`
 	// Labels for Node Pool object (map)
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the project (string)
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Default Pod Security Policy ID for the project (string)
-	PodSecurityPolicyTemplateId pulumi.StringPtrOutput `pulumi:"podSecurityPolicyTemplateId"`
-	// Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
-	ProjectMonitoringInput ProjectProjectMonitoringInputPtrOutput `pulumi:"projectMonitoringInput"`
 	// Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
 	ResourceQuota ProjectResourceQuotaPtrOutput `pulumi:"resourceQuota"`
 	// Wait for cluster becomes active. Default `false` (bool)
@@ -202,16 +173,10 @@ type projectState struct {
 	ContainerResourceLimit *ProjectContainerResourceLimit `pulumi:"containerResourceLimit"`
 	// A project description (string)
 	Description *string `pulumi:"description"`
-	// Enable built-in project monitoring. Default `false` (bool)
-	EnableProjectMonitoring *bool `pulumi:"enableProjectMonitoring"`
 	// Labels for Node Pool object (map)
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the project (string)
 	Name *string `pulumi:"name"`
-	// Default Pod Security Policy ID for the project (string)
-	PodSecurityPolicyTemplateId *string `pulumi:"podSecurityPolicyTemplateId"`
-	// Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
-	ProjectMonitoringInput *ProjectProjectMonitoringInput `pulumi:"projectMonitoringInput"`
 	// Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
 	ResourceQuota *ProjectResourceQuota `pulumi:"resourceQuota"`
 	// Wait for cluster becomes active. Default `false` (bool)
@@ -227,16 +192,10 @@ type ProjectState struct {
 	ContainerResourceLimit ProjectContainerResourceLimitPtrInput
 	// A project description (string)
 	Description pulumi.StringPtrInput
-	// Enable built-in project monitoring. Default `false` (bool)
-	EnableProjectMonitoring pulumi.BoolPtrInput
 	// Labels for Node Pool object (map)
 	Labels pulumi.StringMapInput
 	// The name of the project (string)
 	Name pulumi.StringPtrInput
-	// Default Pod Security Policy ID for the project (string)
-	PodSecurityPolicyTemplateId pulumi.StringPtrInput
-	// Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
-	ProjectMonitoringInput ProjectProjectMonitoringInputPtrInput
 	// Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
 	ResourceQuota ProjectResourceQuotaPtrInput
 	// Wait for cluster becomes active. Default `false` (bool)
@@ -256,16 +215,10 @@ type projectArgs struct {
 	ContainerResourceLimit *ProjectContainerResourceLimit `pulumi:"containerResourceLimit"`
 	// A project description (string)
 	Description *string `pulumi:"description"`
-	// Enable built-in project monitoring. Default `false` (bool)
-	EnableProjectMonitoring *bool `pulumi:"enableProjectMonitoring"`
 	// Labels for Node Pool object (map)
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the project (string)
 	Name *string `pulumi:"name"`
-	// Default Pod Security Policy ID for the project (string)
-	PodSecurityPolicyTemplateId *string `pulumi:"podSecurityPolicyTemplateId"`
-	// Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
-	ProjectMonitoringInput *ProjectProjectMonitoringInput `pulumi:"projectMonitoringInput"`
 	// Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
 	ResourceQuota *ProjectResourceQuota `pulumi:"resourceQuota"`
 	// Wait for cluster becomes active. Default `false` (bool)
@@ -282,16 +235,10 @@ type ProjectArgs struct {
 	ContainerResourceLimit ProjectContainerResourceLimitPtrInput
 	// A project description (string)
 	Description pulumi.StringPtrInput
-	// Enable built-in project monitoring. Default `false` (bool)
-	EnableProjectMonitoring pulumi.BoolPtrInput
 	// Labels for Node Pool object (map)
 	Labels pulumi.StringMapInput
 	// The name of the project (string)
 	Name pulumi.StringPtrInput
-	// Default Pod Security Policy ID for the project (string)
-	PodSecurityPolicyTemplateId pulumi.StringPtrInput
-	// Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
-	ProjectMonitoringInput ProjectProjectMonitoringInputPtrInput
 	// Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
 	ResourceQuota ProjectResourceQuotaPtrInput
 	// Wait for cluster becomes active. Default `false` (bool)
@@ -405,11 +352,6 @@ func (o ProjectOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Enable built-in project monitoring. Default `false` (bool)
-func (o ProjectOutput) EnableProjectMonitoring() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.EnableProjectMonitoring }).(pulumi.BoolPtrOutput)
-}
-
 // Labels for Node Pool object (map)
 func (o ProjectOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
@@ -418,16 +360,6 @@ func (o ProjectOutput) Labels() pulumi.StringMapOutput {
 // The name of the project (string)
 func (o ProjectOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
-}
-
-// Default Pod Security Policy ID for the project (string)
-func (o ProjectOutput) PodSecurityPolicyTemplateId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.PodSecurityPolicyTemplateId }).(pulumi.StringPtrOutput)
-}
-
-// Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
-func (o ProjectOutput) ProjectMonitoringInput() ProjectProjectMonitoringInputPtrOutput {
-	return o.ApplyT(func(v *Project) ProjectProjectMonitoringInputPtrOutput { return v.ProjectMonitoringInput }).(ProjectProjectMonitoringInputPtrOutput)
 }
 
 // Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)

@@ -24,7 +24,6 @@ namespace Pulumi.Rancher2.Outputs
         public readonly ImmutableArray<string> ExtraBinds;
         public readonly ImmutableArray<string> ExtraEnvs;
         public readonly string Image;
-        public readonly bool? PodSecurityPolicy;
         public readonly Outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigResult? SecretsEncryptionConfig;
         public readonly string ServiceClusterIpRange;
         public readonly string ServiceNodePortRange;
@@ -47,8 +46,6 @@ namespace Pulumi.Rancher2.Outputs
 
             string image,
 
-            bool? podSecurityPolicy,
-
             Outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigResult? secretsEncryptionConfig,
 
             string serviceClusterIpRange,
@@ -63,7 +60,6 @@ namespace Pulumi.Rancher2.Outputs
             ExtraBinds = extraBinds;
             ExtraEnvs = extraEnvs;
             Image = image;
-            PodSecurityPolicy = podSecurityPolicy;
             SecretsEncryptionConfig = secretsEncryptionConfig;
             ServiceClusterIpRange = serviceClusterIpRange;
             ServiceNodePortRange = serviceNodePortRange;

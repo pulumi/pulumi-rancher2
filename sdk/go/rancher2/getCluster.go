@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-rancher2/sdk/v6/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v7/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v6/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v7/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -69,8 +69,6 @@ type LookupClusterResult struct {
 	CaCert string `pulumi:"caCert"`
 	// (Computed) Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
 	ClusterAuthEndpoint GetClusterClusterAuthEndpoint `pulumi:"clusterAuthEndpoint"`
-	// (Computed) Cluster monitoring config (list maxitems:1)
-	ClusterMonitoringInput GetClusterClusterMonitoringInput `pulumi:"clusterMonitoringInput"`
 	// (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
 	ClusterRegistrationToken GetClusterClusterRegistrationToken `pulumi:"clusterRegistrationToken"`
 	// (Computed) Cluster template answers (list maxitems:1)
@@ -82,8 +80,6 @@ type LookupClusterResult struct {
 	// (Computed) Cluster template revision ID (string)
 	ClusterTemplateRevisionId                            string `pulumi:"clusterTemplateRevisionId"`
 	DefaultPodSecurityAdmissionConfigurationTemplateName string `pulumi:"defaultPodSecurityAdmissionConfigurationTemplateName"`
-	// (Optional/Computed) [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
-	DefaultPodSecurityPolicyTemplateId string `pulumi:"defaultPodSecurityPolicyTemplateId"`
 	// (Computed) Default project ID for the cluster (string)
 	DefaultProjectId string `pulumi:"defaultProjectId"`
 	// (Computed) The description for Cluster (string)
@@ -93,10 +89,7 @@ type LookupClusterResult struct {
 	// (Computed) The Amazon eks configuration for `eks` Conflicts with `aksConfig`, `aksConfigV2`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	EksConfig GetClusterEksConfig `pulumi:"eksConfig"`
 	// (Computed) The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `gkeConfig`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.x and above (list maxitems:1)
-	EksConfigV2           GetClusterEksConfigV2 `pulumi:"eksConfigV2"`
-	EnableClusterAlerting bool                  `pulumi:"enableClusterAlerting"`
-	// (Computed) Enable built-in cluster monitoring. Default `false` (bool)
-	EnableClusterMonitoring bool `pulumi:"enableClusterMonitoring"`
+	EksConfigV2 GetClusterEksConfigV2 `pulumi:"eksConfigV2"`
 	// (Computed) Enable project network isolation. Default `false` (bool)
 	EnableNetworkPolicy bool `pulumi:"enableNetworkPolicy"`
 	// (Computed) Fleet workspace name (string)
@@ -193,11 +186,6 @@ func (o LookupClusterResultOutput) ClusterAuthEndpoint() GetClusterClusterAuthEn
 	return o.ApplyT(func(v LookupClusterResult) GetClusterClusterAuthEndpoint { return v.ClusterAuthEndpoint }).(GetClusterClusterAuthEndpointOutput)
 }
 
-// (Computed) Cluster monitoring config (list maxitems:1)
-func (o LookupClusterResultOutput) ClusterMonitoringInput() GetClusterClusterMonitoringInputOutput {
-	return o.ApplyT(func(v LookupClusterResult) GetClusterClusterMonitoringInput { return v.ClusterMonitoringInput }).(GetClusterClusterMonitoringInputOutput)
-}
-
 // (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
 func (o LookupClusterResultOutput) ClusterRegistrationToken() GetClusterClusterRegistrationTokenOutput {
 	return o.ApplyT(func(v LookupClusterResult) GetClusterClusterRegistrationToken { return v.ClusterRegistrationToken }).(GetClusterClusterRegistrationTokenOutput)
@@ -227,11 +215,6 @@ func (o LookupClusterResultOutput) DefaultPodSecurityAdmissionConfigurationTempl
 	return o.ApplyT(func(v LookupClusterResult) string { return v.DefaultPodSecurityAdmissionConfigurationTemplateName }).(pulumi.StringOutput)
 }
 
-// (Optional/Computed) [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
-func (o LookupClusterResultOutput) DefaultPodSecurityPolicyTemplateId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupClusterResult) string { return v.DefaultPodSecurityPolicyTemplateId }).(pulumi.StringOutput)
-}
-
 // (Computed) Default project ID for the cluster (string)
 func (o LookupClusterResultOutput) DefaultProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.DefaultProjectId }).(pulumi.StringOutput)
@@ -255,15 +238,6 @@ func (o LookupClusterResultOutput) EksConfig() GetClusterEksConfigOutput {
 // (Computed) The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `gkeConfig`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.x and above (list maxitems:1)
 func (o LookupClusterResultOutput) EksConfigV2() GetClusterEksConfigV2Output {
 	return o.ApplyT(func(v LookupClusterResult) GetClusterEksConfigV2 { return v.EksConfigV2 }).(GetClusterEksConfigV2Output)
-}
-
-func (o LookupClusterResultOutput) EnableClusterAlerting() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupClusterResult) bool { return v.EnableClusterAlerting }).(pulumi.BoolOutput)
-}
-
-// (Computed) Enable built-in cluster monitoring. Default `false` (bool)
-func (o LookupClusterResultOutput) EnableClusterMonitoring() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupClusterResult) bool { return v.EnableClusterMonitoring }).(pulumi.BoolOutput)
 }
 
 // (Computed) Enable project network isolation. Default `false` (bool)

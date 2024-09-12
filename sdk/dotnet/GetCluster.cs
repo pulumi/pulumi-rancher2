@@ -124,10 +124,6 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly Outputs.GetClusterClusterAuthEndpointResult ClusterAuthEndpoint;
         /// <summary>
-        /// (Computed) Cluster monitoring config (list maxitems:1)
-        /// </summary>
-        public readonly Outputs.GetClusterClusterMonitoringInputResult ClusterMonitoringInput;
-        /// <summary>
         /// (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
         /// </summary>
         public readonly Outputs.GetClusterClusterRegistrationTokenResult ClusterRegistrationToken;
@@ -149,10 +145,6 @@ namespace Pulumi.Rancher2
         public readonly string ClusterTemplateRevisionId;
         public readonly string DefaultPodSecurityAdmissionConfigurationTemplateName;
         /// <summary>
-        /// (Optional/Computed) [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
-        /// </summary>
-        public readonly string DefaultPodSecurityPolicyTemplateId;
-        /// <summary>
         /// (Computed) Default project ID for the cluster (string)
         /// </summary>
         public readonly string DefaultProjectId;
@@ -172,11 +164,6 @@ namespace Pulumi.Rancher2
         /// (Computed) The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.x and above (list maxitems:1)
         /// </summary>
         public readonly Outputs.GetClusterEksConfigV2Result EksConfigV2;
-        public readonly bool EnableClusterAlerting;
-        /// <summary>
-        /// (Computed) Enable built-in cluster monitoring. Default `false` (bool)
-        /// </summary>
-        public readonly bool EnableClusterMonitoring;
         /// <summary>
         /// (Computed) Enable project network isolation. Default `false` (bool)
         /// </summary>
@@ -241,8 +228,6 @@ namespace Pulumi.Rancher2
 
             Outputs.GetClusterClusterAuthEndpointResult clusterAuthEndpoint,
 
-            Outputs.GetClusterClusterMonitoringInputResult clusterMonitoringInput,
-
             Outputs.GetClusterClusterRegistrationTokenResult clusterRegistrationToken,
 
             Outputs.GetClusterClusterTemplateAnswersResult clusterTemplateAnswers,
@@ -255,8 +240,6 @@ namespace Pulumi.Rancher2
 
             string defaultPodSecurityAdmissionConfigurationTemplateName,
 
-            string defaultPodSecurityPolicyTemplateId,
-
             string defaultProjectId,
 
             string description,
@@ -266,10 +249,6 @@ namespace Pulumi.Rancher2
             Outputs.GetClusterEksConfigResult eksConfig,
 
             Outputs.GetClusterEksConfigV2Result eksConfigV2,
-
-            bool enableClusterAlerting,
-
-            bool enableClusterMonitoring,
 
             bool enableNetworkPolicy,
 
@@ -303,21 +282,17 @@ namespace Pulumi.Rancher2
             Annotations = annotations;
             CaCert = caCert;
             ClusterAuthEndpoint = clusterAuthEndpoint;
-            ClusterMonitoringInput = clusterMonitoringInput;
             ClusterRegistrationToken = clusterRegistrationToken;
             ClusterTemplateAnswers = clusterTemplateAnswers;
             ClusterTemplateId = clusterTemplateId;
             ClusterTemplateQuestions = clusterTemplateQuestions;
             ClusterTemplateRevisionId = clusterTemplateRevisionId;
             DefaultPodSecurityAdmissionConfigurationTemplateName = defaultPodSecurityAdmissionConfigurationTemplateName;
-            DefaultPodSecurityPolicyTemplateId = defaultPodSecurityPolicyTemplateId;
             DefaultProjectId = defaultProjectId;
             Description = description;
             Driver = driver;
             EksConfig = eksConfig;
             EksConfigV2 = eksConfigV2;
-            EnableClusterAlerting = enableClusterAlerting;
-            EnableClusterMonitoring = enableClusterMonitoring;
             EnableNetworkPolicy = enableNetworkPolicy;
             FleetWorkspaceName = fleetWorkspaceName;
             GkeConfig = gkeConfig;

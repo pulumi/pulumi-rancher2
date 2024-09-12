@@ -162,22 +162,10 @@ namespace Pulumi.Rancher2
         public Output<string> SystemProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Wait until alerting is up and running. Default: `false` (bool)
-        /// </summary>
-        [Output("waitAlerting")]
-        public Output<bool?> WaitAlerting { get; private set; } = null!;
-
-        /// <summary>
         /// Wait until all catalogs are downloaded and active. Default: `false` (bool)
         /// </summary>
         [Output("waitCatalogs")]
         public Output<bool?> WaitCatalogs { get; private set; } = null!;
-
-        /// <summary>
-        /// Wait until monitoring is up and running. Default: `false` (bool)
-        /// </summary>
-        [Output("waitMonitoring")]
-        public Output<bool?> WaitMonitoring { get; private set; } = null!;
 
 
         /// <summary>
@@ -259,22 +247,10 @@ namespace Pulumi.Rancher2
         public Input<bool>? Synced { get; set; }
 
         /// <summary>
-        /// Wait until alerting is up and running. Default: `false` (bool)
-        /// </summary>
-        [Input("waitAlerting")]
-        public Input<bool>? WaitAlerting { get; set; }
-
-        /// <summary>
         /// Wait until all catalogs are downloaded and active. Default: `false` (bool)
         /// </summary>
         [Input("waitCatalogs")]
         public Input<bool>? WaitCatalogs { get; set; }
-
-        /// <summary>
-        /// Wait until monitoring is up and running. Default: `false` (bool)
-        /// </summary>
-        [Input("waitMonitoring")]
-        public Input<bool>? WaitMonitoring { get; set; }
 
         public ClusterSyncArgs()
         {
@@ -354,22 +330,10 @@ namespace Pulumi.Rancher2
         public Input<string>? SystemProjectId { get; set; }
 
         /// <summary>
-        /// Wait until alerting is up and running. Default: `false` (bool)
-        /// </summary>
-        [Input("waitAlerting")]
-        public Input<bool>? WaitAlerting { get; set; }
-
-        /// <summary>
         /// Wait until all catalogs are downloaded and active. Default: `false` (bool)
         /// </summary>
         [Input("waitCatalogs")]
         public Input<bool>? WaitCatalogs { get; set; }
-
-        /// <summary>
-        /// Wait until monitoring is up and running. Default: `false` (bool)
-        /// </summary>
-        [Input("waitMonitoring")]
-        public Input<bool>? WaitMonitoring { get; set; }
 
         public ClusterSyncState()
         {

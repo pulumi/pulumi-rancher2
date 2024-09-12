@@ -10,7 +10,6 @@ import com.pulumi.rancher2.inputs.ClusterAksConfigArgs;
 import com.pulumi.rancher2.inputs.ClusterAksConfigV2Args;
 import com.pulumi.rancher2.inputs.ClusterClusterAgentDeploymentCustomizationArgs;
 import com.pulumi.rancher2.inputs.ClusterClusterAuthEndpointArgs;
-import com.pulumi.rancher2.inputs.ClusterClusterMonitoringInputArgs;
 import com.pulumi.rancher2.inputs.ClusterClusterTemplateAnswersArgs;
 import com.pulumi.rancher2.inputs.ClusterClusterTemplateQuestionArgs;
 import com.pulumi.rancher2.inputs.ClusterEksConfigArgs;
@@ -126,21 +125,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
-     * 
-     */
-    @Import(name="clusterMonitoringInput")
-    private @Nullable Output<ClusterClusterMonitoringInputArgs> clusterMonitoringInput;
-
-    /**
-     * @return Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
-     * 
-     */
-    public Optional<Output<ClusterClusterMonitoringInputArgs>> clusterMonitoringInput() {
-        return Optional.ofNullable(this.clusterMonitoringInput);
-    }
-
-    /**
      * Cluster template answers. For Rancher v2.3.x and above (list maxitems:1)
      * 
      */
@@ -213,21 +197,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> defaultPodSecurityAdmissionConfigurationTemplateName() {
         return Optional.ofNullable(this.defaultPodSecurityAdmissionConfigurationTemplateName);
-    }
-
-    /**
-     * [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
-     * 
-     */
-    @Import(name="defaultPodSecurityPolicyTemplateId")
-    private @Nullable Output<String> defaultPodSecurityPolicyTemplateId;
-
-    /**
-     * @return [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
-     * 
-     */
-    public Optional<Output<String>> defaultPodSecurityPolicyTemplateId() {
-        return Optional.ofNullable(this.defaultPodSecurityPolicyTemplateId);
     }
 
     /**
@@ -333,36 +302,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<ClusterEksConfigV2Args>> eksConfigV2() {
         return Optional.ofNullable(this.eksConfigV2);
-    }
-
-    /**
-     * Enable built-in cluster alerting (bool)
-     * 
-     */
-    @Import(name="enableClusterAlerting")
-    private @Nullable Output<Boolean> enableClusterAlerting;
-
-    /**
-     * @return Enable built-in cluster alerting (bool)
-     * 
-     */
-    public Optional<Output<Boolean>> enableClusterAlerting() {
-        return Optional.ofNullable(this.enableClusterAlerting);
-    }
-
-    /**
-     * Enable built-in cluster monitoring (bool)
-     * 
-     */
-    @Import(name="enableClusterMonitoring")
-    private @Nullable Output<Boolean> enableClusterMonitoring;
-
-    /**
-     * @return Enable built-in cluster monitoring (bool)
-     * 
-     */
-    public Optional<Output<Boolean>> enableClusterMonitoring() {
-        return Optional.ofNullable(this.enableClusterMonitoring);
     }
 
     /**
@@ -554,13 +493,11 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.annotations = $.annotations;
         this.clusterAgentDeploymentCustomizations = $.clusterAgentDeploymentCustomizations;
         this.clusterAuthEndpoint = $.clusterAuthEndpoint;
-        this.clusterMonitoringInput = $.clusterMonitoringInput;
         this.clusterTemplateAnswers = $.clusterTemplateAnswers;
         this.clusterTemplateId = $.clusterTemplateId;
         this.clusterTemplateQuestions = $.clusterTemplateQuestions;
         this.clusterTemplateRevisionId = $.clusterTemplateRevisionId;
         this.defaultPodSecurityAdmissionConfigurationTemplateName = $.defaultPodSecurityAdmissionConfigurationTemplateName;
-        this.defaultPodSecurityPolicyTemplateId = $.defaultPodSecurityPolicyTemplateId;
         this.description = $.description;
         this.desiredAgentImage = $.desiredAgentImage;
         this.desiredAuthImage = $.desiredAuthImage;
@@ -568,8 +505,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.driver = $.driver;
         this.eksConfig = $.eksConfig;
         this.eksConfigV2 = $.eksConfigV2;
-        this.enableClusterAlerting = $.enableClusterAlerting;
-        this.enableClusterMonitoring = $.enableClusterMonitoring;
         this.enableNetworkPolicy = $.enableNetworkPolicy;
         this.fleetAgentDeploymentCustomizations = $.fleetAgentDeploymentCustomizations;
         this.fleetWorkspaceName = $.fleetWorkspaceName;
@@ -749,27 +684,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterMonitoringInput Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder clusterMonitoringInput(@Nullable Output<ClusterClusterMonitoringInputArgs> clusterMonitoringInput) {
-            $.clusterMonitoringInput = clusterMonitoringInput;
-            return this;
-        }
-
-        /**
-         * @param clusterMonitoringInput Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder clusterMonitoringInput(ClusterClusterMonitoringInputArgs clusterMonitoringInput) {
-            return clusterMonitoringInput(Output.of(clusterMonitoringInput));
-        }
-
-        /**
          * @param clusterTemplateAnswers Cluster template answers. For Rancher v2.3.x and above (list maxitems:1)
          * 
          * @return builder
@@ -882,27 +796,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder defaultPodSecurityAdmissionConfigurationTemplateName(String defaultPodSecurityAdmissionConfigurationTemplateName) {
             return defaultPodSecurityAdmissionConfigurationTemplateName(Output.of(defaultPodSecurityAdmissionConfigurationTemplateName));
-        }
-
-        /**
-         * @param defaultPodSecurityPolicyTemplateId [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder defaultPodSecurityPolicyTemplateId(@Nullable Output<String> defaultPodSecurityPolicyTemplateId) {
-            $.defaultPodSecurityPolicyTemplateId = defaultPodSecurityPolicyTemplateId;
-            return this;
-        }
-
-        /**
-         * @param defaultPodSecurityPolicyTemplateId [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder defaultPodSecurityPolicyTemplateId(String defaultPodSecurityPolicyTemplateId) {
-            return defaultPodSecurityPolicyTemplateId(Output.of(defaultPodSecurityPolicyTemplateId));
         }
 
         /**
@@ -1050,48 +943,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder eksConfigV2(ClusterEksConfigV2Args eksConfigV2) {
             return eksConfigV2(Output.of(eksConfigV2));
-        }
-
-        /**
-         * @param enableClusterAlerting Enable built-in cluster alerting (bool)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder enableClusterAlerting(@Nullable Output<Boolean> enableClusterAlerting) {
-            $.enableClusterAlerting = enableClusterAlerting;
-            return this;
-        }
-
-        /**
-         * @param enableClusterAlerting Enable built-in cluster alerting (bool)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder enableClusterAlerting(Boolean enableClusterAlerting) {
-            return enableClusterAlerting(Output.of(enableClusterAlerting));
-        }
-
-        /**
-         * @param enableClusterMonitoring Enable built-in cluster monitoring (bool)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder enableClusterMonitoring(@Nullable Output<Boolean> enableClusterMonitoring) {
-            $.enableClusterMonitoring = enableClusterMonitoring;
-            return this;
-        }
-
-        /**
-         * @param enableClusterMonitoring Enable built-in cluster monitoring (bool)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder enableClusterMonitoring(Boolean enableClusterMonitoring) {
-            return enableClusterMonitoring(Output.of(enableClusterMonitoring));
         }
 
         /**

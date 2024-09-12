@@ -20,11 +20,8 @@ class ProjectArgs:
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  container_resource_limit: Optional[pulumi.Input['ProjectContainerResourceLimitArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 enable_project_monitoring: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 pod_security_policy_template_id: Optional[pulumi.Input[str]] = None,
-                 project_monitoring_input: Optional[pulumi.Input['ProjectProjectMonitoringInputArgs']] = None,
                  resource_quota: Optional[pulumi.Input['ProjectResourceQuotaArgs']] = None,
                  wait_for_cluster: Optional[pulumi.Input[bool]] = None):
         """
@@ -33,11 +30,8 @@ class ProjectArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for Node Pool object (map)
         :param pulumi.Input['ProjectContainerResourceLimitArgs'] container_resource_limit: Default containers resource limits on project (List maxitem:1)
         :param pulumi.Input[str] description: A project description (string)
-        :param pulumi.Input[bool] enable_project_monitoring: Enable built-in project monitoring. Default `false` (bool)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for Node Pool object (map)
         :param pulumi.Input[str] name: The name of the project (string)
-        :param pulumi.Input[str] pod_security_policy_template_id: Default Pod Security Policy ID for the project (string)
-        :param pulumi.Input['ProjectProjectMonitoringInputArgs'] project_monitoring_input: Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
         :param pulumi.Input['ProjectResourceQuotaArgs'] resource_quota: Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
         :param pulumi.Input[bool] wait_for_cluster: Wait for cluster becomes active. Default `false` (bool)
         """
@@ -48,16 +42,10 @@ class ProjectArgs:
             pulumi.set(__self__, "container_resource_limit", container_resource_limit)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if enable_project_monitoring is not None:
-            pulumi.set(__self__, "enable_project_monitoring", enable_project_monitoring)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if pod_security_policy_template_id is not None:
-            pulumi.set(__self__, "pod_security_policy_template_id", pod_security_policy_template_id)
-        if project_monitoring_input is not None:
-            pulumi.set(__self__, "project_monitoring_input", project_monitoring_input)
         if resource_quota is not None:
             pulumi.set(__self__, "resource_quota", resource_quota)
         if wait_for_cluster is not None:
@@ -112,18 +100,6 @@ class ProjectArgs:
         pulumi.set(self, "description", value)
 
     @property
-    @pulumi.getter(name="enableProjectMonitoring")
-    def enable_project_monitoring(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Enable built-in project monitoring. Default `false` (bool)
-        """
-        return pulumi.get(self, "enable_project_monitoring")
-
-    @enable_project_monitoring.setter
-    def enable_project_monitoring(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "enable_project_monitoring", value)
-
-    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -146,30 +122,6 @@ class ProjectArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter(name="podSecurityPolicyTemplateId")
-    def pod_security_policy_template_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Default Pod Security Policy ID for the project (string)
-        """
-        return pulumi.get(self, "pod_security_policy_template_id")
-
-    @pod_security_policy_template_id.setter
-    def pod_security_policy_template_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "pod_security_policy_template_id", value)
-
-    @property
-    @pulumi.getter(name="projectMonitoringInput")
-    def project_monitoring_input(self) -> Optional[pulumi.Input['ProjectProjectMonitoringInputArgs']]:
-        """
-        Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
-        """
-        return pulumi.get(self, "project_monitoring_input")
-
-    @project_monitoring_input.setter
-    def project_monitoring_input(self, value: Optional[pulumi.Input['ProjectProjectMonitoringInputArgs']]):
-        pulumi.set(self, "project_monitoring_input", value)
 
     @property
     @pulumi.getter(name="resourceQuota")
@@ -203,11 +155,8 @@ class _ProjectState:
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  container_resource_limit: Optional[pulumi.Input['ProjectContainerResourceLimitArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 enable_project_monitoring: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 pod_security_policy_template_id: Optional[pulumi.Input[str]] = None,
-                 project_monitoring_input: Optional[pulumi.Input['ProjectProjectMonitoringInputArgs']] = None,
                  resource_quota: Optional[pulumi.Input['ProjectResourceQuotaArgs']] = None,
                  wait_for_cluster: Optional[pulumi.Input[bool]] = None):
         """
@@ -216,11 +165,8 @@ class _ProjectState:
         :param pulumi.Input[str] cluster_id: The cluster id where create project (string)
         :param pulumi.Input['ProjectContainerResourceLimitArgs'] container_resource_limit: Default containers resource limits on project (List maxitem:1)
         :param pulumi.Input[str] description: A project description (string)
-        :param pulumi.Input[bool] enable_project_monitoring: Enable built-in project monitoring. Default `false` (bool)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for Node Pool object (map)
         :param pulumi.Input[str] name: The name of the project (string)
-        :param pulumi.Input[str] pod_security_policy_template_id: Default Pod Security Policy ID for the project (string)
-        :param pulumi.Input['ProjectProjectMonitoringInputArgs'] project_monitoring_input: Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
         :param pulumi.Input['ProjectResourceQuotaArgs'] resource_quota: Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
         :param pulumi.Input[bool] wait_for_cluster: Wait for cluster becomes active. Default `false` (bool)
         """
@@ -232,16 +178,10 @@ class _ProjectState:
             pulumi.set(__self__, "container_resource_limit", container_resource_limit)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if enable_project_monitoring is not None:
-            pulumi.set(__self__, "enable_project_monitoring", enable_project_monitoring)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if pod_security_policy_template_id is not None:
-            pulumi.set(__self__, "pod_security_policy_template_id", pod_security_policy_template_id)
-        if project_monitoring_input is not None:
-            pulumi.set(__self__, "project_monitoring_input", project_monitoring_input)
         if resource_quota is not None:
             pulumi.set(__self__, "resource_quota", resource_quota)
         if wait_for_cluster is not None:
@@ -296,18 +236,6 @@ class _ProjectState:
         pulumi.set(self, "description", value)
 
     @property
-    @pulumi.getter(name="enableProjectMonitoring")
-    def enable_project_monitoring(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Enable built-in project monitoring. Default `false` (bool)
-        """
-        return pulumi.get(self, "enable_project_monitoring")
-
-    @enable_project_monitoring.setter
-    def enable_project_monitoring(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "enable_project_monitoring", value)
-
-    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -330,30 +258,6 @@ class _ProjectState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter(name="podSecurityPolicyTemplateId")
-    def pod_security_policy_template_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Default Pod Security Policy ID for the project (string)
-        """
-        return pulumi.get(self, "pod_security_policy_template_id")
-
-    @pod_security_policy_template_id.setter
-    def pod_security_policy_template_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "pod_security_policy_template_id", value)
-
-    @property
-    @pulumi.getter(name="projectMonitoringInput")
-    def project_monitoring_input(self) -> Optional[pulumi.Input['ProjectProjectMonitoringInputArgs']]:
-        """
-        Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
-        """
-        return pulumi.get(self, "project_monitoring_input")
-
-    @project_monitoring_input.setter
-    def project_monitoring_input(self, value: Optional[pulumi.Input['ProjectProjectMonitoringInputArgs']]):
-        pulumi.set(self, "project_monitoring_input", value)
 
     @property
     @pulumi.getter(name="resourceQuota")
@@ -389,11 +293,8 @@ class Project(pulumi.CustomResource):
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  container_resource_limit: Optional[pulumi.Input[Union['ProjectContainerResourceLimitArgs', 'ProjectContainerResourceLimitArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 enable_project_monitoring: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 pod_security_policy_template_id: Optional[pulumi.Input[str]] = None,
-                 project_monitoring_input: Optional[pulumi.Input[Union['ProjectProjectMonitoringInputArgs', 'ProjectProjectMonitoringInputArgsDict']]] = None,
                  resource_quota: Optional[pulumi.Input[Union['ProjectResourceQuotaArgs', 'ProjectResourceQuotaArgsDict']]] = None,
                  wait_for_cluster: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -434,7 +335,7 @@ class Project(pulumi.CustomResource):
         import pulumi
         import pulumi_rancher2 as rancher2
 
-        # Create a new rancher2 Project enabling and customizing monitoring
+        # Create a new rancher2 Project
         foo = rancher2.Project("foo",
             name="foo",
             cluster_id="<CLUSTER_ID>",
@@ -455,29 +356,6 @@ class Project(pulumi.CustomResource):
                 "limits_memory": "20Mi",
                 "requests_cpu": "1m",
                 "requests_memory": "1Mi",
-            },
-            enable_project_monitoring=True,
-            project_monitoring_input={
-                "answers": {
-                    "exporter_kubelets_https": "true",
-                    "exporter_node_enabled": "true",
-                    "exporter_node_ports_metrics_port": "9796",
-                    "exporter_node_resources_limits_cpu": "200m",
-                    "exporter_node_resources_limits_memory": "200Mi",
-                    "grafana_persistence_enabled": "false",
-                    "grafana_persistence_size": "10Gi",
-                    "grafana_persistence_storage_class": "default",
-                    "operator_resources_limits_memory": "500Mi",
-                    "prometheus_persistence_enabled": "false",
-                    "prometheus_persistence_size": "50Gi",
-                    "prometheus_persistence_storage_class": "default",
-                    "prometheus_persistent_use_release_name": "true",
-                    "prometheus_resources_core_limits_cpu": "1000m",
-                    "prometheus_resources_core_limits_memory": "1500Mi",
-                    "prometheus_resources_core_requests_cpu": "750m",
-                    "prometheus_resources_core_requests_memory": "750Mi",
-                    "prometheus_retention": "12h",
-                },
             })
         ```
 
@@ -495,11 +373,8 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_id: The cluster id where create project (string)
         :param pulumi.Input[Union['ProjectContainerResourceLimitArgs', 'ProjectContainerResourceLimitArgsDict']] container_resource_limit: Default containers resource limits on project (List maxitem:1)
         :param pulumi.Input[str] description: A project description (string)
-        :param pulumi.Input[bool] enable_project_monitoring: Enable built-in project monitoring. Default `false` (bool)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for Node Pool object (map)
         :param pulumi.Input[str] name: The name of the project (string)
-        :param pulumi.Input[str] pod_security_policy_template_id: Default Pod Security Policy ID for the project (string)
-        :param pulumi.Input[Union['ProjectProjectMonitoringInputArgs', 'ProjectProjectMonitoringInputArgsDict']] project_monitoring_input: Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
         :param pulumi.Input[Union['ProjectResourceQuotaArgs', 'ProjectResourceQuotaArgsDict']] resource_quota: Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
         :param pulumi.Input[bool] wait_for_cluster: Wait for cluster becomes active. Default `false` (bool)
         """
@@ -546,7 +421,7 @@ class Project(pulumi.CustomResource):
         import pulumi
         import pulumi_rancher2 as rancher2
 
-        # Create a new rancher2 Project enabling and customizing monitoring
+        # Create a new rancher2 Project
         foo = rancher2.Project("foo",
             name="foo",
             cluster_id="<CLUSTER_ID>",
@@ -567,29 +442,6 @@ class Project(pulumi.CustomResource):
                 "limits_memory": "20Mi",
                 "requests_cpu": "1m",
                 "requests_memory": "1Mi",
-            },
-            enable_project_monitoring=True,
-            project_monitoring_input={
-                "answers": {
-                    "exporter_kubelets_https": "true",
-                    "exporter_node_enabled": "true",
-                    "exporter_node_ports_metrics_port": "9796",
-                    "exporter_node_resources_limits_cpu": "200m",
-                    "exporter_node_resources_limits_memory": "200Mi",
-                    "grafana_persistence_enabled": "false",
-                    "grafana_persistence_size": "10Gi",
-                    "grafana_persistence_storage_class": "default",
-                    "operator_resources_limits_memory": "500Mi",
-                    "prometheus_persistence_enabled": "false",
-                    "prometheus_persistence_size": "50Gi",
-                    "prometheus_persistence_storage_class": "default",
-                    "prometheus_persistent_use_release_name": "true",
-                    "prometheus_resources_core_limits_cpu": "1000m",
-                    "prometheus_resources_core_limits_memory": "1500Mi",
-                    "prometheus_resources_core_requests_cpu": "750m",
-                    "prometheus_resources_core_requests_memory": "750Mi",
-                    "prometheus_retention": "12h",
-                },
             })
         ```
 
@@ -620,11 +472,8 @@ class Project(pulumi.CustomResource):
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  container_resource_limit: Optional[pulumi.Input[Union['ProjectContainerResourceLimitArgs', 'ProjectContainerResourceLimitArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 enable_project_monitoring: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 pod_security_policy_template_id: Optional[pulumi.Input[str]] = None,
-                 project_monitoring_input: Optional[pulumi.Input[Union['ProjectProjectMonitoringInputArgs', 'ProjectProjectMonitoringInputArgsDict']]] = None,
                  resource_quota: Optional[pulumi.Input[Union['ProjectResourceQuotaArgs', 'ProjectResourceQuotaArgsDict']]] = None,
                  wait_for_cluster: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -642,11 +491,8 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["cluster_id"] = cluster_id
             __props__.__dict__["container_resource_limit"] = container_resource_limit
             __props__.__dict__["description"] = description
-            __props__.__dict__["enable_project_monitoring"] = enable_project_monitoring
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
-            __props__.__dict__["pod_security_policy_template_id"] = pod_security_policy_template_id
-            __props__.__dict__["project_monitoring_input"] = project_monitoring_input
             __props__.__dict__["resource_quota"] = resource_quota
             __props__.__dict__["wait_for_cluster"] = wait_for_cluster
         super(Project, __self__).__init__(
@@ -663,11 +509,8 @@ class Project(pulumi.CustomResource):
             cluster_id: Optional[pulumi.Input[str]] = None,
             container_resource_limit: Optional[pulumi.Input[Union['ProjectContainerResourceLimitArgs', 'ProjectContainerResourceLimitArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            enable_project_monitoring: Optional[pulumi.Input[bool]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            pod_security_policy_template_id: Optional[pulumi.Input[str]] = None,
-            project_monitoring_input: Optional[pulumi.Input[Union['ProjectProjectMonitoringInputArgs', 'ProjectProjectMonitoringInputArgsDict']]] = None,
             resource_quota: Optional[pulumi.Input[Union['ProjectResourceQuotaArgs', 'ProjectResourceQuotaArgsDict']]] = None,
             wait_for_cluster: Optional[pulumi.Input[bool]] = None) -> 'Project':
         """
@@ -681,11 +524,8 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_id: The cluster id where create project (string)
         :param pulumi.Input[Union['ProjectContainerResourceLimitArgs', 'ProjectContainerResourceLimitArgsDict']] container_resource_limit: Default containers resource limits on project (List maxitem:1)
         :param pulumi.Input[str] description: A project description (string)
-        :param pulumi.Input[bool] enable_project_monitoring: Enable built-in project monitoring. Default `false` (bool)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for Node Pool object (map)
         :param pulumi.Input[str] name: The name of the project (string)
-        :param pulumi.Input[str] pod_security_policy_template_id: Default Pod Security Policy ID for the project (string)
-        :param pulumi.Input[Union['ProjectProjectMonitoringInputArgs', 'ProjectProjectMonitoringInputArgsDict']] project_monitoring_input: Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
         :param pulumi.Input[Union['ProjectResourceQuotaArgs', 'ProjectResourceQuotaArgsDict']] resource_quota: Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
         :param pulumi.Input[bool] wait_for_cluster: Wait for cluster becomes active. Default `false` (bool)
         """
@@ -697,11 +537,8 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["cluster_id"] = cluster_id
         __props__.__dict__["container_resource_limit"] = container_resource_limit
         __props__.__dict__["description"] = description
-        __props__.__dict__["enable_project_monitoring"] = enable_project_monitoring
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
-        __props__.__dict__["pod_security_policy_template_id"] = pod_security_policy_template_id
-        __props__.__dict__["project_monitoring_input"] = project_monitoring_input
         __props__.__dict__["resource_quota"] = resource_quota
         __props__.__dict__["wait_for_cluster"] = wait_for_cluster
         return Project(resource_name, opts=opts, __props__=__props__)
@@ -739,14 +576,6 @@ class Project(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
-    @pulumi.getter(name="enableProjectMonitoring")
-    def enable_project_monitoring(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Enable built-in project monitoring. Default `false` (bool)
-        """
-        return pulumi.get(self, "enable_project_monitoring")
-
-    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
@@ -761,22 +590,6 @@ class Project(pulumi.CustomResource):
         The name of the project (string)
         """
         return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter(name="podSecurityPolicyTemplateId")
-    def pod_security_policy_template_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        Default Pod Security Policy ID for the project (string)
-        """
-        return pulumi.get(self, "pod_security_policy_template_id")
-
-    @property
-    @pulumi.getter(name="projectMonitoringInput")
-    def project_monitoring_input(self) -> pulumi.Output[Optional['outputs.ProjectProjectMonitoringInput']]:
-        """
-        Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
-        """
-        return pulumi.get(self, "project_monitoring_input")
 
     @property
     @pulumi.getter(name="resourceQuota")

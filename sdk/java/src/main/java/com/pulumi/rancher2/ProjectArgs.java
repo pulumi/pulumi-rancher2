@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.inputs.ProjectContainerResourceLimitArgs;
-import com.pulumi.rancher2.inputs.ProjectProjectMonitoringInputArgs;
 import com.pulumi.rancher2.inputs.ProjectResourceQuotaArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -82,21 +81,6 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable built-in project monitoring. Default `false` (bool)
-     * 
-     */
-    @Import(name="enableProjectMonitoring")
-    private @Nullable Output<Boolean> enableProjectMonitoring;
-
-    /**
-     * @return Enable built-in project monitoring. Default `false` (bool)
-     * 
-     */
-    public Optional<Output<Boolean>> enableProjectMonitoring() {
-        return Optional.ofNullable(this.enableProjectMonitoring);
-    }
-
-    /**
      * Labels for Node Pool object (map)
      * 
      */
@@ -124,36 +108,6 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
-    }
-
-    /**
-     * Default Pod Security Policy ID for the project (string)
-     * 
-     */
-    @Import(name="podSecurityPolicyTemplateId")
-    private @Nullable Output<String> podSecurityPolicyTemplateId;
-
-    /**
-     * @return Default Pod Security Policy ID for the project (string)
-     * 
-     */
-    public Optional<Output<String>> podSecurityPolicyTemplateId() {
-        return Optional.ofNullable(this.podSecurityPolicyTemplateId);
-    }
-
-    /**
-     * Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
-     * 
-     */
-    @Import(name="projectMonitoringInput")
-    private @Nullable Output<ProjectProjectMonitoringInputArgs> projectMonitoringInput;
-
-    /**
-     * @return Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
-     * 
-     */
-    public Optional<Output<ProjectProjectMonitoringInputArgs>> projectMonitoringInput() {
-        return Optional.ofNullable(this.projectMonitoringInput);
     }
 
     /**
@@ -193,11 +147,8 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         this.clusterId = $.clusterId;
         this.containerResourceLimit = $.containerResourceLimit;
         this.description = $.description;
-        this.enableProjectMonitoring = $.enableProjectMonitoring;
         this.labels = $.labels;
         this.name = $.name;
-        this.podSecurityPolicyTemplateId = $.podSecurityPolicyTemplateId;
-        this.projectMonitoringInput = $.projectMonitoringInput;
         this.resourceQuota = $.resourceQuota;
         this.waitForCluster = $.waitForCluster;
     }
@@ -305,27 +256,6 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableProjectMonitoring Enable built-in project monitoring. Default `false` (bool)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder enableProjectMonitoring(@Nullable Output<Boolean> enableProjectMonitoring) {
-            $.enableProjectMonitoring = enableProjectMonitoring;
-            return this;
-        }
-
-        /**
-         * @param enableProjectMonitoring Enable built-in project monitoring. Default `false` (bool)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder enableProjectMonitoring(Boolean enableProjectMonitoring) {
-            return enableProjectMonitoring(Output.of(enableProjectMonitoring));
-        }
-
-        /**
          * @param labels Labels for Node Pool object (map)
          * 
          * @return builder
@@ -365,48 +295,6 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
-        }
-
-        /**
-         * @param podSecurityPolicyTemplateId Default Pod Security Policy ID for the project (string)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder podSecurityPolicyTemplateId(@Nullable Output<String> podSecurityPolicyTemplateId) {
-            $.podSecurityPolicyTemplateId = podSecurityPolicyTemplateId;
-            return this;
-        }
-
-        /**
-         * @param podSecurityPolicyTemplateId Default Pod Security Policy ID for the project (string)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder podSecurityPolicyTemplateId(String podSecurityPolicyTemplateId) {
-            return podSecurityPolicyTemplateId(Output.of(podSecurityPolicyTemplateId));
-        }
-
-        /**
-         * @param projectMonitoringInput Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder projectMonitoringInput(@Nullable Output<ProjectProjectMonitoringInputArgs> projectMonitoringInput) {
-            $.projectMonitoringInput = projectMonitoringInput;
-            return this;
-        }
-
-        /**
-         * @param projectMonitoringInput Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder projectMonitoringInput(ProjectProjectMonitoringInputArgs projectMonitoringInput) {
-            return projectMonitoringInput(Output.of(projectMonitoringInput));
         }
 
         /**

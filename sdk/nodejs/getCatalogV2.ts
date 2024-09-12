@@ -12,6 +12,10 @@ export function getCatalogV2(args: GetCatalogV2Args, opts?: pulumi.InvokeOptions
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getCatalogV2:getCatalogV2", {
         "clusterId": args.clusterId,
+        "exponentialBackoffMaxRetries": args.exponentialBackoffMaxRetries,
+        "exponentialBackoffMaxWait": args.exponentialBackoffMaxWait,
+        "exponentialBackoffMinWait": args.exponentialBackoffMinWait,
+        "insecurePlainHttp": args.insecurePlainHttp,
         "name": args.name,
     }, opts);
 }
@@ -24,6 +28,10 @@ export interface GetCatalogV2Args {
      * The cluster id of the catalog V2 (string)
      */
     clusterId: string;
+    exponentialBackoffMaxRetries?: number;
+    exponentialBackoffMaxWait?: number;
+    exponentialBackoffMinWait?: number;
+    insecurePlainHttp?: boolean;
     /**
      * The name of the catalog v2 (string)
      */
@@ -47,6 +55,9 @@ export interface GetCatalogV2Result {
      * (Computed) If disabled the repo clone will not be updated or allowed to be installed from. Default: `true` (bool)
      */
     readonly enabled: boolean;
+    readonly exponentialBackoffMaxRetries: number;
+    readonly exponentialBackoffMaxWait: number;
+    readonly exponentialBackoffMinWait: number;
     /**
      * (Computed) Git Repository branch containing Helm chart definitions. Default `master` (string)
      */
@@ -63,6 +74,7 @@ export interface GetCatalogV2Result {
      * (Computed) Use insecure HTTPS to download the repo's index. Default: `false` (bool)
      */
     readonly insecure: boolean;
+    readonly insecurePlainHttp?: boolean;
     /**
      * (Computed) Labels for the catalog v2 (map)
      */
@@ -108,6 +120,10 @@ export interface GetCatalogV2OutputArgs {
      * The cluster id of the catalog V2 (string)
      */
     clusterId: pulumi.Input<string>;
+    exponentialBackoffMaxRetries?: pulumi.Input<number>;
+    exponentialBackoffMaxWait?: pulumi.Input<number>;
+    exponentialBackoffMinWait?: pulumi.Input<number>;
+    insecurePlainHttp?: pulumi.Input<boolean>;
     /**
      * The name of the catalog v2 (string)
      */

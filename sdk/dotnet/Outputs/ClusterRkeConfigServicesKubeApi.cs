@@ -46,10 +46,6 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Image;
         /// <summary>
-        /// Pod Security Policy option for kube API service. Default `false` (bool)
-        /// </summary>
-        public readonly bool? PodSecurityPolicy;
-        /// <summary>
         /// [Encrypt k8s secret data configration](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/). (list maxitem: 1)
         /// </summary>
         public readonly Outputs.ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig? SecretsEncryptionConfig;
@@ -80,8 +76,6 @@ namespace Pulumi.Rancher2.Outputs
 
             string? image,
 
-            bool? podSecurityPolicy,
-
             Outputs.ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig? secretsEncryptionConfig,
 
             string? serviceClusterIpRange,
@@ -96,7 +90,6 @@ namespace Pulumi.Rancher2.Outputs
             ExtraBinds = extraBinds;
             ExtraEnvs = extraEnvs;
             Image = image;
-            PodSecurityPolicy = podSecurityPolicy;
             SecretsEncryptionConfig = secretsEncryptionConfig;
             ServiceClusterIpRange = serviceClusterIpRange;
             ServiceNodePortRange = serviceNodePortRange;

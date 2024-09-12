@@ -22,8 +22,6 @@ from .catalog_v2 import *
 from .certificate import *
 from .cloud_credential import *
 from .cluster import *
-from .cluster_alert_group import *
-from .cluster_alert_rule import *
 from .cluster_driver import *
 from .cluster_role_template_binding import *
 from .cluster_sync import *
@@ -39,8 +37,6 @@ from .get_catalog_v2 import *
 from .get_certificate import *
 from .get_cloud_credential import *
 from .get_cluster import *
-from .get_cluster_alert_group import *
-from .get_cluster_alert_rule import *
 from .get_cluster_driver import *
 from .get_cluster_role_template_binding import *
 from .get_cluster_template import *
@@ -55,13 +51,9 @@ from .get_namespace import *
 from .get_node_driver import *
 from .get_node_pool import *
 from .get_node_template import *
-from .get_notifier import *
 from .get_pod_security_admission_configuration_template import *
-from .get_pod_security_policy_template import *
 from .get_principal import *
 from .get_project import *
-from .get_project_alert_group import *
-from .get_project_alert_rule import *
 from .get_project_role_template_binding import *
 from .get_registry import *
 from .get_role_template import *
@@ -80,12 +72,8 @@ from .namespace import *
 from .node_driver import *
 from .node_pool import *
 from .node_template import *
-from .notifier import *
 from .pod_security_admission_configuration_template import *
-from .pod_security_policy_template import *
 from .project import *
-from .project_alert_group import *
-from .project_alert_rule import *
 from .project_role_template_binding import *
 from .provider import *
 from .registry import *
@@ -247,22 +235,6 @@ _utilities.register(
  },
  {
   "pkg": "rancher2",
-  "mod": "index/clusterAlertGroup",
-  "fqn": "pulumi_rancher2",
-  "classes": {
-   "rancher2:index/clusterAlertGroup:ClusterAlertGroup": "ClusterAlertGroup"
-  }
- },
- {
-  "pkg": "rancher2",
-  "mod": "index/clusterAlertRule",
-  "fqn": "pulumi_rancher2",
-  "classes": {
-   "rancher2:index/clusterAlertRule:ClusterAlertRule": "ClusterAlertRule"
-  }
- },
- {
-  "pkg": "rancher2",
   "mod": "index/clusterDriver",
   "fqn": "pulumi_rancher2",
   "classes": {
@@ -415,14 +387,6 @@ _utilities.register(
  },
  {
   "pkg": "rancher2",
-  "mod": "index/notifier",
-  "fqn": "pulumi_rancher2",
-  "classes": {
-   "rancher2:index/notifier:Notifier": "Notifier"
-  }
- },
- {
-  "pkg": "rancher2",
   "mod": "index/podSecurityAdmissionConfigurationTemplate",
   "fqn": "pulumi_rancher2",
   "classes": {
@@ -431,34 +395,10 @@ _utilities.register(
  },
  {
   "pkg": "rancher2",
-  "mod": "index/podSecurityPolicyTemplate",
-  "fqn": "pulumi_rancher2",
-  "classes": {
-   "rancher2:index/podSecurityPolicyTemplate:PodSecurityPolicyTemplate": "PodSecurityPolicyTemplate"
-  }
- },
- {
-  "pkg": "rancher2",
   "mod": "index/project",
   "fqn": "pulumi_rancher2",
   "classes": {
    "rancher2:index/project:Project": "Project"
-  }
- },
- {
-  "pkg": "rancher2",
-  "mod": "index/projectAlertGroup",
-  "fqn": "pulumi_rancher2",
-  "classes": {
-   "rancher2:index/projectAlertGroup:ProjectAlertGroup": "ProjectAlertGroup"
-  }
- },
- {
-  "pkg": "rancher2",
-  "mod": "index/projectAlertRule",
-  "fqn": "pulumi_rancher2",
-  "classes": {
-   "rancher2:index/projectAlertRule:ProjectAlertRule": "ProjectAlertRule"
   }
  },
  {

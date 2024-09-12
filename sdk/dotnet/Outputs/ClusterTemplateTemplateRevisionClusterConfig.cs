@@ -26,10 +26,6 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? DefaultPodSecurityAdmissionConfigurationTemplateName;
         /// <summary>
-        /// Default pod security policy template ID
-        /// </summary>
-        public readonly string? DefaultPodSecurityPolicyTemplateId;
-        /// <summary>
         /// Desired agent image
         /// </summary>
         public readonly string? DesiredAgentImage;
@@ -41,14 +37,6 @@ namespace Pulumi.Rancher2.Outputs
         /// Docker Root Dir
         /// </summary>
         public readonly string? DockerRootDir;
-        /// <summary>
-        /// Enable built-in cluster alerting
-        /// </summary>
-        public readonly bool? EnableClusterAlerting;
-        /// <summary>
-        /// Enable built-in cluster monitoring
-        /// </summary>
-        public readonly bool? EnableClusterMonitoring;
         /// <summary>
         /// Enable project network isolation
         /// </summary>
@@ -70,17 +58,11 @@ namespace Pulumi.Rancher2.Outputs
 
             string? defaultPodSecurityAdmissionConfigurationTemplateName,
 
-            string? defaultPodSecurityPolicyTemplateId,
-
             string? desiredAgentImage,
 
             string? desiredAuthImage,
 
             string? dockerRootDir,
-
-            bool? enableClusterAlerting,
-
-            bool? enableClusterMonitoring,
 
             bool? enableNetworkPolicy,
 
@@ -91,12 +73,9 @@ namespace Pulumi.Rancher2.Outputs
             ClusterAuthEndpoint = clusterAuthEndpoint;
             DefaultClusterRoleForProjectMembers = defaultClusterRoleForProjectMembers;
             DefaultPodSecurityAdmissionConfigurationTemplateName = defaultPodSecurityAdmissionConfigurationTemplateName;
-            DefaultPodSecurityPolicyTemplateId = defaultPodSecurityPolicyTemplateId;
             DesiredAgentImage = desiredAgentImage;
             DesiredAuthImage = desiredAuthImage;
             DockerRootDir = dockerRootDir;
-            EnableClusterAlerting = enableClusterAlerting;
-            EnableClusterMonitoring = enableClusterMonitoring;
             EnableNetworkPolicy = enableNetworkPolicy;
             RkeConfig = rkeConfig;
             WindowsPreferedCluster = windowsPreferedCluster;

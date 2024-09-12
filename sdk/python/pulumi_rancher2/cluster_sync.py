@@ -20,9 +20,7 @@ class ClusterSyncArgs:
                  node_pool_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  state_confirm: Optional[pulumi.Input[int]] = None,
                  synced: Optional[pulumi.Input[bool]] = None,
-                 wait_alerting: Optional[pulumi.Input[bool]] = None,
-                 wait_catalogs: Optional[pulumi.Input[bool]] = None,
-                 wait_monitoring: Optional[pulumi.Input[bool]] = None):
+                 wait_catalogs: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a ClusterSync resource.
         :param pulumi.Input[str] cluster_id: The cluster ID that is syncing (string)
@@ -30,9 +28,7 @@ class ClusterSyncArgs:
         :param pulumi.Input[int] state_confirm: Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
                
                **Note:** `state_confirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `active` state before they are fully installed. For example: setting `state_confirm = 2` will assure that the cluster has been in `active` state for at least 5 seconds, `state_confirm = 3` assure at least 10 seconds, etc
-        :param pulumi.Input[bool] wait_alerting: Wait until alerting is up and running. Default: `false` (bool)
         :param pulumi.Input[bool] wait_catalogs: Wait until all catalogs are downloaded and active. Default: `false` (bool)
-        :param pulumi.Input[bool] wait_monitoring: Wait until monitoring is up and running. Default: `false` (bool)
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         if node_pool_ids is not None:
@@ -41,12 +37,8 @@ class ClusterSyncArgs:
             pulumi.set(__self__, "state_confirm", state_confirm)
         if synced is not None:
             pulumi.set(__self__, "synced", synced)
-        if wait_alerting is not None:
-            pulumi.set(__self__, "wait_alerting", wait_alerting)
         if wait_catalogs is not None:
             pulumi.set(__self__, "wait_catalogs", wait_catalogs)
-        if wait_monitoring is not None:
-            pulumi.set(__self__, "wait_monitoring", wait_monitoring)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -96,18 +88,6 @@ class ClusterSyncArgs:
         pulumi.set(self, "synced", value)
 
     @property
-    @pulumi.getter(name="waitAlerting")
-    def wait_alerting(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Wait until alerting is up and running. Default: `false` (bool)
-        """
-        return pulumi.get(self, "wait_alerting")
-
-    @wait_alerting.setter
-    def wait_alerting(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "wait_alerting", value)
-
-    @property
     @pulumi.getter(name="waitCatalogs")
     def wait_catalogs(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -118,18 +98,6 @@ class ClusterSyncArgs:
     @wait_catalogs.setter
     def wait_catalogs(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "wait_catalogs", value)
-
-    @property
-    @pulumi.getter(name="waitMonitoring")
-    def wait_monitoring(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Wait until monitoring is up and running. Default: `false` (bool)
-        """
-        return pulumi.get(self, "wait_monitoring")
-
-    @wait_monitoring.setter
-    def wait_monitoring(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "wait_monitoring", value)
 
 
 @pulumi.input_type
@@ -143,9 +111,7 @@ class _ClusterSyncState:
                  state_confirm: Optional[pulumi.Input[int]] = None,
                  synced: Optional[pulumi.Input[bool]] = None,
                  system_project_id: Optional[pulumi.Input[str]] = None,
-                 wait_alerting: Optional[pulumi.Input[bool]] = None,
-                 wait_catalogs: Optional[pulumi.Input[bool]] = None,
-                 wait_monitoring: Optional[pulumi.Input[bool]] = None):
+                 wait_catalogs: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering ClusterSync resources.
         :param pulumi.Input[str] cluster_id: The cluster ID that is syncing (string)
@@ -157,9 +123,7 @@ class _ClusterSyncState:
                
                **Note:** `state_confirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `active` state before they are fully installed. For example: setting `state_confirm = 2` will assure that the cluster has been in `active` state for at least 5 seconds, `state_confirm = 3` assure at least 10 seconds, etc
         :param pulumi.Input[str] system_project_id: (Computed) System project ID for the cluster sync (string)
-        :param pulumi.Input[bool] wait_alerting: Wait until alerting is up and running. Default: `false` (bool)
         :param pulumi.Input[bool] wait_catalogs: Wait until all catalogs are downloaded and active. Default: `false` (bool)
-        :param pulumi.Input[bool] wait_monitoring: Wait until monitoring is up and running. Default: `false` (bool)
         """
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
@@ -177,12 +141,8 @@ class _ClusterSyncState:
             pulumi.set(__self__, "synced", synced)
         if system_project_id is not None:
             pulumi.set(__self__, "system_project_id", system_project_id)
-        if wait_alerting is not None:
-            pulumi.set(__self__, "wait_alerting", wait_alerting)
         if wait_catalogs is not None:
             pulumi.set(__self__, "wait_catalogs", wait_catalogs)
-        if wait_monitoring is not None:
-            pulumi.set(__self__, "wait_monitoring", wait_monitoring)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -280,18 +240,6 @@ class _ClusterSyncState:
         pulumi.set(self, "system_project_id", value)
 
     @property
-    @pulumi.getter(name="waitAlerting")
-    def wait_alerting(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Wait until alerting is up and running. Default: `false` (bool)
-        """
-        return pulumi.get(self, "wait_alerting")
-
-    @wait_alerting.setter
-    def wait_alerting(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "wait_alerting", value)
-
-    @property
     @pulumi.getter(name="waitCatalogs")
     def wait_catalogs(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -303,18 +251,6 @@ class _ClusterSyncState:
     def wait_catalogs(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "wait_catalogs", value)
 
-    @property
-    @pulumi.getter(name="waitMonitoring")
-    def wait_monitoring(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Wait until monitoring is up and running. Default: `false` (bool)
-        """
-        return pulumi.get(self, "wait_monitoring")
-
-    @wait_monitoring.setter
-    def wait_monitoring(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "wait_monitoring", value)
-
 
 class ClusterSync(pulumi.CustomResource):
     @overload
@@ -325,9 +261,7 @@ class ClusterSync(pulumi.CustomResource):
                  node_pool_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  state_confirm: Optional[pulumi.Input[int]] = None,
                  synced: Optional[pulumi.Input[bool]] = None,
-                 wait_alerting: Optional[pulumi.Input[bool]] = None,
                  wait_catalogs: Optional[pulumi.Input[bool]] = None,
-                 wait_monitoring: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -405,9 +339,7 @@ class ClusterSync(pulumi.CustomResource):
         :param pulumi.Input[int] state_confirm: Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
                
                **Note:** `state_confirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `active` state before they are fully installed. For example: setting `state_confirm = 2` will assure that the cluster has been in `active` state for at least 5 seconds, `state_confirm = 3` assure at least 10 seconds, etc
-        :param pulumi.Input[bool] wait_alerting: Wait until alerting is up and running. Default: `false` (bool)
         :param pulumi.Input[bool] wait_catalogs: Wait until all catalogs are downloaded and active. Default: `false` (bool)
-        :param pulumi.Input[bool] wait_monitoring: Wait until monitoring is up and running. Default: `false` (bool)
         """
         ...
     @overload
@@ -503,9 +435,7 @@ class ClusterSync(pulumi.CustomResource):
                  node_pool_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  state_confirm: Optional[pulumi.Input[int]] = None,
                  synced: Optional[pulumi.Input[bool]] = None,
-                 wait_alerting: Optional[pulumi.Input[bool]] = None,
                  wait_catalogs: Optional[pulumi.Input[bool]] = None,
-                 wait_monitoring: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -521,9 +451,7 @@ class ClusterSync(pulumi.CustomResource):
             __props__.__dict__["node_pool_ids"] = node_pool_ids
             __props__.__dict__["state_confirm"] = state_confirm
             __props__.__dict__["synced"] = synced
-            __props__.__dict__["wait_alerting"] = wait_alerting
             __props__.__dict__["wait_catalogs"] = wait_catalogs
-            __props__.__dict__["wait_monitoring"] = wait_monitoring
             __props__.__dict__["default_project_id"] = None
             __props__.__dict__["kube_config"] = None
             __props__.__dict__["nodes"] = None
@@ -548,9 +476,7 @@ class ClusterSync(pulumi.CustomResource):
             state_confirm: Optional[pulumi.Input[int]] = None,
             synced: Optional[pulumi.Input[bool]] = None,
             system_project_id: Optional[pulumi.Input[str]] = None,
-            wait_alerting: Optional[pulumi.Input[bool]] = None,
-            wait_catalogs: Optional[pulumi.Input[bool]] = None,
-            wait_monitoring: Optional[pulumi.Input[bool]] = None) -> 'ClusterSync':
+            wait_catalogs: Optional[pulumi.Input[bool]] = None) -> 'ClusterSync':
         """
         Get an existing ClusterSync resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -567,9 +493,7 @@ class ClusterSync(pulumi.CustomResource):
                
                **Note:** `state_confirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `active` state before they are fully installed. For example: setting `state_confirm = 2` will assure that the cluster has been in `active` state for at least 5 seconds, `state_confirm = 3` assure at least 10 seconds, etc
         :param pulumi.Input[str] system_project_id: (Computed) System project ID for the cluster sync (string)
-        :param pulumi.Input[bool] wait_alerting: Wait until alerting is up and running. Default: `false` (bool)
         :param pulumi.Input[bool] wait_catalogs: Wait until all catalogs are downloaded and active. Default: `false` (bool)
-        :param pulumi.Input[bool] wait_monitoring: Wait until monitoring is up and running. Default: `false` (bool)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -583,9 +507,7 @@ class ClusterSync(pulumi.CustomResource):
         __props__.__dict__["state_confirm"] = state_confirm
         __props__.__dict__["synced"] = synced
         __props__.__dict__["system_project_id"] = system_project_id
-        __props__.__dict__["wait_alerting"] = wait_alerting
         __props__.__dict__["wait_catalogs"] = wait_catalogs
-        __props__.__dict__["wait_monitoring"] = wait_monitoring
         return ClusterSync(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -652,26 +574,10 @@ class ClusterSync(pulumi.CustomResource):
         return pulumi.get(self, "system_project_id")
 
     @property
-    @pulumi.getter(name="waitAlerting")
-    def wait_alerting(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Wait until alerting is up and running. Default: `false` (bool)
-        """
-        return pulumi.get(self, "wait_alerting")
-
-    @property
     @pulumi.getter(name="waitCatalogs")
     def wait_catalogs(self) -> pulumi.Output[Optional[bool]]:
         """
         Wait until all catalogs are downloaded and active. Default: `false` (bool)
         """
         return pulumi.get(self, "wait_catalogs")
-
-    @property
-    @pulumi.getter(name="waitMonitoring")
-    def wait_monitoring(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Wait until monitoring is up and running. Default: `false` (bool)
-        """
-        return pulumi.get(self, "wait_monitoring")
 

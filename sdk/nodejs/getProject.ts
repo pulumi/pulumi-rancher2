@@ -50,10 +50,6 @@ export interface GetProjectResult {
      */
     readonly description: string;
     /**
-     * (Computed) Enable built-in project monitoring. Default `false` (bool)
-     */
-    readonly enableProjectMonitoring: boolean;
-    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
@@ -62,10 +58,6 @@ export interface GetProjectResult {
      */
     readonly labels: {[key: string]: string};
     readonly name: string;
-    /**
-     * (Computed) Default Pod Security Policy ID for the project (string)
-     */
-    readonly podSecurityPolicyTemplateId: string;
     /**
      * (Computed) Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
      */

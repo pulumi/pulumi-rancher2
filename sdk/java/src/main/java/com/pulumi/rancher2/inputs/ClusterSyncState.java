@@ -136,21 +136,6 @@ public final class ClusterSyncState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Wait until alerting is up and running. Default: `false` (bool)
-     * 
-     */
-    @Import(name="waitAlerting")
-    private @Nullable Output<Boolean> waitAlerting;
-
-    /**
-     * @return Wait until alerting is up and running. Default: `false` (bool)
-     * 
-     */
-    public Optional<Output<Boolean>> waitAlerting() {
-        return Optional.ofNullable(this.waitAlerting);
-    }
-
-    /**
      * Wait until all catalogs are downloaded and active. Default: `false` (bool)
      * 
      */
@@ -165,21 +150,6 @@ public final class ClusterSyncState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.waitCatalogs);
     }
 
-    /**
-     * Wait until monitoring is up and running. Default: `false` (bool)
-     * 
-     */
-    @Import(name="waitMonitoring")
-    private @Nullable Output<Boolean> waitMonitoring;
-
-    /**
-     * @return Wait until monitoring is up and running. Default: `false` (bool)
-     * 
-     */
-    public Optional<Output<Boolean>> waitMonitoring() {
-        return Optional.ofNullable(this.waitMonitoring);
-    }
-
     private ClusterSyncState() {}
 
     private ClusterSyncState(ClusterSyncState $) {
@@ -191,9 +161,7 @@ public final class ClusterSyncState extends com.pulumi.resources.ResourceArgs {
         this.stateConfirm = $.stateConfirm;
         this.synced = $.synced;
         this.systemProjectId = $.systemProjectId;
-        this.waitAlerting = $.waitAlerting;
         this.waitCatalogs = $.waitCatalogs;
-        this.waitMonitoring = $.waitMonitoring;
     }
 
     public static Builder builder() {
@@ -395,27 +363,6 @@ public final class ClusterSyncState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param waitAlerting Wait until alerting is up and running. Default: `false` (bool)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder waitAlerting(@Nullable Output<Boolean> waitAlerting) {
-            $.waitAlerting = waitAlerting;
-            return this;
-        }
-
-        /**
-         * @param waitAlerting Wait until alerting is up and running. Default: `false` (bool)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder waitAlerting(Boolean waitAlerting) {
-            return waitAlerting(Output.of(waitAlerting));
-        }
-
-        /**
          * @param waitCatalogs Wait until all catalogs are downloaded and active. Default: `false` (bool)
          * 
          * @return builder
@@ -434,27 +381,6 @@ public final class ClusterSyncState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder waitCatalogs(Boolean waitCatalogs) {
             return waitCatalogs(Output.of(waitCatalogs));
-        }
-
-        /**
-         * @param waitMonitoring Wait until monitoring is up and running. Default: `false` (bool)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder waitMonitoring(@Nullable Output<Boolean> waitMonitoring) {
-            $.waitMonitoring = waitMonitoring;
-            return this;
-        }
-
-        /**
-         * @param waitMonitoring Wait until monitoring is up and running. Default: `false` (bool)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder waitMonitoring(Boolean waitMonitoring) {
-            return waitMonitoring(Output.of(waitMonitoring));
         }
 
         public ClusterSyncState build() {

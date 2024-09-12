@@ -54,9 +54,6 @@ namespace Pulumi.Rancher2.Inputs
         [Input("image")]
         public Input<string>? Image { get; set; }
 
-        [Input("podSecurityPolicy")]
-        public Input<bool>? PodSecurityPolicy { get; set; }
-
         [Input("secretsEncryptionConfig")]
         public Input<Inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs>? SecretsEncryptionConfig { get; set; }
 

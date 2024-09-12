@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-rancher2/sdk/v6/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v7/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -32,12 +32,20 @@ type CatalogV2 struct {
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// If disabled the repo clone will not be updated or allowed to be installed from. Default: `true` (bool)
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
+	// Maximum number of retries before returning error
+	ExponentialBackoffMaxRetries pulumi.IntOutput `pulumi:"exponentialBackoffMaxRetries"`
+	// Maximum amount of seconds to wait before retrying
+	ExponentialBackoffMaxWait pulumi.IntOutput `pulumi:"exponentialBackoffMaxWait"`
+	// Minimum amount of seconds to wait before retrying
+	ExponentialBackoffMinWait pulumi.IntOutput `pulumi:"exponentialBackoffMinWait"`
 	// Git Repository branch containing Helm chart definitions. Default `master` (string)
 	GitBranch pulumi.StringOutput `pulumi:"gitBranch"`
 	// The url of the catalog v2 repo. Conflicts with `url` (string)
 	GitRepo pulumi.StringPtrOutput `pulumi:"gitRepo"`
 	// Use insecure HTTPS to download the repo's index. Default: `false` (bool)
 	Insecure pulumi.BoolPtrOutput `pulumi:"insecure"`
+	// Only valid for OCI URL's. Allows insecure connections to registries without enforcing TLS checks
+	InsecurePlainHttp pulumi.BoolPtrOutput `pulumi:"insecurePlainHttp"`
 	// Labels for the catalog v2 (map)
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the catalog v2 (string)
@@ -97,12 +105,20 @@ type catalogV2State struct {
 	ClusterId *string `pulumi:"clusterId"`
 	// If disabled the repo clone will not be updated or allowed to be installed from. Default: `true` (bool)
 	Enabled *bool `pulumi:"enabled"`
+	// Maximum number of retries before returning error
+	ExponentialBackoffMaxRetries *int `pulumi:"exponentialBackoffMaxRetries"`
+	// Maximum amount of seconds to wait before retrying
+	ExponentialBackoffMaxWait *int `pulumi:"exponentialBackoffMaxWait"`
+	// Minimum amount of seconds to wait before retrying
+	ExponentialBackoffMinWait *int `pulumi:"exponentialBackoffMinWait"`
 	// Git Repository branch containing Helm chart definitions. Default `master` (string)
 	GitBranch *string `pulumi:"gitBranch"`
 	// The url of the catalog v2 repo. Conflicts with `url` (string)
 	GitRepo *string `pulumi:"gitRepo"`
 	// Use insecure HTTPS to download the repo's index. Default: `false` (bool)
 	Insecure *bool `pulumi:"insecure"`
+	// Only valid for OCI URL's. Allows insecure connections to registries without enforcing TLS checks
+	InsecurePlainHttp *bool `pulumi:"insecurePlainHttp"`
 	// Labels for the catalog v2 (map)
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the catalog v2 (string)
@@ -130,12 +146,20 @@ type CatalogV2State struct {
 	ClusterId pulumi.StringPtrInput
 	// If disabled the repo clone will not be updated or allowed to be installed from. Default: `true` (bool)
 	Enabled pulumi.BoolPtrInput
+	// Maximum number of retries before returning error
+	ExponentialBackoffMaxRetries pulumi.IntPtrInput
+	// Maximum amount of seconds to wait before retrying
+	ExponentialBackoffMaxWait pulumi.IntPtrInput
+	// Minimum amount of seconds to wait before retrying
+	ExponentialBackoffMinWait pulumi.IntPtrInput
 	// Git Repository branch containing Helm chart definitions. Default `master` (string)
 	GitBranch pulumi.StringPtrInput
 	// The url of the catalog v2 repo. Conflicts with `url` (string)
 	GitRepo pulumi.StringPtrInput
 	// Use insecure HTTPS to download the repo's index. Default: `false` (bool)
 	Insecure pulumi.BoolPtrInput
+	// Only valid for OCI URL's. Allows insecure connections to registries without enforcing TLS checks
+	InsecurePlainHttp pulumi.BoolPtrInput
 	// Labels for the catalog v2 (map)
 	Labels pulumi.StringMapInput
 	// The name of the catalog v2 (string)
@@ -167,12 +191,20 @@ type catalogV2Args struct {
 	ClusterId string `pulumi:"clusterId"`
 	// If disabled the repo clone will not be updated or allowed to be installed from. Default: `true` (bool)
 	Enabled *bool `pulumi:"enabled"`
+	// Maximum number of retries before returning error
+	ExponentialBackoffMaxRetries *int `pulumi:"exponentialBackoffMaxRetries"`
+	// Maximum amount of seconds to wait before retrying
+	ExponentialBackoffMaxWait *int `pulumi:"exponentialBackoffMaxWait"`
+	// Minimum amount of seconds to wait before retrying
+	ExponentialBackoffMinWait *int `pulumi:"exponentialBackoffMinWait"`
 	// Git Repository branch containing Helm chart definitions. Default `master` (string)
 	GitBranch *string `pulumi:"gitBranch"`
 	// The url of the catalog v2 repo. Conflicts with `url` (string)
 	GitRepo *string `pulumi:"gitRepo"`
 	// Use insecure HTTPS to download the repo's index. Default: `false` (bool)
 	Insecure *bool `pulumi:"insecure"`
+	// Only valid for OCI URL's. Allows insecure connections to registries without enforcing TLS checks
+	InsecurePlainHttp *bool `pulumi:"insecurePlainHttp"`
 	// Labels for the catalog v2 (map)
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the catalog v2 (string)
@@ -199,12 +231,20 @@ type CatalogV2Args struct {
 	ClusterId pulumi.StringInput
 	// If disabled the repo clone will not be updated or allowed to be installed from. Default: `true` (bool)
 	Enabled pulumi.BoolPtrInput
+	// Maximum number of retries before returning error
+	ExponentialBackoffMaxRetries pulumi.IntPtrInput
+	// Maximum amount of seconds to wait before retrying
+	ExponentialBackoffMaxWait pulumi.IntPtrInput
+	// Minimum amount of seconds to wait before retrying
+	ExponentialBackoffMinWait pulumi.IntPtrInput
 	// Git Repository branch containing Helm chart definitions. Default `master` (string)
 	GitBranch pulumi.StringPtrInput
 	// The url of the catalog v2 repo. Conflicts with `url` (string)
 	GitRepo pulumi.StringPtrInput
 	// Use insecure HTTPS to download the repo's index. Default: `false` (bool)
 	Insecure pulumi.BoolPtrInput
+	// Only valid for OCI URL's. Allows insecure connections to registries without enforcing TLS checks
+	InsecurePlainHttp pulumi.BoolPtrInput
 	// Labels for the catalog v2 (map)
 	Labels pulumi.StringMapInput
 	// The name of the catalog v2 (string)
@@ -328,6 +368,21 @@ func (o CatalogV2Output) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CatalogV2) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// Maximum number of retries before returning error
+func (o CatalogV2Output) ExponentialBackoffMaxRetries() pulumi.IntOutput {
+	return o.ApplyT(func(v *CatalogV2) pulumi.IntOutput { return v.ExponentialBackoffMaxRetries }).(pulumi.IntOutput)
+}
+
+// Maximum amount of seconds to wait before retrying
+func (o CatalogV2Output) ExponentialBackoffMaxWait() pulumi.IntOutput {
+	return o.ApplyT(func(v *CatalogV2) pulumi.IntOutput { return v.ExponentialBackoffMaxWait }).(pulumi.IntOutput)
+}
+
+// Minimum amount of seconds to wait before retrying
+func (o CatalogV2Output) ExponentialBackoffMinWait() pulumi.IntOutput {
+	return o.ApplyT(func(v *CatalogV2) pulumi.IntOutput { return v.ExponentialBackoffMinWait }).(pulumi.IntOutput)
+}
+
 // Git Repository branch containing Helm chart definitions. Default `master` (string)
 func (o CatalogV2Output) GitBranch() pulumi.StringOutput {
 	return o.ApplyT(func(v *CatalogV2) pulumi.StringOutput { return v.GitBranch }).(pulumi.StringOutput)
@@ -341,6 +396,11 @@ func (o CatalogV2Output) GitRepo() pulumi.StringPtrOutput {
 // Use insecure HTTPS to download the repo's index. Default: `false` (bool)
 func (o CatalogV2Output) Insecure() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CatalogV2) pulumi.BoolPtrOutput { return v.Insecure }).(pulumi.BoolPtrOutput)
+}
+
+// Only valid for OCI URL's. Allows insecure connections to registries without enforcing TLS checks
+func (o CatalogV2Output) InsecurePlainHttp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CatalogV2) pulumi.BoolPtrOutput { return v.InsecurePlainHttp }).(pulumi.BoolPtrOutput)
 }
 
 // Labels for the catalog v2 (map)

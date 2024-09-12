@@ -502,89 +502,6 @@ export interface ClusterAksConfigV2NodePool {
     vmSize: string;
 }
 
-export interface ClusterAlertGroupRecipient {
-    /**
-     * Use notifier default recipient
-     */
-    defaultRecipient?: boolean;
-    /**
-     * Recipient notifier ID
-     */
-    notifierId: string;
-    /**
-     * Recipient notifier type
-     */
-    notifierType: string;
-    /**
-     * Recipient
-     */
-    recipient: string;
-}
-
-export interface ClusterAlertRuleEventRule {
-    /**
-     * Event type
-     */
-    eventType?: string;
-    /**
-     * Resource kind
-     */
-    resourceKind: string;
-}
-
-export interface ClusterAlertRuleMetricRule {
-    /**
-     * Metric rule comparison
-     */
-    comparison?: string;
-    /**
-     * Metric rule description
-     */
-    description?: string;
-    /**
-     * Metric rule duration
-     */
-    duration: string;
-    /**
-     * Metric rule expression
-     */
-    expression: string;
-    /**
-     * Metric rule threshold value
-     */
-    thresholdValue: number;
-}
-
-export interface ClusterAlertRuleNodeRule {
-    /**
-     * Node rule condition
-     */
-    condition?: string;
-    /**
-     * Node rule cpu threshold
-     */
-    cpuThreshold?: number;
-    /**
-     * Node rule mem threshold
-     */
-    memThreshold?: number;
-    /**
-     * Node ID
-     */
-    nodeId?: string;
-    /**
-     * Node rule selector
-     */
-    selector?: {[key: string]: string};
-}
-
-export interface ClusterAlertRuleSystemServiceRule {
-    /**
-     * System service rule condition
-     */
-    condition?: string;
-}
-
 export interface ClusterClusterAgentDeploymentCustomization {
     /**
      * User defined tolerations to append to agent
@@ -655,17 +572,6 @@ export interface ClusterClusterAuthEndpoint {
      * FQDN for the authorized cluster endpoint (string)
      */
     fqdn?: string;
-}
-
-export interface ClusterClusterMonitoringInput {
-    /**
-     * Answers for monitor input
-     */
-    answers?: {[key: string]: string};
-    /**
-     * Monitoring version
-     */
-    version?: string;
 }
 
 export interface ClusterClusterRegistrationToken {
@@ -3318,10 +3224,6 @@ export interface ClusterRkeConfigServicesKubeApi {
      */
     image: string;
     /**
-     * Pod Security Policy option for kube API service. Default `false` (bool)
-     */
-    podSecurityPolicy?: boolean;
-    /**
      * [Encrypt k8s secret data configration](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/). (list maxitem: 1)
      */
     secretsEncryptionConfig?: outputs.ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig;
@@ -3757,10 +3659,6 @@ export interface ClusterTemplateTemplateRevisionClusterConfig {
      */
     defaultPodSecurityAdmissionConfigurationTemplateName: string;
     /**
-     * Default pod security policy template ID
-     */
-    defaultPodSecurityPolicyTemplateId: string;
-    /**
      * Desired agent image
      */
     desiredAgentImage: string;
@@ -3772,14 +3670,6 @@ export interface ClusterTemplateTemplateRevisionClusterConfig {
      * Docker Root Dir
      */
     dockerRootDir: string;
-    /**
-     * Enable built-in cluster alerting
-     */
-    enableClusterAlerting?: boolean;
-    /**
-     * Enable built-in cluster monitoring
-     */
-    enableClusterMonitoring?: boolean;
     /**
      * Enable project network isolation
      */
@@ -4454,7 +4344,6 @@ export interface ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKu
     extraBinds?: string[];
     extraEnvs?: string[];
     image: string;
-    podSecurityPolicy?: boolean;
     secretsEncryptionConfig?: outputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig;
     serviceClusterIpRange: string;
     serviceNodePortRange: string;
@@ -5787,104 +5676,10 @@ export interface GetClusterAksConfigV2NodePool {
     vmSize: string;
 }
 
-export interface GetClusterAlertGroupRecipient {
-    /**
-     * Use notifier default recipient
-     */
-    defaultRecipient?: boolean;
-    /**
-     * Recipient notifier ID
-     */
-    notifierId: string;
-    /**
-     * Recipient notifier type
-     */
-    notifierType: string;
-    /**
-     * Recipient
-     */
-    recipient: string;
-}
-
-export interface GetClusterAlertRuleEventRule {
-    /**
-     * Event type
-     */
-    eventType?: string;
-    /**
-     * Resource kind
-     */
-    resourceKind: string;
-}
-
-export interface GetClusterAlertRuleMetricRule {
-    /**
-     * Metric rule comparison
-     */
-    comparison?: string;
-    /**
-     * Metric rule description
-     */
-    description?: string;
-    /**
-     * Metric rule duration
-     */
-    duration: string;
-    /**
-     * Metric rule expression
-     */
-    expression: string;
-    /**
-     * Metric rule threshold value
-     */
-    thresholdValue: number;
-}
-
-export interface GetClusterAlertRuleNodeRule {
-    /**
-     * Node rule condition
-     */
-    condition?: string;
-    /**
-     * Node rule cpu threshold
-     */
-    cpuThreshold?: number;
-    /**
-     * Node rule mem threshold
-     */
-    memThreshold?: number;
-    /**
-     * Node ID
-     */
-    nodeId?: string;
-    /**
-     * Node rule selector
-     */
-    selector?: {[key: string]: string};
-}
-
-export interface GetClusterAlertRuleSystemServiceRule {
-    /**
-     * System service rule condition
-     */
-    condition?: string;
-}
-
 export interface GetClusterClusterAuthEndpoint {
     caCerts?: string;
     enabled?: boolean;
     fqdn?: string;
-}
-
-export interface GetClusterClusterMonitoringInput {
-    /**
-     * Answers for monitor input
-     */
-    answers?: {[key: string]: string};
-    /**
-     * Monitoring version
-     */
-    version?: string;
 }
 
 export interface GetClusterClusterRegistrationToken {
@@ -7534,7 +7329,6 @@ export interface GetClusterRkeConfigServicesKubeApi {
     extraBinds?: string[];
     extraEnvs?: string[];
     image: string;
-    podSecurityPolicy?: boolean;
     secretsEncryptionConfig?: outputs.GetClusterRkeConfigServicesKubeApiSecretsEncryptionConfig;
     serviceClusterIpRange: string;
     serviceNodePortRange: string;
@@ -7712,10 +7506,6 @@ export interface GetClusterTemplateTemplateRevisionClusterConfig {
      */
     defaultPodSecurityAdmissionConfigurationTemplateName: string;
     /**
-     * Default pod security policy template ID
-     */
-    defaultPodSecurityPolicyTemplateId: string;
-    /**
      * Desired agent image
      */
     desiredAgentImage: string;
@@ -7727,14 +7517,6 @@ export interface GetClusterTemplateTemplateRevisionClusterConfig {
      * Docker Root Dir
      */
     dockerRootDir: string;
-    /**
-     * Enable built-in cluster alerting
-     */
-    enableClusterAlerting?: boolean;
-    /**
-     * Enable built-in cluster monitoring
-     */
-    enableClusterMonitoring?: boolean;
     /**
      * Enable project network isolation
      */
@@ -8403,7 +8185,6 @@ export interface GetClusterTemplateTemplateRevisionClusterConfigRkeConfigService
     extraBinds?: string[];
     extraEnvs?: string[];
     image: string;
-    podSecurityPolicy?: boolean;
     secretsEncryptionConfig?: outputs.GetClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig;
     serviceClusterIpRange: string;
     serviceNodePortRange: string;
@@ -9317,127 +9098,6 @@ export interface GetNodeTemplateNodeTaint {
     value: string;
 }
 
-export interface GetNotifierDingtalkConfig {
-    /**
-     * Dingtalk proxy URL
-     */
-    proxyUrl?: string;
-    /**
-     * Required for webhook with sign enabled
-     */
-    secret?: string;
-    /**
-     * Webhook URL
-     */
-    url: string;
-}
-
-export interface GetNotifierMsteamsConfig {
-    /**
-     * MS teams proxy URL
-     */
-    proxyUrl?: string;
-    /**
-     * Webhook URL
-     */
-    url: string;
-}
-
-export interface GetNotifierPagerdutyConfig {
-    /**
-     * Pagerduty proxy URL
-     */
-    proxyUrl?: string;
-    /**
-     * Pagerduty service key
-     */
-    serviceKey: string;
-}
-
-export interface GetNotifierSlackConfig {
-    /**
-     * Slack default channel
-     */
-    defaultRecipient: string;
-    /**
-     * Slack proxy URL
-     */
-    proxyUrl?: string;
-    /**
-     * Slack URL
-     */
-    url: string;
-}
-
-export interface GetNotifierSmtpConfig {
-    /**
-     * SMTP default recipient address
-     */
-    defaultRecipient: string;
-    /**
-     * SMTP host
-     */
-    host: string;
-    /**
-     * SMTP password
-     */
-    password?: string;
-    /**
-     * SMTP port
-     */
-    port: number;
-    /**
-     * SMTP sender
-     */
-    sender: string;
-    /**
-     * SMTP TLS
-     */
-    tls?: boolean;
-    /**
-     * SMTP username
-     */
-    username?: string;
-}
-
-export interface GetNotifierWebhookConfig {
-    /**
-     * Webhook proxy URL
-     */
-    proxyUrl?: string;
-    /**
-     * Webhook URL
-     */
-    url: string;
-}
-
-export interface GetNotifierWechatConfig {
-    /**
-     * Wechat application agent ID
-     */
-    agent: string;
-    /**
-     * Wechat corporation ID
-     */
-    corp: string;
-    /**
-     * Wechat default channel
-     */
-    defaultRecipient: string;
-    /**
-     * Wechat proxy URL
-     */
-    proxyUrl?: string;
-    /**
-     * Wechat recipient type
-     */
-    recipientType?: string;
-    /**
-     * Wechat application secret
-     */
-    secret: string;
-}
-
 export interface GetPodSecurityAdmissionConfigurationTemplateDefaults {
     /**
      * Pod Security Admission Configuration audit. This audits a pod in violation of privileged, baseline, or restricted policy (default: privileged)
@@ -9478,247 +9138,6 @@ export interface GetPodSecurityAdmissionConfigurationTemplateExemptions {
      * Pod Security Admission Configuration username exemptions
      */
     usernames?: string[];
-}
-
-export interface GetPodSecurityPolicyTemplateAllowedCsiDriver {
-    /**
-     * The name of the PodSecurityPolicyTemplate (string)
-     */
-    name: string;
-}
-
-export interface GetPodSecurityPolicyTemplateAllowedFlexVolume {
-    /**
-     * driver is the name of the Flexvolume driver.
-     */
-    driver: string;
-}
-
-export interface GetPodSecurityPolicyTemplateAllowedHostPath {
-    /**
-     * pathPrefix is the path prefix that the host volume must match. It does not support `*`. Trailing slashes are trimmed when validating the path prefix with a host path.
-     */
-    pathPrefix: string;
-    /**
-     * when set to true, will allow host volumes matching the pathPrefix only if all volume mounts are readOnly.
-     */
-    readOnly?: boolean;
-}
-
-export interface GetPodSecurityPolicyTemplateFsGroup {
-    /**
-     * ranges are the allowed ranges of fs groups.  If you would like to force a single fs group then supply a single range with the same start and end. Required for MustRunAs.
-     */
-    ranges: outputs.GetPodSecurityPolicyTemplateFsGroupRange[];
-    /**
-     * rule is the strategy that will dictate what FSGroup is used in the SecurityContext.
-     */
-    rule?: string;
-}
-
-export interface GetPodSecurityPolicyTemplateFsGroupRange {
-    /**
-     * max is the end of the range, inclusive.
-     */
-    max: number;
-    /**
-     * min is the start of the range, inclusive.
-     */
-    min: number;
-}
-
-export interface GetPodSecurityPolicyTemplateHostPort {
-    /**
-     * max is the end of the range, inclusive.
-     */
-    max: number;
-    /**
-     * min is the start of the range, inclusive.
-     */
-    min: number;
-}
-
-export interface GetPodSecurityPolicyTemplateRunAsGroup {
-    /**
-     * ranges are the allowed ranges of gids that may be used. If you would like to force a single gid then supply a single range with the same start and end. Required for MustRunAs.
-     */
-    ranges?: outputs.GetPodSecurityPolicyTemplateRunAsGroupRange[];
-    /**
-     * rule is the strategy that will dictate the allowable RunAsGroup values that may be set.
-     */
-    rule: string;
-}
-
-export interface GetPodSecurityPolicyTemplateRunAsGroupRange {
-    /**
-     * max is the end of the range, inclusive.
-     */
-    max: number;
-    /**
-     * min is the start of the range, inclusive.
-     */
-    min: number;
-}
-
-export interface GetPodSecurityPolicyTemplateRunAsUser {
-    /**
-     * ranges are the allowed ranges of uids that may be used. If you would like to force a single uid then supply a single range with the same start and end. Required for MustRunAs.
-     */
-    ranges?: outputs.GetPodSecurityPolicyTemplateRunAsUserRange[];
-    /**
-     * rule is the strategy that will dictate the allowable RunAsUser values that may be set.
-     */
-    rule: string;
-}
-
-export interface GetPodSecurityPolicyTemplateRunAsUserRange {
-    /**
-     * max is the end of the range, inclusive.
-     */
-    max: number;
-    /**
-     * min is the start of the range, inclusive.
-     */
-    min: number;
-}
-
-export interface GetPodSecurityPolicyTemplateRuntimeClass {
-    /**
-     * allowedRuntimeClassNames is a whitelist of RuntimeClass names that may be specified on a pod. A value of "*" means that any RuntimeClass name is allowed, and must be the only item in the list. An empty list requires the RuntimeClassName field to be unset.
-     */
-    allowedRuntimeClassNames: string[];
-    /**
-     * defaultRuntimeClassName is the default RuntimeClassName to set on the pod. The default MUST be allowed by the allowedRuntimeClassNames list. A value of nil does not mutate the Pod.
-     */
-    defaultRuntimeClassName?: string;
-}
-
-export interface GetPodSecurityPolicyTemplateSeLinux {
-    /**
-     * rule is the strategy that will dictate the allowable labels that may be set.
-     */
-    rule: string;
-    /**
-     * seLinuxOptions required to run as; required for MustRunAs. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
-     */
-    seLinuxOption?: outputs.GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption;
-}
-
-export interface GetPodSecurityPolicyTemplateSeLinuxSeLinuxOption {
-    /**
-     * Level is SELinux level label that applies to the container.
-     */
-    level?: string;
-    /**
-     * Role is a SELinux role label that applies to the container.
-     */
-    role?: string;
-    /**
-     * Type is a SELinux type label that applies to the container.
-     */
-    type?: string;
-    /**
-     * User is a SELinux user label that applies to the container.
-     */
-    user?: string;
-}
-
-export interface GetPodSecurityPolicyTemplateSupplementalGroup {
-    /**
-     * ranges are the allowed ranges of supplemental groups.  If you would like to force a single supplemental group then supply a single range with the same start and end. Required for MustRunAs.
-     */
-    ranges: outputs.GetPodSecurityPolicyTemplateSupplementalGroupRange[];
-    /**
-     * rule is the strategy that will dictate what supplemental groups is used in the SecurityContext.
-     */
-    rule?: string;
-}
-
-export interface GetPodSecurityPolicyTemplateSupplementalGroupRange {
-    /**
-     * max is the end of the range, inclusive.
-     */
-    max: number;
-    /**
-     * min is the start of the range, inclusive.
-     */
-    min: number;
-}
-
-export interface GetProjectAlertGroupRecipient {
-    /**
-     * Use notifier default recipient
-     */
-    defaultRecipient?: boolean;
-    /**
-     * Recipient notifier ID
-     */
-    notifierId: string;
-    /**
-     * Recipient notifier type
-     */
-    notifierType: string;
-    /**
-     * Recipient
-     */
-    recipient: string;
-}
-
-export interface GetProjectAlertRuleMetricRule {
-    /**
-     * Metric rule comparison
-     */
-    comparison?: string;
-    /**
-     * Metric rule description
-     */
-    description?: string;
-    /**
-     * Metric rule duration
-     */
-    duration: string;
-    /**
-     * Metric rule expression
-     */
-    expression: string;
-    /**
-     * Metric rule threshold value
-     */
-    thresholdValue: number;
-}
-
-export interface GetProjectAlertRulePodRule {
-    /**
-     * Pod rule condition
-     */
-    condition?: string;
-    /**
-     * Pod ID
-     */
-    podId: string;
-    /**
-     * Pod rule restart interval seconds
-     */
-    restartIntervalSeconds?: number;
-    /**
-     * Pod rule restart times
-     */
-    restartTimes?: number;
-}
-
-export interface GetProjectAlertRuleWorkloadRule {
-    /**
-     * Workload rule available percentage
-     */
-    availablePercentage?: number;
-    /**
-     * Workload rule selector
-     */
-    selector?: {[key: string]: string};
-    /**
-     * Workload ID
-     */
-    workloadId?: string;
 }
 
 export interface GetProjectContainerResourceLimit {
@@ -11784,127 +11203,6 @@ export interface NodeTemplateVsphereConfig {
     vcenterPort?: string;
 }
 
-export interface NotifierDingtalkConfig {
-    /**
-     * Dingtalk proxy URL
-     */
-    proxyUrl?: string;
-    /**
-     * Required for webhook with sign enabled
-     */
-    secret?: string;
-    /**
-     * Webhook URL
-     */
-    url: string;
-}
-
-export interface NotifierMsteamsConfig {
-    /**
-     * MS teams proxy URL
-     */
-    proxyUrl?: string;
-    /**
-     * Webhook URL
-     */
-    url: string;
-}
-
-export interface NotifierPagerdutyConfig {
-    /**
-     * Pagerduty proxy URL
-     */
-    proxyUrl?: string;
-    /**
-     * Pagerduty service key
-     */
-    serviceKey: string;
-}
-
-export interface NotifierSlackConfig {
-    /**
-     * Slack default channel
-     */
-    defaultRecipient: string;
-    /**
-     * Slack proxy URL
-     */
-    proxyUrl?: string;
-    /**
-     * Slack URL
-     */
-    url: string;
-}
-
-export interface NotifierSmtpConfig {
-    /**
-     * SMTP default recipient (string)
-     */
-    defaultRecipient: string;
-    /**
-     * SMTP host (string)
-     */
-    host: string;
-    /**
-     * SMTP password (string)
-     */
-    password?: string;
-    /**
-     * SMTP port (int)
-     */
-    port: number;
-    /**
-     * SMTP sender (string)
-     */
-    sender: string;
-    /**
-     * SMTP tls. Default `true` (bool)
-     */
-    tls?: boolean;
-    /**
-     * SMTP username (string)
-     */
-    username?: string;
-}
-
-export interface NotifierWebhookConfig {
-    /**
-     * Webhook proxy url (string)
-     */
-    proxyUrl?: string;
-    /**
-     * Webhook url (string)
-     */
-    url: string;
-}
-
-export interface NotifierWechatConfig {
-    /**
-     * Wechat application agent ID
-     */
-    agent: string;
-    /**
-     * Wechat corporation ID
-     */
-    corp: string;
-    /**
-     * Wechat default channel
-     */
-    defaultRecipient: string;
-    /**
-     * Wechat proxy URL
-     */
-    proxyUrl?: string;
-    /**
-     * Wechat recipient type
-     */
-    recipientType?: string;
-    /**
-     * Wechat application secret
-     */
-    secret: string;
-}
-
 export interface PodSecurityAdmissionConfigurationTemplateDefaults {
     /**
      * Pod Security Admission Configuration audit. This audits a pod in violation of privileged, baseline, or restricted policy (default: privileged)
@@ -11947,247 +11245,6 @@ export interface PodSecurityAdmissionConfigurationTemplateExemptions {
     usernames?: string[];
 }
 
-export interface PodSecurityPolicyTemplateAllowedCsiDriver {
-    /**
-     * The name of the PodSecurityPolicyTemplate (string)
-     */
-    name: string;
-}
-
-export interface PodSecurityPolicyTemplateAllowedFlexVolume {
-    /**
-     * driver is the name of the Flexvolume driver.
-     */
-    driver: string;
-}
-
-export interface PodSecurityPolicyTemplateAllowedHostPath {
-    /**
-     * pathPrefix is the path prefix that the host volume must match. It does not support `*`. Trailing slashes are trimmed when validating the path prefix with a host path.
-     */
-    pathPrefix: string;
-    /**
-     * when set to true, will allow host volumes matching the pathPrefix only if all volume mounts are readOnly.
-     */
-    readOnly?: boolean;
-}
-
-export interface PodSecurityPolicyTemplateFsGroup {
-    /**
-     * ranges are the allowed ranges of fs groups.  If you would like to force a single fs group then supply a single range with the same start and end. Required for MustRunAs.
-     */
-    ranges: outputs.PodSecurityPolicyTemplateFsGroupRange[];
-    /**
-     * rule is the strategy that will dictate what FSGroup is used in the SecurityContext.
-     */
-    rule?: string;
-}
-
-export interface PodSecurityPolicyTemplateFsGroupRange {
-    /**
-     * max is the end of the range, inclusive.
-     */
-    max: number;
-    /**
-     * min is the start of the range, inclusive.
-     */
-    min: number;
-}
-
-export interface PodSecurityPolicyTemplateHostPort {
-    /**
-     * max is the end of the range, inclusive.
-     */
-    max: number;
-    /**
-     * min is the start of the range, inclusive.
-     */
-    min: number;
-}
-
-export interface PodSecurityPolicyTemplateRunAsGroup {
-    /**
-     * ranges are the allowed ranges of gids that may be used. If you would like to force a single gid then supply a single range with the same start and end. Required for MustRunAs.
-     */
-    ranges?: outputs.PodSecurityPolicyTemplateRunAsGroupRange[];
-    /**
-     * rule is the strategy that will dictate the allowable RunAsGroup values that may be set.
-     */
-    rule: string;
-}
-
-export interface PodSecurityPolicyTemplateRunAsGroupRange {
-    /**
-     * max is the end of the range, inclusive.
-     */
-    max: number;
-    /**
-     * min is the start of the range, inclusive.
-     */
-    min: number;
-}
-
-export interface PodSecurityPolicyTemplateRunAsUser {
-    /**
-     * ranges are the allowed ranges of uids that may be used. If you would like to force a single uid then supply a single range with the same start and end. Required for MustRunAs.
-     */
-    ranges?: outputs.PodSecurityPolicyTemplateRunAsUserRange[];
-    /**
-     * rule is the strategy that will dictate the allowable RunAsUser values that may be set.
-     */
-    rule: string;
-}
-
-export interface PodSecurityPolicyTemplateRunAsUserRange {
-    /**
-     * max is the end of the range, inclusive.
-     */
-    max: number;
-    /**
-     * min is the start of the range, inclusive.
-     */
-    min: number;
-}
-
-export interface PodSecurityPolicyTemplateRuntimeClass {
-    /**
-     * allowedRuntimeClassNames is a whitelist of RuntimeClass names that may be specified on a pod. A value of "*" means that any RuntimeClass name is allowed, and must be the only item in the list. An empty list requires the RuntimeClassName field to be unset.
-     */
-    allowedRuntimeClassNames: string[];
-    /**
-     * defaultRuntimeClassName is the default RuntimeClassName to set on the pod. The default MUST be allowed by the allowedRuntimeClassNames list. A value of nil does not mutate the Pod.
-     */
-    defaultRuntimeClassName?: string;
-}
-
-export interface PodSecurityPolicyTemplateSeLinux {
-    /**
-     * rule is the strategy that will dictate the allowable labels that may be set.
-     */
-    rule: string;
-    /**
-     * seLinuxOptions required to run as; required for MustRunAs. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
-     */
-    seLinuxOption?: outputs.PodSecurityPolicyTemplateSeLinuxSeLinuxOption;
-}
-
-export interface PodSecurityPolicyTemplateSeLinuxSeLinuxOption {
-    /**
-     * Level is SELinux level label that applies to the container.
-     */
-    level?: string;
-    /**
-     * Role is a SELinux role label that applies to the container.
-     */
-    role?: string;
-    /**
-     * Type is a SELinux type label that applies to the container.
-     */
-    type?: string;
-    /**
-     * User is a SELinux user label that applies to the container.
-     */
-    user?: string;
-}
-
-export interface PodSecurityPolicyTemplateSupplementalGroup {
-    /**
-     * ranges are the allowed ranges of supplemental groups.  If you would like to force a single supplemental group then supply a single range with the same start and end. Required for MustRunAs.
-     */
-    ranges: outputs.PodSecurityPolicyTemplateSupplementalGroupRange[];
-    /**
-     * rule is the strategy that will dictate what supplemental groups is used in the SecurityContext.
-     */
-    rule?: string;
-}
-
-export interface PodSecurityPolicyTemplateSupplementalGroupRange {
-    /**
-     * max is the end of the range, inclusive.
-     */
-    max: number;
-    /**
-     * min is the start of the range, inclusive.
-     */
-    min: number;
-}
-
-export interface ProjectAlertGroupRecipient {
-    /**
-     * Use notifier default recipient
-     */
-    defaultRecipient?: boolean;
-    /**
-     * Recipient notifier ID
-     */
-    notifierId: string;
-    /**
-     * Recipient notifier type
-     */
-    notifierType: string;
-    /**
-     * Recipient
-     */
-    recipient: string;
-}
-
-export interface ProjectAlertRuleMetricRule {
-    /**
-     * Metric rule comparison
-     */
-    comparison?: string;
-    /**
-     * Metric rule description
-     */
-    description?: string;
-    /**
-     * Metric rule duration
-     */
-    duration: string;
-    /**
-     * Metric rule expression
-     */
-    expression: string;
-    /**
-     * Metric rule threshold value
-     */
-    thresholdValue: number;
-}
-
-export interface ProjectAlertRulePodRule {
-    /**
-     * Pod rule condition
-     */
-    condition?: string;
-    /**
-     * Pod ID
-     */
-    podId: string;
-    /**
-     * Pod rule restart interval seconds
-     */
-    restartIntervalSeconds?: number;
-    /**
-     * Pod rule restart times
-     */
-    restartTimes?: number;
-}
-
-export interface ProjectAlertRuleWorkloadRule {
-    /**
-     * Workload rule available percentage
-     */
-    availablePercentage?: number;
-    /**
-     * Workload rule selector
-     */
-    selector?: {[key: string]: string};
-    /**
-     * Workload ID
-     */
-    workloadId?: string;
-}
-
 export interface ProjectContainerResourceLimit {
     /**
      * Limit for limits cpu in project (string)
@@ -12205,17 +11262,6 @@ export interface ProjectContainerResourceLimit {
      * Limit for requests memory in project (string)
      */
     requestsMemory?: string;
-}
-
-export interface ProjectProjectMonitoringInput {
-    /**
-     * Answers for monitor input
-     */
-    answers?: {[key: string]: string};
-    /**
-     * Monitoring version
-     */
-    version?: string;
 }
 
 export interface ProjectResourceQuota {

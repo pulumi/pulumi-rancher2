@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-rancher2/sdk/v6/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v7/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,15 +39,11 @@ type LookupProjectResult struct {
 	ContainerResourceLimit GetProjectContainerResourceLimit `pulumi:"containerResourceLimit"`
 	// (Computed) The project's description (string)
 	Description string `pulumi:"description"`
-	// (Computed) Enable built-in project monitoring. Default `false` (bool)
-	EnableProjectMonitoring bool `pulumi:"enableProjectMonitoring"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Labels of the rancher2 project (map)
 	Labels map[string]string `pulumi:"labels"`
 	Name   string            `pulumi:"name"`
-	// (Computed) Default Pod Security Policy ID for the project (string)
-	PodSecurityPolicyTemplateId string `pulumi:"podSecurityPolicyTemplateId"`
 	// (Computed) Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
 	ResourceQuota GetProjectResourceQuota `pulumi:"resourceQuota"`
 	// (Computed) UUID of the project as stored by Rancher 2 (string)
@@ -113,11 +109,6 @@ func (o LookupProjectResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// (Computed) Enable built-in project monitoring. Default `false` (bool)
-func (o LookupProjectResultOutput) EnableProjectMonitoring() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupProjectResult) bool { return v.EnableProjectMonitoring }).(pulumi.BoolOutput)
-}
-
 // The provider-assigned unique ID for this managed resource.
 func (o LookupProjectResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Id }).(pulumi.StringOutput)
@@ -130,11 +121,6 @@ func (o LookupProjectResultOutput) Labels() pulumi.StringMapOutput {
 
 func (o LookupProjectResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// (Computed) Default Pod Security Policy ID for the project (string)
-func (o LookupProjectResultOutput) PodSecurityPolicyTemplateId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupProjectResult) string { return v.PodSecurityPolicyTemplateId }).(pulumi.StringOutput)
 }
 
 // (Computed) Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)

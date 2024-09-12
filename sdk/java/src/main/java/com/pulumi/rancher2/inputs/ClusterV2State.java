@@ -145,21 +145,6 @@ public final class ClusterV2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Default pod security policy template name specifies the default PSP for the cluster. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies).
-     * 
-     */
-    @Import(name="defaultPodSecurityPolicyTemplateName")
-    private @Nullable Output<String> defaultPodSecurityPolicyTemplateName;
-
-    /**
-     * @return Default pod security policy template name specifies the default PSP for the cluster. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies).
-     * 
-     */
-    public Optional<Output<String>> defaultPodSecurityPolicyTemplateName() {
-        return Optional.ofNullable(this.defaultPodSecurityPolicyTemplateName);
-    }
-
-    /**
      * Enable k8s network policy on the cluster.
      * 
      */
@@ -320,7 +305,6 @@ public final class ClusterV2State extends com.pulumi.resources.ResourceArgs {
         this.clusterV1Id = $.clusterV1Id;
         this.defaultClusterRoleForProjectMembers = $.defaultClusterRoleForProjectMembers;
         this.defaultPodSecurityAdmissionConfigurationTemplateName = $.defaultPodSecurityAdmissionConfigurationTemplateName;
-        this.defaultPodSecurityPolicyTemplateName = $.defaultPodSecurityPolicyTemplateName;
         this.enableNetworkPolicy = $.enableNetworkPolicy;
         this.fleetAgentDeploymentCustomizations = $.fleetAgentDeploymentCustomizations;
         this.fleetNamespace = $.fleetNamespace;
@@ -537,27 +521,6 @@ public final class ClusterV2State extends com.pulumi.resources.ResourceArgs {
          */
         public Builder defaultPodSecurityAdmissionConfigurationTemplateName(String defaultPodSecurityAdmissionConfigurationTemplateName) {
             return defaultPodSecurityAdmissionConfigurationTemplateName(Output.of(defaultPodSecurityAdmissionConfigurationTemplateName));
-        }
-
-        /**
-         * @param defaultPodSecurityPolicyTemplateName Default pod security policy template name specifies the default PSP for the cluster. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies).
-         * 
-         * @return builder
-         * 
-         */
-        public Builder defaultPodSecurityPolicyTemplateName(@Nullable Output<String> defaultPodSecurityPolicyTemplateName) {
-            $.defaultPodSecurityPolicyTemplateName = defaultPodSecurityPolicyTemplateName;
-            return this;
-        }
-
-        /**
-         * @param defaultPodSecurityPolicyTemplateName Default pod security policy template name specifies the default PSP for the cluster. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies).
-         * 
-         * @return builder
-         * 
-         */
-        public Builder defaultPodSecurityPolicyTemplateName(String defaultPodSecurityPolicyTemplateName) {
-            return defaultPodSecurityPolicyTemplateName(Output.of(defaultPodSecurityPolicyTemplateName));
         }
 
         /**

@@ -15,7 +15,6 @@ import com.pulumi.rancher2.outputs.ClusterAksConfig;
 import com.pulumi.rancher2.outputs.ClusterAksConfigV2;
 import com.pulumi.rancher2.outputs.ClusterClusterAgentDeploymentCustomization;
 import com.pulumi.rancher2.outputs.ClusterClusterAuthEndpoint;
-import com.pulumi.rancher2.outputs.ClusterClusterMonitoringInput;
 import com.pulumi.rancher2.outputs.ClusterClusterRegistrationToken;
 import com.pulumi.rancher2.outputs.ClusterClusterTemplateAnswers;
 import com.pulumi.rancher2.outputs.ClusterClusterTemplateQuestion;
@@ -40,7 +39,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * **Note optional/computed arguments** If any `optional/computed` argument of this resource is defined by the user, removing it from tf file will NOT reset its value. To reset it, let its definition at tf file as empty/false object. Ex: `enable_cluster_monitoring = false`, `cloud_provider {}`, `name = &#34;&#34;`
+ * **Note optional/computed arguments** If any `optional/computed` argument of this resource is defined by the user, removing it from tf file will NOT reset its value. To reset it, let its definition at tf file as empty/false object. Ex: `cloud_provider {}`, `name = &#34;&#34;`
  * 
  * ### Creating Rancher v2 imported cluster
  * 
@@ -81,9 +80,7 @@ import javax.annotation.Nullable;
  * 
  * Creating Rancher v2 RKE cluster
  * 
- * ### Creating Rancher v2 RKE cluster enabling and customizing monitoring
- * 
- * **Note** Cluster monitoring version `0.2.0` and above, can&#39;t be enabled until cluster is fully deployed as [`kubeVersion`](https://github.com/rancher/system-charts/blob/52be656700468904b9bf15c3f39cd7112e1f8c9b/charts/rancher-monitoring/v0.2.0/Chart.yaml#L12) requirement has been introduced to helm chart
+ * ### Creating Rancher v2 RKE cluster enabling
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -97,7 +94,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.rancher2.ClusterArgs;
  * import com.pulumi.rancher2.inputs.ClusterRkeConfigArgs;
  * import com.pulumi.rancher2.inputs.ClusterRkeConfigNetworkArgs;
- * import com.pulumi.rancher2.inputs.ClusterClusterMonitoringInputArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -120,30 +116,6 @@ import javax.annotation.Nullable;
  *                     .plugin("canal")
  *                     .build())
  *                 .build())
- *             .enableClusterMonitoring(true)
- *             .clusterMonitoringInput(ClusterClusterMonitoringInputArgs.builder()
- *                 .answers(Map.ofEntries(
- *                     Map.entry("exporter-kubelets.https", true),
- *                     Map.entry("exporter-node.enabled", true),
- *                     Map.entry("exporter-node.ports.metrics.port", 9796),
- *                     Map.entry("exporter-node.resources.limits.cpu", "200m"),
- *                     Map.entry("exporter-node.resources.limits.memory", "200Mi"),
- *                     Map.entry("grafana.persistence.enabled", false),
- *                     Map.entry("grafana.persistence.size", "10Gi"),
- *                     Map.entry("grafana.persistence.storageClass", "default"),
- *                     Map.entry("operator.resources.limits.memory", "500Mi"),
- *                     Map.entry("prometheus.persistence.enabled", "false"),
- *                     Map.entry("prometheus.persistence.size", "50Gi"),
- *                     Map.entry("prometheus.persistence.storageClass", "default"),
- *                     Map.entry("prometheus.persistent.useReleaseName", "true"),
- *                     Map.entry("prometheus.resources.core.limits.cpu", "1000m"),
- *                     Map.entry("prometheus.resources.core.limits.memory", "1500Mi"),
- *                     Map.entry("prometheus.resources.core.requests.cpu", "750m"),
- *                     Map.entry("prometheus.resources.core.requests.memory", "750Mi"),
- *                     Map.entry("prometheus.retention", "12h")
- *                 ))
- *                 .version("0.1.0")
- *                 .build())
  *             .build());
  * 
  *     }
@@ -152,7 +124,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ### Creating Rancher v2 RKE cluster enabling/customizing monitoring and istio
+ * ### Creating Rancher v2 RKE cluster enabling/customizing istio
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -166,7 +138,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.rancher2.ClusterArgs;
  * import com.pulumi.rancher2.inputs.ClusterRkeConfigArgs;
  * import com.pulumi.rancher2.inputs.ClusterRkeConfigNetworkArgs;
- * import com.pulumi.rancher2.inputs.ClusterClusterMonitoringInputArgs;
  * import com.pulumi.rancher2.ClusterSync;
  * import com.pulumi.rancher2.ClusterSyncArgs;
  * import com.pulumi.rancher2.Namespace;
@@ -195,36 +166,11 @@ import javax.annotation.Nullable;
  *                     .plugin("canal")
  *                     .build())
  *                 .build())
- *             .enableClusterMonitoring(true)
- *             .clusterMonitoringInput(ClusterClusterMonitoringInputArgs.builder()
- *                 .answers(Map.ofEntries(
- *                     Map.entry("exporter-kubelets.https", true),
- *                     Map.entry("exporter-node.enabled", true),
- *                     Map.entry("exporter-node.ports.metrics.port", 9796),
- *                     Map.entry("exporter-node.resources.limits.cpu", "200m"),
- *                     Map.entry("exporter-node.resources.limits.memory", "200Mi"),
- *                     Map.entry("grafana.persistence.enabled", false),
- *                     Map.entry("grafana.persistence.size", "10Gi"),
- *                     Map.entry("grafana.persistence.storageClass", "default"),
- *                     Map.entry("operator.resources.limits.memory", "500Mi"),
- *                     Map.entry("prometheus.persistence.enabled", "false"),
- *                     Map.entry("prometheus.persistence.size", "50Gi"),
- *                     Map.entry("prometheus.persistence.storageClass", "default"),
- *                     Map.entry("prometheus.persistent.useReleaseName", "true"),
- *                     Map.entry("prometheus.resources.core.limits.cpu", "1000m"),
- *                     Map.entry("prometheus.resources.core.limits.memory", "1500Mi"),
- *                     Map.entry("prometheus.resources.core.requests.cpu", "750m"),
- *                     Map.entry("prometheus.resources.core.requests.memory", "750Mi"),
- *                     Map.entry("prometheus.retention", "12h")
- *                 ))
- *                 .version("0.1.0")
- *                 .build())
  *             .build());
  * 
  *         // Create a new rancher2 Cluster Sync for foo-custom cluster
  *         var foo_customClusterSync = new ClusterSync("foo-customClusterSync", ClusterSyncArgs.builder()
  *             .clusterId(foo_custom.id())
- *             .waitMonitoring(foo_custom.enableClusterMonitoring())
  *             .build());
  * 
  *         // Create a new rancher2 Namespace
@@ -234,7 +180,7 @@ import javax.annotation.Nullable;
  *             .description("istio namespace")
  *             .build());
  * 
- *         // Create a new rancher2 App deploying istio (should wait until monitoring is up and running)
+ *         // Create a new rancher2 App deploying istio
  *         var istio = new App("istio", AppArgs.builder()
  *             .catalogName("system-library")
  *             .name("cluster-istio")
@@ -253,7 +199,6 @@ import javax.annotation.Nullable;
  *                 Map.entry("gateways.istio-ingressgateway.resources.requests.cpu", "100m"),
  *                 Map.entry("gateways.istio-ingressgateway.resources.requests.memory", "128Mi"),
  *                 Map.entry("gateways.istio-ingressgateway.type", "NodePort"),
- *                 Map.entry("global.monitoring.type", "cluster-monitoring"),
  *                 Map.entry("global.rancher.clusterId", foo_customClusterSync.clusterId()),
  *                 Map.entry("istio_cni.enabled", "false"),
  *                 Map.entry("istiocoredns.enabled", "false"),
@@ -1070,20 +1015,6 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.clusterAuthEndpoint;
     }
     /**
-     * Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
-     * 
-     */
-    @Export(name="clusterMonitoringInput", refs={ClusterClusterMonitoringInput.class}, tree="[0]")
-    private Output</* @Nullable */ ClusterClusterMonitoringInput> clusterMonitoringInput;
-
-    /**
-     * @return Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
-     * 
-     */
-    public Output<Optional<ClusterClusterMonitoringInput>> clusterMonitoringInput() {
-        return Codegen.optional(this.clusterMonitoringInput);
-    }
-    /**
      * (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
      * 
      */
@@ -1166,20 +1097,6 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> defaultPodSecurityAdmissionConfigurationTemplateName() {
         return this.defaultPodSecurityAdmissionConfigurationTemplateName;
-    }
-    /**
-     * [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
-     * 
-     */
-    @Export(name="defaultPodSecurityPolicyTemplateId", refs={String.class}, tree="[0]")
-    private Output<String> defaultPodSecurityPolicyTemplateId;
-
-    /**
-     * @return [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
-     * 
-     */
-    public Output<String> defaultPodSecurityPolicyTemplateId() {
-        return this.defaultPodSecurityPolicyTemplateId;
     }
     /**
      * (Computed) Default project ID for the cluster (string)
@@ -1294,20 +1211,6 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.eksConfigV2;
     }
     /**
-     * Enable built-in cluster alerting (bool)
-     * 
-     */
-    @Export(name="enableClusterAlerting", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> enableClusterAlerting;
-
-    /**
-     * @return Enable built-in cluster alerting (bool)
-     * 
-     */
-    public Output<Boolean> enableClusterAlerting() {
-        return this.enableClusterAlerting;
-    }
-    /**
      * Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.
      * 
      * @deprecated
@@ -1324,20 +1227,6 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> enableClusterIstio() {
         return this.enableClusterIstio;
-    }
-    /**
-     * Enable built-in cluster monitoring (bool)
-     * 
-     */
-    @Export(name="enableClusterMonitoring", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> enableClusterMonitoring;
-
-    /**
-     * @return Enable built-in cluster monitoring (bool)
-     * 
-     */
-    public Output<Boolean> enableClusterMonitoring() {
-        return this.enableClusterMonitoring;
     }
     /**
      * Enable project network isolation (bool)

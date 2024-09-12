@@ -90,16 +90,6 @@ export type Cluster = import("./cluster").Cluster;
 export const Cluster: typeof import("./cluster").Cluster = null as any;
 utilities.lazyLoad(exports, ["Cluster"], () => require("./cluster"));
 
-export { ClusterAlertGroupArgs, ClusterAlertGroupState } from "./clusterAlertGroup";
-export type ClusterAlertGroup = import("./clusterAlertGroup").ClusterAlertGroup;
-export const ClusterAlertGroup: typeof import("./clusterAlertGroup").ClusterAlertGroup = null as any;
-utilities.lazyLoad(exports, ["ClusterAlertGroup"], () => require("./clusterAlertGroup"));
-
-export { ClusterAlertRuleArgs, ClusterAlertRuleState } from "./clusterAlertRule";
-export type ClusterAlertRule = import("./clusterAlertRule").ClusterAlertRule;
-export const ClusterAlertRule: typeof import("./clusterAlertRule").ClusterAlertRule = null as any;
-utilities.lazyLoad(exports, ["ClusterAlertRule"], () => require("./clusterAlertRule"));
-
 export { ClusterDriverArgs, ClusterDriverState } from "./clusterDriver";
 export type ClusterDriver = import("./clusterDriver").ClusterDriver;
 export const ClusterDriver: typeof import("./clusterDriver").ClusterDriver = null as any;
@@ -175,16 +165,6 @@ export const getCluster: typeof import("./getCluster").getCluster = null as any;
 export const getClusterOutput: typeof import("./getCluster").getClusterOutput = null as any;
 utilities.lazyLoad(exports, ["getCluster","getClusterOutput"], () => require("./getCluster"));
 
-export { GetClusterAlertGroupArgs, GetClusterAlertGroupResult, GetClusterAlertGroupOutputArgs } from "./getClusterAlertGroup";
-export const getClusterAlertGroup: typeof import("./getClusterAlertGroup").getClusterAlertGroup = null as any;
-export const getClusterAlertGroupOutput: typeof import("./getClusterAlertGroup").getClusterAlertGroupOutput = null as any;
-utilities.lazyLoad(exports, ["getClusterAlertGroup","getClusterAlertGroupOutput"], () => require("./getClusterAlertGroup"));
-
-export { GetClusterAlertRuleArgs, GetClusterAlertRuleResult, GetClusterAlertRuleOutputArgs } from "./getClusterAlertRule";
-export const getClusterAlertRule: typeof import("./getClusterAlertRule").getClusterAlertRule = null as any;
-export const getClusterAlertRuleOutput: typeof import("./getClusterAlertRule").getClusterAlertRuleOutput = null as any;
-utilities.lazyLoad(exports, ["getClusterAlertRule","getClusterAlertRuleOutput"], () => require("./getClusterAlertRule"));
-
 export { GetClusterDriverArgs, GetClusterDriverResult, GetClusterDriverOutputArgs } from "./getClusterDriver";
 export const getClusterDriver: typeof import("./getClusterDriver").getClusterDriver = null as any;
 export const getClusterDriverOutput: typeof import("./getClusterDriver").getClusterDriverOutput = null as any;
@@ -255,20 +235,10 @@ export const getNodeTemplate: typeof import("./getNodeTemplate").getNodeTemplate
 export const getNodeTemplateOutput: typeof import("./getNodeTemplate").getNodeTemplateOutput = null as any;
 utilities.lazyLoad(exports, ["getNodeTemplate","getNodeTemplateOutput"], () => require("./getNodeTemplate"));
 
-export { GetNotifierArgs, GetNotifierResult, GetNotifierOutputArgs } from "./getNotifier";
-export const getNotifier: typeof import("./getNotifier").getNotifier = null as any;
-export const getNotifierOutput: typeof import("./getNotifier").getNotifierOutput = null as any;
-utilities.lazyLoad(exports, ["getNotifier","getNotifierOutput"], () => require("./getNotifier"));
-
 export { GetPodSecurityAdmissionConfigurationTemplateArgs, GetPodSecurityAdmissionConfigurationTemplateResult, GetPodSecurityAdmissionConfigurationTemplateOutputArgs } from "./getPodSecurityAdmissionConfigurationTemplate";
 export const getPodSecurityAdmissionConfigurationTemplate: typeof import("./getPodSecurityAdmissionConfigurationTemplate").getPodSecurityAdmissionConfigurationTemplate = null as any;
 export const getPodSecurityAdmissionConfigurationTemplateOutput: typeof import("./getPodSecurityAdmissionConfigurationTemplate").getPodSecurityAdmissionConfigurationTemplateOutput = null as any;
 utilities.lazyLoad(exports, ["getPodSecurityAdmissionConfigurationTemplate","getPodSecurityAdmissionConfigurationTemplateOutput"], () => require("./getPodSecurityAdmissionConfigurationTemplate"));
-
-export { GetPodSecurityPolicyTemplateArgs, GetPodSecurityPolicyTemplateResult, GetPodSecurityPolicyTemplateOutputArgs } from "./getPodSecurityPolicyTemplate";
-export const getPodSecurityPolicyTemplate: typeof import("./getPodSecurityPolicyTemplate").getPodSecurityPolicyTemplate = null as any;
-export const getPodSecurityPolicyTemplateOutput: typeof import("./getPodSecurityPolicyTemplate").getPodSecurityPolicyTemplateOutput = null as any;
-utilities.lazyLoad(exports, ["getPodSecurityPolicyTemplate","getPodSecurityPolicyTemplateOutput"], () => require("./getPodSecurityPolicyTemplate"));
 
 export { GetPrincipalArgs, GetPrincipalResult, GetPrincipalOutputArgs } from "./getPrincipal";
 export const getPrincipal: typeof import("./getPrincipal").getPrincipal = null as any;
@@ -279,16 +249,6 @@ export { GetProjectArgs, GetProjectResult, GetProjectOutputArgs } from "./getPro
 export const getProject: typeof import("./getProject").getProject = null as any;
 export const getProjectOutput: typeof import("./getProject").getProjectOutput = null as any;
 utilities.lazyLoad(exports, ["getProject","getProjectOutput"], () => require("./getProject"));
-
-export { GetProjectAlertGroupArgs, GetProjectAlertGroupResult, GetProjectAlertGroupOutputArgs } from "./getProjectAlertGroup";
-export const getProjectAlertGroup: typeof import("./getProjectAlertGroup").getProjectAlertGroup = null as any;
-export const getProjectAlertGroupOutput: typeof import("./getProjectAlertGroup").getProjectAlertGroupOutput = null as any;
-utilities.lazyLoad(exports, ["getProjectAlertGroup","getProjectAlertGroupOutput"], () => require("./getProjectAlertGroup"));
-
-export { GetProjectAlertRuleArgs, GetProjectAlertRuleResult, GetProjectAlertRuleOutputArgs } from "./getProjectAlertRule";
-export const getProjectAlertRule: typeof import("./getProjectAlertRule").getProjectAlertRule = null as any;
-export const getProjectAlertRuleOutput: typeof import("./getProjectAlertRule").getProjectAlertRuleOutput = null as any;
-utilities.lazyLoad(exports, ["getProjectAlertRule","getProjectAlertRuleOutput"], () => require("./getProjectAlertRule"));
 
 export { GetProjectRoleTemplateBindingArgs, GetProjectRoleTemplateBindingResult, GetProjectRoleTemplateBindingOutputArgs } from "./getProjectRoleTemplateBinding";
 export const getProjectRoleTemplateBinding: typeof import("./getProjectRoleTemplateBinding").getProjectRoleTemplateBinding = null as any;
@@ -380,35 +340,15 @@ export type NodeTemplate = import("./nodeTemplate").NodeTemplate;
 export const NodeTemplate: typeof import("./nodeTemplate").NodeTemplate = null as any;
 utilities.lazyLoad(exports, ["NodeTemplate"], () => require("./nodeTemplate"));
 
-export { NotifierArgs, NotifierState } from "./notifier";
-export type Notifier = import("./notifier").Notifier;
-export const Notifier: typeof import("./notifier").Notifier = null as any;
-utilities.lazyLoad(exports, ["Notifier"], () => require("./notifier"));
-
 export { PodSecurityAdmissionConfigurationTemplateArgs, PodSecurityAdmissionConfigurationTemplateState } from "./podSecurityAdmissionConfigurationTemplate";
 export type PodSecurityAdmissionConfigurationTemplate = import("./podSecurityAdmissionConfigurationTemplate").PodSecurityAdmissionConfigurationTemplate;
 export const PodSecurityAdmissionConfigurationTemplate: typeof import("./podSecurityAdmissionConfigurationTemplate").PodSecurityAdmissionConfigurationTemplate = null as any;
 utilities.lazyLoad(exports, ["PodSecurityAdmissionConfigurationTemplate"], () => require("./podSecurityAdmissionConfigurationTemplate"));
 
-export { PodSecurityPolicyTemplateArgs, PodSecurityPolicyTemplateState } from "./podSecurityPolicyTemplate";
-export type PodSecurityPolicyTemplate = import("./podSecurityPolicyTemplate").PodSecurityPolicyTemplate;
-export const PodSecurityPolicyTemplate: typeof import("./podSecurityPolicyTemplate").PodSecurityPolicyTemplate = null as any;
-utilities.lazyLoad(exports, ["PodSecurityPolicyTemplate"], () => require("./podSecurityPolicyTemplate"));
-
 export { ProjectArgs, ProjectState } from "./project";
 export type Project = import("./project").Project;
 export const Project: typeof import("./project").Project = null as any;
 utilities.lazyLoad(exports, ["Project"], () => require("./project"));
-
-export { ProjectAlertGroupArgs, ProjectAlertGroupState } from "./projectAlertGroup";
-export type ProjectAlertGroup = import("./projectAlertGroup").ProjectAlertGroup;
-export const ProjectAlertGroup: typeof import("./projectAlertGroup").ProjectAlertGroup = null as any;
-utilities.lazyLoad(exports, ["ProjectAlertGroup"], () => require("./projectAlertGroup"));
-
-export { ProjectAlertRuleArgs, ProjectAlertRuleState } from "./projectAlertRule";
-export type ProjectAlertRule = import("./projectAlertRule").ProjectAlertRule;
-export const ProjectAlertRule: typeof import("./projectAlertRule").ProjectAlertRule = null as any;
-utilities.lazyLoad(exports, ["ProjectAlertRule"], () => require("./projectAlertRule"));
 
 export { ProjectRoleTemplateBindingArgs, ProjectRoleTemplateBindingState } from "./projectRoleTemplateBinding";
 export type ProjectRoleTemplateBinding = import("./projectRoleTemplateBinding").ProjectRoleTemplateBinding;
@@ -508,10 +448,6 @@ const _module = {
                 return new CloudCredential(name, <any>undefined, { urn })
             case "rancher2:index/cluster:Cluster":
                 return new Cluster(name, <any>undefined, { urn })
-            case "rancher2:index/clusterAlertGroup:ClusterAlertGroup":
-                return new ClusterAlertGroup(name, <any>undefined, { urn })
-            case "rancher2:index/clusterAlertRule:ClusterAlertRule":
-                return new ClusterAlertRule(name, <any>undefined, { urn })
             case "rancher2:index/clusterDriver:ClusterDriver":
                 return new ClusterDriver(name, <any>undefined, { urn })
             case "rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding":
@@ -550,18 +486,10 @@ const _module = {
                 return new NodePool(name, <any>undefined, { urn })
             case "rancher2:index/nodeTemplate:NodeTemplate":
                 return new NodeTemplate(name, <any>undefined, { urn })
-            case "rancher2:index/notifier:Notifier":
-                return new Notifier(name, <any>undefined, { urn })
             case "rancher2:index/podSecurityAdmissionConfigurationTemplate:PodSecurityAdmissionConfigurationTemplate":
                 return new PodSecurityAdmissionConfigurationTemplate(name, <any>undefined, { urn })
-            case "rancher2:index/podSecurityPolicyTemplate:PodSecurityPolicyTemplate":
-                return new PodSecurityPolicyTemplate(name, <any>undefined, { urn })
             case "rancher2:index/project:Project":
                 return new Project(name, <any>undefined, { urn })
-            case "rancher2:index/projectAlertGroup:ProjectAlertGroup":
-                return new ProjectAlertGroup(name, <any>undefined, { urn })
-            case "rancher2:index/projectAlertRule:ProjectAlertRule":
-                return new ProjectAlertRule(name, <any>undefined, { urn })
             case "rancher2:index/projectRoleTemplateBinding:ProjectRoleTemplateBinding":
                 return new ProjectRoleTemplateBinding(name, <any>undefined, { urn })
             case "rancher2:index/registry:Registry":
@@ -602,8 +530,6 @@ pulumi.runtime.registerResourceModule("rancher2", "index/catalogV2", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/certificate", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/cloudCredential", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/cluster", _module)
-pulumi.runtime.registerResourceModule("rancher2", "index/clusterAlertGroup", _module)
-pulumi.runtime.registerResourceModule("rancher2", "index/clusterAlertRule", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/clusterDriver", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/clusterRoleTemplateBinding", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/clusterSync", _module)
@@ -623,12 +549,8 @@ pulumi.runtime.registerResourceModule("rancher2", "index/namespace", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/nodeDriver", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/nodePool", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/nodeTemplate", _module)
-pulumi.runtime.registerResourceModule("rancher2", "index/notifier", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/podSecurityAdmissionConfigurationTemplate", _module)
-pulumi.runtime.registerResourceModule("rancher2", "index/podSecurityPolicyTemplate", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/project", _module)
-pulumi.runtime.registerResourceModule("rancher2", "index/projectAlertGroup", _module)
-pulumi.runtime.registerResourceModule("rancher2", "index/projectAlertRule", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/projectRoleTemplateBinding", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/registry", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/roleTemplate", _module)

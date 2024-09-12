@@ -30,7 +30,6 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
     private @Nullable List<String> extraBinds;
     private @Nullable List<String> extraEnvs;
     private @Nullable String image;
-    private @Nullable Boolean podSecurityPolicy;
     private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig secretsEncryptionConfig;
     private @Nullable String serviceClusterIpRange;
     private @Nullable String serviceNodePortRange;
@@ -64,9 +63,6 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
     public Optional<String> image() {
         return Optional.ofNullable(this.image);
     }
-    public Optional<Boolean> podSecurityPolicy() {
-        return Optional.ofNullable(this.podSecurityPolicy);
-    }
     public Optional<ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig> secretsEncryptionConfig() {
         return Optional.ofNullable(this.secretsEncryptionConfig);
     }
@@ -94,7 +90,6 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
         private @Nullable List<String> extraBinds;
         private @Nullable List<String> extraEnvs;
         private @Nullable String image;
-        private @Nullable Boolean podSecurityPolicy;
         private @Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig secretsEncryptionConfig;
         private @Nullable String serviceClusterIpRange;
         private @Nullable String serviceNodePortRange;
@@ -109,7 +104,6 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
     	      this.extraBinds = defaults.extraBinds;
     	      this.extraEnvs = defaults.extraEnvs;
     	      this.image = defaults.image;
-    	      this.podSecurityPolicy = defaults.podSecurityPolicy;
     	      this.secretsEncryptionConfig = defaults.secretsEncryptionConfig;
     	      this.serviceClusterIpRange = defaults.serviceClusterIpRange;
     	      this.serviceNodePortRange = defaults.serviceNodePortRange;
@@ -170,12 +164,6 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
             return this;
         }
         @CustomType.Setter
-        public Builder podSecurityPolicy(@Nullable Boolean podSecurityPolicy) {
-
-            this.podSecurityPolicy = podSecurityPolicy;
-            return this;
-        }
-        @CustomType.Setter
         public Builder secretsEncryptionConfig(@Nullable ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfig secretsEncryptionConfig) {
 
             this.secretsEncryptionConfig = secretsEncryptionConfig;
@@ -203,7 +191,6 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
             _resultValue.extraBinds = extraBinds;
             _resultValue.extraEnvs = extraEnvs;
             _resultValue.image = image;
-            _resultValue.podSecurityPolicy = podSecurityPolicy;
             _resultValue.secretsEncryptionConfig = secretsEncryptionConfig;
             _resultValue.serviceClusterIpRange = serviceClusterIpRange;
             _resultValue.serviceNodePortRange = serviceNodePortRange;

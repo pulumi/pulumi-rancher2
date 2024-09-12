@@ -70,12 +70,6 @@ namespace Pulumi.Rancher2
         public Output<string?> DefaultPodSecurityAdmissionConfigurationTemplateName { get; private set; } = null!;
 
         /// <summary>
-        /// Default pod security policy template name specifies the default PSP for the cluster. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies).
-        /// </summary>
-        [Output("defaultPodSecurityPolicyTemplateName")]
-        public Output<string?> DefaultPodSecurityPolicyTemplateName { get; private set; } = null!;
-
-        /// <summary>
         /// Enable k8s network policy on the cluster.
         /// </summary>
         [Output("enableNetworkPolicy")]
@@ -241,12 +235,6 @@ namespace Pulumi.Rancher2
         public Input<string>? DefaultPodSecurityAdmissionConfigurationTemplateName { get; set; }
 
         /// <summary>
-        /// Default pod security policy template name specifies the default PSP for the cluster. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies).
-        /// </summary>
-        [Input("defaultPodSecurityPolicyTemplateName")]
-        public Input<string>? DefaultPodSecurityPolicyTemplateName { get; set; }
-
-        /// <summary>
         /// Enable k8s network policy on the cluster.
         /// </summary>
         [Input("enableNetworkPolicy")]
@@ -389,12 +377,6 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("defaultPodSecurityAdmissionConfigurationTemplateName")]
         public Input<string>? DefaultPodSecurityAdmissionConfigurationTemplateName { get; set; }
-
-        /// <summary>
-        /// Default pod security policy template name specifies the default PSP for the cluster. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies).
-        /// </summary>
-        [Input("defaultPodSecurityPolicyTemplateName")]
-        public Input<string>? DefaultPodSecurityPolicyTemplateName { get; set; }
 
         /// <summary>
         /// Enable k8s network policy on the cluster.

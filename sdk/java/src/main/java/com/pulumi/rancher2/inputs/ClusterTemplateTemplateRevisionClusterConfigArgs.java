@@ -65,21 +65,6 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
     }
 
     /**
-     * Default pod security policy template ID
-     * 
-     */
-    @Import(name="defaultPodSecurityPolicyTemplateId")
-    private @Nullable Output<String> defaultPodSecurityPolicyTemplateId;
-
-    /**
-     * @return Default pod security policy template ID
-     * 
-     */
-    public Optional<Output<String>> defaultPodSecurityPolicyTemplateId() {
-        return Optional.ofNullable(this.defaultPodSecurityPolicyTemplateId);
-    }
-
-    /**
      * Desired agent image
      * 
      */
@@ -122,36 +107,6 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
      */
     public Optional<Output<String>> dockerRootDir() {
         return Optional.ofNullable(this.dockerRootDir);
-    }
-
-    /**
-     * Enable built-in cluster alerting
-     * 
-     */
-    @Import(name="enableClusterAlerting")
-    private @Nullable Output<Boolean> enableClusterAlerting;
-
-    /**
-     * @return Enable built-in cluster alerting
-     * 
-     */
-    public Optional<Output<Boolean>> enableClusterAlerting() {
-        return Optional.ofNullable(this.enableClusterAlerting);
-    }
-
-    /**
-     * Enable built-in cluster monitoring
-     * 
-     */
-    @Import(name="enableClusterMonitoring")
-    private @Nullable Output<Boolean> enableClusterMonitoring;
-
-    /**
-     * @return Enable built-in cluster monitoring
-     * 
-     */
-    public Optional<Output<Boolean>> enableClusterMonitoring() {
-        return Optional.ofNullable(this.enableClusterMonitoring);
     }
 
     /**
@@ -205,12 +160,9 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
         this.clusterAuthEndpoint = $.clusterAuthEndpoint;
         this.defaultClusterRoleForProjectMembers = $.defaultClusterRoleForProjectMembers;
         this.defaultPodSecurityAdmissionConfigurationTemplateName = $.defaultPodSecurityAdmissionConfigurationTemplateName;
-        this.defaultPodSecurityPolicyTemplateId = $.defaultPodSecurityPolicyTemplateId;
         this.desiredAgentImage = $.desiredAgentImage;
         this.desiredAuthImage = $.desiredAuthImage;
         this.dockerRootDir = $.dockerRootDir;
-        this.enableClusterAlerting = $.enableClusterAlerting;
-        this.enableClusterMonitoring = $.enableClusterMonitoring;
         this.enableNetworkPolicy = $.enableNetworkPolicy;
         this.rkeConfig = $.rkeConfig;
         this.windowsPreferedCluster = $.windowsPreferedCluster;
@@ -298,27 +250,6 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
         }
 
         /**
-         * @param defaultPodSecurityPolicyTemplateId Default pod security policy template ID
-         * 
-         * @return builder
-         * 
-         */
-        public Builder defaultPodSecurityPolicyTemplateId(@Nullable Output<String> defaultPodSecurityPolicyTemplateId) {
-            $.defaultPodSecurityPolicyTemplateId = defaultPodSecurityPolicyTemplateId;
-            return this;
-        }
-
-        /**
-         * @param defaultPodSecurityPolicyTemplateId Default pod security policy template ID
-         * 
-         * @return builder
-         * 
-         */
-        public Builder defaultPodSecurityPolicyTemplateId(String defaultPodSecurityPolicyTemplateId) {
-            return defaultPodSecurityPolicyTemplateId(Output.of(defaultPodSecurityPolicyTemplateId));
-        }
-
-        /**
          * @param desiredAgentImage Desired agent image
          * 
          * @return builder
@@ -379,48 +310,6 @@ public final class ClusterTemplateTemplateRevisionClusterConfigArgs extends com.
          */
         public Builder dockerRootDir(String dockerRootDir) {
             return dockerRootDir(Output.of(dockerRootDir));
-        }
-
-        /**
-         * @param enableClusterAlerting Enable built-in cluster alerting
-         * 
-         * @return builder
-         * 
-         */
-        public Builder enableClusterAlerting(@Nullable Output<Boolean> enableClusterAlerting) {
-            $.enableClusterAlerting = enableClusterAlerting;
-            return this;
-        }
-
-        /**
-         * @param enableClusterAlerting Enable built-in cluster alerting
-         * 
-         * @return builder
-         * 
-         */
-        public Builder enableClusterAlerting(Boolean enableClusterAlerting) {
-            return enableClusterAlerting(Output.of(enableClusterAlerting));
-        }
-
-        /**
-         * @param enableClusterMonitoring Enable built-in cluster monitoring
-         * 
-         * @return builder
-         * 
-         */
-        public Builder enableClusterMonitoring(@Nullable Output<Boolean> enableClusterMonitoring) {
-            $.enableClusterMonitoring = enableClusterMonitoring;
-            return this;
-        }
-
-        /**
-         * @param enableClusterMonitoring Enable built-in cluster monitoring
-         * 
-         * @return builder
-         * 
-         */
-        public Builder enableClusterMonitoring(Boolean enableClusterMonitoring) {
-            return enableClusterMonitoring(Output.of(enableClusterMonitoring));
         }
 
         /**

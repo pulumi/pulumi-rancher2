@@ -83,10 +83,6 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// (Computed) Enable built-in project monitoring. Default `false` (bool)
-        /// </summary>
-        public readonly bool EnableProjectMonitoring;
-        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -95,10 +91,6 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
-        /// <summary>
-        /// (Computed) Default Pod Security Policy ID for the project (string)
-        /// </summary>
-        public readonly string PodSecurityPolicyTemplateId;
         /// <summary>
         /// (Computed) Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
         /// </summary>
@@ -118,15 +110,11 @@ namespace Pulumi.Rancher2
 
             string description,
 
-            bool enableProjectMonitoring,
-
             string id,
 
             ImmutableDictionary<string, string> labels,
 
             string name,
-
-            string podSecurityPolicyTemplateId,
 
             Outputs.GetProjectResourceQuotaResult resourceQuota,
 
@@ -136,11 +124,9 @@ namespace Pulumi.Rancher2
             ClusterId = clusterId;
             ContainerResourceLimit = containerResourceLimit;
             Description = description;
-            EnableProjectMonitoring = enableProjectMonitoring;
             Id = id;
             Labels = labels;
             Name = name;
-            PodSecurityPolicyTemplateId = podSecurityPolicyTemplateId;
             ResourceQuota = resourceQuota;
             Uuid = uuid;
         }

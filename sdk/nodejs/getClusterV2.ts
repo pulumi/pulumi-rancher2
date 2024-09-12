@@ -74,10 +74,6 @@ export interface GetClusterV2Result {
      */
     readonly defaultPodSecurityAdmissionConfigurationTemplateName: string;
     /**
-     * (Computed) Cluster V2 default pod security policy template name (string)
-     */
-    readonly defaultPodSecurityPolicyTemplateName: string;
-    /**
      * (Computed) Enable k8s network policy at Cluster V2 (bool)
      */
     readonly enableNetworkPolicy: boolean;

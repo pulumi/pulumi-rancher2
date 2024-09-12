@@ -18,9 +18,13 @@ class CatalogV2Args:
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  ca_bundle: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 exponential_backoff_max_retries: Optional[pulumi.Input[int]] = None,
+                 exponential_backoff_max_wait: Optional[pulumi.Input[int]] = None,
+                 exponential_backoff_min_wait: Optional[pulumi.Input[int]] = None,
                  git_branch: Optional[pulumi.Input[str]] = None,
                  git_repo: Optional[pulumi.Input[str]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
+                 insecure_plain_http: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  secret_name: Optional[pulumi.Input[str]] = None,
@@ -34,9 +38,13 @@ class CatalogV2Args:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for the catalog v2 (map)
         :param pulumi.Input[str] ca_bundle: CA certificate in base64-encoded DER format which will be used to validate the repo's certificate (string)
         :param pulumi.Input[bool] enabled: If disabled the repo clone will not be updated or allowed to be installed from. Default: `true` (bool)
+        :param pulumi.Input[int] exponential_backoff_max_retries: Maximum number of retries before returning error
+        :param pulumi.Input[int] exponential_backoff_max_wait: Maximum amount of seconds to wait before retrying
+        :param pulumi.Input[int] exponential_backoff_min_wait: Minimum amount of seconds to wait before retrying
         :param pulumi.Input[str] git_branch: Git Repository branch containing Helm chart definitions. Default `master` (string)
         :param pulumi.Input[str] git_repo: The url of the catalog v2 repo. Conflicts with `url` (string)
         :param pulumi.Input[bool] insecure: Use insecure HTTPS to download the repo's index. Default: `false` (bool)
+        :param pulumi.Input[bool] insecure_plain_http: Only valid for OCI URL's. Allows insecure connections to registries without enforcing TLS checks
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the catalog v2 (map)
         :param pulumi.Input[str] name: The name of the catalog v2 (string)
         :param pulumi.Input[str] secret_name: K8s secret name to be used to connect to the repo (string)
@@ -52,12 +60,20 @@ class CatalogV2Args:
             pulumi.set(__self__, "ca_bundle", ca_bundle)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if exponential_backoff_max_retries is not None:
+            pulumi.set(__self__, "exponential_backoff_max_retries", exponential_backoff_max_retries)
+        if exponential_backoff_max_wait is not None:
+            pulumi.set(__self__, "exponential_backoff_max_wait", exponential_backoff_max_wait)
+        if exponential_backoff_min_wait is not None:
+            pulumi.set(__self__, "exponential_backoff_min_wait", exponential_backoff_min_wait)
         if git_branch is not None:
             pulumi.set(__self__, "git_branch", git_branch)
         if git_repo is not None:
             pulumi.set(__self__, "git_repo", git_repo)
         if insecure is not None:
             pulumi.set(__self__, "insecure", insecure)
+        if insecure_plain_http is not None:
+            pulumi.set(__self__, "insecure_plain_http", insecure_plain_http)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -122,6 +138,42 @@ class CatalogV2Args:
         pulumi.set(self, "enabled", value)
 
     @property
+    @pulumi.getter(name="exponentialBackoffMaxRetries")
+    def exponential_backoff_max_retries(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of retries before returning error
+        """
+        return pulumi.get(self, "exponential_backoff_max_retries")
+
+    @exponential_backoff_max_retries.setter
+    def exponential_backoff_max_retries(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "exponential_backoff_max_retries", value)
+
+    @property
+    @pulumi.getter(name="exponentialBackoffMaxWait")
+    def exponential_backoff_max_wait(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum amount of seconds to wait before retrying
+        """
+        return pulumi.get(self, "exponential_backoff_max_wait")
+
+    @exponential_backoff_max_wait.setter
+    def exponential_backoff_max_wait(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "exponential_backoff_max_wait", value)
+
+    @property
+    @pulumi.getter(name="exponentialBackoffMinWait")
+    def exponential_backoff_min_wait(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum amount of seconds to wait before retrying
+        """
+        return pulumi.get(self, "exponential_backoff_min_wait")
+
+    @exponential_backoff_min_wait.setter
+    def exponential_backoff_min_wait(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "exponential_backoff_min_wait", value)
+
+    @property
     @pulumi.getter(name="gitBranch")
     def git_branch(self) -> Optional[pulumi.Input[str]]:
         """
@@ -156,6 +208,18 @@ class CatalogV2Args:
     @insecure.setter
     def insecure(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "insecure", value)
+
+    @property
+    @pulumi.getter(name="insecurePlainHttp")
+    def insecure_plain_http(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Only valid for OCI URL's. Allows insecure connections to registries without enforcing TLS checks
+        """
+        return pulumi.get(self, "insecure_plain_http")
+
+    @insecure_plain_http.setter
+    def insecure_plain_http(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "insecure_plain_http", value)
 
     @property
     @pulumi.getter
@@ -249,9 +313,13 @@ class _CatalogV2State:
                  ca_bundle: Optional[pulumi.Input[str]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 exponential_backoff_max_retries: Optional[pulumi.Input[int]] = None,
+                 exponential_backoff_max_wait: Optional[pulumi.Input[int]] = None,
+                 exponential_backoff_min_wait: Optional[pulumi.Input[int]] = None,
                  git_branch: Optional[pulumi.Input[str]] = None,
                  git_repo: Optional[pulumi.Input[str]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
+                 insecure_plain_http: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_version: Optional[pulumi.Input[str]] = None,
@@ -266,9 +334,13 @@ class _CatalogV2State:
         :param pulumi.Input[str] ca_bundle: CA certificate in base64-encoded DER format which will be used to validate the repo's certificate (string)
         :param pulumi.Input[str] cluster_id: The cluster id of the catalog V2 (string)
         :param pulumi.Input[bool] enabled: If disabled the repo clone will not be updated or allowed to be installed from. Default: `true` (bool)
+        :param pulumi.Input[int] exponential_backoff_max_retries: Maximum number of retries before returning error
+        :param pulumi.Input[int] exponential_backoff_max_wait: Maximum amount of seconds to wait before retrying
+        :param pulumi.Input[int] exponential_backoff_min_wait: Minimum amount of seconds to wait before retrying
         :param pulumi.Input[str] git_branch: Git Repository branch containing Helm chart definitions. Default `master` (string)
         :param pulumi.Input[str] git_repo: The url of the catalog v2 repo. Conflicts with `url` (string)
         :param pulumi.Input[bool] insecure: Use insecure HTTPS to download the repo's index. Default: `false` (bool)
+        :param pulumi.Input[bool] insecure_plain_http: Only valid for OCI URL's. Allows insecure connections to registries without enforcing TLS checks
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the catalog v2 (map)
         :param pulumi.Input[str] name: The name of the catalog v2 (string)
         :param pulumi.Input[str] resource_version: (Computed) The k8s resource version (string)
@@ -286,12 +358,20 @@ class _CatalogV2State:
             pulumi.set(__self__, "cluster_id", cluster_id)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if exponential_backoff_max_retries is not None:
+            pulumi.set(__self__, "exponential_backoff_max_retries", exponential_backoff_max_retries)
+        if exponential_backoff_max_wait is not None:
+            pulumi.set(__self__, "exponential_backoff_max_wait", exponential_backoff_max_wait)
+        if exponential_backoff_min_wait is not None:
+            pulumi.set(__self__, "exponential_backoff_min_wait", exponential_backoff_min_wait)
         if git_branch is not None:
             pulumi.set(__self__, "git_branch", git_branch)
         if git_repo is not None:
             pulumi.set(__self__, "git_repo", git_repo)
         if insecure is not None:
             pulumi.set(__self__, "insecure", insecure)
+        if insecure_plain_http is not None:
+            pulumi.set(__self__, "insecure_plain_http", insecure_plain_http)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -358,6 +438,42 @@ class _CatalogV2State:
         pulumi.set(self, "enabled", value)
 
     @property
+    @pulumi.getter(name="exponentialBackoffMaxRetries")
+    def exponential_backoff_max_retries(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of retries before returning error
+        """
+        return pulumi.get(self, "exponential_backoff_max_retries")
+
+    @exponential_backoff_max_retries.setter
+    def exponential_backoff_max_retries(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "exponential_backoff_max_retries", value)
+
+    @property
+    @pulumi.getter(name="exponentialBackoffMaxWait")
+    def exponential_backoff_max_wait(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum amount of seconds to wait before retrying
+        """
+        return pulumi.get(self, "exponential_backoff_max_wait")
+
+    @exponential_backoff_max_wait.setter
+    def exponential_backoff_max_wait(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "exponential_backoff_max_wait", value)
+
+    @property
+    @pulumi.getter(name="exponentialBackoffMinWait")
+    def exponential_backoff_min_wait(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum amount of seconds to wait before retrying
+        """
+        return pulumi.get(self, "exponential_backoff_min_wait")
+
+    @exponential_backoff_min_wait.setter
+    def exponential_backoff_min_wait(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "exponential_backoff_min_wait", value)
+
+    @property
     @pulumi.getter(name="gitBranch")
     def git_branch(self) -> Optional[pulumi.Input[str]]:
         """
@@ -392,6 +508,18 @@ class _CatalogV2State:
     @insecure.setter
     def insecure(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "insecure", value)
+
+    @property
+    @pulumi.getter(name="insecurePlainHttp")
+    def insecure_plain_http(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Only valid for OCI URL's. Allows insecure connections to registries without enforcing TLS checks
+        """
+        return pulumi.get(self, "insecure_plain_http")
+
+    @insecure_plain_http.setter
+    def insecure_plain_http(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "insecure_plain_http", value)
 
     @property
     @pulumi.getter
@@ -499,9 +627,13 @@ class CatalogV2(pulumi.CustomResource):
                  ca_bundle: Optional[pulumi.Input[str]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 exponential_backoff_max_retries: Optional[pulumi.Input[int]] = None,
+                 exponential_backoff_max_wait: Optional[pulumi.Input[int]] = None,
+                 exponential_backoff_min_wait: Optional[pulumi.Input[int]] = None,
                  git_branch: Optional[pulumi.Input[str]] = None,
                  git_repo: Optional[pulumi.Input[str]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
+                 insecure_plain_http: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  secret_name: Optional[pulumi.Input[str]] = None,
@@ -527,9 +659,13 @@ class CatalogV2(pulumi.CustomResource):
         :param pulumi.Input[str] ca_bundle: CA certificate in base64-encoded DER format which will be used to validate the repo's certificate (string)
         :param pulumi.Input[str] cluster_id: The cluster id of the catalog V2 (string)
         :param pulumi.Input[bool] enabled: If disabled the repo clone will not be updated or allowed to be installed from. Default: `true` (bool)
+        :param pulumi.Input[int] exponential_backoff_max_retries: Maximum number of retries before returning error
+        :param pulumi.Input[int] exponential_backoff_max_wait: Maximum amount of seconds to wait before retrying
+        :param pulumi.Input[int] exponential_backoff_min_wait: Minimum amount of seconds to wait before retrying
         :param pulumi.Input[str] git_branch: Git Repository branch containing Helm chart definitions. Default `master` (string)
         :param pulumi.Input[str] git_repo: The url of the catalog v2 repo. Conflicts with `url` (string)
         :param pulumi.Input[bool] insecure: Use insecure HTTPS to download the repo's index. Default: `false` (bool)
+        :param pulumi.Input[bool] insecure_plain_http: Only valid for OCI URL's. Allows insecure connections to registries without enforcing TLS checks
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the catalog v2 (map)
         :param pulumi.Input[str] name: The name of the catalog v2 (string)
         :param pulumi.Input[str] secret_name: K8s secret name to be used to connect to the repo (string)
@@ -574,9 +710,13 @@ class CatalogV2(pulumi.CustomResource):
                  ca_bundle: Optional[pulumi.Input[str]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 exponential_backoff_max_retries: Optional[pulumi.Input[int]] = None,
+                 exponential_backoff_max_wait: Optional[pulumi.Input[int]] = None,
+                 exponential_backoff_min_wait: Optional[pulumi.Input[int]] = None,
                  git_branch: Optional[pulumi.Input[str]] = None,
                  git_repo: Optional[pulumi.Input[str]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
+                 insecure_plain_http: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  secret_name: Optional[pulumi.Input[str]] = None,
@@ -599,9 +739,13 @@ class CatalogV2(pulumi.CustomResource):
                 raise TypeError("Missing required property 'cluster_id'")
             __props__.__dict__["cluster_id"] = cluster_id
             __props__.__dict__["enabled"] = enabled
+            __props__.__dict__["exponential_backoff_max_retries"] = exponential_backoff_max_retries
+            __props__.__dict__["exponential_backoff_max_wait"] = exponential_backoff_max_wait
+            __props__.__dict__["exponential_backoff_min_wait"] = exponential_backoff_min_wait
             __props__.__dict__["git_branch"] = git_branch
             __props__.__dict__["git_repo"] = git_repo
             __props__.__dict__["insecure"] = insecure
+            __props__.__dict__["insecure_plain_http"] = insecure_plain_http
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["secret_name"] = secret_name
@@ -624,9 +768,13 @@ class CatalogV2(pulumi.CustomResource):
             ca_bundle: Optional[pulumi.Input[str]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
+            exponential_backoff_max_retries: Optional[pulumi.Input[int]] = None,
+            exponential_backoff_max_wait: Optional[pulumi.Input[int]] = None,
+            exponential_backoff_min_wait: Optional[pulumi.Input[int]] = None,
             git_branch: Optional[pulumi.Input[str]] = None,
             git_repo: Optional[pulumi.Input[str]] = None,
             insecure: Optional[pulumi.Input[bool]] = None,
+            insecure_plain_http: Optional[pulumi.Input[bool]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             resource_version: Optional[pulumi.Input[str]] = None,
@@ -646,9 +794,13 @@ class CatalogV2(pulumi.CustomResource):
         :param pulumi.Input[str] ca_bundle: CA certificate in base64-encoded DER format which will be used to validate the repo's certificate (string)
         :param pulumi.Input[str] cluster_id: The cluster id of the catalog V2 (string)
         :param pulumi.Input[bool] enabled: If disabled the repo clone will not be updated or allowed to be installed from. Default: `true` (bool)
+        :param pulumi.Input[int] exponential_backoff_max_retries: Maximum number of retries before returning error
+        :param pulumi.Input[int] exponential_backoff_max_wait: Maximum amount of seconds to wait before retrying
+        :param pulumi.Input[int] exponential_backoff_min_wait: Minimum amount of seconds to wait before retrying
         :param pulumi.Input[str] git_branch: Git Repository branch containing Helm chart definitions. Default `master` (string)
         :param pulumi.Input[str] git_repo: The url of the catalog v2 repo. Conflicts with `url` (string)
         :param pulumi.Input[bool] insecure: Use insecure HTTPS to download the repo's index. Default: `false` (bool)
+        :param pulumi.Input[bool] insecure_plain_http: Only valid for OCI URL's. Allows insecure connections to registries without enforcing TLS checks
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the catalog v2 (map)
         :param pulumi.Input[str] name: The name of the catalog v2 (string)
         :param pulumi.Input[str] resource_version: (Computed) The k8s resource version (string)
@@ -666,9 +818,13 @@ class CatalogV2(pulumi.CustomResource):
         __props__.__dict__["ca_bundle"] = ca_bundle
         __props__.__dict__["cluster_id"] = cluster_id
         __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["exponential_backoff_max_retries"] = exponential_backoff_max_retries
+        __props__.__dict__["exponential_backoff_max_wait"] = exponential_backoff_max_wait
+        __props__.__dict__["exponential_backoff_min_wait"] = exponential_backoff_min_wait
         __props__.__dict__["git_branch"] = git_branch
         __props__.__dict__["git_repo"] = git_repo
         __props__.__dict__["insecure"] = insecure
+        __props__.__dict__["insecure_plain_http"] = insecure_plain_http
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["resource_version"] = resource_version
@@ -712,6 +868,30 @@ class CatalogV2(pulumi.CustomResource):
         return pulumi.get(self, "enabled")
 
     @property
+    @pulumi.getter(name="exponentialBackoffMaxRetries")
+    def exponential_backoff_max_retries(self) -> pulumi.Output[int]:
+        """
+        Maximum number of retries before returning error
+        """
+        return pulumi.get(self, "exponential_backoff_max_retries")
+
+    @property
+    @pulumi.getter(name="exponentialBackoffMaxWait")
+    def exponential_backoff_max_wait(self) -> pulumi.Output[int]:
+        """
+        Maximum amount of seconds to wait before retrying
+        """
+        return pulumi.get(self, "exponential_backoff_max_wait")
+
+    @property
+    @pulumi.getter(name="exponentialBackoffMinWait")
+    def exponential_backoff_min_wait(self) -> pulumi.Output[int]:
+        """
+        Minimum amount of seconds to wait before retrying
+        """
+        return pulumi.get(self, "exponential_backoff_min_wait")
+
+    @property
     @pulumi.getter(name="gitBranch")
     def git_branch(self) -> pulumi.Output[str]:
         """
@@ -734,6 +914,14 @@ class CatalogV2(pulumi.CustomResource):
         Use insecure HTTPS to download the repo's index. Default: `false` (bool)
         """
         return pulumi.get(self, "insecure")
+
+    @property
+    @pulumi.getter(name="insecurePlainHttp")
+    def insecure_plain_http(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Only valid for OCI URL's. Allows insecure connections to registries without enforcing TLS checks
+        """
+        return pulumi.get(self, "insecure_plain_http")
 
     @property
     @pulumi.getter

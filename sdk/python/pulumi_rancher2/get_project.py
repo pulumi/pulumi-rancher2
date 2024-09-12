@@ -22,7 +22,7 @@ class GetProjectResult:
     """
     A collection of values returned by getProject.
     """
-    def __init__(__self__, annotations=None, cluster_id=None, container_resource_limit=None, description=None, enable_project_monitoring=None, id=None, labels=None, name=None, pod_security_policy_template_id=None, resource_quota=None, uuid=None):
+    def __init__(__self__, annotations=None, cluster_id=None, container_resource_limit=None, description=None, id=None, labels=None, name=None, resource_quota=None, uuid=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -35,9 +35,6 @@ class GetProjectResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
-        if enable_project_monitoring and not isinstance(enable_project_monitoring, bool):
-            raise TypeError("Expected argument 'enable_project_monitoring' to be a bool")
-        pulumi.set(__self__, "enable_project_monitoring", enable_project_monitoring)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -47,9 +44,6 @@ class GetProjectResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
-        if pod_security_policy_template_id and not isinstance(pod_security_policy_template_id, str):
-            raise TypeError("Expected argument 'pod_security_policy_template_id' to be a str")
-        pulumi.set(__self__, "pod_security_policy_template_id", pod_security_policy_template_id)
         if resource_quota and not isinstance(resource_quota, dict):
             raise TypeError("Expected argument 'resource_quota' to be a dict")
         pulumi.set(__self__, "resource_quota", resource_quota)
@@ -87,14 +81,6 @@ class GetProjectResult:
         return pulumi.get(self, "description")
 
     @property
-    @pulumi.getter(name="enableProjectMonitoring")
-    def enable_project_monitoring(self) -> bool:
-        """
-        (Computed) Enable built-in project monitoring. Default `false` (bool)
-        """
-        return pulumi.get(self, "enable_project_monitoring")
-
-    @property
     @pulumi.getter
     def id(self) -> str:
         """
@@ -114,14 +100,6 @@ class GetProjectResult:
     @pulumi.getter
     def name(self) -> str:
         return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter(name="podSecurityPolicyTemplateId")
-    def pod_security_policy_template_id(self) -> str:
-        """
-        (Computed) Default Pod Security Policy ID for the project (string)
-        """
-        return pulumi.get(self, "pod_security_policy_template_id")
 
     @property
     @pulumi.getter(name="resourceQuota")
@@ -150,11 +128,9 @@ class AwaitableGetProjectResult(GetProjectResult):
             cluster_id=self.cluster_id,
             container_resource_limit=self.container_resource_limit,
             description=self.description,
-            enable_project_monitoring=self.enable_project_monitoring,
             id=self.id,
             labels=self.labels,
             name=self.name,
-            pod_security_policy_template_id=self.pod_security_policy_template_id,
             resource_quota=self.resource_quota,
             uuid=self.uuid)
 
@@ -180,11 +156,9 @@ def get_project(cluster_id: Optional[str] = None,
         cluster_id=pulumi.get(__ret__, 'cluster_id'),
         container_resource_limit=pulumi.get(__ret__, 'container_resource_limit'),
         description=pulumi.get(__ret__, 'description'),
-        enable_project_monitoring=pulumi.get(__ret__, 'enable_project_monitoring'),
         id=pulumi.get(__ret__, 'id'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
-        pod_security_policy_template_id=pulumi.get(__ret__, 'pod_security_policy_template_id'),
         resource_quota=pulumi.get(__ret__, 'resource_quota'),
         uuid=pulumi.get(__ret__, 'uuid'))
 

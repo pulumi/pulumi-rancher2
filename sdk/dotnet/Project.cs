@@ -62,7 +62,7 @@ namespace Pulumi.Rancher2
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Create a new rancher2 Project enabling and customizing monitoring
+    ///     // Create a new rancher2 Project
     ///     var foo = new Rancher2.Project("foo", new()
     ///     {
     ///         Name = "foo",
@@ -88,31 +88,6 @@ namespace Pulumi.Rancher2
     ///             LimitsMemory = "20Mi",
     ///             RequestsCpu = "1m",
     ///             RequestsMemory = "1Mi",
-    ///         },
-    ///         EnableProjectMonitoring = true,
-    ///         ProjectMonitoringInput = new Rancher2.Inputs.ProjectProjectMonitoringInputArgs
-    ///         {
-    ///             Answers = 
-    ///             {
-    ///                 { "exporter-kubelets.https", "true" },
-    ///                 { "exporter-node.enabled", "true" },
-    ///                 { "exporter-node.ports.metrics.port", "9796" },
-    ///                 { "exporter-node.resources.limits.cpu", "200m" },
-    ///                 { "exporter-node.resources.limits.memory", "200Mi" },
-    ///                 { "grafana.persistence.enabled", "false" },
-    ///                 { "grafana.persistence.size", "10Gi" },
-    ///                 { "grafana.persistence.storageClass", "default" },
-    ///                 { "operator.resources.limits.memory", "500Mi" },
-    ///                 { "prometheus.persistence.enabled", "false" },
-    ///                 { "prometheus.persistence.size", "50Gi" },
-    ///                 { "prometheus.persistence.storageClass", "default" },
-    ///                 { "prometheus.persistent.useReleaseName", "true" },
-    ///                 { "prometheus.resources.core.limits.cpu", "1000m" },
-    ///                 { "prometheus.resources.core.limits.memory", "1500Mi" },
-    ///                 { "prometheus.resources.core.requests.cpu", "750m" },
-    ///                 { "prometheus.resources.core.requests.memory", "750Mi" },
-    ///                 { "prometheus.retention", "12h" },
-    ///             },
     ///         },
     ///     });
     /// 
@@ -155,12 +130,6 @@ namespace Pulumi.Rancher2
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Enable built-in project monitoring. Default `false` (bool)
-        /// </summary>
-        [Output("enableProjectMonitoring")]
-        public Output<bool?> EnableProjectMonitoring { get; private set; } = null!;
-
-        /// <summary>
         /// Labels for Node Pool object (map)
         /// </summary>
         [Output("labels")]
@@ -171,18 +140,6 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
-
-        /// <summary>
-        /// Default Pod Security Policy ID for the project (string)
-        /// </summary>
-        [Output("podSecurityPolicyTemplateId")]
-        public Output<string?> PodSecurityPolicyTemplateId { get; private set; } = null!;
-
-        /// <summary>
-        /// Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
-        /// </summary>
-        [Output("projectMonitoringInput")]
-        public Output<Outputs.ProjectProjectMonitoringInput?> ProjectMonitoringInput { get; private set; } = null!;
 
         /// <summary>
         /// Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
@@ -272,12 +229,6 @@ namespace Pulumi.Rancher2
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// Enable built-in project monitoring. Default `false` (bool)
-        /// </summary>
-        [Input("enableProjectMonitoring")]
-        public Input<bool>? EnableProjectMonitoring { get; set; }
-
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -295,18 +246,6 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// Default Pod Security Policy ID for the project (string)
-        /// </summary>
-        [Input("podSecurityPolicyTemplateId")]
-        public Input<string>? PodSecurityPolicyTemplateId { get; set; }
-
-        /// <summary>
-        /// Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
-        /// </summary>
-        [Input("projectMonitoringInput")]
-        public Input<Inputs.ProjectProjectMonitoringInputArgs>? ProjectMonitoringInput { get; set; }
 
         /// <summary>
         /// Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
@@ -358,12 +297,6 @@ namespace Pulumi.Rancher2
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// Enable built-in project monitoring. Default `false` (bool)
-        /// </summary>
-        [Input("enableProjectMonitoring")]
-        public Input<bool>? EnableProjectMonitoring { get; set; }
-
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -381,18 +314,6 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// Default Pod Security Policy ID for the project (string)
-        /// </summary>
-        [Input("podSecurityPolicyTemplateId")]
-        public Input<string>? PodSecurityPolicyTemplateId { get; set; }
-
-        /// <summary>
-        /// Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
-        /// </summary>
-        [Input("projectMonitoringInput")]
-        public Input<Inputs.ProjectProjectMonitoringInputGetArgs>? ProjectMonitoringInput { get; set; }
 
         /// <summary>
         /// Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)

@@ -79,12 +79,6 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? Image { get; set; }
 
         /// <summary>
-        /// Pod Security Policy option for kube API service. Default `false` (bool)
-        /// </summary>
-        [Input("podSecurityPolicy")]
-        public Input<bool>? PodSecurityPolicy { get; set; }
-
-        /// <summary>
         /// [Encrypt k8s secret data configration](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/). (list maxitem: 1)
         /// </summary>
         [Input("secretsEncryptionConfig")]

@@ -22,7 +22,7 @@ class GetClusterV2Result:
     """
     A collection of values returned by getClusterV2.
     """
-    def __init__(__self__, agent_env_vars=None, annotations=None, cloud_credential_secret_name=None, cluster_registration_token=None, cluster_v1_id=None, default_cluster_role_for_project_members=None, default_pod_security_admission_configuration_template_name=None, default_pod_security_policy_template_name=None, enable_network_policy=None, fleet_namespace=None, id=None, kube_config=None, kubernetes_version=None, labels=None, name=None, resource_version=None, rke_config=None):
+    def __init__(__self__, agent_env_vars=None, annotations=None, cloud_credential_secret_name=None, cluster_registration_token=None, cluster_v1_id=None, default_cluster_role_for_project_members=None, default_pod_security_admission_configuration_template_name=None, enable_network_policy=None, fleet_namespace=None, id=None, kube_config=None, kubernetes_version=None, labels=None, name=None, resource_version=None, rke_config=None):
         if agent_env_vars and not isinstance(agent_env_vars, list):
             raise TypeError("Expected argument 'agent_env_vars' to be a list")
         pulumi.set(__self__, "agent_env_vars", agent_env_vars)
@@ -44,9 +44,6 @@ class GetClusterV2Result:
         if default_pod_security_admission_configuration_template_name and not isinstance(default_pod_security_admission_configuration_template_name, str):
             raise TypeError("Expected argument 'default_pod_security_admission_configuration_template_name' to be a str")
         pulumi.set(__self__, "default_pod_security_admission_configuration_template_name", default_pod_security_admission_configuration_template_name)
-        if default_pod_security_policy_template_name and not isinstance(default_pod_security_policy_template_name, str):
-            raise TypeError("Expected argument 'default_pod_security_policy_template_name' to be a str")
-        pulumi.set(__self__, "default_pod_security_policy_template_name", default_pod_security_policy_template_name)
         if enable_network_policy and not isinstance(enable_network_policy, bool):
             raise TypeError("Expected argument 'enable_network_policy' to be a bool")
         pulumi.set(__self__, "enable_network_policy", enable_network_policy)
@@ -129,14 +126,6 @@ class GetClusterV2Result:
         return pulumi.get(self, "default_pod_security_admission_configuration_template_name")
 
     @property
-    @pulumi.getter(name="defaultPodSecurityPolicyTemplateName")
-    def default_pod_security_policy_template_name(self) -> str:
-        """
-        (Computed) Cluster V2 default pod security policy template name (string)
-        """
-        return pulumi.get(self, "default_pod_security_policy_template_name")
-
-    @property
     @pulumi.getter(name="enableNetworkPolicy")
     def enable_network_policy(self) -> bool:
         """
@@ -213,7 +202,6 @@ class AwaitableGetClusterV2Result(GetClusterV2Result):
             cluster_v1_id=self.cluster_v1_id,
             default_cluster_role_for_project_members=self.default_cluster_role_for_project_members,
             default_pod_security_admission_configuration_template_name=self.default_pod_security_admission_configuration_template_name,
-            default_pod_security_policy_template_name=self.default_pod_security_policy_template_name,
             enable_network_policy=self.enable_network_policy,
             fleet_namespace=self.fleet_namespace,
             id=self.id,
@@ -259,7 +247,6 @@ def get_cluster_v2(fleet_namespace: Optional[str] = None,
         cluster_v1_id=pulumi.get(__ret__, 'cluster_v1_id'),
         default_cluster_role_for_project_members=pulumi.get(__ret__, 'default_cluster_role_for_project_members'),
         default_pod_security_admission_configuration_template_name=pulumi.get(__ret__, 'default_pod_security_admission_configuration_template_name'),
-        default_pod_security_policy_template_name=pulumi.get(__ret__, 'default_pod_security_policy_template_name'),
         enable_network_policy=pulumi.get(__ret__, 'enable_network_policy'),
         fleet_namespace=pulumi.get(__ret__, 'fleet_namespace'),
         id=pulumi.get(__ret__, 'id'),

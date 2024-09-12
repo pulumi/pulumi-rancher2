@@ -86,13 +86,6 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
         return Optional.ofNullable(this.image);
     }
 
-    @Import(name="podSecurityPolicy")
-    private @Nullable Output<Boolean> podSecurityPolicy;
-
-    public Optional<Output<Boolean>> podSecurityPolicy() {
-        return Optional.ofNullable(this.podSecurityPolicy);
-    }
-
     @Import(name="secretsEncryptionConfig")
     private @Nullable Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs> secretsEncryptionConfig;
 
@@ -125,7 +118,6 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
         this.extraBinds = $.extraBinds;
         this.extraEnvs = $.extraEnvs;
         this.image = $.image;
-        this.podSecurityPolicy = $.podSecurityPolicy;
         this.secretsEncryptionConfig = $.secretsEncryptionConfig;
         this.serviceClusterIpRange = $.serviceClusterIpRange;
         this.serviceNodePortRange = $.serviceNodePortRange;
@@ -239,15 +231,6 @@ public final class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServices
 
         public Builder image(String image) {
             return image(Output.of(image));
-        }
-
-        public Builder podSecurityPolicy(@Nullable Output<Boolean> podSecurityPolicy) {
-            $.podSecurityPolicy = podSecurityPolicy;
-            return this;
-        }
-
-        public Builder podSecurityPolicy(Boolean podSecurityPolicy) {
-            return podSecurityPolicy(Output.of(podSecurityPolicy));
         }
 
         public Builder secretsEncryptionConfig(@Nullable Output<ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs> secretsEncryptionConfig) {

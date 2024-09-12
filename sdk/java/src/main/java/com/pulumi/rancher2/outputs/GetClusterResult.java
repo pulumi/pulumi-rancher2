@@ -8,7 +8,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterAksConfig;
 import com.pulumi.rancher2.outputs.GetClusterAksConfigV2;
 import com.pulumi.rancher2.outputs.GetClusterClusterAuthEndpoint;
-import com.pulumi.rancher2.outputs.GetClusterClusterMonitoringInput;
 import com.pulumi.rancher2.outputs.GetClusterClusterRegistrationToken;
 import com.pulumi.rancher2.outputs.GetClusterClusterTemplateAnswers;
 import com.pulumi.rancher2.outputs.GetClusterClusterTemplateQuestion;
@@ -59,11 +58,6 @@ public final class GetClusterResult {
      */
     private GetClusterClusterAuthEndpoint clusterAuthEndpoint;
     /**
-     * @return (Computed) Cluster monitoring config (list maxitems:1)
-     * 
-     */
-    private GetClusterClusterMonitoringInput clusterMonitoringInput;
-    /**
      * @return (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
      * 
      */
@@ -90,11 +84,6 @@ public final class GetClusterResult {
     private String clusterTemplateRevisionId;
     private String defaultPodSecurityAdmissionConfigurationTemplateName;
     /**
-     * @return (Optional/Computed) [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
-     * 
-     */
-    private String defaultPodSecurityPolicyTemplateId;
-    /**
      * @return (Computed) Default project ID for the cluster (string)
      * 
      */
@@ -119,12 +108,6 @@ public final class GetClusterResult {
      * 
      */
     private GetClusterEksConfigV2 eksConfigV2;
-    private Boolean enableClusterAlerting;
-    /**
-     * @return (Computed) Enable built-in cluster monitoring. Default `false` (bool)
-     * 
-     */
-    private Boolean enableClusterMonitoring;
     /**
      * @return (Computed) Enable project network isolation. Default `false` (bool)
      * 
@@ -231,13 +214,6 @@ public final class GetClusterResult {
         return this.clusterAuthEndpoint;
     }
     /**
-     * @return (Computed) Cluster monitoring config (list maxitems:1)
-     * 
-     */
-    public GetClusterClusterMonitoringInput clusterMonitoringInput() {
-        return this.clusterMonitoringInput;
-    }
-    /**
      * @return (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
      * 
      */
@@ -276,13 +252,6 @@ public final class GetClusterResult {
         return this.defaultPodSecurityAdmissionConfigurationTemplateName;
     }
     /**
-     * @return (Optional/Computed) [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
-     * 
-     */
-    public String defaultPodSecurityPolicyTemplateId() {
-        return this.defaultPodSecurityPolicyTemplateId;
-    }
-    /**
      * @return (Computed) Default project ID for the cluster (string)
      * 
      */
@@ -316,16 +285,6 @@ public final class GetClusterResult {
      */
     public GetClusterEksConfigV2 eksConfigV2() {
         return this.eksConfigV2;
-    }
-    public Boolean enableClusterAlerting() {
-        return this.enableClusterAlerting;
-    }
-    /**
-     * @return (Computed) Enable built-in cluster monitoring. Default `false` (bool)
-     * 
-     */
-    public Boolean enableClusterMonitoring() {
-        return this.enableClusterMonitoring;
     }
     /**
      * @return (Computed) Enable project network isolation. Default `false` (bool)
@@ -430,21 +389,17 @@ public final class GetClusterResult {
         private Map<String,String> annotations;
         private String caCert;
         private GetClusterClusterAuthEndpoint clusterAuthEndpoint;
-        private GetClusterClusterMonitoringInput clusterMonitoringInput;
         private GetClusterClusterRegistrationToken clusterRegistrationToken;
         private GetClusterClusterTemplateAnswers clusterTemplateAnswers;
         private String clusterTemplateId;
         private List<GetClusterClusterTemplateQuestion> clusterTemplateQuestions;
         private String clusterTemplateRevisionId;
         private String defaultPodSecurityAdmissionConfigurationTemplateName;
-        private String defaultPodSecurityPolicyTemplateId;
         private String defaultProjectId;
         private String description;
         private String driver;
         private GetClusterEksConfig eksConfig;
         private GetClusterEksConfigV2 eksConfigV2;
-        private Boolean enableClusterAlerting;
-        private Boolean enableClusterMonitoring;
         private Boolean enableNetworkPolicy;
         private String fleetWorkspaceName;
         private GetClusterGkeConfig gkeConfig;
@@ -467,21 +422,17 @@ public final class GetClusterResult {
     	      this.annotations = defaults.annotations;
     	      this.caCert = defaults.caCert;
     	      this.clusterAuthEndpoint = defaults.clusterAuthEndpoint;
-    	      this.clusterMonitoringInput = defaults.clusterMonitoringInput;
     	      this.clusterRegistrationToken = defaults.clusterRegistrationToken;
     	      this.clusterTemplateAnswers = defaults.clusterTemplateAnswers;
     	      this.clusterTemplateId = defaults.clusterTemplateId;
     	      this.clusterTemplateQuestions = defaults.clusterTemplateQuestions;
     	      this.clusterTemplateRevisionId = defaults.clusterTemplateRevisionId;
     	      this.defaultPodSecurityAdmissionConfigurationTemplateName = defaults.defaultPodSecurityAdmissionConfigurationTemplateName;
-    	      this.defaultPodSecurityPolicyTemplateId = defaults.defaultPodSecurityPolicyTemplateId;
     	      this.defaultProjectId = defaults.defaultProjectId;
     	      this.description = defaults.description;
     	      this.driver = defaults.driver;
     	      this.eksConfig = defaults.eksConfig;
     	      this.eksConfigV2 = defaults.eksConfigV2;
-    	      this.enableClusterAlerting = defaults.enableClusterAlerting;
-    	      this.enableClusterMonitoring = defaults.enableClusterMonitoring;
     	      this.enableNetworkPolicy = defaults.enableNetworkPolicy;
     	      this.fleetWorkspaceName = defaults.fleetWorkspaceName;
     	      this.gkeConfig = defaults.gkeConfig;
@@ -549,14 +500,6 @@ public final class GetClusterResult {
             return this;
         }
         @CustomType.Setter
-        public Builder clusterMonitoringInput(GetClusterClusterMonitoringInput clusterMonitoringInput) {
-            if (clusterMonitoringInput == null) {
-              throw new MissingRequiredPropertyException("GetClusterResult", "clusterMonitoringInput");
-            }
-            this.clusterMonitoringInput = clusterMonitoringInput;
-            return this;
-        }
-        @CustomType.Setter
         public Builder clusterRegistrationToken(GetClusterClusterRegistrationToken clusterRegistrationToken) {
             if (clusterRegistrationToken == null) {
               throw new MissingRequiredPropertyException("GetClusterResult", "clusterRegistrationToken");
@@ -608,14 +551,6 @@ public final class GetClusterResult {
             return this;
         }
         @CustomType.Setter
-        public Builder defaultPodSecurityPolicyTemplateId(String defaultPodSecurityPolicyTemplateId) {
-            if (defaultPodSecurityPolicyTemplateId == null) {
-              throw new MissingRequiredPropertyException("GetClusterResult", "defaultPodSecurityPolicyTemplateId");
-            }
-            this.defaultPodSecurityPolicyTemplateId = defaultPodSecurityPolicyTemplateId;
-            return this;
-        }
-        @CustomType.Setter
         public Builder defaultProjectId(String defaultProjectId) {
             if (defaultProjectId == null) {
               throw new MissingRequiredPropertyException("GetClusterResult", "defaultProjectId");
@@ -653,22 +588,6 @@ public final class GetClusterResult {
               throw new MissingRequiredPropertyException("GetClusterResult", "eksConfigV2");
             }
             this.eksConfigV2 = eksConfigV2;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder enableClusterAlerting(Boolean enableClusterAlerting) {
-            if (enableClusterAlerting == null) {
-              throw new MissingRequiredPropertyException("GetClusterResult", "enableClusterAlerting");
-            }
-            this.enableClusterAlerting = enableClusterAlerting;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder enableClusterMonitoring(Boolean enableClusterMonitoring) {
-            if (enableClusterMonitoring == null) {
-              throw new MissingRequiredPropertyException("GetClusterResult", "enableClusterMonitoring");
-            }
-            this.enableClusterMonitoring = enableClusterMonitoring;
             return this;
         }
         @CustomType.Setter
@@ -783,21 +702,17 @@ public final class GetClusterResult {
             _resultValue.annotations = annotations;
             _resultValue.caCert = caCert;
             _resultValue.clusterAuthEndpoint = clusterAuthEndpoint;
-            _resultValue.clusterMonitoringInput = clusterMonitoringInput;
             _resultValue.clusterRegistrationToken = clusterRegistrationToken;
             _resultValue.clusterTemplateAnswers = clusterTemplateAnswers;
             _resultValue.clusterTemplateId = clusterTemplateId;
             _resultValue.clusterTemplateQuestions = clusterTemplateQuestions;
             _resultValue.clusterTemplateRevisionId = clusterTemplateRevisionId;
             _resultValue.defaultPodSecurityAdmissionConfigurationTemplateName = defaultPodSecurityAdmissionConfigurationTemplateName;
-            _resultValue.defaultPodSecurityPolicyTemplateId = defaultPodSecurityPolicyTemplateId;
             _resultValue.defaultProjectId = defaultProjectId;
             _resultValue.description = description;
             _resultValue.driver = driver;
             _resultValue.eksConfig = eksConfig;
             _resultValue.eksConfigV2 = eksConfigV2;
-            _resultValue.enableClusterAlerting = enableClusterAlerting;
-            _resultValue.enableClusterMonitoring = enableClusterMonitoring;
             _resultValue.enableNetworkPolicy = enableNetworkPolicy;
             _resultValue.fleetWorkspaceName = fleetWorkspaceName;
             _resultValue.gkeConfig = gkeConfig;

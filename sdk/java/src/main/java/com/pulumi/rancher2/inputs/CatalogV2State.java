@@ -6,6 +6,7 @@ package com.pulumi.rancher2.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -78,6 +79,51 @@ public final class CatalogV2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Maximum number of retries before returning error
+     * 
+     */
+    @Import(name="exponentialBackoffMaxRetries")
+    private @Nullable Output<Integer> exponentialBackoffMaxRetries;
+
+    /**
+     * @return Maximum number of retries before returning error
+     * 
+     */
+    public Optional<Output<Integer>> exponentialBackoffMaxRetries() {
+        return Optional.ofNullable(this.exponentialBackoffMaxRetries);
+    }
+
+    /**
+     * Maximum amount of seconds to wait before retrying
+     * 
+     */
+    @Import(name="exponentialBackoffMaxWait")
+    private @Nullable Output<Integer> exponentialBackoffMaxWait;
+
+    /**
+     * @return Maximum amount of seconds to wait before retrying
+     * 
+     */
+    public Optional<Output<Integer>> exponentialBackoffMaxWait() {
+        return Optional.ofNullable(this.exponentialBackoffMaxWait);
+    }
+
+    /**
+     * Minimum amount of seconds to wait before retrying
+     * 
+     */
+    @Import(name="exponentialBackoffMinWait")
+    private @Nullable Output<Integer> exponentialBackoffMinWait;
+
+    /**
+     * @return Minimum amount of seconds to wait before retrying
+     * 
+     */
+    public Optional<Output<Integer>> exponentialBackoffMinWait() {
+        return Optional.ofNullable(this.exponentialBackoffMinWait);
+    }
+
+    /**
      * Git Repository branch containing Helm chart definitions. Default `master` (string)
      * 
      */
@@ -120,6 +166,21 @@ public final class CatalogV2State extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> insecure() {
         return Optional.ofNullable(this.insecure);
+    }
+
+    /**
+     * Only valid for OCI URL&#39;s. Allows insecure connections to registries without enforcing TLS checks
+     * 
+     */
+    @Import(name="insecurePlainHttp")
+    private @Nullable Output<Boolean> insecurePlainHttp;
+
+    /**
+     * @return Only valid for OCI URL&#39;s. Allows insecure connections to registries without enforcing TLS checks
+     * 
+     */
+    public Optional<Output<Boolean>> insecurePlainHttp() {
+        return Optional.ofNullable(this.insecurePlainHttp);
     }
 
     /**
@@ -249,9 +310,13 @@ public final class CatalogV2State extends com.pulumi.resources.ResourceArgs {
         this.caBundle = $.caBundle;
         this.clusterId = $.clusterId;
         this.enabled = $.enabled;
+        this.exponentialBackoffMaxRetries = $.exponentialBackoffMaxRetries;
+        this.exponentialBackoffMaxWait = $.exponentialBackoffMaxWait;
+        this.exponentialBackoffMinWait = $.exponentialBackoffMinWait;
         this.gitBranch = $.gitBranch;
         this.gitRepo = $.gitRepo;
         this.insecure = $.insecure;
+        this.insecurePlainHttp = $.insecurePlainHttp;
         this.labels = $.labels;
         this.name = $.name;
         this.resourceVersion = $.resourceVersion;
@@ -365,6 +430,69 @@ public final class CatalogV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param exponentialBackoffMaxRetries Maximum number of retries before returning error
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exponentialBackoffMaxRetries(@Nullable Output<Integer> exponentialBackoffMaxRetries) {
+            $.exponentialBackoffMaxRetries = exponentialBackoffMaxRetries;
+            return this;
+        }
+
+        /**
+         * @param exponentialBackoffMaxRetries Maximum number of retries before returning error
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exponentialBackoffMaxRetries(Integer exponentialBackoffMaxRetries) {
+            return exponentialBackoffMaxRetries(Output.of(exponentialBackoffMaxRetries));
+        }
+
+        /**
+         * @param exponentialBackoffMaxWait Maximum amount of seconds to wait before retrying
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exponentialBackoffMaxWait(@Nullable Output<Integer> exponentialBackoffMaxWait) {
+            $.exponentialBackoffMaxWait = exponentialBackoffMaxWait;
+            return this;
+        }
+
+        /**
+         * @param exponentialBackoffMaxWait Maximum amount of seconds to wait before retrying
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exponentialBackoffMaxWait(Integer exponentialBackoffMaxWait) {
+            return exponentialBackoffMaxWait(Output.of(exponentialBackoffMaxWait));
+        }
+
+        /**
+         * @param exponentialBackoffMinWait Minimum amount of seconds to wait before retrying
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exponentialBackoffMinWait(@Nullable Output<Integer> exponentialBackoffMinWait) {
+            $.exponentialBackoffMinWait = exponentialBackoffMinWait;
+            return this;
+        }
+
+        /**
+         * @param exponentialBackoffMinWait Minimum amount of seconds to wait before retrying
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exponentialBackoffMinWait(Integer exponentialBackoffMinWait) {
+            return exponentialBackoffMinWait(Output.of(exponentialBackoffMinWait));
+        }
+
+        /**
          * @param gitBranch Git Repository branch containing Helm chart definitions. Default `master` (string)
          * 
          * @return builder
@@ -425,6 +553,27 @@ public final class CatalogV2State extends com.pulumi.resources.ResourceArgs {
          */
         public Builder insecure(Boolean insecure) {
             return insecure(Output.of(insecure));
+        }
+
+        /**
+         * @param insecurePlainHttp Only valid for OCI URL&#39;s. Allows insecure connections to registries without enforcing TLS checks
+         * 
+         * @return builder
+         * 
+         */
+        public Builder insecurePlainHttp(@Nullable Output<Boolean> insecurePlainHttp) {
+            $.insecurePlainHttp = insecurePlainHttp;
+            return this;
+        }
+
+        /**
+         * @param insecurePlainHttp Only valid for OCI URL&#39;s. Allows insecure connections to registries without enforcing TLS checks
+         * 
+         * @return builder
+         * 
+         */
+        public Builder insecurePlainHttp(Boolean insecurePlainHttp) {
+            return insecurePlainHttp(Output.of(insecurePlainHttp));
         }
 
         /**

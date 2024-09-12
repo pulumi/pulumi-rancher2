@@ -76,10 +76,6 @@ export class ClusterV2 extends pulumi.CustomResource {
      */
     public readonly defaultPodSecurityAdmissionConfigurationTemplateName!: pulumi.Output<string | undefined>;
     /**
-     * Default pod security policy template name specifies the default PSP for the cluster. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies).
-     */
-    public readonly defaultPodSecurityPolicyTemplateName!: pulumi.Output<string | undefined>;
-    /**
      * Enable k8s network policy on the cluster.
      */
     public readonly enableNetworkPolicy!: pulumi.Output<boolean>;
@@ -141,7 +137,6 @@ export class ClusterV2 extends pulumi.CustomResource {
             resourceInputs["clusterV1Id"] = state ? state.clusterV1Id : undefined;
             resourceInputs["defaultClusterRoleForProjectMembers"] = state ? state.defaultClusterRoleForProjectMembers : undefined;
             resourceInputs["defaultPodSecurityAdmissionConfigurationTemplateName"] = state ? state.defaultPodSecurityAdmissionConfigurationTemplateName : undefined;
-            resourceInputs["defaultPodSecurityPolicyTemplateName"] = state ? state.defaultPodSecurityPolicyTemplateName : undefined;
             resourceInputs["enableNetworkPolicy"] = state ? state.enableNetworkPolicy : undefined;
             resourceInputs["fleetAgentDeploymentCustomizations"] = state ? state.fleetAgentDeploymentCustomizations : undefined;
             resourceInputs["fleetNamespace"] = state ? state.fleetNamespace : undefined;
@@ -163,7 +158,6 @@ export class ClusterV2 extends pulumi.CustomResource {
             resourceInputs["clusterAgentDeploymentCustomizations"] = args ? args.clusterAgentDeploymentCustomizations : undefined;
             resourceInputs["defaultClusterRoleForProjectMembers"] = args ? args.defaultClusterRoleForProjectMembers : undefined;
             resourceInputs["defaultPodSecurityAdmissionConfigurationTemplateName"] = args ? args.defaultPodSecurityAdmissionConfigurationTemplateName : undefined;
-            resourceInputs["defaultPodSecurityPolicyTemplateName"] = args ? args.defaultPodSecurityPolicyTemplateName : undefined;
             resourceInputs["enableNetworkPolicy"] = args ? args.enableNetworkPolicy : undefined;
             resourceInputs["fleetAgentDeploymentCustomizations"] = args ? args.fleetAgentDeploymentCustomizations : undefined;
             resourceInputs["fleetNamespace"] = args ? args.fleetNamespace : undefined;
@@ -220,10 +214,6 @@ export interface ClusterV2State {
      * The name of the pre-defined pod security admission configuration template to be applied to the cluster. Rancher admins (or those with the right permissions) can create, manage, and edit those templates. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates). The argument is available in Rancher v2.7.2 and above.
      */
     defaultPodSecurityAdmissionConfigurationTemplateName?: pulumi.Input<string>;
-    /**
-     * Default pod security policy template name specifies the default PSP for the cluster. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies).
-     */
-    defaultPodSecurityPolicyTemplateName?: pulumi.Input<string>;
     /**
      * Enable k8s network policy on the cluster.
      */
@@ -294,10 +284,6 @@ export interface ClusterV2Args {
      * The name of the pre-defined pod security admission configuration template to be applied to the cluster. Rancher admins (or those with the right permissions) can create, manage, and edit those templates. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates). The argument is available in Rancher v2.7.2 and above.
      */
     defaultPodSecurityAdmissionConfigurationTemplateName?: pulumi.Input<string>;
-    /**
-     * Default pod security policy template name specifies the default PSP for the cluster. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies).
-     */
-    defaultPodSecurityPolicyTemplateName?: pulumi.Input<string>;
     /**
      * Enable k8s network policy on the cluster.
      */
