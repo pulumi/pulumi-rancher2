@@ -31,11 +31,6 @@ public final class ClusterTemplateTemplateRevisionClusterConfig {
      */
     private @Nullable String defaultPodSecurityAdmissionConfigurationTemplateName;
     /**
-     * @return Default pod security policy template ID
-     * 
-     */
-    private @Nullable String defaultPodSecurityPolicyTemplateId;
-    /**
      * @return Desired agent image
      * 
      */
@@ -50,16 +45,6 @@ public final class ClusterTemplateTemplateRevisionClusterConfig {
      * 
      */
     private @Nullable String dockerRootDir;
-    /**
-     * @return Enable built-in cluster alerting
-     * 
-     */
-    private @Nullable Boolean enableClusterAlerting;
-    /**
-     * @return Enable built-in cluster monitoring
-     * 
-     */
-    private @Nullable Boolean enableClusterMonitoring;
     /**
      * @return Enable project network isolation
      * 
@@ -99,13 +84,6 @@ public final class ClusterTemplateTemplateRevisionClusterConfig {
         return Optional.ofNullable(this.defaultPodSecurityAdmissionConfigurationTemplateName);
     }
     /**
-     * @return Default pod security policy template ID
-     * 
-     */
-    public Optional<String> defaultPodSecurityPolicyTemplateId() {
-        return Optional.ofNullable(this.defaultPodSecurityPolicyTemplateId);
-    }
-    /**
      * @return Desired agent image
      * 
      */
@@ -125,20 +103,6 @@ public final class ClusterTemplateTemplateRevisionClusterConfig {
      */
     public Optional<String> dockerRootDir() {
         return Optional.ofNullable(this.dockerRootDir);
-    }
-    /**
-     * @return Enable built-in cluster alerting
-     * 
-     */
-    public Optional<Boolean> enableClusterAlerting() {
-        return Optional.ofNullable(this.enableClusterAlerting);
-    }
-    /**
-     * @return Enable built-in cluster monitoring
-     * 
-     */
-    public Optional<Boolean> enableClusterMonitoring() {
-        return Optional.ofNullable(this.enableClusterMonitoring);
     }
     /**
      * @return Enable project network isolation
@@ -174,12 +138,9 @@ public final class ClusterTemplateTemplateRevisionClusterConfig {
         private @Nullable ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpoint clusterAuthEndpoint;
         private @Nullable String defaultClusterRoleForProjectMembers;
         private @Nullable String defaultPodSecurityAdmissionConfigurationTemplateName;
-        private @Nullable String defaultPodSecurityPolicyTemplateId;
         private @Nullable String desiredAgentImage;
         private @Nullable String desiredAuthImage;
         private @Nullable String dockerRootDir;
-        private @Nullable Boolean enableClusterAlerting;
-        private @Nullable Boolean enableClusterMonitoring;
         private @Nullable Boolean enableNetworkPolicy;
         private ClusterTemplateTemplateRevisionClusterConfigRkeConfig rkeConfig;
         private @Nullable Boolean windowsPreferedCluster;
@@ -189,12 +150,9 @@ public final class ClusterTemplateTemplateRevisionClusterConfig {
     	      this.clusterAuthEndpoint = defaults.clusterAuthEndpoint;
     	      this.defaultClusterRoleForProjectMembers = defaults.defaultClusterRoleForProjectMembers;
     	      this.defaultPodSecurityAdmissionConfigurationTemplateName = defaults.defaultPodSecurityAdmissionConfigurationTemplateName;
-    	      this.defaultPodSecurityPolicyTemplateId = defaults.defaultPodSecurityPolicyTemplateId;
     	      this.desiredAgentImage = defaults.desiredAgentImage;
     	      this.desiredAuthImage = defaults.desiredAuthImage;
     	      this.dockerRootDir = defaults.dockerRootDir;
-    	      this.enableClusterAlerting = defaults.enableClusterAlerting;
-    	      this.enableClusterMonitoring = defaults.enableClusterMonitoring;
     	      this.enableNetworkPolicy = defaults.enableNetworkPolicy;
     	      this.rkeConfig = defaults.rkeConfig;
     	      this.windowsPreferedCluster = defaults.windowsPreferedCluster;
@@ -219,12 +177,6 @@ public final class ClusterTemplateTemplateRevisionClusterConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder defaultPodSecurityPolicyTemplateId(@Nullable String defaultPodSecurityPolicyTemplateId) {
-
-            this.defaultPodSecurityPolicyTemplateId = defaultPodSecurityPolicyTemplateId;
-            return this;
-        }
-        @CustomType.Setter
         public Builder desiredAgentImage(@Nullable String desiredAgentImage) {
 
             this.desiredAgentImage = desiredAgentImage;
@@ -240,18 +192,6 @@ public final class ClusterTemplateTemplateRevisionClusterConfig {
         public Builder dockerRootDir(@Nullable String dockerRootDir) {
 
             this.dockerRootDir = dockerRootDir;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder enableClusterAlerting(@Nullable Boolean enableClusterAlerting) {
-
-            this.enableClusterAlerting = enableClusterAlerting;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder enableClusterMonitoring(@Nullable Boolean enableClusterMonitoring) {
-
-            this.enableClusterMonitoring = enableClusterMonitoring;
             return this;
         }
         @CustomType.Setter
@@ -279,12 +219,9 @@ public final class ClusterTemplateTemplateRevisionClusterConfig {
             _resultValue.clusterAuthEndpoint = clusterAuthEndpoint;
             _resultValue.defaultClusterRoleForProjectMembers = defaultClusterRoleForProjectMembers;
             _resultValue.defaultPodSecurityAdmissionConfigurationTemplateName = defaultPodSecurityAdmissionConfigurationTemplateName;
-            _resultValue.defaultPodSecurityPolicyTemplateId = defaultPodSecurityPolicyTemplateId;
             _resultValue.desiredAgentImage = desiredAgentImage;
             _resultValue.desiredAuthImage = desiredAuthImage;
             _resultValue.dockerRootDir = dockerRootDir;
-            _resultValue.enableClusterAlerting = enableClusterAlerting;
-            _resultValue.enableClusterMonitoring = enableClusterMonitoring;
             _resultValue.enableNetworkPolicy = enableNetworkPolicy;
             _resultValue.rkeConfig = rkeConfig;
             _resultValue.windowsPreferedCluster = windowsPreferedCluster;

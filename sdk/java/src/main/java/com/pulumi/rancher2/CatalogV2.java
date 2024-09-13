@@ -11,6 +11,7 @@ import com.pulumi.rancher2.CatalogV2Args;
 import com.pulumi.rancher2.Utilities;
 import com.pulumi.rancher2.inputs.CatalogV2State;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -87,6 +88,48 @@ public class CatalogV2 extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enabled);
     }
     /**
+     * Maximum number of retries before returning error
+     * 
+     */
+    @Export(name="exponentialBackoffMaxRetries", refs={Integer.class}, tree="[0]")
+    private Output<Integer> exponentialBackoffMaxRetries;
+
+    /**
+     * @return Maximum number of retries before returning error
+     * 
+     */
+    public Output<Integer> exponentialBackoffMaxRetries() {
+        return this.exponentialBackoffMaxRetries;
+    }
+    /**
+     * Maximum amount of seconds to wait before retrying
+     * 
+     */
+    @Export(name="exponentialBackoffMaxWait", refs={Integer.class}, tree="[0]")
+    private Output<Integer> exponentialBackoffMaxWait;
+
+    /**
+     * @return Maximum amount of seconds to wait before retrying
+     * 
+     */
+    public Output<Integer> exponentialBackoffMaxWait() {
+        return this.exponentialBackoffMaxWait;
+    }
+    /**
+     * Minimum amount of seconds to wait before retrying
+     * 
+     */
+    @Export(name="exponentialBackoffMinWait", refs={Integer.class}, tree="[0]")
+    private Output<Integer> exponentialBackoffMinWait;
+
+    /**
+     * @return Minimum amount of seconds to wait before retrying
+     * 
+     */
+    public Output<Integer> exponentialBackoffMinWait() {
+        return this.exponentialBackoffMinWait;
+    }
+    /**
      * Git Repository branch containing Helm chart definitions. Default `master` (string)
      * 
      */
@@ -127,6 +170,20 @@ public class CatalogV2 extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> insecure() {
         return Codegen.optional(this.insecure);
+    }
+    /**
+     * Only valid for OCI URL&#39;s. Allows insecure connections to registries without enforcing TLS checks
+     * 
+     */
+    @Export(name="insecurePlainHttp", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> insecurePlainHttp;
+
+    /**
+     * @return Only valid for OCI URL&#39;s. Allows insecure connections to registries without enforcing TLS checks
+     * 
+     */
+    public Output<Optional<Boolean>> insecurePlainHttp() {
+        return Codegen.optional(this.insecurePlainHttp);
     }
     /**
      * Labels for the catalog v2 (map)

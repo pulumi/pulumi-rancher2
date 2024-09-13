@@ -140,17 +140,9 @@ export class ClusterSync extends pulumi.CustomResource {
      */
     public /*out*/ readonly systemProjectId!: pulumi.Output<string>;
     /**
-     * Wait until alerting is up and running. Default: `false` (bool)
-     */
-    public readonly waitAlerting!: pulumi.Output<boolean | undefined>;
-    /**
      * Wait until all catalogs are downloaded and active. Default: `false` (bool)
      */
     public readonly waitCatalogs!: pulumi.Output<boolean | undefined>;
-    /**
-     * Wait until monitoring is up and running. Default: `false` (bool)
-     */
-    public readonly waitMonitoring!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a ClusterSync resource with the given unique name, arguments, and options.
@@ -173,9 +165,7 @@ export class ClusterSync extends pulumi.CustomResource {
             resourceInputs["stateConfirm"] = state ? state.stateConfirm : undefined;
             resourceInputs["synced"] = state ? state.synced : undefined;
             resourceInputs["systemProjectId"] = state ? state.systemProjectId : undefined;
-            resourceInputs["waitAlerting"] = state ? state.waitAlerting : undefined;
             resourceInputs["waitCatalogs"] = state ? state.waitCatalogs : undefined;
-            resourceInputs["waitMonitoring"] = state ? state.waitMonitoring : undefined;
         } else {
             const args = argsOrState as ClusterSyncArgs | undefined;
             if ((!args || args.clusterId === undefined) && !opts.urn) {
@@ -185,9 +175,7 @@ export class ClusterSync extends pulumi.CustomResource {
             resourceInputs["nodePoolIds"] = args ? args.nodePoolIds : undefined;
             resourceInputs["stateConfirm"] = args ? args.stateConfirm : undefined;
             resourceInputs["synced"] = args ? args.synced : undefined;
-            resourceInputs["waitAlerting"] = args ? args.waitAlerting : undefined;
             resourceInputs["waitCatalogs"] = args ? args.waitCatalogs : undefined;
-            resourceInputs["waitMonitoring"] = args ? args.waitMonitoring : undefined;
             resourceInputs["defaultProjectId"] = undefined /*out*/;
             resourceInputs["kubeConfig"] = undefined /*out*/;
             resourceInputs["nodes"] = undefined /*out*/;
@@ -236,17 +224,9 @@ export interface ClusterSyncState {
      */
     systemProjectId?: pulumi.Input<string>;
     /**
-     * Wait until alerting is up and running. Default: `false` (bool)
-     */
-    waitAlerting?: pulumi.Input<boolean>;
-    /**
      * Wait until all catalogs are downloaded and active. Default: `false` (bool)
      */
     waitCatalogs?: pulumi.Input<boolean>;
-    /**
-     * Wait until monitoring is up and running. Default: `false` (bool)
-     */
-    waitMonitoring?: pulumi.Input<boolean>;
 }
 
 /**
@@ -269,15 +249,7 @@ export interface ClusterSyncArgs {
     stateConfirm?: pulumi.Input<number>;
     synced?: pulumi.Input<boolean>;
     /**
-     * Wait until alerting is up and running. Default: `false` (bool)
-     */
-    waitAlerting?: pulumi.Input<boolean>;
-    /**
      * Wait until all catalogs are downloaded and active. Default: `false` (bool)
      */
     waitCatalogs?: pulumi.Input<boolean>;
-    /**
-     * Wait until monitoring is up and running. Default: `false` (bool)
-     */
-    waitMonitoring?: pulumi.Input<boolean>;
 }

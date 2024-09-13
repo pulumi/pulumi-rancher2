@@ -5,8 +5,12 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetCatalogV2PlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -28,6 +32,34 @@ public final class GetCatalogV2PlainArgs extends com.pulumi.resources.InvokeArgs
         return this.clusterId;
     }
 
+    @Import(name="exponentialBackoffMaxRetries")
+    private @Nullable Integer exponentialBackoffMaxRetries;
+
+    public Optional<Integer> exponentialBackoffMaxRetries() {
+        return Optional.ofNullable(this.exponentialBackoffMaxRetries);
+    }
+
+    @Import(name="exponentialBackoffMaxWait")
+    private @Nullable Integer exponentialBackoffMaxWait;
+
+    public Optional<Integer> exponentialBackoffMaxWait() {
+        return Optional.ofNullable(this.exponentialBackoffMaxWait);
+    }
+
+    @Import(name="exponentialBackoffMinWait")
+    private @Nullable Integer exponentialBackoffMinWait;
+
+    public Optional<Integer> exponentialBackoffMinWait() {
+        return Optional.ofNullable(this.exponentialBackoffMinWait);
+    }
+
+    @Import(name="insecurePlainHttp")
+    private @Nullable Boolean insecurePlainHttp;
+
+    public Optional<Boolean> insecurePlainHttp() {
+        return Optional.ofNullable(this.insecurePlainHttp);
+    }
+
     /**
      * The name of the catalog v2 (string)
      * 
@@ -47,6 +79,10 @@ public final class GetCatalogV2PlainArgs extends com.pulumi.resources.InvokeArgs
 
     private GetCatalogV2PlainArgs(GetCatalogV2PlainArgs $) {
         this.clusterId = $.clusterId;
+        this.exponentialBackoffMaxRetries = $.exponentialBackoffMaxRetries;
+        this.exponentialBackoffMaxWait = $.exponentialBackoffMaxWait;
+        this.exponentialBackoffMinWait = $.exponentialBackoffMinWait;
+        this.insecurePlainHttp = $.insecurePlainHttp;
         this.name = $.name;
     }
 
@@ -76,6 +112,26 @@ public final class GetCatalogV2PlainArgs extends com.pulumi.resources.InvokeArgs
          */
         public Builder clusterId(String clusterId) {
             $.clusterId = clusterId;
+            return this;
+        }
+
+        public Builder exponentialBackoffMaxRetries(@Nullable Integer exponentialBackoffMaxRetries) {
+            $.exponentialBackoffMaxRetries = exponentialBackoffMaxRetries;
+            return this;
+        }
+
+        public Builder exponentialBackoffMaxWait(@Nullable Integer exponentialBackoffMaxWait) {
+            $.exponentialBackoffMaxWait = exponentialBackoffMaxWait;
+            return this;
+        }
+
+        public Builder exponentialBackoffMinWait(@Nullable Integer exponentialBackoffMinWait) {
+            $.exponentialBackoffMinWait = exponentialBackoffMinWait;
+            return this;
+        }
+
+        public Builder insecurePlainHttp(@Nullable Boolean insecurePlainHttp) {
+            $.insecurePlainHttp = insecurePlainHttp;
             return this;
         }
 

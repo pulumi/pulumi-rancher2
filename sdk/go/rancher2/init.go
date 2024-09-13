@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-rancher2/sdk/v6/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v7/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -55,10 +55,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CloudCredential{}
 	case "rancher2:index/cluster:Cluster":
 		r = &Cluster{}
-	case "rancher2:index/clusterAlertGroup:ClusterAlertGroup":
-		r = &ClusterAlertGroup{}
-	case "rancher2:index/clusterAlertRule:ClusterAlertRule":
-		r = &ClusterAlertRule{}
 	case "rancher2:index/clusterDriver:ClusterDriver":
 		r = &ClusterDriver{}
 	case "rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding":
@@ -97,18 +93,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NodePool{}
 	case "rancher2:index/nodeTemplate:NodeTemplate":
 		r = &NodeTemplate{}
-	case "rancher2:index/notifier:Notifier":
-		r = &Notifier{}
 	case "rancher2:index/podSecurityAdmissionConfigurationTemplate:PodSecurityAdmissionConfigurationTemplate":
 		r = &PodSecurityAdmissionConfigurationTemplate{}
-	case "rancher2:index/podSecurityPolicyTemplate:PodSecurityPolicyTemplate":
-		r = &PodSecurityPolicyTemplate{}
 	case "rancher2:index/project:Project":
 		r = &Project{}
-	case "rancher2:index/projectAlertGroup:ProjectAlertGroup":
-		r = &ProjectAlertGroup{}
-	case "rancher2:index/projectAlertRule:ProjectAlertRule":
-		r = &ProjectAlertRule{}
 	case "rancher2:index/projectRoleTemplateBinding:ProjectRoleTemplateBinding":
 		r = &ProjectRoleTemplateBinding{}
 	case "rancher2:index/registry:Registry":
@@ -245,16 +233,6 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"rancher2",
-		"index/clusterAlertGroup",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"rancher2",
-		"index/clusterAlertRule",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"rancher2",
 		"index/clusterDriver",
 		&module{version},
 	)
@@ -350,32 +328,12 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"rancher2",
-		"index/notifier",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"rancher2",
 		"index/podSecurityAdmissionConfigurationTemplate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"rancher2",
-		"index/podSecurityPolicyTemplate",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"rancher2",
 		"index/project",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"rancher2",
-		"index/projectAlertGroup",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"rancher2",
-		"index/projectAlertRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

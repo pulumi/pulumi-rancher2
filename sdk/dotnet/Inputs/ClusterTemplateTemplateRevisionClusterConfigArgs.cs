@@ -31,12 +31,6 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? DefaultPodSecurityAdmissionConfigurationTemplateName { get; set; }
 
         /// <summary>
-        /// Default pod security policy template ID
-        /// </summary>
-        [Input("defaultPodSecurityPolicyTemplateId")]
-        public Input<string>? DefaultPodSecurityPolicyTemplateId { get; set; }
-
-        /// <summary>
         /// Desired agent image
         /// </summary>
         [Input("desiredAgentImage")]
@@ -53,18 +47,6 @@ namespace Pulumi.Rancher2.Inputs
         /// </summary>
         [Input("dockerRootDir")]
         public Input<string>? DockerRootDir { get; set; }
-
-        /// <summary>
-        /// Enable built-in cluster alerting
-        /// </summary>
-        [Input("enableClusterAlerting")]
-        public Input<bool>? EnableClusterAlerting { get; set; }
-
-        /// <summary>
-        /// Enable built-in cluster monitoring
-        /// </summary>
-        [Input("enableClusterMonitoring")]
-        public Input<bool>? EnableClusterMonitoring { get; set; }
 
         /// <summary>
         /// Enable project network isolation

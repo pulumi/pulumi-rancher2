@@ -23,7 +23,6 @@ class ClusterV2Args:
                  cluster_agent_deployment_customizations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationArgs']]]] = None,
                  default_cluster_role_for_project_members: Optional[pulumi.Input[str]] = None,
                  default_pod_security_admission_configuration_template_name: Optional[pulumi.Input[str]] = None,
-                 default_pod_security_policy_template_name: Optional[pulumi.Input[str]] = None,
                  enable_network_policy: Optional[pulumi.Input[bool]] = None,
                  fleet_agent_deployment_customizations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2FleetAgentDeploymentCustomizationArgs']]]] = None,
                  fleet_namespace: Optional[pulumi.Input[str]] = None,
@@ -40,7 +39,6 @@ class ClusterV2Args:
         :param pulumi.Input[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationArgs']]] cluster_agent_deployment_customizations: Cluster agent deployment customization specifies the additional tolerations, new affinity rules, and new resource requirements on the `cattle-cluster-agent` deployment. This argument is available in Rancher v2.7.5 and above.
         :param pulumi.Input[str] default_cluster_role_for_project_members: Default cluster role for project members.
         :param pulumi.Input[str] default_pod_security_admission_configuration_template_name: The name of the pre-defined pod security admission configuration template to be applied to the cluster. Rancher admins (or those with the right permissions) can create, manage, and edit those templates. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates). The argument is available in Rancher v2.7.2 and above.
-        :param pulumi.Input[str] default_pod_security_policy_template_name: Default pod security policy template name specifies the default PSP for the cluster. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies).
         :param pulumi.Input[bool] enable_network_policy: Enable k8s network policy on the cluster.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterV2FleetAgentDeploymentCustomizationArgs']]] fleet_agent_deployment_customizations: Fleet agent deployment customization specifies the additional tolerations, new affinity rules, and new resource requirements on the `fleet-agent` deployment. The argument is available in Rancher v2.7.5 and above.
         :param pulumi.Input[str] fleet_namespace: Fleet namespace is the namespace where the cluster is to create in the local cluster. It is recommended to leave it as the default value.
@@ -62,8 +60,6 @@ class ClusterV2Args:
             pulumi.set(__self__, "default_cluster_role_for_project_members", default_cluster_role_for_project_members)
         if default_pod_security_admission_configuration_template_name is not None:
             pulumi.set(__self__, "default_pod_security_admission_configuration_template_name", default_pod_security_admission_configuration_template_name)
-        if default_pod_security_policy_template_name is not None:
-            pulumi.set(__self__, "default_pod_security_policy_template_name", default_pod_security_policy_template_name)
         if enable_network_policy is not None:
             pulumi.set(__self__, "enable_network_policy", enable_network_policy)
         if fleet_agent_deployment_customizations is not None:
@@ -164,18 +160,6 @@ class ClusterV2Args:
         pulumi.set(self, "default_pod_security_admission_configuration_template_name", value)
 
     @property
-    @pulumi.getter(name="defaultPodSecurityPolicyTemplateName")
-    def default_pod_security_policy_template_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Default pod security policy template name specifies the default PSP for the cluster. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies).
-        """
-        return pulumi.get(self, "default_pod_security_policy_template_name")
-
-    @default_pod_security_policy_template_name.setter
-    def default_pod_security_policy_template_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "default_pod_security_policy_template_name", value)
-
-    @property
     @pulumi.getter(name="enableNetworkPolicy")
     def enable_network_policy(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -271,7 +255,6 @@ class _ClusterV2State:
                  cluster_v1_id: Optional[pulumi.Input[str]] = None,
                  default_cluster_role_for_project_members: Optional[pulumi.Input[str]] = None,
                  default_pod_security_admission_configuration_template_name: Optional[pulumi.Input[str]] = None,
-                 default_pod_security_policy_template_name: Optional[pulumi.Input[str]] = None,
                  enable_network_policy: Optional[pulumi.Input[bool]] = None,
                  fleet_agent_deployment_customizations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2FleetAgentDeploymentCustomizationArgs']]]] = None,
                  fleet_namespace: Optional[pulumi.Input[str]] = None,
@@ -292,7 +275,6 @@ class _ClusterV2State:
         :param pulumi.Input[str] cluster_v1_id: (Computed, string) Cluster v1 id for cluster v2. (e.g. to be used with `rancher2_sync`).
         :param pulumi.Input[str] default_cluster_role_for_project_members: Default cluster role for project members.
         :param pulumi.Input[str] default_pod_security_admission_configuration_template_name: The name of the pre-defined pod security admission configuration template to be applied to the cluster. Rancher admins (or those with the right permissions) can create, manage, and edit those templates. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates). The argument is available in Rancher v2.7.2 and above.
-        :param pulumi.Input[str] default_pod_security_policy_template_name: Default pod security policy template name specifies the default PSP for the cluster. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies).
         :param pulumi.Input[bool] enable_network_policy: Enable k8s network policy on the cluster.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterV2FleetAgentDeploymentCustomizationArgs']]] fleet_agent_deployment_customizations: Fleet agent deployment customization specifies the additional tolerations, new affinity rules, and new resource requirements on the `fleet-agent` deployment. The argument is available in Rancher v2.7.5 and above.
         :param pulumi.Input[str] fleet_namespace: Fleet namespace is the namespace where the cluster is to create in the local cluster. It is recommended to leave it as the default value.
@@ -320,8 +302,6 @@ class _ClusterV2State:
             pulumi.set(__self__, "default_cluster_role_for_project_members", default_cluster_role_for_project_members)
         if default_pod_security_admission_configuration_template_name is not None:
             pulumi.set(__self__, "default_pod_security_admission_configuration_template_name", default_pod_security_admission_configuration_template_name)
-        if default_pod_security_policy_template_name is not None:
-            pulumi.set(__self__, "default_pod_security_policy_template_name", default_pod_security_policy_template_name)
         if enable_network_policy is not None:
             pulumi.set(__self__, "enable_network_policy", enable_network_policy)
         if fleet_agent_deployment_customizations is not None:
@@ -438,18 +418,6 @@ class _ClusterV2State:
     @default_pod_security_admission_configuration_template_name.setter
     def default_pod_security_admission_configuration_template_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "default_pod_security_admission_configuration_template_name", value)
-
-    @property
-    @pulumi.getter(name="defaultPodSecurityPolicyTemplateName")
-    def default_pod_security_policy_template_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Default pod security policy template name specifies the default PSP for the cluster. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies).
-        """
-        return pulumi.get(self, "default_pod_security_policy_template_name")
-
-    @default_pod_security_policy_template_name.setter
-    def default_pod_security_policy_template_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "default_pod_security_policy_template_name", value)
 
     @property
     @pulumi.getter(name="enableNetworkPolicy")
@@ -583,7 +551,6 @@ class ClusterV2(pulumi.CustomResource):
                  cluster_agent_deployment_customizations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2ClusterAgentDeploymentCustomizationArgs', 'ClusterV2ClusterAgentDeploymentCustomizationArgsDict']]]]] = None,
                  default_cluster_role_for_project_members: Optional[pulumi.Input[str]] = None,
                  default_pod_security_admission_configuration_template_name: Optional[pulumi.Input[str]] = None,
-                 default_pod_security_policy_template_name: Optional[pulumi.Input[str]] = None,
                  enable_network_policy: Optional[pulumi.Input[bool]] = None,
                  fleet_agent_deployment_customizations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2FleetAgentDeploymentCustomizationArgs', 'ClusterV2FleetAgentDeploymentCustomizationArgsDict']]]]] = None,
                  fleet_namespace: Optional[pulumi.Input[str]] = None,
@@ -610,7 +577,6 @@ class ClusterV2(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2ClusterAgentDeploymentCustomizationArgs', 'ClusterV2ClusterAgentDeploymentCustomizationArgsDict']]]] cluster_agent_deployment_customizations: Cluster agent deployment customization specifies the additional tolerations, new affinity rules, and new resource requirements on the `cattle-cluster-agent` deployment. This argument is available in Rancher v2.7.5 and above.
         :param pulumi.Input[str] default_cluster_role_for_project_members: Default cluster role for project members.
         :param pulumi.Input[str] default_pod_security_admission_configuration_template_name: The name of the pre-defined pod security admission configuration template to be applied to the cluster. Rancher admins (or those with the right permissions) can create, manage, and edit those templates. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates). The argument is available in Rancher v2.7.2 and above.
-        :param pulumi.Input[str] default_pod_security_policy_template_name: Default pod security policy template name specifies the default PSP for the cluster. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies).
         :param pulumi.Input[bool] enable_network_policy: Enable k8s network policy on the cluster.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2FleetAgentDeploymentCustomizationArgs', 'ClusterV2FleetAgentDeploymentCustomizationArgsDict']]]] fleet_agent_deployment_customizations: Fleet agent deployment customization specifies the additional tolerations, new affinity rules, and new resource requirements on the `fleet-agent` deployment. The argument is available in Rancher v2.7.5 and above.
         :param pulumi.Input[str] fleet_namespace: Fleet namespace is the namespace where the cluster is to create in the local cluster. It is recommended to leave it as the default value.
@@ -656,7 +622,6 @@ class ClusterV2(pulumi.CustomResource):
                  cluster_agent_deployment_customizations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2ClusterAgentDeploymentCustomizationArgs', 'ClusterV2ClusterAgentDeploymentCustomizationArgsDict']]]]] = None,
                  default_cluster_role_for_project_members: Optional[pulumi.Input[str]] = None,
                  default_pod_security_admission_configuration_template_name: Optional[pulumi.Input[str]] = None,
-                 default_pod_security_policy_template_name: Optional[pulumi.Input[str]] = None,
                  enable_network_policy: Optional[pulumi.Input[bool]] = None,
                  fleet_agent_deployment_customizations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2FleetAgentDeploymentCustomizationArgs', 'ClusterV2FleetAgentDeploymentCustomizationArgsDict']]]]] = None,
                  fleet_namespace: Optional[pulumi.Input[str]] = None,
@@ -680,7 +645,6 @@ class ClusterV2(pulumi.CustomResource):
             __props__.__dict__["cluster_agent_deployment_customizations"] = cluster_agent_deployment_customizations
             __props__.__dict__["default_cluster_role_for_project_members"] = default_cluster_role_for_project_members
             __props__.__dict__["default_pod_security_admission_configuration_template_name"] = default_pod_security_admission_configuration_template_name
-            __props__.__dict__["default_pod_security_policy_template_name"] = default_pod_security_policy_template_name
             __props__.__dict__["enable_network_policy"] = enable_network_policy
             __props__.__dict__["fleet_agent_deployment_customizations"] = fleet_agent_deployment_customizations
             __props__.__dict__["fleet_namespace"] = fleet_namespace
@@ -715,7 +679,6 @@ class ClusterV2(pulumi.CustomResource):
             cluster_v1_id: Optional[pulumi.Input[str]] = None,
             default_cluster_role_for_project_members: Optional[pulumi.Input[str]] = None,
             default_pod_security_admission_configuration_template_name: Optional[pulumi.Input[str]] = None,
-            default_pod_security_policy_template_name: Optional[pulumi.Input[str]] = None,
             enable_network_policy: Optional[pulumi.Input[bool]] = None,
             fleet_agent_deployment_customizations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2FleetAgentDeploymentCustomizationArgs', 'ClusterV2FleetAgentDeploymentCustomizationArgsDict']]]]] = None,
             fleet_namespace: Optional[pulumi.Input[str]] = None,
@@ -741,7 +704,6 @@ class ClusterV2(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_v1_id: (Computed, string) Cluster v1 id for cluster v2. (e.g. to be used with `rancher2_sync`).
         :param pulumi.Input[str] default_cluster_role_for_project_members: Default cluster role for project members.
         :param pulumi.Input[str] default_pod_security_admission_configuration_template_name: The name of the pre-defined pod security admission configuration template to be applied to the cluster. Rancher admins (or those with the right permissions) can create, manage, and edit those templates. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates). The argument is available in Rancher v2.7.2 and above.
-        :param pulumi.Input[str] default_pod_security_policy_template_name: Default pod security policy template name specifies the default PSP for the cluster. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies).
         :param pulumi.Input[bool] enable_network_policy: Enable k8s network policy on the cluster.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2FleetAgentDeploymentCustomizationArgs', 'ClusterV2FleetAgentDeploymentCustomizationArgsDict']]]] fleet_agent_deployment_customizations: Fleet agent deployment customization specifies the additional tolerations, new affinity rules, and new resource requirements on the `fleet-agent` deployment. The argument is available in Rancher v2.7.5 and above.
         :param pulumi.Input[str] fleet_namespace: Fleet namespace is the namespace where the cluster is to create in the local cluster. It is recommended to leave it as the default value.
@@ -765,7 +727,6 @@ class ClusterV2(pulumi.CustomResource):
         __props__.__dict__["cluster_v1_id"] = cluster_v1_id
         __props__.__dict__["default_cluster_role_for_project_members"] = default_cluster_role_for_project_members
         __props__.__dict__["default_pod_security_admission_configuration_template_name"] = default_pod_security_admission_configuration_template_name
-        __props__.__dict__["default_pod_security_policy_template_name"] = default_pod_security_policy_template_name
         __props__.__dict__["enable_network_policy"] = enable_network_policy
         __props__.__dict__["fleet_agent_deployment_customizations"] = fleet_agent_deployment_customizations
         __props__.__dict__["fleet_namespace"] = fleet_namespace
@@ -841,14 +802,6 @@ class ClusterV2(pulumi.CustomResource):
         The name of the pre-defined pod security admission configuration template to be applied to the cluster. Rancher admins (or those with the right permissions) can create, manage, and edit those templates. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates). The argument is available in Rancher v2.7.2 and above.
         """
         return pulumi.get(self, "default_pod_security_admission_configuration_template_name")
-
-    @property
-    @pulumi.getter(name="defaultPodSecurityPolicyTemplateName")
-    def default_pod_security_policy_template_name(self) -> pulumi.Output[Optional[str]]:
-        """
-        Default pod security policy template name specifies the default PSP for the cluster. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies).
-        """
-        return pulumi.get(self, "default_pod_security_policy_template_name")
 
     @property
     @pulumi.getter(name="enableNetworkPolicy")

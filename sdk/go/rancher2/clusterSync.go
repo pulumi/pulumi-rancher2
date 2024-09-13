@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-rancher2/sdk/v6/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v7/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,7 +19,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v6/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v7/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -135,12 +135,8 @@ type ClusterSync struct {
 	Synced       pulumi.BoolPtrOutput `pulumi:"synced"`
 	// (Computed) System project ID for the cluster sync (string)
 	SystemProjectId pulumi.StringOutput `pulumi:"systemProjectId"`
-	// Wait until alerting is up and running. Default: `false` (bool)
-	WaitAlerting pulumi.BoolPtrOutput `pulumi:"waitAlerting"`
 	// Wait until all catalogs are downloaded and active. Default: `false` (bool)
 	WaitCatalogs pulumi.BoolPtrOutput `pulumi:"waitCatalogs"`
-	// Wait until monitoring is up and running. Default: `false` (bool)
-	WaitMonitoring pulumi.BoolPtrOutput `pulumi:"waitMonitoring"`
 }
 
 // NewClusterSync registers a new resource with the given unique name, arguments, and options.
@@ -197,12 +193,8 @@ type clusterSyncState struct {
 	Synced       *bool `pulumi:"synced"`
 	// (Computed) System project ID for the cluster sync (string)
 	SystemProjectId *string `pulumi:"systemProjectId"`
-	// Wait until alerting is up and running. Default: `false` (bool)
-	WaitAlerting *bool `pulumi:"waitAlerting"`
 	// Wait until all catalogs are downloaded and active. Default: `false` (bool)
 	WaitCatalogs *bool `pulumi:"waitCatalogs"`
-	// Wait until monitoring is up and running. Default: `false` (bool)
-	WaitMonitoring *bool `pulumi:"waitMonitoring"`
 }
 
 type ClusterSyncState struct {
@@ -223,12 +215,8 @@ type ClusterSyncState struct {
 	Synced       pulumi.BoolPtrInput
 	// (Computed) System project ID for the cluster sync (string)
 	SystemProjectId pulumi.StringPtrInput
-	// Wait until alerting is up and running. Default: `false` (bool)
-	WaitAlerting pulumi.BoolPtrInput
 	// Wait until all catalogs are downloaded and active. Default: `false` (bool)
 	WaitCatalogs pulumi.BoolPtrInput
-	// Wait until monitoring is up and running. Default: `false` (bool)
-	WaitMonitoring pulumi.BoolPtrInput
 }
 
 func (ClusterSyncState) ElementType() reflect.Type {
@@ -245,12 +233,8 @@ type clusterSyncArgs struct {
 	// **Note:** `stateConfirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `active` state before they are fully installed. For example: setting `stateConfirm = 2` will assure that the cluster has been in `active` state for at least 5 seconds, `stateConfirm = 3` assure at least 10 seconds, etc
 	StateConfirm *int  `pulumi:"stateConfirm"`
 	Synced       *bool `pulumi:"synced"`
-	// Wait until alerting is up and running. Default: `false` (bool)
-	WaitAlerting *bool `pulumi:"waitAlerting"`
 	// Wait until all catalogs are downloaded and active. Default: `false` (bool)
 	WaitCatalogs *bool `pulumi:"waitCatalogs"`
-	// Wait until monitoring is up and running. Default: `false` (bool)
-	WaitMonitoring *bool `pulumi:"waitMonitoring"`
 }
 
 // The set of arguments for constructing a ClusterSync resource.
@@ -264,12 +248,8 @@ type ClusterSyncArgs struct {
 	// **Note:** `stateConfirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `active` state before they are fully installed. For example: setting `stateConfirm = 2` will assure that the cluster has been in `active` state for at least 5 seconds, `stateConfirm = 3` assure at least 10 seconds, etc
 	StateConfirm pulumi.IntPtrInput
 	Synced       pulumi.BoolPtrInput
-	// Wait until alerting is up and running. Default: `false` (bool)
-	WaitAlerting pulumi.BoolPtrInput
 	// Wait until all catalogs are downloaded and active. Default: `false` (bool)
 	WaitCatalogs pulumi.BoolPtrInput
-	// Wait until monitoring is up and running. Default: `false` (bool)
-	WaitMonitoring pulumi.BoolPtrInput
 }
 
 func (ClusterSyncArgs) ElementType() reflect.Type {
@@ -400,19 +380,9 @@ func (o ClusterSyncOutput) SystemProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClusterSync) pulumi.StringOutput { return v.SystemProjectId }).(pulumi.StringOutput)
 }
 
-// Wait until alerting is up and running. Default: `false` (bool)
-func (o ClusterSyncOutput) WaitAlerting() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ClusterSync) pulumi.BoolPtrOutput { return v.WaitAlerting }).(pulumi.BoolPtrOutput)
-}
-
 // Wait until all catalogs are downloaded and active. Default: `false` (bool)
 func (o ClusterSyncOutput) WaitCatalogs() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterSync) pulumi.BoolPtrOutput { return v.WaitCatalogs }).(pulumi.BoolPtrOutput)
-}
-
-// Wait until monitoring is up and running. Default: `false` (bool)
-func (o ClusterSyncOutput) WaitMonitoring() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ClusterSync) pulumi.BoolPtrOutput { return v.WaitMonitoring }).(pulumi.BoolPtrOutput)
 }
 
 type ClusterSyncArrayOutput struct{ *pulumi.OutputState }

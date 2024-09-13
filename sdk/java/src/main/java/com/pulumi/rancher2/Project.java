@@ -11,7 +11,6 @@ import com.pulumi.rancher2.ProjectArgs;
 import com.pulumi.rancher2.Utilities;
 import com.pulumi.rancher2.inputs.ProjectState;
 import com.pulumi.rancher2.outputs.ProjectContainerResourceLimit;
-import com.pulumi.rancher2.outputs.ProjectProjectMonitoringInput;
 import com.pulumi.rancher2.outputs.ProjectResourceQuota;
 import java.lang.Boolean;
 import java.lang.String;
@@ -95,7 +94,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.rancher2.inputs.ProjectResourceQuotaProjectLimitArgs;
  * import com.pulumi.rancher2.inputs.ProjectResourceQuotaNamespaceDefaultLimitArgs;
  * import com.pulumi.rancher2.inputs.ProjectContainerResourceLimitArgs;
- * import com.pulumi.rancher2.inputs.ProjectProjectMonitoringInputArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -109,7 +107,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         // Create a new rancher2 Project enabling and customizing monitoring
+ *         // Create a new rancher2 Project
  *         var foo = new Project("foo", ProjectArgs.builder()
  *             .name("foo")
  *             .clusterId("<CLUSTER_ID>")
@@ -130,29 +128,6 @@ import javax.annotation.Nullable;
  *                 .limitsMemory("20Mi")
  *                 .requestsCpu("1m")
  *                 .requestsMemory("1Mi")
- *                 .build())
- *             .enableProjectMonitoring(true)
- *             .projectMonitoringInput(ProjectProjectMonitoringInputArgs.builder()
- *                 .answers(Map.ofEntries(
- *                     Map.entry("exporter-kubelets.https", true),
- *                     Map.entry("exporter-node.enabled", true),
- *                     Map.entry("exporter-node.ports.metrics.port", 9796),
- *                     Map.entry("exporter-node.resources.limits.cpu", "200m"),
- *                     Map.entry("exporter-node.resources.limits.memory", "200Mi"),
- *                     Map.entry("grafana.persistence.enabled", false),
- *                     Map.entry("grafana.persistence.size", "10Gi"),
- *                     Map.entry("grafana.persistence.storageClass", "default"),
- *                     Map.entry("operator.resources.limits.memory", "500Mi"),
- *                     Map.entry("prometheus.persistence.enabled", "false"),
- *                     Map.entry("prometheus.persistence.size", "50Gi"),
- *                     Map.entry("prometheus.persistence.storageClass", "default"),
- *                     Map.entry("prometheus.persistent.useReleaseName", "true"),
- *                     Map.entry("prometheus.resources.core.limits.cpu", "1000m"),
- *                     Map.entry("prometheus.resources.core.limits.memory", "1500Mi"),
- *                     Map.entry("prometheus.resources.core.requests.cpu", "750m"),
- *                     Map.entry("prometheus.resources.core.requests.memory", "750Mi"),
- *                     Map.entry("prometheus.retention", "12h")
- *                 ))
  *                 .build())
  *             .build());
  * 
@@ -230,20 +205,6 @@ public class Project extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Enable built-in project monitoring. Default `false` (bool)
-     * 
-     */
-    @Export(name="enableProjectMonitoring", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> enableProjectMonitoring;
-
-    /**
-     * @return Enable built-in project monitoring. Default `false` (bool)
-     * 
-     */
-    public Output<Optional<Boolean>> enableProjectMonitoring() {
-        return Codegen.optional(this.enableProjectMonitoring);
-    }
-    /**
      * Labels for Node Pool object (map)
      * 
      */
@@ -270,34 +231,6 @@ public class Project extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
-    }
-    /**
-     * Default Pod Security Policy ID for the project (string)
-     * 
-     */
-    @Export(name="podSecurityPolicyTemplateId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> podSecurityPolicyTemplateId;
-
-    /**
-     * @return Default Pod Security Policy ID for the project (string)
-     * 
-     */
-    public Output<Optional<String>> podSecurityPolicyTemplateId() {
-        return Codegen.optional(this.podSecurityPolicyTemplateId);
-    }
-    /**
-     * Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
-     * 
-     */
-    @Export(name="projectMonitoringInput", refs={ProjectProjectMonitoringInput.class}, tree="[0]")
-    private Output</* @Nullable */ ProjectProjectMonitoringInput> projectMonitoringInput;
-
-    /**
-     * @return Project monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured (list maxitems:1)
-     * 
-     */
-    public Output<Optional<ProjectProjectMonitoringInput>> projectMonitoringInput() {
-        return Codegen.optional(this.projectMonitoringInput);
     }
     /**
      * Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)

@@ -1,9 +1,10 @@
-module github.com/pulumi/pulumi-rancher2/sdk/v6
+module github.com/pulumi/pulumi-rancher2/sdk/v7
 
 go 1.21
 
 require (
 	github.com/blang/semver v3.5.1+incompatible
+	github.com/pulumi/pulumi-rancher2/sdk/v6 v6.2.1
 	github.com/pulumi/pulumi/sdk/v3 v3.130.0
 )
 

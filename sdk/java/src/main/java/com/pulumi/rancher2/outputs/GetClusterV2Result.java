@@ -50,11 +50,6 @@ public final class GetClusterV2Result {
      */
     private String defaultPodSecurityAdmissionConfigurationTemplateName;
     /**
-     * @return (Computed) Cluster V2 default pod security policy template name (string)
-     * 
-     */
-    private String defaultPodSecurityPolicyTemplateName;
-    /**
      * @return (Computed) Enable k8s network policy at Cluster V2 (bool)
      * 
      */
@@ -135,13 +130,6 @@ public final class GetClusterV2Result {
         return this.defaultPodSecurityAdmissionConfigurationTemplateName;
     }
     /**
-     * @return (Computed) Cluster V2 default pod security policy template name (string)
-     * 
-     */
-    public String defaultPodSecurityPolicyTemplateName() {
-        return this.defaultPodSecurityPolicyTemplateName;
-    }
-    /**
      * @return (Computed) Enable k8s network policy at Cluster V2 (bool)
      * 
      */
@@ -209,7 +197,6 @@ public final class GetClusterV2Result {
         private String clusterV1Id;
         private String defaultClusterRoleForProjectMembers;
         private String defaultPodSecurityAdmissionConfigurationTemplateName;
-        private String defaultPodSecurityPolicyTemplateName;
         private Boolean enableNetworkPolicy;
         private @Nullable String fleetNamespace;
         private String id;
@@ -229,7 +216,6 @@ public final class GetClusterV2Result {
     	      this.clusterV1Id = defaults.clusterV1Id;
     	      this.defaultClusterRoleForProjectMembers = defaults.defaultClusterRoleForProjectMembers;
     	      this.defaultPodSecurityAdmissionConfigurationTemplateName = defaults.defaultPodSecurityAdmissionConfigurationTemplateName;
-    	      this.defaultPodSecurityPolicyTemplateName = defaults.defaultPodSecurityPolicyTemplateName;
     	      this.enableNetworkPolicy = defaults.enableNetworkPolicy;
     	      this.fleetNamespace = defaults.fleetNamespace;
     	      this.id = defaults.id;
@@ -298,14 +284,6 @@ public final class GetClusterV2Result {
               throw new MissingRequiredPropertyException("GetClusterV2Result", "defaultPodSecurityAdmissionConfigurationTemplateName");
             }
             this.defaultPodSecurityAdmissionConfigurationTemplateName = defaultPodSecurityAdmissionConfigurationTemplateName;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder defaultPodSecurityPolicyTemplateName(String defaultPodSecurityPolicyTemplateName) {
-            if (defaultPodSecurityPolicyTemplateName == null) {
-              throw new MissingRequiredPropertyException("GetClusterV2Result", "defaultPodSecurityPolicyTemplateName");
-            }
-            this.defaultPodSecurityPolicyTemplateName = defaultPodSecurityPolicyTemplateName;
             return this;
         }
         @CustomType.Setter
@@ -387,7 +365,6 @@ public final class GetClusterV2Result {
             _resultValue.clusterV1Id = clusterV1Id;
             _resultValue.defaultClusterRoleForProjectMembers = defaultClusterRoleForProjectMembers;
             _resultValue.defaultPodSecurityAdmissionConfigurationTemplateName = defaultPodSecurityAdmissionConfigurationTemplateName;
-            _resultValue.defaultPodSecurityPolicyTemplateName = defaultPodSecurityPolicyTemplateName;
             _resultValue.enableNetworkPolicy = enableNetworkPolicy;
             _resultValue.fleetNamespace = fleetNamespace;
             _resultValue.id = id;

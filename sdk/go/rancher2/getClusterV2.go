@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-rancher2/sdk/v6/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v7/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v6/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v7/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -72,8 +72,6 @@ type LookupClusterV2Result struct {
 	DefaultClusterRoleForProjectMembers string `pulumi:"defaultClusterRoleForProjectMembers"`
 	// (Computed) Cluster V2 default pod security admission configuration template name (string)
 	DefaultPodSecurityAdmissionConfigurationTemplateName string `pulumi:"defaultPodSecurityAdmissionConfigurationTemplateName"`
-	// (Computed) Cluster V2 default pod security policy template name (string)
-	DefaultPodSecurityPolicyTemplateName string `pulumi:"defaultPodSecurityPolicyTemplateName"`
 	// (Computed) Enable k8s network policy at Cluster V2 (bool)
 	EnableNetworkPolicy bool    `pulumi:"enableNetworkPolicy"`
 	FleetNamespace      *string `pulumi:"fleetNamespace"`
@@ -163,11 +161,6 @@ func (o LookupClusterV2ResultOutput) DefaultClusterRoleForProjectMembers() pulum
 // (Computed) Cluster V2 default pod security admission configuration template name (string)
 func (o LookupClusterV2ResultOutput) DefaultPodSecurityAdmissionConfigurationTemplateName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterV2Result) string { return v.DefaultPodSecurityAdmissionConfigurationTemplateName }).(pulumi.StringOutput)
-}
-
-// (Computed) Cluster V2 default pod security policy template name (string)
-func (o LookupClusterV2ResultOutput) DefaultPodSecurityPolicyTemplateName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupClusterV2Result) string { return v.DefaultPodSecurityPolicyTemplateName }).(pulumi.StringOutput)
 }
 
 // (Computed) Enable k8s network policy at Cluster V2 (bool)

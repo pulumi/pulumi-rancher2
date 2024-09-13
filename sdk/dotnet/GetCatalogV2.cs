@@ -33,6 +33,18 @@ namespace Pulumi.Rancher2
         [Input("clusterId", required: true)]
         public string ClusterId { get; set; } = null!;
 
+        [Input("exponentialBackoffMaxRetries")]
+        public int? ExponentialBackoffMaxRetries { get; set; }
+
+        [Input("exponentialBackoffMaxWait")]
+        public int? ExponentialBackoffMaxWait { get; set; }
+
+        [Input("exponentialBackoffMinWait")]
+        public int? ExponentialBackoffMinWait { get; set; }
+
+        [Input("insecurePlainHttp")]
+        public bool? InsecurePlainHttp { get; set; }
+
         /// <summary>
         /// The name of the catalog v2 (string)
         /// </summary>
@@ -52,6 +64,18 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
+
+        [Input("exponentialBackoffMaxRetries")]
+        public Input<int>? ExponentialBackoffMaxRetries { get; set; }
+
+        [Input("exponentialBackoffMaxWait")]
+        public Input<int>? ExponentialBackoffMaxWait { get; set; }
+
+        [Input("exponentialBackoffMinWait")]
+        public Input<int>? ExponentialBackoffMinWait { get; set; }
+
+        [Input("insecurePlainHttp")]
+        public Input<bool>? InsecurePlainHttp { get; set; }
 
         /// <summary>
         /// The name of the catalog v2 (string)
@@ -82,6 +106,9 @@ namespace Pulumi.Rancher2
         /// (Computed) If disabled the repo clone will not be updated or allowed to be installed from. Default: `true` (bool)
         /// </summary>
         public readonly bool Enabled;
+        public readonly int ExponentialBackoffMaxRetries;
+        public readonly int ExponentialBackoffMaxWait;
+        public readonly int ExponentialBackoffMinWait;
         /// <summary>
         /// (Computed) Git Repository branch containing Helm chart definitions. Default `master` (string)
         /// </summary>
@@ -98,6 +125,7 @@ namespace Pulumi.Rancher2
         /// (Computed) Use insecure HTTPS to download the repo's index. Default: `false` (bool)
         /// </summary>
         public readonly bool Insecure;
+        public readonly bool? InsecurePlainHttp;
         /// <summary>
         /// (Computed) Labels for the catalog v2 (map)
         /// </summary>
@@ -138,6 +166,12 @@ namespace Pulumi.Rancher2
 
             bool enabled,
 
+            int exponentialBackoffMaxRetries,
+
+            int exponentialBackoffMaxWait,
+
+            int exponentialBackoffMinWait,
+
             string gitBranch,
 
             string gitRepo,
@@ -145,6 +179,8 @@ namespace Pulumi.Rancher2
             string id,
 
             bool insecure,
+
+            bool? insecurePlainHttp,
 
             ImmutableDictionary<string, string> labels,
 
@@ -166,10 +202,14 @@ namespace Pulumi.Rancher2
             CaBundle = caBundle;
             ClusterId = clusterId;
             Enabled = enabled;
+            ExponentialBackoffMaxRetries = exponentialBackoffMaxRetries;
+            ExponentialBackoffMaxWait = exponentialBackoffMaxWait;
+            ExponentialBackoffMinWait = exponentialBackoffMinWait;
             GitBranch = gitBranch;
             GitRepo = gitRepo;
             Id = id;
             Insecure = insecure;
+            InsecurePlainHttp = insecurePlainHttp;
             Labels = labels;
             Name = name;
             ResourceVersion = resourceVersion;

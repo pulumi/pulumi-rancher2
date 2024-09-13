@@ -22,7 +22,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, agent_env_vars=None, aks_config=None, aks_config_v2=None, annotations=None, ca_cert=None, cluster_auth_endpoint=None, cluster_monitoring_input=None, cluster_registration_token=None, cluster_template_answers=None, cluster_template_id=None, cluster_template_questions=None, cluster_template_revision_id=None, default_pod_security_admission_configuration_template_name=None, default_pod_security_policy_template_id=None, default_project_id=None, description=None, driver=None, eks_config=None, eks_config_v2=None, enable_cluster_alerting=None, enable_cluster_monitoring=None, enable_network_policy=None, fleet_workspace_name=None, gke_config=None, gke_config_v2=None, id=None, k3s_config=None, kube_config=None, labels=None, name=None, oke_config=None, rke2_config=None, rke_config=None, system_project_id=None):
+    def __init__(__self__, agent_env_vars=None, aks_config=None, aks_config_v2=None, annotations=None, ca_cert=None, cluster_auth_endpoint=None, cluster_registration_token=None, cluster_template_answers=None, cluster_template_id=None, cluster_template_questions=None, cluster_template_revision_id=None, default_pod_security_admission_configuration_template_name=None, default_project_id=None, description=None, driver=None, eks_config=None, eks_config_v2=None, enable_network_policy=None, fleet_workspace_name=None, gke_config=None, gke_config_v2=None, id=None, k3s_config=None, kube_config=None, labels=None, name=None, oke_config=None, rke2_config=None, rke_config=None, system_project_id=None):
         if agent_env_vars and not isinstance(agent_env_vars, list):
             raise TypeError("Expected argument 'agent_env_vars' to be a list")
         pulumi.set(__self__, "agent_env_vars", agent_env_vars)
@@ -41,9 +41,6 @@ class GetClusterResult:
         if cluster_auth_endpoint and not isinstance(cluster_auth_endpoint, dict):
             raise TypeError("Expected argument 'cluster_auth_endpoint' to be a dict")
         pulumi.set(__self__, "cluster_auth_endpoint", cluster_auth_endpoint)
-        if cluster_monitoring_input and not isinstance(cluster_monitoring_input, dict):
-            raise TypeError("Expected argument 'cluster_monitoring_input' to be a dict")
-        pulumi.set(__self__, "cluster_monitoring_input", cluster_monitoring_input)
         if cluster_registration_token and not isinstance(cluster_registration_token, dict):
             raise TypeError("Expected argument 'cluster_registration_token' to be a dict")
         pulumi.set(__self__, "cluster_registration_token", cluster_registration_token)
@@ -62,9 +59,6 @@ class GetClusterResult:
         if default_pod_security_admission_configuration_template_name and not isinstance(default_pod_security_admission_configuration_template_name, str):
             raise TypeError("Expected argument 'default_pod_security_admission_configuration_template_name' to be a str")
         pulumi.set(__self__, "default_pod_security_admission_configuration_template_name", default_pod_security_admission_configuration_template_name)
-        if default_pod_security_policy_template_id and not isinstance(default_pod_security_policy_template_id, str):
-            raise TypeError("Expected argument 'default_pod_security_policy_template_id' to be a str")
-        pulumi.set(__self__, "default_pod_security_policy_template_id", default_pod_security_policy_template_id)
         if default_project_id and not isinstance(default_project_id, str):
             raise TypeError("Expected argument 'default_project_id' to be a str")
         pulumi.set(__self__, "default_project_id", default_project_id)
@@ -80,12 +74,6 @@ class GetClusterResult:
         if eks_config_v2 and not isinstance(eks_config_v2, dict):
             raise TypeError("Expected argument 'eks_config_v2' to be a dict")
         pulumi.set(__self__, "eks_config_v2", eks_config_v2)
-        if enable_cluster_alerting and not isinstance(enable_cluster_alerting, bool):
-            raise TypeError("Expected argument 'enable_cluster_alerting' to be a bool")
-        pulumi.set(__self__, "enable_cluster_alerting", enable_cluster_alerting)
-        if enable_cluster_monitoring and not isinstance(enable_cluster_monitoring, bool):
-            raise TypeError("Expected argument 'enable_cluster_monitoring' to be a bool")
-        pulumi.set(__self__, "enable_cluster_monitoring", enable_cluster_monitoring)
         if enable_network_policy and not isinstance(enable_network_policy, bool):
             raise TypeError("Expected argument 'enable_network_policy' to be a bool")
         pulumi.set(__self__, "enable_network_policy", enable_network_policy)
@@ -175,14 +163,6 @@ class GetClusterResult:
         return pulumi.get(self, "cluster_auth_endpoint")
 
     @property
-    @pulumi.getter(name="clusterMonitoringInput")
-    def cluster_monitoring_input(self) -> 'outputs.GetClusterClusterMonitoringInputResult':
-        """
-        (Computed) Cluster monitoring config (list maxitems:1)
-        """
-        return pulumi.get(self, "cluster_monitoring_input")
-
-    @property
     @pulumi.getter(name="clusterRegistrationToken")
     def cluster_registration_token(self) -> 'outputs.GetClusterClusterRegistrationTokenResult':
         """
@@ -228,14 +208,6 @@ class GetClusterResult:
         return pulumi.get(self, "default_pod_security_admission_configuration_template_name")
 
     @property
-    @pulumi.getter(name="defaultPodSecurityPolicyTemplateId")
-    def default_pod_security_policy_template_id(self) -> str:
-        """
-        (Optional/Computed) [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
-        """
-        return pulumi.get(self, "default_pod_security_policy_template_id")
-
-    @property
     @pulumi.getter(name="defaultProjectId")
     def default_project_id(self) -> str:
         """
@@ -274,19 +246,6 @@ class GetClusterResult:
         (Computed) The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.x and above (list maxitems:1)
         """
         return pulumi.get(self, "eks_config_v2")
-
-    @property
-    @pulumi.getter(name="enableClusterAlerting")
-    def enable_cluster_alerting(self) -> bool:
-        return pulumi.get(self, "enable_cluster_alerting")
-
-    @property
-    @pulumi.getter(name="enableClusterMonitoring")
-    def enable_cluster_monitoring(self) -> bool:
-        """
-        (Computed) Enable built-in cluster monitoring. Default `false` (bool)
-        """
-        return pulumi.get(self, "enable_cluster_monitoring")
 
     @property
     @pulumi.getter(name="enableNetworkPolicy")
@@ -402,21 +361,17 @@ class AwaitableGetClusterResult(GetClusterResult):
             annotations=self.annotations,
             ca_cert=self.ca_cert,
             cluster_auth_endpoint=self.cluster_auth_endpoint,
-            cluster_monitoring_input=self.cluster_monitoring_input,
             cluster_registration_token=self.cluster_registration_token,
             cluster_template_answers=self.cluster_template_answers,
             cluster_template_id=self.cluster_template_id,
             cluster_template_questions=self.cluster_template_questions,
             cluster_template_revision_id=self.cluster_template_revision_id,
             default_pod_security_admission_configuration_template_name=self.default_pod_security_admission_configuration_template_name,
-            default_pod_security_policy_template_id=self.default_pod_security_policy_template_id,
             default_project_id=self.default_project_id,
             description=self.description,
             driver=self.driver,
             eks_config=self.eks_config,
             eks_config_v2=self.eks_config_v2,
-            enable_cluster_alerting=self.enable_cluster_alerting,
-            enable_cluster_monitoring=self.enable_cluster_monitoring,
             enable_network_policy=self.enable_network_policy,
             fleet_workspace_name=self.fleet_workspace_name,
             gke_config=self.gke_config,
@@ -463,21 +418,17 @@ def get_cluster(default_pod_security_admission_configuration_template_name: Opti
         annotations=pulumi.get(__ret__, 'annotations'),
         ca_cert=pulumi.get(__ret__, 'ca_cert'),
         cluster_auth_endpoint=pulumi.get(__ret__, 'cluster_auth_endpoint'),
-        cluster_monitoring_input=pulumi.get(__ret__, 'cluster_monitoring_input'),
         cluster_registration_token=pulumi.get(__ret__, 'cluster_registration_token'),
         cluster_template_answers=pulumi.get(__ret__, 'cluster_template_answers'),
         cluster_template_id=pulumi.get(__ret__, 'cluster_template_id'),
         cluster_template_questions=pulumi.get(__ret__, 'cluster_template_questions'),
         cluster_template_revision_id=pulumi.get(__ret__, 'cluster_template_revision_id'),
         default_pod_security_admission_configuration_template_name=pulumi.get(__ret__, 'default_pod_security_admission_configuration_template_name'),
-        default_pod_security_policy_template_id=pulumi.get(__ret__, 'default_pod_security_policy_template_id'),
         default_project_id=pulumi.get(__ret__, 'default_project_id'),
         description=pulumi.get(__ret__, 'description'),
         driver=pulumi.get(__ret__, 'driver'),
         eks_config=pulumi.get(__ret__, 'eks_config'),
         eks_config_v2=pulumi.get(__ret__, 'eks_config_v2'),
-        enable_cluster_alerting=pulumi.get(__ret__, 'enable_cluster_alerting'),
-        enable_cluster_monitoring=pulumi.get(__ret__, 'enable_cluster_monitoring'),
         enable_network_policy=pulumi.get(__ret__, 'enable_network_policy'),
         fleet_workspace_name=pulumi.get(__ret__, 'fleet_workspace_name'),
         gke_config=pulumi.get(__ret__, 'gke_config'),

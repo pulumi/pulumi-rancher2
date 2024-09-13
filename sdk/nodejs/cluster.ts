@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * **Note optional/computed arguments** If any `optional/computed` argument of this resource is defined by the user, removing it from tf file will NOT reset its value. To reset it, let its definition at tf file as empty/false object. Ex: `enableClusterMonitoring = false`, `cloudProvider {}`, `name = ""`
+ * **Note optional/computed arguments** If any `optional/computed` argument of this resource is defined by the user, removing it from tf file will NOT reset its value. To reset it, let its definition at tf file as empty/false object. Ex: `cloudProvider {}`, `name = ""`
  *
  * ### Creating Rancher v2 imported cluster
  *
@@ -28,9 +28,7 @@ import * as utilities from "./utilities";
  *
  * Creating Rancher v2 RKE cluster
  *
- * ### Creating Rancher v2 RKE cluster enabling and customizing monitoring
- *
- * **Note** Cluster monitoring version `0.2.0` and above, can't be enabled until cluster is fully deployed as [`kubeVersion`](https://github.com/rancher/system-charts/blob/52be656700468904b9bf15c3f39cd7112e1f8c9b/charts/rancher-monitoring/v0.2.0/Chart.yaml#L12) requirement has been introduced to helm chart
+ * ### Creating Rancher v2 RKE cluster enabling
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -44,35 +42,11 @@ import * as utilities from "./utilities";
  *         network: {
  *             plugin: "canal",
  *         },
- *     },
- *     enableClusterMonitoring: true,
- *     clusterMonitoringInput: {
- *         answers: {
- *             "exporter-kubelets.https": "true",
- *             "exporter-node.enabled": "true",
- *             "exporter-node.ports.metrics.port": "9796",
- *             "exporter-node.resources.limits.cpu": "200m",
- *             "exporter-node.resources.limits.memory": "200Mi",
- *             "grafana.persistence.enabled": "false",
- *             "grafana.persistence.size": "10Gi",
- *             "grafana.persistence.storageClass": "default",
- *             "operator.resources.limits.memory": "500Mi",
- *             "prometheus.persistence.enabled": "false",
- *             "prometheus.persistence.size": "50Gi",
- *             "prometheus.persistence.storageClass": "default",
- *             "prometheus.persistent.useReleaseName": "true",
- *             "prometheus.resources.core.limits.cpu": "1000m",
- *             "prometheus.resources.core.limits.memory": "1500Mi",
- *             "prometheus.resources.core.requests.cpu": "750m",
- *             "prometheus.resources.core.requests.memory": "750Mi",
- *             "prometheus.retention": "12h",
- *         },
- *         version: "0.1.0",
  *     },
  * });
  * ```
  *
- * ### Creating Rancher v2 RKE cluster enabling/customizing monitoring and istio
+ * ### Creating Rancher v2 RKE cluster enabling/customizing istio
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -87,43 +61,16 @@ import * as utilities from "./utilities";
  *             plugin: "canal",
  *         },
  *     },
- *     enableClusterMonitoring: true,
- *     clusterMonitoringInput: {
- *         answers: {
- *             "exporter-kubelets.https": "true",
- *             "exporter-node.enabled": "true",
- *             "exporter-node.ports.metrics.port": "9796",
- *             "exporter-node.resources.limits.cpu": "200m",
- *             "exporter-node.resources.limits.memory": "200Mi",
- *             "grafana.persistence.enabled": "false",
- *             "grafana.persistence.size": "10Gi",
- *             "grafana.persistence.storageClass": "default",
- *             "operator.resources.limits.memory": "500Mi",
- *             "prometheus.persistence.enabled": "false",
- *             "prometheus.persistence.size": "50Gi",
- *             "prometheus.persistence.storageClass": "default",
- *             "prometheus.persistent.useReleaseName": "true",
- *             "prometheus.resources.core.limits.cpu": "1000m",
- *             "prometheus.resources.core.limits.memory": "1500Mi",
- *             "prometheus.resources.core.requests.cpu": "750m",
- *             "prometheus.resources.core.requests.memory": "750Mi",
- *             "prometheus.retention": "12h",
- *         },
- *         version: "0.1.0",
- *     },
  * });
  * // Create a new rancher2 Cluster Sync for foo-custom cluster
- * const foo_customClusterSync = new rancher2.ClusterSync("foo-custom", {
- *     clusterId: foo_custom.id,
- *     waitMonitoring: foo_custom.enableClusterMonitoring,
- * });
+ * const foo_customClusterSync = new rancher2.ClusterSync("foo-custom", {clusterId: foo_custom.id});
  * // Create a new rancher2 Namespace
  * const foo_istio = new rancher2.Namespace("foo-istio", {
  *     name: "istio-system",
  *     projectId: foo_customClusterSync.systemProjectId,
  *     description: "istio namespace",
  * });
- * // Create a new rancher2 App deploying istio (should wait until monitoring is up and running)
+ * // Create a new rancher2 App deploying istio
  * const istio = new rancher2.App("istio", {
  *     catalogName: "system-library",
  *     name: "cluster-istio",
@@ -142,7 +89,6 @@ import * as utilities from "./utilities";
  *         "gateways.istio-ingressgateway.resources.requests.cpu": "100m",
  *         "gateways.istio-ingressgateway.resources.requests.memory": "128Mi",
  *         "gateways.istio-ingressgateway.type": "NodePort",
- *         "global.monitoring.type": "cluster-monitoring",
  *         "global.rancher.clusterId": foo_customClusterSync.clusterId,
  *         "istio_cni.enabled": "false",
  *         "istiocoredns.enabled": "false",
@@ -641,10 +587,6 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly clusterAuthEndpoint!: pulumi.Output<outputs.ClusterClusterAuthEndpoint>;
     /**
-     * Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
-     */
-    public readonly clusterMonitoringInput!: pulumi.Output<outputs.ClusterClusterMonitoringInput | undefined>;
-    /**
      * (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
      */
     public /*out*/ readonly clusterRegistrationToken!: pulumi.Output<outputs.ClusterClusterRegistrationToken>;
@@ -668,10 +610,6 @@ export class Cluster extends pulumi.CustomResource {
      * The name of the pre-defined pod security admission configuration template to be applied to the cluster. Rancher admins (or those with the right permissions) can create, manage, and edit those templates. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates). The argument is available in Rancher v2.7.2 and above (string)
      */
     public readonly defaultPodSecurityAdmissionConfigurationTemplateName!: pulumi.Output<string>;
-    /**
-     * [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
-     */
-    public readonly defaultPodSecurityPolicyTemplateId!: pulumi.Output<string>;
     /**
      * (Computed) Default project ID for the cluster (string)
      */
@@ -705,19 +643,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly eksConfigV2!: pulumi.Output<outputs.ClusterEksConfigV2>;
     /**
-     * Enable built-in cluster alerting (bool)
-     */
-    public readonly enableClusterAlerting!: pulumi.Output<boolean>;
-    /**
      * Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.
      *
      * @deprecated Deploy istio using rancher2.App resource instead
      */
     public /*out*/ readonly enableClusterIstio!: pulumi.Output<boolean>;
-    /**
-     * Enable built-in cluster monitoring (bool)
-     */
-    public readonly enableClusterMonitoring!: pulumi.Output<boolean>;
     /**
      * Enable project network isolation (bool)
      */
@@ -799,14 +729,12 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["caCert"] = state ? state.caCert : undefined;
             resourceInputs["clusterAgentDeploymentCustomizations"] = state ? state.clusterAgentDeploymentCustomizations : undefined;
             resourceInputs["clusterAuthEndpoint"] = state ? state.clusterAuthEndpoint : undefined;
-            resourceInputs["clusterMonitoringInput"] = state ? state.clusterMonitoringInput : undefined;
             resourceInputs["clusterRegistrationToken"] = state ? state.clusterRegistrationToken : undefined;
             resourceInputs["clusterTemplateAnswers"] = state ? state.clusterTemplateAnswers : undefined;
             resourceInputs["clusterTemplateId"] = state ? state.clusterTemplateId : undefined;
             resourceInputs["clusterTemplateQuestions"] = state ? state.clusterTemplateQuestions : undefined;
             resourceInputs["clusterTemplateRevisionId"] = state ? state.clusterTemplateRevisionId : undefined;
             resourceInputs["defaultPodSecurityAdmissionConfigurationTemplateName"] = state ? state.defaultPodSecurityAdmissionConfigurationTemplateName : undefined;
-            resourceInputs["defaultPodSecurityPolicyTemplateId"] = state ? state.defaultPodSecurityPolicyTemplateId : undefined;
             resourceInputs["defaultProjectId"] = state ? state.defaultProjectId : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["desiredAgentImage"] = state ? state.desiredAgentImage : undefined;
@@ -815,9 +743,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["driver"] = state ? state.driver : undefined;
             resourceInputs["eksConfig"] = state ? state.eksConfig : undefined;
             resourceInputs["eksConfigV2"] = state ? state.eksConfigV2 : undefined;
-            resourceInputs["enableClusterAlerting"] = state ? state.enableClusterAlerting : undefined;
             resourceInputs["enableClusterIstio"] = state ? state.enableClusterIstio : undefined;
-            resourceInputs["enableClusterMonitoring"] = state ? state.enableClusterMonitoring : undefined;
             resourceInputs["enableNetworkPolicy"] = state ? state.enableNetworkPolicy : undefined;
             resourceInputs["fleetAgentDeploymentCustomizations"] = state ? state.fleetAgentDeploymentCustomizations : undefined;
             resourceInputs["fleetWorkspaceName"] = state ? state.fleetWorkspaceName : undefined;
@@ -841,13 +767,11 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["clusterAgentDeploymentCustomizations"] = args ? args.clusterAgentDeploymentCustomizations : undefined;
             resourceInputs["clusterAuthEndpoint"] = args ? args.clusterAuthEndpoint : undefined;
-            resourceInputs["clusterMonitoringInput"] = args ? args.clusterMonitoringInput : undefined;
             resourceInputs["clusterTemplateAnswers"] = args ? args.clusterTemplateAnswers : undefined;
             resourceInputs["clusterTemplateId"] = args ? args.clusterTemplateId : undefined;
             resourceInputs["clusterTemplateQuestions"] = args ? args.clusterTemplateQuestions : undefined;
             resourceInputs["clusterTemplateRevisionId"] = args ? args.clusterTemplateRevisionId : undefined;
             resourceInputs["defaultPodSecurityAdmissionConfigurationTemplateName"] = args ? args.defaultPodSecurityAdmissionConfigurationTemplateName : undefined;
-            resourceInputs["defaultPodSecurityPolicyTemplateId"] = args ? args.defaultPodSecurityPolicyTemplateId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["desiredAgentImage"] = args ? args.desiredAgentImage : undefined;
             resourceInputs["desiredAuthImage"] = args ? args.desiredAuthImage : undefined;
@@ -855,8 +779,6 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["driver"] = args ? args.driver : undefined;
             resourceInputs["eksConfig"] = args ? args.eksConfig : undefined;
             resourceInputs["eksConfigV2"] = args ? args.eksConfigV2 : undefined;
-            resourceInputs["enableClusterAlerting"] = args ? args.enableClusterAlerting : undefined;
-            resourceInputs["enableClusterMonitoring"] = args ? args.enableClusterMonitoring : undefined;
             resourceInputs["enableNetworkPolicy"] = args ? args.enableNetworkPolicy : undefined;
             resourceInputs["fleetAgentDeploymentCustomizations"] = args ? args.fleetAgentDeploymentCustomizations : undefined;
             resourceInputs["fleetWorkspaceName"] = args ? args.fleetWorkspaceName : undefined;
@@ -917,10 +839,6 @@ export interface ClusterState {
      */
     clusterAuthEndpoint?: pulumi.Input<inputs.ClusterClusterAuthEndpoint>;
     /**
-     * Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
-     */
-    clusterMonitoringInput?: pulumi.Input<inputs.ClusterClusterMonitoringInput>;
-    /**
      * (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
      */
     clusterRegistrationToken?: pulumi.Input<inputs.ClusterClusterRegistrationToken>;
@@ -944,10 +862,6 @@ export interface ClusterState {
      * The name of the pre-defined pod security admission configuration template to be applied to the cluster. Rancher admins (or those with the right permissions) can create, manage, and edit those templates. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates). The argument is available in Rancher v2.7.2 and above (string)
      */
     defaultPodSecurityAdmissionConfigurationTemplateName?: pulumi.Input<string>;
-    /**
-     * [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
-     */
-    defaultPodSecurityPolicyTemplateId?: pulumi.Input<string>;
     /**
      * (Computed) Default project ID for the cluster (string)
      */
@@ -981,19 +895,11 @@ export interface ClusterState {
      */
     eksConfigV2?: pulumi.Input<inputs.ClusterEksConfigV2>;
     /**
-     * Enable built-in cluster alerting (bool)
-     */
-    enableClusterAlerting?: pulumi.Input<boolean>;
-    /**
      * Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.
      *
      * @deprecated Deploy istio using rancher2.App resource instead
      */
     enableClusterIstio?: pulumi.Input<boolean>;
-    /**
-     * Enable built-in cluster monitoring (bool)
-     */
-    enableClusterMonitoring?: pulumi.Input<boolean>;
     /**
      * Enable project network isolation (bool)
      */
@@ -1085,10 +991,6 @@ export interface ClusterArgs {
      */
     clusterAuthEndpoint?: pulumi.Input<inputs.ClusterClusterAuthEndpoint>;
     /**
-     * Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
-     */
-    clusterMonitoringInput?: pulumi.Input<inputs.ClusterClusterMonitoringInput>;
-    /**
      * Cluster template answers. For Rancher v2.3.x and above (list maxitems:1)
      */
     clusterTemplateAnswers?: pulumi.Input<inputs.ClusterClusterTemplateAnswers>;
@@ -1108,10 +1010,6 @@ export interface ClusterArgs {
      * The name of the pre-defined pod security admission configuration template to be applied to the cluster. Rancher admins (or those with the right permissions) can create, manage, and edit those templates. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates). The argument is available in Rancher v2.7.2 and above (string)
      */
     defaultPodSecurityAdmissionConfigurationTemplateName?: pulumi.Input<string>;
-    /**
-     * [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
-     */
-    defaultPodSecurityPolicyTemplateId?: pulumi.Input<string>;
     /**
      * The description for Cluster (string)
      */
@@ -1140,14 +1038,6 @@ export interface ClusterArgs {
      * The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig`. For Rancher v2.5.x and above (list maxitems:1)
      */
     eksConfigV2?: pulumi.Input<inputs.ClusterEksConfigV2>;
-    /**
-     * Enable built-in cluster alerting (bool)
-     */
-    enableClusterAlerting?: pulumi.Input<boolean>;
-    /**
-     * Enable built-in cluster monitoring (bool)
-     */
-    enableClusterMonitoring?: pulumi.Input<boolean>;
     /**
      * Enable project network isolation (bool)
      */

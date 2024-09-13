@@ -48,6 +48,24 @@ namespace Pulumi.Rancher2
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
+        /// Maximum number of retries before returning error
+        /// </summary>
+        [Output("exponentialBackoffMaxRetries")]
+        public Output<int> ExponentialBackoffMaxRetries { get; private set; } = null!;
+
+        /// <summary>
+        /// Maximum amount of seconds to wait before retrying
+        /// </summary>
+        [Output("exponentialBackoffMaxWait")]
+        public Output<int> ExponentialBackoffMaxWait { get; private set; } = null!;
+
+        /// <summary>
+        /// Minimum amount of seconds to wait before retrying
+        /// </summary>
+        [Output("exponentialBackoffMinWait")]
+        public Output<int> ExponentialBackoffMinWait { get; private set; } = null!;
+
+        /// <summary>
         /// Git Repository branch containing Helm chart definitions. Default `master` (string)
         /// </summary>
         [Output("gitBranch")]
@@ -64,6 +82,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Output("insecure")]
         public Output<bool?> Insecure { get; private set; } = null!;
+
+        /// <summary>
+        /// Only valid for OCI URL's. Allows insecure connections to registries without enforcing TLS checks
+        /// </summary>
+        [Output("insecurePlainHttp")]
+        public Output<bool?> InsecurePlainHttp { get; private set; } = null!;
 
         /// <summary>
         /// Labels for the catalog v2 (map)
@@ -190,6 +214,24 @@ namespace Pulumi.Rancher2
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
+        /// Maximum number of retries before returning error
+        /// </summary>
+        [Input("exponentialBackoffMaxRetries")]
+        public Input<int>? ExponentialBackoffMaxRetries { get; set; }
+
+        /// <summary>
+        /// Maximum amount of seconds to wait before retrying
+        /// </summary>
+        [Input("exponentialBackoffMaxWait")]
+        public Input<int>? ExponentialBackoffMaxWait { get; set; }
+
+        /// <summary>
+        /// Minimum amount of seconds to wait before retrying
+        /// </summary>
+        [Input("exponentialBackoffMinWait")]
+        public Input<int>? ExponentialBackoffMinWait { get; set; }
+
+        /// <summary>
         /// Git Repository branch containing Helm chart definitions. Default `master` (string)
         /// </summary>
         [Input("gitBranch")]
@@ -206,6 +248,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("insecure")]
         public Input<bool>? Insecure { get; set; }
+
+        /// <summary>
+        /// Only valid for OCI URL's. Allows insecure connections to registries without enforcing TLS checks
+        /// </summary>
+        [Input("insecurePlainHttp")]
+        public Input<bool>? InsecurePlainHttp { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -294,6 +342,24 @@ namespace Pulumi.Rancher2
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
+        /// Maximum number of retries before returning error
+        /// </summary>
+        [Input("exponentialBackoffMaxRetries")]
+        public Input<int>? ExponentialBackoffMaxRetries { get; set; }
+
+        /// <summary>
+        /// Maximum amount of seconds to wait before retrying
+        /// </summary>
+        [Input("exponentialBackoffMaxWait")]
+        public Input<int>? ExponentialBackoffMaxWait { get; set; }
+
+        /// <summary>
+        /// Minimum amount of seconds to wait before retrying
+        /// </summary>
+        [Input("exponentialBackoffMinWait")]
+        public Input<int>? ExponentialBackoffMinWait { get; set; }
+
+        /// <summary>
         /// Git Repository branch containing Helm chart definitions. Default `master` (string)
         /// </summary>
         [Input("gitBranch")]
@@ -310,6 +376,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("insecure")]
         public Input<bool>? Insecure { get; set; }
+
+        /// <summary>
+        /// Only valid for OCI URL's. Allows insecure connections to registries without enforcing TLS checks
+        /// </summary>
+        [Input("insecurePlainHttp")]
+        public Input<bool>? InsecurePlainHttp { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

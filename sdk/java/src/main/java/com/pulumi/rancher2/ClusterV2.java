@@ -148,20 +148,6 @@ public class ClusterV2 extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.defaultPodSecurityAdmissionConfigurationTemplateName);
     }
     /**
-     * Default pod security policy template name specifies the default PSP for the cluster. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies).
-     * 
-     */
-    @Export(name="defaultPodSecurityPolicyTemplateName", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> defaultPodSecurityPolicyTemplateName;
-
-    /**
-     * @return Default pod security policy template name specifies the default PSP for the cluster. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies).
-     * 
-     */
-    public Output<Optional<String>> defaultPodSecurityPolicyTemplateName() {
-        return Codegen.optional(this.defaultPodSecurityPolicyTemplateName);
-    }
-    /**
      * Enable k8s network policy on the cluster.
      * 
      */

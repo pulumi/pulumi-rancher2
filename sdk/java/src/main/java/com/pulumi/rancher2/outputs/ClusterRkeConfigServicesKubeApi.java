@@ -59,11 +59,6 @@ public final class ClusterRkeConfigServicesKubeApi {
      */
     private @Nullable String image;
     /**
-     * @return Pod Security Policy option for kube API service. Default `false` (bool)
-     * 
-     */
-    private @Nullable Boolean podSecurityPolicy;
-    /**
      * @return [Encrypt k8s secret data configration](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/). (list maxitem: 1)
      * 
      */
@@ -137,13 +132,6 @@ public final class ClusterRkeConfigServicesKubeApi {
         return Optional.ofNullable(this.image);
     }
     /**
-     * @return Pod Security Policy option for kube API service. Default `false` (bool)
-     * 
-     */
-    public Optional<Boolean> podSecurityPolicy() {
-        return Optional.ofNullable(this.podSecurityPolicy);
-    }
-    /**
      * @return [Encrypt k8s secret data configration](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/). (list maxitem: 1)
      * 
      */
@@ -182,7 +170,6 @@ public final class ClusterRkeConfigServicesKubeApi {
         private @Nullable List<String> extraBinds;
         private @Nullable List<String> extraEnvs;
         private @Nullable String image;
-        private @Nullable Boolean podSecurityPolicy;
         private @Nullable ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig secretsEncryptionConfig;
         private @Nullable String serviceClusterIpRange;
         private @Nullable String serviceNodePortRange;
@@ -197,7 +184,6 @@ public final class ClusterRkeConfigServicesKubeApi {
     	      this.extraBinds = defaults.extraBinds;
     	      this.extraEnvs = defaults.extraEnvs;
     	      this.image = defaults.image;
-    	      this.podSecurityPolicy = defaults.podSecurityPolicy;
     	      this.secretsEncryptionConfig = defaults.secretsEncryptionConfig;
     	      this.serviceClusterIpRange = defaults.serviceClusterIpRange;
     	      this.serviceNodePortRange = defaults.serviceNodePortRange;
@@ -258,12 +244,6 @@ public final class ClusterRkeConfigServicesKubeApi {
             return this;
         }
         @CustomType.Setter
-        public Builder podSecurityPolicy(@Nullable Boolean podSecurityPolicy) {
-
-            this.podSecurityPolicy = podSecurityPolicy;
-            return this;
-        }
-        @CustomType.Setter
         public Builder secretsEncryptionConfig(@Nullable ClusterRkeConfigServicesKubeApiSecretsEncryptionConfig secretsEncryptionConfig) {
 
             this.secretsEncryptionConfig = secretsEncryptionConfig;
@@ -291,7 +271,6 @@ public final class ClusterRkeConfigServicesKubeApi {
             _resultValue.extraBinds = extraBinds;
             _resultValue.extraEnvs = extraEnvs;
             _resultValue.image = image;
-            _resultValue.podSecurityPolicy = podSecurityPolicy;
             _resultValue.secretsEncryptionConfig = secretsEncryptionConfig;
             _resultValue.serviceClusterIpRange = serviceClusterIpRange;
             _resultValue.serviceNodePortRange = serviceNodePortRange;

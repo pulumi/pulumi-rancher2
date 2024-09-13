@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-rancher2/sdk/v6/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v7/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,7 +25,11 @@ func LookupCatalogV2(ctx *pulumi.Context, args *LookupCatalogV2Args, opts ...pul
 // A collection of arguments for invoking getCatalogV2.
 type LookupCatalogV2Args struct {
 	// The cluster id of the catalog V2 (string)
-	ClusterId string `pulumi:"clusterId"`
+	ClusterId                    string `pulumi:"clusterId"`
+	ExponentialBackoffMaxRetries *int   `pulumi:"exponentialBackoffMaxRetries"`
+	ExponentialBackoffMaxWait    *int   `pulumi:"exponentialBackoffMaxWait"`
+	ExponentialBackoffMinWait    *int   `pulumi:"exponentialBackoffMinWait"`
+	InsecurePlainHttp            *bool  `pulumi:"insecurePlainHttp"`
 	// The name of the catalog v2 (string)
 	Name string `pulumi:"name"`
 }
@@ -38,7 +42,10 @@ type LookupCatalogV2Result struct {
 	CaBundle  string `pulumi:"caBundle"`
 	ClusterId string `pulumi:"clusterId"`
 	// (Computed) If disabled the repo clone will not be updated or allowed to be installed from. Default: `true` (bool)
-	Enabled bool `pulumi:"enabled"`
+	Enabled                      bool `pulumi:"enabled"`
+	ExponentialBackoffMaxRetries int  `pulumi:"exponentialBackoffMaxRetries"`
+	ExponentialBackoffMaxWait    int  `pulumi:"exponentialBackoffMaxWait"`
+	ExponentialBackoffMinWait    int  `pulumi:"exponentialBackoffMinWait"`
 	// (Computed) Git Repository branch containing Helm chart definitions. Default `master` (string)
 	GitBranch string `pulumi:"gitBranch"`
 	// (Computed) The url of the catalog v2 repo (string)
@@ -46,7 +53,8 @@ type LookupCatalogV2Result struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Use insecure HTTPS to download the repo's index. Default: `false` (bool)
-	Insecure bool `pulumi:"insecure"`
+	Insecure          bool  `pulumi:"insecure"`
+	InsecurePlainHttp *bool `pulumi:"insecurePlainHttp"`
 	// (Computed) Labels for the catalog v2 (map)
 	Labels map[string]string `pulumi:"labels"`
 	Name   string            `pulumi:"name"`
@@ -80,7 +88,11 @@ func LookupCatalogV2Output(ctx *pulumi.Context, args LookupCatalogV2OutputArgs, 
 // A collection of arguments for invoking getCatalogV2.
 type LookupCatalogV2OutputArgs struct {
 	// The cluster id of the catalog V2 (string)
-	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	ClusterId                    pulumi.StringInput  `pulumi:"clusterId"`
+	ExponentialBackoffMaxRetries pulumi.IntPtrInput  `pulumi:"exponentialBackoffMaxRetries"`
+	ExponentialBackoffMaxWait    pulumi.IntPtrInput  `pulumi:"exponentialBackoffMaxWait"`
+	ExponentialBackoffMinWait    pulumi.IntPtrInput  `pulumi:"exponentialBackoffMinWait"`
+	InsecurePlainHttp            pulumi.BoolPtrInput `pulumi:"insecurePlainHttp"`
 	// The name of the catalog v2 (string)
 	Name pulumi.StringInput `pulumi:"name"`
 }
@@ -123,6 +135,18 @@ func (o LookupCatalogV2ResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupCatalogV2Result) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+func (o LookupCatalogV2ResultOutput) ExponentialBackoffMaxRetries() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupCatalogV2Result) int { return v.ExponentialBackoffMaxRetries }).(pulumi.IntOutput)
+}
+
+func (o LookupCatalogV2ResultOutput) ExponentialBackoffMaxWait() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupCatalogV2Result) int { return v.ExponentialBackoffMaxWait }).(pulumi.IntOutput)
+}
+
+func (o LookupCatalogV2ResultOutput) ExponentialBackoffMinWait() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupCatalogV2Result) int { return v.ExponentialBackoffMinWait }).(pulumi.IntOutput)
+}
+
 // (Computed) Git Repository branch containing Helm chart definitions. Default `master` (string)
 func (o LookupCatalogV2ResultOutput) GitBranch() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCatalogV2Result) string { return v.GitBranch }).(pulumi.StringOutput)
@@ -141,6 +165,10 @@ func (o LookupCatalogV2ResultOutput) Id() pulumi.StringOutput {
 // (Computed) Use insecure HTTPS to download the repo's index. Default: `false` (bool)
 func (o LookupCatalogV2ResultOutput) Insecure() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupCatalogV2Result) bool { return v.Insecure }).(pulumi.BoolOutput)
+}
+
+func (o LookupCatalogV2ResultOutput) InsecurePlainHttp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupCatalogV2Result) *bool { return v.InsecurePlainHttp }).(pulumi.BoolPtrOutput)
 }
 
 // (Computed) Labels for the catalog v2 (map)

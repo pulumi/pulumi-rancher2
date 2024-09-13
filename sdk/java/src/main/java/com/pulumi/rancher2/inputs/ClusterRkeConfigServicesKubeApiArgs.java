@@ -143,21 +143,6 @@ public final class ClusterRkeConfigServicesKubeApiArgs extends com.pulumi.resour
     }
 
     /**
-     * Pod Security Policy option for kube API service. Default `false` (bool)
-     * 
-     */
-    @Import(name="podSecurityPolicy")
-    private @Nullable Output<Boolean> podSecurityPolicy;
-
-    /**
-     * @return Pod Security Policy option for kube API service. Default `false` (bool)
-     * 
-     */
-    public Optional<Output<Boolean>> podSecurityPolicy() {
-        return Optional.ofNullable(this.podSecurityPolicy);
-    }
-
-    /**
      * [Encrypt k8s secret data configration](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/). (list maxitem: 1)
      * 
      */
@@ -213,7 +198,6 @@ public final class ClusterRkeConfigServicesKubeApiArgs extends com.pulumi.resour
         this.extraBinds = $.extraBinds;
         this.extraEnvs = $.extraEnvs;
         this.image = $.image;
-        this.podSecurityPolicy = $.podSecurityPolicy;
         this.secretsEncryptionConfig = $.secretsEncryptionConfig;
         this.serviceClusterIpRange = $.serviceClusterIpRange;
         this.serviceNodePortRange = $.serviceNodePortRange;
@@ -423,27 +407,6 @@ public final class ClusterRkeConfigServicesKubeApiArgs extends com.pulumi.resour
          */
         public Builder image(String image) {
             return image(Output.of(image));
-        }
-
-        /**
-         * @param podSecurityPolicy Pod Security Policy option for kube API service. Default `false` (bool)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder podSecurityPolicy(@Nullable Output<Boolean> podSecurityPolicy) {
-            $.podSecurityPolicy = podSecurityPolicy;
-            return this;
-        }
-
-        /**
-         * @param podSecurityPolicy Pod Security Policy option for kube API service. Default `false` (bool)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder podSecurityPolicy(Boolean podSecurityPolicy) {
-            return podSecurityPolicy(Output.of(podSecurityPolicy));
         }
 
         /**

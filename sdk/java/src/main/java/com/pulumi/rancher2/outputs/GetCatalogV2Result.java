@@ -6,9 +6,12 @@ package com.pulumi.rancher2.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCatalogV2Result {
@@ -28,6 +31,9 @@ public final class GetCatalogV2Result {
      * 
      */
     private Boolean enabled;
+    private Integer exponentialBackoffMaxRetries;
+    private Integer exponentialBackoffMaxWait;
+    private Integer exponentialBackoffMinWait;
     /**
      * @return (Computed) Git Repository branch containing Helm chart definitions. Default `master` (string)
      * 
@@ -48,6 +54,7 @@ public final class GetCatalogV2Result {
      * 
      */
     private Boolean insecure;
+    private @Nullable Boolean insecurePlainHttp;
     /**
      * @return (Computed) Labels for the catalog v2 (map)
      * 
@@ -110,6 +117,15 @@ public final class GetCatalogV2Result {
     public Boolean enabled() {
         return this.enabled;
     }
+    public Integer exponentialBackoffMaxRetries() {
+        return this.exponentialBackoffMaxRetries;
+    }
+    public Integer exponentialBackoffMaxWait() {
+        return this.exponentialBackoffMaxWait;
+    }
+    public Integer exponentialBackoffMinWait() {
+        return this.exponentialBackoffMinWait;
+    }
     /**
      * @return (Computed) Git Repository branch containing Helm chart definitions. Default `master` (string)
      * 
@@ -137,6 +153,9 @@ public final class GetCatalogV2Result {
      */
     public Boolean insecure() {
         return this.insecure;
+    }
+    public Optional<Boolean> insecurePlainHttp() {
+        return Optional.ofNullable(this.insecurePlainHttp);
     }
     /**
      * @return (Computed) Labels for the catalog v2 (map)
@@ -204,10 +223,14 @@ public final class GetCatalogV2Result {
         private String caBundle;
         private String clusterId;
         private Boolean enabled;
+        private Integer exponentialBackoffMaxRetries;
+        private Integer exponentialBackoffMaxWait;
+        private Integer exponentialBackoffMinWait;
         private String gitBranch;
         private String gitRepo;
         private String id;
         private Boolean insecure;
+        private @Nullable Boolean insecurePlainHttp;
         private Map<String,String> labels;
         private String name;
         private String resourceVersion;
@@ -223,10 +246,14 @@ public final class GetCatalogV2Result {
     	      this.caBundle = defaults.caBundle;
     	      this.clusterId = defaults.clusterId;
     	      this.enabled = defaults.enabled;
+    	      this.exponentialBackoffMaxRetries = defaults.exponentialBackoffMaxRetries;
+    	      this.exponentialBackoffMaxWait = defaults.exponentialBackoffMaxWait;
+    	      this.exponentialBackoffMinWait = defaults.exponentialBackoffMinWait;
     	      this.gitBranch = defaults.gitBranch;
     	      this.gitRepo = defaults.gitRepo;
     	      this.id = defaults.id;
     	      this.insecure = defaults.insecure;
+    	      this.insecurePlainHttp = defaults.insecurePlainHttp;
     	      this.labels = defaults.labels;
     	      this.name = defaults.name;
     	      this.resourceVersion = defaults.resourceVersion;
@@ -270,6 +297,30 @@ public final class GetCatalogV2Result {
             return this;
         }
         @CustomType.Setter
+        public Builder exponentialBackoffMaxRetries(Integer exponentialBackoffMaxRetries) {
+            if (exponentialBackoffMaxRetries == null) {
+              throw new MissingRequiredPropertyException("GetCatalogV2Result", "exponentialBackoffMaxRetries");
+            }
+            this.exponentialBackoffMaxRetries = exponentialBackoffMaxRetries;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder exponentialBackoffMaxWait(Integer exponentialBackoffMaxWait) {
+            if (exponentialBackoffMaxWait == null) {
+              throw new MissingRequiredPropertyException("GetCatalogV2Result", "exponentialBackoffMaxWait");
+            }
+            this.exponentialBackoffMaxWait = exponentialBackoffMaxWait;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder exponentialBackoffMinWait(Integer exponentialBackoffMinWait) {
+            if (exponentialBackoffMinWait == null) {
+              throw new MissingRequiredPropertyException("GetCatalogV2Result", "exponentialBackoffMinWait");
+            }
+            this.exponentialBackoffMinWait = exponentialBackoffMinWait;
+            return this;
+        }
+        @CustomType.Setter
         public Builder gitBranch(String gitBranch) {
             if (gitBranch == null) {
               throw new MissingRequiredPropertyException("GetCatalogV2Result", "gitBranch");
@@ -299,6 +350,12 @@ public final class GetCatalogV2Result {
               throw new MissingRequiredPropertyException("GetCatalogV2Result", "insecure");
             }
             this.insecure = insecure;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder insecurePlainHttp(@Nullable Boolean insecurePlainHttp) {
+
+            this.insecurePlainHttp = insecurePlainHttp;
             return this;
         }
         @CustomType.Setter
@@ -371,10 +428,14 @@ public final class GetCatalogV2Result {
             _resultValue.caBundle = caBundle;
             _resultValue.clusterId = clusterId;
             _resultValue.enabled = enabled;
+            _resultValue.exponentialBackoffMaxRetries = exponentialBackoffMaxRetries;
+            _resultValue.exponentialBackoffMaxWait = exponentialBackoffMaxWait;
+            _resultValue.exponentialBackoffMinWait = exponentialBackoffMinWait;
             _resultValue.gitBranch = gitBranch;
             _resultValue.gitRepo = gitRepo;
             _resultValue.id = id;
             _resultValue.insecure = insecure;
+            _resultValue.insecurePlainHttp = insecurePlainHttp;
             _resultValue.labels = labels;
             _resultValue.name = name;
             _resultValue.resourceVersion = resourceVersion;

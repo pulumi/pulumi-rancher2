@@ -60,6 +60,18 @@ export class CatalogV2 extends pulumi.CustomResource {
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
+     * Maximum number of retries before returning error
+     */
+    public readonly exponentialBackoffMaxRetries!: pulumi.Output<number>;
+    /**
+     * Maximum amount of seconds to wait before retrying
+     */
+    public readonly exponentialBackoffMaxWait!: pulumi.Output<number>;
+    /**
+     * Minimum amount of seconds to wait before retrying
+     */
+    public readonly exponentialBackoffMinWait!: pulumi.Output<number>;
+    /**
      * Git Repository branch containing Helm chart definitions. Default `master` (string)
      */
     public readonly gitBranch!: pulumi.Output<string>;
@@ -71,6 +83,10 @@ export class CatalogV2 extends pulumi.CustomResource {
      * Use insecure HTTPS to download the repo's index. Default: `false` (bool)
      */
     public readonly insecure!: pulumi.Output<boolean | undefined>;
+    /**
+     * Only valid for OCI URL's. Allows insecure connections to registries without enforcing TLS checks
+     */
+    public readonly insecurePlainHttp!: pulumi.Output<boolean | undefined>;
     /**
      * Labels for the catalog v2 (map)
      */
@@ -121,9 +137,13 @@ export class CatalogV2 extends pulumi.CustomResource {
             resourceInputs["caBundle"] = state ? state.caBundle : undefined;
             resourceInputs["clusterId"] = state ? state.clusterId : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["exponentialBackoffMaxRetries"] = state ? state.exponentialBackoffMaxRetries : undefined;
+            resourceInputs["exponentialBackoffMaxWait"] = state ? state.exponentialBackoffMaxWait : undefined;
+            resourceInputs["exponentialBackoffMinWait"] = state ? state.exponentialBackoffMinWait : undefined;
             resourceInputs["gitBranch"] = state ? state.gitBranch : undefined;
             resourceInputs["gitRepo"] = state ? state.gitRepo : undefined;
             resourceInputs["insecure"] = state ? state.insecure : undefined;
+            resourceInputs["insecurePlainHttp"] = state ? state.insecurePlainHttp : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["resourceVersion"] = state ? state.resourceVersion : undefined;
@@ -141,9 +161,13 @@ export class CatalogV2 extends pulumi.CustomResource {
             resourceInputs["caBundle"] = args ? args.caBundle : undefined;
             resourceInputs["clusterId"] = args ? args.clusterId : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["exponentialBackoffMaxRetries"] = args ? args.exponentialBackoffMaxRetries : undefined;
+            resourceInputs["exponentialBackoffMaxWait"] = args ? args.exponentialBackoffMaxWait : undefined;
+            resourceInputs["exponentialBackoffMinWait"] = args ? args.exponentialBackoffMinWait : undefined;
             resourceInputs["gitBranch"] = args ? args.gitBranch : undefined;
             resourceInputs["gitRepo"] = args ? args.gitRepo : undefined;
             resourceInputs["insecure"] = args ? args.insecure : undefined;
+            resourceInputs["insecurePlainHttp"] = args ? args.insecurePlainHttp : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["secretName"] = args ? args.secretName : undefined;
@@ -179,6 +203,18 @@ export interface CatalogV2State {
      */
     enabled?: pulumi.Input<boolean>;
     /**
+     * Maximum number of retries before returning error
+     */
+    exponentialBackoffMaxRetries?: pulumi.Input<number>;
+    /**
+     * Maximum amount of seconds to wait before retrying
+     */
+    exponentialBackoffMaxWait?: pulumi.Input<number>;
+    /**
+     * Minimum amount of seconds to wait before retrying
+     */
+    exponentialBackoffMinWait?: pulumi.Input<number>;
+    /**
      * Git Repository branch containing Helm chart definitions. Default `master` (string)
      */
     gitBranch?: pulumi.Input<string>;
@@ -190,6 +226,10 @@ export interface CatalogV2State {
      * Use insecure HTTPS to download the repo's index. Default: `false` (bool)
      */
     insecure?: pulumi.Input<boolean>;
+    /**
+     * Only valid for OCI URL's. Allows insecure connections to registries without enforcing TLS checks
+     */
+    insecurePlainHttp?: pulumi.Input<boolean>;
     /**
      * Labels for the catalog v2 (map)
      */
@@ -245,6 +285,18 @@ export interface CatalogV2Args {
      */
     enabled?: pulumi.Input<boolean>;
     /**
+     * Maximum number of retries before returning error
+     */
+    exponentialBackoffMaxRetries?: pulumi.Input<number>;
+    /**
+     * Maximum amount of seconds to wait before retrying
+     */
+    exponentialBackoffMaxWait?: pulumi.Input<number>;
+    /**
+     * Minimum amount of seconds to wait before retrying
+     */
+    exponentialBackoffMinWait?: pulumi.Input<number>;
+    /**
      * Git Repository branch containing Helm chart definitions. Default `master` (string)
      */
     gitBranch?: pulumi.Input<string>;
@@ -256,6 +308,10 @@ export interface CatalogV2Args {
      * Use insecure HTTPS to download the repo's index. Default: `false` (bool)
      */
     insecure?: pulumi.Input<boolean>;
+    /**
+     * Only valid for OCI URL's. Allows insecure connections to registries without enforcing TLS checks
+     */
+    insecurePlainHttp?: pulumi.Input<boolean>;
     /**
      * Labels for the catalog v2 (map)
      */

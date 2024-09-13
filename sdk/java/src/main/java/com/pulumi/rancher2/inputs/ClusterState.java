@@ -10,7 +10,6 @@ import com.pulumi.rancher2.inputs.ClusterAksConfigArgs;
 import com.pulumi.rancher2.inputs.ClusterAksConfigV2Args;
 import com.pulumi.rancher2.inputs.ClusterClusterAgentDeploymentCustomizationArgs;
 import com.pulumi.rancher2.inputs.ClusterClusterAuthEndpointArgs;
-import com.pulumi.rancher2.inputs.ClusterClusterMonitoringInputArgs;
 import com.pulumi.rancher2.inputs.ClusterClusterRegistrationTokenArgs;
 import com.pulumi.rancher2.inputs.ClusterClusterTemplateAnswersArgs;
 import com.pulumi.rancher2.inputs.ClusterClusterTemplateQuestionArgs;
@@ -142,21 +141,6 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
-     * 
-     */
-    @Import(name="clusterMonitoringInput")
-    private @Nullable Output<ClusterClusterMonitoringInputArgs> clusterMonitoringInput;
-
-    /**
-     * @return Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
-     * 
-     */
-    public Optional<Output<ClusterClusterMonitoringInputArgs>> clusterMonitoringInput() {
-        return Optional.ofNullable(this.clusterMonitoringInput);
-    }
-
-    /**
      * (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
      * 
      */
@@ -244,21 +228,6 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> defaultPodSecurityAdmissionConfigurationTemplateName() {
         return Optional.ofNullable(this.defaultPodSecurityAdmissionConfigurationTemplateName);
-    }
-
-    /**
-     * [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
-     * 
-     */
-    @Import(name="defaultPodSecurityPolicyTemplateId")
-    private @Nullable Output<String> defaultPodSecurityPolicyTemplateId;
-
-    /**
-     * @return [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
-     * 
-     */
-    public Optional<Output<String>> defaultPodSecurityPolicyTemplateId() {
-        return Optional.ofNullable(this.defaultPodSecurityPolicyTemplateId);
     }
 
     /**
@@ -382,21 +351,6 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable built-in cluster alerting (bool)
-     * 
-     */
-    @Import(name="enableClusterAlerting")
-    private @Nullable Output<Boolean> enableClusterAlerting;
-
-    /**
-     * @return Enable built-in cluster alerting (bool)
-     * 
-     */
-    public Optional<Output<Boolean>> enableClusterAlerting() {
-        return Optional.ofNullable(this.enableClusterAlerting);
-    }
-
-    /**
      * Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.
      * 
      * @deprecated
@@ -417,21 +371,6 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     @Deprecated /* Deploy istio using rancher2.App resource instead */
     public Optional<Output<Boolean>> enableClusterIstio() {
         return Optional.ofNullable(this.enableClusterIstio);
-    }
-
-    /**
-     * Enable built-in cluster monitoring (bool)
-     * 
-     */
-    @Import(name="enableClusterMonitoring")
-    private @Nullable Output<Boolean> enableClusterMonitoring;
-
-    /**
-     * @return Enable built-in cluster monitoring (bool)
-     * 
-     */
-    public Optional<Output<Boolean>> enableClusterMonitoring() {
-        return Optional.ofNullable(this.enableClusterMonitoring);
     }
 
     /**
@@ -669,14 +608,12 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.caCert = $.caCert;
         this.clusterAgentDeploymentCustomizations = $.clusterAgentDeploymentCustomizations;
         this.clusterAuthEndpoint = $.clusterAuthEndpoint;
-        this.clusterMonitoringInput = $.clusterMonitoringInput;
         this.clusterRegistrationToken = $.clusterRegistrationToken;
         this.clusterTemplateAnswers = $.clusterTemplateAnswers;
         this.clusterTemplateId = $.clusterTemplateId;
         this.clusterTemplateQuestions = $.clusterTemplateQuestions;
         this.clusterTemplateRevisionId = $.clusterTemplateRevisionId;
         this.defaultPodSecurityAdmissionConfigurationTemplateName = $.defaultPodSecurityAdmissionConfigurationTemplateName;
-        this.defaultPodSecurityPolicyTemplateId = $.defaultPodSecurityPolicyTemplateId;
         this.defaultProjectId = $.defaultProjectId;
         this.description = $.description;
         this.desiredAgentImage = $.desiredAgentImage;
@@ -685,9 +622,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.driver = $.driver;
         this.eksConfig = $.eksConfig;
         this.eksConfigV2 = $.eksConfigV2;
-        this.enableClusterAlerting = $.enableClusterAlerting;
         this.enableClusterIstio = $.enableClusterIstio;
-        this.enableClusterMonitoring = $.enableClusterMonitoring;
         this.enableNetworkPolicy = $.enableNetworkPolicy;
         this.fleetAgentDeploymentCustomizations = $.fleetAgentDeploymentCustomizations;
         this.fleetWorkspaceName = $.fleetWorkspaceName;
@@ -891,27 +826,6 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterMonitoringInput Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder clusterMonitoringInput(@Nullable Output<ClusterClusterMonitoringInputArgs> clusterMonitoringInput) {
-            $.clusterMonitoringInput = clusterMonitoringInput;
-            return this;
-        }
-
-        /**
-         * @param clusterMonitoringInput Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder clusterMonitoringInput(ClusterClusterMonitoringInputArgs clusterMonitoringInput) {
-            return clusterMonitoringInput(Output.of(clusterMonitoringInput));
-        }
-
-        /**
          * @param clusterRegistrationToken (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
          * 
          * @return builder
@@ -1045,27 +959,6 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder defaultPodSecurityAdmissionConfigurationTemplateName(String defaultPodSecurityAdmissionConfigurationTemplateName) {
             return defaultPodSecurityAdmissionConfigurationTemplateName(Output.of(defaultPodSecurityAdmissionConfigurationTemplateName));
-        }
-
-        /**
-         * @param defaultPodSecurityPolicyTemplateId [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder defaultPodSecurityPolicyTemplateId(@Nullable Output<String> defaultPodSecurityPolicyTemplateId) {
-            $.defaultPodSecurityPolicyTemplateId = defaultPodSecurityPolicyTemplateId;
-            return this;
-        }
-
-        /**
-         * @param defaultPodSecurityPolicyTemplateId [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder defaultPodSecurityPolicyTemplateId(String defaultPodSecurityPolicyTemplateId) {
-            return defaultPodSecurityPolicyTemplateId(Output.of(defaultPodSecurityPolicyTemplateId));
         }
 
         /**
@@ -1237,27 +1130,6 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableClusterAlerting Enable built-in cluster alerting (bool)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder enableClusterAlerting(@Nullable Output<Boolean> enableClusterAlerting) {
-            $.enableClusterAlerting = enableClusterAlerting;
-            return this;
-        }
-
-        /**
-         * @param enableClusterAlerting Enable built-in cluster alerting (bool)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder enableClusterAlerting(Boolean enableClusterAlerting) {
-            return enableClusterAlerting(Output.of(enableClusterAlerting));
-        }
-
-        /**
          * @param enableClusterIstio Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.
          * 
          * @return builder
@@ -1284,27 +1156,6 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         @Deprecated /* Deploy istio using rancher2.App resource instead */
         public Builder enableClusterIstio(Boolean enableClusterIstio) {
             return enableClusterIstio(Output.of(enableClusterIstio));
-        }
-
-        /**
-         * @param enableClusterMonitoring Enable built-in cluster monitoring (bool)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder enableClusterMonitoring(@Nullable Output<Boolean> enableClusterMonitoring) {
-            $.enableClusterMonitoring = enableClusterMonitoring;
-            return this;
-        }
-
-        /**
-         * @param enableClusterMonitoring Enable built-in cluster monitoring (bool)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder enableClusterMonitoring(Boolean enableClusterMonitoring) {
-            return enableClusterMonitoring(Output.of(enableClusterMonitoring));
         }
 
         /**

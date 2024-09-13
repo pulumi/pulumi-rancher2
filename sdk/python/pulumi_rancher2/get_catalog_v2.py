@@ -21,7 +21,7 @@ class GetCatalogV2Result:
     """
     A collection of values returned by getCatalogV2.
     """
-    def __init__(__self__, annotations=None, ca_bundle=None, cluster_id=None, enabled=None, git_branch=None, git_repo=None, id=None, insecure=None, labels=None, name=None, resource_version=None, secret_name=None, secret_namespace=None, service_account=None, service_account_namespace=None, url=None):
+    def __init__(__self__, annotations=None, ca_bundle=None, cluster_id=None, enabled=None, exponential_backoff_max_retries=None, exponential_backoff_max_wait=None, exponential_backoff_min_wait=None, git_branch=None, git_repo=None, id=None, insecure=None, insecure_plain_http=None, labels=None, name=None, resource_version=None, secret_name=None, secret_namespace=None, service_account=None, service_account_namespace=None, url=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -34,6 +34,15 @@ class GetCatalogV2Result:
         if enabled and not isinstance(enabled, bool):
             raise TypeError("Expected argument 'enabled' to be a bool")
         pulumi.set(__self__, "enabled", enabled)
+        if exponential_backoff_max_retries and not isinstance(exponential_backoff_max_retries, int):
+            raise TypeError("Expected argument 'exponential_backoff_max_retries' to be a int")
+        pulumi.set(__self__, "exponential_backoff_max_retries", exponential_backoff_max_retries)
+        if exponential_backoff_max_wait and not isinstance(exponential_backoff_max_wait, int):
+            raise TypeError("Expected argument 'exponential_backoff_max_wait' to be a int")
+        pulumi.set(__self__, "exponential_backoff_max_wait", exponential_backoff_max_wait)
+        if exponential_backoff_min_wait and not isinstance(exponential_backoff_min_wait, int):
+            raise TypeError("Expected argument 'exponential_backoff_min_wait' to be a int")
+        pulumi.set(__self__, "exponential_backoff_min_wait", exponential_backoff_min_wait)
         if git_branch and not isinstance(git_branch, str):
             raise TypeError("Expected argument 'git_branch' to be a str")
         pulumi.set(__self__, "git_branch", git_branch)
@@ -46,6 +55,9 @@ class GetCatalogV2Result:
         if insecure and not isinstance(insecure, bool):
             raise TypeError("Expected argument 'insecure' to be a bool")
         pulumi.set(__self__, "insecure", insecure)
+        if insecure_plain_http and not isinstance(insecure_plain_http, bool):
+            raise TypeError("Expected argument 'insecure_plain_http' to be a bool")
+        pulumi.set(__self__, "insecure_plain_http", insecure_plain_http)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -101,6 +113,21 @@ class GetCatalogV2Result:
         return pulumi.get(self, "enabled")
 
     @property
+    @pulumi.getter(name="exponentialBackoffMaxRetries")
+    def exponential_backoff_max_retries(self) -> int:
+        return pulumi.get(self, "exponential_backoff_max_retries")
+
+    @property
+    @pulumi.getter(name="exponentialBackoffMaxWait")
+    def exponential_backoff_max_wait(self) -> int:
+        return pulumi.get(self, "exponential_backoff_max_wait")
+
+    @property
+    @pulumi.getter(name="exponentialBackoffMinWait")
+    def exponential_backoff_min_wait(self) -> int:
+        return pulumi.get(self, "exponential_backoff_min_wait")
+
+    @property
     @pulumi.getter(name="gitBranch")
     def git_branch(self) -> str:
         """
@@ -131,6 +158,11 @@ class GetCatalogV2Result:
         (Computed) Use insecure HTTPS to download the repo's index. Default: `false` (bool)
         """
         return pulumi.get(self, "insecure")
+
+    @property
+    @pulumi.getter(name="insecurePlainHttp")
+    def insecure_plain_http(self) -> Optional[bool]:
+        return pulumi.get(self, "insecure_plain_http")
 
     @property
     @pulumi.getter
@@ -204,10 +236,14 @@ class AwaitableGetCatalogV2Result(GetCatalogV2Result):
             ca_bundle=self.ca_bundle,
             cluster_id=self.cluster_id,
             enabled=self.enabled,
+            exponential_backoff_max_retries=self.exponential_backoff_max_retries,
+            exponential_backoff_max_wait=self.exponential_backoff_max_wait,
+            exponential_backoff_min_wait=self.exponential_backoff_min_wait,
             git_branch=self.git_branch,
             git_repo=self.git_repo,
             id=self.id,
             insecure=self.insecure,
+            insecure_plain_http=self.insecure_plain_http,
             labels=self.labels,
             name=self.name,
             resource_version=self.resource_version,
@@ -219,6 +255,10 @@ class AwaitableGetCatalogV2Result(GetCatalogV2Result):
 
 
 def get_catalog_v2(cluster_id: Optional[str] = None,
+                   exponential_backoff_max_retries: Optional[int] = None,
+                   exponential_backoff_max_wait: Optional[int] = None,
+                   exponential_backoff_min_wait: Optional[int] = None,
+                   insecure_plain_http: Optional[bool] = None,
                    name: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCatalogV2Result:
     """
@@ -230,6 +270,10 @@ def get_catalog_v2(cluster_id: Optional[str] = None,
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
+    __args__['exponentialBackoffMaxRetries'] = exponential_backoff_max_retries
+    __args__['exponentialBackoffMaxWait'] = exponential_backoff_max_wait
+    __args__['exponentialBackoffMinWait'] = exponential_backoff_min_wait
+    __args__['insecurePlainHttp'] = insecure_plain_http
     __args__['name'] = name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('rancher2:index/getCatalogV2:getCatalogV2', __args__, opts=opts, typ=GetCatalogV2Result).value
@@ -239,10 +283,14 @@ def get_catalog_v2(cluster_id: Optional[str] = None,
         ca_bundle=pulumi.get(__ret__, 'ca_bundle'),
         cluster_id=pulumi.get(__ret__, 'cluster_id'),
         enabled=pulumi.get(__ret__, 'enabled'),
+        exponential_backoff_max_retries=pulumi.get(__ret__, 'exponential_backoff_max_retries'),
+        exponential_backoff_max_wait=pulumi.get(__ret__, 'exponential_backoff_max_wait'),
+        exponential_backoff_min_wait=pulumi.get(__ret__, 'exponential_backoff_min_wait'),
         git_branch=pulumi.get(__ret__, 'git_branch'),
         git_repo=pulumi.get(__ret__, 'git_repo'),
         id=pulumi.get(__ret__, 'id'),
         insecure=pulumi.get(__ret__, 'insecure'),
+        insecure_plain_http=pulumi.get(__ret__, 'insecure_plain_http'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
         resource_version=pulumi.get(__ret__, 'resource_version'),
@@ -255,6 +303,10 @@ def get_catalog_v2(cluster_id: Optional[str] = None,
 
 @_utilities.lift_output_func(get_catalog_v2)
 def get_catalog_v2_output(cluster_id: Optional[pulumi.Input[str]] = None,
+                          exponential_backoff_max_retries: Optional[pulumi.Input[Optional[int]]] = None,
+                          exponential_backoff_max_wait: Optional[pulumi.Input[Optional[int]]] = None,
+                          exponential_backoff_min_wait: Optional[pulumi.Input[Optional[int]]] = None,
+                          insecure_plain_http: Optional[pulumi.Input[Optional[bool]]] = None,
                           name: Optional[pulumi.Input[str]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCatalogV2Result]:
     """

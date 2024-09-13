@@ -69,10 +69,6 @@ export interface GetClusterResult {
      */
     readonly clusterAuthEndpoint: outputs.GetClusterClusterAuthEndpoint;
     /**
-     * (Computed) Cluster monitoring config (list maxitems:1)
-     */
-    readonly clusterMonitoringInput: outputs.GetClusterClusterMonitoringInput;
-    /**
      * (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
      */
     readonly clusterRegistrationToken: outputs.GetClusterClusterRegistrationToken;
@@ -94,10 +90,6 @@ export interface GetClusterResult {
     readonly clusterTemplateRevisionId: string;
     readonly defaultPodSecurityAdmissionConfigurationTemplateName: string;
     /**
-     * (Optional/Computed) [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
-     */
-    readonly defaultPodSecurityPolicyTemplateId: string;
-    /**
      * (Computed) Default project ID for the cluster (string)
      */
     readonly defaultProjectId: string;
@@ -117,11 +109,6 @@ export interface GetClusterResult {
      * (Computed) The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `gkeConfig`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.x and above (list maxitems:1)
      */
     readonly eksConfigV2: outputs.GetClusterEksConfigV2;
-    readonly enableClusterAlerting: boolean;
-    /**
-     * (Computed) Enable built-in cluster monitoring. Default `false` (bool)
-     */
-    readonly enableClusterMonitoring: boolean;
     /**
      * (Computed) Enable project network isolation. Default `false` (bool)
      */

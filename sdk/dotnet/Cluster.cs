@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2
     /// 
     /// ## Example Usage
     /// 
-    /// **Note optional/computed arguments** If any `optional/computed` argument of this resource is defined by the user, removing it from tf file will NOT reset its value. To reset it, let its definition at tf file as empty/false object. Ex: `enable_cluster_monitoring = false`, `cloud_provider {}`, `name = ""`
+    /// **Note optional/computed arguments** If any `optional/computed` argument of this resource is defined by the user, removing it from tf file will NOT reset its value. To reset it, let its definition at tf file as empty/false object. Ex: `cloud_provider {}`, `name = ""`
     /// 
     /// ### Creating Rancher v2 imported cluster
     /// 
@@ -38,9 +38,7 @@ namespace Pulumi.Rancher2
     /// 
     /// Creating Rancher v2 RKE cluster
     /// 
-    /// ### Creating Rancher v2 RKE cluster enabling and customizing monitoring
-    /// 
-    /// **Note** Cluster monitoring version `0.2.0` and above, can't be enabled until cluster is fully deployed as [`kubeVersion`](https://github.com/rancher/system-charts/blob/52be656700468904b9bf15c3f39cd7112e1f8c9b/charts/rancher-monitoring/v0.2.0/Chart.yaml#L12) requirement has been introduced to helm chart
+    /// ### Creating Rancher v2 RKE cluster enabling
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -61,39 +59,13 @@ namespace Pulumi.Rancher2
     ///             {
     ///                 Plugin = "canal",
     ///             },
-    ///         },
-    ///         EnableClusterMonitoring = true,
-    ///         ClusterMonitoringInput = new Rancher2.Inputs.ClusterClusterMonitoringInputArgs
-    ///         {
-    ///             Answers = 
-    ///             {
-    ///                 { "exporter-kubelets.https", "true" },
-    ///                 { "exporter-node.enabled", "true" },
-    ///                 { "exporter-node.ports.metrics.port", "9796" },
-    ///                 { "exporter-node.resources.limits.cpu", "200m" },
-    ///                 { "exporter-node.resources.limits.memory", "200Mi" },
-    ///                 { "grafana.persistence.enabled", "false" },
-    ///                 { "grafana.persistence.size", "10Gi" },
-    ///                 { "grafana.persistence.storageClass", "default" },
-    ///                 { "operator.resources.limits.memory", "500Mi" },
-    ///                 { "prometheus.persistence.enabled", "false" },
-    ///                 { "prometheus.persistence.size", "50Gi" },
-    ///                 { "prometheus.persistence.storageClass", "default" },
-    ///                 { "prometheus.persistent.useReleaseName", "true" },
-    ///                 { "prometheus.resources.core.limits.cpu", "1000m" },
-    ///                 { "prometheus.resources.core.limits.memory", "1500Mi" },
-    ///                 { "prometheus.resources.core.requests.cpu", "750m" },
-    ///                 { "prometheus.resources.core.requests.memory", "750Mi" },
-    ///                 { "prometheus.retention", "12h" },
-    ///             },
-    ///             Version = "0.1.0",
     ///         },
     ///     });
     /// 
     /// });
     /// ```
     /// 
-    /// ### Creating Rancher v2 RKE cluster enabling/customizing monitoring and istio
+    /// ### Creating Rancher v2 RKE cluster enabling/customizing istio
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -114,32 +86,6 @@ namespace Pulumi.Rancher2
     ///             {
     ///                 Plugin = "canal",
     ///             },
-    ///         },
-    ///         EnableClusterMonitoring = true,
-    ///         ClusterMonitoringInput = new Rancher2.Inputs.ClusterClusterMonitoringInputArgs
-    ///         {
-    ///             Answers = 
-    ///             {
-    ///                 { "exporter-kubelets.https", "true" },
-    ///                 { "exporter-node.enabled", "true" },
-    ///                 { "exporter-node.ports.metrics.port", "9796" },
-    ///                 { "exporter-node.resources.limits.cpu", "200m" },
-    ///                 { "exporter-node.resources.limits.memory", "200Mi" },
-    ///                 { "grafana.persistence.enabled", "false" },
-    ///                 { "grafana.persistence.size", "10Gi" },
-    ///                 { "grafana.persistence.storageClass", "default" },
-    ///                 { "operator.resources.limits.memory", "500Mi" },
-    ///                 { "prometheus.persistence.enabled", "false" },
-    ///                 { "prometheus.persistence.size", "50Gi" },
-    ///                 { "prometheus.persistence.storageClass", "default" },
-    ///                 { "prometheus.persistent.useReleaseName", "true" },
-    ///                 { "prometheus.resources.core.limits.cpu", "1000m" },
-    ///                 { "prometheus.resources.core.limits.memory", "1500Mi" },
-    ///                 { "prometheus.resources.core.requests.cpu", "750m" },
-    ///                 { "prometheus.resources.core.requests.memory", "750Mi" },
-    ///                 { "prometheus.retention", "12h" },
-    ///             },
-    ///             Version = "0.1.0",
     ///         },
     ///     });
     /// 
@@ -147,7 +93,6 @@ namespace Pulumi.Rancher2
     ///     var foo_customClusterSync = new Rancher2.ClusterSync("foo-custom", new()
     ///     {
     ///         ClusterId = foo_custom.Id,
-    ///         WaitMonitoring = foo_custom.EnableClusterMonitoring,
     ///     });
     /// 
     ///     // Create a new rancher2 Namespace
@@ -158,7 +103,7 @@ namespace Pulumi.Rancher2
     ///         Description = "istio namespace",
     ///     });
     /// 
-    ///     // Create a new rancher2 App deploying istio (should wait until monitoring is up and running)
+    ///     // Create a new rancher2 App deploying istio
     ///     var istio = new Rancher2.App("istio", new()
     ///     {
     ///         CatalogName = "system-library",
@@ -179,7 +124,6 @@ namespace Pulumi.Rancher2
     ///             { "gateways.istio-ingressgateway.resources.requests.cpu", "100m" },
     ///             { "gateways.istio-ingressgateway.resources.requests.memory", "128Mi" },
     ///             { "gateways.istio-ingressgateway.type", "NodePort" },
-    ///             { "global.monitoring.type", "cluster-monitoring" },
     ///             { "global.rancher.clusterId", foo_customClusterSync.ClusterId },
     ///             { "istio_cni.enabled", "false" },
     ///             { "istiocoredns.enabled", "false" },
@@ -830,12 +774,6 @@ namespace Pulumi.Rancher2
         public Output<Outputs.ClusterClusterAuthEndpoint> ClusterAuthEndpoint { get; private set; } = null!;
 
         /// <summary>
-        /// Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
-        /// </summary>
-        [Output("clusterMonitoringInput")]
-        public Output<Outputs.ClusterClusterMonitoringInput?> ClusterMonitoringInput { get; private set; } = null!;
-
-        /// <summary>
         /// (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
         /// </summary>
         [Output("clusterRegistrationToken")]
@@ -870,12 +808,6 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Output("defaultPodSecurityAdmissionConfigurationTemplateName")]
         public Output<string> DefaultPodSecurityAdmissionConfigurationTemplateName { get; private set; } = null!;
-
-        /// <summary>
-        /// [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
-        /// </summary>
-        [Output("defaultPodSecurityPolicyTemplateId")]
-        public Output<string> DefaultPodSecurityPolicyTemplateId { get; private set; } = null!;
 
         /// <summary>
         /// (Computed) Default project ID for the cluster (string)
@@ -926,22 +858,10 @@ namespace Pulumi.Rancher2
         public Output<Outputs.ClusterEksConfigV2> EksConfigV2 { get; private set; } = null!;
 
         /// <summary>
-        /// Enable built-in cluster alerting (bool)
-        /// </summary>
-        [Output("enableClusterAlerting")]
-        public Output<bool> EnableClusterAlerting { get; private set; } = null!;
-
-        /// <summary>
         /// Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.
         /// </summary>
         [Output("enableClusterIstio")]
         public Output<bool> EnableClusterIstio { get; private set; } = null!;
-
-        /// <summary>
-        /// Enable built-in cluster monitoring (bool)
-        /// </summary>
-        [Output("enableClusterMonitoring")]
-        public Output<bool> EnableClusterMonitoring { get; private set; } = null!;
 
         /// <summary>
         /// Enable project network isolation (bool)
@@ -1139,12 +1059,6 @@ namespace Pulumi.Rancher2
         public Input<Inputs.ClusterClusterAuthEndpointArgs>? ClusterAuthEndpoint { get; set; }
 
         /// <summary>
-        /// Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
-        /// </summary>
-        [Input("clusterMonitoringInput")]
-        public Input<Inputs.ClusterClusterMonitoringInputArgs>? ClusterMonitoringInput { get; set; }
-
-        /// <summary>
         /// Cluster template answers. For Rancher v2.3.x and above (list maxitems:1)
         /// </summary>
         [Input("clusterTemplateAnswers")]
@@ -1179,12 +1093,6 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("defaultPodSecurityAdmissionConfigurationTemplateName")]
         public Input<string>? DefaultPodSecurityAdmissionConfigurationTemplateName { get; set; }
-
-        /// <summary>
-        /// [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
-        /// </summary>
-        [Input("defaultPodSecurityPolicyTemplateId")]
-        public Input<string>? DefaultPodSecurityPolicyTemplateId { get; set; }
 
         /// <summary>
         /// The description for Cluster (string)
@@ -1227,18 +1135,6 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("eksConfigV2")]
         public Input<Inputs.ClusterEksConfigV2Args>? EksConfigV2 { get; set; }
-
-        /// <summary>
-        /// Enable built-in cluster alerting (bool)
-        /// </summary>
-        [Input("enableClusterAlerting")]
-        public Input<bool>? EnableClusterAlerting { get; set; }
-
-        /// <summary>
-        /// Enable built-in cluster monitoring (bool)
-        /// </summary>
-        [Input("enableClusterMonitoring")]
-        public Input<bool>? EnableClusterMonitoring { get; set; }
 
         /// <summary>
         /// Enable project network isolation (bool)
@@ -1403,12 +1299,6 @@ namespace Pulumi.Rancher2
         public Input<Inputs.ClusterClusterAuthEndpointGetArgs>? ClusterAuthEndpoint { get; set; }
 
         /// <summary>
-        /// Cluster monitoring config. Any parameter defined in [rancher-monitoring charts](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) could be configured  (list maxitems:1)
-        /// </summary>
-        [Input("clusterMonitoringInput")]
-        public Input<Inputs.ClusterClusterMonitoringInputGetArgs>? ClusterMonitoringInput { get; set; }
-
-        /// <summary>
         /// (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
         /// </summary>
         [Input("clusterRegistrationToken")]
@@ -1449,12 +1339,6 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("defaultPodSecurityAdmissionConfigurationTemplateName")]
         public Input<string>? DefaultPodSecurityAdmissionConfigurationTemplateName { get; set; }
-
-        /// <summary>
-        /// [Default pod security policy template id](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#pod-security-policy-support) (string)
-        /// </summary>
-        [Input("defaultPodSecurityPolicyTemplateId")]
-        public Input<string>? DefaultPodSecurityPolicyTemplateId { get; set; }
 
         /// <summary>
         /// (Computed) Default project ID for the cluster (string)
@@ -1505,22 +1389,10 @@ namespace Pulumi.Rancher2
         public Input<Inputs.ClusterEksConfigV2GetArgs>? EksConfigV2 { get; set; }
 
         /// <summary>
-        /// Enable built-in cluster alerting (bool)
-        /// </summary>
-        [Input("enableClusterAlerting")]
-        public Input<bool>? EnableClusterAlerting { get; set; }
-
-        /// <summary>
         /// Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.
         /// </summary>
         [Input("enableClusterIstio")]
         public Input<bool>? EnableClusterIstio { get; set; }
-
-        /// <summary>
-        /// Enable built-in cluster monitoring (bool)
-        /// </summary>
-        [Input("enableClusterMonitoring")]
-        public Input<bool>? EnableClusterMonitoring { get; set; }
 
         /// <summary>
         /// Enable project network isolation (bool)
